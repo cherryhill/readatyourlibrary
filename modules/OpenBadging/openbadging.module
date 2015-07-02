@@ -1,0 +1,598 @@
+<?php
+
+/**
+ * openbadging changed before this time are always marked as read.
+ *
+ * openbadging changed after this time may be marked new, updated, or read, depending
+ * on their state for the current user. Defaults to 30 days ago.
+ */
+define('OPENBADGING_ENTITY_NEW_LIMIT', REQUEST_TIME - 30 * 24 * 60 * 60);
+
+
+/**
+ * Code for the image_cache feature.
+ */
+include_once 'openbadging.features.inc';
+
+/**
+ * Implements hook_entity_info().
+ */
+function openbadging_entity_info() {
+	$return = array(
+			'openbadging' => array(
+					'label' => t('Openbadging'),
+					'entity class' => 'OpenbadgingEntity',
+					'controller class' => 'OpenbadgingEntityController',
+					'base table' => 'openbadging',
+					'fieldable' => TRUE,
+					'entity keys' => array(
+							'id' => 'bid',
+							'bundle' => 'type',
+					),
+					'bundle keys' => array(
+							'bundle' => 'type',
+					),
+					'bundles' => array(),
+					'load hook' => 'openbadging_load',
+					'view modes' => array(
+							'full' => array(
+									'label' => t('Default'),
+									'custom settings' => FALSE,
+							),
+					),
+					'label callback' => 'entity_class_label',
+					'uri callback' => 'entity_class_uri',
+					'module' => 'openbadging',
+					'access callback' => 'openbadging_access',
+			),
+	);
+	$return['openbadging_types'] = array(
+			'label' => t('Openbadging Configuration'),
+			'entity class' => 'OpenbadgingTypes',
+			'controller class' => 'OpenbadgingTypesController',
+			'base table' => 'openbadging_types',
+			'fieldable' => FALSE,
+			'bundle of' => 'openbadging',
+			'exportable' => TRUE,
+			'entity keys' => array(
+					'id' => 'id',
+					'name' => 'type',
+					'label' => 'label',
+			),
+			'module' => 'openbadging',
+			// Enable the entity API's admin UI.
+			'admin ui' => array(
+					'path' => 'admin/structure/openbadging',
+					'file' => 'openbadging.admin.inc',
+					'controller class' => 'OpenbadgingTypesEntityController',
+			),
+			'access callback' => 'openbadging_types_access',
+	);
+
+	return $return;
+}
+
+/**
+ * Implements hook_entity_info_alter().
+ */
+function openbadging_entity_info_alter(&$entity_info) {
+	if (isset($entity_info['openbadging'])) {
+		foreach (openbadging_types() as $type => $info) {
+			$entity_info['openbadging']['bundles'][$type] = array(
+					'label' => $info->label,
+					'admin' => array(
+							'path' => 'admin/structure/openbadging/manage/%openbadging_types',
+							'real path' => 'admin/structure/openbadging/manage/' . $type,
+							'bundle argument' => 4,
+							'access arguments' => array('administer openbadging types'),
+					),
+			);
+		}
+	}
+}
+
+/**
+ * Implements hook_menu().
+ */
+function openbadging_menu() {
+	$items = array();
+	$items['admin/structure/openbadging/add_openbadging'] = array(
+			'title' => 'Add Openbadging',
+			'page callback' => 'drupal_goto',
+			'page arguments' => array('openbadging/add'),
+			'access arguments' => array('access editor control panel'),
+			'weight' => 50,
+			'type' => MENU_LOCAL_TASK
+	);
+	$items['openbadging/add'] = array(
+			'title' => 'Openbadging',
+			'page callback' => 'openbadging_admin_add_page',
+			'access arguments' => array('administer openbadging types'),
+			'file' => 'openbadging.admin.inc',
+			'type' => MENU_LOCAL_ACTION,
+			'tab_parent' => 'openbadging',
+			'tab_root' => 'openbadging',
+	);
+	$items['openbadging/%openbadging'] = array(
+			'title callback' => 'openbadging_title',
+			'title arguments' => array(1),
+			'page callback' => 'openbadging_view',
+			'page arguments' => array(1),
+			'access callback' => 'openbadging_access',
+			'access arguments' => array('view', 1),
+			'file' => 'openbadging.pages.inc',
+	);
+
+	$items['openbadging/%openbadging/view'] = array(
+			'title' => 'View',
+			'type' => MENU_DEFAULT_LOCAL_TASK,
+			'weight' => -10,
+	);
+
+	$items['openbadging/%openbadging/delete'] = array(
+			'title' => 'Delete openbadging',
+			'title callback' => 'openbadging_label',
+			'title arguments' => array(1),
+			'page callback' => 'drupal_get_form',
+			'page arguments' => array('openbadging_delete_form', 1),
+			'access callback' => 'openbadging_access',
+			'access arguments' => array('delete', 1),
+			'file' => 'openbadging.admin.inc',
+	);
+
+	$items['openbadging/%openbadging/edit'] = array(
+			'title' => 'Edit',
+			'page callback' => 'drupal_get_form',
+			'page arguments' => array('openbadging_form', 1),
+			'access callback' => 'openbadging_access',
+			'access arguments' => array('edit', 1),
+			'file' => 'openbadging.admin.inc',
+			'type' => MENU_LOCAL_TASK,
+			'context' => MENU_CONTEXT_PAGE | MENU_CONTEXT_INLINE,
+	);
+
+	foreach (openbadging_types() as $type => $info) {
+		$items['openbadging/add/' . $type] = array(
+				'title' => 'Openbadging',
+				'page callback' => 'openbadging_add',
+				'page arguments' => array(2),
+				'access callback' => 'openbadging_access',
+				'access arguments' => array('create', $info),
+				'file' => 'openbadging.admin.inc',
+		);
+	}
+	$items['admin/structure/openbadging/content'] = array(
+			'title' => 'Content',
+			'description' => 'Find and manage openbadging content.',
+			'page callback' => 'drupal_get_form',
+			'page arguments' => array('openbadging_admin_content'),
+			'access arguments' => array('administer openbadging types'),
+			'weight' => -10,
+			'file' => 'openbadging.admin.inc',
+			'type' => MENU_LOCAL_TASK,
+			'context' => MENU_CONTEXT_PAGE | MENU_CONTEXT_INLINE,
+			'weight' => 1,
+	);
+	$items['admin/structure/openbadging/%openbadging_types/delete'] = array(
+			'title' => 'Delete',
+			'page callback' => 'drupal_get_form',
+			'page arguments' => array('openbadging_types_form_delete_confirm', 4),
+			'access arguments' => array('administer openbadging types'),
+			'weight' => 1,
+			'type' => MENU_NORMAL_ITEM,
+			'file' => 'openbadging.admin.inc',
+	);
+
+	return $items;
+}
+
+/**
+ * openbadging content page title
+ * @param type $openbadging
+ * @return type
+ */
+function openbadging_title($openbadging) {
+	return $openbadging->title;
+}
+
+/**
+ * Implements hook_permission().
+ */
+function openbadging_permission() {
+	$permissions = array(
+			'administer openbadging types' => array(
+					'title' => t('Administer Openbadging Entity Types'),
+					'description' => t('Create and delete fields for openbadging types, and set their permissions.'),
+			),
+			'administer openbadging' => array(
+					'title' => t('Administer Openbadging Entity'),
+					'description' => t('Edit and delete all openbadging'),
+			),
+	);
+
+	//Generate permissions per openbadging
+	foreach (openbadging_types() as $type) {
+		$type_name = check_plain($type->type);
+		$permissions += array(
+				"view $type_name openbadging" => array(
+						'title' => t('View %type_name openbadging', array('%type_name' => $type->label)),
+				),
+				"create $type_name openbadging" => array(
+						'title' => t('Create %type_name openbadging', array('%type_name' => $type->label)),
+				),
+				"edit any $type_name openbadging" => array(
+						'title' => t('Edit any %type_name openbadging', array('%type_name' => $type->label)),
+				),
+				"edit own $type_name openbadging" => array(
+						'title' => t('Edit own %type_name openbadging', array('%type_name' => $type->label)),
+				),
+				"delete any $type_name openbadging" => array(
+						'title' => t('Delete any %type_name openbadging', array('%type_name' => $type->label)),
+				),
+				"delete own $type_name openbadging" => array(
+						'title' => t('Delete own %type_name openbadging', array('%type_name' => $type->label)),
+				),
+		);
+	}
+	return $permissions;
+}
+
+/**
+ * Implements hook_entity_property_info_alter().
+ */
+function openbadging_entity_property_info_alter(&$info) {
+	$properties = &$info['openbadging']['properties'];
+	$properties['created'] = array(
+			'label' => t("Date created"),
+			'type' => 'date',
+			'description' => t("The date the openbadging was posted."),
+			'setter callback' => 'entity_property_verbatim_set',
+			'setter permission' => 'administer openbadging',
+			'schema field' => 'created',
+	);
+	$properties['changed'] = array(
+			'label' => t("Date changed"),
+			'type' => 'date',
+			'schema field' => 'changed',
+			'description' => t("The date the openbadging was most recently updated."),
+	);
+	$properties['uid'] = array(
+			'label' => t("Author"),
+			'type' => 'user',
+			'description' => t("The author of the openbadging."),
+			'setter callback' => 'entity_property_verbatim_set',
+			'setter permission' => 'administer openbadging types',
+			'required' => TRUE,
+			'schema field' => 'uid',
+	);
+	$properties['status'] = array(
+			'label' => t("Published"),
+			'description' => t("Whether the node is published or unpublished."),
+			'type' => 'integer',
+			'setter callback' => 'entity_property_verbatim_set',
+			'setter permission' => 'administer openbadging',
+			'schema field' => 'status',
+	);
+}
+
+/**
+ * Determines whether the given user has access to a model.
+ *
+ * @param $op
+ *   The operation being performed. One of 'view', 'update', 'create', 'delete'
+ *   or just 'edit' (being the same as 'create' or 'update').
+ * @param $model
+ *   Optionally a model or a openbadging type to check access for. If nothing is
+ *   given, access for all openbadgings is determined.
+ * @param $account
+ *   The user to check for. Leave it to NULL to check for the global user.
+ * @return boolean
+ *   Whether access is allowed or not.
+ */
+function openbadging_access($op, $openbadging = NULL, $account = NULL) {
+	global $user;
+
+	if (!$openbadging || !in_array($op, array('view', 'edit', 'delete', 'create'), TRUE)) {
+		// If there was no openbadging to check against, or the $op was not one of the
+		// supported ones, we return access denied.
+		return FALSE;
+	}
+
+	// If no user object is supplied, the access check is for the current user.
+	if (empty($account)) {
+		$account = $user;
+	}
+
+	if (user_access('administer openbadging types', $account)) {
+		return TRUE;
+	}
+	if (isset($openbadging) && $type_name = $openbadging->type) {
+		if (user_access("$op any $type_name openbadging", $account)) {
+			return TRUE;
+		}
+		if (user_access("$op own $type_name openbadging", $account)) {
+			if($account->uid == $openbadging->uid){
+				return TRUE;
+			}
+		}
+		if (user_access("$op $type_name openbadging", $account)) {
+			return TRUE;
+		}
+	}
+	return FALSE;
+}
+
+/**
+ * Load a openbadging.
+ */
+function openbadging_load($bid, $reset = FALSE) {
+	$openbadging = openbadging_load_multiple(array($bid), array(), $reset);
+	return reset($openbadging);
+}
+
+/**
+ * Load multiple openbadgings based on certain conditions.
+ */
+function openbadging_load_multiple($bids = array(), $conditions = array(), $reset = FALSE) {
+	return entity_load('openbadging', $bids, $conditions, $reset);
+}
+
+/**
+ * Save openbadging.
+ */
+function openbadging_save($openbadging) {
+	entity_save('openbadging', $openbadging);
+	achievements_load(NULL, FALSE, TRUE);
+}
+
+/**
+ * Delete single openbadging.
+ */
+function openbadging_delete($openbadging) {
+	entity_delete('openbadging', entity_id('openbadging', $openbadging));
+}
+
+/**
+ * Delete multiple openbadgings.
+ */
+function openbadging_delete_multiple($openbadging_ids) {
+	entity_delete_multiple('openbadging', $openbadging_ids);
+}
+
+/**
+ * Access callback for openbadging Type.
+ */
+function openbadging_types_access($op, $entity = NULL) {
+	return user_access('administer openbadging types');
+}
+
+/**
+ * Load openbadging Type.
+ */
+function openbadging_types_load($openbadging_type) {
+	return openbadging_types($openbadging_type);
+}
+
+/**
+ * List of openbadging Types.
+ */
+function openbadging_types($type_name = NULL) {
+	$types = entity_load_multiple_by_name('openbadging_types', isset($type_name) ? array($type_name) : FALSE);
+	return isset($type_name) ? reset($types) : $types;
+}
+
+/**
+ * Save openbadging type entity.
+ */
+function openbadging_types_save($openbadging_type) {
+	entity_save('openbadging_types', $openbadging_type);
+}
+
+/**
+ * Delete single case type.
+ */
+function openbadging_types_delete($openbadging_type) {
+	entity_delete('openbadging_types', entity_id('openbadging_types', $openbadging_type));
+}
+
+/**
+ * Delete multiple case types.
+ */
+function openbadging_types_delete_multiple($openbadging_type_ids) {
+	entity_delete_multiple('openbadging_types', $openbadging_type_ids);
+}
+
+/**
+ * Implements hook_views_api().
+ */
+function openbadging_views_api() {
+	return array(
+			'api' => 3,
+			'path' => drupal_get_path('module', 'openbadging'),
+	);
+}
+
+/**
+ * Implement hook_theme().
+ */
+function openbadging_theme() {
+	return array(
+			'openbadging' => array(
+					'render element' => 'elements',
+					'template' => 'openbadging',
+			),
+			'openbadging_data' => array(
+					'variables' => array('openbadging_data', 'openbadging' => NULL),
+					'template' => 'openbadging-ui-data',
+			),
+	);
+}
+
+/**
+ * Implements hook_theme_registry_alter().
+ *
+ * Technique borrowed from Display Suite module.
+ * Add a custom preprocess hook that will work for all types of entities
+ */
+function openbadging_theme_registry_alter(&$theme_registry) {
+
+	$entity_info = entity_get_info();
+
+	foreach ($entity_info as $entity => $info) {
+		// User uses user_profile for theming.
+		if ($entity == 'openbadging') {
+			$entity = 'openbadging';
+		}
+
+		// Only add preprocess functions if entity exposes theme function.
+		if (isset($theme_registry[$entity])) {
+			$theme_registry[$entity]['preprocess functions'][] = 'openbadging_preprocess_openbadging';
+		}
+	}
+
+	// Support for File Entity.
+	if (isset($theme_registry['file_entity'])) {
+		$theme_registry['file_entity']['preprocess functions'][] = 'openbadging_preprocess_openbadging';
+	}
+
+	// Support for Entity API.
+	if (isset($theme_registry['entity'])) {
+		$theme_registry['entity']['preprocess functions'][] = 'openbadging_preprocess_openbadging';
+	}
+}
+
+/**
+ * Technique borrowed from Display Suite module.
+ * Add ical template suggestions to all types of entities.
+ */
+function openbadging_preprocess_openbadging(&$vars) {
+	if (isset($vars['elements']) && isset($vars['elements']['#entity_type']) && isset($vars['elements']['#bundle']) && isset($vars['view_mode'])) {
+		//$vars['theme_hook_suggestions'][] = $vars['elements']['#entity_type'];
+		$vars['theme_hook_suggestions'][] = $vars['elements']['#entity_type'] . '--' . $vars['elements']['#bundle'];
+	}
+}
+
+/**
+ * Decide on the type of marker to be displayed for a given openbadging.
+ *
+ * @param $bid
+ *   openbadging ID whose history supplies the "last viewed" timestamp.
+ * @param $timestamp
+ *   Time which is compared against node's "last viewed" timestamp.
+ * @return
+ *   One of the MARK constants.
+ */
+function openbadging_mark($bid, $timestamp) {
+	global $user;
+	$cache = &drupal_static(__FUNCTION__, array());
+
+	if (!$user->uid) {
+		return MARK_READ;
+	}
+	if (!isset($cache[$bid])) {
+		$cache[$bid] = openbadging_last_viewed($bid);
+	}
+	if ($cache[$bid] == 0 && $timestamp > OPENBADGING_ENTITY_NEW_LIMIT) {
+		return MARK_NEW;
+	} elseif ($timestamp > $cache[$bid] && $timestamp > OPENBADGING_ENTITY_NEW_LIMIT) {
+		return MARK_UPDATED;
+	}
+	return MARK_READ;
+}
+
+/**
+ * Retrieves the timestamp at which the current user last viewed the
+ * specified openbadging.
+ */
+function openbadging_last_viewed($bid) {
+	global $user;
+	$history = &drupal_static(__FUNCTION__, array());
+
+	if (!isset($history[$bid])) {
+		$history[$bid] = db_query("SELECT changed FROM {openbadging} WHERE uid = :uid AND bid = :bid", array(':uid' => $user->uid, ':bid' => $bid))->fetchObject();
+	}
+
+	return (isset($history[$bid]->changed) ? $history[$bid]->changed : 0);
+}
+
+/**
+ * Returns the openbadging type name of the passed openbadging or openbadging type string.
+ * @return
+ *   The openbadging type name.
+ */
+function openbadging_type_get_name($openbadging) {
+	return $openbadging->type;
+}
+
+/**
+ * Returns a list of available openbadging type names.
+ * @return
+ *   An array of openbadging type names, keyed by the type.
+ */
+function openbadging_type_get_names() {
+	$_openbadging_types = (object) array('names' => array());
+	$query = db_select('openbadging_types', 'at')
+	->fields('at');
+	foreach ($query->execute() as $type_object) {
+		$type_db = $type_object->type;
+		$_openbadging_types->names[$type_db] = $type_object->label;
+	}
+	return $_openbadging_types->names;
+}
+
+/**
+ * Implements hook_token_info().
+ */
+function openbadging_token_info() {
+	$types['openbadging'] = array(
+			'name' => t("openbadging Tokens"),
+			'description' => t("Tokens for openbadging."),
+	);
+
+	// Entity specific tokens.
+	$openbadging['title'] = array(
+			'name' => t("openbadging Title"),
+			'description' => t("openbadging Title."),
+	);
+	$openbadging['type'] = array(
+			'name' => t("openbadging Type"),
+			'description' => t("openbadging Type."),
+	);
+	$openbadging['bid'] = array(
+			'name' => t("openbadging ID"),
+			'description' => t("openbadging ID."),
+	);
+	return array(
+			'types' => $types,
+			'tokens' => array(
+					'openbadging' => $openbadging,
+			),
+	);
+}
+
+/**
+ * Implements hook_tokens().
+ */
+function openbadging_tokens($type, $tokens, array $data = array(), array $options = array()) {
+	global $user;
+	$replacements = array();
+	if ($type == 'openbadging') {
+		foreach ($tokens as $name => $original) {
+			switch ($name) {
+				case 'title':
+					$title = $data['openbadging']->title;
+					$replacements[$original] = $title;
+					break;
+				case 'type':
+					$type = $data['openbadging']->type;
+					$replacements[$original] = $type;
+					break;
+				case 'bid':
+					$bid = $data['openbadging']->bid;
+					$replacements[$original] = $bid;
+					break;
+			}
+		}
+	}
+	return $replacements;
+}

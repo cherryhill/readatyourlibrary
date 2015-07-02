@@ -1,0 +1,25 @@
+<?php
+
+// $Id openbadging_badge_manager.install
+
+/**
+ * @file
+ * Install functions for the openbadging_manage_backpack module.
+ */
+
+/**
+ * Implements hook_install().
+ */
+function openbadging_badge_manager_install() {
+  $role_permission = db_query("SELECT * FROM {role_permission} WHERE  permission = 'earn achievements' AND module= 'achievements' AND rid=2", array())->fetchAll();
+  if (empty($role_permission)) {
+    db_insert('role_permission')
+      ->fields(array(
+        'rid' => 2,
+        'permission' => 'earn achievements',
+        'module' => 'achievements',
+      ))
+      ->execute();
+  }
+}
+

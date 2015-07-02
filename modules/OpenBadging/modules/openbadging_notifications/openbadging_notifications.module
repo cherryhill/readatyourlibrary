@@ -1,0 +1,162 @@
+<?php
+
+// $Id openbadging_notifications.module
+
+/**
+ * Implement hook_menu().
+ * @return array 
+ */
+function openbadging_notifications_menu() {
+  $items['admin/structure/openbadging/notification'] = array(
+    'title' => 'Notification templates',
+    'description' => 'Add openbadging notification template',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('openbadging_notifications_settings'),
+    'access arguments' => array('administer site configuration'),
+    'file' => 'openbadging_notifications.admin.inc',
+    'type' => MENU_LOCAL_TASK,
+    'context' => MENU_CONTEXT_PAGE | MENU_CONTEXT_INLINE,
+    'weight' => 2,
+  );
+  return $items;
+}
+
+/**
+ * implementation of hook_form_alter()
+ * @global <type> &$form
+ * @global <type> $form_state
+ */
+function openbadging_notifications_form_alter(&$form, $form_state, $form_id) {
+  switch ($form_id) {
+    case 'achievements_settings':
+      $form['achievements_manual']['actions']['achievements_manual_give']['#submit'][] = 'openbadging_notification_send';
+      break;
+  }
+}
+
+/**
+ * Send mail on achievement of badge.
+ */
+function openbadging_notification_send(&$form, $form_state) {
+  global $user;
+  $badges_entity = entity_load('openbadging', $ids = array($form_state['values']['achievements_manual_achievement']));
+  $badge_id = $form_state['values']['achievements_manual_achievement'];
+  $badge_name = $badges_entity[$badge_id]->title;
+  $badge_version = $badges_entity[$badge_id]->field_badge_entity_version['und'][0]['value'];
+  $badge_description = $badges_entity[$badge_id]->field_badge_entity_description['und'][0]['value'];
+  $program_id = $badges_entity[$badge_id]->field_badge_entity_program['und'][0]['tid'];
+  $eid = openbadging_badges_badge_issuer_information($program_id);
+  $issuer_entity = entity_load('openbadging', $ids = array($eid));
+  if (isset($issuer_entity[$eid]->field_issuer_org['und'][0]['value'])) {
+    $issuer_org = $issuer_entity[$eid]->field_issuer_org['und'][0]['value'];
+  } else {
+    $issuer_org = '';
+  }
+  $issuer_origin = $issuer_entity[$eid]->field_issuer_origin['und'][0]['url'];
+  $issuer_name = $issuer_entity[$eid]->title;
+  $issuer_contact = $issuer_entity[$eid]->field_issuer_contact['und'][0]['value'];
+  $userid = $form_state['values']['achievements_manual_user'];
+  if (is_numeric($userid)) {
+    $mailto = db_select('users')
+      ->fields('users', array('mail', 'login'))
+      ->condition('uid', $userid, '=')
+      ->execute()
+      ->fetchAssoc();
+    $uid = $userid;
+    $login = $mailto['login'];
+  } else {
+    $mailto = db_select('users')
+      ->fields('users', array('mail'))
+      ->condition('name', $userid, '=')
+      ->execute()
+      ->fetchAssoc();
+    $rs = db_select('users')
+      ->fields('users', array('uid', 'login'))
+      ->condition('name', $userid, '=')
+      ->execute()
+      ->fetchAssoc();
+    $uid = $rs['uid'];
+    $login = $rs['login'];
+  }
+  $name = db_select('users')
+    ->fields('users', array('name'))
+    ->condition('uid', $uid, '=')
+    ->execute()
+    ->fetchAssoc();
+  $first_name = $name['name'];
+  $mailfrom = variable_get('site_mail', '');
+  if ($login == 0) {
+    $subject = variable_get('openbadging_notification_mail_subject', NULL);
+    $body = variable_get('openbadging_notification_mail_before_login_body', NULL);
+  } else {
+    $subject = variable_get('openbadging_notification_mail_subject', NULL);
+    $body = variable_get('openbadging_notification_mail_after_login_body', NULL);
+  }
+  $params = array(
+    'issuer_org' => $issuer_org,
+    'issuer_contact' => $issuer_contact,
+    'issuer_name' => $issuer_name,
+    'issuer_origin' => $issuer_origin,
+    'first_name' => $first_name,
+    'badge_name' => $badge_name,
+    'badge_description' => $badge_description,
+    'badge_version' => $badge_version,
+    'subject' => $subject,
+    'message' => $body,
+    'account' => user_load($uid),
+  );
+  $mail = drupal_mail('openbadging_notifications', 'notify', $mailto['mail'], language_default(), $params, $mailfrom, TRUE);
+}
+
+/**
+ * Implementation of hook_mail()
+ * @param array $key
+ * @param array $message
+ * @param array $params
+ */
+function openbadging_notifications_mail($key, &$message, $params) {
+  global $base_url;
+  $first_name = $params['first_name'];
+  $badge_name = $params['badge_name'];
+  $badge_version = $params['badge_version'];
+  $badge_description = $params['badge_description'];
+  $issuer_origin = $params['issuer_origin'];
+  $issuer_name = $params['issuer_name'];
+  $issuer_contact = $params['issuer_contact'];
+  $issuer_org = $params['issuer_org'];
+  $language = $message['language'];
+  $account = $params['account'];
+  switch ($key) {
+    case 'notify':
+      $replacements_raw = openbadging_notifications_replacements();
+      foreach ($replacements_raw as $key => $val) {
+        // eval the replacements        
+        eval('$replacements["$key"] = ' . $val . ';');
+      }
+      $params['subject'] = strtr($params['subject'], $replacements);
+      $params['message'] = strtr($params['message'], $replacements);
+      $message['subject'] = $params['subject'];
+      $message['body'][] = $params['message'];
+      break;
+  }
+}
+
+/**
+ * Tokens replacements
+ * $return array
+ */
+function openbadging_notifications_replacements() {
+  return array(
+    '%first_name' => '$first_name',
+    '%badge_name' => '$badge_name',
+    '%badge_version' => '$badge_version',
+    '%badge_description' => '$badge_description',
+    '%issuer_origin' => '$issuer_origin',
+    '%issuer_name' => '$issuer_name',
+    '%issuer_contact' => '$issuer_contact',
+    '%login_url' => '$base_url."/user/login"',
+    '%issuer_org' => '$issuer_org',
+    '%one-time-login-url' => 'user_pass_reset_url($account)',
+  );
+}
+

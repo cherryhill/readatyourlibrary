@@ -1,0 +1,245 @@
+<?php
+
+/**
+ * @file
+ * Module for connecting open badges openbadgings to Mozilla Open Badges Backpack.
+ */
+
+/**
+ * Implements hook_menu().
+ */
+function openbadging_amobb_menu() {
+  $items['openbadging_amobb/assertions/%/%'] = array(
+    'title' => 'Assertions',
+    'page callback' => 'openbadging_amobb_assertions',
+    'page arguments' => array(2, 3),
+    'access callback' => TRUE,
+    'type' => MENU_CALLBACK,
+  );
+  $items['openbadging_amobb/badges/%/%'] = array(
+    'title' => 'Assertions',
+    'page callback' => 'openbadging_amobb_badges',
+    'page arguments' => array(2, 3),
+    'access callback' => TRUE,
+    'type' => MENU_CALLBACK,
+  );
+  $items['openbadging_amobb/issuer/%/%'] = array(
+    'title' => 'Assertions',
+    'page callback' => 'openbadging_amobb_issuer',
+    'page arguments' => array(2, 3),
+    'access callback' => TRUE,
+    'type' => MENU_CALLBACK,
+  );
+  return $items;
+}
+
+/**
+ * Return json assertions for openbadgings.
+ *
+ * @param string $openbadging_url
+ *   A specific openbadging title to check the unlock status of.
+ * @param int $uid
+ *   The user this request applies against (defaults to current user).
+ *
+ * @return array
+ *   One of the following, based on the passed parameters:
+ *   - If the $uid has not unlocked $openbadging_id, return empty badge.
+ *   - If $openbadging_url is unlocked, return the formatted badge assertion.
+ */
+function openbadging_amobb_assertions($openbadging_url, $uid) {
+	global $base_url;
+	$url = $base_url.'/openbadging_amobb/assertions/'.$openbadging_url.'/'.$uid;
+	$assertion = str_replace(" ","%20", $url);
+	$user = user_load($uid);
+	$openbadging_name = urldecode($openbadging_url);
+	$unlocks = achievements_unlocked_already(NULL, $uid);
+	$openbadgings = achievements_load(NULL, FALSE);
+	foreach ($openbadgings as $key => $openbadging) {
+		if (isset($unlocks[$key]) && $openbadging['title'] == $openbadging_name) {
+		$salt = 'mybadge!';
+		$hash = 'sha256$' . hash('sha256', $user->mail . $salt);
+		$evidence = get_badge_detail($key, 'evidence');
+		$image = get_badge_detail($key, 'image');
+		$badge_url = $base_url.'/openbadging_amobb/badges/'.$key.'/'.$uid;
+		$issue_date = get_badge_issue_date($key, $uid);
+		$assertion = array(
+			'uid' => $uid,
+				'recipient' => array(
+					'type' => 'email',
+					'hashed' => true,
+					'salt' => $salt,
+					'identity' => $hash
+				 ),
+			'image' => $image,
+			'evidence' => $evidence,
+			'issuedOn'=> $issue_date,
+			'badge' => $badge_url,
+				'verify' => array(
+					'type' => 'hosted',
+					'url' => $assertion
+				 ),
+		);
+		  drupal_alter('openbadging_amobb', $assertion, $key, $uid);
+			drupal_json_output($assertion);
+	    return;
+		}
+  }
+	$assertion = array(
+    'badge' => array(
+      'name' => 'No badge',
+    ),
+  );
+  
+  drupal_json_output($assertion);
+}
+
+
+
+function openbadging_amobb_badges($openbadging_id, $uid) {
+	global $base_url;
+	$title = get_badge_detail($openbadging_id, 'title');
+	$description = get_badge_detail($openbadging_id, 'description');
+	$image = get_badge_detail($openbadging_id, 'image');
+	$criteria = get_badge_detail($openbadging_id, 'criteria');
+	$url = $base_url.'/openbadging_amobb/issuer/'.$openbadging_id.'/'.$uid;
+	$badge = array(
+		'name'=> $title,
+		'description'=> $description,
+		'image'=> $image,
+		'criteria'=> $criteria,
+		//'tags'=> ['robots', 'awesome'],
+		'issuer'=> $url,
+	);
+	drupal_alter('openbadging_amobb_badges', $badge, $openbadging_id, $uid);
+	drupal_json_output($badge);
+	return;
+}
+
+
+function openbadging_amobb_issuer($openbadging_id, $uid) {
+	$name = get_badge_detail($openbadging_id, 'issuer_name');
+	$url = get_badge_detail($openbadging_id, 'issuer_url');
+	$mail = get_badge_detail($openbadging_id, 'issuer_mail');
+	$issuer = array(
+		'name'=> $name,
+		//'image'=> 'https://example.org/logo.png',
+		'url'=> $url,
+		'email'=> $mail,
+		//'revocationList'=> 'https://example.org/revoked.json'
+	);
+	drupal_alter('openbadging_amobb_issuer', $issuer, $openbadging_id, $uid);
+	drupal_json_output($issuer);
+	return;
+}
+
+
+/**
+ * Implements hook_page_build().
+ * Add all our necessary javascript settings and files.
+ */
+function openbadging_amobb_page_build(&$page) {
+  $account = menu_get_object('user', 1);
+  global $user;
+  // Add all our necessary javascript settings and files.
+  drupal_add_js('https://beta.openbadges.org/issuer.js', 'external');
+  global $base_root;
+  drupal_add_js(array('uid' => $user->uid, 'baseRoot' => $base_root), 'setting');
+  drupal_add_js(url(drupal_get_path('module', 'openbadging_amobb')) . '/openbadging_amobb.js');
+}
+
+/**
+ * 
+ * @param unknown_type $badge_id
+ * @param unknown_type $case
+ */
+function get_badge_detail($badge_id, $case){
+	//print_r($case); die;
+	global $base_url;
+	$badge = entity_load('openbadging', $ids = array($badge_id));
+	  switch ($case) {
+    case 'image':
+      $file_dir_path = '/'.variable_get('file_public_path', conf_path() . '/files').'/';
+      $unlocked_image_path = explode($file_dir_path, drupal_realpath($badge[$badge_id]->field_badge_entity_unlock_image['und'][0]['uri']));
+      $image = $base_url . $file_dir_path .'styles/110_110/public/'. $unlocked_image_path[1];
+      return $image;
+      break;   
+  
+    case 'evidence':  
+      $evidence = isset($badge[$badge_id]->field_badge_entity_evidence['und'][0]['url']) ? $badge[$badge_id]->field_badge_entity_evidence['und'][0]['url'] : '';
+      return $evidence;
+      break;  
+  
+    case 'title':  
+      $title = isset($badge[$badge_id]->title) ? $badge[$badge_id]->title : '';
+      return $title;
+      break; 
+      
+    case 'description': 
+      $description = isset($badge[$badge_id]->field_badge_entity_description['und'][0]['value']) ? $badge[$badge_id]->field_badge_entity_description['und'][0]['value'] : '';
+      return $description;
+      break;   
+      
+   case 'criteria':
+      $criteria = isset($badge[$badge_id]->field_badge_entity_criteria['und'][0]['url']) ? $badge[$badge_id]->field_badge_entity_criteria['und'][0]['url'] : ''; 
+      return $criteria;
+      break;    
+          
+   case 'issuer_name': 
+      $tid = $badge[$badge_id]->field_badge_entity_program['und']['0']['tid'];
+      $issuer_id = get_issuer_from_program($tid);
+      $issuer_array = entity_load('openbadging', $ids = array($issuer_id));
+      $issuer_name = isset($issuer_array[$issuer_id]->title) ? $issuer_array[$issuer_id]->title : '';
+      return $issuer_name;
+      break;     
+      
+   case 'issuer_url': 
+      $tid = $badge[$badge_id]->field_badge_entity_program['und']['0']['tid'];
+      $issuer_id = get_issuer_from_program($tid);
+      $issuer_array = entity_load('openbadging', $ids = array($issuer_id));
+      $issuer_url = isset($issuer_array[$issuer_id]->field_issuer_origin['und']['0']['url']) ? $issuer_array[$issuer_id]->field_issuer_origin['und']['0']['url'] : '';
+      return $issuer_url;
+      break;     
+      
+   case 'issuer_mail': 
+      $tid = $badge[$badge_id]->field_badge_entity_program['und']['0']['tid'];
+      $issuer_id = get_issuer_from_program($tid);
+      $issuer_array = entity_load('openbadging', $ids = array($issuer_id));
+      $issuer_mail = isset($issuer_array[$issuer_id]->field_issuer_contact['und']['0']['value']) ? $issuer_array[$issuer_id]->field_issuer_contact['und']['0']['value'] : '';
+      return $issuer_mail;
+      break;           
+    }
+}
+
+/**
+ * Find out issuer information on the bases of tid
+ * @param type $tid
+ * @return type 
+ */
+function get_issuer_from_program($tid) {
+  $issuer_id = db_select('field_data_field_badge_entity_program', 'fbp');
+  $issuer_id->condition('fbp.field_badge_entity_program_tid', $tid, '=')
+    ->fields('fbp', array('bundle', 'entity_id'));
+  $id = $issuer_id->execute()->fetchAll();
+  foreach ($id as $key => $value) {
+    if ($value->bundle == 'issuer_information') {
+      return $value->entity_id;
+    }
+  }
+}
+
+/**
+ * 
+ * @param unknown_type $badge_id
+ * @param unknown_type $user_id
+ */
+function get_badge_issue_date($badge_id, $user_id){
+    $result = db_select('achievement_unlocks', 'au')
+    ->fields('au', array('timestamp'))
+    ->condition('achievement_id', $badge_id,'=')
+    ->condition('uid', $user_id,'=')
+    ->execute()
+    ->fetchAssoc();	
+  if($result['timestamp']){
+		return $result['timestamp'];
+	} 
+}

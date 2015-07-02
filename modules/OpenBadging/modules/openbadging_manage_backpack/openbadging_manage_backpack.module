@@ -1,0 +1,445 @@
+<?php
+
+/**
+ * @file
+ * Code for the Backpack feature.
+ */
+include_once 'openbadging_manage_backpack.features.inc';
+
+
+/**
+ * Implementation of hook_init().
+ * include css file.
+ * cals on mybackpack view.
+ */
+function openbadging_manage_backpack_init() {
+  drupal_add_css(drupal_get_path('module', 'openbadging_manage_backpack') . '/css/openbadging_manage_backpack_edit_form.css');
+  drupal_add_js(url(drupal_get_path('module', 'openbadging_manage_backpack')) . '/openbadging_manage_backpack.js');
+}
+
+/*
+ * Implementing hook_user_delete()
+ * this function cals when admin delete any user account.
+ * this fuction delete all groups of deleted user and its refrences from database.
+ * @param type $account
+ */
+
+function openbadging_manage_backpack_user_delete($account) {
+  $group_id_user = db_query("SELECT bid FROM {openbadging} WHERE  type = 'user_groups' AND uid=" . $account->uid, array())->fetchAll();
+  foreach ($group_id_user as $key => $value) {
+    db_delete('field_data_field_user_group_private')
+      ->condition('entity_id', $value->bid, '=')
+      ->condition('bundle', 'user_groups', '=')
+      ->execute();
+    db_delete('field_data_field_badge_entity_reference_1')
+      ->condition('entity_id', $value->bid, '=')
+      ->condition('bundle', 'user_groups', '=')
+      ->execute();
+  }
+  db_delete('openbadging')
+    ->condition('type', 'user_groups', '=')
+    ->condition('uid', $account->uid, '=')
+    ->execute();
+}
+
+/*
+ * @param $bid (groupid)
+ * this function cal for check groups privacy of user.
+ * for public and private icon on mybackpack tab view.
+ * if group is private private icon shows with groupname and Vice versa. 
+ * @return boolean 
+ */
+
+function openbadging_user_group_status_check($group_id) {
+
+  $group_privacy = db_select('field_data_field_user_group_private', 'gp')
+    ->condition('gp.entity_id', $group_id, '=')
+    ->fields('gp', array('field_user_group_private_value'));
+  $group_privacy_array = $group_privacy->execute()->fetchAll();
+  $group_privacy_value = $group_privacy_array[0]->field_user_group_private_value;
+  return ($group_privacy_value);
+}
+
+/*
+ * @param Type &$form
+ * @param Type &$form_state
+ * @param Type $form_id
+ * Implementing hook_form_alter()
+ * this function cal when user create or edit group.
+ * this function show only earned baadge list to user when user create aur edit groups.
+ */
+
+function openbadging_manage_backpack_form_alter(&$form, &$form_state, $form_id) {
+
+  // Redirect after group delete.	
+  if ($form_id == 'openbadging_delete_form') {
+		//print_r("come"); die;
+    $bid = $form['openbadging_type_id']['#value'];
+    $is_group_del = entity_load('openbadging', array($bid));
+    if ($is_group_del[$bid]->type == 'user_groups') {
+      $form['#submit'][] = 'openbadging_redirect_after_group_delete';
+    }
+  }
+  // Delete group.
+  if ($form_id == 'openbadging_delete_form' && $form['#theme'] == 'confirm_form') {
+    array_unshift($form['#submit'], "openbadging_group_delete_form_submit");
+  }
+  // Achievements take from user by admin form.
+  if ($form_id == 'achievements_settings') {
+    $form['achievements_manual']['actions']['achievements_manual_take']['#submit'][] = 'openbadging_take_submit_function';
+  }
+  // Create or edit or delete group form.
+  if (isset($form['field_user_group_private'])) {
+    if ($form_id == 'openbadging_form') {
+      unset($form['field_user_group_private']['und']['#options']['_none']); //unset N/A option of radio button 
+      global $user;
+      $uid = $user->uid;
+      if (is_numeric(arg(1))) {
+        $bid_url = db_select('openbadging', 'ui')
+          ->fields('ui')
+          ->condition('bid', arg(1), '=')
+          ->execute();
+        foreach ($bid_url as $uid_user) {
+          $uid = $uid_user->uid;
+        }
+      }
+      $earnered_badges_list = db_query("SELECT achievement_id, privacy FROM {achievement_unlocks} WHERE  uid=" . $uid, array())->fetchAll();
+      $all_badge_list = $form['field_badge_entity_reference_1']['und']['#options'];
+      foreach ($all_badge_list as $key => $value) {//using this loop we set only those badges which user have 		
+        $count = 0;
+        foreach ($earnered_badges_list as $key1 => $value1) {
+         if ($key == $value1->achievement_id) {
+					  
+					  $badge_image = entity_load('openbadging', $ids = array($key));
+					  $img_url = $badge_image[$key]->field_badge_entity_unlock_image['und'][0]['uri'];
+					  $url = explode('.png', $img_url);
+            $new_url = $url[0] . '-' . $uid . '.png';
+					  if(file_exists($new_url)){
+            $count = 1;
+					  }
+          }
+        }
+        if ($count == 0) {
+          unset($form['field_badge_entity_reference_1']['und']['#options'][$key]);
+        }
+      }
+      $form['actions']['submit']['#submit'][] = 'openbadging_make_private_function';
+    }
+  }
+}
+
+
+/**
+ *
+ * @param type $form.
+ * @param type $form_state .
+ * this function cal when admin takes achievement from any user.  
+ * this function delete taken achievement from all groups of user.
+ */
+function openbadging_take_submit_function($form, &$form_state) {
+  $user_achievment_id = $form['achievements_manual']['achievements_manual_achievement']['#value'];
+  $user_name = $form['achievements_manual']['achievements_manual_user']['#value'];
+  $result_groupid = db_query("SELECT g.bid FROM {openbadging} g INNER JOIN {users} u ON u.name ='" . $user_name . "' WHERE u.uid = g.uid AND g.type = 'user_groups'", array())->fetchAll();
+
+  foreach ($result_groupid as $key => $value) {
+    db_delete('field_data_field_badge_entity_reference_1')
+      ->condition('entity_id', $value->bid, '=')
+      ->condition('field_badge_entity_reference_1_target_id', $user_achievment_id, '=')
+      ->execute();
+  }
+}
+
+/**
+ *
+ * this function cal when admin takes openbadging from any user using openbadging_badge_manager module.  
+ * this function delete taken achievement from all groups of user.
+ */
+function openbadging_manage_backpack_openbadging_badge_manager_take_amu($entity, $context) {
+  $result_groupid = db_query("SELECT g.bid FROM {openbadging} g INNER JOIN {users} u ON u.uid =" . $entity->uid . " WHERE u.uid = g.uid AND g.type = 'user_groups'", array())->fetchAll();
+
+  foreach ($result_groupid as $key => $value) {
+    db_delete('field_data_field_badge_entity_reference_1')
+      ->condition('entity_id', $value->bid, '=')
+      ->condition('field_badge_entity_reference_1_target_id', arg(2), '=')
+      ->execute();
+  }
+}
+
+/**
+ *
+ * This function call when admin takes achievement from any user using 
+  openbadging_badge_manager module.
+ * this function delete taken openbadging from all groups of user.
+ * @param type $entity
+ * @param type $context
+ */
+function openbadging_manage_backpack_openbadging_badge_manager_take_mau($entity, $context) {
+  $uid = arg(2);
+  $result_groupid = db_query("SELECT g.bid FROM {openbadging} g INNER JOIN {users} u ON u.uid =" . $uid . " WHERE u.uid = g.uid AND g.type = 'user_groups'", array())->fetchAll();
+
+  foreach ($result_groupid as $key => $value) {
+    db_delete('field_data_field_badge_entity_reference_1')
+      ->condition('entity_id', $value->bid, '=')
+      ->condition('field_badge_entity_reference_1_target_id', $entity->bid, '=')
+      ->execute();
+  }
+}
+
+/**
+ *
+ * @global type $user
+ * @param type $form
+ * @param array $form_state 
+ * cal when user edit any group and make it private that was public previously.
+ * update group privacy of updated group.
+ * update achievements privacy that are in group. 
+ */
+function openbadging_make_private_function($form, &$form_state) {
+  global $user;
+  $make_private_checked = $form['field_user_group_private']['und']['0']['#value'];
+  if ($make_private_checked == 1) {//if user create/edit a group and make it private
+    $selected_bagges = $form['field_badge_entity_reference_1']['und']['#value'];
+    foreach ($selected_bagges as $key => $value) {
+      db_update('achievement_unlocks')
+        ->fields(array(
+          'privacy' => 1,
+        ))
+        ->condition('achievement_id', $value, '=')
+        ->condition('uid', $user->uid, '=')
+        ->execute();
+    }
+    $earned = achievements_unlocked_already(NULL, $user->uid);
+    $tmp = array();
+    foreach($earned as $key => $value){
+			$tmp[$key] = $key;
+		}
+		openbadging_badge_privacy_update($tmp, 'update');
+  }
+  if ($make_private_checked == 0) {//if user edit a group and make it public 
+    $selected_bagges = $form['field_badge_entity_reference_1']['und']['#value'];
+    $update_table = openbadging_badge_privacy_update($selected_bagges, 'update');
+  } // Endif.
+  $form_state['redirect'] = 'user/' . $user->uid . '/mybackpack';
+}
+
+/**
+ *
+ * Implementation of hook_menu
+ * this hook creates a new tab named my backpack on user own profile view.
+ * on this tab user see and manage his created groups.
+ */
+function openbadging_manage_backpack_menu() {
+  $items = array();
+  $items['user/%user/mybackpack'] = array(
+    'title' => 'My Backpack',
+    'page callback' => 'openbadging_manage_backpack',
+    'page arguments' => array(1),
+    'access callback' => 'user_edit_access',
+    'access arguments' => array(1),
+    'type' => MENU_LOCAL_TASK,
+    'context' => MENU_CONTEXT_PAGE | MENU_CONTEXT_INLINE,
+  );
+  $items['ajax/privacy'] = array(
+    'page callback' => 'check_privacy_for_alert',
+    'access callback' => TRUE,
+    'type' => MENU_CALLBACK,
+  );
+  return $items;
+}
+
+function check_privacy_for_alert(){
+global $user;
+$responce = badge_privacy_user($_POST['badge_id'],$user->uid);	
+if($responce){
+print(1);
+}
+else{
+print(0);
+}									
+return;
+}
+
+
+/**
+ * return badges privacy status
+ * @param type $bid
+ * @param type $uid
+ * @return type 
+ */
+function badge_privacy_user($bid, $uid) {
+    $badge_id = db_select(' achievement_unlocks', 'au')
+            ->condition('au.uid', $uid, '=')
+            ->condition('au.achievement_id', $bid, '=')
+            ->fields('au', array('privacy'));
+    $privacy = $badge_id->execute()->fetchAll();
+    if (isset($privacy[0]->privacy)) {
+        return $privacy[0]->privacy;
+    } else {
+        return FALSE;
+    }
+}
+
+/**
+ * cal my_groups block view on mybackpack tab .
+ */
+function openbadging_manage_backpack($account) {
+  drupal_set_title(t('My Backpack'));
+  $view = views_get_view_result('my_groups', 'block');
+  return theme('openbadging_my_backpack_view', array('view' => $view));
+}
+
+/**
+ * Theming for view.
+ * @param type $existing
+ * @param type $type
+ * @param type $theme
+ * @param type $path
+ * @return type 
+ */
+function openbadging_manage_backpack_theme($existing, $type, $theme, $path) {
+  return array(
+    'openbadging_my_backpack_view' => array(
+      'variables' => array(
+        'view' => NULL,
+      ),
+      'template' => 'openbadging-my-backpack-view'
+    ),
+  );
+}
+
+/**
+ * Implement to create "create group block".
+ * Implement hook_block_info().
+ * @global type $base_url
+ * @return array 
+ */
+function openbadging_manage_backpack_block_info() {
+  global $base_url;
+  $blocks = array(
+    'create_group_block' => array(
+      'info' => t('create group block'),
+      'region' => 'sidebar_first',
+      'status' => 1,
+      'visibility' => BLOCK_VISIBILITY_NOTLISTED,
+      'cache' => DRUPAL_NO_CACHE,
+    ),
+  );
+  return $blocks;
+}
+
+/**
+ * Implement to show "create group block".
+ * Implement hook_block_view()
+ * @param type $delta
+ * @return block view for create group block
+ */
+function openbadging_manage_backpack_block_view($delta = '') {
+  global $user;
+  global $base_url;
+  $all_group_ids = db_query("SELECT bid FROM {openbadging} WHERE type='user_groups'", array())->fetchAll();
+  $count = 0;
+  foreach ($all_group_ids as $key => $value) {
+    if ($value->bid == arg(1)) {
+      $count++;
+    }
+  }
+  $block = array();
+  switch ($delta) {
+    case 'create_group_block':
+      if ((arg(0) == 'openbadging' && arg(2) == 'edit' && $count > 0) ||
+        (arg(0) == 'openbadging' && arg(1) == 'add' && arg(2) == 'user_groups') ||
+        (arg(0) == 'user' && arg(1) == $user->uid && arg(2) == 'mybackpack')) {
+        $block['subject'] = NULL;
+        $status = achievements_unlocked_already(NULL, $user->uid);
+        if($status != NULL){
+        $block['content'] = '<h2><a class="create-group-link" href=' . $base_url . '/openbadging/add/user_groups>Add Group <img src='.$base_url.'/'.drupal_get_path("module", "openbadging_manage_backpack") . '/images/images.png'.'></a></h2>';
+			  }
+      }
+      break;
+  }
+  return $block;
+}
+
+/**
+ * cal when user deletes his groups.
+ * update achievement privacy accordingly.
+ * @global type $user
+ * @param type $form
+ * @param array $form_state
+ */
+function openbadging_group_delete_form_submit($form, &$form_state) {
+  global $user;
+  //$group_id = $form['achievement_type_id']['#value'];
+  $group_id = $form['openbadging_type_id']['#value'];
+  $badges_in_group = db_query("SELECT field_badge_entity_reference_1_target_id FROM {field_data_field_badge_entity_reference_1} WHERE entity_id=" . $group_id, array())->fetchAll();
+  foreach ($badges_in_group as $key => $value) {
+    openbadging_badge_privacy_update($badges_in_group[$key], 'delete');
+  }
+}
+
+/**
+ * cal when user deletes his groups.
+ * redirect page to mybackpack.
+ * @global type $user
+ * @param type $form
+ * @param array $form_state 
+ */
+function openbadging_redirect_after_group_delete($form, &$form_state) {
+  global $user;
+  $form_state['redirect'] = 'user/' . $user->uid . '/mybackpack';
+}
+
+/**
+ * cals when user update group privacy.
+ * this function check achievement privacy in each group and update it.
+ * if achievement is public in all groups and uddate it to public 
+  otherwise make it private.
+ * @global $user
+ */
+function openbadging_badge_privacy_update($selected_bagges, $case) {
+  global $user;
+  foreach ($selected_bagges as $key => $value) {
+    $badge_private = 0;
+    $privacy_value = db_query("SELECT privacy FROM {achievement_unlocks} WHERE achievement_id=" . $value . " AND uid=" . $user->uid, array())->fetchAll();
+    foreach ($privacy_value as $key1 => $value1) {
+      if ($value1->privacy == 1) {
+        $all_group_id = db_query("SELECT bid FROM {openbadging} WHERE uid=" . $user->uid . " AND type = 'user_groups'", array())->fetchAll();
+        foreach ($all_group_id as $key3 => $value3) {
+          $group_id_for_selected_badges = db_query("SELECT revision_id FROM {field_data_field_badge_entity_reference_1} WHERE entity_id=" . $value3->bid . " AND field_badge_entity_reference_1_target_id =" . $value, array())->fetchAll();
+
+          foreach ($group_id_for_selected_badges as $key4 => $value4) {
+            $privacy_for_group = db_query("SELECT field_user_group_private_value FROM {field_data_field_user_group_private} WHERE entity_id=" . $value4->revision_id, array())->fetchAll();
+            foreach ($privacy_for_group as $key5 => $value5) {
+              if ($value5->field_user_group_private_value == 1) {
+                $badge_private++;
+              }
+            } // End of fifth for each.
+          }// End of 4th for each.									    														
+        } // End of 3rd for each.											
+      } // End inner if.
+    }// End of 2nd foreach.  
+
+    if (($badge_private == 0 && $case == 'update') || ($badge_private < 2 && $case == 'delete')) {
+      db_update('achievement_unlocks')
+        ->fields(array(
+          'privacy' => 0,
+        ))
+        ->condition('achievement_id', $value, '=')
+        ->condition('uid', $user->uid, '=')
+        ->execute();
+    }
+  } // End of 1st foreach.  
+  return;
+}
+
+/*
+ * get badge title.
+ * this function cal when user send his badge to mozila my backpack and return name of badge(badge title).
+ * @param $bid.
+ * @return badge title.
+ */
+
+function openbadging_get_badge_title_mozila_send($bid) {
+  $title = entity_load('openbadging', $ids = array($bid));
+  return $title[$bid]->title;
+}
