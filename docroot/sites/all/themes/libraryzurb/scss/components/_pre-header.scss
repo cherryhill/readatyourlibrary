@@ -1,0 +1,46 @@
+/**
+ * Styles for the Pre-Header area.
+ */
+
+.pre-header {
+  background-color: $color_gray_dark;
+  color: $color_white;
+  font-size: 0.9em;
+  min-height: 5px;
+  padding: 5px 0;
+
+  a {
+    color: $color_gray_light;
+    padding: 0 5px;
+  }
+
+  p {
+    margin-bottom: 0;
+  }
+
+  ul {
+    @include inline-list;
+    margin-bottom: 0;
+  }
+
+  .pre-header-left {
+    padding: 0;
+  }
+
+  .pre-header-right {
+    padding: 0;
+    li {
+      float: right;
+    }
+  }
+
+  // do not display on mobile
+  @media only screen and (max-width: #{$topbar-breakpoint}) {
+    display: none;
+  }
+}
+
+#topmostbranding {
+  max-width: 68em;
+  padding: 3px 0.5em;
+}

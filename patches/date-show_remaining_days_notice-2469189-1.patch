@@ -1,0 +1,13 @@
+diff --git a/date.field.inc b/date.field.inc
+index 6c36d0f..3862f46 100644
+--- a/date.field.inc
++++ b/date.field.inc
+@@ -207,7 +207,7 @@ function date_field_formatter_view($entity_type, $entity, $field, $instance, $la
+           $variables['item'] = $item;
+           $variables['dates'] = date_formatter_process($formatter, $entity_type, $entity, $field, $instance, $langcode, $item, $display);
+           $variables['attributes'] = !empty($rdf_mapping) ? rdf_rdfa_attributes($rdf_mapping, $item['value']) : array();
+-          $variables['show_remaining_days'] = $display['settings']['show_remaining_days'];
++          $variables['show_remaining_days'] = isset($display['settings']['show_remaining_days']) ? $display['settings']['show_remaining_days'] : FALSE;
+           $output = theme('date_display_combination', $variables);
+           if (!empty($output)) {
+             $element[$delta] = array('#markup' => $output);

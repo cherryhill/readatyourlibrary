@@ -1,0 +1,22 @@
+/**
+ * Styles for buttons.
+ */
+
+// Docs: http://foundation.zurb.com/docs/v/4.3.2/components/buttons.html
+//
+// Before adding styles be sure to modify variables in the
+// "scss/_variables.scss" file.
+
+button,
+.button {
+  padding: $button-sml;
+  text-transform: uppercase;
+
+  a {
+    color: $button-font-color;
+
+    &:hover {
+      background-color: transparent;
+    }
+  }
+}

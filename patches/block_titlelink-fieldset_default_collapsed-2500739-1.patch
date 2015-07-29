@@ -1,0 +1,12 @@
+diff --git a/block_titlelink.module b/block_titlelink.module
+index a174824..cce1f3e 100644
+--- a/block_titlelink.module
++++ b/block_titlelink.module
+@@ -40,6 +40,7 @@ function block_titlelink_form_alter(&$form, &$form_state, $form_id) {
+       '#type' => 'fieldset',
+       '#title' => t('Block Title Link Settings'),
+       '#collapsible' => TRUE,
++      '#collapsed' => $url ? FALSE : TRUE,
+       '#weight' => 0,
+       '#tree' => TRUE,
+     );

@@ -1,0 +1,119 @@
+<?php
+
+/**
+ * Implements hook_field_display_alter().
+ */
+function librarysite_customizations_field_display_alter(&$display, $context) {
+  if ($display['module'] == 'image_link_formatter') {
+    $fields = field_info_field_map();
+    $display_link = $display['settings']['image_link'];
+    if (isset($fields[$display_link]) && $fields[$display_link]['type'] == 'link_field') {
+      $entity = $context['entity'];
+      $field = $entity->$display_link;
+      foreach($field[LANGUAGE_NONE] as $key => $field) {
+        $url = $field['url'];
+        $field['url'] = $field['display_url'];
+        $field['display_url'] = $url;
+        $field[LANGUAGE_NONE][$key] = $field;
+      }
+      $entity->$display_link = $field;
+      $context['entity'] = $entity;
+    }
+  }
+}
+
+/**
+ * Implements hook_token_info().
+ */
+function librarysite_customizations_token_info() {
+  $fields = field_info_field_map();
+  $tokens = array();
+  $types = array();
+  foreach($fields as $field_name => $field_info) {
+    if ($field_info['type'] == 'link_field') {
+      foreach ($field_info['bundles'] as $entity_type => $bundles) {
+        $types[$entity_type] = array(
+          'name' => $entity_type,
+          'description' => t('Related tokens'),
+          'needs-data' => $entity_type,
+        );
+        $tokens[$entity_type]["librarysite_link_raw_{$field_name}"] = array(
+          'name' => t('Library site link'),
+          'description' => t('Library site raw link for %field', array('%field' => $field_name)),
+        );
+      }
+    }
+  }
+  return array(
+    'type' => $types,
+    'tokens' => $tokens,
+  );
+}
+
+/**
+ * Implements hook_tokens().
+ */
+function librarysite_customizations_tokens($type, $tokens, array $data = array(), array $options = array()) {
+  $fields = field_info_field_map();
+  $replacements = array();
+  foreach($fields as $field_name => $field_info) {
+    if ($field_info['type'] == 'link_field' && isset($field_info['bundles'][$type])) {
+      if (in_array("[{$type}:librarysite_link_raw_{$field_name}]", $tokens)) {
+        list(, , $bundle) = entity_extract_ids($type, $data[$type]);
+        $links = field_get_items($type, $data[$type], $field_name);
+        $replacements["[{$type}:librarysite_link_raw_{$field_name}]"] = $links[0]['url'];
+      }
+    }
+  }
+  return $replacements;
+}
+
+/**
+ * Implements hook_field_formatter_info().
+ */
+function librarysite_customizations_field_formatter_info() {
+  $info = array();
+  $info['librarysite_raw_url'] = array(
+    'label' => t('Librarysite: Raw external url'),
+    'field types' => array('link_field'),
+    'multiple values' => FIELD_BEHAVIOR_DEFAULT,
+  );
+  return $info;
+}
+
+/**
+ * Implements hook_field_formatter_view().
+ */
+function librarysite_customizations_field_formatter_view($entity_type, $entity, $field, $instance, $langcode, $items, $display) {
+  $elements = array();
+  foreach ($items as $delta => $item) {
+    $url = $item['url'];
+    $item['url'] = $item['display_url'];
+    $item['display_url'] = $url;
+    $elements[$delta] = array(
+      '#theme' => 'librarysite_customizations_link_formatter_' . $display['type'],
+      '#element' => $item,
+      '#field' => $instance,
+      '#display' => $display,
+    );
+  }
+  return $elements;
+}
+
+/**
+ * Implements hook_theme().
+ */
+function librarysite_customizations_theme() {
+  return array(
+    'librarysite_customizations_link_formatter_librarysite_raw_url' => array(
+      'variables' => array('element' => NULL, 'field' => NULL),
+    ),
+  );
+}
+
+/**
+ * Themes the url component for a raw URL.
+ */
+function theme_librarysite_customizations_link_formatter_librarysite_raw_url($vars) {
+  return $vars['element']['url'];
+}

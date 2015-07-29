@@ -1,0 +1,55 @@
+<?php
+/**
+ * @file field_instance_cardinality.module
+ * Allows field instances using options widgets to override field cardinality
+ * to 1.
+ *
+ * This could work with any field, any widget, and any cardinality if this core
+ * patch gets in: http://drupal.org/node/1029298.
+ */
+
+/**
+ * Implements hook_form_FORM_ID_alter(): field_ui_field_edit_form
+ */
+function field_instance_cardinality_form_field_ui_field_edit_form_alter(&$form, &$form_state, $form_id) {
+  $field = $form['#field'];
+  $instance = $form['#instance'];
+  // Only suggest overriding fields whose cardinality is not 1.
+  if ($field['cardinality'] != 1) {
+    // We can only work with with widgets from the options module until
+    // this core feature makes it in:
+    if (in_array($instance['widget']['type'], array('options_select', 'options_buttons'))) {
+      $form['instance']['instance_cardinality'] = array(
+        '#type' => 'checkbox',
+        '#title' => t("Limit number of values"),
+        '#description' => t("This will limit this instance of the field to 1 value."),
+        '#default_value' => isset($instance['instance_cardinality']) ? $instance['instance_cardinality'] : FALSE,
+      );
+    }
+  }
+}
+
+/**
+ * Implements hook_field_widget_properties_alter().
+ */
+/*
+// This won't work because the items in the $context array are not passed in
+// by reference: this is what http://drupal.org/node/1029298 would change.
+function field_instance_cardinality_field_widget_properties_alter(&$widget, &$context) {
+  if (!empty($context['instance']['instance_cardinality'])) {
+    $context['field']['cardinality'] = 1;
+  }
+}
+*/
+
+/**
+ * Implements hook_field_widget_form_alter().
+ *
+ * Too late for most widgets, but option widgets come here with all their
+ * deltas and are simple FormAPI elements that we can tinker with.
+ */
+function field_instance_cardinality_field_widget_form_alter(&$element, &$form_state, $context) {
+  if (!empty($context['instance']['instance_cardinality'])) {
+    $element['#multiple'] = FALSE;
+  }
+}

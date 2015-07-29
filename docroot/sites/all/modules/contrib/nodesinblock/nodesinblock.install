@@ -1,0 +1,101 @@
+<?php
+// $Id: nodesinblock.install,v 1.1.2.9.2.2 2010/10/30 16:19:05 swentel Exp $
+
+/**
+ * @file
+ * Nodes in block install file.
+ */
+
+/**
+ * Implements hook_uninstall().
+ */
+function nodesinblock_uninstall() {
+  db_delete('variable')
+    ->condition('name', 'nodesinblock_%', 'LIKE')
+    ->execute();
+  cache_clear_all('variables', 'cache');
+}
+
+/**
+ * Implements hook_schema().
+ */
+function nodesinblock_schema() {
+  $schema['nodesinblock'] = array(
+    'description' => 'Nodes in block table.',
+    'fields' => array(
+      'nid' => array(
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'description' => 'The ID of the node.',
+      ),
+      'delta' => array(
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'size' => 'tiny',
+        'description' => 'The delta of the block.',
+      ),
+      'weight' => array(
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+        'description' => 'The order of the node in the block.',
+      ),
+      'visibility' => array(
+        'type' => 'text',
+        'not null' => TRUE,
+        'size' => 'big',
+        'description' => 'Visibility settings.',
+      ),
+      'render' => array(
+        'type' => 'varchar',
+        'length' => 40,
+        'not null' => TRUE,
+        'default' => '',
+        'description' => 'Render type of node in block, teaser, page or a nd string.',
+      ),
+    ),
+    'primary key' => array('nid'),
+    'indexes' => array(
+      'list' => array('nid', 'delta'),
+    ),
+  );
+
+  return $schema;
+}
+
+/**
+ * Update 6001: Add render field to table.
+ */
+function nodesinblock_update_6001() {
+  $ret = array();
+  db_add_field($ret, 'nodes_in_block', 'render', array('type' => 'int', 'unsigned' => TRUE, 'not null' => TRUE, 'size' => 'tiny', 'default' => 0));
+  return $ret;
+}
+
+/**
+ * Update 6002: Rename nodes_in_block table to nodesinblock.
+ */
+function nodesinblock_update_6002() {
+  $ret = array();
+  db_rename_table($ret, 'nodes_in_block', 'nodesinblock');
+  return $ret;
+}
+
+/**
+ * Update 6002: Rename nodes_in_block table to nodesinblock.
+ */
+function nodesinblock_update_6003() {
+  $ret = array();
+  db_drop_field($ret, 'nodesinblock', 'status');
+  db_change_field($ret, 'nodesinblock', 'render', 'render', array('type' => 'varchar', 'not null' => TRUE, 'length' => 20, 'default' => ''));
+  return $ret;
+}
+
+/**
+ * Update 7001: Make the render field a bit bigger.
+ */
+function nodesinblock_update_7001() {
+  db_change_field('nodesinblock', 'render', 'render', array('type' => 'varchar', 'not null' => TRUE, 'length' => 40, 'default' => ''));
+}

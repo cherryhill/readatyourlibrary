@@ -1,0 +1,53 @@
+# behat.yml
+default:
+  extensions:
+    Behat\MinkExtension\Extension:
+      base_url: http://cherry:hill@librarysite.dev.chillco.com
+      default_session: selenium2
+      javascript_session: selenium2
+      goutte: ~
+      selenium: ~
+      selenium2:
+        wd_host: amodi:538cc296-2999-4968-8502-e186fb10ba87@ondemand.saucelabs.com/wd/hub
+        browser: "chrome"
+        capabilities: { "platform": "Windows 8", "version": "40", "deviceOrientation": "landscape", "name": "Librarysite Firefox Update Test", "selenium-version": "2.41.0" }
+
+goutte:
+  extensions:
+    Behat\MinkExtension\Extension:
+      base_url: http://cherry:hill@librarysite.dev.chillco.com
+      default_session: goutte
+      javascript_session: selenium2
+      goutte: ~
+      selenium: ~
+      selenium2:
+        wd_host: amodi:538cc296-2999-4968-8502-e186fb10ba87@ondemand.saucelabs.com/wd/hub
+        browser: "chrome"
+        capabilities: { "platform": "Windows 8", "version": "40", "deviceOrientation": "landscape", "name": "Librarysite Firefox Update Test", "selenium-version": "2.41.0" }
+
+firefox:
+  extensions:
+    Behat\MinkExtension\Extension:
+      base_url: http://cherry:hill@librarysite.dev.chillco.com
+      default_session: selenium2
+      javascript_session: selenium2
+      goutte: ~
+      selenium: ~
+      selenium2:
+        wd_host: amodi:538cc296-2999-4968-8502-e186fb10ba87@ondemand.saucelabs.com/wd/hub
+        browser: "firefox"
+        capabilities: { "platform": "Windows 8", "version": "37", "deviceOrientation": "landscape", "name": "Librarysite Firefox Update Test", "selenium-version": "2.41.0" }
+
+
+ie9:
+  extensions:
+    Behat\MinkExtension\Extension:
+      base_url: http://cherry:hill@librarysite.stage.chillco.com
+      default_session: selenium2
+      javascript_session: selenium2
+      goutte: ~
+      selenium: ~
+      selenium2:
+        wd_host: amodi:538cc296-2999-4968-8502-e186fb10ba87@ondemand.saucelabs.com/wd/hub
+        browser: "internet explorer"
+        capabilities: { "platform": "Windows 7", "version": "9", "deviceOrientation": "landscape", "name": "Librarysite IE9 Update Test" }

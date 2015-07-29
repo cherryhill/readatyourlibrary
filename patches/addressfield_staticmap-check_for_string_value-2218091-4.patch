@@ -1,0 +1,36 @@
+diff --git a/addressfield-staticmap-google-map.tpl.php b/addressfield-staticmap-google-map.tpl.php
+index f3f5612..61d8c53 100644
+--- a/addressfield-staticmap-google-map.tpl.php
++++ b/addressfield-staticmap-google-map.tpl.php
+@@ -1,6 +1,6 @@
+ <?php $size = explode('x', $settings['size']); ?>
+ 
+-<?php if (isset($settings['text_address'])): ?>
++<?php if (isset($settings['text_address']) && is_string($settings['text_address'])): ?>
+   <div><?php print $settings['text_address']; ?></div>
+ <?php endif; ?>
+ 
+@@ -54,4 +54,4 @@
+       <?php endif; ?>
+     }
+  });
+-</script>
+\ No newline at end of file
++</script>
+diff --git a/addressfield-staticmap-static-map.tpl.php b/addressfield-staticmap-static-map.tpl.php
+index 529f0fc..c6c3b57 100644
+--- a/addressfield-staticmap-static-map.tpl.php
++++ b/addressfield-staticmap-static-map.tpl.php
+@@ -1,4 +1,4 @@
+-<?php if (isset($settings['text_address'])): ?>
++<?php if (isset($settings['text_address']) && is_string($settings['text_address'])): ?>
+   <div><?php print $settings['text_address']; ?></div>
+ <?php endif; ?>
+ <?php if (isset($settings['directions'])): ?>
+@@ -10,4 +10,4 @@
+ <?php print theme_image(array('path' => $settings['staticmap_url'], 'attributes' => array('class' => 'static_google_map'))); ?>
+ <?php if (isset($settings['link'])): ?>
+   </a>
+-<?php endif; ?>
+\ No newline at end of file
++<?php endif; ?>

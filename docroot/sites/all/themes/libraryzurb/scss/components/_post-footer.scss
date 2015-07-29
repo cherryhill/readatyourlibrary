@@ -1,0 +1,75 @@
+/**
+ * Styles for the Post-Footer area.
+ */
+
+.post-footer {
+  background-color: $color_gray_dark;
+  color: $color_white;
+
+  a {
+    color: $color_gray_light;
+  }
+}
+
+.l-footer {
+  @include panel(transparent);
+
+  margin-bottom: 0;
+  overflow: auto;
+
+  .block {
+    font-size: 0.85em;
+  }
+
+  .columns {
+    padding: 0;
+  }
+
+  .block-block-10, // TODO use block class to target this
+  .footer-logo {
+    float: right;
+
+    a:hover {
+      background-color: transparent;
+    }
+  }
+
+  .block-menu {
+    float: left;
+
+    li {
+      float: left;
+      list-style: none;
+      list-style-image: none;
+      padding-right: 0.5em;
+      margin-left: 0.5em;
+      border-right: 1px solid;
+
+      @media screen and (max-width: $small-screen) {
+        float: none;
+        border: 0;
+        margin-left: 0;
+        padding-right: 0;
+      }
+
+      &.first {
+        margin-left: 0;
+        padding-left: 0;
+      }
+
+      &.last {
+        border-right: 0;
+      }
+    }
+  }
+
+  .block-block-14, // TODO use block class to target this
+  .copyright {
+    line-height: 1.6;
+    text-align: right;
+  }
+
+  img {
+    max-width: 30px;
+  }
+}

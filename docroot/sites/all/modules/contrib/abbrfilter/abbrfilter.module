@@ -1,0 +1,295 @@
+<?php
+
+/**
+ * @file
+ * Main module file for abbrfilter. Replaces abbrs inside posts with filtered versions.
+ */
+
+
+include_once(drupal_get_path('module','abbrfilter') .'/abbrfilter.admin.inc');
+
+
+/**
+ * Implements hook_filter_info().
+ */
+function abbrfilter_filter_info() {
+  $filters = array();
+
+  $filters['abbrfilter'] = array(
+    'title'             => t('Abbreviation filter'),
+    'description'       => abbrfilter_help('admin/modules#description', array()),
+    'process callback'  => '_filter_abbrfilter_process',
+    'settings callback' => '_filter_abbrfilter_settings',
+    'tips callback'     => '_filter_abbrfilter_tips',
+    'default settings'  => array(),
+  );
+
+  return $filters;
+}
+
+
+/**
+ * Implements hook_help().
+ *
+ * @param $section
+ *   string file path
+ *
+ * @return
+ *   string
+ */
+function abbrfilter_help($page = 'admin/help#abbrfilter', $arg) {
+  switch ($page) {
+    case 'admin/modules#description':
+      return t('<p>Replaces whitelisted abbreviations inside posts with &lt;abbr&gt; tags.</p>');
+    case 'admin/help#abbrfilter':
+      return t('<p>The ABBRfilter module allows you to filter abbreviations in site content and replace the filtered abbreviations with ABBR tags and a title descriptor that contains the unabbreviated phrase. The text body of node and comments are filtered. The filters are applied on content viewing so the original text of your content is not altered.</p>');
+    case 'admin/config/content/abbrfilter':
+      return t('<p>In order for filtering to work on the body text of a node or comment, you must activate the ABBRfilter filter for the input formats you wish to enable filtering for. Check your filter settings at <a href="@filter">Input Formats</a>.</p>', array('@filter' => url('admin/config/content/filters')));
+  }
+}
+
+
+/**
+ * Implements hook_perm().
+ *
+ * @return
+ *   array of permissions
+ */
+function abbrfilter_perm() {
+  return array('administer abbreviations filtered');
+}
+
+
+/**
+ * Implements hook_menu().
+ *
+ * @return
+ *   array of menu information
+ */
+function abbrfilter_menu() {
+  $items = array();
+
+  $items['admin/config/content/abbrfilter'] = array(
+    'title' => 'ABBR filter',
+    'description' => 'Replaces abbreviations inside posts with ABBR tags.',
+    'page callback' => 'abbrfilter_admin_list',
+    'access arguments' => array('administer abbreviations filtered'),
+  );
+
+  $items['admin/config/content/abbrfilter/list'] = array(
+    'title' => 'List',
+    'type' => MENU_DEFAULT_LOCAL_TASK,
+    'access arguments' => array('administer abbreviations filtered'),
+    'weight' => -10,
+  );
+
+  $items['admin/config/content/abbrfilter/add'] = array(
+    'title' => 'Add',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('abbrfilter_admin_add_form'),
+    'access arguments' => array('administer abbreviations filtered'),
+    'type' => MENU_LOCAL_TASK,
+  );
+
+  $items['admin/config/content/abbrfilter/test'] = array(
+    'title' => 'Test',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('abbrfilter_admin_test_filter_form'),
+    'access arguments' => array('administer abbreviations filtered'),
+    'type' => MENU_LOCAL_TASK,
+  );
+  $items['admin/config/content/abbrfilter/export'] = array(
+    'title' => 'Export',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('abbrfilter_admin_export_filters_form'),
+    'access arguments' => array('administer abbreviations filtered'),
+    'type' => MENU_LOCAL_TASK,
+  );
+
+  $items['admin/config/content/abbrfilter/edit/%'] = array(
+    'title' => 'Edit',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('abbrfilter_admin_edit_form', 5),
+    'access arguments' => array('administer abbreviations filtered'),
+    'type' => MENU_CALLBACK,
+  );
+
+  $items['admin/config/content/abbrfilter/delete/%'] = array(
+    'title' => 'Delete',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('abbrfilter_admin_form_delete_confirm', 5),
+    'access arguments' => array('administer abbreviations filtered'),
+    'type' => MENU_CALLBACK,
+  );
+
+  return $items;
+}
+
+
+/**
+ * Implements hook_block().
+ *
+ * @param $op
+ *   string for view type
+ *
+ * @param $delta
+ *   int
+ *
+ * @return
+ *   array of block information
+ */
+function abbrfilter_block($op = 'list', $delta = 0) {
+  if ($op == 'list') {
+    $blocks[0]['info'] = t('Filtered abbr lists on submission pages');
+    return $blocks;
+  }
+  else if ($op == 'view') {
+    switch ($delta) {
+      case 0:
+        $block['subject'] = t('Filtered abbrs');
+        $block['content'] = variable_get('display_abbrfilter_short', 0) ? _abbrfilter_table() : '';
+        return $block;
+    }
+  }
+}
+
+
+/**
+ * Displays a list of abbrs that will be themed as an HTML table.
+ *
+ * @return
+ *  a drupal-themed HTML table of filtered abbreviations
+ */
+function _abbrfilter_table() {
+
+  $list = _abbrfilter_list();
+  foreach ($list as $filtered_abbr) {
+    $rows[$filtered_abbr->id]['abbr'] = $filtered_abbr->abbrs;
+    $rows[$filtered_abbr->id]['replacement'] = $filtered_abbr->replacement;
+  }
+  if (is_array($rows)) {
+    $rows = array_reverse($rows);
+  }
+  $content = theme('table', NULL, $rows);
+  return $content;
+}
+
+
+/**
+ * Tips for abbrfilter.
+ *
+ * @return
+ *   a long or short notice of the filters behavior
+ */
+function _filter_abbrfilter_tips($delta, $format, $long = FALSE) {
+  if ($long) {
+    return t("If you include a abbreviation in your post that's in the whitelist, it will be augmented by an &lt;abbr&gt; tag.") .'<br />';
+    }
+  else {
+    variable_set('display_abbrfilter_short', 1);
+    return t('Whitelisted abbreviations will be augmented with an &lt;abbr&gt; tag.');
+  }
+}
+
+
+/**
+ * Settings for abbrfilter.
+ */
+function _filter_abbrfilter_settings($form, &$form_state) {
+  $form = array();
+
+  $form['abbr_filter'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('ABBR filter'),
+    '#description' => t('You can define a global list of abbreviations to be filtered on the <a href="!url">Abbreviations Filter settings page</a>.', array('!url' => url('admin/config/content/abbrfilter'))),
+  );
+
+  return $form;
+}
+
+
+/**
+ * Serves as hook_filter_info() process operation callback.
+ * Searches for whitelisted abbreviations and replaces them with <abbr> tags.
+ *
+ * @param $text
+ *   the text to be filtered
+ * @param $filter
+ *   the filter data
+ *
+ * @return
+ *   returns the text, processed by the filter
+ */
+function _filter_abbrfilter_process($text) {
+  $list = _abbrfilter_list();
+  return _abbrfilter_perform_subs($text, $list);
+}
+
+/**
+ * Perform the actual abbreviation substitution.
+ *
+ * We specifically match text that is outside of HTML tags
+ * so that for example <img src="http://vhs.org/image.jpg" /> doesn't get the
+ * 'VHS' part substituted as that would break the image. We use
+ * preg_replace_callback to call our anonymous function for each matching
+ * group that is found.
+ *
+ * In each match, we split on word boundaries, and then check each piece of the
+ * split against the list of abbreviations.
+ *
+ * NB: The filter currently fails to detect that an abbreviation is already
+ * surrounded by <abbr> tags.
+ */
+function _abbrfilter_perform_subs($text, $list) {
+  // We prepare a keyed array called $fast_array because this is the
+  // quickest way to search later on (using isset()).
+  $fast_array = array();
+  foreach ($list as $item) {
+    // We want to split on word boundaries, unfortunately PCRE considers words
+    // to include underscores but not other characters like dashes and slashes,
+    // so we have this hack that subs all characters we want to allow in
+    // abbreviations and the target with this massive random blob of all word
+    // characters, so that we can correctly split, switching it back later.
+    $key = preg_replace('#-#u', '___999999DASH___', $item['abbrs']);
+    $key = preg_replace('#/#u', '___111111SLASH___', $key);
+    $fast_array[$key] = $item['replacement'];
+  }
+
+  // Provide an anonymous function for the preg_replace. This function gets
+  // called a LOT, so be careful about optimization of anything that goes in
+  // here.
+  $callback = function($matches) use ($fast_array) {
+    // Split the text into an array of words, on word boundaries.
+    $words = preg_split('/\b/u', $matches[0]);
+
+    // For each word, check if it matches our abbreviation filter.
+    foreach ($words as $key => $word) {
+      if (!empty($word)) {
+        if (isset($fast_array[$word])) {
+          $words[$key] = '<abbr title="' . $fast_array[$word] . '">' . $word . '</abbr>';
+        }
+      }
+    }
+    return implode('', $words);
+  };
+
+  $text = preg_replace('#-#u', '___999999DASH___', $text);
+  $text = preg_replace('#/#u', '___111111SLASH___', $text);
+
+  // Match all content that is not part of a tag, i.e. not between < and >.
+  // (?:) = create a non-capturing group.
+  // (?:^|>) = the beginning of the string or a closing HTML tag.
+  // (?:[^<]|$)+ = characters that are not an opening tag or end of the string.
+  //
+  // Don't mess with this regular expression unless you understand the PCRE
+  // stack limitations. Basically, removing the double plus signs causes a
+  // stack overflow and thus a segmentation fault in PHP, as PCRE recurses too
+  // deeply. @see http://www.manpagez.com/man/3/pcrestack/ the section on
+  // reducing stack usage.
+  $text = preg_replace_callback('/(?:^|>)++(?:[^<]++|$)+/u', $callback, $text);
+
+  $text = preg_replace('/___999999DASH___/u', '-', $text);
+  $text = preg_replace('/___111111SLASH___/u', '/', $text);
+
+  return $text;
+}

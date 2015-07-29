@@ -1,0 +1,232 @@
+diff --git a/node_recur.js b/node_recur.js
+index 087be5e..8007bf5 100644
+--- a/node_recur.js
++++ b/node_recur.js
+@@ -14,18 +14,20 @@ Drupal.behaviors.noderecur = {
+     // Select the recur form components
+     var days = $('.form-item-days', context);
+     var rules = $('#edit-rules', context);
++    var monthly = $('#edit-monthly', context);
+     var until =  $('.form-item-until', context);
+     var option_days = $('#edit-option-days', context);
+     var option_rules = $('#edit-option-rules', context);
++    var option_monthly = $('#edit-option-monthly', context);
+     var option_none = $('#edit-option-none', context);
+     var options = $('#edit-option input', context);
+     
+     // Set the visibility based on the current option selected
+-    Drupal.noderecur.toggle(option_days, option_rules, option_none, days, rules, until);
++    Drupal.noderecur.toggle(option_days, option_rules, option_monthly, option_none, days, rules, monthly, until);
+     
+     // Reset the visibility when the option changes
+     options.change(function() {
+-      Drupal.noderecur.toggle(option_days, option_rules, option_none, days, rules, until);
++      Drupal.noderecur.toggle(option_days, option_rules, option_monthly, option_none, days, rules, monthly, until);
+     });
+   }
+ };
+@@ -33,22 +35,32 @@ Drupal.behaviors.noderecur = {
+ /**
+  * Toggle the visibility of the form widgets
+  */
+-Drupal.noderecur.toggle = function(option_days, option_rules, option_none, days, rules, until) {
++Drupal.noderecur.toggle = function(option_days, option_rules, option_monthly, option_none, days, rules, monthly, until) {
+   if (option_days.attr('checked')) {
+     rules.hide();
++    monthly.hide();
+     days.show();
+     until.show();
+   }
+   
+   if (option_rules.attr('checked')) {
+     days.hide();
++    monthly.hide();
+     rules.show();
+     until.show();
+   }
++
++  if (option_monthly.attr('checked')) {
++    days.hide();
++    rules.hide();
++    monthly.show();
++    until.show();
++  }
+   
+   if (option_none.attr('checked')) {
+     days.hide();
+     rules.hide();
++    monthly.hide();
+     until.hide();
+   }
+ };
+diff --git a/node_recur.module b/node_recur.module
+index 31e580e..c34342a 100644
+--- a/node_recur.module
++++ b/node_recur.module
+@@ -372,6 +372,74 @@ function node_recur_generate_dates_rule($node, $date, $frequency, $period, $unti
+ }
+ 
+ /**
++ * Generate an array of recurring dates based on the provided montlhy criteria
++ *
++ * @param $node
++ *   The node that's being recurred
++ * @param $date
++ *   The initial starting date belonging to the node that will be recurring.
++ *   Can be in string or numeric format.
++ * @param $occurrence
++ *   An array of postitions of the occurrence in the month of the repeat, e.g.
++ *   1st, 2nd, 3rd, 4th, or Last.
++ * @param $weekday
++ *   An array of days of the week.
++ * @param $until
++ *   The date to recur until. Can be in string or numeric format.
++ * @return
++ *   An array of timestamps
++ */
++function node_recur_generate_dates_monthly($node, $date, $occurrence, $weekday, $until) {
++  $dates = array();
++  $month = FALSE;
++
++  // Convert date and until date to timestamp, if needed
++  $date = is_string($date) ? strtotime($date) : $date;
++  $until = is_string($until) ? strtotime($until) : $until;
++
++  // Make sure we have valid timestamps
++  if (!is_numeric($date) || !is_numeric($until)) {
++    return FALSE;
++  }
++
++  // Make sure the until is ahead of the date
++  if ($date >= $until) {
++    return FALSE;
++  }
++
++  // Track the current date
++  $current = $date;
++  // Get the month and year of next month
++  $m = date('F', strtotime("first day of next month", $current));
++  $y = date('Y', strtotime("first day of next month", $current));
++  $time = date('H:i', $current);
++
++  // Iterate and generate dates until we reach the end
++  while (TRUE) {
++    // Generate the next date
++    $next = strtotime("{$occurrence} {$weekday} of {$m} {$y} {$time}", $current);
++
++    $current = $next;
++    $m = date('F', strtotime("first day of next month", $current));
++    $y = date('Y', strtotime("first day of next month", $current));
++
++    // Make sure date is in the future, if the settings dictate that
++    if (!node_recur_allow_past_dates($node->type) && $next < REQUEST_TIME) {
++      continue;
++    }
++
++    // See if this date puts us past the limit
++    if ($next > $until) {
++      break;
++    }
++
++    $dates[] = $current;
++  }
++
++  return $dates;
++}
++
++/**
+  * Generate an array of recurring dates based on days
+  * 
+  * @param $node
+@@ -503,6 +571,10 @@ function node_recur_generate_dates_from_form($node, $form_state) {
+   $frequency = $form_state['values']['frequency'];
+   // Extract the period
+   $period = $form_state['values']['period'];
++  // Extract the occurrence
++  $occurrence = $form_state['values']['occurrence'];
++  // Extract the weekday
++  $weekday = $form_state['values']['weekday'];
+   // Extract the until date
+   $until = strtotime($form_state['values']['until']);
+   // Move until date to 1 minute before midnight
+@@ -524,6 +596,9 @@ function node_recur_generate_dates_from_form($node, $form_state) {
+     else if ($option == 'rules') {
+       $start_dates = node_recur_generate_dates_rule($node, $start_date, $frequency, $period, $until, $weekends);
+     }
++    else if ($option == 'monthly') {
++      $start_dates = node_recur_generate_dates_monthly($node, $start_date, $occurrence, $weekday, $until);
++    }
+   }
+   
+   // Generate the end dates
+@@ -544,6 +619,9 @@ function node_recur_generate_dates_from_form($node, $form_state) {
+     else if ($option == 'rules') {
+       $end_dates = node_recur_generate_dates_rule($node, $end_date, $frequency, $period, $until, $weekends);
+     }
++    else if ($option == 'monthly') {
++      $end_dates = node_recur_generate_dates_monthly($node, $end_date, $occurrence, $weekday, $until);
++    }
+   }
+   
+   // Allow other modules to alter the dates
+@@ -568,6 +646,12 @@ function node_recur_generate_dates_from_form($node, $form_state) {
+       'weekends' => $weekends,
+     );
+   }
++  if ($option == 'monthly') {
++    $variables += array(
++      'occurrence' => $occurrence,
++      'weekday' => $weekday,
++    );
++  }
+   drupal_alter('node_recur_dates', $dates, $variables);
+   
+   return $dates;
+diff --git a/node_recur.pages.inc b/node_recur.pages.inc
+index bfe3f4f..d1fba90 100644
+--- a/node_recur.pages.inc
++++ b/node_recur.pages.inc
+@@ -52,6 +52,7 @@ function _node_recur_node_recur_form($type = NULL) {
+       'none' => t('Do not repeat'),
+       'days' => t('Pick days of the week'),
+       'rules' => t('Every day, every 2 weeks, etc...'),
++      'monthly' => t('Monthly on a day of the week'),
+     ),
+     '#default_value' => 'days',
+     '#description' => t('Selecting a choice above will reveal more options.'),
+@@ -100,6 +101,35 @@ function _node_recur_node_recur_form($type = NULL) {
+     '#description' => t('If checked, weekends will not be included.'),
+   );
+   
++  $form['monthly'] = array(
++    '#type' => 'container',
++  );
++
++  $form['monthly']['occurrence'] = array(
++    '#type' => 'select',
++    '#title' => t('Repeat monthly on the'),
++    '#options' => array(
++      'first' => t('1st'),
++      'second' => t('2nd'),
++      'third' => t('3rd'),
++      'fourth' => t('4th'),
++      'last' => t('Last'),
++    ),
++  );
++
++  $form['monthly']['weekday'] = array(
++    '#type' => 'select',
++    '#options' => array(
++      'monday' => t('Monday'),
++      'tuesday' => t('Tuesday'),
++      'wednesday' => t('Wednesday'),
++      'thursday' => t('Thursday'),
++      'friday' => t('Friday'),
++      'saturday' => t('Saturday'),
++      'sunday' => t('Sunday'),
++    ),
++  );
++
+   $form['until'] = array(
+     '#type' => 'textfield',
+     '#title' => t('Recur until'),

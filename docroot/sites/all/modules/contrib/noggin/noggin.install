@@ -1,0 +1,33 @@
+<?php
+
+/**
+ * Implements hook_uninstall().
+ *
+ * Nukes old site variables, and removes the uploaded header image.
+ */
+function noggin_uninstall() {
+  if ($header_path = variable_get('noggin:header_path')) {
+    file_unmanaged_delete($header_path);
+  }
+}
+
+/**
+ * Change the use_header variable to header_image, to allow for several example
+ * images.
+ */
+function noggin_update_7101(&$sandbox) {
+  if (variable_get('noggin:use_header', FALSE)) {
+    variable_set('noggin:header_image', 'custom');
+    variable_del('noggin:use_header');
+  }
+}
+
+/**
+ * Remove old variables from database.
+ */
+function noggin_update_7102(&$sandbox) {
+  variable_del('noggin:use_header');
+  variable_del('noggin:header_image');
+  variable_del('noggin:header_selector');
+  variable_del('noggin:extra_attributes');
+}

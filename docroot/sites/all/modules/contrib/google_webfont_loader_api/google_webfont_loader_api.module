@@ -1,0 +1,239 @@
+<?php
+
+/**
+ * @file
+ * Google Webfont Loader API primary file
+ * The designer/developer creates a set of packages (will use .fontinfo files
+ * created in a similar manner to a module or theme .info file) from which the
+ * site admin can then choose for their site.  The fonts can then be tied to how
+ * the page and various rules on the page get rendered.
+ */
+
+/**
+ * Implements hook_cron().
+ */
+function google_webfont_loader_api_cron() {
+  // Regenerate the google analytics webfont.js every day.
+  if (time() - variable_get('google_webfont_loader_api_last_cache', 0) >= 86400) {
+    // New google analytics version.
+    file_unmanaged_delete(file_build_uri('google_webfont_loader_api/webfont.js'));
+    // Clear aggregated JS files.
+    drupal_clear_js_cache();
+    variable_set('google_webfont_loader_api_last_cache', time());
+  }
+}
+
+/**
+ * Implements hook_permission().
+ */
+function google_webfont_loader_api_permission() {
+  return array(
+    'administer google webfont loader api' => array(
+      'title' => t('Administer google webfont settings.'),
+      'description' => t('Administer the font settings recognized by the google webfont loader api.'),
+    ),
+  );
+}
+
+/**
+ * Implements hook_menu().
+ */
+function google_webfont_loader_api_menu() {
+  $items = array();
+
+  $items['admin/appearance/manage/google_webfont_loader_api'] = array(
+    'title' => 'Google Webfont Loader Settings',
+    'description' => 'Way to load custom webfonts on your site',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('google_webfont_loader_api_site_settings'),
+    'access callback' => 'user_access',
+    'access arguments' => array('administer google webfont loader api'),
+    'file' => 'google_webfont_loader_api.admin.inc',
+    'type' => MENU_LOCAL_TASK,
+  );
+
+  return $items;
+}
+
+/**
+ * Implements hook_js_alter().
+ */
+function google_webfont_loader_api_js_alter(&$javascript) {
+  $loader_js = google_webfont_loader_api_add_js();
+  if (count($loader_js) > 0) {
+    $javascript['settings']['data'][] = array(
+      'google_webfont_loader_api_setting' => $loader_js,
+    );
+  }
+}
+
+/**
+ * Implements hook_init().
+ */
+function google_webfont_loader_api_init() {
+  global $base_path;
+
+  // Retrieve the font list and the font the user chose.
+  $font_list = google_webfont_loader_api_get_font_list();
+  $user_chosen_fonts = variable_get('google_webfont_loader_api_font', array());
+  foreach ($user_chosen_fonts as $user_chosen_font => $value) {
+    if (!empty($value) && array_key_exists($user_chosen_font, $font_list)) {
+      $font = $font_list[$user_chosen_font];
+      $filepath = str_replace('//', '/', dirname($font->uri));
+      $font_info = $font->info;
+      _google_webfont_loader_api_load_font($font_info, $filepath);
+    }
+  }
+  if (variable_get('google_webfont_loader_api_display_style', '') == 'hidden') {
+    _google_webfont_loader_api_add_hidden_css();
+  }
+}
+
+/**
+ * Retrieve the list of available fonts.
+ */
+function google_webfont_loader_api_get_font_list($reset = FALSE) {
+  if ($reset) {
+    $listings = drupal_system_listing('/\.fontinfo$/', '');
+    $font_list = array();
+    foreach ($listings as $key => $listing) {
+      $listing->info = drupal_parse_info_file($listing->uri);
+    }
+  }
+  else {
+    $listings = variable_get('google_webfont_loader_api_fontinfo_listing', array());
+  }
+  return $listings;
+}
+
+/**
+ * Add new font loader js.
+ */
+function google_webfont_loader_api_add_js($new_js = NULL, $reset = FALSE) {
+  static $loader_js;
+  if (!isset($loader_js) || $reset) {
+    $loader_js = array();
+  }
+  if (isset($new_js)) {
+    $loader_js = array_merge_recursive($loader_js, $new_js);
+  }
+  return $loader_js;
+}
+
+/**
+ * Parse a fontinfo description and create a javascript settings loader.
+ * This is the real meat of the functionality as fonts need to get added.
+ */
+function _google_webfont_loader_api_load_js_from_fontinfo($font_info, $filepath) {
+  $url = file_create_url($filepath);
+  if (strpos(strrev($url), '/') !== 0) {
+    $url .= '/';
+  }
+  $loader_js = array();
+  // Load all the information from the font info file into the loader_js.
+  // loader_js is a settings format recognized by the webfont loader.
+  // You can specify your google fonts, typekit id, or custom fonts
+  // (with their fontface css locations)
+  foreach ($font_info as $key => $key_info) {
+    $info = $key_info;
+    if (!is_array($key_info)) {
+      $info = array($key_info);
+    }
+    if ($key == 'google_families' && is_array($info)) {
+      $loader_js['google'] = array('families' => $info);
+    }
+    if ($key == "typekit") {
+      $loader_js['typekit'] = array('id' => $info[0]);
+    }
+    if ($key == 'fontdeck') {
+      $loader_js['fontdeck'] = array('id' => $info[0]);
+    }
+    if ($key == 'monotype') {
+      $loader_js['monotype'] = array('projectId' => $info[0]);
+    }
+    if ($key == 'ascender' && is_array($font_info['ascender_families'])) {
+      $loader_js['ascender'] = array('key' => $info[0], 'families' => $font_info['ascender_families']);
+    }
+    // A custom style css must be specified if using custom families.
+    if ($key == "custom_families" && is_array($font_info['custom_style_css'])) {
+      $loader_js['custom'] = array(
+        'families' => $info,
+        'urls' => array(),
+      );
+      foreach ($font_info['custom_style_css'] as $custom_style) {
+        if (file_uri_scheme($custom_style)) {
+          $loader_js['custom']['urls'][] = file_create_url($custom_style);
+        }
+        else {
+          $loader_js['custom']['urls'][] = $url . $custom_style;
+        }
+      }
+    }
+  }
+  return google_webfont_loader_api_add_js($loader_js);
+}
+
+/**
+ * Loads font into the webfont stack.
+ */
+function _google_webfont_loader_api_load_font($font_info, $filepath = 'public://') {
+  $loader_js = _google_webfont_loader_api_load_js_from_fontinfo($font_info, $filepath);
+  static $run_once;
+  // If there are items in the loader_js, create a setting and load the render
+  // css which is useless unless correct information regarding fonts are
+  // actually loaded.
+  if (count($loader_js) > 0) {
+    if (!$run_once) {
+      // First deal with the webfont.js file.
+      $webfont_url = "//ajax.googleapis.com/ajax/libs/webfont/1.4.8/webfont.js";
+      if (variable_get('google_webfont_loader_api_cache', 0) && file_default_scheme() == 'public' && $source = _google_webfont_loader_api_cache('http:' . $webfont_url)) {
+        drupal_add_js($source);
+      }
+      else {
+        drupal_add_js($webfont_url, array('type' => 'external', 'group' => JS_LIBRARY));
+      }
+      drupal_add_js(drupal_get_path('module', 'google_webfont_loader_api') . '/google_webfont_loader_api.js');
+      $run_once = TRUE;
+    }
+    // Start loading the css that will be rendered.
+    if (isset($font_info['render_css'])) {
+      if (is_array($font_info['render_css'])) {
+        foreach ($font_info['render_css'] as $render_css) {
+          drupal_add_css($filepath . '/' . $render_css, array('basename' => $filepath . '/' . $render_css));
+        }
+      }
+      else {
+        drupal_add_css($filepath . '/' . $font_info['render_css'], array('basename' => $filepath . '/' . $render_css));
+      }
+    }
+  }
+}
+
+/**
+ * Downloads and caches the webfont.js file locally.
+ */
+function _google_webfont_loader_api_cache($location) {
+  // Save inside the google_webfont_loader_api directory.
+  $default_directory = 'google_webfont_loader_api';
+  $directory = file_build_uri($default_directory);
+  // Check that the file exists.
+  $filepath = file_build_uri($default_directory . '/' . basename($location));
+  $real_filepath = drupal_realpath($filepath);
+  if (!file_exists($real_filepath)) {
+    // Check that the file directory is writeable.
+    if (file_prepare_directory($directory, FILE_CREATE_DIRECTORY)) {
+      $result = drupal_http_request($location);
+      if ($result->code == 200) {
+        return file_unmanaged_save_data($result->data, $filepath, FILE_EXISTS_REPLACE);
+      }
+    }
+  }
+  return $filepath;
+}
+
+/**
+ * Add the hidden css file.
+ */
+function _google_webfont_loader_api_add_hidden_css() {
+  drupal_add_css(drupal_get_path('module', 'google_webfont_loader_api') . '/google_webfont_loader_api.hidden.css', array('weight' => 10));
+}
