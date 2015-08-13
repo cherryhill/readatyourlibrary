@@ -1,2 +1,21 @@
 <?php
 
+/**
+ * @file
+ * Defines list field types that can be used with the Options module.
+ */
+
+/**
+ * Implements hook_field_info().
+ */
+function list_field_info() {
+  return array(
+    'list_text' => array(
+      'label' => t('List (text)'),
+      'description' => t("This field stores text values from a list of allowed 'value => label' pairs, i.e. 'US States': IL => Illinois, IA => Iowa, IN => Indiana."),
+      'settings' => array('allowed_values' => array(), 'allowed_values_function' => ''),
+      'default_widget' => 'options_select',
+      'default_formatter' => 'list_default',
+    ),
+  );
+}
