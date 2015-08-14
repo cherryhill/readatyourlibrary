@@ -1,0 +1,34 @@
+<?php
+
+/**
+ * @file
+ * Documentation for auto_username API.
+ */
+
+/**
+ * @addtogroup hooks
+ * @{
+ */
+
+/**
+ * Implement this hook to generate a username for auto_username module.
+ *
+ * Other modules may implement hook_auto_username_name($edit, $account)
+ * to generate a username (return a string to be used as the username, NULL
+ * to have auto_username generate it).
+ *
+ * @param $edit
+ *   The array of form values submitted by the user.
+ * @param $account
+ *   The user object on which the operation is being performed.
+ *
+ * @return
+ *   A string defining a generated username.
+ */
+function hook_auto_username_name($edit, $account) {
+  return 'u' . $account->uid;
+}
+
+/**
+ * @} End of "addtogroup hooks".
+ */
