@@ -76,12 +76,11 @@ function random_list_widget_field_widget_form(&$form, &$form_state, $field, $ins
   $options = _random_list_widget_get_available_options($instance);
   $js_setting_class = "random_list_widget_text_{$field['field_name']}_{$instance['entity_type']}_{$instance['bundle']}";
 
-  $element['randomized-text'] = array(
+  $element['value'] = array(
     '#type' => 'textfield',
     '#title' => 'Something',
-    '#default_value' => _random_list_widget_get_random_value($options),
+    '#default_value' => isset($items[$delta]['value']) ? $items[$delta]['value'] : _random_list_widget_get_random_value($options),
     '#attributes' => array(
-      'readonly' => 'readonly',
       'class' => array(
         'random-list-widget',
         $js_setting_class,
