@@ -78,7 +78,7 @@ function random_list_widget_field_widget_form(&$form, &$form_state, $field, $ins
 
   $element['value'] = array(
     '#type' => 'textfield',
-    '#title' => 'Something',
+    '#title' => $instance['label'],
     '#default_value' => isset($items[$delta]['value']) ? $items[$delta]['value'] : '',
     '#attributes' => array(
       'class' => array(
