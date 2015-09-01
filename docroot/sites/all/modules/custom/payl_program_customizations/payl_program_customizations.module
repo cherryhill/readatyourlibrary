@@ -1,0 +1,37 @@
+<?php
+
+/**
+ * Implements hook_form_alter().
+ */
+function payl_program_customizations_form_alter(&$form, &$form_state, $form_id) {
+  if ($form_id == 'user_register_form') {
+    $form['#validate'][] = 'payl_program_customizations_user_register_validate';
+  }
+}
+
+function payl_program_customizations_user_register_validate($form, &$form_state) {
+  $values = $form_state['values'];
+  $check = TRUE;
+  if (!empty($values['field_username'][LANGUAGE_NONE][0]['value'])) {
+    // Do not try to combine token info.
+    foreach($values as $key => $value) {
+      if (strpos($key, 'user_random_list') !== FALSE) {
+        $form_state['values'][$key][LANGUAGE_NONE][0]['value'] = '';
+      }
+    }
+  }
+  if (empty($values['field_username'][LANGUAGE_NONE][0]['value'])) {
+    // Check that all random items are completed.
+    foreach($values as $key => $value) {
+      if (strpos($key, 'user_random_list') !== FALSE) {
+        if (empty($value[LANGUAGE_NONE][0]['value'])) {
+          dpm($value);
+          $check = FALSE;
+        }
+      }
+    }
+  }
+  if (!$check) {
+    form_set_error('field_username', t('Please ensure to create your own username OR generate a new username'));
+  }
+}
