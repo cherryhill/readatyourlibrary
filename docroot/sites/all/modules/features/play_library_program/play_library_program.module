@@ -57,7 +57,9 @@ function play_library_program_user_insert(&$edit, $account, $category) {
  */
 function play_library_program_entity_insert($entity, $type) {
   // Could be node, could be eck, could be something else, but easy to check.
-  if (isset($entity->type)) {
+  // Also hardcoding that we do not create *new* activity entries for an
+  // activity entry.
+  if (isset($entity->type) && $entity->type !== 'activity_entry') {
     $hook = "entity_insert|{$type}|{$entity->type}";
     $query = new EntityFieldQuery();
     $query->entityCondition('entity_type', 'activity');
