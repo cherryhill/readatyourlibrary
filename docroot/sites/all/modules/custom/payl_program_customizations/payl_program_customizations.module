@@ -5,8 +5,6 @@
  */
 function payl_program_customizations_form_alter(&$form, &$form_state, $form_id) {
   if ($form_id == 'user_register_form') {
-    dpm(time());
-    dpm(strtotime('-13 years'));
     $setting = array(
       'payl_program_customizations_birthday_limit' => strtotime('-13 years'),
     );
