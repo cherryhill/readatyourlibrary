@@ -68,9 +68,9 @@ function play_library_program_entity_insert($entity, $type) {
     $result = $query->execute();
     foreach ($result as $entity_key => $entity_values) {
       if ($entity_key == 'activity') {
-        foreach ($entity_values as $entity) {
+        foreach ($entity_values as $activity_entity) {
           $account = user_load($entity->uid);
-          play_library_program_create_activity_entry($entity, $account);
+          play_library_program_create_activity_entry($activity_entity, $account);
         }
       }
     }
