@@ -16,6 +16,7 @@ function play_library_program_field_widget_form_alter(&$element, &$form_state, $
       'user_insert' => t('User just registered'),
       'user_login' => t('User logged in for first time'),
     );
+    // For now, only deal with nodes and other ECK content models.
     $entities = entity_get_info();
     foreach($entities as $entity_key => $entity) {
       if ($entity_key == 'node') {
@@ -23,7 +24,7 @@ function play_library_program_field_widget_form_alter(&$element, &$form_state, $
       }
       if (isset($entity['module']) && ($entity['module'] == 'eck' || $entity['module'] == 'node')) {
         foreach ($entity['bundles'] as $bundle_key => $bundle_options) {
-          $options["entity_insert|{$entity['module']}|{$bundle_key}"] = t("Insert new @bundle", array('@bundle' => $bundle_options['label']));
+          $options["entity_insert|{$entity_key}|{$bundle_key}"] = t("Insert new @bundle", array('@bundle' => $bundle_options['label']));
         }
       }
     }
@@ -34,7 +35,7 @@ function play_library_program_field_widget_form_alter(&$element, &$form_state, $
 }
 
 /**
- * Implements hook_user_insert()
+ * Implements hook_user_insert().
  */
 function play_library_program_user_insert(&$edit, $account, $category) {
   $query = new EntityFieldQuery();
@@ -46,6 +47,29 @@ function play_library_program_user_insert(&$edit, $account, $category) {
     if ($entity_key == 'activity') {
       foreach ($entity_values as $entity) {
         play_library_program_create_activity_entry($entity, $account);
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_entity_insert().
+ */
+function play_library_program_entity_insert($entity, $type) {
+  // Could be node, could be eck, could be something else, but easy to check.
+  if (isset($entity->type)) {
+    $hook = "entity_insert|{$type}|{$entity->type}";
+    $query = new EntityFieldQuery();
+    $query->entityCondition('entity_type', 'activity');
+    $query->entityCondition('bundle', 'activity');
+    $query->fieldCondition('field_activity_fired_hook', 'value', $hook);
+    $result = $query->execute();
+    foreach ($result as $entity_key => $entity_values) {
+      if ($entity_key == 'activity') {
+        foreach ($entity_values as $entity) {
+          $account = user_load($entity->uid);
+          play_library_program_create_activity_entry($entity, $account);
+        }
       }
     }
   }
