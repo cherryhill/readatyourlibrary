@@ -14,7 +14,7 @@ function play_library_program_field_widget_form_alter(&$element, &$form_state, $
     $options = array(
       '' => t('- Select Firing Hook -'),
       'user_insert' => t('User just registered'),
-      'user_login' => t('User logged in for first time'),
+//      'user_login' => t('User logged in for first time'),
     );
     // For now, only deal with nodes and other ECK content models.
     $entities = entity_get_info();
