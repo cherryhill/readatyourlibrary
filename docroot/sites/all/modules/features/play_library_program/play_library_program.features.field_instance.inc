@@ -53,6 +53,88 @@ function play_library_program_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'activity-activity-field_activity_fired_hook'
+  $field_instances['activity-activity-field_activity_fired_hook'] = array(
+    'bundle' => 'activity',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'Select when the activity should be fired. Such as when a user signs up, when content is created/published, etc. If you do not select one, the option will show up in the activity menu for the user to select.',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 3,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'activity',
+    'field_name' => 'field_activity_fired_hook',
+    'label' => 'Activity Fired Hook',
+    'required' => 0,
+    'settings' => array(
+      'better_formats' => array(
+        'allowed_formats' => array(
+          'filtered_html' => 'filtered_html',
+          'filtered_html_with_embed' => 'filtered_html_with_embed',
+          'filtered_html_with_tables' => 'filtered_html_with_tables',
+          'full_html' => 'full_html',
+          'php_code' => 'php_code',
+          'plain_text' => 'plain_text',
+          'simple_html' => 'simple_html',
+        ),
+        'allowed_formats_toggle' => 0,
+        'default_order_toggle' => 0,
+        'default_order_wrapper' => array(
+          'formats' => array(
+            'filtered_html' => array(
+              'weight' => -10,
+            ),
+            'filtered_html_with_embed' => array(
+              'weight' => -8,
+            ),
+            'filtered_html_with_tables' => array(
+              'weight' => -7,
+            ),
+            'full_html' => array(
+              'weight' => -6,
+            ),
+            'php_code' => array(
+              'weight' => 11,
+            ),
+            'plain_text' => array(
+              'weight' => -5,
+            ),
+            'simple_html' => array(
+              'weight' => -9,
+            ),
+          ),
+        ),
+      ),
+      'linkit' => array(
+        'enable' => 0,
+        'insert_plugin' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 4,
+    ),
+  );
+
   // Exported field_instance: 'activity-activity-field_activity_limit'
   $field_instances['activity-activity-field_activity_limit'] = array(
     'bundle' => 'activity',
@@ -585,6 +667,7 @@ function play_library_program_field_default_field_instances() {
   t('Achievement Raffle');
   t('Achievements');
   t('Activity');
+  t('Activity Fired Hook');
   t('Activity Points');
   t('Badge Image');
   t('Default number of points user gets for doing activity each time.');
@@ -593,6 +676,7 @@ function play_library_program_field_default_field_instances() {
   t('Raffle Entry Raffle');
   t('Raffle Winner');
   t('Raffle Winner Raffle');
+  t('Select when the activity should be fired. Such as when a user signs up, when content is created/published, etc. If you do not select one, the option will show up in the activity menu for the user to select.');
   t('The number of times a user performs activity before receiving this bonus. Leave at 0 or at really high number (ex. 9999) if user is not meant to receive achievement.');
   t('These \'achievements are for when a user hits \'X\' marker for hitting an achievement. This can consist of bonus points, raffle entries, badges, etc.');
   t('Total limit on the number of times a user can perform activity in order to gain points. Minimum 1. To act as \'unlimited\', use a very high integer value (like 9999).');

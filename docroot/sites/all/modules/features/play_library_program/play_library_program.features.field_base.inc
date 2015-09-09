@@ -167,6 +167,27 @@ function play_library_program_field_default_field_bases() {
     'type' => 'entityreference',
   );
 
+  // Exported field_base: 'field_activity_fired_hook'
+  $field_bases['field_activity_fired_hook'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_activity_fired_hook',
+    'indexes' => array(
+      'format' => array(
+        0 => 'format',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'text',
+    'settings' => array(
+      'max_length' => 255,
+    ),
+    'translatable' => 0,
+    'type' => 'text',
+  );
+
   // Exported field_base: 'field_activity_limit'
   $field_bases['field_activity_limit'] = array(
     'active' => 1,

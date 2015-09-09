@@ -7,7 +7,7 @@
 include_once 'play_library_program.features.inc';
 
 /**
- * Implements hook_form_alter().
+ * Implements hook_field_widget_form_alter().
  */
 function play_library_program_field_widget_form_alter(&$element, &$form_state, $context) {
   if (isset($element['value']) && $element['value']['#field_name'] == 'field_activity_fired_hook') {
