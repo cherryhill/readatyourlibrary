@@ -5,3 +5,29 @@
  */
 
 include_once 'play_library_program.features.inc';
+
+/**
+ * Implements hook_form_alter().
+ */
+function play_library_program_field_widget_form_alter(&$element, &$form_state, $context) {
+  if (isset($element['value']) && $element['value']['#field_name'] == 'field_activity_fired_hook') {
+    $options = array(
+      '' => t('- Select Firing Hook -'),
+      'user_insert' => t('User just registered'),
+      'user_login' => t('User logged in for first time'),
+    );
+    $entities = entity_get_info();
+    foreach($entities as $entity_key => $entity) {
+      if ($entity_key == 'node') {
+        $entity['module'] = 'node';
+      }
+      if (isset($entity['module']) && ($entity['module'] == 'eck' || $entity['module'] == 'node')) {
+        foreach ($entity['bundles'] as $bundle_key => $bundle_options) {
+          $options["entity_insert|{$entity['module']}|{$bundle_key}"] = t("Insert new @bundle", array('@bundle' => $bundle_options['label']));
+        }
+      }
+    }
+    $element['#type'] = 'select';
+    $element['#options'] = $options;
+  }
+}
