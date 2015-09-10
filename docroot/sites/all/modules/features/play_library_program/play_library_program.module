@@ -57,9 +57,12 @@ function play_library_program_user_insert(&$edit, $account, $category) {
  */
 function play_library_program_entity_insert($entity, $type) {
   // Could be node, could be eck, could be something else, but easy to check.
+  if (!isset($entity->type)) {
+    return;
+  }
   // Also hardcoding that we do not create *new* activity entries for an
   // activity entry.
-  if (isset($entity->type) && $entity->type !== 'activity_entry') {
+  if ($entity->type !== 'activity_entry') {
     $hook = "entity_insert|{$type}|{$entity->type}";
     $query = new EntityFieldQuery();
     $query->entityCondition('entity_type', 'activity');
@@ -75,6 +78,49 @@ function play_library_program_entity_insert($entity, $type) {
       }
     }
   }
+  if ($entity->type == 'activity_entry') {
+    // Start figure out which activity is associated with entry.
+    $activity_id = $entity->field_activity_entry_activity[LANGUAGE_NONE][0]['target_id'];
+    $activities = entity_load('activity', array($activity_id));
+    $activity = reset($activities);
+    $points = intval($activity->field_activity_points[LANGUAGE_NONE][0]['value']);
+    $current_participation_count = play_library_program_retrieve_activity_participation($activity_id, $entity->uid);
+    // @TODO: Add logic to check that user can still receive points.
+    if ($points > 0 && $current_participation_count <= $activity->field_activity_limit[LANGUAGE_NONE][0]['value']) {
+      $userpoints_txn = array(
+        'uid' => $entity->uid,
+        'points' => $points,
+      );
+      userpoints_userpointsapi($userpoints_txn);
+    }
+  }
+}
+
+function play_library_program_userpoints($op, &$params = array()) {
+  /*
+  if ($op == 'points after') {
+    $user_points = userpoints_get_current_points($params['uid']);
+    $added_points = $params['points'];
+    dpm($user_points, 'userpoints');
+    dpm($added_points, 'added points');
+    // Check global rewards
+    $query = new EntityFieldQuery();
+    $query->entityCondition('entity_type', 'activity');
+    $query->entityCondition('bundle', 'activity');
+  }
+  // */
+}
+
+/**
+ * Retrieves how many times an activity has been performed.
+ */
+function play_library_program_retrieve_activity_participation($activity_id, $account_id) {
+  $query = new EntityFieldQuery();
+  $query->entityCondition('entity_type', 'activity');
+  $query->entityCondition('bundle', 'activity_entry');
+  $query->propertyCondition('uid', $account_id);
+  $query->fieldCondition('field_activity_entry_activity', 'target_id', $activity_id);
+  return $query->count()->execute();
 }
 
 /**
