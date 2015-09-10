@@ -141,7 +141,7 @@ function play_library_program_create_raffle_entry($raffle_id, $account_id) {
 }
 
 /**
- * Creates a new raffle entry
+ * Creates a new badge entry
  */
 function play_library_program_add_user_badge($badge_id, $account_id) {
   $query = new EntityFieldQuery();
@@ -160,49 +160,6 @@ function play_library_program_add_user_badge($badge_id, $account_id) {
   $user_badge = entity_create('badge', array('type' => 'user_badge', 'title' => $title, 'uid' => $account_id));
   $user_badge->field_user_badge_id[LANGUAGE_NONE][0]['target_id'] = $badge->id;
   entity_save('raffle', $user_badge);
-}
-
-/**
- * Retrieves how many times an activity has been performed.
- */
-function _play_library_program_get_tier_reward_ids($user_pre_points, $user_points) {
-  $rids = array();
-  // Get the non-repeated rewards first.
-  $query = new EntityFieldQuery();
-  $query->entityCondition('entity_type', 'reward');
-  $query->entityCondition('bundle', 'point_driven_reward');
-  $query->fieldCondition('field_pdr_point_marker', 'value', $user_pre_points, '>');
-  $query->fieldCondition('field_pdr_point_marker', 'value', $user_points, '<=');
-  $query->fieldCondition('field_pdr_point_repeatable', 'value', 0);
-  $results = $query->execute();
-  if (!empty($results['reward'])) {
-    foreach($results['reward'] as $reward) {
-      $reward_entities = entity_load('reward', array($reward->id));
-      $reward_entity = reset($reward_entities);
-      $rids[] = $reward_entity->field_pdr_point_reward[LANGUAGE_NONE][0]['target_id'];
-    }
-  }
-
-  // Process the repeated ones next.
-  $query = new EntityFieldQuery();
-  $query->entityCondition('entity_type', 'reward');
-  $query->entityCondition('bundle', 'point_driven_reward');
-  $query->fieldCondition('field_pdr_point_repeatable', 'value', 1);
-  $results = $query->execute();
-  if (!empty($results['reward'])) {
-    foreach($results['reward'] as $reward) {
-      $reward_entities = entity_load('reward', array($reward->id));
-      $reward_entity = reset($reward_entities);
-      $modulus = $reward_entity->field_pdr_point_marker[LANGUAGE_NONE][0]['value'];
-      for ($i = $user_points; $i > $user_pre_points; $i--) {
-        if ($i % $modulus == 0) {
-          $rids[] = $reward_entity->field_pdr_point_reward[LANGUAGE_NONE][0]['target_id'];
-        }
-      }
-    }
-  }
-
-  return $rids;
 }
 
 /**
@@ -257,4 +214,47 @@ function _play_library_program_process_user_reward_claim($entity, $type) {
   if (!empty($reward->field_reward_badge)) {
     play_library_program_add_user_badge($reward->field_reward_badge[LANGUAGE_NONE][0]['target_id'], $account_uid);
   }
+}
+
+/**
+ * Retrieves how many times an activity has been performed.
+ */
+function _play_library_program_get_tier_reward_ids($user_pre_points, $user_points) {
+  $rids = array();
+  // Get the non-repeated rewards first.
+  $query = new EntityFieldQuery();
+  $query->entityCondition('entity_type', 'reward');
+  $query->entityCondition('bundle', 'point_driven_reward');
+  $query->fieldCondition('field_pdr_point_marker', 'value', $user_pre_points, '>');
+  $query->fieldCondition('field_pdr_point_marker', 'value', $user_points, '<=');
+  $query->fieldCondition('field_pdr_point_repeatable', 'value', 0);
+  $results = $query->execute();
+  if (!empty($results['reward'])) {
+    foreach($results['reward'] as $reward) {
+      $reward_entities = entity_load('reward', array($reward->id));
+      $reward_entity = reset($reward_entities);
+      $rids[] = $reward_entity->field_pdr_point_reward[LANGUAGE_NONE][0]['target_id'];
+    }
+  }
+
+  // Process the repeated ones next.
+  $query = new EntityFieldQuery();
+  $query->entityCondition('entity_type', 'reward');
+  $query->entityCondition('bundle', 'point_driven_reward');
+  $query->fieldCondition('field_pdr_point_repeatable', 'value', 1);
+  $results = $query->execute();
+  if (!empty($results['reward'])) {
+    foreach($results['reward'] as $reward) {
+      $reward_entities = entity_load('reward', array($reward->id));
+      $reward_entity = reset($reward_entities);
+      $modulus = $reward_entity->field_pdr_point_marker[LANGUAGE_NONE][0]['value'];
+      for ($i = $user_points; $i > $user_pre_points; $i--) {
+        if ($i % $modulus == 0) {
+          $rids[] = $reward_entity->field_pdr_point_reward[LANGUAGE_NONE][0]['target_id'];
+        }
+      }
+    }
+  }
+
+  return $rids;
 }
