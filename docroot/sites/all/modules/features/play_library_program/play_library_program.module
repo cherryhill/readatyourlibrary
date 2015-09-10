@@ -46,7 +46,7 @@ function play_library_program_user_insert(&$edit, $account, $category) {
   foreach ($result as $entity_key => $entity_values) {
     if ($entity_key == 'activity') {
       foreach ($entity_values as $entity) {
-        play_library_program_create_activity_entry($entity, $account);
+        play_library_program_create_activity_entry($entity->id, $account->uid);
       }
     }
   }
@@ -86,16 +86,16 @@ function play_library_program_entity_insert($entity, $type) {
 function play_library_program_userpoints($op, &$params = array()) {
   if ($op == 'points after') {
     $user_points = userpoints_get_current_points($params['uid']);
-    $added_points = $params['points'];
-    
-    dpm($user_points, 'userpoints');
-    dpm($added_points, 'added points');
+    $user_pre_points = $user_points - $params['points'];
+    $tier_rewards = _play_library_program_get_tier_reward_ids($user_pre_points, $user_points);
+    foreach ($tier_rewards as $rid) {
+      play_library_program_create_reward_claim($rid, $params['uid']);
+    }
     // Check global rewards
     $query = new EntityFieldQuery();
     $query->entityCondition('entity_type', 'activity');
     $query->entityCondition('bundle', 'activity');
   }
-  // */
 }
 
 /**
@@ -113,13 +113,68 @@ function play_library_program_retrieve_activity_participation($activity_id, $acc
 /**
  * Creates a new activity entry
  */
-function play_library_program_create_activity_entry($entity, $account) {
-  $activities = entity_load('activity', array($entity->id));
+function play_library_program_create_activity_entry($activity_id, $account_id) {
+  $activities = entity_load('activity', array($activity_id));
   $activity = reset($activities);
-  $title = t("Performed Activity: @activity", array('@activity' => $activity->title));
-  $activity_entry = entity_create('activity', array('type' => 'activity_entry', 'title' => $title, 'uid' => $account->uid));
+  $title = t("@activity on @time", array('@activity' => $activity->title, '@time' => date('Y-m-d H:i')));
+  $activity_entry = entity_create('activity', array('type' => 'activity_entry', 'title' => $title, 'uid' => $account_id));
   $activity_entry->field_activity_entry_activity[LANGUAGE_NONE][0]['target_id'] = $activity->id;
   entity_save('activity', $activity_entry);
+}
+
+/**
+ * Creates a new activity entry
+ */
+function play_library_program_create_reward_claim($reward_id, $account_id) {
+  $rewards = entity_load('reward', array($reward_id));
+  $reward = reset($rewards);
+  $title = t("@reward on @time", array('@reward' => $reward->title, '@time' => date('Y-m-d H:i')));
+  $reward_claim = entity_create('reward', array('type' => 'reward_claim', 'title' => $title, 'uid' => $account_id));
+  $reward_claim->field_reward_claim_id[LANGUAGE_NONE][0]['target_id'] = $reward->id;
+  entity_save('activity', $reward_claim);
+}
+
+/**
+ * Retrieves how many times an activity has been performed.
+ */
+function _play_library_program_get_tier_reward_ids($user_pre_points, $user_points) {
+  $rids = array();
+  // Get the non-repeated rewards first.
+  $query = new EntityFieldQuery();
+  $query->entityCondition('entity_type', 'reward');
+  $query->entityCondition('bundle', 'point_driven_reward');
+  $query->fieldCondition('field_pdr_point_marker', 'value', $user_pre_points, '>');
+  $query->fieldCondition('field_pdr_point_marker', 'value', $user_points, '<=');
+  $query->fieldCondition('field_pdr_point_repeatable', 'value', 0);
+  $results = $query->execute();
+  if (!empty($results['reward'])) {
+    foreach($results['reward'] as $reward) {
+      $reward_entities = entity_load('reward', array($reward->id));
+      $reward_entity = reset($reward_entities);
+      $rids[] = $reward_entity->field_pdr_point_reward[LANGUAGE_NONE][0]['target_id'];
+    }
+  }
+
+  // Process the repeated ones next.
+  $query = new EntityFieldQuery();
+  $query->entityCondition('entity_type', 'reward');
+  $query->entityCondition('bundle', 'point_driven_reward');
+  $query->fieldCondition('field_pdr_point_repeatable', 'value', 1);
+  $results = $query->execute();
+  if (!empty($results['reward'])) {
+    foreach($results['reward'] as $reward) {
+      $reward_entities = entity_load('reward', array($reward->id));
+      $reward_entity = reset($reward_entities);
+      $modulus = $reward_entity->field_pdr_point_marker[LANGUAGE_NONE][0]['value'];
+      for ($i = $user_points; $i > $user_pre_points; $i--) {
+        if ($i % $modulus == 0) {
+          $rids[] = $reward_entity->field_pdr_point_reward[LANGUAGE_NONE][0]['target_id'];
+        }
+      }
+    }
+  }
+
+  return $rids;
 }
 
 /**
@@ -136,7 +191,7 @@ function _play_library_program_invoke_activity_entry_hooks($entity, $type) {
     if ($entity_key == 'activity') {
       foreach ($entity_values as $activity_entity) {
         $account = user_load($entity->uid);
-        play_library_program_create_activity_entry($activity_entity, $account);
+        play_library_program_create_activity_entry($activity_entity->id, $account->uid);
       }
     }
   }
