@@ -14,7 +14,6 @@ function play_library_program_field_widget_form_alter(&$element, &$form_state, $
     $options = array(
       '' => t('- Select Firing Hook -'),
       'user_insert' => t('User just registered'),
-//      'user_login' => t('User logged in for first time'),
     );
     // For now, only deal with nodes and other ECK content models.
     $entities = entity_get_info();
@@ -72,7 +71,6 @@ function play_library_program_entity_insert($entity, $type) {
     $activity = reset($activities);
     $points = intval($activity->field_activity_points[LANGUAGE_NONE][0]['value']);
     $current_participation_count = play_library_program_retrieve_activity_participation($activity_id, $entity->uid);
-    // @TODO: Add logic to check that user can still receive points.
     if ($points > 0 && $current_participation_count <= $activity->field_activity_limit[LANGUAGE_NONE][0]['value']) {
       $userpoints_txn = array(
         'uid' => $entity->uid,
@@ -83,6 +81,9 @@ function play_library_program_entity_insert($entity, $type) {
   }
 }
 
+/**
+ * Implements hook_userpoints().
+ */
 function play_library_program_userpoints($op, &$params = array()) {
   if ($op == 'points after') {
     $user_points = userpoints_get_current_points($params['uid']);

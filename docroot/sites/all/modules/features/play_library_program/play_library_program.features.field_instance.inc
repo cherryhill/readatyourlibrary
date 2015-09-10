@@ -472,6 +472,48 @@ function play_library_program_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'badge-user_badge-field_user_badge_id'
+  $field_instances['badge-user_badge-field_user_badge_id'] = array(
+    'bundle' => 'user_badge',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'entityreference',
+        'settings' => array(
+          'link' => FALSE,
+        ),
+        'type' => 'entityreference_label',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'badge',
+    'field_name' => 'field_user_badge_id',
+    'label' => 'User Badge ID',
+    'required' => FALSE,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'module' => 'entityreference',
+      'settings' => array(
+        'match_operator' => 'CONTAINS',
+        'path' => '',
+        'size' => 60,
+      ),
+      'type' => 'entityreference_autocomplete',
+      'weight' => 1,
+    ),
+  );
+
   // Exported field_instance: 'raffle-raffle_entry-field_raffle_entry_raffle'
   $field_instances['raffle-raffle_entry-field_raffle_entry_raffle'] = array(
     'bundle' => 'raffle_entry',
@@ -609,7 +651,11 @@ function play_library_program_field_default_field_instances() {
   // Exported field_instance: 'reward-point_driven_reward-field_pdr_point_marker'
   $field_instances['reward-point_driven_reward-field_pdr_point_marker'] = array(
     'bundle' => 'point_driven_reward',
-    'default_value' => NULL,
+    'default_value' => array(
+      0 => array(
+        'value' => 1,
+      ),
+    ),
     'deleted' => 0,
     'description' => 'Number of points user must get to win reward.',
     'display' => array(
@@ -635,10 +681,10 @@ function play_library_program_field_default_field_instances() {
     'entity_type' => 'reward',
     'field_name' => 'field_pdr_point_marker',
     'label' => 'PDR Point Marker',
-    'required' => 0,
+    'required' => 1,
     'settings' => array(
       'max' => '',
-      'min' => 0,
+      'min' => 1,
       'prefix' => '',
       'suffix' => '',
       'user_register_form' => FALSE,
@@ -1021,6 +1067,51 @@ function play_library_program_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'reward-reward_claim-field_reward_claim_id'
+  $field_instances['reward-reward_claim-field_reward_claim_id'] = array(
+    'bundle' => 'reward_claim',
+    'default_value' => NULL,
+    'default_value_function' => '',
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'entityreference',
+        'settings' => array(
+          'link' => FALSE,
+        ),
+        'type' => 'entityreference_label',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'reward',
+    'field_name' => 'field_reward_claim_id',
+    'label' => 'Reward Claim ID',
+    'required' => 0,
+    'settings' => array(
+      'behaviors' => array(
+        'prepopulate' => array(
+          'status' => 0,
+        ),
+      ),
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_select',
+      'weight' => 1,
+    ),
+  );
+
   // Translatables
   // Included for use with string extractors like potx.
   t('AAR Marker');
@@ -1042,6 +1133,7 @@ function play_library_program_field_default_field_instances() {
   t('Raffle Winner Raffle');
   t('Repeatable Point');
   t('Reward Badge');
+  t('Reward Claim ID');
   t('Reward Message');
   t('Reward Notification');
   t('Reward Raffle');
@@ -1049,6 +1141,7 @@ function play_library_program_field_default_field_instances() {
   t('This the message notification sent out to the user, librarian for any physical rewards for the user.');
   t('This will be the message sent to the user for winning this. Please fill this out if they are winning a physical prize so they can try to redeem it.');
   t('Total limit on the number of times a user can perform activity in order to gain points. Minimum 1. To act as \'unlimited\', use a very high integer value (like 9999).');
+  t('User Badge ID');
   t('pdr_point_reward');
 
   return $field_instances;

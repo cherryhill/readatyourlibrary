@@ -49,6 +49,12 @@ function play_library_program_eck_bundle_info() {
       'name' => 'badge',
       'label' => 'Badge',
     ),
+    'badge_user_badge' => array(
+      'machine_name' => 'badge_user_badge',
+      'entity_type' => 'badge',
+      'name' => 'user_badge',
+      'label' => 'User Badge',
+    ),
     'raffle_raffle' => array(
       'machine_name' => 'raffle_raffle',
       'entity_type' => 'raffle',
@@ -78,6 +84,12 @@ function play_library_program_eck_bundle_info() {
       'entity_type' => 'reward',
       'name' => 'reward',
       'label' => 'Reward',
+    ),
+    'reward_reward_claim' => array(
+      'machine_name' => 'reward_reward_claim',
+      'entity_type' => 'reward',
+      'name' => 'reward_claim',
+      'label' => 'Reward Claim',
     ),
   );
   return $items;
