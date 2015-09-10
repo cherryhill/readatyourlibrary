@@ -79,6 +79,10 @@ function play_library_program_entity_insert($entity, $type) {
       userpoints_userpointsapi($userpoints_txn);
     }
   }
+
+  if ($entity->type == 'reward_claim') {
+    _play_library_program_process_user_reward_claim($entity, $type);
+  }
 }
 
 /**
@@ -196,4 +200,11 @@ function _play_library_program_invoke_activity_entry_hooks($entity, $type) {
       }
     }
   }
+}
+
+/**
+ * Processes a reward claim.
+ */
+function _play_library_program_process_user_reward_claim($entity, $type) {
+  dpm($entity);
 }

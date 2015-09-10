@@ -379,7 +379,7 @@ function play_library_program_field_default_field_instances() {
     'entity_type' => 'activity',
     'field_name' => 'field_activity_entry_activity',
     'label' => 'Activity',
-    'required' => 0,
+    'required' => 1,
     'settings' => array(
       'behaviors' => array(
         'prepopulate' => array(
@@ -427,7 +427,7 @@ function play_library_program_field_default_field_instances() {
     'entity_type' => 'badge',
     'field_name' => 'field_badge_image',
     'label' => 'Badge Image',
-    'required' => 0,
+    'required' => 1,
     'settings' => array(
       'alt_field' => 0,
       'default_image' => 0,
@@ -476,6 +476,7 @@ function play_library_program_field_default_field_instances() {
   $field_instances['badge-user_badge-field_user_badge_id'] = array(
     'bundle' => 'user_badge',
     'default_value' => NULL,
+    'default_value_function' => '',
     'deleted' => 0,
     'description' => '',
     'display' => array(
@@ -498,11 +499,17 @@ function play_library_program_field_default_field_instances() {
     'entity_type' => 'badge',
     'field_name' => 'field_user_badge_id',
     'label' => 'User Badge ID',
-    'required' => FALSE,
+    'required' => 1,
     'settings' => array(
+      'behaviors' => array(
+        'prepopulate' => array(
+          'status' => 0,
+        ),
+      ),
       'user_register_form' => FALSE,
     ),
     'widget' => array(
+      'active' => 1,
       'module' => 'entityreference',
       'settings' => array(
         'match_operator' => 'CONTAINS',
@@ -1094,7 +1101,7 @@ function play_library_program_field_default_field_instances() {
     'entity_type' => 'reward',
     'field_name' => 'field_reward_claim_id',
     'label' => 'Reward Claim ID',
-    'required' => 0,
+    'required' => 1,
     'settings' => array(
       'behaviors' => array(
         'prepopulate' => array(
