@@ -31,6 +31,12 @@ function play_library_program_eck_bundle_info() {
       'name' => 'activity',
       'label' => 'Activity',
     ),
+    'activity_activity_achievement_reward' => array(
+      'machine_name' => 'activity_activity_achievement_reward',
+      'entity_type' => 'activity',
+      'name' => 'activity_achievement_reward',
+      'label' => 'Activity Achievement Reward',
+    ),
     'activity_activity_entry' => array(
       'machine_name' => 'activity_activity_entry',
       'entity_type' => 'activity',
@@ -60,6 +66,18 @@ function play_library_program_eck_bundle_info() {
       'entity_type' => 'raffle',
       'name' => 'raffle_winner',
       'label' => 'Raffle Winner',
+    ),
+    'reward_point_driven_reward' => array(
+      'machine_name' => 'reward_point_driven_reward',
+      'entity_type' => 'reward',
+      'name' => 'point_driven_reward',
+      'label' => 'Point Driven Reward',
+    ),
+    'reward_reward' => array(
+      'machine_name' => 'reward_reward',
+      'entity_type' => 'reward',
+      'name' => 'reward',
+      'label' => 'Reward',
     ),
   );
   return $items;

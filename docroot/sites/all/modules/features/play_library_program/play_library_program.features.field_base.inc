@@ -10,13 +10,28 @@
 function play_library_program_field_default_field_bases() {
   $field_bases = array();
 
-  // Exported field_base: 'field_achievement_badge'
-  $field_bases['field_achievement_badge'] = array(
+  // Exported field_base: 'field_aar_marker'
+  $field_bases['field_aar_marker'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
-    'field_name' => 'field_achievement_badge',
+    'field_name' => 'field_aar_marker',
+    'indexes' => array(),
+    'locked' => 0,
+    'module' => 'number',
+    'settings' => array(),
+    'translatable' => 0,
+    'type' => 'number_integer',
+  );
+
+  // Exported field_base: 'field_aar_reward'
+  $field_bases['field_aar_reward'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_aar_reward',
     'indexes' => array(
       'target_id' => array(
         0 => 'target_id',
@@ -36,75 +51,10 @@ function play_library_program_field_default_field_bases() {
           'type' => 'none',
         ),
         'target_bundles' => array(
-          'badge' => 'badge',
+          'reward' => 'reward',
         ),
       ),
-      'target_type' => 'badge',
-    ),
-    'translatable' => 0,
-    'type' => 'entityreference',
-  );
-
-  // Exported field_base: 'field_achievement_marker'
-  $field_bases['field_achievement_marker'] = array(
-    'active' => 1,
-    'cardinality' => 1,
-    'deleted' => 0,
-    'entity_types' => array(),
-    'field_name' => 'field_achievement_marker',
-    'indexes' => array(),
-    'locked' => 0,
-    'module' => 'number',
-    'settings' => array(),
-    'translatable' => 0,
-    'type' => 'number_integer',
-  );
-
-  // Exported field_base: 'field_achievement_points'
-  $field_bases['field_achievement_points'] = array(
-    'active' => 1,
-    'cardinality' => 1,
-    'deleted' => 0,
-    'entity_types' => array(),
-    'field_name' => 'field_achievement_points',
-    'indexes' => array(),
-    'locked' => 0,
-    'module' => 'number',
-    'settings' => array(),
-    'translatable' => 0,
-    'type' => 'number_integer',
-  );
-
-  // Exported field_base: 'field_achievement_raffle'
-  $field_bases['field_achievement_raffle'] = array(
-    'active' => 1,
-    'cardinality' => 1,
-    'deleted' => 0,
-    'entity_types' => array(),
-    'field_name' => 'field_achievement_raffle',
-    'indexes' => array(
-      'target_id' => array(
-        0 => 'target_id',
-      ),
-    ),
-    'locked' => 0,
-    'module' => 'entityreference',
-    'settings' => array(
-      'handler' => 'base',
-      'handler_settings' => array(
-        'behaviors' => array(
-          'views-select-list' => array(
-            'status' => 0,
-          ),
-        ),
-        'sort' => array(
-          'type' => 'none',
-        ),
-        'target_bundles' => array(
-          'raffle' => 'raffle',
-        ),
-      ),
-      'target_type' => 'raffle',
+      'target_type' => 'reward',
     ),
     'translatable' => 0,
     'type' => 'entityreference',
@@ -113,23 +63,36 @@ function play_library_program_field_default_field_bases() {
   // Exported field_base: 'field_activity_achievements'
   $field_bases['field_activity_achievements'] = array(
     'active' => 1,
-    'cardinality' => -1,
+    'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_activity_achievements',
     'indexes' => array(
-      'revision_id' => array(
-        0 => 'revision_id',
+      'target_id' => array(
+        0 => 'target_id',
       ),
     ),
     'locked' => 0,
-    'module' => 'field_collection',
+    'module' => 'entityreference',
     'settings' => array(
-      'hide_blank_items' => 1,
-      'path' => '',
+      'handler' => 'base',
+      'handler_settings' => array(
+        'behaviors' => array(
+          'views-select-list' => array(
+            'status' => 0,
+          ),
+        ),
+        'sort' => array(
+          'type' => 'none',
+        ),
+        'target_bundles' => array(
+          'activity_achievement_reward' => 'activity_achievement_reward',
+        ),
+      ),
+      'target_type' => 'activity',
     ),
     'translatable' => 0,
-    'type' => 'field_collection',
+    'type' => 'entityreference',
   );
 
   // Exported field_base: 'field_activity_entry_activity'
@@ -240,6 +203,81 @@ function play_library_program_field_default_field_bases() {
     'type' => 'image',
   );
 
+  // Exported field_base: 'field_pdr_point_marker'
+  $field_bases['field_pdr_point_marker'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_pdr_point_marker',
+    'indexes' => array(),
+    'locked' => 0,
+    'module' => 'number',
+    'settings' => array(),
+    'translatable' => 0,
+    'type' => 'number_integer',
+  );
+
+  // Exported field_base: 'field_pdr_point_repeatable'
+  $field_bases['field_pdr_point_repeatable'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_pdr_point_repeatable',
+    'indexes' => array(
+      'value' => array(
+        0 => 'value',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'list',
+    'settings' => array(
+      'allowed_values' => array(
+        0 => 'No',
+        1 => 'Yes',
+      ),
+      'allowed_values_function' => '',
+    ),
+    'translatable' => 0,
+    'type' => 'list_boolean',
+  );
+
+  // Exported field_base: 'field_pdr_point_reward'
+  $field_bases['field_pdr_point_reward'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_pdr_point_reward',
+    'indexes' => array(
+      'target_id' => array(
+        0 => 'target_id',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'entityreference',
+    'settings' => array(
+      'handler' => 'base',
+      'handler_settings' => array(
+        'behaviors' => array(
+          'views-select-list' => array(
+            'status' => 0,
+          ),
+        ),
+        'sort' => array(
+          'type' => 'none',
+        ),
+        'target_bundles' => array(
+          'reward' => 'reward',
+        ),
+      ),
+      'target_type' => 'reward',
+    ),
+    'translatable' => 0,
+    'type' => 'entityreference',
+  );
+
   // Exported field_base: 'field_raffle_entry_raffle'
   $field_bases['field_raffle_entry_raffle'] = array(
     'active' => 1,
@@ -315,6 +353,114 @@ function play_library_program_field_default_field_bases() {
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_raffle_winner_raffle',
+    'indexes' => array(
+      'target_id' => array(
+        0 => 'target_id',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'entityreference',
+    'settings' => array(
+      'handler' => 'base',
+      'handler_settings' => array(
+        'behaviors' => array(
+          'views-select-list' => array(
+            'status' => 0,
+          ),
+        ),
+        'sort' => array(
+          'type' => 'none',
+        ),
+        'target_bundles' => array(
+          'raffle' => 'raffle',
+        ),
+      ),
+      'target_type' => 'raffle',
+    ),
+    'translatable' => 0,
+    'type' => 'entityreference',
+  );
+
+  // Exported field_base: 'field_reward_badge'
+  $field_bases['field_reward_badge'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_reward_badge',
+    'indexes' => array(
+      'target_id' => array(
+        0 => 'target_id',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'entityreference',
+    'settings' => array(
+      'handler' => 'base',
+      'handler_settings' => array(
+        'behaviors' => array(
+          'views-select-list' => array(
+            'status' => 0,
+          ),
+        ),
+        'sort' => array(
+          'type' => 'none',
+        ),
+        'target_bundles' => array(
+          'badge' => 'badge',
+        ),
+      ),
+      'target_type' => 'badge',
+    ),
+    'translatable' => 0,
+    'type' => 'entityreference',
+  );
+
+  // Exported field_base: 'field_reward_message'
+  $field_bases['field_reward_message'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_reward_message',
+    'indexes' => array(
+      'format' => array(
+        0 => 'format',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'text',
+    'settings' => array(),
+    'translatable' => 0,
+    'type' => 'text_long',
+  );
+
+  // Exported field_base: 'field_reward_notification'
+  $field_bases['field_reward_notification'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_reward_notification',
+    'indexes' => array(
+      'format' => array(
+        0 => 'format',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'text',
+    'settings' => array(),
+    'translatable' => 0,
+    'type' => 'text_long',
+  );
+
+  // Exported field_base: 'field_reward_raffle'
+  $field_bases['field_reward_raffle'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_reward_raffle',
     'indexes' => array(
       'target_id' => array(
         0 => 'target_id',

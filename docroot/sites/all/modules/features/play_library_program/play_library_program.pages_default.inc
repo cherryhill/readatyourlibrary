@@ -106,6 +106,25 @@ function play_library_program_default_page_manager_pages() {
     $display->content['new-a3e2754c-f682-4f1c-8bb2-be883bc45cb1'] = $pane;
     $display->panels['left_above'][0] = 'new-a3e2754c-f682-4f1c-8bb2-be883bc45cb1';
     $pane = new stdClass();
+    $pane->pid = 'new-4fc5fd1d-35a8-4922-a872-66120a15b7b9';
+    $pane->panel = 'left_above';
+    $pane->type = 'views_panes';
+    $pane->subtype = 'global_reward_dashboard-panel_pane_1';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array();
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 1;
+    $pane->locks = array();
+    $pane->uuid = '4fc5fd1d-35a8-4922-a872-66120a15b7b9';
+    $display->content['new-4fc5fd1d-35a8-4922-a872-66120a15b7b9'] = $pane;
+    $display->panels['left_above'][1] = 'new-4fc5fd1d-35a8-4922-a872-66120a15b7b9';
+    $pane = new stdClass();
     $pane->pid = 'new-6a7a85a9-be5a-4f6c-9c7b-cb709dfb268b';
     $pane->panel = 'right_above';
     $pane->type = 'views_panes';
