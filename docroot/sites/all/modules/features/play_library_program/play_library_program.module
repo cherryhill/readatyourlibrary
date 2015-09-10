@@ -64,20 +64,9 @@ function play_library_program_entity_insert($entity, $type) {
   if ($entity->type !== 'activity_entry') {
     _play_library_program_invoke_activity_entry_hooks($entity, $type);
   }
+
   if ($entity->type == 'activity_entry') {
-    // Start figure out which activity is associated with entry.
-    $activity_id = $entity->field_activity_entry_activity[LANGUAGE_NONE][0]['target_id'];
-    $activities = entity_load('activity', array($activity_id));
-    $activity = reset($activities);
-    $points = intval($activity->field_activity_points[LANGUAGE_NONE][0]['value']);
-    $current_participation_count = play_library_program_retrieve_activity_participation($activity_id, $entity->uid);
-    if ($points > 0 && $current_participation_count <= $activity->field_activity_limit[LANGUAGE_NONE][0]['value']) {
-      $userpoints_txn = array(
-        'uid' => $entity->uid,
-        'points' => $points,
-      );
-      userpoints_userpointsapi($userpoints_txn);
-    }
+    _play_library_program_process_activity_entry($entity, $type);
   }
 
   if ($entity->type == 'reward_claim') {
@@ -128,7 +117,7 @@ function play_library_program_create_activity_entry($activity_id, $account_id) {
 }
 
 /**
- * Creates a new activity entry
+ * Creates a new reward claim
  */
 function play_library_program_create_reward_claim($reward_id, $account_id) {
   $rewards = entity_load('reward', array($reward_id));
@@ -137,6 +126,40 @@ function play_library_program_create_reward_claim($reward_id, $account_id) {
   $reward_claim = entity_create('reward', array('type' => 'reward_claim', 'title' => $title, 'uid' => $account_id));
   $reward_claim->field_reward_claim_id[LANGUAGE_NONE][0]['target_id'] = $reward->id;
   entity_save('activity', $reward_claim);
+}
+
+/**
+ * Creates a new raffle entry
+ */
+function play_library_program_create_raffle_entry($raffle_id, $account_id) {
+  $raffles = entity_load('raffle', array($raffle_id));
+  $raffle = reset($raffles);
+  $title = t("@raffle on @time", array('@raffle' => $raffle->title, '@time' => date('Y-m-d H:i')));
+  $raffle_entry = entity_create('raffle', array('type' => 'raffle_entry', 'title' => $title, 'uid' => $account_id));
+  $raffle_entry->field_raffle_entry_raffle[LANGUAGE_NONE][0]['target_id'] = $raffle->id;
+  entity_save('raffle', $raffle_entry);
+}
+
+/**
+ * Creates a new raffle entry
+ */
+function play_library_program_add_user_badge($badge_id, $account_id) {
+  $query = new EntityFieldQuery();
+  $query->entityCondition('entity_type', 'badge');
+  $query->entityCondition('bundle', 'user_badge');
+  $query->propertyCondition('uid', $account_id);
+  $query->fieldCondition('field_user_badge_id', 'target_id', $badge_id);
+  $count = $query->count()->execute();
+  if (!empty($count)) {
+    return;
+  }
+
+  $badges = entity_load('badge', array($badge_id));
+  $badge = reset($badges);
+  $title = t("@badge on @time", array('@badge' => $badge->title, '@time' => date('Y-m-d H:i')));
+  $user_badge = entity_create('badge', array('type' => 'user_badge', 'title' => $title, 'uid' => $account_id));
+  $user_badge->field_user_badge_id[LANGUAGE_NONE][0]['target_id'] = $badge->id;
+  entity_save('raffle', $user_badge);
 }
 
 /**
@@ -205,6 +228,33 @@ function _play_library_program_invoke_activity_entry_hooks($entity, $type) {
 /**
  * Processes a reward claim.
  */
+function _play_library_program_process_activity_entry($entity, $type) {
+  // Start figure out which activity is associated with entry.
+  $activity_id = $entity->field_activity_entry_activity[LANGUAGE_NONE][0]['target_id'];
+  $activities = entity_load('activity', array($activity_id));
+  $activity = reset($activities);
+  $points = intval($activity->field_activity_points[LANGUAGE_NONE][0]['value']);
+  $current_participation_count = play_library_program_retrieve_activity_participation($activity_id, $entity->uid);
+  if ($points > 0 && $current_participation_count <= $activity->field_activity_limit[LANGUAGE_NONE][0]['value']) {
+    $userpoints_txn = array(
+      'uid' => $entity->uid,
+      'points' => $points,
+    );
+    userpoints_userpointsapi($userpoints_txn);
+  }
+}
+
+/**
+ * Processes a reward claim.
+ */
 function _play_library_program_process_user_reward_claim($entity, $type) {
-  dpm($entity);
+  $account_uid = $entity->uid;
+  $rewards = entity_load('reward', array($entity->field_reward_claim_id[LANGUAGE_NONE][0]['target_id']));
+  $reward = reset($rewards);
+  if (!empty($reward->field_reward_raffle)) {
+    play_library_program_create_raffle_entry($reward->field_reward_raffle[LANGUAGE_NONE][0]['target_id'], $account_uid);
+  }
+  if (!empty($reward->field_reward_badge)) {
+    play_library_program_add_user_badge($reward->field_reward_badge[LANGUAGE_NONE][0]['target_id'], $account_uid);
+  }
 }
