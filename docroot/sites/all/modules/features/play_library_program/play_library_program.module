@@ -63,20 +63,7 @@ function play_library_program_entity_insert($entity, $type) {
   // Also hardcoding that we do not create *new* activity entries for an
   // activity entry.
   if ($entity->type !== 'activity_entry') {
-    $hook = "entity_insert|{$type}|{$entity->type}";
-    $query = new EntityFieldQuery();
-    $query->entityCondition('entity_type', 'activity');
-    $query->entityCondition('bundle', 'activity');
-    $query->fieldCondition('field_activity_fired_hook', 'value', $hook);
-    $result = $query->execute();
-    foreach ($result as $entity_key => $entity_values) {
-      if ($entity_key == 'activity') {
-        foreach ($entity_values as $activity_entity) {
-          $account = user_load($entity->uid);
-          play_library_program_create_activity_entry($activity_entity, $account);
-        }
-      }
-    }
+    _play_library_program_invoke_activity_entry_hooks($entity, $type);
   }
   if ($entity->type == 'activity_entry') {
     // Start figure out which activity is associated with entry.
@@ -97,10 +84,10 @@ function play_library_program_entity_insert($entity, $type) {
 }
 
 function play_library_program_userpoints($op, &$params = array()) {
-  /*
   if ($op == 'points after') {
     $user_points = userpoints_get_current_points($params['uid']);
     $added_points = $params['points'];
+    
     dpm($user_points, 'userpoints');
     dpm($added_points, 'added points');
     // Check global rewards
@@ -133,4 +120,24 @@ function play_library_program_create_activity_entry($entity, $account) {
   $activity_entry = entity_create('activity', array('type' => 'activity_entry', 'title' => $title, 'uid' => $account->uid));
   $activity_entry->field_activity_entry_activity[LANGUAGE_NONE][0]['target_id'] = $activity->id;
   entity_save('activity', $activity_entry);
+}
+
+/**
+ * Performs general firing hook check to create new activity entries
+ */
+function _play_library_program_invoke_activity_entry_hooks($entity, $type) {
+  $hook = "entity_insert|{$type}|{$entity->type}";
+  $query = new EntityFieldQuery();
+  $query->entityCondition('entity_type', 'activity');
+  $query->entityCondition('bundle', 'activity');
+  $query->fieldCondition('field_activity_fired_hook', 'value', $hook);
+  $result = $query->execute();
+  foreach ($result as $entity_key => $entity_values) {
+    if ($entity_key == 'activity') {
+      foreach ($entity_values as $activity_entity) {
+        $account = user_load($entity->uid);
+        play_library_program_create_activity_entry($activity_entity, $account);
+      }
+    }
+  }
 }
