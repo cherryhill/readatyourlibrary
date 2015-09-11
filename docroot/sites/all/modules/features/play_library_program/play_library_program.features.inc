@@ -91,6 +91,12 @@ function play_library_program_eck_bundle_info() {
       'name' => 'reward_claim',
       'label' => 'Reward Claim',
     ),
+    'reward_reward_criteria' => array(
+      'machine_name' => 'reward_reward_criteria',
+      'entity_type' => 'reward',
+      'name' => 'reward_criteria',
+      'label' => 'Reward Criteria',
+    ),
   );
   return $items;
 }

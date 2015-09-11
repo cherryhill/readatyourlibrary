@@ -1119,6 +1119,152 @@ function play_library_program_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'reward-reward_criteria-field_reward_criteria_activity'
+  $field_instances['reward-reward_criteria-field_reward_criteria_activity'] = array(
+    'bundle' => 'reward_criteria',
+    'default_value_function' => '',
+    'deleted' => 0,
+    'description' => 'To tie the criteria with a specific activity, select or create a new activity. Note that the repeat criteria does *not* with the specific activities.',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'entityreference',
+        'settings' => array(
+          'link' => FALSE,
+        ),
+        'type' => 'entityreference_label',
+        'weight' => 2,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'reward',
+    'field_name' => 'field_reward_criteria_activity',
+    'label' => 'Reward Criteria Activity',
+    'required' => 0,
+    'settings' => array(
+      'behaviors' => array(
+        'prepopulate' => array(
+          'status' => 0,
+        ),
+      ),
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'inline_entity_form',
+      'settings' => array(
+        'fields' => array(),
+        'type_settings' => array(
+          'allow_existing' => 1,
+          'allow_new' => 1,
+          'delete_references' => 0,
+          'label_plural' => 'entities',
+          'label_singular' => 'entity',
+          'match_operator' => 'CONTAINS',
+          'override_labels' => 0,
+        ),
+      ),
+      'type' => 'inline_entity_form',
+      'weight' => 3,
+    ),
+  );
+
+  // Exported field_instance: 'reward-reward_criteria-field_reward_criteria_point_mark'
+  $field_instances['reward-reward_criteria-field_reward_criteria_point_mark'] = array(
+    'bundle' => 'reward_criteria',
+    'default_value' => array(
+      0 => array(
+        'value' => 1,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => 'These are the number of *overall* points required to satisfy the requirements for a reward. These points can be earned through any activity. If you wish to track criteria by a specific activity, enter a large value (like 9999)',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'number',
+        'settings' => array(
+          'decimal_separator' => '.',
+          'prefix_suffix' => TRUE,
+          'scale' => 0,
+          'thousand_separator' => ' ',
+        ),
+        'type' => 'number_integer',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'reward',
+    'field_name' => 'field_reward_criteria_point_mark',
+    'label' => 'Global Points',
+    'required' => 1,
+    'settings' => array(
+      'max' => '',
+      'min' => 1,
+      'prefix' => '',
+      'suffix' => '',
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'number',
+      'settings' => array(),
+      'type' => 'number',
+      'weight' => 1,
+    ),
+  );
+
+  // Exported field_instance: 'reward-reward_criteria-field_reward_criteria_repeatable'
+  $field_instances['reward-reward_criteria-field_reward_criteria_repeatable'] = array(
+    'bundle' => 'reward_criteria',
+    'default_value' => array(
+      0 => array(
+        'value' => 0,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => 'Is this criteria repeatable? Note that this *only* works with the global points criteria.',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 1,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'reward',
+    'field_name' => 'field_reward_criteria_repeatable',
+    'label' => 'Repeatable',
+    'required' => 1,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_buttons',
+      'weight' => 2,
+    ),
+  );
+
   // Translatables
   // Included for use with string extractors like potx.
   t('AAR Marker');
@@ -1132,21 +1278,27 @@ function play_library_program_field_default_field_instances() {
   t('Create Achievements for doing a particular activity multiple times!');
   t('Default number of points user gets for doing activity each time.');
   t('Define the reward the user will get for hitting the achievement marker.');
+  t('Global Points');
+  t('Is this criteria repeatable? Note that this *only* works with the global points criteria.');
   t('Limit');
   t('Number of points user must get to win reward.');
   t('PDR Point Marker');
   t('Raffle Entry Raffle');
   t('Raffle Winner');
   t('Raffle Winner Raffle');
+  t('Repeatable');
   t('Repeatable Point');
   t('Reward Badge');
   t('Reward Claim ID');
+  t('Reward Criteria Activity');
   t('Reward Message');
   t('Reward Notification');
   t('Reward Raffle');
   t('Select when the activity should be fired. Such as when a user signs up, when content is created/published, etc. If you do not select one, the option will show up in the activity menu for the user to select.');
+  t('These are the number of *overall* points required to satisfy the requirements for a reward. These points can be earned through any activity. If you wish to track criteria by a specific activity, enter a large value (like 9999)');
   t('This the message notification sent out to the user, librarian for any physical rewards for the user.');
   t('This will be the message sent to the user for winning this. Please fill this out if they are winning a physical prize so they can try to redeem it.');
+  t('To tie the criteria with a specific activity, select or create a new activity. Note that the repeat criteria does *not* with the specific activities.');
   t('Total limit on the number of times a user can perform activity in order to gain points. Minimum 1. To act as \'unlimited\', use a very high integer value (like 9999).');
   t('User Badge ID');
   t('pdr_point_reward');
