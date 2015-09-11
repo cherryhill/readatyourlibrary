@@ -221,7 +221,7 @@ function _play_library_program_process_user_reward_claim($entity, $type) {
  */
 function _play_library_program_get_tier_reward_ids($user_pre_points, $user_points) {
   // Create exclusion list of rewards which are tied to activities.
-  $exclude_ids = array();
+  $exclude_ids = array(-1);
   $query = db_select('field_data_field_reward_criteria_activity', 'fdfrca');
   $query->fields('fdfrca', array('entity_id'));
   $results = $query->execute();
@@ -243,7 +243,7 @@ function _play_library_program_get_tier_reward_ids($user_pre_points, $user_point
     foreach($results['reward'] as $reward) {
       $reward_entities = entity_load('reward', array($reward->id));
       $reward_entity = reset($reward_entities);
-      $rids[] = $reward_entity->field_pdr_point_reward[LANGUAGE_NONE][0]['target_id'];
+      $rids[] = $reward_entity->field_reward_criteria_reward[LANGUAGE_NONE][0]['target_id'];
     }
   }
 
@@ -258,10 +258,10 @@ function _play_library_program_get_tier_reward_ids($user_pre_points, $user_point
     foreach($results['reward'] as $reward) {
       $reward_entities = entity_load('reward', array($reward->id));
       $reward_entity = reset($reward_entities);
-      $modulus = $reward_entity->field_pdr_point_marker[LANGUAGE_NONE][0]['value'];
+      $modulus = $reward_entity->field_reward_criteria_point_mark[LANGUAGE_NONE][0]['value'];
       for ($i = $user_points; $i > $user_pre_points; $i--) {
         if ($i % $modulus == 0) {
-          $rids[] = $reward_entity->field_pdr_point_reward[LANGUAGE_NONE][0]['target_id'];
+          $rids[] = $reward_entity->field_reward_criteria_reward[LANGUAGE_NONE][0]['target_id'];
         }
       }
     }
