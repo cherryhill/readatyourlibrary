@@ -31,12 +31,6 @@ function play_library_program_eck_bundle_info() {
       'name' => 'activity',
       'label' => 'Activity',
     ),
-    'activity_activity_achievement_reward' => array(
-      'machine_name' => 'activity_activity_achievement_reward',
-      'entity_type' => 'activity',
-      'name' => 'activity_achievement_reward',
-      'label' => 'Activity Achievement Reward',
-    ),
     'activity_activity_entry' => array(
       'machine_name' => 'activity_activity_entry',
       'entity_type' => 'activity',

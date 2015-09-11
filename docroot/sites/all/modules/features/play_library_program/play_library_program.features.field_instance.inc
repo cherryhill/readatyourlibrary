@@ -10,61 +10,6 @@
 function play_library_program_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'activity-activity-field_activity_achievements'
-  $field_instances['activity-activity-field_activity_achievements'] = array(
-    'bundle' => 'activity',
-    'default_value_function' => '',
-    'deleted' => 0,
-    'description' => 'Create Achievements for doing a particular activity multiple times!',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'entityreference',
-        'settings' => array(
-          'link' => FALSE,
-        ),
-        'type' => 'entityreference_label',
-        'weight' => 4,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'activity',
-    'field_name' => 'field_activity_achievements',
-    'label' => 'Activity Achievements',
-    'required' => 0,
-    'settings' => array(
-      'behaviors' => array(
-        'prepopulate' => array(
-          'status' => 0,
-        ),
-      ),
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'inline_entity_form',
-      'settings' => array(
-        'fields' => array(),
-        'type_settings' => array(
-          'allow_existing' => 0,
-          'allow_new' => 1,
-          'delete_references' => 0,
-          'label_plural' => 'entities',
-          'label_singular' => 'entity',
-          'match_operator' => 'CONTAINS',
-          'override_labels' => 0,
-        ),
-      ),
-      'type' => 'inline_entity_form',
-      'weight' => 6,
-    ),
-  );
-
   // Exported field_instance: 'activity-activity-field_activity_fired_hook'
   $field_instances['activity-activity-field_activity_fired_hook'] = array(
     'bundle' => 'activity',
@@ -244,111 +189,6 @@ function play_library_program_field_default_field_instances() {
       'settings' => array(),
       'type' => 'number',
       'weight' => 3,
-    ),
-  );
-
-  // Exported field_instance: 'activity-activity_achievement_reward-field_aar_marker'
-  $field_instances['activity-activity_achievement_reward-field_aar_marker'] = array(
-    'bundle' => 'activity_achievement_reward',
-    'default_value' => array(
-      0 => array(
-        'value' => 0,
-      ),
-    ),
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'number',
-        'settings' => array(
-          'decimal_separator' => '.',
-          'prefix_suffix' => TRUE,
-          'scale' => 0,
-          'thousand_separator' => ' ',
-        ),
-        'type' => 'number_integer',
-        'weight' => 0,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'activity',
-    'field_name' => 'field_aar_marker',
-    'label' => 'AAR Marker',
-    'required' => 1,
-    'settings' => array(
-      'max' => '',
-      'min' => 0,
-      'prefix' => '',
-      'suffix' => '',
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 0,
-      'module' => 'number',
-      'settings' => array(),
-      'type' => 'number',
-      'weight' => 1,
-    ),
-  );
-
-  // Exported field_instance: 'activity-activity_achievement_reward-field_aar_reward'
-  $field_instances['activity-activity_achievement_reward-field_aar_reward'] = array(
-    'bundle' => 'activity_achievement_reward',
-    'default_value_function' => '',
-    'deleted' => 0,
-    'description' => 'Define the reward the user will get for hitting the achievement marker.',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'entityreference',
-        'settings' => array(
-          'link' => FALSE,
-        ),
-        'type' => 'entityreference_label',
-        'weight' => 1,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'activity',
-    'field_name' => 'field_aar_reward',
-    'label' => 'AAR Reward',
-    'required' => 0,
-    'settings' => array(
-      'behaviors' => array(
-        'prepopulate' => array(
-          'status' => 0,
-        ),
-      ),
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'inline_entity_form',
-      'settings' => array(
-        'fields' => array(),
-        'type_settings' => array(
-          'allow_existing' => FALSE,
-          'allow_new' => 1,
-          'delete_references' => 0,
-          'label_plural' => 'entities',
-          'label_singular' => 'entity',
-          'match_operator' => 'CONTAINS',
-          'override_labels' => 0,
-        ),
-      ),
-      'type' => 'inline_entity_form_single',
-      'weight' => 2,
     ),
   );
 
@@ -1124,7 +964,7 @@ function play_library_program_field_default_field_instances() {
     'bundle' => 'reward_criteria',
     'default_value_function' => '',
     'deleted' => 0,
-    'description' => 'To tie the criteria with a specific activity, select or create a new activity. Note that the repeat criteria does *not* with the specific activities.',
+    'description' => 'To tie the criteria with a specific activity, select or create a new activity. Note that the repeat criteria does *not* work with the specific activities.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -1144,7 +984,7 @@ function play_library_program_field_default_field_instances() {
     ),
     'entity_type' => 'reward',
     'field_name' => 'field_reward_criteria_activity',
-    'label' => 'Reward Criteria Activity',
+    'label' => 'Activity',
     'required' => 0,
     'settings' => array(
       'behaviors' => array(
@@ -1206,7 +1046,7 @@ function play_library_program_field_default_field_instances() {
     ),
     'entity_type' => 'reward',
     'field_name' => 'field_reward_criteria_point_mark',
-    'label' => 'Global Points',
+    'label' => 'Points',
     'required' => 1,
     'settings' => array(
       'max' => '',
@@ -1233,7 +1073,7 @@ function play_library_program_field_default_field_instances() {
       ),
     ),
     'deleted' => 0,
-    'description' => 'Is this criteria repeatable? Note that this *only* works with the global points criteria.',
+    'description' => 'Is this criteria repeatable? Note that this setting is not compatible with an activity.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -1265,40 +1105,91 @@ function play_library_program_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'reward-reward_criteria-field_reward_criteria_reward'
+  $field_instances['reward-reward_criteria-field_reward_criteria_reward'] = array(
+    'bundle' => 'reward_criteria',
+    'default_value_function' => '',
+    'deleted' => 0,
+    'description' => 'The reward (or achievement) the user is going to receive. Rewards consist of badges, raffle entries, and anything else.',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'entityreference',
+        'settings' => array(
+          'link' => FALSE,
+        ),
+        'type' => 'entityreference_label',
+        'weight' => 3,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'reward',
+    'field_name' => 'field_reward_criteria_reward',
+    'label' => 'Reward',
+    'required' => 0,
+    'settings' => array(
+      'behaviors' => array(
+        'prepopulate' => array(
+          'status' => 0,
+        ),
+      ),
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'inline_entity_form',
+      'settings' => array(
+        'fields' => array(),
+        'type_settings' => array(
+          'allow_existing' => 1,
+          'allow_new' => 1,
+          'delete_references' => 0,
+          'label_plural' => 'entities',
+          'label_singular' => 'entity',
+          'match_operator' => 'CONTAINS',
+          'override_labels' => 0,
+        ),
+      ),
+      'type' => 'inline_entity_form',
+      'weight' => 4,
+    ),
+  );
+
   // Translatables
   // Included for use with string extractors like potx.
-  t('AAR Marker');
-  t('AAR Reward');
   t('Activity');
-  t('Activity Achievements');
   t('Activity Fired Hook');
   t('Activity Points');
   t('Badge Image');
   t('Can the points be repeated? If yes, then the reward will be awarded every time the patron passes a marker.');
-  t('Create Achievements for doing a particular activity multiple times!');
   t('Default number of points user gets for doing activity each time.');
-  t('Define the reward the user will get for hitting the achievement marker.');
-  t('Global Points');
-  t('Is this criteria repeatable? Note that this *only* works with the global points criteria.');
+  t('Is this criteria repeatable? Note that this setting is not compatible with an activity.');
   t('Limit');
   t('Number of points user must get to win reward.');
   t('PDR Point Marker');
+  t('Points');
   t('Raffle Entry Raffle');
   t('Raffle Winner');
   t('Raffle Winner Raffle');
   t('Repeatable');
   t('Repeatable Point');
+  t('Reward');
   t('Reward Badge');
   t('Reward Claim ID');
-  t('Reward Criteria Activity');
   t('Reward Message');
   t('Reward Notification');
   t('Reward Raffle');
   t('Select when the activity should be fired. Such as when a user signs up, when content is created/published, etc. If you do not select one, the option will show up in the activity menu for the user to select.');
+  t('The reward (or achievement) the user is going to receive. Rewards consist of badges, raffle entries, and anything else.');
   t('These are the number of *overall* points required to satisfy the requirements for a reward. These points can be earned through any activity. If you wish to track criteria by a specific activity, enter a large value (like 9999)');
   t('This the message notification sent out to the user, librarian for any physical rewards for the user.');
   t('This will be the message sent to the user for winning this. Please fill this out if they are winning a physical prize so they can try to redeem it.');
-  t('To tie the criteria with a specific activity, select or create a new activity. Note that the repeat criteria does *not* with the specific activities.');
+  t('To tie the criteria with a specific activity, select or create a new activity. Note that the repeat criteria does *not* work with the specific activities.');
   t('Total limit on the number of times a user can perform activity in order to gain points. Minimum 1. To act as \'unlimited\', use a very high integer value (like 9999).');
   t('User Badge ID');
   t('pdr_point_reward');
