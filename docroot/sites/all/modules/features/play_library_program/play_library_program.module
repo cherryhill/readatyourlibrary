@@ -81,7 +81,7 @@ function play_library_program_userpoints($op, &$params = array()) {
   if ($op == 'points after') {
     $user_points = userpoints_get_current_points($params['uid']);
     $user_pre_points = $user_points - $params['points'];
-    $tier_rewards = _play_library_program_get_tier_reward_ids($user_pre_points, $user_points);
+    $tier_rewards = _play_library_program_get_global_reward_ids($user_pre_points, $user_points);
     foreach ($tier_rewards as $rid) {
       play_library_program_create_reward_claim($rid, $params['uid']);
     }
@@ -199,6 +199,7 @@ function _play_library_program_process_activity_entry($entity, $type) {
     );
     userpoints_userpointsapi($userpoints_txn);
   }
+  // @TODO. Check against reward criteria.
 }
 
 /**
@@ -219,7 +220,7 @@ function _play_library_program_process_user_reward_claim($entity, $type) {
 /**
  * Retrieves how many times any activity has been performed.
  */
-function _play_library_program_get_tier_reward_ids($user_pre_points, $user_points) {
+function _play_library_program_get_global_reward_ids($user_pre_points, $user_points) {
   // Create exclusion list of rewards which are tied to activities.
   $exclude_ids = array(-1);
   $query = db_select('field_data_field_reward_criteria_activity', 'fdfrca');
