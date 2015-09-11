@@ -67,12 +67,6 @@ function play_library_program_eck_bundle_info() {
       'name' => 'raffle_winner',
       'label' => 'Raffle Winner',
     ),
-    'reward_point_driven_reward' => array(
-      'machine_name' => 'reward_point_driven_reward',
-      'entity_type' => 'reward',
-      'name' => 'point_driven_reward',
-      'label' => 'Point Driven Reward',
-    ),
     'reward_reward' => array(
       'machine_name' => 'reward_reward',
       'entity_type' => 'reward',

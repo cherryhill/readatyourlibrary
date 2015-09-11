@@ -495,152 +495,6 @@ function play_library_program_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'reward-point_driven_reward-field_pdr_point_marker'
-  $field_instances['reward-point_driven_reward-field_pdr_point_marker'] = array(
-    'bundle' => 'point_driven_reward',
-    'default_value' => array(
-      0 => array(
-        'value' => 1,
-      ),
-    ),
-    'deleted' => 0,
-    'description' => 'Number of points user must get to win reward.',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'number',
-        'settings' => array(
-          'decimal_separator' => '.',
-          'prefix_suffix' => TRUE,
-          'scale' => 0,
-          'thousand_separator' => ' ',
-        ),
-        'type' => 'number_integer',
-        'weight' => 0,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'reward',
-    'field_name' => 'field_pdr_point_marker',
-    'label' => 'PDR Point Marker',
-    'required' => 1,
-    'settings' => array(
-      'max' => '',
-      'min' => 1,
-      'prefix' => '',
-      'suffix' => '',
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 0,
-      'module' => 'number',
-      'settings' => array(),
-      'type' => 'number',
-      'weight' => 1,
-    ),
-  );
-
-  // Exported field_instance: 'reward-point_driven_reward-field_pdr_point_repeatable'
-  $field_instances['reward-point_driven_reward-field_pdr_point_repeatable'] = array(
-    'bundle' => 'point_driven_reward',
-    'default_value' => array(
-      0 => array(
-        'value' => 0,
-      ),
-    ),
-    'deleted' => 0,
-    'description' => 'Can the points be repeated? If yes, then the reward will be awarded every time the patron passes a marker.',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'list',
-        'settings' => array(),
-        'type' => 'list_default',
-        'weight' => 1,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'reward',
-    'field_name' => 'field_pdr_point_repeatable',
-    'label' => 'Repeatable Point',
-    'required' => 1,
-    'settings' => array(
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'options',
-      'settings' => array(),
-      'type' => 'options_buttons',
-      'weight' => 2,
-    ),
-  );
-
-  // Exported field_instance: 'reward-point_driven_reward-field_pdr_point_reward'
-  $field_instances['reward-point_driven_reward-field_pdr_point_reward'] = array(
-    'bundle' => 'point_driven_reward',
-    'default_value_function' => '',
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'entityreference',
-        'settings' => array(
-          'link' => FALSE,
-        ),
-        'type' => 'entityreference_label',
-        'weight' => 2,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'reward',
-    'field_name' => 'field_pdr_point_reward',
-    'label' => 'pdr_point_reward',
-    'required' => 0,
-    'settings' => array(
-      'behaviors' => array(
-        'prepopulate' => array(
-          'status' => 0,
-        ),
-      ),
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'inline_entity_form',
-      'settings' => array(
-        'fields' => array(),
-        'type_settings' => array(
-          'allow_existing' => FALSE,
-          'allow_new' => 1,
-          'delete_references' => 0,
-          'label_plural' => 'entities',
-          'label_singular' => 'entity',
-          'match_operator' => 'CONTAINS',
-          'override_labels' => 0,
-        ),
-      ),
-      'type' => 'inline_entity_form_single',
-      'weight' => 3,
-    ),
-  );
-
   // Exported field_instance: 'reward-reward-field_reward_badge'
   $field_instances['reward-reward-field_reward_badge'] = array(
     'bundle' => 'reward',
@@ -1166,18 +1020,14 @@ function play_library_program_field_default_field_instances() {
   t('Activity Fired Hook');
   t('Activity Points');
   t('Badge Image');
-  t('Can the points be repeated? If yes, then the reward will be awarded every time the patron passes a marker.');
   t('Default number of points user gets for doing activity each time.');
   t('Is this criteria repeatable? Note that this setting is not compatible with an activity.');
   t('Limit');
-  t('Number of points user must get to win reward.');
-  t('PDR Point Marker');
   t('Points');
   t('Raffle Entry Raffle');
   t('Raffle Winner');
   t('Raffle Winner Raffle');
   t('Repeatable');
-  t('Repeatable Point');
   t('Reward');
   t('Reward Badge');
   t('Reward Claim ID');
@@ -1192,7 +1042,6 @@ function play_library_program_field_default_field_instances() {
   t('To tie the criteria with a specific activity, select or create a new activity. Note that the repeat criteria does *not* work with the specific activities.');
   t('Total limit on the number of times a user can perform activity in order to gain points. Minimum 1. To act as \'unlimited\', use a very high integer value (like 9999).');
   t('User Badge ID');
-  t('pdr_point_reward');
 
   return $field_instances;
 }
