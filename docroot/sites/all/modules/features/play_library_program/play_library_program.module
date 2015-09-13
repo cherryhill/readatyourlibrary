@@ -125,7 +125,8 @@ function play_library_program_create_reward_claim($reward_id, $account_id) {
   $title = t("@reward on @time", array('@reward' => $reward->title, '@time' => date('Y-m-d H:i')));
   $reward_claim = entity_create('reward', array('type' => 'reward_claim', 'title' => $title, 'uid' => $account_id));
   $reward_claim->field_reward_claim_id[LANGUAGE_NONE][0]['target_id'] = $reward->id;
-  entity_save('activity', $reward_claim);
+  entity_save('reward', $reward_claim);
+  drupal_set_message(t('Congratulations, you have just been rewarded @reward', array('@reward' => $reward->title)));
 }
 
 /**
@@ -199,7 +200,10 @@ function _play_library_program_process_activity_entry($entity, $type) {
     );
     userpoints_userpointsapi($userpoints_txn);
   }
-  // @TODO. Check against reward criteria.
+  $activity_rewards = _play_library_program_get_activity_reward_ids($activity_id, $current_participation_count);
+  foreach ($activity_rewards as $rid) {
+    play_library_program_create_reward_claim($rid, $entity->uid);
+  }
 }
 
 /**
@@ -218,7 +222,7 @@ function _play_library_program_process_user_reward_claim($entity, $type) {
 }
 
 /**
- * Retrieves how many times any activity has been performed.
+ * Retrieves satisfied reward criteria based on global points.
  */
 function _play_library_program_get_global_reward_ids($user_pre_points, $user_points) {
   // Create exclusion list of rewards which are tied to activities.
@@ -264,6 +268,48 @@ function _play_library_program_get_global_reward_ids($user_pre_points, $user_poi
         if ($i % $modulus == 0) {
           $rids[] = $reward_entity->field_reward_criteria_reward[LANGUAGE_NONE][0]['target_id'];
         }
+      }
+    }
+  }
+
+  return $rids;
+}
+
+/**
+ * Retrieves satisfied reward criteria based on total number of completed activity.
+ */
+function _play_library_program_get_activity_reward_ids($activity_id, $user_activity_completed) {
+  $rids = array();
+  // Get the non-repeated rewards first.
+  $query = new EntityFieldQuery();
+  $query->entityCondition('entity_type', 'reward');
+  $query->entityCondition('bundle', 'reward_criteria');
+  $query->fieldCondition('field_reward_criteria_activity ', 'target_id', $activity_id);
+  $query->fieldCondition('field_reward_criteria_point_mark', 'value', $user_activity_completed);
+  $query->fieldCondition('field_reward_criteria_repeatable', 'value', 0);
+  $results = $query->execute();
+  if (!empty($results['reward'])) {
+    foreach($results['reward'] as $reward) {
+      $reward_entities = entity_load('reward', array($reward->id));
+      $reward_entity = reset($reward_entities);
+      $rids[] = $reward_entity->field_reward_criteria_reward[LANGUAGE_NONE][0]['target_id'];
+    }
+  }
+
+  // Process the repeated ones next.
+  $query = new EntityFieldQuery();
+  $query->entityCondition('entity_type', 'reward');
+  $query->entityCondition('bundle', 'reward_criteria');
+  $query->fieldCondition('field_reward_criteria_activity ', 'target_id', $activity_id);
+  $query->fieldCondition('field_reward_criteria_repeatable', 'value', 1);
+  $results = $query->execute();
+  if (!empty($results['reward'])) {
+    foreach($results['reward'] as $reward) {
+      $reward_entities = entity_load('reward', array($reward->id));
+      $reward_entity = reset($reward_entities);
+      $modulus = $reward_entity->field_reward_criteria_point_mark[LANGUAGE_NONE][0]['value'];
+      if ($user_activity_completed % $modulus == 0) {
+        $rids[] = $reward_entity->field_reward_criteria_reward[LANGUAGE_NONE][0]['target_id'];
       }
     }
   }
