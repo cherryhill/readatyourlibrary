@@ -1,0 +1,23 @@
+<?php
+
+/**
+ * Implements hook_install().
+ */
+function payl_program_customizations_install() {
+  
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function payl_program_customizations_uninstall() {
+  
+}
+
+/**
+ * Uninstall auto username module.
+ */
+function payl_program_customizations_update_7000() {
+  module_disable(array('auto_username'));
+  drupal_uninstall_modules(array('auto_username'));
+}
