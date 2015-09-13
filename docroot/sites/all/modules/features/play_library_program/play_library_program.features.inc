@@ -157,6 +157,27 @@ function play_library_program_eck_entity_type_info() {
         ),
       ),
     ),
+    'reward' => array(
+      'name' => 'reward',
+      'label' => 'Reward',
+      'properties' => array(
+        'title' => array(
+          'label' => 'Title',
+          'type' => 'text',
+          'behavior' => 'title',
+        ),
+        'uid' => array(
+          'label' => 'Author',
+          'type' => 'integer',
+          'behavior' => 'author',
+        ),
+        'created' => array(
+          'label' => 'Created',
+          'type' => 'integer',
+          'behavior' => 'created',
+        ),
+      ),
+    ),
   );
   return $items;
 }

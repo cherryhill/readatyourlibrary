@@ -50,6 +50,19 @@ function play_library_program_views_default_views() {
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'eck_activity';
   $handler->display->display_options['fields']['title']['field'] = 'title';
+  /* Field: Activity: Activity Points */
+  $handler->display->display_options['fields']['field_activity_points']['id'] = 'field_activity_points';
+  $handler->display->display_options['fields']['field_activity_points']['table'] = 'field_data_field_activity_points';
+  $handler->display->display_options['fields']['field_activity_points']['field'] = 'field_activity_points';
+  $handler->display->display_options['fields']['field_activity_points']['settings'] = array(
+    'thousand_separator' => ' ',
+    'prefix_suffix' => 1,
+  );
+  /* Field: Activity: Activity Fired Hook */
+  $handler->display->display_options['fields']['field_activity_fired_hook']['id'] = 'field_activity_fired_hook';
+  $handler->display->display_options['fields']['field_activity_fired_hook']['table'] = 'field_data_field_activity_fired_hook';
+  $handler->display->display_options['fields']['field_activity_fired_hook']['field'] = 'field_activity_fired_hook';
+  $handler->display->display_options['fields']['field_activity_fired_hook']['label'] = 'Trigger';
   /* Field: Activity: Link */
   $handler->display->display_options['fields']['view_link']['id'] = 'view_link';
   $handler->display->display_options['fields']['view_link']['table'] = 'eck_activity';
@@ -258,6 +271,26 @@ function play_library_program_views_default_views() {
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'eck_reward';
   $handler->display->display_options['fields']['title']['field'] = 'title';
+  /* Field: Reward: Points */
+  $handler->display->display_options['fields']['field_reward_criteria_point_mark']['id'] = 'field_reward_criteria_point_mark';
+  $handler->display->display_options['fields']['field_reward_criteria_point_mark']['table'] = 'field_data_field_reward_criteria_point_mark';
+  $handler->display->display_options['fields']['field_reward_criteria_point_mark']['field'] = 'field_reward_criteria_point_mark';
+  $handler->display->display_options['fields']['field_reward_criteria_point_mark']['label'] = 'Point Criteria';
+  $handler->display->display_options['fields']['field_reward_criteria_point_mark']['settings'] = array(
+    'thousand_separator' => ' ',
+    'prefix_suffix' => 1,
+  );
+  /* Field: Reward: Repeatable */
+  $handler->display->display_options['fields']['field_reward_criteria_repeatable']['id'] = 'field_reward_criteria_repeatable';
+  $handler->display->display_options['fields']['field_reward_criteria_repeatable']['table'] = 'field_data_field_reward_criteria_repeatable';
+  $handler->display->display_options['fields']['field_reward_criteria_repeatable']['field'] = 'field_reward_criteria_repeatable';
+  /* Field: Reward: Activity */
+  $handler->display->display_options['fields']['field_reward_criteria_activity']['id'] = 'field_reward_criteria_activity';
+  $handler->display->display_options['fields']['field_reward_criteria_activity']['table'] = 'field_data_field_reward_criteria_activity';
+  $handler->display->display_options['fields']['field_reward_criteria_activity']['field'] = 'field_reward_criteria_activity';
+  $handler->display->display_options['fields']['field_reward_criteria_activity']['settings'] = array(
+    'link' => 0,
+  );
   /* Field: Reward: Link */
   $handler->display->display_options['fields']['view_link']['id'] = 'view_link';
   $handler->display->display_options['fields']['view_link']['table'] = 'eck_reward';
