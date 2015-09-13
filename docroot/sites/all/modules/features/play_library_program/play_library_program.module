@@ -7,12 +7,101 @@
 include_once 'play_library_program.features.inc';
 
 /**
+ * Access control to access activity entry creation.
+ */
+function play_library_program_access_activity_entry($activity_id) {
+  global $user;
+  $activities = entity_load('activity', array($activity_id));
+  $activity = reset($activities);
+  $points = intval($activity->field_activity_points[LANGUAGE_NONE][0]['value']);
+  $daily_limit = FALSE;
+  $current_participation_count = play_library_program_retrieve_activity_participation($activity_id, $user->uid);
+  if ($current_participation_count > 0) {
+    $last_entry = db_query("SELECT created FROM {eck_activity} WHERE uid = :uid ORDER BY created DESC LIMIT 1", array(':uid' => $user->uid))->fetchField();
+    if ((time() - 86400) < $last_entry) {
+      return FALSE;
+    }
+  }
+  if ($points > 0 && $current_participation_count <= $activity->field_activity_limit[LANGUAGE_NONE][0]['value']) {
+    return user_access('eck add activity activity_entry entities') || user_access('eck add activity entities') || user_access('eck add entities');
+  }
+  return FALSE;
+}
+
+/**
+ * Implements hook_block_info().
+ */
+function play_library_program_block_info() {
+  $blocks = array();
+
+  $blocks['activities'] = array(
+    'info' => t('PLAY Program activities'),
+    'cache' => DRUPAL_NO_CACHE
+  );
+
+  return $blocks;
+}
+
+/**
+ * Implements hook_block_view().
+ */
+function play_library_program_block_view($delta = '') {
+  $block = array();
+
+  if ($delta == 'activities') {
+    $pending_activities = array();
+    $completed_activities = array();
+    $query = new EntityFieldQuery();
+    $query->entityCondition('entity_type', 'activity');
+    $query->entityCondition('bundle', 'activity');
+    $query->fieldCondition('field_activity_fired_hook', 'value', 'via_block');
+    $result = $query->execute();
+    foreach ($result as $entity_key => $entity_values) {
+      if ($entity_key == 'activity') {
+        foreach ($entity_values as $entity) {
+          $activities = entity_load('activity', array($entity->id));
+          $activity = reset($activities);
+          if (play_library_program_access_activity_entry($entity->id)) {
+            $pending_activities[] = l($activity->title, "play-library-program/add/activity/{$activity->id}/nojs");
+          }
+          else {
+            $completed_activities[] = check_plain($activity->title);
+          }
+        }
+      }
+    }
+    $block['subject'] = t('What did you do today?');
+    $block['content'] = theme('play_library_program_activities_block', array('pending' => $pending_activities, 'completed' => $completed_activities));
+  }
+
+  return $block;
+}
+
+/**
+ * Implements hook_menu().
+ */
+function play_library_program_menu() {
+  $items = array();
+
+  $items['play-library-program/add/activity/%/%'] = array(
+    'title' => 'Complete Activity',
+    'page callback' => 'play_library_program_complete_activity',
+    'page arguments' => array(3, 4),
+    'access callback' => 'play_library_program_access_activity_entry',
+    'access arguments' => array(3),
+    'type' => MENU_CALLBACK,
+  );
+
+  return $items;
+}
+
+/**
  * Implements hook_field_widget_form_alter().
  */
 function play_library_program_field_widget_form_alter(&$element, &$form_state, $context) {
   if (isset($element['value']['#field_name']) && $element['value']['#field_name'] == 'field_activity_fired_hook') {
     $options = array(
-      '' => t('- Select Firing Hook -'),
+      'via_block' => t('- Select Firing Hook -'),
       'user_insert' => t('User just registered'),
     );
     // For now, only deal with nodes and other ECK content models.
@@ -75,6 +164,18 @@ function play_library_program_entity_insert($entity, $type) {
 }
 
 /**
+ * Implements hook_theme().
+ */
+function play_library_program_theme($existing, $type, $theme, $path) {
+  return array(
+    'play_library_program_activities_block' => array(
+      'variables' => array('pending' => NULL, 'completed' => NULL),
+      'template' => 'play-library-program-activities-block',
+    ),
+  );
+}
+
+/**
  * Implements hook_userpoints().
  */
 function play_library_program_userpoints($op, &$params = array()) {
@@ -89,6 +190,14 @@ function play_library_program_userpoints($op, &$params = array()) {
     $query = new EntityFieldQuery();
     $query->entityCondition('entity_type', 'activity');
     $query->entityCondition('bundle', 'activity');
+  }
+}
+
+function play_library_program_complete_activity($activity_id, $type = 'nojs') {
+  global $user;
+  $activity_entry = play_library_program_create_activity_entry($activity_id, $user->uid);
+  if ($type == 'nojs') {
+    drupal_goto('');
   }
 }
 
