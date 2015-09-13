@@ -22,8 +22,9 @@
 
       $('.form-item-name').hide();
       $('.field-widget-random-list-widget-randomizer').each(function(index) {
-        fieldname = $(this).find('label').html();
-        $(this).find('.random-list-widget-regenerate').attr('value', 'Regerate ' + fieldname);
+        fieldname = 'Regenerate ' + $(this).find('label').html();
+        $(this).find('input.random-list-widget-regenerate').val(fieldname);
+        $(this).find('button.random-list-widget-regenerate').html(fieldname);
       });
       $('.field-widget-random-list-widget-randomizer .form-type-textfield').hide();
       $('.random-list-widget').attr('readonly', true);
