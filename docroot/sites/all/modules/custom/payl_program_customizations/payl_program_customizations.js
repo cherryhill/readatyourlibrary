@@ -12,15 +12,41 @@
         var birthday_timestamp = Math.floor(birthday.getTime() / 1000);
         // More than 13 years old.
         if (birthday_timestamp < Drupal.settings.payl_program_customizations_birthday_limit) {
-          console.log('old!');
-          $('#edit-field-username').show();
+          $('.form-item-name').show();
         }
         // Less than 13 years old.
         else {
-          $('#edit-field-username').hide();
+          $('.form-item-name').hide();
         }
       });
-      $('#edit-field-username').hide();
+
+      $('.form-item-name').hide();
+      $('.field-widget-random-list-widget-randomizer').each(function(index) {
+        fieldname = $(this).find('label').html();
+        $(this).find('.random-list-widget-regenerate').attr('value', 'Regerate ' + fieldname);
+      });
+      $('.field-widget-random-list-widget-randomizer .form-type-textfield').hide();
+      $('.random-list-widget').attr('readonly', true);
+      $('.random-list-widget-regenerate').click(function() {
+        setTimeout(function() {
+          var name = '';
+          $('.random-list-widget').each(function(index) {
+            name = name + $(this).val();
+          });
+          $('#edit-name').val(name);
+          payl_program_customizations_change_name();
+        }, 50);
+      });
+      $('#edit-name').keyup(payl_program_customizations_change_name);
+
+      setTimeout(function() {
+        $('.random-list-widget-regenerate').click();
+      }, 150);
     }
+  }
+
+  function payl_program_customizations_change_name() {
+    name = $('#edit-name').val();
+    $('.current-username').html(name);
   }
 })(jQuery);
