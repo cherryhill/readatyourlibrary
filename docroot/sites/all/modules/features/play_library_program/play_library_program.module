@@ -18,7 +18,7 @@ function play_library_program_access_activity_entry($activity_id) {
   $current_participation_count = play_library_program_retrieve_activity_participation($activity_id, $user->uid);
   if ($current_participation_count > 0) {
     $last_entry = db_query("SELECT created FROM {eck_activity} WHERE uid = :uid ORDER BY created DESC LIMIT 1", array(':uid' => $user->uid))->fetchField();
-    if ((time() - 86400) < $last_entry) {
+    if ((time() - $activity->field_activity_time_limit[LANGUAGE_NONE][0]['value']) < $last_entry) {
       return FALSE;
     }
   }

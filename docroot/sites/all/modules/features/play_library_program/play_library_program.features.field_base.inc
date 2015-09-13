@@ -96,6 +96,34 @@ function play_library_program_field_default_field_bases() {
     'type' => 'number_integer',
   );
 
+  // Exported field_base: 'field_activity_time_limit'
+  $field_bases['field_activity_time_limit'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_activity_time_limit',
+    'indexes' => array(
+      'value' => array(
+        0 => 'value',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'list',
+    'settings' => array(
+      'allowed_values' => array(
+        0 => 'Anytime',
+        3600 => 'Once per hour',
+        21600 => 'Once per 6 hours',
+        43200 => 'Once per 12 hours',
+        86400 => 'Once per day',
+      ),
+      'allowed_values_function' => '',
+    ),
+    'translatable' => 0,
+    'type' => 'list_integer',
+  );
+
   // Exported field_base: 'field_badge_image'
   $field_bases['field_badge_image'] = array(
     'active' => 1,

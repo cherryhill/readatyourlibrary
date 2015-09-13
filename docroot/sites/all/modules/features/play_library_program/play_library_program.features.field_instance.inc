@@ -192,6 +192,47 @@ function play_library_program_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'activity-activity-field_activity_time_limit'
+  $field_instances['activity-activity-field_activity_time_limit'] = array(
+    'bundle' => 'activity',
+    'default_value' => array(
+      0 => array(
+        'value' => 0,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => 'The activity time limit ties to the activities the user can do as part of the \'what did you do today\' block. This does not apply to activities that are fired by other events.',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 4,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'activity',
+    'field_name' => 'field_activity_time_limit',
+    'label' => 'Activity Time Limit',
+    'required' => 1,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_select',
+      'weight' => 6,
+    ),
+  );
+
   // Exported field_instance: 'activity-activity_entry-field_activity_entry_activity'
   $field_instances['activity-activity_entry-field_activity_entry_activity'] = array(
     'bundle' => 'activity_entry',
@@ -1019,6 +1060,7 @@ function play_library_program_field_default_field_instances() {
   t('Activity');
   t('Activity Fired Hook');
   t('Activity Points');
+  t('Activity Time Limit');
   t('Badge Image');
   t('Default number of points user gets for doing activity each time.');
   t('Is this criteria repeatable? Note that this setting is not compatible with an activity.');
@@ -1035,6 +1077,7 @@ function play_library_program_field_default_field_instances() {
   t('Reward Notification');
   t('Reward Raffle');
   t('Select when the activity should be fired. Such as when a user signs up, when content is created/published, etc. If you do not select one, the option will show up in the activity menu for the user to select.');
+  t('The activity time limit ties to the activities the user can do as part of the \'what did you do today\' block. This does not apply to activities that are fired by other events.');
   t('The reward (or achievement) the user is going to receive. Rewards consist of badges, raffle entries, and anything else.');
   t('These are the number of *overall* points required to satisfy the requirements for a reward. These points can be earned through any activity. If you wish to track criteria by a specific activity, enter a large value (like 9999)');
   t('This the message notification sent out to the user, librarian for any physical rewards for the user.');
