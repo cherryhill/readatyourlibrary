@@ -7,7 +7,7 @@
   Drupal.behaviors.payl_program_customizations = {
     attach: function() {
       Drupal.settings.payl_program_customizations_birthday_limit = parseInt(Drupal.settings.payl_program_customizations_birthday_limit);
-      $('#edit-field-user-birthday-und-0-value-datepicker-popup-0').bind('change', function(date_object) {
+      $('#edit-profile-main-field-user-birthday-und-0-value-datepicker-popup-0').bind('change', function(date_object) {
         var birthday = new Date($(this).val());
         var birthday_timestamp = Math.floor(birthday.getTime() / 1000);
         // More than 13 years old.
