@@ -3,6 +3,13 @@
  * Adds form selector behaviors for setting up random items.
  * May move to ajax down the line.
  */
+// Extend string
+if (typeof String.prototype.startsWith != 'function') {
+  // see below for better implementation!
+  String.prototype.startsWith = function (str){
+    return this.indexOf(str) === 0;
+  };
+}
 (function ($) {
   Drupal.behaviors.payl_program_customizations = {
     attach: function() {
