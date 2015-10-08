@@ -923,6 +923,61 @@ function play_library_program_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'reward-reward_criteria-field_reward_criteria_date_limit'
+  $field_instances['reward-reward_criteria-field_reward_criteria_date_limit'] = array(
+    'bundle' => 'reward_criteria',
+    'deleted' => 0,
+    'description' => 'Date Limit range when the reward criteria is valid.',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'date',
+        'settings' => array(
+          'format_type' => 'long',
+          'fromto' => 'both',
+          'multiple_from' => '',
+          'multiple_number' => '',
+          'multiple_to' => '',
+          'show_remaining_days' => FALSE,
+        ),
+        'type' => 'date_default',
+        'weight' => 4,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'reward',
+    'field_name' => 'field_reward_criteria_date_limit',
+    'label' => 'Date Limit Range',
+    'required' => 1,
+    'settings' => array(
+      'default_value' => 'now',
+      'default_value2' => 'strtotime',
+      'default_value_code' => '',
+      'default_value_code2' => 'now +3 years',
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'date',
+      'settings' => array(
+        'increment' => 15,
+        'input_format' => 'M j Y - g:i:sa',
+        'input_format_custom' => '',
+        'label_position' => 'above',
+        'no_fieldset' => 0,
+        'text_parts' => array(),
+        'year_range' => '-3:+3',
+      ),
+      'type' => 'date_popup',
+      'weight' => 1,
+    ),
+  );
+
   // Exported field_instance: 'reward-reward_criteria-field_reward_criteria_point_mark'
   $field_instances['reward-reward_criteria-field_reward_criteria_point_mark'] = array(
     'bundle' => 'reward_criteria',
@@ -969,7 +1024,7 @@ function play_library_program_field_default_field_instances() {
       'module' => 'number',
       'settings' => array(),
       'type' => 'number',
-      'weight' => 1,
+      'weight' => 0,
     ),
   );
 
@@ -1075,6 +1130,8 @@ function play_library_program_field_default_field_instances() {
   t('Activity Points');
   t('Activity Time Limit');
   t('Badge Image');
+  t('Date Limit Range');
+  t('Date Limit range when the reward criteria is valid.');
   t('Default number of points user gets for doing activity each time.');
   t('Is this criteria repeatable? Note that this setting is not compatible with an activity.');
   t('Number of times a user can perform an activity');

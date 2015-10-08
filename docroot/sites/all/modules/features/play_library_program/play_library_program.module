@@ -336,6 +336,7 @@ function _play_library_program_process_user_reward_claim($entity, $type) {
 function _play_library_program_get_global_reward_ids($user_pre_points, $user_points) {
   // Create exclusion list of rewards which are tied to activities.
   $exclude_ids = array(-1);
+  $date = "" . date('Y-m-d') . " 00:00:00";
   $query = db_select('field_data_field_reward_criteria_activity', 'fdfrca');
   $query->fields('fdfrca', array('entity_id'));
   $results = $query->execute();
@@ -351,6 +352,8 @@ function _play_library_program_get_global_reward_ids($user_pre_points, $user_poi
   $query->propertyCondition('id', $exclude_ids, 'NOT IN');
   $query->fieldCondition('field_reward_criteria_point_mark', 'value', $user_pre_points, '>');
   $query->fieldCondition('field_reward_criteria_point_mark', 'value', $user_points, '<=');
+  $query->fieldCondition('field_reward_criteria_date_limit', 'value', $date, '>=');
+  $query->fieldCondition('field_reward_criteria_date_limit', 'value2', $date, '<=');
   $query->fieldCondition('field_reward_criteria_repeatable', 'value', 0);
   $results = $query->execute();
   if (!empty($results['reward'])) {
@@ -366,6 +369,8 @@ function _play_library_program_get_global_reward_ids($user_pre_points, $user_poi
   $query->entityCondition('entity_type', 'reward');
   $query->entityCondition('bundle', 'reward_criteria');
   $query->propertyCondition('id', $exclude_ids, 'NOT IN');
+  $query->fieldCondition('field_reward_criteria_date_limit', 'value', $date, '>=');
+  $query->fieldCondition('field_reward_criteria_date_limit', 'value2', $date, '<=');
   $query->fieldCondition('field_reward_criteria_repeatable', 'value', 1);
   $results = $query->execute();
   if (!empty($results['reward'])) {
@@ -388,6 +393,7 @@ function _play_library_program_get_global_reward_ids($user_pre_points, $user_poi
  * Retrieves satisfied reward criteria based on total number of completed activity.
  */
 function _play_library_program_get_activity_reward_ids($activity_id, $user_activity_completed) {
+  $date = "" . date('Y-m-d') . " 00:00:00";
   $rids = array();
   // Get the non-repeated rewards first.
   $query = new EntityFieldQuery();
@@ -395,6 +401,8 @@ function _play_library_program_get_activity_reward_ids($activity_id, $user_activ
   $query->entityCondition('bundle', 'reward_criteria');
   $query->fieldCondition('field_reward_criteria_activity ', 'target_id', $activity_id);
   $query->fieldCondition('field_reward_criteria_point_mark', 'value', $user_activity_completed);
+  $query->fieldCondition('field_reward_criteria_date_limit', 'value', $date, '>=');
+  $query->fieldCondition('field_reward_criteria_date_limit', 'value2', $date, '<=');
   $query->fieldCondition('field_reward_criteria_repeatable', 'value', 0);
   $results = $query->execute();
   if (!empty($results['reward'])) {
@@ -410,6 +418,8 @@ function _play_library_program_get_activity_reward_ids($activity_id, $user_activ
   $query->entityCondition('entity_type', 'reward');
   $query->entityCondition('bundle', 'reward_criteria');
   $query->fieldCondition('field_reward_criteria_activity ', 'target_id', $activity_id);
+  $query->fieldCondition('field_reward_criteria_date_limit', 'value', $date, '>=');
+  $query->fieldCondition('field_reward_criteria_date_limit', 'value2', $date, '<=');
   $query->fieldCondition('field_reward_criteria_repeatable', 'value', 1);
   $results = $query->execute();
   if (!empty($results['reward'])) {

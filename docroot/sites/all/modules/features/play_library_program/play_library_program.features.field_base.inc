@@ -354,6 +354,36 @@ function play_library_program_field_default_field_bases() {
     'type' => 'entityreference',
   );
 
+  // Exported field_base: 'field_reward_criteria_date_limit'
+  $field_bases['field_reward_criteria_date_limit'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_reward_criteria_date_limit',
+    'indexes' => array(),
+    'locked' => 0,
+    'module' => 'date',
+    'settings' => array(
+      'cache_count' => 4,
+      'cache_enabled' => 0,
+      'granularity' => array(
+        'day' => 'day',
+        'hour' => 0,
+        'minute' => 0,
+        'month' => 'month',
+        'second' => 0,
+        'year' => 'year',
+      ),
+      'profile2_private' => FALSE,
+      'timezone_db' => '',
+      'todate' => 'required',
+      'tz_handling' => 'none',
+    ),
+    'translatable' => 0,
+    'type' => 'datetime',
+  );
+
   // Exported field_base: 'field_reward_criteria_point_mark'
   $field_bases['field_reward_criteria_point_mark'] = array(
     'active' => 1,
