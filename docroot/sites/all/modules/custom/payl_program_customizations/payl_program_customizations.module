@@ -15,6 +15,16 @@ function payl_program_customizations_form_alter(&$form, &$form_state, $form_id) 
       '#weight' => 1,
     );
     $form['#validate'][] = 'payl_program_customizations_user_register_validate';
+    if (!empty($form['profile_main'])) {
+      $form['profile_main']['field_user_address'][LANGUAGE_NONE][0]['name_block'] = array(
+        '#type' => 'value',
+        '#value' => 'User address',
+      );
+      $form['profile_main']['field_user_address'][LANGUAGE_NONE][0]['organisation_block'] = array(
+        '#type' => 'value',
+        '#value' => '',
+      );
+    }
   }
 }
 
