@@ -14,6 +14,13 @@ function payl_program_customizations_form_alter(&$form, &$form_state, $form_id) 
       '#markup' => '<h3 class="username">Username: <span class="current-username"></span></h3>',
       '#weight' => 1,
     );
+
+    // Move the email element to the main profile.
+    $mail_element = $form['account']['mail'];
+    $mail_element['#weight'] = -100;
+    $form['profile_main']['mail'] = $mail_element;
+    unset($form['account']['mail']);
+
     $form['#validate'][] = 'payl_program_customizations_user_register_validate';
     if (!empty($form['profile_main'])) {
       $form['profile_main']['field_user_address'][LANGUAGE_NONE][0]['name_block'] = array(
