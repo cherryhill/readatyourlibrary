@@ -13,7 +13,11 @@ function play_library_program_field_default_field_instances() {
   // Exported field_instance: 'activity-activity-field_activity_fired_hook'
   $field_instances['activity-activity-field_activity_fired_hook'] = array(
     'bundle' => 'activity',
-    'default_value' => NULL,
+    'default_value' => array(
+      0 => array(
+        'value' => 'via_block',
+      ),
+    ),
     'deleted' => 0,
     'description' => 'Select when the activity should be fired. Such as when a user signs up, when content is created/published, etc. If you do not select one, the option will show up in the activity menu for the user to select.',
     'display' => array(
@@ -33,7 +37,7 @@ function play_library_program_field_default_field_instances() {
     ),
     'entity_type' => 'activity',
     'field_name' => 'field_activity_fired_hook',
-    'label' => 'Activity Fired Hook',
+    'label' => 'When the activity will trigger points',
     'required' => 0,
     'settings' => array(
       'better_formats' => array(
@@ -124,7 +128,7 @@ function play_library_program_field_default_field_instances() {
     ),
     'entity_type' => 'activity',
     'field_name' => 'field_activity_limit',
-    'label' => 'Limit',
+    'label' => 'Number of times a user can perform an activity',
     'required' => 0,
     'settings' => array(
       'max' => '',
@@ -227,7 +231,9 @@ function play_library_program_field_default_field_instances() {
     'widget' => array(
       'active' => 1,
       'module' => 'options',
-      'settings' => array(),
+      'settings' => array(
+        'apply_chosen' => '',
+      ),
       'type' => 'options_select',
       'weight' => 6,
     ),
@@ -434,7 +440,9 @@ function play_library_program_field_default_field_instances() {
     ),
     'widget' => array(
       'module' => 'options',
-      'settings' => array(),
+      'settings' => array(
+        'apply_chosen' => '',
+      ),
       'type' => 'options_select',
       'weight' => 1,
     ),
@@ -530,7 +538,9 @@ function play_library_program_field_default_field_instances() {
     'widget' => array(
       'active' => 1,
       'module' => 'options',
-      'settings' => array(),
+      'settings' => array(
+        'apply_chosen' => '',
+      ),
       'type' => 'options_select',
       'weight' => 1,
     ),
@@ -803,7 +813,9 @@ function play_library_program_field_default_field_instances() {
     'widget' => array(
       'active' => 1,
       'module' => 'options',
-      'settings' => array(),
+      'settings' => array(
+        'apply_chosen' => '',
+      ),
       'type' => 'options_select',
       'weight' => 1,
     ),
@@ -848,7 +860,9 @@ function play_library_program_field_default_field_instances() {
     'widget' => array(
       'active' => 1,
       'module' => 'options',
-      'settings' => array(),
+      'settings' => array(
+        'apply_chosen' => '',
+      ),
       'type' => 'options_select',
       'weight' => 1,
     ),
@@ -1058,13 +1072,12 @@ function play_library_program_field_default_field_instances() {
   // Translatables
   // Included for use with string extractors like potx.
   t('Activity');
-  t('Activity Fired Hook');
   t('Activity Points');
   t('Activity Time Limit');
   t('Badge Image');
   t('Default number of points user gets for doing activity each time.');
   t('Is this criteria repeatable? Note that this setting is not compatible with an activity.');
-  t('Limit');
+  t('Number of times a user can perform an activity');
   t('Points');
   t('Raffle Entry Raffle');
   t('Raffle Winner');
@@ -1085,6 +1098,7 @@ function play_library_program_field_default_field_instances() {
   t('To tie the criteria with a specific activity, select or create a new activity. Note that the repeat criteria does *not* work with the specific activities.');
   t('Total limit on the number of times a user can perform activity in order to gain points. Minimum 1. To act as \'unlimited\', use a very high integer value (like 9999).');
   t('User Badge ID');
+  t('When the activity will trigger points');
 
   return $field_instances;
 }

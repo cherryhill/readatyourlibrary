@@ -58,7 +58,7 @@ function play_library_program_views_default_views() {
     'thousand_separator' => ' ',
     'prefix_suffix' => 1,
   );
-  /* Field: Activity: Activity Fired Hook */
+  /* Field: Activity: When the activity will trigger points */
   $handler->display->display_options['fields']['field_activity_fired_hook']['id'] = 'field_activity_fired_hook';
   $handler->display->display_options['fields']['field_activity_fired_hook']['table'] = 'field_data_field_activity_fired_hook';
   $handler->display->display_options['fields']['field_activity_fired_hook']['field'] = 'field_activity_fired_hook';
