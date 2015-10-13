@@ -115,6 +115,9 @@ function play_library_program_field_widget_form_alter(&$element, &$form_state, $
           $options["entity_insert|{$entity_key}|{$bundle_key}"] = t("Insert new @bundle", array('@bundle' => $bundle_options['label']));
         }
       }
+      if ($entity_key == 'node') {
+        $options["node_update|{$entity_key}|{$bundle_key}|published"] = t("@bundle is set to published", array('@bundle' => $bundle_options['label']));
+      }
     }
     $element['value']['#type'] = 'select';
     $element['value']['#options'] = $options;
