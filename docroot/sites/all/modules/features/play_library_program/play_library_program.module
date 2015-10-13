@@ -113,10 +113,10 @@ function play_library_program_field_widget_form_alter(&$element, &$form_state, $
       if (isset($entity['module']) && ($entity['module'] == 'eck' || $entity['module'] == 'node')) {
         foreach ($entity['bundles'] as $bundle_key => $bundle_options) {
           $options["entity_insert|{$entity_key}|{$bundle_key}"] = t("Insert new @bundle", array('@bundle' => $bundle_options['label']));
+          if ($entity_key == 'node') {
+            $options["node_update|node|{$bundle_key}|published"] = t("@bundle is set to published", array('@bundle' => $bundle_options['label']));
+          }
         }
-      }
-      if ($entity_key == 'node') {
-        $options["node_update|{$entity_key}|{$bundle_key}|published"] = t("@bundle is set to published", array('@bundle' => $bundle_options['label']));
       }
     }
     $element['value']['#type'] = 'select';
