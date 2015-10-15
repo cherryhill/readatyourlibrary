@@ -1,6 +1,33 @@
 <?php
 
 /**
+ * Implements hook_user_load().
+ */
+function payl_program_customizations_user_load($users) {
+  foreach($users as $account) {
+    $profile = profile2_load_by_user($account, 'main');
+    if (!empty($profile) && !empty($profile->field_user_birthday)) {
+      $birthday = new DateObject($profile->field_user_birthday[LANGUAGE_NONE][0]['value']);
+      $now = date_now();
+      $diff = $birthday->difference($now, 'years');
+      if ($diff <= 5) {
+        $account->roles[5] = 'Patron pre-reader';
+      }
+      if ($diff >= 6 && $diff <= 12) {
+        $account->roles[6] = 'Patron kids';
+      }
+      if ($diff >= 13 && $diff <= 17) {
+        $account->roles[7] = 'Patron teen';
+      }
+      if ($diff >= 18) {
+        $account->roles[8] = 'Patron adult';
+      }
+    }
+  }
+  drupal_static_reset('user_access');
+}
+
+/**
  * Implements hook_form_alter().
  */
 function payl_program_customizations_form_alter(&$form, &$form_state, $form_id) {
