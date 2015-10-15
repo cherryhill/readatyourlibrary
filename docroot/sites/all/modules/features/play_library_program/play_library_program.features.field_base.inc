@@ -10,7 +10,7 @@
 function play_library_program_field_default_field_bases() {
   $field_bases = array();
 
-  // Exported field_base: 'field_activity_entry_activity'
+  // Exported field_base: 'field_activity_entry_activity'.
   $field_bases['field_activity_entry_activity'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -45,7 +45,7 @@ function play_library_program_field_default_field_bases() {
     'type' => 'entityreference',
   );
 
-  // Exported field_base: 'field_activity_fired_hook'
+  // Exported field_base: 'field_activity_fired_hook'.
   $field_bases['field_activity_fired_hook'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -66,7 +66,7 @@ function play_library_program_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_activity_limit'
+  // Exported field_base: 'field_activity_limit'.
   $field_bases['field_activity_limit'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -81,7 +81,7 @@ function play_library_program_field_default_field_bases() {
     'type' => 'number_integer',
   );
 
-  // Exported field_base: 'field_activity_points'
+  // Exported field_base: 'field_activity_points'.
   $field_bases['field_activity_points'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -96,7 +96,7 @@ function play_library_program_field_default_field_bases() {
     'type' => 'number_integer',
   );
 
-  // Exported field_base: 'field_activity_time_limit'
+  // Exported field_base: 'field_activity_time_limit'.
   $field_bases['field_activity_time_limit'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -124,7 +124,7 @@ function play_library_program_field_default_field_bases() {
     'type' => 'list_integer',
   );
 
-  // Exported field_base: 'field_badge_image'
+  // Exported field_base: 'field_badge_image'.
   $field_bases['field_badge_image'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -146,7 +146,37 @@ function play_library_program_field_default_field_bases() {
     'type' => 'image',
   );
 
-  // Exported field_base: 'field_raffle_entry_raffle'
+  // Exported field_base: 'field_raffle_date'.
+  $field_bases['field_raffle_date'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_raffle_date',
+    'indexes' => array(),
+    'locked' => 0,
+    'module' => 'date',
+    'settings' => array(
+      'cache_count' => 4,
+      'cache_enabled' => 0,
+      'granularity' => array(
+        'day' => 'day',
+        'hour' => 0,
+        'minute' => 0,
+        'month' => 'month',
+        'second' => 0,
+        'year' => 'year',
+      ),
+      'profile2_private' => FALSE,
+      'timezone_db' => '',
+      'todate' => '',
+      'tz_handling' => 'none',
+    ),
+    'translatable' => 0,
+    'type' => 'datetime',
+  );
+
+  // Exported field_base: 'field_raffle_entry_raffle'.
   $field_bases['field_raffle_entry_raffle'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -181,7 +211,67 @@ function play_library_program_field_default_field_bases() {
     'type' => 'entityreference',
   );
 
-  // Exported field_base: 'field_raffle_winner'
+  // Exported field_base: 'field_raffle_message'.
+  $field_bases['field_raffle_message'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_raffle_message',
+    'indexes' => array(
+      'format' => array(
+        0 => 'format',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'text',
+    'settings' => array(
+      'profile2_private' => FALSE,
+    ),
+    'translatable' => 0,
+    'type' => 'text_long',
+  );
+
+  // Exported field_base: 'field_raffle_reward'.
+  $field_bases['field_raffle_reward'] = array(
+    'active' => 1,
+    'cardinality' => -1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_raffle_reward',
+    'indexes' => array(
+      'target_id' => array(
+        0 => 'target_id',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'entityreference',
+    'settings' => array(
+      'handler' => 'base',
+      'handler_settings' => array(
+        'behaviors' => array(
+          'views-select-list' => array(
+            'status' => 0,
+          ),
+        ),
+        'sort' => array(
+          'type' => 'none',
+        ),
+        'target_bundles' => array(
+          'physical_reward' => 'physical_reward',
+          'print_reward' => 'print_reward',
+          'reward' => 'reward',
+          'sticker' => 'sticker',
+        ),
+      ),
+      'profile2_private' => FALSE,
+      'target_type' => 'reward',
+    ),
+    'translatable' => 0,
+    'type' => 'entityreference',
+  );
+
+  // Exported field_base: 'field_raffle_winner'.
   $field_bases['field_raffle_winner'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -214,7 +304,7 @@ function play_library_program_field_default_field_bases() {
     'type' => 'entityreference',
   );
 
-  // Exported field_base: 'field_raffle_winner_raffle'
+  // Exported field_base: 'field_raffle_winner_raffle'.
   $field_bases['field_raffle_winner_raffle'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -249,7 +339,7 @@ function play_library_program_field_default_field_bases() {
     'type' => 'entityreference',
   );
 
-  // Exported field_base: 'field_reward_badge'
+  // Exported field_base: 'field_reward_badge'.
   $field_bases['field_reward_badge'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -284,7 +374,7 @@ function play_library_program_field_default_field_bases() {
     'type' => 'entityreference',
   );
 
-  // Exported field_base: 'field_reward_claim_id'
+  // Exported field_base: 'field_reward_claim_id'.
   $field_bases['field_reward_claim_id'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -310,16 +400,20 @@ function play_library_program_field_default_field_bases() {
           'type' => 'none',
         ),
         'target_bundles' => array(
+          'physical_reward' => 'physical_reward',
+          'print_reward' => 'print_reward',
           'reward' => 'reward',
+          'sticker' => 'sticker',
         ),
       ),
+      'profile2_private' => FALSE,
       'target_type' => 'reward',
     ),
     'translatable' => 0,
     'type' => 'entityreference',
   );
 
-  // Exported field_base: 'field_reward_criteria_activity'
+  // Exported field_base: 'field_reward_criteria_activity'.
   $field_bases['field_reward_criteria_activity'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -354,7 +448,7 @@ function play_library_program_field_default_field_bases() {
     'type' => 'entityreference',
   );
 
-  // Exported field_base: 'field_reward_criteria_date_limit'
+  // Exported field_base: 'field_reward_criteria_date_limit'.
   $field_bases['field_reward_criteria_date_limit'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -384,7 +478,7 @@ function play_library_program_field_default_field_bases() {
     'type' => 'datetime',
   );
 
-  // Exported field_base: 'field_reward_criteria_point_mark'
+  // Exported field_base: 'field_reward_criteria_point_mark'.
   $field_bases['field_reward_criteria_point_mark'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -399,7 +493,7 @@ function play_library_program_field_default_field_bases() {
     'type' => 'number_integer',
   );
 
-  // Exported field_base: 'field_reward_criteria_repeatable'
+  // Exported field_base: 'field_reward_criteria_repeatable'.
   $field_bases['field_reward_criteria_repeatable'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -424,10 +518,10 @@ function play_library_program_field_default_field_bases() {
     'type' => 'list_boolean',
   );
 
-  // Exported field_base: 'field_reward_criteria_reward'
+  // Exported field_base: 'field_reward_criteria_reward'.
   $field_bases['field_reward_criteria_reward'] = array(
     'active' => 1,
-    'cardinality' => 1,
+    'cardinality' => -1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_reward_criteria_reward',
@@ -450,16 +544,20 @@ function play_library_program_field_default_field_bases() {
           'type' => 'none',
         ),
         'target_bundles' => array(
+          'physical_reward' => 'physical_reward',
+          'print_reward' => 'print_reward',
           'reward' => 'reward',
+          'sticker' => 'sticker',
         ),
       ),
+      'profile2_private' => FALSE,
       'target_type' => 'reward',
     ),
     'translatable' => 0,
     'type' => 'entityreference',
   );
 
-  // Exported field_base: 'field_reward_message'
+  // Exported field_base: 'field_reward_message'.
   $field_bases['field_reward_message'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -478,7 +576,7 @@ function play_library_program_field_default_field_bases() {
     'type' => 'text_long',
   );
 
-  // Exported field_base: 'field_reward_notification'
+  // Exported field_base: 'field_reward_notification'.
   $field_bases['field_reward_notification'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -497,7 +595,7 @@ function play_library_program_field_default_field_bases() {
     'type' => 'text_long',
   );
 
-  // Exported field_base: 'field_reward_raffle'
+  // Exported field_base: 'field_reward_raffle'.
   $field_bases['field_reward_raffle'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -532,7 +630,7 @@ function play_library_program_field_default_field_bases() {
     'type' => 'entityreference',
   );
 
-  // Exported field_base: 'field_user_badge_id'
+  // Exported field_base: 'field_user_badge_id'.
   $field_bases['field_user_badge_id'] = array(
     'active' => 1,
     'cardinality' => 1,

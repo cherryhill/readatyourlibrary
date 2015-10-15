@@ -10,7 +10,7 @@
 function play_library_program_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'activity-activity-field_activity_fired_hook'
+  // Exported field_instance: 'activity-activity-field_activity_fired_hook'.
   $field_instances['activity-activity-field_activity_fired_hook'] = array(
     'bundle' => 'activity',
     'default_value' => array(
@@ -96,7 +96,7 @@ function play_library_program_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'activity-activity-field_activity_limit'
+  // Exported field_instance: 'activity-activity-field_activity_limit'.
   $field_instances['activity-activity-field_activity_limit'] = array(
     'bundle' => 'activity',
     'default_value' => array(
@@ -146,7 +146,7 @@ function play_library_program_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'activity-activity-field_activity_points'
+  // Exported field_instance: 'activity-activity-field_activity_points'.
   $field_instances['activity-activity-field_activity_points'] = array(
     'bundle' => 'activity',
     'default_value' => array(
@@ -196,7 +196,7 @@ function play_library_program_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'activity-activity-field_activity_time_limit'
+  // Exported field_instance: 'activity-activity-field_activity_time_limit'.
   $field_instances['activity-activity-field_activity_time_limit'] = array(
     'bundle' => 'activity',
     'default_value' => array(
@@ -239,7 +239,8 @@ function play_library_program_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'activity-activity_entry-field_activity_entry_activity'
+  // Exported field_instance:
+  // 'activity-activity_entry-field_activity_entry_activity'.
   $field_instances['activity-activity_entry-field_activity_entry_activity'] = array(
     'bundle' => 'activity_entry',
     'default_value' => NULL,
@@ -288,7 +289,7 @@ function play_library_program_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'badge-badge-field_badge_image'
+  // Exported field_instance: 'badge-badge-field_badge_image'.
   $field_instances['badge-badge-field_badge_image'] = array(
     'bundle' => 'badge',
     'deleted' => 0,
@@ -359,7 +360,7 @@ function play_library_program_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'badge-user_badge-field_user_badge_id'
+  // Exported field_instance: 'badge-user_badge-field_user_badge_id'.
   $field_instances['badge-user_badge-field_user_badge_id'] = array(
     'bundle' => 'user_badge',
     'default_value' => NULL,
@@ -408,7 +409,191 @@ function play_library_program_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'raffle-raffle_entry-field_raffle_entry_raffle'
+  // Exported field_instance: 'raffle-raffle-field_raffle_date'.
+  $field_instances['raffle-raffle-field_raffle_date'] = array(
+    'bundle' => 'raffle',
+    'deleted' => 0,
+    'description' => 'Date of Raffle',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 2,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'raffle',
+    'field_name' => 'field_raffle_date',
+    'label' => 'Raffle Date',
+    'required' => 0,
+    'settings' => array(
+      'default_value' => 'now',
+      'default_value2' => 'same',
+      'default_value_code' => '',
+      'default_value_code2' => '',
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'date',
+      'settings' => array(
+        'increment' => 15,
+        'input_format' => 'M j Y - g:i:sa',
+        'input_format_custom' => '',
+        'label_position' => 'above',
+        'no_fieldset' => 0,
+        'text_parts' => array(),
+        'year_range' => '-3:+3',
+      ),
+      'type' => 'date_popup',
+      'weight' => 0,
+    ),
+  );
+
+  // Exported field_instance: 'raffle-raffle-field_raffle_message'.
+  $field_instances['raffle-raffle-field_raffle_message'] = array(
+    'bundle' => 'raffle',
+    'default_value' => array(
+      0 => array(
+        'value' => '',
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 1,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'raffle',
+    'field_name' => 'field_raffle_message',
+    'label' => 'Raffle Message',
+    'required' => 0,
+    'settings' => array(
+      'better_formats' => array(
+        'allowed_formats' => array(
+          'filtered_html' => 'filtered_html',
+          'filtered_html_with_tables' => 'filtered_html_with_tables',
+          'full_html' => 0,
+          'php_code' => 0,
+          'plain_text' => 'plain_text',
+          'simple_html' => 'simple_html',
+        ),
+        'allowed_formats_toggle' => 1,
+        'default_order_toggle' => 0,
+        'default_order_wrapper' => array(
+          'formats' => array(
+            'filtered_html' => array(
+              'weight' => -9,
+            ),
+            'filtered_html_with_tables' => array(
+              'weight' => -7,
+            ),
+            'full_html' => array(
+              'weight' => -6,
+            ),
+            'php_code' => array(
+              'weight' => -4,
+            ),
+            'plain_text' => array(
+              'weight' => -5,
+            ),
+            'simple_html' => array(
+              'weight' => -10,
+            ),
+          ),
+        ),
+      ),
+      'linkit' => array(
+        'enable' => 0,
+        'insert_plugin' => '',
+      ),
+      'text_processing' => 1,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'rows' => 5,
+      ),
+      'type' => 'text_textarea',
+      'weight' => 1,
+    ),
+  );
+
+  // Exported field_instance: 'raffle-raffle-field_raffle_reward'.
+  $field_instances['raffle-raffle-field_raffle_reward'] = array(
+    'bundle' => 'raffle',
+    'default_value_function' => '',
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'entityreference',
+        'settings' => array(
+          'link' => FALSE,
+        ),
+        'type' => 'entityreference_label',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'raffle',
+    'field_name' => 'field_raffle_reward',
+    'label' => 'Raffle Reward',
+    'required' => 0,
+    'settings' => array(
+      'behaviors' => array(
+        'prepopulate' => array(
+          'status' => 0,
+        ),
+      ),
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'inline_entity_form',
+      'settings' => array(
+        'fields' => array(),
+        'type_settings' => array(
+          'allow_existing' => 1,
+          'allow_new' => 1,
+          'delete_references' => 0,
+          'label_plural' => 'entities',
+          'label_singular' => 'entity',
+          'match_operator' => 'CONTAINS',
+          'override_labels' => 0,
+        ),
+      ),
+      'type' => 'inline_entity_form',
+      'weight' => 2,
+    ),
+  );
+
+  // Exported field_instance: 'raffle-raffle_entry-field_raffle_entry_raffle'.
   $field_instances['raffle-raffle_entry-field_raffle_entry_raffle'] = array(
     'bundle' => 'raffle_entry',
     'default_value' => NULL,
@@ -448,7 +633,7 @@ function play_library_program_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'raffle-raffle_winner-field_raffle_winner'
+  // Exported field_instance: 'raffle-raffle_winner-field_raffle_winner'.
   $field_instances['raffle-raffle_winner-field_raffle_winner'] = array(
     'bundle' => 'raffle_winner',
     'default_value' => NULL,
@@ -491,7 +676,7 @@ function play_library_program_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'raffle-raffle_winner-field_raffle_winner_raffle'
+  // Exported field_instance: 'raffle-raffle_winner-field_raffle_winner_raffle'.
   $field_instances['raffle-raffle_winner-field_raffle_winner_raffle'] = array(
     'bundle' => 'raffle_winner',
     'default_value' => NULL,
@@ -546,7 +731,7 @@ function play_library_program_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'reward-reward-field_reward_badge'
+  // Exported field_instance: 'reward-reward-field_reward_badge'.
   $field_instances['reward-reward-field_reward_badge'] = array(
     'bundle' => 'reward',
     'default_value_function' => '',
@@ -601,7 +786,7 @@ function play_library_program_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'reward-reward-field_reward_message'
+  // Exported field_instance: 'reward-reward-field_reward_message'.
   $field_instances['reward-reward-field_reward_message'] = array(
     'bundle' => 'reward',
     'default_value' => array(
@@ -688,7 +873,7 @@ function play_library_program_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'reward-reward-field_reward_notification'
+  // Exported field_instance: 'reward-reward-field_reward_notification'.
   $field_instances['reward-reward-field_reward_notification'] = array(
     'bundle' => 'reward',
     'default_value' => array(
@@ -774,7 +959,7 @@ function play_library_program_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'reward-reward-field_reward_raffle'
+  // Exported field_instance: 'reward-reward-field_reward_raffle'.
   $field_instances['reward-reward-field_reward_raffle'] = array(
     'bundle' => 'reward',
     'default_value' => NULL,
@@ -821,7 +1006,7 @@ function play_library_program_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'reward-reward_claim-field_reward_claim_id'
+  // Exported field_instance: 'reward-reward_claim-field_reward_claim_id'.
   $field_instances['reward-reward_claim-field_reward_claim_id'] = array(
     'bundle' => 'reward_claim',
     'default_value' => NULL,
@@ -868,7 +1053,8 @@ function play_library_program_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'reward-reward_criteria-field_reward_criteria_activity'
+  // Exported field_instance:
+  // 'reward-reward_criteria-field_reward_criteria_activity'.
   $field_instances['reward-reward_criteria-field_reward_criteria_activity'] = array(
     'bundle' => 'reward_criteria',
     'default_value_function' => '',
@@ -923,7 +1109,8 @@ function play_library_program_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'reward-reward_criteria-field_reward_criteria_date_limit'
+  // Exported field_instance:
+  // 'reward-reward_criteria-field_reward_criteria_date_limit'.
   $field_instances['reward-reward_criteria-field_reward_criteria_date_limit'] = array(
     'bundle' => 'reward_criteria',
     'deleted' => 0,
@@ -978,7 +1165,8 @@ function play_library_program_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'reward-reward_criteria-field_reward_criteria_point_mark'
+  // Exported field_instance:
+  // 'reward-reward_criteria-field_reward_criteria_point_mark'.
   $field_instances['reward-reward_criteria-field_reward_criteria_point_mark'] = array(
     'bundle' => 'reward_criteria',
     'default_value' => array(
@@ -1028,7 +1216,8 @@ function play_library_program_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'reward-reward_criteria-field_reward_criteria_repeatable'
+  // Exported field_instance:
+  // 'reward-reward_criteria-field_reward_criteria_repeatable'.
   $field_instances['reward-reward_criteria-field_reward_criteria_repeatable'] = array(
     'bundle' => 'reward_criteria',
     'default_value' => array(
@@ -1069,7 +1258,8 @@ function play_library_program_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'reward-reward_criteria-field_reward_criteria_reward'
+  // Exported field_instance:
+  // 'reward-reward_criteria-field_reward_criteria_reward'.
   $field_instances['reward-reward_criteria-field_reward_criteria_reward'] = array(
     'bundle' => 'reward_criteria',
     'default_value_function' => '',
@@ -1132,11 +1322,15 @@ function play_library_program_field_default_field_instances() {
   t('Badge Image');
   t('Date Limit Range');
   t('Date Limit range when the reward criteria is valid.');
+  t('Date of Raffle');
   t('Default number of points user gets for doing activity each time.');
   t('Is this criteria repeatable? Note that this setting is not compatible with an activity.');
   t('Number of times a user can perform an activity');
   t('Points');
+  t('Raffle Date');
   t('Raffle Entry Raffle');
+  t('Raffle Message');
+  t('Raffle Reward');
   t('Raffle Winner');
   t('Raffle Winner Raffle');
   t('Repeatable');

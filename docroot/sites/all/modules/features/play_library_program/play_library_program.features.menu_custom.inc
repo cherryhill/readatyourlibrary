@@ -21,6 +21,5 @@ function play_library_program_menu_default_menu_custom() {
   t('Navigation');
   t('The <em>Navigation</em> menu contains links intended for site visitors. Links are added to the <em>Navigation</em> menu automatically by some modules.');
 
-
   return $menus;
 }

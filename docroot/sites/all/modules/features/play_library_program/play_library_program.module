@@ -7,6 +7,33 @@
 include_once 'play_library_program.features.inc';
 
 /**
+ * Implements hook_menu().
+ */
+function play_library_program_menu() {
+  $items = array();
+
+  $items['play-library-program/add/activity/%/%'] = array(
+    'title' => 'Complete Activity',
+    'page callback' => 'play_library_program_complete_activity',
+    'page arguments' => array(3, 4),
+    'access callback' => 'play_library_program_access_activity_entry',
+    'access arguments' => array(3),
+    'type' => MENU_CALLBACK,
+  );
+
+  $items['play-library-program/add/raffle_winner/%/%'] = array(
+    'title' => 'Complete Activity',
+    'page callback' => 'play_library_program_create_raffle_winner',
+    'page arguments' => array(3, 4),
+    'access callback' => 'user_access',
+    'access arguments' => array('eck add raffle raffle_winner entities'),
+    'type' => MENU_CALLBACK,
+  );
+
+  return $items;
+}
+
+/**
  * Access control to access activity entry creation.
  */
 function play_library_program_access_activity_entry($activity_id) {
@@ -75,24 +102,6 @@ function play_library_program_block_view($delta = '') {
   }
 
   return $block;
-}
-
-/**
- * Implements hook_menu().
- */
-function play_library_program_menu() {
-  $items = array();
-
-  $items['play-library-program/add/activity/%/%'] = array(
-    'title' => 'Complete Activity',
-    'page callback' => 'play_library_program_complete_activity',
-    'page arguments' => array(3, 4),
-    'access callback' => 'play_library_program_access_activity_entry',
-    'access arguments' => array(3),
-    'type' => MENU_CALLBACK,
-  );
-
-  return $items;
 }
 
 /**
@@ -218,6 +227,22 @@ function play_library_program_complete_activity($activity_id, $type = 'nojs') {
 }
 
 /**
+ * Creates a new raffle winner.
+ */
+function play_library_program_create_raffle_winner($raffle_id, $uid) {
+  global $user;
+  $raffles = entity_load('raffle', array($raffle_id));
+  $raffle = reset($raffles);
+  $title = t("@raffle winner on @time", array('@raffle' => $raffle->title, '@time' => date('Y-m-d H:i')));
+  $raffle_winner = entity_create('raffle', array('type' => 'raffle_winner', 'title' => $title, 'uid' => $user->uid));
+  $raffle_winner->field_raffle_winner_raffle[LANGUAGE_NONE][0]['target_id'] = $raffle->id;
+  $raffle_winner->field_raffle_winner[LANGUAGE_NONE][0]['target_id'] = $uid;
+  entity_save('raffle', $raffle_winner);
+  dpm($raffle_winner);
+  drupal_goto('raffle/raffle/' . $raffle_id);
+}
+
+/**
  * Retrieves how many times an activity has been performed.
  */
 function play_library_program_retrieve_activity_participation($activity_id, $account_id) {
@@ -267,7 +292,7 @@ function play_library_program_create_raffle_entry($raffle_id, $account_id) {
 }
 
 /**
- * Creates a new badge entry
+ * Creates a new badge entry.
  */
 function play_library_program_add_user_badge($badge_id, $account_id) {
   $query = new EntityFieldQuery();

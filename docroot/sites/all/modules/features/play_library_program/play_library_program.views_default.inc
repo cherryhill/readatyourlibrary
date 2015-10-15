@@ -296,6 +296,14 @@ function play_library_program_views_default_views() {
   $handler->display->display_options['fields']['view_link']['table'] = 'eck_reward';
   $handler->display->display_options['fields']['view_link']['field'] = 'view_link';
   $handler->display->display_options['fields']['view_link']['label'] = 'View';
+  /* Field: Reward: Reward */
+  $handler->display->display_options['fields']['field_reward_criteria_reward']['id'] = 'field_reward_criteria_reward';
+  $handler->display->display_options['fields']['field_reward_criteria_reward']['table'] = 'field_data_field_reward_criteria_reward';
+  $handler->display->display_options['fields']['field_reward_criteria_reward']['field'] = 'field_reward_criteria_reward';
+  $handler->display->display_options['fields']['field_reward_criteria_reward']['settings'] = array(
+    'link' => 0,
+  );
+  $handler->display->display_options['fields']['field_reward_criteria_reward']['delta_offset'] = '0';
   /* Field: Reward: Edit link */
   $handler->display->display_options['fields']['edit_link']['id'] = 'edit_link';
   $handler->display->display_options['fields']['edit_link']['table'] = 'eck_reward';
@@ -504,6 +512,7 @@ function play_library_program_views_default_views() {
   $handler->display->display_options['fields']['field_reward_raffle']['table'] = 'field_data_field_reward_raffle';
   $handler->display->display_options['fields']['field_reward_raffle']['field'] = 'field_reward_raffle';
   $handler->display->display_options['fields']['field_reward_raffle']['label'] = 'Raffle';
+  $handler->display->display_options['fields']['field_reward_raffle']['empty'] = 'N/A';
   $handler->display->display_options['fields']['field_reward_raffle']['settings'] = array(
     'link' => 0,
   );
@@ -512,6 +521,7 @@ function play_library_program_views_default_views() {
   $handler->display->display_options['fields']['field_reward_badge']['table'] = 'field_data_field_reward_badge';
   $handler->display->display_options['fields']['field_reward_badge']['field'] = 'field_reward_badge';
   $handler->display->display_options['fields']['field_reward_badge']['label'] = 'Badge';
+  $handler->display->display_options['fields']['field_reward_badge']['empty'] = 'N/A';
   $handler->display->display_options['fields']['field_reward_badge']['settings'] = array(
     'link' => 0,
   );
@@ -530,12 +540,20 @@ function play_library_program_views_default_views() {
   $handler->display->display_options['fields']['delete_link']['table'] = 'eck_reward';
   $handler->display->display_options['fields']['delete_link']['field'] = 'delete_link';
   $handler->display->display_options['fields']['delete_link']['label'] = 'Delete';
+  /* Field: Reward: reward type */
+  $handler->display->display_options['fields']['type']['id'] = 'type';
+  $handler->display->display_options['fields']['type']['table'] = 'eck_reward';
+  $handler->display->display_options['fields']['type']['field'] = 'type';
+  $handler->display->display_options['fields']['type']['label'] = 'Reward Type';
   /* Filter criterion: Reward: reward type */
   $handler->display->display_options['filters']['type']['id'] = 'type';
   $handler->display->display_options['filters']['type']['table'] = 'eck_reward';
   $handler->display->display_options['filters']['type']['field'] = 'type';
   $handler->display->display_options['filters']['type']['value'] = array(
     'reward' => 'reward',
+    'physical_reward' => 'physical_reward',
+    'sticker' => 'sticker',
+    'print_reward' => 'print_reward',
   );
 
   /* Display: Content pane */
