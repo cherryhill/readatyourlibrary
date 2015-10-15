@@ -404,7 +404,9 @@ function _play_library_program_get_global_reward_ids($user_pre_points, $user_poi
     foreach($results['reward'] as $reward) {
       $reward_entities = entity_load('reward', array($reward->id));
       $reward_entity = reset($reward_entities);
-      $rids[] = $reward_entity->field_reward_criteria_reward[LANGUAGE_NONE][0]['target_id'];
+      foreach ($reward_entity->field_reward_criteria_reward[LANGUAGE_NONE] as $reward) {
+        $rids[] = $reward['target_id'];
+      }
     }
   }
 
@@ -424,13 +426,15 @@ function _play_library_program_get_global_reward_ids($user_pre_points, $user_poi
       $modulus = $reward_entity->field_reward_criteria_point_mark[LANGUAGE_NONE][0]['value'];
       for ($i = $user_points; $i > $user_pre_points; $i--) {
         if ($i % $modulus == 0) {
-          $rids[] = $reward_entity->field_reward_criteria_reward[LANGUAGE_NONE][0]['target_id'];
+          foreach ($reward_entity->field_reward_criteria_reward[LANGUAGE_NONE] as $reward) {
+            $rids[] = $reward['target_id'];
+          }
         }
       }
     }
   }
 
-  return $rids;
+  return array_unique($rids);
 }
 
 /**
@@ -453,7 +457,9 @@ function _play_library_program_get_activity_reward_ids($activity_id, $user_activ
     foreach($results['reward'] as $reward) {
       $reward_entities = entity_load('reward', array($reward->id));
       $reward_entity = reset($reward_entities);
-      $rids[] = $reward_entity->field_reward_criteria_reward[LANGUAGE_NONE][0]['target_id'];
+      foreach ($reward_entity->field_reward_criteria_reward[LANGUAGE_NONE] as $reward) {
+        $rids[] = $reward['target_id'];
+      }
     }
   }
 
@@ -472,10 +478,12 @@ function _play_library_program_get_activity_reward_ids($activity_id, $user_activ
       $reward_entity = reset($reward_entities);
       $modulus = $reward_entity->field_reward_criteria_point_mark[LANGUAGE_NONE][0]['value'];
       if ($user_activity_completed % $modulus == 0) {
-        $rids[] = $reward_entity->field_reward_criteria_reward[LANGUAGE_NONE][0]['target_id'];
+        foreach ($reward_entity->field_reward_criteria_reward[LANGUAGE_NONE] as $reward) {
+          $rids[] = $reward['target_id'];
+        }
       }
     }
   }
 
-  return $rids;
+  return array_unique($rids);
 }
