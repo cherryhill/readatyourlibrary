@@ -1,30 +1,31 @@
 <?php
 
+
 /**
  * @file flexicolor.install
- * Flexicolor installation file.
+ * Flexicolor installation file
  */
 
 /**
- * Implements hook_install().
+ * Implementation of hook_install().
  */
 function flexicolor_install() {
 
 }
 
 /**
- * Implements hook_uninstall().
+ * Implementation of hook_uninstall().
  */
 function flexicolor_uninstall() {
 
 }
 
 /**
- * Implements hook_schema().
+ * Implementation of hook_schema().
  */
 function flexicolor_schema() {
   $schema = array();
-
+  
   $schema['flexicolor_selector'] = array(
     'description' => t('Store selector rules along with a default color for the rule'),
     'fields' => array(
@@ -34,11 +35,6 @@ function flexicolor_schema() {
         'unsigned' => TRUE,
         'not null' => TRUE,
       ),
-      'machine' => array(
-        'type' => 'varchar',
-        'length' => '32',
-        'description' => 'Unique ID for environments.',
-      ),
       'display_name' => array(
         'description' => t('Display Name'),
         'type' => 'varchar',
@@ -47,16 +43,16 @@ function flexicolor_schema() {
       ),
       'selector' => array(
         'description' => t('Selector'),
-        'type' => 'text',
-        'size' => 'medium',
+        'type' => 'varchar',
+        'length' => 512,
         'not null' => TRUE,
       ),
       'type' => array(
-        'description' => t('type of item being colored'),
+        'description' => t('type of item being colored - can be one of background or text'),
         'type' => 'varchar',
         'length' => 20,
         'not null' => TRUE,
-        'default' => 'background-color',
+        'default' => 'background',
       ),
       'default_color' => array(
         'description' => t('Default color for selector(s)'),
@@ -68,11 +64,8 @@ function flexicolor_schema() {
     'primary key' => array(
       'fsid',
     ),
-    'unique keys' => array(
-      'name' => array('machine'),
-    ),
   );
-
+  
   $schema['flexicolor_preset'] = array(
     'description' => t('Description of the preset'),
     'fields' => array(
@@ -81,11 +74,6 @@ function flexicolor_schema() {
         'type' => 'serial',
         'unsigned' => TRUE,
         'not null' => TRUE,
-      ),
-      'machine' => array(
-        'type' => 'varchar',
-        'length' => '32',
-        'description' => 'Unique ID for environments.',
       ),
       'display_name' => array(
         'description' => t('Display Name'),
@@ -97,28 +85,24 @@ function flexicolor_schema() {
     'primary key' => array(
       'fpid',
     ),
-    'unique keys' => array(
-      'name' => array('machine'),
-    ),
   );
-
+  
   $schema['flexicolor_preset_selector'] = array(
     'description' => t('Create a preset based on the selectors'),
     'fields' => array(
-      'machine' => array(
-        'type' => 'varchar',
-        'length' => '32',
-        'description' => 'Unique ID for environments.',
+      'fpid' => array(
+        'type' => 'int',
+        'size' => 'medium',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'default' => 0,
       ),
-      'fpmachine' => array(
-        'type' => 'varchar',
-        'length' => '32',
-        'description' => 'Flexicolor Preset',
-      ),
-      'fsmachine' => array(
-        'type' => 'varchar',
-        'length' => '32',
-        'description' => 'Flexicolor Selector',
+      'fsid' => array(
+        'type' => 'int',
+        'size' => 'medium',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'default' => 0,
       ),
       'color' => array(
         'description' => t('Preset Selector Color'),
@@ -128,116 +112,10 @@ function flexicolor_schema() {
       )
     ),
     'primary key' => array(
-      'fpmachine',
-      'fsmachine',
-    ),
-    'unique keys' => array(
-      'name' => array('machine'),
+      'fpid',
+      'fsid',
     ),
   );
-
+  
   return $schema;
-}
-
-/**
- * Add and change columns for new machine fields.
- */
-function flexicolor_update_7200() {
-  db_add_field('flexicolor_selector', 'machine',
-    // spec
-    array(
-      'type' => 'varchar',
-      'length' => '32',
-      'description' => 'Unique ID for environments.',
-    ),
-    // new keys
-    array(
-      'unique keys' => array(
-        'name' => array('machine'),
-      ),
-    )
-  );
-  db_change_field('flexicolor_selector', 'selector', 'selector',
-    // spec; change type, remove length, and add size
-    array(
-      'description' => t('Selector'),
-      'type' => 'text',
-      'size' => 'medium',
-      'not null' => TRUE,
-    )
-    // no new keys
-  );
-  db_change_field('flexicolor_selector', 'type', 'type',
-    // spec; change description and default
-    array(
-      'description' => t('type of item being colored'),
-      'type' => 'varchar',
-      'length' => 20,
-      'not null' => TRUE,
-      'default' => 'background-color',
-    )
-    // no new keys
-  );
-  db_add_field('flexicolor_preset', 'machine',
-    // spec
-    array(
-      'type' => 'varchar',
-      'length' => '32',
-      'description' => 'Unique ID for environments.',
-    ),
-    // new keys
-    array(
-      'unique keys' => array(
-        'name' => array('machine'),
-      ),
-    )
-  );
-  db_add_field('flexicolor_preset_selector', 'machine',
-    // spec
-    array(
-      'type' => 'varchar',
-      'length' => '32',
-      'description' => 'Unique ID for environments.',
-    ),
-    // new keys
-    array(
-      'unique keys' => array(
-        'name' => array('machine'),
-      ),
-    )
-  );
-  // drop keys
-  db_drop_primary_key('flexicolor_preset_selector');
-  // change name and type; remove size, unsigned, not null, and default;
-  // add length and description
-  db_change_field('flexicolor_preset_selector', 'fpid', 'fpmachine',
-    // spec
-    array(
-      'type' => 'varchar',
-      'length' => '32',
-      'description' => 'Flexicolor Preset',
-    ),
-    // new keys
-    array(
-      'fpmachine',
-      'fsmachine',
-    )
-  );
-  // drop keys
-  db_drop_primary_key('flexicolor_preset_selector');
-  // change name and type; remove size, unsigned, not null, and default;
-  // add length and description
-  db_change_field('flexicolor_preset_selector', 'fsid', 'fsmachine',
-    // spec
-    array(
-      'type' => 'varchar',
-      'length' => '32',
-      'description' => 'Flexicolor Selector',
-    ),
-    // new keys
-    array(
-      'fpmachine',
-      'fsmachine',
-    )
-  );
 }

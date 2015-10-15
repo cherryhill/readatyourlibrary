@@ -14,6 +14,7 @@
  * Alter an array of supported widget types.
  *
  * @param array $supported
+ *   An array of widget types as strings.
  */
 function hook_focal_point_supported_widget_types_alter(&$supported) {
   $supported[] = 'mymodule_my_custom_widget_type';
@@ -23,6 +24,7 @@ function hook_focal_point_supported_widget_types_alter(&$supported) {
  * Alter an array of supported file entity types.
  *
  * @param array $supported
+ *   An array of file types as strings.
  */
 function hook_focal_point_supported_file_types_alter(&$supported) {
   $supported[] = 'custom_file_entity_type';
@@ -43,6 +45,7 @@ function hook_focal_point_default_method_info() {
  * Alter the default focal point calculation methods.
  *
  * @param array $info
+ *   An keyed array of arrays with the keys label and callback.
  */
 function hook_focal_point_default_method_info_alter(&$info) {
   $info['example']['callback'] = 'example_get_better_focal_point';
@@ -73,7 +76,7 @@ function hook_focal_point_default_method_info_alter(&$info) {
  */
 function callback_get_focal_point($image) {
   // Return a random point on the image.
-  return ( array(
+  return (array(
     mt_rand(0, $image->info['width']),
     mt_rand(0, $image->info['height']),
   ));

@@ -100,6 +100,6 @@ Features that I would like to add down the line:
   4. Due to the problem set being covered, the module is definitely created
     for someone that has a solid understanding of css selectors to get more
     power out of the site. Any suggestions for a simpler ui are very welcome.
-
+    
 CREDIT:
 Sponsored and maintained by the California Institute of the Arts

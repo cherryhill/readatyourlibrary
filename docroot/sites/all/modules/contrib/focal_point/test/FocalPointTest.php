@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * PHP Unit tests for focal point.
+ */
+
 include_once __DIR__ . './../focal_point.module';
 include_once __DIR__ . './../focal_point.effects.inc';
 
@@ -25,17 +30,21 @@ class focalPointTest extends PHPUnit_Framework_TestCase {
   /**
    * @dataProvider calculateEffectAnchorProvider
    */
-  public function testCalculateEffectAnchor($image_size, $crop_size, $focal_point_offset, $expected) {
-    $this->assertSame($expected, focal_point_effect_calculate_anchor($image_size, $crop_size, $focal_point_offset));
+  public function testCalculateEffectAnchor($image_size, $crop_size, $focal_point_offset, $focal_point_shift, $expected) {
+    $this->assertSame($expected, focal_point_effect_calculate_anchor($image_size, $crop_size, $focal_point_offset, $focal_point_shift));
   }
 
   public function calculateEffectAnchorProvider() {
     return array(
-      array(640, 300, 50, 170),
-      array(640, 300, 80, 340),
-      array(640, 300, 10, 0),
-      array(640, 640, 640, 0),
-      array(640, 800, 50, 0),
+      array(640, 300, 50, 0, 170),
+      array(640, 300, 80, 0, 340),
+      array(640, 300, 10, 0, 0),
+      array(640, 640, 640, 0, 0),
+      array(640, 800, 50, 0, 0),
+      array(640, 300, 50, 10, 160),
+      array(640, 300, 50, -10, 180),
+      array(640, 300, 50, 10000, 0),
+      array(640, 300, 50, -10000, 340),
     );
   }
 

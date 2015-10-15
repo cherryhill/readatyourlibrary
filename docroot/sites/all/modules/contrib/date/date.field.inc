@@ -207,7 +207,7 @@ function date_field_formatter_view($entity_type, $entity, $field, $instance, $la
           $variables['item'] = $item;
           $variables['dates'] = date_formatter_process($formatter, $entity_type, $entity, $field, $instance, $langcode, $item, $display);
           $variables['attributes'] = !empty($rdf_mapping) ? rdf_rdfa_attributes($rdf_mapping, $item['value']) : array();
-          $variables['show_remaining_days'] = isset($display['settings']['show_remaining_days']) ? $display['settings']['show_remaining_days'] : FALSE;
+          $variables['show_remaining_days'] = $display['settings']['show_remaining_days'];
           $output = theme('date_display_combination', $variables);
           if (!empty($output)) {
             $element[$delta] = array('#markup' => $output);
@@ -261,21 +261,21 @@ function date_field_info() {
   );
   return array(
     'datetime' => array(
-      'label' => 'Date',
+      'label' => t('Date'),
       'description' => t('Store a date in the database as a datetime field, recommended for complete dates and times that may need timezone conversion.'),
       'default_widget' => 'date_select',
       'default_formatter' => 'date_default',
       'default_token_formatter' => 'date_plain',
     ) + $settings,
     'date' => array(
-      'label' => 'Date (ISO format)',
+      'label' => t('Date (ISO format)'),
       'description' => t('Store a date in the database as an ISO date, recommended for historical or partial dates.'),
       'default_widget' => 'date_select',
       'default_formatter' => 'date_default',
       'default_token_formatter' => 'date_plain',
     ) + $settings,
     'datestamp' => array(
-      'label' => 'Date (Unix timestamp)',
+      'label' => t('Date (Unix timestamp)'),
       'description' => t('Store a date in the database as a timestamp, deprecated format to support legacy data.'),
       'default_widget' => 'date_select',
       'default_formatter' => 'date_default',

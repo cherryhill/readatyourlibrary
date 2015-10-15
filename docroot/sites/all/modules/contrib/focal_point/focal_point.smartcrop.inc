@@ -11,8 +11,9 @@
 include_once drupal_get_path('module', 'smartcrop') . '/image.gd.inc';
 
 /**
- * Given an image, use smartcrop to estimate a good focal point. Much of this
- * code was taken from image_gd_smartcrop_crop().
+ * Given an image, use smartcrop to estimate a good focal point.
+ *
+ * Note that most of this code was taken from image_gd_smartcrop_crop().
  *
  * @see image_gd_smartcrop_crop()
  */

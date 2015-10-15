@@ -1,39 +1,49 @@
 <?php
 
+
 /**
- * @file
+ * @file flexicolor.admin.inc
  * Contains the various interfaces where a site administrator can make changes
  * to the way the flexicolor module functions for the website.
  */
 
+
 function flexicolor_site_settings($form, &$form_state) {
   $form = array();
-
+  
+  if (user_access('administer flexicolor settings')) {
+    $form['intro'] = array(
+      '#type' => 'item',
+      '#value' => t('You may use the tabs manage the selectors and presets that are available.')
+    );
+  }
+  
+  $form['flexicolor'] = array(
+    '#type' => 'fieldset',
+    '#title' => 'Flexible Colors',
+    '#description' => t('Flexible Colours allow you to change the look/feel of certain areas of your site.'),
+    '#collapsible' => TRUE,
+    '#attributes' => array('id' => 'flexicolor-fieldset'),
+  );
+  
+  $options = array(
+    '' => t('CUSTOM'),
+  );
+  
   $presets = flexicolor_get_presets();
   foreach ($presets as $key => $preset) {
-    $options[$key] = $preset->display_name;
+    $options[$key] = check_plain($preset->display_name);
   }
-  $options['custom'] = t('Custom…');
-
+  
   $default_preset = variable_get('flexicolor-selected-preset', '');
-
-  $form['flexicolor-selected-preset'] = array(
+  $form['flexicolor']['flexicolor-selected-preset'] = array(
     '#type' => 'select',
-    '#title' => t('Available presets'),
-    '#description' => t('Preset configurations of rules for colors and selectors.'),
+    '#title' => t('Presets'),
+    '#description' => t('Preset configurations that have been created for the available selectors'),
     '#options' => $options,
     '#default_value' => $default_preset,
   );
-
-  $form['customize'] = array(
-    '#type' => 'fieldset',
-    '#title' => 'Customize colors',
-    '#description' => t(''),
-    '#collapsible' => TRUE,
-    '#collapsed' => TRUE,
-    '#attributes' => array('id' => 'flexicolor-fieldset'),
-  );
-
+  
   $selectors = flexicolor_get_selectors();
   foreach ($selectors as $key => $selector) {
     $default_color_value = variable_get("flexicolor-$key", '');
@@ -50,35 +60,33 @@ function flexicolor_site_settings($form, &$form_state) {
         $default_color_value = $selector->default_color;
       }
     }
-
-    $form['customize']["flexicolor-$key"] = array(
+    
+    $form['flexicolor']["flexicolor-$key"] = array(
       '#type' => 'textfield',
       '#title' => check_plain($selector->display_name),
       '#description' => '<ul><li>Selectors affected: '. check_plain($selector->selector)
         .'</li><li>Color area: '. check_plain($selector->type == 'color' ? 'text' : $selector->type) .'</li></ul>',
       '#maxlength' => 7,
       '#size' => 7,
-      '#attributes' => array('class' => array('form-item-input-flexicolor-selector')),
       '#default_value' => $default_color_value
     );
   }
-
+  
   $preset_selectors = array();
   foreach ($presets as $preset_key => $preset) {
     $preset_selectors[$preset_key] = array();
     foreach ($selectors as $selector_key => $selector) {
       $preset_selectors[$preset_key][$selector_key] = $selector->default_color;
-      $possible_color = flexicolor_get_preset_selector($preset->machine, $selector->machine);
-      if (is_object($possible_color) && $possible_color->color) {
+      $possible_color = flexicolor_get_preset_selector($preset->fpid, $selector->fsid);
+      if ($possible_color->color) {
         $preset_selectors[$preset_key][$selector_key] = $possible_color->color;
       }
     }
   }
-
-  drupal_add_css(drupal_get_path('module', 'flexicolor') . '/flexicolor.css');
+  
   drupal_add_js(array('flexicolor_preset_selectors' => $preset_selectors), 'setting');
-
-  $form['customize']['color-picker'] = array(
+  
+  $form['flexicolor']['color-picker'] = array(
     '#markup' => '<div id="flexicolor-color-picker"></div>'
   );
 
@@ -94,7 +102,7 @@ function flexicolor_site_settings_submit($form, &$form_state) {
   $css = '';
   $selectors = flexicolor_get_selectors();
   $preset = str_replace('preset-',  '', $values['flexicolor-selected-preset']);
-
+  
   // We have now loaded all the default values. Time to start populating it
   // with values selected by the user.
   foreach ($selectors as $key => $selector) {
@@ -113,132 +121,109 @@ function flexicolor_site_settings_submit($form, &$form_state) {
   ctools_css_store('flexicolor-css', $css);
 }
 
-function flexicolor_rules_page() {
+function flexicolor_manage_page() {
   $content = '';
-  $content .= '<h2>' . t('Rules') . '</h2>';
-
-  $rules_table_header = array(
-    array('data' => t('Rule name'), 'field' => 'name', 'sort' => 'asc'),
-    array('data' => t('Type'), 'field' => 'type'),
-    array('data' => t('Selectors'), 'field' => 'selectors'),
-    array('data' => t('Default color'), 'field' => 'color'),
-    array('data' => t('Actions'), 'field' => 'actions'),
-  );
-
-  $order = tablesort_get_order($rules_table_header);
-  $sort = tablesort_get_sort($rules_table_header);
-  $sql = $order['sql'];
-
-  $rules = flexicolor_get_selectors();
-  $rules_table = array();
-  foreach ($rules as $rule) {
-    $rules_table[] = array(
-      'name' => check_plain($rule->display_name),
-      'type' => $rule->type,
-      'selectors' => $rule->selector,
-      'color' => check_plain($rule->default_color),
-      'actions' => l(t('edit'), 'admin/appearance/flexicolor/rules/' . $rule->fsid . '/update') .' / '.
-                   l(t('delete'), 'admin/appearance/flexicolor/rules/' .  $rule->fsid . '/delete'),
+  $content .= '<fieldset><legend>'. t('Selectors') .'</legend>';
+  // List the selector rules
+  $selector_table_header = array(t('Selector Name'), t('Selector'), t('type'), t('Default Color'), t('Actions'));
+  $selector_table = array();
+  $selectors = flexicolor_get_selectors();
+  foreach ($selectors as $selector) {
+    $selector_table[] = array(
+      check_plain($selector->display_name),
+      $selector->selector,
+      $selector->type,
+      check_plain($selector->default_color),
+      l(t('edit'), 'admin/appearance/flexicolor/update/selector/'. $selector->fsid) .' / '.
+      l(t('delete'), 'admin/appearance/flexicolor/delete/selector/'. $selector->fsid),
     );
   }
-
-  foreach ($rules_table as $key => $row) {
-    $array[$key] = $row[$sql];
-  }
-
-  if ($sort == 'asc') {
-    array_multisort($array, SORT_ASC, $rules_table);
-  }
-  if ($sort == 'desc') {
-    array_multisort($array, SORT_DESC, $rules_table);
-  }
-
-  $rows = array();
-  foreach ($rules_table as $rule) {
-    $rows[] = array(
-        array('data' => $rule['name']),
-        array('data' => $rule['type']),
-        array('data' => $rule['selectors']),
-        array('data' => $rule['color']),
-        array('data' => $rule['actions']),
+  $content .= theme('table', array('header' => $selector_table_header, 'rows' => $selector_table));
+  $content .= '</fieldset>';
+  
+  // List the presets
+  $content .= '<fieldset><legend>'. t('Presets') .'</legend>';
+  $preset_table_header = array(t('Preset Name'), t('Actions'));
+  $preset_table = array();
+  $presets = flexicolor_get_presets();
+  foreach ($presets as $preset) {
+    $preset_table[] = array(
+      check_plain($preset->display_name),
+      l(t('edit'), 'admin/appearance/flexicolor/update/preset/'. $preset->fpid) .' / '.
+      l(t('delete'), 'admin/appearance/flexicolor/delete/preset/'. $preset->fpid),
     );
   }
-
-  $content .= theme('table', array('header' => $rules_table_header, 'rows' => $rows));
+  $content .= theme('table', array('header' => $preset_table_header, 'rows' => $preset_table));
+  $content .= '</fieldset>';
   return $content;
 }
 
 function flexicolor_admin_update_selector($form, &$form_state, $fsid = NULL) {
   $form = array();
-
+  
   $default_color = '#000000';
-  $default_type = 'background-color';
+  $default_type = 'background';
   $default_display_name = $default_selector = '';
-
-  $form['machine'] = array(
-    '#type' => 'value',
-    '#value' => '',
-  );
   if ($fsid !== NULL) {
     $selector = flexicolor_get_selectors($fsid);
     if (count($selector) == 1) {
-      $selector = array_pop($selector);
       $form['fsid'] = array(
         '#type' => 'value',
         '#value' => $fsid,
       );
-      $form['machine']['#value'] = $selector->machine;
+      $selector = array_pop($selector);
       $default_display_name = $selector->display_name;
       $default_selector = $selector->selector;
       $default_color = $selector->default_color;
       $default_type = $selector->type;
     }
   }
-
+  
   $form['display_name'] = array(
     '#type' => 'textfield',
-    '#title' => t('Rule name'),
-    '#description' => t('The name for the rule that will contain the color property and value for the given selector(s).'),
+    '#title' => t('Display Name'),
+    '#description' => t('The name a site administrator will see to give content to the selector rule'),
     '#size' => 64,
     '#maxlength' => 128,
     '#required' => TRUE,
     '#default_value' => $default_display_name,
   );
-
+  
+  $form['selector'] = array(
+    '#type' => 'textarea',
+    '#title' => t('Selector(s)'),
+    '#description' => t('The selectors this setting will apply to.  You may use commas to specify different rules along with : for meta selectors. Refrain from using other selectors.'),
+    '#required' => TRUE,
+    '#default_value' => $default_selector,
+  );
+  
   $options = _flexicolor_get_types();
-
+  
   $form['type'] = array(
     '#type' => 'radios',
-    '#title' => t('Color property'),
+    '#title' => t('Type of color rule'),
     '#options' => $options,
     '#default_value' => $default_type,
     '#required' => TRUE,
   );
 
-  $form['selector'] = array(
-    '#type' => 'textarea',
-    '#title' => t('Selector(s)'),
-    '#description' => t('The selector(s) for this rule. Use commas to separate selectors. You may use pseudo-classes and pseudo-elements. Certain attribute selectors may not work.'),
-    '#required' => TRUE,
-    '#rows' => substr_count($default_selector, ',') + 2,
-    '#default_value' => str_replace(', ', ",\n", $default_selector),
-  );
-
   $form['color'] = array(
     '#type' => 'textfield',
-    '#title' => t('Default color'),
-    '#description' => t('Type a hexidecimal color code or select a color using the color picker.'),
+    '#title' => t('Color'),
+    '#description' => t('The name a site administrator will see to give content to the selector rule'),
     '#size' => 7,
     '#maxlength' => 7,
     '#required' => TRUE,
     '#default_value' => $default_color,
   );
-
+  
   $form['color-picker'] = array(
     '#markup' => '<div id="flexicolor-color-picker"></div>',
   );
-
-  return confirm_form($form, t('Save rule'), 'admin/appearance/flexicolor/rules', '', t('Save'), t('Cancel'));
+  
+  $form['#redirect'] = 'admin/appearance/flexicolor';
+  
+  return confirm_form($form, t('Save Selector'), 'admin/appearance/flexicolor', '', t('Save'), t('Cancel'));
 }
 
 function flexicolor_admin_update_selector_validate($form, &$form_state) {
@@ -255,7 +240,7 @@ function flexicolor_admin_update_selector_submit($form, &$form_state) {
 
   $css = $values['selector'] .'{'. $values['type'] .':'. $values['color'] .';}';
   $filtered_css = ctools_css_filter_css_data(ctools_css_disassemble($css));
-
+  
   $selectors = array();
   foreach($filtered_css as $key => $value) {
     $selectors[] = $key;
@@ -266,15 +251,13 @@ function flexicolor_admin_update_selector_submit($form, &$form_state) {
     'display_name' => $values['display_name'],
     'selector' => $selectors,
     'type' => $values['type'],
-    'default_color' => $values['color'],
-    'machine' => $values['machine'],
+    'default_color' => $values['color']
   );
   if (isset($values['fsid'])) {
     $selector['fsid'] = $values['fsid'];
   }
   flexicolor_save_selector($selector);
-  $form_state['redirect'] = 'admin/appearance/flexicolor/rules';
-  drupal_set_message('The rule has been saved. Please note that it has been filtered and cleaned for any possible issues.');
+  drupal_set_message('Flexicolor has now been saved.  Please note that it has been filtered and cleaned for any possible issues.');
 }
 
 function flexicolor_admin_delete_selector($form, &$form_state, $fsid) {
@@ -283,51 +266,21 @@ function flexicolor_admin_delete_selector($form, &$form_state, $fsid) {
     '#type' => 'value',
     '#value' => $fsid,
   );
-  $rules = flexicolor_get_selectors($fsid);
-  foreach ($rules as $rule) {
-    if ($rule->fsid == $fsid) {
-      $display_name = $rule->display_name;
-      $type = $rule->type;
-    }
-  }
-  return confirm_form($form, t("Are you sure you want to delete the <em>$type</em> rule: $display_name?"), 'admin/appearance/flexicolor/rules', NULL, t('Delete'));
+  $form['#redirect'] = 'admin/appearance/flexicolor';
+  return confirm_form($form, 'Are you sure you wish to delete the selector', 'admin/appearance/flexicolor');
 }
 
 function flexicolor_admin_delete_selector_submit($form, &$form_state) {
   $values = $form_state['values'];
   flexicolor_delete_selector($values['fsid']);
-  $form_state['redirect'] = 'admin/appearance/flexicolor/rules';
-  drupal_set_message(t('The rule has been deleted.'));
-}
-
-function flexicolor_presets_page() {
-  $content = '';
-  // List the presets
-  $content .= '<h2>' . t('Presets') . '</h2>';
-  $preset_table_header = array(t('Preset name'), t('Actions'));
-  $preset_table = array();
-  $presets = flexicolor_get_presets();
-  foreach ($presets as $preset) {
-    $preset_table[] = array(
-      check_plain($preset->display_name),
-      l(t('edit'), 'admin/appearance/flexicolor/presets/' . $preset->fpid . '/update') .' / '.
-      l(t('delete'), 'admin/appearance/flexicolor/presets/' . $preset->fpid . '/delete'),
-    );
-  }
-  $content .= theme('table', array('header' => $preset_table_header, 'rows' => $preset_table));
-  return $content;
+  drupal_set_message(t('Selector has now been deleted'));
 }
 
 function flexicolor_admin_update_preset($form, &$form_state, $fpid = NULL) {
   $form = array();
-
+  
   $default_name = '';
   $selectors = flexicolor_get_selectors();
-  $form['machine'] = array(
-    '#type' => 'value',
-    '#value' => '',
-  );
-  $form['#selectors'] = $selectors;
   if ($fpid !== NULL) {
     $preset = flexicolor_get_presets($fpid);
     if (count($preset) == 1) {
@@ -337,34 +290,33 @@ function flexicolor_admin_update_preset($form, &$form_state, $fpid = NULL) {
         '#type' => 'value',
         '#value' => $fpid,
       );
-      $form['machine']['#value'] = $preset->machine;
       foreach ($selectors as $key => $selector) {
         $fsid = str_replace('selector-', '', $key);
-        $preset_selector = flexicolor_get_preset_selector($preset->machine, $selector->machine);
+        $preset_selector = flexicolor_get_preset_selector($fpid, $fsid);
         if (is_object($preset_selector)) {
           $selectors[$key]->default_color = $preset_selector->color;
         }
       }
     }
   }
-
+  
   $form['display_name'] = array(
     '#type' => 'textfield',
-    '#title' => t('Preset name'),
+    '#title' => t('Display Name'),
     '#default_value' => $default_name,
     '#maxlength' => 64,
     '#size' => 64,
     '#required' => TRUE,
   );
-
+  
   $form['flexicolor'] = array(
     '#type' => 'fieldset',
     '#title' => 'Flexible Colors',
-    '#description' => t('Flexible Colors allow you to change the look/feel of certain areas of your site.'),
+    '#description' => t('Flexible Colours allow you to change the look/feel of certain areas of your site.'),
     '#collapsible' => TRUE,
     '#attributes' => array('id' => 'flexicolor-fieldset'),
   );
-
+  
   foreach ($selectors as $key => $selector) {
     $form['flexicolor'][$key] = array(
       '#type' => 'textfield',
@@ -377,32 +329,34 @@ function flexicolor_admin_update_preset($form, &$form_state, $fpid = NULL) {
       '#size' => 7,
     );
   }
-
+  
   $form['flexicolor']['color-picker'] = array(
     '#markup' => '<div id="flexicolor-color-picker"></div>'
   );
-
-  return confirm_form($form, t('Save preset'), 'admin/appearance/flexicolor/presets', '', t('Save'), t('Cancel'));
+  
+  $form['#redirect'] = 'admin/appearance/flexicolor';
+  
+  return confirm_form($form, t('Save preset'), 'admin/appearance/flexicolor', '', t('Save'), t('Cancel'));
 }
 
 function flexicolor_admin_update_preset_submit($form, &$form_state) {
   $values = $form_state['values'];
-  $selectors = $form['#selectors'];
   $preset = array(
-    'display_name' => $values['display_name'],
-    'machine' => $values['machine'],
+    'display_name' => $values['display_name']
   );
   $primary_key = array();
   if (isset($values['fpid'])) {
     $preset['fpid'] = $values['fpid'];
   }
   flexicolor_save_preset($preset);
-  foreach ($selectors as $key => $selector) {
-    $color = $values[$key];
-    flexicolor_save_preset_selector($preset['machine'], $selector->machine, $color);
+  $fpid = $preset['fpid'];
+  foreach ($values as $key => $value) {
+    if (strpos($key, 'selector-') === 0) {
+      $fsid = str_replace('selector-', '', $key);
+      flexicolor_save_preset_selector($fpid, $fsid, $value);
+    }
   }
-  $form_state['redirect'] = 'admin/appearance/flexicolor/presets';
-  drupal_set_message(t('The preset has been saved.'));
+  drupal_set_message(t('Preset has been saved'));
 }
 
 function flexicolor_admin_delete_preset($form, &$form_state, $fpid) {
@@ -411,18 +365,12 @@ function flexicolor_admin_delete_preset($form, &$form_state, $fpid) {
     '#type' => 'value',
     '#value' => $fpid,
   );
-  $presets = flexicolor_get_presets($fpid);
-  foreach ($presets as $preset) {
-    if ($preset->fpid == $fpid) {
-      $display_name = $preset->display_name;
-    }
-  }
-  return confirm_form($form, t("Are you sure you want to delete the preset: $display_name?"), 'admin/appearance/flexicolor/presets', NULL, t('Delete'));
+  $form['#redirect'] = 'admin/appearance/flexicolor';
+  return confirm_form($form, 'Are you sure you wish to delete the preset', 'admin/appearance/flexicolor');
 }
 
 function flexicolor_admin_delete_preset_submit($form, &$form_state) {
   $values = $form_state['values'];
   flexicolor_delete_preset($values['fpid']);
-  $form_state['redirect'] = 'admin/appearance/flexicolor/presets';
-  drupal_set_message(t('The preset has been deleted.'));
+  drupal_set_message(t('Preset has now been deleted'));
 }

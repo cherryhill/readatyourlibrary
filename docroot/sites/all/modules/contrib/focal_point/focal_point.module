@@ -5,7 +5,7 @@
  * Allow users to specify a focal point on content images.
  */
 
-require_once dirname(__FILE__) .'/focal_point.effects.inc';
+require_once dirname(__FILE__) . '/focal_point.effects.inc';
 
 define('FOCAL_POINT_DEFAULT', '50,50');
 
@@ -18,6 +18,7 @@ function focal_point_menu() {
   $items['admin/config/media/focal_point'] = array(
     'type' => MENU_NORMAL_ITEM,
     'title' => 'Focal Point',
+    'description' => 'Configure how the Focal Point module behaves and take a test drive.',
     'page callback' => 'drupal_get_form',
     'page arguments' => array('focal_point_configuration_form'),
     'access arguments' => array('administer site configuration'),
@@ -33,7 +34,7 @@ function focal_point_menu() {
   );
   $items['focal_point/preview/%/%'] = array(
     'type' => MENU_CALLBACK,
-    'title' => 'Focal Point Preview',
+    'title' => 'Image Preview',
     'page callback' => 'focal_point_preview_page',
     'page arguments' => array(2,3),
     'access arguments' => array('preview focal point'),
@@ -47,8 +48,8 @@ function focal_point_menu() {
  * Implements hook_permission().
  */
 function focal_point_permission() {
-  return array (
-    'preview focal point' => array (
+  return array(
+    'preview focal point' => array(
       'title' => t('Preview focal point results'),
     ),
   );
@@ -72,6 +73,12 @@ function focal_point_theme($existing, $type, $theme, $path) {
         'attributes' => array(),
       ),
       'file' => 'focal_point.theme.inc',
+    ),
+    'focal_point_image_resize_summary' => array(
+      'variables' => array('data' => NULL),
+    ),
+    'focal_point_image_crop_summary' => array(
+      'variables' => array('data' => NULL),
     ),
   );
 }
@@ -101,11 +108,11 @@ function focal_point_image_default_styles() {
         'data' => array(
           'width' => 250,
           'height' => NULL,
-          'upscale' => 1
+          'upscale' => 1,
         ),
         'weight' => 0,
       ),
-    )
+    ),
   );
 
   return $styles;
@@ -127,40 +134,19 @@ function focal_point_file_load($files) {
 }
 
 /**
- * Implementation of hook_form_FORM_ID_alter().
+ * Implements hook_form_FORM_ID_alter().
  */
 function focal_point_form_file_entity_add_upload_alter(&$form, &$form_state) {
   // Add focal point to the file entity edit form used by the media browser.
-  if (_focal_point_supported_field_type('media') && isset($form_state['step']) && $form_state['step'] == 4) {
+  if (isset($form_state['step']) && $form_state['step'] == 4) {
     $fid = isset($form_state['values']['upload']) ? $form_state['values']['upload'] : $form_state['storage']['upload'];
     $file = file_load($fid);
-    if (_focal_point_supported_file($file)) {
-      $delta = 0;
-      $field_name = 'media';
-      $thumbnail = array(
-        '#type' => 'markup',
-        '#theme' => 'image_style',
-        '#style_name' => 'focal_point_preview',
-        '#path' => $file->uri,
-        '#alt' => $file->alt,
-        '#title' => $file->title,
-      );
-
-      $focal_point_id = drupal_html_id('focal-point-' . $field_name . '-' . $delta);
-      $form['preview'] = array(
-        'indicator' => _focal_point_indicator($focal_point_id),
-        'thumbnail' => $thumbnail,
-        'preview_link' => _focal_point_preview_link($fid, $focal_point_id),
-        'focal_point' => _focal_point_field($focal_point_id),
-      );
-
-      $form['#validate'][] = 'focal_point_form_validate';
-    }
+    _focal_point_form_append_focal_point_preview($form, $file);
   }
 }
 
 /**
- * Implementation of hook_form_FORM_ID_alter().
+ * Implements hook_form_FORM_ID_alter().
  */
 function focal_point_form_file_entity_edit_alter(&$form, &$form_state) {
   // Make sure we have an entity to work with.
@@ -168,17 +154,42 @@ function focal_point_form_file_entity_edit_alter(&$form, &$form_state) {
     return;
   }
 
-  if (_focal_point_supported_field_type('media') && _focal_point_supported_file($form['#entity'])) {
-    $form['preview']['#image_style'] = $form['preview']['#style_name'] = 'focal_point_preview';
+  _focal_point_form_append_focal_point_preview($form, $form['#entity']);
+}
 
+/**
+ * Append the focal point preview field to file edit forms.
+ *
+ * @param array $form
+ *   The form array provided by hook_form_alter() to attach the focal point
+ *   preview to.
+ * @param object $file
+ *   The file object we should be adding the preview for.
+ */
+function _focal_point_form_append_focal_point_preview(&$form, $file) {
+  if (_focal_point_supported_field_type('media') && is_object($file) && _focal_point_supported_file($file)) {
     $focal_point_id = drupal_html_id('focal-point-media');
     $form['focal_point'] = array(
       '#type' => 'container',
+      '#prefix' => '<label>' . t('Focal Point') . '</label>',
       'indicator' => _focal_point_indicator($focal_point_id),
-      'thumbnail' => $form['preview'],
+      'thumbnail' => array(
+        '#type' => 'markup',
+        '#theme' => 'image_style',
+        '#style_name' => 'focal_point_preview',
+        '#path' => $file->uri,
+        '#alt' => $file->alt,
+        '#title' => $file->title,
+      ),
+      'preview_link' => _focal_point_preview_link($file->fid, $focal_point_id),
       'focal_point' => _focal_point_field($focal_point_id, $form['#entity']->focal_point),
+      'focal_point_help' => _focal_point_help(),
     );
 
+    // To prevent duplicate image previews from displaying we should go ahead
+    // and limit access to the preview element. Media does this already in some
+    // instances, but not all.
+    $form['preview']['#access'] = FALSE;
     $form['#validate'][] = 'focal_point_form_validate';
   }
 }
@@ -234,6 +245,7 @@ function focal_point_preprocess_image_widget(&$variables) {
         isset($element['focal_point']['#default_value']) ? $element['focal_point']['#default_value'] : FOCAL_POINT_DEFAULT),
     );
     $element['preview'] = $preview;
+    $element['focal_point_help'] = _focal_point_help();
   }
 }
 
@@ -258,7 +270,7 @@ function focal_point_element_form_validate($element, &$form_state, $form) {
 }
 
 /**
- * Implementation of hook_field_attach_presave().
+ * Implements hook_field_attach_presave().
  */
 function focal_point_field_attach_presave($entity_type, $entity) {
   list($id, $vid, $bundle) = entity_extract_ids($entity_type, $entity);
@@ -268,9 +280,15 @@ function focal_point_field_attach_presave($entity_type, $entity) {
   foreach (field_info_instances($entity_type, $bundle) as $instance) {
     $field_name = $instance['field_name'];
     if (_focal_point_supported_widget_type($instance['widget']['type'])) {
-      $wrapper = entity_metadata_wrapper($entity_type, $entity);
-      $images = $wrapper->{$field_name}->value();
-      if (is_array($images)) {
+      $images = array();
+      try {
+        $wrapper = entity_metadata_wrapper($entity_type, $entity);
+        $images = $wrapper->{$field_name}->value();
+      }
+      catch (EntityMetadataWrapperException $e) {
+        watchdog_exception('focal_point', $e);
+      }
+      if (!empty($images) && is_array($images)) {
         _focal_point_images_save($images);
       }
     }
@@ -278,7 +296,7 @@ function focal_point_field_attach_presave($entity_type, $entity) {
 }
 
 /**
- * Implementation of hook_file_presave().
+ * Implements hook_file_presave().
  */
 function focal_point_file_presave($file) {
   if (isset($file->fid) && isset($file->focal_point)) {
@@ -287,17 +305,19 @@ function focal_point_file_presave($file) {
 }
 
 /**
- * Implementation of hook_file_delete().
+ * Implements hook_file_delete().
  */
 function focal_point_file_delete($file) {
   focal_point_delete($file->fid);
 }
 
 /**
- * Get a list of available methods that can be used to set the default focal
- * point value.
+ * Get a list of methods that can be used to set the default focal point value.
  *
  * @return array
+ *   An array of arrays with the keys "label" and "callback".
+ *
+ * @see image_focus_focal_point_default_method_info()
  */
 function focal_point_get_default_method_info() {
   $info = &drupal_static(__FUNCTION__);
@@ -347,6 +367,7 @@ function focal_point_save($fid, $focal_point) {
   elseif (!empty($focal_point)) {
     // The focal point is both new and non-empty.
     drupal_write_record('focal_point', $record);
+    _focal_point_flush($fid);
   }
 
   // Clear the static caches.
@@ -362,6 +383,7 @@ function focal_point_save($fid, $focal_point) {
  *   The focal point string to test.
  *
  * @return bool
+ *   TRUE if the given focal point value is valid; FALSE otherwise.
  */
 function focal_point_validate($focal_point) {
   if (empty($focal_point) || preg_match('/^(100|[0-9]{1,2})(,)(100|[0-9]{1,2})$/', $focal_point)) {
@@ -375,13 +397,13 @@ function focal_point_validate($focal_point) {
 /**
  * Returns the focal points of the given images.
  *
- * See focal_point_get() for more information
- *
  * @param array $fids
  *   An array of file IDs.
  *
  * @return array
  *   An array of focal points keyed by file IDs.
+ *
+ * @see focal_point_get()
  */
 function focal_point_get_multiple($fids) {
   $focal_points = &drupal_static(__FUNCTION__, array());
@@ -396,14 +418,17 @@ function focal_point_get_multiple($fids) {
 }
 
 /**
- * Returns the focal point of the given image in the form '12,34' where 12 is
- * the distance from the left edge in percents and 34 is the distance from the
- * top edge in percents. If no focal point is found an empty string is returned.
+ * Returns the focal point of the given image.
+ *
+ * The focal point is always returned in the form '12,34' where 12 is the
+ * distance from the left edge in percents and 34 is the distance from the top
+ * edge in percents. If no focal point is found an empty string is returned.
  *
  * @param int $fid
  *   The fid of the image field entity in question.
  *
  * @return string
+ *   Ex. 35,65.
  */
 function focal_point_get($fid) {
   $result = focal_point_get_multiple(array($fid));
@@ -414,6 +439,7 @@ function focal_point_get($fid) {
  * Parse the string representation of the focal point into an array.
  *
  * @param string $focal_point
+ *   The focal point string to be parsed.
  *
  * @return array
  *   The x & y offsets (in percents) from the top left corner of the image.
@@ -430,6 +456,7 @@ function focal_point_parse($focal_point = '') {
  * Deletes the focal point for the given file entity.
  *
  * @param int $fid
+ *   The fid of the image field entity in question.
  */
 function focal_point_delete($fid) {
   _focal_point_flush($fid);
@@ -439,12 +466,16 @@ function focal_point_delete($fid) {
 }
 
 /**
- * If possible, make a best guess for the initial value of the focal point of
- * the given file. If all else fails, return 50,50.
+ * Make a best guess for the initial value of the focal point of the given file.
+ *
+ * If possible, guess at the initial value of the focal point. If all else
+ * fails, return 50,50.
  *
  * @param int $fid
+ *   The fid of the image file entity in question.
  *
  * @return string
+ *   Ex. 45,23.
  */
 function _focal_point_guess_default($fid) {
   $method = variable_get('focal_point_default_method', '');
@@ -477,6 +508,7 @@ function _focal_point_guess_default($fid) {
  *   (Optional) Whether or not the field should be accessible.
  *
  * @return array
+ *   A FAPI field array for the focal point value.
  */
 function _focal_point_field($indicator_id = 'focal-point', $default_value = FOCAL_POINT_DEFAULT, $access = TRUE) {
   return array(
@@ -494,6 +526,20 @@ function _focal_point_field($indicator_id = 'focal-point', $default_value = FOCA
       'js' => array(drupal_get_path('module', 'focal_point') . '/js/focal_point.js'),
       'css' => array(drupal_get_path('module', 'focal_point') . '/css/focal_point.css'),
     ),
+  );
+}
+
+/**
+ * Retrieve the help text for a focal point field.
+ *
+ * @return array
+ *   A render array for the help text to display on a focal point field.
+ */
+function _focal_point_help() {
+  return array(
+    '#prefix' => '<div class="focal-point-help">',
+    '#markup' => t('Click and drag the crosshair to target the most important portion of the image.  This portion of the image will never be cropped.'),
+    '#suffix' => '</div>',
   );
 }
 
@@ -518,10 +564,11 @@ function _focal_point_images_save($images) {
 /**
  * Determine whether or not the provided field can use focal point support.
  *
- * @param string $instance
- *  A drupal field widget type.
+ * @param string $type
+ *   A drupal field widget type.
  *
  * @return bool
+ *   TRUE if the given widget type is supported by focal point.
  */
 function _focal_point_supported_widget_type($type) {
   $supported = FALSE;
@@ -534,17 +581,20 @@ function _focal_point_supported_widget_type($type) {
       $supported = TRUE;
     }
   }
+
   return $supported;
 }
 
 /**
- * Determine if the site is configured to enable focal point on the given widget
- * type.
+ * Determine wether or not the given widget type is supported.
+ *
+ * Support is based on the site configuration.
  *
  * @param string $type
- *   The type of image field in question. image | media
+ *   The type of image field in question (image || media).
  *
  * @return bool
+ *   TRUE if the given field type is supported by focal point.
  */
 function _focal_point_supported_field_type($type) {
   $enabled_for = variable_get('focal_point_enabled_for', array('image', 'media'));
@@ -558,6 +608,7 @@ function _focal_point_supported_field_type($type) {
  *   Either a loaded file object or an fid.
  *
  * @return bool
+ *   TRUE if the given file entity is of a supported type.
  */
 function _focal_point_supported_file($file) {
   if (is_int($file)) {
@@ -571,13 +622,15 @@ function _focal_point_supported_file($file) {
 }
 
 /**
- * Flush generated images based on a file id.
+ * Flush derivitive images based on a file id.
  *
  * @param int $fid
+ *   The file id of the file entity whose derivitive images are being flushed.
  */
 function _focal_point_flush($fid) {
-  $file = file_load($fid);
-  image_path_flush($file->uri);
+  if ($file = file_load($fid)) {
+    image_path_flush($file->uri);
+  }
 }
 
 /**
@@ -588,6 +641,7 @@ function _focal_point_flush($fid) {
  *   image fields that have a cardinality greater than one, and forms in modals.
  *
  * @return array
+ *   A render array for the focal point indicator crosshair.
  */
 function _focal_point_indicator($indicator_id = 'focal-point') {
   drupal_add_library('system', 'ui.draggable');
@@ -600,7 +654,6 @@ function _focal_point_indicator($indicator_id = 'focal-point') {
     ),
     '#markup' => '',
   );
-
 
   return $indicator;
 }
@@ -637,15 +690,21 @@ function _focal_point_get_image_styles() {
 }
 
 /**
+ * Allows previewing of derivitive images based on the given focal point.
+ *
  * Return a render array that shows the derivative images of the given fid
  * using the given focal point for every style that uses a focal point effect.
  *
  * @param int $fid
+ *   The fid of the file entity in question.
  * @param string $focal_point
+ *   A focal point value.
  * @param bool $show_original
- *   (Optional)
+ *   (Optional) If TRUE the original image will be displayed above the preview
+ *   images.
  *
  * @return array
+ *   A render array to display the preview page.
  */
 function _focal_point_preview($fid, $focal_point, $show_original = TRUE) {
   $file = is_numeric($fid) ? file_load($fid) : NULL;
@@ -677,9 +736,13 @@ function _focal_point_preview($fid, $focal_point, $show_original = TRUE) {
           // Don't output borealis styles; there are just too many.
           continue;
         }
+        // The 'label' property was not introduced until Drupal 7.23 so just in
+        // case we provide a fallback.
+        // @see https://www.drupal.org/node/2350147
+        $label = isset($style['label']) ? $style['label'] : $style['name'];
         $output['focal_point_examples'][$isid] = array(
           '#type' => 'markup',
-          '#prefix' => '<h2>' . $style['name'] . '</h2>',
+          '#prefix' => '<h2>' . $label . '</h2>',
           '#theme' => 'focal_point_image_style',
           '#style_name' => $style['name'],
           '#path' => $file->uri,
@@ -701,6 +764,7 @@ function _focal_point_preview($fid, $focal_point, $show_original = TRUE) {
  * Build a render array for the preview link.
  *
  * @param int $fid
+ *   The fid of the file entity in question.
  * @param string $indicator_id
  *   (Optional) The id of the focal point indicator. This is needed to support
  *   image fields that have a cardinality greater than one, and forms in modals.
@@ -709,26 +773,36 @@ function _focal_point_preview($fid, $focal_point, $show_original = TRUE) {
  *   percent and yy represents the top offset as a percent.
  *
  * @return array
+ *   A render array for the preview link.
  */
-function _focal_point_preview_link($fid, $indicator_id = 'focal-point', $focal_point = FOCAL_POINT_DEFAULT) {
-  $link_text = t('Quick Preview');
+function _focal_point_preview_link($fid, $indicator_id = 'focal-point', $focal_point = '') {
+  if (!user_access('preview focal point')) {
+    return;
+  }
+
+  $focal_point = empty($focal_point) ? FOCAL_POINT_DEFAULT : $focal_point;
+  $link_text = t('Image Preview');
   $link_path = 'focal_point/preview/' . $fid . '/' . $focal_point;
 
   return array(
     '#type' => 'markup',
-    '#markup' => l($link_text, $link_path, array('attributes' => array(
-      'target' => '_blank',
-      'class' => array(
-        'focal-point-preview-link',
-        'overlay-exclude',
+    '#markup' => l($link_text, $link_path, array(
+      'attributes' => array(
+        'target' => '_blank',
+        'class' => array(
+          'focal-point-preview-link',
+          'overlay-exclude',
+        ),
+        'data-focal-point-id' => $indicator_id,
       ),
-      'data-focal-point-id' => $indicator_id,
-    ))),
+    )),
   );
 }
 
 /**
- * Implements hook_focal_point_default_method_info() for image_focus.module.
+ * Implements hook_focal_point_default_method_info().
+ *
+ * Defined on behalf of the image_focus module.
  */
 function image_focus_focal_point_default_method_info() {
   $info['image_focus'] = array(
@@ -739,7 +813,9 @@ function image_focus_focal_point_default_method_info() {
 }
 
 /**
- * Implements hook_focal_point_default_method_info() for smartcrop.module.
+ * Implements hook_focal_point_default_method_info().
+ *
+ * DEfined on behalf of the smartcrop module.
  */
 function smartcrop_focal_point_default_method_info() {
   $info['smartcrop'] = array(
@@ -749,6 +825,14 @@ function smartcrop_focal_point_default_method_info() {
   return $info;
 }
 
+/**
+ * Callback function.
+ *
+ * Used by modules implementing hook_focal_point_default_method_info().
+ *
+ * @see image_focus_focal_point_default_method_info()
+ * @see smartcrop_focal_point_default_method_info()
+ */
 function focal_point_get_smartcrop_focal_point($image) {
   module_load_include('inc', 'focal_point', 'focal_point.smartcrop');
   return focal_point_smartcrop_estimation($image);

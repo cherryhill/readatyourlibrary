@@ -7,7 +7,7 @@
 
 
 /**
- * Implementation of hook_image_effect_info().
+ * Implements hook_image_effect_info().
  */
 function focal_point_image_effect_info() {
   $effects = array(
@@ -16,8 +16,8 @@ function focal_point_image_effect_info() {
       'help' => t('Scale and crop based on data provided by <em>Focal Point</em>.'),
       'effect callback' => 'focal_point_scale_and_crop_effect',
       'dimensions callback' => 'image_resize_dimensions',
-      'form callback' => 'image_resize_form',
-      'summary theme' => 'image_resize_summary',
+      'form callback' => 'focal_point_crop_form',
+      'summary theme' => 'focal_point_image_resize_summary',
     ),
     'focal_point_crop' => array(
       'label' => t('Focal Point Crop'),
@@ -25,7 +25,7 @@ function focal_point_image_effect_info() {
       'effect callback' => 'focal_point_crop_effect',
       'dimensions callback' => 'image_resize_dimensions',
       'form callback' => 'focal_point_crop_form',
-      'summary theme' => 'image_crop_summary',
+      'summary theme' => 'focal_point_image_crop_summary',
     ),
   );
 
@@ -52,11 +52,38 @@ function focal_point_scale_and_crop_effect(&$image, $data) {
 }
 
 /**
- * Form builder for the crop form.
+ * Form builder for the scale and crop forms.
  */
 function focal_point_crop_form($data = array()) {
   $form = image_crop_form($data);
   unset($form['anchor']);
+  // Add input fields for focal point shifting.
+  $form['focal_point_advanced'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Advanced settings'),
+    '#collapsible' => TRUE,
+    '#collapsed' => TRUE,
+  );
+  $form['focal_point_advanced']['shift_x'] = array(
+    '#type' => 'textfield',
+    '#title' => 'Horizontal Shift',
+    '#description' => t('If set images will be cropped as though the focal point indicator has been shifted left (positive values) or shifted right (negative values) by the number of pixels specified.'),
+    '#default_value' => (isset($data['focal_point_advanced']['shift_x']) ? $data['focal_point_advanced']['shift_x'] : ''),
+    '#field_suffix' => t('pixels'),
+    '#size' => 10,
+    '#element_validate' => array('image_effect_integer_validate'),
+    '#allow_negative' => TRUE,
+  );
+  $form['focal_point_advanced']['shift_y'] = array(
+    '#type' => 'textfield',
+    '#title' => 'Veritical Shift',
+    '#description' => t('If set images will be cropped as though the focal point indicator has been shifted up (positive values) or shifted down (negative values) by the number of pixels specified.'),
+    '#default_value' => (isset($data['focal_point_advanced']['shift_y']) ? $data['focal_point_advanced']['shift_y'] : ''),
+    '#field_suffix' => t('pixels'),
+    '#size' => 10,
+    '#element_validate' => array('image_effect_integer_validate'),
+    '#allow_negative' => TRUE,
+  );
 
   return $form;
 }
@@ -109,10 +136,12 @@ function focal_point_effect_crop_data($image, $data) {
 
     // Get the pixel location of the focal point for the current image taking
     // the image boundaries into account.
-    $anchor_x = focal_point_effect_calculate_anchor($image->info['width'], $crop_data['width'], $focal_point['x-offset']);
-    $anchor_y = focal_point_effect_calculate_anchor($image->info['height'], $crop_data['height'], $focal_point['y-offset']);
+    $shift_x = (isset($data['focal_point_advanced']) && isset($data['focal_point_advanced']['shift_x'])) ? $data['focal_point_advanced']['shift_x'] : 0;
+    $shift_y = (isset($data['focal_point_advanced']) && isset($data['focal_point_advanced']['shift_y'])) ? $data['focal_point_advanced']['shift_y'] : 0;
+    $anchor_x = focal_point_effect_calculate_anchor($image->info['width'], $crop_data['width'], $focal_point['x-offset'], $shift_x);
+    $anchor_y = focal_point_effect_calculate_anchor($image->info['height'], $crop_data['height'], $focal_point['y-offset'], $shift_y);
 
-    $crop_data['anchor'] = $anchor_x .'-'. $anchor_y;
+    $crop_data['anchor'] = $anchor_x . '-' . $anchor_y;
 
     return $crop_data;
   }
@@ -121,15 +150,24 @@ function focal_point_effect_crop_data($image, $data) {
 }
 
 /**
+ * Calculate how to resize the given image using the given heights and widths.
+ *
  * Calculate the resize dimensions of an image based on the longest crop
  * dimension so that the aspect ratio is preserved and that there is always
  * enough image available to the crop.
  *
- * @param $image_width
- * @param $image_height
- * @param $crop_width
- * @param $crop_height
+ * @param int $image_width
+ *   The original width of the image.
+ * @param int $image_height
+ *   The original height of the image.
+ * @param int $crop_width
+ *   The width the image should be after cropping.
+ * @param int $crop_height
+ *   The height the image should be after cropping.
+ *
  * @return array
+ *   An array with the keys width and height representing the final crop size
+ *   such that the aspect ratio is preserved.
  */
 function focal_point_effect_resize_data($image_width, $image_height, $crop_width, $crop_height) {
   $resize_data = array();
@@ -167,11 +205,15 @@ function focal_point_effect_resize_data($image_width, $image_height, $crop_width
  *   The dimension of the crop.
  * @param int $focal_point_offset
  *   The corresponding focal point percentage value for the given dimension.
+ * @param int $focal_point_shift
+ *   The pixel value for shifting the focal point for the given dimension.
  *
  * @return int
+ *   The anchor offset for the given dimension.
  */
-function focal_point_effect_calculate_anchor($image_size, $crop_size, $focal_point_offset) {
+function focal_point_effect_calculate_anchor($image_size, $crop_size, $focal_point_offset, $focal_point_shift = 0) {
   $focal_point_pixel = (int) $focal_point_offset * $image_size / 100;
+  $focal_point_pixel -= (int) $focal_point_shift;
 
   // If the crop size is larger than the image size, use the image size to avoid
   // stretching. This will cause the excess space to be filled with black.

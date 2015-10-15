@@ -8,7 +8,7 @@
           'color': Drupal.settings.flexicolorAdminFarbtastic.RGBToHSL(Drupal.settings.flexicolorAdminFarbtastic.unpack(color))[2] > 0.5 ? '#000' : '#fff'
         });
       }
-
+      
       function updateAllTextBoxes() {
         // Colour the text boxes their value color.
         $('#flexicolor-fieldset input:text').each(function(index, object) {
@@ -18,7 +18,7 @@
           }
         });
       }
-
+      
       // Create the Farbtastic color picker
       if ($('#flexicolor-admin-update-selector').length) {
         $('#flexicolor-color-picker').addClass('color-processed');
@@ -33,27 +33,29 @@
           $(Drupal.settings.flexicolorAdminTextbox).val(color);
           updateTextBox(color, Drupal.settings.flexicolorAdminTextbox);
         });
-
+      
         // Make the focus of the textbox change the input box we're acting on.
         $('#flexicolor-fieldset input:text').focus(function() {
           $('#flexicolor-fieldset .form-item').css({
             'border': 'none'
           });
-          $(this).after($('#flexicolor-color-picker'));
+          $(this).parent().css({
+            'border': 'solid 2px red'
+          });
           Drupal.settings.flexicolorAdminTextbox = this;
           Drupal.settings.flexicolorAdminFarbtastic.setColor(this.value);
         });
-
+        
         $('#flexicolor-fieldset input:text').keyup(function() {
           Drupal.settings.flexicolorAdminFarbtastic.setColor(this.value);
           if ($('#edit-flexicolor-selected-preset').length) {
             $('#edit-flexicolor-selected-preset').val('');
           }
         })
-
+        
         updateAllTextBoxes();
       }
-
+      
       if ($('#edit-flexicolor-selected-preset').length) {
         // Start to add some cool stuff in here!
         $('#edit-flexicolor-selected-preset').change(function() {

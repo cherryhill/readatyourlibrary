@@ -27,10 +27,11 @@ function focal_point_configuration_form($form, &$form_state) {
     'image' => t('Standard image fields'),
     'media' => t('Media module image fields'),
   );
+  // @todo consider allowing $options to be altered.
   $form['focal_point_enabled_for'] = array(
     '#type' => 'checkboxes',
     '#title' => 'Enable focal point for the following:',
-    '#options' => $options, // @todo: consider allowing this to be altered
+    '#options' => $options,
     '#default_value' => variable_get('focal_point_enabled_for', array_keys($options)),
   );
   $form['focal_point_test_drive_link'] = array(
@@ -78,7 +79,7 @@ function focal_point_test_drive_form($form, &$form_state) {
 /**
  * Form submit handler for focal_point_test_drive_form().
  *
- * @see focal_point_test_drive_form().
+ * @see focal_point_test_drive_form()
  */
 function focal_point_test_drive_form_submit(&$form, &$form_state) {
   // Save the test drive focal point setting.
@@ -98,18 +99,21 @@ function focal_point_test_drive_form_submit(&$form, &$form_state) {
 }
 
 /**
- * Page callback function to display a preview of derivative images for the
- * given file.
+ * Page callback function.
+ *
+ * This page displays a preview of derivative images for the given file.
  *
  * @param int $fid
+ *   The fid of the image file entity in question.
  *
  * @param string $focal_point
  *   (Optional) A string in the form 'left-percent-offset, top-percent-offset'.
  *   Leave this value empty to use the value stored in the database.
  *
  * @return array
+ *   The render array for the preview page.
  *
- * @see hook_focal_point_crop_data_alter().
+ * @see hook_focal_point_crop_data_alter()
  */
 function focal_point_preview_page($fid, $focal_point = '') {
   $file = is_numeric($fid) ? file_load($fid) : NULL;
