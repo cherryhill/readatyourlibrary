@@ -518,4 +518,18 @@ function _play_library_program_set_message($reward, $account_uid) {
 
   message_notify_send_message($message, $options, 'mnc_email');
   */
+
+  // Send a privatemsg
+  if (!module_exists('privatemsg')) {
+    return;
+  }
+  if (!empty($reward->field_reward_notification)) {
+    $options = array(
+      'author' => user_load(1),
+    );
+    $recipient = user_load($account_uid);
+    $subject = t('[OPL] Congratulations, you just won a prize!');
+    $body = $reward->field_reward_notification[LANGUAGE_NONE][0]['value'];
+    $result = privatemsg_new_thread(array($recipient), $subject, $body, $options);
+  }
 }
