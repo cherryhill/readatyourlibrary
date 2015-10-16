@@ -372,6 +372,7 @@ function _play_library_program_process_user_reward_claim($entity, $type) {
   if (!empty($reward->field_reward_badge)) {
     play_library_program_add_user_badge($reward->field_reward_badge[LANGUAGE_NONE][0]['target_id'], $account_uid);
   }
+  _play_library_program_set_message($reward, $account_uid);
 }
 
 /**
@@ -486,4 +487,35 @@ function _play_library_program_get_activity_reward_ids($activity_id, $user_activ
   }
 
   return array_unique($rids);
+}
+
+/**
+ * Creates a new message.
+ */
+function _play_library_program_set_message($reward, $account_uid) {
+  /*
+  // Only use this if we opt to switch back to using the MNC module. Would require debugging and further development.
+  $notification_message = FALSE;
+  if ($reward->type == 'physical_reward') {
+    $notification_message = 'Congratulations, you just won a reward: ' . $reward->title;
+  }
+  if (!empty($notification_message)) {
+    $message = message_create('user_notification_reward', array('uid' => $account_uid));
+
+    $wrapper = entity_metadata_wrapper('message', $message);
+    $wrapper->field_notification_message->set(array('value' => $notification_message, 'format' => filter_default_format()));
+    $wrapper->save();
+  }
+
+  $options['mnc_recipients'] = array(
+    array(
+      'user' => user_load(1),
+    ),
+    array(
+      'user' => $account_uid,
+    ),
+  );
+
+  message_notify_send_message($message, $options, 'mnc_email');
+  */
 }
