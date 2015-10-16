@@ -731,6 +731,390 @@ function play_library_program_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'reward-physical_reward-field_reward_message'.
+  $field_instances['reward-physical_reward-field_reward_message'] = array(
+    'bundle' => 'physical_reward',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'This is the message the user will see on the screen after winning a prize.',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'reward',
+    'field_name' => 'field_reward_message',
+    'label' => 'Reward Message',
+    'required' => 0,
+    'settings' => array(
+      'better_formats' => array(
+        'allowed_formats' => array(
+          'filtered_html' => 'filtered_html',
+          'filtered_html_with_tables' => 'filtered_html_with_tables',
+          'full_html' => 'full_html',
+          'php_code' => 'php_code',
+          'plain_text' => 'plain_text',
+          'simple_html' => 'simple_html',
+        ),
+        'allowed_formats_toggle' => 0,
+        'default_order_toggle' => 0,
+        'default_order_wrapper' => array(
+          'formats' => array(
+            'filtered_html' => array(
+              'weight' => -9,
+            ),
+            'filtered_html_with_tables' => array(
+              'weight' => -7,
+            ),
+            'full_html' => array(
+              'weight' => -6,
+            ),
+            'php_code' => array(
+              'weight' => -4,
+            ),
+            'plain_text' => array(
+              'weight' => -5,
+            ),
+            'simple_html' => array(
+              'weight' => -10,
+            ),
+          ),
+        ),
+      ),
+      'linkit' => array(
+        'enable' => 0,
+        'insert_plugin' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'rows' => 5,
+      ),
+      'type' => 'text_textarea',
+      'weight' => 0,
+    ),
+  );
+
+  // Exported field_instance:
+  // 'reward-physical_reward-field_reward_notification'.
+  $field_instances['reward-physical_reward-field_reward_notification'] = array(
+    'bundle' => 'physical_reward',
+    'default_value' => array(
+      0 => array(
+        'value' => '',
+      ),
+    ),
+    'deleted' => 0,
+    'description' => 'This is the message the user will receive via email / notification center.',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 1,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'reward',
+    'field_name' => 'field_reward_notification',
+    'label' => 'Reward Notification',
+    'required' => 0,
+    'settings' => array(
+      'better_formats' => array(
+        'allowed_formats' => array(
+          'filtered_html' => 'filtered_html',
+          'filtered_html_with_tables' => 'filtered_html_with_tables',
+          'full_html' => 'full_html',
+          'php_code' => 'php_code',
+          'plain_text' => 'plain_text',
+          'simple_html' => 'simple_html',
+        ),
+        'allowed_formats_toggle' => 0,
+        'default_order_toggle' => 0,
+        'default_order_wrapper' => array(
+          'formats' => array(
+            'filtered_html' => array(
+              'weight' => -9,
+            ),
+            'filtered_html_with_tables' => array(
+              'weight' => -7,
+            ),
+            'full_html' => array(
+              'weight' => -6,
+            ),
+            'php_code' => array(
+              'weight' => -4,
+            ),
+            'plain_text' => array(
+              'weight' => -5,
+            ),
+            'simple_html' => array(
+              'weight' => -10,
+            ),
+          ),
+        ),
+      ),
+      'linkit' => array(
+        'enable' => 0,
+        'insert_plugin' => '',
+      ),
+      'text_processing' => 1,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'rows' => 5,
+      ),
+      'type' => 'text_textarea',
+      'weight' => 1,
+    ),
+  );
+
+  // Exported field_instance: 'reward-print_reward-field_print_reward_file'.
+  $field_instances['reward-print_reward-field_print_reward_file'] = array(
+    'bundle' => 'print_reward',
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'file',
+        'settings' => array(),
+        'type' => 'file_default',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'reward',
+    'field_name' => 'field_print_reward_file',
+    'label' => 'Print Reward FIle',
+    'required' => 0,
+    'settings' => array(
+      'description_field' => 0,
+      'file_directory' => 'rewards/print',
+      'file_extensions' => 'pdf jpg png',
+      'max_filesize' => '',
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'file',
+      'settings' => array(
+        'filefield_sources' => array(
+          'filefield_sources' => array(
+            'attach' => 0,
+            'clipboard' => 0,
+            'imce' => 0,
+            'reference' => 0,
+            'remote' => 0,
+            'upload' => 'upload',
+          ),
+          'source_attach' => array(
+            'absolute' => 0,
+            'attach_mode' => 'move',
+            'path' => 'file_attach',
+          ),
+          'source_imce' => array(
+            'imce_mode' => 0,
+          ),
+          'source_reference' => array(
+            'autocomplete' => 0,
+          ),
+        ),
+        'progress_indicator' => 'throbber',
+      ),
+      'type' => 'file_generic',
+      'weight' => 1,
+    ),
+  );
+
+  // Exported field_instance: 'reward-print_reward-field_reward_message'.
+  $field_instances['reward-print_reward-field_reward_message'] = array(
+    'bundle' => 'print_reward',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'This the message the user will see on screen after winning the prize.',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 1,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'reward',
+    'field_name' => 'field_reward_message',
+    'label' => 'Reward Message',
+    'required' => 0,
+    'settings' => array(
+      'better_formats' => array(
+        'allowed_formats' => array(
+          'filtered_html' => 'filtered_html',
+          'filtered_html_with_tables' => 'filtered_html_with_tables',
+          'full_html' => 'full_html',
+          'php_code' => 'php_code',
+          'plain_text' => 'plain_text',
+          'simple_html' => 'simple_html',
+        ),
+        'allowed_formats_toggle' => 0,
+        'default_order_toggle' => 0,
+        'default_order_wrapper' => array(
+          'formats' => array(
+            'filtered_html' => array(
+              'weight' => -9,
+            ),
+            'filtered_html_with_tables' => array(
+              'weight' => -7,
+            ),
+            'full_html' => array(
+              'weight' => -6,
+            ),
+            'php_code' => array(
+              'weight' => -4,
+            ),
+            'plain_text' => array(
+              'weight' => -5,
+            ),
+            'simple_html' => array(
+              'weight' => -10,
+            ),
+          ),
+        ),
+      ),
+      'linkit' => array(
+        'enable' => 0,
+        'insert_plugin' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'rows' => 5,
+      ),
+      'type' => 'text_textarea',
+      'weight' => 3,
+    ),
+  );
+
+  // Exported field_instance: 'reward-print_reward-field_reward_notification'.
+  $field_instances['reward-print_reward-field_reward_notification'] = array(
+    'bundle' => 'print_reward',
+    'default_value' => array(
+      0 => array(
+        'value' => '',
+      ),
+    ),
+    'deleted' => 0,
+    'description' => 'This is the message the user will receive via email / notification center.',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 2,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'reward',
+    'field_name' => 'field_reward_notification',
+    'label' => 'Reward Notification',
+    'required' => 0,
+    'settings' => array(
+      'better_formats' => array(
+        'allowed_formats' => array(
+          'filtered_html' => 'filtered_html',
+          'filtered_html_with_tables' => 'filtered_html_with_tables',
+          'full_html' => 'full_html',
+          'php_code' => 'php_code',
+          'plain_text' => 'plain_text',
+          'simple_html' => 'simple_html',
+        ),
+        'allowed_formats_toggle' => 0,
+        'default_order_toggle' => 0,
+        'default_order_wrapper' => array(
+          'formats' => array(
+            'filtered_html' => array(
+              'weight' => -9,
+            ),
+            'filtered_html_with_tables' => array(
+              'weight' => -7,
+            ),
+            'full_html' => array(
+              'weight' => -6,
+            ),
+            'php_code' => array(
+              'weight' => -4,
+            ),
+            'plain_text' => array(
+              'weight' => -5,
+            ),
+            'simple_html' => array(
+              'weight' => -10,
+            ),
+          ),
+        ),
+      ),
+      'linkit' => array(
+        'enable' => 0,
+        'insert_plugin' => '',
+      ),
+      'text_processing' => 1,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'rows' => 5,
+      ),
+      'type' => 'text_textarea',
+      'weight' => 5,
+    ),
+  );
+
   // Exported field_instance: 'reward-reward-field_reward_badge'.
   $field_instances['reward-reward-field_reward_badge'] = array(
     'bundle' => 'reward',
@@ -1314,6 +1698,237 @@ function play_library_program_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'reward-sticker-field_reward_message'.
+  $field_instances['reward-sticker-field_reward_message'] = array(
+    'bundle' => 'sticker',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'This the message user will see on screen after winning prize.',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 1,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'reward',
+    'field_name' => 'field_reward_message',
+    'label' => 'Reward Message',
+    'required' => 0,
+    'settings' => array(
+      'better_formats' => array(
+        'allowed_formats' => array(
+          'filtered_html' => 'filtered_html',
+          'filtered_html_with_tables' => 'filtered_html_with_tables',
+          'full_html' => 'full_html',
+          'php_code' => 'php_code',
+          'plain_text' => 'plain_text',
+          'simple_html' => 'simple_html',
+        ),
+        'allowed_formats_toggle' => 0,
+        'default_order_toggle' => 0,
+        'default_order_wrapper' => array(
+          'formats' => array(
+            'filtered_html' => array(
+              'weight' => -9,
+            ),
+            'filtered_html_with_tables' => array(
+              'weight' => -7,
+            ),
+            'full_html' => array(
+              'weight' => -6,
+            ),
+            'php_code' => array(
+              'weight' => -4,
+            ),
+            'plain_text' => array(
+              'weight' => -5,
+            ),
+            'simple_html' => array(
+              'weight' => -10,
+            ),
+          ),
+        ),
+      ),
+      'linkit' => array(
+        'enable' => 0,
+        'insert_plugin' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'rows' => 5,
+      ),
+      'type' => 'text_textarea',
+      'weight' => 3,
+    ),
+  );
+
+  // Exported field_instance: 'reward-sticker-field_reward_notification'.
+  $field_instances['reward-sticker-field_reward_notification'] = array(
+    'bundle' => 'sticker',
+    'default_value' => array(
+      0 => array(
+        'value' => '',
+      ),
+    ),
+    'deleted' => 0,
+    'description' => 'This is the message the user will receive via email / notification center.',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 2,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'reward',
+    'field_name' => 'field_reward_notification',
+    'label' => 'Reward Notification',
+    'required' => 0,
+    'settings' => array(
+      'better_formats' => array(
+        'allowed_formats' => array(
+          'filtered_html' => 'filtered_html',
+          'filtered_html_with_tables' => 'filtered_html_with_tables',
+          'full_html' => 'full_html',
+          'php_code' => 'php_code',
+          'plain_text' => 'plain_text',
+          'simple_html' => 'simple_html',
+        ),
+        'allowed_formats_toggle' => 0,
+        'default_order_toggle' => 0,
+        'default_order_wrapper' => array(
+          'formats' => array(
+            'filtered_html' => array(
+              'weight' => -9,
+            ),
+            'filtered_html_with_tables' => array(
+              'weight' => -7,
+            ),
+            'full_html' => array(
+              'weight' => -6,
+            ),
+            'php_code' => array(
+              'weight' => -4,
+            ),
+            'plain_text' => array(
+              'weight' => -5,
+            ),
+            'simple_html' => array(
+              'weight' => -10,
+            ),
+          ),
+        ),
+      ),
+      'linkit' => array(
+        'enable' => 0,
+        'insert_plugin' => '',
+      ),
+      'text_processing' => 1,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'rows' => 5,
+      ),
+      'type' => 'text_textarea',
+      'weight' => 5,
+    ),
+  );
+
+  // Exported field_instance: 'reward-sticker-field_sticker_image'.
+  $field_instances['reward-sticker-field_sticker_image'] = array(
+    'bundle' => 'sticker',
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'image',
+        'settings' => array(
+          'image_link' => '',
+          'image_style' => '',
+        ),
+        'type' => 'image',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'reward',
+    'field_name' => 'field_sticker_image',
+    'label' => 'Sticker Image',
+    'required' => 0,
+    'settings' => array(
+      'alt_field' => 1,
+      'default_image' => 0,
+      'file_directory' => '',
+      'file_extensions' => 'png gif jpg jpeg',
+      'max_filesize' => '',
+      'max_resolution' => '',
+      'min_resolution' => '',
+      'title_field' => 1,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'image',
+      'settings' => array(
+        'filefield_sources' => array(
+          'filefield_sources' => array(
+            'attach' => 0,
+            'clipboard' => 0,
+            'imce' => 0,
+            'reference' => 0,
+            'remote' => 0,
+            'upload' => 'upload',
+          ),
+          'source_attach' => array(
+            'absolute' => 0,
+            'attach_mode' => 'move',
+            'path' => 'file_attach',
+          ),
+          'source_imce' => array(
+            'imce_mode' => 0,
+          ),
+          'source_reference' => array(
+            'autocomplete' => 0,
+          ),
+        ),
+        'preview_image_style' => 'thumbnail',
+        'progress_indicator' => 'throbber',
+      ),
+      'type' => 'image_image',
+      'weight' => 1,
+    ),
+  );
+
   // Translatables
   // Included for use with string extractors like potx.
   t('Activity');
@@ -1327,6 +1942,7 @@ function play_library_program_field_default_field_instances() {
   t('Is this criteria repeatable? Note that this setting is not compatible with an activity.');
   t('Number of times a user can perform an activity');
   t('Points');
+  t('Print Reward FIle');
   t('Raffle Date');
   t('Raffle Entry Raffle');
   t('Raffle Message');
@@ -1341,10 +1957,15 @@ function play_library_program_field_default_field_instances() {
   t('Reward Notification');
   t('Reward Raffle');
   t('Select when the activity should be fired. Such as when a user signs up, when content is created/published, etc. If you do not select one, the option will show up in the activity menu for the user to select.');
+  t('Sticker Image');
   t('The activity time limit ties to the activities the user can do as part of the \'what did you do today\' block. This does not apply to activities that are fired by other events.');
   t('The reward (or achievement) the user is going to receive. Rewards consist of badges, raffle entries, and anything else.');
   t('These are the number of *overall* points required to satisfy the requirements for a reward. These points can be earned through any activity. If you wish to track criteria by a specific activity, enter a large value (like 9999)');
+  t('This is the message the user will receive via email / notification center.');
+  t('This is the message the user will see on the screen after winning a prize.');
   t('This the message notification sent out to the user, librarian for any physical rewards for the user.');
+  t('This the message the user will see on screen after winning the prize.');
+  t('This the message user will see on screen after winning prize.');
   t('This will be the message sent to the user for winning this. Please fill this out if they are winning a physical prize so they can try to redeem it.');
   t('To tie the criteria with a specific activity, select or create a new activity. Note that the repeat criteria does *not* work with the specific activities.');
   t('Total limit on the number of times a user can perform activity in order to gain points. Minimum 1. To act as \'unlimited\', use a very high integer value (like 9999).');

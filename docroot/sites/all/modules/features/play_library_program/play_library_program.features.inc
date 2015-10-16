@@ -184,3 +184,45 @@ function play_library_program_eck_entity_type_info() {
   );
   return $items;
 }
+
+/**
+ * Implements hook_flag_default_flags().
+ */
+function play_library_program_flag_default_flags() {
+  $flags = array();
+  // Exported flag: "Reward Claimed".
+  $flags['reward_claimed'] = array(
+    'entity_type' => 'reward',
+    'title' => 'Reward Claimed',
+    'global' => 1,
+    'types' => array(
+      0 => 'reward_claim',
+    ),
+    'flag_short' => 'Reward not yet claimed',
+    'flag_long' => 'Click to claim reward',
+    'flag_message' => 'Reward has been claimed by user',
+    'unflag_short' => 'Reward Claimed',
+    'unflag_long' => 'Click to unclaim reward',
+    'unflag_message' => 'Reward not claimed by user',
+    'unflag_denied_text' => '',
+    'link_type' => 'toggle',
+    'weight' => 0,
+    'show_in_links' => array(
+      'full' => 0,
+      'teaser' => 0,
+      'diff_standard' => 0,
+      'token' => 0,
+    ),
+    'show_as_field' => 1,
+    'show_on_form' => 0,
+    'access_author' => '',
+    'show_contextual_link' => 0,
+    'api_version' => 3,
+    'module' => 'play_library_program',
+    'locked' => array(
+      0 => 'name',
+    ),
+  );
+  return $flags;
+
+}
