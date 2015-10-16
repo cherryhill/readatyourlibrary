@@ -221,14 +221,10 @@ function play_library_program_userpoints($op, &$params = array()) {
   if ($op == 'points after') {
     $user_points = userpoints_get_current_points($params['uid']);
     $user_pre_points = $user_points - $params['points'];
-    $tier_rewards = _play_library_program_get_global_reward_ids($user_pre_points, $user_points);
+    $tier_rewards = _play_library_program_get_global_reward_ids($user_pre_points, $user_points, $params['uid']);
     foreach ($tier_rewards as $rid) {
       play_library_program_create_reward_claim($rid, $params['uid']);
     }
-    // Check global rewards
-    $query = new EntityFieldQuery();
-    $query->entityCondition('entity_type', 'activity');
-    $query->entityCondition('bundle', 'activity');
   }
 }
 
@@ -374,7 +370,7 @@ function _play_library_program_process_activity_entry($entity, $type) {
     );
     userpoints_userpointsapi($userpoints_txn);
   }
-  $activity_rewards = _play_library_program_get_activity_reward_ids($activity_id, $current_participation_count);
+  $activity_rewards = _play_library_program_get_activity_reward_ids($activity_id, $current_participation_count, $entity->uid);
   foreach ($activity_rewards as $rid) {
     play_library_program_create_reward_claim($rid, $entity->uid);
   }
@@ -399,7 +395,15 @@ function _play_library_program_process_user_reward_claim($entity, $type) {
 /**
  * Retrieves satisfied reward criteria based on global points.
  */
-function _play_library_program_get_global_reward_ids($user_pre_points, $user_points) {
+function _play_library_program_get_global_reward_ids($user_pre_points, $user_points, $account_uid) {
+  global $user;
+  if (empty($account_uid)) {
+    $account = $user;
+  }
+  else {
+    $account = user_load($account_uid);
+  }
+
   // Create exclusion list of rewards which are tied to activities.
   $exclude_ids = array(-1);
   $date = "" . date('Y-m-d') . " 00:00:00";
@@ -462,7 +466,15 @@ function _play_library_program_get_global_reward_ids($user_pre_points, $user_poi
 /**
  * Retrieves satisfied reward criteria based on total number of completed activity.
  */
-function _play_library_program_get_activity_reward_ids($activity_id, $user_activity_completed) {
+function _play_library_program_get_activity_reward_ids($activity_id, $user_activity_completed, $account_uid = NULL) {
+  global $user;
+  if (empty($account_uid)) {
+    $account = $user;
+  }
+  else {
+    $account = user_load($account_uid);
+  }
+
   $date = "" . date('Y-m-d') . " 00:00:00";
   $rids = array();
   // Get the non-repeated rewards first.
