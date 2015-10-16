@@ -1489,7 +1489,7 @@ function play_library_program_field_default_field_instances() {
         ),
       ),
       'type' => 'inline_entity_form',
-      'weight' => 3,
+      'weight' => 4,
     ),
   );
 
@@ -1694,7 +1694,45 @@ function play_library_program_field_default_field_instances() {
         ),
       ),
       'type' => 'inline_entity_form',
-      'weight' => 4,
+      'weight' => 5,
+    ),
+  );
+
+  // Exported field_instance: 'reward-reward_criteria-field_reward_role_limits'.
+  $field_instances['reward-reward_criteria-field_reward_role_limits'] = array(
+    'bundle' => 'reward_criteria',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'Select roles to which reward is limited. Select none to make it available for all roles.',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'role_field',
+        'settings' => array(),
+        'type' => 'role_field_formatter',
+        'weight' => 5,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'reward',
+    'field_name' => 'field_reward_role_limits',
+    'instance_cardinality' => 0,
+    'label' => 'Reward Role Limits',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_buttons',
+      'weight' => 3,
     ),
   );
 
@@ -1956,6 +1994,8 @@ function play_library_program_field_default_field_instances() {
   t('Reward Message');
   t('Reward Notification');
   t('Reward Raffle');
+  t('Reward Role Limits');
+  t('Select roles to which reward is limited. Select none to make it available for all roles.');
   t('Select when the activity should be fired. Such as when a user signs up, when content is created/published, etc. If you do not select one, the option will show up in the activity menu for the user to select.');
   t('Sticker Image');
   t('The activity time limit ties to the activities the user can do as part of the \'what did you do today\' block. This does not apply to activities that are fired by other events.');

@@ -658,6 +658,36 @@ function play_library_program_field_default_field_bases() {
     'type' => 'entityreference',
   );
 
+  // Exported field_base: 'field_reward_role_limits'.
+  $field_bases['field_reward_role_limits'] = array(
+    'active' => 1,
+    'cardinality' => -1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_reward_role_limits',
+    'indexes' => array(),
+    'locked' => 0,
+    'module' => 'role_field',
+    'settings' => array(
+      'exclusive' => 0,
+      'profile2_private' => FALSE,
+      'roles' => array(
+        2 => 2,
+        3 => 3,
+        4 => 4,
+        5 => 5,
+        6 => 6,
+        7 => 7,
+        8 => 8,
+        9 => 9,
+        10 => 10,
+        11 => 11,
+      ),
+    ),
+    'translatable' => 0,
+    'type' => 'role',
+  );
+
   // Exported field_base: 'field_sticker_image'.
   $field_bases['field_sticker_image'] = array(
     'active' => 1,
