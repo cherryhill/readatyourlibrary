@@ -248,7 +248,6 @@ function play_library_program_create_raffle_winner($raffle_id, $uid) {
   $raffle_winner->field_raffle_winner_raffle[LANGUAGE_NONE][0]['target_id'] = $raffle->id;
   $raffle_winner->field_raffle_winner[LANGUAGE_NONE][0]['target_id'] = $uid;
   entity_save('raffle', $raffle_winner);
-  dpm($raffle_winner);
   drupal_goto('raffle/raffle/' . $raffle_id);
 }
 
@@ -286,7 +285,6 @@ function play_library_program_create_reward_claim($reward_id, $account_id) {
   $reward_claim = entity_create('reward', array('type' => 'reward_claim', 'title' => $title, 'uid' => $account_id));
   $reward_claim->field_reward_claim_id[LANGUAGE_NONE][0]['target_id'] = $reward->id;
   entity_save('reward', $reward_claim);
-  drupal_set_message(t('Congratulations, you have just been rewarded @reward', array('@reward' => $reward->title)));
 }
 
 /**
@@ -422,16 +420,18 @@ function _play_library_program_get_global_reward_ids($user_pre_points, $user_poi
   $query->propertyCondition('id', $exclude_ids, 'NOT IN');
   $query->fieldCondition('field_reward_criteria_point_mark', 'value', $user_pre_points, '>');
   $query->fieldCondition('field_reward_criteria_point_mark', 'value', $user_points, '<=');
-  $query->fieldCondition('field_reward_criteria_date_limit', 'value', $date, '>=');
-  $query->fieldCondition('field_reward_criteria_date_limit', 'value2', $date, '<=');
+  $query->fieldCondition('field_reward_criteria_date_limit', 'value', $date, '<=');
+  $query->fieldCondition('field_reward_criteria_date_limit', 'value2', $date, '>=');
   $query->fieldCondition('field_reward_criteria_repeatable', 'value', 0);
   $results = $query->execute();
   if (!empty($results['reward'])) {
     foreach($results['reward'] as $reward) {
       $reward_entities = entity_load('reward', array($reward->id));
       $reward_entity = reset($reward_entities);
-      foreach ($reward_entity->field_reward_criteria_reward[LANGUAGE_NONE] as $reward) {
-        $rids[] = $reward['target_id'];
+      if (_play_library_program_reward_criteria_fulfilled($reward_entity, $account)) {
+        foreach ($reward_entity->field_reward_criteria_reward[LANGUAGE_NONE] as $reward) {
+          $rids[] = $reward['target_id'];
+        }
       }
     }
   }
@@ -441,8 +441,8 @@ function _play_library_program_get_global_reward_ids($user_pre_points, $user_poi
   $query->entityCondition('entity_type', 'reward');
   $query->entityCondition('bundle', 'reward_criteria');
   $query->propertyCondition('id', $exclude_ids, 'NOT IN');
-  $query->fieldCondition('field_reward_criteria_date_limit', 'value', $date, '>=');
-  $query->fieldCondition('field_reward_criteria_date_limit', 'value2', $date, '<=');
+  $query->fieldCondition('field_reward_criteria_date_limit', 'value', $date, '<=');
+  $query->fieldCondition('field_reward_criteria_date_limit', 'value2', $date, '>=');
   $query->fieldCondition('field_reward_criteria_repeatable', 'value', 1);
   $results = $query->execute();
   if (!empty($results['reward'])) {
@@ -452,8 +452,10 @@ function _play_library_program_get_global_reward_ids($user_pre_points, $user_poi
       $modulus = $reward_entity->field_reward_criteria_point_mark[LANGUAGE_NONE][0]['value'];
       for ($i = $user_points; $i > $user_pre_points; $i--) {
         if ($i % $modulus == 0) {
-          foreach ($reward_entity->field_reward_criteria_reward[LANGUAGE_NONE] as $reward) {
-            $rids[] = $reward['target_id'];
+          if (_play_library_program_reward_criteria_fulfilled($reward_entity, $account)) {
+            foreach ($reward_entity->field_reward_criteria_reward[LANGUAGE_NONE] as $reward) {
+              $rids[] = $reward['target_id'];
+            }
           }
         }
       }
@@ -483,16 +485,18 @@ function _play_library_program_get_activity_reward_ids($activity_id, $user_activ
   $query->entityCondition('bundle', 'reward_criteria');
   $query->fieldCondition('field_reward_criteria_activity ', 'target_id', $activity_id);
   $query->fieldCondition('field_reward_criteria_point_mark', 'value', $user_activity_completed);
-  $query->fieldCondition('field_reward_criteria_date_limit', 'value', $date, '>=');
-  $query->fieldCondition('field_reward_criteria_date_limit', 'value2', $date, '<=');
+  $query->fieldCondition('field_reward_criteria_date_limit', 'value', $date, '<=');
+  $query->fieldCondition('field_reward_criteria_date_limit', 'value2', $date, '>=');
   $query->fieldCondition('field_reward_criteria_repeatable', 'value', 0);
   $results = $query->execute();
   if (!empty($results['reward'])) {
     foreach($results['reward'] as $reward) {
       $reward_entities = entity_load('reward', array($reward->id));
       $reward_entity = reset($reward_entities);
-      foreach ($reward_entity->field_reward_criteria_reward[LANGUAGE_NONE] as $reward) {
-        $rids[] = $reward['target_id'];
+      if (_play_library_program_reward_criteria_fulfilled($reward_entity, $account)) {
+        foreach ($reward_entity->field_reward_criteria_reward[LANGUAGE_NONE] as $reward) {
+          $rids[] = $reward['target_id'];
+        }
       }
     }
   }
@@ -502,8 +506,8 @@ function _play_library_program_get_activity_reward_ids($activity_id, $user_activ
   $query->entityCondition('entity_type', 'reward');
   $query->entityCondition('bundle', 'reward_criteria');
   $query->fieldCondition('field_reward_criteria_activity ', 'target_id', $activity_id);
-  $query->fieldCondition('field_reward_criteria_date_limit', 'value', $date, '>=');
-  $query->fieldCondition('field_reward_criteria_date_limit', 'value2', $date, '<=');
+  $query->fieldCondition('field_reward_criteria_date_limit', 'value', $date, '<=');
+  $query->fieldCondition('field_reward_criteria_date_limit', 'value2', $date, '>=');
   $query->fieldCondition('field_reward_criteria_repeatable', 'value', 1);
   $results = $query->execute();
   if (!empty($results['reward'])) {
@@ -512,8 +516,10 @@ function _play_library_program_get_activity_reward_ids($activity_id, $user_activ
       $reward_entity = reset($reward_entities);
       $modulus = $reward_entity->field_reward_criteria_point_mark[LANGUAGE_NONE][0]['value'];
       if ($user_activity_completed % $modulus == 0) {
-        foreach ($reward_entity->field_reward_criteria_reward[LANGUAGE_NONE] as $reward) {
-          $rids[] = $reward['target_id'];
+        if (_play_library_program_reward_criteria_fulfilled($reward_entity, $account)) {
+          foreach ($reward_entity->field_reward_criteria_reward[LANGUAGE_NONE] as $reward) {
+            $rids[] = $reward['target_id'];
+          }
         }
       }
     }
@@ -565,4 +571,20 @@ function _play_library_program_set_message($reward, $account_uid) {
     $body = $reward->field_reward_notification[LANGUAGE_NONE][0]['value'];
     $result = privatemsg_new_thread(array($recipient), $subject, $body, $options);
   }
+}
+
+function _play_library_program_reward_criteria_fulfilled($reward_entity, $account) {
+  $account_roles = array_keys($account->roles);
+  $allowed = FALSE;
+  if (empty($reward_entity->field_reward_role_limits)) {
+    $allowed = TRUE;
+  }
+  else {
+    foreach ($reward_entity->field_reward_role_limits[LANGUAGE_NONE] as $role) {
+      if (in_array($role['value'], $account_roles)) {
+        $allowed = TRUE;
+      }
+    }
+  }
+  return $allowed;
 }
