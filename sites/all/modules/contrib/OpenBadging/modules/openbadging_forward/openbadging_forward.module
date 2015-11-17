@@ -1,0 +1,822 @@
+<?php
+
+/**
+ * @file
+ * Allows forwarding of openbadgings by email 
+ *
+ */
+
+/**
+ * hook_init().
+ * include css file. 
+ */
+function openbadging_forward_init() {
+  drupal_add_css(drupal_get_path('module', 'openbadging_forward') . '/css/openbadging_forward.css');
+}
+
+/**
+ * Permissions
+ */
+function openbadging_forward_permission() {
+  return array(
+    'access openbadging forward' => array(
+      'title' => t('access openbadging forward'),
+      'description' => t('openbadging Forward pages'),
+    ),
+  );
+}
+
+/**
+ * Menu Hooks
+ */
+function openbadging_forward_menu() {
+  $items = array();
+
+  $items['admin/config/user-interface/openbadging-forward'] = array(
+    'description' => 'Configure settings for forward module.',
+    'title' => 'Openbadging Forward',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('openbadging_forward_admin_settings'),
+    'access arguments' => array('administer openbadging entity forward'),
+    'type' => MENU_NORMAL_ITEM
+  );
+  $items['openbadging_forward'] = array(
+    'title' => variable_get('openbadging_forward_email_title', 'Forward this page to a friend'),
+    'page callback' => 'openbadging_forward_page',
+    //'access arguments'=> array(1),
+    'access arguments' => array('access openbadging forward'),
+    'type' => MENU_CALLBACK
+  );
+  return $items;
+}
+
+/**
+ * Administration Page
+ */
+function openbadging_forward_admin_settings($form, &$form_state) {
+  global $base_url;
+
+  $host = parse_url($base_url);
+
+  // Administrative Options
+
+
+  $form['openbadging_forward_options']['openbadging_forward_subject'] = array(
+    '#type' => 'radios',
+    '#title' => t('Link style'),
+    '#default_value' => variable_get('openbadging_forward_link_style', 0),
+    '#options' => array(0 => t('Text only'), 1 => t('Icon only'), 2 => t('Icon and text')),
+    '#description' => t('Select the visual style of the link.'),
+  );
+  $form['openbadging_forward_options'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Administrative Options'),
+    '#collapsible' => TRUE,
+    '#collapsed' => FALSE
+  );
+  $form['openbadging_forward_options']['openbadging_forward_link_style'] = array(
+    '#type' => 'radios',
+    '#title' => t('Link style'),
+    '#default_value' => variable_get('openbadging_forward_link_style', 0),
+    '#options' => array(0 => t('Text only'), 1 => t('Icon only'), 2 => t('Icon and text')),
+    '#description' => t('Select the visual style of the link.'),
+  );
+
+  $form['openbadging_forward_options']['openbadging_forward_message'] = array(
+    '#type' => 'select',
+    '#title' => t('Personal messages'),
+    '#options' => array(0 => 'Disabled', 1 => 'Optional', 2 => 'Required'),
+    '#default_value' => variable_get('openbadging_forward_message', 1),
+    '#description' => t('Choose whether the personal message field will be disabled, optional, or required.'),
+  );
+  $form['openbadging_forward_options']['openbadging_forward_sender_address'] = array(
+    '#type' => 'textfield',
+    '#title' => t('From address'),
+    '#default_value' => variable_get('openbadging_forward_sender_address', variable_get('site_mail', '')),
+    '#size' => 40,
+    '#maxlength' => 40,
+    '#description' => t('If left blank, the from address entered in the form will be used as the from address for the email.  Enter a valid email address here to override that.  The sender\'s email will still appear in the body of the message.'),
+  );
+  $entites_array = field_info_bundles();
+  $options = array();
+  $options_entity = array();
+  $defaults = array();
+  $options_node = array();
+  $defaults_node = array();
+  foreach ($entites_array as $key => $types) {
+    if ($key == 'node') {
+      foreach ($types as $node_key => $node_value) {
+        $options_node[$node_key] = check_plain($node_value['label']);
+        if (variable_get('openbadging_forward_display_node_' . $node_key, TRUE)) {
+          $defaults_node[] = $node_key;
+        }
+      }
+    } else {
+      foreach ($types as $type => $info) {
+        $options[$type] = check_plain($info['label']);
+        $options_entity = array_merge($options_entity, $options);
+        if (variable_get('openbadging_forward_display_' . $type, TRUE)) {
+          $defaults[] = $type;
+        }
+      }
+    }
+  }
+  $form['openbadging_forward_options']['openbadging_forward_display_types'] = array(
+    '#type' => 'checkboxes',
+    '#title' => t('Entity types'),
+    '#options' => $options_entity,
+    '#default_value' => $defaults,
+    '#description' => t('Choose which openbadging types to display the Forward link on.'),
+  );
+  $form['openbadging_forward_options']['openbadging_forward_thankyou_send'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Send a thank you email'),
+    '#return_value' => 1,
+    '#default_value' => variable_get('openbadging_forward_thankyou_send', FALSE),
+    '#description' => t('If checked, Forward will send a thank you email to the user.'),
+  );
+  $form['openbadging_forward_options']['openbadging_forward_thankyou_subject'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Thank you email subject'),
+    '#default_value' => variable_get('openbadging_forward_thankyou_subject', 'Thank you for spreading the word about !site'),
+  );
+  $form['openbadging_forward_options']['openbadging_forward_thankyou_text'] = array(
+    '#type' => 'textarea',
+    '#title' => t('Thank you email text'),
+    '#default_value' => variable_get('openbadging_forward_thankyou_text', "Dear !name,\n\nThank you for your help in spreading the word about !site.  We appreciate your help."),
+    '#cols' => 40,
+    '#rows' => 10,
+    '#description' => t('This message will be emailed to the user if the Send a thank you email checkbox above is checked.  The token !site will be replaced with the site name and !name will be replaced with the user\'s name supplied on the forward form.'),
+  );
+
+  //node
+  $form['openbadging_forward_options_node']['openbadging_forward_display_node_types'] = array(
+    '#type' => 'checkboxes',
+    '#title' => t('Content Types'),
+    '#options' => $options_node,
+    '#default_value' => $defaults_node,
+    '#description' => t('Choose which openbadging types to display the Forward link on.'),
+  );
+
+  // Page Text Values
+
+  $form['openbadging_forward_text_values'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Page Text Values'),
+    '#collapsible' => TRUE,
+    '#collapsed' => FALSE
+  );
+  $form['openbadging_forward_text_values']['openbadging_forward_instructions'] = array(
+    '#type' => 'textarea',
+    '#title' => t('Forward Instructions'),
+    '#default_value' => variable_get('openbadging_forward_instructions', '<p>Thank you for your interest in spreading the word about !site.</p><p>NOTE: We only request your email address so that the person you are recommending the page to knows that you wanted them to see it, and that it is not junk mail. We do not capture any email address.</p>'),
+    '#cols' => 40,
+    '#rows' => 10,
+    '#description' => t('This message will be displayed above the form.  The token !site will be replaced with the site name.'),
+  );
+  $form['openbadging_forward_text_values']['openbadging_forward_thankyou'] = array(
+    '#type' => 'textarea',
+    '#title' => t('Thank You Message'),
+    '#default_value' => variable_get('openbadging_forward_thankyou', 'Thank you for your help in spreading the word about !site.  We appreciate your help.'),
+    '#cols' => 40,
+    '#rows' => 10,
+    '#description' => t('This message will be displayed after the user successfully submits the form.  The token !site will be replaced with the site name.'),
+  );
+
+
+  // openbadging Forward Form Default Values
+
+  $form['openbadging_forward_email_defaults'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Default Values for Email This Page'),
+    '#collapsible' => TRUE,
+    '#collapsed' => FALSE,
+    '#description' => t('These options will set the default values for the "email this page" form.')
+  );
+  $form['openbadging_forward_email_defaults']['openbadging_forward_width'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Email width'),
+    '#default_value' => variable_get('openbadging_forward_width', 800),
+    '#size' => 10,
+    '#description' => t('Set a width for the table in the email template.  Ideally, this should be somewhere between 400 and 600 pixels to avoid breaking the layout in various email clients.'),
+    '#attributes' => FALSE,
+  );
+  $form['openbadging_forward_email_defaults']['openbadging_forward_email_title'] = array(
+    '#type' => 'textfield',
+    '#title' => t('openbadging Entity Forward Page Title'),
+    '#default_value' => variable_get('openbadging_forward_email_title', t('Forward this page to a friend')),
+    '#size' => 40,
+    '#maxlength' => 256,
+    '#description' => t('Title to display above the Forward page form'),
+  );
+  $form['openbadging_forward_email_defaults']['openbadging_forward_email_subject'] = array(
+    '#type' => 'textfield',
+    '#title' => t('openbadging Entity Forward Message Subject'),
+    '#default_value' => variable_get('openbadging_forward_email_subject', t('!name has forwarded a page to you from !site')),
+    '#size' => 40,
+    '#maxlength' => 256,
+    '#description' => t('Email subject line.  The sender\'s name will appear in place of !name in the subject.  The web site name will be inserted in place of !site.'),
+  );
+  $form['openbadging_forward_email_defaults']['openbadging_forward_email_message'] = array(
+    '#type' => 'textarea',
+    '#title' => t('openbadging Entity Forward Message Body'),
+    '#default_value' => variable_get('openbadging_forward_email_message', t('!name thought you would like to see this page from the !site web site.')),
+    '#cols' => 40,
+    '#rows' => 10,
+    '#description' => t('Email message body.  The sender\'s name will appear in place of !name in the message body.  The web site name will be inserted in place of !site.  The sender will be able to add their own message after this.'),
+  );
+
+  $form['#submit'][] = 'openbadging_forward_admin_settings_submit';
+
+  return system_settings_form($form);
+}
+
+/**
+ * 
+ * @param type $form
+ * @param type $form_state 
+ */
+function openbadging_forward_admin_settings_submit($form, &$form_state) {
+  $options = array();
+  $options_entity = array();
+  $entites_array = field_info_bundles();
+  foreach ($entites_array as $key => $types) {
+    foreach ($types as $type1 => $info1) {
+      $options[$type1] = check_plain($info1['label']);
+      $options_entity = array_merge($options_entity, $options);
+    }
+  }
+  foreach ($options_entity as $type => $info) {
+    if (!empty($form_state['values']['openbadging_forward_display_types'][$type])) {
+      variable_set('openbadging_forward_display_' . $type, TRUE);
+    } else {
+      variable_set('openbadging_forward_display_' . $type, FALSE);
+    }
+    if (!empty($form_state['values']['openbadging_forward_display_node_types'][$type])) {
+      variable_set('openbadging_forward_display_node_' . $type, TRUE);
+    } else {
+      variable_set('openbadging_forward_display_node_' . $type, FALSE);
+    }
+  }
+  unset($form_state['values']['openbadging_forward_display_types']);
+  unset($form_state['values']['openbadging_forward_display_node_types']);
+}
+
+/**
+ * Page
+ */
+function openbadging_forward_page() {
+  $eid = NULL;
+  if (empty($_GET['path'])) {
+    return t('No path was selected to forward');
+  }
+  if (url_is_external($_GET['path'])) {
+    return t('You cannot forward an external URL.');
+  }
+
+  if (!empty($_GET['path'])) {
+
+    $form_state['values']['path'] = drupal_get_normal_path($_GET['path']);
+    $eid_array = explode('/', $form_state['values']['path']);
+    $eid_path_initial = $eid_array[0];
+    $eid = $eid_array[1];
+  }
+
+  $url = drupal_get_path_alias();
+  $page_url_array = explode('/', $url);
+  $page_title = $page_url_array[1];
+  $page_title = new stdClass();
+  $page_title->title = $page_url_array[1];
+  if (is_numeric($eid)) {
+
+    $form_state['values']['path'] = $eid_path_initial . '/' . $eid;
+  } else {
+    $args = explode('/', $form_state['values']['path']);
+    if ($args[0] == 'admin') {
+      return drupal_access_denied();
+    }
+    $page_title = new stdClass();
+    $page_title->title = $form_state['values']['path'];
+  }
+  $emailtype = 'page';
+  if (!empty($_GET['cid'])) {
+    $cid = '?cid=' . $_GET['cid'];
+    $form_state['values']['path'] .= $cid;
+  }
+  drupal_set_title(t(variable_get('openbadging_forward_email_title', 'Forward this page to a friend')));
+
+
+  return drupal_get_form('openbadging_forward_form', $form_state['values']['path'], $page_title->title);
+}
+
+/**
+ * Form
+ */
+function openbadging_forward_form($form, &$form_state, $path = NULL, $title = NULL) {
+  global $base_url, $user;
+  $emailtype = 'email';
+
+  $form = array();
+  $cid = array();
+
+  if (preg_match("/\?cid=/i", $path) == 1) {
+    $paths = explode('?cid=', $path);
+    $cid = array('fragment' => 'comment-' . $paths[1]);
+    $path = $paths[0];
+  }
+
+  $form['message']['instructions'] = array(
+    '#type' => 'item',
+    '#markup' => filter_xss_admin(t(variable_get('openbadging_forward_instructions', '<p>Thank you for your interest in spreading the word on !site.</p><p>NOTE: We only request your email address so that the person you are recommending the page to knows that you wanted them to see it, and that it is not junk mail. We do not capture any email address.</p>'), array('!site' => variable_get('site_name', 'Drupal')))),
+  );
+  $form['message']['email'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Your Email'),
+    '#size' => 58,
+    '#maxlength' => 256,
+    '#required' => TRUE,
+  );
+  $form['message']['name'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Your Name'),
+    '#size' => 58,
+    '#maxlength' => 256,
+    '#required' => TRUE,
+  );
+  $form['message']['recipients'] = array(
+    '#type' => 'textarea',
+    '#title' => t('Send To'),
+    //'#default_value' => str_replace(', ', "\n", $recipients),
+
+    '#cols' => 50,
+    '#rows' => 5,
+    '#description' => t('Enter multiple addresses on separate lines or separate them with commas.'),
+    '#required' => TRUE,
+  );
+
+  $form['message']['page'] = array(
+    '#type' => 'item',
+    '#title' => t('You are going to email the following'),
+    '#markup' => l($title, $path, $cid),
+  );
+  if ($emailtype == 'email') {
+    $form['message']['page'] = array(
+      '#type' => 'item',
+      '#title' => t('You are going to email the following'),
+      '#markup' => l($title, $path, $cid),
+    );
+  }
+  $form['message']['subject'] = array(
+    '#type' => 'item',
+    '#title' => t('Message Subject'),
+    '#markup' => t(variable_get('openbadging_forward_' . $emailtype . '_subject', '!name has sent you a message from !site'), array('!name' => t('(Your Name)'), '!site' => variable_get('site_name', 'Drupal'))),
+    '#description' => '',
+  );
+  $form['message']['body'] = array(
+    '#type' => 'item',
+    '#title' => t('Message Body'),
+    '#markup' => t(variable_get('openbadging_forward_' . $emailtype . '_message', '!name thought you would like to see the !site web site.'), array('!name' => t('(Your Name)'), '!site' => variable_get('site_name', 'Drupal'))),
+    '#description' => '',
+  );
+  if (variable_get('openbadging_forward_message', 1) != 0) {
+    $form['message']['message'] = array(
+      '#type' => 'textarea',
+      '#title' => t('Your Personal Message'),
+      '#default_value' => '',
+      '#cols' => 50,
+      '#rows' => 10,
+      '#description' => '',
+      '#required' => (variable_get('openbadging_forward_message', 1) == 2) ? TRUE : FALSE,
+    );
+  }
+  $form['message']['path'] = array(
+    '#type' => 'hidden',
+    '#value' => $path,
+  );
+  $form['message']['path_cid'] = array(
+    '#type' => 'hidden',
+    '#value' => (!empty($cid['fragment'])) ? '#' . $cid['fragment'] : '',
+  );
+//  $form['message']['openbadging_forward_footer_message'] = array(
+//      '#type' => '',
+//      '#value' => variable_get('openbadging_forward_footer', ''),
+//  );
+  // When using a separate form page, use actions directly so Mollom knows where to place its content
+  $form['actions'] = array('#type' => 'actions');
+  $form['actions']['submit'] = array(
+    '#type' => 'submit',
+    '#value' => t('Send Message'),
+  );
+
+
+  if ($user->uid != 0) {
+    if (user_access('access openbadging forward')) {
+      $form['message']['email']['#default_value'] = $user->mail;
+    } else {
+      $form['message']['email']['#type'] = 'hidden';
+      $form['message']['email']['#value'] = $user->mail;
+    }
+    $form['message']['name']['#default_value'] = $user->name;
+  }
+
+  return $form;
+}
+
+/**
+ *
+ * @global type $base_url
+ * @global type $user
+ * @param type $form
+ * @param type $form_state 
+ */
+function openbadging_forward_form_validate($form, &$form_state) {
+  global $base_url, $user;
+
+  $url = $base_url . '/' . $form_state['values']['path'];
+
+  // normalize address entries
+
+  $recipients = trim($form_state['values']['recipients']);
+  $recipients = str_replace(array("\r\n", "\n", "\r"), ',', $recipients);
+  $recipients = str_replace(' ', '', $recipients);
+
+  // convert addresses to an array
+
+  $recipient_addresses = explode(',', $recipients);
+
+  $bad_items = array('Content-Type:', 'MIME-Version:', 'Content-Transfer-Encoding:', 'bcc:', 'cc:');
+  $bad_string = FALSE;
+  foreach ($bad_items as $item) {
+    if (preg_match("/$item/i", $form_state['values']['email'])) {
+      $bad_string = TRUE;
+    }
+  }
+  if (strpos($form_state['values']['email'], "\r") !== FALSE || strpos($form_state['values']['email'], "\n") !== FALSE || $bad_string == TRUE) {
+    form_set_error('email', t('Header injection attempt detected.  Do not enter line feed characters into the from field!'));
+  }
+  if (user_validate_mail($form_state['values']['email'])) {
+    form_set_error('email', t('Your Email address is invalid.'));
+  }
+  if (!$form_state['values']['name']) {
+    form_set_error('name', t('You must enter your name.'));
+  }
+  if ($recipients == '') {
+    form_set_error('recipients', t('You did not enter any recipients.'));
+  } else {
+    foreach ($recipient_addresses as $address) {
+      if ((user_validate_mail($address)) && ($address != '')) {
+        form_set_error('recipients', t('One of your Recipient addresses is invalid:') . '<br />' . check_plain($address));
+      }
+    }
+  }
+  if (!user_access('access openbadging forward')) {
+
+    // It is important to ensure that the number of e-mails to be sent count against the threshold.
+
+    if (!flood_is_allowed('openbadging_forward', variable_get('openbadging_forward_flood_control', 10) - count($recipient_addresses) + 1)) {
+      form_set_error('recipients', check_plain(t(variable_get('openbadging_forward_flood_error', "You can't send more than !number messages per hour. Please try again later."), array('!number' => variable_get('openbadging_forward_flood_control', 10)))));
+    }
+  }
+  if ((variable_get('openbadging_forward_message', 1) == 2) && (empty($form_state['values']['message']))) {
+    form_set_error('message', t('You must enter a message.'));
+  }
+}
+
+/**
+ *
+ * @global type $base_url
+ * @global type $user
+ * @global type $theme_key
+ * @param type $form
+ * @param array $form_state
+ * @return type 
+ */
+function openbadging_forward_form_submit($form, &$form_state) {
+  global $base_url, $user;
+
+  // Access control:
+  // Possibly impersonate another user depending on dynamic block configuration settings
+  $access_control = variable_get('forward_block_access_control', 'recipient');
+  $switch_user = ($access_control == 'recipient') || ($access_control == 'anonymous');
+  $impersonate_user = ((variable_get('openbadging_forward_dynamic_block', 'none') != 'none') && $switch_user);
+
+  if ($impersonate_user) {
+    $original_user = $user;
+    $old_state = drupal_save_session();
+    drupal_save_session(FALSE);
+
+    if ($access_control == 'recipient') {
+      $account = user_load_by_mail(trim($form_state['values']['recipients']));
+      // Fall back to anonymous user if recipient is not a valid account
+      $user = (isset($account->status) && ($account->status == 1)) ? $account : drupal_anonymous_user();
+    } else {
+      $user = drupal_anonymous_user();
+    }
+  }
+  $url = explode('/', $form_state['build_info']['args'][0]);
+  $check_url = $url[0];
+  $emailtype = 'email';
+  $returnurl = $form_state['values']['path'];
+  $path_array = explode('/', $form_state['values']['path']);
+  if (($path_array[0] == $check_url ) && (!empty($path_array[1])) && (is_numeric($path_array[1]))) {
+    $eid = $path_array[1];
+  }
+  $_GET['q'] = $form_state['values']['path'];
+  //_menu_append_contextual_items();
+
+
+  menu_set_active_item($form_state['values']['path']);
+
+  // Adapted from index.php.
+
+  $content = new stdClass();
+  $content->body = menu_execute_active_handler(NULL, FALSE);
+  $content->title = menu_get_active_title();
+
+  // It may happen that a drupal_not_found is called in the above call
+
+  $headers = drupal_get_http_header();
+  if ($headers) {
+    foreach ($headers as $header) {
+      if (preg_match('/404 Not Found/', $header) == 1) {
+        return;
+      }
+    }
+  }
+
+  switch ($content->body) {
+    case MENU_NOT_FOUND:
+      return drupal_not_found();
+      break;
+    case MENU_ACCESS_DENIED:
+      return drupal_access_denied();
+      break;
+  }
+
+  if (variable_get('openbadging_forward_message', TRUE)) {
+    $message = variable_get('openbadging_forward_filter_html', FALSE) ? nl2br(filter_xss($form_state['values']['message'], explode(',', variable_get('openbadging_forward_filter_tags', 'p,br,em,strong,cite,code,ul,ol,li,dl,dt,dd')))) : nl2br(check_plain($form_state['values']['message']));
+  } else {
+    $message = FALSE;
+  }
+
+  global $theme_key;
+  $theme_key = variable_get('theme_default', '');
+  $new_url = $returnurl;
+  $vars = array(
+    'type' => $emailtype,
+    'site_name' => check_plain(variable_get('site_name', 'Drupal')),
+    'name' => check_plain($form_state['values']['name']),
+    'email' => check_plain($form_state['values']['email']),
+    'openbadging_forward_message' => t(variable_get('openbadging_forward_' . $emailtype . '_message', '!name thought you would like to see the !site web site.'), array('!name' => l($form_state['values']['name'], 'mailto:' . $form_state['values']['email'], array('absolute' => TRUE)), '!site' => variable_get('site_name', 'Drupal'))),
+    'openbadging_forward_footer' => t(variable_get('openbadging_forward_' . $emailtype . '_footer', 'Thanks,<br/><br/> !site team.'), array('!site' => variable_get('site_name', 'Drupal'))),
+    'message' => $message,
+    'base_url' => $base_url,
+    'content' => $content,
+    'path' => $returnurl . $form_state['values']['path_cid'],
+    // values for openbadging_forward.tpl.php
+
+    'site_url' => url('<front>', array('absolute' => TRUE)),
+    'width' => variable_get('openbadging_forward_width', 800),
+    'title' => ($emailtype == 'email') ? l($content->title, $new_url, array('absolute' => TRUE)) : FALSE,
+  );
+
+
+  // openbadging_forward.tpl.php   
+
+  $params['body'] = theme('openbadging_forward', array('vars' => $vars));
+//  $params['body'] = t(variable_get('openbadging_forward_' . $emailtype . '_message', '!name thought you would like to see the !site web site. 
+//    '), array('!title' => l($content->title, $new_url, array('absolute' => TRUE)),'!name' => $form_state['values']['name'],'!site' => variable_get('site_name', 'Drupal')));;
+
+
+  $params['subject'] = t(variable_get('openbadging_forward_' . $emailtype . '_subject', '!name has sent you a message from !site'), array('!name' => $form_state['values']['name'], '!site' => variable_get('site_name', 'Drupal')));
+
+  $params['message'] = t(variable_get('openbadging_forward_message', ''));
+  //$from = variable_get('openbadging_forward_sender_address', '');
+  if (empty($from)) {
+    $from = variable_get('site_mail', '');
+  }
+
+  $params['from'] = trim(mime_header_encode($form_state['values']['name']) . ' <' . $from . '>');
+  $params['headers']['Reply-To'] = trim(mime_header_encode($form_state['values']['name']) . ' <' . $form_state['values']['email'] . '>');
+
+  $recipients = trim($form_state['values']['recipients']);
+  $recipients = preg_replace('/,,+/', ',', trim($recipients, ','));
+  $recipients = str_replace(array("\r\n", "\n", "\r"), ',', $recipients);
+  $recipients = explode(',', $recipients);
+  foreach ($recipients as $to) {
+    drupal_mail('openbadging_forward', 'openbadging_forward_page', trim($to), language_default(), $params, $params['from']);
+    // Ensure that we register a flood event for each e-mail.
+
+    flood_register_event('openbadging_forward');
+  }
+
+  drupal_set_message(check_plain(t(variable_get('openbadging_forward_thankyou', 'Thank you for your help in spreading the word about !site.  We appreciate your help.'), array('!site' => variable_get('site_name', 'Drupal')))), 'status');
+
+  if (variable_get('openbadging_forward_thankyou_send', FALSE)) {
+    $thankyou_params = array(
+      'from' => $from,
+      'subject' => t(variable_get('openbadging_forward_thankyou_subject', 'Thank you for spreading the word about !site'), array('!site' => variable_get('site_name', 'Drupal'))),
+      'body' => t(variable_get('openbadging_forward_thankyou_text', "Dear !name,\n\nThank you for your help in spreading the word about !site.  We appreciate your help."), array('!site' => variable_get('site_name', 'Drupal'), '!name' => check_plain($form_state['values']['name']))),
+    );
+    //dsm('here');
+    $mail = drupal_mail('openbadging_forward', 'openbadging_forward_thankyou', trim($form_state['values']['email']), language_default(), $thankyou_params, $thankyou_params['from']);
+    //dsm($mail);
+  }
+}
+
+function template_preprocess_openbadging_forward(&$variables) {
+  $vars = $variables['vars'];
+  foreach ($vars as $key => $value) {
+    $variables[$key] = $value;
+  }
+}
+
+/**
+ * Implements hook_mollom_form_list().
+ */
+function openbadging_forward_mollom_form_list() {
+  $forms['openbadging_forward_form'] = array(
+    'title' => t('Email a friend form'),
+  );
+  return $forms;
+}
+
+/**
+ * Implements hook_mollom_form_info().
+ */
+function openbadging_forward_mollom_form_info($form_id) {
+  switch ($form_id) {
+    case 'openbadging_forward_form':
+      $form_info = array(
+        'mode' => MOLLOM_MODE_ANALYSIS,
+        'bypass access' => array('access openbadging forward'),
+        'mail ids' => array('openbadging_forward_forward_page'),
+        'elements' => array(
+          'message' => t('Personal Message'),
+        ),
+        'mapping' => array(
+          'post_title' => 'title',
+          'author_name' => 'name',
+          'author_mail' => 'email',
+        ),
+      );
+      return $form_info;
+  }
+}
+
+/**
+ * Implements hook_mail().
+ *
+ *
+ * Constructs the email notification message when the site is out of date.
+ *
+ * @param $key
+ *   Unique key to indicate what message to build, always 'openbadging_forward_page'.
+ * @param $message
+ *   Reference to the message array being built.
+ * @param $params
+ *   Array of parameters to indicate what text to include in the message body.
+ *
+ * @see drupal_mail()
+ * @see _update_cron_notify()
+ * @see _update_message_text()
+ */
+function openbadging_forward_mail($key, &$message, $params) {
+
+  //dsm('forward_mail');
+  $message['subject'] .= $params['subject'];
+  $message['body'][] = $params['body'];
+
+  if ($key == 'openbadging_forward_page') {
+    $message['headers']['MIME-Version'] = '1.0';
+    $message['headers']['Content-Type'] = 'text/html; charset=utf-8';
+    $message['headers']['Reply-To'] = $params['headers']['Reply-To'];
+  }
+}
+
+/**
+ * Generate links for pages
+ */
+function openbadging_forward_entity_view($entity, $type, $view_mode, $langcode) {
+  global $user;
+  if (isset($entity->type)) {
+    if (user_access('access openbadging forward') && (variable_get('openbadging_forward_display_' . $entity->type, '')) || (variable_get('openbadging_forward_display_node_' . $entity->type, ''))) {
+
+      if (variable_get('openbadging_forward_form_type', 'link') == 'link') {
+        $links = array();
+
+        // This var is set in the settings section under the admin/modules/forward section
+        // It shows 'email this entity type' or 'email this page'  
+        if ((($view_mode == 'full') && variable_get('openbadging_forward_display_entity', 1))) {
+          $title = check_plain(t(variable_get('openbadging_forward_link_title', 'Email this Page')));
+          $img = drupal_get_path('module', 'openbadging_forward') . '/images/openbadging_forward.gif';
+          $html = FALSE;
+          switch (variable_get('openbadging_forward_link_style', 0)) {
+
+            case 1:
+              $title = theme('image', array('path' => $img, 'alt' => $title, 'title' => '', 'attributes' => array('class' => array('openbadging-forward-icon'))));
+              $html = TRUE;
+              break;
+            case 2:
+              $title = theme('image', array('path' => $img, 'alt' => $title, 'title' => '', 'attributes' => array('class' => array('openbadging-forward-icon', 'openbadging-forward-icon-margin')))) . $title;
+              $html = TRUE;
+              break;
+          }
+          $page_url = drupal_get_path_alias();
+          $form_state['values']['path'] = $page_url;
+          //page title
+          $page_title = drupal_get_title();
+
+          $links['openbadging_forward_link'] = array(
+            'title' => $title,
+            'href' => 'openbadging_forward/' . $page_title,
+            'html' => $html,
+            'attributes' => array('title' => variable_get('openbadging_forward_email_title', t('Forward this page to a friend')), 'class' => array('openbadging-entity-forward-page')),
+            'query' => array('path' => $form_state['values']['path']),
+          );
+
+          $entity->content['links']['openbadging_forward'] = array(
+            '#theme' => 'links',
+            '#links' => $links,
+            '#attributes' => array('class' => array('links', 'inline')),
+          );
+        }
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_theme().
+ *
+ */
+function openbadging_forward_theme() {
+  return array(
+    'openbadging_forward' => array(
+      'variables' => array('vars' => NULL),
+      'template' => 'openbadging_forward'
+    ),
+  );
+}
+
+/**
+ *
+ * @param type $column
+ * @param type $width
+ * @return type 
+ */
+function _openbadging_forward_column_width($column, $width = 35) {
+  return (drupal_strlen($column) > $width ? drupal_substr($column, 0, $width) . '...' : $column);
+}
+
+/**
+ * Modify the drupal mail system to send HTML emails for the forward module.
+ */
+class OpenbadgingForwardMailSystem implements MailSystemInterface {
+
+  /**
+   * Concatenate and wrap the e-mail body for plain-text mails.
+   *
+   * @param $message
+   *   A message array, as described in hook_mail_alter().
+   *
+   * @return
+   *   The formatted $message.
+   */
+  public function format(array $message) {
+    $message['body'] = implode("\n\n", $message['body']);
+    return $message;
+  }
+
+  /**
+   * Send an e-mail message, using Drupal variables and default settings.
+   *
+   * @see http://php.net/manual/en/function.mail.php
+   * @see drupal_mail()
+   *
+   * @param $message
+   *   A message array, as described in hook_mail_alter().
+   * @return
+   *   TRUE if the mail was successfully accepted, otherwise FALSE.
+   */
+  public function mail(array $message) {
+    $mimeheaders = array();
+    foreach ($message['headers'] as $name => $value) {
+      $mimeheaders[] = $name . ': ' . mime_header_encode($value);
+    }
+    $line_endings = variable_get('mail_line_endings', MAIL_LINE_ENDINGS);
+    return mail(
+        $message['to'], mime_header_encode($message['subject']),
+        // Note: e-mail uses CRLF for line-endings. PHP's API requires LF
+        // on Unix and CRLF on Windows. Drupal automatically guesses the
+        // line-ending format appropriate for your system. If you need to
+        // override this, adjust $conf['mail_line_endings'] in settings.php.
+        preg_replace('@\r?\n@', $line_endings, $message['body']),
+        // For headers, PHP's API suggests that we use CRLF normally,
+        // but some MTAs incorrectly replace LF with CRLF. See #234403.
+        //mime_header_encode($message['footer']),
+        join("\n", $mimeheaders)
+    );
+  }
+
+}

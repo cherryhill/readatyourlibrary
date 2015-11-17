@@ -1,0 +1,13 @@
+name = Calexico Home Slides
+description = includes Home Slideshow view for Calexico sites only
+core = 7.x
+package = Features
+version = 7.x-1.0-alpha1
+project = calexico_home_slides
+dependencies[] = flexslider_views
+dependencies[] = views
+features[ctools][] = views:views_default:3.0
+features[features_api][] = api:1
+features[views_view][] = calexico_home_slideshow
+features_exclude[dependencies][ctools] = ctools
+project path = sites/all/modules/features

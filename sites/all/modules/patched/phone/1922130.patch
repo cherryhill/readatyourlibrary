@@ -1,0 +1,65 @@
+diff --git a/phone.module b/phone.module
+index 9979c2d..e0c8765 100644
+--- a/phone.module
++++ b/phone.module
+@@ -186,11 +186,48 @@ function phone_field_formatter_info() {
+     'phone' => array(
+       'label' => t('Default'),
+       'field types' => array('phone'),
++      'settings' => array(
++        'phone_link' => FALSE,
++      ),
+     )
+   );
+ }
+ 
+ /**
++ * Implements hook_field_formatter_settings_form().
++ */
++function phone_field_formatter_settings_form($field, $instance, $view_mode, $form, &$form_state) {
++  $display = $instance['display'][$view_mode];
++  $settings = $display['settings'];
++
++  $element['phone_link'] = array(
++    '#title' => t('Output as link'),
++    '#type' => 'checkbox',
++    '#default_value' => $settings['phone_link'],
++  );
++
++  return $element;
++}
++
++/**
++ * Implements hook_field_formatter_settings_summary().
++ */
++function phone_field_formatter_settings_summary($field, $instance, $view_mode) {
++  $display = $instance['display'][$view_mode];
++  $settings = $display['settings'];
++
++  // Display this setting only if field is linked.
++  if ($settings['phone_link']) {
++    $summary[] = t('Output as link');
++  }
++  else {
++    $summary[] = t('Output as plain text');
++  }
++
++  return implode('<br />', $summary);
++}
++
++/**
+  * Implements hook_field_formatter_view().
+  */
+ function phone_field_formatter_view($entity_type, $entity, $field, $instance, $langcode, $items, $display) {
+@@ -200,9 +237,8 @@ function phone_field_formatter_view($entity_type, $entity, $field, $instance, $l
+ 
+     if (isset($item['value'])) {
+       $text = check_plain($item['value']);
+-      // iPhone Support
+-      if (strpos($_SERVER['HTTP_USER_AGENT'], 'iPhone') !== FALSE) {
+-         $text = '<a href="tel:' . $text . '">' . $text . '</a>';
++      if ($display['settings']['phone_link']) {
++        $text = '<a href="tel://' . preg_replace('/[^0-9+.]/', '', $text) . '">' . $text . '</a>';
+       }
+     }
+     $element[$delta]['#markup'] = $text;

@@ -1,0 +1,74 @@
+<?php
+
+/**
+ * @file
+ * Provide development features for ECK development.
+ */
+
+/**
+ * Implements hook_menu().
+ */
+function eck_devel_menu() {
+  $items = array();
+
+  // Flag for token module being enabled.
+  $token_exists = module_exists('token');
+
+  // Loop trough ECK entity types.
+  foreach (EntityType::loadAll() as $entity_type) {
+    // Loop trough ECK entity type bundles.
+    foreach (Bundle::loadByEntityType($entity_type) as $bundle) {
+      // Try to use the entity view crud info.
+      if ($crud_view = eck_devel_get_view_crud_info($entity_type->name, $bundle->name)) {
+        $path = $crud_view['path'];
+        $id_arg = $crud_view['entity_id'];
+      }
+      // Use the default path otherwise.
+      else {
+        $path = "{$entity_type->name}/{$bundle->name}/%eckentity";
+        $id_arg = 2;
+      }
+
+      $items["{$path}/devel"] = array(
+        'title' => 'Devel',
+        'page callback' => 'devel_load_object',
+        'page arguments' => array($entity_type->name, $id_arg),
+        'access arguments' => array('access devel information'),
+        'type' => MENU_LOCAL_TASK,
+        'weight' => 100,
+        'file' => 'devel.pages.inc',
+        'file path' => drupal_get_path('module', 'devel'),
+      );
+      $items["{$path}/devel/load"] = array(
+        'title' => 'Load',
+        'type' => MENU_DEFAULT_LOCAL_TASK,
+      );
+      if ($token_exists) {
+        $items["{$path}/devel/token"] = array(
+          'title' => 'Tokens',
+          'page callback' => 'token_devel_token_object',
+          'page arguments' => array($entity_type->name, $id_arg),
+          'access arguments' => array('access devel information'),
+          'type' => MENU_LOCAL_TASK,
+          'file' => 'token.pages.inc',
+          'file path' => drupal_get_path('module', 'token'),
+          'weight' => 5,
+        );
+      }
+    }
+  }
+
+  return $items;
+}
+
+/**
+ * Helper, get entity view crud info by entity type and bundle name.
+ */
+function eck_devel_get_view_crud_info($entity_type, $bundle) {
+  $info = entity_get_info();
+  if (isset($info[$entity_type]['bundles'][$bundle]['crud']['view'])) {
+    return $info[$entity_type]['bundles'][$bundle]['crud']['view'];
+  }
+
+  return FALSE;
+}

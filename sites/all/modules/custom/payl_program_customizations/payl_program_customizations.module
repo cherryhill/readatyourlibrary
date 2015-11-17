@@ -1,0 +1,70 @@
+<?php
+
+/**
+ * Implements hook_user_load().
+ */
+function payl_program_customizations_user_load($users) {
+  foreach($users as $account) {
+    $profile = profile2_load_by_user($account, 'main');
+    if (!empty($profile) && !empty($profile->field_user_birthday)) {
+      $birthday = new DateObject($profile->field_user_birthday[LANGUAGE_NONE][0]['value']);
+      $now = date_now();
+      $diff = $birthday->difference($now, 'years');
+      if ($diff <= 5) {
+        $account->roles[5] = 'Patron pre-reader';
+      }
+      if ($diff >= 6 && $diff <= 12) {
+        $account->roles[6] = 'Patron kids';
+      }
+      if ($diff >= 13 && $diff <= 17) {
+        $account->roles[7] = 'Patron teen';
+      }
+      if ($diff >= 18) {
+        $account->roles[8] = 'Patron adult';
+      }
+    }
+  }
+  drupal_static_reset('user_access');
+}
+
+/**
+ * Implements hook_form_alter().
+ */
+function payl_program_customizations_form_alter(&$form, &$form_state, $form_id) {
+  if ($form_id == 'user_register_form') {
+    $setting = array(
+      'payl_program_customizations_birthday_limit' => strtotime('-13 years'),
+    );
+    drupal_add_js($setting, array('type' => 'setting'));
+    drupal_add_js(drupal_get_path('module', 'payl_program_customizations') . '/payl_program_customizations.js');
+    $form['current_username'] = array(
+      '#markup' => '<h3 class="username">Username: <span class="current-username"></span></h3>',
+      '#weight' => 1,
+    );
+
+    // Move the email element to the main profile.
+    //$mail_element = $form['account']['mail'];
+    //$mail_element['#weight'] = -100;
+    //$form['profile_main']['mail'] = $mail_element;
+    //unset($form['account']['mail']);
+
+    $form['#validate'][] = 'payl_program_customizations_user_register_validate';
+    if (!empty($form['profile_main'])) {
+      $form['profile_main']['field_user_address'][LANGUAGE_NONE][0]['name_block'] = array(
+        '#type' => 'value',
+        '#value' => 'User address',
+      );
+      $form['profile_main']['field_user_address'][LANGUAGE_NONE][0]['organisation_block'] = array(
+        '#type' => 'value',
+        '#value' => '',
+      );
+    }
+  }
+}
+
+function payl_program_customizations_user_register_validate($form, &$form_state) {
+  $values = $form_state['values'];
+  if (empty($values['name'])) {
+    form_set_error('name', t('Please ensure to create your own username OR generate a new username'));
+  }
+}

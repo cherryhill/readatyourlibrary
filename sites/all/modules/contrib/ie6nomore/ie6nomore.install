@@ -1,0 +1,14 @@
+<?php
+/**
+ * @file
+ * Uninstall variables set by IE6NoMore module.
+ */
+
+/**
+ * Clear variables set by IE6NoMore settings.
+ * Implements hook_uninstall().
+ */
+function ie6nomore_uninstall() {
+  variable_del('ie6nomore_ie');
+  variable_del('ie6nomore_dismissable');
+}

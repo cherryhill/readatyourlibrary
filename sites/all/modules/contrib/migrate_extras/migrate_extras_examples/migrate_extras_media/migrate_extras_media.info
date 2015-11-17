@@ -1,0 +1,23 @@
+core = "7.x"
+dependencies[] = "features"
+dependencies[] = "file"
+dependencies[] = "media"
+dependencies[] = "media_youtube"
+dependencies[] = "migrate"
+dependencies[] = "migrate_extras"
+description = "Examples for migrating Media"
+features[field][] = "node-migrate_extras_media_example-body"
+features[field][] = "node-migrate_extras_media_example-field_document"
+features[field][] = "node-migrate_extras_media_example-field_media_image"
+features[field][] = "node-migrate_extras_media_example-field_youtube_video"
+features[node][] = "migrate_extras_media_example"
+files[] = migrate_extras_media.migrate.inc
+name = "Migrate Extras Media"
+package = "Migration"
+
+; Information added by drupal.org packaging script on 2013-10-01
+version = "7.x-2.5+4-dev"
+core = "7.x"
+project = "migrate_extras"
+datestamp = "1380587208"
+

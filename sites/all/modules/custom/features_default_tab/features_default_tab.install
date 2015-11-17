@@ -1,0 +1,28 @@
+<?php
+
+/**
+ * @file
+ * Install, enable, and uninstall functions for Features Default Tab.
+ */
+
+/**
+ * Implements hook_install().
+ */
+function features_default_tab_install() {
+  variable_set('features_default_tab', 'package_features');
+}
+
+/**
+ * Implements hook_enable().
+ */
+function features_default_tab_enable() {
+  drupal_set_message(t('The <em>Features Default Tab</em> module has been successfully enabled. Configuration can be found on the <a href="/admin/structure/features/settings">Manage Features</a> page.'), 'status', FALSE);
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function features_default_tab_uninstall() {
+  variable_del('features_default_tab');
+  variable_del('features_default_tab_default_package');
+}

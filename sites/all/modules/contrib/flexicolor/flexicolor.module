@@ -1,0 +1,314 @@
+<?php
+
+
+/**
+ * @file flexicolor.install
+ * Flexicolor provides a way to create flexible colour schemas for the site
+ * which can be changed by a site editor at a later point.
+ */
+
+
+/**
+ * Implementation of hook_permission().
+ */
+function flexicolor_permission() {
+  return array(
+    'administer flexicolor settings' => array(
+      'title' => t('Administer Flexicolor Settings'),
+      'description' => t('Administer the various flexicolor settings - this grants the user ability to create/update/delete selectors and presets for the site'),
+    ),
+    'manage flexicolor settings' => array(
+      'title' => t('Administer Flexicolor Settings'),
+      'description' => t('Manage the look/feel - this grants the user ability to select a preset color scheme (or choose different colors) based off defined selectors and presets.'),
+    ),
+  );
+}
+
+/**
+ * Get a styling based on all the presets and values.
+ */
+function _flexicolor_retrieve_page_style() {
+  $selectors = flexicolor_get_selectors();
+  $flexicolor_css = '';
+  foreach ($selectors as $selector) {
+    $color = variable_get('flexicolor-selector-'. $selector->fsid, '');
+    if (!empty($color)) {
+      $flexicolor_css .= "/* ". check_plain($selector->display_name) ." */\n";
+      $flexicolor_css .= $selector->selector ." { ". $selector->type .': '. $color ."; }\n";
+    }
+  }
+  return $flexicolor_css;
+}
+
+/**
+ * Implementation of hook_init().
+ */
+function flexicolor_init() {
+  if (drupal_match_path($_GET['q'], 'admin/appearance/flexicolor*')) {
+    // Add the admin js
+    drupal_add_css('misc/farbtastic/farbtastic.css', array('group' => CSS_DEFAULT, 'every_page' => FALSE));
+    drupal_add_js('misc/farbtastic/farbtastic.js');
+    drupal_add_js(drupal_get_path('module', 'flexicolor') .'/flexicolor-admin.js');
+  }
+  if (!drupal_match_path($_GET['q'], "admin/*\nnode/add/*\nnode/*/edit")) {
+    ctools_include('css');
+    $flexicolor_css = ctools_css_retrieve('flexicolor-css');
+    if (!empty($flexicolor_css)) {
+      drupal_add_css($flexicolor_css, array('group' => CSS_THEME, 'every_page' => TRUE, 'weight' => 10));
+    }
+    else {
+      drupal_add_css(_flexicolor_retrieve_page_style(), array('type' => 'inline', 'group' => CSS_THEME, 'every_page' => FALSE, 'weight' => 10, 'media' => 'all'));
+    }
+  }
+}
+
+/**
+ * Implementation of hook_menu().
+ */
+function flexicolor_menu() {
+  $items = array();
+  
+  $items['admin/appearance/flexicolor'] = array(
+    'title' => 'Flexicolor Settings',
+    'description' => 'Manage Flexicolor',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('flexicolor_site_settings'),
+    'access callback' => 'user_access',
+    'access arguments' => array('manage flexicolor settings'),
+    'file' => 'flexicolor.admin.inc',
+  );
+  
+  $items['admin/appearance/flexicolor/site'] = array(
+    'title' => 'Site Settings pertaining to flexicolor',
+    'description' => 'Manage which prefix/custom settings to use on the site',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('flexicolor_site_settings'),
+    'access callback' => 'user_access',
+    'access arguments' => array('manage flexicolor settings'),
+    'file' => 'flexicolor.admin.inc',
+    'type' => MENU_DEFAULT_LOCAL_TASK,
+    'weight' => -1,
+  );
+  
+  $items['admin/appearance/flexicolor/manage'] = array(
+    'title' => 'Manage Flexicolor Settings',
+    'description' => 'Create/Edit/Delete flexicolor selectors and presets',
+    'page callback' => 'flexicolor_manage_page',
+    'access callback' => 'user_access',
+    'access arguments' => array('administer flexicolor settings'),
+    'file' => 'flexicolor.admin.inc',
+    'type' => MENU_LOCAL_TASK,
+    'weight' => 0,
+  );
+
+  $items['admin/appearance/flexicolor/add/selector'] = array(
+    'title' => 'Add Flexicolor Selector',
+    'description' => 'Create new flexicolor selector',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('flexicolor_admin_update_selector'),
+    'access callback' => 'user_access',
+    'access arguments' => array('administer flexicolor settings'),
+    'file' => 'flexicolor.admin.inc',
+    'type' => MENU_LOCAL_TASK,
+    'weight' => 1,
+  );
+  
+  $items['admin/appearance/flexicolor/update/selector/%'] = array(
+    'title' => 'Update Flexicolor Selector',
+    'description' => 'Update existing flexicolor selector',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('flexicolor_admin_update_selector', 5),
+    'access callback' => 'flexicolor_check_access',
+    'access arguments' => array('selector', 5),
+    'type' => MENU_CALLBACK,
+    'file' => 'flexicolor.admin.inc',
+  );
+
+  $items['admin/appearance/flexicolor/delete/selector/%'] = array(
+    'title' => 'Delete Flexicolor Selector',
+    'description' => 'Delete existing flexicolor selector',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('flexicolor_admin_delete_selector', 5),
+    'access callback' => 'flexicolor_check_access',
+    'access arguments' => array('selector', 5),
+    'type' => MENU_CALLBACK,
+    'file' => 'flexicolor.admin.inc',
+  );
+  
+  $items['admin/appearance/flexicolor/add/preset'] = array(
+    'title' => 'Add Flexicolor Preset',
+    'description' => 'Create new flexicolor preset',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('flexicolor_admin_update_preset'),
+    'access callback' => 'user_access',
+    'access arguments' => array('administer flexicolor settings'),
+    'file' => 'flexicolor.admin.inc',
+    'type' => MENU_LOCAL_TASK,
+    'weight' => 2,
+  );
+  
+  $items['admin/appearance/flexicolor/update/preset/%'] = array(
+    'title' => 'Update Flexicolor Preset',
+    'description' => 'Update existing flexicolor preset',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('flexicolor_admin_update_preset', 5),
+    'access callback' => 'flexicolor_check_access',
+    'access arguments' => array('preset', 5),
+    'type' => MENU_CALLBACK,
+    'file' => 'flexicolor.admin.inc',
+  );
+
+  $items['admin/appearance/flexicolor/delete/preset/%'] = array(
+    'title' => 'Delete Flexicolor Preset',
+    'description' => 'Delete existing flexicolor preset',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('flexicolor_admin_delete_preset', 5),
+    'access callback' => 'flexicolor_check_access',
+    'access arguments' => array('preset', 5),
+    'type' => MENU_CALLBACK,
+    'file' => 'flexicolor.admin.inc',
+  );
+
+  return $items;
+}
+
+/**
+ * Access callback handler for the menu
+ */
+function flexicolor_check_access($type, $id) {
+  $check = FALSE;
+  if ($type == 'selector') {
+    $check = flexicolor_get_selectors($id);
+  }
+  elseif ($type == 'preset') {
+    $check = flexicolor_get_presets($id);
+  }
+  return $check && user_access('administer flexicolor settings');
+}
+
+/**
+ * Save selector
+ * @param fsid selector id
+ * @return selector object upon successful save
+ */
+function flexicolor_save_selector(&$selector) {
+  // We can change this to drupal_write_record in the future if that seems like the better way to go.
+  $primary_keys = array();
+  if (!empty($selector['fsid'])) {
+    $primary_keys[] = 'fsid';
+  }
+  drupal_write_record('flexicolor_selector', $selector, $primary_keys);
+}
+
+/**
+ * Get selector(s).
+ * @param fsid selector id.
+ * @return list of selectors (or one selector if fsid provided).
+ */
+function flexicolor_get_selectors($fsid = NULL) {
+  $query = db_select('flexicolor_selector', 'fs');
+  $query->fields('fs');
+  if ($fsid) {
+    $query->condition('fs.fsid', $fsid, '=');
+  }
+  else {
+    $query->orderBy('fsid', 'ASC');
+  }
+  $results = $query->execute()->fetchAll();
+  $selectors = array();
+  foreach($results as $result) {
+    $selectors['selector-'. $result->fsid] = $result;
+  }
+  return $selectors;
+}
+
+/**
+ * Delete selector.  Involves deleting the selector along with the preset selector.
+ * @param fsid selector id.
+ */
+function flexicolor_delete_selector($fsid, $selector) {
+  db_delete('flexicolor_selector')->condition('fsid', $fsid)->execute();
+  db_delete('flexicolor_preset_selector')->condition('fsid', $fsid)->execute();
+}
+
+/**
+ * Save presets
+ * @param fpid preset id
+ * @return selector object upon successful save
+ */
+function flexicolor_save_preset(&$preset) {
+   // We can change this to drupal_write_record in the future if that seems like the better way to go.
+  $primary_keys = array();
+  if (!empty($preset['fpid'])) {
+    $primary_keys[] = 'fpid';
+  }
+  drupal_write_record('flexicolor_preset', $preset, $primary_keys);
+}
+
+/**
+ * Get preset(s).
+ * @param fpid preset id.
+ * @return list of presets (or one preset if fpid provided).
+ */
+function flexicolor_get_presets($fpid = NULL) {
+  $query = db_select('flexicolor_preset', 'fp');
+  $query->fields('fp');
+  if ($fpid) {
+    $query->condition('fp.fpid', $fpid, '=');
+  }
+  else {
+    $query->orderBy('fp.fpid', 'ASC');
+  }
+  $results = $query->execute()->fetchAll();
+  $presets = array();
+  foreach($results as $result) {
+    $presets['preset-'. $result->fpid] = $result;
+  }
+  return $presets;
+}
+
+/**
+ * Delete preset.  Involves deleting the preset along with the preset selector.
+ * @param fpid preset id.
+ */
+function flexicolor_delete_preset($fpid) {
+  db_delete('flexicolor_preset')->condition('fpid', $fpid)->execute();
+  db_delete('flexicolor_preset_selector')->condition('fpid', $fpid)->execute();
+}
+
+/**
+ * Get preset selector.
+ * @param fpid preset id.
+ * @param fsid selector id.
+ * There can be only one preset-selector combination so the first item in the stack is the only one retrieved.
+ */
+function flexicolor_get_preset_selector($fpid, $fsid) {
+  $select = db_select('flexicolor_preset_selector', 'fps');
+  $select->fields('fps');
+  $select->condition('fps.fpid', $fpid, '=');
+  $select->condition('fps.fsid', $fsid, '=');
+  $result = $select->execute();
+  return $result->fetchObject();
+}
+
+/**
+ * Save preset selector
+ * Deletes old preset to be saved with new value (a more compliant form of replace)
+ */
+function flexicolor_save_preset_selector($fpid, $fsid, $color) {
+  $query = db_merge('flexicolor_preset_selector');
+  $query->key(array('fpid' => $fpid, 'fsid' => $fsid));
+  $query->fields(array('color' => $color));
+  return $query->execute();
+}
+
+/**
+ * Get the types flexicolor will work with. Currently a static array as I do not
+ * know of other coloring rules in css.
+ */
+function _flexicolor_get_types() {
+  return array(
+    'background' => t('Background Color'),
+    'color' => t('Text Color'),
+  );
+}

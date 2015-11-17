@@ -1,0 +1,204 @@
+<?php
+
+/**
+ * @file
+ * Allows a user's username to be assigned based on tokens.
+ */
+
+/**
+ * Implements hook_permission().
+ */
+function auto_username_permission() {
+  return array(
+    'administer auto username' =>  array(
+      'title' => t('Administer auto username'),
+    ),
+    'use PHP for username patterns' => array(
+      'title' => t('Use PHP for username patterns'),
+      'restrict access' => TRUE,
+    ),
+  );
+}
+
+/**
+ * Implements hook_menu().
+ */
+function auto_username_menu() {
+  $items['admin/config/people/accounts/patterns'] = array(
+    'title' => 'Patterns',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('auto_username_settings_form'),
+    'access arguments' => array('administer auto username'),
+    'type' => MENU_LOCAL_TASK,
+    'file' => 'auto_username.admin.inc',
+  );
+  return $items;
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function auto_username_form_user_register_form_alter(&$form, &$form_state, $form_id) {
+  $form['account']['name']['#type'] = 'hidden';
+  $form['account']['name']['#value'] = user_password();
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function auto_username_form_user_profile_form_alter(&$form, &$form_state, $form_id) {
+  $form['account']['name']['#type'] = 'hidden';
+}
+
+/**
+ * Implements hook_user_insert().
+ */
+function auto_username_user_insert(&$edit, &$account, $category = NULL) {
+  $new_name = auto_username_generate_username($edit, $account);
+
+  // No point updating anything if the generated name was just the same.
+  if ($account->name == $new_name) {
+    return;
+  }
+
+  // Replace with generated username.
+  db_update('users')
+    ->fields(array('name' => $new_name))
+    ->condition('uid', $account->uid)
+    ->execute();
+
+  $edit['name'] = $new_name;
+  $account->name = $new_name;
+
+}
+
+/**
+ * Implements hook_user_update().
+ */
+function auto_username_user_update(&$edit, $account, $category) {
+  if (variable_get('aun_update_on_edit', TRUE)) {
+    $new_name = auto_username_generate_username($edit, $account);
+
+    // No point updating anything if the generated name was just the same.
+    if ($account->name == $new_name) {
+      return;
+    }
+
+    // Replace with generated username.
+    db_update('users')
+      ->fields(array('name' => $new_name))
+      ->condition('uid', $account->uid)
+      ->execute();
+      $edit['name'] = $new_name;
+      $account->name = $new_name;
+  }
+}
+
+
+/**
+ * Process an account and return its new username according to the current pattern.
+ *
+ * @param $account
+ *   The user object to process.
+ *
+ * @return
+ *   The new name for the user object.
+ */
+function _auto_username_patternprocessor($account) {
+  $output = '';
+  $pattern = variable_get('aun_pattern', '');
+  if (trim($pattern)) {
+    // Replace any tokens in the pattern. Uses callback option to clean replacements. No sanitization.
+    $output = token_replace($pattern, array('user' => $account), array(
+      'sanitize' => FALSE,
+      'clear' => TRUE,
+      'callback' => 'auto_username_clean_token_values',
+    ));
+    // Check if the token replacement has not actually replaced any values. If
+    // that is the case, then stop because we should not generate a name.
+    // @see token_scan()
+    $pattern_tokens_removed = preg_replace('/\[[^\s\]:]*:[^\s\]]*\]/', '', $pattern);
+    if ($output === $pattern_tokens_removed) {
+      return '';
+    }
+    if (variable_get('aun_php', 0)) {
+      $output = _auto_username_eval($output, $account);
+    }
+  }
+  return trim($output);
+}
+
+/**
+ * Evaluate php code and pass $account to it.
+ */
+function _auto_username_eval($code, $account) {
+  ob_start();
+  print eval('?>' . $code);
+  $output = ob_get_contents();
+  ob_end_clean();
+  return $output;
+}
+
+/**
+ * Clean token values.
+ *
+ * @param $replacements
+ *   An array of token replacements that need to be "cleaned".
+ * @param $data
+ *   An array of objects used to generate the replacements.
+ * @param $options
+ *   An array of options used to generate the replacements.
+ */
+function auto_username_clean_token_values(&$replacements, $data = array(), $options = array()) {
+  module_load_include('inc', 'auto_username');
+  foreach ($replacements as $token => $value) {
+    $replacements[$token] = auto_username_cleanstring($value);
+  }
+}
+
+/**
+ * Work out what the new username could be, calling api hooks where applicable, and adding a number suffix if
+ * necccessary.
+ *
+ * @param type $edit
+ * @param type $account
+ * @return string
+ */
+function auto_username_generate_username(&$edit, &$account) {
+  $new_name = "";
+
+  // Other modules may implement hook_auto_username_name($edit, $account) to generate a username (return a
+  // string to be used as the username, NULL to have auto_username generate it).
+  $names = module_invoke_all('auto_username_name', $edit, $account);
+
+  // Remove any empty entries.
+  $names = array_filter($names);
+
+  if (empty($names)) {
+    // Default implementation of name generation.
+    $new_name = _auto_username_patternprocessor($account);
+  }
+  else {
+    // One would expect a single implementation of the hook, but if there
+    // are multiples out there use the last one.
+    $new_name = array_pop($names);
+  }
+
+  // If no new name was found, then either the hook hasn't been implemented, or
+  // the aun_pattern hasn't been set yet. Therefore leave the username as it is.
+  if (empty($new_name)) {
+    return $account->name;
+  }
+
+  // lets check if our name is used somewhere else, and append _1 if it is  eg:(chris_123). We do this regardless of
+  // whether hook has run, as we can't assume the hook implementation will do this santity check.
+  $i = 0;
+  do {
+    $new_name = empty($i) ? $new_name : $new_name . '_' . $i;
+    $found = db_select('users', 'u')->fields('u')->condition('uid', $account->uid, '!=')->condition('name', $new_name)->execute()->fetchAll();
+    $i++;
+  } while (!empty($found));
+
+  return $new_name;
+}
+

@@ -1,0 +1,166 @@
+<?php
+
+/**
+ * @file
+ * Main file for the Views Language Switcher module.
+ */
+
+/*
+ * Default theme impementations.
+ */
+require_once(drupal_get_path('module', 'views_lang_switch') . '/theme/views_lang_switch.theme.inc');
+
+/**
+ * Implements hook_menu().
+ */
+function views_lang_switch_menu() {
+  $items = array();
+
+  $items['admin/config/development/vls-cache-clear'] = array(
+    'title' => 'Clear Views Language Switcher cache',
+    'description' => 'Clear the views language switcher cache table.',
+    'page callback' => 'views_lang_switch_cache_clear_page',
+    'access arguments' => array('administer site configuration'),
+  );
+
+  return $items;
+}
+
+/**
+ * Clear the cache.
+ */
+function views_lang_switch_cache_clear_page() {
+  $result = db_query('UPDATE cache_views_lang_switch SET expire = 1')->execute();
+  drupal_set_message('All items set to be expired.');
+  return t('Cache clear');
+}
+
+/**
+ * Implements hook_block_info().
+ */
+function views_lang_switch_block_info() {
+  $blocks['vls'] = array(
+    'info' => t('Language switcher (Views)'),
+  );
+
+  return $blocks;
+}
+
+/**
+ * Implements hook_block_view().
+ */
+function views_lang_switch_block_view($delta = '') {
+  $block = array();
+
+  switch ($delta) {
+    case 'vls':
+      if ($view = views_get_page_view()) {
+        $item = menu_get_item();
+        $display = $item['page_arguments'][1];
+        $block['content'] = _views_lang_switch_block_show($view, $display);
+      }
+      break;
+  }
+
+  return $block;
+}
+
+/**
+ * Helper function to render the Views Language Switcher block for
+ * multilingual Views. Generates counts and executes theme functions.
+ */
+function _views_lang_switch_block_show($view, $display) {
+  $counts = array(
+    'counts' => _views_lang_switch_fetch_counts($view, $display)
+  );
+  return theme('views_lang_switch_results', $counts);
+}
+
+/**
+ * Fetch the counts from the cache or recalculate.
+ */
+function _views_lang_switch_fetch_counts($view, $display) {
+  $cid = 'lang_switch_counts_' . $view->name . '_' . $display . '_' . serialize($view->args);
+  $bin = 'cache_views_lang_switch';
+
+  // Only one lock for this module, thus only one thread will ever be allowed to
+  // collect these counts - making this extra safe. For a more risky approach,
+  // make a lock per view or per view + display.
+  $lock = 'lang_switch_fetch_counts';
+
+  // Cache for 3 hours.
+  $expire = REQUEST_TIME + 10800;
+
+  $counts = cache_get($cid, $bin);
+
+  if ($counts && $counts->expire > REQUEST_TIME) {
+    // Cache is primed and valid.
+    return $counts->data;
+  }
+  else if (lock_acquire($lock)) {
+    // We can rebuild it, we have the technology.
+    $counts = _views_lang_switch_compute_counts($view, $display);
+    cache_set($cid, $counts, $bin, $expire);
+    lock_release($lock);
+    return $counts;
+  }
+  else if (isset($counts->data)) {
+    // Stale item is here, so use that.
+    return $counts->data;
+  }
+  else {
+    // We can't get the lock and we have no cache, so returning empty array
+    // will result in all items being displayed.
+    return array();
+  }
+}
+
+/**
+ * Given a view, return the count of nodes for all languages.
+ */
+function _views_lang_switch_compute_counts($view, $display) {
+  $counts = array();
+  $full_language_list = language_list();
+
+  foreach ($full_language_list as $code => $lang) {
+    $counts[$code] = _views_lang_switch_compute_one_count($view, $code, $display);
+  }
+
+  return $counts;
+}
+
+/**
+ * Given a view and language code, return the count of nodes for that language.
+ */
+function _views_lang_switch_compute_one_count($view, $langcode, $display) {
+  if (isset($_GET['language'])) {
+    $prev_lang = $_GET['language'];
+  }
+  $_GET['language'] = $langcode;
+
+  $cloned_view = $view->clone_view();
+
+  $cloned_view->set_display($display);
+  $cloned_view->preview = TRUE;
+  $cloned_view->pre_execute();
+  $cloned_view->display_handler->preview();
+  $cloned_view->post_execute();
+
+  if (isset($prev_lang)) {
+    $_GET['language'] = $prev_lang;
+  }
+  else {
+    unset($_GET['language']);
+  }
+
+  return count($cloned_view->result);
+}
+
+/**
+ * Get a list of languages, allow other modules to alter the list.
+ */
+function _views_lang_switch_get_language_list() {
+  $languages = language_list();
+  drupal_alter('vls_languages_list', $languages);
+  return $languages;
+}

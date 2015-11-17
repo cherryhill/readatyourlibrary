@@ -1,0 +1,33 @@
+<?php
+
+/**
+ * Implements hook_install().
+ */
+function payl_program_customizations_install() {
+  
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function payl_program_customizations_uninstall() {
+  
+}
+
+/**
+ * Uninstall auto username module.
+ */
+function payl_program_customizations_update_7000() {
+  module_disable(array('auto_username'));
+  drupal_uninstall_modules(array('auto_username'));
+}
+
+/**
+ * Update weight to be high
+ */
+function payl_program_customizations_update_7001() {
+  db_update('system')
+    ->fields(array('weight' => 1))
+    ->condition('name', 'payl_program_customizations', '=')
+    ->execute();
+}

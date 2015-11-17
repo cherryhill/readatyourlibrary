@@ -1,0 +1,46 @@
+<?php
+
+/**
+ * @file
+ * Install, update and uninstall functions for the abbrfilter module.
+ */
+
+/**
+ * Implements hook_schema().
+ */
+function abbrfilter_schema() {
+  $schema['abbrfilter'] = array(
+    'description' => 'The {abbrfilter} table stores user ids of users and other users that they have chosen to ignore.',
+    'fields' => array(
+      'id' => array(
+        'description' => 'The ID of the abbrfilter abbr pair.',
+        'type' => 'serial',
+        'not null' => TRUE,
+      ),
+      'abbrs' => array(
+        'description' => 'The abbr to filter.',
+        'type' => 'text',
+        'not null' => TRUE,
+      ),
+      'replacement' => array(
+        'description' => 'The replacement abbr to filter with.',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+      ),
+
+    ),
+    'primary key' => array('id'),
+  );
+
+  return $schema;
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function abbrfilter_uninstall() {
+  variable_del('abbrfilter_node_title');
+  variable_del('abbrfilter_comment_title');
+}

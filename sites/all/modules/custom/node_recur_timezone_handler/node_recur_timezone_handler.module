@@ -1,0 +1,54 @@
+<?php
+
+/**
+ * Implements hook_node_load().
+ */
+function node_recur_timezone_handler_node_load($nodes, $types) {
+  if (drupal_match_path($_GET['q'], 'node/*/recur')) {
+    foreach ($nodes as $key => $node) {
+      $date_field_name = node_recur_get_date_field_name($node->type);
+      if (!isset($node->{$date_field_name})) {
+        return;
+      }
+      if ($node->{$date_field_name}[$node->language][0]['date_type'] == 'datetime' && strlen($node->{$date_field_name}[$node->language][0]['value']) == 19) {
+        $node->{$date_field_name}[$node->language][0]['value'] .= ' ' . $node->{$date_field_name}[$node->language][0]['timezone_db'];
+      }
+      if ($node->{$date_field_name}[$node->language][0]['date_type'] == 'datetime' && strlen($node->{$date_field_name}[$node->language][0]['value2']) == 19) {
+        $node->{$date_field_name}[$node->language][0]['value2'] .= ' ' . $node->{$date_field_name}[$node->language][0]['timezone_db'];
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_form_alter().
+ */
+function node_recur_timezone_handler_form_alter(&$form, &$form_state, $form_id) {
+  if ($form_id == 'node_recur_node_recur_form') {
+    $node = $form['#node'];
+    if (isset($form['node_date'])) {
+      // Display this node's date
+      $field_name = node_recur_get_date_field_name($node->type);
+      $start = node_recur_get_node_date_field_value($node) . " " . $node->{$field_name}[$node->language][0]['timezone_db'];
+      $end = node_recur_get_node_date_field_value($node, FALSE) . " " . $node->{$field_name}[$node->language][0]['timezone_db'];
+
+      $form['node_date'] = array(
+        '#type' => 'item',
+        '#title' => t('Date'),
+        '#markup' => node_recur_format_date($start, $end),
+      );
+    }
+    else if (!empty($form['#start_dates'])) {
+      $dates = array(
+        'start' => $form['#start_dates'],
+        'end' => $form['#end_dates']
+      );
+      foreach ($dates['start'] as $key => $start_date) {
+        $start_date = $start_date - date('Z', $start_date);
+        $end_date = isset($dates['end'][$key]) ? $dates['end'][$key] - date('Z', $dates['end'][$key]): NULL;
+        $form['#start_dates'][$key] = $start_date;
+        $form['#end_dates'][$key] = $end_date;
+      }
+    }
+  }
+}

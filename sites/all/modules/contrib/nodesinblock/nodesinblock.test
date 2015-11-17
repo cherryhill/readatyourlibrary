@@ -1,0 +1,177 @@
+<?php
+// $Id: nodesinblock.test,v 1.1.2.6.2.2 2010/10/30 16:19:05 swentel Exp $
+
+/**
+ * @file
+ * Tests for Nodes in block
+ */
+
+class NodesInBlockTestCase extends DrupalWebTestCase {
+  /**
+   * Implements getInfo().
+   */
+  public static function getInfo() {
+    return array(
+      'name' => t('Nodes in block functionality'),
+      'description' => t('Test nodes in block functionality.'),
+      'group' => t('Nodes in block'),
+    );
+  }
+
+  /**
+   * Implements setUp().
+   */
+  function setUp() {
+    parent::setUp('block', 'nodesinblock');
+
+    $admin_user = $this->drupalCreateUser(array('bypass node access', 'access administration pages', 'administer blocks', 'administer nodes', 'administer nodes in block configuration', 'administer nodes in block queue'));
+    $this->drupalLogin($admin_user);
+  }
+
+  /**
+   * Helper function to set configuration.
+   */
+  function _setNodesinblockConfiguration() {
+    $variables = array(
+      'nodesinblock_contenttypes' => 'a:2:{s:4:"page";s:4:"page";s:7:"article";s:7:"article";}',
+      'nodesinblock_friendlyname_0' => 's:16:"Nodes in block 1";',
+      'nodesinblock_friendlyname_1' => 's:16:"Nodes in block 2";',
+      'nodesinblock_friendlyname_2' => 's:16:"Nodes in block 3";',
+      'nodesinblock_visibility_0' => 's:1:"1";',
+      'nodesinblock_visibility_1' => 's:1:"1";',
+      'nodesinblock_visibility_2' => 's:1:"1";',
+      'nodesinblock_page_block' => 'a:3:{i:1;i:1;i:2;i:2;i:3;i:0;}',
+      'nodesinblock_page_collapsed' => 'i:1;',
+      'nodesinblock_page_collapsible' => 'i:1;',
+      'nodesinblock_page_label' => 's:14:"Nodes in block";',
+      'nodesinblock_page_render' => 's:1:"0";',
+      'nodesinblock_article_block' => 'a:3:{i:2;i:2;i:3;i:3;i:1;i:0;}',
+      'nodesinblock_article_collapsed' => 'i:1;',
+      'nodesinblock_article_collapsible' => 'i:1;',
+      'nodesinblock_article_label' => 's:14:"Nodes in block";',
+      'nodesinblock_article_render' => 's:1:"0";',
+    );
+    foreach ($variables as $key => $value) {
+      db_query("INSERT INTO {variable} (name, value) VALUES (:key, :value)", array(':key' => $key, ':value' => $value));
+    }
+    variable_set('nodesinblock_nrofblocks', '3');
+
+    $this->drupalGet('admin/structure/block');
+    db_query("UPDATE {block} set status = 1, region = 'sidebar_second' where delta = 0 AND module = 'nodesinblock'");
+    db_query("UPDATE {block} set status = 1, region = 'sidebar_second' where delta = 1 AND module = 'nodesinblock'");
+    db_query("UPDATE {block} set status = 1, region = 'sidebar_second' where delta = 2 AND module = 'nodesinblock'");
+  }
+
+  /**
+   * Helper function to create a node with standard settings.
+   */
+  function _createNode($type, $nid = 1, $region = 0, $vis = '*', $nib = TRUE) {
+    $edit = array('title' => 'Title ' . $nid, 'body[und][0][value]' => 'Text ' . $nid);
+    if ($nib) {
+      $edit['nodesinblock_delta'] = $region;
+      $edit['nodesinblock_visibility'] = $vis;
+      $edit['nodesinblock_render'] = 'full:1';
+    }
+    $this->drupalPost('node/add/' . $type, $edit, t('Save'));
+    if ($nib) {
+      $result = db_query("SELECT nid FROM {nodesinblock} WHERE nid = :nid", array(':nid' => $nid))->fetchField();
+      $this->assertTrue($result, 'Node ' . $nid . ' saved in nodesinblock table', 'Node submission');
+    }
+  }
+
+  /**
+   * Helper function to update an existing node.
+   */
+  function _updateNode($nid = 1, $edit = array()) {
+    $this->drupalPost('node/' . $nid . '/edit', $edit, t('Save'));
+    $result = db_query("SELECT nid FROM {nodesinblock} WHERE nid = :nid", array(':nid' => $nid))->fetchField();
+    $this->assertTrue($result, 'Node ' . $nid . ' updated in nodesinblock table', 'Node submission');
+  }
+
+  /**
+   * Helper function to get visibility from block.
+   */
+  function _getVisibility($delta) {
+    return db_query("SELECT pages from {block} WHERE module = 'nodesinblock' AND delta = :delta", array(':delta' => $delta))->fetchField();
+  }
+
+  /**
+   * Test submitting of nodes and see if they appear
+   * in blocks and how they are rendered.
+   */
+  function testNodeSubmissions() {
+    $this->_setNodesinblockConfiguration();
+
+    // Create an article on the front page.
+    $this->_createNode('article', 1, '', '', FALSE);
+
+    // Created a first node.
+    $this->_createNode('page', 2);
+    $this->assertRaw('Nodes in block 1', 'Nodes in block 1 queue found');
+
+    // Should show up everywhere.
+    $this->drupalGet('user');
+    $this->assertRaw('Text 2', 'Title 2 node found');
+    $this->drupalGet('node');
+    $this->assertRaw('Text 2', 'Title 2 node found');
+
+    // Update node to show only up on frontpage.
+    $this->_updateNode('2', array('nodesinblock_visibility' => '<front>'));
+    $this->drupalGet('user');
+    $this->assertNoRaw('Text 2', 'Title 2 node not found');
+    $this->assertNoRaw('Nodes in block 1', 'Block nodes in block 1 not found');
+    $this->drupalGet('node');
+    $this->assertRaw('Text 2', 'Title 2 node found');
+    $this->assertRaw('Nodes in block 1', 'Block nodes in block 1 found');
+
+    // Update node and change block to 2.
+    $this->_updateNode('2', array('nodesinblock_delta' => '1', 'nodesinblock_visibility' => '<front>'));
+    $this->drupalget('node/2/nodesinblock');
+    $this->assertRaw('Nodes in block 2', 'Nodes in block 2 queue found');
+    $this->drupalGet('node');
+    $this->assertNoRaw('Nodes in block 1', 'Block nodes in block 1 not found');
+    $this->assertRaw('Nodes in block 2', 'Block nodes in block 2 found');
+    $this->assertRaw('Text 2', 'Title 2 node found');
+
+    // Create second node.
+    $this->_createNode('page', '3');
+    $this->assertRaw('Nodes in block 1', 'Nodes in block 1 queue found');
+    $this->drupalGet('user');
+    $this->assertRaw('Nodes in block 1', 'Block nodes in block 1 found');
+    $this->assertRaw('Text 3', 'Title 3 node found');
+    $this->assertNoRaw('Text 2', 'Title 2 node not found');
+    $this->assertNoRaw('Nodes in block 2', 'Block nodes in block 2 not found');
+    $this->drupalGet('node');
+    $this->assertRaw('Nodes in block 2', 'Block nodes in block 2 found');
+    $this->assertRaw('Text 2', 'Title 2 node found');
+    $this->assertRaw('Nodes in block 1', 'Block nodes in block 1 found');
+    $this->assertRaw('Text 3', 'Title 3 node found');
+
+    // Do some tests on visibility settings of blocks.
+    $this->_updateNode('2', array('nodesinblock_delta' => '0', 'nodesinblock_visibility' => '*'));
+    $this->_updateNode('3', array('nodesinblock_delta' => '0', 'nodesinblock_visibility' => '<front>'));
+    $visib = $this->_getVisibility('0');
+    $visib = explode("\n", $visib);
+    $this->assertTrue(in_array('<front>', $visib, '&lt;front&gt; visibility found.'));
+    $this->assertTrue(in_array('*', $visib, '* visibility found.'));
+    $this->_updateNode('2', array('nodesinblock_delta' => '0', 'nodesinblock_visibility' => 'node/add'));
+    $this->_updateNode('3', array('nodesinblock_delta' => '0', 'nodesinblock_visibility' => 'user'));
+    $visib = $this->_getVisibility('0');
+    $visib = explode("\n", $visib);
+    $this->assertFalse(in_array('<front>', $visib, '&lt;front&gt; visibility not found.'));
+    $this->assertFalse(in_array('*', $visib, '&lt;front&gt; visibility not found.'));
+    $this->assertTrue(in_array('node/add', $visib, 'node/add visibility found.'));
+    $this->assertTrue(in_array('user', $visib, 'user visibility found.'));
+
+    // Delete node and see
+    // 1: that record is gone in nodesinblock table.
+    // 2: visibility of block is good too.
+    node_delete('3');
+    $result = db_query("SELECT nid FROM {nodesinblock} WHERE nid = 3")->fetchField();
+    $this->assertFalse($result, 'Row has been deleted from nodesinblock table');
+    $visib = $this->_getVisibility('0');
+    $visib = explode("\n", $visib);
+    $this->assertFalse(in_array('user', $visib, 'user visibility not found.'));
+    $this->assertTrue(in_array('node/add', $visib, 'node/add visibility found.'));
+  }
+}
