@@ -1,0 +1,50 @@
+<?php
+
+/*function auto_role_allocation_form_alter(&$form, &$form_state, $form_id) {
+	global $user;
+	if($form_id == "user_register_form") {
+      $form['#submit'][] = 'user_register_form_submit';
+	}
+	
+}
+
+function user_register_form_submit(&$form, &$form_state) {
+	
+    $date_of_birth = $form_state['input']['profile_main']['field_user_birthday']['und'][0]['value']['date'];
+    $time_stamp_dob = strtotime($date_of_birth);
+    $current_time = time();
+    $time_diff = $current_time - $time_stamp_dob;
+    $age = floor(($current_time - $time_stamp_dob) / 31556926);
+    if($age <=5) {
+       
+    }
+
+    echo $_age;die();
+
+	echo "<pre>";
+	print_r($form_state['input']['profile_main']['field_user_birthday']['und'][0]['value']['date']);
+	die();
+} */
+
+function auto_role_allocation_user_presave(&$edit, $account) {
+	global $user;
+	$date_of_birth = $edit['profile_main']['field_user_birthday']['und'][0]['value'];
+	$time_stamp_dob = strtotime($date_of_birth);
+	$current_time = time();
+	$_age = floor(($current_time - $time_stamp_dob) / 31556926);
+	//echo "<pre>";print_r($_age);die();
+	if($_age <=5) {
+		$edit['roles'][2] = 5;
+       
+	}
+	elseif($_age >5 && $_age <= 12) {
+		$edit['roles'][2] = 6;
+    }
+    elseif($_age >12 && $_age <= 17) {
+		$edit['roles'][2] = 7;
+    }
+    elseif($_age > 17) {
+		$edit['roles'][2] = 8;
+    }
+	
+}
