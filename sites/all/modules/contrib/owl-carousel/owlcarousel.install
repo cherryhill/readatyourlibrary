@@ -1,0 +1,28 @@
+<?php
+
+/**
+ * @file
+ * owlcarousel.install
+ */
+ 
+/**
+ * Implements hook_install().
+ */
+function owlcarousel_install() {
+  // Add default optionset.
+  variable_set('owlcarousel_settings_default', 'owlcarousel_default');
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function owlcarousel_uninstall() {
+  $query = 'SELECT name FROM {variable} WHERE name LIKE :name';
+  // @todo, add like for owlcarousel_settings_
+  $results = db_query($query, array(':name' => db_like('owlcarousel_') . '%'))->fetchAll();
+
+  foreach ($results as $result) {
+    // Clean up stored variables.
+    variable_del($result->name);
+  }
+}

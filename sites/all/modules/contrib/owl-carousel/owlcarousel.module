@@ -1,0 +1,285 @@
+<?php
+
+/**
+ * @file
+ * owlcarousel.module
+ */
+
+/**
+ * Implements hook_menu().
+ */
+function owlcarousel_menu() {
+  $items['admin/config/user-interface/owlcarousel'] = array(
+    'title' => 'Owlcarousel',
+    'description' => 'Owlcarousel instance settings list.',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('owlcarousel_settings_form'),
+    'access arguments' => array('administer owlcarousel settings'),
+    'type' => MENU_NORMAL_ITEM,
+    'file' => 'owlcarousel.admin.inc',
+  );
+  $items['admin/config/user-interface/owlcarousel/%'] = array(
+    'title' => 'Owlcarousel Settings',
+    'description' => 'List instance settings.',
+    'page callback' => 'owlcarousel_instance_settings_form',
+    'page arguments' => array(4),
+    'access arguments' => array('administer owlcarousel settings'),
+    'type' => MENU_NORMAL_ITEM,
+    'file' => 'owlcarousel.admin.inc',
+  );
+  $items['admin/config/user-interface/owlcarousel/import'] = array(
+    'title' => 'Import Settings',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('owlcarousel_variable_settings_import_form'),
+    'access arguments' => array('administer owlcarousel settings'),
+    'type' => MENU_NORMAL_ITEM,
+    'file' => 'owlcarousel.admin.inc',
+  );
+  $items['admin/config/user-interface/owlcarousel/%/export'] = array(
+    'title' => 'Export Settings',
+    'page callback' => 'owlcarousel_export_instance_settings',
+    'page arguments' => array(4),
+    'access arguments' => array('administer owlcarousel settings'),
+    'type' => MENU_CALLBACK,
+    'file' => 'owlcarousel.admin.inc',
+  );
+  $items['admin/config/user-interface/owlcarousel/%/delete/%'] = array(
+    'title' => 'Delete Settings',
+    'page callback' => 'owlcarousel_delete_instance_settings',
+    'page arguments' => array(4, 6),
+    'access arguments' => array('administer owlcarousel settings'),
+    'type' => MENU_CALLBACK,
+    'file' => 'owlcarousel.admin.inc',
+  );
+
+  return $items;
+}
+
+/**
+ * Implements hook_theme().
+ */
+function owlcarousel_theme() {
+  return array(
+    'owlcarousel' => array(
+      'variables' => array('items' => array(), 'settings' => array()),
+      'template' => 'theme/owlcarousel',
+      'file' => 'theme/owlcarousel.theme.inc',
+    ),
+    'owlcarousel_list' => array(
+      'variables' => array('items' => array(), 'settings' => array()),
+      'file' => 'theme/owlcarousel.theme.inc',
+    ),
+    'owlcarousel_list_item' => array(
+      'variables' => array('item' => array(), 'settings' => array()),
+      'file' => 'theme/owlcarousel.theme.inc',
+    ),
+    'owlcarousel_admin_settings_form' => array(
+      'render element' => 'form',
+    ),
+    'owlcarousel_admin_settings_form_fields' => array(
+      'render element' => 'form',
+    ),
+  );
+}
+
+/**
+ * Implements hook_permission().
+ */
+function owlcarousel_permission() {
+  return array(
+    'administer owlcarousel settings' => array(
+      'title' => t('Administer Owl Carousel settings'),
+    ),
+  );
+}
+
+/**
+ * Implements hook_library().
+ */
+function owlcarousel_library() {
+  $library = libraries_get_path('owl-carousel');
+
+  $libraries['owlcarousel'] = array(
+    'title' => 'Owl Carousel',
+    'website' => 'http://owlgraphic.com/owlcarousel',
+    'version' => array(),
+    'js' => array(
+      $library . '/owl.carousel.min.js' => array(
+        'scope' => 'footer',
+      ),
+    ),
+    'css' => array(
+      $library . '/owl.carousel.css' => array(
+        'type' => 'file',
+        'media' => 'screen',
+      ),
+      $library . '/owl.theme.css' => array(
+        'type' => 'file',
+        'media' => 'screen',
+      ),
+      $library . '/owl.transitions.css' => array(
+        'type' => 'file',
+        'media' => 'screen',
+      ),
+    ),
+  );
+
+  return $libraries;
+}
+
+/**
+ * Loads carousel instance settings.
+ */
+function owlcarousel_initiate_instance($instance, $carousel) {
+  $version = variable_get('jquery_update_jquery_version', FALSE);
+  if (!$version || $version == '1.5') {
+    drupal_set_message(t('The installed jQuery version is not supported by Owl Carousel.'), 'error', FALSE);
+  }
+
+  // Include library.
+  drupal_add_library('owlcarousel', 'owlcarousel');
+
+  // Load carousel settings from the instance id.
+  $settings = _owlcarousel_return_carousel_instance_settings($instance);
+
+  // Provide alter for instance settings.
+  drupal_alter('owlcarousel_settings', $settings, $instance);
+
+  // Include instance settings.
+  drupal_add_js(array('owlcarousel' => array($carousel => $settings)), 'setting');
+  drupal_add_js(drupal_get_path('module', 'owlcarousel') . '/includes/js/owlcarousel.settings.js', array('scope' => 'footer', 'type' => 'file'));
+}
+
+/**
+ * Return Owl Carousel settings array or default.
+ */
+function _owlcarousel_return_carousel_instance_settings($instance) {
+  if ($settings_cache = cache_get('owlcarousel_cache_' . $instance . '_settings')) {
+    $settings = $settings_cache->data;
+  }
+  else {
+    // Depreciated, @todo remove for rc1, only use variable_get_value now.
+    $function = !module_exists('variable') ? 'variable_get' : 'variable_get_value';
+
+    $settings = array(
+      'items' => (int)$function('owlcarousel_items_' . $instance),
+      'itemsDesktop' => array(
+        $function('owlcarousel_items_desktop_' . $instance . '_width'),
+        $function('owlcarousel_items_desktop_' . $instance . '_items'),
+      ),
+      'itemsDesktopSmall' => array(
+        $function('owlcarousel_items_desktop_small_' . $instance . '_width'),
+        $function('owlcarousel_items_desktop_small_' . $instance . '_items'),
+      ),
+      'itemsTablet' => array(
+        $function('owlcarousel_items_tablet_' . $instance . '_width'),
+        $function('owlcarousel_items_tablet_' . $instance . '_items'),
+      ),
+      'itemsTabletSmall' => array(
+        $function('owlcarousel_items_tablet_small_' . $instance . '_width'),
+        $function('owlcarousel_items_tablet_small_' . $instance . '_items'),
+      ),
+      'itemsMobile' => array(
+        $function('owlcarousel_items_mobile_' . $instance . '_width'),
+        $function('owlcarousel_items_mobile_' . $instance . '_items'),
+      ),
+      'singleItem' => (boolean)$function('owlcarousel_single_item_' . $instance),
+      'itemsScaleUp' => (boolean)$function('owlcarousel_items_scale_up_' . $instance),
+      'slideSpeed' => (int)$function('owlcarousel_slide_speed_' . $instance),
+      'paginationSpeed' => (int)$function('owlcarousel_pagination_speed_' . $instance),
+      'rewindSpeed' => (int)$function('owlcarousel_rewind_speed_' . $instance),
+      'autoPlay' => $function('owlcarousel_auto_play_' . $instance) ? $function('owlcarousel_auto_play_' . $instance) : FALSE,
+      'stopOnHover' => (boolean)$function('owlcarousel_stop_on_hover_' . $instance),
+      'navigation' => (boolean)$function('owlcarousel_navigation_' . $instance),
+      'navigationText' => $function('owlcarousel_navigation_text_' . $instance),
+      'rewindNav' => (boolean)$function('owlcarousel_rewind_nav_' . $instance),
+      'scrollPerPage' => (boolean)$function('owlcarousel_sroll_per_page_' . $instance),
+      'pagination' => (boolean)$function('owlcarousel_pagination_' . $instance),
+      'paginationNumbers' => (boolean)$function('owlcarousel_pagination_numbers_' . $instance),
+      'responsive' => (boolean)$function('owlcarousel_responsive_' . $instance),
+      'responsiveRefreshRate' => (int)$function('owlcarousel_responsive_refresh_rate_' . $instance),
+      'baseClass' => $function('owlcarousel_base_class_' . $instance),
+      'theme' => $function('owlcarousel_theme_' . $instance),
+      'lazyLoad' => (boolean)$function('owlcarousel_lazy_load_' . $instance),
+      'lazyFollow' => (boolean)$function('owlcarousel_lazy_follow_' . $instance),
+      'lazyEffect' => $function('owlcarousel_lazy_effect_' . $instance),
+      'autoHeight' => (boolean)$function('owlcarousel_auto_height_' . $instance),
+      'jsonPath' => $function('owlcarousel_json_path_' . $instance) ? $function('owlcarousel_json_path_' . $instance) : FALSE,
+      'jsonSuccess' => $function('owlcarousel_json_success_' . $instance) ? $function('owlcarousel_json_success_' . $instance) : FALSE,
+      'dragBeforeAnimFinish' => (boolean)$function('owlcarousel_drag_before_anim_finish_' . $instance),
+      'mouseDrag' => (boolean)$function('owlcarousel_mouse_drag_' . $instance),
+      'touchDrag' => (boolean)$function('owlcarousel_touch_drag_' . $instance),
+      'addClassActive' => (boolean)$function('owlcarousel_add_class_active_' . $instance),
+      'transitionStyle' => (boolean)$function('owlcarousel_transition_style_' . $instance),
+    );
+
+    // Update settings cache.
+    cache_set('owlcarousel_cache_' . $instance . '_settings', $settings, 'cache');
+  }
+
+  return $settings;
+}
+
+/**
+ * Implements hook_variable_settings_form_alter().
+ */
+function owlcarousel_variable_settings_form_alter(&$form, $form_state, $form_id) {
+  if (isset($form_state['build_info']['args'][0]) && $form_state['build_info']['args'][0] == 'owlcarousel') {
+    $instance = $form_state['build_info']['args'][1];
+
+    // Include additional submit handler to update settings cache.
+    $form['#submit'][] = 'owlcarousel_variable_settings_submit';
+
+    // This needs a graceful solution... =/
+    $settings = owlcarousel_build_instance_settings($instance, $form['#variable_edit_form']);
+    foreach ($form as $key => $component) {
+      if (strpos($key, '[instance_id]') !== FALSE) {
+        $form[$key] = $settings[$key];
+      }
+    }
+  }
+}
+
+/**
+ * Format variable settings form to only display our
+ * instance variables.
+ */
+function owlcarousel_build_instance_settings($instance, $settings) {
+  module_load_include('form.inc', 'variable');  
+
+  foreach ($settings as $key => $setting) {
+    $variable = variable_get_child($setting, $instance);
+    $form[$setting][$variable['name']] = variable_form_element($variable);
+
+    if ($setting == 'owlcarousel_navigation_text_[instance_id]') {
+      $form[$setting][$variable['name']][0]['#title'] = t('Previous');
+      $form[$setting][$variable['name']][1]['#title'] = t('Next');
+    }
+  }
+
+  return $form;
+}
+
+/**
+ * Return array with key pair.
+ */
+function owlcarousel_instance_callback_list() {
+  $instances = _owlcarousel_return_instances();
+
+  // Format array as callback option list.
+  foreach ($instances as $instance) {
+    $content[$instance->name] = $instance->name;
+  }
+
+  return $content;
+}
+
+/**
+ * Helper function, return active instances by name.
+ */
+function _owlcarousel_return_instances() {
+  $query = 'SELECT name FROM {variable} WHERE name LIKE :name';
+  $results = db_query($query, array(':name' => db_like('owlcarousel_settings_') . '%'))->fetchAll();
+
+  return $results;
+}
