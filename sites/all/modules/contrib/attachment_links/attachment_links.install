@@ -1,0 +1,16 @@
+<?php
+
+/**
+ * @file attachment_links.install
+ * Provides install, uninstall, and update hooks.
+ */
+
+/**
+ * Implements hook_uninstall().
+ */
+function attachment_links_uninstall() {
+  // Remove variables used by this module.
+  db_delete('variable')
+    ->condition('name', 'attachment_links%', 'LIKE')
+    ->execute();
+}

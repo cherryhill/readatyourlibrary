@@ -1,0 +1,119 @@
+<?php
+
+/**
+ * @file
+ * Provides an option to set the default tab on the Manage Features page.
+ */
+
+/**
+ * Implements hook_help().
+ *
+ * Displays an "inline" version of the README.md file in the Drupal UI. It will
+ * filter the contents of the file through the Markdown filter module if it is
+ * installed, or render a plain text version of the file if it is not.
+ *
+ * @see https://www.drupal.org/node/161085#hook_help
+ */
+function features_default_tab_help($path, $arg) {
+  switch ($path) {
+    case 'admin/help#features_default_tab':
+      $path = drupal_get_path('module', 'features_default_tab') . '/README.md';
+      if (file_exists($path)) {
+        $readme = file_get_contents($path);
+      }
+      if (empty($readme)) {
+        return '';
+      }
+      if (module_exists('markdown')) {
+        $filters = module_invoke('markdown', 'filter_info');
+        $info = $filters['filter_markdown'];
+        if (function_exists($info['process callback'])) {
+          $output = $info['process callback']($readme, NULL);
+        }
+        else {
+          $output = '<pre>' . $readme . '</pre>';
+        }
+      }
+      else {
+        $output = '<pre>' . $readme . '</pre>';
+      }
+      return $output;
+  }
+}
+
+/**
+ * Implements hook_form_alter().
+ */
+function features_default_tab_form_alter(&$form, &$form_state, $form_id) {
+  if ($form_id === 'features_settings_form') {
+    // Get the current default tab.
+    $features_default_tab = variable_get('features_default_tab');
+
+    // Prepare features package information.
+    $features = array_filter(features_get_features(), 'features_filter_hidden');
+    $packages = array();
+    foreach ($features as $module) {
+      $package_title = !empty($module->info['package']) ? $module->info['package'] : t('Other');
+      $package = 'package_' . strtolower(preg_replace('/[^a-zA-Z0-9-]+/', '-', $package_title));
+      $packages[$package] = $package_title;
+    }
+    ksort($packages);
+
+    // Add new Features Default Tab form item.
+    $form['features_default_tab'] = array(
+      '#title' => t('Features Default Tab settings'),
+      '#type' => 'radios',
+      '#options' => $packages,
+      '#default_value' => $features_default_tab,
+      '#description' => t("Select the tab to display by default when loading the Manage Features page."),
+      '#validated' => TRUE,
+      '#weight' => -1000,
+    );
+
+    // Add a new default feature Package field.
+    $form['features_default_tab_default_package'] = array(
+      '#title' => t('Features Default Package'),
+      '#description' => t('Set the default package for new features.'),
+      '#type' => 'textfield',
+      '#default_value' => variable_get('features_default_tab_default_package', ''),
+      '#weight' => -999,
+    );
+
+    // Change the form item description if there are no features packages.
+    if (empty($packages)) {
+      // The Features module itself has a formatted message for when there are
+      // no features or features packages available located in the admin form.
+      // The following code retrieves the form and the "no features" message for
+      // use as the description in the features_default_tab form.
+      $features_admin_form = drupal_get_form('features_admin_form');
+      $no_features = $features_admin_form['no_features']['#markup'];
+      $form['features_default_tab']['#description'] = $no_features;
+    }
+  }
+  if ($form_id === 'features_admin_form') {
+    // Get the current default tab.
+    $features_default_tab = variable_get('features_default_tab');
+
+    // Set up variable for jQuery.
+    $id = '#edit-' . str_replace('_', '-', $features_default_tab);
+    $settings = array('id' => $id);
+
+    $form['#attached']['js'][] = array(
+      'data' => drupal_get_path('module', 'features_default_tab') . '/features_default_tab.js',
+      'type' => 'file',
+    );
+    $form['#attached']['js'][] = array(
+      'data' => array('featuresDefaultTab' => $settings),
+      'type' => 'setting',
+    );
+  }
+
+  // We only need to set the default package of features that are new if a
+  // default package is set.
+  $is_export_form = ($form_id == 'features_export_form');
+  $features_package_still_default = ($is_export_form && $form['info']['package']['#default_value'] == 'Features');
+  $default_package_is_set = ($is_export_form && variable_get('features_default_tab_default_package') != '');
+  if ($is_export_form && $features_package_still_default && $default_package_is_set) {
+    $form['info']['package']['#default_value'] = variable_get('features_default_tab_default_package', 'Features');
+  }
+}

@@ -1,0 +1,305 @@
+<?php
+/**
+ * Get a list of all available header images.
+ *
+ * @param $key
+ *   The name of the theme fom which to load additional images.
+ */
+function noggin_get_available_images($key = NULL) {
+  $defaults = array(
+    t('Sample headers') => array(
+      'noggin:boots.jpg' => t('Black and white boots'),
+      'noggin:denim.jpg' => t('Blue jeans'),
+      'noggin:dewflower.jpg' => t('Orange petals and dew'),
+      'noggin:flower.jpg' => t('Purple flower on black'),
+      'noggin:hearts.jpg' => t('Candy hearts'),
+      'noggin:lens.jpg' => t('Camera lens on white'),
+      'noggin:lensdrop.jpg' => t('Dew drop on green'),
+      'noggin:mountain.jpg' => t('Blue mountainscape'),
+      'noggin:speaker.jpg' => t('Grey speaker'),
+      'noggin:sunset.jpg' => t('Warm sunset'),
+      'noggin:whitebrick.jpg' => t('White bricks'),
+      'noggin:yarn.jpg' => t('Colorful yarn'),
+    ),
+  );
+  if ($key == NULL) {
+    // No need for futher processing
+    return $defaults;
+  }
+  // Search for png and jpg files by default
+  $allowed_extensions = array('jpg', 'png');
+  // Path to theme
+  $theme_path = drupal_get_path('theme', $key);
+  // Build the available images array
+  $images = array();
+  foreach ($allowed_extensions as $extension) {
+    $files = drupal_system_listing("/\.$extension$/", "$theme_path/header-images", 'name', 0);
+    foreach ($files as $name => $image) {
+      $images["$key:{$image->filename}"] = $image->filename;
+    }
+  }
+  if (count($images)) {
+    $defaults[$key] = $images;
+  }
+  return $defaults;
+}
+
+/**
+ * Implements hook_form_alter().
+ */
+function noggin_form_alter(&$form, &$form_state, $form_id) {
+  // Display the form on theme-specific settings page only.
+  if ($form_id == 'system_theme_settings' && isset($form['var']['#value']) && $form['var']['#value'] != 'theme_settings') {
+    // Get saved theme settings.
+    $theme_settings = variable_get($form['var']['#value'], array());
+    // Logo settings
+    $form['noggin'] = array(
+      '#type' => 'fieldset',
+      '#title' => t('Header image settings'),
+      '#description' => t('Choose a graphical header, or upload a custom image.'),
+      '#attributes' => array('class' => array('theme-settings-bottom')),
+    );
+    $theme_key = $form_state['build_info']['args'][0];
+    $options = array_merge(
+      array(
+       '' => t('None'),
+       'custom' => t('Custom image'),
+      ),
+      noggin_get_available_images(isset($theme_key) ? $theme_key : NULL)
+    );
+    $form['noggin']['header_image'] = array(
+      '#type' => 'select',
+      '#title' => t('Selected header'),
+      '#options' => $options,
+      '#description' => t('To have images supplied by your theme show here place them in yourtheme/header-images folder. They must be png or jpg.'),
+      '#default_value' => isset($theme_settings['header_image']) ? $theme_settings['header_image'] : FALSE,
+      '#tree' => FALSE,
+    );
+    $form['noggin']['settings'] = array(
+      '#type' => 'container',
+      '#states' => array(
+        // Don't show any extra forms when none is selected.
+        'invisible' => array(
+          ':input[name="header_image"]' => array('value' => ''),
+        ),
+      ),
+    );
+    $form['noggin']['settings']['path_settings'] = array(
+      '#type' => 'fieldset',
+      '#title' => t('Custom image'),
+      '#states' => array(
+        // Only show the path and upload form when custom image is selected.
+        'visible' => array(
+          ':input[name="header_image"]' => array('value' => 'custom'),
+        ),
+      ),
+    );
+    $header_path = isset($theme_settings['header_path']) ? $theme_settings['header_path'] : NULL;
+    // If $header_path is a public:// URI, display the path relative to the files
+    // directory; stream wrappers are not end-user friendly.
+    if (file_uri_scheme($header_path) == 'public') {
+      $header_path = file_uri_target($header_path);
+    }
+    $form['noggin']['settings']['path_settings']['header_path'] = array(
+      '#type' => 'textfield',
+      '#title' => t('Path to custom header'),
+      '#default_value' => $header_path,
+      '#description' => t('The path to the file you would like to use as your header.'),
+    );
+    $form['noggin']['settings']['path_settings']['header_upload'] = array(
+      '#type' => 'file',
+      '#title' => t('Upload header image'),
+      '#maxlength' => 40,
+      '#description' => t("If you don't have direct file access to the server, use this field to upload your header.")
+    );
+    $form['noggin']['settings']['css_settings'] = array(
+      '#type' => 'fieldset',
+      '#title' => t('CSS settings'),
+    );
+    $form['noggin']['settings']['css_settings']['header_selector'] = array(
+      '#type' => 'textfield',
+      '#title' => t('CSS header selector'),
+      '#default_value' => isset($theme_settings['header_selector']) ? $theme_settings['header_selector'] : '#header',
+      '#description' => t('The CSS selector to use when placing the header image.'),
+      '#size' => 30,
+    );
+    $form['noggin']['settings']['css_settings']['header_horizontal_alignment'] = array(
+      '#type' => 'radios',
+      '#title' => t('Image alignment - horizontal'),
+      '#default_value' => isset($theme_settings['header_horizontal_alignment']) ? $theme_settings['header_horizontal_alignment'] : 'center',
+      '#options' => array(
+        'left' => t('Left'),
+        'center' => t('Center'),
+        'right' => t('Right'),
+      ),
+    );
+    $form['noggin']['settings']['css_settings']['header_vertical_alignment'] = array(
+      '#type' => 'radios',
+      '#title' => t('Image alignment - vertical'),
+      '#default_value' => isset($theme_settings['header_vertical_alignment']) ? $theme_settings['header_vertical_alignment'] : 'top',
+      '#options' => array(
+        'top' => t('Top'),
+        'center' => t('Middle'),
+        'bottom' => t('Bottom'),
+      ),
+    );
+    $form['noggin']['settings']['css_settings']['header_image_repeat'] = array(
+      '#type' => 'radios',
+      '#title' => t('Image repeat'),
+      '#default_value' => isset($theme_settings['header_image_repeat']) ? $theme_settings['header_image_repeat'] : 'no-repeat',
+      '#options' => array(
+        'no-repeat' => t('No repeat'),
+        'repeat-x' => t('Horizontal repeat'),
+        'repeat-y' => t('Vertical repeat'),
+        'repeat' => t('Repeat'),
+      ),
+    );
+
+    $form['noggin']['settings']['css_settings']['optional'] = array(
+      '#type' => 'fieldset',
+      '#title' => t('Optional settings'),
+      '#collapsible' => TRUE,
+      '#collapsed' => TRUE,
+    );
+    $form['noggin']['settings']['css_settings']['optional']['header_image_width'] = array(
+      '#type' => 'radios',
+      '#title' => t('Image width'),
+      '#default_value' => theme_get_setting('header_image_width'),
+      '#default_value' => isset($theme_settings['header_image_width']) ? $theme_settings['header_image_width'] : 'auto',
+      '#options' => array(
+        'auto' => t('Auto <span class="description">- use actual image dimensions</span>'),
+        '100%' => t('100% width <span class="description"> - stretch to fit, this only works in modern CSS3 capable browsers</span>'),
+      ),
+    );
+    $form['noggin']['settings']['css_settings']['optional']['header_color'] = array(
+      '#type' => 'textfield',
+      '#title' => t('Background color'),
+      '#default_value' => isset($theme_settings['header_color']) ? $theme_settings['header_color'] : NULL,
+      '#description' => t('This must be valid CSS e.g. #000, rgba(0,0,0,0.5), transparent, etc.'),
+      '#size' => 30,
+    );
+    $form['noggin']['settings']['css_settings']['optional']['header_image_height'] = array(
+      '#type' => 'textfield',
+      '#title' => t('Header height'),
+      '#default_value' => isset($theme_settings['header_image_height']) ? $theme_settings['header_image_height'] : '',
+      '#description' => t('Enter a value/unit combination, e.g. 200px, 12em etc. This may not work for all themes. See the README for help if this does not work as expected.'),
+      '#size' => 30,
+    );
+    $form['noggin']['settings']['css_settings']['optional']['extra_attributes'] = array(
+      '#type' => 'textfield',
+      '#title' => t('Additional CSS attributes'),
+      '#default_value' => isset($theme_settings['extra_attributes']) ? $theme_settings['extra_attributes'] : NULL,
+      '#description' => t('Any additional CSS attributes that should be applied to the header image.'),
+    );
+
+    //dsm($form_state);
+
+    $form['#validate'][] = 'noggin_theme_settings_validate';
+    $form['#submit'][] = 'noggin_theme_settings_submit';
+  }
+}
+
+/**
+ * Validate system_theme_settings form submissions, handling extra values
+ * from the Noggin fields.
+ *
+ * Turns an uploaded file into a real filesystem item.
+ */
+function noggin_theme_settings_validate($form, &$form_state) {
+  // Handle file uploads.
+  $validators = array('file_validate_is_image' => array());
+  // Check for a new uploaded logo.
+  $file = file_save_upload('header_upload', $validators);
+  if (isset($file)) {
+    // File upload was attempted.
+    if ($file) {
+      // Put the temporary file in form_values so we can save it on submit.
+      $form_state['values']['header_upload'] = $file;
+    }
+    else {
+      // File upload failed.
+      form_set_error('header_upload', t('The header could not be uploaded.'));
+    }
+  }
+  // If the user provided a path for a logo or favicon file, make sure a file
+  // exists at that path.
+  if ($form_state['values']['header_path']) {
+    $path = _system_theme_settings_validate_path($form_state['values']['header_path']);
+    if (!$path) {
+      form_set_error('header_path', t('The custom header path is invalid.'));
+    }
+  }
+}
+
+/**
+ * Process system_theme_settings form submissions, handling extra values
+ * from the Noggin fields.
+ */
+function noggin_theme_settings_submit($form, &$form_state) {
+  $values = $form_state['values'];
+  // If the user uploaded a new header image, save it to a permanent location
+  if ($file = $values['header_upload']) {
+    unset($values['header_upload']);
+    $filename = file_unmanaged_copy($file->uri);
+    $values['header_path'] = $filename;
+  }
+  // If the user entered a path relative to the system files directory for
+  // a header image, store a public:// URI so the theme system can handle it.
+  if (!empty($values['header_path'])) {
+    $values['header_path'] = _system_theme_settings_validate_path($values['header_path']);
+  }
+}
+
+/**
+ * Implements hook_preprocess_page().
+ */
+function noggin_preprocess_page(&$vars) {
+  // Get the CSS attribute settings
+  $attributes = array();
+  $attributes[] = theme_get_setting('header_horizontal_alignment');
+  $attributes[] = theme_get_setting('header_vertical_alignment');
+  $attributes[] = theme_get_setting('header_image_repeat');
+  $attributes[] = theme_get_setting('header_color');
+  $attributes[] = theme_get_setting('extra_attributes');
+  $all_attributes = implode(' ', $attributes);
+  // Get width and height
+  $width = theme_get_setting('header_image_width');
+  $height = theme_get_setting('header_image_height') ? theme_get_setting('header_image_height') : 'auto';
+  // Header image and CSS selector
+  $header = theme_get_setting('header_image');
+  $selector = theme_get_setting('header_selector');
+  // Get the path to the image
+  switch ($header) {
+    case NULL:
+    case FALSE:
+      return;
+
+    case 'custom':
+      $path = theme_get_setting('header_path');
+      $image_path = file_create_url($path);
+      break;
+
+    default:
+      // Get key and filename
+      list($key, $file) = explode(':', $header);
+      switch ($key) {
+        case 'noggin':
+          // Image provided by module Noggin
+          $image_path = file_create_url(drupal_get_path('module', 'noggin') . '/headers');
+          break;
+        default:
+          // Image provided by theme
+          $image_path = file_create_url(drupal_get_path('theme', $key) . '/header-images');
+          break;
+      }
+      $image_path .= "/$file";
+  }
+  $css = "$selector {background:url('$image_path') $all_attributes !important;height:$height;-o-background-size:$width auto;-webkit-background-size:$width auto;-khtml-background-size:$width auto;-moz-background-size:$width auto;background-size:$width auto;background-origin:border-box;}";
+  // TODO: possibly save this in a file?
+  drupal_add_css($css, array(
+    'type' => 'inline',
+    'group' => CSS_THEME,
+    'weight' => 99,
+    )
+  );
+}

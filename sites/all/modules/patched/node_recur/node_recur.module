@@ -1,0 +1,729 @@
+<?php
+
+/**
+ * @todo 
+ *   max recurring spans are used and untranslatable
+ */
+
+/**
+ * Implements hook_menu().
+ */
+function node_recur_menu() {
+  $items = array();
+  $items['node/%node/recur'] = array(
+    'title' => 'Repeat',
+    'title callback' => 'node_recur_menu_title_callback',
+    'title arguments' => array(1),
+    'description' => 'Set recurring rules on this node',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('node_recur_node_recur_form', 1),
+    'access callback' => 'node_recur_node_recur_form_access',
+    'access arguments' => array(1),
+    'file' => 'node_recur.pages.inc',
+    'type' => MENU_LOCAL_ACTION,
+    'weight' => 1,
+  );
+  return $items;
+}
+
+/**
+ * Implements hook_permission().
+ */
+function node_recur_permission() {
+  return array(
+    'recur own nodes' => array(
+      'title' => t('Recur own nodes'),
+      'description' => t('Can recur nodes that the user is an author of.'),
+    ),
+    'recur all nodes' => array(
+      'title' => t('Recur all nodes'),
+      'description' => t('Can recur all published nodes.'),
+    ),
+  );
+}
+
+/**
+ * Implements hook_form_alter().
+ */
+function node_recur_form_alter(&$form, &$form_state, $form_id) {
+  // See if this is a node form
+  if (isset($form['#node_edit_form']) && $form['#node_edit_form']) {
+    // See if this is an 'add' operation
+    if (!$form['nid']['#value'] && !$form_state['executed']) {
+      // Check permissions
+      if (user_access('recur own nodes')) {
+        // See if we should display options for this node type
+        if (node_recur_node_form_enabled($form['#node']->type)) {
+          // Make sure recurring is enabled for this node
+          if (node_recur_recurring_enabled($form['#node']->type)) {
+            module_load_include('inc', 'node_recur', 'node_recur.pages');
+            // Get the date field name
+            $date_field = node_recur_get_date_field_name($form['#node']->type);
+            // Get the recur form
+            $recur_form = _node_recur_node_recur_form($form['#node']->type);
+            // Change the default option
+            $recur_form['option']['#default_value'] = 'none';
+            // Set the until date to not be required
+            $recur_form['until']['#required'] = FALSE;
+            // Add fieldset wrapper
+            $form['node_recur'] = array(
+              '#type' => 'fieldset',
+              '#title' => t('Repeat'),
+              '#weight' => $form[$date_field]['#weight'] + 0.1,
+            );
+            // Merge the form into the wrapper
+            $form['node_recur'] = array_merge($form['node_recur'], $recur_form);
+            // Add validation and submission
+            $form['#validate'][] = 'node_recur_node_form_validate';
+            $form['actions']['submit']['#submit'][] = 'node_recur_node_form_submit';
+          }
+        }
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_form_node_type_form_alter().
+ */
+function node_recur_form_node_type_form_alter(&$form, &$form_state) {
+  $type = $form['#node_type']->type;
+  
+  // Determine the available date fields on this node type
+  $fields = array();
+  $instances = field_info_instances();
+  if (isset($instances['node'][$type])) {
+    foreach ($instances['node'][$type] as $name => $field) {
+      if ($field['widget']['module'] == 'date') {
+        $fields[$name] = $field['label'] . ' (' . $name . ')';
+      }
+    }
+  }
+  
+  $form['node_recur'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Node recurring'),
+    '#group' => 'additional_settings',
+  );
+  
+  if (!empty($fields)) {
+    $form['node_recur']['node_recur_enabled_node_type'] = array(
+      '#type' => 'checkbox',
+      '#title' => t('Enable recurring for this node type'),
+      '#default_value' => node_recur_recurring_enabled($type) ? 1 : 0,
+      '#description' => t('If checked, users with permission can create recurring copies of these nodes.'),
+    );
+    $form['node_recur']['node_recur_allow_past_dates_node_type'] = array(
+      '#type' => 'checkbox',
+      '#title' => t('Allow dates in the past'),
+      '#default_value' => node_recur_allow_past_dates($type) ? 1 : 0,
+      '#description' => t('If checked, recurrences with dates in the past will be allowed.'),
+    );
+    $form['node_recur']['node_recur_max_span_node_type'] = array(
+      '#type' => 'select',
+      '#title' => t('Max recurring duration'),
+      '#options' => array(
+        0 => t('No max'),
+        '1 week' => t('1 week'),
+        '2 weeks' => t('2 weeks'),
+        '1 month' => t('1 month'),
+        '3 months' => t('3 months'),
+        '6 months' => t('6 months'),
+        '1 year' => t('1 year'),
+      ),
+      '#default_value' => node_recur_max_future_date_span($type),
+      '#description' => t('Select a maximum time span that recurring will be allowed to continue to.'),
+    );
+    $form['node_recur']['node_recur_date_field_node_type'] = array(
+      '#type' => 'select',
+      '#title' => t('Date field'),
+      '#options' => $fields,
+      '#default_value' => node_recur_get_date_field_name($type),
+      '#description' => t('Select the date field that will be used to base the recurrences on.'),
+    );
+    $form['node_recur']['node_recur_node_form_node_type'] = array(
+      '#type' => 'checkbox',
+      '#title' => t('Display recur options on node add form'),
+      '#default_value' => node_recur_node_form_enabled($type) ? 1 : 0,
+      '#description' => t('If checked, recurring options will appear on the node add form.'),
+    );
+  }
+  else {
+    $form['node_recur']['node_recur_null'] = array(
+      '#markup' => t('There are no date fields available for this node type.'),
+    );
+  }
+}
+
+/**
+ * Access handler for the node recur form
+ */
+function node_recur_node_recur_form_access($node) {
+  global $user;
+  $access = FALSE;
+  
+  // See if recurring is enabled for this node
+  if (node_recur_recurring_enabled($node->type)) {
+    // Check permissions
+    if (user_access('recur all nodes') || (user_access('recur own nodes') && ($node->uid == $user->uid))) {
+      // Make sure node is published, or admin
+      if ($node->status || user_access('administer nodes')) {
+        // Make sure we have a valid date field
+        if (node_recur_get_date_field_name($node->type)) {
+          // Granted
+          $access = TRUE;
+        }
+      }
+    }
+    
+    // Allow modules to alter this
+    drupal_alter('node_recur_access', $access, $node);
+  }
+  
+  return $access;
+}
+
+/**
+ * Determine if recurring is enabled for a given node type
+ * 
+ * @param $type
+ *   The node type
+ * @return
+ *   TRUE if recurring is enabled, otherwise FALSE
+ */
+function node_recur_recurring_enabled($type) {
+  return variable_get("node_recur_enabled_node_type_{$type}", FALSE);
+}
+
+/**
+ * Determine if recurring options should appear on a node type's node
+ * add form.
+ * 
+ * @param $type
+ *   The node type
+ * @return
+ *   TRUE if recurring should appear on the node add form, otherwise 
+ *   FALSE.
+ */
+function node_recur_node_form_enabled($type) {
+  return variable_get("node_recur_node_form_node_type_{$type}", FALSE);
+}
+
+/**
+ * Determine if dates in the past are allowed for a node type
+ * 
+ * @param $type
+ *   The node type
+ * @return
+ *   TRUE if past dates are allowed, otherwise 
+ *   FALSE.
+ */
+function node_recur_allow_past_dates($type) {
+  return variable_get("node_recur_allow_past_dates_node_type_{$type}", FALSE);
+}
+
+/**
+ * Determine what the max future dates can recur to for a given
+ * node type
+ * 
+ * @param $type
+ *   The node type
+ * @return
+ *   The max future time span.
+ */
+function node_recur_max_future_date_span($type) {
+  return variable_get("node_recur_max_span_node_type_{$type}", NULL);
+}
+
+/**
+ * Determine a node type's recurring date field name
+ * 
+ * @param $type
+ *   A node type
+ * @return
+ *   The node's date field name, otherwise NULL
+ */
+function node_recur_get_date_field_name($type) {
+  if ($field_name = variable_get("node_recur_date_field_node_type_{$type}", FALSE)) {
+    // Check that the field still exists
+    if (field_info_field($field_name)) {
+      return $field_name;
+    }
+  }
+  return NULL;
+}
+
+/**
+ * Determine the value of a node's recurring date field
+ * 
+ * @param $node
+ *   A node
+ * @param $start
+ *   TRUE if the start date should be used. FALSE is the end date should
+ *   be used.
+ * @return
+ *   The value of the node's date field
+ */
+function node_recur_get_node_date_field_value($node, $start = TRUE) {
+  // @todo: extract the value the right way, whatever that is..
+  if ($field_name = node_recur_get_date_field_name($node->type)) {
+    $key = $start ? 'value' : 'value2';
+    $field = $node->$field_name;
+    if (isset($field[LANGUAGE_NONE][0][$key])) {
+      return $field[LANGUAGE_NONE][0][$key];
+    }
+  }
+  return NULL;
+}
+
+/**
+ * Title callback for the recur form menu item
+ */
+function node_recur_menu_title_callback($node) {
+  return t('Repeat this !type', array('!type' => strtolower(node_type_get_name($node)))); 
+}
+
+/**
+ * Generate an array of recurring dates based on the provided rule criteria
+ * 
+ * @param $node
+ *   The node that's being recurred
+ * @param $date
+ *   The initial starting date belonging to the node that will be recurring.
+ *   Can be in string or numeric format.
+ * @param $frequency
+ *   The frequency that the period occurs, ie, every 5 days, the frequency
+ *   would be 5.
+ * @param $period
+ *   The period of each frequency, ie, every 5 days, the period will be
+ *   'day'. It can also be 'week' or 'month'.
+ * @param $until
+ *   The date to recur until. Can be in string or numeric format.
+ * @param $weekends
+ *   TRUE if weekends should be included.
+ * @return
+ *   An array of timestamps
+ */
+function node_recur_generate_dates_rule($node, $date, $frequency, $period, $until, $weekends = TRUE) {
+  $dates = array();
+  $month = FALSE;
+  
+  // Convert date and until date to timestamp, if needed
+  $date = is_string($date) ? strtotime($date) : $date;
+  $until = is_string($until) ? strtotime($until) : $until;
+  
+  // Make sure we have valid timestamps
+  if (!is_numeric($date) || !is_numeric($until)) {
+    return FALSE;
+  }
+  
+  // Make sure the until is ahead of the date
+  if ($date >= $until) {
+    return FALSE;
+  }
+  
+  // Convert month period to weeks, in order to preserve the day
+  // of the week
+  if ($period == 'month') {
+    $frequency = $frequency * 4;
+    $period = 'week';
+    $month = TRUE;
+  }
+  
+  // Track the current date
+  $current = $date;
+
+  // Iterate and generate dates until we reach the end
+  while (TRUE) {
+    // Generate the next date
+    $next = strtotime("+{$frequency} " . format_plural($frequency, $period, "{$period}s"), $current);
+
+    // If this is a month recur, we need to make sure the the next date
+    // is on the next month. Some months have 5 repeats of the same day
+    if ($month && (date('n', $next) == date('n', $current))) {
+      // Jump forward one more week
+      $next = strtotime('+1 week', $next);
+    }
+    
+    $current = $next;
+
+    // Make sure date is in the future, if the settings dictate that
+    if (!node_recur_allow_past_dates($node->type) && $next < REQUEST_TIME) {
+      continue;
+    }
+    
+    // If we're excluding weekends, skip this if it's a weekend
+    if (!$weekends) {
+      $day = date('D', $next);
+      if ($day == 'Sun' || $day == 'Sat') {
+        continue;
+      }
+    }
+
+    // See if this date puts us past the limit
+    if ($next > $until) {
+      break;
+    }
+    
+    $dates[] = $current;
+  }
+  
+  return $dates;
+}
+
+/**
+ * Generate an array of recurring dates based on the provided montlhy criteria
+ *
+ * @param $node
+ *   The node that's being recurred
+ * @param $date
+ *   The initial starting date belonging to the node that will be recurring.
+ *   Can be in string or numeric format.
+ * @param $occurrence
+ *   An array of postitions of the occurrence in the month of the repeat, e.g.
+ *   1st, 2nd, 3rd, 4th, or Last.
+ * @param $weekday
+ *   An array of days of the week.
+ * @param $until
+ *   The date to recur until. Can be in string or numeric format.
+ * @return
+ *   An array of timestamps
+ */
+function node_recur_generate_dates_monthly($node, $date, $occurrence, $weekday, $until) {
+  $dates = array();
+  $month = FALSE;
+
+  // Convert date and until date to timestamp, if needed
+  $date = is_string($date) ? strtotime($date) : $date;
+  $until = is_string($until) ? strtotime($until) : $until;
+
+  // Make sure we have valid timestamps
+  if (!is_numeric($date) || !is_numeric($until)) {
+    return FALSE;
+  }
+
+  // Make sure the until is ahead of the date
+  if ($date >= $until) {
+    return FALSE;
+  }
+
+  // Track the current date
+  $current = $date;
+  // Get the month and year of next month
+  $m = date('F', strtotime("first day of next month", $current));
+  $y = date('Y', strtotime("first day of next month", $current));
+  $time = date('H:i', $current);
+
+  // Iterate and generate dates until we reach the end
+  while (TRUE) {
+    // Generate the next date
+    $next = strtotime("{$occurrence} {$weekday} of {$m} {$y} {$time}", $current);
+
+    $current = $next;
+    $m = date('F', strtotime("first day of next month", $current));
+    $y = date('Y', strtotime("first day of next month", $current));
+
+    // Make sure date is in the future, if the settings dictate that
+    if (!node_recur_allow_past_dates($node->type) && $next < REQUEST_TIME) {
+      continue;
+    }
+
+    // See if this date puts us past the limit
+    if ($next > $until) {
+      break;
+    }
+
+    $dates[] = $current;
+  }
+
+  return $dates;
+}
+
+/**
+ * Generate an array of recurring dates based on days
+ * 
+ * @param $node
+ *   The node that's being recurred
+ * @param $date
+ *   The initial starting date belonging to the node that will be recurring.
+ *   Can be in string or numeric format.
+ * @param $days
+ *   An array of days (monday, tuesday, etc)
+ * @param $until
+ *   The date to recur until. Can be in string or numeric format.
+ * @param $offset
+ *   The amount of days the $days should be offset by, ie if $days = 'monday',
+ *   and offset = 2, $days becomes 'wednesday'. This is used to calculate 
+ *   end dates that are N days apart from the start dates.
+ * @return
+ *   An array of timestamps
+ */
+function node_recur_generate_dates_days($node, $date, $days, $until, $offset = NULL) {
+  $dates = array();
+  
+  // Convert date and until date to timestamp, if needed
+  $date = is_string($date) ? strtotime($date) : $date;
+  $until = is_string($until) ? strtotime($until) : $until;
+  
+  // Determine the hour of the date
+  $hour = date('G', $date);
+  
+  // Move the date back based on the offset
+  if ($offset) {
+    $date = $date - ($offset * 86400);
+  }
+  
+  // Make sure we have valid timestamps
+  if (!is_numeric($date) || !is_numeric($until)) {
+    return FALSE;
+  }
+  
+  // Make sure the until is ahead of the date
+  if ($date >= $until) {
+    return FALSE;
+  }
+  
+  // Track the current date
+  $current = $date;
+  
+  // Determine which day to start with which would be the closest
+  // "next" day, ie, depending on the initial date, next friday
+  // may be sooner than next monday.
+  $first_day = NULL;
+  foreach ($days as $day) {
+    // Determine how many days until the next "day"
+    $z = date('z', strtotime("next {$day}", $current));
+    if (!$first_day || $z < $first_day) {
+      $first_day = $z;
+    }
+  }
+
+  // Iterate and generate dates until we reach the end
+  while (TRUE) {
+    foreach ($days as $day) {
+      // Determine how many days until the next "day"
+      $next_day = date('z', strtotime("next {$day}", $current));
+      $days_apart = $next_day - date('z', $current);
+
+      // If days apart is negative, we've jumped to a new year
+      if ($days_apart < 0) {
+        // Use 366 instead of 365 because the first day is 1, not 0
+        $days_apart += 366;
+      }
+      
+      // Apply the day differential
+      $current += ($days_apart * 86400);
+      
+      // Make sure the hours match, to avoid DST issue
+      $current_hour = date('G', $current);
+      if ($current_hour != $hour) {
+        // Adjust to match
+        $current += (($hour - $current_hour) * 3600);
+      }
+      
+      // See if this date puts us past the limit
+      if ($current > $until) {
+        break 2;
+      }
+      
+      // Apply the offset, if one
+      $date_to_use = $current;
+      if ($offset) {
+        $date_to_use = $current + ($offset * 86400);
+      }
+      
+      // Make sure date is in the future, if the settings dictate that
+      if (!node_recur_allow_past_dates($node->type) && $date_to_use < REQUEST_TIME) {
+        continue;
+      }
+      
+      // See if we have to skip until we use the first day
+      if ($first_day && ($first_day != $next_day) && $first_day > $next_day) {
+        continue;
+      }
+      $first_day = NULL;
+      
+      $dates[] = $date_to_use;
+    }
+  }
+
+  return $dates;
+}
+
+/**
+ * Generate dates from a form state
+ * 
+ * @return
+ *   An array of start and end dates, keyed by start and
+ *   end
+ */
+function node_recur_generate_dates_from_form($node, $form_state) {
+  // Extract the option
+  $option = $form_state['values']['option'];
+  // Extract the days
+  $days = array();
+  foreach ($form_state['values']['days'] as $day => $value) {
+    if ($value) {
+      $days[] = $day;
+    }
+  }
+  // Extract the frequency
+  $frequency = $form_state['values']['frequency'];
+  // Extract the period
+  $period = $form_state['values']['period'];
+  // Extract the occurrence
+  $occurrence = $form_state['values']['occurrence'];
+  // Extract the weekday
+  $weekday = $form_state['values']['weekday'];
+  // Extract the until date
+  $until = strtotime($form_state['values']['until']);
+  // Move until date to 1 minute before midnight
+  $until += 86399;
+  // Extract weekend toggle
+  $weekends = !$form_state['values']['exclude_weekends'];
+  // Get the initial dates
+  $start_date = node_recur_get_node_date_field_value($node);
+  $end_date = node_recur_get_node_date_field_value($node, FALSE);
+  // Initalize
+  $start_dates = array();
+  $end_dates = array();
+  
+  // Generate the start dates
+  if ($start_date) {  
+    if ($option == 'days') {
+      $start_dates = node_recur_generate_dates_days($node, $start_date, $days, $until);
+    }
+    else if ($option == 'rules') {
+      $start_dates = node_recur_generate_dates_rule($node, $start_date, $frequency, $period, $until, $weekends);
+    }
+    else if ($option == 'monthly') {
+      $start_dates = node_recur_generate_dates_monthly($node, $start_date, $occurrence, $weekday, $until);
+    }
+  }
+  
+  // Generate the end dates
+  if ($end_date) {
+    // Determine if the start and end dates are different days
+    $days_apart = NULL;
+    if ($start_date) {
+      if (date('j', strtotime($start_date)) != date('j', strtotime($end_date))) {
+        // Determine the amount of days
+        $days_apart = floor((strtotime($end_date) - strtotime($start_date)) / 86400); 
+        // Adjust the until date
+        $until += ($days_apart * 86400);
+      }
+    }
+    if ($option == 'days') {
+      $end_dates = node_recur_generate_dates_days($node, $end_date, $days, $until, $days_apart);
+    }
+    else if ($option == 'rules') {
+      $end_dates = node_recur_generate_dates_rule($node, $end_date, $frequency, $period, $until, $weekends);
+    }
+    else if ($option == 'monthly') {
+      $end_dates = node_recur_generate_dates_monthly($node, $end_date, $occurrence, $weekday, $until);
+    }
+  }
+  
+  // Allow other modules to alter the dates
+  $dates = array(
+    'start' => $start_dates,
+    'end' => $end_dates,
+  );
+  $variables = array(
+    'node' => $node,
+    'start_date' => $start_date,
+    'end_date' => $end_date,
+    'option' => $option,
+    'until' => $until,
+  );
+  if ($option == 'days') {
+    $variables['days'] = $days;
+  }
+  if ($option == 'rules') {
+    $variables += array(
+      'frequency' => $frequency,
+      'period' => $period,
+      'weekends' => $weekends,
+    );
+  }
+  if ($option == 'monthly') {
+    $variables += array(
+      'occurrence' => $occurrence,
+      'weekday' => $weekday,
+    );
+  }
+  drupal_alter('node_recur_dates', $dates, $variables);
+  
+  return $dates;
+}
+
+/**
+ * Validation handler for the node recur form on the node form
+ */
+function node_recur_node_form_validate(&$form, &$form_state) {
+  module_load_include('inc', 'node_recur', 'node_recur.pages');
+  node_recur_node_recur_form_validate($form, $form_state);
+}
+
+/**
+ * Submit handler for the node recur form on the node form
+ */
+function node_recur_node_form_submit(&$form, &$form_state) {
+  module_load_include('inc', 'node_recur', 'node_recur.pages');
+  
+   // If option is set to nothing, then end here
+  if ($form_state['values']['option'] == 'none') {
+    return;
+  }
+  
+  // Extract the node
+  $node = $form_state['node'];
+  
+  // Generate dates
+  $dates = node_recur_generate_dates_from_form($node, $form_state);
+
+  // Store the dates
+  $form['#start_dates'] = $dates['start'];
+  $form['#end_dates'] = $dates['end'];
+  
+  // Store the node
+  $form['#node'] = $node;
+  
+  // Use the normal submit handler
+  node_recur_node_recur_confirm_submit($form, $form_state);
+}
+
+/**
+ * Helper function to display a start and end time together
+ * 
+ * @param $start
+ *   A start datetime or timestamp
+ * @param $end
+ *   An end datetime or timestamp
+ * @param $format
+ *   The format type to use, sent to format_date()
+ * @return
+ *   A string of formatted dates
+ */
+function node_recur_format_date($start, $end = NULL, $format = 'long') {
+  $string = '';
+  
+  // Convert start to timestamp, if needed, then format
+  $start = is_string($start) ? strtotime($start) : $start;
+  $start = format_date($start, $format);
+  $string .= $start;
+  
+  // Convert end to timestamp, if needed, then format
+  if ($end) {
+    $end = is_string($end) ? strtotime($end) : $end;
+    $end = format_date($end, $format);
+    if ($start != $end) {
+      $string .= ' - ' . $end;
+    }
+    else {
+      $string .= ' (' . t('All day') . ')';
+    }
+  }
+  
+  return $string;
+}

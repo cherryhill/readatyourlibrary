@@ -1,0 +1,39 @@
+name = Openbadging Issuer
+description = This module create a entity type for badge issuer.
+core = 7.x
+package = openbadging
+php = 5.2.4
+version = 7.x-1.0
+project = openbadging_issuer
+dependencies[] = openbadging
+dependencies[] = entity
+dependencies[] = features
+dependencies[] = link
+dependencies[] = options
+dependencies[] = taxonomy
+features[openbadging_types][] = issuer_information
+features[features_api][] = api:1
+features[field][] = openbadging-issuer_information-field_badge_entity_program
+features[field][] = openbadging-issuer_information-field_issuer_contact
+features[field][] = openbadging-issuer_information-field_issuer_org
+features[field][] = openbadging-issuer_information-field_issuer_origin
+features[user_permission][] = create issuer_information openbadging
+features[user_permission][] = delete any issuer_information openbadging
+features[user_permission][] = delete own issuer_information openbadging
+features[user_permission][] = edit any issuer_information openbadging
+features[user_permission][] = edit own issuer_information openbadging
+features[user_permission][] = view issuer_information openbadging
+
+; Information added by drupal.org packaging script on 2013-05-27
+version = "7.x-3.2"
+core = "7.x"
+project = "OpenBadging"
+datestamp = "1369659662"
+
+
+; Information added by drupal.org packaging script on 2013-10-21
+version = "7.x-3.3"
+core = "7.x"
+project = "OpenBadging"
+datestamp = "1382368983"
+

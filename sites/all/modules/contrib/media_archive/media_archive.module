@@ -1,0 +1,89 @@
+<?php
+
+/**
+ *  @file
+ *  The media_archive/media_archive.module file.
+ *
+ *  Media: Archive provides a stream wrapper and formatters for videos provided
+ *  by Archive, available at http://archive.org/.
+ */
+
+// A registry of variable_get defaults.
+include_once DRUPAL_ROOT . '/' . drupal_get_path('module', 'media_archive') . '/includes/media_archive.variables.inc';
+
+// Hooks and callbacks for integrating
+// with File Entity module for display.
+include_once DRUPAL_ROOT . '/' . drupal_get_path('module', 'media_archive') . '/includes/media_archive.formatters.inc';
+
+/**
+ * Implements hook_media_internet_providers().
+ */
+function media_archive_media_internet_providers() {
+  $info['MediaInternetArchiveHandler'] = array(
+    'title' => t('Archive.org'),
+  );
+
+  return $info;
+}
+
+/**
+ * Implements hook_stream_wrappers().
+ */
+function media_archive_stream_wrappers() {
+  return array(
+    'archive' => array(
+      'name' => t('Archive.org videos'),
+      'class' => 'MediaArchiveStreamWrapper',
+      'description' => t('Videos provided by Archive.org.'),
+      'type' => STREAM_WRAPPERS_READ_VISIBLE,
+    ),
+  );
+}
+
+/**
+ *  Implements hook_theme().
+ */
+function media_archive_theme($existing, $type, $theme, $path) {
+  return array(
+    'media_archive_video' => array(
+      'variables' => array('uri' => NULL, 'options' => array()),
+      'file' => 'media_archive.theme.inc',
+      'path' => $path . '/includes/themes',
+      'template' => 'media-archive-video',
+    ),
+  );
+}
+
+/**
+ * Implements hook_file_mimetype_mapping_alter().
+ *
+ * Regster the video/archive mimetype.
+ */
+function media_archive_file_mimetype_mapping_alter(&$mapping) {
+  $mapping['mimetypes'][] = 'video/archive';
+  $mapping['mimetypes'][] = 'image/archive';
+}
+
+/**
+ * Implements hook_file_default_types_alter().
+ *
+ * Adds the video/archive fake mimetype to video files.
+ */
+function media_archive_file_default_types_alter(&$types) {
+  $types['video']->mimetypes[] = 'video/archive';
+  $types['image']->mimetypes[] = 'image/archive';
+}
+
+/**
+ * Implements hook_ctools_plugin_api().
+ */
+function media_archive_ctools_plugin_api($owner, $api) {
+  static $api_versions = array(
+    'file_entity' => array(
+      'file_default_displays' => 1,
+    ),
+  );
+  if (isset($api_versions[$owner][$api])) {
+    return array('version' => $api_versions[$owner][$api]);
+  }
+}

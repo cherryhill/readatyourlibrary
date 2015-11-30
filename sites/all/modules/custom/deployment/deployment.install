@@ -1,0 +1,68 @@
+<?php
+/**
+ * Implements hook_install().
+ */
+function deployment_install() {
+}
+
+/**
+ * Implements hook_update_dependencies().
+ */
+function deployment_update_dependencies() {
+  $dependencies = array();
+
+  return $dependencies;
+}
+
+
+/**
+ * Helper function to bulk enable modules.
+ *
+ * @param $modules
+ */
+function deployment_module_enable($modules) {
+  return $modules_enabled = module_enable($modules, TRUE);
+}
+
+/**
+ * Helper function to bulk uninstall modules.
+ *
+ * @param $modules
+ */
+function deployment_module_uninstall($modules) {
+  $response = module_disable($modules, true);
+  drupal_uninstall_modules($modules);
+  drupal_flush_all_caches();
+  return $response;
+}
+
+/**
+ * Helper function to bulk revert features.
+ *
+ * @param $modules
+ */
+function deployment_features_revert($features) {
+  drupal_flush_all_caches();
+  features_revert($features);
+  drupal_flush_all_caches();
+}
+
+
+/**
+ * Enable View feature for Pervious year data and booklist
+ */
+function deployment_update_8110(&$sandbox) {
+  $modules = array(
+    'view_previous_year_data',
+    'view_booklist',
+  );
+  $messages = array();
+  $modules_enabled = module_enable($modules, TRUE);
+  if($modules_enabled) {
+    $messages[] = implode(", ", $modules) . t(' modules have all been enabled.');
+  } else {
+    throw new DrupalUpdateException('Something went wrong; A dependency was missing.');
+  }
+  drupal_flush_all_caches();
+}
+

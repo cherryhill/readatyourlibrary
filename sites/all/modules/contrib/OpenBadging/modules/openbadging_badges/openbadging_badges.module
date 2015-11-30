@@ -1,0 +1,454 @@
+<?php
+
+/**
+ * @file
+ * Code for the openbadging_badges feature.
+ */
+include_once 'openbadging_badges.features.inc';
+
+/**
+ * Implementation of hook_init()
+ * for include css file file. 
+ */
+function openbadging_badges_init() {
+  drupal_add_css(drupal_get_path('module', 'openbadging_badges') . '/css/openbadging_badges_view.css');
+}
+
+/**
+ * Implementation of hook_menu_alter().
+ * To call function on openbadging page callback.
+ * @param type $callback 
+ */
+function openbadging_badges_menu_alter(&$callback) {
+  $callback['openbadgings/autocomplete']['page callback'] = 'openbadging_badges_user_page';
+}
+
+/**
+ * Stores nid on place of openbadging ID
+ * @param type $string 
+ */
+function openbadging_badges_user_page($string = '') {
+  $openbadgings = achievements_load(); // MmmMMmMm, gooOoaaAaalLLlsss.
+  array_walk($openbadgings, 'openbadgings_autocomplete_search', $string);
+  drupal_json_output(array_filter($openbadgings));
+}
+
+/**
+ * Implementation of hook_achievements_info_alter()
+ * Add badges through interface. 
+ * @global type $base_url
+ * @param type $result 
+ */
+function openbadging_badges_achievements_info_alter(&$result) {
+  global $base_url;
+  $openbadging = array();
+  $query = new EntityFieldQuery;
+  $results = $query
+    ->entityCondition('entity_type', 'openbadging')
+    ->propertyCondition('type', 'badges')
+    ->execute();
+  if (!empty($results['openbadging'])) {
+    $openbadgings = entity_load('openbadging', array_keys($results['openbadging']));
+  }
+  foreach ($openbadgings as $key => $value) {
+		$file_dir_path = '/'.variable_get('file_public_path', conf_path() . '/files').'/';
+		$unlocked_image_path = explode($file_dir_path, drupal_realpath($value->field_badge_entity_unlock_image['und'][0]['uri']));
+		$locked_image = '';
+		$locked_image_path = array();
+		if(isset($value->field_badge_entity_lock_image['und'][0]['filename'])){
+			$locked_image_path = explode($file_dir_path, drupal_realpath($value->field_badge_entity_lock_image['und'][0]['uri']));
+			$locked_image = $base_url . $file_dir_path.'styles/75_75/public/' . $locked_image_path[1];
+	  }
+    $result[$value->bid] = array(
+      'version' => $value->field_badge_entity_version['und'][0]['safe_value'],
+      'title' => $value->title,
+      'images' => array(
+        'unlocked' => $base_url . $file_dir_path.'styles/75_75/public/' . $unlocked_image_path[1],
+        'locked' => $locked_image,
+      ),
+      'description' => $value->field_badge_entity_description['und'][0]['value'],
+      'criteria' => $value->field_badge_entity_criteria['und'][0]['url'],
+    );
+  }
+}
+
+/**
+ *
+ * @param string $form
+ * @param type $form_state
+ * @param type $form_id
+ * Hide default field Title for creating badge.
+ * Add search by keyword place holder text for search views.
+ */
+function openbadging_badges_form_alter(&$form, &$form_state, $form_id) {
+  $max_length = 128;
+
+  if ($form_id == 'openbadging_form' && $form['#bundle'] == 'badges') {
+    unset($form['title']);
+    array_unshift($form['actions']['submit']['#submit'], "openbadging_badges_title_submit");
+
+    //badge description limit.
+    $form['#validate'][] = 'openbadging_badges_description_validate';
+  }
+  //openbadgings give ,user by admin form
+  if ($form_id == 'openbadgings_settings') {
+    $form['openbadgings_manual']['actions']['openbadgings_manual_give']['#submit'][] = 'openbadging_create_unique_badge_images_user';
+  }
+}
+
+/**
+ * To restrict badges description limit not more than 128 charactor.
+ * @param type $form
+ * @param type $form_state 
+ */
+function openbadging_badges_description_validate($form, $form_state) {
+  if ($form_state['clicked_button']['#value'] != 'Delete') {
+    $str = $form['field_badge_entity_description']['und'][0]['value']['#value'];
+    if (strlen($str) > 128) {
+      form_set_error('limit', "Description should not more than 128 characters");
+    }
+  }
+
+  if (arg(1) == 'add' && arg(2) == 'badges') {
+    if (is_numeric($form_state['values']['field_badge_entity_program']['und']['0']['tid'])) {
+      $program = taxonomy_term_load($form_state['values']['field_badge_entity_program']['und']['0']['tid']);
+    }
+    if (is_numeric($form_state['values']['field_badge_entity_year']['und']['0']['tid'])) {
+      $year = taxonomy_term_load($form_state['values']['field_badge_entity_year']['und']['0']['tid']);
+    }
+    if (is_numeric($form_state['values']['field_badge_entity_type']['und']['0']['tid'])) {
+      $type = taxonomy_term_load($form_state['values']['field_badge_entity_type']['und']['0']['tid']);
+    }
+
+    if ($program->name && $year->name && $type->name) {
+      $title = $program->name . ' ' . $year->name . ' ' . $type->name;
+      $result = db_select('openbadging', 'o')
+        ->fields('o', array('bid'))
+        ->condition('title', $title, '=')
+        ->condition('type', 'badges', '=')
+        ->execute()
+        ->fetchAssoc();
+      if (isset($result['bid']) && is_numeric($result['bid'])) {
+        form_set_error('badge exist', "Badge exist on title " . $title);
+      }
+    }
+  }
+}
+
+/**
+ *
+ * @param string $form
+ * @param type $form_state
+ * this function create a seprate image for user when badge given by admin using admin form.
+ */
+function openbadging_create_unique_badge_images_user($form, &$form_state) {
+
+  $bid = $form['openbadgings_manual']['openbadgings_manual_openbadging']['#value'];
+  $uid = $form['openbadgings_manual']['openbadgings_manual_user']['#value'];
+  if (!is_numeric($uid)) {
+    $uid_from_name = user_load_by_name($uid);
+    $uid = $uid_from_name->uid;
+  }
+  $path_badge = entity_load('openbadging', array($bid));
+  $path_key = key($path_badge);
+  $path_array = $path_badge[$path_key];
+  $absoult_path_badge = file_create_url($path_array->field_badge_entity_unlock_image['und'][0]['uri']);
+  $real_path = drupal_realpath($path_array->field_badge_entity_unlock_image['und'][0]['uri']);
+  openbadging_create_unique_badge_image_user($absoult_path_badge, $uid, $real_path, $bid);
+}
+
+/**
+ * multi-select supportable to entity refrence 
+ * @param string $info 
+ */
+function openbadging_badges_field_widget_info_alter(&$info) {
+  if (module_exists('multiselect') && module_exists('entityreference')) {
+    if (isset($info['multiselect'])) {
+      $info['multiselect']['field types'][] = 'entityreference';
+    }
+  }
+}
+
+/**
+ * Change the title of the badge
+ * Badge name is combination of tree taxonomies(Program, Year, Badge Type)
+ * @param type $form
+ * @param type $form_state 
+ */
+function openbadging_badges_title_submit($form, &$form_state) {
+  if (is_numeric($form_state['values']['field_badge_entity_program']['und']['0']['tid'])) {
+    $program = taxonomy_term_load($form_state['values']['field_badge_entity_program']['und']['0']['tid']);
+  }
+  if (is_numeric($form_state['values']['field_badge_entity_year']['und']['0']['tid'])) {
+    $year = taxonomy_term_load($form_state['values']['field_badge_entity_year']['und']['0']['tid']);
+  }
+  if (is_numeric($form_state['values']['field_badge_entity_type']['und']['0']['tid'])) {
+    $type = taxonomy_term_load($form_state['values']['field_badge_entity_type']['und']['0']['tid']);
+  }
+  if ($program->name && $year->name && $type->name) {
+    $form_state['values']['title'] = $program->name . ' ' . $year->name . ' ' . $type->name;
+  }
+}
+
+/**
+ * Implementation of hook_node_delete()
+ * @param type $node 
+ */
+function openbadging_badges_openbadging_delete($openbadging_id) {
+  db_delete('achievement_unlocks')
+    ->condition('achievement_id', $openbadging_id->bid)
+    ->execute();
+  db_delete('achievement_totals')
+    ->condition('achievement_id', $openbadging_id->bid)
+    ->execute();
+}
+
+/**
+ * Implementation of hook_views_handlers().
+ */
+function openbadging_badges_views_handlers() {
+  return array(
+    'info' => array(
+      'path' => drupal_get_path('module', 'openbadging_badges'),
+    ),
+  );
+}
+
+/**
+ * Display block info for "Badge Awarded Users" and "User Earned Badges" views.
+ * @global type $base_url
+ * @return array 
+ */
+function openbadging_badges_block_info() {
+  global $base_url;
+  $blocks = array(
+    'awarded_users_block' => array(
+      'info' => t('Badge Awarded Users '),
+      'region' => 'content',
+      'visibility' => BLOCK_VISIBILITY_NOTLISTED,
+      'cache' => DRUPAL_NO_CACHE,
+    ),
+    'earned_badges_block' => array(
+      'info' => t('User Earned Badges '),
+      'region' => 'content',
+      'visibility' => BLOCK_VISIBILITY_NOTLISTED,
+      'cache' => DRUPAL_NO_CACHE,
+    ),
+  );
+  return $blocks;
+}
+
+/**
+ * Block view for and apply condition for views.
+ * @global type $user
+ * @param type $delta
+ * @return type 
+ */
+function openbadging_badges_block_view($delta = '') {
+  global $user;
+  $block = array();
+  switch ($delta) {
+    case 'awarded_users_block':
+      $openbadging_status = openbadging_badges_bundle_type_existence(arg(1));
+      if (arg(0) == 'openbadging' && arg(1) != 'add' && !arg(2)) {
+        $block['subject'] = NULL;
+        $block['content'] = $openbadging_status ? openbadging_badges_awarded_users_page() : NULL;
+      }
+      break;
+    case 'earned_badges_block':
+
+      if (arg(0) == 'user' && $user->uid > 0 && !arg(2)) {
+        $block['subject'] = NULL;
+        $block['content'] = openbadging_badges_earned_badges_page();
+      }
+      break;
+  }
+  return $block;
+}
+
+/**
+ * Call view in ncustom block.
+ * @return type 
+ */
+function openbadging_badges_earned_badges_page() {
+  $view1 = views_get_view('earned_badges');
+  $view2 = views_embed_view('earned_badges', 'block', arg(1));
+  $title = $view1->get_title();
+  return theme('openbadging_badges_earned_badges_view', array('title' => $title, 'view' => $view2));
+}
+
+/**
+ * Call view in ncustom block.
+ * @return type 
+ */
+function openbadging_badges_awarded_users_page() {
+  $view1 = views_get_view('awarded_users');
+  $view2 = views_embed_view('awarded_users', 'block', arg(1));
+  $title = $view1->get_title();
+  return theme('openbadging_badges_awarded_users_view', array('title' => $title, 'view' => $view2));
+}
+
+/**
+ * Find out issuer information on the bases of tid
+ * @param type $tid
+ * @return type 
+ */
+function openbadging_badges_badge_issuer_information($tid) {
+  $issuer_id = db_select('field_data_field_badge_entity_program', 'fbp');
+  $issuer_id->condition('fbp.field_badge_entity_program_tid', $tid, '=')
+    ->fields('fbp', array('bundle', 'entity_id'));
+  $id = $issuer_id->execute()->fetchAll();
+  //print_r($id); die;
+  foreach ($id as $key => $value) {
+    if ($value->bundle == 'issuer_information') {
+      return $value->entity_id;
+    }
+  }
+}
+
+/**
+ * Bundle existance on the bases of badge id.
+ * @param type $bid
+ * @return boolean 
+ */
+function openbadging_badges_bundle_type_existence($bid) {
+  $openbadging_id = db_select('openbadging', 'aui');
+  $openbadging_id->condition('aui.bid', $bid, '=')
+    ->fields('aui', array('type'));
+  $type = $openbadging_id->execute()->fetchAll();
+  if ($type) {
+    if ($type[0]->type == 'badges') {
+      return true;
+    } else {
+      return false;
+    }
+  }
+}
+
+/**
+ * 
+ * @param type $bid
+ * @param type $uid
+ * @return type 
+ */
+function openbadging_badges_user_exist_to_badge($bid, $uid) {
+  $badge_id = db_select('achievement_unlocks', 'au')
+    ->condition('au.achievement_id', $bid, '=')
+    ->condition('au.uid', $uid, '=')
+    ->fields('au', array('achievement_id'));
+  $badge = $badge_id->execute()->fetchAll();
+  if ($badge) {
+    return TRUE;
+  } else {
+    return FALSE;
+  }
+}
+
+/**
+ * Theming for views.
+ * @return type 
+ */
+function openbadging_badges_theme($existing, $type, $theme, $path) {
+  return array(
+    'openbadging_teaser_view' => array(
+      'variables' => array(
+        'openbadging' => NULL,
+      ),
+      'template' => 'openbadgings-teaser-view',
+    ),
+    'openbadging_full_view' => array(
+      'variables' => array(
+        'openbadging' => NULL,
+      ),
+      'template' => 'openbadgings-full-view',
+    ),
+    'openbadging_popup_view' => array(
+      'variables' => array(
+        'openbadging' => NULL,
+      ),
+      'template' => 'openbadgings-popup-view',
+    ),
+    'openbadging_badges_earned_badges_view' => array(
+      'variables' => array(
+        'title' => NULL,
+        'view' => NULL,
+      ),
+      'template' => 'openbadging-badges-earned-badges-view'
+    ),
+    'openbadging_badges_awarded_users_view' => array(
+      'variables' => array(
+        'title' => NULL,
+        'view' => NULL,
+      ),
+      'template' => 'openbadging-badges-awarded-users-view'
+    ),
+  );
+}
+
+/*
+ * This function create a duplicate image with metadata for user 
+ */
+function openbadging_create_unique_badge_image_user($path, $uid, $real_path, $bid) {
+  global $base_url;
+  $assertion_path = $base_url . '/assertions/' . $bid . '/' . $uid;
+  $path = 'http://beta.openbadges.org/baker?assertion=' . $assertion_path;
+  $image_name_extension = explode('.png', $real_path);
+  $new_path = $image_name_extension[0] . '-' . $uid . '.png';
+
+  $image_cach_path = explode('default/files/', $real_path);
+  $name_cache = explode('.png', $image_cach_path[1]);
+  $catch_path_110 = $image_cach_path[0] . 'default/files/styles/110_110/public/' . $name_cache[0] . '-' . $uid . '.png';
+  $catch_path_200 = $image_cach_path[0] . 'default/files/styles/200_200/public/' . $name_cache[0] . '-' . $uid . '.png';
+  
+  for($i=0; $i<5; $i++){
+	$return_status = copy($path, $new_path);
+  $return_status_second = copy($path, $catch_path_110);
+   if($return_status && $return_status_second){
+	  break;
+	 }
+	}
+  
+  if ($return_status && $return_status_second) {
+    return TRUE;
+  } else {
+    return FALSE;
+  }
+}
+
+/**
+ * For edit views images.
+ * expend uid with image uri.
+ * @param type $view 
+ */
+function openbadging_badges_views_pre_render(&$view) {
+  switch ($view->name) {
+    case 'earned_badges':
+      foreach ($view->result as $key => $value) {
+        $img_url = $value->field_field_badge_entity_unlock_image[0]['rendered']['#item']['uri'];
+        $url = explode('.png', $img_url);
+        //expand uid
+        $new_url = $url[0] . '-' . arg(1) . '.png';
+        //save new url in existing array
+        $value->field_field_badge_entity_unlock_image[0]['rendered']['#item']['uri'] = $new_url;
+      }
+      break;
+  }
+}
+
+/**
+ * function to implement hook_js_alter. Function used to remove beautytips js file from badge page.
+ */
+function openbadging_badges_js_alter(&$javascript) {
+  $path = drupal_get_path('module', 'beautytips');
+  $type = '';
+  if (arg(0) == 'openbadging' && is_numeric(arg(1)) && arg(2) == 'edit') {
+    $bid = check_plain(arg(1));
+    $entity = entity_load_single('openbadging', $bid);
+    $type = $entity->type;
+  }
+  if ((arg(0) == 'openbadging' && arg(1) == 'add' && arg(2) == 'badges') || $type == 'badges') {
+    unset($javascript[$path . '/js/jquery.bt.min.js']);
+    unset($javascript[$path . '/js/beautytips.min.js']);
+  }
+}
+

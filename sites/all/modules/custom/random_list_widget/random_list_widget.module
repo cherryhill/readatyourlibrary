@@ -1,0 +1,128 @@
+<?php
+
+/**
+ * @file
+ * Defines list field types that can be used with the Options module.
+ */
+
+/**
+ * Implements hook_menu().
+ */
+function random_list_widget_menu() {
+  $items = array();
+
+  $items['random-list-widget/text/%/%/%'] = array(
+    'type' => MENU_CALLBACK,
+    'access callback' => TRUE,
+    'page callback' => 'random_list_widget_get_random_field_value',
+    'page arguments' => array(2, 3, 4),
+    'delivery callback' => 'ajax_deliver',
+  );
+
+  return $items;
+}
+
+/**
+ * Implements hook_field_info().
+ */
+function random_list_widget_field_widget_info() {
+  $field_types = array(
+    'text',
+    'number_integer',
+    'number_decimal',
+    'number_float',
+  );
+  $settings = array(
+    'available_options' => '',
+  );
+  return array(
+    'random_list_widget_randomizer' => array(
+      'label' => t('Randomized text from list'),
+      'field types' => $field_types,
+      'behaviors' => array(
+        'multiple values' => FIELD_BEHAVIOR_DEFAULT,
+        'default value' => FIELD_BEHAVIOR_DEFAULT,
+      ),
+      'settings' => $settings,
+      'weight' => 2,
+    ),
+  );
+}
+
+
+/**
+ * Implements hook_field_widget_settings_form().
+ */
+function random_list_widget_field_widget_settings_form($field, $instance) {
+  $form = array();
+
+  $settings = &$instance['widget']['settings'];
+
+  $form['available_options'] = array(
+    '#type' => 'textarea',
+    '#title' => t('Available options'),
+    '#description' => t('A list of values that are used for randomizations. Enter one value per line. Do not use html or anything else as it will get stripped out.'),
+    '#default_value' => isset($settings['available_options']) ? $settings['available_options'] : '',
+    '#required' => TRUE,
+  );
+
+  return $form;
+}
+
+/**
+ * Implements hook_field_widget_form().
+ */
+function random_list_widget_field_widget_form(&$form, &$form_state, $field, $instance, $langcode, $items, $delta, $element) {
+  $options = _random_list_widget_get_available_options($instance);
+  $js_setting_class = "random_list_widget_text_{$field['field_name']}_{$instance['entity_type']}_{$instance['bundle']}";
+
+  $element['value'] = array(
+    '#type' => 'textfield',
+    '#title' => $instance['label'],
+    '#default_value' => isset($items[$delta]['value']) ? $items[$delta]['value'] : '',
+    '#attributes' => array(
+      'class' => array(
+        'random-list-widget',
+        $js_setting_class,
+      ),
+    ),
+    '#attached' => array(
+      'js' => array(
+        drupal_get_path('module', 'random_list_widget') . '/random_list_widget.js' => array(
+          'type' => 'file',
+        ),
+        array(
+          'data' => array($js_setting_class => $options),
+          'type' => 'setting',
+        ),
+      ),
+    ),
+  );
+  $element['randomized-text-regenerate'] = array(
+    '#type' => 'submit',
+    '#value' => t('Regenerate'),
+    '#attributes' => array(
+      'class' => array('random-list-widget-regenerate', $js_setting_class),
+    ),
+  );
+  return $element;
+}
+
+function random_list_widget_get_random_field_value($field_name, $entity_type, $bundle_name) {
+  $field_instance = field_info_instance($entity_type, $field_name, $bundle_name);
+  $options = _random_list_widget_get_available_options($field_instance);
+  return _random_list_widget_get_random_value($options);
+}
+
+function _random_list_widget_get_available_options($field_instance) {
+  $options_text = $field_instance['widget']['settings']['available_options'];
+  $options_array = explode("\n", $options_text);
+  foreach ($options_array as $key => $option) {
+    $options[$key] = check_plain($option);
+  }
+  return $options;
+}
+
+function _random_list_widget_get_random_value($list) {
+  return $list[array_rand($list, 1)];
+}

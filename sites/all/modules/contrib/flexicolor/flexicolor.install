@@ -1,0 +1,121 @@
+<?php
+
+
+/**
+ * @file flexicolor.install
+ * Flexicolor installation file
+ */
+
+/**
+ * Implementation of hook_install().
+ */
+function flexicolor_install() {
+
+}
+
+/**
+ * Implementation of hook_uninstall().
+ */
+function flexicolor_uninstall() {
+
+}
+
+/**
+ * Implementation of hook_schema().
+ */
+function flexicolor_schema() {
+  $schema = array();
+  
+  $schema['flexicolor_selector'] = array(
+    'description' => t('Store selector rules along with a default color for the rule'),
+    'fields' => array(
+      'fsid' => array(
+        'description' => t('The flexicolor selection rule ID'),
+        'type' => 'serial',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ),
+      'display_name' => array(
+        'description' => t('Display Name'),
+        'type' => 'varchar',
+        'length' => 128,
+        'not null' => TRUE,
+      ),
+      'selector' => array(
+        'description' => t('Selector'),
+        'type' => 'varchar',
+        'length' => 512,
+        'not null' => TRUE,
+      ),
+      'type' => array(
+        'description' => t('type of item being colored - can be one of background or text'),
+        'type' => 'varchar',
+        'length' => 20,
+        'not null' => TRUE,
+        'default' => 'background',
+      ),
+      'default_color' => array(
+        'description' => t('Default color for selector(s)'),
+        'type' => 'varchar',
+        'length' => 7,
+        'not null' => TRUE,
+      ),
+    ),
+    'primary key' => array(
+      'fsid',
+    ),
+  );
+  
+  $schema['flexicolor_preset'] = array(
+    'description' => t('Description of the preset'),
+    'fields' => array(
+      'fpid' => array(
+        'description' => t('Preset ID'),
+        'type' => 'serial',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ),
+      'display_name' => array(
+        'description' => t('Display Name'),
+        'type' => 'varchar',
+        'length' => 128,
+        'not null' => TRUE,
+      ),
+    ),
+    'primary key' => array(
+      'fpid',
+    ),
+  );
+  
+  $schema['flexicolor_preset_selector'] = array(
+    'description' => t('Create a preset based on the selectors'),
+    'fields' => array(
+      'fpid' => array(
+        'type' => 'int',
+        'size' => 'medium',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+      'fsid' => array(
+        'type' => 'int',
+        'size' => 'medium',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+      'color' => array(
+        'description' => t('Preset Selector Color'),
+        'type' => 'varchar',
+        'length' => 7,
+        'not null' => TRUE,
+      )
+    ),
+    'primary key' => array(
+      'fpid',
+      'fsid',
+    ),
+  );
+  
+  return $schema;
+}

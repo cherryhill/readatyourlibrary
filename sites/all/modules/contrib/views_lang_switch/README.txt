@@ -1,0 +1,1 @@
+Please see the project page at http://drupal.org/project/views_lang_switch

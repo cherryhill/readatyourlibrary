@@ -1,0 +1,28 @@
+<?php
+// $Id:$
+
+/**
+ * @file Allow an e-mail address to be used by more than one user account.
+ */
+
+/**
+ *  Implementation of hook_install().
+ */
+function sharedemail_install() {
+  $msg = t('WARNING: The e-mail address you are using, has already been registered on this site by another user. '.
+           'You should be aware that personal information such as password resets will be sent to this address. '.
+           'We strongly recommend changing your registered address to a different e-mail address. '.
+           'You can do this at any time from your account page when you login.');
+  variable_set('sharedemail_msg', $msg);
+
+  db_query("UPDATE {system} SET weight = -99 WHERE name = 'sharedemail'");
+
+  drupal_set_message(t('The Shared E-mail module has been installed'));
+}
+
+/**
+ * Implementation of hook_uninstall().
+ */
+function sharedemail_uninstall() {
+  variable_del('sharedemail_msg');
+}

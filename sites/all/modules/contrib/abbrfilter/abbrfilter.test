@@ -1,0 +1,49 @@
+<?php
+
+class AbbreviationFilterTestCase extends DrupalUnitTestCase {
+
+  public static function getInfo() {
+    return array(
+      'name' => 'Abbreviation Filter test',
+      'description' => 'Test that the abbreviation filter correctly parses HTML.',
+      'group' => 'AbbrFilter',
+    );
+  }
+
+  /**
+   * Test the HTML parsing.
+   */
+  function testAbbrFilter() {
+    $html_in = file_get_contents(drupal_get_path('module', 'abbrfilter') . '/sample-input.html');
+    $expected_output = file_get_contents(drupal_get_path('module', 'abbrfilter') . '/sample-output.html');
+
+    $list = array(
+      0 => array(
+        'id' => 1,
+        'abbrs' => 'VHS',
+        'replacement' => 'Video Home System',
+      ),
+      1 => array(
+        'id' => 2,
+        'abbrs' => 'PBR',
+        'replacement' => 'Pabst Blue Ribbon',
+      ),
+      2 => array(
+        'id' => 3,
+        'abbrs' => 'TB-IO',
+        'replacement' => 'This bar is over',
+      ),
+      3 => array(
+        'id' => 4,
+        'abbrs' => 'TCP/IP',
+        'replacement' => 'Transmission control protocol, internet protocol',
+      )
+    );
+
+    $output = _abbrfilter_perform_subs($html_in, $list);
+    $this->pass(check_plain($output));
+    $this->pass(check_plain($expected_output));
+
+    $this->assertTrue($output == $expected_output, t('HTML is correctly substituted.'));
+  }
+}

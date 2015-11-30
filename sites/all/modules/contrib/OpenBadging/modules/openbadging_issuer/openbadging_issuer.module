@@ -1,0 +1,31 @@
+<?php
+
+/**
+ * @file
+ * Code for the openbadging_issuer feature.
+ */
+include_once 'openbadging_issuer.features.inc';
+
+function openbadging_issuer_form_alter(&$form, &$form_state, $form_id) {
+  if ($form_id == 'openbadging_form' && $form['#bundle'] == 'issuer_information') {
+    if (isset($form['actions']['delete']['#value'])) {
+      unset($form['field_badge_entity_program']['und']);
+      $form['field_issuer_origin']['und'][0]['#description'] = t('Origin of the Issuer. This is the "protocol"://"host":"port" according to Open Badge Infrastructure (OBI) complaint.<br/><strong>you can not edit issuer program to edit please delete and create issuer infomation again.</strong>');
+    }
+    $form['#validate'][] = 'openbadging_issuer_information_existance_validation';
+  }
+}
+
+function openbadging_issuer_information_existance_validation($form, &$form_state) {
+  if (!isset($form_state['openbadging']->bid)) {
+    $program_id = $form_state['values']['field_badge_entity_program']['und'][0]['tid'];
+    $program = db_select('field_data_field_badge_entity_program', 'bp');
+    $program->condition('bp.field_badge_entity_program_tid', $program_id, '=');
+    $program->condition('bp.bundle', 'issuer_information', '=')
+      ->fields('bp', array('entity_id'));
+    $results = $program->execute()->fetchAll();
+    if (!empty($results)) {
+      form_set_error('limit', "Issuer information exist for this program.");
+    }
+  }
+}

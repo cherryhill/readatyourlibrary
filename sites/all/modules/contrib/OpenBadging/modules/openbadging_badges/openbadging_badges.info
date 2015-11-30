@@ -1,0 +1,69 @@
+name = openbadging Badges
+description = This module create a entity type for badges.
+core = 7.x
+package = openbadging
+php = 5.2.4
+version = 7.x-1.0
+project = openbadging_badges
+dependencies[] = openbadging_issuer
+dependencies[] = openbadging
+dependencies[] = achievements
+dependencies[] = date
+dependencies[] = date_popup
+dependencies[] = entity
+dependencies[] = entityreference
+dependencies[] = features
+dependencies[] = image
+dependencies[] = link
+dependencies[] = list
+dependencies[] = multiselect
+dependencies[] = options
+dependencies[] = taxonomy
+dependencies[] = views
+dependencies[] = views_ui
+features[openbadging_types][] = badges
+features[ctools][] = views:views_default:3.0
+features[features_api][] = api:1
+features[field][] = openbadging-badges-field_badge_entity_criteria
+features[field][] = openbadging-badges-field_badge_entity_description
+features[field][] = openbadging-badges-field_badge_entity_evidence
+features[field][] = openbadging-badges-field_badge_entity_expiration
+features[field][] = openbadging-badges-field_badge_entity_issued_date
+features[field][] = openbadging-badges-field_badge_entity_lock_image
+features[field][] = openbadging-badges-field_badge_entity_program
+features[field][] = openbadging-badges-field_badge_entity_recipients
+features[field][] = openbadging-badges-field_badge_entity_recommend
+features[field][] = openbadging-badges-field_badge_entity_type
+features[field][] = openbadging-badges-field_badge_entity_unlock_image
+features[field][] = openbadging-badges-field_badge_entity_version
+features[field][] = openbadging-badges-field_badge_entity_year
+features[field][] = openbadging-badges-field_hierarchy
+features[taxonomy][] = badge_recipient_
+features[taxonomy][] = badge_type
+features[taxonomy][] = program
+features[taxonomy][] = year
+features[user_permission][] = administer openbadging
+features[user_permission][] = administer openbadging types
+features[user_permission][] = create badges openbadging
+features[user_permission][] = delete any badges openbadging
+features[user_permission][] = delete own badges openbadging
+features[user_permission][] = edit any badges openbadging
+features[user_permission][] = edit own badges openbadging
+features[user_permission][] = view badges openbadging
+features[views_view][] = awarded_users
+features[views_view][] = earned_badges
+files[] = views_plugin_row_badge_view.inc
+
+; Information added by drupal.org packaging script on 2013-05-27
+version = "7.x-3.2"
+core = "7.x"
+project = "OpenBadging"
+datestamp = "1369659662"
+
+
+; Information added by drupal.org packaging script on 2013-10-21
+version = "7.x-3.3"
+core = "7.x"
+project = "OpenBadging"
+datestamp = "1382368983"
+

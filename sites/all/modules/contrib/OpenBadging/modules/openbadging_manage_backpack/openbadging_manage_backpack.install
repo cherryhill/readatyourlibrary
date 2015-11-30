@@ -1,0 +1,41 @@
+<?php
+
+// $Id openbadging_manage_backpack.install
+
+/**
+ * @file
+ * Install, update, and uninstall functions for the openbadging_manage_backpack module.
+ */
+
+/**
+ * Implements hook_install().
+ * this function creats two fields named backpack and privacy in 
+  table achievement_unlocks.
+ * default value of privacy is 0 means all earned badges are default public.
+ * default value of backpack is 1 means all earned badges are default in 
+  backpack.
+ */
+function openbadging_manage_backpack_install() {
+  /* db_add_field('achievement_unlocks', 'backpack', array(
+    'type' => 'int',
+    'length' => 60,
+    'not null' => TRUE,
+    'default' => 1,
+    )); */
+  /* db_add_field('achievement_unlocks', 'privacy', array(
+    'type' => 'int',
+    'length' => 60,
+    'not null' => TRUE,
+    'default' => 0,
+    )); */
+}
+
+/**
+ * Implements hook_uninstall().
+ * this function delete two fields named backpack and privacy from table achievement_unlocks.
+ */
+function openbadging_manage_backpack_uninstall() {
+  db_drop_field('achievement_unlocks', 'backpack');
+  db_drop_field('achievement_unlocks', 'privacy');
+}
+

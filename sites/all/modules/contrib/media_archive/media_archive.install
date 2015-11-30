@@ -1,0 +1,25 @@
+<?php
+
+/**
+ * @file
+ * Install, update and uninstall functions for the Media: Archive module.
+ */
+
+/**
+ * Implement hook_install().
+ */
+function media_archive_install() {
+  return array();
+}
+
+/**
+ * Implement hook_uninstall().
+ */
+function media_archive_uninstall() {
+  drupal_load('module', 'media_archive');
+
+  foreach (media_archive_variable_default() as $variable => $value) {
+    media_archive_variable_del($variable);
+  }
+  return array(array('success' => TRUE, 'query' => "Deleted all variables in the Media: Archive.org namespace."));
+}

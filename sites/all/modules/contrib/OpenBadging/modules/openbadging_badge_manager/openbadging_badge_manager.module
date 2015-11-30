@@ -1,0 +1,452 @@
+<?php
+
+/**
+ * @file
+ * Code for the openbadging_badge_manager feature.
+ */
+include_once 'openbadging_badge_manager.features.inc';
+
+/**
+ * Implementation of hook_init().
+ * include css file.
+ * calls on badge-manager link.
+ */
+function openbadging_badge_manager_init() {
+  drupal_add_css(drupal_get_path('module', 'openbadging_badge_manager') . '/openbadging_badge_manager.css');
+}
+
+/**
+ * Implementation of hook_action_info().
+ * create two action give badge and take badge.
+ */
+function openbadging_badge_manager_action_info() {
+  return array(
+    'openbadging_badge_manager_give_achievements' => array(
+      'type' => 'entity',
+      'label' => t('Award'),
+      'configurable' => FALSE,
+      'behavior' => array('insert_property'),
+    ),
+    'openbadging_badge_manager_take_achievements' => array(
+      'type' => 'entity',
+      'label' => t('Revoke'),
+      'configurable' => FALSE,
+      'behavior' => array('insert_property'),
+    ),
+  );
+}
+
+/*
+ * @param $entity
+ * @param $context
+ * this function calls when admin give openbadging to user.
+ */
+
+function openbadging_badge_manager_give_achievements($entity, $context) {
+  if (!isset($entity->type)) {
+		$user = user_load($entity->uid);
+    achievements_unlocked(arg(2), $entity->uid);
+    //create a unique badge image for user
+    $path_badge = entity_load('openbadging', array(arg(2)));
+    $path_key = key($path_badge);
+    $path_array = $path_badge[$path_key];
+    $absoult_path_badge = file_create_url($path_array->field_badge_entity_unlock_image['und'][0]['uri']);
+    $real_path = drupal_realpath($path_array->field_badge_entity_unlock_image['und'][0]['uri']);
+    $return = openbadging_create_unique_badge_image_user($absoult_path_badge, $entity->uid, $real_path, arg(2));
+    if ($return) {
+      //if we select a achievement assign to multiple user.
+      module_invoke_all('openbadging_badge_manager_give_amu', $entity, $context);
+      drupal_set_message(t($path_array->title.' awarded to '.$user->name.'.'));
+      
+    } else {
+      achievements_locked(arg(2), $entity->uid); // log error in db.
+      drupal_set_message(t('The badge '.$path_array->title.' could not be awarded to '.$user->name.'. You need to ensure Issuer information and Badge information is valid before you can issue a badge.'), 'error');
+    }
+  } else {
+    if ($entity->type == 'badges') {
+			$user = user_load(arg(2));
+      achievements_unlocked($entity->bid, arg(2));
+      //create a unique badge image for user
+      $path_badge = entity_load('openbadging', array($entity->bid));
+      $path_key = key($path_badge);
+      $path_array = $path_badge[$path_key];
+      $absoult_path_badge = file_create_url($path_array->field_badge_entity_unlock_image['und'][0]['uri']);
+      $real_path = drupal_realpath($path_array->field_badge_entity_unlock_image['und'][0]['uri']);
+      $return = openbadging_create_unique_badge_image_user($absoult_path_badge, arg(2), $real_path, $entity->bid);
+      if ($return) {
+        //if we select a user a assign multiple badge.
+        module_invoke_all('openbadging_badge_manager_give_mau', $entity, $context);
+        drupal_set_message(t($path_array->title.' awarded to '.$user->name.'.'));
+      } else {
+        achievements_locked($entity->bid, arg(2)); // and log error in data base.
+        drupal_set_message(t('The badge '.$path_array->title.' could not be awarded to '.$user->name.'. You need to ensure Issuer information and Badge information is valid before you can issue a badge.'), 'error');
+      }
+    }
+    if ($entity->type == 'main') {
+			$user = user_load($entity->uid);
+      achievements_unlocked(arg(2), $entity->uid);
+      //create a unique badge image for user
+      $path_badge = entity_load('openbadging', array(arg(2)));
+      $path_key = key($path_badge);
+      $path_array = $path_badge[$path_key];
+      $absoult_path_badge = file_create_url($path_array->field_badge_entity_unlock_image['und'][0]['uri']);
+      $real_path = drupal_realpath($path_array->field_badge_entity_unlock_image['und'][0]['uri']);
+      $return = openbadging_create_unique_badge_image_user($absoult_path_badge, $entity->uid, $real_path, arg(2));
+      if ($return) {
+        //if we select a openbadging assign to multiple user.
+        module_invoke_all('openbadging_badge_manager_give_amu', $entity, $context);
+        drupal_set_message(t($path_array->title.' awarded to '.$user->name.'.'));
+      } else {
+        achievements_locked(arg(2), $entity->uid); // and log error in data base.
+        drupal_set_message(t('The badge '.$path_array->title.' could not be awarded to '.$user->name.'. You need to ensure Issuer information and Badge information is valid before you can issue a badge.'), 'error');
+      }
+    }
+  }
+}
+
+/*
+ * @param $entity
+ * @param $context
+ * this function calls when admin take openbadging from user.
+ */
+
+function openbadging_badge_manager_take_achievements($entity, $context) {
+  if (!isset($entity->type)) {
+    achievements_locked(arg(2), $entity->uid);
+    //if we select a achievement take it from multiple user.
+    module_invoke_all('openbadging_badge_manager_take_amu', $entity, $context);
+    $path_badge = entity_load('openbadging', array(arg(2)));
+    $path_key = key($path_badge);
+    $path_array = $path_badge[$path_key];
+    $user = user_load($entity->uid);    
+    drupal_flush_all_caches();
+    drupal_set_message(t($path_array->title.' revoked to '.$user->name.'.'));
+  } else {
+    if ($entity->type == 'badges') {
+		achievements_locked($entity->bid, arg(2));
+		//if we select a user a and take multiple badge from him/her.
+		module_invoke_all('openbadging_badge_manager_take_mau', $entity, $context);
+		$path_badge = entity_load('openbadging', array($entity->bid));
+		$path_key = key($path_badge);
+		$path_array = $path_badge[$path_key];
+		$user = user_load(arg(2));    
+		drupal_flush_all_caches();
+		drupal_set_message(t($path_array->title.' revoked to '.$user->name.'.'));
+    }
+    if ($entity->type == 'main') {
+		//if we select a achievement take it from multiple user.
+		achievements_locked(arg(2), $entity->uid);
+		module_invoke_all('openbadging_badge_manager_take_amu', $entity, $context);
+		$path_badge = entity_load('openbadging', array(arg(2)));
+		$path_key = key($path_badge);
+		$path_array = $path_badge[$path_key];
+		$user = user_load($entity->uid);    
+		drupal_flush_all_caches();
+		drupal_set_message(t($path_array->title.' revoked to '.$user->name.'.'));
+    }
+  }
+  	
+}
+
+/**
+ *
+ * Implements hook_menu
+ * create link Badge Manager to admin menu.
+ * create two tab Manage badge and Manage Earners.
+ */
+function openbadging_badge_manager_menu() {
+  $items = array();
+  $items['admin/settings/badge-manager'] = array(
+    'title' => "Badge Manager",
+    'page callback' => 'drupal_goto',
+    'page arguments' => array('badge-manager'),
+    'description' => 'Manage Badges And Earners',
+    'access arguments' => array('access badge management'),
+  );
+  $items['badge-manager'] = array(
+    //'title' => t("Badge Manager"),
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('autocomplete_form_badges'),
+    'description' => 'Manage Badges And Earners',
+    'access arguments' => array('access badge management'),
+  );
+  $items['badge-manager/badges'] = array(
+    'title' => 'Manage Badges',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('autocomplete_form_badges'),
+    'description' => 'manage badges and earners.',
+    'access arguments' => array('access badge management'),
+    'type' => MENU_DEFAULT_LOCAL_TASK,
+    'context' => MENU_CONTEXT_PAGE | MENU_CONTEXT_INLINE,
+  );
+  $items['achivement-mb/user/autocomplete'] = array(
+    'title' => 'Autocomplete for users',
+    'page callback' => 'achievement_badge_manager_autocomplete',
+    'access arguments' => array('administer permissions'),
+    'type' => MENU_CALLBACK
+  );
+  $items['badge-manager/earners'] = array(
+    'title' => 'Manage Earners',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('autocomplete_form_earners'),
+    'description' => 'manage badges and earners.',
+    'access arguments' => array('access badge management'),
+    'type' => MENU_LOCAL_TASK,
+    'context' => MENU_CONTEXT_PAGE | MENU_CONTEXT_INLINE,
+  );
+  $items['achivement-mb/earner/autocomplete'] = array(
+    'title' => 'Autocomplete for badges',
+    'page callback' => 'openbadging_badge_manager_autocomplete_earners',
+    'access arguments' => array('access badge management'),
+    'type' => MENU_CALLBACK
+  );
+  return $items;
+}
+
+/*
+ * create autocomplete type form for badge manager.
+ */
+
+function autocomplete_form_badges() {
+  $form = array();
+
+  $form['badges'] = array(
+    '#title' => t('select user'),
+    '#type' => 'textfield',
+    '#description' => 'Search by first-name/last-name/Email-address.',
+    '#autocomplete_path' => 'achivement-mb/user/autocomplete',
+  );
+
+  $form['submit'] = array(
+    '#type' => 'submit',
+    '#value' => 'Next',
+  );
+  return $form;
+}
+
+/*
+ * badges form submit function.
+ */
+
+function autocomplete_form_badges_submit($form, &$form_state) {
+  $input = $form['badges']['#value'];
+  preg_match('~<(.*?)>~', $input, $output);
+  $id = $output[1];
+  $form_state['redirect'] = 'badge-manager/badges/' . $id;
+}
+
+/*
+ * create autocomplete type form for manage earners.
+ */
+
+function autocomplete_form_earners() {
+
+  $form = array();
+
+  $form['earners'] = array(
+    '#title' => t('select badge'),
+    '#type' => 'textfield',
+    '#description' => 'Search by badge title.',
+    '#autocomplete_path' => 'achivement-mb/earner/autocomplete',
+  );
+
+  $form['submit'] = array(
+    '#type' => 'submit',
+    '#value' => 'Next',
+  );
+  return $form;
+}
+
+/*
+ * manage earner form submit function.
+ */
+
+function autocomplete_form_earners_submit($form, &$form_state) {
+  $result = db_select('openbadging', 'a')
+    ->fields('a', array('bid'))
+    ->condition('title ', $form['earners']['#value'], '=')
+    ->execute()
+    ->fetchAll();
+  $form_state['redirect'] = 'badge-manager/earner/' . $result[0]->bid;
+}
+
+/*
+ * callback for badge manager form.
+ */
+
+function achievement_badge_manager_autocomplete($string) {
+  $matches = array();
+  $result = db_query("SELECT uid,name FROM {users} WHERE name LIKE '" . $string . "%'", array())->fetchAll();
+  // save the query to matches
+  foreach ($result as $row) {
+    $matches[$row->name . "<" . $row->uid . ">"] = check_plain($row->name);
+  }
+
+  // Return the result to the form in json
+  drupal_json_output($matches);
+}
+
+/*
+ * callback for manage earners form.
+ */
+
+function openbadging_badge_manager_autocomplete_earners($string) {
+  $matches = array();
+  $result = db_select('openbadging', 'a')
+    ->fields('a', array('title', 'bid'))
+    ->condition('title', db_like($string) . '%', 'LIKE')
+    ->condition('type', 'badges', '=')
+    ->execute();
+  global $user;
+  $issuer = profile2_load_by_user($user->uid);
+  $tmp = array();
+  foreach ($issuer['main']->field_badge_entity_program['und'] as $key1 => $value1) {
+    array_push($tmp, $value1['tid']);
+  }
+  // save the query to matches
+  foreach ($result as $row) {
+    if (!in_array('administrator', $user->roles)) {
+      $result1 = entity_load('openbadging', array($row->bid));
+      if (in_array($result1[$row->bid]->field_badge_entity_program['und'][0]['tid'], $tmp) && $result1[$row->bid]->status == 1) {
+        $matches[$row->title] = check_plain($row->title);
+      }
+    }
+    if (in_array('administrator', $user->roles)) {
+      $matches[$row->title] = check_plain($row->title);
+    }
+  }
+
+  // Return the result to the form in json
+  drupal_json_output($matches);
+}
+
+/*
+ * @params $bid(openbadging id).
+ * @params $uid(user id).
+ * this function check status of all badge according to selected user.
+ * @return boolean. 
+ */
+
+function openbadging_check_badge_awared($bid, $uid) {
+  $result = db_select('achievement_unlocks', 'u')
+    ->fields('u')
+    ->condition('achievement_id ', $bid, '=')
+    ->condition('uid ', $uid, '=')
+    ->execute()
+    ->fetchAll();
+  if (!empty($result)) {
+    return ('Awarded');
+  } else {
+    return ('Not Awarded');
+  }
+}
+
+/**
+ * Implement hook_block_info().
+ * @global type $base_url
+ * @return array 
+ */
+function openbadging_badge_manager_block_info() {
+  global $base_url;
+  $blocks = array(
+    'badge_manager' => array(
+      'info' => t('Badge manager block'),
+      'region' => 'featured',
+      'status' => 1,
+      'visibility' => BLOCK_VISIBILITY_NOTLISTED,
+      'cache' => DRUPAL_NO_CACHE,
+      'weight' => -20,
+    //'pages' => array('badge-manager', 'badge-manager/*'), 
+    ),
+    'badge_manager_content_earner' => array(
+      'info' => t('badge manager content for manage badge tab'),
+      'region' => 'content',
+      'status' => 1,
+      'visibility' => BLOCK_VISIBILITY_LISTED,
+      'cache' => DRUPAL_NO_CACHE,
+      'weight' => -17,
+      'pages' => 'badge-manager/earners',
+    ),
+    'badge_manager_upper_earner' => array(
+      'info' => t('badge manager content for manage badge tab'),
+      'region' => 'content',
+      'status' => 1,
+      'visibility' => BLOCK_VISIBILITY_LISTED,
+      'cache' => DRUPAL_NO_CACHE,
+      'weight' => -27,
+      'pages' => 'badge-manager/earners',
+    ),
+    'badge_manager_content_badges' => array(
+      'info' => t('badge manager content for manage badges tab'),
+      'region' => 'content',
+      'status' => 1,
+      'visibility' => BLOCK_VISIBILITY_NOTLISTED,
+      'cache' => DRUPAL_NO_CACHE,
+      'weight' => -17,
+    //'pages' => array('badge-manager', 'badge-manager/badges'), 
+    ),
+    'badge_manager_upper_badge' => array(
+      'info' => t('badge manager content upper for manage badges tab'),
+      'region' => 'content',
+      'status' => 1,
+      'visibility' => BLOCK_VISIBILITY_NOTLISTED,
+      'cache' => DRUPAL_NO_CACHE,
+      'weight' => -27,
+    //'pages' => array('badge-manager', 'badge-manager/badges'), 
+    ),
+  );
+  return $blocks;
+}
+
+/**
+ * Implement hook_block_view()
+ * @param type $delta
+ */
+function openbadging_badge_manager_block_view($delta = '') {
+  $block = array();
+  global $user;
+  switch ($delta) {
+    case 'badge_manager':
+      if ((arg(0) == 'badge-manager') || (arg(0) == 'badge-manager' && arg(1) != '')) {
+        $block['subject'] = 'Badge Manager';
+        $block['content'] = '<i>Badge manager allows you to award or revoke badges for earners and participants.<br/>
+To award or revoke single or multiple badges for a single user in this badge system, go to Manage badges and select the user by entering their complete email id.<br/>
+To award or revoke one badge for a single or multiple users in this badge system, go to Manage earners and select the badge by entering badge name in the auto complete search box.</i>';
+      }
+      break;
+    case 'badge_manager_content_earner':
+        $block['subject'] = NULL;
+        $block['content'] = 'You can also award or revoke single or multiple badges from a single user by changing the view to Manage Badges.';
+      break;
+    case 'badge_manager_upper_earner':
+        $block['subject'] = NULL;
+        $block['content'] = 'Award or revoke a single badge from single or multiple users. To select a badge enter the badge name in the Select badge field.';
+      break;
+    case 'badge_manager_content_badges':
+      if ((arg(0) == 'badge-manager' && arg(1) == '') || (arg(0) == 'badge-manager' && arg(1) == 'badges' && arg(2) == '')) {
+        $block['subject'] = NULL;
+        $block['content'] = 'You can also award or revoke a single badge from one or multiple users by changing the view to Manage Earners.';
+      }
+      break;
+    case 'badge_manager_upper_badge':
+      if ((arg(0) == 'badge-manager' && arg(1) == '') || (arg(0) == 'badge-manager' && arg(1) == 'badges' && arg(2) == '')) {
+        $block['subject'] = NULL;
+        $block['content'] = 'Award or revoke single or multiple badges for one user. To select a user enter their complete email address in the Select user field.';
+      }
+      break;
+  }
+  return $block;
+}
+
+/**
+ * Implements  hook_perm
+ * @return <type> 
+ */
+function openbadging_badge_manager_permission() {
+  return array(
+    'access badge management' => array(
+      'title' => t('access badge management'),
+      'description' => t('permission to access badge mangement.'),
+    ),
+  );
+}

@@ -1,0 +1,53 @@
+<?php
+/**
+ * @file
+ * Hooks for ief_dialog module.
+ */
+
+/**
+ * Implements hook_references_dialog_widgets().
+ */
+function ief_dialog_references_dialog_widgets() {
+  return array(
+    'inline_entity_form' => array(
+      'element_type' => 'textfield',
+      'dialog_form' => 'entityreference_autocomplete_dialog_form',
+      'views_query' => 'references_dialog_entityreference_views_query',
+      'type_callback' => 'references_dialog_entityreference_get_type',
+      'format' => '$label ($entity_id)',
+      'operations' => array(
+        'search' => array(
+          'function' => 'references_dialog_get_field_search_links',
+          'title' => t('Search Dialog'),
+        ),
+      ),
+    ),
+    'inline_entity_form_single' => array(
+      'element_type' => 'textfield',
+      'dialog_form' => 'entityreference_autocomplete_dialog_form',
+      'views_query' => 'references_dialog_entityreference_views_query',
+      'type_callback' => 'references_dialog_entityreference_get_type',
+      'format' => '$label ($entity_id)',
+      'operations' => array(
+        'search' => array(
+          'function' => 'references_dialog_get_field_search_links',
+          'title' => t('Search Dialog'),
+        ),
+      ),
+    ),
+  );
+}
+
+/**
+ * Implements hook_inline_entity_form_reference_form_alter().
+ */
+function ief_dialog_inline_entity_form_reference_form_alter(&$reference_form, &$form_state) {
+
+  $ief_id = $reference_form['#ief_id'];
+  $instance = $form_state['inline_entity_form'][$ief_id]['instance'];
+
+  // Add required attributes for dialog functionality.
+  $reference_form['entity_id']['#entity_type'] = $instance['entity_type'];
+  $reference_form['entity_id']['#field_name'] = $instance['field_name'];
+  $reference_form['entity_id']['#bundle'] = $instance['bundle'];
+}

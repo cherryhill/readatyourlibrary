@@ -1,0 +1,43 @@
+name = Openbadging Manage Backpack
+description = This module is used to make user badges public and private
+core = 7.x
+package = openbadging
+php = 5.2.4
+version = 7.x-1.0
+project = openbadging_manage_backpack
+dependencies[] = openbadging_badges
+dependencies[] = openbadging
+dependencies[] = achievements
+dependencies[] = ctools
+dependencies[] = entity
+dependencies[] = entityreference
+dependencies[] = features
+dependencies[] = list
+dependencies[] = options
+dependencies[] = views
+features[openbadging_types][] = user_groups
+features[ctools][] = views:views_default:3.0
+features[features_api][] = api:1
+features[field][] = openbadging-user_groups-field_badge_entity_reference_1
+features[field][] = openbadging-user_groups-field_user_group_private
+features[user_permission][] = create user_groups openbadging
+features[user_permission][] = delete any user_groups openbadging
+features[user_permission][] = delete own user_groups openbadging
+features[user_permission][] = edit any user_groups openbadging
+features[user_permission][] = edit own user_groups openbadging
+features[user_permission][] = view user_groups openbadging
+features[views_view][] = my_groups
+
+; Information added by drupal.org packaging script on 2013-05-27
+version = "7.x-3.2"
+core = "7.x"
+project = "OpenBadging"
+datestamp = "1369659662"
+
+
+; Information added by drupal.org packaging script on 2013-10-21
+version = "7.x-3.3"
+core = "7.x"
+project = "OpenBadging"
+datestamp = "1382368983"
+
