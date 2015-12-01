@@ -66,6 +66,7 @@ function generate_staff_form_submit($form, &$form_state) {
 	$profile = profile2_create(array('type' => 'main', 'uid' => $custom_uid));
 	$profile->field_staff_notes['und'][0]['value'] = $staff_note; 
 	profile2_save($profile);
+	drupal_set_message(t('Notes created.'));
 
   
 }
