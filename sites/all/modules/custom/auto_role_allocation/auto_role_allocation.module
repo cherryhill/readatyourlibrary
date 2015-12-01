@@ -8,7 +8,7 @@ function auto_role_allocation_user_presave(&$edit, $account) {
 
 	global $user;
 	$date_of_birth = $edit['profile_main']['field_user_birthday'][LANGUAGE_NONE][0]['value'];
-	print_r($date_of_birth);die();
+	//print_r($date_of_birth);die();
 	$time_stamp_dob = strtotime($date_of_birth);
 	$current_time = time();
 	$_age = floor(($current_time - $time_stamp_dob) / 31556926);
@@ -26,4 +26,46 @@ function auto_role_allocation_user_presave(&$edit, $account) {
 		$edit['roles'][2] = 8;
     }
 	
+}
+
+
+
+function auto_role_allocation_block_info() {
+   $block = array();
+   $blocks['staff-notes'] = array(
+        'info' => t('Write Staff notes'),
+        'cache' => DRUPAL_NO_CACHE,
+    );
+   return $blocks;
+}
+
+function auto_role_allocation_block_view($block_name = '') {
+	switch ($block_name) {
+		case 'staff-notes':
+            $block['subject'] = '';
+            $block['content'] = drupal_get_form('generate_staff_form');
+            break;
+	}
+  return $block;
+}
+
+function generate_staff_form($form, &$form_state) {
+   $form['body'] = array(
+      '#type' => 'textarea',
+      '#title' => 'Staff Notes',
+      
+    );
+   $form['submit'] = array('#type' => 'submit', '#value' => t('Submit'));  
+
+  return $form;
+}
+
+function generate_staff_form_submit($form, &$form_state) {
+	$staff_note = $form_state['complete form']['body']['#value'];
+	$custom_uid = arg(1);
+	$profile = profile2_create(array('type' => 'main', 'uid' => $custom_uid));
+	$profile->field_staff_notes['und'][0]['value'] = $staff_note; 
+	profile2_save($profile);
+
+  
 }
