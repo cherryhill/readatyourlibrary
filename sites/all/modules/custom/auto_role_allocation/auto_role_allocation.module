@@ -1,33 +1,8 @@
 <?php
 
 /**
- * Implements hook_user_presave(). For auto allocation of user role during registration according to age. 
+ * Implements hook_block(). . 
  */
-
-function auto_role_allocation_user_presave(&$edit, $account) {
-
-	global $user;
-	$date_of_birth = $edit['profile_main']['field_user_birthday'][LANGUAGE_NONE][0]['value'];
-	//print_r($date_of_birth);die();
-	$time_stamp_dob = strtotime($date_of_birth);
-	$current_time = time();
-	$_age = floor(($current_time - $time_stamp_dob) / 31556926);
-	if($_age <=5) {
-		$edit['roles'][2] = 5;
-       
-	}
-	elseif($_age >5 && $_age <= 12) {
-		$edit['roles'][2] = 6;
-    }
-    elseif($_age >12 && $_age <= 17) {
-		$edit['roles'][2] = 7;
-    }
-    elseif($_age > 17) {
-		$edit['roles'][2] = 8;
-    }
-	
-}
-
 
 
 function auto_role_allocation_block_info() {
