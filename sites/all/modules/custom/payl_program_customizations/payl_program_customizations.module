@@ -60,6 +60,13 @@ function payl_program_customizations_form_alter(&$form, &$form_state, $form_id) 
       );
     }
   }
+
+  //To provide a message if user has no email mentioned during registration
+  if($form_id == 'user_pass'){
+    $form['#validate'][1] = 'password_user'; //function to validate the user
+    $form['name']['#title'] = 'If you do not have an email address, you need to seek staff assistance to reset your password';
+
+  }
 }
 
 function payl_program_customizations_user_register_validate($form, &$form_state) {
@@ -67,4 +74,13 @@ function payl_program_customizations_user_register_validate($form, &$form_state)
   if (empty($values['name'])) {
     form_set_error('name', t('Please ensure to create your own username OR generate a new username'));
   }
+}
+ //function to provide a message if user has no email associated with account.
+function password_user(&$form, &$form_state){
+   $mail_id = $form_state['values']['account'];
+   $mail = $mail_id->mail;
+   if($mail == ''){
+      drupal_set_message('Please seek the staff assistance to reset your password','error');
+      $message['subject'] = 'TEST SUBJECT';
+   }
 }
