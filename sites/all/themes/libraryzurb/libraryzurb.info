@@ -30,6 +30,8 @@ base theme = zurb_foundation
 ;stylesheets[all][] = css/app.css
 ; Comment the app.css file (above) if you're using sass to preprocess css:
 stylesheets[all][] = css/custom.css
+stylesheets[all][] = css/fullcalendar.print.css
+stylesheets[all][] = css/fullcalendar.css
 
 ; Block loading of foundation.min.css from the base theme. This file should either
 ; not exist or be blank in your subtheme. See https://drupal.org/node/263967
@@ -45,6 +47,9 @@ scripts[] = js/vendor/custom.modernizr.js
 ; If you prefer to have more control over which components are included you
 ; can comment this line and uncomment the ones below you want.
 scripts[] = js/foundation.min.js
+scripts[] = js/fullcalendar.min.js
+scripts[] = js/gcal.js
+scripts[] = js/jquery-ui.min.js
 
 ; Foundation framework scripts (uncompressed).
 ;scripts[] = js/foundation/foundation.js
