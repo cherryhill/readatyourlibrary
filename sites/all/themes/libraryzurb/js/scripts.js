@@ -27,8 +27,8 @@
 
 
 jQuery( document ).ready(function() {
-  console.log("running");
-  jQuery('.view-progress .view-content .views-field-field-sticker-calendar-image .field-content').each(function () {
+  //console.log("running");
+  jQuery('.view-calendar-sticker .view-content .views-field-field-sticker-calendar-image .field-content').each(function () {
 
     // create an Event Object (http://arshaw.com/fullcalendar/docs/event_data/Event_Object/)
     // it doesn't need to have a start or end
