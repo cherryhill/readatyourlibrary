@@ -27,8 +27,9 @@
 
 
 jQuery( document ).ready(function() {
+
   //console.log("running");
-  jQuery('.view-calendar-sticker .view-content .views-field-field-sticker-calendar-image .field-content').each(function () {
+  jQuery('.view-progress .view-content .views-field-field-sticker-calendar-image .field-content').each(function () {
 
     // create an Event Object (http://arshaw.com/fullcalendar/docs/event_data/Event_Object/)
     // it doesn't need to have a start or end
@@ -60,11 +61,19 @@ jQuery( document ).ready(function() {
         // we need to copy it, so that multiple events don't have a reference to the same object
         var copiedEventObject = jQuery.extend({}, originalEventObject);
         copiedEventObject.description = copiedEventObject.title;
-        console.log('Copied Object');
-        console.log(copiedEventObject);
+        var calender_img = copiedEventObject.title; 
+        var expl_img = calender_img.split("src");
+        var expl_img1 = expl_img[1].split("//");
+        var expl_img2 = expl_img1[1].split("?");
+        var expl_img3 = expl_img2[0].split("/");
+        var image_name = expl_img3[8];  
+        
+        console.log(copiedEventObject.title);
+        //console.log(copiedEventObject);
 
         // assign it the date that was reported
         copiedEventObject.start = date;
+        //console.log(copiedEventObject.start);
         copiedEventObject.allDay = allDay;
 
         // render the event on the calendar
@@ -76,6 +85,33 @@ jQuery( document ).ready(function() {
             // if so, remove the element from the "Draggable Events" list
             jQuery(this).remove();
         }
+
+        var currentUser = Drupal.settings.auto_role_allocation.currentUser;
+       
+
+       
+
+        jQuery.ajax({
+        
+            url: 'http://localhost/chillco/test',
+            type: 'post',
+            dataType: 'json',
+            data: {
+                image: image_name,
+                date: copiedEventObject.start,
+                user_id: currentUser
+            },
+            success: function(data){
+              console.log("data:");
+              console.log(data);
+              alert("data");
+            },
+            error: function(jqXHR, data, error){
+                console.log(jqXHR);
+                console.log(data);
+                console.log(error);
+            }
+        });
 
     },
 
@@ -100,18 +136,7 @@ jQuery( document ).ready(function() {
         console.log(element);
         return jQuery.parseHTML(element.description);
     },
-    events: [{
-        title: 'event1',
-        start: '2011-05-07'
-    }, {
-        title: 'event2',
-        start: '2011-05-10',
-        end: '2011-05-15'
-    }, {
-        title: 'event3',
-        start: '2011-05-07 12:30:00',
-        allDay: false // will make the time show
-    }]
+    events: eventsList
 
 });
 
