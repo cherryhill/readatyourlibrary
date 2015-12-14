@@ -1,0 +1,28 @@
+<?php
+
+function auto_role_allocation_schema(){
+/* schema for user current module no */
+$schema['calendar'] = array(
+            'description' => 'To save the state of calendar',
+            'fields' => array(
+                    'uid' => array(
+                            'description' => 'User id',
+                            'type' => 'int',
+                            'not null' => TRUE,
+                    ),
+                    'image_url' => array(
+                            'description' => 'calendar image',
+                            'type' => 'varchar',
+                            'length' => '256',
+                    ),
+                    'date' => array(
+                            'description' => 'calendar event date',
+                            'type' => 'varchar',
+                            'length' => '256',
+                    ),  
+                ),
+                   
+        );
+    
+    return $schema;
+}
