@@ -11,6 +11,10 @@ function auto_role_allocation_block_info() {
         'info' => t('Write Staff notes'),
         'cache' => DRUPAL_NO_CACHE,
     );
+   $blocks['calendar-data'] = array(
+        'info' => t('Show calendar data json'),
+        'cache' => DRUPAL_NO_CACHE,
+    );
    return $blocks;
 }
 
@@ -20,6 +24,10 @@ function auto_role_allocation_block_view($block_name = '') {
             $block['subject'] = '';
             $block['content'] = drupal_get_form('generate_staff_form');
             break;
+    case 'calendar-data':
+            $block['subject'] = '';
+            $block['content'] = generate_json_data();
+            break;        
 	}
   return $block;
 }
@@ -45,3 +53,84 @@ function generate_staff_form_submit($form, &$form_state) {
 
   
 }
+
+
+function auto_role_allocation_init() {
+  global $user;
+  $setting = array('auto_role_allocation' => array('currentUser' => $user->uid));
+  drupal_add_js($setting, 'setting');
+     
+}
+
+
+
+function auto_role_allocation_menu() {
+  $items['test'] = array(
+    'title' => 'Test Page',
+    'page callback' => 'test_page',
+    'access arguments' => array('access content'),
+    'type' => MENU_SUGGESTED_ITEM,
+  );
+  // $items['test1'] = array(
+  //   'title' => 'Test Page1',
+  //   'page callback' => 'test_page1',
+  //   'access arguments' => array('access content'),
+  //   'type' => MENU_SUGGESTED_ITEM,
+  // );
+  
+  return $items;
+}
+
+function test_page() {
+  global $user;
+  $uid = $user->uid;
+  $event_image = $_POST['image'];
+  $event_date = $_POST['date'];
+  $event_uid = $_POST['user_id'];
+  
+
+ 
+  // database save
+ $insert_query =db_insert('calendar')
+->fields(array(
+'uid'=>$event_uid,
+'image_url'=>$event_image,
+'date'=>$event_date,
+));
+$insert_query->execute();
+  
+  $response = array(
+    "result"  =>  1
+    );
+
+
+}
+
+
+
+
+function generate_json_data() {
+   global $user;
+  $uid = $user->uid;
+
+  $query_state = db_select('calendar', 'c')
+->fields('c', array('image_url','date'))
+->condition('uid', $uid)
+->execute();
+$result = $query_state->fetchAll();
+// print_r($result);
+$events = array();
+// print_r(date('Y-m-d', strtotime('2015-11-30T18:30:00.000Z')));
+foreach ($result as $value) {
+  $events[] = array(
+    'title' => '<img src="sites/default/files/styles/thumbnail/public/' . $value->image_url . '"</img>', 
+    'date' => $value->date
+  );
+}
+$out = "<script>var eventsList = " . json_encode($events) . "</script>";
+return $out;
+}
+
+
+
+
