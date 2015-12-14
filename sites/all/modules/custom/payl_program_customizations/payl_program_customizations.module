@@ -67,6 +67,12 @@ function payl_program_customizations_form_alter(&$form, &$form_state, $form_id) 
     $form['name']['#title'] = 'If you do not have an email address, you need to seek staff assistance to reset your password';
 
   }
+
+  // changing of display field name for reward entity
+  if($form_id == 'eck__entity__form_edit_reward_reward' || $form_id == 'eck__entity__form_add_reward_reward'){
+    $form['field_reward_message']['und'][0]['#title'] = 'Onscreen Alert';
+    $form['field_reward_notification']['und'][0]['#title'] = 'Message';
+  }
 }
 
 function payl_program_customizations_user_register_validate($form, &$form_state) {
@@ -81,6 +87,5 @@ function password_user(&$form, &$form_state){
    $mail = $mail_id->mail;
    if($mail == ''){
       drupal_set_message('Please seek the staff assistance to reset your password','error');
-      $message['subject'] = 'TEST SUBJECT';
    }
 }
