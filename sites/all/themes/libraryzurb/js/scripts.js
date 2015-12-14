@@ -93,7 +93,7 @@ jQuery( document ).ready(function() {
 
         jQuery.ajax({
         
-            url: 'http://localhost/chillco/test',
+            url: 'http://dev-chillco.gailabs.com/test',
             type: 'post',
             dataType: 'json',
             data: {
