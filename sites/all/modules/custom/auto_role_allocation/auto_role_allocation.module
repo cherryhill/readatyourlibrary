@@ -123,8 +123,8 @@ $events = array();
 // print_r(date('Y-m-d', strtotime('2015-11-30T18:30:00.000Z')));
 foreach ($result as $value) {
   $events[] = array(
-    'title' => '<img src="sites/default/files/styles/thumbnail/public/' . $value->image_url . '"</img>', 
-    'date' => $value->date
+    'title' => '<div class="event-title"><img src="sites/default/files/styles/thumbnail/public/' . $value->image_url . '"</img>Reading</div>', 
+    'date' => $value->date,
   );
 }
 $out = "<script>var eventsList = " . json_encode($events) . "</script>";
