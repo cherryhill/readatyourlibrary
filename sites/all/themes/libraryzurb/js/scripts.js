@@ -66,7 +66,7 @@ jQuery( document ).ready(function() {
         var expl_img1 = expl_img[1].split("//");
         var expl_img2 = expl_img1[1].split("?");
         var expl_img3 = expl_img2[0].split("/");
-        var image_name = expl_img3[8];  
+        var image_name = expl_img3[7];  
         
         console.log(copiedEventObject.title);
         //console.log(copiedEventObject);
