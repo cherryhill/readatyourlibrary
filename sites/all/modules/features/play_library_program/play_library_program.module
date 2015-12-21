@@ -380,12 +380,34 @@ function play_library_program_create_activity_entry($activity_id, $account_id) {
  * Creates a new reward claim
  */
 function play_library_program_create_reward_claim($reward_id, $account_id) {
+  global $user;
+  $uid = $user->uid;
+  $user_profile = profile2_load_by_user($uid, 'main');
+  $dob = $user_profile->field_user_birthday[LANGUAGE_NONE][0]['value'];
+  $time_stamp_dob = strtotime($dob);
+  $current_time = time();
+  $age = floor(($current_time - $time_stamp_dob) / 31556926);
+
+  $query_start = db_select('field_data_field_start_age', 'sl')
+   ->fields('sl', array('field_start_age_value'))
+   ->execute();
+  $start = $query_start->fetchField();
+   
+
+   $query_end = db_select('field_data_field_end_age', 'el')
+   ->fields('el', array('field_end_age_value'))
+   ->execute();
+  $end = $query_end->fetchField();
+  
+
   $rewards = entity_load('reward', array($reward_id));
   $reward = reset($rewards);
   $title = t("@reward on @time", array('@reward' => $reward->title, '@time' => date('Y-m-d H:i')));
   $reward_claim = entity_create('reward', array('type' => 'reward_claim', 'title' => $title, 'uid' => $account_id));
   $reward_claim->field_reward_claim_id[LANGUAGE_NONE][0]['target_id'] = $reward->id;
-  entity_save('reward', $reward_claim);
+  if($start <= $age && $age <= $end) {
+    entity_save('reward', $reward_claim);
+  }
 }
 
 /**
