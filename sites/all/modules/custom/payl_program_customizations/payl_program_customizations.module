@@ -94,4 +94,9 @@ function password_user(&$form, &$form_state){
       drupal_set_message('Please seek the staff assistance to reset your password','error');
    }
 }
-
+//function for private message when a user is followed
+function payl_program_customizations_flag_flag($flag, $entity_id, $account, $flagging){
+    $uid = $flagging->entity_id;
+    $user_name = $account->name;
+    privatemsg_new_thread(array(user_load($uid)), $user_name.' is now following you.', $user_name.' is now following you.');
+}
