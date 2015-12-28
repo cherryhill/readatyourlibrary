@@ -21,20 +21,18 @@
  * regardless of any changes in the aliasing that might happen if
  * the view is modified.
  */
-?>
-<?php 
 
-	/**
-	 * For not showing the username if user chooses not to show username.
-	 */
+/**
+ * Display username according to field_privacy_settings.
+ */
 
-	if(array_key_exists('und', $row->_field_data['nid']['entity']->field_privacy_settings)){
-		$field = $row->_field_data['nid']['entity']->field_privacy_settings['und'][0]['value'];
+	if(array_key_exists(LANGUAGE_NONE, $row->_field_data['nid']['entity']->field_privacy_settings)){
+		$field = $row->_field_data['nid']['entity']->field_privacy_settings[LANGUAGE_NONE][0]['value'];
+		// If public display name.
+		if($field == 'public'){
+			print $output;
+		}
   }
-
-	if($field == 'public'){
-		print "Created by".$output;
-	}
 
 ?>
 

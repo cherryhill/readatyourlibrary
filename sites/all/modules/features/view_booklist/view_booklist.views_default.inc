@@ -208,17 +208,31 @@ function view_booklist_views_default_views() {
 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page_1');
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'default';
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['row_plugin'] = 'fields';
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['relationships'] = FALSE;
+  /* Relationship: Flags: primary_booklist */
+  $handler->display->display_options['relationships']['flag_content_rel']['id'] = 'flag_content_rel';
+  $handler->display->display_options['relationships']['flag_content_rel']['table'] = 'node';
+  $handler->display->display_options['relationships']['flag_content_rel']['field'] = 'flag_content_rel';
+  $handler->display->display_options['relationships']['flag_content_rel']['required'] = 0;
+  $handler->display->display_options['relationships']['flag_content_rel']['flag'] = 'primary_booklist';
+  $handler->display->display_options['relationships']['flag_content_rel']['user_scope'] = 'any';
+  /* Relationship: Content: Author */
+  $handler->display->display_options['relationships']['uid']['id'] = 'uid';
+  $handler->display->display_options['relationships']['uid']['table'] = 'node';
+  $handler->display->display_options['relationships']['uid']['field'] = 'uid';
+  /* Relationship: Flags: like counter */
+  $handler->display->display_options['relationships']['flag_count_rel']['id'] = 'flag_count_rel';
+  $handler->display->display_options['relationships']['flag_count_rel']['table'] = 'node';
+  $handler->display->display_options['relationships']['flag_count_rel']['field'] = 'flag_count_rel';
+  $handler->display->display_options['relationships']['flag_count_rel']['required'] = 0;
+  $handler->display->display_options['relationships']['flag_count_rel']['flag'] = 'like';
   $handler->display->display_options['defaults']['fields'] = FALSE;
-  /* Field: Profile: URL */
-  $handler->display->display_options['fields']['url']['id'] = 'url';
-  $handler->display->display_options['fields']['url']['table'] = 'views_entity_profile2';
-  $handler->display->display_options['fields']['url']['field'] = 'url';
-  $handler->display->display_options['fields']['url']['relationship'] = 'profile';
-  $handler->display->display_options['fields']['url']['label'] = '';
-  $handler->display->display_options['fields']['url']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['url']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['url']['display_as_link'] = FALSE;
-  $handler->display->display_options['fields']['url']['link_to_entity'] = 0;
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
@@ -226,27 +240,13 @@ function view_booklist_views_default_views() {
   $handler->display->display_options['fields']['title']['label'] = '';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
-  /* Field: Profile: Avatar image */
-  $handler->display->display_options['fields']['field_user_avatar']['id'] = 'field_user_avatar';
-  $handler->display->display_options['fields']['field_user_avatar']['table'] = 'field_data_field_user_avatar';
-  $handler->display->display_options['fields']['field_user_avatar']['field'] = 'field_user_avatar';
-  $handler->display->display_options['fields']['field_user_avatar']['relationship'] = 'profile';
-  $handler->display->display_options['fields']['field_user_avatar']['label'] = '';
-  $handler->display->display_options['fields']['field_user_avatar']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['field_user_avatar']['alter']['make_link'] = TRUE;
-  $handler->display->display_options['fields']['field_user_avatar']['alter']['path'] = '[url]';
-  $handler->display->display_options['fields']['field_user_avatar']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_user_avatar']['type'] = 'entityreference_entity_view';
-  $handler->display->display_options['fields']['field_user_avatar']['settings'] = array(
-    'view_mode' => 'teaser',
-    'links' => 0,
-  );
   /* Field: User: Name */
   $handler->display->display_options['fields']['name']['id'] = 'name';
   $handler->display->display_options['fields']['name']['table'] = 'users';
   $handler->display->display_options['fields']['name']['field'] = 'name';
   $handler->display->display_options['fields']['name']['relationship'] = 'uid';
   $handler->display->display_options['fields']['name']['label'] = '';
+  $handler->display->display_options['fields']['name']['exclude'] = TRUE;
   $handler->display->display_options['fields']['name']['alter']['alter_text'] = TRUE;
   $handler->display->display_options['fields']['name']['alter']['text'] = '[field_user_avatar] [name]';
   $handler->display->display_options['fields']['name']['element_label_colon'] = FALSE;
@@ -270,6 +270,33 @@ function view_booklist_views_default_views() {
   $handler->display->display_options['fields']['field_privacy_settings']['label'] = '';
   $handler->display->display_options['fields']['field_privacy_settings']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_privacy_settings']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_privacy_settings']['type'] = 'list_key';
+  /* Field: User: Name */
+  $handler->display->display_options['fields']['name_1']['id'] = 'name_1';
+  $handler->display->display_options['fields']['name_1']['table'] = 'users';
+  $handler->display->display_options['fields']['name_1']['field'] = 'name';
+  $handler->display->display_options['fields']['name_1']['relationship'] = 'uid';
+  $handler->display->display_options['fields']['name_1']['label'] = '';
+  $handler->display->display_options['fields']['name_1']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['name_1']['element_label_colon'] = FALSE;
+  /* Field: Global: PHP */
+  $handler->display->display_options['fields']['php']['id'] = 'php';
+  $handler->display->display_options['fields']['php']['table'] = 'views';
+  $handler->display->display_options['fields']['php']['field'] = 'php';
+  $handler->display->display_options['fields']['php']['label'] = '';
+  $handler->display->display_options['fields']['php']['alter']['make_link'] = TRUE;
+  $handler->display->display_options['fields']['php']['alter']['path'] = 'users/[name_1]';
+  $handler->display->display_options['fields']['php']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['php']['use_php_setup'] = 0;
+  $handler->display->display_options['fields']['php']['php_output'] = '<?php
+  $privacy_field = $data->_field_data[\'nid\'][\'entity\']->field_privacy_settings[LANGUAGE_NONE][0][\'value\'];
+  //echo $privacy_field;
+  if($privacy_field == \'public\'){
+     echo "Created by " . $row->name_1;
+  }
+?>';
+  $handler->display->display_options['fields']['php']['use_php_click_sortable'] = '0';
+  $handler->display->display_options['fields']['php']['php_click_sortable'] = '';
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
   /* Filter criterion: Content: Published */
@@ -342,6 +369,14 @@ function view_booklist_views_default_views() {
     11 => 0,
     4 => 0,
     3 => 0,
+  );
+  /* Filter criterion: Content: Privacy settings (field_privacy_settings) */
+  $handler->display->display_options['filters']['field_privacy_settings_value']['id'] = 'field_privacy_settings_value';
+  $handler->display->display_options['filters']['field_privacy_settings_value']['table'] = 'field_data_field_privacy_settings';
+  $handler->display->display_options['filters']['field_privacy_settings_value']['field'] = 'field_privacy_settings_value';
+  $handler->display->display_options['filters']['field_privacy_settings_value']['value'] = array(
+    'public' => 'public',
+    'publicnoname' => 'publicnoname',
   );
   $handler->display->display_options['path'] = 'booklists';
   $handler->display->display_options['menu']['title'] = 'All';

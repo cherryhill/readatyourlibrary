@@ -51,10 +51,13 @@ function deployment_features_revert($features) {
 /**
  * Enable View feature for Pervious year data and booklist
  */
-function deployment_update_8110(&$sandbox) {
+function deployment_update_8113(&$sandbox) {
   $modules = array(
     'view_previous_year_data',
     'view_booklist',
+    'rule_content_moderation',
+    'landing_page_for_user',
+    'menu_for_authenticated_user',
   );
   $messages = array();
   $modules_enabled = module_enable($modules, TRUE);

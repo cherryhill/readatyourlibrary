@@ -1,50 +1,136 @@
 <?php
 
-/*function auto_role_allocation_form_alter(&$form, &$form_state, $form_id) {
-	global $user;
-	if($form_id == "user_register_form") {
-      $form['#submit'][] = 'user_register_form_submit';
-	}
-	
+/**
+ * Implements hook_block(). . 
+ */
+
+
+function auto_role_allocation_block_info() {
+   $block = array();
+   $blocks['staff-notes'] = array(
+        'info' => t('Write Staff notes'),
+        'cache' => DRUPAL_NO_CACHE,
+    );
+   $blocks['calendar-data'] = array(
+        'info' => t('Show calendar data json'),
+        'cache' => DRUPAL_NO_CACHE,
+    );
+   return $blocks;
 }
 
-function user_register_form_submit(&$form, &$form_state) {
-	
-    $date_of_birth = $form_state['input']['profile_main']['field_user_birthday']['und'][0]['value']['date'];
-    $time_stamp_dob = strtotime($date_of_birth);
-    $current_time = time();
-    $time_diff = $current_time - $time_stamp_dob;
-    $age = floor(($current_time - $time_stamp_dob) / 31556926);
-    if($age <=5) {
-       
-    }
-
-    echo $_age;die();
-
-	echo "<pre>";
-	print_r($form_state['input']['profile_main']['field_user_birthday']['und'][0]['value']['date']);
-	die();
-} */
-
-function auto_role_allocation_user_presave(&$edit, $account) {
-	global $user;
-	$date_of_birth = $edit['profile_main']['field_user_birthday']['und'][0]['value'];
-	$time_stamp_dob = strtotime($date_of_birth);
-	$current_time = time();
-	$_age = floor(($current_time - $time_stamp_dob) / 31556926);
-	//echo "<pre>";print_r($_age);die();
-	if($_age <=5) {
-		$edit['roles'][2] = 5;
-       
+function auto_role_allocation_block_view($block_name = '') {
+	switch ($block_name) {
+		case 'staff-notes':
+            $block['subject'] = '';
+            $block['content'] = drupal_get_form('generate_staff_form');
+            break;
+    case 'calendar-data':
+            $block['subject'] = '';
+            $block['content'] = generate_json_data();
+            break;        
 	}
-	elseif($_age >5 && $_age <= 12) {
-		$edit['roles'][2] = 6;
-    }
-    elseif($_age >12 && $_age <= 17) {
-		$edit['roles'][2] = 7;
-    }
-    elseif($_age > 17) {
-		$edit['roles'][2] = 8;
-    }
-	
+  return $block;
 }
+
+function generate_staff_form($form, &$form_state) {
+   $form['body'] = array(
+      '#type' => 'textarea',
+      '#title' => 'Staff Notes',
+      
+    );
+   $form['submit'] = array('#type' => 'submit', '#value' => t('Submit'));  
+
+  return $form;
+}
+
+function generate_staff_form_submit($form, &$form_state) {
+	$staff_note = $form_state['complete form']['body']['#value'];
+	$custom_uid = arg(1);
+	$profile = profile2_create(array('type' => 'main', 'uid' => $custom_uid));
+	$profile->field_staff_notes['und'][0]['value'] = $staff_note; 
+	profile2_save($profile);
+	drupal_set_message(t('Notes created.'));
+
+  
+}
+
+
+function auto_role_allocation_init() {
+  global $user;
+  $setting = array('auto_role_allocation' => array('currentUser' => $user->uid));
+  drupal_add_js($setting, 'setting');
+     
+}
+
+
+
+function auto_role_allocation_menu() {
+  $items['test'] = array(
+    'title' => 'Test Page',
+    'page callback' => 'test_page',
+    'access arguments' => array('access content'),
+    'type' => MENU_SUGGESTED_ITEM,
+  );
+  // $items['test1'] = array(
+  //   'title' => 'Test Page1',
+  //   'page callback' => 'test_page1',
+  //   'access arguments' => array('access content'),
+  //   'type' => MENU_SUGGESTED_ITEM,
+  // );
+  
+  return $items;
+}
+
+function test_page() {
+  global $user;
+  $uid = $user->uid;
+  $event_image = $_POST['image'];
+  $event_date = $_POST['date'];
+  $event_uid = $_POST['user_id'];
+  
+
+ 
+  // database save
+ $insert_query =db_insert('calendar')
+->fields(array(
+'uid'=>$event_uid,
+'image_url'=>$event_image,
+'date'=>$event_date,
+));
+$insert_query->execute();
+  
+  $response = array(
+    "result"  =>  1
+    );
+
+
+}
+
+
+
+
+function generate_json_data() {
+   global $user;
+  $uid = $user->uid;
+
+  $query_state = db_select('calendar', 'c')
+->fields('c', array('image_url','date'))
+->condition('uid', $uid)
+->execute();
+$result = $query_state->fetchAll();
+// print_r($result);
+$events = array();
+// print_r(date('Y-m-d', strtotime('2015-11-30T18:30:00.000Z')));
+foreach ($result as $value) {
+  $events[] = array(
+    'title' => '<img src="sites/default/files/styles/thumbnail/public/' . $value->image_url . '"</img>', 
+    'date' => $value->date,
+  );
+}
+$out = "<script>var eventsList = " . json_encode($events) . "</script>";
+return $out;
+}
+
+
+
+
