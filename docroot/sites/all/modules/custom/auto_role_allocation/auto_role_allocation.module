@@ -15,6 +15,10 @@ function auto_role_allocation_block_info() {
         'info' => t('Show calendar data json'),
         'cache' => DRUPAL_NO_CACHE,
     );
+   $blocks['progress-block'] = array(
+        'info' => t('Show Progress on user dashboard page'),
+        'cache' => DRUPAL_NO_CACHE,
+    );
    return $blocks;
 }
 
@@ -27,7 +31,11 @@ function auto_role_allocation_block_view($block_name = '') {
     case 'calendar-data':
             $block['subject'] = '';
             $block['content'] = generate_json_data();
-            break;        
+            break;
+    case 'progress-block':
+            $block['subject'] = '';
+            $block['content'] = user_progress();
+            break;                
 	}
   return $block;
 }
@@ -192,5 +200,14 @@ else {
 }
 
 
-
-
+function user_progress() {
+  global $user;
+  $uid = $user->uid;
+  $count_query = db_query("SELECT COUNT(image_url) as image_url
+     FROM {calendar} c
+    WHERE c.uid = :uid",array(':uid' => $uid))->fetchAll();
+  $count_days = $count_query[0]->image_url; 
+  $i = $count_days%10;
+  $j = 10-$i;
+  return '<div>Total days read:'." ".$count_days.'</div></br><div>'.$j." ".'more days needed to receive your first prize'.'</div>';
+}
