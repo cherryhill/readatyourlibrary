@@ -112,7 +112,47 @@ $insert_query->execute();
 function generate_json_data() {
    global $user;
   $uid = $user->uid;
+  $current_time = time();
+  $current_date = date('Y-m-d', $current_time);
+ // print_r($current_date);die();
 
+
+
+$result_value = db_query("SELECT ac.title,ac.created
+    FROM {eck_activity} ac
+   WHERE (ac.uid = :uid) AND (MONTH('$current_date'))",array(':uid' => $uid))->fetchAll();
+   $i = 1;
+  foreach ($result_value as $value) {
+    $title = $value->title;
+    $created_time[] = $value->created;
+
+
+  
+
+    $event1[] = array(
+        'title' => 'Reading'." ".$i." ".'day',
+        'date' => date('D M d Y',$value->created)." ".'00:00:00 GMT+0530 (IST)', 
+      );
+    
+    
+$i++;
+
+   //  $count_query = db_query("SELECT COUNT(id) as id
+   //  FROM {eck_activity} ec
+   // WHERE ec.uid = :uid AND ec.created BETWEEN $mininum_timestamp AND $value->created",array(':uid' => $uid))->fetchAll();
+     
+    
+  }
+
+    
+
+  
+  
+
+//   echo "<pre>";
+// print_r($mininum_timestamp);
+//   die();
+   
   $query_state = db_select('calendar', 'c')
 ->fields('c', array('image_url','date'))
 ->condition('uid', $uid)
@@ -121,14 +161,34 @@ $result = $query_state->fetchAll();
 // print_r($result);
 $events = array();
 // print_r(date('Y-m-d', strtotime('2015-11-30T18:30:00.000Z')));
+$i = 1;
+$j = 1;
 foreach ($result as $value) {
-  $events[] = array(
-    'title' => '<img src="sites/default/files/styles/thumbnail/public/' . $value->image_url . '"</img>', 
+$k = $i%4 ;
+if($k==0) {
+
+     $events[] = array(
+    'title' => '<div><img src="sites/default/files/styles/thumbnail/public/' . $value->image_url . '"</img>'.'Congratulations! You earned prize!'.'</div>', 
+    'date' => $value->date,
+    );
+  }
+else {
+
+ $events[] = array(
+    'title' => '<div><img src="sites/default/files/styles/thumbnail/public/' . $value->image_url . '"</img>'.'Read'." ".$i." ".'days</div>', 
     'date' => $value->date,
   );
+
+
+  }
+
+  
+  $i++;
+  $j++;
+  
 }
-$out = "<script>var eventsList = " . json_encode($events) . "</script>";
-return $out;
+  $out = "<script>var eventsList = " . json_encode($events) . "</script>";
+  return $out;
 }
 
 
