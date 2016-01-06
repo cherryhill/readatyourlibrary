@@ -78,6 +78,11 @@ function payl_program_customizations_form_alter(&$form, &$form_state, $form_id) 
   if ($form_id == 'privatemsg_list') {
     $form['updated']['list']['#header']['participants']['data'] = t('Sender');
   }
+
+  // Increasing string length
+  if ($form_id == 'user_register_form') {
+    $form['profile_main']['field_do_you_want_other_players_']['und']['#title'] = t('Do you want other players to be able to see your badges and prizes when they click on your username? They won\'t be able to see your real name.');
+  }
 }
 
 function payl_program_customizations_user_register_validate($form, &$form_state) {
