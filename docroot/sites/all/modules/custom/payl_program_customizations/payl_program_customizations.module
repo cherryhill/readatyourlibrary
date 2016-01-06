@@ -106,7 +106,10 @@ function password_user(&$form, &$form_state){
 }
 //function for private message when a user is followed
 function payl_program_customizations_flag_flag($flag, $entity_id, $account, $flagging){
+  $flag_name = arg(2);
+  if($flag_name == 'follow'){
     $uid = $flagging->entity_id;
     $user_name = $account->name;
     privatemsg_new_thread(array(user_load($uid)), $user_name.' is now following you.', $user_name.' is now following you.');
+  }
 }
