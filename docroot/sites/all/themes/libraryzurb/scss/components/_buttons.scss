@@ -9,14 +9,27 @@
 
 button,
 .button {
-  padding: $button-sml;
+  padding: $button-sml 20px;
   text-transform: uppercase;
+  background: $yellow;
+  color: $black;
+  margin-left: 20px;
+  border: 1px solid $yellow;
+  border-radius: 10px;
+   &:hover, &:focus {
+     background: $yellow;
+     color: $black;
+     outline: none;
+   }
 
   a {
-    color: $button-font-color;
+    color: $black;
 
-    &:hover {
-      background-color: transparent;
+    &:hover, focus {
+      outline: none;
+      color: $black;
+      background: $yellow;
     }
   }
 }
+

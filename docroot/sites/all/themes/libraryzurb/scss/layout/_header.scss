@@ -1,6 +1,87 @@
 // Non-modular or client styles for .l-header region.
 
-.l-header {}
+.l-header {
+	.row {
+  &.header-middle {
+  	max-width: 100%;
+  	 section {
+  	 	&.block-menu-menu-secoundary-menu {
+  	 		ul.menu {
+  	 			width: 100%;
+  	 			max-width: 710px;
+  	 			float: right;
+  	 			list-style: none;
+  	 			  li {
+  	 			  	float: left;
+  	 			  	margin-left: 1px;
+  	 			  	height: 110px;
+  	 			  	width: 100px;
+
+  	 			  	  a {
+  	 			  	  	 color: transparent;
+  	 			  	  	  position: relative;
+  	 			  	  	   &:after {
+  	 			  	  	   	width: 100px;
+                            height: 150px;
+                            background-size: 100px;
+                            content: "";
+                            display: block;
+                            position: absolute;
+                            left: 0;
+                            top: 0;
+  	 			  	  	   }
+  	 			  	  	 
+  	 			  	  	  &.current-program {
+  	 			  	  	  	position: relative;
+  	 			  	  	  	 &:after {
+                               background: url('../images/libraryzurb/current-programs.png') no-repeat;
+                            }
+
+  	 			  	  	  }
+  	 			  	  	 &.activities {
+  	 			  	  	  	&:after{
+                            background: url('../images/libraryzurb/activities.png') no-repeat;
+                            }
+  	 			  	  	  }
+  	 			  	  	  &.rewards {
+  	 			  	  	  	&:after {
+  	 			  	  	  	  background: url('../images/libraryzurb/rewards.png') no-repeat;
+  	 			  	  	    }
+  	 			  	  	  }
+  	 			  	  	  &.reviews {
+                            &:after {
+  	 			  	  	  	  background: url('../images/libraryzurb/reviews.png') no-repeat;
+  	 			  	  	    }
+  	 			  	  	  }
+  	 			  	  	  &.photos {
+  	 			  	  	  	&:after {
+  	 			  	  	  	  background: url('../images/libraryzurb/photosnvideos.png') no-repeat;
+  	 			  	  	    }
+  	 			  	  	  }
+  	 			  	  	  &.events {
+  	 			  	  	  	&:after {
+  	 			  	  	  	  background: url('../images/libraryzurb/events.png') no-repeat;
+  	 			  	  	    }
+  	 			  	  	  }
+  	 			  	  	  &.progress {
+  	 			  	  	  	border: none;
+  	 			  	  	  	&:after {
+  	 			  	  	  	  background: url('../images/libraryzurb/progress.png') no-repeat;
+  	 			  	  	    }
+  	 			  	  	  }
+  	 			  	  	  
+  	 			  	  	  &:hover,&:focus {
+  	 			  	  	  	 background: none;
+  	 			  	  	  }
+  	 			  	  }
+  	 			  }
+
+  	 		}
+  	 	}
+  	 }
+  }
+}
+}
 
 // Top Bar
 //--------------------------------------------------

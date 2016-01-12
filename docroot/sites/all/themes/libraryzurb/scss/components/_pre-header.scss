@@ -3,11 +3,11 @@
  */
 
 .pre-header {
-  background-color: $color_gray_dark;
-  color: $color_white;
+  background-color: $yellow;
+  color: $black;
   font-size: 0.9em;
-  min-height: 5px;
-  padding: 5px 0;
+  padding: 3px 0 19px;
+  display: inline-block;
 
   a {
     color: $color_gray_light;
@@ -25,6 +25,35 @@
 
   .pre-header-left {
     padding: 0;
+      section {
+        .view {
+           .views-field {
+             float: left;
+             margin-left: 10px;
+             a {
+               background-color: $blue;
+               padding: 5px 20px;
+               border: 1px solid $blue;
+               border-radius: 5px;
+                &.msg {
+                   padding: 5px 20px 5px 40px !important;
+                   background: $blue url('../images/libraryzurb/msg-img.png');
+                   background-repeat: no-repeat;
+                   background-position: 10px 5px;
+    
+                }
+             }
+              &.views-field-name {
+                a {
+                  color: $black !important;
+                  background: none !important;
+                  border: none !important;
+                }
+              }
+              
+           }
+        }
+      }
   }
 
   .pre-header-right {
@@ -41,6 +70,8 @@
 }
 
 #topmostbranding {
-  max-width: 68em;
+  max-width: 710px;
   padding: 3px 0.5em;
+  display: inline-block;
+  float: right;
 }

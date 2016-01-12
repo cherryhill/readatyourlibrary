@@ -1,8 +1,164 @@
 // Blocks
-.block {}
+.block {
+	&.announcement {
+		background: $yellow url('../images/libraryzurb/annocement.png') no-repeat;
+		background-size: 100%;
+		background-position: center center;
+		color: $black;
+		border-radius: 20px;
+		 .block-title {
+		 	padding: 26px 36px;
+		 	border: none;
+		 	color: $black;
+		 }
+		 .views-field-body {
+		 	p {
+		 		padding-left: 36px;
+		 	}
+		 	ol {
+		 		margin-left: 90px;
+		 		padding-bottom: 40px;
+		 		
+		 		 li {
+		 		 	position: relative;
+		 		 	&:after {
+		 		 		background: url('../images/libraryzurb/arrow-list.png') no-repeat;
+		 		 		display: block;
+		 		 		position: absolute;
+		 		 		left: -47px;
+		 		 		height: 21px;
+		 		 		width: 47px;
+		 		 		content: "";
+		 		 		top: 0;
+		 		 	}
+		 		 }
+		 	}
+		 }
+	}
+	 &.homepage-blocks {
+	        background: $blue;
+	        overflow: hidden;
+	        border-radius: 20px;
+	        margin-bottom: 25px;
+	        color: $white;
+	        border-color: transparent;
+	        position: relative;
+	            &.playlib-books {
+	            	.owl-carousel {
+	            		position: inherit;
+		            	.owl-controls {
+		            		position: absolute;
+		            		top: 20px;
+		            		right: 30px;
+		            		.owl-pagination {
+                              .owl-page {
+                              	   &.active {
+                                      span {
+                                      	background: $blue;
+                                      }
+                              	   }
+	                              	span {
+	                              		opacity: 1;
+	                              		width: 20px;
+	                              		height: 20px;
+	                              		background: $white;
+	                              	}
+                              }
+		            		}
+		            		.owl-buttons {
+		            		display: none;
+		            	    }
+		            	}
+		            	
+	                }
+	            }
+	            &.playlib-media {
+	            	.owl-carousel {
+	            		.owl-item {
+	            			text-align: center;
+	            		}
+	            		.views-field.views-field-field-video-link {
+	            			width: 200px;
+	            		}
+	            		.flickr-wrap .flickr-photo-img:hover, img.flickr-photoset-img:hover {
+	            			transform: none;
+	            			top: 0;
+	            			border: none;
+	            		}
+	            		span.flickr-credit, .flickr-citation {
+	            			display: none;
+	            		}
+	            		.flickr-photo-img, img.flickr-photoset-img {
+	            			box-shadow: none;
+	            			border: none;
+	            			border-radius: 0;
+	            			height: 180px;
+	            			width: 180px;
+	            		}
+	            		.owl-controls {
+			    				position: absolute;
+			    		        top: 30%;
+			    		        width: 100%;
+			    		        .owl-pagination {
+			    		        	display: none;
+			    		        }
+			    				.owl-buttons {
+			    					.owl-prev {
+			    						float: left;
+			    						background: url('../images/libraryzurb/left-arrow.png') no-repeat;
+			    						opacity: 1;
+			    						color: transparent;
+			    						border-radius: 0;
+			    						margin-left: -28px;
+			    						padding: 10px;
+
+			    					}
+			    					.owl-next {
+			    						float: right;
+			    						background: url('../images/libraryzurb/right-arrow.png') no-repeat;
+			    						opacity: 1;
+			    						color: transparent;
+			    						border-radius: 0;
+			    						margin-right: -45px;
+			    						padding: 10px;
+
+			    					}
+			    				}
+			    			}
+	            	}
+	            }    
+			         .block-title {
+			           color: $white;
+			          	background-image: url('../images/libraryzurb/background-saffron.png');
+						padding-top: 26px;
+						padding-bottom: 25px;
+						background-position: -71px -200px;
+						height: 110px;
+						background-repeat: no-repeat;
+						border-bottom: medium none;
+						margin-top: -1px;
+						padding-left:4%;
+			         }
+			         p {
+			           padding-left: 20px;
+			           padding-right: 20px;
+			         }
+	         
+	      }
+}
 .block-title {}
-.block-content {}
+.view {
+	&.view-media-photos-videos- {
+	
+	}
+}
 
 // Drupal sytem blocks:
 // .block-search {}
 // .block-system {}
+
+.owl-carousel {
+	max-width: 89%;
+	margin: 0 auto;
+	padding-bottom: 40px;
+}

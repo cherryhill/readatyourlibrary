@@ -305,7 +305,10 @@ li {
 /* HEADER AREA */
 
 header {
-	background: url(../images/bookphoto.png) no-repeat top right;
+	background: url('../images/libraryzurb/header-background.png') no-repeat;
+	background-size: cover;
+	
+
 	@media all and (max-width: $smallmedium-screen) {
 		background: none;
 	}
@@ -350,9 +353,8 @@ header {
 
 .sidebar {
 	.block:not(.block-menu-block-1) {
-		border: 1px solid;
-		padding: 0.5em 1em 0.25em;
-		font-size: 0.9em;
+		/* border: 1px solid;
+		font-size: 0.9em; */
 		margin: 0 0 2em 0;
 		h2 {
 			&.block-title {
