@@ -16,6 +16,18 @@
   	 			  	margin-left: 1px;
   	 			  	height: 110px;
   	 			  	width: 100px;
+  	 			  	-webkit-transition-duration: 0.8s;
+					-moz-transition-duration: 0.8s;
+					-o-transition-duration: 0.8s;
+					transition-duration: 0.8s;
+
+					-webkit-transition-property: -webkit-transform;
+					-moz-transition-property: -moz-transform;
+					-o-transition-property: -o-transform;
+					transition-property: transform;
+					  &:hover {
+					  	transform: rotateY(360deg);
+					  }
 
   	 			  	  a {
   	 			  	  	 color: transparent;

@@ -34,12 +34,14 @@
                background-color: $blue;
                padding: 5px 20px;
                border: 1px solid $blue;
-               border-radius: 5px;
+               border-radius: 15px;
+               font-size: 21px;
+               box-shadow: 4px 4px $blueshadow;
                 &.msg {
                    padding: 5px 20px 5px 40px !important;
                    background: $blue url('../images/libraryzurb/msg-img.png');
                    background-repeat: no-repeat;
-                   background-position: 10px 5px;
+                   background-position: 10px 12px;
     
                 }
              }
@@ -48,6 +50,8 @@
                   color: $black !important;
                   background: none !important;
                   border: none !important;
+                  font-size: 14px;
+                  box-shadow: none !important;
                 }
               }
               
@@ -70,7 +74,7 @@
 }
 
 #topmostbranding {
-  max-width: 710px;
+  max-width: 920px;
   padding: 3px 0.5em;
   display: inline-block;
   float: right;

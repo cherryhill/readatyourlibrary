@@ -1,4 +1,7 @@
 // Blocks
+body {
+	font-family: McLaren-Regular;
+}
 .block {
 	&.announcement {
 		background: $yellow url('../images/libraryzurb/annocement.png') no-repeat;
@@ -10,10 +13,15 @@
 		 	padding: 26px 36px;
 		 	border: none;
 		 	color: $black;
+		 	font-size: 28px;
+		 	font-family: McLaren-Regular;
 		 }
 		 .views-field-body {
 		 	p {
 		 		padding-left: 36px;
+		 		font-family: Arialbold;
+		 		font-size: 17px;
+		 		font-weight: bold;
 		 	}
 		 	ol {
 		 		margin-left: 90px;
@@ -21,6 +29,8 @@
 		 		
 		 		 li {
 		 		 	position: relative;
+		 		 	font-size: 17px;
+		 		 	font-family: Arialregular;
 		 		 	&:after {
 		 		 		background: url('../images/libraryzurb/arrow-list.png') no-repeat;
 		 		 		display: block;
@@ -46,6 +56,18 @@
 	            &.playlib-books {
 	            	.owl-carousel {
 	            		position: inherit;
+	            		.owl-item {
+	            			.views-field {
+	            				display: flex;
+	            				align-items: center;
+	            				justify-content: center;
+							    height: 280px;
+							     img {
+							     	width: 100%;
+							     }
+
+	            			}
+	            		}
 		            	.owl-controls {
 		            		position: absolute;
 		            		top: 20px;
@@ -129,22 +151,120 @@
 	            }    
 			         .block-title {
 			           color: $white;
-			          	background-image: url('../images/libraryzurb/background-saffron.png');
+			          	font-family: McLaren-Regular;
 						padding-top: 26px;
 						padding-bottom: 25px;
-						background-position: -71px -200px;
+					    font-size: 28px;
 						height: 110px;
-						background-repeat: no-repeat;
 						border-bottom: medium none;
 						margin-top: -1px;
 						padding-left:4%;
+						z-index: 0;
+						position: relative;
+						 &:after {
+						 	content: "";
+						 	background: url('../images/libraryzurb/background-saffron.png') no-repeat;
+						 		background-position: -35px 10px;
+						 		width: 100%;
+						 		height: 110px;
+						 		transform: rotate(180deg);
+						 		-webkit-transform: rotate(180deg);
+						 		-moz-transform: rotate(180deg);
+						 		-ms-transform: rotate(180deg);
+						 		-o-transform: rotate(180deg);
+						 		position: absolute;
+						 		left: 0;
+						 		top: 0;
+						 		z-index: -1;
+
+						 }
 			         }
 			         p {
-			           padding-left: 20px;
-			           padding-right: 20px;
+			           padding-left: 40px;
+			           padding-right: 40px;
+			           font-size: 17px;
 			         }
 	         
 	      }
+	&.footer-playlibdetails, &.playlib-copyright, &.footer-playlibpolicies {
+		width: 100%;
+		text-align: left !important;
+		float: none !important;
+		clear: both;
+		font-family: Arialbold;
+	}
+	&.footer-playlibdetails,  &.footer-playlibpolicies {
+		font-size: 14px;
+	}
+	&.playlib-copyright {
+		font-size: 12px !important;
+	}
+	&.block-menu-menu-social-sharing-icons {
+		position: absolute;
+		top: 0;
+		right: 0;
+		  .block-title {
+		  	display: none;
+		  	border-bottom: none;
+		  }
+		  	  ul.menu {
+		  	  	li {
+		  	  		border-right: none !important;
+		  	  		width: 50px;
+		  	  		 a {
+		  	  		 	visibility: hidden;
+		  	  		 	position: relative;
+		  	  		 	  &:after {
+		  	  		 	  	content: " ";
+		  	  		 	  	width: 50px;
+		  	  		 	  	height: 50px;
+		  	  		 	  	display: block;
+		  	  		 	  	visibility: visible;
+		  	  		 	  	position: absolute;
+		  	  		 	  	top: 0;
+		  	  		 	  	left: 0;
+		  	  		 	  	-webkit-transition-duration: 0.8s;
+							-moz-transition-duration: 0.8s;
+							-o-transition-duration: 0.8s;
+							transition-duration: 0.8s;
+
+							-webkit-transition-property: -webkit-transform;
+							-moz-transition-property: -moz-transform;
+							-o-transition-property: -o-transform;
+							transition-property: transform;
+
+		  	  		 	  }
+
+		  	  		 	  &.fb {
+		  	  		 	  	 &:after {
+		  	  		 	  	 	 background: url('../images/libraryzurb/facebook.png') no-repeat;
+		  	  		 	  	 }
+		  	  		 	  }
+		  	  		 	  &.twit {
+		  	  		 	  	 &:after {
+		  	  		 	  	 	background: url('../images/libraryzurb/twitter.png') no-repeat;
+		  	  		 	  	 }
+		  	  		 	  }
+		  	  		 	  &.tmblr {
+		  	  		 	  	 &:after {
+		  	  		 	  	 	background: url('../images/libraryzurb/tumbir.png') no-repeat;
+		  	  		 	  	 }
+		  	  		 	  }
+		  	  		 	  &.pntrst {
+		  	  		 	  	 &:after {
+		  	  		 	  	 background: url('../images/libraryzurb/pinterest.png') no-repeat;
+		  	  		 	  	}
+		  	  		 	  }
+                         &:hover {
+		  	  		 		&:after {
+		  	  		 			transform: rotateY(360deg);
+		  	  		 		}
+		  	  		 	}
+		  	  		 }
+		  	  	}
+		  	  }
+		  
+	}
 }
 .block-title {}
 .view {

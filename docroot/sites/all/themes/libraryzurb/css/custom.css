@@ -45,6 +45,26 @@
 * of each libary site using the font-your-face module.
 *
 */
+@font-face {
+  font-family: "McLaren-Regular";
+  src: url("../fonts/libraryzurb-fonts/McLaren-Regular.ttf");
+}
+@font-face {
+  font-family: "Pt-seriefbold";
+  src: url("../fonts/libraryzurb-fonts/PTF75F.ttf");
+}
+@font-face {
+  font-family: "Pt-seriefregular";
+  src: url("../fonts/libraryzurb-fonts/PTF55F.ttf");
+}
+@font-face {
+  font-family: "Arialbold";
+  src: url("../fonts/libraryzurb-fonts/Arial-Black-Bold.ttf");
+}
+@font-face {
+  font-family: "Arialregular";
+  src: url("../fonts/libraryzurb-fonts/Chn_Prop_Arial_Normal.ttf");
+}
 /*! normalize.css v2.1.2 | MIT License | git.io/normalize */
 /* ==========================================================================
    HTML5 display definitions
@@ -6289,6 +6309,17 @@ a.th {
   margin-left: 1px;
   height: 110px;
   width: 100px;
+  -webkit-transition-duration: 0.8s;
+  -moz-transition-duration: 0.8s;
+  -o-transition-duration: 0.8s;
+  transition-duration: 0.8s;
+  -webkit-transition-property: -webkit-transform;
+  -moz-transition-property: -moz-transform;
+  -o-transition-property: -o-transform;
+  transition-property: transform;
+}
+.l-header .row.header-middle section.block-menu-menu-secoundary-menu ul.menu li:hover {
+  transform: rotateY(360deg);
 }
 .l-header .row.header-middle section.block-menu-menu-secoundary-menu ul.menu li a {
   color: transparent;
@@ -6350,6 +6381,10 @@ a.th {
   height: 100%;
 }
 
+body {
+  font-family: McLaren-Regular;
+}
+
 .block.announcement {
   background: #fdeb52 url("../images/libraryzurb/annocement.png") no-repeat;
   background-size: 100%;
@@ -6361,9 +6396,14 @@ a.th {
   padding: 26px 36px;
   border: none;
   color: #000;
+  font-size: 28px;
+  font-family: McLaren-Regular;
 }
 .block.announcement .views-field-body p {
   padding-left: 36px;
+  font-family: Arialbold;
+  font-size: 17px;
+  font-weight: bold;
 }
 .block.announcement .views-field-body ol {
   margin-left: 90px;
@@ -6371,6 +6411,8 @@ a.th {
 }
 .block.announcement .views-field-body ol li {
   position: relative;
+  font-size: 17px;
+  font-family: Arialregular;
 }
 .block.announcement .views-field-body ol li:after {
   background: url("../images/libraryzurb/arrow-list.png") no-repeat;
@@ -6393,6 +6435,15 @@ a.th {
 }
 .block.homepage-blocks.playlib-books .owl-carousel {
   position: inherit;
+}
+.block.homepage-blocks.playlib-books .owl-carousel .owl-item .views-field {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 280px;
+}
+.block.homepage-blocks.playlib-books .owl-carousel .owl-item .views-field img {
+  width: 100%;
 }
 .block.homepage-blocks.playlib-books .owl-carousel .owl-controls {
   position: absolute;
@@ -6460,19 +6511,100 @@ a.th {
 }
 .block.homepage-blocks .block-title {
   color: #fff;
-  background-image: url("../images/libraryzurb/background-saffron.png");
+  font-family: McLaren-Regular;
   padding-top: 26px;
   padding-bottom: 25px;
-  background-position: -71px -200px;
+  font-size: 28px;
   height: 110px;
-  background-repeat: no-repeat;
   border-bottom: medium none;
   margin-top: -1px;
   padding-left: 4%;
+  z-index: 0;
+  position: relative;
+}
+.block.homepage-blocks .block-title:after {
+  content: "";
+  background: url("../images/libraryzurb/background-saffron.png") no-repeat;
+  background-position: -35px 10px;
+  width: 100%;
+  height: 110px;
+  transform: rotate(180deg);
+  -webkit-transform: rotate(180deg);
+  -moz-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  -o-transform: rotate(180deg);
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: -1;
 }
 .block.homepage-blocks p {
-  padding-left: 20px;
-  padding-right: 20px;
+  padding-left: 40px;
+  padding-right: 40px;
+  font-size: 17px;
+}
+.block.footer-playlibdetails, .block.playlib-copyright, .block.footer-playlibpolicies {
+  width: 100%;
+  text-align: left !important;
+  float: none !important;
+  clear: both;
+  font-family: Arialbold;
+}
+.block.footer-playlibdetails, .block.footer-playlibpolicies {
+  font-size: 14px;
+}
+.block.playlib-copyright {
+  font-size: 12px !important;
+}
+.block.block-menu-menu-social-sharing-icons {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+.block.block-menu-menu-social-sharing-icons .block-title {
+  display: none;
+  border-bottom: none;
+}
+.block.block-menu-menu-social-sharing-icons ul.menu li {
+  border-right: none !important;
+  width: 50px;
+}
+.block.block-menu-menu-social-sharing-icons ul.menu li a {
+  visibility: hidden;
+  position: relative;
+}
+.block.block-menu-menu-social-sharing-icons ul.menu li a:after {
+  content: " ";
+  width: 50px;
+  height: 50px;
+  display: block;
+  visibility: visible;
+  position: absolute;
+  top: 0;
+  left: 0;
+  -webkit-transition-duration: 0.8s;
+  -moz-transition-duration: 0.8s;
+  -o-transition-duration: 0.8s;
+  transition-duration: 0.8s;
+  -webkit-transition-property: -webkit-transform;
+  -moz-transition-property: -moz-transform;
+  -o-transition-property: -o-transform;
+  transition-property: transform;
+}
+.block.block-menu-menu-social-sharing-icons ul.menu li a.fb:after {
+  background: url("../images/libraryzurb/facebook.png") no-repeat;
+}
+.block.block-menu-menu-social-sharing-icons ul.menu li a.twit:after {
+  background: url("../images/libraryzurb/twitter.png") no-repeat;
+}
+.block.block-menu-menu-social-sharing-icons ul.menu li a.tmblr:after {
+  background: url("../images/libraryzurb/tumbir.png") no-repeat;
+}
+.block.block-menu-menu-social-sharing-icons ul.menu li a.pntrst:after {
+  background: url("../images/libraryzurb/pinterest.png") no-repeat;
+}
+.block.block-menu-menu-social-sharing-icons ul.menu li a:hover:after {
+  transform: rotateY(360deg);
 }
 
 .owl-carousel {
@@ -6495,17 +6627,23 @@ a.th {
 #logo {
   float: left;
   margin: 0.75em 0.5em 0.75em 0;
+  width: 64px;
 }
 @media only screen and (max-width: 769px) {
   #logo {
-    width: 60px;
+    width: 64px;
   }
 }
 
 #site-name {
   font-size: 1.5em;
   line-height: 1em;
-  margin: 2.75em 0 0 0;
+  margin: 0.75em 0 0 0;
+}
+#site-name a {
+  color: #fff;
+  font-size: 36px;
+  font-family: Pt-seriefbold;
 }
 @media only screen and (max-width: 769px) {
   #site-name {
@@ -6514,10 +6652,12 @@ a.th {
 }
 
 #site-slogan {
-  font-size: 1em;
+  font-size: 23px;
   line-height: 1em;
   margin: 0.25em 0 0 0;
   padding-left: 0.25em;
+  color: #fff;
+  font-family: Pt-seriefregular;
 }
 @media only screen and (max-width: 769px) {
   #site-slogan {
@@ -6537,6 +6677,8 @@ button,
   margin-left: 20px;
   border: 1px solid #fdeb52;
   border-radius: 10px;
+  font-size: 17px;
+  box-shadow: 2px 3px #92a26b;
 }
 button:hover, button:focus,
 .button:hover,
@@ -6548,6 +6690,7 @@ button:hover, button:focus,
 button a,
 .button a {
   color: #000;
+  font-size: 17px;
 }
 button a:hover, button a focus,
 .button a:hover,
@@ -8008,7 +8151,8 @@ button a:hover, button a focus,
  * Styles for the Post-Footer area.
  */
 .post-footer {
-  background-color: #333333;
+  background: url("../images/libraryzurb/header-background.png") no-repeat;
+  background-size: 100%;
   color: white;
 }
 .post-footer a {
@@ -8136,18 +8280,22 @@ button a:hover, button a focus,
   background-color: #267fda;
   padding: 5px 20px;
   border: 1px solid #267fda;
-  border-radius: 5px;
+  border-radius: 15px;
+  font-size: 21px;
+  box-shadow: 4px 4px #a39735;
 }
 .pre-header .pre-header-left section .view .views-field a.msg {
   padding: 5px 20px 5px 40px !important;
   background: #267fda url("../images/libraryzurb/msg-img.png");
   background-repeat: no-repeat;
-  background-position: 10px 5px;
+  background-position: 10px 12px;
 }
 .pre-header .pre-header-left section .view .views-field.views-field-name a {
   color: #000 !important;
   background: none !important;
   border: none !important;
+  font-size: 14px;
+  box-shadow: none !important;
 }
 .pre-header .pre-header-right {
   padding: 0;
@@ -8162,7 +8310,7 @@ button a:hover, button a focus,
 }
 
 #topmostbranding {
-  max-width: 710px;
+  max-width: 920px;
   padding: 3px 0.5em;
   display: inline-block;
   float: right;
@@ -8402,6 +8550,7 @@ ul.quicktabs-tabs li a:focus, ul.quicktabs-tabs li a:hover {
    ----------------------------------------- */
 a {
   color: gray;
+  cursor: progress;
 }
 a.permalink {
   display: none;
@@ -8410,7 +8559,7 @@ a.permalink {
 a:hover,
 a:focus {
   color: white;
-  background-color: gray;
+  background-color: none;
 }
 
 h1#page-title {
@@ -8713,8 +8862,12 @@ header h2 {
 }
 .sidebar .block:not(.block-menu-block-1) h2.block-title {
   border: 0;
-  font-size: 1em;
+  font-size: 22px;
   text-transform: uppercase;
+  line-height: 1;
+}
+.sidebar .block:not(.block-menu-block-1) .view-reward-earn .view-content {
+  padding: 0px 20px;
 }
 
 .l-triptych h2.block-title {

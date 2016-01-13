@@ -21,6 +21,8 @@ $white: #fff;
 $black: #000;
 $green: #7eb600;
 $orange: #f6511d;
+$blueshadow: #a39735;
+$buttonshadow: #92a26b;
 
 // Font Families
 // ------------------------------------------------------
@@ -1382,3 +1384,52 @@ $large-fixed: 1281px; // screen fixed after 1280 resolution
 
 // $topbar-sticky-class: ".sticky";
 // $topbar-arrows: true; //Set false to remove the triangle icon from the menu item
+//include font-family
+
+@mixin font-face($name: null, $style: null, $exts: eot woff2 woff ttf svg) {
+  $src: null;
+
+  $extmods: (
+    eot: "?",
+    svg: "#" + str-replace($name, " ", "_")
+  );
+
+  $formats: (
+    otf: "opentype",
+    ttf: "truetype"
+  );
+
+  @each $ext in $exts {
+    $extmod: if(map-has-key($extmods, $ext), $ext + map-get($extmods, $ext), $ext);
+    $format: if(map-has-key($formats, $ext), map-get($formats, $ext), $ext);
+    $src: append($src, url(quote($path + "." + $extmod)) format(quote($format)), comma);
+  }
+
+  @font-face {
+    font-family: quote($name);
+    font-style: $style;
+    font-weight: $weight;
+    src: $src;
+  }
+}
+ @font-face {
+  font-family: "McLaren-Regular";
+  src: url('../fonts/libraryzurb-fonts/McLaren-Regular.ttf');
+ }
+ @font-face {
+  font-family: "Pt-seriefbold";
+  src: url('../fonts/libraryzurb-fonts/PTF75F.ttf');
+ }
+  @font-face {
+  font-family: "Pt-seriefregular";
+  src: url('../fonts/libraryzurb-fonts/PTF55F.ttf');
+ }
+  @font-face {
+  font-family: "Arialbold";
+  src: url('../fonts/libraryzurb-fonts/Arial-Black-Bold.ttf');
+ }
+  @font-face {
+  font-family: "Arialregular";
+  src: url('../fonts/libraryzurb-fonts/Chn_Prop_Arial_Normal.ttf');
+ }
+ 

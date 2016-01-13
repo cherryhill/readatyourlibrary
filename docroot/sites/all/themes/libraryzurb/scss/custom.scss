@@ -79,6 +79,7 @@
 
 a {
 	color: $color_gray_medium;
+	cursor: progress;
 
 	&.permalink {
 		display: none;
@@ -87,7 +88,7 @@ a {
 a:hover,
 a:focus {
 	color: $color_white;
-	background-color: $color_gray_medium;
+	background-color: none;
 }
 
 h1 {
@@ -359,8 +360,14 @@ header {
 		h2 {
 			&.block-title {
 				border: 0;
-				font-size: 1em;
+				font-size: 22px;
 				text-transform: uppercase;
+				line-height: 1;
+			}
+		}
+		.view-reward-earn {
+			.view-content {
+				padding: 0px 20px;
 			}
 		}
 	}
