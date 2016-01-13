@@ -79,9 +79,9 @@ function auto_role_allocation_menu() {
     'access arguments' => array('access content'),
     'type' => MENU_SUGGESTED_ITEM,
   );
-  // $items['test1'] = array(
-  //   'title' => 'Test Page1',
-  //   'page callback' => 'test_page1',
+  // $items['staff/register'] = array(
+  //   'title' => 'Staff registration',
+  //   'page callback' => 'staff_registration',
   //   'access arguments' => array('access content'),
   //   'type' => MENU_SUGGESTED_ITEM,
   // );
@@ -145,9 +145,7 @@ $result_value = db_query("SELECT ac.title,ac.created
     
 $i++;
 
-   //  $count_query = db_query("SELECT COUNT(id) as id
-   //  FROM {eck_activity} ec
-   // WHERE ec.uid = :uid AND ec.created BETWEEN $mininum_timestamp AND $value->created",array(':uid' => $uid))->fetchAll();
+   
      
     
   }
@@ -157,9 +155,6 @@ $i++;
   
   
 
-//   echo "<pre>";
-// print_r($mininum_timestamp);
-//   die();
    
   $query_state = db_select('calendar', 'c')
 ->fields('c', array('image_url','date'))
@@ -211,3 +206,16 @@ function user_progress() {
   $j = 10-$i;
   return '<div>Total days read:'." ".$count_days.'</div></br><div>'.$j." ".'more days needed to receive your first prize'.'</div>';
 }
+
+
+
+function auto_role_allocation_menu_alter(&$items) {
+  global $user;
+  if($user->roles[1] == 'anonymous user') {
+      $items['staff/register']['access callback'] = FALSE;
+    
+  }
+  
+}
+
+
