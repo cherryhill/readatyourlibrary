@@ -66,7 +66,9 @@ jQuery( document ).ready(function() {
         var expl_img1 = expl_img[1].split("//");
         var expl_img2 = expl_img1[1].split("?");
         var expl_img3 = expl_img2[0].split("/");
-        var image_name = expl_img3[7];  
+        //var image_name = expl_img3[9];
+        var image_name = expl_img3[7];
+
         
         console.log(copiedEventObject.title);
         //console.log(copiedEventObject);
@@ -93,6 +95,7 @@ jQuery( document ).ready(function() {
 
         jQuery.ajax({
         
+            //url: 'http://localhost/playatyourlibrary/docroot/test',
             url: 'http://play.dev.chillco.com/test',
             type: 'post',
             dataType: 'json',
@@ -107,9 +110,9 @@ jQuery( document ).ready(function() {
               alert("data");
             },
             error: function(jqXHR, data, error){
-                console.log(jqXHR);
-                console.log(data);
-                console.log(error);
+                //console.log(jqXHR);
+                //console.log(data);
+                //console.log(error);
             }
         });
 
@@ -134,7 +137,7 @@ jQuery( document ).ready(function() {
         // $('#mycalendar').fullCalendar('renderEvent', event);
         console.log('Element:');
         console.log(element);
-        return jQuery.parseHTML(element.description);
+        return element.description;
     },
     events: eventsList
 
