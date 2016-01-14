@@ -129,7 +129,8 @@
       <?php print render($title_suffix); ?>
 
       <?php if (!empty($tabs)): ?>
-        <div class="primary-tabs"><?php print render($tabs); ?></div>
+        <!-- disabling the view,edit buttons -->
+        <div class="primary-tabs"><?php //print render($tabs); ?></div> 
         <?php if (!empty($tabs2)): ?>
           <div class="secondary-tabs"><?php print render($tabs2); ?></div>
         <?php endif; ?>
