@@ -95,23 +95,37 @@ function test_page() {
   $event_image = $_POST['image'];
   $event_date = $_POST['date'];
   $event_uid = $_POST['user_id'];
-  
+  $serial_id = $_POST['id'];
+  //print_r($serial_id);
+ $count_stiker = db_query("SELECT COUNT(image_url) as image_url
+     FROM {calendar} c
+    WHERE c.uid = :uid",array(':uid' => $uid))->fetchfield();
+ //print_r($count_stiker);die();
+   //    if($serial_id == $count_stiker) {
 
+   // db_update('calendar')
+   //    ->fields(array('image_url' => $event_image,'date' => $event_date))
+   //    ->condition ('uid', $event_uid)
+   //    ->execute();
+
+      
+
+   // }
  
-  // database save
- $insert_query =db_insert('calendar')
-->fields(array(
-'uid'=>$event_uid,
-'image_url'=>$event_image,
-'date'=>$event_date,
-));
-$insert_query->execute();
-  
-  $response = array(
-    "result"  =>  1
-    );
-
-
+   //else {
+     $insert_query =db_insert('calendar')
+      ->fields(array(
+      'uid'=>$event_uid,
+      'image_url'=>$event_image,
+      'date'=>$event_date,
+      ));
+      $insert_query->execute();
+        
+        $response = array(
+          "result"  =>  1
+          );
+   //}
+   
 }
 
 
@@ -123,62 +137,33 @@ function generate_json_data() {
   $current_time = time();
   $current_date = date('Y-m-d', $current_time);
  // print_r($current_date);die();
-
-
-
-$result_value = db_query("SELECT ac.title,ac.created
-    FROM {eck_activity} ac
-   WHERE (ac.uid = :uid) AND (MONTH('$current_date'))",array(':uid' => $uid))->fetchAll();
-   $i = 1;
-  foreach ($result_value as $value) {
-    $title = $value->title;
-    $created_time[] = $value->created;
-
-
-  
-
-    $event1[] = array(
-        'title' => 'Reading'." ".$i." ".'day',
-        'date' => date('D M d Y',$value->created)." ".'00:00:00 GMT+0530 (IST)', 
-      );
-    
-    
-$i++;
-
-   
-     
-    
-  }
-
-    
-
-  
   
 
    
   $query_state = db_select('calendar', 'c')
-->fields('c', array('image_url','date'))
+->fields('c', array('image_url','date','id'))
 ->condition('uid', $uid)
 ->execute();
 $result = $query_state->fetchAll();
-// print_r($result);
+
 $events = array();
 // print_r(date('Y-m-d', strtotime('2015-11-30T18:30:00.000Z')));
 $i = 1;
 $j = 1;
 foreach ($result as $value) {
+  
 $k = $i%10 ;
 if($k==0) {
 
      $events[] = array(
-    'title' => '<div><img src="sites/default/files/styles/thumbnail/public/' . $value->image_url . '"</img>'.'Congratulations! You earned prize!'.'</div>', 
+    'title' => '<img data-id="test1" src="sites/default/files/styles/thumbnail/public/' . $value->image_url . '"</img>'.'Congratulations! You earned prize!', 
     'date' => $value->date,
     );
   }
 else {
 
  $events[] = array(
-    'title' => '<div><img src="sites/default/files/styles/thumbnail/public/' . $value->image_url . '"</img>'.'Read'." ".$i." ".'days</div>', 
+    'title' => '<img data-id="test12" src="sites/default/files/styles/thumbnail/public/' . $value->image_url . '"</img>'.'Read', 
     'date' => $value->date,
   );
 
@@ -190,6 +175,8 @@ else {
   $j++;
   
 }
+//print_r(json_encode($events));die();
+
   $out = "<script>var eventsList = " . json_encode($events) . "</script>";
   return $out;
 }
