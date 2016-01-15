@@ -5,6 +5,12 @@ function auto_role_allocation_schema(){
 $schema['calendar'] = array(
             'description' => 'To save the state of calendar',
             'fields' => array(
+                    'id' => array(
+                            'description' => 'id field',
+                            'type' => 'serial',
+                            'not null' => TRUE,
+                            'unsigned' => TRUE,
+                    ),
                     'uid' => array(
                             'description' => 'User id',
                             'type' => 'int',
@@ -21,7 +27,7 @@ $schema['calendar'] = array(
                             'length' => '256',
                     ),  
                 ),
-                   
+            'primary key' => array('id'),       
         );
     
     return $schema;
