@@ -51,7 +51,6 @@ body {
 	        border-radius: 20px;
 	        margin-bottom: 25px;
 	        color: $white;
-	        border-color: transparent;
 	        position: relative;
 	            &.playlib-books {
 	            	.owl-carousel {
@@ -257,7 +256,11 @@ body {
 		  	  		 	  }
                          &:hover {
 		  	  		 		&:after {
-		  	  		 			transform: rotateY(360deg);
+		  	  		 			transform: rotate(360deg);
+		  	  		 			-webkit-transform: rotate(360deg);
+						 		-moz-transform: rotate(360deg);
+						 		-ms-transform: rotate(360deg);
+						 		-o-transform: rotate(360deg);
 		  	  		 		}
 		  	  		 	}
 		  	  		 }

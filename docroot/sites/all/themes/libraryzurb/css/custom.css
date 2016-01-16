@@ -6320,10 +6320,14 @@ a.th {
 }
 .l-header .row.header-middle section.block-menu-menu-secoundary-menu ul.menu li:hover {
   transform: rotateY(360deg);
+  -webkit-transform: rotateY(360deg);
+  -moz-transform: rotateY(360deg);
+  -ms-transform: rotateY(360deg);
+  -o-transform: rotateY(360deg);
 }
 .l-header .row.header-middle section.block-menu-menu-secoundary-menu ul.menu li a {
-  color: transparent;
   position: relative;
+  visibility: hidden;
 }
 .l-header .row.header-middle section.block-menu-menu-secoundary-menu ul.menu li a:after {
   width: 100px;
@@ -6334,6 +6338,7 @@ a.th {
   position: absolute;
   left: 0;
   top: 0;
+  visibility: visible;
 }
 .l-header .row.header-middle section.block-menu-menu-secoundary-menu ul.menu li a.current-program {
   position: relative;
@@ -6430,7 +6435,6 @@ body {
   border-radius: 20px;
   margin-bottom: 25px;
   color: #fff;
-  border-color: transparent;
   position: relative;
 }
 .block.homepage-blocks.playlib-books .owl-carousel {
@@ -6604,7 +6608,11 @@ body {
   background: url("../images/libraryzurb/pinterest.png") no-repeat;
 }
 .block.block-menu-menu-social-sharing-icons ul.menu li a:hover:after {
-  transform: rotateY(360deg);
+  transform: rotate(360deg);
+  -webkit-transform: rotate(360deg);
+  -moz-transform: rotate(360deg);
+  -ms-transform: rotate(360deg);
+  -o-transform: rotate(360deg);
 }
 
 .owl-carousel {
@@ -8147,12 +8155,174 @@ button a:hover, button a focus,
   }
 }
 
+body {
+  /**css for msg center**/
+  /**msg center css end**/
+}
+body.page-messages div.main {
+  background: #267fda;
+  overflow: hidden;
+  border-radius: 20px;
+  margin-bottom: 25px;
+  position: relative;
+  padding: 0;
+  padding-bottom: 20px;
+}
+body.page-messages div.main #page-title {
+  color: #fff;
+  font-family: McLaren-Regular !important;
+  padding-top: 26px;
+  padding-bottom: 25px;
+  font-size: 28px;
+  height: 110px;
+  border-bottom: medium none;
+  margin-top: -1px;
+  padding-left: 4%;
+  z-index: 0;
+  position: relative;
+}
+body.page-messages div.main #page-title:after {
+  content: "";
+  background: url("../images/libraryzurb/background-saffron.png") no-repeat;
+  background-position: -35px 10px;
+  width: 100%;
+  height: 110px;
+  transform: rotate(180deg);
+  -webkit-transform: rotate(180deg);
+  -moz-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  -o-transform: rotate(180deg);
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: -1;
+}
+body.page-messages div.main ul.pagination.pager {
+  float: right;
+  margin-right: 20px;
+}
+body.page-messages div.main ul.pagination.pager li a {
+  background: #fdeb52;
+  color: #000;
+  border-left: 1px solid #000;
+  padding: 10px;
+}
+body.page-messages div.main ul.pagination.pager li.arrow.first a {
+  border-left: 0 !important;
+  border-radius: 10px 0px 0px 10px;
+}
+body.page-messages div.main ul.pagination.pager li.arrow.last a {
+  border-radius: 0px 10px 10px 0px;
+}
+body.page-messages div.main ul.button-group li a {
+  background: #fdeb52;
+  color: #000;
+}
+body.page-messages div.main ul.button-group:after {
+  clear: none !important;
+}
+body.page-messages div.main ul.action-links {
+  list-style: none;
+}
+body.page-messages div.main ul.action-links li a {
+  margin-left: 20px;
+  padding: 0.363em 1.125em 0.425em;
+  border: 1px solid #fdeb52;
+  border-radius: 10px;
+  box-shadow: 2px 3px #92a26b;
+  color: #000;
+  background: #fdeb52;
+  position: relative;
+  top: 5px;
+}
+body.page-messages div.main form {
+  clear: both;
+}
+body.page-messages div.main form button {
+  font-size: 14px !important;
+}
+body.page-messages div.main form #privatemsg-list-form table {
+  border: none;
+  margin: 0 auto !important;
+  max-width: 90%;
+}
+body.page-messages div.main form #privatemsg-list-form table tr th, body.page-messages div.main form #privatemsg-list-form table tr th > a, body.page-messages div.main form #privatemsg-list-form table tr td, body.page-messages div.main form #privatemsg-list-form table tr td > a {
+  color: #fff;
+}
+body.page-messages div.main form #privatemsg-list-form table thead {
+  background: #267fda;
+  font-weight: normal;
+  border-bottom: 5px solid #267fda;
+}
+body.page-messages div.main form #privatemsg-list-form table tbody {
+  border-top: none;
+}
+body.page-messages div.main form #privatemsg-list-form table tbody .privatemsg-unread td {
+  font-weight: normal;
+}
+body.page-messages div.main form #privatemsg-list-form table tbody tr.even, body.page-messages div.main form #privatemsg-list-form table tbody tr.odd {
+  border-bottom: none;
+  background-color: #267fda;
+}
+body.page-messages div.main form #privatemsg-list-form table tr.even, body.page-messages div.main form #privatemsg-list-form table tr.alt, body.page-messages div.main form #privatemsg-list-form table tr:nth-of-type(2n) {
+  background: #267fda;
+}
+body.page-messages div.main form #privatemsg-list-form .container-inline {
+  width: 100%;
+  padding-bottom: 20px;
+  max-width: 480px;
+  margin: 0 auto;
+}
+body.page-messages div.main form #privatemsg-list-form .container-inline div.form-type-textfield {
+  display: none;
+}
+body.page-messages div.main form #privatemsg-list-form .container-inline div.form-type-select .chosen-container-single {
+  width: 200px !important;
+}
+body.page-messages div.main form #privatemsg-list-form .container-inline div.form-type-select .chosen-container-single .chosen-single {
+  font-size: 14px;
+  background: #fdeb52 !important;
+  box-shadow: 2px 3px #92a26b;
+  border: 1px solid #fdeb52;
+  color: #000;
+  padding: 7px 20px;
+  height: auto !important;
+  border-radius: 10px;
+}
+body.page-messages div.main form #privatemsg-list-form .container-inline div.form-type-select .chosen-container-single .chosen-single div {
+  top: 8px;
+}
+body.page-messages div.main form fieldset {
+  border: none;
+}
+body.page-messages div.main form fieldset legend {
+  background: none;
+  font-weight: normal;
+  margin-top: 15px;
+}
+body.page-messages div.main form fieldset legend a {
+  background: #fdeb52;
+  color: #000;
+  border: 1px solid #fdeb52;
+  box-shadow: 2px 3px #92a26b;
+  border-radius: 10px;
+  padding: 0.363em 1.125em 0.425em;
+}
+body.page-messages div.main form fieldset legend a:hover, body.page-messages div.main form fieldset legend a:focus {
+  outline: none;
+}
+body.page-messages div.main form fieldset .form-item label {
+  color: #fff;
+  text-align: left !important;
+  padding-bottom: 5px;
+}
+
 /**
  * Styles for the Post-Footer area.
  */
 .post-footer {
   background: url("../images/libraryzurb/header-background.png") no-repeat;
-  background-size: 100%;
+  background-size: cover;
   color: white;
 }
 .post-footer a {

@@ -1,0 +1,204 @@
+body {
+	/**css for msg center**/
+	&.page-messages {
+		div.main {
+			background: $blue;
+	        overflow: hidden;
+	        border-radius: 20px;
+	        margin-bottom: 25px;
+	        position: relative; 
+	        padding: 0;
+	        padding-bottom: 20px;
+	         #page-title {
+			    color: $white;
+	          	font-family: McLaren-Regular !important;
+				padding-top: 26px;
+				padding-bottom: 25px;
+			    font-size: 28px;
+				height: 110px;
+				border-bottom: medium none;
+				margin-top: -1px;
+				padding-left:4%;
+				z-index: 0;
+				position: relative;
+				 &:after {
+				 	content: "";
+				 	background: url('../images/libraryzurb/background-saffron.png') no-repeat;
+				 		background-position: -35px 10px;
+				 		width: 100%;
+				 		height: 110px;
+				 		transform: rotate(180deg);
+				 		-webkit-transform: rotate(180deg);
+				 		-moz-transform: rotate(180deg);
+				 		-ms-transform: rotate(180deg);
+				 		-o-transform: rotate(180deg);
+				 		position: absolute;
+				 		left: 0;
+				 		top: 0;
+				 		z-index: -1;
+
+				 }
+	         }
+	        ul {
+	        	&.pagination.pager {
+	        		float: right;
+	        		margin-right: 20px;
+	        		 li {
+	        		 	a {
+	        		 		background: $yellow;
+	        		 		color: $black;
+	        		 		border-left: 1px solid $black;
+	        		 		padding: 10px;
+	        		 	}
+	        		 	&.arrow {
+	        		 		&.first {
+	        		 			a {
+	        		 				border-left: 0 !important;
+	        		 				border-radius: 10px 0px 0px 10px;
+	        		 			}
+	        		 		}
+	        		 		&.last {
+	        		 			a {
+	        		 				border-radius: 0px 10px 10px 0px;
+	        		 			}
+	        		 		}
+	        		 	}
+	        		 }
+	        	}
+	        	&.button-group {
+	        		li {
+	        			a {
+	        				background: $yellow;
+	        				color: $black;
+	        			}
+	        		}
+		        		&:after {
+		        			clear: none !important;
+		        		}
+	        	}
+	        	&.action-links {
+	        		list-style: none;
+	        		 li {
+	        		 	a {
+	        		 		margin-left:20px;
+	        		 		padding: 0.363em 1.125em 0.425em;
+	        		 		border: 1px solid $yellow;
+	        		 		border-radius: 10px;
+	        		 		box-shadow: 2px 3px $buttonshadow;
+	        		 		color: $black;
+	        		 		background: $yellow;
+	        		 		position: relative;
+	        		 		top: 5px;
+	        		 	}
+	        		 }
+	        	}
+
+	        }
+	        form {
+	        	clear: both;
+	        		 button {
+        	 			font-size: 14px !important;
+        	 		}
+        	 	 #privatemsg-list-form {
+        	 	 	table {
+        	 	 		border: none;
+        	 	 		margin: 0 auto !important;
+        	 	 		max-width: 90%;
+        	 	 		 tr {
+        	 	 		 	 	th, th > a, td, td > a {
+        	 	 		 	 		color: $white;
+        	 	 		 	 	}
+        	 	 		 	 }
+
+        	 	 		 thead {
+        	 	 		 	background: $blue;
+        	 	 		 	font-weight: normal;
+        	 	 		 	border-bottom: 5px solid $blue;
+
+        	 	 		 	 
+        	 	 		 }
+        	 	 		 tbody {
+        	 	 		 	border-top: none;
+        	 	 		 	.privatemsg-unread td {
+        	 	 		 		font-weight: normal;
+        	 	 		 	}
+        	 	 		 	 tr.even, tr.odd {
+        	 	 		 	 	border-bottom: none;
+        	 	 		 	 	background-color: $blue;
+        	 	 		 	 }
+
+        	 	 		 }
+        	 	 		 tr.even, tr.alt, tr:nth-of-type(2n) {
+        	 	 		 	background: $blue;
+        	 	 		 }
+
+        	 	 	}
+        	 	 	.container-inline {
+        	 	 		width: 100%;
+        	 	 		padding-bottom: 20px;
+        	 	 		max-width: 480px;
+        	 	 		margin: 0 auto;
+
+        	 	 		  div {
+        	 	 		  	 &.form-type-textfield {
+        	 	 		  	 	display: none;
+        	 	 		  	 }
+        	 	 		  	 &.form-type-select {
+        	 	 		  	 	.chosen-container-single {
+        	 	 		  	 		width: 200px !important;
+        	 	 		  	 		 .chosen-single {
+        	 	 		  	 		 	font-size: 14px;
+        	 	 		  	 		 	background: $yellow !important;
+        	 	 		  	 		 	box-shadow: 2px 3px $buttonshadow;
+        	 	 		  	 		 	border: 1px solid $yellow;
+        	 	 		  	 		 	color: $black;
+        	 	 		  	 		 	padding: 7px 20px;
+        	 	 		  	 		 	height: auto !important;
+        	 	 		  	 		 	border-radius: 10px;
+        	 	 		  	 		 	  div {
+        	 	 		  	 		 	  	top: 8px;
+        	 	 		  	 		 	  }
+        	 	 		  	 		 }
+        	 	 		  	 	}
+        	 	 		  	 }
+        	 	 		  }
+        	 	 	}
+        	 	 }
+	        	 fieldset {
+	        	 	border: none;
+	        	 	 legend {
+	        	 	 	background: none;
+	        	 	 	font-weight: normal;
+	        	 	 	margin-top: 15px;
+
+	        	 	 	 a {
+	        	 	 	 	background: $yellow;
+	        	 	 	 	color: $black;
+	        	 	 	 	border: 1px solid $yellow;
+	        	 	 	 	box-shadow: 2px 3px $buttonshadow;
+	        	 	 	 	border-radius: 10px;
+	        	 	 	 	padding: 0.363em 1.125em 0.425em;
+	        	 	 	 	  &:hover, &:focus {
+	        	 	 	 	  	outline: none;
+	        	 	 	 	  }
+	        	 	 	 	
+
+	        	 	 	 }
+
+	        	 	 }
+	        	 	.form-item {
+	        	 		label {
+	        	 			color: $white;
+	        	 			text-align: left !important;
+	        	 			padding-bottom: 5px;
+	        	 		}
+
+	        	 	}
+
+	        	 }
+
+	        }
+	     }
+	}
+ /**msg center css end**/
+}
