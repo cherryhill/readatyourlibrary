@@ -31,6 +31,22 @@ function payl_program_customizations_user_load($users) {
  * Implements hook_form_alter().
  */
 function payl_program_customizations_form_alter(&$form, &$form_state, $form_id) {
+  // changes for ticket 361 and 362
+  if ($form_id == 'user_profile_form') {
+    global $user;
+    $uid = $user->uid;
+
+    $form['public_profile'] = array(
+      '#markup' => t('<a href="../dashboard">My Public Profile</a>'),
+      '#weight' => -20,
+    );
+
+    $form['change_username'] = array(
+      '#markup' => t('<a href="../edit">Change My Username or Password</a>'),
+    );
+
+  }
+
   if ($form_id == 'user_register_form') {
     $setting = array(
       'payl_program_customizations_birthday_limit' => strtotime('-13 years'),

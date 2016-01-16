@@ -1,3 +1,6 @@
+<?php
+ //echo "Hello"; die('123');
+?>
 <!--.page -->
 <div role="document" class="page">
 
@@ -129,7 +132,8 @@
       <?php print render($title_suffix); ?>
 
       <?php if (!empty($tabs)): ?>
-        <div class="primary-tabs"><?php print render($tabs); ?></div>
+      	<!-- changes for ticket 361 -->
+        <div class="primary-tabs"><?php $needed_tabs = $tabs['#secondary'][1]; print render($needed_tabs); ?></div>
         <?php if (!empty($tabs2)): ?>
           <div class="secondary-tabs"><?php print render($tabs2); ?></div>
         <?php endif; ?>
