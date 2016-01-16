@@ -51,12 +51,17 @@ jQuery( document ).ready(function() {
 
 
   jQuery('#calendar').fullCalendar({
+
     editable: true,
     droppable: true, // this allows things to be dropped onto the calendar !!!
     drop: function (date, allDay) { // this function is called when something is dropped
-
+        var count = jQuery(".fc-event-container").children('div').length;
+        //alert(count);
         // retrieve the dropped element's stored Event Object
         var originalEventObject = jQuery(this).data(('eventObject'));
+        
+        console.log("original");
+        console.log(originalEventObject);
 
         // we need to copy it, so that multiple events don't have a reference to the same object
         var copiedEventObject = jQuery.extend({}, originalEventObject);
@@ -66,7 +71,9 @@ jQuery( document ).ready(function() {
         var expl_img1 = expl_img[1].split("//");
         var expl_img2 = expl_img1[1].split("?");
         var expl_img3 = expl_img2[0].split("/");
-        var image_name = expl_img3[7];  
+        //var image_name = expl_img3[9];
+        var image_name = expl_img3[7];
+
         
         console.log(copiedEventObject.title);
         //console.log(copiedEventObject);
@@ -88,15 +95,19 @@ jQuery( document ).ready(function() {
 
         var currentUser = Drupal.settings.auto_role_allocation.currentUser;
        
-
+         if( typeof serial_id === "undefined" ) {
+            serial_id = 0;
+        }
        
 
         jQuery.ajax({
         
+            //url: 'http://localhost/playatyourlibrary/docroot/test',
             url: 'http://play.dev.chillco.com/test',
             type: 'post',
             dataType: 'json',
             data: {
+                id: count,
                 image: image_name,
                 date: copiedEventObject.start,
                 user_id: currentUser
@@ -104,15 +115,15 @@ jQuery( document ).ready(function() {
             success: function(data){
               console.log("data:");
               console.log(data);
-              alert("data");
+              //alert("data");
             },
             error: function(jqXHR, data, error){
-                console.log(jqXHR);
-                console.log(data);
-                console.log(error);
+                //console.log(jqXHR);
+                //console.log(data);
+                //console.log(error);
             }
         });
-
+       
     },
 
     header: {
@@ -132,9 +143,40 @@ jQuery( document ).ready(function() {
     eventRender: function(event, element) {
         element.description = element[0].textContent;
         // $('#mycalendar').fullCalendar('renderEvent', event);
-        console.log('Element:');
-        console.log(element);
-        return jQuery.parseHTML(element.description);
+        // console.log('Element:');
+        // console.log(element);
+        return element.description;
+    },
+    eventDrop: function( event, dayDelta, minuteDelta, allDay, revertFunc, jsEvent, ui, view ) {
+       var count = jQuery(".fc-event-container").children('div').length;
+        if( typeof serial_id === "undefined" ) {
+            serial_id = 0;
+        }
+        var currentUser = Drupal.settings.auto_role_allocation.currentUser;
+        console.log(event);
+        jQuery.ajax({        
+            //url: 'http://localhost/playatyourlibrary/docroot/test',
+            url: 'http://play.dev.chillco.com/test',
+            type: 'post',
+            dataType: 'json',
+            data: {
+                id: count,
+                image: event.title,
+                date: event.start,
+                user_id: currentUser
+            },
+            success: function(data){
+              console.log("data:");
+              console.log(data);
+              //alert("data");
+            },
+            error: function(jqXHR, data, error){
+                //console.log(jqXHR);
+                //console.log(data);
+                //console.log(error);
+            }
+        });
+        
     },
     events: eventsList
 
