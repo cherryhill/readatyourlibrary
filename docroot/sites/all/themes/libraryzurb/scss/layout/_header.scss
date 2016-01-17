@@ -32,7 +32,7 @@
 						-ms-transform: rotateY(360deg);
 						-o-transform: rotateY(360deg);
 					  }
-
+                         
   	 			  	  a {
   	 			  	  	  position: relative;
   	 			  	  	  visibility: hidden;
@@ -91,7 +91,17 @@
   	 			  	  	  	 background: none;
   	 			  	  	  }
   	 			  	  }
+  	 			    &.active-trail {
+  	 			    	a {
+  	 			  	  	  &.reviews {
+                            &:after {
+  	 			  	  	  	  background: url('../images/libraryzurb/reviewactive.png') no-repeat !important;
+  	 			  	  	    }
+  	 			  	  	  }
+  	 			    	}
+  	 			    }
   	 			  }
+
 
   	 		}
   	 	}
