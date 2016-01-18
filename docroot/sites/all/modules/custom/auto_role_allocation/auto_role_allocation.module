@@ -96,11 +96,13 @@ function test_page() {
   $event_image = $_POST['image'];
   $event_date = $_POST['date'];
   $event_uid = $_POST['user_id'];
+  $event_time = strtotime($event_date);
+  //print_r($event_time);die();
 
 
 if($image_id) {
     db_update('calendar')
-    ->fields(array('image_url' => $event_image,'date' => $event_date))
+    ->fields(array('image_url' => $event_image,'date' => $event_time))
     ->condition ('id', $image_id)
     ->execute();
 }
@@ -111,7 +113,7 @@ else {
       ->fields(array(
       'uid'=>$event_uid,
       'image_url'=>$event_image,
-      'date'=>$event_date,
+      'date'=>$event_time,
       ));
       $insert_query->execute();
         
@@ -140,10 +142,6 @@ function generate_json_data() {
 ->condition('uid', $uid)
 ->execute();
 $result = $query_state->fetchAll();
-
-
-
-
 
 
 
