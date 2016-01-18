@@ -95,7 +95,7 @@ body {
 		background-position: center center;
 		color: $black;
 		border-radius: 20px;
-		box-shadow: 1px 2px $buttonshadow;
+		box-shadow: 0px 12px 12px -8px $black;
 		 .block-title {
 		 	padding: 26px 36px;
 		 	border: none;
@@ -139,7 +139,7 @@ body {
 	        margin-bottom: 25px;
 	        color: $white;
 	        position: relative;
-	        box-shadow: 1px 2px $buttonshadow;
+	       box-shadow: 0px 12px 12px -8px $black;
 	            &.playlib-books {
 	            	.owl-carousel {
 	            		position: inherit;
@@ -372,7 +372,11 @@ body {
 }
 .view {
 	&.view-media-photos-videos- {
-	
+	  .view-footer {
+	  	button {
+	  		margin-top: 20px;
+	  	}
+	  }
 	}
 }
 
@@ -383,5 +387,5 @@ body {
 .owl-carousel {
 	max-width: 89%;
 	margin: 0 auto;
-	padding-bottom: 40px;
+
 }
