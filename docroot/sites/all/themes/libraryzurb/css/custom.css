@@ -6269,6 +6269,7 @@ a.th {
   margin-bottom: 25px;
   color: #fff;
   position: relative;
+  box-shadow: 1px 2px #92a26b;
 }
 .orange-blue .block-title, .block.block-user-login .block-title, .section-activities .main .view-activities-page- .block-title, .section-activities .main .block-block .block-title, .section-activities .sidebar .block-views .block-title, .orange-blue h2, .block.block-user-login h2, .section-activities .main .view-activities-page- h2, .section-activities .main .block-block h2, .section-activities .sidebar .block-views h2 {
   color: #fff;
@@ -6283,6 +6284,8 @@ a.th {
   z-index: 0;
   position: relative;
   font-weight: normal !important;
+  border-radius: 20px;
+  overflow: hidden;
 }
 .orange-blue .block-title:after, .block.block-user-login .block-title:after, .section-activities .main .view-activities-page- .block-title:after, .section-activities .main .block-block .block-title:after, .section-activities .sidebar .block-views .block-title:after, .orange-blue h2:after, .block.block-user-login h2:after, .section-activities .main .view-activities-page- h2:after, .section-activities .main .block-block h2:after, .section-activities .sidebar .block-views h2:after {
   content: "";
@@ -6582,6 +6585,7 @@ body {
   background-position: center center;
   color: #000;
   border-radius: 20px;
+  box-shadow: 1px 2px #92a26b;
 }
 .block.announcement .block-title {
   padding: 26px 36px;
@@ -6622,6 +6626,7 @@ body {
   margin-bottom: 25px;
   color: #fff;
   position: relative;
+  box-shadow: 1px 2px #92a26b;
 }
 .block.homepage-blocks.playlib-books .owl-carousel {
   position: inherit;
@@ -6712,6 +6717,8 @@ body {
   z-index: 0;
   position: relative;
   font-weight: normal !important;
+  border-radius: 20px;
+  overflow: hidden;
 }
 .block.homepage-blocks .block-title:after {
   content: "";
@@ -6739,7 +6746,7 @@ body {
   text-align: left !important;
   float: none !important;
   clear: both;
-  font-family: Arialbold;
+  font-family: Arialbold !important;
 }
 .block.footer-playlibdetails, .block.footer-playlibpolicies {
   font-size: 14px;
@@ -6766,8 +6773,8 @@ body {
 }
 .block.block-menu-menu-social-sharing-icons ul.menu li a:after {
   content: " ";
-  width: 50px;
-  height: 50px;
+  width: 40px;
+  height: 40px;
   display: block;
   visibility: visible;
   position: absolute;
@@ -6781,18 +6788,24 @@ body {
   -moz-transition-property: -moz-transform;
   -o-transition-property: -o-transform;
   transition-property: transform;
+  border-radius: 100%;
+  box-shadow: 0px 12px 12px -8px #000;
 }
 .block.block-menu-menu-social-sharing-icons ul.menu li a.fb:after {
   background: url("../images/libraryzurb/facebook.png") no-repeat;
+  background-position: center;
 }
 .block.block-menu-menu-social-sharing-icons ul.menu li a.twit:after {
   background: url("../images/libraryzurb/twitter.png") no-repeat;
+  background-position: center;
 }
 .block.block-menu-menu-social-sharing-icons ul.menu li a.tmblr:after {
   background: url("../images/libraryzurb/tumbir.png") no-repeat;
+  background-position: center;
 }
 .block.block-menu-menu-social-sharing-icons ul.menu li a.pntrst:after {
   background: url("../images/libraryzurb/pinterest.png") no-repeat;
+  background-position: center;
 }
 .block.block-menu-menu-social-sharing-icons ul.menu li a:hover:after {
   transform: rotate(360deg);
@@ -9015,7 +9028,7 @@ body.page-booklists .main .view-booklist-slideshow .owl-carousel .owl-buttons .o
 }
 
 #topmostbranding {
-  max-width: 920px;
+  max-width: 841px;
   padding: 3px 0.5em;
   display: inline-block;
   float: right;

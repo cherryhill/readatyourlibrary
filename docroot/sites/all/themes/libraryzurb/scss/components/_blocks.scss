@@ -3,6 +3,7 @@ body {
 	font-family: McLaren-Regular !important;
 }
 .block {
+
 	&.block-user-login {
 		 @extend .orange-blue;
 		  form {
@@ -94,6 +95,7 @@ body {
 		background-position: center center;
 		color: $black;
 		border-radius: 20px;
+		box-shadow: 1px 2px $buttonshadow;
 		 .block-title {
 		 	padding: 26px 36px;
 		 	border: none;
@@ -137,6 +139,7 @@ body {
 	        margin-bottom: 25px;
 	        color: $white;
 	        position: relative;
+	        box-shadow: 1px 2px $buttonshadow;
 	            &.playlib-books {
 	            	.owl-carousel {
 	            		position: inherit;
@@ -246,6 +249,8 @@ body {
 						z-index: 0;
 						position: relative;
 						font-weight: normal !important;
+						border-radius: 20px;
+						overflow: hidden;
 						 &:after {
 						 	content: "";
 						 	background: url('../images/libraryzurb/background-saffron.png') no-repeat;
@@ -276,7 +281,7 @@ body {
 		text-align: left !important;
 		float: none !important;
 		clear: both;
-		font-family: Arialbold;
+		font-family: Arialbold !important;
 	}
 	&.footer-playlibdetails,  &.footer-playlibpolicies {
 		font-size: 14px;
@@ -301,8 +306,8 @@ body {
 		  	  		 	position: relative;
 		  	  		 	  &:after {
 		  	  		 	  	content: " ";
-		  	  		 	  	width: 50px;
-		  	  		 	  	height: 50px;
+		  	  		 	  	width: 40px;
+		  	  		 	  	height: 40px;
 		  	  		 	  	display: block;
 		  	  		 	  	visibility: visible;
 		  	  		 	  	position: absolute;
@@ -317,27 +322,34 @@ body {
 							-moz-transition-property: -moz-transform;
 							-o-transition-property: -o-transform;
 							transition-property: transform;
+							
+							border-radius: 100%;
+							box-shadow: 0px 12px 12px -8px $black;
 
 		  	  		 	  }
 
 		  	  		 	  &.fb {
 		  	  		 	  	 &:after {
 		  	  		 	  	 	 background: url('../images/libraryzurb/facebook.png') no-repeat;
+		  	  		 	  	 	 background-position: center;
 		  	  		 	  	 }
 		  	  		 	  }
 		  	  		 	  &.twit {
 		  	  		 	  	 &:after {
 		  	  		 	  	 	background: url('../images/libraryzurb/twitter.png') no-repeat;
+		  	  		 	  	 	background-position: center;
 		  	  		 	  	 }
 		  	  		 	  }
 		  	  		 	  &.tmblr {
 		  	  		 	  	 &:after {
 		  	  		 	  	 	background: url('../images/libraryzurb/tumbir.png') no-repeat;
+		  	  		 	  	 	background-position: center;
 		  	  		 	  	 }
 		  	  		 	  }
 		  	  		 	  &.pntrst {
 		  	  		 	  	 &:after {
 		  	  		 	  	 background: url('../images/libraryzurb/pinterest.png') no-repeat;
+		  	  		 	  	 background-position: center;
 		  	  		 	  	}
 		  	  		 	  }
                          &:hover {
