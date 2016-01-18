@@ -92,28 +92,22 @@ function auto_role_allocation_menu() {
 function test_page() {
   global $user;
   $uid = $user->uid;
+  $image_id = $_POST['id'];
   $event_image = $_POST['image'];
   $event_date = $_POST['date'];
   $event_uid = $_POST['user_id'];
-  $serial_id = $_POST['id'];
-  //print_r($serial_id);
- $count_stiker = db_query("SELECT COUNT(image_url) as image_url
-     FROM {calendar} c
-    WHERE c.uid = :uid",array(':uid' => $uid))->fetchfield();
- //print_r($count_stiker);die();
-   //    if($serial_id == $count_stiker) {
 
-   // db_update('calendar')
-   //    ->fields(array('image_url' => $event_image,'date' => $event_date))
-   //    ->condition ('uid', $event_uid)
-   //    ->execute();
 
-      
+if($image_id) {
+    db_update('calendar')
+    ->fields(array('image_url' => $event_image,'date' => $event_date))
+    ->condition ('id', $image_id)
+    ->execute();
+}
 
-   // }
- 
-   //else {
-     $insert_query =db_insert('calendar')
+
+else {
+   $insert_query =db_insert('calendar')
       ->fields(array(
       'uid'=>$event_uid,
       'image_url'=>$event_image,
@@ -124,7 +118,8 @@ function test_page() {
         $response = array(
           "result"  =>  1
           );
-   //}
+      }
+  
    
 }
 
@@ -136,34 +131,41 @@ function generate_json_data() {
   $uid = $user->uid;
   $current_time = time();
   $current_date = date('Y-m-d', $current_time);
- // print_r($current_date);die();
   
 
    
   $query_state = db_select('calendar', 'c')
 ->fields('c', array('image_url','date','id'))
+->orderBy('date', 'ASC')
 ->condition('uid', $uid)
 ->execute();
 $result = $query_state->fetchAll();
 
+
+
+
+
+
+
+
 $events = array();
-// print_r(date('Y-m-d', strtotime('2015-11-30T18:30:00.000Z')));
 $i = 1;
 $j = 1;
 foreach ($result as $value) {
-  
+  //print_r($value->id);die();
 $k = $i%10 ;
 if($k==0) {
+  
 
      $events[] = array(
-    'title' => '<img data-id="test1" src="sites/default/files/styles/thumbnail/public/' . $value->image_url . '"</img>'.'Congratulations! You earned prize!', 
+    'title' => '<div><img data-id="'.$value->id.'" src="sites/default/files/styles/thumbnail/public/' . $value->image_url . '"</img>'.'Congratulations! You earned prize!</div>', 
     'date' => $value->date,
     );
   }
 else {
 
  $events[] = array(
-    'title' => '<img data-id="test12" src="sites/default/files/styles/thumbnail/public/' . $value->image_url . '"</img>'.'Read', 
+    'title' => '<div><img data-id="'.$value->id.'" src="sites/default/files/styles/thumbnail/public/' . $value->image_url . '"</img>'.'Read'.$i.'days</div>', 
     'date' => $value->date,
   );
 
