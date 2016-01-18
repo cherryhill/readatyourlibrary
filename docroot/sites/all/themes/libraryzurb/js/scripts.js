@@ -55,13 +55,13 @@ jQuery( document ).ready(function() {
     editable: true,
     droppable: true, // this allows things to be dropped onto the calendar !!!
     drop: function (date, allDay) { // this function is called when something is dropped
-        var count = jQuery(".fc-event-container").children('div').length;
+       // var count = jQuery(".fc-event-container").children('div').length;
         //alert(count);
         // retrieve the dropped element's stored Event Object
         var originalEventObject = jQuery(this).data(('eventObject'));
         
-        console.log("original");
-        console.log(originalEventObject);
+        // console.log("original");
+        // console.log(originalEventObject);
 
         // we need to copy it, so that multiple events don't have a reference to the same object
         var copiedEventObject = jQuery.extend({}, originalEventObject);
@@ -95,9 +95,9 @@ jQuery( document ).ready(function() {
 
         var currentUser = Drupal.settings.auto_role_allocation.currentUser;
        
-         if( typeof serial_id === "undefined" ) {
-            serial_id = 0;
-        }
+        //  if( typeof serial_id === "undefined" ) {
+        //     serial_id = 0;
+        // }
        
 
         jQuery.ajax({
@@ -107,7 +107,7 @@ jQuery( document ).ready(function() {
             type: 'post',
             dataType: 'json',
             data: {
-                id: count,
+                //id: count,
                 image: image_name,
                 date: copiedEventObject.start,
                 user_id: currentUser
@@ -118,9 +118,9 @@ jQuery( document ).ready(function() {
               //alert("data");
             },
             error: function(jqXHR, data, error){
-                //console.log(jqXHR);
-                //console.log(data);
-                //console.log(error);
+                // console.log(jqXHR);
+                // console.log(data);
+                // console.log(error);
             }
         });
        
@@ -131,37 +131,55 @@ jQuery( document ).ready(function() {
         center: 'title',
         right: 'month,agendaWeek,agendaDay'
     },
-    eventRender: function (event, element, view) {
-        element.bind('click', function () {
-            var day = (jQuery.fullCalendar.formatDate(event.start, 'dd'));
-            var month = (jQuery.fullCalendar.formatDate(event.start, 'MM'));
-            var year = (jQuery.fullCalendar.formatDate(event.start, 'yyyy'));
-            alert(year + '-' + month + '-' + day);
-        });
-    },
+    // eventRender: function (event, element, view) {
+    //     element.bind('click', function () {
+    //         var day = (jQuery.fullCalendar.formatDate(event.start, 'dd'));
+    //         var month = (jQuery.fullCalendar.formatDate(event.start, 'MM'));
+    //         var year = (jQuery.fullCalendar.formatDate(event.start, 'yyyy'));
+    //         alert(year + '-' + month + '-' + day);
+    //     });
+    // },
     editable: true,
     eventRender: function(event, element) {
         element.description = element[0].textContent;
         // $('#mycalendar').fullCalendar('renderEvent', event);
         // console.log('Element:');
-        // console.log(element);
+         //console.log(element);
         return element.description;
     },
     eventDrop: function( event, dayDelta, minuteDelta, allDay, revertFunc, jsEvent, ui, view ) {
-       var count = jQuery(".fc-event-container").children('div').length;
-        if( typeof serial_id === "undefined" ) {
-            serial_id = 0;
-        }
+       // var count = jQuery(".fc-event-container").children('div').length;
+       //  if( typeof serial_id === "undefined" ) {
+       //      serial_id = 0;
+       //  }
         var currentUser = Drupal.settings.auto_role_allocation.currentUser;
-        console.log(event);
+        console.log(event.title);
+        var event_title = event.title;
+        var event_title1 = event_title.split('<div>');
+        var event_title2 = event_title1[1].split('</div>');
+        var event_title3 = event_title2[0].split('data-id');
+        var event_title4 = event_title3[1].split('=');
+        var event_title5 = event_title4[1].split('"');
+        var final_image_id = event_title5[1];
+
+        var event_tit = event.title;
+        var event_tit1 = event_tit.split('<div>');
+        var event_tit2 = event_tit1[1].split('src');
+        var event_tit3 = event_tit2[1].split('=');
+        var event_tit4 = event_tit3[1].split('"');
+        var event_tit5 = event_tit4[1].split('/');
+        var image_path = event_tit5[6];   
+          
+        
+
         jQuery.ajax({        
             //url: 'http://localhost/playatyourlibrary/docroot/test',
             url: 'http://play.dev.chillco.com/test',
             type: 'post',
             dataType: 'json',
             data: {
-                id: count,
-                image: event.title,
+                id: final_image_id,
+                image: image_path,
                 date: event.start,
                 user_id: currentUser
             },
