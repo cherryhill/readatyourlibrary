@@ -681,5 +681,128 @@ body {
 		 }
 	}
 }
-  
+
 }
+/**css for progress page**/
+ .section-progress {
+ 	 .main {
+ 	 	@extend .blue-background;
+ 	 	padding-left: 0;
+ 	 	padding-right: 0;
+ 	 	 #page-title {
+ 	 	 	@extend .wave-img;
+ 	 	 }
+ 	 	 .view-calendar-sticker {
+ 	 	 	@extend .yellow-background;
+ 	 	 	width: 100%;
+ 	 	 	max-width: 95%;
+ 	 	 	margin: 0 auto;
+ 	 	 	position: relative;
+ 	 	 	
+ 	 	 	 .view-header {
+ 	 	 	 	
+ 	 	 	 	width: 48%;
+ 	 	 	 	padding: 20px 0 20px 2%;
+ 	 	 	 	left: 0;
+ 	 	 	 	 p {
+ 	 	 	 	 	margin-bottom: 0;
+ 	 	 	 	 	color: $black;
+ 	 	 	 	 	  &.heading {
+ 	 	 	 	 	  	font-size: 21px;
+ 	 	 	 	 	  }
+ 	 	 	 	 }
+ 	 	 	 }
+ 	 	 	 .view-content {
+ 	 	 	 	position: relative;
+ 	 	 	 	width: 100%;
+ 	 	 	 	max-width: 53%;
+ 	 	 	 	display: inline-block;
+ 	 	 	 	.views-row {
+ 	 	 	 		float: left;
+ 	 	 	 		width: 20%;
+ 	 	 	 		clear: none !important;
+ 	 	 	 		max-width: 100px;
+ 	 	 	 		height: 110px;
+ 	 	 	 		display: flex;
+ 	 	 	 		align-items: center;
+ 	 	 	 		align-content: center;
+ 	 	 	 		 img {
+ 	 	 	 		 	border: none;
+ 	 	 	 		 }
+
+
+ 	 	 	 	}
+ 	 	 	 }
+ 	 	 }
+ 	 	.block {
+ 	 		&.progress-calendar {
+ 	 			width: 100%;
+ 	 			max-width: 95%;
+ 	 			margin: 20px auto;
+ 	 			box-shadow: 24px 15px 57px -21px $black;
+ 	 			 .block-title {
+ 	 			 	display: none;
+ 	 			 }
+ 	 			 #calendar {
+ 	 			 	.fc-header {
+ 	 			 		border: none;
+ 	 			 		background: none;
+ 	 			 		 .fc-header-center {
+ 	 			 		 	h2 {
+ 	 			 		 		color: $orange;
+ 	 			 		 		font-family: McLaren-Regular !important;
+ 	 			 		 		font-weight: normal !important;
+ 	 			 		 		border-bottom: none;
+ 	 			 		 		box-shadow: 5px 7px 25px -5px $black;
+ 	 			 		 	}
+ 	 			 		 }
+ 	 			 		 tbody {
+ 	 			 		 	border-top: none;
+ 	 			 		 }
+ 	 			 		 td {
+ 	 			 		 	span {
+ 	 			 		 		&.fc-button {
+ 	 			 		 			background: $yellow;
+ 	 			 		 			box-shadow: 6px 11px 15px -9px $black !important;
+ 	 			 		 			opacity: 1 !important;
+ 	 			 		 			color: $black;
+ 	 			 		 			 &.fc-button-agendaWeek, &.fc-button-agendaDay, &.fc-button-month {
+ 	 			 		 			 	display: none;
+ 	 			 		 			 }
+ 	 			 		 		}
+ 	 			 		 	}
+ 	 			 		 }
+ 	 			 	}
+ 	 			 	.fc-content {
+ 	 			 		.fc-border-separate {
+ 	 			 			margin-bottom: 0;
+ 	 			 			border: none;
+ 	 			 			 .fc-day-header {
+ 	 			 			 	padding-bottom: 5px;
+ 	 			 			 	color: $white;
+ 	 			 			 	font-weight: normal !important;
+ 	 			 			 }
+ 	 			 		}
+ 	 			 		.fc-widget-header{
+ 	 			 			border: none;
+ 	 			 			background: $blue;
+ 	 			 			}
+ 	 			 		.fc-widget-content {
+ 	 			 			border: 1px solid $orange;
+ 	 			 		}
+ 	 			 		.fc-day {
+ 	 			 			.fc-day-number {
+ 	 			 				color: $blue;
+ 	 			 			}
+	 	 			 		&.fc-state-highlight {
+	 	 			 			.fc-day-number {
+	 	 			 				color: $orange !important;
+	 	 			 			}
+	 	 			 		}
+ 	 			 		}
+ 	 			 	}
+ 	 			 }
+ 	 		}
+ 	 	}
+ 	}
+ }

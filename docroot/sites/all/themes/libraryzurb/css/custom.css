@@ -6360,7 +6360,7 @@ a.th {
   outline: none;
 }
 
-.yellow-background, body.page-reviews .view .view-filters, body.page-booklists .view .view-filters {
+.yellow-background, body.page-reviews .view .view-filters, body.page-booklists .view .view-filters, .section-progress .main .view-calendar-sticker {
   color: #fff;
   border-radius: 20px;
   background: #fdeb52;
@@ -6382,6 +6382,49 @@ a.th {
   position: absolute;
   top: 0;
   right: 0;
+}
+
+.blue-background, .section-progress .main {
+  background: #267fda;
+  overflow: hidden;
+  border-radius: 20px;
+  margin-bottom: 25px;
+  color: #fff;
+  position: relative;
+  box-shadow: 29px 30px 30px -20px #7e7e7e;
+}
+
+.wave-img, .section-progress .main #page-title {
+  color: #fff;
+  font-family: McLaren-Regular !important;
+  padding-top: 26px;
+  padding-bottom: 25px;
+  font-size: 28px;
+  height: 110px;
+  border-bottom: medium none;
+  margin-top: -1px;
+  padding-left: 4%;
+  z-index: 0;
+  position: relative;
+  font-weight: normal !important;
+  border-radius: 20px;
+  overflow: hidden;
+}
+.wave-img:after, .section-progress .main #page-title:after {
+  content: "";
+  background: url("../images/libraryzurb/background-saffron.png") no-repeat;
+  background-position: -35px 10px;
+  width: 100%;
+  height: 110px;
+  transform: rotate(180deg);
+  -webkit-transform: rotate(180deg);
+  -moz-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  -o-transform: rotate(180deg);
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: -1;
 }
 
 .admin-menu .fixed {
@@ -8875,6 +8918,103 @@ body.page-booklists .main .view-booklist-slideshow .owl-carousel .owl-buttons .o
 .section-activities .sidebar .block-views ul a {
   border-bottom: 1px solid #fff;
   font-size: 17px;
+}
+
+/**css for progress page**/
+.section-progress .main {
+  padding-left: 0;
+  padding-right: 0;
+}
+.section-progress .main .view-calendar-sticker {
+  width: 100%;
+  max-width: 95%;
+  margin: 0 auto;
+  position: relative;
+}
+.section-progress .main .view-calendar-sticker .view-header {
+  width: 48%;
+  padding: 20px 0 20px 2%;
+  left: 0;
+}
+.section-progress .main .view-calendar-sticker .view-header p {
+  margin-bottom: 0;
+  color: #000;
+}
+.section-progress .main .view-calendar-sticker .view-header p.heading {
+  font-size: 21px;
+}
+.section-progress .main .view-calendar-sticker .view-content {
+  position: relative;
+  width: 100%;
+  max-width: 53%;
+  display: inline-block;
+}
+.section-progress .main .view-calendar-sticker .view-content .views-row {
+  float: left;
+  width: 20%;
+  clear: none !important;
+  max-width: 100px;
+  height: 110px;
+  display: flex;
+  align-items: center;
+  align-content: center;
+}
+.section-progress .main .view-calendar-sticker .view-content .views-row img {
+  border: none;
+}
+.section-progress .main .block.progress-calendar {
+  width: 100%;
+  max-width: 95%;
+  margin: 20px auto;
+  box-shadow: 24px 15px 57px -21px #000;
+}
+.section-progress .main .block.progress-calendar .block-title {
+  display: none;
+}
+.section-progress .main .block.progress-calendar #calendar .fc-header {
+  border: none;
+  background: none;
+}
+.section-progress .main .block.progress-calendar #calendar .fc-header .fc-header-center h2 {
+  color: #f6511d;
+  font-family: McLaren-Regular !important;
+  font-weight: normal !important;
+  border-bottom: none;
+  box-shadow: 5px 7px 25px -5px #000;
+}
+.section-progress .main .block.progress-calendar #calendar .fc-header tbody {
+  border-top: none;
+}
+.section-progress .main .block.progress-calendar #calendar .fc-header td span.fc-button {
+  background: #fdeb52;
+  box-shadow: 6px 11px 15px -9px #000 !important;
+  opacity: 1 !important;
+  color: #000;
+}
+.section-progress .main .block.progress-calendar #calendar .fc-header td span.fc-button.fc-button-agendaWeek, .section-progress .main .block.progress-calendar #calendar .fc-header td span.fc-button.fc-button-agendaDay, .section-progress .main .block.progress-calendar #calendar .fc-header td span.fc-button.fc-button-month {
+  display: none;
+}
+.section-progress .main .block.progress-calendar #calendar .fc-content .fc-border-separate {
+  margin-bottom: 0;
+  border: none;
+}
+.section-progress .main .block.progress-calendar #calendar .fc-content .fc-border-separate .fc-day-header {
+  padding-bottom: 5px;
+  color: #fff;
+  font-weight: normal !important;
+}
+.section-progress .main .block.progress-calendar #calendar .fc-content .fc-widget-header {
+  border: none;
+  background: #267fda;
+}
+.section-progress .main .block.progress-calendar #calendar .fc-content .fc-widget-content {
+  border: 1px solid #f6511d;
+}
+.section-progress .main .block.progress-calendar #calendar .fc-content .fc-day .fc-day-number {
+  color: #267fda;
+}
+.section-progress .main .block.progress-calendar #calendar .fc-content .fc-day.fc-state-highlight .fc-day-number {
+  color: #f6511d !important;
 }
 
 /**
