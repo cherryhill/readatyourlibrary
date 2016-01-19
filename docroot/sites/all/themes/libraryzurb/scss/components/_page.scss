@@ -222,6 +222,7 @@ body {
   	 	color: $white;
   	 	padding-top: 20px;
   	 	border-radius: 20px;
+  	 	box-shadow: 17px 22px 31px -22px $black;
   	 	  .block-title {
   	 	  	@extend .white-text;
   	 	  	font-size: 21px !important;
@@ -324,9 +325,9 @@ body {
 	  	  		 	  			}
 	  	  		 	  	}
 	  	  		 	  	a {
+
 	  	  		 	  	    @extend .blue-button;
 	  	  		 	  	    height: 40px;
-	  	  		 	  	    box-shadow: 2px 3px $buttonshadow;
 	  	  		 	  	    border: none;
 	  	  		 	  	     div {
 		  	  		 	  		b{
@@ -372,6 +373,16 @@ body {
 	  	 					float: left;
 	  	 					padding-left: 5px;
 	  	 					padding-right: 5px;
+	  	 					 &.views-field-view-node {
+	  	 					 	span {
+	  	 					 		&.button {
+	  	 					 			visibility: hidden;
+	  	 					 			a {
+                                          visibility: visible;
+	  	 					 			}
+	  	 					 		}
+	  	 					 	}
+	  	 					 }
 	  	 					 &.views-field-title, &.views-field-php {
 	  	 					 	a {
 	  	 					 		@extend .blue-text;
