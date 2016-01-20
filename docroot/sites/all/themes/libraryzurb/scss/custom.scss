@@ -308,8 +308,15 @@ li {
 /* HEADER AREA */
 
 header {
+	.header-middle {
 	background: url('../images/libraryzurb/header-background.png') no-repeat;
 	background-size: cover;
+	@extend .box-shadow;
+	margin-top: -2px;
+}
+  div#topbar {
+  	border: none !important;
+  }
 	
 
 	@media all and (max-width: $smallmedium-screen) {

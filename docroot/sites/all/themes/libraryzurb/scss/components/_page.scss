@@ -1,5 +1,88 @@
 body {
-	/**common css for a tag for admin**/
+	/**common css for dashboard**/
+	 &.page-user-profile {
+	 	.homebox {
+	 		#homebox-buttons {
+	 			a {
+	 				text-decoration: none;
+	 				@extend .blue-button;
+	 				font-size: 21px;
+	 				margin-bottom: 10px;
+	 			}
+	 		}
+	 		.homebox-column {
+	 			background: none !important;
+	 			.homebox-portlet {
+	 				@extend .no-border;
+	 				@extend .yellow-background;
+	 				background-color: $yellow !important;
+	 			 .homebox-portlet-inner {
+	 			 	@extend .no-border;
+	 			 	.portlet-header {
+	 			 		@extend .no-border;
+	 			 		background: $blue !important;
+	 			 		color: $white !important;
+	 			 		@media screen and (min-width: 768px){
+	 			 		font-size: 22px !important;
+	 			 		padding: 10px 20px !important;
+	 			 		font-family: McLaren-Regular !important;
+	 			 		border-radius: 20px 20px 0px 0px;
+	 			 		.portlet-icon {
+	 			 			visibility: hidden;
+	 			 			position: relative;
+	 			 			top: 5px;
+	 			 			width: 20px !important;
+	 			 			height: 20px !important;
+	 			 			  &:after {
+	 			 			  	content: " ";
+	 			 			  	width: 20px;
+	 			 			  	height: 20px;
+	 			 			  	line-height: 20px;
+	 			 			  	border-radius: 100%;
+	 			 			  	background: $white;
+	 			 			  	color: $orange;
+	 			 			  	font-family: Arialregular !important;
+	 			 			  	display: block;
+	 			 			  	left: 0;
+	 			 			  	top: 5px;
+	 			 			  	visibility: visible;
+	 			 			  	text-align: center;
+	 			 			  }
+	 			 			&.portlet-close {
+	 			 				&:after {
+	 			 					content: "x" !important;
+	 			 					font-size: 14px;
+	 			 				}
+	 			 			}
+	 			 			&.portlet-minus {
+	 			 				&:after {
+	 			 					content: "-" !important;
+	 			 				}
+	 			 			}
+	 			 			&.portlet-maximize {
+	 			 					display: none !important;
+	 			 			}
+	 			 		}
+	 			 		.portlet-title {
+	 			 		position: relative;
+	 			 		width: 190px;
+	 			 		margin-left: 40px;
+	 			 		  &:after {
+	 			 		  	content: "";
+	 			 		  	height: 35px;
+	 			 		  	width: 35px;
+	 			 		  	background: url(../images/libraryzurb/right-arrow.png) no-repeat;
+	 			 		  	position: absolute;
+	 			 		  	right: 0;
+	 			 		  }
+	 			 		}
+	 			 	 }
+	 			 	}
+	 			 }
+	 			}
+	 		}
+	 	}
+	 }
 	
 	/**css for msg center**/
 	&.page-messages {
