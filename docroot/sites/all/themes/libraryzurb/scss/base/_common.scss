@@ -5,6 +5,7 @@
 // %font-FONTNAME   {}
 // %font-sans-serif { font-family: sans-serif; }
 // %font-serif      { font-family: serif; }
+
 .orange-blue {
 	background: $blue;
     overflow: hidden;
@@ -12,7 +13,7 @@
     margin-bottom: 25px;
     color: $white;
     position: relative;
-    box-shadow: 29px 30px 30px -20px $gray;
+    @extend .box-shadow;
       .block-title, h2 {
        	color: $white;
       	font-family: McLaren-Regular !important;
@@ -75,7 +76,7 @@
 	background: $yellow;
 	border: none;
 	padding: $button-sml 20px;
-	box-shadow: 14px 18px 19px -16px $black;
+	@extend .box-shadow;
 	 &:hover, &:focus {
 	 	color: $black;
 	 	background: $yellow;
@@ -91,7 +92,7 @@
 	background: $blue !important;
 	border-radius: 10px;
 	padding: $button-sml 20px;
-	box-shadow: 14px 18px 19px -16px $black;
+	@extend .box-shadow;
 	border: none;
 	  &:hover, &:focus {
 	 	color: $black;
@@ -107,7 +108,7 @@
 	background: $yellow;
 	font-family: McLaren-Regular !important; 
 	font-weight: normal !important;
-	box-shadow: 20px 18px 20px -19px $black;
+	@extend .box-shadow;
 
 }
 .like {
@@ -131,7 +132,7 @@
     margin-bottom: 25px;
     color: $white;
     position: relative;
-    box-shadow: 29px 30px 30px -20px $gray;
+    @extend .box-shadow;
 }
 .wave-img {
 		color: $white;
@@ -166,3 +167,8 @@
 
 		 }
     }
+.box-shadow {
+  -webkit-box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+}

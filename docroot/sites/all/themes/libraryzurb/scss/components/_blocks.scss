@@ -31,7 +31,7 @@ body {
 		border-radius: 20px;
 		padding-left: 10px;
 		padding-right: 10px;
-		box-shadow: 8px 7px 19px -4px $black;
+		@extend .box-shadow;
 		 .block-title {
 		 	border-top: none;
 		 	padding: 10px;
@@ -96,7 +96,7 @@ body {
 		background-position: center center;
 		color: $black;
 		border-radius: 20px;
-		box-shadow: 29px 30px 30px -20px $gray;
+		@extend .box-shadow;
 		 .block-title {
 		 	padding: 26px 36px;
 		 	border: none;
@@ -140,7 +140,7 @@ body {
 	        margin-bottom: 25px;
 	        color: $white;
 	        position: relative;
-	       box-shadow: 29px 30px 30px -20px $gray;
+	        @extend .box-shadow;
 	            &.playlib-books {
 	            	.owl-carousel {
 	            		position: inherit;
@@ -325,7 +325,7 @@ body {
 							transition-property: transform;
 							
 							border-radius: 100%;
-							box-shadow: 7px 9px 9px -8px $black;
+							@extend .box-shadow;
 
 		  	  		 	  }
 

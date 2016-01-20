@@ -78,17 +78,19 @@
    ----------------------------------------- */
 
 a {
-	color: $color_gray_medium;
+	color: $blue;
 	cursor: progress;
 
 	&.permalink {
-		display: none;
+		display: none;;
 	}
 }
 a:hover,
 a:focus {
-	color: $color_white;
+	color: $blue;
 	background-color: none;
+	outline: none;
+	text-decoration: underline;
 }
 
 h1 {

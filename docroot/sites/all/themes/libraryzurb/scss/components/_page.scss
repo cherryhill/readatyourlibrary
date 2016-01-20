@@ -1,6 +1,28 @@
 body {
+	/**common css for a tag for admin**/
+	
 	/**css for msg center**/
 	&.page-messages {
+		/**create-msg***/
+		&.page-messages-new, &.page-messages-view {
+			.main {
+				form {
+				width: 100%;
+				max-width: 90%;
+				margin: 0 auto;
+				 label,div {
+				 	@extend .white-text;
+				 }
+				.form-submit {
+					@extend .yellow-button;
+				}
+				fieldset#edit-token {
+					display: none;
+				}
+			 }
+			}
+		}
+		/**end create-msg**/
 		div.main {
 			background: $blue;
 	        overflow: hidden;
@@ -9,6 +31,7 @@ body {
 	        position: relative; 
 	        padding: 0;
 	        padding-bottom: 20px;
+	        @extend .box-shadow;
 	         #page-title {
 			    color: $white;
 	          	font-family: McLaren-Regular !important;
@@ -81,10 +104,11 @@ body {
 	        		 li {
 	        		 	a {
 	        		 		margin-left:20px;
-	        		 		padding: 0.363em 1.125em 0.425em;
+	        		 		padding: 0.625em 1.125em 0.5625em;
+	        		 		font-size: 0.8125em;
 	        		 		border: 1px solid $yellow;
 	        		 		border-radius: 10px;
-	        		 		box-shadow: 2px 3px $buttonshadow;
+	        		 		@extend .box-shadow;
 	        		 		color: $black;
 	        		 		background: $yellow;
 	        		 		position: relative;
@@ -149,7 +173,7 @@ body {
         	 	 		  	 		 .chosen-single {
         	 	 		  	 		 	font-size: 14px;
         	 	 		  	 		 	background: $yellow !important;
-        	 	 		  	 		 	box-shadow: 2px 3px $buttonshadow;
+        	 	 		  	 		 	@extend .box-shadow;
         	 	 		  	 		 	border: 1px solid $yellow;
         	 	 		  	 		 	color: $black;
         	 	 		  	 		 	padding: 7px 20px;
@@ -175,9 +199,10 @@ body {
 	        	 	 	 	background: $yellow;
 	        	 	 	 	color: $black;
 	        	 	 	 	border: 1px solid $yellow;
-	        	 	 	 	box-shadow: 2px 3px $buttonshadow;
+	        	 	 	 	@extend .box-shadow;
 	        	 	 	 	border-radius: 10px;
-	        	 	 	 	padding: 0.363em 1.125em 0.425em;
+	        	 	 	 	padding: 0.625em 1.125em 0.5625em;
+	        		 		font-size: 0.8125em;
 	        	 	 	 	  &:hover, &:focus {
 	        	 	 	 	  	outline: none;
 	        	 	 	 	  }
@@ -632,7 +657,6 @@ body {
  	 div {
  	 	a {
  	 		padding-left: 20px;
- 	 		@extend .white-text;
  	 	}
  	 }
  }
@@ -652,7 +676,7 @@ body {
 		 	p {
 		 		a {
 		 			@extend .yellow-button;
-		 			box-shadow: 2px 3px $buttonshadow;
+		 			@extend .box-shadow;
 		 		}
 		 	}
 		 }
@@ -739,7 +763,6 @@ body {
  	 			width: 100%;
  	 			max-width: 95%;
  	 			margin: 20px auto;
- 	 			box-shadow: 24px 15px 57px -21px $black;
  	 			 .block-title {
  	 			 	display: none;
  	 			 }
@@ -753,7 +776,7 @@ body {
  	 			 		 		font-family: McLaren-Regular !important;
  	 			 		 		font-weight: normal !important;
  	 			 		 		border-bottom: none;
- 	 			 		 		box-shadow: 5px 7px 25px -5px $black;
+ 	 			 		 		@extend .box-shadow;
  	 			 		 	}
  	 			 		 }
  	 			 		 tbody {
@@ -763,7 +786,7 @@ body {
  	 			 		 	span {
  	 			 		 		&.fc-button {
  	 			 		 			background: $yellow;
- 	 			 		 			box-shadow: 6px 11px 15px -9px $black !important;
+ 	 			 		 			@extend .box-shadow;
  	 			 		 			opacity: 1 !important;
  	 			 		 			color: $black;
  	 			 		 			 &.fc-button-agendaWeek, &.fc-button-agendaDay, &.fc-button-month {
@@ -781,6 +804,9 @@ body {
  	 			 			 	padding-bottom: 5px;
  	 			 			 	color: $white;
  	 			 			 	font-weight: normal !important;
+ 	 			 			 }
+ 	 			 			 tbody {
+ 	 			 			 	@extend .box-shadow;
  	 			 			 }
  	 			 		}
  	 			 		.fc-widget-header{
