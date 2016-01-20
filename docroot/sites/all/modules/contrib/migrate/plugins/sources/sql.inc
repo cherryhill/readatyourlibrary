@@ -50,11 +50,12 @@ class MigrateSourceSQL extends MigrateSource {
   protected $batch = 0;
 
   /**
-   * Number of records to fetch from the database during each batch.
+   * Number of records to fetch from the database during each batch. A value
+   * of zero indicates no batching is to be done.
    *
    * @var int
    */
-  protected $batchSize = 1000;
+  protected $batchSize = 0;
 
   /**
    * List of available source fields.
@@ -134,6 +135,8 @@ class MigrateSourceSQL extends MigrateSource {
 
     if (isset($options['batch_size'])) {
       $this->batchSize = $options['batch_size'];
+      // Joining to the map table is incompatible with batching, disable it.
+      $options['map_joinable'] = FALSE;
     }
 
     // If we're tracking changes, then we need to fetch all rows to see if
@@ -373,21 +376,38 @@ class MigrateSourceSQL extends MigrateSource {
       // 3. If we are using highwater marks, also include rows above the mark.
       //    But, include all rows if the highwater mark is not set.
       if (isset($this->highwaterField['name']) && $this->activeMigration->getHighwater() !== '') {
-        if (isset($this->highwaterField['alias'])) {
-          $highwater = $this->highwaterField['alias'] . '.' . $this->highwaterField['name'];
+        // But, if there are any existing items marked as needing update which
+        // fall below the highwater mark, and map_joinable is FALSE, those
+        // items will be skipped. Thus, in that case do not add the highwater
+        // optimization to the query.
+        $add_highwater_condition = TRUE;
+        if (!$this->mapJoinable) {
+          $count_needs_update = db_query('SELECT COUNT(*) FROM {' .
+            $this->activeMap->getQualifiedMapTable() . '} WHERE needs_update = 1')
+            ->fetchField();
+          if ($count_needs_update > 0) {
+            $add_highwater_condition = FALSE;
+          }
         }
-        else {
-          $highwater = $this->highwaterField['name'];
+        if ($add_highwater_condition) {
+          if (isset($this->highwaterField['alias'])) {
+            $highwater = $this->highwaterField['alias'] . '.' . $this->highwaterField['name'];
+          }
+          else {
+            $highwater = $this->highwaterField['name'];
+          }
+          $conditions->condition($highwater, $this->activeMigration->getHighwater(), '>');
+          $condition_added = TRUE;
         }
-        $conditions->condition($highwater, $this->activeMigration->getHighwater(), '>');
-        $condition_added = TRUE;
       }
       if ($condition_added) {
         $this->query->condition($conditions);
       }
 
       // 4. Download data in batches for performance.
-      $this->query->range($this->batch * $this->batchSize, $this->batchSize);
+      if ($this->batchSize > 0) {
+        $this->query->range($this->batch * $this->batchSize, $this->batchSize);
+      }
     }
 
     // Save our fixed-up query so getNextBatch() matches it.
@@ -408,7 +428,7 @@ class MigrateSourceSQL extends MigrateSource {
 
     // We might be out of data entirely, or just out of data in the current batch.
     // Attempt to fetch the next batch and see.
-    if (!is_object($row)) {
+    if (!is_object($row) && $this->batchSize > 0) {
       $this->getNextBatch();
       $row = $this->result->fetchObject();
     }

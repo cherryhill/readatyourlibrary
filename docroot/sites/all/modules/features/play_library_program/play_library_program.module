@@ -380,9 +380,10 @@ function play_library_program_create_activity_entry($activity_id, $account_id) {
  * Creates a new reward claim
  */
 function play_library_program_create_reward_claim($reward_id, $account_id) {
+  
   global $user;
   $uid = $user->uid;
-  $user_profile = profile2_load_by_user($uid, 'main');
+  $user_profile = profile2_load_by_user($account_id, 'main');
   $dob = $user_profile->field_user_birthday[LANGUAGE_NONE][0]['value'];
   $time_stamp_dob = strtotime($dob);
   $current_time = time();
@@ -407,6 +408,7 @@ function play_library_program_create_reward_claim($reward_id, $account_id) {
   $reward_claim->field_reward_claim_id[LANGUAGE_NONE][0]['target_id'] = $reward->id;
   if($start <= $age && $age <= $end) {
     entity_save('reward', $reward_claim);
+    drupal_set_message(t('Congratulations! You earned prize!.'));
   }
 }
 
