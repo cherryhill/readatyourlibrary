@@ -6266,7 +6266,6 @@ a.th {
   background: #267fda;
   overflow: hidden;
   border-radius: 20px;
-  margin-bottom: 25px;
   color: #fff;
   position: relative;
 }
@@ -6384,7 +6383,6 @@ a.th {
   background: #267fda;
   overflow: hidden;
   border-radius: 20px;
-  margin-bottom: 25px;
   color: #fff;
   position: relative;
 }
@@ -6423,10 +6421,10 @@ a.th {
 }
 
 .box-shadow, .orange-blue, .block.block-user-login, .section-activities .main .view-activities-page-, .section-activities .main .block-block, .section-activities .sidebar .block-views, .yellow-button, .block.block-user-login form button, body.page-messages.page-messages-new .main form .form-submit, body.page-messages.page-messages-view .main form .form-submit, body.page-reviews .sidebar p.button, body.page-booklists .sidebar p.button, .section-activities .sidebar .block-views .view-footer p a, .blue-button, body.page-user-profile .homebox #homebox-buttons a, body.page-reviews .view .view-filters form .views-exposed-form .chosen-processed a, body.page-booklists .view .view-filters form .views-exposed-form .chosen-processed a, body.page-reviews .view .view-filters form .views-exposed-form .views-submit-button button, body.page-booklists .view .view-filters form .views-exposed-form .views-submit-button button, body.page-reviews .main .view-content .item-list ol li .views-field.views-field-view-node .button, body.page-reviews .main .view-content .item-list ol li .views-field.views-field-view-node .button a, .yellow-background, body.page-user-profile .homebox .homebox-column .homebox-portlet, body.page-reviews .view .view-filters, body.page-booklists .view .view-filters, .section-progress .main .view-calendar-sticker, .blue-background, .section-progress .main, .block.review-booklist-block, .block.announcement, .block.homepage-blocks, .block.block-menu-menu-social-sharing-icons ul.menu li a:after, button,
-.button, body.page-messages div.main, body.page-messages div.main ul.action-links li a, body.page-messages div.main form #privatemsg-list-form .container-inline div.form-type-select .chosen-container-single .chosen-single, body.page-messages div.main form fieldset legend a, .section-progress .main .block.progress-calendar #calendar .fc-header .fc-header-center h2, .section-progress .main .block.progress-calendar #calendar .fc-header td span.fc-button, .section-progress .main .block.progress-calendar #calendar .fc-content .fc-border-separate tbody, .pre-header .pre-header-left section .view .views-field a, header .header-middle {
-  -webkit-box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
-  -moz-box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
-  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+.button, body, body.page-messages div.main, body.page-messages div.main ul.action-links li a, body.page-messages div.main form #privatemsg-list-form .container-inline div.form-type-select .chosen-container-single .chosen-single, body.page-messages div.main form fieldset legend a, .section-progress .main .block.progress-calendar #calendar .fc-header .fc-header-center h2, .section-progress .main .block.progress-calendar #calendar .fc-header td span.fc-button, .section-progress .main .block.progress-calendar #calendar .fc-content .fc-border-separate tbody, .pre-header .pre-header-left section .view .views-field a, header .header-middle {
+  -webkit-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+  box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
 }
 
 .no-border, body.page-user-profile .homebox .homebox-column .homebox-portlet, body.page-user-profile .homebox .homebox-column .homebox-portlet .homebox-portlet-inner, body.page-user-profile .homebox .homebox-column .homebox-portlet .homebox-portlet-inner .portlet-header {
@@ -6581,6 +6579,9 @@ body {
   font-family: McLaren-Regular !important;
 }
 
+.block {
+  margin-bottom: 35px;
+}
 .block.block-user-login form {
   width: 100%;
   max-width: 90%;
@@ -6671,6 +6672,7 @@ body {
 .block.announcement .views-field-body ol {
   margin-left: 90px;
   padding-bottom: 40px;
+  list-style: none;
 }
 .block.announcement .views-field-body ol li {
   position: relative;
@@ -6681,7 +6683,7 @@ body {
   background: url("../images/libraryzurb/arrow-list.png") no-repeat;
   display: block;
   position: absolute;
-  left: -47px;
+  left: -32px;
   height: 21px;
   width: 47px;
   content: "";
@@ -6691,7 +6693,6 @@ body {
   background: #267fda;
   overflow: hidden;
   border-radius: 20px;
-  margin-bottom: 25px;
   color: #fff;
   position: relative;
 }
@@ -6702,7 +6703,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 280px;
+  height: 240px;
 }
 .block.homepage-blocks.playlib-books .owl-carousel .owl-item .views-field img {
   width: 100%;
@@ -6728,7 +6729,7 @@ body {
   text-align: center;
 }
 .block.homepage-blocks.playlib-media .owl-carousel .views-field.views-field-field-video-link {
-  width: 200px;
+  width: 165px;
 }
 .block.homepage-blocks.playlib-media .owl-carousel .flickr-wrap .flickr-photo-img:hover, .block.homepage-blocks.playlib-media .owl-carousel img.flickr-photoset-img:hover {
   transform: none;
@@ -6742,12 +6743,12 @@ body {
   box-shadow: none;
   border: none;
   border-radius: 0;
-  height: 180px;
-  width: 180px;
+  height: 109px;
+  width: 158px;
 }
 .block.homepage-blocks.playlib-media .owl-carousel .owl-controls {
   position: absolute;
-  top: 30%;
+  top: 20%;
   width: 100%;
 }
 .block.homepage-blocks.playlib-media .owl-carousel .owl-controls .owl-pagination {
@@ -6815,8 +6816,11 @@ body {
   clear: both;
   font-family: Arialbold !important;
 }
+.block.footer-playlibdetails {
+  margin-bottom: 25px !important;
+}
 .block.footer-playlibdetails, .block.footer-playlibpolicies {
-  font-size: 14px;
+  font-size: 14px !important;
 }
 .block.playlib-copyright {
   font-size: 12px !important;
@@ -8417,12 +8421,37 @@ button a:hover, button a focus,
   content: "\f21a";
 }
 
-.row.l-main {
-  max-width: 98%;
+html {
+  background: url("../images/libraryzurb/backgrnd.jpg");
 }
-@media screen and (min-width: 1281px) {
-  .row.l-main {
-    max-width: 1280px;
+
+body {
+  max-width: 1280px;
+  margin: 0 auto;
+  background: #fff;
+}
+
+.row.l-main {
+  max-width: 94.6%;
+}
+
+.large-3 {
+  width: 31.87%;
+}
+
+.large-9 {
+  width: 68.12%;
+}
+
+@media only screen and (min-width: 730px) {
+  .pull-9 {
+    right: 68.4%;
+  }
+}
+
+@media only screen and (min-width: 730px) {
+  .push-3 {
+    left: 31.87%;
   }
 }
 
@@ -8431,6 +8460,9 @@ body {
   /**css for msg center**/
   /**msg center css end**/
   /**css for page-reviews **/
+}
+body .main {
+  margin-top: -5px;
 }
 body.page-user-profile .homebox #homebox-buttons a {
   text-decoration: none;
@@ -9237,6 +9269,7 @@ body.page-booklists .main .view-booklist-slideshow .owl-carousel .owl-buttons .o
 .pre-header .pre-header-left section .view .views-field {
   float: left;
   margin-left: 10px;
+  position: absolute;
 }
 .pre-header .pre-header-left section .view .views-field a {
   background-color: #267fda;
@@ -9251,6 +9284,21 @@ body.page-booklists .main .view-booklist-slideshow .owl-carousel .owl-buttons .o
   background: #267fda url("../images/libraryzurb/msg-img.png");
   background-repeat: no-repeat;
   background-position: 10px 12px;
+}
+.pre-header .pre-header-left section .view .views-field.views-field-php-2 {
+  right: 26px;
+}
+.pre-header .pre-header-left section .view .views-field.views-field-php-1 {
+  right: 155px;
+}
+.pre-header .pre-header-left section .view .views-field.views-field-php {
+  right: 384px;
+}
+.pre-header .pre-header-left section .view .views-field.views-field-php-4 {
+  right: 593px;
+}
+.pre-header .pre-header-left section .view .views-field.views-field-name {
+  right: 722px;
 }
 .pre-header .pre-header-left section .view .views-field.views-field-name a {
   color: #000 !important;
@@ -9483,6 +9531,11 @@ ul.quicktabs-tabs li a:focus, ul.quicktabs-tabs li a:hover {
 }
 .top-bar.expanded .main-nav .show-for-small {
   border-bottom: 1px solid;
+}
+
+p {
+  font-size: 17px;
+  font-family: Arialregular !important;
 }
 
 /**
@@ -9783,6 +9836,7 @@ header .header-middle {
   background: url("../images/libraryzurb/header-background.png") no-repeat;
   background-size: cover;
   margin-top: -2px;
+  padding-left: 11px;
 }
 header div#topbar {
   border: none !important;
@@ -10189,6 +10243,15 @@ div .addressfield-container-inline:after {
   .block-views-branches-block .addressfield-container-inline {
     margin-bottom: 0.5em;
   }
+}
+
+.sidebar span {
+  font-size: 17px;
+  font-family: Arialregular !important;
+  line-height: 1.2;
+}
+.sidebar span.views-field-title {
+  float: right;
 }
 
 /*# sourceMappingURL=custom.css.map */

@@ -313,6 +313,7 @@ header {
 	background-size: cover;
 	@extend .box-shadow;
 	margin-top: -2px;
+	padding-left: 11px;
 }
   div#topbar {
   	border: none !important;
@@ -767,5 +768,15 @@ div {
 		@media screen and (max-width: $small-screen) {
 			margin-bottom: 0.5em;
 		}
+	}
+}
+.sidebar {
+	span {
+		font-size: 17px;
+		font-family: Arialregular !important;
+		line-height: 1.2;
+		  &.views-field-title {
+		  	float: right;
+		  }
 	}
 }
