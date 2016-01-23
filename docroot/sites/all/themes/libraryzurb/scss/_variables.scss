@@ -1387,7 +1387,7 @@ $large-fixed: 1281px; // screen fixed after 1280 resolution
 // $topbar-arrows: true; //Set false to remove the triangle icon from the menu item
 //include font-family
 
-@mixin font-face($name: null, $style: null, $exts: eot woff2 woff ttf svg) {
+@mixin font-face($name: null, $style: null, $exts: eot woff2 woff ttf svg, $style: normal, $weight: normal ) {
   $src: null;
 
   $extmods: (
@@ -1416,6 +1416,8 @@ $large-fixed: 1281px; // screen fixed after 1280 resolution
  @font-face {
   font-family: "McLaren-Regular";
   src: url('../fonts/libraryzurb-fonts/McLaren-Regular.ttf');
+  font-weight: normal;
+  font-style: normal;
  }
  @font-face {
   font-family: "Pt-seriefbold";
