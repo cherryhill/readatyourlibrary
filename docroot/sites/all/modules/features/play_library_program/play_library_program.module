@@ -123,8 +123,9 @@ function play_library_program_field_widget_form_alter(&$element, &$form_state, $
 
         foreach ($entity['bundles'] as $bundle_key => $bundle_options) {
            
-         if($bundle_options['label'] == 'Sticker') {
-           $options["entity_insert|{$entity_key}|{$bundle_key}"] = t("Place @bundle on progress report", array('@bundle' => $bundle_options['label']));
+         if($entity_key == 'node' && $bundle_options['label'] == 'sticker') {
+           //$options["entity_insert|{$entity_key}|{$bundle_key}"] = t("Place @bundle on progress report", array('@bundle' => $bundle_options['label']));
+          $options["node_update|node|{$bundle_key}|updated"] = t("Place @bundle on progress report", array('@bundle' => $bundle_options['label']));
          }
          if($bundle_options['label'] == 'Raffle Winner') {
          $options["entity_insert|{$entity_key}|{$bundle_key}"] = t("Insert new @bundle", array('@bundle' => $bundle_options['label']));
@@ -140,7 +141,6 @@ function play_library_program_field_widget_form_alter(&$element, &$form_state, $
     if (module_exists('webform')) {
       $webforms = _play_library_program_get_webforms();
       foreach ($webforms as $webform) {
-        //echo "<pre>";print_r(expression)
         $options["webform_submit|{$webform->nid}"] = t('Respond to Webform', array('@webform' => $webform->title));
       }
     }
@@ -159,6 +159,7 @@ function play_library_program_user_insert(&$edit, $account, $category) {
   $query->entityCondition('bundle', 'activity');
   $query->fieldCondition('field_activity_fired_hook', 'value', 'user_insert');
   $result = $query->execute();
+
   foreach ($result as $entity_key => $entity_values) {
     if ($entity_key == 'activity') {
       foreach ($entity_values as $entity) {
@@ -372,6 +373,7 @@ function play_library_program_create_activity_entry($activity_id, $account_id) {
   $activity = reset($activities);
   $title = t("@activity on @time", array('@activity' => $activity->title, '@time' => date('Y-m-d H:i')));
   $activity_entry = entity_create('activity', array('type' => 'activity_entry', 'title' => $title, 'uid' => $account_id));
+
   $activity_entry->field_activity_entry_activity[LANGUAGE_NONE][0]['target_id'] = $activity->id;
   entity_save('activity', $activity_entry);
 }
@@ -380,9 +382,11 @@ function play_library_program_create_activity_entry($activity_id, $account_id) {
  * Creates a new reward claim
  */
 function play_library_program_create_reward_claim($reward_id, $account_id) {
+
   
   global $user;
   $uid = $user->uid;
+
   $user_profile = profile2_load_by_user($account_id, 'main');
   $dob = $user_profile->field_user_birthday[LANGUAGE_NONE][0]['value'];
   $time_stamp_dob = strtotime($dob);
@@ -456,13 +460,16 @@ function _play_library_program_get_webforms() {
 /**
  * Performs general firing hook check to create new activity entries
  */
-function _play_library_program_invoke_activity_entry_hooks($entity, $type, $invoked_hook = '') {
+function _play_library_program_invoke_activity_entry_hooks($entity, $type, $invoked_hook = '', $update_points = 0) {
   $hook = $invoked_hook;
+
   if (empty($hook)) {
     $hook = "entity_insert|{$type}|{$entity->type}";
   }
   $query = new EntityFieldQuery();
+
   $query->entityCondition('entity_type', 'activity');
+
   $query->entityCondition('bundle', 'activity');
   $query->fieldCondition('field_activity_fired_hook', 'value', $hook);
   $result = $query->execute();
@@ -470,10 +477,16 @@ function _play_library_program_invoke_activity_entry_hooks($entity, $type, $invo
     if ($entity_key == 'activity') {
       foreach ($entity_values as $activity_entity) {
         $account = user_load($entity->uid);
-        play_library_program_create_activity_entry($activity_entity->id, $account->uid);
+        if(!$update_points) {
+          play_library_program_create_activity_entry($activity_entity->id, $account->uid);
+        }
+        else {
+          global $user;
+          play_library_program_create_activity_entry($activity_entity->id, $user->uid);
+        }
       }
     }
-  }
+  } 
 }
 
 /**
