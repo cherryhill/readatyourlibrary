@@ -78,17 +78,19 @@
    ----------------------------------------- */
 
 a {
-	color: $color_gray_medium;
+	color: $blue;
 	cursor: progress;
 
 	&.permalink {
-		display: none;
+		display: none;;
 	}
 }
 a:hover,
 a:focus {
-	color: $color_white;
+	color: $blue;
 	background-color: none;
+	outline: none;
+	text-decoration: underline;
 }
 
 h1 {
@@ -306,8 +308,16 @@ li {
 /* HEADER AREA */
 
 header {
+	.header-middle {
 	background: url('../images/libraryzurb/header-background.png') no-repeat;
 	background-size: cover;
+	@extend .box-shadow;
+	margin-top: -2px;
+	padding-left: 11px;
+}
+  div#topbar {
+  	border: none !important;
+  }
 	
 
 	@media all and (max-width: $smallmedium-screen) {
@@ -361,7 +371,7 @@ header {
 			&.block-title {
 				border: 0;
 				font-size: 22px;
-				text-transform: uppercase;
+				text-transform: capitalize;
 				line-height: 1;
 			}
 		}
@@ -758,5 +768,15 @@ div {
 		@media screen and (max-width: $small-screen) {
 			margin-bottom: 0.5em;
 		}
+	}
+}
+.sidebar {
+	span {
+		font-size: 17px;
+		font-family: Arialregular !important;
+		line-height: 1.2;
+		  &.views-field-title {
+		  	float: right;
+		  }
 	}
 }

@@ -16,21 +16,34 @@ button,
   border: 1px solid $yellow;
   border-radius: 10px;
   font-size: 17px;
-  box-shadow: 14px 18px 19px -16px $black;
-   &:hover, &:focus {
-     background: $yellow;
+  @extend .box-shadow;
+   &:hover {
+     background: $button-hover !important;
      color: $black;
      outline: none;
+     text-decoration: none !important;
+   }
+   &:focus, &.active {
+   	background: $button-active !important;
+   	color: $black;
+   	outline: none;
    }
 
   a {
     color: $black;
     font-size: 17px;
 
-    &:hover, focus {
+    &:hover {
       outline: none;
       color: $black;
-      background: $yellow;
+      background: $button-hover !important;
+      text-decoration: none !important;
+    }
+    &:focus, &.active {
+    	outline: none;
+    	text-decoration: none !important;
+    	color: $black;
+    	background: $button-active !important;
     }
   }
 }

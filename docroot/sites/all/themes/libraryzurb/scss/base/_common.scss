@@ -5,14 +5,14 @@
 // %font-FONTNAME   {}
 // %font-sans-serif { font-family: sans-serif; }
 // %font-serif      { font-family: serif; }
+
 .orange-blue {
 	background: $blue;
     overflow: hidden;
     border-radius: 20px;
-    margin-bottom: 25px;
     color: $white;
     position: relative;
-    box-shadow: 29px 30px 30px -20px $gray;
+    @extend .box-shadow;
       .block-title, h2 {
        	color: $white;
       	font-family: McLaren-Regular !important;
@@ -72,15 +72,23 @@
 	font-family: McLaren-Regular !important; 
 	font-weight: normal !important;
 	border-radius: 10px;
-	background: $yellow;
+	background: $yellow !important;
 	border: none;
 	padding: $button-sml 20px;
-	box-shadow: 14px 18px 19px -16px $black;
-	 &:hover, &:focus {
+	@extend .box-shadow;
+	 &:hover {
 	 	color: $black;
-	 	background: $yellow;
+	 	background: $button-hover !important;
 	 	opacity: 1;
 	 	outline: none;
+	 	text-decoration: none !important;
+	 }
+	 &:focus, &.active {
+	 	color: $black;
+	 	background: $button-active !important;
+	 	outline: 1;
+	 	opacity: 1;
+	 	text-decoration: none !important;
 	 }
 
 }
@@ -91,7 +99,7 @@
 	background: $blue !important;
 	border-radius: 10px;
 	padding: $button-sml 20px;
-	box-shadow: 14px 18px 19px -16px $black;
+	@extend .box-shadow;
 	border: none;
 	  &:hover, &:focus {
 	 	color: $black;
@@ -107,7 +115,7 @@
 	background: $yellow;
 	font-family: McLaren-Regular !important; 
 	font-weight: normal !important;
-	box-shadow: 20px 18px 20px -19px $black;
+	@extend .box-shadow;
 
 }
 .like {
@@ -128,10 +136,9 @@
 	background: $blue;
     overflow: hidden;
     border-radius: 20px;
-    margin-bottom: 25px;
     color: $white;
     position: relative;
-    box-shadow: 29px 30px 30px -20px $gray;
+    @extend .box-shadow;
 }
 .wave-img {
 		color: $white;
@@ -166,3 +173,11 @@
 
 		 }
     }
+.box-shadow {
+  -webkit-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+  box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+}
+.no-border {
+	border: none !important;
+}

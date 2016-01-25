@@ -1,9 +1,31 @@
 //grid layout//
+html {
+	background: url('../images/libraryzurb/backgrnd.jpg');
+}
+body {
+	max-width: 1280px;
+	margin: 0 auto;
+	@extend .box-shadow;
+	background: $white;
+}
 .row {
 	&.l-main {
-		max-width: 98%;
-		 @media screen and (min-width: $large-fixed) {
-		 	max-width: 1280px;
-		 }
+		max-width: 94.6%;
 	}
 } 
+.large-3 {
+	width: 31.87%;
+}
+.large-9 {
+	width: 68.12%;
+}
+.pull-9 {
+	@media only screen and (min-width: 730px) {
+		right: 68.4%;
+	}
+}
+.push-3 {
+	@media only screen and (min-width: 730px) {
+		left: 31.9%;
+	}
+}

@@ -3,35 +3,37 @@ body {
 	font-family: McLaren-Regular !important;
 }
 .block {
-
+    margin-bottom: 35px;
 	&.block-user-login {
 		 @extend .orange-blue;
 		  form {
 		  	width: 100%;
-		  	max-width: 90%;
+		  	max-width: 77%;
 		  	margin: 0 auto;
 		  	 label {
 		  	 	@extend .white-text;
 		  	 }
 		  	 ul {
 		  	 	list-style: none;
-		  	 	li a {
+		  	 	li {
+		  	 		margin-left: 0;
+		  	 		a {
 		  	 	@extend .white-text;
 		  	   }
 		  	 }
+		  	}
 		  	 button {
 		  	 	@extend .yellow-button;
+		  	 	margin-left: 0;
 		  	 }
 		  }
 	}
 	&.review-booklist-block {
 		background: $white;
-		max-width: 252px;
-		margin: 0 auto;
 		border-radius: 20px;
 		padding-left: 10px;
 		padding-right: 10px;
-		box-shadow: 8px 7px 19px -4px $black;
+		@extend .box-shadow;
 		 .block-title {
 		 	border-top: none;
 		 	padding: 10px;
@@ -90,13 +92,19 @@ body {
 		 	}
 		 }
 	}
+	&.write-book-review {	
+	 	h2.block-title {
+	 		margin-bottom: 19px;
+	 	}
+
+ 	}
 	&.announcement {
 		background: $yellow url('../images/libraryzurb/annocement.png') no-repeat;
 		background-size: 100%;
 		background-position: center center;
 		color: $black;
 		border-radius: 20px;
-		box-shadow: 29px 30px 30px -20px $gray;
+		@extend .box-shadow;
 		 .block-title {
 		 	padding: 26px 36px;
 		 	border: none;
@@ -108,12 +116,11 @@ body {
 		 	p {
 		 		padding-left: 36px;
 		 		font-family: Arialbold !important;
-		 		font-size: 17px;
-		 		font-weight: bold;
 		 	}
 		 	ol {
-		 		margin-left: 90px;
+		 		margin-left: 70px;
 		 		padding-bottom: 40px;
+		 		list-style: none;
 		 		
 		 		 li {
 		 		 	position: relative;
@@ -123,7 +130,7 @@ body {
 		 		 		background: url('../images/libraryzurb/arrow-list.png') no-repeat;
 		 		 		display: block;
 		 		 		position: absolute;
-		 		 		left: -47px;
+		 		 		left: -32px;
 		 		 		height: 21px;
 		 		 		width: 47px;
 		 		 		content: "";
@@ -137,10 +144,9 @@ body {
 	        background: $blue;
 	        overflow: hidden;
 	        border-radius: 20px;
-	        margin-bottom: 25px;
 	        color: $white;
 	        position: relative;
-	       box-shadow: 29px 30px 30px -20px $gray;
+	        @extend .box-shadow;
 	            &.playlib-books {
 	            	.owl-carousel {
 	            		position: inherit;
@@ -149,7 +155,7 @@ body {
 	            				display: flex;
 	            				align-items: center;
 	            				justify-content: center;
-							    height: 280px;
+							    height: 240px;
 							     img {
 							     	width: 100%;
 							     }
@@ -188,7 +194,7 @@ body {
 	            			text-align: center;
 	            		}
 	            		.views-field.views-field-field-video-link {
-	            			width: 200px;
+	            			width: 165px;
 	            		}
 	            		.flickr-wrap .flickr-photo-img:hover, img.flickr-photoset-img:hover {
 	            			transform: none;
@@ -202,12 +208,12 @@ body {
 	            			box-shadow: none;
 	            			border: none;
 	            			border-radius: 0;
-	            			height: 180px;
-	            			width: 180px;
+	            			height: 109px;
+	            			width: 158px;
 	            		}
 	            		.owl-controls {
 			    				position: absolute;
-			    		        top: 30%;
+			    		        top: 20%;
 			    		        width: 100%;
 			    		        .owl-pagination {
 			    		        	display: none;
@@ -284,8 +290,11 @@ body {
 		clear: both;
 		font-family: Arialbold !important;
 	}
+	&.footer-playlibdetails {
+		margin-bottom: 25px !important;
+	}
 	&.footer-playlibdetails,  &.footer-playlibpolicies {
-		font-size: 14px;
+		font-size: 14px !important;
 	}
 	&.playlib-copyright {
 		font-size: 12px !important;
@@ -325,7 +334,7 @@ body {
 							transition-property: transform;
 							
 							border-radius: 100%;
-							box-shadow: 7px 9px 9px -8px $black;
+							@extend .box-shadow;
 
 		  	  		 	  }
 
@@ -370,6 +379,7 @@ body {
 }
 .block-title {
 	font-weight: normal !important;
+	text-transform: capitalize;
 }
 .view {
 	&.view-media-photos-videos- {

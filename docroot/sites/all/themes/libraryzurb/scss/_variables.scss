@@ -24,6 +24,8 @@ $orange: #f6511d;
 $blueshadow: #a39735;
 $buttonshadow: #92a26b;
 $gray: #7e7e7e;
+$button-hover: #f7fc63;
+$button-active: #f0f811;
 
 // Font Families
 // ------------------------------------------------------
@@ -1387,7 +1389,7 @@ $large-fixed: 1281px; // screen fixed after 1280 resolution
 // $topbar-arrows: true; //Set false to remove the triangle icon from the menu item
 //include font-family
 
-@mixin font-face($name: null, $style: null, $exts: eot woff2 woff ttf svg) {
+@mixin font-face($name: null, $style: null, $exts: eot woff2 woff ttf svg, $style: normal, $weight: normal ) {
   $src: null;
 
   $extmods: (
@@ -1416,6 +1418,8 @@ $large-fixed: 1281px; // screen fixed after 1280 resolution
  @font-face {
   font-family: "McLaren-Regular";
   src: url('../fonts/libraryzurb-fonts/McLaren-Regular.ttf');
+  font-weight: normal;
+  font-style: normal;
  }
  @font-face {
   font-family: "Pt-seriefbold";
@@ -1427,7 +1431,7 @@ $large-fixed: 1281px; // screen fixed after 1280 resolution
  }
   @font-face {
   font-family: "Arialbold";
-  src: url('../fonts/libraryzurb-fonts/Arial-Black-Bold.ttf');
+  src: url('../fonts/libraryzurb-fonts/arialbd.ttf');
  }
   @font-face {
   font-family: "Arialregular";

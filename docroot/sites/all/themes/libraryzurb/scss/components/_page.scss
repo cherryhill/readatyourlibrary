@@ -1,6 +1,115 @@
 body {
+	.main {
+		margin-top: -5px;
+	}
+	/**common css for dashboard**/
+	 &.page-user-profile {
+	 	.homebox {
+	 		#homebox-buttons {
+	 			a {
+	 				text-decoration: none;
+	 				@extend .blue-button;
+	 				font-size: 21px;
+	 				margin-bottom: 10px;
+	 			}
+	 		}
+	 		.homebox-column {
+	 			background: none !important;
+	 			.homebox-portlet {
+	 				@extend .no-border;
+	 				@extend .yellow-background;
+	 				background-color: $yellow !important;
+	 			 .homebox-portlet-inner {
+	 			 	@extend .no-border;
+	 			 	.portlet-header {
+	 			 		@extend .no-border;
+	 			 		background: $blue !important;
+	 			 		color: $white !important;
+	 			 		margin-bottom: 50px;
+	 			 		@media screen and (min-width: 768px){
+	 			 		font-size: 22px !important;
+	 			 		padding: 10px 20px !important;
+	 			 		font-family: McLaren-Regular !important;
+	 			 		border-radius: 20px 20px 0px 0px;
+	 			 		.portlet-icon {
+	 			 			visibility: hidden;
+	 			 			position: relative;
+	 			 			top: 5px;
+	 			 			width: 20px !important;
+	 			 			height: 20px !important;
+	 			 			  &:after {
+	 			 			  	content: " ";
+	 			 			  	width: 20px;
+	 			 			  	height: 20px;
+	 			 			  	line-height: 20px;
+	 			 			  	border-radius: 100%;
+	 			 			  	background: $white;
+	 			 			  	color: $orange;
+	 			 			  	font-family: Arialregular !important;
+	 			 			  	display: block;
+	 			 			  	left: 0;
+	 			 			  	top: 5px;
+	 			 			  	visibility: visible;
+	 			 			  	text-align: center;
+	 			 			  }
+	 			 			&.portlet-close {
+	 			 				&:after {
+	 			 					content: "x" !important;
+	 			 					font-size: 14px;
+	 			 				}
+	 			 			}
+	 			 			&.portlet-minus {
+	 			 				&:after {
+	 			 					content: "-" !important;
+	 			 				}
+	 			 			}
+	 			 			&.portlet-maximize {
+	 			 					display: none !important;
+	 			 			}
+	 			 		}
+	 			 		.portlet-title {
+	 			 		position: relative;
+	 			 		width: 190px;
+	 			 		margin-left: 40px;
+	 			 		  &:after {
+	 			 		  	content: "";
+	 			 		  	height: 35px;
+	 			 		  	width: 35px;
+	 			 		  	background: url(../images/libraryzurb/right-arrow.png) no-repeat;
+	 			 		  	position: absolute;
+	 			 		  	right: 0;
+	 			 		  }
+	 			 		}
+	 			 	 }
+	 			 	}
+	 			 }
+	 			}
+	 		}
+	 	}
+	 }
+	
 	/**css for msg center**/
 	&.page-messages {
+		/**create-msg***/
+		&.page-messages-new, &.page-messages-view {
+			.main {
+				form {
+				width: 100%;
+				max-width: 90%;
+				margin: 0 auto;
+				 label,div {
+				 	@extend .white-text;
+				 }
+				.form-submit {
+					@extend .yellow-button;
+				}
+				fieldset#edit-token {
+					display: none;
+				}
+			 }
+			}
+		}
+		/**end create-msg**/
 		div.main {
 			background: $blue;
 	        overflow: hidden;
@@ -9,6 +118,7 @@ body {
 	        position: relative; 
 	        padding: 0;
 	        padding-bottom: 20px;
+	        @extend .box-shadow;
 	         #page-title {
 			    color: $white;
 	          	font-family: McLaren-Regular !important;
@@ -68,8 +178,10 @@ body {
 	        	&.button-group {
 	        		li {
 	        			a {
-	        				background: $yellow;
-	        				color: $black;
+	        				/* background: $yellow;
+	        				color: $black; */
+	        				font-size: 17px;
+	        				@extend .yellow-button;
 	        			}
 	        		}
 		        		&:after {
@@ -80,15 +192,20 @@ body {
 	        		list-style: none;
 	        		 li {
 	        		 	a {
+	        		 		@extend .yellow-button;
 	        		 		margin-left:20px;
-	        		 		padding: 0.363em 1.125em 0.425em;
+	        		 		font-size: 17px;
+	        		 		position: relative;
+	        		 		top: 8.5px;
+	        		 		/*padding: 0.625em 1.125em 0.5625em;
+	        		 		font-size: 0.8125em;
 	        		 		border: 1px solid $yellow;
-	        		 		border-radius: 10px;
-	        		 		box-shadow: 2px 3px $buttonshadow;
-	        		 		color: $black;
+	        		 		border-radius: 10px; */
+	        		 		@extend .box-shadow;
+	        		 	/* 	color: $black;
 	        		 		background: $yellow;
 	        		 		position: relative;
-	        		 		top: 5px;
+	        		 		top: 5px; */
 	        		 	}
 	        		 }
 	        	}
@@ -97,7 +214,7 @@ body {
 	        form {
 	        	clear: both;
 	        		 button {
-        	 			font-size: 14px !important;
+        	 			font-size: 17px !important;
         	 		}
         	 	 #privatemsg-list-form {
         	 	 	table {
@@ -147,14 +264,20 @@ body {
         	 	 		  	 	.chosen-container-single {
         	 	 		  	 		width: 200px !important;
         	 	 		  	 		 .chosen-single {
-        	 	 		  	 		 	font-size: 14px;
-        	 	 		  	 		 	background: $yellow !important;
-        	 	 		  	 		 	box-shadow: 2px 3px $buttonshadow;
-        	 	 		  	 		 	border: 1px solid $yellow;
+        	 	 		  	 		 	font-size: 17px;
+        	 	 		  	 		 	@extend .yellow-button;
+        	 	 		  	 		 	padding: 13px 20px 10px;
+        	 	 		  	 		 	height: auto !important;
+        	 	 		  	 		 	position: relative;
+        	 	 		  	 		 	bottom: 2px;
+        	 	 		  	 		 	/* font-size: 14px;
+        	 	 		  	 		 	background: $yellow !important; */
+        	 	 		  	 		 	@extend .box-shadow;
+        	 	 		  	 		 	/* border: 1px solid $yellow;
         	 	 		  	 		 	color: $black;
         	 	 		  	 		 	padding: 7px 20px;
         	 	 		  	 		 	height: auto !important;
-        	 	 		  	 		 	border-radius: 10px;
+        	 	 		  	 		 	border-radius: 10px; */
         	 	 		  	 		 	  div {
         	 	 		  	 		 	  	top: 8px;
         	 	 		  	 		 	  }
@@ -172,15 +295,15 @@ body {
 	        	 	 	margin-top: 15px;
 
 	        	 	 	 a {
-	        	 	 	 	background: $yellow;
+	        	 	 	 	@extend .yellow-button;
+	        	 	 	 	/* background: $yellow;
 	        	 	 	 	color: $black;
-	        	 	 	 	border: 1px solid $yellow;
-	        	 	 	 	box-shadow: 2px 3px $buttonshadow;
-	        	 	 	 	border-radius: 10px;
-	        	 	 	 	padding: 0.363em 1.125em 0.425em;
-	        	 	 	 	  &:hover, &:focus {
-	        	 	 	 	  	outline: none;
-	        	 	 	 	  }
+	        	 	 	 	border: 1px solid $yellow; */
+	        	 	 	 	@extend .box-shadow;
+	        	 	 	 	/* border-radius: 10px;
+	        	 	 	 	padding: 0.625em 1.125em 0.5625em;
+	        		 		font-size: 0.8125em; */
+	        		 		font-size: 17px;
 	        	 	 	 	
 
 	        	 	 	 }
@@ -216,22 +339,30 @@ body {
   	 		}
   	 	}
   	 }
+     .pull-9.sidebar {
+     	width: 29.53%;
+     	right: 69.4%;
+     	padding-left: 2.65%;
+     	padding-right: 2.65%;
+     }
 
   	 .sidebar {
   	 	background: $blue;
   	 	color: $white;
-  	 	padding-top: 20px;
+  	 	padding-top: 25px;
+  	 	padding-bottom: 25px;
   	 	border-radius: 20px;
-  	 	box-shadow: 17px 22px 31px -22px $black;
-  	 	  .block-title {
+  	 	@extend .box-shadow;
+		  .block-title {
   	 	  	@extend .white-text;
   	 	  	font-size: 21px !important;
-  	 	  	margin-top: 50px;
+  	 	  	margin-top: 6px;
   	 	  }
   	 	  p {
-  	 	  	@extend .white-text;
+  	 	  	 color: white;
   	 	  	 &.button {
   	 	  	 	@extend .yellow-button;
+  	 	  	 	margin-left: 0 !important;
   	 	  	 }
   	 	  }
   	 	  .toogle-follow {
@@ -281,8 +412,7 @@ body {
            		 }
            		 h3 {
            		 	font-size: 17px !important;
-           		 	font-family: Arialregular !important;
-           		 	font-weight: normal !important;
+           		 	font-family: Arialbold !important;
            		 	color: $white;
            		 	  a {
 	           		 	  	font-size: 17px !important;
@@ -632,7 +762,6 @@ body {
  	 div {
  	 	a {
  	 		padding-left: 20px;
- 	 		@extend .white-text;
  	 	}
  	 }
  }
@@ -652,7 +781,7 @@ body {
 		 	p {
 		 		a {
 		 			@extend .yellow-button;
-		 			box-shadow: 2px 3px $buttonshadow;
+		 			@extend .box-shadow;
 		 		}
 		 	}
 		 }
@@ -739,7 +868,6 @@ body {
  	 			width: 100%;
  	 			max-width: 95%;
  	 			margin: 20px auto;
- 	 			box-shadow: 24px 15px 57px -21px $black;
  	 			 .block-title {
  	 			 	display: none;
  	 			 }
@@ -753,7 +881,7 @@ body {
  	 			 		 		font-family: McLaren-Regular !important;
  	 			 		 		font-weight: normal !important;
  	 			 		 		border-bottom: none;
- 	 			 		 		box-shadow: 5px 7px 25px -5px $black;
+ 	 			 		 		@extend .box-shadow;
  	 			 		 	}
  	 			 		 }
  	 			 		 tbody {
@@ -763,7 +891,7 @@ body {
  	 			 		 	span {
  	 			 		 		&.fc-button {
  	 			 		 			background: $yellow;
- 	 			 		 			box-shadow: 6px 11px 15px -9px $black !important;
+ 	 			 		 			@extend .box-shadow;
  	 			 		 			opacity: 1 !important;
  	 			 		 			color: $black;
  	 			 		 			 &.fc-button-agendaWeek, &.fc-button-agendaDay, &.fc-button-month {
@@ -781,6 +909,9 @@ body {
  	 			 			 	padding-bottom: 5px;
  	 			 			 	color: $white;
  	 			 			 	font-weight: normal !important;
+ 	 			 			 }
+ 	 			 			 tbody {
+ 	 			 			 	@extend .box-shadow;
  	 			 			 }
  	 			 		}
  	 			 		.fc-widget-header{

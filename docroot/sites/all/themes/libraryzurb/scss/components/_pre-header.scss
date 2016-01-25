@@ -30,13 +30,15 @@
            .views-field {
              float: left;
              margin-left: 10px;
+             position: absolute;
              a {
                background-color: $blue;
                padding: 5px 20px;
                border: 1px solid $blue;
                border-radius: 15px;
                font-size: 21px;
-               box-shadow: 14px 18px 19px -16px $black;
+               color: $white;
+               @extend .box-shadow;
                 &.msg {
                    padding: 5px 20px 5px 40px !important;
                    background: $blue url('../images/libraryzurb/msg-img.png');
@@ -45,7 +47,20 @@
     
                 }
              }
+             &.views-field-php-2 {
+               right: 18px;
+             }
+             &.views-field-php-1 {
+              right: 147px;
+             }
+             &.views-field-php {
+              right: 376px; 
+             }
+             &.views-field-php-4 {
+              right: 585px;
+             }
               &.views-field-name {
+                right: 714px;
                 a {
                   color: $black !important;
                   background: none !important;
@@ -74,7 +89,7 @@
 }
 
 #topmostbranding {
-  max-width: 940px;
+  max-width: 100%;
   padding: 3px 0.5em;
   display: inline-block;
   float: right;
