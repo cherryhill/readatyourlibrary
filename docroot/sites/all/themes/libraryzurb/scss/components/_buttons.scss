@@ -17,20 +17,33 @@ button,
   border-radius: 10px;
   font-size: 17px;
   @extend .box-shadow;
-   &:hover, &:focus {
-     background: $yellow;
+   &:hover {
+     background: $button-hover !important;
      color: $black;
      outline: none;
+     text-decoration: none !important;
+   }
+   &:focus, &.active {
+   	background: $button-active !important;
+   	color: $black;
+   	outline: none;
    }
 
   a {
     color: $black;
     font-size: 17px;
 
-    &:hover, focus {
+    &:hover {
       outline: none;
       color: $black;
-      background: $yellow;
+      background: $button-hover !important;
+      text-decoration: none !important;
+    }
+    &:focus, &.active {
+    	outline: none;
+    	text-decoration: none !important;
+    	color: $black;
+    	background: $button-active !important;
     }
   }
 }

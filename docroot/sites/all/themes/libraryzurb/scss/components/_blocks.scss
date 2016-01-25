@@ -8,26 +8,28 @@ body {
 		 @extend .orange-blue;
 		  form {
 		  	width: 100%;
-		  	max-width: 90%;
+		  	max-width: 77%;
 		  	margin: 0 auto;
 		  	 label {
 		  	 	@extend .white-text;
 		  	 }
 		  	 ul {
 		  	 	list-style: none;
-		  	 	li a {
+		  	 	li {
+		  	 		margin-left: 0;
+		  	 		a {
 		  	 	@extend .white-text;
 		  	   }
 		  	 }
+		  	}
 		  	 button {
 		  	 	@extend .yellow-button;
+		  	 	margin-left: 0;
 		  	 }
 		  }
 	}
 	&.review-booklist-block {
 		background: $white;
-		max-width: 252px;
-		margin: 0 auto;
 		border-radius: 20px;
 		padding-left: 10px;
 		padding-right: 10px;
@@ -90,6 +92,12 @@ body {
 		 	}
 		 }
 	}
+	&.write-book-review {	
+	 	h2.block-title {
+	 		margin-bottom: 19px;
+	 	}
+
+ 	}
 	&.announcement {
 		background: $yellow url('../images/libraryzurb/annocement.png') no-repeat;
 		background-size: 100%;
@@ -108,11 +116,9 @@ body {
 		 	p {
 		 		padding-left: 36px;
 		 		font-family: Arialbold !important;
-		 		font-size: 17px;
-		 		font-weight: bold;
 		 	}
 		 	ol {
-		 		margin-left: 90px;
+		 		margin-left: 70px;
 		 		padding-bottom: 40px;
 		 		list-style: none;
 		 		

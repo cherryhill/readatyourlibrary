@@ -25,6 +25,7 @@ body {
 	 			 		@extend .no-border;
 	 			 		background: $blue !important;
 	 			 		color: $white !important;
+	 			 		margin-bottom: 50px;
 	 			 		@media screen and (min-width: 768px){
 	 			 		font-size: 22px !important;
 	 			 		padding: 10px 20px !important;
@@ -177,8 +178,10 @@ body {
 	        	&.button-group {
 	        		li {
 	        			a {
-	        				background: $yellow;
-	        				color: $black;
+	        				/* background: $yellow;
+	        				color: $black; */
+	        				font-size: 17px;
+	        				@extend .yellow-button;
 	        			}
 	        		}
 		        		&:after {
@@ -189,16 +192,20 @@ body {
 	        		list-style: none;
 	        		 li {
 	        		 	a {
+	        		 		@extend .yellow-button;
 	        		 		margin-left:20px;
-	        		 		padding: 0.625em 1.125em 0.5625em;
+	        		 		font-size: 17px;
+	        		 		position: relative;
+	        		 		top: 8.5px;
+	        		 		/*padding: 0.625em 1.125em 0.5625em;
 	        		 		font-size: 0.8125em;
 	        		 		border: 1px solid $yellow;
-	        		 		border-radius: 10px;
+	        		 		border-radius: 10px; */
 	        		 		@extend .box-shadow;
-	        		 		color: $black;
+	        		 	/* 	color: $black;
 	        		 		background: $yellow;
 	        		 		position: relative;
-	        		 		top: 5px;
+	        		 		top: 5px; */
 	        		 	}
 	        		 }
 	        	}
@@ -207,7 +214,7 @@ body {
 	        form {
 	        	clear: both;
 	        		 button {
-        	 			font-size: 14px !important;
+        	 			font-size: 17px !important;
         	 		}
         	 	 #privatemsg-list-form {
         	 	 	table {
@@ -257,14 +264,20 @@ body {
         	 	 		  	 	.chosen-container-single {
         	 	 		  	 		width: 200px !important;
         	 	 		  	 		 .chosen-single {
-        	 	 		  	 		 	font-size: 14px;
-        	 	 		  	 		 	background: $yellow !important;
+        	 	 		  	 		 	font-size: 17px;
+        	 	 		  	 		 	@extend .yellow-button;
+        	 	 		  	 		 	padding: 13px 20px 10px;
+        	 	 		  	 		 	height: auto !important;
+        	 	 		  	 		 	position: relative;
+        	 	 		  	 		 	bottom: 2px;
+        	 	 		  	 		 	/* font-size: 14px;
+        	 	 		  	 		 	background: $yellow !important; */
         	 	 		  	 		 	@extend .box-shadow;
-        	 	 		  	 		 	border: 1px solid $yellow;
+        	 	 		  	 		 	/* border: 1px solid $yellow;
         	 	 		  	 		 	color: $black;
         	 	 		  	 		 	padding: 7px 20px;
         	 	 		  	 		 	height: auto !important;
-        	 	 		  	 		 	border-radius: 10px;
+        	 	 		  	 		 	border-radius: 10px; */
         	 	 		  	 		 	  div {
         	 	 		  	 		 	  	top: 8px;
         	 	 		  	 		 	  }
@@ -282,16 +295,15 @@ body {
 	        	 	 	margin-top: 15px;
 
 	        	 	 	 a {
-	        	 	 	 	background: $yellow;
+	        	 	 	 	@extend .yellow-button;
+	        	 	 	 	/* background: $yellow;
 	        	 	 	 	color: $black;
-	        	 	 	 	border: 1px solid $yellow;
+	        	 	 	 	border: 1px solid $yellow; */
 	        	 	 	 	@extend .box-shadow;
-	        	 	 	 	border-radius: 10px;
+	        	 	 	 	/* border-radius: 10px;
 	        	 	 	 	padding: 0.625em 1.125em 0.5625em;
-	        		 		font-size: 0.8125em;
-	        	 	 	 	  &:hover, &:focus {
-	        	 	 	 	  	outline: none;
-	        	 	 	 	  }
+	        		 		font-size: 0.8125em; */
+	        		 		font-size: 17px;
 	        	 	 	 	
 
 	        	 	 	 }
@@ -330,23 +342,27 @@ body {
      .pull-9.sidebar {
      	width: 29.53%;
      	right: 69.4%;
+     	padding-left: 2.65%;
+     	padding-right: 2.65%;
      }
 
   	 .sidebar {
   	 	background: $blue;
   	 	color: $white;
-  	 	padding-top: 20px;
+  	 	padding-top: 25px;
+  	 	padding-bottom: 25px;
   	 	border-radius: 20px;
-  	 	box-shadow: 17px 22px 31px -22px $black;
-  	 	  .block-title {
+  	 	@extend .box-shadow;
+		  .block-title {
   	 	  	@extend .white-text;
   	 	  	font-size: 21px !important;
-  	 	  	margin-top: 50px;
+  	 	  	margin-top: 6px;
   	 	  }
   	 	  p {
-  	 	  	@extend .white-text;
+  	 	  	 color: white;
   	 	  	 &.button {
   	 	  	 	@extend .yellow-button;
+  	 	  	 	margin-left: 0 !important;
   	 	  	 }
   	 	  }
   	 	  .toogle-follow {
@@ -396,8 +412,7 @@ body {
            		 }
            		 h3 {
            		 	font-size: 17px !important;
-           		 	font-family: Arialregular !important;
-           		 	font-weight: normal !important;
+           		 	font-family: Arialbold !important;
            		 	color: $white;
            		 	  a {
 	           		 	  	font-size: 17px !important;

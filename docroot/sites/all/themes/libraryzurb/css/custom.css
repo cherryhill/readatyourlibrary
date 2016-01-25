@@ -61,7 +61,7 @@
 }
 @font-face {
   font-family: "Arialbold";
-  src: url("../fonts/libraryzurb-fonts/Arial-Black-Bold.ttf");
+  src: url("../fonts/libraryzurb-fonts/arialbd.ttf");
 }
 @font-face {
   font-family: "Arialregular";
@@ -6304,7 +6304,7 @@ a.th {
   z-index: -1;
 }
 
-.white-text, .block.block-user-login form label, .block.block-user-login form ul li a, body.page-messages.page-messages-new .main form label, body.page-messages.page-messages-new .main form div, body.page-messages.page-messages-view .main form label, body.page-messages.page-messages-view .main form div, body.page-reviews .sidebar .block-title, body.page-booklists .sidebar .block-title, body.page-reviews .sidebar p, body.page-booklists .sidebar p, body.page-reviews .sidebar .reviews-block-block .view-content ol .views-field-title a, body.page-booklists .sidebar .reviews-block-block .view-content ol .views-field-title a, body.page-reviews .sidebar .reviews-block-block .view-header h3:nth-of-type(1) a, body.page-booklists .sidebar .reviews-block-block .view-header h3:nth-of-type(1) a, body.page-reviews .view .view-filters form .views-exposed-form .chosen-processed .chosen-drop .chosen-results li a, body.page-booklists .view .view-filters form .views-exposed-form .chosen-processed .chosen-drop .chosen-results li a, body.page-reviews .view .view-filters form .views-exposed-form .chosen-processed .chosen-drop .chosen-results li a:hover, body.page-reviews .view .view-filters form .views-exposed-form .chosen-processed .chosen-drop .chosen-results li a:focus, body.page-booklists .view .view-filters form .views-exposed-form .chosen-processed .chosen-drop .chosen-results li a:hover, body.page-booklists .view .view-filters form .views-exposed-form .chosen-processed .chosen-drop .chosen-results li a:focus, .section-activities .sidebar .block-views h3, .section-activities .sidebar .block-views ul a {
+.white-text, .block.block-user-login form label, .block.block-user-login form ul li a, body.page-messages.page-messages-new .main form label, body.page-messages.page-messages-new .main form div, body.page-messages.page-messages-view .main form label, body.page-messages.page-messages-view .main form div, body.page-reviews .sidebar .block-title, body.page-booklists .sidebar .block-title, body.page-reviews .sidebar .reviews-block-block .view-content ol .views-field-title a, body.page-booklists .sidebar .reviews-block-block .view-content ol .views-field-title a, body.page-reviews .sidebar .reviews-block-block .view-header h3:nth-of-type(1) a, body.page-booklists .sidebar .reviews-block-block .view-header h3:nth-of-type(1) a, body.page-reviews .view .view-filters form .views-exposed-form .chosen-processed .chosen-drop .chosen-results li a, body.page-booklists .view .view-filters form .views-exposed-form .chosen-processed .chosen-drop .chosen-results li a, body.page-reviews .view .view-filters form .views-exposed-form .chosen-processed .chosen-drop .chosen-results li a:hover, body.page-reviews .view .view-filters form .views-exposed-form .chosen-processed .chosen-drop .chosen-results li a:focus, body.page-booklists .view .view-filters form .views-exposed-form .chosen-processed .chosen-drop .chosen-results li a:hover, body.page-booklists .view .view-filters form .views-exposed-form .chosen-processed .chosen-drop .chosen-results li a:focus, .section-activities .sidebar .block-views h3, .section-activities .sidebar .block-views ul a {
   color: #fff;
   font-family: McLaren-Regular !important;
   font-weight: normal !important;
@@ -6326,7 +6326,7 @@ a.th {
   color: #267fda;
 }
 
-.yellow-button, .block.block-user-login form button, body.page-messages.page-messages-new .main form .form-submit, body.page-messages.page-messages-view .main form .form-submit, body.page-reviews .sidebar p.button, body.page-booklists .sidebar p.button, .section-activities .sidebar .block-views .view-footer p a {
+.yellow-button, .block.block-user-login form button, body.page-messages.page-messages-new .main form .form-submit, body.page-messages.page-messages-view .main form .form-submit, body.page-messages div.main ul.button-group li a, body.page-messages div.main ul.action-links li a, body.page-messages div.main form #privatemsg-list-form .container-inline div.form-type-select .chosen-container-single .chosen-single, body.page-messages div.main form fieldset legend a, body.page-reviews .sidebar p.button, body.page-booklists .sidebar p.button, .section-activities .sidebar .block-views .view-footer p a {
   color: #000;
   font-family: McLaren-Regular !important;
   font-weight: normal !important;
@@ -6335,11 +6335,19 @@ a.th {
   border: none;
   padding: 0.5625em 20px;
 }
-.yellow-button:hover, .block.block-user-login form button:hover, body.page-messages.page-messages-new .main form .form-submit:hover, body.page-messages.page-messages-view .main form .form-submit:hover, body.page-reviews .sidebar p.button:hover, body.page-booklists .sidebar p.button:hover, .section-activities .sidebar .block-views .view-footer p a:hover, .yellow-button:focus, .block.block-user-login form button:focus, body.page-messages.page-messages-new .main form .form-submit:focus, body.page-messages.page-messages-view .main form .form-submit:focus, body.page-reviews .sidebar p.button:focus, body.page-booklists .sidebar p.button:focus, .section-activities .sidebar .block-views .view-footer p a:focus {
+.yellow-button:hover, .block.block-user-login form button:hover, body.page-messages.page-messages-new .main form .form-submit:hover, body.page-messages.page-messages-view .main form .form-submit:hover, body.page-messages div.main ul.button-group li a:hover, body.page-messages div.main ul.action-links li a:hover, body.page-messages div.main form #privatemsg-list-form .container-inline div.form-type-select .chosen-container-single .chosen-single:hover, body.page-messages div.main form fieldset legend a:hover, body.page-reviews .sidebar p.button:hover, body.page-booklists .sidebar p.button:hover, .section-activities .sidebar .block-views .view-footer p a:hover {
   color: #000;
-  background: #fdeb52;
+  background: #f7fc63 !important;
   opacity: 1;
   outline: none;
+  text-decoration: none !important;
+}
+.yellow-button:focus, .block.block-user-login form button:focus, body.page-messages.page-messages-new .main form .form-submit:focus, body.page-messages.page-messages-view .main form .form-submit:focus, body.page-messages div.main ul.button-group li a:focus, body.page-messages div.main ul.action-links li a:focus, body.page-messages div.main form #privatemsg-list-form .container-inline div.form-type-select .chosen-container-single .chosen-single:focus, body.page-messages div.main form fieldset legend a:focus, body.page-reviews .sidebar p.button:focus, body.page-booklists .sidebar p.button:focus, .section-activities .sidebar .block-views .view-footer p a:focus, .yellow-button.active, .block.block-user-login form button.active, body.page-messages.page-messages-new .main form .active.form-submit, body.page-messages.page-messages-view .main form .active.form-submit, body.page-messages div.main ul.button-group li a.active, body.page-messages div.main ul.action-links li a.active, body.page-messages div.main form #privatemsg-list-form .container-inline div.form-type-select .chosen-container-single .active.chosen-single, body.page-messages div.main form fieldset legend a.active, body.page-reviews .sidebar p.active.button, body.page-booklists .sidebar p.active.button, .section-activities .sidebar .block-views .view-footer p a.active {
+  color: #000;
+  background: #f0f811 !important;
+  outline: 1;
+  opacity: 1;
+  text-decoration: none !important;
 }
 
 .blue-button, body.page-user-profile .homebox #homebox-buttons a, body.page-reviews .view .view-filters form .views-exposed-form .chosen-processed a, body.page-booklists .view .view-filters form .views-exposed-form .chosen-processed a, body.page-reviews .view .view-filters form .views-exposed-form .views-submit-button button, body.page-booklists .view .view-filters form .views-exposed-form .views-submit-button button, body.page-reviews .main .view-content .item-list ol li .views-field.views-field-view-node .button, body.page-reviews .main .view-content .item-list ol li .views-field.views-field-view-node .button a {
@@ -6422,8 +6430,8 @@ a.th {
   z-index: -1;
 }
 
-.box-shadow, .orange-blue, .block.block-user-login, .section-activities .main .view-activities-page-, .section-activities .main .block-block, .section-activities .sidebar .block-views, .yellow-button, .block.block-user-login form button, body.page-messages.page-messages-new .main form .form-submit, body.page-messages.page-messages-view .main form .form-submit, body.page-reviews .sidebar p.button, body.page-booklists .sidebar p.button, .section-activities .sidebar .block-views .view-footer p a, .blue-button, body.page-user-profile .homebox #homebox-buttons a, body.page-reviews .view .view-filters form .views-exposed-form .chosen-processed a, body.page-booklists .view .view-filters form .views-exposed-form .chosen-processed a, body.page-reviews .view .view-filters form .views-exposed-form .views-submit-button button, body.page-booklists .view .view-filters form .views-exposed-form .views-submit-button button, body.page-reviews .main .view-content .item-list ol li .views-field.views-field-view-node .button, body.page-reviews .main .view-content .item-list ol li .views-field.views-field-view-node .button a, .yellow-background, body.page-user-profile .homebox .homebox-column .homebox-portlet, body.page-reviews .view .view-filters, body.page-booklists .view .view-filters, .section-progress .main .view-calendar-sticker, .blue-background, .section-progress .main, .block.review-booklist-block, .block.announcement, .block.homepage-blocks, .block.block-menu-menu-social-sharing-icons ul.menu li a:after, button,
-.button, body, body.page-messages div.main, body.page-messages div.main ul.action-links li a, body.page-messages div.main form #privatemsg-list-form .container-inline div.form-type-select .chosen-container-single .chosen-single, body.page-messages div.main form fieldset legend a, .section-progress .main .block.progress-calendar #calendar .fc-header .fc-header-center h2, .section-progress .main .block.progress-calendar #calendar .fc-header td span.fc-button, .section-progress .main .block.progress-calendar #calendar .fc-content .fc-border-separate tbody, .pre-header .pre-header-left section .view .views-field a, header .header-middle {
+.box-shadow, .orange-blue, .block.block-user-login, .section-activities .main .view-activities-page-, .section-activities .main .block-block, .section-activities .sidebar .block-views, .yellow-button, .block.block-user-login form button, body.page-messages.page-messages-new .main form .form-submit, body.page-messages.page-messages-view .main form .form-submit, body.page-messages div.main ul.button-group li a, body.page-messages div.main ul.action-links li a, body.page-messages div.main form #privatemsg-list-form .container-inline div.form-type-select .chosen-container-single .chosen-single, body.page-messages div.main form fieldset legend a, body.page-reviews .sidebar p.button, body.page-booklists .sidebar p.button, .section-activities .sidebar .block-views .view-footer p a, .blue-button, body.page-user-profile .homebox #homebox-buttons a, body.page-reviews .view .view-filters form .views-exposed-form .chosen-processed a, body.page-booklists .view .view-filters form .views-exposed-form .chosen-processed a, body.page-reviews .view .view-filters form .views-exposed-form .views-submit-button button, body.page-booklists .view .view-filters form .views-exposed-form .views-submit-button button, body.page-reviews .main .view-content .item-list ol li .views-field.views-field-view-node .button, body.page-reviews .main .view-content .item-list ol li .views-field.views-field-view-node .button a, .yellow-background, body.page-user-profile .homebox .homebox-column .homebox-portlet, body.page-reviews .view .view-filters, body.page-booklists .view .view-filters, .section-progress .main .view-calendar-sticker, .blue-background, .section-progress .main, .block.review-booklist-block, .block.announcement, .block.homepage-blocks, .block.block-menu-menu-social-sharing-icons ul.menu li a:after, button,
+.button, body, body.page-messages div.main, body.page-reviews .sidebar, body.page-booklists .sidebar, .section-progress .main .block.progress-calendar #calendar .fc-header .fc-header-center h2, .section-progress .main .block.progress-calendar #calendar .fc-header td span.fc-button, .section-progress .main .block.progress-calendar #calendar .fc-content .fc-border-separate tbody, .pre-header .pre-header-left section .view .views-field a, header .header-middle {
   -webkit-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
   -moz-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
   box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
@@ -6586,16 +6594,20 @@ body {
 }
 .block.block-user-login form {
   width: 100%;
-  max-width: 90%;
+  max-width: 77%;
   margin: 0 auto;
 }
 .block.block-user-login form ul {
   list-style: none;
 }
+.block.block-user-login form ul li {
+  margin-left: 0;
+}
+.block.block-user-login form button {
+  margin-left: 0;
+}
 .block.review-booklist-block {
   background: #fff;
-  max-width: 252px;
-  margin: 0 auto;
   border-radius: 20px;
   padding-left: 10px;
   padding-right: 10px;
@@ -6651,6 +6663,9 @@ body {
   height: 25px;
   display: block;
 }
+.block.write-book-review h2.block-title {
+  margin-bottom: 19px;
+}
 .block.announcement {
   background: #fdeb52 url("../images/libraryzurb/annocement.png") no-repeat;
   background-size: 100%;
@@ -6668,11 +6683,9 @@ body {
 .block.announcement .views-field-body p {
   padding-left: 36px;
   font-family: Arialbold !important;
-  font-size: 17px;
-  font-weight: bold;
 }
 .block.announcement .views-field-body ol {
-  margin-left: 90px;
+  margin-left: 70px;
   padding-bottom: 40px;
   list-style: none;
 }
@@ -6966,10 +6979,17 @@ button,
   border-radius: 10px;
   font-size: 17px;
 }
-button:hover, button:focus,
-.button:hover,
-.button:focus {
-  background: #fdeb52;
+button:hover,
+.button:hover {
+  background: #f7fc63 !important;
+  color: #000;
+  outline: none;
+  text-decoration: none !important;
+}
+button:focus, button.active,
+.button:focus,
+.button.active {
+  background: #f0f811 !important;
   color: #000;
   outline: none;
 }
@@ -6978,12 +6998,20 @@ button a,
   color: #000;
   font-size: 17px;
 }
-button a:hover, button a focus,
-.button a:hover,
-.button a focus {
+button a:hover,
+.button a:hover {
   outline: none;
   color: #000;
-  background: #fdeb52;
+  background: #f7fc63 !important;
+  text-decoration: none !important;
+}
+button a:focus, button a.active,
+.button a:focus,
+.button a.active {
+  outline: none;
+  text-decoration: none !important;
+  color: #000;
+  background: #f0f811 !important;
 }
 
 /*
@@ -8454,7 +8482,7 @@ body {
 
 @media only screen and (min-width: 730px) {
   .push-3 {
-    left: 31.87%;
+    left: 31.9%;
   }
 }
 
@@ -8481,6 +8509,7 @@ body.page-user-profile .homebox .homebox-column .homebox-portlet {
 body.page-user-profile .homebox .homebox-column .homebox-portlet .homebox-portlet-inner .portlet-header {
   background: #267fda !important;
   color: #fff !important;
+  margin-bottom: 50px;
 }
 @media screen and (min-width: 768px) {
   body.page-user-profile .homebox .homebox-column .homebox-portlet .homebox-portlet-inner .portlet-header {
@@ -8603,8 +8632,9 @@ body.page-messages div.main ul.pagination.pager li.arrow.last a {
   border-radius: 0px 10px 10px 0px;
 }
 body.page-messages div.main ul.button-group li a {
-  background: #fdeb52;
-  color: #000;
+  /* background: $yellow;
+  color: $black; */
+  font-size: 17px;
 }
 body.page-messages div.main ul.button-group:after {
   clear: none !important;
@@ -8614,20 +8644,23 @@ body.page-messages div.main ul.action-links {
 }
 body.page-messages div.main ul.action-links li a {
   margin-left: 20px;
-  padding: 0.625em 1.125em 0.5625em;
-  font-size: 0.8125em;
-  border: 1px solid #fdeb52;
-  border-radius: 10px;
-  color: #000;
-  background: #fdeb52;
+  font-size: 17px;
   position: relative;
-  top: 5px;
+  top: 8.5px;
+  /*padding: 0.625em 1.125em 0.5625em;
+  font-size: 0.8125em;
+  border: 1px solid $yellow;
+  border-radius: 10px; */
+  /* 	color: $black;
+  	background: $yellow;
+  	position: relative;
+  	top: 5px; */
 }
 body.page-messages div.main form {
   clear: both;
 }
 body.page-messages div.main form button {
-  font-size: 14px !important;
+  font-size: 17px !important;
 }
 body.page-messages div.main form #privatemsg-list-form table {
   border: none;
@@ -8668,13 +8701,18 @@ body.page-messages div.main form #privatemsg-list-form .container-inline div.for
   width: 200px !important;
 }
 body.page-messages div.main form #privatemsg-list-form .container-inline div.form-type-select .chosen-container-single .chosen-single {
-  font-size: 14px;
-  background: #fdeb52 !important;
-  border: 1px solid #fdeb52;
-  color: #000;
+  font-size: 17px;
+  padding: 13px 20px 10px;
+  height: auto !important;
+  position: relative;
+  bottom: 2px;
+  /* font-size: 14px;
+  background: $yellow !important; */
+  /* border: 1px solid $yellow;
+  color: $black;
   padding: 7px 20px;
   height: auto !important;
-  border-radius: 10px;
+  border-radius: 10px; */
 }
 body.page-messages div.main form #privatemsg-list-form .container-inline div.form-type-select .chosen-container-single .chosen-single div {
   top: 8px;
@@ -8688,15 +8726,13 @@ body.page-messages div.main form fieldset legend {
   margin-top: 15px;
 }
 body.page-messages div.main form fieldset legend a {
-  background: #fdeb52;
-  color: #000;
-  border: 1px solid #fdeb52;
-  border-radius: 10px;
-  padding: 0.625em 1.125em 0.5625em;
-  font-size: 0.8125em;
-}
-body.page-messages div.main form fieldset legend a:hover, body.page-messages div.main form fieldset legend a:focus {
-  outline: none;
+  /* background: $yellow;
+  color: $black;
+  border: 1px solid $yellow; */
+ 	 	 	/* border-radius: 10px;
+ 	 	 	padding: 0.625em 1.125em 0.5625em;
+	 		font-size: 0.8125em; */
+  font-size: 17px;
 }
 body.page-messages div.main form fieldset .form-item label {
   color: #fff;
@@ -8712,17 +8748,25 @@ body.page-reviews .view-header p a:hover, body.page-reviews .view-header p a:foc
 body.page-reviews .pull-9.sidebar, body.page-booklists .pull-9.sidebar {
   width: 29.53%;
   right: 69.4%;
+  padding-left: 2.65%;
+  padding-right: 2.65%;
 }
 body.page-reviews .sidebar, body.page-booklists .sidebar {
   background: #267fda;
   color: #fff;
-  padding-top: 20px;
+  padding-top: 25px;
+  padding-bottom: 25px;
   border-radius: 20px;
-  box-shadow: 17px 22px 31px -22px #000;
 }
 body.page-reviews .sidebar .block-title, body.page-booklists .sidebar .block-title {
   font-size: 21px !important;
-  margin-top: 50px;
+  margin-top: 6px;
+}
+body.page-reviews .sidebar p, body.page-booklists .sidebar p {
+  color: white;
+}
+body.page-reviews .sidebar p.button, body.page-booklists .sidebar p.button {
+  margin-left: 0 !important;
 }
 body.page-reviews .sidebar .toogle-follow, body.page-booklists .sidebar .toogle-follow {
   display: none;
@@ -8761,8 +8805,7 @@ body.page-reviews .sidebar .reviews-block-block .view-header h3:nth-of-type(1) a
 }
 body.page-reviews .sidebar .reviews-block-block .view-header h3, body.page-booklists .sidebar .reviews-block-block .view-header h3 {
   font-size: 17px !important;
-  font-family: Arialregular !important;
-  font-weight: normal !important;
+  font-family: Arialbold !important;
   color: #fff;
 }
 body.page-reviews .sidebar .reviews-block-block .view-header h3 a, body.page-booklists .sidebar .reviews-block-block .view-header h3 a {
@@ -9293,19 +9336,19 @@ body.page-booklists .main .view-booklist-slideshow .owl-carousel .owl-buttons .o
   background-position: 10px 12px;
 }
 .pre-header .pre-header-left section .view .views-field.views-field-php-2 {
-  right: 26px;
+  right: 18px;
 }
 .pre-header .pre-header-left section .view .views-field.views-field-php-1 {
-  right: 155px;
+  right: 147px;
 }
 .pre-header .pre-header-left section .view .views-field.views-field-php {
-  right: 384px;
+  right: 376px;
 }
 .pre-header .pre-header-left section .view .views-field.views-field-php-4 {
-  right: 593px;
+  right: 585px;
 }
 .pre-header .pre-header-left section .view .views-field.views-field-name {
-  right: 722px;
+  right: 714px;
 }
 .pre-header .pre-header-left section .view .views-field.views-field-name a {
   color: #000 !important;
@@ -9541,8 +9584,9 @@ ul.quicktabs-tabs li a:focus, ul.quicktabs-tabs li a:hover {
 }
 
 p {
-  font-size: 17px;
+  font-size: 17px !important;
   font-family: Arialregular !important;
+  line-height: 1;
 }
 
 /**

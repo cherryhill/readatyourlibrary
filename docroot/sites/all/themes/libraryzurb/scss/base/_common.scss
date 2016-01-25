@@ -76,11 +76,19 @@
 	border: none;
 	padding: $button-sml 20px;
 	@extend .box-shadow;
-	 &:hover, &:focus {
+	 &:hover {
 	 	color: $black;
-	 	background: $yellow;
+	 	background: $button-hover !important;
 	 	opacity: 1;
 	 	outline: none;
+	 	text-decoration: none !important;
+	 }
+	 &:focus, &.active {
+	 	color: $black;
+	 	background: $button-active !important;
+	 	outline: 1;
+	 	opacity: 1;
+	 	text-decoration: none !important;
 	 }
 
 }
