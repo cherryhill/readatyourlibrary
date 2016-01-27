@@ -97,11 +97,12 @@ jQuery( document ).ready(function() {
 
         var currentUser = Drupal.settings.auto_role_allocation.currentUser;
          var loc = window.location;
-         var baseUrl = loc.protocol + "//" + loc.host;
+         var baseUrl = loc.protocol + "//" + loc.host + '/calendar';
+         alert(baseUrl);
         jQuery.ajax({
         
             //url: 'http://localhost/playatyourlibrary/docroot/calendar',
-            url: 'http://play.dev.chillco.com/calendar',
+            url: baseUrl,
             type: 'post',
             dataType: 'json',
             data: {
@@ -110,11 +111,11 @@ jQuery( document ).ready(function() {
                 date: copiedEventObject.start,
                 user_id: currentUser
             },
-            success: function(data){
-                
-                window.location.reload(true);
+            success: function(res){
+              alert(res);
+              window.location.reload(true);
               console.log("data:");
-              console.log(data);
+              console.log(res);
               //alert("data");
             },
             error: function(jqXHR, data, error){
@@ -174,7 +175,7 @@ jQuery( document ).ready(function() {
 
         jQuery.ajax({        
             //url: 'http://localhost/playatyourlibrary/docroot/calendar',
-            url: 'http://play.dev.chillco.com/calendar',
+            url: baseUrl,
             type: 'post',
             dataType: 'json',
             data: {
