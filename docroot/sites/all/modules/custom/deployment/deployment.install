@@ -69,3 +69,21 @@ function deployment_update_8113(&$sandbox) {
   drupal_flush_all_caches();
 }
 
+
+/**
+ * Enable View feature for activities block - patron dashboard.
+ */
+function deployment_update_8114(&$sandbox) {
+  $modules = array(
+    'my_activities_for_patron_dashboard',
+  );
+  $messages = array();
+  $modules_enabled = module_enable($modules, TRUE);
+  if($modules_enabled) {
+    $messages[] = implode(", ", $modules) . t(' modules have all been enabled.');
+  } else {
+    throw new DrupalUpdateException('Something went wrong; A dependency was missing.');
+  }
+  drupal_flush_all_caches();
+}
+
