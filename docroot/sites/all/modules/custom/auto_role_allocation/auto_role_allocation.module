@@ -107,7 +107,6 @@ if($image_id) {
     ->execute();
 }
 
-
 else {
    $insert_query =db_insert('calendar')
       ->fields(array(
@@ -122,6 +121,7 @@ else {
           );
         $node = node_load(364);
         //auto_role_allocation_node_update($current_node);
+        /* this is for calendar activity*/
         $hook = "node_update|node|{$node->type}|updated";
         _play_library_program_invoke_activity_entry_hooks($node, 'node', $hook, 1);
       }
