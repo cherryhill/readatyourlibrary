@@ -96,6 +96,7 @@ a:focus {
 h1 {
 	&#page-title {
 		margin-top:0;
+		font-size: 28px;
 	}
 }
 
@@ -211,11 +212,11 @@ li {
 	}
 	a {
     border-bottom: medium solid;
-		color: $color_gray_dark;
+		/* color: $color_gray_dark; */
 
 		&:hover,
 		&:focus {
-			background-color: $color_gray_light;
+			/* background-color: $color_gray_light; */
 		}
 	}
 }
@@ -772,7 +773,7 @@ div {
 .sidebar {
 	span {
 		font-size: 17px;
-		font-family: Arialregular !important;
+		@extend .arial-regular;
 		line-height: 1.2;
 		  &.views-field-title {
 		  	float: right;

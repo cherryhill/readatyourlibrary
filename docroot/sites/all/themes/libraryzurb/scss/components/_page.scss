@@ -1,9 +1,10 @@
 body {
+	-webkit-font-smoothing: antialiased;
 	.main {
 		margin-top: -5px;
 	}
 	/**common css for dashboard**/
-	 &.page-user-profile {
+	 /* &.page-user-profile {
 	 	.homebox {
 	 		#homebox-buttons {
 	 			a {
@@ -29,7 +30,7 @@ body {
 	 			 		@media screen and (min-width: 768px){
 	 			 		font-size: 22px !important;
 	 			 		padding: 10px 20px !important;
-	 			 		font-family: McLaren-Regular !important;
+	 			 		@extend .mclaren; 
 	 			 		border-radius: 20px 20px 0px 0px;
 	 			 		.portlet-icon {
 	 			 			visibility: hidden;
@@ -37,7 +38,9 @@ body {
 	 			 			top: 5px;
 	 			 			width: 20px !important;
 	 			 			height: 20px !important;
+	 			 			@extend .arial-regular;
 	 			 			  &:after {
+
 	 			 			  	content: " ";
 	 			 			  	width: 20px;
 	 			 			  	height: 20px;
@@ -45,7 +48,7 @@ body {
 	 			 			  	border-radius: 100%;
 	 			 			  	background: $white;
 	 			 			  	color: $orange;
-	 			 			  	font-family: Arialregular !important;
+	 			 			  	
 	 			 			  	display: block;
 	 			 			  	left: 0;
 	 			 			  	top: 5px;
@@ -86,7 +89,7 @@ body {
 	 			}
 	 		}
 	 	}
-	 }
+	 } */
 	
 	/**css for msg center**/
 	&.page-messages {
@@ -121,7 +124,7 @@ body {
 	        @extend .box-shadow;
 	         #page-title {
 			    color: $white;
-	          	font-family: McLaren-Regular !important;
+	          	@extend .mclaren;
 				padding-top: 26px;
 				padding-bottom: 25px;
 			    font-size: 28px;
@@ -355,7 +358,7 @@ body {
   	 	@extend .box-shadow;
 		  .block-title {
   	 	  	@extend .white-text;
-  	 	  	font-size: 21px !important;
+  	 	  	font-size: 22px;
   	 	  	margin-top: 6px;
   	 	  }
   	 	  p {
@@ -363,10 +366,14 @@ body {
   	 	  	 &.button {
   	 	  	 	@extend .yellow-button;
   	 	  	 	margin-left: 0 !important;
+  	 	  	 	margin-bottom: 24px;
   	 	  	 }
   	 	  }
   	 	  .toogle-follow {
   	 	  	display: none;
+  	 	  }
+  	 	  .view.view-my-book-reviews, .view.view-booklist-on-activities-page {
+  	 	  	margin-top: 40px;
   	 	  }
   	 	  .reviews-block-block {
   	 	    margin: 0 auto !important;
@@ -396,7 +403,7 @@ body {
   	 	    		 	 	 	background-size: 30px;
   	 	    		 	 	 	background: url('../images/libraryzurb/smily-white.png') no-repeat;
   	 	    		 	 	 	position: absolute;
-  	 	    		 	 	 	top: 0;
+  	 	    		 	 	 	top: -4px;
   	 	    		 	 	 	right: 0;
   	 	    		 	 	 }
   	 	    		 	 }
@@ -412,12 +419,12 @@ body {
            		 }
            		 h3 {
            		 	font-size: 17px !important;
-           		 	font-family: Arialbold !important;
+           		 	@extend .arial-bold;
            		 	color: $white;
+           		 	margin-bottom: 15px;
            		 	  a {
 	           		 	  	font-size: 17px !important;
-	           		 		font-family: Arialregular !important;
-	           		 		font-weight: normal !important;
+	           		 		@extend .arial-bold;
 	           		 		color: $white;
            		 	  }
            		 }
@@ -429,11 +436,26 @@ body {
   	  		@extend .yellow-background;
   	  		 form {
   	  		 	.views-exposed-form {
-	  	  		 	padding: 1.5em 1em 0.5em;
+	  	  		 	padding: 3px 2.8% 12px 3.4%;
 	  	  		 	border: none;
+	  	  		 	  .views-exposed-widget {
+	  	  		 	  	width: 25%;
+	  	  		 	  	padding-left: 1%;
+	  	  		 	  	padding-right: 0;
+	  	  		 	  	padding-top: 17px;
+	  	  		 	  	 .chosen-container {
+	  	  		 	  	 	width: 100% !important;
+	  	  		 	  	 }
+	  	  		 	  	 input[type="text"] {
+	  	  		 	  	 	height: 40px;
+	  	  		 	  	 	position: relative;
+	  	  		 	  	 	top: 3px;
+	  	  		 	  	 }
+	  	  		 	  }
 	  	  		 	  label {
 	  	  		 	  	@extend .black-text;
-	  	  		 	  	padding-bottom: 5px;
+	  	  		 	  	font-size: 16px;
+	  	  		 	  	/* padding-bottom: 5px; */
 	  	  		 	  }
 	  	  		 	  .chosen-processed {
 	  	  		 	  	.chosen-search {
@@ -457,7 +479,7 @@ body {
 	  	  		 	  	a {
 
 	  	  		 	  	    @extend .blue-button;
-	  	  		 	  	    height: 40px;
+	  	  		 	  	    height: auto !important;
 	  	  		 	  	    border: none;
 	  	  		 	  	     div {
 		  	  		 	  		b{
@@ -484,6 +506,10 @@ body {
 	  	  		 	.views-submit-button {
 	  	  		 		button {
 	  	  		 			@extend .blue-button;
+	  	  		 			margin-top: 17px;
+	  	  		 			line-height: 1.2;
+	  	  		 			text-transform: capitalize;
+	  	  		 			margin-left: 0;
 	  	  		 		}
 	  	  		 	}
 	  	  		}
@@ -495,14 +521,60 @@ body {
   	 counter-reset: section;
   	 .main {
 	  	 .view-content {
+	  	 	.views-row img {
+	  	 		@extend .no-border;
+	  	 	}
 	  	 	.item-list {
 	  	 		ol {
 	  	 			list-style: none;
 	  	 			li {
+	  	 				margin-bottom: 0;
+	  	 				padding-top: 16px;
+	  	 				padding-bottom: 16px;
+	  	 				border-bottom: 1px solid $gray;
+	  	 				display: inline-block;
 	  	 				.views-field {
 	  	 					float: left;
 	  	 					padding-left: 5px;
 	  	 					padding-right: 5px;
+
+	  	 					 &.views-field-title {
+	  	 					 	padding-left: 4% !important;
+	  	 					 	a {
+	  	 					 		font-size: 20px;
+	  	 					 	}
+	  	 					 }
+	  	 					 &.views-field-count {
+	  	 					 	position: relative;
+	  	 					 	top: 20px;
+	  	 					 }
+	  	 					 &.views-field-body {
+	  	 					 	padding-left: 4% !important;
+	  	 					 	padding-top: 18px;
+	  	 					 	@extend .arial-regular;
+	  	 					 }
+	  	 					 &.views-field-nothing {
+	  	 					 	padding-left: 4% !important;
+	  	 					 	 div {
+	  	 					 	 	float: left;
+	  	 					 	 	&.date {
+	  	 					 	 		width: 100%;
+	  	 					 	 		display: inline-block;
+	  	 					 	 		@extend .arial-regular;
+	  	 					 	 		padding-top: 23px;
+	  	 					 	 	}
+	  	 					 	 	&.field-name-field-avatar-image {
+	  	 					 	 		img {
+		  	 					 	 		padding: 5px !important;
+		  	 					 	 		position: relative;
+		  	 					 	 		bottom: 20px;
+	  	 					 	 	   }
+	  	 					 	 	}
+	  	 					 	 }
+	  	 					 }
+	  	 					 &.views-field-field-author-last-name {
+	  	 					 	font-size: 20px;
+	  	 					 }
 	  	 					 &.views-field-view-node {
 	  	 					 	span {
 	  	 					 		&.button {
@@ -539,6 +611,22 @@ body {
 
 	  	 					 &.views-field-field-book-cover-image-link {
 	  	 					 	width: 30%;
+	  	 					 	table {
+	  	 					 		@extend .no-border;
+	  	 					 		 tbody {
+	  	 					 		  	@extend .no-border;
+	  	 					 		  	 td {
+	  	 					 		  	 	padding: 0;
+	  	 					 		  	 	img {
+	  	 					 		  	 		margin: 0;
+	  	 					 		  	 		 @media screen and (min-width: 1279px) {
+	 		  	 		 		 		  	 		width: 242px !important;
+	 		  	 									height: 361px !important;
+	  	 					 		  	 		 }
+	  	 					 		  	 	}
+	  	 					 		  	 }
+	  	 					 		  }
+	  	 					 	}
 	  	 					 }
 	  	 					 &.views-field-count,&.views-field-field-user-avatar,&.views-field-body {
 	  	 					 	width: 70%;
@@ -549,7 +637,7 @@ body {
 	  	 					 	}
 	  	 					 }
 	  	 					 &.views-field-view-node {
-	  	 					 	margin-top: 50px;
+	  	 					 	margin-top: 23px;
 	  	 					 	 .button {
 	  	 					 	 
 	  	 					 	 		@extend .blue-button;
@@ -646,7 +734,7 @@ body {
 	  			 	 .field-content {
 	  			 	 	a {
 	  			 	 		color: $blue;
-	  			 	 		font-family: McLaren-Regular !important;
+	  			 	 		@extend .mclaren;
 	  			 	 		 &:hover, &:focus {
 	  			 	 		 	color: $blue;
 	  			 	 		 }
@@ -878,8 +966,7 @@ body {
  	 			 		 .fc-header-center {
  	 			 		 	h2 {
  	 			 		 		color: $orange;
- 	 			 		 		font-family: McLaren-Regular !important;
- 	 			 		 		font-weight: normal !important;
+ 	 			 		 		@extend .mclaren;
  	 			 		 		border-bottom: none;
  	 			 		 		@extend .box-shadow;
  	 			 		 	}
@@ -902,6 +989,7 @@ body {
  	 			 		 }
  	 			 	}
  	 			 	.fc-content {
+ 	 			 		color: $black;
  	 			 		.fc-border-separate {
  	 			 			margin-bottom: 0;
  	 			 			border: none;

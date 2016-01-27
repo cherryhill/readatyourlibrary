@@ -15,7 +15,7 @@
     @extend .box-shadow;
       .block-title, h2 {
        	color: $white;
-      	font-family: McLaren-Regular !important;
+      	@extend .mclaren;
 		padding-top: 26px;
 		padding-bottom: 25px;
 	    font-size: 28px;
@@ -49,19 +49,16 @@
 }
 .white-text {
 	color: $white;
-	font-family: McLaren-Regular !important; 
-	font-weight: normal !important;
+	@extend .mclaren;
 }
 .black-text {
 	color: $black;
-	font-family: McLaren-Regular !important; 
-	font-weight: normal !important;
+	@extend .arial-regular;
 	opacity: 1 !important;
 }
 .blue-text {
 	color: $blue;
-	font-family: McLaren-Regular !important; 
-	font-weight: normal !important;
+	@extend .mclaren;
 	  &:hover {
 	  	color: $blue;
 	  }
@@ -69,8 +66,7 @@
 }
 .yellow-button {
 	color: $black;
-	font-family: McLaren-Regular !important; 
-	font-weight: normal !important;
+	@extend .mclaren;
 	border-radius: 10px;
 	background: $yellow !important;
 	border: none;
@@ -94,11 +90,11 @@
 }
 .blue-button {
 	color: $white !important;
-	font-family: McLaren-Regular !important; 
-	font-weight: normal !important;
+	@extend .mclaren;
 	background: $blue !important;
 	border-radius: 10px;
-	padding: $button-sml 20px;
+	padding: 9px 22px;
+	font-size: 21px;
 	@extend .box-shadow;
 	border: none;
 	  &:hover, &:focus {
@@ -113,8 +109,7 @@
 	color: $white;
 	border-radius: 20px;
 	background: $yellow;
-	font-family: McLaren-Regular !important; 
-	font-weight: normal !important;
+	@extend .mclaren;
 	@extend .box-shadow;
 
 }
@@ -142,7 +137,7 @@
 }
 .wave-img {
 		color: $white;
-      	font-family: McLaren-Regular !important;
+      	@extend .mclaren;
 		padding-top: 26px;
 		padding-bottom: 25px;
 	    font-size: 28px;
@@ -152,7 +147,6 @@
 		padding-left:4%;
 		z-index: 0;
 		position: relative;
-		font-weight: normal !important;
 		border-radius: 20px;
 		overflow: hidden;
 		 &:after {
@@ -180,4 +174,22 @@
 }
 .no-border {
 	border: none !important;
+}
+.arial-regular {
+	font-family: Arialregular !important;
+	font-style: normal !important;
+	font-weight: normal !important;
+	-webkit-font-smoothing: antialiased !important;
+}
+.arial-bold {
+	font-family: Arialbold !important;
+	font-style: normal !important;
+	font-weight: normal !important;
+	-webkit-font-smoothing: antialiased !important;
+}
+.mclaren {
+	font-family: McLaren-Regular !important;
+	font-weight: normal !important;
+	font-style: normal !important;
+	-webkit-font-smoothing: antialiased !important;
 }

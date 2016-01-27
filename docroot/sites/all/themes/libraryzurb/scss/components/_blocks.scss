@@ -1,6 +1,6 @@
 // Blocks
 body {
-	font-family: McLaren-Regular !important;
+	@extend .mclaren;
 }
 .block {
     margin-bottom: 35px;
@@ -33,14 +33,15 @@ body {
 		border-radius: 20px;
 		padding-left: 10px;
 		padding-right: 10px;
+		margin-bottom: 48px;
 		@extend .box-shadow;
 		 .block-title {
 		 	border-top: none;
 		 	padding: 10px;
-		 	text-align: center;
+		 	padding-left: 22.6%;
 		 	 a {
-		 	 	font-family: McLaren-Regular !important;
-		 	    font-size: 17px;
+		 	 	@extend .mclaren;
+		 	    font-size: 22px;
 		 	 	color: $black;
 		 	 	position: relative;
 		 	 	&.active {
@@ -50,7 +51,7 @@ body {
  		 			    width: 25px;
  		 			    background: url('../images/libraryzurb/star.png') no-repeat;
  		 			    position: absolute;
- 		 			    top: 0;
+ 		 			    top: 3px;
  		 			    left: -31px;
  		 			    height: 25px;
  		 			    display: block;
@@ -62,10 +63,10 @@ body {
 		 	&.menu {
 		 		margin-bottom: 6px;
 		 		 li {
-		 		 	text-align: center;
+		 		 	padding: 6px 0px 0px 22.6%;
 		 		 	  a {
 		 		 	  	 color: $black;
-		 		 	  	 font-size: 17px;
+		 		 	  	 font-size: 22px;
 		 		 	  	  &:focus {
 		 		 	  	  	outline: none;
 		 		 	  	  }
@@ -80,8 +81,8 @@ body {
 		 		 			    width: 25px;
 		 		 			    background: url('../images/libraryzurb/star.png') no-repeat;
 		 		 			    position: absolute;
-		 		 			    top: 0;
-		 		 			    left: 10%;
+		 		 			    top: 3px;
+		 		 			    left: -31px;
 		 		 			    height: 25px;
 		 		 			    display: block;
 		 		 			  }
@@ -93,8 +94,9 @@ body {
 		 }
 	}
 	&.write-book-review {	
+		margin-bottom: 0 !important;
 	 	h2.block-title {
-	 		margin-bottom: 19px;
+	 		margin-bottom: 25px;
 	 	}
 
  	}
@@ -110,12 +112,12 @@ body {
 		 	border: none;
 		 	color: $black;
 		 	font-size: 28px;
-		 	font-family: McLaren-Regular !important;
+		 	@extend .mclaren;
 		 }
 		 .views-field-body {
 		 	p {
 		 		padding-left: 36px;
-		 		font-family: Arialbold !important;
+		 		@extend .arial-bold;
 		 	}
 		 	ol {
 		 		margin-left: 70px;
@@ -125,7 +127,7 @@ body {
 		 		 li {
 		 		 	position: relative;
 		 		 	font-size: 17px;
-		 		 	font-family: Arialregular !important;
+		 		 	@extend .arial-regular;
 		 		 	&:after {
 		 		 		background: url('../images/libraryzurb/arrow-list.png') no-repeat;
 		 		 		display: block;
@@ -245,7 +247,7 @@ body {
 	            }    
 			         .block-title {
 			           color: $white;
-			          	font-family: McLaren-Regular !important;
+			          	@extend .mclaren;
 						padding-top: 26px;
 						padding-bottom: 25px;
 					    font-size: 28px;
@@ -255,7 +257,6 @@ body {
 						padding-left:4%;
 						z-index: 0;
 						position: relative;
-						font-weight: normal !important;
 						border-radius: 20px;
 						overflow: hidden;
 						 &:after {
@@ -288,7 +289,7 @@ body {
 		text-align: left !important;
 		float: none !important;
 		clear: both;
-		font-family: Arialbold !important;
+		@extend .arial-bold;
 	}
 	&.footer-playlibdetails {
 		margin-bottom: 25px !important;
