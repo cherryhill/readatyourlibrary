@@ -52,12 +52,11 @@ jQuery( document ).ready(function() {
 
   jQuery('#calendar').fullCalendar({
 
-   
+    var loc = window.location;
+    var baseUrl = loc.protocol + "//" + loc.host + '/calendar';
 
     editable: true,
     droppable: true, // this allows things to be dropped onto the calendar !!!
-    var loc = window.location;
-    var baseUrl = loc.protocol + "//" + loc.host + '/calendar';
         
     drop: function (date, allDay) { // this function is called when something is dropped
        // var count = jQuery(".fc-event-container").children('div').length;
