@@ -72,7 +72,7 @@ jQuery( document ).ready(function() {
         var expl_img1 = expl_img[1].split("//");
         var expl_img2 = expl_img1[1].split("?");
         var expl_img3 = expl_img2[0].split("/");
-        //var image_name = expl_img3[9];
+        // var image_name = expl_img3[9];
         var image_name = expl_img3[7];
 
         
@@ -102,20 +102,11 @@ jQuery( document ).ready(function() {
         
             //url: 'http://localhost/playatyourlibrary/docroot/calendar',
             url: baseUrl,
+            async: false,
             type: 'post',
-            dataType: 'json',
-            data: {
-                //id: count,
-                image: image_name,
-                date: copiedEventObject.start,
-                user_id: currentUser
-            },
+            data: 'image='+image_name+'&date='+copiedEventObject.start+'&user_id='+currentUser,
             success: function(res){
-              alert(res);
               window.location.reload(true);
-              console.log("data:");
-              console.log(res);
-              //alert("data");
             },
             error: function(jqXHR, data, error){
                 // console.log(jqXHR);
