@@ -71,9 +71,9 @@ function auto_role_allocation_init() {
 }
 
 function auto_role_allocation_menu() {
-  $items['test'] = array(
+  $items['calendar'] = array(
     'title' => 'Test Page',
-    'page callback' => 'test_page',
+    'page callback' => 'calendar_page',
     'access arguments' => array('access content'),
     'type' => MENU_SUGGESTED_ITEM,
   );
@@ -89,7 +89,7 @@ function auto_role_allocation_menu() {
 
 
 
-function test_page() {
+function calendar_page() {
   global $user;
   $uid = $user->uid;
   $image_id = $_POST['id'];
