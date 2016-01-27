@@ -52,9 +52,6 @@ jQuery( document ).ready(function() {
 
   jQuery('#calendar').fullCalendar({
 
-    var loc = window.location;
-    var baseUrl = loc.protocol + "//" + loc.host + '/calendar';
-
     editable: true,
     droppable: true, // this allows things to be dropped onto the calendar !!!
         
@@ -96,6 +93,9 @@ jQuery( document ).ready(function() {
             // if so, remove the element from the "Draggable Events" list
             jQuery(this).remove();
         }
+
+        var loc = window.location;
+        var baseUrl = loc.protocol + "//" + loc.host + '/calendar';
 
         var currentUser = Drupal.settings.auto_role_allocation.currentUser;
         jQuery.ajax({
@@ -170,7 +170,8 @@ jQuery( document ).ready(function() {
         var event_tit5 = event_tit4[1].split('/');
         var image_path = event_tit5[6];  
           
-        
+        var loc = window.location;
+        var baseUrl = loc.protocol + "//" + loc.host + '/calendar';
 
         jQuery.ajax({        
             //url: 'http://localhost/playatyourlibrary/docroot/calendar',
