@@ -101,7 +101,7 @@ jQuery( document ).ready(function() {
         jQuery.ajax({
         
             //url: 'http://localhost/playatyourlibrary/docroot/calendar',
-            url: baseUrl + '/calendar',
+            url: 'http://play.dev.chillco.com/calendar',
             type: 'post',
             dataType: 'json',
             data: {
@@ -174,7 +174,7 @@ jQuery( document ).ready(function() {
 
         jQuery.ajax({        
             //url: 'http://localhost/playatyourlibrary/docroot/calendar',
-            url: baseUrl + '/calendar',
+            url: 'http://play.dev.chillco.com/calendar',
             type: 'post',
             dataType: 'json',
             data: {
