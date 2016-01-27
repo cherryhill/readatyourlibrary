@@ -169,7 +169,6 @@ jQuery( document ).ready(function() {
         var event_tit4 = event_tit3[1].split('"');
         var event_tit5 = event_tit4[1].split('/');
         var image_path = event_tit5[6];  
-        alert(final_image_id + 'next' + image_path); 
           
         
 
