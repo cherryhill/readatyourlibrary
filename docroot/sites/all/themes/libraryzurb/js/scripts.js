@@ -100,8 +100,8 @@ jQuery( document ).ready(function() {
          var baseUrl = loc.protocol + "//" + loc.host;
         jQuery.ajax({
         
-            //url: 'http://localhost/playatyourlibrary/docroot/test',
-            url: baseUrl + '/test',
+            //url: 'http://localhost/playatyourlibrary/docroot/calendar',
+            url: baseUrl + '/calendar',
             type: 'post',
             dataType: 'json',
             data: {
@@ -173,8 +173,8 @@ jQuery( document ).ready(function() {
         
 
         jQuery.ajax({        
-            //url: 'http://localhost/playatyourlibrary/docroot/test',
-            url: baseUrl + '/test',
+            //url: 'http://localhost/playatyourlibrary/docroot/calendar',
+            url: baseUrl + '/calendar',
             type: 'post',
             dataType: 'json',
             data: {
