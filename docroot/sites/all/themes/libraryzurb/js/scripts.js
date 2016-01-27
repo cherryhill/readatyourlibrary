@@ -110,10 +110,9 @@ jQuery( document ).ready(function() {
                 date: copiedEventObject.start,
                 user_id: currentUser
             },
-
             success: function(data){
                 
-              window.location.reload(true);
+                window.location.reload(true);
               console.log("data:");
               console.log(data);
               //alert("data");
@@ -169,13 +168,14 @@ jQuery( document ).ready(function() {
         var event_tit3 = event_tit2[1].split('=');
         var event_tit4 = event_tit3[1].split('"');
         var event_tit5 = event_tit4[1].split('/');
-        var image_path = event_tit5[6];   
+        var image_path = event_tit5[6];  
+        alert(final_image_id + 'next' + image_path); 
           
         
 
         jQuery.ajax({        
             //url: 'http://localhost/playatyourlibrary/docroot/test',
-           url: baseUrl + '/test',
+            url: baseUrl + '/test',
             type: 'post',
             dataType: 'json',
             data: {
