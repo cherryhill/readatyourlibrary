@@ -124,8 +124,8 @@ else {
         /* this is for calendar activity*/
         $hook = "node_update|node|{$node->type}|updated";
         _play_library_program_invoke_activity_entry_hooks($node, 'node', $hook, 1);
-        echo 'Done';
       }
+  echo 'Done';
 }
 
 

@@ -56,6 +56,9 @@ jQuery( document ).ready(function() {
 
     editable: true,
     droppable: true, // this allows things to be dropped onto the calendar !!!
+    var loc = window.location;
+    var baseUrl = loc.protocol + "//" + loc.host + '/calendar';
+        
     drop: function (date, allDay) { // this function is called when something is dropped
        // var count = jQuery(".fc-event-container").children('div').length;
         //alert(count);
@@ -96,9 +99,6 @@ jQuery( document ).ready(function() {
         }
 
         var currentUser = Drupal.settings.auto_role_allocation.currentUser;
-         var loc = window.location;
-         var baseUrl = loc.protocol + "//" + loc.host + '/calendar';
-         alert(baseUrl);
         jQuery.ajax({
         
             //url: 'http://localhost/playatyourlibrary/docroot/calendar',
@@ -184,9 +184,9 @@ jQuery( document ).ready(function() {
                 date: event.start,
                 user_id: currentUser
             },
-            success: function(data){
+            success: function(res){
               console.log("data:");
-              console.log(data);
+              console.log(res);
               //alert("data");
             },
             error: function(jqXHR, data, error){
