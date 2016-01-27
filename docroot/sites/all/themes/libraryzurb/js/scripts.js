@@ -52,6 +52,8 @@ jQuery( document ).ready(function() {
 
   jQuery('#calendar').fullCalendar({
 
+   
+
     editable: true,
     droppable: true, // this allows things to be dropped onto the calendar !!!
     drop: function (date, allDay) { // this function is called when something is dropped
@@ -94,16 +96,12 @@ jQuery( document ).ready(function() {
         }
 
         var currentUser = Drupal.settings.auto_role_allocation.currentUser;
-       
-        //  if( typeof serial_id === "undefined" ) {
-        //     serial_id = 0;
-        // }
-       
-
+         var loc = window.location;
+         var baseUrl = loc.protocol + "//" + loc.host;
         jQuery.ajax({
         
-            //url: 'http://localhost/playatyourlibrary/docroot/test',
-            url: 'http://play.dev.chillco.com/test',
+            //url: 'http://localhost/playatyourlibrary/docroot/calendar',
+            url: 'http://play.dev.chillco.com/calendar',
             type: 'post',
             dataType: 'json',
             data: {
@@ -113,6 +111,8 @@ jQuery( document ).ready(function() {
                 user_id: currentUser
             },
             success: function(data){
+                
+                window.location.reload(true);
               console.log("data:");
               console.log(data);
               //alert("data");
@@ -168,13 +168,13 @@ jQuery( document ).ready(function() {
         var event_tit3 = event_tit2[1].split('=');
         var event_tit4 = event_tit3[1].split('"');
         var event_tit5 = event_tit4[1].split('/');
-        var image_path = event_tit5[6];   
+        var image_path = event_tit5[6];  
           
         
 
         jQuery.ajax({        
-            //url: 'http://localhost/playatyourlibrary/docroot/test',
-            url: 'http://play.dev.chillco.com/test',
+            //url: 'http://localhost/playatyourlibrary/docroot/calendar',
+            url: 'http://play.dev.chillco.com/calendar',
             type: 'post',
             dataType: 'json',
             data: {
@@ -201,4 +201,3 @@ jQuery( document ).ready(function() {
 });
 
 });
-

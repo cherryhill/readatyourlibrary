@@ -473,9 +473,10 @@ function _play_library_program_invoke_activity_entry_hooks($entity, $type, $invo
   $query->entityCondition('bundle', 'activity');
   $query->fieldCondition('field_activity_fired_hook', 'value', $hook);
   $result = $query->execute();
+
   foreach ($result as $entity_key => $entity_values) {
     if ($entity_key == 'activity') {
-      foreach ($entity_values as $activity_entity) {
+      foreach ($entity_values as $activity_entity) { //echo $i++;
         $account = user_load($entity->uid);
         if(!$update_points) {
           play_library_program_create_activity_entry($activity_entity->id, $account->uid);
@@ -486,7 +487,7 @@ function _play_library_program_invoke_activity_entry_hooks($entity, $type, $invo
         }
       }
     }
-  } 
+  }
 }
 
 /**

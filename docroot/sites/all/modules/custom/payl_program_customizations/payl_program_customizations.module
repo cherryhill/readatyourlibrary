@@ -31,7 +31,7 @@ function payl_program_customizations_user_load($users) {
  * Implements hook_form_alter().
  */
 function payl_program_customizations_form_alter(&$form, &$form_state, $form_id) {
-  // changes for ticket 361 and 362
+
   if ($form_id == 'user_profile_form') {
     global $user;
     $uid = $user->uid;
@@ -101,6 +101,11 @@ function payl_program_customizations_form_alter(&$form, &$form_state, $form_id) 
   // Increasing string length
   if ($form_id == 'user_register_form') {
     $form['profile_main']['field_do_you_want_other_players_']['und']['#title'] = t('Do you want other players to be able to see your badges and prizes when they click on your username? They won\'t be able to see your real name.');
+  }
+
+  // Changing of button text from Add new Badge to Add Badge Image
+  if ($form_id == 'eck__entity__form_add_reward_reward') {
+    $form['field_reward_badge']['und']['actions']['ief_add']['#value'] = t('Add Badge Image');
   }
 }
 

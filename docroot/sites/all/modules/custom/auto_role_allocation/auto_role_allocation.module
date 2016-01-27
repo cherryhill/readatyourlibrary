@@ -71,9 +71,9 @@ function auto_role_allocation_init() {
 }
 
 function auto_role_allocation_menu() {
-  $items['test'] = array(
+  $items['calendar'] = array(
     'title' => 'Test Page',
-    'page callback' => 'test_page',
+    'page callback' => 'calendar_page',
     'access arguments' => array('access content'),
     'type' => MENU_SUGGESTED_ITEM,
   );
@@ -89,13 +89,13 @@ function auto_role_allocation_menu() {
 
 
 
-function test_page() {
+function calendar_page() {
   global $user;
   $uid = $user->uid;
-  $image_id = $_REQUEST['id'];
-  $event_image = $_REQUEST['image'];
-  $event_date = $_REQUEST['date'];
-  $event_uid = $_REQUEST['user_id'];
+  $image_id = $_POST['id'];
+  $event_image = $_POST['image'];
+  $event_date = $_POST['date'];
+  $event_uid = $_POST['user_id'];
   $event_time = strtotime($event_date);
   
 
@@ -106,7 +106,6 @@ if($image_id) {
     ->condition ('id', $image_id)
     ->execute();
 }
-
 
 else {
    $insert_query =db_insert('calendar')
@@ -122,6 +121,7 @@ else {
           );
         $node = node_load(364);
         //auto_role_allocation_node_update($current_node);
+        /* this is for calendar activity*/
         $hook = "node_update|node|{$node->type}|updated";
         _play_library_program_invoke_activity_entry_hooks($node, 'node', $hook, 1);
       }
