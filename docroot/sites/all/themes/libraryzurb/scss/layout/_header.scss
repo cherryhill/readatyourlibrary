@@ -1,20 +1,39 @@
 // Non-modular or client styles for .l-header region.
 
 .l-header {
+	background: $green;
 	.row {
   &.header-middle {
   	max-width: 100%;
+  	 a#logo {
+        margin: 20px 20px 20px 0px;
+  	 }
+  	 h1#site-name {
+  	 	margin: 26px 0px 0px;
+  	 }
+  	 h2#site-slogan {
+  	 	margin: 2px 0px 0px;
+  	 }
   	 section {
+  	 	&.s-logoblock {
+  	 		margin-bottom: 0px;
+  	 		 p {
+  	 		 	margin-bottom: 0px;
+  	 		 }
+  	 	}
   	 	&.block-menu-menu-secoundary-menu {
+  	 		margin-bottom: 0;
   	 		ul.menu {
   	 			width: 100%;
   	 			max-width: 710px;
   	 			float: right;
   	 			list-style: none;
+  	 			position: relative;
+  	 			bottom: 20px;
   	 			  li {
   	 			  	float: left;
   	 			  	margin-left: 1px;
-  	 			  	height: 110px;
+  	 			  	height: 106px;
   	 			  	width: 100px;
   	 			  	
 					
