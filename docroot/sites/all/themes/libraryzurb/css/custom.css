@@ -6515,7 +6515,7 @@ a.th {
   margin-bottom: 0;
 }
 .l-header .row.header-middle section.block-menu-menu-secoundary-menu ul.menu li {
-  float: left;
+  float: right;
   margin-left: 1px;
   height: 106px;
   width: 100px;
@@ -6536,15 +6536,14 @@ a.th {
   left: 0;
   top: 0;
   visibility: visible;
-                        /*  -webkit-transition-duration: 0.8s;
-						-moz-transition-duration: 0.8s;
-						-o-transition-duration: 0.8s;
-						transition-duration: 0.8s;
-
-						-webkit-transition-property: -webkit-transform;
-						-moz-transition-property: -moz-transform;
-						-o-transition-property: -o-transform;
-						transition-property: transform; */
+  -webkit-transition-duration: 0.8s;
+  -moz-transition-duration: 0.8s;
+  -o-transition-duration: 0.8s;
+  transition-duration: 0.8s;
+  -webkit-transition-property: -webkit-transform;
+  -moz-transition-property: -moz-transform;
+  -o-transition-property: -o-transform;
+  transition-property: transform;
 }
 .l-header .row.header-middle section.block-menu-menu-secoundary-menu ul.menu li a.current-program {
   position: relative;
@@ -6595,11 +6594,11 @@ a.th {
   background: url("../images/libraryzurb/progress.png") no-repeat;
 }
 .l-header .row.header-middle section.block-menu-menu-secoundary-menu ul.menu li a:hover:after {
-  		/* transform: rotateY(360deg);
-  		-webkit-transform: rotateY(360deg);
-		-moz-transform: rotateY(360deg);
-		-ms-transform: rotateY(360deg);
-		-o-transform: rotateY(360deg); */
+  transform: rotateY(360deg);
+  -webkit-transform: rotateY(360deg);
+  -moz-transform: rotateY(360deg);
+  -ms-transform: rotateY(360deg);
+  -o-transform: rotateY(360deg);
 }
 
 .media-youtube-video {
@@ -6619,6 +6618,9 @@ a.th {
 
 .block {
   margin-bottom: 35px;
+}
+.block.block-user-login .block-title {
+  padding-left: 11.5%;
 }
 .block.block-user-login form {
   width: 100%;
@@ -8965,6 +8967,7 @@ body.page-reviews .main .view-content .item-list ol li .views-field.views-field-
   padding: 5px !important;
   position: relative;
   bottom: 20px;
+  margin: 0 !important;
 }
 body.page-reviews .main .view-content .item-list ol li .views-field.views-field-field-author-last-name {
   font-size: 20px;
@@ -9400,7 +9403,7 @@ body.page-booklists .main .view-booklist-slideshow .owl-carousel .owl-buttons .o
   background-color: #fdeb52;
   color: #000;
   font-size: 0.9em;
-  padding: 3px 0 19px;
+  padding: 3px 12px 19px 0px;
   display: inline-block;
 }
 .pre-header a {
@@ -9432,9 +9435,8 @@ body.page-booklists .main .view-booklist-slideshow .owl-carousel .owl-buttons .o
   padding: 0;
 }
 .pre-header .pre-header-left section .view .views-field {
-  float: left;
+  float: right;
   margin-left: 10px;
-  position: absolute;
 }
 .pre-header .pre-header-left section .view .views-field a {
   background-color: #267fda;
@@ -9449,21 +9451,6 @@ body.page-booklists .main .view-booklist-slideshow .owl-carousel .owl-buttons .o
   background: #267fda url("../images/libraryzurb/msg-img.png");
   background-repeat: no-repeat;
   background-position: 10px 12px;
-}
-.pre-header .pre-header-left section .view .views-field.views-field-php-2 {
-  right: 18px;
-}
-.pre-header .pre-header-left section .view .views-field.views-field-php-1 {
-  right: 147px;
-}
-.pre-header .pre-header-left section .view .views-field.views-field-php {
-  right: 376px;
-}
-.pre-header .pre-header-left section .view .views-field.views-field-php-4 {
-  right: 585px;
-}
-.pre-header .pre-header-left section .view .views-field.views-field-name {
-  right: 714px;
 }
 .pre-header .pre-header-left section .view .views-field.views-field-name a {
   color: #000 !important;
