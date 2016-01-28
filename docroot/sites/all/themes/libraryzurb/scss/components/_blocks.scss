@@ -4,6 +4,99 @@ body {
 }
 .block {
     margin-bottom: 35px;
+    &.block-private-msg-custom {
+    	@extend .yellow-background;
+    	padding: 35px;
+    	width: 100%;
+    	display: inline-block;
+    	 h2 {
+    	 	color: $black;
+    	 	margin-top: 0;
+    	 	font-size: 28px;
+    	 	@extend .mclaren;
+    	 	@extend .no-border;
+    	 }
+    	 .pm, .pm-admin, .pm-date {
+    	 	width: 25%;
+    	 	float: left;
+
+    	 }
+    	 .pm {
+    	 	font-size: 17px;
+    	 	@extend .arial-bold;
+    	 	color: $red;
+    	 }
+    	 .pm-admin, .pm-date {
+    	 	color: $black;
+    	 	@extend .arial-regular;
+    	 	font-size: 17px;
+    	 }
+    }
+    &.dashboard-block {
+    	@extend .orange-blue;
+    	.view {
+    		width: 100%;
+    		display: inline-block;
+    		padding: 35px 4%;
+    		position: relative;
+    		 .view-content {
+    		 	width: 50%;
+    		 	float: left;
+    		 	 .views-row {
+    		 	 	.views-field-field-user-avatar {
+    		 	 		float: left;
+    		 	 		padding-right: 10px;
+    		 	 	}
+    		 	 	.views-field-name {
+    		 	 		display: flex;
+    		 	 		height: 127px;
+    		 	 		align-content: center;
+    		 	 		align-items: center;
+    		 	 		 a {
+    		 	 		 	color: $white;
+    		 	 		 	@extend .arial-bold;
+    		 	 		 }
+    		 	 	}
+    		 	 }
+    		 }
+    		 .attachment-after {
+    		 	width: 50%;
+    		 	float: right;
+    		 }
+    	}
+    	.owl-carousel {
+    		position: inherit !important;
+    		.owl-controls {
+    			position: absolute;
+    			top: -50px;
+    			right: 0;
+    			 .owl-pagination {
+                              .owl-page {
+                              	   &.active {
+                                      span {
+                                      	background: $orange;
+                                      }
+                              	   }
+	                              	span {
+	                              		opacity: 1;
+	                              		width: 20px;
+	                              		height: 20px;
+	                              		background: $white;
+	                              	}
+                              }
+		            		}
+    			.owl-buttons {
+    				display: none;
+    			}
+    		}
+    		.owl-item {
+    			h2 {
+    			display: none;
+    		   }
+    		}
+ 
+    	}
+    }
 	&.block-user-login {
 		 @extend .orange-blue;
 		 .block-title {
@@ -292,7 +385,7 @@ body {
 		text-align: left !important;
 		float: none !important;
 		clear: both;
-		@extend .arial-bold;
+		@extend .arial-regular;
 	}
 	&.footer-playlibdetails {
 		margin-bottom: 25px !important;

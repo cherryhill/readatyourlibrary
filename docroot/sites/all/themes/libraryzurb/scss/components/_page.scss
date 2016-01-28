@@ -11,6 +11,30 @@ body {
 	 		padding-right: 0;
 	 	}
 	 	.homebox {
+	 		width: 100%;
+	 		max-width: 94.6%;
+	 		margin: 34px auto;
+	 		 #homebox-block-auto_role_allocation_progress-block {
+	 		 	.portlet-header {
+	 		 		position: relative;
+	 		 		 &:before {
+	 		 		 	content: "";
+	 		 		 	position: absolute;
+	 		 		 	width: 50px;
+	 		 		 	height: 50px;
+	 		 		 	overflow: visible;
+	 		 		 	left: 6%;
+	 		 		 	top: 12px;
+	 		 		 	background: url('../images/libraryzurb/progress-dash.png') no-repeat;
+	 		 		 }
+
+	 		 	}
+	 		 	.portlet-content {
+	 		 		color: $black;
+	 		 		font-size: 15px;
+	 		 		@extend .arial-regular;
+	 		 	}
+	 		 }
 	 		#homebox-buttons {
 	 			margin-bottom: 32px;
 	 			a {
@@ -145,6 +169,10 @@ body {
 	 			 			display: table;
 	 			 			 .views-row {
 	 			 			 	display: table-row;
+	 			 			 	img {
+	 			 			 		margin: 0px 0px 0.5em 0px;
+	 			 			 		@extend .no-border;
+	 			 			 	}
 	 			 			 	 .views-field {
 	 			 			 	 	display: table-cell;
 	 			 			 	 	&.views-field-field-user-avatar {
@@ -805,7 +833,7 @@ body {
 	  	 					 }
 	  	 					 &.views-field-count {
 	  	 					 	position: relative;
-	  	 					 	top: 20px;
+	  	 					 	top: 60px;
 	  	 					 }
 	  	 					 &.views-field-body {
 	  	 					 	/* padding-left: 4% !important;
