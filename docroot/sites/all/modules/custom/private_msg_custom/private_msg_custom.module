@@ -1,0 +1,82 @@
+<?php
+
+/**
+ * Implementation of hook_menu()
+ */
+
+function private_msg_custom_menu() {
+  $items['testing'] = array(
+    'title' => 'Test Page',
+    'page callback' => 'test_pag',
+    'access arguments' => array('access content'),
+    'type' => MENU_SUGGESTED_ITEM,
+  );
+
+  return $items;
+}
+
+
+
+function test_pag(){
+	return 'test';
+}
+
+/**
+ * Implements hook_block_info().
+ */
+function private_msg_custom_block_info() {
+  $blocks = array();
+  $blocks['pm_block'] = array(
+    'info' => t('Private Message Dashboard Block'),
+  );
+  
+  return $blocks;
+}
+
+/**
+ * Implements hook_block_view().
+ */
+function private_msg_custom_block_view($delta='') {
+  $block = array();
+  
+  switch($delta) {
+    case 'pm_block' :
+      $block['content'] = pm_block_view();
+      break;
+  }
+  
+  return $block;
+}
+
+function pm_block_view(){
+
+  global $user;
+	$current_user = $user->uid;
+
+ $query = db_select('pm_index','pi')
+ ->fields('pi',array('mid','is_new'))
+ ->condition('recipient',$current_user,'=')
+ ->range(0,2)
+ ->execute()
+ ->fetchAll();
+
+	foreach($query as $res){
+	$msg_id = $res->mid;
+
+	 $result = db_select('pm_message','pm')
+	 ->fields('pm',array('subject','timestamp'))
+	 ->condition('mid',$msg_id,'=')
+	 ->orderBy('timestamp', 'ASC')
+	 ->execute()
+	 ->fetchAssoc();
+
+   $pm_new = $res->is_new.'<br/>';
+  if($pm_new == 1){
+  	$new = '<div class = "pm-new">'.'NEW! ';
+  }
+	$output .= '<div class = "pm">'.$new.$pm_subject = $result['subject'].'</div>'.'<div class = "pm-admin">'.'Administer'.'</div>'.'<div class = "pm-date">'.$pm_date = date('F d, Y',$result['timestamp']).'</div>'.'</div>';
+	
+	}
+	return $output.'<a class="pm-view" href="messages">View All Messages</a>';
+
+}
