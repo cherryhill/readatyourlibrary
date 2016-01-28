@@ -4,92 +4,344 @@ body {
 		margin-top: -5px;
 	}
 	/**common css for dashboard**/
-	 /* &.page-user-profile {
+	 &.page-user-profile {
+
+	 	.main {
+	 		padding-left: 0;
+	 		padding-right: 0;
+	 	}
 	 	.homebox {
 	 		#homebox-buttons {
+	 			margin-bottom: 32px;
 	 			a {
-	 				text-decoration: none;
+	 				font-size: 22px;
+	 				padding: 9px 25px;
 	 				@extend .blue-button;
-	 				font-size: 21px;
-	 				margin-bottom: 10px;
+	 				text-decoration: none;
+	 			}
+
+	 		}
+	 		#homebox-add {
+	 			ul li a {
+	 				font-size: 17px;
+	 				@extend .blue-button;
+	 				text-decoration: none;
+	 				&.used {
+	 					@extend .no-border;
+	 				}
 	 			}
 	 		}
 	 		.homebox-column {
-	 			background: none !important;
-	 			.homebox-portlet {
-	 				@extend .no-border;
-	 				@extend .yellow-background;
-	 				background-color: $yellow !important;
-	 			 .homebox-portlet-inner {
-	 			 	@extend .no-border;
-	 			 	.portlet-header {
-	 			 		@extend .no-border;
-	 			 		background: $blue !important;
-	 			 		color: $white !important;
-	 			 		margin-bottom: 50px;
-	 			 		@media screen and (min-width: 768px){
-	 			 		font-size: 22px !important;
-	 			 		padding: 10px 20px !important;
-	 			 		@extend .mclaren; 
-	 			 		border-radius: 20px 20px 0px 0px;
-	 			 		.portlet-icon {
-	 			 			visibility: hidden;
-	 			 			position: relative;
-	 			 			top: 5px;
-	 			 			width: 20px !important;
-	 			 			height: 20px !important;
-	 			 			@extend .arial-regular;
-	 			 			  &:after {
+	 			@extend .no-background;
+	 		}
+	 		.homebox-portlet {
+	 			@extend .no-border;
+	 			position: relative;
+	 		}
+	 		.homebox-portlet-inner {
+	 			@extend .box-shadow;
+	 			@extend .no-border;
+	 			background: $yellow;
+	 			border-radius: 20px;
+	 			margin-bottom: 10px;
 
-	 			 			  	content: " ";
-	 			 			  	width: 20px;
-	 			 			  	height: 20px;
-	 			 			  	line-height: 20px;
-	 			 			  	border-radius: 100%;
-	 			 			  	background: $white;
-	 			 			  	color: $orange;
-	 			 			  	
-	 			 			  	display: block;
-	 			 			  	left: 0;
-	 			 			  	top: 5px;
-	 			 			  	visibility: visible;
-	 			 			  	text-align: center;
-	 			 			  }
-	 			 			&.portlet-close {
-	 			 				&:after {
-	 			 					content: "x" !important;
-	 			 					font-size: 14px;
-	 			 				}
-	 			 			}
-	 			 			&.portlet-minus {
-	 			 				&:after {
-	 			 					content: "-" !important;
-	 			 				}
-	 			 			}
-	 			 			&.portlet-maximize {
-	 			 					display: none !important;
-	 			 			}
-	 			 		}
-	 			 		.portlet-title {
-	 			 		position: relative;
-	 			 		width: 190px;
-	 			 		margin-left: 40px;
-	 			 		  &:after {
-	 			 		  	content: "";
-	 			 		  	height: 35px;
-	 			 		  	width: 35px;
-	 			 		  	background: url(../images/libraryzurb/right-arrow.png) no-repeat;
-	 			 		  	position: absolute;
-	 			 		  	right: 0;
-	 			 		  }
-	 			 		}
-	 			 	 }
-	 			 	}
-	 			 }
+	 			.portlet-header {
+	 				@extend .blue-box;
+	 				border-radius: 20px 20px 0px 0px;
+	 				padding: 15.5px 15px 15.5px 0 !important;
+	 				
+	 				a {
+	 					position: relative;
+	 					visibility: hidden;
+	 					 &:after {
+	 					 	content: "";
+	 					 	height: 30px;
+	 					 	width: 30px;
+	 					 	position: absolute;
+	 					 	top: 0;
+	 					 	visibility: visible;
+	 					 }
+	 					 &.portlet-close {
+	 					   &:after {
+	 					   	background: url('../images/libraryzurb/close-img.png') no-repeat;
+	 					   	background-size: 30px;
+	 					   	right: 2px;
+	 					   }
+	 				  }
+	 				  &.portlet-minus {
+	 				  	&:after {
+	 				  		background: url('../images/libraryzurb/min-img.png') no-repeat;
+	 				  		background-size: 30px;
+	 				  		right: 23px;
+	 				  	}
+	 				  } 
+	 				  &.portlet-maximize {
+	 				  	display: none;
+	 				  }
+	 				}
+	 				
+	 				
+	 				.portlet-title {
+	 					@extend .white-text;
+	 					padding-left: 21%;
+	 					font-size: 22px;
+	 					position: relative;
+	 					  &:after {
+	 					  	content: "";
+	 					  	width: 20px;
+	 					  	height: 20px;
+	 					  	background: url('../images/libraryzurb/right-arrow.png') no-repeat;
+	 					  	background-size: 18px;
+	 					  	background-position: center;
+	 					  	position: absolute;
+	 					  	margin-left: 12px;
+	 					  	top: 13%;
+	 					  }
+	 				}
 	 			}
 	 		}
+	 		.portlet-content {
+	 			padding: 35px 7.1% !important;
+	 			position: inherit;
+	 			 .view {
+	 			 	  &:before {
+	 			 	  	content: "";
+	 			 	  	height: 50px;
+	 			 	  	width: 50px;
+	 			 	  	position: absolute;
+	 			 	  	left: 6%;
+	 			 	  	top: 12px;
+
+	 			 	  }
+	 			 	.view-header {
+	 			 		text-align: left !important;
+	 			 	}
+	 			 	.view-content {
+	 			 		.views-field-count {
+	 			 			font-size: 15px;
+	 			 			@extend .arial-regular;
+	 			 			color: $black;
+	 			 			margin-top: 10px;
+	 			 			.views-label-count {
+	 			 				@extend .like;
+	 			 			}
+	 			 		}
+	 			 	}
+	 			 	&.view-follow {
+	 			 		&:before {
+	 			 			background: url('../images/libraryzurb/following.png') no-repeat;
+	 			 		}
+	 			 		.view-header {
+	 			 			.Following {
+	 			 				p {
+	 			 					font-size: 15px;
+	 			 					@extend .arial-bold;
+	 			 					color: $black;
+	 			 				}
+	 			 			}
+	 			 		}
+	 			 		.view-content {
+	 			 			width: 100%;
+	 			 			display: table;
+	 			 			 .views-row {
+	 			 			 	display: table-row;
+	 			 			 	 .views-field {
+	 			 			 	 	display: table-cell;
+	 			 			 	 	&.views-field-field-user-avatar {
+	 			 			 	 		width: 25%;
+	 			 			 	 		float: left;
+	 			 			 	 		padding-right: 5%;
+	 			 			 	 	}
+	 			 			 	 	&.views-field-name {
+	 			 			 	 		width: 70%;
+	 			 			 	 		float: left;
+	 			 			 	 		a {
+	 			 			 	 		color: $black;
+	 			 			 	 		font-size: 15px;
+	 			 			 	 		@extend .arial-regular;
+	 			 			 	 	}
+	 			 			 	 	}
+	 			 			 	 }
+	 			 			 }
+	 			 		}
+	 			 	}
+	 			 	&.view-patron-rewads-for-patron-dashboard {
+	 			 		&:before {
+	 			 			background: url('../images/libraryzurb/reward-dash.png') no-repeat;
+	 			 		}
+	 			 		.view-content {
+	 			 			display: table;
+	 			 			width: 100%;
+	 			 			.views-row {
+	 			 				display: table-row;
+	 			 				.views-field {
+	 			 					display: table-cell;
+	 			 					&.views-field-field-reward-badge {
+	 			 						h2 {
+	 			 							display: none;
+	 			 						}
+	 			 						width: 30%;
+	 			 						float: left;
+	 			 					}
+	 			 					&.views-field-php {
+	 			 						width: 65%;
+	 			 						float: right;
+	 			 						padding-top: 20px;
+	 			 						font-size: 15px;
+	 			 						@extend .arial-regular;
+	 			 						color: $black;
+	 			 					}
+	 			 				}
+	 			 			}
+	 			 		}
+	 			 	}
+	 			 	  &.view-booklist-on-activities-page {
+	 			 	  	&:before {
+	 			 			background: url('../images/libraryzurb/booklist-dash.png') no-repeat;
+	 			 		}
+	 			 	  	counter-reset: section;
+	 			 	  	.view-footer {
+	 			 	  		p {
+	 			 	  			@extend .remove-button;
+	 			 	  		}
+	 			 	  	}
+	 			 	  	.view-header {
+	 			 	  		h3{
+	 			 	  		font-size: 15px;
+	 			 	  		color: $black;
+	 			 	  		@extend .arial-bold;
+	 			 	  		text-transform: capitalize;
+	 			 	  	}
+
+	 			 	  	}
+	 			 	  	 ol {
+	 			 	  	 	list-style: none;
+	 			 	  	 	  li {
+	 			 	  	 	  	.views-field-title {
+	 			 	  	 	  		a {
+	 			 	  	 	  			color: $black;
+	 			 	  	 	  			font-size: 15px;
+	 			 	  	 	  			@extend .arial-regular;
+	 			 	  	 	  			 &:before {
+	 			 	  	 	  			 	@extend .counter;
+	 			 	  	 	  			 }
+	 			 	  	 	  		}
+	 			 	  	 	  	}
+	 			 	  	 	  }
+
+	 			 	  	 }
+	 			 	  }
+	 			 	  &.view-my-book-reviews {
+	 			 	  		&:before {
+	 			 			background: url('../images/libraryzurb/review-dash.png') no-repeat;
+	 			 		}
+	 			 	  	counter-reset: section;
+	 			 	  	.view-footer {
+	 			 	  		p {
+	 			 	  			text-align: center;
+	 			 	  			padding: 10px 0px;
+	 			 	  			background: $blue;
+	 			 	  			border-radius: 20px;
+	 			 	  			@extend .box-shadow;
+	 			 	  			a.button {
+	 			 	  				margin: 0px;
+	 			 	  				background: $blue !important;
+	 			 	  				color: $white;
+	 			 	  				font-size: 17px;
+	 			 	  				box-shadow: none !important;
+	 			 	  				border-radius: 0 !important;
+	 			 	  				padding: 0;
+	 			 	  				border: none;
+	 			 	  				@extend .white-text;
+	 			 	  				&:hover {
+	 			 	  					text-decoration: underline !important;
+	 			 	  				}
+
+	 			 	  			}
+	 			 	  		}
+	 			 	  	}
+	 			 	  	.view-empty {
+	 			 	  		font-size: 15px;
+	 			 	  		@extend .arial-regular;
+	 			 	  		color: $black;
+	 			 	  	}
+	 			 	  	.view-header {
+	 			 	  		h3 {
+	 			 	  			color: $black;
+	 			 	  			font-size: 15px;
+	 			 	  			@extend .arial-bold;
+	 			 	  			text-transform: capitalize;
+	 			 	  		}
+	 			 	  	}
+	 			 	  	.view-content {
+	 			 	  		ul {
+	 			 	  			margin-left: 0;
+	 			 	  			list-style: none;
+	 			 	  			 li {
+	 			 	  			 	margin-left: 0;
+	 			 	  			 	a {
+	 			 	  			 		color: $black;
+	 			 	  			 		@extend .arial-regular;
+	 			 	  			 		font-size: 15px;
+	 			 	  			 		text-transform: capitalize;
+	 			 	  			 		 &:before {
+	 			 	  			 		 	@extend .counter;
+	 			 	  			 		 }
+	 			 	  			 	}
+	 			 	  			 }
+	 			 	  		}
+	 			 	  	}
+	 			 	  }
+	 			 	  &.view-my-activities-for-patron-dashboard {
+	 			 	  			&:before {
+	 			 			background: url('../images/libraryzurb/activities-dash.png') no-repeat;
+	 			 		}
+		 			 	    .view-header {
+		 			 	  	  a {
+		 			 	  	  	 font-size: 15px;
+		 			 	  	  	 color: $black;
+		 			 	  	  	 @extend .arial-bold;
+		 			 	  	  	 text-transform: capitalize;
+		 			 	  	  	 text-decoration: none;
+		 			 	  	    }
+		 			 	  	}
+		 			 	  	.view-content {
+		 			 	  		.views-row {
+		 			 	  			display: inline-block;
+		 			 	  			width: 100%;
+		 			 	  			.field-content {
+		 			 	  				div {
+		 			 	  					width: 49%;
+		 			 	  					float: left;
+		 			 	  					font-size: 15px;
+		 			 	  					color: $black;
+		 			 	  					@extend .arial-regular;
+		 			 	  					&:nth-of-type(2) {
+		 			 	  						margin-left: 1%;
+		 			 	  					}
+		 			 	  				}
+		 			 	  			}
+		 			 	  		}
+		 			 	  	}
+		 			 	  	.view-footer {
+		 			 	  		div {
+		 			 	  			width: 100%;
+		 			 	  			text-align: center;
+		 			 	  			padding: 14px 0px;
+		 			 	  			margin-bottom: 10px;
+		 			 	  			@extend .blue-background;
+		 			 	  			 a {
+		 			 	  			 	font-size: 17px;
+		 			 	  			 	text-transform: capitalize;
+		 			 	  			 	@extend .white-text;
+		 			 	  			 }
+		 			 	  		}
+		 			 	  	}
+	 			 	  }
+	 			 }
+	 		}
 	 	}
-	 } */
+	 } 
 	
 	/**css for msg center**/
 	&.page-messages {

@@ -117,6 +117,7 @@
 }
 .like {
 	position: relative;
+	padding-right: 30px;
  &:after {
  	 	content: "";
  	 	height: 30px;
@@ -125,7 +126,7 @@
  	 	background-size: 30px;
  	 	background: url('../images/libraryzurb/smily-white.png') no-repeat;
  	 	position: absolute;
- 	 	top: 0;
+ 	 	top: -4px;
  	 	right: 0;
  	 }
 }
@@ -176,6 +177,7 @@
 }
 .no-border {
 	border: none !important;
+	outline: none !important;
 }
 .arial-regular {
 	font-family: Arialregular !important;
@@ -194,4 +196,38 @@
 	font-weight: normal !important;
 	font-style: normal !important;
 	-webkit-font-smoothing: antialiased !important;
+}
+.no-background {
+	background: none !important;
+}
+.blue-box {
+	background: $blue !important;
+	box-shadow: none !important;
+	opacity: 1 !important;
+}
+.counter {
+	counter-increment: section;
+	content: " " counter(section, decimal) ". ";
+	padding-right: 5px;
+}
+.remove-button {
+ text-align: center;
+ padding: 10px 0px;
+ background:$blue;
+ border-radius: 20px;
+ @extend .box-shadow;
+   a {
+   	margin: 0px;
+	background: $blue !important;
+	color: $white;
+	font-size: 17px;
+	box-shadow: none !important;
+	border-radius: 0px !important;
+	padding: 0px;
+	border: medium none;
+	@extend .mclaren;
+	 &:hover {
+	 	text-decoration: underline !important;
+	 }
+   }
 }
