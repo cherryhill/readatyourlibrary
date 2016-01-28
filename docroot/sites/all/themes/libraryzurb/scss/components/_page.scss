@@ -435,6 +435,7 @@ body {
   	  	.view-filters {
   	  		@extend .yellow-background;
   	  		 form {
+  	  		 	 margin: 0 !important;
   	  		 	.views-exposed-form {
 	  	  		 	padding: 3px 2.8% 12px 3.4%;
 	  	  		 	border: none;
@@ -527,19 +528,25 @@ body {
 	  	 	.item-list {
 	  	 		ol {
 	  	 			list-style: none;
+	  	 			 display: table;
+
 	  	 			li {
 	  	 				margin-bottom: 0;
-	  	 				padding-top: 16px;
-	  	 				padding-bottom: 16px;
-	  	 				border-bottom: 1px solid $gray;
-	  	 				display: inline-block;
+	  	 				display: table-row;
+	  	 				width: 100%;
+	  	 				position: relative;
+	  	 				 float: left;
+	  	 				 border-bottom: 1px solid $gray;
+	  	 				 padding-top: 35px;
+	  	 				 padding-bottom: 35px;
 	  	 				.views-field {
-	  	 					float: left;
-	  	 					padding-left: 5px;
-	  	 					padding-right: 5px;
+	  	 					
 
 	  	 					 &.views-field-title {
-	  	 					 	padding-left: 4% !important;
+	  	 					 	 padding-left: 4%;
+	  	 					 	 padding-top: 20px;
+	  	 					 	 display: table-cell;
+	  	 					 	 float: left;
 	  	 					 	a {
 	  	 					 		font-size: 20px;
 	  	 					 	}
@@ -549,32 +556,37 @@ body {
 	  	 					 	top: 20px;
 	  	 					 }
 	  	 					 &.views-field-body {
-	  	 					 	padding-left: 4% !important;
-	  	 					 	padding-top: 18px;
+	  	 					 	/* padding-left: 4% !important;
+	  	 					 	padding-top: 18px; */
 	  	 					 	@extend .arial-regular;
 	  	 					 }
 	  	 					 &.views-field-nothing {
-	  	 					 	padding-left: 4% !important;
+	  	 					 	/* padding-left: 4% !important; */
 	  	 					 	 div {
-	  	 					 	 	float: left;
+	  	 					 	 	 float: left; 
 	  	 					 	 	&.date {
-	  	 					 	 		width: 100%;
-	  	 					 	 		display: inline-block;
+	  	 					 	 		width: 70%;
+	  	 					 	 		display: table-row; 
 	  	 					 	 		@extend .arial-regular;
 	  	 					 	 		padding-top: 23px;
+
 	  	 					 	 	}
 	  	 					 	 	&.field-name-field-avatar-image {
 	  	 					 	 		img {
-		  	 					 	 		padding: 5px !important;
+		  	 					 	 		/* padding: 5px !important;
 		  	 					 	 		position: relative;
 		  	 					 	 		bottom: 20px;
-		  	 					 	 		margin: 0 !important;
+		  	 					 	 		margin: 0 !important; */
 	  	 					 	 	   }
 	  	 					 	 	}
 	  	 					 	 }
 	  	 					 }
 	  	 					 &.views-field-field-author-last-name {
 	  	 					 	font-size: 20px;
+	  	 					 	float: left;
+	  	 					 	display: table-cell;
+	  	 					 	padding-top: 20px;
+	  	 					 	padding-left: 5px;
 	  	 					 }
 	  	 					 &.views-field-view-node {
 	  	 					 	span {
@@ -611,8 +623,12 @@ body {
 	  	 					 }
 
 	  	 					 &.views-field-field-book-cover-image-link {
+	  	 					 	display: table-cell;
+	  	 					 	float: left;
 	  	 					 	width: 30%;
+	  	 					 	padding: 0px;
 	  	 					 	table {
+	  	 					 		margin: 0 !important;
 	  	 					 		@extend .no-border;
 	  	 					 		 tbody {
 	  	 					 		  	@extend .no-border;
@@ -620,6 +636,12 @@ body {
 	  	 					 		  	 	padding: 0;
 	  	 					 		  	 	img {
 	  	 					 		  	 		margin: 0;
+	  	 					 		  	 		padding: 0;
+	  	 					 		  	 		 @media screen and (max-width: 1278px) {
+	  	 					 		  	 		 	width: 100% !important;
+	  	 					 		  	 		 	height: auto !important;
+
+	  	 					 		  	 		 }
 	  	 					 		  	 		 @media screen and (min-width: 1279px) {
 	 		  	 		 		 		  	 		width: 242px !important;
 	 		  	 									height: 361px !important;
@@ -629,8 +651,14 @@ body {
 	  	 					 		  }
 	  	 					 	}
 	  	 					 }
-	  	 					 &.views-field-count,&.views-field-field-user-avatar,&.views-field-body {
+	  	 					 &.views-field-body {
+	  	 					 	padding-top: 23px;
+	  	 					 }
+	  	 					 &.views-field-count,&.views-field-nothing,&.views-field-body {
 	  	 					 	width: 70%;
+	  	 					 	float: right;
+	  	 					 	display: table-row; 
+	  	 					 	padding-left: 4%;
 	  	 					 }
 	  	 					 &.views-field-field-user-avatar {
 	  	 					 	img {
@@ -638,10 +666,21 @@ body {
 	  	 					 	}
 	  	 					 }
 	  	 					 &.views-field-view-node {
-	  	 					 	margin-top: 23px;
+	  	 					 	display: table-row;
+	  	 					 	width: 70%;
+	  	 					 	float: right;
+	  	 					 	padding-left: 4%;
+	  	 					 	/* width: 50%;
+	  	 					 	float: none !important;
+	  	 					 	margin: 0 auto;
+	  	 					 	position: relative;
+	  	 					 	top: 23px;
+	  	 					 	right: 6px; */
 	  	 					 	 .button {
+	  	 					 	 	  padding: 0 !important;
+	  	 					 	 	  margin: 23px 0 0;
 	  	 					 	 
-	  	 					 	 		@extend .blue-button;
+	  	 					 	 		/* @extend .blue-button; */
 	  	 					 	 		a {
 	  	 					 	 			@extend .blue-button;
 	  	 					 	 		}
