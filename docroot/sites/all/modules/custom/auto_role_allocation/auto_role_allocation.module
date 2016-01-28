@@ -92,13 +92,30 @@ function auto_role_allocation_menu() {
 function calendar_page() {
   global $user;
   $uid = $user->uid;
-  $image_id = $_POST['id'];
-  $event_image = $_POST['image'];
-  $event_date = $_POST['date'];
-  $event_uid = $_POST['user_id'];
-  $event_time = strtotime($event_date);
-  
+  $image_id = $_REQUEST['id'];
+  $event_image = $_REQUEST['image'];
+  $event_uid = $_REQUEST['user_id'];
 
+  // get timestamp from calendar date
+  $event_date = $_REQUEST['date'];
+  $event_date = explode(' ', $event_date);
+  $mth = strtolower($event_date[1]);
+  $dt = $event_date[2];
+  $yr = $event_date[3];
+  $month = array('jan' => 1,
+    'feb' => 2,
+    'mar' => 3,
+    'apr' => 4,
+    'may' => 5,
+    'jun' => 6,
+    'jul' => 7,
+    'aug' => 8,
+    'sep' => 9,
+    'oct' => 10,
+    'nov' => 11,
+    'dec' => 12);
+  $mth = $month[$mth];
+  $event_time = mktime(0, 0, 0, $mth, $dt, $yr);
 
 if($image_id) {
     db_update('calendar')
@@ -118,13 +135,14 @@ else {
         
         $response = array(
           "result"  =>  1
-          );
-        $node = node_load(364);
+        );
+        $node = node_load(495);
         //auto_role_allocation_node_update($current_node);
         /* this is for calendar activity*/
         $hook = "node_update|node|{$node->type}|updated";
         _play_library_program_invoke_activity_entry_hooks($node, 'node', $hook, 1);
       }
+  echo '1';
 }
 
 

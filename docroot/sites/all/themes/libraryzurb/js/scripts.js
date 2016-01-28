@@ -52,10 +52,9 @@ jQuery( document ).ready(function() {
 
   jQuery('#calendar').fullCalendar({
 
-   
-
     editable: true,
     droppable: true, // this allows things to be dropped onto the calendar !!!
+        
     drop: function (date, allDay) { // this function is called when something is dropped
        // var count = jQuery(".fc-event-container").children('div').length;
         //alert(count);
@@ -73,7 +72,7 @@ jQuery( document ).ready(function() {
         var expl_img1 = expl_img[1].split("//");
         var expl_img2 = expl_img1[1].split("?");
         var expl_img3 = expl_img2[0].split("/");
-        //var image_name = expl_img3[9];
+        // var image_name = expl_img3[9];
         var image_name = expl_img3[7];
 
         
@@ -95,27 +94,19 @@ jQuery( document ).ready(function() {
             jQuery(this).remove();
         }
 
+        var loc = window.location;
+        var baseUrl = loc.protocol + "//" + loc.host + '/calendar';
+
         var currentUser = Drupal.settings.auto_role_allocation.currentUser;
-         var loc = window.location;
-         var baseUrl = loc.protocol + "//" + loc.host;
         jQuery.ajax({
         
             //url: 'http://localhost/playatyourlibrary/docroot/calendar',
-            url: 'http://play.dev.chillco.com/calendar',
+            url: baseUrl,
+            async: false,
             type: 'post',
-            dataType: 'json',
-            data: {
-                //id: count,
-                image: image_name,
-                date: copiedEventObject.start,
-                user_id: currentUser
-            },
-            success: function(data){
-                
-                window.location.reload(true);
-              console.log("data:");
-              console.log(data);
-              //alert("data");
+            data: 'image='+image_name+'&date='+copiedEventObject.start+'&user_id='+currentUser,
+            success: function(res){
+              window.location.reload(true);
             },
             error: function(jqXHR, data, error){
                 // console.log(jqXHR);
@@ -170,11 +161,12 @@ jQuery( document ).ready(function() {
         var event_tit5 = event_tit4[1].split('/');
         var image_path = event_tit5[6];  
           
-        
+        var loc = window.location;
+        var baseUrl = loc.protocol + "//" + loc.host + '/calendar';
 
         jQuery.ajax({        
             //url: 'http://localhost/playatyourlibrary/docroot/calendar',
-            url: 'http://play.dev.chillco.com/calendar',
+            url: baseUrl,
             type: 'post',
             dataType: 'json',
             data: {
@@ -183,9 +175,9 @@ jQuery( document ).ready(function() {
                 date: event.start,
                 user_id: currentUser
             },
-            success: function(data){
+            success: function(res){
               console.log("data:");
-              console.log(data);
+              console.log(res);
               //alert("data");
             },
             error: function(jqXHR, data, error){
