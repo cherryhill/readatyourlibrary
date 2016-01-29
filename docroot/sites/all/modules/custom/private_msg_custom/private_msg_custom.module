@@ -74,9 +74,8 @@ function pm_block_view(){
   if($pm_new == 1){
   	$new = '<div class = "pm-new">'.'NEW! ';
   }
-	$output .= '<div class = "pm">'.$new.$pm_subject = $result['subject'].'</div>'.'<div class = "pm-admin">'.'Administer'.'</div>'.'<div class = "pm-date">'.$pm_date = date('F d, Y',$result['timestamp']).'</div>'.'</div>';
+	$output .= '<div class = "pm">'.$new.$pm_subject = $result['subject'].'</div>'.'<div class = "pm-admin">'.'Administrator'.'</div>'.'<div class = "pm-date">'.$pm_date = date('F d, Y',$result['timestamp']).'</div>'.'</div>';
 	
 	}
 	return $output.'<a class="pm-view" href="messages">View All Messages</a>';
-
 }
