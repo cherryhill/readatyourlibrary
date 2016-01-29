@@ -16,6 +16,9 @@ function private_msg_custom_menu() {
 }
 
 
+function private_msg_custom_form_alter(&$form, &$form_state, $form_id) {
+	// echo '<pre>'; print_r($form_id);die();
+}
 
 function test_pag(){
 	return 'test';
@@ -53,29 +56,36 @@ function pm_block_view(){
   global $user;
 	$current_user = $user->uid;
 
- $query = db_select('pm_index','pi')
- ->fields('pi',array('mid','is_new'))
- ->condition('recipient',$current_user,'=')
- ->range(0,2)
- ->execute()
+ $query_pm = db_select('pm_index','pi');
+ $query_pm->fields('pi',array('mid','is_new'));
+ $query_pm->join('pm_message','pmsg','pmsg.mid = pi.mid');
+ $query_pm->join('users','u','u.uid = pmsg.author');
+ $query_pm->fields('u',array('name'));
+ $query_pm->condition('recipient',$current_user,'=');
+ $query_pm->orderBy('timestamp', 'DESC');
+ $query_pm->range(0,2);
+ $query = $query_pm->execute()
  ->fetchAll();
+
+ $output = '<div class = "pm-custom">';
 
 	foreach($query as $res){
 	$msg_id = $res->mid;
 
+	$author = $res->name;
+
 	 $result = db_select('pm_message','pm')
 	 ->fields('pm',array('subject','timestamp'))
 	 ->condition('mid',$msg_id,'=')
-	 ->orderBy('timestamp', 'ASC')
 	 ->execute()
 	 ->fetchAssoc();
 
    $pm_new = $res->is_new.'<br/>';
   if($pm_new == 1){
-  	$new = '<div class = "pm-new">'.'NEW! ';
+  	$new = '<div class = "pm-new">'.'NEW! '.'</div>';
   }
-	$output .= '<div class = "pm">'.$new.$pm_subject = $result['subject'].'</div>'.'<div class = "pm-admin">'.'Administrator'.'</div>'.'<div class = "pm-date">'.$pm_date = date('F d, Y',$result['timestamp']).'</div>'.'</div>';
+	$output .= '<div class="pm">'.'<div class = "pm-subject">'.$new.$pm_subject = $result['subject'].'</div>'.'<div class = "pm-admin">'.$author.'</div>'.'<div class = "pm-date">'.$pm_date = date('F d, Y',$result['timestamp']).'</div>'.'</div>';
 	
 	}
-	return $output.'<a class="pm-view" href="messages">View All Messages</a>';
+	return $output.'<a class="pm-view" href="../messages">View All Messages</a>'.'</div>';
 }
