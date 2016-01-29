@@ -132,6 +132,15 @@ else {
       'date'=>$event_time,
       ));
       $insert_query->execute();
+
+  // get the just inserted ID from calendar table
+  // this will be used to update the record for reward
+  // if user receives one after this activity.
+  $query = db_select('calendar');
+  $query->addExpression('MAX(id)');
+  $max_id = $query->execute()->fetchField();
+  $_SESSION['usr_calendar_id'] = $max_id;
+  
         
         $response = array(
           "result"  =>  1
@@ -157,7 +166,7 @@ function generate_json_data() {
 
    
   $query_state = db_select('calendar', 'c')
-->fields('c', array('image_url','date','id'))
+->fields('c', array('image_url','date','id', 'reward_id'))
 ->orderBy('date', 'ASC')
 ->condition('uid', $uid)
 ->execute();
@@ -170,9 +179,9 @@ $events = array();
 $i = 1;
 $j = 1;
 foreach ($result as $value) {
-$k = $i%10 ;
-if($k==0) {
-  
+$reward_claimed = $value->reward_id;
+
+if($reward_claimed) {
 
      $events[] = array(
     'title' => '<div><img data-id="'.$value->id.'" src="sites/default/files/styles/thumbnail/public/' . $value->image_url . '"</img>'.'Congratulations! You earned prize!</div>', 
