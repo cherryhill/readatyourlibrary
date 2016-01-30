@@ -1228,10 +1228,13 @@ body {
  .main {
  .view-activities-page-, .block-block {
  	@extend .orange-blue;
+ 	@extend .block;
  	padding-bottom: 20px;
  	 p, .view-content {
  	 	padding-left: 20px;
  	 	padding-right: 20px;
+ 	 	@extend .arial-regular;
+ 	 	font-size: 17px;
  	 }
  	 div {
  	 	a {
@@ -1249,9 +1252,31 @@ body {
 		 		list-style: none !important;
 		 	}
 		 }
+		 .view {
+		 	counter-reset: section;
+		 	 .view-content {
+		 	 ul {
+		 	 	.views-row {
+		 	 		margin-left: 10px;
+                   .views-field-title {
+
+	                   	 a {
+	                   		&:before {
+			 	 			@extend .counter;
+			 	 			text-decoration: none !important;
+			 	 			a{
+			 	 				text-decoration: none !important;
+			 	 			}
+			 	 		}
+                   	}
+                   }
+		 	 	}
+		 	 }
+		 	}
+		 }
 		 .view-footer {
 		 	padding-left: 20px;
-		 	margin-top: 10px;
+		 	margin-top: 30px;
 		 	p {
 		 		a {
 		 			@extend .yellow-button;
@@ -1274,12 +1299,20 @@ body {
 		 	text-align: center;
 		 }
 		 ul {
-		 	list-style: ideograph-numeric;
+		 	list-style: none;
+		 	
 		 	margin-left: 20px;
+		 	 li {
+               margin-left: 0;
+
+		 	 }
 		 	 	a {
+		 	 		
 		 	 		@extend .white-text;
-		 	 		border-bottom: 1px solid $white;
+		 	 		text-decoration: underline;
 		 	 		font-size: 17px;
+
+		 	 		
 		 	 	}
 		 }
 	}
