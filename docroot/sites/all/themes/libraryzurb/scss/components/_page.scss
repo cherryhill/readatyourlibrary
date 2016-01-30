@@ -3,6 +3,66 @@ body {
 	.main {
 		margin-top: -5px;
 	}
+	/**css for reward page***/
+	&.page-rewards {
+	  .pull-9.sidebar {
+		width: 29.53%;
+		right: 69.4%;
+		padding: 35px 2.65% 0px;
+		margin-bottom: 25px;
+		@extend .blue-background;
+		  .block {
+		  	.block-title, .view-header, .view-header p  {
+              font-size: 22px;
+              @extend .white-text;
+		  	}
+		  	.views-row {
+		  		.views-field-nothing {
+		  			.badges {
+		  				img {
+		  					float: left;
+		  					margin: 0.5em 1em 0.5em 0;
+		  				}
+		  			}
+		  		}
+		  	}
+		  }
+	  }
+	  .main {
+	  	#page-title {
+	  		@extend .mclaren;
+	  		font-size: 28px;
+	  	}
+	  		.view-content {
+	  			.views-row {
+	  				display: table;
+	  				width: 100%;
+	  				.views-field-field-badge-image {
+	  					width: 50%;
+	  					float: left;
+	  					display: table-cell;
+	  					img {
+	  						float: left;
+	  						margin: 0.5em 1em 0.5em 0;
+	  					}
+	  				}
+	  				.views-field-title {
+	  					width: 50%;
+	  					display: table-row;
+	  					font-size: 17px;
+	  					@extend .arial-regular;
+	  				}
+	  				.views-field-field-badge-description {
+	  					width: 50%;
+	  					float: right;
+	  					display: table-cell;
+	  					font-size: 17px;
+	  					@extend .arial-regular;
+	  				}
+	  			}
+	  		}
+	  	}
+	}
 	/**common css for dashboard**/
 	 &.page-user-profile {
 
