@@ -16,20 +16,49 @@ body {
     	 	@extend .mclaren;
     	 	@extend .no-border;
     	 }
-    	 .pm, .pm-admin, .pm-date {
-    	 	width: 25%;
-    	 	float: left;
+    	 .pm-custom {
+    	 	width: 100%;
+    	     display: inline-block;
+    	     position: relative;
+    	      .pm-view {
+    	      	position: absolute;
+    	      	top: 30%;
+    	      	right: 0;
+    	      	font-size: 17px;
+    	      	@extend .blue-button;
+    	      }
+    	 	 .pm {
+    	 	 	width: 80%;
+    	 	 	display: inline-block;
+    	 	 	margin-bottom: 25px;
+    	 	 	 .pm-subject {
+    	 	 	 	width: 50%;
+    	 	 	 	float: left;
+    	 	 	 	color: $red;
+    	 	 	 	font-size: 17px;
+    	 	 	 	@extend .arial-bold;
+    	 	 	 	 .pm-new {
+    	 	 	 	 	float: left;
+    	 	 	 	 	padding-left: 10px;
+    	 	 	 	 	color: $red;
+    	 	 	 	 }
+    	 	 	 }
+    	 	 	 .pm-admin {
+    	 	 	 	width: 25%;
+    	 	 	 	float: left;
+    	 	 	 	font-size: 17px;
+    	 	 	 	@extend .arial-regular;
+    	 	 	 	color: $black;
+    	 	 	 }
+    	 	 	 .pm-date {
+    	 	 	 	float: left;
+    	 	 	 	width: 25%;
+    	 	 	 	color: $black;
+    	 	 	 	font-size: 17px;
+    	 	 	 	@extend .arial-regular;
+    	 	 	 }
 
-    	 }
-    	 .pm {
-    	 	font-size: 17px;
-    	 	@extend .arial-bold;
-    	 	color: $red;
-    	 }
-    	 .pm-admin, .pm-date {
-    	 	color: $black;
-    	 	@extend .arial-regular;
-    	 	font-size: 17px;
+    	 	 }
     	 }
     }
     &.dashboard-block {
