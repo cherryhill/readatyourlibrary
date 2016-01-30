@@ -383,7 +383,6 @@ function play_library_program_create_activity_entry($activity_id, $account_id) {
  */
 function play_library_program_create_reward_claim($reward_id, $account_id) {
 
-  
   global $user;
   $uid = $user->uid;
 
@@ -466,10 +465,9 @@ function _play_library_program_invoke_activity_entry_hooks($entity, $type, $invo
   if (empty($hook)) {
     $hook = "entity_insert|{$type}|{$entity->type}";
   }
+
   $query = new EntityFieldQuery();
-
   $query->entityCondition('entity_type', 'activity');
-
   $query->entityCondition('bundle', 'activity');
   $query->fieldCondition('field_activity_fired_hook', 'value', $hook);
   $result = $query->execute();
@@ -509,8 +507,21 @@ function _play_library_program_process_activity_entry($entity, $type) {
   }
   $activity_rewards = _play_library_program_get_activity_reward_ids($activity_id, $current_participation_count, $entity->uid);
   foreach ($activity_rewards as $rid) {
+    play_library_program_update_user_calendar_state($rid);
     play_library_program_create_reward_claim($rid, $entity->uid);
   }
+}
+
+/**
+ * Function to add reward claimed by user after an activity for calendar state
+ */
+function play_library_program_update_user_calendar_state($rid) {
+  $cal_id = $_SESSION['usr_calendar_id'];
+  unset($_SESSION['usr_calendar_id']);
+  db_update('calendar')
+    ->fields(array('reward_id' => $rid))
+    ->condition ('id', $cal_id)
+    ->execute();
 }
 
 /**

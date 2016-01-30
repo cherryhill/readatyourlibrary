@@ -25,6 +25,12 @@ $schema['calendar'] = array(
                             'description' => 'calendar event date',
                             'type' => 'varchar',
                             'length' => '256',
+                    ),
+                    'reward_id' => array(
+                            'description' => 'Reward id',
+                            'type' => 'int',
+                            'not null' => TRUE,
+                            'default' => 0,
                     ),  
                 ),
             'primary key' => array('id'),       

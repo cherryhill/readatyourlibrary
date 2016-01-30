@@ -11,7 +11,7 @@
   <?php if ($user->uid): ?>
     <div id="homebox-buttons">
       <?php if (!empty($add_links)): ?>
-        <a href="javascript:void(0)" id="homebox-add-link"><?php print t('Add a block') ?></a>
+        <a href="javascript:void(0)" id="homebox-add-link"><?php print t('Add to My Dashboard') ?></a>
       <?php endif; ?>
       <?php print $save_form; ?>
     </div>
