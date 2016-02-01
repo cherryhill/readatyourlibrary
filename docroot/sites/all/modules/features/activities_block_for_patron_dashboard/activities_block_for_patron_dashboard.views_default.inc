@@ -12,10 +12,10 @@ function activities_block_for_patron_dashboard_views_default_views() {
 
   $view = new view();
   $view->name = 'my_activities_for_patron_dashboard';
-  $view->description = '';
+  $view->description = 'My Activities for patron dashboard';
   $view->tag = 'default';
   $view->base_table = 'eck_activity';
-  $view->human_name = 'My Activities for patron dashboard';
+  $view->human_name = 'Activities';
   $view->core = 7;
   $view->api_version = '3.0';
   $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
