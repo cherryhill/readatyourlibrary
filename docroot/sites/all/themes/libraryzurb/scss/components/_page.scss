@@ -95,6 +95,14 @@ body {
 	 		 		@extend .arial-regular;
 	 		 	}
 	 		 }
+	 		 #homebox-add {
+	 		 	@extend .yellow-background;
+	 		 	border-radius: 20px;
+	 		 	padding: 36px 20px 25px;
+	 		 	 .item-list ul li.last {
+	 		 	 	float: right !important;
+	 		 	 }
+	 		 }
 	 		#homebox-buttons {
 	 			margin-bottom: 32px;
 	 			a {
@@ -133,35 +141,28 @@ body {
 	 				@extend .blue-box;
 	 				border-radius: 20px 20px 0px 0px;
 	 				padding: 15.5px 15px 15.5px 0 !important;
+	 				@extend .no-border;
 	 				
 	 				a {
 	 					position: relative;
-	 					visibility: hidden;
-	 					 &:after {
-	 					 	content: "";
-	 					 	height: 30px;
-	 					 	width: 30px;
-	 					 	position: absolute;
-	 					 	top: 0;
-	 					 	visibility: visible;
-	 					 }
 	 					 &.portlet-close {
-	 					   &:after {
-	 					   	background: url('../images/libraryzurb/close-img.png') no-repeat;
-	 					   	background-size: 30px;
-	 					   	right: 2px;
-	 					   }
+	 					  	background: url('../images/libraryzurb/close-img.png') no-repeat;
+
 	 				  }
 	 				  &.portlet-minus {
-	 				  	&:after {
-	 				  		background: url('../images/libraryzurb/min-img.png') no-repeat;
-	 				  		background-size: 30px;
-	 				  		right: 23px;
-	 				  	}
+	 				  	background: url('../images/libraryzurb/min-img.png') no-repeat;
+	 				  	padding-right: 23px;
 	 				  } 
 	 				  &.portlet-maximize {
 	 				  	display: none;
 	 				  }
+	 				  &.portlet-plus {
+	 				  	background: url('../images/libraryzurb/plus.png') no-repeat;
+	 				  	padding-right: 23px;
+	 				  }
+	 				  background-size: 30px;
+	 				  height: 30px;
+	 				  width: 30px;
 	 				}
 	 				
 	 				
