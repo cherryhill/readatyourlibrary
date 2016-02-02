@@ -28,7 +28,6 @@
   	 			list-style: none;
   	 			position: relative;
   	 			bottom: 20px;
-  	 			margin-bottom: 0;
   	 			  li {
   	 			  	display: inline-block;
   	 			  	vertical-align: top;
@@ -41,11 +40,7 @@
   	 			  	  	  position: relative;
   	 			  	  	  width: 100%;
   	 			  	  	  height: 100%;
-  	 			  	  	  color: transparent;
-  	 			  	  	    &:hover {
-  	 			  	  	    	color: transparent;
-  	 			                background: transparent;
-  	 			  	  	    }
+  	 			  	  	  font-size: 0;
 
   	 			  	  	   &:after {
   	 			  	  	   	width: 94px;
@@ -57,15 +52,7 @@
                             left: 0;
                             top: 0;
                             visibility: visible;
-                       -webkit-transition-duration: 0.8s;
-						-moz-transition-duration: 0.8s;
-						-o-transition-duration: 0.8s;
-						transition-duration: 0.8s;
-
-						-webkit-transition-property: -webkit-transform;
-						-moz-transition-property: -moz-transform;
-						-o-transition-property: -o-transform;
-						transition-property: transform; 
+                            @extend .animate;
   	 			  	  	   }
   	 			  	  	 
   	 			  	  	  &.current-program {

@@ -6489,6 +6489,17 @@ a.th {
   text-decoration: underline !important;
 }
 
+.animate, .l-header .row.header-middle section.block-menu-menu-secoundary-menu ul.menu li a:after, .block.block-menu-menu-social-sharing-icons ul.menu li a:after, .section-activities .main .block-menu-menu-social-sharing-icons.view-activities-page- ul.menu li a:after, .section-activities .main .block-menu-menu-social-sharing-icons.block-block ul.menu li a:after, .pre-header .pre-header-left section .view .views-field {
+  -webkit-transition-duration: 0.8s;
+  -moz-transition-duration: 0.8s;
+  -o-transition-duration: 0.8s;
+  transition-duration: 0.8s;
+  -webkit-transition-property: -webkit-transform;
+  -moz-transition-property: -moz-transform;
+  -o-transition-property: -o-transform;
+  transition-property: transform;
+}
+
 .admin-menu .fixed {
   top: 1.8125em;
 }
@@ -6551,7 +6562,6 @@ a.th {
   list-style: none;
   position: relative;
   bottom: 20px;
-  margin-bottom: 0;
 }
 .l-header .row.header-middle section.block-menu-menu-secoundary-menu ul.menu li {
   display: inline-block;
@@ -6563,11 +6573,7 @@ a.th {
   position: relative;
   width: 100%;
   height: 100%;
-  color: transparent;
-}
-.l-header .row.header-middle section.block-menu-menu-secoundary-menu ul.menu li a:hover {
-  color: transparent;
-  background: transparent;
+  font-size: 0;
 }
 .l-header .row.header-middle section.block-menu-menu-secoundary-menu ul.menu li a:after {
   width: 94px;
@@ -6579,14 +6585,6 @@ a.th {
   left: 0;
   top: 0;
   visibility: visible;
-  -webkit-transition-duration: 0.8s;
-  -moz-transition-duration: 0.8s;
-  -o-transition-duration: 0.8s;
-  transition-duration: 0.8s;
-  -webkit-transition-property: -webkit-transform;
-  -moz-transition-property: -moz-transform;
-  -o-transition-property: -o-transform;
-  transition-property: transform;
 }
 .l-header .row.header-middle section.block-menu-menu-secoundary-menu ul.menu li a.current-program {
   position: relative;
@@ -7025,7 +7023,8 @@ a.th {
   width: 50px;
 }
 .block.block-menu-menu-social-sharing-icons ul.menu li a, .section-activities .main .block-menu-menu-social-sharing-icons.view-activities-page- ul.menu li a, .section-activities .main .block-menu-menu-social-sharing-icons.block-block ul.menu li a {
-  visibility: hidden;
+  bottom: 20px;
+  font-size: 0;
   position: relative;
 }
 .block.block-menu-menu-social-sharing-icons ul.menu li a:after, .section-activities .main .block-menu-menu-social-sharing-icons.view-activities-page- ul.menu li a:after, .section-activities .main .block-menu-menu-social-sharing-icons.block-block ul.menu li a:after {
@@ -7037,14 +7036,6 @@ a.th {
   position: absolute;
   top: 0;
   left: 0;
-  -webkit-transition-duration: 0.8s;
-  -moz-transition-duration: 0.8s;
-  -o-transition-duration: 0.8s;
-  transition-duration: 0.8s;
-  -webkit-transition-property: -webkit-transform;
-  -moz-transition-property: -moz-transform;
-  -o-transition-property: -o-transform;
-  transition-property: transform;
   border-radius: 100%;
 }
 .block.block-menu-menu-social-sharing-icons ul.menu li a.fb:after, .section-activities .main .block-menu-menu-social-sharing-icons.view-activities-page- ul.menu li a.fb:after, .section-activities .main .block-menu-menu-social-sharing-icons.block-block ul.menu li a.fb:after {
@@ -9876,6 +9867,13 @@ body.page-booklists .main .view-booklist-slideshow .owl-carousel .owl-buttons .o
 .pre-header .pre-header-left section .view .views-field {
   float: left;
   margin-left: 10px;
+}
+.pre-header .pre-header-left section .view .views-field:hover {
+  transform: rotateX(360deg);
+  -webkit-transform: rotateX(360deg);
+  -moz-transform: rotateX(360deg);
+  -ms-transform: rotateX(360deg);
+  -o-transform: rotateX(360deg);
 }
 .pre-header .pre-header-left section .view .views-field a {
   background-color: #267fda;

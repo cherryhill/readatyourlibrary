@@ -35,6 +35,14 @@
            .views-field {
              float: left;
              margin-left: 10px;
+             @extend .animate;
+                 &:hover {
+                    transform: rotateX(360deg);
+                    -webkit-transform: rotateX(360deg);
+                    -moz-transform: rotateX(360deg);
+                    -ms-transform: rotateX(360deg);
+                    -o-transform: rotateX(360deg); 
+                 }
              a {
                background-color: $blue;
                padding: 2px 12px 5px; 
@@ -42,6 +50,7 @@
                font-size: 19px;
                color: $white;
                @extend .box-shadow;
+               
                 &.msg {
                    padding: 2px 12px 5px 33px !important; 
                    background: $blue url('../images/libraryzurb/msg-img.png');
