@@ -761,7 +761,7 @@ function poll_vote($form, &$form_state) {
 
   global $user;
 
-  $hook = "poll vote submitted";
+  $hook = "Poll answer submitted";
    _play_library_program_invoke_activity_entry_hooks($node, 'node', $hook, 2);
 
   db_insert('poll_vote')
