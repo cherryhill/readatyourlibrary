@@ -16,20 +16,49 @@ body {
     	 	@extend .mclaren;
     	 	@extend .no-border;
     	 }
-    	 .pm, .pm-admin, .pm-date {
-    	 	width: 25%;
-    	 	float: left;
+    	 .pm-custom {
+    	 	width: 100%;
+    	     display: inline-block;
+    	     position: relative;
+    	      .pm-view {
+    	      	position: absolute;
+    	      	top: 20%;
+    	      	right: 0;
+    	      	font-size: 17px;
+    	      	@extend .blue-button;
+    	      }
+    	 	 .pm {
+    	 	 	width: 80%;
+    	 	 	display: inline-block;
+    	 	 	margin-bottom: 25px;
+    	 	 	 .pm-subject {
+    	 	 	 	width: 50%;
+    	 	 	 	float: left;
+    	 	 	 	color: $red;
+    	 	 	 	font-size: 17px;
+    	 	 	 	@extend .arial-bold;
+    	 	 	 	 .pm-new {
+    	 	 	 	 	float: left;
+    	 	 	 	 	padding-right: 10px;
+    	 	 	 	 	color: $red;
+    	 	 	 	 }
+    	 	 	 }
+    	 	 	 .pm-admin {
+    	 	 	 	width: 25%;
+    	 	 	 	float: left;
+    	 	 	 	font-size: 17px;
+    	 	 	 	@extend .arial-regular;
+    	 	 	 	color: $black;
+    	 	 	 }
+    	 	 	 .pm-date {
+    	 	 	 	float: left;
+    	 	 	 	width: 25%;
+    	 	 	 	color: $black;
+    	 	 	 	font-size: 17px;
+    	 	 	 	@extend .arial-regular;
+    	 	 	 }
 
-    	 }
-    	 .pm {
-    	 	font-size: 17px;
-    	 	@extend .arial-bold;
-    	 	color: $red;
-    	 }
-    	 .pm-admin, .pm-date {
-    	 	color: $black;
-    	 	@extend .arial-regular;
-    	 	font-size: 17px;
+    	 	 }
     	 }
     }
     &.dashboard-block {
@@ -342,7 +371,8 @@ body {
 	            	}
 	            }    
 			         .block-title {
-			           color: $white;
+			         	@extend .wave-img;
+			           /* color: $white;
 			          	@extend .mclaren;
 						padding-top: 26px;
 						padding-bottom: 25px;
@@ -371,7 +401,7 @@ body {
 						 		top: 0;
 						 		z-index: -1;
 
-						 }
+						 } */
 			         }
 			         p {
 			           padding-left: 40px;
@@ -409,7 +439,8 @@ body {
 		  	  		border-right: none !important;
 		  	  		width: 50px;
 		  	  		 a {
-		  	  		 	visibility: hidden;
+		  	  		 	bottom: 20px;
+		  	  		 	font-size: 0;
 		  	  		 	position: relative;
 		  	  		 	  &:after {
 		  	  		 	  	content: " ";
@@ -420,15 +451,7 @@ body {
 		  	  		 	  	position: absolute;
 		  	  		 	  	top: 0;
 		  	  		 	  	left: 0;
-		  	  		 	  	-webkit-transition-duration: 0.8s;
-							-moz-transition-duration: 0.8s;
-							-o-transition-duration: 0.8s;
-							transition-duration: 0.8s;
-
-							-webkit-transition-property: -webkit-transform;
-							-moz-transition-property: -moz-transform;
-							-o-transition-property: -o-transform;
-							transition-property: transform;
+		  	  		 	  	@extend .animate;
 							
 							border-radius: 100%;
 							@extend .box-shadow;

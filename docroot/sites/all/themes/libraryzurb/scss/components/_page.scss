@@ -3,6 +3,66 @@ body {
 	.main {
 		margin-top: -5px;
 	}
+	/**css for reward page***/
+	&.page-rewards {
+	  .pull-9.sidebar {
+		width: 29.53%;
+		right: 69.4%;
+		padding: 35px 2.65% 0px;
+		margin-bottom: 25px;
+		@extend .blue-background;
+		  .block {
+		  	.block-title, .view-header, .view-header p  {
+              font-size: 22px;
+              @extend .white-text;
+		  	}
+		  	.views-row {
+		  		.views-field-nothing {
+		  			.badges {
+		  				img {
+		  					float: left;
+		  					margin: 0.5em 1em 0.5em 0;
+		  				}
+		  			}
+		  		}
+		  	}
+		  }
+	  }
+	  .main {
+	  	#page-title {
+	  		@extend .mclaren;
+	  		font-size: 28px;
+	  	}
+	  		.view-content {
+	  			.views-row {
+	  				display: table;
+	  				width: 100%;
+	  				.views-field-field-badge-image {
+	  					width: 50%;
+	  					float: left;
+	  					display: table-cell;
+	  					img {
+	  						float: left;
+	  						margin: 0.5em 1em 0.5em 0;
+	  					}
+	  				}
+	  				.views-field-title {
+	  					width: 50%;
+	  					display: table-row;
+	  					font-size: 17px;
+	  					@extend .arial-regular;
+	  				}
+	  				.views-field-field-badge-description {
+	  					width: 50%;
+	  					float: right;
+	  					display: table-cell;
+	  					font-size: 17px;
+	  					@extend .arial-regular;
+	  				}
+	  			}
+	  		}
+	  	}
+	}
 	/**common css for dashboard**/
 	 &.page-user-profile {
 
@@ -34,6 +94,14 @@ body {
 	 		 		font-size: 15px;
 	 		 		@extend .arial-regular;
 	 		 	}
+	 		 }
+	 		 #homebox-add {
+	 		 	@extend .yellow-background;
+	 		 	border-radius: 20px;
+	 		 	padding: 36px 20px 25px;
+	 		 	 .item-list ul li.last {
+	 		 	 	float: right !important;
+	 		 	 }
 	 		 }
 	 		#homebox-buttons {
 	 			margin-bottom: 32px;
@@ -73,35 +141,28 @@ body {
 	 				@extend .blue-box;
 	 				border-radius: 20px 20px 0px 0px;
 	 				padding: 15.5px 15px 15.5px 0 !important;
+	 				@extend .no-border;
 	 				
 	 				a {
 	 					position: relative;
-	 					visibility: hidden;
-	 					 &:after {
-	 					 	content: "";
-	 					 	height: 30px;
-	 					 	width: 30px;
-	 					 	position: absolute;
-	 					 	top: 0;
-	 					 	visibility: visible;
-	 					 }
 	 					 &.portlet-close {
-	 					   &:after {
-	 					   	background: url('../images/libraryzurb/close-img.png') no-repeat;
-	 					   	background-size: 30px;
-	 					   	right: 2px;
-	 					   }
+	 					  	background: url('../images/libraryzurb/close-img.png') no-repeat;
+
 	 				  }
 	 				  &.portlet-minus {
-	 				  	&:after {
-	 				  		background: url('../images/libraryzurb/min-img.png') no-repeat;
-	 				  		background-size: 30px;
-	 				  		right: 23px;
-	 				  	}
+	 				  	background: url('../images/libraryzurb/min-img.png') no-repeat;
+	 				  	padding-right: 23px;
 	 				  } 
 	 				  &.portlet-maximize {
 	 				  	display: none;
 	 				  }
+	 				  &.portlet-plus {
+	 				  	background: url('../images/libraryzurb/plus.png') no-repeat;
+	 				  	padding-right: 23px;
+	 				  }
+	 				  background-size: 30px;
+	 				  height: 30px;
+	 				  width: 30px;
 	 				}
 	 				
 	 				
@@ -1168,10 +1229,13 @@ body {
  .main {
  .view-activities-page-, .block-block {
  	@extend .orange-blue;
+ 	@extend .block;
  	padding-bottom: 20px;
  	 p, .view-content {
  	 	padding-left: 20px;
  	 	padding-right: 20px;
+ 	 	@extend .arial-regular;
+ 	 	font-size: 17px;
  	 }
  	 div {
  	 	a {
@@ -1189,9 +1253,31 @@ body {
 		 		list-style: none !important;
 		 	}
 		 }
+		 .view {
+		 	counter-reset: section;
+		 	 .view-content {
+		 	 ul {
+		 	 	.views-row {
+		 	 		margin-left: 10px;
+                   .views-field-title {
+
+	                   	 a {
+	                   		&:before {
+			 	 			@extend .counter;
+			 	 			text-decoration: none !important;
+			 	 			a{
+			 	 				text-decoration: none !important;
+			 	 			}
+			 	 		}
+                   	}
+                   }
+		 	 	}
+		 	 }
+		 	}
+		 }
 		 .view-footer {
 		 	padding-left: 20px;
-		 	margin-top: 10px;
+		 	margin-top: 30px;
 		 	p {
 		 		a {
 		 			@extend .yellow-button;
@@ -1214,12 +1300,20 @@ body {
 		 	text-align: center;
 		 }
 		 ul {
-		 	list-style: ideograph-numeric;
+		 	list-style: none;
+		 	
 		 	margin-left: 20px;
+		 	 li {
+               margin-left: 0;
+
+		 	 }
 		 	 	a {
+		 	 		
 		 	 		@extend .white-text;
-		 	 		border-bottom: 1px solid $white;
+		 	 		text-decoration: underline;
 		 	 		font-size: 17px;
+
+		 	 		
 		 	 	}
 		 }
 	}

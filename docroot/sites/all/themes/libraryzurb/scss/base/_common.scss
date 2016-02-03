@@ -48,7 +48,7 @@
      }
 }
 .white-text {
-	color: $white;
+	color: $white !important;
 	@extend .mclaren;
 }
 .black-text {
@@ -100,8 +100,8 @@
 	border: none;
 	text-transform: capitalize;
 	  &:hover, &:focus {
-	 	color: $black;
-	 	background: $yellow;
+	 	color: $white;
+	 	background: $blue;
 	 	opacity: 1;
 	 	outline: none;
 	 }
@@ -131,7 +131,7 @@
  	 }
 }
 .blue-background {
-	background: $blue;
+	background: $blue !important;
     overflow: hidden;
     border-radius: 20px;
     color: $white;
@@ -209,6 +209,7 @@
 	counter-increment: section;
 	content: " " counter(section, decimal) ". ";
 	padding-right: 5px;
+	display: inline-block;
 }
 .remove-button {
  text-align: center;
@@ -230,4 +231,15 @@
 	 	text-decoration: underline !important;
 	 }
    }
+}
+.animate {
+	-webkit-transition-duration: 0.8s;
+	-moz-transition-duration: 0.8s;
+	-o-transition-duration: 0.8s;
+	transition-duration: 0.8s;
+
+	-webkit-transition-property: -webkit-transform;
+	-moz-transition-property: -moz-transform;
+	-o-transition-property: -o-transform;
+	transition-property: transform; 
 }
