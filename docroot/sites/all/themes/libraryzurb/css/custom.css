@@ -67,6 +67,7 @@
   font-family: "Arialregular";
   src: url("../fonts/libraryzurb-fonts/Chn_Prop_Arial_Normal.ttf");
 }
+/*mixins*/
 /*! normalize.css v2.1.2 | MIT License | git.io/normalize */
 /* ==========================================================================
    HTML5 display definitions
@@ -6288,18 +6289,20 @@ a.th {
 }
 .orange-blue .block-title:after, .block.dashboard-block .block-title:after, .block.block-user-login .block-title:after, .section-activities .main .view-activities-page- .block-title:after, .section-activities .main .block-block .block-title:after, .section-activities .sidebar .block-views .block-title:after, .orange-blue h2:after, .block.dashboard-block h2:after, .block.block-user-login h2:after, .section-activities .main .view-activities-page- h2:after, .section-activities .main .block-block h2:after, .section-activities .sidebar .block-views h2:after {
   content: "";
-  background: url("../images/libraryzurb/background-saffron.png") no-repeat;
-  background-position: -35px 10px;
   width: 100%;
   height: 110px;
-  transform: rotate(180deg);
+  display: block;
+  visibility: visible;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: url("../images/libraryzurb/background-saffron.png") no-repeat;
+  background-position: -35px 10px;
   -webkit-transform: rotate(180deg);
   -moz-transform: rotate(180deg);
   -ms-transform: rotate(180deg);
   -o-transform: rotate(180deg);
-  position: absolute;
-  left: 0;
-  top: 0;
+  transform: rotate(180deg);
   z-index: -1;
 }
 
@@ -6364,20 +6367,20 @@ a.th {
   background: #fdeb52;
 }
 
-.like, body.page-user-profile .homebox .portlet-content .view .view-content .views-field-count .views-label-count, .section-activities .sidebar .block-views .views-field-count .views-label {
+.like, body.page-user-profile .homebox .portlet-content .view .view-content .views-field-count .views-label-count, body.page-reviews .main .view-content .item-list ol li .views-field.views-field-count .views-label-count, body.page-booklists .main .view-content .item-list ol li .views-field-count .views-label-count, .section-activities .sidebar .block-views .views-field-count .views-label {
   position: relative;
   padding-right: 30px;
 }
-.like:after, body.page-user-profile .homebox .portlet-content .view .view-content .views-field-count .views-label-count:after, .section-activities .sidebar .block-views .views-field-count .views-label:after {
+.like:after, body.page-user-profile .homebox .portlet-content .view .view-content .views-field-count .views-label-count:after, body.page-reviews .main .view-content .item-list ol li .views-field.views-field-count .views-label-count:after, body.page-booklists .main .view-content .item-list ol li .views-field-count .views-label-count:after, .section-activities .sidebar .block-views .views-field-count .views-label:after {
   content: "";
-  height: 30px;
   width: 30px;
+  height: 30px;
   display: block;
-  background-size: 30px;
-  background: url("../images/libraryzurb/smily-white.png") no-repeat;
+  visibility: visible;
   position: absolute;
   top: -4px;
   right: 0;
+  background: url("../images/libraryzurb/smily-white.png") no-repeat;
 }
 
 .blue-background, body.page-rewards .pull-9.sidebar, body.page-user-profile .homebox .portlet-content .view.view-my-activities-for-patron-dashboard .view-footer div, .section-progress .main {
@@ -6404,18 +6407,20 @@ a.th {
 }
 .wave-img:after, .block.homepage-blocks .block-title:after, .section-activities .main .homepage-blocks.view-activities-page- .block-title:after, .section-activities .main .homepage-blocks.block-block .block-title:after, .section-progress .main #page-title:after {
   content: "";
-  background: url("../images/libraryzurb/background-saffron.png") no-repeat;
-  background-position: -35px 10px;
   width: 100%;
   height: 110px;
-  transform: rotate(180deg);
+  display: block;
+  visibility: visible;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: url("../images/libraryzurb/background-saffron.png") no-repeat;
+  background-position: -35px 10px;
   -webkit-transform: rotate(180deg);
   -moz-transform: rotate(180deg);
   -ms-transform: rotate(180deg);
   -o-transform: rotate(180deg);
-  position: absolute;
-  left: 0;
-  top: 0;
+  transform: rotate(180deg);
   z-index: -1;
 }
 
@@ -6445,7 +6450,7 @@ a.th {
   -webkit-font-smoothing: antialiased !important;
 }
 
-.mclaren, .orange-blue .block-title, .block.dashboard-block .block-title, .block.block-user-login .block-title, .section-activities .main .view-activities-page- .block-title, .section-activities .main .block-block .block-title, .section-activities .sidebar .block-views .block-title, .orange-blue h2, .block.dashboard-block h2, .block.block-user-login h2, .section-activities .main .view-activities-page- h2, .section-activities .main .block-block h2, .section-activities .sidebar .block-views h2, .white-text, .block.block-user-login form label, .section-activities .main .block-user-login.view-activities-page- form label, .section-activities .main .block-user-login.block-block form label, .block.block-user-login form ul li a, .section-activities .main .block-user-login.view-activities-page- form ul li a, .section-activities .main .block-user-login.block-block form ul li a, body.page-rewards .pull-9.sidebar .block .block-title, body.page-rewards .pull-9.sidebar .section-activities .main .view-activities-page- .block-title, .section-activities .main body.page-rewards .pull-9.sidebar .view-activities-page- .block-title, body.page-rewards .pull-9.sidebar .section-activities .main .block-block .block-title, .section-activities .main body.page-rewards .pull-9.sidebar .block-block .block-title, body.page-rewards .pull-9.sidebar .block .view-header, body.page-rewards .pull-9.sidebar .section-activities .main .view-activities-page- .view-header, .section-activities .main body.page-rewards .pull-9.sidebar .view-activities-page- .view-header, body.page-rewards .pull-9.sidebar .section-activities .main .block-block .view-header, .section-activities .main body.page-rewards .pull-9.sidebar .block-block .view-header, body.page-rewards .pull-9.sidebar .block .view-header p, body.page-rewards .pull-9.sidebar .section-activities .main .view-activities-page- .view-header p, .section-activities .main body.page-rewards .pull-9.sidebar .view-activities-page- .view-header p, body.page-rewards .pull-9.sidebar .section-activities .main .block-block .view-header p, .section-activities .main body.page-rewards .pull-9.sidebar .block-block .view-header p, body.page-user-profile .homebox .homebox-portlet-inner .portlet-header .portlet-title, body.page-user-profile .homebox .portlet-content .view.view-my-book-reviews .view-footer p a.button, body.page-user-profile .homebox .portlet-content .view.view-my-activities-for-patron-dashboard .view-footer div a, body.page-messages.page-messages-new .main form label, body.page-messages.page-messages-new .main form div, body.page-messages.page-messages-view .main form label, body.page-messages.page-messages-view .main form div, body.page-reviews .sidebar .block-title, body.page-booklists .sidebar .block-title, body.page-reviews .sidebar .reviews-block-block .view-content ol .views-field-title a, body.page-booklists .sidebar .reviews-block-block .view-content ol .views-field-title a, body.page-reviews .sidebar .reviews-block-block .view-header h3:nth-of-type(1) a, body.page-booklists .sidebar .reviews-block-block .view-header h3:nth-of-type(1) a, body.page-reviews .view .view-filters form .views-exposed-form .chosen-processed .chosen-drop .chosen-results li a, body.page-booklists .view .view-filters form .views-exposed-form .chosen-processed .chosen-drop .chosen-results li a, body.page-reviews .view .view-filters form .views-exposed-form .chosen-processed .chosen-drop .chosen-results li a:hover, body.page-reviews .view .view-filters form .views-exposed-form .chosen-processed .chosen-drop .chosen-results li a:focus, body.page-booklists .view .view-filters form .views-exposed-form .chosen-processed .chosen-drop .chosen-results li a:hover, body.page-booklists .view .view-filters form .views-exposed-form .chosen-processed .chosen-drop .chosen-results li a:focus, .section-activities .sidebar .block-views h3, .section-activities .sidebar .block-views ul a, .blue-text, body.page-reviews .main .view-content .item-list ol li .views-field.views-field-title a, body.page-reviews .main .view-content .item-list ol li .views-field.views-field-php a, .yellow-button, .block.block-user-login form button, .section-activities .main .block-user-login.view-activities-page- form button, .section-activities .main .block-user-login.block-block form button, body.page-messages.page-messages-new .main form .form-submit, body.page-messages.page-messages-view .main form .form-submit, body.page-messages div.main ul.button-group li a, body.page-messages div.main ul.action-links li a, body.page-messages div.main form #privatemsg-list-form .container-inline div.form-type-select .chosen-container-single .chosen-single, body.page-messages div.main form fieldset legend a, body.page-reviews .sidebar p.button, body.page-booklists .sidebar p.button, .section-activities .sidebar .block-views .view-footer p a, .blue-button, .block.block-private-msg-custom .pm-custom .pm-view, .section-activities .main .block-private-msg-custom.view-activities-page- .pm-custom .pm-view, .section-activities .main .block-private-msg-custom.block-block .pm-custom .pm-view, body.page-user-profile .homebox #homebox-buttons a, body.page-user-profile .homebox #homebox-add ul li a, body.page-reviews .view .view-filters form .views-exposed-form .chosen-processed a, body.page-booklists .view .view-filters form .views-exposed-form .chosen-processed a, body.page-reviews .view .view-filters form .views-exposed-form .views-submit-button button, body.page-booklists .view .view-filters form .views-exposed-form .views-submit-button button, body.page-reviews .main .view-content .item-list ol li .views-field.views-field-view-node .button a, .yellow-background, .block.block-private-msg-custom, .section-activities .main .block-private-msg-custom.view-activities-page-, .section-activities .main .block-private-msg-custom.block-block, body.page-user-profile .homebox #homebox-add, body.page-reviews .view .view-filters, body.page-booklists .view .view-filters, .section-progress .main .view-calendar-sticker, .wave-img, .block.homepage-blocks .block-title, .section-activities .main .homepage-blocks.view-activities-page- .block-title, .section-activities .main .homepage-blocks.block-block .block-title, .section-progress .main #page-title, .remove-button a, body.page-user-profile .homebox .portlet-content .view.view-booklist-on-activities-page .view-footer p a, body, .block.block-private-msg-custom h2, .section-activities .main .block-private-msg-custom.view-activities-page- h2, .section-activities .main .block-private-msg-custom.block-block h2, .block.review-booklist-block .block-title a, .section-activities .main .review-booklist-block.view-activities-page- .block-title a, .section-activities .main .review-booklist-block.block-block .block-title a, .block.announcement .block-title, .section-activities .main .announcement.view-activities-page- .block-title, .section-activities .main .announcement.block-block .block-title, body.page-rewards .main #page-title, body.page-messages div.main #page-title, body.page-booklists .main .view-booklist-slideshow .owl-carousel .views-field-title .field-content a, .section-progress .main .block.progress-calendar #calendar .fc-header .fc-header-center h2, .section-progress .section-activities .main .progress-calendar.view-activities-page- #calendar .fc-header .fc-header-center h2, .section-activities .section-progress .main .progress-calendar.view-activities-page- #calendar .fc-header .fc-header-center h2, .section-progress .section-activities .main .progress-calendar.block-block #calendar .fc-header .fc-header-center h2, .section-activities .section-progress .main .progress-calendar.block-block #calendar .fc-header .fc-header-center h2 {
+.mclaren, .orange-blue .block-title, .block.dashboard-block .block-title, .block.block-user-login .block-title, .section-activities .main .view-activities-page- .block-title, .section-activities .main .block-block .block-title, .section-activities .sidebar .block-views .block-title, .orange-blue h2, .block.dashboard-block h2, .block.block-user-login h2, .section-activities .main .view-activities-page- h2, .section-activities .main .block-block h2, .section-activities .sidebar .block-views h2, .white-text, .block.block-user-login form label, .section-activities .main .block-user-login.view-activities-page- form label, .section-activities .main .block-user-login.block-block form label, .block.block-user-login form ul li a, .section-activities .main .block-user-login.view-activities-page- form ul li a, .section-activities .main .block-user-login.block-block form ul li a, body.page-rewards .pull-9.sidebar .block .block-title, body.page-rewards .pull-9.sidebar .section-activities .main .view-activities-page- .block-title, .section-activities .main body.page-rewards .pull-9.sidebar .view-activities-page- .block-title, body.page-rewards .pull-9.sidebar .section-activities .main .block-block .block-title, .section-activities .main body.page-rewards .pull-9.sidebar .block-block .block-title, body.page-rewards .pull-9.sidebar .block .view-header, body.page-rewards .pull-9.sidebar .section-activities .main .view-activities-page- .view-header, .section-activities .main body.page-rewards .pull-9.sidebar .view-activities-page- .view-header, body.page-rewards .pull-9.sidebar .section-activities .main .block-block .view-header, .section-activities .main body.page-rewards .pull-9.sidebar .block-block .view-header, body.page-rewards .pull-9.sidebar .block .view-header p, body.page-rewards .pull-9.sidebar .section-activities .main .view-activities-page- .view-header p, .section-activities .main body.page-rewards .pull-9.sidebar .view-activities-page- .view-header p, body.page-rewards .pull-9.sidebar .section-activities .main .block-block .view-header p, .section-activities .main body.page-rewards .pull-9.sidebar .block-block .view-header p, body.page-user-profile .homebox .homebox-portlet-inner .portlet-header .portlet-title, body.page-user-profile .homebox .portlet-content .view.view-my-book-reviews .view-footer p a.button, body.page-user-profile .homebox .portlet-content .view.view-my-activities-for-patron-dashboard .view-footer div a, body.page-messages.page-messages-new .main form label, body.page-messages.page-messages-new .main form div, body.page-messages.page-messages-view .main form label, body.page-messages.page-messages-view .main form div, body.page-reviews .sidebar .block-title, body.page-booklists .sidebar .block-title, body.page-reviews .sidebar .reviews-block-block .view-content ol .views-field-title a, body.page-booklists .sidebar .reviews-block-block .view-content ol .views-field-title a, body.page-reviews .sidebar .reviews-block-block .view-header h3:nth-of-type(1) a, body.page-booklists .sidebar .reviews-block-block .view-header h3:nth-of-type(1) a, body.page-reviews .view .view-filters form .views-exposed-form .chosen-processed .chosen-drop .chosen-results li a, body.page-booklists .view .view-filters form .views-exposed-form .chosen-processed .chosen-drop .chosen-results li a, body.page-reviews .view .view-filters form .views-exposed-form .chosen-processed .chosen-drop .chosen-results li a:hover, body.page-reviews .view .view-filters form .views-exposed-form .chosen-processed .chosen-drop .chosen-results li a:focus, body.page-booklists .view .view-filters form .views-exposed-form .chosen-processed .chosen-drop .chosen-results li a:hover, body.page-booklists .view .view-filters form .views-exposed-form .chosen-processed .chosen-drop .chosen-results li a:focus, .section-activities .sidebar .block-views h3, .section-activities .sidebar .block-views ul a, .blue-text, body.page-reviews .main .view-content .item-list ol li .views-field.views-field-title a, body.page-reviews .main .view-content .item-list ol li .views-field.views-field-php a, .yellow-button, .block.block-user-login form button, .section-activities .main .block-user-login.view-activities-page- form button, .section-activities .main .block-user-login.block-block form button, body.page-messages.page-messages-new .main form .form-submit, body.page-messages.page-messages-view .main form .form-submit, body.page-messages div.main ul.button-group li a, body.page-messages div.main ul.action-links li a, body.page-messages div.main form #privatemsg-list-form .container-inline div.form-type-select .chosen-container-single .chosen-single, body.page-messages div.main form fieldset legend a, body.page-reviews .sidebar p.button, body.page-booklists .sidebar p.button, .section-activities .sidebar .block-views .view-footer p a, .blue-button, .block.block-private-msg-custom .pm-custom .pm-view, .section-activities .main .block-private-msg-custom.view-activities-page- .pm-custom .pm-view, .section-activities .main .block-private-msg-custom.block-block .pm-custom .pm-view, body.page-user-profile .homebox #homebox-buttons a, body.page-user-profile .homebox #homebox-add ul li a, body.page-reviews .view .view-filters form .views-exposed-form .chosen-processed a, body.page-booklists .view .view-filters form .views-exposed-form .chosen-processed a, body.page-reviews .view .view-filters form .views-exposed-form .views-submit-button button, body.page-booklists .view .view-filters form .views-exposed-form .views-submit-button button, body.page-reviews .main .view-content .item-list ol li .views-field.views-field-view-node .button a, .yellow-background, .block.block-private-msg-custom, .section-activities .main .block-private-msg-custom.view-activities-page-, .section-activities .main .block-private-msg-custom.block-block, body.page-user-profile .homebox #homebox-add, body.page-reviews .view .view-filters, body.page-booklists .view .view-filters, .section-progress .main .view-calendar-sticker, .wave-img, .block.homepage-blocks .block-title, .section-activities .main .homepage-blocks.view-activities-page- .block-title, .section-activities .main .homepage-blocks.block-block .block-title, .section-progress .main #page-title, .remove-button a, body.page-user-profile .homebox .portlet-content .view.view-booklist-on-activities-page .view-footer p a, body, .block.block-private-msg-custom h2, .section-activities .main .block-private-msg-custom.view-activities-page- h2, .section-activities .main .block-private-msg-custom.block-block h2, .block.review-booklist-block .block-title a, .section-activities .main .review-booklist-block.view-activities-page- .block-title a, .section-activities .main .review-booklist-block.block-block .block-title a, .block.announcement .block-title, .section-activities .main .announcement.view-activities-page- .block-title, .section-activities .main .announcement.block-block .block-title, body.page-rewards .main #page-title, body.page-messages div.main #page-title, body.page-reviews #page-title, body.page-booklists #page-title, body.page-booklists .main .view-booklist-slideshow .owl-carousel .views-field-title .field-content a, .section-progress .main .block.progress-calendar #calendar .fc-header .fc-header-center h2, .section-progress .section-activities .main .progress-calendar.view-activities-page- #calendar .fc-header .fc-header-center h2, .section-activities .section-progress .main .progress-calendar.view-activities-page- #calendar .fc-header .fc-header-center h2, .section-progress .section-activities .main .progress-calendar.block-block #calendar .fc-header .fc-header-center h2, .section-activities .section-progress .main .progress-calendar.block-block #calendar .fc-header .fc-header-center h2 {
   font-family: McLaren-Regular !important;
   font-weight: normal !important;
   font-style: normal !important;
@@ -6462,7 +6467,7 @@ a.th {
   opacity: 1 !important;
 }
 
-.counter, body.page-user-profile .homebox .portlet-content .view.view-booklist-on-activities-page ol li .views-field-title a:before, body.page-user-profile .homebox .portlet-content .view.view-my-book-reviews .view-content ul li a:before, .section-activities .sidebar .block-views .view .view-content ul .views-row .views-field-title a:before {
+.counter, body.page-user-profile .homebox .portlet-content .view.view-booklist-on-activities-page ol li .views-field-title a:before, body.page-user-profile .homebox .portlet-content .view.view-my-book-reviews .view-content ul li a:before, body.page-reviews .main .view-content .item-list ol li .views-field-title:before, .section-activities .sidebar .block-views .view .view-content ul .views-row .views-field-title a:before {
   counter-increment: section;
   content: " " counter(section,decimal) ". ";
   padding-right: 5px;
@@ -6576,15 +6581,23 @@ a.th {
   font-size: 0;
 }
 .l-header .row.header-middle section.block-menu-menu-secoundary-menu ul.menu li a:after {
+  content: "";
   width: 94px;
   height: 105px;
-  background-size: 100px;
-  content: "";
   display: block;
+  visibility: visible;
+  position: absolute;
+  top: 0;
+  left: 0;
+  	 			  	  	   	/* width: 94px;
+                            height: 105px; */
+  background-size: 100px;
+  /* content: ""; */
+  /* display: block;
   position: absolute;
   left: 0;
   top: 0;
-  visibility: visible;
+  visibility: visible; */
 }
 .l-header .row.header-middle section.block-menu-menu-secoundary-menu ul.menu li a.current-program {
   position: relative;
@@ -6635,11 +6648,11 @@ a.th {
   background: url("../images/libraryzurb/progress.png") no-repeat;
 }
 .l-header .row.header-middle section.block-menu-menu-secoundary-menu ul.menu li a:hover:after {
-  transform: rotateY(360deg);
   -webkit-transform: rotateY(360deg);
   -moz-transform: rotateY(360deg);
   -ms-transform: rotateY(360deg);
   -o-transform: rotateY(360deg);
+  transform: rotateY(360deg);
 }
 
 .media-youtube-video {
@@ -6799,12 +6812,20 @@ a.th {
 .block.review-booklist-block .block-title a.active:before, .section-activities .main .review-booklist-block.view-activities-page- .block-title a.active:before, .section-activities .main .review-booklist-block.block-block .block-title a.active:before {
   content: "";
   width: 25px;
-  background: url("../images/libraryzurb/star.png") no-repeat;
+  height: 25px;
+  display: block;
+  visibility: visible;
   position: absolute;
   top: 3px;
   left: -31px;
+  	/* content: "";
+    width: 25px; */
+  background: url("../images/libraryzurb/star.png") no-repeat;
+  /* position: absolute;
+  top: 3px;
+  left: -31px;
   height: 25px;
-  display: block;
+  display: block; */
 }
 .block.review-booklist-block ul.menu, .section-activities .main .review-booklist-block.view-activities-page- ul.menu, .section-activities .main .review-booklist-block.block-block ul.menu {
   margin-bottom: 6px;
@@ -6826,12 +6847,13 @@ a.th {
 .block.review-booklist-block ul.menu li.active a:before, .section-activities .main .review-booklist-block.view-activities-page- ul.menu li.active a:before, .section-activities .main .review-booklist-block.block-block ul.menu li.active a:before {
   content: "";
   width: 25px;
-  background: url("../images/libraryzurb/star.png") no-repeat;
+  height: 25px;
+  display: block;
+  visibility: visible;
   position: absolute;
   top: 3px;
   left: -31px;
-  height: 25px;
-  display: block;
+  background: url("../images/libraryzurb/star.png") no-repeat;
 }
 .block.write-book-review, .section-activities .main .write-book-review.view-activities-page-, .section-activities .main .write-book-review.block-block {
   margin-bottom: 0 !important;
@@ -6865,14 +6887,15 @@ a.th {
   font-size: 17px;
 }
 .block.announcement .views-field-body ol li:after, .section-activities .main .announcement.view-activities-page- .views-field-body ol li:after, .section-activities .main .announcement.block-block .views-field-body ol li:after {
-  background: url("../images/libraryzurb/arrow-list.png") no-repeat;
-  display: block;
-  position: absolute;
-  left: -32px;
-  height: 21px;
-  width: 47px;
   content: "";
+  width: 47px;
+  height: 21px;
+  display: block;
+  visibility: visible;
+  position: absolute;
   top: 0;
+  left: -32px;
+  background: url("../images/libraryzurb/arrow-list.png") no-repeat;
 }
 .block.homepage-blocks, .section-activities .main .homepage-blocks.view-activities-page-, .section-activities .main .homepage-blocks.block-block {
   background: #267fda;
@@ -6957,38 +6980,6 @@ a.th {
   margin-right: -45px;
   padding: 10px;
 }
-.block.homepage-blocks .block-title, .section-activities .main .homepage-blocks.view-activities-page- .block-title, .section-activities .main .homepage-blocks.block-block .block-title {
-  			           /* color: $white;
-  			          	@extend .mclaren;
-  						padding-top: 26px;
-  						padding-bottom: 25px;
-  					    font-size: 28px;
-  						height: 110px;
-  						border-bottom: medium none;
-  						margin-top: -1px;
-  						padding-left:4%;
-  						z-index: 0;
-  						position: relative;
-  						border-radius: 20px;
-  						overflow: hidden;
-  						 &:after {
-  						 	content: "";
-  						 	background: url('../images/libraryzurb/background-saffron.png') no-repeat;
-  						 		background-position: -35px 10px;
-  						 		width: 100%;
-  						 		height: 110px;
-  						 		transform: rotate(180deg);
-  						 		-webkit-transform: rotate(180deg);
-  						 		-moz-transform: rotate(180deg);
-  						 		-ms-transform: rotate(180deg);
-  						 		-o-transform: rotate(180deg);
-  						 		position: absolute;
-  						 		left: 0;
-  						 		top: 0;
-  						 		z-index: -1;
-  
-  						 } */
-}
 .block.homepage-blocks p, .section-activities .main .homepage-blocks.view-activities-page- p, .section-activities .main .homepage-blocks.block-block p {
   padding-left: 40px;
   padding-right: 40px;
@@ -7028,7 +7019,7 @@ a.th {
   position: relative;
 }
 .block.block-menu-menu-social-sharing-icons ul.menu li a:after, .section-activities .main .block-menu-menu-social-sharing-icons.view-activities-page- ul.menu li a:after, .section-activities .main .block-menu-menu-social-sharing-icons.block-block ul.menu li a:after {
-  content: " ";
+  content: "";
   width: 40px;
   height: 40px;
   display: block;
@@ -7055,11 +7046,11 @@ a.th {
   background-position: center;
 }
 .block.block-menu-menu-social-sharing-icons ul.menu li a:hover:after, .section-activities .main .block-menu-menu-social-sharing-icons.view-activities-page- ul.menu li a:hover:after, .section-activities .main .block-menu-menu-social-sharing-icons.block-block ul.menu li a:hover:after {
-  transform: rotate(360deg);
   -webkit-transform: rotate(360deg);
   -moz-transform: rotate(360deg);
   -ms-transform: rotate(360deg);
   -o-transform: rotate(360deg);
+  transform: rotate(360deg);
 }
 
 .block-title {
@@ -8657,6 +8648,8 @@ body {
   /**css for msg center**/
   /**msg center css end**/
   /**css for page-reviews **/
+  /**css for bookreview unauthencated page**/
+  /**end**/
 }
 body .main {
   margin-top: -5px;
@@ -8715,12 +8708,14 @@ body.page-user-profile .homebox #homebox-block-auto_role_allocation_progress-blo
 }
 body.page-user-profile .homebox #homebox-block-auto_role_allocation_progress-block .portlet-header:before {
   content: "";
-  position: absolute;
   width: 50px;
   height: 50px;
-  overflow: visible;
-  left: 6%;
+  display: block;
+  visibility: visible;
+  position: absolute;
   top: 12px;
+  left: 6%;
+  overflow: visible;
   background: url("../images/libraryzurb/progress-dash.png") no-repeat;
 }
 body.page-user-profile .homebox #homebox-block-auto_role_allocation_progress-block .portlet-content {
@@ -8787,12 +8782,14 @@ body.page-user-profile .homebox .homebox-portlet-inner .portlet-header .portlet-
   content: "";
   width: 20px;
   height: 20px;
+  display: block;
+  visibility: visible;
+  position: absolute;
+  top: 13%;
   background: url("../images/libraryzurb/right-arrow.png") no-repeat;
   background-size: 18px;
   background-position: center;
-  position: absolute;
   margin-left: 12px;
-  top: 13%;
 }
 body.page-user-profile .homebox .portlet-content {
   padding: 35px 7.1% !important;
@@ -8800,11 +8797,13 @@ body.page-user-profile .homebox .portlet-content {
 }
 body.page-user-profile .homebox .portlet-content .view:before {
   content: "";
-  height: 50px;
   width: 50px;
+  height: 50px;
+  display: block;
+  visibility: visible;
   position: absolute;
-  left: 6%;
   top: 12px;
+  left: 6%;
 }
 body.page-user-profile .homebox .portlet-content .view .view-header {
   text-align: left !important;
@@ -9005,18 +9004,20 @@ body.page-messages div.main #page-title {
 }
 body.page-messages div.main #page-title:after {
   content: "";
-  background: url("../images/libraryzurb/background-saffron.png") no-repeat;
-  background-position: -35px 10px;
   width: 100%;
   height: 110px;
-  transform: rotate(180deg);
+  display: block;
+  visibility: visible;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: url("../images/libraryzurb/background-saffron.png") no-repeat;
+  background-position: -35px 10px;
   -webkit-transform: rotate(180deg);
   -moz-transform: rotate(180deg);
   -ms-transform: rotate(180deg);
   -o-transform: rotate(180deg);
-  position: absolute;
-  left: 0;
-  top: 0;
+  transform: rotate(180deg);
   z-index: -1;
 }
 body.page-messages div.main ul.pagination.pager {
@@ -9037,8 +9038,6 @@ body.page-messages div.main ul.pagination.pager li.arrow.last a {
   border-radius: 0px 10px 10px 0px;
 }
 body.page-messages div.main ul.button-group li a {
-  /* background: $yellow;
-  color: $black; */
   font-size: 17px;
 }
 body.page-messages div.main ul.button-group:after {
@@ -9052,14 +9051,6 @@ body.page-messages div.main ul.action-links li a {
   font-size: 17px;
   position: relative;
   top: 8.5px;
-  /*padding: 0.625em 1.125em 0.5625em;
-  font-size: 0.8125em;
-  border: 1px solid $yellow;
-  border-radius: 10px; */
-  /* 	color: $black;
-  	background: $yellow;
-  	position: relative;
-  	top: 5px; */
 }
 body.page-messages div.main form {
   clear: both;
@@ -9111,13 +9102,6 @@ body.page-messages div.main form #privatemsg-list-form .container-inline div.for
   height: auto !important;
   position: relative;
   bottom: 2px;
-  /* font-size: 14px;
-  background: $yellow !important; */
-  /* border: 1px solid $yellow;
-  color: $black;
-  padding: 7px 20px;
-  height: auto !important;
-  border-radius: 10px; */
 }
 body.page-messages div.main form #privatemsg-list-form .container-inline div.form-type-select .chosen-container-single .chosen-single div {
   top: 8px;
@@ -9131,12 +9115,6 @@ body.page-messages div.main form fieldset legend {
   margin-top: 15px;
 }
 body.page-messages div.main form fieldset legend a {
-  /* background: $yellow;
-  color: $black;
-  border: 1px solid $yellow; */
- 	 	 	/* border-radius: 10px;
- 	 	 	padding: 0.625em 1.125em 0.5625em;
-	 		font-size: 0.8125em; */
   font-size: 17px;
 }
 body.page-messages div.main form fieldset .form-item label {
@@ -9200,14 +9178,14 @@ body.page-reviews .sidebar .reviews-block-block .view-content ol .views-field-co
 }
 body.page-reviews .sidebar .reviews-block-block .view-content ol .views-field-count .views-label:after, body.page-booklists .sidebar .reviews-block-block .view-content ol .views-field-count .views-label:after {
   content: "";
-  height: 30px;
   width: 30px;
+  height: 30px;
   display: block;
-  background-size: 30px;
-  background: url("../images/libraryzurb/smily-white.png") no-repeat;
+  visibility: visible;
   position: absolute;
   top: -4px;
   right: 0;
+  background: url("../images/libraryzurb/smily-white.png") no-repeat;
 }
 body.page-reviews .sidebar .reviews-block-block .view-header h3:nth-of-type(1) a, body.page-booklists .sidebar .reviews-block-block .view-header h3:nth-of-type(1) a {
   font-size: 21px !important;
@@ -9244,7 +9222,6 @@ body.page-reviews .view .view-filters form .views-exposed-form .views-exposed-wi
 }
 body.page-reviews .view .view-filters form .views-exposed-form label, body.page-booklists .view .view-filters form .views-exposed-form label {
   font-size: 16px;
-  /* padding-bottom: 5px; */
 }
 body.page-reviews .view .view-filters form .views-exposed-form .chosen-processed .chosen-search input, body.page-booklists .view .view-filters form .views-exposed-form .chosen-processed .chosen-search input {
   background: #fff;
@@ -9283,6 +9260,11 @@ body.page-reviews .view .view-filters form .views-exposed-form .views-submit-but
   text-transform: capitalize;
   margin-left: 0;
 }
+body.not-logged-in.page-reviews .main .view-content .item-list ol li .views-field.views-field-nothing div.user a {
+  padding-left: 5px;
+  color: #7e7e7e !important;
+  pointer-events: none !important;
+}
 body.page-reviews {
   counter-reset: section;
 }
@@ -9296,30 +9278,28 @@ body.page-reviews .main .view-content .item-list ol li {
   width: 100%;
   position: relative;
   float: left;
-  border-bottom: 1px solid #7e7e7e;
+  border-bottom: 1px solid #cccccc;
   padding-top: 35px;
   padding-bottom: 35px;
   font-size: 17px;
 }
-body.page-reviews .main .view-content .item-list ol li .views-field.views-field-title {
-  padding-left: 4%;
-  padding-top: 20px;
+body.page-reviews .main .view-content .item-list ol li .views-field.views-field-nothing-1 {
+  width: 70%;
+  float: right;
   display: table-cell;
-  float: left;
+  padding-left: 4%;
+  padding-top: 23px;
 }
-body.page-reviews .main .view-content .item-list ol li .views-field.views-field-title a {
+body.page-reviews .main .view-content .item-list ol li .views-field.views-field-nothing-1 .bookreview_title {
   font-size: 20px;
+}
+body.page-reviews .main .view-content .item-list ol li .views-field.views-field-nothing-1 .bookreview_title a {
+  font-size: 20px;
+  padding-right: 5px;
 }
 body.page-reviews .main .view-content .item-list ol li .views-field.views-field-count {
   position: relative;
-  top: 60px;
-}
-body.page-reviews .main .view-content .item-list ol li .views-field.views-field-body {
-  /* padding-left: 4% !important;
-  padding-top: 18px; */
-}
-body.page-reviews .main .view-content .item-list ol li .views-field.views-field-nothing {
-  /* padding-left: 4% !important; */
+  top: 45px;
 }
 body.page-reviews .main .view-content .item-list ol li .views-field.views-field-nothing div {
   float: left;
@@ -9338,13 +9318,6 @@ body.page-reviews .main .view-content .item-list ol li .views-field.views-field-
 body.page-reviews .main .view-content .item-list ol li .views-field.views-field-nothing div.field-name-field-avatar-image img {
   margin: 0 !important;
 }
-body.page-reviews .main .view-content .item-list ol li .views-field.views-field-field-author-last-name {
-  font-size: 20px;
-  float: left;
-  display: table-cell;
-  padding-top: 20px;
-  padding-left: 5px;
-}
 body.page-reviews .main .view-content .item-list ol li .views-field.views-field-view-node span.button {
   visibility: hidden;
 }
@@ -9356,21 +9329,6 @@ body.page-reviews .main .view-content .item-list ol li .views-field.views-field-
   width: 20%;
   float: right;
   display: table-row;
-}
-body.page-reviews .main .view-content .item-list ol li .views-field.views-field-count .views-label-count {
-  position: relative;
-  padding-right: 35px;
-}
-body.page-reviews .main .view-content .item-list ol li .views-field.views-field-count .views-label-count:after {
-  content: "";
-  height: 30px;
-  width: 30px;
-  display: block;
-  background-size: 30px;
-  background: url("../images/libraryzurb/smily-white.png") no-repeat;
-  position: absolute;
-  top: 0;
-  right: 0;
 }
 body.page-reviews .main .view-content .item-list ol li .views-field.views-field-field-book-cover-image-link {
   display: table-cell;
@@ -9417,21 +9375,10 @@ body.page-reviews .main .view-content .item-list ol li .views-field.views-field-
   width: 70%;
   float: right;
   padding-left: 4%;
-  /* width: 50%;
-  float: none !important;
-  margin: 0 auto;
-  position: relative;
-  top: 23px;
-  right: 6px; */
 }
 body.page-reviews .main .view-content .item-list ol li .views-field.views-field-view-node .button {
   padding: 0 !important;
   margin: 23px 0 0;
-  /* @extend .blue-button; */
-}
-body.page-reviews .main .view-content .item-list ol li .views-field-title:before {
-  counter-increment: section;
-  content: " " counter(section) ". ";
 }
 body.page-booklists .l-header .row.header-middle section.block-menu-menu-secoundary-menu ul.menu li a.reviews::after {
   background: url("../images/libraryzurb/reviewactive.png") no-repeat !important;
@@ -9448,21 +9395,6 @@ body.page-booklists .main .view-content .item-list ol li .views-field-php a {
 }
 body.page-booklists .main .view-content .item-list ol li .views-field-php a:hover {
   color: #267fda;
-}
-body.page-booklists .main .view-content .item-list ol li .views-field-count .views-label-count {
-  position: relative;
-  padding-right: 35px;
-}
-body.page-booklists .main .view-content .item-list ol li .views-field-count .views-label-count:after {
-  content: "";
-  height: 30px;
-  width: 30px;
-  display: block;
-  background-size: 30px;
-  background: url("../images/libraryzurb/smily-white.png") no-repeat;
-  position: absolute;
-  top: 0;
-  right: 0;
 }
 body.page-booklists .main .view-content .item-list ol li .views-field-count {
   float: right;
@@ -9529,14 +9461,14 @@ body.page-booklists .main .view-booklist-slideshow .owl-carousel .views-field-co
 }
 body.page-booklists .main .view-booklist-slideshow .owl-carousel .views-field-count span.views-label:after {
   content: "";
-  height: 35px;
   width: 35px;
+  height: 35px;
   display: block;
-  background-size: 30px;
-  background: url("../images/libraryzurb/smily-white.png") no-repeat;
+  visibility: visible;
   position: absolute;
   top: 0;
   right: -3px;
+  background: url("../images/libraryzurb/smily-white.png") no-repeat;
 }
 body.page-booklists .main .view-booklist-slideshow .owl-carousel .owl-pagination {
   display: none;
@@ -9558,11 +9490,11 @@ body.page-booklists .main .view-booklist-slideshow .owl-carousel .owl-buttons .o
   height: 30px;
   display: block;
   visibility: visible;
+  position: absolute;
+  top: 0;
+  left: -40px;
   background: url("../images/libraryzurb/left-blue-arrow.png") no-repeat;
   background-size: 25px;
-  position: absolute;
-  left: -40px;
-  top: 0;
 }
 body.page-booklists .main .view-booklist-slideshow .owl-carousel .owl-buttons .owl-next {
   float: right;
@@ -9576,11 +9508,12 @@ body.page-booklists .main .view-booklist-slideshow .owl-carousel .owl-buttons .o
   height: 30px;
   display: block;
   visibility: visible;
+  position: absolute;
+  top: 0;
+  right: -37px;
   background: url("../images/libraryzurb/right-blue-arrow.png") no-repeat;
   background-size: 25px;
   position: absolute;
-  right: -37px;
-  top: 0;
 }
 
 /**activities page **/
@@ -9869,11 +9802,11 @@ body.page-booklists .main .view-booklist-slideshow .owl-carousel .owl-buttons .o
   margin-left: 10px;
 }
 .pre-header .pre-header-left section .view .views-field:hover {
-  transform: rotateX(360deg);
   -webkit-transform: rotateX(360deg);
   -moz-transform: rotateX(360deg);
   -ms-transform: rotateX(360deg);
   -o-transform: rotateX(360deg);
+  transform: rotateX(360deg);
 }
 .pre-header .pre-header-left section .view .views-field a {
   background-color: #267fda;

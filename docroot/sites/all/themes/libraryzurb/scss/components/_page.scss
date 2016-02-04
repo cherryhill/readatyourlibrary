@@ -1,5 +1,6 @@
 body {
 	-webkit-font-smoothing: antialiased;
+	
 	.main {
 		margin-top: -5px;
 	}
@@ -78,13 +79,8 @@ body {
 	 		 	.portlet-header {
 	 		 		position: relative;
 	 		 		 &:before {
-	 		 		 	content: "";
-	 		 		 	position: absolute;
-	 		 		 	width: 50px;
-	 		 		 	height: 50px;
+	 		 		 	@include previous(50px, 50px, $left: 6%, $top: 12px);
 	 		 		 	overflow: visible;
-	 		 		 	left: 6%;
-	 		 		 	top: 12px;
 	 		 		 	background: url('../images/libraryzurb/progress-dash.png') no-repeat;
 	 		 		 }
 
@@ -172,15 +168,11 @@ body {
 	 					font-size: 22px;
 	 					position: relative;
 	 					  &:after {
-	 					  	content: "";
-	 					  	width: 20px;
-	 					  	height: 20px;
+	 					  	@include previous(20px, 20px, $top: 13%);
 	 					  	background: url('../images/libraryzurb/right-arrow.png') no-repeat;
 	 					  	background-size: 18px;
 	 					  	background-position: center;
-	 					  	position: absolute;
 	 					  	margin-left: 12px;
-	 					  	top: 13%;
 	 					  }
 	 				}
 	 			}
@@ -190,13 +182,7 @@ body {
 	 			position: inherit;
 	 			 .view {
 	 			 	  &:before {
-	 			 	  	content: "";
-	 			 	  	height: 50px;
-	 			 	  	width: 50px;
-	 			 	  	position: absolute;
-	 			 	  	left: 6%;
-	 			 	  	top: 12px;
-
+	 			 	  	@include previous(50px, 50px, $top: 12px, $left: 6%);
 	 			 	  }
 	 			 	.view-header {
 	 			 		text-align: left !important;
@@ -476,19 +462,10 @@ body {
 				z-index: 0;
 				position: relative;
 				 &:after {
-				 	content: "";
+				 	@include previous(100%, 110px, $left: 0, $top: 0);
 				 	background: url('../images/libraryzurb/background-saffron.png') no-repeat;
 				 		background-position: -35px 10px;
-				 		width: 100%;
-				 		height: 110px;
-				 		transform: rotate(180deg);
-				 		-webkit-transform: rotate(180deg);
-				 		-moz-transform: rotate(180deg);
-				 		-ms-transform: rotate(180deg);
-				 		-o-transform: rotate(180deg);
-				 		position: absolute;
-				 		left: 0;
-				 		top: 0;
+				 		@include rotate(180deg);
 				 		z-index: -1;
 
 				 }
@@ -522,8 +499,6 @@ body {
 	        	&.button-group {
 	        		li {
 	        			a {
-	        				/* background: $yellow;
-	        				color: $black; */
 	        				font-size: 17px;
 	        				@extend .yellow-button;
 	        			}
@@ -541,15 +516,7 @@ body {
 	        		 		font-size: 17px;
 	        		 		position: relative;
 	        		 		top: 8.5px;
-	        		 		/*padding: 0.625em 1.125em 0.5625em;
-	        		 		font-size: 0.8125em;
-	        		 		border: 1px solid $yellow;
-	        		 		border-radius: 10px; */
 	        		 		@extend .box-shadow;
-	        		 	/* 	color: $black;
-	        		 		background: $yellow;
-	        		 		position: relative;
-	        		 		top: 5px; */
 	        		 	}
 	        		 }
 	        	}
@@ -614,14 +581,7 @@ body {
         	 	 		  	 		 	height: auto !important;
         	 	 		  	 		 	position: relative;
         	 	 		  	 		 	bottom: 2px;
-        	 	 		  	 		 	/* font-size: 14px;
-        	 	 		  	 		 	background: $yellow !important; */
         	 	 		  	 		 	@extend .box-shadow;
-        	 	 		  	 		 	/* border: 1px solid $yellow;
-        	 	 		  	 		 	color: $black;
-        	 	 		  	 		 	padding: 7px 20px;
-        	 	 		  	 		 	height: auto !important;
-        	 	 		  	 		 	border-radius: 10px; */
         	 	 		  	 		 	  div {
         	 	 		  	 		 	  	top: 8px;
         	 	 		  	 		 	  }
@@ -640,13 +600,7 @@ body {
 
 	        	 	 	 a {
 	        	 	 	 	@extend .yellow-button;
-	        	 	 	 	/* background: $yellow;
-	        	 	 	 	color: $black;
-	        	 	 	 	border: 1px solid $yellow; */
 	        	 	 	 	@extend .box-shadow;
-	        	 	 	 	/* border-radius: 10px;
-	        	 	 	 	padding: 0.625em 1.125em 0.5625em;
-	        		 		font-size: 0.8125em; */
 	        		 		font-size: 17px;
 	        	 	 	 	
 
@@ -672,6 +626,7 @@ body {
   &.page-reviews,  &.page-booklists  {
   	 #page-title {
   	 	@extend .black-text;
+  	 	@extend .mclaren;
   	 }
   	 .view-header {
   	 	p {
@@ -737,15 +692,8 @@ body {
   	 	    		 	 	top: 10px;
   	 	    		 	 	padding-right: 35px;
   	 	    		 	 	 &:after {
-  	 	    		 	 	 	content: "";
-  	 	    		 	 	 	height: 30px;
-  	 	    		 	 	 	width: 30px;
-  	 	    		 	 	 	display: block;
-  	 	    		 	 	 	background-size: 30px;
+  	 	    		 	 	 	@include previous(30px, 30px, $top: -4px, $right: 0);
   	 	    		 	 	 	background: url('../images/libraryzurb/smily-white.png') no-repeat;
-  	 	    		 	 	 	position: absolute;
-  	 	    		 	 	 	top: -4px;
-  	 	    		 	 	 	right: 0;
   	 	    		 	 	 }
   	 	    		 	 }
   	 	    		 }
@@ -797,7 +745,6 @@ body {
 	  	  		 	  label {
 	  	  		 	  	@extend .black-text;
 	  	  		 	  	font-size: 16px;
-	  	  		 	  	/* padding-bottom: 5px; */
 	  	  		 	  }
 	  	  		 	  .chosen-processed {
 	  	  		 	  	.chosen-search {
@@ -859,6 +806,19 @@ body {
   	  	}
   	  }
   }
+  /**css for bookreview unauthencated page**/
+	&.not-logged-in.page-reviews {
+  .main .view-content .item-list ol li .views-field.views-field-nothing {
+  	div.user {
+  		a {
+  			padding-left: 5px;
+  			color: $gray !important;
+  			pointer-events: none !important;
+  		}
+  	}
+  }
+  }
+  /**end**/
   &.page-reviews {
   	 counter-reset: section;
   	 .main {
@@ -877,32 +837,35 @@ body {
 	  	 				width: 100%;
 	  	 				position: relative;
 	  	 				 float: left;
-	  	 				 border-bottom: 1px solid $gray;
+	  	 				 border-bottom: 1px solid $light-gray;
 	  	 				 padding-top: 35px;
 	  	 				 padding-bottom: 35px;
 	  	 				.views-field {
 	  	 					
+                             &.views-field-nothing-1 {
+                             	width: 70%;
+                             	float: right;
+                             	display: table-cell;
+                             	padding-left: 4%;
+                             	padding-top: 23px;
+                             	.bookreview_title {
+                             		font-size: 20px;
+                             		a {
+                             			font-size: 20px;
+                             			padding-right: 5px;
+                             		}
 
-	  	 					 &.views-field-title {
-	  	 					 	 padding-left: 4%;
-	  	 					 	 padding-top: 20px;
-	  	 					 	 display: table-cell;
-	  	 					 	 float: left;
-	  	 					 	a {
-	  	 					 		font-size: 20px;
-	  	 					 	}
-	  	 					 }
+                             	}
+                             }
+	  	 					
 	  	 					 &.views-field-count {
 	  	 					 	position: relative;
-	  	 					 	top: 60px;
+	  	 					 	top: 45px;
 	  	 					 }
 	  	 					 &.views-field-body {
-	  	 					 	/* padding-left: 4% !important;
-	  	 					 	padding-top: 18px; */
 	  	 					 	@extend .arial-regular;
 	  	 					 }
 	  	 					 &.views-field-nothing {
-	  	 					 	/* padding-left: 4% !important; */
 	  	 					 	 div {
 	  	 					 	 	 float: left; 
 	  	 					 	 	&.date {
@@ -925,13 +888,7 @@ body {
 	  	 					 	 	}
 	  	 					 	 }
 	  	 					 }
-	  	 					 &.views-field-field-author-last-name {
-	  	 					 	font-size: 20px;
-	  	 					 	float: left;
-	  	 					 	display: table-cell;
-	  	 					 	padding-top: 20px;
-	  	 					 	padding-left: 5px;
-	  	 					 }
+	  	 					 
 	  	 					 &.views-field-view-node {
 	  	 					 	span {
 	  	 					 		&.button {
@@ -953,19 +910,7 @@ body {
 	  	 					 	float: right;
 	  	 					 	display: table-row;
 	  	 					 	.views-label-count {
-			  	 			 		position: relative;
-			  	 			 		padding-right: 35px;
-			  	 			 		&:after {
-			  	 			 			content: "";
-			  	 	    		 	 	height: 30px;
-			 	    		 	 	 	width: 30px;
-			 	    		 	 	 	display: block;
-			 	    		 	 	 	background-size: 30px;
-			 	    		 	 	 	background: url('../images/libraryzurb/smily-white.png') no-repeat;
-			 	    		 	 	 	position: absolute;
-			 	    		 	 	 	top: 0;
-			 	    		 	 	 	right: 0;
-			  	 			 		}
+	  	 					 		@extend .like;
 			  	 			 	}
 	  	 					 }
 
@@ -998,7 +943,7 @@ body {
 	  	 					 		  }
 	  	 					 	}
 	  	 					 }
-	  	 					 &.views-field-body, &.views-field-nothing {
+	  	 					 &.views-field-body , &.views-field-nothing {
 	  	 					 	padding-top: 23px;
 	  	 					 }
 	  	 					 &.views-field-nothing,&.views-field-body {
@@ -1017,17 +962,10 @@ body {
 	  	 					 	width: 70%;
 	  	 					 	float: right;
 	  	 					 	padding-left: 4%;
-	  	 					 	/* width: 50%;
-	  	 					 	float: none !important;
-	  	 					 	margin: 0 auto;
-	  	 					 	position: relative;
-	  	 					 	top: 23px;
-	  	 					 	right: 6px; */
 	  	 					 	 .button {
 	  	 					 	 	  padding: 0 !important;
 	  	 					 	 	  margin: 23px 0 0;
-	  	 					 	 
-	  	 					 	 		/* @extend .blue-button; */
+
 	  	 					 	 		a {
 	  	 					 	 			@extend .blue-button;
 	  	 					 	 		}
@@ -1038,8 +976,7 @@ body {
 	  	 				font-size: 17px;
 	  	 				.views-field-title {
 	  	 					&:before {
-	  	 						counter-increment: section;            
-	 							 content: " " counter(section) ". "
+	 							 @extend .counter;
 	  	 					}
 	  	 				}
 	  	 			}
@@ -1050,6 +987,7 @@ body {
 	 }
 
   }
+  
   &.page-booklists {
   	.l-header .row.header-middle section.block-menu-menu-secoundary-menu ul.menu li a.reviews::after {
   		background: url('../images/libraryzurb/reviewactive.png') no-repeat !important;
@@ -1072,19 +1010,7 @@ body {
 	  	 			 }
 	  	 			 .views-field-count {
 	  	 			 	.views-label-count {
-	  	 			 		position: relative;
-	  	 			 		padding-right: 35px;
-	  	 			 		&:after {
-	  	 			 			content: "";
-	  	 	    		 	 	height: 30px;
-	 	    		 	 	 	width: 30px;
-	 	    		 	 	 	display: block;
-	 	    		 	 	 	background-size: 30px;
-	 	    		 	 	 	background: url('../images/libraryzurb/smily-white.png') no-repeat;
-	 	    		 	 	 	position: absolute;
-	 	    		 	 	 	top: 0;
-	 	    		 	 	 	right: 0;
-	  	 			 		}
+	  	 			 		@extend .like;
 	  	 			 	}
 	  	 			 }
 	  	 			 .views-field-count {
@@ -1162,15 +1088,8 @@ body {
 	  			 	  	 &.views-label {
 	  			 	  	 	padding-right: 35px;
 	  			 	  	 	  &:after {
-	  			 	  	 	  	content: "";
-	 	    		 	 	 	height: 35px;
-	 	    		 	 	 	width: 35px;
-	 	    		 	 	 	display: block;
-	 	    		 	 	 	background-size: 30px;
+	  			 	            @include previous(35px, 35px, $top: 0, $right: -3px);
 	 	    		 	 	 	background: url('../images/libraryzurb/smily-white.png') no-repeat;
-	 	    		 	 	 	position: absolute;
-	 	    		 	 	 	top: 0;
-	 	    		 	 	 	right: -3px;
 	  			 	  	 	  }
 	  			 	  	 }
 	  			 	  }
@@ -1188,16 +1107,9 @@ body {
 	  			 	 	position: relative;
 	  			 	 	opacity: 1;
 	  			 	 	  &:before {
-	  			 	 	  	content: "";
-	  			 	 	  	width: 30px;
-	  			 	 	  	height: 30px;
-	  			 	 	  	display: block;
-	  			 	 	  	visibility: visible;
+	  			 	 	  	@include previous(30px, 30px, $left: -40px, $top: 0);
 	  			 	 	  	background: url('../images/libraryzurb/left-blue-arrow.png') no-repeat;
 	  			 	 	  	background-size: 25px;
-	  			 	 	  	position: absolute;
-	  			 	 	  	left: -40px;
-	  			 	 	  	top: 0;
 	  			 	 	  }
 	  			 	 }
 	  			 	 .owl-next {
@@ -1206,16 +1118,10 @@ body {
 	  			 	 	position: relative;
 	  			 	 	opacity: 1;
 	  			 	 	  &:after {
-	  			 	 	  	content: "";
-	  			 	 	  	width: 30px;
-	  			 	 	  	height: 30px;
-	  			 	 	  	display: block;
-	  			 	 	  	visibility: visible;
+	  			 	 	  	@include previous(30px, 30px, $right: -37px, $top: 0);
 	  			 	 	  	background: url('../images/libraryzurb/right-blue-arrow.png') no-repeat;
 	  			 	 	  	background-size: 25px;
 	  			 	 	  	position: absolute;
-	  			 	 	  	right: -37px;
-	  			 	 	  	top: 0;
 	  			 	 	  }
 	  			 	 }
 	  			 }

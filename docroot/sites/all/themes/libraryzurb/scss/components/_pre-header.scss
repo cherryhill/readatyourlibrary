@@ -37,11 +37,7 @@
              margin-left: 10px;
              @extend .animate;
                  &:hover {
-                    transform: rotateX(360deg);
-                    -webkit-transform: rotateX(360deg);
-                    -moz-transform: rotateX(360deg);
-                    -ms-transform: rotateX(360deg);
-                    -o-transform: rotateX(360deg); 
+                   @include rotate(360deg, $dir: X);
                  }
              a {
                background-color: $blue;

@@ -43,15 +43,16 @@
   	 			  	  	  font-size: 0;
 
   	 			  	  	   &:after {
-  	 			  	  	   	width: 94px;
-                            height: 105px;
+  	 			  	  	   	@include previous(94px, 105px, $left: 0, $top: 0);
+  	 			  	  	   	/* width: 94px;
+                            height: 105px; */
                             background-size: 100px;
-                            content: "";
-                            display: block;
+                            /* content: ""; */
+                            /* display: block;
                             position: absolute;
                             left: 0;
                             top: 0;
-                            visibility: visible;
+                            visibility: visible; */
                             @extend .animate;
   	 			  	  	   }
   	 			  	  	 
@@ -131,11 +132,7 @@
   	 			  	  	  
   	 			  	  	   &:hover {
   	 			  	  	   	&:after {
-					  		 transform: rotateY(360deg);
-					  		-webkit-transform: rotateY(360deg);
-							-moz-transform: rotateY(360deg);
-							-ms-transform: rotateY(360deg);
-							-o-transform: rotateY(360deg); 
+  	 			  	  	   		@include rotate(360deg, $dir: Y);
 					}
 						 
 					  }
