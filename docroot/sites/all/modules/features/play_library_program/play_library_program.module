@@ -420,7 +420,45 @@ function play_library_program_create_reward_claim($reward_id, $account_id) {
 	$reward_claim->field_reward_claim_id[LANGUAGE_NONE][0]['target_id'] = $reward->id;
 	if($start <= $age && $age <= $end) {
 		entity_save('reward', $reward_claim);
-		drupal_set_message(t('Congratulations! You earned prize!.'));
+	}
+
+	$rew_id = $reward_claim->id;
+
+	$query = db_select('eck_reward','rew');
+	$query->join('field_data_field_reward_claim_id','claim_id','claim_id.entity_id = rew.id');
+	$query->fields('rew',array('title','id','uid','type'));
+	$query->fields('claim_id',array('field_reward_claim_id_target_id'));
+	$query->condition('type','reward_claim');
+	$query->condition('uid',$account_id,'=');
+	$query->condition('id',$rew_id,'=');
+	$result = $query->execute()
+	->fetchAll();
+
+	foreach($result as $reward_msg){
+	  $res_title = $reward_msg->title;
+	  $res_id = $reward_msg->id;
+	  $res_uid = $reward_msg->uid;
+	  $res_type = $reward_msg->type;
+	  $res_entity_id = $reward_msg->field_reward_claim_id_target_id;
+
+	  $sub_query = db_select('field_data_field_reward_message','msg')
+	  ->fields('msg',array('field_reward_message_value'))
+	  ->condition('entity_id',$res_entity_id)
+	  ->execute()
+	  ->fetchAll();
+	  foreach($sub_query as $onscreen_msg){
+	    $msg_notifications = $onscreen_msg->field_reward_message_value;
+	  }
+
+	  db_insert('reward_notification')
+	   ->fields(array(
+	    'reward_name' => $res_title,
+	    'reward_id' => $res_id,
+	    'uid' => $res_uid,
+	    'type' => $res_type,
+	    'reward_notifications' => $msg_notifications,
+	    ))
+	   ->execute();
 	}
 }
 
