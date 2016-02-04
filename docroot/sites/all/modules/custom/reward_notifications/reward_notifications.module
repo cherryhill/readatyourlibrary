@@ -1,0 +1,68 @@
+<?php
+
+/**
+ * @file
+ * A module for displaying message
+ *
+ * This module provides a block that displays
+ * On Screen Message when a user gets a reward.
+ */
+
+/**
+* Implements hook_block_info().
+*/
+function reward_notifications_block_info() {
+  $blocks = array();
+
+  $blocks['Claim_reward_message'] = array(
+    'info' => t('On Screen Message on Reward claim'),
+  );
+
+  return $blocks;
+}
+
+/**
+* Implements hook_block_view().
+*/
+function reward_notifications_block_view($delta = '') {
+  $block = array();
+
+  switch ($delta) {
+    case 'Claim_reward_message':
+      $block['subject'] = t('Reward Notification');
+      $block['content'] = _reward_claim_onscreen_message();
+      break;
+  }
+  return $block;
+}
+
+function _reward_claim_onscreen_message() {
+	global $user;
+	$uid = $user->uid;
+
+	$query = db_select('reward_notification','noti')
+	  ->fields('noti',array('uid','reward_notifications','notifications_read'))
+	  ->condition('uid',$uid,'=')
+	  ->execute()
+	  ->fetchAll();
+
+	foreach($query as $q){
+		$reward_uid = $q->uid;
+		$reward_notifications = $q->reward_notifications;
+		$read = $q->notifications_read;
+
+  	$pieces = explode("<p>", $reward_notifications);
+		$rew_msg = $pieces['1'];
+		$removing_p_tag = explode("</p>", $rew_msg);
+		$rew_message = $removing_p_tag['0'];
+
+		if($uid == $reward_uid && $read == '0') {
+			drupal_set_message(t('%string', array('%string' => $rew_message)), 'status');
+		}
+
+		$sub_query = db_update('reward_notification')
+		->fields(array('notifications_read' => '1'))
+		->condition('uid',$uid,'=')
+		->execute();
+	}
+}
