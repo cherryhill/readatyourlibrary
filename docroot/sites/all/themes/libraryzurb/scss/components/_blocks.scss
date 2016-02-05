@@ -4,6 +4,20 @@ body {
 }
 .block {
     margin-bottom: 35px;
+    &.block-views-booklist-slideshow-block-2 {
+    	h2.block-title {
+    		@extend .mclaren;
+    		font-size: 25px;
+    		color: $black;
+    		@extend .no-border;
+    		margin-bottom: 33px;
+
+    	}
+    }
+    &.bordr-bottom {
+    	border-bottom: 1px solid $light-gray;
+    	padding-bottom: 20px;
+    }
     &.block-private-msg-custom {
     	@extend .yellow-background;
     	padding: 35px;

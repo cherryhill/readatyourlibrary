@@ -721,6 +721,19 @@ body {
   	 	  }
   	 } 
   	  .view {
+  	  	.view-header {
+  	  		.other-booklists {
+  	  			font-size: 25px;
+  	  			@extend .mclaren;
+  	  			color: $black;
+  	  			margin-bottom: 23px;
+  	  		}
+  	  		.viewmenu {
+  	  			margin-bottom: 23px;
+  	  			font-size: 17px;
+  	  			@extend .arial-regular;
+  	  		}
+  	  	}
   	  	.view-filters {
   	  		@extend .yellow-background;
   	  		 form {
@@ -806,7 +819,20 @@ body {
   	  	}
   	  }
   }
-  /**css for bookreview unauthencated page**/
+  /**css for bookreview&booklist unauthencated page**/
+  &.not-logged-in.page-booklists {
+     .main .view-content .item-list ol li .views-field-nothing {
+     	.field-content {
+     		div {
+     			a {
+     				color: $gray !important;
+     				padding-left: 5px;
+     				pointer-events: none !important;
+     			}
+     		}
+     	}
+     }
+  }
 	&.not-logged-in.page-reviews {
   .main .view-content .item-list ol li .views-field.views-field-nothing {
   	div.user {
@@ -995,11 +1021,36 @@ body {
   	}
   	.main {
 	  	.view-content {
+	  		margin-top: 40px;
+	  		counter-reset: section 3;
 	  	 	.item-list {
 	  	 		ol {
 	  	 			margin-left: 20px;
+	  	 			list-style: none;
 	  	 			li {
+	  	 				&.views-row {
+	  	 					margin-bottom: 23px;
+	  	 				}
 	  	 				font-size: 17px;
+	  	 				.views-field-nothing {
+	  	 					margin-top: 23px;
+	  	 					padding-left: 25px;
+	  	 					display: inline-block;
+	  	 					@extend .arial-regular;	
+	  	 					div {
+	  	 						float: left;
+	  	 						&.field-name-field-avatar-image {
+	  	 							position: relative;
+	  	 							bottom: 10px;
+	  	 							  img {
+	  	 							  	 @extend .no-border;
+	  	 							  	 @extend .box-shadow;
+	  	 							  	 margin-right: 10px;
+	  	 							  }
+	  	 						}
+	  	 					}
+	  	 				}
+
 	  	 			 .views-field-php {
 	  	 			 	a {
 	  	 			 		color: $blue;
@@ -1017,17 +1068,17 @@ body {
 	  	 			 .views-field-count {
 	  	 			 	float: right;
 	  	 			 }
-	  	 			 .field-name-field-avatar-image {
-	  	 			 	img {
-	  	 			 		float: left;
-	  	 			 	}
-	  	 			 }
+	  	 			 
 	  	 			 .views-field-title {
 	  	 			 	a {
 	  	 			 		font-size: 21px;
 	  	 			 		color: $blue;
-	  	 			 		 &:hover {
-	  	 			 		 	color: $blue;
+	  	 			 		 &:before {
+	  	 			 		 	@extend .counter;
+	  	 			 		 	color: $black;
+	  	 			 		 	display: inline-block;
+	  	 			 		 	padding-right: 10px;
+	  	 			 		 	@extend .arial-regular;
 	  	 			 		 }
 	  	 			 	}
 	  	 			 }
@@ -1038,9 +1089,16 @@ body {
 	  	.view-booklist-slideshow {
 	  		.owl-carousel {
 	  			position: relative;
+	  			 .owl-wrapper-outer {
+	  			 	width: 99%;
+	  			 	margin: 0 auto;
+	  			 }
 	  			 .owl-item {
 	  			 	.views-field-field-booklist-cover-image {
-	  			 		width: 150px;
+	  			 		width: 135px;
+	  			 		 img {
+	  			 		 	width: 100%;
+	  			 		 }
 	  			 	}
 	  			 }
 	  			 .views-field-title {
@@ -1049,9 +1107,7 @@ body {
 	  			 	 	a {
 	  			 	 		color: $blue;
 	  			 	 		@extend .mclaren;
-	  			 	 		 &:hover, &:focus {
-	  			 	 		 	color: $blue;
-	  			 	 		 }
+	  			 	 		text-transform: capitalize;
 	  			 	 	}
 	  			 	 }
 	  			 }
@@ -1059,6 +1115,7 @@ body {
 	  			 	width: 70%;
 	  			 	float: left;
 	  			 	margin-top: 20px;
+	  			 	@extend .arial-regular;
 
 	  			 	  div {
 	  			 	  	float: left;
@@ -1067,7 +1124,12 @@ body {
 	  			 	  	 	width: 100px;
 	  			 	  	 }
 	  			 	  	 &.field-name-field-avatar-image {
-	  			 	  	 	width: 45px;
+	  			 	  	 	position: relative;
+	  			 	  	 	bottom: 10px;
+	  			 	  	 	 img {
+	  			 	  	 	 	@extend .box-shadow;
+	  			 	  	 	 	margin-right: 5px;
+	  			 	  	 	 }
 	  			 	  	 }
 	  			 	  	 a.username {
 	  			 	  	 	color: $blue;
@@ -1083,6 +1145,7 @@ body {
 	  			 	float: left;
 	  			 	text-align: right;
 	  			 	margin-top: 20px;
+	  			 	padding-right: 2%;
 	  			 	  span {
 	  			 	  	color: $black;
 	  			 	  	position: relative;
