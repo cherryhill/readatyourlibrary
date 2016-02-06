@@ -6708,6 +6708,9 @@ a.th {
   right: 12%;
   display: block;
 }
+.block.dashboard-block .view .item-list .pagination li, .section-activities .main .dashboard-block.view-activities-page- .view .item-list .pagination li, .section-activities .main .dashboard-block.block-block .view .item-list .pagination li {
+  margin-left: 10px;
+}
 .block.dashboard-block .view .item-list .pagination li a, .section-activities .main .dashboard-block.view-activities-page- .view .item-list .pagination li a, .section-activities .main .dashboard-block.block-block .view .item-list .pagination li a {
   color: transparent;
   position: relative;
@@ -6718,8 +6721,8 @@ a.th {
 }
 .block.dashboard-block .view .item-list .pagination li a:after, .section-activities .main .dashboard-block.view-activities-page- .view .item-list .pagination li a:after, .section-activities .main .dashboard-block.block-block .view .item-list .pagination li a:after {
   content: "";
-  width: 10px;
-  height: 10px;
+  width: 20px;
+  height: 20px;
   display: block;
   visibility: visible;
   position: absolute;
@@ -6763,6 +6766,7 @@ a.th {
   top: 20%;
   right: 0;
   font-size: 17px;
+  padding: 12px 22px;
 }
 .block.block-private-msg-custom .pm-custom .pm, .section-activities .main .block-private-msg-custom.view-activities-page- .pm-custom .pm, .section-activities .main .block-private-msg-custom.block-block .pm-custom .pm {
   width: 80%;
@@ -8776,7 +8780,11 @@ body.page-user-profile .homebox {
 body.page-user-profile .homebox #homebox-block-auto_role_allocation_progress-block .portlet-header {
   position: relative;
 }
-body.page-user-profile .homebox #homebox-block-auto_role_allocation_progress-block .portlet-header:before {
+body.page-user-profile .homebox #homebox-block-auto_role_allocation_progress-block .portlet-content {
+  color: #000;
+  font-size: 15px;
+}
+body.page-user-profile .homebox #homebox-block-auto_role_allocation_progress-block .portlet-content:before {
   content: "";
   width: 50px;
   height: 50px;
@@ -8787,10 +8795,6 @@ body.page-user-profile .homebox #homebox-block-auto_role_allocation_progress-blo
   left: 6%;
   overflow: visible;
   background: url("../images/libraryzurb/progress-dash.png") no-repeat;
-}
-body.page-user-profile .homebox #homebox-block-auto_role_allocation_progress-block .portlet-content {
-  color: #000;
-  font-size: 15px;
 }
 body.page-user-profile .homebox #homebox-add {
   border-radius: 20px;

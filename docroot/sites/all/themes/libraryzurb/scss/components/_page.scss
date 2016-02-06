@@ -78,17 +78,18 @@ body {
 	 		 #homebox-block-auto_role_allocation_progress-block {
 	 		 	.portlet-header {
 	 		 		position: relative;
-	 		 		 &:before {
-	 		 		 	@include previous(50px, 50px, $left: 6%, $top: 12px);
-	 		 		 	overflow: visible;
-	 		 		 	background: url('../images/libraryzurb/progress-dash.png') no-repeat;
-	 		 		 }
+	 		 		
 
 	 		 	}
 	 		 	.portlet-content {
 	 		 		color: $black;
 	 		 		font-size: 15px;
 	 		 		@extend .arial-regular;
+	 		 		 &:before {
+	 		 		 	@include previous(50px, 50px, $left: 6%, $top: 12px);
+	 		 		 	overflow: visible;
+	 		 		 	background: url('../images/libraryzurb/progress-dash.png') no-repeat;
+	 		 		 }
 	 		 	}
 	 		 }
 	 		 #homebox-add {

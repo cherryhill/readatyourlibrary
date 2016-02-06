@@ -45,6 +45,7 @@ body {
 	    		display: block;
 	    		 .pagination {
 	    		 	li {
+	    		 		margin-left: 10px;
 	    		 		a {
 	    		 			color: transparent;
 	    		 			position: relative;
@@ -53,7 +54,7 @@ body {
 	    		 			 	background: transparent;
 	    		 			 }
 	    		 			 &:after {
-	    		 			 	@include previous(10px, 10px, $top: 0, $left: 0);
+	    		 			 	@include previous(20px, 20px, $top: 0, $left: 0);
 	    		 			 	border-radius: 100%;
 	    		 			 	background: $white;
 	    		 			 }
@@ -108,6 +109,7 @@ body {
     	      	top: 20%;
     	      	right: 0;
     	      	font-size: 17px;
+    	      	padding: 12px 22px;
     	      	@extend .blue-button;
     	      }
     	 	 .pm {
