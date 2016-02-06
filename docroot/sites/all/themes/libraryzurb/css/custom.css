@@ -6673,6 +6673,32 @@ a.th {
 .block, .section-activities .main .view-activities-page-, .section-activities .main .block-block {
   margin-bottom: 35px;
 }
+.block.dashboard-block .view, .section-activities .main .dashboard-block.view-activities-page- .view, .section-activities .main .dashboard-block.block-block .view {
+  display: table;
+  width: 100%;
+}
+.block.dashboard-block .view .attachment, .section-activities .main .dashboard-block.view-activities-page- .view .attachment, .section-activities .main .dashboard-block.block-block .view .attachment {
+  width: 50%;
+  display: table-cell;
+  float: left;
+}
+.block.dashboard-block .view .attachment .view .view-content, .section-activities .main .dashboard-block.view-activities-page- .view .attachment .view .view-content, .section-activities .main .dashboard-block.block-block .view .attachment .view .view-content {
+  float: left;
+  display: inline-block;
+  width: 100%;
+}
+.block.dashboard-block .view .view-content, .section-activities .main .dashboard-block.view-activities-page- .view .view-content, .section-activities .main .dashboard-block.block-block .view .view-content {
+  width: 50%;
+  float: right;
+  display: table-cell;
+}
+.block.dashboard-block .view .view-content table tr td .views-field h2, .section-activities .main .dashboard-block.view-activities-page- .view .view-content table tr td .views-field h2, .section-activities .main .dashboard-block.block-block .view .view-content table tr td .views-field h2 {
+  display: none;
+}
+.block.dashboard-block .view .view-content table tr td .views-field .content, .section-activities .main .dashboard-block.view-activities-page- .view .view-content table tr td .views-field .content, .section-activities .main .dashboard-block.block-block .view .view-content table tr td .views-field .content {
+  display: inline-block;
+  background: #fff;
+}
 .block.block-views-booklist-slideshow-block-2 h2.block-title, .section-activities .main .block-views-booklist-slideshow-block-2.view-activities-page- h2.block-title, .section-activities .main .block-views-booklist-slideshow-block-2.block-block h2.block-title {
   font-size: 25px;
   color: #000;
@@ -8788,13 +8814,14 @@ body.page-user-profile .homebox .homebox-portlet-inner .portlet-header .portlet-
   position: relative;
 }
 body.page-user-profile .homebox .homebox-portlet-inner .portlet-header .portlet-title:after {
-  content: "";
+  /* @include previous(20px, 20px, $top: 13%); */
+  content: " ";
   width: 20px;
   height: 20px;
-  display: block;
+  display: inline-block;
+  position: relative;
+  vertical-align: middle;
   visibility: visible;
-  position: absolute;
-  top: 13%;
   background: url("../images/libraryzurb/right-arrow.png") no-repeat;
   background-size: 18px;
   background-position: center;

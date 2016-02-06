@@ -4,6 +4,38 @@ body {
 }
 .block {
     margin-bottom: 35px;
+    &.dashboard-block {
+    	.view {
+    		display: table;
+    		width: 100%;
+	    	.attachment {
+	          width: 50%;
+	          display: table-cell;
+	          float: left;
+	           .view {
+	           	 .view-content {
+	           	 	float: left;
+	           	 	display: inline-block;
+	           	 	width: 100%;
+	           	 }
+	           }
+	    	}
+	    	.view-content {
+	    		width: 50%;
+	    		float: right;
+	    		display: table-cell;
+	    		 table tr td .views-field {
+	    		 	h2 {
+	    		 		display: none;
+	    		 	}
+	    		 	.content {
+	    		 		display: inline-block;
+	    		 		background: $white;
+	    		 	}
+	    		 }
+	    	}
+     	}
+    }
     &.block-views-booklist-slideshow-block-2 {
     	h2.block-title {
     		@extend .mclaren;
