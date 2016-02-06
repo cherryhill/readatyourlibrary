@@ -6431,7 +6431,7 @@ a.th {
   box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
 }
 
-.no-border, .block.block-views-booklist-slideshow-block-2 h2.block-title, .section-activities .main .block-views-booklist-slideshow-block-2.view-activities-page- h2.block-title, .section-activities .main .block-views-booklist-slideshow-block-2.block-block h2.block-title, .block.block-private-msg-custom h2, .section-activities .main .block-private-msg-custom.view-activities-page- h2, .section-activities .main .block-private-msg-custom.block-block h2, body.page-user-profile .homebox #homebox-add ul li a.used, body.page-user-profile .homebox .homebox-portlet, body.page-user-profile .homebox .homebox-portlet-inner, body.page-user-profile .homebox .homebox-portlet-inner .portlet-header, body.page-user-profile .homebox .portlet-content .view.view-follow .view-content .views-row img, body.page-reviews .main .view-content .views-row img, body.page-reviews .main .view-content .item-list ol li .views-field.views-field-field-book-cover-image-link table, body.page-reviews .main .view-content .item-list ol li .views-field.views-field-field-book-cover-image-link table tbody, body.page-booklists .main .view-content .item-list ol li .views-field-nothing div.field-name-field-avatar-image img {
+.no-border, .block.dashboard-block .view .view-content table, .section-activities .main .dashboard-block.view-activities-page- .view .view-content table, .section-activities .main .dashboard-block.block-block .view .view-content table, .block.dashboard-block .view .view-content table tr.even, .section-activities .main .dashboard-block.view-activities-page- .view .view-content table tr.even, .section-activities .main .dashboard-block.block-block .view .view-content table tr.even, .block.dashboard-block .view .view-content table tr.alt, .section-activities .main .dashboard-block.view-activities-page- .view .view-content table tr.alt, .section-activities .main .dashboard-block.block-block .view .view-content table tr.alt, .block.dashboard-block .view .view-content table tr:nth-of-type(2n), .section-activities .main .dashboard-block.view-activities-page- .view .view-content table tr:nth-of-type(2n), .section-activities .main .dashboard-block.block-block .view .view-content table tr:nth-of-type(2n), .block.block-views-booklist-slideshow-block-2 h2.block-title, .section-activities .main .block-views-booklist-slideshow-block-2.view-activities-page- h2.block-title, .section-activities .main .block-views-booklist-slideshow-block-2.block-block h2.block-title, .block.block-private-msg-custom h2, .section-activities .main .block-private-msg-custom.view-activities-page- h2, .section-activities .main .block-private-msg-custom.block-block h2, body.page-user-profile .homebox #homebox-add ul li a.used, body.page-user-profile .homebox .homebox-portlet, body.page-user-profile .homebox .homebox-portlet-inner, body.page-user-profile .homebox .homebox-portlet-inner .portlet-header, body.page-user-profile .homebox .portlet-content .view.view-follow .view-content .views-row img, body.page-reviews .main .view-content .views-row img, body.page-reviews .main .view-content .item-list ol li .views-field.views-field-field-book-cover-image-link table, body.page-reviews .main .view-content .item-list ol li .views-field.views-field-field-book-cover-image-link table tbody, body.page-booklists .main .view-content .item-list ol li .views-field-nothing div.field-name-field-avatar-image img {
   border: none !important;
   outline: none !important;
 }
@@ -6692,12 +6692,47 @@ a.th {
   float: right;
   display: table-cell;
 }
+.block.dashboard-block .view .view-content table, .section-activities .main .dashboard-block.view-activities-page- .view .view-content table, .section-activities .main .dashboard-block.block-block .view .view-content table, .block.dashboard-block .view .view-content table tr.even, .section-activities .main .dashboard-block.view-activities-page- .view .view-content table tr.even, .section-activities .main .dashboard-block.block-block .view .view-content table tr.even, .block.dashboard-block .view .view-content table tr.alt, .section-activities .main .dashboard-block.view-activities-page- .view .view-content table tr.alt, .section-activities .main .dashboard-block.block-block .view .view-content table tr.alt, .block.dashboard-block .view .view-content table tr:nth-of-type(2n), .section-activities .main .dashboard-block.view-activities-page- .view .view-content table tr:nth-of-type(2n), .section-activities .main .dashboard-block.block-block .view .view-content table tr:nth-of-type(2n) {
+  background: none !important;
+}
 .block.dashboard-block .view .view-content table tr td .views-field h2, .section-activities .main .dashboard-block.view-activities-page- .view .view-content table tr td .views-field h2, .section-activities .main .dashboard-block.block-block .view .view-content table tr td .views-field h2 {
   display: none;
 }
 .block.dashboard-block .view .view-content table tr td .views-field .content, .section-activities .main .dashboard-block.view-activities-page- .view .view-content table tr td .views-field .content, .section-activities .main .dashboard-block.block-block .view .view-content table tr td .views-field .content {
   display: inline-block;
   background: #fff;
+}
+.block.dashboard-block .view .item-list, .section-activities .main .dashboard-block.view-activities-page- .view .item-list, .section-activities .main .dashboard-block.block-block .view .item-list {
+  position: absolute;
+  top: 0;
+  right: 12%;
+  display: block;
+}
+.block.dashboard-block .view .item-list .pagination li a, .section-activities .main .dashboard-block.view-activities-page- .view .item-list .pagination li a, .section-activities .main .dashboard-block.block-block .view .item-list .pagination li a {
+  color: transparent;
+  position: relative;
+  background: transparent;
+}
+.block.dashboard-block .view .item-list .pagination li a:hover, .section-activities .main .dashboard-block.view-activities-page- .view .item-list .pagination li a:hover, .section-activities .main .dashboard-block.block-block .view .item-list .pagination li a:hover {
+  background: transparent;
+}
+.block.dashboard-block .view .item-list .pagination li a:after, .section-activities .main .dashboard-block.view-activities-page- .view .item-list .pagination li a:after, .section-activities .main .dashboard-block.block-block .view .item-list .pagination li a:after {
+  content: "";
+  width: 10px;
+  height: 10px;
+  display: block;
+  visibility: visible;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 100%;
+  background: #fff;
+}
+.block.dashboard-block .view .item-list .pagination li.current a:after, .section-activities .main .dashboard-block.view-activities-page- .view .item-list .pagination li.current a:after, .section-activities .main .dashboard-block.block-block .view .item-list .pagination li.current a:after {
+  background: #f6511d !important;
+}
+.block.dashboard-block .view .item-list .pagination li.arrow, .section-activities .main .dashboard-block.view-activities-page- .view .item-list .pagination li.arrow, .section-activities .main .dashboard-block.block-block .view .item-list .pagination li.arrow {
+  display: none;
 }
 .block.block-views-booklist-slideshow-block-2 h2.block-title, .section-activities .main .block-views-booklist-slideshow-block-2.view-activities-page- h2.block-title, .section-activities .main .block-views-booklist-slideshow-block-2.block-block h2.block-title {
   font-size: 25px;
