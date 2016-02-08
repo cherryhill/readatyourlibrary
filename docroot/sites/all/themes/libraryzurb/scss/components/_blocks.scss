@@ -4,6 +4,90 @@ body {
 }
 .block {
     margin-bottom: 35px;
+    &.dashboard-block {
+    	.view {
+    		display: table;
+    		width: 100%;
+	    	.attachment {
+	          width: 50%;
+	          display: table-cell;
+	          float: left;
+	           .view {
+	           	 .view-content {
+	           	 	float: left;
+	           	 	display: inline-block;
+	           	 	width: 100%;
+	           	 }
+	           }
+	    	}
+	    	.view-content {
+	    		width: 50%;
+	    		float: right;
+	    		display: table-cell;
+	    		table, table tr.even, table tr.alt, table tr:nth-of-type(2n) {
+	    			background: none !important;
+	    			@extend .no-border;
+	    		}
+	    		 table tr td .views-field {
+	    		 	h2 {
+	    		 		display: none;
+	    		 	}
+	    		 	.content {
+	    		 		display: inline-block;
+	    		 		background: $white;
+	    		 	}
+	    		 }
+	    	}
+	    	.item-list {
+	    		position: absolute;
+	    		top: 0;
+	    		right: 12%;
+	    		display: block;
+	    		 .pagination {
+	    		 	li {
+	    		 		margin-left: 10px;
+	    		 		a {
+	    		 			color: transparent;
+	    		 			position: relative;
+	    		 			background: transparent;
+	    		 			 &:hover {
+	    		 			 	background: transparent;
+	    		 			 }
+	    		 			 &:after {
+	    		 			 	@include previous(20px, 20px, $top: 0, $left: 0);
+	    		 			 	border-radius: 100%;
+	    		 			 	background: $white;
+	    		 			 }
+	    		 		}
+	    		 		&.current {
+	    		 			a {
+	    		 				&:after {
+	    		 					background: $orange !important;
+	    		 				}
+	    		 			}
+	    		 		}
+	    		 		&.arrow {
+	    		 			display: none;
+	    		 		}
+	    		 	}
+	    		 }
+	    	}
+     	}
+    }
+    &.block-views-booklist-slideshow-block-2 {
+    	h2.block-title {
+    		@extend .mclaren;
+    		font-size: 25px;
+    		color: $black;
+    		@extend .no-border;
+    		margin-bottom: 33px;
+
+    	}
+    }
+    &.bordr-bottom {
+    	border-bottom: 1px solid $light-gray;
+    	padding-bottom: 20px;
+    }
     &.block-private-msg-custom {
     	@extend .yellow-background;
     	padding: 35px;
@@ -25,6 +109,7 @@ body {
     	      	top: 20%;
     	      	right: 0;
     	      	font-size: 17px;
+    	      	padding: 12px 22px;
     	      	@extend .blue-button;
     	      }
     	 	 .pm {
