@@ -10,15 +10,23 @@ body {
     		display: table;
     		width: 100%;
     		padding: 12px 2.3%;
+    		position: relative;
 	    	.attachment {
 	          width: 50%;
 	          display: table-cell;
-	          float: left;
+	         /*  float: left; */
 	           .view {
+	           	 padding: 0 !important;
 	           	 .view-content {
 	           	 	float: left;
 	           	 	display: inline-block;
 	           	 	width: 100%;
+	           	 	 .views-row {
+	           	 	 	margin-bottom: 0;
+	           	 	 	 .views-field {
+	           	 	 	 	float: left;
+	           	 	 	 }
+	           	 	 }
 	           	 }
 	           }
 	    	}

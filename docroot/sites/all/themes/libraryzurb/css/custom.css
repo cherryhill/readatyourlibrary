@@ -6677,16 +6677,26 @@ a.th {
   display: table;
   width: 100%;
   padding: 12px 2.3%;
+  position: relative;
 }
 .block.dashboard-block .view .attachment, body.page-reviews .dashboard-block.pull-9.sidebar .view .attachment, body.page-booklists .dashboard-block.pull-9.sidebar .view .attachment, .section-activities .main .dashboard-block.view-activities-page- .view .attachment, .section-activities .main .dashboard-block.block-block .view .attachment {
   width: 50%;
   display: table-cell;
-  float: left;
+  /*  float: left; */
+}
+.block.dashboard-block .view .attachment .view, body.page-reviews .dashboard-block.pull-9.sidebar .view .attachment .view, body.page-booklists .dashboard-block.pull-9.sidebar .view .attachment .view, .section-activities .main .dashboard-block.view-activities-page- .view .attachment .view, .section-activities .main .dashboard-block.block-block .view .attachment .view {
+  padding: 0 !important;
 }
 .block.dashboard-block .view .attachment .view .view-content, body.page-reviews .dashboard-block.pull-9.sidebar .view .attachment .view .view-content, body.page-booklists .dashboard-block.pull-9.sidebar .view .attachment .view .view-content, .section-activities .main .dashboard-block.view-activities-page- .view .attachment .view .view-content, .section-activities .main .dashboard-block.block-block .view .attachment .view .view-content {
   float: left;
   display: inline-block;
   width: 100%;
+}
+.block.dashboard-block .view .attachment .view .view-content .views-row, body.page-reviews .dashboard-block.pull-9.sidebar .view .attachment .view .view-content .views-row, body.page-booklists .dashboard-block.pull-9.sidebar .view .attachment .view .view-content .views-row, .section-activities .main .dashboard-block.view-activities-page- .view .attachment .view .view-content .views-row, .section-activities .main .dashboard-block.block-block .view .attachment .view .view-content .views-row {
+  margin-bottom: 0;
+}
+.block.dashboard-block .view .attachment .view .view-content .views-row .views-field, body.page-reviews .dashboard-block.pull-9.sidebar .view .attachment .view .view-content .views-row .views-field, body.page-booklists .dashboard-block.pull-9.sidebar .view .attachment .view .view-content .views-row .views-field, .section-activities .main .dashboard-block.view-activities-page- .view .attachment .view .view-content .views-row .views-field, .section-activities .main .dashboard-block.block-block .view .attachment .view .view-content .views-row .views-field {
+  float: left;
 }
 .block.dashboard-block .view .view-content, body.page-reviews .dashboard-block.pull-9.sidebar .view .view-content, body.page-booklists .dashboard-block.pull-9.sidebar .view .view-content, .section-activities .main .dashboard-block.view-activities-page- .view .view-content, .section-activities .main .dashboard-block.block-block .view .view-content {
   width: 50%;
