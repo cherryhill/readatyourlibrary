@@ -149,7 +149,7 @@ function play_library_program_field_widget_form_alter(&$element, &$form_state, $
 		if (module_exists('webform')) {
 			$webforms = _play_library_program_get_webforms();
 			foreach ($webforms as $webform) {
-				$options["webform_submit|{$webform->nid}"] = t('Respond to Webform', array('@webform' => $webform->title));
+				$options["webform_submit|{$webform->nid}"] = t('Survey participation', array('@webform' => $webform->title));
 			}
 		}
 		$element['value']['#type'] = 'select';

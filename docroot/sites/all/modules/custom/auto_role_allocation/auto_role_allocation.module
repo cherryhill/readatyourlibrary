@@ -19,6 +19,10 @@ function auto_role_allocation_block_info() {
         'info' => t('Progress'),
         'cache' => DRUPAL_NO_CACHE,
     );
+   $blocks['user_prize_block'] = array(
+        'info' => t('User Progress Page Block'),
+        'cache' => DRUPAL_NO_CACHE,
+    );
    return $blocks;
 }
 
@@ -35,9 +39,40 @@ function auto_role_allocation_block_view($block_name = '') {
     case 'progress-block':
             $block['subject'] = '';
             $block['content'] = user_progress();
-            break;                
+            break;
+    case 'user_prize_block':
+            $block['subject'] = '';
+            $block['content'] = progress_user_block();
+            break;                        
 	}
   return $block;
+}
+
+function progress_user_block() {
+	$output = '';
+	global $user;
+	$uid = $user->uid; 
+	$user_name = $user->name;
+	$query_state = db_select('eck_reward', 'er')
+    ->fields('er', array('title'))
+    ->condition('uid', $uid)
+    ->condition('type', 'reward_claim')
+    ->execute();
+  $result = $query_state->fetchAll();
+  //$prize_title = array();
+  $output = "<div class='main-wrapper'>".$user_name."</div>";
+  $output .= "<span class='prize-text'>PRIZES WON</span><span class='prize-title'><ol class='prize-title-list'>";
+  foreach ($result as $value) {
+  	$prize_title = $value->title;
+    
+    $output .= "<li>".$prize_title."</li>";
+  	
+  }
+$output .= "</ol></span>";
+
+return $output;
+
+  
 }
 
 function generate_staff_form($form, &$form_state) {
