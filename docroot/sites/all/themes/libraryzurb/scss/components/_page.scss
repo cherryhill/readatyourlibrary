@@ -322,27 +322,7 @@ body {
 	 			 	  	counter-reset: section;
 	 			 	  	.view-footer {
 	 			 	  		p {
-	 			 	  			text-align: center;
-	 			 	  			padding: 10px 0px;
-	 			 	  			background: $blue;
-	 			 	  			border-radius: 20px;
-	 			 	  			@extend .box-shadow;
-	 			 	  			a.button {
-	 			 	  				margin: 0px;
-	 			 	  				background: $blue !important;
-	 			 	  				color: $white;
-	 			 	  				font-size: 17px;
-	 			 	  				box-shadow: none !important;
-	 			 	  				border-radius: 0 !important;
-	 			 	  				padding: 0;
-	 			 	  				border: none;
-	 			 	  				@extend .white-text;
-	 			 	  				&:hover {
-	 			 	  					text-decoration: underline !important;
-	 			 	  				}
-
-	 			 	  			}
-	 			 	  		}
+	 			 	  			@extend .remove-button;	 			 	  		}
 	 			 	  	}
 	 			 	  	.view-empty {
 	 			 	  		font-size: 15px;
