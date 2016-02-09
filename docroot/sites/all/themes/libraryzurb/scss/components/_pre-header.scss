@@ -36,9 +36,11 @@
       @extend .no-border;
       background: transparent;
        li {
-          &.current {
-             position: relative;
-              &:before {
+          position: relative;
+          &:first-child {
+            content: " ";
+          }
+          &:before {
                   content: " > ";
                   width: 20px;
                   height: 20px;
@@ -49,6 +51,8 @@
                   position: absolute;
                   font-size: 17px;
                 }
+          &.current {
+             
              a {
                color: $black;
               

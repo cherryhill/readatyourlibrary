@@ -9935,10 +9935,13 @@ body.page-booklists .main .view-booklist-slideshow .owl-carousel .owl-buttons .o
   top: 10px;
   background: transparent;
 }
-.pre-header .pre-header-left .breadcurm ul li.current {
+.pre-header .pre-header-left .breadcurm ul li {
   position: relative;
 }
-.pre-header .pre-header-left .breadcurm ul li.current:before {
+.pre-header .pre-header-left .breadcurm ul li:first-child {
+  content: " ";
+}
+.pre-header .pre-header-left .breadcurm ul li:before {
   content: " > ";
   width: 20px;
   height: 20px;
