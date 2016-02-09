@@ -5,9 +5,11 @@ body {
 .block {
     margin-bottom: 35px;
     &.dashboard-block {
+    	@extend .orange-blue;
     	.view {
     		display: table;
     		width: 100%;
+    		padding: 12px 2.3%;
 	    	.attachment {
 	          width: 50%;
 	          display: table-cell;
@@ -43,7 +45,7 @@ body {
 	    	}
 	    	.item-list {
 	    		position: absolute;
-	    		top: 0;
+	    		top: -17px;
 	    		right: 4%;
 	    		display: block;
 	    		 .pagination {
@@ -150,23 +152,23 @@ body {
     	 }
     }
     &.dashboard-block {
-    	@extend .orange-blue;
+    	/* @extend .orange-blue; */
     	.view {
-    		width: 100%;
+    		/* width: 100%;
     		display: inline-block;
     		padding: 35px 4%;
-    		position: relative;
+    		position: relative; */
     		 .view-content {
-    		 	width: 50%;
-    		 	float: left;
+    		 	/* width: 50%;
+    		 	float: left; */
     		 	 .views-row {
     		 	 	.views-field-field-user-avatar {
-    		 	 		float: left;
-    		 	 		padding-right: 10px;
+    		 	 		/* float: left;
+    		 	 		padding-right: 10px; */
     		 	 	}
     		 	 	.views-field-name {
     		 	 		display: flex;
-    		 	 		height: 127px;
+    		 	 		height: 100%;
     		 	 		align-content: center;
     		 	 		align-items: center;
     		 	 		 a {
@@ -176,12 +178,12 @@ body {
     		 	 	}
     		 	 }
     		 }
-    		 .attachment-after {
+    		 /* .attachment-after {
     		 	width: 50%;
     		 	float: right;
-    		 }
+    		 } */
     	}
-    	.owl-carousel {
+    	/* .owl-carousel {
     		position: inherit !important;
     		.owl-controls {
     			position: absolute;
@@ -212,7 +214,7 @@ body {
     		   }
     		}
  
-    	}
+    	} */
     }
 	&.block-user-login {
 		 @extend .orange-blue;

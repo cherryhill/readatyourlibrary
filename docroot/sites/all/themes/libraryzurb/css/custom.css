@@ -6676,6 +6676,7 @@ a.th {
 .block.dashboard-block .view, body.page-reviews .dashboard-block.pull-9.sidebar .view, body.page-booklists .dashboard-block.pull-9.sidebar .view, .section-activities .main .dashboard-block.view-activities-page- .view, .section-activities .main .dashboard-block.block-block .view {
   display: table;
   width: 100%;
+  padding: 12px 2.3%;
 }
 .block.dashboard-block .view .attachment, body.page-reviews .dashboard-block.pull-9.sidebar .view .attachment, body.page-booklists .dashboard-block.pull-9.sidebar .view .attachment, .section-activities .main .dashboard-block.view-activities-page- .view .attachment, .section-activities .main .dashboard-block.block-block .view .attachment {
   width: 50%;
@@ -6707,7 +6708,7 @@ a.th {
 }
 .block.dashboard-block .view .item-list, body.page-reviews .dashboard-block.pull-9.sidebar .view .item-list, body.page-booklists .dashboard-block.pull-9.sidebar .view .item-list, .section-activities .main .dashboard-block.view-activities-page- .view .item-list, .section-activities .main .dashboard-block.block-block .view .item-list {
   position: absolute;
-  top: 0;
+  top: -17px;
   right: 4%;
   display: block;
 }
@@ -6799,55 +6800,67 @@ a.th {
   color: #000;
   font-size: 17px;
 }
+.block.dashboard-block, body.page-reviews .dashboard-block.pull-9.sidebar, body.page-booklists .dashboard-block.pull-9.sidebar, .section-activities .main .dashboard-block.view-activities-page-, .section-activities .main .dashboard-block.block-block {
+  /* @extend .orange-blue; */
+    	/* .owl-carousel {
+    		position: inherit !important;
+    		.owl-controls {
+    			position: absolute;
+    			top: -50px;
+    			right: 0;
+    			 .owl-pagination {
+                              .owl-page {
+                              	   &.active {
+                                      span {
+                                      	background: $orange;
+                                      }
+                              	   }
+	                              	span {
+	                              		opacity: 1;
+	                              		width: 20px;
+	                              		height: 20px;
+	                              		background: $white;
+	                              	}
+                              }
+		            		}
+    			.owl-buttons {
+    				display: none;
+    			}
+    		}
+    		.owl-item {
+    			h2 {
+    			display: none;
+    		   }
+    		}
+ 
+    	} */
+}
 .block.dashboard-block .view, body.page-reviews .dashboard-block.pull-9.sidebar .view, body.page-booklists .dashboard-block.pull-9.sidebar .view, .section-activities .main .dashboard-block.view-activities-page- .view, .section-activities .main .dashboard-block.block-block .view {
-  width: 100%;
+  /* width: 100%;
   display: inline-block;
   padding: 35px 4%;
-  position: relative;
+  position: relative; */
+  /* .attachment-after {
+  	width: 50%;
+  	float: right;
+  } */
 }
 .block.dashboard-block .view .view-content, body.page-reviews .dashboard-block.pull-9.sidebar .view .view-content, body.page-booklists .dashboard-block.pull-9.sidebar .view .view-content, .section-activities .main .dashboard-block.view-activities-page- .view .view-content, .section-activities .main .dashboard-block.block-block .view .view-content {
-  width: 50%;
-  float: left;
+  /* width: 50%;
+  float: left; */
 }
 .block.dashboard-block .view .view-content .views-row .views-field-field-user-avatar, body.page-reviews .dashboard-block.pull-9.sidebar .view .view-content .views-row .views-field-field-user-avatar, body.page-booklists .dashboard-block.pull-9.sidebar .view .view-content .views-row .views-field-field-user-avatar, .section-activities .main .dashboard-block.view-activities-page- .view .view-content .views-row .views-field-field-user-avatar, .section-activities .main .dashboard-block.block-block .view .view-content .views-row .views-field-field-user-avatar {
-  float: left;
-  padding-right: 10px;
+  /* float: left;
+  padding-right: 10px; */
 }
 .block.dashboard-block .view .view-content .views-row .views-field-name, body.page-reviews .dashboard-block.pull-9.sidebar .view .view-content .views-row .views-field-name, body.page-booklists .dashboard-block.pull-9.sidebar .view .view-content .views-row .views-field-name, .section-activities .main .dashboard-block.view-activities-page- .view .view-content .views-row .views-field-name, .section-activities .main .dashboard-block.block-block .view .view-content .views-row .views-field-name {
   display: flex;
-  height: 127px;
+  height: 100%;
   align-content: center;
   align-items: center;
 }
 .block.dashboard-block .view .view-content .views-row .views-field-name a, body.page-reviews .dashboard-block.pull-9.sidebar .view .view-content .views-row .views-field-name a, body.page-booklists .dashboard-block.pull-9.sidebar .view .view-content .views-row .views-field-name a, .section-activities .main .dashboard-block.view-activities-page- .view .view-content .views-row .views-field-name a, .section-activities .main .dashboard-block.block-block .view .view-content .views-row .views-field-name a {
   color: #fff;
-}
-.block.dashboard-block .view .attachment-after, body.page-reviews .dashboard-block.pull-9.sidebar .view .attachment-after, body.page-booklists .dashboard-block.pull-9.sidebar .view .attachment-after, .section-activities .main .dashboard-block.view-activities-page- .view .attachment-after, .section-activities .main .dashboard-block.block-block .view .attachment-after {
-  width: 50%;
-  float: right;
-}
-.block.dashboard-block .owl-carousel, body.page-reviews .dashboard-block.pull-9.sidebar .owl-carousel, body.page-booklists .dashboard-block.pull-9.sidebar .owl-carousel, .section-activities .main .dashboard-block.view-activities-page- .owl-carousel, .section-activities .main .dashboard-block.block-block .owl-carousel {
-  position: inherit !important;
-}
-.block.dashboard-block .owl-carousel .owl-controls, body.page-reviews .dashboard-block.pull-9.sidebar .owl-carousel .owl-controls, body.page-booklists .dashboard-block.pull-9.sidebar .owl-carousel .owl-controls, .section-activities .main .dashboard-block.view-activities-page- .owl-carousel .owl-controls, .section-activities .main .dashboard-block.block-block .owl-carousel .owl-controls {
-  position: absolute;
-  top: -50px;
-  right: 0;
-}
-.block.dashboard-block .owl-carousel .owl-controls .owl-pagination .owl-page.active span, body.page-reviews .dashboard-block.pull-9.sidebar .owl-carousel .owl-controls .owl-pagination .owl-page.active span, body.page-booklists .dashboard-block.pull-9.sidebar .owl-carousel .owl-controls .owl-pagination .owl-page.active span, .section-activities .main .dashboard-block.view-activities-page- .owl-carousel .owl-controls .owl-pagination .owl-page.active span, .section-activities .main .dashboard-block.block-block .owl-carousel .owl-controls .owl-pagination .owl-page.active span {
-  background: #f6511d;
-}
-.block.dashboard-block .owl-carousel .owl-controls .owl-pagination .owl-page span, body.page-reviews .dashboard-block.pull-9.sidebar .owl-carousel .owl-controls .owl-pagination .owl-page span, body.page-booklists .dashboard-block.pull-9.sidebar .owl-carousel .owl-controls .owl-pagination .owl-page span, .section-activities .main .dashboard-block.view-activities-page- .owl-carousel .owl-controls .owl-pagination .owl-page span, .section-activities .main .dashboard-block.block-block .owl-carousel .owl-controls .owl-pagination .owl-page span {
-  opacity: 1;
-  width: 20px;
-  height: 20px;
-  background: #fff;
-}
-.block.dashboard-block .owl-carousel .owl-controls .owl-buttons, body.page-reviews .dashboard-block.pull-9.sidebar .owl-carousel .owl-controls .owl-buttons, body.page-booklists .dashboard-block.pull-9.sidebar .owl-carousel .owl-controls .owl-buttons, .section-activities .main .dashboard-block.view-activities-page- .owl-carousel .owl-controls .owl-buttons, .section-activities .main .dashboard-block.block-block .owl-carousel .owl-controls .owl-buttons {
-  display: none;
-}
-.block.dashboard-block .owl-carousel .owl-item h2, body.page-reviews .dashboard-block.pull-9.sidebar .owl-carousel .owl-item h2, body.page-booklists .dashboard-block.pull-9.sidebar .owl-carousel .owl-item h2, .section-activities .main .dashboard-block.view-activities-page- .owl-carousel .owl-item h2, .section-activities .main .dashboard-block.block-block .owl-carousel .owl-item h2 {
-  display: none;
 }
 .block.block-user-login .block-title, body.page-reviews .block-user-login.pull-9.sidebar .block-title, body.page-booklists .block-user-login.pull-9.sidebar .block-title, .section-activities .main .block-user-login.view-activities-page- .block-title, .section-activities .main .block-user-login.block-block .block-title {
   padding-left: 11.5%;
