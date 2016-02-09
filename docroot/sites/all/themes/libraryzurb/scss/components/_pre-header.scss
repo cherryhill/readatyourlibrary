@@ -9,6 +9,7 @@
   padding: 3px 12px 19px 0px;
   display: inline-block;
 
+
   a {
     color: $color_gray_light;
     padding: 0 5px;
@@ -25,6 +26,49 @@
 
   .pre-header-left {
     padding: 0;
+      .breadcurm {
+    width: 30%;
+    float: left;
+     ul {
+      margin: 0;
+      position: relative;
+      top: 10px;
+      @extend .no-border;
+      background: transparent;
+       li {
+          &.current {
+             position: relative;
+              &:before {
+                  content: " > ";
+                  width: 20px;
+                  height: 20px;
+                  text-align: center;
+                  color: $black;
+                  left: -30px;
+                  top: 0;
+                  position: absolute;
+                  font-size: 17px;
+                }
+             a {
+               color: $black;
+              
+               
+             }
+          }
+         a {
+          color: $blue;
+          @extend .arial-regular;
+          text-transform: capitalize;
+          font-size: 17px;
+          float: left;
+         }
+       }
+     }
+   }
+   .top-menu {
+    width: 70%;
+    float: right;
+   }
       section {
         .view {
           .view-content {

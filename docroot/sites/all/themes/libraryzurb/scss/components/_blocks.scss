@@ -24,6 +24,9 @@ body {
 	    		width: 50%;
 	    		float: right;
 	    		display: table-cell;
+	    		table {
+	    			float: right;
+	    		}
 	    		table, table tr.even, table tr.alt, table tr:nth-of-type(2n) {
 	    			background: none !important;
 	    			@extend .no-border;
@@ -41,7 +44,7 @@ body {
 	    	.item-list {
 	    		position: absolute;
 	    		top: 0;
-	    		right: 12%;
+	    		right: 4%;
 	    		display: block;
 	    		 .pagination {
 	    		 	li {

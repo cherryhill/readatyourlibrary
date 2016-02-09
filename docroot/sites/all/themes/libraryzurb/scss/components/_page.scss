@@ -1,5 +1,6 @@
 body {
 	-webkit-font-smoothing: antialiased;
+	color: $black;
 	
 	.main {
 		margin-top: -5px;
@@ -651,6 +652,13 @@ body {
      	right: 69.4%;
      	padding-left: 2.65%;
      	padding-right: 2.65%;
+     	@extend .block;
+     }
+     .pull-9.sidebar2 {
+       width: 29.53%;
+       right: 71.4%;
+       padding-left: 0;
+       padding-right: 0;
      }
 
   	 .sidebar {
@@ -906,7 +914,7 @@ body {
 	  	 					 	 		width: 100%;
 	  	 					 	 		display: table-row; 
 	  	 					 	 		@extend .arial-regular;
-	  	 					 	 		padding-top: 23px;
+	  	 					 	 		padding-top: 16px;
 
 	  	 					 	 	}
 	  	 					 	 	&.field-name-field-avatar-image {
@@ -978,8 +986,8 @@ body {
 	  	 					 		  }
 	  	 					 	}
 	  	 					 }
-	  	 					 &.views-field-body , &.views-field-nothing {
-	  	 					 	padding-top: 23px;
+	  	 					 &.views-field-body {
+	  	 					 	padding-top: 15px;
 	  	 					 }
 	  	 					 &.views-field-nothing,&.views-field-body {
 	  	 					 	width: 70%;
@@ -1123,13 +1131,14 @@ body {
 	  			 	width: 70%;
 	  			 	float: left;
 	  			 	margin-top: 20px;
+	  			 	font-size: 17px;
 	  			 	@extend .arial-regular;
 
 	  			 	  div {
 	  			 	  	float: left;
 	  			 	  	color: $black;
 	  			 	  	 &:first-child {
-	  			 	  	 	width: 100px;
+	  			 	  	 	padding-right: 5px;
 	  			 	  	 }
 	  			 	  	 &.field-name-field-avatar-image {
 	  			 	  	 	position: relative;
@@ -1137,6 +1146,7 @@ body {
 	  			 	  	 	 img {
 	  			 	  	 	 	@extend .box-shadow;
 	  			 	  	 	 	margin-right: 5px;
+	  			 	  	 	 	margin-left: 5px;
 	  			 	  	 	 }
 	  			 	  	 }
 	  			 	  	 a.username {
@@ -1172,7 +1182,7 @@ body {
 	  			 .owl-buttons {
 	  			 	width: 100%;
 	  			 	position: absolute;
-	  			 	top: 30%;
+	  			 	top: 40%;
 	  			 	 .owl-prev {
 	  			 	 	float: left;
 	  			 	 	visibility: hidden;

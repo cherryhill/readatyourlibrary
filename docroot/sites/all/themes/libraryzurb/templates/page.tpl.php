@@ -12,7 +12,8 @@
   	  <section class="row" id="topmostbranding">
 		  <div id="citylinks" class="pre-header-left large-12 small-12 medium-12 columns">
 			  <?php if (!empty($page['citylinks'])): ?>
-			  	<?php print render($page['citylinks']); ?>
+          <div class="breadcurm"> <?php if ($breadcrumb): print $breadcrumb; endif; ?> </div>
+			  	<div class="top-menu"><?php print render($page['citylinks']); ?></div>
 			  <?php endif; ?>
 		  </div>
 	  </section>
@@ -122,9 +123,7 @@
       <?php endif; ?>
 
       <a id="main-content"></a>
-
-<!--      <?php if ($breadcrumb): print $breadcrumb; endif; ?>  -->
-
+    
       <?php print render($title_prefix); ?>
       <?php if ($title): ?>
         <h1 id="page-title" class="title"><?php print $title; ?></h1>
@@ -161,9 +160,18 @@
 
     <?php if (!empty($page['sidebar_first'])): ?>
       <aside role="complementary" class="<?php print $sidebar_first_grid; ?> sidebar-first columns sidebar">
-        <?php print render($page['sidebar_first']); ?>
+        <div class='first'><?php print render($page['sidebar_first']); ?> </div>
+        <?php //print render($page['login_form']); ?>
       </aside>
     <?php endif; ?>
+
+    <?php if (!empty($page['login_form'])): ?>
+      <aside role="complementary" class="<?php print $sidebar_first_grid; ?> sidebar-first columns sidebar2">
+        <div class='first'><?php print render($page['login_form']); ?> </div>
+        <?php //print render($page['login_form']); ?>
+      </aside>
+    <?php endif; ?>
+
 
     <?php if (!empty($page['sidebar_second'])): ?>
       <aside role="complementary" class="<?php print $sidebar_sec_grid; ?> sidebar-second columns sidebar">
