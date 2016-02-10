@@ -6367,11 +6367,11 @@ a.th {
   background: #fdeb52;
 }
 
-.like, body.page-user-profile .homebox .portlet-content .view .view-content .views-field-count .views-label-count, body.page-reviews .main .view-content .item-list ol li .views-field.views-field-count .views-label-count, body.page-booklists .main .view-content .item-list ol li .views-field-count .views-label-count, .section-activities .sidebar .block-views .views-field-count .views-label {
+.like, body.page-user-profile .homebox .portlet-content .view .view-content .views-field-count .views-label-count, body.page-reviews .main .view-content .item-list ol li .views-field.views-field-count .views-label-count, body.page-booklists .main .view-content .item-list ol li .views-field-count .views-label-count, body.page-booklists .main .view-booklist-slideshow .owl-carousel .views-field-count span.views-label, .section-activities .sidebar .block-views .views-field-count .views-label {
   position: relative;
   padding-right: 34px;
 }
-.like:after, body.page-user-profile .homebox .portlet-content .view .view-content .views-field-count .views-label-count:after, body.page-reviews .main .view-content .item-list ol li .views-field.views-field-count .views-label-count:after, body.page-booklists .main .view-content .item-list ol li .views-field-count .views-label-count:after, .section-activities .sidebar .block-views .views-field-count .views-label:after {
+.like:after, body.page-user-profile .homebox .portlet-content .view .view-content .views-field-count .views-label-count:after, body.page-reviews .main .view-content .item-list ol li .views-field.views-field-count .views-label-count:after, body.page-booklists .main .view-content .item-list ol li .views-field-count .views-label-count:after, body.page-booklists .main .view-booklist-slideshow .owl-carousel .views-field-count span.views-label:after, .section-activities .sidebar .block-views .views-field-count .views-label:after {
   content: "";
   width: 30px;
   height: 30px;
@@ -7188,7 +7188,7 @@ button:hover,
   background: #f7fc63 !important;
   color: #000;
   outline: none;
-  text-decoration: none !important;
+  text-decoration: none;
 }
 button:focus, button.active,
 .button:focus,
@@ -7208,13 +7208,13 @@ button a:hover,
   outline: none;
   color: #000;
   background: #f7fc63 !important;
-  text-decoration: none !important;
+  text-decoration: none;
 }
 button a:focus, button a.active,
 .button a:focus,
 .button a.active {
   outline: none;
-  text-decoration: none !important;
+  text-decoration: none;
   color: #000;
   background: #f0f811 !important;
 }
@@ -8694,7 +8694,6 @@ body {
 body {
   -webkit-font-smoothing: antialiased;
   color: #000;
-  background: #fff;
   /**css for reward page***/
   /**common css for dashboard**/
   /**css for msg center**/
@@ -8940,9 +8939,10 @@ body.page-user-profile .homebox .portlet-content .view.view-booklist-on-activiti
   width: 100%;
   display: inline-block;
   margin: 0;
+  padding: 7px 22px;
 }
 body.page-user-profile .homebox .portlet-content .view.view-booklist-on-activities-page .view-footer p a:hover {
-  text-decoration: underline;
+  text-decoration: underline !important;
 }
 body.page-user-profile .homebox .portlet-content .view.view-booklist-on-activities-page .view-header h3 {
   font-size: 15px;
@@ -8970,9 +8970,10 @@ body.page-user-profile .homebox .portlet-content .view.view-my-book-reviews .vie
   display: inline-block;
   font-size: 17px;
   margin: 0;
+  padding: 7px 22px;
 }
 body.page-user-profile .homebox .portlet-content .view.view-my-book-reviews .view-footer p a:hover {
-  text-decoration: underline;
+  text-decoration: underline !important;
 }
 body.page-user-profile .homebox .portlet-content .view.view-my-book-reviews .view-empty {
   font-size: 15px;
@@ -9382,6 +9383,9 @@ body.page-reviews .main .view-content .item-list ol li .views-field.views-field-
 body.page-reviews .main .view-content .item-list ol li .views-field.views-field-nothing div {
   float: left;
 }
+body.page-reviews .main .view-content .item-list ol li .views-field.views-field-nothing div.user {
+  padding-left: 5px;
+}
 body.page-reviews .main .view-content .item-list ol li .views-field.views-field-nothing div.date {
   width: 100%;
   display: table-row;
@@ -9390,7 +9394,8 @@ body.page-reviews .main .view-content .item-list ol li .views-field.views-field-
 body.page-reviews .main .view-content .item-list ol li .views-field.views-field-nothing div.field-name-field-avatar-image {
   position: relative;
   height: 41px;
-  padding: 5px;
+  padding-left: 5px;
+  padding-top: 5px;
   bottom: 19px;
 }
 body.page-reviews .main .view-content .item-list ol li .views-field.views-field-nothing div.field-name-field-avatar-image img {
@@ -9569,18 +9574,7 @@ body.page-booklists .main .view-booklist-slideshow .owl-carousel .views-field-co
   position: relative;
 }
 body.page-booklists .main .view-booklist-slideshow .owl-carousel .views-field-count span.views-label {
-  padding-right: 35px;
-}
-body.page-booklists .main .view-booklist-slideshow .owl-carousel .views-field-count span.views-label:after {
-  content: "";
-  width: 35px;
-  height: 35px;
-  display: block;
-  visibility: visible;
-  position: absolute;
-  top: 0;
-  right: -3px;
-  background: url("../images/libraryzurb/smily-white.png") no-repeat;
+  padding-right: 40px;
 }
 body.page-booklists .main .view-booklist-slideshow .owl-carousel .owl-pagination {
   display: none;

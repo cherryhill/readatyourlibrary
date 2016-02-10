@@ -1,7 +1,6 @@
 body {
 	-webkit-font-smoothing: antialiased;
 	color: $black;
-	background: $white;
 	
 	.main {
 		margin-top: -5px;
@@ -293,9 +292,10 @@ body {
 	 			 	  				width: 100%;
 	 			 	  				display: inline-block;
 	 			 	  				margin: 0;
+	 			 	  				padding: 7px 22px;
 	 			 	  				@extend .blue-button;
 	 			 	  				 &:hover {
-	 			 	  				 	text-decoration: underline;
+	 			 	  				 	text-decoration: underline !important;
 	 			 	  				 }
 	 			 	  			}
 	 			 	  		}
@@ -339,9 +339,10 @@ body {
 	 			 	  			 	display: inline-block;
 	 			 	  			 	font-size: 17px;
 	 			 	  			 	margin: 0;
+	 			 	  			 	padding: 7px 22px;
 	 			 	  			 	 @extend .blue-button;
 	 			 	  			 	  &:hover {
-	 			 	  			 	  	text-decoration: underline;
+	 			 	  			 	  	text-decoration: underline !important;
 	 			 	  			 	  }
 	 			 	  			 	} 			 	  		
 	 			 	  		}
@@ -911,6 +912,9 @@ body {
 	  	 					 &.views-field-nothing {
 	  	 					 	 div {
 	  	 					 	 	 float: left; 
+	  	 					 	 	&.user {
+	  	 					 	 		padding-left: 5px;
+	  	 					 	 	}
 	  	 					 	 	&.date {
 	  	 					 	 		width: 100%;
 	  	 					 	 		display: table-row; 
@@ -921,7 +925,8 @@ body {
 	  	 					 	 	&.field-name-field-avatar-image {
 	  	 					 	 		position: relative;
 	  	 					 	 		height: 41px;
-	  	 					 	 		padding: 5px;
+	  	 					 	 		padding-left: 5px;
+	  	 					 	 		padding-top: 5px;
 	  	 					 	 		bottom: 19px;
 
 	  	 					 	 		img {
@@ -1169,11 +1174,8 @@ body {
 	  			 	  	color: $black;
 	  			 	  	position: relative;
 	  			 	  	 &.views-label {
-	  			 	  	 	padding-right: 35px;
-	  			 	  	 	  &:after {
-	  			 	            @include previous(35px, 35px, $top: 0, $right: -3px);
-	 	    		 	 	 	background: url('../images/libraryzurb/smily-white.png') no-repeat;
-	  			 	  	 	  }
+	  			 	  	 	padding-right: 40px;
+	  			 	  	 	@extend .like;
 	  			 	  	 }
 	  			 	  }
 	  			 }
