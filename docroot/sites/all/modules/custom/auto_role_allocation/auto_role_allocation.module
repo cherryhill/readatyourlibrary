@@ -49,29 +49,51 @@ function auto_role_allocation_block_view($block_name = '') {
 }
 
 function progress_user_block() {
-	$output = '';
 	global $user;
-	$uid = $user->uid; 
-	$user_name = $user->name;
-	$query_state = db_select('eck_reward', 'er')
-    ->fields('er', array('title'))
-    ->condition('uid', $uid)
-    ->condition('type', 'reward_claim')
-    ->execute();
-  $result = $query_state->fetchAll();
-  //$prize_title = array();
-  $output = "<div class='main-wrapper'>".$user_name."</div>";
-  $output .= "<span class='prize-text'>PRIZES WON</span><span class='prize-title'><ol class='prize-title-list'>";
-  foreach ($result as $value) {
-  	$prize_title = $value->title;
-    
-    $output .= "<li>".$prize_title."</li>";
-  	
+  $uid = $user->uid;
+  $count_query = db_query("SELECT COUNT(image_url) as image_url
+     FROM {calendar} c
+    WHERE c.uid = :uid",array(':uid' => $uid))->fetchAll();
+  $total_read_days = $count_query[0]->image_url;
+
+  // get all rewards
+  $qry = db_select('field_data_field_activity_fired_hook', 'fh');
+  $qry->join('field_data_field_activity_points', 'ap', 'ap.entity_id = fh.entity_id');
+  $qry->Join('field_data_field_reward_criteria_activity', 'rca', 'fh.entity_id = rca.field_reward_criteria_activity_target_id');
+  $qry->Join('field_data_field_reward_criteria_point_mark', 'rcpm', 'rca.entity_id = rcpm.entity_id');
+  $qry->fields('rcpm', array('field_reward_criteria_point_mark_value'));
+  $qry->fields('ap', array('field_activity_points_value'));
+  $qry->condition('fh.field_activity_fired_hook_value', 'node_update|node|sticker|updated');
+  $rs = $qry->execute()->fetchAll();
+  
+  $activity_point = 0;
+  $next_reward_in_days = 0;
+  $user_points = 0;
+  $closest_reward = 0;
+
+  foreach($rs as $v) {
+  	if (!$activity_point) {
+  		$activity_point = $v->field_activity_points_value;
+  		$user_points = $total_read_days * $activity_point;
+  	}
+
+  	$reward_point = $v->field_reward_criteria_point_mark_value;
+  	if ($reward_point > $user_points) {
+      if(!$closest_reward) {
+      	$closest_reward = $reward_point;
+      } else {
+      	if($reward_point < $closest_reward) {
+      		$closest_reward = $reward_point;
+      	}
+      }
+  	}
   }
-$output .= "</ol></span>";
 
-return $output;
+  $reads_for_next_reward = ($closest_reward / $activity_point) - $total_read_days;
 
+  $msg .= "$reads_for_next_reward more reads needed to receive your next prize";
+
+  return "<div>$msg</div>";
   
 }
 
@@ -180,7 +202,7 @@ else {
         $response = array(
           "result"  =>  1
         );
-        $node = node_load(495);
+        $node = node_load(495);//495
         //auto_role_allocation_node_update($current_node);
         /* this is for calendar activity*/
         $hook = "node_update|node|{$node->type}|updated";
