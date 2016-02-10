@@ -1,6 +1,7 @@
 body {
 	-webkit-font-smoothing: antialiased;
 	color: $black;
+	background: $white;
 	
 	.main {
 		margin-top: -5px;
@@ -286,7 +287,17 @@ body {
 	 			 	  	counter-reset: section;
 	 			 	  	.view-footer {
 	 			 	  		p {
-	 			 	  			@extend .remove-button;
+	 			 	  			text-align: center;
+	 			 	  			a {
+	 			 	  				font-size: 17px;
+	 			 	  				width: 100%;
+	 			 	  				display: inline-block;
+	 			 	  				margin: 0;
+	 			 	  				@extend .blue-button;
+	 			 	  				 &:hover {
+	 			 	  				 	text-decoration: underline;
+	 			 	  				 }
+	 			 	  			}
 	 			 	  		}
 	 			 	  	}
 	 			 	  	.view-header {
@@ -322,7 +333,18 @@ body {
 	 			 	  	counter-reset: section;
 	 			 	  	.view-footer {
 	 			 	  		p {
-	 			 	  			@extend .remove-button;	 			 	  		}
+	 			 	  			text-align: center;
+	 			 	  			 a {
+	 			 	  			 	width: 100%;
+	 			 	  			 	display: inline-block;
+	 			 	  			 	font-size: 17px;
+	 			 	  			 	margin: 0;
+	 			 	  			 	 @extend .blue-button;
+	 			 	  			 	  &:hover {
+	 			 	  			 	  	text-decoration: underline;
+	 			 	  			 	  }
+	 			 	  			 	} 			 	  		
+	 			 	  		}
 	 			 	  	}
 	 			 	  	.view-empty {
 	 			 	  		font-size: 15px;
@@ -389,7 +411,15 @@ body {
 		 			 	  	}
 		 			 	  	.view-footer {
 		 			 	  		div {
-		 			 	  			@extend .remove-button;
+		 			 	  			text-align: center;
+		 			 	  			margin-bottom: 10px;
+		 			 	  			  a {
+		 			 	  			  	 width: 100%;
+		 			 	  			  	 display: inline-block;
+		 			 	  			  	 font-size: 17px;
+		 			 	  			  	 padding: 11px 22px;
+		 			 	  			  	 @extend .blue-button;
+		 			 	  			  }
 		 			 	  		}
 		 			 	  	}
 	 			 	  }
