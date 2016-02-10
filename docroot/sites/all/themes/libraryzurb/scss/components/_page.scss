@@ -291,7 +291,11 @@ body {
 	 			 	  				font-size: 17px;
 	 			 	  				width: 100%;
 	 			 	  				display: inline-block;
+	 			 	  				margin: 0;
 	 			 	  				@extend .blue-button;
+	 			 	  				 &:hover {
+	 			 	  				 	text-decoration: underline;
+	 			 	  				 }
 	 			 	  			}
 	 			 	  		}
 	 			 	  	}
@@ -333,8 +337,13 @@ body {
 	 			 	  			 	width: 100%;
 	 			 	  			 	display: inline-block;
 	 			 	  			 	font-size: 17px;
+	 			 	  			 	margin: 0;
 	 			 	  			 	 @extend .blue-button;
-	 			 	  			 	} 			 	  		}
+	 			 	  			 	  &:hover {
+	 			 	  			 	  	text-decoration: underline;
+	 			 	  			 	  }
+	 			 	  			 	} 			 	  		
+	 			 	  		}
 	 			 	  	}
 	 			 	  	.view-empty {
 	 			 	  		font-size: 15px;
@@ -407,6 +416,7 @@ body {
 		 			 	  			  	 width: 100%;
 		 			 	  			  	 display: inline-block;
 		 			 	  			  	 font-size: 17px;
+		 			 	  			  	 padding: 11px 22px;
 		 			 	  			  	 @extend .blue-button;
 		 			 	  			  }
 		 			 	  		}
