@@ -42,18 +42,18 @@ function _reward_claim_onscreen_message() {
 	global $user;
 	$uid = $user->uid;
 
-	$query = db_select('reward_notification','noti')
-	  ->fields('noti',array('uid','reward_notifications','notifications_read'))
+	$query = db_select('reward_notification_patron','noti')
+	  ->fields('noti',array('uid','reward_notification_patron','notifications_read'))
 	  ->condition('uid',$uid,'=')
 	  ->execute()
 	  ->fetchAll();
 
 	foreach($query as $res){
 		$reward_uid = $res->uid;
-		$reward_notifications = $res->reward_notifications;
+		$reward_notification_patron = $res->reward_notification_patron;
 		$read = $res->notifications_read;
 
-  	$pieces = explode("<p>", $reward_notifications);
+  	$pieces = explode("<p>", $reward_notification_patron);
 		$rew_msg = $pieces['1'];
 		$removing_p_tag = explode("</p>", $rew_msg);
 		$rew_message = $removing_p_tag['0'];
@@ -62,7 +62,7 @@ function _reward_claim_onscreen_message() {
 			drupal_set_message(t('%string', array('%string' => $rew_message)), 'status');
 		}
 
-		$sub_query = db_update('reward_notification')
+		$sub_query = db_update('reward_notification_patron')
 		->fields(array('notifications_read' => '1'))
 		->condition('uid',$uid,'=')
 		->execute();
@@ -105,13 +105,15 @@ function claim_reward($form_state,$arg){
 	$reward_id = $query['id'];
 
 	$query_sub = db_select('winner_list','win')
-	->fields('win',array('reward_status','staff_notes'))
+	->fields('win',array('reward_status','staff_notes','reward_receieved_date'))
 	->condition('reward_id',$reward_id,'=')
 	->execute()
 	->fetchAssoc();
 
 	$status = $query_sub['reward_status'];
 	$notes = $query_sub['staff_notes'];
+	$receieved_date = $query_sub['reward_receieved_date'];
+
 
 	$form['reward_taken'] = array(
 	   '#title' => t($reward_title),
@@ -133,6 +135,13 @@ function claim_reward($form_state,$arg){
 	  '#type' => 'hidden',
 	  '#value' => $reward_title,
 	);
+
+	$form['receieved_date'] = array( 
+    '#type' => 'date_popup', 
+    '#date_format' => 'Y-m-d',
+    '#title' => "Receieved" ,
+    '#default_value' => isset($receieved_date) ? $receieved_date : NULL,
+  ); 
 
 	$form['staff_notes'] = array(
 	   '#title' => t('Staff Notes'),
@@ -156,6 +165,8 @@ function claim_reward_submit($form, &$form_state){
 	$reward_uid = $form_state['values']['uid'];
 	$staff_notes = $form_state['values']['staff_notes'];
 	$reward_rid = $form_state['values']['rid'];
+	$reward_receieved_date = $form_state['values']['receieved_date'];
+
 
 	$query = db_select('winner_list','win')
 	->fields('win',array('reward_id'))
@@ -173,6 +184,7 @@ function claim_reward_submit($form, &$form_state){
 			'staff_notes' => $staff_notes,
 			'reward_name' => $reward_title,
 			'reward_status' => $reward_status,
+			'reward_receieved_date' => $reward_receieved_date,
 			))->execute();
 
 		drupal_set_message("saved");
