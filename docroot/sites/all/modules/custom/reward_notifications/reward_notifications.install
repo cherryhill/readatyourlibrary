@@ -2,7 +2,7 @@
 
 function reward_notifications_schema(){
 /* schema for reward notification on screen */
-$schema['reward_notification'] = array(
+$schema['reward_notification_patron'] = array(
 			'description' => 'On Screen message when a user gets an award',
 			'fields' => array(
 					'id' => array(
@@ -64,6 +64,11 @@ $schema['reward_notification'] = array(
 				'description' => 'Id of reward claimed',
 				'type' => 'int',
 				'not null' => TRUE,
+				),
+	    'reward_receieved_date' => array(
+				'description' => 'Date the reward is receieved',
+				'type' => 'varchar',
+				'length' => '255',
 				),
 	    'staff_notes' => array(
 				'description' => 'Staff notes',
