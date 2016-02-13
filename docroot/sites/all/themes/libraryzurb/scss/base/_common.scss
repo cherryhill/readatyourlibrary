@@ -219,3 +219,59 @@
 	-o-transition-property: -o-transform;
 	transition-property: transform; 
 }
+.pagination.pager {
+	float: right;
+	 li {
+	 	border-left: 1px solid #fff;
+	 	padding: 0;
+	 	  a {
+	 	  	background: $orange;
+	 	  	padding: 5px 10px;
+	 	  	color: $white;
+	 	  	text-decoration: none;
+	 	  	 &:hover {
+	 	  	 	background: $blue;
+	 	  	 }
+	 	  }
+	 	  &.current {
+	 	  	 a {
+	 	  	 	background: $blue;
+	 	  	 }
+	 	  }
+	 	  &.arrow {
+	 	  	 &:nth-of-type(2) {
+	 	  	 	a {
+	 	  	 	color: transparent !important;
+	 	  	 	background: $orange url('../images/libraryzurb/left-arrow.png') no-repeat;
+	 	  	 	background-position: center 7px;
+	 	  	 	width: 31px;
+	 	  	 	height: 33px;
+	 	  	 	background-size: 18px;
+	 	  	 	border-radius: 12px 0px 0px 12px;
+	 	  	  }
+	 	  	  
+	 	  	 }
+	 	  	 &:nth-last-of-type(2) {
+	 	  	  	a {
+	 	  	    color: transparent !important;
+	 	  	 	background: $orange url('../images/libraryzurb/right-arrow.png') no-repeat;
+	 	  	 	background-position: center 4px;
+	 	  	 	width: 31px;
+	 	  	 	height: 33px;
+	 	  	 	background-size: 18px;
+	 	  	 	border-radius: 0px 12px 12px 0px;
+
+	 	  	  	}
+	 	  	  }
+	 	  	&.first, &.last {
+	 	  		display: none;
+	 	  	}
+	 	  }
+	 }
+}
+.views-row img {
+	border: none;
+	margin: 0;
+    padding: 0;
+    float: none;
+ }
