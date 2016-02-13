@@ -23,6 +23,10 @@ function auto_role_allocation_block_info() {
         'info' => t('User Progress Page Block'),
         'cache' => DRUPAL_NO_CACHE,
     );
+   $blocks['user_progress_for_program'] = array(
+        'info' => t('User Progress block for program'),
+        'cache' => DRUPAL_NO_CACHE,
+    );
    return $blocks;
 }
 
@@ -43,9 +47,63 @@ function auto_role_allocation_block_view($block_name = '') {
     case 'user_prize_block':
             $block['subject'] = '';
             $block['content'] = progress_user_block();
-            break;                        
+            break;
+    case 'user_progress_for_program':
+            $block['subject'] = '';
+            $block['content'] = progress_user_block_program();
+            break;                                
 	}
   return $block;
+}
+
+/* Progress block of user on program page */
+function progress_user_block_program() {
+   global $user, $base_url;
+  $uid = $user->uid;
+  $count_query = db_query("SELECT COUNT(image_url) as image_url
+     FROM {calendar} c
+    WHERE c.uid = :uid",array(':uid' => $uid))->fetchAll();
+  $total_read_days = $count_query[0]->image_url;
+
+  // get all rewards
+  $qry = db_select('field_data_field_activity_fired_hook', 'fh');
+  $qry->join('field_data_field_activity_points', 'ap', 'ap.entity_id = fh.entity_id');
+  $qry->Join('field_data_field_reward_criteria_activity', 'rca', 'fh.entity_id = rca.field_reward_criteria_activity_target_id');
+  $qry->Join('field_data_field_reward_criteria_point_mark', 'rcpm', 'rca.entity_id = rcpm.entity_id');
+  $qry->fields('rcpm', array('field_reward_criteria_point_mark_value'));
+  $qry->fields('ap', array('field_activity_points_value'));
+  $qry->condition('fh.field_activity_fired_hook_value', 'node_update|node|sticker|updated');
+  $rs = $qry->execute()->fetchAll();
+  
+  $activity_point = 0;
+  $next_reward_in_days = 0;
+  $user_points = 0;
+  $closest_reward = 0;
+
+  foreach($rs as $v) {
+  	if (!$activity_point) {
+  		$activity_point = $v->field_activity_points_value;
+  		$user_points = $total_read_days * $activity_point;
+  	}
+
+  	$reward_point = $v->field_reward_criteria_point_mark_value;
+  	if ($reward_point > $user_points) {
+      if(!$closest_reward) {
+      	$closest_reward = $reward_point;
+      } else {
+      	if($reward_point < $closest_reward) {
+      		$closest_reward = $reward_point;
+      	}
+      }
+  	}
+  }
+
+  $reads_for_next_reward = ($closest_reward / $activity_point) - $total_read_days;
+
+  $msg = "<span class='msg-highlight'>Total days read: $total_read_days</span><br/>";
+  $msg .= "<div><a href='".$base_url."/progress'>Go to the Progress Page</a></div>";
+
+  return "<div>$msg</div>";
 }
 
 function progress_user_block() {
@@ -91,7 +149,7 @@ function progress_user_block() {
 
   $reads_for_next_reward = ($closest_reward / $activity_point) - $total_read_days;
 
-  $msg .= "$reads_for_next_reward more reads needed to receive your next prize";
+  $msg = "$reads_for_next_reward more reads needed to receive your next prize";
 
   return "<div>$msg</div>";
   
@@ -309,8 +367,8 @@ function user_progress() {
 
   $reads_for_next_reward = ($closest_reward / $activity_point) - $total_read_days;
 
-  $msg = "<span class='msg-highlight'>Total reads: $total_read_days</span><br/>";
-  $msg .= "$reads_for_next_reward more reads needed to receive your next prize";
+  $msg = "<span class='msg-highlight'>Total days read: $total_read_days</span><br/>";
+  $msg .= "$reads_for_next_reward more days read needed to receive your next prize";
 
   return "<div>$msg</div>";
 }
@@ -326,5 +384,6 @@ function auto_role_allocation_menu_alter(&$items) {
   }
   
 }
+
 
 
