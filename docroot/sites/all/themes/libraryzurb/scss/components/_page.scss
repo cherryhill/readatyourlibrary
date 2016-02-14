@@ -170,13 +170,79 @@ body {
 	}
 	/**css for program page***/
 	 &.section-programs {
+	 	 .pull-9.sidebar {
+     	width: 29.53%;
+     	right: 69.4%;
+     	padding-left: 2.65%;
+     	padding-right: 2.65%;
+     	@extend .block;
+     }
+     .pull-9.sidebar2 {
+       width: 29.53%;
+       right: 71.4%;
+       padding-left: 0;
+       padding-right: 0;
+     }
+      .sidebar {
+      	background: $blue;
+      	color: $white;
+      	padding-top: 25px;
+      	padding-bottom: 25px;
+      	border-radius: 20px;
+      	  .block {
+      	  	.block-title {
+      	  		color: $white;
+      	  		font-size: 22px;
+      	  		@extend .mclaren;
+      	  	}
+      	  	.view {
+      	  		.views-field-title {
+      	  			a {
+      	  				color: $white;
+      	  				font-size: 17px;
+      	  				@extend .arial-regular;
+      	  			}
+      	  		}
+      	  	}
+      	  	&.block-auto-role-allocation   {
+      	  		> div {
+      	  			display: inline-block;
+      	  			text-align: center;
+      	  			 > div {
+      	  			  a {
+      	  			  	@extend .yellow-button;
+      	  			  	width: 100%;
+      	  			  	display: inline-block;
+      	  			  	position: relative;
+      	  			  	margin-top: 80px;
+      	  			  }
+      	  			}
+      	  		}
+      	  		span {
+      	  			padding-left: 32%;
+      	  			@extend .arial-bold;
+      	  			font-size: 17px;
+      	  		}
+      	  		position: relative;
+      	  		
+      	  		&:before {
+      	  		@include previous(100px, 100px, $left: -16px, $top: 19px);
+      	  		 background: url('../images/libraryzurb/fi-calendar.svg') no-repeat;
+                 background-position: left;
+      	  	  }
+      	  	 
+      	  	}
+      	}
+      	 
+      }
+      .main {
 	 	 .current-program {
 		    	@extend .orange-blue;
 		    	 .view {
 
 		    	 	display: inline-block;
 		    	 	width: 100%;
-		    	 	padding: 10px 4% 25px;
+		    	 	padding: 10px 4%;
 		    	 	.view-content {
 		    	 		display: table;
 		    	 		width: 100%;
@@ -189,11 +255,13 @@ body {
 		    	 	       	  width: 20%;
 		    	 	       	  display: table-cell;
 		    	 	       	  vertical-align: middle;
+		    	 	       	  float: none !important;
 		    	 	       }
 		    	 	       &.views-field-body {
 		                      width: 78%;
 		                      padding-left: 2%;
 		                      display: table-cell;
+		                      float: none !important;
 		                      @extend .arial-regular;
 		                      font-size: 17px;
 
@@ -203,11 +271,14 @@ body {
 		    	 	       }
 		    	 	      }
 		    	 	}
-		        }
+		   		 }  
+		    
    		 }
    		 .view {
    		 	.view-header, .view-header p {
-   		 		font-size: 28px;
+   		 	  @media screen and (min-width: 980px) {
+   		 		font-size: 28px !important;
+   		 	}
    		 		@extend .mclaren;
    		 		color: $black;
    		 	}
@@ -217,6 +288,7 @@ body {
 	   		 		width: 100%;
 	   		 		 .views-field {
 	   		 		 	display: table-row;
+	   		 		 	padding-bottom: 23px;
 	   		 		 	 &.views-field-field-program-image {
 	   		 		 	 	width: 20%;
 	   		 		 	 	float: left;
@@ -227,9 +299,11 @@ body {
 
 	   		 		 	  }
 	   		 		 	  &.views-field-title {
+	   		 		 	  	padding-bottom: 23px;
 	   		 		 	  	a {
 	   		 		 	  		@extend .mclaren;
 	   		 		 	  		color: $orange;
+	   		 		 	  		font-size: 20px;
 	   		 		 	  	}
 	   		 		 	  }
 	   		 		 	  &.views-field-body {
@@ -246,6 +320,7 @@ body {
 	   		    }
    		 	}
    		 }
+	   	}
 	 }
 	/**common css for dashboard**/
 	 &.page-user-profile {
