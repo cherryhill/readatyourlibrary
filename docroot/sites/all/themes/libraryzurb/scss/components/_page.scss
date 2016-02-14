@@ -1,5 +1,47 @@
 body {
 	/**css for reward-winner page**/
+	&.admin-menu {
+		body, td, pre {
+			font-size: 17px !important;
+		}
+		.block-system {
+			form {
+				.form-textarea-wrapper {
+					table {
+						tbody {
+							tr {
+								td.mceIframeContainer {
+									position: relative; 
+								 	padding-bottom: 56.25%;
+								    height: 0; overflow:
+								    hidden; max-width: 100%;
+
+								    iframe, object, embed {
+								       position: absolute; 
+								       top: 0; 
+								       left: 0; 
+								       width: 100%; 
+								       height: 100%; 
+
+								    }
+								     iframe {
+								    	html {
+								    		background: $white !important;
+								    	}
+								    	body {
+								    		box-shadow: none !important;
+								    		max-width: 100% !important;
+								    		
+								    	}
+								    } 
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
 	&.page-reward-winners {
 		@extend .arial-regular;
 		#page-title {
