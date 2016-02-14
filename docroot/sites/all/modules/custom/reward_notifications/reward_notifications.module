@@ -96,7 +96,6 @@ function claim_reward($form_state,$arg){
 	$query = db_select('eck_reward','rew')
 	->fields('rew',array('title','id','uid'))
 	->condition('id',$rid,'=')
-	->condition('type','reward_claim','=')
 	->execute()
 	->fetchAssoc();
 
@@ -167,6 +166,11 @@ function claim_reward_submit($form, &$form_state){
 	$reward_rid = $form_state['values']['rid'];
 	$reward_receieved_date = $form_state['values']['receieved_date'];
 
+	if(isset($reward_receieved_date)){
+		$reward_status = '1';
+	}else{
+		$reward_status = '0';
+	}
 
 	$query = db_select('winner_list','win')
 	->fields('win',array('reward_id'))
@@ -193,10 +197,13 @@ function claim_reward_submit($form, &$form_state){
     	->fields(array(
     	'reward_status' => $reward_status,
     	'staff_notes' => $staff_notes,
+    	'reward_receieved_date' => $reward_receieved_date,
     	))
 	    ->condition('reward_id',$reward_rid,'=')
     	->execute();
 
 		drupal_set_message("saved");
   }
+
+  $form_state['redirect'] = 'reward-winners';
 }
