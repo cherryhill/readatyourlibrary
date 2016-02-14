@@ -168,6 +168,85 @@ body {
 	  		}
 	  	}
 	}
+	/**css for program page***/
+	 &.section-programs {
+	 	 .current-program {
+		    	@extend .orange-blue;
+		    	 .view {
+
+		    	 	display: inline-block;
+		    	 	width: 100%;
+		    	 	padding: 10px 4% 25px;
+		    	 	.view-content {
+		    	 		display: table;
+		    	 		width: 100%;
+		    	 	}
+		    	 	.views-row {
+		    	 		display: table-row;
+		    	 		width: 100%;
+		    	 	     .views-field {
+		    	 	       &.views-field-field-program-image {
+		    	 	       	  width: 20%;
+		    	 	       	  display: table-cell;
+		    	 	       	  vertical-align: middle;
+		    	 	       }
+		    	 	       &.views-field-body {
+		                      width: 78%;
+		                      padding-left: 2%;
+		                      display: table-cell;
+		                      @extend .arial-regular;
+		                      font-size: 17px;
+
+		    	 	       }
+		    	 	       &.views-field-title, &.views-field-field-sign-up {
+		    	 	         display: none;
+		    	 	       }
+		    	 	      }
+		    	 	}
+		        }
+   		 }
+   		 .view {
+   		 	.view-header, .view-header p {
+   		 		font-size: 28px;
+   		 		@extend .mclaren;
+   		 		color: $black;
+   		 	}
+   		 	.view-content {
+   		 		.views-row {
+	   		 		display: table;
+	   		 		width: 100%;
+	   		 		 .views-field {
+	   		 		 	display: table-row;
+	   		 		 	 &.views-field-field-program-image {
+	   		 		 	 	width: 20%;
+	   		 		 	 	float: left;
+	   		 		 	 }
+	   		 		 	  &.views-field-title, &.views-field-field-sign-up, &.views-field-body {
+	   		 		 	  	width: 78%;
+	   		 		 	  	float: right;
+
+	   		 		 	  }
+	   		 		 	  &.views-field-title {
+	   		 		 	  	a {
+	   		 		 	  		@extend .mclaren;
+	   		 		 	  		color: $orange;
+	   		 		 	  	}
+	   		 		 	  }
+	   		 		 	  &.views-field-body {
+	   		 		 	  	font-size: 17px;
+	   		 		 	  	@extend .arial-regular;
+	   		 		 	  }
+	   		 		 	  &.views-field-field-sign-up {
+	   		 		 	  	a {
+	   		 		 	  		@extend .yellow-button;
+	   		 		 	  	}
+	   		 		 	  }
+
+	   		 		 }
+	   		    }
+   		 	}
+   		 }
+	 }
 	/**common css for dashboard**/
 	 &.page-user-profile {
 
