@@ -2,7 +2,39 @@
 
 .block {
     margin-bottom: 35px;
+    &.current-program {
+    	@extend .orange-blue;
+    	 .view {
+
+    	 	display: table;
+    	 	width: 100%;
+    	 	.views-row {
+    	 		display: table-row;
+    	 		width: 100%;
+    	 		padding: 20px 4%;
+    	 	     .views-field {
+    	 	       &.views-field-field-program-image {
+    	 	       	  width: 20%;
+    	 	       	  display: table-cell;
+    	 	       	  vertical-align: middle;
+    	 	       }
+    	 	       &.views-field-body {
+                      width: 78%;
+                      padding-left: 2%;
+                      display: table-cell;
+
+    	 	       }
+    	 	       &.views-field-title, &.views-field-field-sign-up {
+    	 	         display: none;
+    	 	       }
+    	 	      }
+    	 	}
+    	 }
+    }
     &.dashboard-block {
+    	.pagination.pager li {
+    		@extend .no-border;			
+    	}
     	@extend .orange-blue;
     	.view {
     		display: table;
