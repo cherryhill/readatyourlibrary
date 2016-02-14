@@ -8776,8 +8776,10 @@ body {
   /**css for bookreview&booklist unauthencated page**/
   /**end**/
 }
-body.admin-menu body, body.admin-menu td, body.admin-menu pre {
-  font-size: 17px !important;
+body.admin-menu {
+  max-width: 100% !important;
+  background: #efefef !important;
+  padding: 5px;
 }
 body.admin-menu .block-system form .form-textarea-wrapper table tbody tr td.mceIframeContainer {
   position: relative;
@@ -8792,13 +8794,6 @@ body.admin-menu .block-system form .form-textarea-wrapper table tbody tr td.mceI
   left: 0;
   width: 100%;
   height: 100%;
-}
-body.admin-menu .block-system form .form-textarea-wrapper table tbody tr td.mceIframeContainer iframe html {
-  background: #fff !important;
-}
-body.admin-menu .block-system form .form-textarea-wrapper table tbody tr td.mceIframeContainer iframe body {
-  box-shadow: none !important;
-  max-width: 100% !important;
 }
 body.page-reward-winners table {
   width: 100% !important;
