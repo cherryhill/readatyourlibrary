@@ -1,9 +1,6 @@
 body {
 	/**css for reward-winner page**/
-	&.admin-menu {
-			max-width: 100% !important;
-			background: #efefef !important;
-			padding: 5px;
+	&.page-node-add {
 		
 		.block-system {
 			form {
@@ -196,6 +193,15 @@ body {
 	 		 		 	@include previous(50px, 50px, $left: 6%, $top: 12px);
 	 		 		 	overflow: visible;
 	 		 		 	background: url('../images/libraryzurb/progress-dash.png') no-repeat;
+	 		 		 }
+	 		 		 div {
+	 		 		 	padding-left: 40%;
+	 		 		 	position: relative;
+	 		 		 	 &:before {
+	 		 		 	 	@include previous(100px, 100px, $left: -42%, $top: 0);
+                            background: url('../images/libraryzurb/fi-calendar.svg') no-repeat;
+                            background-position: center;
+	 		 		 	 }
 	 		 		 }
 	 		 	}
 	 		 }

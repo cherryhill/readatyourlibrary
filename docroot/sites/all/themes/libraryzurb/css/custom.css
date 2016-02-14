@@ -8776,19 +8776,14 @@ body {
   /**css for bookreview&booklist unauthencated page**/
   /**end**/
 }
-body.admin-menu {
-  max-width: 100% !important;
-  background: #efefef !important;
-  padding: 5px;
-}
-body.admin-menu .block-system form .form-textarea-wrapper table tbody tr td.mceIframeContainer {
+body.page-node-add .block-system form .form-textarea-wrapper table tbody tr td.mceIframeContainer {
   position: relative;
   padding-bottom: 56.25%;
   height: 0;
   overflow: hidden;
   max-width: 100%;
 }
-body.admin-menu .block-system form .form-textarea-wrapper table tbody tr td.mceIframeContainer iframe, body.admin-menu .block-system form .form-textarea-wrapper table tbody tr td.mceIframeContainer object, body.admin-menu .block-system form .form-textarea-wrapper table tbody tr td.mceIframeContainer embed {
+body.page-node-add .block-system form .form-textarea-wrapper table tbody tr td.mceIframeContainer iframe, body.page-node-add .block-system form .form-textarea-wrapper table tbody tr td.mceIframeContainer object, body.page-node-add .block-system form .form-textarea-wrapper table tbody tr td.mceIframeContainer embed {
   position: absolute;
   top: 0;
   left: 0;
@@ -8925,6 +8920,22 @@ body.page-user-profile .homebox #homebox-block-auto_role_allocation_progress-blo
   left: 6%;
   overflow: visible;
   background: url("../images/libraryzurb/progress-dash.png") no-repeat;
+}
+body.page-user-profile .homebox #homebox-block-auto_role_allocation_progress-block .portlet-content div {
+  padding-left: 40%;
+  position: relative;
+}
+body.page-user-profile .homebox #homebox-block-auto_role_allocation_progress-block .portlet-content div:before {
+  content: "";
+  width: 100px;
+  height: 100px;
+  display: block;
+  visibility: visible;
+  position: absolute;
+  top: 0;
+  left: -42%;
+  background: url("../images/libraryzurb/fi-calendar.svg") no-repeat;
+  background-position: center;
 }
 body.page-user-profile .homebox #homebox-add {
   border-radius: 20px;
