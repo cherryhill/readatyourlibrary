@@ -564,22 +564,7 @@ body {
 	 			 	  &.view-booklist-on-activities-page {
 	 			 	  	&:before {
 	 			 			background: url('../images/libraryzurb/booklist-dash.png') no-repeat;
-	 			 			.view-header {
-	 			 				p {
-			 			 			text-align: right;
-			 			 			 a {
-			 			 			 	position: relative;
-			 			 			 	font-size: 17px;
-			 			 			 	@extend .mclaren;
-			 			 			 	padding-right: 20px;
-			 			 			 	 &:after {
-		                                      @include previous(17px, 17px, $right: 0, $top: 2px);
-		                                      background: url('../images/libraryzurb/right-blue-arrow.png') no-repeat;
-		                                      background-size: 17px;
-			 			 			 	 }
-			 			 			 }
-			 			 		}
-	 			 			}
+	 			 			
 	 			 		}
 	 			 	  	counter-reset: section;
 	 			 	  	.view-footer {
@@ -605,6 +590,23 @@ body {
 	 			 	  		@extend .arial-bold;
 	 			 	  		text-transform: capitalize;
 	 			 	  	}
+	 			 	  		p {
+			 			 			text-align: right;
+			 			 			@extend .mclaren;
+			 			 			 a {
+			 			 			 	position: relative;
+			 			 			 	font-size: 17px;
+			 			 			 	@extend .mclaren;
+			 			 			 	padding-right: 20px;
+			 			 			 	text-transform: capitalize;
+			 			 			 	 &:after {
+		                                      @include previous(17px, 17px, $right: 0, $top: 1px);
+		                                      background: url('../images/libraryzurb/right-blue-arrow.png') no-repeat;
+		                                      background-size: 15px;
+			 			 			 	 }
+			 			 			 }
+			 			 		}
+	 			 			
 
 	 			 	  	}
 	 			 	  	 ol {
@@ -627,23 +629,8 @@ body {
 	 			 	  &.view-my-book-reviews {
 	 			 	  		&:before {
 	 			 			background: url('../images/libraryzurb/review-dash.png') no-repeat;
-	 			 			.view-header {
-	 			 				p {
-			 			 			text-align: right;
-			 			 			 a {
-			 			 			 	position: relative;
-			 			 			 	font-size: 17px;
-			 			 			 	@extend .mclaren;
-			 			 			 	padding-right: 20px;
-			 			 			 	 &:after {
-		                                      @include previous(17px, 17px, $right: 0, $top: 2px);
-		                                      background: url('../images/libraryzurb/right-blue-arrow.png') no-repeat;
-		                                      background-size: 17px;
-			 			 			 	 }
-			 			 			 }
-			 			 		}
-	 			 			}
-	 			 		}
+	 			 			
+	 			 		  }
 	 			 	  	counter-reset: section;
 	 			 	  	.view-footer {
 	 			 	  		p {
@@ -673,6 +660,24 @@ body {
 	 			 	  			@extend .arial-bold;
 	 			 	  			text-transform: capitalize;
 	 			 	  		}
+
+	 			 				p {
+			 			 			text-align: right;
+			 			 			@extend .mclaren;
+			 			 			 a {
+			 			 			 	position: relative;
+			 			 			 	font-size: 17px;
+			 			 			 	@extend .mclaren;
+			 			 			 	padding-right: 20px;
+			 			 			 	text-transform: capitalize;
+			 			 			 	 &:after {
+		                                      @include previous(17px, 17px, $right: 0, $top: 1px);
+		                                      background: url('../images/libraryzurb/right-blue-arrow.png') no-repeat;
+		                                      background-size: 15px;
+			 			 			 	 }
+			 			 			 }
+			 			 		}
+	 			 			
 
 	 			 	  	}
 	 			 	  	.view-content {
