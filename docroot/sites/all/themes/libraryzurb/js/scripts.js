@@ -26,7 +26,20 @@
 
 
 
+
 jQuery( document ).ready(function() {
+  /* jquery for print calendar */
+	jQuery( "#print_button" ).click(function() {
+      var contant = jQuery("#calendar");
+      var inner_content = contant.html();
+
+      var WinPrint = window.open('', '', 'letf=0,top=0,width=400,height=400,toolbar=0,scrollbars=0,status=0');
+        WinPrint.document.write(inner_content);
+        WinPrint.focus();
+        WinPrint.print();
+        WinPrint.close();
+    });
+	
 
   //console.log("running");
   jQuery('.view-calendar-sticker .view-content .views-field-field-sticker-calendar-image .field-content').each(function () {
@@ -72,7 +85,7 @@ jQuery( document ).ready(function() {
         var expl_img1 = expl_img[1].split("//");
         var expl_img2 = expl_img1[1].split("?");
         var expl_img3 = expl_img2[0].split("/");
-        // var image_name = expl_img3[9];
+        //var image_name = expl_img3[9];
         var image_name = expl_img3[7];
 
         
