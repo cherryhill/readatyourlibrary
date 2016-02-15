@@ -1,4 +1,107 @@
 body {
+	/**css for reward-winner page**/
+	&.page-node-add {
+		
+		.block-system {
+			form {
+				.form-textarea-wrapper {
+					table {
+						tbody {
+							tr {
+								td.mceIframeContainer {
+									position: relative; 
+								 	padding-bottom: 56.25%;
+								    height: 0; overflow:
+								    hidden; max-width: 100%;
+
+								    iframe, object, embed {
+								       position: absolute; 
+								       top: 0; 
+								       left: 0; 
+								       width: 100%; 
+								       height: 100%; 
+
+								    }
+						 
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	&.page-reward-winners {
+		@extend .arial-regular;
+		#page-title {
+			@extend .mclaren;
+		}
+		table {
+			width: 100% !important;
+		}
+	}
+	/**css for program-dashboard page**/
+	&.page-admin-content-dashboard {
+		font-family: "Source Sans Pro" !important;
+		font-weight: normal !important;
+		font-style: normal !important;
+		font: 81.3%/1.538em "Lucida Grande","Lucida Sans Unicode",sans-serif !important;
+		.block-menu-block .menu-name-main-menu ul ul, .section-library-search h2, .top-bar.expanded .main-nav .back h5 {
+	     font-family: "Source Sans Pro" !important;	
+	     font-weight: normal !important;
+		font-style: normal !important;	
+		}
+		.row {
+			max-width: 94.6%;
+		}
+		h1, h2, h3, blockquote::before, blockquote::after, .aside, .block-menu-block .menu-name-main-menu ul, .special {
+          font-family: "Arvo" !important;
+          font-weight: normal !important;
+          font-style: normal !important;
+		}
+		table {
+			width: 100% !important;
+			font-size: 0.923em !important;
+			margin: 0px 0px 10px !important;
+			border: 1px solid #BEBFB9 !important;
+		}
+	    div, span , a, form, input, ul, li, select, textarea, label, legend,  caption {
+			padding: 0px !important;
+			border: 0px none !important;
+			vertical-align: baseline !important;
+	    }
+	    .quicktabs_main input[type="submit"], .quicktabs_main button {
+	    	width: auto !important;
+	    }
+	    .quicktabs_main {
+	    	overflow: visible !important;
+	    }
+	    .chosen-container.chosen-with-drop .chosen-drop {
+	    	padding-bottom: 20px !important;
+	    	padding-left: 5px !important;
+	    }
+	    .chosen-container .chosen-results {
+	    	overflow: visible !important;
+	    }
+	    ul.quicktabs-tabs {
+	    	text-align: left !important;
+	    	li {
+	    	border: none !important;
+	    	text-transform: capitalize !important;
+	    	 a {
+	    	 	font-family: "Source Sans Pro" !important;
+	    	 	font-weight: normal !important;
+	    	 	font-style: normal !important;
+	    	 	color: $black !important;
+	    	 	padding-right: 7px !important;
+	    	 }
+	    }
+	 }
+	}
+
+	/**end**/
+	@extend .mclaren;
+	font-size: 17px;
 	-webkit-font-smoothing: antialiased;
 	color: $black;
 	
@@ -65,6 +168,160 @@ body {
 	  		}
 	  	}
 	}
+	/**css for program page***/
+	 &.section-programs {
+	 	 .pull-9.sidebar {
+     	width: 29.53%;
+     	right: 69.4%;
+     	padding-left: 2.65%;
+     	padding-right: 2.65%;
+     	@extend .block;
+     }
+     .pull-9.sidebar2 {
+       width: 29.53%;
+       right: 71.4%;
+       padding-left: 0;
+       padding-right: 0;
+     }
+      .sidebar {
+      	background: $blue;
+      	color: $white;
+      	padding-top: 25px;
+      	padding-bottom: 25px;
+      	border-radius: 20px;
+      	  .block {
+      	  	.block-title {
+      	  		color: $white;
+      	  		font-size: 22px;
+      	  		@extend .mclaren;
+      	  	}
+      	  	.view {
+      	  		.views-field-title {
+      	  			a {
+      	  				color: $white;
+      	  				font-size: 17px;
+      	  				@extend .arial-regular;
+      	  			}
+      	  		}
+      	  	}
+      	  	&.block-auto-role-allocation   {
+      	  		> div {
+      	  			display: inline-block;
+      	  			text-align: center;
+      	  			 > div {
+      	  			  a {
+      	  			  	@extend .yellow-button;
+      	  			  	width: 100%;
+      	  			  	display: inline-block;
+      	  			  	position: relative;
+      	  			  	margin-top: 80px;
+      	  			  }
+      	  			}
+      	  		}
+      	  		span {
+      	  			padding-left: 32%;
+      	  			@extend .arial-bold;
+      	  			font-size: 17px;
+      	  		}
+      	  		position: relative;
+      	  		
+      	  		&:before {
+      	  		@include previous(100px, 100px, $left: -16px, $top: 19px);
+      	  		 background: url('../images/libraryzurb/fi-calendar.svg') no-repeat;
+                 background-position: left;
+      	  	  }
+      	  	 
+      	  	}
+      	}
+      	 
+      }
+      .main {
+	 	 .current-program {
+		    	@extend .orange-blue;
+		    	 .view {
+
+		    	 	display: inline-block;
+		    	 	width: 100%;
+		    	 	padding: 10px 4%;
+		    	 	.view-content {
+		    	 		display: table;
+		    	 		width: 100%;
+		    	 	}
+		    	 	.views-row {
+		    	 		display: table-row;
+		    	 		width: 100%;
+		    	 	     .views-field {
+		    	 	       &.views-field-field-program-image {
+		    	 	       	  width: 20%;
+		    	 	       	  display: table-cell;
+		    	 	       	  vertical-align: middle;
+		    	 	       	  float: none !important;
+		    	 	       }
+		    	 	       &.views-field-body {
+		                      width: 78%;
+		                      padding-left: 2%;
+		                      display: table-cell;
+		                      float: none !important;
+		                      @extend .arial-regular;
+		                      font-size: 17px;
+
+		    	 	       }
+		    	 	       &.views-field-title, &.views-field-field-sign-up {
+		    	 	         display: none;
+		    	 	       }
+		    	 	      }
+		    	 	}
+		   		 }  
+		    
+   		 }
+   		 .view {
+   		 	.view-header, .view-header p {
+   		 	  @media screen and (min-width: 980px) {
+   		 		font-size: 28px !important;
+   		 	}
+   		 		@extend .mclaren;
+   		 		color: $black;
+   		 	}
+   		 	.view-content {
+   		 		.views-row {
+	   		 		display: table;
+	   		 		width: 100%;
+	   		 		 .views-field {
+	   		 		 	display: table-row;
+	   		 		 	padding-bottom: 23px;
+	   		 		 	 &.views-field-field-program-image {
+	   		 		 	 	width: 20%;
+	   		 		 	 	float: left;
+	   		 		 	 }
+	   		 		 	  &.views-field-title, &.views-field-field-sign-up, &.views-field-body {
+	   		 		 	  	width: 78%;
+	   		 		 	  	float: right;
+
+	   		 		 	  }
+	   		 		 	  &.views-field-title {
+	   		 		 	  	padding-bottom: 23px;
+	   		 		 	  	a {
+	   		 		 	  		@extend .mclaren;
+	   		 		 	  		color: $orange;
+	   		 		 	  		font-size: 20px;
+	   		 		 	  	}
+	   		 		 	  }
+	   		 		 	  &.views-field-body {
+	   		 		 	  	font-size: 17px;
+	   		 		 	  	@extend .arial-regular;
+	   		 		 	  }
+	   		 		 	  &.views-field-field-sign-up {
+	   		 		 	  	a {
+	   		 		 	  		@extend .yellow-button;
+	   		 		 	  	}
+	   		 		 	  }
+
+	   		 		 }
+	   		    }
+   		 	}
+   		 }
+	   	}
+	 }
 	/**common css for dashboard**/
 	 &.page-user-profile {
 
@@ -90,6 +347,15 @@ body {
 	 		 		 	@include previous(50px, 50px, $left: 6%, $top: 12px);
 	 		 		 	overflow: visible;
 	 		 		 	background: url('../images/libraryzurb/progress-dash.png') no-repeat;
+	 		 		 }
+	 		 		 div {
+	 		 		 	padding-left: 32%;
+	 		 		 	position: relative;
+	 		 		 	 &:before {
+	 		 		 	 	@include previous(100px, 100px, $left: 0, $top: -26px);
+                            background: url('../images/libraryzurb/fi-calendar.svg') no-repeat;
+                            background-position: center;
+	 		 		 	 }
 	 		 		 }
 	 		 	}
 	 		 }
@@ -536,7 +802,8 @@ body {
 	        form {
 	        	clear: both;
 	        		 button {
-        	 			font-size: 17px !important;
+        	 			font-size: 17px;
+        	 			@extend .mclaren;
         	 		}
         	 	 #privatemsg-list-form {
         	 	 	table {
@@ -575,7 +842,7 @@ body {
         	 	 	.container-inline {
         	 	 		width: 100%;
         	 	 		padding-bottom: 20px;
-        	 	 		max-width: 480px;
+        	 	 		padding-left: 2%;
         	 	 		margin: 0 auto;
 
         	 	 		  div {
@@ -894,6 +1161,7 @@ body {
                              	padding-top: 23px;
                              	.bookreview_title {
                              		font-size: 20px;
+                             		@extend .mclaren;
                              		a {
                              			font-size: 20px;
                              			padding-right: 5px;
@@ -914,6 +1182,10 @@ body {
 	  	 					 	 	 float: left; 
 	  	 					 	 	&.user {
 	  	 					 	 		padding-left: 5px;
+	  	 					 	 		@extend .mclaren;
+	  	 					 	 	}
+	  	 					 	 	&.review {
+	  	 					 	 		@extend .mclaren;
 	  	 					 	 	}
 	  	 					 	 	&.date {
 	  	 					 	 		width: 100%;
@@ -958,6 +1230,7 @@ body {
 	  	 					 	width: 20%;
 	  	 					 	float: right;
 	  	 					 	display: table-row;
+	  	 					 	@extend .mclaren;
 	  	 					 	.views-label-count {
 	  	 					 		@extend .like;
 			  	 			 	}
@@ -1052,6 +1325,9 @@ body {
 	  	 			li {
 	  	 				&.views-row {
 	  	 					margin-bottom: 23px;
+	  	 					 .views-field-title {
+	  	 					 	@extend .mclaren;
+	  	 					 }
 	  	 				}
 	  	 				font-size: 17px;
 	  	 				.views-field-nothing {

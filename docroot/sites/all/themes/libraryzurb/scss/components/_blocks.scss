@@ -1,10 +1,12 @@
 // Blocks
-body {
-	@extend .mclaren;
-}
+
 .block {
     margin-bottom: 35px;
+   
     &.dashboard-block {
+    	.pagination.pager li {
+    		@extend .no-border;			
+    	}
     	@extend .orange-blue;
     	.view {
     		display: table;
@@ -209,6 +211,7 @@ body {
 		padding-right: 10px;
 		margin-bottom: 48px;
 		@extend .box-shadow;
+		@extend .mclaren;
 		 .block-title {
 		 	border-top: none;
 		 	padding: 10px;
@@ -268,6 +271,35 @@ body {
 	 		margin-bottom: 25px;
 	 	}
 
+ 	}
+ 	&.block-views-reward-earn-block {
+ 		.view {
+ 			display: table;
+ 			width: 100%;
+ 			 .views-row {
+ 			 	display: table-row;
+ 			 	width: 100%;
+ 			 	 .views-field {
+ 			 	 	&.views-field-field-badge-image {
+ 			 	 		width: 40%;
+ 			 	 		display: table-cell;
+ 			 	 		 .field-content {
+ 			 	 		 	img {
+ 			 	 		 		margin-bottom: 10px;
+ 			 	 		 	}
+ 			 	 		 }
+ 			 	 	}
+ 			 	 	&.views-field-title {
+ 			 	 		float: none;
+ 			 	 		width: 50%;
+ 			 	 		display: table-cell;
+ 			 	 		vertical-align: middle;
+ 			 	 		padding-left: 2%;
+
+ 			 	 	}
+ 			 	 }
+ 			 }
+ 		}
  	}
 	&.announcement {
 		background: $yellow url('../images/libraryzurb/annocement.png') no-repeat;
