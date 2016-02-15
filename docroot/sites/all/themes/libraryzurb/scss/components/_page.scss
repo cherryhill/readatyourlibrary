@@ -1589,30 +1589,49 @@ body {
 }
 /**css for progress page**/
  .section-progress {
+ 	.l-main {
+ 		display: table;
+ 		width: 100%;
+ 		border-collapse: separate;
+  		border-spacing: 20px;
+
+ 	}
  	 .main {
  	 	@extend .blue-background;
  	 	padding-left: 0;
  	 	padding-right: 0;
+ 	 	display: table-row;
+ 	 	width: 100%;
+ 	 	position: relative;
+ 	 	@extend .block;
  	 	 #page-title {
  	 	 	@extend .wave-img;
  	 	 }
  	 	 .view-calendar-sticker {
  	 	 	@extend .yellow-background;
- 	 	 	width: 100%;
- 	 	 	max-width: 95%;
- 	 	 	margin: 0 auto;
- 	 	 	position: relative;
+ 	 	 	width: 40%; 
+ 	 	 	display: table-cell;
  	 	 	
  	 	 	 .view-header {
  	 	 	 	
- 	 	 	 	width: 48%;
+ 	 	 	 	width: 100%;
  	 	 	 	padding: 20px 0 20px 2%;
  	 	 	 	left: 0;
  	 	 	 	 p {
+ 	 	 	 	 	@extend .mclaren;
  	 	 	 	 	margin-bottom: 0;
  	 	 	 	 	color: $black;
+ 	 	 	 	 	line-height: 1;
+ 	 	 	 	 	padding-bottom: 20px;
  	 	 	 	 	  &.heading {
- 	 	 	 	 	  	font-size: 21px;
+ 	 	 	 	 	  	@media screen and (min-width: 940px)  {
+ 	 	 	 	 	  	font-size: 21px !important;
+ 	 	 	 	 	   }
+ 	 	 	 	 	  }
+ 	 	 	 	 	   &.statement {
+ 	 	 	 	 	  	@media screen and (min-width: 940px)  {
+ 	 	 	 	 	  	font-size: 15px !important;
+ 	 	 	 	 	   }
  	 	 	 	 	  }
  	 	 	 	 }
  	 	 	 }
@@ -1639,13 +1658,42 @@ body {
  	 	 	 }
  	 	 }
  	 	.block {
+ 	 		&.block-views {
+ 	 			width: 35%;
+				display: table-cell;
+				padding: 10px;
+				background: $white;
+				color: $black;
+				border-radius: 20px;
+				@extend .mclaren;
+				@extend .box-shadow;
+ 	 		}
+ 	 		&.block-auto-role-allocation {
+ 	 			width: 30%;
+ 	 			display: table-cell;
+ 	 			background: $light-orange;
+ 	 			vertical-align: middle;
+ 	 			text-align: center;
+ 	 			padding: 0 5%;
+ 	 			border-radius: 20px;
+ 	 			@extend .mclaren;
+ 	 			@extend .box-shadow;
+ 	 			 > div:nth-of-type(2) {
+ 	 			 	line-height: 1.2;
+                    font-size: 18px;
+ 	 			 }
+ 	 		}
  	 		&.progress-calendar {
+ 	 		 &.contextual-links-region {
+ 	 		 	position: initial;
+ 	 		 }
  	 			width: 100%;
  	 			max-width: 95%;
  	 			margin: 20px auto;
  	 			 .block-title {
  	 			 	display: none;
  	 			 }
+
  	 			 #calendar {
  	 			 	.fc-header {
  	 			 		border: none;
@@ -1711,4 +1759,21 @@ body {
  	 		}
  	 	}
  	}
+ 	 #print_button {
+ 	 			 	position: absolute;
+ 	 			 	top: 17px;
+ 	 			 	right: 28px;
+ 	 			 	width: 200px;
+ 	 			 	line-height: 30px;
+ 	 			 	padding:6px 0px 6px 45px;
+ 	 			 	font-size: 17px;
+ 	 			 	@extend .mclaren;
+ 	 			 	background: $yellow url('../images/libraryzurb/print-calender.png') no-repeat !important;
+ 	 			 	background-position: 10px !important;
+ 	 			 	color: $black;
+ 	 			 	border-radius: 10px;
+ 	 			 	@extend .box-shadow;
+ 	 			 	
+ 	 			 	
+ 	 			 }
  }
