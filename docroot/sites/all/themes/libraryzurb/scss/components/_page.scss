@@ -519,6 +519,20 @@ body {
 	 			 		&:before {
 	 			 			background: url('../images/libraryzurb/reward-dash.png') no-repeat;
 	 			 		}
+	 			 		.more-link {
+	 			 			text-align: right;
+	 			 			 a {
+	 			 			 	position: relative;
+	 			 			 	font-size: 17px;
+	 			 			 	@extend .mclaren;
+	 			 			 	padding-right: 20px;
+	 			 			 	 &:after {
+                                      @include previous(17px, 17px, $right: 0, $top: 2px);
+                                      background: url('../images/libraryzurb/right-blue-arrow.png') no-repeat;
+                                      background-size: 17px;
+	 			 			 	 }
+	 			 			 }
+	 			 		}
 	 			 		.view-content {
 	 			 			display: table;
 	 			 			width: 100%;
@@ -548,6 +562,22 @@ body {
 	 			 	  &.view-booklist-on-activities-page {
 	 			 	  	&:before {
 	 			 			background: url('../images/libraryzurb/booklist-dash.png') no-repeat;
+	 			 			.view-header {
+	 			 				p {
+			 			 			text-align: right;
+			 			 			 a {
+			 			 			 	position: relative;
+			 			 			 	font-size: 17px;
+			 			 			 	@extend .mclaren;
+			 			 			 	padding-right: 20px;
+			 			 			 	 &:after {
+		                                      @include previous(17px, 17px, $right: 0, $top: 2px);
+		                                      background: url('../images/libraryzurb/right-blue-arrow.png') no-repeat;
+		                                      background-size: 17px;
+			 			 			 	 }
+			 			 			 }
+			 			 		}
+	 			 			}
 	 			 		}
 	 			 	  	counter-reset: section;
 	 			 	  	.view-footer {
@@ -595,6 +625,22 @@ body {
 	 			 	  &.view-my-book-reviews {
 	 			 	  		&:before {
 	 			 			background: url('../images/libraryzurb/review-dash.png') no-repeat;
+	 			 			.view-header {
+	 			 				p {
+			 			 			text-align: right;
+			 			 			 a {
+			 			 			 	position: relative;
+			 			 			 	font-size: 17px;
+			 			 			 	@extend .mclaren;
+			 			 			 	padding-right: 20px;
+			 			 			 	 &:after {
+		                                      @include previous(17px, 17px, $right: 0, $top: 2px);
+		                                      background: url('../images/libraryzurb/right-blue-arrow.png') no-repeat;
+		                                      background-size: 17px;
+			 			 			 	 }
+			 			 			 }
+			 			 		}
+	 			 			}
 	 			 		}
 	 			 	  	counter-reset: section;
 	 			 	  	.view-footer {
@@ -625,6 +671,7 @@ body {
 	 			 	  			@extend .arial-bold;
 	 			 	  			text-transform: capitalize;
 	 			 	  		}
+
 	 			 	  	}
 	 			 	  	.view-content {
 	 			 	  		ul {
@@ -1636,20 +1683,15 @@ body {
  	 	 	 	 }
  	 	 	 }
  	 	 	 .view-content {
- 	 	 	 	position: relative;
  	 	 	 	width: 100%;
- 	 	 	 	max-width: 53%;
- 	 	 	 	display: inline-block;
+ 	 	 	 	display: table-row;
  	 	 	 	.views-row {
- 	 	 	 		float: left;
  	 	 	 		width: 20%;
- 	 	 	 		clear: none !important;
- 	 	 	 		max-width: 100px;
- 	 	 	 		height: 110px;
- 	 	 	 		display: flex;
- 	 	 	 		align-items: center;
- 	 	 	 		align-content: center;
+ 	 	 	 		display: table-cell;
+ 	 	 	 		vertical-align: bottom;
+
  	 	 	 		 img {
+ 	 	 	 		 	width: 100% !important;
  	 	 	 		 	border: none;
  	 	 	 		 }
 
@@ -1667,6 +1709,66 @@ body {
 				border-radius: 20px;
 				@extend .mclaren;
 				@extend .box-shadow;
+				.view-prize-won-for-progress-page {
+					width: 100%;
+					display: table;
+					border-spacing: 0 !important;
+					.view-header {
+						width: 29%;
+						display: table-cell;
+						position: relative;
+						div {
+                            font-size: 20px;
+                            color: $blue;
+                            position: absolute;
+                            top: 6px;
+                            text-transform: capitalize;
+                            width: 300px;
+						}
+						span {
+							font-size: 13px;
+							text-transform: uppercase;
+						}
+					}
+					.view-content {
+						width: 70%;
+						display: table-cell;
+						padding-top: 38px;
+						 .item-list {
+						 	ul {
+						 		
+						 		li.views-row {
+						 			margin-bottom: 10px !important;
+						 			font-size: 13px !important;
+						 		}
+						 	}
+						 }
+					}
+					.item-list {
+						width: 100%;
+						display: table-row;
+						height: 60px;
+						position: relative;
+						 ul.pager {
+						 	position: absolute;
+						 	right: 0px;
+						 	
+						 	 li {
+						 	 	
+						 	 	&.pager-current {
+						 	 		display: none;
+						 	 	}
+                                 position: relative;
+                                   a {
+                                   	font-size: 22px;
+                                   	text-transform: capitalize;
+                                 
+                                   }
+						 	 }
+						 } 
+						
+					}
+				}
  	 		}
  	 		&.block-auto-role-allocation {
  	 			width: 30%;
@@ -1684,6 +1786,13 @@ body {
  	 			 }
  	 		}
  	 		&.progress-calendar {
+ 	 			div.ui-draggable.ui-draggable-handle  {
+ 	 			 			text-align: center !important;
+ 	 			 			img {
+ 	 			 				width: 70px !important; 
+
+ 	 			 			}
+ 	 			 		}
  	 		 &.contextual-links-region {
  	 		 	position: initial;
  	 		 }
@@ -1703,7 +1812,7 @@ body {
  	 			 		 		color: $orange;
  	 			 		 		@extend .mclaren;
  	 			 		 		border-bottom: none;
- 	 			 		 		@extend .box-shadow;
+ 	 			
  	 			 		 	}
  	 			 		 }
  	 			 		 tbody {
@@ -1725,6 +1834,7 @@ body {
  	 			 	}
  	 			 	.fc-content {
  	 			 		color: $black;
+
  	 			 		.fc-border-separate {
  	 			 			margin-bottom: 0;
  	 			 			border: none;
