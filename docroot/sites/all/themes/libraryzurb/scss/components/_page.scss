@@ -14,12 +14,18 @@ body {
 		@extend .mclaren;
 	}
 	.alert-box.success {
+		opacity: 1;
 		@extend .mclaren;
 		 a {
 		 	@extend .mclaren;
+		 	opacity: 1;
 		 	color: $red !important;
 		 	&.close {
 		 		color: $white !important;
+		 		opacity: 1;
+		 		 &:hover {
+		 		 	text-decoration: none !important;
+		 		 }
 		 	}
 		 }
 	}
