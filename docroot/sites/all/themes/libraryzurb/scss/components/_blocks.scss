@@ -479,11 +479,10 @@
 		  	  		border-right: none !important;
 		  	  		width: 50px;
 		  	  		 a {
-		  	  		 	bottom: 20px;
-		  	  		 	font-size: 0;
+		  	  		 	color: transparent !important;
 		  	  		 	position: relative;
 		  	  		 	  &:after {
-		  	  		 	  	@include previous(40px, 40px, $top: 0, $left: 0);
+		  	  		 	  	@include previous(38px, 38px, $top: 0, $left: 0);
 		  	  		 	  	@extend .animate;
 							border-radius: 100%;
 							@extend .box-shadow;
@@ -494,26 +493,31 @@
 		  	  		 	  	 &:after {
 		  	  		 	  	 	 background: url('../images/libraryzurb/facebook.png') no-repeat;
 		  	  		 	  	 	 background-position: center;
+		  	  		 	  	 	 background-size: 100%;
 		  	  		 	  	 }
 		  	  		 	  }
 		  	  		 	  &.twit {
 		  	  		 	  	 &:after {
 		  	  		 	  	 	background: url('../images/libraryzurb/twitter.png') no-repeat;
 		  	  		 	  	 	background-position: center;
+		  	  		 	  	 	background-size: 100%;
 		  	  		 	  	 }
 		  	  		 	  }
 		  	  		 	  &.tmblr {
 		  	  		 	  	 &:after {
 		  	  		 	  	 	background: url('../images/libraryzurb/tumbir.png') no-repeat;
 		  	  		 	  	 	background-position: center;
+		  	  		 	  	 	background-size: 100%;
 		  	  		 	  	 }
 		  	  		 	  }
 		  	  		 	  &.pntrst {
 		  	  		 	  	 &:after {
 		  	  		 	  	 background: url('../images/libraryzurb/pinterest.png') no-repeat;
 		  	  		 	  	 background-position: center;
+		  	  		 	  	 background-size: 100%;
 		  	  		 	  	}
 		  	  		 	  }
+		  	  		 	 
                          &:hover {
 		  	  		 		&:after {
 		  	  		 			@include rotate(360deg);

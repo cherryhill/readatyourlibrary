@@ -1,6 +1,95 @@
+/**page wise css***/
 body {
-	/**css for reward-winner page**/
-	&.page-node-add {
+    font-family: Arialregular;
+	font-style: normal !important;
+	font-weight: normal !important;
+	-webkit-font-smoothing: antialiased;
+	 font-size: 17px; 
+	color: $black;
+	
+		.main {
+			margin-top: -5px;
+		}
+	input[type="password"] {
+		@extend .mclaren;
+	}
+	.alert-box.success {
+		@extend .mclaren;
+		 a {
+		 	@extend .mclaren;
+		 	color: $red !important;
+		 	&.close {
+		 		color: $white !important;
+		 	}
+		 }
+	}
+	
+}
+
+/**css for reward page***/
+
+.page-rewards {
+	.pull-9.sidebar {
+		width: 29.53%;
+		right: 69.4%;
+		padding: 35px 2.65% 0px;
+		margin-bottom: 25px;
+		@extend .blue-background;
+		  	.block {
+			  	.block-title, .view-header, .view-header p  {
+	              font-size: 22px;
+	              @extend .white-text;
+			  	}
+		  		.views-row {
+		  			.views-field-nothing {
+		  				.badges {
+		  					img {
+			  					float: left;
+			  					margin: 0.5em 1em 0.5em 0;
+		  					}
+		  				}
+		  			}
+		  		}
+		 	}
+	}
+	.main {
+	  	#page-title {
+	  		@extend .mclaren;
+	  		font-size: 28px;
+	  	}
+	  	.view-content {
+	  		.views-row {
+  				display: table;
+  				width: 100%;
+	  				.views-field-field-badge-image {
+	  					width: 50%;
+	  					float: left;
+	  					display: table-cell;
+		  					img {
+		  						float: left;
+		  						margin: 0.5em 1em 0.5em 0;
+		  					}
+	  				}
+	  				.views-field-title {
+	  					width: 50%;
+	  					display: table-row;
+	  					font-size: 17px;
+	  					@extend .arial-regular;
+	  				}
+	  				.views-field-field-badge-description {
+	  					width: 50%;
+	  					float: right;
+	  					display: table-cell;
+	  					font-size: 17px;
+	  					@extend .arial-regular;
+	  				}
+	  		}
+	  	}
+	}
+}
+/**end css of reward page**/
+/**css for reward-winner page**/
+	.page-node-add {
 		
 		.block-system {
 			form {
@@ -31,7 +120,7 @@ body {
 			}
 		}
 	}
-	&.page-reward-winners {
+	.page-reward-winners {
 		@extend .arial-regular;
 		#page-title {
 			@extend .mclaren;
@@ -40,351 +129,219 @@ body {
 			width: 100% !important;
 		}
 	}
-	/**css for program-dashboard page**/
-	&.page-admin-content-dashboard {
-		font-family: "Source Sans Pro" !important;
-		font-weight: normal !important;
-		font-style: normal !important;
-		font: 81.3%/1.538em "Lucida Grande","Lucida Sans Unicode",sans-serif !important;
-		.block-menu-block .menu-name-main-menu ul ul, .section-library-search h2, .top-bar.expanded .main-nav .back h5 {
-	     font-family: "Source Sans Pro" !important;	
-	     font-weight: normal !important;
-		font-style: normal !important;	
-		}
-		.row {
-			max-width: 94.6%;
-		}
-		h1, h2, h3, blockquote::before, blockquote::after, .aside, .block-menu-block .menu-name-main-menu ul, .special {
-          font-family: "Arvo" !important;
-          font-weight: normal !important;
-          font-style: normal !important;
-		}
-		table {
-			width: 100% !important;
-			font-size: 0.923em !important;
-			margin: 0px 0px 10px !important;
-			border: 1px solid #BEBFB9 !important;
-		}
-	    div, span , a, form, input, ul, li, select, textarea, label, legend,  caption {
-			padding: 0px !important;
-			border: 0px none !important;
-			vertical-align: baseline !important;
-	    }
-	    .quicktabs_main input[type="submit"], .quicktabs_main button {
-	    	width: auto !important;
-	    }
-	    .quicktabs_main {
-	    	overflow: visible !important;
-	    }
-	    .chosen-container.chosen-with-drop .chosen-drop {
-	    	padding-bottom: 20px !important;
-	    	padding-left: 5px !important;
-	    }
-	    .chosen-container .chosen-results {
-	    	overflow: visible !important;
-	    }
-	    ul.quicktabs-tabs {
-	    	text-align: left !important;
-	    	li {
-	    	border: none !important;
-	    	text-transform: capitalize !important;
-	    	 a {
-	    	 	font-family: "Source Sans Pro" !important;
-	    	 	font-weight: normal !important;
-	    	 	font-style: normal !important;
-	    	 	color: $black !important;
-	    	 	padding-right: 7px !important;
-	    	 }
-	    }
-	 }
-	}
-
-	/**end**/
-	@extend .mclaren;
-	font-size: 17px;
-	-webkit-font-smoothing: antialiased;
-	color: $black;
+/**end reward-winners page**/
+/**css for program page***/
 	
-	.main {
-		margin-top: -5px;
-	}
-	/**css for reward page***/
-	&.page-rewards {
-	  .pull-9.sidebar {
-		width: 29.53%;
-		right: 69.4%;
-		padding: 35px 2.65% 0px;
-		margin-bottom: 25px;
-		@extend .blue-background;
-		  .block {
-		  	.block-title, .view-header, .view-header p  {
-              font-size: 22px;
-              @extend .white-text;
-		  	}
-		  	.views-row {
-		  		.views-field-nothing {
-		  			.badges {
-		  				img {
-		  					float: left;
-		  					margin: 0.5em 1em 0.5em 0;
-		  				}
-		  			}
-		  		}
-		  	}
-		  }
-	  }
-	  .main {
-	  	#page-title {
-	  		@extend .mclaren;
-	  		font-size: 28px;
-	  	}
-	  		.view-content {
-	  			.views-row {
-	  				display: table;
-	  				width: 100%;
-	  				.views-field-field-badge-image {
-	  					width: 50%;
-	  					float: left;
-	  					display: table-cell;
-	  					img {
-	  						float: left;
-	  						margin: 0.5em 1em 0.5em 0;
-	  					}
-	  				}
-	  				.views-field-title {
-	  					width: 50%;
-	  					display: table-row;
-	  					font-size: 17px;
-	  					@extend .arial-regular;
-	  				}
-	  				.views-field-field-badge-description {
-	  					width: 50%;
-	  					float: right;
-	  					display: table-cell;
-	  					font-size: 17px;
-	  					@extend .arial-regular;
-	  				}
-	  			}
-	  		}
-	  	}
-	}
-	/**css for program page***/
-	 &.section-programs {
-	 	 .pull-9.sidebar {
-     	width: 29.53%;
-     	right: 69.4%;
-     	padding-left: 2.65%;
-     	padding-right: 2.65%;
-     	@extend .block;
-     }
-     .pull-9.sidebar2 {
-       width: 29.53%;
-       right: 71.4%;
-       padding-left: 0;
-       padding-right: 0;
-     }
-      .sidebar {
+.section-programs {
+ 	.pull-9.sidebar {
+	 	width: 29.53%;
+	 	right: 69.4%;
+	 	padding-left: 2.65%;
+	 	padding-right: 2.65%;
+	 	@extend .block;
+ 	}
+    .pull-9.sidebar2 {
+      	width: 29.53%;
+       	right: 71.4%;
+       	padding-left: 0;
+       	padding-right: 0;
+    }
+    .sidebar {
       	background: $blue;
       	color: $white;
       	padding-top: 25px;
       	padding-bottom: 25px;
       	border-radius: 20px;
-      	  .block {
-      	  	.block-title {
-      	  		color: $white;
-      	  		font-size: 22px;
-      	  		@extend .mclaren;
-      	  	}
-      	  	.view {
-      	  		.views-field-title {
-      	  			a {
-      	  				color: $white;
-      	  				font-size: 17px;
-      	  				@extend .arial-regular;
+      	  	.block {
+	      	  	.block-title {
+	      	  		color: $white;
+	      	  		font-size: 22px;
+	      	  		@extend .mclaren;
+	      	  	}
+      	  		.view {
+      	  			.views-field-title {
+      	  				a {
+	      	  				color: $white;
+	      	  				font-size: 17px;
+	      	  				@extend .arial-regular;
+      	  				}
       	  			}
       	  		}
-      	  	}
-      	  	&.block-auto-role-allocation   {
-      	  		> div {
-      	  			display: inline-block;
-      	  			text-align: center;
-      	  			 > div {
-      	  			  a {
-      	  			  	@extend .yellow-button;
-      	  			  	width: 100%;
-      	  			  	display: inline-block;
-      	  			  	position: relative;
-      	  			  	margin-top: 80px;
-      	  			  }
+      	  		&.block-auto-role-allocation   {
+      	  			> div {
+	      	  			display: inline-block;
+	      	  			text-align: center;
+      	  					> div {
+      	  			 			a {
+			      	  			  	@extend .yellow-button;
+			      	  			  	width: 100%;
+			      	  			  	display: inline-block;
+			      	  			  	position: relative;
+			      	  			  	margin-top: 80px;
+      	  			 			}
+      	  					}
       	  			}
-      	  		}
-      	  		span {
-      	  			padding-left: 32%;
-      	  			@extend .arial-bold;
-      	  			font-size: 17px;
-      	  		}
-      	  		position: relative;
-      	  		
-      	  		&:before {
-      	  		@include previous(100px, 100px, $left: -16px, $top: 19px);
-      	  		 background: url('../images/libraryzurb/fi-calendar.svg') no-repeat;
-                 background-position: left;
-      	  	  }
+	      	  		span {
+	      	  			padding-left: 32%;
+	      	  			@extend .arial-bold;
+	      	  			font-size: 17px;
+	      	  		}
+      	  			position: relative;
+      	  				&:before {
+			      	  		@include previous(100px, 100px, $left: -16px, $top: 19px);
+			      	  		 background: url('../images/libraryzurb/fi-calendar.svg') no-repeat;
+			                 background-position: left;
+  	  	  				}
       	  	 
-      	  	}
-      	}
+      	  		}
+      		}
       	 
-      }
-      .main {
-	 	 .current-program {
-		    	@extend .orange-blue;
-		    	 .view {
-
-		    	 	display: inline-block;
+    }
+  	.main {
+ 	 	.current-program {
+	    	@extend .orange-blue;
+	    		.view {
+					display: inline-block;
 		    	 	width: 100%;
 		    	 	padding: 10px 4%;
-		    	 	.view-content {
-		    	 		display: table;
-		    	 		width: 100%;
-		    	 	}
-		    	 	.views-row {
-		    	 		display: table-row;
-		    	 		width: 100%;
-		    	 	     .views-field {
-		    	 	       &.views-field-field-program-image {
-		    	 	       	  width: 20%;
-		    	 	       	  display: table-cell;
-		    	 	       	  vertical-align: middle;
-		    	 	       	  float: none !important;
-		    	 	       }
-		    	 	       &.views-field-body {
-		                      width: 78%;
-		                      padding-left: 2%;
-		                      display: table-cell;
-		                      float: none !important;
-		                      @extend .arial-regular;
-		                      font-size: 17px;
-
-		    	 	       }
-		    	 	       &.views-field-title, &.views-field-field-sign-up {
-		    	 	         display: none;
-		    	 	       }
-		    	 	      }
-		    	 	}
-		   		 }  
-		    
-   		 }
-   		 .view {
+			    	 	.view-content {
+			    	 		display: table;
+			    	 		width: 100%;
+			    	 	}
+	    	 			.views-row {
+			    	 		display: table-row;
+			    	 		width: 100%;
+	    	 	     			.views-field {
+				    	 	       	&.views-field-field-program-image {
+				    	 	       	  width: 20%;
+				    	 	       	  display: table-cell;
+				    	 	       	  vertical-align: middle;
+				    	 	       	  float: none !important;
+				    	 	       	}
+				    	 	       	&.views-field-body {
+				                      width: 78%;
+				                      padding-left: 2%;
+				                      display: table-cell;
+				                      float: none !important;
+				                      @extend .arial-regular;
+				                      font-size: 17px;
+									}
+				    	 	       &.views-field-title, &.views-field-field-sign-up {
+				    	 	         display: none;
+				    	 	       }
+	    	 	     			}
+	    	 			}
+	   			}  
+	    }
+		.view {
    		 	.view-header, .view-header p {
-   		 	  @media screen and (min-width: 980px) {
-   		 		font-size: 28px !important;
-   		 	}
+	   		 	@media screen and (min-width: 980px) {
+	   		 	   font-size: 28px !important;
+	   		 	}
    		 		@extend .mclaren;
    		 		color: $black;
-   		 	}
+		 		}
    		 	.view-content {
    		 		.views-row {
 	   		 		display: table;
 	   		 		width: 100%;
-	   		 		 .views-field {
-	   		 		 	display: table-row;
-	   		 		 	padding-bottom: 23px;
-	   		 		 	 &.views-field-field-program-image {
-	   		 		 	 	width: 20%;
-	   		 		 	 	float: left;
-	   		 		 	 }
-	   		 		 	  &.views-field-title, &.views-field-field-sign-up, &.views-field-body {
-	   		 		 	  	width: 78%;
-	   		 		 	  	float: right;
+		   		 		.views-field {
+		   		 		 	display: table-row;
+		   		 		 	padding-bottom: 23px;
+			   		 		 	&.views-field-field-program-image {
+			   		 		 	 	width: 20%;
+			   		 		 	 	float: left;
+			   		 		 	}
+		   		 		 	  	&.views-field-title, &.views-field-field-sign-up, &.views-field-body {
+		   		 		 	  	width: 78%;
+		   		 		 	  	float: right;
+								}
+		   		 		 	  	&.views-field-title {
+		   		 		 	  		padding-bottom: 23px;
+		   		 		 	  			a {
+				   		 		 	  		@extend .mclaren;
+				   		 		 	  		color: $orange;
+				   		 		 	  		font-size: 20px;
+		   		 		 	  			}
+		   		 		 	  	}
+		   		 		 	  	&.views-field-body {
+			   		 		 	  	font-size: 17px;
+			   		 		 	  	@extend .arial-regular;
+		   		 		 	  	}
+		   		 		 	  	&.views-field-field-sign-up {
+			   		 		 	  	a {
+			   		 		 	  		@extend .yellow-button;
+			   		 		 	  	}
+		   		 		 	  	}
 
-	   		 		 	  }
-	   		 		 	  &.views-field-title {
-	   		 		 	  	padding-bottom: 23px;
-	   		 		 	  	a {
-	   		 		 	  		@extend .mclaren;
-	   		 		 	  		color: $orange;
-	   		 		 	  		font-size: 20px;
-	   		 		 	  	}
-	   		 		 	  }
-	   		 		 	  &.views-field-body {
-	   		 		 	  	font-size: 17px;
-	   		 		 	  	@extend .arial-regular;
-	   		 		 	  }
-	   		 		 	  &.views-field-field-sign-up {
-	   		 		 	  	a {
-	   		 		 	  		@extend .yellow-button;
-	   		 		 	  	}
-	   		 		 	  }
-
-	   		 		 }
+		   		 		}
 	   		    }
    		 	}
-   		 }
-	   	}
-	 }
-	/**common css for dashboard**/
-	 &.page-user-profile {
+		}
+   	}
+}
+/**end css of program page**/
 
-	 	.main {
-	 		padding-left: 0;
-	 		padding-right: 0;
-	 	}
-	 	.homebox {
-	 		width: 100%;
-	 		max-width: 94.6%;
-	 		margin: 34px auto;
-	 		 #homebox-block-auto_role_allocation_progress-block {
+/**common css for patraon dashboard page**/
+	 
+.page-user-profile {
+	.main {
+ 		padding-left: 0;
+ 		padding-right: 0;
+ 	}
+ 	.homebox {
+ 		width: 100%;
+ 		max-width: 94.6%;
+ 		margin: 34px auto;
+ 			#homebox-block-auto_role_allocation_progress-block {
 	 		 	.portlet-header {
 	 		 		position: relative;
-	 		 		
-
 	 		 	}
 	 		 	.portlet-content {
 	 		 		color: $black;
 	 		 		font-size: 15px;
 	 		 		@extend .arial-regular;
-	 		 		 &:before {
-	 		 		 	@include previous(50px, 50px, $left: 6%, $top: 12px);
-	 		 		 	overflow: visible;
-	 		 		 	background: url('../images/libraryzurb/progress-dash.png') no-repeat;
-	 		 		 }
-	 		 		 div {
-	 		 		 	padding-left: 32%;
-	 		 		 	position: relative;
-	 		 		 	 &:before {
-	 		 		 	 	@include previous(100px, 100px, $left: 0, $top: -26px);
-                            background: url('../images/libraryzurb/fi-calendar.svg') no-repeat;
-                            background-position: center;
-	 		 		 	 }
-	 		 		 }
+		 		 		&:before {
+		 		 		 	@include previous(50px, 50px, $left: 6%, $top: 12px);
+		 		 		 	overflow: visible;
+		 		 		 	background: url('../images/libraryzurb/progress-dash.png') no-repeat;
+		 		 		}
+		 		 		div {
+		 		 		 	padding-left: 32%;
+		 		 		 	position: relative;
+			 		 		 	&:before {
+			 		 		 	 	@include previous(100px, 100px, $left: 0, $top: -26px);
+		                            background: url('../images/libraryzurb/fi-calendar.svg') no-repeat;
+		                            background-position: center;
+			 		 		 	}
+		 		 		}
 	 		 	}
-	 		 }
-	 		 #homebox-add {
+	 		}
+	 		#homebox-add {
 	 		 	@extend .yellow-background;
 	 		 	border-radius: 20px;
 	 		 	padding: 36px 20px 25px;
-	 		 	 .item-list ul li.last {
-	 		 	 	float: right !important;
-	 		 	 }
-	 		 }
+		 		 	.item-list ul li.last {
+		 		 	 	float: right !important;
+		 		 	}
+	 		}
 	 		#homebox-buttons {
 	 			margin-bottom: 32px;
-	 			a {
-	 				font-size: 22px;
-	 				padding: 9px 25px;
-	 				@extend .blue-button;
-	 				text-decoration: none;
-	 			}
-
-	 		}
+		 			a {
+		 				font-size: 22px;
+		 				padding: 9px 25px;
+		 				@extend .blue-button;
+		 				text-decoration: none;
+		 			}
+			}
 	 		#homebox-add {
 	 			ul li a {
 	 				font-size: 17px;
 	 				@extend .blue-button;
 	 				text-decoration: none;
-	 				&.used {
-	 					@extend .no-border;
-	 				}
+		 				&.used {
+		 					@extend .no-border;
+		 				}
 	 			}
 	 		}
 	 		.homebox-column {
@@ -400,316 +357,329 @@ body {
 	 			background: $yellow;
 	 			border-radius: 20px;
 	 			margin-bottom: 10px;
-
-	 			.portlet-header {
-	 				@extend .blue-box;
-	 				border-radius: 20px 20px 0px 0px;
-	 				padding: 15.5px 15px 15.5px 0 !important;
-	 				@extend .no-border;
-	 				
-	 				a {
-	 					position: relative;
-	 					 &.portlet-close {
-	 					  	background: url('../images/libraryzurb/close-img.png') no-repeat;
-
-	 				  }
-	 				  &.portlet-minus {
-	 				  	background: url('../images/libraryzurb/min-img.png') no-repeat;
-	 				  	padding-right: 23px;
-	 				  } 
-	 				  &.portlet-maximize {
-	 				  	display: none;
-	 				  }
-	 				  &.portlet-plus {
-	 				  	background: url('../images/libraryzurb/plus.png') no-repeat;
-	 				  	padding-right: 23px;
-	 				  }
-	 				  background-size: 30px;
-	 				  height: 30px;
-	 				  width: 30px;
+					.portlet-header {
+		 				@extend .blue-box;
+		 				border-radius: 20px 20px 0px 0px;
+		 				padding: 15.5px 15px 15.5px 0 !important;
+		 				@extend .no-border;
+	 						a {
+	 							position: relative;
+	 					 			&.portlet-close {
+	 					  				background: url('../images/libraryzurb/close-img.png') no-repeat;
+									}
+					 				&.portlet-minus {
+					 				  	background: url('../images/libraryzurb/min-img.png') no-repeat;
+					 				  	padding-right: 23px;
+					 				} 
+				 				  	&.portlet-maximize {
+				 				  		display: none;
+				 				  	}
+			 				 	 	&.portlet-plus {
+					 				  	background: url('../images/libraryzurb/plus.png') no-repeat;
+					 				  	padding-right: 23px;
+				 				  	}
+			 				  	background-size: 30px;
+			 				  	height: 30px;
+			 				  	width: 30px;
+	 						}
+	 						.portlet-title {
+			 					@extend .white-text;
+			 					padding-left: 21%;
+			 					font-size: 22px;
+			 					position: relative;
+		 					  	&:after {
+			 					  	content: " ";
+			 					  	width: 20px;
+			 					  	height: 20px;
+			 					  	display: inline-block;
+			 					  	position: relative;
+			 					  	vertical-align: middle;
+			 					  	visibility: visible;
+			 					  	background: url('../images/libraryzurb/right-arrow.png') no-repeat;
+			 					  	background-size: 18px;
+			 					  	background-position: center;
+			 					  	margin-left: 12px;
+		 					 	}
+	 						}
 	 				}
-	 				
-	 				
-	 				.portlet-title {
-	 					@extend .white-text;
-	 					padding-left: 21%;
-	 					font-size: 22px;
-	 					position: relative;
-	 					  &:after {
-	 					  	/* @include previous(20px, 20px, $top: 13%); */
-	 					  	content: " ";
-	 					  	width: 20px;
-	 					  	height: 20px;
-	 					  	display: inline-block;
-	 					  	position: relative;
-	 					  	vertical-align: middle;
-	 					  	visibility: visible;
-	 					  	background: url('../images/libraryzurb/right-arrow.png') no-repeat;
-	 					  	background-size: 18px;
-	 					  	background-position: center;
-	 					  	margin-left: 12px;
-	 					  }
-	 				}
-	 			}
-	 		}
+ 			}
 	 		.portlet-content {
 	 			padding: 35px 7.1% !important;
 	 			position: inherit;
-	 			 .view {
-	 			 	  &:before {
-	 			 	  	@include previous(50px, 50px, $top: 12px, $left: 6%);
-	 			 	  }
-	 			 	.view-header {
-	 			 		text-align: left !important;
-	 			 	}
-	 			 	.view-content {
-	 			 		.views-field-count {
-	 			 			font-size: 15px;
-	 			 			@extend .arial-regular;
-	 			 			color: $black;
-	 			 			margin-top: 10px;
-	 			 			.views-label-count {
-	 			 				@extend .like;
-	 			 			}
-	 			 		}
-	 			 	}
-	 			 	&.view-follow {
-	 			 		&:before {
-	 			 			background: url('../images/libraryzurb/following.png') no-repeat;
-	 			 		}
-	 			 		.view-header {
-	 			 			.Following {
-	 			 				p {
-	 			 					font-size: 15px;
-	 			 					@extend .arial-bold;
-	 			 					color: $black;
-	 			 				}
-	 			 			}
-	 			 		}
-	 			 		.view-content {
-	 			 			width: 100%;
-	 			 			display: table;
-	 			 			 .views-row {
-	 			 			 	display: table-row;
-	 			 			 	img {
-	 			 			 		margin: 0px 0px 0.5em 0px;
-	 			 			 		@extend .no-border;
-	 			 			 	}
-	 			 			 	 .views-field {
-	 			 			 	 	display: table-cell;
-	 			 			 	 	&.views-field-field-user-avatar {
-	 			 			 	 		width: 25%;
-	 			 			 	 		float: left;
-	 			 			 	 		padding-right: 5%;
-	 			 			 	 	}
-	 			 			 	 	&.views-field-name {
-	 			 			 	 		width: 70%;
-	 			 			 	 		float: left;
-	 			 			 	 		a {
-	 			 			 	 		color: $black;
-	 			 			 	 		font-size: 15px;
-	 			 			 	 		@extend .arial-regular;
-	 			 			 	 	}
-	 			 			 	 	}
-	 			 			 	 }
-	 			 			 }
-	 			 		}
-	 			 	}
-	 			 	&.view-patron-rewads-for-patron-dashboard {
-	 			 		&:before {
-	 			 			background: url('../images/libraryzurb/reward-dash.png') no-repeat;
-	 			 		}
-	 			 		.more-link {
-	 			 			text-align: right;
-	 			 			 a {
-	 			 			 	@extend .mclaren;
-	 			 			 	position: relative;
-	 			 			 	font-size: 17px;
-	 			 			 	text-transform: capitalize;
-	 			 			 	
-	 			 			 	padding-right: 20px;
-	 			 			 	 &:after {
-                                      @include previous(17px, 17px, $right: 0, $top: 1px);
-                                      background: url('../images/libraryzurb/right-blue-arrow.png') no-repeat;
-                                      background-size: 15px;
-	 			 			 	 }
-	 			 			 }
-	 			 		}
-	 			 		.view-content {
-	 			 			display: table;
-	 			 			width: 100%;
-	 			 			.views-row {
-	 			 				display: table-row;
-	 			 				.views-field {
-	 			 					display: table-cell;
-	 			 					&.views-field-field-reward-badge {
-	 			 						h2 {
-	 			 							display: none;
-	 			 						}
-	 			 						width: 30%;
-	 			 						float: left;
-	 			 					}
-	 			 					&.views-field-php {
-	 			 						width: 65%;
-	 			 						float: right;
-	 			 						padding-top: 20px;
-	 			 						font-size: 15px;
-	 			 						@extend .arial-regular;
-	 			 						color: $black;
-	 			 					}
-	 			 				}
-	 			 			}
-	 			 		}
-	 			 	}
-	 			 	  &.view-booklist-on-activities-page {
+	 			 	.view {
 	 			 	  	&:before {
-	 			 			background: url('../images/libraryzurb/booklist-dash.png') no-repeat;
-	 			 			
+	 			 	  		@include previous(50px, 50px, $top: 12px, $left: 6%);
+ 			 	  		}
+			 			 	.view-header {
+			 			 		text-align: left !important;
+			 			 	}
+			 			 	.view-content {
+			 			 		.views-field-count {
+			 			 			font-size: 15px;
+			 			 			@extend .arial-regular;
+			 			 			color: $black;
+			 			 			margin-top: 10px;
+				 			 			.views-label-count {
+				 			 				@extend .like;
+				 			 			}
+			 			 		}
+			 			 	}
+	 			 		&.view-follow {
+		 			 		&:before {
+		 			 			background: url('../images/libraryzurb/following.png') no-repeat;
+		 			 		}
+		 			 		.view-header {
+		 			 			.Following {
+		 			 				p {
+		 			 					font-size: 15px;
+		 			 					@extend .arial-bold;
+		 			 					color: $black;
+		 			 				}
+		 			 			}
+		 			 		}
+ 			 				.view-content {
+		 			 			width: 100%;
+		 			 			display: table;
+	 			 			 		.views-row {
+	 			 			 			display: table-row;
+	 			 			 				img {
+				 			 			 		margin: 0px 0px 0.5em 0px;
+				 			 			 		@extend .no-border;
+	 			 			 				}
+	 			 			 	 			.views-field {
+	 			 			 	 				display: table-cell;
+					 			 			 	 	&.views-field-field-user-avatar {
+					 			 			 	 		width: 25%;
+					 			 			 	 		float: left;
+					 			 			 	 		padding-right: 5%;
+					 			 			 	 	}
+					 			 			 	 	&.views-field-name {
+					 			 			 	 		width: 70%;
+					 			 			 	 		float: left;
+						 			 			 	 		a {
+							 			 			 	 		color: $black;
+							 			 			 	 		font-size: 15px;
+							 			 			 	 		@extend .arial-regular;
+						 			 			 	 		}
+					 			 			 	 	}
+	 			 			 	 			}
+	 			 			 		}
+	 			 			}
 	 			 		}
-	 			 	  	counter-reset: section;
-	 			 	  	.view-footer {
-	 			 	  		p {
-	 			 	  			text-align: center;
-	 			 	  			a {
-	 			 	  				font-size: 17px;
-	 			 	  				width: 100%;
-	 			 	  				display: inline-block;
-	 			 	  				margin: 0;
-	 			 	  				padding: 7px 22px;
-	 			 	  				@extend .blue-button;
-	 			 	  				 &:hover {
-	 			 	  				 	text-decoration: underline !important;
-	 			 	  				 }
+		 			 	&.view-patron-rewads-for-patron-dashboard {
+		 			 		&:before {
+		 			 			background: url('../images/libraryzurb/reward-dash.png') no-repeat;
+		 			 		}
+		 			 		.more-link {
+		 			 			text-align: right;
+	 			 			 	a {
+		 			 			 	@extend .mclaren;
+		 			 			 	position: relative;
+		 			 			 	font-size: 17px;
+		 			 			 	text-transform: capitalize;
+	 			 			 		padding-right: 20px;
+		 			 			 	 	&:after {
+	                                      	@include previous(17px, 17px, $right: 0, $top: 1px);
+	                                      	background: url('../images/libraryzurb/right-blue-arrow.png') no-repeat;
+	                                      	background-size: 15px;
+		 			 			 	 	}
+		 			 			}
+		 			 		}
+	 			 			.view-content {
+		 			 			display: table;
+		 			 			width: 100%;
+			 			 			.views-row {
+			 			 				display: table-row;
+				 			 				.views-field {
+				 			 					display: table-cell;
+				 			 					&.views-field-field-reward-badge {
+				 			 						h2 {
+				 			 							display: none;
+				 			 						}
+				 			 						width: 30%;
+				 			 						float: left;
+				 			 					}
+				 			 					&.views-field-php {
+				 			 						width: 65%;
+				 			 						float: right;
+				 			 						padding-top: 20px;
+				 			 						font-size: 15px;
+				 			 						@extend .arial-regular;
+				 			 						color: $black;
+				 			 					}
+	 			 							}
+	 			 					}
+	 			 			}
+		 			 	}
+	 			 	  	&.view-booklist-on-activities-page {
+			 			 	  	&:before {
+			 			 			background: url('../images/libraryzurb/booklist-dash.png') no-repeat;
+			 			 		}
+	 			 	  		counter-reset: section;
+	 			 	  			.view-footer {
+			 			 	  		p {
+			 			 	  			text-align: center;
+			 			 	  			a {
+			 			 	  				font-size: 17px;
+			 			 	  				width: 100%;
+			 			 	  				display: inline-block;
+			 			 	  				margin: 0;
+			 			 	  				padding: 7px 22px;
+			 			 	  				@extend .blue-button;
+				 			 	  				&:hover {
+				 			 	  				 	text-decoration: underline !important;
+				 			 	  				}
+			 			 	  			}
+	 			 	  				}
 	 			 	  			}
-	 			 	  		}
-	 			 	  	}
-	 			 	  	.view-header {
-	 			 	  		h3{
-	 			 	  		font-size: 15px;
-	 			 	  		color: $black;
-	 			 	  		@extend .arial-bold;
-	 			 	  		text-transform: capitalize;
-	 			 	  	}
-	 			 	  		p {
-			 			 			text-align: right;
-			 			 			@extend .mclaren;
-			 			 			 a {
-			 			 			 	position: relative;
-			 			 			 	font-size: 17px;
-			 			 			 	@extend .mclaren;
-			 			 			 	padding-right: 20px;
-			 			 			 	text-transform: capitalize;
-			 			 			 	 &:after {
-		                                      @include previous(17px, 17px, $right: 0, $top: 1px);
-		                                      background: url('../images/libraryzurb/right-blue-arrow.png') no-repeat;
-		                                      background-size: 15px;
-			 			 			 	 }
-			 			 			 }
-			 			 		}
+			 			 	  	.view-header {
+			 			 	  		h3{
+			 			 	  		font-size: 15px;
+			 			 	  		color: $black;
+			 			 	  		@extend .arial-bold;
+			 			 	  		text-transform: capitalize;
+			 			 	  		}
+	 			 	  				p {
+				 			 			text-align: right;
+				 			 			@extend .mclaren;
+			 			 			 	a {
+				 			 			 	position: relative;
+				 			 			 	font-size: 17px;
+				 			 			 	@extend .mclaren;
+				 			 			 	padding-right: 20px;
+				 			 			 	text-transform: capitalize;
+					 			 			 	&:after {
+				                                    @include previous(17px, 17px, $right: 0, $top: 1px);
+				                                    background: url('../images/libraryzurb/right-blue-arrow.png') no-repeat;
+				                                    background-size: 15px;
+					 			 			 	}
+			 			 			 	}
+			 			 			}
 	 			 			
-
-	 			 	  	}
-	 			 	  	 ol {
-	 			 	  	 	list-style: none;
-	 			 	  	 	  li {
-	 			 	  	 	  	.views-field-title {
-	 			 	  	 	  		a {
-	 			 	  	 	  			color: $black;
-	 			 	  	 	  			font-size: 15px;
-	 			 	  	 	  			@extend .arial-regular;
-	 			 	  	 	  			 &:before {
-	 			 	  	 	  			 	@extend .counter;
-	 			 	  	 	  			 }
+								}
+	 			 	  	 	ol {
+	 			 	  	 		list-style: none;
+	 			 	  	 	  		li {
+	 			 	  	 	  			.views-field-title {
+	 			 	  	 	  				a {
+			 			 	  	 	  			color: $black;
+			 			 	  	 	  			font-size: 15px;
+			 			 	  	 	  			@extend .arial-regular;
+				 			 	  	 	  			 &:before {
+				 			 	  	 	  			 	@extend .counter;
+				 			 	  	 	  			 }
+	 			 	  	 	  				}
+	 			 	  	 	  			}
 	 			 	  	 	  		}
-	 			 	  	 	  	}
-	 			 	  	 	  }
 
-	 			 	  	 }
-	 			 	  }
-	 			 	  &.view-my-book-reviews {
-	 			 	  		&:before {
-	 			 			background: url('../images/libraryzurb/review-dash.png') no-repeat;
+	 			 	  	 	}
+	 			 	  	}
+	 			 	  	&.view-my-book-reviews {
+		 			 	  		&:before {
+		 			 				background: url('../images/libraryzurb/review-dash.png') no-repeat;
+		 			 			}
+	 			 	  		counter-reset: section;
+	 			 	  		    .view-empty {
+	 			 	  		    	p {
+	 			 	  		    		&:nth-of-type(1) {
+	 			 	  		    			text-align: left;
+	 			 	  		    		}
+	 			 	  		    	}
+	 			 	  		    	p {
+	 			 	  		    		&:nth-of-type(2) {
+	 			 	  		    			text-align: center;
+			 			 	  			 		a {
+					 			 	  			 	width: 100%;
+					 			 	  			 	display: inline-block;
+					 			 	  			 	font-size: 17px;
+					 			 	  			 	margin: 0;
+					 			 	  			 	padding: 7px 22px;
+					 			 	  			 	@extend .blue-button;
+						 			 	  			 	&:hover {
+						 			 	  			 	  	text-decoration: underline !important;
+						 			 	  			 	}
+			 			 	  			 		} 
+
+	 			 	  		    		}
+	 			 	  		    	}
+	 			 	  		    }
+	 			 	  			.view-footer {
+	 			 	  				p {
+	 			 	  					text-align: center;
+	 			 	  			 		a {
+			 			 	  			 	width: 100%;
+			 			 	  			 	display: inline-block;
+			 			 	  			 	font-size: 17px;
+			 			 	  			 	margin: 0;
+			 			 	  			 	padding: 7px 22px;
+			 			 	  			 	@extend .blue-button;
+				 			 	  			 	&:hover {
+				 			 	  			 	  	text-decoration: underline !important;
+				 			 	  			 	}
+	 			 	  			 		} 			 	  		
+	 			 	  				}
+	 			 	  			}
+			 			 	  	.view-empty {
+			 			 	  		font-size: 15px;
+			 			 	  		@extend .arial-regular;
+			 			 	  		color: $black;
+			 			 	  	}
+			 			 	  	.view-header {
+			 			 	  		h3 {
+			 			 	  			color: $black;
+			 			 	  			font-size: 15px;
+			 			 	  			@extend .arial-bold;
+			 			 	  			text-transform: capitalize;
+			 			 	  		}
+
+	 			 					p {
+				 			 			text-align: right;
+				 			 			@extend .mclaren;
+			 			 			 		a {
+					 			 			 	position: relative;
+					 			 			 	font-size: 17px;
+					 			 			 	@extend .mclaren;
+					 			 			 	padding-right: 20px;
+					 			 			 	text-transform: capitalize;
+					 			 			 	 	&:after {
+					                                      @include previous(17px, 17px, $right: 0, $top: 1px);
+					                                      background: url('../images/libraryzurb/right-blue-arrow.png') no-repeat;
+					                                      background-size: 15px;
+					 			 			 	 	}
+			 			 			 		}
+			 			 			}
 	 			 			
-	 			 		  }
-	 			 	  	counter-reset: section;
-	 			 	  	.view-footer {
-	 			 	  		p {
-	 			 	  			text-align: center;
-	 			 	  			 a {
-	 			 	  			 	width: 100%;
-	 			 	  			 	display: inline-block;
-	 			 	  			 	font-size: 17px;
-	 			 	  			 	margin: 0;
-	 			 	  			 	padding: 7px 22px;
-	 			 	  			 	 @extend .blue-button;
-	 			 	  			 	  &:hover {
-	 			 	  			 	  	text-decoration: underline !important;
-	 			 	  			 	  }
-	 			 	  			 	} 			 	  		
-	 			 	  		}
+								}
+			 			 	  	.view-content {
+			 			 	  		ul {
+			 			 	  			margin-left: 0;
+			 			 	  			list-style: none;
+			 			 	  			 li {
+			 			 	  			 	margin-left: 0;
+			 			 	  			 	a {
+			 			 	  			 		color: $black;
+			 			 	  			 		@extend .arial-regular;
+			 			 	  			 		font-size: 15px;
+			 			 	  			 		text-transform: capitalize;
+			 			 	  			 		 &:before {
+			 			 	  			 		 	@extend .counter;
+			 			 	  			 		 }
+			 			 	  			 	}
+			 			 	  			 }
+			 			 	  		}
+			 			 	  	}
 	 			 	  	}
-	 			 	  	.view-empty {
-	 			 	  		font-size: 15px;
-	 			 	  		@extend .arial-regular;
-	 			 	  		color: $black;
-	 			 	  	}
-	 			 	  	.view-header {
-	 			 	  		h3 {
-	 			 	  			color: $black;
-	 			 	  			font-size: 15px;
-	 			 	  			@extend .arial-bold;
-	 			 	  			text-transform: capitalize;
-	 			 	  		}
-
-	 			 				p {
-			 			 			text-align: right;
-			 			 			@extend .mclaren;
-			 			 			 a {
-			 			 			 	position: relative;
-			 			 			 	font-size: 17px;
-			 			 			 	@extend .mclaren;
-			 			 			 	padding-right: 20px;
-			 			 			 	text-transform: capitalize;
-			 			 			 	 &:after {
-		                                      @include previous(17px, 17px, $right: 0, $top: 1px);
-		                                      background: url('../images/libraryzurb/right-blue-arrow.png') no-repeat;
-		                                      background-size: 15px;
-			 			 			 	 }
-			 			 			 }
-			 			 		}
-	 			 			
-
-	 			 	  	}
-	 			 	  	.view-content {
-	 			 	  		ul {
-	 			 	  			margin-left: 0;
-	 			 	  			list-style: none;
-	 			 	  			 li {
-	 			 	  			 	margin-left: 0;
-	 			 	  			 	a {
-	 			 	  			 		color: $black;
-	 			 	  			 		@extend .arial-regular;
-	 			 	  			 		font-size: 15px;
-	 			 	  			 		text-transform: capitalize;
-	 			 	  			 		 &:before {
-	 			 	  			 		 	@extend .counter;
-	 			 	  			 		 }
-	 			 	  			 	}
-	 			 	  			 }
-	 			 	  		}
-	 			 	  	}
-	 			 	  }
-	 			 	  &.view-my-activities-for-patron-dashboard {
-	 			 	  			&:before {
+	 			 	  	&.view-my-activities-for-patron-dashboard {
+ 			 	  			&:before {
 	 			 			background: url('../images/libraryzurb/activities-dash.png') no-repeat;
-	 			 		}
+	 			 			}
 		 			 	    .view-header {
-		 			 	  	  a {
-		 			 	  	  	 font-size: 15px;
-		 			 	  	  	 color: $black;
-		 			 	  	  	 @extend .arial-bold;
-		 			 	  	  	 text-transform: capitalize;
-		 			 	  	  	 text-decoration: none;
+		 			 	  	  	a {
+			 			 	  	  	 font-size: 15px;
+			 			 	  	  	 color: $black;
+			 			 	  	  	 @extend .arial-bold;
+			 			 	  	  	 text-transform: capitalize;
+			 			 	  	  	 text-decoration: none;
 		 			 	  	    }
 		 			 	  	}
 		 			 	  	.view-content {
@@ -723,9 +693,9 @@ body {
 		 			 	  					font-size: 15px;
 		 			 	  					color: $black;
 		 			 	  					@extend .arial-regular;
-		 			 	  					&:nth-of-type(2) {
-		 			 	  						margin-left: 1%;
-		 			 	  					}
+			 			 	  					&:nth-of-type(2) {
+			 			 	  						margin-left: 1%;
+			 			 	  					}
 		 			 	  				}
 		 			 	  			}
 		 			 	  		}
@@ -734,257 +704,262 @@ body {
 		 			 	  		div {
 		 			 	  			text-align: center;
 		 			 	  			margin-bottom: 10px;
-		 			 	  			  a {
-		 			 	  			  	 width: 100%;
-		 			 	  			  	 display: inline-block;
-		 			 	  			  	 font-size: 17px;
-		 			 	  			  	 padding: 11px 22px;
-		 			 	  			  	 @extend .blue-button;
-		 			 	  			  }
+		 			 	  			  	a {
+			 			 	  			  	 width: 100%;
+			 			 	  			  	 display: inline-block;
+			 			 	  			  	 font-size: 17px;
+			 			 	  			  	 padding: 11px 22px;
+			 			 	  			  	 @extend .blue-button;
+		 			 	  			  	}
 		 			 	  		}
 		 			 	  	}
-	 			 	  }
-	 			 }
+	 			 	  	}
+	 			 	}
 	 		}
-	 	}
-	 } 
-	
-	/**css for msg center**/
-	&.page-messages {
-		/**create-msg***/
-		&.page-messages-new, &.page-messages-view {
-			.main {
-				form {
-				width: 100%;
-				max-width: 90%;
-				margin: 0 auto;
-				 label,div {
-				 	@extend .white-text;
-				 }
-				.form-submit {
-					@extend .yellow-button;
-				}
-				fieldset#edit-token {
-					display: none;
-				}
-			 }
-			}
-		}
-		/**end create-msg**/
-		div.main {
-			background: $blue;
-	        overflow: hidden;
-	        border-radius: 20px;
-	        margin-bottom: 25px;
-	        position: relative; 
-	        padding: 0;
-	        padding-bottom: 20px;
-	        @extend .box-shadow;
-	         #page-title {
-			    color: $white;
-	          	@extend .mclaren;
-				padding-top: 26px;
-				padding-bottom: 25px;
-			    font-size: 28px;
-				height: 110px;
-				border-bottom: medium none;
-				margin-top: -1px;
-				padding-left:4%;
-				z-index: 0;
-				position: relative;
-				 &:after {
-				 	@include previous(100%, 110px, $left: 0, $top: 0);
-				 	background: url('../images/libraryzurb/background-saffron.png') no-repeat;
-				 		background-position: -35px 10px;
-				 		@include rotate(180deg);
-				 		z-index: -1;
-
-				 }
-	         }
-	        ul {
-	        	&.pagination.pager {
-	        		float: right;
-	        		margin-right: 20px;
-	        		 li {
-	        		 	a {
-	        		 		background: $yellow;
-	        		 		color: $black;
-	        		 		border-left: 1px solid $black;
-	        		 		padding: 10px;
-	        		 	}
-	        		 	&.arrow {
-	        		 		&.first {
-	        		 			a {
-	        		 				border-left: 0 !important;
-	        		 				border-radius: 10px 0px 0px 10px;
-	        		 			}
-	        		 		}
-	        		 		&.last {
-	        		 			a {
-	        		 				border-radius: 0px 10px 10px 0px;
-	        		 			}
-	        		 		}
-	        		 	}
-	        		 }
-	        	}
-	        	&.button-group {
-	        		li {
-	        			a {
-	        				font-size: 17px;
-	        				@extend .yellow-button;
-	        			}
-	        		}
-		        		&:after {
-		        			clear: none !important;
-		        		}
-	        	}
-	        	&.action-links {
-	        		list-style: none;
-	        		 li {
-	        		 	a {
-	        		 		@extend .yellow-button;
-	        		 		margin-left:20px;
-	        		 		font-size: 17px;
-	        		 		position: relative;
-	        		 		top: 8.5px;
-	        		 		@extend .box-shadow;
-	        		 	}
-	        		 }
-	        	}
-
-	        }
-	        form {
-	        	clear: both;
-	        		 button {
-        	 			font-size: 17px;
-        	 			@extend .mclaren;
-        	 		}
-        	 	 #privatemsg-list-form {
-        	 	 	table {
-        	 	 		border: none;
-        	 	 		margin: 0 auto !important;
-        	 	 		max-width: 90%;
-        	 	 		 tr {
-        	 	 		 	 	th, th > a, td, td > a {
-        	 	 		 	 		color: $white;
-        	 	 		 	 	}
-        	 	 		 	 }
-
-        	 	 		 thead {
-        	 	 		 	background: $blue;
-        	 	 		 	font-weight: normal;
-        	 	 		 	border-bottom: 5px solid $blue;
-
-        	 	 		 	 
-        	 	 		 }
-        	 	 		 tbody {
-        	 	 		 	border-top: none;
-        	 	 		 	.privatemsg-unread td {
-        	 	 		 		font-weight: normal;
-        	 	 		 	}
-        	 	 		 	 tr.even, tr.odd {
-        	 	 		 	 	border-bottom: none;
-        	 	 		 	 	background-color: $blue;
-        	 	 		 	 }
-
-        	 	 		 }
-        	 	 		 tr.even, tr.alt, tr:nth-of-type(2n) {
-        	 	 		 	background: $blue;
-        	 	 		 }
-
-        	 	 	}
-        	 	 	.container-inline {
-        	 	 		width: 100%;
-        	 	 		padding-bottom: 20px;
-        	 	 		padding-left: 2%;
-        	 	 		margin: 0 auto;
-
-        	 	 		  div {
-        	 	 		  	 &.form-type-textfield {
-        	 	 		  	 	display: none;
-        	 	 		  	 }
-        	 	 		  	 &.form-type-select {
-        	 	 		  	 	.chosen-container-single {
-        	 	 		  	 		width: 200px !important;
-        	 	 		  	 		 .chosen-single {
-        	 	 		  	 		 	font-size: 17px;
-        	 	 		  	 		 	@extend .yellow-button;
-        	 	 		  	 		 	padding: 13px 20px 10px;
-        	 	 		  	 		 	height: auto !important;
-        	 	 		  	 		 	position: relative;
-        	 	 		  	 		 	bottom: 2px;
-        	 	 		  	 		 	@extend .box-shadow;
-        	 	 		  	 		 	  div {
-        	 	 		  	 		 	  	top: 8px;
-        	 	 		  	 		 	  }
-        	 	 		  	 		 }
-        	 	 		  	 	}
-        	 	 		  	 }
-        	 	 		  }
-        	 	 	}
-        	 	 }
-	        	 fieldset {
-	        	 	border: none;
-	        	 	 legend {
-	        	 	 	background: none;
-	        	 	 	font-weight: normal;
-	        	 	 	margin-top: 15px;
-
-	        	 	 	 a {
-	        	 	 	 	@extend .yellow-button;
-	        	 	 	 	@extend .box-shadow;
-	        		 		font-size: 17px;
-	        	 	 	 	
-
-	        	 	 	 }
-
-	        	 	 }
-	        	 	.form-item {
-	        	 		label {
-	        	 			color: $white;
-	        	 			text-align: left !important;
-	        	 			padding-bottom: 5px;
-	        	 		}
-
-	        	 	}
-
-	        	 }
-
-	        }
-	     }
 	}
+} 
+	
+/**end css of patron dashboard page**/
+
+/**css for msg center**/
+	
+.page-messages {
+	/**create-msg***/
+	&.page-messages-new, &.page-messages-view {
+		.main {
+			form {
+			width: 100%;
+			max-width: 90%;
+			margin: 0 auto;
+			 label,div {
+			 	@extend .white-text;
+			 }
+			.form-submit {
+				@extend .yellow-button;
+			}
+			fieldset#edit-token {
+				display: none;
+			}
+		 }
+		}
+	}
+	/**end create-msg**/
+	div.main {
+		background: $blue;
+        overflow: hidden;
+        border-radius: 20px;
+        margin-bottom: 25px;
+        position: relative; 
+        padding: 0;
+        padding-bottom: 20px;
+        @extend .box-shadow;
+         #page-title {
+		    color: $white;
+          	@extend .mclaren;
+			padding-top: 26px;
+			padding-bottom: 25px;
+		    font-size: 28px;
+			height: 110px;
+			border-bottom: medium none;
+			margin-top: -1px;
+			padding-left:4%;
+			z-index: 0;
+			position: relative;
+			 &:after {
+			 	@include previous(100%, 110px, $left: 0, $top: 0);
+			 	background: url('../images/libraryzurb/background-saffron.png') no-repeat;
+			 		background-position: -35px 10px;
+			 		@include rotate(180deg);
+			 		z-index: -1;
+
+			 }
+         }
+        ul {
+        	&.pagination.pager {
+        		float: right;
+        		margin-right: 20px;
+        		 li {
+        		 	a {
+        		 		background: $yellow;
+        		 		color: $black;
+        		 		border-left: 1px solid $black;
+        		 		padding: 10px;
+        		 	}
+        		 	&.arrow {
+        		 		&.first {
+        		 			a {
+        		 				border-left: 0 !important;
+        		 				border-radius: 10px 0px 0px 10px;
+        		 			}
+        		 		}
+        		 		&.last {
+        		 			a {
+        		 				border-radius: 0px 10px 10px 0px;
+        		 			}
+        		 		}
+        		 	}
+        		 }
+        	}
+        	&.button-group {
+        		li {
+        			a {
+        				font-size: 17px;
+        				@extend .yellow-button;
+        			}
+        		}
+	        		&:after {
+	        			clear: none !important;
+	        		}
+        	}
+        	&.action-links {
+        		list-style: none;
+        		 li {
+        		 	a {
+        		 		@extend .yellow-button;
+        		 		margin-left:20px;
+        		 		font-size: 17px;
+        		 		position: relative;
+        		 		top: 8.5px;
+        		 		@extend .box-shadow;
+        		 	}
+        		 }
+        	}
+
+        }
+        form {
+        	clear: both;
+        		 button {
+    	 			font-size: 17px;
+    	 			@extend .mclaren;
+    	 		}
+    	 	 #privatemsg-list-form {
+    	 	 	table {
+    	 	 		border: none;
+    	 	 		margin: 0 auto !important;
+    	 	 		max-width: 90%;
+    	 	 		 tr {
+    	 	 		 	 	th, th > a, td, td > a {
+    	 	 		 	 		color: $white;
+    	 	 		 	 	}
+    	 	 		 	 }
+
+    	 	 		 thead {
+    	 	 		 	background: $blue;
+    	 	 		 	font-weight: normal;
+    	 	 		 	border-bottom: 5px solid $blue;
+
+    	 	 		 	 
+    	 	 		 }
+    	 	 		 tbody {
+    	 	 		 	border-top: none;
+    	 	 		 	.privatemsg-unread td {
+    	 	 		 		font-weight: normal;
+    	 	 		 	}
+    	 	 		 	 tr.even, tr.odd {
+    	 	 		 	 	border-bottom: none;
+    	 	 		 	 	background-color: $blue;
+    	 	 		 	 }
+
+    	 	 		 }
+    	 	 		 tr.even, tr.alt, tr:nth-of-type(2n) {
+    	 	 		 	background: $blue;
+    	 	 		 }
+
+    	 	 	}
+    	 	 	.container-inline {
+    	 	 		width: 100%;
+    	 	 		padding-bottom: 20px;
+    	 	 		padding-left: 2%;
+    	 	 		margin: 0 auto;
+
+    	 	 		  div {
+    	 	 		  	 &.form-type-textfield {
+    	 	 		  	 	display: none;
+    	 	 		  	 }
+    	 	 		  	 &.form-type-select {
+    	 	 		  	 	.chosen-container-single {
+    	 	 		  	 		width: 200px !important;
+    	 	 		  	 		 .chosen-single {
+    	 	 		  	 		 	font-size: 17px;
+    	 	 		  	 		 	@extend .yellow-button;
+    	 	 		  	 		 	padding: 13px 20px 10px;
+    	 	 		  	 		 	height: auto !important;
+    	 	 		  	 		 	position: relative;
+    	 	 		  	 		 	bottom: 2px;
+    	 	 		  	 		 	@extend .box-shadow;
+    	 	 		  	 		 	  div {
+    	 	 		  	 		 	  	top: 8px;
+    	 	 		  	 		 	  }
+    	 	 		  	 		 }
+    	 	 		  	 	}
+    	 	 		  	 }
+    	 	 		  }
+    	 	 	}
+    	 	 }
+        	 fieldset {
+        	 	border: none;
+        	 	 legend {
+        	 	 	background: none;
+        	 	 	font-weight: normal;
+        	 	 	margin-top: 15px;
+
+        	 	 	 a {
+        	 	 	 	@extend .yellow-button;
+        	 	 	 	@extend .box-shadow;
+        		 		font-size: 17px;
+        	 	 	 	
+
+        	 	 	 }
+
+        	 	 }
+        	 	.form-item {
+        	 		label {
+        	 			color: $white;
+        	 			text-align: left !important;
+        	 			padding-bottom: 5px;
+        	 		}
+
+        	 	}
+
+        	 }
+
+        }
+     }
+}
  /**msg center css end**/
- /**css for page-reviews **/
-  &.page-reviews,  &.page-booklists  {
-  	 #page-title {
+
+ /**common css used in  page-reviews  and page-booklists**/
+ 
+.page-reviews, .page-booklists  {
+  	#page-title {
   	 	@extend .black-text;
   	 	@extend .mclaren;
-  	 }
-  	 .view-header {
+  	}
+  	.view-header {
   	 	p {
   	 		a {
   	 			color: $blue;
-  	 			 &:hover, &:focus {
-  	 			 	color: $blue;
-  	 			 }
+	  	 			 &:hover, &:focus {
+	  	 			 	color: $blue;
+	  	 			 }
   	 		}
   	 	}
-  	 }
-     .pull-9.sidebar {
+  	}
+    .pull-9.sidebar {
      	width: 29.53%;
      	right: 69.4%;
      	padding-left: 2.65%;
      	padding-right: 2.65%;
      	@extend .block;
-     }
-     .pull-9.sidebar2 {
+    }
+    .pull-9.sidebar2 {
        width: 29.53%;
        right: 71.4%;
        padding-left: 0;
        padding-right: 0;
-     }
+    }
 
-  	 .sidebar {
+  	.sidebar {
   	 	background: $blue;
   	 	color: $white;
   	 	padding-top: 25px;
@@ -996,70 +971,70 @@ body {
   	 	  	font-size: 22px;
   	 	  	margin-top: 6px;
   	 	  }
-  	 	  p {
-  	 	  	 color: white;
-  	 	  	 &.button {
-  	 	  	 	@extend .yellow-button;
-  	 	  	 	margin-left: 0 !important;
-  	 	  	 	margin-bottom: 24px;
-  	 	  	 }
-  	 	  }
-  	 	  .toogle-follow {
-  	 	  	display: none;
-  	 	  }
-  	 	  .view.view-my-book-reviews, .view.view-booklist-on-activities-page {
-  	 	  	margin-top: 40px;
-  	 	  }
-  	 	  .reviews-block-block {
-  	 	    margin: 0 auto !important;
-  	 	    .view-content {
-  	 	    	ol {
-  	 	    		margin-left: 5%;
-  	 	    		 .views-field-title {
-  	 	    		 	a {
-  	 	    		 		@extend .white-text;
-  	 	    		 		border-bottom: 1px solid $white;
-  	 	    		 	}
-  	 	    		 }
-  	 	    		 .views-field-count {
-  	 	    		 	 .field-content {
-  	 	    		 	 	position: relative;
-  	 	    		 	 	top: 10px;
-  	 	    		 	 }
-  	 	    		 	 .views-label {
-  	 	    		 	 	position: relative;
-  	 	    		 	 	top: 10px;
-  	 	    		 	 	padding-right: 35px;
-  	 	    		 	 	 &:after {
-  	 	    		 	 	 	@include previous(30px, 30px, $top: -4px, $right: 0);
-  	 	    		 	 	 	background: url('../images/libraryzurb/smily-white.png') no-repeat;
-  	 	    		 	 	 }
-  	 	    		 	 }
-  	 	    		 }
-  	 	    	}
-  	 	    }
-  	 	   .view-header {
-  	 	  		h3:nth-of-type(1) {
-  	 	  			a {
-	  	 	  			@extend .white-text;
-	  	 	  			font-size: 21px !important;
-	  	 	  		}
-           		 }
-           		 h3 {
-           		 	font-size: 17px !important;
-           		 	@extend .arial-bold;
-           		 	color: $white;
-           		 	margin-bottom: 15px;
-           		 	  a {
-	           		 	  	font-size: 17px !important;
-	           		 		@extend .arial-bold;
-	           		 		color: $white;
-           		 	  }
-           		 }
-            }
-  	 	  }
-  	 } 
-  	  .view {
+  	 	  	p {
+  	 	  	 	color: white;
+		  	 	  	 &.button {
+		  	 	  	 	@extend .yellow-button;
+		  	 	  	 	margin-left: 0 !important;
+		  	 	  	 	margin-bottom: 24px;
+		  	 	  	 }
+  	 	  	}
+	 	  	.toogle-follow {
+	 	  		display: none;
+	 	  	}
+  	 	  	.view.view-my-book-reviews, .view.view-booklist-on-activities-page {
+  	 	  		margin-top: 40px;
+  	 	  	}
+  	 	  	.reviews-block-block {
+  	 	    	margin: 0 auto !important;
+  	 	    		.view-content {
+  	 	    			ol {
+  	 	    				margin-left: 5%;
+  	 	    		 			.views-field-title {
+			  	 	    		 	a {
+			  	 	    		 		@extend .white-text;
+			  	 	    		 		border-bottom: 1px solid $white;
+			  	 	    		 	}
+  	 	    		 			}
+		  	 	    		 	.views-field-count {
+			  	 	    		 	 	.field-content {
+				  	 	    		 	 	position: relative;
+				  	 	    		 	 	top: 10px;
+			  	 	    		 	 	}
+			  	 	    		 	 	.views-label {
+				  	 	    		 	 	position: relative;
+				  	 	    		 	 	top: 10px;
+				  	 	    		 	 	padding-right: 35px;
+				  	 	    		 	 	 	&:after {
+					  	 	    		 	 	 	@include previous(30px, 30px, $top: -4px, $right: 0);
+					  	 	    		 	 	 	background: url('../images/libraryzurb/smily-white.png') no-repeat;
+				  	 	    		 	 	 	}
+			  	 	    		 	 	}
+  	 	    		 			}
+  	 	    			}
+  	 	    		}
+  	 	   			.view-header {
+		  	 	  		h3:nth-of-type(1) {
+		  	 	  			a {
+			  	 	  			@extend .white-text;
+			  	 	  			font-size: 21px !important;
+			  	 	  		}
+		           		}
+	           		 	h3 {
+		           		 	font-size: 17px !important;
+		           		 	@extend .arial-bold;
+		           		 	color: $white;
+		           		 	margin-bottom: 15px;
+	           		 	  		a {
+			           		 	  	font-size: 17px !important;
+			           		 		@extend .arial-bold;
+			           		 		color: $white;
+	           		 	  		}
+	           		 	}
+            		}
+  	 	  	}
+  	} 
+  	.view {
   	  	.view-header {
   	  		.other-booklists {
   	  			font-size: 25px;
@@ -1075,91 +1050,91 @@ body {
   	  	}
   	  	.view-filters {
   	  		@extend .yellow-background;
-  	  		 form {
-  	  		 	 margin: 0 !important;
-  	  		 	.views-exposed-form {
-	  	  		 	padding: 3px 2.8% 12px 3.4%;
-	  	  		 	border: none;
-	  	  		 	  .views-exposed-widget {
-	  	  		 	  	width: 25%;
-	  	  		 	  	padding-left: 1%;
-	  	  		 	  	padding-right: 0;
-	  	  		 	  	padding-top: 17px;
-	  	  		 	  	 .chosen-container {
-	  	  		 	  	 	width: 100% !important;
-	  	  		 	  	 }
-	  	  		 	  	 input[type="text"] {
-	  	  		 	  	 	height: 40px;
-	  	  		 	  	 	position: relative;
-	  	  		 	  	 	top: 3px;
-	  	  		 	  	 }
-	  	  		 	  }
-	  	  		 	  label {
-	  	  		 	  	@extend .black-text;
-	  	  		 	  	font-size: 16px;
-	  	  		 	  }
-	  	  		 	  .chosen-processed {
-	  	  		 	  	.chosen-search {
-	  	  		 	  		input {
-	  	  		 	  	      background: $white;
-	  	  		 	     	}
-	  	  		 	  	}
-	  	  		 	  	.chosen-drop {
-	  	  		 	  		background: $blue;
-	  	  		 	  			.chosen-results {
-	  	  		 	  				li a {
-	  	  		 	  					background: $blue;
-	  	  		 	  					@extend .white-text;
-	  	  		 	  					 &:hover, &:focus {
-	  	  		 	  					 	background: $blue;
-	  	  		 	  					 	@extend .white-text;
-	  	  		 	  					 }
-	  	  		 	  				}
+  	  		 	form {
+  	  		 	 	margin: 0 !important;
+  	  		 			.views-exposed-form {
+			  	  		 	padding: 3px 2.8% 12px 3.4%;
+			  	  		 	border: none;
+	  	  		 	  			.views-exposed-widget {
+				  	  		 	  	width: 25%;
+				  	  		 	  	padding-left: 1%;
+				  	  		 	  	padding-right: 0;
+				  	  		 	  	padding-top: 17px;
+					  	  		 	  	 .chosen-container {
+					  	  		 	  	 	width: 100% !important;
+					  	  		 	  	 }
+					  	  		 	  	 input[type="text"] {
+					  	  		 	  	 	height: 40px;
+					  	  		 	  	 	position: relative;
+					  	  		 	  	 	top: 3px;
+					  	  		 	  	 }
 	  	  		 	  			}
-	  	  		 	  	}
-	  	  		 	  	a {
+			  	  		 	  	label {
+				  	  		 	  	@extend .black-text;
+				  	  		 	  	font-size: 16px;
+			  	  		 	  	}
+			  	  		 	  	.chosen-processed {
+				  	  		 	  	.chosen-search {
+				  	  		 	  		input {
+				  	  		 	  	      background: $white;
+				  	  		 	     	}
+				  	  		 	  	}
+				  	  		 	  	.chosen-drop {
+				  	  		 	  		background: $blue;
+				  	  		 	  			.chosen-results {
+				  	  		 	  				li a {
+					  	  		 	  					background: $blue;
+					  	  		 	  					@extend .white-text;
+						  	  		 	  					 &:hover, &:focus {
+						  	  		 	  					 	background: $blue;
+						  	  		 	  					 	@extend .white-text;
+						  	  		 	  					 }
+				  	  		 	  				}
+				  	  		 	  			}
+				  	  		 	  	}
+	  	  		 	  				a {
 
-	  	  		 	  	    @extend .blue-button;
-	  	  		 	  	    height: auto !important;
-	  	  		 	  	    border: none;
-	  	  		 	  	     div {
-		  	  		 	  		b{
-		  	  		 	  			visibility: hidden;
-		  	  		 	  			position: relative;
-		  	  		 	  			  &:after {
-		  	  		 	  			  	content: "";
-		  	  		 	  			  	border-left: 5px solid transparent;
-		  	  		 	  			  	border-right: 5px solid transparent;
-		  	  		 	  			  	border-top: 5px solid $white;
-		  	  		 	  			  	position: absolute;
-		  	  		 	  			  	top: 45%;
-		  	  		 	  			  	display: block;
-		  	  		 	  			  	left: 0;
-		  	  		 	  			  	visibility: visible;
-		  	  		 	  			  }
-		  	  		 	  		}
+	  	  		 	  	    			@extend .blue-button;
+	  	  		 	  	   				height: auto !important;
+	  	  		 	  	    			border: none;
+	  	  		 	  	     				div {
+		  	  		 	  						b{
+						  	  		 	  			visibility: hidden;
+						  	  		 	  			position: relative;
+						  	  		 	  			  	&:after {
+							  	  		 	  			  	content: "";
+							  	  		 	  			  	border-left: 5px solid transparent;
+							  	  		 	  			  	border-right: 5px solid transparent;
+							  	  		 	  			  	border-top: 5px solid $white;
+							  	  		 	  			  	position: absolute;
+							  	  		 	  			  	top: 45%;
+							  	  		 	  			  	display: block;
+							  	  		 	  			  	left: 0;
+							  	  		 	  			  	visibility: visible;
+						  	  		 	  			  	}
+		  	  		 	  						}
 
-	  	  		 	  		}
-	  	  		 	  	  }
+	  	  		 	  						}
+	  	  		 	  	  			}
 	  	  		 	  	
-	  	  		 	  }
+	  	  		 	  			}
 
-	  	  		 	.views-submit-button {
-	  	  		 		button {
-	  	  		 			@extend .blue-button;
-	  	  		 			margin-top: 17px;
-	  	  		 			line-height: 1.2;
-	  	  		 			text-transform: capitalize;
-	  	  		 			margin-left: 0;
-	  	  		 		}
-	  	  		 	}
-	  	  		}
-  	  		 }
+	  	  		 				.views-submit-button {
+	  	  		 					button {
+				  	  		 			@extend .blue-button;
+				  	  		 			margin-top: 17px;
+				  	  		 			line-height: 1.2;
+				  	  		 			text-transform: capitalize;
+				  	  		 			margin-left: 0;
+	  	  		 					}
+	  	  		 				}
+	  	  				}
+  	  		 	}
   	  	}
-  	  }
-  }
-  /**css for bookreview&booklist unauthencated page**/
-  &.not-logged-in.page-booklists {
+  	}
+}
+/**css for bookreview&booklist unauthencated page**/
+.not-logged-in.page-booklists {
      .main .view-content .item-list ol li .views-field-nothing {
      	.field-content {
      		div {
@@ -1170,201 +1145,206 @@ body {
      			}
      		}
      	}
-     }
-  }
-	&.not-logged-in.page-reviews {
-  .main .view-content .item-list ol li .views-field.views-field-nothing {
-  	div.user {
-  		a {
-  			padding-left: 5px;
-  			color: $gray !important;
-  			pointer-events: none !important;
+    }
+}
+.not-logged-in.page-reviews {
+  	.main .view-content .item-list ol li .views-field.views-field-nothing {
+  		div.user {
+	  		a {
+	  			padding-left: 5px;
+	  			color: $gray !important;
+	  			pointer-events: none !important;
+	  		}
   		}
   	}
-  }
-  }
-  /**end**/
-  &.page-reviews {
-  	 counter-reset: section;
-  	 .main {
-	  	 .view-content {
-	  	 	.views-row img {
-	  	 		@extend .no-border;
-	  	 	}
-	  	 	.item-list {
-	  	 		ol {
-	  	 			list-style: none;
-	  	 			 display: table;
+}
+/**end css of unauthencated booklist&bookreview page**/
 
-	  	 			li {
-	  	 				margin-bottom: 0;
-	  	 				display: table-row;
-	  	 				width: 100%;
-	  	 				position: relative;
-	  	 				 float: left;
-	  	 				 border-bottom: 1px solid $light-gray;
-	  	 				 padding-top: 35px;
-	  	 				 padding-bottom: 35px;
-	  	 				.views-field {
+/**css only for book-review page****/
+
+.page-reviews {
+  	counter-reset: section;
+  	 	.main {
+	  	 	.view-content {
+		  	 	.views-row img {
+		  	 		@extend .no-border;
+		  	 	}
+	  	 		.item-list {
+	  	 			ol {
+		  	 			list-style: none;
+		  	 			display: table;
+
+	  	 				li {
+		  	 				margin-bottom: 0;
+		  	 				display: table-row;
+		  	 				width: 100%;
+		  	 				position: relative;
+		  	 				float: left;
+		  	 				border-bottom: 1px solid $light-gray;
+		  	 				padding-top: 35px;
+		  	 				padding-bottom: 35px;
+	  	 						.views-field {
 	  	 					
-                             &.views-field-nothing-1 {
-                             	width: 70%;
-                             	float: right;
-                             	display: table-cell;
-                             	padding-left: 4%;
-                             	padding-top: 23px;
-                             	.bookreview_title {
-                             		font-size: 20px;
-                             		@extend .mclaren;
-                             		a {
-                             			font-size: 20px;
-                             			padding-right: 5px;
+                             		&.views-field-nothing-1 {
+		                             	width: 70%;
+		                             	float: right;
+		                             	display: table-cell;
+		                             	padding-left: 4%;
+		                             	padding-top: 23px;
+                             				.bookreview_title {
+			                             		font-size: 20px;
+			                             		@extend .mclaren;
+				                             		a {
+				                             			font-size: 20px;
+				                             			padding-right: 5px;
+				                             		}
+
+                             				}
                              		}
-
-                             	}
-                             }
 	  	 					
-	  	 					 &.views-field-count {
-	  	 					 	position: relative;
-	  	 					 	top: 45px;
-	  	 					 }
-	  	 					 &.views-field-body {
-	  	 					 	@extend .arial-regular;
-	  	 					 }
-	  	 					 &.views-field-nothing {
-	  	 					 	 div {
-	  	 					 	 	 float: left; 
-	  	 					 	 	&.user {
-	  	 					 	 		padding-left: 5px;
-	  	 					 	 		@extend .mclaren;
-	  	 					 	 	}
-	  	 					 	 	&.review {
-	  	 					 	 		@extend .mclaren;
-	  	 					 	 	}
-	  	 					 	 	&.date {
-	  	 					 	 		width: 100%;
-	  	 					 	 		display: table-row; 
-	  	 					 	 		@extend .arial-regular;
-	  	 					 	 		padding-top: 16px;
+			  	 					&.views-field-count {
+			  	 					 	position: relative;
+			  	 					 	top: 45px;
+			  	 					}
+		  	 					 	&.views-field-body {
+		  	 					 		@extend .arial-regular;
+		  	 					 	}
+	  	 					 		&.views-field-nothing {
+	  	 					 	 		div {
+	  	 					 	 	 		float: left; 
+				  	 					 	 	&.user {
+				  	 					 	 		padding-left: 5px;
+				  	 					 	 		@extend .mclaren;
+				  	 					 	 	}
+				  	 					 	 	&.review {
+				  	 					 	 		@extend .mclaren;
+				  	 					 	 	}
+				  	 					 	 	&.date {
+				  	 					 	 		width: 100%;
+				  	 					 	 		display: table-row; 
+				  	 					 	 		@extend .arial-regular;
+				  	 					 	 		padding-top: 16px;
 
-	  	 					 	 	}
-	  	 					 	 	&.field-name-field-avatar-image {
-	  	 					 	 		position: relative;
-	  	 					 	 		height: 41px;
-	  	 					 	 		padding-left: 5px;
-	  	 					 	 		padding-top: 5px;
-	  	 					 	 		bottom: 19px;
+				  	 					 	 	}
+	  	 					 	 				&.field-name-field-avatar-image {
+				  	 					 	 		position: relative;
+				  	 					 	 		height: 41px;
+				  	 					 	 		padding-left: 5px;
+				  	 					 	 		padding-top: 5px;
+				  	 					 	 		bottom: 19px;
 
-	  	 					 	 		img {
-		  	 					 	 	
-		  	 					 	 		margin: 0 !important;
-		  	 					 	 		@extend .box-shadow;
-	  	 					 	 	   }
-	  	 					 	 	}
-	  	 					 	 }
-	  	 					 }
-	  	 					 
-	  	 					 &.views-field-view-node {
-	  	 					 	span {
-	  	 					 		&.button {
-	  	 					 			visibility: hidden;
-	  	 					 			a {
-                                          visibility: visible;
-	  	 					 			}
-	  	 					 		}
-	  	 					 	}
-	  	 					 }
-	  	 					 &.views-field-title, &.views-field-php {
-	  	 					 	a {
-	  	 					 		@extend .blue-text;
-	  	 					 	}
-	  	 					 }
-	  	 					 &.views-field-count {
-	  	 					 	text-align: right;
-	  	 					 	width: 20%;
-	  	 					 	float: right;
-	  	 					 	display: table-row;
-	  	 					 	@extend .mclaren;
-	  	 					 	.views-label-count {
-	  	 					 		@extend .like;
-			  	 			 	}
-	  	 					 }
-
-	  	 					 &.views-field-field-book-cover-image-link {
-	  	 					 	display: table-cell;
-	  	 					 	float: left;
-	  	 					 	width: 30%;
-	  	 					 	padding: 0px;
-	  	 					 	table {
-	  	 					 		margin: 0 !important;
-	  	 					 		@extend .no-border;
-	  	 					 		 tbody {
-	  	 					 		  	@extend .no-border;
-	  	 					 		  	 td {
-	  	 					 		  	 	padding: 0;
-	  	 					 		  	 	img {
-	  	 					 		  	 		margin: 0;
-	  	 					 		  	 		padding: 0;
-	  	 					 		  	 		 @media screen and (max-width: 1278px) {
-	  	 					 		  	 		 	width: 100% !important;
-	  	 					 		  	 		 	height: auto !important;
-
-	  	 					 		  	 		 }
-	  	 					 		  	 		 @media screen and (min-width: 1279px) {
-	 		  	 		 		 		  	 		width: 242px !important;
-	 		  	 									height: 361px !important;
-	  	 					 		  	 		 }
-	  	 					 		  	 	}
-	  	 					 		  	 }
-	  	 					 		  }
-	  	 					 	}
-	  	 					 }
-	  	 					 &.views-field-body {
-	  	 					 	padding-top: 15px;
-	  	 					 }
-	  	 					 &.views-field-nothing,&.views-field-body {
-	  	 					 	width: 70%;
-	  	 					 	float: right;
-	  	 					 	display: table-row; 
-	  	 					 	padding-left: 4%;
-	  	 					 }
-	  	 					 &.views-field-field-user-avatar {
-	  	 					 	img {
-	  	 					 		float: left;
-	  	 					 	}
-	  	 					 }
-	  	 					 &.views-field-view-node {
-	  	 					 	display: table-row;
-	  	 					 	width: 70%;
-	  	 					 	float: right;
-	  	 					 	padding-left: 4%;
-	  	 					 	 .button {
-	  	 					 	 	  padding: 0 !important;
-	  	 					 	 	  margin: 23px 0 0;
-
-	  	 					 	 		a {
-	  	 					 	 			@extend .blue-button;
+					  	 					 	 		img {
+						  	 					 	 	
+						  	 					 	 		margin: 0 !important;
+						  	 					 	 		@extend .box-shadow;
+					  	 					 	 	   	}
+	  	 					 	 				}
 	  	 					 	 		}
+	  	 					 		}
+	  	 					 
+			  	 					&.views-field-view-node {
+			  	 					 	span {
+			  	 					 		&.button {
+			  	 					 			visibility: hidden;
+			  	 					 			a {
+		                                          visibility: visible;
+			  	 					 			}
+			  	 					 		}
+			  	 					 	}
+			  	 					}
+		  	 					 	&.views-field-title, &.views-field-php {
+			  	 					 	a {
+			  	 					 		@extend .blue-text;
+			  	 					 	}
+		  	 					 	}
+		  	 					 	&.views-field-count {
+			  	 					 	text-align: right;
+			  	 					 	width: 20%;
+			  	 					 	float: right;
+			  	 					 	display: table-row;
+			  	 					 	@extend .mclaren;
+			  	 					 	.views-label-count {
+			  	 					 		@extend .like;
+					  	 			 	}
+		  	 					 	}
+
+	  	 					 		&.views-field-field-book-cover-image-link {
+			  	 					 	display: table-cell;
+			  	 					 	float: left;
+			  	 					 	width: 30%;
+			  	 					 	padding: 0px;
+				  	 					 	table {
+				  	 					 		margin: 0 !important;
+				  	 					 		@extend .no-border;
+				  	 					 		 tbody {
+				  	 					 		  	@extend .no-border;
+				  	 					 		  	 td {
+				  	 					 		  	 	padding: 0;
+				  	 					 		  	 	img {
+				  	 					 		  	 		margin: 0;
+				  	 					 		  	 		padding: 0;
+				  	 					 		  	 		 @media screen and (max-width: 1278px) {
+				  	 					 		  	 		 	width: 100% !important;
+				  	 					 		  	 		 	height: auto !important;
+
+				  	 					 		  	 		 }
+				  	 					 		  	 		 @media screen and (min-width: 1279px) {
+				 		  	 		 		 		  	 		width: 242px !important;
+				 		  	 									height: 361px !important;
+				  	 					 		  	 		 }
+				  	 					 		  	 	}
+				  	 					 		  	 }
+				  	 					 		  }
+				  	 					 	}
+	  	 					 		}
+		  	 					 	&.views-field-body {
+		  	 					 		padding-top: 15px;
+		  	 					 	}
+		  	 					 	&.views-field-nothing,&.views-field-body {
+			  	 					 	width: 70%;
+			  	 					 	float: right;
+			  	 					 	display: table-row; 
+			  	 					 	padding-left: 4%;
+		  	 					 	}
+		  	 					 	&.views-field-field-user-avatar {
+			  	 					 	img {
+			  	 					 		float: left;
+			  	 					 	}
+		  	 					 	}
+		  	 					 	&.views-field-view-node {
+			  	 					 	display: table-row;
+			  	 					 	width: 70%;
+			  	 					 	float: right;
+			  	 					 	padding-left: 4%;
+	  	 					 	 			.button {
+				  	 					 	 	padding: 0 !important;
+				  	 					 	 	margin: 23px 0 0;
+
+				  	 					 	 		a {
+				  	 					 	 			@extend .blue-button;
+				  	 					 	 		}
 	  	 
-	  	 					 	 }
-	  	 					 }
-	  	 				}
-	  	 				font-size: 17px;
-	  	 				.views-field-title {
-	  	 					&:before {
-	 							 @extend .counter;
-	  	 					}
+	  	 					 	 			}
+	  	 					 		}
+	  	 						}
+	  	 					font-size: 17px;
+	  	 						.views-field-title {
+			  	 					&:before {
+			 							 @extend .counter;
+			  	 					}
+	  	 						}
 	  	 				}
 	  	 			}
 	  	 		}
 	  	 	}
-	  	 }
 	  	 
-	 }
+	 	}
 
-  }
-  
-  &.page-booklists {
+}
+
+/**css only for booklist page**/
+
+.page-booklists {
   	.l-header .row.header-middle section.block-menu-menu-secoundary-menu ul.menu li a.reviews::after {
   		background: url('../images/libraryzurb/reviewactive.png') no-repeat !important;
   	}
@@ -1377,520 +1357,584 @@ body {
 	  	 			margin-left: 20px;
 	  	 			list-style: none;
 	  	 			li {
-	  	 				&.views-row {
-	  	 					margin-bottom: 23px;
-	  	 					 .views-field-title {
-	  	 					 	@extend .mclaren;
-	  	 					 }
-	  	 				}
+		  	 				&.views-row {
+		  	 					margin-bottom: 23px;
+		  	 					 .views-field-title {
+		  	 					 	@extend .mclaren;
+		  	 					 }
+		  	 				}
 	  	 				font-size: 17px;
-	  	 				.views-field-nothing {
-	  	 					margin-top: 23px;
-	  	 					padding-left: 25px;
-	  	 					display: inline-block;
-	  	 					@extend .arial-regular;	
-	  	 					div {
-	  	 						float: left;
-	  	 						&.field-name-field-avatar-image {
-	  	 							position: relative;
-	  	 							bottom: 10px;
-	  	 							  img {
-	  	 							  	 @extend .no-border;
-	  	 							  	 @extend .box-shadow;
-	  	 							  	 margin-right: 10px;
-	  	 							  }
-	  	 						}
+		  	 				.views-field-nothing {
+		  	 					margin-top: 23px;
+		  	 					padding-left: 25px;
+		  	 					display: inline-block;
+		  	 					@extend .arial-regular;	
+			  	 					div {
+			  	 						float: left;
+			  	 						&.field-name-field-avatar-image {
+			  	 							position: relative;
+			  	 							bottom: 10px;
+			  	 							  img {
+			  	 							  	 @extend .no-border;
+			  	 							  	 @extend .box-shadow;
+			  	 							  	 margin-right: 10px;
+			  	 							  }
+			  	 						}
+			  	 					}
 	  	 					}
-	  	 				}
 
-	  	 			 .views-field-php {
-	  	 			 	a {
-	  	 			 		color: $blue;
-	  	 			 		font-size: 21px;
-	  	 			 		  &:hover {
-	  	 			 		  	color: $blue;
-	  	 			 		  }
-	  	 			 	}
-	  	 			 }
-	  	 			 .views-field-count {
-	  	 			 	.views-label-count {
-	  	 			 		@extend .like;
-	  	 			 	}
-	  	 			 }
-	  	 			 .views-field-count {
-	  	 			 	float: right;
-	  	 			 }
+	  	 			 		.views-field-php {
+			  	 			 	a {
+			  	 			 		color: $blue;
+			  	 			 		font-size: 21px;
+			  	 			 		  &:hover {
+			  	 			 		  	color: $blue;
+			  	 			 		  }
+			  	 			 	}
+	  	 			 		}
+	  	 			 		.views-field-count {
+			  	 			 	.views-label-count {
+			  	 			 		@extend .like;
+			  	 			 	}
+	  	 			 		}
+			  	 			.views-field-count {
+			  	 			 	float: right;
+			  	 			}
 	  	 			 
-	  	 			 .views-field-title {
-	  	 			 	a {
-	  	 			 		font-size: 21px;
-	  	 			 		color: $blue;
-	  	 			 		 &:before {
-	  	 			 		 	@extend .counter;
-	  	 			 		 	color: $black;
-	  	 			 		 	display: inline-block;
-	  	 			 		 	padding-right: 10px;
-	  	 			 		 	@extend .arial-regular;
-	  	 			 		 }
-	  	 			 	}
-	  	 			 }
+	  	 			 		.views-field-title {
+			  	 			 	a {
+			  	 			 		font-size: 21px;
+			  	 			 		color: $blue;
+			  	 			 		 &:before {
+			  	 			 		 	@extend .counter;
+			  	 			 		 	color: $black;
+			  	 			 		 	display: inline-block;
+			  	 			 		 	padding-right: 10px;
+			  	 			 		 	@extend .arial-regular;
+			  	 			 		 }
+			  	 			 	}
+	  	 			 		}
 	  	 			}
 	  	 		}
 	  	 	}
-	  	 }
+	  	}
 	  	.view-booklist-slideshow {
 	  		.owl-carousel {
 	  			position: relative;
-	  			 .owl-wrapper-outer {
-	  			 	width: 99%;
-	  			 	margin: 0 auto;
-	  			 }
-	  			 .owl-item {
-	  			 	.views-field-field-booklist-cover-image {
-	  			 		width: 135px;
-	  			 		 img {
-	  			 		 	width: 100%;
-	  			 		 }
+	  			 	.owl-wrapper-outer {
+		  			 	width: 99%;
+		  			 	margin: 0 auto;
 	  			 	}
-	  			 }
-	  			 .views-field-title {
-	  			 	font-size: 21px;
-	  			 	 .field-content {
-	  			 	 	a {
-	  			 	 		color: $blue;
-	  			 	 		@extend .mclaren;
-	  			 	 		text-transform: capitalize;
-	  			 	 	}
-	  			 	 }
-	  			 }
-	  			 .views-field-nothing {
-	  			 	width: 70%;
-	  			 	float: left;
-	  			 	margin-top: 20px;
-	  			 	font-size: 17px;
-	  			 	@extend .arial-regular;
+	  			 	.owl-item {
+	  			 		.views-field-field-booklist-cover-image {
+	  			 			width: 135px;
+	  			 		 		img {
+	  			 		 			width: 100%;
+	  			 		 		}
+	  			 		}
+	  			 	}
+	  			 	.views-field-title {
+	  			 		font-size: 21px;
+	  			 	 		.field-content {
+			  			 	 	a {
+			  			 	 		color: $blue;
+			  			 	 		@extend .mclaren;
+			  			 	 		text-transform: capitalize;
+			  			 	 	}
+	  			 	 		}
+	  			 	}
+	  			 	.views-field-nothing {
+		  			 	width: 70%;
+		  			 	float: left;
+		  			 	margin-top: 20px;
+		  			 	font-size: 17px;
+		  			 	@extend .arial-regular;
 
-	  			 	  div {
-	  			 	  	float: left;
-	  			 	  	color: $black;
-	  			 	  	 &:first-child {
-	  			 	  	 	padding-right: 5px;
-	  			 	  	 }
-	  			 	  	 &.field-name-field-avatar-image {
-	  			 	  	 	position: relative;
-	  			 	  	 	bottom: 10px;
-	  			 	  	 	 img {
-	  			 	  	 	 	@extend .box-shadow;
-	  			 	  	 	 	margin-right: 5px;
-	  			 	  	 	 	margin-left: 5px;
-	  			 	  	 	 }
-	  			 	  	 }
-	  			 	  	 a.username {
-	  			 	  	 	color: $blue;
-	  			 	  	 	font-size: 21px;
-	  			 	  	 	  &:hover {
-	  			 	  	 	  	color: $blue;
-	  			 	  	 	  }
-	  			 	  	 }
-	  			 	  }
-	  			 }
-	  			 .views-field-count {
-	  			 	width: 30%;
-	  			 	float: left;
-	  			 	text-align: right;
-	  			 	margin-top: 20px;
-	  			 	padding-right: 2%;
-	  			 	  span {
-	  			 	  	color: $black;
-	  			 	  	position: relative;
-	  			 	  	 &.views-label {
-	  			 	  	 	padding-right: 40px;
-	  			 	  	 	@extend .like;
-	  			 	  	 }
-	  			 	  }
-	  			 }
-	  			 .owl-pagination {
-	  			 	display: none;
-	  			 }
-	  			 .owl-buttons {
-	  			 	width: 100%;
-	  			 	position: absolute;
-	  			 	top: 40%;
-	  			 	 .owl-prev {
-	  			 	 	float: left;
-	  			 	 	visibility: hidden;
-	  			 	 	position: relative;
-	  			 	 	opacity: 1;
-	  			 	 	  &:before {
-	  			 	 	  	@include previous(30px, 30px, $left: -40px, $top: 0);
-	  			 	 	  	background: url('../images/libraryzurb/left-blue-arrow.png') no-repeat;
-	  			 	 	  	background-size: 25px;
-	  			 	 	  }
-	  			 	 }
-	  			 	 .owl-next {
-	  			 	 	float: right;
-	  			 	 	visibility: hidden;
-	  			 	 	position: relative;
-	  			 	 	opacity: 1;
-	  			 	 	  &:after {
-	  			 	 	  	@include previous(30px, 30px, $right: -37px, $top: 0);
-	  			 	 	  	background: url('../images/libraryzurb/right-blue-arrow.png') no-repeat;
-	  			 	 	  	background-size: 25px;
-	  			 	 	  	position: absolute;
-	  			 	 	  }
-	  			 	 }
-	  			 }
+	  			 	  		div {
+			  			 	  	float: left;
+			  			 	  	color: $black;
+				  			 	  	 &:first-child {
+				  			 	  	 	padding-right: 5px;
+				  			 	  	 }
+		  			 	  	 	&.field-name-field-avatar-image {
+			  			 	  	 	position: relative;
+			  			 	  	 	bottom: 10px;
+				  			 	  	 	 img {
+				  			 	  	 	 	@extend .box-shadow;
+				  			 	  	 	 	margin-right: 5px;
+				  			 	  	 	 	margin-left: 5px;
+				  			 	  	 	 }
+			  			 	  	}
+		  			 	  	 	a.username {
+			  			 	  	 	color: $blue;
+			  			 	  	 	font-size: 21px;
+				  			 	  	 	  &:hover {
+				  			 	  	 	  	color: $blue;
+				  			 	  	 	  }
+		  			 	  	 	}
+	  			 	  		}
+	  			 	}
+	  			 	.views-field-count {
+		  			 	width: 30%;
+		  			 	float: left;
+		  			 	text-align: right;
+		  			 	margin-top: 20px;
+		  			 	padding-right: 2%;
+			  			 	  span {
+			  			 	  	color: $black;
+			  			 	  	position: relative;
+			  			 	  	 &.views-label {
+			  			 	  	 	padding-right: 40px;
+			  			 	  	 	@extend .like;
+			  			 	  	 }
+			  			 	  }
+	  			 	}
+		  			.owl-pagination {
+		  			 	display: none;
+		  			}
+	  			 	.owl-buttons {
+		  			 	width: 100%;
+		  			 	position: absolute;
+	  			 		top: 40%;
+	  			 	 		.owl-prev {
+			  			 	 	float: left;
+			  			 	 	visibility: hidden;
+			  			 	 	position: relative;
+			  			 	 	opacity: 1;
+			  			 	 	  &:before {
+			  			 	 	  	@include previous(30px, 30px, $left: -40px, $top: 0);
+			  			 	 	  	background: url('../images/libraryzurb/left-blue-arrow.png') no-repeat;
+			  			 	 	  	background-size: 25px;
+			  			 	 	  }
+	  			 	 		}
+	  			 	 		.owl-next {
+			  			 	 	float: right;
+			  			 	 	visibility: hidden;
+			  			 	 	position: relative;
+			  			 	 	opacity: 1;
+				  			 	 	  &:after {
+				  			 	 	  	@include previous(30px, 30px, $right: -37px, $top: 0);
+				  			 	 	  	background: url('../images/libraryzurb/right-blue-arrow.png') no-repeat;
+				  			 	 	  	background-size: 25px;
+				  			 	 	  	position: absolute;
+				  			 	 	  }
+	  			 	 		}
+	  			 	}
 	  		}
 	  	}
-	  }
 	}
+
 }
+/**end of booklist page**/
+
 /**activities page **/
+
 .section-activities {
- .main {
- .view-activities-page-, .block-block {
- 	@extend .orange-blue;
- 	@extend .block;
- 	padding-bottom: 20px;
- 	 p, .view-content {
- 	 	padding-left: 20px;
- 	 	padding-right: 20px;
- 	 	@extend .arial-regular;
- 	 	font-size: 17px;
- 	 }
- 	 div {
- 	 	a {
- 	 		padding-left: 20px;
- 	 	}
- 	 }
- }
-}
-.sidebar {
-	.block-views {
-		@extend .orange-blue;
-		padding-bottom: 20px;
-		 &:first-child {
-		 	ul {
-		 		list-style: none !important;
-		 	}
-		 }
-		 .view {
-		 	counter-reset: section;
-		 	 .view-content {
-		 	 ul {
-		 	 	.views-row {
-		 	 		margin-left: 10px;
-                   .views-field-title {
-
-	                   	 a {
-	                   		&:before {
-			 	 			@extend .counter;
-			 	 			text-decoration: none !important;
-			 	 			a{
-			 	 				text-decoration: none !important;
-			 	 			}
-			 	 		}
-                   	}
-                   }
+ 	.main {
+ 		.view-activities-page-, .block-block {
+		 	@extend .orange-blue;
+		 	@extend .block;
+		 	padding-bottom: 20px;
+		 	 	p, .view-content {
+			 	 	padding-left: 20px;
+			 	 	padding-right: 20px;
+			 	 	@extend .arial-regular;
+			 	 	font-size: 17px;
 		 	 	}
-		 	 }
-		 	}
-		 }
-		 .view-footer {
-		 	padding-left: 20px;
-		 	margin-top: 30px;
-		 	p {
-		 		a {
-		 			@extend .yellow-button;
-		 			@extend .box-shadow;
-		 		}
-		 	}
-		 }
-		 .views-field-title {
-		 	padding-bottom: 10px;
-		 }
-		 .views-field-count {
-		 	.views-label {
-		 		padding-right: 32px;
-		 		@extend .like;
-		 	}
-		 }
-		 h3 {
-		 	@extend .white-text;
-		 	margin-top: 20px;
-		 	text-align: center;
-		 }
-		 ul {
-		 	list-style: none;
-		 	
-		 	margin-left: 20px;
-		 	 li {
-               margin-left: 0;
-
-		 	 }
-		 	 	a {
-		 	 		
-		 	 		@extend .white-text;
-		 	 		text-decoration: underline;
-		 	 		font-size: 17px;
-
-		 	 		
+		 	 	div {
+			 	 	a {
+			 	 		padding-left: 20px;
+			 	 	}
 		 	 	}
-		 }
+ 		}
+	}
+	.sidebar {
+		.block-views {
+			@extend .orange-blue;
+			padding-bottom: 20px;
+			 &:first-child {
+			 	ul {
+			 		list-style: none !important;
+			 	}
+			 }
+		 	.view {
+		 		counter-reset: section;
+		 	 		.view-content {
+		 	 			ul {
+		 	 				.views-row {
+		 	 					margin-left: 10px;
+                   					.views-field-title {
+
+	                   	 				a {
+					                   		&:before {
+							 	 			@extend .counter;
+							 	 			
+			 	 							}
+                   						}
+                   					}
+		 	 				}
+		 	 			}
+		 			}
+			}
+			.view-footer {
+			 	padding-left: 20px;
+			 	margin-top: 30px;
+			 	p {
+			 		a {
+			 			@extend .yellow-button;
+			 			@extend .box-shadow;
+			 		}
+			 	}
+			}
+			.views-field-title {
+			 	padding-bottom: 10px;
+			}
+			.views-field-count {
+			 	.views-label {
+			 		padding-right: 32px;
+			 		@extend .like;
+			 	}
+			}
+			h3 {
+			 	@extend .white-text;
+			 	margin-top: 20px;
+			 	text-align: center;
+			}
+			ul {
+			 	list-style: none;
+			 	
+			 	margin-left: 20px;
+			 	 li {
+	               margin-left: 0;
+
+			 	 }
+			 	 	a {
+			 	 		
+			 	 		@extend .white-text;
+			 	 		text-decoration: underline;
+			 	 		font-size: 17px;
+
+			 	 		
+			 	 	}
+			}
+		}
 	}
 }
+/**end of activity page**/
 
-}
+/**css for program-dashboard page**/
+	.page-admin-content-dashboard {
+		font-family: "Source Sans Pro" !important;
+		font-weight: normal !important;
+		font-style: normal !important;
+		font: 81.3%/1.538em "Lucida Grande","Lucida Sans Unicode",sans-serif !important;
+			.block-menu-block .menu-name-main-menu ul ul, .section-library-search h2, .top-bar.expanded .main-nav .back h5 {
+		     font-family: "Source Sans Pro" !important;	
+		     font-weight: normal !important;
+			font-style: normal !important;	
+			}
+			.row {
+				max-width: 94.6%;
+			}
+			h1, h2, h3, blockquote::before, blockquote::after, .aside, .block-menu-block .menu-name-main-menu ul, .special {
+	          font-family: "Arvo" !important;
+	          font-weight: normal !important;
+	          font-style: normal !important;
+			}
+			table {
+				width: 100% !important;
+				font-size: 0.923em !important;
+				margin: 0px 0px 10px !important;
+				border: 1px solid #BEBFB9 !important;
+			}
+		    div, span , a, form, input, ul, li, select, textarea, label, legend,  caption {
+				padding: 0px !important;
+				border: 0px none !important;
+				vertical-align: baseline !important;
+		    }
+		    .quicktabs_main input[type="submit"], .quicktabs_main button {
+		    	width: auto !important;
+		    }
+		    .quicktabs_main {
+		    	overflow: visible !important;
+		    }
+		    .chosen-container.chosen-with-drop .chosen-drop {
+		    	padding-bottom: 20px !important;
+		    	padding-left: 5px !important;
+		    }
+		    .chosen-container .chosen-results {
+		    	overflow: visible !important;
+		    }
+	    ul.quicktabs-tabs {
+	    	text-align: left !important;
+		    	li {
+		    	border: none !important;
+		    	text-transform: capitalize !important;
+		    	 a {
+		    	 	font-family: "Source Sans Pro" !important;
+		    	 	font-weight: normal !important;
+		    	 	font-style: normal !important;
+		    	 	color: $black !important;
+		    	 	padding-right: 7px !important;
+		    	 }
+		    }
+	 	}
+	}
+
+	/**end program dashboard page**/
+
 /**css for progress page**/
- .section-progress {
- 	.l-main {
- 		display: table;
- 		width: 100%;
- 		border-collapse: separate;
-  		border-spacing: 20px;
+ 
+.section-progress {
+	 	.l-main {
+	 		display: table;
+	 		width: 100%;
+	 		border-collapse: separate;
+	  		border-spacing: 20px;
 
- 	}
- 	 .main {
- 	 	@extend .blue-background;
- 	 	padding-left: 0;
- 	 	padding-right: 0;
- 	 	display: table-row;
- 	 	width: 100%;
- 	 	position: relative;
- 	 	@extend .block;
- 	 	 #page-title {
- 	 	 	@extend .wave-img;
- 	 	 }
- 	 	 .view-calendar-sticker {
- 	 	 	@extend .yellow-background;
- 	 	 	width: 40%; 
- 	 	 	display: table-cell;
+	 	}
+ 	 	.main {
+	 	 	@extend .blue-background;
+	 	 	padding-left: 0;
+	 	 	padding-right: 0;
+	 	 	display: table-row;
+	 	 	width: 100%;
+	 	 	position: relative;
+	 	 	@extend .block;
+		 	 	#page-title {
+		 	 	 	@extend .wave-img;
+		 	 	}
+ 	 	 		.view-calendar-sticker {
+ 	 	 			@extend .yellow-background;
+		 	 	 	width: 40%; 
+		 	 	 	display: table-cell;
  	 	 	
- 	 	 	 .view-header {
+ 	 	 	 			.view-header {
  	 	 	 	
- 	 	 	 	width: 100%;
- 	 	 	 	padding: 20px 0 20px 2%;
- 	 	 	 	left: 0;
- 	 	 	 	 p {
- 	 	 	 	 	@extend .mclaren;
- 	 	 	 	 	margin-bottom: 0;
- 	 	 	 	 	color: $black;
- 	 	 	 	 	line-height: 1;
- 	 	 	 	 	padding-bottom: 20px;
- 	 	 	 	 	  &.heading {
- 	 	 	 	 	  	@media screen and (min-width: 940px)  {
- 	 	 	 	 	  	font-size: 21px !important;
- 	 	 	 	 	   }
- 	 	 	 	 	  }
- 	 	 	 	 	   &.statement {
- 	 	 	 	 	  	@media screen and (min-width: 940px)  {
- 	 	 	 	 	  	font-size: 15px !important;
- 	 	 	 	 	   }
- 	 	 	 	 	  }
- 	 	 	 	 }
- 	 	 	 }
- 	 	 	 .view-content {
- 	 	 	 	width: 100%;
- 	 	 	 	display: table-row;
- 	 	 	 	.views-row {
- 	 	 	 		width: 20%;
- 	 	 	 		display: table-cell;
- 	 	 	 		vertical-align: bottom;
+			 	 	 	 	width: 100%;
+			 	 	 	 	padding: 20px 0 20px 2%;
+			 	 	 	 	left: 0;
+ 	 	 	 	 				p {
+				 	 	 	 	 	@extend .mclaren;
+				 	 	 	 	 	margin-bottom: 0;
+				 	 	 	 	 	color: $black;
+				 	 	 	 	 	line-height: 1;
+				 	 	 	 	 	padding-bottom: 20px;
+				 	 	 	 	 	  	&.heading {
+					 	 	 	 	 	  	@media screen and (min-width: 940px)  {
+					 	 	 	 	 	  	font-size: 21px !important;
+				 	 	 	 	 	   		}
+ 	 	 	 	 	  					}
+				 	 	 	 	 	   	&.statement {
+				 	 	 	 	 	  		@media screen and (min-width: 940px)  {
+				 	 	 	 	 	  		font-size: 15px !important;
+				 	 	 	 	 	   		}
+				 	 	 	 	 	  	}
+ 	 	 	 	 				}
+ 	 	 	 			}
+ 	 	 	 			.view-content {
+			 	 	 	 	width: 100%;
+			 	 	 	 	display: table-row;
+ 	 	 	 					.views-row {
+				 	 	 	 		width: 20%;
+				 	 	 	 		display: table-cell;
+				 	 	 	 		vertical-align: bottom;
 
- 	 	 	 		 img {
- 	 	 	 		 	width: 100% !important;
- 	 	 	 		 	border: none;
- 	 	 	 		 }
+					 	 	 	 		 img {
+					 	 	 	 		 	width: 100% !important;
+					 	 	 	 		 	border: none;
+					 	 	 	 		 }
 
 
- 	 	 	 	}
- 	 	 	 }
- 	 	 }
- 	 	.block {
- 	 		&.block-views {
- 	 			width: 35%;
-				display: table-cell;
-				padding: 10px;
-				background: $white;
-				color: $black;
-				border-radius: 20px;
-				@extend .mclaren;
-				@extend .box-shadow;
-				.view-prize-won-for-progress-page {
-					width: 100%;
-					display: table;
-					border-spacing: 0 !important;
-					.view-header {
-						width: 29%;
+ 	 	 	 					}
+ 	 	 	 			}
+ 	 	 		}
+ 	 			.block {
+		 	 		&.block-views {
+		 	 			width: 35%;
 						display: table-cell;
-						position: relative;
-						div {
-                            font-size: 20px;
-                            color: $blue;
-                            position: absolute;
-                            top: 6px;
-                            text-transform: capitalize;
-                            width: 300px;
-						}
-						span {
-							font-size: 13px;
-							text-transform: uppercase;
-						}
-					}
-					.view-content {
-						width: 70%;
-						display: table-cell;
-						padding-top: 38px;
-						 .item-list {
-						 	ul {
+						padding: 10px;
+						background: $white;
+						color: $black;
+						border-radius: 20px;
+						@extend .mclaren;
+						@extend .box-shadow;
+							.view-prize-won-for-progress-page {
+								width: 100%;
+								display: table;
+								border-spacing: 0 !important;
+									.view-header {
+										width: 29%;
+										display: table-cell;
+										position: relative;
+											div {
+					                            font-size: 20px;
+					                            color: $blue;
+					                            position: absolute;
+					                            top: 6px;
+					                            text-transform: capitalize;
+					                            width: 300px;
+											}
+											span {
+												font-size: 13px;
+												text-transform: uppercase;
+											}
+									}
+									.view-content {
+										width: 70%;
+										display: table-cell;
+										padding-top: 38px;
+						 					.item-list {
+						 						ul {
 						 		
-						 		li.views-row {
-						 			margin-bottom: 10px !important;
-						 			font-size: 13px !important;
-						 		}
-						 	}
-						 }
-					}
-					.item-list {
-						width: 100%;
-						display: table-row;
-						height: 60px;
-						position: relative;
-						 ul.pager {
-						 	position: absolute;
-						 	right: 0px;
-						 	
-						 	 li {
-						 	 	
-						 	 	&.pager-current {
-						 	 		display: none;
-						 	 	}
-                                 position: relative;
-                                   a {
-                                   	font-size: 22px;
-                                   	text-transform: capitalize;
-                                 
-                                   }
-						 	 }
-						 } 
+											 		li.views-row {
+											 			margin-bottom: 10px !important;
+											 			font-size: 13px !important;
+											 		}
+						 						}
+						 					}
+									}
+									.item-list {
+										width: 100%;
+										display: table-row;
+										height: 60px;
+										position: relative;
+											ul.pager {
+											 	position: absolute;
+											 	right: 0px;
+																	 	
+												 	 li {
+												 	 	
+													 	 	&.pager-current {
+													 	 		display: none;
+													 	 	}
+                                 						position: relative;
+						                                   a {
+							                                   	font-size: 22px;
+							                                   	text-transform: capitalize;
+							                                 
+						                                   	}
+						 	 							}
+						 					} 
 						
-					}
-				}
- 	 		}
- 	 		&.block-auto-role-allocation {
- 	 			width: 30%;
- 	 			display: table-cell;
- 	 			background: $light-orange;
- 	 			vertical-align: middle;
- 	 			text-align: center;
- 	 			padding: 0 5%;
- 	 			border-radius: 20px;
- 	 			@extend .mclaren;
- 	 			@extend .box-shadow;
- 	 			 > div:nth-of-type(2) {
- 	 			 	line-height: 1.2;
-                    font-size: 18px;
- 	 			 }
- 	 		}
- 	 		&.progress-calendar {
- 	 			div.ui-draggable.ui-draggable-handle  {
- 	 			 			text-align: center !important;
- 	 			 			img {
- 	 			 				width: 94px !important; 
+									}
+							}
+ 	 				}
+ 	 				&.block-auto-role-allocation {
+		 	 			width: 30%;
+		 	 			display: table-cell;
+		 	 			background: $light-orange;
+		 	 			vertical-align: middle;
+		 	 			text-align: center;
+		 	 			padding: 0 5%;
+		 	 			border-radius: 20px;
+		 	 			@extend .mclaren;
+		 	 			@extend .box-shadow;
+			 	 			 > div:nth-of-type(2) {
+			 	 			 	line-height: 1.2;
+			                    font-size: 18px;
+			 	 			 }
+ 	 				}
+ 	 				&.progress-calendar {
+		 	 					div.ui-draggable.ui-draggable-handle  {
+		 	 			 			text-align: center !important;
+			 	 			 			img {
+			 	 			 				width: 94px !important; 
 
- 	 			 			}
- 	 			 		}
- 	 		 &.contextual-links-region {
- 	 		 	position: initial;
- 	 		 }
- 	 			width: 100%;
- 	 			max-width: 95%;
- 	 			margin: 20px auto;
- 	 			 .block-title {
- 	 			 	display: none;
- 	 			 }
+			 	 			 			}
+		 	 			 		}
+			 	 		 	&.contextual-links-region {
+			 	 		 		position: initial;
+			 	 		 	}
+		 	 			width: 100%;
+		 	 			max-width: 95%;
+		 	 			margin: 20px auto;
+			 	 			 	.block-title {
+			 	 			 		display: none;
+			 	 			 	}
 
- 	 			 #calendar {
- 	 			 	.fc-header {
- 	 			 		border: none;
- 	 			 		background: none;
- 	 			 		 .fc-header-center {
- 	 			 		 	h2 {
- 	 			 		 		color: $orange;
- 	 			 		 		@extend .mclaren;
- 	 			 		 		border-bottom: none;
- 	 			
- 	 			 		 	}
- 	 			 		 }
- 	 			 		 tbody {
- 	 			 		 	border-top: none;
- 	 			 		 }
- 	 			 		 td {
- 	 			 		 	span {
- 	 			 		 		&.fc-button {
- 	 			 		 			background: $yellow;
- 	 			 		 			@extend .box-shadow;
- 	 			 		 			opacity: 1 !important;
- 	 			 		 			color: $black;
- 	 			 		 			 &.fc-button-agendaWeek, &.fc-button-agendaDay, &.fc-button-month {
- 	 			 		 			 	display: none;
- 	 			 		 			 }
- 	 			 		 		}
- 	 			 		 	}
- 	 			 		 }
- 	 			 	}
- 	 			 	.fc-content {
- 	 			 		color: $black;
+ 	 							#calendar {
+ 	 			 					.fc-header {
+ 	 			 						border: none;
+ 	 			 						background: none;
+ 	 			 		 					.fc-header-center {
+					 	 			 		 	h2 {
+					 	 			 		 		color: $orange;
+					 	 			 		 		@extend .mclaren;
+					 	 			 		 		border-bottom: none;
+					 	 			
+					 	 			 		 	}
+ 	 			 		 					}
+				 	 			 		 	tbody {
+				 	 			 		 		border-top: none;
+				 	 			 		 	}
+ 	 			 		 					td {
+ 	 			 		 						span {
+ 	 			 		 							&.fc-button {
+					 	 			 		 			background: $yellow;
+					 	 			 		 			@extend .box-shadow;
+					 	 			 		 			opacity: 1 !important;
+					 	 			 		 			color: $black;
+						 	 			 		 			&.fc-button-agendaWeek, &.fc-button-agendaDay, &.fc-button-month {
+						 	 			 		 			 	display: none;
+						 	 			 		 			 }
+ 	 			 		 							}
+ 	 			 		 						}
+ 	 			 		 					}
+ 	 			 					}
+ 	 			 					.fc-content {
+ 	 			 						color: $black;
 
- 	 			 		.fc-border-separate {
- 	 			 			margin-bottom: 0;
- 	 			 			border: none;
- 	 			 			 .fc-day-header {
- 	 			 			 	padding-bottom: 5px;
- 	 			 			 	color: $white;
- 	 			 			 	font-weight: normal !important;
- 	 			 			 }
- 	 			 			 tbody {
- 	 			 			 	@extend .box-shadow;
- 	 			 			 }
- 	 			 		}
- 	 			 		.fc-widget-header{
- 	 			 			border: none;
- 	 			 			background: $blue;
- 	 			 			}
- 	 			 		.fc-widget-content {
- 	 			 			border: 1px solid $orange;
- 	 			 		}
- 	 			 		.fc-day {
- 	 			 			.fc-day-number {
- 	 			 				color: $blue;
- 	 			 			}
-	 	 			 		&.fc-state-highlight {
-	 	 			 			.fc-day-number {
-	 	 			 				color: $orange !important;
-	 	 			 			}
-	 	 			 		}
- 	 			 		}
- 	 			 	}
- 	 			 }
- 	 		}
- 	 	}
+ 	 			 							.fc-border-separate {
+					 	 			 			margin-bottom: 0;
+					 	 			 			border: none;
+						 	 			 			.fc-day-header {
+						 	 			 			 	padding-bottom: 5px;
+						 	 			 			 	color: $white;
+						 	 			 			 	font-weight: normal !important;
+						 	 			 			}
+					 	 			 			 tbody {
+					 	 			 			 	@extend .box-shadow;
+					 	 			 			 }
+ 	 			 							}
+					 	 			 		.fc-widget-header{
+					 	 			 			border: none;
+					 	 			 			background: $blue;
+					 	 			 		}
+					 	 			 		.fc-widget-content {
+					 	 			 			border: 1px solid $orange;
+					 	 			 		}
+ 	 			 							.fc-day {
+	 	 			 								.fc-day-number {
+	 	 			 									color: $blue;
+	 	 			 								}
+						 	 			 		&.fc-state-highlight {
+						 	 			 			.fc-day-number {
+						 	 			 				color: $orange !important;
+						 	 			 			}
+						 	 			 		}
+ 	 			 							}
+ 	 			 					}
+ 	 			 				}
+ 	 				}
+ 	 			}
+ 			}
+		 	 #print_button {
+		 	 			 	position: absolute;
+		 	 			 	top: 17px;
+		 	 			 	right: 28px;
+		 	 			 	width: 200px;
+		 	 			 	line-height: 30px;
+		 	 			 	padding:6px 0px 6px 45px;
+		 	 			 	font-size: 17px;
+		 	 			 	@extend .mclaren;
+		 	 			 	background: $yellow url('../images/libraryzurb/print-calender.png') no-repeat !important;
+		 	 			 	background-position: 10px !important;
+		 	 			 	color: $black;
+		 	 			 	border-radius: 10px;
+		 	 			 	@extend .box-shadow;
+		 	 			 	
+		 	 			 	
+		 	 			 }
  	}
- 	 #print_button {
- 	 			 	position: absolute;
- 	 			 	top: 17px;
- 	 			 	right: 28px;
- 	 			 	width: 200px;
- 	 			 	line-height: 30px;
- 	 			 	padding:6px 0px 6px 45px;
- 	 			 	font-size: 17px;
- 	 			 	@extend .mclaren;
- 	 			 	background: $yellow url('../images/libraryzurb/print-calender.png') no-repeat !important;
- 	 			 	background-position: 10px !important;
- 	 			 	color: $black;
- 	 			 	border-radius: 10px;
- 	 			 	@extend .box-shadow;
- 	 			 	
- 	 			 	
- 	 			 }
- }
+/**end of progress page***/
