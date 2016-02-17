@@ -4,7 +4,8 @@ body {
 	font-style: normal !important;
 	font-weight: normal !important;
 	-webkit-font-smoothing: antialiased;
-	 font-size: 17px; 
+	 font-size: 18px; 
+	 line-height: 1.5;
 	color: $black;
 	
 		.main {
@@ -31,7 +32,74 @@ body {
 	}
 	
 }
+/**open single msg**/
+.page-messages-view {
+	.privatemsg-message-participants {
+		width: 100%;
+		max-width: 80%;
+		margin: 0 auto;
+		color: $black;
+		@extend .no-border;
+		  a.username {
+		  	color: $white;
+		  	padding-left: 5px;
+		  }
+	}
+	.privatemsg-message {
+		max-width: 80%;
+		margin: 0 auto;
+		 .privatemsg-message-information {
+		 	@extend .no-border;
+		 	.privatemsg-author-name {
+		 		position: relative;
+		 		padding-left: 30px;
+		 		  &:before {
+		 		 	   	 @include previous(47px, 21px, $left: 0, $top: -3px);
+		 		 	   	 background: url('../images/libraryzurb/arrow-list.png') no-repeat;
+		 		 	   }
+		 	}
+		 	a.username {
+		 		color: $black;
+		 	}
+		 	span.privatemsg-message-date {
+		 		color: $white;
+		 	}
+		 	ul {
+		 		list-style: none;
+		 		margin-top: 1.25em;
+		 		 li {
+		 		 	 
+		 		 	a {
+		 		 		color: $black;
+		 		 		padding: 5px 20px;
+		 		 		background: $yellow;
+		 		 		border-radius: 10px;
+		 		 		@extend .box-shadow;	
+		 		 		 &:hover {
+		 		 		 	text-decoration: none;
+		 		 		 }
+		 		 	}
+		 		 }
+		 	}
+		 }
+		 .privatemsg-message-body {
+		 	p {
+		 		a {
+		 			color: $black;
+		 		}
+		 	}
+		 }
+	}
+	.privatemsg-reply {
+		color: $white;
+		@extend .no-border;
+	}
+	.form-submit {
+		margin-top: 10px !important;
+	}
 
+}
+/**end**/
 /**css for reward page***/
 
 .page-rewards {
