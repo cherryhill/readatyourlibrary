@@ -215,6 +215,7 @@ jQuery( document ).ready(function() {
                 user_id: currentUser
             },
             success: function(res){
+              window.location.reload(true);
               console.log("data:");
               console.log(res);
               //alert("data");
