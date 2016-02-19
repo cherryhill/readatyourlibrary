@@ -29,8 +29,10 @@
 
 jQuery( document ).ready(function() {
   /* jquery for print calendar */
+  
+
 	jQuery( "#print_button" ).click(function() {
-      var contant = jQuery("#calendar");
+      var contant = jQuery(".main");
       var inner_content = contant.html();
 
       var WinPrint = window.open('', '', 'letf=0,top=0,width=400,height=400,toolbar=0,scrollbars=0,status=0');
@@ -68,7 +70,13 @@ jQuery( document ).ready(function() {
     editable: true,
     droppable: true, // this allows things to be dropped onto the calendar !!!
         
-    drop: function (date, allDay) { // this function is called when something is dropped
+    drop: function (date, allDay) {
+     var currentDate = new Date(jQuery.now());
+     var time_string = currentDate.toJSON().slice(0, 10);
+     time_string = time_string.split('-');
+     time_string = parseInt(time_string[0] + time_string[1] + time_string[2]);
+     //console.log(time_string); return false;
+     // this function is called when something is dropped
        // var count = jQuery(".fc-event-container").children('div').length;
         //alert(count);
         // retrieve the dropped element's stored Event Object
@@ -94,6 +102,11 @@ jQuery( document ).ready(function() {
 
         // assign it the date that was reported
         copiedEventObject.start = date;
+        var event_date = copiedEventObject.start;
+         event_date = event_date.toJSON().slice(0, 10);
+    	 event_date = event_date.split('-');
+    	 event_date = parseInt(event_date[0] + event_date[1] + event_date[2]);
+
         //console.log(copiedEventObject.start);
         copiedEventObject.allDay = allDay;
 
@@ -111,7 +124,8 @@ jQuery( document ).ready(function() {
         var baseUrl = loc.protocol + "//" + loc.host + '/calendar';
 
         var currentUser = Drupal.settings.auto_role_allocation.currentUser;
-        jQuery.ajax({
+        if(time_string > event_date) {
+          jQuery.ajax({
         
             //url: 'http://localhost/playatyourlibrary/docroot/calendar',
             url: baseUrl,
@@ -119,7 +133,11 @@ jQuery( document ).ready(function() {
             type: 'post',
             data: 'image='+image_name+'&date='+copiedEventObject.start+'&user_id='+currentUser,
             success: function(res){
-              window.location.reload(true);
+              if (res) {
+                window.location.reload(true);
+              } else {
+              	alert ('test');
+              }
             },
             error: function(jqXHR, data, error){
                 // console.log(jqXHR);
@@ -127,6 +145,7 @@ jQuery( document ).ready(function() {
                 // console.log(error);
             }
         });
+      }
        
     },
 
@@ -176,8 +195,7 @@ jQuery( document ).ready(function() {
           
         var loc = window.location;
         var baseUrl = loc.protocol + "//" + loc.host + '/calendar';
-
-        jQuery.ajax({        
+          jQuery.ajax({        
             //url: 'http://localhost/playatyourlibrary/docroot/calendar',
             url: baseUrl,
             type: 'post',
@@ -198,7 +216,8 @@ jQuery( document ).ready(function() {
                 //console.log(data);
                 //console.log(error);
             }
-        });
+         });
+            
         
     },
     events: eventsList
