@@ -171,10 +171,17 @@ jQuery( document ).ready(function() {
         return element.description;
     },
     eventDrop: function( event, dayDelta, minuteDelta, allDay, revertFunc, jsEvent, ui, view ) {
-       // var count = jQuery(".fc-event-container").children('div').length;
-       //  if( typeof serial_id === "undefined" ) {
-       //      serial_id = 0;
-       //  }
+       var currentDateInternal = new Date(jQuery.now());
+       var time_string1 = currentDateInternal.toJSON().slice(0, 10);
+         time_string1 = time_string1.split('-');
+         time_string1 = parseInt(time_string1[0] + time_string1[1] + time_string1[2]);
+         
+
+       var event_date1 = event.start;
+         event_date1 = event_date1.toJSON().slice(0, 10);
+    	 event_date1 = event_date1.split('-');
+    	 event_date1 = parseInt(event_date1[0] + event_date1[1] + event_date1[2]);
+
         var currentUser = Drupal.settings.auto_role_allocation.currentUser;
         console.log(event.title);
         var event_title = event.title;
@@ -195,6 +202,7 @@ jQuery( document ).ready(function() {
           
         var loc = window.location;
         var baseUrl = loc.protocol + "//" + loc.host + '/calendar';
+        if(time_string1 > event_date1) {
           jQuery.ajax({        
             //url: 'http://localhost/playatyourlibrary/docroot/calendar',
             url: baseUrl,
@@ -217,6 +225,7 @@ jQuery( document ).ready(function() {
                 //console.log(error);
             }
          });
+       }   
             
         
     },
