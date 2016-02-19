@@ -43,14 +43,14 @@ function _reward_claim_onscreen_message() {
 	$uid = $user->uid;
 
 	$query = db_select('reward_notification_patron','noti')
-	  ->fields('noti',array('uid','reward_notification_patron','notifications_read'))
+	  ->fields('noti',array('uid','reward_notifications','notifications_read'))
 	  ->condition('uid',$uid,'=')
 	  ->execute()
 	  ->fetchAll();
 
 	foreach($query as $res){
 		$reward_uid = $res->uid;
-		$reward_notification_patron = $res->reward_notification_patron;
+		$reward_notification_patron = $res->reward_notifications;
 		$read = $res->notifications_read;
 
   	$pieces = explode("<p>", $reward_notification_patron);
