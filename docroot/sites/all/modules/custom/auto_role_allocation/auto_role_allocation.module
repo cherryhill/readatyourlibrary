@@ -99,11 +99,15 @@ function progress_user_block_program() {
   }
 
   $reads_for_next_reward = ($closest_reward / $activity_point) - $total_read_days;
+  if($reads_for_next_reward < 0) {
+     return "Congratulations! You have completed the reading program and have received all the reading rewards.";
+  }
+  else {
+    $msg = "<span class='msg-highlight'>Total days read: $total_read_days</span><br/>";
+    $msg .= "<div><a href='".$base_url."/progress'>Go to the Progress Page</a></div>";
 
-  $msg = "<span class='msg-highlight'>Total days read: $total_read_days</span><br/>";
-  $msg .= "<div><a href='".$base_url."/progress'>Go to the Progress Page</a></div>";
-
-  return "<div>$msg</div>";
+    return "<div>$msg</div>";
+  }
 }
 
 function progress_user_block() {
@@ -148,10 +152,14 @@ function progress_user_block() {
   }
 
   $reads_for_next_reward = ($closest_reward / $activity_point) - $total_read_days;
+  if($reads_for_next_reward < 0) {
+    return "<div>Congratulations! You have completed the reading program and have received all the reading rewards.</div>";
+  }
+  else {
+    $msg = "$reads_for_next_reward more reads needed to receive your next prize";
 
-  $msg = "$reads_for_next_reward more reads needed to receive your next prize";
-
-  return "<div>$msg</div>";
+    return "<div>$msg</div>";
+  }
   
 }
 
@@ -335,14 +343,14 @@ $reward_claimed = $value->reward_id;
 if($reward_claimed) {
 
      $events[] = array(
-    'title' => '<div><img data-id="'.$value->id.'" src="sites/default/files/styles/thumbnail/public/' . $value->image_url . '"</img>'.'Congratulations! You earned prize!</div>', 
+    'title' => '<div><div class="reward_image"><img data-id="'.$value->id.'" src="sites/default/files/styles/thumbnail/public/' . $value->image_url . '"</img></div>'.'<div class="reward_text">Congratulations! You earned prize!</div></div>', 
     'date' => $value->date,
     );
   }
 else {
 
  $events[] = array(
-    'title' => '<div><img data-id="'.$value->id.'" src="sites/default/files/styles/thumbnail/public/' . $value->image_url . '"</img>'.'Read'.$i.'days</div>', 
+    'title' => '<div><div class="event_image"><img data-id="'.$value->id.'" src="sites/default/files/styles/thumbnail/public/' . $value->image_url . '"</img></div>'.'<div class="event_no">Read'.$i.'days</div></div>', 
     'date' => $value->date,
   );
 
@@ -403,10 +411,15 @@ function user_progress() {
 
   $reads_for_next_reward = ($closest_reward / $activity_point) - $total_read_days;
 
-  $msg = "<span class='msg-highlight'>Total days read: $total_read_days</span><br/>";
-  $msg .= "$reads_for_next_reward more days read needed to receive your next prize";
+  if($reads_for_next_reward < 0) {
+    return "Congratulations! You have completed the reading program and have received all the reading rewards.";
+  }
+  else {
+    $msg = "<span class='msg-highlight'>Total days read: $total_read_days</span><br/>";
+    $msg .= "$reads_for_next_reward more days read needed to receive your next prize";
 
-  return "<div>$msg</div>";
+    return "<div>$msg</div>";
+  }
 }
 
 
