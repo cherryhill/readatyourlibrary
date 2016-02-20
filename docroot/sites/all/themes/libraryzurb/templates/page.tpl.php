@@ -2,7 +2,9 @@
  //echo "Hello"; die('123');
 ?>
 <!--.page -->
-<div role="document" class="page">
+ <?php global $user; $user_role = $user->roles;
+  if(array_key_exists(6, $user_role)){
+    print "<div role='document' class='page-patron'>"; }else { print "<div role='document' class='page'>"; } ?>
 
   <!--.l-header region -->
   <header role="banner" class="l-header">
