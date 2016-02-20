@@ -17,8 +17,8 @@ button,
   border-radius: 10px;
   font-size: 17px;
   text-transform: capitalize;
-  @extend .mclaren;
-  @extend .box-shadow;
+  @include mclaren;
+  @include boxshadow;
    &:hover {
      background: $button-hover;
      color: $black;
@@ -35,13 +35,14 @@ button,
     color: $black;
     font-size: 17px;
     text-transform: capitalize;
-    @extend .mclaren;
+    @include mclaren;
 
     &:hover {
       outline: none;
       color: $black;
       background: $button-hover;
       text-decoration: none;
+      @include noborder;
     }
     &:focus, &.active {
     	outline: none;
