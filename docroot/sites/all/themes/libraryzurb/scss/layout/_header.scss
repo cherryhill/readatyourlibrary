@@ -1,7 +1,7 @@
 // Non-modular or client styles for .l-header region.
 
 .l-header {
-	background: $green;
+	background: $header;
 	.row {
   &.header-middle {
   	max-width: 100%;
@@ -53,7 +53,7 @@
                             left: 0;
                             top: 0;
                             visibility: visible; */
-                            @extend .animate;
+                            @include animate;
   	 			  	  	   }
   	 			  	  	 
   	 			  	  	  &.current-program {

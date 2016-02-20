@@ -1,4 +1,4 @@
-/**page wise css***/
+/***page wise css***/
 body {
     font-family: Arialregular;
 	font-style: normal !important;
@@ -12,13 +12,13 @@ body {
 			margin-top: -5px;
 		}
 	input[type="password"] {
-		@extend .mclaren;
+		@include mclaren;
 	}
 	.alert-box.success {
 		opacity: 1;
-		@extend .mclaren;
+		@include mclaren;
 		 a {
-		 	@extend .mclaren;
+		 	@include mclaren;
 		 	opacity: 1;
 		 	color: $red !important;
 		 	&.close {
@@ -39,7 +39,7 @@ body {
 		max-width: 80%;
 		margin: 0 auto;
 		color: $black;
-		@extend .no-border;
+		@include noborder;
 		  a.username {
 		  	color: $white;
 		  	padding-left: 5px;
@@ -49,7 +49,7 @@ body {
 		max-width: 80%;
 		margin: 0 auto;
 		 .privatemsg-message-information {
-		 	@extend .no-border;
+		 	@include noborder;
 		 	.privatemsg-author-name {
 		 		position: relative;
 		 		padding-left: 30px;
@@ -74,7 +74,7 @@ body {
 		 		 		padding: 5px 20px;
 		 		 		background: $yellow;
 		 		 		border-radius: 10px;
-		 		 		@extend .box-shadow;	
+		 		 		@include boxshadow;	
 		 		 		 &:hover {
 		 		 		 	text-decoration: none;
 		 		 		 }
@@ -92,7 +92,7 @@ body {
 	}
 	.privatemsg-reply {
 		color: $white;
-		@extend .no-border;
+		@include noborder;
 	}
 	.form-submit {
 		margin-top: 10px !important;
@@ -108,11 +108,11 @@ body {
 		right: 69.4%;
 		padding: 35px 2.65% 0px;
 		margin-bottom: 25px;
-		@extend .blue-background;
+		@include bluebackground;
 		  	.block {
 			  	.block-title, .view-header, .view-header p  {
 	              font-size: 22px;
-	              @extend .white-text;
+	              @include white-text;
 			  	}
 		  		.views-row {
 		  			.views-field-nothing {
@@ -128,7 +128,7 @@ body {
 	}
 	.main {
 	  	#page-title {
-	  		@extend .mclaren;
+	  		@include mclaren;
 	  		font-size: 28px;
 	  	}
 	  	.view-content {
@@ -148,14 +148,14 @@ body {
 	  					width: 50%;
 	  					display: table-row;
 	  					font-size: 17px;
-	  					@extend .arial-regular;
+	  					@include arialregular;
 	  				}
 	  				.views-field-field-badge-description {
 	  					width: 50%;
 	  					float: right;
 	  					display: table-cell;
 	  					font-size: 17px;
-	  					@extend .arial-regular;
+	  					@include arialregular;
 	  				}
 	  		}
 	  	}
@@ -195,9 +195,9 @@ body {
 		}
 	}
 	.page-reward-winners {
-		@extend .arial-regular;
+		@include arialregular;
 		#page-title {
-			@extend .mclaren;
+			@include mclaren;
 		}
 		table {
 			width: 100% !important;
@@ -212,7 +212,7 @@ body {
 	 	right: 69.4%;
 	 	padding-left: 2.65%;
 	 	padding-right: 2.65%;
-	 	@extend .block;
+	 	@include block;
  	}
     .pull-9.sidebar2 {
       	width: 29.53%;
@@ -230,14 +230,14 @@ body {
 	      	  	.block-title {
 	      	  		color: $white;
 	      	  		font-size: 22px;
-	      	  		@extend .mclaren;
+	      	  		@include mclaren;
 	      	  	}
       	  		.view {
       	  			.views-field-title {
       	  				a {
 	      	  				color: $white;
 	      	  				font-size: 17px;
-	      	  				@extend .arial-regular;
+	      	  				@include arialregular;
       	  				}
       	  			}
       	  		}
@@ -247,7 +247,7 @@ body {
 	      	  			text-align: center;
       	  					> div {
       	  			 			a {
-			      	  			  	@extend .yellow-button;
+			      	  			  	@include yellowbutton;
 			      	  			  	width: 100%;
 			      	  			  	display: inline-block;
 			      	  			  	position: relative;
@@ -257,7 +257,7 @@ body {
       	  			}
 	      	  		span {
 	      	  			padding-left: 32%;
-	      	  			@extend .arial-bold;
+	      	  			@include arialbold;
 	      	  			font-size: 17px;
 	      	  		}
       	  			position: relative;
@@ -273,7 +273,7 @@ body {
     }
   	.main {
  	 	.current-program {
-	    	@extend .orange-blue;
+	    	@include orange-blue;
 	    		.view {
 					display: inline-block;
 		    	 	width: 100%;
@@ -297,7 +297,7 @@ body {
 				                      padding-left: 2%;
 				                      display: table-cell;
 				                      float: none !important;
-				                      @extend .arial-regular;
+				                      @include arialregular;
 				                      font-size: 17px;
 									}
 				    	 	       &.views-field-title, &.views-field-field-sign-up {
@@ -312,7 +312,7 @@ body {
 	   		 	@media screen and (min-width: 980px) {
 	   		 	   font-size: 28px !important;
 	   		 	}
-   		 		@extend .mclaren;
+   		 		@include mclaren;
    		 		color: $black;
 		 		}
    		 	.view-content {
@@ -333,18 +333,18 @@ body {
 		   		 		 	  	&.views-field-title {
 		   		 		 	  		padding-bottom: 23px;
 		   		 		 	  			a {
-				   		 		 	  		@extend .mclaren;
+				   		 		 	  		@include mclaren;
 				   		 		 	  		color: $orange;
 				   		 		 	  		font-size: 20px;
 		   		 		 	  			}
 		   		 		 	  	}
 		   		 		 	  	&.views-field-body {
 			   		 		 	  	font-size: 17px;
-			   		 		 	  	@extend .arial-regular;
+			   		 		 	  	@include arialregular;
 		   		 		 	  	}
 		   		 		 	  	&.views-field-field-sign-up {
 			   		 		 	  	a {
-			   		 		 	  		@extend .yellow-button;
+			   		 		 	  		@include yellowbutton;
 			   		 		 	  	}
 		   		 		 	  	}
 
@@ -374,7 +374,7 @@ body {
 	 		 	.portlet-content {
 	 		 		color: $black;
 	 		 		font-size: 15px;
-	 		 		@extend .arial-regular;
+	 		 		@include arialregular;
 		 		 		&:before {
 		 		 		 	@include previous(50px, 50px, $left: 6%, $top: 12px);
 		 		 		 	overflow: visible;
@@ -392,7 +392,7 @@ body {
 	 		 	}
 	 		}
 	 		#homebox-add {
-	 		 	@extend .yellow-background;
+	 		 	@include yellowbackground;
 	 		 	border-radius: 20px;
 	 		 	padding: 36px 20px 25px;
 		 		 	.item-list ul li.last {
@@ -404,38 +404,38 @@ body {
 		 			a {
 		 				font-size: 22px;
 		 				padding: 9px 25px;
-		 				@extend .blue-button;
+		 				@include bluebutton;
 		 				text-decoration: none;
 		 			}
 			}
 	 		#homebox-add {
 	 			ul li a {
 	 				font-size: 17px;
-	 				@extend .blue-button;
+	 				@include bluebutton;
 	 				text-decoration: none;
 		 				&.used {
-		 					@extend .no-border;
+		 					@include noborder;
 		 				}
 	 			}
 	 		}
 	 		.homebox-column {
-	 			@extend .no-background;
+	 			@include nobackground;
 	 		}
 	 		.homebox-portlet {
-	 			@extend .no-border;
+	 			@include noborder;
 	 			position: relative;
 	 		}
 	 		.homebox-portlet-inner {
-	 			@extend .box-shadow;
-	 			@extend .no-border;
+	 			@include boxshadow;
+	 			@include noborder;
 	 			background: $yellow;
 	 			border-radius: 20px;
 	 			margin-bottom: 10px;
 					.portlet-header {
-		 				@extend .blue-box;
+		 				@include bluebox;
 		 				border-radius: 20px 20px 0px 0px;
 		 				padding: 15.5px 15px 15.5px 0 !important;
-		 				@extend .no-border;
+		 				@include noborder;
 	 						a {
 	 							position: relative;
 	 					 			&.portlet-close {
@@ -457,7 +457,7 @@ body {
 			 				  	width: 30px;
 	 						}
 	 						.portlet-title {
-			 					@extend .white-text;
+			 					@include white-text;
 			 					padding-left: 21%;
 			 					font-size: 22px;
 			 					position: relative;
@@ -490,11 +490,14 @@ body {
 			 			 	.view-content {
 			 			 		.views-field-count {
 			 			 			font-size: 15px;
-			 			 			@extend .arial-regular;
+			 			 			@include arialregular;
 			 			 			color: $black;
 			 			 			margin-top: 10px;
 				 			 			.views-label-count {
-				 			 				@extend .like;
+				 			 				@include like;
+				 			 				 &:after {
+				 			 				 	top: -4px !important;
+				 			 				 }
 				 			 			}
 			 			 		}
 			 			 	}
@@ -506,7 +509,7 @@ body {
 		 			 			.Following {
 		 			 				p {
 		 			 					font-size: 15px;
-		 			 					@extend .arial-bold;
+		 			 					@include arialbold;
 		 			 					color: $black;
 		 			 				}
 		 			 			}
@@ -518,7 +521,7 @@ body {
 	 			 			 			display: table-row;
 	 			 			 				img {
 				 			 			 		margin: 0px 0px 0.5em 0px;
-				 			 			 		@extend .no-border;
+				 			 			 		@include noborder;
 	 			 			 				}
 	 			 			 	 			.views-field {
 	 			 			 	 				display: table-cell;
@@ -533,7 +536,7 @@ body {
 						 			 			 	 		a {
 							 			 			 	 		color: $black;
 							 			 			 	 		font-size: 15px;
-							 			 			 	 		@extend .arial-regular;
+							 			 			 	 		@include arialregular;
 						 			 			 	 		}
 					 			 			 	 	}
 	 			 			 	 			}
@@ -547,7 +550,7 @@ body {
 		 			 		.more-link {
 		 			 			text-align: right;
 	 			 			 	a {
-		 			 			 	@extend .mclaren;
+		 			 			 	@include mclaren;
 		 			 			 	position: relative;
 		 			 			 	font-size: 17px;
 		 			 			 	text-transform: capitalize;
@@ -578,7 +581,7 @@ body {
 				 			 						float: right;
 				 			 						padding-top: 20px;
 				 			 						font-size: 15px;
-				 			 						@extend .arial-regular;
+				 			 						@include arialregular;
 				 			 						color: $black;
 				 			 					}
 	 			 							}
@@ -599,7 +602,7 @@ body {
 			 			 	  				display: inline-block;
 			 			 	  				margin: 0;
 			 			 	  				padding: 7px 22px;
-			 			 	  				@extend .blue-button;
+			 			 	  				@include bluebutton;
 				 			 	  				&:hover {
 				 			 	  				 	text-decoration: underline !important;
 				 			 	  				}
@@ -610,16 +613,16 @@ body {
 			 			 	  		h3{
 			 			 	  		font-size: 15px;
 			 			 	  		color: $black;
-			 			 	  		@extend .arial-bold;
+			 			 	  		@include arialbold;
 			 			 	  		text-transform: capitalize;
 			 			 	  		}
 	 			 	  				p {
 				 			 			text-align: right;
-				 			 			@extend .mclaren;
+				 			 			@include mclaren;
 			 			 			 	a {
 				 			 			 	position: relative;
 				 			 			 	font-size: 17px;
-				 			 			 	@extend .mclaren;
+				 			 			 	@include mclaren;
 				 			 			 	padding-right: 20px;
 				 			 			 	text-transform: capitalize;
 					 			 			 	&:after {
@@ -638,9 +641,9 @@ body {
 	 			 	  	 	  				a {
 			 			 	  	 	  			color: $black;
 			 			 	  	 	  			font-size: 15px;
-			 			 	  	 	  			@extend .arial-regular;
+			 			 	  	 	  			@include arialregular;
 				 			 	  	 	  			 &:before {
-				 			 	  	 	  			 	@extend .counter;
+				 			 	  	 	  			 	@include counter;
 				 			 	  	 	  			 }
 	 			 	  	 	  				}
 	 			 	  	 	  			}
@@ -668,7 +671,7 @@ body {
 					 			 	  			 	font-size: 17px;
 					 			 	  			 	margin: 0;
 					 			 	  			 	padding: 7px 22px;
-					 			 	  			 	@extend .blue-button;
+					 			 	  			 	@include bluebutton;
 						 			 	  			 	&:hover {
 						 			 	  			 	  	text-decoration: underline !important;
 						 			 	  			 	}
@@ -686,7 +689,7 @@ body {
 			 			 	  			 	font-size: 17px;
 			 			 	  			 	margin: 0;
 			 			 	  			 	padding: 7px 22px;
-			 			 	  			 	@extend .blue-button;
+			 			 	  			 	@include bluebutton;
 				 			 	  			 	&:hover {
 				 			 	  			 	  	text-decoration: underline !important;
 				 			 	  			 	}
@@ -695,24 +698,24 @@ body {
 	 			 	  			}
 			 			 	  	.view-empty {
 			 			 	  		font-size: 15px;
-			 			 	  		@extend .arial-regular;
+			 			 	  		@include arialregular;
 			 			 	  		color: $black;
 			 			 	  	}
 			 			 	  	.view-header {
 			 			 	  		h3 {
 			 			 	  			color: $black;
 			 			 	  			font-size: 15px;
-			 			 	  			@extend .arial-bold;
+			 			 	  			@include arialbold;
 			 			 	  			text-transform: capitalize;
 			 			 	  		}
 
 	 			 					p {
 				 			 			text-align: right;
-				 			 			@extend .mclaren;
+				 			 			@include mclaren;
 			 			 			 		a {
 					 			 			 	position: relative;
 					 			 			 	font-size: 17px;
-					 			 			 	@extend .mclaren;
+					 			 			 	@include mclaren;
 					 			 			 	padding-right: 20px;
 					 			 			 	text-transform: capitalize;
 					 			 			 	 	&:after {
@@ -732,11 +735,11 @@ body {
 			 			 	  			 	margin-left: 0;
 			 			 	  			 	a {
 			 			 	  			 		color: $black;
-			 			 	  			 		@extend .arial-regular;
+			 			 	  			 		@include arialregular;
 			 			 	  			 		font-size: 15px;
 			 			 	  			 		text-transform: capitalize;
 			 			 	  			 		 &:before {
-			 			 	  			 		 	@extend .counter;
+			 			 	  			 		 	@include counter;
 			 			 	  			 		 }
 			 			 	  			 	}
 			 			 	  			 }
@@ -751,7 +754,7 @@ body {
 		 			 	  	  	a {
 			 			 	  	  	 font-size: 15px;
 			 			 	  	  	 color: $black;
-			 			 	  	  	 @extend .arial-bold;
+			 			 	  	  	 @include arialbold;
 			 			 	  	  	 text-transform: capitalize;
 			 			 	  	  	 text-decoration: none;
 		 			 	  	    }
@@ -766,7 +769,7 @@ body {
 		 			 	  					float: left;
 		 			 	  					font-size: 15px;
 		 			 	  					color: $black;
-		 			 	  					@extend .arial-regular;
+		 			 	  					@include arialregular;
 			 			 	  					&:nth-of-type(2) {
 			 			 	  						margin-left: 1%;
 			 			 	  					}
@@ -783,7 +786,7 @@ body {
 			 			 	  			  	 display: inline-block;
 			 			 	  			  	 font-size: 17px;
 			 			 	  			  	 padding: 11px 22px;
-			 			 	  			  	 @extend .blue-button;
+			 			 	  			  	 @include bluebutton;
 		 			 	  			  	}
 		 			 	  		}
 		 			 	  	}
@@ -806,10 +809,10 @@ body {
 			max-width: 90%;
 			margin: 0 auto;
 			 label,div {
-			 	@extend .white-text;
+			 	@include white-text;
 			 }
 			.form-submit {
-				@extend .yellow-button;
+				@include yellowbutton;
 			}
 			fieldset#edit-token {
 				display: none;
@@ -826,10 +829,10 @@ body {
         position: relative; 
         padding: 0;
         padding-bottom: 20px;
-        @extend .box-shadow;
+        @include boxshadow;
          #page-title {
 		    color: $white;
-          	@extend .mclaren;
+          	@include mclaren;
 			padding-top: 26px;
 			padding-bottom: 25px;
 		    font-size: 28px;
@@ -878,7 +881,7 @@ body {
         		li {
         			a {
         				font-size: 17px;
-        				@extend .yellow-button;
+        				@include yellowbutton;
         			}
         		}
 	        		&:after {
@@ -889,12 +892,12 @@ body {
         		list-style: none;
         		 li {
         		 	a {
-        		 		@extend .yellow-button;
+        		 		@include yellowbutton;
         		 		margin-left:20px;
         		 		font-size: 17px;
         		 		position: relative;
         		 		top: 8.5px;
-        		 		@extend .box-shadow;
+        		 		@include boxshadow;
         		 	}
         		 }
         	}
@@ -904,7 +907,7 @@ body {
         	clear: both;
         		 button {
     	 			font-size: 17px;
-    	 			@extend .mclaren;
+    	 			@include mclaren;
     	 		}
     	 	 #privatemsg-list-form {
     	 	 	table {
@@ -955,12 +958,12 @@ body {
     	 	 		  	 		width: 200px !important;
     	 	 		  	 		 .chosen-single {
     	 	 		  	 		 	font-size: 17px;
-    	 	 		  	 		 	@extend .yellow-button;
+    	 	 		  	 		 	@include yellowbutton;
     	 	 		  	 		 	padding: 13px 20px 10px;
     	 	 		  	 		 	height: auto !important;
     	 	 		  	 		 	position: relative;
     	 	 		  	 		 	bottom: 2px;
-    	 	 		  	 		 	@extend .box-shadow;
+    	 	 		  	 		 	@include boxshadow;
     	 	 		  	 		 	  div {
     	 	 		  	 		 	  	top: 8px;
     	 	 		  	 		 	  }
@@ -978,8 +981,8 @@ body {
         	 	 	margin-top: 15px;
 
         	 	 	 a {
-        	 	 	 	@extend .yellow-button;
-        	 	 	 	@extend .box-shadow;
+        	 	 	 	@include yellowbutton;
+        	 	 	 	@include boxshadow;
         		 		font-size: 17px;
         	 	 	 	
 
@@ -1006,8 +1009,8 @@ body {
  
 .page-reviews, .page-booklists  {
   	#page-title {
-  	 	@extend .black-text;
-  	 	@extend .mclaren;
+  	 	@include black-text;
+  	 	@include mclaren;
   	}
   	.view-header {
   	 	p {
@@ -1024,7 +1027,7 @@ body {
      	right: 69.4%;
      	padding-left: 2.65%;
      	padding-right: 2.65%;
-     	@extend .block;
+     	@include block;
     }
     .pull-9.sidebar2 {
        width: 29.53%;
@@ -1039,16 +1042,16 @@ body {
   	 	padding-top: 25px;
   	 	padding-bottom: 25px;
   	 	border-radius: 20px;
-  	 	@extend .box-shadow;
+  	 	@include boxshadow;
 		  .block-title {
-  	 	  	@extend .white-text;
+  	 	  	@include white-text;
   	 	  	font-size: 22px;
   	 	  	margin-top: 6px;
   	 	  }
   	 	  	p {
   	 	  	 	color: white;
 		  	 	  	 &.button {
-		  	 	  	 	@extend .yellow-button;
+		  	 	  	 	@include yellowbutton;
 		  	 	  	 	margin-left: 0 !important;
 		  	 	  	 	margin-bottom: 24px;
 		  	 	  	 }
@@ -1066,7 +1069,7 @@ body {
   	 	    				margin-left: 5%;
   	 	    		 			.views-field-title {
 			  	 	    		 	a {
-			  	 	    		 		@extend .white-text;
+			  	 	    		 		@include white-text;
 			  	 	    		 		border-bottom: 1px solid $white;
 			  	 	    		 	}
   	 	    		 			}
@@ -1090,18 +1093,18 @@ body {
   	 	   			.view-header {
 		  	 	  		h3:nth-of-type(1) {
 		  	 	  			a {
-			  	 	  			@extend .white-text;
+			  	 	  			@include white-text;
 			  	 	  			font-size: 21px !important;
 			  	 	  		}
 		           		}
 	           		 	h3 {
 		           		 	font-size: 17px !important;
-		           		 	@extend .arial-bold;
+		           		 	@include arialbold;
 		           		 	color: $white;
 		           		 	margin-bottom: 15px;
 	           		 	  		a {
 			           		 	  	font-size: 17px !important;
-			           		 		@extend .arial-bold;
+			           		 		@include arialbold;
 			           		 		color: $white;
 	           		 	  		}
 	           		 	}
@@ -1112,18 +1115,18 @@ body {
   	  	.view-header {
   	  		.other-booklists {
   	  			font-size: 25px;
-  	  			@extend .mclaren;
+  	  			@include mclaren;
   	  			color: $black;
   	  			margin-bottom: 23px;
   	  		}
   	  		.viewmenu {
   	  			margin-bottom: 23px;
   	  			font-size: 17px;
-  	  			@extend .arial-regular;
+  	  			@include arialregular;
   	  		}
   	  	}
   	  	.view-filters {
-  	  		@extend .yellow-background;
+  	  		@include yellowbackground;
   	  		 	form {
   	  		 	 	margin: 0 !important;
   	  		 			.views-exposed-form {
@@ -1144,7 +1147,7 @@ body {
 					  	  		 	  	 }
 	  	  		 	  			}
 			  	  		 	  	label {
-				  	  		 	  	@extend .black-text;
+				  	  		 	  	@include black-text;
 				  	  		 	  	font-size: 16px;
 			  	  		 	  	}
 			  	  		 	  	.chosen-processed {
@@ -1158,17 +1161,17 @@ body {
 				  	  		 	  			.chosen-results {
 				  	  		 	  				li a {
 					  	  		 	  					background: $blue;
-					  	  		 	  					@extend .white-text;
+					  	  		 	  					@include white-text;
 						  	  		 	  					 &:hover, &:focus {
 						  	  		 	  					 	background: $blue;
-						  	  		 	  					 	@extend .white-text;
+						  	  		 	  					 	@include white-text;
 						  	  		 	  					 }
 				  	  		 	  				}
 				  	  		 	  			}
 				  	  		 	  	}
 	  	  		 	  				a {
 
-	  	  		 	  	    			@extend .blue-button;
+	  	  		 	  	    			@include bluebutton;
 	  	  		 	  	   				height: auto !important;
 	  	  		 	  	    			border: none;
 	  	  		 	  	     				div {
@@ -1195,7 +1198,7 @@ body {
 
 	  	  		 				.views-submit-button {
 	  	  		 					button {
-				  	  		 			@extend .blue-button;
+				  	  		 			@include bluebutton;
 				  	  		 			margin-top: 17px;
 				  	  		 			line-height: 1.2;
 				  	  		 			text-transform: capitalize;
@@ -1241,7 +1244,7 @@ body {
   	 	.main {
 	  	 	.view-content {
 		  	 	.views-row img {
-		  	 		@extend .no-border;
+		  	 		@include noborder;
 		  	 	}
 	  	 		.item-list {
 	  	 			ol {
@@ -1267,7 +1270,7 @@ body {
 		                             	padding-top: 23px;
                              				.bookreview_title {
 			                             		font-size: 20px;
-			                             		@extend .mclaren;
+			                             		@include mclaren;
 				                             		a {
 				                             			font-size: 20px;
 				                             			padding-right: 5px;
@@ -1281,22 +1284,22 @@ body {
 			  	 					 	top: 45px;
 			  	 					}
 		  	 					 	&.views-field-body {
-		  	 					 		@extend .arial-regular;
+		  	 					 		@include arialregular;
 		  	 					 	}
 	  	 					 		&.views-field-nothing {
 	  	 					 	 		div {
 	  	 					 	 	 		float: left; 
 				  	 					 	 	&.user {
 				  	 					 	 		padding-left: 5px;
-				  	 					 	 		@extend .mclaren;
+				  	 					 	 		@include mclaren;
 				  	 					 	 	}
 				  	 					 	 	&.review {
-				  	 					 	 		@extend .mclaren;
+				  	 					 	 		@include mclaren;
 				  	 					 	 	}
 				  	 					 	 	&.date {
 				  	 					 	 		width: 100%;
 				  	 					 	 		display: table-row; 
-				  	 					 	 		@extend .arial-regular;
+				  	 					 	 		@include arialregular;
 				  	 					 	 		padding-top: 16px;
 
 				  	 					 	 	}
@@ -1310,7 +1313,7 @@ body {
 					  	 					 	 		img {
 						  	 					 	 	
 						  	 					 	 		margin: 0 !important;
-						  	 					 	 		@extend .box-shadow;
+						  	 					 	 		@include boxshadow;
 					  	 					 	 	   	}
 	  	 					 	 				}
 	  	 					 	 		}
@@ -1328,7 +1331,7 @@ body {
 			  	 					}
 		  	 					 	&.views-field-title, &.views-field-php {
 			  	 					 	a {
-			  	 					 		@extend .blue-text;
+			  	 					 		@include blue-text;
 			  	 					 	}
 		  	 					 	}
 		  	 					 	&.views-field-count {
@@ -1336,9 +1339,9 @@ body {
 			  	 					 	width: 20%;
 			  	 					 	float: right;
 			  	 					 	display: table-row;
-			  	 					 	@extend .mclaren;
+			  	 					 	@include mclaren;
 			  	 					 	.views-label-count {
-			  	 					 		@extend .like;
+			  	 					 		@include like;
 					  	 			 	}
 		  	 					 	}
 
@@ -1349,9 +1352,9 @@ body {
 			  	 					 	padding: 0px;
 				  	 					 	table {
 				  	 					 		margin: 0 !important;
-				  	 					 		@extend .no-border;
+				  	 					 		@include noborder;
 				  	 					 		 tbody {
-				  	 					 		  	@extend .no-border;
+				  	 					 		  	@include noborder;
 				  	 					 		  	 td {
 				  	 					 		  	 	padding: 0;
 				  	 					 		  	 	img {
@@ -1395,7 +1398,7 @@ body {
 				  	 					 	 	margin: 23px 0 0;
 
 				  	 					 	 		a {
-				  	 					 	 			@extend .blue-button;
+				  	 					 	 			@include bluebutton;
 				  	 					 	 		}
 	  	 
 	  	 					 	 			}
@@ -1404,7 +1407,7 @@ body {
 	  	 					font-size: 17px;
 	  	 						.views-field-title {
 			  	 					&:before {
-			 							 @extend .counter;
+			 							 @include counter;
 			  	 					}
 	  	 						}
 	  	 				}
@@ -1434,7 +1437,7 @@ body {
 		  	 				&.views-row {
 		  	 					margin-bottom: 23px;
 		  	 					 .views-field-title {
-		  	 					 	@extend .mclaren;
+		  	 					 	@include mclaren;
 		  	 					 }
 		  	 				}
 	  	 				font-size: 17px;
@@ -1442,15 +1445,15 @@ body {
 		  	 					margin-top: 23px;
 		  	 					padding-left: 25px;
 		  	 					display: inline-block;
-		  	 					@extend .arial-regular;	
+		  	 					@include arialregular;	
 			  	 					div {
 			  	 						float: left;
 			  	 						&.field-name-field-avatar-image {
 			  	 							position: relative;
 			  	 							bottom: 10px;
 			  	 							  img {
-			  	 							  	 @extend .no-border;
-			  	 							  	 @extend .box-shadow;
+			  	 							  	 @include noborder;
+			  	 							  	 @include boxshadow;
 			  	 							  	 margin-right: 10px;
 			  	 							  }
 			  	 						}
@@ -1468,7 +1471,7 @@ body {
 	  	 			 		}
 	  	 			 		.views-field-count {
 			  	 			 	.views-label-count {
-			  	 			 		@extend .like;
+			  	 			 		@include like;
 			  	 			 	}
 	  	 			 		}
 			  	 			.views-field-count {
@@ -1480,11 +1483,11 @@ body {
 			  	 			 		font-size: 21px;
 			  	 			 		color: $blue;
 			  	 			 		 &:before {
-			  	 			 		 	@extend .counter;
+			  	 			 		 	@include counter;
 			  	 			 		 	color: $black;
 			  	 			 		 	display: inline-block;
 			  	 			 		 	padding-right: 10px;
-			  	 			 		 	@extend .arial-regular;
+			  	 			 		 	@include arialregular;
 			  	 			 		 }
 			  	 			 	}
 	  	 			 		}
@@ -1512,7 +1515,7 @@ body {
 	  			 	 		.field-content {
 			  			 	 	a {
 			  			 	 		color: $blue;
-			  			 	 		@extend .mclaren;
+			  			 	 		@include mclaren;
 			  			 	 		text-transform: capitalize;
 			  			 	 	}
 	  			 	 		}
@@ -1522,7 +1525,7 @@ body {
 		  			 	float: left;
 		  			 	margin-top: 20px;
 		  			 	font-size: 17px;
-		  			 	@extend .arial-regular;
+		  			 	@include arialregular;
 
 	  			 	  		div {
 			  			 	  	float: left;
@@ -1534,7 +1537,7 @@ body {
 			  			 	  	 	position: relative;
 			  			 	  	 	bottom: 10px;
 				  			 	  	 	 img {
-				  			 	  	 	 	@extend .box-shadow;
+				  			 	  	 	 	@include boxshadow;
 				  			 	  	 	 	margin-right: 5px;
 				  			 	  	 	 	margin-left: 5px;
 				  			 	  	 	 }
@@ -1559,7 +1562,7 @@ body {
 			  			 	  	position: relative;
 			  			 	  	 &.views-label {
 			  			 	  	 	padding-right: 40px;
-			  			 	  	 	@extend .like;
+			  			 	  	 	@include like;
 			  			 	  	 }
 			  			 	  }
 	  			 	}
@@ -1604,28 +1607,47 @@ body {
 /**activities page **/
 
 .section-activities {
+	h1#page-title {
+		display: none;
+	}
  	.main {
  		.view-activities-page-, .block-block {
-		 	@extend .orange-blue;
-		 	@extend .block;
-		 	padding-bottom: 20px;
-		 	 	p, .view-content {
-			 	 	padding-left: 20px;
-			 	 	padding-right: 20px;
-			 	 	@extend .arial-regular;
-			 	 	font-size: 17px;
+		 	@include block;
+		 	h2, .block-title {
+		 		font-size: 28px;
+		 		@include mclaren;
+		 		@include noborder;
+		 		color: $black;
+		 	}
+		 	 a.button {
+		 	 	margin-bottom: 0;
+		 	 	margin-left: 0;
+		 	 }
+		 	.view-content {
+
+		 	}
+	 	 	div {
+		 	 	a {
+		 	 		padding-left: 20px;
 		 	 	}
-		 	 	div {
-			 	 	a {
-			 	 		padding-left: 20px;
-			 	 	}
-		 	 	}
+	 	 	}
  		}
 	}
-	.sidebar {
+	.pull-9.sidebar3 {
+		width: 29.53%;
+		right: 67.4%;
+		margin-bottom: 35px;
+	}
+	/* .pull-9.sidebar, .pull-9.sidebar2 {
+		width: 29.53%;
+		right: 71.4%;
+		padding-left: 0px;
+		padding-right: 0px;
+	} */
+	.sidebar3 {
+		@include bluebackground;
+		@include block;
 		.block-views {
-			@extend .orange-blue;
-			padding-bottom: 20px;
 			 &:first-child {
 			 	ul {
 			 		list-style: none !important;
@@ -1641,7 +1663,7 @@ body {
 
 	                   	 				a {
 					                   		&:before {
-							 	 			@extend .counter;
+							 	 			@include counter;
 							 	 			
 			 	 							}
                    						}
@@ -1655,8 +1677,8 @@ body {
 			 	margin-top: 30px;
 			 	p {
 			 		a {
-			 			@extend .yellow-button;
-			 			@extend .box-shadow;
+			 			@include yellowbutton;
+			 			@include boxshadow;
 			 		}
 			 	}
 			}
@@ -1666,11 +1688,14 @@ body {
 			.views-field-count {
 			 	.views-label {
 			 		padding-right: 32px;
-			 		@extend .like;
+                    @include like;
+                     &:after {
+                     	top: -4px !important;
+                     }
 			 	}
 			}
 			h3 {
-			 	@extend .white-text;
+			 	@include white-text;
 			 	margin-top: 20px;
 			 	text-align: center;
 			}
@@ -1684,7 +1709,8 @@ body {
 			 	 }
 			 	 	a {
 			 	 		
-			 	 		@extend .white-text;
+			 	 		color: $white;
+			 	 		@include mclaren;
 			 	 		text-decoration: underline;
 			 	 		font-size: 17px;
 
@@ -1768,18 +1794,18 @@ body {
 
 	 	}
  	 	.main {
-	 	 	@extend .blue-background;
+	 	 	@include bluebackground;
 	 	 	padding-left: 0;
 	 	 	padding-right: 0;
 	 	 	display: table-row;
 	 	 	width: 100%;
 	 	 	position: relative;
-	 	 	@extend .block;
+	 	 	@include block;
 		 	 	#page-title {
-		 	 	 	@extend .wave-img;
+		 	 	 	@include waveimg;
 		 	 	}
  	 	 		.view-calendar-sticker {
- 	 	 			@extend .yellow-background;
+ 	 	 			@include yellowbackground;
 		 	 	 	width: 40%; 
 		 	 	 	display: table-cell;
  	 	 	
@@ -1789,7 +1815,7 @@ body {
 			 	 	 	 	padding: 20px 0 20px 2%;
 			 	 	 	 	left: 0;
  	 	 	 	 				p {
-				 	 	 	 	 	@extend .mclaren;
+				 	 	 	 	 	@include mclaren;
 				 	 	 	 	 	margin-bottom: 0;
 				 	 	 	 	 	color: $black;
 				 	 	 	 	 	line-height: 1;
@@ -1831,8 +1857,8 @@ body {
 						background: $white;
 						color: $black;
 						border-radius: 20px;
-						@extend .mclaren;
-						@extend .box-shadow;
+						@include mclaren;
+						@include boxshadow;
 							.view-prize-won-for-progress-page {
 								width: 100%;
 								display: table;
@@ -1902,8 +1928,8 @@ body {
 		 	 			text-align: center;
 		 	 			padding: 0 5%;
 		 	 			border-radius: 20px;
-		 	 			@extend .mclaren;
-		 	 			@extend .box-shadow;
+		 	 			@include mclaren;
+		 	 			@include boxshadow;
 			 	 			 > div:nth-of-type(2) {
 			 	 			 	line-height: 1.2;
 			                    font-size: 18px;
@@ -1934,7 +1960,7 @@ body {
  	 			 		 					.fc-header-center {
 					 	 			 		 	h2 {
 					 	 			 		 		color: $orange;
-					 	 			 		 		@extend .mclaren;
+					 	 			 		 		@include mclaren;
 					 	 			 		 		border-bottom: none;
 					 	 			
 					 	 			 		 	}
@@ -1946,7 +1972,7 @@ body {
  	 			 		 						span {
  	 			 		 							&.fc-button {
 					 	 			 		 			background: $yellow;
-					 	 			 		 			@extend .box-shadow;
+					 	 			 		 			@include boxshadow;
 					 	 			 		 			opacity: 1 !important;
 					 	 			 		 			color: $black;
 						 	 			 		 			&.fc-button-agendaWeek, &.fc-button-agendaDay, &.fc-button-month {
@@ -1968,7 +1994,7 @@ body {
 						 	 			 			 	font-weight: normal !important;
 						 	 			 			}
 					 	 			 			 tbody {
-					 	 			 			 	@extend .box-shadow;
+					 	 			 			 	@include boxshadow;
 					 	 			 			 }
  	 			 							}
 					 	 			 		.fc-widget-header{
@@ -2001,14 +2027,15 @@ body {
 		 	 			 	line-height: 30px;
 		 	 			 	padding:6px 0px 6px 45px;
 		 	 			 	font-size: 17px;
-		 	 			 	@extend .mclaren;
+		 	 			 	@include mclaren;
 		 	 			 	background: $yellow url('../images/libraryzurb/print-calender.png') no-repeat !important;
 		 	 			 	background-position: 10px !important;
 		 	 			 	color: $black;
 		 	 			 	border-radius: 10px;
-		 	 			 	@extend .box-shadow;
+		 	 			 	@include boxshadow;
 		 	 			 	
 		 	 			 	
 		 	 			 }
  	}
+
 /**end of progress page***/
