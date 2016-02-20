@@ -33,7 +33,7 @@
       margin: 0;
       position: relative;
       top: 10px;
-      @extend .no-border;
+      @include noborder;
       background: transparent;
        li {
           position: relative;
@@ -61,7 +61,7 @@
           }
          a {
           color: $blue;
-          @extend .arial-regular;
+          @include arialregular;
           text-transform: capitalize;
           font-size: 17px;
           float: left;
@@ -89,8 +89,8 @@
                border-radius: 10px;
                font-size: 19px;
                color: $white;
-               @extend .mclaren;
-               @extend .box-shadow;
+               @include mclaren;
+               @include boxshadow;
                
                 &.msg {
                    padding: 2px 12px 5px 33px !important; 
@@ -107,7 +107,7 @@
                   border: none !important;
                   font-size: 14px;
                   box-shadow: none !important;
-                  @extend .mclaren;
+                  @include mclaren;
                 }
               }
               
