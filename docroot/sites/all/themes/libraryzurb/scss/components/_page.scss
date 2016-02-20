@@ -1633,10 +1633,21 @@ body {
 	 	 	}
  		}
 	}
-	.sidebar {
+	.pull-9.sidebar3 {
+		width: 29.53%;
+		right: 67.4%;
+		margin-bottom: 35px;
+	}
+	/* .pull-9.sidebar, .pull-9.sidebar2 {
+		width: 29.53%;
+		right: 71.4%;
+		padding-left: 0px;
+		padding-right: 0px;
+	} */
+	.sidebar3 {
+		@include bluebackground;
+		@include block;
 		.block-views {
-			@include orange-blue;
-			padding-bottom: 20px;
 			 &:first-child {
 			 	ul {
 			 		list-style: none !important;

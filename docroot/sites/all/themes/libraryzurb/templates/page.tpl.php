@@ -159,6 +159,12 @@
       <?php print render($page['content']); ?>
     </div>
     <!--/.main region -->
+    <?php if (!empty($page['activity_sidebar'])): ?>
+      <aside role="complementary" class="<?php print $sidebar_first_grid; ?> sidebar-first columns sidebar3">
+        <div class='first'><?php print render($page['activity_sidebar']); ?> </div>
+        <?php //print render($page['login_form']); ?>
+      </aside>
+    <?php endif; ?>
 
     <?php if (!empty($page['sidebar_first'])): ?>
       <aside role="complementary" class="<?php print $sidebar_first_grid; ?> sidebar-first columns sidebar">
