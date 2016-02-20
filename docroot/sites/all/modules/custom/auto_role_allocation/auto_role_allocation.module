@@ -265,13 +265,6 @@ function calendar_page() {
   $reward_date = $query_date->fetchAssoc();
 
   
-
- 
-if($event_time <  $reward_date) {
-	
-	return FALSE;
-}
-  else {
     if (!$no_of_sticker) {
 		  if($image_id) {
 		    db_update('calendar')
@@ -309,7 +302,7 @@ if($event_time <  $reward_date) {
 	  } else {
 		  echo 0;
 	  }
-  }	
+  	
 }
 
 
