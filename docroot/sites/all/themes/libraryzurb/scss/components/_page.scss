@@ -197,6 +197,18 @@ body {
 	              font-size: 22px;
 	              @include white-text;
 			  	}
+			  	.view {
+			  		display: table;
+			  		width: 100%;
+			  		 .views-row {
+			  		 	display: table-row;
+			  		 	width: 100%;
+			  		 	  .views-field {
+			  		 	  	display: table-cell;
+			  		 	  	padding-right: 10px;
+			  		 	  }
+			  		 }
+			  	}
 		  		.views-row {
 		  			.views-field-nothing {
 		  				.badges {
@@ -213,6 +225,30 @@ body {
 	  	#page-title {
 	  		@include mclaren;
 	  		font-size: 28px;
+	  	}
+	  	div.badges {
+	  		img {
+	  			margin-right: 20px;
+	  		}
+	  	}
+	  	.block {
+	  		.block-title {
+	  			@include noborder;
+	  			font-size: 28px;
+	  			color: $orange;
+	  			@include mclaren;
+	  			 .view {
+	  			 	display: table;
+	  			 	width: 100%;
+	  			 	.view-content {
+	  			 		display: table-row;
+	  			 		width: 100%;
+	  			 		.views-row {
+                          display: table-cell;
+	  			 		}
+	  			 	}
+	  			 }
+	  		}
 	  	}
 	  	.view-content {
 	  		.views-row {
