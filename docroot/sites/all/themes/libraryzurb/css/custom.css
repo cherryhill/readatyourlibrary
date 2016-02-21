@@ -6357,6 +6357,32 @@ h1#page-title {
   padding-left: 17px;
 }
 
+.more-link {
+  text-align: right;
+}
+.more-link a {
+  font-family: McLaren-Regular !important;
+  font-weight: normal !important;
+  font-style: normal !important;
+  -webkit-font-smoothing: antialiased !important;
+  position: relative;
+  font-size: 17px;
+  text-transform: capitalize;
+  padding-right: 20px;
+}
+.more-link a:after {
+  content: "";
+  width: 17px;
+  height: 17px;
+  display: block;
+  visibility: visible;
+  position: absolute;
+  top: 1px;
+  right: 0;
+  background: url("../images/libraryzurb/right-blue-arrow.png") no-repeat;
+  background-size: 15px;
+}
+
 .admin-menu .fixed {
   top: 1.8125em;
 }
@@ -10076,14 +10102,14 @@ body .alert-box.success a.close:hover {
   background: url("../images/libraryzurb/right-blue-arrow.png") no-repeat;
   background-size: 15px;
 }
-.page-user-profile .homebox .portlet-content .view.view-my-book-reviews .view-content ul {
+.page-user-profile .homebox .portlet-content .view.view-my-book-reviews .view-content ol, .page-user-profile .homebox .portlet-content .view.view-my-book-reviews .view-content ul {
   margin-left: 0;
   list-style: none;
 }
-.page-user-profile .homebox .portlet-content .view.view-my-book-reviews .view-content ul li {
+.page-user-profile .homebox .portlet-content .view.view-my-book-reviews .view-content ol li, .page-user-profile .homebox .portlet-content .view.view-my-book-reviews .view-content ul li {
   margin-left: 0;
 }
-.page-user-profile .homebox .portlet-content .view.view-my-book-reviews .view-content ul li a {
+.page-user-profile .homebox .portlet-content .view.view-my-book-reviews .view-content ol li a, .page-user-profile .homebox .portlet-content .view.view-my-book-reviews .view-content ul li a {
   color: #000;
   font-family: Arialregular !important;
   font-style: normal !important;
@@ -10092,7 +10118,7 @@ body .alert-box.success a.close:hover {
   font-size: 15px;
   text-transform: capitalize;
 }
-.page-user-profile .homebox .portlet-content .view.view-my-book-reviews .view-content ul li a:before {
+.page-user-profile .homebox .portlet-content .view.view-my-book-reviews .view-content ol li a:before, .page-user-profile .homebox .portlet-content .view.view-my-book-reviews .view-content ul li a:before {
   counter-increment: section;
   content: " " counter(section,decimal) ". ";
   padding-right: 5px;
@@ -11644,6 +11670,10 @@ body .alert-box.success a.close:hover {
 }
 .section-progress .main .block.progress-calendar div.fc-event-container > div img, .section-progress .main .block.progress-calendar div.ui-draggable.ui-draggable-handle img {
   width: 55px !important;
+}
+.section-progress .main .block.progress-calendar div.event_no {
+  font-size: 14px;
+  line-height: 1;
 }
 .section-progress .main .block.progress-calendar.contextual-links-region {
   position: initial;

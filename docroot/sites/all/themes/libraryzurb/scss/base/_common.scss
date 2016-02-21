@@ -96,3 +96,18 @@ h1#page-title {
 .views-field-count {
 	padding-left: 17px;
 }
+.more-link {
+	text-align: right;
+	 	a {
+		 	@include mclaren;
+		 	position: relative;
+		 	font-size: 17px;
+		 	text-transform: capitalize;
+	 		padding-right: 20px;
+		 	 	&:after {
+          	@include previous(17px, 17px, $right: 0, $top: 1px);
+          	background: url('../images/libraryzurb/right-blue-arrow.png') no-repeat;
+          	background-size: 15px;
+		 	 	}
+		}
+}
