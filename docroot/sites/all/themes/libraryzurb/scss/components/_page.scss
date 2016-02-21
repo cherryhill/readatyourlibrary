@@ -100,6 +100,89 @@ body {
 
 }
 /**end**/
+/**css for photos n vedios page***/
+.section-media {
+	.block-title {
+		font-size: 28px;
+		color: $black;
+		@include mclaren;
+		@include noborder;
+	}
+	.main {
+		.view {
+			display: table;
+			width: 100%;
+			 .views-row {
+			 	display: table-row;
+			 	width: 32%;
+			 	float: left;
+			 	padding-left: 1%;
+			 	clear: none !important;
+			 	 .flickr-photoset-img {
+			 	 	text-align: center;
+			 	 	img {
+			 	 		width: 160px;
+			 	 		height: 160px;
+			 	 	}
+			 	 }
+			 	 .flickr-citation {
+			 	 	margin-top: 23px;
+			 	 	margin-bottom: 10px;
+			 	 	text-align: center;
+			 	 	   a {
+			 	 	   	  color: transparent;
+			 	 	   	  position: relative;
+			 	 	   	  display: inline-block;
+			 	 	   	  width: 80%;
+			 	 	   	    &:after {
+			 	 	   	    	content: "view album";
+			 	 	   	    	height: 38px;
+			 	 	   	    	line-height: 40px;
+			 	 	   	    	width: 100%;
+			 	 	   	    	background: $yellow url('../images/libraryzurb/view-album.png') no-repeat;
+			 	 	   	    	background-position: 10px !important;
+			 	 	   	    	color: $black;
+			 	 	   	    	border-radius: 10px;
+			 	 	   	    	text-align: center;
+			 	 	   	    	@include boxshadow;
+			 	 	   	    	@include mclaren;
+			 	 	   	    	text-transform: capitalize;
+			 	 	   	    	position: absolute;
+			 	 	   	    	top: 0;
+			 	 	   	    	left: 0;
+			 	 	   	    }
+			 	 	   	    &:hover {
+			 	 	   	    	&:after {
+			 	 	   	    		background: $button-hover url('../images/libraryzurb/view-album.png') no-repeat;
+			 	 	   	    	}
+			 	 	   	    }
+			 	 	   	    &:focus {
+			 	 	   	    	&:after {
+			 	 	   	    		background: $button-active url('../images/libraryzurb/view-album.png') no-repeat;
+			 	 	   	    	}
+			 	 	   	    }
+			 	 	   }
+			 	 }
+			 	 .views-field-field-video-description {
+			 	 	.views-label {
+			 	 		display: none;
+			 	 	}
+			 	 	.field-content {
+			 	 		padding-top: 10px;
+			 	 		font-size: 12px;
+			 	 		line-height: 1;
+			 	 		@include arialregular;
+			 	 	}
+			 	 }
+			 }
+			 .view-footer {
+			 	width: 100%;
+			 	display: inline-block;
+			 }
+		}
+	}
+}
+/**end photos n vedios***/
 /**css for reward page***/
 
 .page-rewards {
@@ -113,6 +196,19 @@ body {
 			  	.block-title, .view-header, .view-header p  {
 	              font-size: 22px;
 	              @include white-text;
+			  	}
+			  	.view {
+			  		display: table;
+			  		width: 100%;
+			  		 .views-row {
+			  		 	display: table-row;
+			  		 	width: 100%;
+			  		 	  .views-field {
+			  		 	  	display: table-cell;
+			  		 	  	padding-right: 10px;
+			  		 	  	vertical-align: middle;
+			  		 	  }
+			  		 }
 			  	}
 		  		.views-row {
 		  			.views-field-nothing {
@@ -130,6 +226,30 @@ body {
 	  	#page-title {
 	  		@include mclaren;
 	  		font-size: 28px;
+	  	}
+	  	div.badges {
+	  		img {
+	  			margin-right: 20px;
+	  		}
+	  	}
+	  	.block {
+	  		.block-title {
+	  			@include noborder;
+	  			font-size: 28px;
+	  			color: $orange;
+	  			@include mclaren;
+	  			 .view {
+	  			 	display: table;
+	  			 	width: 100%;
+	  			 	.view-content {
+	  			 		display: table-row;
+	  			 		width: 100%;
+	  			 		.views-row {
+                          display: table-cell;
+	  			 		}
+	  			 	}
+	  			 }
+	  		}
 	  	}
 	  	.view-content {
 	  		.views-row {
@@ -205,72 +325,95 @@ body {
 	}
 /**end reward-winners page**/
 /**css for program page***/
-	
-.section-programs {
- 	.pull-9.sidebar {
+/**css for unauthenticated program page***/
+.not-logged-in.section-programs {
+	.pull-9.sidebar {
+		right: 70.4%;
+	}
+	.block-views-reward-earn-block-1 {
+		.block-title {
+			&:after {
+				background: none;
+			}
+		}
+	}
+}
+/*end unauthenticated program page css**/
+/**css for authunticated program page***/
+.logged-in.section-programs{
+	.block-views-reward-earn-block-1 {
+		display: none;
+	}
+	.pull-9.sidebar {
 	 	width: 29.53%;
 	 	right: 69.4%;
 	 	padding-left: 2.65%;
 	 	padding-right: 2.65%;
 	 	@include block;
  	}
+	.sidebar {
+	      	background: $blue;
+	      	color: $white;
+	      	padding-top: 25px;
+	      	padding-bottom: 25px;
+	      	border-radius: 20px;
+	      	  	.block {
+		      	  	.block-title {
+		      	  		color: $white;
+		      	  		font-size: 22px;
+		      	  		@include mclaren;
+		      	  	}
+	      	  		.view {
+	      	  			.views-field-title {
+	      	  				a {
+		      	  				color: $white;
+		      	  				font-size: 17px;
+		      	  				@include arialregular;
+	      	  				}
+	      	  			}
+	      	  		}
+	      	  		&.block-auto-role-allocation   {
+	      	  			> div {
+		      	  			display: inline-block;
+		      	  			text-align: center;
+	      	  					> div {
+	      	  			 			a {
+				      	  			  	@include yellowbutton;
+				      	  			  	width: 100%;
+				      	  			  	display: inline-block;
+				      	  			  	position: relative;
+				      	  			  	margin-top: 80px;
+	      	  			 			}
+	      	  					}
+	      	  			}
+		      	  		span {
+		      	  			padding-left: 32%;
+		      	  			@include arialbold;
+		      	  			font-size: 17px;
+		      	  		}
+	      	  			position: relative;
+	      	  				&:before {
+				      	  		@include previous(100px, 100px, $left: 0, $top: 19px);
+				      	  		 background: url('../images/libraryzurb/white-calender.png') no-repeat;
+				                 background-position: left;
+	  	  	  				}
+	      	  	 
+	      	  		}
+	      		}
+	      	 
+	    }
+}
+/**end css authenticated program page**/
+	
+.section-programs {
+ 	
     .pull-9.sidebar2 {
       	width: 29.53%;
        	right: 71.4%;
        	padding-left: 0;
        	padding-right: 0;
     }
-    .sidebar {
-      	background: $blue;
-      	color: $white;
-      	padding-top: 25px;
-      	padding-bottom: 25px;
-      	border-radius: 20px;
-      	  	.block {
-	      	  	.block-title {
-	      	  		color: $white;
-	      	  		font-size: 22px;
-	      	  		@include mclaren;
-	      	  	}
-      	  		.view {
-      	  			.views-field-title {
-      	  				a {
-	      	  				color: $white;
-	      	  				font-size: 17px;
-	      	  				@include arialregular;
-      	  				}
-      	  			}
-      	  		}
-      	  		&.block-auto-role-allocation   {
-      	  			> div {
-	      	  			display: inline-block;
-	      	  			text-align: center;
-      	  					> div {
-      	  			 			a {
-			      	  			  	@include yellowbutton;
-			      	  			  	width: 100%;
-			      	  			  	display: inline-block;
-			      	  			  	position: relative;
-			      	  			  	margin-top: 80px;
-      	  			 			}
-      	  					}
-      	  			}
-	      	  		span {
-	      	  			padding-left: 32%;
-	      	  			@include arialbold;
-	      	  			font-size: 17px;
-	      	  		}
-      	  			position: relative;
-      	  				&:before {
-			      	  		@include previous(100px, 100px, $left: -16px, $top: 19px);
-			      	  		 background: url('../images/libraryzurb/fi-calendar.svg') no-repeat;
-			                 background-position: left;
-  	  	  				}
-      	  	 
-      	  		}
-      		}
-      	 
-    }
+    
   	.main {
  	 	.current-program {
 	    	@include orange-blue;
@@ -1936,10 +2079,11 @@ body {
 			 	 			 }
  	 				}
  	 				&.progress-calendar {
-		 	 					div.ui-draggable.ui-draggable-handle  {
+
+		 	 					div.fc-event-container > div ,div.ui-draggable.ui-draggable-handle  {
 		 	 			 			text-align: center !important;
 			 	 			 			img {
-			 	 			 				width: 94px !important; 
+			 	 			 				width: 55px !important; 
 
 			 	 			 			}
 		 	 			 		}
