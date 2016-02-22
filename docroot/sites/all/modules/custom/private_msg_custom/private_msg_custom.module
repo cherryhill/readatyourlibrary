@@ -5,9 +5,16 @@
  */
 
 function private_msg_custom_menu() {
-  $items['testing'] = array(
-    'title' => 'Test Page',
-    'page callback' => 'test_pag',
+  $items['my_reviews'] = array(
+    'title' => 'Reviews',
+    'page callback' => 'user_reviews',
+    'access arguments' => array('access content'),
+    'type' => MENU_SUGGESTED_ITEM,
+  );
+
+  $items['my_booklist'] = array(
+    'title' => 'Booklist',
+    'page callback' => 'user_booklist',
     'access arguments' => array('access content'),
     'type' => MENU_SUGGESTED_ITEM,
   );
@@ -20,10 +27,13 @@ function private_msg_custom_form_alter(&$form, &$form_state, $form_id) {
 	// echo '<pre>'; print_r($form_id);die();
 }
 
-function test_pag(){
-	return 'test';
+function user_reviews(){
+	return '';
 }
 
+function user_booklist(){
+  return '';
+}
 /**
  * Implements hook_block_info().
  */
@@ -56,23 +66,32 @@ function pm_block_view(){
   global $user;
 	$current_user = $user->uid;
 
- $query_pm = db_select('pm_index','pi');
- $query_pm->fields('pi',array('mid','is_new'));
- $query_pm->join('pm_message','pmsg','pmsg.mid = pi.mid');
- $query_pm->join('users','u','u.uid = pmsg.author');
- $query_pm->fields('u',array('name'));
- $query_pm->condition('recipient',$current_user,'=');
- $query_pm->orderBy('timestamp', 'DESC');
- $query_pm->range(0,2);
- $query = $query_pm->execute()
- ->fetchAll();
+  $query_pm = db_select('pm_index','pi');
+  $query_pm->fields('pi',array('mid','is_new','deleted'));
+  $query_pm->join('pm_message','pmsg','pmsg.mid = pi.mid');
+  $query_pm->join('users','u','u.uid = pmsg.author');
+  $query_pm->fields('u',array('name'));
+  $query_pm->condition('recipient',$current_user,'=');
+  $query_pm->condition('timestamp',0,'=');
+  $query_pm->orderBy('timestamp', 'DESC');
+  $query_pm->range(0,2);
+  $query = $query_pm->execute()
+  ->fetchAll();
 
- $output = '<div class = "pm-custom">';
+  $no_result = $query[0];
+
+  $output = '<div class = "pm-custom">';
+
+if(isset($no_result)){
 
 	foreach($query as $res){
 	$msg_id = $res->mid;
-
+  $deleted = $res->deleted;
 	$author = $res->name;
+
+  //echo "<pre>"; print_r($deleted);die();
+
+  // if($deleted)
 
 	 $result = db_select('pm_message','pm')
 	 ->fields('pm',array('subject','timestamp'))
@@ -88,4 +107,7 @@ function pm_block_view(){
 	
 	}
 	return $output.'<a class="pm-view" href="../messages">View All Messages</a>'.'</div>';
+  }else{
+    return 'No Messages to display';
+  }
 }
