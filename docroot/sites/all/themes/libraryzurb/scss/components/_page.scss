@@ -545,16 +545,14 @@ body {
 	 		#homebox-buttons {
 	 			margin-bottom: 32px;
 		 			a {
-		 				font-size: 22px;
 		 				padding: 9px 25px;
-		 				@include bluebutton;
+		 				@include bluebutton($font-size: 22px);
 		 				text-decoration: none;
 		 			}
 			}
 	 		#homebox-add {
 	 			ul li a {
-	 				font-size: 17px;
-	 				@include bluebutton;
+	 				@include bluebutton($font-size: 17px);
 	 				text-decoration: none;
 		 				&.used {
 		 					@include noborder;
@@ -740,12 +738,11 @@ body {
 			 			 	  		p {
 			 			 	  			text-align: center;
 			 			 	  			a {
-			 			 	  				font-size: 17px;
 			 			 	  				width: 100%;
 			 			 	  				display: inline-block;
 			 			 	  				margin: 0;
 			 			 	  				padding: 7px 22px;
-			 			 	  				@include bluebutton;
+			 			 	  				@include bluebutton($font-size: 17px);
 				 			 	  				&:hover {
 				 			 	  				 	text-decoration: underline !important;
 				 			 	  				}
@@ -811,10 +808,9 @@ body {
 			 			 	  			 		a {
 					 			 	  			 	width: 100%;
 					 			 	  			 	display: inline-block;
-					 			 	  			 	font-size: 17px;
 					 			 	  			 	margin: 0;
 					 			 	  			 	padding: 7px 22px;
-					 			 	  			 	@include bluebutton;
+					 			 	  			 	@include bluebutton($font-size: 17px);
 						 			 	  			 	&:hover {
 						 			 	  			 	  	text-decoration: underline !important;
 						 			 	  			 	}
@@ -829,10 +825,9 @@ body {
 	 			 	  			 		a {
 			 			 	  			 	width: 100%;
 			 			 	  			 	display: inline-block;
-			 			 	  			 	font-size: 17px;
 			 			 	  			 	margin: 0;
 			 			 	  			 	padding: 7px 22px;
-			 			 	  			 	@include bluebutton;
+			 			 	  			 	@include bluebutton($font-size: 17px);
 				 			 	  			 	&:hover {
 				 			 	  			 	  	text-decoration: underline !important;
 				 			 	  			 	}
@@ -927,9 +922,8 @@ body {
 		 			 	  			  	a {
 			 			 	  			  	 width: 100%;
 			 			 	  			  	 display: inline-block;
-			 			 	  			  	 font-size: 17px;
 			 			 	  			  	 padding: 11px 22px;
-			 			 	  			  	 @include bluebutton;
+			 			 	  			  	 @include bluebutton($font-size: 17px);
 		 			 	  			  	}
 		 			 	  		}
 		 			 	  	}
@@ -1314,7 +1308,7 @@ body {
 				  	  		 	  	}
 	  	  		 	  				a {
 
-	  	  		 	  	    			@include bluebutton;
+	  	  		 	  	    			@include bluebutton($font-size: 21px);
 	  	  		 	  	   				height: auto !important;
 	  	  		 	  	    			border: none;
 	  	  		 	  	     				div {
@@ -1341,7 +1335,7 @@ body {
 
 	  	  		 				.views-submit-button {
 	  	  		 					button {
-				  	  		 			@include bluebutton;
+				  	  		 			@include bluebutton($font-size: 21px);
 				  	  		 			margin-top: 17px;
 				  	  		 			line-height: 1.2;
 				  	  		 			text-transform: capitalize;
@@ -1541,7 +1535,7 @@ body {
 				  	 					 	 	margin: 23px 0 0;
 
 				  	 					 	 		a {
-				  	 					 	 			@include bluebutton;
+				  	 					 	 			@include bluebutton($font-size: 21px);
 				  	 					 	 		}
 	  	 
 	  	 					 	 			}

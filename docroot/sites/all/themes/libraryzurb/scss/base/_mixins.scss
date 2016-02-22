@@ -99,16 +99,16 @@
 	 }
 
 }
-@mixin bluebutton {
+@mixin bluebutton($font-size: null) {
 	color: $white !important;
 	@include mclaren;
 	background: $blue !important;
 	border-radius: 10px;
 	padding: 9px 22px;
-	font-size: 21px;
 	@include boxshadow;
 	border: none;
 	text-transform: capitalize;
+	font-size: $font-size;
 	  &:hover, &:focus {
 	 	color: $white;
 	 	background: $blue;
