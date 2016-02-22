@@ -207,7 +207,7 @@ function libraryzurb_css_alter(&$css) {
 function libraryzurb_preprocess_page(&$variables) {
 
 
-if (!empty($variables['page']['sidebar_first']) || !empty($variables['page']['login_form'])){
+if (!empty($variables['page']['sidebar_first']) || !empty($variables['page']['login_form']) || !empty($variables['page']['activity_sidebar']){
     $left = $variables['page']['sidebar_first'];
     $left1 = $variables['page']['login_form'];
     $left3 = $variables['page']['activity_sidebar'];
