@@ -6349,10 +6349,38 @@ h1#page-title {
   font-weight: normal !important;
   font-style: normal !important;
   -webkit-font-smoothing: antialiased !important;
+  color: #000;
+  font-size: 28px;
 }
 
 .views-field-count {
   padding-left: 17px;
+}
+
+.more-link {
+  text-align: right;
+}
+.more-link a {
+  font-family: McLaren-Regular !important;
+  font-weight: normal !important;
+  font-style: normal !important;
+  -webkit-font-smoothing: antialiased !important;
+  position: relative;
+  font-size: 17px;
+  text-transform: capitalize;
+  padding-right: 20px;
+}
+.more-link a:after {
+  content: "";
+  width: 17px;
+  height: 17px;
+  display: block;
+  visibility: visible;
+  position: absolute;
+  top: 1px;
+  right: 0;
+  background: url("../images/libraryzurb/right-blue-arrow.png") no-repeat;
+  background-size: 15px;
 }
 
 .admin-menu .fixed {
@@ -6979,6 +7007,53 @@ h1#page-title {
 }
 .block.write-book-review h2.block-title {
   margin-bottom: 25px;
+}
+.block.block-views-reward-earn-block, .block.block-views-reward-earn-block-1 {
+  background: #267fda;
+  overflow: hidden;
+  border-radius: 20px;
+  color: #fff;
+  position: relative;
+  -webkit-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+  box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+}
+.block.block-views-reward-earn-block .block-title, .block.block-views-reward-earn-block h2, .block.block-views-reward-earn-block-1 .block-title, .block.block-views-reward-earn-block-1 h2 {
+  color: #fff;
+  font-family: McLaren-Regular !important;
+  font-weight: normal !important;
+  font-style: normal !important;
+  -webkit-font-smoothing: antialiased !important;
+  padding-top: 26px;
+  padding-bottom: 25px;
+  font-size: 28px;
+  height: 110px;
+  border-bottom: medium none;
+  margin-top: -1px;
+  padding-left: 4%;
+  z-index: 0;
+  position: relative;
+  font-weight: normal !important;
+  border-radius: 20px;
+  overflow: hidden;
+}
+.block.block-views-reward-earn-block .block-title:after, .block.block-views-reward-earn-block h2:after, .block.block-views-reward-earn-block-1 .block-title:after, .block.block-views-reward-earn-block-1 h2:after {
+  content: "";
+  width: 100%;
+  height: 110px;
+  display: block;
+  visibility: visible;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: url("../images/libraryzurb/background-saffron.png") no-repeat;
+  background-position: -35px 10px;
+  -webkit-transform: rotate(180deg);
+  -moz-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  -o-transform: rotate(180deg);
+  transform: rotate(180deg);
+  z-index: -1;
 }
 .block.block-views-reward-earn-block .view, .block.block-views-reward-earn-block-1 .view {
   display: table;
@@ -8838,7 +8913,7 @@ html {
   background: #efefef;
 }
 
-body {
+body.front, body.not-front {
   max-width: 1280px;
   margin: 0 auto;
   -webkit-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
@@ -8984,6 +9059,92 @@ body .alert-box.success a.close:hover {
 }
 
 /**end**/
+/**css for photos n vedios page***/
+.section-media .block-title {
+  font-size: 28px;
+  color: #000;
+  font-family: McLaren-Regular !important;
+  font-weight: normal !important;
+  font-style: normal !important;
+  -webkit-font-smoothing: antialiased !important;
+  border: none !important;
+  outline: none !important;
+}
+.section-media .main .view {
+  display: table;
+  width: 100%;
+}
+.section-media .main .view .views-row {
+  display: table-row;
+  width: 32%;
+  float: left;
+  padding-left: 1%;
+  clear: none !important;
+}
+.section-media .main .view .views-row .flickr-photoset-img {
+  text-align: center;
+}
+.section-media .main .view .views-row .flickr-photoset-img img {
+  width: 160px;
+  height: 160px;
+}
+.section-media .main .view .views-row .flickr-citation {
+  margin-top: 23px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+.section-media .main .view .views-row .flickr-citation a {
+  color: transparent;
+  position: relative;
+  display: inline-block;
+  width: 80%;
+}
+.section-media .main .view .views-row .flickr-citation a:after {
+  content: "view album";
+  height: 38px;
+  line-height: 40px;
+  width: 100%;
+  background: #fdeb52 url("../images/libraryzurb/view-album.png") no-repeat;
+  background-position: 10px !important;
+  color: #000;
+  border-radius: 10px;
+  text-align: center;
+  -webkit-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+  box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+  font-family: McLaren-Regular !important;
+  font-weight: normal !important;
+  font-style: normal !important;
+  -webkit-font-smoothing: antialiased !important;
+  text-transform: capitalize;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.section-media .main .view .views-row .flickr-citation a:hover:after {
+  background: #f7fc63 url("../images/libraryzurb/view-album.png") no-repeat;
+}
+.section-media .main .view .views-row .flickr-citation a:focus:after {
+  background: #f0f811 url("../images/libraryzurb/view-album.png") no-repeat;
+}
+.section-media .main .view .views-row .views-field-field-video-description .views-label {
+  display: none;
+}
+.section-media .main .view .views-row .views-field-field-video-description .field-content {
+  padding-top: 10px;
+  font-size: 12px;
+  line-height: 1;
+  font-family: Arialregular !important;
+  font-style: normal !important;
+  font-weight: normal !important;
+  -webkit-font-smoothing: antialiased !important;
+}
+.section-media .main .view .view-footer {
+  width: 100%;
+  display: inline-block;
+}
+
+/**end photos n vedios***/
 /**css for reward page***/
 .page-rewards .pull-9.sidebar {
   width: 29.53%;
@@ -9007,6 +9168,19 @@ body .alert-box.success a.close:hover {
   font-style: normal !important;
   -webkit-font-smoothing: antialiased !important;
 }
+.page-rewards .pull-9.sidebar .block .view {
+  display: table;
+  width: 100%;
+}
+.page-rewards .pull-9.sidebar .block .view .views-row {
+  display: table-row;
+  width: 100%;
+}
+.page-rewards .pull-9.sidebar .block .view .views-row .views-field {
+  display: table-cell;
+  padding-right: 10px;
+  vertical-align: middle;
+}
 .page-rewards .pull-9.sidebar .block .views-row .views-field-nothing .badges img {
   float: left;
   margin: 0.5em 1em 0.5em 0;
@@ -9017,6 +9191,30 @@ body .alert-box.success a.close:hover {
   font-style: normal !important;
   -webkit-font-smoothing: antialiased !important;
   font-size: 28px;
+}
+.page-rewards .main div.badges img {
+  margin-right: 20px;
+}
+.page-rewards .main .block .block-title {
+  border: none !important;
+  outline: none !important;
+  font-size: 28px;
+  color: #f6511d;
+  font-family: McLaren-Regular !important;
+  font-weight: normal !important;
+  font-style: normal !important;
+  -webkit-font-smoothing: antialiased !important;
+}
+.page-rewards .main .block .block-title .view {
+  display: table;
+  width: 100%;
+}
+.page-rewards .main .block .block-title .view .view-content {
+  display: table-row;
+  width: 100%;
+}
+.page-rewards .main .block .block-title .view .view-content .views-row {
+  display: table-cell;
 }
 .page-rewards .main .view-content .views-row {
   display: table;
@@ -9086,27 +9284,34 @@ body .alert-box.success a.close:hover {
 
 /**end reward-winners page**/
 /**css for program page***/
-.section-programs .pull-9.sidebar {
+/**css for unauthenticated program page***/
+.not-logged-in.section-programs .pull-9.sidebar {
+  right: 70.4%;
+}
+.not-logged-in.section-programs .block-views-reward-earn-block-1 .block-title:after {
+  background: none;
+}
+
+/*end unauthenticated program page css**/
+/**css for authunticated program page***/
+.logged-in.section-programs .block-views-reward-earn-block-1 {
+  display: none;
+}
+.logged-in.section-programs .pull-9.sidebar {
   width: 29.53%;
   right: 69.4%;
   padding-left: 2.65%;
   padding-right: 2.65%;
   margin-bottom: 35px;
 }
-.section-programs .pull-9.sidebar2 {
-  width: 29.53%;
-  right: 71.4%;
-  padding-left: 0;
-  padding-right: 0;
-}
-.section-programs .sidebar {
+.logged-in.section-programs .sidebar {
   background: #267fda;
   color: #fff;
   padding-top: 25px;
   padding-bottom: 25px;
   border-radius: 20px;
 }
-.section-programs .sidebar .block .block-title {
+.logged-in.section-programs .sidebar .block .block-title {
   color: #fff;
   font-size: 22px;
   font-family: McLaren-Regular !important;
@@ -9114,7 +9319,7 @@ body .alert-box.success a.close:hover {
   font-style: normal !important;
   -webkit-font-smoothing: antialiased !important;
 }
-.section-programs .sidebar .block .view .views-field-title a {
+.logged-in.section-programs .sidebar .block .view .views-field-title a {
   color: #fff;
   font-size: 17px;
   font-family: Arialregular !important;
@@ -9122,14 +9327,14 @@ body .alert-box.success a.close:hover {
   font-weight: normal !important;
   -webkit-font-smoothing: antialiased !important;
 }
-.section-programs .sidebar .block.block-auto-role-allocation {
+.logged-in.section-programs .sidebar .block.block-auto-role-allocation {
   position: relative;
 }
-.section-programs .sidebar .block.block-auto-role-allocation > div {
+.logged-in.section-programs .sidebar .block.block-auto-role-allocation > div {
   display: inline-block;
   text-align: center;
 }
-.section-programs .sidebar .block.block-auto-role-allocation > div > div a {
+.logged-in.section-programs .sidebar .block.block-auto-role-allocation > div > div a {
   color: #000;
   font-family: McLaren-Regular !important;
   font-weight: normal !important;
@@ -9148,21 +9353,21 @@ body .alert-box.success a.close:hover {
   position: relative;
   margin-top: 80px;
 }
-.section-programs .sidebar .block.block-auto-role-allocation > div > div a:hover {
+.logged-in.section-programs .sidebar .block.block-auto-role-allocation > div > div a:hover {
   color: #000;
   background: #f7fc63 !important;
   opacity: 1;
   outline: none;
   text-decoration: none !important;
 }
-.section-programs .sidebar .block.block-auto-role-allocation > div > div a:focus, .section-programs .sidebar .block.block-auto-role-allocation > div > div a.active {
+.logged-in.section-programs .sidebar .block.block-auto-role-allocation > div > div a:focus, .logged-in.section-programs .sidebar .block.block-auto-role-allocation > div > div a.active {
   color: #000;
   background: #f0f811 !important;
   outline: 1;
   opacity: 1;
   text-decoration: none !important;
 }
-.section-programs .sidebar .block.block-auto-role-allocation span {
+.logged-in.section-programs .sidebar .block.block-auto-role-allocation span {
   padding-left: 32%;
   font-family: Arialbold !important;
   font-style: normal !important;
@@ -9170,7 +9375,7 @@ body .alert-box.success a.close:hover {
   -webkit-font-smoothing: antialiased !important;
   font-size: 17px;
 }
-.section-programs .sidebar .block.block-auto-role-allocation:before {
+.logged-in.section-programs .sidebar .block.block-auto-role-allocation:before {
   content: "";
   width: 100px;
   height: 100px;
@@ -9178,9 +9383,17 @@ body .alert-box.success a.close:hover {
   visibility: visible;
   position: absolute;
   top: 19px;
-  left: -16px;
-  background: url("../images/libraryzurb/fi-calendar.svg") no-repeat;
+  left: 0;
+  background: url("../images/libraryzurb/white-calender.png") no-repeat;
   background-position: left;
+}
+
+/**end css authenticated program page**/
+.section-programs .pull-9.sidebar2 {
+  width: 29.53%;
+  right: 71.4%;
+  padding-left: 0;
+  padding-right: 0;
 }
 .section-programs .main .current-program {
   background: #267fda;
@@ -9889,14 +10102,14 @@ body .alert-box.success a.close:hover {
   background: url("../images/libraryzurb/right-blue-arrow.png") no-repeat;
   background-size: 15px;
 }
-.page-user-profile .homebox .portlet-content .view.view-my-book-reviews .view-content ul {
+.page-user-profile .homebox .portlet-content .view.view-my-book-reviews .view-content ol, .page-user-profile .homebox .portlet-content .view.view-my-book-reviews .view-content ul {
   margin-left: 0;
   list-style: none;
 }
-.page-user-profile .homebox .portlet-content .view.view-my-book-reviews .view-content ul li {
+.page-user-profile .homebox .portlet-content .view.view-my-book-reviews .view-content ol li, .page-user-profile .homebox .portlet-content .view.view-my-book-reviews .view-content ul li {
   margin-left: 0;
 }
-.page-user-profile .homebox .portlet-content .view.view-my-book-reviews .view-content ul li a {
+.page-user-profile .homebox .portlet-content .view.view-my-book-reviews .view-content ol li a, .page-user-profile .homebox .portlet-content .view.view-my-book-reviews .view-content ul li a {
   color: #000;
   font-family: Arialregular !important;
   font-style: normal !important;
@@ -9905,7 +10118,7 @@ body .alert-box.success a.close:hover {
   font-size: 15px;
   text-transform: capitalize;
 }
-.page-user-profile .homebox .portlet-content .view.view-my-book-reviews .view-content ul li a:before {
+.page-user-profile .homebox .portlet-content .view.view-my-book-reviews .view-content ol li a:before, .page-user-profile .homebox .portlet-content .view.view-my-book-reviews .view-content ul li a:before {
   counter-increment: section;
   content: " " counter(section,decimal) ". ";
   padding-right: 5px;
@@ -11043,6 +11256,14 @@ body .alert-box.success a.close:hover {
 
 /**end of booklist page**/
 /**activities page **/
+.section-activities {
+  /* .pull-9.sidebar, .pull-9.sidebar2 {
+  	width: 29.53%;
+  	right: 71.4%;
+  	padding-left: 0px;
+  	padding-right: 0px;
+  } */
+}
 .section-activities h1#page-title {
   display: none;
 }
@@ -11066,8 +11287,13 @@ body .alert-box.success a.close:hover {
 .section-activities .main .view-activities-page- div a, .section-activities .main .block-block div a {
   padding-left: 20px;
 }
-.section-activities .sidebar .block-views {
-  background: #267fda;
+.section-activities .pull-9.sidebar3 {
+  width: 29.53%;
+  right: 67.4%;
+  margin-bottom: 35px;
+}
+.section-activities .sidebar3 {
+  background: #267fda !important;
   overflow: hidden;
   border-radius: 20px;
   color: #fff;
@@ -11075,65 +11301,28 @@ body .alert-box.success a.close:hover {
   -webkit-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
   -moz-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
   box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
-  padding-bottom: 20px;
+  margin-bottom: 35px;
 }
-.section-activities .sidebar .block-views .block-title, .section-activities .sidebar .block-views h2 {
-  color: #fff;
-  font-family: McLaren-Regular !important;
-  font-weight: normal !important;
-  font-style: normal !important;
-  -webkit-font-smoothing: antialiased !important;
-  padding-top: 26px;
-  padding-bottom: 25px;
-  font-size: 28px;
-  height: 110px;
-  border-bottom: medium none;
-  margin-top: -1px;
-  padding-left: 4%;
-  z-index: 0;
-  position: relative;
-  font-weight: normal !important;
-  border-radius: 20px;
-  overflow: hidden;
-}
-.section-activities .sidebar .block-views .block-title:after, .section-activities .sidebar .block-views h2:after {
-  content: "";
-  width: 100%;
-  height: 110px;
-  display: block;
-  visibility: visible;
-  position: absolute;
-  top: 0;
-  left: 0;
-  background: url("../images/libraryzurb/background-saffron.png") no-repeat;
-  background-position: -35px 10px;
-  -webkit-transform: rotate(180deg);
-  -moz-transform: rotate(180deg);
-  -ms-transform: rotate(180deg);
-  -o-transform: rotate(180deg);
-  transform: rotate(180deg);
-  z-index: -1;
-}
-.section-activities .sidebar .block-views:first-child ul {
+.section-activities .sidebar3 .block-views:first-child ul {
   list-style: none !important;
 }
-.section-activities .sidebar .block-views .view {
+.section-activities .sidebar3 .block-views .view {
   counter-reset: section;
 }
-.section-activities .sidebar .block-views .view .view-content ul .views-row {
+.section-activities .sidebar3 .block-views .view .view-content ul .views-row {
   margin-left: 10px;
 }
-.section-activities .sidebar .block-views .view .view-content ul .views-row .views-field-title a:before {
+.section-activities .sidebar3 .block-views .view .view-content ul .views-row .views-field-title a:before {
   counter-increment: section;
   content: " " counter(section,decimal) ". ";
   padding-right: 5px;
   display: inline-block;
 }
-.section-activities .sidebar .block-views .view-footer {
+.section-activities .sidebar3 .block-views .view-footer {
   padding-left: 20px;
   margin-top: 30px;
 }
-.section-activities .sidebar .block-views .view-footer p a {
+.section-activities .sidebar3 .block-views .view-footer p a {
   color: #000;
   font-family: McLaren-Regular !important;
   font-weight: normal !important;
@@ -11151,29 +11340,29 @@ body .alert-box.success a.close:hover {
   -moz-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
   box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
 }
-.section-activities .sidebar .block-views .view-footer p a:hover {
+.section-activities .sidebar3 .block-views .view-footer p a:hover {
   color: #000;
   background: #f7fc63 !important;
   opacity: 1;
   outline: none;
   text-decoration: none !important;
 }
-.section-activities .sidebar .block-views .view-footer p a:focus, .section-activities .sidebar .block-views .view-footer p a.active {
+.section-activities .sidebar3 .block-views .view-footer p a:focus, .section-activities .sidebar3 .block-views .view-footer p a.active {
   color: #000;
   background: #f0f811 !important;
   outline: 1;
   opacity: 1;
   text-decoration: none !important;
 }
-.section-activities .sidebar .block-views .views-field-title {
+.section-activities .sidebar3 .block-views .views-field-title {
   padding-bottom: 10px;
 }
-.section-activities .sidebar .block-views .views-field-count .views-label {
+.section-activities .sidebar3 .block-views .views-field-count .views-label {
   padding-right: 32px;
   position: relative;
   padding-right: 34px;
 }
-.section-activities .sidebar .block-views .views-field-count .views-label:after {
+.section-activities .sidebar3 .block-views .views-field-count .views-label:after {
   content: "";
   width: 30px;
   height: 30px;
@@ -11184,10 +11373,10 @@ body .alert-box.success a.close:hover {
   right: 0;
   background: url("../images/libraryzurb/smily-white.png") no-repeat;
 }
-.section-activities .sidebar .block-views .views-field-count .views-label:after {
+.section-activities .sidebar3 .block-views .views-field-count .views-label:after {
   top: -4px !important;
 }
-.section-activities .sidebar .block-views h3 {
+.section-activities .sidebar3 .block-views h3 {
   color: #fff !important;
   font-family: McLaren-Regular !important;
   font-weight: normal !important;
@@ -11196,14 +11385,14 @@ body .alert-box.success a.close:hover {
   margin-top: 20px;
   text-align: center;
 }
-.section-activities .sidebar .block-views ul {
+.section-activities .sidebar3 .block-views ul {
   list-style: none;
   margin-left: 20px;
 }
-.section-activities .sidebar .block-views ul li {
+.section-activities .sidebar3 .block-views ul li {
   margin-left: 0;
 }
-.section-activities .sidebar .block-views ul a {
+.section-activities .sidebar3 .block-views ul a {
   color: #fff;
   font-family: McLaren-Regular !important;
   font-weight: normal !important;
@@ -11476,11 +11665,15 @@ body .alert-box.success a.close:hover {
   max-width: 95%;
   margin: 20px auto;
 }
-.section-progress .main .block.progress-calendar div.ui-draggable.ui-draggable-handle {
+.section-progress .main .block.progress-calendar div.fc-event-container > div, .section-progress .main .block.progress-calendar div.ui-draggable.ui-draggable-handle {
   text-align: center !important;
 }
-.section-progress .main .block.progress-calendar div.ui-draggable.ui-draggable-handle img {
-  width: 94px !important;
+.section-progress .main .block.progress-calendar div.fc-event-container > div img, .section-progress .main .block.progress-calendar div.ui-draggable.ui-draggable-handle img {
+  width: 55px !important;
+}
+.section-progress .main .block.progress-calendar div.event_no {
+  font-size: 14px;
+  line-height: 1;
 }
 .section-progress .main .block.progress-calendar.contextual-links-region {
   position: initial;
