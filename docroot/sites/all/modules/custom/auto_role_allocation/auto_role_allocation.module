@@ -266,14 +266,16 @@ function calendar_page() {
 
   $query_date = db_select('calendar', 'c')
     ->fields('c', array('date'))
-    ->condition('uid', 272)
+    ->condition('uid', $event_uid)
     ->condition('reward_id', 0, '>')
     ->orderBy('id', 'DESC')
     ->execute();
   $reward_date = $query_date->fetchAssoc();
+  //print_r($reward_date);die();
 
   
-    if (!$no_of_sticker) {
+    if(!$reward_date) {
+      if (!$no_of_sticker) {
 		  if($image_id) {
 		    db_update('calendar')
 		    ->fields(array('image_url' => $event_image,'date' => $event_time))
@@ -310,6 +312,51 @@ function calendar_page() {
 	  } else {
 		  echo 0;
 	  }
+    }
+    else {
+    	if($reward_date > $event_time) {
+        return FALSE;
+    	}
+    	else {
+    		if (!$no_of_sticker) {
+		  if($image_id) {
+		    db_update('calendar')
+		    ->fields(array('image_url' => $event_image,'date' => $event_time))
+		    ->condition ('id', $image_id)
+		    ->execute();
+		  }
+		else {
+	      $insert_query =db_insert('calendar')
+	        ->fields(array(
+	        'uid'=>$event_uid,
+	        'image_url'=>$event_image,
+	        'date'=>$event_time,
+	      ));
+	      $insert_query->execute();
+
+		  // get the just inserted ID from calendar table
+		  // this will be used to update the record for reward
+		  // if user receives one after this activity.
+		    $query = db_select('calendar');
+		    $query->addExpression('MAX(id)');
+		    $max_id = $query->execute()->fetchField();
+		    $_SESSION['usr_calendar_id'] = $max_id;
+		    
+        $response = array(
+        "result"  =>  1
+        );
+        $node = node_load(495);//495
+      //auto_role_allocation_node_update($current_node);
+      /* this is for calendar activity*/
+        $hook = "node_update|node|{$node->type}|updated";
+      _play_library_program_invoke_activity_entry_hooks($node, 'node', $hook, 1);
+     }
+      echo 1;
+	  } else {
+		  echo 0;
+	  }
+    	}
+    }
   	
 }
 
