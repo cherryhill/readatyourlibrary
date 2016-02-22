@@ -100,10 +100,11 @@ function progress_user_block_program() {
 
   $reads_for_next_reward = ($closest_reward / $activity_point) - $total_read_days;
   if($reads_for_next_reward < 0) {
-     return "Congratulations! You have completed the reading program and have received all the reading rewards.";
+     return "<div class='all_rewrad_won'>Congratulations! You have completed the reading program and have received all the reading rewards.</div>";
   }
   else {
     $msg = "<span class='msg-highlight'>Total days read: $total_read_days</span><br/>";
+    $msg .= "$reads_for_next_reward more days read needed to receive your next prize";
     $msg .= "<div><a href='".$base_url."/progress'>Go to the Progress Page</a></div>";
 
     return "<div>$msg</div>";
@@ -153,7 +154,7 @@ function progress_user_block() {
 
   $reads_for_next_reward = ($closest_reward / $activity_point) - $total_read_days;
   if($reads_for_next_reward < 0) {
-    return "<div>Congratulations! You have completed the reading program and have received all the reading rewards.</div>";
+    return "<div class='all_rewrad_won'>Congratulations! You have completed the reading program and have received all the reading rewards.</div>";
   }
   else {
     $msg = "$reads_for_next_reward more reads needed to receive your next prize";
@@ -271,11 +272,13 @@ function calendar_page() {
     ->orderBy('id', 'DESC')
     ->execute();
   $reward_date = $query_date->fetchAssoc();
-  //print_r($reward_date);die();
+  $reward_date = $reward_date['date']; 
+  //print_r($reward_date['date']);die();
 
   
     if(!$reward_date) {
-      if (!$no_of_sticker) {
+  
+       if (!$no_of_sticker) {
 		  if($image_id) {
 		    db_update('calendar')
 		    ->fields(array('image_url' => $event_image,'date' => $event_time))
@@ -309,14 +312,17 @@ function calendar_page() {
       _play_library_program_invoke_activity_entry_hooks($node, 'node', $hook, 1);
      }
       echo 1;
-	  } else {
+	   } else {
 		  echo 0;
-	  }
+	   }
     }
     else {
+    	
     	if($reward_date > $event_time) {
+    		
         return FALSE;
     	}
+
     	else {
     		if (!$no_of_sticker) {
 		  if($image_id) {
@@ -459,7 +465,7 @@ function user_progress() {
   $reads_for_next_reward = ($closest_reward / $activity_point) - $total_read_days;
 
   if($reads_for_next_reward < 0) {
-    return "Congratulations! You have completed the reading program and have received all the reading rewards.";
+    return "<div class='all_rewrad_won'>Congratulations! You have completed the reading program and have received all the reading rewards.</div>";
   }
   else {
     $msg = "<span class='msg-highlight'>Total days read: $total_read_days</span><br/>";
