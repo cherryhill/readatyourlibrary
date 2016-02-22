@@ -1,8 +1,7 @@
 /***page wise css***/
 body {
-    font-family: Arialregular;
-	font-style: normal !important;
-	font-weight: normal !important;
+
+    @include arialregular;
 	-webkit-font-smoothing: antialiased;
 	 font-size: 18px; 
 	 line-height: 1.5;
@@ -238,6 +237,7 @@ body {
 	  			font-size: 28px;
 	  			color: $orange;
 	  			@include mclaren;
+	  		}
 	  			 .view {
 	  			 	display: table;
 	  			 	width: 100%;
@@ -249,7 +249,7 @@ body {
 	  			 		}
 	  			 	}
 	  			 }
-	  		}
+	  		
 	  	}
 	  	.view-content {
 	  		.views-row {
@@ -1149,6 +1149,7 @@ body {
   	 	@include black-text;
   	 	@include mclaren;
   	}
+
   	.view-header {
   	 	p {
   	 		a {
@@ -1180,6 +1181,9 @@ body {
   	 	padding-bottom: 25px;
   	 	border-radius: 20px;
   	 	@include boxshadow;
+  	 	.views-field-count {
+  		padding-left: 0;
+  		}
 		  .block-title {
   	 	  	@include white-text;
   	 	  	font-size: 22px;
@@ -1202,12 +1206,12 @@ body {
   	 	  	.reviews-block-block {
   	 	    	margin: 0 auto !important;
   	 	    		.view-content {
-  	 	    			ol {
+  	 	    			ul, ol {
   	 	    				margin-left: 5%;
   	 	    		 			.views-field-title {
 			  	 	    		 	a {
 			  	 	    		 		@include white-text;
-			  	 	    		 		border-bottom: 1px solid $white;
+			  	 	    		 		text-decoration: underline;
 			  	 	    		 	}
   	 	    		 			}
 		  	 	    		 	.views-field-count {
@@ -1336,7 +1340,7 @@ body {
 	  	  		 				.views-submit-button {
 	  	  		 					button {
 				  	  		 			@include bluebutton($font-size: 21px);
-				  	  		 			margin-top: 17px;
+				  	  		 			margin-top: 26px;
 				  	  		 			line-height: 1.2;
 				  	  		 			text-transform: capitalize;
 				  	  		 			margin-left: 0;
@@ -1582,7 +1586,7 @@ body {
 		  	 					margin-top: 23px;
 		  	 					padding-left: 25px;
 		  	 					display: inline-block;
-		  	 					@include arialregular;	
+		  	 					@include mclaren;	
 			  	 					div {
 			  	 						float: left;
 			  	 						&.field-name-field-avatar-image {
@@ -1613,6 +1617,7 @@ body {
 	  	 			 		}
 			  	 			.views-field-count {
 			  	 			 	float: right;
+			  	 			 	@include mclaren;
 			  	 			}
 	  	 			 
 	  	 			 		.views-field-title {
@@ -1662,7 +1667,7 @@ body {
 		  			 	float: left;
 		  			 	margin-top: 20px;
 		  			 	font-size: 17px;
-		  			 	@include arialregular;
+		  			 	@include mclaren;
 
 	  			 	  		div {
 			  			 	  	float: left;
@@ -1694,6 +1699,7 @@ body {
 		  			 	text-align: right;
 		  			 	margin-top: 20px;
 		  			 	padding-right: 2%;
+		  			 	@include mclaren;
 			  			 	  span {
 			  			 	  	color: $black;
 			  			 	  	position: relative;

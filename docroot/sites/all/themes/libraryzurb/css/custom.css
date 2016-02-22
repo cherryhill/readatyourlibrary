@@ -8947,9 +8947,10 @@ body.front, body.not-front {
 
 /***page wise css***/
 body {
-  font-family: Arialregular;
+  font-family: Arialregular !important;
   font-style: normal !important;
   font-weight: normal !important;
+  -webkit-font-smoothing: antialiased !important;
   -webkit-font-smoothing: antialiased;
   font-size: 18px;
   line-height: 1.5;
@@ -9204,15 +9205,15 @@ body .alert-box.success a.close:hover {
   font-style: normal !important;
   -webkit-font-smoothing: antialiased !important;
 }
-.page-rewards .main .block .block-title .view {
+.page-rewards .main .block .view {
   display: table;
   width: 100%;
 }
-.page-rewards .main .block .block-title .view .view-content {
+.page-rewards .main .block .view .view-content {
   display: table-row;
   width: 100%;
 }
-.page-rewards .main .block .block-title .view .view-content .views-row {
+.page-rewards .main .block .view .view-content .views-row {
   display: table-cell;
 }
 .page-rewards .main .view-content .views-row {
@@ -10541,6 +10542,9 @@ body .alert-box.success a.close:hover {
   -moz-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
   box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
 }
+.page-reviews .sidebar .views-field-count, .page-booklists .sidebar .views-field-count {
+  padding-left: 0;
+}
 .page-reviews .sidebar .block-title, .page-booklists .sidebar .block-title {
   color: #fff !important;
   font-family: McLaren-Regular !important;
@@ -10593,27 +10597,27 @@ body .alert-box.success a.close:hover {
 .page-reviews .sidebar .reviews-block-block, .page-booklists .sidebar .reviews-block-block {
   margin: 0 auto !important;
 }
-.page-reviews .sidebar .reviews-block-block .view-content ol, .page-booklists .sidebar .reviews-block-block .view-content ol {
+.page-reviews .sidebar .reviews-block-block .view-content ul, .page-reviews .sidebar .reviews-block-block .view-content ol, .page-booklists .sidebar .reviews-block-block .view-content ul, .page-booklists .sidebar .reviews-block-block .view-content ol {
   margin-left: 5%;
 }
-.page-reviews .sidebar .reviews-block-block .view-content ol .views-field-title a, .page-booklists .sidebar .reviews-block-block .view-content ol .views-field-title a {
+.page-reviews .sidebar .reviews-block-block .view-content ul .views-field-title a, .page-reviews .sidebar .reviews-block-block .view-content ol .views-field-title a, .page-booklists .sidebar .reviews-block-block .view-content ul .views-field-title a, .page-booklists .sidebar .reviews-block-block .view-content ol .views-field-title a {
   color: #fff !important;
   font-family: McLaren-Regular !important;
   font-weight: normal !important;
   font-style: normal !important;
   -webkit-font-smoothing: antialiased !important;
-  border-bottom: 1px solid #fff;
+  text-decoration: underline;
 }
-.page-reviews .sidebar .reviews-block-block .view-content ol .views-field-count .field-content, .page-booklists .sidebar .reviews-block-block .view-content ol .views-field-count .field-content {
+.page-reviews .sidebar .reviews-block-block .view-content ul .views-field-count .field-content, .page-reviews .sidebar .reviews-block-block .view-content ol .views-field-count .field-content, .page-booklists .sidebar .reviews-block-block .view-content ul .views-field-count .field-content, .page-booklists .sidebar .reviews-block-block .view-content ol .views-field-count .field-content {
   position: relative;
   top: 10px;
 }
-.page-reviews .sidebar .reviews-block-block .view-content ol .views-field-count .views-label, .page-booklists .sidebar .reviews-block-block .view-content ol .views-field-count .views-label {
+.page-reviews .sidebar .reviews-block-block .view-content ul .views-field-count .views-label, .page-reviews .sidebar .reviews-block-block .view-content ol .views-field-count .views-label, .page-booklists .sidebar .reviews-block-block .view-content ul .views-field-count .views-label, .page-booklists .sidebar .reviews-block-block .view-content ol .views-field-count .views-label {
   position: relative;
   top: 10px;
   padding-right: 35px;
 }
-.page-reviews .sidebar .reviews-block-block .view-content ol .views-field-count .views-label:after, .page-booklists .sidebar .reviews-block-block .view-content ol .views-field-count .views-label:after {
+.page-reviews .sidebar .reviews-block-block .view-content ul .views-field-count .views-label:after, .page-reviews .sidebar .reviews-block-block .view-content ol .views-field-count .views-label:after, .page-booklists .sidebar .reviews-block-block .view-content ul .views-field-count .views-label:after, .page-booklists .sidebar .reviews-block-block .view-content ol .views-field-count .views-label:after {
   content: "";
   width: 30px;
   height: 30px;
@@ -10784,7 +10788,7 @@ body .alert-box.success a.close:hover {
   border: none;
   text-transform: capitalize;
   font-size: 21px;
-  margin-top: 17px;
+  margin-top: 26px;
   line-height: 1.2;
   text-transform: capitalize;
   margin-left: 0;
@@ -11053,9 +11057,9 @@ body .alert-box.success a.close:hover {
   margin-top: 23px;
   padding-left: 25px;
   display: inline-block;
-  font-family: Arialregular !important;
-  font-style: normal !important;
+  font-family: McLaren-Regular !important;
   font-weight: normal !important;
+  font-style: normal !important;
   -webkit-font-smoothing: antialiased !important;
 }
 .page-booklists .main .view-content .item-list ol li .views-field-nothing div {
@@ -11097,6 +11101,10 @@ body .alert-box.success a.close:hover {
 }
 .page-booklists .main .view-content .item-list ol li .views-field-count {
   float: right;
+  font-family: McLaren-Regular !important;
+  font-weight: normal !important;
+  font-style: normal !important;
+  -webkit-font-smoothing: antialiased !important;
 }
 .page-booklists .main .view-content .item-list ol li .views-field-title a {
   font-size: 21px;
@@ -11144,9 +11152,9 @@ body .alert-box.success a.close:hover {
   float: left;
   margin-top: 20px;
   font-size: 17px;
-  font-family: Arialregular !important;
-  font-style: normal !important;
+  font-family: McLaren-Regular !important;
   font-weight: normal !important;
+  font-style: normal !important;
   -webkit-font-smoothing: antialiased !important;
 }
 .page-booklists .main .view-booklist-slideshow .owl-carousel .views-field-nothing div {
@@ -11180,6 +11188,10 @@ body .alert-box.success a.close:hover {
   text-align: right;
   margin-top: 20px;
   padding-right: 2%;
+  font-family: McLaren-Regular !important;
+  font-weight: normal !important;
+  font-style: normal !important;
+  -webkit-font-smoothing: antialiased !important;
 }
 .page-booklists .main .view-booklist-slideshow .owl-carousel .views-field-count span {
   color: #000;
