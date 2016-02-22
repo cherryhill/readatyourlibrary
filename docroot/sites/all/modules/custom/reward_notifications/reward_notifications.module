@@ -53,10 +53,8 @@ function _reward_claim_onscreen_message() {
 		$reward_notification_patron = $res->reward_notifications;
 		$read = $res->notifications_read;
 
-  	$pieces = explode("<p>", $reward_notification_patron);
-		$rew_msg = $pieces['1'];
-		$removing_p_tag = explode("</p>", $rew_msg);
-		$rew_message = $removing_p_tag['0'];
+		$rm_html_tags = strip_tags($reward_notification_patron);
+		$rew_message = str_replace('&nbsp;', ' ', $rm_html_tags);
 
 		if($uid == $reward_uid && $read == '0') {
 			drupal_set_message(t('%string', array('%string' => $rew_message)), 'status');
