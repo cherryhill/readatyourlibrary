@@ -201,15 +201,57 @@ function auto_role_allocation_menu() {
     'access arguments' => array('access content'),
     'type' => MENU_SUGGESTED_ITEM,
     );
-  // $items['staff/register'] = array(
-  //   'title' => 'Staff registration',
-  //   'page callback' => 'staff_registration',
-  //   'access arguments' => array('access content'),
-  //   'type' => MENU_SUGGESTED_ITEM,
-  // );
+  $items['raffle'] = array(
+    'title' => 'Raffle entry list',
+    'page callback' => 'drupal_get_form',
+    'page arguments'=>array('raffle_entry_process'),
+    'access arguments' => array('access content'),
+    'type' => MENU_SUGGESTED_ITEM,
+  );
   
   return $items;
 }
+
+
+/* fuction for raffle entry process */
+
+function raffle_entry_process($form, &$form_state) {
+  $library_branch = taxonomy_get_tree(7);
+  foreach ($library_branch as $value) {
+    $form['libarary_branch_'.$value->tid]=array(
+      '#type'=>'checkbox',
+      '#title' =>$value->name,
+      //'#value'=>$value->name,
+    );
+  }
+    $form['user_points']=array(
+      '#type'=>'textfield',
+      '#title' =>'User Points',
+      
+    );
+    $form['user_age']=array(
+      '#type'=>'textfield',
+      '#title' =>'User age',
+      
+    );
+    $form['submit']=array(
+      '#type'=>'submit',
+      '#title' =>'Submit',
+      '#value'=>'Submit',
+      
+    );
+
+  
+  return $form;
+  
+}
+
+function raffle_entry_process_submit(&$form, &$form_state) {
+  echo "<pre>";
+  print_r($form_state);die();
+
+}
+
 
 /* function for restrict calendar date for only one drop*/
 
@@ -374,7 +416,7 @@ function generate_json_data() {
   $uid = $user->uid;
   $current_time = time();
   $current_date = date('Y-m-d', $current_time);
-  
+
 
   
   $query_state = db_select('calendar', 'c')
@@ -401,11 +443,19 @@ function generate_json_data() {
         );
     }
     else {
-
+     if($i == 1) {
       $events[] = array(
-        'title' => '<div><div class="event_image"><img data-id="'.$value->id.'" src="sites/default/files/styles/thumbnail/public/' . $value->image_url . '"</img></div>'.'<div class="event_no">Read'.$i.'days</div></div>', 
+        'title' => '<div><div class="event_image"><img data-id="'.$value->id.'" src="sites/default/files/styles/thumbnail/public/' . $value->image_url . '"</img></div>'.'<div class="event_no">Read ' .$i. ' day</div></div>', 
         'date' => $value->date,
         );
+    }
+
+    else {
+      $events[] = array(
+        'title' => '<div><div class="event_image"><img data-id="'.$value->id.'" src="sites/default/files/styles/thumbnail/public/' . $value->image_url . '"</img></div>'.'<div class="event_no">Read ' .$i. ' days</div></div>', 
+        'date' => $value->date,
+        );
+    }  
 
 
     }
@@ -482,9 +532,9 @@ function auto_role_allocation_menu_alter(&$items) {
   global $user;
   if($user->roles[1] == 'anonymous user') {
     $items['staff/register']['access callback'] = FALSE;
-    
+
   }
-  
+
 }
 
 
