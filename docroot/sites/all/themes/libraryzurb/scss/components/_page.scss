@@ -1,4 +1,4 @@
-/***page wise css***/
+/**page wise css***/
 body {
 
     @include arialregular;
@@ -107,13 +107,22 @@ body {
 		@include mclaren;
 		@include noborder;
 	}
+	.block-views-media-photos-videos-block-6 {
+		.view .views-row {
+			width: 32%;
+		}
+	}
+	.block-views-media-photos-videos-block-3 {
+		.view .views-row {
+			width: 24%;
+		}
+	}
 	.main {
 		.view {
 			display: table;
 			width: 100%;
 			 .views-row {
 			 	display: table-row;
-			 	width: 32%;
 			 	float: left;
 			 	padding-left: 1%;
 			 	clear: none !important;
@@ -222,64 +231,50 @@ body {
 		 	}
 	}
 	.main {
-	  	#page-title {
-	  		@include mclaren;
-	  		font-size: 28px;
-	  	}
-	  	div.badges {
-	  		img {
-	  			margin-right: 20px;
+		  	#page-title {
+		  		@include mclaren;
+		  		font-size: 28px;
+		  	}
+	  		.view-badges {
+	  			.view-content {
+	  				div.badges {
+	  					img {
+	  						margin-right: 6%;
+	  					}
+	  				}
+	  			}
 	  		}
-	  	}
-	  	.block {
+
+		 .block {
 	  		.block-title {
 	  			@include noborder;
 	  			font-size: 28px;
 	  			color: $orange;
 	  			@include mclaren;
 	  		}
-	  			 .view {
-	  			 	display: table;
-	  			 	width: 100%;
+		 	.view {
+  			 	display: table;
+  			 	width: 100%;
 	  			 	.view-content {
 	  			 		display: table-row;
 	  			 		width: 100%;
-	  			 		.views-row {
-                          display: table-cell;
-	  			 		}
+	  			 			.views-row {
+                          		display: table-cell;
+                           			.views-field {
+			                           	 width: 100%;
+			                           	 display: inline-block;
+			                           	 font-family: 17px;
+			                           	 @include arialregular;
+                           			}
+	  			 			}
 	  			 	}
-	  			 }
+		 	}
 	  		
 	  	}
-	  	.view-content {
-	  		.views-row {
-  				display: table;
-  				width: 100%;
-	  				.views-field-field-badge-image {
-	  					width: 50%;
-	  					float: left;
-	  					display: table-cell;
-		  					img {
-		  						float: left;
-		  						margin: 0.5em 1em 0.5em 0;
-		  					}
-	  				}
-	  				.views-field-title {
-	  					width: 50%;
-	  					display: table-row;
-	  					font-size: 17px;
-	  					@include arialregular;
-	  				}
-	  				.views-field-field-badge-description {
-	  					width: 50%;
-	  					float: right;
-	  					display: table-cell;
-	  					font-size: 17px;
-	  					@include arialregular;
-	  				}
-	  		}
-	  	}
-	}
+	 
+	  	
+	} 
+
 }
 /**end css of reward page**/
 /**css for reward-winner page**/
@@ -2187,4 +2182,4 @@ body {
 		 	 			 }
  	}
 
-/**end of progress page***/
+/**end of progress page**/

@@ -8912,13 +8912,17 @@ html {
   background: #efefef;
 }
 
-body.front, body.not-front {
-  max-width: 1280px;
-  margin: 0 auto;
+body {
+  width: 100%;
+  height: 100%;
   -webkit-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
   -moz-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
   box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
   background: #fff;
+}
+body.front, body.not-front {
+  max-width: 1280px;
+  margin: 0 auto;
 }
 
 .row.l-main {
@@ -8945,7 +8949,7 @@ body.front, body.not-front {
   }
 }
 
-/***page wise css***/
+/**page wise css***/
 body {
   font-family: Arialregular !important;
   font-style: normal !important;
@@ -9070,13 +9074,18 @@ body .alert-box.success a.close:hover {
   border: none !important;
   outline: none !important;
 }
+.section-media .block-views-media-photos-videos-block-6 .view .views-row {
+  width: 32%;
+}
+.section-media .block-views-media-photos-videos-block-3 .view .views-row {
+  width: 24%;
+}
 .section-media .main .view {
   display: table;
   width: 100%;
 }
 .section-media .main .view .views-row {
   display: table-row;
-  width: 32%;
   float: left;
   padding-left: 1%;
   clear: none !important;
@@ -9192,8 +9201,8 @@ body .alert-box.success a.close:hover {
   -webkit-font-smoothing: antialiased !important;
   font-size: 28px;
 }
-.page-rewards .main div.badges img {
-  margin-right: 20px;
+.page-rewards .main .view-badges .view-content div.badges img {
+  margin-right: 6%;
 }
 .page-rewards .main .block .block-title {
   border: none !important;
@@ -9216,33 +9225,10 @@ body .alert-box.success a.close:hover {
 .page-rewards .main .block .view .view-content .views-row {
   display: table-cell;
 }
-.page-rewards .main .view-content .views-row {
-  display: table;
+.page-rewards .main .block .view .view-content .views-row .views-field {
   width: 100%;
-}
-.page-rewards .main .view-content .views-row .views-field-field-badge-image {
-  width: 50%;
-  float: left;
-  display: table-cell;
-}
-.page-rewards .main .view-content .views-row .views-field-field-badge-image img {
-  float: left;
-  margin: 0.5em 1em 0.5em 0;
-}
-.page-rewards .main .view-content .views-row .views-field-title {
-  width: 50%;
-  display: table-row;
-  font-size: 17px;
-  font-family: Arialregular !important;
-  font-style: normal !important;
-  font-weight: normal !important;
-  -webkit-font-smoothing: antialiased !important;
-}
-.page-rewards .main .view-content .views-row .views-field-field-badge-description {
-  width: 50%;
-  float: right;
-  display: table-cell;
-  font-size: 17px;
+  display: inline-block;
+  font-family: 17px;
   font-family: Arialregular !important;
   font-style: normal !important;
   font-weight: normal !important;
@@ -11764,7 +11750,7 @@ body .alert-box.success a.close:hover {
   box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
 }
 
-/**end of progress page***/
+/**end of progress page**/
 /**
  * Styles for the Post-Footer area.
  */
