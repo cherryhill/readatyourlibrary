@@ -2232,6 +2232,7 @@ body {
 /**end of progress page**/
 /**css for indivisual user profile**/
 .page-users-public-profile {
+	.main {
 	.block {
 		@include bluebackground;
 		width: 100%;
@@ -2261,7 +2262,7 @@ body {
 				 	 	 	@include arialregular;
 				 	 	 }
 				 	 	 &.views-field-field-badge-image {
-				 	 	 	&:before {
+				 	 	 	img {
 				 	 	 		@include counter;
 				 	 	 	}
 				 	 	 }
@@ -2302,6 +2303,7 @@ body {
 				 }
 			}
 		}
+	}
 
 	}
 }
@@ -2323,6 +2325,7 @@ body {
 				 	 	border-radius: 10px;
 				 	 	@include boxshadow;
 				 	 	text-transform: capitalize !important;
+				 	 	padding: 7px 22px;
 
 				 	   }
 				 	 &.active {
@@ -2333,6 +2336,7 @@ body {
 			}
 			.quicktabs_main {
 				@include noborder;
+				overflow: hidden !important;
 			}
 		}
 	}
@@ -2341,8 +2345,9 @@ body {
 		.view-header {
 			h3 {
 				color: $black;
-				font-size: 28px;
+				font-size: 22px;
 				@include mclaren;
+				margin-top: 20px;
 			}
 		}
 		.view-content {
@@ -2379,13 +2384,17 @@ body {
 		.view-header {
 			h3 {
 				color: $black;
-				font-size: 28px;
+				font-size: 22px;
 				@include mclaren;
+				margin-top: 20px;
 			}
 		}
 		.view-content {
 			table {
 				@include noborder;
+				tbody {
+					@include noborder;
+				}
 			}
 			.views-row {
 				display: table;

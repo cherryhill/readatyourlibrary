@@ -11800,7 +11800,7 @@ body .alert-box.success a.close:hover {
 
 /**end of progress page**/
 /**css for indivisual user profile**/
-.page-users-public-profile .block {
+.page-users-public-profile .main .block {
   background: #267fda !important;
   overflow: hidden;
   border-radius: 20px;
@@ -11812,7 +11812,7 @@ body .alert-box.success a.close:hover {
   width: 100%;
   display: inline-block;
 }
-.page-users-public-profile .block .block-title {
+.page-users-public-profile .main .block .block-title {
   color: #fff;
   font-family: McLaren-Regular !important;
   font-weight: normal !important;
@@ -11830,7 +11830,7 @@ body .alert-box.success a.close:hover {
   border-radius: 20px;
   overflow: hidden;
 }
-.page-users-public-profile .block .block-title:after {
+.page-users-public-profile .main .block .block-title:after {
   content: "";
   width: 100%;
   height: 110px;
@@ -11848,45 +11848,45 @@ body .alert-box.success a.close:hover {
   transform: rotate(180deg);
   z-index: -1;
 }
-.page-users-public-profile .block a {
+.page-users-public-profile .main .block a {
   color: #fff;
 }
-.page-users-public-profile .view.view-my-badges {
+.page-users-public-profile .main .view.view-my-badges {
   counter-reset: section;
 }
-.page-users-public-profile .view.view-my-badges .view-content {
+.page-users-public-profile .main .view.view-my-badges .view-content {
   display: table;
   width: 100%;
   padding-left: 3%;
   padding-right: 3%;
 }
-.page-users-public-profile .view.view-my-badges .view-content .views-row {
+.page-users-public-profile .main .view.view-my-badges .view-content .views-row {
   display: table-row;
   width: 100%;
 }
-.page-users-public-profile .view.view-my-badges .view-content .views-row .views-field {
+.page-users-public-profile .main .view.view-my-badges .view-content .views-row .views-field {
   display: table-cell;
 }
-.page-users-public-profile .view.view-my-badges .view-content .views-row .views-field.views-field-title {
+.page-users-public-profile .main .view.view-my-badges .view-content .views-row .views-field.views-field-title {
   color: #fff;
   font-family: Arialregular !important;
   font-style: normal !important;
   font-weight: normal !important;
   -webkit-font-smoothing: antialiased !important;
 }
-.page-users-public-profile .view.view-my-badges .view-content .views-row .views-field.views-field-field-badge-image:before {
+.page-users-public-profile .main .view.view-my-badges .view-content .views-row .views-field.views-field-field-badge-image img {
   counter-increment: section;
   content: " " counter(section,decimal) ". ";
   padding-right: 5px;
   display: inline-block;
 }
-.page-users-public-profile .view.view-booklist-on-activities-page {
+.page-users-public-profile .main .view.view-booklist-on-activities-page {
   counter-reset: section;
 }
-.page-users-public-profile .view.view-booklist-on-activities-page .view-header {
+.page-users-public-profile .main .view.view-booklist-on-activities-page .view-header {
   width: 100%;
 }
-.page-users-public-profile .view.view-booklist-on-activities-page .view-header h3 {
+.page-users-public-profile .main .view.view-booklist-on-activities-page .view-header h3 {
   color: #fff;
   font-family: McLaren-Regular !important;
   font-weight: normal !important;
@@ -11907,7 +11907,7 @@ body .alert-box.success a.close:hover {
   border: none !important;
   outline: none !important;
 }
-.page-users-public-profile .view.view-booklist-on-activities-page .view-header h3:after {
+.page-users-public-profile .main .view.view-booklist-on-activities-page .view-header h3:after {
   content: "";
   width: 100%;
   height: 110px;
@@ -11925,11 +11925,11 @@ body .alert-box.success a.close:hover {
   transform: rotate(180deg);
   z-index: -1;
 }
-.page-users-public-profile .view.view-booklist-on-activities-page .view-content {
+.page-users-public-profile .main .view.view-booklist-on-activities-page .view-content {
   padding-left: 3%;
   padding-right: 3%;
 }
-.page-users-public-profile .view.view-booklist-on-activities-page .view-content .views-field-title a {
+.page-users-public-profile .main .view.view-booklist-on-activities-page .view-content .views-field-title a {
   color: #fff;
   font-family: McLaren-Regular !important;
   font-weight: normal !important;
@@ -11938,24 +11938,24 @@ body .alert-box.success a.close:hover {
   text-transform: capitalize;
   font-size: 18px;
 }
-.page-users-public-profile .view.view-booklist-on-activities-page .view-content .views-field-title a:before {
+.page-users-public-profile .main .view.view-booklist-on-activities-page .view-content .views-field-title a:before {
   counter-increment: section;
   content: " " counter(section,decimal) ". ";
   padding-right: 5px;
   display: inline-block;
 }
-.page-users-public-profile .view.view-booklist-on-activities-page .view-content .views-field-count {
+.page-users-public-profile .main .view.view-booklist-on-activities-page .view-content .views-field-count {
   font-family: McLaren-Regular !important;
   font-weight: normal !important;
   font-style: normal !important;
   -webkit-font-smoothing: antialiased !important;
   float: right;
 }
-.page-users-public-profile .view.view-booklist-on-activities-page .view-content .views-field-count .views-label-count {
+.page-users-public-profile .main .view.view-booklist-on-activities-page .view-content .views-field-count .views-label-count {
   position: relative;
   padding-right: 34px;
 }
-.page-users-public-profile .view.view-booklist-on-activities-page .view-content .views-field-count .views-label-count:after {
+.page-users-public-profile .main .view.view-booklist-on-activities-page .view-content .views-field-count .views-label-count:after {
   content: "";
   width: 30px;
   height: 30px;
@@ -11990,6 +11990,7 @@ body .alert-box.success a.close:hover {
   -moz-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
   box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
   text-transform: capitalize !important;
+  padding: 7px 22px;
 }
 .page-my-reviews .block-quicktabs .quicktabs-wrapper .quicktabs-tabs li.active, .page-my-booklist .block-quicktabs .quicktabs-wrapper .quicktabs-tabs li.active {
   background: none !important;
@@ -11998,17 +11999,19 @@ body .alert-box.success a.close:hover {
 .page-my-reviews .block-quicktabs .quicktabs-wrapper .quicktabs_main, .page-my-booklist .block-quicktabs .quicktabs-wrapper .quicktabs_main {
   border: none !important;
   outline: none !important;
+  overflow: hidden !important;
 }
 .page-my-reviews .view-booklist-on-activities-page, .page-my-booklist .view-booklist-on-activities-page {
   counter-reset: section;
 }
 .page-my-reviews .view-booklist-on-activities-page .view-header h3, .page-my-booklist .view-booklist-on-activities-page .view-header h3 {
   color: #000;
-  font-size: 28px;
+  font-size: 22px;
   font-family: McLaren-Regular !important;
   font-weight: normal !important;
   font-style: normal !important;
   -webkit-font-smoothing: antialiased !important;
+  margin-top: 20px;
 }
 .page-my-reviews .view-booklist-on-activities-page .view-content ul, .page-my-reviews .view-booklist-on-activities-page .view-content ol, .page-my-booklist .view-booklist-on-activities-page .view-content ul, .page-my-booklist .view-booklist-on-activities-page .view-content ol {
   list-style: none !important;
@@ -12057,13 +12060,18 @@ body .alert-box.success a.close:hover {
 }
 .page-my-reviews .view-my-book-reviews .view-header h3, .page-my-booklist .view-my-book-reviews .view-header h3 {
   color: #000;
-  font-size: 28px;
+  font-size: 22px;
   font-family: McLaren-Regular !important;
   font-weight: normal !important;
   font-style: normal !important;
   -webkit-font-smoothing: antialiased !important;
+  margin-top: 20px;
 }
 .page-my-reviews .view-my-book-reviews .view-content table, .page-my-booklist .view-my-book-reviews .view-content table {
+  border: none !important;
+  outline: none !important;
+}
+.page-my-reviews .view-my-book-reviews .view-content table tbody, .page-my-booklist .view-my-book-reviews .view-content table tbody {
   border: none !important;
   outline: none !important;
 }
