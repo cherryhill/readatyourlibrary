@@ -2230,3 +2230,201 @@ body {
  	}
 
 /**end of progress page**/
+/**css for indivisual user profile**/
+.page-users-public-profile {
+	.block {
+		@include bluebackground;
+		width: 100%;
+		display: inline-block;	
+		.block-title {
+			@include waveimg;
+		}
+		a {
+			color: $white;
+		}
+	}
+	.view {
+		&.view-my-badges {
+			counter-reset: section;
+			.view-content {
+				display: table;
+				width: 100%;
+				padding-left: 3%;
+				padding-right: 3%;
+				 .views-row {
+				 	display: table-row;
+				 	width: 100%;
+				 	 .views-field {
+				 	 	display: table-cell;
+				 	 	 &.views-field-title {
+				 	 	 	color: $white;
+				 	 	 	@include arialregular;
+				 	 	 }
+				 	 	 &.views-field-field-badge-image {
+				 	 	 	&:before {
+				 	 	 		@include counter;
+				 	 	 	}
+				 	 	 }
+				 	 }
+				 }
+			}
+		}
+		&.view-booklist-on-activities-page {
+			counter-reset: section;
+			.view-header {
+				width: 100%;
+				 h3 {
+				 	@include waveimg;
+				 	margin-top: 0;
+				 	@include noborder;
+				 }
+			}
+			.view-content {
+				padding-left: 3%;
+				padding-right: 3%;
+				.views-field-title {
+					a {
+						color: $white;
+						@include mclaren;
+						text-transform: capitalize;
+						font-size: 18px;
+						 &:before {
+						 	@include counter;
+						 }
+					}
+				}
+				 .views-field-count {
+				 	@include mclaren;
+				 	float: right;
+				 	 .views-label-count {
+				 	 	@include like;
+				 	 }
+				 }
+			}
+		}
+
+	}
+}
+/**end**/
+/**css for user own review and booklist indivisual ***/
+.page-my-reviews, .page-my-booklist {
+	.block-quicktabs {
+		.quicktabs-wrapper {
+			.quicktabs-tabs {
+				background: none !important;
+				 li {
+				 	background: none !important;
+				 	@include noborder;
+				 	 a {
+				 	 	@include mclaren;
+				 	 	font-size: 17px;
+				 	 	background: $yellow !important;
+				 	 	color: $black;
+				 	 	border-radius: 10px;
+				 	 	@include boxshadow;
+				 	 	text-transform: capitalize !important;
+
+				 	   }
+				 	 &.active {
+				 	 	background: none !important;
+				 	 	padding-top: 0 !important;
+				 	 }
+				 }
+			}
+			.quicktabs_main {
+				@include noborder;
+			}
+		}
+	}
+	.view-booklist-on-activities-page {
+		counter-reset: section;
+		.view-header {
+			h3 {
+				color: $black;
+				font-size: 28px;
+				@include mclaren;
+			}
+		}
+		.view-content {
+			ul, ol {
+				list-style: none !important;
+				.views-field-count {
+					float: right;
+					position: relative;
+					bottom: 20px;
+					margin-right: 15px;
+					@include mclaren;
+					 .views-label-count {
+					 	@include like;
+					 }
+				}
+				 .views-field-title {
+				 	a {
+				 		
+				 		 @include mclaren;
+				 		 font-size: 21px;
+				 		 text-transform: capitalize;
+				 		   &:before {
+				 		   	 @include counter;
+				 		   }
+
+				 		
+				 	}
+				 }
+			}
+		}
+	}
+	.view-my-book-reviews {
+		counter-reset: section;
+		.view-header {
+			h3 {
+				color: $black;
+				font-size: 28px;
+				@include mclaren;
+			}
+		}
+		.view-content {
+			table {
+				@include noborder;
+			}
+			.views-row {
+				display: table;
+				width: 100%;
+				 .views-field {
+				 	display: table-row;
+				 	 &.views-field-field-book-cover-image-link {
+				 	 	width: 40%;
+				 	 	float: left;
+				 	 }
+				 	 &.views-field-title, &.views-field-body, &.views-field-count, &.views-field-view-node {
+                        width: 60%;
+                        float: right;
+				 	 }
+				 	  &.views-field-title {
+				 	  	 a {
+				 	  	 	@include mclaren;
+				 	  	 	font-size: 21px;
+				 	  	 	text-transform: capitalize;
+				 	  	 }
+				 	  }
+				 	  &.views-field-body {
+				 	  	font-size: 18px;
+				 	  	@include arialregular;
+				 	  }
+				 	  &.views-field-count {
+				 	  	text-align: right;
+				 	  	.views-label-count {
+				 	  		@include like;
+				 	  	}
+				 	  }
+				 	  &.views-field-view-node {
+				 	  	a {
+				 	  		@include yellowbutton;
+				 	  	}
+				 	  }
+				 }
+			}
+		}
+	}
+}
+/**end**/

@@ -11799,6 +11799,353 @@ body .alert-box.success a.close:hover {
 }
 
 /**end of progress page**/
+/**css for indivisual user profile**/
+.page-users-public-profile .block {
+  background: #267fda !important;
+  overflow: hidden;
+  border-radius: 20px;
+  color: #fff;
+  position: relative;
+  -webkit-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+  box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+  width: 100%;
+  display: inline-block;
+}
+.page-users-public-profile .block .block-title {
+  color: #fff;
+  font-family: McLaren-Regular !important;
+  font-weight: normal !important;
+  font-style: normal !important;
+  -webkit-font-smoothing: antialiased !important;
+  padding-top: 26px;
+  padding-bottom: 25px;
+  font-size: 28px;
+  height: 110px;
+  border-bottom: medium none;
+  margin-top: -1px;
+  padding-left: 4%;
+  z-index: 0;
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+}
+.page-users-public-profile .block .block-title:after {
+  content: "";
+  width: 100%;
+  height: 110px;
+  display: block;
+  visibility: visible;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: url("../images/libraryzurb/background-saffron.png") no-repeat;
+  background-position: -35px 10px;
+  -webkit-transform: rotate(180deg);
+  -moz-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  -o-transform: rotate(180deg);
+  transform: rotate(180deg);
+  z-index: -1;
+}
+.page-users-public-profile .block a {
+  color: #fff;
+}
+.page-users-public-profile .view.view-my-badges {
+  counter-reset: section;
+}
+.page-users-public-profile .view.view-my-badges .view-content {
+  display: table;
+  width: 100%;
+  padding-left: 3%;
+  padding-right: 3%;
+}
+.page-users-public-profile .view.view-my-badges .view-content .views-row {
+  display: table-row;
+  width: 100%;
+}
+.page-users-public-profile .view.view-my-badges .view-content .views-row .views-field {
+  display: table-cell;
+}
+.page-users-public-profile .view.view-my-badges .view-content .views-row .views-field.views-field-title {
+  color: #fff;
+  font-family: Arialregular !important;
+  font-style: normal !important;
+  font-weight: normal !important;
+  -webkit-font-smoothing: antialiased !important;
+}
+.page-users-public-profile .view.view-my-badges .view-content .views-row .views-field.views-field-field-badge-image:before {
+  counter-increment: section;
+  content: " " counter(section,decimal) ". ";
+  padding-right: 5px;
+  display: inline-block;
+}
+.page-users-public-profile .view.view-booklist-on-activities-page {
+  counter-reset: section;
+}
+.page-users-public-profile .view.view-booklist-on-activities-page .view-header {
+  width: 100%;
+}
+.page-users-public-profile .view.view-booklist-on-activities-page .view-header h3 {
+  color: #fff;
+  font-family: McLaren-Regular !important;
+  font-weight: normal !important;
+  font-style: normal !important;
+  -webkit-font-smoothing: antialiased !important;
+  padding-top: 26px;
+  padding-bottom: 25px;
+  font-size: 28px;
+  height: 110px;
+  border-bottom: medium none;
+  margin-top: -1px;
+  padding-left: 4%;
+  z-index: 0;
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  margin-top: 0;
+  border: none !important;
+  outline: none !important;
+}
+.page-users-public-profile .view.view-booklist-on-activities-page .view-header h3:after {
+  content: "";
+  width: 100%;
+  height: 110px;
+  display: block;
+  visibility: visible;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: url("../images/libraryzurb/background-saffron.png") no-repeat;
+  background-position: -35px 10px;
+  -webkit-transform: rotate(180deg);
+  -moz-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  -o-transform: rotate(180deg);
+  transform: rotate(180deg);
+  z-index: -1;
+}
+.page-users-public-profile .view.view-booklist-on-activities-page .view-content {
+  padding-left: 3%;
+  padding-right: 3%;
+}
+.page-users-public-profile .view.view-booklist-on-activities-page .view-content .views-field-title a {
+  color: #fff;
+  font-family: McLaren-Regular !important;
+  font-weight: normal !important;
+  font-style: normal !important;
+  -webkit-font-smoothing: antialiased !important;
+  text-transform: capitalize;
+  font-size: 18px;
+}
+.page-users-public-profile .view.view-booklist-on-activities-page .view-content .views-field-title a:before {
+  counter-increment: section;
+  content: " " counter(section,decimal) ". ";
+  padding-right: 5px;
+  display: inline-block;
+}
+.page-users-public-profile .view.view-booklist-on-activities-page .view-content .views-field-count {
+  font-family: McLaren-Regular !important;
+  font-weight: normal !important;
+  font-style: normal !important;
+  -webkit-font-smoothing: antialiased !important;
+  float: right;
+}
+.page-users-public-profile .view.view-booklist-on-activities-page .view-content .views-field-count .views-label-count {
+  position: relative;
+  padding-right: 34px;
+}
+.page-users-public-profile .view.view-booklist-on-activities-page .view-content .views-field-count .views-label-count:after {
+  content: "";
+  width: 30px;
+  height: 30px;
+  display: block;
+  visibility: visible;
+  position: absolute;
+  top: 0px;
+  right: 0;
+  background: url("../images/libraryzurb/smily-white.png") no-repeat;
+}
+
+/**end**/
+/**css for user own review and booklist indivisual ***/
+.page-my-reviews .block-quicktabs .quicktabs-wrapper .quicktabs-tabs, .page-my-booklist .block-quicktabs .quicktabs-wrapper .quicktabs-tabs {
+  background: none !important;
+}
+.page-my-reviews .block-quicktabs .quicktabs-wrapper .quicktabs-tabs li, .page-my-booklist .block-quicktabs .quicktabs-wrapper .quicktabs-tabs li {
+  background: none !important;
+  border: none !important;
+  outline: none !important;
+}
+.page-my-reviews .block-quicktabs .quicktabs-wrapper .quicktabs-tabs li a, .page-my-booklist .block-quicktabs .quicktabs-wrapper .quicktabs-tabs li a {
+  font-family: McLaren-Regular !important;
+  font-weight: normal !important;
+  font-style: normal !important;
+  -webkit-font-smoothing: antialiased !important;
+  font-size: 17px;
+  background: #fdeb52 !important;
+  color: #000;
+  border-radius: 10px;
+  -webkit-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+  box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+  text-transform: capitalize !important;
+}
+.page-my-reviews .block-quicktabs .quicktabs-wrapper .quicktabs-tabs li.active, .page-my-booklist .block-quicktabs .quicktabs-wrapper .quicktabs-tabs li.active {
+  background: none !important;
+  padding-top: 0 !important;
+}
+.page-my-reviews .block-quicktabs .quicktabs-wrapper .quicktabs_main, .page-my-booklist .block-quicktabs .quicktabs-wrapper .quicktabs_main {
+  border: none !important;
+  outline: none !important;
+}
+.page-my-reviews .view-booklist-on-activities-page, .page-my-booklist .view-booklist-on-activities-page {
+  counter-reset: section;
+}
+.page-my-reviews .view-booklist-on-activities-page .view-header h3, .page-my-booklist .view-booklist-on-activities-page .view-header h3 {
+  color: #000;
+  font-size: 28px;
+  font-family: McLaren-Regular !important;
+  font-weight: normal !important;
+  font-style: normal !important;
+  -webkit-font-smoothing: antialiased !important;
+}
+.page-my-reviews .view-booklist-on-activities-page .view-content ul, .page-my-reviews .view-booklist-on-activities-page .view-content ol, .page-my-booklist .view-booklist-on-activities-page .view-content ul, .page-my-booklist .view-booklist-on-activities-page .view-content ol {
+  list-style: none !important;
+}
+.page-my-reviews .view-booklist-on-activities-page .view-content ul .views-field-count, .page-my-reviews .view-booklist-on-activities-page .view-content ol .views-field-count, .page-my-booklist .view-booklist-on-activities-page .view-content ul .views-field-count, .page-my-booklist .view-booklist-on-activities-page .view-content ol .views-field-count {
+  float: right;
+  position: relative;
+  bottom: 20px;
+  margin-right: 15px;
+  font-family: McLaren-Regular !important;
+  font-weight: normal !important;
+  font-style: normal !important;
+  -webkit-font-smoothing: antialiased !important;
+}
+.page-my-reviews .view-booklist-on-activities-page .view-content ul .views-field-count .views-label-count, .page-my-reviews .view-booklist-on-activities-page .view-content ol .views-field-count .views-label-count, .page-my-booklist .view-booklist-on-activities-page .view-content ul .views-field-count .views-label-count, .page-my-booklist .view-booklist-on-activities-page .view-content ol .views-field-count .views-label-count {
+  position: relative;
+  padding-right: 34px;
+}
+.page-my-reviews .view-booklist-on-activities-page .view-content ul .views-field-count .views-label-count:after, .page-my-reviews .view-booklist-on-activities-page .view-content ol .views-field-count .views-label-count:after, .page-my-booklist .view-booklist-on-activities-page .view-content ul .views-field-count .views-label-count:after, .page-my-booklist .view-booklist-on-activities-page .view-content ol .views-field-count .views-label-count:after {
+  content: "";
+  width: 30px;
+  height: 30px;
+  display: block;
+  visibility: visible;
+  position: absolute;
+  top: 0px;
+  right: 0;
+  background: url("../images/libraryzurb/smily-white.png") no-repeat;
+}
+.page-my-reviews .view-booklist-on-activities-page .view-content ul .views-field-title a, .page-my-reviews .view-booklist-on-activities-page .view-content ol .views-field-title a, .page-my-booklist .view-booklist-on-activities-page .view-content ul .views-field-title a, .page-my-booklist .view-booklist-on-activities-page .view-content ol .views-field-title a {
+  font-family: McLaren-Regular !important;
+  font-weight: normal !important;
+  font-style: normal !important;
+  -webkit-font-smoothing: antialiased !important;
+  font-size: 21px;
+  text-transform: capitalize;
+}
+.page-my-reviews .view-booklist-on-activities-page .view-content ul .views-field-title a:before, .page-my-reviews .view-booklist-on-activities-page .view-content ol .views-field-title a:before, .page-my-booklist .view-booklist-on-activities-page .view-content ul .views-field-title a:before, .page-my-booklist .view-booklist-on-activities-page .view-content ol .views-field-title a:before {
+  counter-increment: section;
+  content: " " counter(section,decimal) ". ";
+  padding-right: 5px;
+  display: inline-block;
+}
+.page-my-reviews .view-my-book-reviews, .page-my-booklist .view-my-book-reviews {
+  counter-reset: section;
+}
+.page-my-reviews .view-my-book-reviews .view-header h3, .page-my-booklist .view-my-book-reviews .view-header h3 {
+  color: #000;
+  font-size: 28px;
+  font-family: McLaren-Regular !important;
+  font-weight: normal !important;
+  font-style: normal !important;
+  -webkit-font-smoothing: antialiased !important;
+}
+.page-my-reviews .view-my-book-reviews .view-content table, .page-my-booklist .view-my-book-reviews .view-content table {
+  border: none !important;
+  outline: none !important;
+}
+.page-my-reviews .view-my-book-reviews .view-content .views-row, .page-my-booklist .view-my-book-reviews .view-content .views-row {
+  display: table;
+  width: 100%;
+}
+.page-my-reviews .view-my-book-reviews .view-content .views-row .views-field, .page-my-booklist .view-my-book-reviews .view-content .views-row .views-field {
+  display: table-row;
+}
+.page-my-reviews .view-my-book-reviews .view-content .views-row .views-field.views-field-field-book-cover-image-link, .page-my-booklist .view-my-book-reviews .view-content .views-row .views-field.views-field-field-book-cover-image-link {
+  width: 40%;
+  float: left;
+}
+.page-my-reviews .view-my-book-reviews .view-content .views-row .views-field.views-field-title, .page-my-reviews .view-my-book-reviews .view-content .views-row .views-field.views-field-body, .page-my-reviews .view-my-book-reviews .view-content .views-row .views-field.views-field-count, .page-my-reviews .view-my-book-reviews .view-content .views-row .views-field.views-field-view-node, .page-my-booklist .view-my-book-reviews .view-content .views-row .views-field.views-field-title, .page-my-booklist .view-my-book-reviews .view-content .views-row .views-field.views-field-body, .page-my-booklist .view-my-book-reviews .view-content .views-row .views-field.views-field-count, .page-my-booklist .view-my-book-reviews .view-content .views-row .views-field.views-field-view-node {
+  width: 60%;
+  float: right;
+}
+.page-my-reviews .view-my-book-reviews .view-content .views-row .views-field.views-field-title a, .page-my-booklist .view-my-book-reviews .view-content .views-row .views-field.views-field-title a {
+  font-family: McLaren-Regular !important;
+  font-weight: normal !important;
+  font-style: normal !important;
+  -webkit-font-smoothing: antialiased !important;
+  font-size: 21px;
+  text-transform: capitalize;
+}
+.page-my-reviews .view-my-book-reviews .view-content .views-row .views-field.views-field-body, .page-my-booklist .view-my-book-reviews .view-content .views-row .views-field.views-field-body {
+  font-size: 18px;
+  font-family: Arialregular !important;
+  font-style: normal !important;
+  font-weight: normal !important;
+  -webkit-font-smoothing: antialiased !important;
+}
+.page-my-reviews .view-my-book-reviews .view-content .views-row .views-field.views-field-count, .page-my-booklist .view-my-book-reviews .view-content .views-row .views-field.views-field-count {
+  text-align: right;
+}
+.page-my-reviews .view-my-book-reviews .view-content .views-row .views-field.views-field-count .views-label-count, .page-my-booklist .view-my-book-reviews .view-content .views-row .views-field.views-field-count .views-label-count {
+  position: relative;
+  padding-right: 34px;
+}
+.page-my-reviews .view-my-book-reviews .view-content .views-row .views-field.views-field-count .views-label-count:after, .page-my-booklist .view-my-book-reviews .view-content .views-row .views-field.views-field-count .views-label-count:after {
+  content: "";
+  width: 30px;
+  height: 30px;
+  display: block;
+  visibility: visible;
+  position: absolute;
+  top: 0px;
+  right: 0;
+  background: url("../images/libraryzurb/smily-white.png") no-repeat;
+}
+.page-my-reviews .view-my-book-reviews .view-content .views-row .views-field.views-field-view-node a, .page-my-booklist .view-my-book-reviews .view-content .views-row .views-field.views-field-view-node a {
+  color: #000;
+  font-family: McLaren-Regular !important;
+  font-weight: normal !important;
+  font-style: normal !important;
+  -webkit-font-smoothing: antialiased !important;
+  border-radius: 10px;
+  background: #fdeb52 !important;
+  text-transform: capitalize;
+  border: none;
+  padding: 0.5625em 20px;
+  -webkit-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+  box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+}
+.page-my-reviews .view-my-book-reviews .view-content .views-row .views-field.views-field-view-node a:hover, .page-my-booklist .view-my-book-reviews .view-content .views-row .views-field.views-field-view-node a:hover {
+  color: #000;
+  background: #f7fc63 !important;
+  opacity: 1;
+  outline: none;
+  text-decoration: none !important;
+}
+.page-my-reviews .view-my-book-reviews .view-content .views-row .views-field.views-field-view-node a:focus, .page-my-reviews .view-my-book-reviews .view-content .views-row .views-field.views-field-view-node a.active, .page-my-booklist .view-my-book-reviews .view-content .views-row .views-field.views-field-view-node a:focus, .page-my-booklist .view-my-book-reviews .view-content .views-row .views-field.views-field-view-node a.active {
+  color: #000;
+  background: #f0f811 !important;
+  outline: 1;
+  opacity: 1;
+  text-decoration: none !important;
+}
+
+/**end**/
 /**
  * Styles for the Post-Footer area.
  */
