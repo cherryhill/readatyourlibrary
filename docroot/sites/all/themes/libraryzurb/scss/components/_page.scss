@@ -1786,6 +1786,23 @@ body {
 		@include bluebackground;
 		@include block;
 		float: none !important;
+		.block-block {
+			padding: 0px 22px;
+			.block-title {
+				@include white-text;
+				@include noborder;
+				text-align: center;
+				margin-top: 17px;
+			}
+			div {
+				@include arialregular;
+				font-size: 18px;
+
+			}
+			a.button {
+				margin: 10px 0px 0px 0px;
+			}
+		}
 		.block-views {
 			 &:first-child {
 			 	ul {
@@ -1834,9 +1851,11 @@ body {
 			 	}
 			}
 			h3 {
-			 	@include white-text;
+			 	color: $white;
 			 	margin-top: 20px;
-			 	text-align: center;
+			 	font-size: 22px;
+			 	@include arialbold;
+			 	text-transform: capitalize;
 			}
 			ul {
 			 	list-style: none;
