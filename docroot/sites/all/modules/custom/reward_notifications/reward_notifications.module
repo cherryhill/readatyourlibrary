@@ -42,8 +42,11 @@ function _reward_claim_onscreen_message() {
 	global $user;
 	$uid = $user->uid;
 
+	$profile = profile2_load_by_user($uid, 'main');
+	$email_settings = $profile->field_receive_notifications['und'][0]['value'];
+
 	$query = db_select('reward_notification_patron','noti')
-	  ->fields('noti',array('uid','reward_notifications','notifications_read'))
+	  ->fields('noti',array('uid','reward_notifications','notifications_read','reward_mail_notifications'))
 	  ->condition('uid',$uid,'=')
 	  ->execute()
 	  ->fetchAll();
@@ -51,6 +54,7 @@ function _reward_claim_onscreen_message() {
 	foreach($query as $res){
 		$reward_uid = $res->uid;
 		$reward_notification_patron = $res->reward_notifications;
+		$mail_notification_patron = $res->reward_mail_notifications;
 		$read = $res->notifications_read;
 
 		$rm_html_tags = strip_tags($reward_notification_patron);
@@ -58,12 +62,37 @@ function _reward_claim_onscreen_message() {
 
 		if($uid == $reward_uid && $read == '0') {
 			drupal_set_message(t('%string', array('%string' => $rew_message)), 'status');
+			if($email_settings == 'yes'){
+				//sending of mail when user wins a reward
+				$account = user_load($reward_uid);
+				$user_email = $account->mail;
+
+				$params = array('body' => $mail_notification_patron);
+				$key = 'reward_email';
+				$to = $user_email;
+				$from = variable_get('site_mail', '');
+				$mail = drupal_mail('reward_mail_notification', $key, $to, language_default(), $params, $from);
+				$mail['headers']['Content-Type'] = 'text/html; charset=UTF-8; format=flowed';
+			}
 		}
 
 		$sub_query = db_update('reward_notification_patron')
 		->fields(array('notifications_read' => '1'))
 		->condition('uid',$uid,'=')
 		->execute();
+	}
+}
+
+function reward_mail_notification_mail($key, &$message, $params, $form_state){
+	$language = $message['language'];
+
+	switch ($key) {
+	//switching on $key lets you create variations of the email based on the $key parameter
+	  case 'reward_email':
+	  $message['headers']['Content-Type'] = 'text/html; charset=UTF-8; format=flowed';
+	  $message['subject'] = t('Reward Notification');
+	  $message['body'][] = $params['body'];
+	  break;
 	}
 }
 

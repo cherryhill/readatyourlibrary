@@ -244,7 +244,6 @@ function play_library_program_userpoints($op, &$params = array()) {
 		$user_pre_points = $user_points - $params['points'];
 		$tier_rewards = _play_library_program_get_global_reward_ids($user_pre_points, $user_points, $params['uid']);
 		foreach ($tier_rewards as $rid) {
-
 			play_library_program_create_reward_claim($rid, $params['uid']);
 		}
 	}
@@ -412,10 +411,8 @@ function play_library_program_create_reward_claim($reward_id, $account_id) {
 	 ->fields('sl', array('field_start_age_value'))
 	 ->execute();
 	$start = $query_start->fetchField();
-
-	 
-
-	 $query_end = db_select('field_data_field_end_age', 'el')
+ 
+	$query_end = db_select('field_data_field_end_age', 'el')
 	 ->fields('el', array('field_end_age_value'))
 	 ->execute();
 	$end = $query_end->fetchField();
@@ -450,34 +447,17 @@ function play_library_program_create_reward_claim($reward_id, $account_id) {
 	  $res_type = $reward_msg->type;
 	  $res_entity_id = $reward_msg->field_reward_claim_id_target_id;
 
-	  $sub_query = db_select('field_data_field_reward_message','msg')
-	  ->fields('msg',array('field_reward_message_value'))
-	  ->condition('entity_id',$res_entity_id)
-	  ->execute()
-	  ->fetchAll();
+	  $sub_query_msg = db_select('field_data_field_reward_message','msg');
+	  $sub_query_msg->join('field_data_field_reward_notification','noti','noti.entity_id = msg.entity_id');
+	  $sub_query_msg->fields('msg',array('field_reward_message_value'));
+	  $sub_query_msg->fields('noti',array('field_reward_notification_value'));
+	  $sub_query_msg->condition('msg.entity_id',$res_entity_id);
+	  $sub_query = $sub_query_msg->execute()->fetchAll();
+
 	  foreach($sub_query as $onscreen_msg){
 	    $msg_notifications = $onscreen_msg->field_reward_message_value;
+	    $mail_notifications = $onscreen_msg->field_reward_notification_value;
 	  }
-
-	  $account = user_load($res_uid);
-	  $user_email = $account->mail;
-
-	  //sending of mail when user wins a reward
-	  $sub_query_msg = db_select('field_data_field_reward_notification','noti')
-	  ->fields('noti',array('field_reward_notification_value'))
-	  ->condition('entity_id',$res_entity_id)
-	  ->execute()
-	  ->fetchAll();
-	  foreach($sub_query_msg as $mail_msg){
-	    $mail_notifications = $mail_msg->field_reward_notification_value;
-	  }
-
-	  $params = array('body' => $mail_notifications);
-	  $key = 'reward_email';
-	  $to = $user_email;
-	  $from = variable_get('site_mail', '');
-	  $mail = drupal_mail('reward_mail_notification', $key, $to, language_default(), $params, $from);
-	  $mail['headers']['Content-Type'] = 'text/html; charset=UTF-8; format=flowed';
 
 	  db_insert('reward_notification_patron')
 	   ->fields(array(
@@ -486,25 +466,11 @@ function play_library_program_create_reward_claim($reward_id, $account_id) {
 	    'uid' => $res_uid,
 	    'type' => $res_type,
 	    'reward_notifications' => $msg_notifications,
+	    'reward_mail_notifications' => $mail_notifications,
 	    ))
 	   ->execute();
 	}
 }
-
-function reward_mail_notification_mail($key, &$message, $params, $form_state){
-	$language = $message['language'];
-
-	switch ($key) {
-	//switching on $key lets you create variations of the email based on the $key parameter
-	  case 'reward_email':
-	  $message['headers']['Content-Type'] = 'text/html; charset=UTF-8; format=flowed';
-	  $message['subject'] = t('Reward Notification');
-	  $message['body'][] = $params['body'];
-	  break;
-	}
-}
-
-
 
 /**
  * Creates a new raffle entry
