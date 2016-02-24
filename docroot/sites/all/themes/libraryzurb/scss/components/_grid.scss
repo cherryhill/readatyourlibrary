@@ -2,11 +2,17 @@
 html {
 	background: $grey;
 }
-body.front, body.not-front {
-	max-width: 1280px;
-	margin: 0 auto;
+body {
+	width: 100%;
+	height: 100%;
 	@include boxshadow;
 	background: $white;
+	&.front, &.not-front {
+		max-width: 1280px;
+		margin: 0 auto;
+
+
+	}
 }
 .row {
 	&.l-main {
