@@ -104,7 +104,7 @@ function progress_user_block_program() {
   }
   else {
     $msg = "<span class='msg-highlight'>Total days read: $total_read_days</span><br/>";
-    $msg .= "$reads_for_next_reward more days read needed to receive your next prize";
+    $msg .= "<div class='days-left'>$reads_for_next_reward more days read needed to receive your next prize</div>";
     $msg .= "<div><a href='".$base_url."/progress'>Go to the Progress Page</a></div>";
 
     return "<div>$msg</div>";
@@ -224,14 +224,24 @@ function raffle_entry_process($form, &$form_state) {
       //'#value'=>$value->name,
     );
   }
-    $form['user_points']=array(
+    $form['user_greater']=array(
       '#type'=>'textfield',
-      '#title' =>'User Points',
+      '#title' =>'Points greater than',
       
     );
-    $form['user_age']=array(
+    $form['user_lesser']=array(
       '#type'=>'textfield',
-      '#title' =>'User age',
+      '#title' =>'Points lesser than',
+      
+    );
+    $form['user_age_from']=array(
+      '#type'=>'textfield',
+      '#title' =>'User age From',
+      
+    );
+    $form['user_age_to']=array(
+      '#type'=>'textfield',
+      '#title' =>'User age to',
       
     );
     $form['submit']=array(
@@ -247,9 +257,116 @@ function raffle_entry_process($form, &$form_state) {
 }
 
 function raffle_entry_process_submit(&$form, &$form_state) {
-  echo "<pre>";
-  print_r($form_state);die();
+  $user_points_greater_than = $form_state['values']['user_greater'];
+  $user_points_lesser_than = $form_state['values']['user_lesser']; 
+  $user_age_from = $form_state['values']['user_age_from'];
+  $user_age_to = $form_state['values']['user_age_to'];
 
+  $current = date('Y');
+  $age_from = $current - $user_age_from;
+  $age_to = $current - $user_age_to;
+
+
+
+
+  foreach ($form_state['values'] as $key => $value) {
+    $rid = substr($key, 16);
+    if($value == '1'){
+      $test[$rid] = $key;
+  
+    }
+  }
+  foreach ($test as $libarary_branch_id => $val) {
+    $libarary_id[] = $libarary_branch_id;
+  }
+
+  $qry = db_select('field_data_field_library_branch', 'lb');
+
+  $qry->fields('lb', array('entity_id'));
+
+  $qry->condition('lb.field_library_branch_tid', $libarary_id);
+  $rs = $qry->execute()->fetchAll();
+  foreach ($rs as $entity_id) {
+    $entity[] = $entity_id->entity_id; 
+    
+  }
+
+
+  $dob = db_select('field_data_field_user_birthday', 'ub');
+  $dob->fields('ub', array('field_user_birthday_value'));
+  $dob->condition('ub.entity_id', $entity);
+  $date = $dob->execute()->fetchAll();
+  foreach ($date as $date_value) {
+    $date_o_b = explode('-', $date_value->field_user_birthday_value); 
+    $date_year[] = $current - $date_o_b[0]; 
+    
+    
+  }
+
+
+
+
+  
+  
+ 
+  
+  
+
+
+
+$query = db_select('profile', 'p');
+$query->join('userpoints', 'up', 'up.pid = p.pid');
+$query->fields('up', array('uid'));
+$query->condition('p.pid', $entity);
+$query->condition('up.max_points', $user_points_greater_than, '>=');
+$query->condition('up.max_points', $user_points_lesser_than, '<=');
+
+$res = $query->execute()->fetchAll();
+
+//__toString($res);
+print_r($res);
+die();
+
+
+
+
+
+
+//   $query = db_select('userpoints', 'up');
+// $query->fields('up', array('uid'));
+// $query->condition('up.max_points', $user_points_greater_than, '>=');
+// $query->condition('up.max_points', $user_points_lesser_than, '<=');
+
+// $res = $query->execute()->fetchAll();
+// //__toString($res);
+// print_r($res);
+// die();
+
+
+
+  
+
+
+//   $qry = db_select('field_data_field_activity_fired_hook', 'fh');
+//   $qry->join('field_data_field_activity_points', 'ap', 'ap.entity_id = fh.entity_id');
+//   $qry->Join('field_data_field_reward_criteria_activity', 'rca', 'fh.entity_id = rca.field_reward_criteria_activity_target_id');
+//   $qry->Join('field_data_field_reward_criteria_point_mark', 'rcpm', 'rca.entity_id = rcpm.entity_id');
+//   $qry->fields('rcpm', array('field_reward_criteria_point_mark_value'));
+//   $qry->fields('ap', array('field_activity_points_value'));
+//   $qry->condition('fh.field_activity_fired_hook_value', 'node_update|node|sticker|updated');
+//   $rs = $qry->execute()->fetchAll();
+
+// print_r($rs);die();
+
+
+
+
+
+
+
+
+ //print_r($libarary_id);
+ //echo $user_points_greater_than.'----'.$user_points_lesser_than.'------'.$user_age_from.'------'. $user_age_to;die(); 
 }
 
 
