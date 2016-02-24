@@ -9192,12 +9192,16 @@ body .alert-box.success a.close:hover {
 }
 .page-rewards .pull-9.sidebar .block .view .views-row .views-field.views-field-field-badge-image {
   padding-right: 10px;
+  position: relative;
 }
 .page-rewards .pull-9.sidebar .block .view .views-row .views-field.views-field-field-badge-image:before {
   counter-increment: section;
   content: " " counter(section,decimal) ". ";
   padding-right: 5px;
   display: inline-block;
+  position: absolute;
+  left: -14px;
+  top: 15px;
 }
 .page-rewards .pull-9.sidebar .block .view .views-row .views-field.views-field-title {
   padding-left: 10px;
@@ -9330,7 +9334,6 @@ body .alert-box.success a.close:hover {
 }
 .logged-in.section-programs .sidebar .block.block-auto-role-allocation > div {
   display: inline-block;
-  text-align: center;
 }
 .logged-in.section-programs .sidebar .block.block-auto-role-allocation > div > div a {
   color: #000;
@@ -9372,6 +9375,10 @@ body .alert-box.success a.close:hover {
   font-weight: normal !important;
   -webkit-font-smoothing: antialiased !important;
   font-size: 17px;
+}
+.logged-in.section-programs .sidebar .block.block-auto-role-allocation div.days-left, .logged-in.section-programs .sidebar .block.block-auto-role-allocation div.all_rewrad_won {
+  padding-left: 32%;
+  line-height: 1;
 }
 .logged-in.section-programs .sidebar .block.block-auto-role-allocation:before {
   content: "";
@@ -9594,7 +9601,7 @@ body .alert-box.success a.close:hover {
   display: block;
   visibility: visible;
   position: absolute;
-  top: -26px;
+  top: -11px;
   left: 0;
   background: url("../images/libraryzurb/fi-calendar.svg") no-repeat;
   background-position: center;
@@ -11874,11 +11881,17 @@ body .alert-box.success a.close:hover {
   font-weight: normal !important;
   -webkit-font-smoothing: antialiased !important;
 }
-.page-users-public-profile .main .view.view-my-badges .view-content .views-row .views-field.views-field-field-badge-image img {
+.page-users-public-profile .main .view.view-my-badges .view-content .views-row .views-field.views-field-field-badge-image {
+  position: relative;
+}
+.page-users-public-profile .main .view.view-my-badges .view-content .views-row .views-field.views-field-field-badge-image:before {
   counter-increment: section;
   content: " " counter(section,decimal) ". ";
   padding-right: 5px;
   display: inline-block;
+  position: absolute;
+  left: -14px;
+  top: 15px;
 }
 .page-users-public-profile .main .view.view-booklist-on-activities-page {
   counter-reset: section;

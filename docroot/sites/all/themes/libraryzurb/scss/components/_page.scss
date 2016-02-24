@@ -218,8 +218,12 @@ body {
 			  		 	  	vertical-align: middle;
 			  		 	  	 &.views-field-field-badge-image {
                                padding-right: 10px;
+                               position: relative;
                                  &:before {
                                  	@include counter;
+                                 	position: absolute;
+                                 	left: -14px;
+                                 	top: 15px;
                                  }
 			  		 	  	 }
 			  		 	  	 &.views-field-title {
@@ -380,7 +384,7 @@ body {
 	      	  		&.block-auto-role-allocation   {
 	      	  			> div {
 		      	  			display: inline-block;
-		      	  			text-align: center;
+		      	  			
 	      	  					> div {
 	      	  			 			a {
 				      	  			  	@include yellowbutton;
@@ -395,6 +399,10 @@ body {
 		      	  			padding-left: 32%;
 		      	  			@include arialbold;
 		      	  			font-size: 17px;
+		      	  		}
+		      	  		div.days-left, div.all_rewrad_won {
+		      	  			padding-left: 32%;
+		      	  			line-height: 1;
 		      	  		}
 	      	  			position: relative;
 	      	  				&:before {
@@ -532,7 +540,7 @@ body {
 		 		 		 	padding-left: 32%;
 		 		 		 	position: relative;
 			 		 		 	&:before {
-			 		 		 	 	@include previous(100px, 100px, $left: 0, $top: -26px);
+			 		 		 	 	@include previous(100px, 100px, $left: 0, $top: -11px);
 		                            background: url('../images/libraryzurb/fi-calendar.svg') no-repeat;
 		                            background-position: center;
 			 		 		 	}
@@ -2262,8 +2270,12 @@ body {
 				 	 	 	@include arialregular;
 				 	 	 }
 				 	 	 &.views-field-field-badge-image {
-				 	 	 	img {
+				 	 	 	position: relative;
+				 	 	 	&:before {
 				 	 	 		@include counter;
+				 	 	 		position: absolute;
+				 	 	 		left: -14px;
+				 	 	 		top: 15px;
 				 	 	 	}
 				 	 	 }
 				 	 }
