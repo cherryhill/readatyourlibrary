@@ -42,43 +42,42 @@ function _reward_claim_onscreen_message() {
 	global $user;
 	$uid = $user->uid;
 
-	$profile = profile2_load_by_user($uid, 'main');
+  $profile = profile2_load_by_user($uid, 'main');
 	$email_settings = $profile->field_receive_notifications['und'][0]['value'];
+  if ($email_settings == 'yes') {
+    $account = user_load($uid);
+    $user_email = $account->mail;
+  }
 
 	$query = db_select('reward_notification_patron','noti')
-	  ->fields('noti',array('uid','reward_notifications','notifications_read','reward_mail_notifications'))
-	  ->condition('uid',$uid,'=')
+	  ->fields('noti',array('reward_notifications','reward_mail_notifications','id'))
+	  ->condition('uid',$uid)
+	  ->condition('notifications_read',0)
 	  ->execute()
 	  ->fetchAll();
 
 	foreach($query as $res){
-		$reward_uid = $res->uid;
-		$reward_notification_patron = $res->reward_notifications;
-		$mail_notification_patron = $res->reward_mail_notifications;
-		$read = $res->notifications_read;
+		$onscreen_msg = $res->reward_notifications;
+		$mail_msg = $res->reward_mail_notifications;
+		$id = $res->id;
 
-		$rm_html_tags = strip_tags($reward_notification_patron);
+		$rm_html_tags = strip_tags($onscreen_msg);
 		$rew_message = str_replace('&nbsp;', ' ', $rm_html_tags);
 
-		if($uid == $reward_uid && $read == '0') {
-			drupal_set_message(t('%string', array('%string' => $rew_message)), 'status');
-			if($email_settings == 'yes'){
-				//sending of mail when user wins a reward
-				$account = user_load($reward_uid);
-				$user_email = $account->mail;
-
-				$params = array('body' => $mail_notification_patron);
-				$key = 'reward_email';
-				$to = $user_email;
-				$from = variable_get('site_mail', '');
-				$mail = drupal_mail('reward_mail_notification', $key, $to, language_default(), $params, $from);
-				$mail['headers']['Content-Type'] = 'text/html; charset=UTF-8; format=flowed';
-			}
+		drupal_set_message(t('%string', array('%string' => $rew_message)), 'status');
+		if($email_settings == 'yes'){
+			//sending of mail when user wins a reward
+			$params = array('body' => $mail_msg);
+			$key = 'reward_email';
+			$to = $user_email;
+			$from = variable_get('site_mail', 'support@chillco.com');
+			$mail = drupal_mail('reward_mail_notification', $key, $to, language_default(), $params, $from);
+			$mail['headers']['Content-Type'] = 'text/html; charset=UTF-8; format=flowed';
 		}
 
 		$sub_query = db_update('reward_notification_patron')
 		->fields(array('notifications_read' => '1'))
-		->condition('uid',$uid,'=')
+		->condition('id',$id)
 		->execute();
 	}
 }
