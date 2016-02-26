@@ -1,36 +1,4 @@
-/**page wise css***/
-body {
 
-    @include arialregular;
-	-webkit-font-smoothing: antialiased;
-	 font-size: 18px; 
-	 line-height: 1.5;
-	color: $black;
-	
-		.main {
-			margin-top: -5px;
-		}
-	input[type="password"] {
-		@include mclaren;
-	}
-	.alert-box.success {
-		opacity: 1;
-		@include mclaren;
-		 a {
-		 	@include mclaren;
-		 	opacity: 1;
-		 	color: $red !important;
-		 	&.close {
-		 		color: $white !important;
-		 		opacity: 1;
-		 		 &:hover {
-		 		 	text-decoration: none !important;
-		 		 }
-		 	}
-		 }
-	}
-	
-}
 /**open single msg**/
 .page-messages-view {
 	.privatemsg-message-participants {
@@ -131,11 +99,15 @@ body {
 			 	 	img {
 			 	 		width: 160px;
 			 	 		height: 160px;
+			 	 		  &:hover {
+			 	 		  	transform: none;
+			 	 		  	top: 0;
+			 	 		  }
 			 	 	}
 			 	 }
 			 	 .flickr-citation {
 			 	 	margin-top: 23px;
-			 	 	margin-bottom: 10px;
+			 	 	margin-bottom: 35px;
 			 	 	text-align: center;
 			 	 	   a {
 			 	 	   	  color: transparent;
@@ -539,11 +511,20 @@ body {
 		 		 		div {
 		 		 		 	padding-left: 32%;
 		 		 		 	position: relative;
+		 		 		 	padding-bottom: 30%;
 			 		 		 	&:before {
 			 		 		 	 	@include previous(100px, 100px, $left: 0, $top: -11px);
 		                            background: url('../images/libraryzurb/fi-calendar.svg') no-repeat;
 		                            background-position: center;
 			 		 		 	}
+			 		 		a.button {
+                                width: 100%;
+                                display: inline-block;
+                                @include bluebutton($font-size: 17px);
+                                position: absolute;
+                                left: -15px;
+                                bottom: 0;
+			 		 		}
 		 		 		}
 	 		 	}
 	 		}
@@ -615,19 +596,7 @@ body {
 			 					padding-left: 21%;
 			 					font-size: 22px;
 			 					position: relative;
-		 					  	&:after {
-			 					  	content: " ";
-			 					  	width: 20px;
-			 					  	height: 20px;
-			 					  	display: inline-block;
-			 					  	position: relative;
-			 					  	vertical-align: middle;
-			 					  	visibility: visible;
-			 					  	background: url('../images/libraryzurb/right-arrow.png') no-repeat;
-			 					  	background-size: 18px;
-			 					  	background-position: center;
-			 					  	margin-left: 12px;
-		 					 	}
+		 					  
 	 						}
 	 				}
  			}
@@ -750,6 +719,8 @@ body {
 	 			 	  			.view-footer {
 			 			 	  		p {
 			 			 	  			text-align: center;
+			 			 	  			margin-top: 10px;
+			 			 	  			width: 100%;
 			 			 	  			a {
 			 			 	  				width: 100%;
 			 			 	  				display: inline-block;
@@ -835,6 +806,8 @@ body {
 	 			 	  			.view-footer {
 	 			 	  				p {
 	 			 	  					text-align: center;
+	 			 	  					width: 100%;
+	 			 	  					margin-top: 10px;
 	 			 	  			 		a {
 			 			 	  			 	width: 100%;
 			 			 	  			 	display: inline-block;
@@ -1761,14 +1734,20 @@ body {
 /**end of booklist page**/
 
 /**activities page **/
-.not-logged-in .section-activities {
+.not-logged-in.section-activities {
 	.block-views-reward-earn-block-1 {
 			.block-title {
 				&:after {
-					background: none !important;
+					background: none;
 				}
 			}
-		}
+		
+    }
+}
+.logged-in.section-activities {
+    .block-views-reward-earn-block-1 {
+			display: none;
+	}
 
 }
 
@@ -1830,7 +1809,7 @@ body {
 				margin-top: 17px;
 			}
 			div {
-				@include arialregular;
+				@include arialbold;
 				font-size: 18px;
 
 			}
@@ -1865,7 +1844,6 @@ body {
 		 			}
 			}
 			.view-footer {
-			 	padding-left: 20px;
 			 	margin-top: 30px;
 			 	p {
 			 		a {
@@ -1985,6 +1963,7 @@ body {
 	 		width: 100%;
 	 		border-collapse: separate;
 	  		border-spacing: 20px;
+	  		position: relative;
 
 	 	}
  	 	.main {
@@ -1993,7 +1972,8 @@ body {
 	 	 	padding-right: 0;
 	 	 	display: table-row;
 	 	 	width: 100%;
-	 	 	position: relative;
+	 	 	position: static;
+	 	 	
 	 	 	@include block;
 		 	 	#page-title {
 		 	 	 	@include waveimg;
@@ -2051,6 +2031,7 @@ body {
 						background: $white;
 						color: $black;
 						border-radius: 20px;
+						position: relative;
 						@include mclaren;
 						@include boxshadow;
 							.view-prize-won-for-progress-page {
@@ -2092,10 +2073,9 @@ body {
 										width: 100%;
 										display: table-row;
 										height: 60px;
-										position: relative;
 											ul.pager {
 											 	position: absolute;
-											 	right: 0px;
+											 	right: 20px;
 																	 	
 												 	 li {
 												 	 	
@@ -2142,8 +2122,14 @@ body {
 		 	 			 			font-size: 14px;
 		 	 			 			line-height: 1;
 		 	 			 		}
+		 	 			 		div.reward_text {
+		 	 			 			font-size: 14px;
+		 	 			 			line-height: 1;
+		 	 			 			@include mclaren;
+		 	 			 			margin-top: 10px; 
+		 	 			 		}
 			 	 		 	&.contextual-links-region {
-			 	 		 		position: initial;
+			 	 		 		position: static;
 			 	 		 	}
 		 	 			width: 100%;
 		 	 			max-width: 95%;
@@ -2220,8 +2206,12 @@ body {
  			}
 		 	 #print_button {
 		 	 			 	position: absolute;
-		 	 			 	top: 17px;
-		 	 			 	right: 28px;
+		 	 			 	top: 2%;
+		 	 			 	@media screen and (-webkit-min-device-pixel-ratio: 0) {
+		 	 			 		top: 4.5% !important;
+		 	 			 	}
+		 	 			 	top: 2% \0/IE9 !important;
+		 	 			 	right: 4%;
 		 	 			 	width: 200px;
 		 	 			 	line-height: 30px;
 		 	 			 	padding:6px 0px 6px 45px;
@@ -2232,6 +2222,10 @@ body {
 		 	 			 	color: $black;
 		 	 			 	border-radius: 10px;
 		 	 			 	@include boxshadow;
+		 	 			 	@media screen and (min-width: 0) and (min-resolution: .001dpcm) {
+		 	 			 		top: 4.5%;
+		 	 			 	}
+
 		 	 			 	
 		 	 			 	
 		 	 			 }
