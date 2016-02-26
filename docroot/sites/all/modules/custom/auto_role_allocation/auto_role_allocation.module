@@ -203,10 +203,9 @@ function auto_role_allocation_menu() {
     );
   $items['raffle'] = array(
     'title' => 'Raffle entry list',
-    'page callback' => 'drupal_get_form',
-    'page arguments'=>array('raffle_entry_process'),
+    'page callback' => 'raffle_entry_process',
     'access arguments' => array('access content'),
-    'type' => MENU_SUGGESTED_ITEM,
+    'type' => MENU_CALLBACK,
   );
   
   return $items;
@@ -215,159 +214,67 @@ function auto_role_allocation_menu() {
 
 /* fuction for raffle entry process */
 
-function raffle_entry_process($form, &$form_state) {
-  $library_branch = taxonomy_get_tree(7);
-  foreach ($library_branch as $value) {
-    $form['libarary_branch_'.$value->tid]=array(
-      '#type'=>'checkbox',
-      '#title' =>$value->name,
-      //'#value'=>$value->name,
+function raffle_entry_process() {
+  $query = db_select('eck_raffle', 'rf');
+  $query->join('users', 'u', 'u.uid = rf.uid');
+  $query->fields('rf', array('uid', 'type'));
+  $query->fields('u', array('name'));
+  $query->condition(db_or()->condition('rf.type', 'raffle_winner')->condition('rf.type', 'raffle_entry'));
+  $result = $query->execute()->fetchAll();
+
+  $raffle_users_list = array();
+
+  foreach ($result as $value) {
+    $uid = $value->uid;
+    $type = $value->type;
+    if (array_key_exists($uid, $raffle_users_list)) {
+      $temp = $raffle_users_list[$uid];
+
+      if ($type == 'raffle_winner') {
+        $temp['raffle_winner'] = 'Yes';
+      } else {
+        $temp['count'] = $temp['count'] + 1;
+      }
+      $raffle_users_list[$uid] = $temp;
+    } else {
+      if ($type == 'raffle_entry') {
+        $raffle_users_list[$uid] = array('count' => 1, 'raffle_winner' => 'No', 'name' => $value->name);
+      } else {
+        $raffle_users_list[$uid] = array('count' => 0, 'raffle_winner' => 'Yes', 'name' => $value->name);
+      }
+    }
+    
+    $tbl_header = array(
+      'Name',
+      'Raffle Count',
+      'Raffle Winner',
+      'Operation'
     );
-  }
-    $form['user_greater']=array(
-      '#type'=>'textfield',
-      '#title' =>'Points greater than',
-      
-    );
-    $form['user_lesser']=array(
-      '#type'=>'textfield',
-      '#title' =>'Points lesser than',
-      
-    );
-    $form['user_age_from']=array(
-      '#type'=>'textfield',
-      '#title' =>'User age From',
-      
-    );
-    $form['user_age_to']=array(
-      '#type'=>'textfield',
-      '#title' =>'User age to',
-      
-    );
-    $form['submit']=array(
-      '#type'=>'submit',
-      '#title' =>'Submit',
-      '#value'=>'Submit',
-      
-    );
-
-  
-  return $form;
-  
-}
-
-function raffle_entry_process_submit(&$form, &$form_state) {
-  $user_points_greater_than = $form_state['values']['user_greater'];
-  $user_points_lesser_than = $form_state['values']['user_lesser']; 
-  $user_age_from = $form_state['values']['user_age_from'];
-  $user_age_to = $form_state['values']['user_age_to'];
-
-  $current = date('Y');
-  $age_from = $current - $user_age_from;
-  $age_to = $current - $user_age_to;
-
-
-
-
-  foreach ($form_state['values'] as $key => $value) {
-    $rid = substr($key, 16);
-    if($value == '1'){
-      $test[$rid] = $key;
-  
+    
+    $tbl_rows = array();
+    foreach($raffle_users_list as $k => $v) {
+      $user_name = $v['name'];
+      $raffle_count = $v['count'];
+      $raffle_winner = $v['raffle_winner'];
+      $operation = "<input type = 'checkbox' id = 'chkbox_$k'>";
+      $tbl_rows[] = array(
+        array( 'data' => $user_name),
+        array( 'data' => $raffle_count),
+        array( 'data' => $raffle_winner),
+        array( 'data' => $operation),
+      );
     }
   }
-  foreach ($test as $libarary_branch_id => $val) {
-    $libarary_id[] = $libarary_branch_id;
-  }
 
-  $qry = db_select('field_data_field_library_branch', 'lb');
+  $output = theme('table', array( 'header' => $tbl_header, 'rows' => $tbl_rows ));
+  $output .= "<div class = 'raffle-list-submit'>
+    <input type = 'button' id = 'raffle-entry-list-btn' value = 'Submit' >
+  </div>";
 
-  $qry->fields('lb', array('entity_id'));
-
-  $qry->condition('lb.field_library_branch_tid', $libarary_id);
-  $rs = $qry->execute()->fetchAll();
-  foreach ($rs as $entity_id) {
-    $entity[] = $entity_id->entity_id; 
-    
-  }
-
-
-  $dob = db_select('field_data_field_user_birthday', 'ub');
-  $dob->fields('ub', array('field_user_birthday_value'));
-  $dob->condition('ub.entity_id', $entity);
-  $date = $dob->execute()->fetchAll();
-  foreach ($date as $date_value) {
-    $date_o_b = explode('-', $date_value->field_user_birthday_value); 
-    $date_year[] = $current - $date_o_b[0]; 
-    
-    
-  }
-
-
-
-
-  
-  
- 
-  
-  
-
-
-
-$query = db_select('profile', 'p');
-$query->join('userpoints', 'up', 'up.pid = p.pid');
-$query->fields('up', array('uid'));
-$query->condition('p.pid', $entity);
-$query->condition('up.max_points', $user_points_greater_than, '>=');
-$query->condition('up.max_points', $user_points_lesser_than, '<=');
-
-$res = $query->execute()->fetchAll();
-
-//__toString($res);
-print_r($res);
-die();
-
-
-
-
-
-
-//   $query = db_select('userpoints', 'up');
-// $query->fields('up', array('uid'));
-// $query->condition('up.max_points', $user_points_greater_than, '>=');
-// $query->condition('up.max_points', $user_points_lesser_than, '<=');
-
-// $res = $query->execute()->fetchAll();
-// //__toString($res);
-// print_r($res);
-// die();
-
-
-
-  
-
-
-//   $qry = db_select('field_data_field_activity_fired_hook', 'fh');
-//   $qry->join('field_data_field_activity_points', 'ap', 'ap.entity_id = fh.entity_id');
-//   $qry->Join('field_data_field_reward_criteria_activity', 'rca', 'fh.entity_id = rca.field_reward_criteria_activity_target_id');
-//   $qry->Join('field_data_field_reward_criteria_point_mark', 'rcpm', 'rca.entity_id = rcpm.entity_id');
-//   $qry->fields('rcpm', array('field_reward_criteria_point_mark_value'));
-//   $qry->fields('ap', array('field_activity_points_value'));
-//   $qry->condition('fh.field_activity_fired_hook_value', 'node_update|node|sticker|updated');
-//   $rs = $qry->execute()->fetchAll();
-
-// print_r($rs);die();
-
-
-
-
-
-
-
-
- //print_r($libarary_id);
- //echo $user_points_greater_than.'----'.$user_points_lesser_than.'------'.$user_age_from.'------'. $user_age_to;die(); 
+  return $output;
 }
+
+
 
 
 /* function for restrict calendar date for only one drop*/
@@ -637,6 +544,7 @@ function user_progress() {
   else {
     $msg = "<span class='msg-highlight'>Total days read: $total_read_days</span><br/>";
     $msg .= "$reads_for_next_reward more days read needed to receive your next prize";
+    $msg .= "<a href = 'progress' class = 'button'>Show My Progress</a>";
 
     return "<div>$msg</div>";
   }
