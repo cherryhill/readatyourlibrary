@@ -5,14 +5,14 @@
  */
 
 function private_msg_custom_menu() {
-  $items['my_reviews'] = array(
+  $items['my-reviews'] = array(
     'title' => 'Reviews',
     'page callback' => 'user_reviews',
     'access arguments' => array('access content'),
     'type' => MENU_SUGGESTED_ITEM,
   );
 
-  $items['my_booklist'] = array(
+  $items['my-booklist'] = array(
     'title' => 'Booklist',
     'page callback' => 'user_booklist',
     'access arguments' => array('access content'),
