@@ -67,7 +67,6 @@
   font-family: "Arialregular";
   src: url("../fonts/libraryzurb-fonts/Chn_Prop_Arial_Normal.ttf");
 }
-/*mixins*/
 /*! normalize.css v2.1.2 | MIT License | git.io/normalize */
 /* ==========================================================================
    HTML5 display definitions
@@ -6585,7 +6584,7 @@ h1#page-title {
   height: 110px;
   border-bottom: medium none;
   margin-top: -1px;
-  padding-left: 4%;
+  padding-left: 36px;
   z-index: 0;
   position: relative;
   font-weight: normal !important;
@@ -6841,7 +6840,7 @@ h1#page-title {
   height: 110px;
   border-bottom: medium none;
   margin-top: -1px;
-  padding-left: 4%;
+  padding-left: 36px;
   z-index: 0;
   position: relative;
   font-weight: normal !important;
@@ -6964,14 +6963,7 @@ h1#page-title {
   position: absolute;
   top: 3px;
   left: -31px;
-  	/* content: "";
-    width: 25px; */
   background: url("../images/libraryzurb/star.png") no-repeat;
-  /* position: absolute;
-  top: 3px;
-  left: -31px;
-  height: 25px;
-  display: block; */
 }
 .block.review-booklist-block ul.menu {
   margin-bottom: 6px;
@@ -7029,7 +7021,7 @@ h1#page-title {
   height: 110px;
   border-bottom: medium none;
   margin-top: -1px;
-  padding-left: 4%;
+  padding-left: 36px;
   z-index: 0;
   position: relative;
   font-weight: normal !important;
@@ -7226,7 +7218,7 @@ h1#page-title {
   height: 110px;
   border-bottom: medium none;
   margin-top: -1px;
-  padding-left: 4%;
+  padding-left: 36px;
   z-index: 0;
   position: relative;
   border-radius: 20px;
@@ -7260,32 +7252,58 @@ h1#page-title {
   text-align: left !important;
   float: none !important;
   clear: both;
-  font-family: Arialregular !important;
-  font-style: normal !important;
-  font-weight: normal !important;
-  -webkit-font-smoothing: antialiased !important;
 }
 .block.footer-playlibdetails {
   margin-bottom: 25px !important;
 }
 .block.footer-playlibdetails, .block.footer-playlibpolicies {
   font-size: 14px !important;
+  font-family: Arialbold !important;
+  font-style: normal !important;
+  font-weight: normal !important;
+  -webkit-font-smoothing: antialiased !important;
 }
 .block.playlib-copyright {
   font-size: 12px !important;
+}
+.block.playlib-copyright span#at-rate {
+  font-family: McLaren-Regular !important;
+  font-weight: normal !important;
+  font-style: normal !important;
+  -webkit-font-smoothing: antialiased !important;
+}
+.block.playlib-copyright span#year-lib {
+  font-family: Arialregular !important;
+  font-style: normal !important;
+  font-weight: normal !important;
+  -webkit-font-smoothing: antialiased !important;
 }
 .block.block-menu-menu-social-sharing-icons {
   position: absolute;
   top: 0;
   right: 0;
 }
+@media screen and (max-width: 767px) {
+  .block.block-menu-menu-social-sharing-icons {
+    left: 0 !important;
+    width: 100%;
+  }
+}
 .block.block-menu-menu-social-sharing-icons .block-title {
   display: none;
   border-bottom: none;
 }
+@media screen and (max-width: 767px) {
+  .block.block-menu-menu-social-sharing-icons ul.menu {
+    width: 100%;
+    max-width: 210px;
+    margin: 0 auto;
+  }
+}
 .block.block-menu-menu-social-sharing-icons ul.menu li {
   border-right: none !important;
   width: 50px;
+  float: left;
 }
 .block.block-menu-menu-social-sharing-icons ul.menu li a {
   color: transparent !important;
@@ -8915,42 +8933,6 @@ html {
 body {
   width: 100%;
   height: 100%;
-  -webkit-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
-  -moz-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
-  box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
-  background: #fff;
-}
-body.front, body.not-front {
-  max-width: 1280px;
-  margin: 0 auto;
-}
-
-.row.l-main {
-  max-width: 94.6%;
-}
-
-.large-3 {
-  width: 31.87%;
-}
-
-.large-9 {
-  width: 68.12%;
-}
-
-@media only screen and (min-width: 730px) {
-  .pull-9 {
-    right: 68.4%;
-  }
-}
-
-@media only screen and (min-width: 730px) {
-  .push-3 {
-    left: 31.9%;
-  }
-}
-
-/**page wise css***/
-body {
   font-family: Arialregular !important;
   font-style: normal !important;
   font-weight: normal !important;
@@ -8959,6 +8941,14 @@ body {
   font-size: 18px;
   line-height: 1.5;
   color: #000;
+  -webkit-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+  box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+  background: #fff;
+}
+body.front, body.not-front {
+  max-width: 1280px;
+  margin: 0 auto;
 }
 body .main {
   margin-top: -5px;
@@ -8990,6 +8980,56 @@ body .alert-box.success a.close {
 }
 body .alert-box.success a.close:hover {
   text-decoration: none !important;
+}
+
+.row.l-main {
+  max-width: 94.6%;
+}
+
+@media screen and (min-width: 768px) {
+  .large-3 {
+    width: 31.87%;
+  }
+}
+@media screen and (max-width: 767px) {
+  .large-3 {
+    width: 100%;
+    display: inline-block;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .large-9 {
+    width: 68.12%;
+  }
+}
+@media screen and (max-width: 767px) {
+  .large-9 {
+    width: 100%;
+    display: inline-block;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .pull-9 {
+    right: 68.4%;
+  }
+}
+@media screen and (max-width: 767px) {
+  .pull-9 {
+    right: 0;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .push-3 {
+    left: 31.9%;
+  }
+}
+@media screen and (max-width: 767px) {
+  .push-3 {
+    left: 0;
+  }
 }
 
 /**open single msg**/
@@ -9097,9 +9137,13 @@ body .alert-box.success a.close:hover {
   width: 160px;
   height: 160px;
 }
+.section-media .main .view .views-row .flickr-photoset-img img:hover {
+  transform: none;
+  top: 0;
+}
 .section-media .main .view .views-row .flickr-citation {
   margin-top: 23px;
-  margin-bottom: 10px;
+  margin-bottom: 35px;
   text-align: center;
 }
 .section-media .main .view .views-row .flickr-citation a {
@@ -9422,7 +9466,7 @@ body .alert-box.success a.close:hover {
   height: 110px;
   border-bottom: medium none;
   margin-top: -1px;
-  padding-left: 4%;
+  padding-left: 36px;
   z-index: 0;
   position: relative;
   font-weight: normal !important;
@@ -9593,6 +9637,7 @@ body .alert-box.success a.close:hover {
 .page-user-profile .homebox #homebox-block-auto_role_allocation_progress-block .portlet-content div {
   padding-left: 32%;
   position: relative;
+  padding-bottom: 30%;
 }
 .page-user-profile .homebox #homebox-block-auto_role_allocation_progress-block .portlet-content div:before {
   content: "";
@@ -9605,6 +9650,33 @@ body .alert-box.success a.close:hover {
   left: 0;
   background: url("../images/libraryzurb/fi-calendar.svg") no-repeat;
   background-position: center;
+}
+.page-user-profile .homebox #homebox-block-auto_role_allocation_progress-block .portlet-content div a.button {
+  width: 100%;
+  display: inline-block;
+  color: #fff !important;
+  font-family: McLaren-Regular !important;
+  font-weight: normal !important;
+  font-style: normal !important;
+  -webkit-font-smoothing: antialiased !important;
+  background: #267fda !important;
+  border-radius: 10px;
+  padding: 9px 22px;
+  -webkit-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+  box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+  border: none;
+  text-transform: capitalize;
+  font-size: 17px;
+  position: absolute;
+  left: -15px;
+  bottom: 0;
+}
+.page-user-profile .homebox #homebox-block-auto_role_allocation_progress-block .portlet-content div a.button:hover, .page-user-profile .homebox #homebox-block-auto_role_allocation_progress-block .portlet-content div a.button:focus {
+  color: #fff;
+  background: #267fda;
+  opacity: 1;
+  outline: none;
 }
 .page-user-profile .homebox #homebox-add {
   color: #fff;
@@ -9733,19 +9805,6 @@ body .alert-box.success a.close:hover {
   padding-left: 21%;
   font-size: 22px;
   position: relative;
-}
-.page-user-profile .homebox .homebox-portlet-inner .portlet-header .portlet-title:after {
-  content: " ";
-  width: 20px;
-  height: 20px;
-  display: inline-block;
-  position: relative;
-  vertical-align: middle;
-  visibility: visible;
-  background: url("../images/libraryzurb/right-arrow.png") no-repeat;
-  background-size: 18px;
-  background-position: center;
-  margin-left: 12px;
 }
 .page-user-profile .homebox .portlet-content {
   padding: 35px 7.1% !important;
@@ -9898,6 +9957,8 @@ body .alert-box.success a.close:hover {
 }
 .page-user-profile .homebox .portlet-content .view.view-booklist-on-activities-page .view-footer p {
   text-align: center;
+  margin-top: 10px;
+  width: 100%;
 }
 .page-user-profile .homebox .portlet-content .view.view-booklist-on-activities-page .view-footer p a {
   width: 100%;
@@ -10026,6 +10087,8 @@ body .alert-box.success a.close:hover {
 }
 .page-user-profile .homebox .portlet-content .view.view-my-book-reviews .view-footer p {
   text-align: center;
+  width: 100%;
+  margin-top: 10px;
 }
 .page-user-profile .homebox .portlet-content .view.view-my-book-reviews .view-footer p a {
   width: 100%;
@@ -11266,8 +11329,12 @@ body .alert-box.success a.close:hover {
 
 /**end of booklist page**/
 /**activities page **/
-.not-logged-in .section-activities .block-views-reward-earn-block-1 .block-title:after {
-  background: none !important;
+.not-logged-in.section-activities .block-views-reward-earn-block-1 .block-title:after {
+  background: none;
+}
+
+.logged-in.section-activities .block-views-reward-earn-block-1 {
+  display: none;
 }
 
 .section-activities {
@@ -11337,7 +11404,7 @@ body .alert-box.success a.close:hover {
   margin-top: 17px;
 }
 .section-activities .sidebar3 .block-block div {
-  font-family: Arialregular !important;
+  font-family: Arialbold !important;
   font-style: normal !important;
   font-weight: normal !important;
   -webkit-font-smoothing: antialiased !important;
@@ -11365,7 +11432,6 @@ body .alert-box.success a.close:hover {
   display: inline-block;
 }
 .section-activities .sidebar3 .block-views .view-footer {
-  padding-left: 20px;
   margin-top: 30px;
 }
 .section-activities .sidebar3 .block-views .view-footer p a {
@@ -11516,6 +11582,7 @@ body .alert-box.success a.close:hover {
   width: 100%;
   border-collapse: separate;
   border-spacing: 20px;
+  position: relative;
 }
 .section-progress .main {
   background: #267fda !important;
@@ -11530,7 +11597,7 @@ body .alert-box.success a.close:hover {
   padding-right: 0;
   display: table-row;
   width: 100%;
-  position: relative;
+  position: static;
   margin-bottom: 35px;
 }
 .section-progress .main #page-title {
@@ -11545,7 +11612,7 @@ body .alert-box.success a.close:hover {
   height: 110px;
   border-bottom: medium none;
   margin-top: -1px;
-  padding-left: 4%;
+  padding-left: 36px;
   z-index: 0;
   position: relative;
   border-radius: 20px;
@@ -11628,6 +11695,7 @@ body .alert-box.success a.close:hover {
   background: #fff;
   color: #000;
   border-radius: 20px;
+  position: relative;
   font-family: McLaren-Regular !important;
   font-weight: normal !important;
   font-style: normal !important;
@@ -11671,11 +11739,10 @@ body .alert-box.success a.close:hover {
   width: 100%;
   display: table-row;
   height: 60px;
-  position: relative;
 }
 .section-progress .main .block.block-views .view-prize-won-for-progress-page .item-list ul.pager {
   position: absolute;
-  right: 0px;
+  right: 20px;
 }
 .section-progress .main .block.block-views .view-prize-won-for-progress-page .item-list ul.pager li {
   position: relative;
@@ -11722,8 +11789,17 @@ body .alert-box.success a.close:hover {
   font-size: 14px;
   line-height: 1;
 }
+.section-progress .main .block.progress-calendar div.reward_text {
+  font-size: 14px;
+  line-height: 1;
+  font-family: McLaren-Regular !important;
+  font-weight: normal !important;
+  font-style: normal !important;
+  -webkit-font-smoothing: antialiased !important;
+  margin-top: 10px;
+}
 .section-progress .main .block.progress-calendar.contextual-links-region {
-  position: initial;
+  position: static;
 }
 .section-progress .main .block.progress-calendar .block-title {
   display: none;
@@ -11786,8 +11862,9 @@ body .alert-box.success a.close:hover {
 }
 .section-progress #print_button {
   position: absolute;
-  top: 17px;
-  right: 28px;
+  top: 2%;
+  top: 2% \0/IE9 !important;
+  right: 4%;
   width: 200px;
   line-height: 30px;
   padding: 6px 0px 6px 45px;
@@ -11803,6 +11880,16 @@ body .alert-box.success a.close:hover {
   -webkit-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
   -moz-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
   box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+}
+@media screen and (-webkit-min-device-pixel-ratio: 0) {
+  .section-progress #print_button {
+    top: 4.5% !important;
+  }
+}
+@media screen and (min-width: 0) and (min-resolution: 0.001dpcm) {
+  .section-progress #print_button {
+    top: 4.5%;
+  }
 }
 
 /**end of progress page**/
@@ -11831,7 +11918,7 @@ body .alert-box.success a.close:hover {
   height: 110px;
   border-bottom: medium none;
   margin-top: -1px;
-  padding-left: 4%;
+  padding-left: 36px;
   z-index: 0;
   position: relative;
   border-radius: 20px;
@@ -11911,7 +11998,7 @@ body .alert-box.success a.close:hover {
   height: 110px;
   border-bottom: medium none;
   margin-top: -1px;
-  padding-left: 4%;
+  padding-left: 36px;
   z-index: 0;
   position: relative;
   border-radius: 20px;
@@ -12360,6 +12447,9 @@ body .alert-box.success a.close:hover {
   -webkit-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
   -moz-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
   box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+}
+.pre-header .pre-header-left section .view .views-field a.newclass {
+  background-color: #cc0d25 !important;
 }
 .pre-header .pre-header-left section .view .views-field a.msg {
   padding: 2px 12px 5px 33px !important;

@@ -224,14 +224,7 @@
 		 	 		color: $orange !important;
 		 	 		  &:before {
 		 	 		  	@include previous(25px, 25px, $top: 3px, $left: -31px);
- 		 			  	/* content: "";
- 		 			    width: 25px; */
  		 			    background: url('../images/libraryzurb/star.png') no-repeat;
- 		 			    /* position: absolute;
- 		 			    top: 3px;
- 		 			    left: -31px;
- 		 			    height: 25px;
- 		 			    display: block; */
  		 			  }
 		 	 	}
 		 	 }
@@ -456,29 +449,46 @@
 		text-align: left !important;
 		float: none !important;
 		clear: both;
-		@include arialregular;
 	}
 	&.footer-playlibdetails {
 		margin-bottom: 25px !important;
 	}
 	&.footer-playlibdetails,  &.footer-playlibpolicies {
 		font-size: 14px !important;
+		@include arialbold;
 	}
 	&.playlib-copyright {
 		font-size: 12px !important;
+		span#at-rate {
+			@include mclaren;
+		}
+		span#year-lib {
+			@include arialregular;
+		}
 	}
 	&.block-menu-menu-social-sharing-icons {
 		position: absolute;
 		top: 0;
 		right: 0;
+		
+		  @media screen and (max-width: 767px) {
+		  	left: 0 !important;
+		  	width: 100%;
+		  }
 		  .block-title {
 		  	display: none;
 		  	border-bottom: none;
 		  }
 		  	  ul.menu {
+		  	  	 @media screen and (max-width: 767px) {
+		  	  	 	width: 100%;
+		  	  	 	max-width: 210px;
+		  	  	 	margin: 0 auto;
+		  	  	 }
 		  	  	li {
 		  	  		border-right: none !important;
 		  	  		width: 50px;
+		  	  		float: left;
 		  	  		 a {
 		  	  		 	color: transparent !important;
 		  	  		 	position: relative;

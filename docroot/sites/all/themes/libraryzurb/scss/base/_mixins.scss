@@ -5,6 +5,47 @@
 //
 // Mixin: Base Utility
 //
+
+ //css before and after
+ @mixin previous($width, $height, $top: null, $bottom: null, $left: null, $right: null) {
+  content: "";
+  width: $width;
+  height: $height;
+  display: block;
+  visibility: visible;
+  position: absolute;
+  top: $top;
+  bottom: $bottom;
+  left: $left;
+  right: $right;
+}
+// generic transform
+
+@mixin rotate($degrees, $dir: null ) {
+    
+    @if $dir == "Y" {
+    -webkit-transform: rotateY($degrees);
+    -moz-transform: rotateY($degrees);
+    -ms-transform: rotateY($degrees);
+    -o-transform: rotateY($degrees);
+    transform: rotateY($degrees);
+    } @else if $dir == "X" {
+    -webkit-transform: rotateX($degrees);
+    -moz-transform: rotateX($degrees);
+    -ms-transform: rotateX($degrees);
+    -o-transform: rotateX($degrees);
+    transform: rotateX($degrees);
+    } @else {
+      -webkit-transform: rotate($degrees);
+      -moz-transform: rotate($degrees);
+      -ms-transform: rotate($degrees);
+      -o-transform: rotate($degrees);
+      transform: rotate($degrees);
+    } 
+}
+
+//for optimise sass coding
+
 @mixin stage {
   position: absolute;
   left: -999em;
@@ -57,7 +98,7 @@
 		height: 110px;
 		border-bottom: medium none;
 		margin-top: -1px;
-		padding-left:4%;
+		padding-left:36px;
 		z-index: 0;
 		position: relative;
 		font-weight: normal !important;
@@ -150,7 +191,7 @@
 		height: 110px;
 		border-bottom: medium none;
 		margin-top: -1px;
-		padding-left:4%;
+		padding-left:36px;
 		z-index: 0;
 		position: relative;
 		border-radius: 20px;
