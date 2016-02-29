@@ -133,18 +133,7 @@
       <?php print render($title_suffix); ?>
 
       <?php if (!empty($tabs)): ?>
-      	<!-- changes for ticket 361 -->
-        <div class="primary-tabs"><?php
-        global $user;
-        $user->uid;
-        $role_user = $user->roles;
-
-        if(!array_key_exists(6, $role_user)){
-          print render($tabs);
-        }else{
-          print $needed_tabs = $tabs['#secondary'][1]; print render($needed_tabs);
-        }
-        ?></div>
+        <div class="primary-tabs"><?php print render($tabs); ?></div>
         <?php if (!empty($tabs2)): ?>
           <div class="secondary-tabs"><?php print render($tabs2); ?></div>
         <?php endif; ?>
