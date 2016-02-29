@@ -28,6 +28,8 @@
 
 
 jQuery( document ).ready(function() {
+  /**jquery for new msg**/
+  jQuery('.msg:has(.new)').addClass('newclass');
   /* jquery for print calendar */
   
 
