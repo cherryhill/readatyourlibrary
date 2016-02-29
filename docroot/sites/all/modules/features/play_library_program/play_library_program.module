@@ -356,11 +356,11 @@ function play_library_program_create_raffle_winner($raffle_id, $uid) {
 	$raffles = entity_load('raffle', array($raffle_id));
 	$raffle = reset($raffles);
 	$title = t("@raffle winner on @time", array('@raffle' => $raffle->title, '@time' => date('Y-m-d H:i')));
-	$raffle_winner = entity_create('raffle', array('type' => 'raffle_winner', 'title' => $title, 'uid' => $user->uid));
+	$raffle_winner = entity_create('raffle', array('type' => 'raffle_winner', 'title' => $title, 'uid' => $uid));
 	$raffle_winner->field_raffle_winner_raffle[LANGUAGE_NONE][0]['target_id'] = $raffle->id;
 	$raffle_winner->field_raffle_winner[LANGUAGE_NONE][0]['target_id'] = $uid;
 	entity_save('raffle', $raffle_winner);
-	drupal_goto('raffle/raffle/' . $raffle_id);
+	//drupal_goto('raffle/raffle/' . $raffle_id);
 }
 
 /**
@@ -392,7 +392,7 @@ function play_library_program_create_activity_entry($activity_id, $account_id) {
 /**
  * Creates a new reward claim
  */
-function play_library_program_create_reward_claim($reward_id, $account_id) {
+function play_library_program_create_reward_claim($reward_id, $account_id, $raffle_reward_claim = 0) {
 	global $user;
 	$uid = $user->uid;
 
@@ -417,15 +417,36 @@ function play_library_program_create_reward_claim($reward_id, $account_id) {
 	 ->execute();
 	$end = $query_end->fetchField();
 
-	$rewards = entity_load('reward', array($reward_id));
-	$reward = reset($rewards);
-	$title = t("@reward on @time", array('@reward' => $reward->title, '@time' => date('Y-m-d H:i')));
-	$reward_claim = entity_create('reward', array('type' => 'reward_claim', 'title' => $title, 'uid' => $account_id));
-	$reward_claim->field_reward_claim_id[LANGUAGE_NONE][0]['target_id'] = $reward->id;
-
-	if($start <= $age && $age <= $end) {
-		entity_save('reward', $reward_claim);
-		
+  // query to check if reward is associates with raffle
+  $que = db_select('eck_reward', 'eck_r');
+  $que->join('field_data_field_reward_raffle', 're_ra', 'eck_r.id = re_ra.entity_id');
+  $que->join('eck_raffle', 'eck_rf', 'eck_rf.id = re_ra.field_reward_raffle_target_id');
+  $que->condition('eck_r.id', $reward_id);
+  $que->condition('eck_rf.type', 'raffle');
+  $que->fields('eck_rf', array('type'));
+  $res = $que->execute();
+  $is_raffle_reward = $res->rowCount();
+  
+  // raffle entry will only happen if the current reward_id is linked to a raffle and 
+  // we are not claimimg raffle reward 
+  if($is_raffle_reward && !$raffle_reward_claim) {
+	  $que = db_select('eck_reward', 'eck_r');
+	  $que->join('field_data_field_reward_raffle', 're_ra', 'eck_r.id = re_ra.entity_id');
+	  $que->join('eck_raffle', 'eck_rf', 'eck_rf.id = re_ra.field_reward_raffle_target_id');
+	  $que->condition('eck_r.id', $reward_id, '=');
+	  $que->fields('eck_rf', array('id'));
+	  $re = $que->execute()->fetchField();
+ 
+	  play_library_program_create_raffle_entry($re, $account_id);
+	} else {
+    if($start <= $age && $age <= $end) {
+    	$rewards = entity_load('reward', array($reward_id));
+	    $reward = reset($rewards);
+	    $title = t("@reward on @time", array('@reward' => $reward->title, '@time' => date('Y-m-d H:i')));
+    	$reward_claim = entity_create('reward', array('type' => 'reward_claim', 'title' => $title, 'uid' => $account_id));
+	    $reward_claim->field_reward_claim_id[LANGUAGE_NONE][0]['target_id'] = $reward->id;
+		  entity_save('reward', $reward_claim);
+	  }
 	}
 
 	$rew_id = $reward_claim->id;
@@ -565,11 +586,12 @@ function _play_library_program_process_activity_entry($entity, $type) {
 	$activity_rewards = _play_library_program_get_activity_reward_ids($activity_id, $current_participation_count, $entity->uid);
 	foreach ($activity_rewards as $rid) {
 		play_library_program_update_user_calendar_state($rid);
+
 		play_library_program_create_reward_claim($rid, $entity->uid);
 	}
 }
 
-/**
+/**play_library_program_create_reward_claim
  * Function to add reward claimed by user after an activity for calendar state
  */
 function play_library_program_update_user_calendar_state($rid) {
@@ -591,9 +613,9 @@ function _play_library_program_process_user_reward_claim($entity, $type) {
 	}
 	$rewards = entity_load('reward', array($entity->field_reward_claim_id[LANGUAGE_NONE][0]['target_id']));
 	$reward = reset($rewards);
-	if (!empty($reward->field_reward_raffle)) {
-		play_library_program_create_raffle_entry($reward->field_reward_raffle[LANGUAGE_NONE][0]['target_id'], $account_uid);
-	}
+	// if (!empty($reward->field_reward_raffle)) {
+	//  	play_library_program_create_raffle_entry($reward->field_reward_raffle[LANGUAGE_NONE][0]['target_id'], $account_uid);
+	// }
 	if (!empty($reward->field_reward_badge)) {
 		play_library_program_add_user_badge($reward->field_reward_badge[LANGUAGE_NONE][0]['target_id'], $account_uid);
 	}
