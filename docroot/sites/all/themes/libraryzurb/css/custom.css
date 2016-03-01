@@ -6386,6 +6386,16 @@ h1#page-title {
   display: none;
 }
 
+@media screen and (max-width: 767px) {
+  .homebox-column-wrapper {
+    width: 100% !important;
+  }
+  .homebox-column-wrapper .homebox-column {
+    height: auto !important;
+    padding: 0 !important;
+  }
+}
+
 .admin-menu .fixed {
   top: 1.8125em;
 }
@@ -9189,8 +9199,18 @@ body .alert-box.success a.close:hover {
 .section-media .block-views-media-photos-videos-block-6 .view .views-row {
   width: 32%;
 }
+@media screen and (max-width: 767px) {
+  .section-media .block-views-media-photos-videos-block-6 .view .views-row {
+    width: 100%;
+  }
+}
 .section-media .block-views-media-photos-videos-block-3 .view .views-row {
   width: 24%;
+}
+@media screen and (max-width: 767px) {
+  .section-media .block-views-media-photos-videos-block-3 .view .views-row {
+    width: 100%;
+  }
 }
 .section-media .main .view {
   display: table;
@@ -9201,6 +9221,11 @@ body .alert-box.success a.close:hover {
   float: left;
   padding-left: 1%;
   clear: none !important;
+}
+@media screen and (max-width: 767px) {
+  .section-media .main .view .views-row {
+    padding-left: 0;
+  }
 }
 .section-media .main .view .views-row .flickr-photoset-img {
   text-align: center;
@@ -9284,6 +9309,12 @@ body .alert-box.success a.close:hover {
   -webkit-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
   -moz-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
   box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+}
+@media screen and (max-width: 767px) {
+  .page-rewards .pull-9.sidebar {
+    width: 100%;
+    right: 0;
+  }
 }
 .page-rewards .pull-9.sidebar .block .block-title, .page-rewards .pull-9.sidebar .block .view-header, .page-rewards .pull-9.sidebar .block .view-header p {
   font-size: 22px;
@@ -9406,6 +9437,11 @@ body .alert-box.success a.close:hover {
 .not-logged-in.section-programs .pull-9.sidebar {
   right: 70.4%;
 }
+@media screen and (max-width: 767px) {
+  .not-logged-in.section-programs .pull-9.sidebar {
+    right: 0;
+  }
+}
 .not-logged-in.section-programs .block-views-reward-earn-block-1 .block-title:after {
   background: none;
 }
@@ -9421,6 +9457,12 @@ body .alert-box.success a.close:hover {
   padding-left: 2.65%;
   padding-right: 2.65%;
   margin-bottom: 35px;
+}
+@media screen and (max-width: 767px) {
+  .logged-in.section-programs .pull-9.sidebar {
+    width: 100%;
+    right: 0;
+  }
 }
 @media screen and (max-width: 767px) {
   .logged-in.section-programs .pull-9.sidebar {
@@ -9692,6 +9734,11 @@ body .alert-box.success a.close:hover {
   width: 100%;
   max-width: 94.6%;
   margin: 34px auto;
+}
+@media screen and (max-width: 767px) {
+  .page-user-profile .homebox {
+    max-width: 100%;
+  }
 }
 .page-user-profile .homebox #homebox-block-auto_role_allocation_progress-block .portlet-header {
   position: relative;
@@ -10529,6 +10576,15 @@ body .alert-box.success a.close:hover {
   margin: 0 auto !important;
   max-width: 90%;
 }
+@media screen and (max-width: 767px) {
+  .page-messages div.main form #privatemsg-list-form table {
+    width: 100% !important;
+    max-width: 100%;
+  }
+  .page-messages div.main form #privatemsg-list-form table thead, .page-messages div.main form #privatemsg-list-form table tbody, .page-messages div.main form #privatemsg-list-form table th, .page-messages div.main form #privatemsg-list-form table tr {
+    width: 100% !important;
+  }
+}
 .page-messages div.main form #privatemsg-list-form table tr th, .page-messages div.main form #privatemsg-list-form table tr th > a, .page-messages div.main form #privatemsg-list-form table tr td, .page-messages div.main form #privatemsg-list-form table tr td > a {
   color: #fff;
 }
@@ -10681,11 +10737,23 @@ body .alert-box.success a.close:hover {
     margin-bottom: 25px;
   }
 }
+@media screen and (max-width: 767px) {
+  .page-reviews .pull-9.sidebar, .page-booklists .pull-9.sidebar {
+    width: 100%;
+    right: 0;
+  }
+}
 .page-reviews .pull-9.sidebar2, .page-booklists .pull-9.sidebar2 {
   width: 29.53%;
   right: 71.4%;
   padding-left: 0;
   padding-right: 0;
+}
+@media screen and (max-width: 767px) {
+  .page-reviews .pull-9.sidebar2, .page-booklists .pull-9.sidebar2 {
+    width: 100%;
+    right: 0;
+  }
 }
 .page-reviews .sidebar, .page-booklists .sidebar {
   background: #267fda;
@@ -11468,6 +11536,13 @@ body .alert-box.success a.close:hover {
   width: 29.53%;
   right: 67.4%;
   margin-bottom: 35px;
+}
+@media screen and (max-width: 767px) {
+  .section-activities .pull-9.sidebar3 {
+    width: 100%;
+    right: 0;
+    margin-bottom: 25px;
+  }
 }
 .section-activities .sidebar3 {
   background: #267fda !important;
@@ -12371,6 +12446,20 @@ body .alert-box.success a.close:hover {
 }
 
 /**end**/
+/**page register**/
+.page-user-register #user-register-form #edit-field-user-random-list-1, .page-user-register #user-register-form #edit-field-user-random-list-3 {
+  width: 23%;
+  float: left;
+}
+.page-user-register #user-register-form #edit-field-user-random-list-2 {
+  width: 19%;
+  float: left;
+}
+.page-user-register #user-register-form #edit-account {
+  width: 100%;
+  display: inline-block;
+}
+
 /**
  * Styles for the Post-Footer area.
  */
