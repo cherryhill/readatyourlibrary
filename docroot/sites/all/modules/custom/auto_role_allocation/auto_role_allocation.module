@@ -638,6 +638,7 @@ function user_progress() {
   else {
     $msg = "<span class='msg-highlight'>Total days read: $total_read_days</span><br/>";
     $msg .= "$reads_for_next_reward more days read needed to receive your next prize";
+    $msg .= "<a href = 'progress' class = 'button'>Show My Progress</a>";
 
     return "<div>$msg</div>";
   }

@@ -20,14 +20,8 @@
 })(jQuery, Drupal);
 
 
-
-
-
-
-
-
-
 jQuery( document ).ready(function() {
+
 
   /* Jquery for script for raffle entry checkbox */
 
@@ -61,25 +55,8 @@ jQuery( document ).ready(function() {
     });
 
 
-/* jQuery for raffle winner process */
-
-
-
-    // jQuery( ".raffle-list-submit #raffle-entry-list-btn" ).click(function() {
-    //     alert('fdasdf');
-    //     // //var location = window.location;
-    //     // //var baseUrl1 = location.protocol + "//" + location.host + '/raffle_winner';
-
-    //     // jQuery( ".raffle-prospective-winners .sticky-enabled input" ).each(function() {
-    //     //   var tid = jQuery( this ).attr( "id" );
-    //     //   alert(tid);
-    //     // });
-
-        
-    // });
-
-
-
+  /**jquery for new msg**/
+  jQuery('.msg:has(.new)').addClass('newclass');
   /* jquery for print calendar */
   
 
@@ -127,10 +104,6 @@ jQuery( document ).ready(function() {
      var time_string = currentDate.toJSON().slice(0, 10);
      time_string = time_string.split('-');
      time_string = parseInt(time_string[0] + time_string[1] + time_string[2]);
-     //console.log(time_string); return false;
-     // this function is called when something is dropped
-       // var count = jQuery(".fc-event-container").children('div').length;
-        //alert(count);
         // retrieve the dropped element's stored Event Object
         var originalEventObject = jQuery(this).data(('eventObject'));
         
@@ -192,9 +165,7 @@ jQuery( document ).ready(function() {
               }
             },
             error: function(jqXHR, data, error){
-                // console.log(jqXHR);
-                // console.log(data);
-                // console.log(error);
+                
             }
         });
       }
@@ -206,20 +177,9 @@ jQuery( document ).ready(function() {
         center: 'title',
         right: 'month,agendaWeek,agendaDay'
     },
-    // eventRender: function (event, element, view) {
-    //     element.bind('click', function () {
-    //         var day = (jQuery.fullCalendar.formatDate(event.start, 'dd'));
-    //         var month = (jQuery.fullCalendar.formatDate(event.start, 'MM'));
-    //         var year = (jQuery.fullCalendar.formatDate(event.start, 'yyyy'));
-    //         alert(year + '-' + month + '-' + day);
-    //     });
-    // },
     editable: true,
     eventRender: function(event, element) {
         element.description = element[0].textContent;
-        // $('#mycalendar').fullCalendar('renderEvent', event);
-        // console.log('Element:');
-         //console.log(element);
         return element.description;
     },
     eventDrop: function( event, dayDelta, minuteDelta, allDay, revertFunc, jsEvent, ui, view ) {
@@ -273,9 +233,7 @@ jQuery( document ).ready(function() {
               //alert("data");
             },
             error: function(jqXHR, data, error){
-                //console.log(jqXHR);
-                //console.log(data);
-                //console.log(error);
+                
             }
          });
        }   

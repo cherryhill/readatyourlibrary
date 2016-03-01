@@ -5,14 +5,14 @@
  */
 
 function private_msg_custom_menu() {
-  $items['my_reviews'] = array(
+  $items['my-reviews'] = array(
     'title' => 'Reviews',
     'page callback' => 'user_reviews',
     'access arguments' => array('access content'),
     'type' => MENU_SUGGESTED_ITEM,
   );
 
-  $items['my_booklist'] = array(
+  $items['my-booklist'] = array(
     'title' => 'Booklist',
     'page callback' => 'user_booklist',
     'access arguments' => array('access content'),
@@ -24,7 +24,17 @@ function private_msg_custom_menu() {
 
 
 function private_msg_custom_form_alter(&$form, &$form_state, $form_id) {
-	// echo '<pre>'; print_r($form_id);die();
+  if($form_id == 'review_book_node_form'){
+    drupal_set_title('Write a Book Review');
+  }
+
+  if($form_id == 'booklist_node_form'){
+    drupal_set_title('Create a Booklist');
+  }
+
+  if($form_id == 'review_activity_node_form'){
+    drupal_set_title('Write an Activity Review');
+  }
 }
 
 function user_reviews(){
@@ -99,7 +109,7 @@ if(isset($no_result)){
   if($pm_new == 1){
   	$new = '<div class = "pm-new">'.'NEW! '.'</div>';
   }
-	$output .= '<div class="pm">'.'<div class = "pm-subject">'.$new.$pm_subject = $result['subject'].'</div>'.'<div class = "pm-admin">'.$author.'</div>'.'<div class = "pm-date">'.$pm_date = date('F d, Y',$result['timestamp']).'</div>'.'</div>';
+	$output .= '<div class="pm">'.'<div class = "pm-subject"><a href = '.'../messages/view/'.$msg_id.'>'.$new.$pm_subject = $result['subject'].'</a></div>'.'<div class = "pm-admin">'.$author.'</div>'.'<div class = "pm-date">'.$pm_date = date('F d, Y',$result['timestamp']).'</div>'.'</div>';
 	
 	}
 	return $output.'<a class="pm-view" href="../messages">View All Messages</a>'.'</div>';
