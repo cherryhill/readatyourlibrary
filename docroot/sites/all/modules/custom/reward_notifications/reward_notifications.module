@@ -120,8 +120,8 @@ function claim_reward($form_state,$arg){
 	$rid = $arg['build_info']['args'][0];
 
 	$query = db_select('eck_reward','rew')
-	->fields('rew',array('title','id','uid'))
-	->condition('id',$rid,'=')
+	->fields('rew', array('title', 'id','uid'))
+	->condition('id', $rid,'=')
 	->execute()
 	->fetchAssoc();
 
@@ -131,7 +131,7 @@ function claim_reward($form_state,$arg){
 
 	$query_sub = db_select('winner_list','win')
 	->fields('win',array('reward_status','staff_notes','reward_receieved_date'))
-	->condition('reward_id',$reward_id,'=')
+	->condition('reward_id', $reward_id, '=')
 	->execute()
 	->fetchAssoc();
 
