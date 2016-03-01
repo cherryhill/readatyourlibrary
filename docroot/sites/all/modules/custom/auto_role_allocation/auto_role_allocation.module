@@ -104,7 +104,7 @@ function progress_user_block_program() {
   }
   else {
     $msg = "<span class='msg-highlight'>Total days read: $total_read_days</span><br/>";
-    $msg .= "<div class='days-left'>$reads_for_next_reward more days read needed to receive your next prize</div>";
+    $msg .= "<div class='days-left'>$reads_for_next_reward more day of reading needed to receive your next prize</div>";
     $msg .= "<div><a href='".$base_url."/progress'>Go to the Progress Page</a></div>";
 
     return "<div>$msg</div>";
@@ -350,22 +350,25 @@ function raffle_entry_ajax() {
 }
 
 
-/* Raffle winner list process this is called for raffle reward claim and raffle winner entry */
+/* Raffle winner list process */
 
 function raffle_winner_ajax() {
   $active_raffle_uid = $_REQUEST['active_raffle_uid'];
   $reward_id = $_REQUEST['reward_id'];
+
   $raffle_uid = explode(',', $active_raffle_uid);
   //print_r($raffle_uid);die();
   $raffle_id = $_SESSION['active_raffle_id'];
+  
   foreach ($raffle_uid as $k => $v) {
+    
       
       play_library_program_create_raffle_winner($raffle_id, $v);
       play_library_program_create_reward_claim($reward_id, $v, 1);
   }
   //play_library_program_create_raffle_winner($raffle_id, $active_raffle_uid);
   
-  echo 1;
+  echo "Request executed successfully";
 }
 
 
