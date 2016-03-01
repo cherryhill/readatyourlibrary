@@ -44,6 +44,9 @@ body {
 .row {
 	&.l-main {
 		max-width: 94.6%;
+		@media screen and (max-width: 767px) {
+			max-width: 91.8%;
+		}
 	}
 } 
 .large-3 {
@@ -78,5 +81,11 @@ body {
 	}
 	@media screen and (max-width: 767px) {
 		left: 0;
+	}
+}
+.main.columns, .sidebar-first.columns {
+	@media screen and (max-width: 767px) {
+		padding-left: 0;
+		padding-right: 0;
 	}
 }

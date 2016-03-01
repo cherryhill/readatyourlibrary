@@ -2,6 +2,9 @@
 
 .block {
     margin-bottom: 35px;
+     @media screen and (max-width: 767px) {
+	     	margin-bottom: 25px;
+	     }
    
     &.dashboard-block {
     	.pagination.pager li {
@@ -306,12 +309,18 @@
 		 	border: none;
 		 	color: $black;
 		 	font-size: 28px;
+		 	 @media screen and (max-width: 767px) {
+	     	font-size: 18px;
+	     }
 		 	@include mclaren;
 		 }
 		 .views-field-body {
 		 	p {
 		 		padding-left: 36px;
 		 		@include arialbold;
+		 		 @media screen and (max-width: 767px) {
+	     			font-size: 14px;
+	    		 }
 		 	}
 		 	ol {
 		 		margin-left: 70px;
@@ -321,6 +330,9 @@
 		 		 li {
 		 		 	position: relative;
 		 		 	font-size: 17px;
+		 		 	 @media screen and (max-width: 767px) {
+	     				font-size: 14px;
+	     				}
 		 		 	@include arialregular;
 		 		 	&:after {
 		 		 		@include previous(47px, 21px, $left: -32px, $top: 0);
@@ -452,18 +464,27 @@
 	}
 	&.footer-playlibdetails {
 		margin-bottom: 25px !important;
+		 @media screen and (max-width: 767px) {
+		 	margin-top: 50px;
+		 }
 	}
 	&.footer-playlibdetails,  &.footer-playlibpolicies {
 		font-size: 14px !important;
 		@include arialbold;
 	}
 	&.playlib-copyright {
-		font-size: 12px !important;
+		position: relative;
 		span#at-rate {
 			@include mclaren;
+			font-size: 22px !important;
+			height: 0;
+			position: relative;
+			top: 3px;
 		}
 		span#year-lib {
 			@include arialregular;
+			font-size: 12px !important;
+			
 		}
 	}
 	&.block-menu-menu-social-sharing-icons {
@@ -482,7 +503,7 @@
 		  	  ul.menu {
 		  	  	 @media screen and (max-width: 767px) {
 		  	  	 	width: 100%;
-		  	  	 	max-width: 210px;
+		  	  	 	max-width: 225px;
 		  	  	 	margin: 0 auto;
 		  	  	 }
 		  	  	li {
