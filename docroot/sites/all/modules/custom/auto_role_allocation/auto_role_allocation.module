@@ -270,7 +270,7 @@ function raffle_entry_process() {
     $reward_id = $value->field_reward_criteria_reward_target_id;
 
     $oprat = "<input type = 'radio' name = 'raffle' class='active_raffle' id='raffle_radio_$raffle_id' value = '$reward_id'>";
-    $out .= "<div><span>$activity_name</span><span>$raffle_title</span><span>$oprat</span></div>";
+    $out .= "<div><span>$raffle_title</span><span>$oprat</span></div>";
   }
 
   $out .= "<div class = 'raffle-prospective-winners'></div>";
