@@ -1,4 +1,11 @@
 <?php
+/**
+ * @file
+ * A module for private message in dashboard
+ *
+ * This module provides a block that displays
+ * the recent message on patron dashboard.
+ */
 
 /**
  * Implementation of hook_menu()
@@ -24,7 +31,17 @@ function private_msg_custom_menu() {
 
 
 function private_msg_custom_form_alter(&$form, &$form_state, $form_id) {
-	// echo '<pre>'; print_r($form_id);die();
+  if($form_id == 'review_book_node_form'){
+    drupal_set_title('Write a Book Review');
+  }
+
+  if($form_id == 'booklist_node_form'){
+    drupal_set_title('Create a Booklist');
+  }
+
+  if($form_id == 'review_activity_node_form'){
+    drupal_set_title('Write an Activity Review');
+  }
 }
 
 function user_reviews(){
@@ -49,7 +66,7 @@ function private_msg_custom_block_info() {
 /**
  * Implements hook_block_view().
  */
-function private_msg_custom_block_view($delta='') {
+function private_msg_custom_block_view($delta = '') {
   $block = array();
   
   switch($delta) {
@@ -61,8 +78,10 @@ function private_msg_custom_block_view($delta='') {
   return $block;
 }
 
-function pm_block_view(){
-
+/**
+ * Function callback for private_msg_custom_block_view.
+ */
+function pm_block_view() {
   global $user;
 	$current_user = $user->uid;
 
@@ -78,32 +97,30 @@ function pm_block_view(){
   $query = $query_pm->execute()
   ->fetchAll();
 
-  $no_result = $query[0];
-
+  $no_result = count($query);
   $output = '<div class = "pm-custom">';
 
-if(isset($no_result)){
+  if ($no_result != 0) {
+		foreach($query as $res) {
+			$msg_id = $res->mid;
+      $deleted = $res->deleted;
+			$author = $res->name;
 
-	foreach($query as $res){
-	$msg_id = $res->mid;
-  $deleted = $res->deleted;
-	$author = $res->name;
+			$result = db_select('pm_message','pm')
+			->fields('pm',array('subject','timestamp'))
+			->condition('mid',$msg_id,'=')
+			->execute()
+			->fetchAssoc();
 
-	 $result = db_select('pm_message','pm')
-	 ->fields('pm',array('subject','timestamp'))
-	 ->condition('mid',$msg_id,'=')
-	 ->execute()
-	 ->fetchAssoc();
+      $pm_new = $res->is_new.'<br/>';
+      if($pm_new == 1){
+        $new = '<div class = "pm-new">'.'NEW! '.'</div>';
+      }
 
-   $pm_new = $res->is_new.'<br/>';
-  if($pm_new == 1){
-  	$new = '<div class = "pm-new">'.'NEW! '.'</div>';
-  }
-	$output .= '<div class="pm">'.'<div class = "pm-subject">'.$new.$pm_subject = $result['subject'].'</div>'.'<div class = "pm-admin">'.$author.'</div>'.'<div class = "pm-date">'.$pm_date = date('F d, Y',$result['timestamp']).'</div>'.'</div>';
-	
-	}
-	return $output.'<a class="pm-view" href="../messages">View All Messages</a>'.'</div>';
-  }else{
+      $output .= '<div class="pm">'.'<div class = "pm-subject"><a href = '.'../messages/view/'.$msg_id.'>'.$new.$pm_subject = $result['subject'].'</a></div>'.'<div class = "pm-admin">'.$author.'</div>'.'<div class = "pm-date">'.$pm_date = date('F d, Y',$result['timestamp']).'</div>'.'</div>';
+		}
+    return $output.'<a class="pm-view" href="../messages">View All Messages</a>'.'</div>';
+  } else {
     return 'No Messages to display';
   }
 }
