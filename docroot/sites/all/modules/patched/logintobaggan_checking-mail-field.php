@@ -7,10 +7,10 @@ index 55b93fe..dad62d7 100755
    //   2. The pre-auth role isn't the auth user.
    //   3. Visitors can create their own accounts.
 -  $message = t('Further instructions have been sent to your e-mail address.');
-+  $mail = $form_state['user'];
-+  $mailq = $mail->mail;
++  $mail_user = $form_state['user'];
++  $mail = $mail->mail;
 +  // showing message if user has email associated with the account
-+  if (!empty($mailq)){
++  if (!empty($mail)){
 +    $message = t('Further instructions have been sent to your e-mail address.');
 +  }
    if($reg_pass_set && $pre_auth && variable_get('user_register', USER_REGISTER_VISITORS_ADMINISTRATIVE_APPROVAL) == USER_REGISTER_VISITORS) {
