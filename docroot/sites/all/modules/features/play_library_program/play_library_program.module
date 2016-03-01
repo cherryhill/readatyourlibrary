@@ -418,6 +418,7 @@ function play_library_program_create_reward_claim($reward_id, $account_id, $raff
 	$end = $query_end->fetchField();
 
   // query to check if reward is associates with raffle
+  // raffle entry after claculation criteria
   $que = db_select('eck_reward', 'eck_r');
   $que->join('field_data_field_reward_raffle', 're_ra', 'eck_r.id = re_ra.entity_id');
   $que->join('eck_raffle', 'eck_rf', 'eck_rf.id = re_ra.field_reward_raffle_target_id');
