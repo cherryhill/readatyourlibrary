@@ -1,55 +1,55 @@
 <?php
-
-function reward_notifications_schema(){
+function reward_notifications_schema() {
 /* schema for reward notification on screen */
-$schema['reward_notification_patron'] = array(
-			'description' => 'On Screen message when a user gets an award',
-			'fields' => array(
-					'id' => array(
-							'description' => 'id field',
-							'type' => 'serial',
-							'not null' => TRUE,
-							'unsigned' => TRUE,
-					),
-					'uid' => array(
-							'description' => 'User id',
-							'type' => 'int',
-							'not null' => TRUE,
-					),
-					'type' => array(
-							'description' => 'reward type',
-							'type' => 'varchar',
-							'length' => '255',
-					),
-					'reward_id' => array(
-							'description' => 'Id of reward claimed',
-							'type' => 'int',
-							'not null' => TRUE,
-					),
-					'reward_name' => array(
-							'description' => 'Name of reward received',
-							'type' => 'varchar',
-							'length' => '255',
-					),
-					'reward_notifications' => array(
-							'description' => 'On screen notification',
-							'type' => 'varchar',
-							'length' => '255',
-					),
-					'reward_mail_notifications' => array(
-							'description' => 'Mail notification',
-							'type' => 'varchar',
-							'length' => '255',
-					),
-					'notifications_read' => array(
-							'description' => 'To check notification is read or not',
-							'type' => 'int',
-							'not null' => TRUE,
-							'default' => 0,
-					),
-				),
+	$schema['reward_notification_patron'] = array(
+		'description' => 'On Screen message when a user gets an award',
+		'fields' => array(
+			'id' => array(
+				'description' => 'id field',
+				'type' => 'serial',
+				'not null' => TRUE,
+				'unsigned' => TRUE,
+			),
+			'uid' => array(
+				'description' => 'User id',
+				'type' => 'int',
+				'not null' => TRUE,
+			),
+			'type' => array(
+				'description' => 'reward type',
+				'type' => 'varchar',
+				'length' => '255',
+			),
+			'reward_id' => array(
+				'description' => 'Id of reward claimed',
+				'type' => 'int',
+				'not null' => TRUE,
+			),
+			'reward_name' => array(
+				'description' => 'Name of reward received',
+				'type' => 'varchar',
+				'length' => '255',
+			),
+			'reward_notifications' => array(
+				'description' => 'On screen notification',
+				'type' => 'varchar',
+				'length' => '255',
+			),
+			'reward_mail_notifications' => array(
+				'description' => 'Mail notification',
+				'type' => 'varchar',
+				'length' => '255',
+			),
+			'notifications_read' => array(
+				'description' => 'To check notification is read or not',
+				'type' => 'int',
+				'not null' => TRUE,
+				'default' => 0,
+			),
+		),
 			'primary key' => array('id'),       
 		);
+
 /* schema for reward-winners list */
 	$schema['winner_list'] = array(
 	  'description' => 'showing of winners list',
