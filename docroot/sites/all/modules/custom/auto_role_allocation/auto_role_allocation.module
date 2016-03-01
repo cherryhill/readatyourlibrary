@@ -1,18 +1,6 @@
 <?php
 
 /**
-*
-*/
-
-function auto_role_allocation_permission() {
-  return array(
-    'access_raffle_entry' => array(
-      'title' => t('Access raffle entry pages'),
-    )
-  );
-}
-
-/**
  * Implements hook_block(). . 
  */
 
@@ -216,7 +204,7 @@ function auto_role_allocation_menu() {
   $items['raffle'] = array(
     'title' => 'Raffle entry list',
     'page callback' => 'raffle_entry_process',
-    'access arguments' => array('access_raffle_entry'),
+    'access arguments' => array('access content'),
     'type' => MENU_CALLBACK,
   );
   $items['raffle_pro'] = array(
@@ -282,7 +270,7 @@ function raffle_entry_process() {
     $reward_id = $value->field_reward_criteria_reward_target_id;
 
     $oprat = "<input type = 'radio' name = 'raffle' class='active_raffle' id='raffle_radio_$raffle_id' value = '$reward_id'>";
-    $out .= "<div><span>$raffle_title</span><span>$oprat</span></div>";
+    $out .= "<div><span>$activity_name</span><span>$raffle_title</span><span>$oprat</span></div>";
   }
 
   $out .= "<div class = 'raffle-prospective-winners'></div>";
@@ -362,22 +350,25 @@ function raffle_entry_ajax() {
 }
 
 
-/* Raffle winner list process this is called for raffle reward claim and raffle winner entry */
+/* Raffle winner list process */
 
 function raffle_winner_ajax() {
   $active_raffle_uid = $_REQUEST['active_raffle_uid'];
   $reward_id = $_REQUEST['reward_id'];
+
   $raffle_uid = explode(',', $active_raffle_uid);
   //print_r($raffle_uid);die();
   $raffle_id = $_SESSION['active_raffle_id'];
+  
   foreach ($raffle_uid as $k => $v) {
+    
       
       play_library_program_create_raffle_winner($raffle_id, $v);
       play_library_program_create_reward_claim($reward_id, $v, 1);
   }
   //play_library_program_create_raffle_winner($raffle_id, $active_raffle_uid);
   
-  echo 1;
+  echo "Request executed successfully";
 }
 
 
