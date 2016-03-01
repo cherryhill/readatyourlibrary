@@ -20,20 +20,47 @@
 })(jQuery, Drupal);
 
 
-
-
-
-
-
-
-
 jQuery( document ).ready(function() {
+
+
+  /* Jquery for script for raffle entry checkbox */
+
+    jQuery( ".active_raffle" ).click(function() {
+        var location = window.location;
+        var baseUrl1 = location.protocol + "//" + location.host + '/raffle_pro';
+
+        var active_raffle = jQuery(this).attr('id');
+        var active_raffle_exp = active_raffle.split('_');
+        var active_raffle_id = parseInt(active_raffle_exp[2]);
+        var reward_id = jQuery(this).val();
+
+      jQuery.ajax({
+        
+            //url: 'http://localhost/playatyourlibrary/docroot/raffle_pro',
+            url: baseUrl1,
+            async: false,
+            type: 'post',
+            data: 'active_raffle_id='+active_raffle_id+'&reward_id='+reward_id,
+            success: function(res){
+              jQuery('.raffle-prospective-winners').html(res);
+            },
+            error: function(jqXHR, data, error){
+                // console.log(jqXHR);
+                // console.log(data);
+                // console.log(error);
+            }
+        });
+
+      
+    });
+
+
   /**jquery for new msg**/
   jQuery('.msg:has(.new)').addClass('newclass');
   /* jquery for print calendar */
   
 
-	jQuery( "#print_button" ).click(function() {
+    jQuery( "#print_button" ).click(function() {
       var contant = jQuery(".main");
       var inner_content = contant.html();
 
@@ -43,7 +70,7 @@ jQuery( document ).ready(function() {
         WinPrint.print();
         WinPrint.close();
     });
-	
+    
 
   //console.log("running");
   jQuery('.view-calendar-sticker .view-content .views-field-field-sticker-calendar-image .field-content').each(function () {
@@ -77,10 +104,6 @@ jQuery( document ).ready(function() {
      var time_string = currentDate.toJSON().slice(0, 10);
      time_string = time_string.split('-');
      time_string = parseInt(time_string[0] + time_string[1] + time_string[2]);
-     //console.log(time_string); return false;
-     // this function is called when something is dropped
-       // var count = jQuery(".fc-event-container").children('div').length;
-        //alert(count);
         // retrieve the dropped element's stored Event Object
         var originalEventObject = jQuery(this).data(('eventObject'));
         
@@ -106,8 +129,8 @@ jQuery( document ).ready(function() {
         copiedEventObject.start = date;
         var event_date = copiedEventObject.start;
          event_date = event_date.toJSON().slice(0, 10);
-    	 event_date = event_date.split('-');
-    	 event_date = parseInt(event_date[0] + event_date[1] + event_date[2]);
+         event_date = event_date.split('-');
+         event_date = parseInt(event_date[0] + event_date[1] + event_date[2]);
 
         //console.log(copiedEventObject.start);
         copiedEventObject.allDay = allDay;
@@ -134,17 +157,15 @@ jQuery( document ).ready(function() {
             async: false,
             type: 'post',
             data: 'image='+image_name+'&date='+copiedEventObject.start+'&user_id='+currentUser,
-            success: function(res){
+            success: function(res){ //alert(res);
               if (res) {
                 window.location.reload(true);
               } else {
-              	alert ('test');
+                alert ('test');
               }
             },
             error: function(jqXHR, data, error){
-                // console.log(jqXHR);
-                // console.log(data);
-                // console.log(error);
+                
             }
         });
       }
@@ -156,20 +177,9 @@ jQuery( document ).ready(function() {
         center: 'title',
         right: 'month,agendaWeek,agendaDay'
     },
-    // eventRender: function (event, element, view) {
-    //     element.bind('click', function () {
-    //         var day = (jQuery.fullCalendar.formatDate(event.start, 'dd'));
-    //         var month = (jQuery.fullCalendar.formatDate(event.start, 'MM'));
-    //         var year = (jQuery.fullCalendar.formatDate(event.start, 'yyyy'));
-    //         alert(year + '-' + month + '-' + day);
-    //     });
-    // },
     editable: true,
     eventRender: function(event, element) {
         element.description = element[0].textContent;
-        // $('#mycalendar').fullCalendar('renderEvent', event);
-        // console.log('Element:');
-         //console.log(element);
         return element.description;
     },
     eventDrop: function( event, dayDelta, minuteDelta, allDay, revertFunc, jsEvent, ui, view ) {
@@ -181,8 +191,8 @@ jQuery( document ).ready(function() {
 
        var event_date1 = event.start;
          event_date1 = event_date1.toJSON().slice(0, 10);
-    	 event_date1 = event_date1.split('-');
-    	 event_date1 = parseInt(event_date1[0] + event_date1[1] + event_date1[2]);
+         event_date1 = event_date1.split('-');
+         event_date1 = parseInt(event_date1[0] + event_date1[1] + event_date1[2]);
 
         var currentUser = Drupal.settings.auto_role_allocation.currentUser;
         console.log(event.title);
@@ -223,9 +233,7 @@ jQuery( document ).ready(function() {
               //alert("data");
             },
             error: function(jqXHR, data, error){
-                //console.log(jqXHR);
-                //console.log(data);
-                //console.log(error);
+                
             }
          });
        }   
@@ -235,5 +243,46 @@ jQuery( document ).ready(function() {
     events: eventsList
 
 });
+
+});
+
+
+
+jQuery(document).on('click','#raffle-entry-list-btn',function() {
+  
+  var location = window.location;
+  var baseUrl1 = location.protocol + "//" + location.host + '/raffle_winner';
+  var raffleUid = '';
+
+  jQuery( ".raffle-prospective-winners .sticky-enabled input:checkbox:checked" ).each(function() {
+    var uid = jQuery( this ).attr( "id" );
+    var uid_exp = uid.split('_');
+    if (raffleUid == '') {
+      raffleUid += uid_exp[1];
+    } else {
+      raffleUid += ',' + uid_exp[1];
+    }
+  });
+
+  if (raffleUid == '') {
+    alert('Please select user for Raffle Winner.');
+    return false;
+  }
+
+  var reward_id = jQuery('#raffle_reward_id').val();
+
+  jQuery.ajax({
+    //url: 'http://localhost/playatyourlibrary/docroot/raffle_winner',
+    url: baseUrl1,
+    type: 'post',
+    data: 'active_raffle_uid='+raffleUid+'&reward_id='+reward_id,
+    success: function(res){
+                alert(res);
+            },
+            error: function(jqXHR, data, error){
+            }
+  });
+
+ 
 
 });
