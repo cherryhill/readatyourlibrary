@@ -1,6 +1,18 @@
 <?php
 
 /**
+*
+*/
+
+function auto_role_allocation_permission() {
+  return array(
+    'access_raffle_entry' => array(
+      'title' => t('Access raffle entry pages'),
+    )
+  );
+}
+
+/**
  * Implements hook_block(). . 
  */
 
@@ -204,7 +216,7 @@ function auto_role_allocation_menu() {
   $items['raffle'] = array(
     'title' => 'Raffle entry list',
     'page callback' => 'raffle_entry_process',
-    'access arguments' => array('access content'),
+    'access arguments' => array('access_raffle_entry'),
     'type' => MENU_CALLBACK,
   );
   $items['raffle_pro'] = array(
@@ -270,7 +282,7 @@ function raffle_entry_process() {
     $reward_id = $value->field_reward_criteria_reward_target_id;
 
     $oprat = "<input type = 'radio' name = 'raffle' class='active_raffle' id='raffle_radio_$raffle_id' value = '$reward_id'>";
-    $out .= "<div><span>$activity_name</span><span>$raffle_title</span><span>$oprat</span></div>";
+    $out .= "<div><span>$raffle_title</span><span>$oprat</span></div>";
   }
 
   $out .= "<div class = 'raffle-prospective-winners'></div>";

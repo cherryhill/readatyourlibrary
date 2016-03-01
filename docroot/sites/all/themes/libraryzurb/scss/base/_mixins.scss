@@ -95,6 +95,9 @@
 		padding-top: 26px;
 		padding-bottom: 25px;
 	    font-size: 28px;
+	     @media screen and (max-width: 767px) {
+	     	font-size: 22px;
+	     }
 		height: 110px;
 		border-bottom: medium none;
 		margin-top: -1px;
@@ -188,6 +191,9 @@
 		padding-top: 26px;
 		padding-bottom: 25px;
 	    font-size: 28px;
+	     @media screen and (max-width: 767px) {
+	     	font-size: 22px;
+	     }
 		height: 110px;
 		border-bottom: medium none;
 		margin-top: -1px;
@@ -232,6 +238,9 @@
 }
 @mixin block {
 	margin-bottom: 35px;
+	 @media screen and (max-width: 767px) {
+	     	margin-bottom: 25px;
+	     }
 }
 @mixin white-text {
 	color: $white !important;
