@@ -1,6 +1,18 @@
 <?php
 
 /**
+*
+*/
+
+function auto_role_allocation_permission() {
+  return array(
+    'access_raffle_entry' => array(
+      'title' => t('Access raffle entry pages'),
+    )
+  );
+}
+
+/**
  * Implements hook_block(). . 
  */
 
@@ -204,7 +216,7 @@ function auto_role_allocation_menu() {
   $items['raffle'] = array(
     'title' => 'Raffle entry list',
     'page callback' => 'raffle_entry_process',
-    'access arguments' => array('access content'),
+    'access arguments' => array('access_raffle_entry'),
     'type' => MENU_CALLBACK,
   );
   $items['raffle_pro'] = array(
