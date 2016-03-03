@@ -7097,6 +7097,7 @@ h1#page-title {
 .block.block-views-reward-earn-block .view .views-row .views-field.views-field-field-badge-image, .block.block-views-reward-earn-block-1 .view .views-row .views-field.views-field-field-badge-image {
   width: 40%;
   display: table-cell;
+  padding-left: 15px;
 }
 .block.block-views-reward-earn-block .view .views-row .views-field.views-field-field-badge-image .field-content img, .block.block-views-reward-earn-block-1 .view .views-row .views-field.views-field-field-badge-image .field-content img {
   margin-bottom: 10px;
@@ -7107,6 +7108,9 @@ h1#page-title {
   display: table-cell;
   vertical-align: middle;
   padding-left: 2%;
+}
+.block.block-views-reward-earn-block .view-footer, .block.block-views-reward-earn-block-1 .view-footer {
+  padding-left: 15px;
 }
 .block.announcement {
   background: #fdeb52 url("../images/libraryzurb/annocement.png") no-repeat;
@@ -11572,7 +11576,6 @@ body .alert-box.success a.close:hover {
   -webkit-font-smoothing: antialiased !important;
   border: none !important;
   outline: none !important;
-  text-align: center;
   margin-top: 17px;
 }
 .section-activities .sidebar3 .block-block div {
@@ -11595,7 +11598,7 @@ body .alert-box.success a.close:hover {
   counter-reset: section;
 }
 .section-activities .sidebar3 .block-views .view .view-content ul .views-row {
-  margin-left: 10px;
+  margin-left: 0;
 }
 .section-activities .sidebar3 .block-views .view .view-content ul .views-row .views-field-title a:before {
   counter-increment: section;
@@ -11679,12 +11682,12 @@ body .alert-box.success a.close:hover {
 }
 .section-activities .sidebar3 .block-views ul a {
   color: #fff;
-  font-family: McLaren-Regular !important;
-  font-weight: normal !important;
+  font-family: Arialregular !important;
   font-style: normal !important;
+  font-weight: normal !important;
   -webkit-font-smoothing: antialiased !important;
+  font-size: 18px;
   text-decoration: underline;
-  font-size: 17px;
 }
 
 /**end of activity page**/
@@ -12458,6 +12461,16 @@ body .alert-box.success a.close:hover {
 .page-user-register #user-register-form #edit-account {
   width: 100%;
   display: inline-block;
+}
+.page-user-register #edit-profile-main-field-receive-notifications {
+  position: relative;
+}
+.page-user-register #edit-profile-main-field-receive-notifications .form-radios {
+  margin-top: 30px;
+}
+.page-user-register #edit-profile-main-field-receive-notifications .description {
+  position: absolute;
+  top: 24px;
 }
 
 /**

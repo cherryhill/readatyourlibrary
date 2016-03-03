@@ -1848,7 +1848,6 @@
 			.block-title {
 				@include white-text;
 				@include noborder;
-				text-align: center;
 				margin-top: 17px;
 			}
 			div {
@@ -1872,7 +1871,7 @@
 		 	 		.view-content {
 		 	 			ul {
 		 	 				.views-row {
-		 	 					margin-left: 10px;
+		 	 					margin-left: 0;
                    					.views-field-title {
 
 	                   	 				a {
@@ -1897,6 +1896,7 @@
 			}
 			.views-field-title {
 			 	padding-bottom: 10px;
+
 			}
 			.views-field-count {
 			 	.views-label {
@@ -1925,9 +1925,9 @@
 			 	 	a {
 			 	 		
 			 	 		color: $white;
-			 	 		@include mclaren;
+			 	 		@include arialregular;
+			 	 		font-size: 18px;
 			 	 		text-decoration: underline;
-			 	 		font-size: 17px;
 
 			 	 		
 			 	 	}
@@ -2501,5 +2501,15 @@
 			width: 100%;
 			display: inline-block;
 		}
+	}
+	#edit-profile-main-field-receive-notifications {
+		position: relative;
+		 .form-radios {
+		 	margin-top: 30px;
+		 }
+		 .description {
+		 	position: absolute;
+		 	top: 24px;
+		 }
 	}
 }
