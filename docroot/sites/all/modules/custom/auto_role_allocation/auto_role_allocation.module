@@ -264,16 +264,26 @@ function raffle_entry_process() {
   $active_raffle_list = array();
   foreach ($res as $key => $value) {
     $raffle_id = $value->id;
+    //print_r($raffle_id);die();
+    $query = db_select('field_data_field_raffle_winner_raffle', 'rwr');
+    $query->condition('field_raffle_winner_raffle_target_id', $raffle_id, '=');
+    $query->fields('rwr', array('entity_id'));
+    $result = $query->execute();
+    $count = $result->rowCount();
+    
     $raffle_title = $value->title;
     $activity_id = $value->ecka_id;
     $activity_name = $value->ecka_title;
     $reward_id = $value->field_reward_criteria_reward_target_id;
 
+
     $oprat = "<input type = 'radio' name = 'raffle' class='active_raffle' id='raffle_radio_$raffle_id' value = '$reward_id'>";
-    $out .= "<div><span>$raffle_title</span><span>$oprat</span></div>";
+    if(!$count) {
+      $out .= "<div><span>$raffle_title</span><span>$oprat</span></div>";
+    }
   }
 
-  $out .= "<div class = 'raffle-prospective-winners'></div>";
+  
   return $out;
 
 }
