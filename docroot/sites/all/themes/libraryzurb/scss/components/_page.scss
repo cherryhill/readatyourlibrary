@@ -78,11 +78,17 @@
 	.block-views-media-photos-videos-block-6 {
 		.view .views-row {
 			width: 32%;
+			@media screen and (max-width: 767px) {
+				width: 100%;
+			}
 		}
 	}
 	.block-views-media-photos-videos-block-3 {
 		.view .views-row {
 			width: 24%;
+			@media screen and (max-width: 767px) {
+				width: 100%;
+			}
 		}
 	}
 	.main {
@@ -93,6 +99,9 @@
 			 	display: table-row;
 			 	float: left;
 			 	padding-left: 1%;
+			 	@media screen and (max-width: 767px) {
+			 		padding-left: 0;
+			 	}
 			 	clear: none !important;
 			 	 .flickr-photoset-img {
 			 	 	text-align: center;
@@ -172,6 +181,10 @@
 		padding: 35px 2.65% 0px;
 		margin-bottom: 25px;
 		@include bluebackground;
+		@media screen and (max-width: 767px) {
+			width: 100%;
+			right: 0;
+		}
 		  	.block {
 			  	.block-title, .view-header, .view-header p  {
 	              font-size: 22px;
@@ -310,6 +323,9 @@
 .not-logged-in.section-programs {
 	.pull-9.sidebar {
 		right: 70.4%;
+		@media screen and (max-width: 767px) {
+			right: 0;
+		}
 	}
 	.block-views-reward-earn-block-1 {
 		.block-title {
@@ -330,6 +346,10 @@
 	 	right: 69.4%;
 	 	padding-left: 2.65%;
 	 	padding-right: 2.65%;
+	 	@media screen and (max-width: 767px) {
+	 		width: 100%;
+	 		right: 0;
+	 	}
 	 	@include block;
  	}
 	.sidebar {
@@ -495,6 +515,9 @@
  		width: 100%;
  		max-width: 94.6%;
  		margin: 34px auto;
+ 		@media screen and (max-width: 767px) {
+ 			max-width: 100%;
+ 		}
  			#homebox-block-auto_role_allocation_progress-block {
 	 		 	.portlet-header {
 	 		 		position: relative;
@@ -1037,6 +1060,13 @@
     	 	 		border: none;
     	 	 		margin: 0 auto !important;
     	 	 		max-width: 90%;
+    	 	 		 @media screen and (max-width: 767px) {
+    	 	 		 	width: 100% !important;
+    	 	 		 	max-width: 100%;
+    	 	 		 	 thead, tbody, th, tr {
+    	 	 		 	 	width: 100% !important;
+    	 	 		 	 }
+    	 	 		 }
     	 	 		 tr {
     	 	 		 	 	th, th > a, td, td > a {
     	 	 		 	 		color: $white;
@@ -1152,12 +1182,20 @@
      	padding-left: 2.65%;
      	padding-right: 2.65%;
      	@include block;
+     	@media screen and (max-width: 767px) {
+     		width: 100%;
+     		right: 0;
+     	}
     }
     .pull-9.sidebar2 {
        width: 29.53%;
        right: 71.4%;
        padding-left: 0;
        padding-right: 0;
+        @media screen and (max-width: 767px) {
+     		width: 100%;
+     		right: 0;
+     	}
     }
 
   	.sidebar {
@@ -1786,6 +1824,11 @@
 		width: 29.53%;
 		right: 67.4%;
 		margin-bottom: 35px;
+		 @media screen and (max-width: 767px) {
+		 	width: 100%;
+		 	right: 0;
+		 	margin-bottom: 25px;
+		 }
 	}
 	/* .pull-9.sidebar, .pull-9.sidebar2 {
 		width: 29.53%;
@@ -2443,3 +2486,20 @@
 	}
 }
 /**end**/
+/**page register**/
+.page-user-register {
+	#user-register-form {
+		#edit-field-user-random-list-1, #edit-field-user-random-list-3 {
+           width: 23%;
+           float: left;
+		}
+		#edit-field-user-random-list-2 {
+			width: 19%;
+			float: left;
+		}
+		#edit-account {
+			width: 100%;
+			display: inline-block;
+		}
+	}
+}
