@@ -6396,15 +6396,31 @@ h1#page-title {
   }
 }
 
-#edit-profile-main-field-receive-notifications {
+.more-link {
+  text-align: right;
+  width: 100%;
+}
+.more-link a {
+  font-family: McLaren-Regular !important;
+  font-weight: normal !important;
+  font-style: normal !important;
+  -webkit-font-smoothing: antialiased !important;
   position: relative;
+  font-size: 17px;
+  text-transform: capitalize;
+  padding-right: 20px;
 }
-#edit-profile-main-field-receive-notifications .form-radios {
-  margin-top: 30px;
-}
-#edit-profile-main-field-receive-notifications .description {
+.more-link a:after {
+  content: "";
+  width: 17px;
+  height: 17px;
+  display: block;
+  visibility: visible;
   position: absolute;
-  top: 24px;
+  top: 12%;
+  right: 0;
+  background: url("../images/libraryzurb/right-blue-arrow.png") no-repeat;
+  background-size: 15px;
 }
 
 .admin-menu .fixed {
@@ -10043,31 +10059,6 @@ body .alert-box.success a.close:hover {
 .page-user-profile .homebox .portlet-content .view.view-patron-rewads-for-patron-dashboard:before {
   background: url("../images/libraryzurb/reward-dash.png") no-repeat;
 }
-.page-user-profile .homebox .portlet-content .view.view-patron-rewads-for-patron-dashboard .more-link {
-  text-align: right;
-}
-.page-user-profile .homebox .portlet-content .view.view-patron-rewads-for-patron-dashboard .more-link a {
-  font-family: McLaren-Regular !important;
-  font-weight: normal !important;
-  font-style: normal !important;
-  -webkit-font-smoothing: antialiased !important;
-  position: relative;
-  font-size: 17px;
-  text-transform: capitalize;
-  padding-right: 20px;
-}
-.page-user-profile .homebox .portlet-content .view.view-patron-rewads-for-patron-dashboard .more-link a:after {
-  content: "";
-  width: 17px;
-  height: 17px;
-  display: block;
-  visibility: visible;
-  position: absolute;
-  top: 1px;
-  right: 0;
-  background: url("../images/libraryzurb/right-blue-arrow.png") no-repeat;
-  background-size: 15px;
-}
 .page-user-profile .homebox .portlet-content .view.view-patron-rewads-for-patron-dashboard .view-content {
   display: table;
   width: 100%;
@@ -10144,35 +10135,6 @@ body .alert-box.success a.close:hover {
   font-weight: normal !important;
   -webkit-font-smoothing: antialiased !important;
   text-transform: capitalize;
-}
-.page-user-profile .homebox .portlet-content .view.view-booklist-on-activities-page .view-header p {
-  text-align: right;
-  font-family: McLaren-Regular !important;
-  font-weight: normal !important;
-  font-style: normal !important;
-  -webkit-font-smoothing: antialiased !important;
-}
-.page-user-profile .homebox .portlet-content .view.view-booklist-on-activities-page .view-header p a {
-  position: relative;
-  font-size: 17px;
-  font-family: McLaren-Regular !important;
-  font-weight: normal !important;
-  font-style: normal !important;
-  -webkit-font-smoothing: antialiased !important;
-  padding-right: 20px;
-  text-transform: capitalize;
-}
-.page-user-profile .homebox .portlet-content .view.view-booklist-on-activities-page .view-header p a:after {
-  content: "";
-  width: 17px;
-  height: 17px;
-  display: block;
-  visibility: visible;
-  position: absolute;
-  top: 1px;
-  right: 0;
-  background: url("../images/libraryzurb/right-blue-arrow.png") no-repeat;
-  background-size: 15px;
 }
 .page-user-profile .homebox .portlet-content .view.view-booklist-on-activities-page ol {
   list-style: none;
@@ -10282,35 +10244,6 @@ body .alert-box.success a.close:hover {
   font-weight: normal !important;
   -webkit-font-smoothing: antialiased !important;
   text-transform: capitalize;
-}
-.page-user-profile .homebox .portlet-content .view.view-my-book-reviews .view-header p {
-  text-align: right;
-  font-family: McLaren-Regular !important;
-  font-weight: normal !important;
-  font-style: normal !important;
-  -webkit-font-smoothing: antialiased !important;
-}
-.page-user-profile .homebox .portlet-content .view.view-my-book-reviews .view-header p a {
-  position: relative;
-  font-size: 17px;
-  font-family: McLaren-Regular !important;
-  font-weight: normal !important;
-  font-style: normal !important;
-  -webkit-font-smoothing: antialiased !important;
-  padding-right: 20px;
-  text-transform: capitalize;
-}
-.page-user-profile .homebox .portlet-content .view.view-my-book-reviews .view-header p a:after {
-  content: "";
-  width: 17px;
-  height: 17px;
-  display: block;
-  visibility: visible;
-  position: absolute;
-  top: 1px;
-  right: 0;
-  background: url("../images/libraryzurb/right-blue-arrow.png") no-repeat;
-  background-size: 15px;
 }
 .page-user-profile .homebox .portlet-content .view.view-my-book-reviews .view-content ol, .page-user-profile .homebox .portlet-content .view.view-my-book-reviews .view-content ul {
   margin-left: 0;

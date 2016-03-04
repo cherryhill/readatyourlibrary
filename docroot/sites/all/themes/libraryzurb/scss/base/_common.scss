@@ -127,13 +127,19 @@ h1#page-title {
 		}
 	}
 }
-#edit-profile-main-field-receive-notifications {
-		position: relative;
-		 .form-radios {
-		 	margin-top: 30px;
-		 }
-		 .description {
-		 	position: absolute;
-		 	top: 24px;
-		 }
-	}
+.more-link {
+ 			text-align: right;
+ 			width: 100%;
+			 	a {
+ 			 	@include mclaren;
+ 			 	position: relative;
+ 			 	font-size: 17px;
+ 			 	text-transform: capitalize;
+			 		padding-right: 20px;
+ 			 	 	&:after {
+                  	@include previous(17px, 17px, $right: 0, $top: 12%);
+                  	background: url('../images/libraryzurb/right-blue-arrow.png') no-repeat;
+                  	background-size: 15px;
+ 			 	 	}
+ 			}
+ 		}
