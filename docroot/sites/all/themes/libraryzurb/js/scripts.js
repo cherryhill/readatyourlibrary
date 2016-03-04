@@ -61,6 +61,10 @@ jQuery( document ).ready(function() {
       
     });
 
+/* jQuery for text change on user registration form */
+jQuery('#edit-field-user-random-list-1-und-0-randomized-text-regenerate').text('Change Description');
+jQuery('#edit-field-user-random-list-2-und-0-randomized-text-regenerate').text('Change Color');
+jQuery('#edit-field-user-random-list-3-und-0-randomized-text-regenerate').text('Change Creature');
 
 /* jQuery for raffle winner process */
 
