@@ -154,6 +154,9 @@
     	 	 	 	color: $red;
     	 	 	 	font-size: 17px;
     	 	 	 	@include arialbold;
+    	 	 	 	  a {
+    	 	 	 	  	color: $black;
+    	 	 	 	  }
     	 	 	 	 .pm-new {
     	 	 	 	 	float: left;
     	 	 	 	 	padding-right: 10px;
@@ -279,6 +282,7 @@
  			 	 	&.views-field-field-badge-image {
  			 	 		width: 40%;
  			 	 		display: table-cell;
+ 			 	 		padding-left: 15px;
  			 	 		 .field-content {
  			 	 		 	img {
  			 	 		 		margin-bottom: 10px;
@@ -295,6 +299,9 @@
  			 	 	}
  			 	 }
  			 }
+ 		}
+ 		.view-footer {
+ 			padding-left: 15px;
  		}
  	}
 	&.announcement {
