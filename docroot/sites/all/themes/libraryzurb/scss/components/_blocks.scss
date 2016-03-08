@@ -5,7 +5,13 @@
      @media screen and (max-width: 767px) {
 	     	margin-bottom: 25px;
 	     }
-   
+     &.badge-reward-list {
+     	margin-bottom: 0 !important;
+     	 .badge_list {
+     	 	@include mclaren;
+     	 	font-size: 28px;
+     	 }
+     }
     &.dashboard-block {
     	.pagination.pager li {
     		@include noborder;			
@@ -34,6 +40,7 @@
 	           	 	 	 img {
 	           	 	 	 	margin: 0px 5px 0px 0px;
 	           	 	 	 	@include noborder;
+	           	 	 	 	background: $white;
 	           	 	 	 }
 	           	 	 	 .views-field {
 	           	 	 	 	display: table-cell;
@@ -154,6 +161,9 @@
     	 	 	 	color: $red;
     	 	 	 	font-size: 17px;
     	 	 	 	@include arialbold;
+    	 	 	 	  a {
+    	 	 	 	  	color: $black;
+    	 	 	 	  }
     	 	 	 	 .pm-new {
     	 	 	 	 	float: left;
     	 	 	 	 	padding-right: 10px;
@@ -279,6 +289,7 @@
  			 	 	&.views-field-field-badge-image {
  			 	 		width: 40%;
  			 	 		display: table-cell;
+ 			 	 		padding-left: 15px;
  			 	 		 .field-content {
  			 	 		 	img {
  			 	 		 		margin-bottom: 10px;
@@ -295,6 +306,9 @@
  			 	 	}
  			 	 }
  			 }
+ 		}
+ 		.view-footer {
+ 			padding-left: 15px;
  		}
  	}
 	&.announcement {

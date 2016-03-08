@@ -40,12 +40,12 @@ function payl_program_customizations_form_alter(&$form, &$form_state, $form_id) 
     // showing of tabs only for user role as patron
     if(array_key_exists(6, $role_user)){
       $form['public_profile'] = array(
-        '#markup' => t('<a href="../dashboard">My Public Profile</a>'),
+        '#markup' => t('<a href="../dashboard" class = "button">My Public Profile</a>'),
         '#weight' => -20,
       );
 
       $form['change_username'] = array(
-        '#markup' => t('<a href="../edit">Change My Username or Password</a>'),
+        '#markup' => t('<a href="../edit" class = "button">Change My Username or Password</a>'),
         '#weight' => -20,
       );
     }

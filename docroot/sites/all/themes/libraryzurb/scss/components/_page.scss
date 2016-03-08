@@ -205,10 +205,10 @@
                                padding-right: 10px;
                                position: relative;
                                  &:before {
-                                 	@include counter;
+                                 	/* @include counter;
                                  	position: absolute;
                                  	left: -14px;
-                                 	top: 15px;
+                                 	top: 15px; */
                                  }
 			  		 	  	 }
 			  		 	  	 &.views-field-title {
@@ -231,10 +231,16 @@
 	}
 	.main {
 		  	#page-title {
-		  		@include mclaren;
-		  		font-size: 28px;
+		  		
+		  		display: none;
 		  	}
 	  		.view-badges {
+	  			.view-header {
+	  			@include mclaren;
+		  		font-size: 28px;
+		  		color: $black;
+		  		@include noborder;
+	  			}
 	  			.view-content {
 	  				div.badges {
 	  					img {
@@ -247,7 +253,7 @@
 		 .block {
 	  		.block-title {
 	  			@include noborder;
-	  			font-size: 28px;
+	  			font-size: 18px;
 	  			color: $orange;
 	  			@include mclaren;
 	  		}
@@ -259,6 +265,7 @@
 	  			 		width: 100%;
 	  			 			.views-row {
                           		display: table-cell;
+                          		padding-right: 10px;
                            			.views-field {
 			                           	 width: 100%;
 			                           	 display: inline-block;
@@ -693,21 +700,7 @@
 		 			 		&:before {
 		 			 			background: url('../images/libraryzurb/reward-dash.png') no-repeat;
 		 			 		}
-		 			 		.more-link {
-		 			 			text-align: right;
-	 			 			 	a {
-		 			 			 	@include mclaren;
-		 			 			 	position: relative;
-		 			 			 	font-size: 17px;
-		 			 			 	text-transform: capitalize;
-	 			 			 		padding-right: 20px;
-		 			 			 	 	&:after {
-	                                      	@include previous(17px, 17px, $right: 0, $top: 1px);
-	                                      	background: url('../images/libraryzurb/right-blue-arrow.png') no-repeat;
-	                                      	background-size: 15px;
-		 			 			 	 	}
-		 			 			}
-		 			 		}
+		 			 		
 	 			 			.view-content {
 		 			 			display: table;
 		 			 			width: 100%;
@@ -763,22 +756,6 @@
 			 			 	  		@include arialbold;
 			 			 	  		text-transform: capitalize;
 			 			 	  		}
-	 			 	  				p {
-				 			 			text-align: right;
-				 			 			@include mclaren;
-			 			 			 	a {
-				 			 			 	position: relative;
-				 			 			 	font-size: 17px;
-				 			 			 	@include mclaren;
-				 			 			 	padding-right: 20px;
-				 			 			 	text-transform: capitalize;
-					 			 			 	&:after {
-				                                    @include previous(17px, 17px, $right: 0, $top: 1px);
-				                                    background: url('../images/libraryzurb/right-blue-arrow.png') no-repeat;
-				                                    background-size: 15px;
-					 			 			 	}
-			 			 			 	}
-			 			 			}
 	 			 			
 								}
 	 			 	  	 	ol {
@@ -855,23 +832,6 @@
 			 			 	  			@include arialbold;
 			 			 	  			text-transform: capitalize;
 			 			 	  		}
-
-	 			 					p {
-				 			 			text-align: right;
-				 			 			@include mclaren;
-			 			 			 		a {
-					 			 			 	position: relative;
-					 			 			 	font-size: 17px;
-					 			 			 	@include mclaren;
-					 			 			 	padding-right: 20px;
-					 			 			 	text-transform: capitalize;
-					 			 			 	 	&:after {
-					                                      @include previous(17px, 17px, $right: 0, $top: 1px);
-					                                      background: url('../images/libraryzurb/right-blue-arrow.png') no-repeat;
-					                                      background-size: 15px;
-					 			 			 	 	}
-			 			 			 		}
-			 			 			}
 	 			 			
 								}
 			 			 	  	.view-content {
@@ -1848,7 +1808,6 @@
 			.block-title {
 				@include white-text;
 				@include noborder;
-				text-align: center;
 				margin-top: 17px;
 			}
 			div {
@@ -1872,7 +1831,7 @@
 		 	 		.view-content {
 		 	 			ul {
 		 	 				.views-row {
-		 	 					margin-left: 10px;
+		 	 					margin-left: 0;
                    					.views-field-title {
 
 	                   	 				a {
@@ -1897,6 +1856,7 @@
 			}
 			.views-field-title {
 			 	padding-bottom: 10px;
+
 			}
 			.views-field-count {
 			 	.views-label {
@@ -1925,9 +1885,9 @@
 			 	 	a {
 			 	 		
 			 	 		color: $white;
-			 	 		@include mclaren;
+			 	 		@include arialregular;
+			 	 		font-size: 18px;
 			 	 		text-decoration: underline;
-			 	 		font-size: 17px;
 
 			 	 		
 			 	 	}
@@ -2168,8 +2128,12 @@
 		 	 			 		div.reward_text {
 		 	 			 			font-size: 14px;
 		 	 			 			line-height: 1;
-		 	 			 			@include mclaren;
-		 	 			 			margin-top: 10px; 
+		 	 			 			padding-top: 10px; 
+		 	 			 			background: $button-hover;
+		 	 			 		}
+		 	 			 		div.reward_image {
+		 	 			 			background: $button-hover;
+		 	 			 			padding-top: 10px;
 		 	 			 		}
 			 	 		 	&.contextual-links-region {
 			 	 		 		position: static;
@@ -2233,6 +2197,9 @@
 					 	 			 			border: 1px solid $orange;
 					 	 			 		}
  	 			 							.fc-day {
+ 	 			 								     .fc-day-content {
+ 	 			 								     	font-size: 0;
+ 	 			 								     }
 	 	 			 								.fc-day-number {
 	 	 			 									color: $blue;
 	 	 			 								}
@@ -2501,5 +2468,13 @@
 			width: 100%;
 			display: inline-block;
 		}
+	}
+
+	#edit-profile-main-field-receive-notifications {
+		 div.description  {
+             font-size: 14px;
+             @include arialbold;
+             color: #4D4D4D;
+		 }
 	}
 }

@@ -62,12 +62,28 @@ jQuery( document ).ready(function() {
       
     });
 
+/* jQuery for text change on user registration form */
+jQuery('#edit-field-user-random-list-1-und-0-randomized-text-regenerate').text('Change Description');
+jQuery('#edit-field-user-random-list-2-und-0-randomized-text-regenerate').text('Change Color');
+jQuery('#edit-field-user-random-list-3-und-0-randomized-text-regenerate').text('Change Creature');
 
 
   /**jquery for new msg**/
   jQuery('.msg:has(.new)').addClass('newclass');
+  /**jquery for swap divs in register page***/
+   div1 = jQuery('#edit-profile-main-field-receive-notifications .form-radios');
+    div2 = jQuery('#edit-profile-main-field-receive-notifications .description');
+
+    tdiv1 = div1.clone();
+    tdiv2 = div2.clone();
+
+if(!div2.is(':empty')){
+    div1.replaceWith(tdiv2);
+    div2.replaceWith(tdiv1);
+    
+    tdiv1.addClass("replaced");
+}
   /* jquery for print calendar */
-  
 
     jQuery( "#print_button" ).click(function() {
       var contant = jQuery(".main");
