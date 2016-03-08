@@ -85,8 +85,7 @@ jQuery('#edit-field-user-random-list-3-und-0-randomized-text-regenerate').text('
 
 
 
-/**jquery for progress page with congratulation msg***/
-     jQuery('.ui-draggable:has(.reward_text)').addClass('congratulations');
+
   /**jquery for new msg**/
   jQuery('.msg:has(.new)').addClass('newclass');
   /**jquery for swap divs in register page***/

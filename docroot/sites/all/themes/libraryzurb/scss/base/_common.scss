@@ -143,12 +143,31 @@ h1#page-title {
  			 	 	}
  			}
  		}
- .congratulations {
- 	background: $button-hover;
- 	padding-top: 5px;
- 	padding-bottom: 5px;
- 	  .reward_text {
- 	  	font-size: 14px;
- 	  	line-height: 1;
- 	  }
+ .page-patron {
+ 	.button-group {
+ 		&:nth-of-type(1) {
+ 			li {
+ 				display: none;
+ 			}
+ 		}
+ 		&:nth-of-type(2) {
+ 			float: left;
+ 			 a {
+ 			 	font-size: 17px !important;
+ 			 	@include noborder;
+ 			 	  &:hover {
+ 			 	  	background: $button-hover;
+ 			 	  }
+ 			 }
+ 			 li {
+ 			 	&:nth-of-type(1) {
+ 			 		display: none;
+ 			 	}
+ 			 }
+ 		}
+ 	}
+ 	#edit-profile-main-field-user-birthday {
+ 		width: 100%;
+ 		display: inline-block;
+ 	}
  }
