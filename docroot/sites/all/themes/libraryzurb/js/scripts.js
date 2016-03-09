@@ -373,7 +373,7 @@ jQuery(document).on('click','#raffle-entry-list-btn',function() {
     type: 'post',
     data: 'active_raffle_uid='+raffleUid+'&reward_id='+reward_id,
     success: function(res){
-                //alert(res);
+                alert(res);
             },
             error: function(jqXHR, data, error){
             }
