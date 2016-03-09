@@ -449,48 +449,48 @@ function play_library_program_create_reward_claim($reward_id, $account_id, $raff
 	  }
 	}
 
-	// $rew_id = $reward_claim->id;
+	$rew_id = $reward_claim->id;
 
-	// $query = db_select('eck_reward','rew');
-	// $query->join('field_data_field_reward_claim_id','claim_id','claim_id.entity_id = rew.id');
-	// $query->fields('rew',array('title','id','uid','type'));
-	// $query->fields('claim_id',array('field_reward_claim_id_target_id'));
-	// $query->condition('type','reward_claim');
-	// $query->condition('uid',$account_id,'=');
-	// $query->condition('id',$rew_id,'=');
-	// $result = $query->execute()
-	// ->fetchAll();
+	$query = db_select('eck_reward','rew');
+	$query->join('field_data_field_reward_claim_id','claim_id','claim_id.entity_id = rew.id');
+	$query->fields('rew',array('title','id','uid','type'));
+	$query->fields('claim_id',array('field_reward_claim_id_target_id'));
+	$query->condition('type','reward_claim');
+	$query->condition('uid',$account_id,'=');
+	$query->condition('id',$rew_id,'=');
+	$result = $query->execute()
+	->fetchAll();
 
-	// foreach($result as $reward_msg){
-	//   $res_title = $reward_msg->title;
-	//   $res_id = $reward_msg->id;
-	//   $res_uid = $reward_msg->uid;
-	//   $res_type = $reward_msg->type;
-	//   $res_entity_id = $reward_msg->field_reward_claim_id_target_id;
+	foreach($result as $reward_msg){
+	  $res_title = $reward_msg->title;
+	  $res_id = $reward_msg->id;
+	  $res_uid = $reward_msg->uid;
+	  $res_type = $reward_msg->type;
+	  $res_entity_id = $reward_msg->field_reward_claim_id_target_id;
 
-	//   $sub_query_msg = db_select('field_data_field_reward_message','msg');
-	//   $sub_query_msg->join('field_data_field_reward_notification','noti','noti.entity_id = msg.entity_id');
-	//   $sub_query_msg->fields('msg',array('field_reward_message_value'));
-	//   $sub_query_msg->fields('noti',array('field_reward_notification_value'));
-	//   $sub_query_msg->condition('msg.entity_id',$res_entity_id);
-	//   $sub_query = $sub_query_msg->execute()->fetchAll();
+	  $sub_query_msg = db_select('field_data_field_reward_message','msg');
+	  $sub_query_msg->join('field_data_field_reward_notification','noti','noti.entity_id = msg.entity_id');
+	  $sub_query_msg->fields('msg',array('field_reward_message_value'));
+	  $sub_query_msg->fields('noti',array('field_reward_notification_value'));
+	  $sub_query_msg->condition('msg.entity_id',$res_entity_id);
+	  $sub_query = $sub_query_msg->execute()->fetchAll();
 
-	//   foreach($sub_query as $onscreen_msg){
-	//     $msg_notifications = $onscreen_msg->field_reward_message_value;
-	//     $mail_notifications = $onscreen_msg->field_reward_notification_value;
-	//   }
+	  foreach($sub_query as $onscreen_msg){
+	    $msg_notifications = $onscreen_msg->field_reward_message_value;
+	    $mail_notifications = $onscreen_msg->field_reward_notification_value;
+	  }
 
-	//   db_insert('reward_notification_patron')
-	//    ->fields(array(
-	//     'reward_name' => $res_title,
-	//     'reward_id' => $res_id,
-	//     'uid' => $res_uid,
-	//     'type' => $res_type,
-	//     'reward_notifications' => $msg_notifications,
-	//     'reward_mail_notifications' => $mail_notifications,
-	//     ))
-	//    ->execute();
-	// }
+	  db_insert('reward_notification_patron')
+	   ->fields(array(
+	    'reward_name' => $res_title,
+	    'reward_id' => $res_id,
+	    'uid' => $res_uid,
+	    'type' => $res_type,
+	    'reward_notifications' => $msg_notifications,
+	    'reward_mail_notifications' => $mail_notifications,
+	    ))
+	   ->execute();
+	}
 }
 
 /**
