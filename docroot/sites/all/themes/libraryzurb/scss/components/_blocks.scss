@@ -145,18 +145,15 @@
     	     display: inline-block;
     	     position: relative;
     	      .pm-view {
-    	      	position: absolute;
-    	      	top: 20%;
-    	      	right: 0;
+    	      	float: right;
     	      	padding: 12px 22px;
     	      	@include bluebutton($font-size: 17px);
     	      }
     	 	 .pm {
-    	 	 	width: 80%;
+    	 	 	width: 100%;
     	 	 	display: inline-block;
-    	 	 	margin-bottom: 25px;
     	 	 	 .pm-subject {
-    	 	 	 	width: 50%;
+    	 	 	 	width: 60%;
     	 	 	 	float: left;
     	 	 	 	color: $red;
     	 	 	 	font-size: 17px;
@@ -171,7 +168,7 @@
     	 	 	 	 }
     	 	 	 }
     	 	 	 .pm-admin {
-    	 	 	 	width: 25%;
+    	 	 	 	width: 20%;
     	 	 	 	float: left;
     	 	 	 	font-size: 17px;
     	 	 	 	@include arialregular;
@@ -179,10 +176,11 @@
     	 	 	 }
     	 	 	 .pm-date {
     	 	 	 	float: left;
-    	 	 	 	width: 25%;
+    	 	 	 	width: 20%;
     	 	 	 	color: $black;
     	 	 	 	font-size: 17px;
     	 	 	 	@include arialregular;
+    	 	 	 	text-align: right;
     	 	 	 }
 
     	 	 }
