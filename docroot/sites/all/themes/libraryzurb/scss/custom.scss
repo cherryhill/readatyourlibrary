@@ -78,21 +78,25 @@
    ----------------------------------------- */
 
 a {
-	color: $color_gray_medium;
+	color: $blue;
+	cursor: progress;
 
 	&.permalink {
-		display: none;
+		display: none;;
 	}
 }
 a:hover,
 a:focus {
-	color: $color_white;
-	background-color: $color_gray_medium;
+	color: $blue;
+	background-color: none;
+	outline: none;
+	text-decoration: underline;
 }
 
 h1 {
 	&#page-title {
 		margin-top:0;
+		font-size: 28px;
 	}
 }
 
@@ -146,12 +150,12 @@ h2 {
 
 h3 {
 	color: $color_gray_medium;
-	text-transform: uppercase;
+	text-transform: capitalize;
 	font-size: 1.2em;
 }
 
 h4 {
-	text-transform: uppercase;
+	text-transform: capitalize;
 	font-size: 1em;
 }
 
@@ -208,11 +212,11 @@ li {
 	}
 	a {
     border-bottom: medium solid;
-		color: $color_gray_dark;
+		/* color: $color_gray_dark; */
 
 		&:hover,
 		&:focus {
-			background-color: $color_gray_light;
+			/* background-color: $color_gray_light; */
 		}
 	}
 }
@@ -305,7 +309,17 @@ li {
 /* HEADER AREA */
 
 header {
-	background: url(../images/bookphoto.png) no-repeat top right;
+	.header-middle {
+	background: url('../images/libraryzurb/header-background.png') no-repeat;
+	background-size: cover;
+	margin-top: -2px;
+	padding-left: 11px;
+}
+  div#topbar {
+  	border: none !important;
+  }
+	
+
 	@media all and (max-width: $smallmedium-screen) {
 		background: none;
 	}
@@ -350,15 +364,21 @@ header {
 
 .sidebar {
 	.block:not(.block-menu-block-1) {
-		border: 1px solid;
-		padding: 0.5em 1em 0.25em;
-		font-size: 0.9em;
+		/* border: 1px solid;
+		font-size: 0.9em; */
 		margin: 0 0 2em 0;
 		h2 {
 			&.block-title {
 				border: 0;
-				font-size: 1em;
-				text-transform: uppercase;
+				font-size: 22px;
+				text-transform: capitalize;
+				line-height: 1;
+				margin-top: 0;
+			}
+		}
+		.view-reward-earn {
+			.view-content {
+				padding: 0px 20px;
 			}
 		}
 	}
@@ -526,10 +546,11 @@ header {
 		margin-bottom: 0;
 	}
 	img {
-		float:right;
+		/* float:right;
 		margin: 0.5em 0 0.5em 1em;
 		border: 1px solid;
-		padding: 3px;
+		*/
+		padding: 3px; 
 	}
 }
 
@@ -749,5 +770,12 @@ div {
 		@media screen and (max-width: $small-screen) {
 			margin-bottom: 0.5em;
 		}
+	}
+}
+.sidebar {
+	span {
+		font-size: 17px;
+		@include arialregular;
+		line-height: 1.2;
 	}
 }

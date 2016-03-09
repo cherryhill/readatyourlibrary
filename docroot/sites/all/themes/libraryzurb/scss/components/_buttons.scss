@@ -9,14 +9,47 @@
 
 button,
 .button {
-  padding: $button-sml;
-  text-transform: uppercase;
+  padding: $button-sml 20px;
+  background: $yellow;
+  color: $black;
+  margin-left: 20px;
+  border: 1px solid $yellow;
+  border-radius: 10px;
+  font-size: 17px;
+  text-transform: capitalize;
+  @include mclaren;
+  @include boxshadow;
+   &:hover {
+     background: $button-hover;
+     color: $black;
+     outline: none;
+     text-decoration: none;
+   }
+   &:focus, &.active {
+   	background: $button-active;
+   	color: $black;
+   	outline: none;
+   }
 
   a {
-    color: $button-font-color;
+    color: $black;
+    font-size: 17px;
+    text-transform: capitalize;
+    @include mclaren;
 
     &:hover {
-      background-color: transparent;
+      outline: none;
+      color: $black;
+      background: $button-hover;
+      text-decoration: none;
+      @include noborder;
+    }
+    &:focus, &.active {
+    	outline: none;
+    	text-decoration: none;
+    	color: $black;
+    	background: $button-active;
     }
   }
 }
+

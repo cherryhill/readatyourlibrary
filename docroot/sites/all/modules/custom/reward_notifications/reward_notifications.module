@@ -1,0 +1,235 @@
+<?php
+
+/**
+ * @file
+ * A module for displaying message
+ *
+ * This module provides a block that displays
+ * On Screen Message when a user gets a reward.
+ *
+ * Provides a form for winners 
+ */
+
+/**
+* Implements hook_block_info().
+*/
+function reward_notifications_block_info() {
+  $blocks = array();
+
+  $blocks['Claim_reward_message'] = array(
+    'info' => t('On Screen Message on Reward claim'),
+  );
+
+  return $blocks;
+}
+
+/**
+* Implements hook_block_view().
+*/
+function reward_notifications_block_view($delta = '') {
+  $block = array();
+
+  switch ($delta) {
+    case 'Claim_reward_message':
+      $block['subject'] = t('Reward Notification');
+      $block['content'] = _reward_claim_onscreen_message();
+      break;
+  }
+  return $block;
+}
+
+function _reward_claim_onscreen_message() {
+	global $user;
+	$uid = $user->uid;
+
+  $profile = profile2_load_by_user($uid, 'main');
+	$email_settings = $profile->field_receive_notifications['und'][0]['value'];
+  if ($email_settings == 'yes') {
+    $account = user_load($uid);
+    $user_email = $account->mail;
+  }
+
+	$query = db_select('reward_notification_patron','noti')
+	  ->fields('noti',array('reward_notifications','reward_mail_notifications','id'))
+	  ->condition('uid',$uid)
+	  ->condition('notifications_read',0)
+	  ->execute()
+	  ->fetchAll();
+
+	foreach($query as $res){
+		$onscreen_msg = $res->reward_notifications;
+		$mail_msg = $res->reward_mail_notifications;
+		$id = $res->id;
+
+		$rm_html_tags = strip_tags($onscreen_msg);
+		$rew_message = str_replace('&nbsp;', ' ', $rm_html_tags);
+
+		drupal_set_message(t('%string', array('%string' => $rew_message)), 'status');
+		if($email_settings == 'yes'){
+			//sending of mail when user wins a reward
+			$params = array('body' => $mail_msg);
+			$key = 'reward_email';
+			$to = $user_email;
+			$from = variable_get('site_mail', 'support@chillco.com');
+			$mail = drupal_mail('reward_mail_notification', $key, $to, language_default(), $params, $from);
+			$mail['headers']['Content-Type'] = 'text/html; charset=UTF-8; format=flowed';
+		}
+
+		$sub_query = db_update('reward_notification_patron')
+		->fields(array('notifications_read' => '1'))
+		->condition('id',$id)
+		->execute();
+	}
+}
+
+function reward_mail_notification_mail($key, &$message, $params, $form_state){
+	$language = $message['language'];
+
+	switch ($key) {
+	//switching on $key lets you create variations of the email based on the $key parameter
+	  case 'reward_email':
+	  $message['headers']['Content-Type'] = 'text/html; charset=UTF-8; format=flowed';
+	  $message['subject'] = t('Reward Notification');
+	  $message['body'][] = $params['body'];
+	  break;
+	}
+}
+
+/**
+* Implements hook_menu().
+*/
+
+function reward_notifications_menu(){
+
+	$items = array();
+
+	$items['reward/%'] = array(
+		'title' => 'Award',
+		'access callback' => TRUE,
+		'page callback' => 'drupal_get_form',
+		'page arguments' => array('claim_reward',1),
+		'type' => MENU_NORMAL_ITEM,
+		);
+
+	return $items;
+}
+
+//function to provide form for reward winners
+function claim_reward($form_state,$arg){
+
+	$rid = $arg['build_info']['args'][0];
+
+	$query = db_select('eck_reward','rew')
+	->fields('rew', array('title', 'id','uid'))
+	->condition('id', $rid,'=')
+	->execute()
+	->fetchAssoc();
+
+	$reward_title = $query['title'];
+	$reward_uid = $query['uid'];
+	$reward_id = $query['id'];
+
+	$query_sub = db_select('winner_list','win')
+	->fields('win',array('reward_status','staff_notes','reward_receieved_date'))
+	->condition('reward_id', $reward_id, '=')
+	->execute()
+	->fetchAssoc();
+
+	$status = $query_sub['reward_status'];
+	$notes = $query_sub['staff_notes'];
+	$receieved_date = $query_sub['reward_receieved_date'];
+
+
+	$form['reward_taken'] = array(
+	   '#title' => t($reward_title),
+	   '#type' => 'checkbox',
+	   '#default_value' => isset($status) ? $status : '0',
+	  );
+  
+	$form['uid'] = array(
+	  '#type' => 'hidden',
+	  '#value' => $reward_uid,
+	);
+
+	$form['rid'] = array(
+	  '#type' => 'hidden',
+	  '#value' => $reward_id,
+	);
+
+	$form['title'] = array(
+	  '#type' => 'hidden',
+	  '#value' => $reward_title,
+	);
+
+	$form['receieved_date'] = array( 
+    '#type' => 'date_popup', 
+    '#date_format' => 'Y-m-d',
+    '#title' => "Receieved" ,
+    '#default_value' => isset($receieved_date) ? $receieved_date : NULL,
+  ); 
+
+	$form['staff_notes'] = array(
+	   '#title' => t('Staff Notes'),
+	   '#type' => 'textarea',
+	   '#default_value' => isset($notes) ? $notes : NULL,
+	 );
+
+	$form['submit_button'] = array(
+	   '#type' => 'submit',
+	   '#value' => t('SAVE'),
+	 );
+
+	return $form;
+}
+
+// submit handler for form build in function claim_reward
+function claim_reward_submit($form, &$form_state){
+
+	$reward_title = $form_state['values']['title'];
+	$reward_status = $form_state['values']['reward_taken'];
+	$reward_uid = $form_state['values']['uid'];
+	$staff_notes = $form_state['values']['staff_notes'];
+	$reward_rid = $form_state['values']['rid'];
+	$reward_receieved_date = $form_state['values']['receieved_date'];
+
+	if(isset($reward_receieved_date)){
+		$reward_status = '1';
+	}else{
+		$reward_status = '0';
+	}
+
+	$query = db_select('winner_list','win')
+	->fields('win',array('reward_id'))
+	->condition('reward_id',$reward_rid,'=')
+	->execute()
+	->fetchAssoc();
+
+	$r_id = $query['reward_id'];
+
+	if(empty($r_id)){
+		db_insert('winner_list')
+			->fields(array(
+			'uid' => $reward_uid,
+			'reward_id' => $reward_rid,
+			'staff_notes' => $staff_notes,
+			'reward_name' => $reward_title,
+			'reward_status' => $reward_status,
+			'reward_receieved_date' => $reward_receieved_date,
+			))->execute();
+
+		drupal_set_message("saved");
+  }else{
+  	db_update('winner_list')
+    	->fields(array(
+    	'reward_status' => $reward_status,
+    	'staff_notes' => $staff_notes,
+    	'reward_receieved_date' => $reward_receieved_date,
+    	))
+	    ->condition('reward_id',$reward_rid,'=')
+    	->execute();
+
+		drupal_set_message("saved");
+  }
+
+  $form_state['redirect'] = 'reward-winners';
+}

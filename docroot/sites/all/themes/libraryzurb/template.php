@@ -203,3 +203,38 @@ function libraryzurb_css_alter(&$css) {
 //     }
 //   }
 // }
+
+function libraryzurb_preprocess_page(&$variables) {
+
+
+if (!empty($variables['page']['sidebar_first']) || !empty($variables['page']['login_form']) || !empty($variables['page']['activity_sidebar'])){
+    $left = $variables['page']['sidebar_first'];
+    $left1 = $variables['page']['login_form'];
+    $left3 = $variables['page']['activity_sidebar'];
+
+  }
+
+  if (!empty($variables['page']['sidebar_second'])) {
+    $right = $variables['page']['sidebar_second'];
+  }
+
+  // Dynamic sidebars
+  if ((!empty($left3) || !empty($left) || !empty($left1)) && !empty($right)) {
+    $variables['main_grid'] = 'large-6 push-3';
+    $variables['sidebar_first_grid'] = 'large-3 pull-6';
+    $variables['sidebar_sec_grid'] = 'large-3';
+  } elseif ((!empty($left3) || !empty($left) || !empty($left1)) && !empty($right)) {
+    $variables['main_grid'] = 'large-9';
+    $variables['sidebar_first_grid'] = '';
+    $variables['sidebar_sec_grid'] = 'large-3';
+  } elseif ((!empty($left3) || !empty($left) || !empty($left1)) && empty($right)) {
+    $variables['main_grid'] = 'large-9 push-3';
+    $variables['sidebar_first_grid'] = 'large-3 pull-9';
+    $variables['sidebar_sec_grid'] = '';
+  } else {
+    $variables['main_grid'] = 'large-12';
+    $variables['sidebar_first_grid'] = '';
+    $variables['sidebar_sec_grid'] = '';
+  }
+
+}

@@ -1,0 +1,126 @@
+<?php
+/**
+ * @file
+ * A module for private message in dashboard
+ *
+ * This module provides a block that displays
+ * the recent message on patron dashboard.
+ */
+
+/**
+ * Implementation of hook_menu()
+ */
+
+function private_msg_custom_menu() {
+  $items['my-reviews'] = array(
+    'title' => 'Reviews',
+    'page callback' => 'user_reviews',
+    'access arguments' => array('access content'),
+    'type' => MENU_SUGGESTED_ITEM,
+  );
+
+  $items['my-booklist'] = array(
+    'title' => 'Booklist',
+    'page callback' => 'user_booklist',
+    'access arguments' => array('access content'),
+    'type' => MENU_SUGGESTED_ITEM,
+  );
+
+  return $items;
+}
+
+
+function private_msg_custom_form_alter(&$form, &$form_state, $form_id) {
+  if($form_id == 'review_book_node_form'){
+    drupal_set_title('Write a Book Review');
+  }
+
+  if($form_id == 'booklist_node_form'){
+    drupal_set_title('Create a Booklist');
+  }
+
+  if($form_id == 'review_activity_node_form'){
+    drupal_set_title('Write an Activity Review');
+  }
+}
+
+function user_reviews(){
+	return '';
+}
+
+function user_booklist(){
+  return '';
+}
+/**
+ * Implements hook_block_info().
+ */
+function private_msg_custom_block_info() {
+  $blocks = array();
+  $blocks['pm_block'] = array(
+    'info' => t('Private Message Dashboard Block'),
+  );
+  
+  return $blocks;
+}
+
+/**
+ * Implements hook_block_view().
+ */
+function private_msg_custom_block_view($delta = '') {
+  $block = array();
+  
+  switch($delta) {
+    case 'pm_block' :
+      $block['content'] = pm_block_view();
+      break;
+  }
+  
+  return $block;
+}
+
+/**
+ * Function callback for private_msg_custom_block_view.
+ */
+function pm_block_view() {
+  global $user;
+	$current_user = $user->uid;
+
+  $query_pm = db_select('pm_index','pi');
+  $query_pm->fields('pi',array('mid','is_new','deleted'));
+  $query_pm->join('pm_message','pmsg','pmsg.mid = pi.mid');
+  $query_pm->join('users','u','u.uid = pmsg.author');
+  $query_pm->fields('u',array('name'));
+  $query_pm->condition('recipient',$current_user,'=');
+  $query_pm->condition('deleted',0,'=');
+  $query_pm->orderBy('timestamp', 'DESC');
+  $query_pm->range(0,2);
+  $query = $query_pm->execute()
+  ->fetchAll();
+
+  $no_result = count($query);
+  $output = '<div class = "pm-custom">';
+
+  if ($no_result != 0) {
+		foreach($query as $res) {
+			$msg_id = $res->mid;
+      $deleted = $res->deleted;
+			$author = $res->name;
+
+			$result = db_select('pm_message','pm')
+			->fields('pm',array('subject','timestamp'))
+			->condition('mid',$msg_id,'=')
+			->execute()
+			->fetchAssoc();
+
+      $pm_new = $res->is_new.'<br/>';
+      if($pm_new == 1){
+        $new = '<div class = "pm-new">'.'NEW! '.'</div>';
+      }
+
+      $output .= '<div class="pm">'.'<div class = "pm-subject"><a href = '.'../messages/view/'.$msg_id.'>'.$new.$pm_subject = $result['subject'].'</a></div>'.'<div class = "pm-admin">'.$author.'</div>'.'<div class = "pm-date">'.$pm_date = date('F d, Y',$result['timestamp']).'</div>'.'</div>';
+		}
+    return $output.'<a class="pm-view" href="../messages">View All Messages</a>'.'</div>';
+  } else {
+    return 'No Messages to display';
+  }
+}

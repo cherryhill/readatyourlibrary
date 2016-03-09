@@ -1,5 +1,10 @@
+<?php
+ //echo "Hello"; die('123');
+?>
 <!--.page -->
-<div role="document" class="page">
+ <?php global $user; $user_role = $user->roles;
+  if(array_key_exists(6, $user_role)){
+    print "<div role='document' class='page-patron'>"; }else { print "<div role='document' class='page'>"; } ?>
 
   <!--.l-header region -->
   <header role="banner" class="l-header">
@@ -7,14 +12,10 @@
 	  <!-- City Branding -->
 	  <div class="contain-to-grid pre-header">
   	  <section class="row" id="topmostbranding">
-		  <div id="citylinks" class="pre-header-left large-6 small-6 columns">
+		  <div id="citylinks" class="pre-header-left large-12 small-12 medium-12 columns">
 			  <?php if (!empty($page['citylinks'])): ?>
-			  	<?php print render($page['citylinks']); ?>
-			  <?php endif; ?>
-		  </div>
-		  <div id="accountlinks" class="pre-header-right large-6 small-6 columns">
-			  <?php if (!empty($page['accountlinks'])): ?>
-			  	<?php print render($page['accountlinks']); ?>
+          <div class="breadcurm"> <?php if ($breadcrumb): print $breadcrumb; endif; ?> </div>
+			  	<div class="top-menu"><?php print render($page['citylinks']); ?></div>
 			  <?php endif; ?>
 		  </div>
 	  </section>
@@ -25,7 +26,7 @@
     <section class="row header-middle">
 
 	<!-- Branding -->
-    	<div class="brand large-8 columns">
+    	<div class="brand large-12 columns">
         <?php if ($logo): ?>
           <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home" id="logo">
             <img src="<?php print $logo; ?>" alt="<?php print t('Home'); ?>" />
@@ -46,7 +47,7 @@
 
 	<!-- Header area for search box -->
       <?php if (!empty($page['header'])): ?>
-	  	<div class="large-4 columns">
+	  	<div class="large-12 columns">
         <?php print render($page['header']); ?>
 	  	</div>
       <?php endif; ?>
@@ -60,7 +61,7 @@
       <?php if ($top_bar_classes): ?>
       <div id="topbar" class="<?php print $top_bar_classes; ?>">
       <?php endif; ?>
-        <nav class="top-bar"<?php print $top_bar_options; ?>>
+      <!--  <nav class="top-bar"<?php print $top_bar_options; ?>>
          <ul class="title-area">
             <li class="name"></li>
             <li class="toggle-topbar menu-icon"><a href="#"><span><?php print $top_bar_menu_text; ?></span></a></li>
@@ -74,7 +75,7 @@
               <?php print $top_bar_secondary_menu; ?>
             <?php endif; ?>
           </section>
-        </nav>
+        </nav>-->
       <?php if ($top_bar_classes): ?>
       </div>
       <?php endif; ?>
@@ -124,9 +125,7 @@
       <?php endif; ?>
 
       <a id="main-content"></a>
-
-<!--      <?php if ($breadcrumb): print $breadcrumb; endif; ?>  -->
-
+    
       <?php print render($title_prefix); ?>
       <?php if ($title): ?>
         <h1 id="page-title" class="title"><?php print $title; ?></h1>
@@ -149,12 +148,27 @@
       <?php print render($page['content']); ?>
     </div>
     <!--/.main region -->
+    <?php if (!empty($page['activity_sidebar'])): ?>
+      <aside role="complementary" class="<?php print $sidebar_first_grid; ?> sidebar-first columns sidebar3">
+        <div class='first'><?php print render($page['activity_sidebar']); ?> </div>
+        <?php //print render($page['login_form']); ?>
+      </aside>
+    <?php endif; ?>
 
     <?php if (!empty($page['sidebar_first'])): ?>
       <aside role="complementary" class="<?php print $sidebar_first_grid; ?> sidebar-first columns sidebar">
-        <?php print render($page['sidebar_first']); ?>
+        <div class='first'><?php print render($page['sidebar_first']); ?> </div>
+        <?php //print render($page['login_form']); ?>
       </aside>
     <?php endif; ?>
+
+    <?php if (!empty($page['login_form'])): ?>
+      <aside role="complementary" class="<?php print $sidebar_first_grid; ?> sidebar-first columns sidebar2">
+        <div class='first'><?php print render($page['login_form']); ?> </div>
+        <?php //print render($page['login_form']); ?>
+      </aside>
+    <?php endif; ?>
+
 
     <?php if (!empty($page['sidebar_second'])): ?>
       <aside role="complementary" class="<?php print $sidebar_sec_grid; ?> sidebar-second columns sidebar">

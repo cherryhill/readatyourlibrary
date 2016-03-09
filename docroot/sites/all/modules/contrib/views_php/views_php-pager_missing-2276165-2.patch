@@ -1,0 +1,21 @@
+diff --git a/plugins/views/views_php_plugin_pager.inc b/plugins/views/views_php_plugin_pager.inc
+index 3a418e9..e9c94ed 100644
+--- a/plugins/views/views_php_plugin_pager.inc
++++ b/plugins/views/views_php_plugin_pager.inc
+@@ -10,7 +10,7 @@ class views_php_plugin_pager extends views_php_plugin_wrapper  {
+   /**
+    * Perform any needed actions just prior to the query executing.
+    */
+-  public function pre_execute($query) {
++  public function pre_execute(&$query) {
+     $this->wrapped->pre_execute($query);
+
+     foreach (array(/*'argument',*/ 'field', 'filter', 'sort', /*'relationship'*/) as $type) {
+@@ -23,6 +23,7 @@ class views_php_plugin_pager extends views_php_plugin_wrapper  {
+
+     $this->wrapped->view->query->set_limit(0);
+     $this->wrapped->view->query->set_offset(0);
++    $query->range(0,666666);
+   }
+
+   /**

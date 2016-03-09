@@ -31,6 +31,26 @@ function payl_program_customizations_user_load($users) {
  * Implements hook_form_alter().
  */
 function payl_program_customizations_form_alter(&$form, &$form_state, $form_id) {
+
+  if ($form_id == 'user_profile_form') {
+    global $user;
+    $uid = $user->uid;
+
+    $role_user = $user->roles;
+    // showing of tabs only for user role as patron
+    if(array_key_exists(6, $role_user)){
+      $form['public_profile'] = array(
+        '#markup' => t('<a href="../dashboard" class = "button">My Public Profile</a>'),
+        '#weight' => -20,
+      );
+
+      $form['change_username'] = array(
+        '#markup' => t('<a href="../edit" class = "button">Change My Username or Password</a>'),
+        '#weight' => -20,
+      );
+    }
+  }
+
   if ($form_id == 'user_register_form') {
     $setting = array(
       'payl_program_customizations_birthday_limit' => strtotime('-13 years'),
@@ -60,11 +80,61 @@ function payl_program_customizations_form_alter(&$form, &$form_state, $form_id) 
       );
     }
   }
+
+  //To provide a message if user has no email mentioned during registration
+  if($form_id == 'user_pass'){
+    $form['#validate'][1] = 'password_user'; //function to validate the user
+    $form['name']['#title'] = 'Please enter username';
+
+  }
+
+  // changing of display field name for reward entity
+  if($form_id == 'eck__entity__form_edit_reward_reward' || $form_id == 'eck__entity__form_add_reward_reward'){
+    $form['field_reward_message']['und'][0]['#title'] = 'Onscreen Alert';
+    $form['field_reward_notification']['und'][0]['#title'] = 'Message';
+  }
+
+  // Changing of text from participants to Sender
+  if ($form_id == 'privatemsg_list') {
+    $form['updated']['list']['#header']['participants']['data'] = t('Sender');
+  }
+
+  // Increasing string length
+  if ($form_id == 'user_register_form') {
+    $form['profile_main']['field_do_you_want_other_players_']['und']['#title'] = t('Do you want other players to be able to see your badges and prizes when they click on your username? They won\'t be able to see your real name.');
+  }
+
+  // Changing of button text from Add new Badge to Add Badge Image
+  if ($form_id == 'eck__entity__form_add_reward_reward') {
+    $form['field_reward_badge']['und']['actions']['ief_add']['#value'] = t('Add Badge Image');
+  }
 }
 
 function payl_program_customizations_user_register_validate($form, &$form_state) {
   $values = $form_state['values'];
   if (empty($values['name'])) {
     form_set_error('name', t('Please ensure to create your own username OR generate a new username'));
+  }
+}
+ //function to provide a message if user has no email associated with account.
+function password_user(&$form, &$form_state){
+  $form_value = $form_state['complete form']['name']['#value'];
+  if (filter_var($form_value, FILTER_VALIDATE_EMAIL)) {
+       drupal_set_message('Please enter only username','error');
+  } 
+
+   $mail_id = $form_state['values']['account'];
+   $mail = $mail_id->mail;
+   if($mail == ''){
+      drupal_set_message('Please seek the staff assistance to reset your password','error');
+   }
+}
+//function for private message when a user is followed
+function payl_program_customizations_flag_flag($flag, $entity_id, $account, $flagging){
+  $flag_name = arg(2);
+  if($flag_name == 'follow'){
+    $uid = $flagging->entity_id;
+    $user_name = $account->name;
+    privatemsg_new_thread(array(user_load($uid)), $user_name.' is now following you.', $user_name.' is now following you.');
   }
 }
