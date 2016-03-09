@@ -145,13 +145,16 @@
     	     display: inline-block;
     	     position: relative;
     	      .pm-view {
-    	      	float: right;
+    	      	position: absolute;
+    	      	top: 26%;
+    	      	right: -6px;
     	      	padding: 12px 22px;
     	      	@include bluebutton($font-size: 17px);
     	      }
     	 	 .pm {
-    	 	 	width: 100%;
+    	 	 	width: 90%;
     	 	 	display: inline-block;
+    	 	 	margin-bottom: 25px;
     	 	 	 .pm-subject {
     	 	 	 	width: 60%;
     	 	 	 	float: left;
@@ -160,6 +163,7 @@
     	 	 	 	@include arialbold;
     	 	 	 	  a {
     	 	 	 	  	color: $black;
+    	 	 	 	  	line-height: 1;
     	 	 	 	  }
     	 	 	 	 .pm-new {
     	 	 	 	 	float: left;
@@ -180,7 +184,6 @@
     	 	 	 	color: $black;
     	 	 	 	font-size: 17px;
     	 	 	 	@include arialregular;
-    	 	 	 	text-align: right;
     	 	 	 }
 
     	 	 }

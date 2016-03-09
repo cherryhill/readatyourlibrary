@@ -6840,7 +6840,9 @@ h1#page-title {
   position: relative;
 }
 .block.block-private-msg-custom .pm-custom .pm-view {
-  float: right;
+  position: absolute;
+  top: 26%;
+  right: -6px;
   padding: 12px 22px;
   color: #fff !important;
   font-family: McLaren-Regular !important;
@@ -6864,8 +6866,9 @@ h1#page-title {
   outline: none;
 }
 .block.block-private-msg-custom .pm-custom .pm {
-  width: 100%;
+  width: 90%;
   display: inline-block;
+  margin-bottom: 25px;
 }
 .block.block-private-msg-custom .pm-custom .pm .pm-subject {
   width: 60%;
@@ -6879,6 +6882,7 @@ h1#page-title {
 }
 .block.block-private-msg-custom .pm-custom .pm .pm-subject a {
   color: #000;
+  line-height: 1;
 }
 .block.block-private-msg-custom .pm-custom .pm .pm-subject .pm-new {
   float: left;
@@ -6904,7 +6908,6 @@ h1#page-title {
   font-style: normal !important;
   font-weight: normal !important;
   -webkit-font-smoothing: antialiased !important;
-  text-align: right;
 }
 .block.block-user-login {
   background: #267fda;
@@ -9918,6 +9921,7 @@ body .alert-box.success a.close:hover {
   font-style: normal !important;
   font-weight: normal !important;
   -webkit-font-smoothing: antialiased !important;
+  color: #000;
 }
 .page-user-profile .homebox #homebox-add .item-list ul li.last {
   float: right !important;
