@@ -5,7 +5,13 @@
      @media screen and (max-width: 767px) {
 	     	margin-bottom: 25px;
 	     }
-   
+     &.badge-reward-list {
+     	margin-bottom: 0 !important;
+     	 .badge_list {
+     	 	@include mclaren;
+     	 	font-size: 28px;
+     	 }
+     }
     &.dashboard-block {
     	.pagination.pager li {
     		@include noborder;			

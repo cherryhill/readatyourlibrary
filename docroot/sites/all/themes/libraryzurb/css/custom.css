@@ -6423,14 +6423,27 @@ h1#page-title {
   background-size: 15px;
 }
 
-.congratulations {
-  background: #f7fc63;
-  padding-top: 5px;
-  padding-bottom: 5px;
+.page-patron .button-group:nth-of-type(1) li {
+  display: none;
 }
-.congratulations .reward_text {
-  font-size: 14px;
-  line-height: 1;
+.page-patron .button-group:nth-of-type(2) {
+  float: left;
+}
+.page-patron .button-group:nth-of-type(2) a {
+  font-size: 17px !important;
+  border: none !important;
+  outline: none !important;
+  background: #fdeb52 !important;
+}
+.page-patron .button-group:nth-of-type(2) a:hover {
+  background: #f7fc63;
+}
+.page-patron .button-group:nth-of-type(2) li:nth-of-type(1) {
+  display: none;
+}
+.page-patron #edit-profile-main-field-user-birthday {
+  width: 100%;
+  display: inline-block;
 }
 
 .admin-menu .fixed {
@@ -6619,6 +6632,16 @@ h1#page-title {
   .block {
     margin-bottom: 25px;
   }
+}
+.block.badge-reward-list {
+  margin-bottom: 0 !important;
+}
+.block.badge-reward-list .badge_list {
+  font-family: McLaren-Regular !important;
+  font-weight: normal !important;
+  font-style: normal !important;
+  -webkit-font-smoothing: antialiased !important;
+  font-size: 28px;
 }
 .block.dashboard-block {
   background: #267fda;
@@ -9387,13 +9410,10 @@ body .alert-box.success a.close:hover {
   position: relative;
 }
 .page-rewards .pull-9.sidebar .block .view .views-row .views-field.views-field-field-badge-image:before {
-  counter-increment: section;
-  content: " " counter(section,decimal) ". ";
-  padding-right: 5px;
-  display: inline-block;
+  /* @include counter;
   position: absolute;
   left: -14px;
-  top: 15px;
+  top: 15px; */
 }
 .page-rewards .pull-9.sidebar .block .view .views-row .views-field.views-field-title {
   padding-left: 10px;
@@ -9403,11 +9423,17 @@ body .alert-box.success a.close:hover {
   margin: 0.5em 1em 0.5em 0;
 }
 .page-rewards .main #page-title {
+  display: none;
+}
+.page-rewards .main .view-badges .view-header {
   font-family: McLaren-Regular !important;
   font-weight: normal !important;
   font-style: normal !important;
   -webkit-font-smoothing: antialiased !important;
   font-size: 28px;
+  color: #000;
+  border: none !important;
+  outline: none !important;
 }
 .page-rewards .main .view-badges .view-content div.badges img {
   margin-right: 6%;
@@ -9415,7 +9441,7 @@ body .alert-box.success a.close:hover {
 .page-rewards .main .block .block-title {
   border: none !important;
   outline: none !important;
-  font-size: 28px;
+  font-size: 18px;
   color: #f6511d;
   font-family: McLaren-Regular !important;
   font-weight: normal !important;
@@ -9432,6 +9458,7 @@ body .alert-box.success a.close:hover {
 }
 .page-rewards .main .block .view .view-content .views-row {
   display: table-cell;
+  padding-right: 10px;
 }
 .page-rewards .main .block .view .view-content .views-row .views-field {
   width: 100%;
@@ -11935,11 +11962,12 @@ body .alert-box.success a.close:hover {
 .section-progress .main .block.progress-calendar div.reward_text {
   font-size: 14px;
   line-height: 1;
-  font-family: McLaren-Regular !important;
-  font-weight: normal !important;
-  font-style: normal !important;
-  -webkit-font-smoothing: antialiased !important;
-  margin-top: 10px;
+  padding-top: 10px;
+  background: #f7fc63;
+}
+.section-progress .main .block.progress-calendar div.reward_image {
+  background: #f7fc63;
+  padding-top: 10px;
 }
 .section-progress .main .block.progress-calendar.contextual-links-region {
   position: static;
@@ -11996,6 +12024,9 @@ body .alert-box.success a.close:hover {
 }
 .section-progress .main .block.progress-calendar #calendar .fc-content .fc-widget-content {
   border: 1px solid #f6511d;
+}
+.section-progress .main .block.progress-calendar #calendar .fc-content .fc-day .fc-day-content {
+  font-size: 0;
 }
 .section-progress .main .block.progress-calendar #calendar .fc-content .fc-day .fc-day-number {
   color: #267fda;
@@ -12419,6 +12450,14 @@ body .alert-box.success a.close:hover {
 .page-user-register #user-register-form #edit-account {
   width: 100%;
   display: inline-block;
+}
+.page-user-register #edit-profile-main-field-receive-notifications div.description {
+  font-size: 14px;
+  font-family: Arialbold !important;
+  font-style: normal !important;
+  font-weight: normal !important;
+  -webkit-font-smoothing: antialiased !important;
+  color: #4D4D4D;
 }
 
 /**

@@ -205,10 +205,10 @@
                                padding-right: 10px;
                                position: relative;
                                  &:before {
-                                 	@include counter;
+                                 	/* @include counter;
                                  	position: absolute;
                                  	left: -14px;
-                                 	top: 15px;
+                                 	top: 15px; */
                                  }
 			  		 	  	 }
 			  		 	  	 &.views-field-title {
@@ -231,10 +231,16 @@
 	}
 	.main {
 		  	#page-title {
-		  		@include mclaren;
-		  		font-size: 28px;
+		  		
+		  		display: none;
 		  	}
 	  		.view-badges {
+	  			.view-header {
+	  			@include mclaren;
+		  		font-size: 28px;
+		  		color: $black;
+		  		@include noborder;
+	  			}
 	  			.view-content {
 	  				div.badges {
 	  					img {
@@ -247,7 +253,7 @@
 		 .block {
 	  		.block-title {
 	  			@include noborder;
-	  			font-size: 28px;
+	  			font-size: 18px;
 	  			color: $orange;
 	  			@include mclaren;
 	  		}
@@ -259,6 +265,7 @@
 	  			 		width: 100%;
 	  			 			.views-row {
                           		display: table-cell;
+                          		padding-right: 10px;
                            			.views-field {
 			                           	 width: 100%;
 			                           	 display: inline-block;
@@ -2121,8 +2128,12 @@
 		 	 			 		div.reward_text {
 		 	 			 			font-size: 14px;
 		 	 			 			line-height: 1;
-		 	 			 			@include mclaren;
-		 	 			 			margin-top: 10px; 
+		 	 			 			padding-top: 10px; 
+		 	 			 			background: $button-hover;
+		 	 			 		}
+		 	 			 		div.reward_image {
+		 	 			 			background: $button-hover;
+		 	 			 			padding-top: 10px;
 		 	 			 		}
 			 	 		 	&.contextual-links-region {
 			 	 		 		position: static;
@@ -2186,6 +2197,9 @@
 					 	 			 			border: 1px solid $orange;
 					 	 			 		}
  	 			 							.fc-day {
+ 	 			 								     .fc-day-content {
+ 	 			 								     	font-size: 0;
+ 	 			 								     }
 	 	 			 								.fc-day-number {
 	 	 			 									color: $blue;
 	 	 			 								}
@@ -2455,5 +2469,12 @@
 			display: inline-block;
 		}
 	}
-	
+
+	#edit-profile-main-field-receive-notifications {
+		 div.description  {
+             font-size: 14px;
+             @include arialbold;
+             color: #4D4D4D;
+		 }
+	}
 }

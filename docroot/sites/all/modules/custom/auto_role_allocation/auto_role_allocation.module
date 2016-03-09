@@ -207,9 +207,22 @@ function auto_role_allocation_menu() {
     'access arguments' => array('access content'),
     'type' => MENU_CALLBACK,
   );
+  $items['raffle_filter_form'] = array(
+    'title' => 'Raffle Process',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('raffle_entry_form'),
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
+  );
   $items['raffle_pro'] = array(
     'title' => 'Raffle Process',
-    'page callback' => 'raffle_entry_ajax',
+    'page callback' => 'render_raffle_filter_form',
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
+  );
+  $items['raffle_user_list'] = array(
+    'title' => 'Raffle Process',
+    'page callback' => 'raffle_user_list',
     'access arguments' => array('access content'),
     'type' => MENU_CALLBACK,
   );
@@ -220,7 +233,7 @@ function auto_role_allocation_menu() {
     'type' => MENU_CALLBACK,
   );
   $items['test'] = array(
-    'title' => 'Raffle winner Process',
+    'title' => 'Test Menu',
     'page callback' => 'test',
     'access arguments' => array('access content'),
     'type' => MENU_CALLBACK,
@@ -232,16 +245,9 @@ function auto_role_allocation_menu() {
 /* test function */
 
 
-// function test() {
-//     $que = db_select('eck_reward', 'eck_r');
-//     $que->join('field_data_field_reward_raffle', 're_ra', 'eck_r.id = re_ra.entity_id');
-//     $que->join('eck_raffle', 'eck_rf', 'eck_rf.id = re_ra.field_reward_raffle_target_id');
-//     $que->condition('eck_r.id', 124, '=');
-//     $que->fields('eck_rf', array('type'));
-//     $res = $que->execute()->fetchField();
-
-//     print_r($res);die();
-// }
+function test() {
+  drupal_access_denied();
+}
 
 
 
@@ -277,33 +283,84 @@ function raffle_entry_process() {
     $reward_id = $value->field_reward_criteria_reward_target_id;
 
 
-    $oprat = "<input type = 'radio' name = 'raffle' class='active_raffle' id='raffle_radio_$raffle_id' value = '$reward_id'>";
+    $oprat = "<input type = 'radio' raffle_id = '$raffle_id' name = 'raffle' class='active_raffle' id='raffle_radio_$raffle_id' value = '$reward_id'>";
     if(!$count) {
       $out .= "<div><span>$raffle_title</span><span>$oprat</span></div>";
     }
   }
+
+  $out .= "<div class='raffle-filter-form'></div><div class='raffle-entry-user-list'></div>";
+
 
   
   return $out;
 
 }
 
+/* For rendering the raffle filter form */
 
-/* active raffle user list  */
+function render_raffle_filter_form($form, &$form_state) {
+  echo drupal_render(drupal_get_form('raffle_entry_form'));
+}
 
-function raffle_entry_ajax() {
+/* Raffle user list by filter form */
+
+function raffle_user_list($form, &$form_state) {
   $active_raffle_id = $_REQUEST['active_raffle_id'];
   $reward_id = $_REQUEST['reward_id'];
-  $_SESSION['active_raffle_id'] = $active_raffle_id;
+  $school = trim($_REQUEST['school']);
+  $organization = $_REQUEST['organization'];
+  $library_branch = $_REQUEST['library_branch'];
+  $grade = $_REQUEST['grade'];
+  
 
+  
   $query = db_select('field_data_field_raffle_entry_raffle', 'rentry');
   $query->join('eck_raffle', 'eck_r', 'rentry.entity_id = eck_r.id');
   $query->join('users', 'u', 'u.uid = eck_r.uid');
+  $query->join('profile', 'p', 'u.uid = p.uid');
+
+  $cnd = array();
+  if ($school != '') {
+    $query->leftJoin('field_data_field_school', 'fs', 'fs.entity_id = p.pid');
+    $query->leftJoin('taxonomy_term_data', 'fstd', 'fstd.tid = fs.field_school_tid');
+    $cnd[] = array('fs.field_school_tid', $school);
+  }
+
+  if ($organization != '') {
+    $query->join('field_data_field_user_organization', 'uo', 'uo.entity_id = p.pid');
+    $query->join('taxonomy_term_data', 'uotd', 'uotd.tid = uo.field_user_organization_tid');
+    $cnd[] = array('uo.field_user_organization_tid', $organization);
+  }
+
+  if ($library_branch != '') {
+    $query->join('field_data_field_library_branch', 'lb', 'lb.entity_id = p.pid');
+    $query->join('taxonomy_term_data', 'lbtd', 'lbtd.tid = lb.field_library_branch_tid');
+    $cnd[] = array('lb.field_library_branch_tid', $library_branch);
+  }
+
+  if ($grade != '') {
+    $query->join('field_data_field_user_grade', 'ug', 'ug.entity_id = p.pid');
+    $query->join('taxonomy_term_data', 'ugtd', 'ugtd.tid = ug.field_user_grade_tid');
+    $cnd[] = array('ug.field_user_grade_tid', $grade);
+  }
+
   $query->condition('rentry.field_raffle_entry_raffle_target_id', $active_raffle_id, '=');
+  if (count($cnd)) {
+    foreach($cnd as $val) {
+      $cnd_fld = $val[0];
+      $cnd_val = $val[1];
+      $query->condition($cnd_fld, $cnd_val);
+    }
+  }
   $query->fields('eck_r', array('uid'));
   $query->fields('u', array('name'));
+  // echo $active_raffle_id . ' ';
+  // echo $query->__toString(); die;
   $res = $query->execute()->fetchAll();
+
   $raffle_users_list = array();
+  
   foreach($res as $v) {
     $uid = $v->uid;
     $name = $v->name;
@@ -341,7 +398,7 @@ function raffle_entry_ajax() {
     $user_name = $v['name'];
     $raffle_count = $v['count'];
     $raffle_winner = $v['raffle_winner'];
-    $operation = "<input type = 'checkbox' id = 'chkbox_$k'>";
+    $operation = "<input class = 'raffle-prospective-winners' type = 'checkbox' id = 'chkbox_$k'>";
     $tbl_rows[] = array(
       array( 'data' => $user_name),
       array( 'data' => $raffle_count),
@@ -359,12 +416,67 @@ function raffle_entry_ajax() {
   echo $output;
 }
 
+function _get_options($vocab_name) {
+  $term_list = taxonomy_vocabulary_machine_name_load($vocab_name);
+  $tree = taxonomy_get_tree($term_list->vid);
+  $options = array();
+  $options[''] = '- Select -';
+  foreach ($tree as $value) {
+    $options[$value->tid] = $value->name;
+  }
+  return $options;
+}
+
+
+/* active raffle user list  */
+
+function raffle_entry_form($form, &$form_state) {
+  $school_options = _get_options('schools');
+  $organization_options = _get_options('organization');
+  $librarybranches_options = _get_options('library_branches');
+  $grade_options = _get_options('grade');
+
+  $form['school'] = array(
+    '#title' => t('School'),
+    '#type' => 'select',
+    '#options' => $school_options, 
+  );
+  $form['organization'] = array(
+    '#title' => t('Organization'),
+    '#type' => 'select',
+    '#options' => $organization_options,
+  ); 
+  $form['library_branch'] = array(
+    '#title' => t('Library Branch'),
+    '#type' => 'select',
+    '#options' => $librarybranches_options,
+  );
+  $form['grade'] = array(
+    '#title' => t('Grade'),
+    '#type' => 'select',
+    '#options' => $grade_options,
+  );
+  $form['button'] = array(
+    '#value' => 'Submit',
+    '#type' => 'button',
+    '#id' => 'raffle_form_button',
+  );
+
+
+  
+   return $form;
+
+
+  
+}
+
 
 /* Raffle winner list process */
 
 function raffle_winner_ajax() {
   $active_raffle_uid = $_REQUEST['active_raffle_uid'];
   $reward_id = $_REQUEST['reward_id'];
+  
 
   $raffle_uid = explode(',', $active_raffle_uid);
   //print_r($raffle_uid);die();
