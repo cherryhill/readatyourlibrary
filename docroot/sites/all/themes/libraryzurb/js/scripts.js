@@ -36,20 +36,21 @@ jQuery( document ).ready(function() {
         var location = window.location;
         var baseUrl1 = location.protocol + "//" + location.host + '/raffle_pro';
 
-        var active_raffle = jQuery(this).attr('id');
-        var active_raffle_exp = active_raffle.split('_');
-        var active_raffle_id = parseInt(active_raffle_exp[2]);
-        var reward_id = jQuery(this).val();
+        // var active_raffle = jQuery(this).attr('id');
+        // var active_raffle_exp = active_raffle.split('_');
+        // var active_raffle_id = parseInt(active_raffle_exp[2]);
+        // var reward_id = jQuery(this).val();
 
       jQuery.ajax({
         
             //url: 'http://localhost/playatyourlibrary/docroot/raffle_pro',
             url: baseUrl1,
-            async: false,
-            type: 'post',
-            data: 'active_raffle_id='+active_raffle_id+'&reward_id='+reward_id,
+            // async: false,
+            // type: 'post',
+            // data: 'reward_id='+reward_id,
             success: function(res){
-              jQuery('.raffle-prospective-winners').html(res);
+                //alert(res);
+              jQuery('.raffle-filter-form').html(res);
             },
             error: function(jqXHR, data, error){
                 // console.log(jqXHR);
@@ -65,25 +66,6 @@ jQuery( document ).ready(function() {
 jQuery('#edit-field-user-random-list-1-und-0-randomized-text-regenerate').text('Change Description');
 jQuery('#edit-field-user-random-list-2-und-0-randomized-text-regenerate').text('Change Color');
 jQuery('#edit-field-user-random-list-3-und-0-randomized-text-regenerate').text('Change Creature');
-
-/* jQuery for raffle winner process */
-
-
-
-    // jQuery( ".raffle-list-submit #raffle-entry-list-btn" ).click(function() {
-    //     alert('fdasdf');
-    //     // //var location = window.location;
-    //     // //var baseUrl1 = location.protocol + "//" + location.host + '/raffle_winner';
-
-    //     // jQuery( ".raffle-prospective-winners .sticky-enabled input" ).each(function() {
-    //     //   var tid = jQuery( this ).attr( "id" );
-    //     //   alert(tid);
-    //     // });
-
-        
-    // });
-
-
 
 
   /**jquery for new msg**/
@@ -310,13 +292,63 @@ if(!div2.is(':empty')){
 
 
 
+
+
+jQuery(document).on('click','#raffle_form_button',function() {
+
+    
+    
+        var location = window.location;
+        var baseUrl1 = location.protocol + "//" + location.host + '/raffle_user_list';
+        
+
+
+        var raffleId = 0;
+        jQuery( ".active_raffle" ).each(function() {
+          if(jQuery("input[name='raffle']:checked").val()) {
+             raffleId = jQuery(this).attr('raffle_id');
+
+          }
+
+        });
+
+
+        
+        var reward_id = jQuery("input[name='raffle']:checked").val();
+        var school = jQuery('#edit-school').val();
+        var organization = jQuery('#edit-organization').val();
+        var library_branch = jQuery('#edit-library-branch').val();
+        var grade = jQuery('#edit-grade').val();
+
+      jQuery.ajax({
+        
+            //url: 'http://localhost/playatyourlibrary/docroot/raffle_user_list',
+            url: baseUrl1,
+            async: false,
+            type: 'post',
+            data: 'active_raffle_id='+raffleId+'&school='+school+'&organization='+organization+'&library_branch='+library_branch+'&grade='+grade+'&reward_id='+reward_id,
+            success: function(res){
+                //alert(res);
+              jQuery('.raffle-entry-user-list').html(res);
+            },
+            error: function(jqXHR, data, error){
+                // console.log(jqXHR);
+                // console.log(data);
+                // console.log(error);
+            }
+        });
+
+      
+    
+ });
+
 jQuery(document).on('click','#raffle-entry-list-btn',function() {
   
   var location = window.location;
   var baseUrl1 = location.protocol + "//" + location.host + '/raffle_winner';
   var raffleUid = '';
 
-  jQuery( ".raffle-prospective-winners .sticky-enabled input:checkbox:checked" ).each(function() {
+  jQuery( "input:checkbox:checked" ).each(function() { 
     var uid = jQuery( this ).attr( "id" );
     var uid_exp = uid.split('_');
     if (raffleUid == '') {
@@ -333,6 +365,8 @@ jQuery(document).on('click','#raffle-entry-list-btn',function() {
 
   var reward_id = jQuery('#raffle_reward_id').val();
 
+
+
   jQuery.ajax({
     //url: 'http://localhost/playatyourlibrary/docroot/raffle_winner',
     url: baseUrl1,
@@ -348,3 +382,4 @@ jQuery(document).on('click','#raffle-entry-list-btn',function() {
  
 
 });
+

@@ -85,7 +85,7 @@ function payl_program_customizations_form_alter(&$form, &$form_state, $form_id) 
   if($form_id == 'user_pass'){
     $form['#validate'][1] = 'password_user'; //function to validate the user
     $form['name']['#title'] = 'Please enter username';
-
+    $form['actions']['submit']['#value'] = 'Submit';
   }
 
   // changing of display field name for reward entity
