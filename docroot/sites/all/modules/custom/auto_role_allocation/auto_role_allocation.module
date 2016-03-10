@@ -103,9 +103,17 @@ function progress_user_block_program() {
     return "<div class='all_rewrad_won'>Congratulations! You have completed the reading program and have received all the reading rewards.</div>";
   }
   else {
-    $msg = "<span class='msg-highlight'>Total days read: $total_read_days</span><br/>";
-    $msg .= "<div class='days-left'>$reads_for_next_reward more day of reading needed to receive your next prize</div>";
-    $msg .= "<div><a href='".$base_url."/progress'>Go to the Progress Page</a></div>";
+    if($reads_for_next_reward == 1) {
+      $msg = "<span class='msg-highlight'>Total days read: $total_read_days</span><br/>";
+      $msg .= "<div class='days-left'>$reads_for_next_reward more day of reading needed to receive your next prize</div>";
+      $msg .= "<div><a href='".$base_url."/progress'>Go to the Progress Page</a></div>";
+    }
+    else {
+      $msg = "<span class='msg-highlight'>Total days read: $total_read_days</span><br/>";
+      $msg .= "<div class='days-left'>$reads_for_next_reward more days of reading needed to receive your next prize</div>";
+      $msg .= "<div><a href='".$base_url."/progress'>Go to the Progress Page</a></div>";
+    }
+    
 
     return "<div>$msg</div>";
   }
@@ -153,12 +161,19 @@ function progress_user_block() {
   }
 
   $reads_for_next_reward = ($closest_reward / $activity_point) - $total_read_days;
+
   if($reads_for_next_reward < 0) {
     return "<div class='all_rewrad_won'>Congratulations! You have completed the reading program and have received all the reading rewards.</div>";
   }
   else {
-    $msg = "$reads_for_next_reward more reads needed to receive your next prize";
+    if($reads_for_next_reward == 1) {
+      $msg = "$reads_for_next_reward more day of reading needed to receive your next prize";
 
+      
+    }
+    else {
+      $msg = "$reads_for_next_reward more days of reading needed to receive your next prize";
+    }
     return "<div>$msg</div>";
   }
   
@@ -481,14 +496,14 @@ function raffle_winner_ajax() {
   $raffle_uid = explode(',', $active_raffle_uid);
   //print_r($raffle_uid);die();
   $raffle_id = $_SESSION['active_raffle_id'];
+
   
   foreach ($raffle_uid as $k => $v) {
     
-      
       play_library_program_create_raffle_winner($raffle_id, $v);
       play_library_program_create_reward_claim($reward_id, $v, 1);
   }
-  //play_library_program_create_raffle_winner($raffle_id, $active_raffle_uid);
+  //comment play_library_program_create_raffle_winner($raffle_id, $active_raffle_uid);
   
   echo "Request executed successfully";
 }
@@ -761,10 +776,16 @@ function user_progress() {
     return "<div class='all_rewrad_won'>Congratulations! You have completed the reading program and have received all the reading rewards.</div>";
   }
   else {
-    $msg = "<span class='msg-highlight'>Total days read: $total_read_days</span><br/>";
-    $msg .= "$reads_for_next_reward more days read needed to receive your next prize";
-    $msg .= "<a href = 'progress' class = 'button'>Show My Progress</a>";
-
+      if($reads_for_next_reward == 1) {
+        $msg = "<span class='msg-highlight'>Total days read: $total_read_days</span><br/>";
+        $msg .= "$reads_for_next_reward more day of reading needed to receive your next prize";
+        $msg .= "<a href = '/progress' class = 'button'>Show My Progress</a>";
+      }
+      else {
+        $msg = "<span class='msg-highlight'>Total days read: $total_read_days</span><br/>";
+        $msg .= "$reads_for_next_reward more days of reading needed to receive your next prize";
+        $msg .= "<a href = '/progress' class = 'button'>Show My Progress</a>";
+      }
     return "<div>$msg</div>";
   }
 }
