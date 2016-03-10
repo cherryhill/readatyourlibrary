@@ -6446,6 +6446,42 @@ h1#page-title {
   display: inline-block;
 }
 
+/**css for login and signup button in unauthencated pages***/
+.not-logged-in .pre-header {
+  padding-bottom: 0 !important;
+}
+.not-logged-in .pre-header .pre-header-left .top-menu {
+  float: none !important;
+  width: 100% !important;
+}
+.not-logged-in .pre-header .pre-header-left .top-menu .block-menu-menu-authenticated-links {
+  float: right;
+  margin-bottom: 0;
+}
+.not-logged-in .pre-header .pre-header-left .top-menu .block-menu-menu-authenticated-links .menu li a {
+  color: #fff !important;
+  font-family: McLaren-Regular !important;
+  font-weight: normal !important;
+  font-style: normal !important;
+  -webkit-font-smoothing: antialiased !important;
+  background: #267fda !important;
+  border-radius: 10px;
+  padding: 9px 22px;
+  -webkit-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+  box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+  border: none;
+  text-transform: capitalize;
+  font-size: 17px;
+  margin: 5px !important;
+}
+.not-logged-in .pre-header .pre-header-left .top-menu .block-menu-menu-authenticated-links .menu li a:hover, .not-logged-in .pre-header .pre-header-left .top-menu .block-menu-menu-authenticated-links .menu li a:focus {
+  color: #fff;
+  background: #267fda;
+  opacity: 1;
+  outline: none;
+}
+
 .admin-menu .fixed {
   top: 1.8125em;
 }
@@ -7217,7 +7253,7 @@ h1#page-title {
 }
 .block.announcement .views-field-body ol li {
   position: relative;
-  font-size: 17px;
+  font-size: 18px;
   font-family: Arialregular !important;
   font-style: normal !important;
   font-weight: normal !important;
@@ -7235,7 +7271,7 @@ h1#page-title {
   display: block;
   visibility: visible;
   position: absolute;
-  top: 0;
+  top: 3px;
   left: -32px;
   background: url("../images/libraryzurb/arrow-list.png") no-repeat;
 }
@@ -7370,7 +7406,8 @@ h1#page-title {
 .block.homepage-blocks p {
   padding-left: 40px;
   padding-right: 40px;
-  font-size: 17px;
+  font-size: 18px;
+  line-height: 1.4;
 }
 .block.footer-playlibdetails, .block.playlib-copyright, .block.footer-playlibpolicies {
   width: 100%;
@@ -9783,11 +9820,12 @@ body .alert-box.success a.close:hover {
   font-size: 20px;
 }
 .section-programs .main .view .view-content .views-row .views-field.views-field-body {
-  font-size: 17px;
+  font-size: 18px;
   font-family: Arialregular !important;
   font-style: normal !important;
   font-weight: normal !important;
   -webkit-font-smoothing: antialiased !important;
+  line-height: 1.4;
 }
 .section-programs .main .view .view-content .views-row .views-field.views-field-field-sign-up a {
   color: #000;
@@ -11102,6 +11140,8 @@ body .alert-box.success a.close:hover {
   font-style: normal !important;
   font-weight: normal !important;
   -webkit-font-smoothing: antialiased !important;
+  font-size: 18px;
+  line-height: 1.4;
 }
 .page-reviews .main .view-content .item-list ol li .views-field.views-field-nothing div {
   float: left;
@@ -11127,6 +11167,7 @@ body .alert-box.success a.close:hover {
   font-weight: normal !important;
   -webkit-font-smoothing: antialiased !important;
   padding-top: 16px;
+  font-size: 18px;
 }
 .page-reviews .main .view-content .item-list ol li .views-field.views-field-nothing div.field-name-field-avatar-image {
   position: relative;
@@ -12950,7 +12991,7 @@ p {
   font-style: normal !important;
   font-weight: normal !important;
   -webkit-font-smoothing: antialiased !important;
-  line-height: 1.2;
+  line-height: 1.4;
   margin-bottom: 23px;
   display: inline-block;
 }
