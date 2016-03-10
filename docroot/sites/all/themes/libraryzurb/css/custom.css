@@ -6816,10 +6816,6 @@ h1#page-title {
   color: #fff;
   border-radius: 20px;
   background: #fdeb52;
-  font-family: McLaren-Regular !important;
-  font-weight: normal !important;
-  font-style: normal !important;
-  -webkit-font-smoothing: antialiased !important;
   -webkit-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
   -moz-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
   box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
@@ -6845,8 +6841,8 @@ h1#page-title {
 }
 .block.block-private-msg-custom .pm-custom .pm-view {
   position: absolute;
-  top: 20%;
-  right: 0;
+  top: 29%;
+  right: -6px;
   padding: 12px 22px;
   color: #fff !important;
   font-family: McLaren-Regular !important;
@@ -6870,12 +6866,12 @@ h1#page-title {
   outline: none;
 }
 .block.block-private-msg-custom .pm-custom .pm {
-  width: 80%;
+  width: 90%;
   display: inline-block;
   margin-bottom: 25px;
 }
 .block.block-private-msg-custom .pm-custom .pm .pm-subject {
-  width: 50%;
+  width: 60%;
   float: left;
   color: #cc0d25;
   font-size: 17px;
@@ -6886,6 +6882,7 @@ h1#page-title {
 }
 .block.block-private-msg-custom .pm-custom .pm .pm-subject a {
   color: #000;
+  line-height: 1;
 }
 .block.block-private-msg-custom .pm-custom .pm .pm-subject .pm-new {
   float: left;
@@ -6893,7 +6890,7 @@ h1#page-title {
   color: #cc0d25;
 }
 .block.block-private-msg-custom .pm-custom .pm .pm-admin {
-  width: 25%;
+  width: 19%;
   float: left;
   font-size: 17px;
   font-family: Arialregular !important;
@@ -6904,7 +6901,7 @@ h1#page-title {
 }
 .block.block-private-msg-custom .pm-custom .pm .pm-date {
   float: left;
-  width: 25%;
+  width: 19%;
   color: #000;
   font-size: 17px;
   font-family: Arialregular !important;
@@ -9129,11 +9126,18 @@ body .alert-box.success a.close:hover {
   }
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 1026px) {
   .large-3 {
     width: 31.87%;
   }
 }
+@media only screen and (min-width: 768px) and (max-width: 1025px) {
+  .large-3 {
+    width: 38%;
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
 @media screen and (max-width: 767px) {
   .large-3 {
     width: 100%;
@@ -9141,9 +9145,16 @@ body .alert-box.success a.close:hover {
   }
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 1026px) {
   .large-9 {
     width: 68.12%;
+  }
+}
+@media only screen and (min-width: 768px) and (max-width: 1025px) {
+  .large-9 {
+    width: 62%;
+    padding-left: 0;
+    padding-right: 0;
   }
 }
 @media screen and (max-width: 767px) {
@@ -9153,9 +9164,14 @@ body .alert-box.success a.close:hover {
   }
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 1026px) {
   .pull-9 {
     right: 68.4%;
+  }
+}
+@media only screen and (min-width: 768px) and (max-width: 1025px) {
+  .pull-9 {
+    right: 63.4%;
   }
 }
 @media screen and (max-width: 767px) {
@@ -9164,9 +9180,14 @@ body .alert-box.success a.close:hover {
   }
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 1026px) {
   .push-3 {
     left: 31.9%;
+  }
+}
+@media only screen and (min-width: 768px) and (max-width: 1025px) {
+  .push-3 {
+    left: 38.9%;
   }
 }
 @media screen and (max-width: 767px) {
@@ -9323,7 +9344,7 @@ body .alert-box.success a.close:hover {
   line-height: 40px;
   width: 100%;
   background: #fdeb52 url("../images/libraryzurb/view-album.png") no-repeat;
-  background-position: 10px !important;
+  background-position: 37px center !important;
   color: #000;
   border-radius: 10px;
   text-align: center;
@@ -9338,6 +9359,8 @@ body .alert-box.success a.close:hover {
   position: absolute;
   top: 0;
   left: 0;
+  text-align: right;
+  padding-right: 20px;
 }
 .section-media .main .view .views-row .flickr-citation a:hover:after {
   background: #f7fc63 url("../images/libraryzurb/view-album.png") no-repeat;
@@ -9425,7 +9448,7 @@ body .alert-box.success a.close:hover {
 .page-rewards .main #page-title {
   display: none;
 }
-.page-rewards .main .view-badges .view-header {
+.page-rewards .main .view-badges .view-header h2 {
   font-family: McLaren-Regular !important;
   font-weight: normal !important;
   font-style: normal !important;
@@ -9883,15 +9906,22 @@ body .alert-box.success a.close:hover {
   color: #fff;
   border-radius: 20px;
   background: #fdeb52;
-  font-family: McLaren-Regular !important;
-  font-weight: normal !important;
-  font-style: normal !important;
-  -webkit-font-smoothing: antialiased !important;
   -webkit-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
   -moz-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
   box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
   border-radius: 20px;
   padding: 36px 20px 25px;
+  position: relative;
+}
+.page-user-profile .homebox #homebox-add:after {
+  content: "Click on a button to add it to your Dashboard.";
+  width: 100%;
+  height: auto;
+  font-family: Arialregular !important;
+  font-style: normal !important;
+  font-weight: normal !important;
+  -webkit-font-smoothing: antialiased !important;
+  color: #000;
 }
 .page-user-profile .homebox #homebox-add .item-list ul li.last {
   float: right !important;
@@ -10886,10 +10916,6 @@ body .alert-box.success a.close:hover {
   color: #fff;
   border-radius: 20px;
   background: #fdeb52;
-  font-family: McLaren-Regular !important;
-  font-weight: normal !important;
-  font-style: normal !important;
-  -webkit-font-smoothing: antialiased !important;
   -webkit-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
   -moz-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
   box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
@@ -11810,10 +11836,6 @@ body .alert-box.success a.close:hover {
   color: #fff;
   border-radius: 20px;
   background: #fdeb52;
-  font-family: McLaren-Regular !important;
-  font-weight: normal !important;
-  font-style: normal !important;
-  -webkit-font-smoothing: antialiased !important;
   -webkit-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
   -moz-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
   box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
@@ -11824,6 +11846,24 @@ body .alert-box.success a.close:hover {
   width: 100%;
   padding: 20px 0 20px 2%;
   left: 0;
+}
+.section-progress .main .view-calendar-sticker .view-header div {
+  font-family: McLaren-Regular !important;
+  font-weight: normal !important;
+  font-style: normal !important;
+  -webkit-font-smoothing: antialiased !important;
+}
+.section-progress .main .view-calendar-sticker .view-header div.prg_lib {
+  color: #000;
+  line-height: 1;
+  padding-bottom: 20px;
+  font-size: 15px;
+}
+.section-progress .main .view-calendar-sticker .view-header div.days_progress {
+  font-size: 26px;
+  color: #cc0d25;
+  line-height: 1;
+  padding-bottom: 20px;
 }
 .section-progress .main .view-calendar-sticker .view-header p {
   font-family: McLaren-Regular !important;

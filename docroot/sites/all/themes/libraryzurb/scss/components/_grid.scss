@@ -50,8 +50,13 @@ body {
 	}
 } 
 .large-3 {
-   @media screen and (min-width: 768px) {
+   @media screen and (min-width: 1026px) {
 	width: 31.87%;
+   }
+   @media only screen and (min-width: 768px) and (max-width: 1025px) {
+   	 width: 38%;
+   	 padding-left: 0;
+   	 padding-right: 0;
    }
    @media screen and (max-width: 767px) {
    	width: 100%;
@@ -59,25 +64,36 @@ body {
    }
 }
 .large-9 {
-	@media screen and (min-width: 768px) {
+	@media screen and (min-width: 1026px) {
 	width: 68.12%;
 }
+   @media only screen and (min-width: 768px) and (max-width: 1025px) {
+   	  width: 62%;
+   	  padding-left: 0;
+   	  padding-right: 0;
+   }
  @media screen and (max-width: 767px) {
  	width: 100%;
  	display: inline-block;
  }
 }
 .pull-9 {
-	@media  screen and (min-width: 768px) {
+	@media  screen and (min-width: 1026px) {
 		right: 68.4%;
+	}
+	@media only screen and (min-width: 768px) and (max-width: 1025px) {
+		right: 63.4%;
 	}
 	@media screen and (max-width: 767px) {
 		right: 0;
 	}
 }
 .push-3 {
-	@media  screen and (min-width: 768px) {
+	@media  screen and (min-width: 1026px) {
 		left: 31.9%;
+	}
+	@media only screen and (min-width: 768px) and (max-width: 1025px) {
+		left: 38.9%;
 	}
 	@media screen and (max-width: 767px) {
 		left: 0;

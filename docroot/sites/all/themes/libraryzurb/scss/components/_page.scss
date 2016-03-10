@@ -129,7 +129,7 @@
 			 	 	   	    	line-height: 40px;
 			 	 	   	    	width: 100%;
 			 	 	   	    	background: $yellow url('../images/libraryzurb/view-album.png') no-repeat;
-			 	 	   	    	background-position: 10px !important;
+			 	 	   	    	background-position: 37px center !important;
 			 	 	   	    	color: $black;
 			 	 	   	    	border-radius: 10px;
 			 	 	   	    	text-align: center;
@@ -139,6 +139,8 @@
 			 	 	   	    	position: absolute;
 			 	 	   	    	top: 0;
 			 	 	   	    	left: 0;
+			 	 	   	    	text-align: right;
+			 	 	   	    	padding-right: 20px;
 			 	 	   	    }
 			 	 	   	    &:hover {
 			 	 	   	    	&:after {
@@ -236,10 +238,12 @@
 		  	}
 	  		.view-badges {
 	  			.view-header {
-	  			@include mclaren;
-		  		font-size: 28px;
-		  		color: $black;
-		  		@include noborder;
+		  		    h2 {
+		  			@include mclaren;
+			  		font-size: 28px;
+			  		color: $black;
+			  		@include noborder;
+			  		  }
 	  			}
 	  			.view-content {
 	  				div.badges {
@@ -562,6 +566,14 @@
 	 		 	@include yellowbackground;
 	 		 	border-radius: 20px;
 	 		 	padding: 36px 20px 25px;
+	 		 	position: relative;
+	 		 	  &:after {
+	 		 	  	content: "Click on a button to add it to your Dashboard.";
+	 		 	  	width: 100%;
+	 		 	  	height: auto;
+	 		 	  	@include arialregular;
+	 		 	  	color: $black;
+	 		 	  }
 		 		 	.item-list ul li.last {
 		 		 	 	float: right !important;
 		 		 	}
@@ -1991,6 +2003,23 @@
 			 	 	 	 	width: 100%;
 			 	 	 	 	padding: 20px 0 20px 2%;
 			 	 	 	 	left: 0;
+			 	 	 	 	  div {
+			 	 	 	 	  	@include mclaren;
+			 	 	 	 	  	 &.prg_lib {
+			 	 	 	 	  	 	
+				 	 	 	 	 	
+				 	 	 	 	 	color: $black;
+				 	 	 	 	 	line-height: 1;
+				 	 	 	 	 	padding-bottom: 20px;
+				 	 	 	 	 	font-size: 15px;
+			 	 	 	 	  	 }
+			 	 	 	 	  	 &.days_progress {
+			 	 	 	 	  	 	font-size: 26px;
+			 	 	 	 	  	 	color: $red;
+			 	 	 	 	  	 	line-height: 1;
+				 	 	 	 	 	padding-bottom: 20px;
+			 	 	 	 	  	 }
+			 	 	 	 	  }
  	 	 	 	 				p {
 				 	 	 	 	 	@include mclaren;
 				 	 	 	 	 	margin-bottom: 0;
