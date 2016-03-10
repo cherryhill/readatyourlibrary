@@ -172,3 +172,27 @@ h1#page-title {
  		display: inline-block;
  	}
  }
+ /**css for login and signup button in unauthencated pages***/
+  .not-logged-in {
+  	.pre-header {
+  		padding-bottom: 0 !important;
+  		.pre-header-left { 
+  			.top-menu { 
+  				float: none !important;
+  				width: 100% !important;
+  				 .block-menu-menu-authenticated-links {
+  				 	float: right;
+  				 	margin-bottom: 0;
+  				 	 .menu {
+  				 	 	li {
+  				 	 		a {
+  				 	 			@include bluebutton($font-size: 17px);
+  				 	 			margin: 5px !important;
+  				 	 		}
+  				 	 	}
+  				 	 }
+  				 }
+  			}
+  		}
+  	}
+  }
