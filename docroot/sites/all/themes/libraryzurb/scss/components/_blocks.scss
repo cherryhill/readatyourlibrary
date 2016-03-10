@@ -344,13 +344,13 @@
 		 		
 		 		 li {
 		 		 	position: relative;
-		 		 	font-size: 17px;
+		 		 	font-size: 18px;
 		 		 	 @media screen and (max-width: 767px) {
 	     				font-size: 14px;
 	     				}
 		 		 	@include arialregular;
 		 		 	&:after {
-		 		 		@include previous(47px, 21px, $left: -32px, $top: 0);
+		 		 		@include previous(47px, 21px, $left: -32px, $top: 3px);
 		 		 		background: url('../images/libraryzurb/arrow-list.png') no-repeat;
 		 		 	}
 		 		 }
@@ -467,7 +467,8 @@
 			         p {
 			           padding-left: 40px;
 			           padding-right: 40px;
-			           font-size: 17px;
+			           font-size: 18px;
+			           line-height: 1.4;
 			         }
 	         
 	      }
