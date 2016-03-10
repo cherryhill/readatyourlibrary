@@ -192,7 +192,14 @@
 	              font-size: 22px;
 	              @include white-text;
 			  	}
-			  	.view {
+			  	&.view-id-my_rewards {
+			  		.views-field-field-image-upload {
+			  			float: left;
+			  			display: table-row;
+			  		}
+			  	}
+			  	&.block-views-my-badges-block-1 {
+			  		.view {
 			  		display: table;
 			  		width: 100%;
 			  		counter-reset: section;
@@ -218,6 +225,7 @@
 			  		 	  	 }
 			  		 	  }
 			  		 }
+			  	  }
 			  	}
 		  		.views-row {
 		  			.views-field-nothing {
@@ -1804,6 +1812,10 @@
 		 	width: 100%;
 		 	right: 0;
 		 	margin-bottom: 25px;
+		 }
+		 @media only screen and (min-width: 768px) and (max-width: 1025px) {
+		 	width: 38%;
+		 	right: 63.4%;
 		 }
 	}
 	/* .pull-9.sidebar, .pull-9.sidebar2 {

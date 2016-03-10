@@ -6551,6 +6551,12 @@ h1#page-title {
   height: 106px;
   width: 100px;
 }
+@media screen and (min-width: 768px) and (max-width: 1025px) {
+  .l-header .row.header-middle section.block-menu-menu-secoundary-menu ul.menu li {
+    height: 70px;
+    width: 60px;
+  }
+}
 .l-header .row.header-middle section.block-menu-menu-secoundary-menu ul.menu li a {
   position: relative;
   width: 100%;
@@ -6558,23 +6564,7 @@ h1#page-title {
   font-size: 0;
 }
 .l-header .row.header-middle section.block-menu-menu-secoundary-menu ul.menu li a:after {
-  content: "";
-  width: 94px;
-  height: 105px;
-  display: block;
-  visibility: visible;
-  position: absolute;
-  top: 0;
-  left: 0;
-  	 			  	  	   	/* width: 94px;
-                            height: 105px; */
   background-size: 100px;
-  /* content: ""; */
-  /* display: block;
-  position: absolute;
-  left: 0;
-  top: 0;
-  visibility: visible; */
   -webkit-transition-duration: 0.8s;
   -moz-transition-duration: 0.8s;
   -o-transition-duration: 0.8s;
@@ -6584,44 +6574,128 @@ h1#page-title {
   -o-transition-property: -o-transform;
   transition-property: transform;
 }
+@media screen and (min-width: 1026px) {
+  .l-header .row.header-middle section.block-menu-menu-secoundary-menu ul.menu li a:after {
+    content: "";
+    width: 94px;
+    height: 105px;
+    display: block;
+    visibility: visible;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+}
+@media only screen and (min-width: 768px) and (max-width: 1025px) {
+  .l-header .row.header-middle section.block-menu-menu-secoundary-menu ul.menu li a:after {
+    content: "";
+    width: 60px;
+    height: 70px;
+    display: block;
+    visibility: visible;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+}
 .l-header .row.header-middle section.block-menu-menu-secoundary-menu ul.menu li a.current-program {
   position: relative;
 }
 .l-header .row.header-middle section.block-menu-menu-secoundary-menu ul.menu li a.current-program:hover:after, .l-header .row.header-middle section.block-menu-menu-secoundary-menu ul.menu li a.current-program.active-trail:after {
   background: url("../images/libraryzurb/currentprogs_hover.png") no-repeat;
 }
+@media only screen and (min-width: 768px) and (max-width: 1025px) {
+  .l-header .row.header-middle section.block-menu-menu-secoundary-menu ul.menu li a.current-program:hover:after, .l-header .row.header-middle section.block-menu-menu-secoundary-menu ul.menu li a.current-program.active-trail:after {
+    background-size: 100%;
+  }
+}
 .l-header .row.header-middle section.block-menu-menu-secoundary-menu ul.menu li a.current-program:after {
   background: url("../images/libraryzurb/current-programs.png") no-repeat;
+}
+@media only screen and (min-width: 768px) and (max-width: 1025px) {
+  .l-header .row.header-middle section.block-menu-menu-secoundary-menu ul.menu li a.current-program:after {
+    background-size: 100%;
+  }
 }
 .l-header .row.header-middle section.block-menu-menu-secoundary-menu ul.menu li a.activities:hover:after, .l-header .row.header-middle section.block-menu-menu-secoundary-menu ul.menu li a.activities.active-trail:after {
   background: url("../images/libraryzurb/activities_hover.png") no-repeat;
 }
+@media only screen and (min-width: 768px) and (max-width: 1025px) {
+  .l-header .row.header-middle section.block-menu-menu-secoundary-menu ul.menu li a.activities:hover:after, .l-header .row.header-middle section.block-menu-menu-secoundary-menu ul.menu li a.activities.active-trail:after {
+    background-size: 100%;
+  }
+}
 .l-header .row.header-middle section.block-menu-menu-secoundary-menu ul.menu li a.activities:after {
   background: url("../images/libraryzurb/activities.png") no-repeat;
+}
+@media only screen and (min-width: 768px) and (max-width: 1025px) {
+  .l-header .row.header-middle section.block-menu-menu-secoundary-menu ul.menu li a.activities:after {
+    background-size: 100%;
+  }
 }
 .l-header .row.header-middle section.block-menu-menu-secoundary-menu ul.menu li a.rewards:hover:after, .l-header .row.header-middle section.block-menu-menu-secoundary-menu ul.menu li a.rewards.active-trail:after {
   background: url("../images/libraryzurb/rewards_hover.png") no-repeat;
 }
+@media only screen and (min-width: 768px) and (max-width: 1025px) {
+  .l-header .row.header-middle section.block-menu-menu-secoundary-menu ul.menu li a.rewards:hover:after, .l-header .row.header-middle section.block-menu-menu-secoundary-menu ul.menu li a.rewards.active-trail:after {
+    background-size: 100%;
+  }
+}
 .l-header .row.header-middle section.block-menu-menu-secoundary-menu ul.menu li a.rewards:after {
   background: url("../images/libraryzurb/rewards.png") no-repeat;
+}
+@media only screen and (min-width: 768px) and (max-width: 1025px) {
+  .l-header .row.header-middle section.block-menu-menu-secoundary-menu ul.menu li a.rewards:after {
+    background-size: 100%;
+  }
 }
 .l-header .row.header-middle section.block-menu-menu-secoundary-menu ul.menu li a.reviews:hover:after, .l-header .row.header-middle section.block-menu-menu-secoundary-menu ul.menu li a.reviews.active-trail:after {
   background: url("../images/libraryzurb/reviewactive.png") no-repeat;
 }
+@media only screen and (min-width: 768px) and (max-width: 1025px) {
+  .l-header .row.header-middle section.block-menu-menu-secoundary-menu ul.menu li a.reviews:hover:after, .l-header .row.header-middle section.block-menu-menu-secoundary-menu ul.menu li a.reviews.active-trail:after {
+    background-size: 100%;
+  }
+}
 .l-header .row.header-middle section.block-menu-menu-secoundary-menu ul.menu li a.reviews:after {
   background: url("../images/libraryzurb/reviews.png") no-repeat;
+}
+@media only screen and (min-width: 768px) and (max-width: 1025px) {
+  .l-header .row.header-middle section.block-menu-menu-secoundary-menu ul.menu li a.reviews:after {
+    background-size: 100%;
+  }
 }
 .l-header .row.header-middle section.block-menu-menu-secoundary-menu ul.menu li a.photos:hover:after, .l-header .row.header-middle section.block-menu-menu-secoundary-menu ul.menu li a.photos.active-trail:after {
   background: url("../images/libraryzurb/photos_videos_hover.png") no-repeat;
 }
+@media only screen and (min-width: 768px) and (max-width: 1025px) {
+  .l-header .row.header-middle section.block-menu-menu-secoundary-menu ul.menu li a.photos:hover:after, .l-header .row.header-middle section.block-menu-menu-secoundary-menu ul.menu li a.photos.active-trail:after {
+    background-size: 100%;
+  }
+}
 .l-header .row.header-middle section.block-menu-menu-secoundary-menu ul.menu li a.photos:after {
   background: url("../images/libraryzurb/photosnvideos.png") no-repeat;
+}
+@media only screen and (min-width: 768px) and (max-width: 1025px) {
+  .l-header .row.header-middle section.block-menu-menu-secoundary-menu ul.menu li a.photos:after {
+    background-size: 100%;
+  }
 }
 .l-header .row.header-middle section.block-menu-menu-secoundary-menu ul.menu li a.events:hover:after, .l-header .row.header-middle section.block-menu-menu-secoundary-menu ul.menu li a.events.active-trail:after {
   background: url("../images/libraryzurb/events_hover.png") no-repeat;
 }
+@media only screen and (min-width: 768px) and (max-width: 1025px) {
+  .l-header .row.header-middle section.block-menu-menu-secoundary-menu ul.menu li a.events:hover:after, .l-header .row.header-middle section.block-menu-menu-secoundary-menu ul.menu li a.events.active-trail:after {
+    background-size: 100%;
+  }
+}
 .l-header .row.header-middle section.block-menu-menu-secoundary-menu ul.menu li a.events:after {
   background: url("../images/libraryzurb/events.png") no-repeat;
+}
+@media only screen and (min-width: 768px) and (max-width: 1025px) {
+  .l-header .row.header-middle section.block-menu-menu-secoundary-menu ul.menu li a.events:after {
+    background-size: 100%;
+  }
 }
 .l-header .row.header-middle section.block-menu-menu-secoundary-menu ul.menu li a.progress {
   border: none;
@@ -6629,8 +6703,18 @@ h1#page-title {
 .l-header .row.header-middle section.block-menu-menu-secoundary-menu ul.menu li a.progress:hover:after, .l-header .row.header-middle section.block-menu-menu-secoundary-menu ul.menu li a.progress.active-trail:after {
   background: url("../images/libraryzurb/progress_hover.png") no-repeat;
 }
+@media only screen and (min-width: 768px) and (max-width: 1025px) {
+  .l-header .row.header-middle section.block-menu-menu-secoundary-menu ul.menu li a.progress:hover:after, .l-header .row.header-middle section.block-menu-menu-secoundary-menu ul.menu li a.progress.active-trail:after {
+    background-size: 100%;
+  }
+}
 .l-header .row.header-middle section.block-menu-menu-secoundary-menu ul.menu li a.progress:after {
   background: url("../images/libraryzurb/progress.png") no-repeat;
+}
+@media only screen and (min-width: 768px) and (max-width: 1025px) {
+  .l-header .row.header-middle section.block-menu-menu-secoundary-menu ul.menu li a.progress:after {
+    background-size: 100%;
+  }
 }
 .l-header .row.header-middle section.block-menu-menu-secoundary-menu ul.menu li a:hover:after {
   -webkit-transform: rotateY(360deg);
@@ -9452,30 +9536,34 @@ body .alert-box.success a.close:hover {
   font-style: normal !important;
   -webkit-font-smoothing: antialiased !important;
 }
-.page-rewards .pull-9.sidebar .block .view {
+.page-rewards .pull-9.sidebar .block.view-id-my_rewards .views-field-field-image-upload {
+  float: left;
+  display: table-row;
+}
+.page-rewards .pull-9.sidebar .block.block-views-my-badges-block-1 .view {
   display: table;
   width: 100%;
   counter-reset: section;
 }
-.page-rewards .pull-9.sidebar .block .view .views-row {
+.page-rewards .pull-9.sidebar .block.block-views-my-badges-block-1 .view .views-row {
   display: table-row;
   width: 100%;
 }
-.page-rewards .pull-9.sidebar .block .view .views-row .views-field {
+.page-rewards .pull-9.sidebar .block.block-views-my-badges-block-1 .view .views-row .views-field {
   display: table-cell;
   vertical-align: middle;
 }
-.page-rewards .pull-9.sidebar .block .view .views-row .views-field.views-field-field-badge-image {
+.page-rewards .pull-9.sidebar .block.block-views-my-badges-block-1 .view .views-row .views-field.views-field-field-badge-image {
   padding-right: 10px;
   position: relative;
 }
-.page-rewards .pull-9.sidebar .block .view .views-row .views-field.views-field-field-badge-image:before {
+.page-rewards .pull-9.sidebar .block.block-views-my-badges-block-1 .view .views-row .views-field.views-field-field-badge-image:before {
   /* @include counter;
   position: absolute;
   left: -14px;
   top: 15px; */
 }
-.page-rewards .pull-9.sidebar .block .view .views-row .views-field.views-field-title {
+.page-rewards .pull-9.sidebar .block.block-views-my-badges-block-1 .view .views-row .views-field.views-field-title {
   padding-left: 10px;
 }
 .page-rewards .pull-9.sidebar .block .views-row .views-field-nothing .badges img {
@@ -11598,6 +11686,12 @@ body .alert-box.success a.close:hover {
     width: 100%;
     right: 0;
     margin-bottom: 25px;
+  }
+}
+@media only screen and (min-width: 768px) and (max-width: 1025px) {
+  .section-activities .pull-9.sidebar3 {
+    width: 38%;
+    right: 63.4%;
   }
 }
 .section-activities .sidebar3 {

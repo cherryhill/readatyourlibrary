@@ -33,6 +33,10 @@
   	 			  	vertical-align: top;
   	 			  	height: 106px;
   	 			  	width: 100px;
+                @media screen and (min-width: 768px) and (max-width: 1025px) {
+                  height: 70px;
+                  width: 60px;
+                }
   	 			  	
 					
                          
@@ -43,16 +47,14 @@
   	 			  	  	  font-size: 0;
 
   	 			  	  	   &:after {
-  	 			  	  	   	@include previous(94px, 105px, $left: 0, $top: 0);
-  	 			  	  	   	/* width: 94px;
-                            height: 105px; */
+                      @media screen and (min-width: 1026px) {
+                       @include previous(94px, 105px, $left: 0, $top: 0);
+                      }
+  	 			  	  	   	@media only screen and (min-width: 768px) and (max-width: 1025px) {
+                        @include previous(60px, 70px, $left: 0, $top: 0);
+                      }
+  	 			  	  	   	
                             background-size: 100px;
-                            /* content: ""; */
-                            /* display: block;
-                            position: absolute;
-                            left: 0;
-                            top: 0;
-                            visibility: visible; */
                             @include animate;
   	 			  	  	   }
   	 			  	  	 
@@ -61,10 +63,12 @@
   	 			  	  	  	 &:hover,&.active-trail {
   	 			  	  	  	 	&:after {
   	 			  	  	  	 		background:  url('../images/libraryzurb/currentprogs_hover.png') no-repeat;
+                           @include bck_size_tablet;
   	 			  	  	  	   }
   	 			  	  	  	 }
   	 			  	  	  	 &:after {
                                background: url('../images/libraryzurb/current-programs.png') no-repeat;
+                               @include bck_size_tablet;
                             }
 
   	 			  	  	  }
@@ -72,61 +76,73 @@
   	 			  	  	 	 &:hover,&.active-trail {
   	 			  	  	  	 	&:after {
   	 			  	  	  	 		background: url('../images/libraryzurb/activities_hover.png') no-repeat;
+                          @include bck_size_tablet;
   	 			  	  	  	   }
   	 			  	  	  	 }
   	 			  	  	  	&:after{
                             background: url('../images/libraryzurb/activities.png') no-repeat;
+                            @include bck_size_tablet;
                             }
   	 			  	  	  }
   	 			  	  	  &.rewards {
   	 			  	  	  	 &:hover,&.active-trail {
   	 			  	  	  	 	&:after {
   	 			  	  	  	 		background: url('../images/libraryzurb/rewards_hover.png') no-repeat;
+                          @include bck_size_tablet;
   	 			  	  	  	   }
   	 			  	  	  	 }
   	 			  	  	  	&:after {
   	 			  	  	  	  background: url('../images/libraryzurb/rewards.png') no-repeat;
+                        @include bck_size_tablet;
   	 			  	  	    }
   	 			  	  	  }
   	 			  	  	  &.reviews {
   	 			  	  	  	 &:hover,&.active-trail {
   	 			  	  	  	 	&:after {
   	 			  	  	  	 		background: url('../images/libraryzurb/reviewactive.png') no-repeat;
+                          @include bck_size_tablet;
   	 			  	  	  	   }
   	 			  	  	  	 }
                             &:after {
   	 			  	  	  	  background: url('../images/libraryzurb/reviews.png') no-repeat;
+                        @include bck_size_tablet;
   	 			  	  	    }
   	 			  	  	  }
   	 			  	  	  &.photos {
   	 			  	  	  	 &:hover,&.active-trail {
   	 			  	  	  	 	&:after {
   	 			  	  	  	 		background: url('../images/libraryzurb/photos_videos_hover.png') no-repeat;
+                          @include bck_size_tablet;
   	 			  	  	  	   }
   	 			  	  	  	 }
   	 			  	  	  	&:after {
   	 			  	  	  	  background: url('../images/libraryzurb/photosnvideos.png') no-repeat;
+                        @include bck_size_tablet;
   	 			  	  	    }
   	 			  	  	  }
   	 			  	  	  &.events {
   	 			  	  	  	 &:hover,&.active-trail {
   	 			  	  	  	 	&:after {
   	 			  	  	  	 		background: url('../images/libraryzurb/events_hover.png') no-repeat;
+                          @include bck_size_tablet;
   	 			  	  	  	   }
   	 			  	  	  	 }
   	 			  	  	  	&:after {
   	 			  	  	  	  background: url('../images/libraryzurb/events.png') no-repeat;
+                        @include bck_size_tablet;
   	 			  	  	    }
   	 			  	  	  }
   	 			  	  	  &.progress {
   	 			  	  	  	 &:hover,&.active-trail {
   	 			  	  	  	 	&:after {
   	 			  	  	  	 		background: url('../images/libraryzurb/progress_hover.png') no-repeat;
+                          @include bck_size_tablet;
   	 			  	  	  	   }
   	 			  	  	  	 }
   	 			  	  	  	border: none;
   	 			  	  	  	&:after {
   	 			  	  	  	  background: url('../images/libraryzurb/progress.png') no-repeat;
+                        @include bck_size_tablet;
   	 			  	  	    }
   	 			  	  	  }
   	 			  	  	  
