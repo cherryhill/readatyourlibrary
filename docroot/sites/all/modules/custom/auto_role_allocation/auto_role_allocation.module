@@ -779,12 +779,12 @@ function user_progress() {
       if($reads_for_next_reward == 1) {
         $msg = "<span class='msg-highlight'>Total days read: $total_read_days</span><br/>";
         $msg .= "$reads_for_next_reward more day of reading needed to receive your next prize";
-        $msg .= "<a href = 'progress' class = 'button'>Show My Progress</a>";
+        $msg .= "<a href = '/progress' class = 'button'>Show My Progress</a>";
       }
       else {
         $msg = "<span class='msg-highlight'>Total days read: $total_read_days</span><br/>";
         $msg .= "$reads_for_next_reward more days of reading needed to receive your next prize";
-        $msg .= "<a href = 'progress' class = 'button'>Show My Progress</a>";
+        $msg .= "<a href = '/progress' class = 'button'>Show My Progress</a>";
       }
     return "<div>$msg</div>";
   }
