@@ -493,8 +493,7 @@ function raffle_winner_ajax() {
   $reward_id = $_REQUEST['reward_id'];
   
   $raffle_uid = explode(',', $active_raffle_uid);
-  print_r($raffle_uid);
-  // //print_r($raffle_uid);die();
+  print_r($_SESSION);
   // $raffle_id = $_SESSION['active_raffle_id'];
 
   
