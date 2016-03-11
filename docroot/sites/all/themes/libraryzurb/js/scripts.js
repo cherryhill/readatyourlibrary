@@ -28,7 +28,7 @@
 
 
 jQuery( document ).ready(function() {
-
+  
 
   /* Jquery for script for raffle entry checkbox */
 
@@ -67,7 +67,9 @@ jQuery('#edit-field-user-random-list-1-und-0-randomized-text-regenerate').text('
 jQuery('#edit-field-user-random-list-2-und-0-randomized-text-regenerate').text('Change Color');
 jQuery('#edit-field-user-random-list-3-und-0-randomized-text-regenerate').text('Change Creature');
 
-
+  /**jquery for removing header and footer from lightbox**/
+   jQuery('#lightbox  .l-header').hide();
+   jQuery('#lightbox  .post-footer').hide();
   /**jquery for new msg**/
   jQuery('.msg:has(.new)').addClass('newclass');
   /**jquery for swap divs in register page***/

@@ -6446,6 +6446,42 @@ h1#page-title {
   display: inline-block;
 }
 
+/**css for login and signup button in unauthencated pages***/
+.not-logged-in .pre-header {
+  padding-bottom: 0 !important;
+}
+.not-logged-in .pre-header .pre-header-left .top-menu {
+  float: none !important;
+  width: 100% !important;
+}
+.not-logged-in .pre-header .pre-header-left .top-menu .block-menu-menu-authenticated-links {
+  float: right;
+  margin-bottom: 0;
+}
+.not-logged-in .pre-header .pre-header-left .top-menu .block-menu-menu-authenticated-links .menu li a {
+  color: #fff !important;
+  font-family: McLaren-Regular !important;
+  font-weight: normal !important;
+  font-style: normal !important;
+  -webkit-font-smoothing: antialiased !important;
+  background: #267fda !important;
+  border-radius: 10px;
+  padding: 9px 22px;
+  -webkit-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+  box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+  border: none;
+  text-transform: capitalize;
+  font-size: 17px;
+  margin: 5px !important;
+}
+.not-logged-in .pre-header .pre-header-left .top-menu .block-menu-menu-authenticated-links .menu li a:hover, .not-logged-in .pre-header .pre-header-left .top-menu .block-menu-menu-authenticated-links .menu li a:focus {
+  color: #fff;
+  background: #267fda;
+  opacity: 1;
+  outline: none;
+}
+
 .admin-menu .fixed {
   top: 1.8125em;
 }
@@ -6515,6 +6551,12 @@ h1#page-title {
   height: 106px;
   width: 100px;
 }
+@media screen and (min-width: 768px) and (max-width: 1025px) {
+  .l-header .row.header-middle section.block-menu-menu-secoundary-menu ul.menu li {
+    height: 70px;
+    width: 60px;
+  }
+}
 .l-header .row.header-middle section.block-menu-menu-secoundary-menu ul.menu li a {
   position: relative;
   width: 100%;
@@ -6522,23 +6564,7 @@ h1#page-title {
   font-size: 0;
 }
 .l-header .row.header-middle section.block-menu-menu-secoundary-menu ul.menu li a:after {
-  content: "";
-  width: 94px;
-  height: 105px;
-  display: block;
-  visibility: visible;
-  position: absolute;
-  top: 0;
-  left: 0;
-  	 			  	  	   	/* width: 94px;
-                            height: 105px; */
   background-size: 100px;
-  /* content: ""; */
-  /* display: block;
-  position: absolute;
-  left: 0;
-  top: 0;
-  visibility: visible; */
   -webkit-transition-duration: 0.8s;
   -moz-transition-duration: 0.8s;
   -o-transition-duration: 0.8s;
@@ -6548,44 +6574,128 @@ h1#page-title {
   -o-transition-property: -o-transform;
   transition-property: transform;
 }
+@media screen and (min-width: 1026px) {
+  .l-header .row.header-middle section.block-menu-menu-secoundary-menu ul.menu li a:after {
+    content: "";
+    width: 94px;
+    height: 105px;
+    display: block;
+    visibility: visible;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+}
+@media only screen and (min-width: 768px) and (max-width: 1025px) {
+  .l-header .row.header-middle section.block-menu-menu-secoundary-menu ul.menu li a:after {
+    content: "";
+    width: 60px;
+    height: 70px;
+    display: block;
+    visibility: visible;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+}
 .l-header .row.header-middle section.block-menu-menu-secoundary-menu ul.menu li a.current-program {
   position: relative;
 }
 .l-header .row.header-middle section.block-menu-menu-secoundary-menu ul.menu li a.current-program:hover:after, .l-header .row.header-middle section.block-menu-menu-secoundary-menu ul.menu li a.current-program.active-trail:after {
   background: url("../images/libraryzurb/currentprogs_hover.png") no-repeat;
 }
+@media only screen and (min-width: 768px) and (max-width: 1025px) {
+  .l-header .row.header-middle section.block-menu-menu-secoundary-menu ul.menu li a.current-program:hover:after, .l-header .row.header-middle section.block-menu-menu-secoundary-menu ul.menu li a.current-program.active-trail:after {
+    background-size: 100%;
+  }
+}
 .l-header .row.header-middle section.block-menu-menu-secoundary-menu ul.menu li a.current-program:after {
   background: url("../images/libraryzurb/current-programs.png") no-repeat;
+}
+@media only screen and (min-width: 768px) and (max-width: 1025px) {
+  .l-header .row.header-middle section.block-menu-menu-secoundary-menu ul.menu li a.current-program:after {
+    background-size: 100%;
+  }
 }
 .l-header .row.header-middle section.block-menu-menu-secoundary-menu ul.menu li a.activities:hover:after, .l-header .row.header-middle section.block-menu-menu-secoundary-menu ul.menu li a.activities.active-trail:after {
   background: url("../images/libraryzurb/activities_hover.png") no-repeat;
 }
+@media only screen and (min-width: 768px) and (max-width: 1025px) {
+  .l-header .row.header-middle section.block-menu-menu-secoundary-menu ul.menu li a.activities:hover:after, .l-header .row.header-middle section.block-menu-menu-secoundary-menu ul.menu li a.activities.active-trail:after {
+    background-size: 100%;
+  }
+}
 .l-header .row.header-middle section.block-menu-menu-secoundary-menu ul.menu li a.activities:after {
   background: url("../images/libraryzurb/activities.png") no-repeat;
+}
+@media only screen and (min-width: 768px) and (max-width: 1025px) {
+  .l-header .row.header-middle section.block-menu-menu-secoundary-menu ul.menu li a.activities:after {
+    background-size: 100%;
+  }
 }
 .l-header .row.header-middle section.block-menu-menu-secoundary-menu ul.menu li a.rewards:hover:after, .l-header .row.header-middle section.block-menu-menu-secoundary-menu ul.menu li a.rewards.active-trail:after {
   background: url("../images/libraryzurb/rewards_hover.png") no-repeat;
 }
+@media only screen and (min-width: 768px) and (max-width: 1025px) {
+  .l-header .row.header-middle section.block-menu-menu-secoundary-menu ul.menu li a.rewards:hover:after, .l-header .row.header-middle section.block-menu-menu-secoundary-menu ul.menu li a.rewards.active-trail:after {
+    background-size: 100%;
+  }
+}
 .l-header .row.header-middle section.block-menu-menu-secoundary-menu ul.menu li a.rewards:after {
   background: url("../images/libraryzurb/rewards.png") no-repeat;
+}
+@media only screen and (min-width: 768px) and (max-width: 1025px) {
+  .l-header .row.header-middle section.block-menu-menu-secoundary-menu ul.menu li a.rewards:after {
+    background-size: 100%;
+  }
 }
 .l-header .row.header-middle section.block-menu-menu-secoundary-menu ul.menu li a.reviews:hover:after, .l-header .row.header-middle section.block-menu-menu-secoundary-menu ul.menu li a.reviews.active-trail:after {
   background: url("../images/libraryzurb/reviewactive.png") no-repeat;
 }
+@media only screen and (min-width: 768px) and (max-width: 1025px) {
+  .l-header .row.header-middle section.block-menu-menu-secoundary-menu ul.menu li a.reviews:hover:after, .l-header .row.header-middle section.block-menu-menu-secoundary-menu ul.menu li a.reviews.active-trail:after {
+    background-size: 100%;
+  }
+}
 .l-header .row.header-middle section.block-menu-menu-secoundary-menu ul.menu li a.reviews:after {
   background: url("../images/libraryzurb/reviews.png") no-repeat;
+}
+@media only screen and (min-width: 768px) and (max-width: 1025px) {
+  .l-header .row.header-middle section.block-menu-menu-secoundary-menu ul.menu li a.reviews:after {
+    background-size: 100%;
+  }
 }
 .l-header .row.header-middle section.block-menu-menu-secoundary-menu ul.menu li a.photos:hover:after, .l-header .row.header-middle section.block-menu-menu-secoundary-menu ul.menu li a.photos.active-trail:after {
   background: url("../images/libraryzurb/photos_videos_hover.png") no-repeat;
 }
+@media only screen and (min-width: 768px) and (max-width: 1025px) {
+  .l-header .row.header-middle section.block-menu-menu-secoundary-menu ul.menu li a.photos:hover:after, .l-header .row.header-middle section.block-menu-menu-secoundary-menu ul.menu li a.photos.active-trail:after {
+    background-size: 100%;
+  }
+}
 .l-header .row.header-middle section.block-menu-menu-secoundary-menu ul.menu li a.photos:after {
   background: url("../images/libraryzurb/photosnvideos.png") no-repeat;
+}
+@media only screen and (min-width: 768px) and (max-width: 1025px) {
+  .l-header .row.header-middle section.block-menu-menu-secoundary-menu ul.menu li a.photos:after {
+    background-size: 100%;
+  }
 }
 .l-header .row.header-middle section.block-menu-menu-secoundary-menu ul.menu li a.events:hover:after, .l-header .row.header-middle section.block-menu-menu-secoundary-menu ul.menu li a.events.active-trail:after {
   background: url("../images/libraryzurb/events_hover.png") no-repeat;
 }
+@media only screen and (min-width: 768px) and (max-width: 1025px) {
+  .l-header .row.header-middle section.block-menu-menu-secoundary-menu ul.menu li a.events:hover:after, .l-header .row.header-middle section.block-menu-menu-secoundary-menu ul.menu li a.events.active-trail:after {
+    background-size: 100%;
+  }
+}
 .l-header .row.header-middle section.block-menu-menu-secoundary-menu ul.menu li a.events:after {
   background: url("../images/libraryzurb/events.png") no-repeat;
+}
+@media only screen and (min-width: 768px) and (max-width: 1025px) {
+  .l-header .row.header-middle section.block-menu-menu-secoundary-menu ul.menu li a.events:after {
+    background-size: 100%;
+  }
 }
 .l-header .row.header-middle section.block-menu-menu-secoundary-menu ul.menu li a.progress {
   border: none;
@@ -6593,8 +6703,18 @@ h1#page-title {
 .l-header .row.header-middle section.block-menu-menu-secoundary-menu ul.menu li a.progress:hover:after, .l-header .row.header-middle section.block-menu-menu-secoundary-menu ul.menu li a.progress.active-trail:after {
   background: url("../images/libraryzurb/progress_hover.png") no-repeat;
 }
+@media only screen and (min-width: 768px) and (max-width: 1025px) {
+  .l-header .row.header-middle section.block-menu-menu-secoundary-menu ul.menu li a.progress:hover:after, .l-header .row.header-middle section.block-menu-menu-secoundary-menu ul.menu li a.progress.active-trail:after {
+    background-size: 100%;
+  }
+}
 .l-header .row.header-middle section.block-menu-menu-secoundary-menu ul.menu li a.progress:after {
   background: url("../images/libraryzurb/progress.png") no-repeat;
+}
+@media only screen and (min-width: 768px) and (max-width: 1025px) {
+  .l-header .row.header-middle section.block-menu-menu-secoundary-menu ul.menu li a.progress:after {
+    background-size: 100%;
+  }
 }
 .l-header .row.header-middle section.block-menu-menu-secoundary-menu ul.menu li a:hover:after {
   -webkit-transform: rotateY(360deg);
@@ -7217,7 +7337,7 @@ h1#page-title {
 }
 .block.announcement .views-field-body ol li {
   position: relative;
-  font-size: 17px;
+  font-size: 18px;
   font-family: Arialregular !important;
   font-style: normal !important;
   font-weight: normal !important;
@@ -7235,7 +7355,7 @@ h1#page-title {
   display: block;
   visibility: visible;
   position: absolute;
-  top: 0;
+  top: 3px;
   left: -32px;
   background: url("../images/libraryzurb/arrow-list.png") no-repeat;
 }
@@ -7370,7 +7490,8 @@ h1#page-title {
 .block.homepage-blocks p {
   padding-left: 40px;
   padding-right: 40px;
-  font-size: 17px;
+  font-size: 18px;
+  line-height: 1.4;
 }
 .block.footer-playlibdetails, .block.playlib-copyright, .block.footer-playlibpolicies {
   width: 100%;
@@ -9415,30 +9536,35 @@ body .alert-box.success a.close:hover {
   font-style: normal !important;
   -webkit-font-smoothing: antialiased !important;
 }
-.page-rewards .pull-9.sidebar .block .view {
+.page-rewards .pull-9.sidebar .block.block-views-my-rewards-block .views-field-field-image-upload {
+  float: left;
+  display: table-row;
+  margin-right: 19px;
+}
+.page-rewards .pull-9.sidebar .block.block-views-my-badges-block-1 .view {
   display: table;
   width: 100%;
   counter-reset: section;
 }
-.page-rewards .pull-9.sidebar .block .view .views-row {
+.page-rewards .pull-9.sidebar .block.block-views-my-badges-block-1 .view .views-row {
   display: table-row;
   width: 100%;
 }
-.page-rewards .pull-9.sidebar .block .view .views-row .views-field {
+.page-rewards .pull-9.sidebar .block.block-views-my-badges-block-1 .view .views-row .views-field {
   display: table-cell;
   vertical-align: middle;
 }
-.page-rewards .pull-9.sidebar .block .view .views-row .views-field.views-field-field-badge-image {
+.page-rewards .pull-9.sidebar .block.block-views-my-badges-block-1 .view .views-row .views-field.views-field-field-badge-image {
   padding-right: 10px;
   position: relative;
 }
-.page-rewards .pull-9.sidebar .block .view .views-row .views-field.views-field-field-badge-image:before {
+.page-rewards .pull-9.sidebar .block.block-views-my-badges-block-1 .view .views-row .views-field.views-field-field-badge-image:before {
   /* @include counter;
   position: absolute;
   left: -14px;
   top: 15px; */
 }
-.page-rewards .pull-9.sidebar .block .view .views-row .views-field.views-field-title {
+.page-rewards .pull-9.sidebar .block.block-views-my-badges-block-1 .view .views-row .views-field.views-field-title {
   padding-left: 10px;
 }
 .page-rewards .pull-9.sidebar .block .views-row .views-field-nothing .badges img {
@@ -9783,11 +9909,12 @@ body .alert-box.success a.close:hover {
   font-size: 20px;
 }
 .section-programs .main .view .view-content .views-row .views-field.views-field-body {
-  font-size: 17px;
+  font-size: 18px;
   font-family: Arialregular !important;
   font-style: normal !important;
   font-weight: normal !important;
   -webkit-font-smoothing: antialiased !important;
+  line-height: 1.4;
 }
 .section-programs .main .view .view-content .views-row .views-field.views-field-field-sign-up a {
   color: #000;
@@ -11102,6 +11229,8 @@ body .alert-box.success a.close:hover {
   font-style: normal !important;
   font-weight: normal !important;
   -webkit-font-smoothing: antialiased !important;
+  font-size: 18px;
+  line-height: 1.4;
 }
 .page-reviews .main .view-content .item-list ol li .views-field.views-field-nothing div {
   float: left;
@@ -11127,6 +11256,7 @@ body .alert-box.success a.close:hover {
   font-weight: normal !important;
   -webkit-font-smoothing: antialiased !important;
   padding-top: 16px;
+  font-size: 18px;
 }
 .page-reviews .main .view-content .item-list ol li .views-field.views-field-nothing div.field-name-field-avatar-image {
   position: relative;
@@ -11557,6 +11687,12 @@ body .alert-box.success a.close:hover {
     width: 100%;
     right: 0;
     margin-bottom: 25px;
+  }
+}
+@media only screen and (min-width: 768px) and (max-width: 1025px) {
+  .section-activities .pull-9.sidebar3 {
+    width: 38%;
+    right: 63.4%;
   }
 }
 .section-activities .sidebar3 {
@@ -12950,7 +13086,7 @@ p {
   font-style: normal !important;
   font-weight: normal !important;
   -webkit-font-smoothing: antialiased !important;
-  line-height: 1.2;
+  line-height: 1.4;
   margin-bottom: 23px;
   display: inline-block;
 }
