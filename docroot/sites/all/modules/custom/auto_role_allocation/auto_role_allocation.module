@@ -304,6 +304,11 @@ function raffle_entry_process() {
     }
   }
 
+  // if no raffel found show message
+  if ($out == '') {
+    $out = "<div>No active raffle found</div>";
+  }
+
   $out .= "<div class='raffle-filter-form'></div><div class='raffle-entry-user-list'></div>";
 
 
@@ -327,6 +332,7 @@ function raffle_user_list($form, &$form_state) {
   $organization = $_REQUEST['organization'];
   $library_branch = $_REQUEST['library_branch'];
   $grade = $_REQUEST['grade'];
+  $_SESSION['active_r_id'] = $active_raffle_id;
   
 
   
@@ -488,22 +494,19 @@ function raffle_entry_form($form, &$form_state) {
 
 /* Raffle winner list process */
 
-function raffle_winner_ajax() {
+function raffle_winner_ajax() { 
   $active_raffle_uid = $_REQUEST['active_raffle_uid'];
   $reward_id = $_REQUEST['reward_id'];
   
-
   $raffle_uid = explode(',', $active_raffle_uid);
-  //print_r($raffle_uid);die();
-  $raffle_id = $_SESSION['active_raffle_id'];
-
   
+  $raffle_id = $_SESSION['active_r_id'];
+
   foreach ($raffle_uid as $k => $v) {
     
-      play_library_program_create_raffle_winner($raffle_id, $v);
-      play_library_program_create_reward_claim($reward_id, $v, 1);
+     play_library_program_create_raffle_winner($raffle_id, $v);
+     play_library_program_create_reward_claim($reward_id, $v, 1);
   }
-  //comment play_library_program_create_raffle_winner($raffle_id, $active_raffle_uid);
   
   echo "Request executed successfully";
 }

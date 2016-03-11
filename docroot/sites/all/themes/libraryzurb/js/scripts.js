@@ -349,7 +349,6 @@ jQuery(document).on('click','#raffle-entry-list-btn',function() {
   var location = window.location;
   var baseUrl1 = location.protocol + "//" + location.host + '/raffle_winner';
   var raffleUid = '';
-
   jQuery( "input:checkbox:checked" ).each(function() { 
     var uid = jQuery( this ).attr( "id" );
     var uid_exp = uid.split('_');
@@ -366,8 +365,6 @@ jQuery(document).on('click','#raffle-entry-list-btn',function() {
   }
 
   var reward_id = jQuery('#raffle_reward_id').val();
-
-
 
   jQuery.ajax({
     //url: 'http://localhost/playatyourlibrary/docroot/raffle_winner',
