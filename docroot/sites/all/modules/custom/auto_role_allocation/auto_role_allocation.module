@@ -489,12 +489,11 @@ function raffle_entry_form($form, &$form_state) {
 /* Raffle winner list process */
 
 function raffle_winner_ajax() {
-  print_r($_REQUEST);
-  // $active_raffle_uid = $_REQUEST['active_raffle_uid'];
-  // $reward_id = $_REQUEST['reward_id'];
+  $active_raffle_uid = $_REQUEST['active_raffle_uid'];
+  $reward_id = $_REQUEST['reward_id'];
   
-
-  // $raffle_uid = explode(',', $active_raffle_uid);
+  $raffle_uid = explode(',', $active_raffle_uid);
+  print_r($raffle_uid);
   // //print_r($raffle_uid);die();
   // $raffle_id = $_SESSION['active_raffle_id'];
 
