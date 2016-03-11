@@ -302,9 +302,11 @@ function raffle_entry_process() {
     if(!$count) {
       $out .= "<div><span>$raffle_title</span><span>$oprat</span></div>";
     }
-    else {
-      $out = "<div>No active raffle found</div>";
-    }
+  }
+
+  // if no raffel found show message
+  if ($out == '') {
+    $out = "<div>No active raffle found</div>";
   }
 
   $out .= "<div class='raffle-filter-form'></div><div class='raffle-entry-user-list'></div>";
