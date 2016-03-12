@@ -247,6 +247,12 @@ function auto_role_allocation_menu() {
     'access arguments' => array('access content'),
     'type' => MENU_CALLBACK,
   );
+  $items['raffle_winner_list'] = array(
+    'title' => 'Raffle Winner List',
+    'page callback' => 'raffle_winner_user_list',
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
+  );
   $items['test'] = array(
     'title' => 'Test Menu',
     'page callback' => 'test',
@@ -262,7 +268,45 @@ function auto_role_allocation_menu() {
 
 function test() {
   drupal_access_denied();
+
 }
+
+
+/* hook menu() for raffle winner user list */
+
+function raffle_winner_user_list() {
+  $query = db_select('eck_reward', 'er');
+  $query->join('users', 'u', 'u.uid = er.uid');
+  $query->join('field_data_field_reward_claim_id', 'frcid', 'er.id = frcid.entity_id');
+  $query->join('field_data_field_reward_raffle', 'frr', 'frcid.field_reward_claim_id_target_id = frr.entity_id');
+  $query->join('eck_raffle', 'eckr', 'eckr.id = frr.field_reward_raffle_target_id');
+  $query->fields('er', array('uid'));
+  $query->fields('u', array('name'));
+  $query->fields('eckr', array('title'));
+  $res = $query->execute()->fetchAll();
+  $table_header = array(
+    'Sl No.',
+    'Raffle Name',
+    'Raffle Winner Name'
+  );
+  $table_rows = array();
+  $i = 0;
+  foreach ($res as $value) {
+    
+    $raffle_winner_name = $value->name;
+    $raffle_title = $value->title;
+    $i++;
+    $table_rows[] = array(
+      array( 'data' => $i),
+      array( 'data' => $raffle_title),
+      array( 'data' => $raffle_winner_name),
+    ); 
+  }
+
+  $output = theme('table', array( 'header' => $table_header, 'rows' => $table_rows ));
+
+  return $output;
+} 
 
 
 
