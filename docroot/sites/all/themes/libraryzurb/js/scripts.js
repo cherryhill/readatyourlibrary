@@ -371,7 +371,8 @@ jQuery(document).on('click','#raffle-entry-list-btn',function() {
         url = "admin/content/dashboard";
                 //alert(res);
                 window.location.reload(true);
-                window.location.href = url;
+                //window.location.href = url;
+                setTimeout(function () { window.location.href = url; }, 5000);
                 alert("Thank you Raffle winner has been selected"); 
             },
             error: function(jqXHR, data, error){
