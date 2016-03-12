@@ -368,7 +368,7 @@ jQuery(document).on('click','#raffle-entry-list-btn',function() {
     type: 'post',
     data: 'active_raffle_uid='+raffleUid+'&reward_id='+reward_id,
     success: function(res){
-        url = "admin/content/dashboard";
+        url = "admin/content/dashboard?=true";
                 //alert(res);
                 window.location.reload(true);
                 window.location.href = url;
