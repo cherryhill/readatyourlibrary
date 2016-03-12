@@ -411,7 +411,7 @@ function raffle_user_list($form, &$form_state) {
     'Name',
     'Raffle Count',
     'Raffle Winner',
-    'Operation'
+    'Select winners'
   );
 
   $tbl_rows = array();
@@ -507,8 +507,8 @@ function raffle_winner_ajax() {
      play_library_program_create_raffle_winner($raffle_id, $v);
      play_library_program_create_reward_claim($reward_id, $v, 1);
   }
+  echo "1";
   
-  echo "Request executed successfully";
 }
 
 
