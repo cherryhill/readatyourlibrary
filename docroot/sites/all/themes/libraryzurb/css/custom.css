@@ -10800,7 +10800,16 @@ body .alert-box.success a.close:hover {
 .page-messages div.main form #privatemsg-list-form table {
   border: none;
   margin: 0 auto !important;
-  max-width: 90%;
+  max-width: 80%;
+}
+.page-messages div.main form #privatemsg-list-form table th.select-all {
+  width: 1%;
+}
+.page-messages div.main form #privatemsg-list-form table th.select-all input[type="checkbox"], .page-messages div.main form #privatemsg-list-form table th.select-all .form-checkbox {
+  margin: 0 !important;
+}
+.page-messages div.main form #privatemsg-list-form table th.privatemsg-header-participants, .page-messages div.main form #privatemsg-list-form table td.privatemsg-list-subject {
+  display: none;
 }
 @media screen and (max-width: 767px) {
   .page-messages div.main form #privatemsg-list-form table {
@@ -11802,10 +11811,15 @@ body .alert-box.success a.close:hover {
     margin-bottom: 25px;
   }
 }
-@media only screen and (min-width: 768px) and (max-width: 1025px) {
+@media only screen and (min-width: 768px) and (max-width: 940px) {
   .section-activities .pull-9.sidebar3 {
-    width: 38%;
+    width: 35%;
     right: 63.4%;
+  }
+}
+@media only screen and (min-width: 941px) and (max-width: 1025px) {
+  .section-activities .pull-9.sidebar3 {
+    right: 62.4%;
   }
 }
 .section-activities .sidebar3 {
@@ -11903,6 +11917,11 @@ body .alert-box.success a.close:hover {
   outline: 1;
   opacity: 1;
   text-decoration: none !important;
+}
+@media screen and (min-width: 768px) and (max-width: 1100px) {
+  .section-activities .sidebar3 .block-views .view-footer p a {
+    font-size: 17px;
+  }
 }
 .section-activities .sidebar3 .block-views .views-field-title {
   padding-bottom: 10px;
@@ -12369,6 +12388,15 @@ body .alert-box.success a.close:hover {
 
 /**end of progress page**/
 /**css for indivisual user profile**/
+.page-users-public-profile .main {
+  display: table;
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 10px;
+}
+.page-users-public-profile .main section {
+  display: table-cell;
+}
 .page-users-public-profile .main .block {
   background: #267fda !important;
   overflow: hidden;
@@ -12378,8 +12406,6 @@ body .alert-box.success a.close:hover {
   -webkit-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
   -moz-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
   box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
-  width: 100%;
-  display: inline-block;
 }
 .page-users-public-profile .main .block .block-title {
   color: #fff;
@@ -12426,6 +12452,10 @@ body .alert-box.success a.close:hover {
 .page-users-public-profile .main .block a {
   color: #fff;
 }
+.page-users-public-profile .main .view.view-user-public-profile {
+  display: table-row;
+  width: 100%;
+}
 .page-users-public-profile .main .view.view-my-badges {
   counter-reset: section;
 }
@@ -12454,21 +12484,17 @@ body .alert-box.success a.close:hover {
   position: relative;
 }
 .page-users-public-profile .main .view.view-my-badges .view-content .views-row .views-field.views-field-field-badge-image:before {
-  counter-increment: section;
-  content: " " counter(section,decimal) ". ";
-  padding-right: 5px;
-  display: inline-block;
   position: absolute;
   left: -14px;
   top: 15px;
 }
-.page-users-public-profile .main .view.view-booklist-on-activities-page {
+.page-users-public-profile .main .view.view-booklist-on-activities-page, .page-users-public-profile .main .view.view-my-book-reviews {
   counter-reset: section;
 }
-.page-users-public-profile .main .view.view-booklist-on-activities-page .view-header {
+.page-users-public-profile .main .view.view-booklist-on-activities-page .view-header, .page-users-public-profile .main .view.view-my-book-reviews .view-header {
   width: 100%;
 }
-.page-users-public-profile .main .view.view-booklist-on-activities-page .view-header h3 {
+.page-users-public-profile .main .view.view-booklist-on-activities-page .view-header h3, .page-users-public-profile .main .view.view-my-book-reviews .view-header h3 {
   color: #fff;
   font-family: McLaren-Regular !important;
   font-weight: normal !important;
@@ -12477,7 +12503,7 @@ body .alert-box.success a.close:hover {
   -moz-osx-font-smoothing: grayscale !important;
   padding-top: 26px;
   padding-bottom: 25px;
-  font-size: 28px;
+  font-size: 22px;
   height: 110px;
   border-bottom: medium none;
   margin-top: -1px;
@@ -12491,11 +12517,11 @@ body .alert-box.success a.close:hover {
   outline: none !important;
 }
 @media screen and (max-width: 767px) {
-  .page-users-public-profile .main .view.view-booklist-on-activities-page .view-header h3 {
-    font-size: 22px;
+  .page-users-public-profile .main .view.view-booklist-on-activities-page .view-header h3, .page-users-public-profile .main .view.view-my-book-reviews .view-header h3 {
+    font-size: 17px;
   }
 }
-.page-users-public-profile .main .view.view-booklist-on-activities-page .view-header h3:after {
+.page-users-public-profile .main .view.view-booklist-on-activities-page .view-header h3:after, .page-users-public-profile .main .view.view-my-book-reviews .view-header h3:after {
   content: "";
   width: 100%;
   height: 110px;
@@ -12513,11 +12539,11 @@ body .alert-box.success a.close:hover {
   transform: rotate(180deg);
   z-index: -1;
 }
-.page-users-public-profile .main .view.view-booklist-on-activities-page .view-content {
+.page-users-public-profile .main .view.view-booklist-on-activities-page .view-content, .page-users-public-profile .main .view.view-my-book-reviews .view-content {
   padding-left: 3%;
   padding-right: 3%;
 }
-.page-users-public-profile .main .view.view-booklist-on-activities-page .view-content .views-field-title a {
+.page-users-public-profile .main .view.view-booklist-on-activities-page .view-content .views-field-title a, .page-users-public-profile .main .view.view-my-book-reviews .view-content .views-field-title a {
   color: #fff;
   font-family: McLaren-Regular !important;
   font-weight: normal !important;
@@ -12527,13 +12553,13 @@ body .alert-box.success a.close:hover {
   text-transform: capitalize;
   font-size: 18px;
 }
-.page-users-public-profile .main .view.view-booklist-on-activities-page .view-content .views-field-title a:before {
+.page-users-public-profile .main .view.view-booklist-on-activities-page .view-content .views-field-title a:before, .page-users-public-profile .main .view.view-my-book-reviews .view-content .views-field-title a:before {
   counter-increment: section;
   content: " " counter(section,decimal) ". ";
   padding-right: 5px;
   display: inline-block;
 }
-.page-users-public-profile .main .view.view-booklist-on-activities-page .view-content .views-field-count {
+.page-users-public-profile .main .view.view-booklist-on-activities-page .view-content .views-field-count, .page-users-public-profile .main .view.view-my-book-reviews .view-content .views-field-count {
   font-family: McLaren-Regular !important;
   font-weight: normal !important;
   font-style: normal !important;
@@ -12541,11 +12567,11 @@ body .alert-box.success a.close:hover {
   -moz-osx-font-smoothing: grayscale !important;
   float: right;
 }
-.page-users-public-profile .main .view.view-booklist-on-activities-page .view-content .views-field-count .views-label-count {
+.page-users-public-profile .main .view.view-booklist-on-activities-page .view-content .views-field-count .views-label-count, .page-users-public-profile .main .view.view-my-book-reviews .view-content .views-field-count .views-label-count {
   position: relative;
   padding-right: 34px;
 }
-.page-users-public-profile .main .view.view-booklist-on-activities-page .view-content .views-field-count .views-label-count:after {
+.page-users-public-profile .main .view.view-booklist-on-activities-page .view-content .views-field-count .views-label-count:after, .page-users-public-profile .main .view.view-my-book-reviews .view-content .views-field-count .views-label-count:after {
   content: "";
   width: 30px;
   height: 30px;
@@ -12823,7 +12849,6 @@ body .alert-box.success a.close:hover {
 }
 .section-events .main .view-events .view-content .views-row div:nth-of-type(2), .section-events .main .view-events .view-content .views-row div:nth-of-type(3) {
   width: 20%;
-  text-align: right;
 }
 .section-events .main .pagination.pager {
   margin-top: 35px;
