@@ -49,12 +49,22 @@ function custom_activity_submit_handler(&$form, &$form_state) {
  * Implements hook_form_alter().
  */
 function payl_program_customizations_form_alter(&$form, &$form_state, $form_id) {
+/* making staff registration email field required */
+if($form_id == 'user_register_form') {
+  $arg = arg(3);
+  if($arg == 'staff') {
+    $form['account']['mail']['#required'] = TRUE;
+  }  
+
+}
+
+
+
+
   if($form_id == "eck__entity__form_add_activity_activity") {
 
     $form['#submit'] = array("custom_activity_submit_handler","eck__entity__form_submit");
   }
-
-
 
   if ($form_id == 'user_profile_form') {
     global $user;
