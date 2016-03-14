@@ -23,12 +23,8 @@
 
 
 
-
-
-
-
 jQuery( document ).ready(function() {
-
+  
 
   /* Jquery for script for raffle entry checkbox */
 
@@ -67,7 +63,9 @@ jQuery('#edit-field-user-random-list-1-und-0-randomized-text-regenerate').text('
 jQuery('#edit-field-user-random-list-2-und-0-randomized-text-regenerate').text('Change Color');
 jQuery('#edit-field-user-random-list-3-und-0-randomized-text-regenerate').text('Change Creature');
 
-
+  /**jquery for removing header and footer from lightbox**/
+   jQuery('#lightbox  .l-header').hide();
+   jQuery('#lightbox  .post-footer').hide();
   /**jquery for new msg**/
   jQuery('.msg:has(.new)').addClass('newclass');
   /**jquery for swap divs in register page***/
@@ -347,7 +345,6 @@ jQuery(document).on('click','#raffle-entry-list-btn',function() {
   var location = window.location;
   var baseUrl1 = location.protocol + "//" + location.host + '/raffle_winner';
   var raffleUid = '';
-
   jQuery( "input:checkbox:checked" ).each(function() { 
     var uid = jQuery( this ).attr( "id" );
     var uid_exp = uid.split('_');
@@ -365,15 +362,17 @@ jQuery(document).on('click','#raffle-entry-list-btn',function() {
 
   var reward_id = jQuery('#raffle_reward_id').val();
 
-
-
   jQuery.ajax({
     //url: 'http://localhost/playatyourlibrary/docroot/raffle_winner',
     url: baseUrl1,
     type: 'post',
     data: 'active_raffle_uid='+raffleUid+'&reward_id='+reward_id,
     success: function(res){
-                alert(res);
+        url = "admin/content/dashboard?=true";
+                //alert(res);
+                window.location.reload(true);
+                window.location.href = url;
+                alert("Thank you Raffle winner has been selected"); 
             },
             error: function(jqXHR, data, error){
             }

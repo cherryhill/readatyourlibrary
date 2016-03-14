@@ -192,7 +192,15 @@
 	              font-size: 22px;
 	              @include white-text;
 			  	}
-			  	.view {
+			  	&.block-views-my-rewards-block {
+			  		.views-field-field-image-upload {
+			  			float: left;
+			  			display: table-row;
+			  			margin-right: 19px;	
+			  		}
+			  	}
+			  	&.block-views-my-badges-block-1 {
+			  		.view {
 			  		display: table;
 			  		width: 100%;
 			  		counter-reset: section;
@@ -218,6 +226,7 @@
 			  		 	  	 }
 			  		 	  }
 			  		 }
+			  	  }
 			  	}
 		  		.views-row {
 		  			.views-field-nothing {
@@ -1805,6 +1814,10 @@
 		 	right: 0;
 		 	margin-bottom: 25px;
 		 }
+		 @media only screen and (min-width: 768px) and (max-width: 1025px) {
+		 	width: 38%;
+		 	right: 63.4%;
+		 }
 	}
 	/* .pull-9.sidebar, .pull-9.sidebar2 {
 		width: 29.53%;
@@ -2509,5 +2522,54 @@
              @include arialbold;
              color: #4D4D4D;
 		 }
+	}
+}
+/*css for event page*/
+.section-events {
+	.main {
+		.view-events {
+			.view-content {
+				h3 {
+					font-size: 18px;
+					color: $white;
+					@include mclaren;
+					@include noborder;
+					background: $light-orange;
+					padding: 4px 20px 6px;
+					margin-top: 35px;
+				}
+				.views-row {
+					display: table;
+					width: 96%;
+					margin: auto;
+					margin-top: 10px;
+					margin-bottom: 10px;
+					  div {
+					  	display: table-row;
+					  	float: left;
+					  	vertical-align: middle;
+					  	color: $black;
+					  	font-size: 18px;
+					  	@include arialregular;
+					  	   a {
+					  	   	  color: $black;
+					  	   	  font-size: 18px;
+					  	   	  @include arialregular;
+
+					  	   }
+					  	   &:nth-of-type(1) {
+					  	   	width: 60%;
+					  	   }
+					  	   &:nth-of-type(2), &:nth-of-type(3) {
+					  	   	  width: 20%;
+					  	   	  text-align: right;
+					  	   }
+					  }
+				}
+			}
+		}
+		.pagination.pager {
+			margin-top: 35px;
+		}
 	}
 }
