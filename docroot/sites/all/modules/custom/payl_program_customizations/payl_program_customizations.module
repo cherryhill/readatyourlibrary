@@ -26,11 +26,45 @@ function payl_program_customizations_user_load($users) {
   }
   drupal_static_reset('user_access');
 }
+function custom_activity_submit_handler(&$form, &$form_state) {
+  $firing_hook = $form_state['values']['entity']->field_activity_fired_hook[LANGUAGE_NONE][0]['value'];
 
+  if($firing_hook == 'node_update|node|sticker|updated') {
+    $query = db_select('field_data_field_activity_fired_hook', 'fh');
+    $query->condition('fh.field_activity_fired_hook_value', $firing_hook, '=');
+    $query->fields('fh', array('entity_id'));
+    $result = $query->execute();
+    $count = $result->rowCount();
+    
+  }
+  
+  if($count > 0) {
+    form_set_error('field_activity_fired_hook', t('Please set other Trigger. Selected one is already used'));
+    drupal_goto('admin/structure/entity-type/activity/activity/add');
+  }
+  
+
+}
 /**
  * Implements hook_form_alter().
  */
 function payl_program_customizations_form_alter(&$form, &$form_state, $form_id) {
+/* making staff registration email field required */
+if($form_id == 'user_register_form') {
+  $arg = arg(3);
+  if($arg == 'staff') {
+    $form['account']['mail']['#required'] = TRUE;
+  }  
+
+}
+
+
+
+
+  if($form_id == "eck__entity__form_add_activity_activity") {
+
+    $form['#submit'] = array("custom_activity_submit_handler","eck__entity__form_submit");
+  }
 
   if ($form_id == 'user_profile_form') {
     global $user;
