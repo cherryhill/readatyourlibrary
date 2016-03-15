@@ -5,6 +5,23 @@
      @media screen and (max-width: 767px) {
 	     	margin-bottom: 25px;
 	     }
+	 &.block-views-event-activities-block-1 {
+	 	@include bluebackground;
+	 	padding: 10px 22px;
+	 	 .block-title {
+	 	 	font-size: 22px;
+	 	 	color: $white;
+	 	 	@include mclaren;
+	 	 }
+	 	 .view-event-activities {
+	 	 	a {
+	 	 		font-size: 17px;
+	 	 		color: $white;
+	 	 		text-decoration: underline;
+	 	 		@include arialregular;
+	 	 	}
+	 	 }
+	 }
      &.badge-reward-list {
      	margin-bottom: 0 !important;
      	 .badge_list {
@@ -169,6 +186,8 @@
     	 	 	 	 	float: left;
     	 	 	 	 	padding-right: 10px;
     	 	 	 	 	color: $red;
+    	 	 	 	 	position: relative;
+    	 	 	 	 	top: 5px;
     	 	 	 	 }
     	 	 	 }
     	 	 	 .pm-admin {

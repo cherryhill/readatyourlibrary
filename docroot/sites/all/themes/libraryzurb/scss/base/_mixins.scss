@@ -72,7 +72,7 @@
 	outline: none !important;
 }
 @mixin arialregular {
-	font-family: Arialregular !important;
+	font-family: arial !important;
 	font-style: normal !important;
 	font-weight: normal !important;
 	-webkit-font-smoothing: antialiased !important;
@@ -187,14 +187,23 @@
     position: relative;
     @include boxshadow;
 }
-@mixin waveimg {
+@mixin waveimg($ch-font: null) {
 		color: $white;
       	@include mclaren;
 		padding-top: 26px;
 		padding-bottom: 25px;
-	    font-size: 28px;
+	    
+	     @if $ch-font == "C" {
+	     	font-size: 22px;
+	     	  @media screen and (max-width: 767px) {
+	     	  	font-size: 17px;
+	     	  }
+	     }
+	     @else {
+	     	font-size: 28px;
 	     @media screen and (max-width: 767px) {
 	     	font-size: 22px;
+	     }
 	     }
 		height: 110px;
 		border-bottom: medium none;
