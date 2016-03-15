@@ -209,8 +209,17 @@ function play_library_program_node_update($node) {
 	if ($node->status == NODE_PUBLISHED) {
 		$current_node = node_load($node->nid);
 		if ($current_node->status !== $node->status) {
-			$hook = "node_update|node|{$node->type}|published";
-			_play_library_program_invoke_activity_entry_hooks($node, 'node', $hook);
+			if($node->type == 'review_book') {
+              $hook = "node_update|node|{$node->type}|published";
+			  _play_library_program_invoke_activity_entry_hooks($node, 'node', $hook);
+			  $node->workbench_moderation['updating_live_revision'] = 1;
+            }
+			else {
+		      $hook = "node_update|node|{$node->type}|published";
+			  _play_library_program_invoke_activity_entry_hooks($node, 'node', $hook);
+			}
+			
+			
 		}
 	}
 }
