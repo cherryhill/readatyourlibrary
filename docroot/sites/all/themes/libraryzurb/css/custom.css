@@ -6899,6 +6899,7 @@ h1#page-title {
   font-weight: normal !important;
   -webkit-font-smoothing: antialiased !important;
   -moz-osx-font-smoothing: grayscale !important;
+  -moz-font-smoothing: grayscale !important;
 }
 .block.dashboard-block .view .view-content {
   width: 50%;
@@ -7041,6 +7042,7 @@ h1#page-title {
   font-weight: normal !important;
   -webkit-font-smoothing: antialiased !important;
   -moz-osx-font-smoothing: grayscale !important;
+  -moz-font-smoothing: grayscale !important;
 }
 .block.block-private-msg-custom .pm-custom .pm .pm-subject a {
   color: #000;
@@ -7379,6 +7381,7 @@ h1#page-title {
   font-weight: normal !important;
   -webkit-font-smoothing: antialiased !important;
   -moz-osx-font-smoothing: grayscale !important;
+  -moz-font-smoothing: grayscale !important;
 }
 @media screen and (max-width: 767px) {
   .block.announcement .views-field-body p {
@@ -7571,6 +7574,7 @@ h1#page-title {
   font-weight: normal !important;
   -webkit-font-smoothing: antialiased !important;
   -moz-osx-font-smoothing: grayscale !important;
+  -moz-font-smoothing: grayscale !important;
 }
 .block.playlib-copyright {
   position: relative;
@@ -9837,6 +9841,7 @@ body .alert-box.success a.close:hover {
   font-weight: normal !important;
   -webkit-font-smoothing: antialiased !important;
   -moz-osx-font-smoothing: grayscale !important;
+  -moz-font-smoothing: grayscale !important;
   font-size: 17px;
 }
 .logged-in.section-programs .sidebar .block.block-auto-role-allocation div.days-left, .logged-in.section-programs .sidebar .block.block-auto-role-allocation div.all_rewrad_won {
@@ -10310,6 +10315,7 @@ body .alert-box.success a.close:hover {
   font-weight: normal !important;
   -webkit-font-smoothing: antialiased !important;
   -moz-osx-font-smoothing: grayscale !important;
+  -moz-font-smoothing: grayscale !important;
   color: #000;
 }
 .page-user-profile .homebox .portlet-content .view.view-follow .view-content {
@@ -10426,6 +10432,7 @@ body .alert-box.success a.close:hover {
   font-weight: normal !important;
   -webkit-font-smoothing: antialiased !important;
   -moz-osx-font-smoothing: grayscale !important;
+  -moz-font-smoothing: grayscale !important;
   text-transform: capitalize;
 }
 .page-user-profile .homebox .portlet-content .view.view-booklist-on-activities-page ol {
@@ -10540,6 +10547,7 @@ body .alert-box.success a.close:hover {
   font-weight: normal !important;
   -webkit-font-smoothing: antialiased !important;
   -moz-osx-font-smoothing: grayscale !important;
+  -moz-font-smoothing: grayscale !important;
   text-transform: capitalize;
 }
 .page-user-profile .homebox .portlet-content .view.view-my-book-reviews .view-content ol, .page-user-profile .homebox .portlet-content .view.view-my-book-reviews .view-content ul {
@@ -10576,6 +10584,7 @@ body .alert-box.success a.close:hover {
   font-weight: normal !important;
   -webkit-font-smoothing: antialiased !important;
   -moz-osx-font-smoothing: grayscale !important;
+  -moz-font-smoothing: grayscale !important;
   text-transform: capitalize;
   text-decoration: none;
 }
@@ -11141,6 +11150,7 @@ body .alert-box.success a.close:hover {
   font-weight: normal !important;
   -webkit-font-smoothing: antialiased !important;
   -moz-osx-font-smoothing: grayscale !important;
+  -moz-font-smoothing: grayscale !important;
   color: #fff;
   margin-bottom: 15px;
 }
@@ -11151,6 +11161,7 @@ body .alert-box.success a.close:hover {
   font-weight: normal !important;
   -webkit-font-smoothing: antialiased !important;
   -moz-osx-font-smoothing: grayscale !important;
+  -moz-font-smoothing: grayscale !important;
   color: #fff;
 }
 .page-reviews .view .view-header .other-booklists, .page-booklists .view .view-header .other-booklists {
@@ -11581,6 +11592,9 @@ body .alert-box.success a.close:hover {
 .page-booklists .main .view-content .item-list ol li .views-field-nothing div {
   float: left;
 }
+.page-booklists .main .view-content .item-list ol li .views-field-nothing div a {
+  padding-left: 10px;
+}
 .page-booklists .main .view-content .item-list ol li .views-field-nothing div.field-name-field-avatar-image {
   position: relative;
   bottom: 10px;
@@ -11591,7 +11605,7 @@ body .alert-box.success a.close:hover {
   -webkit-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
   -moz-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
   box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
-  margin-right: 10px;
+  margin-left: 10px;
 }
 .page-booklists .main .view-content .item-list ol li .views-field-php a {
   color: #267fda;
@@ -11698,9 +11712,7 @@ body .alert-box.success a.close:hover {
 .page-booklists .main .view-booklist-slideshow .owl-carousel .views-field-nothing div a.username {
   color: #267fda;
   font-size: 21px;
-}
-.page-booklists .main .view-booklist-slideshow .owl-carousel .views-field-nothing div a.username:hover {
-  color: #267fda;
+  padding-right: 10px;
 }
 .page-booklists .main .view-booklist-slideshow .owl-carousel .views-field-count {
   width: 30%;
@@ -11805,6 +11817,9 @@ body .alert-box.success a.close:hover {
 .section-activities h1#page-title {
   display: none;
 }
+.section-activities .main .views-field-nothing h2 {
+  text-transform: uppercase;
+}
 .section-activities .main .view-activities-page-, .section-activities .main .block-block {
   margin-bottom: 35px;
 }
@@ -11891,6 +11906,7 @@ body .alert-box.success a.close:hover {
   font-weight: normal !important;
   -webkit-font-smoothing: antialiased !important;
   -moz-osx-font-smoothing: grayscale !important;
+  -moz-font-smoothing: grayscale !important;
   font-size: 18px;
 }
 .section-activities .sidebar3 .block-block a.button {
@@ -11986,6 +12002,7 @@ body .alert-box.success a.close:hover {
   font-weight: normal !important;
   -webkit-font-smoothing: antialiased !important;
   -moz-osx-font-smoothing: grayscale !important;
+  -moz-font-smoothing: grayscale !important;
   text-transform: capitalize;
 }
 .section-activities .sidebar3 .block-views ul {
@@ -12150,7 +12167,7 @@ body .alert-box.success a.close:hover {
 }
 .section-progress .main .view-calendar-sticker .view-header {
   width: 100%;
-  padding: 20px 0 20px 2%;
+  padding: 20px 0 20px 20px;
   left: 0;
 }
 .section-progress .main .view-calendar-sticker .view-header div {
@@ -12427,7 +12444,11 @@ body .alert-box.success a.close:hover {
   border-spacing: 10px;
 }
 .page-users-public-profile .main section {
-  display: table-cell;
+  display: inline-block;
+  width: 43%;
+  margin-right: 2.5%;
+  margin-left: 2.5%;
+  vertical-align: top;
 }
 .page-users-public-profile .main .block {
   background: #267fda !important;
@@ -12448,7 +12469,7 @@ body .alert-box.success a.close:hover {
   -moz-osx-font-smoothing: grayscale !important;
   padding-top: 26px;
   padding-bottom: 25px;
-  font-size: 28px;
+  font-size: 22px;
   height: 110px;
   border-bottom: medium none;
   margin-top: -1px;
@@ -12460,7 +12481,7 @@ body .alert-box.success a.close:hover {
 }
 @media screen and (max-width: 767px) {
   .page-users-public-profile .main .block .block-title {
-    font-size: 22px;
+    font-size: 17px;
   }
 }
 .page-users-public-profile .main .block .block-title:after {
@@ -12523,6 +12544,9 @@ body .alert-box.success a.close:hover {
 .page-users-public-profile .main .view.view-booklist-on-activities-page, .page-users-public-profile .main .view.view-my-book-reviews {
   counter-reset: section;
 }
+.page-users-public-profile .main .view.view-booklist-on-activities-page ul, .page-users-public-profile .main .view.view-my-book-reviews ul {
+  list-style: none;
+}
 .page-users-public-profile .main .view.view-booklist-on-activities-page .view-header, .page-users-public-profile .main .view.view-my-book-reviews .view-header {
   width: 100%;
 }
@@ -12577,11 +12601,11 @@ body .alert-box.success a.close:hover {
 }
 .page-users-public-profile .main .view.view-booklist-on-activities-page .view-content .views-field-title a, .page-users-public-profile .main .view.view-my-book-reviews .view-content .views-field-title a {
   color: #fff;
-  font-family: McLaren-Regular !important;
-  font-weight: normal !important;
+  font-family: arial !important;
   font-style: normal !important;
+  font-weight: normal !important;
   -webkit-font-smoothing: antialiased !important;
-  -moz-osx-font-smoothing: grayscale !important;
+  font-smoothing: antialiased !important;
   text-transform: capitalize;
   font-size: 18px;
 }
@@ -12592,12 +12616,12 @@ body .alert-box.success a.close:hover {
   display: inline-block;
 }
 .page-users-public-profile .main .view.view-booklist-on-activities-page .view-content .views-field-count, .page-users-public-profile .main .view.view-my-book-reviews .view-content .views-field-count {
-  font-family: McLaren-Regular !important;
-  font-weight: normal !important;
+  font-family: arial !important;
   font-style: normal !important;
+  font-weight: normal !important;
   -webkit-font-smoothing: antialiased !important;
-  -moz-osx-font-smoothing: grayscale !important;
-  float: right;
+  font-smoothing: antialiased !important;
+  margin: 10px 0px 0px 10px;
 }
 .page-users-public-profile .main .view.view-booklist-on-activities-page .view-content .views-field-count .views-label-count, .page-users-public-profile .main .view.view-my-book-reviews .view-content .views-field-count .views-label-count {
   position: relative;
@@ -12830,6 +12854,7 @@ body .alert-box.success a.close:hover {
   font-weight: normal !important;
   -webkit-font-smoothing: antialiased !important;
   -moz-osx-font-smoothing: grayscale !important;
+  -moz-font-smoothing: grayscale !important;
   color: #4D4D4D;
 }
 

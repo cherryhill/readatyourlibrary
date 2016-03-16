@@ -1608,13 +1608,16 @@
 		  	 					@include mclaren;	
 			  	 					div {
 			  	 						float: left;
+			  	 						a {
+			  	 							padding-left: 10px;
+			  	 						}
 			  	 						&.field-name-field-avatar-image {
 			  	 							position: relative;
 			  	 							bottom: 10px;
 			  	 							  img {
 			  	 							  	 @include noborder;
 			  	 							  	 @include boxshadow;
-			  	 							  	 margin-right: 10px;
+			  	 							  	 margin-left: 10px;
 			  	 							  }
 			  	 						}
 			  	 					}
@@ -1706,9 +1709,8 @@
 		  			 	  	 	a.username {
 			  			 	  	 	color: $blue;
 			  			 	  	 	font-size: 21px;
-				  			 	  	 	  &:hover {
-				  			 	  	 	  	color: $blue;
-				  			 	  	 	  }
+			  			 	  	 	padding-right: 10px;
+				  			 	
 		  			 	  	 	}
 	  			 	  		}
 	  			 	}
@@ -1793,6 +1795,11 @@
 		display: none;
 	}
  	.main {
+ 		.views-field-nothing {
+ 			h2 {
+ 				text-transform: uppercase;
+ 			}
+ 		}
  		.view-activities-page-, .block-block {
 		 	@include block;
 		 	h2, .block-title {
@@ -2034,7 +2041,7 @@
  	 	 	 			.view-header {
  	 	 	 	
 			 	 	 	 	width: 100%;
-			 	 	 	 	padding: 20px 0 20px 2%;
+			 	 	 	 	padding: 20px 0 20px 20px;
 			 	 	 	 	left: 0;
 			 	 	 	 	  div {
 			 	 	 	 	  	@include mclaren;
@@ -2312,12 +2319,16 @@
 		border-collapse: separate;
 		border-spacing: 10px;
 		 section {
-		 	display: table-cell;
+		 	display: inline-block;
+		 	width: 43%;
+		 	margin-right: 2.5%;
+		 	margin-left: 2.5%;
+		 	vertical-align: top;
 		 }
 	.block {
 		@include bluebackground;	
 		.block-title {
-			@include waveimg;
+			@include waveimg(C);
 		}
 		a {
 			color: $white;
@@ -2358,6 +2369,9 @@
 		}
 		&.view-booklist-on-activities-page, &.view-my-book-reviews  {
 			counter-reset: section;
+			ul {
+				list-style: none;
+			}
 			.view-header {
 				width: 100%;
 				 h3 {
@@ -2372,7 +2386,7 @@
 				.views-field-title {
 					a {
 						color: $white;
-						@include mclaren;
+						@include arialregular;
 						text-transform: capitalize;
 						font-size: 18px;
 						 &:before {
@@ -2381,8 +2395,8 @@
 					}
 				}
 				 .views-field-count {
-				 	@include mclaren;
-				 	float: right;
+				 	@include arialregular;
+				 	margin: 10px 0px 0px 10px;
 				 	 .views-label-count {
 				 	 	@include like;
 				 	 }
@@ -2550,6 +2564,7 @@
 }
 /*css for event page*/
 .section-events {
+	
 	.main {
 		.view-events {
 			.view-content {
