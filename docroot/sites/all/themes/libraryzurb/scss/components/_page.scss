@@ -1608,13 +1608,16 @@
 		  	 					@include mclaren;	
 			  	 					div {
 			  	 						float: left;
+			  	 						a {
+			  	 							padding-left: 10px;
+			  	 						}
 			  	 						&.field-name-field-avatar-image {
 			  	 							position: relative;
 			  	 							bottom: 10px;
 			  	 							  img {
 			  	 							  	 @include noborder;
 			  	 							  	 @include boxshadow;
-			  	 							  	 margin-right: 10px;
+			  	 							  	 margin-left: 10px;
 			  	 							  }
 			  	 						}
 			  	 					}
@@ -1706,9 +1709,8 @@
 		  			 	  	 	a.username {
 			  			 	  	 	color: $blue;
 			  			 	  	 	font-size: 21px;
-				  			 	  	 	  &:hover {
-				  			 	  	 	  	color: $blue;
-				  			 	  	 	  }
+			  			 	  	 	padding-right: 10px;
+				  			 	
 		  			 	  	 	}
 	  			 	  		}
 	  			 	}
