@@ -4,6 +4,13 @@
   // this class to style phone number links as buttons on small screens.
   Drupal.behaviors.libraryzurbPhoneNumberLinksOnMobile = {
     attach: function(context, settings) {
+
+      $(':checkbox').on('change',function(){
+       var th = $(this), name = th.prop('class'); 
+       if(th.is(':checked')){
+           $(':checkbox[class="'  + name + '"]').not($(this)).prop('checked',false);   
+        }
+      });
       // Get width of browser viewport. **Note:** The value we check against
       // should probably match the value set for `$topbar-breakpoint` in
       // libraryzurb/scss/_variables.scss.
@@ -57,11 +64,6 @@ jQuery( document ).ready(function() {
 
       
     });
-
-/* jQuery for text change on user registration form */
-jQuery('#edit-field-user-random-list-1-und-0-randomized-text-regenerate').text('Change Description');
-jQuery('#edit-field-user-random-list-2-und-0-randomized-text-regenerate').text('Change Color');
-jQuery('#edit-field-user-random-list-3-und-0-randomized-text-regenerate').text('Change Creature');
 
   /**jquery for removing header and footer from lightbox**/
    jQuery('#lightbox  .l-header').hide();

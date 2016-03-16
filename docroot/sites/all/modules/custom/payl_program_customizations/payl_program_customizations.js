@@ -29,7 +29,7 @@ if (typeof String.prototype.startsWith != 'function') {
 
       $('.form-item-name').hide();
       $('.field-widget-random-list-widget-randomizer').each(function(index) {
-        fieldname = 'Regenerate ' + $(this).find('label').html();
+        fieldname = 'Change ' + $(this).find('label').html();
         $(this).find('input.random-list-widget-regenerate').val(fieldname);
         $(this).find('button.random-list-widget-regenerate').html(fieldname);
       });
