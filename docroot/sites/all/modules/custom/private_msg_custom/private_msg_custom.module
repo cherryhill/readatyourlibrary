@@ -37,15 +37,138 @@ function private_msg_custom_menu() {
 	  'file path' => drupal_get_path('module', 'private_msg_custom'),
   );
 
+   $items['profile_avatar'] = array(
+	  'title' => 'Profile Avatar',
+	  'description' => 'providing tabs for different avatars',
+	  'page callback' => 'drupal_get_form',
+    'page arguments' => array('ajax_avatar_profile_checkboxes'),
+	  'access arguments' => array('access content'),
+    'type' => MENU_SUGGESTED_ITEM,
+	  'file' => 'inc/platform_configuration_purchase_link.inc',
+	  'file path' => drupal_get_path('module', 'private_msg_custom'),
+  );
+
   return $items;
+}
+
+
+
+/**
+ * Implementation of hook_form_profile2_edif_PROFILE_NAME_form_alter()
+ */
+function private_msg_custom_form_profile2_edit_main_form_alter(&$form, $form_state) {
+
+	$form['profile_main']['field_user_avatar'] = array('#attributes' => array('style' => 'display:none'));
+
+  $query = db_select('field_data_field_avatar_type','type');
+	$query->fields('type',array('field_avatar_type_tid','entity_id'));
+	$query->join('eck_user_avatar','eck','eck.id = type.entity_id');
+	$query->join('taxonomy_term_data','tax','tax.tid = type.field_avatar_type_tid');
+	$query->fields('tax',array('name'));
+  $query->fields('eck',array('title'));
+	$query_avatar = $query->execute()->fetchAll();
+
+	foreach ($query_avatar as $key => $value) {
+    $tax_name[$value->field_avatar_type_tid] = $value->name;
+    $avatar_name[$value->field_avatar_type_tid][] = $value->entity_id;
+  }
+
+  $num_avatar = !empty($form_state['values']['avatar_select']) ? $form_state['values']['avatar_select'] : 1;
+  $none_array = array(0 => '-None-');
+  $array2 = $none_array + $tax_name;
+
+  $form['avatar_select'] = array(
+    '#title' => t('Select your user avatar?'),
+    '#type' => 'select',
+    '#options' => $array2,
+    '#ajax' => array(
+      'callback' => 'ajax_autocheckboxes_callback_avatar',
+      'wrapper' => 'checkboxes-div',
+      'effect' => 'slide',
+      'progress' => array('type' => 'none'),
+    ),
+    //'#weight' => 5,
+  );
+
+  $form['checkboxes_fieldset'] = array(
+    '#title' => t("Avatars"),
+    '#prefix' => '<div id="checkboxes-div">',
+    '#suffix' => '</div>',
+    '#type' => 'fieldset',
+    //'#weight' => 5,
+  );
+
+	foreach ($avatar_name[$num_avatar] as $key => $value) {
+		$form['checkboxes_fieldset']["avatar_checkbox-$value"] = array(
+	    '#type' => 'checkbox',
+	    '#title' => avatar_images_list($value),
+	    '#prefix' => '<div class="$value">',
+	    '#suffix' => '</div>',
+	    '#attributes' => array(
+	        'class' => array(
+	          'user_avatar'
+	        ),
+	     ),
+  	);
+	}
+
+	array_unshift($form['#submit'], 'submit_for_avatar');
+}
+
+function avatar_images_list($value) {
+  $query = db_select('field_data_field_avatar_image', 't');
+  $query->join('file_managed', 'n', 'n.fid = t.field_avatar_image_fid');
+  $result = $query
+    ->fields('n', array('uri'))
+    ->condition('t.entity_id', $value)
+    ->execute();
+    $img_uri = $result->fetchObject();
+    $img_uri = $img_uri->uri;
+    $style = 'avatar_style';
+    $img_path = image_style_url($style, $img_uri);
+    $img = "<img src='$img_path'>";
+  return $img;
+}
+
+
+function ajax_autocheckboxes_callback_avatar($form, $form_state) {
+  return $form['checkboxes_fieldset'];
+}
+
+// submit handler for create user account form.
+function submit_for_avatar($form, $form_state) {
+  foreach ($form_state['values'] as $key => $value) {
+  	if($value == 1){
+		  $avatar_entity = 'avatar_checkbox-';
+	    $av_entity_id = strpos($key, $avatar_entity);
+
+	    if ($av_entity_id !== false) {
+	      // use sesion to pass avatar ID to profile presave hook.
+	      $_SESSION['user_avatar_id'] = substr($key, 16);
+	      break;
+	    }
+	  }
+	}
+}
+
+/**
+ * Implementation of hook_profile2_presave()
+ */
+function private_msg_custom_profile2_presave($profile) {
+  $profile->field_user_avatar[LANGUAGE_NONE][0]['target_id'] = $_SESSION['user_avatar_id'];
+  unset($_SESSION['user_avatar_id']);
 }
 
 /**
  * Implementation of hook_form_alter()
  */
 function private_msg_custom_form_alter(&$form, &$form_state, $form_id) {
+
   if($form_id == 'review_book_node_form') {
     drupal_set_title('Write a Book Review');
+  }
+
+  if($form_id == 'user_register_form') {
   }
 
   if($form_id == 'booklist_node_form') {
@@ -151,4 +274,3 @@ function pm_block_view() {
     return 'No Messages to display';
   }
 }
-
