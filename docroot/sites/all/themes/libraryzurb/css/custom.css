@@ -6752,6 +6752,114 @@ h1#page-title {
 .block {
   margin-bottom: 35px;
 }
+.block.block-private-msg-custom-homepage-slider {
+  background: #267fda !important;
+  overflow: hidden;
+  border-radius: 20px;
+  color: #fff;
+  position: relative;
+  -webkit-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+  box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+  padding: 0 !important;
+}
+.block.block-private-msg-custom-homepage-slider ul {
+  list-style: none;
+  position: absolute;
+  right: 40px;
+}
+.block.block-private-msg-custom-homepage-slider ul li {
+  color: transparent;
+  position: relative;
+  display: inline-block;
+  margin-left: 15px;
+  z-index: 9999;
+}
+.block.block-private-msg-custom-homepage-slider ul li:after {
+  content: "";
+  width: 20px;
+  height: 20px;
+  display: block;
+  visibility: visible;
+  position: absolute;
+  border-radius: 100%;
+  background: #fff;
+}
+.block.block-private-msg-custom-homepage-slider ul li.active:after {
+  background: #267fda !important;
+}
+.block.block-private-msg-custom-homepage-slider .slide {
+  padding-bottom: 50px;
+}
+.block.block-private-msg-custom-homepage-slider .slide .view .view-header {
+  color: #fff;
+  font-family: McLaren-Regular !important;
+  font-weight: normal !important;
+  font-style: normal !important;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+  padding-top: 26px;
+  padding-bottom: 25px;
+  font-size: 28px;
+  height: 110px;
+  border-bottom: medium none;
+  margin-top: -1px;
+  padding-left: 36px;
+  z-index: 0;
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+}
+@media (max-width: 767px) {
+  .block.block-private-msg-custom-homepage-slider .slide .view .view-header {
+    font-size: 22px;
+  }
+}
+.block.block-private-msg-custom-homepage-slider .slide .view .view-header:after {
+  content: "";
+  width: 100%;
+  height: 110px;
+  display: block;
+  visibility: visible;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: url("../images/libraryzurb/background-saffron.png") no-repeat;
+  background-position: -35px 10px;
+  -webkit-transform: rotate(180deg);
+  -moz-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  -o-transform: rotate(180deg);
+  transform: rotate(180deg);
+  z-index: -1;
+}
+.block.block-private-msg-custom-homepage-slider .owl-controls {
+  position: absolute;
+  top: 36%;
+  width: 100%;
+  height: 0;
+}
+.block.block-private-msg-custom-homepage-slider .owl-controls .owl-pagination {
+  display: none;
+}
+.block.block-private-msg-custom-homepage-slider .owl-controls .owl-buttons .owl-prev {
+  float: left;
+  background: url("../images/libraryzurb/left-arrow.png") no-repeat;
+  opacity: 1;
+  color: transparent;
+  border-radius: 0;
+  margin-left: -28px;
+  padding: 10px;
+}
+.block.block-private-msg-custom-homepage-slider .owl-controls .owl-buttons .owl-next {
+  float: right;
+  background: url("../images/libraryzurb/right-arrow.png") no-repeat;
+  opacity: 1;
+  color: transparent;
+  border-radius: 0;
+  margin-right: -45px;
+  padding: 10px;
+}
 .block.block-auto-role-allocation-calendar-data.header {
   display: none;
 }
@@ -9596,6 +9704,12 @@ body .alert-box.success a.close:hover {
     right: 0;
   }
 }
+@media (min-width: 768px) and (max-width: 1025px) {
+  .page-rewards .pull-9.sidebar {
+    width: 38%;
+    right: 63.4%;
+  }
+}
 .page-rewards .pull-9.sidebar .block .block-title, .page-rewards .pull-9.sidebar .block .view-header, .page-rewards .pull-9.sidebar .block .view-header p {
   font-size: 22px;
   color: #fff !important;
@@ -9679,6 +9793,13 @@ body .alert-box.success a.close:hover {
 .page-rewards .main .block .view .view-content .views-row {
   display: table-cell;
   padding-right: 10px;
+}
+@media (min-width: 768px) and (max-width: 1025px) {
+  .page-rewards .main .block .view .view-content .views-row {
+    display: inline-block;
+    width: 19%;
+    vertical-align: top;
+  }
 }
 .page-rewards .main .block .view .view-content .views-row .views-field {
   width: 100%;
@@ -11859,15 +11980,12 @@ body .alert-box.success a.close:hover {
     margin-bottom: 25px;
   }
 }
-@media only screen and (min-width: 768px) and (max-width: 940px) {
+@media (min-width: 768px) and (max-width: 1025px) {
   .section-activities .pull-9.sidebar3 {
-    width: 35%;
+    width: 38%;
     right: 63.4%;
-  }
-}
-@media only screen and (min-width: 941px) and (max-width: 1025px) {
-  .section-activities .pull-9.sidebar3 {
-    right: 62.4%;
+    padding-left: 0;
+    padding-right: 0;
   }
 }
 .section-activities .sidebar3 {
@@ -12886,6 +13004,12 @@ body .alert-box.success a.close:hover {
   margin-top: 10px;
   margin-bottom: 10px;
 }
+@media (min-width: 768px) and (max-width: 1025px) {
+  .section-events .main .view-events .view-content .views-row {
+    border-bottom: 1px solid #000;
+    padding-bottom: 10px;
+  }
+}
 .section-events .main .view-events .view-content .views-row div {
   display: table-row;
   float: left;
@@ -12896,6 +13020,11 @@ body .alert-box.success a.close:hover {
   font-style: normal !important;
   font-weight: normal !important;
   -webkit-font-smoothing: antialiased !important;
+}
+@media (min-width: 768px) and (max-width: 1025px) {
+  .section-events .main .view-events .view-content .views-row div {
+    float: none;
+  }
 }
 .section-events .main .view-events .view-content .views-row div a {
   color: #000;
@@ -12908,8 +13037,18 @@ body .alert-box.success a.close:hover {
 .section-events .main .view-events .view-content .views-row div:nth-of-type(1) {
   width: 60%;
 }
+@media (min-width: 768px) and (max-width: 1025px) {
+  .section-events .main .view-events .view-content .views-row div:nth-of-type(1) {
+    width: 100%;
+  }
+}
 .section-events .main .view-events .view-content .views-row div:nth-of-type(2), .section-events .main .view-events .view-content .views-row div:nth-of-type(3) {
   width: 20%;
+}
+@media (min-width: 768px) and (max-width: 1025px) {
+  .section-events .main .view-events .view-content .views-row div:nth-of-type(2), .section-events .main .view-events .view-content .views-row div:nth-of-type(3) {
+    width: 100%;
+  }
 }
 .section-events .main .pagination.pager {
   margin-top: 35px;
