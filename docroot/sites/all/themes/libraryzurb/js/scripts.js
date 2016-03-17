@@ -31,6 +31,26 @@
 
 
 jQuery( document ).ready(function() {
+
+
+  /* jQuery for homepage book slider */
+  jQuery(".blslider2.slide").hide();
+  jQuery(".blslider3.slide").hide();
+  jQuery(".blslider1").show();
+    jQuery('li').click(function(){
+      if(jQuery(this).attr("class")=="blslider1"){
+        jQuery(".slide").not(".blslider1").hide();
+        jQuery(".blslider1").show();
+      }
+      if(jQuery(this).attr("class")=="blslider2"){
+        jQuery(".slide").not(".blslider2").hide();
+        jQuery(".blslider2").show();
+      }
+      if(jQuery(this).attr("class")=="blslider3"){
+        jQuery(".slide").not(".blslider3").hide();
+        jQuery(".blslider3").show();
+      }
+  });
   
 
   /* Jquery for script for raffle entry checkbox */

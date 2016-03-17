@@ -1,6 +1,30 @@
 // Blocks
 
 .block {
+	&.block-private-msg-custom-homepage-slider {
+		@include bluebackground;
+		padding: 0 !important;
+		  ul {
+		  	list-style: none;
+		  	   li {
+		  	   	 color: transparent;
+		  	   	 position: relative;
+		  	   	 display: inline;
+		  	   	   &:after {
+		  	   	   	  @include previous(10px, 10px);
+		  	   	   	  border-radius: 100%;
+		  	   	   	  background: $white;
+		  	   	   }
+		  	   }
+		  }
+		  .slide {
+		  	.view {
+		  		.view-header {
+		  			@include waveimg;
+		  		}
+		  	}
+		  }
+	}
 	&.block-auto-role-allocation-calendar-data.header {
 		display: none;
 	}

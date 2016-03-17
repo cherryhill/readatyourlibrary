@@ -234,6 +234,10 @@ function private_msg_custom_block_info() {
     'info' => t('Private Message Dashboard Block'),
   );
 
+  $blocks['homepage_slider'] = array(
+    'info' => t('Homepage booklist slider Block'),
+  );
+
   return $blocks;
 }
 
@@ -247,6 +251,10 @@ function private_msg_custom_block_view($delta = '') {
     case 'pm_block' :
       $block['content'] = pm_block_view();
       break;
+
+    case 'homepage_slider' :
+      $block['content'] = homepage_slider();
+      break;
   }
   
   return $block;
@@ -256,6 +264,7 @@ function private_msg_custom_block_view($delta = '') {
  * Function callback for private_msg_custom_block_view.
  */
 function pm_block_view() {
+
   global $user;
 	$current_user = $user->uid;
 
@@ -297,4 +306,19 @@ function pm_block_view() {
   } else {
     return 'No Messages to display';
   }
+}
+
+function homepage_slider(){
+
+	$output .= '<ul><li class = "blslider1">1</li><li class = "blslider2">2</li><li class = "blslider3">3</li></ul>';
+	$block = module_invoke('views', 'block_view', 'booklist_slideshow-block_2');
+	$output .= '<div class="blslider1 slide">'. render($block['content']). '</div>';
+
+	$block = module_invoke('views', 'block_view', 'booklist_slideshow-block_3');
+	$output .= '<div class="blslider2 slide">'. render($block['content']). '</div>';
+
+	$block = module_invoke('views', 'block_view', 'booklist_slideshow-block_4');
+	$output .= '<div class="blslider3 slide">'. render($block['content']). '</div>';
+
+	return $output;
 }
