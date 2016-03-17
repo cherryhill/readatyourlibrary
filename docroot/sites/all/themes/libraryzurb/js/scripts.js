@@ -39,18 +39,10 @@ jQuery( document ).ready(function() {
         var location = window.location;
         var baseUrl1 = location.protocol + "//" + location.host + '/raffle_pro';
 
-        // var active_raffle = jQuery(this).attr('id');
-        // var active_raffle_exp = active_raffle.split('_');
-        // var active_raffle_id = parseInt(active_raffle_exp[2]);
-        // var reward_id = jQuery(this).val();
-
       jQuery.ajax({
         
             //url: 'http://localhost/playatyourlibrary/docroot/raffle_pro',
             url: baseUrl1,
-            // async: false,
-            // type: 'post',
-            // data: 'reward_id='+reward_id,
             success: function(res){
                 //alert(res);
               jQuery('.raffle-filter-form').html(res);
@@ -301,17 +293,7 @@ jQuery(document).on('click','#raffle_form_button',function() {
         var location = window.location;
         var baseUrl1 = location.protocol + "//" + location.host + '/raffle_user_list';
         
-
-
-        var raffleId = 0;
-        jQuery( ".active_raffle" ).each(function() {
-          if(jQuery("input[name='raffle']:checked").val()) {
-             raffleId = jQuery(this).attr('raffle_id');
-
-          }
-
-        });
-
+        var raffleId = jQuery("input[name='raffle']:checked").attr('raffle_id');
 
         
         var reward_id = jQuery("input[name='raffle']:checked").val();
