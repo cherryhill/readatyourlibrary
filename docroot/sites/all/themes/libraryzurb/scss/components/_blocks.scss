@@ -6,14 +6,24 @@
 		padding: 0 !important;
 		  ul {
 		  	list-style: none;
+		  	position: absolute;
+		  	right: 40px;
 		  	   li {
 		  	   	 color: transparent;
 		  	   	 position: relative;
-		  	   	 display: inline;
+		  	   	 display: inline-block;
+		  	   	 margin-left: 15px;
+		  	   	 z-index: 9999;
+
 		  	   	   &:after {
-		  	   	   	  @include previous(10px, 10px);
+		  	   	   	  @include previous(20px, 20px);
 		  	   	   	  border-radius: 100%;
 		  	   	   	  background: $white;
+		  	   	   }
+		  	   	   &.active {
+		  	   	   	  &:after {
+		  	   	   	  	background: $blue !important;
+		  	   	   	  }
 		  	   	   }
 		  	   }
 		  }
@@ -24,6 +34,37 @@
 		  		}
 		  	}
 		  }
+		 .owl-controls {
+			position: absolute;
+	        top: 20%;
+	        width: 100%;
+	        height: 0;
+	        .owl-pagination {
+	        	display: none;
+	        }
+			.owl-buttons {
+				.owl-prev {
+					float: left;
+					background: url('../images/libraryzurb/left-arrow.png') no-repeat;
+					opacity: 1;
+					color: transparent;
+					border-radius: 0;
+					margin-left: -28px;
+					padding: 10px;
+
+				}
+				.owl-next {
+					float: right;
+					background: url('../images/libraryzurb/right-arrow.png') no-repeat;
+					opacity: 1;
+					color: transparent;
+					border-radius: 0;
+					margin-right: -45px;
+					padding: 10px;
+
+				}
+			}
+		}
 	}
 	&.block-auto-role-allocation-calendar-data.header {
 		display: none;
