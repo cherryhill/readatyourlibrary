@@ -43,7 +43,22 @@
       transform: rotate($degrees);
     } 
 }
-
+//media query
+@mixin tablet {
+  @media (min-width: #{$tablet-width}) and (max-width: #{$desktop-width - 1px}) {
+    @content;
+  }
+}
+@mixin desktop {
+   @media (min-width: #{$desktop-width}) {
+    @content;
+  }
+}
+@mixin mobile {
+   @media (max-width: #{$mobile-width}) {
+    @content;
+  }
+}
 //for optimise sass coding
 
 @mixin stage {
@@ -76,7 +91,6 @@
 	font-style: normal !important;
 	font-weight: normal !important;
 	-webkit-font-smoothing: antialiased !important;
-	font-smoothing: antialiased !important;
 }
 @mixin arialbold {
 	font-family: Arialbold !important;
@@ -99,7 +113,7 @@
 		padding-top: 26px;
 		padding-bottom: 25px;
 	    font-size: 28px;
-	     @media screen and (max-width: 767px) {
+	      @include mobile{
 	     	font-size: 22px;
 	     }
 		height: 110px;
@@ -196,13 +210,13 @@
 	    
 	     @if $ch-font == "C" {
 	     	font-size: 22px;
-	     	  @media screen and (max-width: 767px) {
+	     	  @include mobile {
 	     	  	font-size: 17px;
 	     	  }
 	     }
 	     @else {
 	     	font-size: 28px;
-	     @media screen and (max-width: 767px) {
+	     @include mobile {
 	     	font-size: 22px;
 	     }
 	     }
@@ -250,7 +264,7 @@
 }
 @mixin block {
 	margin-bottom: 35px;
-	 @media screen and (max-width: 767px) {
+	@include mobile {
 	     	margin-bottom: 25px;
 	     }
 }
@@ -272,7 +286,7 @@
 
 }
 @mixin bck_size_tablet {
-	@media only screen and (min-width: 768px) and (max-width: 1025px) {
+	@include tablet {
 		background-size: 100%;
 	}
 }

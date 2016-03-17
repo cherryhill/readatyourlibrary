@@ -47,10 +47,10 @@
   	 			  	  	  font-size: 0;
 
   	 			  	  	   &:after {
-                      @media screen and (min-width: 1026px) {
+                      @include desktop {
                        @include previous(94px, 105px, $left: 0, $top: 0);
                       }
-  	 			  	  	   	@media only screen and (min-width: 768px) and (max-width: 1025px) {
+  	 			  	  	   	@include tablet {
                         @include previous(60px, 70px, $left: 0, $top: 0);
                       }
   	 			  	  	   	

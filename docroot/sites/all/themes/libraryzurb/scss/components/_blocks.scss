@@ -1,8 +1,11 @@
 // Blocks
 
 .block {
+	&.block-auto-role-allocation-calendar-data.header {
+		display: none;
+	}
     margin-bottom: 35px;
-     @media screen and (max-width: 767px) {
+    @include mobile {
 	     	margin-bottom: 25px;
 	     }
 	 &.block-views-event-activities-block-1 {
@@ -343,7 +346,7 @@
 		 	border: none;
 		 	color: $black;
 		 	font-size: 28px;
-		 	 @media screen and (max-width: 767px) {
+		 	@include mobile {
 	     	font-size: 18px;
 	     }
 		 	@include mclaren;
@@ -352,7 +355,7 @@
 		 	p {
 		 		padding-left: 36px;
 		 		@include arialbold;
-		 		 @media screen and (max-width: 767px) {
+		 		@include mobile {
 	     			font-size: 14px;
 	    		 }
 		 	}
@@ -364,7 +367,7 @@
 		 		 li {
 		 		 	position: relative;
 		 		 	font-size: 18px;
-		 		 	 @media screen and (max-width: 767px) {
+		 		 	@include mobile {
 	     				font-size: 14px;
 	     				}
 		 		 	@include arialregular;
@@ -499,7 +502,7 @@
 	}
 	&.footer-playlibdetails {
 		margin-bottom: 25px !important;
-		 @media screen and (max-width: 767px) {
+		@include mobile {
 		 	margin-top: 50px;
 		 }
 	}
@@ -527,7 +530,7 @@
 		top: 0;
 		right: 0;
 		
-		  @media screen and (max-width: 767px) {
+		 @include mobile {
 		  	left: 0 !important;
 		  	width: 100%;
 		  }
@@ -536,7 +539,7 @@
 		  	border-bottom: none;
 		  }
 		  	  ul.menu {
-		  	  	 @media screen and (max-width: 767px) {
+		  	  	@include mobile {
 		  	  	 	width: 100%;
 		  	  	 	max-width: 225px;
 		  	  	 	margin: 0 auto;
