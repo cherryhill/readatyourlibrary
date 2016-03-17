@@ -155,8 +155,11 @@ function submit_for_avatar($form, $form_state) {
  * Implementation of hook_profile2_presave()
  */
 function private_msg_custom_profile2_presave($profile) {
-  $profile->field_user_avatar[LANGUAGE_NONE][0]['target_id'] = $_SESSION['user_avatar_id'];
-  unset($_SESSION['user_avatar_id']);
+
+	if (isset($_SESSION['user_avatar_id'])){
+	  $profile->field_user_avatar[LANGUAGE_NONE][0]['target_id'] = $_SESSION['user_avatar_id'];
+	  unset($_SESSION['user_avatar_id']);
+	}
 }
 
 /**
