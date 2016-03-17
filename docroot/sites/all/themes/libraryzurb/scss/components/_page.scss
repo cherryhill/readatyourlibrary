@@ -187,6 +187,10 @@
 			width: 100%;
 			right: 0;
 		}
+		@include tablet {
+			width: 38%;
+			right: 63.4%;
+		}
 		  	.block {
 			  	.block-title, .view-header, .view-header p  {
 	              font-size: 22px;
@@ -279,6 +283,11 @@
 	  			 			.views-row {
                           		display: table-cell;
                           		padding-right: 10px;
+                          		 @include tablet {
+                          		 	display: inline-block;
+                          		 	width: 19%;
+                          		 	vertical-align: top;
+                          		 }
                            			.views-field {
 			                           	 width: 100%;
 			                           	 display: inline-block;
@@ -1846,13 +1855,13 @@
 		 	right: 0;
 		 	margin-bottom: 25px;
 		 }
-		 @media only screen and (min-width: 768px) and (max-width: 940px) {
-		 	width: 35%;
+		 @include tablet {
+		 	width: 38%;
 		 	right: 63.4%;
+		 	padding-left: 0;
+		 	padding-right: 0;
 		 }
-		 @media only screen and (min-width: 941px) and (max-width: 1025px) {
-		 	right: 62.4%;
-		 }
+		 
 	}
 	/* .pull-9.sidebar, .pull-9.sidebar2 {
 		width: 29.53%;
@@ -2605,6 +2614,10 @@
 					margin: auto;
 					margin-top: 10px;
 					margin-bottom: 10px;
+					 @include tablet {
+					 	border-bottom: 1px solid $black;
+					 	padding-bottom: 10px;
+					 }
 					  div {
 					  	display: table-row;
 					  	float: left;
@@ -2612,6 +2625,9 @@
 					  	color: $black;
 					  	font-size: 18px;
 					  	@include arialregular;
+					  	 @include tablet {
+					  	 	float: none;
+					  	 }
 					  	   a {
 					  	   	  color: $black;
 					  	   	  font-size: 18px;
@@ -2620,9 +2636,15 @@
 					  	   }
 					  	   &:nth-of-type(1) {
 					  	   	width: 60%;
+					  	   	@include tablet {
+					  	   		width: 100%;
+					  	   	}
 					  	   }
 					  	   &:nth-of-type(2), &:nth-of-type(3) {
 					  	   	  width: 20%;
+					  	   	  @include tablet {
+					  	   	  	width: 100%;
+					  	   	  }
 					  	   }
 					  }
 				}
