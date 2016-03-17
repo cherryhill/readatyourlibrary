@@ -289,15 +289,15 @@ function pm_block_view() {
 
 function homepage_slider(){
 
-	$output .= '<ul><li class = "booklist-1">1</li><li class = "booklist-2">2</li><li class = "booklist-3">3</li></ul>';
+	$output .= '<ul><li class = "blslider1">1</li><li class = "blslider2">2</li><li class = "blslider3">3</li></ul>';
 	$block = module_invoke('views', 'block_view', 'booklist_slideshow-block_2');
-	$output .= '<div class="blslider1">'. render($block['content']). '</div>';
+	$output .= '<div class="blslider1 slide">'. render($block['content']). '</div>';
 
 	$block = module_invoke('views', 'block_view', 'booklist_slideshow-block_3');
-	$output .= '<div class="blslider2">'. render($block['content']). '</div>';
+	$output .= '<div class="blslider2 slide">'. render($block['content']). '</div>';
 
 	$block = module_invoke('views', 'block_view', 'booklist_slideshow-block_4');
-	$output .= '<div class="blslider3">'. render($block['content']). '</div>';
+	$output .= '<div class="blslider3 slide">'. render($block['content']). '</div>';
 
 	return $output;
 }
