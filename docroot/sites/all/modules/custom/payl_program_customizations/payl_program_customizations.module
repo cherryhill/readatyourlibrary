@@ -161,6 +161,8 @@ function password_user(&$form, &$form_state){
    $mail = $mail_id->mail;
    if($mail == ''){
       drupal_set_message('Please seek the staff assistance to reset your password','error');
+   }else{
+      drupal_set_message('Login details have been sent to your e-mail address.');
    }
 }
 //function for private message when a user is followed
