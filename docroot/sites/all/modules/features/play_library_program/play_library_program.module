@@ -191,7 +191,7 @@ function play_library_program_node_presave($node) {
 function play_library_program_entity_insert($entity, $type) {
 	if(!is_program_active()) {		
       return FALSE;
-    }
+    }    
 
 	// Could be node, could be eck, could be something else, but easy to check.
 	if (!isset($entity->type)) {
