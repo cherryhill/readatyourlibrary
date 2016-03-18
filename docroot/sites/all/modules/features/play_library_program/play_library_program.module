@@ -180,7 +180,9 @@ function play_library_program_user_insert(&$edit, $account, $category) {
 }
 
 function play_library_program_node_presave($node) {
-	if(!is_program_active()) {
+  
+    if(!is_program_active()) {
+	  drupal_goto('home');
       return FALSE;
     }
 }
