@@ -1616,6 +1616,9 @@
   		 @include bck_size_tablet;
   	}
   	.main {
+  		.view-header,.view-footer {
+  			display: none;
+  		}
 	  	.view-content {
 	  		margin-top: 40px;
 	  		counter-reset: section 3;
@@ -1827,7 +1830,7 @@
  	.main {
  		.views-field-nothing {
  			h2 {
- 				text-transform: uppercase;
+ 				/* text-transform: uppercase; */
  			}
  		}
  		.view-activities-page-, .block-block {
