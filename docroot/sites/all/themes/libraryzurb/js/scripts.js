@@ -34,6 +34,8 @@ jQuery( document ).ready(function() {
 
 
   /* jQuery for homepage book slider */
+  jQuery(".blslider2.slide").hide();
+  jQuery(".blslider3.slide").hide();
   jQuery(".blslider1").show();
 
     jQuery('input[type="radio"]').click(function(){
