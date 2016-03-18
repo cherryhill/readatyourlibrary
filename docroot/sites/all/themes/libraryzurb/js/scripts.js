@@ -37,10 +37,16 @@ jQuery( document ).ready(function() {
   jQuery(".blslider2.slide").hide();
   jQuery(".blslider3.slide").hide();
   jQuery(".blslider1").show();
+   jQuery(".blslider1").addClass('active');
+
     jQuery('li').click(function(){
+      jQuery('li').removeClass('active');
+      jQuery(this).addClass('active');
+
       if(jQuery(this).attr("class")=="blslider1"){
         jQuery(".slide").not(".blslider1").hide();
         jQuery(".blslider1").show();
+
       }
       if(jQuery(this).attr("class")=="blslider2"){
         jQuery(".slide").not(".blslider2").hide();
@@ -50,8 +56,9 @@ jQuery( document ).ready(function() {
         jQuery(".slide").not(".blslider3").hide();
         jQuery(".blslider3").show();
       }
+     
   });
-  
+   
 
   /* Jquery for script for raffle entry checkbox */
 
