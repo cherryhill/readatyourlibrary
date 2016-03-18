@@ -2,6 +2,10 @@
 
 // Function callback for purchase link form.
 function platform_configuration_purchase_link($form, &$form_state) {
+    $default_date = date('d/m/y');
+    $program_start_date = variable_get('pmc_start_date', $default_date);
+    $program_end_date = variable_get('pmc_end_date', $default_date);
+
     $form['program_configuration'] = array(
       '#type' => 'fieldset', 
       '#title' => t('Program Configuration'),
@@ -16,7 +20,7 @@ function platform_configuration_purchase_link($form, &$form_state) {
         '#date_year_range' => '0:+10',
         '#required' => TRUE,
         '#size' => 8,
-        '#default_value' => date('Y-m-d', time()),
+        '#default_value' => $program_start_date,
     );
     $form['program_configuration']['pmc_end_date'] = array(
         '#title' => t('End date'),
@@ -25,7 +29,7 @@ function platform_configuration_purchase_link($form, &$form_state) {
         '#date_year_range' => '0:+10',
         '#required' => TRUE,
         '#size' => 8,
-        '#default_value' => date('Y-m-d', time()),
+        '#default_value' => $program_end_date,
     );
     $form['program_configuration']['pmc_program_name'] = array(
         '#type' => 'textfield',

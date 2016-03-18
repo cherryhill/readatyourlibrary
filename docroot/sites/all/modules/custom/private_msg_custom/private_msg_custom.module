@@ -68,6 +68,7 @@ function is_program_active() {
     if (($now >= $program_start_date) && ($now <= $program_end_date)) {
       return 1;
     } else {
+      drupal_set_message("can't save data program is not active.");
       return 0;
     }
   }
@@ -102,7 +103,7 @@ function private_msg_custom_form_profile2_edit_main_form_alter(&$form, $form_sta
     '#title' => t('Select your user avatar?'),
     '#type' => 'select',
     '#options' => $array2,
-    '#ajax' => array(
+    '#ajax' => array(sadfasdf 
       'callback' => 'ajax_autocheckboxes_callback_avatar',
       'wrapper' => 'checkboxes-div',
       'effect' => 'slide',
