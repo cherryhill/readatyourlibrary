@@ -179,7 +179,7 @@ function play_library_program_user_insert(&$edit, $account, $category) {
 	}
 }
 
-function play_library_program_node_insert($node) {
+function play_library_program_node_presave($node) {
 	if(!is_program_active()) {
       return FALSE;
     }
@@ -189,7 +189,7 @@ function play_library_program_node_insert($node) {
  * Implements hook_entity_insert().
  */
 function play_library_program_entity_insert($entity, $type) {
-	if(!is_program_active()) {
+	if(!is_program_active()) {		
       return FALSE;
     }
 
