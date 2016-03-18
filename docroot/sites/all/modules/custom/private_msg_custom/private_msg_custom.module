@@ -68,7 +68,7 @@ function is_program_active() {
     if (($now >= $program_start_date) && ($now <= $program_end_date)) {
       return 1;
     } else {
-      drupal_set_message("can't save data program is not active.");
+      drupal_set_message("The program is currently closed.");
       return 0;
     }
   }
