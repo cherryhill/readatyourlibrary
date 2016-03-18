@@ -187,6 +187,14 @@ function play_library_program_node_presave($node) {
     }
 }
 
+function play_library_program_webform_submission_presave($node, &$submission) {
+  if(!is_program_active()) {
+	drupal_goto('home');
+    return FALSE;
+  }
+}
+
+
 /**
  * Implements hook_entity_insert().
  */
