@@ -8,6 +8,12 @@
 		  	list-style: none;
 		  	position: absolute;
 		  	right: 40px;
+		  	z-index: 1;
+		  	top: 28px;
+		  	 label {
+		  	 	width: 20px;
+		  	 	display: inline;
+		  	 }
 		  	    input[type=radio] {
 				  visibility: hidden;
 				  position: absolute;
@@ -21,6 +27,7 @@
 				  vertical-align: baseline;
 				  border:1px solid $white;
 				  background: $white;
+				  border-radius: 100%;
 				}
 				input[type=radio]:checked + label:before {
 	  				background:$blue;
