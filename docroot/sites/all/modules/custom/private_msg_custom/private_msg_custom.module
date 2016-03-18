@@ -311,7 +311,7 @@ function pm_block_view() {
 
 function homepage_slider(){
 
-	$output .= '<ul><li class = "blslider1">1</li><li class = "blslider2">2</li><li class = "blslider3">3</li></ul>';
+	$output .= '<ul class="booklist-pager"><input type="radio" name="colorRadio" id="r1" value="blslider1" checked><label for="r1"></label><input type="radio" name="colorRadio" id="r2" value="blslider2"><label for="r2"></label><input type="radio" name="colorRadio" id="r3" value="blslider3"><label for="r3"></label></ul>';
 	$block = module_invoke('views', 'block_view', 'booklist_slideshow-block_2');
 	$output .= '<div class="blslider1 slide">'. render($block['content']). '</div>';
 
