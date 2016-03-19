@@ -123,6 +123,9 @@
 			 	 	   	  position: relative;
 			 	 	   	  display: inline-block;
 			 	 	   	  width: 80%;
+			 	 	   	  @include tablet {
+			 	 	   	  	width: 139px;
+			 	 	   	  }
 			 	 	   	    &:after {
 			 	 	   	    	content: "view album";
 			 	 	   	    	height: 38px;
@@ -141,6 +144,9 @@
 			 	 	   	    	left: 0;
 			 	 	   	    	text-align: right;
 			 	 	   	    	padding-right: 20px;
+			 	 	   	    	@include tablet {
+			 	 	   	    		
+			 	 	   	    	}
 			 	 	   	    }
 			 	 	   	    &:hover {
 			 	 	   	    	&:after {
@@ -1610,6 +1616,9 @@
   		 @include bck_size_tablet;
   	}
   	.main {
+  		.view-header,.view-footer {
+  			display: none;
+  		}
 	  	.view-content {
 	  		margin-top: 40px;
 	  		counter-reset: section 3;
@@ -1821,7 +1830,7 @@
  	.main {
  		.views-field-nothing {
  			h2 {
- 				text-transform: uppercase;
+ 				/* text-transform: uppercase; */
  			}
  		}
  		.view-activities-page-, .block-block {
