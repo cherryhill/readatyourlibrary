@@ -174,7 +174,12 @@
 .top-bar-section .left {}
 .top-bar-section .right {}
 /**hide admin menu on mobile css**/
- @media screen and (max-width: 767px) {
+ @include mobile {
+    #admin-menu {
+      display: none;
+    }
+ }
+ @include tablet {
     #admin-menu {
       display: none;
     }
