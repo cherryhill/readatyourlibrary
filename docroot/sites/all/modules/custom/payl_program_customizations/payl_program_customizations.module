@@ -74,7 +74,7 @@ if($form_id == 'user_register_form') {
     // showing of tabs only for user role as patron
     if(array_key_exists(6, $role_user)){
       $form['public_profile'] = array(
-        '#markup' => t('<a href="../dashboard" class = "button">My Public Profile</a>'),
+        '#markup' => t("<a href='../../../users/public_profile/$uid' class = 'button'>My Public Profile</a>"),
         '#weight' => -20,
       );
 
