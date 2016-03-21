@@ -30,6 +30,11 @@
       .breadcurm {
     width: 30%;
     float: left;
+      @include tablet {
+        width: 100%;
+        float: none;
+        display: inline-block;
+      }
      ul {
       margin: 0;
       position: relative;
@@ -66,6 +71,7 @@
           text-transform: capitalize;
           font-size: 17px;
           float: left;
+
          }
        }
      }
@@ -73,6 +79,11 @@
    .top-menu {
     width: 70%;
     float: right;
+      @include tablet {
+        width: 100%;
+        display: inline-block;
+        float: none;
+      }
    }
       section {
         .view {
@@ -80,6 +91,12 @@
             float: right;
             position: relative;
             top: 15px;
+              @include tablet {
+                float: none;
+                text-align: left;
+                left: 10px;
+                top: 0;
+              }
           }
            .views-field {
              float: left;
@@ -128,9 +145,7 @@
   }
 
   // do not display on mobile
-  @media only screen and (max-width: #{$topbar-breakpoint}) {
-    display: none;
-  }
+
 }
 
 #topmostbranding {
