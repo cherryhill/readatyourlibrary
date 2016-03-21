@@ -75,6 +75,15 @@ function is_program_active() {
   return 1;
 }
 
+function private_msg_custom_init() {
+  $program_start_date = variable_get('pmc_start_date', 0);
+  $program_end_date = variable_get('pmc_end_date', 0);
+  $setting = array('private_msg_custom' => array('proStart' => $program_start_date, 'proEnd' => $program_end_date));
+  drupal_add_js($setting, 'setting');
+  
+}
+
+
 /**
  * Implementation of hook_form_profile2_edif_PROFILE_NAME_form_alter()
  */
@@ -239,6 +248,10 @@ function private_msg_custom_block_info() {
     'info' => t('Homepage booklist slider Block'),
   );
 
+  $blocks['menu_for_mobile'] = array(
+    'info' => t('Menu block for mobile'),
+  );
+
   return $blocks;
 }
 
@@ -255,6 +268,10 @@ function private_msg_custom_block_view($delta = '') {
 
     case 'homepage_slider' :
       $block['content'] = homepage_slider();
+      break;
+
+    case 'menu_for_mobile' :
+      $block['content'] = header_menu_mobile();
       break;
   }
   
@@ -309,6 +326,9 @@ function pm_block_view() {
   }
 }
 
+/**
+ * Function callback for homepage booklist slider.
+ */
 function homepage_slider(){
 
 	$output .= '<ul class="booklist-pager"><input type="radio" name="colorRadio" id="r1" value="blslider1" checked><label for="r1"></label><input type="radio" name="colorRadio" id="r2" value="blslider2"><label for="r2"></label><input type="radio" name="colorRadio" id="r3" value="blslider3"><label for="r3"></label></ul>';
@@ -320,6 +340,20 @@ function homepage_slider(){
 
 	$block = module_invoke('views', 'block_view', 'booklist_slideshow-block_4');
 	$output .= '<div class="blslider3 slide">'. render($block['content']). '</div>';
+
+	return $output;
+}
+
+/**
+ * Function callback for header menu for mobile
+ */
+function header_menu_mobile(){
+
+	$block = module_invoke('views', 'block_view', 'top_block-block_2');
+	$output .= render($block['content']). '</div>';
+
+	$block = module_invoke('menu', 'block_view', 'menu-secoundary-menu-mobile');
+	$output .= render($block['content']). '</div>';
 
 	return $output;
 }
