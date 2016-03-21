@@ -89,6 +89,9 @@
 			@include mobile {
 				width: 100%;
 			}
+			@include tablet {
+				width: 32%;
+			}
 		}
 	}
 	.main {
@@ -132,7 +135,9 @@
 			 	 	   	    	line-height: 40px;
 			 	 	   	    	width: 100%;
 			 	 	   	    	background: $yellow url('../images/libraryzurb/view-album.png') no-repeat;
-			 	 	   	    	background-position: 37px center !important;
+			 	 	   	    	@include desktop {
+			 	 	   	    		background-position: 37px center !important;
+			 	 	   	    	}
 			 	 	   	    	color: $black;
 			 	 	   	    	border-radius: 10px;
 			 	 	   	    	text-align: center;
@@ -145,12 +150,15 @@
 			 	 	   	    	text-align: right;
 			 	 	   	    	padding-right: 20px;
 			 	 	   	    	@include tablet {
-			 	 	   	    		
+			 	 	   	    		padding-right: 5px;
+			 	 	   	    		background-position: 8px center !important;
+			 	 	   	    		background-size: 17px !important;
 			 	 	   	    	}
 			 	 	   	    }
 			 	 	   	    &:hover {
 			 	 	   	    	&:after {
 			 	 	   	    		background: $button-hover url('../images/libraryzurb/view-album.png') no-repeat;
+			 	 	   	    	
 			 	 	   	    	}
 			 	 	   	    }
 			 	 	   	    &:focus {
@@ -1616,6 +1624,9 @@
   		 @include bck_size_tablet;
   	}
   	.main {
+  		.view-header,.view-footer {
+  			display: none;
+  		}
 	  	.view-content {
 	  		margin-top: 40px;
 	  		counter-reset: section 3;
@@ -1720,6 +1731,10 @@
 		  			 	margin-top: 20px;
 		  			 	font-size: 17px;
 		  			 	@include mclaren;
+		  			 	 @include tablet {
+                           width: 100%;
+                           display: inline-block;
+		  			 	 }
 
 	  			 	  		div {
 			  			 	  	float: left;
@@ -1751,6 +1766,12 @@
 		  			 	margin-top: 20px;
 		  			 	padding-right: 2%;
 		  			 	@include mclaren;
+		  			 	 @include tablet {
+		  			 	 	width: 100%;
+		  			 	 	float: right;
+		  			 	 	position: relative;
+		  			 	 	bottom: 81px;
+		  			 	 }
 			  			 	  span {
 			  			 	  	color: $black;
 			  			 	  	position: relative;
@@ -1827,7 +1848,7 @@
  	.main {
  		.views-field-nothing {
  			h2 {
- 				text-transform: uppercase;
+ 				/* text-transform: uppercase; */
  			}
  		}
  		.view-activities-page-, .block-block {
