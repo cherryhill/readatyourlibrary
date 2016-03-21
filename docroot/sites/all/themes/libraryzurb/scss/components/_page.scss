@@ -581,6 +581,16 @@
  		@include mobile {
  			max-width: 100%;
  		}
+ 		  .homebox-column-wrapper {
+ 		  	 @media screen and (max-width: 939px) {
+ 		  	 	width: 100% !important;
+ 		  	 }
+ 		  	 .homebox-column {
+ 		  	 	@media screen and (max-width: 939px) {
+ 		  	 		height: auto !important;
+ 		  	 	}
+ 		  	 }
+ 		  }
  			#homebox-block-auto_role_allocation_progress-block {
 	 		 	.portlet-header {
 	 		 		position: relative;
@@ -602,7 +612,7 @@
 
 			 		 		 	 	@include previous(100px, 100px, $left: 0, $top: -11px);
 			 		 		 	 	@include mini {
-			 		 		 	 		@include previous(100px, 100px, $left: 0, $top: -11px);
+			 		 		 	 		@include previous(100px, 100px, $left: -17px, $top: -11px);
 			 		 		 	 	}
 		                            background: url('../images/libraryzurb/fi-calendar.svg') no-repeat;
 		                            background-position: center;
@@ -1712,17 +1722,24 @@
 			  	 			 	float: right;
 			  	 			 	@include mclaren;
 			  	 			}
-	  	 			 
+	  	 			        .views-field-counter {
+	  	 			        	width: 24px;
+	  	 			        	float: left;
+	  	 			        	font-size: 17px;
+	  	 			        	@include mclaren;
+	  	 			        	  &:after {
+	  	 			        	  	content: ".";
+	  	 			        	  	font-weight: bold;
+	  	 			        	  	position: relative;
+	  	 			        	  	right: 4px;
+	  	 			        	  }
+	  	 			        }
 	  	 			 		.views-field-title {
 			  	 			 	a {
 			  	 			 		font-size: 21px;
 			  	 			 		color: $blue;
 			  	 			 		 &:before {
-			  	 			 		 	@include counter;
-			  	 			 		 	color: $black;
-			  	 			 		 	display: inline-block;
-			  	 			 		 	padding-right: 10px;
-			  	 			 		 	@include arialregular;
+			  	 			 		 	
 			  	 			 		 }
 			  	 			 	}
 	  	 			 		}
@@ -2423,6 +2440,12 @@
 		}
 	}
 	.view {
+		.views-field-ops {
+			float: right;
+			  a.flag {
+			  	@include yellowbutton;
+			  }
+		}
 		 &.view-user-public-profile {
 		 	display: table-row;
 		 	width: 100%;

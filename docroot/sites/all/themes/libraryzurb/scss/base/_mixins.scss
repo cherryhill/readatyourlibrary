@@ -44,6 +44,7 @@
     } 
 }
 //media query
+
 @mixin tablet {
   @media (min-width: #{$tablet-width}) and (max-width: #{$desktop-width - 1px}) {
     @content;
@@ -60,15 +61,11 @@
   }
 }
 @mixin mini {
-	@media (min-width: #{$medium-screen}) and (max-width: #{$tablet-width}) {
+	@media (min-width: #{$tablet-width}) and (max-width: #{$medium-width}) {
 		@content;
 	}
 }
-@mixin medium {
-	@media (max-width: #{$medium-screen -1px}) {
-		@content;
-	}
-}
+
 //for optimise sass coding
 
 @mixin stage {
