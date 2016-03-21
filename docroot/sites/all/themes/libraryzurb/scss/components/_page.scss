@@ -611,7 +611,7 @@
 			 		 		 	&:before {
 
 			 		 		 	 	@include previous(100px, 100px, $left: 0, $top: -11px);
-			 		 		 	 	@include mini {
+			 		 		 	 	@media only screen and (min-width: 940px) and (max-width: 1025px) {
 			 		 		 	 		@include previous(100px, 100px, $left: -17px, $top: -11px);
 			 		 		 	 	}
 		                            background: url('../images/libraryzurb/fi-calendar.svg') no-repeat;
@@ -1723,7 +1723,6 @@
 			  	 			 	@include mclaren;
 			  	 			}
 	  	 			        .views-field-counter {
-	  	 			        	width: 24px;
 	  	 			        	float: left;
 	  	 			        	font-size: 17px;
 	  	 			        	@include mclaren;
@@ -2745,4 +2744,17 @@ display: block !important;
   .form-item.form-type-textfield.form-item-name {
   	 display: block !important;
   }
+ }
+ /**follow page**/
+ .page-follow {
+ 	.main {
+ 		.block {
+ 			.block-title {
+ 				color: $black;
+ 				font-size: 28px;
+ 				@include mclaren;
+ 				@include noborder;
+ 			}
+ 		}
+ 	}
  }
