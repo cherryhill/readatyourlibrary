@@ -369,6 +369,12 @@
 		@include mobile {
 			right: 0;
 		}
+		@include tablet {
+			width: 38%;
+			right: 63.4%;
+			padding-left: 2%;
+			padding-right: 2%;
+		}
 	}
 	.block-views-reward-earn-block-1 {
 		.block-title {
@@ -393,6 +399,12 @@
 	 		width: 100%;
 	 		right: 0;
 	 	}
+	 	@include tablet {
+			width: 38%;
+			right: 63.4%;
+			padding-left: 2%;
+			padding-right: 2%;
+		}
 	 	@include block;
  	}
 	.sidebar {
@@ -422,7 +434,16 @@
 		      	  			
 	      	  					> div {
 	      	  			 			a {
-				      	  			  	@include yellowbutton;
+	      	  			 				@include desktop {
+	      	  			 					@include yellowbutton;
+	      	  			 				}
+	      	  			 				@include mobile {
+                                          @include yellowbutton;
+	      	  			 				}
+	      	  			 				@include tablet {
+	      	  			 				 @include yellowbutton(P);	
+	      	  			 				}
+				      	  			  	
 				      	  			  	width: 100%;
 				      	  			  	display: inline-block;
 				      	  			  	position: relative;
@@ -500,9 +521,7 @@
 	    }
 		.view {
    		 	.view-header, .view-header p {
-	   		 	@media screen and (min-width: 980px) {
 	   		 	   font-size: 28px !important;
-	   		 	}
    		 		@include mclaren;
    		 		color: $black;
 		 		}
@@ -580,7 +599,11 @@
 		 		 		 	position: relative;
 		 		 		 	padding-bottom: 30%;
 			 		 		 	&:before {
+
 			 		 		 	 	@include previous(100px, 100px, $left: 0, $top: -11px);
+			 		 		 	 	@include mini {
+			 		 		 	 		@include previous(100px, 100px, $left: 0, $top: -11px);
+			 		 		 	 	}
 		                            background: url('../images/libraryzurb/fi-calendar.svg') no-repeat;
 		                            background-position: center;
 			 		 		 	}
@@ -671,6 +694,7 @@
 			 					padding-left: 21%;
 			 					font-size: 22px;
 			 					position: relative;
+
 		 					  
 	 						}
 	 				}
@@ -1012,6 +1036,12 @@
         		 		color: $black;
         		 		border-left: 1px solid $black;
         		 		padding: 10px;
+        		 	}
+        		 	&.current {
+        		 		a {
+        		 			color: $white !important;
+        		 			background: $orange !important;
+        		 		}
         		 	}
         		 	&.arrow {
         		 		&.first {
