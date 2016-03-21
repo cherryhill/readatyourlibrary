@@ -110,29 +110,49 @@ if(!div2.is(':empty')){
         WinPrint.print();
         WinPrint.close();
     });
+
+    var proStart = Drupal.settings.private_msg_custom.proStart;
+    var start_string = proStart.split('-');
+    var pro_start_date = parseInt(start_string[0] + start_string[1] + start_string[2]);
+
+    var proEnd = Drupal.settings.private_msg_custom.proEnd;
+    var end_string = proEnd.split('-');
+    var pro_end_date = parseInt(end_string[0] + end_string[1] + end_string[2]);  
+
+    var now = new Date(jQuery.now());
+    var time_strings = now.toJSON().slice(0, 10);
+    time_strings = time_strings.split('-');
+    var now_time_strings = parseInt(time_strings[0] + time_strings[1] + time_strings[2]);
+
+
+    
+    if((now_time_strings >= pro_start_date) && now_time_strings <= pro_end_date) {
+       //console.log("running");
+       jQuery('.view-calendar-sticker .view-content .views-field-field-sticker-calendar-image .field-content').each(function () {
+
+        // create an Event Object (http://arshaw.com/fullcalendar/docs/event_data/Event_Object/)
+       // it doesn't need to have a start or end
+        var eventObject = {
+          title: jQuery.trim(jQuery(this).html()) // use the element's text as the event title
+        };
+
+        // store the Event Object in the DOM element so we can get to it later
+         jQuery(this).data('eventObject', eventObject);
+
+        // make the event draggable using jQuery UI
+        jQuery(this).draggable({
+          zIndex: 999,
+          revert: true, // will cause the event to go back to its
+          revertDuration: 0 //  original position after the drag
+        });
+
+      });
+
+    }
+
     
 
-  //console.log("running");
-  jQuery('.view-calendar-sticker .view-content .views-field-field-sticker-calendar-image .field-content').each(function () {
-
-    // create an Event Object (http://arshaw.com/fullcalendar/docs/event_data/Event_Object/)
-    // it doesn't need to have a start or end
-    var eventObject = {
-        title: jQuery.trim(jQuery(this).html()) // use the element's text as the event title
-    };
-
-    // store the Event Object in the DOM element so we can get to it later
-    jQuery(this).data('eventObject', eventObject);
-
-    // make the event draggable using jQuery UI
-    jQuery(this).draggable({
-        zIndex: 999,
-        revert: true, // will cause the event to go back to its
-        revertDuration: 0 //  original position after the drag
-    });
-
-});
-
+  
 
   jQuery('#calendar').fullCalendar({
 

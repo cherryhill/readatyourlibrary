@@ -44,6 +44,7 @@
     } 
 }
 //media query
+
 @mixin tablet {
   @media (min-width: #{$tablet-width}) and (max-width: #{$desktop-width - 1px}) {
     @content;
@@ -59,6 +60,12 @@
     @content;
   }
 }
+@mixin mini {
+	@media (min-width: #{$tablet-width}) and (max-width: #{$medium-width}) {
+		@content;
+	}
+}
+
 //for optimise sass coding
 
 @mixin stage {
@@ -136,14 +143,20 @@
 		 }
      }
 }
-@mixin yellowbutton {
+@mixin yellowbutton($p: null) {
 	color: $black;
 	@include mclaren;
 	border-radius: 10px;
 	background: $yellow !important;
 	text-transform: capitalize;
 	border: none;
-	padding: $button-sml 20px;
+	@if $p == "P" {
+		padding: $button-sml 10px;
+		word-spacing: -2px;
+	}
+	@else {
+		padding: $button-sml 20px;
+	}
 	@include boxshadow;
 	 &:hover {
 	 	color: $black;
