@@ -118,7 +118,7 @@ if($form_id == 'user_register_form') {
   //To provide a message if user has no email mentioned during registration
   if($form_id == 'user_pass'){
     $form['#validate'][1] = 'password_user'; //function to validate the user
-    $form['name']['#title'] = '<div class="user_pass_name">Please enter username</div>'.'<div class="user_pass">If you do not have an email address, you need to seek staff assistance to reset your password</div>';
+    $form['name']['#title'] = '<div class="user_pass_name">Please enter your username</div>'.'<div class="user_pass">If you do not have an email address, you need to seek staff assistance to reset your password</div>';
     $form['actions']['submit']['#value'] = 'Submit';
   }
 
