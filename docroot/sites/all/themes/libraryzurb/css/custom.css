@@ -6774,6 +6774,7 @@ h1#page-title {
 .block.block-private-msg-custom-homepage-slider ul label {
   width: 20px;
   display: inline;
+  font-size: 10px;
 }
 .block.block-private-msg-custom-homepage-slider ul input[type=radio] {
   visibility: hidden;
@@ -11673,6 +11674,25 @@ body .alert-box.success a.close:hover {
 .page-reviews {
   counter-reset: section;
 }
+.page-reviews #page-title {
+  display: none;
+}
+.page-reviews .view-reviews .view-header .reviews-title, .page-reviews .view-reviews .view-header .reviews-subtitle {
+  color: #000;
+  border: none !important;
+  outline: none !important;
+  font-family: McLaren-Regular !important;
+  font-weight: normal !important;
+  font-style: normal !important;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+}
+.page-reviews .view-reviews .view-header .reviews-title {
+  font-size: 28px;
+}
+.page-reviews .view-reviews .view-header .reviews-subtitle {
+  font-size: 22px;
+}
 .page-reviews .main .view-content .views-row img {
   border: none !important;
   outline: none !important;
@@ -12449,6 +12469,13 @@ body .alert-box.success a.close:hover {
   border-spacing: 20px;
   position: relative;
 }
+@media (max-width: 767px) {
+  .section-progress .l-main {
+    border-spacing: 0px;
+    max-width: 97%;
+    margin: 0 auto;
+  }
+}
 .section-progress .main {
   background: #267fda !important;
   overflow: hidden;
@@ -12521,6 +12548,12 @@ body .alert-box.success a.close:hover {
   box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
   width: 40%;
   display: table-cell;
+}
+@media (max-width: 767px) {
+  .section-progress .main .view-calendar-sticker {
+    width: 100%;
+    display: inline-block;
+  }
 }
 .section-progress .main .view-calendar-sticker .view-header {
   width: 100%;
@@ -12597,6 +12630,12 @@ body .alert-box.success a.close:hover {
   -moz-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
   box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
 }
+@media (max-width: 767px) {
+  .section-progress .main .block.block-views {
+    width: 100%;
+    display: inline-block;
+  }
+}
 .section-progress .main .block.block-views .view-prize-won-for-progress-page {
   width: 100%;
   display: table;
@@ -12663,6 +12702,12 @@ body .alert-box.success a.close:hover {
   -webkit-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
   -moz-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
   box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+}
+@media (max-width: 767px) {
+  .section-progress .main .block.block-auto-role-allocation {
+    width: 100%;
+    display: inline-block;
+  }
 }
 .section-progress .main .block.block-auto-role-allocation > div:nth-of-type(2) {
   line-height: 1.2;

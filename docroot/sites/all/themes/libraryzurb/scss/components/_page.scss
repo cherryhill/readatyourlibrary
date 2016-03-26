@@ -1475,6 +1475,24 @@
 
 .page-reviews {
   	counter-reset: section;
+  	 #page-title {
+  	 	display: none;
+  	 }
+  	  .view-reviews {
+  	  	.view-header {
+  	  		.reviews-title, .reviews-subtitle {
+  	  			color: $black;
+  	  			@include noborder;
+  	  			@include mclaren;
+  	  		}
+  	  		.reviews-title {
+  	  			font-size: 28px;
+  	  		}
+  	  		.reviews-subtitle {
+  	  			font-size: 22px;
+  	  		}
+  	  	}
+  	  }
   	 	.main {
 	  	 	.view-content {
 		  	 	.views-row img {
@@ -2116,6 +2134,11 @@
 	 		border-collapse: separate;
 	  		border-spacing: 20px;
 	  		position: relative;
+	  		@include mobile {
+	  			border-spacing: 0px;
+	  			max-width: 97%;
+	  			margin: 0 auto;
+	  		}
 
 
 	 	}
@@ -2135,6 +2158,10 @@
  	 	 			@include yellowbackground;
 		 	 	 	width: 40%; 
 		 	 	 	display: table-cell;
+		 	 	 	@include mobile {
+		 	 	 		width: 100%;
+		 	 	 		display: inline-block;
+		 	 	 	}
  	 	 	
  	 	 	 			.view-header {
  	 	 	 	
@@ -2204,6 +2231,10 @@
 						position: relative;
 						@include mclaren;
 						@include boxshadow;
+						@include mobile {
+							width: 100%;
+							display: inline-block;	
+						}
 							.view-prize-won-for-progress-page {
 								width: 100%;
 								display: table;
@@ -2274,6 +2305,10 @@
 		 	 			border-radius: 20px;
 		 	 			@include mclaren;
 		 	 			@include boxshadow;
+		 	 			@include mobile {
+		 	 				width: 100%;
+		 	 				display: inline-block;
+		 	 			}
 			 	 			 > div:nth-of-type(2) {
 			 	 			 	line-height: 1.2;
 			                    font-size: 18px;
