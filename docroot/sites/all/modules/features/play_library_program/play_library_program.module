@@ -828,7 +828,7 @@ function _play_library_program_set_message($reward, $account_uid) {
 			'author' => user_load(1),
 		);
 		$recipient = user_load($account_uid);
-		$subject = t('[OPL] Congratulations, you just won a prize!');
+		$subject = t('[Oakland Public Library Staff] Congratulations, you just won a prize!');
 		$body = $reward->field_reward_notification[LANGUAGE_NONE][0]['value'];
 		$result = privatemsg_new_thread(array($recipient), $subject, $body, $options);
 	}
