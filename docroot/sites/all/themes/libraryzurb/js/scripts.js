@@ -31,8 +31,14 @@
 
 
 jQuery( document ).ready(function() {
+  /**interchanging the position of divs in progress page at mobile screen**/
+  var windowWidth = jQuery( window ).width();
+   if (windowWidth < 800) {
+     jQuery(".section-progress .main .block-auto-role-allocation").insertAfter(".section-progress .main .progress-calendar");
+      jQuery(".section-progress .main .block-views").insertAfter(".section-progress .main .progress-calendar");
+   }
 
-
+  
   /* jQuery for homepage book slider */
   jQuery(".blslider2.slide").hide();
   jQuery(".blslider3.slide").hide();
