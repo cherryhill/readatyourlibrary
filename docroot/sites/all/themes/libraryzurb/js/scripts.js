@@ -31,12 +31,16 @@
 
 
 jQuery( document ).ready(function() {
-  /**interchanging the position of divs in progress page at mobile screen**/
+  /**interchanging the position of divs in progress page at mobile screen and tablet screen**/
   var windowWidth = jQuery( window ).width();
-   if (windowWidth < 800) {
+   if (windowWidth < 940) {
      jQuery(".section-progress .main .block-auto-role-allocation").insertAfter(".section-progress .main .progress-calendar");
       jQuery(".section-progress .main .block-views").insertAfter(".section-progress .main .progress-calendar");
    }
+   /**jquery for hamburger button in mobile screen**/
+    jQuery('.mobile-header button').click(function(){
+      jQuery('.mobile-header .block-private-msg-custom').toggle();
+    });
 
   
   /* jQuery for homepage book slider */

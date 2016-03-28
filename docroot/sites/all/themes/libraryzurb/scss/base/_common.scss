@@ -196,3 +196,18 @@ h1#page-title {
   		}
   	}
   }
+  form#user-pass {
+  	span {
+  		&.form-required {
+  			display: none;
+  		}
+  	}
+  	div {
+  		&.user_pass_name {
+  			&:after {
+  				content: "*";
+  				color: $red;
+  			}
+  		}
+  	}
+  }

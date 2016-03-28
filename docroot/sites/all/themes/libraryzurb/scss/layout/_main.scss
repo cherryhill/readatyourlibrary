@@ -21,7 +21,19 @@
       }
 }
 
-
+#citylinks {
+   @include mobile {
+      display: none;
+   }
+}
+#mobile-header {
+   @include tablet {
+      display: none;
+   }
+   @include desktop {
+      display: none;
+   }
+}
 	     
 	    
 	  

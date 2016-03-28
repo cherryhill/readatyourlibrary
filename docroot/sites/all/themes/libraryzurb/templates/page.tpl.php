@@ -12,7 +12,12 @@
 	  <!-- City Branding -->
 	  <div class="contain-to-grid pre-header">
   	  <section class="row" id="topmostbranding">
-		  <div id="citylinks" class="pre-header-left large-12 small-12 medium-12 columns">
+      <div id="mobile-header" class="mobile-header small-12 large-0 medium-0 columns">
+        <button></button>
+        <?php print render($page['header-mobile']); ?>
+        <?php print render($page['mobile_menu']);  ?>
+      </div>
+		  <div id="citylinks" class="pre-header-left large-12 small-0 medium-12 columns">
 			  <?php if (!empty($page['citylinks'])): ?>
           <div class="breadcurm"> <?php if ($breadcrumb): print $breadcrumb; endif; ?> </div>
 			  	<div class="top-menu"><?php print render($page['citylinks']); ?></div>
@@ -47,7 +52,7 @@
 
 	<!-- Header area for search box -->
       <?php if (!empty($page['header'])): ?>
-	  	<div class="large-12 columns">
+	  	<div class="sub-brand large-12 columns">
         <?php print render($page['header']); ?>
 	  	</div>
       <?php endif; ?>
