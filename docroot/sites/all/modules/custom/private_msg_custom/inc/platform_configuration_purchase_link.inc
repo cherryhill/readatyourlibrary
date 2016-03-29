@@ -53,6 +53,12 @@ function platform_configuration_purchase_link($form, &$form_state) {
 		'#default_value' => variable_get('pmc_purchase_link'),
 	);
 
+	$form['follow_author'] = array(
+		'#title' => t('Author for follow message'),
+		'#type' => 'textfield',
+		'#autocomplete_path' => 'author/autocomplete',
+		'#default_value' => variable_get('follow_author'),
+	);
 
 	return system_settings_form($form);
 }
@@ -63,4 +69,21 @@ function platform_configuration_purchase_link_validate($form, &$form_state) {
 	if(filter_var($purchase_link, FILTER_VALIDATE_URL) === false) {
 		form_set_error('pmc_purchase_link','Please enter a valid URL');
 	}
+}
+
+// function for providing autocomplete for users
+function _author_name_autocomplete($string = ''){
+	$author_users = array();
+  $sname_query = db_select('users','u');
+  $sname_query->condition('u.name', '%' . db_like($string) . '%', 'LIKE');
+  $sname_query->fields('u',array('name'));
+  $sname_query->range(0, 15);
+
+  $sname_result = $sname_query->execute()->fetchAll();
+
+  foreach($sname_result as $res){
+    $author_users[$res->name] = check_plain($res->name);
+  }
+
+ drupal_json_output($author_users);
 }

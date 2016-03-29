@@ -48,6 +48,14 @@ function private_msg_custom_menu() {
 	  'file path' => drupal_get_path('module', 'private_msg_custom'),
   );
 
+  $items['author/autocomplete'] = array(
+  	'title' => 'Author Name',
+  	'page callback' => '_author_name_autocomplete',
+  	'access arguments' => array('access content'),
+  	'type' => MENU_CALLBACK,
+  	'file' => 'inc/platform_configuration_purchase_link.inc',
+	  'file path' => drupal_get_path('module', 'private_msg_custom'),
+  );
   return $items;
 }
 
@@ -358,4 +366,18 @@ function header_menu_mobile(){
 	$output .= render($block['content']).'</div>';
 
 	return $output;
+}
+
+//function for private message when a user is followed
+function private_msg_custom_flag_flag($flag, $entity_id, $account, $flagging){
+	$user_uid = variable_get('follow_author');
+	$author_name = user_load_by_name($user_uid);
+	$author_uid = $author_name->uid;
+	$flag_name = arg(2);
+
+	if($flag_name == 'follow'){
+	  $uid = $flagging->entity_id;
+	  $user_name = $account->name;
+	  privatemsg_new_thread(array(user_load($uid)), $user_name.' is now following you.', $user_name.' is now following you.',array('author'=>user_load($author_uid)));
+	}
 }
