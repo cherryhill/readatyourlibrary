@@ -1,0 +1,187 @@
+// Non-modular or client styles for .l-header region.
+
+.l-header {
+	background: $header;
+	.row {
+  &.header-middle {
+  	max-width: 100%;
+  	 a#logo {
+        margin: 20px 20px 20px 0px;
+  	 }
+  	 h1#site-name {
+  	 	margin: 26px 0px 0px;
+  	 }
+  	 h2#site-slogan {
+  	 	margin: 2px 0px 0px;
+  	 }
+  	 section {
+  	 	&.s-logoblock {
+  	 		margin-bottom: 0px;
+  	 		 p {
+  	 		 	margin-bottom: 0px;
+  	 		 }
+  	 	}
+  	 	&.block-menu-menu-secoundary-menu {
+  	 		margin-bottom: 0;
+        @include mobile {
+          display: none;
+        }
+  	 		ul.menu {
+  	 			float: right;
+  	 			list-style: none;
+  	 			position: relative;
+  	 			bottom: 20px;
+  	 			  li {
+  	 			  	display: inline-block;
+  	 			  	vertical-align: top;
+  	 			  	height: 106px;
+  	 			  	width: 100px;
+                @media screen and (min-width: 768px) and (max-width: 1025px) {
+                  height: 70px;
+                  width: 60px;
+                }
+  	 			  	
+					
+                         
+  	 			  	  a {
+  	 			  	  	  position: relative;
+  	 			  	  	  width: 100%;
+  	 			  	  	  height: 100%;
+  	 			  	  	  font-size: 0;
+
+  	 			  	  	   &:after {
+                       @include previous(94px, 105px, $left: 0, $top: 0);
+  	 			  	  	   	@include tablet {
+                        @include previous(60px, 70px, $left: 0, $top: 0);
+                      }
+  	 			  	  	   	
+                            background-size: 100px;
+                            @include animate;
+  	 			  	  	   }
+  	 			  	  	 
+  	 			  	  	  &.current-program {
+  	 			  	  	  	position: relative;
+  	 			  	  	  	 &:hover,&.active-trail {
+  	 			  	  	  	 	&:after {
+  	 			  	  	  	 		background:  url('../images/libraryzurb/currentprogs_hover.png') no-repeat;
+                           @include bck_size_tablet;
+  	 			  	  	  	   }
+  	 			  	  	  	 }
+  	 			  	  	  	 &:after {
+                               background: url('../images/libraryzurb/current-programs.png') no-repeat;
+                               @include bck_size_tablet;
+                            }
+
+  	 			  	  	  }
+  	 			  	  	 &.activities {
+  	 			  	  	 	 &:hover,&.active-trail {
+  	 			  	  	  	 	&:after {
+  	 			  	  	  	 		background: url('../images/libraryzurb/activities_hover.png') no-repeat;
+                          @include bck_size_tablet;
+  	 			  	  	  	   }
+  	 			  	  	  	 }
+  	 			  	  	  	&:after{
+                            background: url('../images/libraryzurb/activities.png') no-repeat;
+                            @include bck_size_tablet;
+                            }
+  	 			  	  	  }
+  	 			  	  	  &.rewards {
+  	 			  	  	  	 &:hover,&.active-trail {
+  	 			  	  	  	 	&:after {
+  	 			  	  	  	 		background: url('../images/libraryzurb/rewards_hover.png') no-repeat;
+                          @include bck_size_tablet;
+  	 			  	  	  	   }
+  	 			  	  	  	 }
+  	 			  	  	  	&:after {
+  	 			  	  	  	  background: url('../images/libraryzurb/rewards.png') no-repeat;
+                        @include bck_size_tablet;
+  	 			  	  	    }
+  	 			  	  	  }
+  	 			  	  	  &.reviews {
+  	 			  	  	  	 &:hover,&.active-trail {
+  	 			  	  	  	 	&:after {
+  	 			  	  	  	 		background: url('../images/libraryzurb/reviewactive.png') no-repeat;
+                          @include bck_size_tablet;
+  	 			  	  	  	   }
+  	 			  	  	  	 }
+                            &:after {
+  	 			  	  	  	  background: url('../images/libraryzurb/reviews.png') no-repeat;
+                        @include bck_size_tablet;
+  	 			  	  	    }
+  	 			  	  	  }
+  	 			  	  	  &.photos {
+  	 			  	  	  	 &:hover,&.active-trail {
+  	 			  	  	  	 	&:after {
+  	 			  	  	  	 		background: url('../images/libraryzurb/photos_videos_hover.png') no-repeat;
+                          @include bck_size_tablet;
+  	 			  	  	  	   }
+  	 			  	  	  	 }
+  	 			  	  	  	&:after {
+  	 			  	  	  	  background: url('../images/libraryzurb/photosnvideos.png') no-repeat;
+                        @include bck_size_tablet;
+  	 			  	  	    }
+  	 			  	  	  }
+  	 			  	  	  &.events {
+  	 			  	  	  	 &:hover,&.active-trail {
+  	 			  	  	  	 	&:after {
+  	 			  	  	  	 		background: url('../images/libraryzurb/events_hover.png') no-repeat;
+                          @include bck_size_tablet;
+  	 			  	  	  	   }
+  	 			  	  	  	 }
+  	 			  	  	  	&:after {
+  	 			  	  	  	  background: url('../images/libraryzurb/events.png') no-repeat;
+                        @include bck_size_tablet;
+  	 			  	  	    }
+  	 			  	  	  }
+  	 			  	  	  &.progress {
+  	 			  	  	  	 &:hover,&.active-trail {
+  	 			  	  	  	 	&:after {
+  	 			  	  	  	 		background: url('../images/libraryzurb/progress_hover.png') no-repeat;
+                          @include bck_size_tablet;
+  	 			  	  	  	   }
+  	 			  	  	  	 }
+  	 			  	  	  	border: none;
+  	 			  	  	  	&:after {
+  	 			  	  	  	  background: url('../images/libraryzurb/progress.png') no-repeat;
+                        @include bck_size_tablet;
+  	 			  	  	    }
+  	 			  	  	  }
+  	 			  	  	  
+  	 			  	  	   &:hover {
+  	 			  	  	   	&:after {
+  	 			  	  	   		@include rotate(360deg, $dir: Y);
+					}
+						 
+					  }
+  	 			  	  }
+  	 			  
+  	 			  }
+
+
+  	 		}
+  	 	}
+  	 }
+  }
+}
+}
+
+// Top Bar
+//--------------------------------------------------
+.top-bar {
+  .title-area {}
+}
+
+.top-bar-section {}
+.top-bar-section .left {}
+.top-bar-section .right {}
+/**hide admin menu on mobile css**/
+ @include mobile {
+    #admin-menu {
+      display: none;
+    }
+ }
+ @include tablet {
+    #admin-menu {
+      display: none;
+    }
+ }

@@ -1,0 +1,67 @@
+/**
+ * Styles for Quick Tabs.
+ */
+
+// `ul` is needed to override quicktabs module css
+ul.quicktabs-tabs {
+  margin-bottom:0;
+  text-align: right;
+
+  li {
+    background-color: rgba(255, 255, 255, 0.75);
+    border: 1px solid;
+    border-bottom: 0;
+    font-size: 0.8em;
+    font-weight: bold;
+    margin: 0 0 0 -4px;
+    padding:0.25em 0.75em;
+    text-transform: uppercase;
+
+    &.active {
+      padding-top: 0.75em;
+    }
+
+    a {
+      color: $color_gray_dark;
+
+      &:focus,
+      &:hover {
+        background-color: transparent;
+      }
+    }
+  }
+}
+
+.quicktabs_main {
+  background-color: rgba(255, 255, 255, 0.75);
+  border: 1px solid;
+  border-bottom: 0;
+  overflow: auto;
+  padding: 0 0.75em;
+
+  input[type="text"] {
+    background: url(../images/iconsprite.png) -5px -67px no-repeat;
+    background-color: rgba(255, 255, 255, 1);
+    float: left;
+    padding-left: 30px;
+    width: 75%;
+  }
+
+  input[type="submit"],
+  button {
+    float: right;
+    text-transform: uppercase;
+    width: 20%;
+  }
+}
+
+// TODO: clean up this; what is .large-5?
+.block-quicktabs-search-our {
+  margin-top: 55px;  // LibrarySite Edit
+  @media all and (max-width: $topbar-breakpoint) {
+    .large-5,
+    .large-4 & {
+      margin-top: 1em;
+    }
+  }
+}
