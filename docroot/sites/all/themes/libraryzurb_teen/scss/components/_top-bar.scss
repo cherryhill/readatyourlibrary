@@ -1,0 +1,174 @@
+/**
+ * Styles for the Top Bar.
+ */
+
+#topbar {
+  border-bottom: 1px solid;
+  border-top: 1px solid;
+  margin-bottom: 2em;
+
+  .top-bar {
+    margin-bottom: 0; // there might be a variable for this
+  }
+}
+
+.top-bar-section {
+  .main-nav li a {
+    font-size: 1.25em;
+    font-weight: normal;
+  }
+
+  &.active:hover {
+    color: $topbar-link-color-hover;
+  }
+
+  .dropdown {
+    li {
+      border: 1px solid;
+      font-size: 0.85em;
+
+      &:not(.first) {
+        border-top: 0;
+      }
+
+      &.show-for-small {
+        border-top: 1px solid; // for visible/thicker border around duplicate parent
+      }
+    }
+  }
+
+  .has-dropdown {
+    > a {
+      padding-right: 30px !important; // override Foundation `!important`
+      &::after {
+        margin-right: 10px;
+      }
+    }
+
+    .dropdown li.has-dropdown > a::after {
+      @include css-triangle($topbar-dropdown-toggle-size, rgba($topbar-dropdown-toggle-color, $topbar-dropdown-toggle-alpha), $default-float);
+      margin-right: 5px;
+    }
+  }
+
+  ul li.active a {
+    &.active {
+      color: $topbar-link-color-active;
+    }
+
+    &:hover {
+      color: $topbar-link-color-hover;
+    }
+  }
+}
+
+.show-for-small {
+  display: block !important; // override Foundation `!important`
+
+  a::before {
+    content: "↳ ";
+  }
+}
+
+// small screens only
+.top-bar .toggle-topbar.menu-icon {
+  border-right: 1px solid;
+  left: 12px;
+  margin-top: -26px;
+  padding: 10px 0 10px 40px;
+  right: auto;
+  width: 50%;
+
+  @media screen and (max-width: $ittybitty-screen) {
+    padding-left: 30px;
+  }
+
+  @media screen and (max-width: $innyminny-screen) {
+    border-right: 0;
+  }
+
+  a {
+    font-size: 1.25em;
+    font-weight: normal;
+    text-indent: -65px;
+    width: 45px;
+
+    &:focus,
+    &:hover {
+      background-color: transparent;
+    }
+
+    @media screen and (max-width: $ittybitty-screen) {
+      font-size: 0.9em;
+      text-indent: -45px;
+      width: 35px;
+    }
+  }
+}
+
+.top-bar .search-icon {
+  display: none;
+
+  // small screens only
+  @media screen and (min-width: $innyminny-screen) and (max-width: $topbar-breakpoint) {
+    display: block;
+    float: right;
+    font-weight: normal;
+    padding-right: 0.75em;
+    text-transform: uppercase;
+
+    a {
+      display: block;
+      background: url(../images/iconsprite.png) -7px -93px no-repeat;
+      color: $topbar-link-color;
+      font-size: 1.25em;
+      margin-top: -38px;
+      padding-left: 25px;
+
+      &:focus,
+      &:hover {
+        background-color: transparent;
+        color: $topbar-link-color;
+      }
+
+      @media screen and (max-width: $ittybitty-screen) {
+        font-size: 0.9em;
+        background: none;
+        margin-top: -33px;
+      }
+    }
+  }
+}
+
+// small screens only
+.top-bar.expanded .main-nav {
+  > .first {
+    border-top: 1px solid;
+  }
+
+  > li {
+    border-bottom: 1px solid;
+  }
+
+  .back {
+    border-top: 1px solid;
+
+    h5 {
+      font-family: $body-font-family;
+      margin: 0;
+
+      a {
+        color: #333;
+        font-size: 2em;
+
+        &::before {
+          content: "↩ ";
+        }
+      }
+    }
+  }
+
+  .show-for-small {
+    border-bottom: 1px solid; // for thicker border around duplicate parent
+  }
+}
