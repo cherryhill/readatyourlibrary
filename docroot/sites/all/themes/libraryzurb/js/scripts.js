@@ -65,6 +65,14 @@ jQuery( document ).ready(function() {
      
   });
    
+  /* jQuery for validation on username field of request new password page */
+  jQuery(".page-user-password #user-pass #edit-name").keypress(function (e) {
+    if (e.which === 64) {
+      //display error message
+      alert('Please enter only username');
+      return false;
+     }
+    });
 
   /* Jquery for script for raffle entry checkbox */
 
