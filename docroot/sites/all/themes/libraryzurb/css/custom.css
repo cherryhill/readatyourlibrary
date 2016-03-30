@@ -6358,7 +6358,7 @@ h1#page-title {
 }
 
 .more-link {
-  text-align: right;
+  text-align: right !important;
 }
 .more-link a {
   font-family: McLaren-Regular !important;
@@ -7189,11 +7189,10 @@ form#user-pass div.user_pass_name:after {
   font-style: normal !important;
   -webkit-font-smoothing: antialiased !important;
   -moz-osx-font-smoothing: grayscale !important;
-  font-size: 25px;
+  font-size: 28px;
   color: #000;
   border: none !important;
   outline: none !important;
-  margin-bottom: 33px;
 }
 .block.bordr-bottom {
   border-bottom: 1px solid #cccccc;
@@ -10742,7 +10741,7 @@ body .alert-box.success a.close:hover {
   margin-top: 10px;
   width: 100%;
 }
-.page-user-profile .homebox .portlet-content .view.view-booklist-on-activities-page .view-footer p a {
+.page-user-profile .homebox .portlet-content .view.view-booklist-on-activities-page .view-footer p a.button {
   width: 100%;
   display: inline-block;
   margin: 0;
@@ -10763,13 +10762,13 @@ body .alert-box.success a.close:hover {
   text-transform: capitalize;
   font-size: 17px;
 }
-.page-user-profile .homebox .portlet-content .view.view-booklist-on-activities-page .view-footer p a:hover, .page-user-profile .homebox .portlet-content .view.view-booklist-on-activities-page .view-footer p a:focus {
+.page-user-profile .homebox .portlet-content .view.view-booklist-on-activities-page .view-footer p a.button:hover, .page-user-profile .homebox .portlet-content .view.view-booklist-on-activities-page .view-footer p a.button:focus {
   color: #fff;
   background: #267fda;
   opacity: 1;
   outline: none;
 }
-.page-user-profile .homebox .portlet-content .view.view-booklist-on-activities-page .view-footer p a:hover {
+.page-user-profile .homebox .portlet-content .view.view-booklist-on-activities-page .view-footer p a.button:hover {
   text-decoration: underline !important;
 }
 .page-user-profile .homebox .portlet-content .view.view-booklist-on-activities-page .view-header h3 {
@@ -10847,7 +10846,7 @@ body .alert-box.success a.close:hover {
   width: 100%;
   margin-top: 10px;
 }
-.page-user-profile .homebox .portlet-content .view.view-my-book-reviews .view-footer p a {
+.page-user-profile .homebox .portlet-content .view.view-my-book-reviews .view-footer p a.button {
   width: 100%;
   display: inline-block;
   margin: 0;
@@ -10868,13 +10867,13 @@ body .alert-box.success a.close:hover {
   text-transform: capitalize;
   font-size: 17px;
 }
-.page-user-profile .homebox .portlet-content .view.view-my-book-reviews .view-footer p a:hover, .page-user-profile .homebox .portlet-content .view.view-my-book-reviews .view-footer p a:focus {
+.page-user-profile .homebox .portlet-content .view.view-my-book-reviews .view-footer p a.button:hover, .page-user-profile .homebox .portlet-content .view.view-my-book-reviews .view-footer p a.button:focus {
   color: #fff;
   background: #267fda;
   opacity: 1;
   outline: none;
 }
-.page-user-profile .homebox .portlet-content .view.view-my-book-reviews .view-footer p a:hover {
+.page-user-profile .homebox .portlet-content .view.view-my-book-reviews .view-footer p a.button:hover {
   text-decoration: underline !important;
 }
 .page-user-profile .homebox .portlet-content .view.view-my-book-reviews .view-empty {
@@ -11333,6 +11332,9 @@ body .alert-box.success a.close:hover {
 
 /**msg center css end**/
 /**common css used in  page-reviews  and page-booklists**/
+.page-reviews .views-field-field-user-avatar, .page-booklists .views-field-field-user-avatar {
+  margin-left: 5px !important;
+}
 .page-reviews #page-title, .page-booklists #page-title {
   color: #000;
   font-family: arial !important;
@@ -11716,7 +11718,7 @@ body .alert-box.success a.close:hover {
   font-size: 28px;
 }
 .page-reviews .view-reviews .view-header .reviews-subtitle {
-  font-size: 22px;
+  font-size: 25px;
 }
 .page-reviews .main .view-content .views-row img {
   border: none !important;
@@ -11938,6 +11940,9 @@ body .alert-box.success a.close:hover {
 }
 
 /**css only for booklist page**/
+.page-booklists #page-title {
+  display: none;
+}
 .page-booklists .l-header .row.header-middle section.block-menu-menu-secoundary-menu ul.menu li a.reviews::after {
   background: url("../images/libraryzurb/reviewactive.png") no-repeat !important;
 }
@@ -11946,8 +11951,20 @@ body .alert-box.success a.close:hover {
     background-size: 100% !important;
   }
 }
-.page-booklists .main .view-header, .page-booklists .main .view-footer {
+.page-booklists .main .view-header .booklist_slideshow_title, .page-booklists .main .view-footer {
   display: none;
+}
+.page-booklists .main .view-header .featured {
+  font-size: 25px;
+  border: none !important;
+  outline: none !important;
+  color: #000;
+  font-family: McLaren-Regular !important;
+  font-weight: normal !important;
+  font-style: normal !important;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+  margin-bottom: 0;
 }
 .page-booklists .main .view-content {
   margin-top: 40px;
@@ -13336,15 +13353,15 @@ body .alert-box.success a.close:hover {
   border: none !important;
   outline: none !important;
   background: #f98515;
-  padding: 4px 20px 6px;
+  padding: 4px 2.5% 6px;
   margin-top: 35px;
 }
 .section-events .main .view-events .view-content .views-row {
   display: table;
-  width: 96%;
-  margin: auto;
+  width: 100%;
   margin-top: 10px;
   margin-bottom: 10px;
+  padding: 0 3.5% 0 4.5%;
 }
 @media (min-width: 768px) and (max-width: 1025px) {
   .section-events .main .view-events .view-content .views-row {
