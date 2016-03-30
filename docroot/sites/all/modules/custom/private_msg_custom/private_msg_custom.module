@@ -61,8 +61,7 @@ function private_msg_custom_menu() {
 
 function private_msg_custom_cronapi($op, $job = NULL){
 	$items['events_import_cron'] = array(
-    'description' => 'test cron',
-    'rule' => '*/2 * * * *', // Every 2 min
+    'description' => 'Events import cron',
   );
   return $items;
 }
