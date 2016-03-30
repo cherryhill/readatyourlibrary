@@ -59,6 +59,25 @@ function private_msg_custom_menu() {
   return $items;
 }
 
+function private_msg_custom_cronapi($op, $job = NULL){
+	$items['events_import_cron'] = array(
+    'description' => 'test cron',
+    'rule' => '*/2 * * * *', // Every 2 min
+  );
+  return $items;
+}
+
+function events_import_cron(){
+	db_delete('node')
+    ->condition('type', 'event')
+    ->condition('status',0)
+    ->execute();
+
+		$source = feeds_source('events');
+		// Execute the import.
+		while (FEEDS_BATCH_COMPLETE != $source->import());
+}
+
 /**
  * Implements function to check if program is active or not.
  *
@@ -114,10 +133,10 @@ function private_msg_custom_form_profile2_edit_main_form_alter(&$form, $form_sta
 
   $num_avatar = !empty($form_state['values']['avatar_select']) ? $form_state['values']['avatar_select'] : 1;
   $none_array = array(0 => '-None-');
-  $array2 = $none_array + $tax_name;
+  $array2 = $tax_name + $none_array;
 
   $form['avatar_select'] = array(
-    '#title' => t('Select your user avatar?'),
+    '#title' => t('What kind of avatar do you want?'),
     '#type' => 'select',
     '#options' => $array2,
     '#ajax' => array(
@@ -134,7 +153,6 @@ function private_msg_custom_form_profile2_edit_main_form_alter(&$form, $form_sta
     '#prefix' => '<div id="checkboxes-div">',
     '#suffix' => '</div>',
     '#type' => 'fieldset',
-    //'#weight' => 5,
   );
 
 	foreach ($avatar_name[$num_avatar] as $key => $value) {
@@ -150,7 +168,6 @@ function private_msg_custom_form_profile2_edit_main_form_alter(&$form, $form_sta
 	     ),
   	);
 	}
-
 	array_unshift($form['#submit'], 'submit_for_avatar');
 }
 
