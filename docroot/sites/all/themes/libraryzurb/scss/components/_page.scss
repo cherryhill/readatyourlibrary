@@ -816,7 +816,7 @@
 			 			 	  			text-align: center;
 			 			 	  			margin-top: 10px;
 			 			 	  			width: 100%;
-			 			 	  			a {
+			 			 	  			a.button {
 			 			 	  				width: 100%;
 			 			 	  				display: inline-block;
 			 			 	  				margin: 0;
@@ -887,7 +887,7 @@
 	 			 	  					text-align: center;
 	 			 	  					width: 100%;
 	 			 	  					margin-top: 10px;
-	 			 	  			 		a {
+	 			 	  			 		a.button {
 			 			 	  			 	width: 100%;
 			 			 	  			 	display: inline-block;
 			 			 	  			 	margin: 0;
@@ -1216,6 +1216,9 @@
  /**common css used in  page-reviews  and page-booklists**/
  
 .page-reviews, .page-booklists  {
+	.views-field-field-user-avatar {
+		margin-left: 5px !important;
+	}
   	#page-title {
   	 	@include black-text;
   	 	@include mclaren;
@@ -1489,7 +1492,7 @@
   	  			font-size: 28px;
   	  		}
   	  		.reviews-subtitle {
-  	  			font-size: 22px;
+  	  			font-size: 25px;
   	  		}
   	  	}
   	  }
@@ -1677,13 +1680,23 @@
 /**css only for booklist page**/
 
 .page-booklists {
+	#page-title {
+		display: none;
+	}
   	.l-header .row.header-middle section.block-menu-menu-secoundary-menu ul.menu li a.reviews::after {
   		background: url('../images/libraryzurb/reviewactive.png') no-repeat !important;
   		 @include bck_size_tablet;
   	}
   	.main {
-  		.view-header,.view-footer {
+  		.view-header .booklist_slideshow_title,.view-footer  {
   			display: none;
+  		}
+  		.view-header .featured {
+  		  font-size: 25px;
+  		  @include noborder;
+  		  color: $black;
+  		  @include mclaren;
+  		  margin-bottom: 0;
   		}
 	  	.view-content {
 	  		margin-top: 40px;
@@ -2719,15 +2732,15 @@
 					@include mclaren;
 					@include noborder;
 					background: $light-orange;
-					padding: 4px 20px 6px;
+					padding: 4px 2.5% 6px;
 					margin-top: 35px;
 				}
 				.views-row {
 					display: table;
-					width: 96%;
-					margin: auto;
+					width: 100%;
 					margin-top: 10px;
 					margin-bottom: 10px;
+					padding: 0 3.5% 0 4.5%;
 					 @include tablet {
 					 	border-bottom: 1px solid $black;
 					 	padding-bottom: 10px;
