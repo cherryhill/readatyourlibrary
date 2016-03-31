@@ -13438,6 +13438,11 @@ body .alert-box.success a.close:hover {
   outline: none !important;
 }
 
+/**hide breadcurm from specific pages**/
+.page-users-public-profile .pre-header .pre-header-left .breadcurm, .page-user-edit .pre-header .pre-header-left .breadcurm, .page-node-add-booklist .pre-header .pre-header-left .breadcurm, .page-node-add-review-book .pre-header .pre-header-left .breadcurm, .page-user-profile .pre-header .pre-header-left .breadcurm, .page-messages-view .pre-header .pre-header-left .breadcurm {
+  display: none;
+}
+
 /**
  * Styles for the Post-Footer area.
  */

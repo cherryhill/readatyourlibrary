@@ -2806,3 +2806,14 @@ display: block !important;
  		}
  	}
  }
+ /**hide breadcurm from specific pages**/
+.page-users-public-profile, .page-user-edit, .page-node-add-booklist, .page-node-add-review-book, .page-user-profile, .page-messages-view {
+  	.pre-header {
+  		.pre-header-left {
+  			.breadcurm {
+    			display: none;
+			}
+	}	}	
+}
+
+
