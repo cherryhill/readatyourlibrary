@@ -169,7 +169,12 @@ function play_library_program_user_insert(&$edit, $account, $category) {
     $result = $query->execute();
   
   // set user age in session to use in reward validation
-  $_SESSION['user_birth_dt'] = strtotime($edit['profile_main']['field_user_birthday'][LANGUAGE_NONE][0]['value']);
+    
+    if (isset($edit['profile_main'])) {
+      $_SESSION['user_birth_dt'] = strtotime($edit['profile_main']['field_user_birthday'][LANGUAGE_NONE][0]['value']);
+    } else {
+      $_SESSION['user_birth_dt'] = strtotime($edit['profile_group_lead']['field_user_birthday'][LANGUAGE_NONE][0]['value']);
+    }  
     foreach ($result as $entity_key => $entity_values) {
         if ($entity_key == 'activity') {
             foreach ($entity_values as $entity) {
