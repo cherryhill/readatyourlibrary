@@ -31,3 +31,16 @@
   margin: 0;
   display: inline-block;
 }
+
+// Prevent contextual links icon from having a background color on hover.
+.contextual-links-region .contextual-links-wrapper a {
+  background-color: transparent;
+}
+.contextual-links-region-active {
+  .contextual-links-trigger-active:hover {
+    background-color: transparent;
+  }
+  .contextual-links-active .contextual-links-trigger-active:hover {
+    background-color: #fff;
+  }
+}

@@ -1,0 +1,51 @@
+/**
+ * Styles for the Brand area.
+ */
+
+.brand a {
+  /* color: $color_gray_dark; */
+
+  &:focus,
+  &:hover {
+  /*   background-color: transparent;
+    color: $color_gray_dark; */
+  }
+}
+
+#logo {
+  float: left;
+  margin: 0.75em 0.5em 0.75em 0;
+  width: 64px;
+
+  @media only screen and (max-width: #{$topbar-breakpoint}) {
+    width: 64px;
+  }
+}
+
+#site-name {
+  font-size: 1.5em;
+  line-height: 1em;
+  margin: 0.75em 0 0 0;
+    a {
+      color: $white;
+      font-size: 36px;
+      font-family: Pt-seriefbold;
+    }
+
+  @media only screen and (max-width: #{$topbar-breakpoint}) {
+    margin-top: 0.75em;
+  }
+}
+
+#site-slogan {
+  font-size: 23px;
+  line-height: 1em;
+  margin: 0.25em 0 0 0;
+  padding-left: 0.25em;
+  color: $white;
+  font-family: Pt-seriefregular;
+
+  @media only screen and (max-width: #{$topbar-breakpoint}) {
+    display: none;
+  }
+}

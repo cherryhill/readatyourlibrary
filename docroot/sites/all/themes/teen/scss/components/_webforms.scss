@@ -1,0 +1,31 @@
+/**
+ * Styles for Webforms.
+ */
+
+
+.webform-client-form {
+  label:not(.option) {
+    font-weight: $form-label-font-weight;
+  }
+
+  .webform-component {
+    margin-bottom: $form-component-bottom-margin;
+  }
+
+  .webform-component-date,
+  .webform-component-webform_time {
+    .webform-container-inline {
+      select, .form-radios {
+        max-width: 20%;
+      }
+    }
+  }
+
+  input[type="file"],
+  input[type="checkbox"],
+  input[type="radio"],
+  input[type="text"],
+  select {
+    margin:0;
+  }
+}

@@ -1,0 +1,156 @@
+/**
+ * Styles for the Pre-Header area.
+ */
+
+.pre-header {
+  background-color: $blue;
+  color: $white;
+  font-size: 14px;
+  @include mclaren;
+  padding: 3px 12px 19px 0px;
+  display: inline-block;
+
+
+  a {
+    color: $color_gray_light;
+    padding: 0 5px;
+  }
+
+  p {
+    margin-bottom: 0;
+  }
+
+  ul {
+    @include inline-list;
+    margin-bottom: 0;
+  }
+
+  .pre-header-left {
+    padding: 0;
+      .breadcurm {
+    width: 30%;
+    float: left;
+      @include tablet {
+        width: 100%;
+        float: none;
+        display: inline-block;
+      }
+     ul {
+      margin: 0;
+      position: relative;
+      top: 10px;
+      @include noborder;
+      background: transparent;
+       li {
+          position: relative;
+          &:first-child {
+            content: " ";
+          }
+          &:before {
+                  content: " > ";
+                  width: 20px;
+                  height: 20px;
+                  text-align: center;
+                  color: $black;
+                  left: -30px;
+                  top: 0;
+                  position: absolute;
+                  font-size: 17px;
+                }
+          &.current {
+             
+             a {
+               color: $black;
+              
+               
+             }
+          }
+         a {
+          color: $blue;
+          @include arialregular;
+          text-transform: capitalize;
+          font-size: 17px;
+          float: left;
+
+         }
+       }
+     }
+   }
+   .top-menu {
+    width: 70%;
+    float: right;
+      @include tablet {
+        width: 100%;
+        display: inline-block;
+        float: none;
+      }
+   }
+      section {
+        .view {
+          .view-content {
+            float: right;
+            position: relative;
+            top: 15px;
+              @include tablet {
+                float: none;
+                text-align: left;
+                left: 10px;
+                top: 0;
+              }
+          }
+           .views-field {
+             float: left;
+             margin-left: 10px;
+             a {
+               background-color: $yellow;
+               padding: 6px 12px 5px; 
+               font-size: 18px;
+               color: $blue;
+               @include mclaren;
+               @include boxshadow;
+                 &.newclass {
+                  background-color: $msg-active !important;
+                  color: $white !important;
+                 }
+                 
+                &.msg {
+                   padding: 6px 12px 5px 33px !important; 
+                   background: $blue url('../images/libraryzurb/msg-img.png');
+                   background-repeat: no-repeat;
+                   background-position: 10px 6px;
+    
+                }
+             }
+              &.views-field-name {
+                a {
+                  color: $white !important;
+                  background: none !important;
+                  border: none !important;
+                  font-size: 14px;
+                  box-shadow: none !important;
+                  @include mclaren;
+                }
+              }
+              
+           }
+        }
+      }
+  }
+
+  .pre-header-right {
+    padding: 0;
+    li {
+      float: right;
+    }
+  }
+
+  // do not display on mobile
+
+}
+
+#topmostbranding {
+  max-width: 100%;
+  padding: 3px 0.5em;
+  display: inline-block;
+  float: right;
+}
