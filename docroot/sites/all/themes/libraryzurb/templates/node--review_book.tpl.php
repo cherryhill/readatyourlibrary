@@ -74,13 +74,14 @@
  * @see template_preprocess_node()
  * @see template_process()
  */
-//print "<pre>";
-//print_r($content);
-//print "</pre>";
-//print  "hiiii";
 ?>
 
-<?php print flag_create_link('follow', $node->uid); ?>
+<?php 
+  $node = node_load($nid);
+  $node_privacy_field = field_get_items('node', $node, 'field_privacy_settings');
+  $node_privacy = $node_privacy_field[0]['value'];
+
+  if($node_privacy === 'public'){ print flag_create_link('follow', $node->uid); } ?>
 <article id="node-<?php print $node->nid; ?>" class="<?php print $classes; ?>"<?php print $attributes; ?>>
 
   <?php print render($title_prefix); ?>
