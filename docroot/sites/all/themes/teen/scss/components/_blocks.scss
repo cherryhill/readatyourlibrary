@@ -1,12 +1,746 @@
 // Blocks
-.block {
-}
-.block-title {}
-.block-content {}
-.block-title {
 
+.block {
+	&.block-private-msg-custom-homepage-slider {
+		@include bluebackground;
+		padding: 0 !important;
+		h2.featured {
+			display: none;
+		}
+		 ul {
+		  	list-style: none;
+		  	position: absolute;
+		  	right: 40px;
+		  	z-index: 1;
+		  	top: 28px;
+		  	 label {
+		  	 	width: 20px;
+		  	 	display: inline;
+		  	 }
+		  	    input[type=radio] {
+				  visibility: hidden;
+				  position: absolute;
+				}
+				input[type=radio] + label:before {
+				  height:20px;
+				  width:20px;
+				  margin-right: 10px;
+				  content: " ";
+				  display:inline-block;
+				  vertical-align: baseline;
+				  border:1px solid $white;
+				  background: $white;
+				  border-radius: 100%;
+				}
+				input[type=radio]:checked + label:before {
+	  				background:$yellow;
+	  				border: 1px solid $yellow;
+				}
+
+		 	 }
+		  	.slide {
+		  	 padding-bottom: 50px;
+		  		.view {
+		  			.view-header {
+		  				@include waveimg;
+		  			}
+		  			.view-content {
+		  				padding-top: 17px;
+		  			}
+		  			.view-footer {
+		  				position: relative;
+		  				top: 30px;
+		  				left: 22px;
+		  			}
+		  		}
+		  	}
+		 	.owl-controls {
+				position: absolute;
+		        top: 36%;
+		        width: 100%;
+		        height: 0;
+	        	.owl-pagination {
+	        		display: none;
+	        	}
+				.owl-buttons {
+					.owl-prev {
+						float: left;
+						background: url('../images/libraryzurb/left-arrow.png') no-repeat;
+						opacity: 1;
+						color: transparent;
+						border-radius: 0;
+						margin-left: -28px;
+						padding: 10px;
+
+					}
+					.owl-next {
+						float: right;
+						background: url('../images/libraryzurb/right-arrow.png') no-repeat;
+						opacity: 1;
+						color: transparent;
+						border-radius: 0;
+						margin-right: -45px;
+						padding: 10px;
+
+					}
+				}
+			}
+		  .slide {
+		  	 padding-bottom: 50px;
+		  	.view {
+		  		.view-header {
+		  			text-transform: capitalize;
+		  		}
+		  	}
+		  }
+		 .owl-controls {
+			position: absolute;
+	        top: 36%;
+	        width: 100%;
+	        height: 0;
+	        .owl-pagination {
+	        	display: none;
+	        }
+			.owl-buttons {
+				.owl-prev {
+					float: left;
+					background: url('../images/libraryzurb/left-arrow.png') no-repeat;
+					opacity: 1;
+					color: transparent;
+					border-radius: 0;
+					margin-left: -28px;
+					padding: 10px;
+
+				}
+				.owl-next {
+					float: right;
+					background: url('../images/libraryzurb/right-arrow.png') no-repeat;
+					opacity: 1;
+					color: transparent;
+					border-radius: 0;
+					margin-right: -45px;
+					padding: 10px;
+
+				}
+			}
+		}
+	}
+	&.block-auto-role-allocation-calendar-data.header {
+		display: none;
+	}
+    margin-bottom: 35px;
+    @include mobile {
+	     	margin-bottom: 25px;
+	     }
+	 &.block-views-event-activities-block-1 {
+	 	@include bluebackground;
+	 	padding: 10px 22px;
+	 	 .block-title {
+	 	 	font-size: 22px;
+	 	 	color: $white;
+	 	 	@include mclaren;
+	 	 }
+	 	 .view-event-activities {
+	 	 	a {
+	 	 		font-size: 17px;
+	 	 		color: $white;
+	 	 		text-decoration: underline;
+	 	 		@include arialregular;
+	 	 	}
+	 	 }
+	 }
+     &.badge-reward-list {
+     	margin-bottom: 0 !important;
+     	 .badge_list {
+     	 	@include mclaren;
+     	 	font-size: 28px;
+     	 }
+     }
+    &.dashboard-block {
+    	.pagination.pager li {
+    		@include noborder;			
+    	}
+    	@include orange-blue;
+    	.view {
+    		display: table;
+    		width: 100%;
+    		padding: 12px 2.3%;
+    		position: relative;
+	    	.attachment {
+	          width: 50%;
+	          display: table-cell;
+	          position: relative;
+	          bottom: 26px;
+	           .view {
+	           	 padding: 0 !important;
+	           	 display: inline-block;
+	           	 .view-content {
+	           	 	float: left;
+	           	 	display: inline-block;
+	           	 	width: 100%;
+	           	 	 .views-row {
+	           	 	 	display: table;
+	           	 	 	margin-bottom: 0;
+	           	 	 	 img {
+	           	 	 	 	margin: 0px 5px 0px 0px;
+	           	 	 	 	@include noborder;
+	           	 	 	 	background: $white;
+	           	 	 	 }
+	           	 	 	 .views-field {
+	           	 	 	 	display: table-cell;
+	           	 	 	 	height: 100%;
+	           	 	 	 	vertical-align: bottom;
+	           	 	 	 	 &.views-field-name {
+	           	 	 	 	 	a {
+		    		 	 		 	color: $white;
+		    		 	 		 	@include arialbold;
+    		 	 				 }
+	           	 	 	 	 }
+	           	 	 	 }
+	           	 	 }
+	           	 }
+	           }
+	    	}
+	    	.view-content {
+	    		width: 50%;
+	    		float: right;
+	    		display: table-cell;
+	    		table {
+	    			float: right;
+	    		}
+	    		table, table tr.even, table tr.alt, table tr:nth-of-type(2n) {
+	    			background: none !important;
+	    			@include noborder;
+	    		}
+	    		 table tr td .views-field {
+	    		 	h2 {
+	    		 		display: none;
+	    		 	}
+	    		 	.content {
+	    		 		display: inline-block;
+	    		 		background: $white;
+	    		 	}
+	    		 }
+	    	}
+	    	.item-list {
+	    		position: absolute;
+	    		top: -17px;
+	    		right: 4%;
+	    		display: block;
+	    		 .pagination {
+	    		 	li {
+	    		 		margin-left: 10px;
+	    		 		a {
+	    		 			color: transparent !important;
+	    		 			position: relative;
+	    		 			background: transparent;
+	    		 			 &:hover {
+	    		 			 	background: transparent;
+	    		 			 }
+	    		 			 &:after {
+	    		 			 	@include previous(20px, 20px, $top: 0, $left: 0);
+	    		 			 	border-radius: 100%;
+	    		 			 	background: $white;
+	    		 			 }
+	    		 		}
+	    		 		&.current {
+	    		 			a {
+	    		 				&:after {
+	    		 					background: $orange !important;
+	    		 				}
+	    		 			}
+	    		 		}
+	    		 		&.arrow {
+	    		 			display: none;
+	    		 		}
+	    		 	}
+	    		 }
+	    	}
+     	}
+    }
+    &.block-views-booklist-slideshow-block-2 {
+    	h2.block-title {
+    		@include mclaren;
+    		font-size: 25px;
+    		color: $black;
+    		@include noborder;
+    		margin-bottom: 33px;
+
+    	}
+    }
+    &.bordr-bottom {
+    	border-bottom: 1px solid $light-gray;
+    	padding-bottom: 20px;
+    }
+    &.block-private-msg-custom {
+    	@include yellowbackground;
+    	padding: 35px;
+    	width: 100%;
+    	display: inline-block;
+    	 h2 {
+    	 	color: $black;
+    	 	margin-top: 0;
+    	 	font-size: 28px;
+    	 	@include mclaren;
+    	 	@include noborder;
+    	 }
+    	 .pm-custom {
+    	 	width: 100%;
+    	     display: inline-block;
+    	     position: relative;
+    	      .pm-view {
+    	      	position: absolute;
+    	      	top: 29%;
+    	      	right: -6px;
+    	      	padding: 12px 22px;
+    	      	@include bluebutton($font-size: 17px);
+    	      }
+    	 	 .pm {
+    	 	 	width: 90%;
+    	 	 	display: inline-block;
+    	 	 	margin-bottom: 25px;
+    	 	 	 .pm-subject {
+    	 	 	 	width: 60%;
+    	 	 	 	float: left;
+    	 	 	 	color: $red;
+    	 	 	 	font-size: 17px;
+    	 	 	 	@include arialbold;
+    	 	 	 	  a {
+    	 	 	 	  	color: $black;
+    	 	 	 	  	line-height: 1;
+    	 	 	 	  }
+    	 	 	 	 .pm-new {
+    	 	 	 	 	float: left;
+    	 	 	 	 	padding-right: 10px;
+    	 	 	 	 	color: $red;
+    	 	 	 	 	position: relative;
+    	 	 	 	 	top: 5px;
+    	 	 	 	 }
+    	 	 	 }
+    	 	 	 .pm-admin {
+    	 	 	 	width: 19%;
+    	 	 	 	float: left;
+    	 	 	 	font-size: 17px;
+    	 	 	 	@include arialregular;
+    	 	 	 	color: $black;
+    	 	 	 }
+    	 	 	 .pm-date {
+    	 	 	 	float: left;
+    	 	 	 	width: 19%;
+    	 	 	 	color: $black;
+    	 	 	 	font-size: 17px;
+    	 	 	 	@include arialregular;
+    	 	 	 }
+
+    	 	 }
+    	 }
+    }
+    
+	&.block-user-login {
+		 @include orange-blue;
+		 .block-title {
+		 	padding-left: 11.5%;
+		 }
+		  form {
+		  	width: 100%;
+		  	max-width: 77%;
+		  	margin: 0 auto;
+		  	 label {
+		  	 	@include white-text;
+		  	 }
+		  	 ul {
+		  	 	list-style: none;
+		  	 	li {
+		  	 		margin-left: 0;
+		  	 		a {
+		  	 	@include white-text;
+		  	   }
+		  	 }
+		  	}
+		  	 button {
+		  	 	@include yellowbutton;
+		  	 	margin-left: 0;
+		  	 }
+		  }
+	}
+	&.review-booklist-block {
+		background: $white;
+		border-radius: 20px;
+		padding-left: 10px;
+		padding-right: 10px;
+		margin-bottom: 48px;
+		@include boxshadow;
+		@include mclaren;
+		 .block-title {
+		 	border-top: none;
+		 	padding: 10px;
+		 	padding-left: 22.6%;
+		 	 a {
+		 	 	@include mclaren;
+		 	    font-size: 22px;
+		 	 	color: $black;
+		 	 	position: relative;
+		 	 	&.active {
+		 	 		color: $orange !important;
+		 	 		  &:before {
+		 	 		  	@include previous(25px, 25px, $top: 3px, $left: -31px);
+ 		 			    background: url('../images/libraryzurb/star.png') no-repeat;
+ 		 			  }
+		 	 	}
+		 	 }
+		 }
+		 ul {
+		 	&.menu {
+		 		margin-bottom: 6px;
+		 		 li {
+		 		 	padding: 6px 0px 0px 22.6%;
+		 		 	  a {
+		 		 	  	 color: $black;
+		 		 	  	 font-size: 22px;
+		 		 	  	  &:focus {
+		 		 	  	  	outline: none;
+		 		 	  	  }
+		 		 	  }
+		 		 	&.active {
+		 		 		
+		 		 		a {
+		 		 			color: $orange !important;
+		 		 			position: relative;
+		 		 			  &:before {
+		 		 			  	@include previous(25px, 25px, $top: 3px, $left: -31px);
+		 		 			    background: url('../images/libraryzurb/star.png') no-repeat;
+		 		 			  }
+
+		 		 		}
+		 		 	}
+		 		 }
+		 	}
+		 }
+	}
+	&.write-book-review {	
+		margin-bottom: 0 !important;
+	 	h2.block-title {
+	 		margin-bottom: 25px;
+	 	}
+
+ 	}
+ 	&.block-views-reward-earn-block, &.block-views-reward-earn-block-1 {
+ 		@include orange-blue;
+ 		.view {
+ 			display: table;
+ 			width: 100%;
+ 			 .views-row {
+ 			 	display: table-row;
+ 			 	width: 100%;
+ 			 	 .views-field {
+ 			 	 	&.views-field-field-badge-image {
+ 			 	 		width: 40%;
+ 			 	 		display: table-cell;
+ 			 	 		padding-left: 15px;
+ 			 	 		 .field-content {
+ 			 	 		 	img {
+ 			 	 		 		margin-bottom: 10px;
+ 			 	 		 	}
+ 			 	 		 }
+ 			 	 	}
+ 			 	 	&.views-field-title {
+ 			 	 		float: none;
+ 			 	 		width: 50%;
+ 			 	 		display: table-cell;
+ 			 	 		vertical-align: middle;
+ 			 	 		padding-left: 2%;
+
+ 			 	 	}
+ 			 	 }
+ 			 }
+ 		}
+ 		.view-footer {
+ 			padding-left: 15px;
+ 		}
+ 	}
+	&.announcement {
+		background: url('../images/libraryzurb/annocement.png') no-repeat;
+		background-size: cover;
+		background-position: center center;
+		color: $black;
+		padding-left: 8.8%;
+		padding-right: 8.8%;
+		@include boxshadow;
+		 .block-title {
+		 	@include brushimg;
+		 	font-size: 26px;
+		 	@include mobile {
+	     	font-size: 18px;
+	     }
+		 	@include mclaren;
+		 }
+		 .views-field-body {
+		 	p {
+		 		padding-left: 36px;
+		 		@include arialbold;
+		 		@include mobile {
+	     			font-size: 14px;
+	    		 }
+		 	}
+		 	ol {
+		 		margin-left: 70px;
+		 		padding-bottom: 40px;
+		 		list-style: none;
+		 		
+		 		 li {
+		 		 	position: relative;
+		 		 	font-size: 18px;
+		 		 	@include mobile {
+	     				font-size: 14px;
+	     				}
+		 		 	@include arialregular;
+		 		 	&:after {
+		 		 		@include previous(47px, 21px, $left: -32px, $top: 3px);
+		 		 		background: url('../images/libraryzurb/arrow-list.png') no-repeat;
+		 		 	}
+		 		 }
+		 	}
+		 }
+	}
+	 &.homepage-blocks {
+	        background: $blue;
+	        overflow: hidden;
+	        color: $white;
+	        position: relative;
+	        @include boxshadow;
+	            &.playlib-books {
+	            	.owl-carousel {
+	            		position: inherit;
+	            		.owl-item {
+	            			.views-field {
+	            				display: flex;
+	            				align-items: center;
+	            				justify-content: center;
+							    height: 240px;
+							     img {
+							     	width: 100%;
+							     }
+
+	            			}
+	            		}
+		            	.owl-controls {
+		            		position: absolute;
+		            		top: 20px;
+		            		right: 30px;
+		            		.owl-pagination {
+                              .owl-page {
+                              	   &.active {
+                                      span {
+                                      	background: $blue;
+                                      }
+                              	   }
+	                              	span {
+	                              		opacity: 1;
+	                              		width: 20px;
+	                              		height: 20px;
+	                              		background: $white;
+	                              	}
+                              }
+		            		}
+		            		.owl-buttons {
+		            		display: none;
+		            	    }
+		            	}
+		            	
+	                }
+	            }
+	            &.playlib-media {
+	            	.owl-carousel {
+	            		.owl-item {
+	            			text-align: center;
+	            		}
+	            		.views-field.views-field-field-video-link {
+	            			width: 136px;
+	            		}
+	            		.flickr-wrap .flickr-photo-img:hover, img.flickr-photoset-img:hover {
+	            			transform: none;
+	            			top: 0;
+	            			border: none;
+	            		}
+	            		span.flickr-credit, .flickr-citation {
+	            			display: none;
+	            		}
+	            		.flickr-photo-img, img.flickr-photoset-img {
+	            			box-shadow: none;
+	            			border: none;
+	            			border-radius: 0;
+	            			height: 100px;
+	            			width: 136px;
+	            		}
+	            		.owl-controls {
+			    				position: absolute;
+			    		        top: 20%;
+			    		        width: 100%;
+			    		        height: 0;
+			    		        .owl-pagination {
+			    		        	display: none;
+			    		        }
+			    				.owl-buttons {
+			    					.owl-prev {
+			    						float: left;
+			    						background: url('../images/libraryzurb/left-arrow.png') no-repeat;
+			    						opacity: 1;
+			    						color: transparent;
+			    						border-radius: 0;
+			    						margin-left: -28px;
+			    						padding: 10px;
+
+			    					}
+			    					.owl-next {
+			    						float: right;
+			    						background: url('../images/libraryzurb/right-arrow.png') no-repeat;
+			    						opacity: 1;
+			    						color: transparent;
+			    						border-radius: 0;
+			    						margin-right: -45px;
+			    						padding: 10px;
+
+			    					}
+			    				}
+			    			}
+	            	}
+	            }    
+			         .block-title {
+			         	@include waveimg;
+			         }
+			         p {
+			           padding-left: 40px;
+			           padding-right: 40px;
+			           font-size: 18px;
+			           line-height: 1.4;
+			         }
+	         
+	      }
+	&.footer-playlibdetails, &.playlib-copyright, &.footer-playlibpolicies {
+		width: 100%;
+		text-align: left !important;
+		float: none !important;
+		clear: both;
+	}
+	&.footer-playlibdetails {
+		margin-bottom: 25px !important;
+		@include mobile {
+		 	margin-top: 50px;
+		 }
+	}
+	&.footer-playlibdetails,  &.footer-playlibpolicies {
+		font-size: 14px !important;
+		@include arialbold;
+	}
+	&.playlib-copyright {
+		position: relative;
+		span#at-rate {
+			@include mclaren;
+			font-size: 22px !important;
+			height: 0;
+			position: relative;
+			top: 3px;
+		}
+		span#year-lib {
+			@include arialregular;
+			font-size: 12px !important;
+			
+		}
+	}
+	&.block-menu-menu-social-sharing-icons {
+		position: absolute;
+		top: 0;
+		right: 0;
+		
+		 @include mobile {
+		  	left: 0 !important;
+		  	width: 100%;
+		  }
+		  .block-title {
+		  	display: none;
+		  	border-bottom: none;
+		  }
+		  	  ul.menu {
+		  	  	@include mobile {
+		  	  	 	width: 100%;
+		  	  	 	max-width: 225px;
+		  	  	 	margin: 0 auto;
+		  	  	 }
+		  	  	li {
+		  	  		border-right: none !important;
+		  	  		width: 50px;
+		  	  		float: left;
+		  	  		 a {
+		  	  		 	color: transparent !important;
+		  	  		 	position: relative;
+		  	  		 	  &:after {
+		  	  		 	  	@include previous(38px, 38px, $top: 0, $left: 0);
+		  	  		 	  	@include animate;
+							border-radius: 100%;
+							@include boxshadow;
+
+		  	  		 	  }
+
+		  	  		 	  &.fb {
+		  	  		 	  	 &:after {
+		  	  		 	  	 	 background: url('../images/libraryzurb/facebook.png') no-repeat;
+		  	  		 	  	 	 background-position: center;
+		  	  		 	  	 	 background-size: 100%;
+		  	  		 	  	 }
+		  	  		 	  }
+		  	  		 	  &.twit {
+		  	  		 	  	 &:after {
+		  	  		 	  	 	background: url('../images/libraryzurb/twitter.png') no-repeat;
+		  	  		 	  	 	background-position: center;
+		  	  		 	  	 	background-size: 100%;
+		  	  		 	  	 }
+		  	  		 	  }
+		  	  		 	  &.tmblr {
+		  	  		 	  	 &:after {
+		  	  		 	  	 	background: url('../images/libraryzurb/tumbir.png') no-repeat;
+		  	  		 	  	 	background-position: center;
+		  	  		 	  	 	background-size: 100%;
+		  	  		 	  	 }
+		  	  		 	  }
+		  	  		 	  &.pntrst {
+		  	  		 	  	 &:after {
+		  	  		 	  	 background: url('../images/libraryzurb/pinterest.png') no-repeat;
+		  	  		 	  	 background-position: center;
+		  	  		 	  	 background-size: 100%;
+		  	  		 	  	}
+		  	  		 	  }
+		  	  		 	 
+                         &:hover {
+		  	  		 		&:after {
+		  	  		 			@include rotate(360deg);
+		  	  		 		}
+		  	  		 	}
+		  	  		 }
+		  	  	}
+		  	  }
+		  
+	}
+}
+.block-title {
+	font-weight: normal !important;
+	text-transform: capitalize;
+}
+.view {
+	&.view-media-photos-videos- {
+	  .view-footer {
+	  	button {
+	  		margin-top: 20px;
+	  	}
+	  }
+	}
 }
 
 // Drupal sytem blocks:
 // .block-search {}
 // .block-system {}
+
+.owl-carousel {
+	max-width: 89%;
+	margin: 0 auto;
+
+}

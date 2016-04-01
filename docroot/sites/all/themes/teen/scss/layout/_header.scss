@@ -1,6 +1,168 @@
 // Non-modular or client styles for .l-header region.
 
-.l-header {}
+.l-header {
+	background: $header;
+	.row {
+  &.header-middle {
+  	max-width: 100%;
+  	 a#logo {
+        margin: 20px 20px 20px 0px;
+  	 }
+  	 h1#site-name {
+  	 	margin: 26px 0px 0px;
+  	 }
+  	 h2#site-slogan {
+  	 	margin: 2px 0px 0px;
+  	 }
+  	 section {
+  	 	&.s-logoblock {
+  	 		margin-bottom: 0px;
+  	 		 p {
+  	 		 	margin-bottom: 0px;
+  	 		 }
+  	 	}
+  	 	&.block-menu-menu-secoundary-menu {
+  	 		margin-bottom: 0;
+  	 		ul.menu {
+  	 			float: right;
+  	 			list-style: none;
+  	 			position: relative;
+  	 			bottom: 20px;
+  	 			  li {
+  	 			  	display: inline-block;
+  	 			  	vertical-align: top;
+  	 			  	width: 110px;
+  	 			  	
+					
+                         
+  	 			  	  a {
+  	 			  	  	  position: relative;
+  	 			  	  	  width: 100%;
+                    font-size: 18px;
+                    color: $white;
+                    display: inline-block;
+                    vertical-align: top;
+                    line-height: 1;
+                    padding: 0 !important;
+                    text-align: center;
+                    @include mclaren;
+
+  	 			  	  	   &:after {
+                       @include previous(80px, 45px, $left: 13%, $top: 0);
+                       @include animate;
+                       margin-top: -50px;
+  	 			  	  	   }
+  	 			  	  	 
+  	 			  	  	  &.current-program {
+  	 			  	  	  	position: relative;
+  	 			  	  	  	 &:hover,&.active-trail {
+  	 			  	  	  	 	&:after {
+  	 			  	  	  	 		/* background:  url('../images/libraryzurb/currentprogs_hover.png') no-repeat;
+                           @include bck_size_tablet; */
+  	 			  	  	  	   }
+  	 			  	  	  	 }
+  	 			  	  	  	 &:after {
+                               background: url('../images/libraryzurb/current-programs.png') no-repeat;
+                            }
+
+  	 			  	  	  }
+  	 			  	  	 &.activities {
+  	 			  	  	 	 &:hover,&.active-trail {
+  	 			  	  	  	 	&:after {
+  	 			  	  	  	 		/* background: url('../images/libraryzurb/activities_hover.png') no-repeat;
+                          @include bck_size_tablet; */
+  	 			  	  	  	   }
+  	 			  	  	  	 }
+  	 			  	  	  	&:after{
+                           background: url('../images/libraryzurb/activities.png') no-repeat;
+                           background-position: 0px 7px;
+                            }
+  	 			  	  	  }
+  	 			  	  	  &.rewards {
+  	 			  	  	  	 &:hover,&.active-trail {
+  	 			  	  	  	 	&:after {
+  	 			  	  	  	 		/* background: url('../images/libraryzurb/rewards_hover.png') no-repeat;
+                          @include bck_size_tablet; */
+  	 			  	  	  	   }
+  	 			  	  	  	 }
+  	 			  	  	  	&:after {
+  	 			  	  	     background: url('../images/libraryzurb/rewards.png') no-repeat;
+                       background-position: 8px 7px;
+                       
+  	 			  	  	    }
+  	 			  	  	  }
+  	 			  	  	  &.reviews {
+  	 			  	  	  	 &:hover,&.active-trail {
+  	 			  	  	  	 	&:after {
+  	 			  	  	  	 		/* background: url('../images/libraryzurb/reviewactive.png') no-repeat;
+                          @include bck_size_tablet; */
+  	 			  	  	  	   }
+  	 			  	  	  	 }
+                            &:after {
+  	 			  	  	  	 background: url('../images/libraryzurb/reviews.png') no-repeat;
+                       background-position: 0px 7px;
+                       
+  	 			  	  	    }
+  	 			  	  	  }
+  	 			  	  	  &.photos {
+  	 			  	  	  	 &:hover,&.active-trail {
+  	 			  	  	  	 	&:after {
+  	 			  	  	  	 		/* background: url('../images/libraryzurb/photos_videos_hover.png') no-repeat;
+                          @include bck_size_tablet; */
+  	 			  	  	  	   }
+  	 			  	  	  	 }
+  	 			  	  	  	&:after {
+  	 			  	  	 background: url('../images/libraryzurb/photosnvideos.png') no-repeat;
+                   background-position: 0px 7px;
+                      
+  	 			  	  	    }
+  	 			  	  	  }
+  	 			  	  	  &.events {
+  	 			  	  	  	 &:hover,&.active-trail {
+  	 			  	  	  	 	&:after {
+  	 			  	  	  	 		/* background: url('../images/libraryzurb/events_hover.png') no-repeat;
+                          @include bck_size_tablet; */
+  	 			  	  	  	   }
+  	 			  	  	  	 }
+  	 			  	  	  	&:after {
+  	 			  	  	  	 background: url('../images/libraryzurb/events.png') no-repeat;
+                       background-position: 12px 7px;
+                      
+  	 			  	  	    }
+  	 			  	  	  }
+  	 			  	  	  &.progress {
+  	 			  	  	  	 &:hover,&.active-trail {
+  	 			  	  	  	 	&:after {
+  	 			  	  	  	 		/* background: url('../images/libraryzurb/progress_hover.png') no-repeat;
+                          @include bck_size_tablet; */
+  	 			  	  	  	   }
+  	 			  	  	  	 }
+  	 			  	  	  	border: none;
+  	 			  	  	  	&:after {
+  	 			  	  	  	background: url('../images/libraryzurb/progress.png') no-repeat;
+                      background-position: 6px 22px;
+  	 			  	  	    }
+  	 			  	  	  }
+  	 			  	  	  
+  	 			  	  	   &:hover {
+                       color: $blue;
+                       text-decoration: none;
+  	 			  	  	   	&:after {
+  	 			  	  	   		@include rotate(360deg, $dir: Y);
+					}
+						 
+					  }
+  	 			  	  }
+  	 			  
+  	 			  }
+
+
+  	 		}
+  	 	}
+  	 }
+  }
+}
+}
 
 // Top Bar
 //--------------------------------------------------
@@ -11,3 +173,14 @@
 .top-bar-section {}
 .top-bar-section .left {}
 .top-bar-section .right {}
+/**hide admin menu on mobile css**/
+ @include mobile {
+    #admin-menu {
+      display: none;
+    }
+ }
+ @include tablet {
+    #admin-menu {
+      display: none;
+    }
+ }
