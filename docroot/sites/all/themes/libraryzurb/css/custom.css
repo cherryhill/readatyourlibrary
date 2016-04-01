@@ -6794,6 +6794,9 @@ form#user-pass div.user_pass_name:after {
   box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
   padding: 0 !important;
 }
+.block.block-private-msg-custom-homepage-slider h2.featured {
+  display: none;
+}
 .block.block-private-msg-custom-homepage-slider ul {
   list-style: none;
   position: absolute;
@@ -13433,6 +13436,11 @@ body .alert-box.success a.close:hover {
   -moz-osx-font-smoothing: grayscale !important;
   border: none !important;
   outline: none !important;
+}
+
+/**hide breadcurm from specific pages**/
+.page-users-public-profile .pre-header .pre-header-left .breadcurm, .page-user-edit .pre-header .pre-header-left .breadcurm, .page-node-add-booklist .pre-header .pre-header-left .breadcurm, .page-node-add-review-book .pre-header .pre-header-left .breadcurm, .page-user-profile .pre-header .pre-header-left .breadcurm, .page-messages-view .pre-header .pre-header-left .breadcurm {
+  display: none;
 }
 
 /**
