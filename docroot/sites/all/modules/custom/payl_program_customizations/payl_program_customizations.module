@@ -93,7 +93,7 @@ if($form_id == 'user_register_form') {
     drupal_add_js(drupal_get_path('module', 'payl_program_customizations') . '/payl_program_customizations.js');
     $form['current_username'] = array(
       '#markup' => '<h3 class="username">Username: <span class="current-username"></span></h3>',
-      '#weight' => 1,
+      '#weight' => 25,
     );
 
     // Move the email element to the main profile.

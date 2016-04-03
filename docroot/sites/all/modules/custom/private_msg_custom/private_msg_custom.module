@@ -144,7 +144,7 @@ function private_msg_custom_form_profile2_edit_main_form_alter(&$form, $form_sta
       'effect' => 'slide',
       'progress' => array('type' => 'none'),
     ),
-    //'#weight' => 5,
+    '#weight' => 10,
   );
 
   $form['checkboxes_fieldset'] = array(
@@ -152,6 +152,7 @@ function private_msg_custom_form_profile2_edit_main_form_alter(&$form, $form_sta
     '#prefix' => '<div id="checkboxes-div">',
     '#suffix' => '</div>',
     '#type' => 'fieldset',
+    '#weight' => 11,
   );
 
 	foreach ($avatar_name[$num_avatar] as $key => $value) {
