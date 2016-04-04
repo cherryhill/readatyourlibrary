@@ -304,6 +304,7 @@
 			                           	 font-family: 17px;
 			                           	 @include arialregular;
 			                           	 vertical-align: top;
+			                           	 text-align: center;
                            			}
 	  			 			}
 	  			 	}
@@ -2799,6 +2800,22 @@ display: block !important;
  				font-size: 28px;
  				@include mclaren;
  				@include noborder;
+ 			}
+ 		}
+ 		.view {
+ 			.views-row {
+ 				width: 100%;
+ 				display: inline-block;
+ 				  .views-field {
+ 				  	display: inline-block;
+ 				  	vertical-align: bottom;
+ 				  	  &.views-field-field-user-avatar {
+ 				  	  	width: 34px;
+ 				  	  }
+ 				  	  &.views-field-name {
+ 				  	  	width: 89%;
+ 				  	  }
+ 				  }
  			}
  		}
  	}
