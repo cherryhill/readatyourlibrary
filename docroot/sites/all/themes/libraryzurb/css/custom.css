@@ -9898,54 +9898,62 @@ body .alert-box.success a.close:hover {
 .page-rewards .main #page-title {
   display: none;
 }
-.page-rewards .main .view-badges .view-header h2 {
-  font-family: McLaren-Regular !important;
-  font-weight: normal !important;
-  font-style: normal !important;
-  -webkit-font-smoothing: antialiased !important;
-  -moz-osx-font-smoothing: grayscale !important;
+.page-rewards .main .view-reward-page .view-header, .page-rewards .main .view-physical-rewards-block-for-rewards-page .view-header {
+  margin-bottom: 35px;
+}
+.page-rewards .main .view-reward-page .view-header h2, .page-rewards .main .view-physical-rewards-block-for-rewards-page .view-header h2 {
   font-size: 28px;
+  font-family: McLaren-Regular !important;
+  font-weight: normal !important;
+  font-style: normal !important;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+  border: none !important;
+  outline: none !important;
   color: #000;
-  border: none !important;
-  outline: none !important;
 }
-.page-rewards .main .view-badges .view-content div.badges img {
-  margin-right: 6%;
+.page-rewards .main .view-reward-page .view-content .views-row, .page-rewards .main .view-physical-rewards-block-for-rewards-page .view-content .views-row {
+  width: 100%;
+  display: inline-block;
 }
-.page-rewards .main .block .block-title {
-  border: none !important;
-  outline: none !important;
-  font-size: 18px;
-  color: #f6511d;
+.page-rewards .main .view-reward-page .view-content .views-row .badges, .page-rewards .main .view-physical-rewards-block-for-rewards-page .view-content .views-row .badges {
+  width: 20%;
+  display: inline-block;
+  vertical-align: middle;
+  text-align: center;
+}
+.page-rewards .main .view-reward-page .view-content .views-row .badge_description, .page-rewards .main .view-physical-rewards-block-for-rewards-page .view-content .views-row .badge_description {
+  width: 79%;
+  display: inline-block;
+  vertical-align: middle;
+}
+.page-rewards .main .badge_list {
+  font-size: 28px;
   font-family: McLaren-Regular !important;
   font-weight: normal !important;
   font-style: normal !important;
   -webkit-font-smoothing: antialiased !important;
   -moz-osx-font-smoothing: grayscale !important;
 }
-.page-rewards .main .block .view {
-  display: table;
-  width: 100%;
-}
-.page-rewards .main .block .view .view-content {
-  display: table-row;
-  width: 100%;
-}
-.page-rewards .main .block .view .view-content .views-row {
-  display: inline-block;
-  width: 18%;
-  vertical-align: top;
-}
-.page-rewards .main .block .view .view-content .views-row .views-field {
-  width: 100%;
-  display: inline-block;
-  font-family: 17px;
-  font-family: arial !important;
-  font-style: normal !important;
+.page-rewards .main .block-views .block-title {
+  font-size: 18px;
+  font-family: McLaren-Regular !important;
   font-weight: normal !important;
+  font-style: normal !important;
   -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+  border: none !important;
+  outline: none !important;
+  color: #f6511d;
+}
+.page-rewards .main .view-badges-for-reading .view-content {
+  width: 100%;
+  display: inline-block;
+}
+.page-rewards .main .view-badges-for-reading .view-content .views-row {
+  width: 18%;
+  display: inline-block;
   vertical-align: top;
-  text-align: center;
 }
 
 /**end css of reward page**/

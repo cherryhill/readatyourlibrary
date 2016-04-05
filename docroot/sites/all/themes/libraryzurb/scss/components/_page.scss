@@ -263,54 +263,58 @@
 		  		
 		  		display: none;
 		  	}
-	  		.view-badges {
+	  		.view-reward-page, .view-physical-rewards-block-for-rewards-page  {
 	  			.view-header {
-		  		    h2 {
-		  			@include mclaren;
-			  		font-size: 28px;
-			  		color: $black;
-			  		@include noborder;
-			  		  }
+	  				margin-bottom: 35px;
+	  				h2 {
+	  					font-size: 28px;
+	  					@include mclaren;
+	  					@include noborder;
+	  					color: $black;
+	  				}
+
 	  			}
 	  			.view-content {
-	  				div.badges {
-	  					img {
-	  						margin-right: 6%;
-	  					}
+	  				.views-row {
+	  					width: 100%;
+	  					display: inline-block;
+	  					 .badges {
+	  					 	width: 20%;
+	  					 	display: inline-block;
+	  					 	vertical-align: middle;
+	  					 	text-align: center;
+	  					 }
+	  					 .badge_description {
+	  					 	width: 79%;
+	  					 	display: inline-block;
+	  					 	vertical-align: middle;
+	  					 }
 	  				}
 	  			}
 	  		}
-
-		 .block {
-	  		.block-title {
-	  			@include noborder;
-	  			font-size: 18px;
-	  			color: $orange;
+	  		.badge_list {
+	  			font-size: 28px;
 	  			@include mclaren;
 	  		}
-		 	.view {
-  			 	display: table;
-  			 	width: 100%;
-	  			 	.view-content {
-	  			 		display: table-row;
-	  			 		width: 100%;
-	  			 			.views-row {
-                          		display: inline-block;
-                          		width: 18%;
-                          		vertical-align: top;
-                           			.views-field {
-			                           	 width: 100%;
-			                           	 display: inline-block;
-			                           	 font-family: 17px;
-			                           	 @include arialregular;
-			                           	 vertical-align: top;
-			                           	 text-align: center;
-                           			}
-	  			 			}
-	  			 	}
-		 	}
-	  		
-	  	}
+	  		.block-views {
+	  			.block-title {
+	  				font-size: 18px;
+	  				@include mclaren;
+	  				@include noborder;
+	  				color: $orange;
+	  			}
+	  		}
+	  		.view-badges-for-reading {
+	  			.view-content {
+	  				width: 100%;
+	  				display: inline-block;
+	  				  .views-row {
+	  				  	width: 18%;
+	  				  	display: inline-block;
+	  				  	vertical-align: top;
+	  				  }
+	  			}
+	  		}
 	 
 	  	
 	} 
