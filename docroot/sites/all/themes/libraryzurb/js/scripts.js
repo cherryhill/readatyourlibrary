@@ -71,8 +71,15 @@ jQuery( document ).ready(function() {
       //display error message
       alert('Please enter only username');
       return false;
-     }
-    });
+    }
+  });
+
+  jQuery('.node-type-review-book .flag-link-normal').each(function(){ 
+    var me = jQuery(this) , t = me.text().split(' ');
+    var link = me.html(t.shift()+' This Reviewer');
+  });
+
+  jQuery(".flag-like").insertAfter('.like-count');
 
   /* Jquery for script for raffle entry checkbox */
 
