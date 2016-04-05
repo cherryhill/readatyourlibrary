@@ -75,15 +75,46 @@
  * @see template_process()
  */
 ?>
-
-<?php 
+<div class="review_node_sidebar">
+  <div class="follow_link_bookreview">
+  <?php 
   $node = node_load($nid);
   $node_privacy_field = field_get_items('node', $node, 'field_privacy_settings');
   $node_privacy = $node_privacy_field[0]['value'];
 
   if($node_privacy === 'public'){ print flag_create_link('follow', $node->uid); } ?>
-<article id="node-<?php print $node->nid; ?>" class="<?php print $classes; ?>"<?php print $attributes; ?>>
+  </div>
+  <div class="img_review"><?php
+  if($node->status == 1) {
 
+  $book_cover_image = $bimage['0']['safe_value'];
+
+  if ($book_cover_image) {                 
+    $bimg = "<img src='".trim($book_cover_image)."' style='width:200px;height:200px;'>";  
+  }
+  else {
+    $bimg =  "<img src='http://www.clker.com/cliparts/7/1/a/f/11971220941184963828dniezby_Generic_Book.svg.med.png' style='width:200px;height:200px;'>";
+  }  
+  print  "<table><tr><td>".$bimg."</td>";
+  print  "</tr></table>";}?>
+  </div>
+  <div class="like-count">
+    <?php
+      $nid_node = $node->nid;
+      $title_node = $node->title;
+
+      $query = db_select('flag_counts','count')
+      ->fields('count',array('count'))
+      ->condition('entity_id',$nid_node)
+      ->execute()
+      ->fetchAssoc();
+
+      $counts = $query['count'];
+      print 'Likes: '.$counts;
+    ?>
+  </div>
+</div>
+<article id="node-<?php print $node->nid; ?>" class="<?php print $classes; ?>"<?php print $attributes; ?>>
   <?php print render($title_prefix); ?>
   <?php if (!$page): ?>
     <?php if (!$page): ?>
@@ -118,37 +149,57 @@ $bimage = field_get_items('node', $node, 'field_book_cover_image_link');
 
 $review = field_get_items('node', $node, 'body');
 
-print "Author Name : " . $fname['0']['safe_value'].' '.$lname['0']['safe_value'];
-
-print "<br/>";
-
-print "<br/>";
-
-print "<br/>";
-
-
-if($node->status == 1) {
-
-  $book_cover_image = $bimage['0']['safe_value'];
-
-  if ($book_cover_image) {                 
-    $bimg = "<img src='".trim($book_cover_image)."' style='width:200px;height:200px;'>";  
-  }
-  else {
-    $bimg =  "<img src='http://www.clker.com/cliparts/7/1/a/f/11971220941184963828dniezby_Generic_Book.svg.med.png' style='width:200px;height:200px;'>";
-  }  
-  print  "<table><tr><td>".$bimg."</td>";
-  print  "</tr></table>";
-}
-print "Review : " . $review['0']['safe_value'];
+// print "Review : " . $review['0']['safe_value'];
    
-print "Catalog link : " . $clink['0']['safe_value'];
+// print "Catalog link : " . $clink['0']['safe_value'];
 
 
 
 ?>
 
+<div class="review_node">
+  <div class="title_review">
+    <h2><?php print $title_node.' by '.$fname['0']['safe_value'].' '.$lname['0']['safe_value'] ?></h2>
+    <p class="reviewer"><?php 
+      $reviewer = $node->name; 
+      $node_uid = $node->uid;
+      $node_created = $node->created;
 
+      $query_pid = db_select('profile','pf')
+      ->fields('pf',array('pid'))
+      ->condition('uid',$node_uid)
+      ->execute()
+      ->fetchAssoc();
+      $pid = $query_pid['pid'];
+
+      $query_img_id = db_select('field_data_field_user_avatar','av')
+      ->fields('av',array('field_user_avatar_target_id'))
+      ->condition('entity_id',$pid)
+      ->execute()
+      ->fetchAssoc();
+      $target_id = $query_img_id['field_user_avatar_target_id'];
+
+      if(isset($target_id)){
+        $query = db_select('field_data_field_avatar_image', 't');
+        $query->join('file_managed', 'n', 'n.fid = t.field_avatar_image_fid');
+        $result = $query
+        ->fields('n', array('uri'))
+        ->condition('t.entity_id', $target_id)
+        ->execute();
+        $img_uri = $result->fetchObject();
+        $img_uri = $img_uri->uri;
+        $style = 'avatar_style';
+        $img_path = image_style_url($style, $img_uri);
+        $img = "<img src='$img_path'>";
+      }
+      print 'Reviewed by '.$img.' '.$reviewer;
+    ?></p>
+    <p class="date_created"><?php print date('F d, Y',$node_created) ?></p>
+  </div>
+  <div>
+    <?php print $review['0']['safe_value'] ?>
+  </div>
+</div>
 
   <?php if (!empty($content['field_tags']) && !$is_front): ?>
     <?php print render($content['field_tags']) ?>
