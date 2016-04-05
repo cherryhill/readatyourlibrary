@@ -9922,6 +9922,10 @@ body .alert-box.success a.close:hover {
   vertical-align: middle;
   text-align: center;
 }
+.page-rewards .main .view-reward-page .view-content .views-row .badges-title, .page-rewards .main .view-physical-rewards-block-for-rewards-page .view-content .views-row .badges-title {
+  padding-right: 10px;
+  padding-top: 5px;
+}
 .page-rewards .main .view-reward-page .view-content .views-row .badge_description, .page-rewards .main .view-physical-rewards-block-for-rewards-page .view-content .views-row .badge_description {
   width: 79%;
   display: inline-block;
@@ -9954,6 +9958,10 @@ body .alert-box.success a.close:hover {
   width: 18%;
   display: inline-block;
   vertical-align: top;
+  text-align: center;
+}
+.page-rewards .main .view-badges-for-reading .view-content .views-row .views-field-title {
+  padding-top: 5px;
 }
 
 /**end css of reward page**/
@@ -13459,6 +13467,77 @@ body .alert-box.success a.close:hover {
 /**hide breadcurm from specific pages**/
 .page-users-public-profile .pre-header .pre-header-left .breadcurm, .page-user-edit .pre-header .pre-header-left .breadcurm, .page-node-add-booklist .pre-header .pre-header-left .breadcurm, .page-node-add-review-book .pre-header .pre-header-left .breadcurm, .page-user-profile .pre-header .pre-header-left .breadcurm, .page-messages-view .pre-header .pre-header-left .breadcurm {
   display: none;
+}
+
+/**css for indivisual book-review page**/
+.node-type-review-book #page-title {
+  display: none;
+}
+.node-type-review-book .main .review_node_sidebar {
+  width: 30%;
+  display: inline-block;
+  vertical-align: top;
+  margin-top: 20px;
+}
+.node-type-review-book .main .review_node_sidebar .follow_link_bookreview {
+  padding-left: 30px;
+}
+.node-type-review-book .main .review_node_sidebar .follow_link_bookreview a {
+  color: #fff !important;
+  font-family: McLaren-Regular !important;
+  font-weight: normal !important;
+  font-style: normal !important;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+  background: #267fda !important;
+  border-radius: 10px;
+  padding: 9px 22px;
+  -webkit-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+  box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+  border: none;
+  text-transform: capitalize;
+}
+.node-type-review-book .main .review_node_sidebar .follow_link_bookreview a:hover, .node-type-review-book .main .review_node_sidebar .follow_link_bookreview a:focus {
+  color: #fff;
+  background: #267fda;
+  opacity: 1;
+  outline: none;
+}
+.node-type-review-book .main .review_node_sidebar .img_review table, .node-type-review-book .main .review_node_sidebar .img_review tbody {
+  border: none !important;
+  outline: none !important;
+  margin-top: 20px;
+}
+@media (min-width: 1026px) {
+  .node-type-review-book .main .review_node_sidebar .img_review table td img, .node-type-review-book .main .review_node_sidebar .img_review tbody td img {
+    width: 242px !important;
+    height: 361px !important;
+  }
+}
+.node-type-review-book .main article {
+  width: 69%;
+  display: inline-block;
+  vertical-align: top;
+  margin-top: 20px;
+}
+.node-type-review-book .main article .title_review h2 {
+  color: #000;
+  border: none !important;
+  outline: none !important;
+  font-family: McLaren-Regular !important;
+  font-weight: normal !important;
+  font-style: normal !important;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+}
+.node-type-review-book .main article .title_review p {
+  width: 100%;
+  font-size: 18px;
+  font-family: arial !important;
+  font-style: normal !important;
+  font-weight: normal !important;
+  -webkit-font-smoothing: antialiased !important;
 }
 
 /**

@@ -284,6 +284,10 @@
 	  					 	vertical-align: middle;
 	  					 	text-align: center;
 	  					 }
+	  					 .badges-title {
+	  					 	padding-right: 10px;
+	  					 	padding-top: 5px;
+	  					 }
 	  					 .badge_description {
 	  					 	width: 79%;
 	  					 	display: inline-block;
@@ -312,6 +316,10 @@
 	  				  	width: 18%;
 	  				  	display: inline-block;
 	  				  	vertical-align: top;
+	  				  	text-align: center;
+	  				  	 .views-field-title {
+	  				  	 	padding-top: 5px;
+	  				  	 }
 	  				  }
 	  			}
 	  		}
@@ -2833,5 +2841,56 @@ display: block !important;
 			}
 	}	}	
 }
-
+/**css for indivisual book-review page**/
+.node-type-review-book {
+	#page-title {
+		display: none;
+	}
+	.main {
+	.review_node_sidebar {
+		width: 30%;
+		display: inline-block;
+		vertical-align: top;
+		margin-top: 20px;
+		 .follow_link_bookreview {
+		 	padding-left: 30px;
+		 	a {
+		 		 @include bluebutton;
+		 	}
+		 }
+		 .img_review {
+		 	table, tbody {
+		 		@include noborder; 
+		 		margin-top: 20px;
+		 		td {
+		 			img {
+		 				@include desktop {
+		 					width: 242px !important;
+		 					height: 361px !important;
+		 				}
+		 			}
+		 		}
+		 	}
+		 }
+	}
+	article {
+		width: 69%;
+		display: inline-block;
+		vertical-align: top;
+		margin-top: 20px;
+		 .title_review {
+		 	h2 {
+		 		color: $black;
+		 		@include noborder;
+		 		@include mclaren;
+		 	}
+		 	p {
+		 		width: 100%;
+		 		font-size: 18px;
+		 		@include arialregular;
+		 	}
+		 }
+	}
+}
+}
 
