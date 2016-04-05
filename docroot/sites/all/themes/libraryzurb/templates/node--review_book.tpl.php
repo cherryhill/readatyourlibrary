@@ -149,10 +149,6 @@ $bimage = field_get_items('node', $node, 'field_book_cover_image_link');
 
 $review = field_get_items('node', $node, 'body');
 
-// print "Review : " . $review['0']['safe_value'];
-   
-// print "Catalog link : " . $clink['0']['safe_value'];
-
 
 
 ?>
@@ -164,13 +160,8 @@ $review = field_get_items('node', $node, 'body');
       $reviewer = $node->name; 
       $node_uid = $node->uid;
       $node_created = $node->created;
-
-      $query_pid = db_select('profile','pf')
-      ->fields('pf',array('pid'))
-      ->condition('uid',$node_uid)
-      ->execute()
-      ->fetchAssoc();
-      $pid = $query_pid['pid'];
+      $profile = profile2_load_by_user($node->uid);
+      $pid = $profile['main']->pid;
 
       $query_img_id = db_select('field_data_field_user_avatar','av')
       ->fields('av',array('field_user_avatar_target_id'))
@@ -191,9 +182,9 @@ $review = field_get_items('node', $node, 'body');
         $style = 'avatar_style';
         $img_path = image_style_url($style, $img_uri);
         $img = "<img src='$img_path'>";
-      }
-      print 'Reviewed by '.$img.' '.$reviewer;
-    ?></p>
+      }?>
+    <span class = "created"><?php if ($node_privacy == 'public' || $node_privacy == 'private'){ print 'Reviewed by '; }?></span><span class="avatar"><?php if ($node_privacy == 'public' || $node_privacy == 'private') { print $img; } ?></span><span class ="name_author"><?php if ($node_privacy == 'public' || $node_privacy == 'private'){ print $reviewer; } ?></span>
+    </p>
     <p class="date_created"><?php print date('F d, Y',$node_created) ?></p>
   </div>
   <div>

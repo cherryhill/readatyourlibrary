@@ -1270,15 +1270,15 @@ function user_account_form_validate($form, &$form_state) {
     if ($error = user_validate_mail($form_state['values']['mail'])) {
       form_set_error('mail', $error);
     }
-    elseif ((bool) db_select('users')->fields('users', array('uid'))->condition('uid', $account->uid, '<>')->condition('mail', db_like($form_state['values']['mail']), 'LIKE')->range(0, 1)->execute()->fetchField()) {
-      // Format error message dependent on whether the user is logged in or not.
-      if ($GLOBALS['user']->uid) {
-        form_set_error('mail', t('The e-mail address %email is already taken.', array('%email' => $form_state['values']['mail'])));
-      }
-      else {
-        form_set_error('mail', t('The e-mail address %email is already registered. <a href="@password">Have you forgotten your password?</a>', array('%email' => $form_state['values']['mail'], '@password' => url('user/password'))));
-      }
-    }
+    // elseif ((bool) db_select('users')->fields('users', array('uid'))->condition('uid', $account->uid, '<>')->condition('mail', db_like($form_state['values']['mail']), 'LIKE')->range(0, 1)->execute()->fetchField()) {
+    //   // Format error message dependent on whether the user is logged in or not.
+    //   if ($GLOBALS['user']->uid) {
+    //     form_set_error('mail', t('The e-mail address %email is already taken.', array('%email' => $form_state['values']['mail'])));
+    //   }
+    //   else {
+    //     form_set_error('mail', t('The e-mail address %email is already registered. <a href="@password">Have you forgotten your password?</a>', array('%email' => $form_state['values']['mail'], '@password' => url('user/password'))));
+    //   }
+    // }
 
     // Make sure the signature isn't longer than the size of the database field.
     // Signatures are disabled by default, so make sure it exists first.

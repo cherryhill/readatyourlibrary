@@ -79,6 +79,11 @@ jQuery( document ).ready(function() {
     var link = me.html(t.shift()+' This Reviewer');
   });
 
+  jQuery('.node-type-booklist .flag-link-normal').each(function(){ 
+    var me = jQuery(this) , t = me.text().split(' ');
+    var link = me.html(t.shift()+' This Booklist Creator');
+  });
+
   jQuery(".flag-like").insertAfter('.like-count');
 
   /* Jquery for script for raffle entry checkbox */
