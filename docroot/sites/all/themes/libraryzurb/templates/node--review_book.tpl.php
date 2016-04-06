@@ -110,7 +110,9 @@
       ->fetchAssoc();
 
       $counts = $query['count'];
-      print 'Likes: '.$counts;
+      if(isset($counts)){
+        print 'Likes: '.$counts;
+      }
     ?>
   </div>
 </div>
@@ -183,7 +185,7 @@ $review = field_get_items('node', $node, 'body');
         $img_path = image_style_url($style, $img_uri);
         $img = "<img src='$img_path'>";
       }?>
-    <span class = "created"><?php if ($node_privacy == 'public' || $node_privacy == 'private'){ print 'Reviewed by '; }?></span><span class="avatar"><?php if ($node_privacy == 'public' || $node_privacy == 'private') { print $img; } ?></span><span class ="name_author"><?php if ($node_privacy == 'public' || $node_privacy == 'private'){ print $reviewer; } ?></span>
+    <span class = "created"><?php if ($node_privacy == 'public' || $node_privacy == 'private'){ print 'Reviewed by '; }?></span><span class="avatar"><?php if ($node_privacy == 'public' || $node_privacy == 'private') { print $img; } ?></span><span class ="name_author"><?php if ($node_privacy == 'public' || $node_privacy == 'private'){ print "<a href = 'users/public_profile/$node_uid' class = 'user_profile_node'>".$reviewer.'</a>'; } ?></span>
     </p>
     <p class="date_created"><?php print date('F d, Y',$node_created) ?></p>
   </div>
