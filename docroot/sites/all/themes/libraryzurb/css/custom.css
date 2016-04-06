@@ -7471,6 +7471,11 @@ form#user-pass div.user_pass_name:after {
 .block.review-booklist-block ul.menu li a {
   color: #000;
   font-size: 22px;
+  font-family: McLaren-Regular !important;
+  font-weight: normal !important;
+  font-style: normal !important;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
 }
 .block.review-booklist-block ul.menu li a:focus {
   outline: none;
@@ -13504,6 +13509,50 @@ body .alert-box.success a.close:hover {
   opacity: 1;
   outline: none;
 }
+.node-type-review-book .main .review_node_sidebar .like-count {
+  width: 49%;
+  display: inline-block;
+  margin-bottom: 20px;
+}
+.node-type-review-book .main .review_node_sidebar .like-count .lk-count {
+  position: relative;
+  padding-right: 34px;
+}
+.node-type-review-book .main .review_node_sidebar .like-count .lk-count:after {
+  content: "";
+  width: 30px;
+  height: 30px;
+  display: block;
+  visibility: visible;
+  position: absolute;
+  top: 0px;
+  right: 0;
+  background: url("../images/libraryzurb/smily-white.png") no-repeat;
+}
+.node-type-review-book .main .review_node_sidebar .flag-like {
+  display: none;
+}
+.node-type-review-book .main .review_node_sidebar span.flag-like {
+  width: 49%;
+  display: inline-block;
+  margin-bottom: 20px;
+}
+.node-type-review-book .main .review_node_sidebar span.flag-like a {
+  background: #267fda url("../images/libraryzurb/smily-white.png") no-repeat;
+  border-radius: 10px;
+  -webkit-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+  box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+  background-position: 77px center !important;
+  padding: 10px 50px 10px 22px;
+  color: #fff;
+  font-family: McLaren-Regular !important;
+  font-weight: normal !important;
+  font-style: normal !important;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+  font-size: 17px;
+}
 .node-type-review-book .main .review_node_sidebar .img_review table, .node-type-review-book .main .review_node_sidebar .img_review tbody {
   border: none !important;
   outline: none !important;
@@ -13534,10 +13583,205 @@ body .alert-box.success a.close:hover {
 .node-type-review-book .main article .title_review p {
   width: 100%;
   font-size: 18px;
+}
+.node-type-review-book .main article .title_review p.reviewer {
+  font-family: McLaren-Regular !important;
+  font-weight: normal !important;
+  font-style: normal !important;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+}
+.node-type-review-book .main article .title_review p.reviewer .avatar {
+  margin-right: 5px;
+  margin-left: 5px;
+}
+.node-type-review-book .main article .title_review p.date_created {
   font-family: arial !important;
   font-style: normal !important;
   font-weight: normal !important;
   -webkit-font-smoothing: antialiased !important;
+}
+.node-type-review-book .main article div p {
+  font-size: 18px;
+  font-family: arial !important;
+  font-style: normal !important;
+  font-weight: normal !important;
+  -webkit-font-smoothing: antialiased !important;
+  width: 100%;
+}
+.node-type-review-book .main article ul.links {
+  list-style: none;
+}
+.node-type-review-book .main article ul.links li {
+  margin-left: 0;
+}
+.node-type-review-book .main article ul.links li a {
+  color: #fff !important;
+  font-family: McLaren-Regular !important;
+  font-weight: normal !important;
+  font-style: normal !important;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+  background: #267fda !important;
+  border-radius: 10px;
+  padding: 9px 22px;
+  -webkit-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+  box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+  border: none;
+  text-transform: capitalize;
+}
+.node-type-review-book .main article ul.links li a:hover, .node-type-review-book .main article ul.links li a:focus {
+  color: #fff;
+  background: #267fda;
+  opacity: 1;
+  outline: none;
+}
+
+/**theming for indivisual booklist page***/
+.node-type-booklist #page-title {
+  display: none;
+}
+.node-type-booklist .booklist-title {
+  width: 100%;
+  display: inline-block;
+}
+.node-type-booklist .booklist-title .bk_title {
+  width: 70%;
+  display: inline-block;
+  vertical-align: top;
+}
+.node-type-booklist .booklist-title .book_title {
+  font-size: 21px;
+  color: #000;
+  width: 100%;
+  display: inline-block;
+  font-family: McLaren-Regular !important;
+  font-weight: normal !important;
+  font-style: normal !important;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+  text-transform: capitalize;
+}
+.node-type-booklist .booklist-title p:nth-of-type(3) {
+  font-size: 18px;
+  width: 100%;
+  display: inline-block;
+}
+.node-type-booklist .booklist-title .booklist_creator {
+  font-family: McLaren-Regular !important;
+  font-weight: normal !important;
+  font-style: normal !important;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+  width: 100%;
+  display: inline-block;
+}
+.node-type-booklist .booklist-title .booklist_creator .avatar {
+  margin-left: 5px;
+  margin-right: 5px;
+}
+.node-type-booklist .booklist-title .bk_follow_like {
+  width: 29%;
+  display: inline-block;
+  vertical-align: top;
+  text-align: right;
+}
+.node-type-booklist .booklist-title .bk_follow_like li.flag-like {
+  list-style: none;
+  display: none;
+}
+.node-type-booklist .booklist-title .bk_follow_like .like-count {
+  width: 50%;
+  display: inline-block;
+  vertical-align: top;
+}
+.node-type-booklist .booklist-title .bk_follow_like .like-count .lk-count {
+  position: relative;
+  padding-right: 34px;
+}
+.node-type-booklist .booklist-title .bk_follow_like .like-count .lk-count:after {
+  content: "";
+  width: 30px;
+  height: 30px;
+  display: block;
+  visibility: visible;
+  position: absolute;
+  top: 0px;
+  right: 0;
+  background: url("../images/libraryzurb/smily-white.png") no-repeat;
+}
+.node-type-booklist .booklist-title .bk_follow_like .flag-like {
+  width: 49%;
+  display: inline-block;
+  vertical-align: top;
+}
+.node-type-booklist .booklist-title .bk_follow_like .flag-like a {
+  background: #267fda url("../images/libraryzurb/smily-white.png") no-repeat;
+  border-radius: 10px;
+  -webkit-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+  box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+  background-position: 64px center;
+  padding: 10px 50px 10px 22px;
+  color: #fff;
+  font-family: McLaren-Regular !important;
+  font-weight: normal !important;
+  font-style: normal !important;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+  font-size: 17px;
+}
+.node-type-booklist .booklist-title .bk_follow_like .flag-like a.flagged {
+  background-position: 77px center !important;
+}
+.node-type-booklist .booklist-title .bk_follow_like .flag-like a.unflagged {
+  background-position: 64px center !important;
+}
+.node-type-booklist article {
+  width: 100%;
+  display: inline-block;
+}
+.node-type-booklist article table {
+  border: none !important;
+  outline: none !important;
+  display: inline-flex;
+  width: 30%;
+}
+.node-type-booklist article table tbody {
+  border: none !important;
+  outline: none !important;
+}
+.node-type-booklist article .node_title {
+  display: inline-flex;
+  width: 69%;
+  height: 200px;
+  vertical-align: middle;
+}
+.node-type-booklist article .links.inline {
+  list-style: none;
+}
+.node-type-booklist article .links.inline li a {
+  color: #fff !important;
+  font-family: McLaren-Regular !important;
+  font-weight: normal !important;
+  font-style: normal !important;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+  background: #267fda !important;
+  border-radius: 10px;
+  padding: 9px 22px;
+  -webkit-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+  box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+  border: none;
+  text-transform: capitalize;
+}
+.node-type-booklist article .links.inline li a:hover, .node-type-booklist article .links.inline li a:focus {
+  color: #fff;
+  background: #267fda;
+  opacity: 1;
+  outline: none;
 }
 
 /**

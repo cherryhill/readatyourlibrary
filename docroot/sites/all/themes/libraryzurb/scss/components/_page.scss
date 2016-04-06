@@ -2858,6 +2858,32 @@ display: block !important;
 		 		 @include bluebutton;
 		 	}
 		 }
+		 .like-count {
+		 	width: 49%;
+		 	display: inline-block;
+		 	margin-bottom: 20px;
+		 	.lk-count {
+		 		@include like;
+		 	}
+		 }
+		 .flag-like {
+		 	display: none;
+		 }
+		 span.flag-like {
+		 	width: 49%;
+		 	display: inline-block;
+		 	margin-bottom: 20px;
+		 	  a {
+		 	  	 background: $blue url("../images/libraryzurb/smily-white.png") no-repeat;
+		 	  	 border-radius: 10px;
+		 	  	 @include boxshadow;
+		 	  	 background-position: 77px center !important;
+		 	  	 padding: 10px 50px 10px 22px;
+		 	  	 color: $white;
+		 	  	 @include mclaren;
+		 	  	 font-size: 17px;
+		 	  }
+		 }
 		 .img_review {
 		 	table, tbody {
 		 		@include noborder; 
@@ -2887,10 +2913,142 @@ display: block !important;
 		 	p {
 		 		width: 100%;
 		 		font-size: 18px;
-		 		@include arialregular;
+		 	    &.reviewer {
+		 	    	@include mclaren;
+		 	    	 .avatar {
+		 	    	 	margin-right: 5px;
+		 	    	 	margin-left: 5px;
+		 	    	 }
+		 	    }
+		 	    &.date_created {
+		 	    	@include arialregular;
+		 	    }
 		 	}
+		 }
+		 div {
+		 	p {
+		 		font-size:  18px;
+		 		@include arialregular;
+		 		width: 100%;
+		 	}
+		 }
+		 ul.links {
+		 	list-style: none;
+		 	  li {
+		 	  	margin-left: 0;
+		 	  	  a {
+		 	  	  	@include bluebutton;
+		 	  	  }
+		 	  }
 		 }
 	}
 }
+}
+/**theming for indivisual booklist page***/
+.node-type-booklist {
+	#page-title {
+		display: none;
+	}
+	.booklist-title {
+		width: 100%;
+		display: inline-block;
+		.bk_title {
+			width: 70%;
+			display: inline-block;
+			vertical-align: top;
+		}
+		 .book_title {
+		 	font-size: 21px;
+		 	color: $black;
+		 	width: 100%;
+		 	display: inline-block;
+		 	@include mclaren;
+		 	text-transform: capitalize;
+		 }
+		 p:nth-of-type(3) {
+		 	font-size: 18px;
+		 	width: 100%;
+		 	display: inline-block;
+		 }
+		 .booklist_creator {
+		 	@include mclaren;
+		 	width: 100%;
+		 	display: inline-block;
+		 	 .avatar {
+		 	 	margin-left: 5px;
+		 	 	margin-right: 5px;
+		 	 }
+		 }
+		 .bk_follow_like {
+		 	width: 29%;
+		 	display: inline-block;
+		 	vertical-align: top;
+		 	text-align: right;
+		 	 li.flag-like {
+		 	 	list-style: none;
+		 	 	display: none;
+		 	 }
+		 	 .like-count {
+		 	 	.lk-count {
+		 	 		@include like;
+		 	 	}
+		 	 	
+		 	 	width: 50%;
+		 	 	display: inline-block;
+		 	 	vertical-align: top;
+		 	 }
+		 	 .flag-like {
+		 	 	width: 49%;
+		 	 	display: inline-block;
+		 	 	vertical-align: top;
+		 	 	  a {
+		 	 	  	background: $blue url("../images/libraryzurb/smily-white.png") no-repeat;
+		 	  	 border-radius: 10px;
+		 	  	 @include boxshadow;
+		 	  	 background-position: 64px center;
+		 	  	 &.flagged {
+		 	  	 	background-position: 77px center !important;
+		 	  	 }
+		 	  	 &.unflagged {
+		 	  	 	background-position: 64px center !important;
+		 	  	 }
+		 	  	 
+		 	  	 padding: 10px 50px 10px 22px;
+		 	  	 color: $white;
+		 	  	 @include mclaren;
+		 	  	 font-size: 17px;
+		 	 	  }
+
+		 	 }
+		 }
+
+	}
+	article {
+		width: 100%;
+		display: inline-block;
+		 table {
+		 	@include noborder;
+		 	display: inline-flex;
+		 	width: 30%;
+
+		 	  tbody {
+		 	  	@include noborder;
+		 	  }
+		 }
+		 .node_title {
+		 	display: inline-flex;
+		 	width: 69%;
+		 	height: 200px;
+		 	vertical-align: middle;
+		 }
+		 .links.inline {
+		 	list-style: none;
+		 	  li {
+		 	  	a {
+		 	  		@include bluebutton;
+		 	  	}
+		 	  }
+		 }
+	}
 }
 
