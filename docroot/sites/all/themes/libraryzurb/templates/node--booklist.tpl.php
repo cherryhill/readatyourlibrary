@@ -111,7 +111,7 @@
       }
       print $title_node.' created on '.$node_created; ?></p>
     <p class = "book_desc"><?php print $booklist_body['0']['safe_value'];?></p>
-    <p class="booklist_creator"><span class = "created"><?php if ($privacy_field == 'public' || $privacy_field == 'private'){ print 'Created by'; }?></span><span class="avatar"><?php if ($privacy_field == 'public' || $privacy_field == 'private') { print $img; } ?></span><span class ="name_author"><?php if ($privacy_field == 'public' || $privacy_field == 'private'){ print "<a href = 'users/public_profile/$node_uid' class = 'user_profile_node'>".$booklist_creator; } ?></span></p>
+    <p class="booklist_creator"><span class = "created"><?php if ($privacy_field == 'public' || $privacy_field == 'private'){ print 'Created by'; }?></span><span class="avatar"><?php if ($privacy_field == 'public' || $privacy_field == 'private') { print $img; } ?></span><span class ="name_author"><?php if ($privacy_field == 'public' || $privacy_field == 'private'){ print "<a href = 'users/public_profile/$node_uid' class = 'user_profile_node'>".$booklist_creator.'</a>'; } ?></span></p>
   </div>
   <div class="bk_follow_like">
     <div class="like-count">
@@ -127,7 +127,7 @@
 
         $counts = $query['count'];
         if(isset($counts)){
-        print 'Likes: '.$counts;}
+        print '<span class = "lk-count">Likes: </span>'.$counts;}
       ?>
     </div>
     <div class="bk_follow">

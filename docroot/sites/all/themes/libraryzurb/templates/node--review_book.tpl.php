@@ -111,7 +111,7 @@
 
       $counts = $query['count'];
       if(isset($counts)){
-        print 'Likes: '.$counts;
+        print '<span class = "lk-count">Likes: </span>'.$counts;
       }
     ?>
   </div>
