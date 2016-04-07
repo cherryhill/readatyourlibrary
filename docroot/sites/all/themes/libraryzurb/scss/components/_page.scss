@@ -2877,7 +2877,12 @@ display: block !important;
 		 	  	 background: $blue url("../images/libraryzurb/smily-white.png") no-repeat;
 		 	  	 border-radius: 10px;
 		 	  	 @include boxshadow;
-		 	  	 background-position: 77px center !important;
+		 	  	 &.unflag-action {
+		 	  	 	background-position: 77px center !important;
+		 	  	 }
+		 	  	 &.flag-action {
+		 	  	 	background-position: 64px center !important;
+		 	  	 }
 		 	  	 padding: 10px 50px 10px 22px;
 		 	  	 color: $white;
 		 	  	 @include mclaren;
@@ -2979,6 +2984,12 @@ display: block !important;
 		 	 	margin-right: 5px;
 		 	 }
 		 }
+		 .bk_follow {
+		 	margin-top: 35px;
+		 	a {
+		 		 @include bluebutton;
+		 	}
+		 }
 		 .bk_follow_like {
 		 	width: 29%;
 		 	display: inline-block;
@@ -3006,10 +3017,10 @@ display: block !important;
 		 	  	 border-radius: 10px;
 		 	  	 @include boxshadow;
 		 	  	 background-position: 64px center;
-		 	  	 &.flagged {
+		 	  	 &.unflag-action {
 		 	  	 	background-position: 77px center !important;
 		 	  	 }
-		 	  	 &.unflagged {
+		 	  	 &.flag-action {
 		 	  	 	background-position: 64px center !important;
 		 	  	 }
 		 	  	 

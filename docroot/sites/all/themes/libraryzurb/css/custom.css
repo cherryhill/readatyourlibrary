@@ -13543,7 +13543,6 @@ body .alert-box.success a.close:hover {
   -webkit-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
   -moz-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
   box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
-  background-position: 77px center !important;
   padding: 10px 50px 10px 22px;
   color: #fff;
   font-family: McLaren-Regular !important;
@@ -13552,6 +13551,12 @@ body .alert-box.success a.close:hover {
   -webkit-font-smoothing: antialiased !important;
   -moz-osx-font-smoothing: grayscale !important;
   font-size: 17px;
+}
+.node-type-review-book .main .review_node_sidebar span.flag-like a.unflag-action {
+  background-position: 77px center !important;
+}
+.node-type-review-book .main .review_node_sidebar span.flag-like a.flag-action {
+  background-position: 64px center !important;
 }
 .node-type-review-book .main .review_node_sidebar .img_review table, .node-type-review-book .main .review_node_sidebar .img_review tbody {
   border: none !important;
@@ -13681,6 +13686,31 @@ body .alert-box.success a.close:hover {
   margin-left: 5px;
   margin-right: 5px;
 }
+.node-type-booklist .booklist-title .bk_follow {
+  margin-top: 35px;
+}
+.node-type-booklist .booklist-title .bk_follow a {
+  color: #fff !important;
+  font-family: McLaren-Regular !important;
+  font-weight: normal !important;
+  font-style: normal !important;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+  background: #267fda !important;
+  border-radius: 10px;
+  padding: 9px 22px;
+  -webkit-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+  box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+  border: none;
+  text-transform: capitalize;
+}
+.node-type-booklist .booklist-title .bk_follow a:hover, .node-type-booklist .booklist-title .bk_follow a:focus {
+  color: #fff;
+  background: #267fda;
+  opacity: 1;
+  outline: none;
+}
 .node-type-booklist .booklist-title .bk_follow_like {
   width: 29%;
   display: inline-block;
@@ -13732,10 +13762,10 @@ body .alert-box.success a.close:hover {
   -moz-osx-font-smoothing: grayscale !important;
   font-size: 17px;
 }
-.node-type-booklist .booklist-title .bk_follow_like .flag-like a.flagged {
+.node-type-booklist .booklist-title .bk_follow_like .flag-like a.unflag-action {
   background-position: 77px center !important;
 }
-.node-type-booklist .booklist-title .bk_follow_like .flag-like a.unflagged {
+.node-type-booklist .booklist-title .bk_follow_like .flag-like a.flag-action {
   background-position: 64px center !important;
 }
 .node-type-booklist article {
