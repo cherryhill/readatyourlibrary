@@ -211,11 +211,21 @@
 	              @include white-text;
 			  	}
 			  	&.block-views-my-rewards-block {
-			  		.views-field-field-image-upload {
-			  			float: left;
-			  			display: table-row;
-			  			margin-right: 19px;	
+			  		.view-content .views-row {
+			  			width: 100%;
+			  			display: inline-block;
+			  			.views-field-field-image-upload {
+			  				display: inline-block;
+			  				width: 35%;
+			  				vertical-align: middle;
+			  			}
+			  			.views-field-php {
+			  				width: 62%;
+			  				display: inline-block;
+			  				vertical-align: middle;
+			  			}
 			  		}
+			  		
 			  	}
 			  	&.block-views-my-badges-block-1 {
 			  		.view {
@@ -723,6 +733,11 @@
 	 			padding: 35px 7.1% !important;
 	 			position: inherit;
 	 			 	.view {
+	 			 		.attachment {
+	 			 			.view-empty {
+	 			 				font-size: 17px;
+	 			 			}
+	 			 		}
 	 			 	  	&:before {
 	 			 	  		@include previous(50px, 50px, $top: 12px, $left: 6%);
  			 	  		}
@@ -3039,22 +3054,36 @@ display: block !important;
 		display: inline-block;
 		 table {
 		 	@include noborder;
-		 	display: inline-flex;
+		 	display: flex;
 		 	width: 30%;
+		 	float: left;
+		 	margin-bottom: 0;
 
 		 	  tbody {
 		 	  	@include noborder;
 		 	  }
 		 }
 		 .node_title {
-		 	display: inline-flex;
-		 	width: 69%;
+		 	display: flex;
+		 	width: 70%;
 		 	height: 200px;
-		 	vertical-align: middle;
+		 	align-content: center;
+		 	align-items: center;
+		 	padding-left: 10px;
+		 	  .a_name {
+		 	  	padding-left: 5px;
+		 	  }
+		 	
 		 }
 		 .links.inline {
 		 	list-style: none;
+		 	width: 100%;
+		 	display: inline-block;
 		 	  li {
+		 	  	margin-top: 40px;
+		 	  	width: 100%;
+		 	  	display: inline-block;
+		 	  	margin-left: 0;
 		 	  	a {
 		 	  		@include bluebutton;
 		 	  	}
