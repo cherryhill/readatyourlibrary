@@ -16,7 +16,7 @@ function platform_configuration_purchase_link($form, &$form_state) {
     $form['program_configuration']['pmc_start_date'] = array(
         '#title' => t('Start date'),
         '#type' => 'date_popup',
-        '#date_format' => 'd/m/Y',
+        '#date_format' => 'F d, Y',
         '#date_year_range' => '0:+10',
         '#required' => TRUE,
         '#size' => 8,
@@ -25,7 +25,7 @@ function platform_configuration_purchase_link($form, &$form_state) {
     $form['program_configuration']['pmc_end_date'] = array(
         '#title' => t('End date'),
         '#type' => 'date_popup',
-        '#date_format' => 'd/m/Y',
+        '#date_format' => 'F d, Y',
         '#date_year_range' => '0:+10',
         '#required' => TRUE,
         '#size' => 8,
