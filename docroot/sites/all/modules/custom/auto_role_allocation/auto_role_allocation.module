@@ -204,7 +204,10 @@ function generate_staff_form_submit($form, &$form_state) {
 
 function auto_role_allocation_init() {
   global $user;
-  $setting = array('auto_role_allocation' => array('currentUser' => $user->uid));
+  $current_time = time();
+  $current_date = date('Y-m-d', $current_time);
+  
+  $setting = array('auto_role_allocation' => array('currentUser' => $user->uid, 'currentDate' => $current_date));
   drupal_add_js($setting, 'setting');
   
 }

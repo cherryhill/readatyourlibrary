@@ -147,10 +147,10 @@ if(!div2.is(':empty')){
 
     var proEnd = Drupal.settings.private_msg_custom.proEnd;
     var end_string = proEnd.split('-');
-    var pro_end_date = parseInt(end_string[0] + end_string[1] + end_string[2]);  
+    var pro_end_date = parseInt(end_string[0] + end_string[1] + end_string[2]);
 
-    var now = new Date(jQuery.now());
-    var time_strings = now.toJSON().slice(0, 10);
+    var now =  Drupal.settings.auto_role_allocation.currentDate;
+    var time_strings = now.slice(0, 10);
     time_strings = time_strings.split('-');
     var now_time_strings = parseInt(time_strings[0] + time_strings[1] + time_strings[2]);
 
@@ -190,11 +190,6 @@ if(!div2.is(':empty')){
     droppable: true, // this allows things to be dropped onto the calendar !!!
         
     drop: function (date, allDay) {
-     var currentDate = new Date(jQuery.now());
-     var time_string = currentDate.toJSON().slice(0, 10);
-     time_string = time_string.split('-');
-     time_string = parseInt(time_string[0] + time_string[1] + time_string[2]);
-     //console.log(time_string); return false;
      // this function is called when something is dropped
        // var count = jQuery(".fc-event-container").children('div').length;
         //alert(count);
@@ -243,7 +238,7 @@ if(!div2.is(':empty')){
         var baseUrl = loc.protocol + "//" + loc.host + '/calendar';
 
         var currentUser = Drupal.settings.auto_role_allocation.currentUser;
-        if(time_string > event_date) {
+        if(now_time_strings > event_date) {
           jQuery.ajax({
         
             //url: 'http://localhost/playatyourlibrary/docroot/calendar',
@@ -290,10 +285,6 @@ if(!div2.is(':empty')){
         return element.description;
     },
     eventDrop: function( event, dayDelta, minuteDelta, allDay, revertFunc, jsEvent, ui, view ) {
-       var currentDateInternal = new Date(jQuery.now());
-       var time_string1 = currentDateInternal.toJSON().slice(0, 10);
-         time_string1 = time_string1.split('-');
-         time_string1 = parseInt(time_string1[0] + time_string1[1] + time_string1[2]);
          
 
        var event_date1 = event.start;
@@ -321,7 +312,7 @@ if(!div2.is(':empty')){
           
         var loc = window.location;
         var baseUrl = loc.protocol + "//" + loc.host + '/calendar';
-        if(time_string1 > event_date1) {
+        if(now_time_strings > event_date1) {
           jQuery.ajax({        
             //url: 'http://localhost/playatyourlibrary/docroot/calendar',
             url: baseUrl,
