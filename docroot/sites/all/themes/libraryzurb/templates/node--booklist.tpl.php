@@ -145,6 +145,13 @@
       $i = 0;
       foreach ($booklist_books as $key => $value) {
         $bk_title = $value['entity']->title;
+        $bk_fname_author = $value['entity']->field_author_first_name['und'][0]['safe_value'];
+        $bk_lname_author = $value['entity']->field_author_last_name['und'][0]['safe_value'];
+        $bk_catalog_link = $value['entity']->field_catalog_link['und'][0]['url'];
+
+        if(isset($bk_fname_author) || isset($bk_lname_author)){
+          $bk_author_name = '<span class = "a_name"> by '.$bk_fname_author.' '.$bk_lname_author.'</span>'; 
+        }
         $i++;
 
         if($node->status == 1) {
@@ -157,7 +164,8 @@
           $bimg =  "<img src='http://www.clker.com/cliparts/7/1/a/f/11971220941184963828dniezby_Generic_Book.svg.med.png' style='width:200px;height:200px;'>";
         }  
         print  "<table><tr><td>".$bimg."</td>"."<td>";
-        print  "</tr></table>".'<p class = "node_title">'.'<span class = "counter">'.$i.'.'.'</span>'.$bk_title.'</p>';}
+        print  "</tr></table>".'<p class = "node_title">'.'<span class = "counter">'.$i.'.'.'</span>'."<a href = '$bk_catalog_link' class='bk_clink'>".$bk_title.'</a>'.$bk_author_name.'</p>';}
+        unset($bk_author_name);
       }
     ?>
   </div>
