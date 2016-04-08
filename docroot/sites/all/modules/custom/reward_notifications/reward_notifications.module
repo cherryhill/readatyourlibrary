@@ -95,9 +95,21 @@ function claim_reward($form_state,$arg){
 	->execute()
 	->fetchAssoc();
 
-	$reward_title = $query['title'];
-	$reward_uid = $query['uid'];
-	$reward_id = $query['id'];
+	$query_raf = db_select('eck_raffle','raff')
+	->fields('raff', array('title', 'id','uid'))
+	->condition('id', $rid,'=')
+	->execute()
+	->fetchAssoc();
+
+	if(isset($reward_uid)){
+		$reward_id = $query['id'];
+		$reward_title = $query['title'];
+		$reward_uid = $query['uid'];
+	}else{
+		$reward_id = $query_raf['id'];
+		$reward_title = $query_raf['title'];
+		$reward_uid = $query_raf['uid'];
+	}
 
 	$query_sub = db_select('winner_list','win')
 	->fields('win',array('reward_status','staff_notes','reward_receieved_date'))
@@ -200,6 +212,9 @@ function claim_reward_submit($form, &$form_state){
 
 		drupal_set_message("saved");
   }
-
-  $form_state['redirect'] = 'reward-winners';
+  if(arg(2) == 'raffle'){
+  	$form_state['redirect'] = 'raffle-winners';	
+  }else{
+  	$form_state['redirect'] = 'reward-winners';
+	}
 }
