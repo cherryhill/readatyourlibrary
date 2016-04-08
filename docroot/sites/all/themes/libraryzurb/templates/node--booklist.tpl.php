@@ -163,8 +163,10 @@
         else {
           $bimg =  "<img src='http://www.clker.com/cliparts/7/1/a/f/11971220941184963828dniezby_Generic_Book.svg.med.png'>";
         }  
+        print "<div id = 'booklist_books'>";
         print  "<table><tr><td>".$bimg."</td>"."<td>";
-        print  "</tr></table>".'<p class = "node_title">'.'<span class = "counter">'.$i.'.'.'</span>'."<a href = '$bk_catalog_link' target = '_blank' class='bk_clink'>".$bk_title.'</a>'.$bk_author_name.'</p>';}
+        print  "</tr></table>".'<div class = "node_title"><p>'.'<span class = "counter">'.$i.'.'.'</span>'."<a href = '$bk_catalog_link' target = '_blank' class='bk_clink'>".$bk_title.'</a>'.$bk_author_name.'</p></div>';}
+        print "</div>";
         unset($bk_author_name);
       }
     ?>
