@@ -154,7 +154,7 @@ $catalog_lk = $clink[0]['url'];
 
 if(isset($catalog_lk)){
   $catalog_link = $clink[0]['url'];
-  $title_node_link = "<a href = '$catalog_link'>".$title_node.'</a>';
+  $title_node_link = "<a href = '$catalog_link' target = '_blank'>".$title_node.'</a>';
 }else{
   $title_node_link = $title_node;
 }
