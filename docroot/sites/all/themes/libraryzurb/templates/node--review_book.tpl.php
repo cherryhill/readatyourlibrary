@@ -151,7 +151,7 @@ $bimage = field_get_items('node', $node, 'field_book_cover_image_link');
 
 $review = field_get_items('node', $node, 'body');
 $catalog_lk = $clink[0]['url'];
-print_r($catalog_lk);
+
 if(isset($catalog_lk)){
   $catalog_link = $clink[0]['url'];
   $title_node_link = "<a href = '$catalog_link'>".$title_node.'</a>';
