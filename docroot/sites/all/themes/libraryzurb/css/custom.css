@@ -13784,11 +13784,19 @@ body .alert-box.success a.close:hover {
   width: 100%;
   display: inline-block;
 }
+.node-type-booklist article .booklist_books {
+  display: table;
+  width: 100%;
+}
+.node-type-booklist article .booklist_books #booklist_books {
+  display: table-row;
+  width: 100%;
+}
 .node-type-booklist article table {
   border: none !important;
   outline: none !important;
-  display: flex;
-  width: 30%;
+  display: table-cell;
+  width: 20%;
   float: left;
   margin-bottom: 0;
 }
@@ -13797,12 +13805,9 @@ body .alert-box.success a.close:hover {
   outline: none !important;
 }
 .node-type-booklist article .node_title {
-  display: flex;
-  width: 70%;
-  height: 200px;
-  align-content: center;
-  align-items: center;
-  padding-left: 10px;
+  display: table-cell;
+  width: 80%;
+  vertical-align: middle;
 }
 .node-type-booklist article .node_title .a_name {
   padding-left: 5px;

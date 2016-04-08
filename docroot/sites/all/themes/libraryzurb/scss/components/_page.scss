@@ -3052,10 +3052,18 @@ display: block !important;
 	article {
 		width: 100%;
 		display: inline-block;
+		  .booklist_books {
+		  	display: table;
+		  	width: 100%;
+		  	 #booklist_books {
+		  	 	display: table-row;
+		  	 	width: 100%;
+		  	 }
+		  }
 		 table {
 		 	@include noborder;
-		 	display: flex;
-		 	width: 30%;
+		 	display: table-cell;
+		 	width: 20%;
 		 	float: left;
 		 	margin-bottom: 0;
 
@@ -3064,12 +3072,9 @@ display: block !important;
 		 	  }
 		 }
 		 .node_title {
-		 	display: flex;
-		 	width: 70%;
-		 	height: 200px;
-		 	align-content: center;
-		 	align-items: center;
-		 	padding-left: 10px;
+		 	display: table-cell;
+		 	width: 80%;
+		    vertical-align: middle;
 		 	  .a_name {
 		 	  	padding-left: 5px;
 		 	  }
