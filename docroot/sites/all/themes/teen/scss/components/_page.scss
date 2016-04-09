@@ -71,7 +71,7 @@
 .section-media {
 	.block-title {
 		font-size: 28px;
-		color: $black;
+		color: $blue;
 		@include mclaren;
 		@include noborder;
 	}
@@ -95,6 +95,18 @@
 		}
 	}
 	.main {
+		#page-title {
+			margin-bottom: 35px;
+			@include brushimg(left);
+		}
+		article.node-page {
+			.field-name-body {
+				color: $blue;
+				p {
+					color: $blue;
+				}
+			}
+		}
 		.view {
 			display: table;
 			width: 100%;
@@ -132,14 +144,13 @@
 			 	 	   	    &:after {
 			 	 	   	    	content: "view album";
 			 	 	   	    	height: 38px;
-			 	 	   	    	line-height: 40px;
+			 	 	   	    	line-height: 43px;
 			 	 	   	    	width: 100%;
 			 	 	   	    	background: $yellow url('../images/libraryzurb/view-album.png') no-repeat;
 			 	 	   	    	@include desktop {
 			 	 	   	    		background-position: 37px center !important;
 			 	 	   	    	}
-			 	 	   	    	color: $black;
-			 	 	   	    	border-radius: 10px;
+			 	 	   	    	color: $blue;
 			 	 	   	    	text-align: center;
 			 	 	   	    	@include boxshadow;
 			 	 	   	    	@include mclaren;
@@ -206,7 +217,12 @@
 			right: 63.4%;
 		}
 		  	.block {
-			  	.block-title, .view-header, .view-header p  {
+			  	.block-title {
+			  		color: $yellow;
+			  		font-size: 22px;
+			  		@include mclaren;
+			  		}
+			  		.view-header, .view-header p  {
 	              font-size: 22px;
 	              @include white-text;
 			  	}
@@ -262,6 +278,14 @@
 		  	#page-title {
 		  		
 		  		display: none;
+		  	}
+		  	.view-reward-page {
+		  		.view-header {
+		  			h2 {
+		  				@include brushimg(left);
+		  				margin-bottom: 35px;
+		  			}
+		  		}
 		  	}
 	  		.view-badges {
 	  			.view-header {
@@ -400,10 +424,9 @@
 	      	color: $white;
 	      	padding-top: 25px;
 	      	padding-bottom: 25px;
-	      	border-radius: 20px;
 	      	  	.block {
 		      	  	.block-title {
-		      	  		color: $white;
+		      	  		color: $yellow;
 		      	  		font-size: 22px;
 		      	  		@include mclaren;
 		      	  	}
@@ -463,8 +486,26 @@
     }
     
   	.main {
+  		#page-title {
+  			margin-bottom: 35px;
+  			@include brushimg(left);
+  		}
  	 	.current-program {
-	    	@include orange-blue;
+ 	 		background: url("../images/libraryzurb/annocement.png") no-repeat scroll center center / cover;
+	    	@include boxshadow;
+	    	color: $white;
+	    	position: relative;
+	    	overflow: hidden;
+	    	  .block-title {
+	    	  	color: $white;
+	    	  	@include mclaren;
+	    	  	@include noborder;
+	    	  	padding: 26px 0px 25px 36px;
+	    	  	 font-size: 28px;
+	      		@include mobile{
+	     			font-size: 22px;
+	    		 }
+	    	  }
 	    		.view {
 					display: inline-block;
 		    	 	width: 100%;
@@ -504,7 +545,7 @@
 	   		 	   font-size: 28px !important;
 	   		 	}
    		 		@include mclaren;
-   		 		color: $black;
+   		 		color: $blue;
 		 		}
    		 	.view-content {
    		 		.views-row {
@@ -525,7 +566,7 @@
 		   		 		 	  		padding-bottom: 23px;
 		   		 		 	  			a {
 				   		 		 	  		@include mclaren;
-				   		 		 	  		color: $orange;
+				   		 		 	  		color: $blue;
 				   		 		 	  		font-size: 20px;
 		   		 		 	  			}
 		   		 		 	  	}
@@ -1906,7 +1947,9 @@
 		.block-block {
 			padding: 0px 6%;
 			.block-title {
-				@include white-text;
+				@include mclaren;
+				font-size: 22px;
+				color: $yellow;
 				@include noborder;
 				margin-top: 17px;
 			}
@@ -2624,6 +2667,19 @@
 .section-events {
 	
 	.main {
+		 #page-title {
+		 	@include brushimg(left);
+		 	margin-bottom: 35px;
+		 }
+		 .view-header {
+		 	color: $blue;
+		 	 p {
+		 	 	color: $blue;
+		 	 }
+		 	 a {
+		 	 	color: $msg-active;
+		 	 }
+		 }
 		.view-events {
 			.view-content {
 				h3 {
@@ -2631,8 +2687,8 @@
 					color: $white;
 					@include mclaren;
 					@include noborder;
-					background: $light-orange;
-					padding: 4px 20px 6px;
+					background: url("../images/libraryzurb/annocement.png") no-repeat scroll center center / cover;
+					padding: 7px 20px 3px;
 					margin-top: 35px;
 				}
 				.views-row {
@@ -2642,21 +2698,21 @@
 					margin-top: 10px;
 					margin-bottom: 10px;
 					 @include tablet {
-					 	border-bottom: 1px solid $black;
+					 	border-bottom: 1px solid $blue;
 					 	padding-bottom: 10px;
 					 }
 					  div {
 					  	display: table-row;
 					  	float: left;
 					  	vertical-align: middle;
-					  	color: $black;
+					  	color: $blue;
 					  	font-size: 18px;
 					  	@include arialregular;
 					  	 @include tablet {
 					  	 	float: none;
 					  	 }
 					  	   a {
-					  	   	  color: $black;
+					  	   	  color: $blue;
 					  	   	  font-size: 18px;
 					  	   	  @include arialregular;
 

@@ -127,7 +127,6 @@
 @mixin yellowbutton {
 	color: $black;
 	@include mclaren;
-	border-radius: 10px;
 	background: $yellow !important;
 	text-transform: capitalize;
 	border: none;
@@ -264,18 +263,25 @@
 		background-size: 100% !important;
 	}
 }
-@mixin brushimg {
+@mixin brushimg($alignment:null) {
 	position: relative;
 	width: 100%;
 	position: relative;
 	color: $blue;
 	z-index: 1;
-	text-align: center;
 	text-transform: capitalize;
 	height: 68px;
 	top: 10px;
 	height: 64px;
 	padding-top: 14px;
+	@include mclaren;
+	@if $alignment == left {
+		text-align: left;
+		padding-left: 35px;
+	}
+	@else {
+		text-align: center;
+	}
 	 @media screen and (max-width: 1099px) {
 	 	height: 100%;
 	 }
