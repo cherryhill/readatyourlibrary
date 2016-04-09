@@ -6264,6 +6264,10 @@ a.th {
 }
 
 /* Each individual part that can be added in */
+.sidebar .homepage-blocks .block-title, .sidebar3 .homepage-blocks .block-title, .sidebar2 .homepage-blocks .block-title {
+  color: #fdeb52 !important;
+}
+
 .pagination.pager {
   float: right;
   margin-right: 10px;
@@ -6844,11 +6848,11 @@ h1#page-title {
   -webkit-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
   -moz-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
   box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
-  padding: 10px 22px;
+  padding: 22px;
 }
 .block.block-views-event-activities-block-1 .block-title {
   font-size: 22px;
-  color: #fff;
+  color: #fdeb52;
   font-family: SpecialElite !important;
   font-weight: normal !important;
   font-style: normal !important;
@@ -7197,7 +7201,6 @@ h1#page-title {
   font-style: normal !important;
   -webkit-font-smoothing: antialiased !important;
   -moz-osx-font-smoothing: grayscale !important;
-  border-radius: 10px;
   background: #fdeb52 !important;
   text-transform: capitalize;
   border: none;
@@ -7374,12 +7377,17 @@ h1#page-title {
   position: relative;
   color: #32024e;
   z-index: 1;
-  text-align: center;
   text-transform: capitalize;
   height: 68px;
   top: 10px;
   height: 64px;
   padding-top: 14px;
+  font-family: SpecialElite !important;
+  font-weight: normal !important;
+  font-style: normal !important;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+  text-align: center;
   border: none !important;
   outline: none !important;
   font-size: 26px;
@@ -9493,7 +9501,7 @@ body .alert-box.success a.close:hover {
 /**css for photos n vedios page***/
 .section-media .block-title {
   font-size: 28px;
-  color: #000;
+  color: #32024e;
   font-family: SpecialElite !important;
   font-weight: normal !important;
   font-style: normal !important;
@@ -9522,6 +9530,63 @@ body .alert-box.success a.close:hover {
   .section-media .block-views-media-photos-videos-block-3 .view .views-row {
     width: 32%;
   }
+}
+.section-media .main #page-title {
+  margin-bottom: 35px;
+  position: relative;
+  width: 100%;
+  position: relative;
+  color: #32024e;
+  z-index: 1;
+  text-transform: capitalize;
+  height: 68px;
+  top: 10px;
+  height: 64px;
+  padding-top: 14px;
+  font-family: SpecialElite !important;
+  font-weight: normal !important;
+  font-style: normal !important;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+  text-align: left;
+  padding-left: 35px;
+  border: none !important;
+  outline: none !important;
+}
+@media screen and (max-width: 1099px) {
+  .section-media .main #page-title {
+    height: 100%;
+  }
+}
+.section-media .main #page-title:after {
+  content: "";
+  width: 100%;
+  height: 100%;
+  display: block;
+  visibility: visible;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  background: url("../images/libraryzurb/brushimage.png") repeat;
+  background-size: cover;
+  background-position: center;
+}
+@media (min-width: 768px) and (max-width: 1025px) {
+  .section-media .main #page-title:after {
+    background: #fdeb52;
+  }
+}
+@media (max-width: 767px) {
+  .section-media .main #page-title:after {
+    background: #fdeb52;
+  }
+}
+.section-media .main article.node-page .field-name-body {
+  color: #32024e;
+}
+.section-media .main article.node-page .field-name-body p {
+  color: #32024e;
 }
 .section-media .main .view {
   display: table;
@@ -9568,11 +9633,10 @@ body .alert-box.success a.close:hover {
 .section-media .main .view .views-row .flickr-citation a:after {
   content: "view album";
   height: 38px;
-  line-height: 40px;
+  line-height: 43px;
   width: 100%;
   background: #fdeb52 url("../images/libraryzurb/view-album.png") no-repeat;
-  color: #000;
-  border-radius: 10px;
+  color: #32024e;
   text-align: center;
   -webkit-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
   -moz-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
@@ -9651,7 +9715,16 @@ body .alert-box.success a.close:hover {
     right: 63.4%;
   }
 }
-.page-rewards .pull-9.sidebar .block .block-title, .page-rewards .pull-9.sidebar .block .view-header, .page-rewards .pull-9.sidebar .block .view-header p {
+.page-rewards .pull-9.sidebar .block .block-title {
+  color: #fdeb52;
+  font-size: 22px;
+  font-family: SpecialElite !important;
+  font-weight: normal !important;
+  font-style: normal !important;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+}
+.page-rewards .pull-9.sidebar .block .view-header, .page-rewards .pull-9.sidebar .block .view-header p {
   font-size: 22px;
   color: #fff !important;
   font-family: SpecialElite !important;
@@ -9697,6 +9770,57 @@ body .alert-box.success a.close:hover {
 }
 .page-rewards .main #page-title {
   display: none;
+}
+.page-rewards .main .view-reward-page .view-header h2 {
+  position: relative;
+  width: 100%;
+  position: relative;
+  color: #32024e;
+  z-index: 1;
+  text-transform: capitalize;
+  height: 68px;
+  top: 10px;
+  height: 64px;
+  padding-top: 14px;
+  font-family: SpecialElite !important;
+  font-weight: normal !important;
+  font-style: normal !important;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+  text-align: left;
+  padding-left: 35px;
+  border: none !important;
+  outline: none !important;
+  margin-bottom: 35px;
+}
+@media screen and (max-width: 1099px) {
+  .page-rewards .main .view-reward-page .view-header h2 {
+    height: 100%;
+  }
+}
+.page-rewards .main .view-reward-page .view-header h2:after {
+  content: "";
+  width: 100%;
+  height: 100%;
+  display: block;
+  visibility: visible;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  background: url("../images/libraryzurb/brushimage.png") repeat;
+  background-size: cover;
+  background-position: center;
+}
+@media (min-width: 768px) and (max-width: 1025px) {
+  .page-rewards .main .view-reward-page .view-header h2:after {
+    background: #fdeb52;
+  }
+}
+@media (max-width: 767px) {
+  .page-rewards .main .view-reward-page .view-header h2:after {
+    background: #fdeb52;
+  }
 }
 .page-rewards .main .view-badges .view-header h2 {
   font-family: SpecialElite !important;
@@ -9829,10 +9953,9 @@ body .alert-box.success a.close:hover {
   color: #fff;
   padding-top: 25px;
   padding-bottom: 25px;
-  border-radius: 20px;
 }
 .logged-in.section-programs .sidebar .block .block-title {
-  color: #fff;
+  color: #fdeb52;
   font-size: 22px;
   font-family: SpecialElite !important;
   font-weight: normal !important;
@@ -9861,7 +9984,6 @@ body .alert-box.success a.close:hover {
   font-style: normal !important;
   -webkit-font-smoothing: antialiased !important;
   -moz-osx-font-smoothing: grayscale !important;
-  border-radius: 10px;
   background: #fdeb52 !important;
   text-transform: capitalize;
   border: none;
@@ -9922,35 +10044,80 @@ body .alert-box.success a.close:hover {
   padding-left: 0;
   padding-right: 0;
 }
-.section-programs .main .current-program {
-  background: #32024e;
-  overflow: hidden;
-  color: #fff;
+.section-programs .main #page-title {
+  margin-bottom: 35px;
   position: relative;
+  width: 100%;
+  position: relative;
+  color: #32024e;
+  z-index: 1;
+  text-transform: capitalize;
+  height: 68px;
+  top: 10px;
+  height: 64px;
+  padding-top: 14px;
+  font-family: SpecialElite !important;
+  font-weight: normal !important;
+  font-style: normal !important;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+  text-align: left;
+  padding-left: 35px;
+  border: none !important;
+  outline: none !important;
+}
+@media screen and (max-width: 1099px) {
+  .section-programs .main #page-title {
+    height: 100%;
+  }
+}
+.section-programs .main #page-title:after {
+  content: "";
+  width: 100%;
+  height: 100%;
+  display: block;
+  visibility: visible;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  background: url("../images/libraryzurb/brushimage.png") repeat;
+  background-size: cover;
+  background-position: center;
+}
+@media (min-width: 768px) and (max-width: 1025px) {
+  .section-programs .main #page-title:after {
+    background: #fdeb52;
+  }
+}
+@media (max-width: 767px) {
+  .section-programs .main #page-title:after {
+    background: #fdeb52;
+  }
+}
+.section-programs .main .current-program {
+  background: url("../images/libraryzurb/annocement.png") no-repeat scroll center center/cover;
   -webkit-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
   -moz-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
   box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+  color: #fff;
+  position: relative;
+  overflow: hidden;
 }
-.section-programs .main .current-program .block-title, .section-programs .main .current-program h2 {
+.section-programs .main .current-program .block-title {
   color: #fff;
   font-family: SpecialElite !important;
   font-weight: normal !important;
   font-style: normal !important;
   -webkit-font-smoothing: antialiased !important;
   -moz-osx-font-smoothing: grayscale !important;
-  padding-top: 26px;
-  padding-bottom: 25px;
+  border: none !important;
+  outline: none !important;
+  padding: 26px 0px 25px 36px;
   font-size: 28px;
-  border-bottom: medium none;
-  margin-top: -1px;
-  padding-left: 36px;
-  z-index: 0;
-  position: relative;
-  font-weight: normal !important;
-  overflow: hidden;
 }
 @media (max-width: 767px) {
-  .section-programs .main .current-program .block-title, .section-programs .main .current-program h2 {
+  .section-programs .main .current-program .block-title {
     font-size: 22px;
   }
 }
@@ -9993,7 +10160,7 @@ body .alert-box.success a.close:hover {
   font-style: normal !important;
   -webkit-font-smoothing: antialiased !important;
   -moz-osx-font-smoothing: grayscale !important;
-  color: #000;
+  color: #32024e;
 }
 @media screen and (min-width: 980px) {
   .section-programs .main .view .view-header, .section-programs .main .view .view-header p {
@@ -10025,7 +10192,7 @@ body .alert-box.success a.close:hover {
   font-style: normal !important;
   -webkit-font-smoothing: antialiased !important;
   -moz-osx-font-smoothing: grayscale !important;
-  color: #f6511d;
+  color: #32024e;
   font-size: 20px;
 }
 .section-programs .main .view .view-content .views-row .views-field.views-field-body {
@@ -10043,7 +10210,6 @@ body .alert-box.success a.close:hover {
   font-style: normal !important;
   -webkit-font-smoothing: antialiased !important;
   -moz-osx-font-smoothing: grayscale !important;
-  border-radius: 10px;
   background: #fdeb52 !important;
   text-transform: capitalize;
   border: none;
@@ -10677,7 +10843,6 @@ body .alert-box.success a.close:hover {
   font-style: normal !important;
   -webkit-font-smoothing: antialiased !important;
   -moz-osx-font-smoothing: grayscale !important;
-  border-radius: 10px;
   background: #fdeb52 !important;
   text-transform: capitalize;
   border: none;
@@ -10775,7 +10940,6 @@ body .alert-box.success a.close:hover {
   font-style: normal !important;
   -webkit-font-smoothing: antialiased !important;
   -moz-osx-font-smoothing: grayscale !important;
-  border-radius: 10px;
   background: #fdeb52 !important;
   text-transform: capitalize;
   border: none;
@@ -10811,7 +10975,6 @@ body .alert-box.success a.close:hover {
   font-style: normal !important;
   -webkit-font-smoothing: antialiased !important;
   -moz-osx-font-smoothing: grayscale !important;
-  border-radius: 10px;
   background: #fdeb52 !important;
   text-transform: capitalize;
   border: none;
@@ -10916,7 +11079,6 @@ body .alert-box.success a.close:hover {
   font-style: normal !important;
   -webkit-font-smoothing: antialiased !important;
   -moz-osx-font-smoothing: grayscale !important;
-  border-radius: 10px;
   background: #fdeb52 !important;
   text-transform: capitalize;
   border: none;
@@ -10964,7 +11126,6 @@ body .alert-box.success a.close:hover {
   font-style: normal !important;
   -webkit-font-smoothing: antialiased !important;
   -moz-osx-font-smoothing: grayscale !important;
-  border-radius: 10px;
   background: #fdeb52 !important;
   text-transform: capitalize;
   border: none;
@@ -11087,7 +11248,6 @@ body .alert-box.success a.close:hover {
   font-style: normal !important;
   -webkit-font-smoothing: antialiased !important;
   -moz-osx-font-smoothing: grayscale !important;
-  border-radius: 10px;
   background: #fdeb52 !important;
   text-transform: capitalize;
   border: none;
@@ -11933,12 +12093,13 @@ body .alert-box.success a.close:hover {
   padding: 0px 6%;
 }
 .section-activities .sidebar3 .block-block .block-title {
-  color: #fff !important;
   font-family: SpecialElite !important;
   font-weight: normal !important;
   font-style: normal !important;
   -webkit-font-smoothing: antialiased !important;
   -moz-osx-font-smoothing: grayscale !important;
+  font-size: 22px;
+  color: #fdeb52;
   border: none !important;
   outline: none !important;
   margin-top: 17px;
@@ -11983,7 +12144,6 @@ body .alert-box.success a.close:hover {
   font-style: normal !important;
   -webkit-font-smoothing: antialiased !important;
   -moz-osx-font-smoothing: grayscale !important;
-  border-radius: 10px;
   background: #fdeb52 !important;
   text-transform: capitalize;
   border: none;
@@ -12791,7 +12951,6 @@ body .alert-box.success a.close:hover {
   font-style: normal !important;
   -webkit-font-smoothing: antialiased !important;
   -moz-osx-font-smoothing: grayscale !important;
-  border-radius: 10px;
   background: #fdeb52 !important;
   text-transform: capitalize;
   border: none;
@@ -12841,6 +13000,66 @@ body .alert-box.success a.close:hover {
 }
 
 /*css for event page*/
+.section-events .main #page-title {
+  position: relative;
+  width: 100%;
+  position: relative;
+  color: #32024e;
+  z-index: 1;
+  text-transform: capitalize;
+  height: 68px;
+  top: 10px;
+  height: 64px;
+  padding-top: 14px;
+  font-family: SpecialElite !important;
+  font-weight: normal !important;
+  font-style: normal !important;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+  text-align: left;
+  padding-left: 35px;
+  border: none !important;
+  outline: none !important;
+  margin-bottom: 35px;
+}
+@media screen and (max-width: 1099px) {
+  .section-events .main #page-title {
+    height: 100%;
+  }
+}
+.section-events .main #page-title:after {
+  content: "";
+  width: 100%;
+  height: 100%;
+  display: block;
+  visibility: visible;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  background: url("../images/libraryzurb/brushimage.png") repeat;
+  background-size: cover;
+  background-position: center;
+}
+@media (min-width: 768px) and (max-width: 1025px) {
+  .section-events .main #page-title:after {
+    background: #fdeb52;
+  }
+}
+@media (max-width: 767px) {
+  .section-events .main #page-title:after {
+    background: #fdeb52;
+  }
+}
+.section-events .main .view-header {
+  color: #32024e;
+}
+.section-events .main .view-header p {
+  color: #32024e;
+}
+.section-events .main .view-header a {
+  color: #358aa7;
+}
 .section-events .main .view-events .view-content h3 {
   font-size: 18px;
   color: #fff;
@@ -12851,8 +13070,8 @@ body .alert-box.success a.close:hover {
   -moz-osx-font-smoothing: grayscale !important;
   border: none !important;
   outline: none !important;
-  background: #f98515;
-  padding: 4px 20px 6px;
+  background: url("../images/libraryzurb/annocement.png") no-repeat scroll center center/cover;
+  padding: 7px 20px 3px;
   margin-top: 35px;
 }
 .section-events .main .view-events .view-content .views-row {
@@ -12864,7 +13083,7 @@ body .alert-box.success a.close:hover {
 }
 @media (min-width: 768px) and (max-width: 1025px) {
   .section-events .main .view-events .view-content .views-row {
-    border-bottom: 1px solid #000;
+    border-bottom: 1px solid #32024e;
     padding-bottom: 10px;
   }
 }
@@ -12872,7 +13091,7 @@ body .alert-box.success a.close:hover {
   display: table-row;
   float: left;
   vertical-align: middle;
-  color: #000;
+  color: #32024e;
   font-size: 18px;
   font-family: Raleway-Medium !important;
   font-style: normal !important;
@@ -12885,7 +13104,7 @@ body .alert-box.success a.close:hover {
   }
 }
 .section-events .main .view-events .view-content .views-row div a {
-  color: #000;
+  color: #32024e;
   font-size: 18px;
   font-family: Raleway-Medium !important;
   font-style: normal !important;
