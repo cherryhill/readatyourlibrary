@@ -78,6 +78,7 @@
 <div class="booklist-title">
   <div class="bk_title">
     <p class = "book_title"><?php 
+      global $base_url;
       $node = node_load($nid);
       $booklist_books = field_get_items('node', $node, 'field_book');
       $title_node = $node->title;
@@ -111,7 +112,7 @@
       }
       print $title_node.' created on '.$node_created; ?></p>
     <p class = "book_desc"><?php print $booklist_body['0']['safe_value'];?></p>
-    <p class="booklist_creator"><span class = "created"><?php if ($privacy_field == 'public' || $privacy_field == 'private'){ print 'Created by'; }?></span><span class="avatar"><?php if ($privacy_field == 'public' || $privacy_field == 'private') { print $img; } ?></span><span class ="name_author"><?php if ($privacy_field == 'public' || $privacy_field == 'private'){ print "<a href = 'users/public_profile/$node_uid' class = 'user_profile_node'>".$booklist_creator.'</a>'; } ?></span></p>
+    <p class="booklist_creator"><span class = "created"><?php if ($privacy_field == 'public' || $privacy_field == 'private'){ print 'Created by'; }?></span><span class="avatar"><?php if ($privacy_field == 'public' || $privacy_field == 'private') { print $img; } ?></span><span class ="name_author"><?php if ($privacy_field == 'public' || $privacy_field == 'private'){ print "<a href = '$base_url/users/public_profile/$node_uid' class = 'user_profile_node'>".$booklist_creator.'</a>'; } ?></span></p>
   </div>
   <div class="bk_follow_like">
     <div class="like-count">
