@@ -6273,48 +6273,79 @@ a.th {
   margin-right: 10px;
 }
 .pagination.pager li {
-  border-left: 1px solid transparent;
-  padding: 0;
   height: 33px;
+  width: 31px;
+  overflow: hidden;
+}
+.pagination.pager li.unavailable {
+  display: none;
 }
 .pagination.pager li.current a {
-  background: #32024e;
+  background: #73A603;
+  color: #32024e;
 }
-.pagination.pager li.current a:hover {
-  background: #32024e;
+.pagination.pager li.current a:hover, .pagination.pager li.current a:focus {
+  color: #32024e;
+  font-weight: bold;
+  background: #73A603;
+  text-decoration: none;
 }
 .pagination.pager li a {
-  background: #f6511d;
-  padding: 5px 10px;
+  background: #73A603;
+  padding: 3px 10px;
   color: #fff;
-  text-decoration: none;
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+  /*text-decoration: none;
   width: 31px;
   height: 33px;
   padding: 0 !important;
   text-decoration: none !important;
   font-size: 17px;
-  line-height: 34px;
+  line-height: 34px;  */
 }
-.pagination.pager li a:hover {
-  background: #32024e;
+.pagination.pager li a:hover, .pagination.pager li a:focus {
+  background: #73A603;
+  color: #32024e;
+  font-weight: bold;
+  text-decoration: none;
 }
 .pagination.pager li.arrow:nth-of-type(2) a {
+  position: relative;
+  background: transparent !important;
   color: transparent !important;
-  background: #f6511d url("../images/libraryzurb/left-arrow.png") no-repeat;
-  background-position: center 7px;
-  width: 31px;
-  height: 33px;
-  background-size: 18px;
-  border-radius: 12px 0px 0px 12px;
+}
+.pagination.pager li.arrow:nth-of-type(2) a:after {
+  content: "";
+  width: 0;
+  height: 0;
+  display: block;
+  visibility: visible;
+  position: absolute;
+  top: 29%;
+  right: 0;
+  border-top: 7px solid transparent;
+  border-bottom: 7px solid transparent;
+  border-right: 16px solid #73A603;
 }
 .pagination.pager li.arrow:nth-last-of-type(2) a {
+  position: relative;
+  background: transparent !important;
   color: transparent !important;
-  background: #f6511d url("../images/libraryzurb/right-arrow.png") no-repeat;
-  background-position: center 4px;
-  width: 31px;
-  height: 33px;
-  background-size: 18px;
-  border-radius: 0px 12px 12px 0px;
+}
+.pagination.pager li.arrow:nth-last-of-type(2) a:after {
+  content: "";
+  width: 0;
+  height: 0;
+  display: block;
+  visibility: visible;
+  position: absolute;
+  top: 29%;
+  left: 0;
+  border-top: 7px solid transparent;
+  border-bottom: 7px solid transparent;
+  border-left: 16px solid #73A603;
 }
 .pagination.pager li.arrow.first, .pagination.pager li.arrow.last {
   display: none;
