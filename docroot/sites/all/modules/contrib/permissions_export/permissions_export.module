@@ -1,0 +1,94 @@
+<?php
+
+/**
+ * @file
+ * Provides a easy way of exporting/importing role(s) and their associated
+ * permissions.
+ *
+ * @ author Devendra Yadav <dev.firoza@gmail.com>
+ */
+
+/**
+ * Implements hook_help().
+ */
+function permissions_export_help($path, $arg) {
+  $help = '';
+  switch ($path) {
+    case 'admin/help#permissions_export':
+      $help = check_markup(file_get_contents(dirname(__FILE__) . "/README.txt"));
+      break;
+  }
+  return $help;
+}
+
+/**
+ * Implements hook_menu().
+ */
+function permissions_export_menu() {
+  $items['admin/people/export-import-rpermissions'] = array(
+    'title' => 'Permissions Export/Import',
+    'description' => 'Page to export/import roles and their associated permissions',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('permissions_export_rpermissions_export_form'),
+    'access arguments' => array('administer users'),
+    'type' => MENU_NORMAL_ITEM,
+    'file' => 'includes/export.rpermissions.admin.inc',
+  );
+
+  $items['admin/people/export-import-rpermissions/export'] = array(
+    'title' => 'Export',
+    'type' => MENU_DEFAULT_LOCAL_TASK,
+    'weight' => -1,
+  );
+
+  $items['admin/people/export-import-rpermissions/import'] = array(
+    'title' => 'Import',
+    'description' => 'Page to import roles and their associated permissions',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('permissions_export_rpermissions_import_form'),
+    'access arguments' => array('administer users'),
+    'type' => MENU_LOCAL_TASK,
+    'file' => 'includes/import.rpermissions.admin.inc',
+  );
+
+  $items['admin/people/permissions/export-rpermissions'] = array(
+    'title' => 'Export Permissions',
+    'description' => 'Page to export/import roles and their associated permissions',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('permissions_export_rpermissions_export_form'),
+    'access arguments' => array('administer users'),
+    'type' => MENU_LOCAL_TASK,
+    'file' => 'includes/export.rpermissions.admin.inc',
+  );
+
+  $items['admin/people/permissions/import-rpermissions'] = array(
+    'title' => 'Import Permissions',
+    'description' => 'Page to import roles and their associated permissions',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('permissions_export_rpermissions_import_form'),
+    'access arguments' => array('administer users'),
+    'type' => MENU_LOCAL_TASK,
+    'file' => 'includes/import.rpermissions.admin.inc',
+  );
+
+  return $items;
+}
+
+/**
+ * Use to validate the permissions.
+ *
+ * @param array $data
+ * @return array
+ *   an array of role permissions.
+ */
+function _permissions_export_validate_rpermissions($data) {
+  $permissions = array();
+  // Get the all the permissions having module name.
+  $modules = user_permission_get_modules();
+  foreach ($data as $permission_name) {
+    if (array_key_exists($permission_name, $modules)) {
+      $permissions[] = $permission_name;
+    }
+  }
+  return $permissions;
+}

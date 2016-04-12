@@ -74,15 +74,15 @@ jQuery( document ).ready(function() {
     }
   });
 
-  jQuery('.node-type-review-book .follow_link_bookreview .flag-link-normal').each(function(){ 
-    var me = jQuery(this) , t = me.text().split(' ');
-    var link = me.html(t.shift()+' This Reviewer');
-  });
+  // jQuery('.node-type-review-book .follow_link_bookreview .flag-link-normal').each(function(){ 
+  //   var me = jQuery(this) , t = me.text().split(' ');
+  //   var link = me.html(t.shift()+' This Reviewer');
+  // });
 
-  jQuery('.node-type-booklist .bk_follow .flag-link-normal').each(function(){ 
-    var me = jQuery(this) , t = me.text().split(' ');
-    var link = me.html(t.shift()+' This Booklist Creator');
-  });
+  // jQuery('.node-type-booklist .bk_follow .flag-link-normal').each(function(){ 
+  //   var me = jQuery(this) , t = me.text().split(' ');
+  //   var link = me.html(t.shift()+' This Booklist Creator');
+  // });
 
   jQuery(".flag-like").insertAfter('.like-count');
 
