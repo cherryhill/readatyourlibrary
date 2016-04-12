@@ -14,62 +14,80 @@
 }
 .pagination.pager {
 	float: right;
-	margin-right: 10px;
+	margin-right: 10px; 
 	 li {
-	 	border-left: 1px solid transparent;
-	 	padding: 0;
 	 	height: 33px;
+	 	width: 31px;
+	 	overflow: hidden;
+	 	&.unavailable {
+	 		display: none;
+	 	}
 	 	 &.current {
 	 	  	 a {
-	 	  	 	background: $blue;
-	 	  	 	 	&:hover {
-			 	  	 	background: $blue;
+	 	  	 	background: $header;
+	 	  	 	color: $blue; 
+	 	  	 	 	&:hover, &:focus {
+			 	  	 color: $blue;
+			 	  	 font-weight: bold;
+			 	  	 background: $header;
+			 	  	 text-decoration: none;
 	 	  		 	}
 	 	  	 }
 	 	  }
 	 	  a {
-	 	  	background: $orange;
-	 	  	padding: 5px 10px;
+	 	  	 background: $header;
+	 	  	padding: 3px 10px;
 	 	  	color: $white;
-	 	  	text-decoration: none;
+	 	  	display: inline-block;
+	 	  	width: 100%;
+	 	  	height: 100%;
+	 	  	/*text-decoration: none;
 	 	  	width: 31px;
 	 	  	height: 33px;
 	 	  	padding: 0 !important;
 	 	  	text-decoration: none !important;
 	 	  	font-size: 17px;
-	 	  	line-height: 34px;
-	 	  	 &:hover {
-	 	  	 	background: $blue;
+	 	  	line-height: 34px;  */
+	 	  	 &:hover, &:focus {
+	 	  	 	background: $header;
+	 	  	 	color: $blue;
+	 	  	 	font-weight: bold;
+	 	  	 	text-decoration: none;
 	 	  	 }
 	 	  }
 	 	 
 	 	  &.arrow {
+
 	 	  	 &:nth-of-type(2) {
 	 	  	 	a {
-	 	  	 	color: transparent !important;
-	 	  	 	background: $orange url('../images/libraryzurb/left-arrow.png') no-repeat;
-	 	  	 	background-position: center 7px;
-	 	  	 	width: 31px;
-	 	  	 	height: 33px;
-	 	  	 	background-size: 18px;
-	 	  	 	border-radius: 12px 0px 0px 12px;
+	 	  		 position: relative;
+	 	  		 background: transparent !important;
+	 	  		 color: transparent !important;
+	 	  		   &:after {
+	 	  		   	 @include previous(0,0,$right: 0, $top: 29%);
+	 	  		   	 border-top: 7px solid transparent;
+	 	  		   	 border-bottom: 7px solid transparent;
+	 	  		   	 border-right: 16px solid $header;
+	 	  		   }
 	 	  	  }
 	 	  	  
 	 	  	 }
 	 	  	 &:nth-last-of-type(2) {
 	 	  	  	a {
-	 	  	    color: transparent !important;
-	 	  	 	background: $orange url('../images/libraryzurb/right-arrow.png') no-repeat;
-	 	  	 	background-position: center 4px;
-	 	  	 	width: 31px;
-	 	  	 	height: 33px;
-	 	  	 	background-size: 18px;
-	 	  	 	border-radius: 0px 12px 12px 0px;
+	 	  	    position: relative;
+	 	  		 background: transparent !important;
+	 	  		 color: transparent !important;
+	 	  		   &:after {
+	 	  		   	 @include previous(0,0,$left: 0, $top: 29%);
+	 	  		   	 border-top: 7px solid transparent;
+	 	  		   	 border-bottom: 7px solid transparent;
+	 	  		   	 border-left: 16px solid $header;
+	 	  		   }
 
 	 	  	  	}
 	 	  	  }
 	 	  	&.first, &.last {
-	 	  		display: none;
+	 	  		 display: none; 
 	 	  	}
 	 	  }
 	 }
