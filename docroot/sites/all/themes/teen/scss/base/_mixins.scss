@@ -5,6 +5,62 @@
 //
 // Mixin: Base Utility
 //
+
+ //css before and after
+ @mixin previous($width, $height, $top: null, $bottom: null, $left: null, $right: null) {
+  content: "";
+  width: $width;
+  height: $height;
+  display: block;
+  visibility: visible;
+  position: absolute;
+  top: $top;
+  bottom: $bottom;
+  left: $left;
+  right: $right;
+}
+// generic transform
+
+@mixin rotate($degrees, $dir: null ) {
+    
+    @if $dir == "Y" {
+    -webkit-transform: rotateY($degrees);
+    -moz-transform: rotateY($degrees);
+    -ms-transform: rotateY($degrees);
+    -o-transform: rotateY($degrees);
+    transform: rotateY($degrees);
+    } @else if $dir == "X" {
+    -webkit-transform: rotateX($degrees);
+    -moz-transform: rotateX($degrees);
+    -ms-transform: rotateX($degrees);
+    -o-transform: rotateX($degrees);
+    transform: rotateX($degrees);
+    } @else {
+      -webkit-transform: rotate($degrees);
+      -moz-transform: rotate($degrees);
+      -ms-transform: rotate($degrees);
+      -o-transform: rotate($degrees);
+      transform: rotate($degrees);
+    } 
+}
+//media query
+@mixin tablet {
+  @media (min-width: #{$tablet-width}) and (max-width: #{$desktop-width - 1px}) {
+    @content;
+  }
+}
+@mixin desktop {
+   @media (min-width: #{$desktop-width}) {
+    @content;
+  }
+}
+@mixin mobile {
+   @media (max-width: #{$mobile-width}) {
+    @content;
+  }
+}
+//for optimise sass coding
+
 @mixin stage {
   position: absolute;
   left: -999em;
@@ -13,4 +69,235 @@
 @mixin unstage {
   position: static;
   left: auto;
+}
+@mixin boxshadow {
+ 	 -webkit-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+  	-moz-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+  	box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+ }
+ @mixin mclaren {
+	font-family: SpecialElite !important;
+	font-weight: normal !important;
+	font-style: normal !important;
+	-webkit-font-smoothing: antialiased !important;
+	-moz-osx-font-smoothing: grayscale !important;
+}
+@mixin noborder {
+	border: none !important;
+	outline: none !important;
+}
+@mixin arialregular {
+	font-family: Raleway-Medium !important;
+	font-style: normal !important;
+	font-weight: normal !important;
+	-webkit-font-smoothing: antialiased !important;
+}
+@mixin arialbold {
+	font-family: Raleway-Bold !important;
+	font-style: normal !important;
+	font-weight: normal !important;
+	-webkit-font-smoothing: antialiased !important;
+	-moz-osx-font-smoothing: grayscale !important;
+	-moz-font-smoothing: grayscale !important;
+}
+@mixin orange-blue {
+	background: $blue;
+    overflow: hidden;
+    color: $white;
+    position: relative;
+    @include boxshadow;
+      .block-title, h2 {
+       	color: $white;
+      	@include mclaren;
+		padding-top: 26px;
+		padding-bottom: 25px;
+	    font-size: 28px;
+	      @include mobile{
+	     	font-size: 22px;
+	     }
+		border-bottom: medium none;
+		margin-top: -1px;
+		padding-left:36px;
+		z-index: 0;
+		position: relative;
+		font-weight: normal !important;
+		overflow: hidden;
+     }
+}
+@mixin yellowbutton {
+	color: $black;
+	@include mclaren;
+	background: $yellow !important;
+	text-transform: capitalize;
+	border: none;
+	padding: 10px 20px 7px;
+	@include boxshadow;
+	 &:hover {
+	 	color: $black;
+	 	background: $button-hover !important;
+	 	opacity: 1;
+	 	outline: none;
+	 	text-decoration: none !important;
+	 }
+	 &:focus, &.active {
+	 	color: $black;
+	 	background: $button-active !important;
+	 	outline: 1;
+	 	opacity: 1;
+	 	text-decoration: none !important;
+	 }
+
+}
+@mixin bluebutton($font-size: null) {
+	color: $white !important;
+	@include mclaren;
+	background: $blue !important;
+	padding: 10px 20px 7px;
+	@include boxshadow;
+	border: none;
+	text-transform: capitalize;
+	font-size: $font-size;
+	  &:hover, &:focus {
+	 	color: $white;
+	 	background: $blue;
+	 	opacity: 1;
+	 	outline: none;
+	 }
+
+}
+@mixin yellowbackground {
+	color: $white;
+	background: $yellow;
+	@include boxshadow;
+
+}
+@mixin like {
+	position: relative;
+	padding-right: 34px;
+ &:after {
+ 	@include previous(30px, 30px, $right: 0, $top: 0px);
+ 	 	background: url('../images/libraryzurb/smily-white.png') no-repeat;
+ 	 }
+}
+@mixin bluebackground {
+	background: $blue !important;
+    overflow: hidden;
+    color: $white;
+    position: relative;
+    @include boxshadow;
+}
+@mixin waveimg($ch-font: null) {
+		color: $white;
+      	@include mclaren;
+		padding-top: 26px;
+		padding-bottom: 25px;
+	    
+	     @if $ch-font == "C" {
+	     	font-size: 22px;
+	     	  @include mobile {
+	     	  	font-size: 17px;
+	     	  }
+	     }
+	     @else {
+	     	font-size: 28px;
+	     @include mobile {
+	     	font-size: 22px;
+	     }
+	     }
+		border-bottom: medium none;
+		margin-top: -1px;
+		padding-left:36px;
+		z-index: 0;
+		overflow: hidden;
+    }
+@mixin nobackground {
+	background: none !important;
+}
+@mixin bluebox {
+	background: $blue !important;
+	box-shadow: none !important;
+	opacity: 1 !important;
+}
+@mixin counter {
+	counter-increment: section;
+	content: " " counter(section, decimal) ". ";
+	padding-right: 5px;
+	display: inline-block;
+}
+@mixin animate {
+	-webkit-transition-duration: 0.8s;
+	-moz-transition-duration: 0.8s;
+	-o-transition-duration: 0.8s;
+	transition-duration: 0.8s;
+
+	-webkit-transition-property: -webkit-transform;
+	-moz-transition-property: -moz-transform;
+	-o-transition-property: -o-transform;
+	transition-property: transform; 
+}
+@mixin block {
+	margin-bottom: 35px;
+	@include mobile {
+	     	margin-bottom: 25px;
+	     }
+}
+@mixin white-text {
+	color: $white !important;
+	@include mclaren;
+}
+@mixin black-text {
+	color: $black;
+	@include arialregular;
+	opacity: 1 !important;
+}
+@mixin blue-text {
+	color: $blue;
+	@include mclaren;
+	  &:hover {
+	  	color: $blue;
+	  }
+
+}
+@mixin bck_size_tablet {
+	@include tablet {
+		background-size: 100% !important;
+	}
+}
+@mixin brushimg($alignment:null) {
+	position: relative;
+	width: 100%;
+	position: relative;
+	color: $blue;
+	z-index: 1;
+	text-transform: capitalize;
+	height: 68px;
+	top: 10px;
+	height: 64px;
+	padding-top: 14px;
+	@include mclaren;
+	@if $alignment == left {
+		text-align: left;
+		padding-left: 35px;
+	}
+	@else {
+		text-align: center;
+	}
+	 @media screen and (max-width: 1099px) {
+	 	height: 100%;
+	 }
+	@include noborder;
+	   &:after {
+	    @include previous(100%, 100%, $left: 0, $top: 0);
+	    z-index: -1;
+	    background: url('../images/libraryzurb/brushimage.png') repeat;
+	    background-size: cover;
+	    background-position: center;
+	      @include tablet {
+	      	background: $yellow;
+	      }
+	      @include mobile {
+	      	background: $yellow;
+	      }
+
+	   }
 }
