@@ -13792,6 +13792,11 @@ body .alert-box.success a.close:hover {
   display: table-row;
   width: 100%;
 }
+@media (max-width: 767px) {
+  .node-type-booklist article .booklist_books #booklist_books {
+    display: inline-block;
+  }
+}
 .node-type-booklist article table {
   border: none !important;
   outline: none !important;
@@ -13803,10 +13808,24 @@ body .alert-box.success a.close:hover {
   border: none !important;
   outline: none !important;
 }
+.node-type-booklist article table tbody img {
+  width: 81px;
+}
 .node-type-booklist article .node_title {
   display: table-cell;
   width: 80%;
   vertical-align: middle;
+  position: relative;
+}
+@media (min-width: 768px) and (max-width: 1025px) {
+  .node-type-booklist article .node_title {
+    left: -6%;
+  }
+}
+@media (min-width: 1026px) {
+  .node-type-booklist article .node_title {
+    left: -8%;
+  }
 }
 .node-type-booklist article .node_title .a_name {
   padding-left: 5px;
