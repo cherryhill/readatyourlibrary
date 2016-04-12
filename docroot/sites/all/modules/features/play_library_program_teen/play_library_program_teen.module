@@ -135,7 +135,7 @@ function play_library_program_teen_field_widget_form_alter(&$element, &$form_sta
 
 				 // }
 
-					if ($entity_key == 'node' && ($bundle_options['label'] == 'Booklist' || $bundle_options['label'] == 'Book Review' || $bundle_options['label'] == 'Video review teen' || $bundle_options['label'] == 'Video game reviews' || $bundle_options['label'] == 'Music reviews')) {
+					if ($entity_key == 'node' && ($bundle_options['label'] == 'Booklist' || $bundle_options['label'] == 'Book Review' || $bundle_options['label'] == 'Movie Review' || $bundle_options['label'] == 'Video Game Review' || $bundle_options['label'] == 'Music Review' || $bundle_options['label'] == 'Activity Review')) {
 						$options["node_update|node|{$bundle_key}|published"] = t("@bundle is set to published", array('@bundle' => $bundle_options['label']));
 					}
 				}
@@ -231,7 +231,7 @@ function play_library_program_teen_node_update($node) {
 	if ($node->status == NODE_PUBLISHED) {
 		$current_node = node_load($node->nid);
 		if ($current_node->status !== $node->status) {
-			if($node->type == 'review_book' || $node->type == 'video_review_teen' || $node->type == 'video_game_reviews' || $node->type == 'music_reviews') {
+			if($node->type == 'review_book' || $node->type == 'review_activity' || $node->type == 'movie_review' || $node->type == 'music_review' || $node->type == 'video_game_review') {
               $hook = "node_update|node|{$node->type}|published";
 			  _play_library_program_invoke_activity_entry_hooks($node, 'node', $hook);
 			  $node->workbench_moderation['updating_live_revision'] = 1;
