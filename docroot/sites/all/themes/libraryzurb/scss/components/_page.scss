@@ -1242,7 +1242,9 @@
  
 .page-reviews, .page-booklists  {
 	.views-field-field-user-avatar {
-		margin-left: 5px !important;
+		margin-left: 6px !important;
+		position: relative;
+		bottom: 9px;
 	}
   	#page-title {
   	 	@include black-text;
@@ -1843,10 +1845,12 @@
 			  			 	  	color: $black;
 				  			 	  	 &:first-child {
 				  			 	  	 	padding-right: 5px;
+				  			 	  	 	position: relative;
+				  			 	  	 	top: 5px;
 				  			 	  	 }
 		  			 	  	 	&.field-name-field-avatar-image {
 			  			 	  	 	position: relative;
-			  			 	  	 	bottom: 10px;
+			  			 	  	 	bottom: 3px;
 				  			 	  	 	 img {
 				  			 	  	 	 	@include boxshadow;
 				  			 	  	 	 	margin-right: 5px;
