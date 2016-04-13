@@ -6272,6 +6272,8 @@ a.th {
   border-left: 1px solid transparent;
   padding: 0;
   height: 33px;
+  width: 31px;
+  overflow: hidden;
 }
 .pagination.pager li.current a {
   background: #267fda;
@@ -6284,8 +6286,8 @@ a.th {
   padding: 5px 10px;
   color: #fff;
   text-decoration: none;
-  width: 31px;
-  height: 33px;
+  width: 100%;
+  height: 100%;
   padding: 0 !important;
   text-decoration: none !important;
   font-size: 17px;
@@ -6296,19 +6298,15 @@ a.th {
 }
 .pagination.pager li.arrow:nth-of-type(2) a {
   color: transparent !important;
-  background: #f6511d url("../images/libraryzurb/left-arrow.png") no-repeat !important;
+  background: #f6511d url("../images/libraryzurb/left-arrow.png") no-repeat;
   background-position: center 7px;
-  width: 31px;
-  height: 33px;
   background-size: 18px;
   border-radius: 12px 0px 0px 12px;
 }
 .pagination.pager li.arrow:nth-last-of-type(2) a {
   color: transparent !important;
-  background: #f6511d url("../images/libraryzurb/right-arrow.png") no-repeat !important;
+  background: #f6511d url("../images/libraryzurb/right-arrow.png") no-repeat;
   background-position: center 4px;
-  width: 31px;
-  height: 33px;
   background-size: 18px;
   border-radius: 0px 12px 12px 0px;
 }
