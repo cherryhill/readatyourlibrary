@@ -149,9 +149,10 @@ if(!div2.is(':empty')){
     var end_string = proEnd.split('-');
     var pro_end_date = parseInt(end_string[0] + end_string[1] + end_string[2]);
 
-    var now =  Drupal.settings.auto_role_allocation.currentDate;
-    var time_strings = now.slice(0, 10);
-    time_strings = time_strings.split('-');
+    var currentDate =  Drupal.settings.auto_role_allocation.currentDate;
+
+    var time_strings = currentDate.split('-');
+
     var now_time_strings = parseInt(time_strings[0] + time_strings[1] + time_strings[2]);
 
 
@@ -238,7 +239,7 @@ if(!div2.is(':empty')){
         var baseUrl = loc.protocol + "//" + loc.host + '/calendar';
 
         var currentUser = Drupal.settings.auto_role_allocation.currentUser;
-        if(now_time_strings > event_date) {
+        if(now_time_strings >= event_date) {
           jQuery.ajax({
         
             //url: 'http://localhost/playatyourlibrary/docroot/calendar',
@@ -312,7 +313,7 @@ if(!div2.is(':empty')){
           
         var loc = window.location;
         var baseUrl = loc.protocol + "//" + loc.host + '/calendar';
-        if(now_time_strings > event_date1) {
+        if(now_time_strings >= event_date1) {
           jQuery.ajax({        
             //url: 'http://localhost/playatyourlibrary/docroot/calendar',
             url: baseUrl,
