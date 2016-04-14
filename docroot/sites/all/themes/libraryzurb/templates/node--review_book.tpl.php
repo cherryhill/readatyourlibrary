@@ -76,14 +76,7 @@
  */
 ?>
 <div class="review_node_sidebar">
-  <div class="follow_link_bookreview">
-  <?php 
-  $node = node_load($nid);
-  $node_privacy_field = field_get_items('node', $node, 'field_privacy_settings');
-  $node_privacy = $node_privacy_field[0]['value'];
-
-  if($node_privacy === 'public'){ print flag_create_link('follow', $node->uid); } ?>
-  </div>
+  
   <div class="img_review"><?php
   if($node->status == 1) {
 
@@ -199,6 +192,14 @@ if(isset($catalog_lk)){
     <?php print $review['0']['safe_value'] ?>
   </div>
 </div>
+<div class="follow_link_bookreview">
+  <?php 
+  $node = node_load($nid);
+  $node_privacy_field = field_get_items('node', $node, 'field_privacy_settings');
+  $node_privacy = $node_privacy_field[0]['value'];
+
+  if($node_privacy === 'public'){ print flag_create_link('follow', $node->uid); } ?>
+  </div>
 
   <?php if (!empty($content['field_tags']) && !$is_front): ?>
     <?php print render($content['field_tags']) ?>

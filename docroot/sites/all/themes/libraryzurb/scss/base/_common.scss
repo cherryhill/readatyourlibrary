@@ -209,3 +209,21 @@ h1#page-title {
   		}
   	}
   }
+  .blue-button {
+  	color: $white !important;
+	@include mclaren;
+	background: $blue !important;
+	border-radius: 10px;
+	padding: 9px 22px;
+	@include boxshadow;
+	border: none;
+	font-size: 17px;
+	display: inline-block;
+	text-transform: capitalize;
+	  &:hover, &:focus {
+	 	color: $white;
+	 	background: $blue;
+	 	opacity: 1;
+	 	outline: none;
+	 }
+  }
