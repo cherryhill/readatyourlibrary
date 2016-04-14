@@ -91,23 +91,7 @@
   print  "<table><tr><td>".$bimg."</td>";
   print  "</tr></table>";}?>
   </div>
-  <div class="like-count">
-    <?php
-      $nid_node = $node->nid;
-      $title_node = $node->title;
-
-      $query = db_select('flag_counts','count')
-      ->fields('count',array('count'))
-      ->condition('entity_id',$nid_node)
-      ->execute()
-      ->fetchAssoc();
-
-      $counts = $query['count'];
-      if(isset($counts)){
-        print '<span class = "lk-count">Likes: </span>'.$counts;
-      }
-    ?>
-  </div>
+  
 </div>
 <article id="node-<?php print $node->nid; ?>" class="<?php print $classes; ?>"<?php print $attributes; ?>>
   <?php print render($title_prefix); ?>
@@ -192,14 +176,8 @@ if(isset($catalog_lk)){
     <?php print $review['0']['safe_value'] ?>
   </div>
 </div>
-<div class="follow_link_bookreview">
-  <?php 
-  $node = node_load($nid);
-  $node_privacy_field = field_get_items('node', $node, 'field_privacy_settings');
-  $node_privacy = $node_privacy_field[0]['value'];
+<div class = "reviewbook_footer">
 
-  if($node_privacy === 'public'){ print flag_create_link('follow', $node->uid); } ?>
-  </div>
 
   <?php if (!empty($content['field_tags']) && !$is_front): ?>
     <?php print render($content['field_tags']) ?>
@@ -207,5 +185,31 @@ if(isset($catalog_lk)){
 
   <?php print render($content['links']); ?>
   <?php print render($content['comments']); ?>
+  <div class="follow_link_bookreview">
+  <?php 
+  $node = node_load($nid);
+  $node_privacy_field = field_get_items('node', $node, 'field_privacy_settings');
+  $node_privacy = $node_privacy_field[0]['value'];
+
+  if($node_privacy === 'public'){ print flag_create_link('follow', $node->uid); } ?>
+  </div>
+<div class="like-count">
+    <?php
+      $nid_node = $node->nid;
+      $title_node = $node->title;
+
+      $query = db_select('flag_counts','count')
+      ->fields('count',array('count'))
+      ->condition('entity_id',$nid_node)
+      ->execute()
+      ->fetchAssoc();
+
+      $counts = $query['count'];
+      if(isset($counts)){
+        print '<span class = "lk-count">Likes: </span>'.$counts;
+      }
+    ?>
+  </div>
+  </div>
 
 </article>
