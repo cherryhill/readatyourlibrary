@@ -6501,6 +6501,33 @@ form#user-pass div.user_pass_name:after {
   color: #cc0d25;
 }
 
+.blue-button {
+  color: #fff !important;
+  font-family: McLaren-Regular !important;
+  font-weight: normal !important;
+  font-style: normal !important;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+  text-rendering: optimizeLegibility !important;
+  -moz-font-smoothing: grayscale !important;
+  background: #267fda !important;
+  border-radius: 10px;
+  padding: 9px 22px;
+  -webkit-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+  box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+  border: none;
+  font-size: 17px;
+  display: inline-block;
+  text-transform: capitalize;
+}
+.blue-button:hover, .blue-button:focus {
+  color: #fff;
+  background: #267fda;
+  opacity: 1;
+  outline: none;
+}
+
 .admin-menu .fixed {
   top: 1.8125em;
 }
@@ -13753,16 +13780,10 @@ body .alert-box.success a.close:hover {
 .node-type-review-book #page-title {
   display: none;
 }
-.node-type-review-book .main .review_node_sidebar {
-  width: 30%;
-  display: inline-block;
-  vertical-align: top;
-  margin-top: 20px;
+.node-type-review-book .main .follow_link_bookreview {
+  margin-bottom: 30px;
 }
-.node-type-review-book .main .review_node_sidebar .follow_link_bookreview {
-  padding-left: 30px;
-}
-.node-type-review-book .main .review_node_sidebar .follow_link_bookreview a {
+.node-type-review-book .main .follow_link_bookreview a {
   color: #fff !important;
   font-family: McLaren-Regular !important;
   font-weight: normal !important;
@@ -13780,11 +13801,16 @@ body .alert-box.success a.close:hover {
   border: none;
   text-transform: capitalize;
 }
-.node-type-review-book .main .review_node_sidebar .follow_link_bookreview a:hover, .node-type-review-book .main .review_node_sidebar .follow_link_bookreview a:focus {
+.node-type-review-book .main .follow_link_bookreview a:hover, .node-type-review-book .main .follow_link_bookreview a:focus {
   color: #fff;
   background: #267fda;
   opacity: 1;
   outline: none;
+}
+.node-type-review-book .main .review_node_sidebar {
+  width: 30%;
+  display: inline-block;
+  vertical-align: top;
 }
 .node-type-review-book .main .review_node_sidebar .like-count {
   width: 49%;
@@ -13977,33 +14003,6 @@ body .alert-box.success a.close:hover {
   margin-left: 5px;
   margin-right: 5px;
 }
-.node-type-booklist .booklist-title .bk_follow {
-  margin-top: 35px;
-}
-.node-type-booklist .booklist-title .bk_follow a {
-  color: #fff !important;
-  font-family: McLaren-Regular !important;
-  font-weight: normal !important;
-  font-style: normal !important;
-  -webkit-font-smoothing: antialiased !important;
-  -moz-osx-font-smoothing: grayscale !important;
-  text-rendering: optimizeLegibility !important;
-  -moz-font-smoothing: grayscale !important;
-  background: #267fda !important;
-  border-radius: 10px;
-  padding: 9px 22px;
-  -webkit-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
-  -moz-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
-  box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
-  border: none;
-  text-transform: capitalize;
-}
-.node-type-booklist .booklist-title .bk_follow a:hover, .node-type-booklist .booklist-title .bk_follow a:focus {
-  color: #fff;
-  background: #267fda;
-  opacity: 1;
-  outline: none;
-}
 .node-type-booklist .booklist-title .bk_follow_like {
   width: 29%;
   display: inline-block;
@@ -14062,6 +14061,34 @@ body .alert-box.success a.close:hover {
 }
 .node-type-booklist .booklist-title .bk_follow_like .flag-like a.flag-action {
   background-position: 64px center !important;
+}
+.node-type-booklist .bk_follow {
+  margin: 35px 0 10px;
+}
+.node-type-booklist .bk_follow a {
+  color: #fff !important;
+  font-family: McLaren-Regular !important;
+  font-weight: normal !important;
+  font-style: normal !important;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+  text-rendering: optimizeLegibility !important;
+  -moz-font-smoothing: grayscale !important;
+  background: #267fda !important;
+  border-radius: 10px;
+  padding: 9px 22px;
+  -webkit-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+  box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+  border: none;
+  text-transform: capitalize;
+  display: inline-block;
+}
+.node-type-booklist .bk_follow a:hover, .node-type-booklist .bk_follow a:focus {
+  color: #fff;
+  background: #267fda;
+  opacity: 1;
+  outline: none;
 }
 .node-type-booklist article {
   width: 100%;

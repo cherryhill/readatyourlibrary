@@ -2866,17 +2866,17 @@ display: block !important;
 		display: none;
 	}
 	.main {
-	.review_node_sidebar {
-		width: 30%;
-		display: inline-block;
-		vertical-align: top;
-		margin-top: 20px;
-		 .follow_link_bookreview {
-		 	padding-left: 30px;
+		.follow_link_bookreview {
+			margin-bottom: 30px;
 		 	a {
 		 		 @include bluebutton;
 		 	}
 		 }
+	.review_node_sidebar {
+		width: 30%;
+		display: inline-block;
+		vertical-align: top;
+		 
 		 .like-count {
 		 	width: 49%;
 		 	display: inline-block;
@@ -3003,12 +3003,7 @@ display: block !important;
 		 	 	margin-right: 5px;
 		 	 }
 		 }
-		 .bk_follow {
-		 	margin-top: 35px;
-		 	a {
-		 		 @include bluebutton;
-		 	}
-		 }
+		 
 		 .bk_follow_like {
 		 	width: 29%;
 		 	display: inline-block;
@@ -3053,6 +3048,14 @@ display: block !important;
 		 }
 
 	}
+	.bk_follow {
+		 	margin: 35px 0 10px;
+
+		 	a {
+		 		 @include bluebutton;
+		 		 display: inline-block;
+		 	}
+		 }
 	article {
 		width: 100%;
 		display: inline-block;
