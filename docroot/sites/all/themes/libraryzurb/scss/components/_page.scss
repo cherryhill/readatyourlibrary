@@ -2866,21 +2866,25 @@ display: block !important;
 		display: none;
 	}
 	.main {
+		.reviewbook_footer {
+			width: 100%;
+			display: inline-block;
+			 ul.links {
+			 	float: left;
+			 	padding-right: 10px;
+			 }
+		}
 		.follow_link_bookreview {
-			margin-bottom: 30px;
+			float: left;
+			padding-right: 10px;
 		 	a {
 		 		 @include bluebutton;
 		 	}
 		 }
-	.review_node_sidebar {
-		width: 30%;
-		display: inline-block;
-		vertical-align: top;
-		 
 		 .like-count {
-		 	width: 49%;
 		 	display: inline-block;
-		 	margin-bottom: 20px;
+		 	float: left;
+		 	padding-right: 10px;
 		 	.lk-count {
 		 		@include like;
 		 	}
@@ -2889,9 +2893,9 @@ display: block !important;
 		 	display: none;
 		 }
 		 span.flag-like {
-		 	width: 49%;
 		 	display: inline-block;
-		 	margin-bottom: 20px;
+		    float: left;
+		    padding-right: 10px;
 		 	  a {
 		 	  	 background: $blue url("../images/libraryzurb/smily-white.png") no-repeat;
 		 	  	 border-radius: 10px;
@@ -2908,6 +2912,12 @@ display: block !important;
 		 	  	 font-size: 17px;
 		 	  }
 		 }
+	.review_node_sidebar {
+		width: 30%;
+		display: inline-block;
+		vertical-align: top;
+		 
+		 
 		 .img_review {
 		 	table, tbody {
 		 		@include noborder; 

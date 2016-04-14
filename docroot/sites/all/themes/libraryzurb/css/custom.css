@@ -6528,6 +6528,10 @@ form#user-pass div.user_pass_name:after {
   outline: none;
 }
 
+.l-messages div.messages.status {
+  margin-bottom: 15px !important;
+}
+
 .admin-menu .fixed {
   top: 1.8125em;
 }
@@ -13780,8 +13784,17 @@ body .alert-box.success a.close:hover {
 .node-type-review-book #page-title {
   display: none;
 }
+.node-type-review-book .main .reviewbook_footer {
+  width: 100%;
+  display: inline-block;
+}
+.node-type-review-book .main .reviewbook_footer ul.links {
+  float: left;
+  padding-right: 10px;
+}
 .node-type-review-book .main .follow_link_bookreview {
-  margin-bottom: 30px;
+  float: left;
+  padding-right: 10px;
 }
 .node-type-review-book .main .follow_link_bookreview a {
   color: #fff !important;
@@ -13807,21 +13820,16 @@ body .alert-box.success a.close:hover {
   opacity: 1;
   outline: none;
 }
-.node-type-review-book .main .review_node_sidebar {
-  width: 30%;
+.node-type-review-book .main .like-count {
   display: inline-block;
-  vertical-align: top;
+  float: left;
+  padding-right: 10px;
 }
-.node-type-review-book .main .review_node_sidebar .like-count {
-  width: 49%;
-  display: inline-block;
-  margin-bottom: 20px;
-}
-.node-type-review-book .main .review_node_sidebar .like-count .lk-count {
+.node-type-review-book .main .like-count .lk-count {
   position: relative;
   padding-right: 34px;
 }
-.node-type-review-book .main .review_node_sidebar .like-count .lk-count:after {
+.node-type-review-book .main .like-count .lk-count:after {
   content: "";
   width: 30px;
   height: 30px;
@@ -13832,15 +13840,15 @@ body .alert-box.success a.close:hover {
   right: 0;
   background: url("../images/libraryzurb/smily-white.png") no-repeat;
 }
-.node-type-review-book .main .review_node_sidebar .flag-like {
+.node-type-review-book .main .flag-like {
   display: none;
 }
-.node-type-review-book .main .review_node_sidebar span.flag-like {
-  width: 49%;
+.node-type-review-book .main span.flag-like {
   display: inline-block;
-  margin-bottom: 20px;
+  float: left;
+  padding-right: 10px;
 }
-.node-type-review-book .main .review_node_sidebar span.flag-like a {
+.node-type-review-book .main span.flag-like a {
   background: #267fda url("../images/libraryzurb/smily-white.png") no-repeat;
   border-radius: 10px;
   -webkit-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
@@ -13857,11 +13865,16 @@ body .alert-box.success a.close:hover {
   -moz-font-smoothing: grayscale !important;
   font-size: 17px;
 }
-.node-type-review-book .main .review_node_sidebar span.flag-like a.unflag-action {
+.node-type-review-book .main span.flag-like a.unflag-action {
   background-position: 77px center !important;
 }
-.node-type-review-book .main .review_node_sidebar span.flag-like a.flag-action {
+.node-type-review-book .main span.flag-like a.flag-action {
   background-position: 64px center !important;
+}
+.node-type-review-book .main .review_node_sidebar {
+  width: 30%;
+  display: inline-block;
+  vertical-align: top;
 }
 .node-type-review-book .main .review_node_sidebar .img_review table, .node-type-review-book .main .review_node_sidebar .img_review tbody {
   border: none !important;
