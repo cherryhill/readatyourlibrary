@@ -3058,23 +3058,35 @@ display: block !important;
 		  	 #booklist_books {
 		  	 	display: table-row;
 		  	 	width: 100%;
+		  	 	@include mobile {
+		  	 		display: inline-block;
+		  	 	}
 		  	 }
 		  }
 		 table {
 		 	@include noborder;
 		 	display: table-cell;
-		 	width: 20%;
 		 	float: left;
 		 	margin-bottom: 0;
 
 		 	  tbody {
 		 	  	@include noborder;
+		 	  	  img {
+		 	  	  	width: 81px;
+		 	  	  }
 		 	  }
 		 }
 		 .node_title {
 		 	display: table-cell;
 		 	width: 80%;
 		    vertical-align: middle;
+		    position: relative;
+		    @include tablet {
+		    	left: -6%;
+		    }
+		    @include desktop {
+		    	left: -8%;
+		    }
 		 	  .a_name {
 		 	  	padding-left: 5px;
 		 	  }
