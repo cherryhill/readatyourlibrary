@@ -131,12 +131,7 @@
         print '<span class = "lk-count">Likes: </span>'.$counts;}
       ?>
     </div>
-    <div class="bk_follow">
-      <?php 
-      $node_privacy_field = field_get_items('node', $node, 'field_privacy_settings');
-      $node_privacy = $node_privacy_field[0]['value'];
-      if($node_privacy === 'public'){ print flag_create_link('follow', $node->uid); } ?>
-    </div>
+    
   </div>
 </div>
 
@@ -172,6 +167,12 @@
       }
     ?>
   </div>
+  <div class="bk_follow">
+      <?php 
+      $node_privacy_field = field_get_items('node', $node, 'field_privacy_settings');
+      $node_privacy = $node_privacy_field[0]['value'];
+      if($node_privacy === 'public'){ print flag_create_link('follow', $node->uid); } ?>
+    </div>
   <?php print render($title_prefix); ?>
   <?php if (!$page): ?>
     <?php if (!$page): ?>
