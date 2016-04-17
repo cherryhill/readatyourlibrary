@@ -75,6 +75,31 @@
  * @see template_process()
  */
 ?>
+<?php
+// We hide the comments and links now so that we can render them later.
+  hide($content['comments']);
+  hide($content['links']);
+  hide($content['field_tags']);
+
+
+$fname = field_get_items('node', $node, 'field_author_first_name');
+
+$lname = field_get_items('node', $node, 'field_author_last_name');
+
+$clink = field_get_items('node', $node, 'field_catalog_link');
+
+$bimage = field_get_items('node', $node, 'field_book_cover_image_link');
+
+$review = field_get_items('node', $node, 'body');
+$catalog_lk = $clink[0]['url'];
+
+if(isset($catalog_lk)){
+  $catalog_link = $clink[0]['url'];
+  $title_node_link = "<a href = '$catalog_link' target = '_blank'>".$title_node.'</a>';
+}else{
+  $title_node_link = $title_node;
+}
+?>
 <div class="review_node_sidebar">
   <div class="follow_link_bookreview">
   <?php 
@@ -133,32 +158,6 @@
       <?php print $submitted; ?>
     </div>
   <?php endif; ?>
-
-  <?php
-    // We hide the comments and links now so that we can render them later.
-    hide($content['comments']);
-    hide($content['links']);
-    hide($content['field_tags']);
-
-
-$fname = field_get_items('node', $node, 'field_author_first_name');
-
-$lname = field_get_items('node', $node, 'field_author_last_name');
-
-$clink = field_get_items('node', $node, 'field_catalog_link');
-
-$bimage = field_get_items('node', $node, 'field_book_cover_image_link');
-
-$review = field_get_items('node', $node, 'body');
-$catalog_lk = $clink[0]['url'];
-
-if(isset($catalog_lk)){
-  $catalog_link = $clink[0]['url'];
-  $title_node_link = "<a href = '$catalog_link' target = '_blank'>".$title_node.'</a>';
-}else{
-  $title_node_link = $title_node;
-}
-?>
 
 <div class="review_node">
   <div class="title_review">

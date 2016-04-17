@@ -5,12 +5,11 @@
   Drupal.behaviors.libraryzurbPhoneNumberLinksOnMobile = {
     attach: function(context, settings) {
 
-      $(':checkbox').on('change',function(){
-       var th = $(this), name = th.prop('class'); 
-       if(th.is(':checked')){
-           $(':checkbox[class="'  + name + '"]').not($(this)).prop('checked',false);   
-        }
+      //Making single selection for avatar image
+      $(".av_radio.form-radio").change(function () {
+        $('.av_radio.form-radio').not(this).prop('checked', false);
       });
+
       // Get width of browser viewport. **Note:** The value we check against
       // should probably match the value set for `$topbar-breakpoint` in
       // libraryzurb/scss/_variables.scss.
