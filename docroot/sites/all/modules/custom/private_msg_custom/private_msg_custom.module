@@ -158,6 +158,9 @@ function private_msg_custom_form_profile2_edit_main_form_alter(&$form, $form_sta
       '#type' => 'fieldset',
       '#weight' => 11,
     );
+
+    $form['checkboxes_fieldset']['description'] = array('#markup' => '<div>' . t('What kind of avatar do you want?').'</div>');
+
     foreach ($tax_name as $key => $value) {
     $form['checkboxes_fieldset']['checkboxes_fieldset2'.$value] = array(
       '#title' => $value,

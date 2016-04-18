@@ -5,6 +5,16 @@
   Drupal.behaviors.libraryzurbPhoneNumberLinksOnMobile = {
     attach: function(context, settings) {
 
+      // Showing of email notification field if user enters valid email
+      $('#edit-profile-main-field-receive-notifications').addClass('mail-notification-hidden')
+      $('#edit-mail').blur(function() {
+          var testEmail = /^[A-Z0-9._%+-]+@([A-Z0-9-]+\.)+[A-Z]{2,4}$/i;
+          if (testEmail.test(this.value)) {
+              $('#edit-profile-main-field-receive-notifications').removeClass('mail-notification-hidden');
+          }
+          else ($('#edit-profile-main-field-receive-notifications').addClass('mail-notification-hidden'));
+      });
+
       //Making single selection for avatar image
       $(".av_radio.form-radio").change(function () {
         $('.av_radio.form-radio').not(this).prop('checked', false);
@@ -73,15 +83,8 @@ jQuery( document ).ready(function() {
     }
   });
 
-  // jQuery('.node-type-review-book .follow_link_bookreview .flag-link-normal').each(function(){ 
-  //   var me = jQuery(this) , t = me.text().split(' ');
-  //   var link = me.html(t.shift()+' This Reviewer');
-  // });
-
-  // jQuery('.node-type-booklist .bk_follow .flag-link-normal').each(function(){ 
-  //   var me = jQuery(this) , t = me.text().split(' ');
-  //   var link = me.html(t.shift()+' This Booklist Creator');
-  // });
+  // Placing Email div after field (how did you hear about the program)
+  jQuery('.form-item-mail').insertAfter('.form-item-profile-main-field-how-did-you-hear-about-thi-und-select');
 
   jQuery(".flag-like").insertAfter('.like-count');
 
