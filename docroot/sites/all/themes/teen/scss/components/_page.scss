@@ -1220,6 +1220,7 @@
   	#page-title {
   	 	@include black-text;
   	 	@include mclaren;
+  	 	display: none;
   	}
 
   	.view-header {
@@ -1477,6 +1478,21 @@
 .page-reviews {
   	counter-reset: section;
   	 	.main {
+  	 		.view-reviews {
+  	 			.view-header {
+  	 				h2 {
+  	 					@include noborder;
+  	 					color: $black;
+  	 					@include mclaren;
+  	 					  &.reviews-title {
+  	 					  	font-size: 28px;
+  	 					  }
+  	 					  &.reviews-subtitle {
+  	 					  	font-size: 22px;
+  	 					  }
+  	 				}
+  	 			}
+  	 		}
 	  	 	.view-content {
 		  	 	.views-row img {
 		  	 		@include noborder;
@@ -1663,8 +1679,8 @@
 
 .page-booklists {
   	.l-header .row.header-middle section.block-menu-menu-secoundary-menu ul.menu li a.reviews::after {
-  		background: url('../images/libraryzurb/reviewactive.png') no-repeat !important;
-  		 @include bck_size_tablet;
+  		/* background: url('../images/libraryzurb/reviewactive.png') no-repeat !important;
+  		 @include bck_size_tablet; */
   	}
   	.main {
   		.view-header,.view-footer {

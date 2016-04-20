@@ -190,19 +190,14 @@
 		color: $white;
       	@include mclaren;
 		padding-top: 26px;
-		padding-bottom: 25px;
+		padding-bottom: 13px;
 	    
 	     @if $ch-font == "C" {
-	     	font-size: 22px;
-	     	  @include mobile {
-	     	  	font-size: 17px;
-	     	  }
+	     	@include titlefont1;
 	     }
 	     @else {
-	     	font-size: 28px;
-	     @include mobile {
-	     	font-size: 22px;
-	     }
+	     	@include titlefont;
+	     
 	     }
 		border-bottom: medium none;
 		margin-top: -1px;
@@ -290,7 +285,7 @@
 	    @include previous(100%, 100%, $left: 0, $top: 0);
 	    z-index: -1;
 	    background: url('../images/libraryzurb/brushimage.png') repeat;
-	    background-size: cover;
+	    background-size: 100%;
 	    background-position: center;
 	      @include tablet {
 	      	background: $yellow;
@@ -300,4 +295,14 @@
 	      }
 
 	   }
+}
+@mixin bodyfont {
+	font-size: 16px;
+	line-height: 1.4;
+}
+@mixin titlefont {
+	font-size: 26px;
+}
+@mixin titlefont1 {
+	font-size: 24px;
 }

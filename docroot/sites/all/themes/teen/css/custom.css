@@ -6708,6 +6708,13 @@ h1#page-title {
     display: none;
   }
 }
+.l-main .homepage-blocks .view .view-footer button {
+  margin-left: 43px;
+}
+.l-main .homepage-blocks button {
+  margin-left: 41px;
+}
+
 .media-youtube-video {
   position: relative;
   padding-bottom: 56.25%;
@@ -6780,18 +6787,13 @@ h1#page-title {
   -webkit-font-smoothing: antialiased !important;
   -moz-osx-font-smoothing: grayscale !important;
   padding-top: 26px;
-  padding-bottom: 25px;
-  font-size: 28px;
+  padding-bottom: 13px;
+  font-size: 26px;
   border-bottom: medium none;
   margin-top: -1px;
   padding-left: 36px;
   z-index: 0;
   overflow: hidden;
-}
-@media (max-width: 767px) {
-  .block.block-private-msg-custom-homepage-slider .slide .view .view-header {
-    font-size: 22px;
-  }
 }
 .block.block-private-msg-custom-homepage-slider .slide .view .view-content {
   padding-top: 17px;
@@ -7392,12 +7394,9 @@ h1#page-title {
   padding-left: 15px;
 }
 .block.announcement {
-  background: url("../images/libraryzurb/annocement.png") no-repeat;
-  background-size: cover;
-  background-position: center center;
+  background: url("../images/libraryzurb/annocement.png") no-repeat scroll center center/100% 100%;
   color: #000;
-  padding-left: 8.8%;
-  padding-right: 8.8%;
+  padding: 0;
   -webkit-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
   -moz-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
   box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
@@ -7422,6 +7421,10 @@ h1#page-title {
   border: none !important;
   outline: none !important;
   font-size: 26px;
+  width: 100%;
+  max-width: 82.4%;
+  margin: auto;
+  margin-bottom: 28px;
   font-family: SpecialElite !important;
   font-weight: normal !important;
   font-style: normal !important;
@@ -7444,7 +7447,7 @@ h1#page-title {
   left: 0;
   z-index: -1;
   background: url("../images/libraryzurb/brushimage.png") repeat;
-  background-size: cover;
+  background-size: 100%;
   background-position: center;
 }
 @media (min-width: 768px) and (max-width: 1025px) {
@@ -7462,8 +7465,16 @@ h1#page-title {
     font-size: 18px;
   }
 }
+.block.announcement .views-field-body {
+  width: 100%;
+  max-width: 58%;
+  margin: auto;
+}
 .block.announcement .views-field-body p {
-  padding-left: 36px;
+  color: #fff;
+  font-size: 20px;
+  width: 35%;
+  vertical-align: top;
   font-family: Raleway-Bold !important;
   font-style: normal !important;
   font-weight: normal !important;
@@ -7477,13 +7488,17 @@ h1#page-title {
   }
 }
 .block.announcement .views-field-body ol {
-  margin-left: 70px;
-  padding-bottom: 40px;
+  margin-left: 0;
   list-style: none;
+  display: inline-block;
+  width: 60%;
+  vertical-align: top;
 }
 .block.announcement .views-field-body ol li {
   position: relative;
-  font-size: 18px;
+  font-size: 16px;
+  line-height: 1.4;
+  color: #fff;
   font-family: Raleway-Medium !important;
   font-style: normal !important;
   font-weight: normal !important;
@@ -7601,24 +7616,19 @@ h1#page-title {
   -webkit-font-smoothing: antialiased !important;
   -moz-osx-font-smoothing: grayscale !important;
   padding-top: 26px;
-  padding-bottom: 25px;
-  font-size: 28px;
+  padding-bottom: 13px;
+  font-size: 26px;
   border-bottom: medium none;
   margin-top: -1px;
   padding-left: 36px;
   z-index: 0;
   overflow: hidden;
 }
-@media (max-width: 767px) {
-  .block.homepage-blocks .block-title {
-    font-size: 22px;
-  }
-}
 .block.homepage-blocks p {
   padding-left: 40px;
   padding-right: 40px;
-  font-size: 18px;
-  line-height: 1.4;
+  font-size: 16px;
+  line-height: 1.2;
 }
 .block.footer-playlibdetails, .block.playlib-copyright, .block.footer-playlibpolicies {
   width: 100%;
@@ -7645,6 +7655,7 @@ h1#page-title {
 }
 .block.playlib-copyright {
   position: relative;
+  margin-bottom: 0;
 }
 .block.playlib-copyright span#at-rate {
   font-family: SpecialElite !important;
@@ -7823,6 +7834,7 @@ button,
   border: 1px solid #fdeb52;
   font-size: 17px;
   text-transform: capitalize;
+  border-radius: 0 !important;
   font-family: SpecialElite !important;
   font-weight: normal !important;
   font-style: normal !important;
@@ -9600,7 +9612,7 @@ body .alert-box.success a.close:hover {
   left: 0;
   z-index: -1;
   background: url("../images/libraryzurb/brushimage.png") repeat;
-  background-size: cover;
+  background-size: 100%;
   background-position: center;
 }
 @media (min-width: 768px) and (max-width: 1025px) {
@@ -9840,7 +9852,7 @@ body .alert-box.success a.close:hover {
   left: 0;
   z-index: -1;
   background: url("../images/libraryzurb/brushimage.png") repeat;
-  background-size: cover;
+  background-size: 100%;
   background-position: center;
 }
 @media (min-width: 768px) and (max-width: 1025px) {
@@ -10113,7 +10125,7 @@ body .alert-box.success a.close:hover {
   left: 0;
   z-index: -1;
   background: url("../images/libraryzurb/brushimage.png") repeat;
-  background-size: cover;
+  background-size: 100%;
   background-position: center;
 }
 @media (min-width: 768px) and (max-width: 1025px) {
@@ -11203,6 +11215,7 @@ body .alert-box.success a.close:hover {
   font-style: normal !important;
   -webkit-font-smoothing: antialiased !important;
   -moz-osx-font-smoothing: grayscale !important;
+  display: none;
 }
 .page-reviews .view-header p a, .page-booklists .view-header p a {
   color: #32024e;
@@ -11553,6 +11566,22 @@ body .alert-box.success a.close:hover {
 .page-reviews {
   counter-reset: section;
 }
+.page-reviews .main .view-reviews .view-header h2 {
+  border: none !important;
+  outline: none !important;
+  color: #000;
+  font-family: SpecialElite !important;
+  font-weight: normal !important;
+  font-style: normal !important;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+}
+.page-reviews .main .view-reviews .view-header h2.reviews-title {
+  font-size: 28px;
+}
+.page-reviews .main .view-reviews .view-header h2.reviews-subtitle {
+  font-size: 22px;
+}
 .page-reviews .main .view-content .views-row img {
   border: none !important;
   outline: none !important;
@@ -11773,12 +11802,8 @@ body .alert-box.success a.close:hover {
 
 /**css only for booklist page**/
 .page-booklists .l-header .row.header-middle section.block-menu-menu-secoundary-menu ul.menu li a.reviews::after {
-  background: url("../images/libraryzurb/reviewactive.png") no-repeat !important;
-}
-@media (min-width: 768px) and (max-width: 1025px) {
-  .page-booklists .l-header .row.header-middle section.block-menu-menu-secoundary-menu ul.menu li a.reviews::after {
-    background-size: 100% !important;
-  }
+  /* background: url('../images/libraryzurb/reviewactive.png') no-repeat !important;
+   @include bck_size_tablet; */
 }
 .page-booklists .main .view-header, .page-booklists .main .view-footer {
   display: none;
@@ -12353,18 +12378,13 @@ body .alert-box.success a.close:hover {
   -webkit-font-smoothing: antialiased !important;
   -moz-osx-font-smoothing: grayscale !important;
   padding-top: 26px;
-  padding-bottom: 25px;
-  font-size: 28px;
+  padding-bottom: 13px;
+  font-size: 26px;
   border-bottom: medium none;
   margin-top: -1px;
   padding-left: 36px;
   z-index: 0;
   overflow: hidden;
-}
-@media (max-width: 767px) {
-  .section-progress .main #page-title {
-    font-size: 22px;
-  }
 }
 .section-progress .main .view-calendar-sticker {
   color: #fff;
@@ -12687,18 +12707,13 @@ body .alert-box.success a.close:hover {
   -webkit-font-smoothing: antialiased !important;
   -moz-osx-font-smoothing: grayscale !important;
   padding-top: 26px;
-  padding-bottom: 25px;
-  font-size: 22px;
+  padding-bottom: 13px;
+  font-size: 24px;
   border-bottom: medium none;
   margin-top: -1px;
   padding-left: 36px;
   z-index: 0;
   overflow: hidden;
-}
-@media (max-width: 767px) {
-  .page-users-public-profile .main .block .block-title {
-    font-size: 17px;
-  }
 }
 .page-users-public-profile .main .block a {
   color: #fff;
@@ -12755,8 +12770,8 @@ body .alert-box.success a.close:hover {
   -webkit-font-smoothing: antialiased !important;
   -moz-osx-font-smoothing: grayscale !important;
   padding-top: 26px;
-  padding-bottom: 25px;
-  font-size: 22px;
+  padding-bottom: 13px;
+  font-size: 24px;
   border-bottom: medium none;
   margin-top: -1px;
   padding-left: 36px;
@@ -12765,11 +12780,6 @@ body .alert-box.success a.close:hover {
   margin-top: 0;
   border: none !important;
   outline: none !important;
-}
-@media (max-width: 767px) {
-  .page-users-public-profile .main .view.view-booklist-on-activities-page .view-header h3, .page-users-public-profile .main .view.view-my-book-reviews .view-header h3 {
-    font-size: 17px;
-  }
 }
 .page-users-public-profile .main .view.view-booklist-on-activities-page .view-content, .page-users-public-profile .main .view.view-my-book-reviews .view-content {
   padding-left: 3%;
@@ -13069,7 +13079,7 @@ body .alert-box.success a.close:hover {
   left: 0;
   z-index: -1;
   background: url("../images/libraryzurb/brushimage.png") repeat;
-  background-size: cover;
+  background-size: 100%;
   background-position: center;
 }
 @media (min-width: 768px) and (max-width: 1025px) {
@@ -13636,12 +13646,12 @@ ul.quicktabs-tabs li a:focus, ul.quicktabs-tabs li a:hover {
 }
 
 p {
-  font-size: 18px;
+  font-size: 16px;
+  line-height: 1.4;
   font-family: Arialregular;
   font-style: normal !important;
   font-weight: normal !important;
   -webkit-font-smoothing: antialiased !important;
-  line-height: 1.4;
   margin-bottom: 23px;
   display: inline-block;
 }
@@ -13993,7 +14003,8 @@ header h2 {
 }
 .sidebar .block:not(.block-menu-block-1) h2.block-title {
   border: 0;
-  font-size: 22px;
+  font-size: 24px;
+  padding-left: 33px;
   text-transform: capitalize;
   line-height: 1;
   margin-top: 0;
