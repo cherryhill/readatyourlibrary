@@ -1,6 +1,7 @@
 // Blocks
 
 .block {
+	
 	&.block-private-msg-custom-homepage-slider {
 		@include bluebackground;
 		padding: 0 !important;
@@ -461,37 +462,48 @@
  		}
  	}
 	&.announcement {
-		background: url('../images/libraryzurb/annocement.png') no-repeat;
-		background-size: cover;
-		background-position: center center;
+		background: url('../images/libraryzurb/annocement.png') no-repeat scroll center center / 100% 100%;	
 		color: $black;
-		padding-left: 8.8%;
-		padding-right: 8.8%;
+		padding: 0;
+	
 		@include boxshadow;
 		 .block-title {
 		 	@include brushimg;
-		 	font-size: 26px;
+		 	@include titlefont;
+		 	width: 100%;
+		 	max-width: 82.4%;
+		 	margin: auto;
+		 	margin-bottom: 28px;
 		 	@include mobile {
 	     	font-size: 18px;
 	     }
 		 	@include mclaren;
 		 }
 		 .views-field-body {
+		 	width: 100%;
+		 	max-width: 58%;
+		 	margin: auto;
 		 	p {
-		 		padding-left: 36px;
+		 		color: $white;
+		 		font-size: 20px;
+		 		width: 35%;
+		 		vertical-align: top;
 		 		@include arialbold;
 		 		@include mobile {
 	     			font-size: 14px;
 	    		 }
 		 	}
 		 	ol {
-		 		margin-left: 70px;
-		 		padding-bottom: 40px;
+		 		margin-left: 0;
 		 		list-style: none;
+		 		display: inline-block;
+		 		width: 60%;
+		 		vertical-align: top;
 		 		
 		 		 li {
 		 		 	position: relative;
-		 		 	font-size: 18px;
+		 		 	@include bodyfont;
+		 		 	color: $white;
 		 		 	@include mobile {
 	     				font-size: 14px;
 	     				}
@@ -615,8 +627,8 @@
 			         p {
 			           padding-left: 40px;
 			           padding-right: 40px;
-			           font-size: 18px;
-			           line-height: 1.4;
+			           font-size: 16px;
+			           line-height: 1.2;
 			         }
 	         
 	      }
@@ -638,6 +650,7 @@
 	}
 	&.playlib-copyright {
 		position: relative;
+		margin-bottom: 0;
 		span#at-rate {
 			@include mclaren;
 			font-size: 22px !important;
