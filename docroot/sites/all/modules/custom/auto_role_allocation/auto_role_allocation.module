@@ -849,15 +849,4 @@ function auto_role_allocation_menu_alter(&$items) {
     $items['staff/register']['access callback'] = FALSE;
 
   }
-
 }
-
-
-/* redirect user to home page after login */
-
-function auto_role_allocation_user_login(&$edit, $account) {
-   drupal_goto('home');
-}
-
-
-
