@@ -86,8 +86,6 @@ jQuery( document ).ready(function() {
   // Placing Email div after field (how did you hear about the program)
   jQuery('.form-item-mail').insertAfter('.form-item-profile-main-field-how-did-you-hear-about-thi-und-select');
 
-  jQuery(".flag-like").insertAfter('.like-count');
-
   /* Jquery for script for raffle entry checkbox */
 
     jQuery( ".active_raffle" ).click(function() {

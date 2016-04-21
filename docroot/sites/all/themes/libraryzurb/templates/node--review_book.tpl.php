@@ -119,7 +119,21 @@ if(isset($catalog_lk)){
   print  "<table><tr><td>".$bimg."</td>";
   print  "</tr></table>";}?>
   </div>
-  
+  <div class="like-count">
+      <?php
+
+        $query = db_select('flag_counts','count')
+        ->fields('count',array('count'))
+        ->condition('entity_id',$nid_node)
+        ->execute()
+        ->fetchAssoc();
+
+        $counts = $query['count'];
+        if(isset($counts)){
+          print '<span class = "lk-count">Likes: </span>'.$counts;
+        }
+      ?>
+  </div>
 </div>
 <article id="node-<?php print $node->nid; ?>" class="<?php print $classes; ?>"<?php print $attributes; ?>>
   <?php print render($title_prefix); ?>
@@ -195,21 +209,9 @@ if(isset($catalog_lk)){
 
   if($node_privacy === 'public'){ print flag_create_link('follow', $node->uid); } ?>
   </div>
-<div class="like-count">
-    <?php
-
-      $query = db_select('flag_counts','count')
-      ->fields('count',array('count'))
-      ->condition('entity_id',$nid_node)
-      ->execute()
-      ->fetchAssoc();
-
-      $counts = $query['count'];
-      if(isset($counts)){
-        print '<span class = "lk-count">Likes: </span>'.$counts;
-      }
-    ?>
-  </div>
+  <span>
+  <?php print flag_create_link('like', $node->nid) ?>
+  </span>
   </div>
 
 </article>
