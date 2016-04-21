@@ -81,6 +81,9 @@
   hide($content['links']);
   hide($content['field_tags']);
 
+  $nid_node = $node->nid;
+  $title_node = $node->title;
+
 
 $fname = field_get_items('node', $node, 'field_author_first_name');
 
@@ -194,8 +197,6 @@ if(isset($catalog_lk)){
   </div>
 <div class="like-count">
     <?php
-      $nid_node = $node->nid;
-      $title_node = $node->title;
 
       $query = db_select('flag_counts','count')
       ->fields('count',array('count'))
