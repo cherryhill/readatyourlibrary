@@ -163,6 +163,9 @@ if(isset($catalog_lk)){
       $node_created = $node->created;
       $profile = profile2_load_by_user($node->uid);
       $pid = $profile['main']->pid;
+      $node = node_load($nid);
+      $node_privacy_field = field_get_items('node', $node, 'field_privacy_settings');
+      $node_privacy = $node_privacy_field[0]['value'];
 
       $query_img_id = db_select('field_data_field_user_avatar','av')
       ->fields('av',array('field_user_avatar_target_id'))
@@ -203,11 +206,7 @@ if(isset($catalog_lk)){
   <?php print render($content['comments']); ?>
   <div class="follow_link_bookreview">
   <?php 
-  $node = node_load($nid);
-  $node_privacy_field = field_get_items('node', $node, 'field_privacy_settings');
-  $node_privacy = $node_privacy_field[0]['value'];
-
-  if($node_privacy === 'public'){ print flag_create_link('follow', $node->uid); } ?>
+    if($node_privacy === 'public'){ print flag_create_link('follow', $node->uid); } ?>
   </div>
   <span>
   <?php print flag_create_link('like', $node->nid) ?>
