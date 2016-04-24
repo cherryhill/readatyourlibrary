@@ -1,0 +1,852 @@
+<?php
+
+/**
+ * Implements hook_block(). . 
+ */
+
+
+function auto_role_allocation_teen_block_info() {
+  $block = array();
+  $blocks['staff-notes_teen'] = array(
+    'info' => t('Write Staff notes for teen program'),
+    'cache' => DRUPAL_NO_CACHE,
+    );
+  $blocks['calendar-data_teen'] = array(
+    'info' => t('Show calendar data json for teen program'),
+    'cache' => DRUPAL_NO_CACHE,
+    );
+  $blocks['progress-block_teen'] = array(
+    'info' => t('Progress for teen program'),
+    'cache' => DRUPAL_NO_CACHE,
+    );
+  $blocks['user_prize_block_teen'] = array(
+    'info' => t('User Progress Page Block for teen program'),
+    'cache' => DRUPAL_NO_CACHE,
+    );
+  $blocks['user_progress_for_program_teen'] = array(
+    'info' => t('User Progress block for teen program'),
+    'cache' => DRUPAL_NO_CACHE,
+    );
+  return $blocks;
+}
+
+function auto_role_allocation_teen_block_view($block_name = '') {
+  switch ($block_name) {
+    case 'staff-notes_teen':
+    $block['subject'] = '';
+    $block['content'] = drupal_get_form('generate_staff_form_teen');
+    break;
+    case 'calendar-data_teen':
+    $block['subject'] = '';
+    $block['content'] = generate_json_data_teen();
+    break;
+    case 'progress-block_teen':
+    $block['subject'] = '';
+    $block['content'] = user_progress_teen();
+    break;
+    case 'user_prize_block_teen':
+    $block['subject'] = '';
+    $block['content'] = progress_user_block_teen();
+    break;
+    case 'user_progress_for_program_teen':
+    $block['subject'] = '';
+    $block['content'] = progress_user_block_program_teen();
+    break;                                
+  }
+  return $block;
+}
+
+/* Progress block of user on program page */
+function progress_user_block_program_teen() {
+  global $user, $base_url;
+  $uid = $user->uid;
+  $count_query = db_query("SELECT COUNT(image_url) as image_url
+    FROM {calendar} c
+    WHERE c.uid = :uid",array(':uid' => $uid))->fetchAll();
+  $total_read_days = $count_query[0]->image_url;
+
+  // get all rewards
+  $qry = db_select('field_data_field_activity_fired_hook', 'fh');
+  $qry->join('field_data_field_activity_points', 'ap', 'ap.entity_id = fh.entity_id');
+  $qry->Join('field_data_field_reward_criteria_activity', 'rca', 'fh.entity_id = rca.field_reward_criteria_activity_target_id');
+  $qry->Join('field_data_field_reward_criteria_point_mark', 'rcpm', 'rca.entity_id = rcpm.entity_id');
+  $qry->fields('rcpm', array('field_reward_criteria_point_mark_value'));
+  $qry->fields('ap', array('field_activity_points_value'));
+  $qry->condition('fh.field_activity_fired_hook_value', 'node_update|node|sticker|updated');
+  $rs = $qry->execute()->fetchAll();
+  
+  $activity_point = 0;
+  $next_reward_in_days = 0;
+  $user_points = 0;
+  $closest_reward = 0;
+
+  foreach($rs as $v) {
+    if (!$activity_point) {
+      $activity_point = $v->field_activity_points_value;
+      $user_points = $total_read_days * $activity_point;
+    }
+
+    $reward_point = $v->field_reward_criteria_point_mark_value;
+    if ($reward_point > $user_points) {
+      if(!$closest_reward) {
+        $closest_reward = $reward_point;
+      } else {
+        if($reward_point < $closest_reward) {
+          $closest_reward = $reward_point;
+        }
+      }
+    }
+  }
+
+  $reads_for_next_reward = ($closest_reward / $activity_point) - $total_read_days;
+  if($reads_for_next_reward < 0) {
+    return "<div class='all_rewrad_won'>Congratulations! You have completed the reading program and have received all the reading rewards.</div>";
+  }
+  else {
+    if($reads_for_next_reward == 1) {
+      $msg = "<span class='msg-highlight'>Total days read: $total_read_days</span><br/>";
+      $msg .= "<div class='days-left'>$reads_for_next_reward more day of reading needed to receive your next prize</div>";
+      $msg .= "<div><a href='".$base_url."/progress'>Go to the Progress Page</a></div>";
+    }
+    else {
+      $msg = "<span class='msg-highlight'>Total days read: $total_read_days</span><br/>";
+      $msg .= "<div class='days-left'>$reads_for_next_reward more days of reading needed to receive your next prize</div>";
+      $msg .= "<div><a href='".$base_url."/progress'>Go to the Progress Page</a></div>";
+    }
+    
+
+    return "<div>$msg</div>";
+  }
+}
+
+function progress_user_block_teen() {
+  global $user;
+  $uid = $user->uid;
+  $count_query = db_query("SELECT COUNT(image_url) as image_url
+    FROM {calendar} c
+    WHERE c.uid = :uid",array(':uid' => $uid))->fetchAll();
+  $total_read_days = $count_query[0]->image_url;
+
+  // get all rewards
+  $qry = db_select('field_data_field_activity_fired_hook', 'fh');
+  $qry->join('field_data_field_activity_points', 'ap', 'ap.entity_id = fh.entity_id');
+  $qry->Join('field_data_field_reward_criteria_activity', 'rca', 'fh.entity_id = rca.field_reward_criteria_activity_target_id');
+  $qry->Join('field_data_field_reward_criteria_point_mark', 'rcpm', 'rca.entity_id = rcpm.entity_id');
+  $qry->fields('rcpm', array('field_reward_criteria_point_mark_value'));
+  $qry->fields('ap', array('field_activity_points_value'));
+  $qry->condition('fh.field_activity_fired_hook_value', 'node_update|node|sticker|updated');
+  $rs = $qry->execute()->fetchAll();
+  
+  $activity_point = 0;
+  $next_reward_in_days = 0;
+  $user_points = 0;
+  $closest_reward = 0;
+
+  foreach($rs as $v) {
+    if (!$activity_point) {
+      $activity_point = $v->field_activity_points_value;
+      $user_points = $total_read_days * $activity_point;
+    }
+
+    $reward_point = $v->field_reward_criteria_point_mark_value;
+    if ($reward_point > $user_points) {
+      if(!$closest_reward) {
+        $closest_reward = $reward_point;
+      } else {
+        if($reward_point < $closest_reward) {
+          $closest_reward = $reward_point;
+        }
+      }
+    }
+  }
+
+  $reads_for_next_reward = ($closest_reward / $activity_point) - $total_read_days;
+
+  if($reads_for_next_reward < 0) {
+    return "<div class='all_rewrad_won'>Congratulations! You have completed the reading program and have received all the reading rewards.</div>";
+  }
+  else {
+    if($reads_for_next_reward == 1) {
+      $msg = "$reads_for_next_reward more day of reading needed to receive your next prize";
+
+      
+    }
+    else {
+      $msg = "$reads_for_next_reward more days of reading needed to receive your next prize";
+    }
+    return "<div>$msg</div>";
+  }
+  
+}
+
+function generate_staff_form_teen($form, &$form_state) {
+  $form['body'] = array(
+    '#type' => 'textarea',
+    '#title' => 'Staff Notes',
+    
+    );
+  $form['submit'] = array('#type' => 'submit', '#value' => t('Submit'));  
+
+  return $form;
+}
+
+function generate_staff_form_teen_submit($form, &$form_state) {
+  $staff_note = $form_state['complete form']['body']['#value'];
+  $custom_uid = arg(1);
+  $profile = profile2_create(array('type' => 'main', 'uid' => $custom_uid));
+  $profile->field_staff_notes['und'][0]['value'] = $staff_note; 
+  profile2_save($profile);
+  drupal_set_message(t('Notes created.'));
+
+  
+}
+
+
+function auto_role_allocation_teen_init() {
+  global $user;
+  $setting = array('auto_role_allocation_teen' => array('currentUser' => $user->uid));
+  drupal_add_js($setting, 'setting');
+  
+}
+
+function auto_role_allocation_teen_menu() {
+  $items['calendar_teen'] = array(
+    'title' => 'Test Page',
+    'page callback' => 'calendar_page_teen',
+    'access arguments' => array('access content'),
+    'type' => MENU_SUGGESTED_ITEM,
+    );
+  $items['raffle_teen'] = array(
+    'title' => 'Raffle entry list',
+    'page callback' => 'raffle_entry_process_teen',
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
+  );
+  $items['raffle_filter_form_teen'] = array(
+    'title' => 'Raffle Process',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('raffle_entry_form_teen'),
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
+  );
+  $items['raffle_pro_teen'] = array(
+    'title' => 'Raffle Process',
+    'page callback' => 'render_raffle_filter_form_teen',
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
+  );
+  $items['raffle_user_list_teen'] = array(
+    'title' => 'Raffle Process',
+    'page callback' => 'raffle_user_list_teen',
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
+  );
+  $items['raffle_winner_teen'] = array(
+    'title' => 'Raffle winner Process',
+    'page callback' => 'raffle_winner_ajax_teen',
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
+  );
+  $items['raffle_winner_list_teen'] = array(
+    'title' => 'Raffle Winner List',
+    'page callback' => 'raffle_winner_user_list_teen',
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
+  );
+  $items['test_teen'] = array(
+    'title' => 'Test Menu',
+    'page callback' => 'test_teen',
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
+  );
+  
+  return $items;
+}
+
+/* test function */
+
+
+function test_teen() {
+  drupal_access_denied();
+}
+
+
+/* hook menu() for raffle winner user list */
+
+function raffle_winner_user_list_teen() {
+  $query = db_select('eck_reward', 'er');
+  $query->join('users', 'u', 'u.uid = er.uid');
+  $query->join('field_data_field_reward_claim_id', 'frcid', 'er.id = frcid.entity_id');
+  $query->join('field_data_field_reward_raffle', 'frr', 'frcid.field_reward_claim_id_target_id = frr.entity_id');
+  $query->join('eck_raffle', 'eckr', 'eckr.id = frr.field_reward_raffle_target_id');
+  $query->fields('er', array('uid'));
+  $query->fields('u', array('name'));
+  $query->fields('eckr', array('title'));
+  $res = $query->execute()->fetchAll();
+  $table_header = array(
+    'Sl No.',
+    'Raffle Name',
+    'Raffle Winner Name'
+  );
+  $table_rows = array();
+  $i = 0;
+  foreach ($res as $value) {
+    
+    $raffle_winner_name = $value->name;
+    $raffle_title = $value->title;
+    $i++;
+    $table_rows[] = array(
+      array( 'data' => $i),
+      array( 'data' => $raffle_title),
+      array( 'data' => $raffle_winner_name),
+    ); 
+  }
+
+  $output = theme('table', array( 'header' => $table_header, 'rows' => $table_rows ));
+
+  return $output;
+} 
+
+
+
+
+/* fuction for raffle entry process */
+
+function raffle_entry_process_teen() {
+  $out = '';
+
+  $rafle_query = db_select('field_data_field_reward_raffle', 'rf');
+  $rafle_query->join('field_data_field_reward_criteria_reward', 'rcr', 'rf.entity_id = rcr.field_reward_criteria_reward_target_id');
+  $rafle_query->join('field_data_field_reward_criteria_activity', 'rca', 'rca.entity_id = rcr.entity_id');
+  $rafle_query->join('eck_activity', 'ecka', 'rca.field_reward_criteria_activity_target_id = ecka.id');
+  $rafle_query->join('eck_raffle', 'er', 'rf.field_reward_raffle_target_id = er.id');
+  $rafle_query->fields('er', array('id','title'));
+  $rafle_query->fields('ecka', array('title','id'));
+  $rafle_query->fields('rcr', array('field_reward_criteria_reward_target_id'));
+
+  $res = $rafle_query->execute()->fetchAll();
+  $active_raffle_list = array();
+  foreach ($res as $key => $value) {
+    $raffle_id = $value->id;
+    //print_r($raffle_id);die();
+    $query = db_select('field_data_field_raffle_winner_raffle', 'rwr');
+    $query->condition('field_raffle_winner_raffle_target_id', $raffle_id, '=');
+    $query->fields('rwr', array('entity_id'));
+    $result = $query->execute();
+    $count = $result->rowCount();
+    
+    $raffle_title = $value->title;
+    $activity_id = $value->ecka_id;
+    $activity_name = $value->ecka_title;
+    $reward_id = $value->field_reward_criteria_reward_target_id;
+
+
+    $oprat = "<input type = 'radio' raffle_id = '$raffle_id' name = 'raffle' class='active_raffle' id='raffle_radio_$raffle_id' value = '$reward_id'>";
+    if(!$count) {
+      $out .= "<div><span>$raffle_title</span><span>$oprat</span></div>";
+    }
+  }
+
+  // if no raffel found show message
+  if ($out == '') {
+    $out = "<div>No active raffle found</div>";
+  }
+
+  $out .= "<div class='raffle-filter-form'></div><div class='raffle-entry-user-list'></div>";
+
+
+  
+  return $out;
+
+}
+
+/* For rendering the raffle filter form */
+
+function render_raffle_filter_form_teen($form, &$form_state) {
+  echo drupal_render(drupal_get_form('raffle_entry_form_teen'));
+}
+
+/* Raffle user list by filter form */
+
+function raffle_user_list_teen($form, &$form_state) {
+  $active_raffle_id = $_REQUEST['active_raffle_id'];
+  $reward_id = $_REQUEST['reward_id'];
+  $school = trim($_REQUEST['school']);
+  $organization = $_REQUEST['organization'];
+  $library_branch = $_REQUEST['library_branch'];
+  $grade = $_REQUEST['grade'];
+  $_SESSION['active_r_id'] = $active_raffle_id;
+  
+
+  
+  $query = db_select('field_data_field_raffle_entry_raffle', 'rentry');
+  $query->join('eck_raffle', 'eck_r', 'rentry.entity_id = eck_r.id');
+  $query->join('users', 'u', 'u.uid = eck_r.uid');
+  $query->join('profile', 'p', 'u.uid = p.uid');
+
+  $cnd = array();
+  if ($school != '') {
+    $query->leftJoin('field_data_field_school', 'fs', 'fs.entity_id = p.pid');
+    $query->leftJoin('taxonomy_term_data', 'fstd', 'fstd.tid = fs.field_school_tid');
+    $cnd[] = array('fs.field_school_tid', $school);
+  }
+
+  if ($organization != '') {
+    $query->join('field_data_field_user_organization', 'uo', 'uo.entity_id = p.pid');
+    $query->join('taxonomy_term_data', 'uotd', 'uotd.tid = uo.field_user_organization_tid');
+    $cnd[] = array('uo.field_user_organization_tid', $organization);
+  }
+
+  if ($library_branch != '') {
+    $query->join('field_data_field_library_branch', 'lb', 'lb.entity_id = p.pid');
+    $query->join('taxonomy_term_data', 'lbtd', 'lbtd.tid = lb.field_library_branch_tid');
+    $cnd[] = array('lb.field_library_branch_tid', $library_branch);
+  }
+
+  if ($grade != '') {
+    $query->join('field_data_field_user_grade', 'ug', 'ug.entity_id = p.pid');
+    $query->join('taxonomy_term_data', 'ugtd', 'ugtd.tid = ug.field_user_grade_tid');
+    $cnd[] = array('ug.field_user_grade_tid', $grade);
+  }
+
+  $query->condition('rentry.field_raffle_entry_raffle_target_id', $active_raffle_id, '=');
+  if (count($cnd)) {
+    foreach($cnd as $val) {
+      $cnd_fld = $val[0];
+      $cnd_val = $val[1];
+      $query->condition($cnd_fld, $cnd_val);
+    }
+  }
+  $query->fields('eck_r', array('uid'));
+  $query->fields('u', array('name'));
+  // echo $active_raffle_id . ' ';
+  // echo $query->__toString(); die;
+  $res = $query->execute()->fetchAll();
+
+  $raffle_users_list = array();
+  
+  foreach($res as $v) {
+    $uid = $v->uid;
+    $name = $v->name;
+
+    if (array_key_exists($uid, $raffle_users_list)) {
+      $temp = $raffle_users_list[$uid];
+      $temp['count'] = $temp['count'] + 1;
+      $raffle_users_list[$uid] = $temp;
+    } else {
+      // check if this user has won raffel before
+      $qry = db_select('eck_raffle', 'r');
+      $qry->condition('r.uid', $uid);
+      $qry->condition('r.type', 'raffle_winner');
+      $qry->fields('r', array('id'));
+      $rs = $qry->execute();
+      $count = $rs->rowCount();
+
+      if ($count) {
+        $raffle_users_list[$uid] = array('count' => 1, 'raffle_winner' => 'Yes', 'name' => $name);
+      } else {
+        $raffle_users_list[$uid] = array('count' => 1, 'raffle_winner' => 'No', 'name' => $name);
+      }
+    }
+  }
+
+  $tbl_header = array(
+    'Name',
+    'Raffle Count',
+    'Raffle Winner',
+    'Select Winners'
+  );
+
+  $tbl_rows = array();
+  foreach($raffle_users_list as $k => $v) {
+    $user_name = $v['name'];
+    $raffle_count = $v['count'];
+    $raffle_winner = $v['raffle_winner'];
+    $operation = "<input class = 'raffle-prospective-winners' type = 'checkbox' id = 'chkbox_$k'>";
+    $tbl_rows[] = array(
+      array( 'data' => $user_name),
+      array( 'data' => $raffle_count),
+      array( 'data' => $raffle_winner),
+      array( 'data' => $operation),
+    );
+  }
+
+  $output = theme('table', array( 'header' => $tbl_header, 'rows' => $tbl_rows ));
+  $output .= "<div class = 'raffle-list-submit'>
+    <input type = 'hidden' value = '$reward_id' id = 'raffle_reward_id'>
+    <input type = 'button' id = 'raffle-entry-list-btn' value = 'Submit' >
+  </div>";
+
+  echo $output;
+}
+
+function _get_options_teen($vocab_name) {
+  $term_list = taxonomy_vocabulary_machine_name_load($vocab_name);
+  $tree = taxonomy_get_tree($term_list->vid);
+  $options = array();
+  $options[''] = '- Select -';
+  foreach ($tree as $value) {
+    $options[$value->tid] = $value->name;
+  }
+  return $options;
+}
+
+
+/* active raffle user list  */
+
+function raffle_entry_form_teen($form, &$form_state) {
+  $school_options = _get_options_teen('schools');
+  $organization_options = _get_options_teen('organization');
+  $librarybranches_options = _get_options_teen('library_branches');
+  $grade_options = _get_options_teen('grade');
+
+  $form['school'] = array(
+    '#title' => t('School'),
+    '#type' => 'select',
+    '#options' => $school_options, 
+  );
+  $form['organization'] = array(
+    '#title' => t('Organization'),
+    '#type' => 'select',
+    '#options' => $organization_options,
+  ); 
+  $form['library_branch'] = array(
+    '#title' => t('Library Branch'),
+    '#type' => 'select',
+    '#options' => $librarybranches_options,
+  );
+  $form['grade'] = array(
+    '#title' => t('Grade'),
+    '#type' => 'select',
+    '#options' => $grade_options,
+  );
+  $form['button'] = array(
+    '#value' => 'Submit',
+    '#type' => 'button',
+    '#id' => 'raffle_form_button',
+  );
+
+
+  
+   return $form;
+
+
+  
+}
+
+
+/* Raffle winner list process */
+
+function raffle_winner_ajax_teen() { 
+  $active_raffle_uid = $_REQUEST['active_raffle_uid'];
+  $reward_id = $_REQUEST['reward_id'];
+  
+  $raffle_uid = explode(',', $active_raffle_uid);
+  
+  $raffle_id = $_SESSION['active_r_id'];
+
+  foreach ($raffle_uid as $k => $v) {
+    
+     play_library_program_create_raffle_winner($raffle_id, $v);
+     play_library_program_create_reward_claim($reward_id, $v, 1);
+  }
+  echo "1";
+  
+}
+
+
+
+
+/* function for restrict calendar date for only one drop*/
+
+function calendar_date_restriction_teen($uid, $event_date) {
+  $sticker_count = db_select('calendar', 'c')
+  ->fields('c', array('image_url'))
+  ->condition('uid', $uid,'=')
+  ->condition('date', $event_date,'=')
+  ->execute();
+  $no_of_sticker = $sticker_count->rowCount();
+  if($no_of_sticker > 1) {
+    return FALSE;
+  }
+  else {
+    return TRUE;
+  }
+}
+
+
+
+function calendar_page_teen() {
+  global $user;
+  $uid = $user->uid;
+  $image_id = $_REQUEST['id'];
+  $event_image = $_REQUEST['image'];
+  $event_uid = $_REQUEST['user_id'];
+
+  // get timestamp from calendar date
+  $event_date = $_REQUEST['date'];
+  $event_date = explode(' ', $event_date);
+  $mth = strtolower($event_date[1]);
+  $dt = $event_date[2];
+  $yr = $event_date[3];
+  $month = array('jan' => 1,
+    'feb' => 2,
+    'mar' => 3,
+    'apr' => 4,
+    'may' => 5,
+    'jun' => 6,
+    'jul' => 7,
+    'aug' => 8,
+    'sep' => 9,
+    'oct' => 10,
+    'nov' => 11,
+    'dec' => 12);
+  $mth = $month[$mth];
+  $event_time = mktime(0, 0, 0, $mth, $dt, $yr);
+
+  $sticker_count = db_select('calendar', 'c')
+  ->fields('c', array('image_url'))
+  ->condition('uid', $event_uid)
+  ->condition('date', $event_time)
+  ->execute();
+  $no_of_sticker = $sticker_count->rowCount();
+
+  $query_date = db_select('calendar', 'c')
+  ->fields('c', array('date'))
+  ->condition('uid', $event_uid)
+  ->condition('reward_id', 0, '>')
+  ->orderBy('id', 'DESC')
+  ->execute();
+  $reward_date = $query_date->fetchAssoc();
+  $reward_date = $reward_date['date']; 
+  //print_r($reward_date['date']);die();
+
+  
+  if(!$reward_date) {
+    
+    if (!$no_of_sticker) {
+      if($image_id) {
+        db_update('calendar')
+        ->fields(array('image_url' => $event_image,'date' => $event_time))
+        ->condition ('id', $image_id)
+        ->execute();
+      }
+      else {
+        $insert_query =db_insert('calendar')
+        ->fields(array(
+          'uid'=>$event_uid,
+          'image_url'=>$event_image,
+          'date'=>$event_time,
+          ));
+        $insert_query->execute();
+
+      // get the just inserted ID from calendar table
+      // this will be used to update the record for reward
+      // if user receives one after this activity.
+        $query = db_select('calendar');
+        $query->addExpression('MAX(id)');
+        $max_id = $query->execute()->fetchField();
+        $_SESSION['usr_calendar_id'] = $max_id;
+        
+        $response = array(
+          "result"  =>  1
+          );
+        $node = node_load(495);//495
+
+        /* this is for calendar activity*/
+        $hook = "node_update|node|{$node->type}|updated";
+        _play_library_program_invoke_activity_entry_hooks($node, 'node', $hook, 1);
+      }
+      echo 1;
+    } else {
+      echo 0;
+    }
+  }
+  else {
+    
+    if($reward_date > $event_time) {
+      
+      return FALSE;
+    }
+
+    else {
+      if (!$no_of_sticker) {
+        if($image_id) {
+          db_update('calendar')
+          ->fields(array('image_url' => $event_image,'date' => $event_time))
+          ->condition ('id', $image_id)
+          ->execute();
+        }
+        else {
+          $insert_query =db_insert('calendar')
+          ->fields(array(
+            'uid'=>$event_uid,
+            'image_url'=>$event_image,
+            'date'=>$event_time,
+            ));
+          $insert_query->execute();
+
+      // get the just inserted ID from calendar table
+      // this will be used to update the record for reward
+      // if user receives one after this activity.
+          $query = db_select('calendar');
+          $query->addExpression('MAX(id)');
+          $max_id = $query->execute()->fetchField();
+          $_SESSION['usr_calendar_id'] = $max_id;
+          
+          $response = array(
+            "result"  =>  1
+            );
+        $node = node_load(495);//495
+
+        /* this is for calendar activity*/
+        $hook = "node_update|node|{$node->type}|updated";
+        _play_library_program_invoke_activity_entry_hooks($node, 'node', $hook, 1);
+      }
+      echo 1;
+    } else {
+      echo 0;
+    }
+  }
+}
+
+}
+
+
+
+
+function generate_json_data_teen() {
+  global $user;
+  $uid = $user->uid;
+  $current_time = time();
+  $current_date = date('Y-m-d', $current_time);
+
+
+  
+  $query_state = db_select('calendar', 'c')
+  ->fields('c', array('image_url','date','id', 'reward_id'))
+  ->orderBy('date', 'ASC')
+  ->condition('uid', $uid)
+  ->execute();
+  $result = $query_state->fetchAll();
+
+
+
+
+  $events = array();
+  $i = 1;
+  $j = 1;
+  foreach ($result as $value) {
+    $reward_claimed = $value->reward_id;
+
+    if($reward_claimed) {
+
+      $events[] = array(
+        'title' => '<div><div class="reward_image"><img data-id="'.$value->id.'" src="sites/default/files/styles/thumbnail/public/' . $value->image_url . '"</img></div>'.'<div class="reward_text">Congratulations! You earned prize!</div></div>', 
+        'date' => $value->date,
+        );
+    }
+    else {
+     if($i == 1) {
+      $events[] = array(
+        'title' => '<div><div class="event_image"><img data-id="'.$value->id.'" src="sites/default/files/styles/thumbnail/public/' . $value->image_url . '"</img></div>'.'<div class="event_no">Read ' .$i. ' day</div></div>', 
+        'date' => $value->date,
+        );
+    }
+
+    else {
+      $events[] = array(
+        'title' => '<div><div class="event_image"><img data-id="'.$value->id.'" src="sites/default/files/styles/thumbnail/public/' . $value->image_url . '"</img></div>'.'<div class="event_no">Read ' .$i. ' days</div></div>', 
+        'date' => $value->date,
+        );
+    }  
+
+
+    }
+
+    
+    $i++;
+    $j++;
+    
+  }
+
+  $out = "<script>var eventsList = " . json_encode($events) . "</script>";
+  return $out;
+}
+
+
+function user_progress_teen() {
+  global $user;
+  $uid = $user->uid;
+  $count_query = db_query("SELECT COUNT(image_url) as image_url
+    FROM {calendar} c
+    WHERE c.uid = :uid",array(':uid' => $uid))->fetchAll();
+  $total_read_days = $count_query[0]->image_url;
+
+  // get all rewards
+  $qry = db_select('field_data_field_activity_fired_hook', 'fh');
+  $qry->join('field_data_field_activity_points', 'ap', 'ap.entity_id = fh.entity_id');
+  $qry->Join('field_data_field_reward_criteria_activity', 'rca', 'fh.entity_id = rca.field_reward_criteria_activity_target_id');
+  $qry->Join('field_data_field_reward_criteria_point_mark', 'rcpm', 'rca.entity_id = rcpm.entity_id');
+  $qry->fields('rcpm', array('field_reward_criteria_point_mark_value'));
+  $qry->fields('ap', array('field_activity_points_value'));
+  $qry->condition('fh.field_activity_fired_hook_value', 'node_update|node|sticker|updated');
+  $rs = $qry->execute()->fetchAll();
+  
+  $activity_point = 0;
+  $next_reward_in_days = 0;
+  $user_points = 0;
+  $closest_reward = 0;
+
+  foreach($rs as $v) {
+    if (!$activity_point) {
+      $activity_point = $v->field_activity_points_value;
+      $user_points = $total_read_days * $activity_point;
+    }
+
+    $reward_point = $v->field_reward_criteria_point_mark_value;
+    if ($reward_point > $user_points) {
+      if(!$closest_reward) {
+        $closest_reward = $reward_point;
+      } else {
+        if($reward_point < $closest_reward) {
+          $closest_reward = $reward_point;
+        }
+      }
+    }
+  }
+
+  $reads_for_next_reward = ($closest_reward / $activity_point) - $total_read_days;
+
+  if($reads_for_next_reward < 0) {
+    return "<div class='all_rewrad_won'>Congratulations! You have completed the reading program and have received all the reading rewards.</div>";
+  }
+  else {
+      if($reads_for_next_reward == 1) {
+        $msg = "<span class='msg-highlight'>Total days read: $total_read_days</span><br/>";
+        $msg .= "$reads_for_next_reward more day of reading needed to receive your next prize";
+        $msg .= "<a href = '/progress' class = 'button'>Show My Progress</a>";
+      }
+      else {
+        $msg = "<span class='msg-highlight'>Total days read: $total_read_days</span><br/>";
+        $msg .= "$reads_for_next_reward more days of reading needed to receive your next prize";
+        $msg .= "<a href = '/progress' class = 'button'>Show My Progress</a>";
+      }
+    return "<div>$msg</div>";
+  }
+}
+
+
+
+
+function auto_role_allocation_teen_menu_alter(&$items) {
+  global $user;
+  if($user->roles[1] == 'anonymous user') {
+    $items['staff/register']['access callback'] = FALSE;
+
+  }
+
+}
+
+
+
