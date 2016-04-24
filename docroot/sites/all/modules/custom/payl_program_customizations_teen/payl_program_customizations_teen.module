@@ -1,0 +1,176 @@
+<?php
+
+/**
+ * Implements hook_user_load().
+ */
+function payl_program_customizations_teen_user_load($users) {
+  foreach($users as $account) {
+    $profile = profile2_load_by_user($account, 'main');
+    if (!empty($profile) && !empty($profile->field_user_birthday)) {
+      $birthday = new DateObject($profile->field_user_birthday[LANGUAGE_NONE][0]['value']);
+      $now = date_now();
+      $diff = $birthday->difference($now, 'years');
+      if ($diff <= 5) {
+        $account->roles[5] = 'Patron pre-reader';
+      }
+      if ($diff >= 6 && $diff <= 12) {
+        $account->roles[6] = 'Patron kids';
+      }
+      if ($diff >= 13 && $diff <= 17) {
+        $account->roles[7] = 'Patron teen';
+      }
+      if ($diff >= 18) {
+        $account->roles[8] = 'Patron adult';
+      }
+    }
+  }
+  drupal_static_reset('user_access');
+}
+function custom_activity_teen_submit_handler(&$form, &$form_state) {
+  $firing_hook = $form_state['values']['entity']->field_activity_fired_hook[LANGUAGE_NONE][0]['value'];
+
+  if($firing_hook == 'node_update|node|sticker|updated') {
+    $query = db_select('field_data_field_activity_fired_hook', 'fh');
+    $query->condition('fh.field_activity_fired_hook_value', $firing_hook, '=');
+    $query->fields('fh', array('entity_id'));
+    $result = $query->execute();
+    $count = $result->rowCount();
+    
+  }
+  
+  if($count > 0) {
+    form_set_error('field_activity_fired_hook', t('Only one activity with firing hook Place sticker on Progress Report'));
+    drupal_goto('admin/structure/entity-type/activity/activity/add');
+  }
+  
+
+}
+/**
+ * Implements hook_form_alter().
+ */
+function payl_program_customizations_teen_form_alter(&$form, &$form_state, $form_id) {
+/* making staff registration email field required */
+if($form_id == 'user_register_form') {
+  $arg = arg(3);
+  if($arg == 'staff') {
+    $form['account']['mail']['#required'] = TRUE;
+  }  
+
+}
+
+
+
+
+  if($form_id == "eck__entity__form_add_activity_activity") {
+
+    $form['#submit'] = array("custom_activity_teen_submit_handler","eck__entity__form_submit");
+  }
+
+  if ($form_id == 'user_profile_form') {
+    global $user;
+    $uid = $user->uid;
+
+    $role_user = $user->roles;
+    // showing of tabs only for user role as patron
+    if(array_key_exists(6, $role_user)){
+      $form['public_profile'] = array(
+        '#markup' => t("<a href='../../../users/public_profile/$uid' class = 'button'>My Public Profile</a>"),
+        '#weight' => -20,
+      );
+
+      $form['change_username'] = array(
+        '#markup' => t('<a href="../edit" class = "button">Change My Username or Password</a>'),
+        '#weight' => -20,
+      );
+    }
+  }
+
+  if ($form_id == 'user_register_form') {
+    $setting = array(
+      'payl_program_customizations_teen_birthday_limit' => strtotime('-13 years'),
+    );
+    drupal_add_js($setting, array('type' => 'setting'));
+    drupal_add_js(drupal_get_path('module', 'payl_program_customizations_teen') . '/payl_program_customizations_teen.js');
+    $form['current_username'] = array(
+      '#markup' => '<h3 class="username">Username: <span class="current-username"></span></h3>',
+      '#weight' => 1,
+    );
+
+    // Move the email element to the main profile.
+    //$mail_element = $form['account']['mail'];
+    //$mail_element['#weight'] = -100;
+    //$form['profile_main']['mail'] = $mail_element;
+    //unset($form['account']['mail']);
+
+    $form['#validate'][] = 'payl_program_customizations_teen_user_register_validate';
+    if (!empty($form['profile_main'])) {
+      $form['profile_main']['field_user_address'][LANGUAGE_NONE][0]['name_block'] = array(
+        '#type' => 'value',
+        '#value' => 'User address',
+      );
+      $form['profile_main']['field_user_address'][LANGUAGE_NONE][0]['organisation_block'] = array(
+        '#type' => 'value',
+        '#value' => '',
+      );
+    }
+  }
+
+  //To provide a message if user has no email mentioned during registration
+  if($form_id == 'user_pass'){
+    $form['#validate'][1] = 'password_user_teen'; //function to validate the user
+    $form['name']['#title'] = '<div class="user_pass_name">Please enter username</div>'.'<div class="user_pass">If you do not have an email address, you need to seek staff assistance to reset your password</div>';
+    $form['actions']['submit']['#value'] = 'Submit';
+  }
+
+  // changing of display field name for reward entity
+  if($form_id == 'eck__entity__form_edit_reward_reward' || $form_id == 'eck__entity__form_add_reward_reward'){
+    $form['field_reward_message']['und'][0]['#title'] = 'Onscreen Alert';
+    $form['field_reward_notification']['und'][0]['#title'] = 'Message';
+  }
+
+  // Changing of text from participants to Sender
+  if ($form_id == 'privatemsg_list') {
+    $form['updated']['list']['#header']['participants']['data'] = t('Sender');
+  }
+
+  // Increasing string length
+  if ($form_id == 'user_register_form') {
+    $form['profile_main']['field_do_you_want_other_players_']['und']['#title'] = t('Do you want other players to be able to see your badges and prizes when they click on your username? They won\'t be able to see your real name.');
+  }
+
+  // Changing of button text from Add new Badge to Add Badge Image
+  if ($form_id == 'eck__entity__form_add_reward_reward') {
+    $form['field_reward_badge']['und']['actions']['ief_add']['#value'] = t('Add Badge Image');
+  }
+}
+
+function payl_program_customizations_teen_user_register_validate($form, &$form_state) {
+  $values = $form_state['values'];
+  if (empty($values['name'])) {
+    form_set_error('name', t('Please ensure to create your own username OR generate a new username'));
+  }
+}
+ //function to provide a message if user has no email associated with account.
+function password_user_teen(&$form, &$form_state){
+  $form_value = $form_state['complete form']['name']['#value'];
+  if (filter_var($form_value, FILTER_VALIDATE_EMAIL)) {
+       drupal_set_message('Please enter only username','error');
+  } 
+
+   $mail_id = $form_state['values']['account'];
+   $mail = $mail_id->mail;
+   if($mail == ''){
+      drupal_set_message('Please seek the staff assistance to reset your password','error');
+   }else{
+      drupal_set_message('Login details have been sent to your e-mail address.');
+   }
+}
+//function for private message when a user is followed
+function payl_program_customizations_teen_flag_flag($flag, $entity_id, $account, $flagging){
+  $flag_name = arg(2);
+  if($flag_name == 'follow'){
+    $uid = $flagging->entity_id;
+    $user_name = $account->name;
+    privatemsg_new_thread(array(user_load($uid)), $user_name.' is now following you.', $user_name.' is now following you.');
+  }
+}
