@@ -7,7 +7,7 @@
   color: $white;
   font-size: 14px;
   @include mclaren;
-  padding: 3px 12px 19px 0px;
+  padding: 3px 12px 8px 0px;
   display: inline-block;
 
 
@@ -109,15 +109,16 @@
                @include mclaren;
                @include boxshadow;
                  &.newclass {
-                  background-color: $msg-active !important;
                   color: $white !important;
+                   background: $msg-active  url('../images/libraryzurb/msg-img.png') no-repeat scroll 10px 7px / auto !important;
                  }
                  
                 &.msg {
                    padding: 8px 12px 5px 33px !important; 
-                   background: $blue url('../images/libraryzurb/msg-img.png');
-                   background-repeat: no-repeat;
-                   background-position: 10px 7px;
+                   background: $yellow url('../images/libraryzurb/msg-purple.png') no-repeat scroll 10px 7px / auto;
+                  /*  background-repeat: no-repeat;
+                   background-position: 10px 7px; */
+                   color: $blue;
     
                 }
              }

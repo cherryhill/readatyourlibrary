@@ -6497,27 +6497,35 @@ h1#page-title {
   margin-bottom: 0;
 }
 .not-logged-in .pre-header .pre-header-left .top-menu .block-menu-menu-authenticated-links .menu li a {
-  color: #fff !important;
+  color: #000;
   font-family: SpecialElite !important;
   font-weight: normal !important;
   font-style: normal !important;
   -webkit-font-smoothing: antialiased !important;
   -moz-osx-font-smoothing: grayscale !important;
-  background: #32024e !important;
+  background: #fdeb52 !important;
+  text-transform: capitalize;
+  border: none;
   padding: 10px 20px 7px;
   -webkit-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
   -moz-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
   box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
-  border: none;
-  text-transform: capitalize;
   font-size: 17px;
   margin: 5px !important;
 }
-.not-logged-in .pre-header .pre-header-left .top-menu .block-menu-menu-authenticated-links .menu li a:hover, .not-logged-in .pre-header .pre-header-left .top-menu .block-menu-menu-authenticated-links .menu li a:focus {
-  color: #fff;
-  background: #32024e;
+.not-logged-in .pre-header .pre-header-left .top-menu .block-menu-menu-authenticated-links .menu li a:hover {
+  color: #000;
+  background: #f7fc63 !important;
   opacity: 1;
   outline: none;
+  text-decoration: none !important;
+}
+.not-logged-in .pre-header .pre-header-left .top-menu .block-menu-menu-authenticated-links .menu li a:focus, .not-logged-in .pre-header .pre-header-left .top-menu .block-menu-menu-authenticated-links .menu li a.active {
+  color: #000;
+  background: #f0f811 !important;
+  outline: 1;
+  opacity: 1;
+  text-decoration: none !important;
 }
 
 .admin-menu .fixed {
@@ -6561,7 +6569,7 @@ h1#page-title {
   max-width: 100%;
 }
 .l-header .row.header-middle a#logo {
-  margin: 20px 20px 20px 0px;
+  margin: 20px 20px 15px 0px;
 }
 .l-header .row.header-middle h1#site-name {
   margin: 26px 0px 0px;
@@ -6582,7 +6590,8 @@ h1#page-title {
   float: right;
   list-style: none;
   position: relative;
-  margin-top: 50px;
+  margin-top: 46px;
+  margin-bottom: 17px;
 }
 .l-header .row.header-middle section.block-menu-menu-secoundary-menu ul.menu li {
   display: inline-block;
@@ -6628,47 +6637,46 @@ h1#page-title {
   position: relative;
 }
 .l-header .row.header-middle section.block-menu-menu-secoundary-menu ul.menu li a.current-program:hover:after, .l-header .row.header-middle section.block-menu-menu-secoundary-menu ul.menu li a.current-program.active-trail:after {
-  	 			  	  	  	 		/* background:  url('../images/libraryzurb/currentprogs_hover.png') no-repeat;
-                           @include bck_size_tablet; */
+  background: url("../images/libraryzurb/currentprogs_hover.png") no-repeat;
 }
 .l-header .row.header-middle section.block-menu-menu-secoundary-menu ul.menu li a.current-program:after {
   background: url("../images/libraryzurb/current-programs.png") no-repeat;
 }
 .l-header .row.header-middle section.block-menu-menu-secoundary-menu ul.menu li a.activities:hover:after, .l-header .row.header-middle section.block-menu-menu-secoundary-menu ul.menu li a.activities.active-trail:after {
-  	 			  	  	  	 		/* background: url('../images/libraryzurb/activities_hover.png') no-repeat;
-                          @include bck_size_tablet; */
+  background: url("../images/libraryzurb/activities_hover.png") no-repeat;
+  background-position: 0px 7px;
 }
 .l-header .row.header-middle section.block-menu-menu-secoundary-menu ul.menu li a.activities:after {
   background: url("../images/libraryzurb/activities.png") no-repeat;
   background-position: 0px 7px;
 }
 .l-header .row.header-middle section.block-menu-menu-secoundary-menu ul.menu li a.rewards:hover:after, .l-header .row.header-middle section.block-menu-menu-secoundary-menu ul.menu li a.rewards.active-trail:after {
-  	 			  	  	  	 		/* background: url('../images/libraryzurb/rewards_hover.png') no-repeat;
-                          @include bck_size_tablet; */
+  background: url("../images/libraryzurb/rewards_hover.png") no-repeat;
+  background-position: 8px 7px;
 }
 .l-header .row.header-middle section.block-menu-menu-secoundary-menu ul.menu li a.rewards:after {
   background: url("../images/libraryzurb/rewards.png") no-repeat;
   background-position: 8px 7px;
 }
 .l-header .row.header-middle section.block-menu-menu-secoundary-menu ul.menu li a.reviews:hover:after, .l-header .row.header-middle section.block-menu-menu-secoundary-menu ul.menu li a.reviews.active-trail:after {
-  	 			  	  	  	 		/* background: url('../images/libraryzurb/reviewactive.png') no-repeat;
-                          @include bck_size_tablet; */
+  background: url("../images/libraryzurb/reviewactive.png") no-repeat;
+  background-position: 0px 7px;
 }
 .l-header .row.header-middle section.block-menu-menu-secoundary-menu ul.menu li a.reviews:after {
   background: url("../images/libraryzurb/reviews.png") no-repeat;
   background-position: 0px 7px;
 }
 .l-header .row.header-middle section.block-menu-menu-secoundary-menu ul.menu li a.photos:hover:after, .l-header .row.header-middle section.block-menu-menu-secoundary-menu ul.menu li a.photos.active-trail:after {
-  	 			  	  	  	 		/* background: url('../images/libraryzurb/photos_videos_hover.png') no-repeat;
-                          @include bck_size_tablet; */
+  background: url("../images/libraryzurb/photos_videos_hover.png") no-repeat;
+  background-position: 0px 7px;
 }
 .l-header .row.header-middle section.block-menu-menu-secoundary-menu ul.menu li a.photos:after {
   background: url("../images/libraryzurb/photosnvideos.png") no-repeat;
   background-position: 0px 7px;
 }
 .l-header .row.header-middle section.block-menu-menu-secoundary-menu ul.menu li a.events:hover:after, .l-header .row.header-middle section.block-menu-menu-secoundary-menu ul.menu li a.events.active-trail:after {
-  	 			  	  	  	 		/* background: url('../images/libraryzurb/events_hover.png') no-repeat;
-                          @include bck_size_tablet; */
+  background: url("../images/libraryzurb/events_hover.png") no-repeat;
+  background-position: 12px 7px;
 }
 .l-header .row.header-middle section.block-menu-menu-secoundary-menu ul.menu li a.events:after {
   background: url("../images/libraryzurb/events.png") no-repeat;
@@ -6678,23 +6686,23 @@ h1#page-title {
   border: none;
 }
 .l-header .row.header-middle section.block-menu-menu-secoundary-menu ul.menu li a.progress:hover:after, .l-header .row.header-middle section.block-menu-menu-secoundary-menu ul.menu li a.progress.active-trail:after {
-  	 			  	  	  	 		/* background: url('../images/libraryzurb/progress_hover.png') no-repeat;
-                          @include bck_size_tablet; */
+  background: url("../images/libraryzurb/progress_hover.png") no-repeat;
+  background-position: 6px 22px;
 }
 .l-header .row.header-middle section.block-menu-menu-secoundary-menu ul.menu li a.progress:after {
   background: url("../images/libraryzurb/progress.png") no-repeat;
   background-position: 6px 22px;
 }
-.l-header .row.header-middle section.block-menu-menu-secoundary-menu ul.menu li a:hover {
+.l-header .row.header-middle section.block-menu-menu-secoundary-menu ul.menu li a:hover, .l-header .row.header-middle section.block-menu-menu-secoundary-menu ul.menu li a.active-trail {
   color: #32024e;
   text-decoration: none;
 }
-.l-header .row.header-middle section.block-menu-menu-secoundary-menu ul.menu li a:hover:after {
-  -webkit-transform: rotateY(360deg);
-  -moz-transform: rotateY(360deg);
-  -ms-transform: rotateY(360deg);
-  -o-transform: rotateY(360deg);
-  transform: rotateY(360deg);
+.l-header .row.header-middle section.block-menu-menu-secoundary-menu ul.menu li a:hover:after, .l-header .row.header-middle section.block-menu-menu-secoundary-menu ul.menu li a.active-trail:after {
+  -webkit-transform: rotateX(360deg);
+  -moz-transform: rotateX(360deg);
+  -ms-transform: rotateX(360deg);
+  -o-transform: rotateX(360deg);
+  transform: rotateX(360deg);
 }
 
 /**hide admin menu on mobile css**/
@@ -11801,9 +11809,11 @@ body .alert-box.success a.close:hover {
 }
 
 /**css only for booklist page**/
-.page-booklists .l-header .row.header-middle section.block-menu-menu-secoundary-menu ul.menu li a.reviews::after {
-  /* background: url('../images/libraryzurb/reviewactive.png') no-repeat !important;
-   @include bck_size_tablet; */
+.page-booklists .l-header .row.header-middle section.block-menu-menu-secoundary-menu ul.menu li a.reviews {
+  color: #32024e;
+}
+.page-booklists .l-header .row.header-middle section.block-menu-menu-secoundary-menu ul.menu li a.reviews:after {
+  background: url("../images/libraryzurb/reviewactive.png") no-repeat scroll 0px 7px !important;
 }
 .page-booklists .main .view-header, .page-booklists .main .view-footer {
   display: none;
@@ -13280,7 +13290,7 @@ body .alert-box.success a.close:hover {
   font-style: normal !important;
   -webkit-font-smoothing: antialiased !important;
   -moz-osx-font-smoothing: grayscale !important;
-  padding: 3px 12px 19px 0px;
+  padding: 3px 12px 8px 0px;
   display: inline-block;
 }
 .pre-header a {
@@ -13403,14 +13413,15 @@ body .alert-box.success a.close:hover {
   box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
 }
 .pre-header .pre-header-left section .view .views-field a.newclass {
-  background-color: #358aa7 !important;
   color: #fff !important;
+  background: #358aa7 url("../images/libraryzurb/msg-img.png") no-repeat scroll 10px 7px/auto !important;
 }
 .pre-header .pre-header-left section .view .views-field a.msg {
   padding: 8px 12px 5px 33px !important;
-  background: #32024e url("../images/libraryzurb/msg-img.png");
-  background-repeat: no-repeat;
-  background-position: 10px 7px;
+  background: #fdeb52 url("../images/libraryzurb/msg-purple.png") no-repeat scroll 10px 7px/auto;
+  /*  background-repeat: no-repeat;
+   background-position: 10px 7px; */
+  color: #32024e;
 }
 .pre-header .pre-header-left section .view .views-field.views-field-name a {
   color: #fff !important;
@@ -13648,7 +13659,7 @@ ul.quicktabs-tabs li a:focus, ul.quicktabs-tabs li a:hover {
 p {
   font-size: 16px;
   line-height: 1.4;
-  font-family: Arialregular;
+  font-family: Raleway-Medium;
   font-style: normal !important;
   font-weight: normal !important;
   -webkit-font-smoothing: antialiased !important;
@@ -14004,7 +14015,6 @@ header h2 {
 .sidebar .block:not(.block-menu-block-1) h2.block-title {
   border: 0;
   font-size: 24px;
-  padding-left: 33px;
   text-transform: capitalize;
   line-height: 1;
   margin-top: 0;
