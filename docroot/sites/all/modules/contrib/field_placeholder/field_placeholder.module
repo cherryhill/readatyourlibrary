@@ -1,0 +1,147 @@
+<?php
+
+/**
+ * @file
+ * Field placeholder module hooks and main functionality.
+ *
+ * This module gives support to add HTML5 placeholder
+ * attribute to field widget forms.
+ */
+
+/**
+ * Implements hook_field_form_field_ui_field_edit_form_alter().
+ */
+function field_placeholder_form_field_ui_field_edit_form_alter(&$form, &$form_state) {
+  if (in_array($form['#instance']['widget']['type'], field_placeholder_get_widget_types())) {
+    $settings = isset($form['#instance']) ? $form['#instance'] : array();
+
+    $form['instance']['placeholder_wrapper'] = array(
+      '#type' => 'fieldset',
+      '#title' => t('Placeholder settings'),
+      '#weight' => -4,
+    );
+
+    $form['instance']['placeholder_wrapper']['use_title_as_placeholder'] = array(
+      '#type' => 'radios',
+      '#title' => t('Placeholder source'),
+      '#options' => array(t('Set manual placeholder'), t('Use label as placeholder')),
+      '#default_value' => isset($settings['use_title_as_placeholder']) ? $settings['use_title_as_placeholder'] : 0,
+      '#parents' => array('instance', 'use_title_as_placeholder'),
+    );
+
+    $form['instance']['placeholder_wrapper']['placeholder'] = array(
+      '#type' => 'textfield',
+      '#title' => t('Placeholder'),
+      '#description' => t('Placeholder value for this field instance.'),
+      '#default_value' => isset($settings['placeholder']) ? $settings['placeholder'] : '',
+      '#parents' => array('instance', 'placeholder'),
+      '#states' => array(
+        'visible' => array(
+          ':input[name="instance[use_title_as_placeholder]"]' => array('value' => 0),
+        )
+      )
+    );
+
+    $form['instance']['placeholder_wrapper']['info_use_label'] = array(
+      '#type' => 'item',
+      '#markup' => t('Selecting this option, the label of the element will be replaced by the placeholder.'),
+      '#states' => array(
+        'visible' => array(
+          ':input[name="instance[use_title_as_placeholder]"]' => array('value' => 1),
+        )
+      )
+    );
+  }
+}
+
+/**
+ * Implements hook_field_widget_form_alter().
+ */
+function field_placeholder_field_widget_form_alter(&$element, &$form_state, $context) {
+  if (in_array($context['instance']['widget']['type'], field_placeholder_get_widget_types()) &&
+    (!empty($context['instance']['placeholder']) || !empty($context['instance']['use_title_as_placeholder']))) {
+    field_placeholder_add_non_html5_support();
+    $placeholder = field_placeholder_get_widget($context['instance']['widget']['type']);
+    $instance = module_exists('i18n_field_placeholder') ? i18n_string_object_translate('field_instance', $context['instance']) : $context['instance'];
+
+    if (!empty($context['instance']['use_title_as_placeholder'])) {
+      $element[$placeholder]['#title_display'] = "invisible";
+      $element[$placeholder]['#attributes']['placeholder'] = $instance['label'];
+    }
+    else {
+      $element[$placeholder]['#attributes']['placeholder'] = $instance['placeholder'];
+    }
+  }
+}
+
+/**
+ * Adds Internet Explorer support through placeholder.js library.
+ *
+ * http://jamesallardice.github.io/Placeholders.js/
+ */
+function field_placeholder_add_non_html5_support() {
+  $header_added = &drupal_static(__FUNCTION__);
+  if (!$header_added) {
+    if (libraries_get_path('placeholder')) {
+      drupal_add_js(libraries_get_path('placeholder') . '/placeholders.jquery.min.js');
+    }
+    $header_added = TRUE;
+  }
+}
+
+/**
+ * Returns information about field widgets from hook_field_placeholder_info().
+ *
+ * @return array
+ *   An array containing all the Field placeholder available widgets
+ *   information.
+ */
+function field_placeholder_get_widgets() {
+  $widgets = &drupal_static(__FUNCTION__);
+
+  if (!$widgets) {
+    $widgets = module_invoke_all('field_placeholder_info');
+    $widgets = (is_array($widgets)) ? $widgets : array();
+  }
+
+  return $widgets;
+}
+
+/**
+ * Returns information about a widget_type from hook_field_placeholder_info().
+ *
+ * @param string $widget_type
+ *   (optional) A widget type name. If omitted, all widget types will be
+ *   returned.
+ *
+ * @return string|bool
+ *   Columns name for the required widget if if exists, otherwise returns FALSE.
+ */
+function field_placeholder_get_widget($widget_type) {
+  $widgets = module_invoke_all('field_placeholder_info');
+  return isset($widgets[$widget_type]) ? $widgets[$widget_type] : FALSE;
+}
+
+/**
+ * Returns an array with names of all the placeholder available widgets.
+ *
+ * @return array
+ *   Array containing all the Field placeholder available widgets name.
+ */
+function field_placeholder_get_widget_types() {
+  $widgets = field_placeholder_get_widgets();
+  return array_keys($widgets);
+}
+
+/**
+ * Implements hook_field_placeholder_info().
+ */
+function field_placeholder_field_placeholder_info() {
+  return array(
+    'text_textfield' => 'value',
+    'text_textarea' => 'value',
+    'text_textarea_with_summary' => 'summary',
+    'number' => 'value',
+    'email_textfield' => 'email',
+  );
+}
