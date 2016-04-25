@@ -146,17 +146,16 @@
       <?php print render($page['content']); ?>
     </div>
     <!--/.main region -->
-
-    <?php if (!empty($page['sidebar_first'])): ?>
-      <aside role="complementary" class="<?php print $sidebar_first_grid; ?> sidebar-first columns sidebar">
-        <?php print render($page['sidebar_first']); ?>
-      </aside>
-    <?php endif; ?>
-
      <?php if (!empty($page['login_form'])): ?>
       <aside role="complementary" class="<?php print $sidebar_first_grid; ?> sidebar-first columns sidebar2">
         <div class='first'><?php print render($page['login_form']); ?> </div>
         <?php //print render($page['login_form']); ?>
+      </aside>
+    <?php endif; ?>
+    
+    <?php if (!empty($page['sidebar_first'])): ?>
+      <aside role="complementary" class="<?php print $sidebar_first_grid; ?> sidebar-first columns sidebar">
+        <?php print render($page['sidebar_first']); ?>
       </aside>
     <?php endif; ?>
 
