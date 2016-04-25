@@ -1,0 +1,45 @@
+<?php
+
+/**
+ * @file
+ * Contains update functions for Field placeholder.
+ */
+
+/**
+ * Update placement of placeholder in $instance for i18n_field integration.
+ */
+function field_placeholder_update_7101() {
+  $all_instances = field_info_instances();
+  foreach ($all_instances as $entity_type => $bundle) {
+    foreach ($bundle as $name => $instances) {
+      foreach ($instances as $instance) {
+        if (isset($instance['settings']['placeholder'])) {
+          $instance['placeholder'] = $instance['settings']['placeholder'];
+          unset($instance['settings']['placeholder']);
+          field_update_instance($instance);
+        }
+      }
+    }
+  }
+
+  return t('Field placeholder maintenance tasks finished');
+}
+
+/**
+ * Adds use_title_as_placeholder setting default.
+ */
+function field_placeholder_update_7202() {
+  $all_instances = field_info_instances();
+  foreach ($all_instances as $entity_type => $bundle) {
+    foreach ($bundle as $name => $instances) {
+      foreach ($instances as $instance) {
+        if (isset($instance['placeholder']) && !isset($instance['use_title_as_placeholder'])) {
+          $instance['use_title_as_placeholder'] = FALSE;
+          field_update_instance($instance);
+        }
+      }
+    }
+  }
+
+  return t('Field placeholder maintenance tasks finished');
+}
