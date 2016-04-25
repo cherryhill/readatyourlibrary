@@ -7,7 +7,7 @@
   &.header-middle {
   	max-width: 100%;
   	 a#logo {
-        margin: 20px 20px 20px 0px;
+        margin: 20px 20px 15px 0px;
   	 }
   	 h1#site-name {
   	 	margin: 26px 0px 0px;
@@ -28,7 +28,8 @@
   	 			float: right;
   	 			list-style: none;
   	 			position: relative;
-          margin-top: 50px;
+          margin-top: 46px;
+          margin-bottom: 17px;
   	 			  li {
   	 			  	display: inline-block;
   	 			  	vertical-align: top;
@@ -58,8 +59,8 @@
   	 			  	  	  	position: relative;
   	 			  	  	  	 &:hover,&.active-trail {
   	 			  	  	  	 	&:after {
-  	 			  	  	  	 		/* background:  url('../images/libraryzurb/currentprogs_hover.png') no-repeat;
-                           @include bck_size_tablet; */
+  	 			  	  	  	 	 background:  url('../images/libraryzurb/currentprogs_hover.png') no-repeat;
+                          
   	 			  	  	  	   }
   	 			  	  	  	 }
   	 			  	  	  	 &:after {
@@ -70,8 +71,8 @@
   	 			  	  	 &.activities {
   	 			  	  	 	 &:hover,&.active-trail {
   	 			  	  	  	 	&:after {
-  	 			  	  	  	 		/* background: url('../images/libraryzurb/activities_hover.png') no-repeat;
-                          @include bck_size_tablet; */
+  	 			  	  	  	 	background: url('../images/libraryzurb/activities_hover.png') no-repeat;
+                          background-position: 0px 7px;
   	 			  	  	  	   }
   	 			  	  	  	 }
   	 			  	  	  	&:after{
@@ -82,8 +83,8 @@
   	 			  	  	  &.rewards {
   	 			  	  	  	 &:hover,&.active-trail {
   	 			  	  	  	 	&:after {
-  	 			  	  	  	 		/* background: url('../images/libraryzurb/rewards_hover.png') no-repeat;
-                          @include bck_size_tablet; */
+  	 			  	  	  	 		 background: url('../images/libraryzurb/rewards_hover.png') no-repeat;
+                             background-position: 8px 7px;
   	 			  	  	  	   }
   	 			  	  	  	 }
   	 			  	  	  	&:after {
@@ -95,8 +96,8 @@
   	 			  	  	  &.reviews {
   	 			  	  	  	 &:hover,&.active-trail {
   	 			  	  	  	 	&:after {
-  	 			  	  	  	 		/* background: url('../images/libraryzurb/reviewactive.png') no-repeat;
-                          @include bck_size_tablet; */
+  	 			  	  	  	 		 background: url('../images/libraryzurb/reviewactive.png') no-repeat;
+                            background-position: 0px 7px;
   	 			  	  	  	   }
   	 			  	  	  	 }
                             &:after {
@@ -108,8 +109,8 @@
   	 			  	  	  &.photos {
   	 			  	  	  	 &:hover,&.active-trail {
   	 			  	  	  	 	&:after {
-  	 			  	  	  	 		/* background: url('../images/libraryzurb/photos_videos_hover.png') no-repeat;
-                          @include bck_size_tablet; */
+  	 			  	  	  	 		background: url('../images/libraryzurb/photos_videos_hover.png') no-repeat;
+                          background-position: 0px 7px;
   	 			  	  	  	   }
   	 			  	  	  	 }
   	 			  	  	  	&:after {
@@ -121,8 +122,8 @@
   	 			  	  	  &.events {
   	 			  	  	  	 &:hover,&.active-trail {
   	 			  	  	  	 	&:after {
-  	 			  	  	  	 		/* background: url('../images/libraryzurb/events_hover.png') no-repeat;
-                          @include bck_size_tablet; */
+  	 			  	  	  	 		 background: url('../images/libraryzurb/events_hover.png') no-repeat;
+                           background-position: 12px 7px;
   	 			  	  	  	   }
   	 			  	  	  	 }
   	 			  	  	  	&:after {
@@ -134,8 +135,8 @@
   	 			  	  	  &.progress {
   	 			  	  	  	 &:hover,&.active-trail {
   	 			  	  	  	 	&:after {
-  	 			  	  	  	 		/* background: url('../images/libraryzurb/progress_hover.png') no-repeat;
-                          @include bck_size_tablet; */
+  	 			  	  	  	  background: url('../images/libraryzurb/progress_hover.png') no-repeat;
+                        background-position: 6px 22px;
   	 			  	  	  	   }
   	 			  	  	  	 }
   	 			  	  	  	border: none;
@@ -145,11 +146,11 @@
   	 			  	  	    }
   	 			  	  	  }
   	 			  	  	  
-  	 			  	  	   &:hover {
+  	 			  	  	   &:hover,&.active-trail  {
                        color: $blue;
                        text-decoration: none;
   	 			  	  	   	&:after {
-  	 			  	  	   		@include rotate(360deg, $dir: Y);
+  	 			  	  	   		@include rotate(360deg, $dir: X);
 					}
 						 
 					  }
