@@ -1678,9 +1678,12 @@
 /**css only for booklist page**/
 
 .page-booklists {
-  	.l-header .row.header-middle section.block-menu-menu-secoundary-menu ul.menu li a.reviews::after {
-  		/* background: url('../images/libraryzurb/reviewactive.png') no-repeat !important;
-  		 @include bck_size_tablet; */
+  	.l-header .row.header-middle section.block-menu-menu-secoundary-menu ul.menu li a.reviews {
+  		color: $blue;
+  		&:after {
+  		  background: url('../images/libraryzurb/reviewactive.png') no-repeat scroll 0px 7px !important;
+  		}
+  		 
   	}
   	.main {
   		.view-header,.view-footer {
