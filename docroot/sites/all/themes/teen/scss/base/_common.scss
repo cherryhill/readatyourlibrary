@@ -221,3 +221,58 @@ h1#page-title {
   		}
   	}
   }
+  /**css for social sharing***/
+  .social-share {
+  	.first {
+  		background: $blue;
+  		display: inline-block;
+  		width: 100%;
+  		padding: 13px 7.28%;
+  		@include boxshadow;
+  		  .block {
+  		  	  margin-bottom: 0;
+  		  	  background: $white; 
+  		  	   .block-title {
+  		  	   	 color: $blue;
+  		  	   	 font-size: 18px;
+  		  	   	 padding-left: 12px;
+  		  	   	 @include noborder;
+  		  	   	 width: 30%;
+  		  	   	 display: inline-block;
+  		  	   	 @include mclaren;
+  		  	   	 vertical-align: middle;
+  		  	   	 margin-bottom: 0;
+  		  	   }
+  		  	   .sharethis-wrapper {
+  		  	   	 width: 68%;
+  		  	   	 display: inline-block;
+  		  	   	 padding: 7px 0px;
+  		            span {
+  		            	display: inline-block;
+  		            	vertical-align: middle;
+  		            	  &.st_facebook_large {
+  		            	  	.stLarge {
+  		            	  		background: url('../images/libraryzurb/facebook-icon.png') no-repeat !important;
+  		            	  	}
+  		            	  }
+  		            	  &.st_tumblr_large {
+  		            	  	.stLarge {
+  		            	  		background: url('../images/libraryzurb/tumbir-icon.png') no-repeat !important;
+  		            	  	}
+  		            	  }
+  		            	  &.st_twitter_large {
+  		            	  	.stLarge {
+  		            	  		background: url('../images/libraryzurb/twitter-icon.png') no-repeat !important;
+  		            	  	}
+  		            	  }
+  		            	  &.st_email_large {
+  		            	  	.stLarge {
+  		            	  		background: url('../images/libraryzurb/email-icon.png') no-repeat !important;
+  		            	  	}
+  		            	  }
+  		            }
+
+  		  	   }
+  		  }
+  	}
+  }
