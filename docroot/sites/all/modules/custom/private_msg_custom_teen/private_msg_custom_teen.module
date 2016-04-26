@@ -270,6 +270,10 @@ function private_msg_custom_teen_block_info() {
     'info' => t('Menu block for mobile for teen program'),
   );
 
+  $blocks['content_select_list'] = array(
+    'info' => t('Select list for creating different reviews'),
+  );
+
   return $blocks;
 }
 
@@ -291,6 +295,9 @@ function private_msg_custom_teen_block_view($delta = '') {
     case 'menu_for_mobile' :
       $block['content'] = header_menu_mobile_teen();
       break;
+
+    case 'content_select_list' :
+      $block['content'] = creating_review();
   }
   
   return $block;
@@ -374,4 +381,39 @@ function header_menu_mobile_teen(){
 	$output .= render($block['content']). '</div>';
 
 	return $output;
+}
+
+/**
+ * Function callback for creating reviews
+ */
+function creating_review($form, $form_state){
+
+  global $base_url;
+
+  $no_review = $base_url.'/reviews';
+  $link_book_review = $base_url.'/node/add/review-book';
+  $link_movie = $base_url.'/node/add/movie-review';
+  $link_music = $base_url.'/node/add/music-review';
+  $link_video_game = $base_url.'/node/add/video-game-review';
+  $link_booklist = $base_url.'/node/add/booklist';
+  $link_activity_review = $base_url.'/node/add/review-activity';
+
+  $values = array($no_review => t('Select Review'),
+    $link_book_review => t('Book Reviews'),
+    $link_activity_review => t('Activity Reviews'),
+    $link_movie => t('Movie Reviews'),
+    $link_music => t('Music Reviews'),
+    $link_video_game => t('Video Game Reviews'),
+    $link_booklist => t('Booklists'));
+
+  $form['review_options'] = array(
+    '#title' => t('Write A Review'),
+    '#type' => 'select',
+    '#description' => t('Select Review type'),
+    '#options' => $values,
+    '#attributes' => array(
+      'class' => array('add_review_node')
+    )
+  );
+  return $form;
 }
