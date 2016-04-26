@@ -198,6 +198,24 @@ function private_msg_custom_teen_profile2_presave($profile) {
  */
 function private_msg_custom_teen_form_alter(&$form, &$form_state, $form_id) {
 
+  if($form_id == 'movie_review_node_form'){
+    // echo '<pre>'; print_r($form);die();
+    //hidding label for other option field
+    $form['field_genre_other_option'][LANGUAGE_NONE][0]['value']['#title'] = NULL;
+    $form['field_movie_review_sub_titile'][LANGUAGE_NONE]['#title'] = t('Fill out the following form to submit your review! Reviews will be posted upon approval and you will be sent a notification when your review has posted');
+    $form['body'][LANGUAGE_NONE][0]['#title'] = t('Write Your Review');
+
+    //Removing of N/A radio button
+    unset($form['field_genre']['und']['#options']['_none']);
+    unset($form['field_language']['und']['#options']['_none']);
+    unset($form['field_rating']['und']['#options']['_none']);
+    unset($form['field_please_select_one']['und']['#options']['_none']);
+    unset($form['field_movie_review_sub_titile']['und']['#options']['_none']);
+
+    //Changing default title
+    drupal_set_title('Write a Movie Review');
+  }
+
   if($form_id == 'review_book_node_form') {
     drupal_set_title('Write a Book Review');
   }
