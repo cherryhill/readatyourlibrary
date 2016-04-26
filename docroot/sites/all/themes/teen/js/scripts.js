@@ -11,6 +11,12 @@
            $(':checkbox[class="'  + name + '"]').not($(this)).prop('checked',false);   
         }
       });
+
+      // select list option with thier link
+      jQuery('.add_review_node').change(function(){
+        var option = jQuery(this).find('option:selected').val();
+        window.location = option;
+      });
       // Get width of browser viewport. **Note:** The value we check against
       // should probably match the value set for `$topbar-breakpoint` in
       // libraryzurb/scss/_variables.scss.
