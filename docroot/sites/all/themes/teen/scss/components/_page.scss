@@ -2770,3 +2770,32 @@ display: block !important;
   	 display: block !important;
   }
  }
+ /**movie review page add node page***/
+ .page-node-add-movie-review {
+ 	.form-item.form-type-radio.form-item-field-genre-und, .form-item.form-type-radio.form-item-field-language-und,.form-item.form-type-radio.form-item-field-rating-und  {
+ 		width: 19%;
+ 		display: inline-block;
+ 		 input[type="radio"] {
+ 		 	margin-bottom: 0;
+ 		 }
+ 	}
+ 	.form-item.form-type-radio.form-item-field-please-select-one-und {
+ 		 input[type="radio"] {
+ 		 	margin-bottom: 0;
+ 		 }
+ 	}
+ 	.form-textarea-wrapper textarea {
+ 		height: 250px;
+ 		resize: none;
+ 	}
+ 	#edit-field-release-year {
+ 	 fieldset {
+ 	 	padding: 0;
+ 	 	@include noborder;
+ 	 	.fieldset-legend {
+ 	 	 	font-size: 0.875em;
+ 	 	 	color: #4D4D4D;
+ 	 	 }
+ 	 }	
+ 	}
+ }
