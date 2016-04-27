@@ -6653,7 +6653,7 @@ h1#page-title {
 .l-header .row.header-middle section.block-menu-menu-secoundary-menu ul.menu li a {
   position: relative;
   width: 100%;
-  font-size: 18px;
+  font-size: 16px;
   color: #fff;
   display: inline-block;
   vertical-align: top;
@@ -7818,7 +7818,6 @@ h1#page-title {
 
 .block-title {
   font-weight: normal !important;
-  text-transform: capitalize;
 }
 
 .view.view-media-photos-videos- .view-footer button {
@@ -13428,23 +13427,24 @@ body .alert-box.success a.close:hover {
   width: 20px;
   height: 20px;
   text-align: center;
-  color: #000;
+  color: #fff;
   left: -30px;
   top: 0;
   position: absolute;
   font-size: 17px;
 }
 .pre-header .pre-header-left .breadcurm ul li.current a {
-  color: #000;
+  color: #fff;
+  font-size: 16px;
 }
 .pre-header .pre-header-left .breadcurm ul li a {
-  color: #32024e;
+  color: #fff;
   font-family: Raleway-Medium !important;
   font-style: normal !important;
   font-weight: normal !important;
   -webkit-font-smoothing: antialiased !important;
   text-transform: capitalize;
-  font-size: 17px;
+  font-size: 16px;
   float: left;
 }
 .pre-header .pre-header-left .top-menu {
@@ -13489,9 +13489,21 @@ body .alert-box.success a.close:hover {
   -moz-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
   box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
 }
+.pre-header .pre-header-left section .view .views-field a:hover {
+  text-decoration: none;
+  background-color: #f7fc63;
+}
+.pre-header .pre-header-left section .view .views-field a:focus, .pre-header .pre-header-left section .view .views-field a.active {
+  background-color: #f0f811;
+  text-decoration: none;
+}
 .pre-header .pre-header-left section .view .views-field a.newclass {
   color: #fff !important;
   background: #358aa7 url("../images/libraryzurb/msg-img.png") no-repeat scroll 10px 7px/auto !important;
+}
+.pre-header .pre-header-left section .view .views-field a.newclass:hover, .pre-header .pre-header-left section .view .views-field a.newclass:focus, .pre-header .pre-header-left section .view .views-field a.newclass.active {
+  background: #358aa7 url("../images/libraryzurb/msg-img.png") no-repeat scroll 10px 7px/auto !important;
+  text-decoration: none;
 }
 .pre-header .pre-header-left section .view .views-field a.msg {
   padding: 8px 12px 5px 33px !important;
