@@ -6745,11 +6745,11 @@ h1#page-title {
   background: url("../images/libraryzurb/progress.png") no-repeat;
   background-position: 6px 22px;
 }
-.l-header .row.header-middle section.block-menu-menu-secoundary-menu ul.menu li a:hover, .l-header .row.header-middle section.block-menu-menu-secoundary-menu ul.menu li a.active-trail {
+.l-header .row.header-middle section.block-menu-menu-secoundary-menu ul.menu li a:hover, .l-header .row.header-middle section.block-menu-menu-secoundary-menu ul.menu li a.active-trail, .l-header .row.header-middle section.block-menu-menu-secoundary-menu ul.menu li a:focus {
   color: #32024e;
   text-decoration: none;
 }
-.l-header .row.header-middle section.block-menu-menu-secoundary-menu ul.menu li a:hover:after, .l-header .row.header-middle section.block-menu-menu-secoundary-menu ul.menu li a.active-trail:after {
+.l-header .row.header-middle section.block-menu-menu-secoundary-menu ul.menu li a:hover:after, .l-header .row.header-middle section.block-menu-menu-secoundary-menu ul.menu li a.active-trail:after, .l-header .row.header-middle section.block-menu-menu-secoundary-menu ul.menu li a:focus:after {
   -webkit-transform: rotateX(360deg);
   -moz-transform: rotateX(360deg);
   -ms-transform: rotateX(360deg);
@@ -6792,6 +6792,67 @@ h1#page-title {
 
 .block {
   margin-bottom: 35px;
+}
+.block.block-private-msg-custom-teen-write-review-block {
+  background: #f6f45a;
+  padding: 20px 8.6%;
+}
+.block.block-private-msg-custom-teen-write-review-block .form-item {
+  margin: 0;
+}
+.block.block-private-msg-custom-teen-write-review-block .form-item label {
+  font-size: 22px;
+  color: #32024e;
+  font-family: SpecialElite !important;
+  font-weight: normal !important;
+  font-style: normal !important;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+}
+.block.block-private-msg-custom-teen-write-review-block .form-item .chosen-single {
+  background: #fff;
+  border: 1px solid #32024e;
+  color: #32024e;
+  display: inline-block;
+  padding: 8px 6px 3px;
+  width: 100%;
+  height: auto;
+  border-radius: 0;
+}
+.block.block-private-msg-custom-teen-write-review-block .form-item .chosen-single span {
+  font-family: SpecialElite !important;
+  font-weight: normal !important;
+  font-style: normal !important;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+}
+.block.block-private-msg-custom-teen-write-review-block .form-item .chosen-single div b {
+  background: none;
+  position: relative;
+}
+.block.block-private-msg-custom-teen-write-review-block .form-item .chosen-single div b:after {
+  content: '';
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 6px solid #32024e;
+  position: absolute;
+  top: 40%;
+  left: 0;
+  display: inline-block;
+}
+.block.block-private-msg-custom-teen-write-review-block .form-item .chosen-drop .chosen-results li {
+  color: #32024e;
+  font-family: SpecialElite !important;
+  font-weight: normal !important;
+  font-style: normal !important;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+}
+.block.block-private-msg-custom-teen-write-review-block .form-item .chosen-drop .chosen-results li.result-selected, .block.block-private-msg-custom-teen-write-review-block .form-item .chosen-drop .chosen-results li:hover {
+  background: #f6f45a;
+}
+.block.block-private-msg-custom-teen-write-review-block .description {
+  display: none;
 }
 .block.block-private-msg-custom-homepage-slider {
   background: #32024e !important;
@@ -6849,9 +6910,9 @@ h1#page-title {
   padding-top: 26px;
   padding-bottom: 13px;
   font-size: 26px;
+  padding-left: 36px;
   border-bottom: medium none;
   margin-top: -1px;
-  padding-left: 36px;
   z-index: 0;
   overflow: hidden;
 }
@@ -6986,18 +7047,18 @@ h1#page-title {
   outline: none !important;
 }
 .block.dashboard-block .block-title, .block.dashboard-block h2 {
-  color: #fff;
   font-family: SpecialElite !important;
   font-weight: normal !important;
   font-style: normal !important;
   -webkit-font-smoothing: antialiased !important;
   -moz-osx-font-smoothing: grayscale !important;
   padding-top: 26px;
+  font-size: 26px;
   padding-bottom: 25px;
-  font-size: 28px;
+  padding-left: 36px;
+  color: #fff;
   border-bottom: medium none;
   margin-top: -1px;
-  padding-left: 36px;
   z-index: 0;
   position: relative;
   font-weight: normal !important;
@@ -7156,13 +7217,13 @@ h1#page-title {
   top: 29%;
   right: -6px;
   padding: 12px 22px;
-  color: #fff !important;
+  color: #32024e !important;
   font-family: SpecialElite !important;
   font-weight: normal !important;
   font-style: normal !important;
   -webkit-font-smoothing: antialiased !important;
   -moz-osx-font-smoothing: grayscale !important;
-  background: #32024e !important;
+  background: #fdeb52 !important;
   padding: 10px 20px 7px;
   -webkit-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
   -moz-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
@@ -7172,8 +7233,8 @@ h1#page-title {
   font-size: 17px;
 }
 .block.block-private-msg-custom .pm-custom .pm-view:hover, .block.block-private-msg-custom .pm-custom .pm-view:focus {
-  color: #fff;
-  background: #32024e;
+  color: #32024e;
+  background: #f7fc63;
   opacity: 1;
   outline: none;
 }
@@ -7235,18 +7296,16 @@ h1#page-title {
   box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
 }
 .block.block-user-login .block-title, .block.block-user-login h2 {
-  color: #fff;
   font-family: SpecialElite !important;
   font-weight: normal !important;
   font-style: normal !important;
   -webkit-font-smoothing: antialiased !important;
   -moz-osx-font-smoothing: grayscale !important;
   padding-top: 26px;
-  padding-bottom: 25px;
-  font-size: 28px;
+  font-size: 26px;
+  padding-bottom: 0;
   border-bottom: medium none;
   margin-top: -1px;
-  padding-left: 36px;
   z-index: 0;
   position: relative;
   font-weight: normal !important;
@@ -7319,9 +7378,6 @@ h1#page-title {
 }
 .block.review-booklist-block {
   background: #fff;
-  border-radius: 20px;
-  padding-left: 10px;
-  padding-right: 10px;
   margin-bottom: 48px;
   -webkit-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
   -moz-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
@@ -7334,8 +7390,7 @@ h1#page-title {
 }
 .block.review-booklist-block .block-title {
   border-top: none;
-  padding: 10px;
-  padding-left: 22.6%;
+  padding: 0;
 }
 .block.review-booklist-block .block-title a {
   font-family: SpecialElite !important;
@@ -7343,12 +7398,18 @@ h1#page-title {
   font-style: normal !important;
   -webkit-font-smoothing: antialiased !important;
   -moz-osx-font-smoothing: grayscale !important;
-  font-size: 22px;
-  color: #000;
+  font-size: 18px;
+  color: #fff;
+  background: #7db600;
   position: relative;
+  display: inline-block;
+  border-bottom: 1px solid #fff;
+  width: 100%;
+  padding: 10px 10px 10px 13.5%;
 }
 .block.review-booklist-block .block-title a.active {
-  color: #f6511d !important;
+  color: #7db600;
+  background: #fff;
 }
 .block.review-booklist-block .block-title a.active:before {
   content: "";
@@ -7359,23 +7420,31 @@ h1#page-title {
   position: absolute;
   top: 3px;
   left: -31px;
-  background: url("../images/libraryzurb/star.png") no-repeat;
 }
 .block.review-booklist-block ul.menu {
-  margin-bottom: 6px;
+  margin-bottom: 0;
 }
 .block.review-booklist-block ul.menu li {
-  padding: 6px 0px 0px 22.6%;
+  padding: 0;
+  margin-left: 0;
+  margin-bottom: 0;
 }
 .block.review-booklist-block ul.menu li a {
-  color: #000;
-  font-size: 22px;
+  color: #fff;
+  background: #7db600;
+  border-bottom: 1px solid #fff;
+  display: inline-block;
+  position: relative;
+  font-size: 18px;
+  width: 100%;
+  padding: 10px 10px 10px 13.5%;
 }
 .block.review-booklist-block ul.menu li a:focus {
   outline: none;
 }
 .block.review-booklist-block ul.menu li.active a {
-  color: #f6511d !important;
+  color: #7db600;
+  background: #fff;
   position: relative;
 }
 .block.review-booklist-block ul.menu li.active a:before {
@@ -7387,7 +7456,6 @@ h1#page-title {
   position: absolute;
   top: 3px;
   left: -31px;
-  background: url("../images/libraryzurb/star.png") no-repeat;
 }
 .block.write-book-review {
   margin-bottom: 0 !important;
@@ -7405,18 +7473,17 @@ h1#page-title {
   box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
 }
 .block.block-views-reward-earn-block .block-title, .block.block-views-reward-earn-block h2, .block.block-views-reward-earn-block-1 .block-title, .block.block-views-reward-earn-block-1 h2 {
-  color: #fff;
   font-family: SpecialElite !important;
   font-weight: normal !important;
   font-style: normal !important;
   -webkit-font-smoothing: antialiased !important;
   -moz-osx-font-smoothing: grayscale !important;
   padding-top: 26px;
-  padding-bottom: 25px;
-  font-size: 28px;
+  font-size: 26px;
+  color: #fdeb52;
+  padding-left: 26px;
   border-bottom: medium none;
   margin-top: -1px;
-  padding-left: 36px;
   z-index: 0;
   position: relative;
   font-weight: normal !important;
@@ -7559,6 +7626,7 @@ h1#page-title {
   font-size: 16px;
   line-height: 1.4;
   color: #fff;
+  margin-bottom: 5px;
   font-family: Raleway-Medium !important;
   font-style: normal !important;
   font-weight: normal !important;
@@ -7576,7 +7644,7 @@ h1#page-title {
   display: block;
   visibility: visible;
   position: absolute;
-  top: 3px;
+  top: 0;
   left: -32px;
   background: url("../images/libraryzurb/arrow-list.png") no-repeat;
 }
@@ -7677,10 +7745,9 @@ h1#page-title {
   -moz-osx-font-smoothing: grayscale !important;
   padding-top: 26px;
   padding-bottom: 13px;
-  font-size: 26px;
+  font-size: 24px;
   border-bottom: medium none;
   margin-top: -1px;
-  padding-left: 36px;
   z-index: 0;
   overflow: hidden;
 }
@@ -9602,7 +9669,7 @@ body .alert-box.success a.close:hover {
 /**end**/
 /**css for photos n vedios page***/
 .section-media .block-title {
-  font-size: 28px;
+  font-size: 24px;
   color: #32024e;
   font-family: SpecialElite !important;
   font-weight: normal !important;
@@ -10016,7 +10083,7 @@ body .alert-box.success a.close:hover {
 /**css for program page***/
 /**css for unauthenticated program page***/
 .not-logged-in.section-programs .pull-9.sidebar {
-  right: 70.4%;
+  /* right: 70.4% */
 }
 @media (max-width: 767px) {
   .not-logged-in.section-programs .pull-9.sidebar {
@@ -10031,6 +10098,27 @@ body .alert-box.success a.close:hover {
 /**css for authunticated program page***/
 .logged-in.section-programs .block-views-reward-earn-block-1 {
   display: none;
+}
+.logged-in.section-programs .pull-9.social-share {
+  width: 29.53%;
+  right: 69.4%;
+  padding-left: 2.65%;
+  padding-right: 2.65%;
+  float: right;
+  background: #32024e;
+  -webkit-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+  box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+}
+@media (max-width: 767px) {
+  .logged-in.section-programs .pull-9.social-share {
+    width: 100%;
+    right: 0;
+  }
+}
+.logged-in.section-programs .pull-9.social-share .first {
+  box-shadow: 0 0 0 0 !important;
+  padding: 13px 0 !important;
 }
 .logged-in.section-programs .pull-9.sidebar {
   width: 29.53%;
@@ -10198,7 +10286,7 @@ body .alert-box.success a.close:hover {
   }
 }
 .section-programs .main .current-program {
-  background: url("../images/libraryzurb/annocement.png") no-repeat scroll center center/cover;
+  background: url("../images/libraryzurb/annocement.png") no-repeat scroll center center/100% 100%;
   -webkit-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
   -moz-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
   box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
@@ -10215,8 +10303,9 @@ body .alert-box.success a.close:hover {
   -moz-osx-font-smoothing: grayscale !important;
   border: none !important;
   outline: none !important;
-  padding: 26px 0px 25px 36px;
-  font-size: 28px;
+  padding: 26px 0px 5px 36px;
+  margin-bottom: 0;
+  font-size: 24px;
 }
 @media (max-width: 767px) {
   .section-programs .main .current-program .block-title {
@@ -10226,7 +10315,7 @@ body .alert-box.success a.close:hover {
 .section-programs .main .current-program .view {
   display: inline-block;
   width: 100%;
-  padding: 10px 4%;
+  padding: 10px 4% 0;
 }
 .section-programs .main .current-program .view .view-content {
   display: table;
@@ -10266,7 +10355,7 @@ body .alert-box.success a.close:hover {
 }
 @media screen and (min-width: 980px) {
   .section-programs .main .view .view-header, .section-programs .main .view .view-header p {
-    font-size: 28px !important;
+    font-size: 26px !important;
   }
 }
 .section-programs .main .view .view-content .views-row {
@@ -10295,10 +10384,10 @@ body .alert-box.success a.close:hover {
   -webkit-font-smoothing: antialiased !important;
   -moz-osx-font-smoothing: grayscale !important;
   color: #32024e;
-  font-size: 20px;
+  font-size: 24px;
 }
 .section-programs .main .view .view-content .views-row .views-field.views-field-body {
-  font-size: 18px;
+  font-size: 16px;
   font-family: Raleway-Medium !important;
   font-style: normal !important;
   font-weight: normal !important;
@@ -10394,13 +10483,13 @@ body .alert-box.success a.close:hover {
 .page-user-profile .homebox #homebox-block-auto_role_allocation_progress-block .portlet-content div a.button {
   width: 100%;
   display: inline-block;
-  color: #fff !important;
+  color: #32024e !important;
   font-family: SpecialElite !important;
   font-weight: normal !important;
   font-style: normal !important;
   -webkit-font-smoothing: antialiased !important;
   -moz-osx-font-smoothing: grayscale !important;
-  background: #32024e !important;
+  background: #fdeb52 !important;
   padding: 10px 20px 7px;
   -webkit-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
   -moz-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
@@ -10413,8 +10502,8 @@ body .alert-box.success a.close:hover {
   bottom: 0;
 }
 .page-user-profile .homebox #homebox-block-auto_role_allocation_progress-block .portlet-content div a.button:hover, .page-user-profile .homebox #homebox-block-auto_role_allocation_progress-block .portlet-content div a.button:focus {
-  color: #fff;
-  background: #32024e;
+  color: #32024e;
+  background: #f7fc63;
   opacity: 1;
   outline: none;
 }
@@ -10446,13 +10535,13 @@ body .alert-box.success a.close:hover {
 }
 .page-user-profile .homebox #homebox-buttons a {
   padding: 9px 25px;
-  color: #fff !important;
+  color: #32024e !important;
   font-family: SpecialElite !important;
   font-weight: normal !important;
   font-style: normal !important;
   -webkit-font-smoothing: antialiased !important;
   -moz-osx-font-smoothing: grayscale !important;
-  background: #32024e !important;
+  background: #fdeb52 !important;
   padding: 10px 20px 7px;
   -webkit-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
   -moz-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
@@ -10463,19 +10552,19 @@ body .alert-box.success a.close:hover {
   text-decoration: none;
 }
 .page-user-profile .homebox #homebox-buttons a:hover, .page-user-profile .homebox #homebox-buttons a:focus {
-  color: #fff;
-  background: #32024e;
+  color: #32024e;
+  background: #f7fc63;
   opacity: 1;
   outline: none;
 }
 .page-user-profile .homebox #homebox-add ul li a {
-  color: #fff !important;
+  color: #32024e !important;
   font-family: SpecialElite !important;
   font-weight: normal !important;
   font-style: normal !important;
   -webkit-font-smoothing: antialiased !important;
   -moz-osx-font-smoothing: grayscale !important;
-  background: #32024e !important;
+  background: #fdeb52 !important;
   padding: 10px 20px 7px;
   -webkit-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
   -moz-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
@@ -10486,8 +10575,8 @@ body .alert-box.success a.close:hover {
   text-decoration: none;
 }
 .page-user-profile .homebox #homebox-add ul li a:hover, .page-user-profile .homebox #homebox-add ul li a:focus {
-  color: #fff;
-  background: #32024e;
+  color: #32024e;
+  background: #f7fc63;
   opacity: 1;
   outline: none;
 }
@@ -10689,13 +10778,13 @@ body .alert-box.success a.close:hover {
   display: inline-block;
   margin: 0;
   padding: 7px 22px;
-  color: #fff !important;
+  color: #32024e !important;
   font-family: SpecialElite !important;
   font-weight: normal !important;
   font-style: normal !important;
   -webkit-font-smoothing: antialiased !important;
   -moz-osx-font-smoothing: grayscale !important;
-  background: #32024e !important;
+  background: #fdeb52 !important;
   padding: 10px 20px 7px;
   -webkit-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
   -moz-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
@@ -10705,8 +10794,8 @@ body .alert-box.success a.close:hover {
   font-size: 17px;
 }
 .page-user-profile .homebox .portlet-content .view.view-booklist-on-activities-page .view-footer p a:hover, .page-user-profile .homebox .portlet-content .view.view-booklist-on-activities-page .view-footer p a:focus {
-  color: #fff;
-  background: #32024e;
+  color: #32024e;
+  background: #f7fc63;
   opacity: 1;
   outline: none;
 }
@@ -10758,13 +10847,13 @@ body .alert-box.success a.close:hover {
   display: inline-block;
   margin: 0;
   padding: 7px 22px;
-  color: #fff !important;
+  color: #32024e !important;
   font-family: SpecialElite !important;
   font-weight: normal !important;
   font-style: normal !important;
   -webkit-font-smoothing: antialiased !important;
   -moz-osx-font-smoothing: grayscale !important;
-  background: #32024e !important;
+  background: #fdeb52 !important;
   padding: 10px 20px 7px;
   -webkit-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
   -moz-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
@@ -10774,8 +10863,8 @@ body .alert-box.success a.close:hover {
   font-size: 17px;
 }
 .page-user-profile .homebox .portlet-content .view.view-my-book-reviews .view-empty p:nth-of-type(2) a:hover, .page-user-profile .homebox .portlet-content .view.view-my-book-reviews .view-empty p:nth-of-type(2) a:focus {
-  color: #fff;
-  background: #32024e;
+  color: #32024e;
+  background: #f7fc63;
   opacity: 1;
   outline: none;
 }
@@ -10792,13 +10881,13 @@ body .alert-box.success a.close:hover {
   display: inline-block;
   margin: 0;
   padding: 7px 22px;
-  color: #fff !important;
+  color: #32024e !important;
   font-family: SpecialElite !important;
   font-weight: normal !important;
   font-style: normal !important;
   -webkit-font-smoothing: antialiased !important;
   -moz-osx-font-smoothing: grayscale !important;
-  background: #32024e !important;
+  background: #fdeb52 !important;
   padding: 10px 20px 7px;
   -webkit-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
   -moz-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
@@ -10808,8 +10897,8 @@ body .alert-box.success a.close:hover {
   font-size: 17px;
 }
 .page-user-profile .homebox .portlet-content .view.view-my-book-reviews .view-footer p a:hover, .page-user-profile .homebox .portlet-content .view.view-my-book-reviews .view-footer p a:focus {
-  color: #fff;
-  background: #32024e;
+  color: #32024e;
+  background: #f7fc63;
   opacity: 1;
   outline: none;
 }
@@ -10897,13 +10986,13 @@ body .alert-box.success a.close:hover {
   width: 100%;
   display: inline-block;
   padding: 11px 22px;
-  color: #fff !important;
+  color: #32024e !important;
   font-family: SpecialElite !important;
   font-weight: normal !important;
   font-style: normal !important;
   -webkit-font-smoothing: antialiased !important;
   -moz-osx-font-smoothing: grayscale !important;
-  background: #32024e !important;
+  background: #fdeb52 !important;
   padding: 10px 20px 7px;
   -webkit-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
   -moz-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
@@ -10913,8 +11002,8 @@ body .alert-box.success a.close:hover {
   font-size: 17px;
 }
 .page-user-profile .homebox .portlet-content .view.view-my-activities-for-patron-dashboard .view-footer div a:hover, .page-user-profile .homebox .portlet-content .view.view-my-activities-for-patron-dashboard .view-footer div a:focus {
-  color: #fff;
-  background: #32024e;
+  color: #32024e;
+  background: #f7fc63;
   opacity: 1;
   outline: none;
 }
@@ -11262,7 +11351,7 @@ body .alert-box.success a.close:hover {
 
 /**msg center css end**/
 /**common css used in  page-reviews  and page-booklists**/
-.page-reviews #page-title, .page-booklists #page-title {
+.page-reviews #page-title, .page-booklists #page-title, .page-movie-review #page-title, .page-music-review-listing #page-title, .page-video-game-review #page-title {
   color: #000;
   font-family: Raleway-Medium !important;
   font-style: normal !important;
@@ -11276,13 +11365,13 @@ body .alert-box.success a.close:hover {
   -moz-osx-font-smoothing: grayscale !important;
   display: none;
 }
-.page-reviews .view-header p a, .page-booklists .view-header p a {
+.page-reviews .view-header p a, .page-booklists .view-header p a, .page-movie-review .view-header p a, .page-music-review-listing .view-header p a, .page-video-game-review .view-header p a {
   color: #32024e;
 }
-.page-reviews .view-header p a:hover, .page-reviews .view-header p a:focus, .page-booklists .view-header p a:hover, .page-booklists .view-header p a:focus {
+.page-reviews .view-header p a:hover, .page-reviews .view-header p a:focus, .page-booklists .view-header p a:hover, .page-booklists .view-header p a:focus, .page-movie-review .view-header p a:hover, .page-movie-review .view-header p a:focus, .page-music-review-listing .view-header p a:hover, .page-music-review-listing .view-header p a:focus, .page-video-game-review .view-header p a:hover, .page-video-game-review .view-header p a:focus {
   color: #32024e;
 }
-.page-reviews .pull-9.sidebar, .page-booklists .pull-9.sidebar {
+.page-reviews .pull-9.sidebar, .page-booklists .pull-9.sidebar, .page-movie-review .pull-9.sidebar, .page-music-review-listing .pull-9.sidebar, .page-video-game-review .pull-9.sidebar {
   width: 29.53%;
   right: 69.4%;
   padding-left: 2.65%;
@@ -11290,48 +11379,61 @@ body .alert-box.success a.close:hover {
   margin-bottom: 35px;
 }
 @media (max-width: 767px) {
-  .page-reviews .pull-9.sidebar, .page-booklists .pull-9.sidebar {
+  .page-reviews .pull-9.sidebar, .page-booklists .pull-9.sidebar, .page-movie-review .pull-9.sidebar, .page-music-review-listing .pull-9.sidebar, .page-video-game-review .pull-9.sidebar {
     margin-bottom: 25px;
   }
 }
 @media (max-width: 767px) {
-  .page-reviews .pull-9.sidebar, .page-booklists .pull-9.sidebar {
+  .page-reviews .pull-9.sidebar, .page-booklists .pull-9.sidebar, .page-movie-review .pull-9.sidebar, .page-music-review-listing .pull-9.sidebar, .page-video-game-review .pull-9.sidebar {
     width: 100%;
     right: 0;
   }
 }
 @media (min-width: 768px) and (max-width: 1025px) {
-  .page-reviews .pull-9.sidebar, .page-booklists .pull-9.sidebar {
+  .page-reviews .pull-9.sidebar, .page-booklists .pull-9.sidebar, .page-movie-review .pull-9.sidebar, .page-music-review-listing .pull-9.sidebar, .page-video-game-review .pull-9.sidebar {
     width: 37.53%;
     right: 63.4%;
   }
 }
-.page-reviews .pull-9.sidebar2, .page-booklists .pull-9.sidebar2 {
+.page-reviews .pull-9.social-share, .page-booklists .pull-9.social-share, .page-movie-review .pull-9.social-share, .page-music-review-listing .pull-9.social-share, .page-video-game-review .pull-9.social-share {
+  width: 29.53%;
+  right: 69.4%;
+  padding-left: 0;
+  padding-right: 0;
+  background: #32024e;
+  float: right;
+}
+@media (max-width: 767px) {
+  .page-reviews .pull-9.social-share, .page-booklists .pull-9.social-share, .page-movie-review .pull-9.social-share, .page-music-review-listing .pull-9.social-share, .page-video-game-review .pull-9.social-share {
+    width: 100%;
+    right: 0;
+  }
+}
+.page-reviews .pull-9.sidebar2, .page-booklists .pull-9.sidebar2, .page-movie-review .pull-9.sidebar2, .page-music-review-listing .pull-9.sidebar2, .page-video-game-review .pull-9.sidebar2 {
   width: 29.53%;
   right: 71.4%;
   padding-left: 0;
   padding-right: 0;
 }
 @media (max-width: 767px) {
-  .page-reviews .pull-9.sidebar2, .page-booklists .pull-9.sidebar2 {
+  .page-reviews .pull-9.sidebar2, .page-booklists .pull-9.sidebar2, .page-movie-review .pull-9.sidebar2, .page-music-review-listing .pull-9.sidebar2, .page-video-game-review .pull-9.sidebar2 {
     width: 100%;
     right: 0;
   }
 }
-.page-reviews .sidebar, .page-booklists .sidebar {
+.page-reviews .sidebar, .page-booklists .sidebar, .page-movie-review .sidebar, .page-music-review-listing .sidebar, .page-video-game-review .sidebar {
   background: #32024e;
   color: #fff;
   padding-top: 25px;
   padding-bottom: 25px;
-  border-radius: 20px;
   -webkit-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
   -moz-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
   box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
 }
-.page-reviews .sidebar .views-field-count, .page-booklists .sidebar .views-field-count {
+.page-reviews .sidebar .views-field-count, .page-booklists .sidebar .views-field-count, .page-movie-review .sidebar .views-field-count, .page-music-review-listing .sidebar .views-field-count, .page-video-game-review .sidebar .views-field-count {
   padding-left: 0;
 }
-.page-reviews .sidebar .block-title, .page-booklists .sidebar .block-title {
+.page-reviews .sidebar .block-title, .page-booklists .sidebar .block-title, .page-movie-review .sidebar .block-title, .page-music-review-listing .sidebar .block-title, .page-video-game-review .sidebar .block-title {
   color: #fff !important;
   font-family: SpecialElite !important;
   font-weight: normal !important;
@@ -11341,10 +11443,10 @@ body .alert-box.success a.close:hover {
   font-size: 22px;
   margin-top: 6px;
 }
-.page-reviews .sidebar p, .page-booklists .sidebar p {
+.page-reviews .sidebar p, .page-booklists .sidebar p, .page-movie-review .sidebar p, .page-music-review-listing .sidebar p, .page-video-game-review .sidebar p {
   color: white;
 }
-.page-reviews .sidebar p.button, .page-booklists .sidebar p.button {
+.page-reviews .sidebar p.button, .page-booklists .sidebar p.button, .page-movie-review .sidebar p.button, .page-music-review-listing .sidebar p.button, .page-video-game-review .sidebar p.button {
   color: #000;
   font-family: SpecialElite !important;
   font-weight: normal !important;
@@ -11361,33 +11463,33 @@ body .alert-box.success a.close:hover {
   margin-left: 0 !important;
   margin-bottom: 24px;
 }
-.page-reviews .sidebar p.button:hover, .page-booklists .sidebar p.button:hover {
+.page-reviews .sidebar p.button:hover, .page-booklists .sidebar p.button:hover, .page-movie-review .sidebar p.button:hover, .page-music-review-listing .sidebar p.button:hover, .page-video-game-review .sidebar p.button:hover {
   color: #000;
   background: #f7fc63 !important;
   opacity: 1;
   outline: none;
   text-decoration: none !important;
 }
-.page-reviews .sidebar p.button:focus, .page-reviews .sidebar p.button.active, .page-booklists .sidebar p.button:focus, .page-booklists .sidebar p.button.active {
+.page-reviews .sidebar p.button:focus, .page-reviews .sidebar p.button.active, .page-booklists .sidebar p.button:focus, .page-booklists .sidebar p.button.active, .page-movie-review .sidebar p.button:focus, .page-movie-review .sidebar p.button.active, .page-music-review-listing .sidebar p.button:focus, .page-music-review-listing .sidebar p.button.active, .page-video-game-review .sidebar p.button:focus, .page-video-game-review .sidebar p.button.active {
   color: #000;
   background: #f0f811 !important;
   outline: 1;
   opacity: 1;
   text-decoration: none !important;
 }
-.page-reviews .sidebar .toogle-follow, .page-booklists .sidebar .toogle-follow {
+.page-reviews .sidebar .toogle-follow, .page-booklists .sidebar .toogle-follow, .page-movie-review .sidebar .toogle-follow, .page-music-review-listing .sidebar .toogle-follow, .page-video-game-review .sidebar .toogle-follow {
   display: none;
 }
-.page-reviews .sidebar .view.view-my-book-reviews, .page-reviews .sidebar .view.view-booklist-on-activities-page, .page-booklists .sidebar .view.view-my-book-reviews, .page-booklists .sidebar .view.view-booklist-on-activities-page {
+.page-reviews .sidebar .view.view-my-book-reviews, .page-reviews .sidebar .view.view-booklist-on-activities-page, .page-booklists .sidebar .view.view-my-book-reviews, .page-booklists .sidebar .view.view-booklist-on-activities-page, .page-movie-review .sidebar .view.view-my-book-reviews, .page-movie-review .sidebar .view.view-booklist-on-activities-page, .page-music-review-listing .sidebar .view.view-my-book-reviews, .page-music-review-listing .sidebar .view.view-booklist-on-activities-page, .page-video-game-review .sidebar .view.view-my-book-reviews, .page-video-game-review .sidebar .view.view-booklist-on-activities-page {
   margin-top: 40px;
 }
-.page-reviews .sidebar .reviews-block-block, .page-booklists .sidebar .reviews-block-block {
+.page-reviews .sidebar .reviews-block-block, .page-booklists .sidebar .reviews-block-block, .page-movie-review .sidebar .reviews-block-block, .page-music-review-listing .sidebar .reviews-block-block, .page-video-game-review .sidebar .reviews-block-block {
   margin: 0 auto !important;
 }
-.page-reviews .sidebar .reviews-block-block .view-content ul, .page-reviews .sidebar .reviews-block-block .view-content ol, .page-booklists .sidebar .reviews-block-block .view-content ul, .page-booklists .sidebar .reviews-block-block .view-content ol {
+.page-reviews .sidebar .reviews-block-block .view-content ul, .page-reviews .sidebar .reviews-block-block .view-content ol, .page-booklists .sidebar .reviews-block-block .view-content ul, .page-booklists .sidebar .reviews-block-block .view-content ol, .page-movie-review .sidebar .reviews-block-block .view-content ul, .page-movie-review .sidebar .reviews-block-block .view-content ol, .page-music-review-listing .sidebar .reviews-block-block .view-content ul, .page-music-review-listing .sidebar .reviews-block-block .view-content ol, .page-video-game-review .sidebar .reviews-block-block .view-content ul, .page-video-game-review .sidebar .reviews-block-block .view-content ol {
   margin-left: 5%;
 }
-.page-reviews .sidebar .reviews-block-block .view-content ul .views-field-title a, .page-reviews .sidebar .reviews-block-block .view-content ol .views-field-title a, .page-booklists .sidebar .reviews-block-block .view-content ul .views-field-title a, .page-booklists .sidebar .reviews-block-block .view-content ol .views-field-title a {
+.page-reviews .sidebar .reviews-block-block .view-content ul .views-field-title a, .page-reviews .sidebar .reviews-block-block .view-content ol .views-field-title a, .page-booklists .sidebar .reviews-block-block .view-content ul .views-field-title a, .page-booklists .sidebar .reviews-block-block .view-content ol .views-field-title a, .page-movie-review .sidebar .reviews-block-block .view-content ul .views-field-title a, .page-movie-review .sidebar .reviews-block-block .view-content ol .views-field-title a, .page-music-review-listing .sidebar .reviews-block-block .view-content ul .views-field-title a, .page-music-review-listing .sidebar .reviews-block-block .view-content ol .views-field-title a, .page-video-game-review .sidebar .reviews-block-block .view-content ul .views-field-title a, .page-video-game-review .sidebar .reviews-block-block .view-content ol .views-field-title a {
   color: #fff !important;
   font-family: SpecialElite !important;
   font-weight: normal !important;
@@ -11396,16 +11498,16 @@ body .alert-box.success a.close:hover {
   -moz-osx-font-smoothing: grayscale !important;
   text-decoration: underline;
 }
-.page-reviews .sidebar .reviews-block-block .view-content ul .views-field-count .field-content, .page-reviews .sidebar .reviews-block-block .view-content ol .views-field-count .field-content, .page-booklists .sidebar .reviews-block-block .view-content ul .views-field-count .field-content, .page-booklists .sidebar .reviews-block-block .view-content ol .views-field-count .field-content {
+.page-reviews .sidebar .reviews-block-block .view-content ul .views-field-count .field-content, .page-reviews .sidebar .reviews-block-block .view-content ol .views-field-count .field-content, .page-booklists .sidebar .reviews-block-block .view-content ul .views-field-count .field-content, .page-booklists .sidebar .reviews-block-block .view-content ol .views-field-count .field-content, .page-movie-review .sidebar .reviews-block-block .view-content ul .views-field-count .field-content, .page-movie-review .sidebar .reviews-block-block .view-content ol .views-field-count .field-content, .page-music-review-listing .sidebar .reviews-block-block .view-content ul .views-field-count .field-content, .page-music-review-listing .sidebar .reviews-block-block .view-content ol .views-field-count .field-content, .page-video-game-review .sidebar .reviews-block-block .view-content ul .views-field-count .field-content, .page-video-game-review .sidebar .reviews-block-block .view-content ol .views-field-count .field-content {
   position: relative;
   top: 10px;
 }
-.page-reviews .sidebar .reviews-block-block .view-content ul .views-field-count .views-label, .page-reviews .sidebar .reviews-block-block .view-content ol .views-field-count .views-label, .page-booklists .sidebar .reviews-block-block .view-content ul .views-field-count .views-label, .page-booklists .sidebar .reviews-block-block .view-content ol .views-field-count .views-label {
+.page-reviews .sidebar .reviews-block-block .view-content ul .views-field-count .views-label, .page-reviews .sidebar .reviews-block-block .view-content ol .views-field-count .views-label, .page-booklists .sidebar .reviews-block-block .view-content ul .views-field-count .views-label, .page-booklists .sidebar .reviews-block-block .view-content ol .views-field-count .views-label, .page-movie-review .sidebar .reviews-block-block .view-content ul .views-field-count .views-label, .page-movie-review .sidebar .reviews-block-block .view-content ol .views-field-count .views-label, .page-music-review-listing .sidebar .reviews-block-block .view-content ul .views-field-count .views-label, .page-music-review-listing .sidebar .reviews-block-block .view-content ol .views-field-count .views-label, .page-video-game-review .sidebar .reviews-block-block .view-content ul .views-field-count .views-label, .page-video-game-review .sidebar .reviews-block-block .view-content ol .views-field-count .views-label {
   position: relative;
   top: 10px;
   padding-right: 35px;
 }
-.page-reviews .sidebar .reviews-block-block .view-content ul .views-field-count .views-label:after, .page-reviews .sidebar .reviews-block-block .view-content ol .views-field-count .views-label:after, .page-booklists .sidebar .reviews-block-block .view-content ul .views-field-count .views-label:after, .page-booklists .sidebar .reviews-block-block .view-content ol .views-field-count .views-label:after {
+.page-reviews .sidebar .reviews-block-block .view-content ul .views-field-count .views-label:after, .page-reviews .sidebar .reviews-block-block .view-content ol .views-field-count .views-label:after, .page-booklists .sidebar .reviews-block-block .view-content ul .views-field-count .views-label:after, .page-booklists .sidebar .reviews-block-block .view-content ol .views-field-count .views-label:after, .page-movie-review .sidebar .reviews-block-block .view-content ul .views-field-count .views-label:after, .page-movie-review .sidebar .reviews-block-block .view-content ol .views-field-count .views-label:after, .page-music-review-listing .sidebar .reviews-block-block .view-content ul .views-field-count .views-label:after, .page-music-review-listing .sidebar .reviews-block-block .view-content ol .views-field-count .views-label:after, .page-video-game-review .sidebar .reviews-block-block .view-content ul .views-field-count .views-label:after, .page-video-game-review .sidebar .reviews-block-block .view-content ol .views-field-count .views-label:after {
   content: "";
   width: 30px;
   height: 30px;
@@ -11416,7 +11518,7 @@ body .alert-box.success a.close:hover {
   right: 0;
   background: url("../images/libraryzurb/smily-white.png") no-repeat;
 }
-.page-reviews .sidebar .reviews-block-block .view-header h3:nth-of-type(1) a, .page-booklists .sidebar .reviews-block-block .view-header h3:nth-of-type(1) a {
+.page-reviews .sidebar .reviews-block-block .view-header h3:nth-of-type(1) a, .page-booklists .sidebar .reviews-block-block .view-header h3:nth-of-type(1) a, .page-movie-review .sidebar .reviews-block-block .view-header h3:nth-of-type(1) a, .page-music-review-listing .sidebar .reviews-block-block .view-header h3:nth-of-type(1) a, .page-video-game-review .sidebar .reviews-block-block .view-header h3:nth-of-type(1) a {
   color: #fff !important;
   font-family: SpecialElite !important;
   font-weight: normal !important;
@@ -11425,7 +11527,7 @@ body .alert-box.success a.close:hover {
   -moz-osx-font-smoothing: grayscale !important;
   font-size: 21px !important;
 }
-.page-reviews .sidebar .reviews-block-block .view-header h3, .page-booklists .sidebar .reviews-block-block .view-header h3 {
+.page-reviews .sidebar .reviews-block-block .view-header h3, .page-booklists .sidebar .reviews-block-block .view-header h3, .page-movie-review .sidebar .reviews-block-block .view-header h3, .page-music-review-listing .sidebar .reviews-block-block .view-header h3, .page-video-game-review .sidebar .reviews-block-block .view-header h3 {
   font-size: 17px !important;
   font-family: Raleway-Bold !important;
   font-style: normal !important;
@@ -11436,7 +11538,7 @@ body .alert-box.success a.close:hover {
   color: #fff;
   margin-bottom: 15px;
 }
-.page-reviews .sidebar .reviews-block-block .view-header h3 a, .page-booklists .sidebar .reviews-block-block .view-header h3 a {
+.page-reviews .sidebar .reviews-block-block .view-header h3 a, .page-booklists .sidebar .reviews-block-block .view-header h3 a, .page-movie-review .sidebar .reviews-block-block .view-header h3 a, .page-music-review-listing .sidebar .reviews-block-block .view-header h3 a, .page-video-game-review .sidebar .reviews-block-block .view-header h3 a {
   font-size: 17px !important;
   font-family: Raleway-Bold !important;
   font-style: normal !important;
@@ -11446,7 +11548,7 @@ body .alert-box.success a.close:hover {
   -moz-font-smoothing: grayscale !important;
   color: #fff;
 }
-.page-reviews .view .view-header .other-booklists, .page-booklists .view .view-header .other-booklists {
+.page-reviews .view .view-header .other-booklists, .page-booklists .view .view-header .other-booklists, .page-movie-review .view .view-header .other-booklists, .page-music-review-listing .view .view-header .other-booklists, .page-video-game-review .view .view-header .other-booklists {
   font-size: 25px;
   font-family: SpecialElite !important;
   font-weight: normal !important;
@@ -11456,7 +11558,7 @@ body .alert-box.success a.close:hover {
   color: #000;
   margin-bottom: 23px;
 }
-.page-reviews .view .view-header .viewmenu, .page-booklists .view .view-header .viewmenu {
+.page-reviews .view .view-header .viewmenu, .page-booklists .view .view-header .viewmenu, .page-movie-review .view .view-header .viewmenu, .page-music-review-listing .view .view-header .viewmenu, .page-video-game-review .view .view-header .viewmenu {
   margin-bottom: 23px;
   font-size: 17px;
   font-family: Raleway-Medium !important;
@@ -11464,47 +11566,46 @@ body .alert-box.success a.close:hover {
   font-weight: normal !important;
   -webkit-font-smoothing: antialiased !important;
 }
-.page-reviews .view .view-filters, .page-booklists .view .view-filters {
-  color: #fff;
-  background: #fdeb52;
+.page-reviews .view .view-filters, .page-booklists .view .view-filters, .page-movie-review .view .view-filters, .page-music-review-listing .view .view-filters, .page-video-game-review .view .view-filters {
+  background: url("../images/libraryzurb/annocement.png") no-repeat scroll center center/100% 100%;
   -webkit-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
   -moz-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
   box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
 }
-.page-reviews .view .view-filters form, .page-booklists .view .view-filters form {
+.page-reviews .view .view-filters form, .page-booklists .view .view-filters form, .page-movie-review .view .view-filters form, .page-music-review-listing .view .view-filters form, .page-video-game-review .view .view-filters form {
   margin: 0 !important;
 }
-.page-reviews .view .view-filters form .views-exposed-form, .page-booklists .view .view-filters form .views-exposed-form {
+.page-reviews .view .view-filters form .views-exposed-form, .page-booklists .view .view-filters form .views-exposed-form, .page-movie-review .view .view-filters form .views-exposed-form, .page-music-review-listing .view .view-filters form .views-exposed-form, .page-video-game-review .view .view-filters form .views-exposed-form {
   padding: 3px 2.8% 12px 3.4%;
   border: none;
 }
 @media (min-width: 768px) and (max-width: 1025px) {
-  .page-reviews .view .view-filters form .views-exposed-form, .page-booklists .view .view-filters form .views-exposed-form {
+  .page-reviews .view .view-filters form .views-exposed-form, .page-booklists .view .view-filters form .views-exposed-form, .page-movie-review .view .view-filters form .views-exposed-form, .page-music-review-listing .view .view-filters form .views-exposed-form, .page-video-game-review .view .view-filters form .views-exposed-form {
     padding: 8px 0.8% 8px 2.4%;
   }
 }
-.page-reviews .view .view-filters form .views-exposed-form .views-exposed-widget, .page-booklists .view .view-filters form .views-exposed-form .views-exposed-widget {
+.page-reviews .view .view-filters form .views-exposed-form .views-exposed-widget, .page-booklists .view .view-filters form .views-exposed-form .views-exposed-widget, .page-movie-review .view .view-filters form .views-exposed-form .views-exposed-widget, .page-music-review-listing .view .view-filters form .views-exposed-form .views-exposed-widget, .page-video-game-review .view .view-filters form .views-exposed-form .views-exposed-widget {
   width: 25%;
   padding-left: 1%;
   padding-right: 0;
   padding-top: 17px;
 }
 @media (min-width: 768px) and (max-width: 1025px) {
-  .page-reviews .view .view-filters form .views-exposed-form .views-exposed-widget, .page-booklists .view .view-filters form .views-exposed-form .views-exposed-widget {
+  .page-reviews .view .view-filters form .views-exposed-form .views-exposed-widget, .page-booklists .view .view-filters form .views-exposed-form .views-exposed-widget, .page-movie-review .view .view-filters form .views-exposed-form .views-exposed-widget, .page-music-review-listing .view .view-filters form .views-exposed-form .views-exposed-widget, .page-video-game-review .view .view-filters form .views-exposed-form .views-exposed-widget {
     width: 49%;
     padding-top: 2px;
   }
 }
-.page-reviews .view .view-filters form .views-exposed-form .views-exposed-widget .chosen-container, .page-booklists .view .view-filters form .views-exposed-form .views-exposed-widget .chosen-container {
+.page-reviews .view .view-filters form .views-exposed-form .views-exposed-widget .chosen-container, .page-booklists .view .view-filters form .views-exposed-form .views-exposed-widget .chosen-container, .page-movie-review .view .view-filters form .views-exposed-form .views-exposed-widget .chosen-container, .page-music-review-listing .view .view-filters form .views-exposed-form .views-exposed-widget .chosen-container, .page-video-game-review .view .view-filters form .views-exposed-form .views-exposed-widget .chosen-container {
   width: 100% !important;
 }
-.page-reviews .view .view-filters form .views-exposed-form .views-exposed-widget input[type="text"], .page-booklists .view .view-filters form .views-exposed-form .views-exposed-widget input[type="text"] {
+.page-reviews .view .view-filters form .views-exposed-form .views-exposed-widget input[type="text"], .page-booklists .view .view-filters form .views-exposed-form .views-exposed-widget input[type="text"], .page-movie-review .view .view-filters form .views-exposed-form .views-exposed-widget input[type="text"], .page-music-review-listing .view .view-filters form .views-exposed-form .views-exposed-widget input[type="text"], .page-video-game-review .view .view-filters form .views-exposed-form .views-exposed-widget input[type="text"] {
   height: 40px;
   position: relative;
   top: 3px;
 }
-.page-reviews .view .view-filters form .views-exposed-form label, .page-booklists .view .view-filters form .views-exposed-form label {
-  color: #000;
+.page-reviews .view .view-filters form .views-exposed-form label, .page-booklists .view .view-filters form .views-exposed-form label, .page-movie-review .view .view-filters form .views-exposed-form label, .page-music-review-listing .view .view-filters form .views-exposed-form label, .page-video-game-review .view .view-filters form .views-exposed-form label {
+  color: #fff;
   font-family: Raleway-Medium !important;
   font-style: normal !important;
   font-weight: normal !important;
@@ -11512,22 +11613,13 @@ body .alert-box.success a.close:hover {
   opacity: 1 !important;
   font-size: 16px;
 }
-.page-reviews .view .view-filters form .views-exposed-form .chosen-processed .chosen-search input, .page-booklists .view .view-filters form .views-exposed-form .chosen-processed .chosen-search input {
+.page-reviews .view .view-filters form .views-exposed-form .chosen-processed .chosen-search input, .page-booklists .view .view-filters form .views-exposed-form .chosen-processed .chosen-search input, .page-movie-review .view .view-filters form .views-exposed-form .chosen-processed .chosen-search input, .page-music-review-listing .view .view-filters form .views-exposed-form .chosen-processed .chosen-search input, .page-video-game-review .view .view-filters form .views-exposed-form .chosen-processed .chosen-search input {
   background: #fff;
 }
-.page-reviews .view .view-filters form .views-exposed-form .chosen-processed .chosen-drop, .page-booklists .view .view-filters form .views-exposed-form .chosen-processed .chosen-drop {
+.page-reviews .view .view-filters form .views-exposed-form .chosen-processed .chosen-drop, .page-booklists .view .view-filters form .views-exposed-form .chosen-processed .chosen-drop, .page-movie-review .view .view-filters form .views-exposed-form .chosen-processed .chosen-drop, .page-music-review-listing .view .view-filters form .views-exposed-form .chosen-processed .chosen-drop, .page-video-game-review .view .view-filters form .views-exposed-form .chosen-processed .chosen-drop {
   background: #32024e;
 }
-.page-reviews .view .view-filters form .views-exposed-form .chosen-processed .chosen-drop .chosen-results li a, .page-booklists .view .view-filters form .views-exposed-form .chosen-processed .chosen-drop .chosen-results li a {
-  background: #32024e;
-  color: #fff !important;
-  font-family: SpecialElite !important;
-  font-weight: normal !important;
-  font-style: normal !important;
-  -webkit-font-smoothing: antialiased !important;
-  -moz-osx-font-smoothing: grayscale !important;
-}
-.page-reviews .view .view-filters form .views-exposed-form .chosen-processed .chosen-drop .chosen-results li a:hover, .page-reviews .view .view-filters form .views-exposed-form .chosen-processed .chosen-drop .chosen-results li a:focus, .page-booklists .view .view-filters form .views-exposed-form .chosen-processed .chosen-drop .chosen-results li a:hover, .page-booklists .view .view-filters form .views-exposed-form .chosen-processed .chosen-drop .chosen-results li a:focus {
+.page-reviews .view .view-filters form .views-exposed-form .chosen-processed .chosen-drop .chosen-results li a, .page-booklists .view .view-filters form .views-exposed-form .chosen-processed .chosen-drop .chosen-results li a, .page-movie-review .view .view-filters form .views-exposed-form .chosen-processed .chosen-drop .chosen-results li a, .page-music-review-listing .view .view-filters form .views-exposed-form .chosen-processed .chosen-drop .chosen-results li a, .page-video-game-review .view .view-filters form .views-exposed-form .chosen-processed .chosen-drop .chosen-results li a {
   background: #32024e;
   color: #fff !important;
   font-family: SpecialElite !important;
@@ -11536,14 +11628,23 @@ body .alert-box.success a.close:hover {
   -webkit-font-smoothing: antialiased !important;
   -moz-osx-font-smoothing: grayscale !important;
 }
-.page-reviews .view .view-filters form .views-exposed-form .chosen-processed a, .page-booklists .view .view-filters form .views-exposed-form .chosen-processed a {
+.page-reviews .view .view-filters form .views-exposed-form .chosen-processed .chosen-drop .chosen-results li a:hover, .page-reviews .view .view-filters form .views-exposed-form .chosen-processed .chosen-drop .chosen-results li a:focus, .page-booklists .view .view-filters form .views-exposed-form .chosen-processed .chosen-drop .chosen-results li a:hover, .page-booklists .view .view-filters form .views-exposed-form .chosen-processed .chosen-drop .chosen-results li a:focus, .page-movie-review .view .view-filters form .views-exposed-form .chosen-processed .chosen-drop .chosen-results li a:hover, .page-movie-review .view .view-filters form .views-exposed-form .chosen-processed .chosen-drop .chosen-results li a:focus, .page-music-review-listing .view .view-filters form .views-exposed-form .chosen-processed .chosen-drop .chosen-results li a:hover, .page-music-review-listing .view .view-filters form .views-exposed-form .chosen-processed .chosen-drop .chosen-results li a:focus, .page-video-game-review .view .view-filters form .views-exposed-form .chosen-processed .chosen-drop .chosen-results li a:hover, .page-video-game-review .view .view-filters form .views-exposed-form .chosen-processed .chosen-drop .chosen-results li a:focus {
+  background: #32024e;
   color: #fff !important;
   font-family: SpecialElite !important;
   font-weight: normal !important;
   font-style: normal !important;
   -webkit-font-smoothing: antialiased !important;
   -moz-osx-font-smoothing: grayscale !important;
-  background: #32024e !important;
+}
+.page-reviews .view .view-filters form .views-exposed-form .chosen-processed a, .page-booklists .view .view-filters form .views-exposed-form .chosen-processed a, .page-movie-review .view .view-filters form .views-exposed-form .chosen-processed a, .page-music-review-listing .view .view-filters form .views-exposed-form .chosen-processed a, .page-video-game-review .view .view-filters form .views-exposed-form .chosen-processed a {
+  color: #32024e !important;
+  font-family: SpecialElite !important;
+  font-weight: normal !important;
+  font-style: normal !important;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+  background: #fdeb52 !important;
   padding: 10px 20px 7px;
   -webkit-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
   -moz-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
@@ -11553,36 +11654,37 @@ body .alert-box.success a.close:hover {
   font-size: 21px;
   height: auto !important;
   border: none;
+  border-radius: 0;
 }
-.page-reviews .view .view-filters form .views-exposed-form .chosen-processed a:hover, .page-reviews .view .view-filters form .views-exposed-form .chosen-processed a:focus, .page-booklists .view .view-filters form .views-exposed-form .chosen-processed a:hover, .page-booklists .view .view-filters form .views-exposed-form .chosen-processed a:focus {
-  color: #fff;
-  background: #32024e;
+.page-reviews .view .view-filters form .views-exposed-form .chosen-processed a:hover, .page-reviews .view .view-filters form .views-exposed-form .chosen-processed a:focus, .page-booklists .view .view-filters form .views-exposed-form .chosen-processed a:hover, .page-booklists .view .view-filters form .views-exposed-form .chosen-processed a:focus, .page-movie-review .view .view-filters form .views-exposed-form .chosen-processed a:hover, .page-movie-review .view .view-filters form .views-exposed-form .chosen-processed a:focus, .page-music-review-listing .view .view-filters form .views-exposed-form .chosen-processed a:hover, .page-music-review-listing .view .view-filters form .views-exposed-form .chosen-processed a:focus, .page-video-game-review .view .view-filters form .views-exposed-form .chosen-processed a:hover, .page-video-game-review .view .view-filters form .views-exposed-form .chosen-processed a:focus {
+  color: #32024e;
+  background: #f7fc63;
   opacity: 1;
   outline: none;
 }
-.page-reviews .view .view-filters form .views-exposed-form .chosen-processed a div b, .page-booklists .view .view-filters form .views-exposed-form .chosen-processed a div b {
+.page-reviews .view .view-filters form .views-exposed-form .chosen-processed a div b, .page-booklists .view .view-filters form .views-exposed-form .chosen-processed a div b, .page-movie-review .view .view-filters form .views-exposed-form .chosen-processed a div b, .page-music-review-listing .view .view-filters form .views-exposed-form .chosen-processed a div b, .page-video-game-review .view .view-filters form .views-exposed-form .chosen-processed a div b {
   visibility: hidden;
   position: relative;
 }
-.page-reviews .view .view-filters form .views-exposed-form .chosen-processed a div b:after, .page-booklists .view .view-filters form .views-exposed-form .chosen-processed a div b:after {
+.page-reviews .view .view-filters form .views-exposed-form .chosen-processed a div b:after, .page-booklists .view .view-filters form .views-exposed-form .chosen-processed a div b:after, .page-movie-review .view .view-filters form .views-exposed-form .chosen-processed a div b:after, .page-music-review-listing .view .view-filters form .views-exposed-form .chosen-processed a div b:after, .page-video-game-review .view .view-filters form .views-exposed-form .chosen-processed a div b:after {
   content: "";
-  border-left: 5px solid transparent;
-  border-right: 5px solid transparent;
-  border-top: 5px solid #fff;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-top: 7px solid #32024e;
   position: absolute;
-  top: 45%;
+  top: 40%;
   display: block;
-  left: 0;
+  left: -9px;
   visibility: visible;
 }
-.page-reviews .view .view-filters form .views-exposed-form .views-submit-button button, .page-booklists .view .view-filters form .views-exposed-form .views-submit-button button {
-  color: #fff !important;
+.page-reviews .view .view-filters form .views-exposed-form .views-submit-button button, .page-booklists .view .view-filters form .views-exposed-form .views-submit-button button, .page-movie-review .view .view-filters form .views-exposed-form .views-submit-button button, .page-music-review-listing .view .view-filters form .views-exposed-form .views-submit-button button, .page-video-game-review .view .view-filters form .views-exposed-form .views-submit-button button {
+  color: #32024e !important;
   font-family: SpecialElite !important;
   font-weight: normal !important;
   font-style: normal !important;
   -webkit-font-smoothing: antialiased !important;
   -moz-osx-font-smoothing: grayscale !important;
-  background: #32024e !important;
+  background: #fdeb52 !important;
   padding: 10px 20px 7px;
   -webkit-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
   -moz-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
@@ -11595,14 +11697,14 @@ body .alert-box.success a.close:hover {
   text-transform: capitalize;
   margin-left: 0;
 }
-.page-reviews .view .view-filters form .views-exposed-form .views-submit-button button:hover, .page-reviews .view .view-filters form .views-exposed-form .views-submit-button button:focus, .page-booklists .view .view-filters form .views-exposed-form .views-submit-button button:hover, .page-booklists .view .view-filters form .views-exposed-form .views-submit-button button:focus {
-  color: #fff;
-  background: #32024e;
+.page-reviews .view .view-filters form .views-exposed-form .views-submit-button button:hover, .page-reviews .view .view-filters form .views-exposed-form .views-submit-button button:focus, .page-booklists .view .view-filters form .views-exposed-form .views-submit-button button:hover, .page-booklists .view .view-filters form .views-exposed-form .views-submit-button button:focus, .page-movie-review .view .view-filters form .views-exposed-form .views-submit-button button:hover, .page-movie-review .view .view-filters form .views-exposed-form .views-submit-button button:focus, .page-music-review-listing .view .view-filters form .views-exposed-form .views-submit-button button:hover, .page-music-review-listing .view .view-filters form .views-exposed-form .views-submit-button button:focus, .page-video-game-review .view .view-filters form .views-exposed-form .views-submit-button button:hover, .page-video-game-review .view .view-filters form .views-exposed-form .views-submit-button button:focus {
+  color: #32024e;
+  background: #f7fc63;
   opacity: 1;
   outline: none;
 }
 @media (min-width: 768px) and (max-width: 1025px) {
-  .page-reviews .view .view-filters form .views-exposed-form .views-submit-button button, .page-booklists .view .view-filters form .views-exposed-form .views-submit-button button {
+  .page-reviews .view .view-filters form .views-exposed-form .views-submit-button button, .page-booklists .view .view-filters form .views-exposed-form .views-submit-button button, .page-movie-review .view .view-filters form .views-exposed-form .views-submit-button button, .page-music-review-listing .view .view-filters form .views-exposed-form .views-submit-button button, .page-video-game-review .view .view-filters form .views-exposed-form .views-submit-button button {
     margin-top: 7px;
   }
 }
@@ -11831,13 +11933,13 @@ body .alert-box.success a.close:hover {
   margin: 23px 0 0;
 }
 .page-reviews .main .view-content .item-list ol li .views-field.views-field-view-node .button a {
-  color: #fff !important;
+  color: #32024e !important;
   font-family: SpecialElite !important;
   font-weight: normal !important;
   font-style: normal !important;
   -webkit-font-smoothing: antialiased !important;
   -moz-osx-font-smoothing: grayscale !important;
-  background: #32024e !important;
+  background: #fdeb52 !important;
   padding: 10px 20px 7px;
   -webkit-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
   -moz-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
@@ -11847,8 +11949,8 @@ body .alert-box.success a.close:hover {
   font-size: 21px;
 }
 .page-reviews .main .view-content .item-list ol li .views-field.views-field-view-node .button a:hover, .page-reviews .main .view-content .item-list ol li .views-field.views-field-view-node .button a:focus {
-  color: #fff;
-  background: #32024e;
+  color: #32024e;
+  background: #f7fc63;
   opacity: 1;
   outline: none;
 }
@@ -12441,9 +12543,9 @@ body .alert-box.success a.close:hover {
   padding-top: 26px;
   padding-bottom: 13px;
   font-size: 26px;
+  padding-left: 36px;
   border-bottom: medium none;
   margin-top: -1px;
-  padding-left: 36px;
   z-index: 0;
   overflow: hidden;
 }
@@ -12772,7 +12874,6 @@ body .alert-box.success a.close:hover {
   font-size: 24px;
   border-bottom: medium none;
   margin-top: -1px;
-  padding-left: 36px;
   z-index: 0;
   overflow: hidden;
 }
@@ -12835,7 +12936,6 @@ body .alert-box.success a.close:hover {
   font-size: 24px;
   border-bottom: medium none;
   margin-top: -1px;
-  padding-left: 36px;
   z-index: 0;
   overflow: hidden;
   margin-top: 0;
@@ -13163,7 +13263,7 @@ body .alert-box.success a.close:hover {
   color: #358aa7;
 }
 .section-events .main .view-events .view-content h3 {
-  font-size: 18px;
+  font-size: 20px;
   color: #fff;
   font-family: SpecialElite !important;
   font-weight: normal !important;
@@ -13194,7 +13294,7 @@ body .alert-box.success a.close:hover {
   float: left;
   vertical-align: middle;
   color: #32024e;
-  font-size: 18px;
+  font-size: 16px;
   font-family: Raleway-Medium !important;
   font-style: normal !important;
   font-weight: normal !important;
@@ -13207,7 +13307,7 @@ body .alert-box.success a.close:hover {
 }
 .section-events .main .view-events .view-content .views-row div a {
   color: #32024e;
-  font-size: 18px;
+  font-size: 16px;
   font-family: Raleway-Medium !important;
   font-style: normal !important;
   font-weight: normal !important;
@@ -14467,7 +14567,7 @@ div .addressfield-container-inline:after {
 }
 
 .sidebar span {
-  font-size: 17px;
+  font-size: 16px;
   font-family: Raleway-Medium !important;
   font-style: normal !important;
   font-weight: normal !important;

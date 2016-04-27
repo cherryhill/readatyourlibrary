@@ -51,7 +51,7 @@
                   width: 20px;
                   height: 20px;
                   text-align: center;
-                  color: $black;
+                  color: $white;
                   left: -30px;
                   top: 0;
                   position: absolute;
@@ -60,16 +60,17 @@
           &.current {
              
              a {
-               color: $black;
+               color: $white;
+               font-size: 16px;
               
                
              }
           }
          a {
-          color: $blue;
+          color: $white;
           @include arialregular;
           text-transform: capitalize;
-          font-size: 17px;
+          font-size: 16px;
           float: left;
 
          }
@@ -106,11 +107,23 @@
                padding: 8px 12px 5px; 
                font-size: 18px;
                color: $blue;
+                 &:hover {
+                    text-decoration: none;
+                    background-color: $button-hover;
+                 }
+                 &:focus,&.active {
+                   background-color: $button-active;
+                   text-decoration: none;
+                 }
                @include mclaren;
                @include boxshadow;
                  &.newclass {
                   color: $white !important;
                    background: $msg-active  url('../images/libraryzurb/msg-img.png') no-repeat scroll 10px 7px / auto !important;
+                     &:hover,&:focus,&.active {
+                        background: $msg-active  url('../images/libraryzurb/msg-img.png') no-repeat scroll 10px 7px / auto !important;
+                        text-decoration: none;
+                     }
                  }
                  
                 &.msg {
