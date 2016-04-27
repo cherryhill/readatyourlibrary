@@ -199,7 +199,6 @@ function private_msg_custom_teen_profile2_presave($profile) {
 function private_msg_custom_teen_form_alter(&$form, &$form_state, $form_id) {
 
   if($form_id == 'movie_review_node_form'){
-    // echo '<pre>'; print_r($form);die();
     //hidding label for other option field
     $sub_title = 'Fill out the following form to submit your review! Reviews will be posted upon approval and you will be sent a notification when your review has posted';
     $catalog_link = variable_get('catalog_link_for_teen_program');
@@ -218,6 +217,22 @@ function private_msg_custom_teen_form_alter(&$form, &$form_state, $form_id) {
 
     //Changing default title
     drupal_set_title('Write a Movie Review');
+  }
+
+  if($form_id == 'music_review_node_form') {
+
+    $catalog_link = variable_get('catalog_link_for_teen_program');
+    $library_abbreviation = variable_get('library_abbreviation_for_teen');
+
+    $form['title']['#title'] = t('Album or Song Title');
+    $form['field_genre_other_option_music'][LANGUAGE_NONE][0]['value']['#title'] = NULL;
+    $form['field_catalog_link_music'][LANGUAGE_NONE][0]['#description'] = 'Please enter a link to the book in the <a href='.$catalog_link.' target="_blank">'.$library_abbreviation.' catalog</a> so that other readers can find it easily.';
+    $form['body'][LANGUAGE_NONE][0]['#title'] = t('Write Your Review');
+
+    unset($form['field_please_select_one_music']['und']['#options']['_none']);
+    unset($form['field_genre_music']['und']['#options']['_none']);
+
+    drupal_set_title('Write a Music Review');
   }
 
   if($form_id == 'review_book_node_form') {
