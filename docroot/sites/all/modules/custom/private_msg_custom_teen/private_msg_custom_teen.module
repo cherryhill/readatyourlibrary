@@ -33,7 +33,7 @@ function private_msg_custom_teen_menu() {
 	  'page arguments' => array('platform_configuration_purchase_link_teen'),
 	  'access arguments' => array('access administration pages'),
 	  'type' => MENU_NORMAL_ITEM,
-	  'file' => 'inc/platform_configuration_purchase_link.inc',
+	  'file' => 'inc/platform_configuration_teen.inc',
 	  'file path' => drupal_get_path('module', 'private_msg_custom_teen'),
   );
 
@@ -201,8 +201,13 @@ function private_msg_custom_teen_form_alter(&$form, &$form_state, $form_id) {
   if($form_id == 'movie_review_node_form'){
     // echo '<pre>'; print_r($form);die();
     //hidding label for other option field
+    $sub_title = 'Fill out the following form to submit your review! Reviews will be posted upon approval and you will be sent a notification when your review has posted';
+    $catalog_link = variable_get('catalog_link_for_teen_program');
+    $library_abbreviation = variable_get('library_abbreviation_for_teen');
+
     $form['field_genre_other_option'][LANGUAGE_NONE][0]['value']['#title'] = NULL;
-    $form['field_movie_review_sub_titile'][LANGUAGE_NONE]['#title'] = t('Fill out the following form to submit your review! Reviews will be posted upon approval and you will be sent a notification when your review has posted');
+    $form['title']['#prefix'] = $sub_title;
+    $form['field_catalog_link_movie_review'][LANGUAGE_NONE][0]['#description'] = 'Please enter a link to the book in the <a href='.$catalog_link.' target="_blank">'.$library_abbreviation.' catalog</a> so that other readers can find it easily.';
     $form['body'][LANGUAGE_NONE][0]['#title'] = t('Write Your Review');
 
     //Removing of N/A radio button
@@ -210,7 +215,6 @@ function private_msg_custom_teen_form_alter(&$form, &$form_state, $form_id) {
     unset($form['field_language']['und']['#options']['_none']);
     unset($form['field_rating']['und']['#options']['_none']);
     unset($form['field_please_select_one']['und']['#options']['_none']);
-    unset($form['field_movie_review_sub_titile']['und']['#options']['_none']);
 
     //Changing default title
     drupal_set_title('Write a Movie Review');
@@ -270,8 +274,8 @@ function private_msg_custom_teen_block_info() {
     'info' => t('Menu block for mobile for teen program'),
   );
 
-  $blocks['content_select_list'] = array(
-    'info' => t('Select list for creating different reviews'),
+  $blocks['write_review_block'] = array(
+    'info' => t('Write a review block'),
   );
 
   return $blocks;
@@ -296,7 +300,7 @@ function private_msg_custom_teen_block_view($delta = '') {
       $block['content'] = header_menu_mobile_teen();
       break;
 
-    case 'content_select_list' :
+    case 'write_review_block' :
       $block['content'] = creating_review();
   }
   
@@ -392,18 +396,18 @@ function creating_review($form, $form_state){
 
   $no_review = $base_url.'/reviews';
   $link_book_review = $base_url.'/node/add/review-book';
-  $link_movie = $base_url.'/node/add/movie-review';
-  $link_music = $base_url.'/node/add/music-review';
-  $link_video_game = $base_url.'/node/add/video-game-review';
+  $link_movie_review = $base_url.'/node/add/movie-review';
+  $link_music_review = $base_url.'/node/add/music-review';
+  $link_video_game_review = $base_url.'/node/add/video-game-review';
   $link_booklist = $base_url.'/node/add/booklist';
   $link_activity_review = $base_url.'/node/add/review-activity';
 
-  $values = array($no_review => t('Select Review'),
+  $values = array(0 => t('Select Review'),
     $link_book_review => t('Book Reviews'),
     $link_activity_review => t('Activity Reviews'),
-    $link_movie => t('Movie Reviews'),
-    $link_music => t('Music Reviews'),
-    $link_video_game => t('Video Game Reviews'),
+    $link_movie_review => t('Movie Reviews'),
+    $link_music_review => t('Music Reviews'),
+    $link_video_game_review => t('Video Game Reviews'),
     $link_booklist => t('Booklists'));
 
   $form['review_options'] = array(
