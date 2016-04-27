@@ -15,7 +15,11 @@
       // select list option with thier link
       jQuery('.add_review_node').change(function(){
         var option = jQuery(this).find('option:selected').val();
+        if(option != 0){
         window.location = option;
+        }else{
+          return false;
+        }
       });
       // Get width of browser viewport. **Note:** The value we check against
       // should probably match the value set for `$topbar-breakpoint` in
