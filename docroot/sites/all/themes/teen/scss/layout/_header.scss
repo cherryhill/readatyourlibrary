@@ -47,6 +47,7 @@
                     line-height: 1;
                     padding: 0 !important;
                     text-align: center;
+                    @include animate;
                     @include mclaren;
 
   	 			  	  	   &:after {
@@ -59,96 +60,96 @@
   	 			  	  	  	position: relative;
   	 			  	  	  	 &:hover,&.active-trail {
   	 			  	  	  	 	&:after {
-  	 			  	  	  	 	 background:  url('../images/libraryzurb/currentprogs_hover.png') no-repeat;
+  	 			  	  	  	 	 background:  url('../images/libraryzurb/currentprogs_hover.png') no-repeat scroll 8px 3px;
                           
   	 			  	  	  	   }
   	 			  	  	  	 }
   	 			  	  	  	 &:after {
-                               background: url('../images/libraryzurb/current-programs.png') no-repeat;
+                               background: url('../images/libraryzurb/current-programs.png') no-repeat scroll 8px 3px;
                             }
 
   	 			  	  	  }
   	 			  	  	 &.activities {
   	 			  	  	 	 &:hover,&.active-trail {
   	 			  	  	  	 	&:after {
-  	 			  	  	  	 	background: url('../images/libraryzurb/activities_hover.png') no-repeat;
-                          background-position: 0px 7px;
+  	 			  	  	  	 	background: url('../images/libraryzurb/activities_hover.png') no-repeat scroll 0 6px;
+                         
   	 			  	  	  	   }
   	 			  	  	  	 }
   	 			  	  	  	&:after{
-                           background: url('../images/libraryzurb/activities.png') no-repeat;
-                           background-position: 0px 7px;
+                           background: url('../images/libraryzurb/activities.png') no-repeat scroll 0 6px;
+                          
                             }
   	 			  	  	  }
   	 			  	  	  &.rewards {
   	 			  	  	  	 &:hover,&.active-trail {
   	 			  	  	  	 	&:after {
-  	 			  	  	  	 		 background: url('../images/libraryzurb/rewards_hover.png') no-repeat;
-                             background-position: 8px 7px;
+  	 			  	  	  	 		 background: url('../images/libraryzurb/rewards_hover.png') no-repeat scroll 11px 9px;
+                            
   	 			  	  	  	   }
   	 			  	  	  	 }
   	 			  	  	  	&:after {
-  	 			  	  	     background: url('../images/libraryzurb/rewards.png') no-repeat;
-                       background-position: 8px 7px;
+  	 			  	  	     background: url('../images/libraryzurb/rewards.png') no-repeat scroll 11px 9px;
+                      
                        
   	 			  	  	    }
   	 			  	  	  }
   	 			  	  	  &.reviews {
   	 			  	  	  	 &:hover,&.active-trail {
   	 			  	  	  	 	&:after {
-  	 			  	  	  	 		 background: url('../images/libraryzurb/reviewactive.png') no-repeat;
-                            background-position: 0px 7px;
+  	 			  	  	  	 		 background: url('../images/libraryzurb/reviewactive.png') no-repeat scroll 0 7px;
+                           
   	 			  	  	  	   }
   	 			  	  	  	 }
                             &:after {
-  	 			  	  	  	 background: url('../images/libraryzurb/reviews.png') no-repeat;
-                       background-position: 0px 7px;
+  	 			  	  	  	 background: url('../images/libraryzurb/reviews.png') no-repeat scroll 0 7px;
+                     
                        
   	 			  	  	    }
   	 			  	  	  }
   	 			  	  	  &.photos {
   	 			  	  	  	 &:hover,&.active-trail {
   	 			  	  	  	 	&:after {
-  	 			  	  	  	 		background: url('../images/libraryzurb/photos_videos_hover.png') no-repeat;
-                          background-position: 0px 7px;
+  	 			  	  	  	 		background: url('../images/libraryzurb/photos_videos_hover.png') no-repeat scroll 9px 11px;
+                         
   	 			  	  	  	   }
   	 			  	  	  	 }
   	 			  	  	  	&:after {
-  	 			  	  	 background: url('../images/libraryzurb/photosnvideos.png') no-repeat;
-                   background-position: 0px 7px;
-                      
+  	 			  	  	 background: url('../images/libraryzurb/photosnvideos.png') no-repeat scroll 9px 11px;
+                  
   	 			  	  	    }
   	 			  	  	  }
   	 			  	  	  &.events {
   	 			  	  	  	 &:hover,&.active-trail {
   	 			  	  	  	 	&:after {
-  	 			  	  	  	 		 background: url('../images/libraryzurb/events_hover.png') no-repeat;
-                           background-position: 12px 7px;
+  	 			  	  	  	 		 background: url('../images/libraryzurb/events_hover.png') no-repeat scroll 17px 9px;
+                           
   	 			  	  	  	   }
   	 			  	  	  	 }
   	 			  	  	  	&:after {
-  	 			  	  	  	 background: url('../images/libraryzurb/events.png') no-repeat;
-                       background-position: 12px 7px;
+  	 			  	  	  	 background: url('../images/libraryzurb/events.png') no-repeat scroll 17px 9px;
+                     
                       
   	 			  	  	    }
   	 			  	  	  }
   	 			  	  	  &.progress {
   	 			  	  	  	 &:hover,&.active-trail {
   	 			  	  	  	 	&:after {
-  	 			  	  	  	  background: url('../images/libraryzurb/progress_hover.png') no-repeat;
-                        background-position: 6px 22px;
+  	 			  	  	  	  background: url('../images/libraryzurb/progress_hover.png') no-repeat scroll 8px 22px;
+                        
   	 			  	  	  	   }
   	 			  	  	  	 }
   	 			  	  	  	border: none;
   	 			  	  	  	&:after {
-  	 			  	  	  	background: url('../images/libraryzurb/progress.png') no-repeat;
-                      background-position: 6px 22px;
+  	 			  	  	  	background: url('../images/libraryzurb/progress.png') no-repeat scroll  8px 22px;
+                      
   	 			  	  	    }
   	 			  	  	  }
   	 			  	  	  
   	 			  	  	   &:hover,&.active-trail,&:focus  {
                        color: $blue;
                        text-decoration: none;
+                       @include rotate(360deg, $dir: Y);
   	 			  	  	   	&:after {
   	 			  	  	   		@include rotate(360deg, $dir: X);
 					}
