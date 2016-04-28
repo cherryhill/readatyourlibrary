@@ -311,7 +311,7 @@ function private_msg_custom_teen_block_info() {
   );
 
   $blocks['program_rewards_block'] = array(
-    'info' => t('Program Rewards Block'),
+    'info' => t('Program Rewards Block teen'),
   );
   return $blocks;
 }
@@ -337,9 +337,11 @@ function private_msg_custom_teen_block_view($delta = '') {
 
     case 'write_review_block' :
       $block['content'] = creating_review();
+      break;
 
     case 'program_rewards_block' :
       $block['content'] = view_rewards_block();
+      break;
   }
   
   return $block;
