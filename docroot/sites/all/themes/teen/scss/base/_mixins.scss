@@ -103,7 +103,6 @@
 @mixin orange-blue($smfont:null, $color: null ) {
 	background: $blue;
     overflow: hidden;
-    color: $white;
     position: relative;
     @include boxshadow;
       .block-title, h2 {
@@ -117,7 +116,7 @@
 		 @if $color == "Y" {
 		 	color: $yellow;
 		 }
-	     @if $smfont == "sm" {
+	     @else if $smfont == "sm" {
 	     
 	     	padding-bottom: 0;
 	     	 
