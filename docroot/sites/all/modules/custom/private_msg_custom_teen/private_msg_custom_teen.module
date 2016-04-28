@@ -25,6 +25,13 @@ function private_msg_custom_teen_menu() {
     'type' => MENU_SUGGESTED_ITEM,
   );
 
+  $items['rewards'] = array(
+    'title' => 'Rewards',
+    'page callback' => 'program_badges_rewards',
+    'access arguments' => array('access content'),
+    'type' => MENU_SUGGESTED_ITEM,
+  );
+
   // Adding link for setting purchase link for booklist
   $items['admin/config/system/platform_configuration'] = array(
 	  'title' => 'Platform Configuration for teen program',
@@ -278,6 +285,10 @@ function user_booklist_teen() {
   return '';
 }
 
+function program_badges_rewards() {
+  return '';
+}
+
 /**
  * Implements hook_block_info().
  */
@@ -299,6 +310,9 @@ function private_msg_custom_teen_block_info() {
     'info' => t('Write a review block'),
   );
 
+  $blocks['program_rewards_block'] = array(
+    'info' => t('Program Rewards Block'),
+  );
   return $blocks;
 }
 
@@ -323,6 +337,9 @@ function private_msg_custom_teen_block_view($delta = '') {
 
     case 'write_review_block' :
       $block['content'] = creating_review();
+
+    case 'program_rewards_block' :
+      $block['content'] = view_rewards_block();
   }
   
   return $block;
@@ -441,4 +458,14 @@ function creating_review($form, $form_state){
     )
   );
   return $form;
+}
+
+function view_rewards_block(){
+  $block = module_invoke('views', 'block_view', 'program_rewards-block_1');
+  $output .= render($block['content']);
+
+  $block = module_invoke('views', 'block_view', 'program_rewards_raffle-block_1');
+  $output .= render($block['content']);
+
+  return $output;
 }
