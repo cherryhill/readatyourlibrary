@@ -75,9 +75,104 @@
  * @see template_process()
  */
 ?>
-<?php print flag_create_link('follow', $node->uid); ?>
-<article id="node-<?php print $node->nid; ?>" class="<?php print $classes; ?>"<?php print $attributes; ?>>
+<div class="booklist-title">
+  <div class="bk_title">
+    <p class = "book_title"><?php 
+      global $base_url;
+      $node = node_load($nid);
+      $booklist_books = field_get_items('node', $node, 'field_book');
+      $title_node = $node->title;
+      $node_uid = $node->uid;
+      $node_created = date('F d, Y',$node->created);
+      $booklist_body = field_get_items('node', $node, 'body');
+      $booklist_creator = $node->name;
+      $profile = profile2_load_by_user($node->uid);
+      $pid = $profile['main']->pid;
+      $privacy_field = $node->field_privacy_settings['und'][0]['value'];
 
+      $query_img_id = db_select('field_data_field_user_avatar','av')
+      ->fields('av',array('field_user_avatar_target_id'))
+      ->condition('entity_id',$pid)
+      ->execute()
+      ->fetchAssoc();
+      $target_id = $query_img_id['field_user_avatar_target_id'];
+
+      if(isset($target_id)){
+        $query = db_select('field_data_field_avatar_image', 't');
+        $query->join('file_managed', 'n', 'n.fid = t.field_avatar_image_fid');
+        $result = $query
+        ->fields('n', array('uri'))
+        ->condition('t.entity_id', $target_id)
+        ->execute();
+        $img_uri = $result->fetchObject();
+        $img_uri = $img_uri->uri;
+        $style = 'avatar_style';
+        $img_path = image_style_url($style, $img_uri);
+        $img = "<img src='$img_path'>";
+      }
+      print $title_node.' created on '.$node_created; ?></p>
+    <p class = "book_desc"><?php print $booklist_body['0']['safe_value'];?></p>
+    <p class="booklist_creator"><span class = "created"><?php if ($privacy_field == 'public' || $privacy_field == 'private'){ print 'Created by'; }?></span><span class="avatar"><?php if ($privacy_field == 'public' || $privacy_field == 'private') { print $img; } ?></span><span class ="name_author"><?php if ($privacy_field == 'public' || $privacy_field == 'private'){ print "<a href = '$base_url/users/public_profile/$node_uid' class = 'user_profile_node'>".$booklist_creator.'</a>'; } ?></span></p>
+  </div>
+  <div class="bk_follow_like">
+    <div class="like-count">
+      <?php
+        $nid_node = $node->nid;
+        $title_node = $node->title;
+
+        $query = db_select('flag_counts','count')
+        ->fields('count',array('count'))
+        ->condition('entity_id',$nid_node)
+        ->execute()
+        ->fetchAssoc();
+
+        $counts = $query['count'];
+        if(isset($counts)){
+        print '<span class = "lk-count">Likes: </span>'.$counts;}
+      ?>
+    </div>
+    
+  </div>
+</div>
+
+<article id="node-<?php print $node->nid; ?>" class="<?php print $classes; ?>"<?php print $attributes; ?>>
+  <div class="booklist_books">
+    <?php
+      $i = 0;
+      foreach ($booklist_books as $key => $value) {
+        $bk_title = $value['entity']->title;
+        $bk_fname_author = $value['entity']->field_author_first_name['und'][0]['safe_value'];
+        $bk_lname_author = $value['entity']->field_author_last_name['und'][0]['safe_value'];
+        $bk_catalog_link = $value['entity']->field_catalog_link['und'][0]['url'];
+
+        if(isset($bk_fname_author) || isset($bk_lname_author)){
+          $bk_author_name = '<span class = "a_name"> by '.$bk_fname_author.' '.$bk_lname_author.'</span>'; 
+        }
+        $i++;
+
+        if($node->status == 1) {
+          $book_cover_image = $value['entity']->field_booklist_cover_image['und'][0]['safe_value'];
+
+        if ($book_cover_image) {                 
+          $bimg = "<img src='".trim($book_cover_image)." '>";  
+        }
+        else {
+          $bimg =  "<img src='http://www.clker.com/cliparts/7/1/a/f/11971220941184963828dniezby_Generic_Book.svg.med.png'>";
+        }  
+        print "<div id = 'booklist_books'>";
+        print  "<table><tr><td>".$bimg."</td>"."<td>";
+        print  "</tr></table>".'<div class = "node_title"><p>'.'<span class = "counter">'.$i.'.'.'</span>'."<a href = '$bk_catalog_link' target = '_blank' class='bk_clink'>".$bk_title.'</a>'.$bk_author_name.'</p></div>';}
+        print "</div>";
+        unset($bk_author_name);
+      }
+    ?>
+  </div>
+  <div class="bk_follow">
+      <?php 
+      $node_privacy_field = field_get_items('node', $node, 'field_privacy_settings');
+      $node_privacy = $node_privacy_field[0]['value'];
+      if($node_privacy === 'public'){ print flag_create_link('follow', $node->uid); } ?>
+    </div>
   <?php print render($title_prefix); ?>
   <?php if (!$page): ?>
     <?php if (!$page): ?>
@@ -87,14 +182,6 @@
   <?php print render($title_suffix); ?>
  <!-- Display according to user privacy setting -->
   <?php $privacy_field = $node->field_privacy_settings['und'][0]['value']; if ($privacy_field == 'public' || $privacy_field == 'private'): ?>
-    <?php if ($display_submitted): ?>
-      <div class="posted">
-        <?php if ($user_picture): ?>
-          <?php print $user_picture; ?>
-        <?php endif; ?>
-        <?php print $submitted; ?>
-      </div>
-    <?php endif; ?>
    <?php endif; ?>
 
 
@@ -103,7 +190,8 @@
     hide($content['comments']);
     hide($content['links']);
     hide($content['field_tags']);
-    print render($content);
+   // print_r($review = field_get_items('node', $node, 'body'));
+
   ?>
 
   <?php if (!empty($content['field_tags']) && !$is_front): ?>
