@@ -100,24 +100,39 @@
 	-moz-osx-font-smoothing: grayscale !important;
 	-moz-font-smoothing: grayscale !important;
 }
-@mixin orange-blue {
+@mixin orange-blue($smfont:null, $color: null ) {
 	background: $blue;
     overflow: hidden;
     color: $white;
     position: relative;
     @include boxshadow;
       .block-title, h2 {
-       	color: $white;
+       	
       	@include mclaren;
 		padding-top: 26px;
-		padding-bottom: 25px;
-	    font-size: 28px;
-	      @include mobile{
-	     	font-size: 22px;
+		font-size: 26px;
+		@include mobile {
+	     	  	font-size: 22px;
+	     	  }
+		 @if $color == "Y" {
+		 	color: $yellow;
+		 }
+	     @if $smfont == "sm" {
+	     
+	     	padding-bottom: 0;
+	     	 
+	     }
+	     @else if $smfont == "pf" {
+	     	padding-left: 26px;
+	     }
+	     @else {
+	     	padding-bottom: 25px;
+	     	padding-left:36px;
+	     	color: $white;
 	     }
 		border-bottom: medium none;
 		margin-top: -1px;
-		padding-left:36px;
+		
 		z-index: 0;
 		position: relative;
 		font-weight: normal !important;
@@ -149,17 +164,17 @@
 
 }
 @mixin bluebutton($font-size: null) {
-	color: $white !important;
+	color: $blue !important;
 	@include mclaren;
-	background: $blue !important;
+	background: $yellow !important;
 	padding: 10px 20px 7px;
 	@include boxshadow;
 	border: none;
 	text-transform: capitalize;
 	font-size: $font-size;
 	  &:hover, &:focus {
-	 	color: $white;
-	 	background: $blue;
+	 	color: $blue;
+	 	background: $button-hover;
 	 	opacity: 1;
 	 	outline: none;
 	 }
@@ -186,7 +201,7 @@
     position: relative;
     @include boxshadow;
 }
-@mixin waveimg($ch-font: null) {
+@mixin waveimg($ch-font: null, $padding-left: null) {
 		color: $white;
       	@include mclaren;
 		padding-top: 26px;
@@ -195,13 +210,17 @@
 	     @if $ch-font == "C" {
 	     	@include titlefont1;
 	     }
+	     @else if $padding-left == "sm" {
+	     	padding-left: 26px;
+	     }
 	     @else {
 	     	@include titlefont;
+	     	padding-left:36px;
 	     
 	     }
 		border-bottom: medium none;
 		margin-top: -1px;
-		padding-left:36px;
+		
 		z-index: 0;
 		overflow: hidden;
     }
@@ -305,4 +324,7 @@
 }
 @mixin titlefont1 {
 	font-size: 24px;
+}
+@mixin noboxshadow {
+	box-shadow: 0 0 0 0 !important;
 }
