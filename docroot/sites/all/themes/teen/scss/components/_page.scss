@@ -1338,7 +1338,7 @@
 				  	 	    		 	 	top: 10px;
 				  	 	    		 	 	padding-right: 35px;
 				  	 	    		 	 	 	&:after {
-					  	 	    		 	 	 	@include previous(30px, 30px, $top: -4px, $right: 0);
+					  	 	    		 	 	 	@include previous(30px, 30px, $top: 0px, $right: 0);
 					  	 	    		 	 	 	background: url('../images/libraryzurb/smily-white.png') no-repeat;
 				  	 	    		 	 	 	}
 			  	 	    		 	 	}
@@ -1375,8 +1375,9 @@
   	  			margin-bottom: 23px;
   	  		}
   	  		.viewmenu {
+  	  			color: $blue;
   	  			margin-bottom: 23px;
-  	  			font-size: 17px;
+  	  			font-size: 16px;
   	  			@include arialregular;
   	  		}
   	  	}
@@ -1515,13 +1516,14 @@
   	 			.view-header {
   	 				h2 {
   	 					@include noborder;
-  	 					color: $black;
+  	 					color: $blue;
   	 					@include mclaren;
   	 					  &.reviews-title {
   	 					  	font-size: 28px;
   	 					  }
   	 					  &.reviews-subtitle {
-  	 					  	font-size: 22px;
+  	 					  	font-size: 24px;
+  	 					    
   	 					  }
   	 				}
   	 			}
@@ -1555,10 +1557,10 @@
 		                             	padding-left: 4%;
 		                             	padding-top: 23px;
                              				.bookreview_title {
-			                             		font-size: 20px;
+			                             		font-size: 22px;
 			                             		@include mclaren;
 				                             		a {
-				                             			font-size: 20px;
+				                             			font-size: 22px;
 				                             			padding-right: 5px;
 				                             		}
 
@@ -1567,11 +1569,11 @@
 	  	 					
 			  	 					&.views-field-count {
 			  	 					 	position: relative;
-			  	 					 	top: 45px;
+			  	 					 	top: 20px;
 			  	 					}
 		  	 					 	&.views-field-body {
 		  	 					 		@include arialregular;
-		  	 					 		font-size: 18px;
+		  	 					 		font-size: 17px;
 		  	 					 		line-height: 1.4;
 		  	 					 	}
 	  	 					 		&.views-field-nothing {
@@ -1580,16 +1582,20 @@
 				  	 					 	 	&.user {
 				  	 					 	 		padding-left: 5px;
 				  	 					 	 		@include mclaren;
+				  	 					 	 		 a {
+				  	 					 	 		 	font-size: 17px;
+				  	 					 	 		 }
 				  	 					 	 	}
 				  	 					 	 	&.review {
 				  	 					 	 		@include mclaren;
+				  	 					 	 		font-size: 17px;
 				  	 					 	 	}
 				  	 					 	 	&.date {
 				  	 					 	 		width: 100%;
 				  	 					 	 		display: table-row; 
 				  	 					 	 		@include arialregular;
 				  	 					 	 		padding-top: 16px;
-				  	 					 	 		font-size: 18px;
+				  	 					 	 		font-size: 17px;
 
 				  	 					 	 	}
 	  	 					 	 				&.field-name-field-avatar-image {
@@ -2830,5 +2836,50 @@ display: block !important;
  	 	 	color: #4D4D4D;
  	 	 }
  	 }	
+ 	}
+ 	.form-submit {
+ 		background: $yellow;
+ 		color: $black !important;
+ 		@include noborder;
+ 		 &:hover {
+ 		 	background: $button-hover;
+ 		 }
+ 		 &:focus {
+ 		 	background: $button-active;
+ 		 	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
+ 		 }
+ 	}
+ }
+ /**music review indivisual page***/
+ .page-node-add-music-review {
+ 	.form-checkboxes {
+ 		.form-item {
+ 		width: 19%;
+ 		display: inline-block;
+ 		 input[type="checkbox"] {
+ 		 	margin-bottom: 0;
+ 		 }
+ 	}
+ }
+ .form-item.form-type-radio.form-item-field-please-select-one-music-und {
+ 	input[type="radio"] {
+ 		margin-bottom: 0;
+ 	}
+ }
+ .form-textarea-wrapper textarea {
+ 		height: 250px;
+ 		resize: none;
+ 	}
+ 	.form-submit {
+ 		background: $yellow;
+ 		color: $black !important;
+ 		@include noborder;
+ 		 &:hover {
+ 		 	background: $button-hover;
+
+ 		 }
+ 		 &:focus {
+ 		 	background: $button-active;
+ 		 }
  	}
  }
