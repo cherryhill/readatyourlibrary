@@ -1299,9 +1299,11 @@
   		padding-left: 0;
   		}
 		  .block-title {
-  	 	  	@include white-text;
-  	 	  	font-size: 22px;
-  	 	  	margin-top: 6px;
+  	 	  	@include mclaren;
+  	 	  	color: $yellow !important;
+
+  	 	  	font-size: 22px !important;
+  	 	  	margin-top: 6px !important;
   	 	  }
   	 	  	p {
   	 	  	 	color: white;
@@ -1348,12 +1350,13 @@
   	 	   			.view-header {
 		  	 	  		h3:nth-of-type(1) {
 		  	 	  			a {
-			  	 	  			@include white-text;
-			  	 	  			font-size: 21px !important;
+			  	 	  			color: $yellow;
+                                 @include mclaren;
+			  	 	  			font-size: 22px !important;
 			  	 	  		}
 		           		}
 	           		 	h3 {
-		           		 	font-size: 17px !important;
+		           		 	font-size: 16px !important;
 		           		 	@include arialbold;
 		           		 	color: $white;
 		           		 	margin-bottom: 15px;
@@ -1520,6 +1523,9 @@
   	 					@include mclaren;
   	 					  &.reviews-title {
   	 					  	font-size: 28px;
+  	 					  	@include brushimg(left);
+  	 					  	margin-left: -5px;
+  	 					  	margin-bottom: 30px;
   	 					  }
   	 					  &.reviews-subtitle {
   	 					  	font-size: 24px;
@@ -1715,7 +1721,11 @@
 }
 
 /**css only for booklist page**/
-
+.sidebar {
+	.button {
+		margin-left: 0 !important;
+	}
+}
 .page-booklists {
   	.l-header .row.header-middle section.block-menu-menu-secoundary-menu ul.menu li a.reviews {
   		color: $blue;
@@ -1725,8 +1735,25 @@
   		 
   	}
   	.main {
-  		.view-header,.view-footer {
+  		 .view-header .booklist_slideshow_title,.view-footer {
   			display: none;
+  		}
+  		.view-booklists {
+  			.views-field-counter {
+  				padding-right: 10px;
+  				  span {
+  				  	&:after {
+  				  		content: ".";
+  				  		font-size: 20px;
+  				  	}
+  				  }
+  			}
+  		}
+  		.view-header .featured {
+  			color: $blue;
+  			@include noborder;
+  			font-size: 24px;
+  			@include mclaren;
   		}
 	  	.view-content {
 	  		margin-top: 40px;
@@ -1745,7 +1772,7 @@
 	  	 				font-size: 17px;
 		  	 				.views-field-nothing {
 		  	 					margin-top: 23px;
-		  	 					padding-left: 25px;
+		  	 					padding-left: 32px;
 		  	 					display: inline-block;
 		  	 					@include mclaren;	
 			  	 					div {
@@ -1783,18 +1810,15 @@
 			  	 			 	float: right;
 			  	 			 	@include mclaren;
 			  	 			}
-	  	 			 
+	  	 			        .views-field-counter {
+                               font-size: 20px;
+                               @include mclaren;
+                               float: left;
+	  	 			        }
 	  	 			 		.views-field-title {
 			  	 			 	a {
-			  	 			 		font-size: 21px;
-			  	 			 		color: $blue;
-			  	 			 		 &:before {
-			  	 			 		 	@include counter;
-			  	 			 		 	color: $black;
-			  	 			 		 	display: inline-block;
-			  	 			 		 	padding-right: 10px;
-			  	 			 		 	@include arialregular;
-			  	 			 		 }
+			  	 			 		font-size: 20px;
+			  	 			 		color: $msg-active;
 			  	 			 	}
 	  	 			 		}
 	  	 			}
@@ -1817,10 +1841,16 @@
 	  			 		}
 	  			 	}
 	  			 	.views-field-title {
-	  			 		font-size: 21px;
+	  			 		font-size: 20px;
+	  			 		.views-label {
+	  			 			font-size: 20px;
+	  			 			color: $black;
+	  			 			@include mclaren;
+	  			 		}
 	  			 	 		.field-content {
 			  			 	 	a {
-			  			 	 		color: $blue;
+			  			 	 		color: $msg-active;
+			  			 	 		font-size: 20px;
 			  			 	 		@include mclaren;
 			  			 	 		text-transform: capitalize;
 			  			 	 	}
@@ -1840,6 +1870,8 @@
 	  			 	  		div {
 			  			 	  	float: left;
 			  			 	  	color: $black;
+			  			 	  	font-size: 17px;
+			  			 	  	@include mclaren;
 				  			 	  	 &:first-child {
 				  			 	  	 	padding-right: 5px;
 				  			 	  	 }
@@ -1853,8 +1885,8 @@
 				  			 	  	 	 }
 			  			 	  	}
 		  			 	  	 	a.username {
-			  			 	  	 	color: $blue;
-			  			 	  	 	font-size: 21px;
+			  			 	  	 	color: $msg-active;
+			  			 	  	 	font-size: 17px;
 			  			 	  	 	padding-right: 10px;
 				  			 	
 		  			 	  	 	}
@@ -2881,5 +2913,87 @@ display: block !important;
  		 &:focus {
  		 	background: $button-active;
  		 }
+ 	}
+ }
+ /**css for node pages ***/
+ /*@@book-review*/
+ .node-type-review-book {
+ 	#page-title {
+ 		display: none;
+ 	}
+ 	article {
+ 		width: 69%;
+ 		display: inline-block;
+ 		vertical-align: top;
+ 		margin-top: 20px;
+ 		position: relative;
+ 		.flag-like.last {
+ 			display: none;
+ 		}
+ 		 .follow_link_bookreview {
+ 		 	display: inline-block;
+ 		 	position: absolute;
+ 		 	right: 0;
+ 		 	top: 0;
+ 		 	  a {
+ 		 	  	@include yellowbutton;
+ 		 	  }
+ 		 }
+ 		 .title_review {
+ 		 	h2 {
+ 		 		color: $black;
+ 		 		font-size: 22px;
+ 		 		@include mclaren;
+ 		 		@include noborder;
+ 		 		a {
+ 		 			font-size: 22px;
+ 		 			@include mclaren;
+ 		 		}
+ 		 	}
+ 		 }
+ 	}
+ 	.review_node_sidebar {
+ 		width: 30%;
+		display: inline-block;
+		vertical-align: top;
+		.like-here {
+			display: inline-block;
+			margin-left: 40px;
+			  a {
+			  	@include yellowbutton(p);
+			  	@include mclaren;
+			  	position: relative;
+			  	padding-right: 34px;
+			  	 &:after {
+			  	 	@include previous(30px, 30px, $right: 0, $top: 6px);
+ 	 	background: url('../images/libraryzurb/smily-white.png') no-repeat;
+			  	 }
+			  }
+		}
+		 .like-count {
+		 	display: inline-block;
+		 	float: left;
+		 	padding-right: 10px;
+		 	  .lk-count {
+		 	  	@include like;
+		 	  	@include mclaren;
+		 	  }
+		 }
+		 .img_review {
+		 	table,tbody {
+		 		@include noborder;
+		 		margin-top: 20px;
+		 		 td {
+		 		 	img {
+		 		 		@include desktop {
+		 		 			width: 242px !important;
+							height: 361px !important;
+		 		 		}
+		 		 		width: 100%;
+		 		 		height: 100%;
+		 		 	}
+		 		 }
+		 	}
+		 }
  	}
  }

@@ -138,13 +138,18 @@
 		overflow: hidden;
      }
 }
-@mixin yellowbutton {
+@mixin yellowbutton($pad: null) {
 	color: $black;
 	@include mclaren;
 	background: $yellow !important;
 	text-transform: capitalize;
 	border: none;
-	padding: 10px 20px 7px;
+	@if $pad == "p" {
+		padding: 10px 34px 7px 20px;
+	}
+	@else {
+		padding: 10px 20px 7px;
+	}
 	@include boxshadow;
 	 &:hover {
 	 	color: $black;
