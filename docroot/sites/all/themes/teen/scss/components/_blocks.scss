@@ -1,7 +1,63 @@
 // Blocks
 
 .block {
-	
+	&.block-private-msg-custom-teen-write-review-block {
+		background: $light-yellow;
+		padding: 20px 8.6%;
+		 .form-item {
+		 	margin: 0;
+		 	 label {
+		 	 	font-size: 22px;
+		 	 	color: $blue;
+		 	 	@include mclaren;
+		 	 }
+		 	 .chosen-single {
+		 	 	background: $white;
+		 	 	border: 1px solid $blue;
+		 	 	color: $blue;
+		 	 	display: inline-block;
+		 	 	padding: 8px 6px 3px;
+		 	 	width: 100%;
+		 	 	height: auto;
+		 	 	border-radius: 0;
+		 	 	 span {
+		 	 	 	@include mclaren;
+		 	 	 }
+		 	 	 div {
+		 	 	 	b {
+		 	 	 		background: none;
+		 	 	 		position: relative;
+		 	 	 		  &:after {
+		 	 	 		  	content: '';
+		 	 	 		  	border-left: 5px solid transparent;
+		 	 	 		    border-right: 5px solid transparent;
+		 	 	 		    border-top: 6px solid $blue;
+		 	 	 		    position: absolute;
+		 	 	           top: 40%;
+		 	 	           left: 0;
+		 	 	           display: inline-block;
+		 	 	 		  }
+		 	 	 	}
+		 	 	 }
+
+		 	 }
+		 	 .chosen-drop {
+		 	 	.chosen-results {
+		 	 		li {
+		 	 			color: $blue;
+		 	 			@include mclaren;
+		 	 			  &.result-selected, &:hover {
+		 	 			  	background: $light-yellow;
+
+		 	 			  }
+		 	 		}
+		 	 	}
+		 	 }
+		 }
+		 .description {
+		 	display: none;
+		 }
+	}
 	&.block-private-msg-custom-homepage-slider {
 		@include bluebackground;
 		padding: 0 !important;
@@ -340,7 +396,7 @@
     }
     
 	&.block-user-login {
-		 @include orange-blue;
+		 @include orange-blue(sm,Y);
 		 .block-title {
 		 	padding-left: 11.5%;
 		 }
@@ -368,38 +424,48 @@
 	}
 	&.review-booklist-block {
 		background: $white;
-		border-radius: 20px;
-		padding-left: 10px;
-		padding-right: 10px;
 		margin-bottom: 48px;
 		@include boxshadow;
 		@include mclaren;
 		 .block-title {
 		 	border-top: none;
-		 	padding: 10px;
-		 	padding-left: 22.6%;
+		 	padding: 0;
+
 		 	 a {
 		 	 	@include mclaren;
-		 	    font-size: 22px;
-		 	 	color: $black;
+		 	    font-size: 18px;
+		 	 	color: $white;
+		 	 	background: $light-green;
 		 	 	position: relative;
+		 	 	display: inline-block;
+		 	 	border-bottom: 1px solid $white;
+		 	 	width: 100%;
+		 	 	padding: 10px 10px 10px 13.5%;
 		 	 	&.active {
-		 	 		color: $orange !important;
+		 	 		color: $light-green;
+		 	 		background: $white;
 		 	 		  &:before {
 		 	 		  	@include previous(25px, 25px, $top: 3px, $left: -31px);
- 		 			    background: url('../images/libraryzurb/star.png') no-repeat;
  		 			  }
 		 	 	}
 		 	 }
 		 }
 		 ul {
 		 	&.menu {
-		 		margin-bottom: 6px;
+		 		margin-bottom: 0;
 		 		 li {
-		 		 	padding: 6px 0px 0px 22.6%;
+		 		 	padding:0;
+		 		 	margin-left: 0;
+		 		 	margin-bottom: 0;
 		 		 	  a {
-		 		 	  	 color: $black;
-		 		 	  	 font-size: 22px;
+		 		 	  	 color: $white;
+		 		 	  	 background: $light-green;
+		 		 	  	 border-bottom: 1px solid $white;
+		 		 	  	 display: inline-block;
+		 		 	  	 position: relative;
+		 		 	  	 font-size: 18px;
+		 		 	  	 width: 100%;
+		 		 	  	 padding: 10px 10px 10px 13.5%;
 		 		 	  	  &:focus {
 		 		 	  	  	outline: none;
 		 		 	  	  }
@@ -407,11 +473,12 @@
 		 		 	&.active {
 		 		 		
 		 		 		a {
-		 		 			color: $orange !important;
+		 		 			color: $light-green;
+		 		 			background: $white;
+
 		 		 			position: relative;
 		 		 			  &:before {
 		 		 			  	@include previous(25px, 25px, $top: 3px, $left: -31px);
-		 		 			    background: url('../images/libraryzurb/star.png') no-repeat;
 		 		 			  }
 
 		 		 		}
@@ -428,7 +495,7 @@
 
  	}
  	&.block-views-reward-earn-block, &.block-views-reward-earn-block-1 {
- 		@include orange-blue;
+ 		@include orange-blue(pf,Y);
  		.view {
  			display: table;
  			width: 100%;
@@ -504,12 +571,13 @@
 		 		 	position: relative;
 		 		 	@include bodyfont;
 		 		 	color: $white;
+		 		 	margin-bottom: 5px;
 		 		 	@include mobile {
 	     				font-size: 14px;
 	     				}
 		 		 	@include arialregular;
 		 		 	&:after {
-		 		 		@include previous(47px, 21px, $left: -32px, $top: 3px);
+		 		 		@include previous(47px, 21px, $left: -32px, $top: 0);
 		 		 		background: url('../images/libraryzurb/arrow-list.png') no-repeat;
 		 		 	}
 		 		 }
@@ -622,7 +690,7 @@
 	            	}
 	            }    
 			         .block-title {
-			         	@include waveimg;
+			         	@include waveimg(sm);
 			         }
 			         p {
 			           padding-left: 40px;

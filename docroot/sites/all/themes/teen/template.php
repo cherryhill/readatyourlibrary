@@ -207,7 +207,7 @@ function teen_css_alter(&$css) {
 function teen_preprocess_page(&$variables) {
 
 
-if (!empty($variables['page']['sidebar_first']) || !empty($variables['page']['login_form']) || !empty($variables['page']['activity_sidebar'])){
+if (!empty($variables['page']['sidebar_first']) || !empty($variables['page']['login_form']) || !empty($variables['page']['activity_sidebar']) || !empty($variables['page']['social_share'])){
     $left = $variables['page']['sidebar_first'];
     $left1 = $variables['page']['login_form'];
     $left3 = $variables['page']['activity_sidebar'];

@@ -70,7 +70,7 @@
 /**css for photos n vedios page***/
 .section-media {
 	.block-title {
-		font-size: 28px;
+		font-size: 24px;
 		color: $blue;
 		@include mclaren;
 		@include noborder;
@@ -389,7 +389,7 @@
 /**css for unauthenticated program page***/
 .not-logged-in.section-programs {
 	.pull-9.sidebar {
-		right: 70.4%;
+		/* right: 70.4% */;
 		@include mobile {
 			right: 0;
 		}
@@ -407,6 +407,23 @@
 .logged-in.section-programs{
 	.block-views-reward-earn-block-1 {
 		display: none;
+	}
+	.pull-9.social-share {
+		width: 29.53%;
+	 	right: 69.4%;
+	 	padding-left: 2.65%;
+	 	padding-right: 2.65%;
+	 	float: right;
+	 	background: $blue;
+	 	@include boxshadow;
+	 	@include mobile {
+	 		width: 100%;
+	 		right: 0;
+	 	}
+	 	.first {
+	 		@include noboxshadow;
+	 		padding: 13px 0 !important;
+	 	}
 	}
 	.pull-9.sidebar {
 	 	width: 29.53%;
@@ -491,7 +508,7 @@
   			@include brushimg(left);
   		}
  	 	.current-program {
- 	 		background: url("../images/libraryzurb/annocement.png") no-repeat scroll center center / cover;
+ 	 		background: url("../images/libraryzurb/annocement.png") no-repeat scroll center center / 100% 100%;
 	    	@include boxshadow;
 	    	color: $white;
 	    	position: relative;
@@ -500,8 +517,9 @@
 	    	  	color: $white;
 	    	  	@include mclaren;
 	    	  	@include noborder;
-	    	  	padding: 26px 0px 25px 36px;
-	    	  	 font-size: 28px;
+	    	  	padding: 26px 0px 5px 36px;
+	    	  	margin-bottom: 0;
+	    	  	 font-size: 24px;
 	      		@include mobile{
 	     			font-size: 22px;
 	    		 }
@@ -509,7 +527,7 @@
 	    		.view {
 					display: inline-block;
 		    	 	width: 100%;
-		    	 	padding: 10px 4%;
+		    	 	padding: 10px 4% 0;
 			    	 	.view-content {
 			    	 		display: table;
 			    	 		width: 100%;
@@ -542,7 +560,7 @@
 		.view {
    		 	.view-header, .view-header p {
 	   		 	@media screen and (min-width: 980px) {
-	   		 	   font-size: 28px !important;
+	   		 	   font-size: 26px !important;
 	   		 	}
    		 		@include mclaren;
    		 		color: $blue;
@@ -567,11 +585,11 @@
 		   		 		 	  			a {
 				   		 		 	  		@include mclaren;
 				   		 		 	  		color: $blue;
-				   		 		 	  		font-size: 20px;
+				   		 		 	  		font-size: 24px;
 		   		 		 	  			}
 		   		 		 	  	}
 		   		 		 	  	&.views-field-body {
-			   		 		 	  	font-size: 18px;
+			   		 		 	  	font-size: 16px;
 			   		 		 	  	@include arialregular;
 			   		 		 	  	line-height: 1.4;
 		   		 		 	  	}
@@ -1216,7 +1234,7 @@
 
  /**common css used in  page-reviews  and page-booklists**/
  
-.page-reviews, .page-booklists  {
+.page-reviews, .page-booklists, .page-movie-review, .page-music-review-listing, .page-video-game-review  {
   	#page-title {
   	 	@include black-text;
   	 	@include mclaren;
@@ -1248,6 +1266,18 @@
      		right: 63.4%;
      	}
     }
+    .pull-9.social-share {
+    	width: 29.53%;
+     	right: 69.4%;
+     	padding-left: 0;
+     	padding-right: 0;
+     	background: $blue;
+     	float: right;
+     	 @include mobile {
+     	 	width: 100%;
+     	 	right: 0;
+     	 }
+    }
     .pull-9.sidebar2 {
        width: 29.53%;
        right: 71.4%;
@@ -1264,7 +1294,6 @@
   	 	color: $white;
   	 	padding-top: 25px;
   	 	padding-bottom: 25px;
-  	 	border-radius: 20px;
   	 	@include boxshadow;
   	 	.views-field-count {
   		padding-left: 0;
@@ -1352,7 +1381,8 @@
   	  		}
   	  	}
   	  	.view-filters {
-  	  		@include yellowbackground;
+  	  		background: url('../images/libraryzurb/annocement.png') no-repeat scroll center center / 100% 100%;
+  	  		@include boxshadow;
   	  		 	form {
   	  		 	 	margin: 0 !important;
   	  		 			.views-exposed-form {
@@ -1380,7 +1410,9 @@
 					  	  		 	  	 }
 	  	  		 	  			}
 			  	  		 	  	label {
-				  	  		 	  	@include black-text;
+				  	  		 	  	color: $white;
+				  	  		 	  	@include arialregular;
+				  	  		 	  	opacity: 1 !important;
 				  	  		 	  	font-size: 16px;
 			  	  		 	  	}
 			  	  		 	  	.chosen-processed {
@@ -1407,19 +1439,20 @@
 	  	  		 	  	    			@include bluebutton($font-size: 21px);
 	  	  		 	  	   				height: auto !important;
 	  	  		 	  	    			border: none;
+	  	  		 	  	    			border-radius: 0;
 	  	  		 	  	     				div {
 		  	  		 	  						b{
 						  	  		 	  			visibility: hidden;
 						  	  		 	  			position: relative;
 						  	  		 	  			  	&:after {
 							  	  		 	  			  	content: "";
-							  	  		 	  			  	border-left: 5px solid transparent;
-							  	  		 	  			  	border-right: 5px solid transparent;
-							  	  		 	  			  	border-top: 5px solid $white;
+							  	  		 	  			  	border-left: 6px solid transparent;
+							  	  		 	  			  	border-right: 6px solid transparent;
+							  	  		 	  			  	border-top: 7px solid $blue;
 							  	  		 	  			  	position: absolute;
-							  	  		 	  			  	top: 45%;
+							  	  		 	  			  	top: 40%;
 							  	  		 	  			  	display: block;
-							  	  		 	  			  	left: 0;
+							  	  		 	  			  	left: -9px;
 							  	  		 	  			  	visibility: visible;
 						  	  		 	  			  	}
 		  	  		 	  						}
@@ -2704,7 +2737,7 @@
 		.view-events {
 			.view-content {
 				h3 {
-					font-size: 18px;
+					font-size: 20px;
 					color: $white;
 					@include mclaren;
 					@include noborder;
@@ -2727,14 +2760,14 @@
 					  	float: left;
 					  	vertical-align: middle;
 					  	color: $blue;
-					  	font-size: 18px;
+					  	font-size: 16px;
 					  	@include arialregular;
 					  	 @include tablet {
 					  	 	float: none;
 					  	 }
 					  	   a {
 					  	   	  color: $blue;
-					  	   	  font-size: 18px;
+					  	   	  font-size: 16px;
 					  	   	  @include arialregular;
 
 					  	   }
