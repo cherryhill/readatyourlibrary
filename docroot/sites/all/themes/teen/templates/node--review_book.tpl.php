@@ -134,6 +134,11 @@ if(isset($catalog_lk)){
         }
       ?>
   </div>
+  <div class="like-here">
+     <span>
+  <?php print flag_create_link('like', $node->nid) ?>
+  </span>
+  </div>
 </div>
 <article id="node-<?php print $node->nid; ?>" class="<?php print $classes; ?>"<?php print $attributes; ?>>
   <?php print render($title_prefix); ?>
@@ -191,9 +196,14 @@ if(isset($catalog_lk)){
     </p>
     <p class="date_created"><?php print date('F d, Y',$node_created) ?></p>
   </div>
+   <div class="follow_link_bookreview">
+  <?php 
+    if($node_privacy === 'public'){ print flag_create_link('follow', $node->uid); } ?>
+  </div>
   <div>
     <?php print $review['0']['safe_value'] ?>
   </div>
+
 </div>
 <div class = "reviewbook_footer">
 
@@ -204,13 +214,8 @@ if(isset($catalog_lk)){
 
   <?php print render($content['links']); ?>
   <?php print render($content['comments']); ?>
-  <div class="follow_link_bookreview">
-  <?php 
-    if($node_privacy === 'public'){ print flag_create_link('follow', $node->uid); } ?>
-  </div>
-  <span>
-  <?php print flag_create_link('like', $node->nid) ?>
-  </span>
+ 
+ 
   </div>
 
 </article>

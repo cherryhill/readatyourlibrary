@@ -24,6 +24,8 @@
 		 	 	 	@include mclaren;
 		 	 	 }
 		 	 	 div {
+		 	 	 	width: 22px;
+		 	 	 	background: $blue;
 		 	 	 	b {
 		 	 	 		background: none;
 		 	 	 		position: relative;
@@ -31,10 +33,10 @@
 		 	 	 		  	content: '';
 		 	 	 		  	border-left: 5px solid transparent;
 		 	 	 		    border-right: 5px solid transparent;
-		 	 	 		    border-top: 6px solid $blue;
+		 	 	 		    border-top: 6px solid $white;
 		 	 	 		    position: absolute;
 		 	 	           top: 40%;
-		 	 	           left: 0;
+		 	 	           left: 6px;
 		 	 	           display: inline-block;
 		 	 	 		  }
 		 	 	 	}
@@ -319,11 +321,10 @@
     }
     &.block-views-booklist-slideshow-block-2 {
     	h2.block-title {
-    		@include mclaren;
-    		font-size: 25px;
-    		color: $black;
-    		@include noborder;
-    		margin-bottom: 33px;
+    		margin-left: -5px;
+    		@include brushimg(left);
+    		font-size: 28px;
+    		margin-bottom: 30px;
 
     	}
     }
@@ -440,7 +441,7 @@
 		 	 	display: inline-block;
 		 	 	border-bottom: 1px solid $white;
 		 	 	width: 100%;
-		 	 	padding: 10px 10px 10px 13.5%;
+		 	 	padding: 10px 10px 10px 23.5%;
 		 	 	&.active {
 		 	 		color: $light-green;
 		 	 		background: $white;
@@ -465,7 +466,7 @@
 		 		 	  	 position: relative;
 		 		 	  	 font-size: 18px;
 		 		 	  	 width: 100%;
-		 		 	  	 padding: 10px 10px 10px 13.5%;
+		 		 	  	 padding: 10px 10px 10px 23.5%;
 		 		 	  	  &:focus {
 		 		 	  	  	outline: none;
 		 		 	  	  }
