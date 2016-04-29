@@ -1604,7 +1604,7 @@
 				  	 					 	 		font-size: 17px;
 
 				  	 					 	 	}
-	  	 					 	 				&.field-name-field-avatar-image {
+	  	 					 	 				&.views-field-field-user-avatar {
 				  	 					 	 		position: relative;
 				  	 					 	 		height: 41px;
 				  	 					 	 		padding-left: 5px;
@@ -3101,4 +3101,78 @@ display: block !important;
  		  	  }
  		  }
  	}
+ }
+
+ /**css for movie,music and vediogame review**/
+ .page-movie-review, .page-music-review-listing, .page-video-game-review {
+ 	.main {
+ 	.view-content {
+ 		.views-row {
+ 			display: inline-block;
+ 			width: 100%;
+ 			border-bottom: 1px solid $light-gray;
+ 			 .views-field-counter, .views-field-title, .views-field-count {
+ 			 	font-size: 20px;
+ 			 	@include mclaren;
+ 			 	  a {
+ 			 	  	font-size: 20px;
+ 			 	  	@include mclaren;
+ 			 	  }
+ 			 }
+ 			 .views-field-count {
+                float: right;
+                  .views-label-count {
+                  	 @include like;
+                  }
+ 			 }
+ 			 .views-field {
+ 			 	line-height: 1.4;
+ 			 }
+ 			 .views-field-nothing, .views-field-field-genre, .views-field-field-actors, .views-field-field-artist-performer, .views-field-php, .views-field-field-catalog-link-music, .views-field-field-age-rating-of-game, .views-field-field-director,.views-field-field-catalog-link-video-game, .views-field-field-language,.views-field-php, .views-field-field-release-year, .views-field-field-rating, .views-field-field-catalog-link-movie-review {
+ 			 	font-size: 17px;
+ 			 	
+ 			 	@include mclaren;
+ 			 	  a {
+ 			 	  	font-size: 17px;
+ 			 	  	@include mclaren;
+ 			 	  }
+ 			 }
+ 			 .views-field-field-genre {
+ 			 	span, div {
+ 			 		display: inline-block;
+ 			 	}
+ 			 }
+ 			 .views-field-nothing {
+ 			 	display: inline-block;
+ 			 	 .views-label {
+ 			 	 	display: none;
+ 			 	 }
+ 			 	 .views-field-field-user-avatar {
+ 			 	 	margin-left: 5px;
+ 			 	 	margin-right: 5px;
+ 			 	 }
+ 			 	 .review,.views-field-field-user-avatar,.user {
+ 			 	 	display: inline-block;
+ 			 	 	vertical-align: top;
+ 			 	 }
+ 			 }
+ 			 .views-field-created {
+ 			 	font-size: 17px;
+ 			 	@include arialregular;
+ 			 }
+ 			 .views-field-body {
+ 			 	p {
+ 			 		width: 100%;
+ 			 		margin-bottom: 0;
+ 			 	}
+ 			 }
+ 			 .views-field-view-node {
+ 			 	margin: 20px 0;
+ 			 	a {
+ 			 		@include yellowbutton;
+ 			 	}
+ 			 }
+ 		}
+ 	}
+ }
  }

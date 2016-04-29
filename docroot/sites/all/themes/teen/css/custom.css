@@ -6585,6 +6585,73 @@ h1#page-title {
   background: url("../images/libraryzurb/email-icon.png") no-repeat !important;
 }
 
+.reviews-title {
+  font-size: 28px;
+  margin-left: -5px;
+  position: relative;
+  width: 100%;
+  position: relative;
+  color: #32024e;
+  z-index: 1;
+  text-transform: capitalize;
+  height: 68px;
+  top: 10px;
+  height: 64px;
+  padding-top: 14px;
+  font-family: SpecialElite !important;
+  font-weight: normal !important;
+  font-style: normal !important;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+  text-align: left;
+  padding-left: 35px;
+  border: none !important;
+  outline: none !important;
+  margin-bottom: 30px;
+}
+@media screen and (max-width: 1099px) {
+  .reviews-title {
+    height: 100%;
+  }
+}
+.reviews-title:after {
+  content: "";
+  width: 100%;
+  height: 100%;
+  display: block;
+  visibility: visible;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  background: url("../images/libraryzurb/brushimage.png") repeat;
+  background-size: 100%;
+  background-position: center;
+}
+@media (min-width: 768px) and (max-width: 1025px) {
+  .reviews-title:after {
+    background: #fdeb52;
+  }
+}
+@media (max-width: 767px) {
+  .reviews-title:after {
+    background: #fdeb52;
+  }
+}
+
+.reviews-subtitle {
+  font-size: 24px;
+  color: #32024e;
+  font-family: SpecialElite !important;
+  font-weight: normal !important;
+  font-style: normal !important;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+  border: none !important;
+  outline: none !important;
+  margin-top: 20px;
+}
+
 .admin-menu .fixed {
   top: 1.8125em;
 }
@@ -7484,6 +7551,11 @@ h1#page-title {
 .block.review-booklist-block ul.menu li a {
   color: #fff;
   background: #7db600;
+  font-family: SpecialElite !important;
+  font-weight: normal !important;
+  font-style: normal !important;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
   display: inline-block;
   position: relative;
   font-size: 18px;
@@ -11950,14 +12022,14 @@ body .alert-box.success a.close:hover {
   padding-top: 16px;
   font-size: 17px;
 }
-.page-reviews .main .view-content .item-list ol li .views-field.views-field-nothing div.field-name-field-avatar-image {
+.page-reviews .main .view-content .item-list ol li .views-field.views-field-nothing div.views-field-field-user-avatar {
   position: relative;
   height: 41px;
   padding-left: 5px;
   padding-top: 5px;
   bottom: 19px;
 }
-.page-reviews .main .view-content .item-list ol li .views-field.views-field-nothing div.field-name-field-avatar-image img {
+.page-reviews .main .view-content .item-list ol li .views-field.views-field-nothing div.views-field-field-user-avatar img {
   margin: 0 !important;
   -webkit-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
   -moz-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
@@ -13919,6 +13991,126 @@ body .alert-box.success a.close:hover {
 .node-type-booklist .booklist-title .bk_title p span.avatar {
   margin-left: 5px;
   margin-right: 5px;
+}
+
+/**css for movie,music and vediogame review**/
+.page-movie-review .main .view-content .views-row, .page-music-review-listing .main .view-content .views-row, .page-video-game-review .main .view-content .views-row {
+  display: inline-block;
+  width: 100%;
+  border-bottom: 1px solid #cccccc;
+}
+.page-movie-review .main .view-content .views-row .views-field-counter, .page-movie-review .main .view-content .views-row .views-field-title, .page-movie-review .main .view-content .views-row .views-field-count, .page-music-review-listing .main .view-content .views-row .views-field-counter, .page-music-review-listing .main .view-content .views-row .views-field-title, .page-music-review-listing .main .view-content .views-row .views-field-count, .page-video-game-review .main .view-content .views-row .views-field-counter, .page-video-game-review .main .view-content .views-row .views-field-title, .page-video-game-review .main .view-content .views-row .views-field-count {
+  font-size: 20px;
+  font-family: SpecialElite !important;
+  font-weight: normal !important;
+  font-style: normal !important;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+}
+.page-movie-review .main .view-content .views-row .views-field-counter a, .page-movie-review .main .view-content .views-row .views-field-title a, .page-movie-review .main .view-content .views-row .views-field-count a, .page-music-review-listing .main .view-content .views-row .views-field-counter a, .page-music-review-listing .main .view-content .views-row .views-field-title a, .page-music-review-listing .main .view-content .views-row .views-field-count a, .page-video-game-review .main .view-content .views-row .views-field-counter a, .page-video-game-review .main .view-content .views-row .views-field-title a, .page-video-game-review .main .view-content .views-row .views-field-count a {
+  font-size: 20px;
+  font-family: SpecialElite !important;
+  font-weight: normal !important;
+  font-style: normal !important;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+}
+.page-movie-review .main .view-content .views-row .views-field-count, .page-music-review-listing .main .view-content .views-row .views-field-count, .page-video-game-review .main .view-content .views-row .views-field-count {
+  float: right;
+}
+.page-movie-review .main .view-content .views-row .views-field-count .views-label-count, .page-music-review-listing .main .view-content .views-row .views-field-count .views-label-count, .page-video-game-review .main .view-content .views-row .views-field-count .views-label-count {
+  position: relative;
+  padding-right: 34px;
+}
+.page-movie-review .main .view-content .views-row .views-field-count .views-label-count:after, .page-music-review-listing .main .view-content .views-row .views-field-count .views-label-count:after, .page-video-game-review .main .view-content .views-row .views-field-count .views-label-count:after {
+  content: "";
+  width: 30px;
+  height: 30px;
+  display: block;
+  visibility: visible;
+  position: absolute;
+  top: -5px;
+  right: 0;
+  background: url("../images/libraryzurb/smily-white.png") no-repeat;
+}
+.page-movie-review .main .view-content .views-row .views-field, .page-music-review-listing .main .view-content .views-row .views-field, .page-video-game-review .main .view-content .views-row .views-field {
+  line-height: 1.4;
+}
+.page-movie-review .main .view-content .views-row .views-field-nothing, .page-movie-review .main .view-content .views-row .views-field-field-genre, .page-movie-review .main .view-content .views-row .views-field-field-actors, .page-movie-review .main .view-content .views-row .views-field-field-artist-performer, .page-movie-review .main .view-content .views-row .views-field-php, .page-movie-review .main .view-content .views-row .views-field-field-catalog-link-music, .page-movie-review .main .view-content .views-row .views-field-field-age-rating-of-game, .page-movie-review .main .view-content .views-row .views-field-field-director, .page-movie-review .main .view-content .views-row .views-field-field-catalog-link-video-game, .page-movie-review .main .view-content .views-row .views-field-field-language, .page-movie-review .main .view-content .views-row .views-field-php, .page-movie-review .main .view-content .views-row .views-field-field-release-year, .page-movie-review .main .view-content .views-row .views-field-field-rating, .page-movie-review .main .view-content .views-row .views-field-field-catalog-link-movie-review, .page-music-review-listing .main .view-content .views-row .views-field-nothing, .page-music-review-listing .main .view-content .views-row .views-field-field-genre, .page-music-review-listing .main .view-content .views-row .views-field-field-actors, .page-music-review-listing .main .view-content .views-row .views-field-field-artist-performer, .page-music-review-listing .main .view-content .views-row .views-field-php, .page-music-review-listing .main .view-content .views-row .views-field-field-catalog-link-music, .page-music-review-listing .main .view-content .views-row .views-field-field-age-rating-of-game, .page-music-review-listing .main .view-content .views-row .views-field-field-director, .page-music-review-listing .main .view-content .views-row .views-field-field-catalog-link-video-game, .page-music-review-listing .main .view-content .views-row .views-field-field-language, .page-music-review-listing .main .view-content .views-row .views-field-php, .page-music-review-listing .main .view-content .views-row .views-field-field-release-year, .page-music-review-listing .main .view-content .views-row .views-field-field-rating, .page-music-review-listing .main .view-content .views-row .views-field-field-catalog-link-movie-review, .page-video-game-review .main .view-content .views-row .views-field-nothing, .page-video-game-review .main .view-content .views-row .views-field-field-genre, .page-video-game-review .main .view-content .views-row .views-field-field-actors, .page-video-game-review .main .view-content .views-row .views-field-field-artist-performer, .page-video-game-review .main .view-content .views-row .views-field-php, .page-video-game-review .main .view-content .views-row .views-field-field-catalog-link-music, .page-video-game-review .main .view-content .views-row .views-field-field-age-rating-of-game, .page-video-game-review .main .view-content .views-row .views-field-field-director, .page-video-game-review .main .view-content .views-row .views-field-field-catalog-link-video-game, .page-video-game-review .main .view-content .views-row .views-field-field-language, .page-video-game-review .main .view-content .views-row .views-field-php, .page-video-game-review .main .view-content .views-row .views-field-field-release-year, .page-video-game-review .main .view-content .views-row .views-field-field-rating, .page-video-game-review .main .view-content .views-row .views-field-field-catalog-link-movie-review {
+  font-size: 17px;
+  font-family: SpecialElite !important;
+  font-weight: normal !important;
+  font-style: normal !important;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+}
+.page-movie-review .main .view-content .views-row .views-field-nothing a, .page-movie-review .main .view-content .views-row .views-field-field-genre a, .page-movie-review .main .view-content .views-row .views-field-field-actors a, .page-movie-review .main .view-content .views-row .views-field-field-artist-performer a, .page-movie-review .main .view-content .views-row .views-field-php a, .page-movie-review .main .view-content .views-row .views-field-field-catalog-link-music a, .page-movie-review .main .view-content .views-row .views-field-field-age-rating-of-game a, .page-movie-review .main .view-content .views-row .views-field-field-director a, .page-movie-review .main .view-content .views-row .views-field-field-catalog-link-video-game a, .page-movie-review .main .view-content .views-row .views-field-field-language a, .page-movie-review .main .view-content .views-row .views-field-php a, .page-movie-review .main .view-content .views-row .views-field-field-release-year a, .page-movie-review .main .view-content .views-row .views-field-field-rating a, .page-movie-review .main .view-content .views-row .views-field-field-catalog-link-movie-review a, .page-music-review-listing .main .view-content .views-row .views-field-nothing a, .page-music-review-listing .main .view-content .views-row .views-field-field-genre a, .page-music-review-listing .main .view-content .views-row .views-field-field-actors a, .page-music-review-listing .main .view-content .views-row .views-field-field-artist-performer a, .page-music-review-listing .main .view-content .views-row .views-field-php a, .page-music-review-listing .main .view-content .views-row .views-field-field-catalog-link-music a, .page-music-review-listing .main .view-content .views-row .views-field-field-age-rating-of-game a, .page-music-review-listing .main .view-content .views-row .views-field-field-director a, .page-music-review-listing .main .view-content .views-row .views-field-field-catalog-link-video-game a, .page-music-review-listing .main .view-content .views-row .views-field-field-language a, .page-music-review-listing .main .view-content .views-row .views-field-php a, .page-music-review-listing .main .view-content .views-row .views-field-field-release-year a, .page-music-review-listing .main .view-content .views-row .views-field-field-rating a, .page-music-review-listing .main .view-content .views-row .views-field-field-catalog-link-movie-review a, .page-video-game-review .main .view-content .views-row .views-field-nothing a, .page-video-game-review .main .view-content .views-row .views-field-field-genre a, .page-video-game-review .main .view-content .views-row .views-field-field-actors a, .page-video-game-review .main .view-content .views-row .views-field-field-artist-performer a, .page-video-game-review .main .view-content .views-row .views-field-php a, .page-video-game-review .main .view-content .views-row .views-field-field-catalog-link-music a, .page-video-game-review .main .view-content .views-row .views-field-field-age-rating-of-game a, .page-video-game-review .main .view-content .views-row .views-field-field-director a, .page-video-game-review .main .view-content .views-row .views-field-field-catalog-link-video-game a, .page-video-game-review .main .view-content .views-row .views-field-field-language a, .page-video-game-review .main .view-content .views-row .views-field-php a, .page-video-game-review .main .view-content .views-row .views-field-field-release-year a, .page-video-game-review .main .view-content .views-row .views-field-field-rating a, .page-video-game-review .main .view-content .views-row .views-field-field-catalog-link-movie-review a {
+  font-size: 17px;
+  font-family: SpecialElite !important;
+  font-weight: normal !important;
+  font-style: normal !important;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+}
+.page-movie-review .main .view-content .views-row .views-field-field-genre span, .page-movie-review .main .view-content .views-row .views-field-field-genre div, .page-music-review-listing .main .view-content .views-row .views-field-field-genre span, .page-music-review-listing .main .view-content .views-row .views-field-field-genre div, .page-video-game-review .main .view-content .views-row .views-field-field-genre span, .page-video-game-review .main .view-content .views-row .views-field-field-genre div {
+  display: inline-block;
+}
+.page-movie-review .main .view-content .views-row .views-field-nothing, .page-music-review-listing .main .view-content .views-row .views-field-nothing, .page-video-game-review .main .view-content .views-row .views-field-nothing {
+  display: inline-block;
+}
+.page-movie-review .main .view-content .views-row .views-field-nothing .views-label, .page-music-review-listing .main .view-content .views-row .views-field-nothing .views-label, .page-video-game-review .main .view-content .views-row .views-field-nothing .views-label {
+  display: none;
+}
+.page-movie-review .main .view-content .views-row .views-field-nothing .views-field-field-user-avatar, .page-music-review-listing .main .view-content .views-row .views-field-nothing .views-field-field-user-avatar, .page-video-game-review .main .view-content .views-row .views-field-nothing .views-field-field-user-avatar {
+  margin-left: 5px;
+  margin-right: 5px;
+}
+.page-movie-review .main .view-content .views-row .views-field-nothing .review, .page-movie-review .main .view-content .views-row .views-field-nothing .views-field-field-user-avatar, .page-movie-review .main .view-content .views-row .views-field-nothing .user, .page-music-review-listing .main .view-content .views-row .views-field-nothing .review, .page-music-review-listing .main .view-content .views-row .views-field-nothing .views-field-field-user-avatar, .page-music-review-listing .main .view-content .views-row .views-field-nothing .user, .page-video-game-review .main .view-content .views-row .views-field-nothing .review, .page-video-game-review .main .view-content .views-row .views-field-nothing .views-field-field-user-avatar, .page-video-game-review .main .view-content .views-row .views-field-nothing .user {
+  display: inline-block;
+  vertical-align: top;
+}
+.page-movie-review .main .view-content .views-row .views-field-created, .page-music-review-listing .main .view-content .views-row .views-field-created, .page-video-game-review .main .view-content .views-row .views-field-created {
+  font-size: 17px;
+  font-family: Raleway-Medium !important;
+  font-style: normal !important;
+  font-weight: normal !important;
+  -webkit-font-smoothing: antialiased !important;
+}
+.page-movie-review .main .view-content .views-row .views-field-body p, .page-music-review-listing .main .view-content .views-row .views-field-body p, .page-video-game-review .main .view-content .views-row .views-field-body p {
+  width: 100%;
+  margin-bottom: 0;
+}
+.page-movie-review .main .view-content .views-row .views-field-view-node, .page-music-review-listing .main .view-content .views-row .views-field-view-node, .page-video-game-review .main .view-content .views-row .views-field-view-node {
+  margin: 20px 0;
+}
+.page-movie-review .main .view-content .views-row .views-field-view-node a, .page-music-review-listing .main .view-content .views-row .views-field-view-node a, .page-video-game-review .main .view-content .views-row .views-field-view-node a {
+  color: #000;
+  font-family: SpecialElite !important;
+  font-weight: normal !important;
+  font-style: normal !important;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+  background: #fdeb52 !important;
+  text-transform: capitalize;
+  border: none;
+  padding: 10px 20px 7px;
+  -webkit-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+  box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+}
+.page-movie-review .main .view-content .views-row .views-field-view-node a:hover, .page-music-review-listing .main .view-content .views-row .views-field-view-node a:hover, .page-video-game-review .main .view-content .views-row .views-field-view-node a:hover {
+  color: #000;
+  background: #f7fc63 !important;
+  opacity: 1;
+  outline: none;
+  text-decoration: none !important;
+}
+.page-movie-review .main .view-content .views-row .views-field-view-node a:focus, .page-movie-review .main .view-content .views-row .views-field-view-node a.active, .page-music-review-listing .main .view-content .views-row .views-field-view-node a:focus, .page-music-review-listing .main .view-content .views-row .views-field-view-node a.active, .page-video-game-review .main .view-content .views-row .views-field-view-node a:focus, .page-video-game-review .main .view-content .views-row .views-field-view-node a.active {
+  color: #000;
+  background: #f0f811 !important;
+  outline: 1;
+  opacity: 1;
+  text-decoration: none !important;
 }
 
 /**
