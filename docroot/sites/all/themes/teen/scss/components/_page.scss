@@ -1374,7 +1374,7 @@
   	  		.other-booklists {
   	  			font-size: 25px;
   	  			@include mclaren;
-  	  			color: $black;
+  	  			color: $blue;
   	  			margin-bottom: 23px;
   	  		}
   	  		.viewmenu {
@@ -1780,7 +1780,7 @@
 			  	 						a {
 			  	 							padding-left: 10px;
 			  	 						}
-			  	 						&.field-name-field-avatar-image {
+			  	 						&.views-field-field-user-avatar {
 			  	 							position: relative;
 			  	 							bottom: 10px;
 			  	 							  img {
@@ -2995,5 +2995,110 @@ display: block !important;
 		 		 }
 		 	}
 		 }
+ 	}
+ }
+ /**indivisual booklist page**/
+ .node-type-booklist {
+ 	#page-title {
+ 		display: none;
+ 	}
+ 	article {
+ 		.booklist_books {
+ 			width: 100%;
+ 			display: table;
+ 			 #booklist_books {
+ 			 	display: table-row;
+ 			 	width: 100%;
+ 			 	  table {
+ 			 	  	@include noborder;
+ 			 	  	float: left;
+ 			 	  	display: table-cell;
+ 			 	  	margin-bottom: 0;
+ 			 	  	 tbody {
+ 			 	  	 	@include noborder;
+ 			 	  	 	  img {
+ 			 	  	 	  	 width: 81px;
+ 			 	  	 	  }
+ 			 	  	 }
+ 			 	  }
+ 			 	  .node_title {
+ 			 	  	display: table-cell;
+ 			 	  	width: 80%;
+ 			 	  	vertical-align: middle;
+ 			 	  	position: relative;
+ 			 	  	left: -8%;
+ 			 	  }
+ 			 }
+ 		}
+ 	}
+ 	.booklist-title {
+ 		width: 100%;
+ 		display: inline-block;
+ 		position: relative;
+ 		  .bk_follow_like {
+ 		  	position: absolute;
+ 		  	right: 0;
+ 		  	top: 0;
+ 		  	  div {
+ 		  	  	position: relative;
+ 		  	  	display: inline-block;
+ 		  	  	vertical-align: top;
+ 		  	  	  &.like-wrapp {
+ 		  	  	  	float: right;
+ 		  	  	  }
+ 		  	  	  &.bk_follow {
+ 		  	  	  	width: 100%;
+ 		  	  	  	margin-top: 30px;
+ 		  	  	  	 .flag-follow {
+ 		  	  	  	 	float: right;
+
+ 		  	  	  	 	a {
+ 		  	  	  	 	 @include yellowbutton;
+
+ 		  	  	  	 	}
+ 		  	  	  	 }
+ 		  	  	  }
+ 		  	  	  &.like-here {
+			display: inline-block;
+			margin-left: 40px;
+			  a {
+			  	@include yellowbutton(p);
+			  	@include mclaren;
+			  	position: relative;
+			  	padding-right: 34px;
+			  	 &:after {
+			  	 	@include previous(30px, 30px, $right: 0, $top: 6px);
+ 	 	background: url('../images/libraryzurb/smily-white.png') no-repeat;
+			  	 }
+			  }
+		}
+		 &.like-count {
+		 	display: inline-block;
+		 	float: left;
+		 	padding-right: 10px;
+		 	  .lk-count {
+		 	  	@include like;
+		 	  	@include mclaren;
+		 	  }
+		 }
+ 		  	  }
+ 		  }
+ 		  .bk_title {
+ 		  	width: 70%;
+ 		  	display: inline-block;
+ 		  	vertical-align: top;
+ 		  	  p {
+ 		  	  	width: 100%;
+ 		  	  	@include mclaren;
+ 		  	  	font-size: 18px;
+ 		  	  	 &.book_desc {
+ 		  	  	 	display: none;
+ 		  	  	 }
+ 		  	  	 span.avatar {
+ 		  	  	 	margin-left: 5px;
+ 		  	  	 	margin-right: 5px;
+ 		  	  	 }
+ 		  	  }
+ 		  }
  	}
  }

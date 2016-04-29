@@ -439,15 +439,18 @@
 		 	 	background: $light-green;
 		 	 	position: relative;
 		 	 	display: inline-block;
-		 	 	border-bottom: 1px solid $white;
 		 	 	width: 100%;
-		 	 	padding: 10px 10px 10px 23.5%;
+		 	 	padding: 15px 10px 10px 23.5%;
+		 	 	  &:after {
+		 	 	  	 @include previous(48px,100%,$left: 16px, $top: 0);
+		 	 	  	 background: url('../images/libraryzurb/bookreview.png') no-repeat scroll center center;
+		 	 	  }
 		 	 	&.active {
 		 	 		color: $light-green;
 		 	 		background: $white;
-		 	 		  &:before {
-		 	 		  	@include previous(25px, 25px, $top: 3px, $left: -31px);
- 		 			  }
+		 	 		  &:after {
+		 	 		  	background: url('../images/libraryzurb/bookreview-active.png') no-repeat scroll center center;
+		 	 		  }
 		 	 	}
 		 	 }
 		 }
@@ -461,12 +464,36 @@
 		 		 	  a {
 		 		 	  	 color: $white;
 		 		 	  	 background: $light-green;
-		 		 	  	 border-bottom: 1px solid $white;
+		 		 	  	
 		 		 	  	 display: inline-block;
 		 		 	  	 position: relative;
 		 		 	  	 font-size: 18px;
 		 		 	  	 width: 100%;
 		 		 	  	 padding: 10px 10px 10px 23.5%;
+		 		 	  	 &:after {
+		 	 	  	 			@include previous(48px,100%,$left: 16px, $top: 0);
+		 	 	  	 		
+		 	 	  			}
+		 	 	  		  &.movie-review {
+		 	 	  		  	&:after{
+		 	 	  		  		background: url('../images/libraryzurb/moviereview.png') no-repeat scroll center center;
+		 	 	  		  	}
+		 	 	  		  }
+		 	 	  		  &.music-review{
+		 	 	  		  	&:after{
+		 	 	  		  		background: url('../images/libraryzurb/musicreview.png') no-repeat scroll center center;
+		 	 	  		  	}
+		 	 	  		  }
+		 	 	  		  &.vediogame-review{
+		 	 	  		  	&:after{
+		 	 	  		  		background: url('../images/libraryzurb/vidiogamereview.png') no-repeat scroll center center;
+		 	 	  		  	}
+		 	 	  		  }
+		 	 	  		  &.booklistreview{
+		 	 	  		  	&:after{
+		 	 	  		  		background: url('../images/libraryzurb/booklistreview.png') no-repeat scroll center center;
+		 	 	  		  	}
+		 	 	  		  }
 		 		 	  	  &:focus {
 		 		 	  	  	outline: none;
 		 		 	  	  }
@@ -478,9 +505,26 @@
 		 		 			background: $white;
 
 		 		 			position: relative;
-		 		 			  &:before {
-		 		 			  	@include previous(25px, 25px, $top: 3px, $left: -31px);
-		 		 			  }
+		 		 			  &.movie-review {
+		 	 	  		  	&:after{
+		 	 	  		  		background: url('../images/libraryzurb/moviereview-active.png') no-repeat scroll center center;
+		 	 	  		  	}
+		 	 	  		  }
+		 	 	  		  &.music-review{
+		 	 	  		  	&:after{
+		 	 	  		  		background: url('../images/libraryzurb/musicreview-active.png') no-repeat scroll center center;
+		 	 	  		  	}
+		 	 	  		  }
+		 	 	  		  &.vediogame-review{
+		 	 	  		  	&:after{
+		 	 	  		  		background: url('../images/libraryzurb/vediogamereview-active.png') no-repeat scroll center center;
+		 	 	  		  	}
+		 	 	  		  }
+		 	 	  		  &.booklistreview{
+		 	 	  		  	&:after{
+		 	 	  		  		background: url('../images/libraryzurb/booklistreview-active.png') no-repeat scroll center center;
+		 	 	  		  	}
+		 	 	  		  }
 
 		 		 		}
 		 		 	}

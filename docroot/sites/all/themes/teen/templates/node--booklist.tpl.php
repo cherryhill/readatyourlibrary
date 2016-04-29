@@ -115,6 +115,7 @@
     <p class="booklist_creator"><span class = "created"><?php if ($privacy_field == 'public' || $privacy_field == 'private'){ print 'Created by'; }?></span><span class="avatar"><?php if ($privacy_field == 'public' || $privacy_field == 'private') { print $img; } ?></span><span class ="name_author"><?php if ($privacy_field == 'public' || $privacy_field == 'private'){ print "<a href = '$base_url/users/public_profile/$node_uid' class = 'user_profile_node'>".$booklist_creator.'</a>'; } ?></span></p>
   </div>
   <div class="bk_follow_like">
+  <div class="like-wrapp">
     <div class="like-count">
       <?php
         $nid_node = $node->nid;
@@ -131,7 +132,18 @@
         print '<span class = "lk-count">Likes: </span>'.$counts;}
       ?>
     </div>
-    
+    <div class="like-here">
+       <span>
+         <?php print flag_create_link('like', $node->nid) ?>
+      </span>
+    </div>
+    </div>
+     <div class="bk_follow">
+      <?php 
+      $node_privacy_field = field_get_items('node', $node, 'field_privacy_settings');
+      $node_privacy = $node_privacy_field[0]['value'];
+      if($node_privacy === 'public'){ print flag_create_link('follow', $node->uid); } ?>
+    </div>
   </div>
 </div>
 
@@ -167,12 +179,7 @@
       }
     ?>
   </div>
-  <div class="bk_follow">
-      <?php 
-      $node_privacy_field = field_get_items('node', $node, 'field_privacy_settings');
-      $node_privacy = $node_privacy_field[0]['value'];
-      if($node_privacy === 'public'){ print flag_create_link('follow', $node->uid); } ?>
-    </div>
+ 
   <?php print render($title_prefix); ?>
   <?php if (!$page): ?>
     <?php if (!$page): ?>

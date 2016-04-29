@@ -7452,23 +7452,26 @@ h1#page-title {
   background: #7db600;
   position: relative;
   display: inline-block;
-  border-bottom: 1px solid #fff;
   width: 100%;
-  padding: 10px 10px 10px 23.5%;
+  padding: 15px 10px 10px 23.5%;
+}
+.block.review-booklist-block .block-title a:after {
+  content: "";
+  width: 48px;
+  height: 100%;
+  display: block;
+  visibility: visible;
+  position: absolute;
+  top: 0;
+  left: 16px;
+  background: url("../images/libraryzurb/bookreview.png") no-repeat scroll center center;
 }
 .block.review-booklist-block .block-title a.active {
   color: #7db600;
   background: #fff;
 }
-.block.review-booklist-block .block-title a.active:before {
-  content: "";
-  width: 25px;
-  height: 25px;
-  display: block;
-  visibility: visible;
-  position: absolute;
-  top: 3px;
-  left: -31px;
+.block.review-booklist-block .block-title a.active:after {
+  background: url("../images/libraryzurb/bookreview-active.png") no-repeat scroll center center;
 }
 .block.review-booklist-block ul.menu {
   margin-bottom: 0;
@@ -7481,12 +7484,33 @@ h1#page-title {
 .block.review-booklist-block ul.menu li a {
   color: #fff;
   background: #7db600;
-  border-bottom: 1px solid #fff;
   display: inline-block;
   position: relative;
   font-size: 18px;
   width: 100%;
   padding: 10px 10px 10px 23.5%;
+}
+.block.review-booklist-block ul.menu li a:after {
+  content: "";
+  width: 48px;
+  height: 100%;
+  display: block;
+  visibility: visible;
+  position: absolute;
+  top: 0;
+  left: 16px;
+}
+.block.review-booklist-block ul.menu li a.movie-review:after {
+  background: url("../images/libraryzurb/moviereview.png") no-repeat scroll center center;
+}
+.block.review-booklist-block ul.menu li a.music-review:after {
+  background: url("../images/libraryzurb/musicreview.png") no-repeat scroll center center;
+}
+.block.review-booklist-block ul.menu li a.vediogame-review:after {
+  background: url("../images/libraryzurb/vidiogamereview.png") no-repeat scroll center center;
+}
+.block.review-booklist-block ul.menu li a.booklistreview:after {
+  background: url("../images/libraryzurb/booklistreview.png") no-repeat scroll center center;
 }
 .block.review-booklist-block ul.menu li a:focus {
   outline: none;
@@ -7496,15 +7520,17 @@ h1#page-title {
   background: #fff;
   position: relative;
 }
-.block.review-booklist-block ul.menu li.active a:before {
-  content: "";
-  width: 25px;
-  height: 25px;
-  display: block;
-  visibility: visible;
-  position: absolute;
-  top: 3px;
-  left: -31px;
+.block.review-booklist-block ul.menu li.active a.movie-review:after {
+  background: url("../images/libraryzurb/moviereview-active.png") no-repeat scroll center center;
+}
+.block.review-booklist-block ul.menu li.active a.music-review:after {
+  background: url("../images/libraryzurb/musicreview-active.png") no-repeat scroll center center;
+}
+.block.review-booklist-block ul.menu li.active a.vediogame-review:after {
+  background: url("../images/libraryzurb/vediogamereview-active.png") no-repeat scroll center center;
+}
+.block.review-booklist-block ul.menu li.active a.booklistreview:after {
+  background: url("../images/libraryzurb/booklistreview-active.png") no-repeat scroll center center;
 }
 .block.write-book-review {
   margin-bottom: 0 !important;
@@ -11603,7 +11629,7 @@ body .alert-box.success a.close:hover {
   font-style: normal !important;
   -webkit-font-smoothing: antialiased !important;
   -moz-osx-font-smoothing: grayscale !important;
-  color: #000;
+  color: #32024e;
   margin-bottom: 23px;
 }
 .page-reviews .view .view-header .viewmenu, .page-booklists .view .view-header .viewmenu, .page-movie-review .view .view-header .viewmenu, .page-music-review-listing .view .view-header .viewmenu, .page-video-game-review .view .view-header .viewmenu {
@@ -12133,11 +12159,11 @@ body .alert-box.success a.close:hover {
 .page-booklists .main .view-content .item-list ol li .views-field-nothing div a {
   padding-left: 10px;
 }
-.page-booklists .main .view-content .item-list ol li .views-field-nothing div.field-name-field-avatar-image {
+.page-booklists .main .view-content .item-list ol li .views-field-nothing div.views-field-field-user-avatar {
   position: relative;
   bottom: 10px;
 }
-.page-booklists .main .view-content .item-list ol li .views-field-nothing div.field-name-field-avatar-image img {
+.page-booklists .main .view-content .item-list ol li .views-field-nothing div.views-field-field-user-avatar img {
   border: none !important;
   outline: none !important;
   -webkit-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
@@ -13708,6 +13734,191 @@ body .alert-box.success a.close:hover {
     width: 242px !important;
     height: 361px !important;
   }
+}
+
+/**indivisual booklist page**/
+.node-type-booklist #page-title {
+  display: none;
+}
+.node-type-booklist article .booklist_books {
+  width: 100%;
+  display: table;
+}
+.node-type-booklist article .booklist_books #booklist_books {
+  display: table-row;
+  width: 100%;
+}
+.node-type-booklist article .booklist_books #booklist_books table {
+  border: none !important;
+  outline: none !important;
+  float: left;
+  display: table-cell;
+  margin-bottom: 0;
+}
+.node-type-booklist article .booklist_books #booklist_books table tbody {
+  border: none !important;
+  outline: none !important;
+}
+.node-type-booklist article .booklist_books #booklist_books table tbody img {
+  width: 81px;
+}
+.node-type-booklist article .booklist_books #booklist_books .node_title {
+  display: table-cell;
+  width: 80%;
+  vertical-align: middle;
+  position: relative;
+  left: -8%;
+}
+.node-type-booklist .booklist-title {
+  width: 100%;
+  display: inline-block;
+  position: relative;
+}
+.node-type-booklist .booklist-title .bk_follow_like {
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+.node-type-booklist .booklist-title .bk_follow_like div {
+  position: relative;
+  display: inline-block;
+  vertical-align: top;
+}
+.node-type-booklist .booklist-title .bk_follow_like div.like-wrapp {
+  float: right;
+}
+.node-type-booklist .booklist-title .bk_follow_like div.bk_follow {
+  width: 100%;
+  margin-top: 30px;
+}
+.node-type-booklist .booklist-title .bk_follow_like div.bk_follow .flag-follow {
+  float: right;
+}
+.node-type-booklist .booklist-title .bk_follow_like div.bk_follow .flag-follow a {
+  color: #000;
+  font-family: SpecialElite !important;
+  font-weight: normal !important;
+  font-style: normal !important;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+  background: #fdeb52 !important;
+  text-transform: capitalize;
+  border: none;
+  padding: 10px 20px 7px;
+  -webkit-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+  box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+}
+.node-type-booklist .booklist-title .bk_follow_like div.bk_follow .flag-follow a:hover {
+  color: #000;
+  background: #f7fc63 !important;
+  opacity: 1;
+  outline: none;
+  text-decoration: none !important;
+}
+.node-type-booklist .booklist-title .bk_follow_like div.bk_follow .flag-follow a:focus, .node-type-booklist .booklist-title .bk_follow_like div.bk_follow .flag-follow a.active {
+  color: #000;
+  background: #f0f811 !important;
+  outline: 1;
+  opacity: 1;
+  text-decoration: none !important;
+}
+.node-type-booklist .booklist-title .bk_follow_like div.like-here {
+  display: inline-block;
+  margin-left: 40px;
+}
+.node-type-booklist .booklist-title .bk_follow_like div.like-here a {
+  color: #000;
+  font-family: SpecialElite !important;
+  font-weight: normal !important;
+  font-style: normal !important;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+  background: #fdeb52 !important;
+  text-transform: capitalize;
+  border: none;
+  padding: 10px 34px 7px 20px;
+  -webkit-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+  box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+  font-family: SpecialElite !important;
+  font-weight: normal !important;
+  font-style: normal !important;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+  position: relative;
+  padding-right: 34px;
+}
+.node-type-booklist .booklist-title .bk_follow_like div.like-here a:hover {
+  color: #000;
+  background: #f7fc63 !important;
+  opacity: 1;
+  outline: none;
+  text-decoration: none !important;
+}
+.node-type-booklist .booklist-title .bk_follow_like div.like-here a:focus, .node-type-booklist .booklist-title .bk_follow_like div.like-here a.active {
+  color: #000;
+  background: #f0f811 !important;
+  outline: 1;
+  opacity: 1;
+  text-decoration: none !important;
+}
+.node-type-booklist .booklist-title .bk_follow_like div.like-here a:after {
+  content: "";
+  width: 30px;
+  height: 30px;
+  display: block;
+  visibility: visible;
+  position: absolute;
+  top: 6px;
+  right: 0;
+  background: url("../images/libraryzurb/smily-white.png") no-repeat;
+}
+.node-type-booklist .booklist-title .bk_follow_like div.like-count {
+  display: inline-block;
+  float: left;
+  padding-right: 10px;
+}
+.node-type-booklist .booklist-title .bk_follow_like div.like-count .lk-count {
+  position: relative;
+  padding-right: 34px;
+  font-family: SpecialElite !important;
+  font-weight: normal !important;
+  font-style: normal !important;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+}
+.node-type-booklist .booklist-title .bk_follow_like div.like-count .lk-count:after {
+  content: "";
+  width: 30px;
+  height: 30px;
+  display: block;
+  visibility: visible;
+  position: absolute;
+  top: -5px;
+  right: 0;
+  background: url("../images/libraryzurb/smily-white.png") no-repeat;
+}
+.node-type-booklist .booklist-title .bk_title {
+  width: 70%;
+  display: inline-block;
+  vertical-align: top;
+}
+.node-type-booklist .booklist-title .bk_title p {
+  width: 100%;
+  font-family: SpecialElite !important;
+  font-weight: normal !important;
+  font-style: normal !important;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+  font-size: 18px;
+}
+.node-type-booklist .booklist-title .bk_title p.book_desc {
+  display: none;
+}
+.node-type-booklist .booklist-title .bk_title p span.avatar {
+  margin-left: 5px;
+  margin-right: 5px;
 }
 
 /**
