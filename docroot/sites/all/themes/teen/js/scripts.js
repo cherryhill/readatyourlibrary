@@ -11,7 +11,8 @@
            $(':checkbox[class="'  + name + '"]').not($(this)).prop('checked',false);   
         }
       });
-
+      //change position of review title after viewfilter in all review pages
+        $('.reviews-subtitle').insertAfter('.view-filters');
       // select list option with thier link
       jQuery('.add_review_node').change(function(){
         var option = jQuery(this).find('option:selected').val();
