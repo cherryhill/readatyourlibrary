@@ -276,65 +276,53 @@
 	}
 	.main {
 		  	#page-title {
-		  		
-		  		display: none;
+		  		@include brushimg(left);
+		  		margin-left: -5px;
+		  		font-size: 28px;
+		  		margin-bottom: 20px;
 		  	}
-		  	.view-reward-page {
-		  		.view-header {
-		  			h2 {
-		  				@include brushimg(left);
-		  				margin-bottom: 35px;
-		  			}
-		  		}
-		  	}
-	  		.view-badges {
-	  			.view-header {
-		  		    h2 {
-		  			@include mclaren;
-			  		font-size: 28px;
-			  		color: $black;
-			  		@include noborder;
-			  		  }
-	  			}
-	  			.view-content {
-	  				div.badges {
-	  					img {
-	  						margin-right: 6%;
-	  					}
-	  				}
-	  			}
-	  		}
+		  	
 
 		 .block {
+		 	width: 49%;
+		 	display: inline-block;
+		 	vertical-align: top;
+		 	margin-left: 0.5%;
 	  		.block-title {
-	  			@include noborder;
-	  			font-size: 18px;
-	  			color: $orange;
-	  			@include mclaren;
+	  		  display: none;
+
 	  		}
-		 	.view {
-  			 	display: table;
-  			 	width: 100%;
-	  			 	.view-content {
-	  			 		display: table-row;
-	  			 		width: 100%;
-	  			 			.views-row {
-                          		display: table-cell;
-                          		padding-right: 10px;
-                          		 @include tablet {
-                          		 	display: inline-block;
-                          		 	width: 19%;
-                          		 	vertical-align: top;
-                          		 }
-                           			.views-field {
-			                           	 width: 100%;
-			                           	 display: inline-block;
-			                           	 font-family: 17px;
-			                           	 @include arialregular;
-                           			}
-	  			 			}
-	  			 	}
-		 	}
+	  		.view-header {
+	  			h2 {
+	  				font-size: 24px;
+	  				@include mclaren;
+	  				color: $blue;
+	  				@include noborder;
+	  			}
+	  		}
+	  		.view-content {
+	  			.views-row {
+	  				width: 100%;
+	  				display: inline-block;
+	  				  .views-field-field-image-upload {
+	  				  	 width: 30%;
+	  				  	 display: inline-block;
+	  				  	 float: left;
+	  				  }
+	  				  .views-field-title,.views-field-field-physical-description,.views-field-field-badge-description,.views-field-field-raffle-description {
+	  				  	display: inline-block;
+	  				  	width: 70%;
+	  				  	float: right;
+	  				  	font-size: 16px;
+	  				  }
+	  				   .views-field-title {
+	  				   	 @include arialbold;
+	  				   }
+	  				   .views-field-field-physical-description,.views-field-field-badge-description,.views-field-field-raffle-description {
+	  				   	 @include arialregular;
+	  				   }
+	  			}
+	  		}
 	  		
 	  	}
 	 
@@ -1426,15 +1414,15 @@
 				  	  		 	     	}
 				  	  		 	  	}
 				  	  		 	  	.chosen-drop {
-				  	  		 	  		background: $blue;
+				  	  		 	  		background: $white;
 				  	  		 	  			.chosen-results {
-				  	  		 	  				li a {
-					  	  		 	  					background: $blue;
-					  	  		 	  					@include white-text;
-						  	  		 	  					 &:hover, &:focus {
-						  	  		 	  					 	background: $blue;
-						  	  		 	  					 	@include white-text;
-						  	  		 	  					 }
+				  	  		 	  				li  {
+					  	  		 	  					color: $blue !important;
+					  	  		 	  					@include mclaren;
+					  	  		 	  					 &.highlighted {
+					  	  		 	  					 	background: $light-yellow !important;
+					  	  		 	  					 }
+						  	  		 	  					
 				  	  		 	  				}
 				  	  		 	  			}
 				  	  		 	  	}

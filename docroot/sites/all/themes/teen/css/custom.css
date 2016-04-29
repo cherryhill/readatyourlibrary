@@ -6925,7 +6925,7 @@ h1#page-title {
   -webkit-font-smoothing: antialiased !important;
   -moz-osx-font-smoothing: grayscale !important;
 }
-.block.block-private-msg-custom-teen-write-review-block .form-item .chosen-drop .chosen-results li.result-selected, .block.block-private-msg-custom-teen-write-review-block .form-item .chosen-drop .chosen-results li:hover {
+.block.block-private-msg-custom-teen-write-review-block .form-item .chosen-drop .chosen-results li.highlighted {
   background: #f6f45a;
 }
 .block.block-private-msg-custom-teen-write-review-block .description {
@@ -10084,9 +10084,6 @@ body .alert-box.success a.close:hover {
   margin: 0.5em 1em 0.5em 0;
 }
 .page-rewards .main #page-title {
-  display: none;
-}
-.page-rewards .main .view-reward-page .view-header h2 {
   position: relative;
   width: 100%;
   position: relative;
@@ -10106,14 +10103,16 @@ body .alert-box.success a.close:hover {
   padding-left: 35px;
   border: none !important;
   outline: none !important;
-  margin-bottom: 35px;
+  margin-left: -5px;
+  font-size: 28px;
+  margin-bottom: 20px;
 }
 @media screen and (max-width: 1099px) {
-  .page-rewards .main .view-reward-page .view-header h2 {
+  .page-rewards .main #page-title {
     height: 100%;
   }
 }
-.page-rewards .main .view-reward-page .view-header h2:after {
+.page-rewards .main #page-title:after {
   content: "";
   width: 100%;
   height: 100%;
@@ -10128,63 +10127,59 @@ body .alert-box.success a.close:hover {
   background-position: center;
 }
 @media (min-width: 768px) and (max-width: 1025px) {
-  .page-rewards .main .view-reward-page .view-header h2:after {
+  .page-rewards .main #page-title:after {
     background: #fdeb52;
   }
 }
 @media (max-width: 767px) {
-  .page-rewards .main .view-reward-page .view-header h2:after {
+  .page-rewards .main #page-title:after {
     background: #fdeb52;
   }
 }
-.page-rewards .main .view-badges .view-header h2 {
-  font-family: SpecialElite !important;
-  font-weight: normal !important;
-  font-style: normal !important;
-  -webkit-font-smoothing: antialiased !important;
-  -moz-osx-font-smoothing: grayscale !important;
-  font-size: 28px;
-  color: #000;
-  border: none !important;
-  outline: none !important;
-}
-.page-rewards .main .view-badges .view-content div.badges img {
-  margin-right: 6%;
+.page-rewards .main .block {
+  width: 49%;
+  display: inline-block;
+  vertical-align: top;
+  margin-left: 0.5%;
 }
 .page-rewards .main .block .block-title {
-  border: none !important;
-  outline: none !important;
-  font-size: 18px;
-  color: #f6511d;
+  display: none;
+}
+.page-rewards .main .block .view-header h2 {
+  font-size: 24px;
   font-family: SpecialElite !important;
   font-weight: normal !important;
   font-style: normal !important;
   -webkit-font-smoothing: antialiased !important;
   -moz-osx-font-smoothing: grayscale !important;
+  color: #32024e;
+  border: none !important;
+  outline: none !important;
 }
-.page-rewards .main .block .view {
-  display: table;
-  width: 100%;
-}
-.page-rewards .main .block .view .view-content {
-  display: table-row;
-  width: 100%;
-}
-.page-rewards .main .block .view .view-content .views-row {
-  display: table-cell;
-  padding-right: 10px;
-}
-@media (min-width: 768px) and (max-width: 1025px) {
-  .page-rewards .main .block .view .view-content .views-row {
-    display: inline-block;
-    width: 19%;
-    vertical-align: top;
-  }
-}
-.page-rewards .main .block .view .view-content .views-row .views-field {
+.page-rewards .main .block .view-content .views-row {
   width: 100%;
   display: inline-block;
-  font-family: 17px;
+}
+.page-rewards .main .block .view-content .views-row .views-field-field-image-upload {
+  width: 30%;
+  display: inline-block;
+  float: left;
+}
+.page-rewards .main .block .view-content .views-row .views-field-title, .page-rewards .main .block .view-content .views-row .views-field-field-physical-description, .page-rewards .main .block .view-content .views-row .views-field-field-badge-description, .page-rewards .main .block .view-content .views-row .views-field-field-raffle-description {
+  display: inline-block;
+  width: 70%;
+  float: right;
+  font-size: 16px;
+}
+.page-rewards .main .block .view-content .views-row .views-field-title {
+  font-family: Raleway-Bold !important;
+  font-style: normal !important;
+  font-weight: normal !important;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+  -moz-font-smoothing: grayscale !important;
+}
+.page-rewards .main .block .view-content .views-row .views-field-field-physical-description, .page-rewards .main .block .view-content .views-row .views-field-field-badge-description, .page-rewards .main .block .view-content .views-row .views-field-field-raffle-description {
   font-family: Raleway-Medium !important;
   font-style: normal !important;
   font-weight: normal !important;
@@ -11764,25 +11759,18 @@ body .alert-box.success a.close:hover {
   background: #fff;
 }
 .page-reviews .view .view-filters form .views-exposed-form .chosen-processed .chosen-drop, .page-booklists .view .view-filters form .views-exposed-form .chosen-processed .chosen-drop, .page-movie-review .view .view-filters form .views-exposed-form .chosen-processed .chosen-drop, .page-music-review-listing .view .view-filters form .views-exposed-form .chosen-processed .chosen-drop, .page-video-game-review .view .view-filters form .views-exposed-form .chosen-processed .chosen-drop {
-  background: #32024e;
+  background: #fff;
 }
-.page-reviews .view .view-filters form .views-exposed-form .chosen-processed .chosen-drop .chosen-results li a, .page-booklists .view .view-filters form .views-exposed-form .chosen-processed .chosen-drop .chosen-results li a, .page-movie-review .view .view-filters form .views-exposed-form .chosen-processed .chosen-drop .chosen-results li a, .page-music-review-listing .view .view-filters form .views-exposed-form .chosen-processed .chosen-drop .chosen-results li a, .page-video-game-review .view .view-filters form .views-exposed-form .chosen-processed .chosen-drop .chosen-results li a {
-  background: #32024e;
-  color: #fff !important;
+.page-reviews .view .view-filters form .views-exposed-form .chosen-processed .chosen-drop .chosen-results li, .page-booklists .view .view-filters form .views-exposed-form .chosen-processed .chosen-drop .chosen-results li, .page-movie-review .view .view-filters form .views-exposed-form .chosen-processed .chosen-drop .chosen-results li, .page-music-review-listing .view .view-filters form .views-exposed-form .chosen-processed .chosen-drop .chosen-results li, .page-video-game-review .view .view-filters form .views-exposed-form .chosen-processed .chosen-drop .chosen-results li {
+  color: #32024e !important;
   font-family: SpecialElite !important;
   font-weight: normal !important;
   font-style: normal !important;
   -webkit-font-smoothing: antialiased !important;
   -moz-osx-font-smoothing: grayscale !important;
 }
-.page-reviews .view .view-filters form .views-exposed-form .chosen-processed .chosen-drop .chosen-results li a:hover, .page-reviews .view .view-filters form .views-exposed-form .chosen-processed .chosen-drop .chosen-results li a:focus, .page-booklists .view .view-filters form .views-exposed-form .chosen-processed .chosen-drop .chosen-results li a:hover, .page-booklists .view .view-filters form .views-exposed-form .chosen-processed .chosen-drop .chosen-results li a:focus, .page-movie-review .view .view-filters form .views-exposed-form .chosen-processed .chosen-drop .chosen-results li a:hover, .page-movie-review .view .view-filters form .views-exposed-form .chosen-processed .chosen-drop .chosen-results li a:focus, .page-music-review-listing .view .view-filters form .views-exposed-form .chosen-processed .chosen-drop .chosen-results li a:hover, .page-music-review-listing .view .view-filters form .views-exposed-form .chosen-processed .chosen-drop .chosen-results li a:focus, .page-video-game-review .view .view-filters form .views-exposed-form .chosen-processed .chosen-drop .chosen-results li a:hover, .page-video-game-review .view .view-filters form .views-exposed-form .chosen-processed .chosen-drop .chosen-results li a:focus {
-  background: #32024e;
-  color: #fff !important;
-  font-family: SpecialElite !important;
-  font-weight: normal !important;
-  font-style: normal !important;
-  -webkit-font-smoothing: antialiased !important;
-  -moz-osx-font-smoothing: grayscale !important;
+.page-reviews .view .view-filters form .views-exposed-form .chosen-processed .chosen-drop .chosen-results li.highlighted, .page-booklists .view .view-filters form .views-exposed-form .chosen-processed .chosen-drop .chosen-results li.highlighted, .page-movie-review .view .view-filters form .views-exposed-form .chosen-processed .chosen-drop .chosen-results li.highlighted, .page-music-review-listing .view .view-filters form .views-exposed-form .chosen-processed .chosen-drop .chosen-results li.highlighted, .page-video-game-review .view .view-filters form .views-exposed-form .chosen-processed .chosen-drop .chosen-results li.highlighted {
+  background: #f6f45a !important;
 }
 .page-reviews .view .view-filters form .views-exposed-form .chosen-processed a, .page-booklists .view .view-filters form .views-exposed-form .chosen-processed a, .page-movie-review .view .view-filters form .views-exposed-form .chosen-processed a, .page-music-review-listing .view .view-filters form .views-exposed-form .chosen-processed a, .page-video-game-review .view .view-filters form .views-exposed-form .chosen-processed a {
   color: #32024e !important;
