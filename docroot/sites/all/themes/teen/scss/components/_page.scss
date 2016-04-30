@@ -2830,18 +2830,24 @@ display: block !important;
   }
  }
  /**movie review page add node page***/
- .page-node-add-movie-review {
- 	.form-item.form-type-radio.form-item-field-genre-und, .form-item.form-type-radio.form-item-field-language-und,.form-item.form-type-radio.form-item-field-rating-und  {
+ .page-node-add-movie-review, .page-node-add-video-game-review {
+ .form-item.form-type-radio.form-item-field-genre-und, .form-item.form-type-radio.form-item-field-language-und,.form-item.form-type-radio.form-item-field-rating-und  {
  		width: 19%;
  		display: inline-block;
- 		 input[type="radio"] {
- 		 	margin-bottom: 0;
- 		 }
+ 		@include radio;
  	}
- 	.form-item.form-type-radio.form-item-field-please-select-one-und {
- 		 input[type="radio"] {
- 		 	margin-bottom: 0;
- 		 }
+ 	.form-item-field-platform-und, .form-item-field-age-rating-of-game-und {
+ 		width: 100%;
+ 		display: inline-block;
+ 		  	.form-item-field-platform-und, .form-item-field-age-rating-of-game-und {
+ 		  		width: 19%;
+ 		  		display: inline-block;
+ 		  		@include radio;
+ 		  	}
+ 	}
+
+ 	.form-item.form-type-radio.form-item-field-please-select-one-und, .form-item.form-type-radio.form-item-field-please-select-videogame-und {
+ 		@include radio;
  	}
  	.form-textarea-wrapper textarea {
  		height: 250px;
@@ -2870,6 +2876,25 @@ display: block !important;
  		 }
  	}
  }
+ /**booklist node page**/
+ .page-node-add-booklist, .page-node-add-review-book {
+ 	.form-item-field-privacy-settings-und {
+ 		@include radio;
+ 	}
+ 	div.vertical-tabs {
+ 		margin: 0 !important;
+ 	}
+ 	ul.vertical-tabs-list {
+	 	width: 100% !important;
+	 	display: inline-block !important;
+	 	margin: 0 !important;
+	 	float: none !important;
+
+ 	}
+ 	#edit-submit {
+ 		@include yellowbutton;
+ 	}
+ }
  /**music review indivisual page***/
  .page-node-add-music-review {
  	.form-checkboxes {
@@ -2882,9 +2907,7 @@ display: block !important;
  	}
  }
  .form-item.form-type-radio.form-item-field-please-select-one-music-und {
- 	input[type="radio"] {
- 		margin-bottom: 0;
- 	}
+ 	 @include radio;
  }
  .form-textarea-wrapper textarea {
  		height: 250px;
