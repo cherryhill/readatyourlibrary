@@ -76,25 +76,7 @@
 		  	 	width: 20px;
 		  	 	display: inline;
 		  	 }
-		  	    input[type=radio] {
-				  visibility: hidden;
-				  position: absolute;
-				}
-				input[type=radio] + label:before {
-				  height:20px;
-				  width:20px;
-				  margin-right: 10px;
-				  content: " ";
-				  display:inline-block;
-				  vertical-align: baseline;
-				  border:1px solid $white;
-				  background: $white;
-				  border-radius: 100%;
-				}
-				input[type=radio]:checked + label:before {
-	  				background:$yellow;
-	  				border: 1px solid $yellow;
-				}
+		  	 @include radio;
 
 		 	 }
 		  	.slide {
