@@ -292,3 +292,12 @@ h1#page-title {
    @include noborder;
    margin-top: 20px;
  }
+.page-booklists, .page-movie-review, .page-music-review-listing, .page-video-game-review {
+	 .l-header .row.header-middle section.block-menu-menu-secoundary-menu ul.menu li a.reviews {
+	  		color: $blue;
+	  		&:after {
+	  		  background: url('../images/libraryzurb/reviewactive.png') no-repeat scroll 0px 7px !important;
+	  		}
+	  		 
+	  	}
+}

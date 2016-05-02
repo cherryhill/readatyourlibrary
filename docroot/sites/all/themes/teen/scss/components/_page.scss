@@ -1715,13 +1715,7 @@
 	}
 }
 .page-booklists {
-  	.l-header .row.header-middle section.block-menu-menu-secoundary-menu ul.menu li a.reviews {
-  		color: $blue;
-  		&:after {
-  		  background: url('../images/libraryzurb/reviewactive.png') no-repeat scroll 0px 7px !important;
-  		}
-  		 
-  	}
+  	
   	.main {
   		 .view-header .booklist_slideshow_title,.view-footer {
   			display: none;
@@ -2970,6 +2964,7 @@ display: block !important;
 		.like-here {
 			display: inline-block;
 			margin-left: 40px;
+			margin-bottom: 25px;
 			  a {
 			  	@include yellowbutton(p);
 			  	@include mclaren;
@@ -2985,6 +2980,7 @@ display: block !important;
 		 	display: inline-block;
 		 	float: left;
 		 	padding-right: 10px;
+		 	margin-bottom: 25px;
 		 	  .lk-count {
 		 	  	@include like;
 		 	  	@include mclaren;
@@ -3122,7 +3118,7 @@ display: block !important;
  			display: inline-block;
  			width: 100%;
  			border-bottom: 1px solid $light-gray;
- 			 .views-field-counter, .views-field-title, .views-field-count {
+ 			 .views-field-counter, .views-field-title{
  			 	font-size: 20px;
  			 	@include mclaren;
  			 	  a {
@@ -3130,8 +3126,11 @@ display: block !important;
  			 	  	@include mclaren;
  			 	  }
  			 }
+
  			 .views-field-count {
                 float: right;
+                font-size: 17px;
+                @include mclaren;
                   .views-label-count {
                   	 @include like;
                   }
