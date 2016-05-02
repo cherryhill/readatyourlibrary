@@ -76,7 +76,7 @@
 		  	 	width: 20px;
 		  	 	display: inline;
 		  	 }
-		  	 @include radio;
+		  	 @include radio(B);
 
 		 	 }
 		  	.slide {
@@ -439,10 +439,12 @@
 		 ul {
 		 	&.menu {
 		 		margin-bottom: 0;
+		 		margin-top: -1px;
 		 		 li {
 		 		 	padding:0;
 		 		 	margin-left: 0;
 		 		 	margin-bottom: 0;
+		 		 	 @include noborder;
 		 		 	  a {
 		 		 	  	 color: $white;
 		 		 	  	 background: $light-green;
@@ -452,6 +454,7 @@
 		 		 	  	 font-size: 18px;
 		 		 	  	 width: 100%;
 		 		 	  	 padding: 10px 10px 10px 23.5%;
+		 		 	  	 border-top: 1px solid $bodr-top;
 		 		 	  	 &:after {
 		 	 	  	 			@include previous(48px,100%,$left: 16px, $top: 0);
 		 	 	  	 		
@@ -732,7 +735,7 @@
 			           padding-left: 40px;
 			           padding-right: 40px;
 			           font-size: 16px;
-			           line-height: 1.2;
+			           line-height: 1.4;
 			         }
 	         
 	      }

@@ -332,24 +332,32 @@
 @mixin noboxshadow {
 	box-shadow: 0 0 0 0 !important;
 }
-@mixin radio {
+@mixin radio($bigradio: null) {
 	 	 input[type=radio] {
  					  visibility: hidden;
  					  position: absolute;
  					}
  					input[type=radio] + label:before {
- 					  height:12px;
- 					  width:12px;
+ 				      @if $bigradio == "B" {
+ 				      	height: 20px;
+ 				      	width: 20px;
+ 				      	border: 1px solid transparent;
+ 				      }
+ 				      @else {
+	 					  height:12px;
+	 					  width:12px;
+	 					  border: 1px solid $black;
+ 					   }
  					  margin-right: 6px;
  					  content: " ";
  					  display:inline-block;
  					  vertical-align: baseline;
- 					  border:1px solid $black;
+ 				
  					  background: $white;
  					  border-radius: 100%;
  					}
  					input[type=radio]:checked + label:before {
  		  				background:$yellow;
- 		  				border: 1px solid $black;
+ 		  				
  					}
 }
