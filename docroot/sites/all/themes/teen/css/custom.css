@@ -6652,6 +6652,13 @@ h1#page-title {
   margin-top: 20px;
 }
 
+.page-booklists .l-header .row.header-middle section.block-menu-menu-secoundary-menu ul.menu li a.reviews, .page-movie-review .l-header .row.header-middle section.block-menu-menu-secoundary-menu ul.menu li a.reviews, .page-music-review-listing .l-header .row.header-middle section.block-menu-menu-secoundary-menu ul.menu li a.reviews, .page-video-game-review .l-header .row.header-middle section.block-menu-menu-secoundary-menu ul.menu li a.reviews {
+  color: #32024e;
+}
+.page-booklists .l-header .row.header-middle section.block-menu-menu-secoundary-menu ul.menu li a.reviews:after, .page-movie-review .l-header .row.header-middle section.block-menu-menu-secoundary-menu ul.menu li a.reviews:after, .page-music-review-listing .l-header .row.header-middle section.block-menu-menu-secoundary-menu ul.menu li a.reviews:after, .page-video-game-review .l-header .row.header-middle section.block-menu-menu-secoundary-menu ul.menu li a.reviews:after {
+  background: url("../images/libraryzurb/reviewactive.png") no-repeat scroll 0px 7px !important;
+}
+
 .admin-menu .fixed {
   top: 1.8125em;
 }
@@ -6960,19 +6967,18 @@ h1#page-title {
   position: absolute;
 }
 .block.block-private-msg-custom-homepage-slider ul input[type=radio] + label:before {
-  height: 12px;
-  width: 12px;
+  height: 20px;
+  width: 20px;
+  border: 1px solid transparent;
   margin-right: 6px;
   content: " ";
   display: inline-block;
   vertical-align: baseline;
-  border: 1px solid #000;
   background: #fff;
   border-radius: 100%;
 }
 .block.block-private-msg-custom-homepage-slider ul input[type=radio]:checked + label:before {
   background: #fdeb52;
-  border: 1px solid #000;
 }
 .block.block-private-msg-custom-homepage-slider .slide {
   padding-bottom: 50px;
@@ -7542,11 +7548,14 @@ h1#page-title {
 }
 .block.review-booklist-block ul.menu {
   margin-bottom: 0;
+  margin-top: -1px;
 }
 .block.review-booklist-block ul.menu li {
   padding: 0;
   margin-left: 0;
   margin-bottom: 0;
+  border: none !important;
+  outline: none !important;
 }
 .block.review-booklist-block ul.menu li a {
   color: #fff;
@@ -7561,6 +7570,7 @@ h1#page-title {
   font-size: 18px;
   width: 100%;
   padding: 10px 10px 10px 23.5%;
+  border-top: 1px solid #bedb80;
 }
 .block.review-booklist-block ul.menu li a:after {
   content: "";
@@ -7911,7 +7921,7 @@ h1#page-title {
   padding-left: 40px;
   padding-right: 40px;
   font-size: 16px;
-  line-height: 1.2;
+  line-height: 1.4;
 }
 .block.footer-playlibdetails, .block.playlib-copyright, .block.footer-playlibpolicies {
   width: 100%;
@@ -12165,12 +12175,6 @@ body .alert-box.success a.close:hover {
   margin-left: 0 !important;
 }
 
-.page-booklists .l-header .row.header-middle section.block-menu-menu-secoundary-menu ul.menu li a.reviews {
-  color: #32024e;
-}
-.page-booklists .l-header .row.header-middle section.block-menu-menu-secoundary-menu ul.menu li a.reviews:after {
-  background: url("../images/libraryzurb/reviewactive.png") no-repeat scroll 0px 7px !important;
-}
 .page-booklists .main .view-header .booklist_slideshow_title, .page-booklists .main .view-footer {
   display: none;
 }
@@ -13587,17 +13591,16 @@ body .alert-box.success a.close:hover {
 .page-node-add-movie-review .form-item.form-type-radio.form-item-field-genre-und input[type=radio] + label:before, .page-node-add-movie-review .form-item.form-type-radio.form-item-field-language-und input[type=radio] + label:before, .page-node-add-movie-review .form-item.form-type-radio.form-item-field-rating-und input[type=radio] + label:before, .page-node-add-video-game-review .form-item.form-type-radio.form-item-field-genre-und input[type=radio] + label:before, .page-node-add-video-game-review .form-item.form-type-radio.form-item-field-language-und input[type=radio] + label:before, .page-node-add-video-game-review .form-item.form-type-radio.form-item-field-rating-und input[type=radio] + label:before {
   height: 12px;
   width: 12px;
+  border: 1px solid #000;
   margin-right: 6px;
   content: " ";
   display: inline-block;
   vertical-align: baseline;
-  border: 1px solid #000;
   background: #fff;
   border-radius: 100%;
 }
 .page-node-add-movie-review .form-item.form-type-radio.form-item-field-genre-und input[type=radio]:checked + label:before, .page-node-add-movie-review .form-item.form-type-radio.form-item-field-language-und input[type=radio]:checked + label:before, .page-node-add-movie-review .form-item.form-type-radio.form-item-field-rating-und input[type=radio]:checked + label:before, .page-node-add-video-game-review .form-item.form-type-radio.form-item-field-genre-und input[type=radio]:checked + label:before, .page-node-add-video-game-review .form-item.form-type-radio.form-item-field-language-und input[type=radio]:checked + label:before, .page-node-add-video-game-review .form-item.form-type-radio.form-item-field-rating-und input[type=radio]:checked + label:before {
   background: #fdeb52;
-  border: 1px solid #000;
 }
 .page-node-add-movie-review .form-item-field-platform-und, .page-node-add-movie-review .form-item-field-age-rating-of-game-und, .page-node-add-video-game-review .form-item-field-platform-und, .page-node-add-video-game-review .form-item-field-age-rating-of-game-und {
   width: 100%;
@@ -13614,17 +13617,16 @@ body .alert-box.success a.close:hover {
 .page-node-add-movie-review .form-item-field-platform-und .form-item-field-platform-und input[type=radio] + label:before, .page-node-add-movie-review .form-item-field-platform-und .form-item-field-age-rating-of-game-und input[type=radio] + label:before, .page-node-add-movie-review .form-item-field-age-rating-of-game-und .form-item-field-platform-und input[type=radio] + label:before, .page-node-add-movie-review .form-item-field-age-rating-of-game-und .form-item-field-age-rating-of-game-und input[type=radio] + label:before, .page-node-add-video-game-review .form-item-field-platform-und .form-item-field-platform-und input[type=radio] + label:before, .page-node-add-video-game-review .form-item-field-platform-und .form-item-field-age-rating-of-game-und input[type=radio] + label:before, .page-node-add-video-game-review .form-item-field-age-rating-of-game-und .form-item-field-platform-und input[type=radio] + label:before, .page-node-add-video-game-review .form-item-field-age-rating-of-game-und .form-item-field-age-rating-of-game-und input[type=radio] + label:before {
   height: 12px;
   width: 12px;
+  border: 1px solid #000;
   margin-right: 6px;
   content: " ";
   display: inline-block;
   vertical-align: baseline;
-  border: 1px solid #000;
   background: #fff;
   border-radius: 100%;
 }
 .page-node-add-movie-review .form-item-field-platform-und .form-item-field-platform-und input[type=radio]:checked + label:before, .page-node-add-movie-review .form-item-field-platform-und .form-item-field-age-rating-of-game-und input[type=radio]:checked + label:before, .page-node-add-movie-review .form-item-field-age-rating-of-game-und .form-item-field-platform-und input[type=radio]:checked + label:before, .page-node-add-movie-review .form-item-field-age-rating-of-game-und .form-item-field-age-rating-of-game-und input[type=radio]:checked + label:before, .page-node-add-video-game-review .form-item-field-platform-und .form-item-field-platform-und input[type=radio]:checked + label:before, .page-node-add-video-game-review .form-item-field-platform-und .form-item-field-age-rating-of-game-und input[type=radio]:checked + label:before, .page-node-add-video-game-review .form-item-field-age-rating-of-game-und .form-item-field-platform-und input[type=radio]:checked + label:before, .page-node-add-video-game-review .form-item-field-age-rating-of-game-und .form-item-field-age-rating-of-game-und input[type=radio]:checked + label:before {
   background: #fdeb52;
-  border: 1px solid #000;
 }
 .page-node-add-movie-review .form-item.form-type-radio.form-item-field-please-select-one-und input[type=radio], .page-node-add-movie-review .form-item.form-type-radio.form-item-field-please-select-videogame-und input[type=radio], .page-node-add-video-game-review .form-item.form-type-radio.form-item-field-please-select-one-und input[type=radio], .page-node-add-video-game-review .form-item.form-type-radio.form-item-field-please-select-videogame-und input[type=radio] {
   visibility: hidden;
@@ -13633,17 +13635,16 @@ body .alert-box.success a.close:hover {
 .page-node-add-movie-review .form-item.form-type-radio.form-item-field-please-select-one-und input[type=radio] + label:before, .page-node-add-movie-review .form-item.form-type-radio.form-item-field-please-select-videogame-und input[type=radio] + label:before, .page-node-add-video-game-review .form-item.form-type-radio.form-item-field-please-select-one-und input[type=radio] + label:before, .page-node-add-video-game-review .form-item.form-type-radio.form-item-field-please-select-videogame-und input[type=radio] + label:before {
   height: 12px;
   width: 12px;
+  border: 1px solid #000;
   margin-right: 6px;
   content: " ";
   display: inline-block;
   vertical-align: baseline;
-  border: 1px solid #000;
   background: #fff;
   border-radius: 100%;
 }
 .page-node-add-movie-review .form-item.form-type-radio.form-item-field-please-select-one-und input[type=radio]:checked + label:before, .page-node-add-movie-review .form-item.form-type-radio.form-item-field-please-select-videogame-und input[type=radio]:checked + label:before, .page-node-add-video-game-review .form-item.form-type-radio.form-item-field-please-select-one-und input[type=radio]:checked + label:before, .page-node-add-video-game-review .form-item.form-type-radio.form-item-field-please-select-videogame-und input[type=radio]:checked + label:before {
   background: #fdeb52;
-  border: 1px solid #000;
 }
 .page-node-add-movie-review .form-textarea-wrapper textarea, .page-node-add-video-game-review .form-textarea-wrapper textarea {
   height: 250px;
@@ -13679,17 +13680,16 @@ body .alert-box.success a.close:hover {
 .page-node-add-booklist .form-item-field-privacy-settings-und input[type=radio] + label:before, .page-node-add-review-book .form-item-field-privacy-settings-und input[type=radio] + label:before {
   height: 12px;
   width: 12px;
+  border: 1px solid #000;
   margin-right: 6px;
   content: " ";
   display: inline-block;
   vertical-align: baseline;
-  border: 1px solid #000;
   background: #fff;
   border-radius: 100%;
 }
 .page-node-add-booklist .form-item-field-privacy-settings-und input[type=radio]:checked + label:before, .page-node-add-review-book .form-item-field-privacy-settings-und input[type=radio]:checked + label:before {
   background: #fdeb52;
-  border: 1px solid #000;
 }
 .page-node-add-booklist div.vertical-tabs, .page-node-add-review-book div.vertical-tabs {
   margin: 0 !important;
@@ -13745,17 +13745,16 @@ body .alert-box.success a.close:hover {
 .page-node-add-music-review .form-item.form-type-radio.form-item-field-please-select-one-music-und input[type=radio] + label:before {
   height: 12px;
   width: 12px;
+  border: 1px solid #000;
   margin-right: 6px;
   content: " ";
   display: inline-block;
   vertical-align: baseline;
-  border: 1px solid #000;
   background: #fff;
   border-radius: 100%;
 }
 .page-node-add-music-review .form-item.form-type-radio.form-item-field-please-select-one-music-und input[type=radio]:checked + label:before {
   background: #fdeb52;
-  border: 1px solid #000;
 }
 .page-node-add-music-review .form-textarea-wrapper textarea {
   height: 250px;
@@ -13851,6 +13850,7 @@ body .alert-box.success a.close:hover {
 .node-type-review-book .review_node_sidebar .like-here {
   display: inline-block;
   margin-left: 40px;
+  margin-bottom: 25px;
 }
 .node-type-review-book .review_node_sidebar .like-here a {
   color: #000;
@@ -13903,6 +13903,7 @@ body .alert-box.success a.close:hover {
   display: inline-block;
   float: left;
   padding-right: 10px;
+  margin-bottom: 25px;
 }
 .node-type-review-book .review_node_sidebar .like-count .lk-count {
   position: relative;
@@ -14131,7 +14132,7 @@ body .alert-box.success a.close:hover {
   width: 100%;
   border-bottom: 1px solid #cccccc;
 }
-.page-movie-review .main .view-content .views-row .views-field-counter, .page-movie-review .main .view-content .views-row .views-field-title, .page-movie-review .main .view-content .views-row .views-field-count, .page-music-review-listing .main .view-content .views-row .views-field-counter, .page-music-review-listing .main .view-content .views-row .views-field-title, .page-music-review-listing .main .view-content .views-row .views-field-count, .page-video-game-review .main .view-content .views-row .views-field-counter, .page-video-game-review .main .view-content .views-row .views-field-title, .page-video-game-review .main .view-content .views-row .views-field-count {
+.page-movie-review .main .view-content .views-row .views-field-counter, .page-movie-review .main .view-content .views-row .views-field-title, .page-music-review-listing .main .view-content .views-row .views-field-counter, .page-music-review-listing .main .view-content .views-row .views-field-title, .page-video-game-review .main .view-content .views-row .views-field-counter, .page-video-game-review .main .view-content .views-row .views-field-title {
   font-size: 20px;
   font-family: SpecialElite !important;
   font-weight: normal !important;
@@ -14139,7 +14140,7 @@ body .alert-box.success a.close:hover {
   -webkit-font-smoothing: antialiased !important;
   -moz-osx-font-smoothing: grayscale !important;
 }
-.page-movie-review .main .view-content .views-row .views-field-counter a, .page-movie-review .main .view-content .views-row .views-field-title a, .page-movie-review .main .view-content .views-row .views-field-count a, .page-music-review-listing .main .view-content .views-row .views-field-counter a, .page-music-review-listing .main .view-content .views-row .views-field-title a, .page-music-review-listing .main .view-content .views-row .views-field-count a, .page-video-game-review .main .view-content .views-row .views-field-counter a, .page-video-game-review .main .view-content .views-row .views-field-title a, .page-video-game-review .main .view-content .views-row .views-field-count a {
+.page-movie-review .main .view-content .views-row .views-field-counter a, .page-movie-review .main .view-content .views-row .views-field-title a, .page-music-review-listing .main .view-content .views-row .views-field-counter a, .page-music-review-listing .main .view-content .views-row .views-field-title a, .page-video-game-review .main .view-content .views-row .views-field-counter a, .page-video-game-review .main .view-content .views-row .views-field-title a {
   font-size: 20px;
   font-family: SpecialElite !important;
   font-weight: normal !important;
@@ -14149,6 +14150,12 @@ body .alert-box.success a.close:hover {
 }
 .page-movie-review .main .view-content .views-row .views-field-count, .page-music-review-listing .main .view-content .views-row .views-field-count, .page-video-game-review .main .view-content .views-row .views-field-count {
   float: right;
+  font-size: 17px;
+  font-family: SpecialElite !important;
+  font-weight: normal !important;
+  font-style: normal !important;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
 }
 .page-movie-review .main .view-content .views-row .views-field-count .views-label-count, .page-music-review-listing .main .view-content .views-row .views-field-count .views-label-count, .page-video-game-review .main .view-content .views-row .views-field-count .views-label-count {
   position: relative;
