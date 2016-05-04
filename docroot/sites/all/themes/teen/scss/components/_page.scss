@@ -1410,7 +1410,7 @@
 					  	  		 	  	 	width: 100% !important;
 					  	  		 	  	 }
 					  	  		 	  	 input[type="text"] {
-					  	  		 	  	 	height: 40px;
+					  	  		 	  	 	height: 32px;
 					  	  		 	  	 	position: relative;
 					  	  		 	  	 	top: 3px;
 					  	  		 	  	 }
@@ -1442,10 +1442,13 @@
 				  	  		 	  	}
 	  	  		 	  				a {
 
-	  	  		 	  	    			@include bluebutton($font-size: 21px);
+	  	  		 	  	    			@include bluebutton($font-size: 18px);
 	  	  		 	  	   				height: auto !important;
 	  	  		 	  	    			border: none;
 	  	  		 	  	    			border-radius: 0;
+
+	  	  		 	  	    			position: relative;
+	  	  		 	  	    			top: 3px;
 	  	  		 	  	     				div {
 		  	  		 	  						b{
 						  	  		 	  			visibility: hidden;
@@ -1470,8 +1473,11 @@
 
 	  	  		 				.views-submit-button {
 	  	  		 					button {
-				  	  		 			@include bluebutton($font-size: 21px);
-				  	  		 			margin-top: 26px;
+				  	  		 			@include bluebutton($font-size: 18px);
+				  	  		 			position: relative;
+				  	  		 			
+				  	  		 			margin-top: 30px;
+				  	  		 			height: 32px;
 				  	  		 			line-height: 1.2;
 				  	  		 			text-transform: capitalize;
 				  	  		 			margin-left: 0;
@@ -1485,6 +1491,7 @@
   	  	}
   	}
 }
+
 /**css for bookreview&booklist unauthencated page**/
 .not-logged-in.page-booklists {
      .main .view-content .item-list ol li .views-field-nothing {
