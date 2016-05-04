@@ -179,12 +179,17 @@
 	 }
 
 }
-@mixin bluebutton($font-size: null) {
+@mixin bluebutton($font-size: null, $p: null) {
 	color: $white !important;
 	@include mclaren;
 	background: $blue !important;
 	border-radius: 10px;
+	@if $p == "lg" {
+		padding: 9px 40px 9px 22px;
+	}
+	@else {
 	padding: 9px 22px;
+}
 	@include boxshadow;
 	border: none;
 	text-transform: capitalize;
@@ -204,11 +209,21 @@
 	@include boxshadow;
 
 }
-@mixin like {
+@mixin like($fromtop: null) {
 	position: relative;
+	@if $fromtop == "y" {
+	padding-right: 40px;
+}
+@else {
 	padding-right: 34px;
+}
  &:after {
+ 	@if $fromtop == "y" {
+ 		@include previous(30px, 30px, $right: 6px, $top: 11px);
+ 	}
+ 	@else {
  	@include previous(30px, 30px, $right: 0, $top: 0px);
+ 	}
  	 	background: url('../images/libraryzurb/smily-white.png') no-repeat;
  	 }
 }
