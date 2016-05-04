@@ -167,18 +167,25 @@
 	 }
 
 }
-@mixin bluebutton($font-size: null) {
+@mixin bluebutton($font-size: null,$sm: null) {
 	color: $blue !important;
 	@include mclaren;
-	background: $yellow !important;
+	font-size: $font-size;
+	background: $yellow;
+	@if $sm == "sm" {
 	padding: 6px 20px 2px;
+	
+}
+    @else {
+    	padding: 10px 20px 7px;
+    }
 	@include boxshadow;
 	border: none;
 	text-transform: capitalize;
-	font-size: $font-size;
+	
 	  &:hover, &:focus {
 	 	color: $blue;
-	 	background: $button-hover;
+	 	background: $button-hover !important;
 	 	opacity: 1;
 	 	outline: none;
 	 }

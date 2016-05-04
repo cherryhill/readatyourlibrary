@@ -1442,7 +1442,7 @@
 				  	  		 	  	}
 	  	  		 	  				a {
 
-	  	  		 	  	    			@include bluebutton($font-size: 18px);
+	  	  		 	  	    			@include bluebutton($font-size: 18px,$sm:"sm"); 
 	  	  		 	  	   				height: auto !important;
 	  	  		 	  	    			border: none;
 	  	  		 	  	    			border-radius: 0;
@@ -1473,7 +1473,7 @@
 
 	  	  		 				.views-submit-button {
 	  	  		 					button {
-				  	  		 			@include bluebutton($font-size: 18px);
+				  	  		 			 @include bluebutton($font-size: 18px,$sm:"sm"); 
 				  	  		 			position: relative;
 				  	  		 			
 				  	  		 			margin-top: 30px;
@@ -1656,7 +1656,15 @@
 			  	 					 		@include like;
 					  	 			 	}
 		  	 					 	}
-
+                                    &.views-field-counter {
+                                    	width: 70%;
+                                    	display: inline-block;
+                                    	float: right;
+                                    	font-size: 22px;
+                                    	 &:after {
+                                    	 	content: ".";
+                                    	 }
+                                    }
 	  	 					 		&.views-field-field-book-cover-image-link {
 			  	 					 	display: table-cell;
 			  	 					 	float: left;
