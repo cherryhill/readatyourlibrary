@@ -1,6 +1,29 @@
 // Blocks
 
 .block {
+	&.review_followers {
+		.view-header {
+			h3 {
+				color: $white;
+				@include arialbold;
+				font-size: 16px !important;
+				margin-bottom: 15px;
+			}
+		}
+		.view-content {
+			.views-row {
+				margin-bottom: 8px;
+				 .views-field {
+				 	a {
+				 		font-size: 16px;
+				 		@include arialregular;
+				 		color: #fff;
+				 	}
+				 }
+			}
+		}
+
+	}
 	&.block-private-msg-custom-teen-write-review-block {
 		background: $light-yellow;
 		padding: 20px 8.6%;
