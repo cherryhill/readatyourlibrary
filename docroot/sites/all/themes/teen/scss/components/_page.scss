@@ -1328,7 +1328,8 @@
   	 	    				margin-left: 5%;
   	 	    		 			.views-field-title {
 			  	 	    		 	a {
-			  	 	    		 		@include white-text;
+			  	 	    		 		color: $white;
+			  	 	    		 		@include arialregular;
 			  	 	    		 		text-decoration: underline;
 			  	 	    		 	}
   	 	    		 			}
@@ -1662,7 +1663,7 @@
                                     	float: right;
                                     	font-size: 22px;
                                     	position: relative;
-                                    	top: 44px;
+                                    	top: 44px;	
                                     	 &:after {
                                     	 	content: ".";
                                     	 }
@@ -3151,7 +3152,14 @@ display: block !important;
  			display: inline-block;
  			width: 100%;
  			border-bottom: 1px solid $light-gray;
- 			 .views-field-counter, .views-field-title{
+ 			.views-field-counter {
+ 				font-size: 20px;
+ 				@include arialregular;
+ 				 span:after {
+ 				 	content: ".";
+ 				 }
+ 			}
+ 			  .views-field-title{
  			 	font-size: 20px;
  			 	@include mclaren;
  			 	  a {
@@ -3205,6 +3213,7 @@ display: block !important;
  			 .views-field-created {
  			 	font-size: 17px;
  			 	@include arialregular;
+ 			 	margin-bottom: 10px;
  			 }
  			 .views-field-body {
  			 	p {

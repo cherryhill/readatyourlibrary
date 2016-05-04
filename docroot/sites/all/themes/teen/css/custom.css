@@ -6897,6 +6897,7 @@ h1#page-title {
   font-weight: normal !important;
   -webkit-font-smoothing: antialiased !important;
   color: #fff;
+  text-decoration: underline;
 }
 .block.block-private-msg-custom-teen-write-review-block {
   background: #f6f45a;
@@ -11685,12 +11686,11 @@ body .alert-box.success a.close:hover {
   margin-left: 5%;
 }
 .page-reviews .sidebar .reviews-block-block .view-content ul .views-field-title a, .page-reviews .sidebar .reviews-block-block .view-content ol .views-field-title a, .page-booklists .sidebar .reviews-block-block .view-content ul .views-field-title a, .page-booklists .sidebar .reviews-block-block .view-content ol .views-field-title a, .page-movie-review .sidebar .reviews-block-block .view-content ul .views-field-title a, .page-movie-review .sidebar .reviews-block-block .view-content ol .views-field-title a, .page-music-review-listing .sidebar .reviews-block-block .view-content ul .views-field-title a, .page-music-review-listing .sidebar .reviews-block-block .view-content ol .views-field-title a, .page-video-game-review .sidebar .reviews-block-block .view-content ul .views-field-title a, .page-video-game-review .sidebar .reviews-block-block .view-content ol .views-field-title a {
-  color: #fff !important;
-  font-family: SpecialElite !important;
-  font-weight: normal !important;
+  color: #fff;
+  font-family: Raleway-Medium !important;
   font-style: normal !important;
+  font-weight: normal !important;
   -webkit-font-smoothing: antialiased !important;
-  -moz-osx-font-smoothing: grayscale !important;
   text-decoration: underline;
 }
 .page-reviews .sidebar .reviews-block-block .view-content ul .views-field-count .field-content, .page-reviews .sidebar .reviews-block-block .view-content ol .views-field-count .field-content, .page-booklists .sidebar .reviews-block-block .view-content ul .views-field-count .field-content, .page-booklists .sidebar .reviews-block-block .view-content ol .views-field-count .field-content, .page-movie-review .sidebar .reviews-block-block .view-content ul .views-field-count .field-content, .page-movie-review .sidebar .reviews-block-block .view-content ol .views-field-count .field-content, .page-music-review-listing .sidebar .reviews-block-block .view-content ul .views-field-count .field-content, .page-music-review-listing .sidebar .reviews-block-block .view-content ol .views-field-count .field-content, .page-video-game-review .sidebar .reviews-block-block .view-content ul .views-field-count .field-content, .page-video-game-review .sidebar .reviews-block-block .view-content ol .views-field-count .field-content {
@@ -14183,7 +14183,17 @@ body .alert-box.success a.close:hover {
   width: 100%;
   border-bottom: 1px solid #cccccc;
 }
-.page-movie-review .main .view-content .views-row .views-field-counter, .page-movie-review .main .view-content .views-row .views-field-title, .page-music-review-listing .main .view-content .views-row .views-field-counter, .page-music-review-listing .main .view-content .views-row .views-field-title, .page-video-game-review .main .view-content .views-row .views-field-counter, .page-video-game-review .main .view-content .views-row .views-field-title {
+.page-movie-review .main .view-content .views-row .views-field-counter, .page-music-review-listing .main .view-content .views-row .views-field-counter, .page-video-game-review .main .view-content .views-row .views-field-counter {
+  font-size: 20px;
+  font-family: Raleway-Medium !important;
+  font-style: normal !important;
+  font-weight: normal !important;
+  -webkit-font-smoothing: antialiased !important;
+}
+.page-movie-review .main .view-content .views-row .views-field-counter span:after, .page-music-review-listing .main .view-content .views-row .views-field-counter span:after, .page-video-game-review .main .view-content .views-row .views-field-counter span:after {
+  content: ".";
+}
+.page-movie-review .main .view-content .views-row .views-field-title, .page-music-review-listing .main .view-content .views-row .views-field-title, .page-video-game-review .main .view-content .views-row .views-field-title {
   font-size: 20px;
   font-family: SpecialElite !important;
   font-weight: normal !important;
@@ -14191,7 +14201,7 @@ body .alert-box.success a.close:hover {
   -webkit-font-smoothing: antialiased !important;
   -moz-osx-font-smoothing: grayscale !important;
 }
-.page-movie-review .main .view-content .views-row .views-field-counter a, .page-movie-review .main .view-content .views-row .views-field-title a, .page-music-review-listing .main .view-content .views-row .views-field-counter a, .page-music-review-listing .main .view-content .views-row .views-field-title a, .page-video-game-review .main .view-content .views-row .views-field-counter a, .page-video-game-review .main .view-content .views-row .views-field-title a {
+.page-movie-review .main .view-content .views-row .views-field-title a, .page-music-review-listing .main .view-content .views-row .views-field-title a, .page-video-game-review .main .view-content .views-row .views-field-title a {
   font-size: 20px;
   font-family: SpecialElite !important;
   font-weight: normal !important;
@@ -14268,6 +14278,7 @@ body .alert-box.success a.close:hover {
   font-style: normal !important;
   font-weight: normal !important;
   -webkit-font-smoothing: antialiased !important;
+  margin-bottom: 10px;
 }
 .page-movie-review .main .view-content .views-row .views-field-body p, .page-music-review-listing .main .view-content .views-row .views-field-body p, .page-video-game-review .main .view-content .views-row .views-field-body p {
   width: 100%;
