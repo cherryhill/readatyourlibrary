@@ -299,28 +299,42 @@
 	  				color: $blue;
 	  				@include noborder;
 	  			}
+	  			p {
+	  				font-size: 16px;
+	  				@include arialregular;
+	  				color: $blue;
+
+	  			}
 	  		}
 	  		.view-content {
 	  			.views-row {
 	  				width: 100%;
 	  				display: inline-block;
-	  				  .views-field-field-image-upload {
-	  				  	 width: 30%;
+	  				  .views-field-field-image-upload, .views-field-field-raffle-image, .views-field-field-badge-image {
+	  				  	 width: 29%;
 	  				  	 display: inline-block;
-	  				  	 float: left;
+	  				  	vertical-align: middle;
 	  				  }
-	  				  .views-field-title,.views-field-field-physical-description,.views-field-field-badge-description,.views-field-field-raffle-description {
+	  				  .views-field-nothing {
 	  				  	display: inline-block;
-	  				  	width: 70%;
-	  				  	float: right;
+	  				  	width: 68%;
+	  				    vertical-align: middle;
 	  				  	font-size: 16px;
+	  				  	color: $blue;
+	  				  	   .reward_description {
+	  				  	   	div {
+	  				  	   		&:nth-of-type(1) {
+	  				  	   	 	@include arialbold;
+
+	  				  	   	 	}
+	  				  	   	 	&:nth-of-type(2) {
+	  				  	   	 	@include arialregular;
+	  				  	   	 }
+	  				  	   	}
+	  				  	   	
+	  				  	   }
 	  				  }
-	  				   .views-field-title {
-	  				   	 @include arialbold;
-	  				   }
-	  				   .views-field-field-physical-description,.views-field-field-badge-description,.views-field-field-raffle-description {
-	  				   	 @include arialregular;
-	  				   }
+	  				   
 	  			}
 	  		}
 	  		
@@ -1396,7 +1410,7 @@
 					  	  		 	  	 	width: 100% !important;
 					  	  		 	  	 }
 					  	  		 	  	 input[type="text"] {
-					  	  		 	  	 	height: 40px;
+					  	  		 	  	 	height: 32px;
 					  	  		 	  	 	position: relative;
 					  	  		 	  	 	top: 3px;
 					  	  		 	  	 }
@@ -1428,10 +1442,13 @@
 				  	  		 	  	}
 	  	  		 	  				a {
 
-	  	  		 	  	    			@include bluebutton($font-size: 21px);
+	  	  		 	  	    			@include bluebutton($font-size: 18px);
 	  	  		 	  	   				height: auto !important;
 	  	  		 	  	    			border: none;
 	  	  		 	  	    			border-radius: 0;
+
+	  	  		 	  	    			position: relative;
+	  	  		 	  	    			top: 3px;
 	  	  		 	  	     				div {
 		  	  		 	  						b{
 						  	  		 	  			visibility: hidden;
@@ -1456,8 +1473,11 @@
 
 	  	  		 				.views-submit-button {
 	  	  		 					button {
-				  	  		 			@include bluebutton($font-size: 21px);
-				  	  		 			margin-top: 26px;
+				  	  		 			@include bluebutton($font-size: 18px);
+				  	  		 			position: relative;
+				  	  		 			
+				  	  		 			margin-top: 30px;
+				  	  		 			height: 32px;
 				  	  		 			line-height: 1.2;
 				  	  		 			text-transform: capitalize;
 				  	  		 			margin-left: 0;
@@ -1471,6 +1491,7 @@
   	  	}
   	}
 }
+
 /**css for bookreview&booklist unauthencated page**/
 .not-logged-in.page-booklists {
      .main .view-content .item-list ol li .views-field-nothing {
@@ -1552,10 +1573,12 @@
 		                             	padding-top: 23px;
                              				.bookreview_title {
 			                             		font-size: 22px;
+			                             		line-height: 1.4;
 			                             		@include mclaren;
 				                             		a {
 				                             			font-size: 22px;
 				                             			padding-right: 5px;
+				                             			line-height: 1.4;
 				                             		}
 
                              				}
