@@ -2882,6 +2882,7 @@ display: block !important;
 		.reviewbook_footer {
 			width: 100%;
 			display: inline-block;
+			margin-bottom: 26px;
 			 ul.links {
 			 	float: left;
 			 	padding-right: 10px;
@@ -3072,7 +3073,8 @@ display: block !important;
 
 	}
 	.bk_follow {
-		 	margin: 35px 0 10px;
+		 	margin: 35px 10px 10px 0;
+		 	float: left;
 
 		 	a {
 		 		 @include bluebutton;
@@ -3124,15 +3126,23 @@ display: block !important;
 		 }
 		 .links.inline {
 		 	list-style: none;
-		 	width: 100%;
-		 	display: inline-block;
+		 	 position:relative;
+		 	 top: 3px;
+
 		 	  li {
 		 	  	margin-top: 40px;
-		 	  	width: 100%;
-		 	  	display: inline-block;
+	            float: left;
 		 	  	margin-left: 0;
+		 	  	margin-right: 10px;
+		 	  	 margin-bottom: 20px;
 		 	  	a {
-		 	  		@include bluebutton;
+		 	  		@include bluebutton(lg);
+		 	  		
+		 	  	}
+		 	  	&.flag-like {
+		 	  		a {
+		 	  			@include like(y);
+		 	  		}
 		 	  	}
 		 	  }
 		 }

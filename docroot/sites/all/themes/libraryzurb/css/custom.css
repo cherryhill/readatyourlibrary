@@ -13804,6 +13804,7 @@ body .alert-box.success a.close:hover {
 .node-type-review-book .main .reviewbook_footer {
   width: 100%;
   display: inline-block;
+  margin-bottom: 26px;
 }
 .node-type-review-book .main .reviewbook_footer ul.links {
   float: left;
@@ -14093,7 +14094,8 @@ body .alert-box.success a.close:hover {
   background-position: 64px center !important;
 }
 .node-type-booklist .bk_follow {
-  margin: 35px 0 10px;
+  margin: 35px 10px 10px 0;
+  float: left;
 }
 .node-type-booklist .bk_follow a {
   color: #fff !important;
@@ -14172,14 +14174,15 @@ body .alert-box.success a.close:hover {
 }
 .node-type-booklist article .links.inline {
   list-style: none;
-  width: 100%;
-  display: inline-block;
+  position: relative;
+  top: 3px;
 }
 .node-type-booklist article .links.inline li {
   margin-top: 40px;
-  width: 100%;
-  display: inline-block;
+  float: left;
   margin-left: 0;
+  margin-right: 10px;
+  margin-bottom: 20px;
 }
 .node-type-booklist article .links.inline li a {
   color: #fff !important;
@@ -14198,12 +14201,28 @@ body .alert-box.success a.close:hover {
   box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
   border: none;
   text-transform: capitalize;
+  font-size: lg;
 }
 .node-type-booklist article .links.inline li a:hover, .node-type-booklist article .links.inline li a:focus {
   color: #fff;
   background: #267fda;
   opacity: 1;
   outline: none;
+}
+.node-type-booklist article .links.inline li.flag-like a {
+  position: relative;
+  padding-right: 40px;
+}
+.node-type-booklist article .links.inline li.flag-like a:after {
+  content: "";
+  width: 30px;
+  height: 30px;
+  display: block;
+  visibility: visible;
+  position: absolute;
+  top: 11px;
+  right: 6px;
+  background: url("../images/libraryzurb/smily-white.png") no-repeat;
 }
 
 /**
