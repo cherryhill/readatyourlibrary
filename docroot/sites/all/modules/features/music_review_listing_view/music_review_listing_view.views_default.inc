@@ -28,6 +28,9 @@ function music_review_listing_view_views_default_views() {
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['exposed_form']['options']['submit_button'] = 'Search';
+  $handler->display->display_options['exposed_form']['options']['sort_asc_label'] = 'Ascending';
+  $handler->display->display_options['exposed_form']['options']['sort_desc_label'] = 'Descending';
   $handler->display->display_options['pager']['type'] = 'full';
   $handler->display->display_options['pager']['options']['items_per_page'] = '10';
   $handler->display->display_options['style_plugin'] = 'default';
@@ -87,7 +90,7 @@ function music_review_listing_view_views_default_views() {
   $handler->display->display_options['header']['area']['content'] = '<h2 class = reviews-title>Reviews & Booklists</h2>
 <div class="viewmenu">View: <a href="/movie-review">All</a> | <a href="/movie-review/staff">Posted by Staff</a> | <a href="/movie-review/players">Posted by Players</a></div>
 <h2 class = reviews-subtitle>Music Reviews</h2>';
-  $handler->display->display_options['header']['area']['format'] = 'simple_html';
+  $handler->display->display_options['header']['area']['format'] = 'full_html';
   $handler->display->display_options['defaults']['relationships'] = FALSE;
   /* Relationship: Content: Author */
   $handler->display->display_options['relationships']['uid']['id'] = 'uid';
@@ -131,7 +134,12 @@ function music_review_listing_view_views_default_views() {
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['title']['link_to_node'] = FALSE;
+  /* Field: Flags: Flag counter */
+  $handler->display->display_options['fields']['count']['id'] = 'count';
+  $handler->display->display_options['fields']['count']['table'] = 'flag_counts';
+  $handler->display->display_options['fields']['count']['field'] = 'count';
+  $handler->display->display_options['fields']['count']['relationship'] = 'flag_count_rel';
+  $handler->display->display_options['fields']['count']['label'] = 'Likes';
   /* Field: Content: Artist/Performer */
   $handler->display->display_options['fields']['field_artist_performer']['id'] = 'field_artist_performer';
   $handler->display->display_options['fields']['field_artist_performer']['table'] = 'field_data_field_artist_performer';
@@ -229,6 +237,14 @@ print \'Reviewed by \';
     'view_mode' => 'teaser',
     'links' => 1,
   );
+  /* Field: User: Uid */
+  $handler->display->display_options['fields']['uid']['id'] = 'uid';
+  $handler->display->display_options['fields']['uid']['table'] = 'users';
+  $handler->display->display_options['fields']['uid']['field'] = 'uid';
+  $handler->display->display_options['fields']['uid']['relationship'] = 'uid';
+  $handler->display->display_options['fields']['uid']['label'] = '';
+  $handler->display->display_options['fields']['uid']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['uid']['element_label_colon'] = FALSE;
   /* Field: Global: PHP */
   $handler->display->display_options['fields']['php_2']['id'] = 'php_2';
   $handler->display->display_options['fields']['php_2']['table'] = 'views';
@@ -282,11 +298,32 @@ if(isset($img_uri)){
   $handler->display->display_options['fields']['name']['label'] = '';
   $handler->display->display_options['fields']['name']['exclude'] = TRUE;
   $handler->display->display_options['fields']['name']['element_label_colon'] = FALSE;
+  /* Field: Global: PHP */
+  $handler->display->display_options['fields']['php_3']['id'] = 'php_3';
+  $handler->display->display_options['fields']['php_3']['table'] = 'views';
+  $handler->display->display_options['fields']['php_3']['field'] = 'php';
+  $handler->display->display_options['fields']['php_3']['label'] = '';
+  $handler->display->display_options['fields']['php_3']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['php_3']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['php_3']['use_php_setup'] = 0;
+  $handler->display->display_options['fields']['php_3']['php_output'] = '<?php
+
+$privacy = $data->_field_data[\'nid\'][\'entity\'];
+$privacy_key = $privacy->field_please_select_one_music[LANGUAGE_NONE][0][\'value\'];
+if($privacy_key == \'public\'){
+echo "<a href = users/public_profile/$row->uid>".$row->name."</a>";
+}
+
+?>';
+  $handler->display->display_options['fields']['php_3']['use_php_click_sortable'] = '0';
+  $handler->display->display_options['fields']['php_3']['php_click_sortable'] = '';
   /* Field: Global: Custom text */
   $handler->display->display_options['fields']['nothing']['id'] = 'nothing';
   $handler->display->display_options['fields']['nothing']['table'] = 'views';
   $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
-  $handler->display->display_options['fields']['nothing']['alter']['text'] = '<div class="review">[php_1]</div><div class = "views-field-field-user-avatar">[php_2]</div><div class="user">[name]</div>';
+  $handler->display->display_options['fields']['nothing']['label'] = '';
+  $handler->display->display_options['fields']['nothing']['alter']['text'] = '<div class="review">[php_1]</div><div class = "views-field-field-user-avatar">[php_2]</div><div class="user">[php_3]</div>';
+  $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
   /* Field: Content: Post date */
   $handler->display->display_options['fields']['created']['id'] = 'created';
   $handler->display->display_options['fields']['created']['table'] = 'node';
@@ -342,10 +379,12 @@ if(isset($img_uri)){
   $handler->display->display_options['filters']['type']['value'] = array(
     'music_review' => 'music_review',
   );
+  $handler->display->display_options['filters']['type']['group'] = 1;
   /* Filter criterion: Search: Search Terms */
   $handler->display->display_options['filters']['keys']['id'] = 'keys';
   $handler->display->display_options['filters']['keys']['table'] = 'search_index';
   $handler->display->display_options['filters']['keys']['field'] = 'keys';
+  $handler->display->display_options['filters']['keys']['group'] = 1;
   $handler->display->display_options['filters']['keys']['exposed'] = TRUE;
   $handler->display->display_options['filters']['keys']['expose']['operator_id'] = 'keys_op';
   $handler->display->display_options['filters']['keys']['expose']['label'] = 'Search';
@@ -367,6 +406,7 @@ if(isset($img_uri)){
   $handler->display->display_options['filters']['name']['field'] = 'name';
   $handler->display->display_options['filters']['name']['relationship'] = 'uid';
   $handler->display->display_options['filters']['name']['operator'] = 'contains';
+  $handler->display->display_options['filters']['name']['group'] = 1;
   $handler->display->display_options['filters']['name']['exposed'] = TRUE;
   $handler->display->display_options['filters']['name']['expose']['operator_id'] = 'name_op';
   $handler->display->display_options['filters']['name']['expose']['label'] = 'Reviewer';
@@ -387,6 +427,7 @@ if(isset($img_uri)){
   $handler->display->display_options['filters']['title']['table'] = 'node';
   $handler->display->display_options['filters']['title']['field'] = 'title';
   $handler->display->display_options['filters']['title']['operator'] = 'contains';
+  $handler->display->display_options['filters']['title']['group'] = 1;
   $handler->display->display_options['filters']['title']['exposed'] = TRUE;
   $handler->display->display_options['filters']['title']['expose']['operator_id'] = 'title_op';
   $handler->display->display_options['filters']['title']['expose']['label'] = 'by Title';
@@ -410,18 +451,19 @@ if(isset($img_uri)){
     'public' => 'public',
     'publicnoname' => 'publicnoname',
   );
-  /* Filter criterion: Profile: First name (field_user_first_name) */
-  $handler->display->display_options['filters']['field_user_first_name_value']['id'] = 'field_user_first_name_value';
-  $handler->display->display_options['filters']['field_user_first_name_value']['table'] = 'field_data_field_user_first_name';
-  $handler->display->display_options['filters']['field_user_first_name_value']['field'] = 'field_user_first_name_value';
-  $handler->display->display_options['filters']['field_user_first_name_value']['relationship'] = 'profile';
-  $handler->display->display_options['filters']['field_user_first_name_value']['operator'] = 'contains';
-  $handler->display->display_options['filters']['field_user_first_name_value']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['field_user_first_name_value']['expose']['operator_id'] = 'field_user_first_name_value_op';
-  $handler->display->display_options['filters']['field_user_first_name_value']['expose']['label'] = 'Author first name';
-  $handler->display->display_options['filters']['field_user_first_name_value']['expose']['operator'] = 'field_user_first_name_value_op';
-  $handler->display->display_options['filters']['field_user_first_name_value']['expose']['identifier'] = 'field_user_first_name_value';
-  $handler->display->display_options['filters']['field_user_first_name_value']['expose']['remember_roles'] = array(
+  $handler->display->display_options['filters']['field_please_select_one_music_value']['group'] = 1;
+  /* Filter criterion: Content: Artist/Performer (field_artist_performer) */
+  $handler->display->display_options['filters']['field_artist_performer_value']['id'] = 'field_artist_performer_value';
+  $handler->display->display_options['filters']['field_artist_performer_value']['table'] = 'field_data_field_artist_performer';
+  $handler->display->display_options['filters']['field_artist_performer_value']['field'] = 'field_artist_performer_value';
+  $handler->display->display_options['filters']['field_artist_performer_value']['operator'] = 'contains';
+  $handler->display->display_options['filters']['field_artist_performer_value']['group'] = 1;
+  $handler->display->display_options['filters']['field_artist_performer_value']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_artist_performer_value']['expose']['operator_id'] = 'field_artist_performer_value_op';
+  $handler->display->display_options['filters']['field_artist_performer_value']['expose']['label'] = 'By Artist';
+  $handler->display->display_options['filters']['field_artist_performer_value']['expose']['operator'] = 'field_artist_performer_value_op';
+  $handler->display->display_options['filters']['field_artist_performer_value']['expose']['identifier'] = 'field_artist_performer_value';
+  $handler->display->display_options['filters']['field_artist_performer_value']['expose']['remember_roles'] = array(
     2 => '2',
     1 => 0,
     6 => 0,
@@ -431,18 +473,17 @@ if(isset($img_uri)){
     3 => 0,
     12 => 0,
   );
-  /* Filter criterion: Profile: Last name (field_user_last_name) */
-  $handler->display->display_options['filters']['field_user_last_name_value']['id'] = 'field_user_last_name_value';
-  $handler->display->display_options['filters']['field_user_last_name_value']['table'] = 'field_data_field_user_last_name';
-  $handler->display->display_options['filters']['field_user_last_name_value']['field'] = 'field_user_last_name_value';
-  $handler->display->display_options['filters']['field_user_last_name_value']['relationship'] = 'profile';
-  $handler->display->display_options['filters']['field_user_last_name_value']['operator'] = 'contains';
-  $handler->display->display_options['filters']['field_user_last_name_value']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['field_user_last_name_value']['expose']['operator_id'] = 'field_user_last_name_value_op';
-  $handler->display->display_options['filters']['field_user_last_name_value']['expose']['label'] = 'Author last name';
-  $handler->display->display_options['filters']['field_user_last_name_value']['expose']['operator'] = 'field_user_last_name_value_op';
-  $handler->display->display_options['filters']['field_user_last_name_value']['expose']['identifier'] = 'field_user_last_name_value';
-  $handler->display->display_options['filters']['field_user_last_name_value']['expose']['remember_roles'] = array(
+  /* Filter criterion: Content: Genre (field_genre_music) */
+  $handler->display->display_options['filters']['field_genre_music_value']['id'] = 'field_genre_music_value';
+  $handler->display->display_options['filters']['field_genre_music_value']['table'] = 'field_data_field_genre_music';
+  $handler->display->display_options['filters']['field_genre_music_value']['field'] = 'field_genre_music_value';
+  $handler->display->display_options['filters']['field_genre_music_value']['group'] = 1;
+  $handler->display->display_options['filters']['field_genre_music_value']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_genre_music_value']['expose']['operator_id'] = 'field_genre_music_value_op';
+  $handler->display->display_options['filters']['field_genre_music_value']['expose']['label'] = 'By Genre';
+  $handler->display->display_options['filters']['field_genre_music_value']['expose']['operator'] = 'field_genre_music_value_op';
+  $handler->display->display_options['filters']['field_genre_music_value']['expose']['identifier'] = 'field_genre_music_value';
+  $handler->display->display_options['filters']['field_genre_music_value']['expose']['remember_roles'] = array(
     2 => '2',
     1 => 0,
     6 => 0,
@@ -526,7 +567,12 @@ if(isset($img_uri)){
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['title']['link_to_node'] = FALSE;
+  /* Field: Flags: Flag counter */
+  $handler->display->display_options['fields']['count']['id'] = 'count';
+  $handler->display->display_options['fields']['count']['table'] = 'flag_counts';
+  $handler->display->display_options['fields']['count']['field'] = 'count';
+  $handler->display->display_options['fields']['count']['relationship'] = 'flag_count_rel';
+  $handler->display->display_options['fields']['count']['label'] = 'Likes';
   /* Field: Content: Artist/Performer */
   $handler->display->display_options['fields']['field_artist_performer']['id'] = 'field_artist_performer';
   $handler->display->display_options['fields']['field_artist_performer']['table'] = 'field_data_field_artist_performer';
@@ -624,6 +670,20 @@ print \'Reviewed by \';
     'view_mode' => 'teaser',
     'links' => 1,
   );
+  /* Field: User: Uid */
+  $handler->display->display_options['fields']['uid']['id'] = 'uid';
+  $handler->display->display_options['fields']['uid']['table'] = 'users';
+  $handler->display->display_options['fields']['uid']['field'] = 'uid';
+  $handler->display->display_options['fields']['uid']['relationship'] = 'uid';
+  $handler->display->display_options['fields']['uid']['exclude'] = TRUE;
+  /* Field: User: Name */
+  $handler->display->display_options['fields']['name']['id'] = 'name';
+  $handler->display->display_options['fields']['name']['table'] = 'users';
+  $handler->display->display_options['fields']['name']['field'] = 'name';
+  $handler->display->display_options['fields']['name']['relationship'] = 'uid';
+  $handler->display->display_options['fields']['name']['label'] = '';
+  $handler->display->display_options['fields']['name']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['name']['element_label_colon'] = FALSE;
   /* Field: Global: PHP */
   $handler->display->display_options['fields']['php_2']['id'] = 'php_2';
   $handler->display->display_options['fields']['php_2']['table'] = 'views';
@@ -669,19 +729,32 @@ if(isset($img_uri)){
 ?>';
   $handler->display->display_options['fields']['php_2']['use_php_click_sortable'] = '0';
   $handler->display->display_options['fields']['php_2']['php_click_sortable'] = '';
-  /* Field: User: Name */
-  $handler->display->display_options['fields']['name']['id'] = 'name';
-  $handler->display->display_options['fields']['name']['table'] = 'users';
-  $handler->display->display_options['fields']['name']['field'] = 'name';
-  $handler->display->display_options['fields']['name']['relationship'] = 'uid';
-  $handler->display->display_options['fields']['name']['label'] = '';
-  $handler->display->display_options['fields']['name']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['name']['element_label_colon'] = FALSE;
+  /* Field: Global: PHP */
+  $handler->display->display_options['fields']['php_3']['id'] = 'php_3';
+  $handler->display->display_options['fields']['php_3']['table'] = 'views';
+  $handler->display->display_options['fields']['php_3']['field'] = 'php';
+  $handler->display->display_options['fields']['php_3']['label'] = '';
+  $handler->display->display_options['fields']['php_3']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['php_3']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['php_3']['use_php_setup'] = 0;
+  $handler->display->display_options['fields']['php_3']['php_output'] = '<?php
+
+$privacy = $data->_field_data[\'nid\'][\'entity\'];
+$privacy_key = $privacy->field_please_select_one_music[LANGUAGE_NONE][0][\'value\'];
+if($privacy_key == \'public\'){
+echo "<a href = users/public_profile/$row->uid>".$row->name."</a>";
+}
+
+?>';
+  $handler->display->display_options['fields']['php_3']['use_php_click_sortable'] = '0';
+  $handler->display->display_options['fields']['php_3']['php_click_sortable'] = '';
   /* Field: Global: Custom text */
   $handler->display->display_options['fields']['nothing']['id'] = 'nothing';
   $handler->display->display_options['fields']['nothing']['table'] = 'views';
   $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
-  $handler->display->display_options['fields']['nothing']['alter']['text'] = '<div class="review">[php_1]</div><div class = "views-field-field-user-avatar">[php_2]</div><div class="user">[name]</div>';
+  $handler->display->display_options['fields']['nothing']['label'] = '';
+  $handler->display->display_options['fields']['nothing']['alter']['text'] = '<div class="review">[php_1]</div><div class = "views-field-field-user-avatar">[php_2]</div><div class="user">[php_3]</div>';
+  $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
   /* Field: Content: Post date */
   $handler->display->display_options['fields']['created']['id'] = 'created';
   $handler->display->display_options['fields']['created']['table'] = 'node';
@@ -737,10 +810,12 @@ if(isset($img_uri)){
   $handler->display->display_options['filters']['type']['value'] = array(
     'music_review' => 'music_review',
   );
+  $handler->display->display_options['filters']['type']['group'] = 1;
   /* Filter criterion: Search: Search Terms */
   $handler->display->display_options['filters']['keys']['id'] = 'keys';
   $handler->display->display_options['filters']['keys']['table'] = 'search_index';
   $handler->display->display_options['filters']['keys']['field'] = 'keys';
+  $handler->display->display_options['filters']['keys']['group'] = 1;
   $handler->display->display_options['filters']['keys']['exposed'] = TRUE;
   $handler->display->display_options['filters']['keys']['expose']['operator_id'] = 'keys_op';
   $handler->display->display_options['filters']['keys']['expose']['label'] = 'Search';
@@ -762,6 +837,7 @@ if(isset($img_uri)){
   $handler->display->display_options['filters']['name']['field'] = 'name';
   $handler->display->display_options['filters']['name']['relationship'] = 'uid';
   $handler->display->display_options['filters']['name']['operator'] = 'contains';
+  $handler->display->display_options['filters']['name']['group'] = 1;
   $handler->display->display_options['filters']['name']['exposed'] = TRUE;
   $handler->display->display_options['filters']['name']['expose']['operator_id'] = 'name_op';
   $handler->display->display_options['filters']['name']['expose']['label'] = 'Reviewer';
@@ -782,6 +858,7 @@ if(isset($img_uri)){
   $handler->display->display_options['filters']['title']['table'] = 'node';
   $handler->display->display_options['filters']['title']['field'] = 'title';
   $handler->display->display_options['filters']['title']['operator'] = 'contains';
+  $handler->display->display_options['filters']['title']['group'] = 1;
   $handler->display->display_options['filters']['title']['exposed'] = TRUE;
   $handler->display->display_options['filters']['title']['expose']['operator_id'] = 'title_op';
   $handler->display->display_options['filters']['title']['expose']['label'] = 'by Title';
@@ -805,48 +882,7 @@ if(isset($img_uri)){
     'public' => 'public',
     'publicnoname' => 'publicnoname',
   );
-  /* Filter criterion: Profile: First name (field_user_first_name) */
-  $handler->display->display_options['filters']['field_user_first_name_value']['id'] = 'field_user_first_name_value';
-  $handler->display->display_options['filters']['field_user_first_name_value']['table'] = 'field_data_field_user_first_name';
-  $handler->display->display_options['filters']['field_user_first_name_value']['field'] = 'field_user_first_name_value';
-  $handler->display->display_options['filters']['field_user_first_name_value']['relationship'] = 'profile';
-  $handler->display->display_options['filters']['field_user_first_name_value']['operator'] = 'contains';
-  $handler->display->display_options['filters']['field_user_first_name_value']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['field_user_first_name_value']['expose']['operator_id'] = 'field_user_first_name_value_op';
-  $handler->display->display_options['filters']['field_user_first_name_value']['expose']['label'] = 'Author first name';
-  $handler->display->display_options['filters']['field_user_first_name_value']['expose']['operator'] = 'field_user_first_name_value_op';
-  $handler->display->display_options['filters']['field_user_first_name_value']['expose']['identifier'] = 'field_user_first_name_value';
-  $handler->display->display_options['filters']['field_user_first_name_value']['expose']['remember_roles'] = array(
-    2 => '2',
-    1 => 0,
-    6 => 0,
-    10 => 0,
-    11 => 0,
-    4 => 0,
-    3 => 0,
-    12 => 0,
-  );
-  /* Filter criterion: Profile: Last name (field_user_last_name) */
-  $handler->display->display_options['filters']['field_user_last_name_value']['id'] = 'field_user_last_name_value';
-  $handler->display->display_options['filters']['field_user_last_name_value']['table'] = 'field_data_field_user_last_name';
-  $handler->display->display_options['filters']['field_user_last_name_value']['field'] = 'field_user_last_name_value';
-  $handler->display->display_options['filters']['field_user_last_name_value']['relationship'] = 'profile';
-  $handler->display->display_options['filters']['field_user_last_name_value']['operator'] = 'contains';
-  $handler->display->display_options['filters']['field_user_last_name_value']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['field_user_last_name_value']['expose']['operator_id'] = 'field_user_last_name_value_op';
-  $handler->display->display_options['filters']['field_user_last_name_value']['expose']['label'] = 'Author last name';
-  $handler->display->display_options['filters']['field_user_last_name_value']['expose']['operator'] = 'field_user_last_name_value_op';
-  $handler->display->display_options['filters']['field_user_last_name_value']['expose']['identifier'] = 'field_user_last_name_value';
-  $handler->display->display_options['filters']['field_user_last_name_value']['expose']['remember_roles'] = array(
-    2 => '2',
-    1 => 0,
-    6 => 0,
-    10 => 0,
-    11 => 0,
-    4 => 0,
-    3 => 0,
-    12 => 0,
-  );
+  $handler->display->display_options['filters']['field_please_select_one_music_value']['group'] = 1;
   /* Filter criterion: User: Roles */
   $handler->display->display_options['filters']['rid']['id'] = 'rid';
   $handler->display->display_options['filters']['rid']['table'] = 'users_roles';
@@ -854,6 +890,48 @@ if(isset($img_uri)){
   $handler->display->display_options['filters']['rid']['relationship'] = 'uid';
   $handler->display->display_options['filters']['rid']['value'] = array(
     10 => '10',
+  );
+  $handler->display->display_options['filters']['rid']['group'] = 1;
+  /* Filter criterion: Content: Artist/Performer (field_artist_performer) */
+  $handler->display->display_options['filters']['field_artist_performer_value']['id'] = 'field_artist_performer_value';
+  $handler->display->display_options['filters']['field_artist_performer_value']['table'] = 'field_data_field_artist_performer';
+  $handler->display->display_options['filters']['field_artist_performer_value']['field'] = 'field_artist_performer_value';
+  $handler->display->display_options['filters']['field_artist_performer_value']['operator'] = 'contains';
+  $handler->display->display_options['filters']['field_artist_performer_value']['group'] = 1;
+  $handler->display->display_options['filters']['field_artist_performer_value']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_artist_performer_value']['expose']['operator_id'] = 'field_artist_performer_value_op';
+  $handler->display->display_options['filters']['field_artist_performer_value']['expose']['label'] = 'By Artist';
+  $handler->display->display_options['filters']['field_artist_performer_value']['expose']['operator'] = 'field_artist_performer_value_op';
+  $handler->display->display_options['filters']['field_artist_performer_value']['expose']['identifier'] = 'field_artist_performer_value';
+  $handler->display->display_options['filters']['field_artist_performer_value']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    6 => 0,
+    10 => 0,
+    11 => 0,
+    4 => 0,
+    3 => 0,
+    12 => 0,
+  );
+  /* Filter criterion: Content: Genre (field_genre_music) */
+  $handler->display->display_options['filters']['field_genre_music_value']['id'] = 'field_genre_music_value';
+  $handler->display->display_options['filters']['field_genre_music_value']['table'] = 'field_data_field_genre_music';
+  $handler->display->display_options['filters']['field_genre_music_value']['field'] = 'field_genre_music_value';
+  $handler->display->display_options['filters']['field_genre_music_value']['group'] = 1;
+  $handler->display->display_options['filters']['field_genre_music_value']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_genre_music_value']['expose']['operator_id'] = 'field_genre_music_value_op';
+  $handler->display->display_options['filters']['field_genre_music_value']['expose']['label'] = 'By Genre';
+  $handler->display->display_options['filters']['field_genre_music_value']['expose']['operator'] = 'field_genre_music_value_op';
+  $handler->display->display_options['filters']['field_genre_music_value']['expose']['identifier'] = 'field_genre_music_value';
+  $handler->display->display_options['filters']['field_genre_music_value']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    6 => 0,
+    10 => 0,
+    11 => 0,
+    4 => 0,
+    3 => 0,
+    12 => 0,
   );
   $handler->display->display_options['path'] = 'music-review-listing/staff';
 
@@ -929,7 +1007,12 @@ if(isset($img_uri)){
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['title']['link_to_node'] = FALSE;
+  /* Field: Flags: Flag counter */
+  $handler->display->display_options['fields']['count']['id'] = 'count';
+  $handler->display->display_options['fields']['count']['table'] = 'flag_counts';
+  $handler->display->display_options['fields']['count']['field'] = 'count';
+  $handler->display->display_options['fields']['count']['relationship'] = 'flag_count_rel';
+  $handler->display->display_options['fields']['count']['label'] = 'Likes';
   /* Field: Content: Artist/Performer */
   $handler->display->display_options['fields']['field_artist_performer']['id'] = 'field_artist_performer';
   $handler->display->display_options['fields']['field_artist_performer']['table'] = 'field_data_field_artist_performer';
@@ -1072,6 +1155,12 @@ if(isset($img_uri)){
 ?>';
   $handler->display->display_options['fields']['php_2']['use_php_click_sortable'] = '0';
   $handler->display->display_options['fields']['php_2']['php_click_sortable'] = '';
+  /* Field: User: Uid */
+  $handler->display->display_options['fields']['uid']['id'] = 'uid';
+  $handler->display->display_options['fields']['uid']['table'] = 'users';
+  $handler->display->display_options['fields']['uid']['field'] = 'uid';
+  $handler->display->display_options['fields']['uid']['relationship'] = 'uid';
+  $handler->display->display_options['fields']['uid']['exclude'] = TRUE;
   /* Field: User: Name */
   $handler->display->display_options['fields']['name']['id'] = 'name';
   $handler->display->display_options['fields']['name']['table'] = 'users';
@@ -1080,11 +1169,32 @@ if(isset($img_uri)){
   $handler->display->display_options['fields']['name']['label'] = '';
   $handler->display->display_options['fields']['name']['exclude'] = TRUE;
   $handler->display->display_options['fields']['name']['element_label_colon'] = FALSE;
+  /* Field: Global: PHP */
+  $handler->display->display_options['fields']['php_3']['id'] = 'php_3';
+  $handler->display->display_options['fields']['php_3']['table'] = 'views';
+  $handler->display->display_options['fields']['php_3']['field'] = 'php';
+  $handler->display->display_options['fields']['php_3']['label'] = '';
+  $handler->display->display_options['fields']['php_3']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['php_3']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['php_3']['use_php_setup'] = 0;
+  $handler->display->display_options['fields']['php_3']['php_output'] = '<?php
+
+$privacy = $data->_field_data[\'nid\'][\'entity\'];
+$privacy_key = $privacy->field_please_select_one_music[LANGUAGE_NONE][0][\'value\'];
+if($privacy_key == \'public\'){
+echo "<a href = users/public_profile/$row->uid>".$row->name."</a>";
+}
+
+?>';
+  $handler->display->display_options['fields']['php_3']['use_php_click_sortable'] = '0';
+  $handler->display->display_options['fields']['php_3']['php_click_sortable'] = '';
   /* Field: Global: Custom text */
   $handler->display->display_options['fields']['nothing']['id'] = 'nothing';
   $handler->display->display_options['fields']['nothing']['table'] = 'views';
   $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
-  $handler->display->display_options['fields']['nothing']['alter']['text'] = '<div class="review">[php_1]</div><div class = "views-field-field-user-avatar">[php_2]</div><div class="user">[name]</div>';
+  $handler->display->display_options['fields']['nothing']['label'] = '';
+  $handler->display->display_options['fields']['nothing']['alter']['text'] = '<div class="review">[php_1]</div><div class = "views-field-field-user-avatar">[php_2]</div><div class="user">[php_3]</div>';
+  $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
   /* Field: Content: Post date */
   $handler->display->display_options['fields']['created']['id'] = 'created';
   $handler->display->display_options['fields']['created']['table'] = 'node';
@@ -1208,48 +1318,6 @@ if(isset($img_uri)){
     'public' => 'public',
     'publicnoname' => 'publicnoname',
   );
-  /* Filter criterion: Profile: First name (field_user_first_name) */
-  $handler->display->display_options['filters']['field_user_first_name_value']['id'] = 'field_user_first_name_value';
-  $handler->display->display_options['filters']['field_user_first_name_value']['table'] = 'field_data_field_user_first_name';
-  $handler->display->display_options['filters']['field_user_first_name_value']['field'] = 'field_user_first_name_value';
-  $handler->display->display_options['filters']['field_user_first_name_value']['relationship'] = 'profile';
-  $handler->display->display_options['filters']['field_user_first_name_value']['operator'] = 'contains';
-  $handler->display->display_options['filters']['field_user_first_name_value']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['field_user_first_name_value']['expose']['operator_id'] = 'field_user_first_name_value_op';
-  $handler->display->display_options['filters']['field_user_first_name_value']['expose']['label'] = 'Author first name';
-  $handler->display->display_options['filters']['field_user_first_name_value']['expose']['operator'] = 'field_user_first_name_value_op';
-  $handler->display->display_options['filters']['field_user_first_name_value']['expose']['identifier'] = 'field_user_first_name_value';
-  $handler->display->display_options['filters']['field_user_first_name_value']['expose']['remember_roles'] = array(
-    2 => '2',
-    1 => 0,
-    6 => 0,
-    10 => 0,
-    11 => 0,
-    4 => 0,
-    3 => 0,
-    12 => 0,
-  );
-  /* Filter criterion: Profile: Last name (field_user_last_name) */
-  $handler->display->display_options['filters']['field_user_last_name_value']['id'] = 'field_user_last_name_value';
-  $handler->display->display_options['filters']['field_user_last_name_value']['table'] = 'field_data_field_user_last_name';
-  $handler->display->display_options['filters']['field_user_last_name_value']['field'] = 'field_user_last_name_value';
-  $handler->display->display_options['filters']['field_user_last_name_value']['relationship'] = 'profile';
-  $handler->display->display_options['filters']['field_user_last_name_value']['operator'] = 'contains';
-  $handler->display->display_options['filters']['field_user_last_name_value']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['field_user_last_name_value']['expose']['operator_id'] = 'field_user_last_name_value_op';
-  $handler->display->display_options['filters']['field_user_last_name_value']['expose']['label'] = 'Author last name';
-  $handler->display->display_options['filters']['field_user_last_name_value']['expose']['operator'] = 'field_user_last_name_value_op';
-  $handler->display->display_options['filters']['field_user_last_name_value']['expose']['identifier'] = 'field_user_last_name_value';
-  $handler->display->display_options['filters']['field_user_last_name_value']['expose']['remember_roles'] = array(
-    2 => '2',
-    1 => 0,
-    6 => 0,
-    10 => 0,
-    11 => 0,
-    4 => 0,
-    3 => 0,
-    12 => 0,
-  );
   /* Filter criterion: User: Roles */
   $handler->display->display_options['filters']['rid']['id'] = 'rid';
   $handler->display->display_options['filters']['rid']['table'] = 'users_roles';
@@ -1257,6 +1325,45 @@ if(isset($img_uri)){
   $handler->display->display_options['filters']['rid']['relationship'] = 'uid';
   $handler->display->display_options['filters']['rid']['value'] = array(
     6 => '6',
+  );
+  /* Filter criterion: Content: Artist/Performer (field_artist_performer) */
+  $handler->display->display_options['filters']['field_artist_performer_value']['id'] = 'field_artist_performer_value';
+  $handler->display->display_options['filters']['field_artist_performer_value']['table'] = 'field_data_field_artist_performer';
+  $handler->display->display_options['filters']['field_artist_performer_value']['field'] = 'field_artist_performer_value';
+  $handler->display->display_options['filters']['field_artist_performer_value']['operator'] = 'contains';
+  $handler->display->display_options['filters']['field_artist_performer_value']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_artist_performer_value']['expose']['operator_id'] = 'field_artist_performer_value_op';
+  $handler->display->display_options['filters']['field_artist_performer_value']['expose']['label'] = 'By Artist';
+  $handler->display->display_options['filters']['field_artist_performer_value']['expose']['operator'] = 'field_artist_performer_value_op';
+  $handler->display->display_options['filters']['field_artist_performer_value']['expose']['identifier'] = 'field_artist_performer_value';
+  $handler->display->display_options['filters']['field_artist_performer_value']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    6 => 0,
+    10 => 0,
+    11 => 0,
+    4 => 0,
+    3 => 0,
+    12 => 0,
+  );
+  /* Filter criterion: Content: Genre (field_genre_music) */
+  $handler->display->display_options['filters']['field_genre_music_value']['id'] = 'field_genre_music_value';
+  $handler->display->display_options['filters']['field_genre_music_value']['table'] = 'field_data_field_genre_music';
+  $handler->display->display_options['filters']['field_genre_music_value']['field'] = 'field_genre_music_value';
+  $handler->display->display_options['filters']['field_genre_music_value']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_genre_music_value']['expose']['operator_id'] = 'field_genre_music_value_op';
+  $handler->display->display_options['filters']['field_genre_music_value']['expose']['label'] = 'By Genre';
+  $handler->display->display_options['filters']['field_genre_music_value']['expose']['operator'] = 'field_genre_music_value_op';
+  $handler->display->display_options['filters']['field_genre_music_value']['expose']['identifier'] = 'field_genre_music_value';
+  $handler->display->display_options['filters']['field_genre_music_value']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    6 => 0,
+    10 => 0,
+    11 => 0,
+    4 => 0,
+    3 => 0,
+    12 => 0,
   );
   $handler->display->display_options['path'] = 'music-review-listing/players';
   $export['music_review_listing'] = $view;
