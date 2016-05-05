@@ -33,7 +33,7 @@
          }
        });
        //reward page description
-       var showChar = 34;
+       var showChar = 30;
     var ellipsestext = "...";
     var moretext = "more";
     var lesstext = "less";

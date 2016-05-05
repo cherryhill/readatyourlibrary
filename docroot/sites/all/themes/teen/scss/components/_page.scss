@@ -329,21 +329,23 @@
 	  			.views-row {
 	  				width: 100%;
 	  				display: inline-block;
+	  				margin-bottom: 25px;
 	  				  .views-field-field-image-upload, .views-field-field-raffle-image, .views-field-field-badge-image {
-	  				  	 width: 29%;
-	  				  	 display: inline-block;
-	  				  	vertical-align: middle;
+	  				  	 width: 30%;
+	  				     float: left;
+	  				     padding-top: 12px;
 	  				  }
 	  				  .views-field-nothing {
-	  				  	display: inline-block;
-	  				  	width: 68%;
-	  				    vertical-align: middle;
+	  				  	width: 70%;
+	  				    float: left;
 	  				  	font-size: 16px;
+	  				  	padding-left: 10px;
 	  				  	color: $blue;
 	  				  	   .reward_description {
 	  				  	   	div {
 	  				  	   		&:nth-of-type(1) {
 	  				  	   	 	@include arialbold;
+	  				  	   	 	padding-top: 30px;
 
 	  				  	   	 	}
 	  				  	   	 	&:nth-of-type(2) {
