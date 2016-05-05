@@ -28,6 +28,9 @@ function video_game_review_view_listing_views_default_views() {
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['exposed_form']['options']['submit_button'] = 'Search';
+  $handler->display->display_options['exposed_form']['options']['sort_asc_label'] = 'Ascending';
+  $handler->display->display_options['exposed_form']['options']['sort_desc_label'] = 'Descending';
   $handler->display->display_options['pager']['type'] = 'full';
   $handler->display->display_options['pager']['options']['items_per_page'] = '10';
   $handler->display->display_options['pager']['options']['offset'] = '0';
@@ -46,7 +49,7 @@ function video_game_review_view_listing_views_default_views() {
   $handler->display->display_options['header']['area']['table'] = 'views';
   $handler->display->display_options['header']['area']['field'] = 'area';
   $handler->display->display_options['header']['area']['content'] = '<h2 class = reviews-title>Reviews & Booklists</h2>
-<div class="viewmenu">View: <a href="/video-game-review">All</a> | <a href="/video-game-review/staff">Posted by Staff</a> | <a href="/video-game-review/players">Posted by Players</a></div>
+<div class="viewmenu">View: <a href="/video_game_review">All</a> | <a href="/video_game_review/staff">Posted by Staff</a> | <a href="/video_game_review/players">Posted by Players</a></div>
 <h2 class = reviews-subtitle>VIDEO GAME REVIEWS</h2>';
   $handler->display->display_options['header']['area']['format'] = 'simple_html';
   /* Relationship: Content: Author */
@@ -82,13 +85,28 @@ function video_game_review_view_listing_views_default_views() {
   $handler->display->display_options['fields']['counter']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['counter']['counter_start'] = '1';
   $handler->display->display_options['fields']['counter']['reverse'] = 0;
+  /* Field: Content: Catalog Link */
+  $handler->display->display_options['fields']['field_catalog_link_video_game_1']['id'] = 'field_catalog_link_video_game_1';
+  $handler->display->display_options['fields']['field_catalog_link_video_game_1']['table'] = 'field_data_field_catalog_link_video_game';
+  $handler->display->display_options['fields']['field_catalog_link_video_game_1']['field'] = 'field_catalog_link_video_game';
+  $handler->display->display_options['fields']['field_catalog_link_video_game_1']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_catalog_link_video_game_1']['click_sort_column'] = 'url';
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
   $handler->display->display_options['fields']['title']['label'] = '';
+  $handler->display->display_options['fields']['title']['alter']['path'] = '[field_catalog_link_video_game_1]';
+  $handler->display->display_options['fields']['title']['alter']['target'] = '_blank';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
+  $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
+  /* Field: Flags: Flag counter */
+  $handler->display->display_options['fields']['count']['id'] = 'count';
+  $handler->display->display_options['fields']['count']['table'] = 'flag_counts';
+  $handler->display->display_options['fields']['count']['field'] = 'count';
+  $handler->display->display_options['fields']['count']['relationship'] = 'flag_count_rel';
+  $handler->display->display_options['fields']['count']['label'] = 'Likes';
   /* Field: Content: Platform */
   $handler->display->display_options['fields']['field_platform']['id'] = 'field_platform';
   $handler->display->display_options['fields']['field_platform']['table'] = 'field_data_field_platform';
@@ -230,11 +248,38 @@ if(isset($img_uri)){
   $handler->display->display_options['fields']['name']['field'] = 'name';
   $handler->display->display_options['fields']['name']['relationship'] = 'uid';
   $handler->display->display_options['fields']['name']['exclude'] = TRUE;
+  /* Field: User: Uid */
+  $handler->display->display_options['fields']['uid']['id'] = 'uid';
+  $handler->display->display_options['fields']['uid']['table'] = 'users';
+  $handler->display->display_options['fields']['uid']['field'] = 'uid';
+  $handler->display->display_options['fields']['uid']['relationship'] = 'uid';
+  $handler->display->display_options['fields']['uid']['exclude'] = TRUE;
+  /* Field: Global: PHP */
+  $handler->display->display_options['fields']['php_3']['id'] = 'php_3';
+  $handler->display->display_options['fields']['php_3']['table'] = 'views';
+  $handler->display->display_options['fields']['php_3']['field'] = 'php';
+  $handler->display->display_options['fields']['php_3']['label'] = '';
+  $handler->display->display_options['fields']['php_3']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['php_3']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['php_3']['use_php_setup'] = 0;
+  $handler->display->display_options['fields']['php_3']['php_output'] = '<?php
+
+$privacy = $data->_field_data[\'nid\'][\'entity\'];
+$privacy_key = $privacy->field_please_select_videogame[LANGUAGE_NONE][0][\'value\'];
+if($privacy_key == \'public\'){
+echo "<a href = users/public_profile/$row->uid>".$row->name."</a>";
+}
+
+?>';
+  $handler->display->display_options['fields']['php_3']['use_php_click_sortable'] = '0';
+  $handler->display->display_options['fields']['php_3']['php_click_sortable'] = '';
   /* Field: Global: Custom text */
   $handler->display->display_options['fields']['nothing']['id'] = 'nothing';
   $handler->display->display_options['fields']['nothing']['table'] = 'views';
   $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
-  $handler->display->display_options['fields']['nothing']['alter']['text'] = '<div class="review">[php_1]</div><div class = "views-field-field-user-avatar">[php_2]</div><div class="user">[name]</div>';
+  $handler->display->display_options['fields']['nothing']['label'] = '';
+  $handler->display->display_options['fields']['nothing']['alter']['text'] = '<div class="review">[php_1]</div><div class = "views-field-field-user-avatar">[php_2]</div><div class="user">[php_3]</div>';
+  $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
   /* Field: Content: Post date */
   $handler->display->display_options['fields']['created']['id'] = 'created';
   $handler->display->display_options['fields']['created']['table'] = 'node';
@@ -350,39 +395,16 @@ if(isset($img_uri)){
     'public' => 'public',
     'publicnoname' => 'publicnoname',
   );
-  /* Filter criterion: Profile: First name (field_user_first_name) */
-  $handler->display->display_options['filters']['field_user_first_name_value']['id'] = 'field_user_first_name_value';
-  $handler->display->display_options['filters']['field_user_first_name_value']['table'] = 'field_data_field_user_first_name';
-  $handler->display->display_options['filters']['field_user_first_name_value']['field'] = 'field_user_first_name_value';
-  $handler->display->display_options['filters']['field_user_first_name_value']['relationship'] = 'profile';
-  $handler->display->display_options['filters']['field_user_first_name_value']['operator'] = 'contains';
-  $handler->display->display_options['filters']['field_user_first_name_value']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['field_user_first_name_value']['expose']['operator_id'] = 'field_user_first_name_value_op';
-  $handler->display->display_options['filters']['field_user_first_name_value']['expose']['label'] = 'Author first name';
-  $handler->display->display_options['filters']['field_user_first_name_value']['expose']['operator'] = 'field_user_first_name_value_op';
-  $handler->display->display_options['filters']['field_user_first_name_value']['expose']['identifier'] = 'field_user_first_name_value';
-  $handler->display->display_options['filters']['field_user_first_name_value']['expose']['remember_roles'] = array(
-    2 => '2',
-    1 => 0,
-    6 => 0,
-    10 => 0,
-    11 => 0,
-    4 => 0,
-    3 => 0,
-    12 => 0,
-  );
-  /* Filter criterion: Profile: Last name (field_user_last_name) */
-  $handler->display->display_options['filters']['field_user_last_name_value']['id'] = 'field_user_last_name_value';
-  $handler->display->display_options['filters']['field_user_last_name_value']['table'] = 'field_data_field_user_last_name';
-  $handler->display->display_options['filters']['field_user_last_name_value']['field'] = 'field_user_last_name_value';
-  $handler->display->display_options['filters']['field_user_last_name_value']['relationship'] = 'profile';
-  $handler->display->display_options['filters']['field_user_last_name_value']['operator'] = 'contains';
-  $handler->display->display_options['filters']['field_user_last_name_value']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['field_user_last_name_value']['expose']['operator_id'] = 'field_user_last_name_value_op';
-  $handler->display->display_options['filters']['field_user_last_name_value']['expose']['label'] = 'Author last name';
-  $handler->display->display_options['filters']['field_user_last_name_value']['expose']['operator'] = 'field_user_last_name_value_op';
-  $handler->display->display_options['filters']['field_user_last_name_value']['expose']['identifier'] = 'field_user_last_name_value';
-  $handler->display->display_options['filters']['field_user_last_name_value']['expose']['remember_roles'] = array(
+  /* Filter criterion: Content: Platform (field_platform) */
+  $handler->display->display_options['filters']['field_platform_value']['id'] = 'field_platform_value';
+  $handler->display->display_options['filters']['field_platform_value']['table'] = 'field_data_field_platform';
+  $handler->display->display_options['filters']['field_platform_value']['field'] = 'field_platform_value';
+  $handler->display->display_options['filters']['field_platform_value']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_platform_value']['expose']['operator_id'] = 'field_platform_value_op';
+  $handler->display->display_options['filters']['field_platform_value']['expose']['label'] = 'By Platform';
+  $handler->display->display_options['filters']['field_platform_value']['expose']['operator'] = 'field_platform_value_op';
+  $handler->display->display_options['filters']['field_platform_value']['expose']['identifier'] = 'field_platform_value';
+  $handler->display->display_options['filters']['field_platform_value']['expose']['remember_roles'] = array(
     2 => '2',
     1 => 0,
     6 => 0,
@@ -395,10 +417,28 @@ if(isset($img_uri)){
 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
+  $handler->display->display_options['defaults']['header'] = FALSE;
+  /* Header: Global: Text area */
+  $handler->display->display_options['header']['area']['id'] = 'area';
+  $handler->display->display_options['header']['area']['table'] = 'views';
+  $handler->display->display_options['header']['area']['field'] = 'area';
+  $handler->display->display_options['header']['area']['content'] = '<h2 class = reviews-title>Reviews & Booklists</h2>
+<div class="viewmenu">View: <a href="/video-game-review">All</a> | <a href="/video-game-review/staff">Posted by Staff</a> | <a href="/video-game-review/players">Posted by Players</a></div>
+<h2 class = reviews-subtitle>Video Game Reviews</h2>';
+  $handler->display->display_options['header']['area']['format'] = 'full_html';
   $handler->display->display_options['path'] = 'video-game-review';
 
   /* Display: Staff */
   $handler = $view->new_display('page', 'Staff', 'page_1');
+  $handler->display->display_options['defaults']['header'] = FALSE;
+  /* Header: Global: Text area */
+  $handler->display->display_options['header']['area']['id'] = 'area';
+  $handler->display->display_options['header']['area']['table'] = 'views';
+  $handler->display->display_options['header']['area']['field'] = 'area';
+  $handler->display->display_options['header']['area']['content'] = '<h2 class = reviews-title>Reviews & Booklists</h2>
+<div class="viewmenu">View: <a href="/video-game-review">All</a> | <a href="/video-game-review/staff">Posted by Staff</a> | <a href="/video-game-review/players">Posted by Players</a></div>
+<h2 class = reviews-subtitle>VIDEO GAME REVIEWS</h2>';
+  $handler->display->display_options['header']['area']['format'] = 'simple_html';
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
   /* Filter criterion: Content: Published */
@@ -537,6 +577,15 @@ if(isset($img_uri)){
 
   /* Display: Players */
   $handler = $view->new_display('page', 'Players', 'page_2');
+  $handler->display->display_options['defaults']['header'] = FALSE;
+  /* Header: Global: Text area */
+  $handler->display->display_options['header']['area']['id'] = 'area';
+  $handler->display->display_options['header']['area']['table'] = 'views';
+  $handler->display->display_options['header']['area']['field'] = 'area';
+  $handler->display->display_options['header']['area']['content'] = '<h2 class = reviews-title>Reviews & Booklists</h2>
+<div class="viewmenu">View: <a href="/video-game-review">All</a> | <a href="/video-game-review/staff">Posted by Staff</a> | <a href="/video-game-review/players">Posted by Players</a></div>
+<h2 class = reviews-subtitle>VIDEO GAME REVIEWS</h2>';
+  $handler->display->display_options['header']['area']['format'] = 'simple_html';
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
   /* Filter criterion: Content: Published */
