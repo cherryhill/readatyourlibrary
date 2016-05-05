@@ -35,8 +35,8 @@
        //reward page description
        var showChar = 34;
     var ellipsestext = "...";
-    var moretext = "read more";
-    var lesstext = "read less";
+    var moretext = "more";
+    var lesstext = "less";
     $('.page-rewards .reward_description div:nth-last-child(1)').each(function() {
         var content = $(this).html();
  
