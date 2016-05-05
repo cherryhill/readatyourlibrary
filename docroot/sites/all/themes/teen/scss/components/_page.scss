@@ -200,7 +200,22 @@
 }
 /**end photos n vedios***/
 /**css for reward page***/
-
+/* .not-logged-in.page-rewards .main .block {
+	width: 45%;
+	margin-left: 3%;
+	 .view-header h2  {
+	 	position: relative;
+	 	left: -5px;
+	 }
+}
+.logged-in.page-rewards .main .block {
+	width: 44%;
+	margin-left: 4.5%;
+	 .view-header h2 {
+	 	position: relative;
+	 	left: -3px;
+	 }
+} */
 .page-rewards {
 	.pull-9.sidebar {
 		width: 29.53%;
@@ -231,6 +246,11 @@
 			  			float: left;
 			  			display: table-row;
 			  			margin-right: 19px;	
+			  		}
+			  	}
+			  	.view-footer {
+			  		.button {
+			  			margin-top: 20px;
 			  		}
 			  	}
 			  	&.block-views-my-badges-block-1 {
@@ -284,10 +304,9 @@
 		  	
 
 		 .block {
-		 	width: 49%;
-		 	display: inline-block;
-		 	vertical-align: top;
-		 	margin-left: 0.5%;
+		 	width: 50%;
+		 	float: left;
+		 	padding-left: 32px;
 	  		.block-title {
 	  		  display: none;
 
@@ -310,21 +329,23 @@
 	  			.views-row {
 	  				width: 100%;
 	  				display: inline-block;
+	  				margin-bottom: 25px;
 	  				  .views-field-field-image-upload, .views-field-field-raffle-image, .views-field-field-badge-image {
-	  				  	 width: 29%;
-	  				  	 display: inline-block;
-	  				  	vertical-align: middle;
+	  				  	 width: 30%;
+	  				     float: left;
+	  				     padding-top: 12px;
 	  				  }
 	  				  .views-field-nothing {
-	  				  	display: inline-block;
-	  				  	width: 68%;
-	  				    vertical-align: middle;
+	  				  	width: 70%;
+	  				    float: left;
 	  				  	font-size: 16px;
+	  				  	padding-left: 10px;
 	  				  	color: $blue;
 	  				  	   .reward_description {
 	  				  	   	div {
 	  				  	   		&:nth-of-type(1) {
 	  				  	   	 	@include arialbold;
+	  				  	   	 	padding-top: 30px;
 
 	  				  	   	 	}
 	  				  	   	 	&:nth-of-type(2) {
@@ -2862,7 +2883,7 @@ display: block !important;
  .form-item.form-type-radio.form-item-field-genre-und, .form-item.form-type-radio.form-item-field-language-und,.form-item.form-type-radio.form-item-field-rating-und  {
  		width: 19%;
  		display: inline-block;
- 		@include radio;
+ 		
  	}
  	.form-item-field-platform-und, .form-item-field-age-rating-of-game-und {
  		width: 100%;
@@ -2870,13 +2891,16 @@ display: block !important;
  		  	.form-item-field-platform-und, .form-item-field-age-rating-of-game-und {
  		  		width: 19%;
  		  		display: inline-block;
- 		  		@include radio;
+ 		  		
  		  	}
  	}
-
- 	.form-item.form-type-radio.form-item-field-please-select-one-und, .form-item.form-type-radio.form-item-field-please-select-videogame-und {
- 		@include radio;
+ 	input[type=radio] {
+ 		margin-bottom: 0;
  	}
+
+ 	/* .form-item.form-type-radio.form-item-field-please-select-one-und, .form-item.form-type-radio.form-item-field-please-select-videogame-und {
+ 		
+ 	} */
  	.form-textarea-wrapper textarea {
  		height: 250px;
  		resize: none;
@@ -2906,8 +2930,11 @@ display: block !important;
  }
  /**booklist node page**/
  .page-node-add-booklist, .page-node-add-review-book {
- 	.form-item-field-privacy-settings-und {
+ 	/* .form-item-field-privacy-settings-und {
  		@include radio;
+ 	} */
+ 	input[type=radio] {
+ 		margin-bottom: 0;
  	}
  	div.vertical-tabs {
  		margin: 0 !important;
@@ -2934,8 +2961,8 @@ display: block !important;
  		 }
  	}
  }
- .form-item.form-type-radio.form-item-field-please-select-one-music-und {
- 	 @include radio;
+ input[type=radio] {
+ 	margin-bottom: 0;
  }
  .form-textarea-wrapper textarea {
  		height: 250px;
@@ -2979,6 +3006,9 @@ display: block !important;
  		 	  }
  		 }
  		 .title_review {
+ 		 	.date_created {
+ 		 		width: 100%;
+ 		 	}
  		 	h2 {
  		 		color: $black;
  		 		font-size: 22px;
@@ -3067,7 +3097,10 @@ display: block !important;
  			 	  	width: 80%;
  			 	  	vertical-align: middle;
  			 	  	position: relative;
- 			 	  	left: -8%;
+ 			 	  	left: -10%;
+ 			 	  	 .counter {
+ 			 	  	 	padding-right: 5px;
+ 			 	  	 }
  			 	  }
  			 }
  		}
@@ -3153,8 +3186,8 @@ display: block !important;
  			width: 100%;
  			border-bottom: 1px solid $light-gray;
  			.views-field-counter {
- 				font-size: 20px;
- 				@include arialregular;
+ 				font-size: 17px;
+ 				@include mclaren;
  				 span:after {
  				 	content: ".";
  				 }
@@ -3179,6 +3212,7 @@ display: block !important;
  			 .views-field {
  			 	line-height: 1.4;
  			 }
+
  			 .views-field-nothing, .views-field-field-genre, .views-field-field-actors, .views-field-field-artist-performer, .views-field-php, .views-field-field-catalog-link-music, .views-field-field-age-rating-of-game, .views-field-field-director,.views-field-field-catalog-link-video-game, .views-field-field-language,.views-field-php, .views-field-field-release-year, .views-field-field-rating, .views-field-field-catalog-link-movie-review {
  			 	font-size: 17px;
  			 	
