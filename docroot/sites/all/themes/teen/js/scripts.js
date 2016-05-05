@@ -22,6 +22,16 @@
           return false;
         }
       });
+      //for node page vedio list show textbox after selected radio button has value Other
+      $('.page-node-add-video-game-review #edit-field-platform-other-option').hide();
+       $('.page-node-add-video-game-review input[type="radio"]').click(function(){
+         if($(this).attr("value")=="other") {
+          $('.page-node-add-video-game-review #edit-field-platform-other-option').show();
+         }
+         else {
+           $('.page-node-add-video-game-review #edit-field-platform-other-option').hide();
+         }
+       });
       // Get width of browser viewport. **Note:** The value we check against
       // should probably match the value set for `$topbar-breakpoint` in
       // libraryzurb/scss/_variables.scss.
