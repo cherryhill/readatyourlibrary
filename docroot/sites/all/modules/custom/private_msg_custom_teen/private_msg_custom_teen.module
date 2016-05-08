@@ -6,6 +6,9 @@
  * This module is basically for form alter, hook_menu,
  * custom blocks and program configuration settings
  */
+require_once DRUPAL_ROOT . '/sites/all/modules/custom/private_msg_custom_teen/inc/custom_blocks_teen.inc';
+require_once DRUPAL_ROOT . '/sites/all/modules/custom/private_msg_custom_teen/inc/hotspot_activities_block.inc';
+
 
 /**
  * Implementation of hook_menu().
@@ -218,7 +221,7 @@ function private_msg_custom_teen_profile2_presave($profile) {
  */
 function private_msg_custom_teen_form_alter(&$form, &$form_state, $form_id) {
 
-  $sub_title = 'Fill out the following form to submit your review! Reviews will be posted upon approval and you will be sent a notification when your review has posted';
+  $sub_title = variable_get('review_pre_header');
   $catalog_link = variable_get('catalog_link_for_teen_program');
   $library_abbreviation = variable_get('library_abbreviation_for_teen');
 
@@ -285,9 +288,18 @@ function private_msg_custom_teen_form_alter(&$form, &$form_state, $form_id) {
 		  '#attributes' => array('target' => '_blank'),
 		  '#weight' => 3,
 		);
-
-		return $form;
 	}
+
+	if($form_id == 'eck__entity__form_add_activity_activity') {
+		// $form['#submit'][] = 'mymodule_upload_enabled_types_submit';
+		// $form['actions']['submit']['#submit'][] = 'mymodule_upload_enabled_types_submit';
+  }
+
+	return $form;
+}
+
+function mymodule_upload_enabled_types_submit($form, &$form_state){
+	drupal_set_message("Its working poornimggga");
 }
 
 function user_reviews_teen() {
@@ -328,6 +340,14 @@ function private_msg_custom_teen_block_info() {
     'info' => t('Program Rewards Block teen'),
   );
 
+  $blocks['program_announcement_block'] = array(
+    'info' => t('Program Announcement Block for landing page'),
+  );
+
+  $blocks['hotspot_activity_block'] = array(
+    'info' => t('Hotspot activities block'),
+  );
+
   return $blocks;
 }
 
@@ -357,6 +377,14 @@ function private_msg_custom_teen_block_view($delta = '') {
     case 'program_rewards_block' :
       $block['content'] = view_rewards_block();
       break;
+
+    case 'program_announcement_block' :
+      $block['content'] = announcement_block();
+      break;
+
+    case 'hotspot_activity_block' :
+    	$block['content'] = hotspot_activities();
+    	break;
   }
   
   return $block;

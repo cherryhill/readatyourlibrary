@@ -39,13 +39,79 @@ function platform_details_teen($form, &$form_state) {
     '#default_value' => variable_get('review_pre_header'),
   );
 
+  $form['announcement_block_details'] = array(
+    '#type' => 'fieldset', 
+    '#title' => t('Announcement block'),
+    '#collapsible' => TRUE, 
+    '#collapsed' => FALSE,
+  );
+
+  $form['announcement_block_details']['title_announcement'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Title for the block'),
+    '#default_value' => variable_get('title_announcement'),
+  );
+
+  $form['hotspot_activities_block'] = array(
+    '#type' => 'fieldset', 
+    '#title' => t('Bay Area Hotspot Activities block'),
+    '#description' => 'Bay Area Hotspot Activities block deatils',
+    '#collapsible' => TRUE, 
+    '#collapsed' => FALSE,
+  );
+
+  $form['hotspot_activities_block']['hotspot_block_title'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Title for the block'),
+    '#default_value' => variable_get('hotspot_block_title'),
+  );
+
+  $form['hotspot_activities_block']['hotspot_block_description'] = array(
+    '#type' => 'textarea',
+    '#title' => t('Description'),
+    '#default_value' => variable_get('hotspot_block_description'),
+  );
+
+  $form['hotspot_activities_block']['hotspot_block_link'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Suggest a New Activity Form Link'),
+    '#description' => 'This will link to the Suggest a New Activity Form <br/> Enter a valid url (https://www.example.com).',
+    '#default_value' => variable_get('hotspot_block_link'),
+  );
+
+  $form['hotspot_activities_block']['hotspot_block_link_title'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Title for the Link'),
+    '#default_value' => variable_get('hotspot_block_link_title'),
+  );
+
+  $form['review_activities_block'] = array(
+    '#type' => 'fieldset', 
+    '#title' => t('Review Activities block'),
+    '#description' => 'Review Activity block deatils',
+    '#collapsible' => TRUE, 
+    '#collapsed' => FALSE,
+  );
+
+  $form['review_activities_block']['review_activity_block_title'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Title for the block'),
+    '#default_value' => variable_get('review_activity_block_title'),
+  );
+
+  $form['review_activities_block']['review_activity_block_description'] = array(
+    '#type' => 'textarea',
+    '#title' => t('Description'),
+    '#default_value' => variable_get('review_activity_block_description'),
+  );
+
 	return system_settings_form($form);
 }
 
 // validation for purchase link form
-function platform_details_teen_validate($form, &$form_state) {
-  $purchase_link = $form_state['values']['pmc_purchase_link_teen'];
-  if(isset($purchase_link)){
+if(isset($purchase_link)){
+  function platform_details_teen_validate($form, &$form_state) {
+    $purchase_link = $form_state['values']['pmc_purchase_link_teen'];
     if(filter_var($purchase_link, FILTER_VALIDATE_URL) === false) {
       form_set_error('pmc_purchase_link_teen','Please enter a valid URL');
     }

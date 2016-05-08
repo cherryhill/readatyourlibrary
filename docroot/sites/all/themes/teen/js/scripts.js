@@ -12,9 +12,25 @@
         }
       });
       //change position of review title after viewfilter in all review pages
-        $('.reviews-subtitle').insertAfter('.view-filters');
+      $('.reviews-subtitle').insertAfter('.view-filters');
       // select list option with thier link
       jQuery('.add_review_node').change(function(){
+        var option = jQuery(this).find('option:selected').val();
+        if(option != 0){
+        window.location = option;
+        }else{
+          return false;
+        }
+      });
+      jQuery('.reviews_list_view').change(function(){
+        var option = jQuery(this).find('option:selected').val();
+        if(option != 0){
+        window.location = option;
+        }else{
+          return false;
+        }
+      });
+      jQuery('.reviews_add').change(function(){
         var option = jQuery(this).find('option:selected').val();
         if(option != 0){
         window.location = option;
