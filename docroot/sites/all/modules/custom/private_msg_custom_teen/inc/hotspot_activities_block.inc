@@ -110,16 +110,6 @@ function hotspot_activities() {
 	 	'#weight' => 7,
 	);
 
-	$form['read_reviews'] = array(
-	  '#title' => t('Read Existing Reviews'),
-	  '#type' => 'select',
-	  '#options' => $view_reviews,
-	  '#attributes' => array(
-	    'class' => array('reviews_list_view')
-	  ),
-	  '#weight' => 8,
-	);
-
 	$form['read_submit'] = array(
 	  '#title' => t('Write a Review'),
 	  '#type' => 'select',
@@ -127,7 +117,18 @@ function hotspot_activities() {
 	  '#attributes' => array(
 	    'class' => array('reviews_add')
 	  ),
+	  '#weight' => 8,
+	);
+
+	$form['read_reviews'] = array(
+	  '#title' => t('Read Existing Reviews'),
+	  '#type' => 'select',
+	  '#options' => $view_reviews,
+	  '#attributes' => array(
+	    'class' => array('reviews_list_view')
+	  ),
 	  '#weight' => 9,
 	);
+
 	return $form;
 }
