@@ -149,6 +149,7 @@
 		$director_value = $director[0]['safe_value'];
 		$review_value = $review['0']['safe_value']
   ?>
+  <div class="vidiogamelikefollow-wrap">
   <div class="videogame-likes">
   	<div class="like-count">
       <?php if(isset($counts)){ print '<span class = "lk-count">Likes: </span>'.$counts; } ?>
@@ -159,6 +160,7 @@
   </div>
   <div class="follow_link_videogamereview">
   	<?php if($node_privacy === 'public'){ print flag_create_link('follow', $node->uid); } ?>
+  </div>
   </div>
   <div class="videogame-review">
 	  <div>
