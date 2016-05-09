@@ -1264,7 +1264,11 @@
   	 	@include mclaren;
   	 	display: none;
   	}
-
+	.sidebar {
+	.button {
+		margin-left: 0 !important;
+	}
+	}
   	.view-header {
   	 	p {
   	 		a {
@@ -1765,12 +1769,9 @@
 }
 
 /**css only for booklist page**/
-.sidebar {
-	.button {
-		margin-left: 0 !important;
-	}
-}
+
 .page-booklists {
+
   	
   	.main {
   		 .view-header .booklist_slideshow_title,.view-footer {
@@ -1991,186 +1992,106 @@
 /**end of booklist page**/
 
 /**activities page **/
-.not-logged-in.section-activities {
-	.block-views-reward-earn-block-1 {
-			.block-title {
-				&:after {
-					background: none;
-				}
-			}
-		
-    }
-}
-.logged-in.section-activities {
-    .block-views-reward-earn-block-1 {
-			display: none;
-	}
-
-}
-
-.section-activities {
-	.pagination.pager {
-		float: none !important;
-		margin-right: 0 !important;
-	}
-	h1#page-title {
-		display: none;
-	}
+ .page-activities {
+ 	#page-title {
+ 		display: none;
+ 	}
  	.main {
- 		.views-field-nothing {
- 			h2 {
- 				/* text-transform: uppercase; */
+ 		padding-left: 0;
+ 		top: -17px;
+ 	}
+ 	.block-private-msg-custom-teen-hotspot-activity-block {
+ 		color: $blue;
+ 		.block-title {
+ 			font-size: 28px;
+ 			margin-bottom: 25px;
+ 			@include noborder;
+ 			@include brushimg(left);
+
+ 		}
+ 		.activity_title, .activity_review_title {
+ 			font-size: 24px;
+ 			@include mclaren;
+ 			padding-left: 35px;
+ 			margin-bottom: 5px;
+
+ 		}
+ 		.activity_desc, .activity_review_desc {
+ 			font-size: 16px;
+ 			@include arialregular;
+ 			padding-left: 9.2%;
+ 			margin-bottom: 10px;
+ 		}
+ 		.activity_review_title {
+ 			margin-top: 60px;
+ 		}
+
+ 		.form-type-select {
+ 			width: 100%;
+ 			display: inline-block;
+ 			label  {
+ 				width: 50%;
+ 				float: left;
+ 				@include arialregular;
+ 				padding-left: 9.2%;
+ 				padding-right: 10px;
+ 				font-size: 18px;
+ 				color: $blue;
+
+ 			}
+ 			.chosen-container {
+ 				width: 50% !important;
+ 				float: left;
+ 				border: 1px solid $msg-active;
+ 				 .chosen-drop {
+ 				 	background: $white !important;
+ 				 	 ul {
+ 				 	 	li {
+ 				 	 		color: $msg-active;
+ 				 	 		 &.highlighted {
+                               color: $white;
+                               background: $msg-active;
+ 				 	 		 }
+ 				 	 	}
+ 				 	 }
+ 				 }
+ 				  a {
+ 				  	 @include arialregular;
+ 				  	 font-size: 15px;
+ 				  	 color: $msg-active;
+ 				  	 @include noborder;
+ 				  	 border-radius: 0;
+ 				  	 padding-left: 10px;
+ 				  	 background: $white !important;
+ 				  	
+ 				  	   div {
+ 				  	   	  width: 30px;
+ 				  	   	  b {
+							 position: relative;
+							 background: $msg-active;
+							   &:after {
+							   	  content: "";
+							   	  border-left: 7px solid transparent;
+							   	  border-right: 7px solid transparent;
+							   	  border-top: 7px solid $white;
+							   	  display: inline-block;
+							   	  position: absolute;
+							   	  left: 9px;
+							   	  top: 9px;
+							   }
+ 				  	   	  }
+ 				  	   }
+ 				  }
  			}
  		}
- 		.view-activities-page-, .block-block {
-		 	@include block;
-		 	h2, .block-title {
-		 		font-size: 28px;
-		 		@include mclaren;
-		 		@include noborder;
-		 		color: $black;
-		 	}
-		 	 a.button {
-		 	 	margin-bottom: 0;
-		 	 	margin-left: 0;
-		 	 }
-		 	.view-content {
+ 		a {
+ 			font-size: 18px;
+ 			@include arialbold;
+ 			padding-left: 9.5%;
 
-		 	}
-	 	 	div {
-		 	 	a {
-		 	 		padding-left: 20px;
-		 	 	}
-	 	 	}
  		}
-	}
-	.pull-9.sidebar3 {
-		width: 29.53%;
-		right: 67.4%;
-		margin-bottom: 35px;
-		 @include mobile {
-		 	width: 100%;
-		 	right: 0;
-		 	margin-bottom: 25px;
-		 }
-		 @include tablet {
-		 	width: 38%;
-		 	right: 63.4%;
-		 	padding-left: 0;
-		 	padding-right: 0;
-		 }
-		 
-	}
-	/* .pull-9.sidebar, .pull-9.sidebar2 {
-		width: 29.53%;
-		right: 71.4%;
-		padding-left: 0px;
-		padding-right: 0px;
-	} */
-		
-	
-	.sidebar3 {
-		@include bluebackground;
-		@include block;
-		float: none !important;
-		
-		.block-block {
-			padding: 0px 6%;
-			.block-title {
-				@include mclaren;
-				font-size: 22px;
-				color: $yellow;
-				@include noborder;
-				margin-top: 17px;
-			}
-			div {
-				@include arialbold;
-				font-size: 18px;
-
-			}
-			a.button {
-				margin: 10px 0px 0px 0px;
-			}
-		}
-		.block-views {
-			padding: 0px 6%;
-			 &:first-child {
-			 	ul {
-			 		list-style: none !important;
-			 	}
-			 }
-		 	.view {
-		 		counter-reset: section;
-		 	 		.view-content {
-		 	 			ul {
-		 	 				.views-row {
-		 	 					margin-left: 0;
-                   					.views-field-title {
-
-	                   	 				a {
-					                   		&:before {
-							 	 			@include counter;
-							 	 			
-			 	 							}
-                   						}
-                   					}
-		 	 				}
-		 	 			}
-		 			}
-			}
-			.view-footer {
-			 	margin-top: 30px;
-			 	p {
-			 		a {
-			 			@include yellowbutton;
-			 			@include boxshadow;
-			 			@media screen and (min-width: 768px) and (max-width: 1100px) {
-			 				font-size: 17px;
-			 			}
-			 		}
-			 	}
-			}
-			.views-field-title {
-			 	padding-bottom: 10px;
-
-			}
-			.views-field-count {
-			 	.views-label {
-			 		padding-right: 32px;
-                    @include like;
-                     &:after {
-                     	top: -4px !important;
-                     }
-			 	}
-			}
-			h3 {
-			 	color: $white;
-			 	margin-top: 20px;
-			 	font-size: 17px;
-			 	@include arialbold;
-			 	text-transform: capitalize;
-			}
-			ul {
-			 	list-style: none;
-			 	
-			 	margin-left: 0;
-			 	 li {
-	               margin-left: 0;
-
-			 	 }
-			 	 	a {
-			 	 		
-			 	 		color: $white;
-			 	 		@include arialregular;
-			 	 		font-size: 18px;
-			 	 		text-decoration: underline;
-
-			 	 		
-			 	 	}
-			}
-		}
-	}
-}
+ 	}
+ }
 /**end of activity page**/
 
 /**css for program-dashboard page**/
@@ -3265,4 +3186,210 @@ display: block !important;
  		}
  	}
  }
+ }
+ /**css node page movie, music and vedio game review page*/
+ .node-type-movie-review,.node-type-music-review,.node-type-video-game-review {
+ 	.main {
+ 		position: relative;
+ 		margin-top: 0;
+ 	}
+ 	#page-title {
+ 		color: $black;
+ 		font-size: 22px;
+ 		@include mclaren;
+ 		margin-left: 0;
+ 		margin-bottom: 10px;
+ 	}
+ }
+ /**css node page movie review*/
+ .node-type-movie-review {
+ 	
+ 	article {
+ 	  .movie-review {
+ 	  	font-size: 17px;
+ 	  	  p {
+ 	  	  	@include arialregular;
+ 	  	  }
+ 	  	  div, a, span {
+ 	  	  	 @include mclaren;
+ 	  	  	 font-size: 17px;
+ 	  	  }
+ 	  	  div {
+ 	  	  	margin-bottom: 10px;
+ 	  	  }
+ 	  }
+      .movielikefollow-wrap {
+      	position: absolute;
+      	right: 0;
+      	  .follow_link_moviereview {
+      	  	position: relative;
+      	  	width: 100%;
+      	  	display: inline-block;
+      	  	margin-top: 10px;
+      	  	span {
+      	  		float: right;
+      	  	}	
+      	  	     a {
+      	  	     	@include yellowbutton;
+      	  	     }
+      	  }
+      	  .movie-likes {
+      	  	div {
+      	  		
+      	  		margin-bottom: 10px;
+      	  		&.like-here {
+      	  			margin-left: 40px;
+      	  			float: right;
+      	  			 a {
+					  	@include yellowbutton(p);
+					  	@include mclaren;
+					  	position: relative;
+					  	padding-right: 34px;
+					  	 &:after {
+					  	 	@include previous(30px, 30px, $right: 0, $top: 6px);
+		 	 				background: url('../images/libraryzurb/smily-white.png') no-repeat;
+					  	 }
+			  		}
+      	  		}
+      	  		&.like-count {
+      	  			float: left;
+      	  			@include mclaren;
+      	  			.lk-count {
+      	  			  @include like;
+      	  			  
+      	  			  font-size: 17px;
+      	  			}
+      	  		}
+      	  	}
+      	  }
+      }
+ 	}
+ }
+ /*css node page music review*/
+ .node-type-music-review  {
+   article {
+ 	  .music-review {
+ 	  	font-size: 17px;
+ 	  	  p {
+ 	  	  	@include arialregular;
+ 	  	  }
+ 	  	  div, a, span {
+ 	  	  	 @include mclaren;
+ 	  	  	 font-size: 17px;
+ 	  	  }
+ 	  	  div {
+ 	  	  	margin-bottom: 10px;
+ 	  	  }
+ 	  }
+      .musiclikefollow-wrap {
+      	position: absolute;
+      	right: 0;
+      	  .follow_link_musicreview {
+      	  	position: relative;
+      	  	width: 100%;
+      	  	display: inline-block;
+      	  	margin-top: 10px;
+      	  	 span {
+      	  	 	float: right;	
+      	  	 }	
+      	  	     a {
+      	  	     	@include yellowbutton;
+
+      	  	     }
+      	  }
+      	  .music-likes {
+      	  	div {
+      	  		
+      	  		margin-bottom: 10px;
+      	  		&.like-here {
+      	  			margin-left: 40px;
+      	  			float: right;
+      	  			 a {
+					  	@include yellowbutton(p);
+					  	@include mclaren;
+					  	position: relative;
+					  	padding-right: 34px;
+					  	 &:after {
+					  	 	@include previous(30px, 30px, $right: 0, $top: 6px);
+		 	 				background: url('../images/libraryzurb/smily-white.png') no-repeat;
+					  	 }
+			  		}
+      	  		}
+      	  		&.like-count {
+      	  			float: left;
+      	  			@include mclaren;
+      	  			.lk-count {
+      	  			  @include like;
+      	  			  
+      	  			  font-size: 17px;
+      	  			}
+      	  		}
+      	  	}
+      	  }
+      }
+ 	}
+ }
+ /*vedio game review node page*/
+ .node-type-video-game-review {
+ 	article {
+ 	  .videogame-review {
+ 	  	font-size: 17px;
+ 	  	  p {
+ 	  	  	@include arialregular;
+ 	  	  }
+ 	  	  div, a, span {
+ 	  	  	 @include mclaren;
+ 	  	  	 font-size: 17px;
+ 	  	  }
+ 	  	  div {
+ 	  	  	margin-bottom: 10px;
+ 	  	  }
+ 	  }
+      .vidiogamelikefollow-wrap {
+      	position: absolute;
+      	right: 0;
+      	  .follow_link_videogamereview {
+      	  	position: relative;
+      	  	width: 100%;
+      	  	display: inline-block;
+      	  	margin-top: 10px;
+      	  	 span {
+      	  	 	float: right;	
+      	  	 }	
+      	  	     a {
+      	  	     	@include yellowbutton;
+
+      	  	     }
+      	  }
+      	  .videogame-likes {
+      	  	div {
+      	  		
+      	  		margin-bottom: 10px;
+      	  		&.like-here {
+      	  			margin-left: 40px;
+      	  			float: right;
+      	  			 a {
+					  	@include yellowbutton(p);
+					  	@include mclaren;
+					  	position: relative;
+					  	padding-right: 34px;
+					  	 &:after {
+					  	 	@include previous(30px, 30px, $right: 0, $top: 6px);
+		 	 				background: url('../images/libraryzurb/smily-white.png') no-repeat;
+					  	 }
+			  		}
+      	  		}
+      	  		&.like-count {
+      	  			float: left;
+      	  			@include mclaren;
+      	  			.lk-count {
+      	  			  @include like;
+      	  			  
+      	  			  font-size: 17px;
+      	  			}
+      	  		}
+      	  	}
+      	  }
+      }
+ 	}
  }
