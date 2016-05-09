@@ -61,9 +61,12 @@ function hotspot_activities() {
 	foreach ($activities_terms as $key => $value) {
 		$term_title = $value->name;
 		$term_tid = $value->tid;
+		$activity_term = taxonomy_term_load($term_tid);
 
-		$select_options[0] = 'Select from the following';
-		$select_options[$base_url.'/'.$term_tid] .= $term_title;
+		if($activity_term->field_hotspot_activity_type['und'][0]['value'] == 1){
+			$select_options[0] = 'Select from the following';
+			$select_options[$base_url.'/'.$term_tid] .= $term_title;
+		}
 	}
 
 	$form['activities_read_list'] = array(
