@@ -144,6 +144,7 @@
 		$artist_value = $artist[0]['safe_value'];
 		$review_value = $review['0']['safe_value']
   ?>
+  <div class="musiclikefollow-wrap">
   <div class="music-likes">
   	<div class="like-count">
       <?php if(isset($counts)){ print '<span class = "lk-count">Likes: </span>'.$counts; } ?>
@@ -154,6 +155,7 @@
   </div>
   <div class="follow_link_musicreview">
   	<?php if($node_privacy === 'public'){ print flag_create_link('follow', $node->uid); } ?>
+  </div>
   </div>
   <div class="music-review">
 	  <div><?php print 'Artist: '.$artist_value;	?></div>

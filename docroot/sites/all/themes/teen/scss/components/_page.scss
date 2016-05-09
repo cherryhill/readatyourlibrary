@@ -3266,3 +3266,209 @@ display: block !important;
  	}
  }
  }
+ /**css node page movie, music and vedio game review page*/
+ .node-type-movie-review,.node-type-music-review,.node-type-video-game-review {
+ 	.main {
+ 		position: relative;
+ 		margin-top: 0;
+ 	}
+ 	#page-title {
+ 		color: $black;
+ 		font-size: 22px;
+ 		@include mclaren;
+ 		margin-left: 0;
+ 		margin-bottom: 10px;
+ 	}
+ }
+ /**css node page movie review*/
+ .node-type-movie-review {
+ 	
+ 	article {
+ 	  .movie-review {
+ 	  	font-size: 17px;
+ 	  	  p {
+ 	  	  	@include arialregular;
+ 	  	  }
+ 	  	  div, a, span {
+ 	  	  	 @include mclaren;
+ 	  	  	 font-size: 17px;
+ 	  	  }
+ 	  	  div {
+ 	  	  	margin-bottom: 10px;
+ 	  	  }
+ 	  }
+      .movielikefollow-wrap {
+      	position: absolute;
+      	right: 0;
+      	  .follow_link_moviereview {
+      	  	position: relative;
+      	  	width: 100%;
+      	  	display: inline-block;
+      	  	margin-top: 10px;
+      	  	span {
+      	  		float: right;
+      	  	}	
+      	  	     a {
+      	  	     	@include yellowbutton;
+      	  	     }
+      	  }
+      	  .movie-likes {
+      	  	div {
+      	  		
+      	  		margin-bottom: 10px;
+      	  		&.like-here {
+      	  			margin-left: 40px;
+      	  			float: right;
+      	  			 a {
+					  	@include yellowbutton(p);
+					  	@include mclaren;
+					  	position: relative;
+					  	padding-right: 34px;
+					  	 &:after {
+					  	 	@include previous(30px, 30px, $right: 0, $top: 6px);
+		 	 				background: url('../images/libraryzurb/smily-white.png') no-repeat;
+					  	 }
+			  		}
+      	  		}
+      	  		&.like-count {
+      	  			float: left;
+      	  			@include mclaren;
+      	  			.lk-count {
+      	  			  @include like;
+      	  			  
+      	  			  font-size: 17px;
+      	  			}
+      	  		}
+      	  	}
+      	  }
+      }
+ 	}
+ }
+ /*css node page music review*/
+ .node-type-music-review  {
+   article {
+ 	  .music-review {
+ 	  	font-size: 17px;
+ 	  	  p {
+ 	  	  	@include arialregular;
+ 	  	  }
+ 	  	  div, a, span {
+ 	  	  	 @include mclaren;
+ 	  	  	 font-size: 17px;
+ 	  	  }
+ 	  	  div {
+ 	  	  	margin-bottom: 10px;
+ 	  	  }
+ 	  }
+      .musiclikefollow-wrap {
+      	position: absolute;
+      	right: 0;
+      	  .follow_link_musicreview {
+      	  	position: relative;
+      	  	width: 100%;
+      	  	display: inline-block;
+      	  	margin-top: 10px;
+      	  	 span {
+      	  	 	float: right;	
+      	  	 }	
+      	  	     a {
+      	  	     	@include yellowbutton;
+
+      	  	     }
+      	  }
+      	  .music-likes {
+      	  	div {
+      	  		
+      	  		margin-bottom: 10px;
+      	  		&.like-here {
+      	  			margin-left: 40px;
+      	  			float: right;
+      	  			 a {
+					  	@include yellowbutton(p);
+					  	@include mclaren;
+					  	position: relative;
+					  	padding-right: 34px;
+					  	 &:after {
+					  	 	@include previous(30px, 30px, $right: 0, $top: 6px);
+		 	 				background: url('../images/libraryzurb/smily-white.png') no-repeat;
+					  	 }
+			  		}
+      	  		}
+      	  		&.like-count {
+      	  			float: left;
+      	  			@include mclaren;
+      	  			.lk-count {
+      	  			  @include like;
+      	  			  
+      	  			  font-size: 17px;
+      	  			}
+      	  		}
+      	  	}
+      	  }
+      }
+ 	}
+ }
+ /*vedio game review node page*/
+ .node-type-video-game-review {
+ 	article {
+ 	  .videogame-review {
+ 	  	font-size: 17px;
+ 	  	  p {
+ 	  	  	@include arialregular;
+ 	  	  }
+ 	  	  div, a, span {
+ 	  	  	 @include mclaren;
+ 	  	  	 font-size: 17px;
+ 	  	  }
+ 	  	  div {
+ 	  	  	margin-bottom: 10px;
+ 	  	  }
+ 	  }
+      .vidiogamelikefollow-wrap {
+      	position: absolute;
+      	right: 0;
+      	  .follow_link_videogamereview {
+      	  	position: relative;
+      	  	width: 100%;
+      	  	display: inline-block;
+      	  	margin-top: 10px;
+      	  	 span {
+      	  	 	float: right;	
+      	  	 }	
+      	  	     a {
+      	  	     	@include yellowbutton;
+
+      	  	     }
+      	  }
+      	  .videogame-likes {
+      	  	div {
+      	  		
+      	  		margin-bottom: 10px;
+      	  		&.like-here {
+      	  			margin-left: 40px;
+      	  			float: right;
+      	  			 a {
+					  	@include yellowbutton(p);
+					  	@include mclaren;
+					  	position: relative;
+					  	padding-right: 34px;
+					  	 &:after {
+					  	 	@include previous(30px, 30px, $right: 0, $top: 6px);
+		 	 				background: url('../images/libraryzurb/smily-white.png') no-repeat;
+					  	 }
+			  		}
+      	  		}
+      	  		&.like-count {
+      	  			float: left;
+      	  			@include mclaren;
+      	  			.lk-count {
+      	  			  @include like;
+      	  			  
+      	  			  font-size: 17px;
+      	  			}
+      	  		}
+      	  	}
+      	  }
+      }
+ 	}
+ }
