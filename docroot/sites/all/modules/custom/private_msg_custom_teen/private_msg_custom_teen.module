@@ -57,6 +57,7 @@ function private_msg_custom_teen_menu() {
 	  'file' => 'inc/platform_configuration_teen.inc',
 	  'file path' => drupal_get_path('module', 'private_msg_custom_teen'),
   );
+
   // Platform details for the program
   $items['admin/config/system/platform_details'] = array(
     'title' => 'Platform Details for teen program',
@@ -67,6 +68,14 @@ function private_msg_custom_teen_menu() {
     'type' => MENU_NORMAL_ITEM,
     'file' => 'inc/platform_details_teen.inc',
     'file path' => drupal_get_path('module', 'private_msg_custom_teen'),
+  );
+
+  //Activities Landing page
+  $items['activities'] = array(
+    'title' => 'Activities for the teen Summer Passport',
+    'page callback' => 'activities_page',
+    'access arguments' => array('access content'),
+    'type' => MENU_SUGGESTED_ITEM,
   );
 
   return $items;
@@ -289,17 +298,7 @@ function private_msg_custom_teen_form_alter(&$form, &$form_state, $form_id) {
 		  '#weight' => 3,
 		);
 	}
-
-	if($form_id == 'eck__entity__form_add_activity_activity') {
-		// $form['#submit'][] = 'mymodule_upload_enabled_types_submit';
-		// $form['actions']['submit']['#submit'][] = 'mymodule_upload_enabled_types_submit';
-  }
-
 	return $form;
-}
-
-function mymodule_upload_enabled_types_submit($form, &$form_state){
-	drupal_set_message("Its working poornimggga");
 }
 
 function user_reviews_teen() {
