@@ -69,6 +69,7 @@
 /**end**/
 /**css for photos n vedios page***/
 .section-media {
+
 	.block-title {
 		font-size: 24px;
 		color: $blue;
@@ -76,6 +77,7 @@
 		@include noborder;
 	}
 	.block-views-media-photos-videos-block-6 {
+		padding-left: 35px;
 		.view .views-row {
 			width: 32%;
 			@include mobile {
@@ -84,6 +86,7 @@
 		}
 	}
 	.block-views-media-photos-videos-block-3 {
+		padding-left: 35px;
 		.view .views-row {
 			width: 24%;
 			@include mobile {
@@ -100,6 +103,7 @@
 			@include brushimg(left);
 		}
 		article.node-page {
+			padding-left: 35px;
 			.field-name-body {
 				color: $blue;
 				p {
@@ -537,6 +541,7 @@
 	    	color: $white;
 	    	position: relative;
 	    	overflow: hidden;
+	    	margin-left: 35px;
 	    	  .block-title {
 	    	  	color: $white;
 	    	  	@include mclaren;
@@ -552,6 +557,7 @@
 					display: inline-block;
 		    	 	width: 100%;
 		    	 	padding: 10px 4% 0;
+		    	 	margin-left: 0;
 			    	 	.view-content {
 			    	 		display: table;
 			    	 		width: 100%;
@@ -582,6 +588,7 @@
 	   			}  
 	    }
 		.view {
+			margin-left: 35px;
    		 	.view-header, .view-header p {
 	   		 	@media screen and (min-width: 980px) {
 	   		 	   font-size: 26px !important;
@@ -1411,9 +1418,11 @@
   	  			margin-bottom: 23px;
   	  			font-size: 16px;
   	  			@include arialregular;
+  	  			padding-left: 35px;
   	  		}
   	  	}
   	  	.view-filters {
+  	  		margin-left: 35px;
   	  		background: url('../images/libraryzurb/annocement.png') no-repeat scroll center center / 100% 100%;
   	  		@include boxshadow;
   	  		 	form {
@@ -1571,6 +1580,7 @@
   	 			}
   	 		}
 	  	 	.view-content {
+	  	 		padding-left: 35px;
 		  	 	.views-row img {
 		  	 		@include noborder;
 		  	 	}
@@ -1778,6 +1788,9 @@
   			display: none;
   		}
   		.view-booklists {
+  			.other-booklists {
+  				padding-left: 35px;
+  			}
   			.views-field-counter {
   				padding-right: 10px;
   				  span {
@@ -1799,19 +1812,21 @@
 	  		counter-reset: section 3;
 	  	 	.item-list {
 	  	 		ol {
-	  	 			margin-left: 20px;
+	  	 			margin-left: 35px;
 	  	 			list-style: none;
 	  	 			li {
 		  	 				&.views-row {
 		  	 					margin-bottom: 23px;
+		  	 					position: relative;
 		  	 					 .views-field-title {
 		  	 					 	@include mclaren;
+		  	 					 	width: 70%;
 		  	 					 }
 		  	 				}
 	  	 				font-size: 17px;
 		  	 				.views-field-nothing {
 		  	 					margin-top: 23px;
-		  	 					padding-left: 32px;
+		  	 					padding-left: 0px;
 		  	 					display: inline-block;
 		  	 					@include mclaren;	
 			  	 					div {
@@ -1846,7 +1861,9 @@
 			  	 			 	}
 	  	 			 		}
 			  	 			.views-field-count {
-			  	 			 	float: right;
+			  	 			 	position: absolute;
+			  	 			 	right: 0;
+			  	 			 	top: 0;
 			  	 			 	@include mclaren;
 			  	 			}
 	  	 			        .views-field-counter {
@@ -1865,10 +1882,11 @@
 	  	 	}
 	  	}
 	  	.view-booklist-slideshow {
+	  		padding-left: 35px;
 	  		.owl-carousel {
 	  			position: relative;
 	  			 	.owl-wrapper-outer {
-		  			 	width: 99%;
+		  			 	width: 100%;
 		  			 	margin: 0 auto;
 	  			 	}
 	  			 	.owl-item {
@@ -1965,6 +1983,7 @@
 			  			 	 	visibility: hidden;
 			  			 	 	position: relative;
 			  			 	 	opacity: 1;
+			  			 	 	padding: 0;
 			  			 	 	  &:before {
 			  			 	 	  	@include previous(30px, 30px, $left: -40px, $top: 0);
 			  			 	 	  	background: url('../images/libraryzurb/left-blue-arrow.png') no-repeat;
@@ -1976,8 +1995,9 @@
 			  			 	 	visibility: hidden;
 			  			 	 	position: relative;
 			  			 	 	opacity: 1;
+			  			 	 	padding: 0;
 				  			 	 	  &:after {
-				  			 	 	  	@include previous(30px, 30px, $right: -37px, $top: 0);
+				  			 	 	  	@include previous(30px, 30px, $right: -40px, $top: 0);
 				  			 	 	  	background: url('../images/libraryzurb/right-blue-arrow.png') no-repeat;
 				  			 	 	  	background-size: 25px;
 				  			 	 	  	position: absolute;
@@ -2732,6 +2752,7 @@
 		 	 }
 		 }
 		.view-events {
+			padding-left: 35px;
 			.view-content {
 				h3 {
 					font-size: 20px;
@@ -2812,7 +2833,11 @@ display: block !important;
  		width: 19%;
  		vertical-align: top;
  		position: relative;
- 		left: -10%;
+ 		left: -13%;
+ 		bottom: 4px;
+ 		@include tablet {
+ 			left: -10%;
+ 		}
  		 @include mobile {
  		 	left: 0;
  		 }
@@ -2890,9 +2915,13 @@ display: block !important;
  		vertical-align: top;
  		width: 19%;
  		position: relative;
- 		left: -10%;
+ 		left: -13%;
+ 		bottom: 4px;
  		 @include mobile {
  		 	left: 0;
+ 		 }
+ 		 @include tablet {
+ 		 	left: -10%;
  		 }
  		 .form-item {
  		 	width: 100% !important;
@@ -3131,6 +3160,7 @@ display: block !important;
  			display: inline-block;
  			width: 100%;
  			border-bottom: 1px solid $light-gray;
+ 			padding-left: 35px;
  			.views-field-counter {
  				font-size: 17px;
  				@include mclaren;
