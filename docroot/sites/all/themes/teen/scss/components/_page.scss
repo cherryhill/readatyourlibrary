@@ -2807,6 +2807,17 @@ display: block !important;
  		display: inline-block;
  		
  	}
+ 	.field-name-field-genre-other-option, .field-name-field-platform-other-option {
+ 		display: inline-block;
+ 		width: 19%;
+ 		vertical-align: top;
+ 		position: relative;
+ 		left: -10%;
+ 		 @include mobile {
+ 		 	left: 0;
+ 		 }
+
+ 	}
  	.form-item-field-platform-und, .form-item-field-age-rating-of-game-und {
  		width: 100%;
  		display: inline-block;
@@ -2874,6 +2885,19 @@ display: block !important;
  }
  /**music review indivisual page***/
  .page-node-add-music-review {
+ 	.field-name-field-genre-other-option-music {
+ 		display: inline-block;
+ 		vertical-align: top;
+ 		width: 19%;
+ 		position: relative;
+ 		left: -10%;
+ 		 @include mobile {
+ 		 	left: 0;
+ 		 }
+ 		 .form-item {
+ 		 	width: 100% !important;
+ 		 }
+ 	}
  	.form-checkboxes {
  		.form-item {
  		width: 19%;
