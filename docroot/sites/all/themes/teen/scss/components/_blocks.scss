@@ -622,6 +622,8 @@
 		 		width: 35%;
 		 		vertical-align: top;
 		 		@include arialbold;
+		 		position: relative;
+		 		bottom: 7px;
 		 		@include mobile {
 	     			font-size: 14px;
 	    		 }
@@ -638,12 +640,13 @@
 		 		 	@include bodyfont;
 		 		 	color: $white;
 		 		 	margin-bottom: 5px;
+		 		 	bottom: 3px;
 		 		 	@include mobile {
 	     				font-size: 14px;
 	     				}
 		 		 	@include arialregular;
 		 		 	&:after {
-		 		 		@include previous(47px, 21px, $left: -32px, $top: 0);
+		 		 		@include previous(47px, 21px, $left: -32px, $top: 4px);
 		 		 		background: url('../images/libraryzurb/arrow-list.png') no-repeat;
 		 		 	}
 		 		 }
