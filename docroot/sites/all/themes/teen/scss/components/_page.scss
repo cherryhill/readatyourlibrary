@@ -1863,7 +1863,7 @@
 			  	 			.views-field-count {
 			  	 			 	position: absolute;
 			  	 			 	right: 0;
-			  	 			 	top: 0;
+			  	 			 	top: 3px;
 			  	 			 	@include mclaren;
 			  	 			}
 	  	 			        .views-field-counter {
@@ -2019,6 +2019,42 @@
  	.main {
  		padding-left: 0;
  		top: -17px;
+ 	}
+ 	.block-one-description, .block-two-description, .block-three-description {
+ 		padding-left: 35px;
+ 		  p {
+ 		  	color: $blue;
+ 		  	 a {
+ 		  	 	font-size: 18px;
+ 		  	 	@include arialbold;
+ 		  	 }
+ 		  	@include arialregular;
+
+ 		  }
+ 	}
+ 	.block-one-title, .block-two-title, .block-three-title {
+ 		padding-left: 35px;
+ 		color: $blue;
+ 		font-size: 24px;
+ 		@include mclaren;
+ 		  a {
+ 		  	font-size: 24px;
+ 		  	color: $blue;
+ 		  	@include mclaren;
+ 		  	text-decoration: none;
+ 		  	position: relative;
+ 		  	  &:after {
+ 		  	  	content: "";
+                border-top: 7px solid transparent;
+                border-bottom: 7px solid transparent;
+                border-left: 14px solid $blue;
+                position: absolute;
+                top: 2px;
+                display: inline-block;
+                right: 0;
+                margin-right: -22px;
+ 		  	  }
+ 		  }
  	}
  	.block-private-msg-custom-teen-hotspot-activity-block {
  		color: $blue;
