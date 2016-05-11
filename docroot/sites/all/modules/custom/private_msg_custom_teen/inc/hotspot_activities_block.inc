@@ -1,12 +1,110 @@
 <?php
 
 /**
- * function callback for hotspot activities block
+ * function callback for options in select list for hotspot activities
  */
-
-function hotspot_activities() {
+function activities_view_select_list($term,$activity) {
 
 	global $base_url;
+	$voc = taxonomy_vocabulary_machine_name_load($term);
+	$activity_term_vid = $voc->vid;
+	$activities_terms = taxonomy_get_tree($activity_term_vid);
+
+	foreach ($activities_terms as $key => $value) {
+		$term_title = $value->name;
+		$term_tid = $value->tid;
+		$activity_term = taxonomy_term_load($term_tid);
+
+		if($activity_term->field_hotspot_activity_type['und'][0]['value'] == $activity){
+			$select_options[0] = 'Select from the following';
+			$select_options[$base_url.'/activities-listing/'.$term_tid] .= $term_title;
+		}
+	}
+	return $select_options;
+}
+
+function activities_submit_select_list($term,$activity) {
+
+	global $base_url;
+	$voc = taxonomy_vocabulary_machine_name_load($term);
+	$activity_term_vid = $voc->vid;
+	$activities_terms = taxonomy_get_tree($activity_term_vid);
+
+	foreach ($activities_terms as $key => $value) {
+		$term_title = $value->name;
+		$term_tid = $value->tid;
+		$activity_term = taxonomy_term_load($term_tid);
+
+		if($activity_term->field_hotspot_activity_type['und'][0]['value'] == $activity){
+			$select_options[0] = 'Select from the following';
+			$select_options[$base_url.'/node/add/review-activity/'.$term_tid] .= $term_title;
+		}
+	}
+	return $select_options;
+}
+/**
+ * function for saving taxonomy term on creation of activity.
+ */
+function activities_term_save($term,$fire_hook,$activity) {
+
+  $voc = taxonomy_vocabulary_machine_name_load($term);
+  $activity_term_vid = $voc->vid;
+  $activity_id = $activity->id;
+  $activity_title = $activity->title;
+  $activity_hotspot_value = $activity->field_hotspot_activity['und'][0]['value'];
+  $activity_firehook = $activity->field_activity_fired_hook['und'][0]['value'];
+  $activity_progress_page = $activity->field_show_on_progress_page['und'][0]['value'];
+
+  $query = db_select('field_data_field_activity_id','activity_id')
+  	->fields('activity_id',array('field_activity_id_value','entity_id'))
+  	->condition('field_activity_id_value',$activity_id)
+  	->execute()
+  	->fetchAssoc();
+
+ 	$field_activity_id = $query['field_activity_id_value'];
+ 	$entity_field_id = $query['entity_id'];
+
+ 	if(!isset($field_activity_id)){
+	  if($activity_firehook == $fire_hook){
+		  $hotspot_activity_term = new stdClass();
+		  $hotspot_activity_term->name = $activity_title;
+		  $hotspot_activity_term->vid = $activity_term_vid; // The ID of the parent vocabulary
+		  $hotspot_activity_term->parent = 0; // This tells taxonomy that this is a top-level term
+		  
+		  taxonomy_term_save($hotspot_activity_term);
+		  $tid_term = $hotspot_activity_term->tid;
+		  $activity_term = taxonomy_term_load($tid_term);
+
+		  $activity_term->field_activity_id['und'][0]['value'] = $activity_id; 
+		  $activity_term->field_hotspot_activity_type['und'][0]['value'] = $activity_hotspot_value ? $activity_hotspot_value:0;
+		  $activity_term->field_progress_page['und'][0]['value'] = $activity_progress_page ? $activity_progress_page:0;
+		  taxonomy_term_save($activity_term);
+		  }
+	}else if(isset($field_activity_id)) {
+		$hotspot_query = db_select('taxonomy_term_data','tax')
+		  ->fields('tax',array('tid'))
+		  ->condition('tid',$entity_field_id)
+		  ->execute()
+		  ->fetchAssoc();
+
+		$tid = $hotspot_query['tid'];
+		if($activity_firehook != $fire_hook){
+			taxonomy_term_delete($tid);
+		}else{
+			$activity_term = taxonomy_term_load($tid);
+			$activity_term->field_activity_id['und'][0]['value'] = $activity_id; 
+			$activity_term->field_hotspot_activity_type['und'][0]['value'] = $activity_hotspot_value;
+		 		$activity_term->field_progress_page['und'][0]['value'] = $activity_progress_page;
+		 		$activity_term->name = $activity_title;
+			taxonomy_term_save($activity_term);
+		}
+	}
+}
+
+/**
+ * function callback for hotspot activities block
+ */
+function hotspot_activities() {
 
   $link_book_review = $base_url.'/node/add/review-book';
   $link_movie_review = $base_url.'/node/add/movie-review';
@@ -54,40 +152,31 @@ function hotspot_activities() {
 	 	'#weight' => 2,
 	);
 
-	$voc = taxonomy_vocabulary_machine_name_load('hotspot_activities');
-	$activity_term_vid = $voc->vid;
-	$activities_terms = taxonomy_get_tree($activity_term_vid);
-
-	foreach ($activities_terms as $key => $value) {
-		$term_title = $value->name;
-		$term_tid = $value->tid;
-		$activity_term = taxonomy_term_load($term_tid);
-
-		if($activity_term->field_hotspot_activity_type['und'][0]['value'] == 1){
-			$select_options[0] = 'Select from the following';
-			$select_options[$base_url.'/'.$term_tid] .= $term_title;
-		}
-	}
 
 	$form['activities_read_list'] = array(
 	  '#title' => t('Read Reviews of Bay Area Hot Spots'),
 	  '#type' => 'select',
-	  '#options' => $select_options,
+	  '#options' => activities_view_select_list('hotspot_activities','1'),
 	  '#attributes' => array(
 	    'class' => array('activities_list_read')
 	  ),
 	  '#weight' => 3,
 	);
 
-	$form['activities_submit_list'] = array(
-	  '#title' => t('Submit a Review'),
-	  '#type' => 'select',
-	  '#options' => $select_options,
-	  '#attributes' => array(
-	    'class' => array('activities_list_submit')
-	  ),
-	  '#weight' => 4,
-	);
+	global $user;
+	$current_user = $user->uid;
+
+	if($current_user != 0){
+		$form['activities_submit_list'] = array(
+		  '#title' => t('Submit a Review'),
+		  '#type' => 'select',
+		  '#options' => activities_submit_select_list('hotspot_activities','1'),
+		  '#attributes' => array(
+		    'class' => array('activities_list_submit')
+		  ),
+		  '#weight' => 4,
+		);
+	}
 
 	$form['suggest_link'] = array(
 		'#type' => 'link',

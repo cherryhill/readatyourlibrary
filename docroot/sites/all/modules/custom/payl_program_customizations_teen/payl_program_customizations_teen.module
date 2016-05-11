@@ -38,10 +38,10 @@ function custom_activity_teen_submit_handler(&$form, &$form_state) {
     
   }
   
-  if($count > 0) {
-    form_set_error('field_activity_fired_hook', t('Only one activity with firing hook Place sticker on Progress Report'));
-    drupal_goto('admin/structure/entity-type/activity/activity/add');
-  }
+  // if($count > 0) {
+  //   form_set_error('field_activity_fired_hook', t('Only one activity with firing hook Place sticker on Progress Report'));
+  //   drupal_goto('admin/structure/entity-type/activity/activity/add');
+  // }
   
 
 }

@@ -5,6 +5,8 @@
   Drupal.behaviors.libraryzurbPhoneNumberLinksOnMobile = {
     attach: function(context, settings) {
 
+
+
       $(':checkbox').on('change',function(){
        var th = $(this), name = th.prop('class'); 
        if(th.is(':checked')){
@@ -38,6 +40,33 @@
           return false;
         }
       });
+      jQuery('.activities_list_read').change(function(){
+        var option = jQuery(this).find('option:selected').val();
+        if(option != 0){
+        window.location = option;
+        }else{
+          return false;
+        }
+      });
+      jQuery('.activities_list_submit').change(function(){
+        var option = jQuery(this).find('option:selected').val();
+        if(option != 0){
+        window.location = option;
+        }else{
+          return false;
+        }
+      });
+
+      jQuery("#edit-field-activity-type select option").each(function() {
+        var current_url = window.location.href;
+        var current_value = current_url.substring(current_url.lastIndexOf('/') + 1);
+        if(jQuery(this).val() == current_value){
+          jQuery(this).attr("selected","selected");   
+          var content_text = jQuery(this).text()
+          jQuery('#edit-field-activity-type .chosen-single span').text(content_text);
+        }
+      });
+  
       //for node page vedio list show textbox after selected radio button has value Other
       $('.page-node-add-video-game-review #edit-field-platform-other-option').hide();
        $('.page-node-add-video-game-review input[type="radio"]').click(function(){
@@ -96,11 +125,7 @@
 })(jQuery, Drupal);
 
 
-
-
-
 jQuery( document ).ready(function() {
-
 
   /* jQuery for homepage book slider */
   jQuery(".blslider2.slide").hide();
@@ -120,8 +145,7 @@ jQuery( document ).ready(function() {
       if(jQuery(this).attr("value")=="blslider3"){
         jQuery(".slide").not(".blslider3").hide();
         jQuery(".blslider3.slide").show();
-      }
-     
+      }   
   });
    
 
@@ -399,9 +423,6 @@ if(!div2.is(':empty')){
 
 
 jQuery(document).on('click','#raffle_form_button',function() {
-
-    
-    
         var location = window.location;
         var baseUrl1 = location.protocol + "//" + location.host + '/raffle_user_list';
         
@@ -473,8 +494,5 @@ jQuery(document).on('click','#raffle-entry-list-btn',function() {
             error: function(jqXHR, data, error){
             }
   });
-
- 
-
 });
 
