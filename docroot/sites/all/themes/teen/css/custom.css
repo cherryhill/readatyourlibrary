@@ -10235,6 +10235,22 @@ body .alert-box.success a.close:hover {
 .page-rewards .main .block .block-title {
   display: none;
 }
+.page-rewards .main .block .view-program-rewards {
+  counter-reset: section;
+}
+.page-rewards .main .block .view-program-rewards .reward_description div:nth-of-type(1):before {
+  counter-increment: section;
+  content: " " counter(section,decimal) ". ";
+  padding-right: 5px;
+  display: inline-block;
+  font-size: 16px;
+  font-family: Raleway-Bold !important;
+  font-style: normal !important;
+  font-weight: normal !important;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+  -moz-font-smoothing: grayscale !important;
+}
 .page-rewards .main .block .view-header h2 {
   font-size: 24px;
   font-family: SpecialElite !important;

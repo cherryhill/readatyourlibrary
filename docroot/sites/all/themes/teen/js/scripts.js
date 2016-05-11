@@ -15,6 +15,8 @@
       });
       //change position of review title after viewfilter in all review pages
       $('.reviews-subtitle').insertAfter('.view-filters');
+      //reward page give same counter list to two different views
+       $('.page-rewards .view-program-rewards-raffle .views-row').insertAfter('.page-rewards .view-program-rewards .views-row:nth-last-child(1)');
       // select list option with thier link
       jQuery('.add_review_node').change(function(){
         var option = jQuery(this).find('option:selected').val();
