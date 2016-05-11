@@ -1274,10 +1274,123 @@
      }
 }
  /**msg center css end**/
+/**page-activity listing review page*/
+.page-activities-list{
+	.view-activities-listing-term {
+	  	.view-header {
+			h2:nth-of-type(1) {
+				@include brushimg(left);
+			}
+			h2:nth-of-type(2) {
+				padding-left: 35px;
+				font-size: 24px;
+				@include noborder;
+				@include mclaren;
+				color: $blue;
+				padding-top: 35px;
+			}
+			p {
+				padding-left: 35px;
+				color: $blue;
+				@include arialregular;
+			}
+		}
+		.view-content {
+			.views-row a {
+				font-size: 18px;
+				padding-left: 35px;
+				@include arialbold;
+			}
+		}
+
+	}
+}
+/**activity listing indivisual page**/
+.page-activities-listing {
+	.view-individual-activities-listing {
+		.view-header {
+			h2:nth-of-type(1) {
+				@include brushimg(left);
+				margin-bottom: 30px;
+			}
+
+		}
+		.reviews-subtitle {
+			h2 {
+				color: $blue;
+				@include noborder;
+				@include mclaren;
+				font-size: 24px;
+			}
+		}
+		.view-content {
+			padding-left: 35px;
+			 .views-row {
+			 	position: relative;
+			 	.views-field-counter {
+			 		font-size: 20px;
+			 		@include mclaren;
+			 	}
+			 	.views-field-count {
+			 		@include mclaren;
+			 		font-size: 17px;
+			 		position: absolute;
+			 		right: 0;
+			 		top: 2px;
+			 		 .views-label {
+			 		 	@include like;	
+			 		 }
+			 	}
+			 	.views-field-created {
+			 		font-size: 17px;
+			 		@include arialregular;
+			 	}
+			 	.views-field-body {
+			 		margin-top: 30px;
+			 	}
+			 	.views-field-view-node {
+			 		a {
+			 			@include yellowbutton;
+			 		}
+			 	}
+			 	.views-field-nothing {
+			 		width: 100%;
+			 		display: inline-block;
+			 		margin-top: 30px;
+			 		 div {
+			 		 	float: left;
+			 		 	@include mclaren;
+			 		 	font-size: 17px;
+			 		 	  a {
+			 		 	  	padding-left: 10px;
+			 		 	  	@include mclaren;
+			 		 	  	font-size: 17px;
+			 		 	  }
+			 		 	  &.views-field-field-user-avatar {
+			 		 	  	position: relative;
+			 		 	  	bottom: 10px;
+			 		 	  	 img {
+			 		 	  	 	margin-left: 10px;
+			 		 	  	 }
+			 		 	  }
+			 		 }
+			 	}
+			 	 .views-field-title {
+			 	 	a {
+			 	 		font-size: 20px;
+			 	 		@include mclaren;
+			 	 	}
+			 	 }
+			 }
+		}
+	}
+}
+
 
  /**common css used in  page-reviews  and page-booklists**/
+
  
-.page-reviews, .page-booklists, .page-movie-review, .page-music-review-listing, .page-video-game-review  {
+.page-reviews, .page-booklists, .page-movie-review, .page-music-review-listing, .page-video-game-review, .page-activities-list, .page-activities-listing  {
   	#page-title {
   	 	@include black-text;
   	 	@include mclaren;
