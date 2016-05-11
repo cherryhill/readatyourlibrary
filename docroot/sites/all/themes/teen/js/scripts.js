@@ -77,6 +77,10 @@
            $('.page-node-add-video-game-review #edit-field-platform-other-option').hide();
          }
        });
+       //position of textbox after checked Other radio button in generic at vediogame, music, movie review form
+         $('.page-node-add-music-review .field-name-field-genre-other-option-music').insertAfter('.page-node-add-music-review .form-item.form-type-checkbox.form-item-field-genre-music-und-genre-other-music:nth-last-child(1)');
+         $('.page-node-add-video-game-review .field-name-field-platform-other-option').insertAfter('.page-node-add-video-game-review .form-item.form-type-radio.form-item-field-platform-und:nth-last-child(1)');
+         $('.page-node-add-movie-review .field-name-field-genre-other-option').insertAfter('.page-node-add-movie-review .form-item.form-type-radio.form-item-field-genre-und:nth-last-child(1)');
        //reward page description
        var showChar = 30;
     var ellipsestext = "...";
