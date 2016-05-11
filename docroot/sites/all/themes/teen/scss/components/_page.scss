@@ -315,6 +315,18 @@
 	  		  display: none;
 
 	  		}
+	  		.view-program-rewards {
+	  			counter-reset: section;
+	  			  .reward_description {
+	  			  	div:nth-of-type(1) {
+	  			  	&:before {
+	  			  		@include counter;
+	  			  		font-size: 16px;
+	  			  		@include arialbold;
+	  			  	}
+	  			  }
+	  			}
+	  		}
 	  		.view-header {
 	  			h2 {
 	  				font-size: 24px;
