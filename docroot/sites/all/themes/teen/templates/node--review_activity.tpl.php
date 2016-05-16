@@ -94,8 +94,8 @@
   <?php endif; ?>
 
   <?php
-    $title_node = field_get_items('node', $node, 'field_activity');
-    $title_node_value = $title_node[0]['entity']->field_activity_description['und'][0]['safe_value'];
+    $title_node = field_get_items('node', $node, 'field_activity_type');
+    $title_node_value = $title_node[0]['taxonomy_term']->name;
     $review = field_get_items('node', $node, 'body');
 
     global $base_url;
