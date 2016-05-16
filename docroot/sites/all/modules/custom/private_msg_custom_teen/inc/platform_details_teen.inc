@@ -9,12 +9,12 @@ function platform_details_teen($form, &$form_state) {
     '#collapsible' => TRUE, 
     '#collapsed' => TRUE,
   );
-	$form['program_details']['pmc_purchase_link_teen'] = array(
-		'#type' => 'textfield',
-		'#title' => 'Purchase Link',
-		'#description' => 'Enter a valid url (https://www.example.com) for Booklist purchase',
-		'#default_value' => variable_get('pmc_purchase_link_teen'),
-	);
+  $form['program_details']['pmc_purchase_link_teen'] = array(
+    '#type' => 'textfield',
+    '#title' => 'Purchase Link',
+    '#description' => 'Enter a valid url (https://www.example.com) for Booklist purchase',
+    '#default_value' => variable_get('pmc_purchase_link_teen'),
+  );
   $form['program_details']['pmc_library_name_teen'] = array(
     '#type' => 'textfield',
     '#title' => 'Library Name',
@@ -194,8 +194,72 @@ function platform_details_teen($form, &$form_state) {
     '#format' => $desc_block_three['format'],
   );
 
+  $form['progress_page'] = array(
+    '#type' => 'fieldset', 
+    '#title' => t('Progress Page Details'),
+    '#collapsible' => TRUE, 
+    '#collapsed' => TRUE,
+  );
 
-	return system_settings_form($form);
+
+  $form['progress_page']['progress_details'] = array(
+    '#type' => 'fieldset', 
+    '#title' => t('Progress page details page'),
+    '#collapsible' => TRUE, 
+    '#collapsed' => TRUE,
+  );
+
+  $form['progress_page']['progress_details']['pg_title'] = array(
+    '#type' => 'textfield', 
+    '#title' => t('Progress page title'),
+    '#default_value' => variable_get('pg_title') ? variable_get('pg_title') : 'Progress',
+  );
+
+  $progress_details_desc = variable_get('pg_desc', array('value' => '', 'format' => NULL));
+  $form['progress_page']['progress_details']['pg_desc'] = array(
+    '#type' => 'text_format', 
+    '#title' => t('Progress page description'),
+    '#default_value' => $progress_details_desc['value'],
+    '#format' => $progress_details_desc['format'],
+  );
+
+  $form['progress_page']['progress_block'] = array(
+    '#type' => 'fieldset', 
+    '#title' => t('Report Progress Block Details'),
+    '#collapsible' => TRUE, 
+    '#collapsed' => TRUE,
+  );
+
+  $form['progress_page']['progress_block']['no_of_grids'] = array(
+    '#type' => 'textfield', 
+    '#title' => t('No of grids needed for progress page'),
+    '#default_value' => variable_get('no_of_grids') ? variable_get('no_of_grids') : 18,
+  );
+
+  $report_block_text = variable_get('report_block_desc', array('value' => '', 'format' => NULL));
+  $form['progress_page']['progress_block']['report_block_desc'] = array(
+    '#type' => 'text_format', 
+    '#title' => t('Text for Report an Activity block'),
+    '#default_value' => $report_block_text['value'],
+    '#format' => $report_block_text['format'],
+  );
+
+  $form['progress_page']['rewards_block'] = array(
+    '#type' => 'fieldset', 
+    '#title' => t('Rewards'),
+    '#collapsible' => TRUE, 
+    '#collapsed' => TRUE,
+  );
+
+  $progress_rewards_text = variable_get('progress_rewards', array('value' => '', 'format' => NULL));
+  $form['progress_page']['rewards_block']['progress_rewards'] = array(
+    '#type' => 'text_format', 
+    '#title' => t('Text for Rewards block'),
+    '#default_value' => $progress_rewards_text['value'],
+    '#format' => $progress_rewards_text['format'],
+  );
+  
+  return system_settings_form($form);
 }
 
 // validation for purchase link form
