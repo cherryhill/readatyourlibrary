@@ -3,7 +3,7 @@
 /**
  * function callback for options in select list for hotspot activities
  */
-function activities_view_select_list($term,$activity) {
+function activities_view_select_list($term,$activity,$progress) {
 
 	global $base_url;
 	$voc = taxonomy_vocabulary_machine_name_load($term);
@@ -18,6 +18,29 @@ function activities_view_select_list($term,$activity) {
 		if($activity_term->field_hotspot_activity_type['und'][0]['value'] == $activity){
 			$select_options[0] = 'Select from the following';
 			$select_options[$base_url.'/activities-listing/'.$term_tid] .= $term_title;
+		}else if($activity_term->field_progress_page_term['und'][0]['value'] == $progress){
+			$select_options[0] = 'Select from the following';
+			$select_options[$base_url.'/activities-listing/'.$term_tid] .= $term_title;
+			$select_opt[$term_tid] .= $term_title;
+		}
+	}
+	return $select_options;
+}
+
+function activities_view_select_option($term,$progress) {
+
+	global $base_url;
+	$voc = taxonomy_vocabulary_machine_name_load($term);
+	$activity_term_vid = $voc->vid;
+	$activities_terms = taxonomy_get_tree($activity_term_vid);
+
+	foreach ($activities_terms as $key => $value) {
+		$term_title = $value->name;
+		$term_tid = $value->tid;
+		$activity_term = taxonomy_term_load($term_tid);
+
+	if($activity_term->field_progress_page_term['und'][0]['value'] == $progress){
+			$select_options[$term_tid] .= $term_title;
 		}
 	}
 	return $select_options;
@@ -122,15 +145,19 @@ function hotspot_activities() {
 
   $view_reviews = array(0 => t('Select from the following'),
   $view_book_review => t('Book Reviews'),
+  $view_activity_review => t('Activity Reviews'),
   $view_movie_review => t('Movie Reviews'),
   $view_music_review => t('Music Reviews'),
-  $view_video_game_review => t('Video Game Reviews'));
+  $view_video_game_review => t('Video Game Reviews'),
+  $view_booklist => t('Booklists'));
 
   $add_reviews = array(0 => t('Select from the following'),
   $link_book_review => t('Book Reviews'),
+  $link_activity_review => t('Activity Reviews'),
   $link_movie_review => t('Movie Reviews'),
   $link_music_review => t('Music Reviews'),
-  $link_video_game_review => t('Video Game Reviews'));
+  $link_video_game_review => t('Video Game Reviews'),
+  $link_booklist => t('Booklists'));
 
 	$form['activity_title'] = array(
 	  '#type' => 'markup',
@@ -200,17 +227,15 @@ function hotspot_activities() {
 	 	'#weight' => 7,
 	);
 
-	if($current_user != 0){
-		$form['read_submit'] = array(
-		  '#title' => t('Write a Review'),
-		  '#type' => 'select',
-		  '#options' => $add_reviews,
-		  '#attributes' => array(
-		    'class' => array('reviews_add')
-		  ),
-		  '#weight' => 8,
-		);
-	}
+	$form['read_submit'] = array(
+	  '#title' => t('Write a Review'),
+	  '#type' => 'select',
+	  '#options' => $add_reviews,
+	  '#attributes' => array(
+	    'class' => array('reviews_add')
+	  ),
+	  '#weight' => 8,
+	);
 
 	$form['read_reviews'] = array(
 	  '#title' => t('Read Existing Reviews'),

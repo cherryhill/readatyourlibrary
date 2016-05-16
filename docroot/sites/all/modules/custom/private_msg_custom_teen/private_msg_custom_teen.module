@@ -8,6 +8,7 @@
  */
 require_once DRUPAL_ROOT . '/sites/all/modules/custom/private_msg_custom_teen/inc/custom_blocks_teen.inc';
 require_once DRUPAL_ROOT . '/sites/all/modules/custom/private_msg_custom_teen/inc/hotspot_activities_block.inc';
+require_once DRUPAL_ROOT . '/sites/all/modules/custom/private_msg_custom_teen/inc/progress_page.inc';
 
 
 /**
@@ -37,25 +38,25 @@ function private_msg_custom_teen_menu() {
 
   // Platform configuration settings for the program
   $items['admin/config/system/platform_configuration'] = array(
-	  'title' => 'Platform Configuration for teen program',
-	  'description' => 'Chilco platform configuration page.',
-	  'page callback' => 'drupal_get_form',
-	  'page arguments' => array('platform_configuration_teen'),
-	  'access arguments' => array('access administration pages'),
-	  'type' => MENU_NORMAL_ITEM,
-	  'file' => 'inc/platform_configuration_teen.inc',
-	  'file path' => drupal_get_path('module', 'private_msg_custom_teen'),
+    'title' => 'Platform Configuration for teen program',
+    'description' => 'Chilco platform configuration page.',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('platform_configuration_teen'),
+    'access arguments' => array('access administration pages'),
+    'type' => MENU_NORMAL_ITEM,
+    'file' => 'inc/platform_configuration_teen.inc',
+    'file path' => drupal_get_path('module', 'private_msg_custom_teen'),
   );
 
   $items['profile_avatar'] = array(
-	  'title' => 'Profile Avatar',
-	  'description' => 'providing tabs for different avatars',
-	  'page callback' => 'drupal_get_form',
+    'title' => 'Profile Avatar',
+    'description' => 'providing tabs for different avatars',
+    'page callback' => 'drupal_get_form',
     'page arguments' => array('ajax_avatar_profile_checkboxes'),
-	  'access arguments' => array('access content'),
+    'access arguments' => array('access content'),
     'type' => MENU_SUGGESTED_ITEM,
-	  'file' => 'inc/platform_configuration_teen.inc',
-	  'file path' => drupal_get_path('module', 'private_msg_custom_teen'),
+    'file' => 'inc/platform_configuration_teen.inc',
+    'file path' => drupal_get_path('module', 'private_msg_custom_teen'),
   );
 
   // Platform details for the program
@@ -76,6 +77,24 @@ function private_msg_custom_teen_menu() {
     'page callback' => 'activities_page',
     'access arguments' => array('access content'),
     'type' => MENU_SUGGESTED_ITEM,
+  );
+
+  $items['progress_report'] = array(
+    'page callback' => 'progress_report_grid',
+    'access callback' => TRUE,
+    'type' => MENU_CALLBACK,
+  );
+
+  $items['activity_custom_node_insert'] = array(
+    'page callback' => 'activity_custom_node_insert',
+    'access callback' => TRUE,
+    'type' => MENU_CALLBACK,
+  );
+
+  $items['backend-ajax-call'] = array(
+    'page callback' => 'ajax_call_progress',
+    'access callback' => TRUE,
+    'type' => MENU_CALLBACK,
   );
 
   return $items;
@@ -121,17 +140,17 @@ function private_msg_custom_teen_init() {
  */
 function private_msg_custom_teen_form_profile2_edit_main_form_alter(&$form, $form_state) {
 
-	$form['profile_main']['field_user_avatar'] = array('#attributes' => array('style' => 'display:none'));
+  $form['profile_main']['field_user_avatar'] = array('#attributes' => array('style' => 'display:none'));
 
   $query = db_select('field_data_field_avatar_type','type');
-	$query->fields('type',array('field_avatar_type_tid','entity_id'));
-	$query->join('eck_user_avatar','eck','eck.id = type.entity_id');
-	$query->join('taxonomy_term_data','tax','tax.tid = type.field_avatar_type_tid');
-	$query->fields('tax',array('name'));
+  $query->fields('type',array('field_avatar_type_tid','entity_id'));
+  $query->join('eck_user_avatar','eck','eck.id = type.entity_id');
+  $query->join('taxonomy_term_data','tax','tax.tid = type.field_avatar_type_tid');
+  $query->fields('tax',array('name'));
   $query->fields('eck',array('title'));
-	$query_avatar = $query->execute()->fetchAll();
+  $query_avatar = $query->execute()->fetchAll();
 
-	foreach ($query_avatar as $key => $value) {
+  foreach ($query_avatar as $key => $value) {
     $tax_name[$value->field_avatar_type_tid] = $value->name;
     $avatar_name[$value->field_avatar_type_tid][] = $value->entity_id;
   }
@@ -158,21 +177,21 @@ function private_msg_custom_teen_form_profile2_edit_main_form_alter(&$form, $for
     '#type' => 'fieldset',
   );
 
-	foreach ($avatar_name[$num_avatar] as $key => $value) {
-		$form['checkboxes_fieldset']["avatar_checkbox-$value"] = array(
-	    '#type' => 'checkbox',
-	    '#title' => avatar_images_list_teen($value),
-	    '#prefix' => '<div class="$value">',
-	    '#suffix' => '</div>',
-	    '#attributes' => array(
-	        'class' => array(
-	          'user_avatar'
-	        ),
-	     ),
-  	);
-	}
+  foreach ($avatar_name[$num_avatar] as $key => $value) {
+    $form['checkboxes_fieldset']["avatar_checkbox-$value"] = array(
+      '#type' => 'checkbox',
+      '#title' => avatar_images_list_teen($value),
+      '#prefix' => '<div class="$value">',
+      '#suffix' => '</div>',
+      '#attributes' => array(
+          'class' => array(
+            'user_avatar'
+          ),
+       ),
+    );
+  }
 
-	array_unshift($form['#submit'], 'submit_for_avatar_teen');
+  array_unshift($form['#submit'], 'submit_for_avatar_teen');
 }
 
 function avatar_images_list_teen($value) {
@@ -201,17 +220,17 @@ function ajax_autocheckboxes_callback_avatar_teen($form, $form_state) {
 function submit_for_avatar_teen($form, $form_state) {
 
   foreach ($form_state['values'] as $key => $value) {
-  	if($value == 1){
-		  $avatar_entity = 'avatar_checkbox-';
-	    $av_entity_id = strpos($key, $avatar_entity);
+    if($value == 1){
+      $avatar_entity = 'avatar_checkbox-';
+      $av_entity_id = strpos($key, $avatar_entity);
 
-	    if ($av_entity_id !== false) {
-	      // use sesion to pass avatar ID to profile presave hook.
-	      $_SESSION['user_avatar_id'] = substr($key, 16);
-	      break;
-	    }
-	  }
-	}
+      if ($av_entity_id !== false) {
+        // use sesion to pass avatar ID to profile presave hook.
+        $_SESSION['user_avatar_id'] = substr($key, 16);
+        break;
+      }
+    }
+  }
 }
 
 /**
@@ -219,10 +238,10 @@ function submit_for_avatar_teen($form, $form_state) {
  */
 function private_msg_custom_teen_profile2_presave($profile) {
 
-	if (isset($_SESSION['user_avatar_id'])){
-	  $profile->field_user_avatar[LANGUAGE_NONE][0]['target_id'] = $_SESSION['user_avatar_id'];
-	  unset($_SESSION['user_avatar_id']);
-	}
+  if (isset($_SESSION['user_avatar_id'])){
+    $profile->field_user_avatar[LANGUAGE_NONE][0]['target_id'] = $_SESSION['user_avatar_id'];
+    unset($_SESSION['user_avatar_id']);
+  }
 }
 
 /**
@@ -285,34 +304,34 @@ function private_msg_custom_teen_form_alter(&$form, &$form_state, $form_id) {
   }
 
   if($form_id == 'review_activity_node_form') {
-  	$sel_options = $form['field_activity_type']['und']['#options'];
-  	foreach ($sel_options as $key => $value) {
-  		$activity_term = taxonomy_term_load($key);
-  		if($activity_term->field_hotspot_activity_type['und'][0]['value'] == 1){
-  			$opt[$key] .= $value;
-  		}
-  	}
-  	$form['field_activity_type']['und']['#options'] = $opt;
-  	$form['field_activity_type']['#prefix'] = $sub_title;
-  	unset($form['field_privacy_settings']['und']['#options']['_none']);
+    $sel_options = $form['field_activity_type']['und']['#options'];
+    foreach ($sel_options as $key => $value) {
+      $activity_term = taxonomy_term_load($key);
+      if($activity_term->field_hotspot_activity_type['und'][0]['value'] == 1){
+        $opt[$key] .= $value;
+      }
+    }
+    $form['field_activity_type']['und']['#options'] = $opt;
+    $form['field_activity_type']['#prefix'] = $sub_title;
+    unset($form['field_privacy_settings']['und']['#options']['_none']);
     drupal_set_title('Write an Activity Review');
   }
 
   // Adding purchase link for booklist
-	if($form_id == 'booklist_node_form') {
-		$form['purchase_link'] = array(
-		  '#type' => 'link',
-		  '#title' => 'Suggest a purchase',
-		  '#href' => variable_get('pmc_purchase_link'),
-		  '#attributes' => array('target' => '_blank'),
-		  '#weight' => 3,
-		);
-	}
-	return $form;
+  if($form_id == 'booklist_node_form') {
+    $form['purchase_link'] = array(
+      '#type' => 'link',
+      '#title' => 'Suggest a purchase',
+      '#href' => variable_get('pmc_purchase_link'),
+      '#attributes' => array('target' => '_blank'),
+      '#weight' => 3,
+    );
+  }
+  return $form;
 }
 
 function user_reviews_teen() {
-	return '';
+  return '';
 }
 
 function user_booklist_teen() {
@@ -357,6 +376,10 @@ function private_msg_custom_teen_block_info() {
     'info' => t('Hotspot activities block'),
   );
 
+  $blocks['progress_submit_block'] = array(
+    'info' => t('Progress Submit Block'),
+  );
+
   return $blocks;
 }
 
@@ -392,8 +415,12 @@ function private_msg_custom_teen_block_view($delta = '') {
       break;
 
     case 'hotspot_activity_block' :
-    	$block['content'] = hotspot_activities();
-    	break;
+      $block['content'] = hotspot_activities();
+      break;
+
+    case 'progress_submit_block' :
+      $block['content'] = drupal_get_form('progress_record');
+      break;
   }
   
   return $block;
@@ -405,7 +432,7 @@ function private_msg_custom_teen_block_view($delta = '') {
 function pm_block_view_teen() {
 
   global $user;
-	$current_user = $user->uid;
+  $current_user = $user->uid;
 
   $query_pm = db_select('pm_index','pi');
   $query_pm->fields('pi',array('mid','is_new','deleted'));
@@ -423,16 +450,16 @@ function pm_block_view_teen() {
   $output = '<div class = "pm-custom">';
 
   if ($no_result != 0) {
-		foreach($query as $res) {
-			$msg_id = $res->mid;
+    foreach($query as $res) {
+      $msg_id = $res->mid;
       $deleted = $res->deleted;
-			$author = $res->name;
+      $author = $res->name;
 
-			$result = db_select('pm_message','pm')
-			->fields('pm',array('subject','timestamp'))
-			->condition('mid',$msg_id,'=')
-			->execute()
-			->fetchAssoc();
+      $result = db_select('pm_message','pm')
+      ->fields('pm',array('subject','timestamp'))
+      ->condition('mid',$msg_id,'=')
+      ->execute()
+      ->fetchAssoc();
 
       $pm_new = $res->is_new.'<br/>';
       if($pm_new == 1){
@@ -440,7 +467,7 @@ function pm_block_view_teen() {
       }
 
       $output .= '<div class="pm">'.'<div class = "pm-subject"><a href = '.'../messages/view/'.$msg_id.'>'.$new.$pm_subject = $result['subject'].'</a></div>'.'<div class = "pm-admin">'.$author.'</div>'.'<div class = "pm-date">'.$pm_date = date('F d, Y',$result['timestamp']).'</div>'.'</div>';
-		}
+    }
     return $output.'<a class="pm-view" href="../messages">View All Messages</a>'.'</div>';
   } else {
     return 'No Messages to display';
@@ -452,17 +479,17 @@ function pm_block_view_teen() {
  */
 function homepage_slider_teen(){
 
-	$output .= '<ul class="booklist-pager"><input type="radio" name="colorRadio" id="r1" value="blslider1" checked><label for="r1"></label><input type="radio" name="colorRadio" id="r2" value="blslider2"><label for="r2"></label><input type="radio" name="colorRadio" id="r3" value="blslider3"><label for="r3"></label></ul>';
-	$block = module_invoke('views', 'block_view', 'booklist_slideshow-block_2');
-	$output .= '<div class="blslider1 slide">'. render($block['content']). '</div>';
+  $output .= '<ul class="booklist-pager"><input type="radio" name="colorRadio" id="r1" value="blslider1" checked><label for="r1"></label><input type="radio" name="colorRadio" id="r2" value="blslider2"><label for="r2"></label><input type="radio" name="colorRadio" id="r3" value="blslider3"><label for="r3"></label></ul>';
+  $block = module_invoke('views', 'block_view', 'booklist_slideshow-block_2');
+  $output .= '<div class="blslider1 slide">'. render($block['content']). '</div>';
 
-	$block = module_invoke('views', 'block_view', 'booklist_slideshow-block_3');
-	$output .= '<div class="blslider2 slide">'. render($block['content']). '</div>';
+  $block = module_invoke('views', 'block_view', 'booklist_slideshow-block_3');
+  $output .= '<div class="blslider2 slide">'. render($block['content']). '</div>';
 
-	$block = module_invoke('views', 'block_view', 'booklist_slideshow-block_4');
-	$output .= '<div class="blslider3 slide">'. render($block['content']). '</div>';
+  $block = module_invoke('views', 'block_view', 'booklist_slideshow-block_4');
+  $output .= '<div class="blslider3 slide">'. render($block['content']). '</div>';
 
-	return $output;
+  return $output;
 }
 
 /**
@@ -470,13 +497,13 @@ function homepage_slider_teen(){
  */
 function header_menu_mobile_teen(){
 
-	$block = module_invoke('views', 'block_view', 'top_block-block_2');
-	$output .= render($block['content']). '</div>';
+  $block = module_invoke('views', 'block_view', 'top_block-block_2');
+  $output .= render($block['content']). '</div>';
 
-	$block = module_invoke('menu', 'block_view', 'menu-secoundary-menu-mobile');
-	$output .= render($block['content']). '</div>';
+  $block = module_invoke('menu', 'block_view', 'menu-secoundary-menu-mobile');
+  $output .= render($block['content']). '</div>';
 
-	return $output;
+  return $output;
 }
 
 /**
