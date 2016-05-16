@@ -1330,6 +1330,7 @@
 			 	.views-field-counter {
 			 		font-size: 20px;
 			 		@include mclaren;
+			 		line-height: 1.4;
 			 	}
 			 	.views-field-count {
 			 		@include mclaren;
@@ -1376,8 +1377,13 @@
 			 		 }
 			 	}
 			 	 .views-field-title {
+			 	 	line-height: 1.4;
 			 	 	a {
+			 	 		width: 75%;
+			 	 		display: inline-block;
+			 	 		vertical-align: top;
 			 	 		font-size: 20px;
+
 			 	 		@include mclaren;
 			 	 	}
 			 	 }
@@ -1945,7 +1951,12 @@
 		  	 					position: relative;
 		  	 					 .views-field-title {
 		  	 					 	@include mclaren;
-		  	 					 	width: 70%;
+		  	 					 	line-height: 1.4;
+		  	 					 	  a {
+		  	 					 	  	width: 75%;
+		  	 					 	  	display: inline-block;
+		  	 					 	  	vertical-align: top;
+		  	 					 	  }
 		  	 					 }
 		  	 				}
 	  	 				font-size: 17px;
@@ -1995,6 +2006,7 @@
                                font-size: 20px;
                                @include mclaren;
                                float: left;
+                               line-height: 1.4;
 	  	 			        }
 	  	 			 		.views-field-title {
 			  	 			 	a {
@@ -3317,11 +3329,13 @@ display: block !important;
  .page-movie-review, .page-music-review-listing, .page-video-game-review {
  	.main {
  	.view-content {
+ 		padding-left: 35px;
  		.views-row {
  			display: inline-block;
  			width: 100%;
  			border-bottom: 1px solid $light-gray;
- 			padding-left: 35px;
+ 			margin-bottom: 25px;
+ 			padding-bottom: 25px;
  			.views-field-counter {
  				font-size: 17px;
  				@include mclaren;
@@ -3335,6 +3349,9 @@ display: block !important;
  			 	  a {
  			 	  	font-size: 20px;
  			 	  	@include mclaren;
+ 			 	  	width: 75%;
+ 			 	  	display: inline-block;
+ 			 	  	vertical-align: top;
  			 	  }
  			 }
 
