@@ -14655,12 +14655,12 @@ body .alert-box.success a.close:hover {
   text-decoration: none !important;
 }
 
-/**css node page movie, music and vedio game review page*/
-.node-type-movie-review .main, .node-type-music-review .main, .node-type-video-game-review .main {
+/**css node page movie, music and vedio game acitvity review page*/
+.node-type-movie-review .main, .node-type-music-review .main, .node-type-video-game-review .main, .node-type-review-activity .main {
   position: relative;
   margin-top: 0;
 }
-.node-type-movie-review #page-title, .node-type-music-review #page-title, .node-type-video-game-review #page-title {
+.node-type-movie-review #page-title, .node-type-music-review #page-title, .node-type-video-game-review #page-title, .node-type-review-activity #page-title {
   color: #000;
   font-size: 22px;
   font-family: SpecialElite !important;
@@ -14670,6 +14670,148 @@ body .alert-box.success a.close:hover {
   -moz-osx-font-smoothing: grayscale !important;
   margin-left: 0;
   margin-bottom: 10px;
+}
+
+/**css node page activity review*/
+.node-type-review-activity article .music-review {
+  font-size: 17px;
+}
+.node-type-review-activity article .music-review p {
+  font-family: Raleway-Medium !important;
+  font-style: normal !important;
+  font-weight: normal !important;
+  -webkit-font-smoothing: antialiased !important;
+}
+.node-type-review-activity article .music-review div, .node-type-review-activity article .music-review a, .node-type-review-activity article .music-review span {
+  font-family: SpecialElite !important;
+  font-weight: normal !important;
+  font-style: normal !important;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+  font-size: 17px;
+}
+.node-type-review-activity article .music-review div {
+  margin-bottom: 10px;
+}
+.node-type-review-activity article .activitylikefollow-wrap {
+  position: absolute;
+  right: 0;
+}
+.node-type-review-activity article .activitylikefollow-wrap .follow_link_activityreview {
+  position: relative;
+  width: 100%;
+  display: inline-block;
+  margin-top: 10px;
+}
+.node-type-review-activity article .activitylikefollow-wrap .follow_link_activityreview span {
+  float: right;
+}
+.node-type-review-activity article .activitylikefollow-wrap .follow_link_activityreview a {
+  color: #000;
+  font-family: SpecialElite !important;
+  font-weight: normal !important;
+  font-style: normal !important;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+  background: #f6f45a !important;
+  text-transform: capitalize;
+  border: none;
+  padding: 10px 20px 7px;
+  -webkit-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+  box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+}
+.node-type-review-activity article .activitylikefollow-wrap .follow_link_activityreview a:hover {
+  color: #000;
+  background: #feed40 !important;
+  opacity: 1;
+  outline: none;
+  text-decoration: none !important;
+}
+.node-type-review-activity article .activitylikefollow-wrap .follow_link_activityreview a:focus, .node-type-review-activity article .activitylikefollow-wrap .follow_link_activityreview a.active {
+  color: #000;
+  background: #f0f811 !important;
+  outline: 1;
+  opacity: 1;
+  text-decoration: none !important;
+}
+.node-type-review-activity article .activitylikefollow-wrap .activity-likes div {
+  margin-bottom: 10px;
+}
+.node-type-review-activity article .activitylikefollow-wrap .activity-likes div.like-here {
+  margin-left: 40px;
+  float: right;
+}
+.node-type-review-activity article .activitylikefollow-wrap .activity-likes div.like-here a {
+  color: #000;
+  font-family: SpecialElite !important;
+  font-weight: normal !important;
+  font-style: normal !important;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+  background: #f6f45a !important;
+  text-transform: capitalize;
+  border: none;
+  padding: 10px 34px 7px 20px;
+  -webkit-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+  box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+  font-family: SpecialElite !important;
+  font-weight: normal !important;
+  font-style: normal !important;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+  position: relative;
+  padding-right: 34px;
+}
+.node-type-review-activity article .activitylikefollow-wrap .activity-likes div.like-here a:hover {
+  color: #000;
+  background: #feed40 !important;
+  opacity: 1;
+  outline: none;
+  text-decoration: none !important;
+}
+.node-type-review-activity article .activitylikefollow-wrap .activity-likes div.like-here a:focus, .node-type-review-activity article .activitylikefollow-wrap .activity-likes div.like-here a.active {
+  color: #000;
+  background: #f0f811 !important;
+  outline: 1;
+  opacity: 1;
+  text-decoration: none !important;
+}
+.node-type-review-activity article .activitylikefollow-wrap .activity-likes div.like-here a:after {
+  content: "";
+  width: 30px;
+  height: 30px;
+  display: block;
+  visibility: visible;
+  position: absolute;
+  top: 6px;
+  right: 0;
+  background: url("../images/libraryzurb/smily-white.png") no-repeat;
+}
+.node-type-review-activity article .activitylikefollow-wrap .activity-likes div.like-count {
+  float: left;
+  font-family: SpecialElite !important;
+  font-weight: normal !important;
+  font-style: normal !important;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+}
+.node-type-review-activity article .activitylikefollow-wrap .activity-likes div.like-count .lk-count {
+  position: relative;
+  padding-right: 34px;
+  font-size: 17px;
+}
+.node-type-review-activity article .activitylikefollow-wrap .activity-likes div.like-count .lk-count:after {
+  content: "";
+  width: 30px;
+  height: 30px;
+  display: block;
+  visibility: visible;
+  position: absolute;
+  top: -5px;
+  right: 0;
+  background: url("../images/libraryzurb/smily-white.png") no-repeat;
 }
 
 /**css node page movie review*/

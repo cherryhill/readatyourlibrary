@@ -3419,8 +3419,8 @@ display: block !important;
  	}
  }
  }
- /**css node page movie, music and vedio game review page*/
- .node-type-movie-review,.node-type-music-review,.node-type-video-game-review {
+ /**css node page movie, music and vedio game acitvity review page*/
+ .node-type-movie-review,.node-type-music-review,.node-type-video-game-review, .node-type-review-activity {
  	.main {
  		position: relative;
  		margin-top: 0;
@@ -3431,6 +3431,70 @@ display: block !important;
  		@include mclaren;
  		margin-left: 0;
  		margin-bottom: 10px;
+ 	}
+ }
+ /**css node page activity review*/
+ .node-type-review-activity  {
+   article {
+ 	  .music-review {
+ 	  	font-size: 17px;
+ 	  	  p {
+ 	  	  	@include arialregular;
+ 	  	  }
+ 	  	  div, a, span {
+ 	  	  	 @include mclaren;
+ 	  	  	 font-size: 17px;
+ 	  	  }
+ 	  	  div {
+ 	  	  	margin-bottom: 10px;
+ 	  	  }
+ 	  }
+      .activitylikefollow-wrap {
+      	position: absolute;
+      	right: 0;
+      	  .follow_link_activityreview {
+      	  	position: relative;
+      	  	width: 100%;
+      	  	display: inline-block;
+      	  	margin-top: 10px;
+      	  	 span {
+      	  	 	float: right;	
+      	  	 }	
+      	  	     a {
+      	  	     	@include yellowbutton;
+
+      	  	     }
+      	  }
+      	  .activity-likes {
+      	  	div {
+      	  		
+      	  		margin-bottom: 10px;
+      	  		&.like-here {
+      	  			margin-left: 40px;
+      	  			float: right;
+      	  			 a {
+					  	@include yellowbutton(p);
+					  	@include mclaren;
+					  	position: relative;
+					  	padding-right: 34px;
+					  	 &:after {
+					  	 	@include previous(30px, 30px, $right: 0, $top: 6px);
+		 	 				background: url('../images/libraryzurb/smily-white.png') no-repeat;
+					  	 }
+			  		}
+      	  		}
+      	  		&.like-count {
+      	  			float: left;
+      	  			@include mclaren;
+      	  			.lk-count {
+      	  			  @include like;
+      	  			  
+      	  			  font-size: 17px;
+      	  			}
+      	  		}
+      	  	}
+      	  }
+      }
  	}
  }
  /**css node page movie review*/
@@ -3450,6 +3514,7 @@ display: block !important;
  	  	  	margin-bottom: 10px;
  	  	  }
  	  }
+
       .movielikefollow-wrap {
       	position: absolute;
       	right: 0;

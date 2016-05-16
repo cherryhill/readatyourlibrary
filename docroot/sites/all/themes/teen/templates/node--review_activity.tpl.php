@@ -138,8 +138,11 @@
 
     $review_value = $review['0']['safe_value']
   ?>
-  <div class="musiclikefollow-wrap">
-  <div class="music-likes">
+  <div id="page-title">
+    <?php print $title_node; ?>
+  </div>
+  <div class="activitylikefollow-wrap">
+  <div class="activity-likes">
     <div class="like-count">
       <?php if(isset($counts)){ print '<span class = "lk-count">Likes: </span>'.$counts; } ?>
     </div>
@@ -151,9 +154,7 @@
     <?php if($node_privacy === 'public'){ print flag_create_link('follow', $node->uid); } ?>
   </div>
   </div>
-  <div>
-    <?php print $title_node; ?>
-  </div>
+  
   <div class="activity-review">
       <p class="reviewer">
       <span class = "created"><?php if ($node_privacy == 'public' || $node_privacy == 'private'){ print 'Reviewed by '; }?></span><span class="avatar"><?php if ($node_privacy == 'public' || $node_privacy == 'private') { print $img; } ?></span><span class ="name_author"><?php if ($node_privacy == 'public' || $node_privacy == 'private'){ print "<a href = '$base_url/users/public_profile/$node_uid' class = 'user_profile_node'>".' '.$reviewer.'</a>'; } ?></span>
