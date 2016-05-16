@@ -1307,6 +1307,16 @@
 }
 /**activity listing indivisual page**/
 .page-activities-listing {
+	.sidebar .block.review-booklist-block ul.menu li a {
+		
+		 &.activityreview {
+		 	background: $white;
+		color: $light-green;
+		  &:after {
+		  	background: url('../images/libraryzurb/activityreview-active.png') no-repeat scroll center center;
+		  }
+		}
+	}
 	.view-individual-activities-listing {
 		.view-header {
 			h2:nth-of-type(1) {
@@ -1327,6 +1337,9 @@
 			padding-left: 35px;
 			 .views-row {
 			 	position: relative;
+			 	margin-bottom: 25px;
+			 	padding-bottom: 25px;
+			 	border-bottom: 1px solid $light-gray;
 			 	.views-field-counter {
 			 		font-size: 20px;
 			 		@include mclaren;
@@ -1350,6 +1363,7 @@
 			 		margin-top: 30px;
 			 	}
 			 	.views-field-view-node {
+			 		margin-bottom: 10px;
 			 		a {
 			 			@include yellowbutton;
 			 		}
