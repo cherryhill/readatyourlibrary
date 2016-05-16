@@ -94,8 +94,7 @@
   <?php endif; ?>
 
   <?php
-    $title_node = field_get_items('node', $node, 'field_activity_type');
-    $title_node_value = $title_node[0]['taxonomy_term']->name;
+    $title_node = $content['field_activity_type'][0]['#term']->name;
     $review = field_get_items('node', $node, 'body');
 
     global $base_url;
@@ -153,7 +152,7 @@
   </div>
   </div>
   <div>
-    <?php print $title_node_value; ?>
+    <?php print $title_node; ?>
   </div>
   <div class="activity-review">
       <p class="reviewer">
