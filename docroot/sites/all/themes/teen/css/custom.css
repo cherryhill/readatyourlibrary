@@ -11779,6 +11779,7 @@ body .alert-box.success a.close:hover {
   font-style: normal !important;
   -webkit-font-smoothing: antialiased !important;
   -moz-osx-font-smoothing: grayscale !important;
+  line-height: 1.4;
 }
 .page-activities-listing .view-individual-activities-listing .view-content .views-row .views-field-count {
   font-family: SpecialElite !important;
@@ -11875,7 +11876,13 @@ body .alert-box.success a.close:hover {
 .page-activities-listing .view-individual-activities-listing .view-content .views-row .views-field-nothing div.views-field-field-user-avatar img {
   margin-left: 10px;
 }
+.page-activities-listing .view-individual-activities-listing .view-content .views-row .views-field-title {
+  line-height: 1.4;
+}
 .page-activities-listing .view-individual-activities-listing .view-content .views-row .views-field-title a {
+  width: 75%;
+  display: inline-block;
+  vertical-align: top;
   font-size: 20px;
   font-family: SpecialElite !important;
   font-weight: normal !important;
@@ -12613,7 +12620,12 @@ body .alert-box.success a.close:hover {
   font-style: normal !important;
   -webkit-font-smoothing: antialiased !important;
   -moz-osx-font-smoothing: grayscale !important;
-  width: 70%;
+  line-height: 1.4;
+}
+.page-booklists .main .view-content .item-list ol li.views-row .views-field-title a {
+  width: 75%;
+  display: inline-block;
+  vertical-align: top;
 }
 .page-booklists .main .view-content .item-list ol li .views-field-nothing {
   margin-top: 23px;
@@ -12683,6 +12695,7 @@ body .alert-box.success a.close:hover {
   -webkit-font-smoothing: antialiased !important;
   -moz-osx-font-smoothing: grayscale !important;
   float: left;
+  line-height: 1.4;
 }
 .page-booklists .main .view-content .item-list ol li .views-field-title a {
   font-size: 20px;
@@ -14494,11 +14507,15 @@ body .alert-box.success a.close:hover {
 }
 
 /**css for movie,music and vediogame review**/
+.page-movie-review .main .view-content, .page-music-review-listing .main .view-content, .page-video-game-review .main .view-content {
+  padding-left: 35px;
+}
 .page-movie-review .main .view-content .views-row, .page-music-review-listing .main .view-content .views-row, .page-video-game-review .main .view-content .views-row {
   display: inline-block;
   width: 100%;
   border-bottom: 1px solid #cccccc;
-  padding-left: 35px;
+  margin-bottom: 25px;
+  padding-bottom: 25px;
 }
 .page-movie-review .main .view-content .views-row .views-field-counter, .page-music-review-listing .main .view-content .views-row .views-field-counter, .page-video-game-review .main .view-content .views-row .views-field-counter {
   font-size: 17px;
@@ -14526,6 +14543,9 @@ body .alert-box.success a.close:hover {
   font-style: normal !important;
   -webkit-font-smoothing: antialiased !important;
   -moz-osx-font-smoothing: grayscale !important;
+  width: 75%;
+  display: inline-block;
+  vertical-align: top;
 }
 .page-movie-review .main .view-content .views-row .views-field-count, .page-music-review-listing .main .view-content .views-row .views-field-count, .page-video-game-review .main .view-content .views-row .views-field-count {
   float: right;
