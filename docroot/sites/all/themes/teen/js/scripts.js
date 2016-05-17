@@ -15,6 +15,11 @@
       });
       //change position of review title after viewfilter in all review pages
       $('.reviews-subtitle').insertAfter('.view-filters');
+      //for progress page table format of divs wrap every 6 divs in single div
+         var divs = $("div.progress-main > div.grid");
+        for(var i = 0; i < divs.length; i+=6) {
+        divs.slice(i, i+6).wrapAll("<div class='new-row'></div>");
+    }
       //reward page give same counter list to two different views
        $('.page-rewards .view-program-rewards-raffle .views-row').insertAfter('.page-rewards .view-program-rewards .views-row:nth-last-child(1)');
       // select list option with thier link
