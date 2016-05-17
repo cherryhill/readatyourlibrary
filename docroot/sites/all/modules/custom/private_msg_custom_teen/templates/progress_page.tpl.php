@@ -56,6 +56,7 @@
 
 <div class="progress-main">
 	<?php 
+	   print '<h1>My Passport Stamps</h1>';
 		$grids = variable_get('no_of_grids');
 		for($i=0; $i < $grids; $i++){
 			echo '<div class = "grid" id = "cells'.$i.'"></div>';

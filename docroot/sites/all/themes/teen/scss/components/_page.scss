@@ -3784,11 +3784,13 @@ display: block !important;
                	    	@include boxshadow;
                	    	margin-right: 10px;
                	    	vertical-align: bottom;
+               	    	background: $white;
                	    }
                }
                .point-status {
                	width: 40%;
                	display: table-cell;
+               	vertical-align: middle;
                	  div {
                	  	padding-left: 5%;
                	  	float: left;
@@ -3974,6 +3976,41 @@ display: block !important;
  		  	 	 	text-align: center;
  		  	 	 }
  		  	 }
+ 		  }
+ 		  .progress-main {
+ 		  	margin-top: 82px;
+ 		  	width: 100%;
+ 		  	display: table;
+ 		  	position: relative;
+ 		  	padding-bottom: 25px;
+ 		  	  h1 {
+ 		  	  	width: 100%;
+ 		  	  	display: table-row;
+ 		  	  	margin-top: 0;
+ 		  	  	background: $green;
+ 		  	  	font-size: 24px;
+ 		  	  	@include mclaren;
+ 		  	  	color: $white;
+ 		  	  	padding-left: 15px;
+ 		  	  	padding-top: 15px;
+ 		  	  	padding-bottom: 7px;
+ 		  	  	position: absolute;
+ 		  	  	width: 100%;
+ 		  	  	margin-bottom: 0;
+ 		  	  	top: -56px;
+ 		  	  }
+ 		  	  .new-row {
+ 		  	  	width: 100%;
+ 		  	  	display: table-row;
+ 		  	  	 > .grid {
+ 		  	  	 	width: 16.6%;
+ 		  	  	 	display: table-cell;
+ 		  	  	 	background: $white;
+ 		  	  	 	height: 200px;
+ 		  	  	 	border: 0.5px solid $light-gray;
+
+ 		  	  	 }
+ 		  	  }
  		  }
 
  	}
