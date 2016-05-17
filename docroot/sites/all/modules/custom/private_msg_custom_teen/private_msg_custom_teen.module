@@ -86,13 +86,13 @@ function private_msg_custom_teen_menu() {
   );
 
   $items['activity_custom_node_insert'] = array(
-    'page callback' => 'activity_custom_node_insert',
+    'page callback' => 'activity_report_node_create',
     'access callback' => TRUE,
     'type' => MENU_CALLBACK,
   );
 
   $items['backend-ajax-call'] = array(
-    'page callback' => 'ajax_call_progress',
+    'page callback' => 'complete_activity_progress',
     'access callback' => TRUE,
     'type' => MENU_CALLBACK,
   );
