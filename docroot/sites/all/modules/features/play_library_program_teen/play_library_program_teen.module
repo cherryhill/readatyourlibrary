@@ -223,12 +223,6 @@ function play_library_program_teen_entity_insert($entity, $type) {
 	if ($entity->type == 'reward_claim') {
 		_play_library_program_process_user_reward_claim($entity, $type);
 	}
-	if ($entity->type == 'activity_report') {
-	  $activity_user_uid = $entity->uid;
-    $progress_act_id = $_SESSION['progress_activity_id'];
-    play_library_program_create_activity_entry($progress_act_id,$activity_user_uid);
-    unset($_SESSION['progress_activity_id']);
-	}
 }
 
 /**
