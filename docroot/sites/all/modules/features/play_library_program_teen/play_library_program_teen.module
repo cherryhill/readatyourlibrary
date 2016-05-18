@@ -628,10 +628,11 @@ function _play_library_program_process_activity_entry($entity, $type) {
       db_update('field_won_reward')
       ->fields(array('field_won_reward_value' => 1))
       ->condition ('entity_id', $progress_report_nid)
-      ->execute();
-      
+      ->execute(); 
+    } else {
+      unset($_SESSION['teen_progress_report_nid']);
     }
-
+    
 	foreach ($rewards_user_can_claim as $rid) {
 	  //play_library_program_update_user_calendar_state($rid);
       play_library_program_create_reward_claim($rid, $entity->uid);
