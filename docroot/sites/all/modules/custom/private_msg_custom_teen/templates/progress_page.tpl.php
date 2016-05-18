@@ -59,7 +59,7 @@
 		$grids = variable_get('no_of_grids'); $criteria = array(
    		'uid' => $userID,
    		'type' => $type,
- 		);
+ 		);  
 		global $user;
 		$current_uid = $user->uid;
 
@@ -71,8 +71,12 @@
 		$nodes = entity_load('node',FALSE,$criteria);
 		foreach ($nodes as $key => $value) {
 			$node_date = $value->field_completion_date['und'][0]['value'];
+			$user_reward = $value->field_won_reward['und'][0]['value'];
+			if($user_reward != '0'){
+				$user_won_reward = '<p class  = "won-rew">Congratulations! You have earned a prize!</p>';
+			}
 			$n_date = date("m.d.y", strtotime($node_date));
-			$node_nid[] = '<p class  = "date-pg">'.$n_date.'</p><p class = "title-pg">'.$value->title.'</p>';
+			$node_nid[] = '<p class  = "date-pg">'.$n_date.'</p><p class = "title-pg">'.$value->title.'</p>'.$user_won_reward;
 		}
 
 		for($i=0; $i < $grids; $i++){
