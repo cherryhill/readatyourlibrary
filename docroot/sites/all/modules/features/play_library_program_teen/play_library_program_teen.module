@@ -201,7 +201,9 @@ function play_library_program_teen_webform_submission_presave($node, &$submissio
  * Implements hook_entity_insert().
  */
 function play_library_program_teen_entity_insert($entity, $type) {
+
 	if(!is_program_active()) {		
+	
       return FALSE;
     }    
 
@@ -221,6 +223,12 @@ function play_library_program_teen_entity_insert($entity, $type) {
 
 	if ($entity->type == 'reward_claim') {
 		_play_library_program_process_user_reward_claim($entity, $type);
+	}
+	if ($entity->type == 'activity_report') {
+	  $activity_user_uid = $entity->uid;
+    $progress_act_id = $_SESSION['progress_activity_id'];
+    play_library_program_create_activity_entry($progress_act_id,$activity_user_uid);
+    unset($_SESSION['progress_activity_id']);
 	}
 }
 
@@ -551,12 +559,12 @@ function _play_library_program_get_webforms() {
  * Performs general firing hook check to create new activity entries
  */
 function _play_library_program_invoke_activity_entry_hooks($entity, $type, $invoked_hook = '', $update_points = 0) {
-	$hook = $invoked_hook;
 
+
+	$hook = $invoked_hook;
 	if (empty($hook)) {
 		$hook = "entity_insert|{$type}|{$entity->type}";
 	}
-
 	$query = new EntityFieldQuery();
 	$query->entityCondition('entity_type', 'activity');
 	$query->entityCondition('bundle', 'activity');
@@ -564,7 +572,9 @@ function _play_library_program_invoke_activity_entry_hooks($entity, $type, $invo
 	$result = $query->execute();
 
 	foreach ($result as $entity_key => $entity_values) {
+		echo"<pre>"; print_r($entity_values); die();
 		if ($entity_key == 'activity') {
+
 			foreach ($entity_values as $activity_entity) { //echo $i++;
 				$account = user_load($entity->uid);
 				if(!$update_points) {

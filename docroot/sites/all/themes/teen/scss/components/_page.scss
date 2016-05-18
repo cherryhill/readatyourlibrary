@@ -69,6 +69,7 @@
 /**end**/
 /**css for photos n vedios page***/
 .section-media {
+
 	.block-title {
 		font-size: 24px;
 		color: $blue;
@@ -76,6 +77,7 @@
 		@include noborder;
 	}
 	.block-views-media-photos-videos-block-6 {
+		padding-left: 35px;
 		.view .views-row {
 			width: 32%;
 			@include mobile {
@@ -84,6 +86,7 @@
 		}
 	}
 	.block-views-media-photos-videos-block-3 {
+		padding-left: 35px;
 		.view .views-row {
 			width: 24%;
 			@include mobile {
@@ -100,6 +103,7 @@
 			@include brushimg(left);
 		}
 		article.node-page {
+			padding-left: 35px;
 			.field-name-body {
 				color: $blue;
 				p {
@@ -310,6 +314,18 @@
 	  		.block-title {
 	  		  display: none;
 
+	  		}
+	  		.view-program-rewards {
+	  			counter-reset: section;
+	  			  .reward_description {
+	  			  	div:nth-of-type(1) {
+	  			  	&:before {
+	  			  		@include counter;
+	  			  		font-size: 16px;
+	  			  		@include arialbold;
+	  			  	}
+	  			  }
+	  			}
 	  		}
 	  		.view-header {
 	  			h2 {
@@ -537,6 +553,7 @@
 	    	color: $white;
 	    	position: relative;
 	    	overflow: hidden;
+	    	margin-left: 35px;
 	    	  .block-title {
 	    	  	color: $white;
 	    	  	@include mclaren;
@@ -552,6 +569,7 @@
 					display: inline-block;
 		    	 	width: 100%;
 		    	 	padding: 10px 4% 0;
+		    	 	margin-left: 0;
 			    	 	.view-content {
 			    	 		display: table;
 			    	 		width: 100%;
@@ -582,6 +600,7 @@
 	   			}  
 	    }
 		.view {
+			margin-left: 35px;
    		 	.view-header, .view-header p {
 	   		 	@media screen and (min-width: 980px) {
 	   		 	   font-size: 26px !important;
@@ -1255,16 +1274,153 @@
      }
 }
  /**msg center css end**/
+/**page-activity listing review page*/
+.page-activities-list{
+	.view-activities-listing-term {
+	  	.view-header {
+			h2:nth-of-type(1) {
+				@include brushimg(left);
+			}
+			h2:nth-of-type(2) {
+				padding-left: 35px;
+				font-size: 24px;
+				@include noborder;
+				@include mclaren;
+				color: $blue;
+				padding-top: 35px;
+			}
+			p {
+				padding-left: 35px;
+				color: $blue;
+				@include arialregular;
+			}
+		}
+		.view-content {
+			.views-row a {
+				font-size: 18px;
+				padding-left: 35px;
+				@include arialbold;
+			}
+		}
+
+	}
+}
+/**activity listing indivisual page**/
+.page-activities-listing {
+	.sidebar .block.review-booklist-block ul.menu li a {
+		
+		 &.activityreview {
+		 	background: $white;
+		color: $light-green;
+		  &:after {
+		  	background: url('../images/libraryzurb/activityreview-active.png') no-repeat scroll center center;
+		  }
+		}
+	}
+	.view-individual-activities-listing {
+		.view-header {
+			h2:nth-of-type(1) {
+				@include brushimg(left);
+				margin-bottom: 30px;
+			}
+
+		}
+		.reviews-subtitle {
+			h2 {
+				color: $blue;
+				@include noborder;
+				@include mclaren;
+				font-size: 24px;
+			}
+		}
+		.view-content {
+			padding-left: 35px;
+			 .views-row {
+			 	position: relative;
+			 	margin-bottom: 25px;
+			 	padding-bottom: 25px;
+			 	border-bottom: 1px solid $light-gray;
+			 	.views-field-counter {
+			 		font-size: 20px;
+			 		@include mclaren;
+			 		line-height: 1.4;
+			 	}
+			 	.views-field-count {
+			 		@include mclaren;
+			 		font-size: 17px;
+			 		position: absolute;
+			 		right: 0;
+			 		top: 2px;
+			 		 .views-label {
+			 		 	@include like;	
+			 		 }
+			 	}
+			 	.views-field-created {
+			 		font-size: 17px;
+			 		@include arialregular;
+			 	}
+			 	.views-field-body {
+			 		margin-top: 30px;
+			 	}
+			 	.views-field-view-node {
+			 		margin-bottom: 10px;
+			 		a {
+			 			@include yellowbutton;
+			 		}
+			 	}
+			 	.views-field-nothing {
+			 		width: 100%;
+			 		display: inline-block;
+			 		margin-top: 30px;
+			 		 div {
+			 		 	float: left;
+			 		 	@include mclaren;
+			 		 	font-size: 17px;
+			 		 	  a {
+			 		 	  	padding-left: 10px;
+			 		 	  	@include mclaren;
+			 		 	  	font-size: 17px;
+			 		 	  }
+			 		 	  &.views-field-field-user-avatar {
+			 		 	  	position: relative;
+			 		 	  	bottom: 10px;
+			 		 	  	 img {
+			 		 	  	 	margin-left: 10px;
+			 		 	  	 }
+			 		 	  }
+			 		 }
+			 	}
+			 	 .views-field-title {
+			 	 	line-height: 1.4;
+			 	 	a {
+			 	 		width: 75%;
+			 	 		display: inline-block;
+			 	 		vertical-align: top;
+			 	 		font-size: 20px;
+
+			 	 		@include mclaren;
+			 	 	}
+			 	 }
+			 }
+		}
+	}
+}
+
 
  /**common css used in  page-reviews  and page-booklists**/
+
  
-.page-reviews, .page-booklists, .page-movie-review, .page-music-review-listing, .page-video-game-review  {
+.page-reviews, .page-booklists, .page-movie-review, .page-music-review-listing, .page-video-game-review, .page-activities-list, .page-activities-listing  {
   	#page-title {
   	 	@include black-text;
   	 	@include mclaren;
   	 	display: none;
   	}
-
+	.sidebar {
+	.button {
+		margin-left: 0 !important;
+	}
+	}
   	.view-header {
   	 	p {
   	 		a {
@@ -1407,9 +1563,11 @@
   	  			margin-bottom: 23px;
   	  			font-size: 16px;
   	  			@include arialregular;
+  	  			padding-left: 35px;
   	  		}
   	  	}
   	  	.view-filters {
+  	  		margin-left: 35px;
   	  		background: url('../images/libraryzurb/annocement.png') no-repeat scroll center center / 100% 100%;
   	  		@include boxshadow;
   	  		 	form {
@@ -1567,6 +1725,7 @@
   	 			}
   	 		}
 	  	 	.view-content {
+	  	 		padding-left: 35px;
 		  	 	.views-row img {
 		  	 		@include noborder;
 		  	 	}
@@ -1765,18 +1924,18 @@
 }
 
 /**css only for booklist page**/
-.sidebar {
-	.button {
-		margin-left: 0 !important;
-	}
-}
+
 .page-booklists {
+
   	
   	.main {
   		 .view-header .booklist_slideshow_title,.view-footer {
   			display: none;
   		}
   		.view-booklists {
+  			.other-booklists {
+  				padding-left: 35px;
+  			}
   			.views-field-counter {
   				padding-right: 10px;
   				  span {
@@ -1798,19 +1957,26 @@
 	  		counter-reset: section 3;
 	  	 	.item-list {
 	  	 		ol {
-	  	 			margin-left: 20px;
+	  	 			margin-left: 35px;
 	  	 			list-style: none;
 	  	 			li {
 		  	 				&.views-row {
 		  	 					margin-bottom: 23px;
+		  	 					position: relative;
 		  	 					 .views-field-title {
 		  	 					 	@include mclaren;
+		  	 					 	line-height: 1.4;
+		  	 					 	  a {
+		  	 					 	  	width: 75%;
+		  	 					 	  	display: inline-block;
+		  	 					 	  	vertical-align: top;
+		  	 					 	  }
 		  	 					 }
 		  	 				}
 	  	 				font-size: 17px;
 		  	 				.views-field-nothing {
 		  	 					margin-top: 23px;
-		  	 					padding-left: 32px;
+		  	 					padding-left: 0px;
 		  	 					display: inline-block;
 		  	 					@include mclaren;	
 			  	 					div {
@@ -1845,13 +2011,16 @@
 			  	 			 	}
 	  	 			 		}
 			  	 			.views-field-count {
-			  	 			 	float: right;
+			  	 			 	position: absolute;
+			  	 			 	right: 0;
+			  	 			 	top: 3px;
 			  	 			 	@include mclaren;
 			  	 			}
 	  	 			        .views-field-counter {
                                font-size: 20px;
                                @include mclaren;
                                float: left;
+                               line-height: 1.4;
 	  	 			        }
 	  	 			 		.views-field-title {
 			  	 			 	a {
@@ -1864,10 +2033,11 @@
 	  	 	}
 	  	}
 	  	.view-booklist-slideshow {
+	  		padding-left: 35px;
 	  		.owl-carousel {
 	  			position: relative;
 	  			 	.owl-wrapper-outer {
-		  			 	width: 99%;
+		  			 	width: 100%;
 		  			 	margin: 0 auto;
 	  			 	}
 	  			 	.owl-item {
@@ -1964,6 +2134,7 @@
 			  			 	 	visibility: hidden;
 			  			 	 	position: relative;
 			  			 	 	opacity: 1;
+			  			 	 	padding: 0;
 			  			 	 	  &:before {
 			  			 	 	  	@include previous(30px, 30px, $left: -40px, $top: 0);
 			  			 	 	  	background: url('../images/libraryzurb/left-blue-arrow.png') no-repeat;
@@ -1975,8 +2146,9 @@
 			  			 	 	visibility: hidden;
 			  			 	 	position: relative;
 			  			 	 	opacity: 1;
+			  			 	 	padding: 0;
 				  			 	 	  &:after {
-				  			 	 	  	@include previous(30px, 30px, $right: -37px, $top: 0);
+				  			 	 	  	@include previous(30px, 30px, $right: -40px, $top: 0);
 				  			 	 	  	background: url('../images/libraryzurb/right-blue-arrow.png') no-repeat;
 				  			 	 	  	background-size: 25px;
 				  			 	 	  	position: absolute;
@@ -1991,186 +2163,142 @@
 /**end of booklist page**/
 
 /**activities page **/
-.not-logged-in.section-activities {
-	.block-views-reward-earn-block-1 {
-			.block-title {
-				&:after {
-					background: none;
-				}
-			}
-		
-    }
-}
-.logged-in.section-activities {
-    .block-views-reward-earn-block-1 {
-			display: none;
-	}
-
-}
-
-.section-activities {
-	.pagination.pager {
-		float: none !important;
-		margin-right: 0 !important;
-	}
-	h1#page-title {
-		display: none;
-	}
+ .page-activities {
+ 	#page-title {
+ 		display: none;
+ 	}
  	.main {
- 		.views-field-nothing {
- 			h2 {
- 				/* text-transform: uppercase; */
+ 		padding-left: 0;
+ 		top: -17px;
+ 	}
+ 	.block-one-description, .block-two-description, .block-three-description {
+ 		padding-left: 35px;
+ 		  p {
+ 		  	color: $blue;
+ 		  	 a {
+ 		  	 	font-size: 18px;
+ 		  	 	@include arialbold;
+ 		  	 }
+ 		  	@include arialregular;
+
+ 		  }
+ 	}
+ 	.block-one-title, .block-two-title, .block-three-title {
+ 		padding-left: 35px;
+ 		color: $blue;
+ 		font-size: 24px;
+ 		@include mclaren;
+ 		  a {
+ 		  	font-size: 24px;
+ 		  	color: $blue;
+ 		  	@include mclaren;
+ 		  	text-decoration: none;
+ 		  	position: relative;
+ 		  	  &:after {
+ 		  	  	content: "";
+                border-top: 7px solid transparent;
+                border-bottom: 7px solid transparent;
+                border-left: 14px solid $blue;
+                position: absolute;
+                top: 2px;
+                display: inline-block;
+                right: 0;
+                margin-right: -22px;
+ 		  	  }
+ 		  }
+ 	}
+ 	.block-private-msg-custom-teen-hotspot-activity-block {
+ 		color: $blue;
+ 		.block-title {
+ 			font-size: 28px;
+ 			margin-bottom: 25px;
+ 			@include noborder;
+ 			@include brushimg(left);
+
+ 		}
+ 		.activity_title, .activity_review_title {
+ 			font-size: 24px;
+ 			@include mclaren;
+ 			padding-left: 35px;
+ 			margin-bottom: 5px;
+
+ 		}
+ 		.activity_desc, .activity_review_desc {
+ 			font-size: 16px;
+ 			@include arialregular;
+ 			padding-left: 9.2%;
+ 			margin-bottom: 10px;
+ 		}
+ 		.activity_review_title {
+ 			margin-top: 60px;
+ 		}
+
+ 		.form-type-select {
+ 			width: 100%;
+ 			display: inline-block;
+ 			label  {
+ 				width: 50%;
+ 				float: left;
+ 				@include arialregular;
+ 				padding-left: 9.2%;
+ 				padding-right: 10px;
+ 				font-size: 18px;
+ 				color: $blue;
+
+ 			}
+ 			.chosen-container {
+ 				width: 50% !important;
+ 				float: left;
+ 				border: 1px solid $msg-active;
+ 				 .chosen-drop {
+ 				 	background: $white !important;
+ 				 	 ul {
+ 				 	 	li {
+ 				 	 		color: $msg-active;
+ 				 	 		 &.highlighted {
+                               color: $white;
+                               background: $msg-active;
+ 				 	 		 }
+ 				 	 	}
+ 				 	 }
+ 				 }
+ 				  a {
+ 				  	 @include arialregular;
+ 				  	 font-size: 15px;
+ 				  	 color: $msg-active;
+ 				  	 @include noborder;
+ 				  	 border-radius: 0;
+ 				  	 padding-left: 10px;
+ 				  	 background: $white !important;
+ 				  	
+ 				  	   div {
+ 				  	   	  width: 30px;
+ 				  	   	  b {
+							 position: relative;
+							 background: $msg-active;
+							   &:after {
+							   	  content: "";
+							   	  border-left: 7px solid transparent;
+							   	  border-right: 7px solid transparent;
+							   	  border-top: 7px solid $white;
+							   	  display: inline-block;
+							   	  position: absolute;
+							   	  left: 9px;
+							   	  top: 9px;
+							   }
+ 				  	   	  }
+ 				  	   }
+ 				  }
  			}
  		}
- 		.view-activities-page-, .block-block {
-		 	@include block;
-		 	h2, .block-title {
-		 		font-size: 28px;
-		 		@include mclaren;
-		 		@include noborder;
-		 		color: $black;
-		 	}
-		 	 a.button {
-		 	 	margin-bottom: 0;
-		 	 	margin-left: 0;
-		 	 }
-		 	.view-content {
+ 		a {
+ 			font-size: 18px;
+ 			@include arialbold;
+ 			padding-left: 9.5%;
 
-		 	}
-	 	 	div {
-		 	 	a {
-		 	 		padding-left: 20px;
-		 	 	}
-	 	 	}
  		}
-	}
-	.pull-9.sidebar3 {
-		width: 29.53%;
-		right: 67.4%;
-		margin-bottom: 35px;
-		 @include mobile {
-		 	width: 100%;
-		 	right: 0;
-		 	margin-bottom: 25px;
-		 }
-		 @include tablet {
-		 	width: 38%;
-		 	right: 63.4%;
-		 	padding-left: 0;
-		 	padding-right: 0;
-		 }
-		 
-	}
-	/* .pull-9.sidebar, .pull-9.sidebar2 {
-		width: 29.53%;
-		right: 71.4%;
-		padding-left: 0px;
-		padding-right: 0px;
-	} */
-		
-	
-	.sidebar3 {
-		@include bluebackground;
-		@include block;
-		float: none !important;
-		
-		.block-block {
-			padding: 0px 6%;
-			.block-title {
-				@include mclaren;
-				font-size: 22px;
-				color: $yellow;
-				@include noborder;
-				margin-top: 17px;
-			}
-			div {
-				@include arialbold;
-				font-size: 18px;
-
-			}
-			a.button {
-				margin: 10px 0px 0px 0px;
-			}
-		}
-		.block-views {
-			padding: 0px 6%;
-			 &:first-child {
-			 	ul {
-			 		list-style: none !important;
-			 	}
-			 }
-		 	.view {
-		 		counter-reset: section;
-		 	 		.view-content {
-		 	 			ul {
-		 	 				.views-row {
-		 	 					margin-left: 0;
-                   					.views-field-title {
-
-	                   	 				a {
-					                   		&:before {
-							 	 			@include counter;
-							 	 			
-			 	 							}
-                   						}
-                   					}
-		 	 				}
-		 	 			}
-		 			}
-			}
-			.view-footer {
-			 	margin-top: 30px;
-			 	p {
-			 		a {
-			 			@include yellowbutton;
-			 			@include boxshadow;
-			 			@media screen and (min-width: 768px) and (max-width: 1100px) {
-			 				font-size: 17px;
-			 			}
-			 		}
-			 	}
-			}
-			.views-field-title {
-			 	padding-bottom: 10px;
-
-			}
-			.views-field-count {
-			 	.views-label {
-			 		padding-right: 32px;
-                    @include like;
-                     &:after {
-                     	top: -4px !important;
-                     }
-			 	}
-			}
-			h3 {
-			 	color: $white;
-			 	margin-top: 20px;
-			 	font-size: 17px;
-			 	@include arialbold;
-			 	text-transform: capitalize;
-			}
-			ul {
-			 	list-style: none;
-			 	
-			 	margin-left: 0;
-			 	 li {
-	               margin-left: 0;
-
-			 	 }
-			 	 	a {
-			 	 		
-			 	 		color: $white;
-			 	 		@include arialregular;
-			 	 		font-size: 18px;
-			 	 		text-decoration: underline;
-
-			 	 		
-			 	 	}
-			}
-		}
-	}
-}
+ 	}
+ }
 /**end of activity page**/
 
 /**css for program-dashboard page**/
@@ -2811,6 +2939,7 @@
 		 	 }
 		 }
 		.view-events {
+			padding-left: 35px;
 			.view-content {
 				h3 {
 					font-size: 20px;
@@ -2886,6 +3015,21 @@ display: block !important;
  		display: inline-block;
  		
  	}
+ 	.field-name-field-genre-other-option, .field-name-field-platform-other-option {
+ 		display: inline-block;
+ 		width: 19%;
+ 		vertical-align: top;
+ 		position: relative;
+ 		left: -13%;
+ 		bottom: 4px;
+ 		@include tablet {
+ 			left: -10%;
+ 		}
+ 		 @include mobile {
+ 		 	left: 0;
+ 		 }
+
+ 	}
  	.form-item-field-platform-und, .form-item-field-age-rating-of-game-und {
  		width: 100%;
  		display: inline-block;
@@ -2953,6 +3097,23 @@ display: block !important;
  }
  /**music review indivisual page***/
  .page-node-add-music-review {
+ 	.field-name-field-genre-other-option-music {
+ 		display: inline-block;
+ 		vertical-align: top;
+ 		width: 19%;
+ 		position: relative;
+ 		left: -13%;
+ 		bottom: 4px;
+ 		 @include mobile {
+ 		 	left: 0;
+ 		 }
+ 		 @include tablet {
+ 		 	left: -10%;
+ 		 }
+ 		 .form-item {
+ 		 	width: 100% !important;
+ 		 }
+ 	}
  	.form-checkboxes {
  		.form-item {
  		width: 19%;
@@ -3182,10 +3343,13 @@ display: block !important;
  .page-movie-review, .page-music-review-listing, .page-video-game-review {
  	.main {
  	.view-content {
+ 		padding-left: 35px;
  		.views-row {
  			display: inline-block;
  			width: 100%;
  			border-bottom: 1px solid $light-gray;
+ 			margin-bottom: 25px;
+ 			padding-bottom: 25px;
  			.views-field-counter {
  				font-size: 17px;
  				@include mclaren;
@@ -3199,6 +3363,9 @@ display: block !important;
  			 	  a {
  			 	  	font-size: 20px;
  			 	  	@include mclaren;
+ 			 	  	width: 75%;
+ 			 	  	display: inline-block;
+ 			 	  	vertical-align: top;
  			 	  }
  			 }
 
@@ -3265,4 +3432,586 @@ display: block !important;
  		}
  	}
  }
+ }
+ /**css node page movie, music and vedio game acitvity review page*/
+ .node-type-movie-review,.node-type-music-review,.node-type-video-game-review, .node-type-review-activity {
+ 	.main {
+ 		position: relative;
+ 		margin-top: 0;
+ 	}
+ 	#page-title {
+ 		color: $black;
+ 		font-size: 22px;
+ 		@include mclaren;
+ 		margin-left: 0;
+ 		margin-bottom: 10px;
+ 		width: 75%;
+ 		line-height: 1.4;
+ 	}
+ }
+ /**css node page activity review*/
+ .node-type-review-activity  {
+   article {
+ 	 .activity-review {
+ 	  	font-size: 17px;
+ 	  	  p {
+ 	  	  	.avatar {
+ 	  	  		img {
+ 	  	  			@include boxshadow;
+ 	  	  		}
+ 	  	  	}
+ 	  	  	@include arialregular;
+ 	  	  }
+ 	  	  div, a, span {
+ 	  	  	 @include mclaren;
+ 	  	  	 font-size: 17px;
+ 	  	  }
+ 	  	  div {
+ 	  	  	margin-bottom: 10px;
+ 	  	  }
+ 	  }
+      .activitylikefollow-wrap {
+      	position: absolute;
+      	right: 0;
+      	top: 1px;
+      	  .follow_link_activityreview {
+      	  	position: relative;
+      	  	width: 100%;
+      	  	display: inline-block;
+      	  	margin-top: 10px;
+      	  	 span {
+      	  	 	float: right;	
+      	  	 }	
+      	  	     a {
+      	  	     	@include yellowbutton;
+
+      	  	     }
+      	  }
+      	  .activity-likes {
+      	  	div {
+      	  		
+      	  		margin-bottom: 10px;
+      	  		&.like-here {
+      	  			margin-left: 40px;
+      	  			float: right;
+      	  			 a {
+					  	@include yellowbutton(p);
+					  	@include mclaren;
+					  	position: relative;
+					  	padding-right: 34px;
+					  	 &:after {
+					  	 	@include previous(30px, 30px, $right: 0, $top: 6px);
+		 	 				background: url('../images/libraryzurb/smily-white.png') no-repeat;
+					  	 }
+			  		}
+      	  		}
+      	  		&.like-count {
+      	  			float: left;
+      	  			@include mclaren;
+      	  			.lk-count {
+      	  			  @include like;
+      	  			  
+      	  			  font-size: 17px;
+      	  			}
+      	  		}
+      	  	}
+      	  }
+      }
+ 	}
+ }
+ /**css node page movie review*/
+ .node-type-movie-review {
+ 	
+ 	article {
+ 	  .movie-review {
+ 	  	font-size: 17px;
+ 	  	  p {
+ 	  	  	@include arialregular;
+ 	  	  }
+ 	  	  div, a, span {
+ 	  	  	 @include mclaren;
+ 	  	  	 font-size: 17px;
+ 	  	  }
+ 	  	  div {
+ 	  	  	margin-bottom: 10px;
+ 	  	  }
+ 	  }
+
+      .movielikefollow-wrap {
+      	position: absolute;
+      	right: 0;
+      	top: 1px;
+      	  .follow_link_moviereview {
+      	  	position: relative;
+      	  	width: 100%;
+      	  	display: inline-block;
+      	  	margin-top: 10px;
+      	  	span {
+      	  		float: right;
+      	  	}	
+      	  	     a {
+      	  	     	@include yellowbutton;
+      	  	     }
+      	  }
+      	  .movie-likes {
+      	  	div {
+      	  		
+      	  		margin-bottom: 10px;
+      	  		&.like-here {
+      	  			margin-left: 40px;
+      	  			float: right;
+      	  			 a {
+					  	@include yellowbutton(p);
+					  	@include mclaren;
+					  	position: relative;
+					  	padding-right: 34px;
+					  	 &:after {
+					  	 	@include previous(30px, 30px, $right: 0, $top: 6px);
+		 	 				background: url('../images/libraryzurb/smily-white.png') no-repeat;
+					  	 }
+			  		}
+      	  		}
+      	  		&.like-count {
+      	  			float: left;
+      	  			@include mclaren;
+      	  			.lk-count {
+      	  			  @include like;
+      	  			  
+      	  			  font-size: 17px;
+      	  			}
+      	  		}
+      	  	}
+      	  }
+      }
+ 	}
+ }
+ /*css node page music review*/
+ .node-type-music-review  {
+   article {
+ 	  .music-review {
+ 	  	font-size: 17px;
+ 	  	  p {
+ 	  	  	@include arialregular;
+ 	  	  }
+ 	  	  div, a, span {
+ 	  	  	 @include mclaren;
+ 	  	  	 font-size: 17px;
+ 	  	  }
+ 	  	  div {
+ 	  	  	margin-bottom: 10px;
+ 	  	  }
+ 	  }
+      .musiclikefollow-wrap {
+      	position: absolute;
+      	right: 0;
+      	top: 1px;
+      	  .follow_link_musicreview {
+      	  	position: relative;
+      	  	width: 100%;
+      	  	display: inline-block;
+      	  	margin-top: 10px;
+      	  	 span {
+      	  	 	float: right;	
+      	  	 }	
+      	  	     a {
+      	  	     	@include yellowbutton;
+
+      	  	     }
+      	  }
+      	  .music-likes {
+      	  	div {
+      	  		
+      	  		margin-bottom: 10px;
+      	  		&.like-here {
+      	  			margin-left: 40px;
+      	  			float: right;
+      	  			 a {
+					  	@include yellowbutton(p);
+					  	@include mclaren;
+					  	position: relative;
+					  	padding-right: 34px;
+					  	 &:after {
+					  	 	@include previous(30px, 30px, $right: 0, $top: 6px);
+		 	 				background: url('../images/libraryzurb/smily-white.png') no-repeat;
+					  	 }
+			  		}
+      	  		}
+      	  		&.like-count {
+      	  			float: left;
+      	  			@include mclaren;
+      	  			.lk-count {
+      	  			  @include like;
+      	  			  
+      	  			  font-size: 17px;
+      	  			}
+      	  		}
+      	  	}
+      	  }
+      }
+ 	}
+ }
+ /*vedio game review node page*/
+ .node-type-video-game-review {
+ 	article {
+ 	  .videogame-review {
+ 	  	font-size: 17px;
+ 	  	  p {
+ 	  	  	@include arialregular;
+ 	  	  }
+ 	  	  div, a, span {
+ 	  	  	 @include mclaren;
+ 	  	  	 font-size: 17px;
+ 	  	  }
+ 	  	  div {
+ 	  	  	margin-bottom: 10px;
+ 	  	  }
+ 	  }
+      .vidiogamelikefollow-wrap {
+      	position: absolute;
+      	right: 0;
+      	top: 1px;
+      	  .follow_link_videogamereview {
+      	  	position: relative;
+      	  	width: 100%;
+      	  	display: inline-block;
+      	  	margin-top: 10px;
+      	  	 span {
+      	  	 	float: right;	
+      	  	 }	
+      	  	     a {
+      	  	     	@include yellowbutton;
+
+      	  	     }
+      	  }
+      	  .videogame-likes {
+      	  	div {
+      	  		
+      	  		margin-bottom: 10px;
+      	  		&.like-here {
+      	  			margin-left: 40px;
+      	  			float: right;
+      	  			 a {
+					  	@include yellowbutton(p);
+					  	@include mclaren;
+					  	position: relative;
+					  	padding-right: 34px;
+					  	 &:after {
+					  	 	@include previous(30px, 30px, $right: 0, $top: 6px);
+		 	 				background: url('../images/libraryzurb/smily-white.png') no-repeat;
+					  	 }
+			  		}
+      	  		}
+      	  		&.like-count {
+      	  			float: left;
+      	  			@include mclaren;
+      	  			.lk-count {
+      	  			  @include like;
+      	  			  
+      	  			  font-size: 17px;
+      	  			}
+      	  		}
+      	  	}
+      	  }
+      }
+ 	}
+ }
+ /**css for progress report***/
+ .page-progress-report {
+ 	.main {
+ 	    padding: 25px 0px;
+ 		background: $blue;
+ 		color: $white;
+ 		margin-bottom: 25px;
+ 		.progress-page {
+ 			padding-left: 25px;
+ 			display: inline-block;
+ 			padding-right: 25px;
+ 			width: 100%;
+ 		}
+ 		  #title {
+ 		  	 font-size: 26px;
+ 		  	 color: $white;
+ 		  	 margin-top: 0;
+ 		  	 @include mclaren;
+ 		  	 margin-bottom: 8px;
+ 		  }
+ 		  .progress-desc {
+ 		  	p {
+ 		  		font-size: 16px;
+ 		  		@include arialbold;
+ 		  	}
+ 		  	ul {
+ 		  		list-style: none;
+ 		  		padding-left: 22px;
+ 		  		  li {
+ 		  		  	position: relative;
+ 		  		  	line-height: 1.7;
+ 		  		  	 &:before {
+ 		  		  	 	@include previous(5px,5px,$left: -10px, $top: 40%);
+ 		  		  	 	border-radius: 100%;
+ 		  		  	 	background: $white;
+ 		  		  	 }
+ 		  		  	 font-size: 16px;
+ 		  		  	 @include arialregular;
+ 		  		  }
+ 		  	}
+
+ 		  }
+ 		  .print-page {
+ 		  		position: absolute;
+ 		  		right: 25px;
+ 		  		top: 25px;
+ 		  		 .print {
+ 		  		 	@include noborder;
+ 		  		 	color: $white;
+ 		  		 	padding-left: 40px;
+ 		  		 	font-size: 18px;
+ 		  		 	background: $green url('../images/libraryzurb/print.png') no-repeat scroll 10px center;
+ 		  		 }
+ 		  	}
+ 		  .user-desc {
+              width: 100%;
+              display: table;
+              background: $green;
+              padding: 25px 14px;
+               .avatar-id {
+               	  width: 60%;
+               	  display: table-cell;
+               	  vertical-align: bottom;
+               	  font-size: 20px; 
+               	  @include mclaren;
+               	    img {
+               	    	@include boxshadow;
+               	    	margin-right: 10px;
+               	    	vertical-align: bottom;
+               	    	background: $white;
+               	    }
+               }
+               .point-status {
+               	width: 40%;
+               	display: table-cell;
+               	vertical-align: middle;
+               	  div {
+               	  	padding-left: 5%;
+               	  	float: left;
+               	  	font-size: 14px;
+               	  	@include arialregular;
+
+               	  }
+               }
+ 		  }
+ 		  .progress-wrap {
+ 		  	width: 100%;
+ 		  	display: table;
+ 		  	margin-top: 25px;
+ 		  	 .report-acivity {
+ 		  	 	width: 46%;
+ 		  	 	display: table-cell;
+ 		  	 	background: $white;
+ 		  	 	color: $blue;
+ 		  	 	vertical-align: top;
+ 		  	 	padding: 25px 20px;
+ 		  	 	  h1 {
+ 		  	 	  	color: $blue;
+ 		  	 	  	@include mclaren;
+ 		  	 	  	margin: 0;
+ 		  	 	  	font-size: 22px;
+ 		  	 	  }
+ 		  	 	  .submit {
+ 		  	 	  	button {
+			  	 	  	font-size: 18px;
+			  	 	  	color: $white;
+			  	 	  	margin-left: 0;
+			  	 	  	background: $blue;
+			  	 	  	@include mclaren;
+			  	 	  	@include noborder;
+ 		  	 	   }
+ 		  	 	  }
+ 		  	 	   .block {
+ 		  	 	   	margin-bottom: 0;
+ 		  	 	   	 form {
+ 		  	 	   	 	width: 100%;
+ 		  	 	   	 	display: inline-block;
+ 		  	 	   	 	 .form-item-activity-progress-select {
+ 		  	 	   	 	 	margin: 0;
+ 		  	 	   	 	 	width: 66%;
+ 		  	 	   	 	 	float: left;
+ 		  	 	   	 	 	label {
+ 		  	 	   	 	 		font-size: 16px;
+ 		  	 	   	 	 		color: $blue;
+ 		  	 	   	 	 		@include arialregular;
+ 		  	 	   	 	 		float: left;
+ 		  	 	   	 	 		margin-right: 10px;
+ 		  	 	   	 	 	}
+ 		  	 	   	 	 	.activities_list_progress {
+ 		  	 	   	 	 		width: 66% !important;
+ 		  	 	   	 	 		float: left;
+ 		  	 	   	 	 		
+ 		  	 	   	 	 		height: auto !important;
+ 		  	 	   	 	 		 .chosen-single {
+ 		  	 	   	 	 		 	border-radius: 0;
+ 		  	 	   	 	 		    border: 1px solid $blue;
+ 		  	 	   	 	 		    background: $white;
+ 		  	 	   	 	 		    color: $blue;
+ 		  	 	   	 	 		    line-height: 19px;
+ 		  	 	   	 	 		    @include arialregular;
+ 		  	 	   	 	 		      div {
+ 		  	 	   	 	 		      	width: 33px;
+ 		  	 	   	 	 		      	background: $blue;
+ 		  	 	   	 	 		      	} b {
+ 		  	 	   	 	 		      	background: none;
+ 		  	 	   	 	 		      	position: relative;
+ 		  	 	   	 	 		      
+ 		  	 	   	 	 		      	  &:after {
+ 		  	 	   	 	 		      	  	content: "";
+ 		  	 	   	 	 		      	  	border-left: 7px solid transparent;
+ 		  	 	   	 	 		      	  	border-right: 7px solid transparent;
+ 		  	 	   	 	 		      	  	border-top: 7px solid $white;
+ 		  	 	   	 	 		      	  	position: absolute;
+ 		  	 	   	 	 		      	  	left: 10px;
+ 		  	 	   	 	 		      	  	top: 7px;
+ 		  	 	   	 	 		      	  	display: inline-block;
+ 		  	 	   	 	 		      	  
+ 		  	 	   	 	 		      	  }
+ 		  	 	   	 	 		      }
+ 		  	 	   	 	 		 }
+ 		  	 	   	 	 	}
+ 		  	 	   	 	 }
+ 		  	 	   	 	 .container-inline-date {
+ 		  	 	   	 	 	width: 34%;
+ 		  	 	   	 	 	float: left;
+ 		  	 	   	 	 	clear: none;
+ 		  	 	   	 	 	 > .form-item.form-item-date {
+ 		  	 	   	 	 	 	width: 100%;
+ 		  	 	   	 	 	 	margin-right: 0;
+ 		  	 	   	 	 	 	 input {
+ 		  	 	   	 	 	 	 	width: 100%;
+ 		  	 	   	 	 	 	 	height: 100%;
+ 		  	 	   	 	 	 	 	padding: 4px 10px;
+ 		  	 	   	 	 	 	 	margin-left: 10px;
+ 		  	 	   	 	 	 	 	position: relative;
+ 		  	 	   	 	 	 	 	bottom: 5px;
+ 		  	 	   	 	 	 	 }
+ 		  	 	   	 	 	 	 label {
+ 		  	 	   	 	 	 	 	@include arialregular;
+ 		  	 	   	 	 	 	 	color: $blue;
+ 		  	 	   	 	 	 	 	font-size: 16px;
+ 		  	 	   	 	 	 	 	float: left;
+ 		  	 	   	 	 	 	 }
+ 		  	 	   	 	 	 	 .date-padding {
+ 		  	 	   	 	 	 	 	width: 80%;
+ 		  	 	   	 	 	 	 	label {
+ 		  	 	   	 	 	 	 		display: none;
+ 		  	 	   	 	 	 	 	}
+ 		  	 	   	 	 	 	 	.description {
+ 		  	 	   	 	 	 	 		display: none;
+ 		  	 	   	 	 	 	 	}
+ 		  	 	   	 	 	 	 }
+                                
+ 		  	 	   	 	 	 }
+ 		  	 	   	 	 }
+ 		  	 	   	 }
+ 		  	 	   }
+ 		  	 }
+ 		  	 .reward-won {
+ 		  	 	width: 32%;
+ 		  	 	display: table-cell;
+ 		  	 	vertical-align: middle;
+
+ 		  	 	
+ 		  	 	  .view {
+ 		  	 	  	color: $blue;
+ 		  	 	  	background: $white;
+ 		  	 	  	width: 92%;
+ 		  	 	  	margin: 0 auto;
+ 		  	 	  	padding: 22px;
+
+ 		  	 	  	 .pager {
+ 		  	 	  	 	margin-bottom: 0;
+ 		  	 	  	 	 text-align: right;
+ 		  	 	  	 	  .pager-current {
+ 		  	 	  	 	  	display: none;
+ 		  	 	  	 	  }
+ 		  	 	  	 	  li {
+ 		  	 	  	 	  	a {
+ 		  	 	  	 	  		color: $blue;
+ 		  	 	  	 	  		font-size: 16px;
+ 		  	 	  	 	  		@include arialbold;
+ 		  	 	  	 	  		text-transform: capitalize;
+ 		  	 	  	 	  	}
+ 		  	 	  	 	  }
+ 		  	 	  	 }
+ 		  	 	  	 .view-header {
+ 		  	 	  	 	@include mclaren;
+ 		  	 	  	 	 span {
+ 		  	 	  	 	 	font-size: 22px;
+ 		  	 	  	 	 }
+ 		  	 	  	 }
+ 		  	 	  	 .view-content {
+ 		  	 	  	 	.item-list {
+ 		  	 	  	 		ul {
+ 		  	 	  	 			list-style: numeric;
+ 		  	 	  	 			 li {
+ 		  	 	  	 			 	font-size: 16px;
+ 		  	 	  	 			 	@include arialregular;
+ 		  	 	  	 			 }
+ 		  	 	  	 		}
+ 		  	 	  	 	}
+ 		  	 	  	 }
+ 		  	 	  }
+ 		  	 }
+ 		  	 .progress-rewards {
+ 		  	 	width: 22%;
+ 		  	 	display: table-cell;
+ 		  	 	vertical-align: middle;
+ 		  	 	font-size: 22px;
+ 		  	 	color: $blue;
+ 		  	 	@include mclaren;
+ 		  	 	background: $light-yellow;
+ 		  	 	text-align: center;
+ 		  	 	 p {
+ 		  	 	 	font-size: 22px;
+ 		  	 	 	@include mclaren;
+ 		  	 	 	color: $blue;
+ 		  	 	 	text-align: center;
+ 		  	 	 }
+ 		  	 }
+ 		  }
+ 		  .progress-main {
+ 		  	margin-top: 82px;
+ 		  	width: 100%;
+ 		  	display: table;
+ 		  	position: relative;
+ 		  	padding-bottom: 25px;
+ 		  	  h1 {
+ 		  	  	width: 100%;
+ 		  	  	display: table-row;
+ 		  	  	margin-top: 0;
+ 		  	  	background: $green;
+ 		  	  	font-size: 24px;
+ 		  	  	@include mclaren;
+ 		  	  	color: $white;
+ 		  	  	padding-left: 15px;
+ 		  	  	padding-top: 15px;
+ 		  	  	padding-bottom: 7px;
+ 		  	  	position: absolute;
+ 		  	  	width: 100%;
+ 		  	  	margin-bottom: 0;
+ 		  	  	top: -56px;
+ 		  	  }
+ 		  	  .new-row {
+ 		  	  	width: 100%;
+ 		  	  	display: table-row;
+ 		  	  	 > .grid {
+ 		  	  	 	width: 16.6%;
+ 		  	  	 	display: table-cell;
+ 		  	  	 	background: $white;
+ 		  	  	 	height: 200px;
+ 		  	  	 	border: 0.5px solid $light-gray;
+
+ 		  	  	 }
+ 		  	  }
+ 		  }
+
+ 	}
  }
