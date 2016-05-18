@@ -179,7 +179,7 @@
 	  <div><?php if(isset($language)){ print 'Language: '.$language; }	?></div>
 	  <div><?php if(isset($release_year)){ print 'Released: '.$release_year; }	?></div>
 	  <div><?php if(isset($rating)){  print 'Rated: '.$rating; }	?></div>
-	  <div><?php if(isset($catalog_link)){ echo 'Catalog Link: '."<a href ='$catalog_link' target='_blank'>".$catalog_link.'</a>'; }	?></div>
+	  <div><?php if(isset($catalog_link)){ echo '<a href ="'.$catalog_link.'" target="_blank">View in Library Catalog</a>'; }	?></div>
 	  <div>
 	  	<p class="reviewer">
     	<span class = "created"><?php if ($node_privacy == 'public' || $node_privacy == 'private'){ print 'Reviewed by '; }?></span><span class="avatar"><?php if ($node_privacy == 'public' || $node_privacy == 'private') { print $img; } ?></span><span class ="name_author"><?php if ($node_privacy == 'public' || $node_privacy == 'private'){ print "<a href = '$base_url/users/public_profile/$node_uid' class = 'user_profile_node'>".' '.$reviewer.'</a>'; } ?></span>
