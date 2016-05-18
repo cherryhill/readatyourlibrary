@@ -3715,3 +3715,303 @@ display: block !important;
       }
  	}
  }
+ /**css for progress report***/
+ .page-progress-report {
+ 	.main {
+ 	    padding: 25px 0px;
+ 		background: $blue;
+ 		color: $white;
+ 		margin-bottom: 25px;
+ 		.progress-page {
+ 			padding-left: 25px;
+ 			display: inline-block;
+ 			padding-right: 25px;
+ 			width: 100%;
+ 		}
+ 		  #title {
+ 		  	 font-size: 26px;
+ 		  	 color: $white;
+ 		  	 margin-top: 0;
+ 		  	 @include mclaren;
+ 		  	 margin-bottom: 8px;
+ 		  }
+ 		  .progress-desc {
+ 		  	p {
+ 		  		font-size: 16px;
+ 		  		@include arialbold;
+ 		  	}
+ 		  	ul {
+ 		  		list-style: none;
+ 		  		padding-left: 22px;
+ 		  		  li {
+ 		  		  	position: relative;
+ 		  		  	line-height: 1.7;
+ 		  		  	 &:before {
+ 		  		  	 	@include previous(5px,5px,$left: -10px, $top: 40%);
+ 		  		  	 	border-radius: 100%;
+ 		  		  	 	background: $white;
+ 		  		  	 }
+ 		  		  	 font-size: 16px;
+ 		  		  	 @include arialregular;
+ 		  		  }
+ 		  	}
+
+ 		  }
+ 		  .print-page {
+ 		  		position: absolute;
+ 		  		right: 25px;
+ 		  		top: 25px;
+ 		  		 .print {
+ 		  		 	@include noborder;
+ 		  		 	color: $white;
+ 		  		 	padding-left: 40px;
+ 		  		 	font-size: 18px;
+ 		  		 	background: $green url('../images/libraryzurb/print.png') no-repeat scroll 10px center;
+ 		  		 }
+ 		  	}
+ 		  .user-desc {
+              width: 100%;
+              display: table;
+              background: $green;
+              padding: 25px 14px;
+               .avatar-id {
+               	  width: 60%;
+               	  display: table-cell;
+               	  vertical-align: bottom;
+               	  font-size: 20px; 
+               	  @include mclaren;
+               	    img {
+               	    	@include boxshadow;
+               	    	margin-right: 10px;
+               	    	vertical-align: bottom;
+               	    	background: $white;
+               	    }
+               }
+               .point-status {
+               	width: 40%;
+               	display: table-cell;
+               	vertical-align: middle;
+               	  div {
+               	  	padding-left: 5%;
+               	  	float: left;
+               	  	font-size: 14px;
+               	  	@include arialregular;
+
+               	  }
+               }
+ 		  }
+ 		  .progress-wrap {
+ 		  	width: 100%;
+ 		  	display: table;
+ 		  	margin-top: 25px;
+ 		  	 .report-acivity {
+ 		  	 	width: 46%;
+ 		  	 	display: table-cell;
+ 		  	 	background: $white;
+ 		  	 	color: $blue;
+ 		  	 	vertical-align: top;
+ 		  	 	padding: 25px 20px;
+ 		  	 	  h1 {
+ 		  	 	  	color: $blue;
+ 		  	 	  	@include mclaren;
+ 		  	 	  	margin: 0;
+ 		  	 	  	font-size: 22px;
+ 		  	 	  }
+ 		  	 	  .submit {
+ 		  	 	  	button {
+			  	 	  	font-size: 18px;
+			  	 	  	color: $white;
+			  	 	  	margin-left: 0;
+			  	 	  	background: $blue;
+			  	 	  	@include mclaren;
+			  	 	  	@include noborder;
+ 		  	 	   }
+ 		  	 	  }
+ 		  	 	   .block {
+ 		  	 	   	margin-bottom: 0;
+ 		  	 	   	 form {
+ 		  	 	   	 	width: 100%;
+ 		  	 	   	 	display: inline-block;
+ 		  	 	   	 	 .form-item-activity-progress-select {
+ 		  	 	   	 	 	margin: 0;
+ 		  	 	   	 	 	width: 66%;
+ 		  	 	   	 	 	float: left;
+ 		  	 	   	 	 	label {
+ 		  	 	   	 	 		font-size: 16px;
+ 		  	 	   	 	 		color: $blue;
+ 		  	 	   	 	 		@include arialregular;
+ 		  	 	   	 	 		float: left;
+ 		  	 	   	 	 		margin-right: 10px;
+ 		  	 	   	 	 	}
+ 		  	 	   	 	 	.activities_list_progress {
+ 		  	 	   	 	 		width: 66% !important;
+ 		  	 	   	 	 		float: left;
+ 		  	 	   	 	 		
+ 		  	 	   	 	 		height: auto !important;
+ 		  	 	   	 	 		 .chosen-single {
+ 		  	 	   	 	 		 	border-radius: 0;
+ 		  	 	   	 	 		    border: 1px solid $blue;
+ 		  	 	   	 	 		    background: $white;
+ 		  	 	   	 	 		    color: $blue;
+ 		  	 	   	 	 		    line-height: 19px;
+ 		  	 	   	 	 		    @include arialregular;
+ 		  	 	   	 	 		      div {
+ 		  	 	   	 	 		      	width: 33px;
+ 		  	 	   	 	 		      	background: $blue;
+ 		  	 	   	 	 		      	} b {
+ 		  	 	   	 	 		      	background: none;
+ 		  	 	   	 	 		      	position: relative;
+ 		  	 	   	 	 		      
+ 		  	 	   	 	 		      	  &:after {
+ 		  	 	   	 	 		      	  	content: "";
+ 		  	 	   	 	 		      	  	border-left: 7px solid transparent;
+ 		  	 	   	 	 		      	  	border-right: 7px solid transparent;
+ 		  	 	   	 	 		      	  	border-top: 7px solid $white;
+ 		  	 	   	 	 		      	  	position: absolute;
+ 		  	 	   	 	 		      	  	left: 10px;
+ 		  	 	   	 	 		      	  	top: 7px;
+ 		  	 	   	 	 		      	  	display: inline-block;
+ 		  	 	   	 	 		      	  
+ 		  	 	   	 	 		      	  }
+ 		  	 	   	 	 		      }
+ 		  	 	   	 	 		 }
+ 		  	 	   	 	 	}
+ 		  	 	   	 	 }
+ 		  	 	   	 	 .container-inline-date {
+ 		  	 	   	 	 	width: 34%;
+ 		  	 	   	 	 	float: left;
+ 		  	 	   	 	 	clear: none;
+ 		  	 	   	 	 	 > .form-item.form-item-date {
+ 		  	 	   	 	 	 	width: 100%;
+ 		  	 	   	 	 	 	margin-right: 0;
+ 		  	 	   	 	 	 	 input {
+ 		  	 	   	 	 	 	 	width: 100%;
+ 		  	 	   	 	 	 	 	height: 100%;
+ 		  	 	   	 	 	 	 	padding: 4px 10px;
+ 		  	 	   	 	 	 	 	margin-left: 10px;
+ 		  	 	   	 	 	 	 	position: relative;
+ 		  	 	   	 	 	 	 	bottom: 5px;
+ 		  	 	   	 	 	 	 }
+ 		  	 	   	 	 	 	 label {
+ 		  	 	   	 	 	 	 	@include arialregular;
+ 		  	 	   	 	 	 	 	color: $blue;
+ 		  	 	   	 	 	 	 	font-size: 16px;
+ 		  	 	   	 	 	 	 	float: left;
+ 		  	 	   	 	 	 	 }
+ 		  	 	   	 	 	 	 .date-padding {
+ 		  	 	   	 	 	 	 	width: 80%;
+ 		  	 	   	 	 	 	 	label {
+ 		  	 	   	 	 	 	 		display: none;
+ 		  	 	   	 	 	 	 	}
+ 		  	 	   	 	 	 	 	.description {
+ 		  	 	   	 	 	 	 		display: none;
+ 		  	 	   	 	 	 	 	}
+ 		  	 	   	 	 	 	 }
+                                
+ 		  	 	   	 	 	 }
+ 		  	 	   	 	 }
+ 		  	 	   	 }
+ 		  	 	   }
+ 		  	 }
+ 		  	 .reward-won {
+ 		  	 	width: 32%;
+ 		  	 	display: table-cell;
+ 		  	 	vertical-align: middle;
+
+ 		  	 	
+ 		  	 	  .view {
+ 		  	 	  	color: $blue;
+ 		  	 	  	background: $white;
+ 		  	 	  	width: 92%;
+ 		  	 	  	margin: 0 auto;
+ 		  	 	  	padding: 22px;
+
+ 		  	 	  	 .pager {
+ 		  	 	  	 	margin-bottom: 0;
+ 		  	 	  	 	 text-align: right;
+ 		  	 	  	 	  .pager-current {
+ 		  	 	  	 	  	display: none;
+ 		  	 	  	 	  }
+ 		  	 	  	 	  li {
+ 		  	 	  	 	  	a {
+ 		  	 	  	 	  		color: $blue;
+ 		  	 	  	 	  		font-size: 16px;
+ 		  	 	  	 	  		@include arialbold;
+ 		  	 	  	 	  		text-transform: capitalize;
+ 		  	 	  	 	  	}
+ 		  	 	  	 	  }
+ 		  	 	  	 }
+ 		  	 	  	 .view-header {
+ 		  	 	  	 	@include mclaren;
+ 		  	 	  	 	 span {
+ 		  	 	  	 	 	font-size: 22px;
+ 		  	 	  	 	 }
+ 		  	 	  	 }
+ 		  	 	  	 .view-content {
+ 		  	 	  	 	.item-list {
+ 		  	 	  	 		ul {
+ 		  	 	  	 			list-style: numeric;
+ 		  	 	  	 			 li {
+ 		  	 	  	 			 	font-size: 16px;
+ 		  	 	  	 			 	@include arialregular;
+ 		  	 	  	 			 }
+ 		  	 	  	 		}
+ 		  	 	  	 	}
+ 		  	 	  	 }
+ 		  	 	  }
+ 		  	 }
+ 		  	 .progress-rewards {
+ 		  	 	width: 22%;
+ 		  	 	display: table-cell;
+ 		  	 	vertical-align: middle;
+ 		  	 	font-size: 22px;
+ 		  	 	color: $blue;
+ 		  	 	@include mclaren;
+ 		  	 	background: $light-yellow;
+ 		  	 	text-align: center;
+ 		  	 	 p {
+ 		  	 	 	font-size: 22px;
+ 		  	 	 	@include mclaren;
+ 		  	 	 	color: $blue;
+ 		  	 	 	text-align: center;
+ 		  	 	 }
+ 		  	 }
+ 		  }
+ 		  .progress-main {
+ 		  	margin-top: 82px;
+ 		  	width: 100%;
+ 		  	display: table;
+ 		  	position: relative;
+ 		  	padding-bottom: 25px;
+ 		  	  h1 {
+ 		  	  	width: 100%;
+ 		  	  	display: table-row;
+ 		  	  	margin-top: 0;
+ 		  	  	background: $green;
+ 		  	  	font-size: 24px;
+ 		  	  	@include mclaren;
+ 		  	  	color: $white;
+ 		  	  	padding-left: 15px;
+ 		  	  	padding-top: 15px;
+ 		  	  	padding-bottom: 7px;
+ 		  	  	position: absolute;
+ 		  	  	width: 100%;
+ 		  	  	margin-bottom: 0;
+ 		  	  	top: -56px;
+ 		  	  }
+ 		  	  .new-row {
+ 		  	  	width: 100%;
+ 		  	  	display: table-row;
+ 		  	  	 > .grid {
+ 		  	  	 	width: 16.6%;
+ 		  	  	 	display: table-cell;
+ 		  	  	 	background: $white;
+ 		  	  	 	height: 200px;
+ 		  	  	 	border: 0.5px solid $light-gray;
+
+ 		  	  	 }
+ 		  	  }
+ 		  }
+
+ 	}
+ }

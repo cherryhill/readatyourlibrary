@@ -100,7 +100,7 @@ function activities_term_save($term,$fire_hook,$activity) {
 
 		  $activity_term->field_activity_id['und'][0]['value'] = $activity_id; 
 		  $activity_term->field_hotspot_activity_type['und'][0]['value'] = $activity_hotspot_value ? $activity_hotspot_value:0;
-		  $activity_term->field_progress_page['und'][0]['value'] = $activity_progress_page ? $activity_progress_page:0;
+		  $activity_term->field_progress_page_term['und'][0]['value'] = $activity_progress_page ? $activity_progress_page:0;
 		  taxonomy_term_save($activity_term);
 		  }
 	}else if(isset($field_activity_id)) {
@@ -117,7 +117,7 @@ function activities_term_save($term,$fire_hook,$activity) {
 			$activity_term = taxonomy_term_load($tid);
 			$activity_term->field_activity_id['und'][0]['value'] = $activity_id; 
 			$activity_term->field_hotspot_activity_type['und'][0]['value'] = $activity_hotspot_value;
-		 		$activity_term->field_progress_page['und'][0]['value'] = $activity_progress_page;
+		 		$activity_term->field_progress_page_term['und'][0]['value'] = $activity_progress_page;
 		 		$activity_term->name = $activity_title;
 			taxonomy_term_save($activity_term);
 		}
