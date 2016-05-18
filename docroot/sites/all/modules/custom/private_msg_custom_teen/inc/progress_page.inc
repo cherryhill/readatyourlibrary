@@ -27,7 +27,7 @@ function private_msg_custom_teen_theme(){
  */
 function complete_activity_progress(){
 	global $user;
-	$test = $user->uid;
+	$activity_uid = $user->uid;
 
 	$tid = $_POST['id'];
 	$activity_date = $_POST['date'];
@@ -36,9 +36,12 @@ function complete_activity_progress(){
 
 	$activity_id = $activity_term->field_activity_id['und'][0]['value'];
 	activity_report_node_create($activity_id, $activity_date, $tid);
+
+	play_library_program_create_activity_entry($activity_id,$activity_uid);
+
 	$output = $activity_id.' '.$activity_date;
 	$found = true;           
-  echo json_encode(array('success' => $found, 'content' => $output));
+  json_encode(array('success' => $found, 'content' => $output));
  
   module_invoke_all('exit');
   exit;
@@ -66,7 +69,7 @@ function progress_record($form,$form_state){
 	return $form;
 }
 
-function activity_report_node_create($activity_id, $activity_date, $term_tid, $check_in_progress = 1){
+function activity_report_node_create($activity_id, $activity_date, $term_tid, $check_in_progress = 0) {
 
 	$entity_info = entity_load('activity', array($activity_id));
 	$activity_name = $entity_info[$activity_id]->field_activity_description['und'][0]['safe_value'];
@@ -74,12 +77,14 @@ function activity_report_node_create($activity_id, $activity_date, $term_tid, $c
 	$activity_progress_status = $entity_info[$activity_id]->field_show_on_progress_page['und'][0]['value'];
   $_SESSION['progress_activity_id']= $activity_id;
 
-
-  if($check_in_progress == 0) {
-  	// if show in progress is zero
-  	return FALSE;
+  // check activity 'show in progress' status
+  if($check_in_progress) {
+  	if(!$activity_progress_status) {
+  	  return FALSE;
+    }
   }
-  	// if show in progress is one, node is created.
+  
+  // if show in progress is one, node is created.
 		global $user;
 		$current_user = $user->uid;
 
@@ -100,7 +105,7 @@ function activity_report_node_create($activity_id, $activity_date, $term_tid, $c
     // $node = node_load(495);//495
     // $hook = "node_update|node|{$node->type}|updated";
     // _play_library_program_invoke_activity_entry_hooks($node, 'node', $hook, 1);
-	return $created_nid = $node->nid;
+	  return $created_nid = $node->nid;
 }
 
 function user_avatar_progress_page($uid){
