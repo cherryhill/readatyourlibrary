@@ -743,7 +743,7 @@ function generate_json_data() {
     if($reward_claimed) {
 
       $events[] = array(
-        'title' => '<div><div class="reward_image"><img data-id="'.$value->id.'" src="sites/default/files/styles/thumbnail/public/' . $value->image_url . '"</img></div>'.'<div class="reward_text">Congratulations! You earned prize!</div></div>', 
+        'title' => '<div><div class="reward_image"><img data-id="'.$value->id.'" src="sites/default/files/styles/thumbnail/public/' . $value->image_url . '"</img></div>'.'<div class="reward_text">Congratulations, You earned a prize!</div></div>', 
         'date' => $value->date,
         );
     }
