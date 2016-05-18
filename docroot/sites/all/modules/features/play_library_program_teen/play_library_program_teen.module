@@ -566,7 +566,6 @@ function _play_library_program_invoke_activity_entry_hooks($entity, $type, $invo
 	$result = $query->execute();
 
 	foreach ($result as $entity_key => $entity_values) {
-		echo"<pre>"; print_r($entity_values); die();
 		if ($entity_key == 'activity') {
 
 			foreach ($entity_values as $activity_entity) { //echo $i++;
