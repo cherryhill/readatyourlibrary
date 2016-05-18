@@ -619,13 +619,19 @@ function _play_library_program_process_activity_entry($entity, $type) {
 
 	$rewards_user_can_claim = check_rewards_user_can_claim($entity->uid, $activity_rewards, $activity_id);
 
+	$firing_hook_type = $entity_info[$activity_id]->field_activity_fired_hook[LANGUAGE_NONE][0]['value'];
+		if($firing_hook_type != 'node_update|node|sticker|updated'){
+		  $current_date = date("Y-m-d");
+		  activity_report_node_create($activity_id, $current_date, 0, 1, $entity->uid);
+	  }
+
     // if user won reward, update the progress report node to indicate 'reward won'
     // statu on the progress grid
     if(count($rewards_user_can_claim)) {
       $progress_report_nid = $_SESSION['teen_progress_report_nid'];
       unset($_SESSION['teen_progress_report_nid']);
 
-      db_update('field_won_reward')
+      db_update('field_data_field_won_reward')
       ->fields(array('field_won_reward_value' => 1))
       ->condition ('entity_id', $progress_report_nid)
       ->execute(); 
