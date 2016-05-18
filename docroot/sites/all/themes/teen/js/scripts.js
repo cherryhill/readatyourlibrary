@@ -20,6 +20,15 @@
         for(var i = 0; i < divs.length; i+=6) {
         divs.slice(i, i+6).wrapAll("<div class='new-row'></div>");
     }
+    //Announcement block in landing page make image field as background image
+     $('.block.announcement').each(function() {
+  if ($(this).find('img').length) {
+    var imgURL = $(this).find('img').attr('src');
+    $(this).css('background-image', 'url(' + imgURL + ')');
+  $('.block.announcement img').hide();
+  }
+   
+  });
       //reward page give same counter list to two different views
        $('.page-rewards .view-program-rewards-raffle .views-row').insertAfter('.page-rewards .view-program-rewards .views-row:nth-last-child(1)');
       // select list option with thier link
