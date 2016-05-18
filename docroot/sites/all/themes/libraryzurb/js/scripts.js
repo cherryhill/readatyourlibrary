@@ -19,6 +19,15 @@
       $(".av_radio.form-radio").change(function () {
         $('.av_radio.form-radio').not(this).prop('checked', false);
       });
+        //Announcement block in landing page make image field as background image
+     $('.block.announcement').each(function() {
+      if ($(this).find('img').length) {
+        var imgURL = $(this).find('img').attr('src');
+        $(this).css('background-image', 'url(' + imgURL + ')');
+      $('.block.announcement img').hide();
+      }
+   
+  });
 
       // Get width of browser viewport. **Note:** The value we check against
       // should probably match the value set for `$topbar-breakpoint` in
