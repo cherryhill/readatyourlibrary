@@ -3985,7 +3985,7 @@ display: block !important;
  		  	padding-bottom: 25px;
  		  	  h1 {
  		  	  	width: 100%;
- 		  	  	display: table-row;
+ 		  	  	display: inline-block;
  		  	  	margin-top: 0;
  		  	  	background: $green;
  		  	  	font-size: 24px;
@@ -3997,17 +3997,34 @@ display: block !important;
  		  	  	position: absolute;
  		  	  	width: 100%;
  		  	  	margin-bottom: 0;
- 		  	  	top: -56px;
+ 		  	  	top: -55px;
  		  	  }
  		  	  .new-row {
  		  	  	width: 100%;
  		  	  	display: table-row;
  		  	  	 > .grid {
- 		  	  	 	width: 16.6%;
- 		  	  	 	display: table-cell;
+ 		  	  	 	width: 16.66%;
+ 		  	  	 	display: inline-block;
+ 		  	  	 	vertical-align: top;
+ 		  	  	 	color: $blue;
+ 		  	  	 	
+ 		  	  	 	padding: 10px 1.8%;
+ 		  	  	 	position: relative;
  		  	  	 	background: $white;
  		  	  	 	height: 200px;
  		  	  	 	border: 0.5px solid $light-gray;
+ 		  	  	 	 p {
+ 		  	  	 	 	@include mclaren;
+ 		  	  	 	 	line-height: 1.2;
+ 		  	  	 	 	font-size: 14px;
+ 		  	  	 	 	 &.won-rew {
+                           position: absolute;
+                           bottom: 10px;
+                           margin-bottom: 0;
+                           left: 7.2%;
+                           width: 90%;
+ 		  	  	 	 	 }
+ 		  	  	 	 }
 
  		  	  	 }
  		  	  }
