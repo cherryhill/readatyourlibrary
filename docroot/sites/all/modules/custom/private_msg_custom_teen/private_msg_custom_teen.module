@@ -79,7 +79,7 @@ function private_msg_custom_teen_menu() {
     'type' => MENU_SUGGESTED_ITEM,
   );
 
-  $items['progress_report'] = array(
+  $items['progress'] = array(
     'page callback' => 'progress_report_grid',
     'access callback' => TRUE,
     'type' => MENU_CALLBACK,
@@ -95,6 +95,13 @@ function private_msg_custom_teen_menu() {
     'page callback' => 'complete_activity_progress',
     'access callback' => TRUE,
     'type' => MENU_CALLBACK,
+  );
+
+  $items['progress-print'] = array(
+    'page callback' => 'progress_print_page',
+    'access callback' => TRUE,
+    'type' => MENU_CALLBACK,
+    'delivery callback' => 'deliver_plain',
   );
 
   return $items;

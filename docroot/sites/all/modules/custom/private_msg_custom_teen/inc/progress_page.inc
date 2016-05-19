@@ -134,3 +134,7 @@ function user_avatar_progress_page($uid){
 
 	return $img.$user_name;
 }
+
+function progress_print_page(){
+	echo 'hello';
+}
