@@ -633,7 +633,7 @@ function _play_library_program_process_activity_entry($entity, $type) {
         $progress_report_nid = $_SESSION['teen_progress_report_nid'];
         unset($_SESSION['teen_progress_report_nid']);
 
-        db_update('field_won_reward')
+        db_update('field_data_field_won_reward')
         ->fields(array('field_won_reward_value' => 1))
         ->condition ('entity_id', $progress_report_nid)
         ->execute();
