@@ -188,36 +188,30 @@ function progress_print_page(){
 </div>
 </div>
 <div class='progress-main'><h1>My Passport Stamps</h1>";
-
-  $nodes = entity_load('node',FALSE,$criteria);
-
-			foreach ($nodes as $key => $value) {
-			$node_date = $value->field_completion_date['und'][0]['value'];
-			$user_reward = $value->field_won_reward['und'][0]['value'];
-			if($user_reward != '0'){
-			 	$user_won_reward = '<p class  = "won-rew">Congratulations! You have earned a prize!</p>';
-			}
-			$n_date = date("m.d.y", strtotime($node_date));
-		$node_nid[] = '<p class  = "date-pg">'.$n_date.'</p><p class = "title-pg">'.$value->title.'</p>'.$user_won_reward;
-		}
-		$k=0;
-		$gr = ceil($grids/6);
+$nodes = entity_load('node',FALSE,$criteria);
+foreach ($nodes as $key => $value) {
+  $node_date = $value->field_completion_date['und'][0]['value'];
+  $user_reward = $value->field_won_reward['und'][0]['value'];
+  if($user_reward != '0'){
+    $user_won_reward = '<p class  = "won-rew">Congratulations! You have earned a prize!</p>';
+  }
+  $n_date = date("m.d.y", strtotime($node_date));
+  $node_nid[] = '<p class  = "date-pg">'.$n_date.'</p><p class = "title-pg">'.$value->title.'</p>'.$user_won_reward;
+}
+$k=0; $gr = ceil($grids/6);
 for($j=0;$j<$gr;$j++){
-	$output .=	'<div class = "grids">';
-		for($i=0; $i < 6; $i++){
-			$k++;
-		if($node_nid[$k]){
-
-		$output .=	'<div class = "grid inserted" id = "cells'.$k.'">'.$node_nid[$k].'</div>';
-		}
-		else{
-		$output .=	'<div class = "grid" id = "cells'.$k.'"></div>';
-		}
-			
-		}
-	$output .=	'</div>';
+  $output .=	'<div class = "new-row">';
+    for($i=0; $i < 6; $i++){
+	  $k++;
+	  if($node_nid[$k]){
+        $output .= '<div class = "grid inserted" id = "cells'.$k.'">'.$node_nid[$k].'</div>';
+      }
+      else{
+        $output .= '<div class = "grid" id = "cells'.$k.'"></div>';
+      }		
+    }
+  $output .= '</div>';
 }
 $output .= '</div></div>';
-
 echo $output;
 }
