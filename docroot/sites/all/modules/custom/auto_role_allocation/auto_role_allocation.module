@@ -290,16 +290,17 @@ function patron_activity_record_form($form, &$form_state) {
   $qry = db_select('eck_activity', 'eck_a');
     $qry->join('field_data_field_activity_fired_hook', 'fdfafh', 'fdfafh.entity_id = eck_a.id');
     $qry->condition('fdfafh.field_activity_fired_hook_value', 'node_update|node|sticker|updated');
-    $qry->fields('eck_a', array('title'));
+    $qry->fields('eck_a', array('title','id'));
     $resu = $qry->execute()->fetchAll();
     foreach ($resu as $value) {
-      $activity_title[] = $value->title; 
+      //$activity_id[] = $value->id; 
+      $activity_title[$value->id] = $value->title; 
     }
 
   $form['username'] = array(
     //'#title' => t('Username'),
     '#type' => 'textfield',
-    '#autocomplete_path' => 'user/autocomplete', 
+    '#autocomplete_path' => 'user/autocomplete',
   );
   $form['activity'] = array(
     '#type' => 'select',
@@ -334,21 +335,31 @@ function patron_activity_record_form_submit($form, &$form_state) {
   $query = db_select('users', 'u');
     $query->condition('u.name', $username);
     $query->fields('u', array('uid'));
-    $res = $query->execute()->fetchField();
-    
+    $user_uid = $query->execute()->fetchField();
+
+
+  $activity_id = $form_state['values']['activity'];
   $from = strtotime($form_state['values']['from']);
   $to = strtotime($form_state['values']['to']);
   $datediff = $to - $from;
   $date_diff = ceil($datediff/(60*60*24));
   for($i = 0; $i <= $date_diff; $i++) {
-    $node = node_load(495);//495
-      //auto_role_allocation_node_update($current_node);
-        /* this is for calendar activity*/
-        $hook = "node_update|node|{$node->type}|updated";
-        _play_library_program_invoke_activity_entry_hooks($node, 'node', $hook, 1);
+    play_library_program_create_activity_entry($activity_id, $user_uid);
   }
-}
 
+  getDatesFromRange($from, $to);
+  $event_image = 'sticker_sun.png';
+  // insert the activity record in calendar table
+  $insert_query =db_insert('calendar')
+    ->fields(array(
+      'uid'=>$user_uid,
+      'image_url'=>$event_image,
+      'date'=>$event_time,
+    ));
+  $insert_query->execute();
+   
+
+}
 
 /* hook menu() for raffle winner user list */
 
