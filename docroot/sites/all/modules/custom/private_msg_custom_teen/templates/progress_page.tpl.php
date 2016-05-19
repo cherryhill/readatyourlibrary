@@ -56,6 +56,7 @@
 
 <div class="progress-main">
 	<?php 
+	    echo '<h1>My Passport Stamps</h1>';
 		$grids = variable_get('no_of_grids'); $criteria = array(
    		'uid' => $userID,
    		'type' => $type,

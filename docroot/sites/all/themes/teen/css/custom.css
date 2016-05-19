@@ -15583,7 +15583,7 @@ body .alert-box.success a.close:hover {
 }
 .page-progress-report .main .progress-main h1 {
   width: 100%;
-  display: table-row;
+  display: inline-block;
   margin-top: 0;
   background: #7eb600;
   font-size: 24px;
@@ -15599,18 +15599,38 @@ body .alert-box.success a.close:hover {
   position: absolute;
   width: 100%;
   margin-bottom: 0;
-  top: -56px;
+  top: -55px;
 }
 .page-progress-report .main .progress-main .new-row {
   width: 100%;
   display: table-row;
 }
 .page-progress-report .main .progress-main .new-row > .grid {
-  width: 16.6%;
-  display: table-cell;
+  width: 16.66%;
+  display: inline-block;
+  vertical-align: top;
+  color: #32024e;
+  padding: 10px 1.8%;
+  position: relative;
   background: #fff;
   height: 200px;
   border: 0.5px solid #cccccc;
+}
+.page-progress-report .main .progress-main .new-row > .grid p {
+  font-family: SpecialElite !important;
+  font-weight: normal !important;
+  font-style: normal !important;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+  line-height: 1.2;
+  font-size: 14px;
+}
+.page-progress-report .main .progress-main .new-row > .grid p.won-rew {
+  position: absolute;
+  bottom: 10px;
+  margin-bottom: 0;
+  left: 7.2%;
+  width: 90%;
 }
 
 /**
