@@ -340,26 +340,24 @@ function patron_activity_record_form_submit($form, &$form_state) {
 
   $activity_id = $form_state['values']['activity'];
   $from = strtotime($form_state['values']['from']);
-  $to = strtotime($form_state['values']['to']);
-  $datediff = $to - $from;
-  $date_diff = ceil($datediff/(60*60*24));
-  for($i = 0; $i <= $date_diff; $i++) {
-    play_library_program_create_activity_entry($activity_id, $user_uid);
-  }
+  $to = strtotime($form_state['values']['to']);  
+    for ($i=$from; $i<=$to; $i+=86400) {
+      
+      $date = strtotime(date("Y-m-d", $i));
+      play_library_program_create_activity_entry($activity_id, $user_uid);
+      $event_image = 'sticker_sun.png';
+      $insert_query =db_insert('calendar')
+        ->fields(array(
+          'uid'=>$user_uid,
+          'image_url'=>$event_image,
+          'date'=>$date,
+        ));
+      $insert_query->execute(); 
 
-  getDatesFromRange($from, $to);
-  $event_image = 'sticker_sun.png';
-  // insert the activity record in calendar table
-  $insert_query =db_insert('calendar')
-    ->fields(array(
-      'uid'=>$user_uid,
-      'image_url'=>$event_image,
-      'date'=>$event_time,
-    ));
-  $insert_query->execute();
-   
-
+    }
 }
+
+
 
 /* hook menu() for raffle winner user list */
 
