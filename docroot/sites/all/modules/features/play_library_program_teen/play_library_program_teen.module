@@ -618,7 +618,8 @@ function _play_library_program_process_activity_entry($entity, $type) {
 	$activity_rewards = _play_library_program_get_activity_reward_ids($activity_id, $current_participation_count, $entity->uid);
 
 	$rewards_user_can_claim = check_rewards_user_can_claim($entity->uid, $activity_rewards, $activity_id);
-
+	
+	$entity_info = entity_load('activity', array($activity_id));
 	$firing_hook_type = $entity_info[$activity_id]->field_activity_fired_hook[LANGUAGE_NONE][0]['value'];
 		if($firing_hook_type != 'node_update|node|sticker|updated'){
 		  $current_date = date("Y-m-d");

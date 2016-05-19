@@ -157,10 +157,9 @@ function progress_print_page(){
   	'type' => $type,
  	);
  	$criteria = array(
-	  'uid' => $current_uid,
+	  'uid' => $uid,
 	  'type' => 'activity_report',
 	);
-
 	$output .= "<div class='progress-page'>
 <h1 id = 'title'>$pg_title
 </h1>
@@ -178,7 +177,7 @@ function progress_print_page(){
 </div>
 </div>
 <div class='progress-wrap'>
-<div class='report-acivity'><h1>Report an Activity</h1>$user_reward_block; 
+<div class='report-acivity'><h1>Report an Activity</h1>$user_reward_block
 	<div class='submit'>
 		<button id='pg-report'>Submit</button>
 	</div>
@@ -189,26 +188,30 @@ function progress_print_page(){
 </div>
 </div>
 <div class='progress-main'><h1>My Passport Stamps</h1>";
-
-$output .= $nodes = entity_load('node',FALSE,$criteria);
-			foreach ($nodes as $key => $value) {
-			$node_date = $value->field_completion_date['und'][0]['value'];
-			$user_reward = $value->field_won_reward['und'][0]['value'];
-			if($user_reward != '0'){
-				$user_won_reward = '<p class  = "won-rew">Congratulations! You have earned a prize!</p>';
-			}
-			$n_date = date("m.d.y", strtotime($node_date));
-			$node_nid[] = '<p class  = "date-pg">'.$n_date.'</p><p class = "title-pg">'.$value->title.'</p>'.$user_won_reward;
-		}
-
-		for($i=0; $i < $grids; $i++){
-			if($node_nid[$i]){
-			echo '<div class = "grid inserted" id = "cells'.$i.'">'.$node_nid[$i].'</div>';
-		}
-		else{
-			echo '<div class = "grid" id = "cells'.$i.'"></div>';
-		}
-		}
+$nodes = entity_load('node',FALSE,$criteria);
+foreach ($nodes as $key => $value) {
+  $node_date = $value->field_completion_date['und'][0]['value'];
+  $user_reward = $value->field_won_reward['und'][0]['value'];
+  if($user_reward != '0'){
+    $user_won_reward = '<p class  = "won-rew">Congratulations! You have earned a prize!</p>';
+  }
+  $n_date = date("m.d.y", strtotime($node_date));
+  $node_nid[] = '<p class  = "date-pg">'.$n_date.'</p><p class = "title-pg">'.$value->title.'</p>'.$user_won_reward;
+}
+$k=0; $gr = ceil($grids/6);
+for($j=0;$j<$gr;$j++){
+  $output .=	'<div class = "new-row">';
+    for($i=0; $i < 6; $i++){
+	  $k++;
+	  if($node_nid[$k]){
+        $output .= '<div class = "grid inserted" id = "cells'.$k.'">'.$node_nid[$k].'</div>';
+      }
+      else{
+        $output .= '<div class = "grid" id = "cells'.$k.'"></div>';
+      }		
+    }
+  $output .= '</div>';
+}
 $output .= '</div></div>';
-
+echo $output;
 }
