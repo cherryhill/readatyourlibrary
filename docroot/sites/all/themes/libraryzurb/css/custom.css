@@ -6272,6 +6272,8 @@ a.th {
   border-left: 1px solid transparent;
   padding: 0;
   height: 33px;
+  width: 31px;
+  overflow: hidden;
 }
 .pagination.pager li.current a {
   background: #267fda;
@@ -6284,8 +6286,8 @@ a.th {
   padding: 5px 10px;
   color: #fff;
   text-decoration: none;
-  width: 31px;
-  height: 33px;
+  width: 100%;
+  height: 100%;
   padding: 0 !important;
   text-decoration: none !important;
   font-size: 17px;
@@ -6296,19 +6298,15 @@ a.th {
 }
 .pagination.pager li.arrow:nth-of-type(2) a {
   color: transparent !important;
-  background: #f6511d url("../images/libraryzurb/left-arrow.png") no-repeat !important;
+  background: #f6511d url("../images/libraryzurb/left-arrow.png") no-repeat;
   background-position: center 7px;
-  width: 31px;
-  height: 33px;
   background-size: 18px;
   border-radius: 12px 0px 0px 12px;
 }
 .pagination.pager li.arrow:nth-last-of-type(2) a {
   color: transparent !important;
-  background: #f6511d url("../images/libraryzurb/right-arrow.png") no-repeat !important;
+  background: #f6511d url("../images/libraryzurb/right-arrow.png") no-repeat;
   background-position: center 4px;
-  width: 31px;
-  height: 33px;
   background-size: 18px;
   border-radius: 0px 12px 12px 0px;
 }
@@ -6501,6 +6499,41 @@ form#user-pass span.form-required {
 form#user-pass div.user_pass_name:after {
   content: "*";
   color: #cc0d25;
+}
+
+.blue-button {
+  color: #fff !important;
+  font-family: McLaren-Regular !important;
+  font-weight: normal !important;
+  font-style: normal !important;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+  text-rendering: optimizeLegibility !important;
+  -moz-font-smoothing: grayscale !important;
+  background: #267fda !important;
+  border-radius: 10px;
+  padding: 9px 22px;
+  -webkit-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+  box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+  border: none;
+  font-size: 17px;
+  display: inline-block;
+  text-transform: capitalize;
+}
+.blue-button:hover, .blue-button:focus {
+  color: #fff;
+  background: #267fda;
+  opacity: 1;
+  outline: none;
+}
+
+.l-messages div.messages.status {
+  margin-bottom: 15px !important;
+}
+
+.mail-notification-hidden {
+  display: none;
 }
 
 .admin-menu .fixed {
@@ -7222,7 +7255,7 @@ form#user-pass div.user_pass_name:after {
 }
 .block.bordr-bottom {
   border-bottom: 1px solid #cccccc;
-  padding-bottom: 20px;
+  /* padding-bottom: 20px; */
 }
 .block.block-private-msg-custom {
   color: #fff;
@@ -12305,6 +12338,7 @@ body .alert-box.success a.close:hover {
 .page-booklists .main .view-booklist-slideshow .owl-carousel .owl-wrapper-outer {
   width: 99%;
   margin: 0 auto;
+  padding-bottom: 35px;
 }
 .page-booklists .main .view-booklist-slideshow .owl-carousel .owl-item .views-field-field-booklist-cover-image {
   width: 135px;
@@ -13620,6 +13654,19 @@ body .alert-box.success a.close:hover {
   width: 100%;
   display: inline-block;
 }
+.page-user-register #user-register-form #checkboxes-div {
+  width: 100%;
+  display: inline-block;
+}
+.page-user-register #user-register-form #checkboxes-div .avatar_radio {
+  width: 11.1%;
+  display: inline-block;
+  vertical-align: top;
+}
+.page-user-register #user-register-form #checkboxes-div .avatar_radio img {
+  position: relative;
+  bottom: 10px;
+}
 .page-user-register #edit-profile-main-field-receive-notifications div.description {
   font-size: 14px;
   font-family: Arialbold !important;
@@ -13755,16 +13802,20 @@ body .alert-box.success a.close:hover {
 .node-type-review-book #page-title {
   display: none;
 }
-.node-type-review-book .main .review_node_sidebar {
-  width: 30%;
+.node-type-review-book .main .reviewbook_footer {
+  width: 100%;
   display: inline-block;
-  vertical-align: top;
-  margin-top: 20px;
+  margin-bottom: 26px;
 }
-.node-type-review-book .main .review_node_sidebar .follow_link_bookreview {
-  padding-left: 30px;
+.node-type-review-book .main .reviewbook_footer ul.links {
+  float: left;
+  padding-right: 10px;
 }
-.node-type-review-book .main .review_node_sidebar .follow_link_bookreview a {
+.node-type-review-book .main .follow_link_bookreview {
+  float: left;
+  padding-right: 10px;
+}
+.node-type-review-book .main .follow_link_bookreview a {
   color: #fff !important;
   font-family: McLaren-Regular !important;
   font-weight: normal !important;
@@ -13782,22 +13833,23 @@ body .alert-box.success a.close:hover {
   border: none;
   text-transform: capitalize;
 }
-.node-type-review-book .main .review_node_sidebar .follow_link_bookreview a:hover, .node-type-review-book .main .review_node_sidebar .follow_link_bookreview a:focus {
+.node-type-review-book .main .follow_link_bookreview a:hover, .node-type-review-book .main .follow_link_bookreview a:focus {
   color: #fff;
   background: #267fda;
   opacity: 1;
   outline: none;
 }
-.node-type-review-book .main .review_node_sidebar .like-count {
-  width: 49%;
+.node-type-review-book .main .like-count {
   display: inline-block;
+  float: left;
+  padding-right: 10px;
   margin-bottom: 20px;
 }
-.node-type-review-book .main .review_node_sidebar .like-count .lk-count {
+.node-type-review-book .main .like-count .lk-count {
   position: relative;
   padding-right: 34px;
 }
-.node-type-review-book .main .review_node_sidebar .like-count .lk-count:after {
+.node-type-review-book .main .like-count .lk-count:after {
   content: "";
   width: 30px;
   height: 30px;
@@ -13808,15 +13860,15 @@ body .alert-box.success a.close:hover {
   right: 0;
   background: url("../images/libraryzurb/smily-white.png") no-repeat;
 }
-.node-type-review-book .main .review_node_sidebar .flag-like {
+.node-type-review-book .main .flag-like {
   display: none;
 }
-.node-type-review-book .main .review_node_sidebar span.flag-like {
-  width: 49%;
+.node-type-review-book .main span.flag-like {
   display: inline-block;
-  margin-bottom: 20px;
+  float: left;
+  padding-right: 10px;
 }
-.node-type-review-book .main .review_node_sidebar span.flag-like a {
+.node-type-review-book .main span.flag-like a {
   background: #267fda url("../images/libraryzurb/smily-white.png") no-repeat;
   border-radius: 10px;
   -webkit-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
@@ -13833,11 +13885,16 @@ body .alert-box.success a.close:hover {
   -moz-font-smoothing: grayscale !important;
   font-size: 17px;
 }
-.node-type-review-book .main .review_node_sidebar span.flag-like a.unflag-action {
+.node-type-review-book .main span.flag-like a.unflag-action {
   background-position: 77px center !important;
 }
-.node-type-review-book .main .review_node_sidebar span.flag-like a.flag-action {
+.node-type-review-book .main span.flag-like a.flag-action {
   background-position: 64px center !important;
+}
+.node-type-review-book .main .review_node_sidebar {
+  width: 30%;
+  display: inline-block;
+  vertical-align: top;
 }
 .node-type-review-book .main .review_node_sidebar .img_review table, .node-type-review-book .main .review_node_sidebar .img_review tbody {
   border: none !important;
@@ -13979,33 +14036,6 @@ body .alert-box.success a.close:hover {
   margin-left: 5px;
   margin-right: 5px;
 }
-.node-type-booklist .booklist-title .bk_follow {
-  margin-top: 35px;
-}
-.node-type-booklist .booklist-title .bk_follow a {
-  color: #fff !important;
-  font-family: McLaren-Regular !important;
-  font-weight: normal !important;
-  font-style: normal !important;
-  -webkit-font-smoothing: antialiased !important;
-  -moz-osx-font-smoothing: grayscale !important;
-  text-rendering: optimizeLegibility !important;
-  -moz-font-smoothing: grayscale !important;
-  background: #267fda !important;
-  border-radius: 10px;
-  padding: 9px 22px;
-  -webkit-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
-  -moz-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
-  box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
-  border: none;
-  text-transform: capitalize;
-}
-.node-type-booklist .booklist-title .bk_follow a:hover, .node-type-booklist .booklist-title .bk_follow a:focus {
-  color: #fff;
-  background: #267fda;
-  opacity: 1;
-  outline: none;
-}
 .node-type-booklist .booklist-title .bk_follow_like {
   width: 29%;
   display: inline-block;
@@ -14065,6 +14095,35 @@ body .alert-box.success a.close:hover {
 .node-type-booklist .booklist-title .bk_follow_like .flag-like a.flag-action {
   background-position: 64px center !important;
 }
+.node-type-booklist .bk_follow {
+  margin: 35px 10px 10px 0;
+  float: left;
+}
+.node-type-booklist .bk_follow a {
+  color: #fff !important;
+  font-family: McLaren-Regular !important;
+  font-weight: normal !important;
+  font-style: normal !important;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+  text-rendering: optimizeLegibility !important;
+  -moz-font-smoothing: grayscale !important;
+  background: #267fda !important;
+  border-radius: 10px;
+  padding: 9px 22px;
+  -webkit-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+  box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+  border: none;
+  text-transform: capitalize;
+  display: inline-block;
+}
+.node-type-booklist .bk_follow a:hover, .node-type-booklist .bk_follow a:focus {
+  color: #fff;
+  background: #267fda;
+  opacity: 1;
+  outline: none;
+}
 .node-type-booklist article {
   width: 100%;
   display: inline-block;
@@ -14117,14 +14176,15 @@ body .alert-box.success a.close:hover {
 }
 .node-type-booklist article .links.inline {
   list-style: none;
-  width: 100%;
-  display: inline-block;
+  position: relative;
+  top: 3px;
 }
 .node-type-booklist article .links.inline li {
   margin-top: 40px;
-  width: 100%;
-  display: inline-block;
+  float: left;
   margin-left: 0;
+  margin-right: 10px;
+  margin-bottom: 20px;
 }
 .node-type-booklist article .links.inline li a {
   color: #fff !important;
@@ -14143,12 +14203,28 @@ body .alert-box.success a.close:hover {
   box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
   border: none;
   text-transform: capitalize;
+  font-size: lg;
 }
 .node-type-booklist article .links.inline li a:hover, .node-type-booklist article .links.inline li a:focus {
   color: #fff;
   background: #267fda;
   opacity: 1;
   outline: none;
+}
+.node-type-booklist article .links.inline li.flag-like a {
+  position: relative;
+  padding-right: 40px;
+}
+.node-type-booklist article .links.inline li.flag-like a:after {
+  content: "";
+  width: 30px;
+  height: 30px;
+  display: block;
+  visibility: visible;
+  position: absolute;
+  top: 11px;
+  right: 6px;
+  background: url("../images/libraryzurb/smily-white.png") no-repeat;
 }
 
 /**

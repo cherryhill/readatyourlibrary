@@ -27,54 +27,69 @@ function private_msg_custom_menu() {
 
   // Adding link for setting purchase link for booklist
   $items['admin/config/system/platform_configuration'] = array(
-	  'title' => 'Platform Configuration',
-	  'description' => 'Chilco platform configuration page.',
-	  'page callback' => 'drupal_get_form',
-	  'page arguments' => array('platform_configuration_purchase_link'),
-	  'access arguments' => array('access administration pages'),
-	  'type' => MENU_NORMAL_ITEM,
-	  'file' => 'inc/platform_configuration_purchase_link.inc',
-	  'file path' => drupal_get_path('module', 'private_msg_custom'),
+    'title' => 'Platform Configuration',
+    'description' => 'Chilco platform configuration page.',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('platform_configuration_purchase_link'),
+    'access arguments' => array('access administration pages'),
+    'type' => MENU_NORMAL_ITEM,
+    'file' => 'inc/platform_configuration_purchase_link.inc',
+    'file path' => drupal_get_path('module', 'private_msg_custom'),
   );
 
    $items['profile_avatar'] = array(
-	  'title' => 'Profile Avatar',
-	  'description' => 'providing tabs for different avatars',
-	  'page callback' => 'drupal_get_form',
+    'title' => 'Profile Avatar',
+    'description' => 'providing tabs for different avatars',
+    'page callback' => 'drupal_get_form',
     'page arguments' => array('ajax_avatar_profile_checkboxes'),
-	  'access arguments' => array('access content'),
+    'access arguments' => array('access content'),
     'type' => MENU_SUGGESTED_ITEM,
-	  'file' => 'inc/platform_configuration_purchase_link.inc',
-	  'file path' => drupal_get_path('module', 'private_msg_custom'),
+    'file' => 'inc/platform_configuration_purchase_link.inc',
+    'file path' => drupal_get_path('module', 'private_msg_custom'),
   );
 
   $items['author/autocomplete'] = array(
-  	'title' => 'Author Name',
-  	'page callback' => '_author_name_autocomplete',
-  	'access arguments' => array('access content'),
-  	'type' => MENU_CALLBACK,
-  	'file' => 'inc/platform_configuration_purchase_link.inc',
-	  'file path' => drupal_get_path('module', 'private_msg_custom'),
+    'title' => 'Author Name',
+    'page callback' => '_author_name_autocomplete',
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
+    'file' => 'inc/platform_configuration_purchase_link.inc',
+    'file path' => drupal_get_path('module', 'private_msg_custom'),
+  );
+
+  $items['avatar_user'] = array(
+    'title' => 'Avatar',
+    'page callback' => 'user_avatar',
+    'access arguments' => array('access content'),
+    'type' => MENU_SUGGESTED_ITEM,
+  );
+  $items['avatar_user_form'] = array(
+    'title' => 'Avatar',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('avatar_form'),
+    'access arguments' => array('access content'),
+    'type' => MENU_SUGGESTED_ITEM,
   );
   return $items;
 }
 
+
 function private_msg_custom_cronapi($op, $job = NULL){
-	$items['events_import_cron'] = array(
+  $items['events_import_cron'] = array(
     'description' => 'Events import cron',
   );
   return $items;
 }
 
 function events_import_cron(){
-	db_delete('node')
+  db_delete('node')
     ->condition('type', 'event')
     ->condition('status',0)
     ->execute();
 
-		$source = feeds_source('events');
-		// Execute the import.
-		while (FEEDS_BATCH_COMPLETE != $source->import());
+    $source = feeds_source('events');
+    // Execute the import.
+    while (FEEDS_BATCH_COMPLETE != $source->import());
 }
 
 /**
@@ -105,8 +120,7 @@ function private_msg_custom_init() {
   $program_start_date = variable_get('pmc_start_date', 0);
   $program_end_date = variable_get('pmc_end_date', 0);
   $setting = array('private_msg_custom' => array('proStart' => $program_start_date, 'proEnd' => $program_end_date));
-  drupal_add_js($setting, 'setting');
-  
+  drupal_add_js($setting, 'setting'); 
 }
 
 
@@ -115,60 +129,59 @@ function private_msg_custom_init() {
  */
 function private_msg_custom_form_profile2_edit_main_form_alter(&$form, $form_state) {
 
-	$form['profile_main']['field_user_avatar'] = array('#attributes' => array('style' => 'display:none'));
+  $form['profile_main']['field_user_avatar'] = array('#attributes' => array('style' => 'display:none'));
 
-  $query = db_select('field_data_field_avatar_type','type');
-	$query->fields('type',array('field_avatar_type_tid','entity_id'));
-	$query->join('eck_user_avatar','eck','eck.id = type.entity_id');
-	$query->join('taxonomy_term_data','tax','tax.tid = type.field_avatar_type_tid');
-	$query->fields('tax',array('name'));
-  $query->fields('eck',array('title'));
-	$query_avatar = $query->execute()->fetchAll();
+    $query = db_select('field_data_field_avatar_type','type');
+    $query->fields('type',array('field_avatar_type_tid','entity_id'));
+    $query->join('eck_user_avatar','eck','eck.id = type.entity_id');
+    $query->join('taxonomy_term_data','tax','tax.tid = type.field_avatar_type_tid');
+    $query->fields('tax',array('name'));
+    $query->fields('eck',array('title'));
+    $query_avatar = $query->execute()->fetchAll();
+    $output = '';
+    $output .= '<div style="border:1px solid red;">';
+    foreach ($query_avatar as $key => $value) {
+      $as = $value->name;
+      $tax_name[$value->field_avatar_type_tid] = $value->name;
+      $tax_name[$value->field_avatar_type_tid] = $value->name;
+      $avatar_name[$value->field_avatar_type_tid][] = $value->entity_id;
+    }
 
-	foreach ($query_avatar as $key => $value) {
-    $tax_name[$value->field_avatar_type_tid] = $value->name;
-    $avatar_name[$value->field_avatar_type_tid][] = $value->entity_id;
-  }
+  foreach ($tax_name as $key => $value) {
+    $output .= '<div style="border:1px solid blue; float:left;margin-left:10px">'. $value . '</div>';
 
-  $num_avatar = !empty($form_state['values']['avatar_select']) ? $form_state['values']['avatar_select'] : 1;
-  $none_array = array(0 => '-None-');
-  $array2 = $tax_name + $none_array;
+  } 
+    $form['checkboxes_fieldset'] = array(
+      '#title' => t("Avatars"),
+      '#prefix' => '<div id="checkboxes-div">',
+      '#suffix' => '</div>',
+      '#type' => 'fieldset',
+      '#weight' => 11,
+    );
 
-  $form['avatar_select'] = array(
-    '#title' => t('What kind of avatar do you want?'),
-    '#type' => 'select',
-    '#options' => $array2,
-    '#ajax' => array(
-      'callback' => 'ajax_autocheckboxes_callback_avatar',
-      'wrapper' => 'checkboxes-div',
-      'effect' => 'slide',
-      'progress' => array('type' => 'none'),
-    ),
-    '#weight' => 10,
-  );
+    $form['checkboxes_fieldset']['description'] = array('#markup' => '<div>' . t('What kind of avatar do you want?').'</div>');
 
-  $form['checkboxes_fieldset'] = array(
-    '#title' => t("Avatars"),
-    '#prefix' => '<div id="checkboxes-div">',
-    '#suffix' => '</div>',
-    '#type' => 'fieldset',
-    '#weight' => 11,
-  );
-
-	foreach ($avatar_name[$num_avatar] as $key => $value) {
-		$form['checkboxes_fieldset']["avatar_checkbox-$value"] = array(
-	    '#type' => 'checkbox',
-	    '#title' => avatar_images_list($value),
-	    '#prefix' => '<div class="$value">',
-	    '#suffix' => '</div>',
-	    '#attributes' => array(
-	        'class' => array(
-	          'user_avatar'
-	        ),
-	     ),
-  	);
-	}
-	array_unshift($form['#submit'], 'submit_for_avatar');
+    foreach ($tax_name as $key => $value) {
+    $form['checkboxes_fieldset']['checkboxes_fieldset2'.$value] = array(
+      '#title' => $value,
+      '#prefix' => '<div id="checkboxes-div">',
+      '#suffix' => '</div>',
+      '#type' => 'fieldset',
+      '#weight' => 11,
+    );
+    foreach ($avatar_name[$key] as $key1 => $value2) {
+      $form['checkboxes_fieldset']['checkboxes_fieldset2'.$value]["avatar_checkbox-".$value2] = array(
+        '#type' => 'radio',
+        '#title' => avatar_images_list($value2),
+        '#prefix' => '<div class="avatar_radio">',
+        '#suffix' => '</div>',
+        '#attributes' => array(
+          'class' => array('av_radio')
+        )
+      );
+    } 
+  }  
+  array_unshift($form['#submit'], 'submit_for_avatar');
 }
 
 function avatar_images_list($value) {
@@ -194,28 +207,27 @@ function ajax_autocheckboxes_callback_avatar($form, $form_state) {
 // submit handler for create user account form.
 function submit_for_avatar($form, $form_state) {
   foreach ($form_state['values'] as $key => $value) {
-  	if($value == 1){
-		  $avatar_entity = 'avatar_checkbox-';
-	    $av_entity_id = strpos($key, $avatar_entity);
+    if($value === 'on'){
+      $avatar_entity = 'avatar_checkbox-';
+      $av_entity_id = strpos($key, $avatar_entity);
 
-	    if ($av_entity_id !== false) {
-	      // use sesion to pass avatar ID to profile presave hook.
-	      $_SESSION['user_avatar_id'] = substr($key, 16);
-	      break;
-	    }
-	  }
-	}
+      if ($av_entity_id !== false) {
+        // use sesion to pass avatar ID to profile presave hook.
+        $_SESSION['user_avatar_id'] = substr($key, 16);
+        break;
+      }
+    }
+  }
 }
 
 /**
  * Implementation of hook_profile2_presave()
  */
 function private_msg_custom_profile2_presave($profile) {
-
-	if (isset($_SESSION['user_avatar_id'])){
-	  $profile->field_user_avatar[LANGUAGE_NONE][0]['target_id'] = $_SESSION['user_avatar_id'];
-	  unset($_SESSION['user_avatar_id']);
-	}
+  if (isset($_SESSION['user_avatar_id'])){
+    $profile->field_user_avatar[LANGUAGE_NONE][0]['target_id'] = $_SESSION['user_avatar_id'];
+    unset($_SESSION['user_avatar_id']);
+  }
 }
 
 /**
@@ -239,21 +251,21 @@ function private_msg_custom_form_alter(&$form, &$form_state, $form_id) {
   }
 
   // Adding purchase link for booklist
-	if($form_id == 'booklist_node_form') {
-		$form['purchase_link'] = array(
-		  '#type' => 'link',
-		  '#title' => 'Suggest a purchase',
-		  '#href' => variable_get('pmc_purchase_link'),
-		  '#attributes' => array('target' => '_blank'),
-		  '#weight' => 3,
-		);
+  if($form_id == 'booklist_node_form') {
+    $form['purchase_link'] = array(
+      '#type' => 'link',
+      '#title' => 'Suggest a purchase',
+      '#href' => variable_get('pmc_purchase_link'),
+      '#attributes' => array('target' => '_blank'),
+      '#weight' => 3,
+    );
 
-		return $form;
-	}
+    return $form;
+  }
 }
 
 function user_reviews() {
-	return '';
+  return '';
 }
 
 function user_booklist() {
@@ -309,7 +321,7 @@ function private_msg_custom_block_view($delta = '') {
 function pm_block_view() {
 
   global $user;
-	$current_user = $user->uid;
+  $current_user = $user->uid;
 
   $query_pm = db_select('pm_index','pi');
   $query_pm->fields('pi',array('mid','is_new','deleted'));
@@ -327,16 +339,16 @@ function pm_block_view() {
   $output = '<div class = "pm-custom">';
 
   if ($no_result != 0) {
-		foreach($query as $res) {
-			$msg_id = $res->mid;
+    foreach($query as $res) {
+      $msg_id = $res->mid;
       $deleted = $res->deleted;
-			$author = $res->name;
+      $author = $res->name;
 
-			$result = db_select('pm_message','pm')
-			->fields('pm',array('subject','timestamp'))
-			->condition('mid',$msg_id,'=')
-			->execute()
-			->fetchAssoc();
+      $result = db_select('pm_message','pm')
+      ->fields('pm',array('subject','timestamp'))
+      ->condition('mid',$msg_id,'=')
+      ->execute()
+      ->fetchAssoc();
 
       $pm_new = $res->is_new.'<br/>';
       if($pm_new == 1){
@@ -344,7 +356,7 @@ function pm_block_view() {
       }
 
       $output .= '<div class="pm">'.'<div class = "pm-subject"><a href = '.'../messages/view/'.$msg_id.'>'.$new.$pm_subject = $result['subject'].'</a></div>'.'<div class = "pm-admin">'.$author.'</div>'.'<div class = "pm-date">'.$pm_date = date('F d, Y',$result['timestamp']).'</div>'.'</div>';
-		}
+    }
     return $output.'<a class="pm-view" href="../messages">View All Messages</a>'.'</div>';
   } else {
     return 'No Messages to display';
@@ -356,17 +368,17 @@ function pm_block_view() {
  */
 function homepage_slider(){
 
-	$output .= '<ul class="booklist-pager"><input type="radio" name="colorRadio" id="r1" value="blslider1" checked><label for="r1"></label><input type="radio" name="colorRadio" id="r2" value="blslider2"><label for="r2"></label><input type="radio" name="colorRadio" id="r3" value="blslider3"><label for="r3"></label></ul>';
-	$block = module_invoke('views', 'block_view', 'booklist_slideshow-block_2');
-	$output .= '<div class="blslider1 slide">'. render($block['content']). '</div>';
+  $output .= '<ul class="booklist-pager"><input type="radio" name="colorRadio" id="r1" value="blslider1" checked><label for="r1"></label><input type="radio" name="colorRadio" id="r2" value="blslider2"><label for="r2"></label><input type="radio" name="colorRadio" id="r3" value="blslider3"><label for="r3"></label></ul>';
+  $block = module_invoke('views', 'block_view', 'booklist_slideshow-block_2');
+  $output .= '<div class="blslider1 slide">'. render($block['content']). '</div>';
 
-	$block = module_invoke('views', 'block_view', 'booklist_slideshow-block_3');
-	$output .= '<div class="blslider2 slide">'. render($block['content']). '</div>';
+  $block = module_invoke('views', 'block_view', 'booklist_slideshow-block_3');
+  $output .= '<div class="blslider2 slide">'. render($block['content']). '</div>';
 
-	$block = module_invoke('views', 'block_view', 'booklist_slideshow-block_4');
-	$output .= '<div class="blslider3 slide">'. render($block['content']). '</div>';
+  $block = module_invoke('views', 'block_view', 'booklist_slideshow-block_4');
+  $output .= '<div class="blslider3 slide">'. render($block['content']). '</div>';
 
-	return $output;
+  return $output;
 }
 
 /**
@@ -374,27 +386,105 @@ function homepage_slider(){
  */
 function header_menu_mobile(){
 
-	$output .= '<div class = "mobile_menu">';
+  $output .= '<div class = "mobile_menu">';
 
-	$block = module_invoke('views', 'block_view', 'top_block-block_2');
-	$output .= render($block['content']);
+  $block = module_invoke('views', 'block_view', 'top_block-block_2');
+  $output .= render($block['content']);
 
-	$block = module_invoke('menu', 'block_view', 'menu-secoundary-menu-mobile');
-	$output .= render($block['content']).'</div>';
+  $block = module_invoke('menu', 'block_view', 'menu-secoundary-menu-mobile');
+  $output .= render($block['content']).'</div>';
 
-	return $output;
+  return $output;
 }
 
 //function for private message when a user is followed
 function private_msg_custom_flag_flag($flag, $entity_id, $account, $flagging){
-	$user_uid = variable_get('follow_author');
-	$author_name = user_load_by_name($user_uid);
-	$author_uid = $author_name->uid;
-	$flag_name = arg(2);
+  $user_uid = variable_get('follow_author');
+  $author_name = user_load_by_name($user_uid);
+  $author_uid = $author_name->uid;
+  $flag_name = arg(2);
 
-	if($flag_name == 'follow'){
-	  $uid = $flagging->entity_id;
-	  $user_name = $account->name;
-	  privatemsg_new_thread(array(user_load($uid)), $user_name.' is now following you.', $user_name.' is now following you.',array('author'=>user_load($author_uid)));
-	}
+  if($flag_name == 'follow'){
+    $uid = $flagging->entity_id;
+    $user_name = $account->name;
+    privatemsg_new_thread(array(user_load($uid)), $user_name.' is now following you.', $user_name.' is now following you.',array('author'=>user_load($author_uid)));
+  }
+}
+
+
+function user_avatar(){
+  $query = db_select('field_data_field_avatar_type','type');
+  $query->fields('type',array('field_avatar_type_tid','entity_id'));
+  $query->join('eck_user_avatar','eck','eck.id = type.entity_id');
+  $query->join('taxonomy_term_data','tax','tax.tid = type.field_avatar_type_tid');
+  $query->fields('tax',array('name'));
+  $query->fields('eck',array('title'));
+  $query_avatar = $query->execute()->fetchAll();
+  $output = '';
+  $output .= '<div style="border:1px solid red;">';
+  foreach ($query_avatar as $key => $value) {
+    $as = $value->name;
+    $tax_name[$value->field_avatar_type_tid] = $value->name;
+    $tax_name[$value->field_avatar_type_tid] = $value->name;
+    $avatar_name[$value->field_avatar_type_tid][] = $value->entity_id;
+  }
+foreach ($tax_name as $key => $value) {
+   $output .= '<div style="border:1px solid blue; float:left;margin-left:10px">'. $value . '</div>';
+}
+
+$output .= '</div>';
+  return $output;
+}
+
+function avatar_form(){
+  $query = db_select('field_data_field_avatar_type','type');
+  $query->fields('type',array('field_avatar_type_tid','entity_id'));
+  $query->join('eck_user_avatar','eck','eck.id = type.entity_id');
+  $query->join('taxonomy_term_data','tax','tax.tid = type.field_avatar_type_tid');
+  $query->fields('tax',array('name'));
+  $query->fields('eck',array('title'));
+  $query_avatar = $query->execute()->fetchAll();
+  $output = '';
+  $output .= '<div style="border:1px solid red;">';
+  foreach ($query_avatar as $key => $value) {
+    $as = $value->name;
+    $tax_name[$value->field_avatar_type_tid] = $value->name;
+    $tax_name[$value->field_avatar_type_tid] = $value->name;
+    $avatar_name[$value->field_avatar_type_tid][] = $value->entity_id;
+  }
+
+foreach ($tax_name as $key => $value) {
+  $output .= '<div style="border:1px solid blue; float:left;margin-left:10px">'. $value . '</div>';
+
+} 
+  $form['checkboxes_fieldset'] = array(
+    '#title' => t("Avatars"),
+    '#prefix' => '<div id="checkboxes-div">',
+    '#suffix' => '</div>',
+    '#type' => 'fieldset',
+    '#weight' => 11,
+  );
+  foreach ($tax_name as $key => $value) {
+  $form['checkboxes_fieldset']['checkboxes_fieldset2'.$value] = array(
+    '#title' => $value,
+    '#prefix' => '<div id="checkboxes-div">',
+    '#suffix' => '</div>',
+    '#type' => 'fieldset',
+    '#weight' => 11,
+  );
+  foreach ($avatar_name[$key] as $key1 => $value2) {
+    $form['checkboxes_fieldset']['checkboxes_fieldset2'.$value]["avatar_checkbox-$value2".$value2] = array(
+      '#type' => 'radio',
+      '#title' => avatar_images_list($value2),
+      '#prefix' => '<div class="$value">',
+      '#suffix' => '</div>',
+    );
+  } 
+}  
+
+  $form['submit_button'] = array(
+    '#type' => 'submit',
+    '#value' => t('Submit'),
+  );
+  return $form;
 }

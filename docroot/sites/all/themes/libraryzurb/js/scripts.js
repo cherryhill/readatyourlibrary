@@ -5,12 +5,30 @@
   Drupal.behaviors.libraryzurbPhoneNumberLinksOnMobile = {
     attach: function(context, settings) {
 
-      $(':checkbox').on('change',function(){
-       var th = $(this), name = th.prop('class'); 
-       if(th.is(':checked')){
-           $(':checkbox[class="'  + name + '"]').not($(this)).prop('checked',false);   
-        }
+      // Showing of email notification field if user enters valid email
+      $('#edit-profile-main-field-receive-notifications').addClass('mail-notification-hidden')
+      $('#edit-mail').blur(function() {
+          var testEmail = /^[A-Z0-9._%+-]+@([A-Z0-9-]+\.)+[A-Z]{2,4}$/i;
+          if (testEmail.test(this.value)) {
+              $('#edit-profile-main-field-receive-notifications').removeClass('mail-notification-hidden');
+          }
+          else ($('#edit-profile-main-field-receive-notifications').addClass('mail-notification-hidden'));
       });
+
+      //Making single selection for avatar image
+      $(".av_radio.form-radio").change(function () {
+        $('.av_radio.form-radio').not(this).prop('checked', false);
+      });
+        //Announcement block in landing page make image field as background image
+     $('.block.announcement').each(function() {
+      if ($(this).find('img').length) {
+        var imgURL = $(this).find('img').attr('src');
+        $(this).css('background-image', 'url(' + imgURL + ')');
+      $('.block.announcement img').hide();
+      }
+   
+  });
+
       // Get width of browser viewport. **Note:** The value we check against
       // should probably match the value set for `$topbar-breakpoint` in
       // libraryzurb/scss/_variables.scss.
@@ -74,18 +92,12 @@ jQuery( document ).ready(function() {
     }
   });
 
-  // jQuery('.node-type-review-book .follow_link_bookreview .flag-link-normal').each(function(){ 
-  //   var me = jQuery(this) , t = me.text().split(' ');
-  //   var link = me.html(t.shift()+' This Reviewer');
-  // });
+  // Placing Email div after field (how did you hear about the program)
+  jQuery('.form-item-mail').insertAfter('.form-item-profile-main-field-how-did-you-hear-about-thi-und-select');
 
-  // jQuery('.node-type-booklist .bk_follow .flag-link-normal').each(function(){ 
-  //   var me = jQuery(this) , t = me.text().split(' ');
-  //   var link = me.html(t.shift()+' This Booklist Creator');
-  // });
-
-  jQuery(".flag-like").insertAfter('.like-count');
-
+  //changes for follow link in user dashboard
+  jQuery('.view-follow .view-header').insertAfter('.view-follow .attachment');
+  
   /* Jquery for script for raffle entry checkbox */
 
     jQuery( ".active_raffle" ).click(function() {

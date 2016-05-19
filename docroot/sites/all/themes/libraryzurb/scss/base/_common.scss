@@ -13,6 +13,8 @@
 	 	border-left: 1px solid transparent;
 	 	padding: 0;
 	 	height: 33px;
+	 	width: 31px;
+	 	overflow: hidden;
 	 	 &.current {
 	 	  	 a {
 	 	  	 	background: $blue;
@@ -26,8 +28,8 @@
 	 	  	padding: 5px 10px;
 	 	  	color: $white;
 	 	  	text-decoration: none;
-	 	  	width: 31px;
-	 	  	height: 33px;
+	 	  	width: 100%;
+	 	  	height: 100%;
 	 	  	padding: 0 !important;
 	 	  	text-decoration: none !important;
 	 	  	font-size: 17px;
@@ -41,10 +43,8 @@
 	 	  	 &:nth-of-type(2) {
 	 	  	 	a {
 	 	  	 	color: transparent !important;
-	 	  	 	background: $orange url('../images/libraryzurb/left-arrow.png') no-repeat !important;
+	 	  	 	background: $orange url('../images/libraryzurb/left-arrow.png') no-repeat;
 	 	  	 	background-position: center 7px;
-	 	  	 	width: 31px;
-	 	  	 	height: 33px;
 	 	  	 	background-size: 18px;
 	 	  	 	border-radius: 12px 0px 0px 12px;
 	 	  	  }
@@ -53,10 +53,8 @@
 	 	  	 &:nth-last-of-type(2) {
 	 	  	  	a {
 	 	  	    color: transparent !important;
-	 	  	 	background: $orange url('../images/libraryzurb/right-arrow.png') no-repeat !important;
+	 	  	 	background: $orange url('../images/libraryzurb/right-arrow.png') no-repeat;
 	 	  	 	background-position: center 4px;
-	 	  	 	width: 31px;
-	 	  	 	height: 33px;
 	 	  	 	background-size: 18px;
 	 	  	 	border-radius: 0px 12px 12px 0px;
 
@@ -210,4 +208,28 @@ h1#page-title {
   			}
   		}
   	}
+  }
+  .blue-button {
+  	color: $white !important;
+	@include mclaren;
+	background: $blue !important;
+	border-radius: 10px;
+	padding: 9px 22px;
+	@include boxshadow;
+	border: none;
+	font-size: 17px;
+	display: inline-block;
+	text-transform: capitalize;
+	  &:hover, &:focus {
+	 	color: $white;
+	 	background: $blue;
+	 	opacity: 1;
+	 	outline: none;
+	 }
+  }
+ .l-messages div.messages.status {
+  	margin-bottom: 15px !important;
+  }
+  .mail-notification-hidden {
+  	display: none;
   }

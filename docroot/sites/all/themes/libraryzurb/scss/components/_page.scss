@@ -1810,6 +1810,7 @@
 	  			 	.owl-wrapper-outer {
 		  			 	width: 99%;
 		  			 	margin: 0 auto;
+		  			 	padding-bottom: 35px;
 	  			 	}
 	  			 	.owl-item {
 	  			 		.views-field-field-booklist-cover-image {
@@ -2739,6 +2740,19 @@
 			width: 100%;
 			display: inline-block;
 		}
+		#checkboxes-div {
+				width: 100%;
+				display: inline-block;
+			 .avatar_radio {
+			 	width: 11.1%;
+			 	display: inline-block;
+			 	vertical-align: top;
+			 	 img {
+			 	 	position: relative;
+			 	 	bottom: 10px;
+			 	 }
+			 }
+		}
 	}
 
 	#edit-profile-main-field-receive-notifications {
@@ -2866,20 +2880,26 @@ display: block !important;
 		display: none;
 	}
 	.main {
-	.review_node_sidebar {
-		width: 30%;
-		display: inline-block;
-		vertical-align: top;
-		margin-top: 20px;
-		 .follow_link_bookreview {
-		 	padding-left: 30px;
+		.reviewbook_footer {
+			width: 100%;
+			display: inline-block;
+			margin-bottom: 26px;
+			 ul.links {
+			 	float: left;
+			 	padding-right: 10px;
+			 }
+		}
+		.follow_link_bookreview {
+			float: left;
+			padding-right: 10px;
 		 	a {
 		 		 @include bluebutton;
 		 	}
 		 }
 		 .like-count {
-		 	width: 49%;
 		 	display: inline-block;
+		 	float: left;
+		 	padding-right: 10px;
 		 	margin-bottom: 20px;
 		 	.lk-count {
 		 		@include like;
@@ -2889,9 +2909,9 @@ display: block !important;
 		 	display: none;
 		 }
 		 span.flag-like {
-		 	width: 49%;
 		 	display: inline-block;
-		 	margin-bottom: 20px;
+		    float: left;
+		    padding-right: 10px;
 		 	  a {
 		 	  	 background: $blue url("../images/libraryzurb/smily-white.png") no-repeat;
 		 	  	 border-radius: 10px;
@@ -2908,6 +2928,12 @@ display: block !important;
 		 	  	 font-size: 17px;
 		 	  }
 		 }
+	.review_node_sidebar {
+		width: 30%;
+		display: inline-block;
+		vertical-align: top;
+		 
+		 
 		 .img_review {
 		 	table, tbody {
 		 		@include noborder; 
@@ -3003,12 +3029,7 @@ display: block !important;
 		 	 	margin-right: 5px;
 		 	 }
 		 }
-		 .bk_follow {
-		 	margin-top: 35px;
-		 	a {
-		 		 @include bluebutton;
-		 	}
-		 }
+		 
 		 .bk_follow_like {
 		 	width: 29%;
 		 	display: inline-block;
@@ -3053,6 +3074,15 @@ display: block !important;
 		 }
 
 	}
+	.bk_follow {
+		 	margin: 35px 10px 10px 0;
+		 	float: left;
+
+		 	a {
+		 		 @include bluebutton;
+		 		 display: inline-block;
+		 	}
+		 }
 	article {
 		width: 100%;
 		display: inline-block;
@@ -3098,15 +3128,23 @@ display: block !important;
 		 }
 		 .links.inline {
 		 	list-style: none;
-		 	width: 100%;
-		 	display: inline-block;
+		 	 position:relative;
+		 	 top: 3px;
+
 		 	  li {
 		 	  	margin-top: 40px;
-		 	  	width: 100%;
-		 	  	display: inline-block;
+	            float: left;
 		 	  	margin-left: 0;
+		 	  	margin-right: 10px;
+		 	  	 margin-bottom: 20px;
 		 	  	a {
-		 	  		@include bluebutton;
+		 	  		@include bluebutton(lg);
+		 	  		
+		 	  	}
+		 	  	&.flag-like {
+		 	  		a {
+		 	  			@include like(y);
+		 	  		}
 		 	  	}
 		 	  }
 		 }
