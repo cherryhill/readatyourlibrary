@@ -622,15 +622,19 @@ function _play_library_program_process_activity_entry($entity, $type) {
     // if user won reward, update the progress report node to indicate 'reward won'
     // statu on the progress grid
     if(count($rewards_user_can_claim)) {
-      $progress_report_nid = $_SESSION['teen_progress_report_nid'];
-      unset($_SESSION['teen_progress_report_nid']);
+      if(isset($_SESSION['teen_progress_report_nid'])) {
+        $progress_report_nid = $_SESSION['teen_progress_report_nid'];
+        unset($_SESSION['teen_progress_report_nid']);
 
-      db_update('field_won_reward')
-      ->fields(array('field_won_reward_value' => 1))
-      ->condition ('entity_id', $progress_report_nid)
-      ->execute(); 
+        db_update('field_won_reward')
+        ->fields(array('field_won_reward_value' => 1))
+        ->condition ('entity_id', $progress_report_nid)
+        ->execute();
+      }
     } else {
-      unset($_SESSION['teen_progress_report_nid']);
+      if(isset($_SESSION['teen_progress_report_nid'])) {
+        unset($_SESSION['teen_progress_report_nid']);
+      }
     }
     
 	foreach ($rewards_user_can_claim as $rid) {
