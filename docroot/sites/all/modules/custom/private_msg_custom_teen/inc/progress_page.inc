@@ -39,9 +39,8 @@ function complete_activity_progress(){
 
 	play_library_program_create_activity_entry($activity_id,$activity_uid);
 
-	$output = $activity_id.' '.$activity_date;
 	$found = true;           
-  json_encode(array('success' => $found, 'content' => $output));
+  echo json_encode(array('success' => $found, 'content' => $output));
  
   module_invoke_all('exit');
   exit;
@@ -69,7 +68,7 @@ function progress_record($form,$form_state){
 	return $form;
 }
 
-function activity_report_node_create($activity_id, $activity_date, $term_tid, $check_in_progress = 0) {
+function activity_report_node_create($activity_id, $activity_date, $term_tid, $check_in_progress = 0, $current_user = 0) {
 
 	$entity_info = entity_load('activity', array($activity_id));
 	$activity_name = $entity_info[$activity_id]->field_activity_description['und'][0]['safe_value'];
@@ -83,10 +82,11 @@ function activity_report_node_create($activity_id, $activity_date, $term_tid, $c
   	  return FALSE;
     }
   }
-  
   // if show in progress is one, node is created.
-		global $user;
-		$current_user = $user->uid;
+  if($current_user == 0){
+	  global $user;
+	  $current_user = $user->uid;
+	}
 
 		$node = new stdClass(); // Creating a new node object
 		$node->type = 'activity_report'; //Content type
@@ -101,14 +101,13 @@ function activity_report_node_create($activity_id, $activity_date, $term_tid, $c
 		$node->field_term_id[LANGUAGE_NONE][0]['value'] = $term_tid;
 		$node->field_completion_date[LANGUAGE_NONE][0]['value'] = $activity_date;
 		node_save($node);
-		; 
-    // $node = node_load(495);//495
-    // $hook = "node_update|node|{$node->type}|updated";
-    // _play_library_program_invoke_activity_entry_hooks($node, 'node', $hook, 1);
-	  return $created_nid = $node->nid;
+		$created_nid = $node->nid;
+
+		$_SESSION['teen_progress_report_nid'] = $created_nid;
 }
 
 function user_avatar_progress_page($uid){
+
 	global $user;
 	$user_pf = profile2_load_by_user($user->uid);
 	$user_main = user_load($uid);
@@ -135,4 +134,3 @@ function user_avatar_progress_page($uid){
 
 	return $img.$user_name;
 }
-
