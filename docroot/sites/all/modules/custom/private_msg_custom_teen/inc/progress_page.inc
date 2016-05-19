@@ -134,3 +134,81 @@ function user_avatar_progress_page($uid){
 
 	return $img.$user_name;
 }
+
+function progress_print_page(){
+	global $user; 
+	$uid = $user->uid;
+	$u_avatar = user_avatar_progress_page($uid);
+	$pg_title = variable_get('pg_title');
+  $page_desc = variable_get('pg_desc', array('value' => '', 'format' => NULL));
+  $page_desc = $page_desc['value'];
+
+  $block = block_load('private_msg_custom_teen', 'progress_submit_block');
+  $user_reward_block = drupal_render(_block_get_renderable_array(_block_render_blocks(array($block))));
+  $report_block_text = variable_get('report_block_desc', array('value' => '', 'format' => NULL));
+	$report_block_text['value'];
+
+	$reward_won = views_embed_view('prize_won_for_progress_page','block');
+	$reward_block = variable_get('progress_rewards', array('value' => '', 'format' => NULL)); 
+	$u_rew = $reward_block['value'];
+
+	$grids = variable_get('no_of_grids'); $criteria = array(
+  	'uid' => $userID,
+  	'type' => $type,
+ 	);
+ 	$criteria = array(
+	  'uid' => $current_uid,
+	  'type' => 'activity_report',
+	);
+
+	$output .= "<div class='progress-page'>
+<h1 id = 'title'>$pg_title
+</h1>
+<div class='progress-desc'>
+  $page_desc	
+</div>
+<div class='user-desc'>
+<div class='avatar-id'>$u_avatar
+</div>
+<div class='point-status'>
+<div class='activity-status'>Stamps Earned:
+</div>
+<div class='points'>Raffle Tickets Earned:
+</div>
+</div>
+</div>
+<div class='progress-wrap'>
+<div class='report-acivity'><h1>Report an Activity</h1>$user_reward_block; 
+	<div class='submit'>
+		<button id='pg-report'>Submit</button>
+	</div>
+</div>
+<div class='reward-won'>$reward_won
+</div>
+<div class='progress-rewards'>$u_rew
+</div>
+</div>
+<div class='progress-main'><h1>My Passport Stamps</h1>";
+
+$output .= $nodes = entity_load('node',FALSE,$criteria);
+			foreach ($nodes as $key => $value) {
+			$node_date = $value->field_completion_date['und'][0]['value'];
+			$user_reward = $value->field_won_reward['und'][0]['value'];
+			if($user_reward != '0'){
+				$user_won_reward = '<p class  = "won-rew">Congratulations! You have earned a prize!</p>';
+			}
+			$n_date = date("m.d.y", strtotime($node_date));
+			$node_nid[] = '<p class  = "date-pg">'.$n_date.'</p><p class = "title-pg">'.$value->title.'</p>'.$user_won_reward;
+		}
+
+		for($i=0; $i < $grids; $i++){
+			if($node_nid[$i]){
+			echo '<div class = "grid inserted" id = "cells'.$i.'">'.$node_nid[$i].'</div>';
+		}
+		else{
+			echo '<div class = "grid" id = "cells'.$i.'"></div>';
+		}
+		}
+$output .= '</div></div>';
+
+}
