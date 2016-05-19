@@ -20,6 +20,8 @@
         for(var i = 0; i < divs.length; i+=6) {
         divs.slice(i, i+6).wrapAll("<div class='new-row'></div>");
     }
+    //add class to div in progress page for congratulation msg
+     $('div.grid.inserted:has(.won-rew)').addClass('active-background');
     //Announcement block in landing page make image field as background image
      $('.block.announcement').each(function() {
   if ($(this).find('img').length) {
