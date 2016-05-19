@@ -134,7 +134,6 @@ function hotspot_activities() {
   $link_music_review = $base_url.'/node/add/music-review';
   $link_video_game_review = $base_url.'/node/add/video-game-review';
   $link_booklist = $base_url.'/node/add/booklist';
-  $link_activity_review = $base_url.'/node/add/review-activity';
 
   $view_book_review = $base_url.'/reviews';
   $view_movie_review = $base_url.'/movie-review';
@@ -145,19 +144,15 @@ function hotspot_activities() {
 
   $view_reviews = array(0 => t('Select from the following'),
   $view_book_review => t('Book Reviews'),
-  $view_activity_review => t('Activity Reviews'),
   $view_movie_review => t('Movie Reviews'),
   $view_music_review => t('Music Reviews'),
-  $view_video_game_review => t('Video Game Reviews'),
-  $view_booklist => t('Booklists'));
+  $view_video_game_review => t('Video Game Reviews'));
 
   $add_reviews = array(0 => t('Select from the following'),
   $link_book_review => t('Book Reviews'),
-  $link_activity_review => t('Activity Reviews'),
   $link_movie_review => t('Movie Reviews'),
   $link_music_review => t('Music Reviews'),
-  $link_video_game_review => t('Video Game Reviews'),
-  $link_booklist => t('Booklists'));
+  $link_video_game_review => t('Video Game Reviews'));
 
 	$form['activity_title'] = array(
 	  '#type' => 'markup',
@@ -227,15 +222,17 @@ function hotspot_activities() {
 	 	'#weight' => 7,
 	);
 
-	$form['read_submit'] = array(
-	  '#title' => t('Write a Review'),
-	  '#type' => 'select',
-	  '#options' => $add_reviews,
-	  '#attributes' => array(
-	    'class' => array('reviews_add')
-	  ),
-	  '#weight' => 8,
-	);
+	if($current_user != 0){
+		$form['read_submit'] = array(
+		  '#title' => t('Write a Review'),
+		  '#type' => 'select',
+		  '#options' => $add_reviews,
+		  '#attributes' => array(
+		    'class' => array('reviews_add')
+		  ),
+		  '#weight' => 8,
+		);
+	}
 
 	$form['read_reviews'] = array(
 	  '#title' => t('Read Existing Reviews'),
