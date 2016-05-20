@@ -5,7 +5,8 @@
 Drupal.behaviors.bfc_api_custom = {
   attach: function (context, settings) {
 
-	  $('#pg-report').click(function() {    
+	  $('#pg-report').click(function() {
+	    $(this).attr('disabled','disabled'); 
 		  var aid = $("#edit-activity-progress-select option:selected").val();
 		  var date = $("#edit-date-datepicker-popup-0").val();
 		  var count = $('.inserted').length;
@@ -15,14 +16,14 @@ Drupal.behaviors.bfc_api_custom = {
 		  $.ajax({
 		    url: Drupal.settings.basePath + 'backend-ajax-call',
 		    type: 'post',
+		    async: false,
 		    data: {id : aid,date : date},
-
 		    dataType: 'json',
 			  success: function (data) {
 				  if (data.success === true) {
 				    // $("#cells"+insert).html(data.content);
-				    window.location.reload();
-				  } 
+				    window.location.reload(true);
+				  }
 			  }
 		  });
 		  $("#cells"+insert).addClass("inserted");

@@ -79,15 +79,19 @@
 			$n_date = date("m.d.y", strtotime($node_date));
 			$node_nid[] = '<p class  = "date-pg">'.$n_date.'</p><p class = "title-pg">'.$value->title.'</p>'.$user_won_reward;
 		}
-
-		for($i=0; $i < $grids; $i++){
-			if($node_nid[$i]){
-			echo '<div class = "grid inserted" id = "cells'.$i.'">'.$node_nid[$i].'</div>';
-		}
-		else{
-			echo '<div class = "grid" id = "cells'.$i.'"></div>';
-		}
-		}
+    $i=0; $gr = ceil($grids/6);
+    for($j=0;$j<$gr;$j++){
+      echo '<div class = "new-row">';
+		  for($k=0; $k < 6; $k++, $i++){
+			  if($node_nid[$i]){
+			    echo '<div class = "grid inserted" id = "cells'.$i.'">'.$node_nid[$i].'</div>';
+		    }
+		    else{
+			    echo '<div class = "grid" id = "cells'.$i.'"></div>';
+		    }
+		  }
+		  echo '</div>';
+	  }
 	?>
 </div>
 </div>
