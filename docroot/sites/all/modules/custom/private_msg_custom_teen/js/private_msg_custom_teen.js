@@ -14,11 +14,10 @@ Drupal.behaviors.bfc_api_custom = {
 		  if(count_grid != count){
 		  var insert = count + 1;
 		  $.ajax({
-		    url: Drupal.settings.basePath + 'backend-ajax-call',
+		    url: Drupal.settings.basePath + 'complete-activity-progress',
 		    type: 'post',
 		    async: false,
-		    data: {id : aid,date : date},
-		    dataType: 'json',
+		    data: "id="+aid+"&date="+date,
 			  success: function (data) {
 				  if (data) {
 				    // $("#cells"+insert).html(data.content);
