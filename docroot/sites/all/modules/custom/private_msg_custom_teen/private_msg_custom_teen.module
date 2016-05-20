@@ -6,10 +6,6 @@
  * This module is basically for form alter, hook_menu,
  * custom blocks and program configuration settings
  */
-require_once DRUPAL_ROOT . '/sites/all/modules/custom/private_msg_custom_teen/inc/custom_blocks_teen.inc';
-require_once DRUPAL_ROOT . '/sites/all/modules/custom/private_msg_custom_teen/inc/hotspot_activities_block.inc';
-require_once DRUPAL_ROOT . '/sites/all/modules/custom/private_msg_custom_teen/inc/progress_page.inc';
-
 
 /**
  * Implementation of hook_menu().
@@ -77,24 +73,32 @@ function private_msg_custom_teen_menu() {
     'page callback' => 'activities_page',
     'access arguments' => array('access content'),
     'type' => MENU_SUGGESTED_ITEM,
+    'file' => 'inc/hotspot_activities_block.inc',
+    'file path' => drupal_get_path('module', 'private_msg_custom_teen'),
   );
 
   $items['progress'] = array(
     'page callback' => 'progress_report_grid',
     'access callback' => TRUE,
     'type' => MENU_CALLBACK,
+    'file' => 'inc/progress_page.inc',
+    'file path' => drupal_get_path('module', 'private_msg_custom_teen'),
   );
 
   $items['activity_custom_node_insert'] = array(
     'page callback' => 'activity_report_node_create',
     'access callback' => TRUE,
     'type' => MENU_CALLBACK,
+    'file' => 'inc/progress_page.inc',
+    'file path' => drupal_get_path('module', 'private_msg_custom_teen'),
   );
 
   $items['backend-ajax-call'] = array(
     'page callback' => 'complete_activity_progress',
     'access callback' => TRUE,
     'type' => MENU_CALLBACK,
+    'file' => 'inc/progress_page.inc',
+    'file path' => drupal_get_path('module', 'private_msg_custom_teen'),
   );
 
   $items['progress-print'] = array(
@@ -102,6 +106,8 @@ function private_msg_custom_teen_menu() {
     'access callback' => TRUE,
     'type' => MENU_CALLBACK,
     'delivery callback' => 'deliver_plain',
+    'file' => 'inc/progress_page.inc',
+    'file path' => drupal_get_path('module', 'private_msg_custom_teen'),
   );
 
   return $items;
@@ -558,4 +564,249 @@ function view_rewards_block(){
   $output .= render($block['content']);
 
   return $output;
+}
+
+/**
+ * function callback for hotspot activities block
+ */
+function hotspot_activities() {
+
+  $link_book_review = $base_url.'/node/add/review-book';
+  $link_movie_review = $base_url.'/node/add/movie-review';
+  $link_music_review = $base_url.'/node/add/music-review';
+  $link_video_game_review = $base_url.'/node/add/video-game-review';
+  $link_booklist = $base_url.'/node/add/booklist';
+
+  $view_book_review = $base_url.'/reviews';
+  $view_movie_review = $base_url.'/movie-review';
+  $view_music_review = $base_url.'/music-review-listing';
+  $view_video_game_review = $base_url.'/video-game-review';
+  $view_booklist = $base_url.'/booklists';
+  $view_activity_review = $base_url.'/activities';
+
+  $view_reviews = array(0 => t('Select from the following'),
+  $view_book_review => t('Book Reviews'),
+  $view_movie_review => t('Movie Reviews'),
+  $view_music_review => t('Music Reviews'),
+  $view_video_game_review => t('Video Game Reviews'));
+
+  $add_reviews = array(0 => t('Select from the following'),
+  $link_book_review => t('Book Reviews'),
+  $link_movie_review => t('Movie Reviews'),
+  $link_music_review => t('Music Reviews'),
+  $link_video_game_review => t('Video Game Reviews'));
+
+  $form['activity_title'] = array(
+    '#type' => 'markup',
+    '#markup' => variable_get('hotspot_block_title'),
+    '#prefix' => '<div class="activity_title">',
+    '#suffix' => '</div>',
+    '#weight' => 1,
+  );
+
+  $form['activity_description'] = array(
+    '#type' => 'markup',
+    '#markup' => variable_get('hotspot_block_description'),
+    '#prefix' => '<div class="activity_desc">',
+    '#suffix' => '</div>',
+    '#weight' => 2,
+  );
+
+
+  $form['activities_read_list'] = array(
+    '#title' => t('Read Reviews of Bay Area Hot Spots'),
+    '#type' => 'select',
+    '#options' => activities_view_select_list('hotspot_activities','1'),
+    '#attributes' => array(
+      'class' => array('activities_list_read')
+    ),
+    '#weight' => 3,
+  );
+
+  global $user;
+  $current_user = $user->uid;
+
+  if($current_user != 0){
+    $form['activities_submit_list'] = array(
+      '#title' => t('Submit a Review'),
+      '#type' => 'select',
+      '#options' => activities_submit_select_list('hotspot_activities','1'),
+      '#attributes' => array(
+        'class' => array('activities_list_submit')
+      ),
+      '#weight' => 4,
+    );
+  }
+
+  $form['suggest_link'] = array(
+    '#type' => 'link',
+    '#title' => variable_get('hotspot_block_link_title'),
+    '#href' => variable_get('hotspot_block_link'),
+    '#attributes' => array('target' => '_blank'),
+    '#prefix' => '<div class="suggest-link">',
+    '#suffix' => '</div>',
+    '#weight' => 5,
+  );
+
+  $form['activity_review_title'] = array(
+    '#type' => 'markup',
+    '#markup' => variable_get('review_activity_block_title'),
+    '#prefix' => '<div class="activity_review_title">',
+    '#suffix' => '</div>',
+    '#weight' => 6,
+  );
+
+  $form['activity_review_description'] = array(
+    '#type' => 'markup',
+    '#markup' => variable_get('review_activity_block_description'),
+    '#prefix' => '<div class="activity_review_desc">',
+    '#suffix' => '</div>',
+    '#weight' => 7,
+  );
+
+  if($current_user != 0){
+    $form['read_submit'] = array(
+      '#title' => t('Write a Review'),
+      '#type' => 'select',
+      '#options' => $add_reviews,
+      '#attributes' => array(
+        'class' => array('reviews_add')
+      ),
+      '#weight' => 8,
+    );
+  }
+
+  $form['read_reviews'] = array(
+    '#title' => t('Read Existing Reviews'),
+    '#type' => 'select',
+    '#options' => $view_reviews,
+    '#attributes' => array(
+      'class' => array('reviews_list_view')
+    ),
+    '#weight' => 9,
+  );
+
+  return $form;
+}
+
+function progress_record($form,$form_state){
+
+  $form['activity_progress_select'] = array(
+    '#title' => t('I completed'),
+    '#type' => 'select',
+    '#options' => activities_view_select_option('hotspot_activities','1'),
+    '#attributes' => array(
+      'class' => array('activities_list_progress')
+    ),
+    '#weight' => 1,
+  );
+
+  $form['date'] = array(
+    '#type' => 'date_popup', 
+    '#title' => 'on',
+    '#date_format' => 'Y-m-d',
+    '#date_year_range' => '-0:+1',
+    '#weight' => 2, 
+  );
+  return $form;
+}
+
+function activities_view_select_option($term,$progress) {
+
+  global $base_url;
+  $voc = taxonomy_vocabulary_machine_name_load($term);
+  $activity_term_vid = $voc->vid;
+  $activities_terms = taxonomy_get_tree($activity_term_vid);
+
+  foreach ($activities_terms as $key => $value) {
+    $term_title = $value->name;
+    $term_tid = $value->tid;
+    $activity_term = taxonomy_term_load($term_tid);
+
+  if($activity_term->field_progress_page_term['und'][0]['value'] == $progress){
+      $select_options[$term_tid] .= $term_title;
+    }
+  }
+  return $select_options;
+}
+
+/**
+ * function callback for progress page
+ */
+function progress_report_grid(){
+  
+  drupal_add_js( drupal_get_path('module', 'private_msg_custom_teen') . '/js/private_msg_custom_teen.js');
+  return theme('progress-report');
+}
+
+/**
+ * template for progress page
+ */
+function private_msg_custom_teen_theme(){
+
+  $templates = array(
+   'progress-report' => array(
+    'template' => 'templates/progress_page',
+  ));
+
+  return $templates;
+}
+
+/**
+ * function for saving taxonomy term on creation of activity.
+ */
+function activities_term_save($term,$fire_hook,$activity) {
+
+  $voc = taxonomy_vocabulary_machine_name_load($term);
+  $activity_term_vid = $voc->vid;
+  $activity_id = $activity->id;
+  $activity_title = $activity->title;
+  $activity_hotspot_value = $activity->field_hotspot_activity['und'][0]['value'];
+  $activity_firehook = $activity->field_activity_fired_hook['und'][0]['value'];
+  $activity_progress_page = $activity->field_show_on_progress_page['und'][0]['value'];
+
+  $query = db_select('field_data_field_activity_id','activity_id')
+    ->fields('activity_id',array('field_activity_id_value','entity_id'))
+    ->condition('field_activity_id_value',$activity_id)
+    ->execute()
+    ->fetchAssoc();
+
+  $field_activity_id = $query['field_activity_id_value'];
+  $entity_field_id = $query['entity_id'];
+
+  if(!isset($field_activity_id)){
+    if($activity_firehook == $fire_hook){
+      $hotspot_activity_term = new stdClass();
+      $hotspot_activity_term->name = $activity_title;
+      $hotspot_activity_term->vid = $activity_term_vid; // The ID of the parent vocabulary
+      $hotspot_activity_term->parent = 0; // This tells taxonomy that this is a top-level term
+      
+      taxonomy_term_save($hotspot_activity_term);
+      $tid_term = $hotspot_activity_term->tid;
+      $activity_term = taxonomy_term_load($tid_term);
+
+      $activity_term->field_activity_id['und'][0]['value'] = $activity_id; 
+      $activity_term->field_hotspot_activity_type['und'][0]['value'] = $activity_hotspot_value ? $activity_hotspot_value:0;
+      $activity_term->field_progress_page_term['und'][0]['value'] = $activity_progress_page ? $activity_progress_page:0;
+      taxonomy_term_save($activity_term);
+      }
+  }else if(isset($field_activity_id)) {
+    $hotspot_query = db_select('taxonomy_term_data','tax')
+      ->fields('tax',array('tid'))
+      ->condition('tid',$entity_field_id)
+      ->execute()
+      ->fetchAssoc();
+
+    $tid = $hotspot_query['tid'];
+    if($activity_firehook != $fire_hook){
+      taxonomy_term_delete($tid);
+    }else{
+      $activity_term = taxonomy_term_load($tid);
+      $activity_term->field_activity_id['und'][0]['value'] = $activity_id; 
+      $activity_term->field_hotspot_activity_type['und'][0]['value'] = $activity_hotspot_value;
+        $activity_term->field_progress_page_term['und'][0]['value'] = $activity_progress_page;
+        $activity_term->name = $activity_title;
+      taxonomy_term_save($activity_term);
+    }
+  }
 }
