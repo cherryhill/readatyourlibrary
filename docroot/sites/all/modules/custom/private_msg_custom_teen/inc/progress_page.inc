@@ -6,25 +6,19 @@
  * ajax callback for progress page
  */
 function complete_activity_progress(){
-	echo 1;
-	/*global $user;
+	global $user;
 	$activity_uid = $user->uid;
 
-	$tid = $_POST['id'];
-	$activity_date = $_POST['date'];
+	$tid = $_REQUEST['id'];
+	$activity_date = $_REQUEST['date'];
 
 	$activity_term = taxonomy_term_load($tid);
 
 	$activity_id = $activity_term->field_activity_id['und'][0]['value'];
 	activity_report_node_create($activity_id, $activity_date, $tid);
 
-	play_library_program_create_activity_entry($activity_id,$activity_uid);
-
-	$found = true;           
-  echo json_encode(array('success' => $found, 'content' => $output));
- 
-  module_invoke_all('exit');
-  exit;*/
+	//play_library_program_create_activity_entry($activity_id,$activity_uid);
+	echo 1;
 }
 
 function activity_report_node_create($activity_id, $activity_date, $term_tid, $check_in_progress = 0, $current_user = 0) {
