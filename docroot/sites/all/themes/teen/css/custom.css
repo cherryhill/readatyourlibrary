@@ -10561,6 +10561,22 @@ body .alert-box.success a.close:hover {
   margin-left: 35px;
 }
 .section-programs .main .current-program .block-title {
+  display: none;
+}
+.section-programs .main .current-program .view {
+  display: inline-block;
+  width: 100%;
+  padding: 10px 4% 0;
+  margin-left: 0;
+}
+.section-programs .main .current-program .view .views-row {
+  display: inline-block;
+  width: 100%;
+}
+.section-programs .main .current-program .view .views-row .views-field.views-field-title {
+  display: inline-block;
+  width: 100%;
+  float: none;
   color: #fff;
   font-family: SpecialElite !important;
   font-weight: normal !important;
@@ -10569,28 +10585,14 @@ body .alert-box.success a.close:hover {
   -moz-osx-font-smoothing: grayscale !important;
   border: none !important;
   outline: none !important;
-  padding: 26px 0px 5px 36px;
+  padding: 26px 0px 29px 0px;
   margin-bottom: 0;
   font-size: 24px;
 }
 @media (max-width: 767px) {
-  .section-programs .main .current-program .block-title {
+  .section-programs .main .current-program .view .views-row .views-field.views-field-title {
     font-size: 22px;
   }
-}
-.section-programs .main .current-program .view {
-  display: inline-block;
-  width: 100%;
-  padding: 10px 4% 0;
-  margin-left: 0;
-}
-.section-programs .main .current-program .view .view-content {
-  display: table;
-  width: 100%;
-}
-.section-programs .main .current-program .view .views-row {
-  display: table-row;
-  width: 100%;
 }
 .section-programs .main .current-program .view .views-row .views-field.views-field-field-program-image {
   width: 20%;
@@ -10609,13 +10611,13 @@ body .alert-box.success a.close:hover {
   -webkit-font-smoothing: antialiased !important;
   font-size: 17px;
 }
-.section-programs .main .current-program .view .views-row .views-field.views-field-title, .section-programs .main .current-program .view .views-row .views-field.views-field-field-sign-up {
+.section-programs .main .current-program .view .views-row .views-field.views-field-field-sign-up {
   display: none;
 }
-.section-programs .main .view {
+.section-programs .main .view.view-display-id-page {
   margin-left: 35px;
 }
-.section-programs .main .view .view-header, .section-programs .main .view .view-header p {
+.section-programs .main .view.view-display-id-page .view-header, .section-programs .main .view.view-display-id-page .view-header p {
   font-family: SpecialElite !important;
   font-weight: normal !important;
   font-style: normal !important;
@@ -10624,30 +10626,30 @@ body .alert-box.success a.close:hover {
   color: #32024e;
 }
 @media screen and (min-width: 980px) {
-  .section-programs .main .view .view-header, .section-programs .main .view .view-header p {
+  .section-programs .main .view.view-display-id-page .view-header, .section-programs .main .view.view-display-id-page .view-header p {
     font-size: 26px !important;
   }
 }
-.section-programs .main .view .view-content .views-row {
+.section-programs .main .view.view-display-id-page .view-content .views-row {
   display: table;
   width: 100%;
 }
-.section-programs .main .view .view-content .views-row .views-field {
+.section-programs .main .view.view-display-id-page .view-content .views-row .views-field {
   display: table-row;
   padding-bottom: 23px;
 }
-.section-programs .main .view .view-content .views-row .views-field.views-field-field-program-image {
+.section-programs .main .view.view-display-id-page .view-content .views-row .views-field.views-field-field-program-image {
   width: 20%;
   float: left;
 }
-.section-programs .main .view .view-content .views-row .views-field.views-field-title, .section-programs .main .view .view-content .views-row .views-field.views-field-field-sign-up, .section-programs .main .view .view-content .views-row .views-field.views-field-body {
+.section-programs .main .view.view-display-id-page .view-content .views-row .views-field.views-field-title, .section-programs .main .view.view-display-id-page .view-content .views-row .views-field.views-field-field-sign-up, .section-programs .main .view.view-display-id-page .view-content .views-row .views-field.views-field-body {
   width: 78%;
   float: right;
 }
-.section-programs .main .view .view-content .views-row .views-field.views-field-title {
+.section-programs .main .view.view-display-id-page .view-content .views-row .views-field.views-field-title {
   padding-bottom: 23px;
 }
-.section-programs .main .view .view-content .views-row .views-field.views-field-title a {
+.section-programs .main .view.view-display-id-page .view-content .views-row .views-field.views-field-title a {
   font-family: SpecialElite !important;
   font-weight: normal !important;
   font-style: normal !important;
@@ -10656,7 +10658,7 @@ body .alert-box.success a.close:hover {
   color: #32024e;
   font-size: 24px;
 }
-.section-programs .main .view .view-content .views-row .views-field.views-field-body {
+.section-programs .main .view.view-display-id-page .view-content .views-row .views-field.views-field-body {
   font-size: 16px;
   font-family: Raleway-Medium !important;
   font-style: normal !important;
@@ -10664,7 +10666,7 @@ body .alert-box.success a.close:hover {
   -webkit-font-smoothing: antialiased !important;
   line-height: 1.7;
 }
-.section-programs .main .view .view-content .views-row .views-field.views-field-field-sign-up a {
+.section-programs .main .view.view-display-id-page .view-content .views-row .views-field.views-field-field-sign-up a {
   color: #000;
   font-family: SpecialElite !important;
   font-weight: normal !important;
@@ -10679,14 +10681,14 @@ body .alert-box.success a.close:hover {
   -moz-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
   box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
 }
-.section-programs .main .view .view-content .views-row .views-field.views-field-field-sign-up a:hover {
+.section-programs .main .view.view-display-id-page .view-content .views-row .views-field.views-field-field-sign-up a:hover {
   color: #000;
   background: #feed40 !important;
   opacity: 1;
   outline: none;
   text-decoration: none !important;
 }
-.section-programs .main .view .view-content .views-row .views-field.views-field-field-sign-up a:focus, .section-programs .main .view .view-content .views-row .views-field.views-field-field-sign-up a.active {
+.section-programs .main .view.view-display-id-page .view-content .views-row .views-field.views-field-field-sign-up a:focus, .section-programs .main .view.view-display-id-page .view-content .views-row .views-field.views-field-field-sign-up a.active {
   color: #000;
   background: #f0f811 !important;
   outline: 1;
