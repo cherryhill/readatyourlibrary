@@ -7,8 +7,9 @@ Drupal.behaviors.bfc_api_custom = {
 
 	  $('#pg-report').click(function() {
 	    $(this).attr('disabled','disabled'); 
-		  var aid = $("#edit-activity-progress-select option:selected").val();
+		  var tid = $("#edit-activity-progress-select option:selected").val();
 		  var date = $("#edit-date-datepicker-popup-0").val();
+		  alert(tid + ' ' + date); return false;
 		  var count = $('.inserted').length;
 		  var count_grid = $('.grid').length;
 		  if(count_grid != count){
@@ -17,7 +18,7 @@ Drupal.behaviors.bfc_api_custom = {
 		    url: Drupal.settings.basePath + 'complete-activity-progress',
 		    type: 'post',
 		    async: false,
-		    data: "id="+aid+"&date="+date,
+		    data: "id="+tid+"&date="+date,
 			  success: function (data) {
 				  if (data) {
 				    // $("#cells"+insert).html(data.content);
