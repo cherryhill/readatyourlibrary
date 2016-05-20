@@ -17,7 +17,7 @@ function complete_activity_progress(){
 	$activity_id = $activity_term->field_activity_id['und'][0]['value'];
 	activity_report_node_create($activity_id, $activity_date, $tid);
 
-	play_library_program_create_activity_entry($activity_id,$activity_uid);
+	//play_library_program_create_activity_entry($activity_id,$activity_uid);
 	echo 1;
 }
 
