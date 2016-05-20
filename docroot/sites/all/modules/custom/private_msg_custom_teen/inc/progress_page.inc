@@ -6,7 +6,8 @@
  * ajax callback for progress page
  */
 function complete_activity_progress(){
-	global $user;
+	echo 1;
+	/*global $user;
 	$activity_uid = $user->uid;
 
 	$tid = $_POST['id'];
@@ -23,7 +24,7 @@ function complete_activity_progress(){
   echo json_encode(array('success' => $found, 'content' => $output));
  
   module_invoke_all('exit');
-  exit;
+  exit;*/
 }
 
 function activity_report_node_create($activity_id, $activity_date, $term_tid, $check_in_progress = 0, $current_user = 0) {
