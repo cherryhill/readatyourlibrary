@@ -82,8 +82,7 @@
     $i=0; $gr = ceil($grids/6);
     for($j=0;$j<$gr;$j++){
       echo '<div class = "new-row">';
-		  for($k=0; $k < 6; $k++){
-		  	$i++;
+		  for($k=0; $k < 6; $k++, $i++){
 			  if($node_nid[$i]){
 			    echo '<div class = "grid inserted" id = "cells'.$i.'">'.$node_nid[$i].'</div>';
 		    }
