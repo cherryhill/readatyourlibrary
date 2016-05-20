@@ -1,26 +1,6 @@
 <?php
 
-/**
- * function callback for progress page
- */
-function progress_report_grid(){
-	
-  drupal_add_js( drupal_get_path('module', 'private_msg_custom_teen') . '/js/private_msg_custom_teen.js');
-  return theme('progress-report');
-}
 
-/**
- * template for progress page
- */
-function private_msg_custom_teen_theme(){
-
-  $templates = array(
-   'progress-report' => array(
-    'template' => 'templates/progress_page',
-  ));
-
-  return $templates;
-}
 
 /**
  * ajax callback for progress page
@@ -44,28 +24,6 @@ function complete_activity_progress(){
  
   module_invoke_all('exit');
   exit;
-}
-
-function progress_record($form,$form_state){
-
- 	$form['activity_progress_select'] = array(
-	  '#title' => t('I completed'),
-	  '#type' => 'select',
-	  '#options' => activities_view_select_option('hotspot_activities','1'),
-	  '#attributes' => array(
-	    'class' => array('activities_list_progress')
-	  ),
-	  '#weight' => 1,
-	);
-
-  $form['date'] = array(
-    '#type' => 'date_popup', 
-  	'#title' => 'on',
-    '#date_format' => 'Y-m-d',
-    '#date_year_range' => '-0:+1',
-  	'#weight' => 2, 
-  );
-	return $form;
 }
 
 function activity_report_node_create($activity_id, $activity_date, $term_tid, $check_in_progress = 0, $current_user = 0) {
@@ -202,13 +160,13 @@ $k=0; $gr = ceil($grids/6);
 for($j=0;$j<$gr;$j++){
   $output .=	'<div class = "new-row">';
     for($i=0; $i < 6; $i++){
-	  $k++;
 	  if($node_nid[$k]){
         $output .= '<div class = "grid inserted" id = "cells'.$k.'">'.$node_nid[$k].'</div>';
       }
       else{
         $output .= '<div class = "grid" id = "cells'.$k.'"></div>';
-      }		
+      }	
+      $k++;	
     }
   $output .= '</div>';
 }
