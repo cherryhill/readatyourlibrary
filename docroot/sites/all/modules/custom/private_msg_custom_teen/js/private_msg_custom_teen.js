@@ -20,7 +20,7 @@ Drupal.behaviors.bfc_api_custom = {
 		    data: {id : aid,date : date},
 		    dataType: 'json',
 			  success: function (data) {
-				  if (data.success === true) {
+				  if (data) {
 				    // $("#cells"+insert).html(data.content);
 				    window.location.reload(true);
 				  }
