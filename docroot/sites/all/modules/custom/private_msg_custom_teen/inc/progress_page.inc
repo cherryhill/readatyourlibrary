@@ -139,7 +139,8 @@ function progress_print_page(){
   padding: 25px 0px;
   background: #32024e;
   color: #fff;
-  margin-bottom: 25px;
+  width: 1280px;
+  margin: 0 auto;
 }
 /* line 65, ../sass/custom.scss */
 .main .progress-page {
@@ -214,7 +215,7 @@ function progress_print_page(){
 }
 /* line 124, ../sass/custom.scss */
 .main .user-desc {
-  width: 100%;
+  width: 94%;
   display: table;
   background: #7eb600;
   padding: 25px 14px;
@@ -258,7 +259,7 @@ function progress_print_page(){
 }
 /* line 162, ../sass/custom.scss */
 .main .progress-wrap {
-  width: 100%;
+  width: 96%;
   display: table;
   margin-top: 25px;
 }
@@ -302,6 +303,7 @@ function progress_print_page(){
 .main .progress-wrap .report-acivity .block form {
   width: 100%;
   display: inline-block;
+  margin-top: 30px;
 }
 /* line 201, ../sass/custom.scss */
 .main .progress-wrap .report-acivity .block form .form-item-activity-progress-select {
@@ -317,12 +319,12 @@ function progress_print_page(){
   font-style: normal !important;
   font-weight: normal !important;
   -webkit-font-smoothing: antialiased !important;
-  float: left;
+  margin-bottom: 10px;
   margin-right: 10px;
 }
 /* line 215, ../sass/custom.scss */
 .main .progress-wrap .report-acivity .block form .form-item-activity-progress-select .activities_list_progress {
-  width: 66% !important;
+  width: 91% !important;
   float: left;
   height: auto !important;
 }
@@ -361,9 +363,10 @@ function progress_print_page(){
 }
 /* line 252, ../sass/custom.scss */
 .main .progress-wrap .report-acivity .block form .container-inline-date {
-  width: 34%;
+  width: 100%;
   float: left;
   clear: none;
+  margin-top: 10px;
 }
 /* line 256, ../sass/custom.scss */
 .main .progress-wrap .report-acivity .block form .container-inline-date > .form-item.form-item-date {
@@ -372,10 +375,9 @@ function progress_print_page(){
 }
 /* line 259, ../sass/custom.scss */
 .main .progress-wrap .report-acivity .block form .container-inline-date > .form-item.form-item-date input {
-  width: 100%;
-  height: 100%;
+  
   padding: 4px 10px;
-  margin-left: 10px;
+  margin-top: 10px;
   position: relative;
   bottom: 5px;
 }
@@ -387,7 +389,7 @@ function progress_print_page(){
   -webkit-font-smoothing: antialiased !important;
   color: #32024e;
   font-size: 16px;
-  float: left;
+ 
 }
 /* line 276, ../sass/custom.scss */
 .main .progress-wrap .report-acivity .block form .container-inline-date > .form-item.form-item-date .date-padding {
@@ -401,6 +403,9 @@ function progress_print_page(){
 .main .progress-wrap .report-acivity .block form .container-inline-date > .form-item.form-item-date .date-padding .description {
   display: none;
 }
+ul.contextual-links {
+  display: none;
+}
 /* line 291, ../sass/custom.scss */
 .main .progress-wrap .reward-won {
   display: table-cell;
@@ -410,7 +415,7 @@ function progress_print_page(){
 .main .progress-wrap .reward-won .view {
   color: #32024e;
   background: #fff;
-  width: 92%;
+  width: 82%;
   margin: 0 auto;
   padding: 22px;
 }
@@ -418,6 +423,7 @@ function progress_print_page(){
 .main .progress-wrap .reward-won .view .pager {
   margin-bottom: 0;
   text-align: right;
+  list-style: none;
 }
 /* line 306, ../sass/custom.scss */
 .main .progress-wrap .reward-won .view .pager .pager-current {
@@ -495,7 +501,7 @@ function progress_print_page(){
 }
 /* line 380, ../sass/custom.scss */
 .main .progress-main h1 {
-  width: 100%;
+  width: 95%;
   display: inline-block;
   margin-top: 0;
   background: #7eb600;
@@ -521,7 +527,7 @@ function progress_print_page(){
 }
 /* line 403, ../sass/custom.scss */
 .main .progress-main .new-row > .grid {
-  width: 16.66%;
+  width: 12.26%;
   display: inline-block;
   vertical-align: top;
   color: #32024e;
@@ -530,6 +536,7 @@ function progress_print_page(){
   background: #fff;
   height: 200px;
   border: 0.5px solid #cccccc;
+  bottom: 4px;
 }
 /* line 411, ../sass/custom.scss */
 .main .progress-main .new-row > .grid.active-background {
