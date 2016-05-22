@@ -731,7 +731,7 @@ function activities_view_select_option($term,$progress) {
     $term_tid = $value->tid;
     $activity_term = taxonomy_term_load($term_tid);
 
-  $select_options = array();
+  $select_options[] = array();
   if($activity_term->field_progress_page_term['und'][0]['value'] == $progress){
       $select_options[$term_tid] .= $term_title;
     }
