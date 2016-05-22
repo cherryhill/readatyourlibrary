@@ -110,6 +110,12 @@ function private_msg_custom_teen_menu() {
     'file path' => drupal_get_path('module', 'private_msg_custom_teen'),
   );
 
+  $items['testing-cases'] = array(
+    'page callback' => 'test_page',
+    'access callback' => TRUE,
+    'type' => MENU_CALLBACK,
+  );
+
   return $items;
 }
 
@@ -147,11 +153,10 @@ function private_msg_custom_teen_init() {
   
 }
 
-
 /**
  * Implementation of hook_form_profile2_edif_PROFILE_NAME_form_alter()
  */
-function private_msg_custom_teen_form_profile2_edit_main_form_alter(&$form, $form_state) {
+function private_msg_custom_form_profile2_edit_main_form_alter(&$form, $form_state) {
 
   $form['profile_main']['field_user_avatar'] = array('#attributes' => array('style' => 'display:none'));
 
@@ -170,30 +175,33 @@ function private_msg_custom_teen_form_profile2_edit_main_form_alter(&$form, $for
 
   $num_avatar = !empty($form_state['values']['avatar_select']) ? $form_state['values']['avatar_select'] : 1;
   $none_array = array(0 => '-None-');
-  $array2 = $none_array + $tax_name;
+  $array2 = $tax_name + $none_array;
 
   $form['avatar_select'] = array(
-    '#title' => t('Select your user avatar?'),
+    '#title' => t('What kind of avatar do you want?'),
     '#type' => 'select',
     '#options' => $array2,
     '#ajax' => array(
-      'callback' => 'ajax_autocheckboxes_callback_avatar_teen',
+      'callback' => 'ajax_autocheckboxes_callback_avatar',
       'wrapper' => 'checkboxes-div',
       'effect' => 'slide',
       'progress' => array('type' => 'none'),
     ),
+    '#weight' => 10,
   );
+
   $form['checkboxes_fieldset'] = array(
     '#title' => t("Avatars"),
     '#prefix' => '<div id="checkboxes-div">',
     '#suffix' => '</div>',
     '#type' => 'fieldset',
+    '#weight' => 11,
   );
 
   foreach ($avatar_name[$num_avatar] as $key => $value) {
     $form['checkboxes_fieldset']["avatar_checkbox-$value"] = array(
       '#type' => 'checkbox',
-      '#title' => avatar_images_list_teen($value),
+      '#title' => avatar_images_list($value),
       '#prefix' => '<div class="$value">',
       '#suffix' => '</div>',
       '#attributes' => array(
@@ -203,9 +211,9 @@ function private_msg_custom_teen_form_profile2_edit_main_form_alter(&$form, $for
        ),
     );
   }
-
-  array_unshift($form['#submit'], 'submit_for_avatar_teen');
+  array_unshift($form['#submit'], 'submit_for_avatar');
 }
+
 
 function avatar_images_list_teen($value) {
 
@@ -723,6 +731,7 @@ function activities_view_select_option($term,$progress) {
     $term_tid = $value->tid;
     $activity_term = taxonomy_term_load($term_tid);
 
+  $select_options = array();
   if($activity_term->field_progress_page_term['und'][0]['value'] == $progress){
       $select_options[$term_tid] .= $term_title;
     }
@@ -755,7 +764,7 @@ function private_msg_custom_teen_theme(){
 /**
  * function for saving taxonomy term on creation of activity.
  */
-function activities_term_save($term,$fire_hook,$activity) {
+function activities_term_save($term, $fire_hook, $activity) {
 
   $voc = taxonomy_vocabulary_machine_name_load($term);
   $activity_term_vid = $voc->vid;
@@ -809,4 +818,35 @@ function activities_term_save($term,$fire_hook,$activity) {
       taxonomy_term_save($activity_term);
     }
   }
+}
+
+function activities_taxonomy_term_delete($term, $activity){
+
+  $voc = taxonomy_vocabulary_machine_name_load($term);
+  $activity_term_vid = $voc->vid;
+  $activity_id = $activity->id;
+
+  $query = db_select('field_data_field_activity_id','activity_id')
+    ->fields('activity_id',array('field_activity_id_value','entity_id'))
+    ->condition('field_activity_id_value',$activity_id)
+    ->execute()
+    ->fetchAssoc();
+
+  $entity_field_id = $query['entity_id'];
+
+  $hotspot_query = db_select('taxonomy_term_data','tax')
+    ->fields('tax',array('tid'))
+    ->condition('tid',$entity_field_id)
+    ->execute()
+    ->fetchAssoc();
+
+  $tid = $hotspot_query['tid'];
+
+  if(isset($tid)){
+    taxonomy_term_delete($tid);
+  }
+}
+
+function test_page(){
+ return '';
 }
