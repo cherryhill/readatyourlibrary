@@ -11,7 +11,7 @@
     jQuery("#user-register-form .form-item-avatar-select").insertAfter("#user-register-form #edit-profile-main-field-receive-notifications");
     jQuery("#user-register-form #checkboxes-div").insertAfter("#user-register-form .form-item-avatar-select");
     jQuery("#user-register-form .username").insertAfter("#user-register-form #checkboxes-div");
-    jQuery(".username #edit-name").hide();
+   jQuery("#user-register-form  #edit-name").hide();
     jQuery("#user-register-form #edit-profile-main-field-receive-notifications").hide();
 // validate email field  
   jQuery('#edit-mail').on('keyup', function(){
