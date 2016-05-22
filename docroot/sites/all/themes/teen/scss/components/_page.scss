@@ -555,15 +555,8 @@
 	    	overflow: hidden;
 	    	margin-left: 35px;
 	    	  .block-title {
-	    	  	color: $white;
-	    	  	@include mclaren;
-	    	  	@include noborder;
-	    	  	padding: 26px 0px 5px 36px;
-	    	  	margin-bottom: 0;
-	    	  	 font-size: 24px;
-	      		@include mobile{
-	     			font-size: 22px;
-	    		 }
+	    	  	display: none;
+	    	  
 	    	  }
 	    		.view {
 					display: inline-block;
@@ -571,16 +564,30 @@
 		    	 	padding: 10px 4% 0;
 		    	 	margin-left: 0;
 			    	 	.view-content {
-			    	 		display: table;
-			    	 		width: 100%;
+			    	 		
 			    	 	}
 	    	 			.views-row {
-			    	 		display: table-row;
+			    	 		display: inline-block;
 			    	 		width: 100%;
 	    	 	     			.views-field {
+	    	 	     				&.views-field-title {
+	    	 	     					display: inline-block;
+	    	 	     					width: 100%;
+	    	 	     					float: none;
+	    	 	     					color: $white;
+								    	@include mclaren;
+								    	@include noborder;
+							    	  	padding: 26px 0px 29px 0px;
+							    	  	margin-bottom: 0;
+							    	  	 font-size: 24px;
+							      		@include mobile{
+							     			font-size: 22px;
+							    		 }
+
+	    	 	     				}
 				    	 	       	&.views-field-field-program-image {
-				    	 	       	  width: 20%;
-				    	 	       	  display: table-cell;
+				    	 	       	   width: 20%;
+				    	 	       	  display: table-cell; 
 				    	 	       	  vertical-align: middle;
 				    	 	       	  float: none !important;
 				    	 	       	}
@@ -592,14 +599,14 @@
 				                      @include arialregular;
 				                      font-size: 17px;
 									}
-				    	 	       &.views-field-title, &.views-field-field-sign-up {
-				    	 	         display: none;
+				    	 	      &.views-field-field-sign-up {
+				    	 	        display: none;
 				    	 	       }
 	    	 	     			}
 	    	 			}
 	   			}  
 	    }
-		.view {
+		.view.view-display-id-page {
 			margin-left: 35px;
    		 	.view-header, .view-header p {
 	   		 	@media screen and (min-width: 980px) {
@@ -2364,310 +2371,6 @@
 
 /**css for progress page**/
  
-.section-progress {
-	 	.l-main {
-	 		display: table;
-	 		width: 100%;
-	 		border-collapse: separate;
-	  		border-spacing: 20px;
-	  		position: relative;
-
-
-	 	}
- 	 	.main {
-	 	 	@include bluebackground;
-	 	 	padding-left: 0;
-	 	 	padding-right: 0;
-	 	 	display: table-row;
-	 	 	width: 100%;
-	 	 	position: static;
-	 	 	
-	 	 	@include block;
-		 	 	#page-title {
-		 	 	 	@include waveimg;
-		 	 	}
- 	 	 		.view-calendar-sticker {
- 	 	 			@include yellowbackground;
-		 	 	 	width: 40%; 
-		 	 	 	display: table-cell;
- 	 	 	
- 	 	 	 			.view-header {
- 	 	 	 	
-			 	 	 	 	width: 100%;
-			 	 	 	 	padding: 20px 0 20px 20px;
-			 	 	 	 	left: 0;
-			 	 	 	 	  div {
-			 	 	 	 	  	@include mclaren;
-			 	 	 	 	  	 &.prg_lib {
-			 	 	 	 	  	 	
-				 	 	 	 	 	
-				 	 	 	 	 	color: $black;
-				 	 	 	 	 	line-height: 1;
-				 	 	 	 	 	padding-bottom: 20px;
-				 	 	 	 	 	font-size: 15px;
-			 	 	 	 	  	 }
-			 	 	 	 	  	 &.days_progress {
-			 	 	 	 	  	 	font-size: 26px;
-			 	 	 	 	  	 	color: $red;
-			 	 	 	 	  	 	line-height: 1;
-				 	 	 	 	 	padding-bottom: 20px;
-			 	 	 	 	  	 }
-			 	 	 	 	  }
- 	 	 	 	 				p {
-				 	 	 	 	 	@include mclaren;
-				 	 	 	 	 	margin-bottom: 0;
-				 	 	 	 	 	color: $black;
-				 	 	 	 	 	line-height: 1;
-				 	 	 	 	 	padding-bottom: 20px;
-				 	 	 	 	 	  	&.heading {
-					 	 	 	 	 	  	@media screen and (min-width: 940px)  {
-					 	 	 	 	 	  	font-size: 21px !important;
-				 	 	 	 	 	   		}
- 	 	 	 	 	  					}
-				 	 	 	 	 	   	&.statement {
-				 	 	 	 	 	  		@media screen and (min-width: 940px)  {
-				 	 	 	 	 	  		font-size: 15px !important;
-				 	 	 	 	 	   		}
-				 	 	 	 	 	  	}
- 	 	 	 	 				}
- 	 	 	 			}
- 	 	 	 			.view-content {
-			 	 	 	 	width: 100%;
-			 	 	 	 	display: table-row;
- 	 	 	 					.views-row {
-				 	 	 	 		width: 20%;
-				 	 	 	 		display: table-cell;
-				 	 	 	 		vertical-align: bottom;
-
-					 	 	 	 		 img {
-					 	 	 	 		 	width: 100% !important;
-					 	 	 	 		 	border: none;
-					 	 	 	 		 }
-
-
- 	 	 	 					}
- 	 	 	 			}
- 	 	 		}
- 	 			.block {
-		 	 		&.block-views {
-		 	 			width: 35%;
-						display: table-cell;
-						padding: 10px;
-						background: $white;
-						color: $black;
-						border-radius: 20px;
-						position: relative;
-						@include mclaren;
-						@include boxshadow;
-							.view-prize-won-for-progress-page {
-								width: 100%;
-								display: table;
-								border-spacing: 0 !important;
-									.view-header {
-										width: 29%;
-										display: table-cell;
-										position: relative;
-											div {
-					                            font-size: 20px;
-					                            color: $blue;
-					                            position: absolute;
-					                            top: 6px;
-					                            text-transform: capitalize;
-					                            width: 300px;
-											}
-											span {
-												font-size: 13px;
-												text-transform: uppercase;
-											}
-									}
-									.view-content {
-										width: 70%;
-										display: table-cell;
-										padding-top: 38px;
-						 					.item-list {
-						 						ul {
-						 		
-											 		li.views-row {
-											 			margin-bottom: 10px !important;
-											 			font-size: 13px !important;
-											 		}
-						 						}
-						 					}
-									}
-									.item-list {
-										width: 100%;
-										display: table-row;
-										height: 60px;
-											ul.pager {
-											 	position: absolute;
-											 	right: 20px;
-																	 	
-												 	 li {
-												 	 	
-													 	 	&.pager-current {
-													 	 		display: none;
-													 	 	}
-                                 						position: relative;
-						                                   a {
-							                                   	font-size: 22px;
-							                                   	text-transform: capitalize;
-							                                 
-						                                   	}
-						 	 							}
-						 					} 
-						
-									}
-							}
- 	 				}
- 	 				&.block-auto-role-allocation {
-		 	 			width: 30%;
-		 	 			display: table-cell;
-		 	 			background: $light-orange;
-		 	 			vertical-align: middle;
-		 	 			text-align: center;
-		 	 			padding: 0 5%;
-		 	 			border-radius: 20px;
-		 	 			@include mclaren;
-		 	 			@include boxshadow;
-			 	 			 > div:nth-of-type(2) {
-			 	 			 	line-height: 1.2;
-			                    font-size: 18px;
-			 	 			 }
- 	 				}
- 	 				&.progress-calendar {
-
-		 	 					div.fc-event-container > div ,div.ui-draggable.ui-draggable-handle  {
-		 	 			 			text-align: center !important;
-			 	 			 			img {
-			 	 			 				width: 55px !important; 
-
-			 	 			 			}
-		 	 			 		}
-		 	 			 		div.event_no {
-		 	 			 			font-size: 14px;
-		 	 			 			line-height: 1;
-		 	 			 			@include tablet{
-		 	 			 				font-size: 11px;
-		 	 			 			}
-		 	 			 		}
-		 	 			 		div.reward_text {
-		 	 			 			font-size: 14px;
-		 	 			 			line-height: 1;
-		 	 			 			padding-top: 10px; 
-		 	 			 			background: $button-hover;
-		 	 			 			@include tablet{
-		 	 			 				font-size: 11px;
-		 	 			 			}
-		 	 			 		}
-		 	 			 		div.reward_image {
-		 	 			 			background: $button-hover;
-		 	 			 			padding-top: 10px;
-		 	 			 		}
-			 	 		 	&.contextual-links-region {
-			 	 		 		position: static;
-			 	 		 	}
-		 	 			width: 100%;
-		 	 			max-width: 95%;
-		 	 			margin: 20px auto;
-			 	 			 	.block-title {
-			 	 			 		display: none;
-			 	 			 	}
-
- 	 							#calendar {
- 	 			 					.fc-header {
- 	 			 						border: none;
- 	 			 						background: none;
- 	 			 		 					.fc-header-center {
-					 	 			 		 	h2 {
-					 	 			 		 		color: $white;
-					 	 			 		 		@include mclaren;
-					 	 			 		 		border-bottom: none;
-					 	 			
-					 	 			 		 	}
- 	 			 		 					}
-				 	 			 		 	tbody {
-				 	 			 		 		border-top: none;
-				 	 			 		 	}
- 	 			 		 					td {
- 	 			 		 						span {
- 	 			 		 							&.fc-button {
-					 	 			 		 			background: $yellow;
-					 	 			 		 			@include boxshadow;
-					 	 			 		 			opacity: 1 !important;
-					 	 			 		 			color: $black;
-						 	 			 		 			&.fc-button-agendaWeek, &.fc-button-agendaDay, &.fc-button-month {
-						 	 			 		 			 	display: none;
-						 	 			 		 			 }
- 	 			 		 							}
- 	 			 		 						}
- 	 			 		 					}
- 	 			 					}
- 	 			 					.fc-content {
- 	 			 						color: $black;
-
- 	 			 							.fc-border-separate {
-					 	 			 			margin-bottom: 0;
-					 	 			 			border: none;
-						 	 			 			.fc-day-header {
-						 	 			 			 	padding-bottom: 5px;
-						 	 			 			 	color: $white;
-						 	 			 			 	font-weight: normal !important;
-						 	 			 			}
-					 	 			 			 tbody {
-					 	 			 			 	@include boxshadow;
-					 	 			 			 }
- 	 			 							}
-					 	 			 		.fc-widget-header{
-					 	 			 			border: none;
-					 	 			 			background: $blue;
-					 	 			 		}
-					 	 			 		.fc-widget-content {
-					 	 			 			border: 1px solid $orange;
-					 	 			 		}
- 	 			 							.fc-day {
- 	 			 								     .fc-day-content {
- 	 			 								     	font-size: 0;
- 	 			 								     }
-	 	 			 								.fc-day-number {
-	 	 			 									color: $blue;
-	 	 			 								}
-						 	 			 		&.fc-state-highlight {
-						 	 			 			.fc-day-number {
-						 	 			 				color: $orange !important;
-						 	 			 			}
-						 	 			 		}
- 	 			 							}
- 	 			 					}
- 	 			 				}
- 	 				}
- 	 			}
- 			}
-		 	 #print_button {
-		 	 			 	position: absolute;
-		 	 			 	top: 2%;
-		 	 			 	@media screen and (-webkit-min-device-pixel-ratio: 0) {
-		 	 			 		top: 4.5% !important;
-		 	 			 	}
-		 	 			 	top: 2% \0/IE9 !important;
-		 	 			 	right: 4%;
-		 	 			 	width: 200px;
-		 	 			 	line-height: 30px;
-		 	 			 	padding:6px 0px 6px 45px;
-		 	 			 	font-size: 17px;
-		 	 			 	@include mclaren;
-		 	 			 	background: $yellow url('../images/libraryzurb/print-calender.png') no-repeat !important;
-		 	 			 	background-position: 10px !important;
-		 	 			 	color: $black;
-		 	 			 	border-radius: 10px;
-		 	 			 	@include boxshadow;
-		 	 			 	@media screen and (min-width: 0) and (min-resolution: .001dpcm) {
-		 	 			 		top: 4.5%;
-		 	 			 	}
-
-		 	 			 	
-		 	 			 	
-		 	 			 }
- 	}
 
 /**end of progress page**/
 /**css for indivisual user profile**/
@@ -3716,7 +3419,7 @@ display: block !important;
  	}
  }
  /**css for progress report***/
- .page-progress-report {
+ .page-progress-report, .page-progress {
  	.main {
  	    padding: 25px 0px;
  		background: $blue;
@@ -3805,7 +3508,6 @@ display: block !important;
  		  	display: table;
  		  	margin-top: 25px;
  		  	 .report-acivity {
- 		  	 	width: 46%;
  		  	 	display: table-cell;
  		  	 	background: $white;
  		  	 	color: $blue;
@@ -3914,7 +3616,6 @@ display: block !important;
  		  	 	   }
  		  	 }
  		  	 .reward-won {
- 		  	 	width: 32%;
  		  	 	display: table-cell;
  		  	 	vertical-align: middle;
 
@@ -3985,7 +3686,7 @@ display: block !important;
  		  	padding-bottom: 25px;
  		  	  h1 {
  		  	  	width: 100%;
- 		  	  	display: table-row;
+ 		  	  	display: inline-block;
  		  	  	margin-top: 0;
  		  	  	background: $green;
  		  	  	font-size: 24px;
@@ -3997,17 +3698,42 @@ display: block !important;
  		  	  	position: absolute;
  		  	  	width: 100%;
  		  	  	margin-bottom: 0;
- 		  	  	top: -56px;
+ 		  	  	top: -55px;
  		  	  }
  		  	  .new-row {
  		  	  	width: 100%;
  		  	  	display: table-row;
  		  	  	 > .grid {
- 		  	  	 	width: 16.6%;
- 		  	  	 	display: table-cell;
+ 		  	  	 	width: 16.66%;
+ 		  	  	 	display: inline-block;
+ 		  	  	 	vertical-align: top;
+ 		  	  	 	color: $blue;
+ 		  	  	 	
+ 		  	  	 	padding: 10px 1.8%;
+ 		  	  	 	position: relative;
+ 		  	  	 	&.active-background {
+ 		  	  	 		background: $light-yellow;
+ 		  	  	 	}
  		  	  	 	background: $white;
  		  	  	 	height: 200px;
  		  	  	 	border: 0.5px solid $light-gray;
+ 		  	  	 	&.inserted {
+ 		  	  	 		background-image: url('../images/libraryzurb/complete.gif');
+ 		  	  	 		background-repeat: no-repeat;
+ 		  	  	 		background-position: center bottom 42px;
+ 		  	  	 	}
+ 		  	  	 	 p {
+ 		  	  	 	 	@include mclaren;
+ 		  	  	 	 	line-height: 1.2;
+ 		  	  	 	 	font-size: 14px;
+ 		  	  	 	 	 &.won-rew {
+                           position: absolute;
+                           bottom: 10px;
+                           margin-bottom: 0;
+                           left: 7.2%;
+                           width: 90%;
+ 		  	  	 	 	 }
+ 		  	  	 	 }
 
  		  	  	 }
  		  	  }

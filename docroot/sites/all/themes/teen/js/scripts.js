@@ -4,30 +4,30 @@
   // this class to style phone number links as buttons on small screens.
   Drupal.behaviors.libraryzurbPhoneNumberLinksOnMobile = {
     attach: function(context, settings) {
- 
-  // user register page fields fixes
+
+// user register page fields fixes
     jQuery("#user-register-form .form-item-mail").insertAfter("#user-register-form #edit-profile-main-field-how-did-you-hear-about-thi");
     jQuery("#user-register-form #edit-profile-main-field-receive-notifications").insertAfter("#user-register-form .form-item-mail");
     jQuery("#user-register-form .form-item-avatar-select").insertAfter("#user-register-form #edit-profile-main-field-receive-notifications");
     jQuery("#user-register-form #checkboxes-div").insertAfter("#user-register-form .form-item-avatar-select");
     jQuery("#user-register-form .username").insertAfter("#user-register-form #checkboxes-div");
 
-     $(':checkbox').on('change',function(){
+      $(':checkbox').on('change',function(){
        var th = $(this), name = th.prop('class'); 
        if(th.is(':checked')){
            $(':checkbox[class="'  + name + '"]').not($(this)).prop('checked',false);   
-      }
+        }
       });
-  //change position of review title after viewfilter in all review pages
-    $('.reviews-subtitle').insertAfter('.view-filters');
+      //change position of review title after viewfilter in all review pages
+      $('.reviews-subtitle').insertAfter('.view-filters');
       //for progress page table format of divs wrap every 6 divs in single div
-       var divs = $("div.progress-main > div.grid");
+         var divs = $("div.progress-main > div.grid");
         for(var i = 0; i < divs.length; i+=6) {
         divs.slice(i, i+6).wrapAll("<div class='new-row'></div>");
     }
-  //Announcement block in landing page make image field as background image
+    //Announcement block in landing page make image field as background image
      $('.block.announcement').each(function() {
-      if ($(this).find('img').length) {
+  if ($(this).find('img').length) {
     var imgURL = $(this).find('img').attr('src');
     $(this).css('background-image', 'url(' + imgURL + ')');
   $('.block.announcement img').hide();
@@ -204,7 +204,7 @@ jQuery( document ).ready(function() {
   /**jquery for new msg**/
   jQuery('.msg:has(.new)').addClass('newclass');
   /**jquery for swap divs in register page***/
-   div1 = jQuery('#edit-profile-main-field-receive-notificationsd .form-radios');
+   div1 = jQuery('#edit-profile-main-field-receive-notifications .form-radios');
     div2 = jQuery('#edit-profile-main-field-receive-notifications .description');
 
     tdiv1 = div1.clone();
