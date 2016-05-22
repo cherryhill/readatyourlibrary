@@ -9,7 +9,6 @@ Drupal.behaviors.bfc_api_custom = {
 	    $(this).attr('disabled','disabled'); 
 		  var tid = $("#edit-activity-progress-select option:selected").val();
 		  var date = $("#edit-date-datepicker-popup-0").val();
-		  alert(tid + ' ' + date); return false;
 		  var count = $('.inserted').length;
 		  var count_grid = $('.grid').length;
 		  if(count_grid != count){
@@ -21,7 +20,6 @@ Drupal.behaviors.bfc_api_custom = {
 		    data: "id="+tid+"&date="+date,
 			  success: function (data) {
 				  if (data) {
-				    // $("#cells"+insert).html(data.content);
 				    window.location.reload(true);
 				  }
 			  }

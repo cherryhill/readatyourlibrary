@@ -1,30 +1,32 @@
 <?php
 
-
-
 /**
  * ajax callback for progress page
  */
 function complete_activity_progress(){
-	global $user;
-	$activity_uid = $user->uid;
+  global $user;
+  $activity_uid = $user->uid;
 
-	$tid = $_REQUEST['id'];
-	$activity_date = $_REQUEST['date'];
+  $tid = $_REQUEST['id'];
+  $activity_date = $_REQUEST['date'];
 
-	$activity_term = taxonomy_term_load($tid);
+  $activity_term = taxonomy_term_load($tid);
+  $activity_id = $activity_term->field_activity_id['und'][0]['value'];
 
-	$activity_id = $activity_term->field_activity_id['und'][0]['value'];
-	activity_report_node_create($activity_id, $activity_date, $tid);
+  $activity_limit = retrieve_activity_limit($activity_id);
+  $node_created = activity_report_node_creation($activity_uid, $activity_id);
 
-	//play_library_program_create_activity_entry($activity_id,$activity_uid);
-	echo 1;
+  if($node_created < $activity_limit){
+    activity_report_node_create($activity_id, $activity_date, $tid);
+    play_library_program_create_activity_entry($activity_id, $activity_uid);
+  }
+  echo 1;
 }
 
 function activity_report_node_create($activity_id, $activity_date, $term_tid, $check_in_progress = 0, $current_user = 0) {
 
   $entity_info = entity_load('activity', array($activity_id));
-  $activity_name = $entity_info[$activity_id]->field_activity_description['und'][0]['safe_value'];
+  $activity_name = $entity_info[$activity_id]->title;
   $hotspot_activity_type = $entity_info[$activity_id]->field_hotspot_activity['und'][0]['value'];
   $activity_progress_status = $entity_info[$activity_id]->field_show_on_progress_page['und'][0]['value'];
   $_SESSION['progress_activity_id']= $activity_id;
@@ -81,11 +83,26 @@ function user_avatar_progress_page($uid){
 	$img_path = image_style_url($style, $img_uri);
 
 	$img = "<img src='$img_path'>";
-
-	$privacy = $data->_field_data['nid']['entity'];
-	$privacy_key = $privacy->field_please_select_one[LANGUAGE_NONE][0]['value'];
-
 	return $img.$user_name;
+}
+/**
+ * Retrieves activity limt that is set
+ */
+function retrieve_activity_limit($activity_id){
+  $entity_info = entity_load('activity', array($activity_id));
+  return $activity_name = $entity_info[$activity_id]->field_activity_limit['und'][0]['value'];
+}
+
+/**
+ * Retrieves how many times an activity report node has been created by the user
+ */
+function activity_report_node_creation($account_id, $activity_id){
+  $query = new EntityFieldQuery();
+  $query->entityCondition('entity_type', 'node');
+  $query->entityCondition('bundle', 'activity_report');
+  $query->propertyCondition('uid', $account_id);
+  $query->fieldCondition('field_activity_id_report', 'value', $activity_id);
+  return $query->count()->execute();
 }
 
 function progress_print_page(){

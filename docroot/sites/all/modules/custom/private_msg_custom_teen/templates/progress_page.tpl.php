@@ -57,10 +57,8 @@
 <div class="progress-main">
 	<?php 
 	    echo '<h1>My Passport Stamps</h1>';
-		$grids = variable_get('no_of_grids'); $criteria = array(
-   		'uid' => $userID,
-   		'type' => $type,
- 		);  
+		$grids = variable_get('no_of_grids');
+
 		global $user;
 		$current_uid = $user->uid;
 
@@ -68,16 +66,26 @@
 		  'uid' => $current_uid,
 		  'type' => 'activity_report',
 		);
-
+    
+    
 		$nodes = entity_load('node',FALSE,$criteria);
 		foreach ($nodes as $key => $value) {
+			// echo '<pre>'; print_r($value);
 			$node_date = $value->field_completion_date['und'][0]['value'];
 			$user_reward = $value->field_won_reward['und'][0]['value'];
+			$node_type_hotspot = $value->field_hotspot_activity_report['und'][0]['value'];
+			if($node_type_hotspot != '0'){
+				$hotspot_type_activity = '<p class = "hotspot-activity">Hotspot Activity</p>';
+			}else{
+				$hotspot_type_activity = '';
+			}
 			if($user_reward != '0'){
 				$user_won_reward = '<p class  = "won-rew">Congratulations! You have earned a prize!</p>';
+			}else{
+				$user_won_reward = '';
 			}
 			$n_date = date("m.d.y", strtotime($node_date));
-			$node_nid[] = '<p class  = "date-pg">'.$n_date.'</p><p class = "title-pg">'.$value->title.'</p>'.$user_won_reward;
+			$node_nid[] = '<p class  = "date-pg">'.$n_date.'</p>'.$hotspot_type_activity.'<p class = "title-pg">'.$value->title.'</p>'.$user_won_reward;
 		}
     $i=0; $gr = ceil($grids/6);
     for($j=0;$j<$gr;$j++){
