@@ -5,6 +5,12 @@
   Drupal.behaviors.libraryzurbPhoneNumberLinksOnMobile = {
     attach: function(context, settings) {
 
+// user register page fields fixes on teen
+    jQuery("#user-register-form .form-item-mail").insertAfter("#user-register-form #edit-profile-main-field-how-did-you-hear-about-thi");
+    jQuery("#user-register-form #edit-profile-main-field-receive-notifications").insertAfter("#user-register-form .form-item-mail");
+    jQuery("#user-register-form .form-item-avatar-select").insertAfter("#user-register-form #edit-profile-main-field-receive-notifications");
+    jQuery("#user-register-form #checkboxes-div").insertAfter("#user-register-form .form-item-avatar-select");
+    jQuery("#user-register-form .username").insertAfter("#user-register-form #checkboxes-div");
 
 
       $(':checkbox').on('change',function(){
@@ -20,8 +26,6 @@
         for(var i = 0; i < divs.length; i+=6) {
         divs.slice(i, i+6).wrapAll("<div class='new-row'></div>");
     }
-    //add class to div in progress page for congratulation msg
-     $('div.grid.inserted:has(.won-rew)').addClass('active-background');
     //Announcement block in landing page make image field as background image
      $('.block.announcement').each(function() {
   if ($(this).find('img').length) {
