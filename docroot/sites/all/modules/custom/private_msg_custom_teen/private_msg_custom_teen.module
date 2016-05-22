@@ -156,7 +156,7 @@ function private_msg_custom_teen_init() {
 /**
  * Implementation of hook_form_profile2_edif_PROFILE_NAME_form_alter()
  */
-function private_msg_custom_form_profile2_edit_main_form_alter(&$form, $form_state) {
+function private_msg_custom_teen_form_profile2_edit_main_form_alter(&$form, $form_state) {
 
   $form['profile_main']['field_user_avatar'] = array('#attributes' => array('style' => 'display:none'));
 
@@ -182,7 +182,7 @@ function private_msg_custom_form_profile2_edit_main_form_alter(&$form, $form_sta
     '#type' => 'select',
     '#options' => $array2,
     '#ajax' => array(
-      'callback' => 'ajax_autocheckboxes_callback_avatar',
+      'callback' => 'ajax_autocheckboxes_callback_avatar_teen',
       'wrapper' => 'checkboxes-div',
       'effect' => 'slide',
       'progress' => array('type' => 'none'),
@@ -201,7 +201,7 @@ function private_msg_custom_form_profile2_edit_main_form_alter(&$form, $form_sta
   foreach ($avatar_name[$num_avatar] as $key => $value) {
     $form['checkboxes_fieldset']["avatar_checkbox-$value"] = array(
       '#type' => 'checkbox',
-      '#title' => avatar_images_list($value),
+      '#title' => avatar_images_list_teen($value),
       '#prefix' => '<div class="$value">',
       '#suffix' => '</div>',
       '#attributes' => array(
@@ -211,7 +211,7 @@ function private_msg_custom_form_profile2_edit_main_form_alter(&$form, $form_sta
        ),
     );
   }
-  array_unshift($form['#submit'], 'submit_for_avatar');
+  array_unshift($form['#submit'], 'submit_for_avatar_teen');
 }
 
 
