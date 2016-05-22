@@ -821,22 +821,22 @@ function get_eligible_activities($rewards_id_ary) {
  * @return mysql resultset $res
  *   query resultset
  */
-function get_activity_entries_for_eligible_activities($account_id, $eligible_activities) {
-  // Query to fetch all activity entries related to set of activities that are
-  // linked to the reward user can earn, based on current activity
-  $que = db_select('eck_activity', 'eck_a');
-  $que->join('field_data_field_activity_entry_activity', 'fdfae', 'fdfae.entity_id = eck_a.id');
-  $que->join('field_data_field_claimed_point', 'fdcp', 'fdcp.entity_id = eck_a.id');
-  $que->join('field_data_field_activity_point', 'fdfap', 'fdfap.entity_id = eck_a.id');
-  $que->condition('eck_a.uid', $account_id);
-  $que->condition('fdfae.field_activity_entry_activity_target_id', $eligible_activities, 'IN');
-  $que->condition('fdcp.field_claimed_point_value', 'fdfap.field_activity_point_value', '<=');
-  $que->fields('fdcp', array('field_claimed_point_value'));
-  $que->fields('fdfap', array('field_activity_point_value'));
-  $que->fields('fdfae', array('entity_id'));
-  $res = $que->execute();
-  return $res;
-}
+// function get_activity_entries_for_eligible_activities($account_id, $eligible_activities) {
+//   // Query to fetch all activity entries related to set of activities that are
+//   // linked to the reward user can earn, based on current activity
+//   $que = db_select('eck_activity', 'eck_a');
+//   $que->join('field_data_field_activity_entry_activity', 'fdfae', 'fdfae.entity_id = eck_a.id');
+//   $que->join('field_data_field_claimed_point', 'fdcp', 'fdcp.entity_id = eck_a.id');
+//   $que->join('field_data_field_activity_point', 'fdfap', 'fdfap.entity_id = eck_a.id');
+//   $que->condition('eck_a.uid', $account_id);
+//   $que->condition('fdfae.field_activity_entry_activity_target_id', $eligible_activities, 'IN');
+//   $que->condition('fdcp.field_claimed_point_value', 'fdfap.field_activity_point_value', '<=');
+//   $que->fields('fdcp', array('field_claimed_point_value'));
+//   $que->fields('fdfap', array('field_activity_point_value'));
+//   $que->fields('fdfae', array('entity_id'));
+//   $res = $que->execute();
+//   return $res;
+// }
 
 
 
