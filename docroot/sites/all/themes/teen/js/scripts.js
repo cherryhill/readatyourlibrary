@@ -5,12 +5,13 @@
   Drupal.behaviors.libraryzurbPhoneNumberLinksOnMobile = {
     attach: function(context, settings) {
 
-// user register page fields fixes
+// user register page fields fixes on teen
     jQuery("#user-register-form .form-item-mail").insertAfter("#user-register-form #edit-profile-main-field-how-did-you-hear-about-thi");
     jQuery("#user-register-form #edit-profile-main-field-receive-notifications").insertAfter("#user-register-form .form-item-mail");
     jQuery("#user-register-form .form-item-avatar-select").insertAfter("#user-register-form #edit-profile-main-field-receive-notifications");
     jQuery("#user-register-form #checkboxes-div").insertAfter("#user-register-form .form-item-avatar-select");
     jQuery("#user-register-form .username").insertAfter("#user-register-form #checkboxes-div");
+
 
       $(':checkbox').on('change',function(){
        var th = $(this), name = th.prop('class'); 
