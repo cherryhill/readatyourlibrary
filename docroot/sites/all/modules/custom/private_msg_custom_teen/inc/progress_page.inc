@@ -510,6 +510,10 @@ ul.contextual-links {
   position: relative;
   padding-bottom: 25px;
 }
+select##edit-activity-progress-select {
+  border: 1px solid #32024E;
+  color: #32024E;
+}
 /* line 380, ../sass/custom.scss */
 .main .progress-main h1 {
   width: 95%;
