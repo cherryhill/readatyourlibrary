@@ -302,6 +302,10 @@ function patron_activity_record_form($form, &$form_state) {
     '#type' => 'textfield',
     '#autocomplete_path' => 'user/autocomplete',
   );
+  $form['html'] = array(
+   '#type' => 'markup',
+   '#markup' => '<div>Search for patrons here: <a href="patron-users">http://play.dev.chillco.com/patron-users</a></div>',
+  );
   $form['activity'] = array(
     '#type' => 'select',
     '#options' => $activity_title,
