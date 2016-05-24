@@ -231,6 +231,9 @@
     		@include noborder;			
     	}
     	@include orange-blue;
+    	.view-empty {
+    		color: $white;
+    	}
     	.view {
     		display: table;
     		width: 100%;
@@ -347,9 +350,9 @@
     	width: 100%;
     	display: inline-block;
     	 h2 {
-    	 	color: $black;
+    	 	color: $blue;
     	 	margin-top: 0;
-    	 	font-size: 28px;
+    	 	font-size: 26px;
     	 	@include mclaren;
     	 	@include noborder;
     	 }
@@ -361,35 +364,44 @@
     	      	position: absolute;
     	      	top: 29%;
     	      	right: -6px;
-    	      	padding: 12px 22px;
-    	      	@include bluebutton($font-size: 17px);
+    	      	padding: 9px 22px 6px;
+    	      	background: $blue;
+    	      	color: $white;
+    	      	@include mclaren;
+    	      	font-size: 17px;
+    	      	@include boxshadow;
+
     	      }
     	 	 .pm {
     	 	 	width: 90%;
     	 	 	display: inline-block;
-    	 	 	margin-bottom: 25px;
     	 	 	 .pm-subject {
     	 	 	 	width: 60%;
     	 	 	 	float: left;
     	 	 	 	color: $red;
     	 	 	 	font-size: 17px;
-    	 	 	 	@include arialbold;
+    	 	 	 	
     	 	 	 	  a {
-    	 	 	 	  	color: $black;
+    	 	 	 	  	color: $red;
     	 	 	 	  	line-height: 1;
+    	 	 	 	  	font-size: 16px;
+    	 	 	 	  	@include arialregular;
+
     	 	 	 	  }
     	 	 	 	 .pm-new {
     	 	 	 	 	float: left;
     	 	 	 	 	padding-right: 10px;
     	 	 	 	 	color: $red;
+    	 	 	 	 	font-size: 16px;
     	 	 	 	 	position: relative;
     	 	 	 	 	top: 5px;
+    	 	 	 	 	@include arialbold;
     	 	 	 	 }
     	 	 	 }
     	 	 	 .pm-admin {
     	 	 	 	width: 19%;
     	 	 	 	float: left;
-    	 	 	 	font-size: 17px;
+    	 	 	 	font-size: 16px;
     	 	 	 	@include arialregular;
     	 	 	 	color: $black;
     	 	 	 }
@@ -397,7 +409,7 @@
     	 	 	 	float: left;
     	 	 	 	width: 19%;
     	 	 	 	color: $black;
-    	 	 	 	font-size: 17px;
+    	 	 	 	font-size: 16px;
     	 	 	 	@include arialregular;
     	 	 	 }
 

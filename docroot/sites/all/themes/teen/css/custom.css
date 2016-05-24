@@ -6403,27 +6403,20 @@ h1#page-title {
   text-align: right;
 }
 .more-link a {
-  font-family: SpecialElite !important;
-  font-weight: normal !important;
+  font-family: Raleway-Bold !important;
   font-style: normal !important;
+  font-weight: normal !important;
   -webkit-font-smoothing: antialiased !important;
   -moz-osx-font-smoothing: grayscale !important;
+  -moz-font-smoothing: grayscale !important;
   position: relative;
-  font-size: 17px;
+  font-size: 14px;
   text-transform: capitalize;
   padding-right: 20px;
+  color: #fff;
 }
 .more-link a:after {
-  content: "";
-  width: 17px;
-  height: 17px;
-  display: block;
-  visibility: visible;
-  position: absolute;
-  top: 1px;
-  right: 0;
-  background: url("../images/libraryzurb/right-blue-arrow.png") no-repeat;
-  background-size: 15px;
+  content: ">";
 }
 
 .page-user .alert-box:nth-of-type(2) {
@@ -7191,6 +7184,9 @@ h1#page-title {
     font-size: 22px;
   }
 }
+.block.dashboard-block .view-empty {
+  color: #fff;
+}
 .block.dashboard-block .view {
   display: table;
   width: 100%;
@@ -7359,9 +7355,9 @@ h1#page-title {
   display: inline-block;
 }
 .block.block-private-msg-custom h2 {
-  color: #000;
+  color: #32024e;
   margin-top: 0;
-  font-size: 28px;
+  font-size: 26px;
   font-family: SpecialElite !important;
   font-weight: normal !important;
   font-style: normal !important;
@@ -7379,38 +7375,45 @@ h1#page-title {
   position: absolute;
   top: 29%;
   right: -6px;
-  padding: 12px 22px;
-  color: #32024e !important;
+  padding: 9px 22px 6px;
+  background: #32024e;
+  color: #fff;
   font-family: SpecialElite !important;
   font-weight: normal !important;
   font-style: normal !important;
   -webkit-font-smoothing: antialiased !important;
   -moz-osx-font-smoothing: grayscale !important;
   font-size: 17px;
-  background: #f6f45a;
-  padding: 10px 20px 7px;
   -webkit-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
   -moz-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
   box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
-  border: none;
-  text-transform: capitalize;
-}
-.block.block-private-msg-custom .pm-custom .pm-view:hover, .block.block-private-msg-custom .pm-custom .pm-view:focus {
-  color: #32024e;
-  background: #feed40 !important;
-  opacity: 1;
-  outline: none;
 }
 .block.block-private-msg-custom .pm-custom .pm {
   width: 90%;
   display: inline-block;
-  margin-bottom: 25px;
 }
 .block.block-private-msg-custom .pm-custom .pm .pm-subject {
   width: 60%;
   float: left;
   color: #cc0d25;
   font-size: 17px;
+}
+.block.block-private-msg-custom .pm-custom .pm .pm-subject a {
+  color: #cc0d25;
+  line-height: 1;
+  font-size: 16px;
+  font-family: Raleway-Medium !important;
+  font-style: normal !important;
+  font-weight: normal !important;
+  -webkit-font-smoothing: antialiased !important;
+}
+.block.block-private-msg-custom .pm-custom .pm .pm-subject .pm-new {
+  float: left;
+  padding-right: 10px;
+  color: #cc0d25;
+  font-size: 16px;
+  position: relative;
+  top: 5px;
   font-family: Raleway-Bold !important;
   font-style: normal !important;
   font-weight: normal !important;
@@ -7418,21 +7421,10 @@ h1#page-title {
   -moz-osx-font-smoothing: grayscale !important;
   -moz-font-smoothing: grayscale !important;
 }
-.block.block-private-msg-custom .pm-custom .pm .pm-subject a {
-  color: #000;
-  line-height: 1;
-}
-.block.block-private-msg-custom .pm-custom .pm .pm-subject .pm-new {
-  float: left;
-  padding-right: 10px;
-  color: #cc0d25;
-  position: relative;
-  top: 5px;
-}
 .block.block-private-msg-custom .pm-custom .pm .pm-admin {
   width: 19%;
   float: left;
-  font-size: 17px;
+  font-size: 16px;
   font-family: Raleway-Medium !important;
   font-style: normal !important;
   font-weight: normal !important;
@@ -7443,7 +7435,7 @@ h1#page-title {
   float: left;
   width: 19%;
   color: #000;
-  font-size: 17px;
+  font-size: 16px;
   font-family: Raleway-Medium !important;
   font-style: normal !important;
   font-weight: normal !important;
@@ -10698,6 +10690,9 @@ body .alert-box.success a.close:hover {
 
 /**end css of program page**/
 /**common css for patraon dashboard page**/
+.page-user-profile #page-title {
+  display: none;
+}
 .page-user-profile .main {
   padding-left: 0;
   padding-right: 0;
@@ -10780,12 +10775,11 @@ body .alert-box.success a.close:hover {
   outline: none;
 }
 .page-user-profile .homebox #homebox-add {
+  background: #32024e;
   color: #fff;
-  background: #f6f45a;
   -webkit-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
   -moz-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
   box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
-  border-radius: 20px;
   padding: 36px 20px 25px;
   position: relative;
 }
@@ -10797,7 +10791,7 @@ body .alert-box.success a.close:hover {
   font-style: normal !important;
   font-weight: normal !important;
   -webkit-font-smoothing: antialiased !important;
-  color: #000;
+  font-size: 16px;
 }
 .page-user-profile .homebox #homebox-add .item-list ul li.last {
   float: right !important;
@@ -10806,51 +10800,38 @@ body .alert-box.success a.close:hover {
   margin-bottom: 32px;
 }
 .page-user-profile .homebox #homebox-buttons a {
-  padding: 9px 25px;
-  color: #32024e !important;
+  padding: 9px 22px 6px;
+  font-size: 18px;
   font-family: SpecialElite !important;
   font-weight: normal !important;
   font-style: normal !important;
   -webkit-font-smoothing: antialiased !important;
   -moz-osx-font-smoothing: grayscale !important;
-  font-size: 22px;
-  background: #f6f45a;
-  padding: 10px 20px 7px;
   -webkit-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
   -moz-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
   box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
-  border: none;
-  text-transform: capitalize;
+  color: #fff;
+  background: #32024e;
   text-decoration: none;
 }
-.page-user-profile .homebox #homebox-buttons a:hover, .page-user-profile .homebox #homebox-buttons a:focus {
-  color: #32024e;
-  background: #feed40 !important;
-  opacity: 1;
-  outline: none;
+.page-user-profile .homebox #homebox-add ul li {
+  border: none !important;
+  outline: none !important;
 }
 .page-user-profile .homebox #homebox-add ul li a {
-  color: #32024e !important;
+  color: #fff;
+  background: #7eb600;
+  font-size: 18px;
+  padding: 3px 22px 0px;
+  -webkit-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+  box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
   font-family: SpecialElite !important;
   font-weight: normal !important;
   font-style: normal !important;
   -webkit-font-smoothing: antialiased !important;
   -moz-osx-font-smoothing: grayscale !important;
-  font-size: 17px;
-  background: #f6f45a;
-  padding: 10px 20px 7px;
-  -webkit-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
-  -moz-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
-  box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
-  border: none;
-  text-transform: capitalize;
   text-decoration: none;
-}
-.page-user-profile .homebox #homebox-add ul li a:hover, .page-user-profile .homebox #homebox-add ul li a:focus {
-  color: #32024e;
-  background: #feed40 !important;
-  opacity: 1;
-  outline: none;
 }
 .page-user-profile .homebox #homebox-add ul li a.used {
   border: none !important;
@@ -10863,6 +10844,28 @@ body .alert-box.success a.close:hover {
   border: none !important;
   outline: none !important;
   position: relative;
+}
+.page-user-profile .homebox .homebox-portlet .homebox-portlet-inner .portlet-header:before {
+  content: "";
+  width: 50px;
+  height: 50px;
+  display: block;
+  visibility: visible;
+  position: absolute;
+  top: 6px;
+  left: 5%;
+}
+.page-user-profile .homebox .homebox-portlet.dashboard-activities .homebox-portlet-inner .portlet-header::before {
+  background: url("../images/libraryzurb/activities.png") no-repeat;
+  background-position: center 6px;
+}
+.page-user-profile .homebox .homebox-portlet.dashboard-rewards .homebox-portlet-inner .portlet-header::before {
+  background: url("../images/libraryzurb/rewards.png") no-repeat;
+  background-position: center 6px;
+}
+.page-user-profile .homebox .homebox-portlet.dashboard-booklists .homebox-portlet-inner .portlet-header::before, .page-user-profile .homebox .homebox-portlet.dashboard-reviews .homebox-portlet-inner .portlet-header::before, .page-user-profile .homebox .homebox-portlet.dashboard-leaderboard .homebox-portlet-inner .portlet-header::before, .page-user-profile .homebox .homebox-portlet.dashboard-following .homebox-portlet-inner .portlet-header::before {
+  background: url("../images/libraryzurb/reviews.png") no-repeat;
+  background-position: center 6px;
 }
 .page-user-profile .homebox .homebox-portlet.dashboard-leaderboard .view-leadeboard .view-footer {
   text-align: right;
@@ -10916,11 +10919,12 @@ body .alert-box.success a.close:hover {
   box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
   border: none !important;
   outline: none !important;
-  background: #f6f45a;
+  background: #32024e;
+  color: #fff;
   margin-bottom: 10px;
 }
 .page-user-profile .homebox .homebox-portlet-inner .portlet-header {
-  background: #32024e !important;
+  background: #7eb600 !important;
   box-shadow: none !important;
   opacity: 1 !important;
   padding: 15.5px 15px 15.5px 0 !important;
@@ -10959,18 +10963,8 @@ body .alert-box.success a.close:hover {
   position: relative;
 }
 .page-user-profile .homebox .portlet-content {
-  padding: 35px 7.1% !important;
+  padding: 15px 6.1% !important;
   position: inherit;
-}
-.page-user-profile .homebox .portlet-content .view:before {
-  content: "";
-  width: 50px;
-  height: 50px;
-  display: block;
-  visibility: visible;
-  position: absolute;
-  top: 12px;
-  left: 6%;
 }
 .page-user-profile .homebox .portlet-content .view .view-header {
   text-align: left !important;
@@ -10981,7 +10975,7 @@ body .alert-box.success a.close:hover {
   font-style: normal !important;
   font-weight: normal !important;
   -webkit-font-smoothing: antialiased !important;
-  color: #000;
+  color: #fff;
   margin-top: 10px;
 }
 .page-user-profile .homebox .portlet-content .view .view-content .views-field-count .views-label-count {
@@ -11001,9 +10995,6 @@ body .alert-box.success a.close:hover {
 }
 .page-user-profile .homebox .portlet-content .view .view-content .views-field-count .views-label-count:after {
   top: -4px !important;
-}
-.page-user-profile .homebox .portlet-content .view.view-follow:before {
-  background: url("../images/libraryzurb/following.png") no-repeat;
 }
 .page-user-profile .homebox .portlet-content .view.view-follow .view-header .Following p {
   font-size: 15px;
@@ -11047,9 +11038,6 @@ body .alert-box.success a.close:hover {
   font-weight: normal !important;
   -webkit-font-smoothing: antialiased !important;
 }
-.page-user-profile .homebox .portlet-content .view.view-patron-rewads-for-patron-dashboard:before {
-  background: url("../images/libraryzurb/reward-dash.png") no-repeat;
-}
 .page-user-profile .homebox .portlet-content .view.view-patron-rewads-for-patron-dashboard .view-content {
   display: table;
   width: 100%;
@@ -11071,18 +11059,15 @@ body .alert-box.success a.close:hover {
   width: 65%;
   float: right;
   padding-top: 20px;
-  font-size: 15px;
+  font-size: 14px;
   font-family: Raleway-Medium !important;
   font-style: normal !important;
   font-weight: normal !important;
   -webkit-font-smoothing: antialiased !important;
-  color: #000;
+  color: #fff;
 }
 .page-user-profile .homebox .portlet-content .view.view-booklist-on-activities-page {
   counter-reset: section;
-}
-.page-user-profile .homebox .portlet-content .view.view-booklist-on-activities-page:before {
-  background: url("../images/libraryzurb/booklist-dash.png") no-repeat;
 }
 .page-user-profile .homebox .portlet-content .view.view-booklist-on-activities-page .view-footer p {
   text-align: center;
@@ -11120,7 +11105,7 @@ body .alert-box.success a.close:hover {
 }
 .page-user-profile .homebox .portlet-content .view.view-booklist-on-activities-page .view-header h3 {
   font-size: 15px;
-  color: #000;
+  color: #fff;
   font-family: Raleway-Bold !important;
   font-style: normal !important;
   font-weight: normal !important;
@@ -11133,7 +11118,7 @@ body .alert-box.success a.close:hover {
   list-style: none;
 }
 .page-user-profile .homebox .portlet-content .view.view-booklist-on-activities-page ol li .views-field-title a {
-  color: #000;
+  color: #fff;
   font-size: 15px;
   font-family: Raleway-Medium !important;
   font-style: normal !important;
@@ -11148,9 +11133,6 @@ body .alert-box.success a.close:hover {
 }
 .page-user-profile .homebox .portlet-content .view.view-my-book-reviews {
   counter-reset: section;
-}
-.page-user-profile .homebox .portlet-content .view.view-my-book-reviews:before {
-  background: url("../images/libraryzurb/review-dash.png") no-repeat;
 }
 .page-user-profile .homebox .portlet-content .view.view-my-book-reviews .view-empty p:nth-of-type(1) {
   text-align: left;
@@ -11222,15 +11204,15 @@ body .alert-box.success a.close:hover {
   text-decoration: underline !important;
 }
 .page-user-profile .homebox .portlet-content .view.view-my-book-reviews .view-empty {
-  font-size: 15px;
+  font-size: 14px;
   font-family: Raleway-Medium !important;
   font-style: normal !important;
   font-weight: normal !important;
   -webkit-font-smoothing: antialiased !important;
-  color: #000;
+  color: #fff;
 }
 .page-user-profile .homebox .portlet-content .view.view-my-book-reviews .view-header h3 {
-  color: #000;
+  color: #fff;
   font-size: 15px;
   font-family: Raleway-Bold !important;
   font-style: normal !important;
@@ -11248,7 +11230,7 @@ body .alert-box.success a.close:hover {
   margin-left: 0;
 }
 .page-user-profile .homebox .portlet-content .view.view-my-book-reviews .view-content ol li a, .page-user-profile .homebox .portlet-content .view.view-my-book-reviews .view-content ul li a {
-  color: #000;
+  color: #fff;
   font-family: Raleway-Medium !important;
   font-style: normal !important;
   font-weight: normal !important;
@@ -11262,12 +11244,9 @@ body .alert-box.success a.close:hover {
   padding-right: 5px;
   display: inline-block;
 }
-.page-user-profile .homebox .portlet-content .view.view-my-activities-for-patron-dashboard:before {
-  background: url("../images/libraryzurb/activities-dash.png") no-repeat;
-}
 .page-user-profile .homebox .portlet-content .view.view-my-activities-for-patron-dashboard .view-header a {
-  font-size: 15px;
-  color: #000;
+  font-size: 14px;
+  color: #fff;
   font-family: Raleway-Bold !important;
   font-style: normal !important;
   font-weight: normal !important;
@@ -11282,17 +11261,17 @@ body .alert-box.success a.close:hover {
   width: 100%;
 }
 .page-user-profile .homebox .portlet-content .view.view-my-activities-for-patron-dashboard .view-content .views-row .field-content div {
-  width: 49%;
+  width: 50%;
   float: left;
-  font-size: 15px;
-  color: #000;
+  font-size: 14px;
+  color: #fff;
   font-family: Raleway-Medium !important;
   font-style: normal !important;
   font-weight: normal !important;
   -webkit-font-smoothing: antialiased !important;
 }
-.page-user-profile .homebox .portlet-content .view.view-my-activities-for-patron-dashboard .view-content .views-row .field-content div:nth-of-type(2) {
-  margin-left: 1%;
+.page-user-profile .homebox .portlet-content .view.view-my-activities-for-patron-dashboard .view-content .views-row .field-content div:nth-of-type(2) span {
+  padding-right: 5px;
 }
 .page-user-profile .homebox .portlet-content .view.view-my-activities-for-patron-dashboard .view-footer div {
   text-align: center;
@@ -15148,7 +15127,7 @@ body .alert-box.success a.close:hover {
   margin-right: 10px;
 }
 .page-progress-report .main .progress-wrap .report-acivity .block form .form-item-activity-progress-select .activities_list_progress, .page-progress .main .progress-wrap .report-acivity .block form .form-item-activity-progress-select .activities_list_progress {
-  width: 66% !important;
+  width: 74% !important;
   float: left;
   height: auto !important;
 }
@@ -15214,6 +15193,9 @@ body .alert-box.success a.close:hover {
 .page-progress-report .main .progress-wrap .report-acivity .block form .container-inline-date > .form-item.form-item-date .date-padding label, .page-progress .main .progress-wrap .report-acivity .block form .container-inline-date > .form-item.form-item-date .date-padding label {
   display: none;
 }
+.page-progress-report .main .progress-wrap .report-acivity .block form .container-inline-date > .form-item.form-item-date .date-padding input, .page-progress .main .progress-wrap .report-acivity .block form .container-inline-date > .form-item.form-item-date .date-padding input {
+  width: 110px;
+}
 .page-progress-report .main .progress-wrap .report-acivity .block form .container-inline-date > .form-item.form-item-date .date-padding .form-item-date-date, .page-progress .main .progress-wrap .report-acivity .block form .container-inline-date > .form-item.form-item-date .date-padding .form-item-date-date {
   float: none !important;
 }
@@ -15271,7 +15253,7 @@ body .alert-box.success a.close:hover {
   -webkit-font-smoothing: antialiased !important;
 }
 .page-progress-report .main .progress-wrap .progress-rewards, .page-progress .main .progress-wrap .progress-rewards {
-  width: 22%;
+  padding: 20px;
   display: table-cell;
   vertical-align: middle;
   font-size: 22px;
@@ -15848,12 +15830,6 @@ p {
   font-weight: normal !important;
   -webkit-font-smoothing: antialiased !important;
   margin-bottom: 23px;
-  display: inline-block;
-}
-
-.form-textarea-wrapper p {
-  display: block !important;
-  width: 100%;
 }
 
 /**
