@@ -17,7 +17,11 @@
 </div>
 <div class="point-status">
 <div class="activity-status">
-	<?php print 'Stamps Earned:'; ?>
+  <?php print 'Activities Completed: '.specefic_user_nodes().' activities'; ?>
+</div>
+<div class="activity-remaining">
+<?php $grids = variable_get('no_of_grids'); $activities_left = $grids - specefic_user_nodes();
+  print 'Activities Left to Complete: '.$activities_left.' activities'; ?>
 </div>
 <div class="points">
 	<?php print 'Raffle Tickets Earned:'; ?>
@@ -45,63 +49,62 @@
 
 
 <div class="reward-won"><?php
-	print views_embed_view('prize_won_for_progress_page','block');
-  ?>
-</div>
-<div class="progress-rewards">
-	<?php
-	  $reward_block = variable_get('progress_rewards', array('value' => '', 'format' => NULL)); 
-	  print $reward_block['value']; ?>
-</div>
+  print views_embed_view('prize_won_for_progress_page','block'); ?>
 </div>
 
-<div class="progress-main">
-	<?php 
-	    echo '<h1>My Passport Stamps</h1>';
-		$grids = variable_get('no_of_grids');
+<div class="progress-rewards"><?php
+  $reward_block = variable_get('progress_rewards', array('value' => '', 'format' => NULL)); 
+  print $reward_block['value']; ?>
+</div></div>
 
-		global $user;
-		$current_uid = $user->uid;
+<div class="progress-main"><?php 
+  echo '<h1>My Passport Stamps</h1>';
+  global $user;
+  $current_uid = $user->uid;
+  $exceed_limit = '';
 
-		$criteria = array(
-		  'uid' => $current_uid,
-		  'type' => 'activity_report',
-		);
-    
-    
-		$nodes = entity_load('node',FALSE,$criteria);
-		foreach ($nodes as $key => $value) {
-			// echo '<pre>'; print_r($value);
-			$node_date = $value->field_completion_date['und'][0]['value'];
-			$user_reward = $value->field_won_reward['und'][0]['value'];
-			$node_type_hotspot = $value->field_hotspot_activity_report['und'][0]['value'];
-			if($node_type_hotspot != '0'){
-				$hotspot_type_activity = '<p class = "hotspot-activity">Hotspot Activity</p>';
-			}else{
-				$hotspot_type_activity = '';
-			}
-			if($user_reward != '0'){
-				$user_won_reward = '<p class  = "won-rew">Congratulations! You have earned a prize!</p>';
-			}else{
-				$user_won_reward = '';
-			}
-			$n_date = date("m.d.y", strtotime($node_date));
-			$node_nid[] = '<p class  = "date-pg">'.$n_date.'</p>'.$hotspot_type_activity.'<p class = "title-pg">'.$value->title.'</p>'.$user_won_reward;
-		}
-    $i=0; $gr = ceil($grids/6);
-    for($j=0;$j<$gr;$j++){
-      echo '<div class = "new-row">';
-		  for($k=0; $k < 6; $k++){
-			  if(isset($node_nid[$i])){
-			    echo '<div class = "grid inserted" id = "cells'.$i.'">'.$node_nid[$i].'</div>';
-		    }
-		    else{
-			    echo '<div class = "grid" id = "cells'.$i.'"></div>';
-		    }
-		    $i++;
-		  }
-		  echo '</div>';
+  $criteria = array(
+    'uid' => $current_uid,
+    'type' => 'activity_report',
+  );
+  
+  $nodes = entity_load('node',FALSE,$criteria);
+
+  foreach ($nodes as $key => $value) {
+    $node_date = $value->field_completion_date['und'][0]['value'];
+    $user_reward = $value->field_won_reward['und'][0]['value'];
+    $node_type_hotspot = $value->field_hotspot_activity_report['und'][0]['value'];
+    $user_won_reward = '';
+    $hotspot_type_activity = '';
+    $n_date = date("m.d.y", strtotime($node_date));
+
+	if($node_type_hotspot){
+	  $hotspot_type_activity = '<p class = "hotspot-activity">Bay Area Hot Spot!</p>';
+	}
+	if($user_reward){
+	  $user_won_reward = '<p class  = "won-rew">Congratulations! You have earned a prize!</p>';
+	}
+
+    $node_nid[] = '<p class  = "date-pg">'.$n_date.'</p>'.$hotspot_type_activity.'<p class = "title-pg">'.$value->title.'</p>'.$user_won_reward;
+  }
+
+  if(isset($_SESSION['exceed-activity-limit']['status'][0])){
+    $exceed_limit = $_SESSION['exceed-activity-limit']['status'][0];
+  }
+
+  $i=0; $gr = ceil($grids/6);
+  for($j=0;$j<$gr;$j++){
+    echo "<div class = 'new-row'>";
+    for($k=0; $k < 6; $k++){
+	  if(isset($node_nid[$i])){
+	    echo "<div class = 'grid inserted' id = 'cells'.$i.'>".$node_nid[$i]."</div>";
 	  }
-	?>
-</div>
-</div>
+	  else{
+	    echo "<div class = 'grid' id = 'cells'.$i.'></div>";
+	  }
+	  $i++;
+	}
+	echo '</div>';
+  }
+  unset($exceed_limit); ?>
+</div></div>

@@ -566,7 +566,7 @@ function creating_review($form, $form_state){
 function view_rewards_block(){
 
   $block = module_invoke('views', 'block_view', 'program_rewards-block_1');
-  $output .= render($block['content']);
+  $output = render($block['content']);
 
   $block = module_invoke('views', 'block_view', 'program_rewards_raffle-block_1');
   $output .= render($block['content']);
@@ -886,5 +886,47 @@ function activity_report_node_create($activity_id, $activity_date, $term_tid, $c
 }
 
 function test_page(){
- return 'test';
+$output = "
+
+  <div class = 'main'><div class='progress-page'>
+<h1 id = 'title'>$pg_title
+</h1>
+<div class='progress-desc'>
+  $page_desc  
+</div>
+<div class='user-desc'>
+<div class='avatar-id'>$u_avatar
+</div>
+<div class='point-status'>
+<div class='activity-status'>Stamps Earned:
+</div>
+<div class='points'>Raffle Tickets Earned:
+</div>
+</div>
+</div>
+<div class='progress-wrap'>
+<div class='report-acivity'><h1>Report an Activity</h1>$user_reward_block
+  <div class='submit'>
+    <button id='pg-report'>Submit</button>
+  </div>
+</div>
+<div class='reward-won'>$reward_won
+</div>
+<div class='progress-rewards'>$u_rew
+</div>
+</div>
+<div class='progress-main'><h1>My Passport Stamps</h1>";
+
+
+      require_once("sites/all/modules/contrib/print/lib/dompdf/dompdf_config.inc.php");
+      $dompdf = new DOMPDF;
+      $html = stripslashes($output); 
+
+      $dompdf->load_html(utf8_decode($html));
+
+      $dompdf->render();
+
+      $font = Font_Metrics::get_font("din", "regular");
+      $dompdf->stream("Progress.pdf");
+  //return $html;
 }
