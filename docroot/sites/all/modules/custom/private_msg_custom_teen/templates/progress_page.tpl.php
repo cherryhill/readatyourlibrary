@@ -27,9 +27,10 @@
 <div class="progress-wrap">
 <div class="report-acivity">
 	<?php
-	    print '<h1>Report an Activity</h1>	';
-		  $block = block_load('private_msg_custom_teen', 'progress_submit_block');
-  	  $output = drupal_render(_block_get_renderable_array(_block_render_blocks(array($block))));
+      print '<h1>Report an Activity</h1>	';
+	  $block = block_load('private_msg_custom_teen', 'progress_submit_block');
+	  $render_block = _block_get_renderable_array(_block_render_blocks(array($block)));
+  	  $output = drupal_render($render_block);
   	  print $output; 
 	?>
 	<div class="submit">
@@ -91,7 +92,7 @@
     for($j=0;$j<$gr;$j++){
       echo '<div class = "new-row">';
 		  for($k=0; $k < 6; $k++){
-			  if($node_nid[$i]){
+			  if(isset($node_nid[$i])){
 			    echo '<div class = "grid inserted" id = "cells'.$i.'">'.$node_nid[$i].'</div>';
 		    }
 		    else{

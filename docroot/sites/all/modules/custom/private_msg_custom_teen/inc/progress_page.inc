@@ -23,44 +23,6 @@ function complete_activity_progress(){
   echo 1;
 }
 
-function activity_report_node_create($activity_id, $activity_date, $term_tid, $check_in_progress = 0, $current_user = 0) {
-
-  $entity_info = entity_load('activity', array($activity_id));
-  $activity_name = $entity_info[$activity_id]->title;
-  $hotspot_activity_type = $entity_info[$activity_id]->field_hotspot_activity['und'][0]['value'];
-  $activity_progress_status = $entity_info[$activity_id]->field_show_on_progress_page['und'][0]['value'];
-  $_SESSION['progress_activity_id']= $activity_id;
-
-  // check activity 'show in progress' status
-  if($check_in_progress) {
-    if(!$activity_progress_status) {
-  	  return FALSE;
-    }
-  }
-  // if show in progress is one, node is created.
-  if($current_user == 0){
-    global $user;
-	$current_user = $user->uid;
-  }
-
-  $node = new stdClass(); // Creating a new node object
-  $node->type = 'activity_report'; //Content type
-  $node->language = LANGUAGE_NONE;
-  node_object_prepare($node);
-  $node->title = $activity_name;
-  $node->status = 1;
-  $node->uid = $current_user;
-  $node->field_activity_id_report[LANGUAGE_NONE][0]['value'] = $activity_id;
-  $node->field_hotspot_activity_report[LANGUAGE_NONE][0]['value'] = $hotspot_activity_type;
-  $node->field_show_on_progress_report[LANGUAGE_NONE][0]['value'] = $activity_progress_status;
-  $node->field_term_id[LANGUAGE_NONE][0]['value'] = $term_tid;
-  $node->field_completion_date[LANGUAGE_NONE][0]['value'] = $activity_date;
-  node_save($node);
-  $created_nid = $node->nid;
-
-  $_SESSION['teen_progress_report_nid'] = $created_nid;
-}
-
 function user_avatar_progress_page($uid){
 
 	global $user;
