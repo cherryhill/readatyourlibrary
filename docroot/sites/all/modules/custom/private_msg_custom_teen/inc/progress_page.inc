@@ -20,7 +20,7 @@ function complete_activity_progress(){
     activity_report_node_create($activity_id, $activity_date, $tid);
     play_library_program_create_activity_entry($activity_id, $activity_uid);
   }else{
-    $_SESSION['exceed-activity-limit'] = drupal_set_message("The program is currently closed.");
+    $_SESSION['exceed-activity-limit'] = drupal_set_message("You have recorded maximum number of times this activity can be performed.");
   }
   echo 1;
 }
