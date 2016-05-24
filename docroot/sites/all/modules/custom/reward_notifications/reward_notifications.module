@@ -27,6 +27,7 @@ function reward_notifications_block_info() {
 * Implements hook_block_view().
 */
 function reward_notifications_block_view($delta = '') {
+
   $block = array();
 
   switch ($delta) {
@@ -39,182 +40,296 @@ function reward_notifications_block_view($delta = '') {
 }
 
 function _reward_claim_onscreen_message() {
-	global $user;
-	$uid = $user->uid;
+  global $user;
+  $uid = $user->uid;
 
-	$query = db_select('reward_notification_patron','noti')
-	  ->fields('noti',array('reward_notifications','reward_mail_notifications','id'))
-	  ->condition('uid',$uid)
-	  ->condition('notifications_read',0)
-	  ->execute()
-	  ->fetchAll();
+  $query = db_select('reward_notification_patron','noti')
+    ->fields('noti',array('reward_notifications','reward_mail_notifications','id'))
+    ->condition('uid',$uid)
+    ->condition('notifications_read',0)
+    ->execute()
+    ->fetchAll();
 
-	foreach($query as $res){
-		$onscreen_msg = $res->reward_notifications;
-		$id = $res->id;
+  foreach($query as $res){
+    $onscreen_msg = $res->reward_notifications;
+    $id = $res->id;
 
-		$rm_html_tags = strip_tags($onscreen_msg);
-		$rew_message = str_replace('&nbsp;', ' ', $rm_html_tags);
+    $rm_html_tags = strip_tags($onscreen_msg);
+    $rew_message = str_replace('&nbsp;', ' ', $rm_html_tags);
 
-		drupal_set_message(t('%string', array('%string' => $rew_message)), 'status');
+    drupal_set_message(t('%string', array('%string' => $rew_message)), 'status');
 
-		$sub_query = db_update('reward_notification_patron')
-		->fields(array('notifications_read' => '1'))
-		->condition('id',$id)
-		->execute();
-	}
+    $sub_query = db_update('reward_notification_patron')
+      ->fields(array('notifications_read' => '1'))
+      ->condition('id',$id)
+      ->execute();
+  }
 }
 
 /**
 * Implements hook_menu().
 */
-
 function reward_notifications_menu(){
 
-	$items = array();
+  $items = array();
 
-	$items['reward/%'] = array(
-		'title' => 'Award',
-		'access callback' => TRUE,
-		'page callback' => 'drupal_get_form',
-		'page arguments' => array('claim_reward',1),
-		'type' => MENU_NORMAL_ITEM,
-		);
+  $items['reward/%'] = array(
+    'title' => 'Award',
+    'access callback' => TRUE,
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('claim_reward',1),
+    'type' => MENU_NORMAL_ITEM,
+  );
 
-	return $items;
+  $items['reward-raffle/%'] = array(
+    'title' => 'Award',
+    'access callback' => TRUE,
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('claim_raffle',1),
+    'type' => MENU_NORMAL_ITEM,
+  );
+
+  return $items;
 }
 
-//function to provide form for reward winners
-function claim_reward($form_state,$arg){
+/**
+ * function to provide form for reward winners
+ */
+function claim_reward($form_state, $arg){
 
-	$rid = $arg['build_info']['args'][0];
+  $rid = $arg['build_info']['args'][0];
 
-	$query = db_select('eck_reward','rew')
-	->fields('rew', array('title', 'id','uid'))
-	->condition('id', $rid,'=')
-	->execute()
-	->fetchAssoc();
+  $query = db_select('eck_reward','rew')
+    ->fields('rew', array('title', 'id','uid'))
+    ->condition('id', $rid,'=')
+    ->execute()
+    ->fetchAssoc();
 
-	$query_raf = db_select('eck_raffle','raff')
-	->fields('raff', array('title', 'id','uid'))
-	->condition('id', $rid,'=')
-	->execute()
-	->fetchAssoc();
+  $reward_id = $query['id'];
+  $reward_title = $query['title'];
+  $reward_uid = $query['uid'];
 
-	if(isset($reward_uid)){
-		$reward_id = $query['id'];
-		$reward_title = $query['title'];
-		$reward_uid = $query['uid'];
-	}else{
-		$reward_id = $query_raf['id'];
-		$reward_title = $query_raf['title'];
-		$reward_uid = $query_raf['uid'];
-	}
+  $query_sub = db_select('winner_list','win')
+    ->fields('win',array('reward_status','staff_notes','reward_receieved_date'))
+    ->condition('reward_id', $reward_id, '=')
+    ->execute()
+    ->fetchAssoc();
 
-	$query_sub = db_select('winner_list','win')
-	->fields('win',array('reward_status','staff_notes','reward_receieved_date'))
-	->condition('reward_id', $reward_id, '=')
-	->execute()
-	->fetchAssoc();
+  $status = $query_sub['reward_status'];
+  $notes = $query_sub['staff_notes'];
+  $receieved_date = $query_sub['reward_receieved_date'];
 
-	$status = $query_sub['reward_status'];
-	$notes = $query_sub['staff_notes'];
-	$receieved_date = $query_sub['reward_receieved_date'];
-
-
-	$form['reward_taken'] = array(
-	   '#title' => t($reward_title),
-	   '#type' => 'checkbox',
-	   '#default_value' => isset($status) ? $status : '0',
-	  );
+  $form['reward_taken'] = array(
+    '#title' => t($reward_title),
+    '#type' => 'checkbox',
+    '#default_value' => isset($status) ? $status : '0',
+  );
   
-	$form['uid'] = array(
-	  '#type' => 'hidden',
-	  '#value' => $reward_uid,
-	);
+  $form['uid'] = array(
+    '#type' => 'hidden',
+    '#value' => $reward_uid,
+  );
 
-	$form['rid'] = array(
-	  '#type' => 'hidden',
-	  '#value' => $reward_id,
-	);
+  $form['rid'] = array(
+    '#type' => 'hidden',
+    '#value' => $reward_id,
+  );
 
-	$form['title'] = array(
-	  '#type' => 'hidden',
-	  '#value' => $reward_title,
-	);
+  $form['title'] = array(
+    '#type' => 'hidden',
+    '#value' => $reward_title,
+  );
 
-	$form['receieved_date'] = array( 
+  $form['receieved_date'] = array( 
     '#type' => 'date_popup', 
     '#date_format' => 'Y-m-d',
     '#title' => "Receieved" ,
     '#default_value' => isset($receieved_date) ? $receieved_date : NULL,
   ); 
 
-	$form['staff_notes'] = array(
-	   '#title' => t('Staff Notes'),
-	   '#type' => 'textarea',
-	   '#default_value' => isset($notes) ? $notes : NULL,
-	 );
+  $form['staff_notes'] = array(
+    '#title' => t('Staff Notes'),
+    '#type' => 'textarea',
+    '#default_value' => isset($notes) ? $notes : NULL,
+  );
 
-	$form['submit_button'] = array(
-	   '#type' => 'submit',
-	   '#value' => t('SAVE'),
-	 );
+  $form['submit_button'] = array(
+    '#type' => 'submit',
+    '#value' => t('SAVE'),
+  );
 
-	return $form;
+return $form;
 }
 
-// submit handler for form build in function claim_reward
+/**
+ * submit handler for form build in function claim_reward
+ */
 function claim_reward_submit($form, &$form_state){
 
-	$reward_title = $form_state['values']['title'];
-	$reward_status = $form_state['values']['reward_taken'];
-	$reward_uid = $form_state['values']['uid'];
-	$staff_notes = $form_state['values']['staff_notes'];
-	$reward_rid = $form_state['values']['rid'];
-	$reward_receieved_date = $form_state['values']['receieved_date'];
+  $reward_title = $form_state['values']['title'];
+  $reward_status = $form_state['values']['reward_taken'];
+  $reward_uid = $form_state['values']['uid'];
+  $staff_notes = $form_state['values']['staff_notes'];
+  $reward_rid = $form_state['values']['rid'];
+  $reward_receieved_date = $form_state['values']['receieved_date'];
 
-	if(isset($reward_receieved_date)){
-		$reward_status = '1';
-	}else{
-		$reward_status = '0';
-	}
-
-	$query = db_select('winner_list','win')
-	->fields('win',array('reward_id'))
-	->condition('reward_id',$reward_rid,'=')
-	->execute()
-	->fetchAssoc();
-
-	$r_id = $query['reward_id'];
-
-	if(empty($r_id)){
-		db_insert('winner_list')
-			->fields(array(
-			'uid' => $reward_uid,
-			'reward_id' => $reward_rid,
-			'staff_notes' => $staff_notes,
-			'reward_name' => $reward_title,
-			'reward_status' => $reward_status,
-			'reward_receieved_date' => $reward_receieved_date,
-			))->execute();
-
-		drupal_set_message("saved");
+  if(isset($reward_receieved_date)){
+    $reward_status = '1';
   }else{
-  	db_update('winner_list')
-    	->fields(array(
-    	'reward_status' => $reward_status,
-    	'staff_notes' => $staff_notes,
-    	'reward_receieved_date' => $reward_receieved_date,
-    	))
-	    ->condition('reward_id',$reward_rid,'=')
-    	->execute();
-
-		drupal_set_message("saved");
+    $reward_status = '0';
   }
-  if(arg(2) == 'raffle'){
-  	$form_state['redirect'] = 'raffle-winners';	
+
+  $query = db_select('winner_list','win')
+    ->fields('win',array('reward_id'))
+    ->condition('reward_id',$reward_rid,'=')
+    ->execute()
+    ->fetchAssoc();
+
+  $r_id = $query['reward_id'];
+
+  if(empty($r_id)){
+    db_insert('winner_list')
+    ->fields(array(
+      'uid' => $reward_uid,
+      'reward_id' => $reward_rid,
+      'staff_notes' => $staff_notes,
+      'reward_name' => $reward_title,
+      'reward_status' => $reward_status,
+      'reward_receieved_date' => $reward_receieved_date,
+    ))->execute();
+    drupal_set_message("saved");
   }else{
-  	$form_state['redirect'] = 'reward-winners';
-	}
+    db_update('winner_list')
+    ->fields(array(
+      'reward_status' => $reward_status,
+      'staff_notes' => $staff_notes,
+      'reward_receieved_date' => $reward_receieved_date,
+    ))
+    ->condition('reward_id',$reward_rid,'=')
+    ->execute();
+    drupal_set_message("saved");
+  }
+
+  $form_state['redirect'] = 'reward-winners';
+}
+
+/**
+ * function to provide form for raffle winners
+ */
+function claim_raffle($form_state, $arg){
+
+  $rid = $arg['build_info']['args'][0];
+
+  $query_raf = db_select('eck_raffle','raff')
+    ->fields('raff', array('title', 'id','uid'))
+    ->condition('id', $rid,'=')
+    ->execute()
+    ->fetchAssoc();
+
+  $reward_id = $query_raf['id'];
+  $reward_title = $query_raf['title'];
+  $reward_uid = $query_raf['uid'];
+
+  $query_sub = db_select('winner_list','win')
+    ->fields('win',array('reward_status','staff_notes','reward_receieved_date'))
+    ->condition('reward_id', $reward_id, '=')
+    ->execute()
+    ->fetchAssoc();
+
+  $status = $query_sub['reward_status'];
+  $notes = $query_sub['staff_notes'];
+  $receieved_date = $query_sub['reward_receieved_date'];
+
+  $form['reward_taken'] = array(
+    '#title' => t($reward_title),
+    '#type' => 'checkbox',
+    '#default_value' => isset($status) ? $status : '0',
+  );
+  
+  $form['uid'] = array(
+    '#type' => 'hidden',
+    '#value' => $reward_uid,
+  );
+
+  $form['rid'] = array(
+    '#type' => 'hidden',
+    '#value' => $reward_id,
+  );
+
+  $form['title'] = array(
+    '#type' => 'hidden',
+    '#value' => $reward_title,
+  );
+
+  $form['receieved_date'] = array( 
+    '#type' => 'date_popup', 
+    '#date_format' => 'Y-m-d',
+    '#title' => "Receieved" ,
+    '#default_value' => isset($receieved_date) ? $receieved_date : NULL,
+  ); 
+
+  $form['staff_notes'] = array(
+    '#title' => t('Staff Notes'),
+    '#type' => 'textarea',
+    '#default_value' => isset($notes) ? $notes : NULL,
+  );
+
+  $form['submit_button'] = array(
+    '#type' => 'submit',
+    '#value' => t('SAVE'),
+  );
+
+return $form;
+}
+
+/**
+ * submit handler for form build in function claim_raffle
+ */
+function claim_raffle_submit($form, &$form_state){
+
+  $reward_title = $form_state['values']['title'];
+  $reward_status = $form_state['values']['reward_taken'];
+  $reward_uid = $form_state['values']['uid'];
+  $staff_notes = $form_state['values']['staff_notes'];
+  $reward_rid = $form_state['values']['rid'];
+  $reward_receieved_date = $form_state['values']['receieved_date'];
+
+  if(isset($reward_receieved_date)){
+    $reward_status = '1';
+  }else{
+    $reward_status = '0';
+  }
+
+  $query = db_select('winner_list','win')
+    ->fields('win',array('reward_id'))
+    ->condition('reward_id',$reward_rid,'=')
+    ->execute()
+    ->fetchAssoc();
+
+  $r_id = $query['reward_id'];
+
+  if(empty($r_id)){
+    db_insert('winner_list')
+    ->fields(array(
+      'uid' => $reward_uid,
+      'reward_id' => $reward_rid,
+      'staff_notes' => $staff_notes,
+      'reward_name' => $reward_title,
+      'reward_status' => $reward_status,
+      'reward_receieved_date' => $reward_receieved_date,
+    ))->execute();
+    drupal_set_message("saved");
+  }else{
+    db_update('winner_list')
+    ->fields(array(
+      'reward_status' => $reward_status,
+      'staff_notes' => $staff_notes,
+      'reward_receieved_date' => $reward_receieved_date,
+    ))
+    ->condition('reward_id',$reward_rid,'=')
+    ->execute();
+    drupal_set_message("saved");
+  }
+
+  $form_state['redirect'] = 'raffle-winners';
 }

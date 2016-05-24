@@ -62,6 +62,7 @@ jQuery( document ).ready(function() {
 
   
   /* jQuery for homepage book slider */
+  jQuery( '<p>Avatar icons provided free by <a href="http://emojione.com/"target="_blank"> Emoji One</a></p>' ).insertAfter( "#user-register-form" );
   jQuery(".blslider2.slide").hide();
   jQuery(".blslider3.slide").hide();
   jQuery(".blslider1").show();
