@@ -126,15 +126,14 @@ h1#page-title {
 .more-link {
 	text-align: right;
 	 	a {
-		 	@include mclaren;
+		 	@include arialbold;
 		 	position: relative;
-		 	font-size: 17px;
+		 	font-size: 14px;
 		 	text-transform: capitalize;
 	 		padding-right: 20px;
+	 		color: $white;
 		 	 	&:after {
-          	@include previous(17px, 17px, $right: 0, $top: 1px);
-          	background: url('../images/libraryzurb/right-blue-arrow.png') no-repeat;
-          	background-size: 15px;
+          	     content: ">";
 		 	 	}
 		}
 }

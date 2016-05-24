@@ -51,7 +51,7 @@ var reviews =$('.homebox-draggable:has(.view-my-book-reviews)').addClass('dashbo
 var booklist =$('.homebox-draggable:has(.view-booklist-on-activities-page)').addClass('dashboard-booklists');
 var follow =$('.homebox-draggable:has(.view-follow)').addClass('dashboard-following');
 var leadeboard =$('.homebox-draggable:has(.view-leadeboard)').addClass('dashboard-leaderboard');
-var progress =$('.homebox-draggable:has(.all_rewrad_won)').addClass('dashboard-progress');
+var progress =$('.homebox-draggable:has(.msg-highlight)').addClass('dashboard-progress');
 var obj =$("#homebox-add ul li");
 $.each( obj , function( key, value ) {
 $(value).addClass($(value).find('a').text().toLowerCase());

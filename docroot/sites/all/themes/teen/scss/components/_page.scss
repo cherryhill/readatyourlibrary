@@ -660,6 +660,9 @@
 /**common css for patraon dashboard page**/
 	 
 .page-user-profile {
+	#page-title {
+		display: none;
+	}
 	.main {
  		padding-left: 0;
  		padding-right: 0;
@@ -705,8 +708,9 @@
 	 		 	}
 	 		}
 	 		#homebox-add {
-	 		 	@include yellowbackground;
-	 		 	border-radius: 20px;
+	 		    background: $blue;
+	 		    color: $white;
+	 		    @include boxshadow;
 	 		 	padding: 36px 20px 25px;
 	 		 	position: relative;
 	 		 	  &:after {
@@ -714,7 +718,7 @@
 	 		 	  	width: 100%;
 	 		 	  	height: auto;
 	 		 	  	@include arialregular;
-	 		 	  	color: $black;
+	 		 	  	font-size: 16px;
 	 		 	  }
 		 		 	.item-list ul li.last {
 		 		 	 	float: right !important;
@@ -723,19 +727,31 @@
 	 		#homebox-buttons {
 	 			margin-bottom: 32px;
 		 			a {
-		 				padding: 9px 25px;
-		 				@include bluebutton($font-size: 22px);
+		 				padding: 9px 22px 6px;
+		 				font-size: 18px;
+		 				@include mclaren;
+		 				@include boxshadow;
+		 				color: $white;
+		 				background: $blue;
 		 				text-decoration: none;
 		 			}
 			}
 	 		#homebox-add {
-	 			ul li a {
-	 				@include bluebutton($font-size: 17px);
+	 			ul li {
+	 				@include noborder;
+	 			 a {
+	 				color: $white;
+	 				background: $green;
+	 				font-size: 18px;
+	 				padding: 3px 22px 0px;
+	 				@include boxshadow;
+	 				@include mclaren;
 	 				text-decoration: none;
 		 				&.used {
 		 					@include noborder;
 		 				}
 	 			}
+	 		}
 	 		}
 	 		.homebox-column {
 	 			@include nobackground;
@@ -743,6 +759,31 @@
 	 		.homebox-portlet {
 	 			@include noborder;
 	 			position: relative;
+	 			  .homebox-portlet-inner {
+	 			  	 .portlet-header {
+	 			  	 	&:before {
+	 			  	 		@include previous(50px, 50px, $left: 5%, $top: 6px);
+	 			  	 	}
+	 			  	 }
+	 			  }
+	 			  &.dashboard-activities {
+	 			  	 .homebox-portlet-inner .portlet-header::before {
+	 			  	 	background: url('../images/libraryzurb/activities.png') no-repeat;
+	 			  	 	background-position: center 6px;
+	 			  	 }
+	 			  }
+	 			  &.dashboard-rewards {
+	 			  	.homebox-portlet-inner .portlet-header::before {
+	 			  	 	background: url('../images/libraryzurb/rewards.png') no-repeat;
+	 			  	 	background-position: center 6px;
+	 			  	 }
+	 			  }
+	 			  &.dashboard-booklists, &.dashboard-reviews, &.dashboard-leaderboard, &.dashboard-following {
+	 			  	.homebox-portlet-inner .portlet-header::before {
+	 			  	 	background: url('../images/libraryzurb/reviews.png') no-repeat;
+	 			  	 	background-position: center 6px;
+	 			  	 }
+	 			  }
 	 			  &.dashboard-leaderboard {
 	 			  	.view-leadeboard {
 	 			  		.view-footer {
@@ -787,7 +828,8 @@
 	 		.homebox-portlet-inner {
 	 			@include boxshadow;
 	 			@include noborder;
-	 			background: $yellow;
+	 			background: $blue;
+	 			color: $white;
 	 			margin-bottom: 10px;
 					.portlet-header {
 		 				@include bluebox;
@@ -823,12 +865,9 @@
 	 				}
  			}
 	 		.portlet-content {
-	 			padding: 35px 7.1% !important;
+	 			padding: 15px 6.1% !important;
 	 			position: inherit;
 	 			 	.view {
-	 			 	  	&:before {
-	 			 	  		@include previous(50px, 50px, $top: 12px, $left: 6%);
- 			 	  		}
 			 			 	.view-header {
 			 			 		text-align: left !important;
 			 			 	}
@@ -836,7 +875,7 @@
 			 			 		.views-field-count {
 			 			 			font-size: 15px;
 			 			 			@include arialregular;
-			 			 			color: $black;
+			 			 			color: $white;
 			 			 			margin-top: 10px;
 				 			 			.views-label-count {
 				 			 				@include like;
@@ -847,9 +886,7 @@
 			 			 		}
 			 			 	}
 	 			 		&.view-follow {
-		 			 		&:before {
-		 			 			background: url('../images/libraryzurb/following.png') no-repeat;
-		 			 		}
+		 			 	
 		 			 		.view-header {
 		 			 			.Following {
 		 			 				p {
@@ -889,9 +926,6 @@
 	 			 			}
 	 			 		}
 		 			 	&.view-patron-rewads-for-patron-dashboard {
-		 			 		&:before {
-		 			 			background: url('../images/libraryzurb/reward-dash.png') no-repeat;
-		 			 		}
 		 			 		
 	 			 			.view-content {
 		 			 			display: table;
@@ -911,18 +945,15 @@
 				 			 						width: 65%;
 				 			 						float: right;
 				 			 						padding-top: 20px;
-				 			 						font-size: 15px;
+				 			 						font-size: 14px;
 				 			 						@include arialregular;
-				 			 						color: $black;
+				 			 						color: $white;
 				 			 					}
 	 			 							}
 	 			 					}
 	 			 			}
 		 			 	}
 	 			 	  	&.view-booklist-on-activities-page {
-			 			 	  	&:before {
-			 			 			background: url('../images/libraryzurb/booklist-dash.png') no-repeat;
-			 			 		}
 	 			 	  		counter-reset: section;
 	 			 	  			.view-footer {
 			 			 	  		p {
@@ -944,7 +975,7 @@
 			 			 	  	.view-header {
 			 			 	  		h3{
 			 			 	  		font-size: 15px;
-			 			 	  		color: $black;
+			 			 	  		color: $white;
 			 			 	  		@include arialbold;
 			 			 	  		text-transform: capitalize;
 			 			 	  		}
@@ -955,7 +986,7 @@
 	 			 	  	 	  		li {
 	 			 	  	 	  			.views-field-title {
 	 			 	  	 	  				a {
-			 			 	  	 	  			color: $black;
+			 			 	  	 	  			color: $white;
 			 			 	  	 	  			font-size: 15px;
 			 			 	  	 	  			@include arialregular;
 				 			 	  	 	  			 &:before {
@@ -968,9 +999,7 @@
 	 			 	  	 	}
 	 			 	  	}
 	 			 	  	&.view-my-book-reviews {
-		 			 	  		&:before {
-		 			 				background: url('../images/libraryzurb/review-dash.png') no-repeat;
-		 			 			}
+		 		
 	 			 	  		counter-reset: section;
 	 			 	  		    .view-empty {
 	 			 	  		    	p {
@@ -1013,13 +1042,13 @@
 	 			 	  				}
 	 			 	  			}
 			 			 	  	.view-empty {
-			 			 	  		font-size: 15px;
+			 			 	  		font-size: 14px;
 			 			 	  		@include arialregular;
-			 			 	  		color: $black;
+			 			 	  		color: $white;
 			 			 	  	}
 			 			 	  	.view-header {
 			 			 	  		h3 {
-			 			 	  			color: $black;
+			 			 	  			color: $white;
 			 			 	  			font-size: 15px;
 			 			 	  			@include arialbold;
 			 			 	  			text-transform: capitalize;
@@ -1033,7 +1062,7 @@
 			 			 	  			 li {
 			 			 	  			 	margin-left: 0;
 			 			 	  			 	a {
-			 			 	  			 		color: $black;
+			 			 	  			 		color: $white;
 			 			 	  			 		@include arialregular;
 			 			 	  			 		font-size: 15px;
 			 			 	  			 		text-transform: capitalize;
@@ -1046,13 +1075,10 @@
 			 			 	  	}
 	 			 	  	}
 	 			 	  	&.view-my-activities-for-patron-dashboard {
- 			 	  			&:before {
-	 			 			background: url('../images/libraryzurb/activities-dash.png') no-repeat;
-	 			 			}
 		 			 	    .view-header {
 		 			 	  	  	a {
-			 			 	  	  	 font-size: 15px;
-			 			 	  	  	 color: $black;
+			 			 	  	  	 font-size: 14px;
+			 			 	  	  	 color: $white;
 			 			 	  	  	 @include arialbold;
 			 			 	  	  	 text-transform: capitalize;
 			 			 	  	  	 text-decoration: none;
@@ -1064,13 +1090,15 @@
 		 			 	  			width: 100%;
 		 			 	  			.field-content {
 		 			 	  				div {
-		 			 	  					width: 49%;
+		 			 	  					width: 50%;
 		 			 	  					float: left;
-		 			 	  					font-size: 15px;
-		 			 	  					color: $black;
+		 			 	  					font-size: 14px;
+		 			 	  					color: $white;
 		 			 	  					@include arialregular;
 			 			 	  					&:nth-of-type(2) {
-			 			 	  						margin-left: 1%;
+			 			 	  						span {
+			 			 	  						padding-right: 5px;
+			 			 	  					  }
 			 			 	  					}
 		 			 	  				}
 		 			 	  			}
@@ -3587,7 +3615,7 @@ display: block !important;
  		  	 	   	 	 		margin-right: 10px;
  		  	 	   	 	 	}
  		  	 	   	 	 	.activities_list_progress {
- 		  	 	   	 	 		width: 66% !important;
+ 		  	 	   	 	 		width: 74% !important;
  		  	 	   	 	 		float: left;
  		  	 	   	 	 		
  		  	 	   	 	 		height: auto !important;
@@ -3646,6 +3674,10 @@ display: block !important;
  		  	 	   	 	 	 	 	float: left;
  		  	 	   	 	 	 	 	label {
  		  	 	   	 	 	 	 		display: none;
+ 		  	 	   	 	 	 	 	}
+ 		  	 	   	 	 	 	 	input {
+ 		  	 	   	 	 	 	 		width: 110px; 
+ 		  	 	   	 	 	 	 		
  		  	 	   	 	 	 	 	}
  		  	 	   	 	 	 	 	.form-item-date-date {
  		  	 	   	 	 	 	 		float: none !important;
@@ -3708,7 +3740,7 @@ display: block !important;
  		  	 	  }
  		  	 }
  		  	 .progress-rewards {
- 		  	 	width: 22%;
+ 		  	 	padding: 20px;
  		  	 	display: table-cell;
  		  	 	vertical-align: middle;
  		  	 	font-size: 22px;
