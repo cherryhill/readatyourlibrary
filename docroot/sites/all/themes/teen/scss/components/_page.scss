@@ -743,16 +743,54 @@
 	 		.homebox-portlet {
 	 			@include noborder;
 	 			position: relative;
+	 			  &.dashboard-leaderboard {
+	 			  	.view-leadeboard {
+	 			  		.view-footer {
+	 			  			text-align: right;
+	 			  			margin-top: 20px;
+	 			  			 p {
+							 	a {
+								 	@include mclaren;
+								 	position: relative;
+								 	font-size: 17px;
+								 	text-transform: capitalize;
+							 		padding-right: 20px;
+								 	 	&:after {
+						          	@include previous(17px, 17px, $right: 0, $top: 1px);
+						          	background: url('../images/libraryzurb/right-blue-arrow.png') no-repeat;
+						          	background-size: 15px;
+								 	 	}
+								}
+	 			  			 }
+	 			  		}
+	 			  		.views-row {
+	 			  			position: relative;
+	 			  	.views-field-counter,.views-field-field-user-avatar, .views-field-name {
+	 			  		float: left;
+	 			  		@include arialregular;
+	 			  		
+	 			  	}
+	 			  	.views-field-field-user-avatar img {
+	 			  		position: relative;
+	 			  		bottom: 7px;
+	 			  	}
+
+	 			  	.views-field-php {
+	 			  	  position: absolute;
+	 			  	  right: 0;
+	 			  	  top: 0;
+	 			  	}
+	 			  }
+	 			  }
+	 			 }
 	 		}
 	 		.homebox-portlet-inner {
 	 			@include boxshadow;
 	 			@include noborder;
 	 			background: $yellow;
-	 			border-radius: 20px;
 	 			margin-bottom: 10px;
 					.portlet-header {
 		 				@include bluebox;
-		 				border-radius: 20px 20px 0px 0px;
 		 				padding: 15.5px 15px 15.5px 0 !important;
 		 				@include noborder;
 	 						a {
@@ -3420,6 +3458,9 @@ display: block !important;
  }
  /**css for progress report***/
  .page-progress-report, .page-progress {
+ 	#page-title {
+ 		display: none;
+ 	}
  	.main {
  	    padding: 25px 0px;
  		background: $blue;
@@ -3535,8 +3576,8 @@ display: block !important;
  		  	 	   	 	width: 100%;
  		  	 	   	 	display: inline-block;
  		  	 	   	 	 .form-item-activity-progress-select {
- 		  	 	   	 	 	margin: 0;
- 		  	 	   	 	 	width: 66%;
+ 		  	 	   	 	 	margin: 0 0 20px 0;
+ 		  	 	   	 	 	width: 100%;
  		  	 	   	 	 	float: left;
  		  	 	   	 	 	label {
  		  	 	   	 	 		font-size: 16px;
@@ -3580,7 +3621,7 @@ display: block !important;
  		  	 	   	 	 	}
  		  	 	   	 	 }
  		  	 	   	 	 .container-inline-date {
- 		  	 	   	 	 	width: 34%;
+ 		  	 	   	 	 	width: 100%;
  		  	 	   	 	 	float: left;
  		  	 	   	 	 	clear: none;
  		  	 	   	 	 	 > .form-item.form-item-date {
@@ -3601,9 +3642,13 @@ display: block !important;
  		  	 	   	 	 	 	 	float: left;
  		  	 	   	 	 	 	 }
  		  	 	   	 	 	 	 .date-padding {
- 		  	 	   	 	 	 	 	width: 80%;
+ 		  	 	   	 	 	 	 	width: 81%;
+ 		  	 	   	 	 	 	 	float: left;
  		  	 	   	 	 	 	 	label {
  		  	 	   	 	 	 	 		display: none;
+ 		  	 	   	 	 	 	 	}
+ 		  	 	   	 	 	 	 	.form-item-date-date {
+ 		  	 	   	 	 	 	 		float: none !important;
  		  	 	   	 	 	 	 	}
  		  	 	   	 	 	 	 	.description {
  		  	 	   	 	 	 	 		display: none;
@@ -3618,13 +3663,14 @@ display: block !important;
  		  	 .reward-won {
  		  	 	display: table-cell;
  		  	 	vertical-align: middle;
+ 		  	 	background: $white;
+ 		  	 	border-left: 10px solid $blue;
+ 		  	 	border-right: 10px solid $blue;
 
  		  	 	
  		  	 	  .view {
  		  	 	  	color: $blue;
  		  	 	  	background: $white;
- 		  	 	  	width: 92%;
- 		  	 	  	margin: 0 auto;
  		  	 	  	padding: 22px;
 
  		  	 	  	 .pager {
@@ -3726,6 +3772,7 @@ display: block !important;
  		  	  	 	 	@include mclaren;
  		  	  	 	 	line-height: 1.2;
  		  	  	 	 	font-size: 14px;
+ 		  	  	 	 	margin-bottom: 0;
  		  	  	 	 	 &.won-rew {
                            position: absolute;
                            bottom: 10px;

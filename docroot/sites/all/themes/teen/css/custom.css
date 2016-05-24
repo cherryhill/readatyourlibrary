@@ -10864,6 +10864,52 @@ body .alert-box.success a.close:hover {
   outline: none !important;
   position: relative;
 }
+.page-user-profile .homebox .homebox-portlet.dashboard-leaderboard .view-leadeboard .view-footer {
+  text-align: right;
+  margin-top: 20px;
+}
+.page-user-profile .homebox .homebox-portlet.dashboard-leaderboard .view-leadeboard .view-footer p a {
+  font-family: SpecialElite !important;
+  font-weight: normal !important;
+  font-style: normal !important;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+  position: relative;
+  font-size: 17px;
+  text-transform: capitalize;
+  padding-right: 20px;
+}
+.page-user-profile .homebox .homebox-portlet.dashboard-leaderboard .view-leadeboard .view-footer p a:after {
+  content: "";
+  width: 17px;
+  height: 17px;
+  display: block;
+  visibility: visible;
+  position: absolute;
+  top: 1px;
+  right: 0;
+  background: url("../images/libraryzurb/right-blue-arrow.png") no-repeat;
+  background-size: 15px;
+}
+.page-user-profile .homebox .homebox-portlet.dashboard-leaderboard .view-leadeboard .views-row {
+  position: relative;
+}
+.page-user-profile .homebox .homebox-portlet.dashboard-leaderboard .view-leadeboard .views-row .views-field-counter, .page-user-profile .homebox .homebox-portlet.dashboard-leaderboard .view-leadeboard .views-row .views-field-field-user-avatar, .page-user-profile .homebox .homebox-portlet.dashboard-leaderboard .view-leadeboard .views-row .views-field-name {
+  float: left;
+  font-family: Raleway-Medium !important;
+  font-style: normal !important;
+  font-weight: normal !important;
+  -webkit-font-smoothing: antialiased !important;
+}
+.page-user-profile .homebox .homebox-portlet.dashboard-leaderboard .view-leadeboard .views-row .views-field-field-user-avatar img {
+  position: relative;
+  bottom: 7px;
+}
+.page-user-profile .homebox .homebox-portlet.dashboard-leaderboard .view-leadeboard .views-row .views-field-php {
+  position: absolute;
+  right: 0;
+  top: 0;
+}
 .page-user-profile .homebox .homebox-portlet-inner {
   -webkit-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
   -moz-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
@@ -10871,14 +10917,12 @@ body .alert-box.success a.close:hover {
   border: none !important;
   outline: none !important;
   background: #f6f45a;
-  border-radius: 20px;
   margin-bottom: 10px;
 }
 .page-user-profile .homebox .homebox-portlet-inner .portlet-header {
   background: #32024e !important;
   box-shadow: none !important;
   opacity: 1 !important;
-  border-radius: 20px 20px 0px 0px;
   padding: 15.5px 15px 15.5px 0 !important;
   border: none !important;
   outline: none !important;
@@ -14934,6 +14978,9 @@ body .alert-box.success a.close:hover {
 }
 
 /**css for progress report***/
+.page-progress-report #page-title, .page-progress #page-title {
+  display: none;
+}
 .page-progress-report .main, .page-progress .main {
   padding: 25px 0px;
   background: #32024e;
@@ -15086,8 +15133,8 @@ body .alert-box.success a.close:hover {
   display: inline-block;
 }
 .page-progress-report .main .progress-wrap .report-acivity .block form .form-item-activity-progress-select, .page-progress .main .progress-wrap .report-acivity .block form .form-item-activity-progress-select {
-  margin: 0;
-  width: 66%;
+  margin: 0 0 20px 0;
+  width: 100%;
   float: left;
 }
 .page-progress-report .main .progress-wrap .report-acivity .block form .form-item-activity-progress-select label, .page-progress .main .progress-wrap .report-acivity .block form .form-item-activity-progress-select label {
@@ -15135,7 +15182,7 @@ body .alert-box.success a.close:hover {
   display: inline-block;
 }
 .page-progress-report .main .progress-wrap .report-acivity .block form .container-inline-date, .page-progress .main .progress-wrap .report-acivity .block form .container-inline-date {
-  width: 34%;
+  width: 100%;
   float: left;
   clear: none;
 }
@@ -15161,10 +15208,14 @@ body .alert-box.success a.close:hover {
   float: left;
 }
 .page-progress-report .main .progress-wrap .report-acivity .block form .container-inline-date > .form-item.form-item-date .date-padding, .page-progress .main .progress-wrap .report-acivity .block form .container-inline-date > .form-item.form-item-date .date-padding {
-  width: 80%;
+  width: 81%;
+  float: left;
 }
 .page-progress-report .main .progress-wrap .report-acivity .block form .container-inline-date > .form-item.form-item-date .date-padding label, .page-progress .main .progress-wrap .report-acivity .block form .container-inline-date > .form-item.form-item-date .date-padding label {
   display: none;
+}
+.page-progress-report .main .progress-wrap .report-acivity .block form .container-inline-date > .form-item.form-item-date .date-padding .form-item-date-date, .page-progress .main .progress-wrap .report-acivity .block form .container-inline-date > .form-item.form-item-date .date-padding .form-item-date-date {
+  float: none !important;
 }
 .page-progress-report .main .progress-wrap .report-acivity .block form .container-inline-date > .form-item.form-item-date .date-padding .description, .page-progress .main .progress-wrap .report-acivity .block form .container-inline-date > .form-item.form-item-date .date-padding .description {
   display: none;
@@ -15172,12 +15223,13 @@ body .alert-box.success a.close:hover {
 .page-progress-report .main .progress-wrap .reward-won, .page-progress .main .progress-wrap .reward-won {
   display: table-cell;
   vertical-align: middle;
+  background: #fff;
+  border-left: 10px solid #32024e;
+  border-right: 10px solid #32024e;
 }
 .page-progress-report .main .progress-wrap .reward-won .view, .page-progress .main .progress-wrap .reward-won .view {
   color: #32024e;
   background: #fff;
-  width: 92%;
-  margin: 0 auto;
   padding: 22px;
 }
 .page-progress-report .main .progress-wrap .reward-won .view .pager, .page-progress .main .progress-wrap .reward-won .view .pager {
@@ -15300,6 +15352,7 @@ body .alert-box.success a.close:hover {
   -moz-osx-font-smoothing: grayscale !important;
   line-height: 1.2;
   font-size: 14px;
+  margin-bottom: 0;
 }
 .page-progress-report .main .progress-main .new-row > .grid p.won-rew, .page-progress .main .progress-main .new-row > .grid p.won-rew {
   position: absolute;
@@ -15796,6 +15849,11 @@ p {
   -webkit-font-smoothing: antialiased !important;
   margin-bottom: 23px;
   display: inline-block;
+}
+
+.form-textarea-wrapper p {
+  display: block !important;
+  width: 100%;
 }
 
 /**

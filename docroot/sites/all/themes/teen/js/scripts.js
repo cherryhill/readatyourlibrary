@@ -11,8 +11,10 @@
     jQuery("#user-register-form .form-item-avatar-select").insertAfter("#user-register-form #edit-profile-main-field-receive-notifications");
     jQuery("#user-register-form #checkboxes-div").insertAfter("#user-register-form .form-item-avatar-select");
     jQuery("#user-register-form .username").insertAfter("#user-register-form #checkboxes-div");
-   jQuery("#user-register-form  #edit-name").hide();
+    jQuery("#user-register-form  #edit-name").hide();
     jQuery("#user-register-form #edit-profile-main-field-receive-notifications").hide();
+    jQuery( '<p>Avatar icons provided free by <a href="http://emojione.com/"target="_blank"> Emoji One</a></p>' ).insertAfter( "#user-register-form" );
+
 // validate email field  
   jQuery('#edit-mail').on('keyup', function(){
     var valid = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/.test(this.value);
@@ -42,6 +44,26 @@
   }
    
   });
+     //MyDashboard page hide homebox add buttons when dragable homebox blocks are visible
+     var activites =$('.homebox-draggable:has(.view-my-activities-for-patron-dashboard)').addClass('dashboard-activities');
+var rewards =$('.homebox-draggable:has(.view-patron-rewads-for-patron-dashboard)').addClass('dashboard-rewards');
+var reviews =$('.homebox-draggable:has(.view-my-book-reviews)').addClass('dashboard-reviews');
+var booklist =$('.homebox-draggable:has(.view-booklist-on-activities-page)').addClass('dashboard-booklists');
+var follow =$('.homebox-draggable:has(.view-follow)').addClass('dashboard-following');
+var leadeboard =$('.homebox-draggable:has(.view-leadeboard)').addClass('dashboard-leaderboard');
+var progress =$('.homebox-draggable:has(.all_rewrad_won)').addClass('dashboard-progress');
+var obj =$("#homebox-add ul li");
+$.each( obj , function( key, value ) {
+$(value).addClass($(value).find('a').text().toLowerCase());
+ var crntState =$('.dashboard-'+$(value).find('a').text().toLowerCase()).css('display');
+  if (crntState != 'undefined') { 
+    if (crntState == 'block') {
+     $(value).hide();
+    } else  {
+     $(value).show();
+    }
+  }
+});
       //reward page give same counter list to two different views
        $('.page-rewards .view-program-rewards-raffle .views-row').insertAfter('.page-rewards .view-program-rewards .views-row:nth-last-child(1)');
       // select list option with thier link
