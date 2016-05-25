@@ -1,11 +1,14 @@
 
 /**open single msg**/
 .page-messages-view {
+	p {
+		color: $white;
+	}
 	.privatemsg-message-participants {
 		width: 100%;
 		max-width: 80%;
 		margin: 0 auto;
-		color: $black;
+		color: $white;
 		@include noborder;
 		  a.username {
 		  	color: $white;
@@ -20,13 +23,14 @@
 		 	.privatemsg-author-name {
 		 		position: relative;
 		 		padding-left: 30px;
+		 		color: $white;
 		 		  &:before {
 		 		 	   	 @include previous(47px, 21px, $left: 0, $top: -3px);
 		 		 	   	 background: url('../images/libraryzurb/arrow-list.png') no-repeat;
 		 		 	   }
 		 	}
 		 	a.username {
-		 		color: $black;
+		 		color: $white;
 		 	}
 		 	span.privatemsg-message-date {
 		 		color: $white;
@@ -40,10 +44,11 @@
 		 		 		color: $black;
 		 		 		padding: 5px 20px;
 		 		 		background: $yellow;
-		 		 		border-radius: 10px;
+		 		 		@include boxshadow;
 		 		 		@include boxshadow;	
 		 		 		 &:hover {
 		 		 		 	text-decoration: none;
+		 		 		 	background: $button-hover;
 		 		 		 }
 		 		 	}
 		 		 }
@@ -52,7 +57,7 @@
 		 .privatemsg-message-body {
 		 	p {
 		 		a {
-		 			color: $black;
+		 			color: $white;
 		 		}
 		 	}
 		 }
@@ -791,25 +796,37 @@
 	 			  			margin-top: 20px;
 	 			  			 p {
 							 	a {
-								 	@include mclaren;
+								 	@include arialbold;
 								 	position: relative;
-								 	font-size: 17px;
+								 	font-size: 14px;
 								 	text-transform: capitalize;
-							 		padding-right: 20px;
+							 		color: $white;
 								 	 	&:after {
-						          	@include previous(17px, 17px, $right: 0, $top: 1px);
-						          	background: url('../images/libraryzurb/right-blue-arrow.png') no-repeat;
-						          	background-size: 15px;
+						          	     content: ">";
+						          	     padding-left: 5px;
+								 	 	}
+								 	 	&:hover {
+								 	 		color: $white;
 								 	 	}
 								}
 	 			  			 }
 	 			  		}
 	 			  		.views-row {
 	 			  			position: relative;
+	 			  			line-height: 2;
 	 			  	.views-field-counter,.views-field-field-user-avatar, .views-field-name {
 	 			  		float: left;
 	 			  		@include arialregular;
+	 			  		font-size: 14px;
 	 			  		
+	 			  	}
+	 			  	.views-field-name {
+	 			  		a {
+	 			  			color: $white;
+	 			  			&:hover {
+	 			  				color: $white;
+	 			  			}
+	 			  		}
 	 			  	}
 	 			  	.views-field-field-user-avatar img {
 	 			  		position: relative;
@@ -831,6 +848,8 @@
 	 			background: $blue;
 	 			color: $white;
 	 			margin-bottom: 10px;
+	 			font-size: 14px;
+
 					.portlet-header {
 		 				@include bluebox;
 		 				padding: 15.5px 15px 15.5px 0 !important;
@@ -890,9 +909,9 @@
 		 			 		.view-header {
 		 			 			.Following {
 		 			 				p {
-		 			 					font-size: 15px;
+		 			 					font-size: 14px;
 		 			 					@include arialbold;
-		 			 					color: $black;
+		 			 					color: $white;
 		 			 				}
 		 			 			}
 		 			 		}
@@ -916,8 +935,8 @@
 					 			 			 	 		width: 70%;
 					 			 			 	 		float: left;
 						 			 			 	 		a {
-							 			 			 	 		color: $black;
-							 			 			 	 		font-size: 15px;
+							 			 			 	 		color: $white;
+							 			 			 	 		font-size: 14px;
 							 			 			 	 		@include arialregular;
 						 			 			 	 		}
 					 			 			 	 	}
@@ -956,21 +975,11 @@
 	 			 	  	&.view-booklist-on-activities-page {
 	 			 	  		counter-reset: section;
 	 			 	  			.view-footer {
-			 			 	  		p {
-			 			 	  			text-align: center;
-			 			 	  			margin-top: 10px;
-			 			 	  			width: 100%;
-			 			 	  			a {
-			 			 	  				width: 100%;
-			 			 	  				display: inline-block;
-			 			 	  				margin: 0;
-			 			 	  				padding: 7px 22px;
-			 			 	  				@include bluebutton($font-size: 17px);
-				 			 	  				&:hover {
-				 			 	  				 	text-decoration: underline !important;
-				 			 	  				}
-			 			 	  			}
-	 			 	  				}
+			 			 	  	  a.button {
+			 			 	  	  	display: inline-block;
+			 			 	  	  	width: 100%;
+			 			 	  	  	margin-left: 0;
+			 			 	  	  }
 	 			 	  			}
 			 			 	  	.view-header {
 			 			 	  		h3{
@@ -1025,21 +1034,11 @@
 	 			 	  		    	}
 	 			 	  		    }
 	 			 	  			.view-footer {
-	 			 	  				p {
-	 			 	  					text-align: center;
-	 			 	  					width: 100%;
-	 			 	  					margin-top: 10px;
-	 			 	  			 		a {
-			 			 	  			 	width: 100%;
-			 			 	  			 	display: inline-block;
-			 			 	  			 	margin: 0;
-			 			 	  			 	padding: 7px 22px;
-			 			 	  			 	@include bluebutton($font-size: 17px);
-				 			 	  			 	&:hover {
-				 			 	  			 	  	text-decoration: underline !important;
-				 			 	  			 	}
-	 			 	  			 		} 			 	  		
-	 			 	  				}
+	 			 	  			  a.button {
+	 			 	  			  	width: 100%;
+	 			 	  			  	display: inline-block;
+	 			 	  			  	margin-left: 0;
+	 			 	  			  }
 	 			 	  			}
 			 			 	  	.view-empty {
 			 			 	  		font-size: 14px;
@@ -1150,7 +1149,6 @@
 	div.main {
 		background: $blue;
         overflow: hidden;
-        border-radius: 20px;
         margin-bottom: 25px;
         position: relative; 
         padding: 0;
@@ -1159,50 +1157,19 @@
          #page-title {
 		    color: $white;
           	@include mclaren;
-			padding-top: 26px;
-			padding-bottom: 25px;
-		    font-size: 28px;
-			height: 110px;
+          	background: $green;
+			padding-top: 15px;
+			padding-bottom: 10px;
+		    font-size: 26px;
 			border-bottom: medium none;
 			margin-top: -1px;
 			padding-left:4%;
 			z-index: 0;
 			position: relative;
-			 &:after {
-			 	@include previous(100%, 110px, $left: 0, $top: 0);
-			 	background: url('../images/libraryzurb/background-saffron.png') no-repeat;
-			 		background-position: -35px 10px;
-			 		@include rotate(180deg);
-			 		z-index: -1;
-
-			 }
+			margin-bottom: 25px;
+			
          }
         ul {
-        	&.pagination.pager {
-        		float: right;
-        		margin-right: 20px;
-        		 li {
-        		 	a {
-        		 		background: $yellow;
-        		 		color: $black;
-        		 		border-left: 1px solid $black;
-        		 		padding: 10px;
-        		 	}
-        		 	&.arrow {
-        		 		&.first {
-        		 			a {
-        		 				border-left: 0 !important;
-        		 				border-radius: 10px 0px 0px 10px;
-        		 			}
-        		 		}
-        		 		&.last {
-        		 			a {
-        		 				border-radius: 0px 10px 10px 0px;
-        		 			}
-        		 		}
-        		 	}
-        		 }
-        	}
         	&.button-group {
         		li {
         			a {
