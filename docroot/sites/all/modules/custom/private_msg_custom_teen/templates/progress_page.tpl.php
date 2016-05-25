@@ -31,7 +31,10 @@
 <div class="progress-wrap">
 <div class="report-acivity">
 	<?php
-      print '<h1>Report an Activity</h1>	';
+      print '<h1>Report an Activity</h1>';
+      print  '<div id = "errorwarn"></div>';
+      print  '<div id = "errorwarn-activity"></div>';
+
 	  $block = block_load('private_msg_custom_teen', 'progress_submit_block');
 	  $render_block = _block_get_renderable_array(_block_render_blocks(array($block)));
   	  $output = drupal_render($render_block);
