@@ -6399,26 +6399,6 @@ h1#page-title {
   padding-left: 17px;
 }
 
-.more-link {
-  text-align: right;
-}
-.more-link a {
-  font-family: Raleway-Bold !important;
-  font-style: normal !important;
-  font-weight: normal !important;
-  -webkit-font-smoothing: antialiased !important;
-  -moz-osx-font-smoothing: grayscale !important;
-  -moz-font-smoothing: grayscale !important;
-  position: relative;
-  font-size: 14px;
-  text-transform: capitalize;
-  padding-right: 20px;
-  color: #fff;
-}
-.more-link a:after {
-  content: ">";
-}
-
 .page-user .alert-box:nth-of-type(2) {
   display: none;
 }
@@ -6438,27 +6418,24 @@ h1#page-title {
   width: 100%;
 }
 .more-link a {
-  font-family: SpecialElite !important;
-  font-weight: normal !important;
+  font-family: Raleway-Bold !important;
   font-style: normal !important;
+  font-weight: normal !important;
   -webkit-font-smoothing: antialiased !important;
   -moz-osx-font-smoothing: grayscale !important;
+  -moz-font-smoothing: grayscale !important;
   position: relative;
-  font-size: 17px;
+  font-size: 14px;
   text-transform: capitalize;
   padding-right: 20px;
+  color: #fff;
 }
 .more-link a:after {
-  content: "";
-  width: 17px;
-  height: 17px;
-  display: block;
-  visibility: visible;
-  position: absolute;
-  top: 12%;
-  right: 0;
-  background: url("../images/libraryzurb/right-blue-arrow.png") no-repeat;
-  background-size: 15px;
+  content: ">";
+  padding-left: 5px;
+}
+.more-link a:hover {
+  color: #fff;
 }
 
 .page-patron .button-group:nth-of-type(1) li {
@@ -9804,11 +9781,14 @@ body .alert-box.success a.close:hover {
 }
 
 /**open single msg**/
+.page-messages-view p {
+  color: #fff;
+}
 .page-messages-view .privatemsg-message-participants {
   width: 100%;
   max-width: 80%;
   margin: 0 auto;
-  color: #000;
+  color: #fff;
   border: none !important;
   outline: none !important;
 }
@@ -9827,6 +9807,7 @@ body .alert-box.success a.close:hover {
 .page-messages-view .privatemsg-message .privatemsg-message-information .privatemsg-author-name {
   position: relative;
   padding-left: 30px;
+  color: #fff;
 }
 .page-messages-view .privatemsg-message .privatemsg-message-information .privatemsg-author-name:before {
   content: "";
@@ -9840,7 +9821,7 @@ body .alert-box.success a.close:hover {
   background: url("../images/libraryzurb/arrow-list.png") no-repeat;
 }
 .page-messages-view .privatemsg-message .privatemsg-message-information a.username {
-  color: #000;
+  color: #fff;
 }
 .page-messages-view .privatemsg-message .privatemsg-message-information span.privatemsg-message-date {
   color: #fff;
@@ -9853,16 +9834,19 @@ body .alert-box.success a.close:hover {
   color: #000;
   padding: 5px 20px;
   background: #f6f45a;
-  border-radius: 10px;
+  -webkit-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+  box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
   -webkit-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
   -moz-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
   box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
 }
 .page-messages-view .privatemsg-message .privatemsg-message-information ul li a:hover {
   text-decoration: none;
+  background: #feed40;
 }
 .page-messages-view .privatemsg-message .privatemsg-message-body p a {
-  color: #000;
+  color: #fff;
 }
 .page-messages-view .privatemsg-reply {
   color: #fff;
@@ -10872,30 +10856,27 @@ body .alert-box.success a.close:hover {
   margin-top: 20px;
 }
 .page-user-profile .homebox .homebox-portlet.dashboard-leaderboard .view-leadeboard .view-footer p a {
-  font-family: SpecialElite !important;
-  font-weight: normal !important;
+  font-family: Raleway-Bold !important;
   font-style: normal !important;
+  font-weight: normal !important;
   -webkit-font-smoothing: antialiased !important;
   -moz-osx-font-smoothing: grayscale !important;
+  -moz-font-smoothing: grayscale !important;
   position: relative;
-  font-size: 17px;
+  font-size: 14px;
   text-transform: capitalize;
-  padding-right: 20px;
+  color: #fff;
 }
 .page-user-profile .homebox .homebox-portlet.dashboard-leaderboard .view-leadeboard .view-footer p a:after {
-  content: "";
-  width: 17px;
-  height: 17px;
-  display: block;
-  visibility: visible;
-  position: absolute;
-  top: 1px;
-  right: 0;
-  background: url("../images/libraryzurb/right-blue-arrow.png") no-repeat;
-  background-size: 15px;
+  content: ">";
+  padding-left: 5px;
+}
+.page-user-profile .homebox .homebox-portlet.dashboard-leaderboard .view-leadeboard .view-footer p a:hover {
+  color: #fff;
 }
 .page-user-profile .homebox .homebox-portlet.dashboard-leaderboard .view-leadeboard .views-row {
   position: relative;
+  line-height: 2;
 }
 .page-user-profile .homebox .homebox-portlet.dashboard-leaderboard .view-leadeboard .views-row .views-field-counter, .page-user-profile .homebox .homebox-portlet.dashboard-leaderboard .view-leadeboard .views-row .views-field-field-user-avatar, .page-user-profile .homebox .homebox-portlet.dashboard-leaderboard .view-leadeboard .views-row .views-field-name {
   float: left;
@@ -10903,6 +10884,13 @@ body .alert-box.success a.close:hover {
   font-style: normal !important;
   font-weight: normal !important;
   -webkit-font-smoothing: antialiased !important;
+  font-size: 14px;
+}
+.page-user-profile .homebox .homebox-portlet.dashboard-leaderboard .view-leadeboard .views-row .views-field-name a {
+  color: #fff;
+}
+.page-user-profile .homebox .homebox-portlet.dashboard-leaderboard .view-leadeboard .views-row .views-field-name a:hover {
+  color: #fff;
 }
 .page-user-profile .homebox .homebox-portlet.dashboard-leaderboard .view-leadeboard .views-row .views-field-field-user-avatar img {
   position: relative;
@@ -10922,6 +10910,7 @@ body .alert-box.success a.close:hover {
   background: #32024e;
   color: #fff;
   margin-bottom: 10px;
+  font-size: 14px;
 }
 .page-user-profile .homebox .homebox-portlet-inner .portlet-header {
   background: #7eb600 !important;
@@ -10997,14 +10986,14 @@ body .alert-box.success a.close:hover {
   top: -4px !important;
 }
 .page-user-profile .homebox .portlet-content .view.view-follow .view-header .Following p {
-  font-size: 15px;
+  font-size: 14px;
   font-family: Raleway-Bold !important;
   font-style: normal !important;
   font-weight: normal !important;
   -webkit-font-smoothing: antialiased !important;
   -moz-osx-font-smoothing: grayscale !important;
   -moz-font-smoothing: grayscale !important;
-  color: #000;
+  color: #fff;
 }
 .page-user-profile .homebox .portlet-content .view.view-follow .view-content {
   width: 100%;
@@ -11031,8 +11020,8 @@ body .alert-box.success a.close:hover {
   float: left;
 }
 .page-user-profile .homebox .portlet-content .view.view-follow .view-content .views-row .views-field.views-field-name a {
-  color: #000;
-  font-size: 15px;
+  color: #fff;
+  font-size: 14px;
   font-family: Raleway-Medium !important;
   font-style: normal !important;
   font-weight: normal !important;
@@ -11069,39 +11058,10 @@ body .alert-box.success a.close:hover {
 .page-user-profile .homebox .portlet-content .view.view-booklist-on-activities-page {
   counter-reset: section;
 }
-.page-user-profile .homebox .portlet-content .view.view-booklist-on-activities-page .view-footer p {
-  text-align: center;
-  margin-top: 10px;
-  width: 100%;
-}
-.page-user-profile .homebox .portlet-content .view.view-booklist-on-activities-page .view-footer p a {
-  width: 100%;
+.page-user-profile .homebox .portlet-content .view.view-booklist-on-activities-page .view-footer a.button {
   display: inline-block;
-  margin: 0;
-  padding: 7px 22px;
-  color: #32024e !important;
-  font-family: SpecialElite !important;
-  font-weight: normal !important;
-  font-style: normal !important;
-  -webkit-font-smoothing: antialiased !important;
-  -moz-osx-font-smoothing: grayscale !important;
-  font-size: 17px;
-  background: #f6f45a;
-  padding: 10px 20px 7px;
-  -webkit-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
-  -moz-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
-  box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
-  border: none;
-  text-transform: capitalize;
-}
-.page-user-profile .homebox .portlet-content .view.view-booklist-on-activities-page .view-footer p a:hover, .page-user-profile .homebox .portlet-content .view.view-booklist-on-activities-page .view-footer p a:focus {
-  color: #32024e;
-  background: #feed40 !important;
-  opacity: 1;
-  outline: none;
-}
-.page-user-profile .homebox .portlet-content .view.view-booklist-on-activities-page .view-footer p a:hover {
-  text-decoration: underline !important;
+  width: 100%;
+  margin-left: 0;
 }
 .page-user-profile .homebox .portlet-content .view.view-booklist-on-activities-page .view-header h3 {
   font-size: 15px;
@@ -11169,39 +11129,10 @@ body .alert-box.success a.close:hover {
 .page-user-profile .homebox .portlet-content .view.view-my-book-reviews .view-empty p:nth-of-type(2) a:hover {
   text-decoration: underline !important;
 }
-.page-user-profile .homebox .portlet-content .view.view-my-book-reviews .view-footer p {
-  text-align: center;
-  width: 100%;
-  margin-top: 10px;
-}
-.page-user-profile .homebox .portlet-content .view.view-my-book-reviews .view-footer p a {
+.page-user-profile .homebox .portlet-content .view.view-my-book-reviews .view-footer a.button {
   width: 100%;
   display: inline-block;
-  margin: 0;
-  padding: 7px 22px;
-  color: #32024e !important;
-  font-family: SpecialElite !important;
-  font-weight: normal !important;
-  font-style: normal !important;
-  -webkit-font-smoothing: antialiased !important;
-  -moz-osx-font-smoothing: grayscale !important;
-  font-size: 17px;
-  background: #f6f45a;
-  padding: 10px 20px 7px;
-  -webkit-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
-  -moz-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
-  box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
-  border: none;
-  text-transform: capitalize;
-}
-.page-user-profile .homebox .portlet-content .view.view-my-book-reviews .view-footer p a:hover, .page-user-profile .homebox .portlet-content .view.view-my-book-reviews .view-footer p a:focus {
-  color: #32024e;
-  background: #feed40 !important;
-  opacity: 1;
-  outline: none;
-}
-.page-user-profile .homebox .portlet-content .view.view-my-book-reviews .view-footer p a:hover {
-  text-decoration: underline !important;
+  margin-left: 0;
 }
 .page-user-profile .homebox .portlet-content .view.view-my-book-reviews .view-empty {
   font-size: 14px;
@@ -11357,7 +11288,6 @@ body .alert-box.success a.close:hover {
 .page-messages div.main {
   background: #32024e;
   overflow: hidden;
-  border-radius: 20px;
   margin-bottom: 25px;
   position: relative;
   padding: 0;
@@ -11373,50 +11303,16 @@ body .alert-box.success a.close:hover {
   font-style: normal !important;
   -webkit-font-smoothing: antialiased !important;
   -moz-osx-font-smoothing: grayscale !important;
-  padding-top: 26px;
-  padding-bottom: 25px;
-  font-size: 28px;
-  height: 110px;
+  background: #7eb600;
+  padding-top: 15px;
+  padding-bottom: 10px;
+  font-size: 26px;
   border-bottom: medium none;
   margin-top: -1px;
   padding-left: 4%;
   z-index: 0;
   position: relative;
-}
-.page-messages div.main #page-title:after {
-  content: "";
-  width: 100%;
-  height: 110px;
-  display: block;
-  visibility: visible;
-  position: absolute;
-  top: 0;
-  left: 0;
-  background: url("../images/libraryzurb/background-saffron.png") no-repeat;
-  background-position: -35px 10px;
-  -webkit-transform: rotate(180deg);
-  -moz-transform: rotate(180deg);
-  -ms-transform: rotate(180deg);
-  -o-transform: rotate(180deg);
-  transform: rotate(180deg);
-  z-index: -1;
-}
-.page-messages div.main ul.pagination.pager {
-  float: right;
-  margin-right: 20px;
-}
-.page-messages div.main ul.pagination.pager li a {
-  background: #f6f45a;
-  color: #000;
-  border-left: 1px solid #000;
-  padding: 10px;
-}
-.page-messages div.main ul.pagination.pager li.arrow.first a {
-  border-left: 0 !important;
-  border-radius: 10px 0px 0px 10px;
-}
-.page-messages div.main ul.pagination.pager li.arrow.last a {
-  border-radius: 0px 10px 10px 0px;
+  margin-bottom: 25px;
 }
 .page-messages div.main ul.button-group li a {
   font-size: 17px;
@@ -13331,6 +13227,25 @@ body .alert-box.success a.close:hover {
 
 /**end**/
 /**css for user own review and booklist indivisual ***/
+.page-my-reviews .view-my-book-reviews .view-content .views-row {
+  border-bottom: 1px solid #cccccc;
+  padding-top: 20px;
+  padding-bottom: 50px;
+}
+
+.page-my-reviews .view-my-book-reviews .view-content .views-row .views-field.views-field-count .views-label-count {
+  font-size: 17px;
+  font-family: SpecialElite !important;
+  font-weight: normal !important;
+  font-style: normal !important;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+}
+
+.page-my-reviews .view-my-book-reviews .view-content .views-row .views-field.views-field-title {
+  padding-bottom: 20px;
+}
+
 .page-my-reviews .block-quicktabs .quicktabs-wrapper .quicktabs-tabs, .page-my-booklist .block-quicktabs .quicktabs-wrapper .quicktabs-tabs {
   background: none !important;
 }

@@ -123,20 +123,7 @@ h1#page-title {
 .views-field-count {
 	padding-left: 17px;
 }
-.more-link {
-	text-align: right;
-	 	a {
-		 	@include arialbold;
-		 	position: relative;
-		 	font-size: 14px;
-		 	text-transform: capitalize;
-	 		padding-right: 20px;
-	 		color: $white;
-		 	 	&:after {
-          	     content: ">";
-		 	 	}
-		}
-}
+
 .page-user {
 	.alert-box {
 		&:nth-of-type(2) {
@@ -157,15 +144,18 @@ h1#page-title {
  			text-align: right;
  			width: 100%;
 			 	a {
- 			 	@include mclaren;
+ 			 	@include arialbold;
  			 	position: relative;
- 			 	font-size: 17px;
+ 			 	font-size: 14px;
  			 	text-transform: capitalize;
 			 	padding-right: 20px;
+			 	color: $white;
  			 	 	&:after {
-                  	@include previous(17px, 17px, $right: 0, $top: 12%);
-                  	background: url('../images/libraryzurb/right-blue-arrow.png') no-repeat;
-                  	background-size: 15px;
+                  	 content: ">";
+                  	 padding-left: 5px;
+ 			 	 	}
+ 			 	 	&:hover {
+ 			 	 		color: $white;
  			 	 	}
  			}
  		}
