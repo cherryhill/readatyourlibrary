@@ -505,41 +505,57 @@
     
   	.main {
  	 	.current-program {
-	    	@include orange-blue;
+	    	@include  bluebackground;
 	    		.view {
 					display: inline-block;
 		    	 	width: 100%;
-		    	 	padding: 10px 4%;
 			    	 	.view-content {
-			    	 		display: table;
+			    	 		display: inline-block;
 			    	 		width: 100%;
 			    	 	}
 	    	 			.views-row {
-			    	 		display: table-row;
+			    	 		display: inline-block;
 			    	 		width: 100%;
 	    	 	     			.views-field {
+	    	 	     				&.views-field-title {
+	    	 	     					a {
+	    	 	     					display: inline-block;
+	    	 	     					width: 100%;
+	    	 	     					color: $white;
+	    	 	     					@include waveimg;
+	    	 	     				  }
+	    	 	     				}
 				    	 	       	&.views-field-field-program-image {
 				    	 	       	  width: 20%;
 				    	 	       	  display: table-cell;
 				    	 	       	  vertical-align: middle;
 				    	 	       	  float: none !important;
+				    	 	       	  padding: 10px 0 10px 4%;
+				    	 	       	  img {
+				    	 	       	  	width: 100%;
+				    	 	       	  }
 				    	 	       	}
 				    	 	       	&.views-field-body {
 				                      width: 78%;
-				                      padding-left: 2%;
 				                      display: table-cell;
 				                      float: none !important;
 				                      @include arialregular;
 				                      font-size: 17px;
+				                      padding: 10px 4% 10px 2%;
+				                        a {
+				                        	color: $white;
+				                        	text-decoration: underline;
+				                        	@include arialbold;
+				                        }
 									}
-				    	 	       &.views-field-title, &.views-field-field-sign-up {
+				    	 	        &.views-field-field-sign-up {
 				    	 	         display: none;
 				    	 	       }
 	    	 	     			}
 	    	 			}
 	   			}  
 	    }
-		.view {
+		.view.view-display-id-page {
    		 	.view-header, .view-header p {
 	   		 	   font-size: 28px !important;
    		 		@include mclaren;
@@ -673,13 +689,16 @@
 		 			}
 			}
 	 		#homebox-add {
-	 			ul li a {
+	 			ul li {
+	 				@include noborder;
+	 				a {
 	 				@include bluebutton($font-size: 17px);
 	 				text-decoration: none;
 		 				&.used {
 		 					@include noborder;
 		 				}
 	 			}
+	 		}
 	 		}
 	 		.homebox-column {
 	 			@include nobackground;
@@ -1953,11 +1972,7 @@
 		display: none;
 	}
  	.main {
- 		.views-field-nothing {
- 			h2 {
- 				/* text-transform: uppercase; */
- 			}
- 		}
+ 		
  		.view-activities-page-, .block-block {
 		 	@include block;
 		 	h2, .block-title {
@@ -1970,14 +1985,8 @@
 		 	 	margin-bottom: 0;
 		 	 	margin-left: 0;
 		 	 }
-		 	.view-content {
-
-		 	}
-	 	 	div {
-		 	 	a {
-		 	 		padding-left: 20px;
-		 	 	}
-	 	 	}
+		 	
+	 	 	
  		}
 	}
 	.pull-9.sidebar3 {

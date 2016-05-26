@@ -14,7 +14,26 @@
           }
           else ($('#edit-profile-main-field-receive-notifications').addClass('mail-notification-hidden'));
       });
-
+    //MyDashboard page hide homebox add buttons when dragable homebox blocks are visible
+     var activites =$('.homebox-draggable:has(.view-my-activities-for-patron-dashboard)').addClass('dashboard-activities');
+var rewards =$('.homebox-draggable:has(.view-patron-rewads-for-patron-dashboard)').addClass('dashboard-rewards');
+var reviews =$('.homebox-draggable:has(.view-my-book-reviews)').addClass('dashboard-reviews');
+var booklist =$('.homebox-draggable:has(.view-booklist-on-activities-page)').addClass('dashboard-booklists');
+var follow =$('.homebox-draggable:has(.view-follow)').addClass('dashboard-following');
+var leadeboard =$('.homebox-draggable:has(.view-leadeboard)').addClass('dashboard-leaderboard');
+var progress =$('.homebox-draggable:has(.msg-highlight)').addClass('dashboard-progress');
+var obj =$("#homebox-add ul li");
+$.each( obj , function( key, value ) {
+$(value).addClass($(value).find('a').text().toLowerCase());
+ var crntState =$('.dashboard-'+$(value).find('a').text().toLowerCase()).css('display');
+  if (crntState != 'undefined') { 
+    if (crntState == 'block') {
+     $(value).hide();
+    } else  {
+     $(value).show();
+    }
+  }
+});
       //Making single selection for avatar image
       $(".av_radio.form-radio").change(function () {
         $('.av_radio.form-radio').not(this).prop('checked', false);
@@ -62,6 +81,7 @@ jQuery( document ).ready(function() {
 
   
   /* jQuery for homepage book slider */
+  jQuery( '<p>Avatar icons provided free by <a href="http://emojione.com/"target="_blank"> Emoji One</a></p>' ).insertAfter( "#user-register-form" );
   jQuery(".blslider2.slide").hide();
   jQuery(".blslider3.slide").hide();
   jQuery(".blslider1").show();
