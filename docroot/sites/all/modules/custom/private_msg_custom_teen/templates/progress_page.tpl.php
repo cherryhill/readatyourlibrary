@@ -1,4 +1,9 @@
 <!-- Progress Report Pagez -->
+<?php   
+  global $user;
+  global $base_url;
+  $current_uid = $user->uid;
+?>
 <div class="progress-page">
 <h1 id = "title">
 	<?php print variable_get('pg_title'); ?>
@@ -9,18 +14,18 @@
 	print $page_desc['value']; ?>
 </div>
 <div class="print-page">
-	<button class="print">Print My Progress</button>
+	<a href = "progress-print"><button class="print">Print My Progress</button></a>
 </div>
 <div class="user-desc">
 <div class="avatar-id">
-	<?php global $user; $uid = $user->uid; print user_avatar_progress_page($uid); ?>
+	<?php print user_avatar_progress_page($current_uid); ?>
 </div>
 <div class="point-status">
 <div class="activity-status">
-  <?php print 'Activities Completed: '.specefic_user_nodes().' activities'; ?>
+  <?php print 'Activities Completed: '.specefic_user_nodes($current_uid).' activities'; ?>
 </div>
 <div class="activity-remaining">
-<?php $grids = variable_get('no_of_grids'); $activities_left = $grids - specefic_user_nodes();
+<?php $grids = variable_get('no_of_grids'); $activities_left = $grids - specefic_user_nodes($current_uid);
   print 'Activities Left to Complete: '.$activities_left.' activities'; ?>
 </div>
 <div class="points">
@@ -62,8 +67,6 @@
 
 <div class="progress-main"><?php 
   echo '<h1>My Passport Stamps</h1>';
-  global $user;
-  $current_uid = $user->uid;
   $exceed_limit = '';
 
   $criteria = array(
