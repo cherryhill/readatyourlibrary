@@ -88,6 +88,9 @@
 	font-style: normal !important;
 	-webkit-font-smoothing: antialiased !important;
 	-moz-osx-font-smoothing: grayscale !important;
+	text-rendering: optimizeLegibility !important;
+	-moz-font-smoothing: grayscale !important;
+
 }
 @mixin noborder {
 	border: none !important;
@@ -98,6 +101,7 @@
 	font-style: normal !important;
 	font-weight: normal !important;
 	-webkit-font-smoothing: antialiased !important;
+	text-rendering: optimizeLegibility !important; 
 }
 @mixin arialbold {
 	font-family: Arialbold !important;
@@ -106,6 +110,7 @@
 	-webkit-font-smoothing: antialiased !important;
 	-moz-osx-font-smoothing: grayscale !important;
 	-moz-font-smoothing: grayscale !important;
+	text-rendering: optimizeLegibility !important; 
 }
 @mixin orange-blue {
 	background: $blue;

@@ -6272,6 +6272,8 @@ a.th {
   border-left: 1px solid transparent;
   padding: 0;
   height: 33px;
+  width: 31px;
+  overflow: hidden;
 }
 .pagination.pager li.current a {
   background: #267fda;
@@ -6284,8 +6286,8 @@ a.th {
   padding: 5px 10px;
   color: #fff;
   text-decoration: none;
-  width: 31px;
-  height: 33px;
+  width: 100%;
+  height: 100%;
   padding: 0 !important;
   text-decoration: none !important;
   font-size: 17px;
@@ -6296,19 +6298,15 @@ a.th {
 }
 .pagination.pager li.arrow:nth-of-type(2) a {
   color: transparent !important;
-  background: #f6511d url("../images/libraryzurb/left-arrow.png") no-repeat !important;
+  background: #f6511d url("../images/libraryzurb/left-arrow.png") no-repeat;
   background-position: center 7px;
-  width: 31px;
-  height: 33px;
   background-size: 18px;
   border-radius: 12px 0px 0px 12px;
 }
 .pagination.pager li.arrow:nth-last-of-type(2) a {
   color: transparent !important;
-  background: #f6511d url("../images/libraryzurb/right-arrow.png") no-repeat !important;
+  background: #f6511d url("../images/libraryzurb/right-arrow.png") no-repeat;
   background-position: center 4px;
-  width: 31px;
-  height: 33px;
   background-size: 18px;
   border-radius: 0px 12px 12px 0px;
 }
@@ -6321,6 +6319,7 @@ a.th {
   font-style: normal !important;
   font-weight: normal !important;
   -webkit-font-smoothing: antialiased !important;
+  text-rendering: optimizeLegibility !important;
 }
 
 .page-patron ul.action-links {
@@ -6349,6 +6348,8 @@ h1#page-title {
   font-style: normal !important;
   -webkit-font-smoothing: antialiased !important;
   -moz-osx-font-smoothing: grayscale !important;
+  text-rendering: optimizeLegibility !important;
+  -moz-font-smoothing: grayscale !important;
   color: #000;
   font-size: 28px;
 }
@@ -6358,7 +6359,7 @@ h1#page-title {
 }
 
 .more-link {
-  text-align: right;
+  text-align: right !important;
 }
 .more-link a {
   font-family: McLaren-Regular !important;
@@ -6366,6 +6367,8 @@ h1#page-title {
   font-style: normal !important;
   -webkit-font-smoothing: antialiased !important;
   -moz-osx-font-smoothing: grayscale !important;
+  text-rendering: optimizeLegibility !important;
+  -moz-font-smoothing: grayscale !important;
   position: relative;
   font-size: 17px;
   text-transform: capitalize;
@@ -6408,6 +6411,8 @@ h1#page-title {
   font-style: normal !important;
   -webkit-font-smoothing: antialiased !important;
   -moz-osx-font-smoothing: grayscale !important;
+  text-rendering: optimizeLegibility !important;
+  -moz-font-smoothing: grayscale !important;
   position: relative;
   font-size: 17px;
   text-transform: capitalize;
@@ -6468,6 +6473,8 @@ h1#page-title {
   font-style: normal !important;
   -webkit-font-smoothing: antialiased !important;
   -moz-osx-font-smoothing: grayscale !important;
+  text-rendering: optimizeLegibility !important;
+  -moz-font-smoothing: grayscale !important;
   background: #267fda !important;
   border-radius: 10px;
   padding: 9px 22px;
@@ -6484,6 +6491,49 @@ h1#page-title {
   background: #267fda;
   opacity: 1;
   outline: none;
+}
+
+form#user-pass span.form-required {
+  display: none;
+}
+form#user-pass div.user_pass_name:after {
+  content: "*";
+  color: #cc0d25;
+}
+
+.blue-button {
+  color: #fff !important;
+  font-family: McLaren-Regular !important;
+  font-weight: normal !important;
+  font-style: normal !important;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+  text-rendering: optimizeLegibility !important;
+  -moz-font-smoothing: grayscale !important;
+  background: #267fda !important;
+  border-radius: 10px;
+  padding: 9px 22px;
+  -webkit-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+  box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+  border: none;
+  font-size: 17px;
+  display: inline-block;
+  text-transform: capitalize;
+}
+.blue-button:hover, .blue-button:focus {
+  color: #fff;
+  background: #267fda;
+  opacity: 1;
+  outline: none;
+}
+
+.l-messages div.messages.status {
+  margin-bottom: 15px !important;
+}
+
+.mail-notification-hidden {
+  display: none;
 }
 
 .admin-menu .fixed {
@@ -6542,6 +6592,11 @@ h1#page-title {
 }
 .l-header .row.header-middle section.block-menu-menu-secoundary-menu {
   margin-bottom: 0;
+}
+@media (max-width: 767px) {
+  .l-header .row.header-middle section.block-menu-menu-secoundary-menu {
+    display: none;
+  }
 }
 .l-header .row.header-middle section.block-menu-menu-secoundary-menu ul.menu {
   float: right;
@@ -6750,6 +6805,23 @@ h1#page-title {
   height: 100%;
 }
 
+@media (max-width: 767px) {
+  #citylinks {
+    display: none;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1025px) {
+  #mobile-header {
+    display: none;
+  }
+}
+@media (min-width: 1026px) {
+  #mobile-header {
+    display: none;
+  }
+}
+
 .block {
   margin-bottom: 35px;
 }
@@ -6763,6 +6835,9 @@ h1#page-title {
   -moz-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
   box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
   padding: 0 !important;
+}
+.block.block-private-msg-custom-homepage-slider h2.featured {
+  display: none;
 }
 .block.block-private-msg-custom-homepage-slider ul {
   list-style: none;
@@ -6805,6 +6880,8 @@ h1#page-title {
   font-style: normal !important;
   -webkit-font-smoothing: antialiased !important;
   -moz-osx-font-smoothing: grayscale !important;
+  text-rendering: optimizeLegibility !important;
+  -moz-font-smoothing: grayscale !important;
   padding-top: 26px;
   padding-bottom: 25px;
   font-size: 28px;
@@ -6885,6 +6962,8 @@ h1#page-title {
   font-style: normal !important;
   -webkit-font-smoothing: antialiased !important;
   -moz-osx-font-smoothing: grayscale !important;
+  text-rendering: optimizeLegibility !important;
+  -moz-font-smoothing: grayscale !important;
   padding-top: 26px;
   padding-bottom: 25px;
   font-size: 28px;
@@ -6975,6 +7054,8 @@ h1#page-title {
   font-style: normal !important;
   -webkit-font-smoothing: antialiased !important;
   -moz-osx-font-smoothing: grayscale !important;
+  text-rendering: optimizeLegibility !important;
+  -moz-font-smoothing: grayscale !important;
 }
 .block.block-views-event-activities-block-1 .view-event-activities a {
   font-size: 17px;
@@ -6984,6 +7065,7 @@ h1#page-title {
   font-style: normal !important;
   font-weight: normal !important;
   -webkit-font-smoothing: antialiased !important;
+  text-rendering: optimizeLegibility !important;
 }
 .block.badge-reward-list {
   margin-bottom: 0 !important;
@@ -6994,6 +7076,8 @@ h1#page-title {
   font-style: normal !important;
   -webkit-font-smoothing: antialiased !important;
   -moz-osx-font-smoothing: grayscale !important;
+  text-rendering: optimizeLegibility !important;
+  -moz-font-smoothing: grayscale !important;
   font-size: 28px;
 }
 .block.dashboard-block {
@@ -7017,6 +7101,8 @@ h1#page-title {
   font-style: normal !important;
   -webkit-font-smoothing: antialiased !important;
   -moz-osx-font-smoothing: grayscale !important;
+  text-rendering: optimizeLegibility !important;
+  -moz-font-smoothing: grayscale !important;
   padding-top: 26px;
   padding-bottom: 25px;
   font-size: 28px;
@@ -7097,6 +7183,7 @@ h1#page-title {
   -webkit-font-smoothing: antialiased !important;
   -moz-osx-font-smoothing: grayscale !important;
   -moz-font-smoothing: grayscale !important;
+  text-rendering: optimizeLegibility !important;
 }
 .block.dashboard-block .view .view-content {
   width: 50%;
@@ -7159,11 +7246,12 @@ h1#page-title {
   font-style: normal !important;
   -webkit-font-smoothing: antialiased !important;
   -moz-osx-font-smoothing: grayscale !important;
-  font-size: 25px;
+  text-rendering: optimizeLegibility !important;
+  -moz-font-smoothing: grayscale !important;
+  font-size: 28px;
   color: #000;
   border: none !important;
   outline: none !important;
-  margin-bottom: 33px;
 }
 .block.bordr-bottom {
   border-bottom: 1px solid #cccccc;
@@ -7189,6 +7277,8 @@ h1#page-title {
   font-style: normal !important;
   -webkit-font-smoothing: antialiased !important;
   -moz-osx-font-smoothing: grayscale !important;
+  text-rendering: optimizeLegibility !important;
+  -moz-font-smoothing: grayscale !important;
   border: none !important;
   outline: none !important;
 }
@@ -7208,6 +7298,8 @@ h1#page-title {
   font-style: normal !important;
   -webkit-font-smoothing: antialiased !important;
   -moz-osx-font-smoothing: grayscale !important;
+  text-rendering: optimizeLegibility !important;
+  -moz-font-smoothing: grayscale !important;
   background: #267fda !important;
   border-radius: 10px;
   padding: 9px 22px;
@@ -7240,6 +7332,7 @@ h1#page-title {
   -webkit-font-smoothing: antialiased !important;
   -moz-osx-font-smoothing: grayscale !important;
   -moz-font-smoothing: grayscale !important;
+  text-rendering: optimizeLegibility !important;
 }
 .block.block-private-msg-custom .pm-custom .pm .pm-subject a {
   color: #000;
@@ -7260,6 +7353,7 @@ h1#page-title {
   font-style: normal !important;
   font-weight: normal !important;
   -webkit-font-smoothing: antialiased !important;
+  text-rendering: optimizeLegibility !important;
   color: #000;
 }
 .block.block-private-msg-custom .pm-custom .pm .pm-date {
@@ -7271,6 +7365,7 @@ h1#page-title {
   font-style: normal !important;
   font-weight: normal !important;
   -webkit-font-smoothing: antialiased !important;
+  text-rendering: optimizeLegibility !important;
 }
 .block.block-user-login {
   background: #267fda;
@@ -7289,6 +7384,8 @@ h1#page-title {
   font-style: normal !important;
   -webkit-font-smoothing: antialiased !important;
   -moz-osx-font-smoothing: grayscale !important;
+  text-rendering: optimizeLegibility !important;
+  -moz-font-smoothing: grayscale !important;
   padding-top: 26px;
   padding-bottom: 25px;
   font-size: 28px;
@@ -7340,6 +7437,8 @@ h1#page-title {
   font-style: normal !important;
   -webkit-font-smoothing: antialiased !important;
   -moz-osx-font-smoothing: grayscale !important;
+  text-rendering: optimizeLegibility !important;
+  -moz-font-smoothing: grayscale !important;
 }
 .block.block-user-login form ul {
   list-style: none;
@@ -7354,6 +7453,8 @@ h1#page-title {
   font-style: normal !important;
   -webkit-font-smoothing: antialiased !important;
   -moz-osx-font-smoothing: grayscale !important;
+  text-rendering: optimizeLegibility !important;
+  -moz-font-smoothing: grayscale !important;
 }
 .block.block-user-login form button {
   color: #000;
@@ -7362,6 +7463,8 @@ h1#page-title {
   font-style: normal !important;
   -webkit-font-smoothing: antialiased !important;
   -moz-osx-font-smoothing: grayscale !important;
+  text-rendering: optimizeLegibility !important;
+  -moz-font-smoothing: grayscale !important;
   border-radius: 10px;
   background: #fdeb52 !important;
   text-transform: capitalize;
@@ -7400,6 +7503,8 @@ h1#page-title {
   font-style: normal !important;
   -webkit-font-smoothing: antialiased !important;
   -moz-osx-font-smoothing: grayscale !important;
+  text-rendering: optimizeLegibility !important;
+  -moz-font-smoothing: grayscale !important;
 }
 .block.review-booklist-block .block-title {
   border-top: none;
@@ -7412,6 +7517,8 @@ h1#page-title {
   font-style: normal !important;
   -webkit-font-smoothing: antialiased !important;
   -moz-osx-font-smoothing: grayscale !important;
+  text-rendering: optimizeLegibility !important;
+  -moz-font-smoothing: grayscale !important;
   font-size: 22px;
   color: #000;
   position: relative;
@@ -7439,6 +7546,13 @@ h1#page-title {
 .block.review-booklist-block ul.menu li a {
   color: #000;
   font-size: 22px;
+  font-family: McLaren-Regular !important;
+  font-weight: normal !important;
+  font-style: normal !important;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+  text-rendering: optimizeLegibility !important;
+  -moz-font-smoothing: grayscale !important;
 }
 .block.review-booklist-block ul.menu li a:focus {
   outline: none;
@@ -7451,6 +7565,8 @@ h1#page-title {
   font-style: normal !important;
   -webkit-font-smoothing: antialiased !important;
   -moz-osx-font-smoothing: grayscale !important;
+  text-rendering: optimizeLegibility !important;
+  -moz-font-smoothing: grayscale !important;
 }
 .block.review-booklist-block ul.menu li.active a:before {
   content: "";
@@ -7486,6 +7602,8 @@ h1#page-title {
   font-style: normal !important;
   -webkit-font-smoothing: antialiased !important;
   -moz-osx-font-smoothing: grayscale !important;
+  text-rendering: optimizeLegibility !important;
+  -moz-font-smoothing: grayscale !important;
   padding-top: 26px;
   padding-bottom: 25px;
   font-size: 28px;
@@ -7568,6 +7686,8 @@ h1#page-title {
   font-style: normal !important;
   -webkit-font-smoothing: antialiased !important;
   -moz-osx-font-smoothing: grayscale !important;
+  text-rendering: optimizeLegibility !important;
+  -moz-font-smoothing: grayscale !important;
 }
 @media (max-width: 767px) {
   .block.announcement .block-title {
@@ -7582,6 +7702,7 @@ h1#page-title {
   -webkit-font-smoothing: antialiased !important;
   -moz-osx-font-smoothing: grayscale !important;
   -moz-font-smoothing: grayscale !important;
+  text-rendering: optimizeLegibility !important;
 }
 @media (max-width: 767px) {
   .block.announcement .views-field-body p {
@@ -7600,6 +7721,7 @@ h1#page-title {
   font-style: normal !important;
   font-weight: normal !important;
   -webkit-font-smoothing: antialiased !important;
+  text-rendering: optimizeLegibility !important;
 }
 @media (max-width: 767px) {
   .block.announcement .views-field-body ol li {
@@ -7711,6 +7833,8 @@ h1#page-title {
   font-style: normal !important;
   -webkit-font-smoothing: antialiased !important;
   -moz-osx-font-smoothing: grayscale !important;
+  text-rendering: optimizeLegibility !important;
+  -moz-font-smoothing: grayscale !important;
   padding-top: 26px;
   padding-bottom: 25px;
   font-size: 28px;
@@ -7774,6 +7898,7 @@ h1#page-title {
   -webkit-font-smoothing: antialiased !important;
   -moz-osx-font-smoothing: grayscale !important;
   -moz-font-smoothing: grayscale !important;
+  text-rendering: optimizeLegibility !important;
 }
 .block.playlib-copyright {
   position: relative;
@@ -7784,6 +7909,8 @@ h1#page-title {
   font-style: normal !important;
   -webkit-font-smoothing: antialiased !important;
   -moz-osx-font-smoothing: grayscale !important;
+  text-rendering: optimizeLegibility !important;
+  -moz-font-smoothing: grayscale !important;
   font-size: 22px !important;
   height: 0;
   position: relative;
@@ -7794,6 +7921,7 @@ h1#page-title {
   font-style: normal !important;
   font-weight: normal !important;
   -webkit-font-smoothing: antialiased !important;
+  text-rendering: optimizeLegibility !important;
   font-size: 12px !important;
 }
 .block.block-menu-menu-social-sharing-icons {
@@ -7937,11 +8065,6 @@ h1#page-title {
   color: #fff;
   font-family: Pt-seriefregular;
 }
-@media only screen and (max-width: 769px) {
-  #site-slogan {
-    display: none;
-  }
-}
 
 /**
  * Styles for buttons.
@@ -7961,6 +8084,8 @@ button,
   font-style: normal !important;
   -webkit-font-smoothing: antialiased !important;
   -moz-osx-font-smoothing: grayscale !important;
+  text-rendering: optimizeLegibility !important;
+  -moz-font-smoothing: grayscale !important;
   -webkit-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
   -moz-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
   box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
@@ -7989,6 +8114,8 @@ button a,
   font-style: normal !important;
   -webkit-font-smoothing: antialiased !important;
   -moz-osx-font-smoothing: grayscale !important;
+  text-rendering: optimizeLegibility !important;
+  -moz-font-smoothing: grayscale !important;
 }
 button a:hover,
 .button a:hover {
@@ -9457,6 +9584,7 @@ body {
   font-style: normal !important;
   font-weight: normal !important;
   -webkit-font-smoothing: antialiased !important;
+  text-rendering: optimizeLegibility !important;
   -webkit-font-smoothing: antialiased;
   font-size: 18px;
   line-height: 1.5;
@@ -9479,6 +9607,8 @@ body input[type="password"] {
   font-style: normal !important;
   -webkit-font-smoothing: antialiased !important;
   -moz-osx-font-smoothing: grayscale !important;
+  text-rendering: optimizeLegibility !important;
+  -moz-font-smoothing: grayscale !important;
 }
 body .alert-box.success {
   opacity: 1;
@@ -9487,6 +9617,8 @@ body .alert-box.success {
   font-style: normal !important;
   -webkit-font-smoothing: antialiased !important;
   -moz-osx-font-smoothing: grayscale !important;
+  text-rendering: optimizeLegibility !important;
+  -moz-font-smoothing: grayscale !important;
 }
 body .alert-box.success a {
   font-family: McLaren-Regular !important;
@@ -9494,6 +9626,8 @@ body .alert-box.success a {
   font-style: normal !important;
   -webkit-font-smoothing: antialiased !important;
   -moz-osx-font-smoothing: grayscale !important;
+  text-rendering: optimizeLegibility !important;
+  -moz-font-smoothing: grayscale !important;
   opacity: 1;
   color: #cc0d25 !important;
 }
@@ -9671,6 +9805,8 @@ body .alert-box.success a.close:hover {
   font-style: normal !important;
   -webkit-font-smoothing: antialiased !important;
   -moz-osx-font-smoothing: grayscale !important;
+  text-rendering: optimizeLegibility !important;
+  -moz-font-smoothing: grayscale !important;
   border: none !important;
   outline: none !important;
 }
@@ -9754,6 +9890,8 @@ body .alert-box.success a.close:hover {
   font-style: normal !important;
   -webkit-font-smoothing: antialiased !important;
   -moz-osx-font-smoothing: grayscale !important;
+  text-rendering: optimizeLegibility !important;
+  -moz-font-smoothing: grayscale !important;
   text-transform: capitalize;
   position: absolute;
   top: 0;
@@ -9790,6 +9928,7 @@ body .alert-box.success a.close:hover {
   font-style: normal !important;
   font-weight: normal !important;
   -webkit-font-smoothing: antialiased !important;
+  text-rendering: optimizeLegibility !important;
 }
 .section-media .main .view .view-footer {
   width: 100%;
@@ -9832,11 +9971,22 @@ body .alert-box.success a.close:hover {
   font-style: normal !important;
   -webkit-font-smoothing: antialiased !important;
   -moz-osx-font-smoothing: grayscale !important;
+  text-rendering: optimizeLegibility !important;
+  -moz-font-smoothing: grayscale !important;
 }
-.page-rewards .pull-9.sidebar .block.block-views-my-rewards-block .views-field-field-image-upload {
-  float: left;
-  display: table-row;
-  margin-right: 19px;
+.page-rewards .pull-9.sidebar .block.block-views-my-rewards-block .view-content .views-row {
+  width: 100%;
+  display: inline-block;
+}
+.page-rewards .pull-9.sidebar .block.block-views-my-rewards-block .view-content .views-row .views-field-field-image-upload {
+  display: inline-block;
+  width: 35%;
+  vertical-align: middle;
+}
+.page-rewards .pull-9.sidebar .block.block-views-my-rewards-block .view-content .views-row .views-field-php {
+  width: 62%;
+  display: inline-block;
+  vertical-align: middle;
 }
 .page-rewards .pull-9.sidebar .block.block-views-my-badges-block-1 .view {
   display: table;
@@ -9871,58 +10021,76 @@ body .alert-box.success a.close:hover {
 .page-rewards .main #page-title {
   display: none;
 }
-.page-rewards .main .view-badges .view-header h2 {
-  font-family: McLaren-Regular !important;
-  font-weight: normal !important;
-  font-style: normal !important;
-  -webkit-font-smoothing: antialiased !important;
-  -moz-osx-font-smoothing: grayscale !important;
+.page-rewards .main .view-reward-page .view-header, .page-rewards .main .view-physical-rewards-block-for-rewards-page .view-header {
+  margin-bottom: 35px;
+}
+.page-rewards .main .view-reward-page .view-header h2, .page-rewards .main .view-physical-rewards-block-for-rewards-page .view-header h2 {
   font-size: 28px;
-  color: #000;
-  border: none !important;
-  outline: none !important;
-}
-.page-rewards .main .view-badges .view-content div.badges img {
-  margin-right: 6%;
-}
-.page-rewards .main .block .block-title {
-  border: none !important;
-  outline: none !important;
-  font-size: 18px;
-  color: #f6511d;
   font-family: McLaren-Regular !important;
   font-weight: normal !important;
   font-style: normal !important;
   -webkit-font-smoothing: antialiased !important;
   -moz-osx-font-smoothing: grayscale !important;
+  text-rendering: optimizeLegibility !important;
+  -moz-font-smoothing: grayscale !important;
+  border: none !important;
+  outline: none !important;
+  color: #000;
 }
-.page-rewards .main .block .view {
-  display: table;
-  width: 100%;
-}
-.page-rewards .main .block .view .view-content {
-  display: table-row;
-  width: 100%;
-}
-.page-rewards .main .block .view .view-content .views-row {
-  display: table-cell;
-  padding-right: 10px;
-}
-@media (min-width: 768px) and (max-width: 1025px) {
-  .page-rewards .main .block .view .view-content .views-row {
-    display: inline-block;
-    width: 19%;
-    vertical-align: top;
-  }
-}
-.page-rewards .main .block .view .view-content .views-row .views-field {
+.page-rewards .main .view-reward-page .view-content .views-row, .page-rewards .main .view-physical-rewards-block-for-rewards-page .view-content .views-row {
   width: 100%;
   display: inline-block;
-  font-family: 17px;
-  font-family: arial !important;
-  font-style: normal !important;
+}
+.page-rewards .main .view-reward-page .view-content .views-row .badges, .page-rewards .main .view-physical-rewards-block-for-rewards-page .view-content .views-row .badges {
+  width: 20%;
+  display: inline-block;
+  vertical-align: middle;
+  text-align: center;
+}
+.page-rewards .main .view-reward-page .view-content .views-row .badges-title, .page-rewards .main .view-physical-rewards-block-for-rewards-page .view-content .views-row .badges-title {
+  padding-right: 10px;
+  padding-top: 5px;
+}
+.page-rewards .main .view-reward-page .view-content .views-row .badge_description, .page-rewards .main .view-physical-rewards-block-for-rewards-page .view-content .views-row .badge_description {
+  width: 79%;
+  display: inline-block;
+  vertical-align: middle;
+}
+.page-rewards .main .badge_list {
+  font-size: 28px;
+  font-family: McLaren-Regular !important;
   font-weight: normal !important;
+  font-style: normal !important;
   -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+  text-rendering: optimizeLegibility !important;
+  -moz-font-smoothing: grayscale !important;
+}
+.page-rewards .main .block-views .block-title {
+  font-size: 18px;
+  font-family: McLaren-Regular !important;
+  font-weight: normal !important;
+  font-style: normal !important;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+  text-rendering: optimizeLegibility !important;
+  -moz-font-smoothing: grayscale !important;
+  border: none !important;
+  outline: none !important;
+  color: #f6511d;
+}
+.page-rewards .main .view-badges-for-reading .view-content {
+  width: 100%;
+  display: inline-block;
+}
+.page-rewards .main .view-badges-for-reading .view-content .views-row {
+  width: 18%;
+  display: inline-block;
+  vertical-align: top;
+  text-align: center;
+}
+.page-rewards .main .view-badges-for-reading .view-content .views-row .views-field-title {
+  padding-top: 5px;
 }
 
 /**end css of reward page**/
@@ -9947,6 +10115,7 @@ body .alert-box.success a.close:hover {
   font-style: normal !important;
   font-weight: normal !important;
   -webkit-font-smoothing: antialiased !important;
+  text-rendering: optimizeLegibility !important;
 }
 .page-reward-winners #page-title {
   font-family: McLaren-Regular !important;
@@ -9954,6 +10123,8 @@ body .alert-box.success a.close:hover {
   font-style: normal !important;
   -webkit-font-smoothing: antialiased !important;
   -moz-osx-font-smoothing: grayscale !important;
+  text-rendering: optimizeLegibility !important;
+  -moz-font-smoothing: grayscale !important;
 }
 .page-reward-winners table {
   width: 100% !important;
@@ -10028,6 +10199,8 @@ body .alert-box.success a.close:hover {
   font-style: normal !important;
   -webkit-font-smoothing: antialiased !important;
   -moz-osx-font-smoothing: grayscale !important;
+  text-rendering: optimizeLegibility !important;
+  -moz-font-smoothing: grayscale !important;
 }
 .logged-in.section-programs .sidebar .block .view .views-field-title a {
   color: #fff;
@@ -10036,6 +10209,7 @@ body .alert-box.success a.close:hover {
   font-style: normal !important;
   font-weight: normal !important;
   -webkit-font-smoothing: antialiased !important;
+  text-rendering: optimizeLegibility !important;
 }
 .logged-in.section-programs .sidebar .block.block-auto-role-allocation {
   position: relative;
@@ -10057,6 +10231,8 @@ body .alert-box.success a.close:hover {
     font-style: normal !important;
     -webkit-font-smoothing: antialiased !important;
     -moz-osx-font-smoothing: grayscale !important;
+    text-rendering: optimizeLegibility !important;
+    -moz-font-smoothing: grayscale !important;
     border-radius: 10px;
     background: #fdeb52 !important;
     text-transform: capitalize;
@@ -10089,6 +10265,8 @@ body .alert-box.success a.close:hover {
     font-style: normal !important;
     -webkit-font-smoothing: antialiased !important;
     -moz-osx-font-smoothing: grayscale !important;
+    text-rendering: optimizeLegibility !important;
+    -moz-font-smoothing: grayscale !important;
     border-radius: 10px;
     background: #fdeb52 !important;
     text-transform: capitalize;
@@ -10121,6 +10299,8 @@ body .alert-box.success a.close:hover {
     font-style: normal !important;
     -webkit-font-smoothing: antialiased !important;
     -moz-osx-font-smoothing: grayscale !important;
+    text-rendering: optimizeLegibility !important;
+    -moz-font-smoothing: grayscale !important;
     border-radius: 10px;
     background: #fdeb52 !important;
     text-transform: capitalize;
@@ -10154,6 +10334,7 @@ body .alert-box.success a.close:hover {
   -webkit-font-smoothing: antialiased !important;
   -moz-osx-font-smoothing: grayscale !important;
   -moz-font-smoothing: grayscale !important;
+  text-rendering: optimizeLegibility !important;
   font-size: 17px;
 }
 .logged-in.section-programs .sidebar .block.block-auto-role-allocation div.days-left, .logged-in.section-programs .sidebar .block.block-auto-role-allocation div.all_rewrad_won {
@@ -10197,6 +10378,8 @@ body .alert-box.success a.close:hover {
   font-style: normal !important;
   -webkit-font-smoothing: antialiased !important;
   -moz-osx-font-smoothing: grayscale !important;
+  text-rendering: optimizeLegibility !important;
+  -moz-font-smoothing: grayscale !important;
   padding-top: 26px;
   padding-bottom: 25px;
   font-size: 28px;
@@ -10261,6 +10444,7 @@ body .alert-box.success a.close:hover {
   font-style: normal !important;
   font-weight: normal !important;
   -webkit-font-smoothing: antialiased !important;
+  text-rendering: optimizeLegibility !important;
   font-size: 17px;
 }
 .section-programs .main .current-program .view .views-row .views-field.views-field-title, .section-programs .main .current-program .view .views-row .views-field.views-field-field-sign-up {
@@ -10273,6 +10457,8 @@ body .alert-box.success a.close:hover {
   font-style: normal !important;
   -webkit-font-smoothing: antialiased !important;
   -moz-osx-font-smoothing: grayscale !important;
+  text-rendering: optimizeLegibility !important;
+  -moz-font-smoothing: grayscale !important;
   color: #000;
 }
 .section-programs .main .view .view-content .views-row {
@@ -10300,6 +10486,8 @@ body .alert-box.success a.close:hover {
   font-style: normal !important;
   -webkit-font-smoothing: antialiased !important;
   -moz-osx-font-smoothing: grayscale !important;
+  text-rendering: optimizeLegibility !important;
+  -moz-font-smoothing: grayscale !important;
   color: #f6511d;
   font-size: 20px;
 }
@@ -10309,6 +10497,7 @@ body .alert-box.success a.close:hover {
   font-style: normal !important;
   font-weight: normal !important;
   -webkit-font-smoothing: antialiased !important;
+  text-rendering: optimizeLegibility !important;
   line-height: 1.4;
 }
 .section-programs .main .view .view-content .views-row .views-field.views-field-field-sign-up a {
@@ -10318,6 +10507,8 @@ body .alert-box.success a.close:hover {
   font-style: normal !important;
   -webkit-font-smoothing: antialiased !important;
   -moz-osx-font-smoothing: grayscale !important;
+  text-rendering: optimizeLegibility !important;
+  -moz-font-smoothing: grayscale !important;
   border-radius: 10px;
   background: #fdeb52 !important;
   text-transform: capitalize;
@@ -10378,6 +10569,7 @@ body .alert-box.success a.close:hover {
   font-style: normal !important;
   font-weight: normal !important;
   -webkit-font-smoothing: antialiased !important;
+  text-rendering: optimizeLegibility !important;
 }
 .page-user-profile .homebox #homebox-block-auto_role_allocation_progress-block .portlet-content:before {
   content: "";
@@ -10429,6 +10621,8 @@ body .alert-box.success a.close:hover {
   font-style: normal !important;
   -webkit-font-smoothing: antialiased !important;
   -moz-osx-font-smoothing: grayscale !important;
+  text-rendering: optimizeLegibility !important;
+  -moz-font-smoothing: grayscale !important;
   background: #267fda !important;
   border-radius: 10px;
   padding: 9px 22px;
@@ -10467,6 +10661,7 @@ body .alert-box.success a.close:hover {
   font-style: normal !important;
   font-weight: normal !important;
   -webkit-font-smoothing: antialiased !important;
+  text-rendering: optimizeLegibility !important;
   color: #000;
 }
 .page-user-profile .homebox #homebox-add .item-list ul li.last {
@@ -10483,6 +10678,8 @@ body .alert-box.success a.close:hover {
   font-style: normal !important;
   -webkit-font-smoothing: antialiased !important;
   -moz-osx-font-smoothing: grayscale !important;
+  text-rendering: optimizeLegibility !important;
+  -moz-font-smoothing: grayscale !important;
   background: #267fda !important;
   border-radius: 10px;
   padding: 9px 22px;
@@ -10507,6 +10704,8 @@ body .alert-box.success a.close:hover {
   font-style: normal !important;
   -webkit-font-smoothing: antialiased !important;
   -moz-osx-font-smoothing: grayscale !important;
+  text-rendering: optimizeLegibility !important;
+  -moz-font-smoothing: grayscale !important;
   background: #267fda !important;
   border-radius: 10px;
   padding: 9px 22px;
@@ -10582,6 +10781,8 @@ body .alert-box.success a.close:hover {
   font-style: normal !important;
   -webkit-font-smoothing: antialiased !important;
   -moz-osx-font-smoothing: grayscale !important;
+  text-rendering: optimizeLegibility !important;
+  -moz-font-smoothing: grayscale !important;
   padding-left: 21%;
   font-size: 22px;
   position: relative;
@@ -10589,6 +10790,9 @@ body .alert-box.success a.close:hover {
 .page-user-profile .homebox .portlet-content {
   padding: 35px 7.1% !important;
   position: inherit;
+}
+.page-user-profile .homebox .portlet-content .view .attachment .view-empty {
+  font-size: 17px;
 }
 .page-user-profile .homebox .portlet-content .view:before {
   content: "";
@@ -10609,6 +10813,7 @@ body .alert-box.success a.close:hover {
   font-style: normal !important;
   font-weight: normal !important;
   -webkit-font-smoothing: antialiased !important;
+  text-rendering: optimizeLegibility !important;
   color: #000;
   margin-top: 10px;
 }
@@ -10641,6 +10846,7 @@ body .alert-box.success a.close:hover {
   -webkit-font-smoothing: antialiased !important;
   -moz-osx-font-smoothing: grayscale !important;
   -moz-font-smoothing: grayscale !important;
+  text-rendering: optimizeLegibility !important;
   color: #000;
 }
 .page-user-profile .homebox .portlet-content .view.view-follow .view-content {
@@ -10674,6 +10880,7 @@ body .alert-box.success a.close:hover {
   font-style: normal !important;
   font-weight: normal !important;
   -webkit-font-smoothing: antialiased !important;
+  text-rendering: optimizeLegibility !important;
 }
 .page-user-profile .homebox .portlet-content .view.view-patron-rewads-for-patron-dashboard:before {
   background: url("../images/libraryzurb/reward-dash.png") no-repeat;
@@ -10704,6 +10911,7 @@ body .alert-box.success a.close:hover {
   font-style: normal !important;
   font-weight: normal !important;
   -webkit-font-smoothing: antialiased !important;
+  text-rendering: optimizeLegibility !important;
   color: #000;
 }
 .page-user-profile .homebox .portlet-content .view.view-booklist-on-activities-page {
@@ -10717,7 +10925,7 @@ body .alert-box.success a.close:hover {
   margin-top: 10px;
   width: 100%;
 }
-.page-user-profile .homebox .portlet-content .view.view-booklist-on-activities-page .view-footer p a {
+.page-user-profile .homebox .portlet-content .view.view-booklist-on-activities-page .view-footer p a.button {
   width: 100%;
   display: inline-block;
   margin: 0;
@@ -10728,6 +10936,8 @@ body .alert-box.success a.close:hover {
   font-style: normal !important;
   -webkit-font-smoothing: antialiased !important;
   -moz-osx-font-smoothing: grayscale !important;
+  text-rendering: optimizeLegibility !important;
+  -moz-font-smoothing: grayscale !important;
   background: #267fda !important;
   border-radius: 10px;
   padding: 9px 22px;
@@ -10738,13 +10948,13 @@ body .alert-box.success a.close:hover {
   text-transform: capitalize;
   font-size: 17px;
 }
-.page-user-profile .homebox .portlet-content .view.view-booklist-on-activities-page .view-footer p a:hover, .page-user-profile .homebox .portlet-content .view.view-booklist-on-activities-page .view-footer p a:focus {
+.page-user-profile .homebox .portlet-content .view.view-booklist-on-activities-page .view-footer p a.button:hover, .page-user-profile .homebox .portlet-content .view.view-booklist-on-activities-page .view-footer p a.button:focus {
   color: #fff;
   background: #267fda;
   opacity: 1;
   outline: none;
 }
-.page-user-profile .homebox .portlet-content .view.view-booklist-on-activities-page .view-footer p a:hover {
+.page-user-profile .homebox .portlet-content .view.view-booklist-on-activities-page .view-footer p a.button:hover {
   text-decoration: underline !important;
 }
 .page-user-profile .homebox .portlet-content .view.view-booklist-on-activities-page .view-header h3 {
@@ -10756,6 +10966,7 @@ body .alert-box.success a.close:hover {
   -webkit-font-smoothing: antialiased !important;
   -moz-osx-font-smoothing: grayscale !important;
   -moz-font-smoothing: grayscale !important;
+  text-rendering: optimizeLegibility !important;
   text-transform: capitalize;
 }
 .page-user-profile .homebox .portlet-content .view.view-booklist-on-activities-page ol {
@@ -10768,6 +10979,7 @@ body .alert-box.success a.close:hover {
   font-style: normal !important;
   font-weight: normal !important;
   -webkit-font-smoothing: antialiased !important;
+  text-rendering: optimizeLegibility !important;
 }
 .page-user-profile .homebox .portlet-content .view.view-booklist-on-activities-page ol li .views-field-title a:before {
   counter-increment: section;
@@ -10798,6 +11010,8 @@ body .alert-box.success a.close:hover {
   font-style: normal !important;
   -webkit-font-smoothing: antialiased !important;
   -moz-osx-font-smoothing: grayscale !important;
+  text-rendering: optimizeLegibility !important;
+  -moz-font-smoothing: grayscale !important;
   background: #267fda !important;
   border-radius: 10px;
   padding: 9px 22px;
@@ -10822,7 +11036,7 @@ body .alert-box.success a.close:hover {
   width: 100%;
   margin-top: 10px;
 }
-.page-user-profile .homebox .portlet-content .view.view-my-book-reviews .view-footer p a {
+.page-user-profile .homebox .portlet-content .view.view-my-book-reviews .view-footer p a.button {
   width: 100%;
   display: inline-block;
   margin: 0;
@@ -10833,6 +11047,8 @@ body .alert-box.success a.close:hover {
   font-style: normal !important;
   -webkit-font-smoothing: antialiased !important;
   -moz-osx-font-smoothing: grayscale !important;
+  text-rendering: optimizeLegibility !important;
+  -moz-font-smoothing: grayscale !important;
   background: #267fda !important;
   border-radius: 10px;
   padding: 9px 22px;
@@ -10843,13 +11059,13 @@ body .alert-box.success a.close:hover {
   text-transform: capitalize;
   font-size: 17px;
 }
-.page-user-profile .homebox .portlet-content .view.view-my-book-reviews .view-footer p a:hover, .page-user-profile .homebox .portlet-content .view.view-my-book-reviews .view-footer p a:focus {
+.page-user-profile .homebox .portlet-content .view.view-my-book-reviews .view-footer p a.button:hover, .page-user-profile .homebox .portlet-content .view.view-my-book-reviews .view-footer p a.button:focus {
   color: #fff;
   background: #267fda;
   opacity: 1;
   outline: none;
 }
-.page-user-profile .homebox .portlet-content .view.view-my-book-reviews .view-footer p a:hover {
+.page-user-profile .homebox .portlet-content .view.view-my-book-reviews .view-footer p a.button:hover {
   text-decoration: underline !important;
 }
 .page-user-profile .homebox .portlet-content .view.view-my-book-reviews .view-empty {
@@ -10858,6 +11074,7 @@ body .alert-box.success a.close:hover {
   font-style: normal !important;
   font-weight: normal !important;
   -webkit-font-smoothing: antialiased !important;
+  text-rendering: optimizeLegibility !important;
   color: #000;
 }
 .page-user-profile .homebox .portlet-content .view.view-my-book-reviews .view-header h3 {
@@ -10869,6 +11086,7 @@ body .alert-box.success a.close:hover {
   -webkit-font-smoothing: antialiased !important;
   -moz-osx-font-smoothing: grayscale !important;
   -moz-font-smoothing: grayscale !important;
+  text-rendering: optimizeLegibility !important;
   text-transform: capitalize;
 }
 .page-user-profile .homebox .portlet-content .view.view-my-book-reviews .view-content ol, .page-user-profile .homebox .portlet-content .view.view-my-book-reviews .view-content ul {
@@ -10884,6 +11102,7 @@ body .alert-box.success a.close:hover {
   font-style: normal !important;
   font-weight: normal !important;
   -webkit-font-smoothing: antialiased !important;
+  text-rendering: optimizeLegibility !important;
   font-size: 15px;
   text-transform: capitalize;
 }
@@ -10905,6 +11124,7 @@ body .alert-box.success a.close:hover {
   -webkit-font-smoothing: antialiased !important;
   -moz-osx-font-smoothing: grayscale !important;
   -moz-font-smoothing: grayscale !important;
+  text-rendering: optimizeLegibility !important;
   text-transform: capitalize;
   text-decoration: none;
 }
@@ -10921,6 +11141,7 @@ body .alert-box.success a.close:hover {
   font-style: normal !important;
   font-weight: normal !important;
   -webkit-font-smoothing: antialiased !important;
+  text-rendering: optimizeLegibility !important;
 }
 .page-user-profile .homebox .portlet-content .view.view-my-activities-for-patron-dashboard .view-content .views-row .field-content div:nth-of-type(2) {
   margin-left: 1%;
@@ -10939,6 +11160,8 @@ body .alert-box.success a.close:hover {
   font-style: normal !important;
   -webkit-font-smoothing: antialiased !important;
   -moz-osx-font-smoothing: grayscale !important;
+  text-rendering: optimizeLegibility !important;
+  -moz-font-smoothing: grayscale !important;
   background: #267fda !important;
   border-radius: 10px;
   padding: 9px 22px;
@@ -10974,6 +11197,8 @@ body .alert-box.success a.close:hover {
   font-style: normal !important;
   -webkit-font-smoothing: antialiased !important;
   -moz-osx-font-smoothing: grayscale !important;
+  text-rendering: optimizeLegibility !important;
+  -moz-font-smoothing: grayscale !important;
 }
 .page-messages.page-messages-new .main form .form-submit, .page-messages.page-messages-view .main form .form-submit {
   color: #000;
@@ -10982,6 +11207,8 @@ body .alert-box.success a.close:hover {
   font-style: normal !important;
   -webkit-font-smoothing: antialiased !important;
   -moz-osx-font-smoothing: grayscale !important;
+  text-rendering: optimizeLegibility !important;
+  -moz-font-smoothing: grayscale !important;
   border-radius: 10px;
   background: #fdeb52 !important;
   text-transform: capitalize;
@@ -11027,6 +11254,8 @@ body .alert-box.success a.close:hover {
   font-style: normal !important;
   -webkit-font-smoothing: antialiased !important;
   -moz-osx-font-smoothing: grayscale !important;
+  text-rendering: optimizeLegibility !important;
+  -moz-font-smoothing: grayscale !important;
   padding-top: 26px;
   padding-bottom: 25px;
   font-size: 28px;
@@ -11084,6 +11313,8 @@ body .alert-box.success a.close:hover {
   font-style: normal !important;
   -webkit-font-smoothing: antialiased !important;
   -moz-osx-font-smoothing: grayscale !important;
+  text-rendering: optimizeLegibility !important;
+  -moz-font-smoothing: grayscale !important;
   border-radius: 10px;
   background: #fdeb52 !important;
   text-transform: capitalize;
@@ -11120,6 +11351,8 @@ body .alert-box.success a.close:hover {
   font-style: normal !important;
   -webkit-font-smoothing: antialiased !important;
   -moz-osx-font-smoothing: grayscale !important;
+  text-rendering: optimizeLegibility !important;
+  -moz-font-smoothing: grayscale !important;
   border-radius: 10px;
   background: #fdeb52 !important;
   text-transform: capitalize;
@@ -11160,6 +11393,8 @@ body .alert-box.success a.close:hover {
   font-style: normal !important;
   -webkit-font-smoothing: antialiased !important;
   -moz-osx-font-smoothing: grayscale !important;
+  text-rendering: optimizeLegibility !important;
+  -moz-font-smoothing: grayscale !important;
 }
 .page-messages div.main form #privatemsg-list-form table {
   border: none;
@@ -11225,6 +11460,8 @@ body .alert-box.success a.close:hover {
   font-style: normal !important;
   -webkit-font-smoothing: antialiased !important;
   -moz-osx-font-smoothing: grayscale !important;
+  text-rendering: optimizeLegibility !important;
+  -moz-font-smoothing: grayscale !important;
   border-radius: 10px;
   background: #fdeb52 !important;
   text-transform: capitalize;
@@ -11273,6 +11510,8 @@ body .alert-box.success a.close:hover {
   font-style: normal !important;
   -webkit-font-smoothing: antialiased !important;
   -moz-osx-font-smoothing: grayscale !important;
+  text-rendering: optimizeLegibility !important;
+  -moz-font-smoothing: grayscale !important;
   border-radius: 10px;
   background: #fdeb52 !important;
   text-transform: capitalize;
@@ -11308,18 +11547,26 @@ body .alert-box.success a.close:hover {
 
 /**msg center css end**/
 /**common css used in  page-reviews  and page-booklists**/
+.page-reviews .views-field-field-user-avatar, .page-booklists .views-field-field-user-avatar {
+  margin-left: 6px !important;
+  position: relative;
+  bottom: 9px;
+}
 .page-reviews #page-title, .page-booklists #page-title {
   color: #000;
   font-family: arial !important;
   font-style: normal !important;
   font-weight: normal !important;
   -webkit-font-smoothing: antialiased !important;
+  text-rendering: optimizeLegibility !important;
   opacity: 1 !important;
   font-family: McLaren-Regular !important;
   font-weight: normal !important;
   font-style: normal !important;
   -webkit-font-smoothing: antialiased !important;
   -moz-osx-font-smoothing: grayscale !important;
+  text-rendering: optimizeLegibility !important;
+  -moz-font-smoothing: grayscale !important;
 }
 .page-reviews .view-header p a, .page-booklists .view-header p a {
   color: #267fda;
@@ -11383,6 +11630,8 @@ body .alert-box.success a.close:hover {
   font-style: normal !important;
   -webkit-font-smoothing: antialiased !important;
   -moz-osx-font-smoothing: grayscale !important;
+  text-rendering: optimizeLegibility !important;
+  -moz-font-smoothing: grayscale !important;
   font-size: 22px;
   margin-top: 6px;
 }
@@ -11396,6 +11645,8 @@ body .alert-box.success a.close:hover {
   font-style: normal !important;
   -webkit-font-smoothing: antialiased !important;
   -moz-osx-font-smoothing: grayscale !important;
+  text-rendering: optimizeLegibility !important;
+  -moz-font-smoothing: grayscale !important;
   border-radius: 10px;
   background: #fdeb52 !important;
   text-transform: capitalize;
@@ -11440,6 +11691,8 @@ body .alert-box.success a.close:hover {
   font-style: normal !important;
   -webkit-font-smoothing: antialiased !important;
   -moz-osx-font-smoothing: grayscale !important;
+  text-rendering: optimizeLegibility !important;
+  -moz-font-smoothing: grayscale !important;
   text-decoration: underline;
 }
 .page-reviews .sidebar .reviews-block-block .view-content ul .views-field-count .field-content, .page-reviews .sidebar .reviews-block-block .view-content ol .views-field-count .field-content, .page-booklists .sidebar .reviews-block-block .view-content ul .views-field-count .field-content, .page-booklists .sidebar .reviews-block-block .view-content ol .views-field-count .field-content {
@@ -11469,6 +11722,8 @@ body .alert-box.success a.close:hover {
   font-style: normal !important;
   -webkit-font-smoothing: antialiased !important;
   -moz-osx-font-smoothing: grayscale !important;
+  text-rendering: optimizeLegibility !important;
+  -moz-font-smoothing: grayscale !important;
   font-size: 21px !important;
 }
 .page-reviews .sidebar .reviews-block-block .view-header h3, .page-booklists .sidebar .reviews-block-block .view-header h3 {
@@ -11479,6 +11734,7 @@ body .alert-box.success a.close:hover {
   -webkit-font-smoothing: antialiased !important;
   -moz-osx-font-smoothing: grayscale !important;
   -moz-font-smoothing: grayscale !important;
+  text-rendering: optimizeLegibility !important;
   color: #fff;
   margin-bottom: 15px;
 }
@@ -11490,6 +11746,7 @@ body .alert-box.success a.close:hover {
   -webkit-font-smoothing: antialiased !important;
   -moz-osx-font-smoothing: grayscale !important;
   -moz-font-smoothing: grayscale !important;
+  text-rendering: optimizeLegibility !important;
   color: #fff;
 }
 .page-reviews .view .view-header .other-booklists, .page-booklists .view .view-header .other-booklists {
@@ -11499,6 +11756,8 @@ body .alert-box.success a.close:hover {
   font-style: normal !important;
   -webkit-font-smoothing: antialiased !important;
   -moz-osx-font-smoothing: grayscale !important;
+  text-rendering: optimizeLegibility !important;
+  -moz-font-smoothing: grayscale !important;
   color: #000;
   margin-bottom: 23px;
 }
@@ -11509,6 +11768,7 @@ body .alert-box.success a.close:hover {
   font-style: normal !important;
   font-weight: normal !important;
   -webkit-font-smoothing: antialiased !important;
+  text-rendering: optimizeLegibility !important;
 }
 .page-reviews .view .view-filters, .page-booklists .view .view-filters {
   color: #fff;
@@ -11556,6 +11816,7 @@ body .alert-box.success a.close:hover {
   font-style: normal !important;
   font-weight: normal !important;
   -webkit-font-smoothing: antialiased !important;
+  text-rendering: optimizeLegibility !important;
   opacity: 1 !important;
   font-size: 16px;
 }
@@ -11573,6 +11834,8 @@ body .alert-box.success a.close:hover {
   font-style: normal !important;
   -webkit-font-smoothing: antialiased !important;
   -moz-osx-font-smoothing: grayscale !important;
+  text-rendering: optimizeLegibility !important;
+  -moz-font-smoothing: grayscale !important;
 }
 .page-reviews .view .view-filters form .views-exposed-form .chosen-processed .chosen-drop .chosen-results li a:hover, .page-reviews .view .view-filters form .views-exposed-form .chosen-processed .chosen-drop .chosen-results li a:focus, .page-booklists .view .view-filters form .views-exposed-form .chosen-processed .chosen-drop .chosen-results li a:hover, .page-booklists .view .view-filters form .views-exposed-form .chosen-processed .chosen-drop .chosen-results li a:focus {
   background: #267fda;
@@ -11582,6 +11845,8 @@ body .alert-box.success a.close:hover {
   font-style: normal !important;
   -webkit-font-smoothing: antialiased !important;
   -moz-osx-font-smoothing: grayscale !important;
+  text-rendering: optimizeLegibility !important;
+  -moz-font-smoothing: grayscale !important;
 }
 .page-reviews .view .view-filters form .views-exposed-form .chosen-processed a, .page-booklists .view .view-filters form .views-exposed-form .chosen-processed a {
   color: #fff !important;
@@ -11590,6 +11855,8 @@ body .alert-box.success a.close:hover {
   font-style: normal !important;
   -webkit-font-smoothing: antialiased !important;
   -moz-osx-font-smoothing: grayscale !important;
+  text-rendering: optimizeLegibility !important;
+  -moz-font-smoothing: grayscale !important;
   background: #267fda !important;
   border-radius: 10px;
   padding: 9px 22px;
@@ -11630,6 +11897,8 @@ body .alert-box.success a.close:hover {
   font-style: normal !important;
   -webkit-font-smoothing: antialiased !important;
   -moz-osx-font-smoothing: grayscale !important;
+  text-rendering: optimizeLegibility !important;
+  -moz-font-smoothing: grayscale !important;
   background: #267fda !important;
   border-radius: 10px;
   padding: 9px 22px;
@@ -11686,12 +11955,14 @@ body .alert-box.success a.close:hover {
   font-style: normal !important;
   -webkit-font-smoothing: antialiased !important;
   -moz-osx-font-smoothing: grayscale !important;
+  text-rendering: optimizeLegibility !important;
+  -moz-font-smoothing: grayscale !important;
 }
 .page-reviews .view-reviews .view-header .reviews-title {
   font-size: 28px;
 }
 .page-reviews .view-reviews .view-header .reviews-subtitle {
-  font-size: 22px;
+  font-size: 25px;
 }
 .page-reviews .main .view-content .views-row img {
   border: none !important;
@@ -11726,6 +11997,8 @@ body .alert-box.success a.close:hover {
   font-style: normal !important;
   -webkit-font-smoothing: antialiased !important;
   -moz-osx-font-smoothing: grayscale !important;
+  text-rendering: optimizeLegibility !important;
+  -moz-font-smoothing: grayscale !important;
 }
 .page-reviews .main .view-content .item-list ol li .views-field.views-field-nothing-1 .bookreview_title a {
   font-size: 20px;
@@ -11740,6 +12013,7 @@ body .alert-box.success a.close:hover {
   font-style: normal !important;
   font-weight: normal !important;
   -webkit-font-smoothing: antialiased !important;
+  text-rendering: optimizeLegibility !important;
   font-size: 18px;
   line-height: 1.4;
 }
@@ -11753,6 +12027,8 @@ body .alert-box.success a.close:hover {
   font-style: normal !important;
   -webkit-font-smoothing: antialiased !important;
   -moz-osx-font-smoothing: grayscale !important;
+  text-rendering: optimizeLegibility !important;
+  -moz-font-smoothing: grayscale !important;
 }
 .page-reviews .main .view-content .item-list ol li .views-field.views-field-nothing div.review {
   font-family: McLaren-Regular !important;
@@ -11760,6 +12036,8 @@ body .alert-box.success a.close:hover {
   font-style: normal !important;
   -webkit-font-smoothing: antialiased !important;
   -moz-osx-font-smoothing: grayscale !important;
+  text-rendering: optimizeLegibility !important;
+  -moz-font-smoothing: grayscale !important;
 }
 .page-reviews .main .view-content .item-list ol li .views-field.views-field-nothing div.date {
   width: 100%;
@@ -11768,6 +12046,7 @@ body .alert-box.success a.close:hover {
   font-style: normal !important;
   font-weight: normal !important;
   -webkit-font-smoothing: antialiased !important;
+  text-rendering: optimizeLegibility !important;
   padding-top: 16px;
   font-size: 18px;
 }
@@ -11797,6 +12076,8 @@ body .alert-box.success a.close:hover {
   font-style: normal !important;
   -webkit-font-smoothing: antialiased !important;
   -moz-osx-font-smoothing: grayscale !important;
+  text-rendering: optimizeLegibility !important;
+  -moz-font-smoothing: grayscale !important;
 }
 .page-reviews .main .view-content .item-list ol li .views-field.views-field-title a:hover, .page-reviews .main .view-content .item-list ol li .views-field.views-field-php a:hover {
   color: #267fda;
@@ -11810,6 +12091,8 @@ body .alert-box.success a.close:hover {
   font-style: normal !important;
   -webkit-font-smoothing: antialiased !important;
   -moz-osx-font-smoothing: grayscale !important;
+  text-rendering: optimizeLegibility !important;
+  -moz-font-smoothing: grayscale !important;
 }
 .page-reviews .main .view-content .item-list ol li .views-field.views-field-count .views-label-count {
   position: relative;
@@ -11889,6 +12172,8 @@ body .alert-box.success a.close:hover {
   font-style: normal !important;
   -webkit-font-smoothing: antialiased !important;
   -moz-osx-font-smoothing: grayscale !important;
+  text-rendering: optimizeLegibility !important;
+  -moz-font-smoothing: grayscale !important;
   background: #267fda !important;
   border-radius: 10px;
   padding: 9px 22px;
@@ -11913,6 +12198,9 @@ body .alert-box.success a.close:hover {
 }
 
 /**css only for booklist page**/
+.page-booklists #page-title {
+  display: none;
+}
 .page-booklists .l-header .row.header-middle section.block-menu-menu-secoundary-menu ul.menu li a.reviews::after {
   background: url("../images/libraryzurb/reviewactive.png") no-repeat !important;
 }
@@ -11921,8 +12209,22 @@ body .alert-box.success a.close:hover {
     background-size: 100% !important;
   }
 }
-.page-booklists .main .view-header, .page-booklists .main .view-footer {
+.page-booklists .main .view-header .booklist_slideshow_title, .page-booklists .main .view-footer {
   display: none;
+}
+.page-booklists .main .view-header .featured {
+  font-size: 25px;
+  border: none !important;
+  outline: none !important;
+  color: #000;
+  font-family: McLaren-Regular !important;
+  font-weight: normal !important;
+  font-style: normal !important;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+  text-rendering: optimizeLegibility !important;
+  -moz-font-smoothing: grayscale !important;
+  margin-bottom: 0;
 }
 .page-booklists .main .view-content {
   margin-top: 40px;
@@ -11944,6 +12246,8 @@ body .alert-box.success a.close:hover {
   font-style: normal !important;
   -webkit-font-smoothing: antialiased !important;
   -moz-osx-font-smoothing: grayscale !important;
+  text-rendering: optimizeLegibility !important;
+  -moz-font-smoothing: grayscale !important;
 }
 .page-booklists .main .view-content .item-list ol li .views-field-nothing {
   margin-top: 23px;
@@ -11954,6 +12258,8 @@ body .alert-box.success a.close:hover {
   font-style: normal !important;
   -webkit-font-smoothing: antialiased !important;
   -moz-osx-font-smoothing: grayscale !important;
+  text-rendering: optimizeLegibility !important;
+  -moz-font-smoothing: grayscale !important;
 }
 .page-booklists .main .view-content .item-list ol li .views-field-nothing div {
   float: left;
@@ -12002,6 +12308,8 @@ body .alert-box.success a.close:hover {
   font-style: normal !important;
   -webkit-font-smoothing: antialiased !important;
   -moz-osx-font-smoothing: grayscale !important;
+  text-rendering: optimizeLegibility !important;
+  -moz-font-smoothing: grayscale !important;
 }
 .page-booklists .main .view-content .item-list ol li .views-field-counter {
   float: left;
@@ -12011,6 +12319,8 @@ body .alert-box.success a.close:hover {
   font-style: normal !important;
   -webkit-font-smoothing: antialiased !important;
   -moz-osx-font-smoothing: grayscale !important;
+  text-rendering: optimizeLegibility !important;
+  -moz-font-smoothing: grayscale !important;
 }
 .page-booklists .main .view-content .item-list ol li .views-field-counter:after {
   content: ".";
@@ -12045,6 +12355,8 @@ body .alert-box.success a.close:hover {
   font-style: normal !important;
   -webkit-font-smoothing: antialiased !important;
   -moz-osx-font-smoothing: grayscale !important;
+  text-rendering: optimizeLegibility !important;
+  -moz-font-smoothing: grayscale !important;
   text-transform: capitalize;
 }
 .page-booklists .main .view-booklist-slideshow .owl-carousel .views-field-nothing {
@@ -12057,6 +12369,8 @@ body .alert-box.success a.close:hover {
   font-style: normal !important;
   -webkit-font-smoothing: antialiased !important;
   -moz-osx-font-smoothing: grayscale !important;
+  text-rendering: optimizeLegibility !important;
+  -moz-font-smoothing: grayscale !important;
 }
 @media (min-width: 768px) and (max-width: 1025px) {
   .page-booklists .main .view-booklist-slideshow .owl-carousel .views-field-nothing {
@@ -12070,10 +12384,12 @@ body .alert-box.success a.close:hover {
 }
 .page-booklists .main .view-booklist-slideshow .owl-carousel .views-field-nothing div:first-child {
   padding-right: 5px;
+  position: relative;
+  top: 5px;
 }
 .page-booklists .main .view-booklist-slideshow .owl-carousel .views-field-nothing div.field-name-field-avatar-image {
   position: relative;
-  bottom: 10px;
+  bottom: 3px;
 }
 .page-booklists .main .view-booklist-slideshow .owl-carousel .views-field-nothing div.field-name-field-avatar-image img {
   -webkit-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
@@ -12098,6 +12414,8 @@ body .alert-box.success a.close:hover {
   font-style: normal !important;
   -webkit-font-smoothing: antialiased !important;
   -moz-osx-font-smoothing: grayscale !important;
+  text-rendering: optimizeLegibility !important;
+  -moz-font-smoothing: grayscale !important;
 }
 @media (min-width: 768px) and (max-width: 1025px) {
   .page-booklists .main .view-booklist-slideshow .owl-carousel .views-field-count {
@@ -12216,6 +12534,8 @@ body .alert-box.success a.close:hover {
   font-style: normal !important;
   -webkit-font-smoothing: antialiased !important;
   -moz-osx-font-smoothing: grayscale !important;
+  text-rendering: optimizeLegibility !important;
+  -moz-font-smoothing: grayscale !important;
   border: none !important;
   outline: none !important;
   color: #000;
@@ -12274,6 +12594,8 @@ body .alert-box.success a.close:hover {
   font-style: normal !important;
   -webkit-font-smoothing: antialiased !important;
   -moz-osx-font-smoothing: grayscale !important;
+  text-rendering: optimizeLegibility !important;
+  -moz-font-smoothing: grayscale !important;
   border: none !important;
   outline: none !important;
   margin-top: 17px;
@@ -12285,6 +12607,7 @@ body .alert-box.success a.close:hover {
   -webkit-font-smoothing: antialiased !important;
   -moz-osx-font-smoothing: grayscale !important;
   -moz-font-smoothing: grayscale !important;
+  text-rendering: optimizeLegibility !important;
   font-size: 18px;
 }
 .section-activities .sidebar3 .block-block a.button {
@@ -12318,6 +12641,8 @@ body .alert-box.success a.close:hover {
   font-style: normal !important;
   -webkit-font-smoothing: antialiased !important;
   -moz-osx-font-smoothing: grayscale !important;
+  text-rendering: optimizeLegibility !important;
+  -moz-font-smoothing: grayscale !important;
   border-radius: 10px;
   background: #fdeb52 !important;
   text-transform: capitalize;
@@ -12381,6 +12706,7 @@ body .alert-box.success a.close:hover {
   -webkit-font-smoothing: antialiased !important;
   -moz-osx-font-smoothing: grayscale !important;
   -moz-font-smoothing: grayscale !important;
+  text-rendering: optimizeLegibility !important;
   text-transform: capitalize;
 }
 .section-activities .sidebar3 .block-views ul {
@@ -12396,6 +12722,7 @@ body .alert-box.success a.close:hover {
   font-style: normal !important;
   font-weight: normal !important;
   -webkit-font-smoothing: antialiased !important;
+  text-rendering: optimizeLegibility !important;
   font-size: 18px;
   text-decoration: underline;
 }
@@ -12504,6 +12831,8 @@ body .alert-box.success a.close:hover {
   font-style: normal !important;
   -webkit-font-smoothing: antialiased !important;
   -moz-osx-font-smoothing: grayscale !important;
+  text-rendering: optimizeLegibility !important;
+  -moz-font-smoothing: grayscale !important;
   padding-top: 26px;
   padding-bottom: 25px;
   font-size: 28px;
@@ -12566,6 +12895,8 @@ body .alert-box.success a.close:hover {
   font-style: normal !important;
   -webkit-font-smoothing: antialiased !important;
   -moz-osx-font-smoothing: grayscale !important;
+  text-rendering: optimizeLegibility !important;
+  -moz-font-smoothing: grayscale !important;
 }
 .section-progress .main .view-calendar-sticker .view-header div.prg_lib {
   color: #000;
@@ -12585,6 +12916,8 @@ body .alert-box.success a.close:hover {
   font-style: normal !important;
   -webkit-font-smoothing: antialiased !important;
   -moz-osx-font-smoothing: grayscale !important;
+  text-rendering: optimizeLegibility !important;
+  -moz-font-smoothing: grayscale !important;
   margin-bottom: 0;
   color: #000;
   line-height: 1;
@@ -12626,6 +12959,8 @@ body .alert-box.success a.close:hover {
   font-style: normal !important;
   -webkit-font-smoothing: antialiased !important;
   -moz-osx-font-smoothing: grayscale !important;
+  text-rendering: optimizeLegibility !important;
+  -moz-font-smoothing: grayscale !important;
   -webkit-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
   -moz-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
   box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
@@ -12699,6 +13034,8 @@ body .alert-box.success a.close:hover {
   font-style: normal !important;
   -webkit-font-smoothing: antialiased !important;
   -moz-osx-font-smoothing: grayscale !important;
+  text-rendering: optimizeLegibility !important;
+  -moz-font-smoothing: grayscale !important;
   -webkit-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
   -moz-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
   box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
@@ -12765,6 +13102,8 @@ body .alert-box.success a.close:hover {
   font-style: normal !important;
   -webkit-font-smoothing: antialiased !important;
   -moz-osx-font-smoothing: grayscale !important;
+  text-rendering: optimizeLegibility !important;
+  -moz-font-smoothing: grayscale !important;
   border-bottom: none;
 }
 .section-progress .main .block.progress-calendar #calendar .fc-header tbody {
@@ -12828,6 +13167,8 @@ body .alert-box.success a.close:hover {
   font-style: normal !important;
   -webkit-font-smoothing: antialiased !important;
   -moz-osx-font-smoothing: grayscale !important;
+  text-rendering: optimizeLegibility !important;
+  -moz-font-smoothing: grayscale !important;
   background: #fdeb52 url("../images/libraryzurb/print-calender.png") no-repeat !important;
   background-position: 10px !important;
   color: #000;
@@ -12879,6 +13220,8 @@ body .alert-box.success a.close:hover {
   font-style: normal !important;
   -webkit-font-smoothing: antialiased !important;
   -moz-osx-font-smoothing: grayscale !important;
+  text-rendering: optimizeLegibility !important;
+  -moz-font-smoothing: grayscale !important;
   padding-top: 26px;
   padding-bottom: 25px;
   font-size: 22px;
@@ -12927,6 +13270,8 @@ body .alert-box.success a.close:hover {
   font-style: normal !important;
   -webkit-font-smoothing: antialiased !important;
   -moz-osx-font-smoothing: grayscale !important;
+  text-rendering: optimizeLegibility !important;
+  -moz-font-smoothing: grayscale !important;
   border-radius: 10px;
   background: #fdeb52 !important;
   text-transform: capitalize;
@@ -12976,6 +13321,7 @@ body .alert-box.success a.close:hover {
   font-style: normal !important;
   font-weight: normal !important;
   -webkit-font-smoothing: antialiased !important;
+  text-rendering: optimizeLegibility !important;
 }
 .page-users-public-profile .main .view.view-my-badges .view-content .views-row .views-field.views-field-field-badge-image {
   position: relative;
@@ -13001,6 +13347,8 @@ body .alert-box.success a.close:hover {
   font-style: normal !important;
   -webkit-font-smoothing: antialiased !important;
   -moz-osx-font-smoothing: grayscale !important;
+  text-rendering: optimizeLegibility !important;
+  -moz-font-smoothing: grayscale !important;
   padding-top: 26px;
   padding-bottom: 25px;
   font-size: 22px;
@@ -13049,6 +13397,7 @@ body .alert-box.success a.close:hover {
   font-style: normal !important;
   font-weight: normal !important;
   -webkit-font-smoothing: antialiased !important;
+  text-rendering: optimizeLegibility !important;
   text-transform: capitalize;
   font-size: 18px;
 }
@@ -13063,6 +13412,7 @@ body .alert-box.success a.close:hover {
   font-style: normal !important;
   font-weight: normal !important;
   -webkit-font-smoothing: antialiased !important;
+  text-rendering: optimizeLegibility !important;
   margin: 10px 0px 0px 10px;
 }
 .page-users-public-profile .main .view.view-booklist-on-activities-page .view-content .views-field-count .views-label-count, .page-users-public-profile .main .view.view-my-book-reviews .view-content .views-field-count .views-label-count {
@@ -13097,6 +13447,8 @@ body .alert-box.success a.close:hover {
   font-style: normal !important;
   -webkit-font-smoothing: antialiased !important;
   -moz-osx-font-smoothing: grayscale !important;
+  text-rendering: optimizeLegibility !important;
+  -moz-font-smoothing: grayscale !important;
   font-size: 17px;
   background: #fdeb52 !important;
   color: #000;
@@ -13127,6 +13479,8 @@ body .alert-box.success a.close:hover {
   font-style: normal !important;
   -webkit-font-smoothing: antialiased !important;
   -moz-osx-font-smoothing: grayscale !important;
+  text-rendering: optimizeLegibility !important;
+  -moz-font-smoothing: grayscale !important;
   margin-top: 20px;
 }
 .page-my-reviews .view-booklist-on-activities-page .view-content ul, .page-my-reviews .view-booklist-on-activities-page .view-content ol, .page-my-booklist .view-booklist-on-activities-page .view-content ul, .page-my-booklist .view-booklist-on-activities-page .view-content ol {
@@ -13142,6 +13496,8 @@ body .alert-box.success a.close:hover {
   font-style: normal !important;
   -webkit-font-smoothing: antialiased !important;
   -moz-osx-font-smoothing: grayscale !important;
+  text-rendering: optimizeLegibility !important;
+  -moz-font-smoothing: grayscale !important;
 }
 .page-my-reviews .view-booklist-on-activities-page .view-content ul .views-field-count .views-label-count, .page-my-reviews .view-booklist-on-activities-page .view-content ol .views-field-count .views-label-count, .page-my-booklist .view-booklist-on-activities-page .view-content ul .views-field-count .views-label-count, .page-my-booklist .view-booklist-on-activities-page .view-content ol .views-field-count .views-label-count {
   position: relative;
@@ -13164,6 +13520,8 @@ body .alert-box.success a.close:hover {
   font-style: normal !important;
   -webkit-font-smoothing: antialiased !important;
   -moz-osx-font-smoothing: grayscale !important;
+  text-rendering: optimizeLegibility !important;
+  -moz-font-smoothing: grayscale !important;
   font-size: 21px;
   text-transform: capitalize;
 }
@@ -13184,6 +13542,8 @@ body .alert-box.success a.close:hover {
   font-style: normal !important;
   -webkit-font-smoothing: antialiased !important;
   -moz-osx-font-smoothing: grayscale !important;
+  text-rendering: optimizeLegibility !important;
+  -moz-font-smoothing: grayscale !important;
   margin-top: 20px;
 }
 .page-my-reviews .view-my-book-reviews .view-content table, .page-my-booklist .view-my-book-reviews .view-content table {
@@ -13215,6 +13575,8 @@ body .alert-box.success a.close:hover {
   font-style: normal !important;
   -webkit-font-smoothing: antialiased !important;
   -moz-osx-font-smoothing: grayscale !important;
+  text-rendering: optimizeLegibility !important;
+  -moz-font-smoothing: grayscale !important;
   font-size: 21px;
   text-transform: capitalize;
 }
@@ -13224,6 +13586,7 @@ body .alert-box.success a.close:hover {
   font-style: normal !important;
   font-weight: normal !important;
   -webkit-font-smoothing: antialiased !important;
+  text-rendering: optimizeLegibility !important;
 }
 .page-my-reviews .view-my-book-reviews .view-content .views-row .views-field.views-field-count, .page-my-booklist .view-my-book-reviews .view-content .views-row .views-field.views-field-count {
   text-align: right;
@@ -13250,6 +13613,8 @@ body .alert-box.success a.close:hover {
   font-style: normal !important;
   -webkit-font-smoothing: antialiased !important;
   -moz-osx-font-smoothing: grayscale !important;
+  text-rendering: optimizeLegibility !important;
+  -moz-font-smoothing: grayscale !important;
   border-radius: 10px;
   background: #fdeb52 !important;
   text-transform: capitalize;
@@ -13288,6 +13653,19 @@ body .alert-box.success a.close:hover {
   width: 100%;
   display: inline-block;
 }
+.page-user-register #user-register-form #checkboxes-div {
+  width: 100%;
+  display: inline-block;
+}
+.page-user-register #user-register-form #checkboxes-div .avatar_radio {
+  width: 11.1%;
+  display: inline-block;
+  vertical-align: top;
+}
+.page-user-register #user-register-form #checkboxes-div .avatar_radio img {
+  position: relative;
+  bottom: 10px;
+}
 .page-user-register #edit-profile-main-field-receive-notifications div.description {
   font-size: 14px;
   font-family: Arialbold !important;
@@ -13296,6 +13674,7 @@ body .alert-box.success a.close:hover {
   -webkit-font-smoothing: antialiased !important;
   -moz-osx-font-smoothing: grayscale !important;
   -moz-font-smoothing: grayscale !important;
+  text-rendering: optimizeLegibility !important;
   color: #4D4D4D;
 }
 
@@ -13308,18 +13687,20 @@ body .alert-box.success a.close:hover {
   font-style: normal !important;
   -webkit-font-smoothing: antialiased !important;
   -moz-osx-font-smoothing: grayscale !important;
+  text-rendering: optimizeLegibility !important;
+  -moz-font-smoothing: grayscale !important;
   border: none !important;
   outline: none !important;
   background: #f98515;
-  padding: 4px 20px 6px;
+  padding: 4px 2.5% 6px;
   margin-top: 35px;
 }
 .section-events .main .view-events .view-content .views-row {
   display: table;
-  width: 96%;
-  margin: auto;
+  width: 100%;
   margin-top: 10px;
   margin-bottom: 10px;
+  padding: 0 3.5% 0 4.5%;
 }
 @media (min-width: 768px) and (max-width: 1025px) {
   .section-events .main .view-events .view-content .views-row {
@@ -13337,6 +13718,7 @@ body .alert-box.success a.close:hover {
   font-style: normal !important;
   font-weight: normal !important;
   -webkit-font-smoothing: antialiased !important;
+  text-rendering: optimizeLegibility !important;
 }
 @media (min-width: 768px) and (max-width: 1025px) {
   .section-events .main .view-events .view-content .views-row div {
@@ -13350,6 +13732,7 @@ body .alert-box.success a.close:hover {
   font-style: normal !important;
   font-weight: normal !important;
   -webkit-font-smoothing: antialiased !important;
+  text-rendering: optimizeLegibility !important;
 }
 .section-events .main .view-events .view-content .views-row div:nth-of-type(1) {
   width: 60%;
@@ -13389,8 +13772,438 @@ body .alert-box.success a.close:hover {
   font-style: normal !important;
   -webkit-font-smoothing: antialiased !important;
   -moz-osx-font-smoothing: grayscale !important;
+  text-rendering: optimizeLegibility !important;
+  -moz-font-smoothing: grayscale !important;
   border: none !important;
   outline: none !important;
+}
+.page-follow .main .view .views-row {
+  width: 100%;
+  display: inline-block;
+}
+.page-follow .main .view .views-row .views-field {
+  display: inline-block;
+  vertical-align: bottom;
+}
+.page-follow .main .view .views-row .views-field.views-field-field-user-avatar {
+  width: 34px;
+}
+.page-follow .main .view .views-row .views-field.views-field-name {
+  width: 89%;
+}
+
+/**hide breadcurm from specific pages**/
+.page-users-public-profile .pre-header .pre-header-left .breadcurm, .page-user-edit .pre-header .pre-header-left .breadcurm, .page-node-add-booklist .pre-header .pre-header-left .breadcurm, .page-node-add-review-book .pre-header .pre-header-left .breadcurm, .page-user-profile .pre-header .pre-header-left .breadcurm, .page-messages-view .pre-header .pre-header-left .breadcurm {
+  display: none;
+}
+
+/**css for indivisual book-review page**/
+.node-type-review-book #page-title {
+  display: none;
+}
+.node-type-review-book .main .reviewbook_footer {
+  width: 100%;
+  display: inline-block;
+}
+.node-type-review-book .main .reviewbook_footer ul.links {
+  float: left;
+  padding-right: 10px;
+}
+.node-type-review-book .main .follow_link_bookreview {
+  float: left;
+  padding-right: 10px;
+}
+.node-type-review-book .main .follow_link_bookreview a {
+  color: #fff !important;
+  font-family: McLaren-Regular !important;
+  font-weight: normal !important;
+  font-style: normal !important;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+  text-rendering: optimizeLegibility !important;
+  -moz-font-smoothing: grayscale !important;
+  background: #267fda !important;
+  border-radius: 10px;
+  padding: 9px 22px;
+  -webkit-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+  box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+  border: none;
+  text-transform: capitalize;
+}
+.node-type-review-book .main .follow_link_bookreview a:hover, .node-type-review-book .main .follow_link_bookreview a:focus {
+  color: #fff;
+  background: #267fda;
+  opacity: 1;
+  outline: none;
+}
+.node-type-review-book .main .like-count {
+  display: inline-block;
+  float: left;
+  padding-right: 10px;
+}
+.node-type-review-book .main .like-count .lk-count {
+  position: relative;
+  padding-right: 34px;
+}
+.node-type-review-book .main .like-count .lk-count:after {
+  content: "";
+  width: 30px;
+  height: 30px;
+  display: block;
+  visibility: visible;
+  position: absolute;
+  top: 0px;
+  right: 0;
+  background: url("../images/libraryzurb/smily-white.png") no-repeat;
+}
+.node-type-review-book .main .flag-like {
+  display: none;
+}
+.node-type-review-book .main span.flag-like {
+  display: inline-block;
+  float: left;
+  padding-right: 10px;
+}
+.node-type-review-book .main span.flag-like a {
+  background: #267fda url("../images/libraryzurb/smily-white.png") no-repeat;
+  border-radius: 10px;
+  -webkit-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+  box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+  padding: 10px 50px 10px 22px;
+  color: #fff;
+  font-family: McLaren-Regular !important;
+  font-weight: normal !important;
+  font-style: normal !important;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+  text-rendering: optimizeLegibility !important;
+  -moz-font-smoothing: grayscale !important;
+  font-size: 17px;
+}
+.node-type-review-book .main span.flag-like a.unflag-action {
+  background-position: 77px center !important;
+}
+.node-type-review-book .main span.flag-like a.flag-action {
+  background-position: 64px center !important;
+}
+.node-type-review-book .main .review_node_sidebar {
+  width: 30%;
+  display: inline-block;
+  vertical-align: top;
+}
+.node-type-review-book .main .review_node_sidebar .img_review table, .node-type-review-book .main .review_node_sidebar .img_review tbody {
+  border: none !important;
+  outline: none !important;
+  margin-top: 20px;
+}
+@media (min-width: 1026px) {
+  .node-type-review-book .main .review_node_sidebar .img_review table td img, .node-type-review-book .main .review_node_sidebar .img_review tbody td img {
+    width: 242px !important;
+    height: 361px !important;
+  }
+}
+.node-type-review-book .main article {
+  width: 69%;
+  display: inline-block;
+  vertical-align: top;
+  margin-top: 20px;
+}
+.node-type-review-book .main article .title_review h2 {
+  color: #000;
+  border: none !important;
+  outline: none !important;
+  font-family: McLaren-Regular !important;
+  font-weight: normal !important;
+  font-style: normal !important;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+  text-rendering: optimizeLegibility !important;
+  -moz-font-smoothing: grayscale !important;
+}
+.node-type-review-book .main article .title_review p {
+  width: 100%;
+  font-size: 18px;
+}
+.node-type-review-book .main article .title_review p.reviewer {
+  font-family: McLaren-Regular !important;
+  font-weight: normal !important;
+  font-style: normal !important;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+  text-rendering: optimizeLegibility !important;
+  -moz-font-smoothing: grayscale !important;
+}
+.node-type-review-book .main article .title_review p.reviewer .avatar {
+  margin-right: 5px;
+  margin-left: 5px;
+}
+.node-type-review-book .main article .title_review p.date_created {
+  font-family: arial !important;
+  font-style: normal !important;
+  font-weight: normal !important;
+  -webkit-font-smoothing: antialiased !important;
+  text-rendering: optimizeLegibility !important;
+}
+.node-type-review-book .main article div p {
+  font-size: 18px;
+  font-family: arial !important;
+  font-style: normal !important;
+  font-weight: normal !important;
+  -webkit-font-smoothing: antialiased !important;
+  text-rendering: optimizeLegibility !important;
+  width: 100%;
+}
+.node-type-review-book .main article ul.links {
+  list-style: none;
+}
+.node-type-review-book .main article ul.links li {
+  margin-left: 0;
+}
+.node-type-review-book .main article ul.links li a {
+  color: #fff !important;
+  font-family: McLaren-Regular !important;
+  font-weight: normal !important;
+  font-style: normal !important;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+  text-rendering: optimizeLegibility !important;
+  -moz-font-smoothing: grayscale !important;
+  background: #267fda !important;
+  border-radius: 10px;
+  padding: 9px 22px;
+  -webkit-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+  box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+  border: none;
+  text-transform: capitalize;
+}
+.node-type-review-book .main article ul.links li a:hover, .node-type-review-book .main article ul.links li a:focus {
+  color: #fff;
+  background: #267fda;
+  opacity: 1;
+  outline: none;
+}
+
+/**theming for indivisual booklist page***/
+.node-type-booklist #page-title {
+  display: none;
+}
+.node-type-booklist .booklist-title {
+  width: 100%;
+  display: inline-block;
+}
+.node-type-booklist .booklist-title .bk_title {
+  width: 70%;
+  display: inline-block;
+  vertical-align: top;
+}
+.node-type-booklist .booklist-title .book_title {
+  font-size: 21px;
+  color: #000;
+  width: 100%;
+  display: inline-block;
+  font-family: McLaren-Regular !important;
+  font-weight: normal !important;
+  font-style: normal !important;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+  text-rendering: optimizeLegibility !important;
+  -moz-font-smoothing: grayscale !important;
+  text-transform: capitalize;
+}
+.node-type-booklist .booklist-title p:nth-of-type(3) {
+  font-size: 18px;
+  width: 100%;
+  display: inline-block;
+}
+.node-type-booklist .booklist-title .booklist_creator {
+  font-family: McLaren-Regular !important;
+  font-weight: normal !important;
+  font-style: normal !important;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+  text-rendering: optimizeLegibility !important;
+  -moz-font-smoothing: grayscale !important;
+  width: 100%;
+  display: inline-block;
+}
+.node-type-booklist .booklist-title .booklist_creator .avatar {
+  margin-left: 5px;
+  margin-right: 5px;
+}
+.node-type-booklist .booklist-title .bk_follow_like {
+  width: 29%;
+  display: inline-block;
+  vertical-align: top;
+  text-align: right;
+}
+.node-type-booklist .booklist-title .bk_follow_like li.flag-like {
+  list-style: none;
+  display: none;
+}
+.node-type-booklist .booklist-title .bk_follow_like .like-count {
+  width: 50%;
+  display: inline-block;
+  vertical-align: top;
+}
+.node-type-booklist .booklist-title .bk_follow_like .like-count .lk-count {
+  position: relative;
+  padding-right: 34px;
+}
+.node-type-booklist .booklist-title .bk_follow_like .like-count .lk-count:after {
+  content: "";
+  width: 30px;
+  height: 30px;
+  display: block;
+  visibility: visible;
+  position: absolute;
+  top: 0px;
+  right: 0;
+  background: url("../images/libraryzurb/smily-white.png") no-repeat;
+}
+.node-type-booklist .booklist-title .bk_follow_like .flag-like {
+  width: 49%;
+  display: inline-block;
+  vertical-align: top;
+}
+.node-type-booklist .booklist-title .bk_follow_like .flag-like a {
+  background: #267fda url("../images/libraryzurb/smily-white.png") no-repeat;
+  border-radius: 10px;
+  -webkit-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+  box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+  background-position: 64px center;
+  padding: 10px 50px 10px 22px;
+  color: #fff;
+  font-family: McLaren-Regular !important;
+  font-weight: normal !important;
+  font-style: normal !important;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+  text-rendering: optimizeLegibility !important;
+  -moz-font-smoothing: grayscale !important;
+  font-size: 17px;
+}
+.node-type-booklist .booklist-title .bk_follow_like .flag-like a.unflag-action {
+  background-position: 77px center !important;
+}
+.node-type-booklist .booklist-title .bk_follow_like .flag-like a.flag-action {
+  background-position: 64px center !important;
+}
+.node-type-booklist .bk_follow {
+  margin: 35px 0 10px;
+}
+.node-type-booklist .bk_follow a {
+  color: #fff !important;
+  font-family: McLaren-Regular !important;
+  font-weight: normal !important;
+  font-style: normal !important;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+  text-rendering: optimizeLegibility !important;
+  -moz-font-smoothing: grayscale !important;
+  background: #267fda !important;
+  border-radius: 10px;
+  padding: 9px 22px;
+  -webkit-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+  box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+  border: none;
+  text-transform: capitalize;
+  display: inline-block;
+}
+.node-type-booklist .bk_follow a:hover, .node-type-booklist .bk_follow a:focus {
+  color: #fff;
+  background: #267fda;
+  opacity: 1;
+  outline: none;
+}
+.node-type-booklist article {
+  width: 100%;
+  display: inline-block;
+}
+.node-type-booklist article .booklist_books {
+  display: table;
+  width: 100%;
+}
+.node-type-booklist article .booklist_books #booklist_books {
+  display: table-row;
+  width: 100%;
+}
+@media (max-width: 767px) {
+  .node-type-booklist article .booklist_books #booklist_books {
+    display: inline-block;
+  }
+}
+.node-type-booklist article table {
+  border: none !important;
+  outline: none !important;
+  display: table-cell;
+  float: left;
+  margin-bottom: 0;
+}
+.node-type-booklist article table tbody {
+  border: none !important;
+  outline: none !important;
+}
+.node-type-booklist article table tbody img {
+  width: 81px;
+}
+.node-type-booklist article .node_title {
+  display: table-cell;
+  width: 80%;
+  vertical-align: middle;
+  position: relative;
+}
+@media (min-width: 768px) and (max-width: 1025px) {
+  .node-type-booklist article .node_title {
+    left: -6%;
+  }
+}
+@media (min-width: 1026px) {
+  .node-type-booklist article .node_title {
+    left: -8%;
+  }
+}
+.node-type-booklist article .node_title .a_name {
+  padding-left: 5px;
+}
+.node-type-booklist article .links.inline {
+  list-style: none;
+  width: 100%;
+  display: inline-block;
+}
+.node-type-booklist article .links.inline li {
+  margin-top: 40px;
+  width: 100%;
+  display: inline-block;
+  margin-left: 0;
+}
+.node-type-booklist article .links.inline li a {
+  color: #fff !important;
+  font-family: McLaren-Regular !important;
+  font-weight: normal !important;
+  font-style: normal !important;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+  text-rendering: optimizeLegibility !important;
+  -moz-font-smoothing: grayscale !important;
+  background: #267fda !important;
+  border-radius: 10px;
+  padding: 9px 22px;
+  -webkit-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+  box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+  border: none;
+  text-transform: capitalize;
+}
+.node-type-booklist article .links.inline li a:hover, .node-type-booklist article .links.inline li a:focus {
+  color: #fff;
+  background: #267fda;
+  opacity: 1;
+  outline: none;
 }
 
 /**
@@ -13492,8 +14305,15 @@ body .alert-box.success a.close:hover {
   font-style: normal !important;
   -webkit-font-smoothing: antialiased !important;
   -moz-osx-font-smoothing: grayscale !important;
+  text-rendering: optimizeLegibility !important;
+  -moz-font-smoothing: grayscale !important;
   padding: 3px 12px 19px 0px;
   display: inline-block;
+}
+@media (max-width: 767px) {
+  .pre-header {
+    padding: 0;
+  }
 }
 .pre-header a {
   color: #f2f2f2;
@@ -13568,6 +14388,7 @@ body .alert-box.success a.close:hover {
   font-style: normal !important;
   font-weight: normal !important;
   -webkit-font-smoothing: antialiased !important;
+  text-rendering: optimizeLegibility !important;
   text-transform: capitalize;
   font-size: 17px;
   float: left;
@@ -13611,6 +14432,8 @@ body .alert-box.success a.close:hover {
   font-style: normal !important;
   -webkit-font-smoothing: antialiased !important;
   -moz-osx-font-smoothing: grayscale !important;
+  text-rendering: optimizeLegibility !important;
+  -moz-font-smoothing: grayscale !important;
   -webkit-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
   -moz-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
   box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
@@ -13635,6 +14458,8 @@ body .alert-box.success a.close:hover {
   font-style: normal !important;
   -webkit-font-smoothing: antialiased !important;
   -moz-osx-font-smoothing: grayscale !important;
+  text-rendering: optimizeLegibility !important;
+  -moz-font-smoothing: grayscale !important;
 }
 .pre-header .pre-header-right {
   padding: 0;
@@ -13648,6 +14473,226 @@ body .alert-box.success a.close:hover {
   padding: 3px 0.5em;
   display: inline-block;
   float: right;
+}
+@media (max-width: 767px) {
+  #topmostbranding {
+    padding: 0;
+  }
+}
+
+@media (max-width: 767px) {
+  #citylinks {
+    display: none;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1025px) {
+  #mobile-header {
+    display: none;
+  }
+}
+@media (min-width: 1026px) {
+  #mobile-header {
+    display: none;
+  }
+}
+@media (max-width: 767px) {
+  #mobile-header {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+#mobile-header button {
+  float: left;
+  margin-left: 10px;
+  margin-bottom: 0;
+  margin-top: 10px;
+  border: none !important;
+  outline: none !important;
+  border-radius: none !important;
+  position: relative;
+  padding: 17px;
+  box-shadow: none !important;
+  z-index: 9;
+}
+#mobile-header button:hover, #mobile-header button:focus {
+  background: #fdeb52 !important;
+}
+#mobile-header button:after {
+  content: "";
+  width: 35px;
+  height: 5px;
+  display: block;
+  visibility: visible;
+  position: absolute;
+  top: 5px;
+  left: 0;
+  border-top: 5px solid #f6511d;
+  box-shadow: 0px 10px 0px 0px #f6511d, 0px 20px 0px 0px #f6511d;
+}
+#mobile-header .block.block-private-msg-custom {
+  border-radius: none !important;
+  box-shadow: none !important;
+  margin-bottom: 0 !important;
+  padding: 0 !important;
+  background: none;
+  display: none;
+}
+#mobile-header .block.block-private-msg-custom .views-row {
+  margin-bottom: 0;
+}
+#mobile-header .block.block-private-msg-custom .views-row .views-field a {
+  background: #267fda;
+  padding: 10px 0px;
+  border-bottom: 1px solid #fff;
+}
+#mobile-header .block.block-private-msg-custom .views-row .views-field a.newclass {
+  background: #cc0d25 !important;
+}
+#mobile-header .block.block-private-msg-custom .views-row .views-field a.msg {
+  position: relative;
+}
+#mobile-header .block.block-private-msg-custom .views-row .views-field a.msg:before {
+  content: "";
+  width: 30px;
+  height: 20px;
+  display: inline-block;
+  position: absolute;
+  margin-left: -32px;
+  background: url("../images/libraryzurb/msg-img.png") no-repeat;
+  background-position: 6px 1px !important;
+}
+#mobile-header .block.block-private-msg-custom .mobile_menu li, #mobile-header .block.block-private-msg-custom .mobile_menu a {
+  width: 100%;
+  display: inline-block;
+  font-size: 17px;
+  font-family: McLaren-Regular !important;
+  font-weight: normal !important;
+  font-style: normal !important;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+  text-rendering: optimizeLegibility !important;
+  -moz-font-smoothing: grayscale !important;
+  padding-left: 0;
+  text-align: center;
+  color: #fff;
+}
+#mobile-header .block.block-private-msg-custom .mobile_menu .menu {
+  line-height: 1;
+}
+#mobile-header .block.block-private-msg-custom .mobile_menu .menu li {
+  margin-left: 0;
+}
+#mobile-header .block.block-private-msg-custom .mobile_menu .menu li a {
+  padding: 10px 0;
+  border-bottom: 1px solid #fff;
+  background: #f6511d;
+  overflow: visible;
+}
+#mobile-header .block.block-private-msg-custom .mobile_menu .menu li a:hover, #mobile-header .block.block-private-msg-custom .mobile_menu .menu li a:focus {
+  border-bottom: 1px solid #f6511d;
+  background: #fff;
+  color: #f6511d !important;
+}
+#mobile-header .block.block-private-msg-custom .mobile_menu .menu li a:before {
+  content: "";
+  width: 43px;
+  height: 25px;
+  display: inline-block;
+  position: absolute;
+  margin-left: -46px;
+  background-position: -5px -7px !important;
+  background-size: 63px !important;
+  margin-top: -6px;
+}
+#mobile-header .block.block-private-msg-custom .mobile_menu .menu li a.progress {
+  height: auto;
+  margin-bottom: 0;
+  padding: 10px 0;
+  border-left: none;
+  border-right: none;
+  border-top: none;
+  font-weight: normal;
+}
+#mobile-header .block.block-private-msg-custom .mobile_menu .menu li a.progress:before {
+  background: url("../images/libraryzurb/progress.png") no-repeat;
+}
+#mobile-header .block.block-private-msg-custom .mobile_menu .menu li a.progress:hover:before, #mobile-header .block.block-private-msg-custom .mobile_menu .menu li a.progress:focus:before {
+  background: url("../images/libraryzurb/progress_hover.png") no-repeat;
+}
+#mobile-header .block.block-private-msg-custom .mobile_menu .menu li a.activities:before {
+  background: url("../images/libraryzurb/activities.png") no-repeat;
+}
+#mobile-header .block.block-private-msg-custom .mobile_menu .menu li a.activities:hover:before, #mobile-header .block.block-private-msg-custom .mobile_menu .menu li a.activities:focus:before {
+  background: url("../images/libraryzurb/activities_hover.png") no-repeat;
+}
+#mobile-header .block.block-private-msg-custom .mobile_menu .menu li a.rewards:before {
+  background: url("../images/libraryzurb/rewards.png") no-repeat;
+}
+#mobile-header .block.block-private-msg-custom .mobile_menu .menu li a.rewards:hover:before, #mobile-header .block.block-private-msg-custom .mobile_menu .menu li a.rewards:focus:before {
+  background: url("../images/libraryzurb/rewards_hover.png") no-repeat;
+}
+#mobile-header .block.block-private-msg-custom .mobile_menu .menu li a.events:before {
+  background: url("../images/libraryzurb/events.png") no-repeat;
+}
+#mobile-header .block.block-private-msg-custom .mobile_menu .menu li a.events:hover:before, #mobile-header .block.block-private-msg-custom .mobile_menu .menu li a.events:focus:before {
+  background: url("../images/libraryzurb/events_hover.png") no-repeat;
+}
+#mobile-header .block.block-private-msg-custom .mobile_menu .menu li a.reviews:before {
+  background: url("../images/libraryzurb/reviews.png") no-repeat;
+}
+#mobile-header .block.block-private-msg-custom .mobile_menu .menu li a.reviews:hover:before, #mobile-header .block.block-private-msg-custom .mobile_menu .menu li a.reviews:focus:before {
+  background: url("../images/libraryzurb/reviewactive.png") no-repeat;
+}
+#mobile-header .block.block-private-msg-custom .mobile_menu .menu li a.photos:before {
+  background: url("../images/libraryzurb/photosnvideos.png") no-repeat;
+}
+#mobile-header .block.block-private-msg-custom .mobile_menu .menu li a.photos:hover:before, #mobile-header .block.block-private-msg-custom .mobile_menu .menu li a.photos:focus:before {
+  background: url("../images/libraryzurb/photos_videos_hover.png") no-repeat;
+}
+#mobile-header .block.block-private-msg-custom .mobile_menu .menu li a.current-program:before {
+  background: url("../images/libraryzurb/current-programs.png") no-repeat;
+}
+#mobile-header .block.block-private-msg-custom .mobile_menu .menu li a.current-program:hover:before, #mobile-header .block.block-private-msg-custom .mobile_menu .menu li a.current-program:focus:before {
+  background: url("../images/libraryzurb/currentprogs_hover.png") no-repeat;
+}
+#mobile-header .block.block-views {
+  margin-bottom: 0 !important;
+  margin-right: 10px;
+  float: right;
+  margin-top: 17px;
+}
+#mobile-header .block.block-views .views-field-name a.username {
+  color: #000 !important;
+}
+#mobile-header .block.block-views .views-field-php-2 a {
+  color: #fff !important;
+  font-family: McLaren-Regular !important;
+  font-weight: normal !important;
+  font-style: normal !important;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+  text-rendering: optimizeLegibility !important;
+  -moz-font-smoothing: grayscale !important;
+  background: #267fda !important;
+  border-radius: 10px;
+  padding: 9px 22px;
+  -webkit-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+  box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+  border: none;
+  text-transform: capitalize;
+  font-size: 17px;
+  margin-bottom: 10px;
+}
+#mobile-header .block.block-views .views-field-php-2 a:hover, #mobile-header .block.block-views .views-field-php-2 a:focus {
+  color: #fff;
+  background: #267fda;
+  opacity: 1;
+  outline: none;
+}
+#mobile-header .block.block-views .views-field-php-2 a:hover {
+  color: #fff;
 }
 
 /**
@@ -14584,6 +15629,7 @@ div .addressfield-container-inline:after {
   font-style: normal !important;
   font-weight: normal !important;
   -webkit-font-smoothing: antialiased !important;
+  text-rendering: optimizeLegibility !important;
   line-height: 1.2;
 }
 

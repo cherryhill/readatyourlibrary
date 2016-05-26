@@ -5,12 +5,21 @@
   Drupal.behaviors.libraryzurbPhoneNumberLinksOnMobile = {
     attach: function(context, settings) {
 
-      $(':checkbox').on('change',function(){
-       var th = $(this), name = th.prop('class'); 
-       if(th.is(':checked')){
-           $(':checkbox[class="'  + name + '"]').not($(this)).prop('checked',false);   
-        }
+      // Showing of email notification field if user enters valid email
+      $('#edit-profile-main-field-receive-notifications').addClass('mail-notification-hidden')
+      $('#edit-mail').blur(function() {
+          var testEmail = /^[A-Z0-9._%+-]+@([A-Z0-9-]+\.)+[A-Z]{2,4}$/i;
+          if (testEmail.test(this.value)) {
+              $('#edit-profile-main-field-receive-notifications').removeClass('mail-notification-hidden');
+          }
+          else ($('#edit-profile-main-field-receive-notifications').addClass('mail-notification-hidden'));
       });
+
+      //Making single selection for avatar image
+      $(".av_radio.form-radio").change(function () {
+        $('.av_radio.form-radio').not(this).prop('checked', false);
+      });
+
       // Get width of browser viewport. **Note:** The value we check against
       // should probably match the value set for `$topbar-breakpoint` in
       // libraryzurb/scss/_variables.scss.
@@ -31,12 +40,16 @@
 
 
 jQuery( document ).ready(function() {
-  /**interchanging the position of divs in progress page at mobile screen**/
+  /**interchanging the position of divs in progress page at mobile screen and tablet screen**/
   var windowWidth = jQuery( window ).width();
-   if (windowWidth < 800) {
+   if (windowWidth < 940) {
      jQuery(".section-progress .main .block-auto-role-allocation").insertAfter(".section-progress .main .progress-calendar");
       jQuery(".section-progress .main .block-views").insertAfter(".section-progress .main .progress-calendar");
    }
+   /**jquery for hamburger button in mobile screen**/
+    jQuery('.mobile-header button').click(function(){
+      jQuery('.mobile-header .block-private-msg-custom').toggle();
+    });
 
   
   /* jQuery for homepage book slider */
@@ -61,6 +74,19 @@ jQuery( document ).ready(function() {
      
   });
    
+  /* jQuery for validation on username field of request new password page */
+  jQuery(".page-user-password #user-pass #edit-name").keypress(function (e) {
+    if (e.which === 64) {
+      //display error message
+      alert('Please enter only username');
+      return false;
+    }
+  });
+
+  // Placing Email div after field (how did you hear about the program)
+  jQuery('.form-item-mail').insertAfter('.form-item-profile-main-field-how-did-you-hear-about-thi-und-select');
+
+  jQuery(".flag-like").insertAfter('.like-count');
 
   /* Jquery for script for raffle entry checkbox */
 
@@ -123,11 +149,12 @@ if(!div2.is(':empty')){
 
     var proEnd = Drupal.settings.private_msg_custom.proEnd;
     var end_string = proEnd.split('-');
-    var pro_end_date = parseInt(end_string[0] + end_string[1] + end_string[2]);  
+    var pro_end_date = parseInt(end_string[0] + end_string[1] + end_string[2]);
 
-    var now = new Date(jQuery.now());
-    var time_strings = now.toJSON().slice(0, 10);
-    time_strings = time_strings.split('-');
+    var currentDate =  Drupal.settings.auto_role_allocation.currentDate;
+
+    var time_strings = currentDate.split('-');
+
     var now_time_strings = parseInt(time_strings[0] + time_strings[1] + time_strings[2]);
 
 
@@ -166,11 +193,6 @@ if(!div2.is(':empty')){
     droppable: true, // this allows things to be dropped onto the calendar !!!
         
     drop: function (date, allDay) {
-     var currentDate = new Date(jQuery.now());
-     var time_string = currentDate.toJSON().slice(0, 10);
-     time_string = time_string.split('-');
-     time_string = parseInt(time_string[0] + time_string[1] + time_string[2]);
-     //console.log(time_string); return false;
      // this function is called when something is dropped
        // var count = jQuery(".fc-event-container").children('div').length;
         //alert(count);
@@ -219,7 +241,7 @@ if(!div2.is(':empty')){
         var baseUrl = loc.protocol + "//" + loc.host + '/calendar';
 
         var currentUser = Drupal.settings.auto_role_allocation.currentUser;
-        if(time_string > event_date) {
+        if(now_time_strings >= event_date) {
           jQuery.ajax({
         
             //url: 'http://localhost/playatyourlibrary/docroot/calendar',
@@ -266,10 +288,6 @@ if(!div2.is(':empty')){
         return element.description;
     },
     eventDrop: function( event, dayDelta, minuteDelta, allDay, revertFunc, jsEvent, ui, view ) {
-       var currentDateInternal = new Date(jQuery.now());
-       var time_string1 = currentDateInternal.toJSON().slice(0, 10);
-         time_string1 = time_string1.split('-');
-         time_string1 = parseInt(time_string1[0] + time_string1[1] + time_string1[2]);
          
 
        var event_date1 = event.start;
@@ -297,7 +315,7 @@ if(!div2.is(':empty')){
           
         var loc = window.location;
         var baseUrl = loc.protocol + "//" + loc.host + '/calendar';
-        if(time_string1 > event_date1) {
+        if(now_time_strings >= event_date1) {
           jQuery.ajax({        
             //url: 'http://localhost/playatyourlibrary/docroot/calendar',
             url: baseUrl,

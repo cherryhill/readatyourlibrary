@@ -6,4 +6,4 @@ The structure will follow a lullabot boilerplate approach so the codebase
 is in docroot. All site-specific fonts, libraries, modules, and themes 
 should be placed in their respective directories.
 
-Dummy line, checking push to fork. DELETE
+CHILDREN BRANCH

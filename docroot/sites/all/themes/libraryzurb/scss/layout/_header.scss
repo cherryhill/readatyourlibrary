@@ -23,6 +23,9 @@
   	 	}
   	 	&.block-menu-menu-secoundary-menu {
   	 		margin-bottom: 0;
+        @include mobile {
+          display: none;
+        }
   	 		ul.menu {
   	 			float: right;
   	 			list-style: none;

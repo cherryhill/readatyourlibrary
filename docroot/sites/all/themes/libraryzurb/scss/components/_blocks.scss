@@ -4,6 +4,9 @@
 	&.block-private-msg-custom-homepage-slider {
 		@include bluebackground;
 		padding: 0 !important;
+		h2.featured {
+			display: none;
+		}
 		 ul {
 		  	list-style: none;
 		  	position: absolute;
@@ -260,10 +263,9 @@
     &.block-views-booklist-slideshow-block-2 {
     	h2.block-title {
     		@include mclaren;
-    		font-size: 25px;
+    		font-size: 28px;
     		color: $black;
     		@include noborder;
-    		margin-bottom: 33px;
 
     	}
     }
@@ -396,6 +398,7 @@
 		 		 	  a {
 		 		 	  	 color: $black;
 		 		 	  	 font-size: 22px;
+		 		 	  	 @include mclaren;
 		 		 	  	  &:focus {
 		 		 	  	  	outline: none;
 		 		 	  	  }
