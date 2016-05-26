@@ -1,6 +1,19 @@
 <?php
 
 /**
+ * Implements hook_permission(). 
+ */
+
+function auto_role_allocation_permission() {
+  return array(
+    'activity record access' => array(
+      'title' => t('Administer activity record'),
+      'description' => t('Perform administration tasks for activity record.'),
+    ),
+  );
+} 
+
+/**
  * Implements hook_block(). . 
  */
 
@@ -266,7 +279,7 @@ function auto_role_allocation_menu() {
     'title' => 'Record Activity for Patron',
     'page callback' => 'drupal_get_form',
     'page arguments' => array('patron_activity_record_form'),
-    'access arguments' => array('access content'),
+    'access arguments' => array('activity record access'),
     'type' => MENU_CALLBACK,
   );
   $items['generate_csv'] = array(
