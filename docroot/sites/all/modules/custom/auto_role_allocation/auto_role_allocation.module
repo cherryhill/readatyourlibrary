@@ -426,7 +426,6 @@ function raffle_entry_process() {
   $active_raffle_list = array();
   foreach ($res as $key => $value) {
     $raffle_id = $value->id;
-    //print_r($raffle_id);die();
     $query = db_select('field_data_field_raffle_winner_raffle', 'rwr');
     $query->condition('field_raffle_winner_raffle_target_id', $raffle_id, '=');
     $query->fields('rwr', array('entity_id'));
@@ -515,6 +514,7 @@ function raffle_user_list($form, &$form_state) {
   }
   $query->fields('eck_r', array('uid'));
   $query->fields('u', array('name'));
+ 
   // echo $active_raffle_id . ' ';
   // echo $query->__toString(); die;
   $res = $query->execute()->fetchAll();
@@ -590,6 +590,13 @@ function generate_csv_of_raffle_user() {
   $query->join('eck_raffle', 'eck_r', 'rentry.entity_id = eck_r.id');
   $query->join('users', 'u', 'u.uid = eck_r.uid');
   $query->join('profile', 'p', 'u.uid = p.uid');
+  $query->join('field_data_field_user_first_name', 'fn', 'fn.entity_id = p.pid');
+  $query->join('field_data_field_user_last_name', 'ln', 'ln.entity_id = p.pid');
+  $query->join('field_data_field_user_birthday', 'user_birth', 'user_birth.entity_id = p.pid');
+  $query->leftJoin('field_data_field_user_phone', 'phno', 'phno.entity_id = p.pid');
+  $query->leftJoin('field_data_field_library_branch', 'lb', 'lb.entity_id = p.pid');
+  $query->leftJoin('taxonomy_term_data', 'lbtd', 'lbtd.tid = lb.field_library_branch_tid');
+  
 
   $cnd = array();
   if ($school != '') {
@@ -625,17 +632,23 @@ function generate_csv_of_raffle_user() {
     }
   }
   $query->fields('eck_r', array('uid'));
-  $query->fields('u', array('name'));
-  // echo $active_raffle_id . ' ';
-  // echo $query->__toString(); die;
+  $query->fields('u', array('name', 'mail'));
+  $query->fields('fn', array('field_user_first_name_value'));
+  $query->fields('ln', array('field_user_last_name_value'));
+  $query->fields('user_birth', array('field_user_birthday_value'));
+  $query->fields('lbtd', array('name'));
+  $query->fields('phno', array('field_user_phone_value'));
   $res = $query->execute()->fetchAll();
-
   $raffle_users_list = array();
   
   foreach($res as $v) {
     $uid = $v->uid;
     $name = $v->name;
-
+    $first_name = $v->field_user_first_name_value;
+    $last_name = $v->field_user_last_name_value;
+    $date_of_birth = $v->field_user_birthday_value;
+    $phone_no = $v->field_user_phone_value;
+    $mail = $v->mail;
     if (array_key_exists($uid, $raffle_users_list)) {
       $temp = $raffle_users_list[$uid];
       $temp['count'] = $temp['count'] + 1;
@@ -650,23 +663,74 @@ function generate_csv_of_raffle_user() {
       $count = $rs->rowCount();
 
       if ($count) {
-        $raffle_users_list[$uid] = array('count' => 1, 'raffle_winner' => 'Yes', 'name' => $name);
+        $raffle_users_list[$uid] = array('count' => 1, 'raffle_winner' => 'Yes', 'name' => $name, 'first_name' => $first_name, 'last_name' => $last_name, 'date_of_birth' => $date_of_birth, 'phone_no' => $phone_no, 'mail' => $mail);
       } else {
-        $raffle_users_list[$uid] = array('count' => 1, 'raffle_winner' => 'No', 'name' => $name);
+        $raffle_users_list[$uid] = array('count' => 1, 'raffle_winner' => 'No', 'name' => $name, 'first_name' => $first_name, 'last_name' => $last_name, 'date_of_birth' => $date_of_birth, 'phone_no' => $phone_no, 'mail' => $mail);
       }
     }
   }
 
-  foreach($raffle_users_list as $k => $v) {
-
-    $user_name = $v['name'];
-    $raffle_count = $v['count'];
+  foreach($raffle_users_list as $k => $v) {      
+      $user_name = $v['name'];
+      $first_name = $v['first_name'];
+      $last_name = $v['last_name'];
+      $date_of_birth = $v['date_of_birth'];
+      $phone_no = $v['phone_no'];
+      $email = $v['mail'];
+      $raffle_count = $v['count'];
+      if($user_name == '') {
+        $user_name = ',';  
+      }
+      else {
+        $user_name = $v['name'];  
+      }
+      if($first_name == '') {
+        $first_name = ',';  
+      }
+      else {
+        $first_name = $v['first_name'];  
+      }
+      if($last_name == '') {
+        $last_name = ',';  
+      }
+      else {
+        $last_name = $v['last_name'];  
+      }
+      if($date_of_birth == '') {
+        $date_of_birth = ',';  
+      }
+      else {
+        $date_of_birth = $v['date_of_birth'];  
+      }
+      if($phone_no == '') {
+        $phone_no = ',';
+      }
+      else {
+        $phone_no = $v['phone_no'];  
+      }
+      if($email == '') {
+        $email = ',';
+      }
+      else {
+        $email = $v['mail'];
+      }
+      if($raffle_count == '') {
+        $raffle_count = ',';
+      }
+      else {
+        $raffle_count = $v['count'];
+      }
+      
     $raffle_winner = $v['raffle_winner'];
     $operation = "<input class = 'raffle-prospective-winners' type = 'checkbox' id = 'chkbox_$k'>";
     $output[] = array(
       'name' => $user_name,
-      'raffle_count' => $raffle_count,
-      'raffle_winner' => $raffle_winner,
+      'first_name' => $first_name,
+      'last_name' => $last_name,
+      'date_of_birth' => $date_of_birth,
+      'phone_no' => $phone_no,
+      'email' => $email,
+      'number_of_tickets' => $raffle_count,
     );
   }
 
@@ -675,8 +739,12 @@ function generate_csv_of_raffle_user() {
   $result = '';
   $keys = array(
     'Name',
-    'Raffle Count',
-    'Raffle Winner',
+    'First name',
+    'Last name',
+    'Date of birth',
+    'Phone no',
+    'Email',
+    'Number of tickets',
   );
   $result .= implode("\t", $keys) . "\n";
   foreach ($output as $value1) {
@@ -825,8 +893,6 @@ function calendar_page() {
   ->execute();
   $reward_date = $query_date->fetchAssoc();
   $reward_date = $reward_date['date']; 
-  //print_r($reward_date['date']);die();
-
   
   if(!$reward_date) {
     
