@@ -747,8 +747,12 @@ function generate_csv_of_raffle_user() {
     );
   }
 
+  $time = date('m-d-Y', time());
+
+  $filename = 'raffle_ticket_list_' .$time. '.csv'; 
+
   drupal_add_http_header('Content-Type', 'text/csv; utf-8');
-  drupal_add_http_header('Content-Disposition', 'attachment; filename = sadsda.csv');
+  drupal_add_http_header('Content-Disposition', 'attachment; filename =' .$filename);
   $result = '';
   $keys = array(
     'Name',
