@@ -19,46 +19,10 @@ function complete_activity_progress(){
   if($node_created < $activity_limit){
     activity_report_node_create($activity_id, $activity_date, $tid);
     play_library_program_create_activity_entry($activity_id, $activity_uid);
+  }else{
+    $_SESSION['exceed-activity-limit'] = drupal_set_message("You have recorded maximum number of times this activity can be performed.");
   }
   echo 1;
-}
-
-function activity_report_node_create($activity_id, $activity_date, $term_tid, $check_in_progress = 0, $current_user = 0) {
-
-  $entity_info = entity_load('activity', array($activity_id));
-  $activity_name = $entity_info[$activity_id]->title;
-  $hotspot_activity_type = $entity_info[$activity_id]->field_hotspot_activity['und'][0]['value'];
-  $activity_progress_status = $entity_info[$activity_id]->field_show_on_progress_page['und'][0]['value'];
-  $_SESSION['progress_activity_id']= $activity_id;
-
-  // check activity 'show in progress' status
-  if($check_in_progress) {
-    if(!$activity_progress_status) {
-  	  return FALSE;
-    }
-  }
-  // if show in progress is one, node is created.
-  if($current_user == 0){
-    global $user;
-	$current_user = $user->uid;
-  }
-
-  $node = new stdClass(); // Creating a new node object
-  $node->type = 'activity_report'; //Content type
-  $node->language = LANGUAGE_NONE;
-  node_object_prepare($node);
-  $node->title = $activity_name;
-  $node->status = 1;
-  $node->uid = $current_user;
-  $node->field_activity_id_report[LANGUAGE_NONE][0]['value'] = $activity_id;
-  $node->field_hotspot_activity_report[LANGUAGE_NONE][0]['value'] = $hotspot_activity_type;
-  $node->field_show_on_progress_report[LANGUAGE_NONE][0]['value'] = $activity_progress_status;
-  $node->field_term_id[LANGUAGE_NONE][0]['value'] = $term_tid;
-  $node->field_completion_date[LANGUAGE_NONE][0]['value'] = $activity_date;
-  node_save($node);
-  $created_nid = $node->nid;
-
-  $_SESSION['teen_progress_report_nid'] = $created_nid;
 }
 
 function user_avatar_progress_page($uid){
@@ -105,6 +69,21 @@ function activity_report_node_creation($account_id, $activity_id){
   return $query->count()->execute();
 }
 
+function specefic_user_nodes(){
+  global $user;
+  $current_uid = $user->uid;
+  $user_stamp_query = db_select('node','n');
+  $user_stamp_query->condition('type','activity_report');
+  $user_stamp_query->condition('uid',$current_uid);
+  $user_stamp_query->condition('status','1');
+  $user_stamp_query->addExpression('COUNT(1)','count');
+  $res_stamp = $user_stamp_query->execute();
+
+  if($record = $res_stamp->fetchAssoc())
+    return $stamp_count = $record['count'];
+  return 0;
+}
+
 function progress_print_page(){
   global $user; 
   $uid = $user->uid;
@@ -114,7 +93,8 @@ function progress_print_page(){
   $page_desc = $page_desc['value'];
 
   $block = block_load('private_msg_custom_teen', 'progress_submit_block');
-  $user_reward_block = drupal_render(_block_get_renderable_array(_block_render_blocks(array($block))));
+  $render_block = drupal_render(_block_get_renderable_array(_block_render_blocks(array($block))));
+  $user_reward_block = drupal_render($render_block);
   $report_block_text = variable_get('report_block_desc', array('value' => '', 'format' => NULL));
   $report_block_text['value'];
 
@@ -130,6 +110,7 @@ function progress_print_page(){
     'uid' => $uid,
    'type' => 'activity_report',
   );
+
   $output .= '<style>
    @font-face {
   font-family: "SpecialElite";
@@ -580,56 +561,48 @@ select##edit-activity-progress-select {
   margin-bottom: 0;
   left: 7.2%;
   width: 90%;
-}
-
-
-  </style>';
-  $output .= "
-
-  <div class = 'main'><div class='progress-page'>
-<h1 id = 'title'>$pg_title
-</h1>
-<div class='progress-desc'>
-  $page_desc	
-</div>
-<div class='user-desc'>
-<div class='avatar-id'>$u_avatar
-</div>
-<div class='point-status'>
-<div class='activity-status'>Stamps Earned:
-</div>
-<div class='points'>Raffle Tickets Earned:
-</div>
-</div>
-</div>
-<div class='progress-wrap'>
-<div class='report-acivity'><h1>Report an Activity</h1>$user_reward_block
+} </style>';
+ 
+ $output = "<div class = 'main'><div class='progress-page'>
+  <h1 id = 'title'>$pg_title</h1>
+  <div class='progress-desc'>$page_desc</div>
+  <div class='user-desc'>
+  <div class='avatar-id'>$u_avatar</div>
+  <div class='point-status'>
+  <div class='activity-status'>Stamps Earned:</div>
+  <div class='points'>Raffle Tickets Earned:</div>
+  </div>
+  </div>
+  <div class='progress-wrap'>
+  <div class='report-acivity'><h1>Report an Activity</h1>$user_reward_block
 	<div class='submit'>
 		<button id='pg-report'>Submit</button>
 	</div>
-</div>
-<div class='reward-won'>$reward_won
-</div>
-<div class='progress-rewards'>$u_rew
-</div>
-</div>
-<div class='progress-main'><h1>My Passport Stamps</h1>";
+  </div>
+  <div class='reward-won'>$reward_won</div>
+  <div class='progress-rewards'>$u_rew</div>
+  </div>
+  <div class='progress-main'><h1>My Passport Stamps</h1>";
+
 $nodes = entity_load('node',FALSE,$criteria);
 foreach ($nodes as $key => $value) {
   $node_date = $value->field_completion_date['und'][0]['value'];
   $user_reward = $value->field_won_reward['und'][0]['value'];
-  if($user_reward != '0'){
+
+  $user_won_reward = '';
+  if($user_reward) {
     $user_won_reward = '<p class  = "won-rew">Congratulations! You have earned a prize!</p>';
   }
   $n_date = date("m.d.y", strtotime($node_date));
-  $node_nid[] = '<p class  = "date-pg">'.$n_date.'</p><p class = "title-pg">'.$value->title.'</p>'.$user_won_reward;
+  $node_nid[] = "<p class  = 'date-pg'>$n_date</p><p class = 'title-pg'>" . $value->title . "</p>$user_won_reward";
 }
+
 $k=0; $gr = ceil($grids/6);
 for($j=0;$j<$gr;$j++){
   $output .=	'<div class = "new-row">';
     for($i=0; $i < 6; $i++){
-	  if($node_nid[$k]){
-        $output .= '<div class = "grid inserted" id = "cells'.$k.'">'.$node_nid[$k].'</div>';
+	  if( isset($node_nid[$k])) {
+        $output .= "<div class = 'grid inserted' id = 'cells$k'>" . $node_nid[$k] . "</div>";
       }
       else{
         $output .= '<div class = "grid" id = "cells'.$k.'"></div>';
@@ -639,5 +612,17 @@ for($j=0;$j<$gr;$j++){
   $output .= '</div>';
 }
 $output .= '</div></div></div>';
-echo $output;
+
+require_once("sites/all/modules/contrib/print/lib/dompdf/dompdf_config.inc.php");
+      $dompdf = new DOMPDF;
+      $html = stripslashes($output); 
+
+      $dompdf->load_html(utf8_decode($html));
+
+      $dompdf->render();
+
+      $font = Font_Metrics::get_font("din", "regular");
+
+      $dompdf->stream("Progress-Page.pdf");
+  //return $html;
 }

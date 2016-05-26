@@ -6399,33 +6399,6 @@ h1#page-title {
   padding-left: 17px;
 }
 
-.more-link {
-  text-align: right;
-}
-.more-link a {
-  font-family: SpecialElite !important;
-  font-weight: normal !important;
-  font-style: normal !important;
-  -webkit-font-smoothing: antialiased !important;
-  -moz-osx-font-smoothing: grayscale !important;
-  position: relative;
-  font-size: 17px;
-  text-transform: capitalize;
-  padding-right: 20px;
-}
-.more-link a:after {
-  content: "";
-  width: 17px;
-  height: 17px;
-  display: block;
-  visibility: visible;
-  position: absolute;
-  top: 1px;
-  right: 0;
-  background: url("../images/libraryzurb/right-blue-arrow.png") no-repeat;
-  background-size: 15px;
-}
-
 .page-user .alert-box:nth-of-type(2) {
   display: none;
 }
@@ -6445,27 +6418,24 @@ h1#page-title {
   width: 100%;
 }
 .more-link a {
-  font-family: SpecialElite !important;
-  font-weight: normal !important;
+  font-family: Raleway-Bold !important;
   font-style: normal !important;
+  font-weight: normal !important;
   -webkit-font-smoothing: antialiased !important;
   -moz-osx-font-smoothing: grayscale !important;
+  -moz-font-smoothing: grayscale !important;
   position: relative;
-  font-size: 17px;
+  font-size: 14px;
   text-transform: capitalize;
   padding-right: 20px;
+  color: #fff;
 }
 .more-link a:after {
-  content: "";
-  width: 17px;
-  height: 17px;
-  display: block;
-  visibility: visible;
-  position: absolute;
-  top: 12%;
-  right: 0;
-  background: url("../images/libraryzurb/right-blue-arrow.png") no-repeat;
-  background-size: 15px;
+  content: ">";
+  padding-left: 5px;
+}
+.more-link a:hover {
+  color: #fff;
 }
 
 .page-patron .button-group:nth-of-type(1) li {
@@ -7191,6 +7161,9 @@ h1#page-title {
     font-size: 22px;
   }
 }
+.block.dashboard-block .view-empty {
+  color: #fff;
+}
 .block.dashboard-block .view {
   display: table;
   width: 100%;
@@ -7359,9 +7332,9 @@ h1#page-title {
   display: inline-block;
 }
 .block.block-private-msg-custom h2 {
-  color: #000;
+  color: #32024e;
   margin-top: 0;
-  font-size: 28px;
+  font-size: 26px;
   font-family: SpecialElite !important;
   font-weight: normal !important;
   font-style: normal !important;
@@ -7379,38 +7352,45 @@ h1#page-title {
   position: absolute;
   top: 29%;
   right: -6px;
-  padding: 12px 22px;
-  color: #32024e !important;
+  padding: 9px 22px 6px;
+  background: #32024e;
+  color: #fff;
   font-family: SpecialElite !important;
   font-weight: normal !important;
   font-style: normal !important;
   -webkit-font-smoothing: antialiased !important;
   -moz-osx-font-smoothing: grayscale !important;
   font-size: 17px;
-  background: #f6f45a;
-  padding: 10px 20px 7px;
   -webkit-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
   -moz-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
   box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
-  border: none;
-  text-transform: capitalize;
-}
-.block.block-private-msg-custom .pm-custom .pm-view:hover, .block.block-private-msg-custom .pm-custom .pm-view:focus {
-  color: #32024e;
-  background: #feed40 !important;
-  opacity: 1;
-  outline: none;
 }
 .block.block-private-msg-custom .pm-custom .pm {
   width: 90%;
   display: inline-block;
-  margin-bottom: 25px;
 }
 .block.block-private-msg-custom .pm-custom .pm .pm-subject {
   width: 60%;
   float: left;
   color: #cc0d25;
   font-size: 17px;
+}
+.block.block-private-msg-custom .pm-custom .pm .pm-subject a {
+  color: #cc0d25;
+  line-height: 1;
+  font-size: 16px;
+  font-family: Raleway-Medium !important;
+  font-style: normal !important;
+  font-weight: normal !important;
+  -webkit-font-smoothing: antialiased !important;
+}
+.block.block-private-msg-custom .pm-custom .pm .pm-subject .pm-new {
+  float: left;
+  padding-right: 10px;
+  color: #cc0d25;
+  font-size: 16px;
+  position: relative;
+  top: 5px;
   font-family: Raleway-Bold !important;
   font-style: normal !important;
   font-weight: normal !important;
@@ -7418,21 +7398,10 @@ h1#page-title {
   -moz-osx-font-smoothing: grayscale !important;
   -moz-font-smoothing: grayscale !important;
 }
-.block.block-private-msg-custom .pm-custom .pm .pm-subject a {
-  color: #000;
-  line-height: 1;
-}
-.block.block-private-msg-custom .pm-custom .pm .pm-subject .pm-new {
-  float: left;
-  padding-right: 10px;
-  color: #cc0d25;
-  position: relative;
-  top: 5px;
-}
 .block.block-private-msg-custom .pm-custom .pm .pm-admin {
   width: 19%;
   float: left;
-  font-size: 17px;
+  font-size: 16px;
   font-family: Raleway-Medium !important;
   font-style: normal !important;
   font-weight: normal !important;
@@ -7443,7 +7412,7 @@ h1#page-title {
   float: left;
   width: 19%;
   color: #000;
-  font-size: 17px;
+  font-size: 16px;
   font-family: Raleway-Medium !important;
   font-style: normal !important;
   font-weight: normal !important;
@@ -9812,11 +9781,14 @@ body .alert-box.success a.close:hover {
 }
 
 /**open single msg**/
+.page-messages-view p {
+  color: #fff;
+}
 .page-messages-view .privatemsg-message-participants {
   width: 100%;
   max-width: 80%;
   margin: 0 auto;
-  color: #000;
+  color: #fff;
   border: none !important;
   outline: none !important;
 }
@@ -9835,6 +9807,7 @@ body .alert-box.success a.close:hover {
 .page-messages-view .privatemsg-message .privatemsg-message-information .privatemsg-author-name {
   position: relative;
   padding-left: 30px;
+  color: #fff;
 }
 .page-messages-view .privatemsg-message .privatemsg-message-information .privatemsg-author-name:before {
   content: "";
@@ -9848,7 +9821,7 @@ body .alert-box.success a.close:hover {
   background: url("../images/libraryzurb/arrow-list.png") no-repeat;
 }
 .page-messages-view .privatemsg-message .privatemsg-message-information a.username {
-  color: #000;
+  color: #fff;
 }
 .page-messages-view .privatemsg-message .privatemsg-message-information span.privatemsg-message-date {
   color: #fff;
@@ -9861,16 +9834,19 @@ body .alert-box.success a.close:hover {
   color: #000;
   padding: 5px 20px;
   background: #f6f45a;
-  border-radius: 10px;
+  -webkit-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+  box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
   -webkit-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
   -moz-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
   box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
 }
 .page-messages-view .privatemsg-message .privatemsg-message-information ul li a:hover {
   text-decoration: none;
+  background: #feed40;
 }
 .page-messages-view .privatemsg-message .privatemsg-message-body p a {
-  color: #000;
+  color: #fff;
 }
 .page-messages-view .privatemsg-reply {
   color: #fff;
@@ -10698,6 +10674,9 @@ body .alert-box.success a.close:hover {
 
 /**end css of program page**/
 /**common css for patraon dashboard page**/
+.page-user-profile #page-title {
+  display: none;
+}
 .page-user-profile .main {
   padding-left: 0;
   padding-right: 0;
@@ -10780,12 +10759,11 @@ body .alert-box.success a.close:hover {
   outline: none;
 }
 .page-user-profile .homebox #homebox-add {
+  background: #32024e;
   color: #fff;
-  background: #f6f45a;
   -webkit-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
   -moz-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
   box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
-  border-radius: 20px;
   padding: 36px 20px 25px;
   position: relative;
 }
@@ -10797,7 +10775,7 @@ body .alert-box.success a.close:hover {
   font-style: normal !important;
   font-weight: normal !important;
   -webkit-font-smoothing: antialiased !important;
-  color: #000;
+  font-size: 16px;
 }
 .page-user-profile .homebox #homebox-add .item-list ul li.last {
   float: right !important;
@@ -10806,51 +10784,38 @@ body .alert-box.success a.close:hover {
   margin-bottom: 32px;
 }
 .page-user-profile .homebox #homebox-buttons a {
-  padding: 9px 25px;
-  color: #32024e !important;
+  padding: 9px 22px 6px;
+  font-size: 18px;
   font-family: SpecialElite !important;
   font-weight: normal !important;
   font-style: normal !important;
   -webkit-font-smoothing: antialiased !important;
   -moz-osx-font-smoothing: grayscale !important;
-  font-size: 22px;
-  background: #f6f45a;
-  padding: 10px 20px 7px;
   -webkit-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
   -moz-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
   box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
-  border: none;
-  text-transform: capitalize;
+  color: #fff;
+  background: #32024e;
   text-decoration: none;
 }
-.page-user-profile .homebox #homebox-buttons a:hover, .page-user-profile .homebox #homebox-buttons a:focus {
-  color: #32024e;
-  background: #feed40 !important;
-  opacity: 1;
-  outline: none;
+.page-user-profile .homebox #homebox-add ul li {
+  border: none !important;
+  outline: none !important;
 }
 .page-user-profile .homebox #homebox-add ul li a {
-  color: #32024e !important;
+  color: #fff;
+  background: #7eb600;
+  font-size: 18px;
+  padding: 3px 22px 0px;
+  -webkit-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+  box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
   font-family: SpecialElite !important;
   font-weight: normal !important;
   font-style: normal !important;
   -webkit-font-smoothing: antialiased !important;
   -moz-osx-font-smoothing: grayscale !important;
-  font-size: 17px;
-  background: #f6f45a;
-  padding: 10px 20px 7px;
-  -webkit-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
-  -moz-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
-  box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
-  border: none;
-  text-transform: capitalize;
   text-decoration: none;
-}
-.page-user-profile .homebox #homebox-add ul li a:hover, .page-user-profile .homebox #homebox-add ul li a:focus {
-  color: #32024e;
-  background: #feed40 !important;
-  opacity: 1;
-  outline: none;
 }
 .page-user-profile .homebox #homebox-add ul li a.used {
   border: none !important;
@@ -10864,21 +10829,93 @@ body .alert-box.success a.close:hover {
   outline: none !important;
   position: relative;
 }
+.page-user-profile .homebox .homebox-portlet .homebox-portlet-inner .portlet-header:before {
+  content: "";
+  width: 50px;
+  height: 50px;
+  display: block;
+  visibility: visible;
+  position: absolute;
+  top: 6px;
+  left: 5%;
+}
+.page-user-profile .homebox .homebox-portlet.dashboard-activities .homebox-portlet-inner .portlet-header::before {
+  background: url("../images/libraryzurb/activities.png") no-repeat;
+  background-position: center 6px;
+}
+.page-user-profile .homebox .homebox-portlet.dashboard-rewards .homebox-portlet-inner .portlet-header::before {
+  background: url("../images/libraryzurb/rewards.png") no-repeat;
+  background-position: center 6px;
+}
+.page-user-profile .homebox .homebox-portlet.dashboard-booklists .homebox-portlet-inner .portlet-header::before, .page-user-profile .homebox .homebox-portlet.dashboard-reviews .homebox-portlet-inner .portlet-header::before, .page-user-profile .homebox .homebox-portlet.dashboard-leaderboard .homebox-portlet-inner .portlet-header::before, .page-user-profile .homebox .homebox-portlet.dashboard-following .homebox-portlet-inner .portlet-header::before {
+  background: url("../images/libraryzurb/reviews.png") no-repeat;
+  background-position: center 6px;
+}
+.page-user-profile .homebox .homebox-portlet.dashboard-leaderboard .view-leadeboard .view-footer {
+  text-align: right;
+  margin-top: 20px;
+}
+.page-user-profile .homebox .homebox-portlet.dashboard-leaderboard .view-leadeboard .view-footer p a {
+  font-family: Raleway-Bold !important;
+  font-style: normal !important;
+  font-weight: normal !important;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+  -moz-font-smoothing: grayscale !important;
+  position: relative;
+  font-size: 14px;
+  text-transform: capitalize;
+  color: #fff;
+}
+.page-user-profile .homebox .homebox-portlet.dashboard-leaderboard .view-leadeboard .view-footer p a:after {
+  content: ">";
+  padding-left: 5px;
+}
+.page-user-profile .homebox .homebox-portlet.dashboard-leaderboard .view-leadeboard .view-footer p a:hover {
+  color: #fff;
+}
+.page-user-profile .homebox .homebox-portlet.dashboard-leaderboard .view-leadeboard .views-row {
+  position: relative;
+  line-height: 2;
+}
+.page-user-profile .homebox .homebox-portlet.dashboard-leaderboard .view-leadeboard .views-row .views-field-counter, .page-user-profile .homebox .homebox-portlet.dashboard-leaderboard .view-leadeboard .views-row .views-field-field-user-avatar, .page-user-profile .homebox .homebox-portlet.dashboard-leaderboard .view-leadeboard .views-row .views-field-name {
+  float: left;
+  font-family: Raleway-Medium !important;
+  font-style: normal !important;
+  font-weight: normal !important;
+  -webkit-font-smoothing: antialiased !important;
+  font-size: 14px;
+}
+.page-user-profile .homebox .homebox-portlet.dashboard-leaderboard .view-leadeboard .views-row .views-field-name a {
+  color: #fff;
+}
+.page-user-profile .homebox .homebox-portlet.dashboard-leaderboard .view-leadeboard .views-row .views-field-name a:hover {
+  color: #fff;
+}
+.page-user-profile .homebox .homebox-portlet.dashboard-leaderboard .view-leadeboard .views-row .views-field-field-user-avatar img {
+  position: relative;
+  bottom: 7px;
+}
+.page-user-profile .homebox .homebox-portlet.dashboard-leaderboard .view-leadeboard .views-row .views-field-php {
+  position: absolute;
+  right: 0;
+  top: 0;
+}
 .page-user-profile .homebox .homebox-portlet-inner {
   -webkit-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
   -moz-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
   box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
   border: none !important;
   outline: none !important;
-  background: #f6f45a;
-  border-radius: 20px;
+  background: #32024e;
+  color: #fff;
   margin-bottom: 10px;
+  font-size: 14px;
 }
 .page-user-profile .homebox .homebox-portlet-inner .portlet-header {
-  background: #32024e !important;
+  background: #7eb600 !important;
   box-shadow: none !important;
   opacity: 1 !important;
-  border-radius: 20px 20px 0px 0px;
   padding: 15.5px 15px 15.5px 0 !important;
   border: none !important;
   outline: none !important;
@@ -10915,18 +10952,8 @@ body .alert-box.success a.close:hover {
   position: relative;
 }
 .page-user-profile .homebox .portlet-content {
-  padding: 35px 7.1% !important;
+  padding: 15px 6.1% !important;
   position: inherit;
-}
-.page-user-profile .homebox .portlet-content .view:before {
-  content: "";
-  width: 50px;
-  height: 50px;
-  display: block;
-  visibility: visible;
-  position: absolute;
-  top: 12px;
-  left: 6%;
 }
 .page-user-profile .homebox .portlet-content .view .view-header {
   text-align: left !important;
@@ -10937,7 +10964,7 @@ body .alert-box.success a.close:hover {
   font-style: normal !important;
   font-weight: normal !important;
   -webkit-font-smoothing: antialiased !important;
-  color: #000;
+  color: #fff;
   margin-top: 10px;
 }
 .page-user-profile .homebox .portlet-content .view .view-content .views-field-count .views-label-count {
@@ -10958,18 +10985,15 @@ body .alert-box.success a.close:hover {
 .page-user-profile .homebox .portlet-content .view .view-content .views-field-count .views-label-count:after {
   top: -4px !important;
 }
-.page-user-profile .homebox .portlet-content .view.view-follow:before {
-  background: url("../images/libraryzurb/following.png") no-repeat;
-}
 .page-user-profile .homebox .portlet-content .view.view-follow .view-header .Following p {
-  font-size: 15px;
+  font-size: 14px;
   font-family: Raleway-Bold !important;
   font-style: normal !important;
   font-weight: normal !important;
   -webkit-font-smoothing: antialiased !important;
   -moz-osx-font-smoothing: grayscale !important;
   -moz-font-smoothing: grayscale !important;
-  color: #000;
+  color: #fff;
 }
 .page-user-profile .homebox .portlet-content .view.view-follow .view-content {
   width: 100%;
@@ -10996,15 +11020,12 @@ body .alert-box.success a.close:hover {
   float: left;
 }
 .page-user-profile .homebox .portlet-content .view.view-follow .view-content .views-row .views-field.views-field-name a {
-  color: #000;
-  font-size: 15px;
+  color: #fff;
+  font-size: 14px;
   font-family: Raleway-Medium !important;
   font-style: normal !important;
   font-weight: normal !important;
   -webkit-font-smoothing: antialiased !important;
-}
-.page-user-profile .homebox .portlet-content .view.view-patron-rewads-for-patron-dashboard:before {
-  background: url("../images/libraryzurb/reward-dash.png") no-repeat;
 }
 .page-user-profile .homebox .portlet-content .view.view-patron-rewads-for-patron-dashboard .view-content {
   display: table;
@@ -11027,56 +11048,24 @@ body .alert-box.success a.close:hover {
   width: 65%;
   float: right;
   padding-top: 20px;
-  font-size: 15px;
+  font-size: 14px;
   font-family: Raleway-Medium !important;
   font-style: normal !important;
   font-weight: normal !important;
   -webkit-font-smoothing: antialiased !important;
-  color: #000;
+  color: #fff;
 }
 .page-user-profile .homebox .portlet-content .view.view-booklist-on-activities-page {
   counter-reset: section;
 }
-.page-user-profile .homebox .portlet-content .view.view-booklist-on-activities-page:before {
-  background: url("../images/libraryzurb/booklist-dash.png") no-repeat;
-}
-.page-user-profile .homebox .portlet-content .view.view-booklist-on-activities-page .view-footer p {
-  text-align: center;
-  margin-top: 10px;
-  width: 100%;
-}
-.page-user-profile .homebox .portlet-content .view.view-booklist-on-activities-page .view-footer p a {
-  width: 100%;
+.page-user-profile .homebox .portlet-content .view.view-booklist-on-activities-page .view-footer a.button {
   display: inline-block;
-  margin: 0;
-  padding: 7px 22px;
-  color: #32024e !important;
-  font-family: SpecialElite !important;
-  font-weight: normal !important;
-  font-style: normal !important;
-  -webkit-font-smoothing: antialiased !important;
-  -moz-osx-font-smoothing: grayscale !important;
-  font-size: 17px;
-  background: #f6f45a;
-  padding: 10px 20px 7px;
-  -webkit-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
-  -moz-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
-  box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
-  border: none;
-  text-transform: capitalize;
-}
-.page-user-profile .homebox .portlet-content .view.view-booklist-on-activities-page .view-footer p a:hover, .page-user-profile .homebox .portlet-content .view.view-booklist-on-activities-page .view-footer p a:focus {
-  color: #32024e;
-  background: #feed40 !important;
-  opacity: 1;
-  outline: none;
-}
-.page-user-profile .homebox .portlet-content .view.view-booklist-on-activities-page .view-footer p a:hover {
-  text-decoration: underline !important;
+  width: 100%;
+  margin-left: 0;
 }
 .page-user-profile .homebox .portlet-content .view.view-booklist-on-activities-page .view-header h3 {
   font-size: 15px;
-  color: #000;
+  color: #fff;
   font-family: Raleway-Bold !important;
   font-style: normal !important;
   font-weight: normal !important;
@@ -11089,7 +11078,7 @@ body .alert-box.success a.close:hover {
   list-style: none;
 }
 .page-user-profile .homebox .portlet-content .view.view-booklist-on-activities-page ol li .views-field-title a {
-  color: #000;
+  color: #fff;
   font-size: 15px;
   font-family: Raleway-Medium !important;
   font-style: normal !important;
@@ -11104,9 +11093,6 @@ body .alert-box.success a.close:hover {
 }
 .page-user-profile .homebox .portlet-content .view.view-my-book-reviews {
   counter-reset: section;
-}
-.page-user-profile .homebox .portlet-content .view.view-my-book-reviews:before {
-  background: url("../images/libraryzurb/review-dash.png") no-repeat;
 }
 .page-user-profile .homebox .portlet-content .view.view-my-book-reviews .view-empty p:nth-of-type(1) {
   text-align: left;
@@ -11143,50 +11129,21 @@ body .alert-box.success a.close:hover {
 .page-user-profile .homebox .portlet-content .view.view-my-book-reviews .view-empty p:nth-of-type(2) a:hover {
   text-decoration: underline !important;
 }
-.page-user-profile .homebox .portlet-content .view.view-my-book-reviews .view-footer p {
-  text-align: center;
-  width: 100%;
-  margin-top: 10px;
-}
-.page-user-profile .homebox .portlet-content .view.view-my-book-reviews .view-footer p a {
+.page-user-profile .homebox .portlet-content .view.view-my-book-reviews .view-footer a.button {
   width: 100%;
   display: inline-block;
-  margin: 0;
-  padding: 7px 22px;
-  color: #32024e !important;
-  font-family: SpecialElite !important;
-  font-weight: normal !important;
-  font-style: normal !important;
-  -webkit-font-smoothing: antialiased !important;
-  -moz-osx-font-smoothing: grayscale !important;
-  font-size: 17px;
-  background: #f6f45a;
-  padding: 10px 20px 7px;
-  -webkit-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
-  -moz-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
-  box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
-  border: none;
-  text-transform: capitalize;
-}
-.page-user-profile .homebox .portlet-content .view.view-my-book-reviews .view-footer p a:hover, .page-user-profile .homebox .portlet-content .view.view-my-book-reviews .view-footer p a:focus {
-  color: #32024e;
-  background: #feed40 !important;
-  opacity: 1;
-  outline: none;
-}
-.page-user-profile .homebox .portlet-content .view.view-my-book-reviews .view-footer p a:hover {
-  text-decoration: underline !important;
+  margin-left: 0;
 }
 .page-user-profile .homebox .portlet-content .view.view-my-book-reviews .view-empty {
-  font-size: 15px;
+  font-size: 14px;
   font-family: Raleway-Medium !important;
   font-style: normal !important;
   font-weight: normal !important;
   -webkit-font-smoothing: antialiased !important;
-  color: #000;
+  color: #fff;
 }
 .page-user-profile .homebox .portlet-content .view.view-my-book-reviews .view-header h3 {
-  color: #000;
+  color: #fff;
   font-size: 15px;
   font-family: Raleway-Bold !important;
   font-style: normal !important;
@@ -11204,7 +11161,7 @@ body .alert-box.success a.close:hover {
   margin-left: 0;
 }
 .page-user-profile .homebox .portlet-content .view.view-my-book-reviews .view-content ol li a, .page-user-profile .homebox .portlet-content .view.view-my-book-reviews .view-content ul li a {
-  color: #000;
+  color: #fff;
   font-family: Raleway-Medium !important;
   font-style: normal !important;
   font-weight: normal !important;
@@ -11218,12 +11175,9 @@ body .alert-box.success a.close:hover {
   padding-right: 5px;
   display: inline-block;
 }
-.page-user-profile .homebox .portlet-content .view.view-my-activities-for-patron-dashboard:before {
-  background: url("../images/libraryzurb/activities-dash.png") no-repeat;
-}
 .page-user-profile .homebox .portlet-content .view.view-my-activities-for-patron-dashboard .view-header a {
-  font-size: 15px;
-  color: #000;
+  font-size: 14px;
+  color: #fff;
   font-family: Raleway-Bold !important;
   font-style: normal !important;
   font-weight: normal !important;
@@ -11238,17 +11192,17 @@ body .alert-box.success a.close:hover {
   width: 100%;
 }
 .page-user-profile .homebox .portlet-content .view.view-my-activities-for-patron-dashboard .view-content .views-row .field-content div {
-  width: 49%;
+  width: 50%;
   float: left;
-  font-size: 15px;
-  color: #000;
+  font-size: 14px;
+  color: #fff;
   font-family: Raleway-Medium !important;
   font-style: normal !important;
   font-weight: normal !important;
   -webkit-font-smoothing: antialiased !important;
 }
-.page-user-profile .homebox .portlet-content .view.view-my-activities-for-patron-dashboard .view-content .views-row .field-content div:nth-of-type(2) {
-  margin-left: 1%;
+.page-user-profile .homebox .portlet-content .view.view-my-activities-for-patron-dashboard .view-content .views-row .field-content div:nth-of-type(2) span {
+  padding-right: 5px;
 }
 .page-user-profile .homebox .portlet-content .view.view-my-activities-for-patron-dashboard .view-footer div {
   text-align: center;
@@ -11334,7 +11288,6 @@ body .alert-box.success a.close:hover {
 .page-messages div.main {
   background: #32024e;
   overflow: hidden;
-  border-radius: 20px;
   margin-bottom: 25px;
   position: relative;
   padding: 0;
@@ -11350,50 +11303,16 @@ body .alert-box.success a.close:hover {
   font-style: normal !important;
   -webkit-font-smoothing: antialiased !important;
   -moz-osx-font-smoothing: grayscale !important;
-  padding-top: 26px;
-  padding-bottom: 25px;
-  font-size: 28px;
-  height: 110px;
+  background: #7eb600;
+  padding-top: 15px;
+  padding-bottom: 10px;
+  font-size: 26px;
   border-bottom: medium none;
   margin-top: -1px;
   padding-left: 4%;
   z-index: 0;
   position: relative;
-}
-.page-messages div.main #page-title:after {
-  content: "";
-  width: 100%;
-  height: 110px;
-  display: block;
-  visibility: visible;
-  position: absolute;
-  top: 0;
-  left: 0;
-  background: url("../images/libraryzurb/background-saffron.png") no-repeat;
-  background-position: -35px 10px;
-  -webkit-transform: rotate(180deg);
-  -moz-transform: rotate(180deg);
-  -ms-transform: rotate(180deg);
-  -o-transform: rotate(180deg);
-  transform: rotate(180deg);
-  z-index: -1;
-}
-.page-messages div.main ul.pagination.pager {
-  float: right;
-  margin-right: 20px;
-}
-.page-messages div.main ul.pagination.pager li a {
-  background: #f6f45a;
-  color: #000;
-  border-left: 1px solid #000;
-  padding: 10px;
-}
-.page-messages div.main ul.pagination.pager li.arrow.first a {
-  border-left: 0 !important;
-  border-radius: 10px 0px 0px 10px;
-}
-.page-messages div.main ul.pagination.pager li.arrow.last a {
-  border-radius: 0px 10px 10px 0px;
+  margin-bottom: 25px;
 }
 .page-messages div.main ul.button-group li a {
   font-size: 17px;
@@ -13308,6 +13227,25 @@ body .alert-box.success a.close:hover {
 
 /**end**/
 /**css for user own review and booklist indivisual ***/
+.page-my-reviews .view-my-book-reviews .view-content .views-row {
+  border-bottom: 1px solid #cccccc;
+  padding-top: 20px;
+  padding-bottom: 50px;
+}
+
+.page-my-reviews .view-my-book-reviews .view-content .views-row .views-field.views-field-count .views-label-count {
+  font-size: 17px;
+  font-family: SpecialElite !important;
+  font-weight: normal !important;
+  font-style: normal !important;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+}
+
+.page-my-reviews .view-my-book-reviews .view-content .views-row .views-field.views-field-title {
+  padding-bottom: 20px;
+}
+
 .page-my-reviews .block-quicktabs .quicktabs-wrapper .quicktabs-tabs, .page-my-booklist .block-quicktabs .quicktabs-wrapper .quicktabs-tabs {
   background: none !important;
 }
@@ -14934,6 +14872,9 @@ body .alert-box.success a.close:hover {
 }
 
 /**css for progress report***/
+.page-progress-report #page-title, .page-progress #page-title {
+  display: none;
+}
 .page-progress-report .main, .page-progress .main {
   padding: 25px 0px;
   background: #32024e;
@@ -15086,8 +15027,8 @@ body .alert-box.success a.close:hover {
   display: inline-block;
 }
 .page-progress-report .main .progress-wrap .report-acivity .block form .form-item-activity-progress-select, .page-progress .main .progress-wrap .report-acivity .block form .form-item-activity-progress-select {
-  margin: 0;
-  width: 66%;
+  margin: 0 0 20px 0;
+  width: 100%;
   float: left;
 }
 .page-progress-report .main .progress-wrap .report-acivity .block form .form-item-activity-progress-select label, .page-progress .main .progress-wrap .report-acivity .block form .form-item-activity-progress-select label {
@@ -15101,7 +15042,7 @@ body .alert-box.success a.close:hover {
   margin-right: 10px;
 }
 .page-progress-report .main .progress-wrap .report-acivity .block form .form-item-activity-progress-select .activities_list_progress, .page-progress .main .progress-wrap .report-acivity .block form .form-item-activity-progress-select .activities_list_progress {
-  width: 66% !important;
+  width: 74% !important;
   float: left;
   height: auto !important;
 }
@@ -15135,7 +15076,7 @@ body .alert-box.success a.close:hover {
   display: inline-block;
 }
 .page-progress-report .main .progress-wrap .report-acivity .block form .container-inline-date, .page-progress .main .progress-wrap .report-acivity .block form .container-inline-date {
-  width: 34%;
+  width: 100%;
   float: left;
   clear: none;
 }
@@ -15161,10 +15102,17 @@ body .alert-box.success a.close:hover {
   float: left;
 }
 .page-progress-report .main .progress-wrap .report-acivity .block form .container-inline-date > .form-item.form-item-date .date-padding, .page-progress .main .progress-wrap .report-acivity .block form .container-inline-date > .form-item.form-item-date .date-padding {
-  width: 80%;
+  width: 81%;
+  float: left;
 }
 .page-progress-report .main .progress-wrap .report-acivity .block form .container-inline-date > .form-item.form-item-date .date-padding label, .page-progress .main .progress-wrap .report-acivity .block form .container-inline-date > .form-item.form-item-date .date-padding label {
   display: none;
+}
+.page-progress-report .main .progress-wrap .report-acivity .block form .container-inline-date > .form-item.form-item-date .date-padding input, .page-progress .main .progress-wrap .report-acivity .block form .container-inline-date > .form-item.form-item-date .date-padding input {
+  width: 110px;
+}
+.page-progress-report .main .progress-wrap .report-acivity .block form .container-inline-date > .form-item.form-item-date .date-padding .form-item-date-date, .page-progress .main .progress-wrap .report-acivity .block form .container-inline-date > .form-item.form-item-date .date-padding .form-item-date-date {
+  float: none !important;
 }
 .page-progress-report .main .progress-wrap .report-acivity .block form .container-inline-date > .form-item.form-item-date .date-padding .description, .page-progress .main .progress-wrap .report-acivity .block form .container-inline-date > .form-item.form-item-date .date-padding .description {
   display: none;
@@ -15172,12 +15120,13 @@ body .alert-box.success a.close:hover {
 .page-progress-report .main .progress-wrap .reward-won, .page-progress .main .progress-wrap .reward-won {
   display: table-cell;
   vertical-align: middle;
+  background: #fff;
+  border-left: 10px solid #32024e;
+  border-right: 10px solid #32024e;
 }
 .page-progress-report .main .progress-wrap .reward-won .view, .page-progress .main .progress-wrap .reward-won .view {
   color: #32024e;
   background: #fff;
-  width: 92%;
-  margin: 0 auto;
   padding: 22px;
 }
 .page-progress-report .main .progress-wrap .reward-won .view .pager, .page-progress .main .progress-wrap .reward-won .view .pager {
@@ -15219,7 +15168,7 @@ body .alert-box.success a.close:hover {
   -webkit-font-smoothing: antialiased !important;
 }
 .page-progress-report .main .progress-wrap .progress-rewards, .page-progress .main .progress-wrap .progress-rewards {
-  width: 22%;
+  padding: 20px;
   display: table-cell;
   vertical-align: middle;
   font-size: 22px;
@@ -15300,6 +15249,7 @@ body .alert-box.success a.close:hover {
   -moz-osx-font-smoothing: grayscale !important;
   line-height: 1.2;
   font-size: 14px;
+  margin-bottom: 0;
 }
 .page-progress-report .main .progress-main .new-row > .grid p.won-rew, .page-progress .main .progress-main .new-row > .grid p.won-rew {
   position: absolute;
@@ -15795,12 +15745,6 @@ p {
   font-weight: normal !important;
   -webkit-font-smoothing: antialiased !important;
   margin-bottom: 23px;
-  display: inline-block;
-}
-
-.form-textarea-wrapper p {
-  display: block !important;
-  width: 100%;
 }
 
 /**

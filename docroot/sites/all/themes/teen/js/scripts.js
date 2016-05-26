@@ -35,6 +35,8 @@
         for(var i = 0; i < divs.length; i+=6) {
         divs.slice(i, i+6).wrapAll("<div class='new-row'></div>");
     }
+    //add class to progress grid having congratulation msg
+    $('.grid.inserted:has(.won-rew)').addClass('active-background');
     //Announcement block in landing page make image field as background image
      $('.block.announcement').each(function() {
   if ($(this).find('img').length) {
@@ -44,6 +46,26 @@
   }
    
   });
+     //MyDashboard page hide homebox add buttons when dragable homebox blocks are visible
+     var activites =$('.homebox-draggable:has(.view-my-activities-for-patron-dashboard)').addClass('dashboard-activities');
+var rewards =$('.homebox-draggable:has(.view-patron-rewads-for-patron-dashboard)').addClass('dashboard-rewards');
+var reviews =$('.homebox-draggable:has(.view-my-book-reviews)').addClass('dashboard-reviews');
+var booklist =$('.homebox-draggable:has(.view-booklist-on-activities-page)').addClass('dashboard-booklists');
+var follow =$('.homebox-draggable:has(.view-follow)').addClass('dashboard-following');
+var leadeboard =$('.homebox-draggable:has(.view-leadeboard)').addClass('dashboard-leaderboard');
+var progress =$('.homebox-draggable:has(.msg-highlight)').addClass('dashboard-progress');
+var obj =$("#homebox-add ul li");
+$.each( obj , function( key, value ) {
+$(value).addClass($(value).find('a').text().toLowerCase());
+ var crntState =$('.dashboard-'+$(value).find('a').text().toLowerCase()).css('display');
+  if (crntState != 'undefined') { 
+    if (crntState == 'block') {
+     $(value).hide();
+    } else  {
+     $(value).show();
+    }
+  }
+});
       //reward page give same counter list to two different views
        $('.page-rewards .view-program-rewards-raffle .views-row').insertAfter('.page-rewards .view-program-rewards .views-row:nth-last-child(1)');
       // select list option with thier link
