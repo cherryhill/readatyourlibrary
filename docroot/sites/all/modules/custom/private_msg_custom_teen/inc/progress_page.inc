@@ -199,7 +199,7 @@ function progress_print_page(){
     }
     $output .= '</div>';
   }
-  
+  echo $output;die();
   //pdf for progress page
   require_once("sites/all/modules/contrib/print/lib/dompdf/dompdf_config.inc.php");
   $dompdf = new DOMPDF;
