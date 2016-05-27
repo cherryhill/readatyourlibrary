@@ -108,6 +108,7 @@ function specefic_user_nodes($current_uid){
 }
 
 function progress_print_page(){
+  echo $_SERVER['DOCUMENT_ROOT']; die;
   global $user;
   global $base_url;
   $uid = $user->uid;
@@ -146,7 +147,7 @@ function progress_print_page(){
       <h1 id = 'title'>$pg_title</h1>
       <div class = 'progress-desc'>$page_desc</div>
       <div class = 'user-desc'>
-        <img src = '/sites/default/files/styles/avatar_dashboard/public/avatars/1F431.png'>$u_name
+        <img src = 'sites/default/files/styles/avatar_dashboard/public/avatars/1F431.png'>$u_name
         <div class = 'point-status'>
           <div class = 'activity-status'>Activities Completed: $activity_completed activities</div>
           <div class = 'activity-remaining'>Activities Left to Complete: $activities_left activities</div>
