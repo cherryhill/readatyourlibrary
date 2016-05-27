@@ -57,11 +57,9 @@ function user_avatar_progress_print_page($uid){
 
   global $user;
   $user_pf = profile2_load_by_user($user->uid);
-  $user_main = user_load($uid);
 
   $img_id = $user_pf['main']->field_user_avatar['und'][0]['target_id'];
-  $user_name = $user_main->name;
-
+  
   $query = db_select('field_data_field_avatar_image', 't');
   $query->join('file_managed', 'n', 'n.fid = t.field_avatar_image_fid');
   $result = $query
@@ -113,7 +111,6 @@ function progress_print_page(){
   global $user;
   global $base_url;
   $uid = $user->uid;
- 
 
   $u_name = $user->name;
   $u_avatar = user_avatar_progress_print_page($uid);
@@ -164,7 +161,7 @@ function progress_print_page(){
     </div>
   </div>
   ";
-
+echo $output;die;
   foreach ($nodes as $key => $value) {
     $node_date = $value->field_completion_date['und'][0]['value'];
     $user_reward = $value->field_won_reward['und'][0]['value'];
