@@ -692,43 +692,43 @@ function generate_csv_of_raffle_user() {
       $email = $v['mail'];
       $raffle_count = $v['count'];
       if($user_name == '') {
-        $user_name = ',';  
+        $user_name = ' ';  
       }
       else {
         $user_name = $v['name'];  
       }
       if($first_name == '') {
-        $first_name = ',';  
+        $first_name = ' ';  
       }
       else {
         $first_name = $v['first_name'];  
       }
       if($last_name == '') {
-        $last_name = ',';  
+        $last_name = ' ';  
       }
       else {
         $last_name = $v['last_name'];  
       }
       if($date_of_birth == '') {
-        $date_of_birth = ',';  
+        $date_of_birth = ' ';  
       }
       else {
         $date_of_birth = $v['date_of_birth'];  
       }
       if($phone_no == '') {
-        $phone_no = ',';
+        $phone_no = ' ';
       }
       else {
         $phone_no = $v['phone_no'];  
       }
       if($email == '') {
-        $email = ',';
+        $email = ' ';
       }
       else {
         $email = $v['mail'];
       }
       if($raffle_count == '') {
-        $raffle_count = ',';
+        $raffle_count = ' ';
       }
       else {
         $raffle_count = $v['count'];
@@ -763,9 +763,11 @@ function generate_csv_of_raffle_user() {
     'Email',
     'Number of tickets',
   );
-  $result .= implode("\t", $keys) . "\n";
+
+
+  $result .= implode(",", $keys) . "\n";
   foreach ($output as $value1) {
-    $result .= implode("\t", $value1) . "\n";
+    $result .= implode(",", $value1) . "\n";
   }
   
   echo $result;
