@@ -161,7 +161,7 @@ function progress_print_page(){
     </div>
   </div>
   ";
-
+echo $output;die;
   foreach ($nodes as $key => $value) {
     $node_date = $value->field_completion_date['und'][0]['value'];
     $user_reward = $value->field_won_reward['und'][0]['value'];
