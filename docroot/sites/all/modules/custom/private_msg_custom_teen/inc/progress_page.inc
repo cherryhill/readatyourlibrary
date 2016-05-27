@@ -114,7 +114,7 @@ function progress_print_page(){
   $uid = $user->uid;
 
   $u_name = $user->name;
- echo $u_avatar_image = user_avatar_progress_print_page($uid);
+  echo $u_avatar_image = user_avatar_progress_print_page($uid);
   echo $av_img = explode('docroot/', $u_avatar_image);
   echo $u_avatar = $av_img[1];die();
 
