@@ -108,6 +108,7 @@ function specefic_user_nodes($current_uid){
 }
 
 function progress_print_page(){
+  echo $_SERVER['DOCUMENT_ROOT']; die;
   global $user;
   global $base_url;
   $uid = $user->uid;
