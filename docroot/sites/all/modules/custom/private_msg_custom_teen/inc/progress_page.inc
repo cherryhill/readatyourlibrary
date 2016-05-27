@@ -161,7 +161,7 @@ function progress_print_page(){
     </div>
   </div>
   ";
-echo $output;die;
+
   foreach ($nodes as $key => $value) {
     $node_date = $value->field_completion_date['und'][0]['value'];
     $user_reward = $value->field_won_reward['und'][0]['value'];
@@ -170,36 +170,37 @@ echo $output;die;
     $hotspot_type_activity = '';
     $n_date = date("m.d.y", strtotime($node_date));
 
-  if($node_type_hotspot){
-    $hotspot_type_activity = '<p class = "hotspot-activity">Bay Area Hot Spot!</p>';
-  }
-  if($user_reward){
-    $user_won_reward = '<p class  = "won-rew">Congratulations! You have earned a prize!</p>';
-  }
+    if($node_type_hotspot){
+      $hotspot_type_activity = '<p class = "hotspot-activity">Bay Area Hot Spot!</p>';
+    }
+    
+    if($user_reward){
+      $user_won_reward = '<p class  = "won-rew">Congratulations! You have earned a prize!</p>';
+    }
 
     $node_nid[] = '<p class  = "date-pg">'.$n_date.'</p>'.$hotspot_type_activity.'<p class = "title-pg">'.$value->title.'</p>'.$user_won_reward;
   }
 
-  $i=0; $gr = ceil($grids/6);
-  for($j=0;$j<$gr;$j++){
+  $i = 0; $gr = ceil($grids/6);
+  for($j = 0; $j < $gr; $j++){
     $output.= "<div class = 'new-row'>";
-    for($k=0; $k < 6; $k++){
-    if(isset($node_nid[$i])){
-      $output.= "<div class = 'grid inserted' id = 'cells$i'>".$node_nid[$i]."</div>";
+    for($k = 0; $k < 6; $k++){
+      if(isset($node_nid[$i])){
+        $output .= "<div class = 'grid inserted' id = 'cells$i'>" . $node_nid[$i] . "</div>";
+      }
+      else{
+        $output .= "<div class = 'grid' id = 'cells$i'></div>";
+      }
+      $i++;
     }
-    else{
-      $output.= "<div class = 'grid' id = 'cells$i'></div>";
-    }
-    $i++;
+    $output .= '</div>';
   }
-  $output.= '</div>';
-  }
-  // echo $output;
-
+  
   //pdf for progress page
   require_once("sites/all/modules/contrib/print/lib/dompdf/dompdf_config.inc.php");
   $dompdf = new DOMPDF;
-  $html = stripslashes($output); 
+  $html = stripslashes($output);
+  echo $html; die;
   $dompdf->load_html(utf8_decode($html));
   $dompdf->render();
   $font = Font_Metrics::get_font("din", "regular");
