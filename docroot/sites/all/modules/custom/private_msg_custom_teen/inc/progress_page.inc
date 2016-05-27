@@ -114,9 +114,9 @@ function progress_print_page(){
   $uid = $user->uid;
 
   $u_name = $user->name;
-  echo $u_avatar_image = user_avatar_progress_print_page($uid);
-  echo $av_img = explode('docroot/', $u_avatar_image);
-  echo $u_avatar = $av_img[1];die();
+  $u_avatar_image = user_avatar_progress_print_page($uid);
+  $av_img = explode($base_url.'/', $u_avatar_image);
+  $u_avatar = $av_img[1];
 
   $grids = variable_get('no_of_grids');
   $pg_title = variable_get('pg_title');
@@ -199,7 +199,7 @@ function progress_print_page(){
     }
     $output .= '</div>';
   }
-  echo $output;die();
+  
   //pdf for progress page
   require_once("sites/all/modules/contrib/print/lib/dompdf/dompdf_config.inc.php");
   $dompdf = new DOMPDF;
