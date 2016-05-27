@@ -200,7 +200,6 @@ function progress_print_page(){
   require_once("sites/all/modules/contrib/print/lib/dompdf/dompdf_config.inc.php");
   $dompdf = new DOMPDF;
   $html = stripslashes($output);
-  echo $html; die;
   $dompdf->load_html(utf8_decode($html));
   $dompdf->render();
   $font = Font_Metrics::get_font("din", "regular");
