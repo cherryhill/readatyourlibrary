@@ -108,13 +108,16 @@ function specefic_user_nodes($current_uid){
 }
 
 function progress_print_page(){
-  echo $_SERVER['DOCUMENT_ROOT']; die;
+
   global $user;
   global $base_url;
   $uid = $user->uid;
 
   $u_name = $user->name;
-  $u_avatar = user_avatar_progress_print_page($uid);
+  $u_avatar_image = user_avatar_progress_print_page($uid);
+  $av_img = explode('docroot/', $u_avatar_image);
+  $u_avatar = $av_img[1];
+
   $grids = variable_get('no_of_grids');
   $pg_title = variable_get('pg_title');
   $page_desc = variable_get('pg_desc', array('value' => '', 'format' => NULL));
@@ -147,7 +150,7 @@ function progress_print_page(){
       <h1 id = 'title'>$pg_title</h1>
       <div class = 'progress-desc'>$page_desc</div>
       <div class = 'user-desc'>
-        <img src = 'sites/default/files/styles/avatar_dashboard/public/avatars/1F431.png'>$u_name
+        <img src = '$u_avatar'>$u_name
         <div class = 'point-status'>
           <div class = 'activity-status'>Activities Completed: $activity_completed activities</div>
           <div class = 'activity-remaining'>Activities Left to Complete: $activities_left activities</div>
