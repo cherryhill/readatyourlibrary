@@ -159,57 +159,57 @@ function private_msg_custom_teen_form_profile2_edit_main_form_alter(&$form, $for
 
   $form['profile_main']['field_user_avatar'] = array('#attributes' => array('style' => 'display:none'));
 
-  $query = db_select('field_data_field_avatar_type','type');
-  $query->fields('type',array('field_avatar_type_tid','entity_id'));
-  $query->join('eck_user_avatar','eck','eck.id = type.entity_id');
-  $query->join('taxonomy_term_data','tax','tax.tid = type.field_avatar_type_tid');
-  $query->fields('tax',array('name'));
-  $query->fields('eck',array('title'));
-  $query_avatar = $query->execute()->fetchAll();
+    $query = db_select('field_data_field_avatar_type','type');
+    $query->fields('type',array('field_avatar_type_tid','entity_id'));
+    $query->join('eck_user_avatar','eck','eck.id = type.entity_id');
+    $query->join('taxonomy_term_data','tax','tax.tid = type.field_avatar_type_tid');
+    $query->fields('tax',array('name'));
+    $query->fields('eck',array('title'));
+    $query_avatar = $query->execute()->fetchAll();
+    $output = '';
+    $output .= '<div style="border:1px solid red;">';
 
-  foreach ($query_avatar as $key => $value) {
-    $tax_name[$value->field_avatar_type_tid] = $value->name;
-    $avatar_name[$value->field_avatar_type_tid][] = $value->entity_id;
-  }
+    foreach ($query_avatar as $key => $value) {
+      $as = $value->name;
+      $tax_name[$value->field_avatar_type_tid] = $value->name;
+      $tax_name[$value->field_avatar_type_tid] = $value->name;
+      $avatar_name[$value->field_avatar_type_tid][] = $value->entity_id;
+    }
 
-  $num_avatar = !empty($form_state['values']['avatar_select']) ? $form_state['values']['avatar_select'] : 1;
-  $none_array = array(0 => '-None-');
-  $array2 = $tax_name + $none_array;
+    foreach ($tax_name as $key => $value) {
+      $output .= '<div style="border:1px solid blue; float:left;margin-left:10px">'. $value . '</div>';
+    }
 
-  $form['avatar_select'] = array(
-    '#title' => t('What kind of avatar do you want?'),
-    '#type' => 'select',
-    '#options' => $array2,
-    '#ajax' => array(
-      'callback' => 'ajax_autocheckboxes_callback_avatar_teen',
-      'wrapper' => 'checkboxes-div',
-      'effect' => 'slide',
-      'progress' => array('type' => 'none'),
-    ),
-    '#weight' => 10,
-  );
-
-  $form['checkboxes_fieldset'] = array(
-    '#title' => t("Avatars"),
-    '#prefix' => '<div id="checkboxes-div">',
-    '#suffix' => '</div>',
-    '#type' => 'fieldset',
-    '#weight' => 11,
-  );
-
-  foreach ($avatar_name[$num_avatar] as $key => $value) {
-    $form['checkboxes_fieldset']["avatar_checkbox-$value"] = array(
-      '#type' => 'checkbox',
-      '#title' => avatar_images_list_teen($value),
-      '#prefix' => '<div class="$value">',
+    $form['checkboxes_fieldset'] = array(
+      '#title' => t("Avatars"),
+      '#prefix' => '<div id="checkboxes-div">',
       '#suffix' => '</div>',
-      '#attributes' => array(
-          'class' => array(
-            'user_avatar'
-          ),
-       ),
+      '#type' => 'fieldset',
+      '#weight' => 11,
     );
-  }
+
+    $form['checkboxes_fieldset']['description'] = array('#markup' => '<div>' . t('What kind of avatar do you want?').'</div>');
+
+    foreach ($tax_name as $key => $value) {
+      $form['checkboxes_fieldset']['checkboxes_fieldset2'.$value] = array(
+        '#title' => $value,
+        '#prefix' => '<div id="checkboxes-d">',
+        '#suffix' => '</div>',
+        '#type' => 'fieldset',
+        '#weight' => 11,
+      );
+      foreach ($avatar_name[$key] as $key1 => $value2) {
+        $form['checkboxes_fieldset']['checkboxes_fieldset2'.$value]["avatar_checkbox-".$value2] = array(
+          '#type' => 'radio',
+          '#title' => avatar_images_list_teen($value2),
+          '#prefix' => '<div class="avatar_radio">',
+          '#suffix' => '</div>',
+          '#attributes' => array(
+            'class' => array('av_radio')
+          )
+        );
+      } 
+    }  
   array_unshift($form['#submit'], 'submit_for_avatar_teen');
 }
 
@@ -221,13 +221,13 @@ function avatar_images_list_teen($value) {
   $result = $query
     ->fields('n', array('uri'))
     ->condition('t.entity_id', $value)
-    ->execute();
-    $img_uri = $result->fetchObject();
-    $img_uri = $img_uri->uri;
-    $style = 'avatar_style';
-    $img_path = image_style_url($style, $img_uri);
-    $img = "<img src='$img_path'>";
-  return $img;
+    ->execute()
+    ->fetchAssoc();
+  $img_uri_path = $result['uri'];
+  $style = 'avatar_style';
+  $img_path = image_style_url($style, $img_uri_path);
+  $img = "<img src='$img_path'>";
+return $img;
 }
 
 
@@ -240,7 +240,7 @@ function ajax_autocheckboxes_callback_avatar_teen($form, $form_state) {
 function submit_for_avatar_teen($form, $form_state) {
 
   foreach ($form_state['values'] as $key => $value) {
-    if($value == 1){
+    if($value === 'on'){
       $avatar_entity = 'avatar_checkbox-';
       $av_entity_id = strpos($key, $avatar_entity);
 

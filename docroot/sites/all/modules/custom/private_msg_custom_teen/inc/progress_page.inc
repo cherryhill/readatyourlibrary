@@ -68,9 +68,9 @@ function user_avatar_progress_print_page($uid){
     ->execute();
 
   $img_uri = $result->fetchObject();
-  $img_uri = $img_uri->uri;
+  $img_uri_path = $img_uri->uri;
   $style = 'avatar_dashboard';
-  $img_path = image_style_url($style, $img_uri);
+  $img_path = image_style_url($style, $img_uri_path);
   return $img_path;
 }
 
@@ -113,6 +113,7 @@ function progress_print_page(){
   global $base_url;
   $uid = $user->uid;
 
+  $u_avatar = '';
   $u_name = $user->name;
   $u_avatar_image = user_avatar_progress_print_page($uid);
   $av_img = explode($base_url.'/', $u_avatar_image);
@@ -200,7 +201,7 @@ function progress_print_page(){
     $output .= '</div>';
   }
 
-  //pdf for progress page 
+  // pdf for progress page 
   require_once("sites/all/modules/contrib/print/lib/dompdf/dompdf_config.inc.php");
   $dompdf = new DOMPDF;
   $html = stripslashes($output);
