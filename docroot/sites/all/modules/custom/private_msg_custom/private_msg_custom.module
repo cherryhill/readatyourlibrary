@@ -190,13 +190,13 @@ function avatar_images_list($value) {
   $result = $query
     ->fields('n', array('uri'))
     ->condition('t.entity_id', $value)
-    ->execute();
-    $img_uri = $result->fetchObject();
-    $img_uri = $img_uri->uri;
-    $style = 'avatar_style';
-    $img_path = image_style_url($style, $img_uri);
-    $img = "<img src='$img_path'>";
-  return $img;
+    ->execute()
+    ->fetchAssoc();
+  $img_uri_path = $result['uri'];
+  $style = 'avatar_style';
+  $img_path = image_style_url($style, $img_uri_path);
+  $img = "<img src='$img_path'>";
+return $img;
 }
 
 
@@ -368,7 +368,7 @@ function pm_block_view() {
  */
 function homepage_slider(){
 
-  $output .= '<ul class="booklist-pager"><input type="radio" name="colorRadio" id="r1" value="blslider1" checked><label for="r1"></label><input type="radio" name="colorRadio" id="r2" value="blslider2"><label for="r2"></label><input type="radio" name="colorRadio" id="r3" value="blslider3"><label for="r3"></label></ul>';
+  $output = '<ul class="booklist-pager"><input type="radio" name="colorRadio" id="r1" value="blslider1" checked><label for="r1"></label><input type="radio" name="colorRadio" id="r2" value="blslider2"><label for="r2"></label><input type="radio" name="colorRadio" id="r3" value="blslider3"><label for="r3"></label></ul>';
   $block = module_invoke('views', 'block_view', 'booklist_slideshow-block_2');
   $output .= '<div class="blslider1 slide">'. render($block['content']). '</div>';
 
@@ -386,7 +386,7 @@ function homepage_slider(){
  */
 function header_menu_mobile(){
 
-  $output .= '<div class = "mobile_menu">';
+  $output = '<div class = "mobile_menu">';
 
   $block = module_invoke('views', 'block_view', 'top_block-block_2');
   $output .= render($block['content']);
