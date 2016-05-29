@@ -29,7 +29,10 @@
         }
       });
       //change position of review title after viewfilter in all review pages
+      $('.activity-desc').insertAfter('.view-filters');
       $('.reviews-subtitle').insertAfter('.view-filters');
+
+
       //for progress page table format of divs wrap every 6 divs in single div
          var divs = $("div.progress-main > div.grid");
         for(var i = 0; i < divs.length; i+=6) {
