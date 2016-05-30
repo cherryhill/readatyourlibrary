@@ -47,7 +47,15 @@ $(value).addClass($(value).find('a').text().toLowerCase());
       }
    
   });
-
+     //make accordian of avtar images in user register page
+        var panels = $('.page-user-register #checkboxes-div #checkboxes-div .fieldset-wrapper').hide();
+    
+        $('.page-user-register #checkboxes-div #checkboxes-div legend .fieldset-legend').click(function() {
+          panels.slideUp();
+        $(this).parent().next('.fieldset-wrapper').toggle();
+        $(this).toggleClass('open');
+        return false;
+      });
       // Get width of browser viewport. **Note:** The value we check against
       // should probably match the value set for `$topbar-breakpoint` in
       // libraryzurb/scss/_variables.scss.
