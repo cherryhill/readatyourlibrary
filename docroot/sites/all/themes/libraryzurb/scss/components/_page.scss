@@ -563,7 +563,7 @@
 		 		}
    		 	.view-content {
    		 		.views-row {
-	   		 		display: table;
+	   		 		display: inline-block;
 	   		 		width: 100%;
 		   		 		.views-field {
 		   		 		 	display: table-row;
@@ -2736,6 +2736,38 @@
 /**end**/
 /**page register**/
 .page-user-register {
+	#checkboxes-div {
+		#checkboxes-div {
+			.form-wrapper {
+              padding: 0;
+              @include noborder;
+              margin: 0;
+               legend {
+               	width: 100%;
+               	display: inline-block;
+               	 .fieldset-legend {
+               	 	width: 100%;
+               	 	display: inline-block;
+               	 	background: $yellow;
+               	 	position: relative;
+               	 	padding: 10px 16px;
+               	 	@include mclaren;
+               	 	  &.open {
+               	 	  	&:after {
+               	 	  		@include rotate(180deg);
+               	 	  	} 
+               	 	  }
+               	 	   &:after {
+               	 	   	 @include previous(0px, 0px, $right: 16px, $top: 48%);
+               	 	   	 border-left: 7px solid transparent;
+               	 	   	 border-right: 7px solid transparent;
+               	 	   	 border-top: 8px solid $black;
+               	 	   }
+               	 }
+               }
+			}
+		}
+	}
 	#user-register-form {
 		#edit-field-user-random-list-1, #edit-field-user-random-list-3 {
            width: 23%;

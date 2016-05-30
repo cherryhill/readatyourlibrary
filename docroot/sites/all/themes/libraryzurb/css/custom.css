@@ -10478,7 +10478,7 @@ body .alert-box.success a.close:hover {
   color: #000;
 }
 .section-programs .main .view.view-display-id-page .view-content .views-row {
-  display: table;
+  display: inline-block;
   width: 100%;
 }
 .section-programs .main .view.view-display-id-page .view-content .views-row .views-field {
@@ -13656,6 +13656,50 @@ body .alert-box.success a.close:hover {
 
 /**end**/
 /**page register**/
+.page-user-register #checkboxes-div #checkboxes-div .form-wrapper {
+  padding: 0;
+  border: none !important;
+  outline: none !important;
+  margin: 0;
+}
+.page-user-register #checkboxes-div #checkboxes-div .form-wrapper legend {
+  width: 100%;
+  display: inline-block;
+}
+.page-user-register #checkboxes-div #checkboxes-div .form-wrapper legend .fieldset-legend {
+  width: 100%;
+  display: inline-block;
+  background: #fdeb52;
+  position: relative;
+  padding: 10px 16px;
+  font-family: McLaren-Regular !important;
+  font-weight: normal !important;
+  font-style: normal !important;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+  text-rendering: optimizeLegibility !important;
+  -moz-font-smoothing: grayscale !important;
+}
+.page-user-register #checkboxes-div #checkboxes-div .form-wrapper legend .fieldset-legend.open:after {
+  -webkit-transform: rotate(180deg);
+  -moz-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  -o-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+.page-user-register #checkboxes-div #checkboxes-div .form-wrapper legend .fieldset-legend:after {
+  content: "";
+  width: 0px;
+  height: 0px;
+  display: block;
+  visibility: visible;
+  position: absolute;
+  top: 48%;
+  right: 16px;
+  border-left: 7px solid transparent;
+  border-right: 7px solid transparent;
+  border-top: 8px solid #000;
+}
 .page-user-register #user-register-form #edit-field-user-random-list-1, .page-user-register #user-register-form #edit-field-user-random-list-3 {
   width: 23%;
   float: left;
@@ -14455,6 +14499,7 @@ body .alert-box.success a.close:hover {
 .pre-header .pre-header-left section .view .views-field {
   float: left;
   margin-left: 10px;
+  line-height: 1.4;
 }
 .pre-header .pre-header-left section .view .views-field a {
   background-color: #267fda;
