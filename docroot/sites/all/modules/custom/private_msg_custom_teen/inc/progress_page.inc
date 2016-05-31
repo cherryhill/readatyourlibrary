@@ -143,28 +143,86 @@ function progress_print_page(){
   );
 
   $nodes = entity_load('node',FALSE,$criteria);
-  $output = '';
+  $output = '<style>
+
+     .main {
+       width: 100%;
+       display: inline-block;
+       padding: 25px 2%;
+       background: #32024e;
+       color: #fff;
+     }
+     h1#title {
+        font-size: 26px;
+        color: #fff;
+        font-weight: normal;
+        margin: 0;
+     }
+     .progress-desc p {
+      font-weight: bold;  
+     }
+     .user-desc {
+       width: 100%;
+       background: #7EB600;
+       padding: 25px 0;
+       vertical-align: middle;
+        border-collapse: separate;
+       border-spacing: 10px;
+     }
+    
+     .middle-block {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 20px;
+      margin-top: 25px;
+     }
+     .report-activity {
+      background: #fff;
+      color: #32024e;
+      padding: 20px;
+     }
+     .progress-rewards {
+       background: #F6F45A;
+      color: #32024e;
+      padding: 20px;
+      text-align: center;
+     }
+     .grid p {
+       font-size: 10px;
+       margin: 0;
+       line-height: 1.2;
+     }
+     .inserted {
+      background-image: url("$base_url/sites/all/themes/teen/images/libraryzurb/complete.gif");
+      background-repeat: no-repeat;
+      background-position: center bottom 20px;
+     }
+  </style>';
   $output .= "
   <div class = '$base_url/sites/images'></div>
   <div class = 'main'>
     <div class = 'progress-page'>
+    
       <h1 id = 'title'>$pg_title</h1>
       <div class = 'progress-desc'>$page_desc</div>
-      <div class = 'user-desc'>
-        <img src = '$u_avatar'>$u_name
-        <div class = 'point-status'>
-          <div class = 'activity-status'>Activities Completed: $activity_completed activities</div>
-          <div class = 'activity-remaining'>Activities Left to Complete: $activities_left activities</div>
-          <div class = 'raffle'>Raffle Tickets Earned: </div>
-        </div>
-      </div>
-      <div class = 'middle-block'>
-        <div class = 'report-activity'>$user_rew_block</div>
-        <div class = 'progress-rewards'>$rew_block</div>
-      </div>
-      <div class='progress-main'><h2>My Passport Stamps</h2></div>
-    </div>
-  </div>
+      <table class = 'user-desc'>
+        <tr>
+        <td style='width: 34%; color: #fff; vertical-align: bottom;' class='avtar_id'><img style='display: inline-block; vertical-align: bottom;' src = '$u_avatar'>$u_name</td>
+        <!--<div class = 'point-status'>-->
+          <td class = 'activity-status' style='width: 22%; vertical-align: middle; color: #fff; font-size: 14px;'>Activities Completed: $activity_completed activities</td>
+          <td class = 'activity-remaining' style='width: 22%; vertical-align: middle; color: #fff; font-size: 14px;'>Activities Left to Complete: $activities_left activities</td>
+          <td class = 'raffle' style='width: 22%; vertical-align: middle; color: #fff; font-size: 14px;'>Raffle Tickets Earned: </td>
+       <!-- </div>-->
+        </tr>
+      </table>
+      <table class = 'middle-block'>
+      <tr>
+        <td class = 'report-activity'>$user_rew_block</td>
+        <td class = 'progress-rewards'>$rew_block</td>
+        </tr>
+      </table>
+      <div class='progress-main'><h2 style='font-size: 17px; font-weight: normal; padding: 10px 0 10px 20px; display: inline-block;  position: relative; top: 5px; background: #7EB600; color: #fff; margin: 0;  '>My Passport Stamps</h2></div>
+      <table style='width: 100%;'>
   ";
 
   foreach ($nodes as $key => $value) {
@@ -188,20 +246,22 @@ function progress_print_page(){
 
   $i = 0; $gr = ceil($grids/6);
   for($j = 0; $j < $gr; $j++){
-    $output.= "<div class = 'new-row'>";
+    $output.= "<tr class = 'new-row'>";
     for($k = 0; $k < 6; $k++){
       if(isset($node_nid[$i])){
-        $output .= "<div class = 'grid inserted' id = 'cells$i'>" . $node_nid[$i] . "</div>";
+        $output .= "<td class = 'grid inserted' id = 'cells$i' style='background: #fff; color:  #32024e; border: 0.5px solid #ccc; width: 16.6%; height: 10px; padding: 10px;'>" . $node_nid[$i] . "</td>";
       }
       else{
-        $output .= "<div class = 'grid' id = 'cells$i'></div>";
+        $output .= "<td class = 'grid' id = 'cells$i' style='background: #fff; color:  #32024e; border: 0.5px solid #ccc; width: 16.6%; height: 50px; padding: 10px;'></td>";
       }
       $i++;
     }
-    $output .= '</div>';
+    $output .= '</tr>';
   }
+  $output .= '</table></div></div>';
+  /*echo $output;*/
 
-  // pdf for progress page 
+  //pdf for progress page 
   require_once("sites/all/modules/contrib/print/lib/dompdf/dompdf_config.inc.php");
   $dompdf = new DOMPDF;
   $html = stripslashes($output);
