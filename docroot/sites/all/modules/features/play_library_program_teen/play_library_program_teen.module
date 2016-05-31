@@ -493,7 +493,7 @@ function play_library_program_create_reward_claim($reward_id, $account_id, $raff
 	    $mail_notifications = $onscreen_msg->field_reward_notification_value;
 	  }
 
-	  db_insert('reward_notification_patron')
+	  db_insert('reward_notification_patron_teen')
 	   ->fields(array(
 	    'reward_name' => $res_title,
 	    'reward_id' => $res_id,
