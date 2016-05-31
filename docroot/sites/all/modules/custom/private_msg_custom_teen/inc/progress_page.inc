@@ -221,7 +221,7 @@ function progress_print_page(){
         <td class = 'progress-rewards'>$rew_block</td>
         </tr>
       </table>
-      <div class='progress-main'><h2 style='font-size: 17px; font-weight: normal; padding: 10px 0 10px 20px; display: inline-block;  position: relative; top: 5px; background: red; color: #fff; margin: 0;  '>My Passport Stamps</h2></div>
+      <div class='progress-main'><h2 style='font-size: 17px; font-weight: normal; padding: 10px 0 10px 20px; display: inline-block;  position: relative; top: 5px; background: #7EB600; color: #fff; margin: 0;  '>My Passport Stamps</h2></div>
       <table style='width: 100%;'>
   ";
 
