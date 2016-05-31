@@ -656,6 +656,9 @@ function generate_csv_of_raffle_user() {
   
   foreach($res as $v) {
     $uid = $v->uid;
+    $user_roles = user_load($uid);
+    $role_name = array_values($user_roles->roles);
+    $role_name = $role_name[1];
     $name = $v->name;
     $first_name = $v->field_user_first_name_value;
     $last_name = $v->field_user_last_name_value;
@@ -676,15 +679,18 @@ function generate_csv_of_raffle_user() {
       $count = $rs->rowCount();
 
       if ($count) {
-        $raffle_users_list[$uid] = array('count' => 1, 'raffle_winner' => 'Yes', 'name' => $name, 'first_name' => $first_name, 'last_name' => $last_name, 'date_of_birth' => $date_of_birth, 'phone_no' => $phone_no, 'mail' => $mail);
+        $raffle_users_list[$uid] = array('serial_no.' => $i, 'count' => 1, 'raffle_winner' => 'Yes', 'name' => $name, 'user_role' => $role_name, 'first_name' => $first_name, 'last_name' => $last_name, 'date_of_birth' => $date_of_birth, 'phone_no' => $phone_no, 'mail' => $mail);
       } else {
-        $raffle_users_list[$uid] = array('count' => 1, 'raffle_winner' => 'No', 'name' => $name, 'first_name' => $first_name, 'last_name' => $last_name, 'date_of_birth' => $date_of_birth, 'phone_no' => $phone_no, 'mail' => $mail);
+        $raffle_users_list[$uid] = array('serial_no.' => $i, 'count' => 1, 'raffle_winner' => 'No', 'name' => $name, 'user_role' => $role_name, 'first_name' => $first_name, 'last_name' => $last_name, 'date_of_birth' => $date_of_birth, 'phone_no' => $phone_no, 'mail' => $mail);
       }
     }
   }
 
+  $i = 1;
+
   foreach($raffle_users_list as $k => $v) {      
       $user_name = $v['name'];
+      $user_role = $v['user_role'];
       $first_name = $v['first_name'];
       $last_name = $v['last_name'];
       $date_of_birth = $v['date_of_birth'];
@@ -696,6 +702,12 @@ function generate_csv_of_raffle_user() {
       }
       else {
         $user_name = $v['name'];  
+      }
+      if($user_role == '') {
+        $user_role = ' ';  
+      }
+      else {
+        $user_role = $v['user_role'];  
       }
       if($first_name == '') {
         $first_name = ' ';  
@@ -737,7 +749,9 @@ function generate_csv_of_raffle_user() {
     $raffle_winner = $v['raffle_winner'];
     $operation = "<input class = 'raffle-prospective-winners' type = 'checkbox' id = 'chkbox_$k'>";
     $output[] = array(
+      'Serial_no.' => $i, 
       'name' => $user_name,
+      'user_role' => $user_role, 
       'first_name' => $first_name,
       'last_name' => $last_name,
       'date_of_birth' => $date_of_birth,
@@ -745,6 +759,7 @@ function generate_csv_of_raffle_user() {
       'email' => $email,
       'number_of_tickets' => $raffle_count,
     );
+    $i++;
   }
 
   $time = date('m-d-Y', time());
@@ -755,7 +770,9 @@ function generate_csv_of_raffle_user() {
   drupal_add_http_header('Content-Disposition', 'attachment; filename =' .$filename);
   $result = '';
   $keys = array(
+    'Serial no.',
     'Name',
+    'User role',
     'First name',
     'Last name',
     'Date of birth',
