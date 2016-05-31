@@ -1,0 +1,100 @@
+<?php
+
+/* schema for reward notification on screen */
+function reward_notifications_teen_schema() {
+
+  $schema['reward_notification_patron_teen'] = array(
+    'description' => 'On Screen message when a user gets an award',
+    'fields' => array(
+      'id' => array(
+        'description' => 'id field',
+        'type' => 'serial',
+        'not null' => TRUE,
+        'unsigned' => TRUE,
+      ),
+      'uid' => array(
+        'description' => 'User id',
+        'type' => 'int',
+        'not null' => TRUE,
+      ),
+      'type' => array(
+        'description' => 'reward type',
+        'type' => 'varchar',
+        'length' => '255',
+      ),
+      'reward_id' => array(
+        'description' => 'Id of reward claimed',
+        'type' => 'int',
+        'not null' => TRUE,
+      ),
+      'reward_name' => array(
+        'description' => 'Name of reward received',
+        'type' => 'varchar',
+        'length' => '255',
+      ),
+      'reward_notifications' => array(
+        'description' => 'On screen notification',
+        'type' => 'varchar',
+        'length' => '1000',
+      ),
+      'reward_mail_notifications' => array(
+        'description' => 'Mail notification',
+        'type' => 'varchar',
+        'length' => '255',
+      ),
+     'notifications_read' => array(
+        'description' => 'To check notification is read or not',
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+    ),
+    'primary key' => array('id'),       
+  );
+
+ /* schema for reward-winners list */
+  $schema['winner_list_teen'] = array(
+    'description' => 'showing of winners list',
+	'fields' => array(
+	  'id' => array(
+	    'description' => 'id field',
+	    'type' => 'serial',
+	    'not null' => TRUE,
+	    'unsigned' => TRUE,
+	  ),
+	  'uid' => array(
+	    'description' => 'User id',
+	    'type' => 'int',
+	    'not null' => TRUE,
+	  ),
+      'reward_id' => array(
+        'description' => 'Id of reward claimed',
+        'type' => 'int',
+        'not null' => TRUE,
+      ),
+      'reward_receieved_date' => array(
+        'description' => 'Date the reward is receieved',
+        'type' => 'varchar',
+        'length' => '255',
+      ),
+      'staff_notes' => array(
+        'description' => 'Staff notes',
+        'type' => 'varchar',
+        'length' => '255',
+      ),
+      'reward_name' => array(
+        'description' => 'Name of reward received',
+        'type' => 'varchar',
+        'length' => '255',
+      ),
+      'reward_status' => array(
+        'description' => 'checked/unchecked',
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+    ),
+    'primary key' => array('id'),       
+  );
+  return $schema;
+}

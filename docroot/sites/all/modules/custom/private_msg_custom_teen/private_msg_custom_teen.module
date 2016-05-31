@@ -453,6 +453,7 @@ function pm_block_view_teen() {
 
   global $user;
   $current_user = $user->uid;
+  $new = '';
 
   $query_pm = db_select('pm_index','pi');
   $query_pm->fields('pi',array('mid','is_new','deleted'));
