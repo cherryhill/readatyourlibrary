@@ -27,27 +27,27 @@ function complete_activity_progress(){
 
 function user_avatar_progress_page($uid){
 
-	global $user;
-	$user_pf = profile2_load_by_user($user->uid);
-	$user_main = user_load($uid);
+  global $user;
+  $user_pf = profile2_load_by_user($user->uid);
+  $user_main = user_load($uid);
 
-	$img_id = $user_pf['main']->field_user_avatar['und'][0]['target_id'];
-	$user_name = $user_main->name;
+  $img_id = $user_pf['main']->field_user_avatar['und'][0]['target_id'];
+  $user_name = $user_main->name;
 
-	$query = db_select('field_data_field_avatar_image', 't');
-	$query->join('file_managed', 'n', 'n.fid = t.field_avatar_image_fid');
-	$result = $query
-	  ->fields('n', array('uri'))
-	  ->condition('t.entity_id', $img_id)
-	  ->execute();
+  $query = db_select('field_data_field_avatar_image', 't');
+  $query->join('file_managed', 'n', 'n.fid = t.field_avatar_image_fid');
+  $result = $query
+    ->fields('n', array('uri'))
+    ->condition('t.entity_id', $img_id)
+    ->execute();
 
-	$img_uri = $result->fetchObject();
-	$img_uri = $img_uri->uri;
-	$style = 'avatar_dashboard';
-	$img_path = image_style_url($style, $img_uri);
+  $img_uri = $result->fetchObject();
+  $img_uri = $img_uri->uri;
+  $style = 'avatar_dashboard';
+  $img_path = image_style_url($style, $img_uri);
 
-	$img = "<img src='$img_path'>";
-	return $img.$user_name;
+  $img = "<img src='$img_path'>";
+  return $img.$user_name;
 }
 
 /**
@@ -162,12 +162,12 @@ function progress_print_page(){
       font-weight: bold;  
      }
      .user-desc {
-       width: 100%;
-       background: #7EB600;
-       padding: 25px 0;
-       vertical-align: middle;
-        border-collapse: separate;
-       border-spacing: 10px;
+      width: 100%;
+      background: #7EB600;
+      padding: 25px 0;
+      vertical-align: middle;
+      border-collapse: separate;
+      border-spacing: 10px;
      }
     
      .middle-block {
@@ -182,7 +182,7 @@ function progress_print_page(){
       padding: 20px;
      }
      .progress-rewards {
-       background: #F6F45A;
+      background: #F6F45A;
       color: #32024e;
       padding: 20px;
       text-align: center;
@@ -193,9 +193,12 @@ function progress_print_page(){
        line-height: 1.2;
      }
      .inserted {
-      background-image: url("$base_url/sites/all/themes/teen/images/libraryzurb/complete.gif");
-      background-repeat: no-repeat;
-      background-position: center bottom 20px;
+      background-image: url("sites/all/themes/teen/images/libraryzurb/complete.gif") !important;
+      background-repeat: no-repeat !important;
+      background-position: center bottom 20px !important;
+     }
+     .user-won{
+      background: #F6F45A !important;
      }
   </style>';
   $output .= "
@@ -243,23 +246,33 @@ function progress_print_page(){
 
     $node_nid[] = '<p class  = "date-pg">'.$n_date.'</p>'.$hotspot_type_activity.'<p class = "title-pg">'.$value->title.'</p>'.$user_won_reward;
   }
+  $test = $user_reward;
 
   $i = 0; $gr = ceil($grids/6);
   for($j = 0; $j < $gr; $j++){
     $output.= "<tr class = 'new-row'>";
+
     for($k = 0; $k < 6; $k++){
+
       if(isset($node_nid[$i])){
-        $output .= "<td class = 'grid inserted' id = 'cells$i' style='background: #fff; color:  #32024e; border: 0.5px solid #ccc; width: 16.6%; height: 10px; padding: 10px;'>" . $node_nid[$i] . "</td>";
+
+        if (strpos($node_nid[$i], 'Congratulations') !== false) {
+          $output .= "<td class = 'grid inserted user-won' id = 'cells$i' style='background: #fff; color:  #32024e; border: 0.5px solid #ccc; width: 16.6%; height: 10px; padding: 10px;'>" . $node_nid[$i] . "</td>";
+        }
+        else{
+          $output .= "<td class = 'grid inserted' id = 'cells$i' style='background: #fff; color:  #32024e; border: 0.5px solid #ccc; width: 16.6%; height: 10px; padding: 10px;'>" . $node_nid[$i] . "</td>";
+        }
       }
       else{
         $output .= "<td class = 'grid' id = 'cells$i' style='background: #fff; color:  #32024e; border: 0.5px solid #ccc; width: 16.6%; height: 50px; padding: 10px;'></td>";
       }
+
       $i++;
     }
     $output .= '</tr>';
   }
   $output .= '</table></div></div>';
-  /*echo $output;*/
+  // echo $output;
 
   //pdf for progress page 
   require_once("sites/all/modules/contrib/print/lib/dompdf/dompdf_config.inc.php");
