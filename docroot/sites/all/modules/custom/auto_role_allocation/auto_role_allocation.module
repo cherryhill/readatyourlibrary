@@ -652,6 +652,7 @@ function generate_csv_of_raffle_user() {
   $query->fields('lbtd', array('name'));
   $query->fields('phno', array('field_user_phone_value'));
   $res = $query->execute()->fetchAll();
+
   $raffle_users_list = array();
   
   foreach($res as $v) {
@@ -660,6 +661,7 @@ function generate_csv_of_raffle_user() {
     $role_name = array_values($user_roles->roles);
     $role_name = $role_name[1];
     $name = $v->name;
+    $library_branch = $v->lbtd_name;
     $first_name = $v->field_user_first_name_value;
     $last_name = $v->field_user_last_name_value;
     $date_of_birth = $v->field_user_birthday_value;
@@ -679,9 +681,9 @@ function generate_csv_of_raffle_user() {
       $count = $rs->rowCount();
 
       if ($count) {
-        $raffle_users_list[$uid] = array('serial_no.' => $i, 'count' => 1, 'raffle_winner' => 'Yes', 'name' => $name, 'user_role' => $role_name, 'first_name' => $first_name, 'last_name' => $last_name, 'date_of_birth' => $date_of_birth, 'phone_no' => $phone_no, 'mail' => $mail);
+        $raffle_users_list[$uid] = array('serial_no.' => $i, 'count' => 1, 'raffle_winner' => 'Yes', 'name' => $name, 'library_branch' => $library_branch, 'user_role' => $role_name, 'first_name' => $first_name, 'last_name' => $last_name, 'date_of_birth' => $date_of_birth, 'phone_no' => $phone_no, 'mail' => $mail);
       } else {
-        $raffle_users_list[$uid] = array('serial_no.' => $i, 'count' => 1, 'raffle_winner' => 'No', 'name' => $name, 'user_role' => $role_name, 'first_name' => $first_name, 'last_name' => $last_name, 'date_of_birth' => $date_of_birth, 'phone_no' => $phone_no, 'mail' => $mail);
+        $raffle_users_list[$uid] = array('serial_no.' => $i, 'count' => 1, 'raffle_winner' => 'No', 'name' => $name, 'library_branch' => $library_branch, 'user_role' => $role_name, 'first_name' => $first_name, 'last_name' => $last_name, 'date_of_birth' => $date_of_birth, 'phone_no' => $phone_no, 'mail' => $mail);
       }
     }
   }
@@ -693,6 +695,7 @@ function generate_csv_of_raffle_user() {
       $user_role = $v['user_role'];
       $first_name = $v['first_name'];
       $last_name = $v['last_name'];
+      $library_branch = $v['library_branch'];
       $date_of_birth = $v['date_of_birth'];
       $phone_no = $v['phone_no'];
       $email = $v['mail'];
@@ -709,6 +712,13 @@ function generate_csv_of_raffle_user() {
       else {
         $user_role = $v['user_role'];  
       }
+      if($library_branch == '') {
+        $library_branch = ' ';  
+      }
+      else {
+        $library_branch = $v['library_branch'];  
+      }
+
       if($first_name == '') {
         $first_name = ' ';  
       }
@@ -754,6 +764,7 @@ function generate_csv_of_raffle_user() {
       'user_role' => $user_role, 
       'first_name' => $first_name,
       'last_name' => $last_name,
+      'library_branch' => $library_branch,
       'date_of_birth' => $date_of_birth,
       'phone_no' => $phone_no,
       'email' => $email,
@@ -775,6 +786,7 @@ function generate_csv_of_raffle_user() {
     'User role',
     'First name',
     'Last name',
+    'Library branch',
     'Date of birth',
     'Phone no',
     'Email',
