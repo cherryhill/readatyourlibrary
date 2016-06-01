@@ -857,10 +857,10 @@
 	 						a {
 	 							position: relative;
 	 					 			&.portlet-close {
-	 					  				background: url('../images/libraryzurb/close-img.png') no-repeat;
+	 					  				background: url('../images/libraryzurb/close-img1.png') no-repeat;
 									}
 					 				&.portlet-minus {
-					 				  	background: url('../images/libraryzurb/min-img.png') no-repeat;
+					 				  	background: url('../images/libraryzurb/min-img1.png') no-repeat;
 					 				  	padding-right: 23px;
 					 				} 
 				 				  	&.portlet-maximize {
@@ -3796,5 +3796,43 @@ display: block !important;
  		  	  }
  		  }
 
+ 	}
+ }
+ //css for leaderboard page
+ .page-leaderboard {
+ 	#page-title {
+      @include brushimg(left);
+      margin-bottom: 45px;
+ 	}
+ 	.view-leaderboard-page {
+ 		.view-content {
+ 			padding-left: 35px;
+ 			width: 100%;
+ 			display: inline-block;
+ 			  .half-content {
+ 			  	 display: table-cell;
+ 			  }
+ 			 .views-row {
+ 			 	 width: 100%;
+ 			 	 display: inline-block;
+ 			 	 margin-bottom: 25px;
+ 			 	  .views-field {
+ 			 	  	 &.views-field-counter, &.views-field-field-user-avatar, &.views-field-name {
+ 			 	  	 float: left;
+ 			 	  	 padding-right: 10px;
+ 			 	  	}
+ 			 	  	&.views-field-field-user-avatar {
+ 			 	  		img {
+ 			 	  			position: relative;
+ 			 	  			bottom: 10px;
+ 			 	  		}
+ 			 	  	}
+ 			 	  	&.views-field-php {
+ 			 	  		float: right;
+ 			 	  		padding-right: 15%;
+ 			 	  	}
+ 			 	  }
+ 			 }
+ 		}
  	}
  }
