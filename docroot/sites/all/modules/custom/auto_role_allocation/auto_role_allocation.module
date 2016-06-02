@@ -617,10 +617,11 @@ function raffle_user_list($form, &$form_state) {
     );
   }
 
+  // comment sumit button <input type = 'button' id = 'raffle-entry-list-btn' value = 'Submit' >
+
   $output = theme('table', array( 'header' => $tbl_header, 'rows' => $tbl_rows ));
   $output .= "<div class = 'raffle-list-submit'>
     <input type = 'hidden' value = '$reward_id' id = 'raffle_reward_id'>
-    <input type = 'button' id = 'raffle-entry-list-btn' value = 'Submit' >
     <a href = 'generate_csv?raffle_id=$active_raffle_id&reward_id=$reward_id&school=$school&organization=$organization&library_branch=$library_branch&grade=$grade'> Export raffle user</a>
   </div>";
 
