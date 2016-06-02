@@ -129,8 +129,8 @@ jQuery( document ).ready(function() {
   /* Jquery for script for raffle entry checkbox */
 
     jQuery( ".active_raffle" ).click(function() {
-        var location = window.location;
-        var baseUrl1 = location.protocol + "//" + location.host + 'raffle_pro';
+        //var location = window.location;
+        var baseUrl1 = Drupal.settings.basePath + 'raffle_pro';
 
       jQuery.ajax({
         
@@ -243,14 +243,14 @@ if(!div2.is(':empty')){
         // we need to copy it, so that multiple events don't have a reference to the same object
         var copiedEventObject = jQuery.extend({}, originalEventObject);
         copiedEventObject.description = copiedEventObject.title;
+        
         var calender_img = copiedEventObject.title; 
         var expl_img = calender_img.split("src");
-        var expl_img1 = expl_img[1].split("//");
-        var expl_img2 = expl_img1[1].split("?");
-        var expl_img3 = expl_img2[0].split("/");
-        //var image_name = expl_img3[9];
-        //var image_name = expl_img3[7];
-        var image_name = expl_img3[8];
+
+        var expl_img1 = expl_img[1].split("?");
+        var src_array = expl_img1[0].split('/');
+        var image_name = src_array[src_array.length - 1];
+
 
         
         console.log(copiedEventObject.title);
@@ -396,8 +396,8 @@ jQuery(document).on('click','#raffle_form_button',function() {
 
     
     
-        var location = window.location;
-        var baseUrl1 = location.protocol + "//" + location.host + 'raffle_user_list';
+        //var location = window.location;
+        var baseUrl1 = Drupal.settings.basePath + 'raffle_user_list';
         
         var raffleId = jQuery("input[name='raffle']:checked").attr('raffle_id');
 
@@ -432,8 +432,8 @@ jQuery(document).on('click','#raffle_form_button',function() {
 
 jQuery(document).on('click','#raffle-entry-list-btn',function() {
   
-  var location = window.location;
-  var baseUrl1 = location.protocol + "//" + location.host + 'raffle_winner';
+  //var location = window.location;
+  var baseUrl1 = Drupal.settings.basePath + 'raffle_winner';
   var raffleUid = '';
   jQuery( "input:checkbox:checked" ).each(function() { 
     var uid = jQuery( this ).attr( "id" );
