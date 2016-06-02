@@ -38,6 +38,11 @@
         for(var i = 0; i < divs.length; i+=6) {
         divs.slice(i, i+6).wrapAll("<div class='new-row'></div>");
     }
+    //leaderpage wrap 30 views-row in wrapper
+      var divs = jQuery(".view.view-leaderboard-page  div.views-row");
+   for(var i = 0; i < divs.length; i+=30) {
+   divs.slice(i, i+30).wrapAll("<div class='half-content'></div>");
+    }
     //add class to progress grid having congratulation msg
     $('.grid.inserted:has(.won-rew)').addClass('active-background');
     //Announcement block in landing page make image field as background image

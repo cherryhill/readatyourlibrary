@@ -59,8 +59,8 @@ jQuery( document ).ready(function() {
   /* Jquery for script for raffle entry checkbox */
 
     jQuery( ".active_raffle" ).click(function() {
-        var location = window.location;
-        var baseUrl1 = location.protocol + "//" + location.host + '/raffle_pro';
+        //var location = window.location;
+        var baseUrl1 = Drupal.settings.basePath + 'raffle_pro';
 
       jQuery.ajax({
         
@@ -209,9 +209,9 @@ if(!div2.is(':empty')){
             jQuery(this).remove();
         }
 
-        var loc = window.location;
-        var baseUrl = loc.protocol + "//" + loc.host + '/calendar';
-
+        //var loc = window.location;
+        //var baseUrl = loc.protocol + "//" + loc.host + 'calendar';
+          var baseUrl = Drupal.settings.basePath + 'calendar'; 
         var currentUser = Drupal.settings.auto_role_allocation.currentUser;
         if(time_string > event_date) {
           jQuery.ajax({
@@ -289,8 +289,9 @@ if(!div2.is(':empty')){
         var event_tit5 = event_tit4[1].split('/');
         var image_path = event_tit5[6];  
           
-        var loc = window.location;
-        var baseUrl = loc.protocol + "//" + loc.host + '/calendar';
+        //var loc = window.location;
+        //var baseUrl = loc.protocol + "//" + loc.host + '/kids2016/calendar';
+        var baseUrl = Drupal.settings.basePath + 'calendar';
         if(time_string1 > event_date1) {
           jQuery.ajax({        
             //url: 'http://localhost/playatyourlibrary/docroot/calendar',
@@ -333,8 +334,8 @@ jQuery(document).on('click','#raffle_form_button',function() {
 
     
     
-        var location = window.location;
-        var baseUrl1 = location.protocol + "//" + location.host + '/raffle_user_list';
+        //var location = window.location;
+        var baseUrl1 = Drupal.settings.basePath + 'raffle_user_list';
         
         var raffleId = jQuery("input[name='raffle']:checked").attr('raffle_id');
 
@@ -369,8 +370,8 @@ jQuery(document).on('click','#raffle_form_button',function() {
 
 jQuery(document).on('click','#raffle-entry-list-btn',function() {
   
-  var location = window.location;
-  var baseUrl1 = location.protocol + "//" + location.host + '/raffle_winner';
+  //var location = window.location;
+  var baseUrl1 = Drupal.settings.basePath + 'raffle_winner';
   var raffleUid = '';
   jQuery( "input:checkbox:checked" ).each(function() { 
     var uid = jQuery( this ).attr( "id" );
