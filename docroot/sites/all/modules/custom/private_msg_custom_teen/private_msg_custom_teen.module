@@ -79,7 +79,8 @@ function private_msg_custom_teen_menu() {
 
   $items['progress'] = array(
     'page callback' => 'progress_report_grid',
-    'access callback' => TRUE,
+    'access callback' => 'user_access',
+    'access arguements' => array('progress_page_access'),
     'type' => MENU_CALLBACK,
     'file' => 'inc/progress_page.inc',
     'file path' => drupal_get_path('module', 'private_msg_custom_teen'),
@@ -539,7 +540,6 @@ function creating_review($form, $form_state){
   $link_movie_review = $base_url.'/node/add/movie-review';
   $link_music_review = $base_url.'/node/add/music-review';
   $link_video_game_review = $base_url.'/node/add/video-game-review';
-  $link_booklist = $base_url.'/node/add/booklist';
   $link_activity_review = $base_url.'/node/add/review-activity';
 
   $values = array(0 => t('Select Review'),
@@ -547,8 +547,7 @@ function creating_review($form, $form_state){
     $link_activity_review => t('Activity Reviews'),
     $link_movie_review => t('Movie Reviews'),
     $link_music_review => t('Music Reviews'),
-    $link_video_game_review => t('Video Game Reviews'),
-    $link_booklist => t('Booklists'));
+    $link_video_game_review => t('Video Game Reviews'));
 
   $form['review_options'] = array(
     '#title' => t('Write A Review'),
@@ -902,9 +901,20 @@ function raffle_count($uid){
 }
 
 /**
+ * Implements hook_permission
+ */
+function private_msg_custom_teen_permission() {
+  return array(
+    'progress_page_access' => array(
+      'title' => t('View Progress Page Access'),
+      'description' => t('Access to view progress page'),
+    ),
+  );
+}
+/**
  * Function for testing purposes
  */
 
-function test_page(){
+function test_page() {
   return '';
 }
