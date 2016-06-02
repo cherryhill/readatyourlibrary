@@ -3,6 +3,7 @@
   global $user;
   global $base_url;
   $current_uid = $user->uid;
+  $raff_count = raffle_count($current_uid);
 ?>
 <div class="progress-page">
 <h1 id = "title">
@@ -29,7 +30,7 @@
   print 'Activities Left to Complete: '.$activities_left.' activities'; ?>
 </div>
 <div class="points">
-	<?php print 'Raffle Tickets Earned:'; ?>
+	<?php print 'Raffle Tickets Earned: '.$raff_count; ?>
 </div>
 </div>
 </div>

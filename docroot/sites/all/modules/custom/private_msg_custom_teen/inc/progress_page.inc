@@ -112,6 +112,7 @@ function progress_print_page(){
   global $user;
   global $base_url;
   $uid = $user->uid;
+  $raff_count = raffle_count($uid);
 
   $u_avatar = '';
   $u_name = $user->name;
@@ -214,7 +215,7 @@ function progress_print_page(){
         <!--<div class = 'point-status'>-->
           <td class = 'activity-status' style='width: 22%; vertical-align: middle; color: #fff; font-size: 14px;'>Activities Completed: $activity_completed activities</td>
           <td class = 'activity-remaining' style='width: 22%; vertical-align: middle; color: #fff; font-size: 14px;'>Activities Left to Complete: $activities_left activities</td>
-          <td class = 'raffle' style='width: 22%; vertical-align: middle; color: #fff; font-size: 14px;'>Raffle Tickets Earned: </td>
+          <td class = 'raffle' style='width: 22%; vertical-align: middle; color: #fff; font-size: 14px;'>Raffle Tickets Earned: $raff_count</td>
        <!-- </div>-->
         </tr>
       </table>
