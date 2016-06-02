@@ -537,23 +537,29 @@ function play_library_program_create_reward_claim($reward_id, $account_id, $raff
  * Creates a new raffle entry
  */
 function play_library_program_create_raffle_entry($raffle_id, $account_id) {
-    $raffles = entity_load('raffle', array($raffle_id));
-    $raffle = reset($raffles);
+  $user_uid = variable_get('follow_author');
+  $author_name = user_load_by_name($user_uid);
+  $author_uid = $author_name->uid;
+  
+  $raffles = entity_load('raffle', array($raffle_id));
+  $raffle = reset($raffles);
 
-    $title = t("@raffle on @time", array('@raffle' => $raffle->title, '@time' => date('Y-m-d H:i')));
-    $raffle_entry = entity_create('raffle', array('type' => 'raffle_entry', 'title' => $title, 'uid' => $account_id));
-    $raffle_entry->field_raffle_entry_raffle[LANGUAGE_NONE][0]['target_id'] = $raffle->id;
-    entity_save('raffle', $raffle_entry);
-    $query = db_select('field_data_field_reward_message', 'fdfrm');
-    $query->join('field_data_field_reward_raffle', 'fdfrf', 'fdfrf.entity_id = fdfrm.entity_id');
-    $query->join('field_data_field_reward_notification', 'fdfrn', 'fdfrn.entity_id = fdfrf.entity_id');
-    $query->condition('field_reward_raffle_target_id', $raffle_id);
-    $query->fields('fdfrm', array('field_reward_message_value'));
-    $query->fields('fdfrn', array('field_reward_notification_value'));
-    $res = $query->execute()->fetchAll();
-    $message = $res[0]->field_reward_message_value;
-    $notification = $res[0]->field_reward_notification_value;
-    drupal_set_message($message);
+  $title = t("@raffle on @time", array('@raffle' => $raffle->title, '@time' => date('Y-m-d H:i')));
+  $raffle_entry = entity_create('raffle', array('type' => 'raffle_entry', 'title' => $title, 'uid' => $account_id));
+  $raffle_entry->field_raffle_entry_raffle[LANGUAGE_NONE][0]['target_id'] = $raffle->id;
+  entity_save('raffle', $raffle_entry);
+  $query = db_select('field_data_field_reward_message', 'fdfrm');
+  $query->join('field_data_field_reward_raffle', 'fdfrf', 'fdfrf.entity_id = fdfrm.entity_id');
+  $query->join('field_data_field_reward_notification', 'fdfrn', 'fdfrn.entity_id = fdfrf.entity_id');
+  $query->condition('field_reward_raffle_target_id', $raffle_id);
+  $query->fields('fdfrm', array('field_reward_message_value'));
+  $query->fields('fdfrn', array('field_reward_notification_value'));
+  $res = $query->execute()->fetchAll();
+  $message = $res[0]->field_reward_message_value;
+  $notification = $res[0]->field_reward_notification_value;
+
+  privatemsg_new_thread(array(user_load($account_id)), $notification, $notification,array('author'=>user_load($author_uid)));
+  drupal_set_message($message);
 }
 
 /**
