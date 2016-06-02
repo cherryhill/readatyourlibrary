@@ -92,7 +92,7 @@ if($form_id == 'user_register_form') {
     drupal_add_js($setting, array('type' => 'setting'));
     drupal_add_js(drupal_get_path('module', 'payl_program_customizations_teen') . '/payl_program_customizations_teen.js');
     $form['current_username'] = array(
-      '#markup' => '<h3 class="username">Username: <span class="current-username"></span></h3>',
+      '#markup' => '<h3 class="username-curr">Username: <span class="current-username"></span></h3>',
       '#weight' => 1,
     );
 
