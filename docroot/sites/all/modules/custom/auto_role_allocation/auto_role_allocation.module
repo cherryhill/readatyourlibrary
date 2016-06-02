@@ -257,12 +257,12 @@ function auto_role_allocation_menu() {
     'access arguments' => array('access content'),
     'type' => MENU_CALLBACK,
   );
-  // $items['raffle_winner'] = array(
-  //   'title' => 'Raffle winner Process',
-  //   'page callback' => 'raffle_winner_ajax',
-  //   'access arguments' => array('access content'),
-  //   'type' => MENU_CALLBACK,
-  // );
+  $items['raffle_winner'] = array(
+    'title' => 'Raffle winner Process',
+    'page callback' => 'raffle_winner_ajax',
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
+  );
   $items['raffle_winner_list'] = array(
     'title' => 'Raffle Winner List',
     'page callback' => 'raffle_winner_user_list',
@@ -622,6 +622,7 @@ function raffle_user_list($form, &$form_state) {
   $output = theme('table', array( 'header' => $tbl_header, 'rows' => $tbl_rows ));
   $output .= "<div class = 'raffle-list-submit'>
     <input type = 'hidden' value = '$reward_id' id = 'raffle_reward_id'>
+
     <a href = 'generate_csv?raffle_id=$active_raffle_id&reward_id=$reward_id&school=$school&organization=$organization&library_branch=$library_branch&grade=$grade'> Export raffle user</a>
   </div>";
 
@@ -705,11 +706,11 @@ function generate_csv_of_raffle_user() {
     $date_of_birth = $v->field_user_birthday_value;
     $phone_no = $v->field_user_phone_value;
     $mail = $v->mail;
-    if (array_key_exists($uid, $raffle_users_list)) {
-      $temp = $raffle_users_list[$uid];
-      $temp['count'] = $temp['count'] + 1;
-      $raffle_users_list[$uid] = $temp;
-    } else {
+    // if (array_key_exists($uid, $raffle_users_list)) {
+    //   $temp = $raffle_users_list[$uid];
+    //   $temp['count'] = $temp['count'] + 1;
+    //   $raffle_users_list[$uid] = $temp;
+    // } else {
       // check if this user has won raffel before
       $qry = db_select('eck_raffle', 'r');
       $qry->condition('r.uid', $uid);
@@ -719,11 +720,11 @@ function generate_csv_of_raffle_user() {
       $count = $rs->rowCount();
 
       if ($count) {
-        $raffle_users_list[$uid] = array('serial_no.' => $i, 'count' => 1, 'raffle_winner' => 'Yes', 'name' => $name, 'library_branch' => $library_branch, 'user_role' => $role_name, 'first_name' => $first_name, 'last_name' => $last_name, 'date_of_birth' => $date_of_birth, 'phone_no' => $phone_no, 'mail' => $mail);
+        $raffle_users_list[] = array('serial_no.' => $i, 'raffle_winner' => 'Yes', 'name' => $name, 'library_branch' => $library_branch, 'user_role' => $role_name, 'first_name' => $first_name, 'last_name' => $last_name, 'date_of_birth' => $date_of_birth, 'phone_no' => $phone_no, 'mail' => $mail);
       } else {
-        $raffle_users_list[$uid] = array('serial_no.' => $i, 'count' => 1, 'raffle_winner' => 'No', 'name' => $name, 'library_branch' => $library_branch, 'user_role' => $role_name, 'first_name' => $first_name, 'last_name' => $last_name, 'date_of_birth' => $date_of_birth, 'phone_no' => $phone_no, 'mail' => $mail);
+        $raffle_users_list[] = array('serial_no.' => $i, 'raffle_winner' => 'No', 'name' => $name, 'library_branch' => $library_branch, 'user_role' => $role_name, 'first_name' => $first_name, 'last_name' => $last_name, 'date_of_birth' => $date_of_birth, 'phone_no' => $phone_no, 'mail' => $mail);
       }
-    }
+    //}
   }
 
   $i = 1;
@@ -737,7 +738,7 @@ function generate_csv_of_raffle_user() {
       $date_of_birth = $v['date_of_birth'];
       $phone_no = $v['phone_no'];
       $email = $v['mail'];
-      $raffle_count = $v['count'];
+      //$raffle_count = $v['count'];
       if($user_name == '') {
         $user_name = ' ';  
       }
@@ -787,12 +788,12 @@ function generate_csv_of_raffle_user() {
       else {
         $email = $v['mail'];
       }
-      if($raffle_count == '') {
-        $raffle_count = ' ';
-      }
-      else {
-        $raffle_count = $v['count'];
-      }
+      // if($raffle_count == '') {
+      //   $raffle_count = ' ';
+      // }
+      // else {
+      //   $raffle_count = $v['count'];
+      // }
       
     $raffle_winner = $v['raffle_winner'];
     $operation = "<input class = 'raffle-prospective-winners' type = 'checkbox' id = 'chkbox_$k'>";
@@ -806,7 +807,7 @@ function generate_csv_of_raffle_user() {
       'date_of_birth' => $date_of_birth,
       'phone_no' => $phone_no,
       'email' => $email,
-      'number_of_tickets' => $raffle_count,
+      //'number_of_tickets' => $raffle_count,
     );
     $i++;
   }
@@ -828,7 +829,7 @@ function generate_csv_of_raffle_user() {
     'Date of birth',
     'Phone no',
     'Email',
-    'Number of tickets',
+    //'Number of tickets',
   );
 
 
