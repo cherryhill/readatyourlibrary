@@ -10,6 +10,10 @@ function auto_role_allocation_permission() {
       'title' => t('Administer activity record'),
       'description' => t('Perform administration tasks for activity record.'),
     ),
+    'raffle_access_permission' => array(
+      'title' => t('Administer Raffle access'),
+      'description' => t('Perform administration tasks for raffle access.'),
+    ),
   );
 } 
 
@@ -235,32 +239,32 @@ function auto_role_allocation_menu() {
   $items['raffle'] = array(
     'title' => 'Raffle entry list',
     'page callback' => 'raffle_entry_process',
-    'access arguments' => array('access content'),
+    'access arguments' => array('raffle_access_permission'),
     'type' => MENU_CALLBACK,
   );
   $items['raffle_filter_form'] = array(
     'title' => 'Raffle Process',
     'page callback' => 'drupal_get_form',
     'page arguments' => array('raffle_entry_form'),
-    'access arguments' => array('access content'),
+    'access arguments' => array('raffle_access_permission'),
     'type' => MENU_CALLBACK,
   );
   $items['raffle_pro'] = array(
     'title' => 'Raffle Process',
     'page callback' => 'render_raffle_filter_form',
-    'access arguments' => array('access content'),
+    'access arguments' => array('raffle_access_permission'),
     'type' => MENU_CALLBACK,
   );
   $items['raffle_user_list'] = array(
     'title' => 'Raffle Process',
     'page callback' => 'raffle_user_list',
-    'access arguments' => array('access content'),
+    'access arguments' => array('raffle_access_permission'),
     'type' => MENU_CALLBACK,
   );
   $items['raffle_winner'] = array(
     'title' => 'Raffle winner Process',
     'page callback' => 'raffle_winner_ajax',
-    'access arguments' => array('access content'),
+    'access arguments' => array('raffle_access_permission'),
     'type' => MENU_CALLBACK,
   );
   $items['raffle_winner_list'] = array(
