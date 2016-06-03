@@ -833,14 +833,13 @@ function generate_csv_of_raffle_user() {
     'Library branch',
     'Date of birth',
     'Phone no',
-    'Email',
-    //'Number of tickets',
+    'Email'
   );
 
 
   $result .= implode(",", $keys) . "\n";
-  foreach ($output as $value1) {
-    $result .= implode(",", $value1) . "\n";
+  foreach ($output as $val) {
+    $result .= implode(",", $val) . "\n";
   }
   
   echo $result;
