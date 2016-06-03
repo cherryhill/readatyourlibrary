@@ -634,7 +634,7 @@ function raffle_user_list($form, &$form_state) {
 }
 
 function generate_csv_of_raffle_user() {
-  //$output = '';
+  $output = array();
   $raffle_id = $_GET['raffle_id'];
   $reward_id = $_GET['reward_id'];
   $school = $_GET['school'];
@@ -711,11 +711,11 @@ function generate_csv_of_raffle_user() {
     $date_of_birth = $v->field_user_birthday_value;
     $phone_no = $v->field_user_phone_value;
     $mail = $v->mail;
-    if (array_key_exists($uid, $raffle_users_list)) {
-      $temp = $raffle_users_list[$uid];
-      $temp['count'] = $temp['count'] + 1;
-      $raffle_users_list[$uid] = $temp;
-    } else {
+    // if (array_key_exists($uid, $raffle_users_list)) {
+    //   $temp = $raffle_users_list[$uid];
+    //   $temp['count'] = $temp['count'] + 1;
+    //   $raffle_users_list[$uid] = $temp;
+    // } else {
       // check if this user has won raffel before
       $qry = db_select('eck_raffle', 'r');
       $qry->condition('r.uid', $uid);
@@ -725,11 +725,11 @@ function generate_csv_of_raffle_user() {
       $count = $rs->rowCount();
 
       if ($count) {
-        $raffle_users_list[$uid] = array('serial_no.' => $i, 'raffle_winner' => 'Yes', 'name' => $name, 'library_branch' => $library_branch, 'user_role' => $role_name, 'first_name' => $first_name, 'last_name' => $last_name, 'date_of_birth' => $date_of_birth, 'phone_no' => $phone_no, 'mail' => $mail);
+        $raffle_users_list[] = array('serial_no.' => $i, 'raffle_winner' => 'Yes', 'name' => $name, 'library_branch' => $library_branch, 'user_role' => $role_name, 'first_name' => $first_name, 'last_name' => $last_name, 'date_of_birth' => $date_of_birth, 'phone_no' => $phone_no, 'mail' => $mail);
       } else {
-        $raffle_users_list[$uid] = array('serial_no.' => $i, 'raffle_winner' => 'No', 'name' => $name, 'library_branch' => $library_branch, 'user_role' => $role_name, 'first_name' => $first_name, 'last_name' => $last_name, 'date_of_birth' => $date_of_birth, 'phone_no' => $phone_no, 'mail' => $mail);
+        $raffle_users_list[] = array('serial_no.' => $i, 'raffle_winner' => 'No', 'name' => $name, 'library_branch' => $library_branch, 'user_role' => $role_name, 'first_name' => $first_name, 'last_name' => $last_name, 'date_of_birth' => $date_of_birth, 'phone_no' => $phone_no, 'mail' => $mail);
       }
-    }
+    //}
   }
 
   $i = 1;
@@ -838,13 +838,13 @@ function generate_csv_of_raffle_user() {
 
 
   $result .= implode(",", $keys) . "\n";
-  foreach ($output as $val) {
-    $result .= implode(",", $val) . "\n";
+  if (count($output)) {
+    foreach ($output as $val) {
+      $result .= implode(",", $val) . "\n";
+    }
   }
-  
   echo $result;
   exit;
-  
 }
 
 function _get_options($vocab_name) {
