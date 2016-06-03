@@ -690,6 +690,7 @@ function generate_csv_of_raffle_user() {
   $query->fields('user_birth', array('field_user_birthday_value'));
   $query->fields('lbtd', array('name'));
   $query->fields('phno', array('field_user_phone_value'));
+  $query->orderBy('name', 'ASc');
   $res = $query->execute()->fetchAll();
 
   $raffle_users_list = array();
