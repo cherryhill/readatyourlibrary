@@ -499,8 +499,8 @@ function raffle_user_list($form, &$form_state) {
   $query->join('field_data_field_user_last_name', 'ln', 'ln.entity_id = p.pid');
   $query->join('field_data_field_user_birthday', 'user_birth', 'user_birth.entity_id = p.pid');
   $query->leftJoin('field_data_field_user_phone', 'phno', 'phno.entity_id = p.pid');
-  $query->leftJoin('field_data_field_library_branch', 'lb', 'lb.entity_id = p.pid');
-  $query->leftJoin('taxonomy_term_data', 'lbtd', 'lbtd.tid = lb.field_library_branch_tid');
+  // $query->leftJoin('field_data_field_library_branch', 'lb', 'lb.entity_id = p.pid');
+  // $query->leftJoin('taxonomy_term_data', 'lbtd', 'lbtd.tid = lb.field_library_branch_tid');
 
   $cnd = array();
   if ($school != '') {
