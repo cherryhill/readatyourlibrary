@@ -639,7 +639,7 @@ function generate_csv_of_raffle_user() {
   $reward_id = $_GET['reward_id'];
   $school = $_GET['school'];
   $organization = $_GET['organization'];
-  $library_branch = trim($_GET['library_branch']);
+  $library_branch = $_GET['library_branch'];
   $grade = $_GET['grade'];
 
   $query = db_select('field_data_field_raffle_entry_raffle', 'rentry');
@@ -650,8 +650,6 @@ function generate_csv_of_raffle_user() {
   $query->join('field_data_field_user_last_name', 'ln', 'ln.entity_id = p.pid');
   $query->join('field_data_field_user_birthday', 'user_birth', 'user_birth.entity_id = p.pid');
   $query->leftJoin('field_data_field_user_phone', 'phno', 'phno.entity_id = p.pid');
-  $query->leftJoin('field_data_field_library_branch', 'lb', 'lb.entity_id = p.pid');
-  $query->leftJoin('taxonomy_term_data', 'lbtd', 'lbtd.tid = lb.field_library_branch_tid');
   
 
   $cnd = array();
