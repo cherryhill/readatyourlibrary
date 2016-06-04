@@ -552,7 +552,7 @@ function raffle_user_list($form, &$form_state) {
     $role_name = array_values($user_roles->roles);
     $role_name = $role_name[1];
     $name = $v->name;
-    $library_branch = $v->lbtd_name;
+    $library_branch_name = $v->lbtd_name;
     $first_name = $v->field_user_first_name_value;
     $last_name = $v->field_user_last_name_value;
     $date_of_birth = $v->field_user_birthday_value;
@@ -573,9 +573,9 @@ function raffle_user_list($form, &$form_state) {
       $count = $rs->rowCount();
 
       if ($count) {
-        $raffle_users_list[$uid] = array('count' => 1, 'raffle_winner' => 'Yes', 'name' => $name, 'library_branch' => $library_branch, 'user_role' => $role_name, 'first_name' => $first_name, 'last_name' => $last_name, 'date_of_birth' => $date_of_birth, 'phone_no' => $phone_no, 'mail' => $mail);
+        $raffle_users_list[$uid] = array('count' => 1, 'raffle_winner' => 'Yes', 'name' => $name, 'library_branch' => $library_branch_name, 'user_role' => $role_name, 'first_name' => $first_name, 'last_name' => $last_name, 'date_of_birth' => $date_of_birth, 'phone_no' => $phone_no, 'mail' => $mail);
       } else {
-        $raffle_users_list[$uid] = array('count' => 1, 'raffle_winner' => 'No', 'name' => $name, 'library_branch' => $library_branch, 'user_role' => $role_name, 'first_name' => $first_name, 'last_name' => $last_name, 'date_of_birth' => $date_of_birth, 'phone_no' => $phone_no, 'mail' => $mail);
+        $raffle_users_list[$uid] = array('count' => 1, 'raffle_winner' => 'No', 'name' => $name, 'library_branch' => $library_branch_name, 'user_role' => $role_name, 'first_name' => $first_name, 'last_name' => $last_name, 'date_of_birth' => $date_of_birth, 'phone_no' => $phone_no, 'mail' => $mail);
       }
     }
   }
@@ -599,7 +599,7 @@ function raffle_user_list($form, &$form_state) {
     $user_role = $v['user_role'];
     $first_name = $v['first_name'];
     $last_name = $v['last_name'];
-    $library_branch = $v['library_branch'];
+    $library_branch_name = $v['library_branch'];
     $date_of_birth = $v['date_of_birth'];
     $phone_no = $v['phone_no'];
     $email = $v['mail'];
@@ -611,7 +611,7 @@ function raffle_user_list($form, &$form_state) {
       array( 'data' => $user_role),
       array( 'data' => $first_name),
       array( 'data' => $last_name),
-      array( 'data' => $library_branch),
+      array( 'data' => $library_branch_name),
       array( 'data' => $date_of_birth),
       array( 'data' => $phone_no),
       array( 'data' => $email),
@@ -639,7 +639,7 @@ function generate_csv_of_raffle_user() {
   $reward_id = $_GET['reward_id'];
   $school = $_GET['school'];
   $organization = $_GET['organization'];
-  $library_branch = $_GET['library_branch'];
+  $library_branch = trim($_GET['library_branch']);
   $grade = $_GET['grade'];
 
   $query = db_select('field_data_field_raffle_entry_raffle', 'rentry');
