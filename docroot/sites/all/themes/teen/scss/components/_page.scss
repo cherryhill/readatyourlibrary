@@ -1373,6 +1373,12 @@
 				font-size: 24px;
 			}
 		}
+		.activity-desc {
+			padding-left: 25px;
+			 br {
+			 	display: none;
+			 }
+		}
 		.view-content {
 			padding-left: 35px;
 			 .views-row {
@@ -3554,6 +3560,8 @@ display: block !important;
  		  	width: 100%;
  		  	display: table;
  		  	margin-top: 25px;
+ 		  	border-collapse: separate;
+ 		  	border-spacing: 10px;
  		  	 .report-acivity {
  		  	 	display: table-cell;
  		  	 	background: $white;
@@ -3674,14 +3682,14 @@ display: block !important;
  		  	 	display: table-cell;
  		  	 	vertical-align: middle;
  		  	 	background: $white;
- 		  	 	border-left: 10px solid $blue;
- 		  	 	border-right: 10px solid $blue;
+ 		  	 	width: auto;
 
  		  	 	
  		  	 	  .view {
  		  	 	  	color: $blue;
- 		  	 	  	background: $white;
+ 		  	 	  	
  		  	 	  	padding: 22px;
+ 		  	 	  	background: $white;
 
  		  	 	  	 .pager {
  		  	 	  	 	margin-bottom: 0;

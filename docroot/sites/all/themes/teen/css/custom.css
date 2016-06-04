@@ -11694,6 +11694,12 @@ body .alert-box.success a.close:hover {
   -moz-osx-font-smoothing: grayscale !important;
   font-size: 24px;
 }
+.page-activities-listing .view-individual-activities-listing .activity-desc {
+  padding-left: 25px;
+}
+.page-activities-listing .view-individual-activities-listing .activity-desc br {
+  display: none;
+}
 .page-activities-listing .view-individual-activities-listing .view-content {
   padding-left: 35px;
 }
@@ -14987,6 +14993,8 @@ body .alert-box.success a.close:hover {
   width: 100%;
   display: table;
   margin-top: 25px;
+  border-collapse: separate;
+  border-spacing: 10px;
 }
 .page-progress-report .main .progress-wrap .report-acivity, .page-progress .main .progress-wrap .report-acivity {
   display: table-cell;
@@ -15120,13 +15128,12 @@ body .alert-box.success a.close:hover {
   display: table-cell;
   vertical-align: middle;
   background: #fff;
-  border-left: 10px solid #32024e;
-  border-right: 10px solid #32024e;
+  width: auto;
 }
 .page-progress-report .main .progress-wrap .reward-won .view, .page-progress .main .progress-wrap .reward-won .view {
   color: #32024e;
-  background: #fff;
   padding: 22px;
+  background: #fff;
 }
 .page-progress-report .main .progress-wrap .reward-won .view .pager, .page-progress .main .progress-wrap .reward-won .view .pager {
   margin-bottom: 0;
