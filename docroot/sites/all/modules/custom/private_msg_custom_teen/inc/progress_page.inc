@@ -112,6 +112,7 @@ function progress_print_page(){
   global $user;
   global $base_url;
   $uid = $user->uid;
+  $raff_count = raffle_count($uid);
 
   $u_avatar = '';
   $u_name = $user->name;
@@ -213,9 +214,9 @@ function progress_print_page(){
         <tr>
         <td style='width: 34%; color: #fff; vertical-align: bottom;' class='avtar_id'><img style='display: inline-block; vertical-align: bottom;' src = '$u_avatar' width='80px' height='80px'>$u_name</td>
         <!--<div class = 'point-status'>-->
-          <td class = 'activity-status' style='width: 22%; vertical-align: middle; color: #fff; font-size: 8px;'>Activities Completed: $activity_completed activities</td>
-          <td class = 'activity-remaining' style='width: 22%; vertical-align: middle; color: #fff; font-size: 8px;'>Activities Left to Complete: $activities_left activities</td>
-          <td class = 'raffle' style='width: 22%; vertical-align: middle; color: #fff; font-size: 8px;'>Raffle Tickets Earned: </td>
+          <td class = 'activity-status' style='width: 22%; vertical-align: middle; color: #fff; font-size: 14px;'>Activities Completed: $activity_completed activities</td>
+          <td class = 'activity-remaining' style='width: 22%; vertical-align: middle; color: #fff; font-size: 14px;'>Activities Left to Complete: $activities_left activities</td>
+          <td class = 'raffle' style='width: 22%; vertical-align: middle; color: #fff; font-size: 14px;'>Raffle Tickets Earned: $raff_count</td>
        <!-- </div>-->
         </tr>
       </table>

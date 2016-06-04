@@ -8,6 +8,18 @@
  */
 
 /**
+ * Implements hook_permission
+ */
+function private_msg_custom_teen_permission() {
+  return array(
+    'progress_page_access' => array(
+      'title' => t('View Progress Page Access'),
+      'description' => t('Access to view progress page'),
+    ),
+  );
+}
+
+/**
  * Implementation of hook_menu().
  */
 function private_msg_custom_teen_menu() {
@@ -79,7 +91,7 @@ function private_msg_custom_teen_menu() {
 
   $items['progress'] = array(
     'page callback' => 'progress_report_grid',
-    'access callback' => TRUE,
+    'access arguments' => array('progress_page_access'), // permission for view progress page
     'type' => MENU_CALLBACK,
     'file' => 'inc/progress_page.inc',
     'file path' => drupal_get_path('module', 'private_msg_custom_teen'),
@@ -539,7 +551,6 @@ function creating_review($form, $form_state){
   $link_movie_review = $base_url.'/node/add/movie-review';
   $link_music_review = $base_url.'/node/add/music-review';
   $link_video_game_review = $base_url.'/node/add/video-game-review';
-  $link_booklist = $base_url.'/node/add/booklist';
   $link_activity_review = $base_url.'/node/add/review-activity';
 
   $values = array(0 => t('Select Review'),
@@ -547,8 +558,7 @@ function creating_review($form, $form_state){
     $link_activity_review => t('Activity Reviews'),
     $link_movie_review => t('Movie Reviews'),
     $link_music_review => t('Music Reviews'),
-    $link_video_game_review => t('Video Game Reviews'),
-    $link_booklist => t('Booklists'));
+    $link_video_game_review => t('Video Game Reviews'));
 
   $form['review_options'] = array(
     '#title' => t('Write A Review'),
@@ -886,48 +896,25 @@ function activity_report_node_create($activity_id, $activity_date, $term_tid, $c
   $_SESSION['teen_progress_report_nid'] = $created_nid;
 }
 
-function test_page(){
-$output = "
+/**
+ * Getting of rafle count for the user
+ */
+function raffle_count($uid){
 
-  <div class = 'main'><div class='progress-page'>
-<h1 id = 'title'>$pg_title
-</h1>
-<div class='progress-desc'>
-  $page_desc  
-</div>
-<div class='user-desc'>
-<div class='avatar-id'>$u_avatar
-</div>
-<div class='point-status'>
-<div class='activity-status'>Stamps Earned:
-</div>
-<div class='points'>Raffle Tickets Earned:
-</div>
-</div>
-</div>
-<div class='progress-wrap'>
-<div class='report-acivity'><h1>Report an Activity</h1>$user_reward_block
-  <div class='submit'>
-    <button id='pg-report'>Submit</button>
-  </div>
-</div>
-<div class='reward-won'>$reward_won
-</div>
-<div class='progress-rewards'>$u_rew
-</div>
-</div>
-<div class='progress-main'><h1>My Passport Stamps</h1>";
+  $query = db_select('eck_raffle','raf')
+    ->fields('raf',array('id'))
+    ->condition('uid',$uid)
+    ->condition('type','raffle_entry')
+    ->execute();
+  $num = $query->rowCount();
 
+  return $num;
+}
 
-      require_once("sites/all/modules/contrib/print/lib/dompdf/dompdf_config.inc.php");
-      $dompdf = new DOMPDF;
-      $html = stripslashes($output); 
+/**
+ * Function for testing purposes
+ */
 
-      $dompdf->load_html(utf8_decode($html));
-
-      $dompdf->render();
-
-      $font = Font_Metrics::get_font("din", "regular");
-      $dompdf->stream("Progress.pdf");
-  //return $html;
+function test_page() {
+  return '';
 }

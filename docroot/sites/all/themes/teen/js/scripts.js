@@ -10,8 +10,8 @@
     jQuery("#user-register-form #edit-profile-main-field-receive-notifications").insertAfter("#user-register-form .form-item-mail");
     jQuery("#user-register-form .form-item-avatar-select").insertAfter("#user-register-form #edit-profile-main-field-receive-notifications");
     jQuery("#user-register-form #checkboxes-div").insertAfter("#user-register-form .form-item-avatar-select");
-    jQuery("#user-register-form .username").insertAfter("#user-register-form #checkboxes-div");
-    jQuery("#user-register-form  #edit-name").hide();
+    jQuery("#user-register-form .username-curr").insertAfter("#user-register-form #checkboxes-div");
+    // jQuery("#user-register-form  #edit-name").hide();
     jQuery("#user-register-form #edit-profile-main-field-receive-notifications").hide();
     jQuery( '<p>Avatar icons provided free by <a href="http://emojione.com/"target="_blank"> Emoji One</a></p>' ).insertAfter( "#user-register-form" );
 
