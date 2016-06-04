@@ -153,18 +153,19 @@ function progress_print_page(){
        color: #fff;
      }
      h1#title {
-        font-size: 26px;
+        font-size: 15px;
         color: #fff;
         font-weight: normal;
         margin: 0;
      }
      .progress-desc p {
-      font-weight: bold;  
+      font-weight: bold; 
+      font-size: 10px; 
      }
      .user-desc {
       width: 100%;
       background: #7EB600;
-      padding: 25px 0;
+      padding: 5px 0;
       vertical-align: middle;
       border-collapse: separate;
       border-spacing: 10px;
@@ -174,35 +175,35 @@ function progress_print_page(){
       width: 100%;
       border-collapse: separate;
       border-spacing: 20px;
-      margin-top: 25px;
+      margin-top: 5px;
      }
      .report-activity {
       background: #fff;
       color: #32024e;
-      padding: 20px;
+      padding: 10px;
+      font-size: 10px;
      }
      .progress-rewards {
       background: #F6F45A;
       color: #32024e;
-      padding: 20px;
+      padding: 10px;
       text-align: center;
+      font-size: 10px;
      }
      .grid p {
-       font-size: 10px;
+       font-size: 7px;
        margin: 0;
        line-height: 1.2;
      }
-     .inserted {
-      background-image: url("sites/all/themes/teen/images/libraryzurb/complete.gif") !important;
-      background-repeat: no-repeat !important;
-      background-position: center bottom 20px !important;
-     }
+     
      .user-won{
       background: #F6F45A !important;
      }
+     .progress-desc li {
+      font-size: 10px;
+     }
   </style>';
   $output .= "
-  <div class = '$base_url/sites/images'></div>
   <div class = 'main'>
     <div class = 'progress-page'>
     
@@ -210,11 +211,11 @@ function progress_print_page(){
       <div class = 'progress-desc'>$page_desc</div>
       <table class = 'user-desc'>
         <tr>
-        <td style='width: 34%; color: #fff; vertical-align: bottom;' class='avtar_id'><img style='display: inline-block; vertical-align: bottom;' src = '$u_avatar'>$u_name</td>
+        <td style='width: 34%; color: #fff; vertical-align: bottom;' class='avtar_id'><img style='display: inline-block; vertical-align: bottom;' src = '$u_avatar' width='80px' height='80px'>$u_name</td>
         <!--<div class = 'point-status'>-->
-          <td class = 'activity-status' style='width: 22%; vertical-align: middle; color: #fff; font-size: 14px;'>Activities Completed: $activity_completed activities</td>
-          <td class = 'activity-remaining' style='width: 22%; vertical-align: middle; color: #fff; font-size: 14px;'>Activities Left to Complete: $activities_left activities</td>
-          <td class = 'raffle' style='width: 22%; vertical-align: middle; color: #fff; font-size: 14px;'>Raffle Tickets Earned: </td>
+          <td class = 'activity-status' style='width: 22%; vertical-align: middle; color: #fff; font-size: 8px;'>Activities Completed: $activity_completed activities</td>
+          <td class = 'activity-remaining' style='width: 22%; vertical-align: middle; color: #fff; font-size: 8px;'>Activities Left to Complete: $activities_left activities</td>
+          <td class = 'raffle' style='width: 22%; vertical-align: middle; color: #fff; font-size: 8px;'>Raffle Tickets Earned: </td>
        <!-- </div>-->
         </tr>
       </table>
@@ -224,7 +225,7 @@ function progress_print_page(){
         <td class = 'progress-rewards'>$rew_block</td>
         </tr>
       </table>
-      <div class='progress-main'><h2 style='font-size: 17px; font-weight: normal; padding: 10px 0 10px 20px; display: inline-block;  position: relative; top: 5px; background: #7EB600; color: #fff; margin: 0;  '>My Passport Stamps</h2></div>
+      <div class='progress-main'><h2 style='font-size: 15px; font-weight: normal; padding: 5px 0 5px 10px; display: inline-block;  position: relative; top: 5px; background: #7EB600; color: #fff; margin: 0;  '>My Passport Stamps</h2></div>
       <table style='width: 100%;'>
   ";
 
@@ -244,7 +245,7 @@ function progress_print_page(){
       $user_won_reward = '<p class  = "won-rew">Congratulations! You have earned a prize!</p>';
     }
 
-    $node_nid[] = '<p class  = "date-pg">'.$n_date.'</p>'.$hotspot_type_activity.'<p class = "title-pg">'.$value->title.'</p>'.$user_won_reward;
+    $node_nid[] = '<p class  = "date-pg">'.$n_date.'</p>'.$hotspot_type_activity.'<p class = "title-pg">'.$value->title.'</p>'.'<p class="bg-img" style="text-align:center;">'."<img src='sites/all/themes/teen/images/libraryzurb/complete.gif' width='50'/>".'</p>'.$user_won_reward;
   }
   $test = $user_reward;
 
@@ -257,14 +258,14 @@ function progress_print_page(){
       if(isset($node_nid[$i])){
 
         if (strpos($node_nid[$i], 'Congratulations') !== false) {
-          $output .= "<td class = 'grid inserted user-won' id = 'cells$i' style='background: #fff; color:  #32024e; border: 0.5px solid #ccc; width: 16.6%; height: 10px; padding: 10px;'>" . $node_nid[$i] . "</td>";
+          $output .= "<td class = 'grid inserted user-won' id = 'cells$i' style='background: #fff; color:  #32024e; border: 0.5px solid #ccc; width: 16.6%; height: 10px; padding: 2px;'>" . $node_nid[$i] . "</td>";
         }
         else{
-          $output .= "<td class = 'grid inserted' id = 'cells$i' style='background: #fff; color:  #32024e; border: 0.5px solid #ccc; width: 16.6%; height: 10px; padding: 10px;'>" . $node_nid[$i] . "</td>";
+          $output .= "<td class = 'grid inserted' id = 'cells$i' style='background: #fff; color:  #32024e; border: 0.5px solid #ccc; width: 16.6%; height: 10px; padding: 2px;'>" . $node_nid[$i] . "</td>";
         }
       }
       else{
-        $output .= "<td class = 'grid' id = 'cells$i' style='background: #fff; color:  #32024e; border: 0.5px solid #ccc; width: 16.6%; height: 50px; padding: 10px;'></td>";
+        $output .= "<td class = 'grid' id = 'cells$i' style='background: #fff; color:  #32024e; border: 0.5px solid #ccc; width: 16.6%; height: 80px; padding: 2px;'></td>";
       }
 
       $i++;
@@ -272,7 +273,7 @@ function progress_print_page(){
     $output .= '</tr>';
   }
   $output .= '</table></div></div>';
-  // echo $output;
+  /*echo $output;*/
 
   //pdf for progress page 
   require_once("sites/all/modules/contrib/print/lib/dompdf/dompdf_config.inc.php");
