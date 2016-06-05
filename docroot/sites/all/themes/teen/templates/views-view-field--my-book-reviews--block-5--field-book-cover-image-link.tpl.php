@@ -22,15 +22,21 @@
  * the view is modified.
  */
 ?>
-<?php //print $output;
+<?php
 
-if ($output) {                 
-    $bimg = "<img src='".trim($output)."' style='width:200px;height:200px;'>";  
-  }
-  else {
-    $bimg =  "<img src='http://www.clker.com/cliparts/7/1/a/f/11971220941184963828dniezby_Generic_Book.svg.med.png' style='width:200px;height:200px;'>";
-  }  
+$content_type = $row->_field_data['nid']['entity']->type;
+
+if($output) {                 
+  $bimg = "<img src='".trim($output)."' style='width:200px;height:200px;'>";  
+}
+else {
+  $bimg = "<img src='http://www.clker.com/cliparts/7/1/a/f/11971220941184963828dniezby_Generic_Book.svg.med.png' style='width:200px;height:200px;'>";
+}
+
+/* Showing of default image in case of book review only */
+if($content_type === 'review_book') { 
   print  "<table><tr><td>".$bimg."</td>";
   print  "</tr></table>";
+}
 
 ?>
