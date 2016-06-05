@@ -1,6 +1,24 @@
 // Blocks
 
 .block {
+	&.other-booklist.block-menu {
+		padding-top: 25px;
+		.block-title {
+			color: $white !important;
+			font-size: 16px !important;
+			@include arialbold;
+		}
+		 ul.menu {
+		 	list-style: number;
+		 	margin-left: 17px;
+		 	font-size: 17px;
+		 	   li a {
+		 	   	 color: $white;
+		 	   	 font-size: 16px;
+		 	   	 text-decoration: underline;
+		 	   }
+		 }
+	}
 	&.review_followers {
 		.view-header {
 			h3 {
