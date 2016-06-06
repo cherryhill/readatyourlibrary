@@ -171,7 +171,7 @@ if(!div2.is(':empty')){
   /* jquery for print calendar */
 
     jQuery( "#print_button" ).click(function() {
-      var contant = jQuery(".main");
+      var contant = jQuery(".l-main");
       var inner_content = contant.html();
 
       var WinPrint = window.open('', '', 'letf=0,top=0,width=400,height=400,toolbar=0,scrollbars=0,status=0');
