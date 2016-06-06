@@ -660,7 +660,18 @@ function check_rewards_user_can_claim($account_id, $reward_ids, $activity_id) {
   // array to hold all rid's user can claim
   $rewards_user_can_claim = array();
   if(count($reward_ids)) {
-    $user_profile = profile2_load_by_user($account_id, 'main');
+    $uid = $account_id;
+    $user = user_load($uid);
+
+    if(array_key_exists(12, $user->roles)) {
+      $profile_name = 'group_lead';
+    }
+    else {
+      $profile_name = 'main';
+    }
+
+
+    $user_profile = profile2_load_by_user($account_id, $profile_name);
     if(is_object($user_profile)) {
 	  $dob = $user_profile->field_user_birthday[LANGUAGE_NONE][0]['value'];
 	  $time_stamp_dob = strtotime($dob);
@@ -1094,16 +1105,17 @@ function _play_library_program_set_message($reward, $account_uid) {
 
 function _play_library_program_reward_criteria_fulfilled($reward_entity, $account) {
 	$account_roles = array_keys($account->roles);
-	$allowed = FALSE;
-	if (empty($reward_entity->field_reward_role_limits)) {
-		$allowed = TRUE;
-	}
-	else {
+	$allowed = TRUE;
+
+	if (count($reward_entity->field_reward_role_limits)) {
 		foreach ($reward_entity->field_reward_role_limits[LANGUAGE_NONE] as $role) {
 			if (in_array($role['value'], $account_roles)) {
-				$allowed = TRUE;
+				return $allowed = TRUE;
+			} else {
+				$allowed = FALSE;
 			}
 		}
 	}
+    
 	return $allowed;
 }
