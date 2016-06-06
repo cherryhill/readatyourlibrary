@@ -12892,6 +12892,7 @@ body .alert-box.success a.close:hover {
   box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
   width: 40%;
   display: table-cell;
+  vertical-align: top;
 }
 @media (max-width: 767px) {
   .section-progress .main .view-calendar-sticker {
@@ -12988,19 +12989,55 @@ body .alert-box.success a.close:hover {
 }
 .section-progress .main .block.block-views .view-prize-won-for-progress-page {
   width: 100%;
-  display: table;
+  display: inline-block;
   border-spacing: 0 !important;
 }
-.section-progress .main .block.block-views .view-prize-won-for-progress-page .view-header {
-  width: 29%;
-  display: table-cell;
+.section-progress .main .block.block-views .view-prize-won-for-progress-page .view-footer .view-header p {
+  font-size: 13px;
+  font-family: McLaren-Regular !important;
+  font-weight: normal !important;
+  font-style: normal !important;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+  text-rendering: optimizeLegibility !important;
+  -moz-font-smoothing: grayscale !important;
+}
+.section-progress .main .block.block-views .view-prize-won-for-progress-page .view-footer .view-content {
+  padding-top: 3px;
+}
+.section-progress .main .block.block-views .view-prize-won-for-progress-page .view-footer .view-content .views-row {
+  font-size: 13px;
+  font-family: McLaren-Regular !important;
+  font-weight: normal !important;
+  font-style: normal !important;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+  text-rendering: optimizeLegibility !important;
+  -moz-font-smoothing: grayscale !important;
   position: relative;
+  padding-left: 20px;
+}
+.section-progress .main .block.block-views .view-prize-won-for-progress-page .view-footer .view-content .views-row:before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  display: block;
+  visibility: visible;
+  position: absolute;
+  top: 8px;
+  left: 7px;
+  background: #000;
+  border-radius: 100%;
+}
+.section-progress .main .block.block-views .view-prize-won-for-progress-page .view-header {
+  width: 28%;
+  display: inline-block;
+  position: relative;
+  vertical-align: top;
 }
 .section-progress .main .block.block-views .view-prize-won-for-progress-page .view-header div {
   font-size: 20px;
   color: #267fda;
-  position: absolute;
-  top: 6px;
   text-transform: capitalize;
   width: 300px;
 }
@@ -13010,8 +13047,9 @@ body .alert-box.success a.close:hover {
 }
 .section-progress .main .block.block-views .view-prize-won-for-progress-page .view-content {
   width: 70%;
-  display: table-cell;
+  display: inline-block;
   padding-top: 38px;
+  vertical-align: top;
 }
 .section-progress .main .block.block-views .view-prize-won-for-progress-page .view-content .item-list ul li.views-row {
   margin-bottom: 10px !important;

@@ -156,6 +156,7 @@ if(isset($catalog_lk)){
 <div class="review_node">
   <div class="title_review">
     <h2><?php print $title_node_link.' by '.$fname['0']['safe_value'].' '.$lname['0']['safe_value'] ?></h2>
+     <?php echo '<div class="cat-link"><a href="'.$catalog_link.'" target="_blank">View in Library Catalog</a></div>'; ?>
     <p class="reviewer"><?php 
       global $base_url;
       $reviewer = $node->name; 

@@ -2210,6 +2210,7 @@
  	 	 			@include yellowbackground;
 		 	 	 	width: 40%; 
 		 	 	 	display: table-cell;
+		 	 	 	vertical-align: top;
 		 	 	 	@include mobile {
 		 	 	 		width: 100%;
 		 	 	 		display: inline-block;
@@ -2289,17 +2290,38 @@
 						}
 							.view-prize-won-for-progress-page {
 								width: 100%;
-								display: table;
+								display: inline-block;
 								border-spacing: 0 !important;
+								.view-footer {
+									 .view-header {
+									 	p {
+									 		font-size: 13px;
+									 		@include mclaren;
+									 	}
+									 }
+									 .view-content {
+									 	padding-top: 3px;
+									 	 .views-row {
+									 	 	font-size: 13px;
+									 	 	@include mclaren;
+									 	 	position: relative;
+									 	 	padding-left: 20px;
+									 	 	 &:before {
+									 	 	 	@include previous(6px, 6px, $left: 7px, $top: 8px);
+									 	 	 	background: $black;
+									 	 	 	border-radius: 100%;
+									 	 	 }
+									 	 }
+									 }
+								}
 									.view-header {
-										width: 29%;
-										display: table-cell;
+										width: 28%;
+										display: inline-block;
 										position: relative;
+										vertical-align: top;
 											div {
 					                            font-size: 20px;
 					                            color: $blue;
-					                            position: absolute;
-					                            top: 6px;
 					                            text-transform: capitalize;
 					                            width: 300px;
 											}
@@ -2310,8 +2332,9 @@
 									}
 									.view-content {
 										width: 70%;
-										display: table-cell;
+										display: inline-block;
 										padding-top: 38px;
+										vertical-align: top;
 						 					.item-list {
 						 						ul {
 						 		

@@ -10,6 +10,10 @@ function auto_role_allocation_permission() {
       'title' => t('Administer activity record'),
       'description' => t('Perform administration tasks for activity record.'),
     ),
+    'raffle_access_permission' => array(
+      'title' => t('Administer Raffle access'),
+      'description' => t('Perform administration tasks for raffle access.'),
+    ),
   );
 } 
 
@@ -235,32 +239,32 @@ function auto_role_allocation_menu() {
   $items['raffle'] = array(
     'title' => 'Raffle entry list',
     'page callback' => 'raffle_entry_process',
-    'access arguments' => array('access content'),
+    'access arguments' => array('raffle_access_permission'),
     'type' => MENU_CALLBACK,
   );
   $items['raffle_filter_form'] = array(
     'title' => 'Raffle Process',
     'page callback' => 'drupal_get_form',
     'page arguments' => array('raffle_entry_form'),
-    'access arguments' => array('access content'),
+    'access arguments' => array('raffle_access_permission'),
     'type' => MENU_CALLBACK,
   );
   $items['raffle_pro'] = array(
     'title' => 'Raffle Process',
     'page callback' => 'render_raffle_filter_form',
-    'access arguments' => array('access content'),
+    'access arguments' => array('raffle_access_permission'),
     'type' => MENU_CALLBACK,
   );
   $items['raffle_user_list'] = array(
     'title' => 'Raffle Process',
     'page callback' => 'raffle_user_list',
-    'access arguments' => array('access content'),
+    'access arguments' => array('raffle_access_permission'),
     'type' => MENU_CALLBACK,
   );
   $items['raffle_winner'] = array(
     'title' => 'Raffle winner Process',
     'page callback' => 'raffle_winner_ajax',
-    'access arguments' => array('access content'),
+    'access arguments' => array('raffle_access_permission'),
     'type' => MENU_CALLBACK,
   );
   $items['raffle_winner_list'] = array(
@@ -495,9 +499,10 @@ function raffle_user_list($form, &$form_state) {
   $query->join('field_data_field_user_last_name', 'ln', 'ln.entity_id = p.pid');
   $query->join('field_data_field_user_birthday', 'user_birth', 'user_birth.entity_id = p.pid');
   $query->leftJoin('field_data_field_user_phone', 'phno', 'phno.entity_id = p.pid');
-  $query->leftJoin('field_data_field_library_branch', 'lb', 'lb.entity_id = p.pid');
-  $query->leftJoin('taxonomy_term_data', 'lbtd', 'lbtd.tid = lb.field_library_branch_tid');
-
+  if($library_branch == '') {
+    $query->leftJoin('field_data_field_library_branch', 'lb', 'lb.entity_id = p.pid');
+    $query->leftJoin('taxonomy_term_data', 'lbtd', 'lbtd.tid = lb.field_library_branch_tid');
+  }
   $cnd = array();
   if ($school != '') {
     $query->leftJoin('field_data_field_school', 'fs', 'fs.entity_id = p.pid');
@@ -548,7 +553,7 @@ function raffle_user_list($form, &$form_state) {
     $role_name = array_values($user_roles->roles);
     $role_name = $role_name[1];
     $name = $v->name;
-    $library_branch = $v->lbtd_name;
+    $library_branch_name = $v->lbtd_name;
     $first_name = $v->field_user_first_name_value;
     $last_name = $v->field_user_last_name_value;
     $date_of_birth = $v->field_user_birthday_value;
@@ -569,9 +574,9 @@ function raffle_user_list($form, &$form_state) {
       $count = $rs->rowCount();
 
       if ($count) {
-        $raffle_users_list[$uid] = array('count' => 1, 'raffle_winner' => 'Yes', 'name' => $name, 'library_branch' => $library_branch, 'user_role' => $role_name, 'first_name' => $first_name, 'last_name' => $last_name, 'date_of_birth' => $date_of_birth, 'phone_no' => $phone_no, 'mail' => $mail);
+        $raffle_users_list[$uid] = array('count' => 1, 'raffle_winner' => 'Yes', 'name' => $name, 'library_branch' => $library_branch_name, 'user_role' => $role_name, 'first_name' => $first_name, 'last_name' => $last_name, 'date_of_birth' => $date_of_birth, 'phone_no' => $phone_no, 'mail' => $mail);
       } else {
-        $raffle_users_list[$uid] = array('count' => 1, 'raffle_winner' => 'No', 'name' => $name, 'library_branch' => $library_branch, 'user_role' => $role_name, 'first_name' => $first_name, 'last_name' => $last_name, 'date_of_birth' => $date_of_birth, 'phone_no' => $phone_no, 'mail' => $mail);
+        $raffle_users_list[$uid] = array('count' => 1, 'raffle_winner' => 'No', 'name' => $name, 'library_branch' => $library_branch_name, 'user_role' => $role_name, 'first_name' => $first_name, 'last_name' => $last_name, 'date_of_birth' => $date_of_birth, 'phone_no' => $phone_no, 'mail' => $mail);
       }
     }
   }
@@ -595,7 +600,7 @@ function raffle_user_list($form, &$form_state) {
     $user_role = $v['user_role'];
     $first_name = $v['first_name'];
     $last_name = $v['last_name'];
-    $library_branch = $v['library_branch'];
+    $library_branch_name = $v['library_branch'];
     $date_of_birth = $v['date_of_birth'];
     $phone_no = $v['phone_no'];
     $email = $v['mail'];
@@ -607,7 +612,7 @@ function raffle_user_list($form, &$form_state) {
       array( 'data' => $user_role),
       array( 'data' => $first_name),
       array( 'data' => $last_name),
-      array( 'data' => $library_branch),
+      array( 'data' => $library_branch_name),
       array( 'data' => $date_of_birth),
       array( 'data' => $phone_no),
       array( 'data' => $email),
@@ -630,7 +635,7 @@ function raffle_user_list($form, &$form_state) {
 }
 
 function generate_csv_of_raffle_user() {
-  //$output = '';
+  $output = array();
   $raffle_id = $_GET['raffle_id'];
   $reward_id = $_GET['reward_id'];
   $school = $_GET['school'];
@@ -646,8 +651,10 @@ function generate_csv_of_raffle_user() {
   $query->join('field_data_field_user_last_name', 'ln', 'ln.entity_id = p.pid');
   $query->join('field_data_field_user_birthday', 'user_birth', 'user_birth.entity_id = p.pid');
   $query->leftJoin('field_data_field_user_phone', 'phno', 'phno.entity_id = p.pid');
-  $query->leftJoin('field_data_field_library_branch', 'lb', 'lb.entity_id = p.pid');
-  $query->leftJoin('taxonomy_term_data', 'lbtd', 'lbtd.tid = lb.field_library_branch_tid');
+  if($library_branch == '') {
+    $query->leftJoin('field_data_field_library_branch', 'lb', 'lb.entity_id = p.pid');
+    $query->leftJoin('taxonomy_term_data', 'lbtd', 'lbtd.tid = lb.field_library_branch_tid');
+  }
   
 
   $cnd = array();
@@ -690,6 +697,7 @@ function generate_csv_of_raffle_user() {
   $query->fields('user_birth', array('field_user_birthday_value'));
   $query->fields('lbtd', array('name'));
   $query->fields('phno', array('field_user_phone_value'));
+  $query->orderBy('name', 'ASc');
   $res = $query->execute()->fetchAll();
 
   $raffle_users_list = array();
@@ -828,19 +836,18 @@ function generate_csv_of_raffle_user() {
     'Library branch',
     'Date of birth',
     'Phone no',
-    'Email',
-    //'Number of tickets',
+    'Email'
   );
 
 
   $result .= implode(",", $keys) . "\n";
-  foreach ($output as $value1) {
-    $result .= implode(",", $value1) . "\n";
+  if (count($output)) {
+    foreach ($output as $val) {
+      $result .= implode(",", $val) . "\n";
+    }
   }
-  
   echo $result;
   exit;
-  
 }
 
 function _get_options($vocab_name) {
