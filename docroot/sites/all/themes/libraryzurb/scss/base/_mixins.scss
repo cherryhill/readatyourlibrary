@@ -82,6 +82,7 @@
   	-moz-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
   	box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
  }
+
  @mixin mclaren {
 	font-family: McLaren-Regular !important;
 	font-weight: normal !important;
@@ -127,6 +128,9 @@
 	    font-size: 28px;
 	      @include mobile{
 	     	font-size: 22px;
+	     	padding-top: 13px;
+	     	height: 100px;
+	     	padding-left: 22px;
 	     }
 		height: 110px;
 		border-bottom: medium none;
@@ -138,13 +142,21 @@
 		border-radius: 20px;
 		overflow: hidden;
 		 &:after {
+		 	@include mobile {
+		 		@include previous(100%, 95px, $left: 0, $top: 0);
+		 	}
 		 	@include previous(100%, 110px, $left: 0, $top: 0);
 		 	background: url('../images/libraryzurb/background-saffron.png') no-repeat;
 		 		background-position: -35px 10px;
 		 		@include rotate(180deg);
 		 		z-index: -1;
+		 @include mobile {
+		 	background-position: -52px 16px;
+		 	background-size: 200% auto;
+		 }
 		 		
 		
+		 
 		 }
      }
 }
@@ -161,6 +173,9 @@
 	}
 	@else {
 		padding: $button-sml 20px;
+	}
+	@include mobile {
+		padding: 4px 13px 6px !important;
 	}
 	@include boxshadow;
 	 &:hover {
@@ -189,6 +204,7 @@
 	}
 	@else if $p == "sm" {
        padding: 4px 13px 6px;
+       z-index: 9999 !important;
 	}
 	@else {
 	padding: 9px 22px;
@@ -256,6 +272,11 @@
 	     	font-size: 22px;
 	     }
 	     }
+	     @include mobile {
+	     	height: 100px;
+	     	padding-top: 13px;
+	     	padding-left: 22px;
+	     }
 		height: 110px;
 		border-bottom: medium none;
 		margin-top: -1px;
@@ -265,11 +286,18 @@
 		border-radius: 20px;
 		overflow: hidden;
 		 &:after {
+		 	@include mobile {
+		 	  @include previous(100%, 95px, $left: 0, $top: 0);
+		 	}
 		 	@include previous(100%, 110px, $left: 0, $top: 0);
 		 	background: url('../images/libraryzurb/background-saffron.png') no-repeat;
 		 		background-position: -35px 10px;
 		 		@include rotate(180deg);
 		 		z-index: -1;
+		 		@include mobile {
+		 			background-position: -52px 16px;
+		 			background-size: 200% auto;
+		 		}
 
 		 }
     }

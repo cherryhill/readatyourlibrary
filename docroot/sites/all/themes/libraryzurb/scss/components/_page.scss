@@ -74,6 +74,9 @@
 		color: $black;
 		@include mclaren;
 		@include noborder;
+		 @include mobile {
+		 	font-size: 22px;
+		 }
 	}
 	.block-views-media-photos-videos-block-6 {
 		.view .views-row {
@@ -129,6 +132,9 @@
 			 	 	   	  @include tablet {
 			 	 	   	  	width: 139px;
 			 	 	   	  }
+			 	 	   	  @include mobile {
+			 	 	   	  	width: 178px;
+			 	 	   	  }
 			 	 	   	    &:after {
 			 	 	   	    	content: "view album";
 			 	 	   	    	height: 38px;
@@ -137,6 +143,9 @@
 			 	 	   	    	background: $yellow url('../images/libraryzurb/view-album.png') no-repeat;
 			 	 	   	    	@include desktop {
 			 	 	   	    		background-position: 37px center !important;
+			 	 	   	    	}
+			 	 	   	    	@include mobile {
+			 	 	   	    		background-position: 20px center;
 			 	 	   	    	}
 			 	 	   	    	color: $black;
 			 	 	   	    	border-radius: 10px;
@@ -281,6 +290,9 @@
 	  					@include mclaren;
 	  					@include noborder;
 	  					color: $black;
+	  					 @include mobile {
+	  					 	font-size: 22px;
+	  					 }
 	  				}
 
 	  			}
@@ -293,6 +305,11 @@
 	  					 	display: inline-block;
 	  					 	vertical-align: middle;
 	  					 	text-align: center;
+	  					 	 @include mobile {
+	  					 	 	width: 100%;
+	  					 	 	padding-bottom: 5px;
+	  					 	 	border-bottom: 1px dotted $black;
+	  					 	 }
 	  					 }
 	  					 .badges-title {
 	  					 	padding-right: 10px;
@@ -302,6 +319,10 @@
 	  					 	width: 79%;
 	  					 	display: inline-block;
 	  					 	vertical-align: middle;
+	  					 	 @include mobile {
+	  					 	 	width: 100%;
+	  					 	 	padding-top: 5px;
+	  					 	 }
 	  					 }
 	  				}
 	  			}
@@ -309,6 +330,9 @@
 	  		.badge_list {
 	  			font-size: 28px;
 	  			@include mclaren;
+	  			 @include mobile {
+	  			 	font-size: 22px;
+	  			 }
 	  		}
 	  		.block-views {
 	  			.block-title {
@@ -327,6 +351,11 @@
 	  				  	display: inline-block;
 	  				  	vertical-align: top;
 	  				  	text-align: center;
+	  				  	 @include mobile {
+	  				  	 	width: 100%;
+	  				  	 	border-bottom: 1px dotted $black;
+	  				  	 	padding-bottom: 5px;
+	  				  	 }
 	  				  	 .views-field-title {
 	  				  	 	padding-top: 5px;
 	  				  	 }
@@ -506,6 +535,9 @@
   	.main {
  	 	.current-program {
 	    	@include  bluebackground;
+	    	.block-title {
+	    		display: none;
+	    	}
 	    		.view {
 					display: inline-block;
 		    	 	width: 100%;
@@ -531,8 +563,18 @@
 				    	 	       	  vertical-align: middle;
 				    	 	       	  float: none !important;
 				    	 	       	  padding: 10px 0 10px 4%;
+				    	 	       	   @include mobile {
+				    	 	       	   	width: 100%;
+				    	 	       	   	text-align: center;
+				    	 	       	   	display: inline-block;
+				    	 	       	   	padding: 10px 0px;
+				    	 	       	   }
 				    	 	       	  img {
 				    	 	       	  	width: 100%;
+				    	 	       	  	 @include mobile {
+				    	 	       	  	 	width: 100px;
+				    	 	       	  	 	height: 100px;
+				    	 	       	  	 }
 				    	 	       	  }
 				    	 	       	}
 				    	 	       	&.views-field-body {
@@ -542,6 +584,11 @@
 				                      @include arialregular;
 				                      font-size: 17px;
 				                      padding: 10px 4% 10px 2%;
+				                       @include mobile {
+				                       	width: 100%;
+				                       	display: inline-block;
+				                       	padding: 10px 4%;
+				                       }
 				                        a {
 				                        	color: $white;
 				                        	text-decoration: underline;
@@ -571,10 +618,21 @@
 			   		 		 	&.views-field-field-program-image {
 			   		 		 	 	width: 20%;
 			   		 		 	 	float: left;
+			   		 		 	 	@include mobile {
+			   		 		 	 		width: 100%;
+			   		 		 	 		float: none;
+			   		 		 	 		display: inline-block;
+			   		 		 	 		text-align: center;
+			   		 		 	 	}
 			   		 		 	}
 		   		 		 	  	&.views-field-title, &.views-field-field-sign-up, &.views-field-body {
 		   		 		 	  	width: 78%;
 		   		 		 	  	float: right;
+		   		 		 	  	  @include mobile {
+		   		 		 	  	  	float: none;
+		   		 		 	  	  	width: 100%;
+		   		 		 	  	  	display: inline-block;
+		   		 		 	  	  }
 								}
 		   		 		 	  	&.views-field-title {
 		   		 		 	  		padding-bottom: 23px;
@@ -636,6 +694,9 @@
 	 		 		font-size: 15px;
 	 		 		@include arialregular;
 		 		 		&:before {
+		 		 			@include mobile {
+		 		 				@include previous(50px, 50px, $left: 4%, $top: 7px);
+		 		 			}
 		 		 		 	@include previous(50px, 50px, $left: 6%, $top: 12px);
 		 		 		 	overflow: visible;
 		 		 		 	background: url('../images/libraryzurb/progress-dash.png') no-repeat;
@@ -684,6 +745,9 @@
 	 			margin-bottom: 32px;
 		 			a {
 		 				padding: 9px 25px;
+		 				@include mobile {
+		 					@include bluebutton($font-size: 17px, $p: sm);
+		 				}
 		 				@include bluebutton($font-size: 22px);
 		 				text-decoration: none;
 		 			}
@@ -692,6 +756,9 @@
 	 			ul li {
 	 				@include noborder;
 	 				a {
+	 					@include mobile {
+	 						@include bluebutton($font-size: 17px, $p: sm);
+	 					}
 	 				@include bluebutton($font-size: 17px);
 	 				text-decoration: none;
 		 				&.used {
@@ -758,7 +825,11 @@
 	 			 			}
 	 			 		}
 	 			 	  	&:before {
+	 			 	  		@include mobile {
+	 			 	  			@include previous(50px, 50px, $top: 7px, $left: 4%);
+	 			 	  		}
 	 			 	  		@include previous(50px, 50px, $top: 12px, $left: 6%);
+
  			 	  		}
 			 			 	.view-header {
 			 			 		text-align: left !important;
@@ -1980,6 +2051,9 @@
 		 		@include mclaren;
 		 		@include noborder;
 		 		color: $black;
+		 		@include mobile {
+		 			font-size: 22px;
+		 		}
 		 	}
 		 	 a.button {
 		 	 	margin-bottom: 0;
@@ -2849,7 +2923,11 @@
 					margin-bottom: 10px;
 					padding: 0 3.5% 0 4.5%;
 					 @include tablet {
-					 	border-bottom: 1px solid $black;
+					 	border-bottom: 1px dotted $black;
+					 	padding-bottom: 10px;
+					 }
+					 @include mobile {
+					 	border-bottom: 1px dotted $black;
 					 	padding-bottom: 10px;
 					 }
 					  div {
@@ -2873,10 +2951,16 @@
 					  	   	@include tablet {
 					  	   		width: 100%;
 					  	   	}
+					  	   	@include mobile {
+					  	   		width: 100%;
+					  	   	}
 					  	   }
 					  	   &:nth-of-type(2), &:nth-of-type(3) {
 					  	   	  width: 20%;
 					  	   	  @include tablet {
+					  	   	  	width: 100%;
+					  	   	  }
+					  	   	  @include mobile {
 					  	   	  	width: 100%;
 					  	   	  }
 					  	   }
