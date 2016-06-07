@@ -6575,11 +6575,51 @@ form#user-pass div.user_pass_name:after {
 .l-header .row.header-middle {
   max-width: 100%;
 }
+@media (max-width: 767px) {
+  .l-header .row.header-middle .brand {
+    padding-left: 0;
+    padding-right: 0;
+    width: 55%;
+    float: left;
+  }
+}
+@media (max-width: 767px) {
+  .l-header .row.header-middle .sub-brand {
+    width: 45%;
+    float: right;
+    text-align: right;
+    padding: 10px 10px 10px 0px;
+  }
+}
+@media (max-width: 767px) {
+  .l-header .row.header-middle .sub-brand .s-logoblock {
+    width: 91px;
+  }
+}
+.l-header .row.header-middle .sub-brand .s-logoblock img {
+  width: 100%;
+  height: 100%;
+}
 .l-header .row.header-middle a#logo {
   margin: 20px 20px 20px 0px;
 }
+@media (max-width: 767px) {
+  .l-header .row.header-middle a#logo {
+    margin: 10px  0px;
+  }
+}
+@media (max-width: 767px) {
+  .l-header .row.header-middle a#logo img {
+    width: 55px;
+  }
+}
 .l-header .row.header-middle h1#site-name {
   margin: 26px 0px 0px;
+}
+@media (max-width: 767px) {
+  .l-header .row.header-middle h1#site-name {
+    margin: 20px 0px 0px;
+  }
 }
 .l-header .row.header-middle h2#site-slogan {
   margin: 2px 0px 0px;
@@ -8051,6 +8091,11 @@ form#user-pass div.user_pass_name:after {
   font-size: 36px;
   font-family: Pt-seriefbold;
 }
+@media (max-width: 767px) {
+  #site-name a {
+    font-size: 23px;
+  }
+}
 @media only screen and (max-width: 769px) {
   #site-name {
     margin-top: 0.75em;
@@ -8064,6 +8109,11 @@ form#user-pass div.user_pass_name:after {
   padding-left: 0.25em;
   color: #fff;
   font-family: Pt-seriefregular;
+}
+@media (max-width: 767px) {
+  #site-slogan {
+    font-size: 15px;
+  }
 }
 
 /**
@@ -14794,7 +14844,7 @@ body .alert-box.success a.close:hover {
   -moz-font-smoothing: grayscale !important;
   background: #267fda !important;
   border-radius: 10px;
-  padding: 9px 22px;
+  padding: 4px 13px 6px;
   -webkit-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
   -moz-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
   box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
