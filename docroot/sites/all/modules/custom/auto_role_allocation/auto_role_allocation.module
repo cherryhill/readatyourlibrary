@@ -432,11 +432,11 @@ function raffle_entry_process() {
 
   $rafle_query = db_select('field_data_field_reward_raffle', 'rf');
   $rafle_query->join('field_data_field_reward_criteria_reward', 'rcr', 'rf.entity_id = rcr.field_reward_criteria_reward_target_id');
-  $rafle_query->join('field_data_field_reward_criteria_activity', 'rca', 'rca.entity_id = rcr.entity_id');
-  $rafle_query->join('eck_activity', 'ecka', 'rca.field_reward_criteria_activity_target_id = ecka.id');
+  //$rafle_query->join('field_data_field_reward_criteria_activity', 'rca', 'rca.entity_id = rcr.entity_id');
+  //$rafle_query->join('eck_activity', 'ecka', 'rca.field_reward_criteria_activity_target_id = ecka.id');
   $rafle_query->join('eck_raffle', 'er', 'rf.field_reward_raffle_target_id = er.id');
   $rafle_query->fields('er', array('id','title'));
-  $rafle_query->fields('ecka', array('title','id'));
+  //$rafle_query->fields('ecka', array('title','id'));
   $rafle_query->fields('rcr', array('field_reward_criteria_reward_target_id'));
 
   $res = $rafle_query->execute()->fetchAll();
@@ -450,8 +450,8 @@ function raffle_entry_process() {
     $count = $result->rowCount();
     
     $raffle_title = $value->title;
-    $activity_id = $value->ecka_id;
-    $activity_name = $value->ecka_title;
+    //$activity_id = $value->ecka_id;
+    //$activity_name = $value->ecka_title;
     $reward_id = $value->field_reward_criteria_reward_target_id;
 
 
