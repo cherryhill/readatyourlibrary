@@ -708,6 +708,9 @@
 			 		 		 	&:before {
 
 			 		 		 	 	@include previous(100px, 100px, $left: 0, $top: -11px);
+			 		 		 	 	@include mobile {
+			 		 		 	 		@include previous(100px, 100px, $left: -10px, $top: -11px);
+			 		 		 	 	}
 			 		 		 	 	@media only screen and (min-width: 940px) and (max-width: 1025px) {
 			 		 		 	 		@include previous(100px, 100px, $left: -17px, $top: -11px);
 			 		 		 	 	}
@@ -717,6 +720,9 @@
 			 		 		a.button {
                                 width: 100%;
                                 display: inline-block;
+                                @include mobile {
+                                  @include bluebutton($font-size: 17px, $p: sm);
+                                }
                                 @include bluebutton($font-size: 17px);
                                 position: absolute;
                                 left: -15px;
@@ -937,6 +943,9 @@
 			 			 	  				margin: 0;
 			 			 	  				padding: 7px 22px;
 			 			 	  				@include bluebutton($font-size: 17px);
+			 			 	  				@include mobile {
+			 			 	  				  @include bluebutton($font-size: 17px, $p: sm);	
+			 			 	  				}
 				 			 	  				&:hover {
 				 			 	  				 	text-decoration: underline !important;
 				 			 	  				}
@@ -988,7 +997,11 @@
 					 			 	  			 	display: inline-block;
 					 			 	  			 	margin: 0;
 					 			 	  			 	padding: 7px 22px;
+					 			 	  			 	@include mobile {
+					 			 	  			 		@include bluebutton($font-size: 17px, $p: sm);
+					 			 	  			 	}
 					 			 	  			 	@include bluebutton($font-size: 17px);
+					 			 	  			 	
 						 			 	  			 	&:hover {
 						 			 	  			 	  	text-decoration: underline !important;
 						 			 	  			 	}
@@ -1008,6 +1021,9 @@
 			 			 	  			 	margin: 0;
 			 			 	  			 	padding: 7px 22px;
 			 			 	  			 	@include bluebutton($font-size: 17px);
+			 			 	  			 	@include mobile {
+			 			 	  			 		@include bluebutton($font-size: 17px, $p: sm);
+			 			 	  			 	}
 				 			 	  			 	&:hover {
 				 			 	  			 	  	text-decoration: underline !important;
 				 			 	  			 	}
@@ -2099,6 +2115,10 @@
 				@include white-text;
 				@include noborder;
 				margin-top: 17px;
+				font-size: 28px;
+				@include mobile {
+					font-size: 22px;
+				}
 			}
 			div {
 				@include arialbold;
@@ -2869,10 +2889,18 @@
 		#edit-field-user-random-list-1, #edit-field-user-random-list-3 {
            width: 23%;
            float: left;
+            @include mobile {
+            	width: 100%;
+            	float: none;
+            }
 		}
 		#edit-field-user-random-list-2 {
 			width: 19%;
 			float: left;
+			 @include mobile {
+			 	width: 100%;
+			 	float: none;
+			 }
 		}
 		#edit-account {
 			width: 100%;
@@ -2885,6 +2913,12 @@
 			 	width: 11.1%;
 			 	display: inline-block;
 			 	vertical-align: top;
+			 	@media screen and (max-width: 479px) {
+			 		width: 24%;
+			 	}
+			 	@media only screen and (min-width: 480px) and (max-width: 767px) {
+			 		width: 19%;
+			 	}
 			 	 img {
 			 	 	position: relative;
 			 	 	bottom: 10px;

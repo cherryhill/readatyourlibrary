@@ -244,3 +244,14 @@ h1#page-title {
   .mail-notification-hidden {
   	display: none;
   }
+  .messages.error {
+  	@include mobile {
+  		display: none;
+  	}
+  }
+  .confirm-parent, .password-parent {
+  	@include mobile {
+  		width: 100% !important;
+  		max-width: 300px;
+  	}
+  }
