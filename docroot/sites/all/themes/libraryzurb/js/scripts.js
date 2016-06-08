@@ -76,6 +76,30 @@ $(value).addClass($(value).find('a').text().toLowerCase());
 
 
 jQuery( document ).ready(function() {
+
+// Js for mobile progress report
+
+jQuery('.image_tracker').click(function() {
+  var radio_image = jQuery("input[name = image_radio]:checked").prev().children().attr('src');
+  var image_class = jQuery("input[name = image_radio]:checked").prev().attr('class');
+  var split_image = radio_image.split('?');
+  var split_image1 = split_image[0].split('/');
+  var image_name = split_image1[split_image1.length - 1];
+  window.location.href = "progress?image_path=" + image_name + "&" + image_class;
+  //window.location.reload(false);
+  //jQuery.param.querystring(window.location.href, 'valueA=321&valueB=123');
+  
+});
+
+  var str = window.location.href;
+  var n = str.lastIndexOf('&');
+  var result = str.substring(n + 1);
+  if(result) {
+    jQuery('.' + result).next().prop('checked', true);
+  }
+
+
+
   /**interchanging the position of divs in progress page at mobile screen and tablet screen**/
   var windowWidth = jQuery( window ).width();
    if (windowWidth < 940) {
