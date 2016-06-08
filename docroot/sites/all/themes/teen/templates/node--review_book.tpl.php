@@ -193,6 +193,8 @@ if(isset($catalog_lk)){
         $img_uri = $img_uri->uri;
         $style = 'avatar_style';
         $img_path = image_style_url($style, $img_uri);
+      }
+      if(isset($img_uri)){
         $img = "<img src='$img_path'>";
       }?>
     <span class = "created"><?php if ($node_privacy == 'public' || $node_privacy == 'private'){ print 'Reviewed by '; }?></span><span class="avatar"><?php if ($node_privacy == 'public' || $node_privacy == 'private') { print $img; } ?></span><span class ="name_author"><?php if ($node_privacy == 'public' || $node_privacy == 'private'){ print "<a href = '$base_url/users/public_profile/$node_uid' class = 'user_profile_node'>".$reviewer.'</a>'; } ?></span>
