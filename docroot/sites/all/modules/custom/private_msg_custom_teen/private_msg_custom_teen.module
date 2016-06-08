@@ -354,7 +354,7 @@ function private_msg_custom_teen_form_alter(&$form, &$form_state, $form_id) {
     $form['purchase_link'] = array(
       '#type' => 'link',
       '#title' => 'Suggest a purchase',
-      '#href' => variable_get('pmc_purchase_link'),
+      '#href' => variable_get('pmc_purchase_link_teen'),
       '#attributes' => array('target' => '_blank'),
       '#weight' => 3,
     );
