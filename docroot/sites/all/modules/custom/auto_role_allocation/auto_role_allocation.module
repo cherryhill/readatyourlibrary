@@ -28,6 +28,10 @@ function auto_role_allocation_block_info() {
     'info' => t('Write Staff notes'),
     'cache' => DRUPAL_NO_CACHE,
     );
+  $blocks['mobile_progress'] = array(
+    'info' => t('Mobile Progress Report'),
+    'cache' => DRUPAL_NO_CACHE,
+    );
   $blocks['calendar-data'] = array(
     'info' => t('Show calendar data json'),
     'cache' => DRUPAL_NO_CACHE,
@@ -52,6 +56,10 @@ function auto_role_allocation_block_view($block_name = '') {
     case 'staff-notes':
     $block['subject'] = '';
     $block['content'] = drupal_get_form('generate_staff_form');
+    break;
+    case 'mobile_progress':
+    $block['subject'] = '';
+    $block['content'] = drupal_get_form('generate_mobile_progress_form');
     break;
     case 'calendar-data':
     $block['subject'] = '';
@@ -217,6 +225,71 @@ function generate_staff_form_submit($form, &$form_state) {
 
   
 }
+
+// Progress page for mobile
+
+function generate_mobile_progress_form($form, &$form_state) {
+  $qry = db_select('eck_activity', 'eck_a');
+    $qry->join('field_data_field_activity_fired_hook', 'fdfafh', 'fdfafh.entity_id = eck_a.id');
+    $qry->condition('fdfafh.field_activity_fired_hook_value', 'node_update|node|sticker|updated');
+    $qry->fields('eck_a', array('title','id'));
+    $resu = $qry->execute()->fetchAll();
+    foreach ($resu as $value) {
+      //$activity_id[] = $value->id; 
+      $activity_title[$value->id] = $value->title; 
+    }
+
+  $form['from'] = array(
+    //'#title' => t('Start date'),
+    '#type' => 'date_popup',
+    '#date_format' => 'F d, Y',
+    '#date_year_range' => '0:+10',
+    '#required' => TRUE,
+    '#size' => 8,
+  );
+  $form['activity_id'] = array(
+    //'#title' => t('Start date'),
+    '#type' => 'hidden',
+    '#value' => $value->id, 
+  );
+  $form['submit'] = array(
+    '#value' => 'Submit',
+    '#type' => 'submit',
+  );
+  
+
+  return $form;
+}
+
+function generate_mobile_progress_form_submit($form, &$form_state) { 
+  global $user;
+  $uid = $user->uid;
+  $date = strtotime($form_state['values']['from']);
+  $image_name = $_GET['image_path'];
+  $activity_id = $form_state['values']['activity_id'];
+   
+  $sticker_count = db_select('calendar', 'c')
+  ->fields('c', array('image_url'))
+  ->condition('uid', $uid)
+  ->condition('date', $date)
+  ->execute();
+  $no_of_sticker = $sticker_count->rowCount();
+  $current_date = time();
+  if(!($date > $current_date)) {
+    if(!$no_of_sticker) {
+      $insert_query =db_insert('calendar')
+        ->fields(array(
+          'uid'=>$uid,
+          'image_url'=> $image_name,
+          'date'=>$date,
+        ));
+      $insert_query->execute();
+      play_library_program_create_activity_entry($activity_id, $uid); 
+    }    
+ }     //play_library_program_create_activity_entry($activity_id, $uid); 
+  //print_r($form_state);die();
+}
+
 
 
 function auto_role_allocation_init() {
