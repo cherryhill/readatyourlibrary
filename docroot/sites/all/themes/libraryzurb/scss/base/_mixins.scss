@@ -82,6 +82,7 @@
   	-moz-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
   	box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
  }
+
  @mixin mclaren {
 	font-family: McLaren-Regular !important;
 	font-weight: normal !important;
@@ -127,6 +128,9 @@
 	    font-size: 28px;
 	      @include mobile{
 	     	font-size: 22px;
+	     	padding-top: 13px;
+	     	height: 100px;
+	     	padding-left: 22px;
 	     }
 		height: 110px;
 		border-bottom: medium none;
@@ -138,13 +142,21 @@
 		border-radius: 20px;
 		overflow: hidden;
 		 &:after {
+		 	@include mobile {
+		 		@include previous(100%, 95px, $left: 0, $top: 0);
+		 	}
 		 	@include previous(100%, 110px, $left: 0, $top: 0);
 		 	background: url('../images/libraryzurb/background-saffron.png') no-repeat;
 		 		background-position: -35px 10px;
 		 		@include rotate(180deg);
 		 		z-index: -1;
+		 @include mobile {
+		 	background-position: -52px 16px;
+		 	background-size: 200% auto;
+		 }
 		 		
 		
+		 
 		 }
      }
 }
@@ -152,7 +164,7 @@
 	color: $black;
 	@include mclaren;
 	border-radius: 10px;
-	background: $yellow !important;
+	background: $yellow;
 	text-transform: capitalize;
 	border: none;
 	@if $p == "P" {
@@ -162,17 +174,20 @@
 	@else {
 		padding: $button-sml 20px;
 	}
+	@include mobile {
+		padding: 4px 13px 6px !important;
+	}
 	@include boxshadow;
 	 &:hover {
 	 	color: $black;
-	 	background: $button-hover !important;
+	 	background: $button-hover;
 	 	opacity: 1;
 	 	outline: none;
 	 	text-decoration: none !important;
 	 }
 	 &:focus, &.active {
 	 	color: $black;
-	 	background: $button-active !important;
+	 	background: $button-active;
 	 	outline: 1;
 	 	opacity: 1;
 	 	text-decoration: none !important;
@@ -186,6 +201,10 @@
 	border-radius: 10px;
 	@if $p == "lg" {
 		padding: 9px 40px 9px 22px;
+	}
+	@else if $p == "sm" {
+       padding: 4px 13px 6px;
+       z-index: 9999 !important;
 	}
 	@else {
 	padding: 9px 22px;
@@ -235,7 +254,7 @@
     position: relative;
     @include boxshadow;
 }
-@mixin waveimg($ch-font: null) {
+@mixin waveimg($ch-font: null, $back: null) {
 		color: $white;
       	@include mclaren;
 		padding-top: 26px;
@@ -253,6 +272,11 @@
 	     	font-size: 22px;
 	     }
 	     }
+	     @include mobile {
+	     	height: 100px;
+	     	padding-top: 13px;
+	     	padding-left: 22px;
+	     }
 		height: 110px;
 		border-bottom: medium none;
 		margin-top: -1px;
@@ -262,12 +286,32 @@
 		border-radius: 20px;
 		overflow: hidden;
 		 &:after {
+		 	@include mobile {
+		 	  @include previous(100%, 95px, $left: 0, $top: 0);
+		 	}
 		 	@include previous(100%, 110px, $left: 0, $top: 0);
 		 	background: url('../images/libraryzurb/background-saffron.png') no-repeat;
 		 		background-position: -35px 10px;
 		 		@include rotate(180deg);
 		 		z-index: -1;
+		 		@include mobile {
+		 			background-position: -52px 16px;
+		 			background-size: 200% auto;
+		 		}
 
+		 }
+		 @if $back == "full" {
+		 	@include mobile {
+		 	height: auto !important;
+		 	border-radius: 20px 20px 0px 0px !important;
+		 }
+		 	 &:after {
+		 	 	@include mobile {
+		 	  @include previous(100%, 100% !important, $left: 0, $top: 0);
+		 	   background: $orange !important;
+		 	   background-image: none;
+		 	}
+		 	 }
 		 }
     }
 @mixin nobackground {

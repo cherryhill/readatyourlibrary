@@ -209,6 +209,7 @@
          padding: 0 !important;
          background: none;
          display: none;
+         clear: both;
          .views-row {
             margin-bottom: 0;
              .views-field {
@@ -369,6 +370,9 @@
           }
           .views-field-php-2 {
             a {
+              @include mobile {
+                 @include bluebutton($font-size: 17px, $p: sm);
+              }
             @include bluebutton($font-size: 17px);
             margin-bottom: 10px;
              &:hover {
