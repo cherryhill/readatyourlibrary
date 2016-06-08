@@ -252,6 +252,15 @@ function generate_mobile_progress_form($form, &$form_state) {
     '#type' => 'hidden',
     '#value' => $value->id, 
   );
+  $form['image_name'] = array(
+    //'#title' => t('Start date'),
+     '#type' => 'hidden',
+     '#attributes' => array(
+     'class' => array(
+       'image_name' 
+    ),
+   ), 
+  );
   $form['submit'] = array(
     '#value' => 'Submit',
     '#type' => 'submit',
@@ -265,7 +274,7 @@ function generate_mobile_progress_form_submit($form, &$form_state) {
   global $user;
   $uid = $user->uid;
   $date = strtotime($form_state['values']['from']);
-  $image_name = $_GET['image_path'];
+  $image_name = $form_state['values']['image_name'];
   $activity_id = $form_state['values']['activity_id'];
    
   $sticker_count = db_select('calendar', 'c')
