@@ -33,3 +33,65 @@
  * - https://drupal.org/node/1887922
  * - http://smacss.com/
  */
+
+@media screen and (max-width: $mini-screen) {
+
+
+  #site-name a {
+    font-size: 27px;
+  }
+
+  .header-middle {
+    .block-menu {
+      ul.menu {
+        li {
+          margin-bottom: 50px;
+          &:nth-child(5n), &:nth-child(5n+1) {
+            margin-bottom: 0;
+          }
+        }
+      }
+    }
+  }
+
+  .block.announcement {
+    .views-field-body {
+      ol {
+        width: 100%;
+      }
+      p {
+        width: 100%;
+      }
+    }
+  }
+
+  .block.homepage-blocks {
+    .view-media-photos-videos- {
+      .views-field-field-video-link {
+        margin: 0 auto;
+      }
+      iframe.media-youtube-player {
+        height: 77px !important;
+        width: 136px !important;
+      }
+      .view-footer button {
+        display: block;
+        margin: 20px auto 15px !important;
+      }
+    }
+    &.playlib-media {
+      .owl-carousel .owl-controls {
+        .owl-buttons {
+          .owl-prev {
+            margin-left: 10px;
+          }
+          .owl-next {
+            margin-right: 10px;
+          }
+        }
+      }
+    }
+  }
+
+
+}
