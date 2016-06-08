@@ -254,7 +254,7 @@
     position: relative;
     @include boxshadow;
 }
-@mixin waveimg($ch-font: null) {
+@mixin waveimg($ch-font: null, $back: null) {
 		color: $white;
       	@include mclaren;
 		padding-top: 26px;
@@ -299,6 +299,19 @@
 		 			background-size: 200% auto;
 		 		}
 
+		 }
+		 @if $back == "full" {
+		 	@include mobile {
+		 	height: auto !important;
+		 	border-radius: 20px 20px 0px 0px !important;
+		 }
+		 	 &:after {
+		 	 	@include mobile {
+		 	  @include previous(100%, 100% !important, $left: 0, $top: 0);
+		 	   background: $orange !important;
+		 	   background-image: none;
+		 	}
+		 	 }
 		 }
     }
 @mixin nobackground {

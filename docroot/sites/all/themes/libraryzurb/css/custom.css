@@ -6551,16 +6551,48 @@ form#user-pass div.user_pass_name:after {
 }
 
 @media (max-width: 767px) {
-  .messages.error {
-    display: none;
-  }
-}
-
-@media (max-width: 767px) {
   .confirm-parent, .password-parent {
     width: 100% !important;
     max-width: 300px;
   }
+}
+
+#edit-submit {
+  color: #000;
+  font-family: McLaren-Regular !important;
+  font-weight: normal !important;
+  font-style: normal !important;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+  text-rendering: optimizeLegibility !important;
+  -moz-font-smoothing: grayscale !important;
+  border-radius: 10px;
+  background: #fdeb52 !important;
+  text-transform: capitalize;
+  border: none;
+  padding: 0.5625em 20px;
+  -webkit-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+  box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+}
+@media (max-width: 767px) {
+  #edit-submit {
+    padding: 4px 13px 6px !important;
+  }
+}
+#edit-submit:hover {
+  color: #000;
+  background: #f7fc63 !important;
+  opacity: 1;
+  outline: none;
+  text-decoration: none !important;
+}
+#edit-submit:focus, #edit-submit.active {
+  color: #000;
+  background: #f0f811 !important;
+  outline: 1;
+  opacity: 1;
+  text-decoration: none !important;
 }
 
 .admin-menu .fixed {
@@ -10232,6 +10264,102 @@ body .alert-box.success a.close:hover {
 }
 
 /**open single msg**/
+.page-messages-view #page-title {
+  color: #fff;
+  font-family: McLaren-Regular !important;
+  font-weight: normal !important;
+  font-style: normal !important;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+  text-rendering: optimizeLegibility !important;
+  -moz-font-smoothing: grayscale !important;
+  padding-top: 26px;
+  padding-bottom: 25px;
+  font-size: 28px;
+  height: 110px;
+  border-bottom: medium none;
+  margin-top: -1px;
+  padding-left: 36px;
+  z-index: 0;
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+}
+@media (max-width: 767px) {
+  .page-messages-view #page-title {
+    font-size: 22px;
+  }
+}
+@media (max-width: 767px) {
+  .page-messages-view #page-title {
+    height: 100px;
+    padding-top: 13px;
+    padding-left: 22px;
+  }
+}
+.page-messages-view #page-title:after {
+  content: "";
+  width: 100%;
+  height: 110px;
+  display: block;
+  visibility: visible;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: url("../images/libraryzurb/background-saffron.png") no-repeat;
+  background-position: -35px 10px;
+  -webkit-transform: rotate(180deg);
+  -moz-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  -o-transform: rotate(180deg);
+  transform: rotate(180deg);
+  z-index: -1;
+}
+@media (max-width: 767px) {
+  .page-messages-view #page-title:after {
+    content: "";
+    width: 100%;
+    height: 95px;
+    display: block;
+    visibility: visible;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+}
+@media (max-width: 767px) {
+  .page-messages-view #page-title:after {
+    background-position: -52px 16px;
+    background-size: 200% auto;
+  }
+}
+@media (max-width: 767px) {
+  .page-messages-view #page-title {
+    height: auto !important;
+    border-radius: 20px 20px 0px 0px !important;
+  }
+}
+@media (max-width: 767px) {
+  .page-messages-view #page-title:after {
+    content: "";
+    width: 100%;
+    height: 100% !important;
+    display: block;
+    visibility: visible;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: #f6511d !important;
+    background-image: none;
+  }
+}
+@media (max-width: 767px) {
+  .page-messages-view .privatemsg-message-column {
+    width: 100% !important;
+    float: none !important;
+    padding: 0 22px;
+  }
+}
 .page-messages-view .privatemsg-message-participants {
   width: 100%;
   max-width: 80%;
@@ -10239,6 +10367,12 @@ body .alert-box.success a.close:hover {
   color: #000;
   border: none !important;
   outline: none !important;
+}
+@media (max-width: 767px) {
+  .page-messages-view .privatemsg-message-participants {
+    max-width: 100%;
+    padding: 0 22px;
+  }
 }
 .page-messages-view .privatemsg-message-participants a.username {
   color: #fff;
@@ -10248,9 +10382,19 @@ body .alert-box.success a.close:hover {
   max-width: 80%;
   margin: 0 auto;
 }
+@media (max-width: 767px) {
+  .page-messages-view .privatemsg-message {
+    max-width: 100%;
+  }
+}
 .page-messages-view .privatemsg-message .privatemsg-message-information {
   border: none !important;
   outline: none !important;
+}
+@media (max-width: 767px) {
+  .page-messages-view .privatemsg-message .privatemsg-message-information {
+    display: inline-block;
+  }
 }
 .page-messages-view .privatemsg-message .privatemsg-message-information .privatemsg-author-name {
   position: relative;
@@ -12132,9 +12276,23 @@ body .alert-box.success a.close:hover {
   height: 110px;
   border-bottom: medium none;
   margin-top: -1px;
-  padding-left: 4%;
+  padding-left: 36px;
   z-index: 0;
   position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+}
+@media (max-width: 767px) {
+  .page-messages div.main #page-title {
+    font-size: 22px;
+  }
+}
+@media (max-width: 767px) {
+  .page-messages div.main #page-title {
+    height: 100px;
+    padding-top: 13px;
+    padding-left: 22px;
+  }
 }
 .page-messages div.main #page-title:after {
   content: "";
@@ -12153,6 +12311,24 @@ body .alert-box.success a.close:hover {
   -o-transform: rotate(180deg);
   transform: rotate(180deg);
   z-index: -1;
+}
+@media (max-width: 767px) {
+  .page-messages div.main #page-title:after {
+    content: "";
+    width: 100%;
+    height: 95px;
+    display: block;
+    visibility: visible;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+}
+@media (max-width: 767px) {
+  .page-messages div.main #page-title:after {
+    background-position: -52px 16px;
+    background-size: 200% auto;
+  }
 }
 .page-messages div.main ul.pagination.pager {
   float: right;
@@ -12691,6 +12867,11 @@ body .alert-box.success a.close:hover {
   padding-right: 0;
   padding-top: 17px;
 }
+@media (max-width: 767px) {
+  .page-reviews .view .view-filters form .views-exposed-form .views-exposed-widget, .page-booklists .view .view-filters form .views-exposed-form .views-exposed-widget {
+    width: 49%;
+  }
+}
 @media (min-width: 768px) and (max-width: 1025px) {
   .page-reviews .view .view-filters form .views-exposed-form .views-exposed-widget, .page-booklists .view .view-filters form .views-exposed-form .views-exposed-widget {
     width: 49%;
@@ -12856,8 +13037,18 @@ body .alert-box.success a.close:hover {
 .page-reviews .view-reviews .view-header .reviews-title {
   font-size: 28px;
 }
+@media (max-width: 767px) {
+  .page-reviews .view-reviews .view-header .reviews-title {
+    font-size: 22px;
+  }
+}
 .page-reviews .view-reviews .view-header .reviews-subtitle {
   font-size: 25px;
+}
+@media (max-width: 767px) {
+  .page-reviews .view-reviews .view-header .reviews-subtitle {
+    font-size: 19px;
+  }
 }
 .page-reviews .main .view-content .views-row img {
   border: none !important;
@@ -12866,6 +13057,12 @@ body .alert-box.success a.close:hover {
 .page-reviews .main .view-content .item-list ol {
   list-style: none;
   display: table;
+}
+@media (max-width: 767px) {
+  .page-reviews .main .view-content .item-list ol {
+    width: 100%;
+    display: inline-block;
+  }
 }
 .page-reviews .main .view-content .item-list ol li {
   margin-bottom: 0;
@@ -12878,12 +13075,27 @@ body .alert-box.success a.close:hover {
   padding-bottom: 35px;
   font-size: 17px;
 }
+@media (max-width: 767px) {
+  .page-reviews .main .view-content .item-list ol li {
+    width: 100%;
+    display: inline-block;
+    float: none;
+  }
+}
 .page-reviews .main .view-content .item-list ol li .views-field.views-field-nothing-1 {
   width: 70%;
   float: right;
   display: table-cell;
   padding-left: 4%;
   padding-top: 23px;
+}
+@media (max-width: 767px) {
+  .page-reviews .main .view-content .item-list ol li .views-field.views-field-nothing-1 {
+    width: 100%;
+    display: inline-block;
+    float: none;
+    padding-left: 0;
+  }
 }
 .page-reviews .main .view-content .item-list ol li .views-field.views-field-nothing-1 .bookreview_title {
   font-size: 20px;
@@ -13010,10 +13222,24 @@ body .alert-box.success a.close:hover {
   width: 30%;
   padding: 0px;
 }
+@media (max-width: 767px) {
+  .page-reviews .main .view-content .item-list ol li .views-field.views-field-field-book-cover-image-link {
+    width: 100%;
+    display: inline-block;
+    float: none;
+  }
+}
 .page-reviews .main .view-content .item-list ol li .views-field.views-field-field-book-cover-image-link table {
   margin: 0 !important;
   border: none !important;
   outline: none !important;
+}
+@media (max-width: 767px) {
+  .page-reviews .main .view-content .item-list ol li .views-field.views-field-field-book-cover-image-link table {
+    width: 100%;
+    max-width: 200px;
+    margin: 0 auto !important;
+  }
 }
 .page-reviews .main .view-content .item-list ol li .views-field.views-field-field-book-cover-image-link table tbody {
   border: none !important;
@@ -13046,6 +13272,14 @@ body .alert-box.success a.close:hover {
   float: right;
   display: table-row;
   padding-left: 4%;
+}
+@media (max-width: 767px) {
+  .page-reviews .main .view-content .item-list ol li .views-field.views-field-nothing, .page-reviews .main .view-content .item-list ol li .views-field.views-field-body {
+    width: 100%;
+    float: none;
+    padding-left: 0;
+    display: inline-block;
+  }
 }
 .page-reviews .main .view-content .item-list ol li .views-field.views-field-field-user-avatar img {
   float: left;
@@ -14669,6 +14903,75 @@ body .alert-box.success a.close:hover {
 }
 
 /**end**/
+/**user account**/
+.section-user #checkboxes-div #checkboxes-div {
+  width: 100%;
+  display: inline-block;
+}
+.section-user #checkboxes-div #checkboxes-div .avatar_radio {
+  width: 11.1%;
+  display: inline-block;
+  vertical-align: top;
+}
+@media screen and (max-width: 479px) {
+  .section-user #checkboxes-div #checkboxes-div .avatar_radio {
+    width: 24%;
+  }
+}
+@media only screen and (min-width: 480px) and (max-width: 767px) {
+  .section-user #checkboxes-div #checkboxes-div .avatar_radio {
+    width: 19%;
+  }
+}
+.section-user #checkboxes-div #checkboxes-div .avatar_radio img {
+  position: relative;
+  bottom: 10px;
+}
+.section-user #checkboxes-div #checkboxes-div .form-wrapper {
+  padding: 0;
+  border: none !important;
+  outline: none !important;
+  margin: 0;
+}
+.section-user #checkboxes-div #checkboxes-div .form-wrapper legend {
+  width: 100%;
+  display: inline-block;
+}
+.section-user #checkboxes-div #checkboxes-div .form-wrapper legend .fieldset-legend {
+  width: 100%;
+  display: inline-block;
+  background: #fdeb52;
+  position: relative;
+  padding: 10px 16px;
+  font-family: McLaren-Regular !important;
+  font-weight: normal !important;
+  font-style: normal !important;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+  text-rendering: optimizeLegibility !important;
+  -moz-font-smoothing: grayscale !important;
+}
+.section-user #checkboxes-div #checkboxes-div .form-wrapper legend .fieldset-legend.open:after {
+  -webkit-transform: rotate(180deg);
+  -moz-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  -o-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+.section-user #checkboxes-div #checkboxes-div .form-wrapper legend .fieldset-legend:after {
+  content: "";
+  width: 0px;
+  height: 0px;
+  display: block;
+  visibility: visible;
+  position: absolute;
+  top: 48%;
+  right: 16px;
+  border-left: 7px solid transparent;
+  border-right: 7px solid transparent;
+  border-top: 8px solid #000;
+}
+
 /**page register**/
 .page-user-register #checkboxes-div #checkboxes-div .form-wrapper {
   padding: 0;
@@ -14906,6 +15209,21 @@ body .alert-box.success a.close:hover {
 /**hide breadcurm from specific pages**/
 .page-users-public-profile .pre-header .pre-header-left .breadcurm, .page-user-edit .pre-header .pre-header-left .breadcurm, .page-node-add-booklist .pre-header .pre-header-left .breadcurm, .page-node-add-review-book .pre-header .pre-header-left .breadcurm, .page-user-profile .pre-header .pre-header-left .breadcurm, .page-messages-view .pre-header .pre-header-left .breadcurm {
   display: none;
+}
+
+.page-node-add-review-book fieldset.date-combo.form-wrapper .date-date input, .page-node-add-booklist fieldset.date-combo.form-wrapper .date-date input {
+  width: 100% !important;
+}
+.page-node-add-review-book .vertical-tabs, .page-node-add-booklist .vertical-tabs {
+  display: inline-block;
+  margin: 0;
+  width: 100%;
+}
+.page-node-add-review-book .vertical-tabs ul.vertical-tabs-list, .page-node-add-booklist .vertical-tabs ul.vertical-tabs-list {
+  width: 100%;
+  display: inline-block;
+  float: none;
+  margin: 0;
 }
 
 /**css for indivisual book-review page**/
