@@ -48,14 +48,23 @@ $(value).addClass($(value).find('a').text().toLowerCase());
    
   });
      //make accordian of avtar images in user register page
-        var panels = $('.page-user-register #checkboxes-div #checkboxes-div .fieldset-wrapper').hide();
+       function getpanels(panelclass) {
+
+        var panels = $('.'+panelclass+' #checkboxes-div #checkboxes-div .fieldset-wrapper').hide();
     
-        $('.page-user-register #checkboxes-div #checkboxes-div legend .fieldset-legend').click(function() {
+        $('.'+panelclass+' #checkboxes-div #checkboxes-div legend .fieldset-legend').click(function() {
           panels.slideUp();
         $(this).parent().next('.fieldset-wrapper').toggle();
-        $(this).toggleClass('open');
+       
         return false;
-      });
+        });
+      }
+      if($('body.section-user').length > 0) {
+        getpanels('section-user');
+      }
+      else if($('body.page-user-register').length > 0) {
+        getpanels('.page-user-register');
+      }
       // Get width of browser viewport. **Note:** The value we check against
       // should probably match the value set for `$topbar-breakpoint` in
       // libraryzurb/scss/_variables.scss.
@@ -104,8 +113,8 @@ jQuery('.image_tracker').click(function() {
 
   /**interchanging the position of divs in progress page at mobile screen and tablet screen**/
   var windowWidth = jQuery( window ).width();
-   if (windowWidth < 940) {
-     jQuery(".section-progress .main .block-auto-role-allocation").insertAfter(".section-progress .main .progress-calendar");
+   if (windowWidth < 1024) {
+     jQuery(".section-progress .main .block-auto-role-allocation-user-prize-block").insertAfter(".section-progress .main .progress-calendar");
       jQuery(".section-progress .main .block-views").insertAfter(".section-progress .main .progress-calendar");
    }
    /**jquery for hamburger button in mobile screen**/

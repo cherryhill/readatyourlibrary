@@ -164,7 +164,7 @@
 	color: $black;
 	@include mclaren;
 	border-radius: 10px;
-	background: $yellow !important;
+	background: $yellow;
 	text-transform: capitalize;
 	border: none;
 	@if $p == "P" {
@@ -180,14 +180,14 @@
 	@include boxshadow;
 	 &:hover {
 	 	color: $black;
-	 	background: $button-hover !important;
+	 	background: $button-hover;
 	 	opacity: 1;
 	 	outline: none;
 	 	text-decoration: none !important;
 	 }
 	 &:focus, &.active {
 	 	color: $black;
-	 	background: $button-active !important;
+	 	background: $button-active;
 	 	outline: 1;
 	 	opacity: 1;
 	 	text-decoration: none !important;
