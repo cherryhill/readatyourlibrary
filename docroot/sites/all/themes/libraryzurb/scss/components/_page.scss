@@ -1,11 +1,25 @@
 
 /**open single msg**/
 .page-messages-view {
+	#page-title {
+		@include waveimg($back: full);
+	}
+	.privatemsg-message-column {
+		@include mobile {
+			width: 100% !important;
+			float: none !important;
+			padding: 0 22px;
+		}
+	}
 	.privatemsg-message-participants {
 		width: 100%;
 		max-width: 80%;
 		margin: 0 auto;
 		color: $black;
+		@include mobile {
+			max-width: 100%;
+			padding: 0 22px;
+		}
 		@include noborder;
 		  a.username {
 		  	color: $white;
@@ -15,7 +29,13 @@
 	.privatemsg-message {
 		max-width: 80%;
 		margin: 0 auto;
+		@include mobile {
+			max-width: 100%;
+		}
 		 .privatemsg-message-information {
+		 	@include mobile {
+		 		display: inline-block;
+		 	}
 		 	@include noborder;
 		 	.privatemsg-author-name {
 		 		position: relative;
@@ -1147,25 +1167,7 @@
         padding-bottom: 20px;
         @include boxshadow;
          #page-title {
-		    color: $white;
-          	@include mclaren;
-			padding-top: 26px;
-			padding-bottom: 25px;
-		    font-size: 28px;
-			height: 110px;
-			border-bottom: medium none;
-			margin-top: -1px;
-			padding-left:4%;
-			z-index: 0;
-			position: relative;
-			 &:after {
-			 	@include previous(100%, 110px, $left: 0, $top: 0);
-			 	background: url('../images/libraryzurb/background-saffron.png') no-repeat;
-			 		background-position: -35px 10px;
-			 		@include rotate(180deg);
-			 		z-index: -1;
-
-			 }
+		   @include waveimg;
          }
         ul {
         	&.pagination.pager {
@@ -1500,6 +1502,10 @@
 				  	  		 	  	padding-left: 1%;
 				  	  		 	  	padding-right: 0;
 				  	  		 	  	padding-top: 17px;
+				  	  		 	  	  @include mobile {
+				  	  		 	  	  	width: 49%;
+
+				  	  		 	  	  }
 				  	  		 	  	 @include tablet {
 				  	  		 	  	 	width: 49%;
 				  	  		 	  	 	padding-top: 2px;
@@ -1623,9 +1629,15 @@
   	  		}
   	  		.reviews-title {
   	  			font-size: 28px;
+  	  			@include mobile {
+  	  				font-size: 22px;
+  	  			}
   	  		}
   	  		.reviews-subtitle {
   	  			font-size: 25px;
+  	  			 @include mobile {
+  	  			 	font-size: 19px;
+  	  			 }
   	  		}
   	  	}
   	  }
@@ -1638,8 +1650,17 @@
 	  	 			ol {
 		  	 			list-style: none;
 		  	 			display: table;
+		  	 			@include mobile {
+		  	 				width: 100%;
+		  	 				display: inline-block;
+		  	 			}
 
 	  	 				li {
+	  	 					@include mobile {
+	  	 						width: 100%;
+	  	 						display: inline-block;
+	  	 						float: none;
+	  	 					}
 		  	 				margin-bottom: 0;
 		  	 				display: table-row;
 		  	 				width: 100%;
@@ -1651,6 +1672,13 @@
 	  	 						.views-field {
 	  	 					
                              		&.views-field-nothing-1 {
+                             			@include mobile {
+                             				width: 100%;
+                             				display: inline-block;
+                             				float: none;
+                             				padding-left: 0;
+                             				
+                             			}
 		                             	width: 70%;
 		                             	float: right;
 		                             	display: table-cell;
@@ -1737,11 +1765,21 @@
 		  	 					 	}
 
 	  	 					 		&.views-field-field-book-cover-image-link {
+	  	 					 			@include mobile {
+	  	 					 				width: 100%;
+	  	 					 				display: inline-block;
+	  	 					 				float: none;
+	  	 					 			}
 			  	 					 	display: table-cell;
 			  	 					 	float: left;
 			  	 					 	width: 30%;
 			  	 					 	padding: 0px;
 				  	 					 	table {
+				  	 					 		@include mobile {
+				  	 					 			width: 100%;
+				  	 					 			max-width: 200px;
+				  	 					 			margin: 0 auto !important;
+				  	 					 		}
 				  	 					 		margin: 0 !important;
 				  	 					 		@include noborder;
 				  	 					 		 tbody {
@@ -1769,6 +1807,12 @@
 		  	 					 		padding-top: 15px;
 		  	 					 	}
 		  	 					 	&.views-field-nothing,&.views-field-body {
+		  	 					 		@include mobile {
+		  	 					 			width: 100%;
+		  	 					 			float: none;
+		  	 					 			padding-left:0;
+		  	 					 			display: inline-block;
+		  	 					 		}
 			  	 					 	width: 70%;
 			  	 					 	float: right;
 			  	 					 	display: table-row; 
@@ -2851,10 +2895,66 @@
 	}
 }
 /**end**/
+/**user account**/
+ .section-user {
+ 	#checkboxes-div {
+		#checkboxes-div {
+
+				width: 100%;
+				display: inline-block;
+			 .avatar_radio {
+			 	width: 11.1%;
+			 	display: inline-block;
+			 	vertical-align: top;
+			 	@media screen and (max-width: 479px) {
+			 		width: 24%;
+			 	}
+			 	@media only screen and (min-width: 480px) and (max-width: 767px) {
+			 		width: 19%;
+			 	}
+			 	 img {
+			 	 	position: relative;
+			 	 	bottom: 10px;
+			 	 }
+			 }
+		
+			.form-wrapper {
+              padding: 0;
+              @include noborder;
+              margin: 0;
+               legend {
+               	width: 100%;
+               	display: inline-block;
+               	 .fieldset-legend {
+               	 	width: 100%;
+               	 	display: inline-block;
+               	 	background: $yellow;
+               	 	position: relative;
+               	 	padding: 10px 16px;
+               	 	@include mclaren;
+               	 	  &.open {
+               	 	  	&:after {
+               	 	  		@include rotate(180deg);
+               	 	  	} 
+               	 	  }
+               	 	   &:after {
+               	 	   	 @include previous(0px, 0px, $right: 16px, $top: 48%);
+               	 	   	 border-left: 7px solid transparent;
+               	 	   	 border-right: 7px solid transparent;
+               	 	   	 border-top: 8px solid $black;
+               	 	   }
+               	 }
+               }
+			}
+		}
+	}
+
+ }
 /**page register**/
 .page-user-register {
 	#checkboxes-div {
 		#checkboxes-div {
+
 			.form-wrapper {
               padding: 0;
               @include noborder;
@@ -3056,6 +3156,23 @@ display: block !important;
 			}
 	}	}	
 }
+//css for nodd-add-review book
+   .page-node-add-review-book, .page-node-add-booklist {
+   	 fieldset.date-combo.form-wrapper .date-date input {
+   	 	width: 100% !important;
+   	 }
+   	 .vertical-tabs {
+   	 	display: inline-block;
+   	 	margin: 0;
+   	 	width: 100%;	
+   	 	 ul.vertical-tabs-list {
+   	 	 	width: 100%;
+   	 	 	display: inline-block;
+   	 	 	float: none;
+   	 	 	margin: 0;
+   	 	 }
+   	 }
+   }
 /**css for indivisual book-review page**/
 .node-type-review-book {
 	#page-title {
@@ -3332,4 +3449,5 @@ display: block !important;
 		 }
 	}
 }
+
 
