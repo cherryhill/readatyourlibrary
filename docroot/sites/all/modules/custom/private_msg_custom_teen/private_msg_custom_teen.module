@@ -711,6 +711,19 @@ function hotspot_activities() {
   return $form;
 }
 
+/**
+ * Implement hook_date_popup_process_alter().
+ */
+function private_msg_custom_teen_date_popup_process_alter(&$element, &$form_state, &$context) {
+  $element['#datepicker_options'] = array(
+      'maxDate' => "+0D",
+  );
+  $element['date'] = date_popup_process_date_part($element);
+}
+
+/**
+ * function callback for progress block to report activity
+ */
 function progress_record($form,$form_state){
 
   $form['activity_progress_select'] = array(
@@ -727,7 +740,7 @@ function progress_record($form,$form_state){
     '#type' => 'date_popup', 
     '#title' => 'on',
     '#date_format' => 'Y-m-d',
-    '#date_year_range' => '-0:+1',
+    '#date_year_range' => '-1',
     '#weight' => 2, 
   );
   return $form;
