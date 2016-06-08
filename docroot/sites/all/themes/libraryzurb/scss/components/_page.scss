@@ -2326,8 +2326,9 @@
 	  		position: relative;
 	  		@include mobile {
 	  			border-spacing: 0px;
-	  			max-width: 97%;
+	  			max-width: 95%;
 	  			margin: 0 auto;
+	  			display: block !important;
 	  		}
 
 
@@ -2351,13 +2352,19 @@
 		 	 	 	vertical-align: top;
 		 	 	 	@include mobile {
 		 	 	 		width: 100%;
-		 	 	 		display: inline-block;
+		 	 	 		display: block;
+		 	 	 		max-width: 95%;
+		 	 	 		margin: auto;
 		 	 	 	}
  	 	 	
  	 	 	 			.view-header {
  	 	 	 	
 			 	 	 	 	width: 100%;
 			 	 	 	 	padding: 20px 0 20px 20px;
+			 	 	 	 	@include mobile {
+			 	 	 	 		padding: 20px;
+
+			 	 	 	 	}
 			 	 	 	 	left: 0;
 			 	 	 	 	  div {
 			 	 	 	 	  	@include mclaren;
@@ -2374,6 +2381,9 @@
 			 	 	 	 	  	 	color: $red;
 			 	 	 	 	  	 	line-height: 1;
 				 	 	 	 	 	padding-bottom: 20px;
+				 	 	 	 	 	 @include mobile {
+				 	 	 	 	 	 	font-size: 20px;
+				 	 	 	 	 	 }
 			 	 	 	 	  	 }
 			 	 	 	 	  }
  	 	 	 	 				p {
@@ -2401,6 +2411,18 @@
 				 	 	 	 		width: 20%;
 				 	 	 	 		display: table-cell;
 				 	 	 	 		vertical-align: bottom;
+				 	 	 	 		@include mobile {
+				 	 	 	 			text-align: center;
+				 	 	 	 		}
+				 	 	 	 		  .image_tracker {
+				 	 	 	 		  	display: none;
+				 	 	 	 		  	@include tablet {
+				 	 	 	 		  		display: block !important;
+				 	 	 	 		  	}
+				 	 	 	 		  	@include mobile {
+				 	 	 	 		  		display: block !important;
+				 	 	 	 		  	}
+				 	 	 	 		  }
 
 					 	 	 	 		 img {
 					 	 	 	 		 	width: 100% !important;
@@ -2424,7 +2446,9 @@
 						@include boxshadow;
 						@include mobile {
 							width: 100%;
-							display: inline-block;	
+							display: block !important;
+							max-width: 95%;
+							margin: auto;	
 						}
 							.view-prize-won-for-progress-page {
 								width: 100%;
@@ -2508,7 +2532,33 @@
 									}
 							}
  	 				}
- 	 				&.block-auto-role-allocation {
+ 	 				&.block-auto-role-allocation-mobile-progress {
+ 	 					display: none;
+ 	 					background: transparent;
+ 	 					position: relative;
+ 	 					bottom: 20px;
+ 	 					box-shadow: none !important;
+ 	 					  form {
+                            label {
+                            	color: $black;
+                            	@include mclaren;
+                            }
+                            .description {
+                            	display: none;
+                            }
+                            button.form-submit {
+                              @include bluebutton;
+                              margin-left: 0 !important;
+                            }
+ 	 					  }
+ 	 					@include tablet {
+ 	 						display: block !important;
+ 	 					}
+ 	 					@include mobile {
+ 	 						display: block !important;
+ 	 					}
+ 	 				}
+ 	 				&.block-auto-role-allocation-user-prize-block {
 		 	 			width: 30%;
 		 	 			display: table-cell;
 		 	 			background: $light-orange;
@@ -2520,7 +2570,12 @@
 		 	 			@include boxshadow;
 		 	 			@include mobile {
 		 	 				width: 100%;
-		 	 				display: inline-block;
+		 	 				display: block !important;
+		 	 				max-width: 95%;
+		 	 				margin: auto;
+		 	 				margin-top: 25px;
+		 	 				margin-bottom: 25px;
+		 	 				padding: 12.5%;
 		 	 			}
 			 	 			 > div:nth-of-type(2) {
 			 	 			 	line-height: 1.2;
@@ -2542,6 +2597,9 @@
 		 	 			 			@include tablet{
 		 	 			 				font-size: 11px;
 		 	 			 			}
+		 	 			 			@include mobile {
+		 	 			 				display: none;
+		 	 			 			}
 		 	 			 		}
 		 	 			 		div.reward_text {
 		 	 			 			font-size: 14px;
@@ -2550,6 +2608,9 @@
 		 	 			 			background: $button-hover;
 		 	 			 			@include tablet{
 		 	 			 				font-size: 11px;
+		 	 			 			}
+		 	 			 			@include mobile {
+		 	 			 				display: none;
 		 	 			 			}
 		 	 			 		}
 		 	 			 		div.reward_image {
@@ -2636,6 +2697,9 @@
  	 			}
  			}
 		 	 #print_button {
+		 	 	        @include mobile {
+		 	 	        	display: none;
+		 	 	        }
 		 	 			 	position: absolute;
 		 	 			 	top: 2%;
 		 	 			 	@media screen and (-webkit-min-device-pixel-ratio: 0) {
