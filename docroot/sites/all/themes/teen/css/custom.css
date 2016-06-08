@@ -9838,6 +9838,43 @@ body .alert-box.success a.close:hover {
  * - https://drupal.org/node/1887922
  * - http://smacss.com/
  */
+@media screen and (max-width: 400px) {
+  #site-name a {
+    font-size: 27px;
+  }
+
+  .header-middle .block-menu ul.menu li {
+    margin-bottom: 50px;
+  }
+  .header-middle .block-menu ul.menu li:nth-child(5n), .header-middle .block-menu ul.menu li:nth-child(5n+1) {
+    margin-bottom: 0;
+  }
+
+  .block.announcement .views-field-body ol {
+    width: 100%;
+  }
+  .block.announcement .views-field-body p {
+    width: 100%;
+  }
+
+  .block.homepage-blocks .view-media-photos-videos- .views-field-field-video-link {
+    margin: 0 auto;
+  }
+  .block.homepage-blocks .view-media-photos-videos- iframe.media-youtube-player {
+    height: 77px !important;
+    width: 136px !important;
+  }
+  .block.homepage-blocks .view-media-photos-videos- .view-footer button {
+    display: block;
+    margin: 20px auto 15px !important;
+  }
+  .block.homepage-blocks.playlib-media .owl-carousel .owl-controls .owl-buttons .owl-prev {
+    margin-left: 10px;
+  }
+  .block.homepage-blocks.playlib-media .owl-carousel .owl-controls .owl-buttons .owl-next {
+    margin-right: 10px;
+  }
+}
 /**open single msg**/
 .page-messages-view p {
   color: #fff;
