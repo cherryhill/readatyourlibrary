@@ -327,7 +327,8 @@ function generate_mobile_progress_form_submit($form, &$form_state) {
   $no_of_sticker = $sticker_count->rowCount();
 
   $current_date = time();
-  if($image_name != '' || $date != '') {
+  if($date != '') {
+  if($image_name != '') {
   if(!($reward_date > $date)) {
     if(($date <= $current_date)) {
       if(!$no_of_sticker) {
@@ -358,7 +359,9 @@ function generate_mobile_progress_form_submit($form, &$form_state) {
 } else {
   drupal_set_message("Please select a sticker and date.", "error");
 } 
-
+} else {
+   drupal_set_message("Please select a date.", "error");
+} 
 
 }
 
