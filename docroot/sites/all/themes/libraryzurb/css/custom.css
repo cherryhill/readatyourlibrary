@@ -6650,6 +6650,16 @@ form#user-pass div.user_pass_name:after {
     padding: 10px 10px 10px 0px;
   }
 }
+@media (min-width: 1026px) {
+  .l-header .row.header-middle .sub-brand .s-logoblock {
+    width: 150px;
+  }
+}
+@media (min-width: 768px) and (max-width: 1025px) {
+  .l-header .row.header-middle .sub-brand .s-logoblock {
+    width: 100px;
+  }
+}
 @media (max-width: 767px) {
   .l-header .row.header-middle .sub-brand .s-logoblock {
     width: 91px;
@@ -6923,6 +6933,14 @@ form#user-pass div.user_pass_name:after {
 
 .block {
   margin-bottom: 35px;
+}
+.block.block-auto-role-allocation-mobile-sticker-count {
+  text-align: center;
+}
+@media (min-width: 1026px) {
+  .block.block-auto-role-allocation-mobile-sticker-count {
+    display: none;
+  }
 }
 .block.block-menu-menu-mb-authenticated-links, .block.block-menu-menu-mobile-of-authenticated-lin {
   margin-bottom: 0;
@@ -8129,6 +8147,9 @@ form#user-pass div.user_pass_name:after {
   .block.announcement .block-title {
     font-size: 18px;
   }
+}
+.block.announcement .views-field img {
+  display: none;
 }
 .block.announcement .views-field-body p {
   padding-left: 36px;
@@ -11778,6 +11799,7 @@ body .alert-box.success a.close:hover {
   -moz-font-smoothing: grayscale !important;
   text-rendering: optimizeLegibility !important;
   color: #000;
+  margin-bottom: 10px;
 }
 .page-user-profile .homebox .portlet-content .view.view-follow .view-content {
   width: 100%;
@@ -11793,6 +11815,15 @@ body .alert-box.success a.close:hover {
 }
 .page-user-profile .homebox .portlet-content .view.view-follow .view-content .views-row .views-field {
   display: table-cell;
+}
+.page-user-profile .homebox .portlet-content .view.view-follow .view-content .views-row .views-field .followers {
+  font-family: Arialbold !important;
+  font-style: normal !important;
+  font-weight: normal !important;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+  -moz-font-smoothing: grayscale !important;
+  text-rendering: optimizeLegibility !important;
 }
 .page-user-profile .homebox .portlet-content .view.view-follow .view-content .views-row .views-field.views-field-field-user-avatar {
   width: 25%;
@@ -14271,6 +14302,22 @@ body .alert-box.success a.close:hover {
     font-size: 21px !important;
   }
 }
+.section-progress .main .view-calendar-sticker .view-header p.statement.statement-desktop {
+  display: none;
+}
+@media (min-width: 1026px) {
+  .section-progress .main .view-calendar-sticker .view-header p.statement.statement-desktop {
+    display: block !important;
+  }
+}
+.section-progress .main .view-calendar-sticker .view-header p.statement.statement-mobile {
+  display: block;
+}
+@media (min-width: 1026px) {
+  .section-progress .main .view-calendar-sticker .view-header p.statement.statement-mobile {
+    display: none !important;
+  }
+}
 @media screen and (min-width: 940px) {
   .section-progress .main .view-calendar-sticker .view-header p.statement {
     font-size: 15px !important;
@@ -14559,6 +14606,11 @@ body .alert-box.success a.close:hover {
   background: #f7fc63;
   padding-top: 10px;
 }
+@media (max-width: 767px) {
+  .section-progress .main .block.progress-calendar div.reward_image {
+    padding-top: 0;
+  }
+}
 .section-progress .main .block.progress-calendar.contextual-links-region {
   position: static;
 }
@@ -14617,6 +14669,12 @@ body .alert-box.success a.close:hover {
 }
 .section-progress .main .block.progress-calendar #calendar .fc-content .fc-widget-content {
   border: 1px solid #f6511d;
+}
+@media (max-width: 767px) {
+  .section-progress .main .block.progress-calendar #calendar .fc-content .fc-day {
+    min-height: 70px !important;
+    height: 70px;
+  }
 }
 .section-progress .main .block.progress-calendar #calendar .fc-content .fc-day .fc-day-content {
   font-size: 0;

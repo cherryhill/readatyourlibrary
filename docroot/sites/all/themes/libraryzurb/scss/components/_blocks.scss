@@ -1,6 +1,12 @@
 // Blocks
 
 .block {
+	&.block-auto-role-allocation-mobile-sticker-count {
+		@include desktop {
+			display: none;
+		}
+		text-align: center;
+	}
 	&.block-menu-menu-mb-authenticated-links, &.block-menu-menu-mobile-of-authenticated-lin {
 		margin-bottom: 0;
 		 .block-title {
@@ -619,6 +625,11 @@
 	     	font-size: 18px;
 	     }
 		 	@include mclaren;
+		 }
+		 .views-field {
+		 	img {
+		 		display: none;
+		 	}
 		 }
 		 .views-field-body {
 		 	p {
