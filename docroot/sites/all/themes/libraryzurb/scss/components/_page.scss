@@ -1372,12 +1372,15 @@
     .pull-9.sidebar {
      	width: 29.53%;
      	right: 69.4%;
+
      	padding-left: 2.65%;
      	padding-right: 2.65%;
      	@include block;
      	@include mobile {
      		width: 100%;
      		right: 0;
+     		padding-left: 6%;
+     		padding-right: 6%;
      	}
      	@include tablet {
      		width: 37.53%;
@@ -1477,6 +1480,9 @@
   	  	.view-header {
   	  		.other-booklists {
   	  			font-size: 25px;
+  	  			@include mobile {
+  	  				font-size: 19px;
+  	  			}
   	  			@include mclaren;
   	  			color: $black;
   	  			margin-bottom: 23px;
@@ -1698,6 +1704,13 @@
 			  	 					&.views-field-count {
 			  	 					 	position: relative;
 			  	 					 	top: 45px;
+			  	 					 	@include tablet {
+			  	 					 		top: 0;
+
+			  	 					 	}
+			  	 					 	@include mobile {
+			  	 					 		top: 0;
+			  	 					 	}
 			  	 					}
 		  	 					 	&.views-field-body {
 		  	 					 		@include arialregular;
@@ -1758,6 +1771,13 @@
 			  	 					 	//width: 20%;
 			  	 					 	float: right;
 			  	 					 	display: table-row;
+			  	 					 	@include mobile {
+			  	 					 		display: inline-block;
+			  	 					 	
+			  	 					 	}
+			  	 					 	@include tablet {
+			  	 					 		display: inline-block;
+			  	 					 	}
 			  	 					 	@include mclaren;
 			  	 					 	.views-label-count {
 			  	 					 		@include like;
@@ -1828,12 +1848,22 @@
 			  	 					 	width: 70%;
 			  	 					 	float: right;
 			  	 					 	padding-left: 4%;
+			  	 					 	@include mobile {
+			  	 					 		width: 100%;
+			  	 					 		padding-left: 0;
+			  	 					 		float: none;
+			  	 					 		display: inline-block;
+			  	 					 	}
 	  	 					 	 			.button {
 				  	 					 	 	padding: 0 !important;
 				  	 					 	 	margin: 23px 0 0;
 
 				  	 					 	 		a {
+				  	 					 	 			@include mobile {
+				  	 					 	 				@include bluebutton($font-size: 17px, $p: sm);
+				  	 					 	 			}
 				  	 					 	 			@include bluebutton($font-size: 21px);
+
 				  	 					 	 		}
 	  	 
 	  	 					 	 			}
@@ -1870,6 +1900,9 @@
   		}
   		.view-header .featured {
   		  font-size: 25px;
+  		  @include mobile {
+  		  	font-size: 19px;
+  		  }
   		  @include noborder;
   		  color: $black;
   		  @include mclaren;
@@ -1878,6 +1911,9 @@
 	  	.view-content {
 	  		margin-top: 40px;
 	  		counter-reset: section 3;
+	  		@include mobile {
+	  			margin-top: 15px;
+	  		}
 	  	 	.item-list {
 	  	 		ol {
 	  	 			margin-left: 20px;
@@ -1885,6 +1921,12 @@
 	  	 			li {
 		  	 				&.views-row {
 		  	 					margin-bottom: 23px;
+		  	 					@include mobile {
+		  	 						display: inline-block;
+		  	 						width: 100%;
+		  	 						border-bottom: 1px solid $light-gray;
+		  	 						padding-bottom: 10px;
+		  	 					}
 		  	 					 .views-field-title {
 		  	 					 	@include mclaren;
 		  	 					 }
@@ -1894,6 +1936,9 @@
 		  	 					margin-top: 23px;
 		  	 					padding-left: 25px;
 		  	 					display: inline-block;
+		  	 					 @include mobile {
+		  	 					 	padding-left:0;
+		  	 					 }
 		  	 					@include mclaren;	
 			  	 					div {
 			  	 						float: left;
@@ -1961,10 +2006,22 @@
 		  			 	width: 99%;
 		  			 	margin: 0 auto;
 		  			 	padding-bottom: 35px;
+		  			 	@include mobile {
+		  			 		padding-bottom: 0;
+		  			 	}
+		  			 	@include tablet {
+		  			 		padding-bottom: 0;
+		  			 	}
 	  			 	}
 	  			 	.owl-item {
 	  			 		.views-field-field-booklist-cover-image {
 	  			 			width: 135px;
+	  			 			 @include mobile {
+	  			 			 	width: 98%;
+	  			 			 }
+	  			 			 @include tablet {
+	  			 			 	width: 98%;
+	  			 			 }
 	  			 		 		img {
 	  			 		 			width: 100%;
 	  			 		 		}
@@ -1985,6 +2042,10 @@
 		  			 	float: left;
 		  			 	margin-top: 20px;
 		  			 	font-size: 17px;
+		  			 	@include mobile {
+		  			 		width: 100%;
+		  			 		float: none;
+		  			 	}
 		  			 	@include mclaren;
 		  			 	 @include tablet {
                            width: 100%;
@@ -2022,6 +2083,9 @@
 		  			 	text-align: right;
 		  			 	margin-top: 20px;
 		  			 	padding-right: 2%;
+		  			 	@include mobile {
+		  			 		width: 100%;
+		  			 	}
 		  			 	@include mclaren;
 		  			 	 @include tablet {
 		  			 	 	width: 100%;
@@ -2045,12 +2109,24 @@
 		  			 	width: 100%;
 		  			 	position: absolute;
 	  			 		top: 40%;
+	  			 		 @include mobile {
+	  			 		 	display: inline-block;
+	  			 		 	position: relative;
+	  			 		 	top: 0;
+	  			 		 	text-align: center;
+	  			 		 }
 	  			 	 		.owl-prev {
 			  			 	 	float: left;
 			  			 	 	visibility: hidden;
 			  			 	 	position: relative;
 			  			 	 	opacity: 1;
+			  			 	 	@include mobile {
+			  			 	 		float: none;
+			  			 	 	}
 			  			 	 	  &:before {
+			  			 	 	  	@include mobile {
+			  			 	 	  		@include previous(30px, 30px, $left: 0, $top: 0);
+			  			 	 	  	}
 			  			 	 	  	@include previous(30px, 30px, $left: -40px, $top: 0);
 			  			 	 	  	background: url('../images/libraryzurb/left-blue-arrow.png') no-repeat;
 			  			 	 	  	background-size: 25px;
@@ -2061,7 +2137,13 @@
 			  			 	 	visibility: hidden;
 			  			 	 	position: relative;
 			  			 	 	opacity: 1;
+			  			 	 	 @include mobile {
+			  			 	 	 	float: none;
+			  			 	 	 }
 				  			 	 	  &:after {
+				  			 	 	  	@include mobile {
+				  			 	 	  		@include previous(30px, 30px, $right: 0, $top: -4px);
+				  			 	 	  	}
 				  			 	 	  	@include previous(30px, 30px, $right: -37px, $top: 0);
 				  			 	 	  	background: url('../images/libraryzurb/right-blue-arrow.png') no-repeat;
 				  			 	 	  	background-size: 25px;
