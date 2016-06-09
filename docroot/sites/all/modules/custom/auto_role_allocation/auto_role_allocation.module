@@ -316,7 +316,7 @@ function generate_mobile_progress_form_submit($form, &$form_state) {
   ->execute();
   $no_of_sticker = $sticker_count->rowCount();
   $current_date = time();
-  if(!($date <= $current_date)) {
+  if(($date <= $current_date)) {
     if(!$no_of_sticker) {
       $insert_query =db_insert('calendar')
         ->fields(array(
@@ -325,13 +325,23 @@ function generate_mobile_progress_form_submit($form, &$form_state) {
           'date'=>$date,
         ));
       $insert_query->execute();
+       $query = db_select('calendar');
+        $query->addExpression('MAX(id)');
+        $max_id = $query->execute()->fetchField();
+        //print_r($max_id);die();
+        $_SESSION['usr_calendar_id'] = $max_id;
+
       play_library_program_create_activity_entry($activity_id, $uid); 
     } else {
       drupal_set_message("No two stricker drop on same date.");
     }    
   } else {
      drupal_set_message("your event date is greater than current date.");
-  }     //play_library_program_create_activity_entry($activity_id, $uid); 
+  }     
+
+  
+
+  //play_library_program_create_activity_entry($activity_id, $uid); 
   //print_r($form_state);die();
 }
 
