@@ -9839,6 +9839,18 @@ body .alert-box.success a.close:hover {
  * - http://smacss.com/
  */
 @media screen and (max-width: 400px) {
+  .l-header .pre-header .pre-header-left .top-menu {
+    width: 100%;
+  }
+  .l-header .pre-header .pre-header-left section .view .view-content {
+    float: none;
+  }
+  .l-header .pre-header .pre-header-left section .view .views-field {
+    float: none;
+    display: inline-block;
+    line-height: 3em;
+  }
+
   #site-name a {
     font-size: 27px;
   }
@@ -9903,6 +9915,35 @@ body .alert-box.success a.close:hover {
   }
   .section-reviews.page-reviews .main .view-content .item-list ol li .views-field.views-field-view-node .button a {
     font-size: 18px;
+  }
+
+  .section-progress.page-progress .main .print-page {
+    position: relative;
+    top: 0;
+  }
+  .section-progress.page-progress .main .user-desc .avatar-id {
+    width: 100%;
+    display: block;
+  }
+  .section-progress.page-progress .main .user-desc .point-status {
+    display: block;
+    vertical-align: initial;
+  }
+  .section-progress.page-progress .main .user-desc .point-status div {
+    float: none;
+    display: block;
+  }
+  .section-progress.page-progress .main .progress-wrap .report-acivity {
+    display: block;
+  }
+  .section-progress.page-progress .main .progress-wrap .reward-won {
+    display: block;
+  }
+  .section-progress.page-progress .main .progress-wrap .progress-rewards {
+    display: block;
+  }
+  .section-progress.page-progress .main .progress-main .new-row > .grid {
+    width: 100%;
   }
 }
 /**open single msg**/
