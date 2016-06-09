@@ -383,3 +383,78 @@
       }
    }
 }
+//active state of mobile header for respected pages
+@include mobile {
+  .section-progress {
+    #mobile-header .block.block-private-msg-custom .mobile_menu .menu li a.progress {
+      @include mobile-active;
+        &:before {
+           background: url('../images/libraryzurb/progress_hover.png') no-repeat !important;
+            background-position: -5px -7px !important;
+      background-size: 63px !important;
+        }
+
+    }
+  }
+  .section-activities{
+    #mobile-header .block.block-private-msg-custom .mobile_menu .menu li a.activities {
+      @include mobile-active;
+      &:before {
+                   background: url('../images/libraryzurb/activities_hover.png') no-repeat !important;
+                    background-position: -5px -7px !important;
+      background-size: 63px !important;
+       }
+
+    }
+  }
+  .section-rewards{
+    #mobile-header .block.block-private-msg-custom .mobile_menu .menu li a.rewards {
+      @include mobile-active;
+       &:before {
+               background: url('../images/libraryzurb/rewards_hover.png') no-repeat !important;
+                background-position: -5px -7px !important;
+      background-size: 63px !important;
+             }
+    }
+  }
+  .section-events{
+    #mobile-header .block.block-private-msg-custom .mobile_menu .menu li a.events {
+      @include mobile-active;
+      &:before {
+                background: url('../images/libraryzurb/events_hover.png') no-repeat !important;
+                 background-position: -5px -7px !important;
+      background-size: 63px !important;
+          }
+    }
+  }
+  .section-reviews, .section-booklists{
+     #mobile-header .block.block-private-msg-custom .mobile_menu .menu li a.reviews {
+    @include mobile-active;
+      &:before {
+                  background: url('../images/libraryzurb/reviewactive.png') no-repeat !important;
+                   background-position: -5px -7px !important;
+      background-size: 63px !important;
+               }
+    }
+  }
+  .section-media{
+    #mobile-header .block.block-private-msg-custom .mobile_menu .menu li a.photos {
+     @include mobile-active;
+     &:before {
+                 background: url('../images/libraryzurb/photos_videos_hover.png') no-repeat !important;
+                  background-position: -5px -7px !important;
+      background-size: 63px !important;
+          }
+    }
+  }
+  .section-programs{
+    #mobile-header .block.block-private-msg-custom .mobile_menu .menu li a.current-program {
+    @include mobile-active;
+    &:before {
+                 background: url('../images/libraryzurb/currentprogs_hover.png') no-repeat !important;
+                  background-position: -5px -7px !important;
+      background-size: 63px !important;
+        }
+  }
+}
+}
