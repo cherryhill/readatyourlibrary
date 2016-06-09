@@ -32,6 +32,10 @@ function auto_role_allocation_block_info() {
     'info' => t('Mobile Progress Report'),
     'cache' => DRUPAL_NO_CACHE,
     );
+  $blocks['mobile_sticker_count'] = array(
+    'info' => t('Mobile Sticker count'),
+    'cache' => DRUPAL_NO_CACHE,
+    );
   $blocks['calendar-data'] = array(
     'info' => t('Show calendar data json'),
     'cache' => DRUPAL_NO_CACHE,
@@ -61,6 +65,10 @@ function auto_role_allocation_block_view($block_name = '') {
     $block['subject'] = '';
     $block['content'] = drupal_get_form('generate_mobile_progress_form');
     break;
+    case 'mobile_sticker_count':
+    $block['subject'] = '';
+    $block['content'] = no_of_sticker_on_mobile();
+    break;
     case 'calendar-data':
     $block['subject'] = '';
     $block['content'] = generate_json_data();
@@ -80,6 +88,30 @@ function auto_role_allocation_block_view($block_name = '') {
   }
   return $block;
 }
+
+
+/**
+*  No off Sticker count on mobile
+*/
+
+function no_of_sticker_on_mobile() {
+  $output = '';
+  global $user;
+  $user_id = $user->uid;
+  $sticker_count = db_select('calendar', 'c')
+    ->fields('c', array('image_url'))
+    ->condition('uid', $user_id)
+    ->execute();
+  $no_of_sticker = $sticker_count->rowCount();
+  if($no_of_sticker == 1) {
+   $output = "<div>$no_of_sticker day read</div>";
+  }
+  else {
+    $output = "<div>$no_of_sticker days read</div>"; 
+  }
+  return $output;
+}
+
 
 /* Progress block of user on program page */
 function progress_user_block_program() {
@@ -284,7 +316,7 @@ function generate_mobile_progress_form_submit($form, &$form_state) {
   ->execute();
   $no_of_sticker = $sticker_count->rowCount();
   $current_date = time();
-  if(!($date > $current_date)) {
+  if(!($date <= $current_date)) {
     if(!$no_of_sticker) {
       $insert_query =db_insert('calendar')
         ->fields(array(
@@ -294,8 +326,12 @@ function generate_mobile_progress_form_submit($form, &$form_state) {
         ));
       $insert_query->execute();
       play_library_program_create_activity_entry($activity_id, $uid); 
+    } else {
+      drupal_set_message("No two stricker drop on same date.");
     }    
- }     //play_library_program_create_activity_entry($activity_id, $uid); 
+  } else {
+     drupal_set_message("your event date is greater than current date.");
+  }     //play_library_program_create_activity_entry($activity_id, $uid); 
   //print_r($form_state);die();
 }
 
