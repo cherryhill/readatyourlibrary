@@ -117,7 +117,7 @@ jQuery('.image_tracker').click(function() {
 
      jQuery(".section-progress .main .block-auto-role-allocation-user-prize-block").insertAfter(".section-progress .main .progress-calendar");
       jQuery(".section-progress .main .block-views").insertAfter(".section-progress .main .progress-calendar");
-      jQuery(".section-progress .main ..block-auto-role-allocation-mobile-sticker-count").insertAfter(".section-progress .main .progress-calendar");
+      jQuery(".section-progress .main .block-auto-role-allocation-mobile-sticker-count").insertAfter(".section-progress .main .progress-calendar");
    }
    /**jquery for hamburger button in mobile screen**/
     jQuery('.mobile-header button').click(function(){
