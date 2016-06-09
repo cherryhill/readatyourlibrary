@@ -33,3 +33,133 @@
  * - https://drupal.org/node/1887922
  * - http://smacss.com/
  */
+
+@media screen and (min-width: $mini-screen) and (max-width: $smallmedium-screen) {
+
+
+.l-header {
+    .pre-header .pre-header-left .top-menu {
+      width: 100%;
+    }
+    .pre-header .pre-header-left section .view .view-content {
+      float: none;
+    }
+    .pre-header .pre-header-left section .view .views-field {
+      float: none;
+      display: inline-block;
+      line-height: 3em;
+    }
+  }
+
+  .breadcurm ul.breadcrumbs {
+    display: none;
+  }
+
+  .header-middle {
+    .block-menu {
+      ul.menu {
+        li {
+          margin-bottom: 50px;
+          &:nth-child(5n), &:nth-child(5n+1) {
+            margin-bottom: 0;
+          }
+        }
+      }
+    }
+  }
+
+  .block.announcement {
+    .views-field-body {
+      ol {
+        width: 100%;
+      }
+      p {
+        width: 100%;
+      }
+    }
+  }
+
+  .block.homepage-blocks {
+    .view-media-photos-videos- {
+      /* .views-field-field-video-link {
+        margin: 0 auto;
+      } */
+      /* iframe.media-youtube-player {
+        height: 77px !important;
+        width: 136px !important;
+      } */
+      .view-footer button {
+        display: block;
+        margin: 20px auto 15px !important;
+      }
+    }
+    &.playlib-media {
+      .owl-carousel .owl-controls {
+        .owl-buttons {
+          .owl-prev {
+            margin-left: 10px;
+          }
+          .owl-next {
+            margin-right: 10px;
+          }
+        }
+      }
+    }
+  }
+
+  .section-rewards {
+    &.page-rewards .main .block {
+      width: 100%;
+      float: none;
+    }
+  }
+
+  .section-reviews {
+    &.page-reviews .view .view-filters form .views-exposed-form .views-exposed-widget {
+      width: 50%;
+    }
+    &.page-reviews .view .view-header .viewmenu,
+    &.reviews-subtitle,
+    &.view-content {
+      padding-left: 0;
+    }
+    &.page-reviews .view .view-filters {
+      margin-left: 0;
+    }
+    &.page-reviews .main .view-content .item-list ol li .views-field.views-field-view-node .button a {
+      font-size: 18px;
+    }
+  }
+
+  .section-progress {
+    &.page-progress .main .print-page {
+      position: relative;
+      top: 0;
+    }
+    &.page-progress .main .user-desc .avatar-id {
+      width: 100%;
+      display: block;
+    }
+    &.page-progress .main .user-desc .point-status {
+      display: block;
+      vertical-align: initial;
+    }
+    &.page-progress .main .user-desc .point-status div {
+      float: none;
+      display: block;
+    }
+    &.page-progress .main .progress-wrap .report-acivity {
+      display: block;
+    }
+    &.page-progress .main .progress-wrap .reward-won {
+      display: block;
+    }
+    &.page-progress .main .progress-wrap .progress-rewards {
+      display: block;
+    }
+    &.page-progress .main .progress-main .new-row > .grid {
+      width: 50%;
+    }
+  }
+
+}
