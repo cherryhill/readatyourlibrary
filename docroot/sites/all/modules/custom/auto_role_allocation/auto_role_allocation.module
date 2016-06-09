@@ -328,6 +328,7 @@ function generate_mobile_progress_form_submit($form, &$form_state) {
   $no_of_sticker = $sticker_count->rowCount();
 
   $current_date = time();
+  if($image_name != '') {
   if(!($reward_date > $date)) {
     if(($date <= $current_date)) {
       if(!$no_of_sticker) {
@@ -354,7 +355,10 @@ function generate_mobile_progress_form_submit($form, &$form_state) {
   }
  } else {
     drupal_set_message("Event date is less than the rewrad date.");
- }      
+ }
+} else {
+  drupal_set_message("Please choose from one of these stickers.");
+}       
 
 }
 
