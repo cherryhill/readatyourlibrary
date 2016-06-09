@@ -114,8 +114,10 @@ jQuery('.image_tracker').click(function() {
   /**interchanging the position of divs in progress page at mobile screen and tablet screen**/
   var windowWidth = jQuery( window ).width();
    if (windowWidth < 1025) {
+
      jQuery(".section-progress .main .block-auto-role-allocation-user-prize-block").insertAfter(".section-progress .main .progress-calendar");
       jQuery(".section-progress .main .block-views").insertAfter(".section-progress .main .progress-calendar");
+      jQuery(".section-progress .main .block-auto-role-allocation-mobile-sticker-count").insertAfter(".section-progress .main .progress-calendar");
    }
    /**jquery for hamburger button in mobile screen**/
     jQuery('.mobile-header button').click(function(){

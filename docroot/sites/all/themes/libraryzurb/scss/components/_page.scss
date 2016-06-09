@@ -884,6 +884,7 @@
 		 			 					font-size: 15px;
 		 			 					@include arialbold;
 		 			 					color: $black;
+		 			 					margin-bottom: 10px;
 		 			 				}
 		 			 			}
 		 			 		}
@@ -898,6 +899,9 @@
 	 			 			 				}
 	 			 			 	 			.views-field {
 	 			 			 	 				display: table-cell;
+	 			 			 	 				 .followers {
+	 			 			 	 				 	@include arialbold;
+	 			 			 	 				 }
 					 			 			 	 	&.views-field-field-user-avatar {
 					 			 			 	 		width: 25%;
 					 			 			 	 		float: left;
@@ -2480,6 +2484,18 @@
 				 	 	 	 	 	   		}
  	 	 	 	 	  					}
 				 	 	 	 	 	   	&.statement {
+				 	 	 	 	 	   		&.statement-desktop {
+				 	 	 	 	 	   			display: none;
+				 	 	 	 	 	   			 @include desktop {
+				 	 	 	 	 	   			 	display: block !important;
+				 	 	 	 	 	   			 }
+				 	 	 	 	 	   		}
+				 	 	 	 	 	   		&.statement-mobile {
+				 	 	 	 	 	   			display: block;
+				 	 	 	 	 	   			@include desktop {
+				 	 	 	 	 	   				display: none !important;
+				 	 	 	 	 	   			}
+				 	 	 	 	 	   		}
 				 	 	 	 	 	  		@media screen and (min-width: 940px)  {
 				 	 	 	 	 	  		font-size: 15px !important;
 				 	 	 	 	 	   		}
@@ -2702,6 +2718,9 @@
 		 	 			 		div.reward_image {
 		 	 			 			background: $button-hover;
 		 	 			 			padding-top: 10px;
+		 	 			 			 @include mobile {
+		 	 			 			 	padding-top: 0;
+		 	 			 			 }
 		 	 			 		}
 			 	 		 	&.contextual-links-region {
 			 	 		 		position: static;
@@ -2755,6 +2774,9 @@
 						 	 			 			}
 					 	 			 			 tbody {
 					 	 			 			 	@include boxshadow;
+					 	 			 			 	 
+					 	 			 			 	 	
+					 	 			 			 	 
 					 	 			 			 }
  	 			 							}
 					 	 			 		.fc-widget-header{
@@ -2765,6 +2787,10 @@
 					 	 			 			border: 1px solid $orange;
 					 	 			 		}
  	 			 							.fc-day {
+ 	 			 								@include mobile {
+					 	 			 			 	 		min-height: 70px !important;
+					 	 			 			 	 		height: 70px;
+					 	 			 			 	 	}
  	 			 								     .fc-day-content {
  	 			 								     	font-size: 0;
  	 			 								     }
