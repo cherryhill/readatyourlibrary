@@ -276,7 +276,6 @@ function generate_mobile_progress_form($form, &$form_state) {
     '#type' => 'date_popup',
     '#date_format' => 'F d, Y',
     '#date_year_range' => '0:+10',
-    '#required' => TRUE,
     '#size' => 8,
   );
   $form['activity_id'] = array(
@@ -328,7 +327,7 @@ function generate_mobile_progress_form_submit($form, &$form_state) {
   $no_of_sticker = $sticker_count->rowCount();
 
   $current_date = time();
-  if($image_name != '') {
+  if($image_name != '' || $date != '') {
   if(!($reward_date > $date)) {
     if(($date <= $current_date)) {
       if(!$no_of_sticker) {
@@ -357,8 +356,9 @@ function generate_mobile_progress_form_submit($form, &$form_state) {
     drupal_set_message("You will not be able to record reading for previous days after winning reward", "error");
  }
 } else {
-  drupal_set_message("Please select a sticker.", "error");
-}       
+  drupal_set_message("Please select a sticker and date.", "error");
+} 
+
 
 }
 
