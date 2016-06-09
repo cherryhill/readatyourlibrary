@@ -328,6 +328,7 @@ function generate_mobile_progress_form_submit($form, &$form_state) {
   $no_of_sticker = $sticker_count->rowCount();
 
   $current_date = time();
+  if($image_name != '') {
   if(!($reward_date > $date)) {
     if(($date <= $current_date)) {
       if(!$no_of_sticker) {
@@ -347,14 +348,17 @@ function generate_mobile_progress_form_submit($form, &$form_state) {
 
       play_library_program_create_activity_entry($activity_id, $uid); 
     } else {
-      drupal_set_message("No two stricker drop on same date.");
+      drupal_set_message("You have already recorded reading for this date.", "error");
     }    
   } else {
-     drupal_set_message("your event date is greater than current date.");
+     drupal_set_message("Your reading date is greater than today.", "error");
   }
  } else {
-    drupal_set_message("Event date is less than the rewrad date.");
- }      
+    drupal_set_message("You will not be able to record reading for previous days after winning reward", "error");
+ }
+} else {
+  drupal_set_message("Please select a sticker.", "error");
+}       
 
 }
 
