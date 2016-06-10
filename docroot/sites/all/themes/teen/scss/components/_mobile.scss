@@ -37,6 +37,7 @@
 @media screen and (max-width: $mini-screen) {
 
   .l-header {
+    #site-slogan {display: block;}
     .pre-header .pre-header-left .top-menu {
       width: 100%;
     }
@@ -109,6 +110,7 @@
       }
     }
   }
+
   .section-activities {
     &.page-activities .block-private-msg-custom-teen-hotspot-activity-block .form-type-select label {
       width: 100%;
@@ -117,12 +119,46 @@
       width: 83% !important;
       margin-left: 10%;
     }
+    &.page-activities .block-one-title a:after {
+      content: none;
+    }
+    &.page-activities .block-two-title a:after {
+      content: none;
+    }
+    &.page-activities .block-three-title a:after {
+      content: none;
+    }
+  }
+  .section-activities-list {
+    &.page-activities-list .view-activities-listing-term .view-header * {
+      padding-left: 0 !important;
+    }
+    &.page-activities-list .view-activities-listing-term .view-content .views-row a {
+      padding-left: 0;
+    }
   }
 
   .section-rewards {
     &.page-rewards .main .block {
       width: 100%;
       float: none;
+    }
+    &.page-rewards .main #page-title {
+      margin-top: 18px;
+    }
+  }
+
+  .section-media {
+    .main #page-title {
+      margin-top: 18px !important;
+    }
+    .block-views-media-photos-videos-block-6 {
+      padding-left: 0 !important;
+    }
+    .main .view .views-row .flickr-citation a:after {
+      text-align: center !important;
+      background-position: 30px center !important;
+      padding-right: 0 !important;
     }
   }
 
@@ -140,6 +176,18 @@
     }
     &.page-reviews .main .view-content .item-list ol li .views-field.views-field-view-node .button a {
       font-size: 18px;
+    }
+  }
+
+  .section-user {
+    .block.dashboard-block .view * {
+      width: 100%;
+      display: block !important;
+      float: none;
+      text-align: center;
+    }
+    &.page-user-profile .homebox .portlet-content .view.view-booklist-on-activities-page .view-footer a.button {
+      margin-top: 16px;
     }
   }
 

@@ -9839,6 +9839,9 @@ body .alert-box.success a.close:hover {
  * - http://smacss.com/
  */
 @media screen and (max-width: 400px) {
+  .l-header #site-slogan {
+    display: block;
+  }
   .l-header .pre-header .pre-header-left .top-menu {
     width: 100%;
   }
@@ -9898,10 +9901,41 @@ body .alert-box.success a.close:hover {
     width: 83% !important;
     margin-left: 10%;
   }
+  .section-activities.page-activities .block-one-title a:after {
+    content: none;
+  }
+  .section-activities.page-activities .block-two-title a:after {
+    content: none;
+  }
+  .section-activities.page-activities .block-three-title a:after {
+    content: none;
+  }
+
+  .section-activities-list.page-activities-list .view-activities-listing-term .view-header * {
+    padding-left: 0 !important;
+  }
+  .section-activities-list.page-activities-list .view-activities-listing-term .view-content .views-row a {
+    padding-left: 0;
+  }
 
   .section-rewards.page-rewards .main .block {
     width: 100%;
     float: none;
+  }
+  .section-rewards.page-rewards .main #page-title {
+    margin-top: 18px;
+  }
+
+  .section-media .main #page-title {
+    margin-top: 18px !important;
+  }
+  .section-media .block-views-media-photos-videos-block-6 {
+    padding-left: 0 !important;
+  }
+  .section-media .main .view .views-row .flickr-citation a:after {
+    text-align: center !important;
+    background-position: 30px center !important;
+    padding-right: 0 !important;
   }
 
   .section-reviews.page-reviews .view .view-filters form .views-exposed-form .views-exposed-widget {
@@ -9915,6 +9949,16 @@ body .alert-box.success a.close:hover {
   }
   .section-reviews.page-reviews .main .view-content .item-list ol li .views-field.views-field-view-node .button a {
     font-size: 18px;
+  }
+
+  .section-user .block.dashboard-block .view * {
+    width: 100%;
+    display: block !important;
+    float: none;
+    text-align: center;
+  }
+  .section-user.page-user-profile .homebox .portlet-content .view.view-booklist-on-activities-page .view-footer a.button {
+    margin-top: 16px;
   }
 
   .section-progress.page-progress .main .print-page {
@@ -15989,6 +16033,9 @@ ul.quicktabs-tabs li a:focus, ul.quicktabs-tabs li a:hover {
  * - http://smacss.com/
  */
 @media screen and (min-width: 400px) and (max-width: 830px) {
+  .l-header #site-slogan {
+    display: block;
+  }
   .l-header .pre-header .pre-header-left .top-menu {
     width: 100%;
   }
@@ -16037,6 +16084,16 @@ ul.quicktabs-tabs li a:focus, ul.quicktabs-tabs li a:hover {
   }
   .block.homepage-blocks.playlib-media .owl-carousel .owl-controls .owl-buttons .owl-next {
     margin-right: 10px;
+  }
+
+  .section-activities.page-activities .block-one-title a:after {
+    content: none;
+  }
+  .section-activities.page-activities .block-two-title a:after {
+    content: none;
+  }
+  .section-activities.page-activities .block-three-title a:after {
+    content: none;
   }
 
   .section-rewards.page-rewards .main .block {
