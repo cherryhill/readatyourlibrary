@@ -54,6 +54,24 @@
   }
    
   });
+  //make accordian in user register page
+      function getpanels(panelclass) {
+
+        var panels = $('.'+panelclass+' #checkboxes-div #checkboxes-d .form-wrapper div.fieldset-wrapper').hide();
+    
+        $('.'+panelclass+' #checkboxes-div #checkboxes-d .form-wrapper legend .fieldset-legend').click(function() {
+          panels.slideUp();
+        $(this).parent().next('.fieldset-wrapper').toggle();
+       
+        return false;
+        });
+      }
+      if($('body.section-user').length > 0) {
+        getpanels('section-user');
+      }
+      else if($('body.page-user-register').length > 0) {
+        getpanels('.page-user-register');
+      }
      //MyDashboard page hide homebox add buttons when dragable homebox blocks are visible
      var activites =$('.homebox-draggable:has(.view-my-activities-for-patron-dashboard)').addClass('dashboard-activities');
 var rewards =$('.homebox-draggable:has(.view-patron-rewads-for-patron-dashboard)').addClass('dashboard-rewards');
