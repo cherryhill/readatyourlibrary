@@ -233,12 +233,16 @@
 	@if $fromtop == "y" {
 	padding-right: 40px;
 }
+
 @else {
 	padding-right: 34px;
 }
  &:after {
  	@if $fromtop == "y" {
  		@include previous(30px, 30px, $right: 6px, $top: 11px);
+ 	}
+ 	@else if $fromtop == "m" {
+ 		@include previous(30px, 30px, $right: 0px, $top: 5px);
  	}
  	@else {
  	@include previous(30px, 30px, $right: 0, $top: 0px);

@@ -2849,12 +2849,21 @@
 		width: 100%;
 		border-collapse: separate;
 		border-spacing: 10px;
+		@include mobile {
+		  border-spacing: 0;
+		}
 		 section {
 		 	display: inline-block;
 		 	width: 43%;
 		 	margin-right: 2.5%;
 		 	margin-left: 2.5%;
 		 	vertical-align: top;
+		 	 @include mobile {
+		 	 	width: 100%;
+		 	 	margin-right: 0;
+		 	 	margin-left: 0;
+		 	 	margin-bottom: 10px;
+		 	 }
 		 }
 	.block {
 		@include bluebackground;	
@@ -2866,15 +2875,26 @@
 		}
 	}
 	.view {
+	
 		.views-field-ops {
 			float: right;
+			@include mobile {
+				float: none;
+				margin-top: 10px;
+			}
 			  a.flag {
+			  	@include mobile {
+			  		font-size: 16px;
+			  	}
 			  	@include yellowbutton;
 			  }
 		}
 		 &.view-user-public-profile {
 		 	display: table-row;
 		 	width: 100%;
+		 	 @include mobile {
+		 	 	text-align: center;
+		 	 }
 		 }
 		&.view-my-badges {
 			counter-reset: section;
@@ -3374,8 +3394,20 @@ display: block !important;
 		.follow_link_bookreview {
 			float: left;
 			padding-right: 10px;
+			@include mobile {
+				padding-right: 0;
+				float: none;
+				width: 100%;
+				display: inline-block;
+			}
 		 	a {
-		 		 @include bluebutton;
+		 		 
+		 		@include desktop {
+		 			@include bluebutton;
+		 		}
+		 		@include tablet {
+		 			@include bluebutton;
+		 		}
 		 	}
 		 }
 		 .like-count {
@@ -3394,17 +3426,32 @@ display: block !important;
 		 	display: inline-block;
 		    float: left;
 		    padding-right: 10px;
+		      @include mobile {
+		      	width: 100%;
+		      	float: none;
+		      	margin-top: 25px;
+		      }
 		 	  a {
 		 	  	 background: $blue url("../images/libraryzurb/smily-white.png") no-repeat;
 		 	  	 border-radius: 10px;
 		 	  	 @include boxshadow;
 		 	  	 &.unflag-action {
-		 	  	 	background-position: 77px center !important;
+		 	  	 	background-position: 77px center;
+		 	  	 	@include mobile {
+		 	  	 		background-position: 70px center;
+		 	  	 	}
 		 	  	 }
 		 	  	 &.flag-action {
-		 	  	 	background-position: 64px center !important;
+		 	  	 	background-position: 64px center;
+		 	  	 	@include mobile {
+		 	  	 		background-position: 54px center;
+		 	  	 	}
 		 	  	 }
 		 	  	 padding: 10px 50px 10px 22px;
+		 	  	 @include mobile {
+		 	  	 	padding: 6px 40px 4px 13px; 
+
+		 	  	 }
 		 	  	 color: $white;
 		 	  	 @include mclaren;
 		 	  	 font-size: 17px;
@@ -3414,6 +3461,9 @@ display: block !important;
 		width: 30%;
 		display: inline-block;
 		vertical-align: top;
+		@include mobile {
+			width: 100%;
+		}
 		 
 		 
 		 .img_review {
@@ -3436,11 +3486,17 @@ display: block !important;
 		display: inline-block;
 		vertical-align: top;
 		margin-top: 20px;
+		@include mobile {
+			width: 100%;
+		}
 		 .title_review {
 		 	h2 {
 		 		color: $black;
 		 		@include noborder;
 		 		@include mclaren;
+		 		@include mobile {
+		 			font-size: 22px;
+		 		}
 		 	}
 		 	p {
 		 		width: 100%;
@@ -3470,6 +3526,9 @@ display: block !important;
 		 	  	margin-left: 0;
 		 	  	  a {
 		 	  	  	@include bluebutton;
+		 	  	  	@include mobile {
+		 	  	  		@include bluebutton(17px, $p: sm);
+		 	  	  	}
 		 	  	  }
 		 	  }
 		 }
@@ -3488,6 +3547,9 @@ display: block !important;
 			width: 70%;
 			display: inline-block;
 			vertical-align: top;
+			@include mobile {
+				width: 100%;
+			}
 		}
 		 .book_title {
 		 	font-size: 21px;
@@ -3517,6 +3579,10 @@ display: block !important;
 		 	display: inline-block;
 		 	vertical-align: top;
 		 	text-align: right;
+		 	@include mobile {
+		 		width: 100%;
+		 		margin-bottom: 10px;
+		 	}
 		 	 li.flag-like {
 		 	 	list-style: none;
 		 	 	display: none;
@@ -3561,7 +3627,13 @@ display: block !important;
 		 	float: left;
 
 		 	a {
-		 		 @include bluebutton;
+		 		@include desktop {
+                  @include bluebutton;
+		 		}
+		 		@include tablet {
+                   @include bluebutton;
+		 		}
+		 		
 		 		 display: inline-block;
 		 	}
 		 }
@@ -3603,6 +3675,9 @@ display: block !important;
 		    @include desktop {
 		    	left: -8%;
 		    }
+		    @include mobile {
+		    	padding-top: 20px;
+		    }
 		 	  .a_name {
 		 	  	padding-left: 5px;
 		 	  }
@@ -3619,13 +3694,31 @@ display: block !important;
 		 	  	margin-left: 0;
 		 	  	margin-right: 10px;
 		 	  	 margin-bottom: 20px;
+		 	  	 @include mobile {
+		 	  	 	margin: 20px 0;
+		 	  	 	display: inline-block;
+		 	  	 	width: 100%;
+
+		 	  	 }
 		 	  	a {
+		 	  		@include mobile {
+		 	  			@include  bluebutton(17px, $p: sm);
+		 	  		}
 		 	  		@include bluebutton(lg);
 		 	  		
 		 	  	}
 		 	  	&.flag-like {
 		 	  		a {
-		 	  			@include like(y);
+		 	  			@include mobile {
+		 	  				@include like(m);
+		 	  			}
+		 	  			@include desktop {
+		 	  				@include like(y);
+		 	  			}
+		 	  			@include tablet {
+		 	  				@include like(y);
+		 	  			}
+		 	  			
 		 	  		}
 		 	  	}
 		 	  }
