@@ -32,6 +32,10 @@ function auto_role_allocation_block_info() {
     'info' => t('Mobile Progress Report'),
     'cache' => DRUPAL_NO_CACHE,
     );
+  $blocks['mobile_sticker_count'] = array(
+    'info' => t('Mobile Sticker count'),
+    'cache' => DRUPAL_NO_CACHE,
+    );
   $blocks['calendar-data'] = array(
     'info' => t('Show calendar data json'),
     'cache' => DRUPAL_NO_CACHE,
@@ -61,6 +65,10 @@ function auto_role_allocation_block_view($block_name = '') {
     $block['subject'] = '';
     $block['content'] = drupal_get_form('generate_mobile_progress_form');
     break;
+    case 'mobile_sticker_count':
+    $block['subject'] = '';
+    $block['content'] = no_of_sticker_on_mobile();
+    break;
     case 'calendar-data':
     $block['subject'] = '';
     $block['content'] = generate_json_data();
@@ -80,6 +88,30 @@ function auto_role_allocation_block_view($block_name = '') {
   }
   return $block;
 }
+
+
+/**
+*  No off Sticker count on mobile
+*/
+
+function no_of_sticker_on_mobile() {
+  $output = '';
+  global $user;
+  $user_id = $user->uid;
+  $sticker_count = db_select('calendar', 'c')
+    ->fields('c', array('image_url'))
+    ->condition('uid', $user_id)
+    ->execute();
+  $no_of_sticker = $sticker_count->rowCount();
+  if($no_of_sticker == 1) {
+   $output = "<div>$no_of_sticker day read</div>";
+  }
+  else {
+    $output = "<div>$no_of_sticker days read</div>"; 
+  }
+  return $output;
+}
+
 
 /* Progress block of user on program page */
 function progress_user_block_program() {
@@ -244,7 +276,6 @@ function generate_mobile_progress_form($form, &$form_state) {
     '#type' => 'date_popup',
     '#date_format' => 'F d, Y',
     '#date_year_range' => '0:+10',
-    '#required' => TRUE,
     '#size' => 8,
   );
   $form['activity_id'] = array(
@@ -276,27 +307,62 @@ function generate_mobile_progress_form_submit($form, &$form_state) {
   $date = strtotime($form_state['values']['from']);
   $image_name = $form_state['values']['image_name'];
   $activity_id = $form_state['values']['activity_id'];
+  
+  // Query the reward date for checking no any sticker drop before rewrad date 
+  $query_date = db_select('calendar', 'c')
+  ->fields('c', array('date'))
+  ->condition('uid', $uid)
+  ->condition('reward_id', 0, '>')
+  ->orderBy('id', 'DESC')
+  ->execute();
+  $reward_date = $query_date->fetchAssoc();
+  $reward_date = $reward_date['date']; 
    
+   // Query for checking sticker count for same date
   $sticker_count = db_select('calendar', 'c')
   ->fields('c', array('image_url'))
   ->condition('uid', $uid)
   ->condition('date', $date)
   ->execute();
   $no_of_sticker = $sticker_count->rowCount();
+
   $current_date = time();
-  if(!($date > $current_date)) {
-    if(!$no_of_sticker) {
-      $insert_query =db_insert('calendar')
-        ->fields(array(
+  if($date != '') {
+  if($image_name != '') {
+  if(!($reward_date > $date)) {
+    if(($date <= $current_date)) {
+      if(!$no_of_sticker) {
+        $insert_query =db_insert('calendar')
+          ->fields(array(
           'uid'=>$uid,
           'image_url'=> $image_name,
           'date'=>$date,
         ));
       $insert_query->execute();
+      // query for getting the max id for inserti the reward id at time of rewrad claim
+       $query = db_select('calendar');
+        $query->addExpression('MAX(id)');
+        $max_id = $query->execute()->fetchField();
+        //print_r($max_id);die();
+        $_SESSION['usr_calendar_id'] = $max_id;
+
       play_library_program_create_activity_entry($activity_id, $uid); 
+    } else {
+      drupal_set_message("You have already recorded reading for this date.", "error");
     }    
- }     //play_library_program_create_activity_entry($activity_id, $uid); 
-  //print_r($form_state);die();
+  } else {
+     drupal_set_message("Your reading date is greater than today.", "error");
+  }
+ } else {
+    drupal_set_message("You will not be able to record reading for previous days after winning reward", "error");
+ }
+} else {
+  drupal_set_message("Please select a sticker.", "error");
+} 
+} else {
+   drupal_set_message("Please select a date.", "error");
+} 
+
 }
 
 
