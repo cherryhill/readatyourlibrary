@@ -156,7 +156,7 @@ jQuery('.image_tracker').click(function() {
   });
 
   // Placing Email div after field (how did you hear about the program)
-  jQuery('.form-item-mail').insertAfter('.form-item-profile-main-field-how-did-you-hear-about-thi-und-select');
+  jQuery('.form-item-mail').insertAfter('.form-item-profile-main-field-how-did-you-hear-about-thi-und-other');
 
   //changes for follow link in user dashboard
   jQuery('.view-follow .view-header').insertAfter('.view-follow .attachment');
