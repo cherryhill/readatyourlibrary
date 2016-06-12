@@ -9803,6 +9803,193 @@ body .alert-box.success a.close:hover {
   }
 }
 
+/* @file
+ * This file is a custom file that loads all files. Each non-base layer
+ * can be disabled.
+ *
+ * Do not name this file, "app.scss". If you run a compass update this file can
+ * be wiped out with a compass update. By default, when a compass project is
+ * created the file will be named app.scss. Thus this file is named,
+ * THEMENAME.scss.
+ *
+ * This application file (THEMENAME.scss) is where all the partials are
+ * imported.
+ *
+ * Theme styles are categorized using SMACSS standards. They utilize
+ * categorization of styles into various categories. Those categories are the
+ * following:
+ *
+ * - Base: CSS reset/normalize plus HTML element styling.
+ * - Layout: Macro arrangement of a web page, including any grid systems.
+ * - Component: Dictate minor layout modules or reusable elements.
+ * - State: Describe the appearance of a module in various states.
+ * - Theme: Purely visual optional styling (“look-and-feel”) for a component.
+ *
+ * * Contains Sass customizations for the Klamath County Library sub-theme.
+ *
+ * Compile Sass into CSS with `compass clean && compass watch` for development
+ * environments or `compass clean && compass compile -e production --force` for
+ * production environments.
+ *
+ * @see config.rb
+ *
+ * For more information about this new Drupal css file standard, please review
+ * the following:
+ * - https://drupal.org/node/1887922
+ * - http://smacss.com/
+ */
+@media screen and (max-width: 400px) {
+  .l-header #site-slogan {
+    display: block;
+  }
+  .l-header .pre-header .pre-header-left .top-menu {
+    width: 100%;
+  }
+  .l-header .pre-header .pre-header-left section .view .view-content {
+    float: none;
+  }
+  .l-header .pre-header .pre-header-left section .view .views-field {
+    float: none;
+    display: inline-block;
+    line-height: 3em;
+  }
+
+  #site-name a {
+    font-size: 27px;
+  }
+
+  .breadcurm ul.breadcrumbs {
+    display: none;
+  }
+
+  .header-middle .block-menu ul.menu li {
+    margin-bottom: 50px;
+  }
+  .header-middle .block-menu ul.menu li:nth-child(5n), .header-middle .block-menu ul.menu li:nth-child(5n+1) {
+    margin-bottom: 0;
+  }
+
+  .block.announcement .views-field-body ol {
+    width: 100%;
+  }
+  .block.announcement .views-field-body p {
+    width: 100%;
+  }
+
+  .block.homepage-blocks .view-media-photos-videos- .views-field-field-video-link {
+    margin: 0 auto;
+  }
+  .block.homepage-blocks .view-media-photos-videos- iframe.media-youtube-player {
+    height: 77px !important;
+    width: 136px !important;
+  }
+  .block.homepage-blocks .view-media-photos-videos- .view-footer button {
+    display: block;
+    margin: 20px auto 15px !important;
+  }
+  .block.homepage-blocks.playlib-media .owl-carousel .owl-controls .owl-buttons .owl-prev {
+    margin-left: 10px;
+  }
+  .block.homepage-blocks.playlib-media .owl-carousel .owl-controls .owl-buttons .owl-next {
+    margin-right: 10px;
+  }
+
+  .section-activities.page-activities .block-private-msg-custom-teen-hotspot-activity-block .form-type-select label {
+    width: 100%;
+  }
+  .section-activities.page-activities .block-private-msg-custom-teen-hotspot-activity-block .form-type-select .chosen-container {
+    width: 83% !important;
+    margin-left: 10%;
+  }
+  .section-activities.page-activities .block-one-title a:after {
+    content: none;
+  }
+  .section-activities.page-activities .block-two-title a:after {
+    content: none;
+  }
+  .section-activities.page-activities .block-three-title a:after {
+    content: none;
+  }
+
+  .section-activities-list.page-activities-list .view-activities-listing-term .view-header * {
+    padding-left: 0 !important;
+  }
+  .section-activities-list.page-activities-list .view-activities-listing-term .view-content .views-row a {
+    padding-left: 0;
+  }
+
+  .section-rewards.page-rewards .main .block {
+    width: 100%;
+    float: none;
+  }
+  .section-rewards.page-rewards .main #page-title {
+    margin-top: 18px;
+  }
+
+  .section-media .main #page-title {
+    margin-top: 18px !important;
+  }
+  .section-media .block-views-media-photos-videos-block-6 {
+    padding-left: 0 !important;
+  }
+  .section-media .main .view .views-row .flickr-citation a:after {
+    text-align: center !important;
+    background-position: 30px center !important;
+    padding-right: 0 !important;
+  }
+
+  .section-reviews.page-reviews .view .view-filters form .views-exposed-form .views-exposed-widget {
+    width: 100%;
+  }
+  .section-reviews.page-reviews .view .view-header .viewmenu, .section-reviews.reviews-subtitle, .section-reviews.view-content {
+    padding-left: 0;
+  }
+  .section-reviews.page-reviews .view .view-filters {
+    margin-left: 0;
+  }
+  .section-reviews.page-reviews .main .view-content .item-list ol li .views-field.views-field-view-node .button a {
+    font-size: 18px;
+  }
+
+  .section-user .block.dashboard-block .view * {
+    width: 100%;
+    display: block !important;
+    float: none;
+    text-align: center;
+  }
+  .section-user.page-user-profile .homebox .portlet-content .view.view-booklist-on-activities-page .view-footer a.button {
+    margin-top: 16px;
+  }
+
+  .section-progress.page-progress .main .print-page {
+    position: relative;
+    top: 0;
+  }
+  .section-progress.page-progress .main .user-desc .avatar-id {
+    width: 100%;
+    display: block;
+  }
+  .section-progress.page-progress .main .user-desc .point-status {
+    display: block;
+    vertical-align: initial;
+  }
+  .section-progress.page-progress .main .user-desc .point-status div {
+    float: none;
+    display: block;
+  }
+  .section-progress.page-progress .main .progress-wrap .report-acivity {
+    display: block;
+  }
+  .section-progress.page-progress .main .progress-wrap .reward-won {
+    display: block;
+  }
+  .section-progress.page-progress .main .progress-wrap .progress-rewards {
+    display: block;
+  }
+  .section-progress.page-progress .main .progress-main .new-row > .grid {
+    width: 100%;
+  }
+}
 /**open single msg**/
 .page-messages-view p {
   color: #fff;
@@ -11059,18 +11246,20 @@ body .alert-box.success a.close:hover {
 }
 .page-user-profile .homebox .portlet-content .view.view-patron-rewads-for-patron-dashboard .view-content .views-row .views-field {
   display: table-cell;
+  vertical-align: middle;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 .page-user-profile .homebox .portlet-content .view.view-patron-rewads-for-patron-dashboard .view-content .views-row .views-field.views-field-field-reward-badge {
-  width: 30%;
-  float: left;
+  width: auto;
+  float: none;
 }
 .page-user-profile .homebox .portlet-content .view.view-patron-rewads-for-patron-dashboard .view-content .views-row .views-field.views-field-field-reward-badge h2 {
   display: none;
 }
 .page-user-profile .homebox .portlet-content .view.view-patron-rewads-for-patron-dashboard .view-content .views-row .views-field.views-field-php {
-  width: 65%;
-  float: right;
-  padding-top: 20px;
+  width: auto;
+  float: none;
   font-size: 14px;
   font-family: Raleway-Medium !important;
   font-style: normal !important;
@@ -13480,7 +13669,108 @@ body .alert-box.success a.close:hover {
 }
 
 /**end**/
+/**user acconunt*/
+/**user account**/
+.section-user #checkboxes-div #checkboxes-d .avatar_radio {
+  width: 11.1%;
+  display: inline-block;
+  vertical-align: top;
+  text-align: center;
+}
+.section-user #checkboxes-div #checkboxes-d .form-wrapper {
+  padding: 0;
+  border: none !important;
+  outline: none !important;
+  margin: 0;
+}
+.section-user #checkboxes-div #checkboxes-d .form-wrapper legend {
+  width: 100%;
+  display: inline-block;
+}
+.section-user #checkboxes-div #checkboxes-d .form-wrapper legend .fieldset-legend {
+  width: 100%;
+  display: inline-block;
+  background: #f6f45a;
+  position: relative;
+  padding: 10px 16px;
+  border-bottom: 1px solid #fff;
+  font-family: SpecialElite !important;
+  font-weight: normal !important;
+  font-style: normal !important;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+}
+.section-user #checkboxes-div #checkboxes-d .form-wrapper legend .fieldset-legend.open:after {
+  -webkit-transform: rotate(180deg);
+  -moz-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  -o-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+.section-user #checkboxes-div #checkboxes-d .form-wrapper legend .fieldset-legend:after {
+  content: "";
+  width: 0px;
+  height: 0px;
+  display: block;
+  visibility: visible;
+  position: absolute;
+  top: 48%;
+  right: 16px;
+  border-left: 7px solid transparent;
+  border-right: 7px solid transparent;
+  border-top: 8px solid #000;
+}
+
 /**page register**/
+.page-user-register #checkboxes-div #checkboxes-d .avatar_radio {
+  width: 11.1%;
+  display: inline-block;
+  vertical-align: top;
+  text-align: center;
+}
+.page-user-register #checkboxes-div #checkboxes-d .form-wrapper {
+  padding: 0;
+  border: none !important;
+  outline: none !important;
+  margin: 0;
+}
+.page-user-register #checkboxes-div #checkboxes-d .form-wrapper legend {
+  width: 100%;
+  display: inline-block;
+}
+.page-user-register #checkboxes-div #checkboxes-d .form-wrapper legend .fieldset-legend {
+  width: 100%;
+  display: inline-block;
+  background: #f6f45a;
+  position: relative;
+  padding: 10px 16px;
+  border-bottom: 1px solid #fff;
+  font-family: SpecialElite !important;
+  font-weight: normal !important;
+  font-style: normal !important;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+}
+.page-user-register #checkboxes-div #checkboxes-d .form-wrapper legend .fieldset-legend.open:after {
+  -webkit-transform: rotate(180deg);
+  -moz-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  -o-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+.page-user-register #checkboxes-div #checkboxes-d .form-wrapper legend .fieldset-legend:after {
+  content: "";
+  width: 0px;
+  height: 0px;
+  display: block;
+  visibility: visible;
+  position: absolute;
+  top: 48%;
+  right: 16px;
+  border-left: 7px solid transparent;
+  border-right: 7px solid transparent;
+  border-top: 8px solid #000;
+}
 .page-user-register #user-register-form #edit-field-user-random-list-1, .page-user-register #user-register-form #edit-field-user-random-list-3 {
   width: 23%;
   float: left;
@@ -15707,6 +15997,152 @@ ul.quicktabs-tabs li a:focus, ul.quicktabs-tabs li a:hover {
   }
 }
 
+/* @file
+ * This file is a custom file that loads all files. Each non-base layer
+ * can be disabled.
+ *
+ * Do not name this file, "app.scss". If you run a compass update this file can
+ * be wiped out with a compass update. By default, when a compass project is
+ * created the file will be named app.scss. Thus this file is named,
+ * THEMENAME.scss.
+ *
+ * This application file (THEMENAME.scss) is where all the partials are
+ * imported.
+ *
+ * Theme styles are categorized using SMACSS standards. They utilize
+ * categorization of styles into various categories. Those categories are the
+ * following:
+ *
+ * - Base: CSS reset/normalize plus HTML element styling.
+ * - Layout: Macro arrangement of a web page, including any grid systems.
+ * - Component: Dictate minor layout modules or reusable elements.
+ * - State: Describe the appearance of a module in various states.
+ * - Theme: Purely visual optional styling (“look-and-feel”) for a component.
+ *
+ * * Contains Sass customizations for the Klamath County Library sub-theme.
+ *
+ * Compile Sass into CSS with `compass clean && compass watch` for development
+ * environments or `compass clean && compass compile -e production --force` for
+ * production environments.
+ *
+ * @see config.rb
+ *
+ * For more information about this new Drupal css file standard, please review
+ * the following:
+ * - https://drupal.org/node/1887922
+ * - http://smacss.com/
+ */
+@media screen and (min-width: 400px) and (max-width: 830px) {
+  .l-header #site-slogan {
+    display: block;
+  }
+  .l-header .pre-header .pre-header-left .top-menu {
+    width: 100%;
+  }
+  .l-header .pre-header .pre-header-left section .view .view-content {
+    float: none;
+  }
+  .l-header .pre-header .pre-header-left section .view .views-field {
+    float: none;
+    display: inline-block;
+    line-height: 3em;
+  }
+
+  .breadcurm ul.breadcrumbs {
+    display: none;
+  }
+
+  .header-middle .block-menu ul.menu li {
+    margin-bottom: 50px;
+  }
+  .header-middle .block-menu ul.menu li:nth-child(5n), .header-middle .block-menu ul.menu li:nth-child(5n+1) {
+    margin-bottom: 0;
+  }
+
+  .block.announcement .views-field-body ol {
+    width: 100%;
+  }
+  .block.announcement .views-field-body p {
+    width: 100%;
+  }
+
+  .block.homepage-blocks .view-media-photos-videos- {
+    /* .views-field-field-video-link {
+      margin: 0 auto;
+    } */
+    /* iframe.media-youtube-player {
+      height: 77px !important;
+      width: 136px !important;
+    } */
+  }
+  .block.homepage-blocks .view-media-photos-videos- .view-footer button {
+    display: block;
+    margin: 20px auto 15px !important;
+  }
+  .block.homepage-blocks.playlib-media .owl-carousel .owl-controls .owl-buttons .owl-prev {
+    margin-left: 10px;
+  }
+  .block.homepage-blocks.playlib-media .owl-carousel .owl-controls .owl-buttons .owl-next {
+    margin-right: 10px;
+  }
+
+  .section-activities.page-activities .block-one-title a:after {
+    content: none;
+  }
+  .section-activities.page-activities .block-two-title a:after {
+    content: none;
+  }
+  .section-activities.page-activities .block-three-title a:after {
+    content: none;
+  }
+
+  .section-rewards.page-rewards .main .block {
+    width: 100%;
+    float: none;
+  }
+
+  .section-reviews.page-reviews .view .view-filters form .views-exposed-form .views-exposed-widget {
+    width: 50%;
+  }
+  .section-reviews.page-reviews .view .view-header .viewmenu, .section-reviews.reviews-subtitle, .section-reviews.view-content {
+    padding-left: 0;
+  }
+  .section-reviews.page-reviews .view .view-filters {
+    margin-left: 0;
+  }
+  .section-reviews.page-reviews .main .view-content .item-list ol li .views-field.views-field-view-node .button a {
+    font-size: 18px;
+  }
+
+  .section-progress.page-progress .main .print-page {
+    position: relative;
+    top: 0;
+  }
+  .section-progress.page-progress .main .user-desc .avatar-id {
+    width: 100%;
+    display: block;
+  }
+  .section-progress.page-progress .main .user-desc .point-status {
+    display: block;
+    vertical-align: initial;
+  }
+  .section-progress.page-progress .main .user-desc .point-status div {
+    float: none;
+    display: block;
+  }
+  .section-progress.page-progress .main .progress-wrap .report-acivity {
+    display: block;
+  }
+  .section-progress.page-progress .main .progress-wrap .reward-won {
+    display: block;
+  }
+  .section-progress.page-progress .main .progress-wrap .progress-rewards {
+    display: block;
+  }
+  .section-progress.page-progress .main .progress-main .new-row > .grid {
+    width: 50%;
+  }
+}
 /**
  * Styles for the Top Bar.
  */
