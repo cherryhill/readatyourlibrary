@@ -19,15 +19,15 @@ if (typeof String.prototype.startsWith != 'function') {
         var birthday_timestamp = Math.floor(birthday.getTime() / 1000);
         // More than 13 years old.
         if (birthday_timestamp < Drupal.settings.payl_program_customizations_birthday_limit) {
-          $('.form-item-name').show();
+          $('.page-user-register .form-item-name').show();
         }
         // Less than 13 years old.
         else {
-          $('.form-item-name').hide();
+          $('.page-user-register .form-item-name').hide();
         }
       });
 
-      $('.form-item-name').hide();
+      $('.page-user-register .form-item-name').hide();
       $('.field-widget-random-list-widget-randomizer').each(function(index) {
         fieldname = 'Change ' + $(this).find('label').html();
         $(this).find('input.random-list-widget-regenerate').val(fieldname);
