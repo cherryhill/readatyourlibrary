@@ -1163,9 +1163,9 @@ function calendar_page() {
       // if user receives one after this activity.
         $query = db_select('calendar');
         $query->addExpression('MAX(id)');
-        echo $max_id = $query->execute()->fetchField();
+        $max_id = $query->execute()->fetchField();
         $_SESSION['usr_calendar_id'] = $max_id;
-        die('tryyy');
+
         $node = node_load(495);//495
         //auto_role_allocation_node_update($current_node);
         // this is for calendar activity
