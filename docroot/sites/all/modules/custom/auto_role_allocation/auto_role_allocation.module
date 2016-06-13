@@ -1141,7 +1141,7 @@ function calendar_page() {
   $reward_date = $query_date->fetchAssoc();
   $reward_date = $reward_date['date']; 
 
-  if(!$reward_date) { die('###'); 
+  if(!$reward_date) {
     if (!$no_of_sticker) {
       if($image_id != '') {
         db_update('calendar')
@@ -1149,13 +1149,13 @@ function calendar_page() {
         ->condition ('id', $image_id)
         ->execute();
       }
-      else {
-        $insert_query =db_insert('calendar')
+      else {  die('#@#');
+        $insert_query = db_insert('calendar')
         ->fields(array(
-          'uid'=>$event_uid,
-          'image_url'=>$event_image,
-          'date'=>$event_time,
-          ));
+          'uid' => $event_uid,
+          'image_url' => $event_image,
+          'date' => $event_time,
+        ));
         $insert_query->execute();
 
       // get the just inserted ID from calendar table
@@ -1181,7 +1181,6 @@ function calendar_page() {
     }
   }
   else {
-    die('else case');
     if($reward_date > $event_time) {
       
       return FALSE;
