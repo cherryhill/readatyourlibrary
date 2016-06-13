@@ -1141,7 +1141,7 @@ function calendar_page() {
   $reward_date = $query_date->fetchAssoc();
   $reward_date = $reward_date['date']; 
 
-  if(!$reward_date) {  
+  if(!$reward_date) { die('###'); 
     if (!$no_of_sticker) {
       if($image_id != '') {
         db_update('calendar')
@@ -1165,7 +1165,7 @@ function calendar_page() {
         $query->addExpression('MAX(id)');
         $max_id = $query->execute()->fetchField();
         $_SESSION['usr_calendar_id'] = $max_id;
-        die('###');
+        
         $response = array(
           "result"  =>  1
           );
