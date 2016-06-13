@@ -924,24 +924,37 @@
 		 			 		&:before {
 		 			 			background: url('../images/libraryzurb/reward-dash.png') no-repeat;
 		 			 		}
-		 			 		
+		 			 		.view-footer {
+		 			 			.view {
+		 			 				.views-field {
+		 			 					display: table-cell !important;
+		 			 					vertical-align: middle;
+		 			 					 &.views-field-title {
+		 			 					 	font-size: 15px;
+		 			 					 	@include arialregular;
+		 			 					 	padding-left: 10px;
+		 			 					 	vertical-align: middle;
+		 			 					 	padding-top: 20px;
+		 			 					 }
+		 			 				}
+		 			 			}
+		 			 		}
 	 			 			.view-content {
 		 			 			display: table;
 		 			 			width: 100%;
 			 			 			.views-row {
 			 			 				display: table-row;
 				 			 				.views-field {
-				 			 					display: table-cell;
+				 			 					display: inline-block;
 				 			 					&.views-field-field-reward-badge {
 				 			 						h2 {
 				 			 							display: none;
 				 			 						}
-				 			 						width: 30%;
-				 			 						float: left;
+				 			 				
+				 			 						
 				 			 					}
 				 			 					&.views-field-php {
-				 			 						width: 65%;
-				 			 						float: right;
+				 			 					    vertical-align: middle;
 				 			 						padding-top: 20px;
 				 			 						font-size: 15px;
 				 			 						@include arialregular;

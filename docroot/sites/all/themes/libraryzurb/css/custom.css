@@ -6934,6 +6934,16 @@ form#user-pass div.user_pass_name:after {
 .block {
   margin-bottom: 35px;
 }
+.block.raffle-entry .view-raffle-entry .views-row {
+  width: 100%;
+  display: inline-block;
+}
+.block.raffle-entry .view-raffle-entry .views-row .views-field-field-raffle-image, .block.raffle-entry .view-raffle-entry .views-row .views-field-title {
+  display: table-cell;
+}
+.block.raffle-entry .view-raffle-entry .views-row .views-field-field-raffle-image {
+  padding-right: 20px;
+}
 .block.block-auto-role-allocation-mobile-sticker-count {
   text-align: center;
 }
@@ -11846,6 +11856,21 @@ body .alert-box.success a.close:hover {
 .page-user-profile .homebox .portlet-content .view.view-patron-rewads-for-patron-dashboard:before {
   background: url("../images/libraryzurb/reward-dash.png") no-repeat;
 }
+.page-user-profile .homebox .portlet-content .view.view-patron-rewads-for-patron-dashboard .view-footer .view .views-field {
+  display: table-cell !important;
+  vertical-align: middle;
+}
+.page-user-profile .homebox .portlet-content .view.view-patron-rewads-for-patron-dashboard .view-footer .view .views-field.views-field-title {
+  font-size: 15px;
+  font-family: arial !important;
+  font-style: normal !important;
+  font-weight: normal !important;
+  -webkit-font-smoothing: antialiased !important;
+  text-rendering: optimizeLegibility !important;
+  padding-left: 10px;
+  vertical-align: middle;
+  padding-top: 20px;
+}
 .page-user-profile .homebox .portlet-content .view.view-patron-rewads-for-patron-dashboard .view-content {
   display: table;
   width: 100%;
@@ -11854,18 +11879,13 @@ body .alert-box.success a.close:hover {
   display: table-row;
 }
 .page-user-profile .homebox .portlet-content .view.view-patron-rewads-for-patron-dashboard .view-content .views-row .views-field {
-  display: table-cell;
-}
-.page-user-profile .homebox .portlet-content .view.view-patron-rewads-for-patron-dashboard .view-content .views-row .views-field.views-field-field-reward-badge {
-  width: 30%;
-  float: left;
+  display: inline-block;
 }
 .page-user-profile .homebox .portlet-content .view.view-patron-rewads-for-patron-dashboard .view-content .views-row .views-field.views-field-field-reward-badge h2 {
   display: none;
 }
 .page-user-profile .homebox .portlet-content .view.view-patron-rewads-for-patron-dashboard .view-content .views-row .views-field.views-field-php {
-  width: 65%;
-  float: right;
+  vertical-align: middle;
   padding-top: 20px;
   font-size: 15px;
   font-family: arial !important;

@@ -1,6 +1,20 @@
 // Blocks
 
 .block {
+	&.raffle-entry {
+		.view-raffle-entry {
+			.views-row {
+				width: 100%;
+				display: inline-block;
+				 .views-field-field-raffle-image, .views-field-title {
+				 	display: table-cell;
+				 }
+				 .views-field-field-raffle-image {
+				 	padding-right: 20px;
+				 }
+			}
+		}
+	}
 	&.block-auto-role-allocation-mobile-sticker-count {
 		@include desktop {
 			display: none;
