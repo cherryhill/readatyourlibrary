@@ -1149,7 +1149,7 @@ function calendar_page() {
         ->condition ('id', $image_id)
         ->execute();
       }
-      else {  die('#@#');
+      else {
         $insert_query = db_insert('calendar')
         ->fields(array(
           'uid' => $event_uid,
@@ -1166,14 +1166,11 @@ function calendar_page() {
         $max_id = $query->execute()->fetchField();
         $_SESSION['usr_calendar_id'] = $max_id;
         
-        $response = array(
-          "result"  =>  1
-          );
         $node = node_load(495);//495
         //auto_role_allocation_node_update($current_node);
         // this is for calendar activity
         $hook = "node_update|node|{$node->type}|updated";
-        _play_library_program_invoke_activity_entry_hooks($node, 'node', $hook, 1);
+        //_play_library_program_invoke_activity_entry_hooks($node, 'node', $hook, 1);
       }
       echo 1;
     } else { die('no sticker');
