@@ -1,0 +1,25 @@
+name = DataTables-Responsive JS
+description = Defines the files and variants that comprise the DataTables-Responsive JS library
+core = 7.x
+
+vendor url = https://github.com/Comanche/datatables-responsive
+download url = https://github.com/Comanche/datatables-responsive.git
+
+dependencies[] = datatables
+
+version arguments[pattern] = @[Vv]ersion[:]*\s+([0-9a-zA-Z\.\-]+)@
+version arguments[lines] = 10
+
+files[css][] = files/1/css/datatables.responsive.css
+files[js][]  = files/1/js/datatables.responsive.js
+
+; The patched variant replaces just the datatables.responsive.js file
+variants[bug-fixed][files][css][] = files/1/css/datatables.responsive.css
+variants[bug-fixed][integration files][table_trash][js][] = libraries/variants/js/datatables.responsive.0.1.5-patched.js
+
+; Information added by Drupal.org packaging script on 2014-11-16
+version = "7.x-1.0-beta4"
+core = "7.x"
+project = "table_trash"
+datestamp = "1416112082"
+
