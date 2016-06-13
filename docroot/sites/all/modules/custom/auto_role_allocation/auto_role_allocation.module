@@ -1140,7 +1140,7 @@ function calendar_page() {
   ->execute();
   $reward_date = $query_date->fetchAssoc();
   $reward_date = $reward_date['date']; 
-  
+  die('$&!');
   if(!$reward_date) {
     
     if (!$no_of_sticker) {
