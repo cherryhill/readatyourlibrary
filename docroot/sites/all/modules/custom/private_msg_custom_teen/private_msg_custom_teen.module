@@ -529,12 +529,13 @@ function homepage_slider_teen(){
  * Function callback for header menu for mobile
  */
 function header_menu_mobile_teen(){
+  $output = '<div class = "mobile_menu">';
 
   $block = module_invoke('views', 'block_view', 'top_block-block_2');
-  $output .= render($block['content']). '</div>';
+  $output .= render($block['content']);
 
   $block = module_invoke('menu', 'block_view', 'menu-secoundary-menu-mobile');
-  $output .= render($block['content']). '</div>';
+  $output .= render($block['content']).'</div>';
 
   return $output;
 }
