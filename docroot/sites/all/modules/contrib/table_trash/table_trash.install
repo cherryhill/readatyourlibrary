@@ -1,0 +1,84 @@
+<?php
+
+/**
+ * @file table_trash.install
+ * Install and uninstall functions for the trable_trash module.
+ */
+
+/**
+ * Implements hook_enable().
+ */
+function table_trash_enable() {
+  drupal_set_message(st("Thank you for installing Table Trash. If you have installed the DataTables JS library, then all you have to do now is create your <a href='@url'>table decoration</a> and you're done.", array(
+    '@url' => url('admin/config/content/table_trash'))
+  ));
+}
+
+/**
+ * Implements hook_requirements().
+ */
+function table_trash_requirements($phase) {
+  $requirements = array();
+  if ($phase != 'runtime') {
+    return $requirements;
+  }
+  $global_settings = variable_get('table_trash_global_settings', array());
+  $library_variant = empty($global_settings['use-bug-fixed-library']) ? NULL : 'bug-fixed';
+
+  $base_library = libraries_load('datatables', $library_variant);
+  $responsive_library = libraries_load('datatables-responsive', $library_variant);
+
+  // Is this required for the runtime phase?
+  $t = get_t();
+
+  $requirements['table_trash'] = array(
+    'title' => $t('Table Trash'),
+    'value' => $t('Library variant requested: %variant.', array(
+      '%variant' => empty($library_variant) ? $t('original') : $t('bug-fixed'),
+    )),
+    'severity' => REQUIREMENT_OK,
+  );
+  if (empty($base_library['error'])) {
+    $requirements['table_trash']['value'] .= '<br/>' . $t('<strong>@name</strong> library version %version installed.', array(
+      '@name' => $base_library['name'],
+      '%version' => $base_library['version'],
+    ));
+  }
+  else {
+    $requirements['table_trash']['value'] .= ' ' . $base_library['error message'];
+    $requirements['table_trash']['severity'] = REQUIREMENT_ERROR;
+  }
+  if (empty($responsive_library['error'])) {
+    $requirements['table_trash']['value'] .= '<br/>' . $t('<strong>@name</strong> library version %version installed.', array(
+      '@name' => $responsive_library['name'],
+      '%version' => $responsive_library['version'],
+    ));
+  }
+  else {
+    $requirements['table_trash']['value'] .= '<br/>' . $responsive_library['error message'];
+    $requirements['table_trash']['severity'] = REQUIREMENT_ERROR;
+  }
+  $colreorder_js = $base_library['library path'] . '/' . TABLE_TRASH_COLREORDER_WITH_RESIZE_JS;
+  if (!$colreorder_with_resize = file_exists($colreorder_js)) {
+    $colreorder_js = $base_library['library path'] . '/' . TABLE_TRASH_COLREORDER_JS;
+    $colreorder_error = !file_exists($colreorder_js);
+  }
+  if (empty($colreorder_error)) {
+    $requirements['table_trash']['value'] .= '<br/>' . ($colreorder_with_resize
+      ? $t('<strong>Column Reorder JS</strong> enabled with resize option, installed through %file', array('%file' => $colreorder_js))
+      : $t('<strong>Column Reorder JS</strong> enabled <em>without</em> resize option, installed through %file', array('%file' => $colreorder_js)));
+  }
+  else {
+    $requirements['table_trash']['value'] .= '<br/>' . $t('Column Reorder JS not found.');
+    $requirements['table_trash']['severity'] = REQUIREMENT_ERROR;
+  }
+  return $requirements;
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function table_trash_uninstall() {
+  variable_del('table_trash_decorations');
+  variable_del('table_trash_global_settings');
+}
