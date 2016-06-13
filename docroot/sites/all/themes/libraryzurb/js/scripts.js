@@ -326,6 +326,7 @@ if(!div2.is(':empty')){
             type: 'post',
             data: 'image='+image_name+'&date='+copiedEventObject.start+'&user_id='+currentUser,
             success: function(res){ alert(res);
+              res = parseInt(res);
               if (res) {
                 window.location.reload(true);
               } else {
