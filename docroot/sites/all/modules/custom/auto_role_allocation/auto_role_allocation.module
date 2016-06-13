@@ -1170,7 +1170,7 @@ function calendar_page() {
         //auto_role_allocation_node_update($current_node);
         // this is for calendar activity
         $hook = "node_update|node|{$node->type}|updated";
-        //_play_library_program_invoke_activity_entry_hooks($node, 'node', $hook, 1);
+        _play_library_program_invoke_activity_entry_hooks($node, 'node', $hook, 1);
       }
       echo 1;
     } else { die('no sticker');

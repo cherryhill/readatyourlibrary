@@ -327,11 +327,7 @@ if(!div2.is(':empty')){
             data: 'image='+image_name+'&date='+copiedEventObject.start+'&user_id='+currentUser,
             success: function(res){ alert(res);
               res = parseInt(res);
-              if (res) {
-                window.location.reload(true);
-              } else {
-                alert ('test');
-              }
+              window.location.reload(true);
             },
             error: function(jqXHR, data, error){
                 // console.log(jqXHR);
