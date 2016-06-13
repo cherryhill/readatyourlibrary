@@ -1157,15 +1157,15 @@ function calendar_page() {
           'date' => $event_time,
         ));
         $insert_query->execute();
-die('713');
+
       // get the just inserted ID from calendar table
       // this will be used to update the record for reward
       // if user receives one after this activity.
         $query = db_select('calendar');
         $query->addExpression('MAX(id)');
-        $max_id = $query->execute()->fetchField();
+        echo $max_id = $query->execute()->fetchField();
         $_SESSION['usr_calendar_id'] = $max_id;
-        
+        die('tryyy');
         $node = node_load(495);//495
         //auto_role_allocation_node_update($current_node);
         // this is for calendar activity
