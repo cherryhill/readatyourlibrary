@@ -1104,7 +1104,7 @@ function calendar_page() {
   $event_uid = $_REQUEST['user_id'];
 
   // get timestamp from calendar date
-  echo $event_date = $_REQUEST['date']; die('$%^');
+  $event_date = $_REQUEST['date'];
   $event_date = explode(' ', $event_date);
   $mth = strtolower($event_date[1]);
   $dt = $event_date[2];
@@ -1144,7 +1144,7 @@ function calendar_page() {
   if(!$reward_date) {
     
     if (!$no_of_sticker) {
-      if($image_id) {
+      if($image_id != '') {
         db_update('calendar')
         ->fields(array('image_url' => $event_image,'date' => $event_time))
         ->condition ('id', $image_id)
@@ -1190,7 +1190,7 @@ function calendar_page() {
 
     else {
       if (!$no_of_sticker) {
-        if($image_id) {
+        if($image_id != '') {
           db_update('calendar')
           ->fields(array('image_url' => $event_image,'date' => $event_time))
           ->condition ('id', $image_id)
