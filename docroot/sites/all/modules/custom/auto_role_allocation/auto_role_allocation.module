@@ -1094,14 +1094,17 @@ function calendar_date_restriction($uid, $event_date) {
 
 function calendar_page() {
   global $user;
-  echo "!@#"; die('*@@');
-  /*$uid = $user->uid;
-  $image_id = $_REQUEST['id'];
+
+  $uid = $user->uid;
+  $image_id = '';
+  if (isset($_REQUEST['id'])) {
+    $image_id = $_REQUEST['id'];
+  }
   $event_image = $_REQUEST['image'];
   $event_uid = $_REQUEST['user_id'];
 
   // get timestamp from calendar date
-  $event_date = $_REQUEST['date'];
+  echo $event_date = $_REQUEST['date']; die('$%^');
   $event_date = explode(' ', $event_date);
   $mth = strtolower($event_date[1]);
   $dt = $event_date[2];
@@ -1117,7 +1120,8 @@ function calendar_page() {
     'sep' => 9,
     'oct' => 10,
     'nov' => 11,
-    'dec' => 12);
+    'dec' => 12
+  );
   $mth = $month[$mth];
   $event_time = mktime(0, 0, 0, $mth, $dt, $yr);
 
@@ -1223,7 +1227,7 @@ function calendar_page() {
       echo 0;
     }
   }
-}*/
+}
 
 }
 
