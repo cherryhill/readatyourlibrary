@@ -382,7 +382,7 @@ function auto_role_allocation_menu() {
     'title' => 'Test Page',
     'page callback' => 'calendar_page',
     'access arguments' => array('access content'),
-    'type' => MENU_SUGGESTED_ITEM,
+    'type' => MENU_NORMAL_ITEM,
     );
   $items['raffle'] = array(
     'title' => 'Raffle entry list',
@@ -1094,7 +1094,8 @@ function calendar_date_restriction($uid, $event_date) {
 
 function calendar_page() {
   global $user;
-  $uid = $user->uid;
+  echo "!@#"; die('*@@');
+  /*$uid = $user->uid;
   $image_id = $_REQUEST['id'];
   $event_image = $_REQUEST['image'];
   $event_uid = $_REQUEST['user_id'];
@@ -1166,8 +1167,8 @@ function calendar_page() {
           "result"  =>  1
           );
         $node = node_load(495);//495
-      //auto_role_allocation_node_update($current_node);
-        /* this is for calendar activity*/
+        //auto_role_allocation_node_update($current_node);
+        // this is for calendar activity
         $hook = "node_update|node|{$node->type}|updated";
         _play_library_program_invoke_activity_entry_hooks($node, 'node', $hook, 1);
       }
@@ -1212,8 +1213,8 @@ function calendar_page() {
             "result"  =>  1
             );
         $node = node_load(495);//495
-      //auto_role_allocation_node_update($current_node);
-        /* this is for calendar activity*/
+        //auto_role_allocation_node_update($current_node);
+        // this is for calendar activity
         $hook = "node_update|node|{$node->type}|updated";
         _play_library_program_invoke_activity_entry_hooks($node, 'node', $hook, 1);
       }
@@ -1222,7 +1223,7 @@ function calendar_page() {
       echo 0;
     }
   }
-}
+}*/
 
 }
 
