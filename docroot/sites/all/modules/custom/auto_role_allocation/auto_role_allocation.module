@@ -1140,9 +1140,8 @@ function calendar_page() {
   ->execute();
   $reward_date = $query_date->fetchAssoc();
   $reward_date = $reward_date['date']; 
-  die('$&!');
-  if(!$reward_date) {
-    
+
+  if(!$reward_date) {  
     if (!$no_of_sticker) {
       if($image_id != '') {
         db_update('calendar')
@@ -1166,7 +1165,7 @@ function calendar_page() {
         $query->addExpression('MAX(id)');
         $max_id = $query->execute()->fetchField();
         $_SESSION['usr_calendar_id'] = $max_id;
-        
+        die('###');
         $response = array(
           "result"  =>  1
           );
@@ -1182,7 +1181,7 @@ function calendar_page() {
     }
   }
   else {
-    
+    die('else case');
     if($reward_date > $event_time) {
       
       return FALSE;
