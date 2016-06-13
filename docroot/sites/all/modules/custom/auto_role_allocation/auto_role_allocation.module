@@ -1143,7 +1143,7 @@ function calendar_page() {
 
   if(!$reward_date) {
     if (!$no_of_sticker) {
-      if($image_id != '') {
+      if($image_id != '') { die('5638');
         db_update('calendar')
         ->fields(array('image_url' => $event_image,'date' => $event_time))
         ->condition ('id', $image_id)
@@ -1176,7 +1176,7 @@ function calendar_page() {
         _play_library_program_invoke_activity_entry_hooks($node, 'node', $hook, 1);
       }
       echo 1;
-    } else {
+    } else { die('no sticker');
       echo 0;
     }
   }
