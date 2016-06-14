@@ -325,7 +325,7 @@ if(!div2.is(':empty')){
             async: false,
             type: 'post',
             data: 'image='+image_name+'&date='+copiedEventObject.start+'&user_id='+currentUser,
-            success: function(res){ alert(res);
+            success: function(res){ //alert(res);
               res = parseInt(res);
               window.location.reload(true);
             },
