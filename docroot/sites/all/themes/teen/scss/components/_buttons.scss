@@ -17,6 +17,10 @@ button,
   font-size: 17px;
   text-transform: capitalize;
   border-radius: 0 !important;
+  @include mobile {
+    padding: 7px 11px 3px;
+    margin-left: 0;
+  }
   @include mclaren;
   @include boxshadow;
    &:hover {
