@@ -1,0 +1,43 @@
+name = DataTables JS
+description = Defines the files and variants that comprise the DataTables JS library
+core = 7.x
+
+vendor url = http://datatables.net
+download url = http://datatables.net/download
+
+; We don't care what version number is used, but the Libraries module
+; insists on finding one somewhere. With DataTables the version number is
+; amongst the first 10 lines of the .js file to be loaded.
+version arguments[pattern] = @[Vv]ersion[:]*\s+([0-9a-zA-Z\.\-]+)@
+version arguments[lines] = 10
+
+; Files are relative to the lib path, i.e. sites/all/libraries/datatables
+files[css][] = media/css/jquery.dataTables.css
+files[css][] = extras/TableTools/media/css/TableTools.css
+files[js][] = media/js/jquery.dataTables.min.js
+files[js][] = extras/FixedColumns/media/js/FixedColumns.min.js
+files[js][] = extras/FixedHeader/js/FixedHeader.min.js
+files[js][] = extras/TableTools/media/js/TableTools.min.js
+
+; Integration files are relative to the module path
+integration files[table_trash][css][] = css/table_trash.css
+integration files[table_trash][js][] = js/table_trash.js
+
+; When the 'bug-fixed' variant is selected through the PHP code, the CSS and JS
+; below will be imported instead of the versions above.
+variants[bug-fixed][files][css][] = media/css/jquery.dataTables.css
+variants[bug-fixed][files][css][] = extras/TableTools/media/css/TableTools.css
+variants[bug-fixed][files][js][] = extras/FixedColumns/media/js/FixedColumns.min.js
+variants[bug-fixed][files][js][] = extras/TableTools/media/js/TableTools.min.js
+
+variants[bug-fixed][integration files][table_trash][css][] = css/table_trash.css
+variants[bug-fixed][integration files][table_trash][js][] = js/table_trash.js
+variants[bug-fixed][integration files][table_trash][js][] = libraries/variants/js/jquery.dataTables.bugfixed.min.js
+variants[bug-fixed][integration files][table_trash][js][] = libraries/variants/js/FixedHeader.bugfixed.min.js
+
+; Information added by Drupal.org packaging script on 2014-11-16
+version = "7.x-1.0-beta4"
+core = "7.x"
+project = "table_trash"
+datestamp = "1416112082"
+
