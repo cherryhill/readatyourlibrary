@@ -284,6 +284,7 @@ function private_msg_custom_teen_form_alter(&$form, &$form_state, $form_id) {
   $sub_title = variable_get('review_pre_header');
   $catalog_link = variable_get('catalog_link_for_teen_program');
   $library_abbreviation = variable_get('library_abbreviation_for_teen');
+  $email_desc = variable_get('email_description_field');
 
   if($form_id == 'movie_review_node_form'){
     //hidding label for other option field
@@ -361,8 +362,10 @@ function private_msg_custom_teen_form_alter(&$form, &$form_state, $form_id) {
   }
 
   //Changing of description text for email field
-  if($form_id == 'user_register_form'){
-    $form['account']['mail']['#description'] = variable_get('email_description_field') ;
+  if($email_desc != ''){
+    if($form_id == 'user_register_form'){
+      $form['account']['mail']['#description'] = $email_desc;
+    }
   }
   return $form;
 }
