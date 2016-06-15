@@ -9,6 +9,12 @@ function platform_details_teen($form, &$form_state) {
     '#collapsible' => TRUE, 
     '#collapsed' => TRUE,
   );
+  $form['program_details']['email_description_field'] = array(
+    '#type' => 'textfield',
+    '#title' => 'Email Description Text',
+    '#description' => 'Description provided for email field showed during registration',
+    '#default_value' => variable_get('email_description_field'),
+  );
   $form['program_details']['pmc_purchase_link_teen'] = array(
     '#type' => 'textfield',
     '#title' => 'Purchase Link',
