@@ -359,6 +359,11 @@ function private_msg_custom_teen_form_alter(&$form, &$form_state, $form_id) {
       '#weight' => 3,
     );
   }
+
+  //Changing of description text for email field
+  if($form_id == 'user_register_form'){
+    $form['account']['mail']['#description'] = variable_get('email_description_field') ;
+  }
   return $form;
 }
 
