@@ -47,7 +47,7 @@
 
 	<!-- Header area for search box -->
       <?php if (!empty($page['header'])): ?>
-	  	<div class="large-12 columns">
+	  	<div class="large-12 columns sub-brand">
         <?php print render($page['header']); ?>
 	  	</div>
       <?php endif; ?>
