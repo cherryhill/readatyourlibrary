@@ -10,7 +10,7 @@ function platform_details_teen($form, &$form_state) {
     '#collapsed' => TRUE,
   );
   $form['program_details']['email_description_field'] = array(
-    '#type' => 'textfield',
+    '#type' => 'textarea',
     '#title' => 'Email Description Text',
     '#description' => 'Description provided for email field showed during registration',
     '#default_value' => variable_get('email_description_field'),
