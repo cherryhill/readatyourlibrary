@@ -83,6 +83,9 @@
 	}
 	.block-views-media-photos-videos-block-6 {
 		padding-left: 35px;
+		@include mobile {
+			padding-left: 10px;
+		}
 		.view .views-row {
 			width: 32%;
 			@include mobile {
@@ -92,6 +95,9 @@
 	}
 	.block-views-media-photos-videos-block-3 {
 		padding-left: 35px;
+		@include mobile {
+			padding-left: 10px;
+		}
 		.view .views-row {
 			width: 24%;
 			@include mobile {
@@ -104,11 +110,19 @@
 	}
 	.main {
 		#page-title {
+			@include mobile {
+				margin-bottom: 25px;
+				font-size: 22px !important;
+				padding-top: 6px !important;
+			}
 			margin-bottom: 35px;
 			@include brushimg(left);
 		}
 		article.node-page {
 			padding-left: 35px;
+			@include mobile {
+				padding-left: 10px;
+			}
 			.field-name-body {
 				color: $blue;
 				p {
@@ -150,6 +164,9 @@
 			 	 	   	  @include tablet {
 			 	 	   	  	width: 139px;
 			 	 	   	  }
+			 	 	   	  @include mobile {
+			 	 	   	  	width: 170px;
+			 	 	   	  }
 			 	 	   	    &:after {
 			 	 	   	    	content: "view album";
 			 	 	   	    	height: 38px;
@@ -158,6 +175,9 @@
 			 	 	   	    	background: $yellow url('../images/libraryzurb/view-album1.png') no-repeat;
 			 	 	   	    	@include desktop {
 			 	 	   	    		background-position: 37px center !important;
+			 	 	   	    	}
+			 	 	   	    	@include mobile {
+			 	 	   	    		background-position: 19px center !important;
 			 	 	   	    	}
 			 	 	   	    	color: $blue;
 			 	 	   	    	text-align: center;
@@ -313,8 +333,21 @@
 		  	
 
 		 .block {
-		 	width: 50%;
-		 	float: left;
+		 	&.block-block {
+		 		width: 100%;
+		 	}
+		 	&.block-private-msg-custom-teen-program-rewards-block, &.block-views-program-badges-block {
+		 		@include mobile {
+		 			width: 100%;
+		 			float: none;
+		 		}
+		 		width: 50%;
+		 		float: left;
+		 	}
+		 	@include mobile {
+		 		padding-left: 10px;
+		 	}
+		 	
 		 	padding-left: 32px;
 	  		.block-title {
 	  		  display: none;
@@ -335,6 +368,9 @@
 	  		.view-header {
 	  			h2 {
 	  				font-size: 24px;
+	  				@include mobile {
+	  					font-size: 18px;
+	  				}
 	  				@include mclaren;
 	  				color: $blue;
 	  				@include noborder;
@@ -350,6 +386,9 @@
 	  			.views-row {
 	  				width: 100%;
 	  				display: inline-block;
+	  				@include mobile {
+	  					margin-bottom: 0;
+	  				}
 	  				margin-bottom: 25px;
 	  				  .views-field-field-image-upload, .views-field-field-raffle-image, .views-field-field-badge-image {
 	  				  	 width: 30%;
@@ -549,6 +588,11 @@
     
   	.main {
   		#page-title {
+  			@include mobile {
+  				margin-bottom: 25px;
+  				font-size: 22px !important;
+  				padding-top: 6px !important;
+  			}
   			margin-bottom: 35px;
   			@include brushimg(left);
   		}
@@ -559,6 +603,9 @@
 	    	position: relative;
 	    	overflow: hidden;
 	    	margin-left: 35px;
+	    	@include mobile {
+	    		margin-left: 0px;
+	    	}
 	    	  .block-title {
 	    	  	display: none;
 	    	  
@@ -591,12 +638,26 @@
 
 	    	 	     				}
 				    	 	       	&.views-field-field-program-image {
+				    	 	       		@include mobile {
+				    	 	       			width: 100%;
+				    	 	       			display: block;
+				    	 	       			max-width: 60%;
+				    	 	       			margin: auto;
+				    	 	       			margin-bottom: 10px;
+				    	 	       		}
 				    	 	       	   width: 20%;
 				    	 	       	  display: table-cell; 
 				    	 	       	  vertical-align: middle;
 				    	 	       	  float: none !important;
+				    	 	       	  img {
+				    	 	       	  	width: 100%;
+				    	 	       	  }
 				    	 	       	}
 				    	 	       	&.views-field-body {
+				    	 	       		@include mobile {
+				    	 	       			width: 100%;
+				    	 	       			display: inline-block;
+				    	 	       		}
 				                      width: 78%;
 				                      padding-left: 2%;
 				                      display: table-cell;
@@ -613,12 +674,18 @@
 	    }
 		.view.view-display-id-page {
 			margin-left: 35px;
+			@include mobile {
+				margin-left: 10px;
+			}
    		 	.view-header, .view-header p {
 	   		 	@media screen and (min-width: 980px) {
 	   		 	   font-size: 26px !important;
 	   		 	}
    		 		@include mclaren;
    		 		color: $blue;
+   		 		@include mobile {
+   		 			font-size: 22px !important;
+   		 		}
 		 		}
    		 	.view-content {
    		 		.views-row {
@@ -628,10 +695,25 @@
 		   		 		 	display: table-row;
 		   		 		 	padding-bottom: 23px;
 			   		 		 	&.views-field-field-program-image {
+			   		 		 		@include mobile {
+			   		 		 			width: 100%;
+			   		 		 			float: none;
+			   		 		 			display: block;
+			   		 		 			max-width: 60%;
+			   		 		 			margin: auto;
+			   		 		 		}
 			   		 		 	 	width: 20%;
 			   		 		 	 	float: left;
+			   		 		 	 	img {
+			   		 		 	 		width: 100%;
+			   		 		 	 	}
 			   		 		 	}
 		   		 		 	  	&.views-field-title, &.views-field-field-sign-up, &.views-field-body {
+		   		 		 	  	 @include mobile {
+		   		 		 	  	 	width: 100%;
+		   		 		 	  	 	float: none;
+		   		 		 	  	 	display: inline-block;
+		   		 		 	  	 }
 		   		 		 	  	width: 78%;
 		   		 		 	  	float: right;
 								}
@@ -641,6 +723,9 @@
 				   		 		 	  		@include mclaren;
 				   		 		 	  		color: $blue;
 				   		 		 	  		font-size: 24px;
+				   		 		 	  		@include mobile {
+				   		 		 	  			font-size: 18px;
+				   		 		 	  		}
 		   		 		 	  			}
 		   		 		 	  	}
 		   		 		 	  	&.views-field-body {
@@ -726,7 +811,10 @@
 	 		 	  	font-size: 16px;
 	 		 	  }
 		 		 	.item-list ul li.last {
-		 		 	 	float: right !important;
+		 		 		@include tablet { float: right !important;}
+		 		 		@include mobile { float: none !important; display: inline-block; padding-top: 5px;}
+		 		 		@include desktop { float: right !important;}
+		 		 	 	
 		 		 	}
 	 		}
 	 		#homebox-buttons {
@@ -1321,6 +1409,10 @@
 	.view-activities-listing-term {
 	  	.view-header {
 			h2:nth-of-type(1) {
+				@include mobile {
+					font-size: 22px !important;
+					padding-top: 7px !important;
+				}
 				@include brushimg(left);
 			}
 			h2:nth-of-type(2) {
@@ -1330,18 +1422,34 @@
 				@include mclaren;
 				color: $blue;
 				padding-top: 35px;
+				@include mobile {
+					padding-top: 20px;
+					font-size: 18px;
+					padding-left: 10px;
+				}
 			}
 			p {
 				padding-left: 35px;
 				color: $blue;
 				@include arialregular;
+				 @include mobile {
+				 	padding-left: 10px;
+				 }
 			}
 		}
 		.view-content {
-			.views-row a {
+			.views-row {
+				@include mobile {
+					margin-bottom: 20px;
+				}
+				a {
 				font-size: 18px;
 				padding-left: 35px;
 				@include arialbold;
+				@include mobile {
+					padding-left: 10px;
+				}
+			}
 			}
 		}
 
@@ -1364,6 +1472,11 @@
 			h2:nth-of-type(1) {
 				@include brushimg(left);
 				margin-bottom: 30px;
+				 @include mobile {
+				 	padding-top: 7px !important;
+				 	margin-bottom: 20px;
+				 	font-size: 18px;
+				 }
 			}
 
 		}
@@ -1373,10 +1486,16 @@
 				@include noborder;
 				@include mclaren;
 				font-size: 24px;
+				@include mobile {
+					font-size: 18px;
+				}
 			}
 		}
 		.activity-desc {
 			padding-left: 35px;
+			@include mobile {
+				padding-left: 10px;
+			}
 			 .act-title {
 			 	color: $blue;
 			 	font-size: 16px;
@@ -1390,11 +1509,17 @@
 		}
 		.view-content {
 			padding-left: 35px;
+			 @include mobile {
+			 	padding-left: 10px;
+			 }
 			 .views-row {
 			 	position: relative;
 			 	margin-bottom: 25px;
 			 	padding-bottom: 25px;
 			 	border-bottom: 1px solid $light-gray;
+			 	 @include mobile {
+			 	 	margin-top: 10px;
+			 	 }
 			 	.views-field-counter {
 			 		font-size: 20px;
 			 		@include mclaren;
@@ -1406,6 +1531,11 @@
 			 		position: absolute;
 			 		right: 0;
 			 		top: 2px;
+			 		@include mobile {
+			 			position: relative;
+			 			top: 0;
+			 			float: right;
+			 		}
 			 		 .views-label {
 			 		 	@include like;	
 			 		 }
@@ -1619,10 +1749,16 @@
   	  			font-size: 16px;
   	  			@include arialregular;
   	  			padding-left: 35px;
+  	  			@include mobile {
+  	  				padding-left: 10px;
+  	  			}
   	  		}
   	  	}
   	  	.view-filters {
   	  		margin-left: 35px;
+  	  		@include mobile {
+  	  			margin-left: 10px;
+  	  		}
   	  		background: url('../images/libraryzurb/annocement.png') no-repeat scroll center center / 100% 100%;
   	  		@include boxshadow;
   	  		 	form {
@@ -1638,6 +1774,10 @@
 				  	  		 	  	padding-left: 1%;
 				  	  		 	  	padding-right: 0;
 				  	  		 	  	padding-top: 17px;
+				  	  		 	  	@include mobile {
+				  	  		 	  		width: 100%;
+				  	  		 	  		padding-top: 2px;
+				  	  		 	  	}
 				  	  		 	  	 @include tablet {
 				  	  		 	  	 	width: 49%;
 				  	  		 	  	 	padding-top: 2px;
@@ -1768,6 +1908,10 @@
   	 					@include mclaren;
   	 					  &.reviews-title {
   	 					  	font-size: 28px;
+  	 					  	@include mobile {
+  	 					  		font-size: 22px;
+  	 					  		padding-top: 7px !important;
+  	 					  	}
   	 					  	@include brushimg(left);
   	 					  	margin-left: -5px;
   	 					  	margin-bottom: 30px;
@@ -1781,6 +1925,9 @@
   	 		}
 	  	 	.view-content {
 	  	 		padding-left: 35px;
+	  	 		@include mobile {
+	  	 			padding-left: 10px;
+	  	 		}
 		  	 	.views-row img {
 		  	 		@include noborder;
 		  	 	}
@@ -1799,10 +1946,19 @@
 		  	 				border-bottom: 1px solid $light-gray;
 		  	 				padding-top: 35px;
 		  	 				padding-bottom: 35px;
+		  	 				@include mobile {
+		  	 					padding-top: 20px;
+		  	 					padding-bottom: 20px;
+		  	 				}
 
 	  	 						.views-field {
 	  	 					
                              		&.views-field-nothing-1 {
+                             			@include mobile {
+                             				width: 100%;
+                             				display: block;
+                             				padding-left: 0;
+                             			}
 		                             	width: 70%;
 		                             	float: right;
 		                             	display: table-cell;
@@ -1811,11 +1967,17 @@
                              				.bookreview_title {
 			                             		font-size: 22px;
 			                             		line-height: 1.4;
+			                             		@include mobile {
+			                             			font-size: 18px;
+			                             		}
 			                             		@include mclaren;
 				                             		a {
 				                             			font-size: 22px;
 				                             			padding-right: 5px;
 				                             			line-height: 1.4;
+				                             			 @include mobile {
+				                             			 	font-size: 18px;
+				                             			 }
 				                             		}
 
                              				}
@@ -1824,6 +1986,9 @@
 			  	 					&.views-field-count {
 			  	 					 	position: relative;
 			  	 					 	top: 20px;
+			  	 					 	 @include mobile {
+			  	 					 	 	top: 0;
+			  	 					 	 }
 			  	 					}
 		  	 					 	&.views-field-body {
 		  	 					 		@include arialregular;
@@ -1909,7 +2074,18 @@
 			  	 					 	float: left;
 			  	 					 	width: 30%;
 			  	 					 	padding: 0px;
+			  	 					 	 @include mobile {
+			  	 					 	 	width: 100%;
+			  	 					 	 	float: none;
+			  	 					 	 	display: inline-block;
+			  	 					 	 }
 				  	 					 	table {
+				  	 					 		@include mobile {
+				  	 					 			display: block;
+				  	 					 			width: 100%;
+				  	 					 			max-width: 200px;
+				  	 					 			margin: auto !important;
+				  	 					 		}
 				  	 					 		margin: 0 !important;
 				  	 					 		@include noborder;
 				  	 					 		 tbody {
@@ -1941,6 +2117,12 @@
 			  	 					 	float: right;
 			  	 					 	display: table-row; 
 			  	 					 	padding-left: 4%;
+			  	 					 	@include mobile {
+			  	 					 		width: 100%;
+			  	 					 		float: none;
+			  	 					 		display: inline-block;
+			  	 					 		padding-left: 0;
+			  	 					 	}
 		  	 					 	}
 		  	 					 	&.views-field-field-user-avatar {
 			  	 					 	img {
@@ -1952,6 +2134,12 @@
 			  	 					 	width: 70%;
 			  	 					 	float: right;
 			  	 					 	padding-left: 4%;
+			  	 					 	@include mobile {
+			  	 					 		width: 100%;
+			  	 					 		float: none;
+			  	 					 		padding-left: 0;
+			  	 					 		display: inline-block;
+			  	 					 	}
 	  	 					 	 			.button {
 				  	 					 	 	padding: 0 !important;
 				  	 					 	 	margin: 23px 0 0;
@@ -2006,6 +2194,9 @@
   			@include noborder;
   			font-size: 24px;
   			@include mclaren;
+  			@include mobile {
+  				font-size: 18px;
+  			}
   		}
 	  	.view-content {
 	  		margin-top: 40px;
@@ -2014,6 +2205,9 @@
 	  	 		ol {
 	  	 			margin-left: 35px;
 	  	 			list-style: none;
+	  	 			@include mobile {
+	  	 				margin-left: 10px;
+	  	 			}
 	  	 			li {
 		  	 				&.views-row {
 		  	 					margin-bottom: 23px;
@@ -2025,6 +2219,9 @@
 		  	 					 	  	width: 75%;
 		  	 					 	  	display: inline-block;
 		  	 					 	  	vertical-align: top;
+		  	 					 	  	@include mobile {
+		  	 					 	  		width: 89%;
+		  	 					 	  	}
 		  	 					 	  }
 		  	 					 }
 		  	 				}
@@ -2070,6 +2267,11 @@
 			  	 			 	right: 0;
 			  	 			 	top: 3px;
 			  	 			 	@include mclaren;
+			  	 			 	 @include mobile {
+			  	 			 	 	text-align: right;
+			  	 			 	 	top: 0;
+			  	 			 	 	position: relative;
+			  	 			 	 }
 			  	 			}
 	  	 			        .views-field-counter {
                                font-size: 20px;
@@ -2089,6 +2291,9 @@
 	  	}
 	  	.view-booklist-slideshow {
 	  		padding-left: 35px;
+	  		@include mobile {
+	  			padding-left: 10px;
+	  		}
 	  		.owl-carousel {
 	  			position: relative;
 	  			 	.owl-wrapper-outer {
@@ -2124,6 +2329,11 @@
 		  			 	float: left;
 		  			 	margin-top: 20px;
 		  			 	font-size: 17px;
+		  			 	@include mobile {
+		  			 		width: 100%;
+		  			 		float: none;
+		  			 		display: inline-block;
+		  			 	}
 		  			 	@include mclaren;
 		  			 	 @include tablet {
                            width: 100%;
@@ -2161,6 +2371,11 @@
 		  			 	text-align: right;
 		  			 	margin-top: 20px;
 		  			 	padding-right: 2%;
+		  			 	@include mobile {
+		  			 		width: 100%;
+		  			 		display: inline-block;
+		  			 		float: none;
+		  			 	}
 		  			 	@include mclaren;
 		  			 	 @include tablet {
 		  			 	 	width: 100%;
@@ -2228,6 +2443,9 @@
  	}
  	.block-one-description, .block-two-description, .block-three-description {
  		padding-left: 35px;
+ 		@include mobile {
+ 			padding-left: 10px;
+ 		}
  		  p {
  		  	color: $blue;
  		  	 a {
@@ -2242,15 +2460,30 @@
  		padding-left: 35px;
  		color: $blue;
  		font-size: 24px;
+ 		@include mobile {
+ 			font-size: 18px;
+ 			padding-left: 10px;
+ 		}
  		@include mclaren;
  		  a {
  		  	font-size: 24px;
  		  	color: $blue;
  		  	@include mclaren;
+ 		  	@include mobile {
+              font-size: 18px;
+ 		  	}
  		  
  		  	position: relative;
  		  	  &:after {
  		  	  	content: "";
+ 		  	  	@include mobile {
+ 		  	  		border-top: 4px solid transparent;
+ 		  	  		border-bottom: 4px solid transparent;
+ 		  	  		border-left: 8px solid $blue;
+ 		  	  		right: -5px;
+ 		  	  		top: -1px;
+ 		  	  		position: relative;
+ 		  	  	}
                 border-top: 7px solid transparent;
                 border-bottom: 7px solid transparent;
                 border-left: 14px solid $blue;
@@ -2265,6 +2498,9 @@
  	.block-private-msg-custom-teen-hotspot-activity-block {
  		color: $blue;
  		.block-title {
+ 			@include mobile {
+ 				font-size: 22px;
+ 			}
  			font-size: 28px;
  			margin-bottom: 25px;
  			@include noborder;
@@ -2276,6 +2512,10 @@
  			@include mclaren;
  			padding-left: 35px;
  			margin-bottom: 5px;
+ 			@include mobile {
+ 				font-size: 18px;
+ 				padding-left: 10px;
+ 			}
 
  		}
  		.activity_desc, .activity_review_desc {
@@ -2283,15 +2523,28 @@
  			@include arialregular;
  			padding-left: 9.2%;
  			margin-bottom: 10px;
+ 			@include mobile {
+ 				padding-left: 10px;
+ 			}
  		}
  		.activity_review_title {
  			margin-top: 60px;
+ 			@include mobile {
+ 				margin-top: 20px;
+ 			}
  		}
 
  		.form-type-select {
  			width: 100%;
  			display: inline-block;
  			label  {
+ 				@include mobile {
+ 					width: 100%;
+ 					float: none;
+ 					display: inline-block;
+ 					padding-left: 10px;
+ 					padding-right: 0;
+ 				}
  				width: 50%;
  				float: left;
  				@include arialregular;
@@ -2350,6 +2603,9 @@
  			font-size: 18px;
  			@include arialbold;
  			padding-left: 9.5%;
+ 			@include mobile {
+ 				padding-left: 0;
+ 			}
 
  		}
  	}
@@ -2434,8 +2690,15 @@
 		 	margin-right: 2.5%;
 		 	margin-left: 2.5%;
 		 	vertical-align: top;
+		 	@include mobile {
+		 		width: 100%;
+		 		margin-left: 0;
+		 		margin-right: 0;
+		 	}
 		 }
 	.block {
+		padding-left: 22px;
+		padding-right: 10px;
 		@include bluebackground;	
 		.block-title {
 			@include waveimg(C);
@@ -2481,6 +2744,9 @@
 			counter-reset: section;
 			ul {
 				list-style: none;
+				 li {
+				 	margin-left: 0;
+				 }
 			}
 			.view-header {
 				width: 100%;
@@ -2669,6 +2935,9 @@
 			    display: inline-block;
 			    vertical-align: top;
 			    text-align: center;
+			    @include mobile {
+			    	width: 24%;
+			    }
 			}
 			.form-wrapper {
               padding: 0;
@@ -2713,6 +2982,9 @@
 			    display: inline-block;
 			    vertical-align: top;
 			    text-align: center;
+			    @include mobile {
+			    	width: 24%;
+			    }
 			}
 			.form-wrapper {
               padding: 0;
@@ -2773,6 +3045,11 @@
 	
 	.main {
 		 #page-title {
+		 	@include mobile {
+		 		font-size: 22px;
+		 		margin-bottom: 25px;
+		 		padding-top: 6px !important;
+		 	}
 		 	@include brushimg(left);
 		 	margin-bottom: 35px;
 		 }
@@ -2787,6 +3064,9 @@
 		 }
 		.view-events {
 			padding-left: 35px;
+			@include mobile {
+				padding-left: 10px;
+			}
 			.view-content {
 				h3 {
 					font-size: 20px;
@@ -2804,7 +3084,11 @@
 					margin-top: 10px;
 					margin-bottom: 10px;
 					 @include tablet {
-					 	border-bottom: 1px solid $blue;
+					 	border-bottom: 1px dotted $blue;
+					 	padding-bottom: 10px;
+					 }
+					 @include mobile {
+					 	border-bottom: 1px dotted $blue;
 					 	padding-bottom: 10px;
 					 }
 					  div {
@@ -2828,10 +3112,16 @@
 					  	   	@include tablet {
 					  	   		width: 100%;
 					  	   	}
+					  	   	@include mobile {
+					  	   		width: 100%;
+					  	   	}
 					  	   }
 					  	   &:nth-of-type(2), &:nth-of-type(3) {
 					  	   	  width: 20%;
 					  	   	  @include tablet {
+					  	   	  	width: 100%;
+					  	   	  }
+					  	   	  @include mobile {
 					  	   	  	width: 100%;
 					  	   	  }
 					  	   }
@@ -2841,6 +3131,9 @@
 		}
 		.pagination.pager {
 			margin-top: 35px;
+			 @include mobile {
+			 	float: none !important;
+			 }
 		}
 	}
 }
@@ -2860,6 +3153,9 @@ display: block !important;
  .form-item.form-type-radio.form-item-field-genre-und, .form-item.form-type-radio.form-item-field-language-und,.form-item.form-type-radio.form-item-field-rating-und  {
  		width: 19%;
  		display: inline-block;
+ 		@include mobile {
+ 			width: 49%;
+ 		}
  		
  	}
  	.field-name-field-genre-other-option, .field-name-field-platform-other-option {
@@ -2874,6 +3170,7 @@ display: block !important;
  		}
  		 @include mobile {
  		 	left: 0;
+ 		 	width: 49%;
  		 }
 
  	}
@@ -2883,6 +3180,9 @@ display: block !important;
  		  	.form-item-field-platform-und, .form-item-field-age-rating-of-game-und {
  		  		width: 19%;
  		  		display: inline-block;
+ 		  		@include mobile {
+ 		  			width: 49%;
+ 		  		}
  		  		
  		  	}
  	}
@@ -2921,10 +3221,18 @@ display: block !important;
  	}
  }
  /**booklist node page**/
- .page-node-add-booklist, .page-node-add-review-book {
+ .page-node-add-booklist, .page-node-add-review-book, .page-node-add-review-activity, .page-node-add-movie-review, .page-node-add-music-review, .page-node-add-video-game-review {
  	/* .form-item-field-privacy-settings-und {
  		@include radio;
  	} */
+ 	#page-title {
+ 		@include mobile {
+ 			font-size: 18px;
+ 		}
+ 	}
+ 	select.form-select, input.form-text {
+ 		width: 100% !important;
+ 	}
  	input[type=radio] {
  		margin-bottom: 0;
  	}
@@ -2953,6 +3261,7 @@ display: block !important;
  		bottom: 4px;
  		 @include mobile {
  		 	left: 0;
+ 		 	width: 49%;
  		 }
  		 @include tablet {
  		 	left: -10%;
@@ -2965,6 +3274,9 @@ display: block !important;
  		.form-item {
  		width: 19%;
  		display: inline-block;
+ 		@include mobile {
+ 			width: 49%;
+ 		}
  		 input[type="checkbox"] {
  		 	margin-bottom: 0;
  		 }
@@ -3002,6 +3314,9 @@ display: block !important;
  		vertical-align: top;
  		margin-top: 20px;
  		position: relative;
+ 		 @include mobile {
+ 		 	width: 100%;
+ 		 }
  		.flag-like.last {
  			display: none;
  		}
@@ -3010,6 +3325,9 @@ display: block !important;
  		 	position: absolute;
  		 	right: 0;
  		 	top: 0;
+ 		 	  @include mobile {
+ 		 	  	position: relative;
+ 		 	  }
  		 	  a {
  		 	  	@include yellowbutton;
  		 	  }
@@ -3034,6 +3352,9 @@ display: block !important;
  		width: 30%;
 		display: inline-block;
 		vertical-align: top;
+		@include mobile {
+			width: 100%;
+		}
 		.like-here {
 			display: inline-block;
 			margin-left: 40px;
@@ -3122,21 +3443,32 @@ display: block !important;
  		  	position: absolute;
  		  	right: 0;
  		  	top: 0;
+ 		  	@include mobile {
+ 		  		position: relative;
+ 		  	}
  		  	  div {
  		  	  	position: relative;
  		  	  	display: inline-block;
  		  	  	vertical-align: top;
  		  	  	  &.like-wrapp {
  		  	  	  	float: right;
+ 		  	  	  	@include mobile {
+ 		  	  	  		float: none;
+ 		  	  	  	}
  		  	  	  }
  		  	  	  &.bk_follow {
  		  	  	  	width: 100%;
  		  	  	  	margin-top: 30px;
  		  	  	  	 .flag-follow {
  		  	  	  	 	float: right;
+ 		  	  	  	 	 @include mobile {
+ 		  	  	  	 	 	float: none;
+ 		  	  	  	 	 }
 
  		  	  	  	 	a {
- 		  	  	  	 	 @include yellowbutton;
+                          @include tablet {  @include yellowbutton;}
+                          @include desktop {  @include yellowbutton;}
+ 		  	  	  	 	
 
  		  	  	  	 	}
  		  	  	  	 }
@@ -3170,6 +3502,9 @@ display: block !important;
  		  	width: 70%;
  		  	display: inline-block;
  		  	vertical-align: top;
+ 		  	@include mobile {
+ 		  		width: 100%;
+ 		  	}
  		  	  p {
  		  	  	width: 100%;
  		  	  	@include mclaren;
@@ -3191,6 +3526,9 @@ display: block !important;
  	.main {
  	.view-content {
  		padding-left: 35px;
+ 		 @include mobile {
+ 		 	padding-left: 10px;
+ 		 }
  		.views-row {
  			display: inline-block;
  			width: 100%;
@@ -3211,6 +3549,10 @@ display: block !important;
  			 	  	font-size: 20px;
  			 	  	@include mclaren;
  			 	  	width: 75%;
+ 			 	  	@include mobile {
+ 			 	  		width: 90%;
+ 			 	  		font-size: 18px;
+ 			 	  	}
  			 	  	display: inline-block;
  			 	  	vertical-align: top;
  			 	  }
@@ -3219,6 +3561,11 @@ display: block !important;
  			 .views-field-count {
                 float: right;
                 font-size: 17px;
+                @include mobile {
+                	display: inline-block;
+
+                }
+
                 @include mclaren;
                   .views-label-count {
                   	 @include like;
@@ -3230,6 +3577,9 @@ display: block !important;
 
  			 .views-field-nothing, .views-field-field-genre, .views-field-field-actors, .views-field-field-artist-performer, .views-field-php, .views-field-field-catalog-link-music, .views-field-field-age-rating-of-game, .views-field-field-director,.views-field-field-catalog-link-video-game, .views-field-field-language,.views-field-php, .views-field-field-release-year, .views-field-field-rating, .views-field-field-catalog-link-movie-review {
  			 	font-size: 17px;
+ 			 	@include mobile {
+ 			 		font-size: 16px;
+ 			 	}
  			 	
  			 	@include mclaren;
  			 	  a {
@@ -3321,6 +3671,11 @@ display: block !important;
       	position: absolute;
       	right: 0;
       	top: 1px;
+      	 @include mobile {
+      	 	position: relative;
+      	 	display: inline-block;
+      	 	width: 100%;
+      	 }
       	  .follow_link_activityreview {
       	  	position: relative;
       	  	width: 100%;
@@ -3388,6 +3743,12 @@ display: block !important;
       	position: absolute;
       	right: 0;
       	top: 1px;
+      	@include mobile {
+      		position: relative;
+      		top: 0;
+      		width: 100%;
+      		display: inline-block;
+      	}
       	  .follow_link_moviereview {
       	  	position: relative;
       	  	width: 100%;
@@ -3452,6 +3813,12 @@ display: block !important;
       	position: absolute;
       	right: 0;
       	top: 1px;
+      	@include mobile {
+      		position: relative;
+      		display: inline-block;
+      		width: 100%;
+      		top: 0;
+      	}
       	  .follow_link_musicreview {
       	  	position: relative;
       	  	width: 100%;
@@ -3517,6 +3884,12 @@ display: block !important;
       	position: absolute;
       	right: 0;
       	top: 1px;
+      	@include mobile {
+      		width: 100%;
+      		position: relative;
+      		top: 0;
+      		display: inline-block;
+      	}
       	  .follow_link_videogamereview {
       	  	position: relative;
       	  	width: 100%;
@@ -3577,6 +3950,10 @@ display: block !important;
  			display: inline-block;
  			padding-right: 25px;
  			width: 100%;
+ 			@include mobile {
+ 				padding-left: 10px;
+ 				padding-right: 10px;
+ 			}
  		}
  		  #title {
  		  	 font-size: 26px;
@@ -3611,6 +3988,9 @@ display: block !important;
  		  		position: absolute;
  		  		right: 25px;
  		  		top: 25px;
+ 		  		@include mobile {
+ 		  			display: none;
+ 		  		}
  		  		 .print {
  		  		 	@include noborder;
  		  		 	color: $white;
@@ -3624,11 +4004,18 @@ display: block !important;
               display: table;
               background: $green;
               padding: 25px 14px;
+              @include mobile {
+              	display: inline-block;
+              }
                .avatar-id {
                	  width: 30%;
                	  display: table-cell;
                	  vertical-align: bottom;
                	  font-size: 20px; 
+               	  @include mobile {
+               	  	width: 100%;
+               	  	display: inline-block;
+               	  }
                	  @include mclaren;
                	    img {
                	    	@include boxshadow;
@@ -3640,7 +4027,20 @@ display: block !important;
                .point-status {
                	display: table-cell;
                	vertical-align: middle;
+               	@include mobile {
+               		display: inline-block;
+               		width: 100%;
+               		
+               	
+               		
+
+               	}
                	  div {
+               	  	@include mobile {
+               	  		padding: 10px 0px;
+               	  		border-bottom: 1px dotted $white;
+               	  		float: none;
+               	  	}
                	  	padding-left: 5%;
                	  	float: left;
                	  	font-size: 14px;
@@ -3655,12 +4055,21 @@ display: block !important;
  		  	margin-top: 25px;
  		  	border-collapse: separate;
  		  	border-spacing: 10px;
+ 		  	  @include mobile {
+ 		  	  	display: inline-block;
+ 		  	  }
  		  	 .report-acivity {
  		  	 	display: table-cell;
  		  	 	background: $white;
  		  	 	color: $blue;
  		  	 	vertical-align: top;
  		  	 	padding: 25px 20px;
+ 		  	 	@include mobile {
+ 		  	 		display: block;
+ 		  	 		width: 100%;
+ 		  	 		max-width: 300px;
+ 		  	 		margin: 10px auto;
+ 		  	 	}
  		  	 	  h1 {
  		  	 	  	color: $blue;
  		  	 	  	@include mclaren;
@@ -3776,6 +4185,12 @@ display: block !important;
  		  	 	vertical-align: middle;
  		  	 	background: $white;
  		  	 	width: auto;
+ 		  	 	@include mobile {
+ 		  	 		width: 100%;
+ 		  	 		display: block;
+ 		  	 		max-width: 300px;
+ 		  	 		margin: 10px auto;
+ 		  	 	}
 
  		  	 	
  		  	 	  .view {
@@ -3827,6 +4242,11 @@ display: block !important;
  		  	 	@include mclaren;
  		  	 	background: $light-yellow;
  		  	 	text-align: center;
+ 		  	 	 @include mobile {
+ 		  	 	 	display: block;
+ 		  	 	 	max-width: 300px;
+ 		  	 	 	margin: 10px auto;
+ 		  	 	 }
  		  	 	 p {
  		  	 	 	font-size: 22px;
  		  	 	 	@include mclaren;
@@ -3865,6 +4285,9 @@ display: block !important;
  		  	  	 	display: inline-block;
  		  	  	 	vertical-align: top;
  		  	  	 	color: $blue;
+ 		  	  	 	@include mobile {
+ 		  	  	 		width: 50%;
+ 		  	  	 	}
  		  	  	 	
  		  	  	 	padding: 10px 1.8%;
  		  	  	 	position: relative;
@@ -3873,7 +4296,7 @@ display: block !important;
  		  	  	 	}
  		  	  	 	background: $white;
  		  	  	 	height: 200px;
- 		  	  	 	border: 0.5px solid $light-gray;
+ 		  	  	 	border: 1px solid $light-gray;
  		  	  	 	&.inserted {
  		  	  	 		background-image: url('../images/libraryzurb/complete.gif');
  		  	  	 		background-repeat: no-repeat;
@@ -3904,6 +4327,11 @@ display: block !important;
  	#page-title {
       @include brushimg(left);
       margin-bottom: 45px;
+       @include mobile {
+       	font-size: 22px !important;
+       	padding-top: 7px !important;
+       	margin-bottom: 25px;
+       }
  	}
  	.view-leaderboard-page {
  		.view-content {
@@ -3912,6 +4340,11 @@ display: block !important;
  			display: inline-block;
  			  .half-content {
  			  	 display: table-cell;
+ 			  	 width: 50%;
+ 			  	   @include mobile {
+ 			  	   	width: 100%;
+ 			  	   	display: inline-block;
+ 			  	   }
  			  }
  			 .views-row {
  			 	 width: 100%;

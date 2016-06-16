@@ -9,6 +9,9 @@
   @include mclaren;
   padding: 3px 12px 8px 0px;
   display: inline-block;
+  @include mobile {
+     padding: 0;
+  }
 
 
   a {
@@ -167,4 +170,309 @@
   padding: 3px 0.5em;
   display: inline-block;
   float: right;
+   @include mobile {
+    padding: 0; 
+   }
+   @include tablet {
+    padding: 0;
+   }
+}
+#citylinks {
+   @include mobile {
+      display: none;
+   }
+   @include tablet {
+    display: none;
+   }
+}
+#mobile-header {
+
+   @include tablet {
+     padding-left: 0;
+     padding-right: 0;
+   }
+   @include desktop {
+      display: none;
+   }
+   @include mobile {
+      padding-left: 0;
+      padding-right: 0;
+   }
+   button {
+     float: left;
+     margin-left: 10px;
+     margin-bottom: 0;
+     margin-top: 10px;
+     @include noborder;
+     border-radius: none !important;
+     position: relative;
+     padding: 17px;
+     box-shadow: none !important;
+     z-index: 9;
+     background: $blue;
+       &:hover, &:focus {
+         background: $blue !important;
+       }
+
+       &:after {
+         @include previous(35px, 5px, $left: 0, $top: 5px);
+         border-top: 5px solid $yellow;
+         box-shadow: 0px 10px 0px 0px $yellow, 0px 20px 0px 0px $yellow;
+         
+
+       }
+   }
+   .block {
+      &.block-private-msg-custom-teen {
+         border-radius: none !important;
+         box-shadow: none !important;
+         margin-bottom: 0 !important;
+         padding: 0 !important;
+         background: none;
+         display: none;
+         clear: both;
+         .views-row {
+            margin-bottom: 0;
+             .views-field {
+               a {
+                  background: $yellow;
+                  padding: 15px 0px 8px;
+                  border-bottom: 1px solid $blue;
+                  color: $blue;
+                    &.newclass {
+                      background: #358AA7 !important;
+                      color: $white !important;
+                      &:before {
+                       background:  url("../images/libraryzurb/msg-img.png") no-repeat scroll 10px 7px !important;
+                      }
+                    }
+                    &.msg {
+                       position: relative;
+                       background: #F6F45A;
+                       color: $blue;
+                        &:before {
+                           content: "";
+                           width: 30px;
+                           height: 20px;
+                           display: inline-block;
+                           position: absolute;
+                           top: 11px;
+                           margin-left: -32px;
+                            background: url("../images/libraryzurb/msg-purple.png") no-repeat scroll 10px 7px;
+                           background-position: 6px 1px !important;
+                        }
+                    }
+               }
+             }
+         }
+           .mobile_menu {
+              li, a {
+                width: 100%;
+                display: inline-block;
+                font-size: 17px;
+                @include mclaren;
+                 padding-left: 0;
+                 text-align: center;
+                 color: $white;
+              }
+              .menu {
+                line-height: 1;
+                 li {
+                  margin-left: 0;
+                    a {
+                        padding: 10px 0;
+                        border-bottom: 1px solid $blue;
+                        background: $green;
+                        overflow: visible;
+                        color: $white;
+
+                          &:before {
+                            content: "";
+                           width: 43px;
+                           height: 25px;
+                           display: inline-block;
+                           position: absolute;
+                           margin-left: -46px;
+                            background: url('../images/libraryzurb/mobile-active-white.png') no-repeat;
+                            margin-top: -6px;
+                            background-size: 372px;
+                          
+
+                          }
+                        &.progress {
+                          height: auto;
+                          margin-bottom: 0;
+                          padding:10px 0;
+                          border-left: none;
+                          border-right: none;
+                          border-top: none;
+                          font-weight: normal;
+                            &:before {
+                              background-position: 0;
+                               
+                            }
+                            &:hover, &:focus, &.active {
+                              &:before {
+                                  background-position: 0;
+                              }
+                            }
+                        }
+                        &.activities {
+                           &:before {
+                               background-position: -53px;
+                            }
+                            &:hover,&:focus, &.active {
+                              &:before {
+                               background-position: -53px !important;
+                              }
+                            }
+                        }
+                        &.rewards {
+                           &:before {
+                             background-position: -108px;
+                              
+                            }
+                            &:hover, &:focus, &.active {
+                              &:before {
+                             background-position: -108px !important;
+                              
+                            }
+                            }
+                           
+                        }
+                        &.events {
+                           &:before {
+                            background-position: -165px;
+                              
+                            }
+                            &:hover, &:focus, &.active {
+                              &:before {
+                            background-position: -165px !important;
+                              
+                            }
+                            }
+                           
+                        }
+                        &.reviews{
+                           &:before {
+                             background-position: -219px;
+                            }
+                            &:hover, &:focus, &.active {
+                              &:before {
+                             background-position: -219px !important;
+                            }
+                            }
+                             
+                        }
+                        &.photos{
+                           &:before {
+                              background-position: -278px;
+                            }
+                             &:hover, &:focus, &.active {
+                              &:before {
+                                  background-position: -278px !important;
+                              }
+                            }
+                        }
+                        &.current-program{
+                           &:before {
+                              background-position: -329px;
+                            } 
+                             &:hover, &:focus, &.active {
+                              &:before {
+                                  background-position: -329px !important;
+                              }
+                            }
+                        }
+                         &:hover, &:focus, &.active {
+                        
+                         color: $blue;
+                         background: $green; 
+                           &:before {
+                             content: "";
+                           width: 43px;
+                           height: 25px;
+                           display: inline-block;
+                           position: absolute;
+                           margin-left: -46px;
+                            margin-top: -6px;
+                            
+                             background: url('../images/libraryzurb/mobile-active.png') no-repeat !important;
+                             background-size: 372px !important;
+                           }
+                        }
+                    }
+                 }
+              }
+           }
+      }
+      &.block-views {
+         margin-bottom: 0 !important;
+         margin-right: 10px;
+         float: right;
+         margin-top: 17px;
+          .views-field-name {
+             a.username {
+               color: $white !important;
+             }
+          }
+          .views-field-php-2 {
+            a {
+              @include mobile {
+                 @include bluebutton($font-size: 17px);
+              }
+              @include tablet {
+                 @include bluebutton($font-size: 17px);
+              }
+            @include bluebutton($font-size: 17px);
+            margin-bottom: 10px;
+             &:hover {
+              color: $white;
+             }
+            }
+          }
+      }
+   }
+}
+//active state of mobile header for respected pages
+@include mobile {
+  
+  .section-activities-list, .section-movie-review, .section-music-review-listing, .section-video-game-review, .section-booklists {
+    #mobile-header .block.block-private-msg-custom-teen .mobile_menu .menu li a.reviews {
+                          color: $blue !important;
+                           &:before {
+                             content: "";
+                           width: 43px;
+                           height: 25px;
+                           display: inline-block;
+                           position: absolute;
+                           margin-left: -46px;
+                            margin-top: -6px;
+                            
+                             background: url('../images/libraryzurb/mobile-active.png') no-repeat !important;
+                             background-size: 372px !important;
+                             background-position: -219px !important;
+                           }
+  }
+}
+}
+@include tablet {
+   .section-activities-list, .section-movie-review, .section-music-review-listing, .section-video-game-review, .section-booklists {
+    #mobile-header .block.block-private-msg-custom-teen .mobile_menu .menu li a.reviews {
+                          color: $blue !important;
+                           &:before {
+                             content: "";
+                           width: 43px;
+                           height: 25px;
+                           display: inline-block;
+                           position: absolute;
+                           margin-left: -46px;
+                            margin-top: -6px;
+                            
+                             background: url('../images/libraryzurb/mobile-active.png') no-repeat !important;
+                             background-size: 372px !important;
+                             background-position: -219px !important;
+                           }
+  }
+}
 }
