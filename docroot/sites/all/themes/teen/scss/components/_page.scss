@@ -83,6 +83,9 @@
 	}
 	.block-views-media-photos-videos-block-6 {
 		padding-left: 35px;
+		@include tablet {
+			padding-left: 0;
+		}
 		@include mobile {
 			padding-left: 10px;
 		}
@@ -95,6 +98,9 @@
 	}
 	.block-views-media-photos-videos-block-3 {
 		padding-left: 35px;
+		@include tablet {
+			padding-left: 0;
+		}
 		@include mobile {
 			padding-left: 10px;
 		}
@@ -116,10 +122,14 @@
 				padding-top: 6px !important;
 			}
 			margin-bottom: 35px;
+
 			@include brushimg(left);
 		}
 		article.node-page {
 			padding-left: 35px;
+			@include tablet {
+				padding-left: 20px;
+			}
 			@include mobile {
 				padding-left: 10px;
 			}
@@ -347,6 +357,9 @@
 		 	@include mobile {
 		 		padding-left: 10px;
 		 	}
+		 	@include tablet {
+		 		padding-left: 17px;
+		 	}
 		 	
 		 	padding-left: 32px;
 	  		.block-title {
@@ -503,6 +516,10 @@
 	 		width: 100%;
 	 		right: 0;
 	 	}
+	 	@include tablet {
+	 		width: 38%;
+	 		right: 63.4%;
+	 	}
 	 	.first {
 	 		@include noboxshadow;
 	 		padding: 13px 0 !important;
@@ -516,6 +533,10 @@
 	 	@include mobile {
 	 		width: 100%;
 	 		right: 0;
+	 	}
+	 	@include tablet {
+	 		width: 38%;
+	 		right: 63.4%;
 	 	}
 	 	@include block;
  	}
@@ -603,6 +624,9 @@
 	    	position: relative;
 	    	overflow: hidden;
 	    	margin-left: 35px;
+	    	@include tablet {
+	    		margin-left: 5px;
+	    	}
 	    	@include mobile {
 	    		margin-left: 0px;
 	    	}
@@ -645,6 +669,13 @@
 				    	 	       			margin: auto;
 				    	 	       			margin-bottom: 10px;
 				    	 	       		}
+				    	 	       		@include tablet {
+				    	 	       			width: 100%;
+				    	 	       			display: block;
+				    	 	       			max-width: 50%;
+				    	 	       			margin: auto;
+				    	 	       			margin-bottom: 10px;
+				    	 	       		}
 				    	 	       	   width: 20%;
 				    	 	       	  display: table-cell; 
 				    	 	       	  vertical-align: middle;
@@ -655,6 +686,10 @@
 				    	 	       	}
 				    	 	       	&.views-field-body {
 				    	 	       		@include mobile {
+				    	 	       			width: 100%;
+				    	 	       			display: inline-block;
+				    	 	       		}
+				    	 	       		@include tablet {
 				    	 	       			width: 100%;
 				    	 	       			display: inline-block;
 				    	 	       		}
@@ -673,12 +708,16 @@
 	   			}  
 	    }
 		.view.view-display-id-page {
+			@include tablet {
+				margin-left: 0;
+				padding-left: 20px;
+			}
 			margin-left: 35px;
 			@include mobile {
 				margin-left: 10px;
 			}
    		 	.view-header, .view-header p {
-	   		 	@media screen and (min-width: 980px) {
+	   		 	@media screen and (min-width: 768px) {
 	   		 	   font-size: 26px !important;
 	   		 	}
    		 		@include mclaren;
@@ -702,6 +741,13 @@
 			   		 		 			max-width: 60%;
 			   		 		 			margin: auto;
 			   		 		 		}
+			   		 		 		@include tablet {
+			   		 		 			width: 100%;
+			   		 		 			float: none;
+			   		 		 			display: block;
+			   		 		 			max-width: 50%;
+			   		 		 			margin: auto;
+			   		 		 		}
 			   		 		 	 	width: 20%;
 			   		 		 	 	float: left;
 			   		 		 	 	img {
@@ -710,6 +756,11 @@
 			   		 		 	}
 		   		 		 	  	&.views-field-title, &.views-field-field-sign-up, &.views-field-body {
 		   		 		 	  	 @include mobile {
+		   		 		 	  	 	width: 100%;
+		   		 		 	  	 	float: none;
+		   		 		 	  	 	display: inline-block;
+		   		 		 	  	 }
+		   		 		 	  	 @include tablet {
 		   		 		 	  	 	width: 100%;
 		   		 		 	  	 	float: none;
 		   		 		 	  	 	display: inline-block;
@@ -811,7 +862,7 @@
 	 		 	  	font-size: 16px;
 	 		 	  }
 		 		 	.item-list ul li.last {
-		 		 		@include tablet { float: right !important;}
+		 		 		@include tablet { float: none; display: inline-block;}
 		 		 		@include mobile { float: none !important; display: inline-block; padding-top: 5px;}
 		 		 		@include desktop { float: right !important;}
 		 		 	 	
@@ -2446,6 +2497,9 @@
  		@include mobile {
  			padding-left: 10px;
  		}
+ 		@include tablet {
+ 			padding-left: 20px;
+ 		}
  		  p {
  		  	color: $blue;
  		  	 a {
@@ -2458,6 +2512,9 @@
  	}
  	.block-one-title, .block-two-title, .block-three-title {
  		padding-left: 35px;
+ 		@include tablet {
+ 			padding-left: 20px;
+ 		}
  		color: $blue;
  		font-size: 24px;
  		@include mobile {
@@ -2483,6 +2540,10 @@
  		  	  		right: -5px;
  		  	  		top: -1px;
  		  	  		position: relative;
+ 		  	  	}
+ 		  	  	@include tablet {
+ 		  	  		position: relative;
+ 		  	  		right: -6px;
  		  	  	}
                 border-top: 7px solid transparent;
                 border-bottom: 7px solid transparent;
@@ -2516,6 +2577,9 @@
  				font-size: 18px;
  				padding-left: 10px;
  			}
+ 			@include tablet {
+ 				padding-left: 20px;
+ 			}
 
  		}
  		.activity_desc, .activity_review_desc {
@@ -2523,6 +2587,9 @@
  			@include arialregular;
  			padding-left: 9.2%;
  			margin-bottom: 10px;
+ 			@include tablet {
+ 				padding-left: 20px;
+ 			}
  			@include mobile {
  				padding-left: 10px;
  			}
@@ -2552,6 +2619,9 @@
  				padding-right: 10px;
  				font-size: 18px;
  				color: $blue;
+ 				@include tablet {
+ 					padding-left: 20px;
+ 				}
 
  			}
  			.chosen-container {
@@ -2603,6 +2673,9 @@
  			font-size: 18px;
  			@include arialbold;
  			padding-left: 9.5%;
+ 			@include tablet {
+ 				padding-left: 20px;
+ 			}
  			@include mobile {
  				padding-left: 0;
  			}
@@ -3066,6 +3139,9 @@
 			padding-left: 35px;
 			@include mobile {
 				padding-left: 10px;
+			}
+			@include tablet {
+				padding-left: 20px;
 			}
 			.view-content {
 				h3 {
@@ -4041,6 +4117,9 @@ display: block !important;
                	  		border-bottom: 1px dotted $white;
                	  		float: none;
                	  	}
+               	  	@include tablet {
+               	  		float: none;
+               	  	}
                	  	padding-left: 5%;
                	  	float: left;
                	  	font-size: 14px;
@@ -4103,7 +4182,12 @@ display: block !important;
  		  	 	   	 	 		margin-right: 10px;
  		  	 	   	 	 	}
  		  	 	   	 	 	.activities_list_progress {
- 		  	 	   	 	 		width: 74% !important;
+ 		  	 	   	 	 		@include tablet {
+ 		  	 	   	 	 			width: 100% !important;
+ 		  	 	   	 	 		}
+ 		  	 	   	 	 		@include desktop {
+ 		  	 	   	 	 			width: 74% !important;
+ 		  	 	   	 	 		}
  		  	 	   	 	 		float: left;
  		  	 	   	 	 		
  		  	 	   	 	 		height: auto !important;
@@ -4287,6 +4371,9 @@ display: block !important;
  		  	  	 	color: $blue;
  		  	  	 	@include mobile {
  		  	  	 		width: 50%;
+ 		  	  	 	}
+ 		  	  	 	@include tablet {
+ 		  	  	 		width: 33.33%;
  		  	  	 	}
  		  	  	 	
  		  	  	 	padding: 10px 1.8%;

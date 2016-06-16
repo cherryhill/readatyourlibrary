@@ -1,6 +1,16 @@
 // Blocks
 
 .block {
+	&.block-menu-menu-mobile-of-authenticated-lin {
+		position: relative;
+		float: right;
+		top: 10px;
+		margin-right: 20px;
+		  a {
+		  	font-size: 17px;
+		  	@include yellowbutton($pad: m);
+		  }
+	}
 	&.other-booklist.block-menu {
 		padding-top: 25px;
 		.block-title {
@@ -170,6 +180,18 @@
 		  			}
 		  			.view-content {
 		  				padding-top: 17px;
+		  				.views-field.views-field-field-booklist-cover-image {
+		  					display: flex;
+		  					height: 220px;
+		  					align-items: center;
+		  					align-content: center;
+		  					 @include tablet {
+		  					 	height: 150px;
+		  					 }
+		  					  img {
+		  					  	width: 100% !important;
+		  					  }
+		  				}
 		  			}
 		  			.view-footer {
 		  				position: relative;
@@ -495,6 +517,12 @@
     	      	color: $white;
     	      	@include mclaren;
     	      	font-size: 17px;
+    	      	@include tablet {
+    	      		position: relative;
+    	      		top: 0;
+    	      		margin-top: 10px;
+    	      		display: inline-block;
+    	      	}
     	      	@include mobile {
     	      	  position: relative;
     	      	  top: 10px;
@@ -780,6 +808,10 @@
 		 	max-width: 82.4%;
 		 	margin: auto;
 		 	margin-bottom: 28px;
+		 	@include tablet {
+		 		max-width: 84.4%;
+		 		padding-top: 5px;
+		 	}
 		 
 		 	@include mclaren;
 		 }
@@ -987,7 +1019,7 @@
 	            	}
 	            }    
 			         .block-title {
-			         	@include waveimg(sm);
+			         	@include waveimg($padding-left:	sm);
 			         	@include mobile {
 			         		text-align: left;
 			         	}

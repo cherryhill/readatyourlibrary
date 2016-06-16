@@ -134,13 +134,14 @@ h1#page-title {
  }
 }
 .homebox-column-wrapper {
-	@media screen and (max-width: 767px) {
+	@media screen and (max-width: 980px) {
 		width: 100% !important;
 		.homebox-column {
 			height: auto !important;
 			padding: 0 !important;
 		}
 	}
+	
 }
 .more-link {
  			text-align: right;
@@ -241,6 +242,9 @@ h1#page-title {
   		  	   	 width: 68%;
   		  	   	 display: inline-block;
   		  	   	 padding: 7px 0px;
+  		  	   	 @include tablet {
+  		  	   	 	width: 100%;
+  		  	   	 }
   		            span {
   		            	display: inline-block;
   		            	vertical-align: middle;
