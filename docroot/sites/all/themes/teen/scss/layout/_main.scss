@@ -28,11 +28,18 @@
       padding-left: 0;
       padding-right: 0;
    }
+   @include tablet {
+      padding-left: 0;
+      padding-right: 0;
+   }
 }
 .large-9.push-3.main {
    padding-left: 0;
    top: -17px;
    @include mobile {
+      top: 0;
+   }
+   @include tablet {
       top: 0;
    }
 }
