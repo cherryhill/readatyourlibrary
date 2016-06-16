@@ -218,13 +218,7 @@ if(!div2.is(':empty')){
         WinPrint.close();
     });
 
-    var proStart = Drupal.settings.private_msg_custom.proStart;
-    var start_string = proStart.split('-');
-    var pro_start_date = parseInt(start_string[0] + start_string[1] + start_string[2]);
-
-    var proEnd = Drupal.settings.private_msg_custom.proEnd;
-    var end_string = proEnd.split('-');
-    var pro_end_date = parseInt(end_string[0] + end_string[1] + end_string[2]);
+    
 
     var currentDate =  Drupal.settings.auto_role_allocation.currentDate;
 
@@ -234,7 +228,7 @@ if(!div2.is(':empty')){
 
 
     
-    if((now_time_strings >= pro_start_date) && now_time_strings <= pro_end_date) {
+    //if((now_time_strings >= pro_start_date) && now_time_strings <= pro_end_date) {
        //console.log("running");
        jQuery('.view-calendar-sticker .view-content .views-field-field-sticker-calendar-image .field-content').each(function () {
 
@@ -256,7 +250,7 @@ if(!div2.is(':empty')){
 
       });
 
-    }
+    //}
 
     
 
@@ -293,12 +287,23 @@ if(!div2.is(':empty')){
         console.log(copiedEventObject.title);
         //console.log(copiedEventObject);
 
+        // Event start date and end date
+
+        var proStart = Drupal.settings.private_msg_custom.proStart;
+        var start_string = proStart.split('-');
+        var pro_start_date = parseInt(start_string[0] + start_string[1] + start_string[2]);
+
+        var proEnd = Drupal.settings.private_msg_custom.proEnd;
+        var end_string = proEnd.split('-');
+        var pro_end_date = parseInt(end_string[0] + end_string[1] + end_string[2]);
+
         // assign it the date that was reported
         copiedEventObject.start = date;
         var event_date = copiedEventObject.start;
          event_date = event_date.toJSON().slice(0, 10);
          event_date = event_date.split('-');
          event_date = parseInt(event_date[0] + event_date[1] + event_date[2]);
+         //alert(event_date);
 
         //console.log(copiedEventObject.start);
         copiedEventObject.allDay = allDay;
@@ -317,7 +322,8 @@ if(!div2.is(':empty')){
         var baseUrl = Drupal.settings.basePath + 'calendar';
 
         var currentUser = Drupal.settings.auto_role_allocation.currentUser;
-        if(now_time_strings >= event_date) {
+        if((event_date >= pro_start_date) && (event_date <= pro_end_date)) {
+         if(now_time_strings >= event_date) {
           jQuery.ajax({
         
             //url: 'http://localhost/playatyourlibrary/docroot/calendar',
@@ -325,12 +331,9 @@ if(!div2.is(':empty')){
             async: false,
             type: 'post',
             data: 'image='+image_name+'&date='+copiedEventObject.start+'&user_id='+currentUser,
-            success: function(res){ alert(res);
-              if (res) {
-                window.location.reload(true);
-              } else {
-                alert ('test');
-              }
+            success: function(res){ //alert(res);
+              res = parseInt(res);
+              window.location.reload(true);
             },
             error: function(jqXHR, data, error){
                 // console.log(jqXHR);
@@ -339,6 +342,10 @@ if(!div2.is(':empty')){
             }
         });
       }
+     } else {
+       alert("You cannot record activity before or after program period.");
+       window.location.reload(true);
+     }
        
     },
 

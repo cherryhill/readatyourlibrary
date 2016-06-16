@@ -285,6 +285,9 @@
 	           	 	 	 	display: table-cell;
 	           	 	 	 	height: 100%;
 	           	 	 	 	vertical-align: bottom;
+	           	 	 	 	@include mobile {
+	           	 	 	 		display: inline-block;
+	           	 	 	 	}
 
 	           	 	 	 	 &.views-field-name {
 	           	 	 	 	 	a {
