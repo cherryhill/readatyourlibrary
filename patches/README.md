@@ -36,3 +36,8 @@ Patch documentation should be in the following format:
   * https://www.drupal.org/files/wysiwyg-1802394-4.patch
   * COMMITTED; remove patch file and documentation after next stable release
   * http://cgit.drupalcode.org/wysiwyg/commit/?id=cab91b8
+
+* table_trash
+  * Update Table Trash to work with DataTables library v1.10
+  * https://www.drupal.org/node/2259283
+  * https://www.drupal.org/files/issues/table_trash-2259283-20-rewrite-for-110.patch

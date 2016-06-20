@@ -21,6 +21,8 @@
 	 	overflow: hidden;
 	 	float: left !important;
 	 	margin-left: 1px !important;
+	 	margin-top: 1px !important;
+	 	margin-bottom: 1px !important;
 	 	&.unavailable {
 	 		display: none;
 	 	}
@@ -132,13 +134,14 @@ h1#page-title {
  }
 }
 .homebox-column-wrapper {
-	@media screen and (max-width: 767px) {
+	@media screen and (max-width: 980px) {
 		width: 100% !important;
 		.homebox-column {
 			height: auto !important;
 			padding: 0 !important;
 		}
 	}
+	
 }
 .more-link {
  			text-align: right;
@@ -239,6 +242,9 @@ h1#page-title {
   		  	   	 width: 68%;
   		  	   	 display: inline-block;
   		  	   	 padding: 7px 0px;
+  		  	   	 @include tablet {
+  		  	   	 	width: 100%;
+  		  	   	 }
   		            span {
   		            	display: inline-block;
   		            	vertical-align: middle;
@@ -273,6 +279,11 @@ h1#page-title {
  		margin-left: -5px;
  		@include brushimg(left);
  		margin-bottom: 30px;
+ 		@include mobile {
+ 			font-size: 22px;
+ 			margin-bottom: 20px;
+ 			padding-top: 7px !important;
+ 		}
  	}
  .reviews-subtitle {
    font-size: 24px;
@@ -281,6 +292,10 @@ h1#page-title {
    @include noborder;
    margin-top: 20px;
    padding-left: 35px;
+    @include mobile {
+    	font-size: 18px;
+    	padding-left: 10px;
+    }
  }
 .page-booklists, .page-movie-review, .page-music-review-listing, .page-video-game-review, .page-activities-list, .page-activities-listing {
 	 .l-header .row.header-middle section.block-menu-menu-secoundary-menu ul.menu li a.reviews {

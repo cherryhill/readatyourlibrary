@@ -281,9 +281,16 @@ function private_msg_custom_teen_profile2_presave($profile) {
  */
 function private_msg_custom_teen_form_alter(&$form, &$form_state, $form_id) {
 
+  if($form_id == 'user_profile_form'){
+    $form['field_user_random_list_1']['und'][0]['randomized-text-regenerate'] = FALSE;
+    $form['field_user_random_list_2']['und'][0]['randomized-text-regenerate'] = FALSE;
+    $form['field_user_random_list_3']['und'][0]['randomized-text-regenerate'] = FALSE;
+  }
+
   $sub_title = variable_get('review_pre_header');
   $catalog_link = variable_get('catalog_link_for_teen_program');
   $library_abbreviation = variable_get('library_abbreviation_for_teen');
+  $email_desc = variable_get('email_description_field');
 
   if($form_id == 'movie_review_node_form'){
     //hidding label for other option field
@@ -358,6 +365,13 @@ function private_msg_custom_teen_form_alter(&$form, &$form_state, $form_id) {
       '#attributes' => array('target' => '_blank'),
       '#weight' => 3,
     );
+  }
+
+  //Changing of description text for email field
+  if($email_desc != ''){
+    if($form_id == 'user_register_form'){
+      $form['account']['mail']['#description'] = $email_desc;
+    }
   }
   return $form;
 }
@@ -529,12 +543,13 @@ function homepage_slider_teen(){
  * Function callback for header menu for mobile
  */
 function header_menu_mobile_teen(){
+  $output = '<div class = "mobile_menu">';
 
   $block = module_invoke('views', 'block_view', 'top_block-block_2');
-  $output .= render($block['content']). '</div>';
+  $output .= render($block['content']);
 
   $block = module_invoke('menu', 'block_view', 'menu-secoundary-menu-mobile');
-  $output .= render($block['content']). '</div>';
+  $output .= render($block['content']).'</div>';
 
   return $output;
 }
@@ -711,15 +726,6 @@ function hotspot_activities() {
   return $form;
 }
 
-/**
- * Implement hook_date_popup_process_alter().
- */
-function private_msg_custom_teen_date_popup_process_alter(&$element, &$form_state, &$context) {
-  $element['#datepicker_options'] = array(
-      'maxDate' => "+0D",
-  );
-  $element['date'] = date_popup_process_date_part($element);
-}
 
 /**
  * function callback for progress block to report activity
@@ -741,6 +747,7 @@ function progress_record($form,$form_state){
     '#title' => 'on',
     '#date_format' => 'Y-m-d',
     '#date_year_range' => '-0',
+    '#datepicker_options' => array('maxDate' => '+0D'),
     '#weight' => 2, 
   );
   return $form;

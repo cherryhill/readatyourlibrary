@@ -38,6 +38,14 @@
         for(var i = 0; i < divs.length; i+=6) {
         divs.slice(i, i+6).wrapAll("<div class='new-row'></div>");
     }
+    //changes the position of divs in moblie progress page
+    if($(window).width() <= 767) {
+      $('.section-progress .progress-wrap .report-acivity').insertAfter('.section-progress .progress-wrap .progress-rewards');
+    }
+    //hamburger click event in mobile
+    $('.mobile-header button').click(function(){
+      $('.mobile-header .block-private-msg-custom-teen').toggle();
+    });
     //leaderpage wrap 30 views-row in wrapper
       var divs = jQuery(".view.view-leaderboard-page  div.views-row");
    for(var i = 0; i < divs.length; i+=30) {
@@ -54,6 +62,24 @@
   }
    
   });
+  //make accordian in user register page
+      function getpanels(panelclass) {
+
+        var panels = $('.'+panelclass+' #checkboxes-div #checkboxes-d .form-wrapper div.fieldset-wrapper').hide();
+    
+        $('.'+panelclass+' #checkboxes-div #checkboxes-d .form-wrapper legend .fieldset-legend').click(function() {
+          panels.slideUp();
+        $(this).parent().next('.fieldset-wrapper').toggle();
+       
+        return false;
+        });
+      }
+      if($('body.section-user').length > 0) {
+        getpanels('section-user');
+      }
+      else if($('body.page-user-register').length > 0) {
+        getpanels('.page-user-register');
+      }
      //MyDashboard page hide homebox add buttons when dragable homebox blocks are visible
      var activites =$('.homebox-draggable:has(.view-my-activities-for-patron-dashboard)').addClass('dashboard-activities');
 var rewards =$('.homebox-draggable:has(.view-patron-rewads-for-patron-dashboard)').addClass('dashboard-rewards');

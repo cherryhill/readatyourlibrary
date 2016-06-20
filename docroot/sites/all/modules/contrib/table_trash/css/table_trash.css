@@ -1,0 +1,27 @@
+/*
+ * W3C future alternative for <meta name="viewport" content="initial-scale=1">
+ * @see http://webdesign.tutsplus.com/tutorials/htmlcss-tutorials/quick-tip-dont-forget-the-viewport-meta-tag
+ */
+@viewport {
+  width: extend-to-zoom;
+  zoom: 1.0;
+}
+@-ms-viewport {
+  width: extend-to-zoom;
+  zoom: 1.0;
+}
+
+tr .sorting_asc,
+tr .sorting_desc {
+  font-style: italic;
+}
+
+.dataTables_filter label {
+  margin: -2px 0 5px;
+}
+.dataTables_filter label input {
+  padding: 1px;
+}
+.dataTables_paginate {
+  height: 2.2em;
+}
