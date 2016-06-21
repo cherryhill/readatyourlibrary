@@ -7336,9 +7336,13 @@ h1#page-title {
   align-items: center;
   align-content: center;
 }
-@media (min-width: 768px) and (max-width: 1025px) {
+@media screen and (max-width: 504px) {
   .block.block-private-msg-custom-homepage-slider .slide .view .view-content .views-field.views-field-field-booklist-cover-image {
-    height: 150px;
+    display: block;
+    height: auto;
+    width: 100%;
+    max-width: 136px;
+    margin: 10px auto;
   }
 }
 .block.block-private-msg-custom-homepage-slider .slide .view .view-content .views-field.views-field-field-booklist-cover-image img {
@@ -7375,38 +7379,6 @@ h1#page-title {
     margin-top: 10px;
   }
 }
-.block.block-private-msg-custom-homepage-slider .owl-controls {
-  position: absolute;
-  top: 36%;
-  width: 100%;
-  height: 0;
-}
-@media (max-width: 767px) {
-  .block.block-private-msg-custom-homepage-slider .owl-controls {
-    display: none !important;
-  }
-}
-.block.block-private-msg-custom-homepage-slider .owl-controls .owl-pagination {
-  display: none;
-}
-.block.block-private-msg-custom-homepage-slider .owl-controls .owl-buttons .owl-prev {
-  float: left;
-  background: url("../images/libraryzurb/left-arrow.png") no-repeat;
-  opacity: 1;
-  color: transparent;
-  border-radius: 0;
-  margin-left: -28px;
-  padding: 10px;
-}
-.block.block-private-msg-custom-homepage-slider .owl-controls .owl-buttons .owl-next {
-  float: right;
-  background: url("../images/libraryzurb/right-arrow.png") no-repeat;
-  opacity: 1;
-  color: transparent;
-  border-radius: 0;
-  margin-right: -45px;
-  padding: 10px;
-}
 .block.block-private-msg-custom-homepage-slider .slide {
   padding-bottom: 50px;
 }
@@ -7432,6 +7404,11 @@ h1#page-title {
   padding: 0px;
   height: 50px;
 }
+@media screen and (max-width: 504px) {
+  .block.block-private-msg-custom-homepage-slider .owl-controls .owl-buttons .owl-prev {
+    margin-left: 11px;
+  }
+}
 .block.block-private-msg-custom-homepage-slider .owl-controls .owl-buttons .owl-next {
   float: right;
   background: url("../images/libraryzurb/right-arrow.png") no-repeat;
@@ -7441,6 +7418,12 @@ h1#page-title {
   margin-right: -30px;
   padding: 0px;
   height: 50px;
+}
+@media screen and (max-width: 504px) {
+  .block.block-private-msg-custom-homepage-slider .owl-controls .owl-buttons .owl-next {
+    margin-right: 11px;
+    margin-top: 4px;
+  }
 }
 .block.block-auto-role-allocation-calendar-data.header {
   display: none;
@@ -7820,7 +7803,7 @@ h1#page-title {
 @media (max-width: 767px) {
   .block.block-private-msg-custom .pm-custom .pm {
     width: 100%;
-    border-bottom: 1px dotted #000;
+    border-bottom: 1px solid #000;
   }
 }
 .block.block-private-msg-custom .pm-custom .pm .pm-subject {
@@ -13793,7 +13776,20 @@ body .alert-box.success a.close:hover {
   margin: 0 auto;
 }
 .page-booklists .main .view-booklist-slideshow .owl-carousel .owl-item .views-field-field-booklist-cover-image {
-  width: 135px;
+  width: 98%;
+  height: 220px;
+  display: flex;
+  align-content: center;
+  align-items: center;
+}
+@media screen and (max-width: 504px) {
+  .page-booklists .main .view-booklist-slideshow .owl-carousel .owl-item .views-field-field-booklist-cover-image {
+    width: 100%;
+    max-width: 150px;
+    height: auto;
+    display: block;
+    margin: 10px auto;
+  }
 }
 .page-booklists .main .view-booklist-slideshow .owl-carousel .owl-item .views-field-field-booklist-cover-image img {
   width: 100%;
@@ -13947,6 +13943,18 @@ body .alert-box.success a.close:hover {
   background: url("../images/libraryzurb/left-blue-arrow.png") no-repeat;
   background-size: 25px;
 }
+@media screen and (max-width: 504px) {
+  .page-booklists .main .view-booklist-slideshow .owl-carousel .owl-buttons .owl-prev:before {
+    content: "";
+    width: 30px;
+    height: 30px;
+    display: block;
+    visibility: visible;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+}
 .page-booklists .main .view-booklist-slideshow .owl-carousel .owl-buttons .owl-next {
   float: right;
   visibility: hidden;
@@ -13966,6 +13974,18 @@ body .alert-box.success a.close:hover {
   background: url("../images/libraryzurb/right-blue-arrow.png") no-repeat;
   background-size: 25px;
   position: absolute;
+}
+@media screen and (max-width: 504px) {
+  .page-booklists .main .view-booklist-slideshow .owl-carousel .owl-buttons .owl-next:after {
+    content: "";
+    width: 30px;
+    height: 30px;
+    display: block;
+    visibility: visible;
+    position: absolute;
+    top: -6px;
+    right: 0;
+  }
 }
 
 /**end of booklist page**/
@@ -14991,13 +15011,13 @@ body .alert-box.success a.close:hover {
 }
 @media (min-width: 768px) and (max-width: 1025px) {
   .section-events .main .view-events .view-content .views-row {
-    border-bottom: 1px dotted #32024e;
+    border-bottom: 1px solid #cccccc;
     padding-bottom: 10px;
   }
 }
 @media (max-width: 767px) {
   .section-events .main .view-events .view-content .views-row {
-    border-bottom: 1px dotted #32024e;
+    border-bottom: 1px solid #cccccc;
     padding-bottom: 10px;
   }
 }
