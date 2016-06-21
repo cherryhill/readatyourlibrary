@@ -181,13 +181,19 @@
 		  			.view-content {
 		  				padding-top: 17px;
 		  				.views-field.views-field-field-booklist-cover-image {
+		  					@media screen and (max-width: 504px) {
+		  						display: block;
+		  						height: auto;
+		  						width: 100%;
+		  						max-width: 136px;
+		  						margin: 10px auto;
+		  					}
 		  					display: flex;
 		  					height: 220px;
 		  					align-items: center;
 		  					align-content: center;
-		  					 @include tablet {
-		  					 	height: 150px;
-		  					 }
+
+		  					 
 		  					  img {
 		  					  	width: 100% !important;
 		  					  }
@@ -220,40 +226,7 @@
 		  			}
 		  		}
 		  	}
-		 	.owl-controls {
-				position: absolute;
-		        top: 36%;
-		        width: 100%;
-		        height: 0;
-		        @include mobile {
-	        	display: none !important;
-	            }
-	        	.owl-pagination {
-	        		display: none;
-	        	}
-				.owl-buttons {
-					.owl-prev {
-						float: left;
-						background: url('../images/libraryzurb/left-arrow.png') no-repeat;
-						opacity: 1;
-						color: transparent;
-						border-radius: 0;
-						margin-left: -28px;
-						padding: 10px;
-
-					}
-					.owl-next {
-						float: right;
-						background: url('../images/libraryzurb/right-arrow.png') no-repeat;
-						opacity: 1;
-						color: transparent;
-						border-radius: 0;
-						margin-right: -45px;
-						padding: 10px;
-
-					}
-				}
-			}
+		 
 		  .slide {
 		  	 padding-bottom: 50px;
 		  	.view {
@@ -280,6 +253,9 @@
 					margin-left: -28px;
 					padding: 0px;
 					height: 50px;
+					@media screen and (max-width: 504px) {
+						margin-left: 11px;
+					}
 
 				}
 				.owl-next {
@@ -291,6 +267,10 @@
 					margin-right: -30px;
 					padding: 0px;
 					height: 50px;
+					@media screen and (max-width: 504px) {
+						margin-right: 11px;
+						margin-top: 4px;
+					}
 
 				}
 			}
@@ -537,7 +517,7 @@
     	 	 	display: inline-block;
     	 	 	@include mobile {
     	 	 	 	width: 100%;
-    	 	        border-bottom: 1px dotted $black;
+    	 	        border-bottom: 1px solid $black;
     	 	 	 }
     	 	 	 .pm-subject {
     	 	 	 	width: 60%;
