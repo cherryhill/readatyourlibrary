@@ -1689,6 +1689,10 @@
      	padding-right: 0;
      	background: $blue;
      	float: right;
+     		@include tablet {
+     		width: 37.53%;
+     		right: 63.4%;
+     	}
      	 @include mobile {
      	 	width: 100%;
      	 	right: 0;
@@ -2353,7 +2357,19 @@
 	  			 	}
 	  			 	.owl-item {
 	  			 		.views-field-field-booklist-cover-image {
-	  			 			width: 135px;
+	  			 			@media screen and (max-width: 504px) {
+	  			 			 	width: 100%;
+	  			 			 	max-width: 150px;
+	  			 			 	height: auto;
+	  			 			 	display: block;
+	  			 			 	margin: 10px auto;
+	  			 			 }
+	  			 			width: 98%;
+	  			 			height: 220px;
+	  			 			display: flex;
+	  			 			align-content: center;
+	  			 			align-items: center;
+
 	  			 		 		img {
 	  			 		 			width: 100%;
 	  			 		 		}
@@ -2457,6 +2473,9 @@
 			  			 	 	opacity: 1;
 			  			 	 	padding: 0;
 			  			 	 	  &:before {
+			  			 	 	  	@media screen and (max-width: 504px) {
+			  			 	 	  	   @include previous(30px, 30px, $left: 0, $top: 0);	
+			  			 	 	  	}
 			  			 	 	  	@include previous(30px, 30px, $left: -40px, $top: 0);
 			  			 	 	  	background: url('../images/libraryzurb/left-blue-arrow.png') no-repeat;
 			  			 	 	  	background-size: 25px;
@@ -2469,6 +2488,9 @@
 			  			 	 	opacity: 1;
 			  			 	 	padding: 0;
 				  			 	 	  &:after {
+				  			 	 	  	@media screen and (max-width: 504px) {
+				  			 	 	  		@include previous(30px, 30px, $right: 0, $top: -6px);
+				  			 	 	  	}
 				  			 	 	  	@include previous(30px, 30px, $right: -40px, $top: 0);
 				  			 	 	  	background: url('../images/libraryzurb/right-blue-arrow.png') no-repeat;
 				  			 	 	  	background-size: 25px;
@@ -3160,11 +3182,11 @@
 					margin-top: 10px;
 					margin-bottom: 10px;
 					 @include tablet {
-					 	border-bottom: 1px dotted $blue;
+					 	border-bottom: 1px solid $light-gray;
 					 	padding-bottom: 10px;
 					 }
 					 @include mobile {
-					 	border-bottom: 1px dotted $blue;
+					 	border-bottom: 1px solid $light-gray;
 					 	padding-bottom: 10px;
 					 }
 					  div {
