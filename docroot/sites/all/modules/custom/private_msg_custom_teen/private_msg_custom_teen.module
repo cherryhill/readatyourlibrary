@@ -526,7 +526,7 @@ function pm_block_view_teen() {
  */
 function homepage_slider_teen(){
 
-  $output .= '<ul class="booklist-pager"><input type="radio" name="colorRadio" id="r1" value="blslider1" checked><label for="r1"></label><input type="radio" name="colorRadio" id="r2" value="blslider2"><label for="r2"></label><input type="radio" name="colorRadio" id="r3" value="blslider3"><label for="r3"></label></ul>';
+  $output = '<ul class="booklist-pager"><input type="radio" name="colorRadio" id="r1" value="blslider1" checked><label for="r1"></label><input type="radio" name="colorRadio" id="r2" value="blslider2"><label for="r2"></label><input type="radio" name="colorRadio" id="r3" value="blslider3"><label for="r3"></label></ul>';
   $block = module_invoke('views', 'block_view', 'booklist_slideshow-block_2');
   $output .= '<div class="blslider1 slide">'. render($block['content']). '</div>';
 
@@ -897,25 +897,38 @@ function activity_report_node_create($activity_id, $activity_date, $term_tid, $c
   // if show in progress is one, node is created.
   if($current_user == 0){
     global $user;
-  $current_user = $user->uid;
+    $current_user = $user->uid;
   }
 
-  $node = new stdClass(); // Creating a new node object
-  $node->type = 'activity_report'; //Content type
-  $node->language = LANGUAGE_NONE;
-  node_object_prepare($node);
-  $node->title = $activity_name;
-  $node->status = 1;
-  $node->uid = $current_user;
-  $node->field_activity_id_report[LANGUAGE_NONE][0]['value'] = $activity_id;
-  $node->field_hotspot_activity_report[LANGUAGE_NONE][0]['value'] = $hotspot_activity_type;
-  $node->field_show_on_progress_report[LANGUAGE_NONE][0]['value'] = $activity_progress_status;
-  $node->field_term_id[LANGUAGE_NONE][0]['value'] = $term_tid;
-  $node->field_completion_date[LANGUAGE_NONE][0]['value'] = $activity_date;
-  node_save($node);
-  $created_nid = $node->nid;
+  $query = new EntityFieldQuery();
+  $query->entityCondition('entity_type', 'node') // grab nodes
+  ->entityCondition('bundle', 'activity_report') // filter by activity_report type
+  ->propertyCondition('status', 1) // filter by published
+  ->propertyCondition('uid', $current_user)  // filter by current user
+  ->count(); // count
 
-  $_SESSION['teen_progress_report_nid'] = $created_nid;
+  $num_of_nodes = $query->execute();
+  $grids = variable_get('no_of_grids');
+
+  //comparing nodes created with number of grids available
+  if($num_of_nodes < $grids){
+    $node = new stdClass(); // Creating a new node object
+    $node->type = 'activity_report'; //Content type
+    $node->language = LANGUAGE_NONE;
+    node_object_prepare($node);
+    $node->title = $activity_name;
+    $node->status = 1;
+    $node->uid = $current_user;
+    $node->field_activity_id_report[LANGUAGE_NONE][0]['value'] = $activity_id;
+    $node->field_hotspot_activity_report[LANGUAGE_NONE][0]['value'] = $hotspot_activity_type;
+    $node->field_show_on_progress_report[LANGUAGE_NONE][0]['value'] = $activity_progress_status;
+    $node->field_term_id[LANGUAGE_NONE][0]['value'] = $term_tid;
+    $node->field_completion_date[LANGUAGE_NONE][0]['value'] = $activity_date;
+    node_save($node);
+    $created_nid = $node->nid;
+
+    $_SESSION['teen_progress_report_nid'] = $created_nid;
+  }
 }
 
 /**
