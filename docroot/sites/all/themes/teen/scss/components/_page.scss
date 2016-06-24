@@ -904,40 +904,37 @@
 	 			@include noborder;
 	 			position: relative;
 	 			  .homebox-portlet-inner {
-	 			  	 .portlet-header {
+	 			  	 .portlet-header .portlet-title{
 	 			  	 	&:before {
-	 			  	 		@include previous(50px, 50px, $left: 5%, $top: 6px);
+	 			  	 		@include previous(50px, 50px);
+	 			  	 		margin-left: -35px;
 	 			  	 	}
 	 			  	 }
 	 			  }
 	 			  &.dashboard-activities {
-	 			  	 .homebox-portlet-inner .portlet-header::before {
+	 			  	 .homebox-portlet-inner .portlet-header .portlet-title::before {
 	 			  	 	background: url('../images/libraryzurb/activity-dashboard.png') no-repeat;
-	 			  	 	background-position: center center;
+	 			  	 
 	 			  	 }
 	 			  }
 	 			  &.dashboard-rewards {
-	 			  	.homebox-portlet-inner .portlet-header::before {
+	 			  	.homebox-portlet-inner .portlet-header .portlet-title::before {
 	 			  	 	background: url('../images/libraryzurb/reward-dashboard.png') no-repeat;
-	 			  	 	background-position: center 6px;
 	 			  	 }
 	 			  }
 	 			  &.dashboard-leaderboard {
-	 			  	.homebox-portlet-inner .portlet-header::before {
+	 			  	.homebox-portlet-inner .portlet-header .portlet-title::before {
 	 			  	 	background: url('../images/libraryzurb/leaderboard-dashboard.png') no-repeat;
-	 			  	 	background-position: center 6px;
 	 			  	 }
 	 			  }
 	 			  &.dashboard-following {
-	 			  		.homebox-portlet-inner .portlet-header::before {
+	 			  		.homebox-portlet-inner .portlet-header .portlet-title::before {
 	 			  	 	background: url('../images/libraryzurb/following-dashboard.png') no-repeat;
-	 			  	 	background-position: center 6px;
 	 			  	 }
 	 			  }
 	 			  &.dashboard-booklists, &.dashboard-reviews {
-	 			  	.homebox-portlet-inner .portlet-header::before {
+	 			  	.homebox-portlet-inner .portlet-header .portlet-title::before {
 	 			  	 	background: url('../images/libraryzurb/review-dashboard.png') no-repeat;
-	 			  	 	background-position: center 6px;
 	 			  	 }
 	 			  }
 	 			  &.dashboard-leaderboard {
