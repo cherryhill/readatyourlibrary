@@ -11677,27 +11677,34 @@ body .alert-box.success a.close:hover {
   outline: none !important;
   position: relative;
 }
-.page-user-profile .homebox .homebox-portlet .homebox-portlet-inner .portlet-header:before {
+.page-user-profile .homebox .homebox-portlet .homebox-portlet-inner .portlet-header .portlet-title:before {
   content: "";
   width: 50px;
   height: 50px;
   display: block;
   visibility: visible;
   position: absolute;
-  top: 6px;
-  left: 5%;
+  margin-left: -35px;
 }
-.page-user-profile .homebox .homebox-portlet.dashboard-activities .homebox-portlet-inner .portlet-header::before {
-  background: url("../images/libraryzurb/activities.png") no-repeat;
-  background-position: center 6px;
+@media screen and (max-width: 729px) {
+  .page-user-profile .homebox .homebox-portlet .homebox-portlet-inner .portlet-header .portlet-title:before {
+    margin-top: -6px;
+  }
 }
-.page-user-profile .homebox .homebox-portlet.dashboard-rewards .homebox-portlet-inner .portlet-header::before {
-  background: url("../images/libraryzurb/rewards.png") no-repeat;
-  background-position: center 6px;
+.page-user-profile .homebox .homebox-portlet.dashboard-activities .homebox-portlet-inner .portlet-header .portlet-title::before {
+  background: url("../images/libraryzurb/activity-dashboard.png") no-repeat;
 }
-.page-user-profile .homebox .homebox-portlet.dashboard-booklists .homebox-portlet-inner .portlet-header::before, .page-user-profile .homebox .homebox-portlet.dashboard-reviews .homebox-portlet-inner .portlet-header::before, .page-user-profile .homebox .homebox-portlet.dashboard-leaderboard .homebox-portlet-inner .portlet-header::before, .page-user-profile .homebox .homebox-portlet.dashboard-following .homebox-portlet-inner .portlet-header::before {
-  background: url("../images/libraryzurb/reviews.png") no-repeat;
-  background-position: center 6px;
+.page-user-profile .homebox .homebox-portlet.dashboard-rewards .homebox-portlet-inner .portlet-header .portlet-title::before {
+  background: url("../images/libraryzurb/reward-dashboard.png") no-repeat;
+}
+.page-user-profile .homebox .homebox-portlet.dashboard-leaderboard .homebox-portlet-inner .portlet-header .portlet-title::before {
+  background: url("../images/libraryzurb/leaderboard-dashboard.png") no-repeat;
+}
+.page-user-profile .homebox .homebox-portlet.dashboard-following .homebox-portlet-inner .portlet-header .portlet-title::before {
+  background: url("../images/libraryzurb/following-dashboard.png") no-repeat;
+}
+.page-user-profile .homebox .homebox-portlet.dashboard-booklists .homebox-portlet-inner .portlet-header .portlet-title::before, .page-user-profile .homebox .homebox-portlet.dashboard-reviews .homebox-portlet-inner .portlet-header .portlet-title::before {
+  background: url("../images/libraryzurb/review-dashboard.png") no-repeat;
 }
 .page-user-profile .homebox .homebox-portlet.dashboard-leaderboard .view-leadeboard .view-footer {
   text-align: right;
