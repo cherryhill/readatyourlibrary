@@ -558,7 +558,7 @@ function play_library_program_create_raffle_entry($raffle_id, $account_id) {
   $res = $query->execute()->fetchAll();
   $message = $res[0]->field_reward_message_value;
   $notification = $res[0]->field_reward_notification_value;
-  $notification_subject = 'Congratulations! You have entered raffle';
+  $notification_subject = "Congratulations! You've earned a raffle ticket.";
 
   privatemsg_new_thread(array(user_load($account_id)), $notification_subject, $notification,array('author'=>user_load($author_uid)));
   drupal_set_message($message);

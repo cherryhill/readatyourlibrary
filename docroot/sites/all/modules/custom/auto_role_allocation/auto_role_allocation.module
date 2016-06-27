@@ -326,7 +326,13 @@ function generate_mobile_progress_form_submit($form, &$form_state) {
   ->execute();
   $no_of_sticker = $sticker_count->rowCount();
 
+  // Program start and end date.
+
+  $program_start_date = strtotime(variable_get('pmc_start_date', 0));
+  $program_end_date = strtotime(variable_get('pmc_end_date', 0));
+
   $current_date = time();
+  if($date >= $program_start_date && $date <= $program_end_date) {
   if($date != '') {
   if($image_name != '') {
   if(!($reward_date > $date)) {
@@ -361,6 +367,9 @@ function generate_mobile_progress_form_submit($form, &$form_state) {
 } 
 } else {
    drupal_set_message("Please select a date.", "error");
+}
+} else {
+  drupal_set_message("You cannot record activity before or after program period.", "error");
 } 
 
 }
