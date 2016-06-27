@@ -8,6 +8,23 @@
  */
 
 /**
+ * Implements hook_date_combo_process_alter().
+ *
+ * Disabling of future dates for dob field
+ */
+function private_msg_custom_date_combo_process_alter(&$element, &$form_state, $context){
+
+  if($context['form']['#form_id'] == 'user_register_form' || $context['form']['#form_id'] == 'user_profile_form') {
+    $element["value"]['#datepicker_options'] = array(
+      'maxDate' => '+0D'
+    );
+    $element["value2"]['#datepicker_options'] = array(
+      'maxDate' => '+0D'
+    );
+  }
+}
+
+/**
  * Implementation of hook_menu()
  */
 function private_msg_custom_menu() {
