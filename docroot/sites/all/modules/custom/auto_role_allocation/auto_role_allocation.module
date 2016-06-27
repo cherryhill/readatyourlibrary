@@ -481,7 +481,7 @@ function patron_activity_record_form($form, &$form_state) {
     //'#title' => t('Username'),
     '#type' => 'textfield',
     '#autocomplete_path' => 'user/autocomplete',
-  );
+  );        
   $form['html'] = array(
    '#type' => 'markup',
    '#markup' => '<div>Search for patrons here: <a href="patron-users" target="_blank">http://play.dev.chillco.com/patron-users</a></div>',
@@ -516,29 +516,51 @@ function patron_activity_record_form($form, &$form_state) {
 
 function patron_activity_record_form_submit($form, &$form_state) {
   $username = $form_state['values']['username'];
-  $query = db_select('users', 'u');
-    $query->condition('u.name', $username);
-    $query->fields('u', array('uid'));
-    $user_uid = $query->execute()->fetchField();
 
+  $query = db_select('users', 'u');
+  $query->condition('u.name', $username);
+  $query->fields('u', array('uid'));
+  $user_uid = $query->execute()->fetchField();
 
   $activity_id = $form_state['values']['activity'];
   $from = strtotime($form_state['values']['from']);
-  $to = strtotime($form_state['values']['to']);  
-    for ($i=$from; $i<=$to; $i+=86400) {
-      
-      $date = strtotime(date("Y-m-d", $i));
+  $to = strtotime($form_state['values']['to']);
+
+  for ($i=$from; $i<=$to; $i+=86400) {
+    $date = strtotime(date("Y-m-d", $i));
+    $event_image = 'sticker_sun_0.png';
+
+    // check to see weather same date exists in db
+    $check_query = db_select('calendar','cal')
+      ->fields('cal',array('uid','date'))
+      ->condition('uid',$user_uid)
+      ->execute()
+      ->fetchAll();
+    $u_date = array();
+
+    foreach($check_query as $val){
+      $u_date[] .= $val->date;
+    }
+
+    if(!in_array($date, $u_date)){
       play_library_program_create_activity_entry($activity_id, $user_uid);
-      $event_image = 'sticker_sun_0.png';
-      $insert_query =db_insert('calendar')
+
+      $insert_query = db_insert('calendar')
         ->fields(array(
-          'uid'=>$user_uid,
-          'image_url'=>$event_image,
-          'date'=>$date,
+        'uid'=>$user_uid,
+        'image_url'=>$event_image,
+        'date'=>$date,
         ));
       $insert_query->execute(); 
-
+    }else{
+      $en_dates[] = date("Y-m-d",$date);
     }
+  }
+  $entered_dates = implode(', ', $en_dates);
+  
+  if (!empty($en_dates)) {
+    drupal_set_message('The following dates already exist: ' . $entered_dates,'error');
+  }
 }
 
 
