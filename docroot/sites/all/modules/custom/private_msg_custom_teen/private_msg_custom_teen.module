@@ -349,10 +349,8 @@ function private_msg_custom_teen_form_alter(&$form, &$form_state, $form_id) {
   }
 
   if($form_id == 'review_book_node_form') {
+    $form['title']['#prefix'] = $sub_title;
     drupal_set_title('Write a Book Review');
-  }
-
-  if($form_id == 'user_register_form') {
   }
 
   if($form_id == 'booklist_node_form') {
