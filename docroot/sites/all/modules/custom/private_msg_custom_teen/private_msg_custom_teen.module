@@ -8,7 +8,7 @@
  */
 
 /**
- * Implements hook_permission
+ * Implements hook_permission().
  */
 function private_msg_custom_teen_permission() {
   return array(
@@ -17,6 +17,23 @@ function private_msg_custom_teen_permission() {
       'description' => t('Access to view progress page'),
     ),
   );
+}
+
+/**
+ * Implements hook_date_combo_process_alter().
+ *
+ * Disabling of future dates for date of birth field
+ */
+function private_msg_custom_teen_date_combo_process_alter(&$element, &$form_state, $context){
+
+  if($context['form']['#form_id'] == 'user_register_form' || $context['form']['#form_id'] == 'user_profile_form') {
+    $element["value"]['#datepicker_options'] = array(
+      'maxDate' => '+0D'
+    );
+    $element["value2"]['#datepicker_options'] = array(
+      'maxDate' => '+0D'
+    );
+  }
 }
 
 /**
