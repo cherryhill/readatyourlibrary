@@ -47,9 +47,21 @@ if (typeof String.prototype.startsWith != 'function') {
       });
       $('#edit-name').keyup(payl_program_customizations_teen_change_name);
 
-      setTimeout(function() {
-        $('.random-list-widget-regenerate').click();
-      }, 150);
+      var url = window.location.href;
+      var array = url.split('/');
+      var lastsegment = array[array.length-1];
+
+      if (lastsegment == 'register'){
+        setTimeout(function() {
+          $('.random-list-widget-regenerate').click();
+        }, 150);
+      }else{
+        if(name.length > 0){
+          setTimeout(function() {
+            $('.random-list-widget-regenerate').click();
+          }, 150);
+        }
+      }
     }
   }
 
