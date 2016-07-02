@@ -252,12 +252,6 @@ function private_msg_custom_profile2_presave($profile) {
  */
 function private_msg_custom_form_alter(&$form, &$form_state, $form_id) {
 
-  if($form_id == 'user_profile_form'){
-    $form['field_user_random_list_1']['und'][0]['randomized-text-regenerate'] = FALSE;
-    $form['field_user_random_list_2']['und'][0]['randomized-text-regenerate'] = FALSE;
-    $form['field_user_random_list_3']['und'][0]['randomized-text-regenerate'] = FALSE;
-  }
-
   if($form_id == 'review_book_node_form') {
     drupal_set_title('Write a Book Review');
   }
