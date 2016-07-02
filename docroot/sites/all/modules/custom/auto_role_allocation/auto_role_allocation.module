@@ -559,7 +559,7 @@ function patron_activity_record_form_submit($form, &$form_state) {
   $entered_dates = implode(', ', $en_dates);
   
   if (!empty($en_dates)) {
-    drupal_set_message('The following dates already exist: ' . $entered_dates,'error');
+    drupal_set_message('Reading was previously recorded for this patron for these dates: [' . $entered_dates.']. If you submitted reading for additional dates, it has now been recorded too.','status');
   }
 }
 
