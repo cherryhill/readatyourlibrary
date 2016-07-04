@@ -47,19 +47,28 @@ if (typeof String.prototype.startsWith != 'function') {
       });
       $('#edit-name').keyup(payl_program_customizations_teen_change_name);
 
+      var edit_username = $('#edit-account #edit-name').val();
+
+      //username not to change on field errors 
       var url = window.location.href;
       var array = url.split('/');
       var lastsegment = array[array.length-1];
 
       if (lastsegment == 'register'){
-        setTimeout(function() {
-          $('.random-list-widget-regenerate').click();
-        }, 150);
-      }else{
-        if(name.length > 0){
+        if($("div").hasClass("error")){
+          localStorage.setItem('username_generated', name);
+          var uname = localStorage.getItem('username_generated');
+          $('.current-username').html(uname);
+        }else{
           setTimeout(function() {
             $('.random-list-widget-regenerate').click();
           }, 150);
+        }
+      }else{
+        if(edit_username.length > 0){
+          $('.current-username').html(edit_username);
+        }else{
+          $('.random-list-widget-regenerate').click();
         }
       }
     }
