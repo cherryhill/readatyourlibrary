@@ -65,10 +65,12 @@ if (typeof String.prototype.startsWith != 'function') {
           }, 150);
         }
       }else{
-        if(edit_username.length > 0){
-          $('.current-username').html(edit_username);
-        }else{
-          $('.random-list-widget-regenerate').click();
+        if($("button").hasClass("random-list-widget-regenerate")){
+          if(edit_username.length > 0){
+            $('.current-username').html(edit_username);
+          }else{
+            $('.random-list-widget-regenerate').click();
+          }
         }
       }
     }
