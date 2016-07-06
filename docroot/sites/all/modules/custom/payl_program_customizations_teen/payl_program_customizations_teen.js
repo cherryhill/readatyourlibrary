@@ -13,6 +13,18 @@ if (typeof String.prototype.startsWith != 'function') {
 (function ($) {
   Drupal.behaviors.payl_program_customizations_teen = {
     attach: function() {
+
+      
+        var role_block = $('.role-based p').text();
+        if(role_block) {
+          $("#branding .tabs.primary a").each(function() {
+            if($(this).text() == 'Manage display') {
+              $(this).remove();
+            }
+          });
+        }
+      $('.role-based').hide();
+
       Drupal.settings.payl_program_customizations_teen_birthday_limit = parseInt(Drupal.settings.payl_program_customizations_teen_birthday_limit);
       $('#edit-profile-main-field-user-birthday-und-0-value-datepicker-popup-0').bind('change', function(date_object) {
         var birthday = new Date($(this).val());
