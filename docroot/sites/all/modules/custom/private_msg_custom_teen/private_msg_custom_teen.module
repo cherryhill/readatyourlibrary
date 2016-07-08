@@ -922,7 +922,7 @@ function activity_report_node_create($activity_id, $activity_date, $term_tid, $c
   $grids = variable_get('no_of_grids');
 
   //comparing nodes created with number of grids available
-  if($num_of_nodes < $grids){
+  // if($num_of_nodes < $grids){
     $node = new stdClass(); // Creating a new node object
     $node->type = 'activity_report'; //Content type
     $node->language = LANGUAGE_NONE;
@@ -939,7 +939,7 @@ function activity_report_node_create($activity_id, $activity_date, $term_tid, $c
     $created_nid = $node->nid;
 
     $_SESSION['teen_progress_report_nid'] = $created_nid;
-  }
+  // }
 }
 
 /**

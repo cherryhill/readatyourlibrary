@@ -27,7 +27,8 @@
 </div>
 <div class="activity-remaining">
 <?php $grids = variable_get('no_of_grids'); $activities_left = $grids - specefic_user_nodes($current_uid);
-  print 'Activities Left to Complete: '.$activities_left.' activities'; ?>
+  if($activities_left < 0){ print 'Activities Left to Complete: '.'0'.' activities';
+  }else{ print 'Activities Left to Complete: '.$activities_left.' activities'; } ?>
 </div>
 <div class="points">
 	<?php print 'Raffle Tickets Earned: '.$raff_count; ?>
