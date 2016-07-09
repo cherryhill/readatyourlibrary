@@ -67,7 +67,7 @@ if($form_id == 'user_register_form') {
   }
 
   if ($form_id == 'user_profile_form') {
-    global $user;
+    global $user, $base_url;
     $uid = $user->uid;
 
     $role_user = $user->roles;
@@ -79,7 +79,7 @@ if($form_id == 'user_register_form') {
       );
 
       $form['change_username'] = array(
-        '#markup' => t('<a href="../edit" class = "button">Change My Username or Password</a>'),
+        '#markup' => t("<a href='$base_url/user/$uid/edit' class = 'button'>Change My Username or Password</a>"),
         '#weight' => -20,
       );
     }
