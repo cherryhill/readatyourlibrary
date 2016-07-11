@@ -1,0 +1,181 @@
+<?php
+/**
+ * @file
+ * Registers View API information
+ */
+
+/**
+ * Implements hook_views_api().
+ */
+function views_merge_rows_views_api() {
+  return array(
+    'api' => 3,
+  );
+}
+
+/**
+ * Implements hook_theme().
+ */
+function views_merge_rows_theme() {
+  $theme_info = array(
+    'views_merge_rows_display_extender_plugin_table' => array(
+      'render element' => 'form',
+    ),
+  );
+  return $theme_info;
+}
+
+/**
+ * Theme the form for the merge rows plugin.
+ */
+function theme_views_merge_rows_display_extender_plugin_table($variables) {
+  $form = $variables['form'];
+  $output = '';
+
+  $header = array(
+    t('Field'),
+    t('Merge option'),
+    t('Separator'),
+  );
+  $rows = array();
+  foreach (element_children($form['field_config']) as $id) {
+    $row = array();
+    $row[] = check_plain(drupal_render($form['field_config'][$id]['name']));
+    $row[] = drupal_render($form['field_config'][$id]['merge_option']);
+    $row[] = drupal_render($form['field_config'][$id]['separator']);
+    $rows[] = $row;
+  }
+
+  $table = theme('table', array('header' => $header, 'rows' => $rows));
+
+  $form['table_fieldset'] = array(
+    '#title' => t('Configure merging options for the fields'),
+    '#type' => 'fieldset',
+    '#dependency' => array('edit-options-merge-rows' => array(1)),
+  );
+
+  $form['table_fieldset']['table'] = array(
+    '#type' => 'markup',
+    '#markup' => $table,
+  );
+  $output .= drupal_render_children($form);
+  return $output;
+}
+
+
+/**
+ * Implements hook_views_pre_render().
+ *
+ * Merges the rows according to the settings for current display.
+ */
+function views_merge_rows_views_pre_render(&$view) {
+  $options = $view->display_handler->extender['views_merge_rows']->get_options();
+  if (!$options['merge_rows']) {
+    return;
+  }
+  $rendered_fields = $view->style_plugin->render_fields($view->result);
+  $filters = array();
+
+  // Array, where each element corresponds to the row after removing the merged
+  // rows. This element is an array of fields (field_name is used as a key).
+  // The values of this field depends on the merge_option as follows:
+  // merge_unique - array of unique values from all merged rows
+  // merge - array of values from all merger rows
+  // filter - the value from the first merged rows (all values from the merged
+  // rows are the same)
+  // first_value - the value from the first merged rows
+  // count_unique - array of unique values from all merged rows
+  // count - the number of merged rows.
+  $merged_rows = array();
+  foreach ($rendered_fields as $row_index => $rendered_row) {
+    $filter_value = '';
+    foreach ($options['field_config'] as $field_name => $field_config) {
+      if ($field_config['merge_option'] == 'filter') {
+        $filter_value .= $rendered_row[$field_name];
+      }
+    }
+    if (!array_key_exists($filter_value, $filters)) {
+      $filters[$filter_value] = $row_index;
+      $merged_row = array();
+      foreach ($options['field_config'] as $field_name => $field_config) {
+        switch ($field_config['merge_option']) {
+          case 'count_unique':
+          case 'merge_unique':
+          case 'merge':
+            $merged_row[$field_name] = array($rendered_row[$field_name]);
+            break;
+
+          case 'count':
+            $merged_row[$field_name] = 1;
+            break;
+
+          case 'filter':
+          case 'first_value':
+            $merged_row[$field_name] = $rendered_row[$field_name];
+            break;
+
+        }
+      }
+      $merged_rows[$row_index] = $merged_row;
+    }
+    else {
+      $merge_row_index = $filters[$filter_value];
+      $merged_row = $merged_rows[$merge_row_index];
+      foreach ($options['field_config'] as $field_name => $field_config) {
+        switch ($field_config['merge_option']) {
+          case 'merge_unique':
+          case 'count_unique':
+            if (!in_array($rendered_row[$field_name], $merged_row[$field_name])) {
+              $merged_row[$field_name][] = $rendered_row[$field_name];
+            }
+            break;
+
+          case 'merge':
+            $merged_row[$field_name][] = $rendered_row[$field_name];
+            break;
+
+          case 'count':
+            $merged_row[$field_name] = $merged_row[$field_name] + 1;
+            break;
+
+          case 'filter':
+          case 'first_value':
+            // Do nothing - we already have a value from the first merged row.
+            break;
+        }
+      }
+      unset($view->style_plugin->row_tokens[$row_index]);
+      unset($view->style_plugin->render_tokens[$row_index]);
+      unset($view->style_plugin->rendered_fields[$row_index]);
+      unset($view->result[$row_index]);
+      --$view->total_rows;
+      $merged_rows[$merge_row_index] = $merged_row;
+    }
+  }
+
+  // Store the merged rows back to the view's style plugin.
+  foreach ($merged_rows as $row_index => $merged_row) {
+    foreach ($options['field_config'] as $field_name => $field_config) {
+      switch ($field_config['merge_option']) {
+        case 'merge':
+        case 'merge_unique':
+          $view->style_plugin->rendered_fields[$row_index][$field_name]
+            = implode($field_config['separator'], $merged_row[$field_name]);
+          break;
+
+        case 'count_unique':
+          $view->style_plugin->rendered_fields[$row_index][$field_name]
+            = count($merged_row[$field_name]);
+          break;
+
+        case 'count':
+        case 'filter':
+        case 'first_value':
+          $view->style_plugin->rendered_fields[$row_index][$field_name]
+            = $merged_row[$field_name];
+          break;
+      }
+    }
+  }
+
+}
