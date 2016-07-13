@@ -26,6 +26,10 @@ if (typeof String.prototype.startsWith != 'function') {
           $('.page-user-register .form-item-name').hide();
         }
       });
+      
+      $('.page-user-edit-main.admin-menu .username-child').hide();
+      $('.page-user-edit.admin-menu .username-child').hide();
+      $('.page-user-edit.admin-menu .username-curr').hide();
 
       $('.page-user-register .form-item-name').hide();
       $('.field-widget-random-list-widget-randomizer').each(function(index) {
@@ -47,6 +51,8 @@ if (typeof String.prototype.startsWith != 'function') {
       });
       $('#edit-name').keyup(payl_program_customizations_change_name);
       var edit_username = $('#edit-account #edit-name').val();
+
+
 
       //username not to change on field errors 
       var url = window.location.href;
@@ -74,6 +80,7 @@ if (typeof String.prototype.startsWith != 'function') {
       }
     }
   }
+
 
   function payl_program_customizations_change_name() {
     name = $('#edit-name').val();

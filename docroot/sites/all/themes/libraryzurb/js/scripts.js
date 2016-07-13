@@ -47,6 +47,14 @@ $(value).addClass($(value).find('a').text().toLowerCase());
       }
    
   });
+
+      //Hiding of username field if age below 13
+      $('.page-user-edit-main .username-child').hide();
+      $('.page-user-edit-main .username-curr').hide();
+      $('.page-user-edit #edit-privatemsg').hide();
+      if($("h3").hasClass("username-child")){
+        $('.form-item-name').hide();
+      }
      //make accordian of avtar images in user register page
        function getpanels(panelclass) {
 

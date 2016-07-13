@@ -85,16 +85,51 @@ if($form_id == 'user_register_form') {
     }
   }
 
-  if ($form_id == 'user_register_form') {
+  if ($form_id == 'user_register_form' || $form_id == 'user_profile_form') {
+
+    $user_uid = $form_state['build_info']['args'][0]->uid;
+    $user_pf = profile2_load_by_user($user_uid);
+    $user_dob = $user_pf['main']->field_user_birthday['und'][0]['value'];
+
+    $user_dob_split = explode(' ', $user_dob);
+    $user_db = $user_dob_split[0];
+
+    $from = new DateTime($user_db);
+    $to = new DateTime('today');
+    $user_age = $from->diff($to)->y;
+
     $setting = array(
       'payl_program_customizations_birthday_limit' => strtotime('-13 years'),
     );
     drupal_add_js($setting, array('type' => 'setting'));
     drupal_add_js(drupal_get_path('module', 'payl_program_customizations') . '/payl_program_customizations.js');
-    $form['current_username'] = array(
-      '#markup' => '<h3 class="username">Username: <span class="current-username"></span></h3>',
-      '#weight' => 25,
-    );
+
+    if(isset($user_uid)){
+      if($user_age >= 13){
+        $form['current_username'] = array(
+          '#markup' => '<h3 class="username-curr">Username: <span class="current-username"></span></h3>',
+          '#weight' => 2,
+        );
+      }else{
+        $form['current_username'] = array(
+          '#markup' => '<h3 class="username-child">Username: <span class="current-username"></span></h3>',
+        );
+      }
+    }else{
+      $form['current_username'] = array(
+        '#markup' => '<h3 class="username-curr">Username: <span class="current-username"></span></h3>',
+        '#weight' => 1,
+      );
+    }
+    // $setting = array(
+    //   'payl_program_customizations_birthday_limit' => strtotime('-13 years'),
+    // );
+    // drupal_add_js($setting, array('type' => 'setting'));
+    // drupal_add_js(drupal_get_path('module', 'payl_program_customizations') . '/payl_program_customizations.js');
+    // $form['current_username'] = array(
+    //   '#markup' => '<h3 class="username">Username: <span class="current-username"></span></h3>',
+    //   '#weight' => 25,
+    // );
 
     // Move the email element to the main profile.
     //$mail_element = $form['account']['mail'];
