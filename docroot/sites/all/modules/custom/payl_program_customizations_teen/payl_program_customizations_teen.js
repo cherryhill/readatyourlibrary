@@ -61,6 +61,10 @@ if (typeof String.prototype.startsWith != 'function') {
 
       var edit_username = $('#edit-account #edit-name').val();
 
+      $('.page-user-edit-main.admin-menu .username-child').hide();
+      $('.page-user-edit.admin-menu .username-child').hide();
+      $('.page-user-edit.admin-menu .username-curr').hide();
+
       //username not to change on field errors 
       var url = window.location.href;
       var array = url.split('/');
