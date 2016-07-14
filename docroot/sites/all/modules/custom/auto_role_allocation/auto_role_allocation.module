@@ -478,9 +478,12 @@ function patron_activity_record_form($form, &$form_state) {
     }
 
   $form['username'] = array(
-    //'#title' => t('Username'),
+    '#title' => t('Username'),
     '#type' => 'textfield',
     '#autocomplete_path' => 'user/autocomplete',
+    '#attributes' => array(
+      'placeholder' => t('Username'),
+    ),
   );        
   $form['html'] = array(
    '#type' => 'markup',
@@ -761,7 +764,7 @@ function raffle_user_list($form, &$form_state) {
   }
 
   $tbl_header = array(
-    'Name',
+    'Username',
     'User role',
     'First name',
     'Last name',
