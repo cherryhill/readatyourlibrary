@@ -13,8 +13,6 @@ if (typeof String.prototype.startsWith != 'function') {
 (function ($) {
   Drupal.behaviors.payl_program_customizations_teen = {
     attach: function() {
-
-      
         var role_block = $('.role-based p').text();
         if(role_block) {
           $("#branding .tabs.primary a").each(function() {
@@ -25,21 +23,51 @@ if (typeof String.prototype.startsWith != 'function') {
         }
       $('.role-based').hide();
 
+    if($("div").hasClass("error")){
       Drupal.settings.payl_program_customizations_teen_birthday_limit = parseInt(Drupal.settings.payl_program_customizations_teen_birthday_limit);
+      var birthday = new Date($('#edit-profile-main-field-user-birthday-und-0-value-datepicker-popup-0').val());
+      var birthday_timestamp = Math.floor(birthday.getTime() / 1000);
+      // More than 13 years old.
+      if (birthday_timestamp < Drupal.settings.payl_program_customizations_teen_birthday_limit) {
+        $('.page-user-register .form-item-name').show();
+      }
+      // Less than 13 years old.
+      else {
+        $('.page-user-register .form-item-name').hide();
+      }
       $('#edit-profile-main-field-user-birthday-und-0-value-datepicker-popup-0').bind('change', function(date_object) {
         var birthday = new Date($(this).val());
         var birthday_timestamp = Math.floor(birthday.getTime() / 1000);
-        // More than 13 years old.
         if (birthday_timestamp < Drupal.settings.payl_program_customizations_teen_birthday_limit) {
           $('.page-user-register .form-item-name').show();
         }
-        // Less than 13 years old.
+        else {
+        $('.page-user-register .form-item-name').hide();
+        }
+      });
+    }else{
+      Drupal.settings.payl_program_customizations_teen_birthday_limit = parseInt(Drupal.settings.payl_program_customizations_teen_birthday_limit);
+      var birthday = new Date($('#edit-profile-main-field-user-birthday-und-0-value-datepicker-popup-0').val());
+      var birthday_timestamp = Math.floor(birthday.getTime() / 1000);
+      if (birthday_timestamp < Drupal.settings.payl_program_customizations_teen_birthday_limit) {
+        $('.page-user-register .form-item-name').show();
+      }
+      else {
+        $('.page-user-register .form-item-name').hide();
+      }
+
+      $('#edit-profile-main-field-user-birthday-und-0-value-datepicker-popup-0').bind('change', function(date_object) {
+        var birthday = new Date($(this).val());
+        var birthday_timestamp = Math.floor(birthday.getTime() / 1000);
+        if (birthday_timestamp < Drupal.settings.payl_program_customizations_teen_birthday_limit) {
+          $('.page-user-register .form-item-name').show();
+        }
         else {
           $('.page-user-register .form-item-name').hide();
         }
       });
+    }
 
-      $('.page-user-register .form-item-name').hide();
       $('.field-widget-random-list-widget-randomizer').each(function(index) {
         fieldname = 'Change ' + $(this).find('label').html();
         $(this).find('input.random-list-widget-regenerate').val(fieldname);
@@ -71,10 +99,19 @@ if (typeof String.prototype.startsWith != 'function') {
       var lastsegment = array[array.length-1];
 
       if (lastsegment == 'register'){
+        var user_nm = $('.page-user-register .form-item-name #edit-name').val();
+
         if($("div").hasClass("error")){
           localStorage.setItem('username_generated', name);
           var uname = localStorage.getItem('username_generated');
           $('.current-username').html(uname);
+          if($("div").hasClass("pooh-more-13")){
+            $('.page-user-register .form-item-name').show();
+          }
+          
+          // if(user_nm.length > 0){
+          //   $('.page-user-register .form-item-name').show();
+          // }
         }else{
           setTimeout(function() {
             $('.random-list-widget-regenerate').click();
