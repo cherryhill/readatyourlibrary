@@ -15,7 +15,7 @@
 	print $page_desc['value']; ?>
 </div>
 <div class="print-page">
-	<a href = "progress-print"><button class="print">Print My Progress</button></a>
+	<a href = "progress-print"><button class="print">Print Progress Report (pdf)</button></a>
 </div>
 <div class="user-desc">
 <div class="avatar-id">
