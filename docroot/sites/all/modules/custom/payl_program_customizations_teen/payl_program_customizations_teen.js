@@ -23,7 +23,6 @@ if (typeof String.prototype.startsWith != 'function') {
         }
       $('.role-based').hide();
 
-    if($("div").hasClass("error")){
       Drupal.settings.payl_program_customizations_teen_birthday_limit = parseInt(Drupal.settings.payl_program_customizations_teen_birthday_limit);
       var birthday = new Date($('#edit-profile-main-field-user-birthday-und-0-value-datepicker-popup-0').val());
       var birthday_timestamp = Math.floor(birthday.getTime() / 1000);
@@ -45,28 +44,7 @@ if (typeof String.prototype.startsWith != 'function') {
         $('.page-user-register .form-item-name').hide();
         }
       });
-    }else{
-      Drupal.settings.payl_program_customizations_teen_birthday_limit = parseInt(Drupal.settings.payl_program_customizations_teen_birthday_limit);
-      var birthday = new Date($('#edit-profile-main-field-user-birthday-und-0-value-datepicker-popup-0').val());
-      var birthday_timestamp = Math.floor(birthday.getTime() / 1000);
-      if (birthday_timestamp < Drupal.settings.payl_program_customizations_teen_birthday_limit) {
-        $('.page-user-register .form-item-name').show();
-      }
-      else {
-        $('.page-user-register .form-item-name').hide();
-      }
-
-      $('#edit-profile-main-field-user-birthday-und-0-value-datepicker-popup-0').bind('change', function(date_object) {
-        var birthday = new Date($(this).val());
-        var birthday_timestamp = Math.floor(birthday.getTime() / 1000);
-        if (birthday_timestamp < Drupal.settings.payl_program_customizations_teen_birthday_limit) {
-          $('.page-user-register .form-item-name').show();
-        }
-        else {
-          $('.page-user-register .form-item-name').hide();
-        }
-      });
-    }
+    
 
       $('.field-widget-random-list-widget-randomizer').each(function(index) {
         fieldname = 'Change ' + $(this).find('label').html();
