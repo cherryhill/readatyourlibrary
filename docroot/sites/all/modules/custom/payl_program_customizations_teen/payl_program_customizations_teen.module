@@ -43,11 +43,7 @@ function custom_activity_teen_submit_handler(&$form, &$form_state) {
   // }
 }
 //showing username field for users above 12 years.
-$setting = array(
-  'payl_program_customizations_teen_birthday_limit' => strtotime('-12 years'),
-);
-drupal_add_js($setting, array('type' => 'setting'));
-drupal_add_js(drupal_get_path('module', 'payl_program_customizations_teen') . '/payl_program_customizations_teen.js');
+
 /**
  * Implements hook_form_alter().
  */
@@ -67,12 +63,32 @@ function payl_program_customizations_teen_form_alter(&$form, &$form_state, $form
   }
 
   if ($form_id == 'user_profile_form') {
+
     global $user, $base_url;
     $uid = $user->uid;
-
     $role_user = $user->roles;
+
+    // print_r($role_user);die();
     // showing of tabs only for user role as patron
     if(array_key_exists(6, $role_user)){
+      $user_p = profile2_load_by_user($uid);
+      $user_dob_patron = $user_p['main']->field_user_birthday['und'][0]['value'];
+      $user_dob_split = explode(' ', $user_dob_patron);
+      $user_dob = $user_dob_split[0];
+
+      $setting = array(
+        'payl_program_customizations_teen_birthday_limit' => strtotime('-12 years'),
+        'payl_program_customizations_user_date_of_birth' => $user_dob,
+      );
+
+      drupal_add_js($setting, array('type' => 'setting'));
+      drupal_add_js(drupal_get_path('module', 'payl_program_customizations_teen') . '/payl_program_customizations_teen.js');
+
+      $form['current_username'] = array(
+        '#markup' => '<h3 class="username-curr">Username: <span class="current-username"></span></h3>',
+        '#weight' => 1,
+      );
+
       $form['public_profile'] = array(
         '#markup' => t("<a href='$base_url/users/public_profile/$uid' class = 'button'>My Public Profile</a>"),
         '#weight' => -20,
@@ -85,36 +101,20 @@ function payl_program_customizations_teen_form_alter(&$form, &$form_state, $form
     }
   }
 
-  if ($form_id == 'user_register_form' || $form_id == 'user_profile_form') {
+  if ($form_id == 'user_register_form') {
 
-    $user_uid = $form_state['build_info']['args'][0]->uid;
-    $user_pf = profile2_load_by_user($user_uid);
-    $user_dob = $user_pf['main']->field_user_birthday['und'][0]['value'];
+    $form_state['rebuild'] = TRUE;
+    $setting = array(
+      'payl_program_customizations_teen_birthday_limit' => strtotime('-12 years'),
+    );
 
-    $user_dob_split = explode(' ', $user_dob);
-    $user_db = $user_dob_split[0];
+    drupal_add_js($setting, array('type' => 'setting'));
+    drupal_add_js(drupal_get_path('module', 'payl_program_customizations_teen') . '/payl_program_customizations_teen.js');
 
-    $from = new DateTime($user_db);
-    $to = new DateTime('today');
-    $user_age = $from->diff($to)->y;
-
-    if(isset($user_uid)){
-      if($user_age >= 12){
-        $form['current_username'] = array(
-          '#markup' => '<h3 class="username-curr">Username: <span class="current-username"></span></h3>',
-          '#weight' => 2,
-        );
-      }else{
-        $form['current_username'] = array(
-          '#markup' => '<h3 class="username-child">Username: <span class="current-username"></span></h3>',
-        );
-      }
-    }else{
-      $form['current_username'] = array(
-        '#markup' => '<h3 class="username-curr">Username: <span class="current-username"></span></h3>',
-        '#weight' => 1,
-      );
-    }
+    $form['current_username'] = array(
+      '#markup' => '<h3 class="username-curr">Username: <span class="current-username"></span></h3>',
+      '#weight' => 1,
+    );
 
     // Move the email element to the main profile.
     //$mail_element = $form['account']['mail'];
