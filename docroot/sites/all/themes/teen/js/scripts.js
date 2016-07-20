@@ -5,73 +5,77 @@
   Drupal.behaviors.libraryzurbPhoneNumberLinksOnMobile = {
     attach: function(context, settings) {
 
-// user register page fields fixes on teen
-    jQuery("#user-register-form .form-item-mail").insertAfter("#user-register-form #edit-profile-main-field-how-did-you-hear-about-thi");
-    jQuery("#user-register-form #edit-profile-main-field-receive-notifications").insertAfter("#user-register-form .form-item-mail");
-    jQuery("#user-register-form .form-item-avatar-select").insertAfter("#user-register-form #edit-profile-main-field-receive-notifications");
-    jQuery("#user-register-form #checkboxes-div").insertAfter("#user-register-form .form-item-avatar-select");
-    jQuery("#user-register-form .username-curr").insertAfter("#user-register-form #checkboxes-div");
-    // jQuery("#user-register-form  #edit-name").hide();
-    jQuery("#user-register-form #edit-profile-main-field-receive-notifications").hide();
-    jQuery( '<p>Avatar icons provided free by <a href="http://emojione.com/"target="_blank"> Emoji One</a></p>' ).insertAfter( "#user-register-form" );
+      // user register page fields fixes on teen
+      jQuery("#user-register-form .form-item-mail").insertAfter("#user-register-form #edit-profile-main-field-how-did-you-hear-about-thi");
+      jQuery("#user-register-form #edit-profile-main-field-receive-notifications").insertAfter("#user-register-form .form-item-mail");
+      jQuery("#user-register-form .form-item-avatar-select").insertAfter("#user-register-form #edit-profile-main-field-receive-notifications");
+      jQuery("#user-register-form #checkboxes-div").insertAfter("#user-register-form .form-item-avatar-select");
+      jQuery("#user-register-form .username-curr").insertAfter("#user-register-form #checkboxes-div");
+      jQuery("#user-register-form #edit-profile-main-field-receive-notifications").hide();
+      jQuery( '<p>Avatar icons provided free by <a href="http://emojione.com/"target="_blank"> Emoji One</a></p>' ).insertAfter( "#user-register-form" );
 
-// validate email field  
-  jQuery('#edit-mail').on('keyup', function(){
-    var valid = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/.test(this.value);
-    if(valid) { jQuery("#user-register-form #edit-profile-main-field-receive-notifications").show(); }
-      else{ jQuery("#user-register-form #edit-profile-main-field-receive-notifications").hide(); }
-    });
-
+      // validate email field  
+      jQuery('#edit-mail').on('keyup', function(){
+        var valid = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/.test(this.value);
+        if(valid) { jQuery("#user-register-form #edit-profile-main-field-receive-notifications").show(); }
+        else{ jQuery("#user-register-form #edit-profile-main-field-receive-notifications").hide(); }
+      });
       $(':checkbox').on('change',function(){
-       var th = $(this), name = th.prop('class'); 
-       if(th.is(':checked')){
-           $(':checkbox[class="'  + name + '"]').not($(this)).prop('checked',false);   
+        var th = $(this), name = th.prop('class'); 
+        if(th.is(':checked')){
+          $(':checkbox[class="'  + name + '"]').not($(this)).prop('checked',false);   
         }
       });
+
       //change position of review title after viewfilter in all review pages
       $('.activity-desc').insertAfter('.view-filters');
       $('.reviews-subtitle').insertAfter('.view-filters');
 
-
       //for progress page table format of divs wrap every 6 divs in single div
-         var divs = $("div.progress-main > div.grid");
-        for(var i = 0; i < divs.length; i+=6) {
+      var divs = $("div.progress-main > div.grid");
+      for(var i = 0; i < divs.length; i+=6) {
         divs.slice(i, i+6).wrapAll("<div class='new-row'></div>");
-    }
-    //changes the position of divs in moblie progress page
-    if($(window).width() <= 767) {
-      $('.section-progress .progress-wrap .report-acivity').insertAfter('.section-progress .progress-wrap .progress-rewards');
-    }
-    //hamburger click event in mobile
-    $('.mobile-header button').click(function(){
-      $('.mobile-header .block-private-msg-custom-teen').toggle();
-    });
-    //leaderpage wrap 30 views-row in wrapper
-      var divs = jQuery(".view.view-leaderboard-page  div.views-row");
-   for(var i = 0; i < divs.length; i+=30) {
-   divs.slice(i, i+30).wrapAll("<div class='half-content'></div>");
-    }
-    //add class to progress grid having congratulation msg
-    $('.grid.inserted:has(.won-rew)').addClass('active-background');
-    //Announcement block in landing page make image field as background image
-     $('.block.announcement').each(function() {
-  if ($(this).find('img').length) {
-    var imgURL = $(this).find('img').attr('src');
-    $(this).css('background-image', 'url(' + imgURL + ')');
-  $('.block.announcement img').hide();
-  }
-   
-  });
-  //make accordian in user register page
-      function getpanels(panelclass) {
+      }
 
+      //changes the position of divs in moblie progress page
+      if($(window).width() <= 767) {
+        $('.section-progress .progress-wrap .report-acivity').insertAfter('.section-progress .progress-wrap .progress-rewards');
+      }
+
+      //hamburger click event in mobile
+      $('.mobile-header button').click(function(){
+        $('.mobile-header .block-private-msg-custom-teen').toggle();
+      });
+
+      //leaderpage wrap 30 views-row in wrapper
+      var divs = jQuery(".view.view-leaderboard-page  div.views-row");
+      for(var i = 0; i < divs.length; i+=30) {
+        divs.slice(i, i+30).wrapAll("<div class='half-content'></div>");
+      }
+
+      //add class to progress grid having congratulation msg
+      $('.grid.inserted:has(.won-rew)').addClass('active-background');
+
+      //Announcement block in landing page make image field as background image
+      $('.block.announcement').each(function() {
+        if ($(this).find('img').length) {
+          var imgURL = $(this).find('img').attr('src');
+          $(this).css('background-image', 'url(' + imgURL + ')');
+          $('.block.announcement img').hide();
+        }
+      });
+
+      // Hiding of private message notification
+      $('.page-user-edit #edit-privatemsg').hide();
+      $('.page-user-edit-main .username-curr').hide();
+
+      //make accordian in user register page
+      function getpanels(panelclass) {
         var panels = $('.'+panelclass+' #checkboxes-div #checkboxes-d .form-wrapper div.fieldset-wrapper').hide();
-    
         $('.'+panelclass+' #checkboxes-div #checkboxes-d .form-wrapper legend .fieldset-legend').click(function() {
           panels.slideUp();
-        $(this).parent().next('.fieldset-wrapper').toggle();
-       
-        return false;
+          $(this).parent().next('.fieldset-wrapper').toggle();
+          return false;
         });
       }
       if($('body.section-user').length > 0) {
@@ -80,33 +84,36 @@
       else if($('body.page-user-register').length > 0) {
         getpanels('.page-user-register');
       }
-     //MyDashboard page hide homebox add buttons when dragable homebox blocks are visible
-     var activites =$('.homebox-draggable:has(.view-my-activities-for-patron-dashboard)').addClass('dashboard-activities');
-var rewards =$('.homebox-draggable:has(.view-patron-rewads-for-patron-dashboard)').addClass('dashboard-rewards');
-var reviews =$('.homebox-draggable:has(.view-my-book-reviews)').addClass('dashboard-reviews');
-var booklist =$('.homebox-draggable:has(.view-booklist-on-activities-page)').addClass('dashboard-booklists');
-var follow =$('.homebox-draggable:has(.view-follow)').addClass('dashboard-following');
-var leadeboard =$('.homebox-draggable:has(.view-leadeboard)').addClass('dashboard-leaderboard');
-var progress =$('.homebox-draggable:has(.msg-highlight)').addClass('dashboard-progress');
-var obj =$("#homebox-add ul li");
-$.each( obj , function( key, value ) {
-$(value).addClass($(value).find('a').text().toLowerCase());
- var crntState =$('.dashboard-'+$(value).find('a').text().toLowerCase()).css('display');
-  if (crntState != 'undefined') { 
-    if (crntState == 'block') {
-     $(value).hide();
-    } else  {
-     $(value).show();
-    }
-  }
-});
+
+      //MyDashboard page hide homebox add buttons when dragable homebox blocks are visible
+      var activites =$('.homebox-draggable:has(.view-my-activities-for-patron-dashboard)').addClass('dashboard-activities');
+      var rewards =$('.homebox-draggable:has(.view-patron-rewads-for-patron-dashboard)').addClass('dashboard-rewards');
+      var reviews =$('.homebox-draggable:has(.view-my-book-reviews)').addClass('dashboard-reviews');
+      var booklist =$('.homebox-draggable:has(.view-booklist-on-activities-page)').addClass('dashboard-booklists');
+      var follow =$('.homebox-draggable:has(.view-follow)').addClass('dashboard-following');
+      var leadeboard =$('.homebox-draggable:has(.view-leadeboard)').addClass('dashboard-leaderboard');
+      var progress =$('.homebox-draggable:has(.msg-highlight)').addClass('dashboard-progress');
+      var obj =$("#homebox-add ul li");
+      $.each( obj , function( key, value ) {
+        $(value).addClass($(value).find('a').text().toLowerCase());
+        var crntState =$('.dashboard-'+$(value).find('a').text().toLowerCase()).css('display');
+        if (crntState != 'undefined') { 
+          if (crntState == 'block') {
+            $(value).hide();
+          }else{
+            $(value).show();
+          }
+        }
+      });
+
       //reward page give same counter list to two different views
-       $('.page-rewards .view-program-rewards-raffle .views-row').insertAfter('.page-rewards .view-program-rewards .views-row:nth-last-child(1)');
+      $('.page-rewards .view-program-rewards-raffle .views-row').insertAfter('.page-rewards .view-program-rewards .views-row:nth-last-child(1)');
+      
       // select list option with thier link
       jQuery('.add_review_node').change(function(){
         var option = jQuery(this).find('option:selected').val();
         if(option != 0){
-        window.location = option;
+          window.location = option;
         }else{
           return false;
         }
@@ -114,7 +121,7 @@ $(value).addClass($(value).find('a').text().toLowerCase());
       jQuery('.reviews_list_view').change(function(){
         var option = jQuery(this).find('option:selected').val();
         if(option != 0){
-        window.location = option;
+          window.location = option;
         }else{
           return false;
         }
@@ -122,28 +129,27 @@ $(value).addClass($(value).find('a').text().toLowerCase());
       jQuery('.reviews_add').change(function(){
         var option = jQuery(this).find('option:selected').val();
         if(option != 0){
-        window.location = option;
+          window.location = option;
         }else{
-          return false;
+            return false;
         }
       });
       jQuery('.activities_list_read').change(function(){
         var option = jQuery(this).find('option:selected').val();
         if(option != 0){
-        window.location = option;
+          window.location = option;
         }else{
-          return false;
+        return false;
         }
       });
       jQuery('.activities_list_submit').change(function(){
         var option = jQuery(this).find('option:selected').val();
         if(option != 0){
-        window.location = option;
+          window.location = option;
         }else{
           return false;
         }
       });
-
       jQuery("#edit-field-activity-type select option").each(function() {
         var current_url = window.location.href;
         var current_value = current_url.substring(current_url.lastIndexOf('/') + 1);
@@ -153,23 +159,23 @@ $(value).addClass($(value).find('a').text().toLowerCase());
           jQuery('#edit-field-activity-type .chosen-single span').text(content_text);
         }
       });
-  
+    
       //for node page vedio list show textbox after selected radio button has value Other
       $('.page-node-add-video-game-review #edit-field-platform-other-option').hide();
-       $('.page-node-add-video-game-review input[type="radio"]').click(function(){
-         if($(this).attr("value")=="other") {
+      $('.page-node-add-video-game-review input[type="radio"]').click(function(){
+        if($(this).attr("value")=="other") {
           $('.page-node-add-video-game-review #edit-field-platform-other-option').show();
-         }
-         else {
-           $('.page-node-add-video-game-review #edit-field-platform-other-option').hide();
-         }
-       });
-       //position of textbox after checked Other radio button in generic at vediogame, music, movie review form
-         $('.page-node-add-music-review .field-name-field-genre-other-option-music').insertAfter('.page-node-add-music-review .form-item.form-type-checkbox.form-item-field-genre-music-und-genre-other-music:nth-last-child(1)');
-         $('.page-node-add-video-game-review .field-name-field-platform-other-option').insertAfter('.page-node-add-video-game-review .form-item.form-type-radio.form-item-field-platform-und:nth-last-child(1)');
-         $('.page-node-add-movie-review .field-name-field-genre-other-option').insertAfter('.page-node-add-movie-review .form-item.form-type-radio.form-item-field-genre-und:nth-last-child(1)');
-       //reward page description
-      
+        }else{
+          $('.page-node-add-video-game-review #edit-field-platform-other-option').hide();
+        }
+      });
+
+      //position of textbox after checked Other radio button in generic at vediogame, music, movie review form
+      $('.page-node-add-music-review .field-name-field-genre-other-option-music').insertAfter('.page-node-add-music-review .form-item.form-type-checkbox.form-item-field-genre-music-und-genre-other-music:nth-last-child(1)');
+      $('.page-node-add-video-game-review .field-name-field-platform-other-option').insertAfter('.page-node-add-video-game-review .form-item.form-type-radio.form-item-field-platform-und:nth-last-child(1)');
+      $('.page-node-add-movie-review .field-name-field-genre-other-option').insertAfter('.page-node-add-movie-review .form-item.form-type-radio.form-item-field-genre-und:nth-last-child(1)');
+      //reward page description
+        
       // Get width of browser viewport. **Note:** The value we check against
       // should probably match the value set for `$topbar-breakpoint` in
       // libraryzurb/scss/_variables.scss.
@@ -182,9 +188,7 @@ $(value).addClass($(value).find('a').text().toLowerCase());
       }
     }
   };
-
 })(jQuery, Drupal);
-
 
 jQuery( document ).ready(function() {
 
@@ -193,20 +197,19 @@ jQuery( document ).ready(function() {
   jQuery(".blslider3.slide").hide();
   jQuery(".blslider1").show();
 
-    jQuery('input[type="radio"]').click(function(){
-        if(jQuery(this).attr("value")=="blslider1"){
-        jQuery(".slide").not(".blslider1").hide();
-        jQuery(".blslider1.slide").show();
-
-      }
-      if(jQuery(this).attr("value")=="blslider2"){
-        jQuery(".slide").not(".blslider2").hide();
-        jQuery(".blslider2.slide").show();
-      }
-      if(jQuery(this).attr("value")=="blslider3"){
-        jQuery(".slide").not(".blslider3").hide();
-        jQuery(".blslider3.slide").show();
-      }   
+  jQuery('input[type="radio"]').click(function(){
+    if(jQuery(this).attr("value")=="blslider1"){
+      jQuery(".slide").not(".blslider1").hide();
+      jQuery(".blslider1.slide").show();
+    }
+    if(jQuery(this).attr("value")=="blslider2"){
+      jQuery(".slide").not(".blslider2").hide();
+      jQuery(".blslider2.slide").show();
+    }
+    if(jQuery(this).attr("value")=="blslider3"){
+      jQuery(".slide").not(".blslider3").hide();
+      jQuery(".blslider3.slide").show();
+    }   
   });
    
 

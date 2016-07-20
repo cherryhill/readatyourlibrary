@@ -256,7 +256,9 @@ function avatar_images_list_teen($value) {
   $style = 'avatar_style';
   $img_path = image_style_url($style, $img_uri_path);
   $img = "<img src='$img_path'>";
-return $img;
+  if ($img_uri_path){
+    return $img;
+  }
 }
 
 
@@ -297,12 +299,6 @@ function private_msg_custom_teen_profile2_presave($profile) {
  * Implementation of hook_form_alter()
  */
 function private_msg_custom_teen_form_alter(&$form, &$form_state, $form_id) {
-
-  if($form_id == 'user_profile_form'){
-    $form['field_user_random_list_1']['und'][0]['randomized-text-regenerate'] = FALSE;
-    $form['field_user_random_list_2']['und'][0]['randomized-text-regenerate'] = FALSE;
-    $form['field_user_random_list_3']['und'][0]['randomized-text-regenerate'] = FALSE;
-  }
 
   $sub_title = variable_get('review_pre_header');
   $catalog_link = variable_get('catalog_link_for_teen_program');
@@ -926,7 +922,7 @@ function activity_report_node_create($activity_id, $activity_date, $term_tid, $c
   $grids = variable_get('no_of_grids');
 
   //comparing nodes created with number of grids available
-  if($num_of_nodes < $grids){
+  // if($num_of_nodes < $grids){
     $node = new stdClass(); // Creating a new node object
     $node->type = 'activity_report'; //Content type
     $node->language = LANGUAGE_NONE;
@@ -943,7 +939,7 @@ function activity_report_node_create($activity_id, $activity_date, $term_tid, $c
     $created_nid = $node->nid;
 
     $_SESSION['teen_progress_report_nid'] = $created_nid;
-  }
+  // }
 }
 
 /**
@@ -960,11 +956,108 @@ function raffle_count($uid){
 
   return $num;
 }
-
+   
 /**
  * Function for testing purposes
  */
 
 function test_page() {
   return '';
+}
+
+// function for statistical report according to stamps earned
+function user_nodes_three_stamps($uid){
+
+  $query = new EntityFieldQuery();
+  $entities = $query->entityCondition('entity_type', 'node')
+    ->entityCondition('bundle', 'activity_report')
+    ->propertyCondition('uid', $uid)
+    ->count()
+    ->execute();
+
+  if($entities == 3){
+    return FALSE;
+  }else{
+    return TRUE;
+  }
+}
+
+function user_nodes_six_stamps($uid){
+
+  $query = new EntityFieldQuery();
+  $entities = $query->entityCondition('entity_type', 'node')
+    ->entityCondition('bundle', 'activity_report')
+    ->propertyCondition('uid', $uid)
+    ->count()
+    ->execute();
+
+  if($entities == 6){
+    return FALSE;
+  }else{
+    return TRUE;
+  }
+}
+
+function user_nodes_nine_stamps($uid){
+
+  $query = new EntityFieldQuery();
+  $entities = $query->entityCondition('entity_type', 'node')
+    ->entityCondition('bundle', 'activity_report')
+    ->propertyCondition('uid', $uid)
+    ->count()
+    ->execute();
+
+  if($entities == 9){
+    return FALSE;
+  }else{
+    return TRUE;
+  }
+}
+
+function user_nodes_twelve_stamps($uid){
+
+  $query = new EntityFieldQuery();
+  $entities = $query->entityCondition('entity_type', 'node')
+    ->entityCondition('bundle', 'activity_report')
+    ->propertyCondition('uid', $uid)
+    ->count()
+    ->execute();
+
+  if($entities == 12){
+    return FALSE;
+  }else{
+    return TRUE;
+  }
+}
+
+function user_nodes_fifteen_stamps($uid){
+
+  $query = new EntityFieldQuery();
+  $entities = $query->entityCondition('entity_type', 'node')
+    ->entityCondition('bundle', 'activity_report')
+    ->propertyCondition('uid', $uid)
+    ->count()
+    ->execute();
+
+  if($entities == 15){
+    return FALSE;
+  }else{
+    return TRUE;
+  }
+}
+
+function user_nodes_eighteen_stamps($uid){
+
+  $query = new EntityFieldQuery();
+  $entities = $query->entityCondition('entity_type', 'node')
+    ->entityCondition('bundle', 'activity_report')
+    ->propertyCondition('uid', $uid)
+    ->count()
+    ->execute();
+
+  if($entities == 18){
+    return FALSE;
+  }else{
+    return TRUE;
+  }
 }

@@ -31,7 +31,7 @@ function user_avatar_progress_page($uid){
   $user_pf = profile2_load_by_user($user->uid);
   $user_main = user_load($uid);
 
-  $img_id = $user_pf['main']->field_user_avatar['und'][0]['target_id'];
+  $img_id = $user_pf['main']->field_user_avatar[LANGUAGE_NONE][0]['target_id'];
   $user_name = $user_main->name;
 
   $query = db_select('field_data_field_avatar_image', 't');
@@ -41,8 +41,8 @@ function user_avatar_progress_page($uid){
     ->condition('t.entity_id', $img_id)
     ->execute();
 
-  $img_uri = $result->fetchObject();
-  $img_uri = $img_uri->uri;
+  $img_uri_query = $result->fetchObject();
+  $img_uri = $img_uri_query->uri;
   $style = 'avatar_dashboard';
   $img_path = image_style_url($style, $img_uri);
 
