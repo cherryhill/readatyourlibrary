@@ -572,32 +572,44 @@ function _play_library_program_get_webforms() {
  */
 function _play_library_program_invoke_activity_entry_hooks($entity, $type, $invoked_hook = '', $update_points = 0) {
 
+  $entity_nid = $entity->nid;
+
+  $query = db_select('workbench_moderation_node_history','wb')
+  ->fields('wb',array('hid'))
+  ->condition('nid',$entity_nid)
+  ->execute();
+
+  $num_of_nodes = $query->rowCount();
 
 	$hook = $invoked_hook;
 	if (empty($hook)) {
 		$hook = "entity_insert|{$type}|{$entity->type}";
 	}
-	$query = new EntityFieldQuery();
-	$query->entityCondition('entity_type', 'activity');
-	$query->entityCondition('bundle', 'activity');
-	$query->fieldCondition('field_activity_fired_hook', 'value', $hook);
-	$result = $query->execute();
 
-	foreach ($result as $entity_key => $entity_values) {
-		if ($entity_key == 'activity') {
+  if($num_of_nodes <= 1){
 
-			foreach ($entity_values as $activity_entity) { //echo $i++;
-				$account = user_load($entity->uid);
-				if(!$update_points) {
-					play_library_program_create_activity_entry($activity_entity->id, $account->uid);
-				}
-				else {
-					global $user;
-					play_library_program_create_activity_entry($activity_entity->id, $user->uid);
-				}
-			}
-		}
-	}
+  	$query = new EntityFieldQuery();
+  	$query->entityCondition('entity_type', 'activity');
+  	$query->entityCondition('bundle', 'activity');
+  	$query->fieldCondition('field_activity_fired_hook', 'value', $hook);
+  	$result = $query->execute();
+
+  	foreach ($result as $entity_key => $entity_values) {
+  		if ($entity_key == 'activity') {
+
+  			foreach ($entity_values as $activity_entity) { //echo $i++;
+  				$account = user_load($entity->uid);
+  				if(!$update_points) {
+  					play_library_program_create_activity_entry($activity_entity->id, $account->uid);
+  				}
+  				else {
+  					global $user;
+  					play_library_program_create_activity_entry($activity_entity->id, $user->uid);
+  				}
+  			}
+  		}
+  	}
+  }
 }
 
 /**
