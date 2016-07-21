@@ -113,12 +113,12 @@
                     line-height: 1;
                     padding: 0 !important;
                     text-align: center;
-                    @include animate;
+                    @include animate(slow);
                     @include mclaren;
 
   	 			  	  	   &:after {
                        @include previous(80px, 45px, $left: 13%, $top: 0);
-                       @include animate;
+                       @include animate(slow);
                        margin-top: -50px;
   	 			  	  	   }
   	 			  	  	 
