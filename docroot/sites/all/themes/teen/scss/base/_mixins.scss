@@ -282,12 +282,17 @@
 	padding-right: 5px;
 	display: inline-block;
 }
-@mixin animate {
+@mixin animate($speed:null) {
 	-webkit-transition-duration: 0.8s;
 	-moz-transition-duration: 0.8s;
 	-o-transition-duration: 0.8s;
 	transition-duration: 0.8s;
-
+  @if $speed == "slow" {
+  	-webkit-transition-duration: 1.8s;
+	-moz-transition-duration: 1.8s;
+	-o-transition-duration: 1.8s;
+	transition-duration: 1.8s;
+  }
 	-webkit-transition-property: -webkit-transform;
 	-moz-transition-property: -moz-transform;
 	-o-transition-property: -o-transform;
