@@ -14,6 +14,17 @@
       jQuery("#user-register-form #edit-profile-main-field-receive-notifications").hide();
       jQuery( '<p>Avatar icons provided free by <a href="http://emojione.com/"target="_blank"> Emoji One</a></p>' ).insertAfter( "#user-register-form" );
 
+      // providing active class for reviews block
+      $(".review-booklist-block .menu-name-main-menu li").each(function() {
+        $(".review-booklist-block .block-title a").removeClass("active");
+        if($(this).hasClass("active-trail")){
+          $(this).addClass("active");
+          return false;
+        }else{
+          $(".review-booklist-block .block-title a").addClass("active");
+        }
+      });
+
       // validate email field  
       jQuery('#edit-mail').on('keyup', function(){
         var valid = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/.test(this.value);
@@ -211,7 +222,6 @@ jQuery( document ).ready(function() {
       jQuery(".blslider3.slide").show();
     }   
   });
-   
 
   /* Jquery for script for raffle entry checkbox */
 
