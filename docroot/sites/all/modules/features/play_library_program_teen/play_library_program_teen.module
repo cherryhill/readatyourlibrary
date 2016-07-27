@@ -574,8 +574,8 @@ function _play_library_program_invoke_activity_entry_hooks($entity, $type, $invo
 
   $entity_nid = $entity->nid;
 
-  $query = db_select('workbench_moderation_node_history','wb')
-  ->fields('wb',array('hid'))
+  $query = db_select('node_revision','nr')
+  ->fields('nr',array('vid'))
   ->condition('nid',$entity_nid)
   ->execute();
 
@@ -586,7 +586,7 @@ function _play_library_program_invoke_activity_entry_hooks($entity, $type, $invo
 		$hook = "entity_insert|{$type}|{$entity->type}";
 	}
 
-  if($num_of_nodes <= 1){
+  if($num_of_nodes <= 2){
 
   	$query = new EntityFieldQuery();
   	$query->entityCondition('entity_type', 'activity');
