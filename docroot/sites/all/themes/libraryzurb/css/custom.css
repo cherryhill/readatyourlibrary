@@ -6999,14 +6999,11 @@ form#user-pass div.user_pass_name:after {
 }
 @media (min-width: 768px) and (max-width: 1025px) {
   .block.block-private-msg-custom-homepage-slider {
-    background: #267fda !important;
-    overflow: hidden;
-    border-radius: 20px;
-    color: #fff;
-    position: relative;
-    -webkit-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
-    -moz-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
-    box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+    background: none !important;
+    padding-top: 35px !important;
+    -webkit-box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.5) !important;
+    -moz-box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.5) !important;
+    box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.5) !important;
   }
 }
 @media (min-width: 1026px) {
@@ -7050,6 +7047,16 @@ form#user-pass div.user_pass_name:after {
     top: -25px;
   }
 }
+@media (min-width: 768px) and (max-width: 1025px) {
+  .block.block-private-msg-custom-homepage-slider ul {
+    position: relative;
+    right: 0;
+    width: 100%;
+    max-width: 100px;
+    margin: auto;
+    top: -25px;
+  }
+}
 .block.block-private-msg-custom-homepage-slider ul label {
   width: 20px;
   display: inline;
@@ -7084,6 +7091,18 @@ form#user-pass div.user_pass_name:after {
   padding-bottom: 50px;
 }
 @media (max-width: 767px) {
+  .block.block-private-msg-custom-homepage-slider .slide {
+    background: #267fda !important;
+    overflow: hidden;
+    border-radius: 20px;
+    color: #fff;
+    position: relative;
+    -webkit-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+    -moz-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+    box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+  }
+}
+@media (min-width: 768px) and (max-width: 1025px) {
   .block.block-private-msg-custom-homepage-slider .slide {
     background: #267fda !important;
     overflow: hidden;
@@ -7173,9 +7192,13 @@ form#user-pass div.user_pass_name:after {
   align-items: center;
   align-content: center;
 }
-@media (min-width: 768px) and (max-width: 1025px) {
+@media screen and (max-width: 504px) {
   .block.block-private-msg-custom-homepage-slider .slide .view .view-content .views-field.views-field-field-booklist-cover-image {
-    height: 150px;
+    display: block;
+    height: auto;
+    width: 100%;
+    max-width: 136px;
+    margin: 10px auto;
   }
 }
 .block.block-private-msg-custom-homepage-slider .slide .view .view-content .views-field.views-field-field-booklist-cover-image img {
@@ -7193,7 +7216,20 @@ form#user-pass div.user_pass_name:after {
     top: 0;
   }
 }
+@media (min-width: 768px) and (max-width: 1025px) {
+  .block.block-private-msg-custom-homepage-slider .slide .view .view-footer {
+    left: 0;
+    text-align: center;
+    top: 0;
+  }
+}
 @media (max-width: 767px) {
+  .block.block-private-msg-custom-homepage-slider .slide .view .view-footer a.button {
+    margin-left: 0;
+    margin-top: 10px;
+  }
+}
+@media (min-width: 768px) and (max-width: 1025px) {
   .block.block-private-msg-custom-homepage-slider .slide .view .view-footer a.button {
     margin-left: 0;
     margin-top: 10px;
@@ -7295,6 +7331,11 @@ form#user-pass div.user_pass_name:after {
   margin-left: -28px;
   padding: 10px;
 }
+@media screen and (max-width: 479px) {
+  .block.block-private-msg-custom-homepage-slider .owl-controls .owl-buttons .owl-prev {
+    margin-left: 11px;
+  }
+}
 .block.block-private-msg-custom-homepage-slider .owl-controls .owl-buttons .owl-next {
   float: right;
   background: url("../images/libraryzurb/right-arrow.png") no-repeat;
@@ -7303,6 +7344,12 @@ form#user-pass div.user_pass_name:after {
   border-radius: 0;
   margin-right: -45px;
   padding: 10px;
+}
+@media screen and (max-width: 479px) {
+  .block.block-private-msg-custom-homepage-slider .owl-controls .owl-buttons .owl-next {
+    margin-right: 11px;
+    margin-top: 4px;
+  }
 }
 .block.block-auto-role-allocation-calendar-data.header {
   display: none;
@@ -13609,16 +13656,19 @@ body .alert-box.success a.close:hover {
   }
 }
 .page-booklists .main .view-booklist-slideshow .owl-carousel .owl-item .views-field-field-booklist-cover-image {
-  width: 135px;
+  width: 98%;
+  height: 220px;
+  display: flex;
+  align-content: center;
+  align-items: center;
 }
-@media (max-width: 767px) {
+@media screen and (max-width: 504px) {
   .page-booklists .main .view-booklist-slideshow .owl-carousel .owl-item .views-field-field-booklist-cover-image {
-    width: 98%;
-  }
-}
-@media (min-width: 768px) and (max-width: 1025px) {
-  .page-booklists .main .view-booklist-slideshow .owl-carousel .owl-item .views-field-field-booklist-cover-image {
-    width: 98%;
+    width: 100%;
+    max-width: 150px;
+    height: auto;
+    display: block;
+    margin: 10px auto;
   }
 }
 .page-booklists .main .view-booklist-slideshow .owl-carousel .owl-item .views-field-field-booklist-cover-image img {
@@ -13743,24 +13793,11 @@ body .alert-box.success a.close:hover {
   position: absolute;
   top: 40%;
 }
-@media (max-width: 767px) {
-  .page-booklists .main .view-booklist-slideshow .owl-carousel .owl-buttons {
-    display: inline-block;
-    position: relative;
-    top: 0;
-    text-align: center;
-  }
-}
 .page-booklists .main .view-booklist-slideshow .owl-carousel .owl-buttons .owl-prev {
   float: left;
   visibility: hidden;
   position: relative;
   opacity: 1;
-}
-@media (max-width: 767px) {
-  .page-booklists .main .view-booklist-slideshow .owl-carousel .owl-buttons .owl-prev {
-    float: none;
-  }
 }
 .page-booklists .main .view-booklist-slideshow .owl-carousel .owl-buttons .owl-prev:before {
   content: "";
@@ -13774,7 +13811,7 @@ body .alert-box.success a.close:hover {
   background: url("../images/libraryzurb/left-blue-arrow.png") no-repeat;
   background-size: 25px;
 }
-@media (max-width: 767px) {
+@media screen and (max-width: 479px) {
   .page-booklists .main .view-booklist-slideshow .owl-carousel .owl-buttons .owl-prev:before {
     content: "";
     width: 30px;
@@ -13792,11 +13829,6 @@ body .alert-box.success a.close:hover {
   position: relative;
   opacity: 1;
 }
-@media (max-width: 767px) {
-  .page-booklists .main .view-booklist-slideshow .owl-carousel .owl-buttons .owl-next {
-    float: none;
-  }
-}
 .page-booklists .main .view-booklist-slideshow .owl-carousel .owl-buttons .owl-next:after {
   content: "";
   width: 30px;
@@ -13810,7 +13842,7 @@ body .alert-box.success a.close:hover {
   background-size: 25px;
   position: absolute;
 }
-@media (max-width: 767px) {
+@media screen and (max-width: 479px) {
   .page-booklists .main .view-booklist-slideshow .owl-carousel .owl-buttons .owl-next:after {
     content: "";
     width: 30px;
@@ -13818,7 +13850,7 @@ body .alert-box.success a.close:hover {
     display: block;
     visibility: visible;
     position: absolute;
-    top: -4px;
+    top: -7px;
     right: 0;
   }
 }
