@@ -2032,13 +2032,18 @@
 	  			 	}
 	  			 	.owl-item {
 	  			 		.views-field-field-booklist-cover-image {
-	  			 			width: 135px;
-	  			 			 @include mobile {
-	  			 			 	width: 98%;
+	  			 			@media screen and (max-width: 504px) {
+	  			 			 	width: 100%;
+	  			 			 	max-width: 150px;
+	  			 			 	height: auto;
+	  			 			 	display: block;
+	  			 			 	margin: 10px auto;
 	  			 			 }
-	  			 			 @include tablet {
-	  			 			 	width: 98%;
-	  			 			 }
+	  			 			width: 98%;
+	  			 			height: 220px;
+	  			 			display: flex;
+	  			 			align-content: center;
+	  			 			align-items: center;
 	  			 		 		img {
 	  			 		 			width: 100%;
 	  			 		 		}
@@ -2126,23 +2131,16 @@
 		  			 	width: 100%;
 		  			 	position: absolute;
 	  			 		top: 40%;
-	  			 		 @include mobile {
-	  			 		 	display: inline-block;
-	  			 		 	position: relative;
-	  			 		 	top: 0;
-	  			 		 	text-align: center;
-	  			 		 }
+	  			 		
 	  			 	 		.owl-prev {
 			  			 	 	float: left;
 			  			 	 	visibility: hidden;
 			  			 	 	position: relative;
 			  			 	 	opacity: 1;
-			  			 	 	@include mobile {
-			  			 	 		float: none;
-			  			 	 	}
+			  			 	 	
 			  			 	 	  &:before {
-			  			 	 	  	@include mobile {
-			  			 	 	  		@include previous(30px, 30px, $left: 0, $top: 0);
+			  			 	 	  	@media screen and (max-width: 479px) {
+			  			 	 	  	   @include previous(30px, 30px, $left: 0, $top: 0);	
 			  			 	 	  	}
 			  			 	 	  	@include previous(30px, 30px, $left: -40px, $top: 0);
 			  			 	 	  	background: url('../images/libraryzurb/left-blue-arrow.png') no-repeat;
@@ -2154,12 +2152,10 @@
 			  			 	 	visibility: hidden;
 			  			 	 	position: relative;
 			  			 	 	opacity: 1;
-			  			 	 	 @include mobile {
-			  			 	 	 	float: none;
-			  			 	 	 }
+			  			 	 	
 				  			 	 	  &:after {
-				  			 	 	  	@include mobile {
-				  			 	 	  		@include previous(30px, 30px, $right: 0, $top: -4px);
+				  			 	 	  	@media screen and (max-width: 479px) {
+				  			 	 	  		@include previous(30px, 30px, $right: 0, $top: -7px);
 				  			 	 	  	}
 				  			 	 	  	@include previous(30px, 30px, $right: -37px, $top: 0);
 				  			 	 	  	background: url('../images/libraryzurb/right-blue-arrow.png') no-repeat;
