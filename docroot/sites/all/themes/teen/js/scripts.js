@@ -16,12 +16,19 @@
 
       // providing active class for reviews block
       $(".review-booklist-block .menu-name-main-menu li").each(function() {
-        $(".review-booklist-block .block-title a").removeClass("active");
-        if($(this).hasClass("active-trail")){
-          $(this).addClass("active");
-          return false;
+        var curr_url = window.location.href;
+        var array_url = curr_url.split('/');
+        var lastsegment_review = array_url[array_url.length-2];
+        if(lastsegment_review == 'activities-listing'){
+          $(".review-booklist-block .block-title a").removeClass("active");
         }else{
-          $(".review-booklist-block .block-title a").addClass("active");
+          $(".review-booklist-block .block-title a").removeClass("active");
+          if($(this).hasClass("active-trail")){
+            $(this).addClass("active");
+            return false;
+          }else{
+            $(".review-booklist-block .block-title a").addClass("active");
+          }
         }
       });
 
