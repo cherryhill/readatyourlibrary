@@ -19,8 +19,7 @@
         var curr_url = window.location.href;
         var array_url = curr_url.split('/');
         var lastsegment_review = array_url[array_url.length-2];
-        var lastsegment_activity = array_url[array_url.length-3];
-        alert(lastsegment_activity);
+        var lastsegment_activity = array_url[array_url.length-3]; 
         if(lastsegment_review == 'activities-listing' || lastsegment_activity == 'activities-listing'){
           $(".review-booklist-block .block-title a").removeClass("active");
         }else{
