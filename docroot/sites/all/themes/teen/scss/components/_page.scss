@@ -928,6 +928,7 @@
 	 			  &.dashboard-leaderboard {
 	 			  	.homebox-portlet-inner .portlet-header .portlet-title::before {
 	 			  	 	background: url('../images/libraryzurb/leaderboard-dashboard.png') no-repeat;
+	 			  	 	background-position: 0 4px;
 	 			  	 }
 	 			  }
 	 			  &.dashboard-following {
@@ -2488,7 +2489,7 @@
 			  			 	 	opacity: 1;
 			  			 	 	padding: 0;
 			  			 	 	  &:before {
-			  			 	 	  	@media screen and (max-width: 504px) {
+			  			 	 	  	@media screen and (max-width: 479px) {
 			  			 	 	  	   @include previous(30px, 30px, $left: 0, $top: 0);	
 			  			 	 	  	}
 			  			 	 	  	@include previous(30px, 30px, $left: -40px, $top: 0);
@@ -2503,7 +2504,7 @@
 			  			 	 	opacity: 1;
 			  			 	 	padding: 0;
 				  			 	 	  &:after {
-				  			 	 	  	@media screen and (max-width: 504px) {
+				  			 	 	  	@media screen and (max-width: 479px) {
 				  			 	 	  		@include previous(30px, 30px, $right: 0, $top: -6px);
 				  			 	 	  	}
 				  			 	 	  	@include previous(30px, 30px, $right: -40px, $top: 0);

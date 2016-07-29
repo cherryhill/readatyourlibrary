@@ -14,6 +14,25 @@
       jQuery("#user-register-form #edit-profile-main-field-receive-notifications").hide();
       jQuery( '<p>Avatar icons provided free by <a href="http://emojione.com/"target="_blank"> Emoji One</a></p>' ).insertAfter( "#user-register-form" );
 
+      // providing active class for reviews block
+      $(".review-booklist-block .menu-name-main-menu li").each(function() {
+        var curr_url = window.location.href;
+        var array_url = curr_url.split('/');
+        var lastsegment_review = array_url[array_url.length-2];
+        var lastsegment_activity = array_url[array_url.length-3]; 
+        if(lastsegment_review == 'activities-listing' || lastsegment_activity == 'activities-listing'){
+          $(".review-booklist-block .block-title a").removeClass("active");
+        }else{
+          $(".review-booklist-block .block-title a").removeClass("active");
+          if($(this).hasClass("active-trail")){
+            $(this).addClass("active");
+            return false;
+          }else{
+            $(".review-booklist-block .block-title a").addClass("active");
+          }
+        }
+      });
+
       // validate email field  
       jQuery('#edit-mail').on('keyup', function(){
         var valid = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/.test(this.value);
@@ -65,13 +84,9 @@
         }
       });
 
-      //Hiding of username field if age below 13
-      $('.page-user-edit-main .username-child').hide();
-      $('.page-user-edit-main .username-curr').hide();
+      // Hiding of private message notification
       $('.page-user-edit #edit-privatemsg').hide();
-      if($("h3").hasClass("username-child")){
-        $('.form-item-name').hide();
-      }
+      $('.page-user-edit-main .username-curr').hide();
 
       //make accordian in user register page
       function getpanels(panelclass) {
@@ -215,7 +230,6 @@ jQuery( document ).ready(function() {
       jQuery(".blslider3.slide").show();
     }   
   });
-   
 
   /* Jquery for script for raffle entry checkbox */
 
