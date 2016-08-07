@@ -40,6 +40,7 @@ function platform_configuration_teen($form, &$form_state) {
     '#type' => 'managed_file',
     '#description' => t('The uploaded image will be displayed on this page using the image style choosen below.'),
     '#upload_location' => 'public://',
+    '#default_value' => variable_get('pmc_progrm_image_teen'),
   );
 
 	return system_settings_form($form);
