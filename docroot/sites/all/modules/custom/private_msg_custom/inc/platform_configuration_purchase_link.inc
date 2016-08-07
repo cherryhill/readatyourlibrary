@@ -35,15 +35,12 @@ function platform_configuration_purchase_link($form, &$form_state) {
         '#type' => 'textfield',
         '#title' => 'Program Name',
     );
-    $form['program_configuration']['pmc_library_name'] = array(
-        '#type' => 'textfield',
-        '#title' => 'Library Name',
-    );
     $form['program_configuration']['pmc_progrm_image'] = array(
       '#title' => t('Program Image'),
       '#type' => 'managed_file',
       '#description' => t('The uploaded image will be displayed on this page using the image style choosen below.'),
       '#upload_location' => 'public://',
+       '#default_value' => variable_get('pmc_progrm_image'),
     );
 
 	$form['pmc_purchase_link'] = array(
