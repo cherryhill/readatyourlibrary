@@ -261,26 +261,6 @@ function avatar_images_list_teen($value) {
   }
 }
 
-// providing program logo through platform configuration page
-function program_logo_teen($value) {
-
-  $imageFid = variable_get('pmc_progrm_image_teen');
-
-  $query = db_select('file_managed', 'file')
-            ->fields('file', array('uri'))
-            ->condition('fid', $imageFid)
-            ->execute()
-            ->fetchAssoc();
-
-  $img_uri_path = $query['uri'];
-  $style = 'program_logo';
-  $img_path = image_style_url($style, $img_uri_path);
-  $img = "<img src='$img_path'>";
-  if ($img_uri_path){
-    return $img;
-  }
-}
-
 function ajax_autocheckboxes_callback_avatar_teen($form, $form_state) {
 
   return $form['checkboxes_fieldset'];
