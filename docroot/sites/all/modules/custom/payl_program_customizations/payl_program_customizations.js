@@ -14,24 +14,43 @@ if (typeof String.prototype.startsWith != 'function') {
   Drupal.behaviors.payl_program_customizations = {
     attach: function() {
       Drupal.settings.payl_program_customizations_birthday_limit = parseInt(Drupal.settings.payl_program_customizations_birthday_limit);
+            var birthday = new Date($('#edit-profile-main-field-user-birthday-und-0-value-datepicker-popup-0').val());
+      var birthday_timestamp = Math.floor(birthday.getTime() / 1000);
+
+      var user_dob = Drupal.settings.payl_program_customizations_user_date_of_birth;
+      var birthday_patron = new Date(user_dob);
+      var birthday_timestamp_patron = Math.floor(birthday_patron.getTime() / 1000);
+
+      // More than 13 years old.
+      if (birthday_timestamp < Drupal.settings.payl_program_customizations_birthday_limit) {
+        $('.page-user-register .form-item-name').show();
+      }
+      // Less than 13 years old.
+      else {
+        $('.page-user-register .form-item-name').hide();
+      }
+
+      // Changes for user edit profile
+      if (birthday_timestamp_patron > Drupal.settings.payl_program_customizations_birthday_limit) {
+        $('.page-user-edit .form-item-name').hide();
+      }
+      else {
+        $('.page-user-edit .form-item-name').show();
+      }
+
       $('#edit-profile-main-field-user-birthday-und-0-value-datepicker-popup-0').bind('change', function(date_object) {
-        var birthday = new Date($(this).val());
+        Drupal.settings.payl_program_customizations_birthday_limit = parseInt(Drupal.settings.payl_program_customizations_birthday_limit);
+        var birthday = new Date($('#edit-profile-main-field-user-birthday-und-0-value-datepicker-popup-0').val());
         var birthday_timestamp = Math.floor(birthday.getTime() / 1000);
-        // More than 13 years old.
+        
         if (birthday_timestamp < Drupal.settings.payl_program_customizations_birthday_limit) {
           $('.page-user-register .form-item-name').show();
         }
-        // Less than 13 years old.
         else {
-          $('.page-user-register .form-item-name').hide();
+        $('.page-user-register .form-item-name').hide();
         }
       });
-      
-      $('.page-user-edit-main.admin-menu .username-child').hide();
-      $('.page-user-edit.admin-menu .username-child').hide();
-      $('.page-user-edit.admin-menu .username-curr').hide();
 
-      $('.page-user-register .form-item-name').hide();
       $('.field-widget-random-list-widget-randomizer').each(function(index) {
         fieldname = 'Change ' + $(this).find('label').html();
         $(this).find('input.random-list-widget-regenerate').val(fieldname);
@@ -50,6 +69,7 @@ if (typeof String.prototype.startsWith != 'function') {
         }, 50);
       });
       $('#edit-name').keyup(payl_program_customizations_change_name);
+
       var edit_username = $('#edit-account #edit-name').val();
 
 
