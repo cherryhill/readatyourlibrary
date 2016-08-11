@@ -4,6 +4,7 @@
   global $base_url;
   $current_uid = $user->uid;
   $raff_count = raffle_count($current_uid);
+  $imgStyle = 'progresspageavatar';
 ?>
 <div class="progress-page">
 <h1 id = "title">
@@ -19,7 +20,7 @@
 </div>
 <div class="user-desc">
 <div class="avatar-id">
-	<?php print user_avatar_progress_page($current_uid); ?>
+	<?php print user_avatar_progress_page($current_uid, $imgStyle); ?>
 </div>
 <div class="point-status">
 <div class="activity-status">

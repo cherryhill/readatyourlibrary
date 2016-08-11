@@ -25,7 +25,15 @@ function complete_activity_progress(){
   echo 1;
 }
 
-function user_avatar_progress_page($uid){
+function user_avatar_progress_page($uid, $style){
+
+  if($uid == ''){
+    return FALSE;
+  }
+
+  if($style == ''){
+    $style = 'medium';
+  }
 
   global $user;
   $user_pf = profile2_load_by_user($user->uid);
@@ -43,7 +51,6 @@ function user_avatar_progress_page($uid){
 
   $img_uri_query = $result->fetchObject();
   $img_uri = $img_uri_query->uri;
-  $style = 'avatar_dashboard';
   $img_path = image_style_url($style, $img_uri);
 
   $img = "<img src='$img_path'>";

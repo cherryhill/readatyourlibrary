@@ -20,7 +20,6 @@ class Play {
 
   /**
   * function to perform db select from file managed for images
-  * provides program logo through platform configuration page
   *
   * @param
   *  String $style Image style name
