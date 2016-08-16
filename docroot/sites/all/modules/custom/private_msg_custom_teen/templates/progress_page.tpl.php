@@ -4,7 +4,7 @@
   global $base_url;
   $current_uid = $user->uid;
   $raff_count = raffle_count($current_uid);
-  $imgStyle = 'progresspageavatar';
+  $imgStyle = 'avatar_style';
 ?>
 <div class="progress-page">
 <h1 id = "title">
