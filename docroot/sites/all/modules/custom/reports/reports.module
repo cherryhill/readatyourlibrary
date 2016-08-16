@@ -1,0 +1,81 @@
+<?php
+
+/**
+ * Implements hook_menu().
+ */
+function reports_menu(){
+	$items = array();
+  $items['registrations-per-library-branch'] = array(
+    'title' => t('Number of registrations per library branch'),
+    'page callback' => 'registrationPerBranch',
+    'access callback' => TRUE,
+  );
+
+  return $items;
+}
+
+/**
+ * Implements registrationPerBranch function.
+ */
+function registrationPerBranch(){
+
+  $header = array('Library Branch', 'Entity_id', 'Profile_id', 'User_uid','User Name');
+    $rows = array();
+
+
+  $query = db_select('field_data_field_library_branch','branch');
+  $query->leftJoin('taxonomy_term_data', 'tax', 'branch.field_library_branch_tid = tax.tid');
+  $query->leftJoin('profile', 'pf', 'branch.entity_id = pf.pid');
+  $query->leftJoin('users', 'u', 'u.uid = pf.pid');
+  $query->fields('branch',array('entity_id','field_library_branch_tid'));
+  $query->fields('tax',array('name'));
+  $query->fields('pf',array('uid'));
+  $query->fields('u',array('name'));
+
+  $result = $query->execute();
+  $ary = array();
+  $obj = $result->fetchAll();
+
+  foreach ($obj as $key => $value) {
+    $ary['library_tid'] = $value->field_library_branch_tid;
+    $ary['user_entity'] = $value->entity_id;
+    $ary['tax'] = $value->name;
+    $ary['uid'] = $value->uid;
+    $ary['name'] = $value->u_name;
+
+     $rows[] = array($value->name,
+                    $value->field_library_branch_tid,
+                    $value->entity_id,
+                    $value->uid,
+                    $value->u_name,
+    );
+  }
+
+  $output = theme('table', array('header' => $header,
+                             'rows' => $rows ));
+    # add the pager
+  // $output .= theme('pager');
+
+  return $output;
+
+  // echo '<pre>'; print_r($ary);
+
+  // }
+  // die(); 
+
+  // $ary['district_name'] = $obj['entity_id'];
+  // $ary['state_id'] = $obj->group_brh_entity_id;
+
+  // return $ary;
+}
+
+/**
+ * Access Callback for /projects page.
+ */
+function access_check() {
+  global $user;
+  if($user->uid)
+    return TRUE;
+
+  return FALSE;
+}
