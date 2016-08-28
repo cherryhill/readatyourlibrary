@@ -24,7 +24,7 @@
 ?>
 <?php
 
-if (strpos($output, "months") || strpos($output, "sec")) {
+if (strpos($output, "months") || strpos($output, "sec") || strpos($output, "month")) {
 	$output = "below 1 year";
 }
 
