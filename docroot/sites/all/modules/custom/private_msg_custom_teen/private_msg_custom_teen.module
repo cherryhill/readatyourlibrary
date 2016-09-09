@@ -965,7 +965,7 @@ function test_page() {
 }
 
 // function for statistical report according to stamps earned
-function user_nodes_three_stamps($uid){
+function user_node_stamps($uid, $stamps){
 
   $query = new EntityFieldQuery();
   $entities = $query->entityCondition('entity_type', 'node')
@@ -974,87 +974,7 @@ function user_nodes_three_stamps($uid){
     ->count()
     ->execute();
 
-  if($entities == 3){
-    return FALSE;
-  }else{
-    return TRUE;
-  }
-}
-
-function user_nodes_six_stamps($uid){
-
-  $query = new EntityFieldQuery();
-  $entities = $query->entityCondition('entity_type', 'node')
-    ->entityCondition('bundle', 'activity_report')
-    ->propertyCondition('uid', $uid)
-    ->count()
-    ->execute();
-
-  if($entities == 6){
-    return FALSE;
-  }else{
-    return TRUE;
-  }
-}
-
-function user_nodes_nine_stamps($uid){
-
-  $query = new EntityFieldQuery();
-  $entities = $query->entityCondition('entity_type', 'node')
-    ->entityCondition('bundle', 'activity_report')
-    ->propertyCondition('uid', $uid)
-    ->count()
-    ->execute();
-
-  if($entities == 9){
-    return FALSE;
-  }else{
-    return TRUE;
-  }
-}
-
-function user_nodes_twelve_stamps($uid){
-
-  $query = new EntityFieldQuery();
-  $entities = $query->entityCondition('entity_type', 'node')
-    ->entityCondition('bundle', 'activity_report')
-    ->propertyCondition('uid', $uid)
-    ->count()
-    ->execute();
-
-  if($entities == 12){
-    return FALSE;
-  }else{
-    return TRUE;
-  }
-}
-
-function user_nodes_fifteen_stamps($uid){
-
-  $query = new EntityFieldQuery();
-  $entities = $query->entityCondition('entity_type', 'node')
-    ->entityCondition('bundle', 'activity_report')
-    ->propertyCondition('uid', $uid)
-    ->count()
-    ->execute();
-
-  if($entities == 15){
-    return FALSE;
-  }else{
-    return TRUE;
-  }
-}
-
-function user_nodes_eighteen_stamps($uid){
-
-  $query = new EntityFieldQuery();
-  $entities = $query->entityCondition('entity_type', 'node')
-    ->entityCondition('bundle', 'activity_report')
-    ->propertyCondition('uid', $uid)
-    ->count()
-    ->execute();
-
-  if($entities == 18){
+  if($entities <= $stamps){
     return FALSE;
   }else{
     return TRUE;
