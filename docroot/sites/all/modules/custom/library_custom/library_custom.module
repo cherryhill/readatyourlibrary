@@ -1,0 +1,314 @@
+<?php
+/**
+ * @file
+ * A module for custom settings for Library Program
+ *
+ * This module is basically for form alter, hook_menu,
+ * custom blocks
+ */
+
+
+/**
+ * Implementation of hook_menu()
+ */
+function library_custom_menu() {
+
+  // Page for User's Reviews Submitted
+  $items['my-reviews'] = array(
+    'title' => 'Reviews',
+    'page callback' => 'user_reviews',
+    'access arguments' => array('access content'),
+    'type' => MENU_SUGGESTED_ITEM,
+  );
+
+  // Page for User's Booklists Submitted
+  $items['my-booklist'] = array(
+    'title' => 'Booklist',
+    'page callback' => 'user_booklist',
+    'access arguments' => array('access content'),
+    'type' => MENU_SUGGESTED_ITEM,
+  );
+  
+  return $items;
+}
+
+/**
+ * Implementation of hook_form_alter()
+ */
+function library_custom_form_alter(&$form, &$form_state, $form_id) {
+
+  // changing of default title of content type
+  if($form_id == 'review_book_node_form') {
+    drupal_set_title('Write a Book Review');
+  }
+
+  if($form_id == 'booklist_node_form') {
+    drupal_set_title('Create a Booklist');
+  }
+
+  if($form_id == 'review_activity_node_form') {
+    drupal_set_title('Write an Activity Review');
+  }
+
+  // Adding purchase link for booklist
+  if($form_id == 'booklist_node_form') {
+    $form['purchase_link'] = array(
+      '#type' => 'link',
+      '#title' => 'Suggest a purchase',
+      '#href' => variable_get('pmc_purchase_link'),
+      '#attributes' => array('target' => '_blank'),
+      '#weight' => 3,
+    );
+
+    return $form;
+  }
+}
+
+/**
+ * Implements hook_block_info().
+ */
+function library_custom_block_info() {
+  $blocks = array();
+
+  // Custom view for private message
+  $blocks['pm_block'] = array(
+    'info' => t('Private Message Dashboard Block'),
+  );
+
+  // Homepage Booklist Slider
+  $blocks['homepage_slider'] = array(
+    'info' => t('Homepage booklist slider Block'),
+  );
+
+  // Menu block for mobile view
+  $blocks['menu_for_mobile'] = array(
+    'info' => t('Menu block for mobile'),
+  );
+
+  return $blocks;
+}
+
+/**
+ * Implements hook_block_view().
+ */
+function library_custom_block_view($delta = '') {
+  $block = array();
+  
+  switch($delta) {
+    case 'pm_block' :
+      $block['content'] = pm_block_view();
+      break;
+
+    case 'homepage_slider' :
+      $block['content'] = homepage_slider();
+      break;
+
+    case 'menu_for_mobile' :
+      $block['content'] = header_menu_mobile();
+      break;
+  }
+  
+  return $block;
+}
+
+/**
+ * function to return a empty page for users book reviews.
+ */
+function user_reviews() {
+  return '';
+}
+
+/**
+ * function to return a empty page for view users booklists.
+ */
+function user_booklist() {
+  return '';
+}
+
+/**
+ * function for custom view of private message block.
+ */
+function pm_block_view() {
+
+  global $user;
+  $current_user = $user->uid;
+
+  $query_pm = db_select('pm_index','pi');
+  $query_pm->fields('pi',array('mid','is_new','deleted'));
+  $query_pm->join('pm_message','pmsg','pmsg.mid = pi.mid');
+  $query_pm->join('users','u','u.uid = pmsg.author');
+  $query_pm->fields('u',array('name'));
+  $query_pm->condition('recipient',$current_user,'=');
+  $query_pm->condition('deleted',0,'=');
+  $query_pm->orderBy('timestamp', 'DESC');
+  $query_pm->range(0,2);
+  $query = $query_pm->execute()
+  ->fetchAll();
+
+  $no_result = count($query);
+  $output = '<div class = "pm-custom">';
+
+  if ($no_result != 0) {
+    foreach($query as $res) {
+      $msg_id = $res->mid;
+      $deleted = $res->deleted;
+      $author = $res->name;
+
+      $result = db_select('pm_message','pm')
+      ->fields('pm',array('subject','timestamp'))
+      ->condition('mid',$msg_id,'=')
+      ->execute()
+      ->fetchAssoc();
+
+      $pm_new = $res->is_new.'<br/>';
+      if($pm_new == 1){
+        $new = '<div class = "pm-new">'.'NEW! '.'</div>';
+      }
+
+      $output .= '<div class="pm">'.'<div class = "pm-subject"><a href = '.'../messages/view/'.$msg_id.'>'.$new.$pm_subject = $result['subject'].'</a></div>'.'<div class = "pm-admin">'.$author.'</div>'.'<div class = "pm-date">'.$pm_date = date('F d, Y',$result['timestamp']).'</div>'.'</div>';
+    }
+    return $output.'<a class="pm-view" href="../messages">View All Messages</a>'.'</div>';
+  } else {
+    return 'No Messages to display';
+  }
+}
+
+/**
+ * Function callback for homepage booklist slider.
+ */
+function homepage_slider(){
+
+  $output .= '<ul class="booklist-pager"><input type="radio" name="colorRadio" id="r1" value="blslider1" checked><label for="r1"></label><input type="radio" name="colorRadio" id="r2" value="blslider2"><label for="r2"></label><input type="radio" name="colorRadio" id="r3" value="blslider3"><label for="r3"></label></ul>';
+  $block = module_invoke('views', 'block_view', 'booklist_slideshow-block_2');
+  $output .= '<div class="blslider1 slide">'. render($block['content']). '</div>';
+
+  $block = module_invoke('views', 'block_view', 'booklist_slideshow-block_3');
+  $output .= '<div class="blslider2 slide">'. render($block['content']). '</div>';
+
+  $block = module_invoke('views', 'block_view', 'booklist_slideshow-block_4');
+  $output .= '<div class="blslider3 slide">'. render($block['content']). '</div>';
+
+  return $output;
+}
+
+/**
+ * Function callback for header menu for mobile view
+ */
+function header_menu_mobile(){
+
+  $block = module_invoke('views', 'block_view', 'top_block-block_2');
+  $output .= render($block['content']). '</div>';
+
+  $block = module_invoke('menu', 'block_view', 'menu-secoundary-menu-mobile');
+  $output .= render($block['content']). '</div>';
+
+  return $output;
+}
+
+/**
+ * Implementation of hook_form_profile2_edit_PROFILE_NAME_form_alter()
+ *
+ * Showing of user avatars in tab format
+ */
+function library_custom_form_profile2_edit_main_form_alter(&$form, $form_state) {
+
+	$form['profile_main']['field_user_avatar'] = array('#attributes' => array('style' => 'display:none'));
+
+  $query = db_select('field_data_field_avatar_type','type');
+	$query->fields('type',array('field_avatar_type_tid','entity_id'));
+	$query->join('eck_user_avatar','eck','eck.id = type.entity_id');
+	$query->join('taxonomy_term_data','tax','tax.tid = type.field_avatar_type_tid');
+	$query->fields('tax',array('name'));
+  $query->fields('eck',array('title'));
+	$query_avatar = $query->execute()->fetchAll();
+
+	foreach ($query_avatar as $key => $value) {
+    $tax_name[$value->field_avatar_type_tid] = $value->name;
+    $avatar_name[$value->field_avatar_type_tid][] = $value->entity_id;
+  }
+
+  $num_avatar = !empty($form_state['values']['avatar_select']) ? $form_state['values']['avatar_select'] : 1;
+  $none_array = array(0 => '-None-');
+  $array2 = $none_array + $tax_name;
+
+  $form['avatar_select'] = array(
+    '#title' => t('Select your user avatar?'),
+    '#type' => 'select',
+    '#options' => $array2,
+    '#ajax' => array(
+      'callback' => 'ajax_autocheckboxes_callback_avatar',
+      'wrapper' => 'checkboxes-div',
+      'effect' => 'slide',
+      'progress' => array('type' => 'none'),
+    ),
+  );
+
+  $form['checkboxes_fieldset'] = array(
+    '#title' => t("Avatars"),
+    '#prefix' => '<div id="checkboxes-div">',
+    '#suffix' => '</div>',
+    '#type' => 'fieldset',
+  );
+
+	foreach ($avatar_name[$num_avatar] as $key => $value) {
+		$form['checkboxes_fieldset']["avatar_checkbox-$value"] = array(
+	    '#type' => 'checkbox',
+	    '#title' => avatar_images_list($value),
+	    '#prefix' => '<div class="$value">',
+	    '#suffix' => '</div>',
+	    '#attributes' => array(
+	        'class' => array(
+	          'user_avatar'
+	        ),
+	     ),
+  	);
+	}
+
+	array_unshift($form['#submit'], 'submit_for_avatar');
+}
+
+function avatar_images_list($value) {
+  $query = db_select('field_data_field_avatar_image', 't');
+  $query->join('file_managed', 'n', 'n.fid = t.field_avatar_image_fid');
+  $result = $query
+    ->fields('n', array('uri'))
+    ->condition('t.entity_id', $value)
+    ->execute();
+    $img_uri = $result->fetchObject();
+    $img_uri = $img_uri->uri;
+    $style = 'avatar_style';
+    $img_path = image_style_url($style, $img_uri);
+    $img = "<img src='$img_path'>";
+  return $img;
+}
+
+
+function ajax_autocheckboxes_callback_avatar($form, $form_state) {
+  return $form['checkboxes_fieldset'];
+}
+
+// submit handler for user avatar
+function submit_for_avatar($form, $form_state) {
+  foreach ($form_state['values'] as $key => $value) {
+  	if($value == 1){
+		  $avatar_entity = 'avatar_checkbox-';
+	    $av_entity_id = strpos($key, $avatar_entity);
+
+	    if ($av_entity_id !== false) {
+	      // using sesion to pass avatar ID to profile presave hook.
+	      $_SESSION['user_avatar_id'] = substr($key, 16);
+	      break;
+	    }
+	  }
+	}
+}
+
+/**
+ * Implementation of hook_profile2_presave()
+ */
+function library_custom_profile2_presave($profile) {
+	if (isset($_SESSION['user_avatar_id'])){
+	  $profile->field_user_avatar[LANGUAGE_NONE][0]['target_id'] = $_SESSION['user_avatar_id'];
+	  unset($_SESSION['user_avatar_id']);
+	}
+}
