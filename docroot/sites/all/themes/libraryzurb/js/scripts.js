@@ -225,7 +225,7 @@ if(!div2.is(':empty')){
 
     
 
-    var currentDate =  Drupal.settings.auto_role_allocation.currentDate;
+    var currentDate =  Drupal.settings.child_progress.currentDate;
 
     var time_strings = currentDate.split('-');
 
@@ -235,7 +235,7 @@ if(!div2.is(':empty')){
     
     //if((now_time_strings >= pro_start_date) && now_time_strings <= pro_end_date) {
        //console.log("running");
-       jQuery('.view-calendar-sticker .view-content .views-field-field-sticker-calendar-image .field-content').each(function () {
+       jQuery('.view-child-progress .view-content .views-field-field-sticker-calendar-image .field-content').each(function () {
 
         // create an Event Object (http://arshaw.com/fullcalendar/docs/event_data/Event_Object/)
        // it doesn't need to have a start or end
@@ -326,7 +326,7 @@ if(!div2.is(':empty')){
         //var loc = window.location;
         var baseUrl = Drupal.settings.basePath + 'calendar';
 
-        var currentUser = Drupal.settings.auto_role_allocation.currentUser;
+        var currentUser = Drupal.settings.child_progress.currentUser;
         if((event_date >= pro_start_date) && (event_date <= pro_end_date)) {
          if(now_time_strings >= event_date) {
           jQuery.ajax({
@@ -383,7 +383,7 @@ if(!div2.is(':empty')){
          event_date1 = event_date1.split('-');
          event_date1 = parseInt(event_date1[0] + event_date1[1] + event_date1[2]);
 
-        var currentUser = Drupal.settings.auto_role_allocation.currentUser;
+        var currentUser = Drupal.settings.child_progress.currentUser;
         console.log(event.title);
         var event_title = event.title;
         var event_title1 = event_title.split('<div>');
