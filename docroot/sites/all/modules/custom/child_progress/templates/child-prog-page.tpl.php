@@ -18,7 +18,7 @@
 
 		<div class="pro-progress-block"> 
           <?php 
-            $block = module_invoke('child_progress', 'user_prize_block');
+            $block = module_invoke('child_progress', 'block_view', 'user_prize_block');
             print render($block['content']); 
           ?>
 		</div>
