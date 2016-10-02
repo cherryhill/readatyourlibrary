@@ -1,0 +1,328 @@
+<?php
+/**
+ * @file
+ * A module for progress page for teen program
+ *
+ * This module is basically for form alter, hook_menu,
+ * custom blocks and program configuration settings
+ */
+
+/**
+ * Implements hook_permission().
+ */
+function progress_teen_program_permission() {
+  return array(
+    'progress_page_access' => array(
+      'title' => t('View Progress Page Access'),
+      'description' => t('Access to view progress page'),
+    ),
+  );
+}
+
+/**
+ * Implementation of hook_menu().
+ */
+function progress_teen_program_menu() {
+
+  $items['progress'] = array(
+    'page callback' => 'progress_report_grid',
+    'access arguments' => array('progress_page_access'), // permission for view progress page
+    'type' => MENU_CALLBACK,
+    'file' => 'inc/progress_page.inc',
+    'file path' => drupal_get_path('module', 'progress_teen_program'),
+  );
+
+  $items['activity_custom_node_insert'] = array(
+    'page callback' => 'activity_report_node_create',
+    'access callback' => TRUE,
+    'type' => MENU_CALLBACK,
+    'file' => 'inc/progress_page.inc',
+    'file path' => drupal_get_path('module', 'progress_teen_program'),
+  );
+
+  $items['complete-activity-progress'] = array(
+    'page callback' => 'complete_activity_progress',
+    'access callback' => TRUE,
+    'type' => MENU_CALLBACK,
+    'file' => 'inc/progress_page.inc',
+    'file path' => drupal_get_path('module', 'progress_teen_program'),
+  );
+
+  $items['progress-print'] = array(
+    'page callback' => 'progress_print_page',
+    'access callback' => TRUE,
+    'type' => MENU_CALLBACK,
+    'file' => 'inc/progress_page.inc',
+    'file path' => drupal_get_path('module', 'progress_teen_program'),
+  );
+
+  return $items;
+}
+
+/**
+ * Implements hook_block_info().
+ */
+function progress_teen_program_block_info() {
+
+  $blocks = array();
+
+  $blocks['progress_submit_block'] = array(
+    'info' => t('Progress Submit Block'),
+  );
+
+  return $blocks;
+}
+
+/**
+ * Implements hook_block_view().
+ */
+function progress_teen_program_block_view($delta = '') {
+  $block = array();
+  
+  switch($delta) {
+    case 'progress_submit_block' :
+      $block['content'] = drupal_get_form('progress_record');
+      break;
+  }
+  
+  return $block;
+}
+
+
+/**
+ * function callback for progress block to report activity
+ */
+function progress_record($form,$form_state){
+
+  $form['activity_progress_select'] = array(
+    '#title' => t('I completed'),
+    '#type' => 'select',
+    '#options' => activities_view_select_option('hotspot_activities','1'),
+    '#attributes' => array(
+      'class' => array('activities_list_progress')
+    ),
+    '#weight' => 1,
+  );
+
+  $form['date'] = array(
+    '#type' => 'date_popup', 
+    '#title' => 'on',
+    '#date_format' => 'Y-m-d',
+    '#date_year_range' => '-0',
+    '#datepicker_options' => array('maxDate' => '+0D'),
+    '#weight' => 2, 
+  );
+  return $form;
+}
+
+
+function activities_view_select_option($term,$progress) {
+
+  global $base_url;
+  $voc = taxonomy_vocabulary_machine_name_load($term);
+  $activity_term_vid = $voc->vid;
+  $activities_terms = taxonomy_get_tree($activity_term_vid);
+
+  foreach ($activities_terms as $key => $value) {
+    $term_title = $value->name;
+    $term_tid = $value->tid;
+    $activity_term = taxonomy_term_load($term_tid);
+    if($activity_term->field_progress_page_term['und'][0]['value'] == $progress){
+      $select_options[] = array();
+      $select_options[0] = 'Select activity';
+      $select_options[$term_tid] = $term_title;
+    }
+  }
+  return $select_options;
+}
+
+/**
+ * function callback for progress page
+ */
+function progress_report_grid(){
+  
+  drupal_add_js( drupal_get_path('module', 'progress_teen_program') . '/js/progress_teen_program.js');
+  return theme('progress-report');
+}
+
+/**
+ * template for progress page
+ */
+function progress_teen_program_theme(){
+
+  $templates = array(
+   'progress-report' => array(
+    'template' => 'templates/progress_page',
+  ));
+
+  return $templates;
+}
+
+/**
+ * function for saving taxonomy term on creation of activity.
+ */
+function activities_term_save($term, $fire_hook, $activity) {
+
+  $voc = taxonomy_vocabulary_machine_name_load($term);
+  $activity_term_vid = $voc->vid;
+  $activity_id = $activity->id;
+  $activity_title = $activity->title;
+  $activity_hotspot_value = $activity->field_hotspot_activity['und'][0]['value'];
+  $activity_firehook = $activity->field_activity_fired_hook['und'][0]['value'];
+  $activity_progress_page = $activity->field_show_on_progress_page['und'][0]['value'];
+
+  $query = db_select('field_data_field_activity_id','activity_id')
+    ->fields('activity_id',array('field_activity_id_value','entity_id'))
+    ->condition('field_activity_id_value',$activity_id)
+    ->execute()
+    ->fetchAssoc();
+
+  $field_activity_id = $query['field_activity_id_value'];
+  $entity_field_id = $query['entity_id'];
+
+  if(!isset($field_activity_id)){
+    if($activity_firehook == $fire_hook){
+      $hotspot_activity_term = new stdClass();
+      $hotspot_activity_term->name = $activity_title;
+      $hotspot_activity_term->vid = $activity_term_vid; // The ID of the parent vocabulary
+      $hotspot_activity_term->parent = 0; // This tells taxonomy that this is a top-level term
+      
+      taxonomy_term_save($hotspot_activity_term);
+      $tid_term = $hotspot_activity_term->tid;
+      $activity_term = taxonomy_term_load($tid_term);
+
+      $activity_term->field_activity_id['und'][0]['value'] = $activity_id; 
+      $activity_term->field_hotspot_activity_type['und'][0]['value'] = $activity_hotspot_value ? $activity_hotspot_value:0;
+      $activity_term->field_progress_page_term['und'][0]['value'] = $activity_progress_page ? $activity_progress_page:0;
+      taxonomy_term_save($activity_term);
+      }
+  }else if(isset($field_activity_id)) {
+    $hotspot_query = db_select('taxonomy_term_data','tax')
+      ->fields('tax',array('tid'))
+      ->condition('tid',$entity_field_id)
+      ->execute()
+      ->fetchAssoc();
+
+    $tid = $hotspot_query['tid'];
+    if($activity_firehook != $fire_hook){
+      taxonomy_term_delete($tid);
+    }else{
+      $activity_term = taxonomy_term_load($tid);
+      $activity_term->field_activity_id['und'][0]['value'] = $activity_id; 
+      $activity_term->field_hotspot_activity_type['und'][0]['value'] = $activity_hotspot_value;
+        $activity_term->field_progress_page_term['und'][0]['value'] = $activity_progress_page;
+        $activity_term->name = $activity_title;
+      taxonomy_term_save($activity_term);
+    }
+  }
+}
+
+/**
+ * function for deleting taxonomy term on deletion of activity.
+ */
+function activities_taxonomy_term_delete($term, $activity){
+
+  $voc = taxonomy_vocabulary_machine_name_load($term);
+  $activity_id = $activity->id;
+
+  $query = db_select('field_data_field_activity_id','activity_id')
+    ->fields('activity_id',array('field_activity_id_value','entity_id'))
+    ->condition('field_activity_id_value',$activity_id)
+    ->execute()
+    ->fetchAssoc();
+
+  $entity_field_id = $query['entity_id'];
+
+  $hotspot_query = db_select('taxonomy_term_data','tax')
+    ->fields('tax',array('tid'))
+    ->condition('tid',$entity_field_id)
+    ->execute()
+    ->fetchAssoc();
+
+  $tid = $hotspot_query['tid'];
+
+  if(isset($tid)){
+    taxonomy_term_delete($tid);
+  }
+}
+
+/**
+ * function for node creation on performing an activity to be shown on progress page
+ */
+function activity_report_node_create($activity_id, $activity_date, $term_tid, $check_in_progress = 0, $current_user = 0) {
+
+  $entity_info = entity_load('activity', array($activity_id));
+  $activity_name = $entity_info[$activity_id]->title;
+  $hotspot_activity_type = $entity_info[$activity_id]->field_hotspot_activity['und'][0]['value'];
+  $activity_progress_status = $entity_info[$activity_id]->field_show_on_progress_page['und'][0]['value'];
+  $_SESSION['progress_activity_id']= $activity_id;
+
+  if($current_user == 0){
+    global $user;
+    $current_user = $user->uid;
+  }
+
+  // check activity 'show in progress' status
+  if($check_in_progress) {
+    if(!$activity_progress_status) {
+      return FALSE;
+    }
+  }
+
+  // if show in progress is one, node is created.
+  $query = new EntityFieldQuery();
+  $query->entityCondition('entity_type', 'node') // grab nodes
+  ->entityCondition('bundle', 'activity_report') // filter by activity_report type
+  ->propertyCondition('status', 1) // filter by published
+  ->propertyCondition('uid', $current_user)  // filter by current user
+  ->count(); // count
+
+  $node = new stdClass(); // Creating a new node object
+  $node->type = 'activity_report'; //Content type
+  $node->language = LANGUAGE_NONE;
+  node_object_prepare($node);
+  $node->title = $activity_name;
+  $node->status = 1;
+  $node->uid = $current_user;
+  $node->field_activity_id_report[LANGUAGE_NONE][0]['value'] = $activity_id;
+  $node->field_hotspot_activity_report[LANGUAGE_NONE][0]['value'] = $hotspot_activity_type;
+  $node->field_show_on_progress_report[LANGUAGE_NONE][0]['value'] = $activity_progress_status;
+  $node->field_term_id[LANGUAGE_NONE][0]['value'] = $term_tid;
+  $node->field_completion_date[LANGUAGE_NONE][0]['value'] = $activity_date;
+  node_save($node);
+  $created_nid = $node->nid;
+
+  $_SESSION['teen_progress_report_nid'] = $created_nid;
+}
+
+/**
+ * Getting of rafle count of the user
+ */
+function raffle_count($uid){
+
+  $query = db_select('eck_raffle','raf')
+    ->fields('raf',array('id'))
+    ->condition('uid',$uid)
+    ->condition('type','raffle_entry')
+    ->execute();
+  $num = $query->rowCount();
+
+  return $num;
+}
+
+// function for statistical report according to stamps earned
+function user_node_stamps($uid, $stamps){
+
+  $query = new EntityFieldQuery();
+  $entities = $query->entityCondition('entity_type', 'node')
+    ->entityCondition('bundle', 'activity_report')
+    ->propertyCondition('uid', $uid)
+    ->count()
+    ->execute();
+
+  if($entities <= $stamps){
+    return FALSE;
+  }else{
+    return TRUE;
+  }
+}
