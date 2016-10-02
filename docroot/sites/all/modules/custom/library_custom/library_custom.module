@@ -28,6 +28,25 @@ function library_custom_menu() {
     'access arguments' => array('access content'),
     'type' => MENU_SUGGESTED_ITEM,
   );
+
+  //Activities Landing page
+  $items['activities'] = array(
+    'title' => 'Activities for Program',
+    'page callback' => 'activities_page',
+    'access arguments' => array('access content'),
+    'type' => MENU_SUGGESTED_ITEM,
+    'file' => 'inc/hotspot_activities_block.inc',
+    'file path' => drupal_get_path('module', 'library_custom'),
+  );
+
+  $items['author/autocomplete'] = array(
+    'title' => 'Author Name',
+    'page callback' => '_author_name_autocomplete',
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
+    'file' => 'inc/functions.inc',
+    'file path' => drupal_get_path('module', 'library_custom'),
+  );
   
   return $items;
 }
@@ -37,16 +56,61 @@ function library_custom_menu() {
  */
 function library_custom_form_alter(&$form, &$form_state, $form_id) {
 
-  // changing of default title of content type
-  if($form_id == 'review_book_node_form') {
-    drupal_set_title('Write a Book Review');
+  $sub_title = variable_get('review_pre_header');
+  $catalog_link = variable_get('catalog_link_for_program');
+  $library_abbreviation = variable_get('library_abbreviation');
+  $email_desc = variable_get('email_description_field');
+
+  if($form_id == 'movie_review_node_form'){
+    //hidding label for other option field
+    $form['field_genre_other_option'][LANGUAGE_NONE][0]['value']['#title'] = NULL;
+    $form['title']['#prefix'] = $sub_title;
+    $form['field_catalog_link_movie_review'][LANGUAGE_NONE][0]['#description'] = 'Please enter a link to the movie in the <a href='.$catalog_link.' target="_blank">'.$library_abbreviation.' catalog</a> so that other readers can find it easily.';
+
+    //Removing of N/A radio button
+    unset($form['field_genre']['und']['#options']['_none']);
+    unset($form['field_language']['und']['#options']['_none']);
+    unset($form['field_rating']['und']['#options']['_none']);
+    unset($form['field_please_select_one']['und']['#options']['_none']);
+
+    //Changing default title
+    drupal_set_title('Write a Movie Review');
   }
 
-  if($form_id == 'booklist_node_form') {
-    drupal_set_title('Create a Booklist');
+  if($form_id == 'music_review_node_form') {
+    $form['field_artist_performer'][LANGUAGE_NONE][0]['#prefix'] = $sub_title;
+    $form['title']['#title'] = t('Album or Song Title');
+    $form['field_genre_other_option_music'][LANGUAGE_NONE][0]['value']['#title'] = NULL;
+    $form['field_catalog_link_music'][LANGUAGE_NONE][0]['#description'] = 'Please enter a link to the music in the <a href='.$catalog_link.' target="_blank">'.$library_abbreviation.' catalog</a> so that other readers can find it easily.';
+
+    unset($form['field_please_select_one_music']['und']['#options']['_none']);
+    unset($form['field_genre_music']['und']['#options']['_none']);
+
+    drupal_set_title('Write a Music Review');
+  }
+
+  if($form_id == 'video_game_review_node_form') {
+    $form['title']['#prefix'] = $sub_title;
+    $form['field_catalog_link_video_game'][LANGUAGE_NONE][0]['#description'] = 'Please enter a link to the video game in the <a href='.$catalog_link.' target="_blank">'.$library_abbreviation.' catalog</a> so that other readers can find it easily.';
+    $form['field_platform_other_option'][LANGUAGE_NONE][0]['value']['#title'] = NULL;
+
+    unset($form['field_please_select_videogame']['und']['#options']['_none']);
+    unset($form['field_age_rating_of_game']['und']['#options']['_none']);
+
+    drupal_set_title('Write a Video Game Review');
   }
 
   if($form_id == 'review_activity_node_form') {
+    $sel_options = $form['field_activity_type']['und']['#options'];
+    foreach ($sel_options as $key => $value) {
+      $activity_term = taxonomy_term_load($key);
+      if(!empty($activity_term->field_hotspot_activity_type['und'][0]['value']) == 1){
+        $opt[$key] = $value;
+      }
+    }
+    $form['field_activity_type']['und']['#options'] = $opt;
+    $form['field_activity_type']['#prefix'] = $sub_title;
+    unset($form['field_privacy_settings']['und']['#options']['_none']);
     drupal_set_title('Write an Activity Review');
   }
 
@@ -59,9 +123,15 @@ function library_custom_form_alter(&$form, &$form_state, $form_id) {
       '#attributes' => array('target' => '_blank'),
       '#weight' => 3,
     );
-
-    return $form;
   }
+
+  //Changing of description text for email field
+  if($email_desc != ''){
+    if($form_id == 'user_register_form'){
+      $form['account']['mail']['#description'] = $email_desc;
+    }
+  }
+  return $form;
 }
 
 /**
@@ -85,6 +155,18 @@ function library_custom_block_info() {
     'info' => t('Menu block for mobile'),
   );
 
+  $blocks['write_review_block'] = array(
+    'info' => t('Write a review block'),
+  );
+
+  $blocks['program_rewards_block'] = array(
+    'info' => t('Program Rewards Block'),
+  );
+
+  $blocks['hotspot_activity_block'] = array(
+    'info' => t('Hotspot activities block'),
+  );
+
   return $blocks;
 }
 
@@ -106,9 +188,38 @@ function library_custom_block_view($delta = '') {
     case 'menu_for_mobile' :
       $block['content'] = header_menu_mobile();
       break;
+
+    case 'write_review_block' :
+      $block['content'] = drupal_get_form('creating_review');
+      break;
+
+    case 'program_rewards_block' :
+      $block['content'] = view_rewards_block();
+      break;
+
+    case 'hotspot_activity_block' :
+      $block['content'] = hotspot_activities();
+      break;
   }
   
   return $block;
+}
+
+/**
+ * Implements hook_date_combo_process_alter().
+ *
+ * Disabling of future dates for dob field
+ */
+function library_custom_date_combo_process_alter(&$element, &$form_state, $context){
+
+  if($context['form']['#form_id'] == 'user_register_form' || $context['form']['#form_id'] == 'user_profile_form') {
+    $element["value"]['#datepicker_options'] = array(
+      'maxDate' => '+0D'
+    );
+    $element["value2"]['#datepicker_options'] = array(
+      'maxDate' => '+0D'
+    );
+  }
 }
 
 /**
@@ -203,6 +314,178 @@ function header_menu_mobile(){
   $output .= render($block['content']). '</div>';
 
   return $output;
+}
+
+/**
+ * Function callback for creating reviews
+ */
+function creating_review($form, $form_state){
+
+  global $base_url;
+
+  $no_review = $base_url.'/reviews';
+  $link_book_review = $base_url.'/node/add/review-book';
+  $link_movie_review = $base_url.'/node/add/movie-review';
+  $link_music_review = $base_url.'/node/add/music-review';
+  $link_video_game_review = $base_url.'/node/add/video-game-review';
+  $link_activity_review = $base_url.'/node/add/review-activity';
+
+  $values = array(0 => t('Select Review'),
+    $link_book_review => t('Book Reviews'),
+    $link_activity_review => t('Activity Reviews'),
+    $link_movie_review => t('Movie Reviews'),
+    $link_music_review => t('Music Reviews'),
+    $link_video_game_review => t('Video Game Reviews'));
+
+  $form['review_options'] = array(
+    '#title' => t('Write A Review'),
+    '#type' => 'select',
+    '#description' => t('Select Review type'),
+    '#options' => $values,
+    '#attributes' => array(
+      'class' => array('add_review_node')
+    )
+  );
+
+  return $form;
+}
+
+function view_rewards_block(){
+
+  $block = module_invoke('views', 'block_view', 'program_rewards-block_1');
+  $output = render($block['content']);
+
+  $block = module_invoke('views', 'block_view', 'program_rewards_raffle-block_1');
+  $output .= render($block['content']);
+
+  return $output;
+}
+
+/**
+ * function callback for hotspot activities block
+ */
+function hotspot_activities() {
+  
+  global $base_url;
+
+  $link_book_review = $base_url.'/node/add/review-book';
+  $link_movie_review = $base_url.'/node/add/movie-review';
+  $link_music_review = $base_url.'/node/add/music-review';
+  $link_video_game_review = $base_url.'/node/add/video-game-review';
+  $link_booklist = $base_url.'/node/add/booklist';
+
+  $view_book_review = $base_url.'/reviews';
+  $view_movie_review = $base_url.'/movie-review';
+  $view_music_review = $base_url.'/music-review-listing';
+  $view_video_game_review = $base_url.'/video-game-review';
+  $view_booklist = $base_url.'/booklists';
+  $view_activity_review = $base_url.'/activities';
+
+  $view_reviews = array(0 => t('Select from the following'),
+  $view_book_review => t('Book Reviews'),
+  $view_movie_review => t('Movie Reviews'),
+  $view_music_review => t('Music Reviews'),
+  $view_video_game_review => t('Video Game Reviews'));
+
+  $add_reviews = array(0 => t('Select from the following'),
+  $link_book_review => t('Book Reviews'),
+  $link_movie_review => t('Movie Reviews'),
+  $link_music_review => t('Music Reviews'),
+  $link_video_game_review => t('Video Game Reviews'));
+
+  $form['activity_title'] = array(
+    '#type' => 'markup',
+    '#markup' => variable_get('hotspot_block_title'),
+    '#prefix' => '<div class="activity_title">',
+    '#suffix' => '</div>',
+    '#weight' => 1,
+  );
+
+  $form['activity_description'] = array(
+    '#type' => 'markup',
+    '#markup' => variable_get('hotspot_block_description'),
+    '#prefix' => '<div class="activity_desc">',
+    '#suffix' => '</div>',
+    '#weight' => 2,
+  );
+
+
+  $form['activities_read_list'] = array(
+    '#title' => t('Read Reviews of Bay Area Hot Spots'),
+    '#type' => 'select',
+    '#options' => activities_view_select_list('hotspot_activities','1'),
+    '#attributes' => array(
+      'class' => array('activities_list_read')
+    ),
+    '#weight' => 3,
+  );
+
+  global $user;
+  $current_user = $user->uid;
+
+  if($current_user != 0){
+    $form['activities_submit_list'] = array(
+      '#title' => t('Submit a Review'),
+      '#type' => 'select',
+      '#options' => activities_submit_select_list('hotspot_activities','1'),
+      '#attributes' => array(
+        'class' => array('activities_list_submit')
+      ),
+      '#weight' => 4,
+    );
+  }
+
+  if($current_user != 0){
+    $form['suggest_link'] = array(
+      '#type' => 'link',
+      '#title' => variable_get('hotspot_block_link_title'),
+      '#href' => variable_get('hotspot_block_link'),
+      '#attributes' => array('target' => '_blank'),
+      '#prefix' => '<div class="suggest-link">',
+      '#suffix' => '</div>',
+      '#weight' => 5,
+    );
+  }
+
+  $form['activity_review_title'] = array(
+    '#type' => 'markup',
+    '#markup' => variable_get('review_activity_block_title'),
+    '#prefix' => '<div class="activity_review_title">',
+    '#suffix' => '</div>',
+    '#weight' => 6,
+  );
+
+  $form['activity_review_description'] = array(
+    '#type' => 'markup',
+    '#markup' => variable_get('review_activity_block_description'),
+    '#prefix' => '<div class="activity_review_desc">',
+    '#suffix' => '</div>',
+    '#weight' => 7,
+  );
+
+  if($current_user != 0){
+    $form['read_submit'] = array(
+      '#title' => t('Write a Review'),
+      '#type' => 'select',
+      '#options' => $add_reviews,
+      '#attributes' => array(
+        'class' => array('reviews_add')
+      ),
+      '#weight' => 8,
+    );
+  }
+
+  $form['read_reviews'] = array(
+    '#title' => t('Read Existing Reviews'),
+    '#type' => 'select',
+    '#options' => $view_reviews,
+    '#attributes' => array(
+      'class' => array('reviews_list_view')
+    ),
+    '#weight' => 9,
+  );
+
+  return $form;
 }
 
 /**
@@ -315,31 +598,4 @@ function library_custom_profile2_presave($profile) {
     $profile->field_user_avatar[LANGUAGE_NONE][0]['target_id'] = $_SESSION['user_avatar_id'];
     unset($_SESSION['user_avatar_id']);
   }
-}
-
-/**
- * Implements function to check if program is active or not.
- *
- * @return Boolean
- *   0 if not active, 1 if active 
- */
-function is_program_active() {
-
-  $program_start_date = variable_get('pmc_start_date', 0);
-  $program_end_date = variable_get('pmc_end_date', 0);
-
-  if ($program_start_date && $program_end_date) {
-    $now = time();
-    $program_start_date = strtotime($program_start_date);
-    $program_end_date = strtotime($program_end_date);
-
-    if (($now >= $program_start_date) && ($now <= $program_end_date)) {
-      return 1;
-    } else {
-      drupal_set_message("The program is currently closed.");
-      return 0;
-    }
-  }
-  
-  return 1;
 }
