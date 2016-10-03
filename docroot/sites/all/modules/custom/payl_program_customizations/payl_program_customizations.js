@@ -1,8 +1,8 @@
 /**
  * @file
  * Adds form selector behaviors for setting up random items.
- * May move to ajax down the line.
  */
+
 // Extend string
 if (typeof String.prototype.startsWith != 'function') {
   // see below for better implementation!
@@ -10,11 +10,12 @@ if (typeof String.prototype.startsWith != 'function') {
     return this.indexOf(str) === 0;
   };
 }
+
 (function ($) {
   Drupal.behaviors.payl_program_customizations = {
     attach: function() {
       Drupal.settings.payl_program_customizations_birthday_limit = parseInt(Drupal.settings.payl_program_customizations_birthday_limit);
-            var birthday = new Date($('#edit-profile-main-field-user-birthday-und-0-value-datepicker-popup-0').val());
+      var birthday = new Date($('#edit-profile-main-field-user-birthday-und-0-value-datepicker-popup-0').val());
       var birthday_timestamp = Math.floor(birthday.getTime() / 1000);
 
       var user_dob = Drupal.settings.payl_program_customizations_user_date_of_birth;
@@ -38,6 +39,7 @@ if (typeof String.prototype.startsWith != 'function') {
         $('.page-user-edit .form-item-name').show();
       }
 
+      // showing and hiding of username field according to user's age
       $('#edit-profile-main-field-user-birthday-und-0-value-datepicker-popup-0').bind('change', function(date_object) {
         Drupal.settings.payl_program_customizations_birthday_limit = parseInt(Drupal.settings.payl_program_customizations_birthday_limit);
         var birthday = new Date($('#edit-profile-main-field-user-birthday-und-0-value-datepicker-popup-0').val());
@@ -72,8 +74,6 @@ if (typeof String.prototype.startsWith != 'function') {
 
       var edit_username = $('#edit-account #edit-name').val();
 
-
-
       //username not to change on field errors 
       var url = window.location.href;
       var array = url.split('/');
@@ -101,9 +101,9 @@ if (typeof String.prototype.startsWith != 'function') {
     }
   }
 
-
   function payl_program_customizations_change_name() {
     name = $('#edit-name').val();
     $('.current-username').html(name);
   }
+
 })(jQuery);
