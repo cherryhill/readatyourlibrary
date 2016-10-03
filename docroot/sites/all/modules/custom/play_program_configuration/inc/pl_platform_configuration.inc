@@ -1,7 +1,7 @@
 <?php
 
 // Function callback for purchase link form.
-function platform_configuration($form, &$form_state) {
+function pl_platform_configuration($form, &$form_state) {
 
   $default_date = date('d/m/y');
   $program_start_date = variable_get('pmc_start_date', $default_date);

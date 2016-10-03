@@ -1,7 +1,7 @@
 <?php
 
 // Function callback for program details.
-function platform_details($form, &$form_state) {
+function pl_platform_details($form, &$form_state) {
 
   $form['program_details'] = array(
     '#type' => 'fieldset', 
@@ -270,7 +270,7 @@ function platform_details($form, &$form_state) {
 
 // validation for purchase link form
 if(isset($purchase_link)){
-  function platform_details_validate($form, &$form_state) {
+  function pl_platform_details_validate($form, &$form_state) {
     $purchase_link = $form_state['values']['pmc_purchase_link'];
     if(filter_var($purchase_link, FILTER_VALIDATE_URL) === false) {
       form_set_error('pmc_purchase_link','Please enter a valid URL');

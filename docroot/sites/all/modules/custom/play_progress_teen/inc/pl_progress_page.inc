@@ -3,7 +3,7 @@
 /**
  * ajax callback for progress page
  */
-function complete_activity_progress(){
+function pl_complete_activity_progress(){
   global $user;
   $activity_uid = $user->uid;
 
@@ -13,11 +13,11 @@ function complete_activity_progress(){
   $activity_term = taxonomy_term_load($tid);
   $activity_id = $activity_term->field_activity_id['und'][0]['value'];
 
-  $activity_limit = retrieve_activity_limit($activity_id);
-  $node_created = activity_report_node_creation($activity_uid, $activity_id);
+  $activity_limit = pl_retrieve_activity_limit($activity_id);
+  $node_created = pl_activity_report_node_creation($activity_uid, $activity_id);
 
   if($node_created < $activity_limit){
-    activity_report_node_create($activity_id, $activity_date, $tid);
+    pl_activity_report_node_create($activity_id, $activity_date, $tid);
     play_library_program_create_activity_entry($activity_id, $activity_uid);
   }else{
     $_SESSION['exceed-activity-limit'] = drupal_set_message(t('You have recorded maximum number of times this activity can be performed.'),'error');
@@ -25,7 +25,7 @@ function complete_activity_progress(){
   echo 1;
 }
 
-function user_avatar_progress_page($uid, $style){
+function pl_user_avatar_progress_page($uid, $style){
 
   if($uid == ''){
     return FALSE;
@@ -60,7 +60,7 @@ function user_avatar_progress_page($uid, $style){
 /**
  * Provides user avatar image uri used for progress print pdf page
  */
-function user_avatar_progress_print_page($uid){
+function pl_user_avatar_progress_print_page($uid){
 
   global $user;
   $user_pf = profile2_load_by_user($user->uid);
@@ -84,7 +84,7 @@ function user_avatar_progress_print_page($uid){
 /**
  * Retrieves activity limt that is set
  */
-function retrieve_activity_limit($activity_id){
+function pl_retrieve_activity_limit($activity_id){
   $entity_info = entity_load('activity', array($activity_id));
   return $activity_name = $entity_info[$activity_id]->field_activity_limit['und'][0]['value'];
 }
@@ -92,7 +92,7 @@ function retrieve_activity_limit($activity_id){
 /**
  * Retrieves how many times an activity report node has been created by the user
  */
-function activity_report_node_creation($account_id, $activity_id){
+function pl_activity_report_node_creation($account_id, $activity_id){
   $query = new EntityFieldQuery();
   $query->entityCondition('entity_type', 'node');
   $query->entityCondition('bundle', 'activity_report');
@@ -101,7 +101,7 @@ function activity_report_node_creation($account_id, $activity_id){
   return $query->count()->execute();
 }
 
-function specefic_user_nodes($current_uid){
+function pl_specefic_user_nodes($current_uid){
   $user_stamp_query = db_select('node','n');
   $user_stamp_query->condition('type','activity_report');
   $user_stamp_query->condition('uid',$current_uid);
@@ -114,7 +114,7 @@ function specefic_user_nodes($current_uid){
   return 0;
 }
 
-function progress_print_page(){
+function pl_progress_print_page(){
 
   global $user;
   global $base_url;
@@ -123,7 +123,7 @@ function progress_print_page(){
 
   $u_avatar = '';
   $u_name = $user->name;
-  $u_avatar_image = user_avatar_progress_print_page($uid);
+  $u_avatar_image = pl_user_avatar_progress_print_page($uid);
   $av_img = explode($base_url.'/', $u_avatar_image);
   $u_avatar = $av_img[1];
 
@@ -131,7 +131,7 @@ function progress_print_page(){
   $pg_title = variable_get('pg_title');
   $page_desc = variable_get('pg_desc', array('value' => '', 'format' => NULL));
   $page_desc = $page_desc['value'];
-  $activity_completed = specefic_user_nodes($uid);
+  $activity_completed = pl_specefic_user_nodes($uid);
   $activities_left = $grids - $activity_completed;
 
   $block_rewards = module_invoke('views','block_view','prize_won_for_progress_page-block_1');
