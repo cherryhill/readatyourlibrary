@@ -3,7 +3,7 @@
   global $user;
   global $base_url;
   $current_uid = $user->uid;
-  $raff_count = raffle_count($current_uid);
+  $raff_count = pl_raffle_count($current_uid);
   $imgStyle = 'avatar_style';
 ?>
 <div class="progress-page">
@@ -20,14 +20,14 @@
 </div>
 <div class="user-desc">
 <div class="avatar-id">
-	<?php print user_avatar_progress_page($current_uid, $imgStyle); ?>
+	<?php print pl_user_avatar_progress_page($current_uid, $imgStyle); ?>
 </div>
 <div class="point-status">
 <div class="activity-status">
-  <?php print 'Activities Completed: '.specefic_user_nodes($current_uid).' activities'; ?>
+  <?php print 'Activities Completed: '.pl_specefic_user_nodes($current_uid).' activities'; ?>
 </div>
 <div class="activity-remaining">
-<?php $grids = variable_get('no_of_grids'); $activities_left = $grids - specefic_user_nodes($current_uid);
+<?php $grids = variable_get('no_of_grids'); $activities_left = $grids - pl_specefic_user_nodes($current_uid);
   if($activities_left < 0){ print 'Activities Left to Complete: '.'0'.' activities';
   }else{ print 'Activities Left to Complete: '.$activities_left.' activities'; } ?>
 </div>
