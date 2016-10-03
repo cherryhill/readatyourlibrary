@@ -3,7 +3,7 @@
 /**
  * function callback for options in select list for hotspot activities
  */
-function activities_view_select_list($term, $activity, $progress = '0') {
+function pl_activities_view_select_list($term, $activity, $progress = '0') {
 
   global $base_url;
   $voc = taxonomy_vocabulary_machine_name_load($term);
@@ -27,7 +27,7 @@ function activities_view_select_list($term, $activity, $progress = '0') {
 	return $select_options;
 }
 
-function activities_submit_select_list($term,$activity) {
+function pl_activities_submit_select_list($term,$activity) {
 
 	global $base_url;
 	$voc = taxonomy_vocabulary_machine_name_load($term);
@@ -51,7 +51,7 @@ function activities_submit_select_list($term,$activity) {
 /**
  * function callback for Activities landing page
  */
-function activities_page(){
+function pl_activities_page(){
 
 	$block_one_link = variable_get('static_block_one_title_link');
 	$block_one_title = variable_get('static_block_one_title');
