@@ -7,7 +7,7 @@ function play_program_configuration_init() {
 
   $program_start_date = variable_get('pmc_start_date', 0);
   $program_end_date = variable_get('pmc_end_date', 0);
-  $setting = array('library_custom' => array('proStart' => $program_start_date, 'proEnd' => $program_end_date));
+  $setting = array('play_program_configuration' => array('proStart' => $program_start_date, 'proEnd' => $program_end_date));
   drupal_add_js($setting, 'setting');
 }
 

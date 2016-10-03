@@ -294,11 +294,11 @@ if(!div2.is(':empty')){
 
         // Event start date and end date
 
-        var proStart = Drupal.settings.private_msg_custom.proStart;
+        var proStart = Drupal.settings.play_program_configuration.proStart;
         var start_string = proStart.split('-');
         var pro_start_date = parseInt(start_string[0] + start_string[1] + start_string[2]);
 
-        var proEnd = Drupal.settings.private_msg_custom.proEnd;
+        var proEnd = Drupal.settings.play_program_configuration.proEnd;
         var end_string = proEnd.split('-');
         var pro_end_date = parseInt(end_string[0] + end_string[1] + end_string[2]);
 
