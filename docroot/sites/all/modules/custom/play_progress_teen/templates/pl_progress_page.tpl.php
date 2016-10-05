@@ -43,7 +43,7 @@
       print  '<div id = "errorwarn"></div>';
       print  '<div id = "errorwarn-activity"></div>';
 
-	  $block = block_load('progress_teen_program', 'progress_submit_block');
+	  $block = block_load('play_progress_teen', 'progress_submit_block');
 	  $render_block = _block_get_renderable_array(_block_render_blocks(array($block)));
   	  $output = drupal_render($render_block);
   	  print $output; 
