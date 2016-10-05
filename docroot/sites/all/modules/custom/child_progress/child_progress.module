@@ -51,7 +51,7 @@ function child_progress_block_view($block_name = '') {
 
 
 /**
-*  No off Sticker count on mobile progress
+*  No off Sticker count on mobile progress.
 */
 
 function no_of_sticker_on_mobile() {
@@ -73,7 +73,7 @@ function no_of_sticker_on_mobile() {
 }
 
 
-// This is custom block shown the user progress of reading activity
+// This is custom block shown the user progress of reading activity.
 
 function progress_user_block() {
   global $user;
@@ -83,7 +83,7 @@ function progress_user_block() {
     WHERE c.uid = :uid",array(':uid' => $uid))->fetchAll();
   $total_read_days = $count_query[0]->image_url;
 
-  // get all rewards
+  // get all rewards.
   $qry = db_select('field_data_field_activity_fired_hook', 'fh');
   $qry->join('field_data_field_activity_points', 'ap', 'ap.entity_id = fh.entity_id');
   $qry->Join('field_data_field_reward_criteria_activity', 'rca', 'fh.entity_id = rca.field_reward_criteria_activity_target_id');
@@ -136,7 +136,7 @@ function progress_user_block() {
 }
 
 
-// children progress page on mobile
+// children progress page on mobile.
 
 function generate_mobile_progress_form($form, &$form_state) {
   $qry = db_select('eck_activity', 'eck_a');
@@ -186,7 +186,7 @@ function generate_mobile_progress_form_submit($form, &$form_state) {
   $image_name = $form_state['values']['image_name'];
   $activity_id = $form_state['values']['activity_id'];
   
-  // Query the reward date for checking no any sticker drop before rewrad date 
+  // Query the reward date for checking no any sticker drop before rewrad date.
   $query_date = db_select('calendar', 'c')
   ->fields('c', array('date'))
   ->condition('uid', $uid)
@@ -196,7 +196,7 @@ function generate_mobile_progress_form_submit($form, &$form_state) {
   $reward_date = $query_date->fetchAssoc();
   $reward_date = $reward_date['date']; 
    
-   // Query for checking sticker count for same date
+   // Query for checking sticker count for same date.
   $sticker_count = db_select('calendar', 'c')
   ->fields('c', array('image_url'))
   ->condition('uid', $uid)
@@ -223,11 +223,10 @@ function generate_mobile_progress_form_submit($form, &$form_state) {
           'date'=>$date,
         ));
       $insert_query->execute();
-      // query for getting the max id for inserti the reward id at time of rewrad claim
+      // query for getting the max id for inserti the reward id at time of rewrad claim.
        $query = db_select('calendar');
         $query->addExpression('MAX(id)');
         $max_id = $query->execute()->fetchField();
-        //print_r($max_id);die();
         $_SESSION['usr_calendar_id'] = $max_id;
 
       play_library_program_create_activity_entry($activity_id, $uid); 
@@ -263,6 +262,9 @@ function child_progress_init() {
   drupal_add_js($setting, 'setting');
   
 }
+/**
+ * Implements hook_menu().
+ */
 
 function child_progress_menu() {
 
@@ -308,7 +310,7 @@ function test() {
 }
 
 /**
- * Implements hook_theme for making tpl file for children progress page
+ * Implements hook_theme for making tpl file for children progress page.
  */
 
  function child_progress_theme($existing, $type, $theme, $path) {
@@ -323,7 +325,7 @@ function test() {
 }
 
 /**
-*  Patron Activity Record form build is is for activity_record page
+*  Patron Activity Record form build is is for activity_record page.
 */
 
 function patron_activity_record_form($form, &$form_state) {
@@ -393,7 +395,7 @@ function patron_activity_record_form_submit($form, &$form_state) {
     $date = strtotime(date("Y-m-d", $i));
     $event_image = 'sticker_sun_0.png';
 
-    // check to see weather same date exists in db
+    // check to see weather same date exists in db.
     $check_query = db_select('calendar','cal')
       ->fields('cal',array('uid','date'))
       ->condition('uid',$user_uid)
@@ -431,6 +433,13 @@ function patron_activity_record_form_submit($form, &$form_state) {
 
 /* function for restrict calendar date for only one drop*/
 
+/**
+ * Function restrict the user to drop only one sticke on calendar.
+  * @param $uid -> This is the user id og login user.
+  * @param $event_date -> This is the date from calendar on which user drop the sticker.
+  * This function return the condition TRUE and FALSE for calendar date having the sticker or not.
+ */
+
 function calendar_date_restriction($uid, $event_date) {
   $sticker_count = db_select('calendar', 'c')
   ->fields('c', array('image_url'))
@@ -448,7 +457,7 @@ function calendar_date_restriction($uid, $event_date) {
 
 
 /**
- * This is for calendar ajax functinality user drag and drop sticker and get point and reward
+ * This is for calendar ajax functinality user drag and drop sticker and get point and reward.
  */
 
 
@@ -503,7 +512,7 @@ function calendar_page() {
 
   if(!$reward_date) {
     if (!$no_of_sticker) {
-      if($image_id != '') { //die('5638');
+      if($image_id != '') {
         db_update('calendar')
         ->fields(array('image_url' => $event_image,'date' => $event_time))
         ->condition ('id', $image_id)
@@ -518,26 +527,26 @@ function calendar_page() {
         ));
         $insert_query->execute();
 
-      // get the just inserted ID from calendar table
-      // this will be used to update the record for reward
+      // get the just inserted ID from calendar table.
+      // this will be used to update the record for reward.
       // if user receives one after this activity.
         $query = db_select('calendar');
         $query->addExpression('MAX(id)');
         $max_id = $query->execute()->fetchField();
         $_SESSION['usr_calendar_id'] = $max_id;
 
-        $node = node_load(495);//495
+        $node = node_load(495);
         //auto_role_allocation_node_update($current_node);
-        // this is for calendar activity
+        // this is for calendar activity.
         $hook = "node_update|node|{$node->type}|updated";
         _play_library_program_invoke_activity_entry_hooks($node, 'node', $hook, 1);
       }
       echo 1;
-    } else { //die('no sticker');
+    } else {
       echo 0;
     }
   }
-  else { //die('%^@#');
+  else {
     if($reward_date > $event_time) {
       
       echo 0;
@@ -560,8 +569,8 @@ function calendar_page() {
             ));
           $insert_query->execute();
 
-      // get the just inserted ID from calendar table
-      // this will be used to update the record for reward
+      // get the just inserted ID from calendar table.
+      // this will be used to update the record for reward.
       // if user receives one after this activity.
           $query = db_select('calendar');
           $query->addExpression('MAX(id)');
@@ -573,7 +582,7 @@ function calendar_page() {
             );
         $node = node_load(495);//495
         //auto_role_allocation_node_update($current_node);
-        // this is for calendar activity
+        // this is for calendar activity.
         $hook = "node_update|node|{$node->type}|updated";
         _play_library_program_invoke_activity_entry_hooks($node, 'node', $hook, 1);
       }
@@ -588,27 +597,20 @@ function calendar_page() {
 
 
 /**
- *  This is the json data for calendar for maping the date and image on calendar
+ *  This is the json data for calendar for maping the date and image on calendar.
  */
 
 function generate_json_data() {
   global $user;
   $uid = $user->uid;
   $current_time = time();
-  $current_date = date('Y-m-d', $current_time);
-
-
-  
+  $current_date = date('Y-m-d', $current_time);  
   $query_state = db_select('calendar', 'c')
   ->fields('c', array('image_url','date','id', 'reward_id'))
   ->orderBy('date', 'ASC')
   ->condition('uid', $uid)
   ->execute();
   $result = $query_state->fetchAll();
-
-
-
-
   $events = array();
   $i = 1;
   $j = 1;
