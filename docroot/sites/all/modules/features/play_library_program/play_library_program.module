@@ -654,7 +654,7 @@ function _play_library_program_process_activity_entry($entity, $type) {
     $firing_hook_type = $entity_info[$activity_id]->field_activity_fired_hook[LANGUAGE_NONE][0]['value'];
         if($firing_hook_type != 'node_update|node|sticker|updated'){
           $current_date = date("Y-m-d");
-          activity_report_node_create($activity_id, $current_date, 0, 1, $entity->uid);
+          //activity_report_node_create($activity_id, $current_date, 0, 1, $entity->uid);
       }
 
     // if user won reward, update the progress report node to indicate 'reward won'
@@ -678,7 +678,7 @@ function _play_library_program_process_activity_entry($entity, $type) {
     }
     
     foreach ($rewards_user_can_claim as $rid) {
-      //play_library_program_update_user_calendar_state($rid);
+      play_library_program_update_user_calendar_state($rid);
       play_library_program_create_reward_claim($rid, $entity->uid);
     }
 }
