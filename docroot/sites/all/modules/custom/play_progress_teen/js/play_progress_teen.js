@@ -2,7 +2,7 @@
  * function callback for progress page report
  */
 (function($) {
-Drupal.behaviors.library_custom = {
+Drupal.behaviors.play_progress_teen = {
   attach: function (context, settings) {
 
   $('#pg-report').click(function() {

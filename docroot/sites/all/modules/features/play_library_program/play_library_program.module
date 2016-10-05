@@ -628,59 +628,59 @@ function _get_activity_frequency($aid) {
  * Processes a reward claim.
  */
 function _play_library_program_process_activity_entry($entity, $type) {
-    // get the activity id and other details form $entity (activity entry).
-    $activity_id = $entity->field_activity_entry_activity[LANGUAGE_NONE][0]['target_id'];
-    $points_from_activity = $entity->field_activity_point[LANGUAGE_NONE][0]['value'];
-    $activity_frequency = _get_activity_frequency($activity_id);
+
+  // get the activity id and other details form $entity (activity entry).
+  $activity_id = $entity->field_activity_entry_activity[LANGUAGE_NONE][0]['target_id'];
+  $points_from_activity = $entity->field_activity_point[LANGUAGE_NONE][0]['value'];
+  $activity_frequency = _get_activity_frequency($activity_id);
     
-    // get the number of times user has performed the current activity
-    $current_participation_count = play_library_program_retrieve_activity_participation($activity_id, $entity->uid);
+  // get the number of times user has performed the current activity
+  $current_participation_count = play_library_program_retrieve_activity_participation($activity_id, $entity->uid);
     
-    // call userpoint API to update user points
-    if ($points_from_activity > 0 && $current_participation_count <= $activity_frequency) {
-        $userpoints_txn = array(
-            'uid' => $entity->uid,
-            'points' => $points_from_activity,
-        );
-        userpoints_userpointsapi($userpoints_txn);
+  // call userpoint API to update user points
+  if ($points_from_activity > 0 && $current_participation_count <= $activity_frequency) {
+    $userpoints_txn = array(
+      'uid' => $entity->uid,
+      'points' => $points_from_activity,
+    );
+    userpoints_userpointsapi($userpoints_txn);
+  }
+
+  // get all the rewards associated with the activity
+  $activity_rewards = _play_library_program_get_activity_reward_ids($activity_id, $current_participation_count, $entity->uid);
+  $rewards_user_can_claim = check_rewards_user_can_claim($entity->uid, $activity_rewards, $activity_id);  
+  $entity_info = entity_load('activity', array($activity_id));
+  $firing_hook_type = $entity_info[$activity_id]->field_activity_fired_hook[LANGUAGE_NONE][0]['value'];
+
+  if($firing_hook_type != 'node_update|node|sticker|updated'){
+    $current_date = date("Y-m-d");
+    if (function_exists('play_progress_teen_pl_activity_report_node_create')) { 
+      pl_activity_report_node_create($activity_id, $current_date, 0, 1, $entity->uid);
     }
+  }
 
-    // get all the rewards associated with the activity
-    $activity_rewards = _play_library_program_get_activity_reward_ids($activity_id, $current_participation_count, $entity->uid);
+  // if user won reward, update the progress report node to indicate 'reward won'
+  // statu on the progress grid
+  if(count($rewards_user_can_claim)) {
+    if(isset($_SESSION['teen_progress_report_nid'])) {
+      $progress_report_nid = $_SESSION['teen_progress_report_nid'];
+      unset($_SESSION['teen_progress_report_nid']);
 
-    $rewards_user_can_claim = check_rewards_user_can_claim($entity->uid, $activity_rewards, $activity_id);
-    
-    $entity_info = entity_load('activity', array($activity_id));
-    $firing_hook_type = $entity_info[$activity_id]->field_activity_fired_hook[LANGUAGE_NONE][0]['value'];
-        if($firing_hook_type != 'node_update|node|sticker|updated'){
-          $current_date = date("Y-m-d");
-          //activity_report_node_create($activity_id, $current_date, 0, 1, $entity->uid);
-      }
-
-    // if user won reward, update the progress report node to indicate 'reward won'
-    // statu on the progress grid
-    if(count($rewards_user_can_claim)) {
-
-      if(isset($_SESSION['teen_progress_report_nid'])) {
-        $progress_report_nid = $_SESSION['teen_progress_report_nid'];
-        unset($_SESSION['teen_progress_report_nid']);
-
-        db_update('field_data_field_won_reward')
-        ->fields(array('field_won_reward_value' => 1))
-        ->condition ('entity_id', $progress_report_nid)
-        ->execute();
-      }
-
-    } else {
-      if(isset($_SESSION['teen_progress_report_nid'])) {
-        unset($_SESSION['teen_progress_report_nid']);
-      }
+      db_update('field_data_field_won_reward')
+      ->fields(array('field_won_reward_value' => 1))
+      ->condition ('entity_id', $progress_report_nid)
+      ->execute();
     }
-    
-    foreach ($rewards_user_can_claim as $rid) {
-      play_library_program_update_user_calendar_state($rid);
-      play_library_program_create_reward_claim($rid, $entity->uid);
+  } else {
+    if(isset($_SESSION['teen_progress_report_nid'])) {
+      unset($_SESSION['teen_progress_report_nid']);
     }
+  }
+    
+  foreach ($rewards_user_can_claim as $rid) {
+    play_library_program_update_user_calendar_state($rid);
+    play_library_program_create_reward_claim($rid, $entity->uid);
+  }
 }
 
 
