@@ -738,25 +738,6 @@ function raffle_winner_ajax() {
 
 
 
-
-/* function for restrict calendar date for only one drop*/
-
-function calendar_date_restriction($uid, $event_date) {
-  $sticker_count = db_select('calendar', 'c')
-  ->fields('c', array('image_url'))
-  ->condition('uid', $uid,'=')
-  ->condition('date', $event_date,'=')
-  ->execute();
-  $no_of_sticker = $sticker_count->rowCount();
-  if($no_of_sticker > 1) {
-    return FALSE;
-  }
-  else {
-    return TRUE;
-  }
-}
-
-
 function user_progress() {
   global $user;
   $uid = $user->uid;
