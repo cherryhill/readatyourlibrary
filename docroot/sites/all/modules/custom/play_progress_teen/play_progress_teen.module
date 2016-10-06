@@ -163,57 +163,65 @@ function play_progress_teen_theme(){
  */
 function pl_activities_term_save($term, $fire_hook, $activity) {
 
-  $voc = taxonomy_vocabulary_machine_name_load($term);
-  $activity_term_vid = $voc->vid;
-  $activity_id = $activity->id;
-  $activity_title = $activity->title;
-  $activity_hotspot_value = $activity->field_hotspot_activity['und'][0]['value'];
-  $activity_firehook = $activity->field_activity_fired_hook['und'][0]['value'];
-  $activity_progress_page = $activity->field_show_on_progress_page['und'][0]['value'];
+  // TRUE if the given table exists, otherwise FALSE.
+  if(db_table_exists('field_data_field_activity_id') == TRUE) {
+  
+    $voc = taxonomy_vocabulary_machine_name_load($term);
+    $activity_term_vid = $voc->vid;
+    $activity_id = $activity->id;
+    $activity_title = $activity->title;
+    $activity_hotspot_value = $activity->field_hotspot_activity['und'][0]['value'];
+    $activity_firehook = $activity->field_activity_fired_hook['und'][0]['value'];
+    $activity_progress_page = $activity->field_show_on_progress_page['und'][0]['value'];
 
-  $query = db_select('field_data_field_activity_id','activity_id')
-    ->fields('activity_id',array('field_activity_id_value','entity_id'))
-    ->condition('field_activity_id_value',$activity_id)
-    ->execute()
-    ->fetchAssoc();
 
-  $field_activity_id = $query['field_activity_id_value'];
-  $entity_field_id = $query['entity_id'];
 
-  if(!isset($field_activity_id)){
-    if($activity_firehook == $fire_hook){
-      $hotspot_activity_term = new stdClass();
-      $hotspot_activity_term->name = $activity_title;
-      $hotspot_activity_term->vid = $activity_term_vid; // The ID of the parent vocabulary
-      $hotspot_activity_term->parent = 0; // This tells taxonomy that this is a top-level term
-      
-      taxonomy_term_save($hotspot_activity_term);
-      $tid_term = $hotspot_activity_term->tid;
-      $activity_term = taxonomy_term_load($tid_term);
-
-      $activity_term->field_activity_id['und'][0]['value'] = $activity_id; 
-      $activity_term->field_hotspot_activity_type['und'][0]['value'] = $activity_hotspot_value ? $activity_hotspot_value:0;
-      $activity_term->field_progress_page_term['und'][0]['value'] = $activity_progress_page ? $activity_progress_page:0;
-      taxonomy_term_save($activity_term);
-      }
-  }else if(isset($field_activity_id)) {
-    $hotspot_query = db_select('taxonomy_term_data','tax')
-      ->fields('tax',array('tid'))
-      ->condition('tid',$entity_field_id)
+    $query = db_select('field_data_field_activity_id','activity_id')
+      ->fields('activity_id',array('field_activity_id_value','entity_id'))
+      ->condition('field_activity_id_value',$activity_id)
       ->execute()
       ->fetchAssoc();
 
-    $tid = $hotspot_query['tid'];
-    if($activity_firehook != $fire_hook){
-      taxonomy_term_delete($tid);
-    }else{
-      $activity_term = taxonomy_term_load($tid);
-      $activity_term->field_activity_id['und'][0]['value'] = $activity_id; 
-      $activity_term->field_hotspot_activity_type['und'][0]['value'] = $activity_hotspot_value;
-        $activity_term->field_progress_page_term['und'][0]['value'] = $activity_progress_page;
-        $activity_term->name = $activity_title;
-      taxonomy_term_save($activity_term);
+    $field_activity_id = $query['field_activity_id_value'];
+    $entity_field_id = $query['entity_id'];
+
+    if(!isset($field_activity_id)){
+      if($activity_firehook == $fire_hook){
+        $hotspot_activity_term = new stdClass();
+        $hotspot_activity_term->name = $activity_title;
+        $hotspot_activity_term->vid = $activity_term_vid; // The ID of the parent vocabulary
+        $hotspot_activity_term->parent = 0; // This tells taxonomy that this is a top-level term
+        
+        taxonomy_term_save($hotspot_activity_term);
+        $tid_term = $hotspot_activity_term->tid;
+        $activity_term = taxonomy_term_load($tid_term);
+
+        $activity_term->field_activity_id['und'][0]['value'] = $activity_id; 
+        $activity_term->field_hotspot_activity_type['und'][0]['value'] = $activity_hotspot_value ? $activity_hotspot_value:0;
+        $activity_term->field_progress_page_term['und'][0]['value'] = $activity_progress_page ? $activity_progress_page:0;
+        taxonomy_term_save($activity_term);
+        }
+    }else if(isset($field_activity_id)) {
+      $hotspot_query = db_select('taxonomy_term_data','tax')
+        ->fields('tax',array('tid'))
+        ->condition('tid',$entity_field_id)
+        ->execute()
+        ->fetchAssoc();
+
+      $tid = $hotspot_query['tid'];
+      if($activity_firehook != $fire_hook){
+        taxonomy_term_delete($tid);
+      }else{
+        $activity_term = taxonomy_term_load($tid);
+        $activity_term->field_activity_id['und'][0]['value'] = $activity_id; 
+        $activity_term->field_hotspot_activity_type['und'][0]['value'] = $activity_hotspot_value;
+          $activity_term->field_progress_page_term['und'][0]['value'] = $activity_progress_page;
+          $activity_term->name = $activity_title;
+        taxonomy_term_save($activity_term);
+      }
     }
+  } else {
+    return FALSE;
   }
 }
 
