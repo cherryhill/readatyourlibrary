@@ -40,6 +40,7 @@ function reward_notifications_block_view($delta = '') {
 }
 
 function _reward_claim_onscreen_message() {
+
   global $user;
   $uid = $user->uid;
 
@@ -92,9 +93,7 @@ function reward_notifications_menu(){
   return $items;
 }
 
-/**
- * function to provide form for reward winners
- */
+//function to provide form for reward winners
 function claim_reward($form_state, $arg){
 
   $rid = $arg['build_info']['args'][0];
@@ -161,9 +160,7 @@ function claim_reward($form_state, $arg){
 return $form;
 }
 
-/**
- * submit handler for form build in function claim_reward
- */
+// submit handler for form build in function claim_reward
 function claim_reward_submit($form, &$form_state){
 
   $reward_title = $form_state['values']['title'];
@@ -279,7 +276,7 @@ function claim_raffle($form_state, $arg){
     '#value' => t('SAVE'),
   );
 
-return $form;
+  return $form;
 }
 
 /**
