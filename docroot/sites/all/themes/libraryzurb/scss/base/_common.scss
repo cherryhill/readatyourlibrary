@@ -9,6 +9,14 @@
 .pagination.pager {
 	float: right;
 	margin-right: 10px;
+	  @include mobile {
+	  	float: none;
+	  	margin-right: 0;
+	  	display: inline-block;
+	  	position: relative;
+	  	height: auto;
+
+	  }
 	 li {
 	 	border-left: 1px solid transparent;
 	 	padding: 0;
@@ -90,6 +98,9 @@ h1#page-title {
 	@include mclaren;
 	color: $black;
 	font-size: 28px;
+	 @include mobile {
+	 	font-size: 22px !important;
+	 }
 }
 .views-field-count {
 	padding-left: 17px;
@@ -232,4 +243,14 @@ h1#page-title {
   }
   .mail-notification-hidden {
   	display: none;
+  }
+ 
+  .confirm-parent, .password-parent {
+  	@include mobile {
+  		width: 100% !important;
+  		max-width: 300px;
+  	}
+  }
+  #edit-submit {
+  	@include yellowbutton;
   }

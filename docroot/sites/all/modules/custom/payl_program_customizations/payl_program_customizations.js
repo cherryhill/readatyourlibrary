@@ -1,8 +1,8 @@
 /**
  * @file
  * Adds form selector behaviors for setting up random items.
- * May move to ajax down the line.
  */
+
 // Extend string
 if (typeof String.prototype.startsWith != 'function') {
   // see below for better implementation!
@@ -10,24 +10,49 @@ if (typeof String.prototype.startsWith != 'function') {
     return this.indexOf(str) === 0;
   };
 }
+
 (function ($) {
   Drupal.behaviors.payl_program_customizations = {
     attach: function() {
       Drupal.settings.payl_program_customizations_birthday_limit = parseInt(Drupal.settings.payl_program_customizations_birthday_limit);
+      var birthday = new Date($('#edit-profile-main-field-user-birthday-und-0-value-datepicker-popup-0').val());
+      var birthday_timestamp = Math.floor(birthday.getTime() / 1000);
+
+      var user_dob = Drupal.settings.payl_program_customizations_user_date_of_birth;
+      var birthday_patron = new Date(user_dob);
+      var birthday_timestamp_patron = Math.floor(birthday_patron.getTime() / 1000);
+
+      // More than 13 years old.
+      if (birthday_timestamp < Drupal.settings.payl_program_customizations_birthday_limit) {
+        $('.page-user-register .form-item-name').show();
+      }
+      // Less than 13 years old.
+      else {
+        $('.page-user-register .form-item-name').hide();
+      }
+
+      // Changes for user edit profile
+      if (birthday_timestamp_patron > Drupal.settings.payl_program_customizations_birthday_limit) {
+        $('.page-user-edit .form-item-name').hide();
+      }
+      else {
+        $('.page-user-edit .form-item-name').show();
+      }
+
+      // showing and hiding of username field according to user's age
       $('#edit-profile-main-field-user-birthday-und-0-value-datepicker-popup-0').bind('change', function(date_object) {
-        var birthday = new Date($(this).val());
+        Drupal.settings.payl_program_customizations_birthday_limit = parseInt(Drupal.settings.payl_program_customizations_birthday_limit);
+        var birthday = new Date($('#edit-profile-main-field-user-birthday-und-0-value-datepicker-popup-0').val());
         var birthday_timestamp = Math.floor(birthday.getTime() / 1000);
-        // More than 13 years old.
+        
         if (birthday_timestamp < Drupal.settings.payl_program_customizations_birthday_limit) {
-          $('.form-item-name').show();
+          $('.page-user-register .form-item-name').show();
         }
-        // Less than 13 years old.
         else {
-          $('.form-item-name').hide();
+        $('.page-user-register .form-item-name').hide();
         }
       });
 
-      $('.form-item-name').hide();
       $('.field-widget-random-list-widget-randomizer').each(function(index) {
         fieldname = 'Change ' + $(this).find('label').html();
         $(this).find('input.random-list-widget-regenerate').val(fieldname);
@@ -47,9 +72,32 @@ if (typeof String.prototype.startsWith != 'function') {
       });
       $('#edit-name').keyup(payl_program_customizations_change_name);
 
-      setTimeout(function() {
-        $('.random-list-widget-regenerate').click();
-      }, 150);
+      var edit_username = $('#edit-account #edit-name').val();
+
+      //username not to change on field errors 
+      var url = window.location.href;
+      var array = url.split('/');
+      var lastsegment = array[array.length-1];
+
+      if (lastsegment == 'register'){
+        if($("div").hasClass("error")){
+          localStorage.setItem('username_generated', name);
+          var uname = localStorage.getItem('username_generated');
+          $('.current-username').html(uname);
+        }else{
+          setTimeout(function() {
+            $('.random-list-widget-regenerate').click();
+          }, 150);
+        }
+      }else{
+        if($("button").hasClass("random-list-widget-regenerate")){
+          if(edit_username.length > 0){
+            $('.current-username').html(edit_username);
+          }else{
+            $('.random-list-widget-regenerate').click();
+          }
+        }
+      }
     }
   }
 
@@ -57,4 +105,5 @@ if (typeof String.prototype.startsWith != 'function') {
     name = $('#edit-name').val();
     $('.current-username').html(name);
   }
+
 })(jQuery);

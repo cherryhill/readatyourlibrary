@@ -1,0 +1,92 @@
+<?php
+
+/**
+ * Implements hook_init().
+ */
+function play_program_configuration_init() {
+
+  $program_start_date = variable_get('pmc_start_date', 0);
+  $program_end_date = variable_get('pmc_end_date', 0);
+  $setting = array('play_program_configuration' => array('proStart' => $program_start_date, 'proEnd' => $program_end_date));
+  drupal_add_js($setting, 'setting');
+}
+
+/**
+ * Implementation of hook_menu()
+ */
+function play_program_configuration_menu(){
+
+  // Platform configuration settings for the program
+  $items['admin/config/system/platform_configuration'] = array(
+    'title' => 'Platform Configuration',
+    'description' => 'Platform configuration page for the program.',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('pl_platform_configuration'),
+    'access arguments' => array('access administration pages'),
+    'type' => MENU_NORMAL_ITEM,
+    'file' => 'inc/pl_platform_configuration.inc',
+  );
+
+
+  // Platform details for the program
+  $items['admin/config/system/platform_details'] = array(
+    'title' => 'Platform Details',
+    'description' => 'Platform Details for the program',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('pl_platform_details'),
+    'access arguments' => array('access administration pages'),
+    'type' => MENU_NORMAL_ITEM,
+    'file' => 'inc/pl_platform_details.inc',
+  );
+
+  return $items;
+}
+
+
+/**
+ * Implements function to check if program is active or not.
+ *
+ * @return Boolean
+ *   0 if not active, 1 if active 
+ */
+
+function pl_is_program_active() {
+
+  $program_start_date = variable_get('pmc_start_date', 0);
+  $program_end_date = variable_get('pmc_end_date', 0);
+
+  if ($program_start_date && $program_end_date) {
+	  $now = time();
+	  $program_start_date = strtotime($program_start_date);
+	  $program_end_date = strtotime($program_end_date);
+
+	  if (($now >= $program_start_date) && ($now <= $program_end_date)) {
+	    return 1;
+	  } else {
+	    drupal_set_message("The program is currently closed.");
+	    return 0;
+	  }
+  }
+  
+  return 1;
+}
+
+// providing program logo through platform configuration page
+function pl_program_logo($value) {
+
+  $imageFid = variable_get('pmc_progrm_image');
+
+  $query = db_select('file_managed', 'file')
+            ->fields('file', array('uri'))
+            ->condition('fid', $imageFid)
+            ->execute()
+            ->fetchAssoc();
+
+  $img_uri_path = $query['uri'];
+  $style = 'program_logo';
+  $img_path = image_style_url($style, $img_uri_path);
+  $img = "<img src='$img_path'>";
+  if ($img_uri_path){
+    return $img;
+  }
+}

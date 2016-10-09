@@ -4,6 +4,7 @@
  * Implements hook_user_load().
  */
 function payl_program_customizations_user_load($users) {
+
   foreach($users as $account) {
     $profile = profile2_load_by_user($account, 'main');
     if (!empty($profile) && !empty($profile->field_user_birthday)) {
@@ -24,85 +25,77 @@ function payl_program_customizations_user_load($users) {
       }
     }
   }
+
   drupal_static_reset('user_access');
 }
-function custom_activity_submit_handler(&$form, &$form_state) {
-  $firing_hook = $form_state['values']['entity']->field_activity_fired_hook[LANGUAGE_NONE][0]['value'];
 
-  if($firing_hook == 'node_update|node|sticker|updated') {
-    $query = db_select('field_data_field_activity_fired_hook', 'fh');
-    $query->condition('fh.field_activity_fired_hook_value', $firing_hook, '=');
-    $query->fields('fh', array('entity_id'));
-    $result = $query->execute();
-    $count = $result->rowCount();
-    
-  }
-  
-  if($count > 0) {
-    form_set_error('field_activity_fired_hook', t('Only one activity with firing hook Place sticker on Progress Report'));
-    drupal_goto('admin/structure/entity-type/activity/activity/add');
-  }
-  
-
-}
 /**
  * Implements hook_form_alter().
  */
 function payl_program_customizations_form_alter(&$form, &$form_state, $form_id) {
-/* making staff registration email field required */
-if($form_id == 'user_register_form') {
-  $arg = arg(3);
-  if($arg == 'staff') {
-    $form['account']['mail']['#required'] = TRUE;
-  }  
 
-}
-
-
-
-
-  if($form_id == "eck__entity__form_add_activity_activity") {
-
-    $form['#submit'] = array("custom_activity_submit_handler","eck__entity__form_submit");
+  /* making staff registration email field required */
+  if($form_id == 'user_register_form') {
+    $arg = arg(3);
+    if($arg == 'staff') {
+      $form['account']['mail']['#required'] = TRUE;
+    }
   }
 
   if ($form_id == 'user_profile_form') {
-    global $user;
+    global $user, $base_url;
     $uid = $user->uid;
-
     $role_user = $user->roles;
+
     // showing of tabs only for user role as patron
     if(array_key_exists(6, $role_user)){
+      $user_p = profile2_load_by_user($uid);
+      $user_dob_patron = $user_p['main']->field_user_birthday['und'][0]['value'];
+      $user_dob_split = explode(' ', $user_dob_patron);
+      $user_dob = $user_dob_split[0];
+
+      $setting = array(
+        'payl_program_customizations_birthday_limit' => strtotime('-12 years'),
+        'payl_program_customizations_user_date_of_birth' => $user_dob,
+      );
+
+      drupal_add_js($setting, array('type' => 'setting'));
+      drupal_add_js(drupal_get_path('module', 'payl_program_customizations') . '/payl_program_customizations.js');
+
+      $form['current_username'] = array(
+        '#markup' => '<h3 class="username-curr">Username: <span class="current-username"></span></h3>',
+        '#weight' => 1,
+      );
+
       $form['public_profile'] = array(
-        '#markup' => t("<a href='../../../users/public_profile/$uid' class = 'button'>My Public Profile</a>"),
+        '#markup' => t("<a href='$base_url/users/public_profile/$uid' class = 'button'>My Public Profile</a>"),
         '#weight' => -20,
       );
 
       $form['change_username'] = array(
-        '#markup' => t('<a href="../edit" class = "button">Change My Username or Password</a>'),
+        '#markup' => t("<a href='$base_url/user/$uid/edit' class = 'button'>Change My Username or Password</a>"),
         '#weight' => -20,
       );
     }
   }
 
   if ($form_id == 'user_register_form') {
+
+    $form_state['rebuild'] = TRUE;
     $setting = array(
       'payl_program_customizations_birthday_limit' => strtotime('-13 years'),
     );
+
     drupal_add_js($setting, array('type' => 'setting'));
     drupal_add_js(drupal_get_path('module', 'payl_program_customizations') . '/payl_program_customizations.js');
+
     $form['current_username'] = array(
-      '#markup' => '<h3 class="username">Username: <span class="current-username"></span></h3>',
-      '#weight' => 25,
+      '#markup' => '<h3 class="username-curr">Username: <span class="current-username"></span></h3>',
+      '#weight' => 1,
     );
 
-    // Move the email element to the main profile.
-    //$mail_element = $form['account']['mail'];
-    //$mail_element['#weight'] = -100;
-    //$form['profile_main']['mail'] = $mail_element;
-    //unset($form['account']['mail']);
-
     $form['#validate'][] = 'payl_program_customizations_user_register_validate';
+    
     if (!empty($form['profile_main'])) {
       $form['profile_main']['field_user_address'][LANGUAGE_NONE][0]['name_block'] = array(
         '#type' => 'value',
@@ -150,14 +143,30 @@ function payl_program_customizations_user_register_validate($form, &$form_state)
     form_set_error('name', t('Please ensure to create your own username OR generate a new username'));
   }
 }
+
  //function to provide a message if user has no email associated with account.
 function password_user(&$form, &$form_state){
-  $form_value = $form_state['complete form']['name']['#value'];
+
+ $form_value = $form_state['complete form']['name']['#value'];
+  if (filter_var($form_value, FILTER_VALIDATE_EMAIL)) {
+       drupal_set_message('Please enter only username','error');
+  } 
+
   $mail_id = $form_state['values']['account'];
   $mail = $mail_id->mail;
   if($mail == ''){
-    drupal_set_message('Please seek staff assistance to reset your password','error');
+    drupal_set_message('Please seek the staff assistance to reset your password','error');
   }else{
-   	drupal_set_message('Login details have been sent to your e-mail address.');
+    drupal_set_message('Login details have been sent to your e-mail address.');
+  }
+}
+
+//function for private message when a user is followed
+function payl_program_customizations_flag_flag($flag, $entity_id, $account, $flagging){
+  $flag_name = arg(2);
+  if($flag_name == 'follow'){
+    $uid = $flagging->entity_id;
+    $user_name = $account->name;
+    privatemsg_new_thread(array(user_load($uid)), $user_name.' is now following you.', $user_name.' is now following you.');
   }
 }

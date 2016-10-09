@@ -1,0 +1,308 @@
+<?php
+
+/**
+ * @file
+ * table_trash.module
+ *
+ * Uses DataTables javascript library and third party extensions to it to add
+ * client-side bells and whistles to your HTML tables.
+ */
+
+define('TABLE_TRASH_DEFAULT_PAGE_INCLUSIONS', '');
+define('TABLE_TRASH_DEFAULT_PAGE_EXCLUSIONS', "admin/reports/status\nadmin/modules*");
+define('TABLE_TRASH_DEFAULT_TABLE_SELECTOR', 'table');
+
+define('TABLE_TRASH_DEFAULT_BREAKPOINT_PHONE', 480);
+define('TABLE_TRASH_DEFAULT_BREAKPOINT_TABLET', 1024);
+
+define('TABLE_TRASH_COLREORDER_JS', 'extras/ColReorder/media/js/ColReorder.min.js');
+define('TABLE_TRASH_COLREORDER_WITH_RESIZE_JS', 'extras/ColReorder/media/js/ColReorderWithResize.js');
+
+/**
+ * Implements hook_preprocess_page().
+ */
+function table_trash_preprocess_page($variables) {
+  $table_trash_settings = variable_get('table_trash_decorations', array());
+
+  $path = current_path();
+  $path_alias = drupal_get_path_alias($path);
+
+  foreach ($table_trash_settings as $decoration) {
+    if (!empty($decoration['pages-and-selector'])) {
+      $p_and_s = $decoration['pages-and-selector'];
+      if (drupal_match_path($path, $p_and_s['include-pages']) || drupal_match_path($path_alias, $p_and_s['include-pages'])) {
+        if (!drupal_match_path($path, $p_and_s['exclude-pages']) && !drupal_match_path($path_alias, $p_and_s['exclude-pages'])) {
+
+          table_trash_pass_datatables_selectors_and_config($decoration);
+
+          // @see http://webdesign.tutsplus.com/tutorials/htmlcss-tutorials/quick-tip-dont-forget-the-viewport-meta-tag
+          // It's ok to call this more than once
+          table_trash_add_html_head();
+
+          // Can we insert <thead> for <table>s that do not have it?
+        }
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_menu().
+ */
+function table_trash_menu() {
+  // Put the administrative settings under Content on the Configuration page.
+  $items['admin/config/content/table_trash'] = array(
+    'title' => 'Table Trash',
+    'description' => 'Configure table decorations and global settings.',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('table_trash_admin_configure'),
+    'access arguments' => array('configure table decorations'),
+    'file' => 'table_trash.admin.inc',
+  );
+  return $items;
+}
+
+/**
+ * Implements hook_permission().
+ */
+function table_trash_permission() {
+  return array(
+    'configure table decorations' => array(
+      'title' => t('Add and configure table decorations'),
+    ),
+  );
+}
+
+/**
+ * Implements hook_help().
+ */
+function table_trash_help($path, $arg) {
+  switch ($path) {
+    case 'admin/help#table_trash':
+      $t = t('Configuration instructions and tips are in this <a target="readme" href="@README">README</a> file.<br/>Known issues and solutions may be found on the <a taget="project" href="@table_trash">Table Trash</a> project page.', array(
+        '@README' => url(drupal_get_path('module', 'table_trash') . '/README.txt'),
+        '@table_trash' => url('http://drupal.org/project/table_trash')));
+      break;
+
+    case 'admin/config/content/table_trash':
+      $t = t('A <strong>table decoration</strong> consists of a set of table features, selected below, to be added to one or more tables on this site. Apart from the features you wish to include in each decoration, you specify the pages and tables the decoration applies to.');
+      break;
+  }
+  return empty($t) ? '' : '<p>' . $t . '</p>';
+}
+
+/**
+ * Implements hook_libraries_info_file_paths().
+ *
+ * Using the .libraries.info files instead of hook_libraries_info().
+ */
+function table_trash_libraries_info_file_paths() {
+  return array(drupal_get_path('module', 'table_trash') . '/libraries');
+}
+
+/**
+ * Implements hook_libraries_info_alter().
+ *
+ * This is a dynamic appendix to the .libraries.info files.
+ * Through the configuration page, the user may opt for a variant.
+ * They can also drop in an alternative version of ColReorder.js.
+ */
+function table_trash_libraries_info_alter(&$libraries) {
+  if (!isset($libraries['datatables'])) {
+    return;
+  }
+  // The packaging script unfortunately adds to the .libraries.info file the
+  // version number of the table_trash module in the same way as it does for
+  // table_trash.info. This is bad news for us, as once set, the Libraries
+  // module will not attempt to read it from the specified .js files. So unset.
+  unset($libraries['datatables']['version']);
+  unset($libraries['datatables-responsive']['version']);
+
+  $global_settings = variable_get('table_trash_global_settings', array());
+  $variant = empty($global_settings['use-bug-fixed-library']) ? NULL : 'bug-fixed';
+
+  // Based on the variant, the version number is found in a different file.
+  // Not only is the file where we obtain the version different, so is its path.
+  // We deal with this in our own version callback
+  // table_trash_libraries_get_version()
+  $libraries['datatables']['version callback'] = 'table_trash_libraries_get_version';
+  $libraries['datatables']['version arguments']['file'] = ($variant == 'bug-fixed')
+    ? 'libraries/variants/js/jquery.dataTables.bugfixed.min.js'
+    : 'media/js/jquery.dataTables.min.js';
+
+  $libraries['datatables-responsive']['version callback'] = 'table_trash_libraries_get_version';
+  $libraries['datatables-responsive']['version arguments']['file'] = ($variant == 'bug-fixed')
+    ? 'libraries/variants/js/datatables.responsive.0.1.5-patched.js'
+    : 'files/1/js/datatables.responsive.js';
+
+  $colreorder_with_resize = file_exists(libraries_get_path('datatables') . '/' . TABLE_TRASH_COLREORDER_WITH_RESIZE_JS);
+  $colreorder_js = $colreorder_with_resize ? TABLE_TRASH_COLREORDER_WITH_RESIZE_JS : TABLE_TRASH_COLREORDER_JS;
+  $libraries['datatables']['files']['js'][] = $colreorder_js;
+  $libraries['datatables']['variants']['bug-fixed']['files']['js'][] = $colreorder_js;
+
+  if (empty($global_settings['use-datatables-css'])) {
+    unset($libraries['datatables']['files']['css']);
+    unset($libraries['datatables']['variants']['bug-fixed']['files']['css']);
+  }
+  if (empty($global_settings['use-module-css'])) {
+    unset($libraries['datatables']['integration files']['table_trash']['css']);
+    unset($libraries['datatables']['variants']['bug-fixed']['integration files']['table_trash']['css']);
+  }
+}
+
+/**
+ * Override of libraries_get_version().
+ *
+ * This was necessary only because of the way the Libraries module works. While
+ * accepting 'variants' it assumes that each variant is always retrieved from a
+ * file in the same 'library path'. In our case, when using th 'bug-fixed'
+ * variant, the version comes from a file in the 'bug-fixed' library path, this
+ * being the path to the table_trash module.
+ *
+ * @param array $library
+ *   contains the 'library path' that we may want to change in case of a variant
+ * @param arrau $options
+ *   regexp pattern matching options
+ *
+ * @return array
+ *   string containing the version of the library.
+ */
+function table_trash_libraries_get_version($library, $options) {
+  $global_settings = variable_get('table_trash_global_settings', array());
+  if (!empty($global_settings['use-bug-fixed-library'])) {
+    $library['library path'] = drupal_get_path('module', 'table_trash');
+  }
+  return libraries_get_version($library, $options);
+}
+
+/**
+ * Adds a <meta viewport> tag to the <head>.
+ *
+ * Add inside the <head> tag the following meta-tag essential for mobiles:
+ * <meta name="viewport" content="initial-scale=1" />
+ */
+function table_trash_add_html_head() {
+  $data = array(
+    '#tag' => 'meta',
+    '#attributes' => array(
+      'name' => 'viewport',
+      'content' => 'initial-scale=1',
+    ),
+  );
+  drupal_add_html_head($data, 'system_meta_viewport');
+}
+
+/**
+ * Set up an array of configurations for the DataTables JS call.
+ *
+ * @param array $decoration
+ *   An array of DataTable settings, indexed by the table selector
+ */
+function table_trash_pass_datatables_selectors_and_config($decoration) {
+
+  $global_settings = variable_get('table_trash_global_settings', array());
+  $library_variant = empty($global_settings['use-bug-fixed-library']) ? NULL : 'bug-fixed';
+
+  // Equivalent to core's drupal_add_library('table_trash', 'datatables'),
+  // this loads what is set up in the .libraries.info file, rather than core's
+  // hook_library(). The format of the array returned is similar.
+  $base_library = libraries_load('datatables', $library_variant);
+  if (!empty($base_library['error'])) {
+    drupal_set_message($base_library['error message'], 'warning');
+  }
+
+  $table_selector = empty($decoration['pages-and-selector']['table-selector']) ? TABLE_TRASH_DEFAULT_TABLE_SELECTOR : $decoration['pages-and-selector']['table-selector'];
+  $decoration_params = empty($decoration['decoration-params']) ? array() : $decoration['decoration-params'];
+  $dont_sort_columns = isset($decoration_params['dont-sort-columns']) ? trim($decoration_params['dont-sort-columns']) : '';
+
+  /* 'sDom' is used to specify where in the DOM to inject the various controls
+   * DataTables adds to the page. For example you might want the pagination
+   * controls at the top of the table. The following order is the default:
+   *
+   *    'l' - length changing
+   *    'f' - filtering input
+   *    'r' - processing
+   *    't' - the table
+   *    'i' - information
+   *    'p' - pagination
+   *
+   * @see http://datatables.net/usage/options#sDom
+   */
+  $settings[$table_selector] = array(
+    'sDom' => 'lfrtip',
+    'bFilter' => isset($decoration_params['search-box']) ? $decoration_params['search-box'] : TRUE,
+    'bSort' => $dont_sort_columns !== '0',
+    'bPaginate' => !empty($decoration_params['pager-style']) && !empty($decoration_params['page-height']),
+    'sPaginationType' => isset($decoration_params['pager-style']) ? $decoration_params['pager-style'] : '',
+    'iDisplayLength' => empty($decoration_params['page-height']) ? -1 : (int) $decoration_params['page-height'],
+    'bLengthChange' => FALSE,
+    'bRetrieve' => !empty($decoration_params['retrieve-data']),
+    'bDestroy' => TRUE,
+  );
+  if (!empty($dont_sort_columns)) {
+    $dont_sort_columns = explode(',', $dont_sort_columns);
+    foreach ($dont_sort_columns as &$column_number) {
+      // DataTables starts numbering at zero, whereas we start at 1.
+      --$column_number;
+    }
+    $settings[$table_selector]['aoColumnDefs'] = array(
+      array(
+        'bSortable' => FALSE,
+        'aTargets' => $dont_sort_columns,
+      ),
+    );
+  }
+  if (!empty($decoration_params['x-scroll'])) {
+    $settings[$table_selector]['sScrollX'] = '100%';
+    $settings[$table_selector]['sScrollXInner'] = $decoration_params['x-scroll'];
+    $settings[$table_selector]['bScrollCollapse'] = FALSE;
+  }
+  // DataTables ColReorder plugin.
+  if (!empty($decoration_params['column-reorder'])) {
+    $settings[$table_selector]['sDom'] .= 'R';
+  }
+  // DataTables FixedColumns plugin.
+  if (!empty($decoration_params['fixed-left-columns'])) {
+    $settings[$table_selector]['iFixedLeftColumns'] = (int) $decoration_params['fixed-left-columns'];
+  }
+  // DataTables FixedHeader plugin.
+  $settings[$table_selector]['bFixedHeader'] = !empty($decoration_params['fixed-header']);
+  // DataTables TableTools plugin.
+  if (!empty($decoration_params['export-buttons'])) {
+    // Insert buttons before anything else, via T and <div class="clear">
+    $settings[$table_selector]['sDom'] = 'T<"clear">' . $settings[$table_selector]['sDom'];
+    $lib_path = base_path() . libraries_get_path('datatables');
+    $settings[$table_selector]['oTableTools'] = array(
+      'sSwfPath' => "$lib_path/extras/TableTools/media/swf/copy_csv_xls_pdf.swf",
+    );
+  }
+
+  // DataTables-Responsive library.
+  if (!empty($decoration_params['responsive']['responsive-expand-col'])) {
+    $responsive_library = libraries_load('datatables-responsive', $library_variant);
+    if (!empty($responsive_library['error'])) {
+      drupal_set_message($responsive_library['error message'], 'warning');
+    }
+    $responsive_params = $decoration_params['responsive'];
+    $settings[$table_selector]['iExpandCol'] = (int) $responsive_params['responsive-expand-col'] - 1;
+    $settings[$table_selector]['iBreakpointPhone'] = empty($global_settings['responsive']['responsive-breakpoint-phone']) ? TABLE_TRASH_DEFAULT_BREAKPOINT_PHONE : (int) $global_settings['responsive']['responsive-breakpoint-phone'];
+    $settings[$table_selector]['iBreakpointTablet'] = empty($global_settings['responsive']['responsive-breakpoint-tablet']) ? TABLE_TRASH_DEFAULT_BREAKPOINT_TABLET : (int) $global_settings['responsive']['responsive-breakpoint-tablet'];
+
+    // Convert comma-separated string of column numbers into array.
+    $settings[$table_selector]['aiHideColsPhone'] = $settings[$table_selector]['aiHideColsTablet'] = array();
+    if (!empty($responsive_params['responsive-collapse-cols-phone'])) {
+      $settings[$table_selector]['aiHideColsPhone'] = explode(',', $responsive_params['responsive-collapse-cols-phone']);
+      foreach ($settings[$table_selector]['aiHideColsPhone'] as &$column_number) {
+        --$column_number;
+      }
+    }
+    if (!empty($responsive_params['responsive-collapse-cols-tablet'])) {
+      $settings[$table_selector]['aiHideColsTablet'] = explode(',', $responsive_params['responsive-collapse-cols-tablet']);
+      foreach ($settings[$table_selector]['aiHideColsTablet'] as &$column_number) {
+        --$column_number;
+      }
+    }
+  }
+
+  drupal_add_js(array('table_trash' => $settings), array('type' => 'setting'));
+}

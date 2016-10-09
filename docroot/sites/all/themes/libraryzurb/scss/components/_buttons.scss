@@ -10,6 +10,9 @@
 button,
 .button {
   padding: $button-sml 20px;
+  @include mobile {
+    padding: 4px 13px 6px;
+  }
   background: $yellow;
   color: $black;
   margin-left: 20px;

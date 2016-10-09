@@ -1,0 +1,687 @@
+<?php
+
+/**
+ * Implements hook_block(). . 
+ */
+
+
+function child_progress_block_info() {
+  $block = array();
+  
+  $blocks['mobile_progress'] = array(
+    'info' => t('Mobile Progress Report'),
+    'cache' => DRUPAL_NO_CACHE,
+    );
+  $blocks['mobile_sticker_count'] = array(
+    'info' => t('Mobile Sticker count'),
+    'cache' => DRUPAL_NO_CACHE,
+    );
+  $blocks['calendar-data'] = array(
+    'info' => t('Show calendar data json'),
+    'cache' => DRUPAL_NO_CACHE,
+    );
+  $blocks['user_prize_block'] = array(
+    'info' => t('User Progress Page Block'),
+    'cache' => DRUPAL_NO_CACHE,
+    );
+  return $blocks;
+}
+
+function child_progress_block_view($block_name = '') {
+  switch ($block_name) {
+    case 'mobile_progress':
+    $block['subject'] = '';
+    $block['content'] = drupal_get_form('generate_mobile_progress_form');
+    break;
+    case 'mobile_sticker_count':
+    $block['subject'] = '';
+    $block['content'] = no_of_sticker_on_mobile();
+    break;
+    case 'calendar-data':
+    $block['subject'] = '';
+    $block['content'] = generate_json_data();
+    break;
+    case 'user_prize_block':
+    $block['subject'] = '';
+    $block['content'] = progress_user_block();
+    break;                               
+  }
+  return $block;
+}
+
+
+/**
+*  No off Sticker count on mobile progress.
+*/
+
+function no_of_sticker_on_mobile() {
+  $output = '';
+  global $user;
+  $user_id = $user->uid;
+  $sticker_count = db_select('calendar', 'c')
+    ->fields('c', array('image_url'))
+    ->condition('uid', $user_id)
+    ->execute();
+  $no_of_sticker = $sticker_count->rowCount();
+  if($no_of_sticker == 1) {
+   $output = "<div>$no_of_sticker day read</div>";
+  }
+  else {
+    $output = "<div>$no_of_sticker days read</div>"; 
+  }
+  return $output;
+}
+
+
+// This is custom block shown the user progress of reading activity.
+
+function progress_user_block() {
+  global $user;
+  $uid = $user->uid;
+  $count_query = db_query("SELECT COUNT(image_url) as image_url
+    FROM {calendar} c
+    WHERE c.uid = :uid",array(':uid' => $uid))->fetchAll();
+  $total_read_days = $count_query[0]->image_url;
+
+  // get all rewards.
+  $qry = db_select('field_data_field_activity_fired_hook', 'fh');
+  $qry->join('field_data_field_activity_points', 'ap', 'ap.entity_id = fh.entity_id');
+  $qry->Join('field_data_field_reward_criteria_activity', 'rca', 'fh.entity_id = rca.field_reward_criteria_activity_target_id');
+  $qry->Join('field_data_field_reward_criteria_point_mark', 'rcpm', 'rca.entity_id = rcpm.entity_id');
+  $qry->fields('rcpm', array('field_reward_criteria_point_mark_value'));
+  $qry->fields('ap', array('field_activity_points_value'));
+  $qry->condition('fh.field_activity_fired_hook_value', 'node_update|node|sticker|updated');
+  $rs = $qry->execute()->fetchAll();
+  
+  $activity_point = 0;
+  $next_reward_in_days = 0;
+  $user_points = 0;
+  $closest_reward = 0;
+
+  foreach($rs as $v) {
+    if (!$activity_point) {
+      $activity_point = $v->field_activity_points_value;
+      $user_points = $total_read_days * $activity_point;
+    }
+
+    $reward_point = $v->field_reward_criteria_point_mark_value;
+    if ($reward_point > $user_points) {
+      if(!$closest_reward) {
+        $closest_reward = $reward_point;
+      } else {
+        if($reward_point < $closest_reward) {
+          $closest_reward = $reward_point;
+        }
+      }
+    }
+  }
+
+  $reads_for_next_reward = ($closest_reward / $activity_point) - $total_read_days;
+
+  if($reads_for_next_reward < 0) {
+    return "<div class='all_rewrad_won'>Congratulations! You have completed the reading program and have received all the reading rewards.</div>";
+  }
+  else {
+    if($reads_for_next_reward == 1) {
+      $msg = "$reads_for_next_reward more day of reading needed to receive your next prize";
+
+      
+    }
+    else {
+      $msg = "$reads_for_next_reward more days of reading needed to receive your next prize";
+    }
+    return "<div>$msg</div>";
+  }
+  
+}
+
+
+// children progress page on mobile.
+
+function generate_mobile_progress_form($form, &$form_state) {
+  $qry = db_select('eck_activity', 'eck_a');
+    $qry->join('field_data_field_activity_fired_hook', 'fdfafh', 'fdfafh.entity_id = eck_a.id');
+    $qry->condition('fdfafh.field_activity_fired_hook_value', 'node_update|node|sticker|updated');
+    $qry->fields('eck_a', array('title','id'));
+    $resu = $qry->execute()->fetchAll();
+    foreach ($resu as $value) {
+      //$activity_id[] = $value->id; 
+      $activity_title[$value->id] = $value->title; 
+    }
+
+  $form['from'] = array(
+    //'#title' => t('Start date'),
+    '#type' => 'date_popup',
+    '#date_format' => 'F d, Y',
+    '#date_year_range' => '0:+10',
+    '#size' => 8,
+  );
+  $form['activity_id'] = array(
+    //'#title' => t('Start date'),
+    '#type' => 'hidden',
+    '#value' => $value->id, 
+  );
+  $form['image_name'] = array(
+    //'#title' => t('Start date'),
+     '#type' => 'hidden',
+     '#attributes' => array(
+     'class' => array(
+       'image_name' 
+    ),
+   ), 
+  );
+  $form['submit'] = array(
+    '#value' => 'Submit',
+    '#type' => 'submit',
+  );
+  
+
+  return $form;
+}
+
+function generate_mobile_progress_form_submit($form, &$form_state) { 
+  global $user;
+  $uid = $user->uid;
+  $date = strtotime($form_state['values']['from']);
+  $image_name = $form_state['values']['image_name'];
+  $activity_id = $form_state['values']['activity_id'];
+  
+  // Query the reward date for checking no any sticker drop before rewrad date.
+  $query_date = db_select('calendar', 'c')
+  ->fields('c', array('date'))
+  ->condition('uid', $uid)
+  ->condition('reward_id', 0, '>')
+  ->orderBy('id', 'DESC')
+  ->execute();
+  $reward_date = $query_date->fetchAssoc();
+  $reward_date = $reward_date['date']; 
+   
+   // Query for checking sticker count for same date.
+  $sticker_count = db_select('calendar', 'c')
+  ->fields('c', array('image_url'))
+  ->condition('uid', $uid)
+  ->condition('date', $date)
+  ->execute();
+  $no_of_sticker = $sticker_count->rowCount();
+
+  // Program start and end date.
+
+  $program_start_date = strtotime(variable_get('pmc_start_date', 0));
+  $program_end_date = strtotime(variable_get('pmc_end_date', 0));
+
+  $current_date = time();
+  if($date >= $program_start_date && $date <= $program_end_date) {
+  if($date != '') {
+  if($image_name != '') {
+  if(!($reward_date > $date)) {
+    if(($date <= $current_date)) {
+      if(!$no_of_sticker) {
+        $insert_query =db_insert('calendar')
+          ->fields(array(
+          'uid'=>$uid,
+          'image_url'=> $image_name,
+          'date'=>$date,
+        ));
+      $insert_query->execute();
+      // query for getting the max id for inserti the reward id at time of rewrad claim.
+       $query = db_select('calendar');
+        $query->addExpression('MAX(id)');
+        $max_id = $query->execute()->fetchField();
+        $_SESSION['usr_calendar_id'] = $max_id;
+
+      play_library_program_create_activity_entry($activity_id, $uid); 
+    } else {
+      drupal_set_message("You have already recorded reading for this date.", "error");
+    }    
+  } else {
+     drupal_set_message("Your reading date is greater than today.", "error");
+  }
+ } else {
+    drupal_set_message("You will not be able to record reading for previous days after winning reward", "error");
+ }
+} else {
+  drupal_set_message("Please select a sticker.", "error");
+} 
+} else {
+   drupal_set_message("Please select a date.", "error");
+}
+} else {
+  drupal_set_message("You cannot record activity before or after program period.", "error");
+} 
+
+}
+
+
+
+function child_progress_init() {
+  global $user;
+  $current_time = time();
+  $current_date = date('Y-m-d', $current_time);
+  
+  $setting = array('child_progress' => array('currentUser' => $user->uid, 'currentDate' => $current_date));
+  drupal_add_js($setting, 'setting');
+  
+}
+/**
+ * Implements hook_menu().
+ */
+
+function child_progress_menu() {
+
+  $items['calendar'] = array(
+    'title' => 'Test Page',
+    'page callback' => 'calendar_page',
+    'access arguments' => array('access content'),
+    'type' => MENU_NORMAL_ITEM,
+  );
+
+  $items['progress'] = array(
+    'title' => 'Test Page',
+    'page callback' => 'child_progress_page',
+    'access arguments' => array('access content'),
+    'type' => MENU_NORMAL_ITEM,
+    'file' => 'inc/child_progress_page.inc',
+    'file path' => drupal_get_path('module', 'child_progress'),
+  );
+  $items['activity_record'] = array(
+    'title' => 'Record Activity for Patron',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('patron_activity_record_form'),
+    'access arguments' => array('activity record access'),
+    'type' => MENU_CALLBACK,
+  );
+  $items['test'] = array(
+    'title' => 'Test Menu',
+    'page callback' => 'test',
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
+  );
+  
+  
+  return $items;
+}
+
+/* test function */
+
+
+function test() {
+  drupal_access_denied();
+
+}
+
+/**
+ * Implements hook_theme for making tpl file for children progress page.
+ */
+
+ function child_progress_theme($existing, $type, $theme, $path) {
+  $themes = array(
+    'child_progress_page' => array(
+      'template' => 'templates/child-prog-page',
+      'variable' => array(),
+    ),
+  );
+
+  return $themes;
+}
+
+/**
+*  Patron Activity Record form build is is for activity_record page.
+*/
+
+function patron_activity_record_form($form, &$form_state) {
+  $qry = db_select('eck_activity', 'eck_a');
+    $qry->join('field_data_field_activity_fired_hook', 'fdfafh', 'fdfafh.entity_id = eck_a.id');
+    $qry->condition('fdfafh.field_activity_fired_hook_value', 'node_update|node|sticker|updated');
+    $qry->fields('eck_a', array('title','id'));
+    $resu = $qry->execute()->fetchAll();
+    foreach ($resu as $value) {
+      //$activity_id[] = $value->id; 
+      $activity_title[$value->id] = $value->title; 
+    }
+
+  $form['username'] = array(
+    '#title' => t('Username'),
+    '#type' => 'textfield',
+    '#autocomplete_path' => 'user/autocomplete',
+    '#attributes' => array(
+      'placeholder' => t('Username'),
+    ),
+  );        
+  $form['html'] = array(
+   '#type' => 'markup',
+   '#markup' => '<div>Search for patrons here: <a href="patron-users" target="_blank">http://play.dev.chillco.com/patron-users</a></div>',
+  );
+  $form['activity'] = array(
+    '#type' => 'select',
+    '#options' => $activity_title,
+  );
+  $form['from'] = array(
+    //'#title' => t('Start date'),
+    '#type' => 'date_popup',
+    '#date_format' => 'F d, Y',
+    '#date_year_range' => '0:+10',
+    '#required' => TRUE,
+    '#size' => 8,
+  );
+  $form['to'] = array(
+    //'#title' => t('End date'),
+    '#type' => 'date_popup',
+    '#date_format' => 'F d, Y',
+    '#date_year_range' => '0:+10',
+    '#required' => TRUE,
+    '#size' => 8,
+   );
+  $form['submit'] = array(
+    '#value' => 'Submit',
+    '#type' => 'submit',
+  );
+
+  return $form;
+}
+
+function patron_activity_record_form_submit($form, &$form_state) {
+  $username = $form_state['values']['username'];
+
+  $query = db_select('users', 'u');
+  $query->condition('u.name', $username);
+  $query->fields('u', array('uid'));
+  $user_uid = $query->execute()->fetchField();
+
+  $activity_id = $form_state['values']['activity'];
+  $from = strtotime($form_state['values']['from']);
+  $to = strtotime($form_state['values']['to']);
+
+  for ($i=$from; $i<=$to; $i+=86400) {
+    $date = strtotime(date("Y-m-d", $i));
+    $event_image = 'sticker_sun_0.png';
+
+    // check to see weather same date exists in db.
+    $check_query = db_select('calendar','cal')
+      ->fields('cal',array('uid','date'))
+      ->condition('uid',$user_uid)
+      ->execute()
+      ->fetchAll();
+    $u_date = array();
+
+    foreach($check_query as $val){
+      $u_date[] .= $val->date;
+    }
+
+    if(!in_array($date, $u_date)){
+      play_library_program_create_activity_entry($activity_id, $user_uid);
+
+      $insert_query = db_insert('calendar')
+        ->fields(array(
+        'uid'=>$user_uid,
+        'image_url'=>$event_image,
+        'date'=>$date,
+        ));
+      $insert_query->execute(); 
+    }else{
+      $en_dates[] = date("Y-m-d",$date);
+    }
+  }
+  $entered_dates = implode(', ', $en_dates);
+  
+  if (!empty($en_dates)) {
+    drupal_set_message('Reading was previously recorded for this patron for these dates: [' . $entered_dates.']. If you submitted reading for additional dates, it has now been recorded too.','status');
+  }
+}
+
+
+
+
+/* function for restrict calendar date for only one drop*/
+
+/**
+ * Function restrict the user to drop only one sticke on calendar.
+  * @param $uid -> This is the user id og login user.
+  * @param $event_date -> This is the date from calendar on which user drop the sticker.
+  * This function return the condition TRUE and FALSE for calendar date having the sticker or not.
+ */
+
+function calendar_date_restriction($uid, $event_date) {
+  $sticker_count = db_select('calendar', 'c')
+  ->fields('c', array('image_url'))
+  ->condition('uid', $uid,'=')
+  ->condition('date', $event_date,'=')
+  ->execute();
+  $no_of_sticker = $sticker_count->rowCount();
+  if($no_of_sticker > 1) {
+    return FALSE;
+  }
+  else {
+    return TRUE;
+  }
+}
+
+
+/**
+ * This is for calendar ajax functinality user drag and drop sticker and get point and reward.
+ */
+
+
+function calendar_page() {
+  global $user;
+
+  $uid = $user->uid;
+  $image_id = '';
+  if (isset($_REQUEST['id'])) {
+    $image_id = $_REQUEST['id'];
+  }
+  $event_image = $_REQUEST['image'];
+  $event_uid = $_REQUEST['user_id'];
+
+  // get timestamp from calendar date
+  $event_date = $_REQUEST['date'];
+  $event_date = explode(' ', $event_date);
+  $mth = strtolower($event_date[1]);
+  $dt = $event_date[2];
+  $yr = $event_date[3];
+  $month = array('jan' => 1,
+    'feb' => 2,
+    'mar' => 3,
+    'apr' => 4,
+    'may' => 5,
+    'jun' => 6,
+    'jul' => 7,
+    'aug' => 8,
+    'sep' => 9,
+    'oct' => 10,
+    'nov' => 11,
+    'dec' => 12
+  );
+  $mth = $month[$mth];
+  $event_time = mktime(0, 0, 0, $mth, $dt, $yr);
+
+  $sticker_count = db_select('calendar', 'c')
+  ->fields('c', array('image_url'))
+  ->condition('uid', $event_uid)
+  ->condition('date', $event_time)
+  ->execute();
+  $no_of_sticker = $sticker_count->rowCount();
+
+  $query_date = db_select('calendar', 'c')
+  ->fields('c', array('date'))
+  ->condition('uid', $event_uid)
+  ->condition('reward_id', 0, '>')
+  ->orderBy('id', 'DESC')
+  ->execute();
+  $reward_date = $query_date->fetchAssoc();
+  $reward_date = $reward_date['date']; 
+
+  if(!$reward_date) {
+    if (!$no_of_sticker) {
+      if($image_id != '') {
+        db_update('calendar')
+        ->fields(array('image_url' => $event_image,'date' => $event_time))
+        ->condition ('id', $image_id)
+        ->execute();
+      }
+      else {
+        $insert_query = db_insert('calendar')
+        ->fields(array(
+          'uid' => $event_uid,
+          'image_url' => $event_image,
+          'date' => $event_time,
+        ));
+        $insert_query->execute();
+
+      // get the just inserted ID from calendar table.
+      // this will be used to update the record for reward.
+      // if user receives one after this activity.
+        $query = db_select('calendar');
+        $query->addExpression('MAX(id)');
+        $max_id = $query->execute()->fetchField();
+        $_SESSION['usr_calendar_id'] = $max_id;
+
+        $node = node_load(495);
+        //auto_role_allocation_node_update($current_node);
+        // this is for calendar activity.
+        $hook = "node_update|node|{$node->type}|updated";
+        _play_library_program_invoke_activity_entry_hooks($node, 'node', $hook, 1);
+      }
+      echo 1;
+    } else {
+      echo 0;
+    }
+  }
+  else {
+    if($reward_date > $event_time) {
+      
+      echo 0;
+    }
+
+    else {
+      if (!$no_of_sticker) {
+        if($image_id != '') {
+          db_update('calendar')
+          ->fields(array('image_url' => $event_image,'date' => $event_time))
+          ->condition ('id', $image_id)
+          ->execute();
+        }
+        else {
+          $insert_query =db_insert('calendar')
+          ->fields(array(
+            'uid'=>$event_uid,
+            'image_url'=>$event_image,
+            'date'=>$event_time,
+            ));
+          $insert_query->execute();
+
+      // get the just inserted ID from calendar table.
+      // this will be used to update the record for reward.
+      // if user receives one after this activity.
+          $query = db_select('calendar');
+          $query->addExpression('MAX(id)');
+          $max_id = $query->execute()->fetchField();
+          $_SESSION['usr_calendar_id'] = $max_id;
+          
+          $response = array(
+            "result"  =>  1
+            );
+        $node = node_load(495);//495
+        //auto_role_allocation_node_update($current_node);
+        // this is for calendar activity.
+        $hook = "node_update|node|{$node->type}|updated";
+        _play_library_program_invoke_activity_entry_hooks($node, 'node', $hook, 1);
+      }
+      echo 1;
+    } else {
+      echo 0;
+    }
+  }
+}
+
+}
+
+
+/**
+ *  This is the json data for calendar for maping the date and image on calendar.
+ */
+
+function generate_json_data() {
+  global $user;
+  $uid = $user->uid;
+  $current_time = time();
+  $current_date = date('Y-m-d', $current_time);  
+  $query_state = db_select('calendar', 'c')
+  ->fields('c', array('image_url','date','id', 'reward_id'))
+  ->orderBy('date', 'ASC')
+  ->condition('uid', $uid)
+  ->execute();
+  $result = $query_state->fetchAll();
+  $events = array();
+  $i = 1;
+  $j = 1;
+  foreach ($result as $value) {
+    $reward_claimed = $value->reward_id;
+
+    if($reward_claimed) {
+
+      $events[] = array(
+        'title' => '<div><div class="reward_image"><img data-id="'.$value->id.'" src="sites/default/files/styles/thumbnail/public/' . $value->image_url . '"</img></div>'.'<div class="reward_text">Congratulations! You earned a prize!</div></div>', 
+        'date' => $value->date,
+        );
+    }
+    else {
+     if($i == 1) {
+      $events[] = array(
+        'title' => '<div><div class="event_image"><img data-id="'.$value->id.'" src="sites/default/files/styles/thumbnail/public/' . $value->image_url . '"</img></div>'.'<div class="event_no">Read ' .$i. ' day</div></div>', 
+        'date' => $value->date,
+        );
+    }
+
+    else {
+      $events[] = array(
+        'title' => '<div><div class="event_image"><img data-id="'.$value->id.'" src="sites/default/files/styles/thumbnail/public/' . $value->image_url . '"</img></div>'.'<div class="event_no">Read ' .$i. ' days</div></div>', 
+        'date' => $value->date,
+        );
+    }  
+
+
+    }
+
+    
+    $i++;
+    $j++;
+    
+  }
+
+  $out = "<script>var eventsList = " . json_encode($events) . "</script>";
+  return $out;
+}
+
+
+
+/**
+ * Implements hook_form_alter().
+ */
+function child_progress_form_alter(&$form, &$form_state, $form_id) {
+  if($form_id == "eck__entity__form_add_activity_activity") {
+
+    $form['#submit'] = array("custom_activity_submit_handler","eck__entity__form_submit");
+  }
+}
+
+function custom_activity_submit_handler(&$form, &$form_state) {
+  $firing_hook = $form_state['values']['entity']->field_activity_fired_hook[LANGUAGE_NONE][0]['value'];
+
+  if($firing_hook == 'node_update|node|sticker|updated') {
+    $query = db_select('field_data_field_activity_fired_hook', 'fh');
+    $query->condition('fh.field_activity_fired_hook_value', $firing_hook, '=');
+    $query->fields('fh', array('entity_id'));
+    $result = $query->execute();
+    $count = $result->rowCount();
+    
+  }
+  
+  if($count > 0) {
+    form_set_error('field_activity_fired_hook', t('Only one activity with firing hook Place sticker on Progress Report'));
+    drupal_goto('admin/structure/entity-type/activity/activity/add');
+  }
+  
+
+}
+
+

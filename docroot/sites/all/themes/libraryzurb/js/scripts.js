@@ -14,12 +14,62 @@
           }
           else ($('#edit-profile-main-field-receive-notifications').addClass('mail-notification-hidden'));
       });
-
+    //MyDashboard page hide homebox add buttons when dragable homebox blocks are visible
+     var activites =$('.homebox-draggable:has(.view-my-activities-for-patron-dashboard)').addClass('dashboard-activities');
+var rewards =$('.homebox-draggable:has(.view-patron-rewads-for-patron-dashboard)').addClass('dashboard-rewards');
+var reviews =$('.homebox-draggable:has(.view-my-book-reviews)').addClass('dashboard-reviews');
+var booklist =$('.homebox-draggable:has(.view-booklist-on-activities-page)').addClass('dashboard-booklists');
+var follow =$('.homebox-draggable:has(.view-follow)').addClass('dashboard-following');
+var leadeboard =$('.homebox-draggable:has(.view-leadeboard)').addClass('dashboard-leaderboard');
+var progress =$('.homebox-draggable:has(.msg-highlight)').addClass('dashboard-progress');
+var obj =$("#homebox-add ul li");
+$.each( obj , function( key, value ) {
+$(value).addClass($(value).find('a').text().toLowerCase());
+ var crntState =$('.dashboard-'+$(value).find('a').text().toLowerCase()).css('display');
+  if (crntState != 'undefined') { 
+    if (crntState == 'block') {
+     $(value).hide();
+    } else  {
+     $(value).show();
+    }
+  }
+});
       //Making single selection for avatar image
       $(".av_radio.form-radio").change(function () {
         $('.av_radio.form-radio').not(this).prop('checked', false);
       });
+        //Announcement block in landing page make image field as background image
+     $('.block.announcement').each(function() {
+      if ($(this).find('img').length) {
+        var imgURL = $(this).find('img').attr('src');
+        $(this).css('background-image', 'url(' + imgURL + ')');
+      $('.block.announcement img').hide();
+      }
+   
+  });
 
+      // Hiding of private message notification
+      $('.page-user-edit #edit-privatemsg').hide();
+      $('.page-user-edit-main .username-curr').hide();
+      
+     //make accordian of avtar images in user register page
+       function getpanels(panelclass) {
+
+        var panels = $('.'+panelclass+' #checkboxes-div #checkboxes-div .fieldset-wrapper').hide();
+    
+        $('.'+panelclass+' #checkboxes-div #checkboxes-div legend .fieldset-legend').click(function() {
+          panels.slideUp();
+        $(this).parent().next('.fieldset-wrapper').toggle();
+       
+        return false;
+        });
+      }
+      if($('body.section-user').length > 0) {
+        getpanels('section-user');
+      }
+      else if($('body.page-user-register').length > 0) {
+        getpanels('.page-user-register');
+      }
       // Get width of browser viewport. **Note:** The value we check against
       // should probably match the value set for `$topbar-breakpoint` in
       // libraryzurb/scss/_variables.scss.
@@ -40,11 +90,39 @@
 
 
 jQuery( document ).ready(function() {
+
+// Js for mobile progress report
+
+jQuery('.image_tracker').click(function() {
+  var radio_image = jQuery("input[name = image_radio]:checked").prev().children().attr('src');
+  var image_class = jQuery("input[name = image_radio]:checked").prev().children().addClass('active');
+  var split_image = radio_image.split('?');
+  var split_image1 = split_image[0].split('/');
+  var image_name = split_image1[split_image1.length - 1];
+  jQuery('#generate-mobile-progress-form .image_name').prop('value', image_name);
+
+
+  
+});
+
+  // var str = window.location.href;
+  // var n = str.lastIndexOf('&');
+  // var result = str.substring(n + 1);
+  // var splited_result = result.split("=")[0]; 
+  // //alert(splited_result);
+  // if(splited_result != 'undefined') {
+  //   jQuery('.' + splited_result).next().prop('checked', true);
+  // }
+
+
+
   /**interchanging the position of divs in progress page at mobile screen and tablet screen**/
   var windowWidth = jQuery( window ).width();
-   if (windowWidth < 940) {
-     jQuery(".section-progress .main .block-auto-role-allocation").insertAfter(".section-progress .main .progress-calendar");
+   if (windowWidth < 1025) {
+
+     jQuery(".section-progress .main .block-auto-role-allocation-user-prize-block").insertAfter(".section-progress .main .progress-calendar");
       jQuery(".section-progress .main .block-views").insertAfter(".section-progress .main .progress-calendar");
+      jQuery(".section-progress .main .block-auto-role-allocation-mobile-sticker-count").insertAfter(".section-progress .main .progress-calendar");
    }
    /**jquery for hamburger button in mobile screen**/
     jQuery('.mobile-header button').click(function(){
@@ -53,6 +131,7 @@ jQuery( document ).ready(function() {
 
   
   /* jQuery for homepage book slider */
+  jQuery( '<p>Avatar icons provided free by <a href="http://emojione.com/"target="_blank"> Emoji One</a></p>' ).insertAfter( "#user-register-form" );
   jQuery(".blslider2.slide").hide();
   jQuery(".blslider3.slide").hide();
   jQuery(".blslider1").show();
@@ -84,15 +163,16 @@ jQuery( document ).ready(function() {
   });
 
   // Placing Email div after field (how did you hear about the program)
-  jQuery('.form-item-mail').insertAfter('.form-item-profile-main-field-how-did-you-hear-about-thi-und-select');
+  jQuery('.form-item-mail').insertAfter('.form-item-profile-main-field-how-did-you-hear-about-thi-und-other');
 
-  jQuery(".flag-like").insertAfter('.like-count');
-
+  //changes for follow link in user dashboard
+  jQuery('.view-follow .view-header').insertAfter('.view-follow .attachment');
+  
   /* Jquery for script for raffle entry checkbox */
 
     jQuery( ".active_raffle" ).click(function() {
-        var location = window.location;
-        var baseUrl1 = location.protocol + "//" + location.host + '/raffle_pro';
+        //var location = window.location;
+        var baseUrl1 = Drupal.settings.basePath + 'raffle_pro';
 
       jQuery.ajax({
         
@@ -133,7 +213,7 @@ if(!div2.is(':empty')){
   /* jquery for print calendar */
 
     jQuery( "#print_button" ).click(function() {
-      var contant = jQuery(".main");
+      var contant = jQuery(".l-main");
       var inner_content = contant.html();
 
       var WinPrint = window.open('', '', 'letf=0,top=0,width=400,height=400,toolbar=0,scrollbars=0,status=0');
@@ -143,15 +223,9 @@ if(!div2.is(':empty')){
         WinPrint.close();
     });
 
-    var proStart = Drupal.settings.private_msg_custom.proStart;
-    var start_string = proStart.split('-');
-    var pro_start_date = parseInt(start_string[0] + start_string[1] + start_string[2]);
+    
 
-    var proEnd = Drupal.settings.private_msg_custom.proEnd;
-    var end_string = proEnd.split('-');
-    var pro_end_date = parseInt(end_string[0] + end_string[1] + end_string[2]);
-
-    var currentDate =  Drupal.settings.auto_role_allocation.currentDate;
+    var currentDate =  Drupal.settings.child_progress.currentDate;
 
     var time_strings = currentDate.split('-');
 
@@ -159,9 +233,9 @@ if(!div2.is(':empty')){
 
 
     
-    if((now_time_strings >= pro_start_date) && now_time_strings <= pro_end_date) {
+    //if((now_time_strings >= pro_start_date) && now_time_strings <= pro_end_date) {
        //console.log("running");
-       jQuery('.view-calendar-sticker .view-content .views-field-field-sticker-calendar-image .field-content').each(function () {
+       jQuery('.view-child-progress .view-content .views-field-field-sticker-calendar-image .field-content').each(function () {
 
         // create an Event Object (http://arshaw.com/fullcalendar/docs/event_data/Event_Object/)
        // it doesn't need to have a start or end
@@ -181,7 +255,7 @@ if(!div2.is(':empty')){
 
       });
 
-    }
+    //}
 
     
 
@@ -205,17 +279,28 @@ if(!div2.is(':empty')){
         // we need to copy it, so that multiple events don't have a reference to the same object
         var copiedEventObject = jQuery.extend({}, originalEventObject);
         copiedEventObject.description = copiedEventObject.title;
+        
         var calender_img = copiedEventObject.title; 
         var expl_img = calender_img.split("src");
-        var expl_img1 = expl_img[1].split("//");
-        var expl_img2 = expl_img1[1].split("?");
-        var expl_img3 = expl_img2[0].split("/");
-        //var image_name = expl_img3[9];
-        var image_name = expl_img3[7];
+
+        var expl_img1 = expl_img[1].split("?");
+        var src_array = expl_img1[0].split('/');
+        var image_name = src_array[src_array.length - 1];
+
 
         
         console.log(copiedEventObject.title);
         //console.log(copiedEventObject);
+
+        // Event start date and end date
+
+        var proStart = Drupal.settings.play_program_configuration.proStart;
+        var start_string = proStart.split('-');
+        var pro_start_date = parseInt(start_string[0] + start_string[1] + start_string[2]);
+
+        var proEnd = Drupal.settings.play_program_configuration.proEnd;
+        var end_string = proEnd.split('-');
+        var pro_end_date = parseInt(end_string[0] + end_string[1] + end_string[2]);
 
         // assign it the date that was reported
         copiedEventObject.start = date;
@@ -223,6 +308,7 @@ if(!div2.is(':empty')){
          event_date = event_date.toJSON().slice(0, 10);
          event_date = event_date.split('-');
          event_date = parseInt(event_date[0] + event_date[1] + event_date[2]);
+         //alert(event_date);
 
         //console.log(copiedEventObject.start);
         copiedEventObject.allDay = allDay;
@@ -237,11 +323,12 @@ if(!div2.is(':empty')){
             jQuery(this).remove();
         }
 
-        var loc = window.location;
-        var baseUrl = loc.protocol + "//" + loc.host + '/calendar';
+        //var loc = window.location;
+        var baseUrl = Drupal.settings.basePath + 'calendar';
 
-        var currentUser = Drupal.settings.auto_role_allocation.currentUser;
-        if(now_time_strings >= event_date) {
+        var currentUser = Drupal.settings.child_progress.currentUser;
+        if((event_date >= pro_start_date) && (event_date <= pro_end_date)) {
+         if(now_time_strings >= event_date) {
           jQuery.ajax({
         
             //url: 'http://localhost/playatyourlibrary/docroot/calendar',
@@ -250,11 +337,8 @@ if(!div2.is(':empty')){
             type: 'post',
             data: 'image='+image_name+'&date='+copiedEventObject.start+'&user_id='+currentUser,
             success: function(res){ //alert(res);
-              if (res) {
-                window.location.reload(true);
-              } else {
-                alert ('test');
-              }
+              res = parseInt(res);
+              window.location.reload(true);
             },
             error: function(jqXHR, data, error){
                 // console.log(jqXHR);
@@ -263,6 +347,10 @@ if(!div2.is(':empty')){
             }
         });
       }
+     } else {
+       alert("You cannot record activity before or after program period.");
+       window.location.reload(true);
+     }
        
     },
 
@@ -295,7 +383,7 @@ if(!div2.is(':empty')){
          event_date1 = event_date1.split('-');
          event_date1 = parseInt(event_date1[0] + event_date1[1] + event_date1[2]);
 
-        var currentUser = Drupal.settings.auto_role_allocation.currentUser;
+        var currentUser = Drupal.settings.child_progress.currentUser;
         console.log(event.title);
         var event_title = event.title;
         var event_title1 = event_title.split('<div>');
@@ -313,8 +401,8 @@ if(!div2.is(':empty')){
         var event_tit5 = event_tit4[1].split('/');
         var image_path = event_tit5[6];  
           
-        var loc = window.location;
-        var baseUrl = loc.protocol + "//" + loc.host + '/calendar';
+        //var loc = window.location;
+        var baseUrl = Drupal.settings.basePath + 'calendar';
         if(now_time_strings >= event_date1) {
           jQuery.ajax({        
             //url: 'http://localhost/playatyourlibrary/docroot/calendar',
@@ -357,8 +445,8 @@ jQuery(document).on('click','#raffle_form_button',function() {
 
     
     
-        var location = window.location;
-        var baseUrl1 = location.protocol + "//" + location.host + '/raffle_user_list';
+        //var location = window.location;
+        var baseUrl1 = Drupal.settings.basePath + 'raffle_user_list';
         
         var raffleId = jQuery("input[name='raffle']:checked").attr('raffle_id');
 
@@ -393,8 +481,8 @@ jQuery(document).on('click','#raffle_form_button',function() {
 
 jQuery(document).on('click','#raffle-entry-list-btn',function() {
   
-  var location = window.location;
-  var baseUrl1 = location.protocol + "//" + location.host + '/raffle_winner';
+  //var location = window.location;
+  var baseUrl1 = Drupal.settings.basePath + 'raffle_winner';
   var raffleUid = '';
   jQuery( "input:checkbox:checked" ).each(function() { 
     var uid = jQuery( this ).attr( "id" );

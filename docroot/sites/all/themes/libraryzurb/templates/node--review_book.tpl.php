@@ -81,6 +81,9 @@
   hide($content['links']);
   hide($content['field_tags']);
 
+  $nid_node = $node->nid;
+  $title_node = $node->title;
+
 
 $fname = field_get_items('node', $node, 'field_author_first_name');
 
@@ -116,7 +119,21 @@ if(isset($catalog_lk)){
   print  "<table><tr><td>".$bimg."</td>";
   print  "</tr></table>";}?>
   </div>
-  
+  <div class="like-count">
+      <?php
+
+        $query = db_select('flag_counts','count')
+        ->fields('count',array('count'))
+        ->condition('entity_id',$nid_node)
+        ->execute()
+        ->fetchAssoc();
+
+        $counts = $query['count'];
+        if(isset($counts)){
+          print '<span class = "lk-count">Likes: </span>'.$counts;
+        }
+      ?>
+  </div>
 </div>
 <article id="node-<?php print $node->nid; ?>" class="<?php print $classes; ?>"<?php print $attributes; ?>>
   <?php print render($title_prefix); ?>
@@ -139,6 +156,7 @@ if(isset($catalog_lk)){
 <div class="review_node">
   <div class="title_review">
     <h2><?php print $title_node_link.' by '.$fname['0']['safe_value'].' '.$lname['0']['safe_value'] ?></h2>
+     <?php echo '<div class="cat-link"><a href="'.$catalog_link.'" target="_blank">View in Library Catalog</a></div>'; ?>
     <p class="reviewer"><?php 
       global $base_url;
       $reviewer = $node->name; 
@@ -146,6 +164,9 @@ if(isset($catalog_lk)){
       $node_created = $node->created;
       $profile = profile2_load_by_user($node->uid);
       $pid = $profile['main']->pid;
+      $node = node_load($nid);
+      $node_privacy_field = field_get_items('node', $node, 'field_privacy_settings');
+      $node_privacy = $node_privacy_field[0]['value'];
 
       $query_img_id = db_select('field_data_field_user_avatar','av')
       ->fields('av',array('field_user_avatar_target_id'))
@@ -165,8 +186,11 @@ if(isset($catalog_lk)){
         $img_uri = $img_uri->uri;
         $style = 'avatar_style';
         $img_path = image_style_url($style, $img_uri);
+      }
+      if(isset($img_uri)){
         $img = "<img src='$img_path'>";
-      }?>
+      }
+      ?>
     <span class = "created"><?php if ($node_privacy == 'public' || $node_privacy == 'private'){ print 'Reviewed by '; }?></span><span class="avatar"><?php if ($node_privacy == 'public' || $node_privacy == 'private') { print $img; } ?></span><span class ="name_author"><?php if ($node_privacy == 'public' || $node_privacy == 'private'){ print "<a href = '$base_url/users/public_profile/$node_uid' class = 'user_profile_node'>".$reviewer.'</a>'; } ?></span>
     </p>
     <p class="date_created"><?php print date('F d, Y',$node_created) ?></p>
@@ -186,29 +210,11 @@ if(isset($catalog_lk)){
   <?php print render($content['comments']); ?>
   <div class="follow_link_bookreview">
   <?php 
-  $node = node_load($nid);
-  $node_privacy_field = field_get_items('node', $node, 'field_privacy_settings');
-  $node_privacy = $node_privacy_field[0]['value'];
-
-  if($node_privacy === 'public'){ print flag_create_link('follow', $node->uid); } ?>
+    if($node_privacy === 'public'){ print flag_create_link('follow', $node->uid); } ?>
   </div>
-<div class="like-count">
-    <?php
-      $nid_node = $node->nid;
-      $title_node = $node->title;
-
-      $query = db_select('flag_counts','count')
-      ->fields('count',array('count'))
-      ->condition('entity_id',$nid_node)
-      ->execute()
-      ->fetchAssoc();
-
-      $counts = $query['count'];
-      if(isset($counts)){
-        print '<span class = "lk-count">Likes: </span>'.$counts;
-      }
-    ?>
-  </div>
+  <span>
+  <?php print flag_create_link('like', $node->nid) ?>
+  </span>
   </div>
 
 </article>
