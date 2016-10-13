@@ -2,7 +2,8 @@
 
 // function for providing autocomplete for users
 function _author_name_autocomplete($string = ''){
-	$author_users = array();
+	
+  $author_users = array();
   $sname_query = db_select('users','u');
   $sname_query->condition('u.name', '%' . db_like($string) . '%', 'LIKE');
   $sname_query->fields('u',array('name'));

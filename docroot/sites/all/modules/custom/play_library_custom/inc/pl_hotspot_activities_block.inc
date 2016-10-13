@@ -16,10 +16,10 @@ function pl_activities_view_select_list($term, $activity, $progress = '0') {
     $activity_term = taxonomy_term_load($term_tid);
 
 		if($activity_term->field_hotspot_activity_type['und'][0]['value'] == $activity){
-			$select_options[0] = 'Select from the following';
+			$select_options[0] = t('Select from the following');
 			$select_options[$base_url.'/activities-listing/'.$term_tid] = $term_title;
 		}else if($activity_term->field_progress_page_term['und'][0]['value'] == $progress){
-			$select_options[0] = 'Select from the following';
+			$select_options[0] = t('Select from the following');
 			$select_options[$base_url.'/activities-listing/'.$term_tid] = $term_title;
 			$select_opt[$term_tid] .= $term_title;
 		}
@@ -40,7 +40,7 @@ function pl_activities_submit_select_list($term,$activity) {
 		$activity_term = taxonomy_term_load($term_tid);
 
 		if($activity_term->field_hotspot_activity_type['und'][0]['value'] == $activity){
-			$select_options[0] = 'Select from the following';
+			$select_options[0] = t('Select from the following');
 			$select_options[$base_url.'/node/add/review-activity/'.$term_tid] = $term_title;
 		}
 	}
