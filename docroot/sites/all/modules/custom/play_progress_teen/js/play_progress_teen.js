@@ -2,6 +2,7 @@
  * function callback for progress page report
  */
 (function($) {
+  
 Drupal.behaviors.play_progress_teen = {
   attach: function (context, settings) {
 

@@ -16,7 +16,7 @@
 	print $page_desc['value']; ?>
 </div>
 <div class="print-page">
-	<a href = "progress-print"><button class="print">Print Progress Report<span style="margin-left: 5px;">(pdf)</span></button></a>
+	<a href = "progress-print"><button class="print"><?php print t('Print Progress Report'); ?><span style="margin-left: 5px;">(pdf)</span></button></a>
 </div>
 <div class="user-desc">
 <div class="avatar-id">
@@ -28,18 +28,18 @@
 </div>
 <div class="activity-remaining">
 <?php $grids = variable_get('no_of_grids'); $activities_left = $grids - pl_specefic_user_nodes($current_uid);
-  if($activities_left < 0){ print 'Activities Left to Complete: '.'0'.' activities';
-  }else{ print 'Activities Left to Complete: '.$activities_left.' activities'; } ?>
+  if($activities_left < 0){ print t('Activities Left to Complete: 0 activities');
+  }else{ print t('Activities Left to Complete: ').$activities_left.t(' activities'); } ?>
 </div>
 <div class="points">
-	<?php print 'Raffle Tickets Earned: '.$raff_count; ?>
+	<?php print t('Raffle Tickets Earned: ').$raff_count; ?>
 </div>
 </div>
 </div>
 <div class="progress-wrap">
 <div class="report-acivity">
 	<?php
-      print '<h1>Report an Activity</h1>';
+      print '<h1>'.t('Report an Activity</h1>');
       print  '<div id = "errorwarn"></div>';
       print  '<div id = "errorwarn-activity"></div>';
 

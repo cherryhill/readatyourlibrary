@@ -33,7 +33,7 @@ function pl_platform_configuration($form, &$form_state) {
   );
   $form['program_configuration']['pmc_program_name'] = array(
     '#type' => 'textfield',
-    '#title' => 'Program Name',
+    '#title' => t('Program Name'),
   );
   $form['program_configuration']['pmc_progrm_image'] = array(
     '#title' => t('Program Image'),
