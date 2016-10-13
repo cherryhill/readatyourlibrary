@@ -63,7 +63,7 @@ function pl_is_program_active() {
 	  if (($now >= $program_start_date) && ($now <= $program_end_date)) {
 	    return 1;
 	  } else {
-	    drupal_set_message("The program is currently closed.");
+	    drupal_set_message(t("The program is currently closed."));
 	    return 0;
 	  }
   }

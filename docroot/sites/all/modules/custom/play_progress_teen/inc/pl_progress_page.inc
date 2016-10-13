@@ -4,6 +4,7 @@
  * ajax callback for progress page
  */
 function pl_complete_activity_progress(){
+
   global $user;
   $activity_uid = $user->uid;
 
@@ -25,6 +26,9 @@ function pl_complete_activity_progress(){
   echo 1;
 }
 
+/**
+ * returns user name and user avatar
+ */
 function pl_user_avatar_progress_page($uid, $style){
 
   if($uid == ''){
@@ -85,6 +89,7 @@ function pl_user_avatar_progress_print_page($uid){
  * Retrieves activity limt that is set
  */
 function pl_retrieve_activity_limit($activity_id){
+
   $entity_info = entity_load('activity', array($activity_id));
   return $activity_name = $entity_info[$activity_id]->field_activity_limit['und'][0]['value'];
 }
@@ -93,6 +98,7 @@ function pl_retrieve_activity_limit($activity_id){
  * Retrieves how many times an activity report node has been created by the user
  */
 function pl_activity_report_node_creation($account_id, $activity_id){
+
   $query = new EntityFieldQuery();
   $query->entityCondition('entity_type', 'node');
   $query->entityCondition('bundle', 'activity_report');
@@ -101,7 +107,11 @@ function pl_activity_report_node_creation($account_id, $activity_id){
   return $query->count()->execute();
 }
 
+/**
+ * Retrieves nodes created for activities performed
+ */
 function pl_specefic_user_nodes($current_uid){
+
   $user_stamp_query = db_select('node','n');
   $user_stamp_query->condition('type','activity_report');
   $user_stamp_query->condition('uid',$current_uid);
@@ -114,6 +124,9 @@ function pl_specefic_user_nodes($current_uid){
   return 0;
 }
 
+/**
+ * function for print progress page
+ */
 function pl_progress_print_page(){
 
   global $user;
