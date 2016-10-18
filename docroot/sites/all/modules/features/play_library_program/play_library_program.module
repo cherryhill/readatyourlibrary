@@ -183,16 +183,21 @@ function play_library_program_user_insert(&$edit, $account, $category) {
 
 function play_library_program_node_presave($node) {
   
+  if(function_exists('play_library_program_pl_is_program_active')){
     if(!pl_is_program_active()) {
       drupal_goto('home');
       return FALSE;
     }
+  }
 }
 
 function play_library_program_webform_submission_presave($node, &$submission) {
-  if(!pl_is_program_active()) {
-    drupal_goto('home');
-    return FALSE;
+
+  if(function_exists('play_library_program_pl_is_program_active')){
+    if(!pl_is_program_active()) {
+      drupal_goto('home');
+      return FALSE;
+    }
   }
 }
 
@@ -202,9 +207,12 @@ function play_library_program_webform_submission_presave($node, &$submission) {
  */
 function play_library_program_entity_insert($entity, $type) { 
 
-    if(!pl_is_program_active()) {      
-      return FALSE;
-    }    
+    if(function_exists('play_library_program_pl_is_program_active')){
+      if(!pl_is_program_active()) {      
+        return FALSE;
+      } 
+    }
+   
 
     // Could be node, could be eck, could be something else, but easy to check.
     if (!isset($entity->type)) {
