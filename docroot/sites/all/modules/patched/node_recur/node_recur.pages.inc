@@ -52,7 +52,6 @@ function _node_recur_node_recur_form($type = NULL) {
       'none' => t('Do not repeat'),
       'days' => t('Pick days of the week'),
       'rules' => t('Every day, every 2 weeks, etc...'),
-      'monthly' => t('Monthly on a day of the week'),
     ),
     '#default_value' => 'days',
     '#description' => t('Selecting a choice above will reveal more options.'),
@@ -101,35 +100,6 @@ function _node_recur_node_recur_form($type = NULL) {
     '#description' => t('If checked, weekends will not be included.'),
   );
   
-  $form['monthly'] = array(
-    '#type' => 'container',
-  );
-
-  $form['monthly']['occurrence'] = array(
-    '#type' => 'select',
-    '#title' => t('Repeat monthly on the'),
-    '#options' => array(
-      'first' => t('1st'),
-      'second' => t('2nd'),
-      'third' => t('3rd'),
-      'fourth' => t('4th'),
-      'last' => t('Last'),
-    ),
-  );
-
-  $form['monthly']['weekday'] = array(
-    '#type' => 'select',
-    '#options' => array(
-      'monday' => t('Monday'),
-      'tuesday' => t('Tuesday'),
-      'wednesday' => t('Wednesday'),
-      'thursday' => t('Thursday'),
-      'friday' => t('Friday'),
-      'saturday' => t('Saturday'),
-      'sunday' => t('Sunday'),
-    ),
-  );
-
   $form['until'] = array(
     '#type' => 'textfield',
     '#title' => t('Recur until'),

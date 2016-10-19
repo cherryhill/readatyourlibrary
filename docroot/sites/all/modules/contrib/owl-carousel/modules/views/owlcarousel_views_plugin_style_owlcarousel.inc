@@ -6,8 +6,8 @@
  */
 
 /**
-  * Implements a style type plugin for the Views module.
-  */
+ * Implements a style type plugin for the Views module.
+ */
 class owlcarousel_views_plugin_style_owlcarousel extends views_plugin_style {
 
   /**
@@ -50,7 +50,7 @@ class owlcarousel_views_plugin_style_owlcarousel extends views_plugin_style {
   function options_submit(&$form, &$form_state) {
     $settings = $form_state['values']['style_options'];
     $config = array_merge($settings['settings']);
- 
+
     // Keep default value structure.
     $form_state['values']['style_options'] = $config;
   }

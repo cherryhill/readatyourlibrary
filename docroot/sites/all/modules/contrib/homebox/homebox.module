@@ -33,7 +33,8 @@ function homebox_menu() {
   if (is_array($pages) && count($pages) > 0) {
     foreach ($pages as $page) {
       $items[$page->settings['path']] = array(
-        'title' => $page->settings['title'],
+        'title callback' => 'homebox_build_title',
+        'title arguments' => [$page->settings['title']],
         'page callback' => 'homebox_build',
         'page arguments' => array($page),
         'access callback' => '_homebox_user_access_view_homebox',
@@ -56,9 +57,10 @@ function homebox_menu() {
     $page = homebox_get_page($name);
     if ($page) {
       $items['user/%user/' . $page->settings['path']] = array(
-        'title' => $page->settings['title'],
-        'page callback' => 'homebox_pre_build_user',
-        'page arguments' => array($page, 1),
+        'title callback' => 'homebox_build_title',
+        'title arguments' => [$page->settings['title']],
+        'page callback' => 'homebox_build',
+        'page arguments' => array($page),
         'access callback' => '_homebox_user_access_view_user_homebox',
         'access arguments' => array($page, 1),
         'weight' => 1,
@@ -242,6 +244,16 @@ function homebox_permission() {
 }
 
 /**
+ * Implements hook_hook_info().
+ */
+function homebox_hook_info() {
+  $hooks['homebox'] = array(
+    'group' => 'homebox',
+  );
+  return $hooks;
+}
+
+/**
  * Implements hook_theme().
  */
 function homebox_theme($existing, $type, $theme, $path) {
@@ -316,6 +328,13 @@ function homebox_get_path($page) {
     return 'user/' . $user->uid . '/' . $page->settings['path'];
   }
   return $page->settings['path'];
+}
+
+/**
+ * Menu title callback.
+ */
+function homebox_build_title($title) {
+  return t(check_plain($title), array('@user' => $GLOBALS['user']->name));
 }
 
 /**
@@ -508,26 +527,6 @@ function homebox_save_form_submit($form, &$form_state) {
     $blocks[$key] = $block;
   }
   _homebox_save_user_settings($form_state['values']['page'], $blocks);
-}
-
-/**
- * Helper function for performing operations prior to rendering
- * a Homebox that is set as a user profile tab
- *
- * @param $page
- *   A page object
- * @param $user
- *   A user object
- */
-function homebox_pre_build_user($page, $user) {
-  drupal_set_title(t(check_plain($page->settings['title']), array('@user' => $user->name)));
-  $output = homebox_build($page);
-
-  // Only return if output is available
-  // Certain Homeboxes print instead of return
-  if ($output) {
-    return $output;
-  }
 }
 
 /**

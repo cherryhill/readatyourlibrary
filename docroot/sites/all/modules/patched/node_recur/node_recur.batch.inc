@@ -34,11 +34,7 @@ function node_recur_node_batch_create_node($node, $start_date, $end_date = NULL,
   $context['message'] = t('Date: !date', array('!date' => format_date($start_date)));
   
   // Clone the node
-  $clone = clone $node;
-  unset($clone->nid);
-  unset($clone->created);
-  unset($clone->changed);
-  unset($clone->vid);
+  $clone = node_load($node->nid, NULL, TRUE);
   
   // Add some helpful markers
   $clone->is_recurring = TRUE;
@@ -46,18 +42,42 @@ function node_recur_node_batch_create_node($node, $start_date, $end_date = NULL,
 
   // Inject the new dates
   $field_name = node_recur_get_date_field_name($node->type);
+  $field_info = field_info_field($field_name);
+  switch ($field_info['type']) {
+    case 'date':
+      $format = DATE_FORMAT_ISO;
+      break;
+    case 'datestamp':
+      $format = DATE_FORMAT_UNIX;
+      break;
+    case 'datetime':
+      $format = DATE_FORMAT_DATETIME;
+      break;
+  }
+
   $date = $clone->$field_name;
-  $date[LANGUAGE_NONE][0]['value'] = date(DATE_FORMAT_DATETIME, $start_date);
+  $date[LANGUAGE_NONE][0]['value'] = date($format, $start_date);
   if ($end_date) {
-    $date[LANGUAGE_NONE][0]['value2'] = date(DATE_FORMAT_DATETIME, $end_date);
+    $date[LANGUAGE_NONE][0]['value2'] = date($format, $end_date);
   }
   $clone->$field_name = $date;
-  
+
   // Store the start dates
   $context['results'][] = $start_date;
 
   // Save the new node
+  if (module_exists('clone')) {
+    $context['prefix_title'] = FALSE;
+    clone_action_clone($clone, $context);
+  }
+  else {
+    $clone->clone_from_original_nid = $node->nid;
+    unset($clone->nid);
+    unset($clone->created);
+    unset($clone->changed);
+    unset($clone->vid);
   node_save($clone);
+  }
 }
 
 /**

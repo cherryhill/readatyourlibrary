@@ -60,6 +60,15 @@ function _webform_edit_select($component) {
     ),
   );
 
+  // Default component if nested under a grid.
+  if (!isset($component['cid']) && $component['pid'] &&
+      ($node = node_load($component['nid'])) && ($parent = $node->webform['components'][$component['pid']]) &&
+      $parent['type'] == 'grid') {
+    $component['value'] = $parent['value'];
+    $component['extra']['items'] = $parent['extra']['options'];
+    $component['required'] = $parent['required'];
+  }
+
   $other = array();
   if ($info = _webform_select_options_info()) {
     $options = array('' => t('None'));
@@ -72,7 +81,6 @@ function _webform_edit_select($component) {
       '#type' => 'select',
       '#options' => $options,
       '#default_value' => $component['extra']['options_source'],
-      '#weight' => 1,
       '#description' => t('Use a pre-built list of options rather than entering options manually. Options will not be editable if using pre-built list.'),
       '#parents' => array('extra', 'options_source'),
       '#weight' => 5,
@@ -325,9 +333,13 @@ function _webform_render_select($component, $value = NULL, $filter = TRUE, $subm
     '#weight' => $component['weight'],
     '#description' => $filter ? webform_filter_descriptions($component['extra']['description'], $node) : $component['extra']['description'],
     '#theme_wrappers' => array('webform_element'),
-    '#pre_render' => array(), // Needed to disable double-wrapping of radios and checkboxes.
     '#translatable' => array('title', 'description', 'options'),
   );
+
+  // Prevent double-wrapping of radios and checkboxes.
+  if (!$component['extra']['aslist']) {
+    $element['#pre_render'] = array();
+  }
 
   // Convert the user-entered options list into an array.
   $default_value = $filter ? webform_replace_tokens($component['value'], $node) : $component['value'];
@@ -972,7 +984,7 @@ function _webform_select_options_callback($name, $component, $flat = FALSE) {
   }
 
   // Execute the callback function.
-  if (isset($info[$name]['options callback']) && function_exists($info[$name]['options callback'])) {
+  if (isset($info[$name]['options callback']) && is_callable($info[$name]['options callback'])) {
     $function = $info[$name]['options callback'];
 
     $arguments = array();

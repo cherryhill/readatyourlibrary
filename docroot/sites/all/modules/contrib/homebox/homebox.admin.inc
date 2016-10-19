@@ -63,8 +63,8 @@ function homebox_admin_page($form, &$form_state, $page = FALSE) {
 
   $form['page']['options']['menu'] = array(
     '#type' => 'checkbox',
-    '#title' => t('Create a menu entry'),
-    '#description' => t('If checked, a menu entry will be created for this page.'),
+    '#title' => t('Visible menu item'),
+    '#description' => t('Can be positioned in <a href="!url">Menus admin</a>.', ['!url' => url('admin/structure/menu')]),
     '#default_value' => $page ? $page->settings['menu'] : 1,
   );
 

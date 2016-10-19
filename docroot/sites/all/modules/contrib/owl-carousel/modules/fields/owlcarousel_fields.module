@@ -1,0 +1,103 @@
+<?php
+
+/**
+ * @file
+ * owlcarousel_fields.module
+ */
+
+/**
+ * Implements hook_field_formatter_info().
+ */
+function owlcarousel_fields_field_formatter_info() {
+  return array(
+    'owlcarousel_formatter' => array(
+      'label' => t('Owl Carousel'),
+      'field types' => array('image', 'text', 'text_long', 'list_text'),
+      'settings'  => array(
+        'settings_group' => 'default',
+        'image_style' => 'large',
+      ),
+    ),
+  );
+}
+
+/**
+ * Implements hook_field_formatter_settings_form().
+ */
+function owlcarousel_fields_field_formatter_settings_form($field, $instance, $view_mode, $form, &$form_state) {
+  $display = $instance['display'][$view_mode];
+  $settings = $display['settings'];
+
+  $element = array();
+  $element['settings_group'] = array(
+    '#type' => 'select',
+    '#title' => t('Settings Group'),
+    '#description' => t('Select the settings group to apply.'),
+    '#default_value' => $settings['settings_group'],
+    '#options' => owlcarousel_instance_callback_list(),
+  );
+  $element['image_style'] = array(
+    '#type' => 'select',
+    '#title' => t('Image Style'),
+    '#description' => t('Apply image style.'),
+    '#default_value' => $settings['image_style'],
+    '#options' => image_style_options(),
+  );
+
+  return $element;
+}
+
+/**
+ * Implements hook_field_formatter_settings_summary().
+ */
+function owlcarousel_fields_field_formatter_settings_summary($field, $instance, $view_mode) {
+  $display = $instance['display'][$view_mode];
+  $settings = $display['settings'];
+
+  $summary = t('@settings with image style @style applied to carousel instance.', array(
+    '@settings' => $settings['settings_group'],
+    '@style' => $settings['image_style'],
+  ));
+
+  return $summary;
+}
+
+/**
+ * Implements hook_field_formatter_view().
+ */
+function owlcarousel_fields_field_formatter_view($entity_type, $entity, $field, $instance, $langcode, $items, $display) {
+  $element = array();
+  $settings = $display['settings'];
+
+  // Format carousel settings.
+  $settings_group = array(
+    'instance' => $settings['settings_group'],
+    'attributes' => array(
+      'id' => array(
+        'default' => 'owlcarousel_fields_' . $instance['id']
+      ),
+    ),
+  );
+
+  // Format carousel items.
+  foreach ($items as $item) {
+    $vars = array(
+      'style_name' => $settings['image_style'],
+      'path' => $item['uri'],
+      'width' => $item['width'],
+      'height' => $item['height'],
+      'alt' => $item['alt'],
+      'title' => $item['title'],
+    );
+
+    $items_group[]['row'] = theme('image_style', $vars);
+  }
+
+  $element = array(
+    '#theme' => 'owlcarousel',
+    '#items' => $items_group,
+    '#settings' => $settings_group,
+  );
+
+  return $element;
+}
