@@ -13,13 +13,7 @@ function content_type_book_review_field_default_field_instances() {
   // Exported field_instance: 'node-review_book-body'.
   $field_instances['node-review_book-body'] = array(
     'bundle' => 'review_book',
-    'default_value' => array(
-      0 => array(
-        'summary' => '',
-        'value' => '',
-        'format' => 'simple_html',
-      ),
-    ),
+    'default_value' => NULL,
     'deleted' => 0,
     'description' => '',
     'display' => array(
@@ -40,6 +34,7 @@ function content_type_book_review_field_default_field_instances() {
         'weight' => 2,
       ),
     ),
+    'display_label' => '',
     'entity_type' => 'node',
     'field_name' => 'body',
     'label' => 'Review',
@@ -48,12 +43,9 @@ function content_type_book_review_field_default_field_instances() {
       'better_formats' => array(
         'allowed_formats' => array(
           'filtered_html' => 0,
-          'filtered_html_with_embed' => 0,
-          'filtered_html_with_tables' => 0,
           'full_html' => 0,
           'php_code' => 0,
           'plain_text' => 0,
-          'simple_html' => 'simple_html',
         ),
         'allowed_formats_toggle' => 1,
         'default_order_toggle' => 0,
@@ -61,12 +53,6 @@ function content_type_book_review_field_default_field_instances() {
           'formats' => array(
             'filtered_html' => array(
               'weight' => -10,
-            ),
-            'filtered_html_with_embed' => array(
-              'weight' => -8,
-            ),
-            'filtered_html_with_tables' => array(
-              'weight' => -7,
             ),
             'full_html' => array(
               'weight' => -6,
@@ -77,14 +63,11 @@ function content_type_book_review_field_default_field_instances() {
             'plain_text' => array(
               'weight' => -5,
             ),
-            'simple_html' => array(
-              'weight' => -9,
-            ),
           ),
         ),
       ),
       'display_summary' => 1,
-      'text_processing' => 1,
+      'text_processing' => 0,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -97,6 +80,7 @@ function content_type_book_review_field_default_field_instances() {
       'type' => 'text_textarea_with_summary',
       'weight' => 6,
     ),
+    'workbench_access_field' => 0,
   );
 
   // Exported field_instance: 'node-review_book-field_author_first_name'.
