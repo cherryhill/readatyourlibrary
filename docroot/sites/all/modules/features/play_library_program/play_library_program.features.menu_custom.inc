@@ -15,6 +15,8 @@ function play_library_program_menu_default_menu_custom() {
     'menu_name' => 'navigation',
     'title' => 'Navigation',
     'description' => 'The <em>Navigation</em> menu contains links intended for site visitors. Links are added to the <em>Navigation</em> menu automatically by some modules.',
+    'language' => 'und',
+    'i18n_mode' => 0,
   );
   // Translatables
   // Included for use with string extractors like potx.

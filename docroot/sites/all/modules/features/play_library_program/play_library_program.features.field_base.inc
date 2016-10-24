@@ -10,6 +10,30 @@
 function play_library_program_field_default_field_bases() {
   $field_bases = array();
 
+  // Exported field_base: 'field_activity_description'.
+  $field_bases['field_activity_description'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_activity_description',
+    'field_permissions' => array(
+      'type' => 0,
+    ),
+    'indexes' => array(
+      'format' => array(
+        0 => 'format',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'text',
+    'settings' => array(
+      'profile2_private' => FALSE,
+    ),
+    'translatable' => 0,
+    'type' => 'text_long',
+  );
+
   // Exported field_base: 'field_activity_entry_activity'.
   $field_bases['field_activity_entry_activity'] = array(
     'active' => 1,
@@ -66,6 +90,32 @@ function play_library_program_field_default_field_bases() {
     'type' => 'text',
   );
 
+  // Exported field_base: 'field_activity_image'.
+  $field_bases['field_activity_image'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_activity_image',
+    'field_permissions' => array(
+      'type' => 0,
+    ),
+    'indexes' => array(
+      'fid' => array(
+        0 => 'fid',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'image',
+    'settings' => array(
+      'default_image' => 0,
+      'profile2_private' => FALSE,
+      'uri_scheme' => 'public',
+    ),
+    'translatable' => 0,
+    'type' => 'image',
+  );
+
   // Exported field_base: 'field_activity_limit'.
   $field_bases['field_activity_limit'] = array(
     'active' => 1,
@@ -73,10 +123,15 @@ function play_library_program_field_default_field_bases() {
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_activity_limit',
+    'field_permissions' => array(
+      'type' => 0,
+    ),
     'indexes' => array(),
     'locked' => 0,
     'module' => 'number',
-    'settings' => array(),
+    'settings' => array(
+      'profile2_private' => FALSE,
+    ),
     'translatable' => 0,
     'type' => 'number_integer',
   );
@@ -88,10 +143,15 @@ function play_library_program_field_default_field_bases() {
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_activity_points',
+    'field_permissions' => array(
+      'type' => 0,
+    ),
     'indexes' => array(),
     'locked' => 0,
     'module' => 'number',
-    'settings' => array(),
+    'settings' => array(
+      'profile2_private' => FALSE,
+    ),
     'translatable' => 0,
     'type' => 'number_integer',
   );
@@ -103,6 +163,9 @@ function play_library_program_field_default_field_bases() {
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_activity_time_limit',
+    'field_permissions' => array(
+      'type' => 0,
+    ),
     'indexes' => array(
       'value' => array(
         0 => 'value',
@@ -119,6 +182,7 @@ function play_library_program_field_default_field_bases() {
         86400 => 'Once per day',
       ),
       'allowed_values_function' => '',
+      'profile2_private' => FALSE,
     ),
     'translatable' => 0,
     'type' => 'list_integer',
@@ -686,6 +750,39 @@ function play_library_program_field_default_field_bases() {
     ),
     'translatable' => 0,
     'type' => 'role',
+  );
+
+  // Exported field_base: 'field_start_date'.
+  $field_bases['field_start_date'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_start_date',
+    'field_permissions' => array(
+      'type' => 0,
+    ),
+    'indexes' => array(),
+    'locked' => 0,
+    'module' => 'date',
+    'settings' => array(
+      'cache_count' => 4,
+      'cache_enabled' => 0,
+      'granularity' => array(
+        'day' => 'day',
+        'hour' => 0,
+        'minute' => 0,
+        'month' => 'month',
+        'second' => 0,
+        'year' => 'year',
+      ),
+      'profile2_private' => FALSE,
+      'timezone_db' => '',
+      'todate' => 'required',
+      'tz_handling' => 'none',
+    ),
+    'translatable' => 0,
+    'type' => 'datetime',
   );
 
   // Exported field_base: 'field_sticker_image'.
