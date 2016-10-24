@@ -10,6 +10,78 @@
 function play_library_program_field_default_field_instances() {
   $field_instances = array();
 
+  // Exported field_instance: 'activity-activity-field_activity_description'.
+  $field_instances['activity-activity-field_activity_description'] = array(
+    'bundle' => 'activity',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 7,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'display_label' => '',
+    'entity_type' => 'activity',
+    'field_name' => 'field_activity_description',
+    'label' => 'Activity Description',
+    'required' => 0,
+    'settings' => array(
+      'better_formats' => array(
+        'allowed_formats' => array(
+          'filtered_html' => 'filtered_html',
+          'full_html' => 'full_html',
+          'php_code' => 'php_code',
+          'plain_text' => 'plain_text',
+        ),
+        'allowed_formats_toggle' => 0,
+        'default_order_toggle' => 0,
+        'default_order_wrapper' => array(
+          'formats' => array(
+            'filtered_html' => array(
+              'weight' => 0,
+            ),
+            'full_html' => array(
+              'weight' => 1,
+            ),
+            'php_code' => array(
+              'weight' => 11,
+            ),
+            'plain_text' => array(
+              'weight' => 10,
+            ),
+          ),
+        ),
+      ),
+      'linkit' => array(
+        'enable' => 0,
+        'insert_plugin' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'rows' => 5,
+      ),
+      'type' => 'text_textarea',
+      'weight' => 9,
+    ),
+    'workbench_access_field' => 0,
+  );
+
   // Exported field_instance: 'activity-activity-field_activity_fired_hook'.
   $field_instances['activity-activity-field_activity_fired_hook'] = array(
     'bundle' => 'activity',
@@ -96,6 +168,80 @@ function play_library_program_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'activity-activity-field_activity_image'.
+  $field_instances['activity-activity-field_activity_image'] = array(
+    'bundle' => 'activity',
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'image',
+        'settings' => array(
+          'image_link' => '',
+          'image_style' => '',
+        ),
+        'type' => 'image',
+        'weight' => 6,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'display_label' => '',
+    'entity_type' => 'activity',
+    'field_name' => 'field_activity_image',
+    'label' => 'Activity Image',
+    'required' => 0,
+    'settings' => array(
+      'alt_field' => 0,
+      'default_image' => 0,
+      'file_directory' => '',
+      'file_extensions' => 'png gif jpg jpeg',
+      'max_filesize' => '',
+      'max_resolution' => '',
+      'min_resolution' => '',
+      'title_field' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'image',
+      'settings' => array(
+        'filefield_sources' => array(
+          'filefield_sources' => array(
+            'attach' => 0,
+            'clipboard' => 0,
+            'imce' => 0,
+            'reference' => 0,
+            'remote' => 0,
+            'upload' => 'upload',
+          ),
+          'source_attach' => array(
+            'absolute' => 0,
+            'attach_mode' => 'move',
+            'path' => 'file_attach',
+          ),
+          'source_imce' => array(
+            'imce_mode' => 0,
+          ),
+          'source_reference' => array(
+            'autocomplete' => 0,
+            'search_all_fields' => 0,
+          ),
+        ),
+        'preview_image_style' => 'thumbnail',
+        'progress_indicator' => 'throbber',
+      ),
+      'type' => 'image_image',
+      'weight' => 8,
+    ),
+    'workbench_access_field' => 0,
+  );
+
   // Exported field_instance: 'activity-activity-field_activity_limit'.
   $field_instances['activity-activity-field_activity_limit'] = array(
     'bundle' => 'activity',
@@ -126,10 +272,11 @@ function play_library_program_field_default_field_instances() {
         'weight' => 0,
       ),
     ),
+    'display_label' => '',
     'entity_type' => 'activity',
     'field_name' => 'field_activity_limit',
-    'label' => 'Number of times a user can perform an activity',
-    'required' => 0,
+    'label' => 'Number of times a user can perform this activity',
+    'required' => 1,
     'settings' => array(
       'max' => '',
       'min' => 1,
@@ -144,6 +291,7 @@ function play_library_program_field_default_field_instances() {
       'type' => 'number',
       'weight' => 5,
     ),
+    'workbench_access_field' => 0,
   );
 
   // Exported field_instance: 'activity-activity-field_activity_points'.
@@ -176,10 +324,11 @@ function play_library_program_field_default_field_instances() {
         'weight' => 0,
       ),
     ),
+    'display_label' => '',
     'entity_type' => 'activity',
     'field_name' => 'field_activity_points',
     'label' => 'Activity Points',
-    'required' => 0,
+    'required' => 1,
     'settings' => array(
       'max' => '',
       'min' => 0,
@@ -194,6 +343,7 @@ function play_library_program_field_default_field_instances() {
       'type' => 'number',
       'weight' => 3,
     ),
+    'workbench_access_field' => 0,
   );
 
   // Exported field_instance: 'activity-activity-field_activity_time_limit'.
@@ -221,9 +371,10 @@ function play_library_program_field_default_field_instances() {
         'weight' => 0,
       ),
     ),
+    'display_label' => '',
     'entity_type' => 'activity',
     'field_name' => 'field_activity_time_limit',
-    'label' => 'Activity Time Limit',
+    'label' => 'Activity Frequency Limit',
     'required' => 1,
     'settings' => array(
       'user_register_form' => FALSE,
@@ -237,6 +388,64 @@ function play_library_program_field_default_field_instances() {
       'type' => 'options_select',
       'weight' => 6,
     ),
+    'workbench_access_field' => 0,
+  );
+
+  // Exported field_instance: 'activity-activity-field_start_date'.
+  $field_instances['activity-activity-field_start_date'] = array(
+    'bundle' => 'activity',
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'date',
+        'settings' => array(
+          'format_type' => 'long',
+          'fromto' => 'both',
+          'multiple_from' => '',
+          'multiple_number' => '',
+          'multiple_to' => '',
+          'show_remaining_days' => FALSE,
+        ),
+        'type' => 'date_default',
+        'weight' => 5,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'display_label' => '',
+    'entity_type' => 'activity',
+    'field_name' => 'field_start_date',
+    'label' => 'Activity Date',
+    'required' => 1,
+    'settings' => array(
+      'default_value' => 'now',
+      'default_value2' => 'same',
+      'default_value_code' => '',
+      'default_value_code2' => '',
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'date',
+      'settings' => array(
+        'increment' => 15,
+        'input_format' => 'm/d/Y - H:i:s',
+        'input_format_custom' => '',
+        'label_position' => 'above',
+        'no_fieldset' => 0,
+        'text_parts' => array(),
+        'year_range' => '-3:+3',
+      ),
+      'type' => 'date_popup',
+      'weight' => 7,
+    ),
+    'workbench_access_field' => 0,
   );
 
   // Exported field_instance:
@@ -1970,15 +2179,18 @@ function play_library_program_field_default_field_instances() {
   // Translatables
   // Included for use with string extractors like potx.
   t('Activity');
+  t('Activity Date');
+  t('Activity Description');
+  t('Activity Frequency Limit');
+  t('Activity Image');
   t('Activity Points');
-  t('Activity Time Limit');
   t('Badge Image');
   t('Date Limit Range');
   t('Date Limit range when the reward criteria is valid.');
   t('Date of Raffle');
   t('Default number of points user gets for doing activity each time.');
   t('Is this criteria repeatable? Note that this setting is not compatible with an activity.');
-  t('Number of times a user can perform an activity');
+  t('Number of times a user can perform this activity');
   t('Points');
   t('Print Reward FIle');
   t('Raffle Date');
