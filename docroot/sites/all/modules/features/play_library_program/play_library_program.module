@@ -473,7 +473,7 @@ function play_library_program_create_activity_entry($activity_id, $account_id) {
     $activity_frequency_limit= play_library_program_frequency_limit($activity_id);
     $activity_time_limit = play_library_program_activity_time_limit($activity_id);
     
-    if($count_activity_entry < $no_of_time_user_perform_activity && $activity_frequency_limit == 'TRUE' && $activity_time_limit = 'TRUE') {
+    if($count_activity_entry < $no_of_time_user_perform_activity && $activity_frequency_limit == 'TRUE' && $activity_time_limit == 'TRUE') {
         
       entity_save('activity', $activity_entry);
     }
