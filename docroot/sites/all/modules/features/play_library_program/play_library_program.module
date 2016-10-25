@@ -469,12 +469,11 @@ function play_library_program_create_activity_entry($activity_id, $account_id) {
     $activity_frequency_limit= play_library_program_frequency_limit($activity);
     $activity_time_limit = play_library_program_activity_time_limit($activity);
     
-    if(($count_activity_entry < $no_of_time_user_perform_activity) && ($activity_frequency_limit == TRUE) && ($activity_time_limit == TRUE)) {
-        
+    if(($count_activity_entry < $no_of_time_user_perform_activity) && ($activity_frequency_limit == TRUE) && ($activity_time_limit == TRUE)) {        
       entity_save('activity', $activity_entry);
     }
     else {
-       drupal_set_message(t('Thanks for your submission. However you will not receive any points as you have exceeded maximum number of submissions allowed for this activity'), 'error');
+       drupal_set_message(t('Thanks for your submission. However you will not receive any points as you have exceeded maximum number of submissions allowed for this activity'), 'warning');
     }
    
 }
