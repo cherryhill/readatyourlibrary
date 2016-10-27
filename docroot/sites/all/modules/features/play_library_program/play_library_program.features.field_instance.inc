@@ -555,6 +555,106 @@ function play_library_program_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'activity-activity_entry-field_activity_point'.
+  $field_instances['activity-activity_entry-field_activity_point'] = array(
+    'bundle' => 'activity_entry',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'number',
+        'settings' => array(
+          'decimal_separator' => '.',
+          'prefix_suffix' => TRUE,
+          'scale' => 0,
+          'thousand_separator' => '',
+        ),
+        'type' => 'number_integer',
+        'weight' => 1,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'display_label' => '',
+    'entity_type' => 'activity',
+    'field_name' => 'field_activity_point',
+    'label' => 'Activity Point',
+    'required' => 0,
+    'settings' => array(
+      'max' => '',
+      'min' => '',
+      'prefix' => '',
+      'suffix' => '',
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'number',
+      'settings' => array(),
+      'type' => 'number',
+      'weight' => 2,
+    ),
+    'workbench_access_field' => 0,
+  );
+
+  // Exported field_instance: 'activity-activity_entry-field_claimed_point'.
+  $field_instances['activity-activity_entry-field_claimed_point'] = array(
+    'bundle' => 'activity_entry',
+    'default_value' => array(
+      0 => array(
+        'value' => 0,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'number',
+        'settings' => array(
+          'decimal_separator' => '.',
+          'prefix_suffix' => TRUE,
+          'scale' => 0,
+          'thousand_separator' => '',
+        ),
+        'type' => 'number_integer',
+        'weight' => 2,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'display_label' => '',
+    'entity_type' => 'activity',
+    'field_name' => 'field_claimed_point',
+    'label' => 'Claimed Point',
+    'required' => 0,
+    'settings' => array(
+      'max' => '',
+      'min' => '',
+      'prefix' => '',
+      'suffix' => '',
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'number',
+      'settings' => array(),
+      'type' => 'number',
+      'weight' => 3,
+    ),
+    'workbench_access_field' => 0,
+  );
+
   // Exported field_instance: 'badge-badge-field_badge_image'.
   $field_instances['badge-badge-field_badge_image'] = array(
     'bundle' => 'badge',
@@ -2238,8 +2338,10 @@ function play_library_program_field_default_field_instances() {
   t('Activity');
   t('Activity Description');
   t('Activity Frequency Limit');
+  t('Activity Point');
   t('Activity Points');
   t('Badge Image');
+  t('Claimed Point');
   t('Date Limit Range');
   t('Date Limit range when the reward criteria is valid.');
   t('Date of Raffle');

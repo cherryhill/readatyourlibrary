@@ -33,13 +33,7 @@ function play_library_program_eck_bundle_info() {
       'entity_type' => 'activity',
       'name' => 'activity',
       'label' => 'Activity',
-      'config' => array(
-        'managed_properties' => array(
-          'title' => 'title',
-          'uid' => 0,
-          'created' => 0,
-        ),
-      ),
+      'config' => array(),
     ),
     'activity_activity_entry' => array(
       'machine_name' => 'activity_activity_entry',
