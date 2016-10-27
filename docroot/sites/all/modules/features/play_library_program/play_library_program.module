@@ -10,27 +10,28 @@ include_once 'play_library_program.features.inc';
  * Implements hook_menu().
  */
 function play_library_program_menu() {
-    $items = array();
 
-    $items['play-library-program/add/activity/%/%'] = array(
-        'title' => 'Complete Activity',
-        'page callback' => 'play_library_program_complete_activity',
-        'page arguments' => array(3, 4),
-        'access callback' => 'play_library_program_access_activity_entry',
-        'access arguments' => array(3),
-        'type' => MENU_CALLBACK,
-    );
+  $items = array();
 
-    $items['play-library-program/add/raffle_winner/%/%'] = array(
-        'title' => 'Complete Activity',
-        'page callback' => 'play_library_program_create_raffle_winner',
-        'page arguments' => array(3, 4),
-        'access callback' => 'user_access',
-        'access arguments' => array('eck add raffle raffle_winner entities'),
-        'type' => MENU_CALLBACK,
-    );
+  $items['play-library-program/add/activity/%/%'] = array(
+    'title' => 'Complete Activity',
+    'page callback' => 'play_library_program_complete_activity',
+    'page arguments' => array(3, 4),
+    'access callback' => 'play_library_program_access_activity_entry',
+    'access arguments' => array(3),
+    'type' => MENU_CALLBACK,
+  );
 
-    return $items;
+  $items['play-library-program/add/raffle_winner/%/%'] = array(
+    'title' => 'Complete Activity',
+    'page callback' => 'play_library_program_create_raffle_winner',
+    'page arguments' => array(3, 4),
+    'access callback' => 'user_access',
+    'access arguments' => array('eck add raffle raffle_winner entities'),
+    'type' => MENU_CALLBACK,
+  );
+
+  return $items;
 }
 
 /**
@@ -47,29 +48,32 @@ function play_library_program_form_alter(&$form, &$form_state, $form_id){
  */
 function play_library_program_access_activity_entry($activity_id) {
 
-    global $user;
-    $activities = entity_load('activity', array($activity_id));
-    $activity = reset($activities);
-    $points = intval($activity->field_activity_points[LANGUAGE_NONE][0]['value']);
-    $daily_limit = FALSE;
-    $current_participation_count = play_library_program_retrieve_activity_participation($activity_id, $user->uid);
-    if ($current_participation_count > 0) {
-        $last_entry = db_query("SELECT created FROM {eck_activity} WHERE uid = :uid ORDER BY created DESC LIMIT 1", array(':uid' => $user->uid))->fetchField();
-        if ((time() - $activity->field_activity_time_limit[LANGUAGE_NONE][0]['value']) < $last_entry) {
-            return FALSE;
-        }
+  global $user;
+  $activities = entity_load('activity', array($activity_id));
+  $activity = reset($activities);
+  $points = intval($activity->field_activity_points[LANGUAGE_NONE][0]['value']);
+  $daily_limit = FALSE;
+  $current_participation_count = play_library_program_retrieve_activity_participation($activity_id, $user->uid);
+
+  if ($current_participation_count > 0) {
+    $last_entry = db_query("SELECT created FROM {eck_activity} WHERE uid = :uid ORDER BY created DESC LIMIT 1", array(':uid' => $user->uid))->fetchField();
+    if ((time() - $activity->field_activity_time_limit[LANGUAGE_NONE][0]['value']) < $last_entry) {
+      return FALSE;
     }
-    if ($points > 0 && $current_participation_count <= $activity->field_activity_limit[LANGUAGE_NONE][0]['value']) {
-        return user_access('eck add activity activity_entry entities') || user_access('eck add activity entities') || user_access('eck add entities');
-    }
-    return FALSE;
+  }
+
+  if ($points > 0 && $current_participation_count <= $activity->field_activity_limit[LANGUAGE_NONE][0]['value']) {
+    return user_access('eck add activity activity_entry entities') || user_access('eck add activity entities') || user_access('eck add entities');
+  }
+
+  return FALSE;
 }
 
 /**
  *  Condition for activity frequecy limit;
  */
-
 function play_library_program_frequency_limit($activity) {
+
   global $user;
   $activity_requency_limit = $activity->field_activity_time_limit[LANGUAGE_NONE][0]['value'];
   $last_entry = db_query("SELECT created FROM {eck_activity} WHERE uid = :uid ORDER BY created DESC LIMIT 1", array(':uid' => $user->uid))->fetchField();
@@ -79,16 +83,18 @@ function play_library_program_frequency_limit($activity) {
   else {
     return TRUE;
   }
-
 }
 
 /**
  * Condition for activity start date and end date;
  */
-
 function play_library_program_activity_time_limit($activity) {
+
+  $activity_start_date = strtotime($activity->field_start_date[LANGUAGE_NONE][0]['value']);
+  $activity_end_date = strtotime($activity->field_start_date[LANGUAGE_NONE][0]['value2']);
   $activity_start_date = strtotime($activity->field_activity_start_date[LANGUAGE_NONE][0]['value']);
   $activity_end_date = strtotime($activity->field_activity_end_date[LANGUAGE_NONE][0]['value']);
+
   $current_time = time();
   if($activity_start_date <= $current_time && $current_time <=  $activity_end_date) {
     return TRUE;
@@ -102,104 +108,102 @@ function play_library_program_activity_time_limit($activity) {
  * Implements hook_block_info().
  */
 function play_library_program_block_info() {
-    $blocks = array();
 
-    $blocks['activities'] = array(
-        'info' => t('PLAY Program activities'),
-        'cache' => DRUPAL_NO_CACHE
-    );
+  $blocks = array();
 
-    return $blocks;
+  $blocks['activities'] = array(
+    'info' => t('PLAY Program activities'),
+    'cache' => DRUPAL_NO_CACHE
+  );
+
+  return $blocks;
 }
 
 /**
  * Implements hook_block_view().
  */
 function play_library_program_block_view($delta = '') {
-    $block = array();
 
-    if ($delta == 'activities') {
-        $pending_activities = array();
-        $completed_activities = array();
-        $query = new EntityFieldQuery();
-        $query->entityCondition('entity_type', 'activity');
-        $query->entityCondition('bundle', 'activity');
-        $query->fieldCondition('field_activity_fired_hook', 'value', 'via_block');
-        $result = $query->execute();
-        foreach ($result as $entity_key => $entity_values) {
-            if ($entity_key == 'activity') {
-                foreach ($entity_values as $entity) {
-                    $activities = entity_load('activity', array($entity->id));
-                    $activity = reset($activities);
-                    if (play_library_program_access_activity_entry($entity->id)) {
-                        $pending_activities[] = l($activity->title, "play-library-program/add/activity/{$activity->id}/nojs");
-                    }
-                    else {
-                        $completed_activities[] = check_plain($activity->title);
-                    }
-                }
-            }
+  $block = array();
+
+  if ($delta == 'activities') {
+    $pending_activities = array();
+    $completed_activities = array();
+    $query = new EntityFieldQuery();
+    $query->entityCondition('entity_type', 'activity');
+    $query->entityCondition('bundle', 'activity');
+    $query->fieldCondition('field_activity_fired_hook', 'value', 'via_block');
+    $result = $query->execute();
+
+    foreach ($result as $entity_key => $entity_values) {
+      if ($entity_key == 'activity') {
+        foreach ($entity_values as $entity) {
+          $activities = entity_load('activity', array($entity->id));
+          $activity = reset($activities);
+          if (play_library_program_access_activity_entry($entity->id)) {
+            $pending_activities[] = l($activity->title, "play-library-program/add/activity/{$activity->id}/nojs");
+          }
+          else {
+            $completed_activities[] = check_plain($activity->title);
+          }
         }
-        $block['subject'] = t('What did you do today?');
-        $block['content'] = theme('play_library_program_activities_block', array('pending' => $pending_activities, 'completed' => $completed_activities));
+      }
     }
 
-    return $block;
+    $block['subject'] = t('What did you do today?');
+    $block['content'] = theme('play_library_program_activities_block', array('pending' => $pending_activities, 'completed' => $completed_activities));
+    }
+
+  return $block;
 }
 
 /**
  * Implements hook_field_widget_form_alter().
  */
 function play_library_program_field_widget_form_alter(&$element, &$form_state, $context) {
-    if (isset($element['value']['#field_name']) && $element['value']['#field_name'] == 'field_activity_fired_hook') {
-        $options = array(
-            'via_block' => t('- Select Firing Hook -'),
-            'user_insert' => t('User just registered'),
-        );
-        // For now, only deal with nodes and other ECK content models.
-        $entities = entity_get_info();
-        foreach($entities as $entity_key => $entity) {
-            if ($entity_key == 'node') {
-                $entity['module'] = 'node';
-            }
-            if (isset($entity['module']) && ($entity['module'] == 'eck' || $entity['module'] == 'node')) {
 
-                foreach ($entity['bundles'] as $bundle_key => $bundle_options) {
-                    //echo "<pre>";
-                    //print_r($bundle_options['label']);
-                     
-                 if($entity_key == 'node' && $bundle_options['label'] == 'sticker') {
-                     //$options["entity_insert|{$entity_key}|{$bundle_key}"] = t("Place @bundle on progress report", array('@bundle' => $bundle_options['label']));
-                    $options["node_update|node|{$bundle_key}|updated"] = t("Record through progress report", array('@bundle' => $bundle_options['label']));
-                 }
-                 // if($bundle_options['label'] == 'Raffle Winner') {
-                 // $options["entity_insert|{$entity_key}|{$bundle_key}"] = t("Insert new @bundle", array('@bundle' => $bundle_options['label']));
+  if (isset($element['value']['#field_name']) && $element['value']['#field_name'] == 'field_activity_fired_hook') {
+    $options = array(
+      'via_block' => t('- Select Firing Hook -'),
+      'user_insert' => t(variable_get('user_insert')) ? t(variable_get('user_insert')) : t('User is Inserted'),
+    );
 
-                 // }
+    // For now, only deal with nodes and other ECK content models.
+    $entities = entity_get_info();
 
-                    if ($entity_key == 'node' && ($bundle_options['label'] == 'Booklist' || $bundle_options['label'] == 'Book Review' || $bundle_options['label'] == 'Movie Review' || $bundle_options['label'] == 'Video Game Review' || $bundle_options['label'] == 'Music Review' || $bundle_options['label'] == 'Activity Review')) {
-                        $options["node_update|node|{$bundle_key}|published"] = t("@bundle is set to published", array('@bundle' => $bundle_options['label']));
-                    }
-                }
-            }
+    foreach($entities as $entity_key => $entity) {
+      if ($entity_key == 'node') {
+        $entity['module'] = 'node';
+      }
+
+      if (isset($entity['module']) && ($entity['module'] == 'eck' || $entity['module'] == 'node')) {
+        foreach ($entity['bundles'] as $bundle_key => $bundle_options) {
+          if($entity_key == 'node' && $bundle_options['label'] == 'sticker') {
+            $options["node_update|node|{$bundle_key}|updated"] = t("@value", array('@value' => variable_get($bundle_key))) ? t("@value", array('@value' => variable_get($bundle_key))) : t('Calender ');
+          }
+
+          if ($entity_key == 'node' && ($bundle_options['label'] == 'Booklist' || $bundle_options['label'] == 'Book Review' || $bundle_options['label'] == 'Movie Review' || $bundle_options['label'] == 'Video Game Review' || $bundle_options['label'] == 'Music Review' || $bundle_options['label'] == 'Activity Review')) {
+            $options["node_update|node|{$bundle_key}|published"] = t("@value", array( '@value' => variable_get($bundle_key))) ? t("@value", array( '@value' => variable_get($bundle_key))) : t("@value", array( '@value' => $bundle_options['label']));
+          }
         }
-    if (module_exists('poll')) {
-            
-            
-                $options["Poll answer submitted"] = t('Poll vote submitted');
-        
-        }
-
-        if (module_exists('webform')) {
-            $webforms = _play_library_program_get_webforms();
-            foreach ($webforms as $webform) {
-                $options["webform_submit|{$webform->nid}"] = t('@webform Survey participation', array('@webform' => $webform->title));
-            }
-        }
-        $element['value']['#type'] = 'select';
-        $element['value']['#options'] = $options;
-        $element['value']['#size'] = 0;
+      }
     }
+
+    if (module_exists('poll')) {
+      $options["Poll answer submitted"] = t("@value", array( '@value' => variable_get('poll')));
+    }
+
+    if (module_exists('webform')) {
+      $webforms = _play_library_program_get_webforms();
+      foreach ($webforms as $webform) {
+        $options["webform_submit|{$webform->nid}"] = t("@value", array( '@value' => variable_get($webform->nid))) ? t("@value", array( '@value' => variable_get($webform->nid))) : t("@value", array( '@value' => $webform->title));
+      }
+    }
+
+    $element['value']['#type'] = 'select';
+    $element['value']['#options'] = $options;
+    $element['value']['#size'] = 0;
+  }
 }
 
 /**
