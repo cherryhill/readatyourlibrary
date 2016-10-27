@@ -87,8 +87,8 @@ function play_library_program_frequency_limit($activity) {
  */
 
 function play_library_program_activity_time_limit($activity) {
-  $activity_start_date = strtotime($activity->field_start_date[LANGUAGE_NONE][0]['value']);
-  $activity_end_date = strtotime($activity->field_start_date[LANGUAGE_NONE][0]['value2']);
+  $activity_start_date = strtotime($activity->field_activity_start_date[LANGUAGE_NONE][0]['value']);
+  $activity_end_date = strtotime($activity->field_activity_end_date[LANGUAGE_NONE][0]['value']);
   $current_time = time();
   if($activity_start_date <= $current_time && $current_time <=  $activity_end_date) {
     return TRUE;
