@@ -77,7 +77,64 @@ function play_library_program_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 9,
+      'weight' => 8,
+    ),
+    'workbench_access_field' => 0,
+  );
+
+  // Exported field_instance: 'activity-activity-field_activity_end_date'.
+  $field_instances['activity-activity-field_activity_end_date'] = array(
+    'bundle' => 'activity',
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'date',
+        'settings' => array(
+          'format_type' => 'long',
+          'fromto' => 'both',
+          'multiple_from' => '',
+          'multiple_number' => '',
+          'multiple_to' => '',
+          'show_remaining_days' => FALSE,
+        ),
+        'type' => 'date_default',
+        'weight' => 9,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'display_label' => 'End Date',
+    'entity_type' => 'activity',
+    'field_name' => 'field_activity_end_date',
+    'label' => 'End Date',
+    'required' => 0,
+    'settings' => array(
+      'default_value' => 'now',
+      'default_value2' => 'same',
+      'default_value_code' => '',
+      'default_value_code2' => '',
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'date',
+      'settings' => array(
+        'increment' => 15,
+        'input_format' => 'm/d/Y - H:i:s',
+        'input_format_custom' => '',
+        'label_position' => 'above',
+        'no_fieldset' => 0,
+        'text_parts' => array(),
+        'year_range' => '-3:+3',
+      ),
+      'type' => 'date_popup',
+      'weight' => 6,
     ),
     'workbench_access_field' => 0,
   );
@@ -164,7 +221,7 @@ function play_library_program_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 4,
+      'weight' => 2,
     ),
   );
 
@@ -191,10 +248,10 @@ function play_library_program_field_default_field_instances() {
         'weight' => 0,
       ),
     ),
-    'display_label' => '',
+    'display_label' => 'Image Upload',
     'entity_type' => 'activity',
     'field_name' => 'field_activity_image',
-    'label' => 'Activity Image',
+    'label' => 'Image Upload',
     'required' => 0,
     'settings' => array(
       'alt_field' => 0,
@@ -237,7 +294,7 @@ function play_library_program_field_default_field_instances() {
         'progress_indicator' => 'throbber',
       ),
       'type' => 'image_image',
-      'weight' => 8,
+      'weight' => 7,
     ),
     'workbench_access_field' => 0,
   );
@@ -289,7 +346,7 @@ function play_library_program_field_default_field_instances() {
       'module' => 'number',
       'settings' => array(),
       'type' => 'number',
-      'weight' => 5,
+      'weight' => 3,
     ),
     'workbench_access_field' => 0,
   );
@@ -341,7 +398,64 @@ function play_library_program_field_default_field_instances() {
       'module' => 'number',
       'settings' => array(),
       'type' => 'number',
-      'weight' => 3,
+      'weight' => 1,
+    ),
+    'workbench_access_field' => 0,
+  );
+
+  // Exported field_instance: 'activity-activity-field_activity_start_date'.
+  $field_instances['activity-activity-field_activity_start_date'] = array(
+    'bundle' => 'activity',
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'date',
+        'settings' => array(
+          'format_type' => 'long',
+          'fromto' => 'both',
+          'multiple_from' => '',
+          'multiple_number' => '',
+          'multiple_to' => '',
+          'show_remaining_days' => FALSE,
+        ),
+        'type' => 'date_default',
+        'weight' => 8,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'display_label' => 'Start Date',
+    'entity_type' => 'activity',
+    'field_name' => 'field_activity_start_date',
+    'label' => 'Start Date',
+    'required' => 1,
+    'settings' => array(
+      'default_value' => 'now',
+      'default_value2' => 'same',
+      'default_value_code' => '',
+      'default_value_code2' => '',
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'date',
+      'settings' => array(
+        'increment' => 15,
+        'input_format' => 'm/d/Y - H:i:s',
+        'input_format_custom' => '',
+        'label_position' => 'above',
+        'no_fieldset' => 0,
+        'text_parts' => array(),
+        'year_range' => '-3:+3',
+      ),
+      'type' => 'date_popup',
+      'weight' => 5,
     ),
     'workbench_access_field' => 0,
   );
@@ -386,64 +500,7 @@ function play_library_program_field_default_field_instances() {
         'apply_chosen' => '',
       ),
       'type' => 'options_select',
-      'weight' => 6,
-    ),
-    'workbench_access_field' => 0,
-  );
-
-  // Exported field_instance: 'activity-activity-field_start_date'.
-  $field_instances['activity-activity-field_start_date'] = array(
-    'bundle' => 'activity',
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'date',
-        'settings' => array(
-          'format_type' => 'long',
-          'fromto' => 'both',
-          'multiple_from' => '',
-          'multiple_number' => '',
-          'multiple_to' => '',
-          'show_remaining_days' => FALSE,
-        ),
-        'type' => 'date_default',
-        'weight' => 5,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'display_label' => '',
-    'entity_type' => 'activity',
-    'field_name' => 'field_start_date',
-    'label' => 'Activity Date',
-    'required' => 1,
-    'settings' => array(
-      'default_value' => 'now',
-      'default_value2' => 'same',
-      'default_value_code' => '',
-      'default_value_code2' => '',
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'date',
-      'settings' => array(
-        'increment' => 15,
-        'input_format' => 'm/d/Y - H:i:s',
-        'input_format_custom' => '',
-        'label_position' => 'above',
-        'no_fieldset' => 0,
-        'text_parts' => array(),
-        'year_range' => '-3:+3',
-      ),
-      'type' => 'date_popup',
-      'weight' => 7,
+      'weight' => 4,
     ),
     'workbench_access_field' => 0,
   );
@@ -2179,16 +2236,16 @@ function play_library_program_field_default_field_instances() {
   // Translatables
   // Included for use with string extractors like potx.
   t('Activity');
-  t('Activity Date');
   t('Activity Description');
   t('Activity Frequency Limit');
-  t('Activity Image');
   t('Activity Points');
   t('Badge Image');
   t('Date Limit Range');
   t('Date Limit range when the reward criteria is valid.');
   t('Date of Raffle');
   t('Default number of points user gets for doing activity each time.');
+  t('End Date');
+  t('Image Upload');
   t('Is this criteria repeatable? Note that this setting is not compatible with an activity.');
   t('Number of times a user can perform this activity');
   t('Points');
@@ -2209,6 +2266,7 @@ function play_library_program_field_default_field_instances() {
   t('Reward Role Limits');
   t('Select roles to which reward is limited. Select none to make it available for all roles.');
   t('Select when the activity should be fired. Such as when a user signs up, when content is created/published, etc. If you do not select one, the option will show up in the activity menu for the user to select.');
+  t('Start Date');
   t('Sticker Image');
   t('The activity time limit ties to the activities the user can do as part of the \'what did you do today\' block. This does not apply to activities that are fired by other events.');
   t('The reward (or achievement) the user is going to receive. Rewards consist of badges, raffle entries, and anything else.');
