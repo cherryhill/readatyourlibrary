@@ -466,12 +466,10 @@ function play_library_program_create_activity_entry($activity_id, $account_id) {
     $activity = reset($activities);
 
     $count_activity_entry = play_library_program_retrieve_activity_participation($activity_id, $account_id);
-    $no_of_time_user_perform_activity = $activity->field_activity_limit[LANGUAGE_NONE][0]['value'];
-    
-    
-    $activity_point = $activity->field_activity_points[LANGUAGE_NONE][0]['value']; 
+    $no_of_time_user_perform_activity = $activity->field_activity_limit[LANGUAGE_NONE][0]['value'];    
+    $activity_point = $activity->field_activity_points[LANGUAGE_NONE][0]['value'];
     $title = t("@activity on @time", array('@activity' => $activity->title, '@time' => date('Y-m-d H:i')));
-    $activity_entry = entity_create('activity', array('type' => 'activity_entry', 'title' => $title, 'uid' => $account_id));
+    $activity_entry = entity_create('activity', array('type' => 'activity_entry', 'title' => $title, 'uid' => $account_id, 'activity_points' => $activity_point));
 
     $activity_entry->field_activity_entry_activity[LANGUAGE_NONE][0]['target_id'] = $activity->id;
     $activity_entry->field_activity_point[LANGUAGE_NONE][0]['value'] = $activity_point;
