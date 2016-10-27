@@ -66,26 +66,38 @@ function play_library_program_access_activity_entry($activity_id) {
 }
 
 /**
- *  Condition for activity frequecy limit
+ *  Condition for activity frequecy limit;
  */
 
-function play_library_program_frequency_limit($activity_id) {
+function play_library_program_frequency_limit($activity) {
   global $user;
-  $activities = entity_load('activity', array($activity_id));
-  $activity = reset($activities);
   $activity_requency_limit = $activity->field_activity_time_limit[LANGUAGE_NONE][0]['value'];
   $last_entry = db_query("SELECT created FROM {eck_activity} WHERE uid = :uid ORDER BY created DESC LIMIT 1", array(':uid' => $user->uid))->fetchField();
-  if((time() - $activity_requency_limit) < $last_entry) {
-    //echo "false";
-    return 'FALSE';
+  if((time() - $activity_requency_limit) < $last_entry) {    
+    return FALSE;
   }
   else {
-    //echo "true";
-    return 'TRUE';
+    return TRUE;
   }
 
 }
 
+/**
+ * Condition for activity start date and end date;
+ */
+
+function play_library_program_activity_time_limit($activity) {
+  $activity_start_date = strtotime($activity->field_start_date[LANGUAGE_NONE][0]['value']);
+  $activity_end_date = strtotime($activity->field_start_date[LANGUAGE_NONE][0]['value2']);
+  $current_time = time();
+  if($activity_start_date <= $current_time && $current_time <=  $activity_end_date) {
+    return TRUE;
+  }
+  else {
+    return FALSE;
+  }
+} 
+ 
 /**
  * Implements hook_block_info().
  */
@@ -463,14 +475,14 @@ function play_library_program_create_activity_entry($activity_id, $account_id) {
 
     $activity_entry->field_activity_entry_activity[LANGUAGE_NONE][0]['target_id'] = $activity->id;
     $activity_entry->field_activity_point[LANGUAGE_NONE][0]['value'] = $activity_point;
-    $activity_frequency_limit= play_library_program_frequency_limit($activity_id);
+    $activity_frequency_limit= play_library_program_frequency_limit($activity);
+    $activity_time_limit = play_library_program_activity_time_limit($activity);
     
-    if($count_activity_entry < $no_of_time_user_perform_activity && $activity_frequency_limit == 'TRUE') {
-        
-      entity_save('activity', $activity_entry);  
+    if(($count_activity_entry < $no_of_time_user_perform_activity) && ($activity_frequency_limit == TRUE) && ($activity_time_limit == TRUE)) {        
+      entity_save('activity', $activity_entry);
     }
     else {
-       drupal_set_message(t('You not get any point for that activity'), 'error');
+       drupal_set_message(t('Thanks for your submission. However you will not receive any points as you have exceeded maximum number of submissions allowed for this activity'), 'warning');
     }
    
 }
