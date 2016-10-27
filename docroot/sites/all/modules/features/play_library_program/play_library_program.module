@@ -34,6 +34,15 @@ function play_library_program_menu() {
 }
 
 /**
+ * Implements hook_form_alter()
+ */
+function play_library_program_form_alter(&$form, &$form_state, $form_id){
+  if($form_id == 'eck__entity__form_edit_activity_activity' || $form_id == 'eck__entity__form_add_activity_activity'){
+    $form['title']['#title'] = 'Name of Activity';
+  }
+}
+
+/**
  * Access control to access activity entry creation.
  */
 function play_library_program_access_activity_entry($activity_id) {
