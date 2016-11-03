@@ -33,7 +33,13 @@ function play_library_program_eck_bundle_info() {
       'entity_type' => 'activity',
       'name' => 'activity',
       'label' => 'Activity',
-      'config' => array(),
+      'config' => array(
+        'managed_properties' => array(
+          'title' => 'title',
+          'uid' => 0,
+          'created' => 0,
+        ),
+      ),
     ),
     'activity_activity_entry' => array(
       'machine_name' => 'activity_activity_entry',
@@ -82,7 +88,13 @@ function play_library_program_eck_bundle_info() {
       'entity_type' => 'reward',
       'name' => 'reward',
       'label' => 'Reward',
-      'config' => array(),
+      'config' => array(
+        'managed_properties' => array(
+          'title' => 'title',
+          'uid' => 0,
+          'created' => 0,
+        ),
+      ),
     ),
     'reward_reward_claim' => array(
       'machine_name' => 'reward_reward_claim',
@@ -125,6 +137,11 @@ function play_library_program_eck_entity_type_info() {
           'label' => 'Created',
           'type' => 'integer',
           'behavior' => 'created',
+        ),
+        'activity_points' => array(
+          'label' => 'Activity points',
+          'type' => 'integer',
+          'behavior' => '',
         ),
       ),
     ),
