@@ -14,6 +14,22 @@ function feature_for_reward_ctools_plugin_api($module = NULL, $api = NULL) {
 }
 
 /**
+ * Implements hook_eck_bundle_info().
+ */
+function feature_for_reward_eck_bundle_info() {
+  $items = array(
+    'reward_raffle_claim' => array(
+      'machine_name' => 'reward_raffle_claim',
+      'entity_type' => 'reward',
+      'name' => 'raffle_claim',
+      'label' => 'Raffle Claim',
+      'config' => array(),
+    ),
+  );
+  return $items;
+}
+
+/**
  * Implements hook_eck_entity_type_info().
  */
 function feature_for_reward_eck_entity_type_info() {
