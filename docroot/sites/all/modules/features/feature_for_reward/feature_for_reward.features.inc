@@ -5,25 +5,12 @@
  */
 
 /**
- * Implements hook_eck_bundle_info().
+ * Implements hook_ctools_plugin_api().
  */
-function feature_for_reward_eck_bundle_info() {
-  $items = array(
-    'reward_reward' => array(
-      'machine_name' => 'reward_reward',
-      'entity_type' => 'reward',
-      'name' => 'reward',
-      'label' => 'Reward',
-      'config' => array(
-        'managed_properties' => array(
-          'title' => 'title',
-          'uid' => 0,
-          'created' => 0,
-        ),
-      ),
-    ),
-  );
-  return $items;
+function feature_for_reward_ctools_plugin_api($module = NULL, $api = NULL) {
+  if ($module == "strongarm" && $api == "strongarm") {
+    return array("version" => "1");
+  }
 }
 
 /**
