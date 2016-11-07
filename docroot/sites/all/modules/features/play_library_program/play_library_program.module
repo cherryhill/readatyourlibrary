@@ -364,6 +364,7 @@ function pl_reward_claim($reward_id, $account_uid){
 }
 
 function pl_raffle_claim($reward_id, $account_uid){
+  
   if(empty($account_uid)){
     global $user;
     $account_uid = $user->uid;

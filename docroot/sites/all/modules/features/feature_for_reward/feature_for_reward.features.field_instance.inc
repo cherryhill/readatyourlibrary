@@ -424,6 +424,55 @@ function feature_for_reward_field_default_field_instances() {
     'workbench_access_field' => 0,
   );
 
+  // Exported field_instance: 'reward-raffle_claim-field_raffle_claim_id'.
+  $field_instances['reward-raffle_claim-field_raffle_claim_id'] = array(
+    'bundle' => 'raffle_claim',
+    'default_value' => NULL,
+    'default_value_function' => '',
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'entityreference',
+        'settings' => array(
+          'link' => FALSE,
+        ),
+        'type' => 'entityreference_label',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'display_label' => '',
+    'entity_type' => 'reward',
+    'field_name' => 'field_raffle_claim_id',
+    'label' => 'Raffle Claim ID',
+    'required' => 0,
+    'settings' => array(
+      'behaviors' => array(
+        'prepopulate' => array(
+          'status' => 0,
+        ),
+      ),
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'apply_chosen' => '',
+      ),
+      'type' => 'options_select',
+      'weight' => 1,
+    ),
+    'workbench_access_field' => 0,
+  );
+
   // Exported field_instance: 'reward-reward-field_activities_reward'.
   $field_instances['reward-reward-field_activities_reward'] = array(
     'bundle' => 'reward',
@@ -1167,6 +1216,7 @@ function feature_for_reward_field_default_field_instances() {
   t('Message to be sent to reward winner');
   t('Onscreen alert on winning this reward');
   t('Points to get reward or raffle ticket');
+  t('Raffle Claim ID');
   t('Raffle Prize or Reward Notifications');
   t('Raffle Ticket Image');
   t('Raffle Ticket Notifications');
