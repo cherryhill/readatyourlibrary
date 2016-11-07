@@ -381,10 +381,7 @@ function pl_raffle_claim($reward_id, $account_uid){
 /**
  * Condition for reward start date and end date;
  */
-function pl_reward_time_limit($reward) {
-
-  $rew_sdate = strtotime($reward->field_dates_reward[LANGUAGE_NONE][0]['value']);
-  $rew_edate = strtotime($reward->field_dates_reward[LANGUAGE_NONE][0]['value2']);
+function pl_reward_time_limit($rew_sdate, $rew_edate) {
 
   $current_time = time();
   if($rew_sdate <= $current_time && $current_time <=  $rew_edate) {
@@ -409,6 +406,8 @@ function pl_check_reward_validation($reward_ids, $account_uid){
     $rewards = entity_load('reward', array($reward_ids));
 
     foreach ($rewards as $reward) {
+      $rew_sdate = strtotime($reward->field_dates_reward[LANGUAGE_NONE][0]['value']);
+      $rew_edate = strtotime($reward->field_dates_reward[LANGUAGE_NONE][0]['value2']);
       $reward_category = $reward->field_category['und'][0]['value'];
       $reward_type = $reward->field_type_of_reward_raffle_priz['und'][0]['tid'];
       $points = $reward->field_points['und'][0]['value'];
@@ -428,8 +427,7 @@ function pl_check_reward_validation($reward_ids, $account_uid){
 
     if(array_key_exists(12, $user->roles)) {
       $profile_name = 'group_lead';
-    }
-    else {
+    } else {
       $profile_name = 'main';
     }
 
@@ -447,8 +445,7 @@ function pl_check_reward_validation($reward_ids, $account_uid){
     $user_age = floor(($current_time - $time_stamp_dob) / (60*60*24*365));
 
     $rew_age_limit = chk_user_age_for_reward($user_age, $age_from, $age_to);
-    $rew_date = pl_reward_time_limit($reward);
-
+    $rew_date = pl_reward_time_limit($rew_sdate, $rew_edate);
     if($rew_date == TRUE && $roles == TRUE && $rew_age_limit == TRUE && $status == 'active'){
       if($receieved_rewards < 1 && $repeatable == 0 && $current_points >= $points) {
         $claim_count = 1;
