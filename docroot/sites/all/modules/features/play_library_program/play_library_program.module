@@ -354,9 +354,9 @@ function pl_receieved_rewards($account_uid, $reward_id, $category){
   return $result;
 }
 
-function pl_reward_claim($reward_id, $account_uid, $category){
+function pl_reward_claim($reward_id, $account_uid, $category, $filters = NULL, $rf_drawing = NULL, $rf_staff_uid = NULL, $rf_staff_notes = NULL, $rf_pickup = NULL){
 
-  if(empty($account_uid)){
+  if (empty($account_uid)) {
     global $user;
     $account_uid = $user->uid;
   }
@@ -369,7 +369,13 @@ function pl_reward_claim($reward_id, $account_uid, $category){
     $title = t("@reward on @time", array('@reward' => $reward->title, '@time' => date('Y-m-d H:i')));
     $reward_claim = entity_create('reward', array('type' => 'reward_claim', 'title' => $title, 'uid' => $account_uid));
     $reward_claim->field_reward_claim_id[LANGUAGE_NONE][0]['target_id'] = $reward_id;
+    $reward_claim->field_filters_used[LANGUAGE_NONE][0]['value'] = $filters;
+    $reward_claim->field_rf_drawing_name[LANGUAGE_NONE][0]['value'] = $rf_drawing;
+    $reward_claim->field_staff_user[LANGUAGE_NONE][0]['value'] = $rf_staff_uid;
+    $reward_claim->field_staff_notes[LANGUAGE_NONE][0]['value'] = $rf_staff_notes;
+    $reward_claim->field_rf_pickup_date[LANGUAGE_NONE][0]['value'] = $rf_pickup;
     entity_save('reward', $reward_claim);
+
   }else if ($category == 'raffle_reward') {
     $title = t("@reward on @time", array('@reward' => $reward->title, '@time' => date('Y-m-d H:i')));
     $reward_claim = entity_create('reward', array('type' => 'raffle_claim', 'title' => $title, 'uid' => $account_uid));
@@ -1495,7 +1501,7 @@ function _play_library_program_add_points_to_rewards($activity_id, $points_to_ad
       }
 
       //Add points to category
-      if ($add_points= TRUE){
+      if ($add_points){
         $term = _get_term_from_name('R_'.$reward_id, 'userpoints');
         if(isset($term)){
           $userpoint_rew = array(
