@@ -32,8 +32,8 @@ function play_library_program_menu() {
   );
 
   $items['testing-purposes'] = array(
-    'title' => 'Reviews',
-    'page callback' => 'pl_check_reward_validation',
+    'title' => 'Testing',
+    'page callback' => 'pl_testing_purpose',
     'access arguments' => array('access content'),
     'type' => MENU_SUGGESTED_ITEM,
   );
@@ -334,20 +334,27 @@ function pl_get_activity_reward_ids($activity_id, $account_uid = NULL){
 /**
  * count of reward claimed by user
  */
-function pl_receieved_rewards($account_uid, $reward_id){
+function pl_receieved_rewards($account_uid, $reward_id, $category){
+  // Check reward category.
+  if ($category == 'reward') {
+    $reward_tbl = 'field_reward_claim_id';
+    $reward_bndl = 'reward_claim';
+  } else if ($category == 'raffle_reward') {
+    $reward_tbl = 'field_raffle_claim_id';
+    $reward_bndl = 'raffle_claim';
+  }
 
   $query = new EntityFieldQuery();
   $query->entityCondition('entity_type', 'reward');
-  $query->entityCondition('bundle', 'reward_claim');
+  $query->entityCondition('bundle', $reward_bndl);
   $query->propertyCondition('uid', $account_uid);
-  $query->fieldCondition('field_reward_claim_id', 'target_id', $reward_id);
+  $query->fieldCondition($reward_tbl, 'target_id', $reward_id);
   $result = $query->count()->execute();
 
   return $result;
 }
 
 function pl_reward_claim($reward_id, $account_uid, $category){
-
 
   if(empty($account_uid)){
     global $user;
@@ -363,7 +370,7 @@ function pl_reward_claim($reward_id, $account_uid, $category){
     $reward_claim = entity_create('reward', array('type' => 'reward_claim', 'title' => $title, 'uid' => $account_uid));
     $reward_claim->field_reward_claim_id[LANGUAGE_NONE][0]['target_id'] = $reward_id;
     entity_save('reward', $reward_claim);
-  }else if ($category == 'reward_raffle') {
+  }else if ($category == 'raffle_reward') {
     $title = t("@reward on @time", array('@reward' => $reward->title, '@time' => date('Y-m-d H:i')));
     $reward_claim = entity_create('reward', array('type' => 'raffle_claim', 'title' => $title, 'uid' => $account_uid));
     $reward_claim->field_raffle_claim_id[LANGUAGE_NONE][0]['target_id'] = $reward_id;
@@ -387,80 +394,8 @@ function pl_reward_time_limit($rew_sdate, $rew_edate) {
 /**
  * reward claim after passing through all validations
  */
-function pl_check_reward_validation($reward_ids, $account_uid){
-
-  if(empty($account_uid)){
-    global $user;
-    $account_uid = $user->uid;
-    $user = user_load($account_uid);
-  }
-
-  if(isset($reward_ids)){
-    $rewards = entity_load('reward', array($reward_ids));
-
-    foreach ($rewards as $reward) {
-      $rew_sdate = strtotime($reward->field_dates_reward[LANGUAGE_NONE][0]['value']);
-      $rew_edate = strtotime($reward->field_dates_reward[LANGUAGE_NONE][0]['value2']);
-      $reward_category = $reward->field_category['und'][0]['value'];
-      $reward_type = $reward->field_type_of_reward_raffle_priz['und'][0]['tid'];
-      $points = $reward->field_points['und'][0]['value'];
-      $repeatable = $reward->field_repeatable['und'][0]['value'];
-      $max_repeat = $reward->field_maximum_num_reward['und'][0]['value'];
-      $roles = _play_library_program_reward_criteria_fulfilled($activity_id, $account_uid);
-      $age_from = $reward->field_age_group['und'][0]['from'];
-      $age_to = $reward->field_age_group['und'][0]['to'];
-      $status = $reward->field_status_reward['und'][0]['value'];
-      $receieved_rewards = pl_receieved_rewards($account_uid, $reward_ids);
-
-      $vocabulary_name = 'userpoints';
-      $term = _get_term_from_name($reward_ids, $vocabulary_name);
-      $current_points = userpoints_get_current_points($account_uid, $term);
-      $claim_count = 0;    
-    }
-
-    if(array_key_exists(12, $user->roles)) {
-      $profile_name = 'group_lead';
-    } else {
-      $profile_name = 'main';
-    }
-
-    $user_profile = profile2_load_by_user($account_uid, $profile_name);
-
-    if(is_object($user_profile)) {
-    $dob = $user_profile->field_user_birthday[LANGUAGE_NONE][0]['value'];
-    $time_stamp_dob = strtotime($dob);
-    } else {
-      $time_stamp_dob = $_SESSION['user_birth_dt'];
-      unset($_SESSION['user_birth_dt']);
-    }
-
-    $current_time = time();
-    $user_age = floor(($current_time - $time_stamp_dob) / (60*60*24*365));
-
-    $rew_age_limit = chk_user_age_for_reward($user_age, $age_from, $age_to);
-    $rew_date = pl_reward_time_limit($rew_sdate, $rew_edate);
-    if($rew_date == TRUE && $roles == TRUE && $rew_age_limit == TRUE && $status == 'active'){
-      if($receieved_rewards < 1 && $repeatable == 0 && $current_points >= $points) {
-        $claim_count = 1;
-        pl_reward_claim($reward_ids, $account_uid);
-        $claimed_points = $current_points;
-      } else if($receieved_rewards <= $max_repeat){
-          while($current_points >= $points){
-            if($receieved_rewards <= $max_repeat){
-              if($reward_category == 'reward'){
-                pl_reward_claim($reward_ids, $account_uid);
-              } else if($reward_category == 'reward_raffle'){
-                pl_raffle_claim($reward_ids, $account_uid);
-              }
-            }
-            $receieved_rewards = $receieved_rewards + 1;
-            $claimed_points = $claimed_points + $points;
-            $current_points = $current_points - $points;
-          }      
-        }
-      }
-    pl_userpoints_per_reward($term, $account_uid, 0-$claimed_points);
-  }
+function pl_testing_purpose(){
+  return 'Testing';
 }
 
 /**
@@ -527,7 +462,7 @@ function play_library_program_userpoints($op, &$params = array()) {
       $max_repeat = $reward->field_maximum_num_reward['und'][0]['value'];
       $reward_points = $reward->field_points['und'][0]['value'];
       $repeatable = $reward->field_repeatable['und'][0]['value'];
-      $receieved_rewards = pl_receieved_rewards($params['uid'], $reward_id[1]);
+      $receieved_rewards = pl_receieved_rewards($params['uid'], $reward_id[1], $reward_category);
       
       $claimed_points = 0;
       while($user_points >= $reward_points) {
@@ -1537,7 +1472,7 @@ function _play_library_program_add_points_to_rewards($activity_id, $points_to_ad
       $age_from = $reward->field_age_group['und'][0]['from'];
       $age_to = $reward->field_age_group['und'][0]['to'];
       $status = $reward->field_status_reward['und'][0]['value'];
-      $receieved_rewards = pl_receieved_rewards($account_uid, $reward_id);
+      $receieved_rewards = pl_receieved_rewards($account_uid, $reward_id, $reward_category);
       $rew_age_limit = chk_user_age_for_reward($user_age, $age_from, $age_to);
       $tax_reward = 'R_'.$reward_id;
       $rew_date = pl_reward_time_limit($rew_sdate, $rew_edate);
