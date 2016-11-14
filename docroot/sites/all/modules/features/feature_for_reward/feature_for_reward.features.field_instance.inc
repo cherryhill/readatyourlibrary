@@ -473,6 +473,130 @@ function feature_for_reward_field_default_field_instances() {
     'workbench_access_field' => 0,
   );
 
+  // Exported field_instance: 'reward-raffle_claim-field_raffle_drawing_name'.
+  $field_instances['reward-raffle_claim-field_raffle_drawing_name'] = array(
+    'bundle' => 'raffle_claim',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 2,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'display_label' => '',
+    'entity_type' => 'reward',
+    'field_name' => 'field_raffle_drawing_name',
+    'label' => 'Raffle Drawing Name',
+    'required' => 0,
+    'settings' => array(
+      'better_formats' => array(
+        'allowed_formats' => array(
+          'filtered_html' => 'filtered_html',
+          'full_html' => 'full_html',
+          'php_code' => 'php_code',
+          'plain_text' => 'plain_text',
+        ),
+        'allowed_formats_toggle' => 0,
+        'default_order_toggle' => 0,
+        'default_order_wrapper' => array(
+          'formats' => array(
+            'filtered_html' => array(
+              'weight' => 0,
+            ),
+            'full_html' => array(
+              'weight' => 1,
+            ),
+            'php_code' => array(
+              'weight' => 11,
+            ),
+            'plain_text' => array(
+              'weight' => 10,
+            ),
+          ),
+        ),
+      ),
+      'linkit' => array(
+        'enable' => 0,
+        'insert_plugin' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 3,
+    ),
+    'workbench_access_field' => 0,
+  );
+
+  // Exported field_instance: 'reward-raffle_claim-field_rf_receieved_reward'.
+  $field_instances['reward-raffle_claim-field_rf_receieved_reward'] = array(
+    'bundle' => 'raffle_claim',
+    'default_value' => array(
+      0 => array(
+        'value' => 0,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'number',
+        'settings' => array(
+          'decimal_separator' => '.',
+          'prefix_suffix' => TRUE,
+          'scale' => 0,
+          'thousand_separator' => '',
+        ),
+        'type' => 'number_integer',
+        'weight' => 1,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'display_label' => '',
+    'entity_type' => 'reward',
+    'field_name' => 'field_rf_receieved_reward',
+    'label' => 'receieved_reward',
+    'required' => 0,
+    'settings' => array(
+      'max' => '',
+      'min' => '',
+      'prefix' => '',
+      'suffix' => '',
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'number',
+      'settings' => array(),
+      'type' => 'number',
+      'weight' => 2,
+    ),
+    'workbench_access_field' => 0,
+  );
+
   // Exported field_instance: 'reward-reward-field_activities_reward'.
   $field_instances['reward-reward-field_activities_reward'] = array(
     'bundle' => 'reward',
@@ -513,11 +637,16 @@ function feature_for_reward_field_default_field_instances() {
     ),
     'widget' => array(
       'active' => 1,
-      'module' => 'options',
+      'module' => 'entityreference',
       'settings' => array(
         'apply_chosen' => '',
+        'fields' => array(),
+        'match_operator' => 'CONTAINS',
+        'path' => '',
+        'size' => 60,
+        'type_settings' => array(),
       ),
-      'type' => 'options_select',
+      'type' => 'entityreference_autocomplete_tags',
       'weight' => 11,
     ),
     'workbench_access_field' => 0,
@@ -1101,6 +1230,7 @@ function feature_for_reward_field_default_field_instances() {
     'display_label' => '',
     'entity_type' => 'reward',
     'field_name' => 'field_roles_reward',
+    'instance_cardinality' => 0,
     'label' => 'Roles which can receive this reward or raffle ticket',
     'required' => 1,
     'settings' => array(
@@ -1217,6 +1347,7 @@ function feature_for_reward_field_default_field_instances() {
   t('Onscreen alert on winning this reward');
   t('Points to get reward or raffle ticket');
   t('Raffle Claim ID');
+  t('Raffle Drawing Name');
   t('Raffle Prize or Reward Notifications');
   t('Raffle Ticket Image');
   t('Raffle Ticket Notifications');
@@ -1227,6 +1358,7 @@ function feature_for_reward_field_default_field_instances() {
   t('Roles which can receive this reward or raffle ticket');
   t('Status of reward or raffle');
   t('Type of reward/raffle prize');
+  t('receieved_reward');
 
   return $field_instances;
 }

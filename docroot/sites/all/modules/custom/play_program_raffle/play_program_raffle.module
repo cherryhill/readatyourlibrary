@@ -262,7 +262,7 @@ function ppr_active_rafle_list(){
     $options_raffle[$raffle->id] = $raffle->title;
   }
   return $options_raffle;
-  // echo '<pre>'; print_r($options_raffle);
+  echo '<pre>'; print_r($options_raffle);
 }
 
 /**
@@ -362,44 +362,24 @@ function render_raffle_filter_form($form, &$form_state) {
   echo drupal_render(drupal_get_form('raffle_entry_form'));
 }
 
-/* Raffle user list by filter form */
-
-function raffle_user_list($form, &$form_state) {
-
-  $raffle_id = $_POST['raffle_id'];
-  $rf_drawing_name = $_POST['rf_drawing_name'];
-  $winners_selected = $_POST['no_needed'];
-  $rf_grade = $_POST['rf_grade'];
-  $rf_library = $_POST['rf_library'];
-  $rf_sch = $_POST['rf_sch'];
-  $rf_all = $_POST['rf_all'];
-  $rf_this = $_POST['rf_this'];
-
-  $query = db_select('eck_reward','eck');
-  $query->join('field_data_field_raffle_claim_id','claim','eck.id = claim.entity_id');
-  $query->join('users','u','u.uid = eck.uid');
-  $query->fields('u', array('name','uid'));
-  $query->condition('eck.type','raffle_claim');
-  $query->condition('claim.field_raffle_claim_id_target_id',$raffle_id);
-  $query->range(0,$winners_selected);
-  // $query->orderRandom();
-  $query->distinct('u.uid');
-  $result = $query->execute()->fetchAll();
-
-  $arraySize = sizeof($result);
-  $tbl_rows = array();
-
-  $tbl_header = array(
-    'Username',
-    'First name',
-    'Last name',
-    'Date of birth',
-    'Email Address',
-    'Phone Number',
-    'Name of Drawing',
-    'Filters Used'
+function raffle_winners_tbl($uname, $fname, $lname, $bday, $email, $phn_number, $rf_drawing_name, $filtr_used) {
+  $tbl_rows[] = array(
+    array( 'data' => $uname),
+    array( 'data' => $fname),
+    array( 'data' => $lname),
+    array( 'data' => $bday),
+    array( 'data' => $email),
+    array( 'data' => $phn_number),
+    array( 'data' => $rf_drawing_name),
+    array( 'data' => $filtr_used),
   );
+  return $tbl_rows;
+}
 
+
+function getTable($result , $raffle_id, $rf_drawing_name, $winners_selected, $rf_grade, $rf_library, $rf_sch, $rf_all, $rf_this) {
+  $arraySize = sizeof($result);
+  
   for( $i = 0; $i < $arraySize; $i++) {
 
     $user_profile = profile2_load_by_user($result[$i]->uid, 'main');
@@ -415,40 +395,199 @@ function raffle_user_list($form, &$form_state) {
     $current_time = time();
     $user_age = floor(($current_time - $time_stamp_dob) / (60*60*24*365));
 
-    $age_check = chk_user_age_for_reward($user_age, $start_age, $end_age);
+    $rf_library_name = taxonomy_term_load($rf_library);
+    $rf_library_name = $rf_library_name->name;
 
-    if($user_branch == $rf_library && $user_school == $rf_sch && $user_grade == $rf_grade && $age_check == 1){
+    $rf_sch_name = taxonomy_term_load($rf_sch);
+    $rf_sch_name = $rf_sch_name->name;
 
-      $rf_library = taxonomy_term_load($rf_library);
-      $rf_library = $rf_library->name;
+    $rf_grade_name = taxonomy_term_load($rf_grade);
+    $rf_grade_name = $rf_grade_name->name;
 
-      $rf_sch = taxonomy_term_load($rf_sch);
-      $rf_sch = $rf_sch->name;
+    $filters_used = $rf_library_name.' ,'.$rf_sch_name.' ,'.$rf_grade_name;
 
-      $rf_grade = taxonomy_term_load($rf_grade);
-      $rf_grade = $rf_grade->name;
+    $addEntry = FALSE;
 
-      $filters_used = $rf_library.' ,'.$rf_sch.' ,'.$rf_grade;
+    $raffle_id = $result[$i]->id;
 
-      pl_reward_claim($raffle_id, $result[$i]->uid, 'reward', $filters_used, $rf_drawing_name);
+    $u_age = FALSE;
+    if(($rf_dob_sdate >= $user_age) && ($rf_dob_edate <= $user_age)){
+      $u_age = TRUE;
+    }
 
-      $tbl_rows[] = array(
-        array( 'data' => $result[$i]->name),
-        array( 'data' => $fname),
-        array( 'data' => $lname),
-        array( 'data' => $bday),
-        array( 'data' => $email),
-        array( 'data' => $phn_number),
-        array( 'data' => $rf_drawing_name),
-        array( 'data' => $rf_library.','.$rf_sch.','.$rf_grade),
+    if($user_branch == $rf_library && $rf_sch == NULL && $rf_grade == NULL && $u_age == FALSE){ //1
+      $addEntry = TRUE;
+    }else if ($rf_library == NULL && $rf_sch === $user_school && $rf_grade == NULL && $u_age == FALSE){ //2
+      $addEntry = TRUE;
+    }else if ($rf_library == NULL && $rf_sch == NULL && $rf_grade == $user_grade && $u_age == FALSE){ //3
+      $addEntry = TRUE;
+    }else if ($rf_library == NULL && $rf_sch == NULL && $rf_grade == NULL && $u_age == TRUE){ //4
+      $addEntry = TRUE;
+    }else if ($user_branch == $rf_library && $rf_sch == $user_school && $rf_grade == NULL && $u_age == FALSE){ //5
+      $addEntry = TRUE;
+    }else if ($user_branch == $rf_library && $rf_sch == NULL && $rf_grade == $user_grade && $u_age == FALSE){ //6
+      $addEntry = TRUE;
+    }else if ($user_branch == $rf_library && $rf_sch == NULL && $rf_grade == NULL && $u_age == TRUE){ //7
+      $addEntry = TRUE;
+    }else if ($rf_library == NULL && $rf_sch == NULL && $rf_grade == $user_grade && $u_age == TRUE){ //8
+      $addEntry = TRUE;
+    }else if ($rf_library == NULL && $rf_sch == $user_school && $rf_grade == NULL && $u_age == TRUE){ //9
+      $addEntry = TRUE;
+    }else if ($user_branch == $rf_library && $rf_sch == $user_school && $rf_grade == $user_grade && $u_age == FALSE){ //10
+      $addEntry = TRUE;
+    }else if ($user_branch == $rf_library && $rf_sch == NULL && $rf_grade == $user_grade && $u_age == TRUE){ //11
+      $addEntry = TRUE;
+    }else if ($user_branch == $rf_library && $rf_sch == $user_school && $rf_grade == NULL && $u_age == TRUE){ //12
+      $addEntry = TRUE;
+    }else if ($rf_library == NULL && $rf_sch == $user_school && $rf_grade == $user_grade && $u_age == TRUE){ //13
+      $addEntry = TRUE;
+    }else if ($user_branch == $rf_library && $rf_sch == $user_school && $rf_grade == $user_grade && $u_age == TRUE){ //14
+      $addEntry = TRUE;
+    }else if ($rf_library == NULL && $rf_sch == NULL && $rf_grade == NULL && $u_age == FALSE){ //15
+      $addEntry = FALSE;
+    }
+
+    if ($addEntry) {
+      $realDeal[] = array(
+        $user_ki_ids = array(
+          'uid' => $result[$i]->uid,
+          'rew_id' => $result[$i]->id
+        ),
+        $tbl_rows[] = array(
+          array( 'data' => $result[$i]->name),
+          array( 'data' => $fname),
+          array( 'data' => $lname),
+          array( 'data' => $bday),
+          array( 'data' => $email),
+          array( 'data' => $phn_number),
+          array( 'data' => $rf_drawing_name),
+          array( 'data' => $filters_used),
+        )
       );
     }
-  } 
-  
-  $output = theme('table', array( 'header' => $tbl_header, 'rows' => $tbl_rows ));
-  $output .= "<div class = 'raffle-list-submit'>";
+  }
+  return $realDeal;
+}
 
-  echo $output;
+/* Raffle user list by filter form */
+
+function raffle_user_list($form, &$form_state) {
+
+  $tbl_header = array(
+    'Username',
+    'First name',
+    'Last name',
+    'Date of birth',
+    'Email Address',
+    'Phone Number',
+    'Name of Drawing',
+    'Filters Used'
+  );
+
+  $raffle_id = $_POST['raffle_id'];
+  $rf_drawing_name = $_POST['rf_drawing_name'];
+  $winners_selected = $_POST['no_needed'];
+  $rf_grade = $_POST['rf_grade'];
+  $rf_library = $_POST['rf_library'];
+  $rf_sch = $_POST['rf_sch'];
+  $rf_all = $_POST['rf_all'];
+  $rf_this = $_POST['rf_this'];
+
+  $query = db_select('eck_reward','eck');
+  $query->join('field_data_field_rf_receieved_reward','rf_win','eck.id = rf_win.entity_id');
+  $query->join('field_data_field_raffle_claim_id','claim','eck.id = claim.entity_id');
+  $query->join('users','u','u.uid = eck.uid');
+  $query->fields('u', array('name','uid'));
+  $query->fields('eck', array('id'));
+  $query->condition('eck.type','raffle_claim');
+  $query->condition('rf_win.field_rf_receieved_reward_value', 0);
+  $query->condition('claim.field_raffle_claim_id_target_id', $raffle_id);
+  $query->distinct('u.uid');
+  $result = $query->execute()->fetchAll();
+
+  $query_inc_allWinners = db_select('eck_reward','eck');
+  $query_inc_allWinners->join('field_data_field_raffle_claim_id','claim','eck.id = claim.entity_id');
+  $query_inc_allWinners->join('users','u','u.uid = eck.uid');
+  $query_inc_allWinners->fields('u', array('name','uid'));
+  $query_inc_allWinners->fields('eck', array('id'));
+  $query_inc_allWinners->condition('eck.type','raffle_claim');
+  $query_inc_allWinners->condition('claim.field_raffle_claim_id_target_id', $raffle_id);
+  $query_inc_allWinners->distinct('u.uid');
+  $result_inc_allWinners = $query_inc_allWinners->execute()->fetchAll();
+
+  $query_draw = db_select('eck_reward','eck');
+  $query_draw->join('field_data_field_raffle_claim_id','claim','eck.id = claim.entity_id');
+  $query_draw->join('field_data_field_raffle_drawing_name','rf_draw','eck.id = rf_draw.entity_id');
+  $query_draw->join('users','u','u.uid = eck.uid');
+  $query_draw->fields('u', array('name','uid'));
+  $query_draw->fields('eck', array('id'));
+  $query_draw->condition('eck.type','raffle_claim');
+  $query_draw->condition('claim.field_raffle_claim_id_target_id', $raffle_id);
+  $query_draw->condition('rf_draw.field_raffle_drawing_name_value', $rf_drawing_name);
+  $query_draw->distinct('u.uid');
+  $result_draw = $query_draw->execute()->fetchAll();
+
+  $query_all = db_select('eck_reward','eck');
+  $query_all->join('field_data_field_raffle_claim_id','claim','eck.id = claim.entity_id');
+  $query_all->join('field_data_field_rf_receieved_reward','rf_win','eck.id = rf_win.entity_id');
+  $query_all->join('users','u','u.uid = eck.uid');
+  $query_all->fields('u', array('name','uid'));
+  $query_all->fields('eck', array('id'));
+  $query_all->condition('eck.type','raffle_claim');
+  $query_all->condition('claim.field_raffle_claim_id_target_id', $raffle_id);
+  $query_all->condition('rf_win.field_rf_receieved_reward_value', '0');
+  $query_all->distinct('u.uid');
+  $result_win = $query_all->execute()->fetchAll();
+  
+  if($rf_all) {
+    $result = $result_inc_allWinners;
+  } else if ($rf_this) {
+    $result = $result_draw;
+  } else {
+    $result = $result_win;
+  }
+
+  $tbl_rows = getTable($result, $raffle_id, $rf_drawing_name, $winners_selected, $rf_grade, $rf_library, $rf_sch, $rf_all, $rf_this);
+  $arraySizeRows = sizeof($tbl_rows);
+  $arraySizeRows--;
+  $randomValues = UniqueRandomNumbersWithinRange(0,$arraySizeRows,$winners_selected);
+
+  foreach ($randomValues as $key => $value) {
+
+    $tbl_row[] = $tbl_rows[$value][1];
+
+    $uid = $tbl_rows[$value][0]['uid'];
+    $rw_id = $tbl_rows[$value][0]['rew_id'];
+
+    pl_reward_claim($raffle_id, $uid, 'reward', $filters_used, $rf_drawing_name);
+    update_raffle_winner_tbl($rw_id, $rf_drawing_name);
+  }
+  
+  if (!empty($tbl_rows)) {
+    $output = theme('table', array( 'header' => $tbl_header, 'rows' => $tbl_row));
+    $output .= "<div class = 'raffle-list-submit'>";
+    echo $output;
+  }else{
+    echo 'No Result Found';
+  }
+}
+
+function update_raffle_winner_tbl($raffle_id, $rf_drawing_name) {
+  db_update('field_data_field_rf_receieved_reward')
+    ->fields(array('field_rf_receieved_reward_value' => 1))
+    ->condition('entity_id', $raffle_id)
+    ->execute();
+
+  db_update('field_data_field_raffle_drawing_name')
+    ->fields(array('field_raffle_drawing_name_value' => $rf_drawing_name))
+    ->condition('entity_id', $raffle_id)
+    ->execute();
+}
+
+function UniqueRandomNumbersWithinRange($min, $max, $quantity) {
+    $numbers = range($min, $max);
+    shuffle($numbers);
+    return array_slice($numbers, 0, $quantity);
 }
 
 function generate_csv_of_raffle_user() {

@@ -330,6 +330,31 @@ function feature_for_reward_field_default_field_bases() {
     'type' => 'text_long',
   );
 
+  // Exported field_base: 'field_raffle_drawing_name'.
+  $field_bases['field_raffle_drawing_name'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_raffle_drawing_name',
+    'field_permissions' => array(
+      'type' => 0,
+    ),
+    'indexes' => array(
+      'format' => array(
+        0 => 'format',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'text',
+    'settings' => array(
+      'max_length' => 255,
+      'profile2_private' => FALSE,
+    ),
+    'translatable' => 0,
+    'type' => 'text',
+  );
+
   // Exported field_base: 'field_raffle_notification'.
   $field_bases['field_raffle_notification'] = array(
     'active' => 1,
@@ -487,6 +512,26 @@ function feature_for_reward_field_default_field_bases() {
     'type' => 'list_boolean',
   );
 
+  // Exported field_base: 'field_rf_receieved_reward'.
+  $field_bases['field_rf_receieved_reward'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_rf_receieved_reward',
+    'field_permissions' => array(
+      'type' => 0,
+    ),
+    'indexes' => array(),
+    'locked' => 0,
+    'module' => 'number',
+    'settings' => array(
+      'profile2_private' => FALSE,
+    ),
+    'translatable' => 0,
+    'type' => 'number_integer',
+  );
+
   // Exported field_base: 'field_roles_reward'.
   $field_bases['field_roles_reward'] = array(
     'active' => 1,
@@ -506,6 +551,10 @@ function feature_for_reward_field_default_field_bases() {
       'roles' => array(
         2 => 2,
         3 => 3,
+        4 => 4,
+        5 => 5,
+        6 => 6,
+        7 => 7,
       ),
     ),
     'translatable' => 0,

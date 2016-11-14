@@ -34,7 +34,7 @@
           url: Drupal.settings.basePath + 'raffle_user_list',
           type: 'post',
           async: false,
-          data: "raffle_id="+raffle_id+"&rf_drawing_name="+rf_drawing_name+"&no_needed="+rf_num_winers+"&rf_sch="+rf_sch+"&rf_library="+rf_library+"&rf_grade="+rf_grade+"&rf_this="+rf_this+"&rf_all="+rf_all,
+          data: "raffle_id="+raffle_id+"&rf_drawing_name="+rf_drawing_name+"&no_needed="+rf_num_winers+"&rf_sch="+rf_sch+"&rf_library="+rf_library+"&rf_grade="+rf_grade+"&rf_this="+rf_this+"&rf_all="+rf_all+"&rf_dob_sdate="+rf_dob_sdate+"&rf_dob_edate="+rf_dob_edate,
           success: function (data) {
             if(raffle_id){
               $('#reward_tbl').html(data);
@@ -44,25 +44,26 @@
       }
 
       function confirm_rf_winners() {
-          bootbox.confirm({
-            message: "Raffle once drawn cannot be reversed. Please click Yes to proceed or Cancel to go back to the Draw Raffle Winners screen",
-            buttons: {
-              confirm: {
-                label: 'Proceed',
-                className: 'btn-success'
-              },
-              cancel: {
-                label: 'Cancel',
-                className: 'btn-danger'
-              }
+        bootbox.confirm({
+          message: "<div class = 'alrt'>Alert<div><br/>Raffle once drawn cannot be reversed. Please click Yes to proceed or Cancel to go back to the Draw Raffle Winners screen",
+          buttons: {
+            confirm: {
+              label: 'Proceed',
+              className: 'btn-success'
             },
-            callback: function (result) {
-              if (result) return rf_winners_list() ;
+            cancel: {
+              label: 'Cancel',
+              className: 'btn-danger'
             }
-          });
-
-          
-        } 
+          },
+          callback: function (result) {
+            if(result){
+              $('#raff_winners').hide();
+              return rf_winners_list();
+            }
+          }
+        });
+      } 
     }
   }
 })(jQuery);
