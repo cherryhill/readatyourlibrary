@@ -103,18 +103,18 @@ function progress_user_block_program() {
 
   $reads_for_next_reward = ($closest_reward / $activity_point) - $total_read_days;
   if($reads_for_next_reward < 0) {
-    return "<div class='all_rewrad_won'>Congratulations! You have completed the reading program and have received all the reading rewards.</div>";
+    return t("<div class='all_rewrad_won'>Congratulations! You have completed the reading program and have received all the reading rewards.</div>");
   }
   else {
     if($reads_for_next_reward == 1) {
-      $msg = "<span class='msg-highlight'>Total days read: $total_read_days</span><br/>";
-      $msg .= "<div class='days-left'>$reads_for_next_reward more day of reading needed to receive your next prize</div>";
-      $msg .= "<div><a href='".$base_url."/progress'>Go to the Progress Page</a></div>";
+      $msg = t("<span class='msg-highlight'>Total days read: $total_read_days</span><br/>");
+      $msg .= t("<div class='days-left'>$reads_for_next_reward more day of reading needed to receive your next prize</div>");
+      $msg .= t("<div><a href='".$base_url."/progress'>Go to the Progress Page</a></div>");
     }
     else {
-      $msg = "<span class='msg-highlight'>Total days read: $total_read_days</span><br/>";
-      $msg .= "<div class='days-left'>$reads_for_next_reward more days of reading needed to receive your next prize</div>";
-      $msg .= "<div><a href='".$base_url."/progress'>Go to the Progress Page</a></div>";
+      $msg = t("<span class='msg-highlight'>Total days read: $total_read_days</span><br/>");
+      $msg .= t("<div class='days-left'>$reads_for_next_reward more days of reading needed to receive your next prize</div>");
+      $msg .= t("<div><a href='".$base_url."/progress'>Go to the Progress Page</a></div>");
     }
     
 
@@ -262,7 +262,7 @@ function ppr_active_rafle_list(){
     $options_raffle[$raffle->id] = $raffle->title;
   }
   return $options_raffle;
-  echo '<pre>'; print_r($options_raffle);
+  //echo '<pre>'; print_r($options_raffle);
 }
 
 /**
@@ -281,7 +281,7 @@ function ppr_raffle_entry_process($form, &$form_state) {
 
   $form['raffle_list'] = array(
     '#type' =>'markup',
-    '#markup' => "<a href = '#'>Show list of all the winners in this raffle</a>",
+    '#markup' => t("<a href = '#'>Show list of all the winners in this raffle</a>"),
   );
 
   $form['name_raffle'] = array(
@@ -344,12 +344,12 @@ function ppr_raffle_entry_process($form, &$form_state) {
 
   $form['raff_winners'] = array(
     '#type' =>'markup',
-    '#markup' => "<input type = 'button' value = 'Draw Winners' id = 'raff_winners'>",
+    '#markup' => t("<input type = 'button' value = 'Draw Winners' id = 'raff_winners'>"),
   );
 
   $form['raffle_tb'] = array(
     '#type' =>'markup',
-    '#markup' => "<div id ='reward_tbl' data-reveal-id='myModal'></div>",
+    '#markup' => t("<div id ='reward_tbl' data-reveal-id='myModal'></div>"),
   );
 
   return $form;
@@ -568,7 +568,7 @@ function raffle_user_list($form, &$form_state) {
     $output .= "<div class = 'raffle-list-submit'>";
     echo $output;
   }else{
-    echo 'No Result Found';
+    echo t('No Result Found');
   }
 }
 
@@ -760,7 +760,7 @@ function generate_csv_of_raffle_user() {
       // }
       
     $raffle_winner = $v['raffle_winner'];
-    $operation = "<input class = 'raffle-prospective-winners' type = 'checkbox' id = 'chkbox_$k'>";
+    $operation = t("<input class = 'raffle-prospective-winners' type = 'checkbox' id = 'chkbox_$k'>");
     $output[] = array(
       'Serial_no.' => $i, 
       'name' => $user_name,
@@ -924,18 +924,18 @@ function user_progress() {
   $reads_for_next_reward = ($closest_reward / $activity_point) - $total_read_days;
 
   if($reads_for_next_reward < 0) {
-    return "<div class='all_rewrad_won'>Congratulations! You have completed the reading program and have received all the reading rewards.</div>";
+    return t("<div class='all_rewrad_won'>Congratulations! You have completed the reading program and have received all the reading rewards.</div>");
   }
   else {
       if($reads_for_next_reward == 1) {
-        $msg = "<span class='msg-highlight'>Total days read: $total_read_days</span><br/>";
-        $msg .= "$reads_for_next_reward more day of reading needed to receive your next prize";
-        $msg .= "<a href = '../progress' class = 'button'>Show My Progress</a>";
+        $msg = t("<span class='msg-highlight'>Total days read: $total_read_days</span><br/>");
+        $msg .= t("$reads_for_next_reward more day of reading needed to receive your next prize");
+        $msg .= t("<a href = '../progress' class = 'button'>Show My Progress</a>");
       }
       else {
-        $msg = "<span class='msg-highlight'>Total days read: $total_read_days</span><br/>";
-        $msg .= "$reads_for_next_reward more days of reading needed to receive your next prize";
-        $msg .= "<a href = '../progress' class = 'button'>Show My Progress</a>";
+        $msg = t("<span class='msg-highlight'>Total days read: $total_read_days</span><br/>");
+        $msg .= t("$reads_for_next_reward more days of reading needed to receive your next prize");
+        $msg .= t("<a href = '../progress' class = 'button'>Show My Progress</a>");
       }
     return "<div>$msg</div>";
   }
