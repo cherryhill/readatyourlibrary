@@ -119,16 +119,16 @@ function progress_user_block() {
   $reads_for_next_reward = ($closest_reward / $activity_point) - $total_read_days;
 
   if($reads_for_next_reward < 0) {
-    return "<div class='all_rewrad_won'>Congratulations! You have completed the reading program and have received all the reading rewards.</div>";
+    return t("<div class='all_rewrad_won'>Congratulations! You have completed the reading program and have received all the reading rewards.</div>");
   }
   else {
     if($reads_for_next_reward == 1) {
-      $msg = "$reads_for_next_reward more day of reading needed to receive your next prize";
+      $msg = t("$reads_for_next_reward more day of reading needed to receive your next prize");
 
       
     }
     else {
-      $msg = "$reads_for_next_reward more days of reading needed to receive your next prize";
+      $msg = t("$reads_for_next_reward more days of reading needed to receive your next prize");
     }
     return "<div>$msg</div>";
   }
@@ -231,22 +231,22 @@ function generate_mobile_progress_form_submit($form, &$form_state) {
 
       play_library_program_create_activity_entry($activity_id, $uid); 
     } else {
-      drupal_set_message("You have already recorded reading for this date.", "error");
+      drupal_set_message(t("You have already recorded reading for this date.", "error"));
     }    
   } else {
-     drupal_set_message("Your reading date is greater than today.", "error");
+     drupal_set_message(t("Your reading date is greater than today.", "error"));
   }
  } else {
-    drupal_set_message("You will not be able to record reading for previous days after winning reward", "error");
+    drupal_set_message(t("You will not be able to record reading for previous days after winning reward", "error"));
  }
 } else {
-  drupal_set_message("Please select a sticker.", "error");
+  drupal_set_message(t("Please select a sticker.", "error"));
 } 
 } else {
-   drupal_set_message("Please select a date.", "error");
+   drupal_set_message(t("Please select a date.", "error"));
 }
 } else {
-  drupal_set_message("You cannot record activity before or after program period.", "error");
+  drupal_set_message(t("You cannot record activity before or after program period.", "error"));
 } 
 
 }
@@ -424,7 +424,7 @@ function patron_activity_record_form_submit($form, &$form_state) {
   $entered_dates = implode(', ', $en_dates);
   
   if (!empty($en_dates)) {
-    drupal_set_message('Reading was previously recorded for this patron for these dates: [' . $entered_dates.']. If you submitted reading for additional dates, it has now been recorded too.','status');
+    drupal_set_message(t('Reading was previously recorded for this patron for these dates: [' . $entered_dates.']. If you submitted reading for additional dates, it has now been recorded too.','status'));
   }
 }
 
@@ -620,21 +620,21 @@ function generate_json_data() {
     if($reward_claimed) {
 
       $events[] = array(
-        'title' => '<div><div class="reward_image"><img data-id="'.$value->id.'" src="sites/default/files/styles/thumbnail/public/' . $value->image_url . '"</img></div>'.'<div class="reward_text">Congratulations! You earned a prize!</div></div>', 
+        'title' => t('<div><div class="reward_image"><img data-id="'.$value->id.'" src="sites/default/files/styles/thumbnail/public/' . $value->image_url . '"</img></div>'.'<div class="reward_text">Congratulations! You earned a prize!</div></div>'), 
         'date' => $value->date,
         );
     }
     else {
      if($i == 1) {
       $events[] = array(
-        'title' => '<div><div class="event_image"><img data-id="'.$value->id.'" src="sites/default/files/styles/thumbnail/public/' . $value->image_url . '"</img></div>'.'<div class="event_no">Read ' .$i. ' day</div></div>', 
+        'title' => t('<div><div class="event_image"><img data-id="'.$value->id.'" src="sites/default/files/styles/thumbnail/public/' . $value->image_url . '"</img></div>'.'<div class="event_no">Read ' .$i. ' day</div></div>'), 
         'date' => $value->date,
         );
     }
 
     else {
       $events[] = array(
-        'title' => '<div><div class="event_image"><img data-id="'.$value->id.'" src="sites/default/files/styles/thumbnail/public/' . $value->image_url . '"</img></div>'.'<div class="event_no">Read ' .$i. ' days</div></div>', 
+        'title' => t('<div><div class="event_image"><img data-id="'.$value->id.'" src="sites/default/files/styles/thumbnail/public/' . $value->image_url . '"</img></div>'.'<div class="event_no">Read ' .$i. ' days</div></div>'), 
         'date' => $value->date,
         );
     }  
