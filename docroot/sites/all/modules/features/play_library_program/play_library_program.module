@@ -46,7 +46,7 @@ function play_library_program_menu() {
  */
 function play_library_program_form_alter(&$form, &$form_state, $form_id){
   if($form_id == 'eck__entity__form_edit_activity_activity' || $form_id == 'eck__entity__form_add_activity_activity'){
-    $form['title']['#title'] = 'Name of Activity';
+    $form['title']['#title'] = t('Name of Activity');
   }
 }
 
@@ -302,7 +302,7 @@ function pl_adding_taxonomy_term_for_reward($entity, $type){
   $term->vid = $vid;
   taxonomy_term_save($term);
 
-  drupal_set_message('term saved for reward');
+  drupal_set_message(t('term saved for reward');
 }
 
 /**
@@ -487,7 +487,7 @@ function play_library_program_userpoints($op, &$params = array()) {
                 'points' => 0-$claimed_points,
                 'tid' => $params['tid'],
                 'display' => 0,
-                'description' => 'Deduction for reward claim for reward id'. $reward_id[1]
+                'description' => t('Deduction for reward claim for reward id'). $reward_id[1]
                 );
                 userpoints_userpointsapi($userpoint_rew);
             }
