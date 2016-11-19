@@ -154,10 +154,10 @@ function play_program_raffle_menu() {
     'access arguments' => array('raffle_access_permission'),
     'type' => MENU_CALLBACK,
   );
-  $items['raffle_filter_form'] = array(
-    'title' => 'Raffle Process',
+  $items['receive-reward/%'] = array(
+    'title' => 'Giving Of Reward',
     'page callback' => 'drupal_get_form',
-    'page arguments' => array('raffle_entry_form'),
+    'page arguments' => array('claim_reward_status',1),
     'access arguments' => array('raffle_access_permission'),
     'type' => MENU_CALLBACK,
   );
@@ -203,6 +203,132 @@ function play_program_raffle_menu() {
 
 function ppr_entery_detailed_list(){
   return 'testing';
+}
+
+function claim_reward_status($form, &$form_state, $arg) {
+
+  $rid = $arg;
+
+  $query = db_select('eck_reward','rew')
+  ->fields('rew', array('title', 'id','uid'))
+  ->condition('id', $rid,'=')
+  ->execute()
+  ->fetchAssoc();
+
+  $reward_title = $query['title'];
+  $reward_uid = $query['uid'];
+  $reward_id = $query['id'];
+
+  $queryUname = db_select('users','u')
+  ->fields('u',array('name'))
+  ->condition('uid',$reward_uid)
+  ->execute()
+  ->fetchAssoc();
+
+  $queryStatus = db_select('field_data_field_receieving_status','status')
+  ->fields('status',array('field_receieving_status_value'))
+  ->condition('entity_id',$rid)
+  ->execute()
+  ->fetchAssoc();
+
+  $queryNotes = db_select('field_data_field_staff_notes','notes')
+  ->fields('notes',array('field_staff_notes_value'))
+  ->condition('entity_id',$rid)
+  ->execute()
+  ->fetchAssoc();
+
+  $queryDate = db_select('field_data_field_rf_pickup_date','rcDate')
+  ->fields('rcDate',array('field_rf_pickup_date_value'))
+  ->condition('entity_id',$rid)
+  ->execute()
+  ->fetchAssoc();
+
+  $receievingStatus = $queryStatus['field_receieving_status_value'];
+  $receievingNotes = $queryNotes['field_staff_notes_value'];
+  $receievingDate = $queryDate['field_rf_pickup_date_value'];
+  $receievingUser = $queryUname['name'];
+
+  $form['reward_taken'] = array(
+    '#title' => t($reward_title),
+    '#type' => 'checkbox',
+    '#default_value' => isset($receievingStatus) ? $receievingStatus : '0',
+  );
+  
+  $form['username'] = array(
+    '#type' => 'hidden',
+    '#value' => $receievingUser,
+  );
+
+  $form['rid'] = array(
+    '#type' => 'hidden',
+    '#value' => $reward_id,
+  );
+
+  $form['title'] = array(
+    '#type' => 'hidden',
+    '#value' => $reward_title,
+  );
+
+  $form['receieved_date'] = array( 
+    '#type' => 'date_popup', 
+    '#date_format' => 'Y-m-d',
+    '#title' => "Receieved" ,
+    '#default_value' => isset($receievingDate) ? $receievingDate : NULL,
+  ); 
+
+  $form['staff_notes'] = array(
+     '#title' => t('Staff Notes'),
+     '#type' => 'textarea',
+     '#default_value' => isset($receievingNotes) ? $receievingNotes : NULL,
+   );
+
+  $form['submit_button'] = array(
+     '#type' => 'submit',
+     '#value' => t('SAVE'),
+   );
+
+  return $form;
+}
+
+// submit handler for form build in function claim_reward
+function claim_reward_status_submit($form, &$form_state){
+
+  $reward_status = $form_state['values']['reward_taken'];
+  $staff_notes = $form_state['values']['staff_notes'];
+  $reward_rid = $form_state['values']['rid'];
+  $reward_receieved_date = $form_state['values']['receieved_date'];
+  $rewardUser = $form_state['values']['username'];
+
+  if(isset($reward_receieved_date)){
+    $reward_status = '1';
+  }else{
+    $reward_status = '0';
+  }
+
+  db_update('field_data_field_receieving_status')
+    ->fields(array(
+      'field_receieving_status_value' => $reward_status
+      ))
+    ->condition('entity_id',$reward_rid)
+    ->execute();
+
+  db_update('field_data_field_rf_pickup_date')
+    ->fields(array(
+      'field_rf_pickup_date_value' => $reward_receieved_date
+      ))
+    ->condition('entity_id',$reward_rid)
+    ->execute(); 
+    
+  db_update('field_data_field_staff_notes')
+    ->fields(array(
+      'field_staff_notes_value' => $staff_notes
+      ))
+    ->condition('entity_id',$reward_rid)
+    ->execute();
+
+  if ($reward_status) {
+    drupal_set_message(t('@user receives the reward', array('@user' => $rewardUser)), 'status');
+  }
 }
 
 /* hook menu() for raffle winner user list */
@@ -359,12 +485,6 @@ function ppr_raffle_entry_process($form, &$form_state) {
 
 }
 
-/* For rendering the raffle filter form */
-
-function render_raffle_filter_form($form, &$form_state) {
-  echo drupal_render(drupal_get_form('raffle_entry_form'));
-}
-
 function raffle_winners_tbl($uname, $fname, $lname, $bday, $email, $phn_number, $rf_drawing_name, $filtr_used) {
   $tbl_rows[] = array(
     array( 'data' => $uname),
@@ -510,6 +630,7 @@ function raffle_user_list($form, &$form_state) {
           $user_grade = taxonomy_term_load($grade_tid);
           $user_grade = $user_grade->name;
 
+          $user_uid = $value->uid;
           $username = $value->name;
           $user_fname = $value->field_first_name_value;
           $user_lname = $value->field_last_name_value;
@@ -530,7 +651,7 @@ function raffle_user_list($form, &$form_state) {
               array( 'data' => $filters_used),
             );
 
-            pl_reward_claim($raffle_id, $user_uid, 'reward', $filters_used, $rf_drawing_name);
+            pl_reward_claim($raffle_id, $user_uid, 'reward', $filters_used, $rf_drawing_name, 1);
             break;
           }
         }
@@ -810,47 +931,6 @@ function _get_options($vocab_name) {
     $options[$value->tid] = $value->name;
   }
   return $options;
-}
-
-
-/* active raffle user list  */
-
-function raffle_entry_form($form, &$form_state) {
-  $school_options = _get_options('schools');
-  $organization_options = _get_options('organization');
-  $librarybranches_options = _get_options('library_branches');
-  $grade_options = _get_options('grade');
-
-  $form['school'] = array(
-    '#title' => t('School'),
-    '#type' => 'select',
-    '#options' => $school_options, 
-  );
-  $form['organization'] = array(
-    '#title' => t('Organization'),
-    '#type' => 'select',
-    '#options' => $organization_options,
-  ); 
-  $form['library_branch'] = array(
-    '#title' => t('Library Branch'),
-    '#type' => 'select',
-    '#options' => $librarybranches_options,
-  );
-  $form['grade'] = array(
-    '#title' => t('Grade'),
-    '#type' => 'select',
-    '#options' => $grade_options,
-  );
-  $form['button'] = array(
-    '#value' => 'Submit',
-    '#type' => 'button',
-    '#id' => 'raffle_form_button',
-  );
-  
-  return $form;
-
-
-  
 }
 
 
