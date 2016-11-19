@@ -88,7 +88,13 @@ function play_library_program_eck_bundle_info() {
       'entity_type' => 'reward',
       'name' => 'reward',
       'label' => 'Reward',
-      'config' => array(),
+      'config' => array(
+        'managed_properties' => array(
+          'title' => 'title',
+          'uid' => 0,
+          'created' => 0,
+        ),
+      ),
     ),
     'reward_reward_claim' => array(
       'machine_name' => 'reward_reward_claim',

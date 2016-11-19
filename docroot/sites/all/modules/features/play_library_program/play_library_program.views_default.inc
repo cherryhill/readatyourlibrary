@@ -706,13 +706,13 @@ function play_library_program_views_default_views() {
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'eck_reward';
   $handler->display->display_options['fields']['title']['field'] = 'title';
-  /* Field: Reward: Reward Raffle */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['field_reward_raffle']['id'] = 'field_reward_raffle';
   $handler->display->display_options['fields']['field_reward_raffle']['table'] = 'field_data_field_reward_raffle';
   $handler->display->display_options['fields']['field_reward_raffle']['field'] = 'field_reward_raffle';
   $handler->display->display_options['fields']['field_reward_raffle']['label'] = 'Raffle';
   $handler->display->display_options['fields']['field_reward_raffle']['empty'] = 'N/A';
-  /* Field: Reward: Reward Badge */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['field_reward_badge']['id'] = 'field_reward_badge';
   $handler->display->display_options['fields']['field_reward_badge']['table'] = 'field_data_field_reward_badge';
   $handler->display->display_options['fields']['field_reward_badge']['field'] = 'field_reward_badge';
@@ -817,7 +817,7 @@ function play_library_program_views_default_views() {
   $handler->display->display_options['defaults']['title'] = FALSE;
   $handler->display->display_options['title'] = 'My badges';
   $handler->display->display_options['defaults']['fields'] = FALSE;
-  /* Field: Reward: Reward Badge */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['field_reward_badge']['id'] = 'field_reward_badge';
   $handler->display->display_options['fields']['field_reward_badge']['table'] = 'field_data_field_reward_badge';
   $handler->display->display_options['fields']['field_reward_badge']['field'] = 'field_reward_badge';
@@ -834,7 +834,7 @@ function play_library_program_views_default_views() {
   $handler->display->display_options['filters']['type']['value'] = array(
     'reward' => 'reward',
   );
-  /* Filter criterion: Reward: Reward Badge (field_reward_badge) */
+  /* Filter criterion: Broken/missing handler */
   $handler->display->display_options['filters']['field_reward_badge_target_id']['id'] = 'field_reward_badge_target_id';
   $handler->display->display_options['filters']['field_reward_badge_target_id']['table'] = 'field_data_field_reward_badge';
   $handler->display->display_options['filters']['field_reward_badge_target_id']['field'] = 'field_reward_badge_target_id';
