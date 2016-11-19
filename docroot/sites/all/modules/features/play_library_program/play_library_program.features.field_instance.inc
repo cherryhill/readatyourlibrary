@@ -1553,6 +1553,110 @@ function play_library_program_field_default_field_instances() {
     'workbench_access_field' => 0,
   );
 
+  // Exported field_instance: 'reward-reward_claim-field_raffle_claim'.
+  $field_instances['reward-reward_claim-field_raffle_claim'] = array(
+    'bundle' => 'reward_claim',
+    'default_value' => array(
+      0 => array(
+        'value' => 0,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'number',
+        'settings' => array(
+          'decimal_separator' => '.',
+          'prefix_suffix' => TRUE,
+          'scale' => 0,
+          'thousand_separator' => '',
+        ),
+        'type' => 'number_integer',
+        'weight' => 6,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'display_label' => '',
+    'entity_type' => 'reward',
+    'field_name' => 'field_raffle_claim',
+    'label' => 'Raffle Claim',
+    'required' => 0,
+    'settings' => array(
+      'max' => '',
+      'min' => '',
+      'prefix' => '',
+      'suffix' => '',
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'number',
+      'settings' => array(),
+      'type' => 'number',
+      'weight' => 7,
+    ),
+    'workbench_access_field' => 0,
+  );
+
+  // Exported field_instance: 'reward-reward_claim-field_receieving_status'.
+  $field_instances['reward-reward_claim-field_receieving_status'] = array(
+    'bundle' => 'reward_claim',
+    'default_value' => array(
+      0 => array(
+        'value' => 0,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'number',
+        'settings' => array(
+          'decimal_separator' => '.',
+          'prefix_suffix' => TRUE,
+          'scale' => 0,
+          'thousand_separator' => '',
+        ),
+        'type' => 'number_integer',
+        'weight' => 7,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'display_label' => '',
+    'entity_type' => 'reward',
+    'field_name' => 'field_receieving_status',
+    'label' => 'Reward Receieving Status',
+    'required' => 0,
+    'settings' => array(
+      'max' => '',
+      'min' => '',
+      'prefix' => '',
+      'suffix' => '',
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'number',
+      'settings' => array(),
+      'type' => 'number',
+      'weight' => 8,
+    ),
+    'workbench_access_field' => 0,
+  );
+
   // Exported field_instance: 'reward-reward_claim-field_reward_claim_id'.
   $field_instances['reward-reward_claim-field_reward_claim_id'] = array(
     'bundle' => 'reward_claim',
@@ -2423,6 +2527,7 @@ function play_library_program_field_default_field_instances() {
   t('Number of times a user can perform this activity');
   t('Points');
   t('Print Reward FIle');
+  t('Raffle Claim');
   t('Raffle Date');
   t('Raffle Drawing Name');
   t('Raffle Entry Raffle');
@@ -2436,6 +2541,7 @@ function play_library_program_field_default_field_instances() {
   t('Reward Claim ID');
   t('Reward Message');
   t('Reward Notification');
+  t('Reward Receieving Status');
   t('Reward Role Limits');
   t('Select roles to which reward is limited. Select none to make it available for all roles.');
   t('Select when the activity should be fired. Such as when a user signs up, when content is created/published, etc. If you do not select one, the option will show up in the activity menu for the user to select.');

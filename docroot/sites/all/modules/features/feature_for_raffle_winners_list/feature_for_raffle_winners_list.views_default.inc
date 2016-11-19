@@ -74,7 +74,16 @@ function feature_for_raffle_winners_list_views_default_views() {
   $handler->display->display_options['relationships']['profile']['table'] = 'users';
   $handler->display->display_options['relationships']['profile']['field'] = 'profile';
   $handler->display->display_options['relationships']['profile']['relationship'] = 'uid';
+  /* Relationship: Entity Reference: Referenced Entity */
+  $handler->display->display_options['relationships']['field_reward_claim_id_target_id']['id'] = 'field_reward_claim_id_target_id';
+  $handler->display->display_options['relationships']['field_reward_claim_id_target_id']['table'] = 'field_data_field_reward_claim_id';
+  $handler->display->display_options['relationships']['field_reward_claim_id_target_id']['field'] = 'field_reward_claim_id_target_id';
   $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Reward: Id */
+  $handler->display->display_options['fields']['id']['id'] = 'id';
+  $handler->display->display_options['fields']['id']['table'] = 'eck_reward';
+  $handler->display->display_options['fields']['id']['field'] = 'id';
+  $handler->display->display_options['fields']['id']['exclude'] = TRUE;
   /* Field: Profile: Last name */
   $handler->display->display_options['fields']['field_last_name']['id'] = 'field_last_name';
   $handler->display->display_options['fields']['field_last_name']['table'] = 'field_data_field_last_name';
@@ -109,6 +118,10 @@ function feature_for_raffle_winners_list_views_default_views() {
   $handler->display->display_options['fields']['title']['table'] = 'eck_reward';
   $handler->display->display_options['fields']['title']['field'] = 'title';
   $handler->display->display_options['fields']['title']['label'] = 'Name of Reward';
+  /* Field: Reward: Raffle Drawing Name */
+  $handler->display->display_options['fields']['field_rf_drawing_name']['id'] = 'field_rf_drawing_name';
+  $handler->display->display_options['fields']['field_rf_drawing_name']['table'] = 'field_data_field_rf_drawing_name';
+  $handler->display->display_options['fields']['field_rf_drawing_name']['field'] = 'field_rf_drawing_name';
   /* Field: Global: PHP */
   $handler->display->display_options['fields']['php']['id'] = 'php';
   $handler->display->display_options['fields']['php']['table'] = 'views';
@@ -139,11 +152,15 @@ function feature_for_raffle_winners_list_views_default_views() {
   $handler->display->display_options['fields']['php_3']['field'] = 'php';
   $handler->display->display_options['fields']['php_3']['use_php_setup'] = 0;
   $handler->display->display_options['fields']['php_3']['php_output'] = '<?php
-echo \'<a href =\'.\'reward/\'.$row->id.\'>edit</a>\';
+echo \'<a href =\'.\'receive-reward/\'.$row->id.\'>edit</a>\';
 ?>';
   $handler->display->display_options['fields']['php_3']['use_php_click_sortable'] = '0';
   $handler->display->display_options['fields']['php_3']['php_click_sortable'] = '';
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['filter_groups']['groups'] = array(
+    1 => 'AND',
+    2 => 'OR',
+  );
   $handler->display->display_options['defaults']['filters'] = FALSE;
   /* Filter criterion: Reward: reward type */
   $handler->display->display_options['filters']['type']['id'] = 'type';
@@ -152,11 +169,25 @@ echo \'<a href =\'.\'reward/\'.$row->id.\'>edit</a>\';
   $handler->display->display_options['filters']['type']['value'] = array(
     'reward_claim' => 'reward_claim',
   );
-  /* Filter criterion: Reward: Filters Used (field_filters_used) */
-  $handler->display->display_options['filters']['field_filters_used_value']['id'] = 'field_filters_used_value';
-  $handler->display->display_options['filters']['field_filters_used_value']['table'] = 'field_data_field_filters_used';
-  $handler->display->display_options['filters']['field_filters_used_value']['field'] = 'field_filters_used_value';
-  $handler->display->display_options['filters']['field_filters_used_value']['operator'] = 'not empty';
+  $handler->display->display_options['filters']['type']['group'] = 1;
+  /* Filter criterion: Reward: Type of reward/raffle prize (field_type_of_reward_raffle_priz) */
+  $handler->display->display_options['filters']['field_type_of_reward_raffle_priz_tid']['id'] = 'field_type_of_reward_raffle_priz_tid';
+  $handler->display->display_options['filters']['field_type_of_reward_raffle_priz_tid']['table'] = 'field_data_field_type_of_reward_raffle_priz';
+  $handler->display->display_options['filters']['field_type_of_reward_raffle_priz_tid']['field'] = 'field_type_of_reward_raffle_priz_tid';
+  $handler->display->display_options['filters']['field_type_of_reward_raffle_priz_tid']['relationship'] = 'field_reward_claim_id_target_id';
+  $handler->display->display_options['filters']['field_type_of_reward_raffle_priz_tid']['value'] = array(
+    1 => '1',
+  );
+  $handler->display->display_options['filters']['field_type_of_reward_raffle_priz_tid']['group'] = 2;
+  $handler->display->display_options['filters']['field_type_of_reward_raffle_priz_tid']['type'] = 'select';
+  $handler->display->display_options['filters']['field_type_of_reward_raffle_priz_tid']['vocabulary'] = 'type_of_reward';
+  $handler->display->display_options['filters']['field_type_of_reward_raffle_priz_tid']['hierarchy'] = 1;
+  /* Filter criterion: Reward: Raffle Claim (field_raffle_claim) */
+  $handler->display->display_options['filters']['field_raffle_claim_value']['id'] = 'field_raffle_claim_value';
+  $handler->display->display_options['filters']['field_raffle_claim_value']['table'] = 'field_data_field_raffle_claim';
+  $handler->display->display_options['filters']['field_raffle_claim_value']['field'] = 'field_raffle_claim_value';
+  $handler->display->display_options['filters']['field_raffle_claim_value']['value']['value'] = '1';
+  $handler->display->display_options['filters']['field_raffle_claim_value']['group'] = 2;
   $handler->display->display_options['path'] = 'raffle-winners';
   $export['raffle_winners'] = $view;
 
