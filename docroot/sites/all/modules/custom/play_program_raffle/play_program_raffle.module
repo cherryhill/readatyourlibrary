@@ -549,15 +549,27 @@ function raffle_user_list($form, &$form_state) {
     $gradeFilter = implode(',', $user_grd);
   }
 
+
+
   $query = db_select('eck_reward','eck');
   $query->join('field_data_field_rf_receieved_reward','rf_win','eck.id = rf_win.entity_id');
   $query->join('field_data_field_raffle_claim_id','claim','eck.id = claim.entity_id');
   $query->join('field_data_field_raffle_drawing_name','rf_draw','eck.id = rf_draw.entity_id');
   $query->join('users','u','u.uid = eck.uid');
   $query->join('profile','pf','pf.uid = u.uid');
-  $query->join('field_data_field_library_branch','lb_brnch','lb_brnch.entity_id = pf.pid');
-  $query->join('field_data_field_school','sch','sch.entity_id = pf.pid');
-  $query->join('field_data_field_user_grade','grade','grade.entity_id = pf.pid');
+
+  if (!empty($library_id[0])){
+    $query->join('field_data_field_library_branch','lb_brnch','lb_brnch.entity_id = pf.pid');
+  }
+
+  if (!empty($school_id[0])) {
+    $query->join('field_data_field_school','sch','sch.entity_id = pf.pid');
+  }
+
+  if (!empty($grade_id[0])) {
+    $query->join('field_data_field_user_grade','grade','grade.entity_id = pf.pid');
+  }
+
   $query->join('field_data_field_first_name','fname','fname.entity_id = pf.pid');
   $query->join('field_data_field_last_name','lname','lname.entity_id = pf.pid');
   $query->join('field_data_field_user_birthday','bday','bday.entity_id = pf.pid');
@@ -567,15 +579,26 @@ function raffle_user_list($form, &$form_state) {
   $query->fields('rf_draw',array('field_raffle_drawing_name_value'));
   $query->fields('pf', array('pid'));
   $query->fields('eck', array('id'));
-  $query->fields('sch', array('field_school_tid'));
-  $query->fields('grade', array('field_user_grade_tid'));
-  $query->fields('lb_brnch', array('field_library_branch_tid'));
+
+  if (!empty($school_id[0])) {
+    $query->fields('sch', array('field_school_tid'));
+  }
+
+  if (!empty($grade_id[0])) {
+    $query->fields('grade', array('field_user_grade_tid'));
+  }
+
+  if (!empty($library_id[0])){
+    $query->fields('lb_brnch', array('field_library_branch_tid'));
+  }
+
   $query->fields('fname', array('field_first_name_value'));
   $query->fields('lname', array('field_last_name_value'));
   $query->fields('bday', array('field_user_birthday_value'));
   $query->fields('c_no', array('field_phone_number_value'));
   $query->condition('eck.type','raffle_claim');
   $query->condition('claim.field_raffle_claim_id_target_id', $raffle_id);
+
   if (!empty($library_id[0])) {
     $query->condition('lb_brnch.field_library_branch_tid',$library_id);
   }
@@ -585,8 +608,11 @@ function raffle_user_list($form, &$form_state) {
   if (!empty($grade_id[0])) {
     $query->condition('grade.field_user_grade_tid',$grade_id);
   }
+
   $query->condition('rf_win.field_rf_receieved_reward_value',array(0,1));
   $result_all = $query->execute()->fetchAll();
+
+  // echo '<pre>'; print_r($result_all); die();
 
   $tbl_header = array(
     'Username',
@@ -630,70 +656,67 @@ function raffle_user_list($form, &$form_state) {
       $nn = rand(0, sizeof($user_uid)-1);
       $val_to_claim = $user_uid[$nn];
 
-      foreach ($result as $value) {
-
-        if($value->uid == $val_to_claim){
-          $profile_id = $value->pid;
-          // email is optional, getting user email
-          $query_email = db_select('field_data_field_email','em');
-          $query_email->condition('em.entity_id',$profile_id);
-          $query_email->fields('em',array('field_email_email'));
-          $result_email = $query_email->execute()->fetchAssoc();
-
-          $user_mail = $result_email['field_email_email'];
-
-          $school_tid = $value->field_school_tid;
-          $branch_tid = $value->field_library_branch_tid;
-          $grade_tid = $value->field_user_grade_tid;
-          $user_bday = $value->field_user_birthday_value;
-
-          $time_stamp_dob = strtotime($user_bday);
-          $current_time = time();
-          $user_age = floor(($current_time - $time_stamp_dob) / (60*60*24*365));
-
-          $u_age = FALSE;
-          if(($rf_dob_sdate <= $user_age) && ($user_age <= $rf_dob_edate)) {
-            $u_age = TRUE;
-          } else if(empty($rf_dob_edate) || empty($rf_dob_sdate)) {
-            $u_age = TRUE;
-          }
-
-          $user_uid = $value->uid;
-          $username = $value->name;
-          $user_fname = $value->field_first_name_value;
-          $user_lname = $value->field_last_name_value;
-          $user_age = $user_age;
-          $user_email = $value->field_email_email;
-          $user_phn_number = $value->field_phone_number_value;
-          $filters_used = $branchFilter .' '.$schoolFilter .' '.$gradeFilter;
-
-          if ($u_age){
-            $tbl_rows[] = array(
-              array( 'data' => $username),
-              array( 'data' => $user_fname),
-              array( 'data' => $user_lname),
-              array( 'data' => $user_age),
-              array( 'data' => $user_mail),
-              array( 'data' => $user_phn_number),
-              array( 'data' => $rf_drawing_name),
-              array( 'data' => $filters_used),
-            );
-
-            pl_reward_claim($raffle_id, $user_uid, 'reward', $filters_used, $rf_drawing_name, 1);
-            break;
-          }
-        }
-      }
-
-      foreach ($result as $userInfo) {
-
-        if($userInfo->uid == $val_to_claim){
-          $userEntityId = $userInfo->id;
-          update_raffle_winner_tbl($userEntityId, $rf_drawing_name);
-        }
-      }
-
+      $rewardClaim = TRUE;
       foreach ($user_uid as $value1) {
+        foreach ($result as $value) {
+
+          if($value->uid == $val_to_claim){
+            
+            $userEntityId = $value->id;
+            update_raffle_winner_tbl($userEntityId, $rf_drawing_name);
+            if ($rewardClaim) {
+              $profile_id = $value->pid;
+              // email is optional, getting user email
+              $query_email = db_select('field_data_field_email','em');
+              $query_email->condition('em.entity_id',$profile_id);
+              $query_email->fields('em',array('field_email_email'));
+              $result_email = $query_email->execute()->fetchAssoc();
+
+              $user_mail = $result_email['field_email_email'];
+
+              $school_tid = $value->field_school_tid;
+              $branch_tid = $value->field_library_branch_tid;
+              $grade_tid = $value->field_user_grade_tid;
+              $user_bday = $value->field_user_birthday_value;
+
+              $time_stamp_dob = strtotime($user_bday);
+              $current_time = time();
+              $user_age = floor(($current_time - $time_stamp_dob) / (60*60*24*365));
+
+              $u_age = FALSE;
+              if(($rf_dob_sdate <= $user_age) && ($user_age <= $rf_dob_edate)) {
+                $u_age = TRUE;
+              } else if(empty($rf_dob_edate) || empty($rf_dob_sdate)) {
+                $u_age = TRUE;
+              }
+
+              $user_uid = $value->uid;
+              $username = $value->name;
+              $user_fname = $value->field_first_name_value;
+              $user_lname = $value->field_last_name_value;
+              $user_age = $user_age;
+              $user_email = $value->field_email_email;
+              $user_phn_number = $value->field_phone_number_value;
+              $filters_used = $branchFilter .' '.$schoolFilter .' '.$gradeFilter;
+
+              if ($u_age){
+                $tbl_rows[] = array(
+                  array( 'data' => $username),
+                  array( 'data' => $user_fname),
+                  array( 'data' => $user_lname),
+                  array( 'data' => $user_age),
+                  array( 'data' => $user_mail),
+                  array( 'data' => $user_phn_number),
+                  array( 'data' => $rf_drawing_name),
+                  array( 'data' => $filters_used),
+                );
+
+                pl_reward_claim($raffle_id, $user_uid, 'reward', $filters_used, $rf_drawing_name, 1);
+                $rewardClaim = FALSE;
+              }
+            }
+          }
+        } 
         if ($value1 <> $val_to_claim ){
           $distinct_ids[] =  $value1;
         }
