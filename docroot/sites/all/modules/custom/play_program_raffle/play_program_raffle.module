@@ -173,9 +173,9 @@ function play_program_raffle_menu() {
     'access arguments' => array('raffle_access_permission'),
     'type' => MENU_CALLBACK,
   );
-  $items['raffle_winner'] = array(
+  $items['raffle_user_list_pdf'] = array(
     'title' => 'Raffle winner Process',
-    'page callback' => 'raffle_winner_ajax',
+    'page callback' => 'raffle_user_list_pdf',
     'access arguments' => array('raffle_access_permission'),
     'type' => MENU_CALLBACK,
   );
@@ -203,6 +203,10 @@ function play_program_raffle_menu() {
 
 function ppr_entery_detailed_list(){
   return 'testing';
+}
+
+function raffle_user_list_pdf() {
+  return 'raffle pdf print';
 }
 
 function claim_reward_status($form, &$form_state, $arg) {
@@ -345,7 +349,7 @@ function raffle_winner_user_list() {
   $res = $query->execute()->fetchAll();
   $table_header = array(
     'Sl No.',
-    'Raffle Name',
+    'Raffle Name',  
     'Raffle Winner Name'
   );
   $table_rows = array();
@@ -396,6 +400,7 @@ function ppr_active_rafle_list(){
  */
 function ppr_raffle_entry_process($form, &$form_state) {
 
+  $url = $GLOBALS['base_url'];
   $school = _get_options('schools');
   $library_branch = _get_options('library_branch');
   $grade = _get_options('grade');
@@ -407,7 +412,7 @@ function ppr_raffle_entry_process($form, &$form_state) {
 
   $form['raffle_list'] = array(
     '#type' =>'markup',
-    '#markup' => t("<a href = '#'>Show list of all the winners in this raffle</a>"),
+    '#markup' => t("<a href = ".$url."/raffle-winners>Show list of all the winners in this raffle</a>"),
   );
 
   $form['name_raffle'] = array(
@@ -547,9 +552,13 @@ function raffle_user_list($form, &$form_state) {
   $query->fields('c_no', array('field_phone_number_value'));
   $query->condition('eck.type','raffle_claim');
   $query->condition('claim.field_raffle_claim_id_target_id', $raffle_id);
-  $query->condition('lb_brnch.field_library_branch_tid',$library_id);
-  $query->condition('sch.field_school_tid',$school_id);
-  $query->condition('grade.field_user_grade_tid',$grade_id);
+  if (!empty($library_id[0])) {
+    $query->condition('lb_brnch.field_library_branch_tid',$library_id);
+  }else if (!empty($school_id[0])) {
+    $query->condition('sch.field_school_tid',$school_id);
+  }else if (!empty($grade_id[0])) {
+    $query->condition('grade.field_user_grade_tid',$grade_id);
+  }
   $query->condition('rf_win.field_rf_receieved_reward_value',array(0,1));
   $result_all = $query->execute()->fetchAll();
 
@@ -683,7 +692,6 @@ function raffle_user_list($form, &$form_state) {
   }else{
     echo t('No Result Found');
   }
-
 }
 
 
