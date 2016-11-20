@@ -525,6 +525,30 @@ function raffle_user_list($form, &$form_state) {
   $school_id = explode(',', $rf_sch);
   $grade_id = explode(',', $rf_grade);
 
+  // $user_sch = array();
+
+  if(!empty($library_id)) {
+    foreach ($library_id as $value) {
+      $user_lib = taxonomy_term_load($value);
+      $user_lb[] = $user_lib->name;   
+    }
+    $branchFilter = implode(',', $user_lb);
+  }
+  if(!empty($school_id)) {
+    foreach ($school_id as $value) {
+      $user_school = taxonomy_term_load($value);
+      $user_sch[] = $user_school->name;   
+    }
+    $schoolFilter = implode(',', $user_sch);
+  }
+  if(!empty($grade_id)) {
+    foreach ($grade_id as $value) {
+      $user_grd = taxonomy_term_load($value);
+      $user_grd[] = $user_grd->name;   
+    }
+    $gradeFilter = implode(',', $user_grd);
+  }
+
   $query = db_select('eck_reward','eck');
   $query->join('field_data_field_rf_receieved_reward','rf_win','eck.id = rf_win.entity_id');
   $query->join('field_data_field_raffle_claim_id','claim','eck.id = claim.entity_id');
@@ -554,9 +578,11 @@ function raffle_user_list($form, &$form_state) {
   $query->condition('claim.field_raffle_claim_id_target_id', $raffle_id);
   if (!empty($library_id[0])) {
     $query->condition('lb_brnch.field_library_branch_tid',$library_id);
-  }else if (!empty($school_id[0])) {
+  }
+  if (!empty($school_id[0])) {
     $query->condition('sch.field_school_tid',$school_id);
-  }else if (!empty($grade_id[0])) {
+  }
+  if (!empty($grade_id[0])) {
     $query->condition('grade.field_user_grade_tid',$grade_id);
   }
   $query->condition('rf_win.field_rf_receieved_reward_value',array(0,1));
@@ -632,13 +658,6 @@ function raffle_user_list($form, &$form_state) {
             $u_age = TRUE;
           }
 
-          $user_school = taxonomy_term_load($school_tid);
-          $user_school = $user_school->name;
-          $user_branch = taxonomy_term_load($branch_tid);
-          $user_branch = $user_branch->name;
-          $user_grade = taxonomy_term_load($grade_tid);
-          $user_grade = $user_grade->name;
-
           $user_uid = $value->uid;
           $username = $value->name;
           $user_fname = $value->field_first_name_value;
@@ -646,7 +665,7 @@ function raffle_user_list($form, &$form_state) {
           $user_age = $user_age;
           $user_email = $value->field_email_email;
           $user_phn_number = $value->field_phone_number_value;
-          $filters_used = $user_branch .' '. $user_school.' '.$user_grade;
+          $filters_used = $branchFilter .' '.$schoolFilter .' '.$gradeFilter;
 
           if ($u_age){
             $tbl_rows[] = array(
