@@ -135,6 +135,7 @@ function generate_staff_form($form, &$form_state) {
 }
 
 function generate_staff_form_submit($form, &$form_state) {
+
   $staff_note = $form_state['complete form']['body']['#value'];
   $custom_uid = arg(1);
   $profile = profile2_create(array('type' => 'main', 'uid' => $custom_uid));
@@ -712,9 +713,9 @@ function raffle_user_list($form, &$form_state) {
 
     if (!empty($tbl_rows)) {
       $output = "<div id = 'rf-tbl'>";
-      $output .= theme('table', array( 'header' => $tbl_header, 'rows' => $tbl_rows));
+      $output .= theme('table', array( 'header' => $tbl_header, 'rows' => $tbl_rows, 'attributes' => array('border' => 1, 'style' =>"border-collapse: collapse")));
       $output .= "</div>";
-      $output .= "<input type = 'button' value = 'Print by' id = 'print_raffle'>";
+      $output .= "<input type = 'button' value = 'Print' id = 'print_raffle'>";
       echo $output;
     }
   } else {
