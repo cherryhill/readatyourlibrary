@@ -123,12 +123,12 @@ function progress_user_block() {
   }
   else {
     if($reads_for_next_reward == 1) {
-      $msg = t("$reads_for_next_reward more day of reading needed to receive your next prize");
+      $msg = t($reads_for_next_reward. "more day of reading needed to receive your next prize");
 
       
     }
     else {
-      $msg = t("$reads_for_next_reward more days of reading needed to receive your next prize");
+      $msg = t($reads_for_next_reward." more days of reading needed to receive your next prize");
     }
     return "<div>$msg</div>";
   }
@@ -231,22 +231,22 @@ function generate_mobile_progress_form_submit($form, &$form_state) {
 
       play_library_program_create_activity_entry($activity_id, $uid); 
     } else {
-      drupal_set_message(t("You have already recorded reading for this date.", "error"));
+      drupal_set_message(t("You have already recorded reading for this date."), "error");
     }    
   } else {
-     drupal_set_message(t("Your reading date is greater than today.", "error"));
+     drupal_set_message(t("Your reading date is greater than today."), "error");
   }
  } else {
-    drupal_set_message(t("You will not be able to record reading for previous days after winning reward", "error"));
+    drupal_set_message(t("You will not be able to record reading for previous days after winning reward"), "error");
  }
 } else {
-  drupal_set_message(t("Please select a sticker.", "error"));
+  drupal_set_message(t("Please select a sticker."), "error");
 } 
 } else {
-   drupal_set_message(t("Please select a date.", "error"));
+   drupal_set_message(t("Please select a date."), "error");
 }
 } else {
-  drupal_set_message(t("You cannot record activity before or after program period.", "error"));
+  drupal_set_message(t("You cannot record activity before or after program period."), "error");
 } 
 
 }
