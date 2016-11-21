@@ -1062,3 +1062,30 @@ function play_program_raffle_menu_alter(&$items) {
 
   }
 }
+
+
+/**
+ *  Function for alter registration form for language selection
+ */
+
+function play_program_raffle_form_user_register_form_alter(&$form, &$form_state, $form_id) {
+
+  $languages = language_list();
+  $names = array();
+  foreach ($languages as $key => $language) {
+  $names[$key] = t($language->name);
+  }
+  global $language;
+
+  $form['account']['locale']['language'] = array(
+    '#type' => (count($names) <= 5 ? 'radios' : 'select'),
+    '#title' => t('Language'),
+    '#default_value' => $language->language,
+    '#options' => $names,
+    '#description' => t("Prefered language for you account."),
+  );
+  
+  // Use exactly the same access logic as the original,
+  // without checking for the 'administer users' permission
+  $form['account']['locale']['#access'] = ($form['#user_category'] == 'account' || ($form['#user_category'] == 'register'));
+}
