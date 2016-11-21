@@ -89,7 +89,7 @@
             if(raffle_id){
               $('#reward_tbl').html(data);
               $('#print_raffle').on('click', function() {
-                printDiv('rf-tbl');
+                printDiv('#rf-tbl');
               });
             }
           }
@@ -117,16 +117,23 @@
           }
         });
       }
-      function printDiv(divName) {
 
-        var printContents = document.getElementById(divName).innerHTML;
-        var originalContents = document.body.innerHTML;
-
-        document.body.innerHTML = printContents;
-        window.print();
-        document.body.innerHTML = originalContents;
+      function printDiv(elem) {
+        Popup($(elem).html());
       }
+      
+      function Popup(data){
+        var mywindow = window.open('', 'new div', 'height=400,width=600');
+        mywindow.document.write('<html><head><title>my div</title>');
+        mywindow.document.write('</head><body >');
+        mywindow.document.write(data);
+        mywindow.document.write('</body></html>');
 
+        mywindow.print();
+        mywindow.close();
+
+        return true;
+      }
     }
   }
 })(jQuery);
