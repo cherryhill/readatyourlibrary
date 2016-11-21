@@ -389,7 +389,6 @@ function ppr_active_rafle_list(){
   }
 
   foreach ($raffle_rewards as $raffle) {
-    $options_raffle[0] = 'Select Raffle';
     $options_raffle[$raffle->id] = $raffle->title;
   }
   return $options_raffle;
@@ -406,8 +405,10 @@ function ppr_raffle_entry_process($form, &$form_state) {
   $grade = _get_options('grade');
 
   $form['active_raffle'] = array(
+    '#title' => t('Select Raffle'),
     '#type' => 'select',
     '#options' => ppr_active_rafle_list(), 
+    '#required' => TRUE,
   );
 
   $form['raffle_list'] = array(
@@ -419,6 +420,7 @@ function ppr_raffle_entry_process($form, &$form_state) {
     '#title' => t('Name of Drawing'),
     '#type' => 'textfield',
     '#description' => 'Please enter Branch or Systemwide',
+    '#required' => TRUE,
   );
 
   $form['library_branch'] = array(
@@ -461,19 +463,19 @@ function ppr_raffle_entry_process($form, &$form_state) {
 
   $form['pervious_this_wnrs'] = array(
     '#type' => 'checkbox',
-    '#title' => t('Include previous winners in this raffle'),
+    '#title' => t('Include previous winners of this raffle'),
     '#attributes' => array('value' => 2),
   );
 
   $form['pervious_all_wnrs'] = array(
     '#type' => 'checkbox',
-    '#title' => t('Include previous winners in all raffle'),
+    '#title' => t('Include previous winners of any raffles'),
   );
 
   $form['winners_selected'] = array(
     '#title' => t('Number of winners to be selected'),
     '#type' => 'textfield',
-    // '#desription' => t(''),
+    '#required' => TRUE,
   );
 
   $form['raff_winners'] = array(
@@ -481,30 +483,13 @@ function ppr_raffle_entry_process($form, &$form_state) {
     '#markup' => t("<input type = 'button' value = 'Draw Winners' id = 'raff_winners'>"),
   );
 
-  $form['raffle_tb'] = array(
+  $form['raffle_tbl'] = array(
     '#type' =>'markup',
     '#markup' => t("<div id ='reward_tbl' data-reveal-id='myModal'></div>"),
   );
 
   return $form;
-
 }
-
-function raffle_winners_tbl($uname, $fname, $lname, $bday, $email, $phn_number, $rf_drawing_name, $filtr_used) {
-  $tbl_rows[] = array(
-    array( 'data' => $uname),
-    array( 'data' => $fname),
-    array( 'data' => $lname),
-    array( 'data' => $bday),
-    array( 'data' => $email),
-    array( 'data' => $phn_number),
-    array( 'data' => $rf_drawing_name),
-    array( 'data' => $filtr_used),
-  );
-  return $tbl_rows;
-}
-
-
 
 /* Raffle user list by filter form */
 
@@ -525,31 +510,27 @@ function raffle_user_list($form, &$form_state) {
   $school_id = explode(',', $rf_sch);
   $grade_id = explode(',', $rf_grade);
 
-  // $user_sch = array();
-
   if(!empty($library_id)) {
     foreach ($library_id as $value) {
       $user_lib = taxonomy_term_load($value);
-      $user_lb[] = $user_lib->name;   
+      $user_lbs[] = $user_lib->name;   
     }
-    $branchFilter = implode(',', $user_lb);
+    $branchFilter = implode(',', $user_lbs);
   }
   if(!empty($school_id)) {
     foreach ($school_id as $value) {
       $user_school = taxonomy_term_load($value);
-      $user_sch[] = $user_school->name;   
+      $user_schs[] = $user_school->name;   
     }
-    $schoolFilter = implode(',', $user_sch);
+    $schoolFilter = implode(',', $user_schs);
   }
   if(!empty($grade_id)) {
     foreach ($grade_id as $value) {
       $user_grd = taxonomy_term_load($value);
-      $user_grd[] = $user_grd->name;   
+      $user_grds[] = $user_grd->name;
     }
-    $gradeFilter = implode(',', $user_grd);
+    $gradeFilter = implode(',', $user_grds);
   }
-
-
 
   $query = db_select('eck_reward','eck');
   $query->join('field_data_field_rf_receieved_reward','rf_win','eck.id = rf_win.entity_id');
@@ -612,8 +593,6 @@ function raffle_user_list($form, &$form_state) {
   $query->condition('rf_win.field_rf_receieved_reward_value',array(0,1));
   $result_all = $query->execute()->fetchAll();
 
-  // echo '<pre>'; print_r($result_all); die();
-
   $tbl_header = array(
     'Username',
     'First name',
@@ -650,89 +629,96 @@ function raffle_user_list($form, &$form_state) {
   foreach ($result as $value) {
     $user_uid[] = $value->uid;
   }
- 
-  for ($i = 0; $i < $winners_selected; $i++){
-    if (sizeof($user_uid) > 0){
-      $nn = rand(0, sizeof($user_uid)-1);
-      $val_to_claim = $user_uid[$nn];
 
-      $rewardClaim = TRUE;
-      foreach ($user_uid as $value1) {
-        foreach ($result as $value) {
+  $arrayUni =  array_unique($user_uid);
+  $arrUniLength = sizeof($arrayUni);
 
-          if($value->uid == $val_to_claim){
-            
-            $userEntityId = $value->id;
-            update_raffle_winner_tbl($userEntityId, $rf_drawing_name);
-            if ($rewardClaim) {
-              $profile_id = $value->pid;
-              // email is optional, getting user email
-              $query_email = db_select('field_data_field_email','em');
-              $query_email->condition('em.entity_id',$profile_id);
-              $query_email->fields('em',array('field_email_email'));
-              $result_email = $query_email->execute()->fetchAssoc();
+  if ($winners_selected <= $arrUniLength) {
+    for ($i = 0; $i < $winners_selected; $i++){
+      if (sizeof($user_uid) > 0){
+        $nn = rand(0, sizeof($user_uid)-1);
+        $val_to_claim = $user_uid[$nn];
 
-              $user_mail = $result_email['field_email_email'];
+        $rewardClaim = TRUE;
+        foreach ($user_uid as $value1) {
+          foreach ($result as $value) {
 
-              $school_tid = $value->field_school_tid;
-              $branch_tid = $value->field_library_branch_tid;
-              $grade_tid = $value->field_user_grade_tid;
-              $user_bday = $value->field_user_birthday_value;
+            if($value->uid == $val_to_claim){
+              
+              $userEntityId = $value->id;
+              update_raffle_winner_tbl($userEntityId, $rf_drawing_name);
+              if ($rewardClaim) {
+                $profile_id = $value->pid;
+                // email is optional, getting user email
+                $query_email = db_select('field_data_field_email','em');
+                $query_email->condition('em.entity_id',$profile_id);
+                $query_email->fields('em',array('field_email_email'));
+                $result_email = $query_email->execute()->fetchAssoc();
 
-              $time_stamp_dob = strtotime($user_bday);
-              $current_time = time();
-              $user_age = floor(($current_time - $time_stamp_dob) / (60*60*24*365));
+                $user_mail = $result_email['field_email_email'];
 
-              $u_age = FALSE;
-              if(($rf_dob_sdate <= $user_age) && ($user_age <= $rf_dob_edate)) {
-                $u_age = TRUE;
-              } else if(empty($rf_dob_edate) || empty($rf_dob_sdate)) {
-                $u_age = TRUE;
-              }
+                $school_tid = $value->field_school_tid;
+                $branch_tid = $value->field_library_branch_tid;
+                $grade_tid = $value->field_user_grade_tid;
+                $user_bday = $value->field_user_birthday_value;
 
-              $user_uid = $value->uid;
-              $username = $value->name;
-              $user_fname = $value->field_first_name_value;
-              $user_lname = $value->field_last_name_value;
-              $user_age = $user_age;
-              $user_email = $value->field_email_email;
-              $user_phn_number = $value->field_phone_number_value;
-              $filters_used = $branchFilter .' '.$schoolFilter .' '.$gradeFilter;
+                $time_stamp_dob = strtotime($user_bday);
+                $current_time = time();
+                $user_age = floor(($current_time - $time_stamp_dob) / (60*60*24*365));
 
-              if ($u_age){
-                $tbl_rows[] = array(
-                  array( 'data' => $username),
-                  array( 'data' => $user_fname),
-                  array( 'data' => $user_lname),
-                  array( 'data' => $user_age),
-                  array( 'data' => $user_mail),
-                  array( 'data' => $user_phn_number),
-                  array( 'data' => $rf_drawing_name),
-                  array( 'data' => $filters_used),
-                );
+                $u_age = FALSE;
+                if(($rf_dob_sdate <= $user_age) && ($user_age <= $rf_dob_edate)) {
+                  $u_age = TRUE;
+                } else if(empty($rf_dob_edate) || empty($rf_dob_sdate)) {
+                  $u_age = TRUE;
+                }
 
-                pl_reward_claim($raffle_id, $user_uid, 'reward', $filters_used, $rf_drawing_name, 1);
-                $rewardClaim = FALSE;
+                $user_uid = $value->uid;
+                $username = $value->name;
+                $user_fname = $value->field_first_name_value;
+                $user_lname = $value->field_last_name_value;
+                $user_age = $user_age;
+                $user_email = $value->field_email_email;
+                $user_phn_number = $value->field_phone_number_value;
+                $filters_used = $branchFilter .' '.$schoolFilter .' '.$gradeFilter;
+
+                if ($u_age){
+                  $tbl_rows[] = array(
+                    array( 'data' => $username),
+                    array( 'data' => $user_fname),
+                    array( 'data' => $user_lname),
+                    array( 'data' => $user_age),
+                    array( 'data' => $user_mail),
+                    array( 'data' => $user_phn_number),
+                    array( 'data' => $rf_drawing_name),
+                    array( 'data' => $filters_used),
+                  );
+
+                  pl_reward_claim($raffle_id, $user_uid, 'reward', $filters_used, $rf_drawing_name, 1);
+                  $rewardClaim = FALSE;
+                }
               }
             }
+          } 
+          if ($value1 <> $val_to_claim ){
+            $distinct_ids[] =  $value1;
           }
-        } 
-        if ($value1 <> $val_to_claim ){
-          $distinct_ids[] =  $value1;
         }
+
+        $user_uid = $distinct_ids;
+        unset($distinct_ids);
       }
-
-      $user_uid = $distinct_ids;
-      unset($distinct_ids);
     }
-  }
 
-  if (!empty($tbl_rows)) {
-    $output = theme('table', array( 'header' => $tbl_header, 'rows' => $tbl_rows));
-    $output .= "<div class = 'raffle-list-submit'>";
-    echo $output;
-  }else{
-    echo t('No Result Found');
+    if (!empty($tbl_rows)) {
+      $output = "<div id = 'rf-tbl'>";
+      $output .= theme('table', array( 'header' => $tbl_header, 'rows' => $tbl_rows));
+      $output .= "</div>";
+      $output .= "<input type = 'button' value = 'Print by' id = 'print_raffle'>";
+      echo $output;
+    }
+  } else {
+    echo t('Number of entries for the filters selected is less than number of winners to be selected, please change the filters or reduce the number of winners to be selected');
   }
 }
 

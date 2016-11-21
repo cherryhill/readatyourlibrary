@@ -3,9 +3,59 @@
 
   Drupal.behaviors.play_program_raffle = {
     attach: function (context, settings) {
+    // var outputTable =
+
+    // $("#print_raffle").click(function(){
+    //   window.print();
+
+    var raffleReward = $('#edit-active-raffle').val();
+    var raffleName = $('#edit-name-raffle').val();
+    var winnerNumbers = $('#edit-winners-selected').val();
+
+    if (raffleReward == 0 || raffleName == "" || winnerNumbers == "") {
+      $('#raff_winners').prop('disabled', true);
+    } else {
+      $('#raff_winners').prop('disabled', false);
+    }
+
+    $("#edit-active-raffle").change(function(){
+      var raffleReward = $('#edit-active-raffle').val();
+      var raffleName = $('#edit-name-raffle').val();
+      var winnerNumbers = $('#edit-winners-selected').val();
+      if (raffleReward == 0 || raffleName == "" || winnerNumbers == "") {
+        $('#raff_winners').prop('disabled', true);
+      } else {
+        $('#raff_winners').prop('disabled', false);
+      }      
+    });
+
+    $("#edit-name-raffle").keyup(function(){
+      var raffleReward = $('#edit-active-raffle').val();
+      var raffleName = $('#edit-name-raffle').val();
+      var winnerNumbers = $('#edit-winners-selected').val();
+      if (raffleReward == 0 || raffleName == "" || winnerNumbers == "") {
+        $('#raff_winners').prop('disabled', true);
+      } else {
+        $('#raff_winners').prop('disabled', false);
+      }      
+    });
+
+    $("#edit-winners-selected").keyup(function(){
+      var raffleReward = $('#edit-active-raffle').val();
+      var raffleName = $('#edit-name-raffle').val();
+      var winnerNumbers = $('#edit-winners-selected').val();
+      if (raffleReward == 0 || raffleName == "" || winnerNumbers == "") {
+        $('#raff_winners').prop('disabled', true);
+      } else {
+        $('#raff_winners').prop('disabled', false);
+      }      
+    });
+
       $('#raff_winners').click(function() {
         confirm_rf_winners();
       })
+
+    
 
       function rf_winners_list() {
         var raffle_id = $("#edit-active-raffle option:selected").val();
@@ -38,6 +88,9 @@
           success: function (data) {
             if(raffle_id){
               $('#reward_tbl').html(data);
+              $('#print_raffle').on('click', function() {
+                printDiv('rf-tbl');
+              });
             }
           }
         });
@@ -63,7 +116,17 @@
             }
           }
         });
-      } 
+      }
+      function printDiv(divName) {
+
+        var printContents = document.getElementById(divName).innerHTML;
+        var originalContents = document.body.innerHTML;
+
+        document.body.innerHTML = printContents;
+        window.print();
+        document.body.innerHTML = originalContents;
+      }
+
     }
   }
 })(jQuery);
