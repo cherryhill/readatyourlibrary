@@ -296,11 +296,11 @@ function feature_for_reward_field_default_field_bases() {
           'type' => 'none',
         ),
         'target_bundles' => array(
-          'activity' => 'activity',
+          'reward' => 'reward',
         ),
       ),
       'profile2_private' => FALSE,
-      'target_type' => 'activity',
+      'target_type' => 'reward',
     ),
     'translatable' => 0,
     'type' => 'entityreference',

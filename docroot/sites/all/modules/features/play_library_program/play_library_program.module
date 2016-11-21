@@ -346,7 +346,7 @@ function pl_receieved_rewards($account_uid, $reward_id){
   return $result;
 }
 
-function pl_reward_claim($reward_id, $account_uid, $category, $filters = NULL, $rf_drawing = NULL, $rf_staff_uid = NULL, $rf_staff_notes = NULL, $rf_pickup = NULL){
+function pl_reward_claim($reward_id, $account_uid, $category, $filters = NULL, $rf_drawing = NULL, $raffle_clm = NULL){
 
   if (empty($account_uid)) {
     global $user;
@@ -363,9 +363,7 @@ function pl_reward_claim($reward_id, $account_uid, $category, $filters = NULL, $
     $reward_claim->field_reward_claim_id[LANGUAGE_NONE][0]['target_id'] = $reward_id;
     $reward_claim->field_filters_used[LANGUAGE_NONE][0]['value'] = $filters;
     $reward_claim->field_rf_drawing_name[LANGUAGE_NONE][0]['value'] = $rf_drawing;
-    $reward_claim->field_staff_user[LANGUAGE_NONE][0]['value'] = $rf_staff_uid;
-    $reward_claim->field_staff_notes[LANGUAGE_NONE][0]['value'] = $rf_staff_notes;
-    $reward_claim->field_rf_pickup_date[LANGUAGE_NONE][0]['value'] = $rf_pickup;
+    $reward_claim->field_raffle_claim[LANGUAGE_NONE][0]['value'] = $raffle_clm;
     entity_save('reward', $reward_claim);
 
   }else if ($category == 'raffle_reward') {

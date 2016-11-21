@@ -141,11 +141,11 @@ function generate_staff_form_submit($form, &$form_state) {
   $profile->field_staff_notes['und'][0]['value'] = $staff_note; 
   profile2_save($profile);
   drupal_set_message(t('Notes created.'));
-
-  
 }
 
-
+/**
+ * 
+ */
 function play_program_raffle_menu() {
   $items['raffle'] = array(
     'title' => 'Draw Raffle Winners',
@@ -154,10 +154,10 @@ function play_program_raffle_menu() {
     'access arguments' => array('raffle_access_permission'),
     'type' => MENU_CALLBACK,
   );
-  $items['raffle_filter_form'] = array(
-    'title' => 'Raffle Process',
+  $items['receive-reward/%'] = array(
+    'title' => 'Giving Of Reward',
     'page callback' => 'drupal_get_form',
-    'page arguments' => array('raffle_entry_form'),
+    'page arguments' => array('claim_reward_status',1),
     'access arguments' => array('raffle_access_permission'),
     'type' => MENU_CALLBACK,
   );
@@ -173,9 +173,9 @@ function play_program_raffle_menu() {
     'access arguments' => array('raffle_access_permission'),
     'type' => MENU_CALLBACK,
   );
-  $items['raffle_winner'] = array(
+  $items['raffle_user_list_pdf'] = array(
     'title' => 'Raffle winner Process',
-    'page callback' => 'raffle_winner_ajax',
+    'page callback' => 'raffle_user_list_pdf',
     'access arguments' => array('raffle_access_permission'),
     'type' => MENU_CALLBACK,
   );
@@ -202,7 +202,137 @@ function play_program_raffle_menu() {
 }
 
 function ppr_entery_detailed_list(){
-  return 'Hello';
+  return 'testing';
+}
+
+function raffle_user_list_pdf() {
+  return 'raffle pdf print';
+}
+
+function claim_reward_status($form, &$form_state, $arg) {
+
+  $rid = $arg;
+
+  $query = db_select('eck_reward','rew')
+  ->fields('rew', array('title', 'id','uid'))
+  ->condition('id', $rid,'=')
+  ->execute()
+  ->fetchAssoc();
+
+  $reward_title = $query['title'];
+  $reward_uid = $query['uid'];
+  $reward_id = $query['id'];
+
+  $queryUname = db_select('users','u')
+  ->fields('u',array('name'))
+  ->condition('uid',$reward_uid)
+  ->execute()
+  ->fetchAssoc();
+
+  $queryStatus = db_select('field_data_field_receieving_status','status')
+  ->fields('status',array('field_receieving_status_value'))
+  ->condition('entity_id',$rid)
+  ->execute()
+  ->fetchAssoc();
+
+  $queryNotes = db_select('field_data_field_staff_notes','notes')
+  ->fields('notes',array('field_staff_notes_value'))
+  ->condition('entity_id',$rid)
+  ->execute()
+  ->fetchAssoc();
+
+  $queryDate = db_select('field_data_field_rf_pickup_date','rcDate')
+  ->fields('rcDate',array('field_rf_pickup_date_value'))
+  ->condition('entity_id',$rid)
+  ->execute()
+  ->fetchAssoc();
+
+  $receievingStatus = $queryStatus['field_receieving_status_value'];
+  $receievingNotes = $queryNotes['field_staff_notes_value'];
+  $receievingDate = $queryDate['field_rf_pickup_date_value'];
+  $receievingUser = $queryUname['name'];
+
+  $form['reward_taken'] = array(
+    '#title' => t($reward_title),
+    '#type' => 'checkbox',
+    '#default_value' => isset($receievingStatus) ? $receievingStatus : '0',
+  );
+  
+  $form['username'] = array(
+    '#type' => 'hidden',
+    '#value' => $receievingUser,
+  );
+
+  $form['rid'] = array(
+    '#type' => 'hidden',
+    '#value' => $reward_id,
+  );
+
+  $form['title'] = array(
+    '#type' => 'hidden',
+    '#value' => $reward_title,
+  );
+
+  $form['receieved_date'] = array( 
+    '#type' => 'date_popup', 
+    '#date_format' => 'Y-m-d',
+    '#title' => "Receieved" ,
+    '#default_value' => isset($receievingDate) ? $receievingDate : NULL,
+  ); 
+
+  $form['staff_notes'] = array(
+     '#title' => t('Staff Notes'),
+     '#type' => 'textarea',
+     '#default_value' => isset($receievingNotes) ? $receievingNotes : NULL,
+   );
+
+  $form['submit_button'] = array(
+     '#type' => 'submit',
+     '#value' => t('SAVE'),
+   );
+
+  return $form;
+}
+
+// submit handler for form build in function claim_reward
+function claim_reward_status_submit($form, &$form_state){
+
+  $reward_status = $form_state['values']['reward_taken'];
+  $staff_notes = $form_state['values']['staff_notes'];
+  $reward_rid = $form_state['values']['rid'];
+  $reward_receieved_date = $form_state['values']['receieved_date'];
+  $rewardUser = $form_state['values']['username'];
+
+  if(isset($reward_receieved_date)){
+    $reward_status = '1';
+  }else{
+    $reward_status = '0';
+  }
+
+  db_update('field_data_field_receieving_status')
+    ->fields(array(
+      'field_receieving_status_value' => $reward_status
+      ))
+    ->condition('entity_id',$reward_rid)
+    ->execute();
+
+  db_update('field_data_field_rf_pickup_date')
+    ->fields(array(
+      'field_rf_pickup_date_value' => $reward_receieved_date
+      ))
+    ->condition('entity_id',$reward_rid)
+    ->execute(); 
+    
+  db_update('field_data_field_staff_notes')
+    ->fields(array(
+      'field_staff_notes_value' => $staff_notes
+      ))
+    ->condition('entity_id',$reward_rid)
+    ->execute();
+
+  if ($reward_status) {
+    drupal_set_message(t('@user receives the reward', array('@user' => $rewardUser)), 'status');
+  }
 }
 
 /* hook menu() for raffle winner user list */
@@ -219,7 +349,7 @@ function raffle_winner_user_list() {
   $res = $query->execute()->fetchAll();
   $table_header = array(
     'Sl No.',
-    'Raffle Name',
+    'Raffle Name',  
     'Raffle Winner Name'
   );
   $table_rows = array();
@@ -245,6 +375,7 @@ function raffle_winner_user_list() {
  * function for getting all the active raffle rewards
  */
 function ppr_active_rafle_list(){
+
   $query = new EntityFieldQuery();
   $query->entityCondition('entity_type','reward');
   $query->entityCondition('bundle','reward');
@@ -262,7 +393,6 @@ function ppr_active_rafle_list(){
     $options_raffle[$raffle->id] = $raffle->title;
   }
   return $options_raffle;
-  //echo '<pre>'; print_r($options_raffle);
 }
 
 /**
@@ -270,6 +400,7 @@ function ppr_active_rafle_list(){
  */
 function ppr_raffle_entry_process($form, &$form_state) {
 
+  $url = $GLOBALS['base_url'];
   $school = _get_options('schools');
   $library_branch = _get_options('library_branch');
   $grade = _get_options('grade');
@@ -281,7 +412,7 @@ function ppr_raffle_entry_process($form, &$form_state) {
 
   $form['raffle_list'] = array(
     '#type' =>'markup',
-    '#markup' => t("<a href = '#'>Show list of all the winners in this raffle</a>"),
+    '#markup' => t("<a href = ".$url."/raffle-winners>Show list of all the winners in this raffle</a>"),
   );
 
   $form['name_raffle'] = array(
@@ -293,18 +424,21 @@ function ppr_raffle_entry_process($form, &$form_state) {
   $form['library_branch'] = array(
     '#title' => t('Library Branch'),
     '#type' => 'select',
+    '#multiple' => TRUE,
     '#options' => $library_branch, 
   );
 
   $form['school'] = array(
     '#title' => t('School'),
     '#type' => 'select',
+    '#multiple' => TRUE,
     '#options' => $school, 
   );
 
   $form['grade'] = array(
     '#title' => t('Grade'),
     '#type' => 'select',
+    '#multiple' => TRUE,
     '#options' => $grade, 
   );
 
@@ -356,12 +490,6 @@ function ppr_raffle_entry_process($form, &$form_state) {
 
 }
 
-/* For rendering the raffle filter form */
-
-function render_raffle_filter_form($form, &$form_state) {
-  echo drupal_render(drupal_get_form('raffle_entry_form'));
-}
-
 function raffle_winners_tbl($uname, $fname, $lname, $bday, $email, $phn_number, $rf_drawing_name, $filtr_used) {
   $tbl_rows[] = array(
     array( 'data' => $uname),
@@ -377,101 +505,114 @@ function raffle_winners_tbl($uname, $fname, $lname, $bday, $email, $phn_number, 
 }
 
 
-function getTable($result , $raffle_id, $rf_drawing_name, $winners_selected, $rf_grade, $rf_library, $rf_sch, $rf_all, $rf_this) {
-  $arraySize = sizeof($result);
-  
-  for( $i = 0; $i < $arraySize; $i++) {
-
-    $user_profile = profile2_load_by_user($result[$i]->uid, 'main');
-    $user_branch = $user_profile->field_library_branch['und'][0]['tid'];
-    $user_grade = $user_profile->field_user_grade['und'][0]['tid'];
-    $user_school = $user_profile->field_school['und'][0]['tid'];
-    $fname = $user_profile->field_first_name['und'][0]['value'];
-    $lname = $user_profile->field_last_name['und'][0]['value'];
-    $bday = $user_profile->field_user_birthday['und'][0]['value'];
-    $email = $user_profile->field_email['und'][0]['email'];
-    $phn_number = $user_profile->field_phone_number['und'][0]['value'];
-    $time_stamp_dob = strtotime($bday);
-    $current_time = time();
-    $user_age = floor(($current_time - $time_stamp_dob) / (60*60*24*365));
-
-    $rf_library_name = taxonomy_term_load($rf_library);
-    $rf_library_name = $rf_library_name->name;
-
-    $rf_sch_name = taxonomy_term_load($rf_sch);
-    $rf_sch_name = $rf_sch_name->name;
-
-    $rf_grade_name = taxonomy_term_load($rf_grade);
-    $rf_grade_name = $rf_grade_name->name;
-
-    $filters_used = $rf_library_name.' ,'.$rf_sch_name.' ,'.$rf_grade_name;
-
-    $addEntry = FALSE;
-
-    $raffle_id = $result[$i]->id;
-
-    $u_age = FALSE;
-    if(($rf_dob_sdate >= $user_age) && ($rf_dob_edate <= $user_age)){
-      $u_age = TRUE;
-    }
-
-    if($user_branch == $rf_library && $rf_sch == NULL && $rf_grade == NULL && $u_age == FALSE){ //1
-      $addEntry = TRUE;
-    }else if ($rf_library == NULL && $rf_sch === $user_school && $rf_grade == NULL && $u_age == FALSE){ //2
-      $addEntry = TRUE;
-    }else if ($rf_library == NULL && $rf_sch == NULL && $rf_grade == $user_grade && $u_age == FALSE){ //3
-      $addEntry = TRUE;
-    }else if ($rf_library == NULL && $rf_sch == NULL && $rf_grade == NULL && $u_age == TRUE){ //4
-      $addEntry = TRUE;
-    }else if ($user_branch == $rf_library && $rf_sch == $user_school && $rf_grade == NULL && $u_age == FALSE){ //5
-      $addEntry = TRUE;
-    }else if ($user_branch == $rf_library && $rf_sch == NULL && $rf_grade == $user_grade && $u_age == FALSE){ //6
-      $addEntry = TRUE;
-    }else if ($user_branch == $rf_library && $rf_sch == NULL && $rf_grade == NULL && $u_age == TRUE){ //7
-      $addEntry = TRUE;
-    }else if ($rf_library == NULL && $rf_sch == NULL && $rf_grade == $user_grade && $u_age == TRUE){ //8
-      $addEntry = TRUE;
-    }else if ($rf_library == NULL && $rf_sch == $user_school && $rf_grade == NULL && $u_age == TRUE){ //9
-      $addEntry = TRUE;
-    }else if ($user_branch == $rf_library && $rf_sch == $user_school && $rf_grade == $user_grade && $u_age == FALSE){ //10
-      $addEntry = TRUE;
-    }else if ($user_branch == $rf_library && $rf_sch == NULL && $rf_grade == $user_grade && $u_age == TRUE){ //11
-      $addEntry = TRUE;
-    }else if ($user_branch == $rf_library && $rf_sch == $user_school && $rf_grade == NULL && $u_age == TRUE){ //12
-      $addEntry = TRUE;
-    }else if ($rf_library == NULL && $rf_sch == $user_school && $rf_grade == $user_grade && $u_age == TRUE){ //13
-      $addEntry = TRUE;
-    }else if ($user_branch == $rf_library && $rf_sch == $user_school && $rf_grade == $user_grade && $u_age == TRUE){ //14
-      $addEntry = TRUE;
-    }else if ($rf_library == NULL && $rf_sch == NULL && $rf_grade == NULL && $u_age == FALSE){ //15
-      $addEntry = FALSE;
-    }
-
-    if ($addEntry) {
-      $realDeal[] = array(
-        $user_ki_ids = array(
-          'uid' => $result[$i]->uid,
-          'rew_id' => $result[$i]->id
-        ),
-        $tbl_rows[] = array(
-          array( 'data' => $result[$i]->name),
-          array( 'data' => $fname),
-          array( 'data' => $lname),
-          array( 'data' => $bday),
-          array( 'data' => $email),
-          array( 'data' => $phn_number),
-          array( 'data' => $rf_drawing_name),
-          array( 'data' => $filters_used),
-        )
-      );
-    }
-  }
-  return $realDeal;
-}
 
 /* Raffle user list by filter form */
 
 function raffle_user_list($form, &$form_state) {
+
+  $raffle_id = $_POST['raffle_id'];
+  $rf_drawing_name = $_POST['rf_drawing_name'];
+  $winners_selected = $_POST['no_needed'];
+  $rf_grade = $_POST['rf_grade'];
+  $rf_library = $_POST['rf_library'];
+  $rf_sch = $_POST['rf_sch'];
+  $rf_all = $_POST['rf_all'];
+  $rf_this = $_POST['rf_this'];
+  $rf_dob_sdate = $_POST['rf_dob_sdate'];
+  $rf_dob_edate = $_POST['rf_dob_edate'];
+
+  $library_id = explode(',', $rf_library);
+  $school_id = explode(',', $rf_sch);
+  $grade_id = explode(',', $rf_grade);
+
+  // $user_sch = array();
+
+  if(!empty($library_id)) {
+    foreach ($library_id as $value) {
+      $user_lib = taxonomy_term_load($value);
+      $user_lb[] = $user_lib->name;   
+    }
+    $branchFilter = implode(',', $user_lb);
+  }
+  if(!empty($school_id)) {
+    foreach ($school_id as $value) {
+      $user_school = taxonomy_term_load($value);
+      $user_sch[] = $user_school->name;   
+    }
+    $schoolFilter = implode(',', $user_sch);
+  }
+  if(!empty($grade_id)) {
+    foreach ($grade_id as $value) {
+      $user_grd = taxonomy_term_load($value);
+      $user_grd[] = $user_grd->name;   
+    }
+    $gradeFilter = implode(',', $user_grd);
+  }
+
+
+
+  $query = db_select('eck_reward','eck');
+  $query->join('field_data_field_rf_receieved_reward','rf_win','eck.id = rf_win.entity_id');
+  $query->join('field_data_field_raffle_claim_id','claim','eck.id = claim.entity_id');
+  $query->join('field_data_field_raffle_drawing_name','rf_draw','eck.id = rf_draw.entity_id');
+  $query->join('users','u','u.uid = eck.uid');
+  $query->join('profile','pf','pf.uid = u.uid');
+
+  if (!empty($library_id[0])){
+    $query->join('field_data_field_library_branch','lb_brnch','lb_brnch.entity_id = pf.pid');
+  }
+
+  if (!empty($school_id[0])) {
+    $query->join('field_data_field_school','sch','sch.entity_id = pf.pid');
+  }
+
+  if (!empty($grade_id[0])) {
+    $query->join('field_data_field_user_grade','grade','grade.entity_id = pf.pid');
+  }
+
+  $query->join('field_data_field_first_name','fname','fname.entity_id = pf.pid');
+  $query->join('field_data_field_last_name','lname','lname.entity_id = pf.pid');
+  $query->join('field_data_field_user_birthday','bday','bday.entity_id = pf.pid');
+  $query->join('field_data_field_phone_number','c_no','c_no.entity_id = pf.pid');
+  $query->fields('u', array('name','uid'));
+  $query->fields('rf_win',array('field_rf_receieved_reward_value'));
+  $query->fields('rf_draw',array('field_raffle_drawing_name_value'));
+  $query->fields('pf', array('pid'));
+  $query->fields('eck', array('id'));
+
+  if (!empty($school_id[0])) {
+    $query->fields('sch', array('field_school_tid'));
+  }
+
+  if (!empty($grade_id[0])) {
+    $query->fields('grade', array('field_user_grade_tid'));
+  }
+
+  if (!empty($library_id[0])){
+    $query->fields('lb_brnch', array('field_library_branch_tid'));
+  }
+
+  $query->fields('fname', array('field_first_name_value'));
+  $query->fields('lname', array('field_last_name_value'));
+  $query->fields('bday', array('field_user_birthday_value'));
+  $query->fields('c_no', array('field_phone_number_value'));
+  $query->condition('eck.type','raffle_claim');
+  $query->condition('claim.field_raffle_claim_id_target_id', $raffle_id);
+
+  if (!empty($library_id[0])) {
+    $query->condition('lb_brnch.field_library_branch_tid',$library_id);
+  }
+  if (!empty($school_id[0])) {
+    $query->condition('sch.field_school_tid',$school_id);
+  }
+  if (!empty($grade_id[0])) {
+    $query->condition('grade.field_user_grade_tid',$grade_id);
+  }
+
+  $query->condition('rf_win.field_rf_receieved_reward_value',array(0,1));
+  $result_all = $query->execute()->fetchAll();
+
+  // echo '<pre>'; print_r($result_all); die();
 
   $tbl_header = array(
     'Username',
@@ -484,87 +625,110 @@ function raffle_user_list($form, &$form_state) {
     'Filters Used'
   );
 
-  $raffle_id = $_POST['raffle_id'];
-  $rf_drawing_name = $_POST['rf_drawing_name'];
-  $winners_selected = $_POST['no_needed'];
-  $rf_grade = $_POST['rf_grade'];
-  $rf_library = $_POST['rf_library'];
-  $rf_sch = $_POST['rf_sch'];
-  $rf_all = $_POST['rf_all'];
-  $rf_this = $_POST['rf_this'];
+  foreach ($result_all as $key => $value) {
 
-  $query = db_select('eck_reward','eck');
-  $query->join('field_data_field_rf_receieved_reward','rf_win','eck.id = rf_win.entity_id');
-  $query->join('field_data_field_raffle_claim_id','claim','eck.id = claim.entity_id');
-  $query->join('users','u','u.uid = eck.uid');
-  $query->fields('u', array('name','uid'));
-  $query->fields('eck', array('id'));
-  $query->condition('eck.type','raffle_claim');
-  $query->condition('rf_win.field_rf_receieved_reward_value', 0);
-  $query->condition('claim.field_raffle_claim_id_target_id', $raffle_id);
-  $query->distinct('u.uid');
-  $result = $query->execute()->fetchAll();
+    $rewardStatus = $value->field_rf_receieved_reward_value;
+    $drawName = $value->field_raffle_drawing_name_value;
 
-  $query_inc_allWinners = db_select('eck_reward','eck');
-  $query_inc_allWinners->join('field_data_field_raffle_claim_id','claim','eck.id = claim.entity_id');
-  $query_inc_allWinners->join('users','u','u.uid = eck.uid');
-  $query_inc_allWinners->fields('u', array('name','uid'));
-  $query_inc_allWinners->fields('eck', array('id'));
-  $query_inc_allWinners->condition('eck.type','raffle_claim');
-  $query_inc_allWinners->condition('claim.field_raffle_claim_id_target_id', $raffle_id);
-  $query_inc_allWinners->distinct('u.uid');
-  $result_inc_allWinners = $query_inc_allWinners->execute()->fetchAll();
-
-  $query_draw = db_select('eck_reward','eck');
-  $query_draw->join('field_data_field_raffle_claim_id','claim','eck.id = claim.entity_id');
-  $query_draw->join('field_data_field_raffle_drawing_name','rf_draw','eck.id = rf_draw.entity_id');
-  $query_draw->join('users','u','u.uid = eck.uid');
-  $query_draw->fields('u', array('name','uid'));
-  $query_draw->fields('eck', array('id'));
-  $query_draw->condition('eck.type','raffle_claim');
-  $query_draw->condition('claim.field_raffle_claim_id_target_id', $raffle_id);
-  $query_draw->condition('rf_draw.field_raffle_drawing_name_value', $rf_drawing_name);
-  $query_draw->distinct('u.uid');
-  $result_draw = $query_draw->execute()->fetchAll();
-
-  $query_all = db_select('eck_reward','eck');
-  $query_all->join('field_data_field_raffle_claim_id','claim','eck.id = claim.entity_id');
-  $query_all->join('field_data_field_rf_receieved_reward','rf_win','eck.id = rf_win.entity_id');
-  $query_all->join('users','u','u.uid = eck.uid');
-  $query_all->fields('u', array('name','uid'));
-  $query_all->fields('eck', array('id'));
-  $query_all->condition('eck.type','raffle_claim');
-  $query_all->condition('claim.field_raffle_claim_id_target_id', $raffle_id);
-  $query_all->condition('rf_win.field_rf_receieved_reward_value', '0');
-  $query_all->distinct('u.uid');
-  $result_win = $query_all->execute()->fetchAll();
-  
-  if($rf_all) {
-    $result = $result_inc_allWinners;
-  } else if ($rf_this) {
-    $result = $result_draw;
-  } else {
-    $result = $result_win;
+    if ($rf_all) {
+      if ($rewardStatus == 0 || $rewardStatus == 1) {
+        $result[] = $value;
+      }
+    } else if ($rf_this) {
+      if ($drawName == $rf_drawing_name) {
+        $result[] = $value;
+      }
+    } else {
+      if ($rewardStatus == 0) {
+        $result[] = $value;
+      }
+    }
   }
 
-  $tbl_rows = getTable($result, $raffle_id, $rf_drawing_name, $winners_selected, $rf_grade, $rf_library, $rf_sch, $rf_all, $rf_this);
-  $arraySizeRows = sizeof($tbl_rows);
-  $arraySizeRows--;
-  $randomValues = UniqueRandomNumbersWithinRange(0,$arraySizeRows,$winners_selected);
-
-  foreach ($randomValues as $key => $value) {
-
-    $tbl_row[] = $tbl_rows[$value][1];
-
-    $uid = $tbl_rows[$value][0]['uid'];
-    $rw_id = $tbl_rows[$value][0]['rew_id'];
-
-    pl_reward_claim($raffle_id, $uid, 'reward', $filters_used, $rf_drawing_name);
-    update_raffle_winner_tbl($rw_id, $rf_drawing_name);
+  $arraySize = sizeof($result);
+    
+  foreach ($result as $value) {
+    $user_uid[] = $value->uid;
   }
-  
+ 
+  for ($i = 0; $i < $winners_selected; $i++){
+    if (sizeof($user_uid) > 0){
+      $nn = rand(0, sizeof($user_uid)-1);
+      $val_to_claim = $user_uid[$nn];
+
+      $rewardClaim = TRUE;
+      foreach ($user_uid as $value1) {
+        foreach ($result as $value) {
+
+          if($value->uid == $val_to_claim){
+            
+            $userEntityId = $value->id;
+            update_raffle_winner_tbl($userEntityId, $rf_drawing_name);
+            if ($rewardClaim) {
+              $profile_id = $value->pid;
+              // email is optional, getting user email
+              $query_email = db_select('field_data_field_email','em');
+              $query_email->condition('em.entity_id',$profile_id);
+              $query_email->fields('em',array('field_email_email'));
+              $result_email = $query_email->execute()->fetchAssoc();
+
+              $user_mail = $result_email['field_email_email'];
+
+              $school_tid = $value->field_school_tid;
+              $branch_tid = $value->field_library_branch_tid;
+              $grade_tid = $value->field_user_grade_tid;
+              $user_bday = $value->field_user_birthday_value;
+
+              $time_stamp_dob = strtotime($user_bday);
+              $current_time = time();
+              $user_age = floor(($current_time - $time_stamp_dob) / (60*60*24*365));
+
+              $u_age = FALSE;
+              if(($rf_dob_sdate <= $user_age) && ($user_age <= $rf_dob_edate)) {
+                $u_age = TRUE;
+              } else if(empty($rf_dob_edate) || empty($rf_dob_sdate)) {
+                $u_age = TRUE;
+              }
+
+              $user_uid = $value->uid;
+              $username = $value->name;
+              $user_fname = $value->field_first_name_value;
+              $user_lname = $value->field_last_name_value;
+              $user_age = $user_age;
+              $user_email = $value->field_email_email;
+              $user_phn_number = $value->field_phone_number_value;
+              $filters_used = $branchFilter .' '.$schoolFilter .' '.$gradeFilter;
+
+              if ($u_age){
+                $tbl_rows[] = array(
+                  array( 'data' => $username),
+                  array( 'data' => $user_fname),
+                  array( 'data' => $user_lname),
+                  array( 'data' => $user_age),
+                  array( 'data' => $user_mail),
+                  array( 'data' => $user_phn_number),
+                  array( 'data' => $rf_drawing_name),
+                  array( 'data' => $filters_used),
+                );
+
+                pl_reward_claim($raffle_id, $user_uid, 'reward', $filters_used, $rf_drawing_name, 1);
+                $rewardClaim = FALSE;
+              }
+            }
+          }
+        } 
+        if ($value1 <> $val_to_claim ){
+          $distinct_ids[] =  $value1;
+        }
+      }
+
+      $user_uid = $distinct_ids;
+      unset($distinct_ids);
+    }
+  }
+
   if (!empty($tbl_rows)) {
-    $output = theme('table', array( 'header' => $tbl_header, 'rows' => $tbl_row));
+    $output = theme('table', array( 'header' => $tbl_header, 'rows' => $tbl_rows));
     $output .= "<div class = 'raffle-list-submit'>";
     echo $output;
   }else{
@@ -572,7 +736,9 @@ function raffle_user_list($form, &$form_state) {
   }
 }
 
+
 function update_raffle_winner_tbl($raffle_id, $rf_drawing_name) {
+
   db_update('field_data_field_rf_receieved_reward')
     ->fields(array('field_rf_receieved_reward_value' => 1))
     ->condition('entity_id', $raffle_id)
@@ -585,9 +751,9 @@ function update_raffle_winner_tbl($raffle_id, $rf_drawing_name) {
 }
 
 function UniqueRandomNumbersWithinRange($min, $max, $quantity) {
-    $numbers = range($min, $max);
-    shuffle($numbers);
-    return array_slice($numbers, 0, $quantity);
+  $numbers = range($min, $max);
+  shuffle($numbers);
+  return array_slice($numbers, 0, $quantity);
 }
 
 function generate_csv_of_raffle_user() {
@@ -815,47 +981,6 @@ function _get_options($vocab_name) {
     $options[$value->tid] = $value->name;
   }
   return $options;
-}
-
-
-/* active raffle user list  */
-
-function raffle_entry_form($form, &$form_state) {
-  $school_options = _get_options('schools');
-  $organization_options = _get_options('organization');
-  $librarybranches_options = _get_options('library_branches');
-  $grade_options = _get_options('grade');
-
-  $form['school'] = array(
-    '#title' => t('School'),
-    '#type' => 'select',
-    '#options' => $school_options, 
-  );
-  $form['organization'] = array(
-    '#title' => t('Organization'),
-    '#type' => 'select',
-    '#options' => $organization_options,
-  ); 
-  $form['library_branch'] = array(
-    '#title' => t('Library Branch'),
-    '#type' => 'select',
-    '#options' => $librarybranches_options,
-  );
-  $form['grade'] = array(
-    '#title' => t('Grade'),
-    '#type' => 'select',
-    '#options' => $grade_options,
-  );
-  $form['button'] = array(
-    '#value' => 'Submit',
-    '#type' => 'button',
-    '#id' => 'raffle_form_button',
-  );
-  
-  return $form;
-
-
-  
 }
 
 

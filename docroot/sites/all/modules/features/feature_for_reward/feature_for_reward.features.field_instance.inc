@@ -439,7 +439,7 @@ function feature_for_reward_field_default_field_instances() {
           'link' => FALSE,
         ),
         'type' => 'entityreference_label',
-        'weight' => 0,
+        'weight' => 3,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -468,7 +468,7 @@ function feature_for_reward_field_default_field_instances() {
         'apply_chosen' => '',
       ),
       'type' => 'options_select',
-      'weight' => 1,
+      'weight' => 0,
     ),
     'workbench_access_field' => 0,
   );
@@ -476,7 +476,11 @@ function feature_for_reward_field_default_field_instances() {
   // Exported field_instance: 'reward-raffle_claim-field_raffle_drawing_name'.
   $field_instances['reward-raffle_claim-field_raffle_drawing_name'] = array(
     'bundle' => 'raffle_claim',
-    'default_value' => NULL,
+    'default_value' => array(
+      0 => array(
+        'value' => 'NULL',
+      ),
+    ),
     'deleted' => 0,
     'description' => '',
     'display' => array(
@@ -540,7 +544,7 @@ function feature_for_reward_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 3,
+      'weight' => 2,
     ),
     'workbench_access_field' => 0,
   );
@@ -592,7 +596,7 @@ function feature_for_reward_field_default_field_instances() {
       'module' => 'number',
       'settings' => array(),
       'type' => 'number',
-      'weight' => 2,
+      'weight' => 1,
     ),
     'workbench_access_field' => 0,
   );
