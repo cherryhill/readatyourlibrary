@@ -22,8 +22,14 @@ function feature_for_reward_eck_bundle_info() {
       'machine_name' => 'reward_raffle_claim',
       'entity_type' => 'reward',
       'name' => 'raffle_claim',
-      'label' => 'Raffle Claim',
-      'config' => array(),
+      'label' => 'Raffle Entry',
+      'config' => array(
+        'managed_properties' => array(
+          'title' => 0,
+          'uid' => 0,
+          'created' => 0,
+        ),
+      ),
     ),
   );
   return $items;

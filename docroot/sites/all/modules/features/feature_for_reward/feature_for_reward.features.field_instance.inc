@@ -60,6 +60,7 @@ function feature_for_reward_field_default_field_instances() {
           ),
         ),
       ),
+      'entity_translation_sync' => FALSE,
       'linkit' => array(
         'enable' => 0,
         'insert_plugin' => '',
@@ -129,6 +130,7 @@ function feature_for_reward_field_default_field_instances() {
           ),
         ),
       ),
+      'entity_translation_sync' => FALSE,
       'linkit' => array(
         'enable' => 0,
         'insert_plugin' => '',
@@ -198,6 +200,7 @@ function feature_for_reward_field_default_field_instances() {
           ),
         ),
       ),
+      'entity_translation_sync' => FALSE,
       'linkit' => array(
         'enable' => 0,
         'insert_plugin' => '',
@@ -267,6 +270,7 @@ function feature_for_reward_field_default_field_instances() {
           ),
         ),
       ),
+      'entity_translation_sync' => FALSE,
       'linkit' => array(
         'enable' => 0,
         'insert_plugin' => '',
@@ -336,6 +340,7 @@ function feature_for_reward_field_default_field_instances() {
           ),
         ),
       ),
+      'entity_translation_sync' => FALSE,
       'linkit' => array(
         'enable' => 0,
         'insert_plugin' => '',
@@ -405,6 +410,7 @@ function feature_for_reward_field_default_field_instances() {
           ),
         ),
       ),
+      'entity_translation_sync' => FALSE,
       'linkit' => array(
         'enable' => 0,
         'insert_plugin' => '',
@@ -459,6 +465,7 @@ function feature_for_reward_field_default_field_instances() {
           'status' => 0,
         ),
       ),
+      'entity_translation_sync' => FALSE,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -530,6 +537,7 @@ function feature_for_reward_field_default_field_instances() {
           ),
         ),
       ),
+      'entity_translation_sync' => FALSE,
       'linkit' => array(
         'enable' => 0,
         'insert_plugin' => '',
@@ -585,6 +593,7 @@ function feature_for_reward_field_default_field_instances() {
     'label' => 'receieved_reward',
     'required' => 0,
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'max' => '',
       'min' => '',
       'prefix' => '',
@@ -637,6 +646,7 @@ function feature_for_reward_field_default_field_instances() {
           'status' => 0,
         ),
       ),
+      'entity_translation_sync' => FALSE,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -698,6 +708,7 @@ function feature_for_reward_field_default_field_instances() {
         'prefix' => '',
         'suffix' => '',
       ),
+      'entity_translation_sync' => FALSE,
       'field' => array(
         'prefix' => '',
         'suffix' => '',
@@ -755,6 +766,7 @@ function feature_for_reward_field_default_field_instances() {
     'label' => 'Category',
     'required' => 1,
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -807,6 +819,7 @@ function feature_for_reward_field_default_field_instances() {
       'default_value2' => 'same',
       'default_value_code' => '',
       'default_value_code2' => '',
+      'entity_translation_sync' => FALSE,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -860,6 +873,7 @@ function feature_for_reward_field_default_field_instances() {
     'label' => 'If yes, maximum number of times a user can get this reward',
     'required' => 0,
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'max' => '',
       'min' => '',
       'prefix' => '',
@@ -909,6 +923,7 @@ function feature_for_reward_field_default_field_instances() {
     'label' => 'Points to get reward or raffle ticket',
     'required' => 1,
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'max' => '',
       'min' => '',
       'prefix' => '',
@@ -959,6 +974,7 @@ function feature_for_reward_field_default_field_instances() {
     'label' => 'Raffle Ticket Notifications',
     'required' => 0,
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -1003,6 +1019,7 @@ function feature_for_reward_field_default_field_instances() {
     'settings' => array(
       'alt_field' => 0,
       'default_image' => 0,
+      'entity_translation_sync' => FALSE,
       'file_directory' => '',
       'file_extensions' => 'png gif jpg jpeg',
       'max_filesize' => '',
@@ -1080,6 +1097,7 @@ function feature_for_reward_field_default_field_instances() {
     'label' => 'Raffle Prize or Reward Notifications',
     'required' => 0,
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -1124,6 +1142,7 @@ function feature_for_reward_field_default_field_instances() {
     'settings' => array(
       'alt_field' => 0,
       'default_image' => 0,
+      'entity_translation_sync' => FALSE,
       'file_directory' => '',
       'file_extensions' => 'png gif jpg jpeg',
       'max_filesize' => '',
@@ -1196,6 +1215,7 @@ function feature_for_reward_field_default_field_instances() {
     'label' => 'Repeatable',
     'required' => 1,
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -1238,6 +1258,7 @@ function feature_for_reward_field_default_field_instances() {
     'label' => 'Roles which can receive this reward or raffle ticket',
     'required' => 1,
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -1283,6 +1304,7 @@ function feature_for_reward_field_default_field_instances() {
     'label' => 'Status of reward or raffle',
     'required' => 0,
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -1324,6 +1346,7 @@ function feature_for_reward_field_default_field_instances() {
     'label' => 'Type of reward/raffle prize',
     'required' => 1,
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'user_register_form' => FALSE,
     ),
     'widget' => array(

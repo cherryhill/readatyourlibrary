@@ -28,6 +28,7 @@ function feature_for_reward_field_default_field_bases() {
     'locked' => 0,
     'module' => 'entityreference',
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'handler' => 'base',
       'handler_settings' => array(
         'behaviors' => array(
@@ -63,6 +64,7 @@ function feature_for_reward_field_default_field_bases() {
     'locked' => 0,
     'module' => 'range',
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'profile2_private' => FALSE,
     ),
     'translatable' => 0,
@@ -92,6 +94,7 @@ function feature_for_reward_field_default_field_bases() {
         'raffle_reward' => 'Raffle Ticket & Prize',
       ),
       'allowed_values_function' => '',
+      'entity_translation_sync' => FALSE,
       'profile2_private' => FALSE,
     ),
     'translatable' => 0,
@@ -114,6 +117,7 @@ function feature_for_reward_field_default_field_bases() {
     'settings' => array(
       'cache_count' => 4,
       'cache_enabled' => 0,
+      'entity_translation_sync' => FALSE,
       'granularity' => array(
         'day' => 'day',
         'hour' => 0,
@@ -145,6 +149,7 @@ function feature_for_reward_field_default_field_bases() {
     'locked' => 0,
     'module' => 'number',
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'profile2_private' => FALSE,
     ),
     'translatable' => 0,
@@ -169,6 +174,7 @@ function feature_for_reward_field_default_field_bases() {
     'locked' => 0,
     'module' => 'text',
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'profile2_private' => FALSE,
     ),
     'translatable' => 0,
@@ -193,6 +199,7 @@ function feature_for_reward_field_default_field_bases() {
     'locked' => 0,
     'module' => 'text',
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'profile2_private' => FALSE,
     ),
     'translatable' => 0,
@@ -217,6 +224,7 @@ function feature_for_reward_field_default_field_bases() {
     'locked' => 0,
     'module' => 'text',
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'profile2_private' => FALSE,
     ),
     'translatable' => 0,
@@ -241,6 +249,7 @@ function feature_for_reward_field_default_field_bases() {
     'locked' => 0,
     'module' => 'text',
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'profile2_private' => FALSE,
     ),
     'translatable' => 0,
@@ -261,6 +270,7 @@ function feature_for_reward_field_default_field_bases() {
     'locked' => 0,
     'module' => 'number',
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'profile2_private' => FALSE,
     ),
     'translatable' => 0,
@@ -285,6 +295,7 @@ function feature_for_reward_field_default_field_bases() {
     'locked' => 0,
     'module' => 'entityreference',
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'handler' => 'base',
       'handler_settings' => array(
         'behaviors' => array(
@@ -324,6 +335,7 @@ function feature_for_reward_field_default_field_bases() {
     'locked' => 0,
     'module' => 'text',
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'profile2_private' => FALSE,
     ),
     'translatable' => 0,
@@ -348,6 +360,7 @@ function feature_for_reward_field_default_field_bases() {
     'locked' => 0,
     'module' => 'text',
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'max_length' => 255,
       'profile2_private' => FALSE,
     ),
@@ -373,6 +386,7 @@ function feature_for_reward_field_default_field_bases() {
     'locked' => 0,
     'module' => 'field_collection',
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'hide_blank_items' => 1,
       'path' => '',
       'profile2_private' => FALSE,
@@ -399,6 +413,7 @@ function feature_for_reward_field_default_field_bases() {
     'locked' => 0,
     'module' => 'text',
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'profile2_private' => FALSE,
     ),
     'translatable' => 0,
@@ -424,6 +439,9 @@ function feature_for_reward_field_default_field_bases() {
     'module' => 'image',
     'settings' => array(
       'default_image' => 0,
+      'entity_translation_sync' => array(
+        0 => 'fid',
+      ),
       'profile2_private' => FALSE,
       'uri_scheme' => 'public',
     ),
@@ -449,6 +467,7 @@ function feature_for_reward_field_default_field_bases() {
     'locked' => 0,
     'module' => 'field_collection',
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'hide_blank_items' => 1,
       'path' => '',
       'profile2_private' => FALSE,
@@ -476,6 +495,9 @@ function feature_for_reward_field_default_field_bases() {
     'module' => 'image',
     'settings' => array(
       'default_image' => 0,
+      'entity_translation_sync' => array(
+        0 => 'fid',
+      ),
       'profile2_private' => FALSE,
       'uri_scheme' => 'public',
     ),
@@ -506,6 +528,7 @@ function feature_for_reward_field_default_field_bases() {
         1 => 'Yes',
       ),
       'allowed_values_function' => '',
+      'entity_translation_sync' => FALSE,
       'profile2_private' => FALSE,
     ),
     'translatable' => 0,
@@ -526,6 +549,7 @@ function feature_for_reward_field_default_field_bases() {
     'locked' => 0,
     'module' => 'number',
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'profile2_private' => FALSE,
     ),
     'translatable' => 0,
@@ -546,6 +570,7 @@ function feature_for_reward_field_default_field_bases() {
     'locked' => 0,
     'module' => 'role_field',
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'exclusive' => 0,
       'profile2_private' => FALSE,
       'roles' => array(
@@ -583,6 +608,7 @@ function feature_for_reward_field_default_field_bases() {
         'active' => 'Active',
       ),
       'allowed_values_function' => '',
+      'entity_translation_sync' => FALSE,
       'profile2_private' => FALSE,
     ),
     'translatable' => 0,
@@ -613,6 +639,7 @@ function feature_for_reward_field_default_field_bases() {
           'parent' => 0,
         ),
       ),
+      'entity_translation_sync' => FALSE,
       'profile2_private' => FALSE,
     ),
     'translatable' => 0,
