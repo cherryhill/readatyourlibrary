@@ -38,7 +38,11 @@ function play_library_program_eck_bundle_info() {
           'title' => 'title',
           'uid' => 0,
           'created' => 0,
+          'activity_points' => 0,
+          'changed' => 0,
+          'language' => 0,
         ),
+        'multilingual' => 1,
       ),
     ),
     'activity_activity_entry' => array(
@@ -46,7 +50,17 @@ function play_library_program_eck_bundle_info() {
       'entity_type' => 'activity',
       'name' => 'activity_entry',
       'label' => 'Activity Entry',
-      'config' => array(),
+      'config' => array(
+        'managed_properties' => array(
+          'title' => 0,
+          'uid' => 0,
+          'created' => 0,
+          'activity_points' => 0,
+          'changed' => 0,
+          'language' => 0,
+        ),
+        'multilingual' => 1,
+      ),
     ),
     'badge_badge' => array(
       'machine_name' => 'badge_badge',
@@ -142,6 +156,16 @@ function play_library_program_eck_entity_type_info() {
           'label' => 'Activity points',
           'type' => 'integer',
           'behavior' => '',
+        ),
+        'changed' => array(
+          'label' => 'Changed',
+          'type' => 'integer',
+          'behavior' => 'changed',
+        ),
+        'language' => array(
+          'label' => 'Entity language',
+          'type' => 'language',
+          'behavior' => 'language',
         ),
       ),
     ),
