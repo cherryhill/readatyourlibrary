@@ -22,7 +22,7 @@ function feature_for_raffle_winners_list_views_default_views() {
 
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
-  $handler->display->display_options['title'] = 'Raffle Winners';
+  $handler->display->display_options['title'] = 'Reward Winners';
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['access']['type'] = 'none';
   $handler->display->display_options['cache']['type'] = 'none';
@@ -122,34 +122,94 @@ function feature_for_raffle_winners_list_views_default_views() {
   $handler->display->display_options['fields']['field_rf_drawing_name']['id'] = 'field_rf_drawing_name';
   $handler->display->display_options['fields']['field_rf_drawing_name']['table'] = 'field_data_field_rf_drawing_name';
   $handler->display->display_options['fields']['field_rf_drawing_name']['field'] = 'field_rf_drawing_name';
+  /* Field: Reward: Filters Used */
+  $handler->display->display_options['fields']['field_filters_used']['id'] = 'field_filters_used';
+  $handler->display->display_options['fields']['field_filters_used']['table'] = 'field_data_field_filters_used';
+  $handler->display->display_options['fields']['field_filters_used']['field'] = 'field_filters_used';
   /* Field: Global: PHP */
-  $handler->display->display_options['fields']['php']['id'] = 'php';
-  $handler->display->display_options['fields']['php']['table'] = 'views';
-  $handler->display->display_options['fields']['php']['field'] = 'php';
-  $handler->display->display_options['fields']['php']['label'] = 'Date Picked Up';
-  $handler->display->display_options['fields']['php']['use_php_setup'] = 0;
-  $handler->display->display_options['fields']['php']['use_php_click_sortable'] = '0';
-  $handler->display->display_options['fields']['php']['php_click_sortable'] = '';
-  /* Field: Global: PHP */
-  $handler->display->display_options['fields']['php_1']['id'] = 'php_1';
-  $handler->display->display_options['fields']['php_1']['table'] = 'views';
-  $handler->display->display_options['fields']['php_1']['field'] = 'php';
-  $handler->display->display_options['fields']['php_1']['label'] = 'Reward Status';
-  $handler->display->display_options['fields']['php_1']['use_php_setup'] = 0;
-  $handler->display->display_options['fields']['php_1']['use_php_click_sortable'] = '0';
-  $handler->display->display_options['fields']['php_1']['php_click_sortable'] = '';
+  $handler->display->display_options['fields']['php_4']['id'] = 'php_4';
+  $handler->display->display_options['fields']['php_4']['table'] = 'views';
+  $handler->display->display_options['fields']['php_4']['field'] = 'php';
+  $handler->display->display_options['fields']['php_4']['label'] = 'Staff User';
+  $handler->display->display_options['fields']['php_4']['use_php_setup'] = 0;
+  $handler->display->display_options['fields']['php_4']['php_output'] = '<?php
+$query = db_select(\'field_data_field_staff_user\',\'notes\')
+->fields(\'notes\', array(\'field_staff_user_value\'))
+->condition(\'entity_id\',$row->id)
+->execute()
+->fetchAssoc();
+
+echo $query[\'field_staff_user_value\'];
+
+
+?>';
+  $handler->display->display_options['fields']['php_4']['use_php_click_sortable'] = '0';
+  $handler->display->display_options['fields']['php_4']['php_click_sortable'] = '';
   /* Field: Global: PHP */
   $handler->display->display_options['fields']['php_2']['id'] = 'php_2';
   $handler->display->display_options['fields']['php_2']['table'] = 'views';
   $handler->display->display_options['fields']['php_2']['field'] = 'php';
-  $handler->display->display_options['fields']['php_2']['label'] = 'Notes';
+  $handler->display->display_options['fields']['php_2']['label'] = 'Receieving Status';
   $handler->display->display_options['fields']['php_2']['use_php_setup'] = 0;
+  $handler->display->display_options['fields']['php_2']['php_output'] = '<?php
+$query = db_select(\'field_data_field_receieving_status\',\'status\')
+->fields(\'status\', array(\'field_receieving_status_value\'))
+->condition(\'entity_id\',$row->id)
+->execute()
+->fetchAssoc();
+
+$status = $query[\'field_receieving_status_value\'];
+
+if ($status == 1) {
+echo \'Receieved\';
+}
+
+?>';
   $handler->display->display_options['fields']['php_2']['use_php_click_sortable'] = '0';
   $handler->display->display_options['fields']['php_2']['php_click_sortable'] = '';
+  /* Field: Global: PHP */
+  $handler->display->display_options['fields']['php_1']['id'] = 'php_1';
+  $handler->display->display_options['fields']['php_1']['table'] = 'views';
+  $handler->display->display_options['fields']['php_1']['field'] = 'php';
+  $handler->display->display_options['fields']['php_1']['label'] = 'reward pickup date';
+  $handler->display->display_options['fields']['php_1']['use_php_setup'] = 0;
+  $handler->display->display_options['fields']['php_1']['php_output'] = '<?php
+$query = db_select(\'field_data_field_rf_pickup_date\',\'date\')
+->fields(\'date\', array(\'field_rf_pickup_date_value\'))
+->condition(\'entity_id\',$row->id)
+->execute()
+->fetchAssoc();
+
+$date = $query[\'field_rf_pickup_date_value\'];
+
+echo substr($date, 0, -8);
+?>';
+  $handler->display->display_options['fields']['php_1']['use_php_click_sortable'] = '0';
+  $handler->display->display_options['fields']['php_1']['php_click_sortable'] = '';
+  /* Field: Global: PHP */
+  $handler->display->display_options['fields']['php']['id'] = 'php';
+  $handler->display->display_options['fields']['php']['table'] = 'views';
+  $handler->display->display_options['fields']['php']['field'] = 'php';
+  $handler->display->display_options['fields']['php']['label'] = 'Staff Notes';
+  $handler->display->display_options['fields']['php']['use_php_setup'] = 0;
+  $handler->display->display_options['fields']['php']['php_output'] = '<?php
+$query = db_select(\'field_data_field_staff_notes\',\'notes\')
+->fields(\'notes\', array(\'field_staff_notes_value\'))
+->condition(\'entity_id\',$row->id)
+->execute()
+->fetchAssoc();
+
+echo $query[\'field_staff_notes_value\'];
+
+
+?>';
+  $handler->display->display_options['fields']['php']['use_php_click_sortable'] = '0';
+  $handler->display->display_options['fields']['php']['php_click_sortable'] = '';
   /* Field: Global: PHP */
   $handler->display->display_options['fields']['php_3']['id'] = 'php_3';
   $handler->display->display_options['fields']['php_3']['table'] = 'views';
   $handler->display->display_options['fields']['php_3']['field'] = 'php';
+  $handler->display->display_options['fields']['php_3']['label'] = 'Action';
   $handler->display->display_options['fields']['php_3']['use_php_setup'] = 0;
   $handler->display->display_options['fields']['php_3']['php_output'] = '<?php
 echo \'<a href =\'.\'receive-reward/\'.$row->id.\'>edit</a>\';
@@ -188,7 +248,7 @@ echo \'<a href =\'.\'receive-reward/\'.$row->id.\'>edit</a>\';
   $handler->display->display_options['filters']['field_raffle_claim_value']['field'] = 'field_raffle_claim_value';
   $handler->display->display_options['filters']['field_raffle_claim_value']['value']['value'] = '1';
   $handler->display->display_options['filters']['field_raffle_claim_value']['group'] = 2;
-  $handler->display->display_options['path'] = 'raffle-winners';
+  $handler->display->display_options['path'] = 'reward-winners';
   $export['raffle_winners'] = $view;
 
   return $export;
