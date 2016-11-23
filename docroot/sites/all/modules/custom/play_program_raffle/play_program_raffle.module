@@ -484,7 +484,7 @@ function ppr_raffle_entry_process($form, &$form_state) {
 
   $form['raffle_list'] = array(
     '#type' =>'markup',
-    '#markup' => t("<a href = ".$url."/raffle-winners>Show list of all the winners in this raffle</a>"),
+    '#markup' => t("<a href = ".$url."/reward-winners>Show list of all the winners in this raffle</a>"),
   );
 
   $form['name_raffle'] = array(
