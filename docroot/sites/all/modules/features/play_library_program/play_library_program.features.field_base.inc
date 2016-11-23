@@ -28,6 +28,7 @@ function play_library_program_field_default_field_bases() {
     'locked' => 0,
     'module' => 'text',
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'profile2_private' => FALSE,
     ),
     'translatable' => 0,
@@ -50,6 +51,7 @@ function play_library_program_field_default_field_bases() {
     'settings' => array(
       'cache_count' => 4,
       'cache_enabled' => 0,
+      'entity_translation_sync' => FALSE,
       'granularity' => array(
         'day' => 'day',
         'hour' => 0,
@@ -82,6 +84,7 @@ function play_library_program_field_default_field_bases() {
     'locked' => 0,
     'module' => 'entityreference',
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'handler' => 'base',
       'handler_settings' => array(
         'behaviors' => array(
@@ -109,6 +112,9 @@ function play_library_program_field_default_field_bases() {
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_activity_fired_hook',
+    'field_permissions' => array(
+      'type' => 0,
+    ),
     'indexes' => array(
       'format' => array(
         0 => 'format',
@@ -117,7 +123,9 @@ function play_library_program_field_default_field_bases() {
     'locked' => 0,
     'module' => 'text',
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'max_length' => 255,
+      'profile2_private' => FALSE,
     ),
     'translatable' => 0,
     'type' => 'text',
@@ -142,6 +150,9 @@ function play_library_program_field_default_field_bases() {
     'module' => 'image',
     'settings' => array(
       'default_image' => 0,
+      'entity_translation_sync' => array(
+        0 => 'fid',
+      ),
       'profile2_private' => FALSE,
       'uri_scheme' => 'public',
     ),
@@ -163,10 +174,62 @@ function play_library_program_field_default_field_bases() {
     'locked' => 0,
     'module' => 'number',
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'profile2_private' => FALSE,
     ),
     'translatable' => 0,
     'type' => 'number_integer',
+  );
+
+  // Exported field_base: 'field_activity_message'.
+  $field_bases['field_activity_message'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_activity_message',
+    'field_permissions' => array(
+      'type' => 0,
+    ),
+    'indexes' => array(
+      'format' => array(
+        0 => 'format',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'text',
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+      'profile2_private' => FALSE,
+    ),
+    'translatable' => 0,
+    'type' => 'text_long',
+  );
+
+  // Exported field_base: 'field_activity_message_subject'.
+  $field_bases['field_activity_message_subject'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_activity_message_subject',
+    'field_permissions' => array(
+      'type' => 0,
+    ),
+    'indexes' => array(
+      'format' => array(
+        0 => 'format',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'text',
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+      'max_length' => 255,
+      'profile2_private' => FALSE,
+    ),
+    'translatable' => 0,
+    'type' => 'text',
   );
 
   // Exported field_base: 'field_activity_point'.
@@ -183,6 +246,7 @@ function play_library_program_field_default_field_bases() {
     'locked' => 0,
     'module' => 'number',
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'profile2_private' => FALSE,
     ),
     'translatable' => 0,
@@ -203,6 +267,7 @@ function play_library_program_field_default_field_bases() {
     'locked' => 0,
     'module' => 'number',
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'profile2_private' => FALSE,
     ),
     'translatable' => 0,
@@ -225,6 +290,7 @@ function play_library_program_field_default_field_bases() {
     'settings' => array(
       'cache_count' => 4,
       'cache_enabled' => 0,
+      'entity_translation_sync' => FALSE,
       'granularity' => array(
         'day' => 'day',
         'hour' => 0,
@@ -268,6 +334,7 @@ function play_library_program_field_default_field_bases() {
         86400 => 'Once per day',
       ),
       'allowed_values_function' => '',
+      'entity_translation_sync' => FALSE,
       'profile2_private' => FALSE,
     ),
     'translatable' => 0,
@@ -290,6 +357,9 @@ function play_library_program_field_default_field_bases() {
     'module' => 'image',
     'settings' => array(
       'default_image' => 0,
+      'entity_translation_sync' => array(
+        0 => 'fid',
+      ),
       'uri_scheme' => 'public',
     ),
     'translatable' => 0,
@@ -310,35 +380,11 @@ function play_library_program_field_default_field_bases() {
     'locked' => 0,
     'module' => 'number',
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'profile2_private' => FALSE,
     ),
     'translatable' => 0,
     'type' => 'number_integer',
-  );
-
-  // Exported field_base: 'field_filters_used'.
-  $field_bases['field_filters_used'] = array(
-    'active' => 1,
-    'cardinality' => 1,
-    'deleted' => 0,
-    'entity_types' => array(),
-    'field_name' => 'field_filters_used',
-    'field_permissions' => array(
-      'type' => 0,
-    ),
-    'indexes' => array(
-      'format' => array(
-        0 => 'format',
-      ),
-    ),
-    'locked' => 0,
-    'module' => 'text',
-    'settings' => array(
-      'max_length' => 255,
-      'profile2_private' => FALSE,
-    ),
-    'translatable' => 0,
-    'type' => 'text',
   );
 
   // Exported field_base: 'field_print_reward_file'.
@@ -358,31 +404,14 @@ function play_library_program_field_default_field_bases() {
     'settings' => array(
       'display_default' => 0,
       'display_field' => 1,
+      'entity_translation_sync' => array(
+        0 => 'fid',
+      ),
       'profile2_private' => FALSE,
       'uri_scheme' => 'public',
     ),
     'translatable' => 0,
     'type' => 'file',
-  );
-
-  // Exported field_base: 'field_raffle_claim'.
-  $field_bases['field_raffle_claim'] = array(
-    'active' => 1,
-    'cardinality' => 1,
-    'deleted' => 0,
-    'entity_types' => array(),
-    'field_name' => 'field_raffle_claim',
-    'field_permissions' => array(
-      'type' => 0,
-    ),
-    'indexes' => array(),
-    'locked' => 0,
-    'module' => 'number',
-    'settings' => array(
-      'profile2_private' => FALSE,
-    ),
-    'translatable' => 0,
-    'type' => 'number_integer',
   );
 
   // Exported field_base: 'field_raffle_date'.
@@ -398,6 +427,7 @@ function play_library_program_field_default_field_bases() {
     'settings' => array(
       'cache_count' => 4,
       'cache_enabled' => 0,
+      'entity_translation_sync' => FALSE,
       'granularity' => array(
         'day' => 'day',
         'hour' => 0,
@@ -430,6 +460,7 @@ function play_library_program_field_default_field_bases() {
     'locked' => 0,
     'module' => 'entityreference',
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'handler' => 'base',
       'handler_settings' => array(
         'behaviors' => array(
@@ -465,6 +496,7 @@ function play_library_program_field_default_field_bases() {
     'locked' => 0,
     'module' => 'text',
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'profile2_private' => FALSE,
     ),
     'translatable' => 0,
@@ -486,6 +518,7 @@ function play_library_program_field_default_field_bases() {
     'locked' => 0,
     'module' => 'entityreference',
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'handler' => 'base',
       'handler_settings' => array(
         'behaviors' => array(
@@ -525,6 +558,7 @@ function play_library_program_field_default_field_bases() {
     'locked' => 0,
     'module' => 'entityreference',
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'handler' => 'base',
       'handler_settings' => array(
         'behaviors' => array(
@@ -558,6 +592,7 @@ function play_library_program_field_default_field_bases() {
     'locked' => 0,
     'module' => 'entityreference',
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'handler' => 'base',
       'handler_settings' => array(
         'behaviors' => array(
@@ -578,26 +613,6 @@ function play_library_program_field_default_field_bases() {
     'type' => 'entityreference',
   );
 
-  // Exported field_base: 'field_receieving_status'.
-  $field_bases['field_receieving_status'] = array(
-    'active' => 1,
-    'cardinality' => 1,
-    'deleted' => 0,
-    'entity_types' => array(),
-    'field_name' => 'field_receieving_status',
-    'field_permissions' => array(
-      'type' => 0,
-    ),
-    'indexes' => array(),
-    'locked' => 0,
-    'module' => 'number',
-    'settings' => array(
-      'profile2_private' => FALSE,
-    ),
-    'translatable' => 0,
-    'type' => 'number_integer',
-  );
-
   // Exported field_base: 'field_reward_claim_id'.
   $field_bases['field_reward_claim_id'] = array(
     'active' => 1,
@@ -613,6 +628,7 @@ function play_library_program_field_default_field_bases() {
     'locked' => 0,
     'module' => 'entityreference',
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'handler' => 'base',
       'handler_settings' => array(
         'behaviors' => array(
@@ -652,6 +668,7 @@ function play_library_program_field_default_field_bases() {
     'locked' => 0,
     'module' => 'entityreference',
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'handler' => 'base',
       'handler_settings' => array(
         'behaviors' => array(
@@ -685,6 +702,7 @@ function play_library_program_field_default_field_bases() {
     'settings' => array(
       'cache_count' => 4,
       'cache_enabled' => 0,
+      'entity_translation_sync' => FALSE,
       'granularity' => array(
         'day' => 'day',
         'hour' => 0,
@@ -712,7 +730,9 @@ function play_library_program_field_default_field_bases() {
     'indexes' => array(),
     'locked' => 0,
     'module' => 'number',
-    'settings' => array(),
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+    ),
     'translatable' => 0,
     'type' => 'number_integer',
   );
@@ -737,6 +757,7 @@ function play_library_program_field_default_field_bases() {
         1 => 'Yes',
       ),
       'allowed_values_function' => '',
+      'entity_translation_sync' => FALSE,
     ),
     'translatable' => 0,
     'type' => 'list_boolean',
@@ -757,6 +778,7 @@ function play_library_program_field_default_field_bases() {
     'locked' => 0,
     'module' => 'entityreference',
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'handler' => 'base',
       'handler_settings' => array(
         'behaviors' => array(
@@ -796,6 +818,7 @@ function play_library_program_field_default_field_bases() {
     'locked' => 0,
     'module' => 'text',
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'profile2_private' => FALSE,
     ),
     'translatable' => 0,
@@ -817,6 +840,7 @@ function play_library_program_field_default_field_bases() {
     'locked' => 0,
     'module' => 'text',
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'profile2_private' => FALSE,
     ),
     'translatable' => 0,
@@ -834,6 +858,7 @@ function play_library_program_field_default_field_bases() {
     'locked' => 0,
     'module' => 'role_field',
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'exclusive' => 0,
       'profile2_private' => FALSE,
       'roles' => array(
@@ -853,113 +878,6 @@ function play_library_program_field_default_field_bases() {
     'type' => 'role',
   );
 
-  // Exported field_base: 'field_rf_drawing_name'.
-  $field_bases['field_rf_drawing_name'] = array(
-    'active' => 1,
-    'cardinality' => 1,
-    'deleted' => 0,
-    'entity_types' => array(),
-    'field_name' => 'field_rf_drawing_name',
-    'field_permissions' => array(
-      'type' => 0,
-    ),
-    'indexes' => array(
-      'format' => array(
-        0 => 'format',
-      ),
-    ),
-    'locked' => 0,
-    'module' => 'text',
-    'settings' => array(
-      'max_length' => 255,
-      'profile2_private' => FALSE,
-    ),
-    'translatable' => 0,
-    'type' => 'text',
-  );
-
-  // Exported field_base: 'field_rf_pickup_date'.
-  $field_bases['field_rf_pickup_date'] = array(
-    'active' => 1,
-    'cardinality' => 1,
-    'deleted' => 0,
-    'entity_types' => array(),
-    'field_name' => 'field_rf_pickup_date',
-    'field_permissions' => array(
-      'type' => 0,
-    ),
-    'indexes' => array(),
-    'locked' => 0,
-    'module' => 'date',
-    'settings' => array(
-      'cache_count' => 4,
-      'cache_enabled' => 0,
-      'granularity' => array(
-        'day' => 'day',
-        'hour' => 0,
-        'minute' => 0,
-        'month' => 'month',
-        'second' => 0,
-        'year' => 'year',
-      ),
-      'profile2_private' => FALSE,
-      'timezone_db' => '',
-      'todate' => '',
-      'tz_handling' => 'none',
-    ),
-    'translatable' => 0,
-    'type' => 'datetime',
-  );
-
-  // Exported field_base: 'field_staff_notes'.
-  $field_bases['field_staff_notes'] = array(
-    'active' => 1,
-    'cardinality' => 1,
-    'deleted' => 0,
-    'entity_types' => array(),
-    'field_name' => 'field_staff_notes',
-    'field_permissions' => array(
-      'type' => 0,
-    ),
-    'indexes' => array(
-      'format' => array(
-        0 => 'format',
-      ),
-    ),
-    'locked' => 0,
-    'module' => 'text',
-    'settings' => array(
-      'profile2_private' => FALSE,
-    ),
-    'translatable' => 0,
-    'type' => 'text_long',
-  );
-
-  // Exported field_base: 'field_staff_user'.
-  $field_bases['field_staff_user'] = array(
-    'active' => 1,
-    'cardinality' => 1,
-    'deleted' => 0,
-    'entity_types' => array(),
-    'field_name' => 'field_staff_user',
-    'field_permissions' => array(
-      'type' => 0,
-    ),
-    'indexes' => array(
-      'format' => array(
-        0 => 'format',
-      ),
-    ),
-    'locked' => 0,
-    'module' => 'text',
-    'settings' => array(
-      'max_length' => 255,
-      'profile2_private' => FALSE,
-    ),
-    'translatable' => 0,
-    'type' => 'text',
-  );
-
   // Exported field_base: 'field_sticker_image'.
   $field_bases['field_sticker_image'] = array(
     'active' => 1,
@@ -976,6 +894,9 @@ function play_library_program_field_default_field_bases() {
     'module' => 'image',
     'settings' => array(
       'default_image' => 0,
+      'entity_translation_sync' => array(
+        0 => 'fid',
+      ),
       'profile2_private' => FALSE,
       'uri_scheme' => 'public',
     ),
@@ -998,6 +919,7 @@ function play_library_program_field_default_field_bases() {
     'locked' => 0,
     'module' => 'entityreference',
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'handler' => 'base',
       'handler_settings' => array(
         'behaviors' => array(

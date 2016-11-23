@@ -663,7 +663,6 @@ function play_library_program_retrieve_activity_participation($activity_id, $acc
  * Creates a new activity entry
  */
 function play_library_program_create_activity_entry($activity_id, $account_id) {
-  
   $activities = entity_load('activity', array($activity_id));
   $activity = reset($activities);
 
@@ -684,6 +683,9 @@ function play_library_program_create_activity_entry($activity_id, $account_id) {
   $activity_entry->field_activity_entry_activity[LANGUAGE_NONE][0]['target_id'] = $activity->id;
   $activity_entry->field_activity_point[LANGUAGE_NONE][0]['value'] = $activity_point;
 
+  // Private message subject and body for every activity.
+  $message_subject = $activity->field_activity_message_subject[LANGUAGE_NONE][0]['value'];
+  $message_body = $activity->field_activity_message[LANGUAGE_NONE][0]['value'];
   // checking of activity frequency limit
   $activity_frequency_limit = play_library_program_frequency_limit($activity);
 
@@ -693,6 +695,9 @@ function play_library_program_create_activity_entry($activity_id, $account_id) {
   // Activity entry if satisfy the conditions else shows an error message
   if(($count_activity_entry < $no_of_time_user_perform_activity) && ($activity_frequency_limit == TRUE) && ($activity_time_limit == TRUE)) {   
     entity_save('activity', $activity_entry);
+    //echo $account_id . '----' . $message_subject . '-----' . $message_body;die();
+    privatemsg_new_thread(array(user_load($account_id)), $message_subject, $message_body,array('author'=>user_load($account_id)));
+    //privatemsg_new_thread($account_id, $message_subject, $message_body);
   } else {
     drupal_set_message(t('Thanks for your submission. However you will not receive any points as you have exceeded maximum number of submissions allowed for this activity'), 'warning');
   } 
