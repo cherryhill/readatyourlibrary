@@ -174,12 +174,6 @@ function play_program_raffle_menu() {
     'access arguments' => array('raffle_access_permission'),
     'type' => MENU_CALLBACK,
   );
-  $items['raffle_user_list_pdf'] = array(
-    'title' => 'Raffle winner Process',
-    'page callback' => 'raffle_user_list_pdf',
-    'access arguments' => array('raffle_access_permission'),
-    'type' => MENU_CALLBACK,
-  );
   $items['raffle_winner_list'] = array(
     'title' => 'Raffle Winner List',
     'page callback' => 'raffle_winner_user_list',
@@ -204,10 +198,6 @@ function play_program_raffle_menu() {
 
 function ppr_entery_detailed_list(){
   return 'testing';
-}
-
-function raffle_user_list_pdf() {
-  return 'raffle pdf print';
 }
 
 function claim_reward_status($form, &$form_state, $arg) {
@@ -276,7 +266,7 @@ function claim_reward_status($form, &$form_state, $arg) {
 
   $form['receieved_date'] = array( 
     '#type' => 'date_popup', 
-    '#date_format' => 'Y-m-d',
+    '#date_format' => 'F j,Y',
     '#title' => "Receieved" ,
     '#default_value' => isset($receievingDate) ? $receievingDate : NULL,
   ); 
@@ -304,10 +294,102 @@ function claim_reward_status_submit($form, &$form_state){
   $reward_receieved_date = $form_state['values']['receieved_date'];
   $rewardUser = $form_state['values']['username'];
 
+  global $user;
+  $uid = $user->uid;
+  $staffUser = user_load($uid);
+
+  $staff_name = $staffUser->name;
+
   if(isset($reward_receieved_date)){
     $reward_status = '1';
   }else{
     $reward_status = '0';
+  }
+
+  $query_staff = db_select('field_data_field_staff_user','stf')
+    ->fields('stf', array('field_staff_user_value'))
+    ->condition('entity_id',$reward_rid)
+    ->execute()
+    ->fetchAssoc();
+
+  $query_pickup = db_select('field_data_field_rf_pickup_date','pckup')
+    ->fields('pckup', array('field_rf_pickup_date_value'))
+    ->condition('entity_id',$reward_rid)
+    ->execute()
+    ->fetchAssoc();
+
+  $query_notes = db_select('field_data_field_staff_notes','notes')
+    ->fields('notes', array('field_staff_notes_value'))
+    ->condition('entity_id',$reward_rid)
+    ->execute()
+    ->fetchAssoc();
+
+  if (empty($query_staff)) {
+    db_insert('field_data_field_staff_user')
+      ->fields(array(
+        'entity_type' => 'reward',
+        'bundle' => 'reward_claim',
+        'deleted' => 0,
+        'entity_id' => $reward_rid,
+        'revision_id' => $reward_rid,
+        'language' => 'und',
+        'delta' => 0,
+        'field_staff_user_value' => $staff_name,
+        'field_staff_user_format' => NULL,
+        ))
+      ->execute();
+  } else {
+    db_update('field_data_field_staff_user')
+      ->fields(array(
+        'field_staff_user_value' => $staff_name
+        ))
+      ->condition('entity_id',$reward_rid)
+      ->execute();
+  }
+
+  if (empty($query_pickup)) {
+    db_insert('field_data_field_rf_pickup_date')
+      ->fields(array(
+        'entity_type' => 'reward',
+        'bundle' => 'reward_claim',
+        'deleted' => 0,
+        'entity_id' => $reward_rid,
+        'revision_id' => $reward_rid,
+        'language' => 'und',
+        'delta' => 0,
+        'field_rf_pickup_date_value' => $reward_receieved_date,
+        ))
+      ->execute();
+  } else{
+    db_update('field_data_field_rf_pickup_date')
+      ->fields(array(
+        'field_rf_pickup_date_value' => $reward_receieved_date
+        ))
+      ->condition('entity_id',$reward_rid)
+      ->execute();
+  }
+
+  if (empty($query_notes)) {
+    db_insert('field_data_field_staff_notes')
+      ->fields(array(
+        'entity_type' => 'reward',
+        'bundle' => 'reward_claim',
+        'deleted' => 0,
+        'entity_id' => $reward_rid,
+        'revision_id' => $reward_rid,
+        'language' => 'und',
+        'delta' => 0,
+        'field_staff_notes_value' => $staff_notes,
+        'field_staff_notes_format' => NULL,
+        ))
+      ->execute();
+  } else {
+     db_update('field_data_field_staff_notes')
+      ->fields(array(
+        'field_staff_notes_value' => $staff_notes
+        ))
+      ->condition('entity_id',$reward_rid)
+      ->execute();
   }
 
   db_update('field_data_field_receieving_status')
@@ -316,24 +398,12 @@ function claim_reward_status_submit($form, &$form_state){
       ))
     ->condition('entity_id',$reward_rid)
     ->execute();
-
-  db_update('field_data_field_rf_pickup_date')
-    ->fields(array(
-      'field_rf_pickup_date_value' => $reward_receieved_date
-      ))
-    ->condition('entity_id',$reward_rid)
-    ->execute(); 
-    
-  db_update('field_data_field_staff_notes')
-    ->fields(array(
-      'field_staff_notes_value' => $staff_notes
-      ))
-    ->condition('entity_id',$reward_rid)
-    ->execute();
-
+  
   if ($reward_status) {
     drupal_set_message(t('@user receives the reward', array('@user' => $rewardUser)), 'status');
   }
+
+  $form_state['redirect'] = 'reward-winners';
 }
 
 /* hook menu() for raffle winner user list */
@@ -477,6 +547,11 @@ function ppr_raffle_entry_process($form, &$form_state) {
     '#title' => t('Number of winners to be selected'),
     '#type' => 'textfield',
     '#required' => TRUE,
+  );
+
+  $form['back_button'] = array(
+    '#type' =>'markup',
+    '#markup' => t("<a href = ".$url."/admin/content/dashboard> Go Back </a>"),
   );
 
   $form['raff_winners'] = array(
