@@ -88,6 +88,14 @@
           success: function (data) {
             if(raffle_id){
               $('#reward_tbl').html(data);
+                setTimeout(function(){
+                  var error_div = $('#error_raffle').text();
+                  if(error_div) {
+                $('#raff_winners').show();
+                  } else {
+                    $('#raff_winners').hide();
+                  }
+                }, 25);
               $('#print_raffle').on('click', function() {
                 printDiv('#rf-tbl');
               });
@@ -111,7 +119,6 @@
           },
           callback: function (result) {
             if(result){
-              $('#raff_winners').hide();
               return rf_winners_list();
             }
           }
