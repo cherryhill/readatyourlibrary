@@ -174,18 +174,6 @@ function play_program_raffle_menu() {
     'access arguments' => array('raffle_access_permission'),
     'type' => MENU_CALLBACK,
   );
-  $items['raffle_winner_list'] = array(
-    'title' => 'Raffle Winner List',
-    'page callback' => 'raffle_winner_user_list',
-    'access arguments' => array('access content'),
-    'type' => MENU_CALLBACK,
-  );
-  $items['generate_csv'] = array(
-    'title' => 'Generate csv file of raffle user list',
-    'page callback' => 'generate_csv_of_raffle_user',
-    'access arguments' => array('access content'),
-    'type' => MENU_CALLBACK,
-  );
   $items['raffle_table'] = array(
     'title' => 'Raffle Entry Detailed List',
     'page callback' => 'ppr_entery_detailed_list',
@@ -406,41 +394,6 @@ function claim_reward_status_submit($form, &$form_state){
   $form_state['redirect'] = 'reward-winners';
 }
 
-/* hook menu() for raffle winner user list */
-
-function raffle_winner_user_list() {
-  $query = db_select('eck_reward', 'er');
-  $query->join('users', 'u', 'u.uid = er.uid');
-  $query->join('field_data_field_reward_claim_id', 'frcid', 'er.id = frcid.entity_id');
-  $query->join('field_data_field_reward_raffle', 'frr', 'frcid.field_reward_claim_id_target_id = frr.entity_id');
-  $query->join('eck_raffle', 'eckr', 'eckr.id = frr.field_reward_raffle_target_id');
-  $query->fields('er', array('uid'));
-  $query->fields('u', array('name'));
-  $query->fields('eckr', array('title'));
-  $res = $query->execute()->fetchAll();
-  $table_header = array(
-    'Sl No.',
-    'Raffle Name',  
-    'Raffle Winner Name'
-  );
-  $table_rows = array();
-  $i = 0;
-  foreach ($res as $value) {
-    
-    $raffle_winner_name = $value->name;
-    $raffle_title = $value->title;
-    $i++;
-    $table_rows[] = array(
-      array( 'data' => $i),
-      array( 'data' => $raffle_title),
-      array( 'data' => $raffle_winner_name),
-    ); 
-  }
-
-  $output = theme('table', array( 'header' => $table_header, 'rows' => $table_rows ));
-
-  return $output;
-} 
 
 /**
  * function for getting all the active raffle rewards
@@ -794,7 +747,7 @@ function raffle_user_list($form, &$form_state) {
       echo $output;
     }
   } else {
-    echo t('Number of entries for the filters selected is less than number of winners to be selected, please change the filters or reduce the number of winners to be selected');
+    echo t('<div id ="error_raffle">Number of entries for the filters selected is less than number of winners to be selected, please change the filters or reduce the number of winners to be selected</div>');
   }
 }
 
@@ -812,227 +765,6 @@ function update_raffle_winner_tbl($raffle_id, $rf_drawing_name) {
     ->execute();
 }
 
-function UniqueRandomNumbersWithinRange($min, $max, $quantity) {
-  $numbers = range($min, $max);
-  shuffle($numbers);
-  return array_slice($numbers, 0, $quantity);
-}
-
-function generate_csv_of_raffle_user() {
-  $output = array();
-  $raffle_id = $_GET['raffle_id'];
-  $reward_id = $_GET['reward_id'];
-  $school = $_GET['school'];
-  $organization = $_GET['organization'];
-  $library_branch = $_GET['library_branch'];
-  $grade = $_GET['grade'];
-
-  $query = db_select('field_data_field_raffle_entry_raffle', 'rentry');
-  $query->join('eck_raffle', 'eck_r', 'rentry.entity_id = eck_r.id');
-  $query->join('users', 'u', 'u.uid = eck_r.uid');
-  $query->join('profile', 'p', 'u.uid = p.uid');
-  $query->join('field_data_field_user_first_name', 'fn', 'fn.entity_id = p.pid');
-  $query->join('field_data_field_user_last_name', 'ln', 'ln.entity_id = p.pid');
-  $query->join('field_data_field_user_birthday', 'user_birth', 'user_birth.entity_id = p.pid');
-  $query->leftJoin('field_data_field_user_phone', 'phno', 'phno.entity_id = p.pid');
-  if($library_branch == '') {
-    $query->leftJoin('field_data_field_library_branch', 'lb', 'lb.entity_id = p.pid');
-    $query->leftJoin('taxonomy_term_data', 'lbtd', 'lbtd.tid = lb.field_library_branch_tid');
-  }
-  
-
-  $cnd = array();
-  if ($school != '') {
-    $query->leftJoin('field_data_field_school', 'fs', 'fs.entity_id = p.pid');
-    $query->leftJoin('taxonomy_term_data', 'fstd', 'fstd.tid = fs.field_school_tid');
-    $cnd[] = array('fs.field_school_tid', $school);
-  }
-
-  if ($organization != '') {
-    $query->join('field_data_field_user_organization', 'uo', 'uo.entity_id = p.pid');
-    $query->join('taxonomy_term_data', 'uotd', 'uotd.tid = uo.field_user_organization_tid');
-    $cnd[] = array('uo.field_user_organization_tid', $organization);
-  }
-
-  if ($library_branch != '') {
-    $query->join('field_data_field_library_branch', 'lb', 'lb.entity_id = p.pid');
-    $query->join('taxonomy_term_data', 'lbtd', 'lbtd.tid = lb.field_library_branch_tid');
-    $cnd[] = array('lb.field_library_branch_tid', $library_branch);
-  }
-
-  if ($grade != '') {
-    $query->join('field_data_field_user_grade', 'ug', 'ug.entity_id = p.pid');
-    $query->join('taxonomy_term_data', 'ugtd', 'ugtd.tid = ug.field_user_grade_tid');
-    $cnd[] = array('ug.field_user_grade_tid', $grade);
-  }
-
-  $query->condition('rentry.field_raffle_entry_raffle_target_id', $raffle_id, '=');
-  if (count($cnd)) {
-    foreach($cnd as $val) {
-      $cnd_fld = $val[0];
-      $cnd_val = $val[1];
-      $query->condition($cnd_fld, $cnd_val);
-    }
-  }
-  $query->fields('eck_r', array('uid'));
-  $query->fields('u', array('name', 'mail'));
-  $query->fields('fn', array('field_user_first_name_value'));
-  $query->fields('ln', array('field_user_last_name_value'));
-  $query->fields('user_birth', array('field_user_birthday_value'));
-  $query->fields('lbtd', array('name'));
-  $query->fields('phno', array('field_user_phone_value'));
-  $query->orderBy('name', 'ASc');
-  $res = $query->execute()->fetchAll();
-
-  $raffle_users_list = array();
-  
-  foreach($res as $v) {
-    $uid = $v->uid;
-    $user_roles = user_load($uid);
-    $role_name = array_values($user_roles->roles);
-    $role_name = $role_name[1];
-    $name = $v->name;
-    $library_branch = $v->lbtd_name;
-    $first_name = $v->field_user_first_name_value;
-    $last_name = $v->field_user_last_name_value;
-    $date_of_birth = $v->field_user_birthday_value;
-    $phone_no = $v->field_user_phone_value;
-    $mail = $v->mail;
-    // if (array_key_exists($uid, $raffle_users_list)) {
-    //   $temp = $raffle_users_list[$uid];
-    //   $temp['count'] = $temp['count'] + 1;
-    //   $raffle_users_list[$uid] = $temp;
-    // } else {
-      // check if this user has won raffel before
-      $qry = db_select('eck_raffle', 'r');
-      $qry->condition('r.uid', $uid);
-      $qry->condition('r.type', 'raffle_winner');
-      $qry->fields('r', array('id'));
-      $rs = $qry->execute();
-      $count = $rs->rowCount();
-
-      if ($count) {
-        $raffle_users_list[] = array('serial_no.' => $i, 'raffle_winner' => 'Yes', 'name' => $name, 'library_branch' => $library_branch, 'user_role' => $role_name, 'first_name' => $first_name, 'last_name' => $last_name, 'date_of_birth' => $date_of_birth, 'phone_no' => $phone_no, 'mail' => $mail);
-      } else {
-        $raffle_users_list[] = array('serial_no.' => $i, 'raffle_winner' => 'No', 'name' => $name, 'library_branch' => $library_branch, 'user_role' => $role_name, 'first_name' => $first_name, 'last_name' => $last_name, 'date_of_birth' => $date_of_birth, 'phone_no' => $phone_no, 'mail' => $mail);
-      }
-    //}
-  }
-
-  $i = 1;
-
-  foreach($raffle_users_list as $k => $v) {      
-      $user_name = $v['name'];
-      $user_role = $v['user_role'];
-      $first_name = $v['first_name'];
-      $last_name = $v['last_name'];
-      $library_branch = $v['library_branch'];
-      $date_of_birth = $v['date_of_birth'];
-      $phone_no = $v['phone_no'];
-      $email = $v['mail'];
-      //$raffle_count = $v['count'];
-      if($user_name == '') {
-        $user_name = ' ';  
-      }
-      else {
-        $user_name = $v['name'];  
-      }
-      if($user_role == '') {
-        $user_role = ' ';  
-      }
-      else {
-        $user_role = $v['user_role'];  
-      }
-      if($library_branch == '') {
-        $library_branch = ' ';  
-      }
-      else {
-        $library_branch = $v['library_branch'];  
-      }
-
-      if($first_name == '') {
-        $first_name = ' ';  
-      }
-      else {
-        $first_name = $v['first_name'];  
-      }
-      if($last_name == '') {
-        $last_name = ' ';  
-      }
-      else {
-        $last_name = $v['last_name'];  
-      }
-      if($date_of_birth == '') {
-        $date_of_birth = ' ';  
-      }
-      else {
-        $date_of_birth = $v['date_of_birth'];  
-      }
-      if($phone_no == '') {
-        $phone_no = ' ';
-      }
-      else {
-        $phone_no = $v['phone_no'];  
-      }
-      if($email == '') {
-        $email = ' ';
-      }
-      else {
-        $email = $v['mail'];
-      }
-      // if($raffle_count == '') {
-      //   $raffle_count = ' ';
-      // }
-      // else {
-      //   $raffle_count = $v['count'];
-      // }
-      
-    $raffle_winner = $v['raffle_winner'];
-    $operation = t("<input class = 'raffle-prospective-winners' type = 'checkbox' id = 'chkbox_$k'>");
-    $output[] = array(
-      'Serial_no.' => $i, 
-      'name' => $user_name,
-      'user_role' => $user_role, 
-      'first_name' => $first_name,
-      'last_name' => $last_name,
-      'library_branch' => $library_branch,
-      'date_of_birth' => $date_of_birth,
-      'phone_no' => $phone_no,
-      'email' => $email,
-      //'number_of_tickets' => $raffle_count,
-    );
-    $i++;
-  }
-
-  $time = date('m-d-Y', time());
-
-  $filename = 'raffle_ticket_list_' .$time. '.csv'; 
-
-  drupal_add_http_header('Content-Type', 'text/csv; utf-8');
-  drupal_add_http_header('Content-Disposition', 'attachment; filename =' .$filename);
-  $result = '';
-  $keys = array(
-    'Serial no.',
-    'Name',
-    'User role',
-    'First name',
-    'Last name',
-    'Library branch',
-    'Date of birth',
-    'Phone no',
-    'Email'
-  );
-
-
-  $result .= implode(",", $keys) . "\n";
-  if (count($output)) {
-    foreach ($output as $val) {
-      $result .= implode(",", $val) . "\n";
-    }
-  }
-  echo $result;
-  exit;
-}
 
 function _get_options($vocab_name) {
   $term_list = taxonomy_vocabulary_machine_name_load($vocab_name);
@@ -1044,27 +776,6 @@ function _get_options($vocab_name) {
   }
   return $options;
 }
-
-
-/* Raffle winner list process */
-
-function raffle_winner_ajax() { 
-  $active_raffle_uid = $_REQUEST['active_raffle_uid'];
-  $reward_id = $_REQUEST['reward_id'];
-  
-  $raffle_uid = explode(',', $active_raffle_uid);
-  
-  $raffle_id = $_SESSION['active_r_id'];
-
-  foreach ($raffle_uid as $k => $v) {
-    
-     play_library_program_create_raffle_winner($raffle_id, $v);
-     play_library_program_create_reward_claim($reward_id, $v, 1);
-  }
-  echo "1";
-  
-}
-
 
 
 function user_progress() {
