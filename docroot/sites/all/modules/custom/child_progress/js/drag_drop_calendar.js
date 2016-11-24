@@ -6,7 +6,6 @@ jQuery( document ).ready(function() {
 
     var now_time_strings = parseInt(time_strings[0] + time_strings[1] + time_strings[2]);
   jQuery('.view-dropdown-sticker-list .view-content .views-field-field-sticker-calendar-image .field-content').each(function () {
-
         // create an Event Object (http://arshaw.com/fullcalendar/docs/event_data/Event_Object/)
        // it doesn't need to have a start or end
         var eventObject = {
