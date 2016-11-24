@@ -1,4 +1,5 @@
 <?php
+  drupal_add_js(drupal_get_path('module', 'child_progress') . '/js/jquery-ui.min.js');
   drupal_add_js(drupal_get_path('module', 'child_progress') . '/js/fullcalendar.min.js');
   drupal_add_js(drupal_get_path('module', 'child_progress') . '/js/gcal.js');
   drupal_add_js(drupal_get_path('module', 'child_progress') . '/js/drag_drop_calendar.js');
