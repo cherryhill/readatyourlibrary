@@ -235,7 +235,7 @@ if(!div2.is(':empty')){
     
     //if((now_time_strings >= pro_start_date) && now_time_strings <= pro_end_date) {
        //console.log("running");
-       jQuery('.view-child-progress .view-content .views-field-field-sticker-calendar-image .field-content').each(function () {
+       jQuery('.view-dropdown-sticker-list .view-content .views-field-field-sticker-calendar-image .field-content').each(function () {
 
         // create an Event Object (http://arshaw.com/fullcalendar/docs/event_data/Event_Object/)
        // it doesn't need to have a start or end

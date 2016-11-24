@@ -5,13 +5,13 @@
 	   <!-- This is the drupal views block of sticker -->
 
 		<div class="sticker-block"> 
-          <?php print views_embed_view('child_progress', 'block'); ?>
+          <?php print views_embed_view('dropdown_sticker_list', 'block'); ?>
 		</div>
 
 		<!-- This is the reward list won by patron  -->
 
 		<div class="pro-reward-block"> 
-          <?php print views_embed_view('prize_won_for_progress_page', 'block'); ?>
+          <?php print views_embed_view('user_rewrad_for_progress_page', 'block'); ?>
 		</div>
          
          <!-- This is the user progress for read activity. -->
