@@ -276,7 +276,7 @@ function child_progress_menu() {
   );
 
   $items['progress'] = array(
-    'title' => 'Test Page',
+    'title' => 'Progress',
     'page callback' => 'child_progress_page',
     'access arguments' => array('access content'),
     'type' => MENU_NORMAL_ITEM,
@@ -305,7 +305,7 @@ function child_progress_menu() {
 
 
 function test() {
-  drupal_access_denied();
+ drupal_access_denied();
 
 }
 
@@ -535,7 +535,15 @@ function calendar_page() {
         $max_id = $query->execute()->fetchField();
         $_SESSION['usr_calendar_id'] = $max_id;
 
-        $node = node_load(495);
+        // get the nid of sticker contant type
+
+        $sticker_node = db_select('node', 'n')
+          ->fields('n', array('nid'))
+          ->condition('type', 'sticker')
+          ->execute();
+        $sticker_nid = $sticker_node->fetchAssoc();
+        $sticker_id = $sticker_nid['nid'];       
+        $node = node_load($sticker_id);
         //auto_role_allocation_node_update($current_node);
         // this is for calendar activity.
         $hook = "node_update|node|{$node->type}|updated";
