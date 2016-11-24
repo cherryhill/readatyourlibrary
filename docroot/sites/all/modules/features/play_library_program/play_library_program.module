@@ -384,6 +384,7 @@ function pl_reward_claim($reward_id, $account_uid, $category, $filters = NULL, $
     drupal_set_message(t($raffleOnsMsg));
   }
   // drupal_set_message('Congratulations '.$reward->title,'alert');
+  play_library_program_update_user_calendar_state($reward_id);
 }
 
 /**
