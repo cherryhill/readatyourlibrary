@@ -1,3 +1,10 @@
+<?php
+  drupal_add_js(drupal_get_path('module', 'child_progress') . '/js/jquery-ui.min.js');
+  drupal_add_js(drupal_get_path('module', 'child_progress') . '/js/fullcalendar.min.js');
+  drupal_add_js(drupal_get_path('module', 'child_progress') . '/js/gcal.js');
+  drupal_add_js(drupal_get_path('module', 'child_progress') . '/js/drag_drop_calendar.js');
+?>
+
 <!-- Tpl file for children progress page -->
 <div class="progress-page-wrap">
 	<div class="top-block-wrap">
@@ -30,5 +37,10 @@
 	  <div id="print_button">Print Calendar</div>
 	  <div id="calendar">&nbsp;</div>
 	</div>
+
+	<?php 
+      $block = module_invoke('child_progress', 'block_view', 'calendar-data');
+      print render($block['content']); 
+    ?>
 
 </div>
