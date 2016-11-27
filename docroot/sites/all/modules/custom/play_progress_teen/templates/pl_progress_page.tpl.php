@@ -3,7 +3,7 @@
   global $user;
   global $base_url;
   $current_uid = $user->uid;
-  $raff_count = pl_raffle_count($current_uid);
+  // $raff_count = pl_raffle_count($current_uid);  
   $imgStyle = 'avatar_style';
 ?>
 <div class="progress-page">
@@ -16,23 +16,24 @@
 	print $page_desc['value']; ?>
 </div>
 <div class="print-page">
-	<a href = "progress-print"><button class="print"><?php print t('Print Progress Report'); ?><span style="margin-left: 5px;">(pdf)</span></button></a>
+	<!--<a href = "progress-print"><button class="print"><?php //print t('Print Progress Report'); ?><span style="margin-left: 5px;">(pdf) </span></button></a> -->
 </div>
 <div class="user-desc">
 <div class="avatar-id">
-	<?php print pl_user_avatar_progress_page($current_uid, $imgStyle); ?>
+	<?php //print pl_user_avatar_progress_page($current_uid, $imgStyle); ?>
 </div>
 <div class="point-status">
 <div class="activity-status">
-  <?php print 'Activities Completed: '.pl_specefic_user_nodes($current_uid).' activities'; ?>
+  <?php //print 'Activities Completed: '.pl_specefic_user_nodes($current_uid).' activities'; ?>
 </div>
 <div class="activity-remaining">
-<?php $grids = variable_get('no_of_grids'); $activities_left = $grids - pl_specefic_user_nodes($current_uid);
-  if($activities_left < 0){ print t('Activities Left to Complete: 0 activities');
-  }else{ print t('Activities Left to Complete: ').$activities_left.t(' activities'); } ?>
+<?php //$grids = variable_get('no_of_grids'); $activities_left = $grids - pl_specefic_user_nodes($current_uid);
+$grids = 18;
+  // if($activities_left < 0){ print t('Activities Left to Complete: 0 activities');
+  // }else{ print t('Activities Left to Complete: ').$activities_left.t(' activities'); } ?>
 </div>
 <div class="points">
-	<?php print t('Raffle Tickets Earned: ').$raff_count; ?>
+	<?php //print t('Raffle Tickets Earned: ').$raff_count; ?>
 </div>
 </div>
 </div>
@@ -48,9 +49,9 @@
   	  $output = drupal_render($render_block);
   	  print $output; 
 	?>
-	<div class="submit">
+<!-- 	<div class="submit">
 		<button id="pg-report">Submit</button>
-	</div>
+	</div> -->
 	<div><?php $report_block_text = variable_get('report_block_desc', array('value' => '', 'format' => NULL)); ?></div>
 </div>
 
@@ -67,13 +68,29 @@
 
   $criteria = array(
     'uid' => $current_uid,
-    'type' => 'activity_report',
+    'type' => 'activity_entry',
   );
   
-  $nodes = entity_load('node',FALSE,$criteria);
+  // $nodes = entity_load('activity', array(227));
+  $nodes = entity_load('activity',FALSE,$criteria);
+  // $node = reset($nodes);
+
+  // echo '<pre>'; print_r($nodes);  die();
+
 
   foreach ($nodes as $key => $value) {
-    $node_date = $value->field_completion_date['und'][0]['value'];
+
+    $activityTitle = $value->title;
+
+    $title = substr($activityTitle, 0, -19);
+    $date = substr($activityTitle, -16);
+    $n_date = date("m.d.y", strtotime($date));
+    $activityReward = $value->field_rw_claim_id[LANGUAGE_NONE][0]['value'];
+    $rewardMsg = $value->field_progress_info[LANGUAGE_NONE][0]['value'];
+
+  // echo '<pre>'; print_r($rewardMsg);
+
+    // $node_date = $value->field_completion_date['und'][0]['value'];
     $user_reward = $value->field_won_reward['und'][0]['value'];
     $node_type_hotspot = $value->field_hotspot_activity_report['und'][0]['value'];
     $user_won_reward = '';
@@ -83,13 +100,16 @@
 	if($node_type_hotspot){
 	  $hotspot_type_activity = '<p class = "hotspot-activity">Bay Area Hot Spot!</p>';
 	}
-  
-	if($user_reward){
-	  $user_won_reward = '<p class  = "won-rew">Congratulations! You have earned a prize!</p>';
+  // }
+	if($activityReward){
+	  $user_won_reward = $rewardMsg;
 	}
+// }
 
-  $node_nid[] = '<p class  = "date-pg">'.$n_date.'</p>'.$hotspot_type_activity.'<p class = "title-pg">'.$value->title.'</p>'.$user_won_reward;
+  $node_nid[] = '<p class  = "date-pg">'.$n_date.'</p>'.$hotspot_type_activity.'<p class = "title-pg">'.$title.'</p>'.$user_won_reward;
   }
+  // die();
+
 
   if(isset($_SESSION['exceed-activity-limit']['status'][0])){
     $exceed_limit = $_SESSION['exceed-activity-limit']['status'][0];

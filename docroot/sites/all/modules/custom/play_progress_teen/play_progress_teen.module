@@ -97,11 +97,10 @@ function pl_progress_record($form,$form_state){
   $form['activity_progress_select'] = array(
     '#title' => t('I completed'),
     '#type' => 'select',
-    '#options' => pl_activities_view_select_option('hotspot_activities','1'),
+    '#options' => pl_activities_view_select_option(),
     '#attributes' => array(
       'class' => array('activities_list_progress')
     ),
-    '#weight' => 1,
   );
 
   $form['date'] = array(
@@ -110,30 +109,30 @@ function pl_progress_record($form,$form_state){
     '#date_format' => 'Y-m-d',
     '#date_year_range' => '-0',
     '#datepicker_options' => array('maxDate' => '+0D'),
-    '#weight' => 2, 
   );
+
+  $form['pg_report'] = array(
+    '#type' =>'markup',
+    '#markup' => t("<input type = 'button' class = 'submit' value = 'submit' id = 'pg-report'>"),
+  );
+
   return $form;
 }
 
 
-function pl_activities_view_select_option($term,$progress) {
+function pl_activities_view_select_option() {
 
-  global $base_url;
-  $voc = taxonomy_vocabulary_machine_name_load($term);
-  $activity_term_vid = $voc->vid;
-  $activities_terms = taxonomy_get_tree($activity_term_vid);
+  $query = db_select('eck_activity','act');
+  $query->join('field_data_field_activity_fired_hook','hook', 'hook.entity_id = act.id');
+  $query->fields('act', array('title','id'));
+  $query->condition('hook.field_activity_fired_hook_value','progress_page');
+  $result = $query->execute()->fetchAll();
 
-  foreach ($activities_terms as $key => $value) {
-    $term_title = $value->name;
-    $term_tid = $value->tid;
-    $activity_term = taxonomy_term_load($term_tid);
-    if($activity_term->field_progress_page_term['und'][0]['value'] == $progress){
-      $select_options[] = array();
-      $select_options[0] = t('Select activity');
-      $select_options[$term_tid] = $term_title;
-    }
+  foreach ($result as $key => $value) {
+    $options[$value->id] = $value->title;
   }
-  return $select_options;
+
+  return $options;
 }
 
 /**
