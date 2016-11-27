@@ -8,21 +8,23 @@ function pl_complete_activity_progress(){
   global $user;
   $activity_uid = $user->uid;
 
-  $tid = $_REQUEST['id'];
+  $activity_id = $_REQUEST['id'];
   $activity_date = $_REQUEST['date'];
 
-  $activity_term = taxonomy_term_load($tid);
-  $activity_id = $activity_term->field_activity_id['und'][0]['value'];
+  play_library_program_create_activity_entry($activity_id, $account_id);
 
-  $activity_limit = pl_retrieve_activity_limit($activity_id);
-  $node_created = pl_activity_report_node_creation($activity_uid, $activity_id);
+  // $activity_term = taxonomy_term_load($tid);
+  // $activity_id = $activity_term->field_activity_id['und'][0]['value'];
 
-  if($node_created < $activity_limit){
-    pl_activity_report_node_create($activity_id, $activity_date, $tid);
-    play_library_program_create_activity_entry($activity_id, $activity_uid);
-  }else{
-    $_SESSION['exceed-activity-limit'] = drupal_set_message(t('You have recorded maximum number of times this activity can be performed.'),'error');
-  }
+  // $activity_limit = pl_retrieve_activity_limit($activity_id);
+  // $node_created = pl_activity_report_node_creation($activity_uid, $activity_id);
+
+  // if($node_created < $activity_limit){
+  //   pl_activity_report_node_create($activity_id, $activity_date, $tid);
+  //   play_library_program_create_activity_entry($activity_id, $activity_uid);
+  // }else{
+  //   $_SESSION['exceed-activity-limit'] = drupal_set_message(t('You have recorded maximum number of times this activity can be performed.'),'error');
+  // }
   echo 1;
 }
 

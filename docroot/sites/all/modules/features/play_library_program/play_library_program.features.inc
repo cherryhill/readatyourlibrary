@@ -39,10 +39,7 @@ function play_library_program_eck_bundle_info() {
           'uid' => 0,
           'created' => 0,
           'activity_points' => 0,
-          'changed' => 0,
-          'language' => 0,
         ),
-        'multilingual' => 1,
       ),
     ),
     'activity_activity_entry' => array(
@@ -50,51 +47,6 @@ function play_library_program_eck_bundle_info() {
       'entity_type' => 'activity',
       'name' => 'activity_entry',
       'label' => 'Activity Entry',
-      'config' => array(
-        'managed_properties' => array(
-          'title' => 0,
-          'uid' => 0,
-          'created' => 0,
-          'activity_points' => 0,
-          'changed' => 0,
-          'language' => 0,
-        ),
-        'multilingual' => 1,
-      ),
-    ),
-    'badge_badge' => array(
-      'machine_name' => 'badge_badge',
-      'entity_type' => 'badge',
-      'name' => 'badge',
-      'label' => 'Badge',
-      'config' => array(),
-    ),
-    'badge_user_badge' => array(
-      'machine_name' => 'badge_user_badge',
-      'entity_type' => 'badge',
-      'name' => 'user_badge',
-      'label' => 'User Badge',
-      'config' => array(),
-    ),
-    'raffle_raffle' => array(
-      'machine_name' => 'raffle_raffle',
-      'entity_type' => 'raffle',
-      'name' => 'raffle',
-      'label' => 'Raffle',
-      'config' => array(),
-    ),
-    'raffle_raffle_entry' => array(
-      'machine_name' => 'raffle_raffle_entry',
-      'entity_type' => 'raffle',
-      'name' => 'raffle_entry',
-      'label' => 'Raffle Entry',
-      'config' => array(),
-    ),
-    'raffle_raffle_winner' => array(
-      'machine_name' => 'raffle_raffle_winner',
-      'entity_type' => 'raffle',
-      'name' => 'raffle_winner',
-      'label' => 'Raffle Winner',
       'config' => array(),
     ),
     'reward_reward' => array(
@@ -115,13 +67,6 @@ function play_library_program_eck_bundle_info() {
       'entity_type' => 'reward',
       'name' => 'reward_claim',
       'label' => 'Reward Claim',
-      'config' => array(),
-    ),
-    'reward_reward_criteria' => array(
-      'machine_name' => 'reward_reward_criteria',
-      'entity_type' => 'reward',
-      'name' => 'reward_criteria',
-      'label' => 'Reward Criteria',
       'config' => array(),
     ),
   );
@@ -157,57 +102,15 @@ function play_library_program_eck_entity_type_info() {
           'type' => 'integer',
           'behavior' => '',
         ),
-        'changed' => array(
-          'label' => 'Changed',
-          'type' => 'integer',
-          'behavior' => 'changed',
-        ),
         'language' => array(
           'label' => 'Entity language',
           'type' => 'language',
           'behavior' => 'language',
         ),
-      ),
-    ),
-    'badge' => array(
-      'name' => 'badge',
-      'label' => 'Badge',
-      'properties' => array(
-        'title' => array(
-          'label' => 'Title',
-          'type' => 'text',
-          'behavior' => 'title',
-        ),
-        'uid' => array(
-          'label' => 'Author',
+        'changed' => array(
+          'label' => 'Changed',
           'type' => 'integer',
-          'behavior' => 'author',
-        ),
-        'created' => array(
-          'label' => 'Created',
-          'type' => 'integer',
-          'behavior' => 'created',
-        ),
-      ),
-    ),
-    'raffle' => array(
-      'name' => 'raffle',
-      'label' => 'Raffle',
-      'properties' => array(
-        'title' => array(
-          'label' => 'Title',
-          'type' => 'text',
-          'behavior' => 'title',
-        ),
-        'uid' => array(
-          'label' => 'Author',
-          'type' => 'integer',
-          'behavior' => 'author',
-        ),
-        'created' => array(
-          'label' => 'Created',
-          'type' => 'integer',
-          'behavior' => 'created',
+          'behavior' => 'changed',
         ),
       ),
     ),
