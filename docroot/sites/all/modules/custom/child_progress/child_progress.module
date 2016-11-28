@@ -492,6 +492,7 @@ function calendar_page() {
     'dec' => 12
   );
   $mth = $month[$mth];
+  global $event_time; 
   $event_time = mktime(0, 0, 0, $mth, $dt, $yr);
 
   $sticker_count = db_select('calendar', 'c')
@@ -530,10 +531,11 @@ function calendar_page() {
       // get the just inserted ID from calendar table.
       // this will be used to update the record for reward.
       // if user receives one after this activity.
+        global $max_id;
         $query = db_select('calendar');
         $query->addExpression('MAX(id)');
         $max_id = $query->execute()->fetchField();
-        $_SESSION['usr_calendar_id'] = $max_id;
+        //$_SESSION['usr_calendar_id'] = $max_id;
 
         // get the nid of sticker contant type
 
