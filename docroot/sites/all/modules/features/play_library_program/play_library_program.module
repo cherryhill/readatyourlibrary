@@ -82,19 +82,22 @@ function play_library_program_access_activity_entry($activity_id) {
 /**
  *  Condition for activity frequecy limit;
  */
-function play_library_program_frequency_limit($activity) {
+function play_library_program_frequency_limit($activity, $activity_time) {
 
   global $language;
+  global $event_time;
   $lang = $language->language;
 
   global $user;
   $activity_requency_limit = $activity->field_activity_time_limit[$lang][0]['value'];
-  $last_entry = db_query("SELECT created FROM {eck_activity} WHERE uid = :uid ORDER BY created DESC LIMIT 1", array(':uid' => $user->uid))->fetchField();
+  $last_entry = db_query("SELECT COUNT(*) FROM {eck_activity} WHERE uid = :uid AND created  between (:activity_time - :activity_requency_limit ) and (:activity_time + :activity_requency_limit)", array(':uid' => $user->uid, ':activity_time' => $activity_time, ':activity_requency_limit' => $activity_requency_limit))->fetchField();
 
-  if((time() - $activity_requency_limit) < $last_entry) {    
-    return FALSE;
-  } else {
+  if($last_entry == 0) { 
+    
     return TRUE;
+  } else {
+   
+    return FALSE;
   }
 }
 
@@ -701,6 +704,13 @@ function play_library_program_create_activity_entry($activity_id, $account_id) {
 
   global $language;
   $lang = $language->language;
+  global $event_time;
+  $query = db_select('eck_activity', 'ea');
+  $query->join('field_data_field_activity_fired_hook', 'afh', 'ea.id = afh.entity_id');
+  $query->condition('afh.entity_id', $activity_id);
+  $query->fields('afh', array('field_activity_fired_hook_value'));
+  $res = $query->execute();
+  $activity_firing_hook = $res->fetchField();
 
   $activities = entity_load('activity', array($activity_id));
   $activity = reset($activities);
@@ -720,15 +730,22 @@ function play_library_program_create_activity_entry($activity_id, $account_id) {
   $title = t("@activity on @time", array('@activity' => $activity->title, '@time' => date('Y-m-d H:i')));
 
   // creating activity entry in Activity Entry Bundle
-  $activity_entry = entity_create('activity', array('type' => 'activity_entry', 'title' => $title, 'uid' => $account_id, 'activity_points' => $activity_point));
-  $activity_entry->field_activity_entry_activity[$lang][0]['target_id'] = $activity->id;
-  $activity_entry->field_activity_point[$lang][0]['value'] = $activity_point;
+  if($activity_firing_hook == 'node_update|node|sticker|updated') {
+    $activity_entry = entity_create('activity', array('type' => 'activity_entry', 'title' => $title, 'uid' => $account_id, 'created' => $event_time, 'activity_points' => $activity_point));
+    $activity_entry->field_activity_entry_activity[$lang][0]['target_id'] = $activity->id;
+    $activity_entry->field_activity_point[$lang][0]['value'] = $activity_point;
+  }else {
+    $activity_entry = entity_create('activity', array('type' => 'activity_entry', 'title' => $title, 'uid' => $account_id, 'activity_points' => $activity_point));
+    $activity_entry->field_activity_entry_activity[$lang][0]['target_id'] = $activity->id;
+    $activity_entry->field_activity_point[$lang][0]['value'] = $activity_point;
+    $event_time = time();
+  }
 
   // Private message subject and body for every activity.
   $message_subject = $activity->field_activity_message_subject[$lang][0]['value'];
   $message_body = $activity->field_activity_message[$lang][0]['value'];
   // checking of activity frequency limit
-  $activity_frequency_limit = play_library_program_frequency_limit($activity);
+  $activity_frequency_limit = play_library_program_frequency_limit($activity, $event_time);
 
   // checking time range for activity to be performed
   $activity_time_limit = play_library_program_activity_time_limit($activity);
