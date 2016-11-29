@@ -20,10 +20,10 @@ function child_progress_block_info() {
     'info' => t('Show calendar data json'),
     'cache' => DRUPAL_NO_CACHE,
     );
-  $blocks['user_prize_block'] = array(
-    'info' => t('User Progress Page Block'),
-    'cache' => DRUPAL_NO_CACHE,
-    );
+  // $blocks['user_prize_block'] = array(
+  //   'info' => t('User Progress Page Block'),
+  //   'cache' => DRUPAL_NO_CACHE,
+  //   );
   return $blocks;
 }
 
@@ -41,10 +41,10 @@ function child_progress_block_view($block_name = '') {
     $block['subject'] = '';
     $block['content'] = generate_json_data();
     break;
-    case 'user_prize_block':
-    $block['subject'] = '';
-    $block['content'] = progress_user_block();
-    break;                               
+    // case 'user_prize_block':
+    // $block['subject'] = '';
+    // $block['content'] = progress_user_block();
+    // break;                               
   }
   return $block;
 }
@@ -71,70 +71,6 @@ function no_of_sticker_on_mobile() {
   }
   return $output;
 }
-
-
-// This is custom block shown the user progress of reading activity.
-
-function progress_user_block() {
-  global $user;
-  $uid = $user->uid;
-  $count_query = db_query("SELECT COUNT(image_url) as image_url
-    FROM {calendar} c
-    WHERE c.uid = :uid",array(':uid' => $uid))->fetchAll();
-  $total_read_days = $count_query[0]->image_url;
-
-  // get all rewards.
-  $qry = db_select('field_data_field_activity_fired_hook', 'fh');
-  $qry->join('field_data_field_activity_points', 'ap', 'ap.entity_id = fh.entity_id');
-  $qry->Join('field_data_field_reward_criteria_activity', 'rca', 'fh.entity_id = rca.field_reward_criteria_activity_target_id');
-  $qry->Join('field_data_field_reward_criteria_point_mark', 'rcpm', 'rca.entity_id = rcpm.entity_id');
-  $qry->fields('rcpm', array('field_reward_criteria_point_mark_value'));
-  $qry->fields('ap', array('field_activity_points_value'));
-  $qry->condition('fh.field_activity_fired_hook_value', 'node_update|node|sticker|updated');
-  $rs = $qry->execute()->fetchAll();
-  
-  $activity_point = 0;
-  $next_reward_in_days = 0;
-  $user_points = 0;
-  $closest_reward = 0;
-
-  foreach($rs as $v) {
-    if (!$activity_point) {
-      $activity_point = $v->field_activity_points_value;
-      $user_points = $total_read_days * $activity_point;
-    }
-
-    $reward_point = $v->field_reward_criteria_point_mark_value;
-    if ($reward_point > $user_points) {
-      if(!$closest_reward) {
-        $closest_reward = $reward_point;
-      } else {
-        if($reward_point < $closest_reward) {
-          $closest_reward = $reward_point;
-        }
-      }
-    }
-  }
-
-  $reads_for_next_reward = ($closest_reward / $activity_point) - $total_read_days;
-
-  if($reads_for_next_reward < 0) {
-    return t("<div class='all_rewrad_won'>Congratulations! You have completed the reading program and have received all the reading rewards.</div>");
-  }
-  else {
-    if($reads_for_next_reward == 1) {
-      $msg = t($reads_for_next_reward. "more day of reading needed to receive your next prize");
-
-      
-    }
-    else {
-      $msg = t($reads_for_next_reward." more days of reading needed to receive your next prize");
-    }
-    return "<div>$msg</div>";
-  }
-  
-}
-
 
 // children progress page on mobile.
 
@@ -494,6 +430,7 @@ function calendar_page() {
   $mth = $month[$mth];
   global $event_time; 
   $event_time = mktime(0, 0, 0, $mth, $dt, $yr);
+  
 
   $sticker_count = db_select('calendar', 'c')
   ->fields('c', array('image_url'))
@@ -531,11 +468,11 @@ function calendar_page() {
       // get the just inserted ID from calendar table.
       // this will be used to update the record for reward.
       // if user receives one after this activity.
-        global $max_id;
+        //global $max_id;
         $query = db_select('calendar');
         $query->addExpression('MAX(id)');
         $max_id = $query->execute()->fetchField();
-        //$_SESSION['usr_calendar_id'] = $max_id;
+        $_SESSION['usr_calendar_id'] = $max_id;
 
         // get the nid of sticker contant type
 
