@@ -108,8 +108,8 @@ function play_library_program_activity_time_limit($activity) {
 
   //$activity_start_date = strtotime($activity->field_start_date[LANGUAGE_NONE][0]['value']);
   //$activity_end_date = strtotime($activity->field_start_date[LANGUAGE_NONE][0]['value2']);
-  echo 'sdate'.$activity_start_date = strtotime($activity->field_activity_start_date[$lang][0]['value']);
-  echo 'edate'.$activity_end_date = strtotime($activity->field_activity_end_date[$lang][0]['value']);
+  $activity_start_date = strtotime($activity->field_activity_start_date[$lang][0]['value']);
+  $activity_end_date = strtotime($activity->field_activity_end_date[$lang][0]['value']);
   $current_time = $_SERVER['REQUEST_TIME'];
 
   if($activity_start_date <= $current_time && $current_time <=  $activity_end_date) {
@@ -1478,7 +1478,10 @@ function _play_library_program_set_message($reward, $account_uid) {
 
 function _play_library_program_reward_criteria_fulfilled($reward_entity, $account_uid) {
 
-  $rewardRoles = $reward_entity->field_roles_reward[LANGUAGE_NONE];
+  global $language;
+  $lang = $language->language;
+
+  $rewardRoles = $reward_entity->field_roles_reward[$lang];
   $arrSize = sizeof($rewardRoles);
 
   for ($i = 0; $i < $arrSize; $i++) {
@@ -1562,10 +1565,8 @@ function _play_library_program_add_points_to_rewards($activity_id, $points_to_ad
       $rew_age_limit = chk_user_age_for_reward($user_age, $age_from, $age_to);
       $tax_reward = 'R_'.$reward_id;
       $rew_date = pl_reward_time_limit($rew_sdate, $rew_edate);
+
       //Give points only if all reward criterias are satisfied.
-      //to be fixed later
-      // $roles = TRUE;
-      // $rew_age_limit = TRUE;
       //Add only points that are required to win the reward maximum number of times else unnessary points will accumulate in user points
       if($rew_date == TRUE && $roles == TRUE && $rew_age_limit == TRUE && $status == 'active'){
         //Calculate points based on reward repeatable flag and receiver reward count
