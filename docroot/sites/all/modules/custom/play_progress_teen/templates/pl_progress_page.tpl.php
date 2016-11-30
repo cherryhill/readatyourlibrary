@@ -70,12 +70,40 @@ $grids = 18;
     'uid' => $current_uid,
     'type' => 'activity_entry',
   );
+
+
+  $test = variable_get('nonself_activities_progress');
+
+  $query = new EntityFieldQuery();
+  $query->entityCondition('entity_type', 'activity');
+  $query->entityCondition('bundle', 'activity_entry');
+  $query->propertyCondition('uid', 1);
+  $query->fieldCondition('field_activity_entry_activity', 'target_id', $test);
+  $count = $query->execute();
+
+  // $test = variable_get('nonself_activities_progress');
+
+  // foreach ($test as $key => $value) {
+  //   $testst[] = $value; 
+  // }
+
+  echo '<pre>';print_r($count); die();
+
   
   // $nodes = entity_load('activity', array(227));
   $nodes = entity_load('activity',FALSE,$criteria);
-  // $node = reset($nodes);
+  $node = reset($nodes);
 
-  // echo '<pre>'; print_r($nodes);  die();
+  // print_r($node); die();
+
+  // $rr = 272;
+  //   $test = variable_get('nonself_activities_progress');
+  //   if (in_array($rr, $test)) {
+  //     echo 'yes';
+  //   } else {
+  //     echo 'no';
+  //   }
+  // echo '<pre>'; print_r($test);  die();
 
 
   foreach ($nodes as $key => $value) {
