@@ -66,45 +66,33 @@ $grids = 18;
   echo '<h1>My Passport Stamps</h1>';
   $exceed_limit = '';
 
-  $criteria = array(
-    'uid' => $current_uid,
-    'type' => 'activity_entry',
-  );
+  global $language;
+  $lang = $language->language;
 
+  // $criteria = array(
+  //   'uid' => $current_uid,
+  //   'type' => 'activity_entry',
+  // );
 
-  $test = variable_get('nonself_activities_progress');
+  $nonSelf = variable_get('nonself_activities_progress');
+  $self = variable_get('activities_progress');
+
+  $progressActi = array_merge($self, $nonSelf);
 
   $query = new EntityFieldQuery();
   $query->entityCondition('entity_type', 'activity');
   $query->entityCondition('bundle', 'activity_entry');
-  $query->propertyCondition('uid', 1);
-  $query->fieldCondition('field_activity_entry_activity', 'target_id', $test);
+  $query->propertyCondition('uid', $current_uid);
+  $query->fieldCondition('field_activity_entry_activity', 'target_id', $progressActi);
   $count = $query->execute();
 
-  // $test = variable_get('nonself_activities_progress');
+  foreach ($count['activity'] as $key => $value) {
+    $activityIds[] = $value->id;
+  }
 
-  // foreach ($test as $key => $value) {
-  //   $testst[] = $value; 
-  // }
-
-  echo '<pre>';print_r($count); die();
-
-  
-  // $nodes = entity_load('activity', array(227));
-  $nodes = entity_load('activity',FALSE,$criteria);
+  $nodes = entity_load('activity', $activityIds);
+  // $nodes = entity_load(  'activity',FALSE,$criteria);
   $node = reset($nodes);
-
-  // print_r($node); die();
-
-  // $rr = 272;
-  //   $test = variable_get('nonself_activities_progress');
-  //   if (in_array($rr, $test)) {
-  //     echo 'yes';
-  //   } else {
-  //     echo 'no';
-  //   }
-  // echo '<pre>'; print_r($test);  die();
-
 
   foreach ($nodes as $key => $value) {
 
@@ -113,14 +101,12 @@ $grids = 18;
     $title = substr($activityTitle, 0, -19);
     $date = substr($activityTitle, -16);
     $n_date = date("m.d.y", strtotime($date));
-    $activityReward = $value->field_rw_claim_id[LANGUAGE_NONE][0]['value'];
-    $rewardMsg = $value->field_progress_info[LANGUAGE_NONE][0]['value'];
-
-  // echo '<pre>'; print_r($rewardMsg);
+    $activityReward = $value->field_rw_claim_id[$lang][0]['value'];
+    $rewardMsg = $value->field_progress_info[$lang][0]['value'];
 
     // $node_date = $value->field_completion_date['und'][0]['value'];
-    $user_reward = $value->field_won_reward['und'][0]['value'];
-    $node_type_hotspot = $value->field_hotspot_activity_report['und'][0]['value'];
+    $user_reward = $value->field_won_reward[$lang][0]['value'];
+    $node_type_hotspot = $value->field_hotspot_activity_report[$lang][0]['value'];
     $user_won_reward = '';
     $hotspot_type_activity = '';
     $n_date = date("m.d.y", strtotime($node_date));
@@ -136,8 +122,6 @@ $grids = 18;
 
   $node_nid[] = '<p class  = "date-pg">'.$n_date.'</p>'.$hotspot_type_activity.'<p class = "title-pg">'.$title.'</p>'.$user_won_reward;
   }
-  // die();
-
 
   if(isset($_SESSION['exceed-activity-limit']['status'][0])){
     $exceed_limit = $_SESSION['exceed-activity-limit']['status'][0];
