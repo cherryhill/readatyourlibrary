@@ -82,21 +82,30 @@ function play_library_program_access_activity_entry($activity_id) {
 /**
  *  Condition for activity frequecy limit;
  */
-function play_library_program_frequency_limit($activity, $activity_time) {
+function play_library_program_frequency_limit($activity, $activity_time, $account_id) {
 
   global $language;
   global $event_time;
   $lang = $language->language;
 
-  global $user;
+  $activity_id = $activity->id;
   $activity_requency_limit = $activity->field_activity_time_limit[$lang][0]['value'];
-  $last_entry = db_query("SELECT COUNT(*) FROM {eck_activity} WHERE uid = :uid AND created  between (:activity_time - :activity_requency_limit ) and (:activity_time + :activity_requency_limit)", array(':uid' => $user->uid, ':activity_time' => $activity_time, ':activity_requency_limit' => $activity_requency_limit))->fetchField();
+  $start_time =$activity_time - $activity_requency_limit;
+  $end_time = $activity_time + $activity_requency_limit;
 
-  if($last_entry == 0) { 
-    
+  $arr = array($start_time,$end_time);
+
+  $query = new EntityFieldQuery();
+  $query->entityCondition('entity_type', 'activity');
+  $query->entityCondition('bundle', 'activity_entry');
+  $query->propertyCondition('uid', $account_id);
+  $query->propertyCondition('created',$arr, 'BETWEEN');
+  $query->fieldCondition('field_activity_entry_activity', 'target_id', $activity_id);
+  $res = $query->count()->execute();
+
+  if($res == 0) {    
     return TRUE;
-  } else {
-   
+  } else { 
     return FALSE;
   }
 }
@@ -104,18 +113,15 @@ function play_library_program_frequency_limit($activity, $activity_time) {
 /**
  * Condition for activity start date and end date;
  */
-function play_library_program_activity_time_limit($activity) {
+function play_library_program_activity_time_limit($activity, $activity_date) {
 
   global $language;
   $lang = $language->language;
 
-  //$activity_start_date = strtotime($activity->field_start_date[LANGUAGE_NONE][0]['value']);
-  //$activity_end_date = strtotime($activity->field_start_date[LANGUAGE_NONE][0]['value2']);
   $activity_start_date = strtotime($activity->field_activity_start_date[$lang][0]['value']);
   $activity_end_date = strtotime($activity->field_activity_end_date[$lang][0]['value']);
-  $current_time = $_SERVER['REQUEST_TIME'];
 
-  if($activity_start_date <= $current_time && $current_time <=  $activity_end_date) {
+  if($activity_start_date <= $activity_date && $activity_date <=  $activity_end_date) {
     return TRUE;
   } else {
     return FALSE;
@@ -745,10 +751,10 @@ function play_library_program_create_activity_entry($activity_id, $account_id) {
   $message_subject = $activity->field_activity_message_subject[$lang][0]['value'];
   $message_body = $activity->field_activity_message[$lang][0]['value'];
   // checking of activity frequency limit
-  $activity_frequency_limit = play_library_program_frequency_limit($activity, $event_time);
+  $activity_frequency_limit = play_library_program_frequency_limit($activity, $event_time, $account_id);
 
   // checking time range for activity to be performed
-  $activity_time_limit = play_library_program_activity_time_limit($activity);
+  $activity_time_limit = play_library_program_activity_time_limit($activity, $event_time);
   
   // Activity entry if satisfy the conditions else shows an error message
   if(($count_activity_entry < $no_of_time_user_perform_activity) && ($activity_frequency_limit == TRUE) && ($activity_time_limit == TRUE)) {

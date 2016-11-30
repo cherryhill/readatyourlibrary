@@ -135,6 +135,21 @@ function pl_activities_view_select_option() {
   return $options;
 }
 
+function pl_activities_view_select_option_nonSelf() {
+
+  $query = db_select('eck_activity','act');
+  $query->join('field_data_field_activity_fired_hook','hook', 'hook.entity_id = act.id');
+  $query->fields('act', array('title','id'));
+  $query->condition('hook.field_activity_fired_hook_value','progress_page','!=');
+  $result = $query->execute()->fetchAll();
+
+  foreach ($result as $key => $value) {
+    $options[$value->id] = $value->title;
+  }
+
+  return $options;
+}
+
 /**
  * function callback for progress page
  */
