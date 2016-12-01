@@ -76,6 +76,10 @@ $grids = 18;
 
   $nonSelf = variable_get('nonself_activities_progress');
   $self = variable_get('activities_progress');
+  $user_won_reward = variable_get('reward_msg');
+  $rewardMsg = $user_won_reward['value'];
+
+  // echo '<pre>'; print_r($user_won_reward);die();
 
   $progressActi = array_merge($self, $nonSelf);
 
@@ -100,16 +104,15 @@ $grids = 18;
 
     $title = substr($activityTitle, 0, -19);
     $date = substr($activityTitle, -16);
-    $n_date = date("m.d.y", strtotime($date));
-    $activityReward = $value->field_rw_claim_id[$lang][0]['value'];
-    $rewardMsg = $value->field_progress_info[$lang][0]['value'];
 
-    // $node_date = $value->field_completion_date['und'][0]['value'];
+    $n_date = date("m.d.y", strtotime($date));
+
+    $activityReward = $value->field_rw_claim_id[$lang][0]['value'];
+
     $user_reward = $value->field_won_reward[$lang][0]['value'];
     $node_type_hotspot = $value->field_hotspot_activity_report[$lang][0]['value'];
     $user_won_reward = '';
     $hotspot_type_activity = '';
-    $n_date = date("m.d.y", strtotime($node_date));
 
 	if($node_type_hotspot){
 	  $hotspot_type_activity = '<p class = "hotspot-activity">Bay Area Hot Spot!</p>';

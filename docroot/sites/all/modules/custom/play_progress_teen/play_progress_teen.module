@@ -56,6 +56,16 @@ function play_progress_teen_menu() {
     'file path' => drupal_get_path('module', 'play_progress_teen'),
   );
 
+  $items['admin/config/system/progress_page_details'] = array(
+    'title' => 'Progress Page Details',
+    'description' => 'Platform Details for the program',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('pl_configuration_progress'),
+    'access arguments' => array('access administration pages'),
+    'type' => MENU_NORMAL_ITEM,
+    'file' => 'inc/pl_configuration_page.inc',
+  );
+
   return $items;
 }
 
@@ -97,7 +107,7 @@ function pl_progress_record($form,$form_state){
   $form['activity_progress_select'] = array(
     '#title' => t('I completed'),
     '#type' => 'select',
-    '#options' => pl_activities_view_select_option(),
+    '#options' => pl_activities_progress_block(),
     '#attributes' => array(
       'class' => array('activities_list_progress')
     ),
@@ -119,6 +129,21 @@ function pl_progress_record($form,$form_state){
   return $form;
 }
 
+function pl_activities_progress_block() {
+
+  $self = variable_get('activities_progress');
+
+  $query = db_select('eck_activity','act');
+  $query->fields('act', array('title','id'));
+  $query->condition('id', $self);
+  $result = $query->execute()->fetchAll();
+
+  foreach ($result as $key => $value) {
+    $options[$value->id] = $value->title;
+  }
+
+  return $options;
+}
 
 function pl_activities_view_select_option() {
 

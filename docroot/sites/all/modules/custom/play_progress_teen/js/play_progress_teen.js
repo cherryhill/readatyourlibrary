@@ -6,6 +6,11 @@
 Drupal.behaviors.play_progress_teen = {
   attach: function (context, settings) {
 
+  var tes = $('#edit-activity-progress-select').val();
+  if (tes == null) {
+    $('#edit-activity-progress-select').append('<option value = 0>Please select activity</option>');
+  }
+
   $('#pg-report').click(function() {
     var errors = 0;
     var tid = $("#edit-activity-progress-select option:selected").val();

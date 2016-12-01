@@ -9,9 +9,9 @@ function pl_complete_activity_progress(){
   $activity_uid = $user->uid;
 
   $activity_id = $_REQUEST['id'];
-  $activity_date = $_REQUEST['date'];
+  $activity_date = strtotime($_REQUEST['date']);
 
-  play_library_program_create_activity_entry($activity_id, $account_id);
+  play_library_program_create_activity_entry($activity_id, $account_id, $activity_date);
 
   // $activity_term = taxonomy_term_load($tid);
   // $activity_id = $activity_term->field_activity_id['und'][0]['value'];
