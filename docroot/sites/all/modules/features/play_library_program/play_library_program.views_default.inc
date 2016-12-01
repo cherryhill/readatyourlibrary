@@ -157,30 +157,30 @@ function play_library_program_views_default_views() {
   $handler->display->display_options['empty']['area']['empty'] = TRUE;
   $handler->display->display_options['empty']['area']['content'] = 'No badges have been created.';
   $handler->display->display_options['empty']['area']['format'] = 'filtered_html';
-  /* Field: Badge: Id */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['id']['id'] = 'id';
   $handler->display->display_options['fields']['id']['table'] = 'eck_badge';
   $handler->display->display_options['fields']['id']['field'] = 'id';
-  /* Field: Badge: Delete link */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['delete_link']['id'] = 'delete_link';
   $handler->display->display_options['fields']['delete_link']['table'] = 'eck_badge';
   $handler->display->display_options['fields']['delete_link']['field'] = 'delete_link';
   $handler->display->display_options['fields']['delete_link']['label'] = 'Delete';
-  /* Field: Badge: Edit link */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['edit_link']['id'] = 'edit_link';
   $handler->display->display_options['fields']['edit_link']['table'] = 'eck_badge';
   $handler->display->display_options['fields']['edit_link']['field'] = 'edit_link';
   $handler->display->display_options['fields']['edit_link']['label'] = 'Edit';
-  /* Field: Badge: Link */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['view_link']['id'] = 'view_link';
   $handler->display->display_options['fields']['view_link']['table'] = 'eck_badge';
   $handler->display->display_options['fields']['view_link']['field'] = 'view_link';
   $handler->display->display_options['fields']['view_link']['label'] = 'View';
-  /* Field: Badge: Title */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'eck_badge';
   $handler->display->display_options['fields']['title']['field'] = 'title';
-  /* Filter criterion: Badge: badge type */
+  /* Filter criterion: Broken/missing handler */
   $handler->display->display_options['filters']['type']['id'] = 'type';
   $handler->display->display_options['filters']['type']['table'] = 'eck_badge';
   $handler->display->display_options['filters']['type']['field'] = 'type';
@@ -271,16 +271,16 @@ function play_library_program_views_default_views() {
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'eck_reward';
   $handler->display->display_options['fields']['title']['field'] = 'title';
-  /* Field: Reward: Points */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['field_reward_criteria_point_mark']['id'] = 'field_reward_criteria_point_mark';
   $handler->display->display_options['fields']['field_reward_criteria_point_mark']['table'] = 'field_data_field_reward_criteria_point_mark';
   $handler->display->display_options['fields']['field_reward_criteria_point_mark']['field'] = 'field_reward_criteria_point_mark';
   $handler->display->display_options['fields']['field_reward_criteria_point_mark']['label'] = 'Point Criteria';
-  /* Field: Reward: Repeatable */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['field_reward_criteria_repeatable']['id'] = 'field_reward_criteria_repeatable';
   $handler->display->display_options['fields']['field_reward_criteria_repeatable']['table'] = 'field_data_field_reward_criteria_repeatable';
   $handler->display->display_options['fields']['field_reward_criteria_repeatable']['field'] = 'field_reward_criteria_repeatable';
-  /* Field: Reward: Activity */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['field_reward_criteria_activity']['id'] = 'field_reward_criteria_activity';
   $handler->display->display_options['fields']['field_reward_criteria_activity']['table'] = 'field_data_field_reward_criteria_activity';
   $handler->display->display_options['fields']['field_reward_criteria_activity']['field'] = 'field_reward_criteria_activity';
@@ -289,7 +289,7 @@ function play_library_program_views_default_views() {
   $handler->display->display_options['fields']['view_link']['table'] = 'eck_reward';
   $handler->display->display_options['fields']['view_link']['field'] = 'view_link';
   $handler->display->display_options['fields']['view_link']['label'] = 'View';
-  /* Field: Reward: Reward */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['field_reward_criteria_reward']['id'] = 'field_reward_criteria_reward';
   $handler->display->display_options['fields']['field_reward_criteria_reward']['table'] = 'field_data_field_reward_criteria_reward';
   $handler->display->display_options['fields']['field_reward_criteria_reward']['field'] = 'field_reward_criteria_reward';
@@ -386,30 +386,30 @@ function play_library_program_views_default_views() {
   $handler->display->display_options['empty']['area']['empty'] = TRUE;
   $handler->display->display_options['empty']['area']['content'] = 'Raffle has not yet been created. Please consider creating one.';
   $handler->display->display_options['empty']['area']['format'] = 'filtered_html';
-  /* Field: Raffle: Id */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['id']['id'] = 'id';
   $handler->display->display_options['fields']['id']['table'] = 'eck_raffle';
   $handler->display->display_options['fields']['id']['field'] = 'id';
-  /* Field: Raffle: Title */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'eck_raffle';
   $handler->display->display_options['fields']['title']['field'] = 'title';
-  /* Field: Raffle: Link */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['view_link']['id'] = 'view_link';
   $handler->display->display_options['fields']['view_link']['table'] = 'eck_raffle';
   $handler->display->display_options['fields']['view_link']['field'] = 'view_link';
   $handler->display->display_options['fields']['view_link']['label'] = 'View';
-  /* Field: Raffle: Edit link */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['edit_link']['id'] = 'edit_link';
   $handler->display->display_options['fields']['edit_link']['table'] = 'eck_raffle';
   $handler->display->display_options['fields']['edit_link']['field'] = 'edit_link';
   $handler->display->display_options['fields']['edit_link']['label'] = 'Edit';
-  /* Field: Raffle: Delete link */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['delete_link']['id'] = 'delete_link';
   $handler->display->display_options['fields']['delete_link']['table'] = 'eck_raffle';
   $handler->display->display_options['fields']['delete_link']['field'] = 'delete_link';
   $handler->display->display_options['fields']['delete_link']['label'] = 'Delete';
-  /* Filter criterion: Raffle: raffle type */
+  /* Filter criterion: Broken/missing handler */
   $handler->display->display_options['filters']['type']['id'] = 'type';
   $handler->display->display_options['filters']['type']['table'] = 'eck_raffle';
   $handler->display->display_options['filters']['type']['field'] = 'type';
@@ -470,21 +470,21 @@ function play_library_program_views_default_views() {
   $handler->display->display_options['empty']['area']['empty'] = TRUE;
   $handler->display->display_options['empty']['area']['content'] = 'There are currently no entries for this raffle';
   $handler->display->display_options['empty']['area']['format'] = 'simple_html';
-  /* Relationship: Entity Reference: Referenced Entity */
+  /* Relationship: Broken/missing handler */
   $handler->display->display_options['relationships']['field_raffle_entry_raffle_target_id']['id'] = 'field_raffle_entry_raffle_target_id';
   $handler->display->display_options['relationships']['field_raffle_entry_raffle_target_id']['table'] = 'field_data_field_raffle_entry_raffle';
   $handler->display->display_options['relationships']['field_raffle_entry_raffle_target_id']['field'] = 'field_raffle_entry_raffle_target_id';
   $handler->display->display_options['relationships']['field_raffle_entry_raffle_target_id']['label'] = 'Raffle';
-  /* Relationship: Raffle: Author */
+  /* Relationship: Broken/missing handler */
   $handler->display->display_options['relationships']['uid']['id'] = 'uid';
   $handler->display->display_options['relationships']['uid']['table'] = 'eck_raffle';
   $handler->display->display_options['relationships']['uid']['field'] = 'uid';
-  /* Field: Raffle: Id */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['id']['id'] = 'id';
   $handler->display->display_options['fields']['id']['table'] = 'eck_raffle';
   $handler->display->display_options['fields']['id']['field'] = 'id';
   $handler->display->display_options['fields']['id']['label'] = 'Entry Id';
-  /* Field: Raffle ID */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['id_1']['id'] = 'id_1';
   $handler->display->display_options['fields']['id_1']['table'] = 'eck_raffle';
   $handler->display->display_options['fields']['id_1']['field'] = 'id';
@@ -519,7 +519,7 @@ function play_library_program_views_default_views() {
   $handler->display->display_options['sorts']['random']['id'] = 'random';
   $handler->display->display_options['sorts']['random']['table'] = 'views';
   $handler->display->display_options['sorts']['random']['field'] = 'random';
-  /* Contextual filter: Raffle: Id */
+  /* Contextual filter: Broken/missing handler */
   $handler->display->display_options['arguments']['id']['id'] = 'id';
   $handler->display->display_options['arguments']['id']['table'] = 'eck_raffle';
   $handler->display->display_options['arguments']['id']['field'] = 'id';
@@ -529,7 +529,7 @@ function play_library_program_views_default_views() {
   $handler->display->display_options['arguments']['id']['summary']['number_of_records'] = '0';
   $handler->display->display_options['arguments']['id']['summary']['format'] = 'default_summary';
   $handler->display->display_options['arguments']['id']['summary_options']['items_per_page'] = '25';
-  /* Filter criterion: Raffle: raffle type */
+  /* Filter criterion: Broken/missing handler */
   $handler->display->display_options['filters']['type']['id'] = 'type';
   $handler->display->display_options['filters']['type']['table'] = 'eck_raffle';
   $handler->display->display_options['filters']['type']['field'] = 'type';
@@ -587,12 +587,12 @@ function play_library_program_views_default_views() {
   $handler->display->display_options['empty']['area']['empty'] = TRUE;
   $handler->display->display_options['empty']['area']['content'] = 'Winners have not yet been selected for this raffle';
   $handler->display->display_options['empty']['area']['format'] = 'simple_html';
-  /* Relationship: Entity Reference: Referenced Entity */
+  /* Relationship: Broken/missing handler */
   $handler->display->display_options['relationships']['field_raffle_winner_raffle_target_id']['id'] = 'field_raffle_winner_raffle_target_id';
   $handler->display->display_options['relationships']['field_raffle_winner_raffle_target_id']['table'] = 'field_data_field_raffle_winner_raffle';
   $handler->display->display_options['relationships']['field_raffle_winner_raffle_target_id']['field'] = 'field_raffle_winner_raffle_target_id';
   $handler->display->display_options['relationships']['field_raffle_winner_raffle_target_id']['label'] = 'Raffle';
-  /* Relationship: Entity Reference: Referenced Entity */
+  /* Relationship: Broken/missing handler */
   $handler->display->display_options['relationships']['field_raffle_winner_target_id']['id'] = 'field_raffle_winner_target_id';
   $handler->display->display_options['relationships']['field_raffle_winner_target_id']['table'] = 'field_data_field_raffle_winner';
   $handler->display->display_options['relationships']['field_raffle_winner_target_id']['field'] = 'field_raffle_winner_target_id';
@@ -602,7 +602,7 @@ function play_library_program_views_default_views() {
   $handler->display->display_options['fields']['name']['table'] = 'users';
   $handler->display->display_options['fields']['name']['field'] = 'name';
   $handler->display->display_options['fields']['name']['relationship'] = 'field_raffle_winner_target_id';
-  /* Contextual filter: Raffle: Raffle Winner Raffle (field_raffle_winner_raffle) */
+  /* Contextual filter: Broken/missing handler */
   $handler->display->display_options['arguments']['field_raffle_winner_raffle_target_id']['id'] = 'field_raffle_winner_raffle_target_id';
   $handler->display->display_options['arguments']['field_raffle_winner_raffle_target_id']['table'] = 'field_data_field_raffle_winner_raffle';
   $handler->display->display_options['arguments']['field_raffle_winner_raffle_target_id']['field'] = 'field_raffle_winner_raffle_target_id';
@@ -610,7 +610,7 @@ function play_library_program_views_default_views() {
   $handler->display->display_options['arguments']['field_raffle_winner_raffle_target_id']['summary']['number_of_records'] = '0';
   $handler->display->display_options['arguments']['field_raffle_winner_raffle_target_id']['summary']['format'] = 'default_summary';
   $handler->display->display_options['arguments']['field_raffle_winner_raffle_target_id']['summary_options']['items_per_page'] = '25';
-  /* Filter criterion: Raffle: raffle type */
+  /* Filter criterion: Broken/missing handler */
   $handler->display->display_options['filters']['type']['id'] = 'type';
   $handler->display->display_options['filters']['type']['table'] = 'eck_raffle';
   $handler->display->display_options['filters']['type']['field'] = 'type';
