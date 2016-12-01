@@ -431,8 +431,12 @@ function pl_reward_claim($reward_id, $account_uid, $category, $filters = NULL, $
     drupal_set_message(t($raffleOnsMsg));
     privatemsg_new_thread(array(user_load($account_uid)), $raffle_pm_sub, $raffle_pm_body,array('author'=>user_load($account_uid)));
   }
+
+  if (module_exists('child_progress')) {
+    play_library_program_update_user_calendar_state($reward_id);
+  }
   // drupal_set_message('Congratulations '.$reward->title,'alert');
-  play_library_program_update_user_calendar_state($reward_id);
+  // play_library_program_update_user_calendar_state($reward_id);
 }
 
 /**
