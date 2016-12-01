@@ -432,9 +432,7 @@ function pl_reward_claim($reward_id, $account_uid, $category, $filters = NULL, $
     privatemsg_new_thread(array(user_load($account_uid)), $raffle_pm_sub, $raffle_pm_body,array('author'=>user_load($account_uid)));
   }
   // drupal_set_message('Congratulations '.$reward->title,'alert');
-  if(module_exists('child_progress')) {
-    play_library_program_update_user_calendar_state($reward_id);
-  }
+  play_library_program_update_user_calendar_state($reward_id);
 }
 
 /**
