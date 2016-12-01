@@ -77,32 +77,6 @@ function play_library_program_ds_custom_fields_info() {
   );
   $export['raffle_entries'] = $ds_field;
 
-  $ds_field = new stdClass();
-  $ds_field->api_version = 1;
-  $ds_field->field = 'raffle_winners';
-  $ds_field->label = 'Raffle Winners';
-  $ds_field->field_type = 7;
-  $ds_field->entities = array(
-    'raffle' => 'raffle',
-  );
-  $ds_field->ui_limit = 'raffle|*';
-  $ds_field->properties = array(
-    'default' => array(),
-    'settings' => array(
-      'show_title' => array(
-        'type' => 'checkbox',
-      ),
-      'title_wrapper' => array(
-        'type' => 'textfield',
-        'description' => 'Eg: h1, h2, p',
-      ),
-      'ctools' => array(
-        'type' => 'ctools',
-      ),
-    ),
-  );
-  $export['raffle_winners'] = $ds_field;
-
   return $export;
 }
 
