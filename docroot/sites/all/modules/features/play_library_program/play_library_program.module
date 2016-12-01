@@ -394,13 +394,20 @@ function pl_reward_claim($reward_id, $account_uid, $category, $filters = NULL, $
   $rewards = entity_load('reward', array($reward_id));
   $reward = reset($rewards);
 
-  $onscreenMsgId = $reward->field_raffle_reward_noti[$lang][0]['value'];
-  $onsRaffleMsgId = $reward->field_raffle_notification[$lang][0]['value'];
+   $onscreenMsgId = $reward->field_raffle_reward_noti[$lang][0]['value'];
+   $onsRaffleMsgId = $reward->field_raffle_notification[$lang][0]['value'];
+   $reward_mess_sub = $reward->field_raffle_reward_noti[$lang][0]['value'];
+   $reward_message_body = $reward->field_raffle_reward_noti[$lang][0]['value'];
+   $raffle_mess_sub = $reward->field_raffle_notification[$lang][0]['value'];
+   $raffle_message_body = $reward->field_raffle_notification[$lang][0]['value']; 
   // Onscreen message for the reward claim.
   $rewardOnscMsg = messages_for_reward_claim($onscreenMsgId);
   // Onscreen message for the raffle claim.
   $raffleOnsMsg = messages_for_raffle_entry($onsRaffleMsgId);
-
+  $raffle_pm_sub = pm_raffle_messages_sub_for_reward_claim($raffle_mess_sub);
+  $raffle_pm_body = pm_raffle_messages_body_for_reward_claim($raffle_message_body);
+  $reward_pm_sub = pm_reward_messages_sub_for_reward_claim($reward_mess_sub);
+  $reward_pm_body = pm_reward_messages_body_for_reward_claim($reward_message_body); 
   //Entity insert in reward/raffle.
   if ($category == 'reward') {
     $title = t("@reward on @time", array('@reward' => $reward->title, '@time' => date('Y-m-d H:i')));
@@ -412,6 +419,7 @@ function pl_reward_claim($reward_id, $account_uid, $category, $filters = NULL, $
     entity_save('reward', $reward_claim);
 
     drupal_set_message(t($rewardOnscMsg));
+    privatemsg_new_thread(array(user_load($account_uid)), $reward_pm_sub, $reward_pm_body,array('author'=>user_load($account_uid)));
 
   }else if ($category == 'raffle_reward') {
 
@@ -421,9 +429,12 @@ function pl_reward_claim($reward_id, $account_uid, $category, $filters = NULL, $
     entity_save('reward', $reward_claim);
 
     drupal_set_message(t($raffleOnsMsg));
+    privatemsg_new_thread(array(user_load($account_uid)), $raffle_pm_sub, $raffle_pm_body,array('author'=>user_load($account_uid)));
   }
   // drupal_set_message('Congratulations '.$reward->title,'alert');
-  play_library_program_update_user_calendar_state($reward_id);
+  if(module_exists('child_progress')) {
+    play_library_program_update_user_calendar_state($reward_id);
+  }
 }
 
 /**
@@ -439,6 +450,65 @@ function messages_for_reward_claim($entity_id) {
 
   return $query['field_onscreen_prize_value'];
 }
+
+/**
+ * Raffle pivate message subject.
+ */
+function pm_raffle_messages_sub_for_reward_claim($entity_id) {
+
+  $query = db_select('field_data_field_mes_subject_reward','rfsub')
+  ->fields('rfsub', array('field_mes_subject_reward_value'))
+  ->condition('entity_id',$entity_id)
+  ->execute()
+  ->fetchAssoc();
+
+  return $query['field_mes_subject_reward_value'];
+}
+
+/**
+ * Raffle pivate message body.
+ */
+function pm_raffle_messages_body_for_reward_claim($entity_id) {
+
+  $query = db_select('field_data_field_message_reward_winner','rfbody')
+  ->fields('rfbody', array('field_message_reward_winner_value'))
+  ->condition('entity_id',$entity_id)
+  ->execute()
+  ->fetchAssoc();
+
+  return $query['field_message_reward_winner_value'];
+}
+
+
+/**
+ * Reward pivate message subject.
+ */
+function pm_reward_messages_sub_for_reward_claim($entity_id) {
+
+  $query = db_select('field_data_field_messa_subj_reward','rwsub')
+  ->fields('rwsub', array('field_messa_subj_reward_value'))
+  ->condition('entity_id',$entity_id)
+  ->execute()
+  ->fetchAssoc();
+
+  return $query['field_messa_subj_reward_value'];
+}
+
+/**
+ * Reward pivate message body.
+ */
+function pm_reward_messages_body_for_reward_claim($entity_id) {
+
+  $query = db_select('field_data_field_message_prize_winner','rwbody')
+  ->fields('rwbody', array('field_message_prize_winner_value'))
+  ->condition('entity_id',$entity_id)
+  ->execute()
+  ->fetchAssoc();
+
+  return $query['field_message_prize_winner_value'];
+}
+
+
 
 /**
  * Raffle Onscreen Message
