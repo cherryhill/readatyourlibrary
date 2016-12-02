@@ -572,25 +572,26 @@ function generate_json_data() {
   $j = 1;
   foreach ($result as $value) {
     $reward_claimed = $value->reward_id;
+    //$image_url = image_style_url();
 
     if($reward_claimed) {
 
       $events[] = array(
-        'title' => t('<div><div class="reward_image"><img data-id="'.$value->id.'" src="sites/kids17/files/styles/thumbnail/public/' . $value->image_url . '"</img></div>'.'<div class="reward_text">Congratulations! You earned a prize!</div></div>'), 
+        'title' => t('<div><div class="reward_image"><img data-id="'.$value->id.'" src="sites/kids17/files/styles/child_progress_sticker/public/' . $value->image_url . '"</img></div>'.'<div class="reward_text">Congratulations! You earned a prize!</div></div>'), 
         'date' => $value->date,
         );
     }
     else {
      if($i == 1) {
       $events[] = array(
-        'title' => t('<div><div class="event_image"><img data-id="'.$value->id.'" src="sites/kids17/files/styles/thumbnail/public/' . $value->image_url . '"</img></div>'.'<div class="event_no">Read ' .$i. ' day</div></div>'), 
+        'title' => t('<div><div class="event_image"><img data-id="'.$value->id.'" src="sites/kids17/files/styles/child_progress_sticker/public/' . $value->image_url . '"</img></div>'.'<div class="event_no">Read ' .$i. ' day</div></div>'), 
         'date' => $value->date,
         );
     }
 
     else {
       $events[] = array(
-        'title' => t('<div><div class="event_image"><img data-id="'.$value->id.'" src="sites/kids17/files/styles/thumbnail/public/' . $value->image_url . '"</img></div>'.'<div class="event_no">Read ' .$i. ' days</div></div>'), 
+        'title' => t('<div><div class="event_image"><img data-id="'.$value->id.'" src="sites/kids17/files/styles/child_progress_sticker/public/' . $value->image_url . '"</img></div>'.'<div class="event_no">Read ' .$i. ' days</div></div>'), 
         'date' => $value->date,
         );
     }  

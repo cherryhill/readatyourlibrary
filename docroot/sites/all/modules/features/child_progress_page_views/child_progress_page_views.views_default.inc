@@ -69,7 +69,7 @@ function child_progress_page_views_views_default_views() {
   $handler->display->display_options['fields']['field_sticker_calendar_image']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_sticker_calendar_image']['click_sort_column'] = 'fid';
   $handler->display->display_options['fields']['field_sticker_calendar_image']['settings'] = array(
-    'image_style' => 'thumbnail',
+    'image_style' => 'child_progress_sticker',
     'image_link' => '',
   );
   $export['dropdown_sticker_list'] = $view;
