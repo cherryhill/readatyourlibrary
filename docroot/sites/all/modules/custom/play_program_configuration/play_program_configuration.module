@@ -39,6 +39,14 @@ function play_program_configuration_menu(){
     'file' => 'inc/pl_platform_details.inc',
   );
 
+  $items['author/autocomplete'] = array(
+    'title' => 'Author Name',
+    'page callback' => '_author_name_autocomplete',
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
+    'file' => 'inc/pl_platform_configuration.inc',
+  );
+
   return $items;
 }
 

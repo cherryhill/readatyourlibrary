@@ -47,6 +47,20 @@ function pl_platform_configuration($form, &$form_state) {
     '#default_value' => variable_get('pmc_progrm_image'),
   );
 
+  $form['pm_configuration'] = array(
+    '#type' => 'fieldset', 
+    '#title' => t('Private Message Configuration'),
+    '#collapsible' => TRUE, 
+    '#collapsed' => TRUE,
+  );
+
+  $form['pm_configuration']['pm_author'] = array(
+    '#title' => t('Author for follow message'),
+    '#type' => 'textfield',
+    '#autocomplete_path' => 'author/autocomplete',
+    '#default_value' => variable_get('follow_author'),
+  );
+
   // form for setting firing hooks label
   $form['activity_trigger'] = array(
     '#type' => 'fieldset',
@@ -112,4 +126,21 @@ function pl_platform_configuration($form, &$form_state) {
   }
 
 	return system_settings_form($form);
+}
+
+// function for providing autocomplete for users
+function _author_name_autocomplete($string = ''){
+  $author_users = array();
+  $sname_query = db_select('users','u');
+  $sname_query->condition('u.name', '%' . db_like($string) . '%', 'LIKE');
+  $sname_query->fields('u',array('name'));
+  $sname_query->range(0, 15);
+
+  $sname_result = $sname_query->execute()->fetchAll();
+
+  foreach($sname_result as $res){
+    $author_users[$res->name] = check_plain($res->name);
+  }
+
+ drupal_json_output($author_users);
 }
