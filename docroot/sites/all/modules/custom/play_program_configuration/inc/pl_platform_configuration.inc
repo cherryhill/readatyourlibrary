@@ -58,7 +58,7 @@ function pl_platform_configuration($form, &$form_state) {
     '#title' => t('Author for follow message'),
     '#type' => 'textfield',
     '#autocomplete_path' => 'author/autocomplete',
-    '#default_value' => variable_get('follow_author'),
+    '#default_value' => variable_get('pm_author'),
   );
 
   // form for setting firing hooks label
