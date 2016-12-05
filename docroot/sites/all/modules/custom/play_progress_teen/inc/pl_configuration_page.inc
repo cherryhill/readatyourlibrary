@@ -50,12 +50,10 @@ function pl_configuration_progress($form, &$form_state) {
 	  '#format' => $progress_details_desc['format'],
 	);
 
-	$rewardMsg = variable_get('reward_msg', array('value' => '', 'format' => NULL));
 	$form['progress_page']['progress_details']['reward_msg'] = array(
-	  '#type' => 'text_format', 
+	  '#type' => 'textarea', 
 	  '#title' => t('Reward Message'),
-	  '#default_value' => $rewardMsg['value'],
-	  '#format' => $rewardMsg['format'],
+	  '#default_value' => variable_get('reward_msg'),
 	);
 
 	$form['progress_page']['progress_details']['progress_img'] = array(

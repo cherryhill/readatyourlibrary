@@ -76,10 +76,14 @@ $grids = 18;
 
   $nonSelf = variable_get('nonself_activities_progress');
   $self = variable_get('activities_progress');
-  $user_won_reward = variable_get('reward_msg');
-  $rewardMsg = $user_won_reward['value'];
+  $rewardMsg = variable_get('reward_msg');
+  $imgFid = variable_get('progress_img');
 
-  // echo '<pre>'; print_r($user_won_reward);die();
+  $file = file_load($imgFid);
+  $uri = $file->uri;
+  $urlImg = file_create_url($uri);
+
+  // echo '<pre>'; print_r($url);die();
 
   $progressActi = array_merge($self, $nonSelf);
 
@@ -107,23 +111,22 @@ $grids = 18;
 
     $n_date = date("m.d.y", strtotime($date));
 
-    $activityReward = $value->field_rw_claim_id[$lang][0]['value'];
+    if(isset($value->field_rw_claim_id[$lang])){
+      $activityReward = $value->field_rw_claim_id[$lang][0]['value'];
+    }
 
-    $user_reward = $value->field_won_reward[$lang][0]['value'];
-    $node_type_hotspot = $value->field_hotspot_activity_report[$lang][0]['value'];
+    if(isset($value->field_won_reward[$lang])){
+      $user_reward = $value->field_won_reward[$lang][0]['value'];
+    }
+
     $user_won_reward = '';
     $hotspot_type_activity = '';
 
-	if($node_type_hotspot){
-	  $hotspot_type_activity = '<p class = "hotspot-activity">Bay Area Hot Spot!</p>';
-	}
-  // }
-	if($activityReward){
-	  $user_won_reward = $rewardMsg;
-	}
-// }
+  	if(isset($activityReward)){
+  	  $user_won_reward = '<p class = "rew">'.$rewardMsg.'</p>';
+  	}
 
-  $node_nid[] = '<p class  = "date-pg">'.$n_date.'</p>'.$hotspot_type_activity.'<p class = "title-pg">'.$title.'</p>'.$user_won_reward;
+    $node_nid[] = '<p class  = "date-pg">'.$n_date.'</p>'.$hotspot_type_activity.'<p class = "title-pg">'.$title.'</p>'.$user_won_reward;
   }
 
   if(isset($_SESSION['exceed-activity-limit']['status'][0])){
@@ -135,7 +138,7 @@ $grids = 18;
     echo "<div class = 'new-row'>";
     for($k=0; $k < 6; $k++){
 	  if(isset($node_nid[$i])){
-	    echo "<div class = 'grid inserted' id = 'cells'.$i.'>".$node_nid[$i]."</div>";
+	    echo "<div class = 'grid inserted' id = 'cells'.$i.'>".$node_nid[$i]."<img src='$urlImg'></div>";
 	  }
 	  else{
 	    echo "<div class = 'grid' id = 'cells'.$i.'></div>";
