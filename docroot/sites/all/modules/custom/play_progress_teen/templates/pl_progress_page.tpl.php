@@ -78,7 +78,7 @@ $grids = 18;
     $file = file_load($imgFid);
     $uri = $file->uri;
     $urlImg = file_create_url($uri);
-    $imageCompleted = "<img src='$urlImg'></div>";
+    $imageCompleted = "<img src='$urlImg'>";
   }
 
   $progressActi = array_merge($self, $nonSelf);
@@ -133,7 +133,7 @@ $grids = 18;
     echo "<div class = 'new-row'>";
     for($k=0; $k < 6; $k++){
 	  if(isset($node_nid[$i])){
-	    echo "<div class = 'grid inserted' id = 'cells'.$i.'>".$node_nid[$i].$imageCompleted;
+	    echo "<div class = 'grid inserted' id = 'cells'.$i.'>".$node_nid[$i].$imageCompleted."</div>";
 	  }
 	  else{
 	    echo "<div class = 'grid' id = 'cells'.$i.'></div>";
