@@ -1,0 +1,25 @@
+<?php
+
+/**
+ * @file
+ * Install/uninstall functions for the OpenID Connect SSO module.
+ */
+
+/**
+ * Implements hook_uninstall().
+ */
+function openid_connect_sso_uninstall() {
+  variable_del('openid_connect_sso_enabled');
+  variable_del('openid_connect_sso_script_location');
+  variable_del('openid_connect_sso_script_url');
+  variable_del('openid_connect_sso_cookie_domain');
+}
+
+/**
+ * Set openid_connect_sso_enabled to 1.
+ */
+function openid_connect_sso_update_7001() {
+  if (!variable_get('openid_connect_sso_enabled') && variable_get('openid_connect_sso_script_location')) {
+    variable_set('openid_connect_sso_enabled', 1);
+  }
+}

@@ -1,0 +1,36 @@
+<?php
+
+/**
+ * @file
+ * Install/uninstall functions for the OpenID Connect SSO client module.
+ */
+
+/**
+ * Implements hook_install().
+ */
+function openid_connect_sso_client_install() {
+  // Set the system.weight of this module to -1.
+  // This is necessary so that our hook_init() will fire early.
+  db_update('system')
+    ->fields(array('weight' => -1))
+    ->condition('name', 'openid_connect_sso_client')
+    ->execute();
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function openid_connect_sso_client_uninstall() {
+  variable_del('openid_connect_sso_client');
+}
+
+/**
+ * Update the system.weight of this module to -1.
+ */
+function openid_connect_sso_client_update_7001() {
+  db_update('system')
+    ->fields(array('weight' => -1))
+    ->condition('name', 'openid_connect_sso_client')
+    ->execute();
+  registry_rebuild();
+}

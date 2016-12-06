@@ -1,0 +1,79 @@
+<?php
+
+/**
+ * @file
+ * Provides the SSO functionality for client sites.
+ */
+
+/**
+ * Implements hook_init().
+ *
+ * Start the OAuth2 login flow for an anonymous user if:
+ * - they hit the 'user', 'user/login' or 'user/password' URL, unless ?admin
+ *   is present in the URL.
+ * - they have the login cookie (indicating that they have logged into another
+ *   site in the network).
+ */
+function openid_connect_sso_client_init() {
+  $anon = user_is_anonymous();
+  $on_user_page = in_array(request_path(), array('user', 'user/login', 'user/password'));
+  $new_login = $anon && $on_user_page && !isset($_GET['admin']);
+  $has_cookie = openid_connect_sso_detect_cookie('login');
+
+  // This variable indicates that an OAuth2 flow was already started, and the
+  // server has just redirected the user back to the redirect callback.
+  $in_flow = arg(0) == 'openid-connect' && arg(1) && isset($_GET['state']);
+
+  $network_login = $has_cookie && !$in_flow;
+
+  if ($network_login && !$anon) {
+    // We're supposed to log the user in, but he's already logged in.
+    // Destroy his current session and log him out first.
+    // This code is the same as user_logout(), but without the redirect.
+    global $user;
+    watchdog('user', 'Session closed for %name.', array('%name' => $user->name));
+    module_invoke_all('user_logout', $user);
+    session_destroy();
+  }
+
+  if ($new_login || $network_login) {
+    $_SESSION['openid_connect_destination'] = '<front>';
+    $destination = drupal_get_destination();
+    if (!in_array($destination['destination'], array('user', 'user/login', 'user/password'))) {
+      $_SESSION['openid_connect_destination'] = $destination['destination'];
+    }
+    $client = openid_connect_get_client(variable_get('openid_connect_sso_client', 'generic'));
+    $scopes = openid_connect_get_scopes();
+    $client->authorize($scopes);
+  }
+}
+
+/**
+ * Implements hook_menu_alter().
+ */
+function openid_connect_sso_client_menu_alter(&$items) {
+  // Don't allow users to edit their accounts, that needs to happen
+  // on the server.
+  $items['user/%user/edit']['access callback'] = 'user_access';
+  $items['user/%user/edit']['access arguments'] = array('administer users');
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function openid_connect_sso_client_form_openid_connect_sso_settings_form_alter(&$form, &$form_state) {
+  $client_options = array();
+  foreach (openid_connect_get_plugins(TRUE) as $info) {
+    $client_options[$info['name']] = $info['title'];
+  }
+
+  $form['openid_connect_sso_client'] = array(
+    '#type' => 'select',
+    '#title' => t('OpenID Connect client'),
+    '#description' => t('Select the client to use for SSO authorization (enable clients in the <a href="@conf_url">OpenID Connect</a> configuration).', array(
+      '@conf_url' => url('admin/config/services/openid-connect'),
+    )),
+    '#options' => $client_options,
+    '#default_value' => variable_get('openid_connect_sso_client'),
+  );
+}
