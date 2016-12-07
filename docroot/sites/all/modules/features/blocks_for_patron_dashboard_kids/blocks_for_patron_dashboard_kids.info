@@ -1,0 +1,16 @@
+name = Blocks for patron dashboard for kids
+core = 7.x
+package = Features
+version = 7.x-1.0
+dependencies[] = flag
+dependencies[] = views
+features[ctools][] = views:views_default:3.0
+features[features_api][] = api:2
+features[flag][] = follow
+features[flag][] = like
+features[views_view][] = activities_dashboard
+features[views_view][] = book_reviews_dashboard
+features[views_view][] = follow_block_dashboard
+features[views_view][] = rewards_dashboard
+features_exclude[dependencies][ctools] = ctools
+project path = sites/all/modules/features
