@@ -563,10 +563,11 @@ echo \'<div>\'.$activity_title.\'</div>\' . \'<div><span>Completed </span>\'.$ac
     'reward_claim' => 'reward_claim',
   );
 
-  /* Display: Block */
-  $handler = $view->new_display('block', 'Block', 'block');
+  /* Display: Rewards homebox block Dashboard */
+  $handler = $view->new_display('block', 'Rewards homebox block Dashboard', 'block');
   $handler->display->display_options['defaults']['pager'] = FALSE;
-  $handler->display->display_options['pager']['type'] = 'none';
+  $handler->display->display_options['pager']['type'] = 'some';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '5';
   $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['defaults']['header'] = FALSE;
   /* Header: Global: Text area */
@@ -624,6 +625,18 @@ echo \'<div>\'.$reward_title.\'</div>\' . \'<div><span>Received </span>\'.$rewar
 ?>';
   $handler->display->display_options['fields']['php']['use_php_click_sortable'] = '0';
   $handler->display->display_options['fields']['php']['php_click_sortable'] = '';
+  /* Field: Reward: Raffle Ticket Image */
+  $handler->display->display_options['fields']['field_raffle_ticket_image']['id'] = 'field_raffle_ticket_image';
+  $handler->display->display_options['fields']['field_raffle_ticket_image']['table'] = 'field_data_field_raffle_ticket_image';
+  $handler->display->display_options['fields']['field_raffle_ticket_image']['field'] = 'field_raffle_ticket_image';
+  $handler->display->display_options['fields']['field_raffle_ticket_image']['relationship'] = 'field_raffle_claim_id_target_id';
+  $handler->display->display_options['fields']['field_raffle_ticket_image']['label'] = '';
+  $handler->display->display_options['fields']['field_raffle_ticket_image']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_raffle_ticket_image']['click_sort_column'] = 'fid';
+  $handler->display->display_options['fields']['field_raffle_ticket_image']['settings'] = array(
+    'image_style' => 'thumbnail',
+    'image_link' => '',
+  );
   $handler->display->display_options['defaults']['arguments'] = FALSE;
   /* Contextual filter: Reward: Author */
   $handler->display->display_options['arguments']['uid']['id'] = 'uid';
@@ -634,6 +647,96 @@ echo \'<div>\'.$reward_title.\'</div>\' . \'<div><span>Received </span>\'.$rewar
   $handler->display->display_options['arguments']['uid']['summary']['number_of_records'] = '0';
   $handler->display->display_options['arguments']['uid']['summary']['format'] = 'default_summary';
   $handler->display->display_options['arguments']['uid']['summary_options']['items_per_page'] = '25';
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Reward: reward type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'eck_reward';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'reward_claim' => 'reward_claim',
+    'raffle_claim' => 'raffle_claim',
+  );
+  $handler->display->display_options['block_description'] = 'Rewards - Dashboard';
+
+  /* Display: Rewards profile block Dashboard */
+  $handler = $view->new_display('block', 'Rewards profile block Dashboard', 'block_1');
+  $handler->display->display_options['defaults']['pager'] = FALSE;
+  $handler->display->display_options['pager']['type'] = 'full';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '8';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['pager']['options']['id'] = '0';
+  $handler->display->display_options['pager']['options']['quantity'] = '9';
+  $handler->display->display_options['pager']['options']['tags']['first'] = '';
+  $handler->display->display_options['pager']['options']['tags']['previous'] = '';
+  $handler->display->display_options['pager']['options']['tags']['next'] = '';
+  $handler->display->display_options['pager']['options']['tags']['last'] = '';
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'grid';
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['row_plugin'] = 'fields';
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Reward: Title */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'eck_reward';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['relationship'] = 'field_reward_claim_id_target_id';
+  $handler->display->display_options['fields']['title']['label'] = '';
+  $handler->display->display_options['fields']['title']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
+  /* Field: Reward: Raffle prize or reward image */
+  $handler->display->display_options['fields']['field_raffle_prize_or_reward_ima']['id'] = 'field_raffle_prize_or_reward_ima';
+  $handler->display->display_options['fields']['field_raffle_prize_or_reward_ima']['table'] = 'field_data_field_raffle_prize_or_reward_ima';
+  $handler->display->display_options['fields']['field_raffle_prize_or_reward_ima']['field'] = 'field_raffle_prize_or_reward_ima';
+  $handler->display->display_options['fields']['field_raffle_prize_or_reward_ima']['relationship'] = 'field_reward_claim_id_target_id';
+  $handler->display->display_options['fields']['field_raffle_prize_or_reward_ima']['label'] = '';
+  $handler->display->display_options['fields']['field_raffle_prize_or_reward_ima']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_raffle_prize_or_reward_ima']['click_sort_column'] = 'fid';
+  $handler->display->display_options['fields']['field_raffle_prize_or_reward_ima']['settings'] = array(
+    'image_style' => 'thumbnail',
+    'image_link' => '',
+  );
+  $handler->display->display_options['block_description'] = 'Rewards profile - Dashboard';
+
+  /* Display: Attachment */
+  $handler = $view->new_display('attachment', 'Attachment', 'attachment_1');
+  $handler->display->display_options['defaults']['query'] = FALSE;
+  $handler->display->display_options['query']['type'] = 'views_query';
+  $handler->display->display_options['query']['options']['distinct'] = TRUE;
+  $handler->display->display_options['pager']['type'] = 'some';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '1';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['defaults']['relationships'] = FALSE;
+  /* Relationship: Reward: Author */
+  $handler->display->display_options['relationships']['uid']['id'] = 'uid';
+  $handler->display->display_options['relationships']['uid']['table'] = 'eck_reward';
+  $handler->display->display_options['relationships']['uid']['field'] = 'uid';
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: User: Name */
+  $handler->display->display_options['fields']['name']['id'] = 'name';
+  $handler->display->display_options['fields']['name']['table'] = 'users';
+  $handler->display->display_options['fields']['name']['field'] = 'name';
+  $handler->display->display_options['fields']['name']['relationship'] = 'uid';
+  $handler->display->display_options['fields']['name']['label'] = '';
+  $handler->display->display_options['fields']['name']['element_label_colon'] = FALSE;
+  $handler->display->display_options['defaults']['arguments'] = FALSE;
+  /* Contextual filter: User: Uid */
+  $handler->display->display_options['arguments']['uid']['id'] = 'uid';
+  $handler->display->display_options['arguments']['uid']['table'] = 'users';
+  $handler->display->display_options['arguments']['uid']['field'] = 'uid';
+  $handler->display->display_options['arguments']['uid']['relationship'] = 'uid';
+  $handler->display->display_options['arguments']['uid']['default_action'] = 'default';
+  $handler->display->display_options['arguments']['uid']['default_argument_type'] = 'current_user';
+  $handler->display->display_options['arguments']['uid']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['uid']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['uid']['summary_options']['items_per_page'] = '25';
+  $handler->display->display_options['displays'] = array(
+    'block_1' => 'block_1',
+    'default' => 0,
+    'block' => 0,
+  );
   $export['rewards_dashboard'] = $view;
 
   return $export;

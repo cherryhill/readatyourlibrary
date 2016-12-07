@@ -42,11 +42,11 @@ function blocks_for_patron_dashboard_kids_flag_default_flags() {
     'show_contextual_link' => 0,
     'show_on_profile' => 1,
     'access_uid' => 'others',
-    'api_version' => 3,
     'module' => 'blocks_for_patron_dashboard_kids',
     'locked' => array(
       0 => 'name',
     ),
+    'api_version' => 3,
   );
   // Exported flag: "Like".
   $flags['like'] = array(
@@ -81,11 +81,11 @@ function blocks_for_patron_dashboard_kids_flag_default_flags() {
     'access_author' => '',
     'show_contextual_link' => 0,
     'i18n' => 0,
-    'api_version' => 3,
     'module' => 'blocks_for_patron_dashboard_kids',
     'locked' => array(
       0 => 'name',
     ),
+    'api_version' => 3,
   );
   return $flags;
 
