@@ -82,6 +82,7 @@ function video_game_review_content_type_field_default_field_instances() {
         ),
       ),
       'display_summary' => 1,
+      'entity_translation_sync' => FALSE,
       'text_processing' => 1,
       'user_register_form' => FALSE,
     ),
@@ -126,6 +127,7 @@ function video_game_review_content_type_field_default_field_instances() {
     'label' => 'Age Rating Of Game',
     'required' => 0,
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -144,7 +146,7 @@ function video_game_review_content_type_field_default_field_instances() {
     'bundle' => 'video_game_review',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Please enter a link to the video game in the <a href="http://encore.oaklandlibrary.org/iii/encore/?lang=eng" target="_blank">OPL catalog</a> so that other readers can find it easily.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -179,6 +181,7 @@ function video_game_review_content_type_field_default_field_instances() {
         'url_cutoff' => 80,
       ),
       'enable_tokens' => 1,
+      'entity_translation_sync' => FALSE,
       'linkit' => array(
         'enable' => 0,
         'insert_plugin' => '',
@@ -229,6 +232,7 @@ function video_game_review_content_type_field_default_field_instances() {
     'label' => 'Platform',
     'required' => 1,
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -304,6 +308,7 @@ function video_game_review_content_type_field_default_field_instances() {
           ),
         ),
       ),
+      'entity_translation_sync' => FALSE,
       'linkit' => array(
         'enable' => 0,
         'insert_plugin' => '',
@@ -352,6 +357,7 @@ function video_game_review_content_type_field_default_field_instances() {
     'label' => 'Please select one',
     'required' => 0,
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -370,6 +376,7 @@ function video_game_review_content_type_field_default_field_instances() {
   t('Catalog Link');
   t('Platform');
   t('Platform other option');
+  t('Please enter a link to the video game in the <a href="http://encore.oaklandlibrary.org/iii/encore/?lang=eng" target="_blank">OPL catalog</a> so that other readers can find it easily.');
   t('Please select one');
   t('Write Your Review');
 
