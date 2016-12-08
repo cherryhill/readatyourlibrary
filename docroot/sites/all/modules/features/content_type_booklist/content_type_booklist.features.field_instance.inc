@@ -42,10 +42,10 @@ function content_type_booklist_field_default_field_instances() {
     'settings' => array(
       'better_formats' => array(
         'allowed_formats' => array(
-          'filtered_html' => 0,
-          'full_html' => 0,
-          'php_code' => 0,
-          'plain_text' => 0,
+          'filtered_html' => 'filtered_html',
+          'full_html' => 'full_html',
+          'php_code' => 'php_code',
+          'plain_text' => 'plain_text',
         ),
         'allowed_formats_toggle' => 1,
         'default_order_toggle' => 0,
@@ -67,7 +67,8 @@ function content_type_booklist_field_default_field_instances() {
         ),
       ),
       'display_summary' => 1,
-      'text_processing' => 0,
+      'entity_translation_sync' => FALSE,
+      'text_processing' => 1,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -119,6 +120,7 @@ function content_type_booklist_field_default_field_instances() {
           'status' => 0,
         ),
       ),
+      'entity_translation_sync' => FALSE,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -127,6 +129,7 @@ function content_type_booklist_field_default_field_instances() {
       'settings' => array(
         'fields' => array(),
         'type_settings' => array(
+          'allow_clone' => 0,
           'allow_existing' => 1,
           'allow_new' => 1,
           'delete_references' => 1,
@@ -205,6 +208,7 @@ function content_type_booklist_field_default_field_instances() {
           ),
         ),
       ),
+      'entity_translation_sync' => FALSE,
       'linkit' => array(
         'enable' => 0,
         'insert_plugin' => '',
@@ -252,6 +256,7 @@ function content_type_booklist_field_default_field_instances() {
     'label' => 'Privacy settings',
     'required' => 1,
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'user_register_form' => FALSE,
     ),
     'widget' => array(

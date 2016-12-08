@@ -28,6 +28,7 @@ function content_type_booklist_field_default_field_bases() {
     'locked' => 0,
     'module' => 'entityreference',
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'handler' => 'base',
       'handler_settings' => array(
         'behaviors' => array(
@@ -38,9 +39,7 @@ function content_type_booklist_field_default_field_bases() {
         'sort' => array(
           'type' => 'none',
         ),
-        'target_bundles' => array(
-          'booklist_item' => 'booklist_item',
-        ),
+        'target_bundles' => array(),
       ),
       'profile2_private' => FALSE,
       'target_type' => 'booklist_item',
@@ -64,6 +63,7 @@ function content_type_booklist_field_default_field_bases() {
     'locked' => 0,
     'module' => 'text',
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'max_length' => 1000,
     ),
     'translatable' => 0,

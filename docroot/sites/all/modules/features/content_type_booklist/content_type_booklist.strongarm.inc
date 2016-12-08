@@ -49,6 +49,12 @@ function content_type_booklist_strongarm() {
         'path' => array(
           'weight' => '5',
         ),
+        'language' => array(
+          'weight' => '0',
+        ),
+        'workbench_access' => array(
+          'weight' => '0',
+        ),
       ),
       'display' => array(
         'flag_primary_booklist' => array(
@@ -61,6 +67,13 @@ function content_type_booklist_strongarm() {
     ),
   );
   $export['field_bundle_settings_node__booklist'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'language_content_type_booklist';
+  $strongarm->value = '2';
+  $export['language_content_type_booklist'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */

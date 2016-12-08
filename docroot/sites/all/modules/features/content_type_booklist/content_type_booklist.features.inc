@@ -14,6 +14,26 @@ function content_type_booklist_ctools_plugin_api($module = NULL, $api = NULL) {
 }
 
 /**
+ * Implements hook_eck_entity_type_info().
+ */
+function content_type_booklist_eck_entity_type_info() {
+  $items = array(
+    'booklist_item' => array(
+      'name' => 'booklist_item',
+      'label' => 'Booklist item',
+      'properties' => array(
+        'title' => array(
+          'label' => 'Title',
+          'type' => 'text',
+          'behavior' => 'title',
+        ),
+      ),
+    ),
+  );
+  return $items;
+}
+
+/**
  * Implements hook_node_info().
  */
 function content_type_booklist_node_info() {
