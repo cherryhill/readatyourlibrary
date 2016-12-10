@@ -628,6 +628,7 @@ function pl_leaderblock_dashboard() {
   $query->fields('u', array('name'));
   $query->addExpression('COUNT(act.id)', 'count');
   $query->groupby('act.uid');
+  $query->orderBy('count','desc');
   $query->range(0, 5);
   $res = $query->execute()->fetchAll();
 
