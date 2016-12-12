@@ -4,54 +4,54 @@
  */
 
 // Extend string
-if (typeof String.prototype.startsWith != 'function') {
-  // see below for better implementation!
-  String.prototype.startsWith = function (str){
-    return this.indexOf(str) === 0;
-  };
-}
+// if (typeof String.prototype.startsWith != 'function') {
+//   // see below for better implementation!
+//   String.prototype.startsWith = function (str){
+//     return this.indexOf(str) === 0;
+//   };
+// }
 
 (function ($) {
   Drupal.behaviors.payl_program_customizations = {
     attach: function() {
-      Drupal.settings.payl_program_customizations_birthday_limit = parseInt(Drupal.settings.payl_program_customizations_birthday_limit);
-      var birthday = new Date($('#edit-profile-main-field-user-birthday-und-0-value-datepicker-popup-0').val());
-      var birthday_timestamp = Math.floor(birthday.getTime() / 1000);
+      // Drupal.settings.payl_program_customizations_birthday_limit = parseInt(Drupal.settings.payl_program_customizations_birthday_limit);
+      // var birthday = new Date($('#edit-profile-main-field-user-birthday-und-0-value-datepicker-popup-0').val());
+      // var birthday_timestamp = Math.floor(birthday.getTime() / 1000);
 
-      var user_dob = Drupal.settings.payl_program_customizations_user_date_of_birth;
-      var birthday_patron = new Date(user_dob);
-      var birthday_timestamp_patron = Math.floor(birthday_patron.getTime() / 1000);
+      // var user_dob = Drupal.settings.payl_program_customizations_user_date_of_birth;
+      // var birthday_patron = new Date(user_dob);
+      // var birthday_timestamp_patron = Math.floor(birthday_patron.getTime() / 1000);
 
-      // More than 13 years old.
-      if (birthday_timestamp < Drupal.settings.payl_program_customizations_birthday_limit) {
-        $('.page-user-register .form-item-name').show();
-      }
-      // Less than 13 years old.
-      else {
-        $('.page-user-register .form-item-name').hide();
-      }
+      // // More than 13 years old.
+      // if (birthday_timestamp < Drupal.settings.payl_program_customizations_birthday_limit) {
+      //   $('.page-user-register .form-item-name').show();
+      // }
+      // // Less than 13 years old.
+      // else {
+      //   $('.page-user-register .form-item-name').hide();
+      // }
 
-      // Changes for user edit profile
-      if (birthday_timestamp_patron > Drupal.settings.payl_program_customizations_birthday_limit) {
-        $('.page-user-edit .form-item-name').hide();
-      }
-      else {
-        $('.page-user-edit .form-item-name').show();
-      }
+      // // Changes for user edit profile
+      // if (birthday_timestamp_patron > Drupal.settings.payl_program_customizations_birthday_limit) {
+      //   $('.page-user-edit .form-item-name').hide();
+      // }
+      // else {
+      //   $('.page-user-edit .form-item-name').show();
+      // }
 
-      // showing and hiding of username field according to user's age
-      $('#edit-profile-main-field-user-birthday-und-0-value-datepicker-popup-0').bind('change', function(date_object) {
-        Drupal.settings.payl_program_customizations_birthday_limit = parseInt(Drupal.settings.payl_program_customizations_birthday_limit);
-        var birthday = new Date($('#edit-profile-main-field-user-birthday-und-0-value-datepicker-popup-0').val());
-        var birthday_timestamp = Math.floor(birthday.getTime() / 1000);
+      // // showing and hiding of username field according to user's age
+      // $('#edit-profile-main-field-user-birthday-und-0-value-datepicker-popup-0').bind('change', function(date_object) {
+      //   Drupal.settings.payl_program_customizations_birthday_limit = parseInt(Drupal.settings.payl_program_customizations_birthday_limit);
+      //   var birthday = new Date($('#edit-profile-main-field-user-birthday-und-0-value-datepicker-popup-0').val());
+      //   var birthday_timestamp = Math.floor(birthday.getTime() / 1000);
         
-        if (birthday_timestamp < Drupal.settings.payl_program_customizations_birthday_limit) {
-          $('.page-user-register .form-item-name').show();
-        }
-        else {
-        $('.page-user-register .form-item-name').hide();
-        }
-      });
+      //   if (birthday_timestamp < Drupal.settings.payl_program_customizations_birthday_limit) {
+      //     $('.page-user-register .form-item-name').show();
+      //   }
+      //   else {
+      //   $('.page-user-register .form-item-name').hide();
+      //   }
+      // });
 
       $('.field-widget-random-list-widget-randomizer').each(function(index) {
         fieldname = 'Change ' + $(this).find('label').html();

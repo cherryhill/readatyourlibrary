@@ -21,11 +21,11 @@ function main_profile_fields_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Contact Information',
-    'weight' => '6',
+    'weight' => '2',
     'children' => array(
-      0 => 'field_phone_number',
+      0 => 'field_address',
       1 => 'field_email',
-      2 => 'field_address',
+      2 => 'field_phone_number',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -51,11 +51,11 @@ function main_profile_fields_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Your Name',
-    'weight' => '3',
+    'weight' => '1',
     'children' => array(
       0 => 'field_first_name',
-      1 => 'field_middle_initial',
-      2 => 'field_last_name',
+      1 => 'field_last_name',
+      2 => 'field_middle_initial',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
