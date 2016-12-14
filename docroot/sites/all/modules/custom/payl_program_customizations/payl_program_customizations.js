@@ -67,6 +67,23 @@
             name = name + $(this).val();
           });
           $('#edit-name').val(name);
+          var username = name;
+          $.ajax({
+            url: Drupal.settings.basePath + 'username/check',
+            type: 'post',
+            async: false,
+            data: "name="+username,
+            success: function (data) {
+              if (data) {
+                if (data == 'yes') {
+                  console.log(data);
+                  setTimeout(function() {
+                    $('.random-list-widget-regenerate').click();
+                  }, 150);
+                }
+              }
+            }
+          });
           payl_program_customizations_change_name();
         }, 50);
       });
@@ -105,5 +122,7 @@
     name = $('#edit-name').val();
     $('.current-username').html(name);
   }
+
+
 
 })(jQuery);

@@ -19,9 +19,31 @@ function random_list_widget_menu() {
     'delivery callback' => 'ajax_deliver',
   );
 
+  $items['username/check'] = array(
+    'page callback' => 'pl_username_check',
+    'access callback' => TRUE,
+    'type' => MENU_CALLBACK,
+  );
+
   return $items;
 }
 
+function pl_username_check() {
+
+  $uname = $_REQUEST['name'];
+
+  $query = db_select('users','u')
+  ->fields('u',array('name'))
+  ->condition('name',$uname)
+  ->execute()
+  ->fetchAssoc();
+
+  if ($query) {
+    echo "yes";
+  } else {
+    echo "no";
+  }
+}
 /**
  * Implements hook_field_info().
  */
@@ -109,6 +131,7 @@ function random_list_widget_field_widget_form(&$form, &$form_state, $field, $ins
 }
 
 function random_list_widget_get_random_field_value($field_name, $entity_type, $bundle_name) {
+  print_r($entity_type);die();
   $field_instance = field_info_instance($entity_type, $field_name, $bundle_name);
   $options = _random_list_widget_get_available_options($field_instance);
   return _random_list_widget_get_random_value($options);
@@ -126,3 +149,4 @@ function _random_list_widget_get_available_options($field_instance) {
 function _random_list_widget_get_random_value($list) {
   return $list[array_rand($list, 1)];
 }
+
