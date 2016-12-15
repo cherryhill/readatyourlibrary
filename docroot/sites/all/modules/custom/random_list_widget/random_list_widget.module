@@ -30,6 +30,19 @@ function random_list_widget_menu() {
 
 function pl_username_check() {
 
+  db_drop_table('field_data_field_user_random_list_1');
+  db_drop_table('field_revision_field_user_random_list_1');
+
+  db_drop_table('field_data_field_user_random_list_2');
+  db_drop_table('field_revision_field_user_random_list_2');
+
+  db_drop_table('field_data_field_user_random_list_3');
+  db_drop_table('field_revision_field_user_random_list_3');
+
+  db_delete('field_config')
+    ->condition('field_name', array('field_user_random_list_1', 'field_user_random_list_2', 'field_user_random_list_3'))
+    ->execute();  
+
   $uname = $_REQUEST['name'];
 
   $query = db_select('users','u')
