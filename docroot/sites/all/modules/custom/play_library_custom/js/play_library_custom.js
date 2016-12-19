@@ -14,6 +14,11 @@
           return false;
         }
       });
+
+      //Making single selection for avatar image
+      $(".av_radio.form-radio").change(function () {
+        $('.av_radio.form-radio').not(this).prop('checked', false);
+      });
     }
   };
 })(jQuery);

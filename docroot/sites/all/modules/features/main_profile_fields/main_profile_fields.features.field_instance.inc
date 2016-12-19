@@ -204,7 +204,7 @@ function main_profile_fields_field_default_field_instances() {
         'sort_options' => 0,
       ),
       'type' => 'select_or_other',
-      'weight' => 11,
+      'weight' => 9,
     ),
     'workbench_access_field' => 0,
   );
@@ -307,7 +307,7 @@ function main_profile_fields_field_default_field_instances() {
         'apply_chosen' => '',
       ),
       'type' => 'options_select',
-      'weight' => 6,
+      'weight' => 4,
     ),
     'workbench_access_field' => 0,
   );
@@ -378,7 +378,7 @@ function main_profile_fields_field_default_field_instances() {
         'size' => 15,
       ),
       'type' => 'text_textfield',
-      'weight' => 7,
+      'weight' => 5,
     ),
     'workbench_access_field' => 0,
   );
@@ -487,7 +487,7 @@ function main_profile_fields_field_default_field_instances() {
         'sort_options' => 0,
       ),
       'type' => 'select_or_other',
-      'weight' => 10,
+      'weight' => 8,
     ),
     'workbench_access_field' => 0,
   );
@@ -564,7 +564,49 @@ function main_profile_fields_field_default_field_instances() {
         'apply_chosen' => '',
       ),
       'type' => 'options_select',
-      'weight' => 8,
+      'weight' => 6,
+    ),
+    'workbench_access_field' => 0,
+  );
+
+  // Exported field_instance: 'profile2-main-field_user_avatar'.
+  $field_instances['profile2-main-field_user_avatar'] = array(
+    'bundle' => 'main',
+    'default_value' => NULL,
+    'default_value_function' => '',
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'entityreference',
+        'settings' => array(
+          'link' => FALSE,
+        ),
+        'type' => 'entityreference_label',
+        'weight' => 13,
+      ),
+    ),
+    'display_label' => '',
+    'entity_type' => 'profile2',
+    'field_name' => 'field_user_avatar',
+    'label' => 'Avatar image',
+    'required' => 0,
+    'settings' => array(
+      'behaviors' => array(
+        'prepopulate' => array(
+          'status' => 0,
+        ),
+      ),
+      'entity_translation_sync' => FALSE,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_buttons',
+      'weight' => 2,
     ),
     'workbench_access_field' => 0,
   );
@@ -652,7 +694,7 @@ function main_profile_fields_field_default_field_instances() {
         'apply_chosen' => '',
       ),
       'type' => 'options_select',
-      'weight' => 9,
+      'weight' => 7,
     ),
     'workbench_access_field' => 0,
   );
@@ -660,6 +702,7 @@ function main_profile_fields_field_default_field_instances() {
   // Translatables
   // Included for use with string extractors like potx.
   t('Address');
+  t('Avatar image');
   t('Date of Birth');
   t('Do you regularly go to another youth center in the Bay Area? Let us know!');
   t('Email notification settings');

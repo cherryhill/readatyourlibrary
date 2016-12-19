@@ -503,66 +503,67 @@ function pl_hotspot_activities() {
  *
  * Showing of user avatars in tab format
  */
-// function play_library_custom_form_profile2_edit_main_form_alter(&$form, $form_state) {
+function play_library_custom_form_profile2_edit_main_form_alter(&$form, $form_state) {
 
-//   $form['profile_main']['field_user_avatar'] = array('#attributes' => array('style' => 'display:none'));
+  $form['profile_main']['field_user_avatar'] = array('#attributes' => array('style' => 'display:none'));
 
-//   $query = db_select('field_data_field_avatar_type','type');
-//   $query->fields('type',array('field_avatar_type_tid','entity_id'));
-//   $query->join('eck_user_avatar','eck','eck.id = type.entity_id');
-//   $query->join('taxonomy_term_data','tax','tax.tid = type.field_avatar_type_tid');
-//   $query->fields('tax',array('name'));
-//   $query->fields('eck',array('title'));
-//   $query_avatar = $query->execute()->fetchAll();
+  $query = db_select('field_data_field_avatar_type','type');
+  $query->fields('type',array('field_avatar_type_tid','entity_id'));
+  $query->join('eck_avatar','eck','eck.id = type.entity_id');
+  $query->join('taxonomy_term_data','tax','tax.tid = type.field_avatar_type_tid');
+  $query->fields('tax',array('name'));
+  $query->fields('eck',array('title'));
+  $query_avatar = $query->execute()->fetchAll();
 
-//   $output = '';
-//   $output .= '<div style="border:1px solid red;">';
+  $output = '';
+  $output .= '<div style="border:1px solid red;">';
   
-//   foreach ($query_avatar as $key => $value) {
-//     $as = $value->name;
-//     $tax_name[$value->field_avatar_type_tid] = $value->name;
-//     $tax_name[$value->field_avatar_type_tid] = $value->name;
-//     $avatar_name[$value->field_avatar_type_tid][] = $value->entity_id;
-//   }
+  foreach ($query_avatar as $key => $value) {
+    $title = $value->title;
+    $as = $value->name;
+    $tax_name[$value->field_avatar_type_tid] = $value->name;
+    $tax_name[$value->field_avatar_type_tid] = $value->name;
+    $avatar_name[$value->field_avatar_type_tid][] = $value->entity_id;
+  }
 
-//   foreach ($tax_name as $key => $value) {
-//     $output .= '<div style="border:1px solid blue; float:left;margin-left:10px">'. $value . '</div>';
-//   }
+  foreach ($tax_name as $key => $value) {
+    $output .= '<div style="border:1px solid blue; float:left;margin-left:10px">'. $value . '</div>';
+  }
 
-//   $form['checkboxes_fieldset'] = array(
-//     '#title' => t("Avatars"),
-//     '#prefix' => '<div id="checkboxes-div">',
-//     '#suffix' => '</div>',
-//     '#type' => 'fieldset',
-//     '#weight' => 11,
-//   );
+  $form['checkboxes_fieldset'] = array(
+    '#title' => t("Avatars"),
+    '#prefix' => '<div id="checkboxes-div">',
+    '#suffix' => '</div>',
+    '#type' => 'fieldset',
+    '#weight' => 11,
+  );
 
-//   $form['checkboxes_fieldset']['description'] = array('#markup' => '<div>' . t('What kind of avatar do you want?').'</div>');
+  $form['checkboxes_fieldset']['description'] = array('#markup' => '<div>' . t('What kind of avatar do you want?').'</div>');
 
-//   foreach ($tax_name as $key => $value) {
-//     $form['checkboxes_fieldset']['checkboxes_fieldset2'.$value] = array(
-//       '#title' => $value,
-//       '#prefix' => '<div id="checkboxes-div">',
-//       '#suffix' => '</div>',
-//       '#type' => 'fieldset',
-//       '#weight' => 11,
-//     );
+  foreach ($tax_name as $key => $value) {
+    $form['checkboxes_fieldset']['checkboxes_fieldset2'.$value] = array(
+      '#title' => $value,
+      '#prefix' => '<div id="checkboxes-div">',
+      '#suffix' => '</div>',
+      '#type' => 'fieldset',
+      '#weight' => 11,
+    );
 
-//     foreach ($avatar_name[$key] as $key1 => $value2) {
-//       $form['checkboxes_fieldset']['checkboxes_fieldset2'.$value]["avatar_checkbox-".$value2] = array(
-//         '#type' => 'radio',
-//         '#title' => avatar_images_list($value2),
-//         '#prefix' => '<div class="avatar_radio">',
-//         '#suffix' => '</div>',
-//         '#attributes' => array(
-//           'class' => array('av_radio')
-//         )
-//       );
-//     } 
-//   }
+    foreach ($avatar_name[$key] as $key1 => $value2) {
+      $form['checkboxes_fieldset']['checkboxes_fieldset2'.$value]["avatar_checkbox-".$value2] = array(
+        '#type' => 'radio',
+        '#title' => pl_avatar_title($value2),
+        '#prefix' => '<div class="avatar_radio">',
+        '#suffix' => '</div>',
+        '#attributes' => array(
+          'class' => array('av_radio')
+        )
+      );
+    } 
+  }
 
-//   array_unshift($form['#submit'], 'submit_for_avatar');
-// }
+  array_unshift($form['#submit'], 'submit_for_avatar');
+}
 
 // function to get avatar images
 function avatar_images_list($value) {
@@ -582,6 +583,15 @@ function avatar_images_list($value) {
   $img = "<img src='$img_path'>";
 
   return $img;
+}
+
+function pl_avatar_title($id) {
+  $query = db_select('eck_avatar','avt');
+  $query->fields('avt', array('title'));
+  $query->condition('id',$id);
+  $result = $query->execute()->fetchAssoc();
+
+  return $result['title'];
 }
 
 // submit handler for user avatar

@@ -1,0 +1,11 @@
+name = entity for avatar
+description = Creating entity for user avatar
+core = 7.x
+package = Features
+version = 7.x-1.0
+dependencies[] = eck
+dependencies[] = features
+features[eck_entity_type][] = avatar
+features[features_api][] = api:2
+features_exclude[dependencies][eck] = eck
+project path = sites/all/modules/features
