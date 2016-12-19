@@ -21,7 +21,7 @@ function main_profile_fields_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Contact Information',
-    'weight' => '2',
+    'weight' => '3',
     'children' => array(
       0 => 'field_address',
       1 => 'field_email',

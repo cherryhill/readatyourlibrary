@@ -22,12 +22,12 @@ function main_profile_fields_ctools_plugin_api($module = NULL, $api = NULL) {
 function main_profile_fields_default_profile2_type() {
   $items = array();
   $items['main'] = entity_import('profile2_type', '{
-    "userCategory" : false,
-    "userView" : false,
+    "userCategory" : true,
+    "userView" : true,
     "type" : "main",
     "label" : "Main profile",
-    "weight" : "0",
-    "data" : { "registration" : true, "use_page" : true },
+    "weight" : "10",
+    "data" : { "registration" : 0, "use_page" : 0 },
     "rdf_mapping" : []
   }');
   return $items;
