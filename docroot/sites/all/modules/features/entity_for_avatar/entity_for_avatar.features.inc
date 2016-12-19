@@ -17,6 +17,22 @@ function entity_for_avatar_ctools_plugin_api($module = NULL, $api = NULL) {
 }
 
 /**
+ * Implements hook_eck_bundle_info().
+ */
+function entity_for_avatar_eck_bundle_info() {
+  $items = array(
+    'avatar_avatar' => array(
+      'machine_name' => 'avatar_avatar',
+      'entity_type' => 'avatar',
+      'name' => 'avatar',
+      'label' => 'Avatar',
+      'config' => array(),
+    ),
+  );
+  return $items;
+}
+
+/**
  * Implements hook_eck_entity_type_info().
  */
 function entity_for_avatar_eck_entity_type_info() {
