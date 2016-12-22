@@ -235,6 +235,7 @@ function play_library_program_field_widget_form_alter(&$element, &$form_state, $
  * Implements hook_user_insert(). change
  */
 function play_library_program_user_insert(&$edit, $account, $category) {
+  $_SESSION['program_user_role_id']= $account->roles;
 
   global $language;
   $lang = $language->language;
@@ -1603,7 +1604,14 @@ function _play_library_program_reward_criteria_fulfilled($reward_entity, $accoun
   }
 
   $user = user_load($account_uid);
-  $userRoles = array_keys($user->roles);
+  // Get user role from session if not available from user object
+  if (sizeof($user->roles==1)){
+    $userRoles =array_keys($_SESSION['program_user_role_id']);
+    unset($_SESSION['program_user_role_id']);
+  }
+  else{
+    $userRoles = array_keys($user->roles);
+  }
   $roles_arr = array_intersect($userRoles, $rewRoles);
 
   $allowed = FALSE;
