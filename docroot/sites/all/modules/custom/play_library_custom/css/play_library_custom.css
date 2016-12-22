@@ -1,55 +1,67 @@
-.form-item-avatar-checkbox-971 {
-	background: url("../images/headphn.png");
-}
+
 .accordionWrapper{background:#fff;float:left;width:100%;box-sizing:border-box;}
 .accordionItem{
-    float:left;
-    display:block;
-    width:100%;
-    box-sizing: border-box;
-    font-family:'Open-sans',Arial,sans-serif;
+  float:left;
+  display:block;
+  width:100%;
+  box-sizing: border-box;
+  font-family:'Open-sans',Arial,sans-serif;
+}
+.accordionItem .form-wrapper {
+  margin-top: 0;
+  margin-bottom: 4px;
+  padding: 0;
+  border: 0px;
+  border-bottom: 1px solid #ccc;
+}
+.accordionWrapper > .form-wrapper {
+  padding-bottom: 30px;
 }
 .accordionItem legend{
-    cursor:pointer;
-    margin:0px 0px 10px 0px;
-    padding:10px;
-    background:#2980b9;
-    color:#fff;
-    width:100%;
-    -webkit-border-radius: 3px;
--moz-border-radius: 3px;
-border-radius: 3px;
-        box-sizing: border-box;
-        height: auto;
+  cursor:pointer;
+  margin:0px 0px 10px 0px;
+  padding:10px;
+  background:#dedede;
+  color:#3a3a3a;
+  width:100%;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  box-sizing: border-box;
+  height: auto;
+  position: relative;
+  left: 0;
+  top: 0;
+  margin-bottom: 0;
 }
 
 .close.accordionItem .fieldset-wrapper{
-    height:0px;
-    margin-top: 0;
-    transition:height 1s ease-out;
-    -webkit-transform: scaleY(0);
+  height:0px;
+  margin-top: 0;
+  transition:height 1s ease-out;
+  -webkit-transform: scaleY(0);
   -o-transform: scaleY(0);
   -ms-transform: scaleY(0);
   transform: scaleY(0);
-    float:left;
-    display:block;
+  float:left;
+  display:block;
 
 
 
 }
 .open.accordionItem .fieldset-wrapper{
-        padding: 20px;
-        margin-top: 35px !important;
-    background-color: #fff;
-    border: 1px solid #ddd;
-    width: 100%;
-    margin: 0px 0px 10px 0px;
-    display:block;
-    -webkit-transform: scaleY(1);
+  padding: 20px;
+  margin-top: 0 !important;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  width: 100%;
+  margin: 0px 0px 10px 0px;
+  display:block;
+  -webkit-transform: scaleY(1);
   -o-transform: scaleY(1);
   -ms-transform: scaleY(1);
   transform: scaleY(1);
-    -webkit-transform-origin: top;
+  -webkit-transform-origin: top;
   -o-transform-origin: top;
   -ms-transform-origin: top;
   transform-origin: top;
@@ -58,25 +70,597 @@ border-radius: 3px;
   -o-transition: -o-transform 0.4s ease;
   -ms-transition: -ms-transform 0.4s ease;
   transition: transform 0.4s ease;
-        box-sizing: border-box;
+  box-sizing: border-box;
   border: none;
+    display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
 }
 
 .open.accordionItem legend{
-    margin:0px;
-        -webkit-border-top-left-radius: 3px;
-    -webkit-border-top-right-radius: 3px;
-    -moz-border-radius-topleft: 3px;
-    -moz-border-radius-topright: 3px;
-    border-top-left-radius: 3px;
-    border-top-right-radius: 3px;
-    -webkit-border-bottom-right-radius: 0px;
-    -webkit-border-bottom-left-radius: 0px;
-    -moz-border-radius-bottomright: 0px;
-    -moz-border-radius-bottomleft: 0px;
-    border-bottom-right-radius: 0px;
-    border-bottom-left-radius: 0px;
-    background-color: #ccc;
-    color: #000;
+  margin:0px;
+  -webkit-border-top-left-radius: 3px;
+  -webkit-border-top-right-radius: 3px;
+  -moz-border-radius-topleft: 3px;
+  -moz-border-radius-topright: 3px;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+  -webkit-border-bottom-right-radius: 0px;
+  -webkit-border-bottom-left-radius: 0px;
+  -moz-border-radius-bottomright: 0px;
+  -moz-border-radius-bottomleft: 0px;
+  border-bottom-right-radius: 0px;
+  border-bottom-left-radius: 0px;
+}
+.accordionItem legend:after {
+  content: " ";
+  position: absolute;
+  display: block;
+  right: 10px;
+  top: 20px;
+   width: 0.4em;
+    height: 0.4em;
+    border-right: 0.2em solid #3a3a3a;
+    border-top: 0.2em solid #3a3a3a;
+    transform: rotate(134deg);
+    margin-right: 0.5em;
+}
+.open.accordionItem legend:after {
+  transform: rotate(316deg);
+}
+.accordionItem .avatar_radio {
+  flex-grow: 0;
+flex-shrink: 0;
+flex-basis: 12.5%;
+display: flex;
+flex-direction: row;
+align-items: top;
+}
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+  .accordionItem .avatar_radio {
+    flex-basis: 20%;
+  }
+}
+@media screen and (max-width: 767px) {
+  .accordionItem .avatar_radio {
+    flex-basis: 25%;
+  }
+}
+.accordionItem .avatar_radio label  {
+   position: relative;
+   padding-left: 32px;
+}
+.accordionItem .avatar_radio label:before {
+  content: "";
+  width: 32px;
+  height: 32px;
+  box-shadow: 2px 2px 4px -1px #000;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: inline-block;
+}
+/**for nature**/
+#checkboxes-div-5.accordionItem .avatar_radio label:before {
+  background-image: url('../images/nature');
+}
+/**for food**/
+#checkboxes-div-6.accordionItem .avatar_radio label:before {
+  background-image: url('../images/food');
+}
+/**for people**/
+#checkboxes-div-4.accordionItem .avatar_radio label:before {
+  background-image: url('../images/people');
+}
+/**for things**/
+#checkboxes-div-3.accordionItem .avatar_radio label:before {
+  background-image: url('../images/things');
+}
+/**for activity**/
+#checkboxes-div-1.accordionItem .avatar_radio label:before {
+  background-image: url('../images/activity');
+}
+/**for going places**/
+#checkboxes-div-2.accordionItem .avatar_radio label:before {
+  background-image: url('../images/going-places');
+}
+/*adjusting background positions of avatar radio*/
+/* line 3, ../sass/test.scss */
+.avatar_radio.ar-1 label:before {
+  background-position: -20px -40px;
 }
 
+/* line 3, ../sass/test.scss */
+.avatar_radio.ar-2 label:before {
+  background-position: -20px -80px;
+}
+
+/* line 3, ../sass/test.scss */
+.avatar_radio.ar-3 label:before {
+  background-position: -20px -120px;
+}
+
+/* line 3, ../sass/test.scss */
+.avatar_radio.ar-4 label:before {
+  background-position: -20px -160px;
+}
+
+/* line 3, ../sass/test.scss */
+.avatar_radio.ar-5 label:before {
+  background-position: -20px -200px;
+}
+
+/* line 3, ../sass/test.scss */
+.avatar_radio.ar-6 label:before {
+  background-position: -20px -240px;
+}
+
+/* line 3, ../sass/test.scss */
+.avatar_radio.ar-7 label:before {
+  background-position: -20px -280px;
+}
+
+/* line 3, ../sass/test.scss */
+.avatar_radio.ar-8 label:before {
+  background-position: -20px -320px;
+}
+
+/* line 3, ../sass/test.scss */
+.avatar_radio.ar-9 label:before {
+  background-position: -20px -360px;
+}
+
+/* line 3, ../sass/test.scss */
+.avatar_radio.ar-10 label:before {
+  background-position: -20px -400px;
+}
+
+/* line 3, ../sass/test.scss */
+.avatar_radio.ar-11 label:before {
+  background-position: -20px -440px;
+}
+
+/* line 3, ../sass/test.scss */
+.avatar_radio.ar-12 label:before {
+  background-position: -20px -480px;
+}
+
+/* line 3, ../sass/test.scss */
+.avatar_radio.ar-13 label:before {
+  background-position: -20px -520px;
+}
+
+/* line 3, ../sass/test.scss */
+.avatar_radio.ar-14 label:before {
+  background-position: -20px -560px;
+}
+
+/* line 3, ../sass/test.scss */
+.avatar_radio.ar-15 label:before {
+  background-position: -20px -600px;
+}
+
+/* line 3, ../sass/test.scss */
+.avatar_radio.ar-16 label:before {
+  background-position: -20px -640px;
+}
+
+/* line 3, ../sass/test.scss */
+.avatar_radio.ar-17 label:before {
+  background-position: -20px -680px;
+}
+
+/* line 3, ../sass/test.scss */
+.avatar_radio.ar-18 label:before {
+  background-position: -20px -720px;
+}
+
+/* line 3, ../sass/test.scss */
+.avatar_radio.ar-19 label:before {
+  background-position: -20px -760px;
+}
+
+/* line 3, ../sass/test.scss */
+.avatar_radio.ar-20 label:before {
+  background-position: -20px -800px;
+}
+
+/* line 3, ../sass/test.scss */
+.avatar_radio.ar-21 label:before {
+  background-position: -20px -840px;
+}
+
+/* line 3, ../sass/test.scss */
+.avatar_radio.ar-22 label:before {
+  background-position: -20px -880px;
+}
+
+/* line 3, ../sass/test.scss */
+.avatar_radio.ar-23 label:before {
+  background-position: -20px -920px;
+}
+
+/* line 3, ../sass/test.scss */
+.avatar_radio.ar-24 label:before {
+  background-position: -20px -960px;
+}
+
+/* line 3, ../sass/test.scss */
+.avatar_radio.ar-25 label:before {
+  background-position: -20px -1000px;
+}
+
+/* line 3, ../sass/test.scss */
+.avatar_radio.ar-26 label:before {
+  background-position: -20px -1040px;
+}
+
+/* line 3, ../sass/test.scss */
+.avatar_radio.ar-27 label:before {
+  background-position: -20px -1080px;
+}
+
+/* line 3, ../sass/test.scss */
+.avatar_radio.ar-28 label:before {
+  background-position: -20px -1120px;
+}
+
+/* line 3, ../sass/test.scss */
+.avatar_radio.ar-29 label:before {
+  background-position: -20px -1160px;
+}
+
+/* line 3, ../sass/test.scss */
+.avatar_radio.ar-30 label:before {
+  background-position: -20px -1200px;
+}
+
+/* line 3, ../sass/test.scss */
+.avatar_radio.ar-31 label:before {
+  background-position: -20px -1240px;
+}
+
+/* line 3, ../sass/test.scss */
+.avatar_radio.ar-32 label:before {
+  background-position: -20px -1280px;
+}
+
+/* line 3, ../sass/test.scss */
+.avatar_radio.ar-33 label:before {
+  background-position: -20px -1320px;
+}
+
+/* line 3, ../sass/test.scss */
+.avatar_radio.ar-34 label:before {
+  background-position: -20px -1360px;
+}
+
+/* line 3, ../sass/test.scss */
+.avatar_radio.ar-35 label:before {
+  background-position: -20px -1400px;
+}
+
+/* line 3, ../sass/test.scss */
+.avatar_radio.ar-36 label:before {
+  background-position: -20px -1440px;
+}
+
+/* line 3, ../sass/test.scss */
+.avatar_radio.ar-37 label:before {
+  background-position: -20px -1480px;
+}
+
+/* line 3, ../sass/test.scss */
+.avatar_radio.ar-38 label:before {
+  background-position: -20px -1520px;
+}
+
+/* line 3, ../sass/test.scss */
+.avatar_radio.ar-39 label:before {
+  background-position: -20px -1560px;
+}
+
+/* line 3, ../sass/test.scss */
+.avatar_radio.ar-40 label:before {
+  background-position: -20px -1600px;
+}
+
+/* line 3, ../sass/test.scss */
+.avatar_radio.ar-41 label:before {
+  background-position: -20px -1640px;
+}
+
+/* line 3, ../sass/test.scss */
+.avatar_radio.ar-42 label:before {
+  background-position: -20px -1680px;
+}
+
+/* line 3, ../sass/test.scss */
+.avatar_radio.ar-43 label:before {
+  background-position: -20px -1720px;
+}
+
+/* line 3, ../sass/test.scss */
+.avatar_radio.ar-44 label:before {
+  background-position: -20px -1760px;
+}
+
+/* line 3, ../sass/test.scss */
+.avatar_radio.ar-45 label:before {
+  background-position: -20px -1800px;
+}
+
+/* line 3, ../sass/test.scss */
+.avatar_radio.ar-46 label:before {
+  background-position: -20px -1840px;
+}
+
+/* line 3, ../sass/test.scss */
+.avatar_radio.ar-47 label:before {
+  background-position: -20px -1880px;
+}
+
+/* line 3, ../sass/test.scss */
+.avatar_radio.ar-48 label:before {
+  background-position: -20px -1920px;
+}
+
+/* line 3, ../sass/test.scss */
+.avatar_radio.ar-49 label:before {
+  background-position: -20px -1960px;
+}
+
+/* line 3, ../sass/test.scss */
+.avatar_radio.ar-50 label:before {
+  background-position: -20px -2000px;
+}
+
+/* line 3, ../sass/test.scss */
+.avatar_radio.ar-51 label:before {
+  background-position: -20px -2040px;
+}
+
+/* line 3, ../sass/test.scss */
+.avatar_radio.ar-52 label:before {
+  background-position: -20px -2080px;
+}
+
+/* line 3, ../sass/test.scss */
+.avatar_radio.ar-53 label:before {
+  background-position: -20px -2120px;
+}
+
+/* line 3, ../sass/test.scss */
+.avatar_radio.ar-54 label:before {
+  background-position: -20px -2160px;
+}
+
+/* line 3, ../sass/test.scss */
+.avatar_radio.ar-55 label:before {
+  background-position: -20px -2200px;
+}
+
+/* line 3, ../sass/test.scss */
+.avatar_radio.ar-56 label:before {
+  background-position: -20px -2240px;
+}
+
+/* line 3, ../sass/test.scss */
+.avatar_radio.ar-57 label:before {
+  background-position: -20px -2280px;
+}
+
+/* line 3, ../sass/test.scss */
+.avatar_radio.ar-58 label:before {
+  background-position: -20px -2320px;
+}
+
+/* line 3, ../sass/test.scss */
+.avatar_radio.ar-59 label:before {
+  background-position: -20px -2360px;
+}
+
+/* line 3, ../sass/test.scss */
+.avatar_radio.ar-60 label:before {
+  background-position: -20px -2400px;
+}
+
+/* line 3, ../sass/test.scss */
+.avatar_radio.ar-61 label:before {
+  background-position: -20px -2440px;
+}
+
+/* line 3, ../sass/test.scss */
+.avatar_radio.ar-62 label:before {
+  background-position: -20px -2480px;
+}
+
+/* line 3, ../sass/test.scss */
+.avatar_radio.ar-63 label:before {
+  background-position: -20px -2520px;
+}
+
+/* line 3, ../sass/test.scss */
+.avatar_radio.ar-64 label:before {
+  background-position: -20px -2560px;
+}
+
+/* line 3, ../sass/test.scss */
+.avatar_radio.ar-65 label:before {
+  background-position: -20px -2600px;
+}
+
+/* line 3, ../sass/test.scss */
+.avatar_radio.ar-66 label:before {
+  background-position: -20px -2640px;
+}
+
+/* line 3, ../sass/test.scss */
+.avatar_radio.ar-67 label:before {
+  background-position: -20px -2680px;
+}
+
+/* line 3, ../sass/test.scss */
+.avatar_radio.ar-68 label:before {
+  background-position: -20px -2720px;
+}
+
+/* line 3, ../sass/test.scss */
+.avatar_radio.ar-69 label:before {
+  background-position: -20px -2760px;
+}
+
+/* line 3, ../sass/test.scss */
+.avatar_radio.ar-70 label:before {
+  background-position: -20px -2800px;
+}
+
+/* line 3, ../sass/test.scss */
+.avatar_radio.ar-71 label:before {
+  background-position: -20px -2840px;
+}
+
+/* line 3, ../sass/test.scss */
+.avatar_radio.ar-72 label:before {
+  background-position: -20px -2880px;
+}
+
+/* line 3, ../sass/test.scss */
+.avatar_radio.ar-73 label:before {
+  background-position: -20px -2920px;
+}
+
+/* line 3, ../sass/test.scss */
+.avatar_radio.ar-74 label:before {
+  background-position: -20px -2960px;
+}
+
+/* line 3, ../sass/test.scss */
+.avatar_radio.ar-75 label:before {
+  background-position: -20px -3000px;
+}
+
+/* line 3, ../sass/test.scss */
+.avatar_radio.ar-76 label:before {
+  background-position: -20px -3040px;
+}
+
+/* line 3, ../sass/test.scss */
+.avatar_radio.ar-77 label:before {
+  background-position: -20px -3080px;
+}
+
+/* line 3, ../sass/test.scss */
+.avatar_radio.ar-78 label:before {
+  background-position: -20px -3120px;
+}
+
+/* line 3, ../sass/test.scss */
+.avatar_radio.ar-79 label:before {
+  background-position: -20px -3160px;
+}
+
+/* line 3, ../sass/test.scss */
+.avatar_radio.ar-80 label:before {
+  background-position: -20px -3200px;
+}
+
+/* line 3, ../sass/test.scss */
+.avatar_radio.ar-81 label:before {
+  background-position: -20px -3240px;
+}
+
+/* line 3, ../sass/test.scss */
+.avatar_radio.ar-82 label:before {
+  background-position: -20px -3280px;
+}
+
+/* line 3, ../sass/test.scss */
+.avatar_radio.ar-83 label:before {
+  background-position: -20px -3320px;
+}
+
+/* line 3, ../sass/test.scss */
+.avatar_radio.ar-84 label:before {
+  background-position: -20px -3360px;
+}
+
+/* line 3, ../sass/test.scss */
+.avatar_radio.ar-85 label:before {
+  background-position: -20px -3400px;
+}
+
+/* line 3, ../sass/test.scss */
+.avatar_radio.ar-86 label:before {
+  background-position: -20px -3440px;
+}
+
+/* line 3, ../sass/test.scss */
+.avatar_radio.ar-87 label:before {
+  background-position: -20px -3480px;
+}
+
+/* line 3, ../sass/test.scss */
+.avatar_radio.ar-88 label:before {
+  background-position: -20px -3520px;
+}
+
+/* line 3, ../sass/test.scss */
+.avatar_radio.ar-89 label:before {
+  background-position: -20px -3560px;
+}
+
+/* line 3, ../sass/test.scss */
+.avatar_radio.ar-90 label:before {
+  background-position: -20px -3600px;
+}
+
+/* line 3, ../sass/test.scss */
+.avatar_radio.ar-91 label:before {
+  background-position: -20px -3640px;
+}
+
+/* line 3, ../sass/test.scss */
+.avatar_radio.ar-92 label:before {
+  background-position: -20px -3680px;
+}
+
+/* line 3, ../sass/test.scss */
+.avatar_radio.ar-93 label:before {
+  background-position: -20px -3720px;
+}
+
+/* line 3, ../sass/test.scss */
+.avatar_radio.ar-94 label:before {
+  background-position: -20px -3760px;
+}
+
+/* line 3, ../sass/test.scss */
+.avatar_radio.ar-95 label:before {
+  background-position: -20px -3800px;
+}
+
+/* line 3, ../sass/test.scss */
+.avatar_radio.ar-96 label:before {
+  background-position: -20px -3840px;
+}
+
+/* line 3, ../sass/test.scss */
+.avatar_radio.ar-97 label:before {
+  background-position: -20px -3880px;
+}
+
+/* line 3, ../sass/test.scss */
+.avatar_radio.ar-98 label:before {
+  background-position: -20px -3920px;
+}
+
+/* line 3, ../sass/test.scss */
+.avatar_radio.ar-99 label:before {
+  background-position: -20px -3960px;
+}
+
+/* line 3, ../sass/test.scss */
+.avatar_radio.ar-100 label:before {
+  background-position: -20px -4000px;
+}

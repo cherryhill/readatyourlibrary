@@ -539,22 +539,22 @@ function play_library_custom_form_profile2_edit_main_form_alter(&$form, $form_st
   );
 
   $form['checkboxes_fieldset']['description'] = array('#markup' => '<div>' . t('What kind of avatar do you want?').'</div>');
-
+  $m=1;
   foreach ($tax_name as $key => $value) {
     $form['checkboxes_fieldset']['checkboxes_fieldset2'.$value] = array(
       '#title' => $value,
-      '#prefix' => '<div id="checkboxes-div" class="accordionItem">',
+      '#prefix' => "<div id='checkboxes-div-$m' class='accordionItem'>",
       '#suffix' => '</div>',
       '#type' => 'fieldset',
       '#weight' => 11,
-    );
+    );$m++;
 
     $i = 1;
     foreach ($avatar_name[$key] as $key1 => $value2) {
       $form['checkboxes_fieldset']['checkboxes_fieldset2'.$value]["avatar_checkbox-".$value2] = array(
         '#type' => 'radio',
         '#title' => pl_avatar_title($value2).$i,
-        '#prefix' => '<div class="avatar_radio">',
+        '#prefix' => "<div class='avatar_radio ar-$i'>",
         '#suffix' => '</div>',
         '#attributes' => array(
           'class' => array('av_radio')
