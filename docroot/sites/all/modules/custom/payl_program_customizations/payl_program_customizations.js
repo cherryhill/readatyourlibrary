@@ -14,44 +14,25 @@
 (function ($) {
   Drupal.behaviors.payl_program_customizations = {
     attach: function() {
-      // Drupal.settings.payl_program_customizations_birthday_limit = parseInt(Drupal.settings.payl_program_customizations_birthday_limit);
-      // var birthday = new Date($('#edit-profile-main-field-user-birthday-und-0-value-datepicker-popup-0').val());
-      // var birthday_timestamp = Math.floor(birthday.getTime() / 1000);
+      Drupal.settings.payl_program_customizations_birthday_limit = parseInt(Drupal.settings.payl_program_customizations_birthday_limit);
+      
+      $('.page-user-register .form-item-name').hide();
+      $('#edit-profile-main-field-user-birthday-en-0-value-year').on('change', function() {
+        var birthdayMonth = jQuery('#edit-profile-main-field-user-birthday-en-0-value-month ').val();
+        var birthdayDay = jQuery('#edit-profile-main-field-user-birthday-en-0-value-day').val();
+        var birthdayYear = jQuery('#edit-profile-main-field-user-birthday-en-0-value-year').val();
+        var age = calculate_age(birthdayMonth,birthdayDay,birthdayYear);
+        console.log(age);
+        // More than 13 years old.
+        if (age > 12 || age == NaN) {
+          $('.page-user-register .form-item-name').show();
+        }
+        // Less than 13 years old.
+        else {
+          $('.page-user-register .form-item-name').hide();
+        }
 
-      // var user_dob = Drupal.settings.payl_program_customizations_user_date_of_birth;
-      // var birthday_patron = new Date(user_dob);
-      // var birthday_timestamp_patron = Math.floor(birthday_patron.getTime() / 1000);
-
-      // // More than 13 years old.
-      // if (birthday_timestamp < Drupal.settings.payl_program_customizations_birthday_limit) {
-      //   $('.page-user-register .form-item-name').show();
-      // }
-      // // Less than 13 years old.
-      // else {
-      //   $('.page-user-register .form-item-name').hide();
-      // }
-
-      // // Changes for user edit profile
-      // if (birthday_timestamp_patron > Drupal.settings.payl_program_customizations_birthday_limit) {
-      //   $('.page-user-edit .form-item-name').hide();
-      // }
-      // else {
-      //   $('.page-user-edit .form-item-name').show();
-      // }
-
-      // // showing and hiding of username field according to user's age
-      // $('#edit-profile-main-field-user-birthday-und-0-value-datepicker-popup-0').bind('change', function(date_object) {
-      //   Drupal.settings.payl_program_customizations_birthday_limit = parseInt(Drupal.settings.payl_program_customizations_birthday_limit);
-      //   var birthday = new Date($('#edit-profile-main-field-user-birthday-und-0-value-datepicker-popup-0').val());
-      //   var birthday_timestamp = Math.floor(birthday.getTime() / 1000);
-        
-      //   if (birthday_timestamp < Drupal.settings.payl_program_customizations_birthday_limit) {
-      //     $('.page-user-register .form-item-name').show();
-      //   }
-      //   else {
-      //   $('.page-user-register .form-item-name').hide();
-      //   }
-      // });
+      });
 
       $('.field-widget-random-list-widget-randomizer').each(function(index) {
         fieldname = 'Change ' + $(this).find('label').html();
@@ -67,6 +48,24 @@
             name = name + $(this).val();
           });
           $('#edit-name').val(name);
+      var birthdayMonth = jQuery('#edit_profile_main_field_user_birthday_en_0_value_month_chosen a span').html();
+      var birthdayDay = jQuery('#edit_profile_main_field_user_birthday_en_0_value_day_chosen a span').html();
+      var birthdayYear = jQuery('#edit_profile_main_field_user_birthday_en_0_value_year_chosen a span').html();
+
+      $('#edit_profile_main_field_user_birthday_en_0_value_year_chosen').bind('change', function() {
+
+        var age = calculate_age(birthdayMonth,birthdayDay,birthdayYear);
+        console.log(age);
+        // More than 13 years old.
+        if (age > 12 || age == NaN) {
+          $('.page-user-register .form-item-name').show();
+        }
+        // Less than 13 years old.
+        else {
+          $('.page-user-register .form-item-name').hide();
+        }
+
+      });
           var username = name;
           $.ajax({
             url: Drupal.settings.basePath + 'username/check',
@@ -121,6 +120,20 @@
   function payl_program_customizations_change_name() {
     name = $('#edit-name').val();
     $('.current-username').html(name);
+  }
+
+  function calculate_age(birth_month,birth_day,birth_year) {
+    today_date = new Date(); 
+    today_year = today_date.getFullYear();
+    today_month = today_date.getMonth(); 
+    today_day = today_date.getDate();
+    age = today_year - birth_year; 
+    if ( today_month < (birth_month - 1)) { 
+      age--; 
+    } if (((birth_month - 1) == today_month) && (today_day < birth_day)) {
+      age--; 
+    } 
+    return age; 
   }
 
 
