@@ -134,7 +134,8 @@ align-items: top;
 .accordionItem .avatar_radio label  {
    position: relative;
    padding-left: 32px;
-   visibility: hidden;
+   /*visibility: hidden;*/
+   color: transparent;
 
 }
 .accordionItem .avatar_radio label:before {
@@ -143,23 +144,38 @@ align-items: top;
   height: 32px;
   visibility: visible;
   position: absolute;
-  top: 0;
-  left: 0;
+  top: 6px;
+  left: 6px;
   display: inline-block;
+}
+.accordionItem .avatar_radio label:after {
+  content: " ";
+  width: 40px;
+  height: 40px;
+  border: 2px solid #f5f5dc;
+  position: absolute;
+  visibility: visible;
+  left: 0;
+  top: 0;
+  z-index: 0;
+  border-radius: 100%;
+  box-shadow: 2px 3px 4px #000;
+  display: none;
 }
 .accordionItem .avatar_radio input[type='radio'] {
   visibility: hidden;
+  display: none;
 }
-.accordionItem .avatar_radio input[type='radio']:checked + label:before {
-  box-shadow: 2px 2px 16px 10px #000;
-  filter: grayscale(30%); /* Current draft standard */
--webkit-filter: grayscale(30%); /* New WebKit */
--moz-filter: grayscale(30%);
--ms-filter: grayscale(30%);
--o-filter: grayscale(30%);
+.accordionItem .avatar_radio label:hover:after  {
+  display: block;
+}
+
+.accordionItem .avatar_radio input[type='radio']:checked + label:after {
+  display: block;
 }
 .accordionItem .form-wrapper .avatar_radio label.option {
    display: block !important;
+   cursor: pointer;
 }
 /**for nature**/
 .accordionItem #edit-checkboxes-fieldset2nature .avatar_radio label:before {
