@@ -76,6 +76,9 @@ function play_library_program_field_default_field_bases() {
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_activity_entry_activity',
+    'field_permissions' => array(
+      'type' => 0,
+    ),
     'indexes' => array(
       'target_id' => array(
         0 => 'target_id',
@@ -99,9 +102,10 @@ function play_library_program_field_default_field_bases() {
           'activity' => 'activity',
         ),
       ),
+      'profile2_private' => FALSE,
       'target_type' => 'activity',
     ),
-    'translatable' => 0,
+    'translatable' => 1,
     'type' => 'entityreference',
   );
 
@@ -249,7 +253,7 @@ function play_library_program_field_default_field_bases() {
       'entity_translation_sync' => FALSE,
       'profile2_private' => FALSE,
     ),
-    'translatable' => 0,
+    'translatable' => 1,
     'type' => 'number_integer',
   );
 
@@ -358,7 +362,7 @@ function play_library_program_field_default_field_bases() {
       'entity_translation_sync' => FALSE,
       'profile2_private' => FALSE,
     ),
-    'translatable' => 0,
+    'translatable' => 1,
     'type' => 'number_integer',
   );
 
@@ -489,7 +493,7 @@ function play_library_program_field_default_field_bases() {
       'max_length' => 255,
       'profile2_private' => FALSE,
     ),
-    'translatable' => 0,
+    'translatable' => 1,
     'type' => 'text',
   );
 
@@ -701,7 +705,7 @@ function play_library_program_field_default_field_bases() {
       'max_length' => 255,
       'profile2_private' => FALSE,
     ),
-    'translatable' => 0,
+    'translatable' => 1,
     'type' => 'text',
   );
 

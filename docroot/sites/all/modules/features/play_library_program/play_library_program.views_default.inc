@@ -42,6 +42,24 @@ function play_library_program_views_default_views() {
   $handler->display->display_options['empty']['area']['empty'] = TRUE;
   $handler->display->display_options['empty']['area']['content'] = 'Activities have not yet been created.';
   $handler->display->display_options['empty']['area']['format'] = 'filtered_html';
+  /* Field: Bulk operations: Activity */
+  $handler->display->display_options['fields']['views_bulk_operations']['id'] = 'views_bulk_operations';
+  $handler->display->display_options['fields']['views_bulk_operations']['table'] = 'eck_activity';
+  $handler->display->display_options['fields']['views_bulk_operations']['field'] = 'views_bulk_operations';
+  $handler->display->display_options['fields']['views_bulk_operations']['vbo_settings']['display_type'] = '0';
+  $handler->display->display_options['fields']['views_bulk_operations']['vbo_settings']['enable_select_all_pages'] = 1;
+  $handler->display->display_options['fields']['views_bulk_operations']['vbo_settings']['row_clickable'] = 1;
+  $handler->display->display_options['fields']['views_bulk_operations']['vbo_settings']['force_single'] = 0;
+  $handler->display->display_options['fields']['views_bulk_operations']['vbo_settings']['entity_load_capacity'] = '10';
+  $handler->display->display_options['fields']['views_bulk_operations']['vbo_operations'] = array(
+    'action::views_bulk_operations_delete_item' => array(
+      'selected' => 1,
+      'postpone_processing' => 0,
+      'skip_confirmation' => 0,
+      'override_label' => 0,
+      'label' => '',
+    ),
+  );
   /* Field: Activity: Id */
   $handler->display->display_options['fields']['id']['id'] = 'id';
   $handler->display->display_options['fields']['id']['table'] = 'eck_activity';
@@ -63,6 +81,22 @@ function play_library_program_views_default_views() {
   $handler->display->display_options['fields']['field_activity_fired_hook']['table'] = 'field_data_field_activity_fired_hook';
   $handler->display->display_options['fields']['field_activity_fired_hook']['field'] = 'field_activity_fired_hook';
   $handler->display->display_options['fields']['field_activity_fired_hook']['label'] = 'Trigger';
+  /* Field: Activity: Start Date */
+  $handler->display->display_options['fields']['field_activity_start_date']['id'] = 'field_activity_start_date';
+  $handler->display->display_options['fields']['field_activity_start_date']['table'] = 'field_data_field_activity_start_date';
+  $handler->display->display_options['fields']['field_activity_start_date']['field'] = 'field_activity_start_date';
+  /* Field: Activity: End Date */
+  $handler->display->display_options['fields']['field_activity_end_date']['id'] = 'field_activity_end_date';
+  $handler->display->display_options['fields']['field_activity_end_date']['table'] = 'field_data_field_activity_end_date';
+  $handler->display->display_options['fields']['field_activity_end_date']['field'] = 'field_activity_end_date';
+  $handler->display->display_options['fields']['field_activity_end_date']['settings'] = array(
+    'format_type' => 'long',
+    'fromto' => 'both',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+    'show_remaining_days' => 0,
+  );
   /* Field: Activity: Link */
   $handler->display->display_options['fields']['view_link']['id'] = 'view_link';
   $handler->display->display_options['fields']['view_link']['table'] = 'eck_activity';
@@ -686,6 +720,17 @@ function play_library_program_views_default_views() {
   $handler->display->display_options['empty']['area']['empty'] = TRUE;
   $handler->display->display_options['empty']['area']['content'] = 'No rewards have been created';
   $handler->display->display_options['empty']['area']['format'] = 'filtered_html';
+  /* Field: Bulk operations: Reward */
+  $handler->display->display_options['fields']['views_bulk_operations']['id'] = 'views_bulk_operations';
+  $handler->display->display_options['fields']['views_bulk_operations']['table'] = 'eck_reward';
+  $handler->display->display_options['fields']['views_bulk_operations']['field'] = 'views_bulk_operations';
+  $handler->display->display_options['fields']['views_bulk_operations']['label'] = '';
+  $handler->display->display_options['fields']['views_bulk_operations']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['views_bulk_operations']['vbo_settings']['display_type'] = '0';
+  $handler->display->display_options['fields']['views_bulk_operations']['vbo_settings']['enable_select_all_pages'] = 1;
+  $handler->display->display_options['fields']['views_bulk_operations']['vbo_settings']['row_clickable'] = 1;
+  $handler->display->display_options['fields']['views_bulk_operations']['vbo_settings']['force_single'] = 0;
+  $handler->display->display_options['fields']['views_bulk_operations']['vbo_settings']['entity_load_capacity'] = '10';
   /* Field: Reward: Id */
   $handler->display->display_options['fields']['id']['id'] = 'id';
   $handler->display->display_options['fields']['id']['table'] = 'eck_reward';
@@ -694,18 +739,50 @@ function play_library_program_views_default_views() {
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'eck_reward';
   $handler->display->display_options['fields']['title']['field'] = 'title';
-  /* Field: Broken/missing handler */
-  $handler->display->display_options['fields']['field_reward_raffle']['id'] = 'field_reward_raffle';
-  $handler->display->display_options['fields']['field_reward_raffle']['table'] = 'field_data_field_reward_raffle';
-  $handler->display->display_options['fields']['field_reward_raffle']['field'] = 'field_reward_raffle';
-  $handler->display->display_options['fields']['field_reward_raffle']['label'] = 'Raffle';
-  $handler->display->display_options['fields']['field_reward_raffle']['empty'] = 'N/A';
-  /* Field: Broken/missing handler */
-  $handler->display->display_options['fields']['field_reward_badge']['id'] = 'field_reward_badge';
-  $handler->display->display_options['fields']['field_reward_badge']['table'] = 'field_data_field_reward_badge';
-  $handler->display->display_options['fields']['field_reward_badge']['field'] = 'field_reward_badge';
-  $handler->display->display_options['fields']['field_reward_badge']['label'] = 'Badge';
-  $handler->display->display_options['fields']['field_reward_badge']['empty'] = 'N/A';
+  /* Field: Reward: reward type */
+  $handler->display->display_options['fields']['type']['id'] = 'type';
+  $handler->display->display_options['fields']['type']['table'] = 'eck_reward';
+  $handler->display->display_options['fields']['type']['field'] = 'type';
+  $handler->display->display_options['fields']['type']['label'] = 'Reward Type';
+  /* Field: Reward: Age group */
+  $handler->display->display_options['fields']['field_age_group']['id'] = 'field_age_group';
+  $handler->display->display_options['fields']['field_age_group']['table'] = 'field_data_field_age_group';
+  $handler->display->display_options['fields']['field_age_group']['field'] = 'field_age_group';
+  $handler->display->display_options['fields']['field_age_group']['click_sort_column'] = 'from';
+  $handler->display->display_options['fields']['field_age_group']['settings'] = array(
+    'thousand_separator' => ' ',
+    'range_separator' => '-',
+    'range_combine' => 0,
+    'from_prefix_suffix' => 1,
+    'to_prefix_suffix' => 1,
+    'field_prefix_suffix' => 1,
+    'combined_prefix_suffix' => 0,
+  );
+  /* Field: Reward: Category */
+  $handler->display->display_options['fields']['field_category']['id'] = 'field_category';
+  $handler->display->display_options['fields']['field_category']['table'] = 'field_data_field_category';
+  $handler->display->display_options['fields']['field_category']['field'] = 'field_category';
+  /* Field: Reward: Dates between which this reward/raffle ticket can be earned */
+  $handler->display->display_options['fields']['field_dates_reward']['id'] = 'field_dates_reward';
+  $handler->display->display_options['fields']['field_dates_reward']['table'] = 'field_data_field_dates_reward';
+  $handler->display->display_options['fields']['field_dates_reward']['field'] = 'field_dates_reward';
+  $handler->display->display_options['fields']['field_dates_reward']['settings'] = array(
+    'format_type' => 'long',
+    'fromto' => 'both',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+    'show_remaining_days' => 0,
+  );
+  /* Field: Reward: Activities from which user can get this reward/raffle ticket */
+  $handler->display->display_options['fields']['field_activities_reward']['id'] = 'field_activities_reward';
+  $handler->display->display_options['fields']['field_activities_reward']['table'] = 'field_data_field_activities_reward';
+  $handler->display->display_options['fields']['field_activities_reward']['field'] = 'field_activities_reward';
+  $handler->display->display_options['fields']['field_activities_reward']['label'] = 'Reward Activities';
+  $handler->display->display_options['fields']['field_activities_reward']['settings'] = array(
+    'link' => 0,
+  );
+  $handler->display->display_options['fields']['field_activities_reward']['delta_offset'] = '0';
   /* Field: Reward: Link */
   $handler->display->display_options['fields']['view_link']['id'] = 'view_link';
   $handler->display->display_options['fields']['view_link']['table'] = 'eck_reward';
@@ -721,11 +798,6 @@ function play_library_program_views_default_views() {
   $handler->display->display_options['fields']['delete_link']['table'] = 'eck_reward';
   $handler->display->display_options['fields']['delete_link']['field'] = 'delete_link';
   $handler->display->display_options['fields']['delete_link']['label'] = 'Delete';
-  /* Field: Reward: reward type */
-  $handler->display->display_options['fields']['type']['id'] = 'type';
-  $handler->display->display_options['fields']['type']['table'] = 'eck_reward';
-  $handler->display->display_options['fields']['type']['field'] = 'type';
-  $handler->display->display_options['fields']['type']['label'] = 'Reward Type';
   /* Filter criterion: Reward: reward type */
   $handler->display->display_options['filters']['type']['id'] = 'type';
   $handler->display->display_options['filters']['type']['table'] = 'eck_reward';
