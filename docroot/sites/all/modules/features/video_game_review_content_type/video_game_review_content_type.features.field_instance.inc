@@ -17,7 +17,7 @@ function video_game_review_content_type_field_default_field_instances() {
       0 => array(
         'summary' => '',
         'value' => '',
-        'format' => 'simple_html',
+        'format' => 'full_html',
       ),
     ),
     'deleted' => 0,
@@ -49,22 +49,17 @@ function video_game_review_content_type_field_default_field_instances() {
     'settings' => array(
       'better_formats' => array(
         'allowed_formats' => array(
-          'filtered_html' => 'filtered_html',
-          'filtered_html_with_tables' => 'filtered_html_with_tables',
+          'filtered_html' => 0,
           'full_html' => 'full_html',
-          'php_code' => 'php_code',
-          'plain_text' => 'plain_text',
-          'simple_html' => 'simple_html',
+          'php_code' => 0,
+          'plain_text' => 0,
         ),
-        'allowed_formats_toggle' => 0,
+        'allowed_formats_toggle' => 1,
         'default_order_toggle' => 0,
         'default_order_wrapper' => array(
           'formats' => array(
             'filtered_html' => array(
               'weight' => -9,
-            ),
-            'filtered_html_with_tables' => array(
-              'weight' => -7,
             ),
             'full_html' => array(
               'weight' => -6,
@@ -74,9 +69,6 @@ function video_game_review_content_type_field_default_field_instances() {
             ),
             'plain_text' => array(
               'weight' => -5,
-            ),
-            'simple_html' => array(
-              'weight' => -10,
             ),
           ),
         ),
@@ -146,7 +138,7 @@ function video_game_review_content_type_field_default_field_instances() {
     'bundle' => 'video_game_review',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'Please enter a link to the video game in the <a href="http://encore.oaklandlibrary.org/iii/encore/?lang=eng" target="_blank">OPL catalog</a> so that other readers can find it easily.',
+    'description' => '',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -370,14 +362,89 @@ function video_game_review_content_type_field_default_field_instances() {
     'workbench_access_field' => 0,
   );
 
+  // Exported field_instance:
+  // 'node-video_game_review-field_video_game_cover_image_lin'.
+  $field_instances['node-video_game_review-field_video_game_cover_image_lin'] = array(
+    'bundle' => 'video_game_review',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'Go to the Encore screen for the video game and right-click on the video game cover image on the left-hand side of the screen. Then click “copy link address” (not “copy image address”), then paste the link address (URL) into the Cover Image box. In the middle of the URL, you should see the phrase “Type=L”. Change the L to a M to give us a Medium size image.',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 6,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'display_label' => '',
+    'entity_type' => 'node',
+    'field_name' => 'field_video_game_cover_image_lin',
+    'label' => 'Video game cover Image link',
+    'required' => 0,
+    'settings' => array(
+      'better_formats' => array(
+        'allowed_formats' => array(
+          'filtered_html' => 'filtered_html',
+          'full_html' => 'full_html',
+          'php_code' => 'php_code',
+          'plain_text' => 'plain_text',
+        ),
+        'allowed_formats_toggle' => 0,
+        'default_order_toggle' => 0,
+        'default_order_wrapper' => array(
+          'formats' => array(
+            'filtered_html' => array(
+              'weight' => 0,
+            ),
+            'full_html' => array(
+              'weight' => 1,
+            ),
+            'php_code' => array(
+              'weight' => 11,
+            ),
+            'plain_text' => array(
+              'weight' => 10,
+            ),
+          ),
+        ),
+      ),
+      'entity_translation_sync' => FALSE,
+      'linkit' => array(
+        'enable' => 0,
+        'insert_plugin' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 8,
+    ),
+    'workbench_access_field' => 0,
+  );
+
   // Translatables
   // Included for use with string extractors like potx.
   t('Age Rating Of Game');
   t('Catalog Link');
+  t('Go to the Encore screen for the video game and right-click on the video game cover image on the left-hand side of the screen. Then click “copy link address” (not “copy image address”), then paste the link address (URL) into the Cover Image box. In the middle of the URL, you should see the phrase “Type=L”. Change the L to a M to give us a Medium size image.');
   t('Platform');
   t('Platform other option');
-  t('Please enter a link to the video game in the <a href="http://encore.oaklandlibrary.org/iii/encore/?lang=eng" target="_blank">OPL catalog</a> so that other readers can find it easily.');
   t('Please select one');
+  t('Video game cover Image link');
   t('Write Your Review');
 
   return $field_instances;

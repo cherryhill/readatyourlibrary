@@ -28,6 +28,7 @@ function moview_review_content_type_field_default_field_bases() {
     'locked' => 0,
     'module' => 'text',
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'max_length' => 255,
       'profile2_private' => FALSE,
     ),
@@ -58,6 +59,7 @@ function moview_review_content_type_field_default_field_bases() {
         'url_cutoff' => 80,
       ),
       'enable_tokens' => 1,
+      'entity_translation_sync' => FALSE,
       'profile2_private' => FALSE,
       'title' => 'optional',
       'title_maxlength' => 128,
@@ -86,6 +88,7 @@ function moview_review_content_type_field_default_field_bases() {
     'locked' => 0,
     'module' => 'text',
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'max_length' => 255,
       'profile2_private' => FALSE,
     ),
@@ -121,6 +124,7 @@ function moview_review_content_type_field_default_field_bases() {
         'genre_other' => 'Other',
       ),
       'allowed_values_function' => '',
+      'entity_translation_sync' => FALSE,
       'profile2_private' => FALSE,
     ),
     'translatable' => 0,
@@ -145,6 +149,7 @@ function moview_review_content_type_field_default_field_bases() {
     'locked' => 0,
     'module' => 'text',
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'max_length' => 255,
       'profile2_private' => FALSE,
     ),
@@ -178,10 +183,37 @@ function moview_review_content_type_field_default_field_bases() {
         'language_5' => 'Vietnamese',
       ),
       'allowed_values_function' => '',
+      'entity_translation_sync' => FALSE,
       'profile2_private' => FALSE,
     ),
     'translatable' => 0,
     'type' => 'list_text',
+  );
+
+  // Exported field_base: 'field_movie_cover_image_link'.
+  $field_bases['field_movie_cover_image_link'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_movie_cover_image_link',
+    'field_permissions' => array(
+      'type' => 2,
+    ),
+    'indexes' => array(
+      'format' => array(
+        0 => 'format',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'text',
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+      'max_length' => 255,
+      'profile2_private' => FALSE,
+    ),
+    'translatable' => 0,
+    'type' => 'text',
   );
 
   // Exported field_base: 'field_please_select_one'.
@@ -208,6 +240,7 @@ function moview_review_content_type_field_default_field_bases() {
         'private' => 'I don’t want other players to see this review',
       ),
       'allowed_values_function' => '',
+      'entity_translation_sync' => FALSE,
       'profile2_private' => FALSE,
     ),
     'translatable' => 0,
@@ -239,6 +272,7 @@ function moview_review_content_type_field_default_field_bases() {
         'r' => 'R',
       ),
       'allowed_values_function' => '',
+      'entity_translation_sync' => FALSE,
       'profile2_private' => FALSE,
     ),
     'translatable' => 0,
@@ -261,6 +295,7 @@ function moview_review_content_type_field_default_field_bases() {
     'settings' => array(
       'cache_count' => 4,
       'cache_enabled' => 0,
+      'entity_translation_sync' => FALSE,
       'granularity' => array(
         'day' => 0,
         'hour' => 0,
