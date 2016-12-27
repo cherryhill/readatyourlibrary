@@ -13,7 +13,13 @@ function content_type_book_review_field_default_field_instances() {
   // Exported field_instance: 'node-review_book-body'.
   $field_instances['node-review_book-body'] = array(
     'bundle' => 'review_book',
-    'default_value' => NULL,
+    'default_value' => array(
+      0 => array(
+        'summary' => '',
+        'value' => '',
+        'format' => 'full_html',
+      ),
+    ),
     'deleted' => 0,
     'description' => '',
     'display' => array(
@@ -43,7 +49,7 @@ function content_type_book_review_field_default_field_instances() {
       'better_formats' => array(
         'allowed_formats' => array(
           'filtered_html' => 0,
-          'full_html' => 0,
+          'full_html' => 'full_html',
           'php_code' => 0,
           'plain_text' => 0,
         ),
@@ -67,7 +73,8 @@ function content_type_book_review_field_default_field_instances() {
         ),
       ),
       'display_summary' => 1,
-      'text_processing' => 0,
+      'entity_translation_sync' => FALSE,
+      'text_processing' => 1,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -145,6 +152,7 @@ function content_type_book_review_field_default_field_instances() {
           ),
         ),
       ),
+      'entity_translation_sync' => FALSE,
       'linkit' => array(
         'enable' => 0,
         'insert_plugin' => '',
@@ -228,6 +236,7 @@ function content_type_book_review_field_default_field_instances() {
           ),
         ),
       ),
+      'entity_translation_sync' => FALSE,
       'linkit' => array(
         'enable' => 0,
         'insert_plugin' => '',
@@ -251,7 +260,7 @@ function content_type_book_review_field_default_field_instances() {
     'bundle' => 'review_book',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Go to the Encore screen for the book and right-click on the book cover image on the left-hand side of the screen. Then click “copy link address” (not “copy image address”), then paste the link address (URL) into the Cover Image box. In the middle of the URL, you should see the phrase “Type=L”. Change the L to a M to give us a Medium size image.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -276,11 +285,9 @@ function content_type_book_review_field_default_field_instances() {
       'better_formats' => array(
         'allowed_formats' => array(
           'filtered_html' => 'filtered_html',
-          'filtered_html_with_tables' => 'filtered_html_with_tables',
           'full_html' => 'full_html',
           'php_code' => 'php_code',
           'plain_text' => 'plain_text',
-          'simple_html' => 'simple_html',
         ),
         'allowed_formats_toggle' => 0,
         'default_order_toggle' => 0,
@@ -288,9 +295,6 @@ function content_type_book_review_field_default_field_instances() {
           'formats' => array(
             'filtered_html' => array(
               'weight' => -9,
-            ),
-            'filtered_html_with_tables' => array(
-              'weight' => -7,
             ),
             'full_html' => array(
               'weight' => -6,
@@ -301,12 +305,10 @@ function content_type_book_review_field_default_field_instances() {
             'plain_text' => array(
               'weight' => -5,
             ),
-            'simple_html' => array(
-              'weight' => -10,
-            ),
           ),
         ),
       ),
+      'entity_translation_sync' => FALSE,
       'linkit' => array(
         'enable' => 0,
         'insert_plugin' => '',
@@ -366,6 +368,7 @@ function content_type_book_review_field_default_field_instances() {
         'url_cutoff' => 80,
       ),
       'enable_tokens' => 0,
+      'entity_translation_sync' => FALSE,
       'linkit' => array(
         'enable' => 0,
         'insert_plugin' => '',
@@ -418,6 +421,7 @@ function content_type_book_review_field_default_field_instances() {
     'label' => 'Privacy settings',
     'required' => 1,
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -479,6 +483,7 @@ function content_type_book_review_field_default_field_instances() {
       'default_value2' => 'same',
       'default_value_code' => '',
       'default_value_code2' => '',
+      'entity_translation_sync' => FALSE,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -504,6 +509,7 @@ function content_type_book_review_field_default_field_instances() {
   t('Author last name');
   t('Book cover Image link');
   t('Catalog link');
+  t('Go to the Encore screen for the book and right-click on the book cover image on the left-hand side of the screen. Then click “copy link address” (not “copy image address”), then paste the link address (URL) into the Cover Image box. In the middle of the URL, you should see the phrase “Type=L”. Change the L to a M to give us a Medium size image.');
   t('Please enter a link to the book in the <a href="http://encore.oaklandlibrary.org/iii/encore/?lang=eng" target="_blank">OPL catalog</a> so that other readers can find it easily.');
   t('Privacy settings');
   t('Publication date');

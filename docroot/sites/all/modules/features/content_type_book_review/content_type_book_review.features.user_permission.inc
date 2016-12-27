@@ -13,35 +13,53 @@ function content_type_book_review_user_default_permissions() {
   // Exported permission: 'create field_book_cover_image_link'.
   $permissions['create field_book_cover_image_link'] = array(
     'name' => 'create field_book_cover_image_link',
-    'roles' => array(),
+    'roles' => array(
+      'Lead Staff' => 'Lead Staff',
+      'Staff' => 'Staff',
+      'administrator' => 'administrator',
+    ),
     'module' => 'field_permissions',
   );
 
   // Exported permission: 'edit field_book_cover_image_link'.
   $permissions['edit field_book_cover_image_link'] = array(
     'name' => 'edit field_book_cover_image_link',
-    'roles' => array(),
+    'roles' => array(
+      'Lead Staff' => 'Lead Staff',
+      'Staff' => 'Staff',
+      'administrator' => 'administrator',
+    ),
     'module' => 'field_permissions',
   );
 
   // Exported permission: 'edit own field_book_cover_image_link'.
   $permissions['edit own field_book_cover_image_link'] = array(
     'name' => 'edit own field_book_cover_image_link',
-    'roles' => array(),
+    'roles' => array(
+      'Lead Staff' => 'Lead Staff',
+      'Staff' => 'Staff',
+      'administrator' => 'administrator',
+    ),
     'module' => 'field_permissions',
   );
 
   // Exported permission: 'view field_book_cover_image_link'.
   $permissions['view field_book_cover_image_link'] = array(
     'name' => 'view field_book_cover_image_link',
-    'roles' => array(),
+    'roles' => array(
+      'anonymous user' => 'anonymous user',
+      'authenticated user' => 'authenticated user',
+    ),
     'module' => 'field_permissions',
   );
 
   // Exported permission: 'view own field_book_cover_image_link'.
   $permissions['view own field_book_cover_image_link'] = array(
     'name' => 'view own field_book_cover_image_link',
-    'roles' => array(),
+    'roles' => array(
+      'anonymous user' => 'anonymous user',
+      'authenticated user' => 'authenticated user',
+    ),
     'module' => 'field_permissions',
   );
 
