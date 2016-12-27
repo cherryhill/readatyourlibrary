@@ -590,15 +590,15 @@ function raffle_user_list($form, &$form_state) {
   $query->fields('pf', array('pid'));
   $query->fields('eck', array('id'));
 
-  if (!empty($school_id[0])) {
+  if ($school_id[0] != 'null') {
     $query->fields('sch', array('field_school_tid'));
   }
 
-  if (!empty($grade_id[0])) {
+  if ($grade_id[0] != 'null') {
     $query->fields('grade', array('field_user_grade_tid'));
   }
 
-  if (!empty($library_id[0])){
+  if ($library_id[0] != 'null'){
     $query->fields('lb_brnch', array('field_library_branch_tid'));
   }
 
@@ -609,13 +609,13 @@ function raffle_user_list($form, &$form_state) {
   $query->condition('eck.type','raffle_claim');
   $query->condition('claim.field_raffle_claim_id_target_id', $raffle_id);
 
-  if (!empty($library_id[0])) {
+  if ($library_id[0] != 'null') {
     $query->condition('lb_brnch.field_library_branch_tid',$library_id);
   }
-  if (!empty($school_id[0])) {
+  if ($school_id[0] != 'null') {
     $query->condition('sch.field_school_tid',$school_id);
   }
-  if (!empty($grade_id[0])) {
+  if ($grade_id[0] != 'null') {
     $query->condition('grade.field_user_grade_tid',$grade_id);
   }
 
@@ -770,7 +770,7 @@ function _get_options($vocab_name) {
   $term_list = taxonomy_vocabulary_machine_name_load($vocab_name);
   $tree = taxonomy_get_tree($term_list->vid);
   $options = array();
-  $options[''] = '- Select -';
+  //$options[''] = '- Select -';
   foreach ($tree as $value) {
     $options[$value->tid] = $value->name;
   }
@@ -846,7 +846,6 @@ function play_program_raffle_menu_alter(&$items) {
   global $user;
   if($user->roles[1] == 'anonymous user') {
     $items['staff/register']['access callback'] = FALSE;
-
   }
 }
 
