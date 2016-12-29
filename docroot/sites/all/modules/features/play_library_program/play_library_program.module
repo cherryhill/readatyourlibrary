@@ -373,7 +373,7 @@ function pl_receieved_rewards($account_uid, $reward_id){
   return $result;
 }
 
-function pl_reward_claim($reward_id, $account_uid, $category, $filters = NULL, $rf_drawing = NULL, $raffle_clm = NULL){
+function pl_reward_claim($reward_id, $account_uid, $category, $filters = NULL, $rf_drawing = NULL, $raffle_clm = NULL, $draw_time= NULL){
 
   global $language;
   $lang = $language->language;
@@ -422,6 +422,7 @@ function pl_reward_claim($reward_id, $account_uid, $category, $filters = NULL, $
     $reward_claim->field_filters_used[$lang][0]['value'] = $filters;
     $reward_claim->field_rf_drawing_name[$lang][0]['value'] = $rf_drawing;
     $reward_claim->field_raffle_claim[$lang][0]['value'] = $raffle_clm;
+    $reward_claim->field_raffle_draw_timestamp[$lang][0]['value'] = $draw_time;
     entity_save('reward', $reward_claim);
 
     drupal_set_message(t($rewardOnscMsg));

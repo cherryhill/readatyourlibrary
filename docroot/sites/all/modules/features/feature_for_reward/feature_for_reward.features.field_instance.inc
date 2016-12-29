@@ -651,16 +651,14 @@ function feature_for_reward_field_default_field_instances() {
     ),
     'widget' => array(
       'active' => 1,
-      'module' => 'entityreference',
+      'module' => 'options',
       'settings' => array(
-        'apply_chosen' => '',
-        'fields' => array(),
+        'apply_chosen' => 1,
         'match_operator' => 'CONTAINS',
         'path' => '',
         'size' => 60,
-        'type_settings' => array(),
       ),
-      'type' => 'entityreference_autocomplete_tags',
+      'type' => 'options_select',
       'weight' => 11,
     ),
     'workbench_access_field' => 0,
@@ -1301,6 +1299,7 @@ function feature_for_reward_field_default_field_instances() {
     'display_label' => '',
     'entity_type' => 'reward',
     'field_name' => 'field_status_reward',
+    'instance_cardinality' => 0,
     'label' => 'Status of reward or raffle',
     'required' => 0,
     'settings' => array(

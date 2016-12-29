@@ -64,38 +64,40 @@ function main_profile_fields_field_default_field_instances() {
     'workbench_access_field' => 0,
   );
 
-  // Exported field_instance: 'profile2-main-field_email'.
-  $field_instances['profile2-main-field_email'] = array(
+  // Exported field_instance: 'profile2-main-field_do_you_want_other_players_'.
+  $field_instances['profile2-main-field_do_you_want_other_players_'] = array(
     'bundle' => 'main',
-    'default_value' => NULL,
+    'default_value' => array(
+      0 => array(
+        'value' => 'yes_rewards',
+      ),
+    ),
     'deleted' => 0,
     'description' => '',
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'email',
+        'module' => 'list',
         'settings' => array(),
-        'type' => 'email_default',
-        'weight' => 4,
+        'type' => 'list_default',
+        'weight' => 15,
       ),
     ),
     'display_label' => '',
     'entity_type' => 'profile2',
-    'field_name' => 'field_email',
-    'label' => 'Email notification settings',
-    'required' => 0,
+    'field_name' => 'field_do_you_want_other_players_',
+    'label' => 'Do you want other players to be able to see your badges and prizes when they click on your username?',
+    'required' => 1,
     'settings' => array(
       'entity_translation_sync' => FALSE,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
       'active' => 1,
-      'module' => 'email',
-      'settings' => array(
-        'size' => 60,
-      ),
-      'type' => 'email_textfield',
-      'weight' => 4,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_buttons',
+      'weight' => 12,
     ),
     'workbench_access_field' => 0,
   );
@@ -204,7 +206,7 @@ function main_profile_fields_field_default_field_instances() {
         'sort_options' => 0,
       ),
       'type' => 'select_or_other',
-      'weight' => 9,
+      'weight' => 10,
     ),
     'workbench_access_field' => 0,
   );
@@ -307,7 +309,7 @@ function main_profile_fields_field_default_field_instances() {
         'apply_chosen' => '',
       ),
       'type' => 'options_select',
-      'weight' => 4,
+      'weight' => 5,
     ),
     'workbench_access_field' => 0,
   );
@@ -378,7 +380,7 @@ function main_profile_fields_field_default_field_instances() {
         'size' => 15,
       ),
       'type' => 'text_textfield',
-      'weight' => 5,
+      'weight' => 6,
     ),
     'workbench_access_field' => 0,
   );
@@ -487,7 +489,7 @@ function main_profile_fields_field_default_field_instances() {
         'sort_options' => 0,
       ),
       'type' => 'select_or_other',
-      'weight' => 8,
+      'weight' => 9,
     ),
     'workbench_access_field' => 0,
   );
@@ -533,6 +535,44 @@ function main_profile_fields_field_default_field_instances() {
     'workbench_access_field' => 0,
   );
 
+  // Exported field_instance: 'profile2-main-field_receive_notifications'.
+  $field_instances['profile2-main-field_receive_notifications'] = array(
+    'bundle' => 'main',
+    'default_value' => array(
+      0 => array(
+        'value' => 'no',
+      ),
+    ),
+    'deleted' => 0,
+    'description' => 'The library will occasionally send you messages about this program, which you\'ll see when you log in. Would you like to get these messages by email, too?',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 14,
+      ),
+    ),
+    'display_label' => '',
+    'entity_type' => 'profile2',
+    'field_name' => 'field_receive_notifications',
+    'label' => 'Email notification settings',
+    'required' => 1,
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_buttons',
+      'weight' => 11,
+    ),
+    'workbench_access_field' => 0,
+  );
+
   // Exported field_instance: 'profile2-main-field_school'.
   $field_instances['profile2-main-field_school'] = array(
     'bundle' => 'main',
@@ -552,19 +592,25 @@ function main_profile_fields_field_default_field_instances() {
     'entity_type' => 'profile2',
     'field_name' => 'field_school',
     'label' => 'School',
-    'required' => 0,
+    'required' => 1,
     'settings' => array(
       'entity_translation_sync' => FALSE,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
       'active' => 1,
-      'module' => 'options',
+      'module' => 'select_or_other',
       'settings' => array(
         'apply_chosen' => '',
+        'available_options' => '',
+        'other' => 'Other',
+        'other_size' => 60,
+        'other_title' => '',
+        'other_unknown_defaults' => 'other',
+        'sort_options' => 0,
       ),
-      'type' => 'options_select',
-      'weight' => 6,
+      'type' => 'select_or_other',
+      'weight' => 7,
     ),
     'workbench_access_field' => 0,
   );
@@ -655,7 +701,7 @@ function main_profile_fields_field_default_field_instances() {
         'label_position' => 'within',
         'no_fieldset' => 0,
         'text_parts' => array(),
-        'year_range' => '1990:+0',
+        'year_range' => '-0:1900',
       ),
       'type' => 'date_select',
       'weight' => 0,
@@ -694,7 +740,7 @@ function main_profile_fields_field_default_field_instances() {
         'apply_chosen' => '',
       ),
       'type' => 'options_select',
-      'weight' => 7,
+      'weight' => 8,
     ),
     'workbench_access_field' => 0,
   );
@@ -705,6 +751,7 @@ function main_profile_fields_field_default_field_instances() {
   t('Avatar image');
   t('Date of Birth');
   t('Do you regularly go to another youth center in the Bay Area? Let us know!');
+  t('Do you want other players to be able to see your badges and prizes when they click on your username?');
   t('Email notification settings');
   t('First Name');
   t('Grade');
@@ -719,6 +766,7 @@ function main_profile_fields_field_default_field_instances() {
   t('Please visit <a href="http://www.oaklandlibrary.org/using-library/locations-hours" target="_blank">OPL Locations & Hours</a> to locate your branch if you are unsure.');
   t('School');
   t('Select the month and year of your birth first, and then the day. Your birth date will not be visible to the public.');
+  t('The library will occasionally send you messages about this program, which you\'ll see when you log in. Would you like to get these messages by email, too?');
   t('What school do you attend? Let us know!');
   t('Your library card number is a 14 character numeric number that starts with 22141.');
 
