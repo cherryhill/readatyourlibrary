@@ -1,0 +1,106 @@
+<?php
+/**
+ * @file
+ * Primary hook implementations for Title Override.
+ */
+
+/**
+ * Implements hook_menu()
+ */
+function title_override_menu() {
+  $items['admin/config/user-interface/to_titles'] = array(
+    'title' => 'Title overrides',
+    'page callback' => 'title_override_config_overview',
+    'access arguments' => array('administer title overrides'),
+    'file' => 'title_override.admin.inc',
+    'type' => MENU_LOCAL_TASK,
+  );
+  $items['admin/config/user-interface/to_titles/add'] = array(
+    'title' => 'Override page titles',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('title_override_config_add_form'),
+    'access arguments' => array('administer title overrides'),
+    'file' => 'title_override.admin.inc',
+    'type' => MENU_LOCAL_ACTION,
+  );
+  $items['admin/config/user-interface/to_titles/%context'] = array(
+    'title' => 'Edit title overrides',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('title_override_config_edit_form', 4),
+    'access arguments' => array('administer title overrides'),
+    'file' => 'title_override.admin.inc',
+  );
+  $items['admin/config/user-interface/to_titles/%context/delete'] = array(
+    'title' => 'Delete page title overrides',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('title_override_delete_form', 4),
+    'access arguments' => array('administer title overrides'),
+    'file' => 'title_override.admin.inc',
+  );
+
+  return $items;
+}
+
+/**
+ * Implements hook_permission().
+ */
+function title_override_permission() {
+  $permissions['administer title overrides'] = array(
+    'title' => t('Administer title overrides.'),
+    'restrict access' => TRUE,
+    'description' => t('Override page titles on any page.'),
+  );
+  return $permissions;
+}
+
+/**
+ * Implements hook_context_plugins()
+*/
+function title_override_context_plugins() {
+  $plugins = array();
+
+  $plugins['title_override_reaction_override'] = array(
+    'handler' => array(
+      'path' => drupal_get_path('module', 'title_override'),
+      'file' => 'title_override.context.inc',
+      'class' => 'title_override_reaction_override',
+      'parent' => 'context_reaction',
+    ),
+  );
+
+  return $plugins;
+}
+
+/**
+ * Implements hook_context_registry()
+ */
+function title_override_context_registry() {
+  return array(
+    'reactions' => array(
+      'title_override' => array(
+        'title' => t('Title Override'),
+        'plugin' => 'title_override_reaction_override',
+      ),
+    ),
+  );
+}
+
+/**
+ * Implements hook_context_page_reaction().
+ */
+function title_override_context_page_reaction() {
+  if ($plugin = context_get_plugin('reaction', 'title_override')) {
+    $plugin->execute();
+  }
+}
+
+/**
+ * Implements hook_preprocess_page().
+ */
+function title_override_preprocess_page(&$vars) {
+  $title = drupal_static('title_override');
+  if (isset($title)) {
+    drupal_set_title(token_replace($title));
+    unset($vars['title']);
+  }
+}
