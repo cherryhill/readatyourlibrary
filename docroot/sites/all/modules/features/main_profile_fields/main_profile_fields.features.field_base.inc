@@ -31,25 +31,34 @@ function main_profile_fields_field_default_field_bases() {
     'type' => 'addressfield',
   );
 
-  // Exported field_base: 'field_email'.
-  $field_bases['field_email'] = array(
+  // Exported field_base: 'field_do_you_want_other_players_'.
+  $field_bases['field_do_you_want_other_players_'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
-    'field_name' => 'field_email',
+    'field_name' => 'field_do_you_want_other_players_',
     'field_permissions' => array(
       'type' => 0,
     ),
-    'indexes' => array(),
-    'locked' => 0,
-    'module' => 'email',
-    'settings' => array(
-      'entity_translation_sync' => FALSE,
-      'profile2_private' => 0,
+    'indexes' => array(
+      'value' => array(
+        0 => 'value',
+      ),
     ),
-    'translatable' => 1,
-    'type' => 'email',
+    'locked' => 0,
+    'module' => 'list',
+    'settings' => array(
+      'allowed_values' => array(
+        'yes_rewards' => 'Yes',
+        'no_rewards' => 'No',
+      ),
+      'allowed_values_function' => '',
+      'entity_translation_sync' => FALSE,
+      'profile2_private' => 1,
+    ),
+    'translatable' => 0,
+    'type' => 'list_text',
   );
 
   // Exported field_base: 'field_first_name'.
@@ -269,6 +278,36 @@ function main_profile_fields_field_default_field_bases() {
     ),
     'translatable' => 1,
     'type' => 'phone',
+  );
+
+  // Exported field_base: 'field_receive_notifications'.
+  $field_bases['field_receive_notifications'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_receive_notifications',
+    'field_permissions' => array(
+      'type' => 0,
+    ),
+    'indexes' => array(
+      'value' => array(
+        0 => 'value',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'list',
+    'settings' => array(
+      'allowed_values' => array(
+        'yes' => 'Yes',
+        'no' => 'No',
+      ),
+      'allowed_values_function' => '',
+      'entity_translation_sync' => FALSE,
+      'profile2_private' => 1,
+    ),
+    'translatable' => 0,
+    'type' => 'list_text',
   );
 
   // Exported field_base: 'field_school'.

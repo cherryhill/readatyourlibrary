@@ -33,7 +33,7 @@ function feature_for_reward_field_default_field_bases() {
       'handler_settings' => array(
         'behaviors' => array(
           'views-select-list' => array(
-            'status' => 0,
+            'status' => 1,
           ),
         ),
         'sort' => array(
@@ -46,7 +46,7 @@ function feature_for_reward_field_default_field_bases() {
       'profile2_private' => FALSE,
       'target_type' => 'activity',
     ),
-    'translatable' => 0,
+    'translatable' => 1,
     'type' => 'entityreference',
   );
 
@@ -67,7 +67,7 @@ function feature_for_reward_field_default_field_bases() {
       'entity_translation_sync' => FALSE,
       'profile2_private' => FALSE,
     ),
-    'translatable' => 0,
+    'translatable' => 1,
     'type' => 'range_integer',
   );
 
@@ -97,7 +97,7 @@ function feature_for_reward_field_default_field_bases() {
       'entity_translation_sync' => FALSE,
       'profile2_private' => FALSE,
     ),
-    'translatable' => 0,
+    'translatable' => 1,
     'type' => 'list_text',
   );
 
@@ -131,7 +131,7 @@ function feature_for_reward_field_default_field_bases() {
       'todate' => 'required',
       'tz_handling' => 'none',
     ),
-    'translatable' => 0,
+    'translatable' => 1,
     'type' => 'datetime',
   );
 
@@ -152,7 +152,7 @@ function feature_for_reward_field_default_field_bases() {
       'entity_translation_sync' => FALSE,
       'profile2_private' => FALSE,
     ),
-    'translatable' => 0,
+    'translatable' => 1,
     'type' => 'number_integer',
   );
 
@@ -273,7 +273,7 @@ function feature_for_reward_field_default_field_bases() {
       'entity_translation_sync' => FALSE,
       'profile2_private' => FALSE,
     ),
-    'translatable' => 0,
+    'translatable' => 1,
     'type' => 'number_integer',
   );
 
@@ -313,7 +313,7 @@ function feature_for_reward_field_default_field_bases() {
       'profile2_private' => FALSE,
       'target_type' => 'reward',
     ),
-    'translatable' => 0,
+    'translatable' => 1,
     'type' => 'entityreference',
   );
 
@@ -342,6 +342,27 @@ function feature_for_reward_field_default_field_bases() {
     'type' => 'text_long',
   );
 
+  // Exported field_base: 'field_raffle_draw_timestamp'.
+  $field_bases['field_raffle_draw_timestamp'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_raffle_draw_timestamp',
+    'field_permissions' => array(
+      'type' => 0,
+    ),
+    'indexes' => array(),
+    'locked' => 0,
+    'module' => 'number',
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+      'profile2_private' => FALSE,
+    ),
+    'translatable' => 1,
+    'type' => 'number_integer',
+  );
+
   // Exported field_base: 'field_raffle_drawing_name'.
   $field_bases['field_raffle_drawing_name'] = array(
     'active' => 1,
@@ -364,7 +385,7 @@ function feature_for_reward_field_default_field_bases() {
       'max_length' => 255,
       'profile2_private' => FALSE,
     ),
-    'translatable' => 0,
+    'translatable' => 1,
     'type' => 'text',
   );
 
@@ -391,7 +412,7 @@ function feature_for_reward_field_default_field_bases() {
       'path' => '',
       'profile2_private' => FALSE,
     ),
-    'translatable' => 0,
+    'translatable' => 1,
     'type' => 'field_collection',
   );
 
@@ -445,7 +466,7 @@ function feature_for_reward_field_default_field_bases() {
       'profile2_private' => FALSE,
       'uri_scheme' => 'public',
     ),
-    'translatable' => 0,
+    'translatable' => 1,
     'type' => 'image',
   );
 
@@ -472,7 +493,7 @@ function feature_for_reward_field_default_field_bases() {
       'path' => '',
       'profile2_private' => FALSE,
     ),
-    'translatable' => 0,
+    'translatable' => 1,
     'type' => 'field_collection',
   );
 
@@ -501,7 +522,7 @@ function feature_for_reward_field_default_field_bases() {
       'profile2_private' => FALSE,
       'uri_scheme' => 'public',
     ),
-    'translatable' => 0,
+    'translatable' => 1,
     'type' => 'image',
   );
 
@@ -531,7 +552,7 @@ function feature_for_reward_field_default_field_bases() {
       'entity_translation_sync' => FALSE,
       'profile2_private' => FALSE,
     ),
-    'translatable' => 0,
+    'translatable' => 1,
     'type' => 'list_boolean',
   );
 
@@ -552,7 +573,7 @@ function feature_for_reward_field_default_field_bases() {
       'entity_translation_sync' => FALSE,
       'profile2_private' => FALSE,
     ),
-    'translatable' => 0,
+    'translatable' => 1,
     'type' => 'number_integer',
   );
 
@@ -582,7 +603,7 @@ function feature_for_reward_field_default_field_bases() {
         7 => 7,
       ),
     ),
-    'translatable' => 0,
+    'translatable' => 1,
     'type' => 'role',
   );
 
@@ -611,7 +632,7 @@ function feature_for_reward_field_default_field_bases() {
       'entity_translation_sync' => FALSE,
       'profile2_private' => FALSE,
     ),
-    'translatable' => 0,
+    'translatable' => 1,
     'type' => 'list_text',
   );
 
@@ -642,7 +663,7 @@ function feature_for_reward_field_default_field_bases() {
       'entity_translation_sync' => FALSE,
       'profile2_private' => FALSE,
     ),
-    'translatable' => 0,
+    'translatable' => 1,
     'type' => 'taxonomy_term_reference',
   );
 

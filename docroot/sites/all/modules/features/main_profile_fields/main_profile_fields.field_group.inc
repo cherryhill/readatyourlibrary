@@ -24,8 +24,7 @@ function main_profile_fields_field_group_info() {
     'weight' => '3',
     'children' => array(
       0 => 'field_address',
-      1 => 'field_email',
-      2 => 'field_phone_number',
+      1 => 'field_phone_number',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
