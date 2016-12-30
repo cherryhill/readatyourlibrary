@@ -3,16 +3,73 @@
 
   Drupal.behaviors.play_program_raffle = {
     attach: function (context, settings) {
-    // var outputTable =
+      $("#user-register-form .form-item-mail").insertAfter("#user-register-form #edit-profile-main-field-how-did-you-hear-about-thi");
+      $("#user-register-form #edit-profile-main-field-receive-notifications").insertAfter("#user-register-form .form-item-mail");
+      $("#user-register-form .form-item-avatar-select").insertAfter("#user-register-form #edit-profile-main-field-receive-notifications");
+      $("#user-register-form #checkboxes-div").insertAfter("#user-register-form .form-item-avatar-select");
+      $("#user-register-form .username-curr").insertAfter("#user-register-form #checkboxes-div");
+      $("#user-register-form #edit-profile-main-field-receive-notifications").hide();
 
-    // $("#print_raffle").click(function(){
-    //   window.print();
+      // validate email field  
+      $('#edit-mail').on('keyup', function(){
+        var valid = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/.test(this.value);
+        if(valid) { $("#user-register-form #edit-profile-main-field-receive-notifications").show(); }
+        else{ $("#user-register-form #edit-profile-main-field-receive-notifications").hide(); }
+      });
+      $(':checkbox').on('change',function(){
+        var th = $(this), name = th.prop('class'); 
+        if(th.is(':checked')){
+          $(':checkbox[class="'  + name + '"]').not($(this)).prop('checked',false);   
+        }
+      });
+
+    // var outputTable =
+          // alert(123);
+          $('#edit-dob-from').focusout(function() {
+            var divLength = $(this).val();
+            if(divLength.length > 0 ) {
+              $('#edit-dob-to').prev().html("To <span class='form-required'>*</span>");
+            }else {
+              $('#edit-dob-to').prev().html("To ");
+            }
+          });
+
+          $('#edit-dob-to').focusout(function() {
+            var divLength = $(this).val();
+            if(divLength.length > 0 ) {
+              $('#edit-dob-from').prev().html("From <span class='form-required'>*</span>");
+            }else {
+              $('#edit-dob-from').prev().html("From ");
+            }
+          });
+          
 
     var raffleReward = $('#edit-active-raffle').val();
     var raffleName = $('#edit-name-raffle').val();
     var winnerNumbers = $('#edit-winners-selected').val();
 
-    if (raffleReward == 0 || raffleName == "" || winnerNumbers == "") {
+    $("#edit-dob-from").keyup(function(){
+      var userAgeFrom = $('#edit-dob-from').val();
+      var userAgeTo = $('#edit-dob-to').val();
+      if ((userAgeFrom.length > 0 || userAgeTo.length > 0) && !(userAgeFrom.length > 0 && userAgeTo.length > 0)) {
+        $('#raff_winners').prop('disabled', true);
+      } else {
+        $('#raff_winners').prop('disabled', false);
+      }
+    });
+
+    $("#edit-dob-to").keyup(function(){
+      var userAgeFrom = $('#edit-dob-from').val();
+      var userAgeTo = $('#edit-dob-to').val();
+      if ((userAgeFrom.length > 0 || userAgeTo.length > 0) && !(userAgeFrom.length > 0 && userAgeTo.length > 0)) {
+        $('#raff_winners').prop('disabled', true);
+      } else {
+        $('#raff_winners').prop('disabled', false);
+      }
+    });
+
+
+    if (raffleReward == 0 || raffleName == "" || winnerNumbers == "")  {
       $('#raff_winners').prop('disabled', true);
     } else {
       $('#raff_winners').prop('disabled', false);
@@ -33,9 +90,10 @@
       var raffleReward = $('#edit-active-raffle').val();
       var raffleName = $('#edit-name-raffle').val();
       var winnerNumbers = $('#edit-winners-selected').val();
+      // var 
       if (raffleReward == 0 || raffleName == "" || winnerNumbers == "") {
         $('#raff_winners').prop('disabled', true);
-      } else {
+      } else {  
         $('#raff_winners').prop('disabled', false);
       }      
     });
@@ -75,7 +133,7 @@
         }
 
         if(document.getElementById('edit-pervious-all-wnrs').checked) {
-          var rf_all = 1;
+          var rf_all = 1; 
         } else {
           var rf_all = 0;
         }
