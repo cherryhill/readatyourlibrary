@@ -138,6 +138,11 @@
 //}
 
 // LIBRARYSITE CUSTOM OVERRIDES
+function libraryzurb_preprocess_html(&$variables) {
+  $color = theme_get_setting('choose_color') ;
+  $variables ['classes_array'][] = $color;
+}
+
 
 function libraryzurb_preprocess_block(&$variables) {
   // Convenience variable for block headers.
