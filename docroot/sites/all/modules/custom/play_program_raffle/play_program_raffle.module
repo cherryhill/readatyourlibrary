@@ -573,15 +573,16 @@ function raffle_user_list($form, &$form_state) {
     $gradeFilter = implode(',', $user_grds);
   }
 
+  if ($rf_all == 0){
   $sub_query = db_select('eck_reward','eck');
   $sub_query->join('field_data_field_rf_receieved_reward','rf_win','eck.id = rf_win.entity_id');
   $sub_query->join('field_data_field_raffle_claim_id','claim','eck.id = claim.entity_id');
   $sub_query->condition('claim.field_raffle_claim_id_target_id', $raffle_id, '!=');
   $sub_query->condition('rf_win.field_rf_receieved_reward_value', 1);
-  $sub_query->condition('rf_win.language',$lang);
+  //$sub_query->condition('rf_win.language',$lang);
   $sub_query->fields('eck', array('uid'));
-
   $sub_query->execute()->fetchAll();
+  }
 
 
   $query = db_select('eck_reward','eck');
@@ -626,29 +627,20 @@ function raffle_user_list($form, &$form_state) {
   // $query->fields('claim', array('field_raffle_claim_id_target_id'));
   // $query->fields('c_no', array('field_phone_number_value'));
   $query->condition('eck.type','raffle_claim');
-  // $query->condition('claim.field_raffle_claim_id_target_id', $raffle_id);
-
-  // if ($library_id[0] != 'null') {
-  //   $query->condition('lb_brnch.field_library_branch_tid',$library_id);
-  // }
-  // if ($school_id[0] != 'null') {
-  //   $query->condition('sch.field_school_tid',$school_id);
-  // }
-  // if ($grade_id[0] != 'null') {
-  //   $query->condition('grade.field_user_grade_tid',$grade_id);
-  // }
 
   // $query->condition('rf_win.field_rf_receieved_reward_value',array(0,1));
 
-  //get results based on Checkbox for including winners checkboxes
-  if($rf_all == 0 && $rf_this == 0){
+  //get results based on Checkbox for including winners checkboxess
     $query->condition('claim.field_raffle_claim_id_target_id', $raffle_id);
-    $query->condition('rf_win.field_rf_receieved_reward_value',0);
-    $query->condition('rf_win.language',$lang);
-  }
   if($rf_this == 0){
+    $query->condition('rf_win.field_rf_receieved_reward_value', 0);
+  }
+    // $query->condition('rf_win.language',$lang);
+  if($rf_all == 0){
     $query->condition('eck.uid', $sub_query, 'NOT IN');
   }
+
+
 
   $result_all = $query->execute()->fetchAll();
   // echo '<pre>'; print_r($result_all);die();
@@ -683,6 +675,7 @@ function raffle_user_list($form, &$form_state) {
       $user_uid[] = $value->uid;
     }
   }
+  // echo '<pre>'; print_r($user_uid); die();
 
   // Getting length of unique uids
   $arrUniLength = sizeof(array_unique($user_uid));
@@ -777,17 +770,14 @@ function pl_update_raffle_tbl($user_id, $raffle_id, $rf_drawing_name){
 
   foreach ($sub_query as $value) {
     $raffle_rewards_id[] = $value->id;
-  }  global $language;
-  $lang = $language->language;
-
-  global $language;
-  $lang = $language->language;
+  }
 
   $reward_claim = entity_load('reward', array($raffle_rewards_id));
   $reward_claim = reset($reward_claim);
-  echo '<pre>'; print_r($reward_claim); die();
-  $reward_claim->field_rf_receieved_reward[$lang][0]['value'] = 1;
-  $reward_claim->field_raffle_drawing_name[$lang][0]['value'] = $rf_drawing_name;
+
+  $lang = get_entity_field_language('reward',$reward_claim);
+  $reward_claim->field_rf_receieved_reward[$lang['field_rf_receieved_reward']][0]['value'] = 1;
+  $reward_claim->field_raffle_drawing_name[$lang['field_raffle_drawing_name']][0]['value'] = $rf_drawing_name;
   entity_save('reward', $reward_claim);
 }
 
