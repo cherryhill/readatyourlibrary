@@ -11,39 +11,36 @@
       $("#user-register-form #edit-profile-main-field-receive-notifications").hide();
 
       // validate email field  
-      $('#edit-mail').on('keyup', function(){
-        var valid = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/.test(this.value);
-        if(valid) { $("#user-register-form #edit-profile-main-field-receive-notifications").show(); }
-        else{ $("#user-register-form #edit-profile-main-field-receive-notifications").hide(); }
-      });
-      $(':checkbox').on('change',function(){
-        var th = $(this), name = th.prop('class'); 
-        if(th.is(':checked')){
-          $(':checkbox[class="'  + name + '"]').not($(this)).prop('checked',false);   
+      // $('#edit-mail').on('keyup', function(){
+      //   var valid = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/.test(this.value);
+      //   if(valid) { $("#user-register-form #edit-profile-main-field-receive-notifications").show(); }
+      //   else{ $("#user-register-form #edit-profile-main-field-receive-notifications").hide(); }
+      // });
+      // $(':checkbox').on('change',function(){
+      //   var th = $(this), name = th.prop('class'); 
+      //   if(th.is(':checked')){
+      //     $(':checkbox[class="'  + name + '"]').not($(this)).prop('checked',false);   
+      //   }
+      // });
+
+      $('#edit-dob-from').focusout(function() {
+        var divLength = $(this).val();
+        if(divLength.length > 0 ) {
+          $('#edit-dob-to').prev().html("To <span class='form-required'>*</span>");
+        }else {
+          $('#edit-dob-to').prev().html("To ");
         }
       });
 
-    // var outputTable =
-          // alert(123);
-          $('#edit-dob-from').focusout(function() {
-            var divLength = $(this).val();
-            if(divLength.length > 0 ) {
-              $('#edit-dob-to').prev().html("To <span class='form-required'>*</span>");
-            }else {
-              $('#edit-dob-to').prev().html("To ");
-            }
-          });
-
-          $('#edit-dob-to').focusout(function() {
-            var divLength = $(this).val();
-            if(divLength.length > 0 ) {
-              $('#edit-dob-from').prev().html("From <span class='form-required'>*</span>");
-            }else {
-              $('#edit-dob-from').prev().html("From ");
-            }
-          });
+      $('#edit-dob-to').focusout(function() {
+        var divLength = $(this).val();
+        if(divLength.length > 0 ) {
+          $('#edit-dob-from').prev().html("From <span class='form-required'>*</span>");
+        }else {
+          $('#edit-dob-from').prev().html("From ");
+        }
+      });
           
-
     var raffleReward = $('#edit-active-raffle').val();
     var raffleName = $('#edit-name-raffle').val();
     var winnerNumbers = $('#edit-winners-selected').val();
