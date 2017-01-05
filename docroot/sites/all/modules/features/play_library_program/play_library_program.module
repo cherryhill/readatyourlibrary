@@ -430,7 +430,7 @@ function pl_reward_claim($reward_id, $account_uid, $category, $filters = NULL, $
     $title = t("@reward on @time", array('@reward' => $reward->title, '@time' => date('Y-m-d H:i')));
     $reward_claim = entity_create('reward', array('type' => 'reward_claim', 'title' => $title, 'uid' => $account_uid));
     $lang = field_language('reward',$reward_claim);
-
+    // echo '<pre>'; print_r($lang); die();  
     $reward_claim->field_reward_claim_id[$lang['field_reward_claim_id']][0]['target_id'] = $reward_id;
     $reward_claim->field_filters_used[$lang['field_filters_used']][0]['value'] = $filters;
     $reward_claim->field_rf_drawing_name[$lang['field_rf_drawing_name']][0]['value'] = $rf_drawing;

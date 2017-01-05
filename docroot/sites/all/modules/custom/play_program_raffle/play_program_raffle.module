@@ -194,7 +194,7 @@ function ppr_entery_detailed_list(){
   $query->condition('eck.uid',192);
   $sub_query = $query->execute()->fetchAll();
 
-  echo '<pre>'; print_r($sub_query); die();
+  // echo '<pre>'; print_r($sub_query); die();
 }
 
 function claim_reward_status($form, &$form_state, $arg) {
