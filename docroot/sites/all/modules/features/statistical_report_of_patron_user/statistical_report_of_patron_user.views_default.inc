@@ -109,6 +109,12 @@ function statistical_report_of_patron_user_views_default_views() {
   $handler->display->display_options['fields']['name']['label'] = '';
   $handler->display->display_options['fields']['name']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['name']['alter']['ellipsis'] = FALSE;
+  /* Sort criterion: Profile: Date of Birth (field_user_birthday) */
+  $handler->display->display_options['sorts']['field_user_birthday_value']['id'] = 'field_user_birthday_value';
+  $handler->display->display_options['sorts']['field_user_birthday_value']['table'] = 'field_data_field_user_birthday';
+  $handler->display->display_options['sorts']['field_user_birthday_value']['field'] = 'field_user_birthday_value';
+  $handler->display->display_options['sorts']['field_user_birthday_value']['relationship'] = 'profile';
+  $handler->display->display_options['sorts']['field_user_birthday_value']['order'] = 'DESC';
   /* Filter criterion: User: Active */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'users';
@@ -513,6 +519,7 @@ function statistical_report_of_patron_user_views_default_views() {
   $handler->display->display_options['fields']['field_user_birthday']['table'] = 'field_data_field_user_birthday';
   $handler->display->display_options['fields']['field_user_birthday']['field'] = 'field_user_birthday';
   $handler->display->display_options['fields']['field_user_birthday']['relationship'] = 'profile';
+  $handler->display->display_options['fields']['field_user_birthday']['label'] = 'Age in years';
   $handler->display->display_options['fields']['field_user_birthday']['type'] = 'format_interval';
   $handler->display->display_options['fields']['field_user_birthday']['settings'] = array(
     'interval' => '1',
