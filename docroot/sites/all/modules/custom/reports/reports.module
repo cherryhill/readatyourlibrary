@@ -5,17 +5,11 @@
  */
 function reports_menu(){
 	$items = array();
- //  $items['registrations-per-library-branch'] = array(
- //    'title' => t('Number of registrations per library branch'),
- //    'page callback' => 'registrationPerBranch',
- //    'access callback' => TRUE,
- //  );
 
   $items['reading-per-library-branch'] = array(
     'title' => t('Days of Reading per Library Branch'),
     'page callback' => 'drupal_get_form',
     'page arguments' => array('readingPerBranch'),
-    // 'page callback' => 'readingPerBranch',
     'access callback' => TRUE,
   );
 
@@ -23,7 +17,6 @@ function reports_menu(){
     'title' => t('Days of Reading per School'),
     'page callback' => 'drupal_get_form',
     'page arguments' => array('readingPerSchool'),
-    // 'page callback' => 'readingPerBranch',
     'access callback' => TRUE,
   );
 
@@ -86,6 +79,23 @@ function readingPerBranch($form, $form_state) {
     '#title' => 'Participation Count To',
     );
 
+  $form['dob'] = array(
+    '#type' => 'fieldset', 
+    '#title' => t('Age in Years of User'),
+    '#collapsible' => TRUE, 
+    '#collapsed' => FALSE,
+  );
+
+  $form['dob']['dob_from'] = array(
+    '#title' => t('From'),
+    '#type' => 'textfield',
+  );
+
+  $form['dob']['dob_to'] = array(
+    '#title' => t('To'),
+    '#type' => 'textfield',
+  );
+
   $form['submit'] = array(
     '#value' => 'Submit',
     '#type' => 'submit',
@@ -105,10 +115,20 @@ function readingPerBranch_submit($form, &$form_state) {
   $activityIds = $form_state['values']['activity'];
   $countFrom = $form_state['values']['participation_count_from'];
   $countTo = $form_state['values']['participation_count_to'];
+  $ageFrom = $form_state['values']['dob_from'];
+  $ageTo = $form_state['values']['dob_to'];
+
 
   if(!empty($activityIds)) {
     $sub_query = db_select('eck_activity', 'act');
     $sub_query->join('field_data_field_activity_entry_activity','actEntry','actEntry.entity_id = act.id');
+
+    if(!empty($ageFrom) && !empty($ageTo)) {
+      $sub_query->join('profile', 'pf', 'pf.uid = act.uid');
+      $sub_query->join('field_data_field_user_birthday','bday','bday.entity_id = pf.pid');
+      $sub_query->fields('bday', array('field_user_birthday_value'));
+    }
+
     $sub_query->fields('act', array('uid'));
     $sub_query->condition('actEntry.field_activity_entry_activity_target_id',$activityIds);
     $sub_query->groupBy('act.uid');
@@ -125,7 +145,16 @@ function readingPerBranch_submit($form, &$form_state) {
     $sub = $sub_query->execute()->fetchAll();
 
     foreach ($sub as $value) {
-      $actUsers[] = $value->uid;
+      $birthDate = $value->field_user_birthday_value;
+      $diff = (date('Y') - date('Y',strtotime($birthDate)));
+
+      if (!empty($ageFrom) && !empty($ageTo)) {
+        if (($ageFrom <= $diff) && ($diff <= $ageTo)){
+          $actUsers[] = $value->uid;
+        }
+      } else {
+        $actUsers[] = $value->uid;
+      }
     }
 
     if(!empty($actUsers)){
