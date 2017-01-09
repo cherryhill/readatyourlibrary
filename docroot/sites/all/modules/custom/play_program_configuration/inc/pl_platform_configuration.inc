@@ -40,7 +40,7 @@ function pl_platform_configuration($form, &$form_state) {
   );
 
   $form['program_configuration']['pmc_progrm_image'] = array(
-    '#title' => t('Program Image'),
+    '#title' => t('Library Program Image'),
     '#type' => 'managed_file',
     '#description' => t('The uploaded image will be displayed on this page using the image style choosen below.'),
     '#upload_location' => 'public://',
