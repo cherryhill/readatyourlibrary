@@ -47,6 +47,14 @@ function pl_platform_configuration($form, &$form_state) {
     '#default_value' => variable_get('pmc_progrm_image'),
   );
 
+  $program_footer = variable_get('pmc_program_footer', array('value' => '', 'format' => NULL));
+  $form['program_configuration']['pmc_program_footer'] = array(
+    '#type' => 'text_format',
+    '#title' => t('Footer Content'),
+    '#default_value' => $program_footer['value'],
+    '#format' => $program_footer['format']
+  );
+
   $form['pm_configuration'] = array(
     '#type' => 'fieldset', 
     '#title' => t('Private Message Configuration'),
