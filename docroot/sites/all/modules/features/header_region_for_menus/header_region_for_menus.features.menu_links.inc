@@ -220,16 +220,161 @@ function header_region_for_menus_menu_default_menu_links() {
     'language' => 'und',
     'menu_links_customized' => 1,
   );
+  // Exported menu link: menu-social-sharing-icons_facebook:https://www.facebook.com.
+  $menu_links['menu-social-sharing-icons_facebook:https://www.facebook.com'] = array(
+    'menu_name' => 'menu-social-sharing-icons',
+    'link_path' => 'https://www.facebook.com',
+    'router_path' => '',
+    'link_title' => 'Facebook',
+    'options' => array(
+      'attributes' => array(
+        'class' => array(
+          0 => 'fb',
+        ),
+      ),
+      'item_attributes' => array(
+        'id' => '',
+        'class' => '',
+        'style' => '',
+      ),
+      'alter' => TRUE,
+      'identifier' => 'menu-social-sharing-icons_facebook:https://www.facebook.com',
+    ),
+    'module' => 'menu',
+    'hidden' => 0,
+    'external' => 1,
+    'has_children' => 0,
+    'expanded' => 0,
+    'weight' => 0,
+    'customized' => 1,
+    'language' => 'und',
+    'menu_links_customized' => 1,
+  );
+  // Exported menu link: menu-social-sharing-icons_pintrest:<front>.
+  $menu_links['menu-social-sharing-icons_pintrest:<front>'] = array(
+    'menu_name' => 'menu-social-sharing-icons',
+    'link_path' => '<front>',
+    'router_path' => '',
+    'link_title' => 'Pintrest',
+    'options' => array(
+      'attributes' => array(
+        'class' => array(
+          0 => 'pntrst',
+        ),
+      ),
+      'item_attributes' => array(
+        'id' => '',
+        'class' => '',
+        'style' => '',
+      ),
+      'alter' => TRUE,
+      'identifier' => 'menu-social-sharing-icons_pintrest:<front>',
+    ),
+    'module' => 'menu',
+    'hidden' => 0,
+    'external' => 1,
+    'has_children' => 0,
+    'expanded' => 0,
+    'weight' => 0,
+    'customized' => 1,
+    'language' => 'und',
+    'menu_links_customized' => 1,
+  );
+  // Exported menu link: menu-social-sharing-icons_tumbler:<front>.
+  $menu_links['menu-social-sharing-icons_tumbler:<front>'] = array(
+    'menu_name' => 'menu-social-sharing-icons',
+    'link_path' => '<front>',
+    'router_path' => '',
+    'link_title' => 'Tumbler',
+    'options' => array(
+      'attributes' => array(
+        'class' => array(
+          0 => 'tmblr',
+        ),
+      ),
+      'item_attributes' => array(
+        'id' => '',
+        'class' => '',
+        'style' => '',
+      ),
+      'alter' => TRUE,
+      'identifier' => 'menu-social-sharing-icons_tumbler:<front>',
+    ),
+    'module' => 'menu',
+    'hidden' => 0,
+    'external' => 1,
+    'has_children' => 0,
+    'expanded' => 0,
+    'weight' => 0,
+    'customized' => 1,
+    'language' => 'und',
+    'menu_links_customized' => 1,
+  );
+  // Exported menu link: menu-social-sharing-icons_twitter:<front>.
+  $menu_links['menu-social-sharing-icons_twitter:<front>'] = array(
+    'menu_name' => 'menu-social-sharing-icons',
+    'link_path' => '<front>',
+    'router_path' => '',
+    'link_title' => 'Twitter',
+    'options' => array(
+      'attributes' => array(
+        'class' => array(
+          0 => 'twit',
+        ),
+      ),
+      'item_attributes' => array(
+        'id' => '',
+        'class' => '',
+        'style' => '',
+      ),
+      'alter' => TRUE,
+      'identifier' => 'menu-social-sharing-icons_twitter:<front>',
+    ),
+    'module' => 'menu',
+    'hidden' => 0,
+    'external' => 1,
+    'has_children' => 0,
+    'expanded' => 0,
+    'weight' => 0,
+    'customized' => 1,
+    'language' => 'und',
+    'menu_links_customized' => 1,
+  );
+  // Exported menu link: navigation_users-by-points:userpoints.
+  $menu_links['navigation_users-by-points:userpoints'] = array(
+    'menu_name' => 'navigation',
+    'link_path' => 'userpoints',
+    'router_path' => 'userpoints',
+    'link_title' => 'Users by !points',
+    'options' => array(
+      'alter' => TRUE,
+      'identifier' => 'navigation_users-by-points:userpoints',
+    ),
+    'module' => 'system',
+    'hidden' => 0,
+    'external' => 0,
+    'has_children' => 0,
+    'expanded' => 0,
+    'weight' => 0,
+    'customized' => 0,
+    'language' => 'und',
+    'menu_links_customized' => 0,
+  );
 
   // Translatables
   // Included for use with string extractors like potx.
   t('Activities');
   t('Current Programs');
   t('Events');
+  t('Facebook');
   t('Photos & Videos');
+  t('Pintrest');
   t('Progress');
   t('Reviews and Booklist');
   t('Rewards');
+  t('Tumbler');
+  t('Twitter');
+  t('Users by !points');
 
   return $menu_links;
 }
