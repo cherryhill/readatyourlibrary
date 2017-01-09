@@ -12,27 +12,48 @@
     <!-- City Branding -->
     <div class="contain-to-grid pre-header">
       <section class="row" id="topmostbranding">
-      <div id="mobile-header" class="mobile-header small-12 large-0 medium-0 columns">
-        <button></button>
-        <?php print render($page['header-mobile']); ?>
-        <?php print render($page['mobile_menu']);  ?>
+       <div class="breadcurm large-4 medium-12 hide-for-small-only float-left columns">
+        <?php if ($breadcrumb): print $breadcrumb; endif; ?>
       </div>
-      <div id="citylinks" class="pre-header-left large-12 small-0 medium-12 columns">
-        <?php if (!empty($page['citylinks'])): ?>
-          <div class="breadcurm"> <?php if ($breadcrumb): print $breadcrumb; endif; ?> </div>
-          <div class="top-menu"><?php print render($page['citylinks']); ?></div>
+      <div class="top-menu large-8 medium 12 hide-for-small-only float-right columns">
+     <?php if (!empty($page['top_links'])): ?>
+      <?php print render($page['top_links']); ?>
+      <?php endif; ?>
+    </div>
+     <div class="top-menu large-8 medium 12  float-right columns">
+     <?php if (!empty($page['utop_links'])): ?>
+      <?php print render($page['utop_links']); ?>
+      <?php endif; ?>
+    </div>
+    <!--mobile hamburger and top-links-->
+    <div class="mobile-hamburger small-6 hide-for-medium-up columns">
+       <button></button>
+    </div>
+    <div class="menu-top-links small-6 hide-for-medium-up columns">
+      <?php if (!empty($page['mobile_toplinks'])): ?>
+      <?php print render($page['mobile_toplinks']); ?>
+      <?php endif; ?>
+    </div>
+    <!--mobile menu-->
+    <div class="mobile-menu small-12 hide-for-medium-up columns">
+      <?php if (!empty($page['mobile_menu'])): ?>
+      <?php print render($page['mobile_menu']); ?>
+      <?php endif; ?>
+    </div>
+      <!--language switcher-->
+     <div class="language-switcher small-12 columns float-right">
+        <?php if (!empty($page['l_switcher'])): ?>
+        <?php print render($page['l_switcher']); ?>
         <?php endif; ?>
-      </div>
+     </div>
     </section>
     </div>
     <!-- End City Branding and Account Links -->
 
     <!-- Title, slogan and menu -->
     <section class="row header-middle">
-
-  <!-- Branding -->
-      <div class="brand large-12 columns">
-        <?php if ($logo): ?>
+     <div class="logo-block large-12 medium-6 small-6 columns">
+      <?php if ($logo): ?>
           <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home" id="logo">
             <img src="<?php print $logo; ?>" alt="<?php print t('Home'); ?>" />
           </a>
@@ -47,16 +68,16 @@
         <?php if ($site_slogan): ?>
           <h2 title="<?php print $site_slogan; ?>" id="site-slogan" class="site-slogan"><?php print $site_slogan; ?></h2>
         <?php endif; ?>
-      </div>
-    <!-- End Branding -->
-
-  <!-- Header area for search box -->
-      <?php if (!empty($page['header'])): ?>
-      <div class="sub-brand large-12 columns">
-        <?php print render($page['header']); ?>
-      </div>
+    </div>
+    <div class="program-logo large-4  medium-6 small-6 columns">
+    <?php if (!empty($page['header'])): ?>
+      <?php print render($page['header']); ?>
+      <?php endif; ?></div>
+    <div class="main-menu large-8 medium-12 hide-for-small-only columns">
+      <?php if (!empty($page['main_menu'])): ?>
+      <?php print render($page['main_menu']); ?>
       <?php endif; ?>
-    <!-- End Header -->
+    </div>
 
     </section>
     <!-- End title, slogan and menu, plus header -->
@@ -126,24 +147,18 @@
       <?php print render($page['content']); ?>
     </div>
     <!--/.main region -->
-    <?php if (!empty($page['activity_sidebar'])): ?>
-      <aside role="complementary" class="<?php print $sidebar_first_grid; ?> sidebar-first columns sidebar3">
-        <div class='first'><?php print render($page['activity_sidebar']); ?> </div>
-        <?php //print render($page['login_form']); ?>
-      </aside>
-    <?php endif; ?>
 
     <?php if (!empty($page['sidebar_first'])): ?>
       <aside role="complementary" class="<?php print $sidebar_first_grid; ?> sidebar-first columns sidebar">
         <div class='first'><?php print render($page['sidebar_first']); ?> </div>
-        <?php //print render($page['login_form']); ?>
+        <?php print render($page['sidebar_first']); ?>
       </aside>
     <?php endif; ?>
 
     <?php if (!empty($page['login_form'])): ?>
       <aside role="complementary" class="<?php print $sidebar_first_grid; ?> sidebar-first columns sidebar2">
         <div class='first'><?php print render($page['login_form']); ?> </div>
-        <?php //print render($page['login_form']); ?>
+        <?php print render($page['login_form']); ?>
       </aside>
     <?php endif; ?>
 
