@@ -5,69 +5,44 @@
  */
 function reports_menu(){
 	$items = array();
+
+  $items['activity-per-library-branch'] = array(
+    'title' => t('Activity Report per Library Branch'),
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('readingPerBranch'),
+    'access callback' => TRUE,
+  );
+
+  $items['activity-per-school'] = array(
+    'title' => t('Activity Report per School'),
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('readingPerSchool'),
+    'access callback' => TRUE,
+  );
+
+  $items['registrations-per-school'] = array(
+    'title' => t('Registrations per School'),
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('registrationPerSchool'),
+    'access callback' => TRUE,
+  );
+
   $items['registrations-per-library-branch'] = array(
-    'title' => t('Number of registrations per library branch'),
-    'page callback' => 'registrationPerBranch',
+    'title' => t('Registrations per Library Branch'),
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('registrationPerBranch'),
+    'access callback' => TRUE,
+  );
+
+  $items['registrations-test'] = array(
+    'title' => t('Testing purposes'),
+    'page callback' => 'all_activities',
     'access callback' => TRUE,
   );
 
   return $items;
 }
 
-/**
- * Implements registrationPerBranch function.
- */
-function registrationPerBranch(){
-
-  $header = array('Library Branch', 'Entity_id', 'Profile_id', 'User_uid','User Name');
-    $rows = array();
-
-
-  $query = db_select('field_data_field_library_branch','branch');
-  $query->leftJoin('taxonomy_term_data', 'tax', 'branch.field_library_branch_tid = tax.tid');
-  $query->leftJoin('profile', 'pf', 'branch.entity_id = pf.pid');
-  $query->leftJoin('users', 'u', 'u.uid = pf.pid');
-  $query->fields('branch',array('entity_id','field_library_branch_tid'));
-  $query->fields('tax',array('name'));
-  $query->fields('pf',array('uid'));
-  $query->fields('u',array('name'));
-
-  $result = $query->execute();
-  $ary = array();
-  $obj = $result->fetchAll();
-
-  foreach ($obj as $key => $value) {
-    $ary['library_tid'] = $value->field_library_branch_tid;
-    $ary['user_entity'] = $value->entity_id;
-    $ary['tax'] = $value->name;
-    $ary['uid'] = $value->uid;
-    $ary['name'] = $value->u_name;
-
-     $rows[] = array($value->name,
-                    $value->field_library_branch_tid,
-                    $value->entity_id,
-                    $value->uid,
-                    $value->u_name,
-    );
-  }
-
-  $output = theme('table', array('header' => $header,
-                             'rows' => $rows ));
-    # add the pager
-  // $output .= theme('pager');
-
-  return $output;
-
-  // echo '<pre>'; print_r($ary);
-
-  // }
-  // die(); 
-
-  // $ary['district_name'] = $obj['entity_id'];
-  // $ary['state_id'] = $obj->group_brh_entity_id;
-
-  // return $ary;
-}
 
 /**
  * Access Callback for /projects page.
@@ -76,6 +51,449 @@ function access_check() {
   global $user;
   if($user->uid)
     return TRUE;
-
   return FALSE;
+}
+
+/**
+ * Function callback for activity report.
+ * Based on library branch
+ */
+function readingPerBranch($form, $form_state) {
+
+  $options = all_activities();
+
+  $form['activity_branch'] = array(
+    '#type' => 'select',
+    '#title' => 'Activity',
+    '#options' => $options,
+    '#multiple' => TRUE,
+    );
+
+  $form['act_br_participation_count_from'] = array(
+    '#type' => 'textfield',
+    '#title' => 'Participation Count From',
+    );
+
+  $form['act_br_participation_count_to'] = array(
+    '#type' => 'textfield',
+    '#title' => 'Participation Count To',
+    );
+
+  $form['act_br_dob'] = array(
+    '#type' => 'fieldset', 
+    '#title' => t('Age in Years of User'),
+    '#collapsible' => TRUE, 
+    '#collapsed' => FALSE,
+  );
+
+  $form['act_br_dob']['act_br_dob_from'] = array(
+    '#title' => t('From'),
+    '#type' => 'textfield',
+  );
+
+  $form['act_br_dob']['act_br_dob_to'] = array(
+    '#title' => t('To'),
+    '#type' => 'textfield',
+  );
+
+  $form['submit'] = array(
+    '#value' => 'Submit',
+    '#type' => 'submit',
+  );
+
+  $form['act_br_output_table'] = array(
+    '#markup' => $_SESSION['act_br_outputReg'],
+  );
+
+  unset($_SESSION['act_br_outputReg']);
+  return $form;
+
+}
+
+/**
+ * Submit function for activity report.
+ * Per Library Branch
+ */
+function readingPerBranch_submit($form, &$form_state) {
+
+  $activityIds = $form_state['values']['activity_branch'];
+  $countFrom = $form_state['values']['act_br_participation_count_from'];
+  $countTo = $form_state['values']['act_br_participation_count_to'];
+  $ageFrom = $form_state['values']['act_br_dob_from'];
+  $ageTo = $form_state['values']['act_br_dob_to'];
+
+  //Check if any activity is selected
+  if(!empty($activityIds)) {
+    $sub_query = db_select('eck_activity', 'act');
+    $sub_query->join('field_data_field_activity_entry_activity','actEntry','actEntry.entity_id = act.id');
+
+    //Check if age filter is added
+    if(!empty($ageFrom) && !empty($ageTo)) {
+      $sub_query->join('profile', 'pf', 'pf.uid = act.uid');
+      $sub_query->join('field_data_field_user_birthday','bday','bday.entity_id = pf.pid');
+      $sub_query->fields('bday', array('field_user_birthday_value'));
+    }
+
+    $sub_query->fields('act', array('uid'));
+    $sub_query->condition('actEntry.field_activity_entry_activity_target_id',$activityIds);
+    $sub_query->groupBy('act.uid');
+    $sub_query->addExpression('COUNT(actEntry.entity_id)', 'actCount');
+
+    if(!empty($countFrom)) {
+      $sub_query->having('actCount >= '.$countFrom);
+    }
+
+    if(!empty($countTo)) {
+      $sub_query->having('actCount <= '.$countTo);
+    }
+
+    $sub = $sub_query->execute()->fetchAll();
+
+    foreach ($sub as $value) {
+      $birthDate = $value->field_user_birthday_value;
+      $diff = (date('Y') - date('Y',strtotime($birthDate)));
+      //Filtering out users according to age.
+      if (!empty($ageFrom) && !empty($ageTo)) {
+        if (($ageFrom <= $diff) && ($diff <= $ageTo)){
+          $actUsers[] = $value->uid;
+        }
+      } else {
+        $actUsers[] = $value->uid;
+      }
+    }
+
+    if(!empty($actUsers)){
+      $query = db_select('users','u');
+      $query->fields('u', array('uid'));
+      $query->join('profile', 'pf', 'pf.uid = u.uid');
+      $query->fields('pf', array('pid'));
+      $query->join('field_data_field_library_branch','branch','branch.entity_id = pf.pid');
+
+      $query->condition('u.uid', $actUsers, 'IN');
+      $query->fields('branch', array('field_library_branch_tid'));
+      $query->groupBy('branch.field_library_branch_tid');
+      $query->addExpression('COUNT(u.uid)', 'userCount');
+      $result = $query->execute()->fetchAll();
+
+      $rows = array();
+
+      foreach ($result as $value) {
+
+        $term = taxonomy_term_load($value->field_library_branch_tid);
+        $name = $term->name;
+
+        $rows[] = array(
+          $name,
+          $value->userCount,
+        );
+      }
+
+      $header = array('Library Branch', 'Number of Users');
+      $_SESSION['act_br_outputReg'] = theme('table', array('header' => $header, 'rows' => $rows));
+    } else {
+      $_SESSION['act_br_outputReg'] = 'No Result Found';
+    }
+  }
+}
+
+function all_activities() {
+
+  $query = new EntityFieldQuery();
+  $query->entityCondition('entity_type','activity');
+  $query->entityCondition('bundle','activity');
+  $result = $query->execute();
+
+  if (isset($result['activity'])) {
+    $activity_id = array_keys($result['activity']);
+    $activity = entity_load('activity', $activity_id);
+  }
+
+  foreach ($activity as $act) {
+    $options_activity[$act->id] = $act->title;
+  }
+
+  return $options_activity;
+}
+
+/**
+ * Function callback for activity report.
+ * Based on School
+ */
+function readingPerSchool($form, $form_state) {
+
+  $options = all_activities();
+
+  $form['act_sc_activity'] = array(
+    '#type' => 'select',
+    '#title' => 'Activity',
+    '#options' => $options,
+    '#multiple' => TRUE,
+    );
+
+  $form['act_sc_participation_count_from'] = array(
+    '#type' => 'textfield',
+    '#title' => 'Participation Count From',
+    );
+
+  $form['act_sc_participation_count_to'] = array(
+    '#type' => 'textfield',
+    '#title' => 'Participation Count To',
+    );
+
+  $form['act_sc_dob'] = array(
+    '#type' => 'fieldset', 
+    '#title' => t('Age in Years of User'),
+    '#collapsible' => TRUE, 
+    '#collapsed' => FALSE,
+  );
+
+  $form['act_sc_dob']['act_sc_dob_from'] = array(
+    '#title' => t('From'),
+    '#type' => 'textfield',
+  );
+
+  $form['act_sc_dob']['act_sc_dob_to'] = array(
+    '#title' => t('To'),
+    '#type' => 'textfield',
+  );
+
+
+  $form['submit'] = array(
+    '#value' => 'Submit',
+    '#type' => 'submit',
+  );
+
+  $form['output_table'] = array(
+    '#markup' => $_SESSION['act_sc_outputReg'],
+  );
+
+  unset($_SESSION['act_sc_outputReg']);
+  return $form;
+
+}
+
+/**
+ * Submit function for activity report.
+ * Per School
+ */
+function readingPerSchool_submit($form, &$form_state) {
+
+  $activityIds = $form_state['values']['act_sc_activity'];
+  $countFrom = $form_state['values']['act_sc_participation_count_from'];
+  $countTo = $form_state['values']['act_sc_participation_count_to'];
+  $ageFrom = $form_state['values']['act_sc_dob_from'];
+  $ageTo = $form_state['values']['act_sc_dob_to'];
+
+  //Check if any activity is selected
+  if(!empty($activityIds)) {
+    $sub_query = db_select('eck_activity', 'act');
+    $sub_query->join('field_data_field_activity_entry_activity','actEntry','actEntry.entity_id = act.id');
+
+    //Check if age filter is added
+    if(!empty($ageFrom) && !empty($ageTo)) {
+      $sub_query->join('profile', 'pf', 'pf.uid = act.uid');
+      $sub_query->join('field_data_field_user_birthday','bday','bday.entity_id = pf.pid');
+      $sub_query->fields('bday', array('field_user_birthday_value'));
+    }
+
+    $sub_query->fields('act', array('uid'));
+    $sub_query->condition('actEntry.field_activity_entry_activity_target_id',$activityIds);
+    $sub_query->groupBy('act.uid');
+    $sub_query->addExpression('COUNT(actEntry.entity_id)', 'actCount');
+
+    if(!empty($countFrom)) {
+      $sub_query->having('actCount >= '.$countFrom);
+    }
+
+    if(!empty($countTo)) {
+      $sub_query->having('actCount <= '.$countTo);
+    }
+
+    $sub = $sub_query->execute()->fetchAll();
+
+    foreach ($sub as $value) {
+      $birthDate = $value->field_user_birthday_value;
+      $diff = (date('Y') - date('Y',strtotime($birthDate)));
+      //Filtering out users according to age.
+      if (!empty($ageFrom) && !empty($ageTo)) {
+        if (($ageFrom <= $diff) && ($diff <= $ageTo)){
+          $actUsers[] = $value->uid;
+        }
+      } else {
+        $actUsers[] = $value->uid;
+      }
+    }
+
+    if(!empty($actUsers)){
+      $query = db_select('users','u');
+      $query->fields('u', array('uid'));
+      $query->join('profile', 'pf', 'pf.uid = u.uid');
+      $query->fields('pf', array('pid'));
+      $query->join('field_data_field_school','sch','sch.entity_id = pf.pid');
+
+      $query->condition('u.uid', $actUsers, 'IN');
+      $query->fields('sch', array('field_school_tid'));
+      $query->groupBy('sch.field_school_tid');
+      $query->addExpression('COUNT(u.uid)', 'userCount');
+      $result = $query->execute()->fetchAll();
+
+      $rows = array();
+
+      foreach ($result as $value) {
+
+        $term = taxonomy_term_load($value->field_school_tid);
+        $name = $term->name;
+
+        $rows[] = array(
+          $name,
+          $value->userCount,
+        );
+      }
+
+      $header = array('School', 'Number of Users');
+      $_SESSION['act_sc_outputReg'] = theme('table', array('header' => $header, 'rows' => $rows));
+    } else {
+      $_SESSION['act_sc_outputReg'] = 'No Result Found';
+    }
+  }
+}
+
+
+/**
+ * Function callback for Registration report.
+ * Based on library branch
+ */
+function registrationPerBranch($form, $form_state) {
+
+  $form['reg_br_dob'] = array(
+    '#type' => 'fieldset', 
+    '#title' => t('Age in Years of User'),
+    '#collapsible' => TRUE, 
+    '#collapsed' => FALSE,
+  );
+
+  $form['reg_br_dob']['reg_br_dob_from'] = array(
+    '#title' => t('From'),
+    '#type' => 'textfield',
+  );
+
+  $form['reg_br_dob']['reg_br_dob_to'] = array(
+    '#title' => t('To'),
+    '#type' => 'textfield',
+  );
+
+  $form['submit'] = array(
+    '#value' => 'Submit',
+    '#type' => 'submit',
+  );
+
+  $form['output_table'] = array(
+    '#markup' => $_SESSION['reg_br_outputReg'],
+  );
+
+  unset($_SESSION['reg_br_outputReg']);
+  return $form;
+
+}
+
+function registrationPerBranch_submit($form, &$form_state) {
+
+  $activityIds = $form_state['values']['activity'];
+
+  if(!empty($activityIds)) {
+
+    $query = db_select('users','u');
+    $query->fields('u', array('uid'));
+    $query->join('profile', 'pf', 'pf.uid = u.uid');
+    $query->fields('pf', array('pid'));
+    $query->join('field_data_field_library_branch','branch','branch.entity_id = pf.pid');
+    $query->fields('branch', array('field_library_branch_tid'));
+    $query->groupBy('branch.field_library_branch_tid');
+    $query->addExpression('COUNT(u.uid)', 'userCount');
+    $result = $query->execute()->fetchAll();
+
+  }
+
+  $rows = array();
+
+  foreach ($result as $value) {
+
+    $term = taxonomy_term_load($value->field_library_branch_tid);
+    $name = $term->name;
+
+    $rows[] = array(
+      $name,
+      $value->userCount,
+    );
+  }
+
+  $header = array('Library Branch', 'Number of Users');
+  $_SESSION['outputReg'] = theme('table', array('header' => $header, 'rows' => $rows));
+
+}
+
+/**
+ * Function callback for generating report for number of reading days.
+ * Based on library branch
+ */
+function registrationPerSchool($form, $form_state) {
+
+  $options = all_activities();
+
+  $form['activity'] = array(
+    '#type' => 'select',
+    '#title' => 'Activity',
+    '#options' => $options,
+    '#multiple' => TRUE,
+    );
+
+  $form['submit'] = array(
+    '#value' => 'Submit',
+    '#type' => 'submit',
+  );
+
+  $form['output_table'] = array(
+    '#markup' => $_SESSION['outputReg'],
+  );
+
+  unset($_SESSION['outputReg']);
+  return $form;
+
+}
+
+function registrationPerSchool_submit($form, &$form_state) {
+
+  $activityIds = $form_state['values']['activity'];
+
+
+  if(!empty($activityIds)) {
+
+    $query = db_select('users','u');
+    $query->fields('u', array('uid'));
+    $query->join('profile', 'pf', 'pf.uid = u.uid');
+    $query->fields('pf', array('pid'));
+    $query->join('field_data_field_school','sch','sch.entity_id = pf.pid');
+    $query->fields('sch', array('field_school_tid'));
+    $query->groupBy('sch.field_school_tid');
+    $query->addExpression('COUNT(u.uid)', 'userCount');
+    $result = $query->execute()->fetchAll();
+
+  }
+
+  $rows = array();
+
+  foreach ($result as $value) {
+
+    $term = taxonomy_term_load($value->field_school_tid);
+    $name = $term->name;
+
+    $rows[] = array(
+      $name,
+      $value->userCount,
+    );
+  }
+
+  $header = array('School', 'Number of Users');
+  $_SESSION['outputReg'] = theme('table', array('header' => $header, 'rows' => $rows));
+
 }

@@ -317,10 +317,10 @@ function pl_homepage_slider(){
  */
 function pl_header_menu_mobile(){
 
-  $block = module_invoke('views', 'block_view', 'top_block-block_2');
+  $block = module_invoke('views', 'block_view', 'header_menus-block_1');
   $output .= render($block['content']). '</div>';
 
-  $block = module_invoke('menu', 'block_view', 'menu-secoundary-menu-mobile');
+  $block = module_invoke('menu', 'block_view', 'menu-secondary-menu');
   $output .= render($block['content']). '</div>';
 
   return $output;

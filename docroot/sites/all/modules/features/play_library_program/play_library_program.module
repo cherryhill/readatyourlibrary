@@ -4,6 +4,8 @@
  * Code for the PLAY Library Program feature.
  */
 
+include_once 'play_library_program.features.inc';
+
 /**
  * function get field_language($entity_type, $entity, $field_name = NULL, $langcode = NULL);
  */
@@ -12,9 +14,6 @@ function get_entity_field_language($entity_type, $entity) {
   $field_language = field_language($entity_type, $entity);
   return $field_language;
 }
-
-include_once 'play_library_program.features.inc';
-
 /**
  * Implements hook_menu().
  */
@@ -396,6 +395,8 @@ function pl_reward_claim($reward_id, $account_uid, $category, $filters = NULL, $
   if (isset($activityEntry_id)) {
     $activityUpdates = entity_load('activity', array($activityEntry_id));
     $activityUpdate = reset($activityUpdates);
+    $lang = get_entity_field_language('activity',$activityUpdate);
+
     $activityUpdate->field_rw_claim_id[$lang['field_rw_claim_id']][0]['value'] = $reward_id;
     $activityUpdate->field_progress_info[$lang['field_progress_info']][0]['value'] = 'Congratulations! You have earned a prize!';
     field_attach_update('activity', $activityUpdate);
@@ -428,6 +429,8 @@ function pl_reward_claim($reward_id, $account_uid, $category, $filters = NULL, $
   if ($category == 'reward') {
     $title = t("@reward on @time", array('@reward' => $reward->title, '@time' => date('Y-m-d H:i')));
     $reward_claim = entity_create('reward', array('type' => 'reward_claim', 'title' => $title, 'uid' => $account_uid));
+    $lang = field_language('reward',$reward_claim);
+    // echo '<pre>'; print_r($lang); die();  
     $reward_claim->field_reward_claim_id[$lang['field_reward_claim_id']][0]['target_id'] = $reward_id;
     $reward_claim->field_filters_used[$lang['field_filters_used']][0]['value'] = $filters;
     $reward_claim->field_rf_drawing_name[$lang['field_rf_drawing_name']][0]['value'] = $rf_drawing;
@@ -438,15 +441,17 @@ function pl_reward_claim($reward_id, $account_uid, $category, $filters = NULL, $
     drupal_set_message(t($rewardOnscMsg));
     _play_library_program_send_pm_message($account_uid, $reward_pm_sub, $reward_pm_body, $author_uid);
 
-  }else if ($category == 'raffle_reward') {
-
+  } else if ($category == 'raffle_reward') {
     $title = t("@reward on @time", array('@reward' => $reward->title, '@time' => date('Y-m-d H:i')));
-    $reward_claim = entity_create('reward', array('type' => 'raffle_claim', 'title' => $title, 'uid' => $account_uid));
-    $reward_claim->field_raffle_claim_id[$lang['field_raffle_claim_id']][0]['target_id'] = $reward_id;
-    entity_save('reward', $reward_claim);
+    $raffle_entry = entity_create('reward', array('type' => 'raffle_claim', 'title' => $title, 'uid' => $account_uid));
+    $lang = field_language('reward',$raffle_entry);
+
+    $raffle_entry->field_raffle_claim_id[$lang['field_raffle_claim_id']][0]['target_id'] = $reward_id;
+    entity_save('reward', $raffle_entry);
 
     drupal_set_message(t($raffleOnsMsg));
     _play_library_program_send_pm_message($account_uid, $raffle_pm_sub, $raffle_pm_body, $author_uid);
+
   }
 
   if (module_exists('child_progress')) {
@@ -611,12 +616,7 @@ function play_library_program_theme($existing, $type, $theme, $path) {
 **/
 
 function play_library_program_userpoints($op, &$params = array()) {
-
-
-  global $language;
-  //$lang = $language->language;
   
-
   if ($op == 'points after') {
     //Call all reward calculations if reward category is not general
     if ($params['tid'] !=0 and $params['points'] >= 1 ) {
@@ -799,8 +799,6 @@ function play_library_program_retrieve_activity_participation($activity_id, $acc
  * Creates a new activity entry
  */
 function play_library_program_create_activity_entry($activity_id, $account_id, $event_time = NULL) {
-  global $language;
-  $lang = $language->language;
 
   $query = db_select('eck_activity', 'ea');
   $query->join('field_data_field_activity_fired_hook', 'afh', 'ea.id = afh.entity_id');
