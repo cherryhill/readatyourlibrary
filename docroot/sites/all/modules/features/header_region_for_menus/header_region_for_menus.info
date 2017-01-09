@@ -1,0 +1,15 @@
+name = Header Region for Menus
+core = 7.x
+package = Features
+version = 7.x-1.0
+dependencies[] = ctools
+dependencies[] = ctools_custom_content
+dependencies[] = features
+dependencies[] = menu
+dependencies[] = views
+features[ctools][] = views:views_default:3.0
+features[features_api][] = api:2
+features[menu_custom][] = menu-anonymous-header-links
+features[menu_custom][] = menu-secondary-menu
+features[views_view][] = header_menus
+project path = sites/all/modules/features
