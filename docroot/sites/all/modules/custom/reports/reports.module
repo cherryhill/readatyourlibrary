@@ -6,15 +6,15 @@
 function reports_menu(){
 	$items = array();
 
-  $items['reading-per-library-branch'] = array(
-    'title' => t('Days of Reading per Library Branch'),
+  $items['activity-per-library-branch'] = array(
+    'title' => t('Activity Report per Library Branch'),
     'page callback' => 'drupal_get_form',
     'page arguments' => array('readingPerBranch'),
     'access callback' => TRUE,
   );
 
-  $items['reading-per-school'] = array(
-    'title' => t('Days of Reading per School'),
+  $items['activity-per-school'] = array(
+    'title' => t('Activity Report per School'),
     'page callback' => 'drupal_get_form',
     'page arguments' => array('readingPerSchool'),
     'access callback' => TRUE,
@@ -55,43 +55,43 @@ function access_check() {
 }
 
 /**
- * Function callback for generating report for number of reading days.
+ * Function callback for activity report.
  * Based on library branch
  */
 function readingPerBranch($form, $form_state) {
 
   $options = all_activities();
 
-  $form['activity'] = array(
+  $form['activity_branch'] = array(
     '#type' => 'select',
     '#title' => 'Activity',
     '#options' => $options,
     '#multiple' => TRUE,
     );
 
-  $form['participation_count_from'] = array(
+  $form['act_br_participation_count_from'] = array(
     '#type' => 'textfield',
     '#title' => 'Participation Count From',
     );
 
-  $form['participation_count_to'] = array(
+  $form['act_br_participation_count_to'] = array(
     '#type' => 'textfield',
     '#title' => 'Participation Count To',
     );
 
-  $form['dob'] = array(
+  $form['act_br_dob'] = array(
     '#type' => 'fieldset', 
     '#title' => t('Age in Years of User'),
     '#collapsible' => TRUE, 
     '#collapsed' => FALSE,
   );
 
-  $form['dob']['dob_from'] = array(
+  $form['act_br_dob']['act_br_dob_from'] = array(
     '#title' => t('From'),
     '#type' => 'textfield',
   );
 
-  $form['dob']['dob_to'] = array(
+  $form['act_br_dob']['act_br_dob_to'] = array(
     '#title' => t('To'),
     '#type' => 'textfield',
   );
@@ -101,28 +101,33 @@ function readingPerBranch($form, $form_state) {
     '#type' => 'submit',
   );
 
-  $form['output_table'] = array(
-    '#markup' => $_SESSION['outputReg'],
+  $form['act_br_output_table'] = array(
+    '#markup' => $_SESSION['act_br_outputReg'],
   );
 
-  unset($_SESSION['outputReg']);
+  unset($_SESSION['act_br_outputReg']);
   return $form;
 
 }
 
+/**
+ * Submit function for activity report.
+ * Per Library Branch
+ */
 function readingPerBranch_submit($form, &$form_state) {
 
-  $activityIds = $form_state['values']['activity'];
-  $countFrom = $form_state['values']['participation_count_from'];
-  $countTo = $form_state['values']['participation_count_to'];
-  $ageFrom = $form_state['values']['dob_from'];
-  $ageTo = $form_state['values']['dob_to'];
+  $activityIds = $form_state['values']['activity_branch'];
+  $countFrom = $form_state['values']['act_br_participation_count_from'];
+  $countTo = $form_state['values']['act_br_participation_count_to'];
+  $ageFrom = $form_state['values']['act_br_dob_from'];
+  $ageTo = $form_state['values']['act_br_dob_to'];
 
-
+  //Check if any activity is selected
   if(!empty($activityIds)) {
     $sub_query = db_select('eck_activity', 'act');
     $sub_query->join('field_data_field_activity_entry_activity','actEntry','actEntry.entity_id = act.id');
 
+    //Check if age filter is added
     if(!empty($ageFrom) && !empty($ageTo)) {
       $sub_query->join('profile', 'pf', 'pf.uid = act.uid');
       $sub_query->join('field_data_field_user_birthday','bday','bday.entity_id = pf.pid');
@@ -147,7 +152,7 @@ function readingPerBranch_submit($form, &$form_state) {
     foreach ($sub as $value) {
       $birthDate = $value->field_user_birthday_value;
       $diff = (date('Y') - date('Y',strtotime($birthDate)));
-
+      //Filtering out users according to age.
       if (!empty($ageFrom) && !empty($ageTo)) {
         if (($ageFrom <= $diff) && ($diff <= $ageTo)){
           $actUsers[] = $value->uid;
@@ -169,25 +174,26 @@ function readingPerBranch_submit($form, &$form_state) {
       $query->groupBy('branch.field_library_branch_tid');
       $query->addExpression('COUNT(u.uid)', 'userCount');
       $result = $query->execute()->fetchAll();
+
+      $rows = array();
+
+      foreach ($result as $value) {
+
+        $term = taxonomy_term_load($value->field_library_branch_tid);
+        $name = $term->name;
+
+        $rows[] = array(
+          $name,
+          $value->userCount,
+        );
+      }
+
+      $header = array('Library Branch', 'Number of Users');
+      $_SESSION['act_br_outputReg'] = theme('table', array('header' => $header, 'rows' => $rows));
+    } else {
+      $_SESSION['act_br_outputReg'] = 'No Result Found';
     }
   }
-
-  $rows = array();
-
-  foreach ($result as $value) {
-
-    $term = taxonomy_term_load($value->field_library_branch_tid);
-    $name = $term->name;
-
-    $rows[] = array(
-      $name,
-      $value->userCount,
-    );
-  }
-
-  $header = array('Library Branch', 'Number of Users');
-  $_SESSION['outputReg'] = theme('table', array('header' => $header, 'rows' => $rows));
-
 }
 
 function all_activities() {
@@ -210,29 +216,47 @@ function all_activities() {
 }
 
 /**
- * Function callback for generating report for number of reading days.
- * Based on library branch
+ * Function callback for activity report.
+ * Based on School
  */
 function readingPerSchool($form, $form_state) {
 
   $options = all_activities();
 
-  $form['activity'] = array(
+  $form['act_sc_activity'] = array(
     '#type' => 'select',
     '#title' => 'Activity',
     '#options' => $options,
     '#multiple' => TRUE,
     );
 
-  $form['participation_count_from'] = array(
+  $form['act_sc_participation_count_from'] = array(
     '#type' => 'textfield',
     '#title' => 'Participation Count From',
     );
 
-  $form['participation_count_to'] = array(
+  $form['act_sc_participation_count_to'] = array(
     '#type' => 'textfield',
     '#title' => 'Participation Count To',
     );
+
+  $form['act_sc_dob'] = array(
+    '#type' => 'fieldset', 
+    '#title' => t('Age in Years of User'),
+    '#collapsible' => TRUE, 
+    '#collapsed' => FALSE,
+  );
+
+  $form['act_sc_dob']['act_sc_dob_from'] = array(
+    '#title' => t('From'),
+    '#type' => 'textfield',
+  );
+
+  $form['act_sc_dob']['act_sc_dob_to'] = array(
+    '#title' => t('To'),
+    '#type' => 'textfield',
+  );
+
 
   $form['submit'] = array(
     '#value' => 'Submit',
@@ -240,23 +264,38 @@ function readingPerSchool($form, $form_state) {
   );
 
   $form['output_table'] = array(
-    '#markup' => $_SESSION['outputReg'],
+    '#markup' => $_SESSION['act_sc_outputReg'],
   );
 
-  unset($_SESSION['outputReg']);
+  unset($_SESSION['act_sc_outputReg']);
   return $form;
 
 }
 
+/**
+ * Submit function for activity report.
+ * Per School
+ */
 function readingPerSchool_submit($form, &$form_state) {
 
-  $activityIds = $form_state['values']['activity'];
-  $countFrom = $form_state['values']['participation_count_from'];
-  $countTo = $form_state['values']['participation_count_to'];
+  $activityIds = $form_state['values']['act_sc_activity'];
+  $countFrom = $form_state['values']['act_sc_participation_count_from'];
+  $countTo = $form_state['values']['act_sc_participation_count_to'];
+  $ageFrom = $form_state['values']['act_sc_dob_from'];
+  $ageTo = $form_state['values']['act_sc_dob_to'];
 
+  //Check if any activity is selected
   if(!empty($activityIds)) {
     $sub_query = db_select('eck_activity', 'act');
     $sub_query->join('field_data_field_activity_entry_activity','actEntry','actEntry.entity_id = act.id');
+
+    //Check if age filter is added
+    if(!empty($ageFrom) && !empty($ageTo)) {
+      $sub_query->join('profile', 'pf', 'pf.uid = act.uid');
+      $sub_query->join('field_data_field_user_birthday','bday','bday.entity_id = pf.pid');
+      $sub_query->fields('bday', array('field_user_birthday_value'));
+    }
+
     $sub_query->fields('act', array('uid'));
     $sub_query->condition('actEntry.field_activity_entry_activity_target_id',$activityIds);
     $sub_query->groupBy('act.uid');
@@ -273,7 +312,16 @@ function readingPerSchool_submit($form, &$form_state) {
     $sub = $sub_query->execute()->fetchAll();
 
     foreach ($sub as $value) {
-      $actUsers[] = $value->uid;
+      $birthDate = $value->field_user_birthday_value;
+      $diff = (date('Y') - date('Y',strtotime($birthDate)));
+      //Filtering out users according to age.
+      if (!empty($ageFrom) && !empty($ageTo)) {
+        if (($ageFrom <= $diff) && ($diff <= $ageTo)){
+          $actUsers[] = $value->uid;
+        }
+      } else {
+        $actUsers[] = $value->uid;
+      }
     }
 
     if(!empty($actUsers)){
@@ -288,42 +336,51 @@ function readingPerSchool_submit($form, &$form_state) {
       $query->groupBy('sch.field_school_tid');
       $query->addExpression('COUNT(u.uid)', 'userCount');
       $result = $query->execute()->fetchAll();
+
+      $rows = array();
+
+      foreach ($result as $value) {
+
+        $term = taxonomy_term_load($value->field_school_tid);
+        $name = $term->name;
+
+        $rows[] = array(
+          $name,
+          $value->userCount,
+        );
+      }
+
+      $header = array('School', 'Number of Users');
+      $_SESSION['act_sc_outputReg'] = theme('table', array('header' => $header, 'rows' => $rows));
+    } else {
+      $_SESSION['act_sc_outputReg'] = 'No Result Found';
     }
   }
-
-  $rows = array();
-
-  foreach ($result as $value) {
-
-    $term = taxonomy_term_load($value->field_school_tid);
-    $name = $term->name;
-
-    $rows[] = array(
-      $name,
-      $value->userCount,
-    );
-  }
-
-  $header = array('School', 'Number of Users');
-  $_SESSION['outputReg'] = theme('table', array('header' => $header, 'rows' => $rows));
-
 }
 
 
 /**
- * Function callback for generating report for number of reading days.
+ * Function callback for Registration report.
  * Based on library branch
  */
 function registrationPerBranch($form, $form_state) {
 
-  $options = all_activities();
+  $form['reg_br_dob'] = array(
+    '#type' => 'fieldset', 
+    '#title' => t('Age in Years of User'),
+    '#collapsible' => TRUE, 
+    '#collapsed' => FALSE,
+  );
 
-  $form['activity'] = array(
-    '#type' => 'select',
-    '#title' => 'Activity',
-    '#options' => $options,
-    '#multiple' => TRUE,
-    );
+  $form['reg_br_dob']['reg_br_dob_from'] = array(
+    '#title' => t('From'),
+    '#type' => 'textfield',
+  );
+
+  $form['reg_br_dob']['reg_br_dob_to'] = array(
+    '#title' => t('To'),
+    '#type' => 'textfield',
+  );
 
   $form['submit'] = array(
     '#value' => 'Submit',
@@ -331,10 +388,10 @@ function registrationPerBranch($form, $form_state) {
   );
 
   $form['output_table'] = array(
-    '#markup' => $_SESSION['outputReg'],
+    '#markup' => $_SESSION['reg_br_outputReg'],
   );
 
-  unset($_SESSION['outputReg']);
+  unset($_SESSION['reg_br_outputReg']);
   return $form;
 
 }
