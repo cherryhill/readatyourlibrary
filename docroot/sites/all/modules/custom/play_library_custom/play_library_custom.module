@@ -172,6 +172,11 @@ function play_library_custom_block_info() {
     'info' => t('Leaderboard block for dashboard'),
   );
 
+  $blocks['program_logo_image'] = array(
+    'info' => t('Library Logo Image'),
+  );
+
+
   return $blocks;
 }
 
@@ -208,6 +213,10 @@ function play_library_custom_block_view($delta = '') {
 
     case 'leaderblock_dashboard' :
       $block['content'] = pl_leaderblock_dashboard();
+      break;
+
+    case 'program_logo_image' :
+      $block['content'] = pl_program_logo_image();
       break;
   }
 
@@ -647,4 +656,8 @@ function pl_leaderblock_dashboard() {
   }
   $link = '<a href = "#">More </a>';
   return $username.$count.$link;
+}
+
+function pl_program_logo_image() {
+  return 'Heelllo';
 }
