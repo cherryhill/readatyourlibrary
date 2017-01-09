@@ -212,10 +212,9 @@ function kids_programme_css_alter(&$css) {
 function kids_programme_preprocess_page(&$variables) {
 
 
-if (!empty($variables['page']['sidebar_first']) || !empty($variables['page']['login_form']) || !empty($variables['page']['activity_sidebar'])){
+if (!empty($variables['page']['sidebar_first']) || !empty($variables['page']['login_form'])){
     $left = $variables['page']['sidebar_first'];
     $left1 = $variables['page']['login_form'];
-    $left3 = $variables['page']['activity_sidebar'];
 
   }
 
@@ -224,20 +223,20 @@ if (!empty($variables['page']['sidebar_first']) || !empty($variables['page']['lo
   }
 
   // Dynamic sidebars
-  if ((!empty($left3) || !empty($left) || !empty($left1)) && !empty($right)) {
+  if ((!empty($left) || !empty($left1)) && !empty($right)) {
     $variables['main_grid'] = 'large-6 push-3';
     $variables['sidebar_first_grid'] = 'large-3 pull-6';
     $variables['sidebar_sec_grid'] = 'large-3';
-  } elseif ((!empty($left3) || !empty($left) || !empty($left1)) && !empty($right)) {
+  } elseif ((!empty($left) || !empty($left1)) && !empty($right)) {
     $variables['main_grid'] = 'large-9';
     $variables['sidebar_first_grid'] = '';
     $variables['sidebar_sec_grid'] = 'large-3';
-  } elseif ((!empty($left3) || !empty($left) || !empty($left1)) && empty($right)) {
-    $variables['main_grid'] = 'large-9 push-3';
-    $variables['sidebar_first_grid'] = 'large-3 pull-9';
+  } elseif ((!empty($left) || !empty($left1)) && empty($right)) {
+    $variables['main_grid'] = 'medium-8 medium-push-4';
+    $variables['sidebar_first_grid'] = 'medium-4 medium-pull-8';
     $variables['sidebar_sec_grid'] = '';
   } else {
-    $variables['main_grid'] = 'large-12';
+    $variables['main_grid'] = 'medium-12';
     $variables['sidebar_first_grid'] = '';
     $variables['sidebar_sec_grid'] = '';
   }
