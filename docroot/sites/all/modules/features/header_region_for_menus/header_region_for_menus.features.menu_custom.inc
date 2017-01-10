@@ -26,10 +26,19 @@ function header_region_for_menus_menu_default_menu_custom() {
     'language' => 'und',
     'i18n_mode' => 0,
   );
+  // Exported menu: menu-social-sharing-icons.
+  $menus['menu-social-sharing-icons'] = array(
+    'menu_name' => 'menu-social-sharing-icons',
+    'title' => 'Social Sharing Icons',
+    'description' => '',
+    'language' => 'und',
+    'i18n_mode' => 0,
+  );
   // Translatables
   // Included for use with string extractors like potx.
   t('Anonymous Header Links');
   t('Secondary menu');
+  t('Social Sharing Icons');
 
   return $menus;
 }
