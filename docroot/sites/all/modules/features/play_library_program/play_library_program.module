@@ -1909,3 +1909,26 @@ function _play_library_program_send_pm_message($account_id, $notification_subjec
     return FALSE;
   }
 }
+
+ //Function to update actiity entry
+  function play_library_program_update_activity_entry($activity_entry_id, $update_time, $user_id, $activity_id){
+    if ($user_id == Null){
+      global $user;
+      $user_id = $user->uid;
+    }
+    //print_r('activity_id='.$activity_id);
+    //Verify if new date is within activity date and frequency limit
+    
+    $activity = entity_load('activity', array($activity_id));
+    $activity_frequency_limit = play_library_program_frequency_limit(reset($activity), $update_time, $user_id);
+    $activity_time_limit = play_library_program_activity_time_limit(reset($activity), $update_time);
+
+    //print_r('message ' .$activity_frequency_limit.'||'.$activity_time_limit);
+    $activity_entry = entity_load('activity',array($activity_entry_id));
+    if ($activity_frequency_limit == TRUE && $activity_time_limit == TRUE){
+        $w_activity = entity_metadata_wrapper('activity', reset($activity_entry));
+        $w_activity->created = $update_time;
+        $w_activity->save();
+        drupal_set_message(t('Your activity date is updated to '. date('Y-M-d',$update_time)), 'status');
+    }
+  }
