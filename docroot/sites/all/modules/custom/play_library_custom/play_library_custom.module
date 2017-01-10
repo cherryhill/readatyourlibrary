@@ -317,13 +317,13 @@ function pl_pm_block_view() {
 function pl_homepage_slider(){
 
   $output .= '<ul class="booklist-pager"><input type="radio" name="colorRadio" id="r1" value="blslider1" checked><label for="r1"></label><input type="radio" name="colorRadio" id="r2" value="blslider2"><label for="r2"></label><input type="radio" name="colorRadio" id="r3" value="blslider3"><label for="r3"></label></ul>';
-  $block = module_invoke('views', 'block_view', 'booklist_slideshow-block_2');
+  $block = module_invoke('views', 'block_view', 'book_reviews_dashboard-block_3');
   $output .= '<div class="blslider1 slide">'. render($block['content']). '</div>';
 
-  $block = module_invoke('views', 'block_view', 'booklist_slideshow-block_3');
+  $block = module_invoke('views', 'block_view', 'book_reviews_dashboard-block_4');
   $output .= '<div class="blslider2 slide">'. render($block['content']). '</div>';
 
-  $block = module_invoke('views', 'block_view', 'booklist_slideshow-block_4');
+  $block = module_invoke('views', 'block_view', 'book_reviews_dashboard-block_5');
   $output .= '<div class="blslider3 slide">'. render($block['content']). '</div>';
 
   return $output;

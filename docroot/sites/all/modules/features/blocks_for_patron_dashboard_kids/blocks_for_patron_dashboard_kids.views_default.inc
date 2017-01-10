@@ -614,6 +614,201 @@ print render(_block_get_renderable_array( _block_render_blocks(array($block))));
     'block_1' => 0,
   );
   $handler->display->display_options['attachment_position'] = 'after';
+
+  /* Display: Booklist slideshow one */
+  $handler = $view->new_display('block', 'Booklist slideshow one', 'block_3');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'Booklist slideshow one';
+  $handler->display->display_options['defaults']['pager'] = FALSE;
+  $handler->display->display_options['pager']['type'] = 'none';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'owlcarousel';
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['row_plugin'] = 'fields';
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['empty'] = FALSE;
+  $handler->display->display_options['defaults']['relationships'] = FALSE;
+  /* Relationship: Entity Reference: Referenced Entity */
+  $handler->display->display_options['relationships']['field_book_target_id']['id'] = 'field_book_target_id';
+  $handler->display->display_options['relationships']['field_book_target_id']['table'] = 'field_data_field_book';
+  $handler->display->display_options['relationships']['field_book_target_id']['field'] = 'field_book_target_id';
+  /* Relationship: Nodequeue: Queue */
+  $handler->display->display_options['relationships']['nodequeue_rel']['id'] = 'nodequeue_rel';
+  $handler->display->display_options['relationships']['nodequeue_rel']['table'] = 'node';
+  $handler->display->display_options['relationships']['nodequeue_rel']['field'] = 'nodequeue_rel';
+  $handler->display->display_options['relationships']['nodequeue_rel']['limit'] = 0;
+  $handler->display->display_options['relationships']['nodequeue_rel']['names'] = array(
+    'booklist_book_cover_image' => 0,
+  );
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Booklist item: Booklist Cover Image */
+  $handler->display->display_options['fields']['field_booklist_cover_image']['id'] = 'field_booklist_cover_image';
+  $handler->display->display_options['fields']['field_booklist_cover_image']['table'] = 'field_data_field_booklist_cover_image';
+  $handler->display->display_options['fields']['field_booklist_cover_image']['field'] = 'field_booklist_cover_image';
+  $handler->display->display_options['fields']['field_booklist_cover_image']['relationship'] = 'field_book_target_id';
+  $handler->display->display_options['fields']['field_booklist_cover_image']['label'] = '';
+  $handler->display->display_options['fields']['field_booklist_cover_image']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_booklist_cover_image']['alter']['text'] = '<img src ="[field_booklist_cover_image-value]" height = "200" width="200">';
+  $handler->display->display_options['fields']['field_booklist_cover_image']['element_type'] = 'div';
+  $handler->display->display_options['fields']['field_booklist_cover_image']['element_class'] = 'booklist-cover-image';
+  $handler->display->display_options['fields']['field_booklist_cover_image']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_booklist_cover_image']['empty'] = '<img src="http://www.clker.com/cliparts/7/1/a/f/11971220941184963828dniezby_Generic_Book.svg.med.png" width = "200" height="200px">';
+  $handler->display->display_options['fields']['field_booklist_cover_image']['type'] = 'text_plain';
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'booklist' => 'booklist',
+  );
+  /* Filter criterion: Nodequeue: Position */
+  $handler->display->display_options['filters']['position']['id'] = 'position';
+  $handler->display->display_options['filters']['position']['table'] = 'nodequeue_nodes';
+  $handler->display->display_options['filters']['position']['field'] = 'position';
+  $handler->display->display_options['filters']['position']['relationship'] = 'nodequeue_rel';
+  $handler->display->display_options['filters']['position']['value']['value'] = '1';
+  $handler->display->display_options['block_description'] = 'Booklist slideshow one';
+
+  /* Display: Booklist slideshow two */
+  $handler = $view->new_display('block', 'Booklist slideshow two', 'block_4');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'Booklist slideshow two';
+  $handler->display->display_options['defaults']['pager'] = FALSE;
+  $handler->display->display_options['pager']['type'] = 'none';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'owlcarousel';
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['row_plugin'] = 'fields';
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['empty'] = FALSE;
+  $handler->display->display_options['defaults']['relationships'] = FALSE;
+  /* Relationship: Entity Reference: Referenced Entity */
+  $handler->display->display_options['relationships']['field_book_target_id']['id'] = 'field_book_target_id';
+  $handler->display->display_options['relationships']['field_book_target_id']['table'] = 'field_data_field_book';
+  $handler->display->display_options['relationships']['field_book_target_id']['field'] = 'field_book_target_id';
+  /* Relationship: Nodequeue: Queue */
+  $handler->display->display_options['relationships']['nodequeue_rel']['id'] = 'nodequeue_rel';
+  $handler->display->display_options['relationships']['nodequeue_rel']['table'] = 'node';
+  $handler->display->display_options['relationships']['nodequeue_rel']['field'] = 'nodequeue_rel';
+  $handler->display->display_options['relationships']['nodequeue_rel']['limit'] = 0;
+  $handler->display->display_options['relationships']['nodequeue_rel']['names'] = array(
+    'booklist_book_cover_image' => 0,
+  );
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Booklist item: Booklist Cover Image */
+  $handler->display->display_options['fields']['field_booklist_cover_image']['id'] = 'field_booklist_cover_image';
+  $handler->display->display_options['fields']['field_booklist_cover_image']['table'] = 'field_data_field_booklist_cover_image';
+  $handler->display->display_options['fields']['field_booklist_cover_image']['field'] = 'field_booklist_cover_image';
+  $handler->display->display_options['fields']['field_booklist_cover_image']['relationship'] = 'field_book_target_id';
+  $handler->display->display_options['fields']['field_booklist_cover_image']['label'] = '';
+  $handler->display->display_options['fields']['field_booklist_cover_image']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_booklist_cover_image']['alter']['text'] = '<img src ="[field_booklist_cover_image-value]" height = "200" width="200">';
+  $handler->display->display_options['fields']['field_booklist_cover_image']['element_type'] = 'div';
+  $handler->display->display_options['fields']['field_booklist_cover_image']['element_class'] = 'booklist-cover-image';
+  $handler->display->display_options['fields']['field_booklist_cover_image']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_booklist_cover_image']['empty'] = '<img src="http://www.clker.com/cliparts/7/1/a/f/11971220941184963828dniezby_Generic_Book.svg.med.png" width = "200" height="200px">';
+  $handler->display->display_options['fields']['field_booklist_cover_image']['type'] = 'text_plain';
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'booklist' => 'booklist',
+  );
+  /* Filter criterion: Nodequeue: Position */
+  $handler->display->display_options['filters']['position']['id'] = 'position';
+  $handler->display->display_options['filters']['position']['table'] = 'nodequeue_nodes';
+  $handler->display->display_options['filters']['position']['field'] = 'position';
+  $handler->display->display_options['filters']['position']['relationship'] = 'nodequeue_rel';
+  $handler->display->display_options['filters']['position']['value']['value'] = '2';
+  $handler->display->display_options['block_description'] = 'Booklist slideshow two';
+
+  /* Display: Booklist slideshow three */
+  $handler = $view->new_display('block', 'Booklist slideshow three', 'block_5');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'Booklist slideshow three';
+  $handler->display->display_options['defaults']['pager'] = FALSE;
+  $handler->display->display_options['pager']['type'] = 'none';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'owlcarousel';
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['row_plugin'] = 'fields';
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['empty'] = FALSE;
+  $handler->display->display_options['defaults']['relationships'] = FALSE;
+  /* Relationship: Entity Reference: Referenced Entity */
+  $handler->display->display_options['relationships']['field_book_target_id']['id'] = 'field_book_target_id';
+  $handler->display->display_options['relationships']['field_book_target_id']['table'] = 'field_data_field_book';
+  $handler->display->display_options['relationships']['field_book_target_id']['field'] = 'field_book_target_id';
+  /* Relationship: Nodequeue: Queue */
+  $handler->display->display_options['relationships']['nodequeue_rel']['id'] = 'nodequeue_rel';
+  $handler->display->display_options['relationships']['nodequeue_rel']['table'] = 'node';
+  $handler->display->display_options['relationships']['nodequeue_rel']['field'] = 'nodequeue_rel';
+  $handler->display->display_options['relationships']['nodequeue_rel']['limit'] = 0;
+  $handler->display->display_options['relationships']['nodequeue_rel']['names'] = array(
+    'booklist_book_cover_image' => 0,
+  );
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Booklist item: Booklist Cover Image */
+  $handler->display->display_options['fields']['field_booklist_cover_image']['id'] = 'field_booklist_cover_image';
+  $handler->display->display_options['fields']['field_booklist_cover_image']['table'] = 'field_data_field_booklist_cover_image';
+  $handler->display->display_options['fields']['field_booklist_cover_image']['field'] = 'field_booklist_cover_image';
+  $handler->display->display_options['fields']['field_booklist_cover_image']['relationship'] = 'field_book_target_id';
+  $handler->display->display_options['fields']['field_booklist_cover_image']['label'] = '';
+  $handler->display->display_options['fields']['field_booklist_cover_image']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_booklist_cover_image']['alter']['text'] = '<img src ="[field_booklist_cover_image-value]" height = "200" width="200">';
+  $handler->display->display_options['fields']['field_booklist_cover_image']['element_type'] = 'div';
+  $handler->display->display_options['fields']['field_booklist_cover_image']['element_class'] = 'booklist-cover-image';
+  $handler->display->display_options['fields']['field_booklist_cover_image']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_booklist_cover_image']['empty'] = '<img src="http://www.clker.com/cliparts/7/1/a/f/11971220941184963828dniezby_Generic_Book.svg.med.png" width = "200" height="200px">';
+  $handler->display->display_options['fields']['field_booklist_cover_image']['type'] = 'text_plain';
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'booklist' => 'booklist',
+  );
+  /* Filter criterion: Nodequeue: Position */
+  $handler->display->display_options['filters']['position']['id'] = 'position';
+  $handler->display->display_options['filters']['position']['table'] = 'nodequeue_nodes';
+  $handler->display->display_options['filters']['position']['field'] = 'position';
+  $handler->display->display_options['filters']['position']['relationship'] = 'nodequeue_rel';
+  $handler->display->display_options['filters']['position']['value']['value'] = '3';
+  $handler->display->display_options['block_description'] = 'Booklist slideshow three';
   $export['book_reviews_dashboard'] = $view;
 
   $view = new view();
@@ -1054,6 +1249,78 @@ echo \'<div>\'.$reward_title.\'</div>\' . \'<div><span>Received </span>\'.$rewar
     'default' => 0,
     'block' => 0,
   );
+
+  /* Display: homepage rewards block */
+  $handler = $view->new_display('block', 'homepage rewards block', 'block_2');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'Reward Earn';
+  $handler->display->display_options['defaults']['pager'] = FALSE;
+  $handler->display->display_options['pager']['type'] = 'some';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '3';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['defaults']['header'] = FALSE;
+  /* Header: Global: Text area */
+  $handler->display->display_options['header']['area']['id'] = 'area';
+  $handler->display->display_options['header']['area']['table'] = 'views';
+  $handler->display->display_options['header']['area']['field'] = 'area';
+  $handler->display->display_options['header']['area']['empty'] = TRUE;
+  $handler->display->display_options['header']['area']['content'] = 'Earn Your Next Rewards!';
+  $handler->display->display_options['header']['area']['format'] = 'filtered_html';
+  $handler->display->display_options['defaults']['footer'] = FALSE;
+  /* Footer: Global: Text area */
+  $handler->display->display_options['footer']['area']['id'] = 'area';
+  $handler->display->display_options['footer']['area']['table'] = 'views';
+  $handler->display->display_options['footer']['area']['field'] = 'area';
+  $handler->display->display_options['footer']['area']['content'] = '<a href = "rewards" class = "button">See More Rewards</a>';
+  $handler->display->display_options['footer']['area']['format'] = 'filtered_html';
+  $handler->display->display_options['defaults']['empty'] = FALSE;
+  /* No results behavior: Global: Text area */
+  $handler->display->display_options['empty']['area']['id'] = 'area';
+  $handler->display->display_options['empty']['area']['table'] = 'views';
+  $handler->display->display_options['empty']['area']['field'] = 'area';
+  $handler->display->display_options['empty']['area']['empty'] = TRUE;
+  $handler->display->display_options['empty']['area']['content'] = 'No Rewards Yet';
+  $handler->display->display_options['empty']['area']['format'] = 'filtered_html';
+  $handler->display->display_options['defaults']['relationships'] = FALSE;
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Reward: Raffle prize or reward image */
+  $handler->display->display_options['fields']['field_raffle_prize_or_reward_ima']['id'] = 'field_raffle_prize_or_reward_ima';
+  $handler->display->display_options['fields']['field_raffle_prize_or_reward_ima']['table'] = 'field_data_field_raffle_prize_or_reward_ima';
+  $handler->display->display_options['fields']['field_raffle_prize_or_reward_ima']['field'] = 'field_raffle_prize_or_reward_ima';
+  $handler->display->display_options['fields']['field_raffle_prize_or_reward_ima']['label'] = '';
+  $handler->display->display_options['fields']['field_raffle_prize_or_reward_ima']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_raffle_prize_or_reward_ima']['click_sort_column'] = 'fid';
+  $handler->display->display_options['fields']['field_raffle_prize_or_reward_ima']['settings'] = array(
+    'image_style' => '',
+    'image_link' => '',
+  );
+  /* Field: Reward: Raffle Ticket Image */
+  $handler->display->display_options['fields']['field_raffle_ticket_image']['id'] = 'field_raffle_ticket_image';
+  $handler->display->display_options['fields']['field_raffle_ticket_image']['table'] = 'field_data_field_raffle_ticket_image';
+  $handler->display->display_options['fields']['field_raffle_ticket_image']['field'] = 'field_raffle_ticket_image';
+  $handler->display->display_options['fields']['field_raffle_ticket_image']['label'] = '';
+  $handler->display->display_options['fields']['field_raffle_ticket_image']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_raffle_ticket_image']['click_sort_column'] = 'fid';
+  $handler->display->display_options['fields']['field_raffle_ticket_image']['settings'] = array(
+    'image_style' => '',
+    'image_link' => '',
+  );
+  /* Field: Reward: Title */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'eck_reward';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['label'] = '';
+  $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Reward: reward type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'eck_reward';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'reward' => 'reward',
+  );
+  $handler->display->display_options['block_description'] = 'homepage rewards block';
   $export['rewards_dashboard'] = $view;
 
   return $export;
