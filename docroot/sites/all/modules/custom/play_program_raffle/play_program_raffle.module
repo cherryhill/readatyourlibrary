@@ -532,7 +532,6 @@ function ppr_raffle_entry_process($form, &$form_state) {
 /* Raffle user list by filter form */
 
 function raffle_user_list($form, &$form_state) {
-
   $raffle_id = $_POST['raffle_id'];
   $rf_drawing_name = $_POST['rf_drawing_name'];
   $winners_selected = $_POST['no_needed'];
@@ -574,16 +573,15 @@ function raffle_user_list($form, &$form_state) {
   }
 
   if ($rf_all == 0){
-  $sub_query = db_select('eck_reward','eck');
-  $sub_query->join('field_data_field_rf_receieved_reward','rf_win','eck.id = rf_win.entity_id');
-  $sub_query->join('field_data_field_raffle_claim_id','claim','eck.id = claim.entity_id');
-  $sub_query->condition('claim.field_raffle_claim_id_target_id', $raffle_id, '!=');
-  $sub_query->condition('rf_win.field_rf_receieved_reward_value', 1);
-  //$sub_query->condition('rf_win.language',$lang);
-  $sub_query->fields('eck', array('uid'));
-  $sub_query->execute()->fetchAll();
+    $sub_query = db_select('eck_reward','eck');
+    $sub_query->join('field_data_field_rf_receieved_reward','rf_win','eck.id = rf_win.entity_id');
+    $sub_query->join('field_data_field_raffle_claim_id','claim','eck.id = claim.entity_id');
+    $sub_query->condition('claim.field_raffle_claim_id_target_id', $raffle_id, '!=');
+    $sub_query->condition('rf_win.field_rf_receieved_reward_value', 1);
+    //$sub_query->condition('rf_win.language',$lang);
+    $sub_query->fields('eck', array('uid'));
+    $sub_query->execute()->fetchAll();
   }
-
 
   $query = db_select('eck_reward','eck');
   $query->join('field_data_field_rf_receieved_reward','rf_win','eck.id = rf_win.entity_id');
@@ -623,10 +621,18 @@ function raffle_user_list($form, &$form_state) {
 
   // $query->fields('fname', array('field_first_name_value'));
   // $query->fields('lname', array('field_last_name_value'));
+  //Condition for age range
+  if(!empty($rf_dob_sdate) && !empty($rf_dob_sedate)){
+    $start_age_ts = time() - ($rf_dob_sdate*(60*60*24*365));
+    $end_age_ts = time() - ($rf_dob_edate*(60*60*24*365));
+    $age_range =  array($start_age_ts, $end_age_ts);
+    $query->condition('bday.field_user_birthday_value', $age_range, 'IN');
+  }
   $query->fields('bday', array('field_user_birthday_value'));
   // $query->fields('claim', array('field_raffle_claim_id_target_id'));
   // $query->fields('c_no', array('field_phone_number_value'));
   $query->condition('eck.type','raffle_claim');
+  
 
   // $query->condition('rf_win.field_rf_receieved_reward_value',array(0,1));
 
@@ -640,16 +646,14 @@ function raffle_user_list($form, &$form_state) {
     $query->condition('eck.uid', $sub_query, 'NOT IN');
   }
 
-
-
   $result_all = $query->execute()->fetchAll();
   // echo '<pre>'; print_r($result_all);die();
 
   $tbl_header = array(
     'Username',
-    'First name',
+    'First Name',
     'Last name',
-    'Date of birth',
+    'Date of Birth',
     'Email Address',
     'Phone Number',
     'Name of Drawing',
@@ -663,17 +667,16 @@ function raffle_user_list($form, &$form_state) {
   
   // // Getting all user_uids in an array 
   foreach ($result_all as $value) {
+    // $birthDate = $value->field_user_birthday_value;
+    // $diff = (date('Y') - date('Y',strtotime($birthDate)));
 
-    $birthDate = $value->field_user_birthday_value;
-    $diff = (date('Y') - date('Y',strtotime($birthDate)));
-
-    if (!empty($rf_dob_sdate) && !empty($rf_dob_edate)) {
-      if (($rf_dob_sdate <= $diff) && ($diff <= $rf_dob_edate)){
-        $user_uid[] = $value->uid;
-      }
-    } else {
+    // if (!empty($rf_dob_sdate) && !empty($rf_dob_edate)) {
+    //   if (($rf_dob_sdate <= $diff) && ($diff <= $rf_dob_edate)){
+    //     $user_uid[] = $value->uid;
+    //   }
+    // } else {
       $user_uid[] = $value->uid;
-    }
+    // }
   }
   // echo '<pre>'; print_r($user_uid); die();
 
@@ -774,10 +777,13 @@ function pl_update_raffle_tbl($user_id, $raffle_id, $rf_drawing_name){
 
   $reward_claim = entity_load('reward', array($raffle_rewards_id));
   $reward_claim = reset($reward_claim);
-
-  $lang = get_entity_field_language('reward',$reward_claim);
-  $reward_claim->field_rf_receieved_reward[$lang['field_rf_receieved_reward']][0]['value'] = 1;
-  $reward_claim->field_raffle_drawing_name[$lang['field_raffle_drawing_name']][0]['value'] = $rf_drawing_name;
+  //Get reward field language codes
+  $lang = field_language('reward',$reward_claim);
+  foreach ($lang as $key => $value) {
+    ${$key} = $value;
+  }
+  $reward_claim->field_rf_receieved_reward[$field_rf_receieved_reward][0]['value'] = 1;
+  $reward_claim->field_raffle_drawing_name[$field_raffle_drawing_name][0]['value'] = $rf_drawing_name;
   entity_save('reward', $reward_claim);
 }
 
