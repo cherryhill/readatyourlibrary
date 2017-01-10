@@ -61,6 +61,7 @@ function header_region_for_menus_views_default_views() {
   $handler->display->display_options['fields']['name']['table'] = 'users';
   $handler->display->display_options['fields']['name']['field'] = 'name';
   $handler->display->display_options['fields']['name']['label'] = 'Hello';
+  $handler->display->display_options['fields']['name']['exclude'] = TRUE;
   $handler->display->display_options['fields']['name']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['name']['alter']['ellipsis'] = FALSE;
   $handler->display->display_options['fields']['name']['element_label_colon'] = FALSE;
@@ -77,8 +78,10 @@ function header_region_for_menus_views_default_views() {
   $handler->display->display_options['fields']['php']['table'] = 'views';
   $handler->display->display_options['fields']['php']['field'] = 'php';
   $handler->display->display_options['fields']['php']['label'] = '';
+  $handler->display->display_options['fields']['php']['exclude'] = TRUE;
   $handler->display->display_options['fields']['php']['alter']['make_link'] = TRUE;
   $handler->display->display_options['fields']['php']['alter']['path'] = 'messages';
+  $handler->display->display_options['fields']['php']['alter']['link_class'] = 'btn btn-large msg';
   $handler->display->display_options['fields']['php']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['php']['use_php_setup'] = 0;
   $handler->display->display_options['fields']['php']['php_output'] = '<?php
@@ -106,7 +109,7 @@ $role = $query[\'rid\'];
 
 if($role == 3 || $role == 10 || $role == 11 || $role == 6){
   if (isset($count) && $count != 0) {
-    print "<span class = \'new\'>$count New!</span>";
+    print "<div class = \'new\'>$count New!</div>";
   }else{
     print \'Messages\';
 }
@@ -119,8 +122,10 @@ if($role == 3 || $role == 10 || $role == 11 || $role == 6){
   $handler->display->display_options['fields']['php_1']['table'] = 'views';
   $handler->display->display_options['fields']['php_1']['field'] = 'php';
   $handler->display->display_options['fields']['php_1']['label'] = '';
+  $handler->display->display_options['fields']['php_1']['exclude'] = TRUE;
   $handler->display->display_options['fields']['php_1']['alter']['make_link'] = TRUE;
   $handler->display->display_options['fields']['php_1']['alter']['path'] = 'user/profile';
+  $handler->display->display_options['fields']['php_1']['alter']['link_class'] = 'btn btn-large';
   $handler->display->display_options['fields']['php_1']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['php_1']['use_php_setup'] = 0;
   $handler->display->display_options['fields']['php_1']['php_output'] = '<?php
@@ -133,8 +138,10 @@ if($role == 3 || $role == 10 || $role == 11 || $role == 6){
   $handler->display->display_options['fields']['php_2']['table'] = 'views';
   $handler->display->display_options['fields']['php_2']['field'] = 'php';
   $handler->display->display_options['fields']['php_2']['label'] = '';
+  $handler->display->display_options['fields']['php_2']['exclude'] = TRUE;
   $handler->display->display_options['fields']['php_2']['alter']['make_link'] = TRUE;
   $handler->display->display_options['fields']['php_2']['alter']['path'] = 'user/[uid]/edit/main';
+  $handler->display->display_options['fields']['php_2']['alter']['link_class'] = 'btn btn-large';
   $handler->display->display_options['fields']['php_2']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['php_2']['use_php_setup'] = 0;
   $handler->display->display_options['fields']['php_2']['php_output'] = '<?php
@@ -147,8 +154,10 @@ if($role == 3 || $role == 10 || $role == 11 || $role == 6){
   $handler->display->display_options['fields']['php_3']['table'] = 'views';
   $handler->display->display_options['fields']['php_3']['field'] = 'php';
   $handler->display->display_options['fields']['php_3']['label'] = '';
+  $handler->display->display_options['fields']['php_3']['exclude'] = TRUE;
   $handler->display->display_options['fields']['php_3']['alter']['make_link'] = TRUE;
   $handler->display->display_options['fields']['php_3']['alter']['path'] = 'user/logout';
+  $handler->display->display_options['fields']['php_3']['alter']['link_class'] = 'btn btn-large';
   $handler->display->display_options['fields']['php_3']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['php_3']['use_php_setup'] = 0;
   $handler->display->display_options['fields']['php_3']['php_output'] = '<?php
@@ -156,6 +165,13 @@ if($role == 3 || $role == 10 || $role == 11 || $role == 6){
 ?>';
   $handler->display->display_options['fields']['php_3']['use_php_click_sortable'] = '0';
   $handler->display->display_options['fields']['php_3']['php_click_sortable'] = '';
+  /* Field: Global: Custom text */
+  $handler->display->display_options['fields']['nothing']['id'] = 'nothing';
+  $handler->display->display_options['fields']['nothing']['table'] = 'views';
+  $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
+  $handler->display->display_options['fields']['nothing']['label'] = '';
+  $handler->display->display_options['fields']['nothing']['alter']['text'] = '<div class="top-header-menu"> Hello [name] [php] [php_1] [php_2] [php_3]</div>';
+  $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
   $handler->display->display_options['defaults']['arguments'] = FALSE;
   /* Contextual filter: User: Uid */
   $handler->display->display_options['arguments']['uid']['id'] = 'uid';
@@ -183,8 +199,10 @@ if($role == 3 || $role == 10 || $role == 11 || $role == 6){
   $handler->display->display_options['fields']['php']['table'] = 'views';
   $handler->display->display_options['fields']['php']['field'] = 'php';
   $handler->display->display_options['fields']['php']['label'] = '';
+  $handler->display->display_options['fields']['php']['exclude'] = TRUE;
   $handler->display->display_options['fields']['php']['alter']['make_link'] = TRUE;
   $handler->display->display_options['fields']['php']['alter']['path'] = 'messages';
+  $handler->display->display_options['fields']['php']['alter']['link_class'] = 'msg';
   $handler->display->display_options['fields']['php']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['php']['use_php_setup'] = 0;
   $handler->display->display_options['fields']['php']['php_output'] = '<?php
@@ -225,6 +243,7 @@ if($role == 3 || $role == 10 || $role == 11 || $role == 6){
   $handler->display->display_options['fields']['php_1']['table'] = 'views';
   $handler->display->display_options['fields']['php_1']['field'] = 'php';
   $handler->display->display_options['fields']['php_1']['label'] = '';
+  $handler->display->display_options['fields']['php_1']['exclude'] = TRUE;
   $handler->display->display_options['fields']['php_1']['alter']['make_link'] = TRUE;
   $handler->display->display_options['fields']['php_1']['alter']['path'] = 'user/profile';
   $handler->display->display_options['fields']['php_1']['element_label_colon'] = FALSE;
@@ -239,6 +258,7 @@ if($role == 3 || $role == 10 || $role == 11 || $role == 6){
   $handler->display->display_options['fields']['php_2']['table'] = 'views';
   $handler->display->display_options['fields']['php_2']['field'] = 'php';
   $handler->display->display_options['fields']['php_2']['label'] = '';
+  $handler->display->display_options['fields']['php_2']['exclude'] = TRUE;
   $handler->display->display_options['fields']['php_2']['alter']['make_link'] = TRUE;
   $handler->display->display_options['fields']['php_2']['alter']['path'] = 'user/[uid]/edit/main';
   $handler->display->display_options['fields']['php_2']['element_label_colon'] = FALSE;
@@ -248,6 +268,17 @@ if($role == 3 || $role == 10 || $role == 11 || $role == 6){
 ?>';
   $handler->display->display_options['fields']['php_2']['use_php_click_sortable'] = '0';
   $handler->display->display_options['fields']['php_2']['php_click_sortable'] = '';
+  /* Field: Global: Custom text */
+  $handler->display->display_options['fields']['nothing']['id'] = 'nothing';
+  $handler->display->display_options['fields']['nothing']['table'] = 'views';
+  $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
+  $handler->display->display_options['fields']['nothing']['label'] = '';
+  $handler->display->display_options['fields']['nothing']['alter']['text'] = '<ul class="mobile-top-menu">
+<li>[php]</li>
+<li>[php_1]</li>
+<li>[php_2]</li>
+</ul>';
+  $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
   $handler->display->display_options['defaults']['arguments'] = FALSE;
   /* Contextual filter: User: Uid */
   $handler->display->display_options['arguments']['uid']['id'] = 'uid';
@@ -270,6 +301,7 @@ if($role == 3 || $role == 10 || $role == 11 || $role == 6){
   $handler->display->display_options['fields']['name']['table'] = 'users';
   $handler->display->display_options['fields']['name']['field'] = 'name';
   $handler->display->display_options['fields']['name']['label'] = 'Hello';
+  $handler->display->display_options['fields']['name']['exclude'] = TRUE;
   $handler->display->display_options['fields']['name']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['name']['alter']['ellipsis'] = FALSE;
   $handler->display->display_options['fields']['name']['element_label_colon'] = FALSE;
@@ -278,8 +310,10 @@ if($role == 3 || $role == 10 || $role == 11 || $role == 6){
   $handler->display->display_options['fields']['php']['table'] = 'views';
   $handler->display->display_options['fields']['php']['field'] = 'php';
   $handler->display->display_options['fields']['php']['label'] = '';
+  $handler->display->display_options['fields']['php']['exclude'] = TRUE;
   $handler->display->display_options['fields']['php']['alter']['make_link'] = TRUE;
   $handler->display->display_options['fields']['php']['alter']['path'] = 'user/logout';
+  $handler->display->display_options['fields']['php']['alter']['link_class'] = 'btn btn-large small btn-mobile';
   $handler->display->display_options['fields']['php']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['php']['use_php_setup'] = 0;
   $handler->display->display_options['fields']['php']['php_output'] = '<?php
@@ -287,6 +321,13 @@ if($role == 3 || $role == 10 || $role == 11 || $role == 6){
 ?>';
   $handler->display->display_options['fields']['php']['use_php_click_sortable'] = '0';
   $handler->display->display_options['fields']['php']['php_click_sortable'] = '';
+  /* Field: Global: Custom text */
+  $handler->display->display_options['fields']['nothing']['id'] = 'nothing';
+  $handler->display->display_options['fields']['nothing']['table'] = 'views';
+  $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
+  $handler->display->display_options['fields']['nothing']['label'] = '';
+  $handler->display->display_options['fields']['nothing']['alter']['text'] = '<div class="abc">Hello [name] [php]  </div>';
+  $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
   $handler->display->display_options['defaults']['arguments'] = FALSE;
   /* Contextual filter: User: Uid */
   $handler->display->display_options['arguments']['uid']['id'] = 'uid';
