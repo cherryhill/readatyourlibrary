@@ -1,58 +1,34 @@
-<?php
- //echo "Hello"; die('123');
-?>
-<!--.page -->
- <?php global $user; $user_role = $user->roles;
-  if(array_key_exists(6, $user_role)){
-    print "<div role='document' class='page-patron'>"; }else { print "<div role='document' class='page'>"; } ?>
 
   <!--.l-header region -->
   <header role="banner" class="l-header">
 
     <!-- City Branding -->
-    <div class="contain-to-grid pre-header">
+    <div class="pre-header">
       <section class="row" id="topmostbranding">
-       <div class="breadcurm large-4 medium-12 hide-for-small-only float-left columns">
-        <?php if ($breadcrumb): print $breadcrumb; endif; ?>
-      </div>
-      <div class="top-menu large-8 medium 12 hide-for-small-only float-right columns">
-     <?php if (!empty($page['top_links'])): ?>
-      <?php print render($page['top_links']); ?>
-      <?php endif; ?>
-    </div>
-     <div class="top-menu large-8 medium 12  float-right columns">
-     <?php if (!empty($page['utop_links'])): ?>
-      <?php print render($page['utop_links']); ?>
-      <?php endif; ?>
-    </div>
-    <!--mobile hamburger and top-links-->
-    <div class="mobile-hamburger small-6 hide-for-medium-up columns">
-       <button></button>
-    </div>
-    <div class="menu-top-links small-6 hide-for-medium-up columns">
-      <?php if (!empty($page['mobile_toplinks'])): ?>
-      <?php print render($page['mobile_toplinks']); ?>
-      <?php endif; ?>
-    </div>
-    <!--mobile menu-->
-    <div class="mobile-menu small-12 hide-for-medium-up columns">
-      <?php if (!empty($page['mobile_menu'])): ?>
-      <?php print render($page['mobile_menu']); ?>
-      <?php endif; ?>
-    </div>
-      <!--language switcher-->
-     <div class="language-switcher small-12 columns float-right">
-        <?php if (!empty($page['l_switcher'])): ?>
-        <?php print render($page['l_switcher']); ?>
+         <div class="breadcurm hide-for-small-only float-left columns">
+          <?php if ($breadcrumb): print $breadcrumb; endif; ?>
+        </div>
+        <div class="top-menu hide-for-small-only columns">
+          <?php if (!empty($page['top_links'])): ?>
+          <?php print render($page['top_links']); ?>
+          <?php endif; ?>
+        </div>
+        <div class="mobile-hamburger hide-for-medium-up columns">
+           <button></button>
+        </div>
+      <!--mobile menu-->
+      <div class="mobile-menu columns">
+        <?php if (!empty($page['mobile_menu'])): ?>
+        <?php print render($page['mobile_menu']); ?>
         <?php endif; ?>
-     </div>
+      </div>
     </section>
     </div>
     <!-- End City Branding and Account Links -->
 
     <!-- Title, slogan and menu -->
     <section class="row header-middle">
-     <div class="logo-block large-12 medium-6 small-6 columns">
+     <div class="logo-block columns">
       <?php if ($logo): ?>
           <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home" id="logo">
             <img src="<?php print $logo; ?>" alt="<?php print t('Home'); ?>" />
@@ -69,14 +45,16 @@
           <h2 title="<?php print $site_slogan; ?>" id="site-slogan" class="site-slogan"><?php print $site_slogan; ?></h2>
         <?php endif; ?>
     </div>
-    <div class="program-logo large-4  medium-6 small-6 columns">
+    <div class="program-logo">
     <?php if (!empty($page['header'])): ?>
       <?php print render($page['header']); ?>
       <?php endif; ?></div>
-    <div class="main-menu large-8 medium-12 hide-for-small-only columns">
+    <div class="main-menu hide-for-small-only columns">
+      <div class="menu-wrapper">
       <?php if (!empty($page['main_menu'])): ?>
       <?php print render($page['main_menu']); ?>
       <?php endif; ?>
+      </div>
     </div>
 
     </section>
@@ -225,9 +203,11 @@
           </div>
         <?php endif; ?>
       </footer>
+      </div>
     <div class="contain-to-grid">
   <!--/.footer-->
 
   <?php if ($messages && $zurb_foundation_messages_modal): print $messages; endif; ?>
 </div>
 <!--/.page -->
+
