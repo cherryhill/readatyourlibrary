@@ -1,0 +1,15 @@
+name = Progress Calendar Sticker
+description = Progress Calendar Sticker
+core = 7.x
+package = Features
+version = 7.x-1.0-beta1
+dependencies[] = ctools
+dependencies[] = features
+dependencies[] = image
+dependencies[] = strongarm
+dependencies[] = taxonomy
+features[ctools][] = strongarm:strongarm:1
+features[features_api][] = api:2
+features[field_base][] = field_cal_sticker_image
+features[field_instance][] = taxonomy_term-calendar_sticker-field_cal_sticker_image
+features[taxonomy][] = calendar_sticker
