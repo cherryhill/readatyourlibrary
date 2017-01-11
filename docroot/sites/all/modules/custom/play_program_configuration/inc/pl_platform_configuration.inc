@@ -39,6 +39,8 @@ function pl_platform_configuration($form, &$form_state) {
     '#title' => t('Program Name'),
   );
 
+  $pmc_program_image = pl_program_logo_image();
+
   $form['program_configuration']['pmc_progrm_image'] = array(
     '#title' => t('Library Program Image'),
     '#type' => 'managed_file',
