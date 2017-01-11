@@ -326,7 +326,7 @@ if($role == 3 || $role == 10 || $role == 11 || $role == 6){
   $handler->display->display_options['fields']['nothing']['table'] = 'views';
   $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
   $handler->display->display_options['fields']['nothing']['label'] = '';
-  $handler->display->display_options['fields']['nothing']['alter']['text'] = '<div class="abc">Hello [name] [php]  </div>';
+  $handler->display->display_options['fields']['nothing']['alter']['text'] = '<div class="mobile-top-header">Hello [name] [php]  </div>';
   $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
   $handler->display->display_options['defaults']['arguments'] = FALSE;
   /* Contextual filter: User: Uid */
