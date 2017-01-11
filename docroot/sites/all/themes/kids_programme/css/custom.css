@@ -7319,12 +7319,12 @@ a.th {
 
 /* Each individual part that can be added in */
 /* line 1, ../scss/base/_common.scss */
-.yellow, .cs-default .button, .cs-default button, .cs-elegant .btn.btn-large.msg.new, .cs-default .btn.btn-primary, .cs-elegant .mobile-menu ul li a.msg.new {
+.yellow, .cs-default .l-header .pre-header, .cs-classic .l-header .header-middle, .cs-default .button, .cs-default button, .cs-elegant .btn.btn-large.msg.new, .cs-default .btn.btn-primary, .cs-elegant .mobile-menu ul.mobile-top-menu li a.msg.new {
   background: #fdeb52;
 }
 
 /* line 5, ../scss/base/_common.scss */
-.blue, .cs-default .btn, .cs-default .btn.btn-large, .cs-default .mobile-menu ul li a {
+.blue, .cs-default .btn, .cs-default .btn.btn-large, .cs-default .mobile-menu ul.mobile-top-menu li a {
   background: #267fda;
 }
 
@@ -7334,7 +7334,7 @@ a.th {
 }
 
 /* line 13, ../scss/base/_common.scss */
-.red, .cs-default .btn.btn-large.msg.new, .cs-default .mobile-menu ul li a.msg.new {
+.red, .cs-default .btn.btn-large.msg.new, .cs-default .mobile-menu ul.mobile-top-menu li a.msg.new {
   background: #cc0d25;
 }
 
@@ -7344,22 +7344,22 @@ a.th {
 }
 
 /* line 22, ../scss/base/_common.scss */
-.dark-blue, .cs-classic .menu-wrapper ul li a:hover, .cs-classic .menu-wrapper ul li a.active, .cs-classic .menu-wrapper ul li a:focus, .cs-classic .mobile-menu + ul li a:hover, .cs-classic .mobile-menu + ul li a.active, .cs-classic .mobile-menu + ul li a:focus {
+.dark-blue, .cs-classic .l-header .pre-header, .cs-classic .post-footer.contain-to-grid, .cs-classic .l-footer, .cs-classic .menu-wrapper ul.menu li a:hover, .cs-classic .menu-wrapper ul.menu li a.active, .cs-classic .menu-wrapper ul.menu li a:focus, .cs-classic .mobile-menu + ul li a:hover, .cs-classic .mobile-menu + ul li a.active, .cs-classic .mobile-menu + ul li a:focus {
   background: #084899;
 }
 
 /* line 26, ../scss/base/_common.scss */
-.light-orange, .cs-classic .button, .cs-elegant .button, .cs-classic button, .cs-elegant button, .cs-classic .btn.btn-large.msg.new, .cs-classic .btn.btn-primary, .cs-elegant .btn.btn-primary, .cs-classic .mobile-menu ul li a.msg.new {
+.light-orange, .cs-elegant .l-header .header-middle, .cs-elegant .post-footer.contain-to-grid, .cs-elegant .l-footer, .cs-classic .button, .cs-elegant .button, .cs-classic button, .cs-elegant button, .cs-classic .btn.btn-large.msg.new, .cs-classic .btn.btn-primary, .cs-elegant .btn.btn-primary, .cs-classic .mobile-menu ul.mobile-top-menu li a.msg.new {
   background: #ff9f1c;
 }
 
 /* line 30, ../scss/base/_common.scss */
-.mint-green {
+.mint-green, .cs-elegant .l-header .pre-header {
   background: #2ec4b6;
 }
 
 /* line 34, ../scss/base/_common.scss */
-.red1, .cs-elegant .btn.btn-large, .cs-elegant .mobile-menu ul li a {
+.red1, .cs-elegant .btn.btn-large, .cs-elegant .mobile-menu ul.mobile-top-menu li a {
   background: #e71d36;
 }
 
@@ -7368,11 +7368,24 @@ a.th {
   color: #fff;
 }
 
+/* line 41, ../scss/base/_common.scss */
+.green-gradiant, .cs-default .l-header .header-middle, .cs-default .post-footer.contain-to-grid, .cs-default .l-footer {
+  background: #7cb301;
+  background: -webkit-radial-gradient(#7cb301, #6d9c05, #74a703);
+  background: -moz-radial-gradient(#7cb301, #6d9c05, #74a703);
+  background: radial-gradient(#7cb301, #6d9c05, #74a703);
+}
+
 @media screen and (max-width: 767px) {
-  /* line 42, ../scss/base/_common.scss */
-  .hide-for-small-only {
+  /* line 48, ../scss/base/_common.scss */
+  .hide-for-small-only, .l-header .pre-header .breadcurm, .l-header .pre-header .top-menu {
     display: none;
   }
+}
+
+/* line 53, ../scss/base/_common.scss */
+.row {
+  max-width: 100% !important;
 }
 
 /* line 4, ../scss/base/_drupal.scss */
@@ -7422,92 +7435,100 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: normal;
 }
 
-/* line 20, ../scss/base/_mixins.scss */
+/* line 37, ../scss/base/_mixins.scss */
 .cs-default p {
-  font-family: 'Conv_McLaren-Regular';
+  font-family: 'arial';
   font-weight: normal;
 }
-/* line 25, ../scss/base/_mixins.scss */
+/* line 42, ../scss/base/_mixins.scss */
 .cs-classic p {
-  font-family: 'Conv_ArchitectsDaughter';
+  font-family: 'Conv_PTS55F';
   font-weight: normal;
 }
-/* line 30, ../scss/base/_mixins.scss */
+/* line 47, ../scss/base/_mixins.scss */
 .cs-elegant p {
-  font-family: 'Conv_margarine-regular';
+  font-family: 'Opensans-regular';
   font-weight: normal;
+}
+/* line 111, ../scss/base/_mixins.scss */
+.cs-default p {
+  font-size: 17px;
+}
+/* line 115, ../scss/base/_mixins.scss */
+.cs-classic p, .cs-elegant p {
+  font-size: 19px;
 }
 
-/* line 68, ../scss/base/_elements.scss */
+/* line 69, ../scss/base/_elements.scss */
 .cs-default h1 {
   font-size: 28px;
 }
-/* line 72, ../scss/base/_elements.scss */
+/* line 73, ../scss/base/_elements.scss */
 .cs-classic h1, .elegent h1 {
   font-size: 30px;
 }
 
-/* line 78, ../scss/base/_elements.scss */
+/* line 79, ../scss/base/_elements.scss */
 .cs-default h2 {
   font-size: 25px;
 }
-/* line 82, ../scss/base/_elements.scss */
+/* line 83, ../scss/base/_elements.scss */
 .cs-classic h2, .elegent h2 {
   font-size: 28px;
 }
 
-/* line 88, ../scss/base/_elements.scss */
+/* line 89, ../scss/base/_elements.scss */
 .cs-default h3 {
   font-size: 22px;
 }
-/* line 92, ../scss/base/_elements.scss */
+/* line 93, ../scss/base/_elements.scss */
 .cs-classic h3, .elegent h3 {
   font-size: 25px;
 }
 
-/* line 97, ../scss/base/_elements.scss */
+/* line 98, ../scss/base/_elements.scss */
 h4 {
   font-size: 20px;
 }
-/* line 98, ../scss/base/_elements.scss */
+/* line 99, ../scss/base/_elements.scss */
 .cs-classic h4, .elegent h4 {
   font-size: 22px;
 }
 
-/* line 105, ../scss/base/_elements.scss */
+/* line 106, ../scss/base/_elements.scss */
 h5 {
   font-size: 17px;
 }
-/* line 106, ../scss/base/_elements.scss */
+/* line 107, ../scss/base/_elements.scss */
 .cs-classic h5, .elegent h5 {
   font-size: 19px;
 }
 
-/* line 113, ../scss/base/_elements.scss */
+/* line 114, ../scss/base/_elements.scss */
 h6 {
   font-size: 14px;
 }
-/* line 114, ../scss/base/_elements.scss */
+/* line 115, ../scss/base/_elements.scss */
 .cs-classic h6, .elegent h6 {
   font-size: 16px;
 }
 
-/* line 121, ../scss/base/_elements.scss */
+/* line 122, ../scss/base/_elements.scss */
 body {
   font-size: 17px;
   line-height: 26px;
 }
-/* line 124, ../scss/base/_elements.scss */
+/* line 125, ../scss/base/_elements.scss */
 body.cs-default {
   font-family: 'arial';
   font-weight: normal;
 }
-/* line 129, ../scss/base/_elements.scss */
+/* line 130, ../scss/base/_elements.scss */
 body.cs-classic {
   font-family: 'Conv_PTS55F';
   font-weight: normal;
 }
-/* line 134, ../scss/base/_elements.scss */
+/* line 135, ../scss/base/_elements.scss */
 body.cs-elegant {
   font-family: 'Opensans-regular';
   font-weight: normal;
@@ -8257,6 +8278,372 @@ body.cs-elegant {
     float: left !important;
   }
 }
+/* line 3, ../scss/layout/_header.scss */
+.l-header {
+  width: 100%;
+  display: block;
+}
+/* line 7, ../scss/layout/_header.scss */
+.l-header .pre-header {
+  padding: 13px 18px 13px 25px;
+}
+/* line 18, ../scss/layout/_header.scss */
+.l-header .pre-header #topmostbranding {
+  -webkit-flex-wrap: wrap;
+  flex-wrap: wrap;
+  display: -webkit-flex;
+  display: flex;
+  width: 100%;
+}
+/* line 25, ../scss/layout/_header.scss */
+.l-header .pre-header .breadcurm {
+  flex-basis: 100%;
+}
+/* line 26, ../scss/layout/_header.scss */
+.l-header .pre-header .breadcurm ul {
+  padding-left: 0;
+  margin: 0;
+  background: transparent;
+  border: none;
+}
+/* line 34, ../scss/layout/_header.scss */
+.l-header .pre-header .breadcurm ul li.current a {
+  color: #fff;
+}
+/* line 36, ../scss/layout/_header.scss */
+.cs-default .l-header .pre-header .breadcurm ul li.current a {
+  color: #000;
+}
+/* line 40, ../scss/layout/_header.scss */
+.l-header .pre-header .breadcurm ul li.current:before {
+  content: ">";
+  top: 0;
+  margin: 0 5px;
+  color: #fff;
+}
+/* line 37, ../scss/base/_mixins.scss */
+.cs-default .l-header .pre-header .breadcurm ul li.current:before {
+  font-family: 'arial';
+  font-weight: normal;
+}
+/* line 42, ../scss/base/_mixins.scss */
+.cs-classic .l-header .pre-header .breadcurm ul li.current:before {
+  font-family: 'Conv_PTS55F';
+  font-weight: normal;
+}
+/* line 47, ../scss/base/_mixins.scss */
+.cs-elegant .l-header .pre-header .breadcurm ul li.current:before {
+  font-family: 'Opensans-regular';
+  font-weight: normal;
+}
+/* line 111, ../scss/base/_mixins.scss */
+.cs-default .l-header .pre-header .breadcurm ul li.current:before {
+  font-size: 17px;
+}
+/* line 115, ../scss/base/_mixins.scss */
+.cs-classic .l-header .pre-header .breadcurm ul li.current:before, .cs-elegant .l-header .pre-header .breadcurm ul li.current:before {
+  font-size: 19px;
+}
+/* line 46, ../scss/layout/_header.scss */
+.cs-default .l-header .pre-header .breadcurm ul li.current:before {
+  color: #000;
+}
+/* line 53, ../scss/layout/_header.scss */
+.l-header .pre-header .breadcurm ul li a {
+  color: #fff;
+}
+/* line 55, ../scss/layout/_header.scss */
+.cs-default .l-header .pre-header .breadcurm ul li a {
+  color: #267fda;
+}
+/* line 111, ../scss/base/_mixins.scss */
+.cs-default .l-header .pre-header .breadcurm ul li a {
+  font-size: 17px;
+}
+/* line 115, ../scss/base/_mixins.scss */
+.cs-classic .l-header .pre-header .breadcurm ul li a, .cs-elegant .l-header .pre-header .breadcurm ul li a {
+  font-size: 19px;
+}
+/* line 37, ../scss/base/_mixins.scss */
+.cs-default .l-header .pre-header .breadcurm ul li a {
+  font-family: 'arial';
+  font-weight: normal;
+}
+/* line 42, ../scss/base/_mixins.scss */
+.cs-classic .l-header .pre-header .breadcurm ul li a {
+  font-family: 'Conv_PTS55F';
+  font-weight: normal;
+}
+/* line 47, ../scss/base/_mixins.scss */
+.cs-elegant .l-header .pre-header .breadcurm ul li a {
+  font-family: 'Opensans-regular';
+  font-weight: normal;
+}
+/* line 60, ../scss/layout/_header.scss */
+.l-header .pre-header .breadcurm ul li a:focus {
+  outline: none;
+}
+@media screen and (min-width: 1025px) {
+  /* line 25, ../scss/layout/_header.scss */
+  .l-header .pre-header .breadcurm {
+    flex-basis: 20%;
+  }
+}
+/* line 72, ../scss/layout/_header.scss */
+.l-header .pre-header .top-menu {
+  flex-basis: 100%;
+}
+/* line 20, ../scss/base/_mixins.scss */
+.cs-default .l-header .pre-header .top-menu {
+  font-family: 'Conv_McLaren-Regular';
+  font-weight: normal;
+}
+/* line 25, ../scss/base/_mixins.scss */
+.cs-classic .l-header .pre-header .top-menu {
+  font-family: 'Conv_ArchitectsDaughter';
+  font-weight: normal;
+}
+/* line 30, ../scss/base/_mixins.scss */
+.cs-elegant .l-header .pre-header .top-menu {
+  font-family: 'Conv_margarine-regular';
+  font-weight: normal;
+}
+/* line 74, ../scss/layout/_header.scss */
+.cs-default .l-header .pre-header .top-menu {
+  color: #000;
+}
+/* line 76, ../scss/layout/_header.scss */
+.cs-default .l-header .pre-header .top-menu a.username {
+  color: inherit;
+  font-family: inherit;
+  margin-right: 50px;
+}
+/* line 82, ../scss/layout/_header.scss */
+.cs-classic .l-header .pre-header .top-menu, .cs-elegant .l-header .pre-header .top-menu {
+  color: #fff;
+}
+/* line 84, ../scss/layout/_header.scss */
+.cs-classic .l-header .pre-header .top-menu a.username, .cs-elegant .l-header .pre-header .top-menu a.username {
+  color: inherit;
+  font-family: inherit;
+  margin-right: 50px;
+}
+/* line 92, ../scss/layout/_header.scss */
+.l-header .pre-header .top-menu .btn {
+  margin-left: 6px;
+}
+@media screen and (min-width: 1025px) {
+  /* line 72, ../scss/layout/_header.scss */
+  .l-header .pre-header .top-menu {
+    flex-basis: 80%;
+  }
+}
+/* line 100, ../scss/layout/_header.scss */
+.l-header .pre-header .top-menu .top-header-menu {
+  float: right;
+}
+/* line 105, ../scss/layout/_header.scss */
+.l-header .header-middle {
+  -webkit-flex-wrap: wrap;
+  flex-wrap: wrap;
+  display: -webkit-flex;
+  display: flex;
+  width: 100%;
+  padding-left: 25px;
+  padding-top: 20px;
+}
+/* line 122, ../scss/layout/_header.scss */
+.l-header .header-middle .logo-block {
+  flex-basis: 25%;
+}
+/* line 124, ../scss/layout/_header.scss */
+.l-header .header-middle .logo-block .site-info {
+  width: 100%;
+  display: table;
+}
+/* line 127, ../scss/layout/_header.scss */
+.l-header .header-middle .logo-block .site-info > div {
+  display: table-cell;
+  vertical-align: top;
+}
+/* line 130, ../scss/layout/_header.scss */
+.l-header .header-middle .logo-block .site-info > div.logo {
+  width: 80px;
+}
+/* line 133, ../scss/layout/_header.scss */
+.cs-classic .l-header .header-middle .logo-block .site-info > div.logo img {
+  background: #084899;
+}
+/* line 139, ../scss/layout/_header.scss */
+.l-header .header-middle .logo-block .site-info .site-name {
+  margin: -7px 0 0;
+  font-size: 36px;
+  font-family: 'Conv_PTS75F';
+  color: #fff;
+}
+/* line 144, ../scss/layout/_header.scss */
+.cs-classic .l-header .header-middle .logo-block .site-info .site-name {
+  color: #084899;
+}
+/* line 147, ../scss/layout/_header.scss */
+.l-header .header-middle .logo-block .site-info .site-name a {
+  color: inherit;
+  font-family: inherit;
+}
+/* line 154, ../scss/layout/_header.scss */
+.l-header .header-middle .logo-block .site-slogan {
+  margin: -10px 0 0;
+  font-size: 23px;
+  font-family: 'Conv_PTS55F';
+  color: #fff;
+}
+/* line 159, ../scss/layout/_header.scss */
+.cs-classic .l-header .header-middle .logo-block .site-slogan {
+  color: #084899;
+}
+/* line 162, ../scss/layout/_header.scss */
+.l-header .header-middle .logo-block .site-slogan a {
+  color: inherit;
+  font-family: inherit;
+}
+/* line 167, ../scss/layout/_header.scss */
+.l-header .header-middle .logo-block .program-logo {
+  margin-top: 15px;
+  margin-bottom: 20px;
+}
+/* line 170, ../scss/layout/_header.scss */
+.l-header .header-middle .logo-block .program-logo img {
+  max-width: 200px;
+}
+/* line 175, ../scss/layout/_header.scss */
+.l-header .header-middle .main-menu {
+  flex-basis: 75%;
+}
+/* line 178, ../scss/layout/_header.scss */
+.l-header .header-middle .main-menu .menu-wrapper section {
+  width: 100%;
+  display: inline-block;
+}
+/* line 183, ../scss/layout/_header.scss */
+.l-header .header-middle .main-menu .menu-wrapper .block-lang-dropdown .block-title {
+  display: none;
+}
+/* line 186, ../scss/layout/_header.scss */
+.l-header .header-middle .main-menu .menu-wrapper .block-lang-dropdown form {
+  float: right;
+  margin-right: 18px;
+}
+/* line 192, ../scss/layout/_header.scss */
+.l-header .header-middle .main-menu .menu-wrapper ul.menu {
+  margin-right: 3px;
+}
+
+/* line 16, ../scss/layout/_footer.scss */
+.l-footer {
+  width: 100%;
+  display: inline-block;
+  padding-top: 30px;
+}
+/* line 31, ../scss/layout/_footer.scss */
+.l-footer .footer {
+  -webkit-flex-wrap: wrap;
+  flex-wrap: wrap;
+  display: -webkit-flex;
+  display: flex;
+  width: 100%;
+  padding-left: 56px;
+  padding-right: 50px;
+}
+/* line 39, ../scss/layout/_footer.scss */
+.l-footer .footer .block-play-library-custom-program-footer-content {
+  flex-basis: 70%;
+}
+/* line 41, ../scss/layout/_footer.scss */
+.l-footer .footer .block-play-library-custom-program-footer-content .u-footer-content {
+  font-size: 14px;
+  color: #fff;
+}
+/* line 44, ../scss/layout/_footer.scss */
+.l-footer .footer .block-play-library-custom-program-footer-content .u-footer-content p {
+  margin-bottom: 0;
+  line-height: 20px;
+  color: inherit;
+  font-size: inherit;
+}
+/* line 54, ../scss/base/_mixins.scss */
+.cs-default .l-footer .footer .block-play-library-custom-program-footer-content .u-footer-content p {
+  font-family: 'arial';
+  font-weight: bold;
+}
+/* line 59, ../scss/base/_mixins.scss */
+.cs-classic .l-footer .footer .block-play-library-custom-program-footer-content .u-footer-content p {
+  font-family: 'Conv_PTS75F';
+}
+/* line 63, ../scss/base/_mixins.scss */
+.cs-elegant .l-footer .footer .block-play-library-custom-program-footer-content .u-footer-content p {
+  font-family: 'Opensans-Bold';
+}
+/* line 50, ../scss/layout/_footer.scss */
+.l-footer .footer .block-play-library-custom-program-footer-content .u-footer-content p a {
+  color: inherit;
+  font-size: inherit;
+  font-family: inherit;
+}
+/* line 54, ../scss/layout/_footer.scss */
+.l-footer .footer .block-play-library-custom-program-footer-content .u-footer-content p a:hover {
+  color: inherit;
+  font-size: inherit;
+  text-decoration: underline;
+}
+/* line 62, ../scss/layout/_footer.scss */
+.l-footer .footer .block-play-library-custom-program-footer-content .lower-footer-content {
+  font-size: 12px;
+  margin-top: 25px;
+  color: #fff;
+}
+/* line 54, ../scss/base/_mixins.scss */
+.cs-default .l-footer .footer .block-play-library-custom-program-footer-content .lower-footer-content {
+  font-family: 'arial';
+  font-weight: bold;
+}
+/* line 59, ../scss/base/_mixins.scss */
+.cs-classic .l-footer .footer .block-play-library-custom-program-footer-content .lower-footer-content {
+  font-family: 'Conv_PTS75F';
+}
+/* line 63, ../scss/base/_mixins.scss */
+.cs-elegant .l-footer .footer .block-play-library-custom-program-footer-content .lower-footer-content {
+  font-family: 'Opensans-Bold';
+}
+/* line 67, ../scss/layout/_footer.scss */
+.l-footer .footer .block-play-library-custom-program-footer-content .lower-footer-content a {
+  font-size: inherit;
+  font-family: inherit;
+  color: inherit;
+}
+/* line 74, ../scss/layout/_footer.scss */
+.l-footer .footer .block-play-library-custom-program-footer-content .copy-right {
+  font-size: 12px;
+  color: #fff;
+  margin-top: -5px;
+}
+/* line 54, ../scss/base/_mixins.scss */
+.cs-default .l-footer .footer .block-play-library-custom-program-footer-content .copy-right {
+  font-family: 'arial';
+  font-weight: bold;
+}
+/* line 59, ../scss/base/_mixins.scss */
+.cs-classic .l-footer .footer .block-play-library-custom-program-footer-content .copy-right {
+  font-family: 'Conv_PTS75F';
+}
+/* line 63, ../scss/base/_mixins.scss */
+.cs-elegant .l-footer .footer .block-play-library-custom-program-footer-content .copy-right {
+  font-family: 'Opensans-Bold';
+}
+/* line 81, ../scss/layout/_footer.scss */
+.l-footer .footer .block-menu-menu-social-sharing-icons {
+  flex-basis: 30%;
+}
+
 /* line 6, ../scss/components/_buttons.scss */
 .button, button {
   display: inline-block !important;
@@ -8291,7 +8678,7 @@ body.cs-elegant {
 /* line 20, ../scss/components/_buttons.scss */
 .cs-default .button, .cs-default button {
   font-size: 17px;
-  color: #333;
+  color: #000;
 }
 /* line 28, ../scss/components/_buttons.scss */
 .cs-classic .button, .cs-elegant .button, .cs-classic button, .cs-elegant button {
@@ -8414,7 +8801,7 @@ body.cs-elegant {
   display: inline-block;
 }
 /* line 5, ../scss/components/_desktop-menu.scss */
-.menu-wrapper ul {
+.menu-wrapper ul.menu {
   width: 745px;
   list-style: none;
   margin: 0;
@@ -8422,7 +8809,7 @@ body.cs-elegant {
   float: right;
 }
 /* line 12, ../scss/components/_desktop-menu.scss */
-.menu-wrapper ul li {
+.menu-wrapper ul.menu li {
   width: 91px;
   height: 103px;
   display: inline-block;
@@ -8430,7 +8817,7 @@ body.cs-elegant {
   margin-left: 9px;
 }
 /* line 19, ../scss/components/_desktop-menu.scss */
-.menu-wrapper ul li a {
+.menu-wrapper ul.menu li a {
   width: inherit;
   border-radius: 10px;
   text-decoration: none;
@@ -8446,68 +8833,68 @@ body.cs-elegant {
   transition: all linear 0.8s;
   color: #fff;
 }
-/* line 71, ../scss/base/_mixins.scss */
-.cs-default .menu-wrapper ul li a {
+/* line 83, ../scss/base/_mixins.scss */
+.cs-default .menu-wrapper ul.menu li a {
   background: #f6511d;
 }
-/* line 74, ../scss/base/_mixins.scss */
-.cs-default .menu-wrapper ul li a:hover, .cs-default .menu-wrapper ul li a.active, .cs-default .menu-wrapper ul li a:focus {
+/* line 86, ../scss/base/_mixins.scss */
+.cs-default .menu-wrapper ul.menu li a:hover, .cs-default .menu-wrapper ul.menu li a.active, .cs-default .menu-wrapper ul.menu li a:focus {
   color: #f6511d;
   background: #fff;
 }
-/* line 80, ../scss/base/_mixins.scss */
-.cs-classic .menu-wrapper ul li a {
+/* line 92, ../scss/base/_mixins.scss */
+.cs-classic .menu-wrapper ul.menu li a {
   background: #00a6ed;
 }
-/* line 88, ../scss/base/_mixins.scss */
-.cs-elegant .menu-wrapper ul li a {
+/* line 100, ../scss/base/_mixins.scss */
+.cs-elegant .menu-wrapper ul.menu li a {
   background: #267fda;
 }
-/* line 91, ../scss/base/_mixins.scss */
-.cs-elegant .menu-wrapper ul li a:hover, .cs-elegant .menu-wrapper ul li a.active, .cs-elegant .menu-wrapper ul li a:focus {
+/* line 103, ../scss/base/_mixins.scss */
+.cs-elegant .menu-wrapper ul.menu li a:hover, .cs-elegant .menu-wrapper ul.menu li a.active, .cs-elegant .menu-wrapper ul.menu li a:focus {
   background: #fff;
   color: #084899;
 }
 /* line 20, ../scss/base/_mixins.scss */
-.cs-default .menu-wrapper ul li a {
+.cs-default .menu-wrapper ul.menu li a {
   font-family: 'Conv_McLaren-Regular';
   font-weight: normal;
 }
 /* line 25, ../scss/base/_mixins.scss */
-.cs-classic .menu-wrapper ul li a {
+.cs-classic .menu-wrapper ul.menu li a {
   font-family: 'Conv_ArchitectsDaughter';
   font-weight: normal;
 }
 /* line 30, ../scss/base/_mixins.scss */
-.cs-elegant .menu-wrapper ul li a {
+.cs-elegant .menu-wrapper ul.menu li a {
   font-family: 'Conv_margarine-regular';
   font-weight: normal;
 }
 /* line 38, ../scss/components/_desktop-menu.scss */
-.menu-wrapper ul li a:hover {
+.menu-wrapper ul.menu li a:hover {
   transform: rotateY(360deg);
 }
 /* line 41, ../scss/components/_desktop-menu.scss */
-.menu-wrapper ul li a:hover:after {
+.menu-wrapper ul.menu li a:hover:after {
   transform: rotateX(360deg);
 }
 /* line 46, ../scss/components/_desktop-menu.scss */
-.cs-default .menu-wrapper ul li a {
+.cs-default .menu-wrapper ul.menu li a {
   font-size: 14px;
   line-height: 18px;
 }
 /* line 52, ../scss/components/_desktop-menu.scss */
-.cs-classic .menu-wrapper ul li a {
+.cs-classic .menu-wrapper ul.menu li a {
   font-size: 13px;
   line-height: 17px;
 }
 /* line 56, ../scss/components/_desktop-menu.scss */
-.cs-elegant .menu-wrapper ul li a {
+.cs-elegant .menu-wrapper ul.menu li a {
   font-size: 15px;
   line-height: 19px;
 }
 /* line 61, ../scss/components/_desktop-menu.scss */
-.menu-wrapper ul li a:after {
+.menu-wrapper ul.menu li a:after {
   content: " ";
   width: 60px;
   height: 40px;
@@ -8520,120 +8907,120 @@ body.cs-elegant {
   transition-delay: 0.3s;
 }
 /* line 74, ../scss/components/_desktop-menu.scss */
-.menu-wrapper ul li a.progress {
+.menu-wrapper ul.menu li a.progress {
   border: none;
   font-weight: normal;
 }
 /* line 78, ../scss/components/_desktop-menu.scss */
-.cs-default .menu-wrapper ul li a.progress:after {
+.cs-default .menu-wrapper ul.menu li a.progress:after {
   background-position: -16px -9px;
 }
 /* line 82, ../scss/components/_desktop-menu.scss */
-.cs-default .menu-wrapper ul li a.progress:hover:after, .cs-default .menu-wrapper ul li a.progress:focus:after, .cs-default .menu-wrapper ul li a.progress.active:after {
+.cs-default .menu-wrapper ul.menu li a.progress:hover:after, .cs-default .menu-wrapper ul.menu li a.progress:focus:after, .cs-default .menu-wrapper ul.menu li a.progress.active:after {
   background-position: -16px -855px;
 }
 /* line 88, ../scss/components/_desktop-menu.scss */
-.cs-classic .menu-wrapper ul li a.progress:after, .cs-elegant .menu-wrapper ul li a.progress:after {
+.cs-classic .menu-wrapper ul.menu li a.progress:after, .cs-elegant .menu-wrapper ul.menu li a.progress:after {
   background-position: -16px -975px;
 }
 /* line 94, ../scss/components/_desktop-menu.scss */
-.cs-elegant .menu-wrapper ul li a.progress:hover:after, .cs-elegant .menu-wrapper ul li a.progress:focus:after, .cs-elegant .menu-wrapper ul li a.progress.active:after {
+.cs-elegant .menu-wrapper ul.menu li a.progress:hover:after, .cs-elegant .menu-wrapper ul.menu li a.progress:focus:after, .cs-elegant .menu-wrapper ul.menu li a.progress.active:after {
   background-position: -16px -1460px;
 }
 /* line 102, ../scss/components/_desktop-menu.scss */
-.cs-default .menu-wrapper ul li a.activities:after {
+.cs-default .menu-wrapper ul.menu li a.activities:after {
   background-position: -9px -72px;
 }
 /* line 106, ../scss/components/_desktop-menu.scss */
-.cs-default .menu-wrapper ul li a.activities:hover:after, .cs-default .menu-wrapper ul li a.activities:focus:after, .cs-default .menu-wrapper ul li a.activities.active:after {
+.cs-default .menu-wrapper ul.menu li a.activities:hover:after, .cs-default .menu-wrapper ul.menu li a.activities:focus:after, .cs-default .menu-wrapper ul.menu li a.activities.active:after {
   background-position: -9px -713px;
 }
 /* line 112, ../scss/components/_desktop-menu.scss */
-.cs-classic .menu-wrapper ul li a.activities:after, .cs-elegant .menu-wrapper ul li a.activities:after {
+.cs-classic .menu-wrapper ul.menu li a.activities:after, .cs-elegant .menu-wrapper ul.menu li a.activities:after {
   background-position: -9px -1039px;
 }
 /* line 117, ../scss/components/_desktop-menu.scss */
-.cs-elegant .menu-wrapper ul li a.activities:hover:after, .cs-elegant .menu-wrapper ul li a.activities:focus:after, .cs-elegant .menu-wrapper ul li a.activities.active:after {
+.cs-elegant .menu-wrapper ul.menu li a.activities:hover:after, .cs-elegant .menu-wrapper ul.menu li a.activities:focus:after, .cs-elegant .menu-wrapper ul.menu li a.activities.active:after {
   background-position: -9px -1803px;
 }
 /* line 125, ../scss/components/_desktop-menu.scss */
-.cs-default .menu-wrapper ul li a.rewards:after {
+.cs-default .menu-wrapper ul.menu li a.rewards:after {
   background-position: -5px -145px;
 }
 /* line 129, ../scss/components/_desktop-menu.scss */
-.cs-default .menu-wrapper ul li a.rewards:hover:after, .cs-default .menu-wrapper ul li a.rewards:focus:after, .cs-default .menu-wrapper ul li a.rewards.active:after {
+.cs-default .menu-wrapper ul.menu li a.rewards:hover:after, .cs-default .menu-wrapper ul.menu li a.rewards:focus:after, .cs-default .menu-wrapper ul.menu li a.rewards.active:after {
   background-position: -5px -643px;
 }
 /* line 135, ../scss/components/_desktop-menu.scss */
-.cs-classic .menu-wrapper ul li a.rewards:after, .cs-elegant .menu-wrapper ul li a.rewards:after {
+.cs-classic .menu-wrapper ul.menu li a.rewards:after, .cs-elegant .menu-wrapper ul.menu li a.rewards:after {
   background-position: -5px -1113px;
 }
 /* line 140, ../scss/components/_desktop-menu.scss */
-.cs-elegant .menu-wrapper ul li a.rewards:hover:after, .cs-elegant .menu-wrapper ul li a.rewards:focus:after, .cs-elegant .menu-wrapper ul li a.rewards.active:after {
+.cs-elegant .menu-wrapper ul.menu li a.rewards:hover:after, .cs-elegant .menu-wrapper ul.menu li a.rewards:focus:after, .cs-elegant .menu-wrapper ul.menu li a.rewards.active:after {
   background-position: -5px -1733px;
 }
 /* line 148, ../scss/components/_desktop-menu.scss */
-.cs-default .menu-wrapper ul li a.events:after {
+.cs-default .menu-wrapper ul.menu li a.events:after {
   background-position: -5px -216px;
 }
 /* line 152, ../scss/components/_desktop-menu.scss */
-.cs-default .menu-wrapper ul li a.events:hover:after, .cs-default .menu-wrapper ul li a.events:focus:after, .cs-default .menu-wrapper ul li a.events.active:after {
+.cs-default .menu-wrapper ul.menu li a.events:hover:after, .cs-default .menu-wrapper ul.menu li a.events:focus:after, .cs-default .menu-wrapper ul.menu li a.events.active:after {
   background-position: -5px -917px;
 }
 /* line 158, ../scss/components/_desktop-menu.scss */
-.cs-classic .menu-wrapper ul li a.events:after, .cs-elegant .menu-wrapper ul li a.events:after {
+.cs-classic .menu-wrapper ul.menu li a.events:after, .cs-elegant .menu-wrapper ul.menu li a.events:after {
   background-position: -5px -1184px;
 }
 /* line 163, ../scss/components/_desktop-menu.scss */
-.cs-elegant .menu-wrapper ul li a.events:hover:after, .cs-elegant .menu-wrapper ul li a.events:focus:after, .cs-elegant .menu-wrapper ul li a.events.active:after {
+.cs-elegant .menu-wrapper ul.menu li a.events:hover:after, .cs-elegant .menu-wrapper ul.menu li a.events:focus:after, .cs-elegant .menu-wrapper ul.menu li a.events.active:after {
   background-position: -5px -1527px;
 }
 /* line 171, ../scss/components/_desktop-menu.scss */
-.cs-default .menu-wrapper ul li a.reviews:after {
+.cs-default .menu-wrapper ul.menu li a.reviews:after {
   background-position: -2px -286px;
 }
 /* line 175, ../scss/components/_desktop-menu.scss */
-.cs-default .menu-wrapper ul li a.reviews:hover:after, .cs-default .menu-wrapper ul li a.reviews:focus:after, .cs-default .menu-wrapper ul li a.reviews.active:after {
+.cs-default .menu-wrapper ul.menu li a.reviews:hover:after, .cs-default .menu-wrapper ul.menu li a.reviews:focus:after, .cs-default .menu-wrapper ul.menu li a.reviews.active:after {
   background-position: -2px -569px;
 }
 /* line 181, ../scss/components/_desktop-menu.scss */
-.cs-classic .menu-wrapper ul li a.reviews:after, .cs-elegant .menu-wrapper ul li a.reviews:after {
+.cs-classic .menu-wrapper ul.menu li a.reviews:after, .cs-elegant .menu-wrapper ul.menu li a.reviews:after {
   background-position: -2px -1255px;
 }
 /* line 186, ../scss/components/_desktop-menu.scss */
-.cs-elegant .menu-wrapper ul li a.reviews:hover:after, .cs-elegant .menu-wrapper ul li a.reviews:focus:after, .cs-elegant .menu-wrapper ul li a.reviews.active:after {
+.cs-elegant .menu-wrapper ul.menu li a.reviews:hover:after, .cs-elegant .menu-wrapper ul.menu li a.reviews:focus:after, .cs-elegant .menu-wrapper ul.menu li a.reviews.active:after {
   background-position: -2px -1662px;
 }
 /* line 194, ../scss/components/_desktop-menu.scss */
-.cs-default .menu-wrapper ul li a.photos:after {
+.cs-default .menu-wrapper ul.menu li a.photos:after {
   background-position: -8px -355px;
 }
 /* line 198, ../scss/components/_desktop-menu.scss */
-.cs-default .menu-wrapper ul li a.photos:hover:after, .cs-default .menu-wrapper ul li a.photos:focus:after, .cs-default .menu-wrapper ul li a.photos.active:after {
+.cs-default .menu-wrapper ul.menu li a.photos:hover:after, .cs-default .menu-wrapper ul.menu li a.photos:focus:after, .cs-default .menu-wrapper ul.menu li a.photos.active:after {
   background-position: -8px -500px;
 }
 /* line 204, ../scss/components/_desktop-menu.scss */
-.cs-classic .menu-wrapper ul li a.photos:after, .cs-elegant .menu-wrapper ul li a.photos:after {
+.cs-classic .menu-wrapper ul.menu li a.photos:after, .cs-elegant .menu-wrapper ul.menu li a.photos:after {
   background-position: -8px -1324px;
 }
 /* line 209, ../scss/components/_desktop-menu.scss */
-.cs-elegant .menu-wrapper ul li a.photos:hover:after, .cs-elegant .menu-wrapper ul li a.photos:focus:after, .cs-elegant .menu-wrapper ul li a.photos.active:after {
+.cs-elegant .menu-wrapper ul.menu li a.photos:hover:after, .cs-elegant .menu-wrapper ul.menu li a.photos:focus:after, .cs-elegant .menu-wrapper ul.menu li a.photos.active:after {
   background-position: -8px -1593px;
 }
 /* line 217, ../scss/components/_desktop-menu.scss */
-.cs-default .menu-wrapper ul li a.current-program:after {
+.cs-default .menu-wrapper ul.menu li a.current-program:after {
   background-position: -8px -427px;
 }
 /* line 221, ../scss/components/_desktop-menu.scss */
-.cs-default .menu-wrapper ul li a.current-program:hover:after, .cs-default .menu-wrapper ul li a.current-program:focus:after, .cs-default .menu-wrapper ul li a.current-program.active:after {
+.cs-default .menu-wrapper ul.menu li a.current-program:hover:after, .cs-default .menu-wrapper ul.menu li a.current-program:focus:after, .cs-default .menu-wrapper ul.menu li a.current-program.active:after {
   background-position: -8px -786px;
 }
 /* line 227, ../scss/components/_desktop-menu.scss */
-.cs-classic .menu-wrapper ul li a.current-program:after, .cs-elegant .menu-wrapper ul li a.current-program:after {
+.cs-classic .menu-wrapper ul.menu li a.current-program:after, .cs-elegant .menu-wrapper ul.menu li a.current-program:after {
   background-position: -8px -1394px;
 }
 /* line 232, ../scss/components/_desktop-menu.scss */
-.cs-elegant .menu-wrapper ul li a.current-program:hover:after, .cs-elegant .menu-wrapper ul li a.current-program:focus:after, .cs-elegant .menu-wrapper ul li a.current-program.active:after {
+.cs-elegant .menu-wrapper ul.menu li a.current-program:hover:after, .cs-elegant .menu-wrapper ul.menu li a.current-program:focus:after, .cs-elegant .menu-wrapper ul.menu li a.current-program.active:after {
   background-position: -8px -1879px;
 }
 
@@ -10402,33 +10789,33 @@ body.cs-elegant {
   content: "\f21a";
 }
 
-/* line 1, ../scss/components/_mobile-menu.scss */
+/* line 2, ../scss/components/_mobile-menu.scss */
 .mobile-menu {
   width: 100%;
   display: inline-block;
 }
-/* line 5, ../scss/components/_mobile-menu.scss */
+/* line 6, ../scss/components/_mobile-menu.scss */
 .mobile-menu.columns {
   padding-left: 0;
   padding-right: 0;
 }
-/* line 10, ../scss/components/_mobile-menu.scss */
-.mobile-menu ul {
+/* line 11, ../scss/components/_mobile-menu.scss */
+.mobile-menu ul.mobile-top-menu {
   list-style: none;
   margin: 0;
   padding: 0;
   width: 100%;
   display: inline-block;
 }
-/* line 17, ../scss/components/_mobile-menu.scss */
-.mobile-menu ul li {
+/* line 18, ../scss/components/_mobile-menu.scss */
+.mobile-menu ul.mobile-top-menu li {
   margin: 0;
   padding: 0;
   display: inline-block;
   width: 100%;
 }
-/* line 23, ../scss/components/_mobile-menu.scss */
-.mobile-menu ul li a {
+/* line 24, ../scss/components/_mobile-menu.scss */
+.mobile-menu ul.mobile-top-menu li a {
   width: 100%;
   display: inline-block;
   text-align: center;
@@ -10437,47 +10824,47 @@ body.cs-elegant {
   color: #fff;
 }
 /* line 20, ../scss/base/_mixins.scss */
-.cs-default .mobile-menu ul li a {
+.cs-default .mobile-menu ul.mobile-top-menu li a {
   font-family: 'Conv_McLaren-Regular';
   font-weight: normal;
 }
 /* line 25, ../scss/base/_mixins.scss */
-.cs-classic .mobile-menu ul li a {
+.cs-classic .mobile-menu ul.mobile-top-menu li a {
   font-family: 'Conv_ArchitectsDaughter';
   font-weight: normal;
 }
 /* line 30, ../scss/base/_mixins.scss */
-.cs-elegant .mobile-menu ul li a {
+.cs-elegant .mobile-menu ul.mobile-top-menu li a {
   font-family: 'Conv_margarine-regular';
   font-weight: normal;
 }
-/* line 99, ../scss/base/_mixins.scss */
-.cs-default .mobile-menu ul li a {
+/* line 111, ../scss/base/_mixins.scss */
+.cs-default .mobile-menu ul.mobile-top-menu li a {
   font-size: 17px;
 }
-/* line 103, ../scss/base/_mixins.scss */
-.cs-classic .mobile-menu ul li a, .elegant .mobile-menu ul li a {
+/* line 115, ../scss/base/_mixins.scss */
+.cs-classic .mobile-menu ul.mobile-top-menu li a, .cs-elegant .mobile-menu ul.mobile-top-menu li a {
   font-size: 19px;
 }
-/* line 39, ../scss/components/_mobile-menu.scss */
-.cs-classic .mobile-menu ul li a {
+/* line 40, ../scss/components/_mobile-menu.scss */
+.cs-classic .mobile-menu ul.mobile-top-menu li a {
   background: #00a6ed;
 }
-/* line 47, ../scss/components/_mobile-menu.scss */
-.mobile-menu ul li a.msg {
+/* line 48, ../scss/components/_mobile-menu.scss */
+.mobile-menu ul.mobile-top-menu li a.msg {
   padding-left: 50px;
   position: relative;
 }
-/* line 60, ../scss/components/_mobile-menu.scss */
-.cs-elegant .mobile-menu ul li a.msg.new {
+/* line 61, ../scss/components/_mobile-menu.scss */
+.cs-elegant .mobile-menu ul.mobile-top-menu li a.msg.new {
   color: #154c84;
 }
-/* line 67, ../scss/components/_mobile-menu.scss */
-.cs-elegant .mobile-menu ul li a.msg.new:before {
+/* line 68, ../scss/components/_mobile-menu.scss */
+.cs-elegant .mobile-menu ul.mobile-top-menu li a.msg.new:before {
   background-position: 72px 90px;
 }
-/* line 73, ../scss/components/_mobile-menu.scss */
-.mobile-menu ul li a.msg:before {
+/* line 74, ../scss/components/_mobile-menu.scss */
+.mobile-menu ul.mobile-top-menu li a.msg:before {
   content: "";
   position: relative;
   width: 30px;
@@ -10487,7 +10874,7 @@ body.cs-elegant {
   background-position: 72px 35px;
   margin-left: -70px;
 }
-/* line 88, ../scss/components/_mobile-menu.scss */
+/* line 89, ../scss/components/_mobile-menu.scss */
 .mobile-menu + ul {
   list-style: none;
   margin: 0;
@@ -10495,14 +10882,14 @@ body.cs-elegant {
   width: 100%;
   display: inline-block;
 }
-/* line 95, ../scss/components/_mobile-menu.scss */
+/* line 96, ../scss/components/_mobile-menu.scss */
 .mobile-menu + ul li {
   margin: 0;
   padding: 0;
   display: inline-block;
   width: 100%;
 }
-/* line 101, ../scss/components/_mobile-menu.scss */
+/* line 102, ../scss/components/_mobile-menu.scss */
 .mobile-menu + ul li a {
   width: 100%;
   display: inline-block;
@@ -10514,24 +10901,32 @@ body.cs-elegant {
   position: relative;
   color: #fff;
 }
-/* line 71, ../scss/base/_mixins.scss */
+/* line 72, ../scss/base/_mixins.scss */
+.cs-default .mobile-menu + ul li a:hover, .cs-default .mobile-menu + ul li a.active, .cs-default .mobile-menu + ul li a:focus {
+  border-bottom: 1px solid #f6511d;
+}
+/* line 77, ../scss/base/_mixins.scss */
+.cs-elegant .mobile-menu + ul li a:hover, .cs-elegant .mobile-menu + ul li a.active, .cs-elegant .mobile-menu + ul li a:focus {
+  border-bottom: 1px solid #084899;
+}
+/* line 83, ../scss/base/_mixins.scss */
 .cs-default .mobile-menu + ul li a {
   background: #f6511d;
 }
-/* line 74, ../scss/base/_mixins.scss */
+/* line 86, ../scss/base/_mixins.scss */
 .cs-default .mobile-menu + ul li a:hover, .cs-default .mobile-menu + ul li a.active, .cs-default .mobile-menu + ul li a:focus {
   color: #f6511d;
   background: #fff;
 }
-/* line 80, ../scss/base/_mixins.scss */
+/* line 92, ../scss/base/_mixins.scss */
 .cs-classic .mobile-menu + ul li a {
   background: #00a6ed;
 }
-/* line 88, ../scss/base/_mixins.scss */
+/* line 100, ../scss/base/_mixins.scss */
 .cs-elegant .mobile-menu + ul li a {
   background: #267fda;
 }
-/* line 91, ../scss/base/_mixins.scss */
+/* line 103, ../scss/base/_mixins.scss */
 .cs-elegant .mobile-menu + ul li a:hover, .cs-elegant .mobile-menu + ul li a.active, .cs-elegant .mobile-menu + ul li a:focus {
   background: #fff;
   color: #084899;
@@ -10551,15 +10946,15 @@ body.cs-elegant {
   font-family: 'Conv_margarine-regular';
   font-weight: normal;
 }
-/* line 99, ../scss/base/_mixins.scss */
+/* line 111, ../scss/base/_mixins.scss */
 .cs-default .mobile-menu + ul li a {
   font-size: 17px;
 }
-/* line 103, ../scss/base/_mixins.scss */
-.cs-classic .mobile-menu + ul li a, .elegant .mobile-menu + ul li a {
+/* line 115, ../scss/base/_mixins.scss */
+.cs-classic .mobile-menu + ul li a, .cs-elegant .mobile-menu + ul li a {
   font-size: 19px;
 }
-/* line 117, ../scss/components/_mobile-menu.scss */
+/* line 118, ../scss/components/_mobile-menu.scss */
 .mobile-menu + ul li a:before {
   content: " ";
   width: 60px;
@@ -10572,7 +10967,7 @@ body.cs-elegant {
   transition-duration: 0.09s;
   transition-delay: 0.3s;
 }
-/* line 130, ../scss/components/_mobile-menu.scss */
+/* line 131, ../scss/components/_mobile-menu.scss */
 .mobile-menu + ul li a.progress {
   margin-bottom: 0;
   font-weight: normal;
@@ -10583,187 +10978,317 @@ body.cs-elegant {
   height: auto;
   padding: 10px 0px;
 }
-/* line 141, ../scss/components/_mobile-menu.scss */
+/* line 142, ../scss/components/_mobile-menu.scss */
 .cs-default .mobile-menu + ul li a.progress:before {
   background-position: -16px -9px;
 }
-/* line 145, ../scss/components/_mobile-menu.scss */
+/* line 146, ../scss/components/_mobile-menu.scss */
 .cs-default .mobile-menu + ul li a.progress:hover:before, .cs-default .mobile-menu + ul li a.progress:focus:before, .cs-default .mobile-menu + ul li a.progress.active:before {
   background-position: -16px -855px;
 }
-/* line 151, ../scss/components/_mobile-menu.scss */
+/* line 152, ../scss/components/_mobile-menu.scss */
 .cs-classic .mobile-menu + ul li a.progress:before, .cs-elegant .mobile-menu + ul li a.progress:before {
   background-position: -16px -975px;
 }
-/* line 157, ../scss/components/_mobile-menu.scss */
+/* line 158, ../scss/components/_mobile-menu.scss */
 .cs-elegant .mobile-menu + ul li a.progress:hover:before, .cs-elegant .mobile-menu + ul li a.progress:focus:before, .cs-elegant .mobile-menu + ul li a.progress.active:before {
   background-position: -16px -1460px;
 }
-/* line 165, ../scss/components/_mobile-menu.scss */
+/* line 166, ../scss/components/_mobile-menu.scss */
 .cs-default .mobile-menu + ul li a.activities:before {
   background-position: -9px -72px;
 }
-/* line 169, ../scss/components/_mobile-menu.scss */
+/* line 170, ../scss/components/_mobile-menu.scss */
 .cs-default .mobile-menu + ul li a.activities:hover:before, .cs-default .mobile-menu + ul li a.activities:focus:before, .cs-default .mobile-menu + ul li a.activities.active:before {
   background-position: -9px -713px;
 }
-/* line 175, ../scss/components/_mobile-menu.scss */
+/* line 176, ../scss/components/_mobile-menu.scss */
 .cs-classic .mobile-menu + ul li a.activities:before, .cs-elegant .mobile-menu + ul li a.activities:before {
   background-position: -9px -1039px;
 }
-/* line 181, ../scss/components/_mobile-menu.scss */
+/* line 182, ../scss/components/_mobile-menu.scss */
 .cs-elegant .mobile-menu + ul li a.activities:hover:before, .cs-elegant .mobile-menu + ul li a.activities:focus:before, .cs-elegant .mobile-menu + ul li a.activities.active:before {
   background-position: -9px -1803px;
 }
-/* line 189, ../scss/components/_mobile-menu.scss */
+/* line 190, ../scss/components/_mobile-menu.scss */
 .cs-default .mobile-menu + ul li a.rewards:before {
   background-position: -5px -145px;
 }
-/* line 193, ../scss/components/_mobile-menu.scss */
+/* line 194, ../scss/components/_mobile-menu.scss */
 .cs-default .mobile-menu + ul li a.rewards:hover:before, .cs-default .mobile-menu + ul li a.rewards:focus:before, .cs-default .mobile-menu + ul li a.rewards.active:before {
   background-position: -5px -643px;
 }
-/* line 199, ../scss/components/_mobile-menu.scss */
+/* line 200, ../scss/components/_mobile-menu.scss */
 .cs-classic .mobile-menu + ul li a.rewards:before, .cs-elegant .mobile-menu + ul li a.rewards:before {
   background-position: -5px -1113px;
 }
-/* line 205, ../scss/components/_mobile-menu.scss */
+/* line 206, ../scss/components/_mobile-menu.scss */
 .cs-elegant .mobile-menu + ul li a.rewards:hover:before, .cs-elegant .mobile-menu + ul li a.rewards:focus:before, .cs-elegant .mobile-menu + ul li a.rewards.active:before {
   background-position: -5px -1733px;
 }
-/* line 213, ../scss/components/_mobile-menu.scss */
+/* line 214, ../scss/components/_mobile-menu.scss */
 .cs-default .mobile-menu + ul li a.events:before {
   background-position: -5px -216px;
 }
-/* line 217, ../scss/components/_mobile-menu.scss */
+/* line 218, ../scss/components/_mobile-menu.scss */
 .cs-default .mobile-menu + ul li a.events:hover:before, .cs-default .mobile-menu + ul li a.events:focus:before, .cs-default .mobile-menu + ul li a.events.active:before {
   background-position: -5px -917px;
 }
-/* line 223, ../scss/components/_mobile-menu.scss */
+/* line 224, ../scss/components/_mobile-menu.scss */
 .cs-classic .mobile-menu + ul li a.events:before, .cs-elegant .mobile-menu + ul li a.events:before {
   background-position: -5px -1184px;
 }
-/* line 229, ../scss/components/_mobile-menu.scss */
+/* line 230, ../scss/components/_mobile-menu.scss */
 .cs-elegant .mobile-menu + ul li a.events:hover:before, .cs-elegant .mobile-menu + ul li a.events:focus:before, .cs-elegant .mobile-menu + ul li a.events.active:before {
   background-position: -5px -1527px;
 }
-/* line 237, ../scss/components/_mobile-menu.scss */
+/* line 238, ../scss/components/_mobile-menu.scss */
 .cs-default .mobile-menu + ul li a.reviews:before {
   background-position: -2px -286px;
 }
-/* line 241, ../scss/components/_mobile-menu.scss */
+/* line 242, ../scss/components/_mobile-menu.scss */
 .cs-default .mobile-menu + ul li a.reviews:hover:before, .cs-default .mobile-menu + ul li a.reviews:focus:before, .cs-default .mobile-menu + ul li a.reviews.active:before {
   background-position: -2px -569px;
 }
-/* line 247, ../scss/components/_mobile-menu.scss */
+/* line 248, ../scss/components/_mobile-menu.scss */
 .cs-classic .mobile-menu + ul li a.reviews:before, .cs-elegant .mobile-menu + ul li a.reviews:before {
   background-position: -2px -1255px;
 }
-/* line 253, ../scss/components/_mobile-menu.scss */
+/* line 254, ../scss/components/_mobile-menu.scss */
 .cs-elegant .mobile-menu + ul li a.reviews:hover:before, .cs-elegant .mobile-menu + ul li a.reviews:focus:before, .cs-elegant .mobile-menu + ul li a.reviews.active:before {
   background-position: -2px -1662px;
 }
-/* line 261, ../scss/components/_mobile-menu.scss */
+/* line 262, ../scss/components/_mobile-menu.scss */
 .cs-default .mobile-menu + ul li a.photos:before {
   background-position: -8px -355px;
 }
-/* line 265, ../scss/components/_mobile-menu.scss */
+/* line 266, ../scss/components/_mobile-menu.scss */
 .cs-default .mobile-menu + ul li a.photos:hover:before, .cs-default .mobile-menu + ul li a.photos:focus:before, .cs-default .mobile-menu + ul li a.photos.active:before {
   background-position: -8px -500px;
 }
-/* line 271, ../scss/components/_mobile-menu.scss */
+/* line 272, ../scss/components/_mobile-menu.scss */
 .cs-classic .mobile-menu + ul li a.photos:before, .cs-elegant .mobile-menu + ul li a.photos:before {
   background-position: -8px -1324px;
 }
-/* line 277, ../scss/components/_mobile-menu.scss */
+/* line 278, ../scss/components/_mobile-menu.scss */
 .cs-elegant .mobile-menu + ul li a.photos:hover:before, .cs-elegant .mobile-menu + ul li a.photos:focus:before, .cs-elegant .mobile-menu + ul li a.photos.active:before {
   background-position: -8px -1593px;
 }
-/* line 285, ../scss/components/_mobile-menu.scss */
+/* line 286, ../scss/components/_mobile-menu.scss */
 .cs-default .mobile-menu + ul li a.current-program:before {
   background-position: -8px -427px;
 }
-/* line 289, ../scss/components/_mobile-menu.scss */
+/* line 290, ../scss/components/_mobile-menu.scss */
 .cs-default .mobile-menu + ul li a.current-program:hover:before, .cs-default .mobile-menu + ul li a.current-program:focus:before, .cs-default .mobile-menu + ul li a.current-program.active:before {
   background-position: -8px -786px;
 }
-/* line 295, ../scss/components/_mobile-menu.scss */
+/* line 296, ../scss/components/_mobile-menu.scss */
 .cs-classic .mobile-menu + ul li a.current-program:before, .cs-elegant .mobile-menu + ul li a.current-program:before {
   background-position: -8px -1394px;
 }
-/* line 301, ../scss/components/_mobile-menu.scss */
+/* line 302, ../scss/components/_mobile-menu.scss */
 .cs-elegant .mobile-menu + ul li a.current-program:hover:before, .cs-elegant .mobile-menu + ul li a.current-program:focus:before, .cs-elegant .mobile-menu + ul li a.current-program.active:before {
   background-position: -8px -1877px;
 }
 
-/* line 20, ../scss/base/_mixins.scss */
-.cs-default h1, .cs-default h2, .cs-default h3, .cs-default h4, .cs-default h5, .cs-default h6 {
-  font-family: 'Conv_McLaren-Regular';
-  font-weight: normal;
-}
-/* line 25, ../scss/base/_mixins.scss */
-.cs-classic h1, .cs-classic h2, .cs-classic h3, .cs-classic h4, .cs-classic h5, .cs-classic h6 {
-  font-family: 'Conv_ArchitectsDaughter';
-  font-weight: normal;
-}
-/* line 30, ../scss/base/_mixins.scss */
-.cs-elegant h1, .cs-elegant h2, .cs-elegant h3, .cs-elegant h4, .cs-elegant h5, .cs-elegant h6 {
-  font-family: 'Conv_margarine-regular';
-  font-weight: normal;
+/* line 311, ../scss/components/_mobile-menu.scss */
+.mobile-menu, .mobile-menu + ul {
+  display: none;
+  /*temporary*/
 }
 
-/* line 6, ../scss/components/_typography.scss */
-.cs-default h1 {
-  font-size: 28px;
-}
-/* line 10, ../scss/components/_typography.scss */
-.cs-classic h1, .elegent h1 {
-  font-size: 30px;
+/* line 314, ../scss/components/_mobile-menu.scss */
+.mobile-top-header {
+  display: none;
+  /**temporary*/
 }
 
-/* line 16, ../scss/components/_typography.scss */
-.cs-default h2 {
-  font-size: 25px;
-}
-/* line 20, ../scss/components/_typography.scss */
-.cs-classic h2, .elegent h2 {
-  font-size: 28px;
+/* line 1, ../scss/components/_pager.scss */
+.pagination-centered {
+  display: inline-block;
+  width: 100%;
+  margin-bottom: 10px;
 }
 
-/* line 26, ../scss/components/_typography.scss */
-.cs-default h3 {
-  font-size: 22px;
+/* line 7, ../scss/components/_pager.scss */
+.pagination.pager {
+  -webkit-flex-wrap: wrap;
+  flex-wrap: wrap;
+  display: -webkit-flex;
+  display: flex;
+  float: right;
+  height: auto !important;
 }
-/* line 30, ../scss/components/_typography.scss */
-.cs-classic h3, .elegent h3 {
-  font-size: 25px;
+/* line 15, ../scss/components/_pager.scss */
+.pagination.pager li {
+  margin: 0;
+  padding: 0;
+  height: 33px;
+  width: 31px;
+  overflow: hidden;
+  display: flex;
+  display: -webkit-flex;
+  align-content: center;
+  align-items: center;
+  margin-bottom: 1px;
+  margin-left: 1px;
 }
-
-/* line 35, ../scss/components/_typography.scss */
-h4 {
-  font-size: 20px;
+/* line 28, ../scss/components/_pager.scss */
+.pagination.pager li.arrow.first, .pagination.pager li.arrow.last {
+  display: none;
 }
-/* line 36, ../scss/components/_typography.scss */
-.cs-classic h4, .elegent h4 {
-  font-size: 22px;
+/* line 31, ../scss/components/_pager.scss */
+.pagination.pager li.arrow a {
+  color: transparent;
+  position: relative;
 }
-
-/* line 43, ../scss/components/_typography.scss */
-h5 {
+/* line 34, ../scss/components/_pager.scss */
+.pagination.pager li.arrow a:after {
+  content: "";
+  width: 100%;
+  height: 100%;
+  background: url("../images/dashboard");
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: inline-block;
+}
+/* line 45, ../scss/components/_pager.scss */
+.pagination.pager li.arrow:nth-of-type(2) {
+  border-radius: 10px 0px 0px 10px;
+}
+/* line 47, ../scss/components/_pager.scss */
+.pagination.pager li.arrow:nth-of-type(2) a:after {
+  background-position: -14px -590px;
+}
+/* line 51, ../scss/components/_pager.scss */
+.pagination.pager li.arrow:nth-last-of-type(2) {
+  border-radius: 0px 10px 10px 0px;
+}
+/* line 53, ../scss/components/_pager.scss */
+.pagination.pager li.arrow:nth-last-of-type(2) a:after {
+  background-position: -17px -1130px;
+}
+/* line 60, ../scss/components/_pager.scss */
+.cs-default .pagination.pager li.current a {
+  background: #267fda;
+}
+/* line 63, ../scss/components/_pager.scss */
+.cs-classic .pagination.pager li.current a {
+  background: #084899;
+}
+/* line 66, ../scss/components/_pager.scss */
+.cs-elegant .pagination.pager li.current a {
+  background: #267fda;
+}
+/* line 72, ../scss/components/_pager.scss */
+.pagination.pager li a {
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  color: #fff;
+}
+/* line 111, ../scss/base/_mixins.scss */
+.cs-default .pagination.pager li a {
   font-size: 17px;
 }
-/* line 44, ../scss/components/_typography.scss */
-.cs-classic h5, .elegent h5 {
+/* line 115, ../scss/base/_mixins.scss */
+.cs-classic .pagination.pager li a, .cs-elegant .pagination.pager li a {
   font-size: 19px;
 }
-
-/* line 51, ../scss/components/_typography.scss */
-h6 {
-  font-size: 14px;
+/* line 37, ../scss/base/_mixins.scss */
+.cs-default .pagination.pager li a {
+  font-family: 'arial';
+  font-weight: normal;
 }
-/* line 52, ../scss/components/_typography.scss */
-.cs-classic h6, .elegent h6 {
-  font-size: 16px;
+/* line 42, ../scss/base/_mixins.scss */
+.cs-classic .pagination.pager li a {
+  font-family: 'Conv_PTS55F';
+  font-weight: normal;
+}
+/* line 47, ../scss/base/_mixins.scss */
+.cs-elegant .pagination.pager li a {
+  font-family: 'Opensans-regular';
+  font-weight: normal;
+}
+/* line 81, ../scss/components/_pager.scss */
+.cs-default .pagination.pager li a:hover, .cs-default .pagination.pager li a:focus {
+  background: #267fda;
+}
+/* line 84, ../scss/components/_pager.scss */
+.cs-classic .pagination.pager li a:hover, .cs-classic .pagination.pager li a:focus {
+  background: #084899;
+}
+/* line 87, ../scss/components/_pager.scss */
+.cs-elegant .pagination.pager li a:hover, .cs-elegant .pagination.pager li a:focus {
+  background: #267fda;
+}
+/* line 91, ../scss/components/_pager.scss */
+.cs-default .pagination.pager li a {
+  font-size: 17px;
+  line-height: 34px;
+  background: #f6511d;
+}
+/* line 97, ../scss/components/_pager.scss */
+.cs-classic .pagination.pager li a {
+  font-size: 19px;
+  background: #00a6ed;
+}
+/* line 101, ../scss/components/_pager.scss */
+.cs-elegant .pagination.pager li a {
+  font-size: 19px;
+  background: #2ec4b6;
+}
+
+/* line 1, ../scss/components/_social-icons.scss */
+.block-menu-menu-social-sharing-icons {
+  text-align: center;
+}
+/* line 4, ../scss/components/_social-icons.scss */
+.block-menu-menu-social-sharing-icons ul.menu {
+  display: inline-block;
+  float: right;
+  list-style: none;
+}
+/* line 9, ../scss/components/_social-icons.scss */
+.block-menu-menu-social-sharing-icons ul.menu li {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  overflow: hidden;
+}
+/* line 17, ../scss/components/_social-icons.scss */
+.block-menu-menu-social-sharing-icons ul.menu li a {
+  width: 100%;
+  height: 100%;
+  color: transparent;
+  background: url(../images/social-icons.png);
+  display: inline-block;
+  transition: all linear 0.8s;
+  border-radius: 100%;
+  border: 1px outset rgba(0, 0, 0, 0.2);
+}
+/* line 29, ../scss/components/_social-icons.scss */
+.block-menu-menu-social-sharing-icons ul.menu li a.fb {
+  background-position: -20px 0px;
+}
+/* line 33, ../scss/components/_social-icons.scss */
+.block-menu-menu-social-sharing-icons ul.menu li a.pntrst {
+  background-position: -20px -58px;
+}
+/* line 37, ../scss/components/_social-icons.scss */
+.block-menu-menu-social-sharing-icons ul.menu li a.tmblr {
+  background-position: -20px -116px;
+}
+/* line 41, ../scss/components/_social-icons.scss */
+.block-menu-menu-social-sharing-icons ul.menu li a.twit {
+  background-position: -20px -173px;
+}
+/* line 45, ../scss/components/_social-icons.scss */
+.block-menu-menu-social-sharing-icons ul.menu li a:hover {
+  -webkit-filter: hue-rotate(180deg);
+  filter: hue-rotate(180deg);
+  transform: rotateY(360deg);
 }
 
 /*# sourceMappingURL=custom.css.map */

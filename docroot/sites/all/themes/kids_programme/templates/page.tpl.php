@@ -5,15 +5,15 @@
     <!-- City Branding -->
     <div class="pre-header">
       <section class="row" id="topmostbranding">
-         <div class="breadcurm hide-for-small-only float-left columns">
+         <div class="breadcurm hide-for-small-only">
           <?php if ($breadcrumb): print $breadcrumb; endif; ?>
         </div>
-        <div class="top-menu hide-for-small-only columns">
+        <div class="top-menu hide-for-small-only">
           <?php if (!empty($page['top_links'])): ?>
           <?php print render($page['top_links']); ?>
           <?php endif; ?>
         </div>
-        <div class="mobile-hamburger hide-for-medium-up columns">
+        <div class="mobile-hamburger hide-for-medium-up">
            <button></button>
         </div>
       <!--mobile menu-->
@@ -28,13 +28,16 @@
 
     <!-- Title, slogan and menu -->
     <section class="row header-middle">
-     <div class="logo-block columns">
+     <div class="logo-block">
+     <div class="site-info">
+     <div class="logo">
       <?php if ($logo): ?>
           <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home" id="logo">
             <img src="<?php print $logo; ?>" alt="<?php print t('Home'); ?>" />
           </a>
         <?php endif; ?>
-
+     </div>
+     <div class="site-desc">
         <?php if ($site_name): ?>
           <h1 title="<?php print $site_name; ?>" id="site-name" class="site-name">
             <a href="<?php print $front_page; ?>" title="<?php print $site_name; ?>"><?php print $site_name; ?></a>
@@ -44,12 +47,15 @@
         <?php if ($site_slogan): ?>
           <h2 title="<?php print $site_slogan; ?>" id="site-slogan" class="site-slogan"><?php print $site_slogan; ?></h2>
         <?php endif; ?>
-    </div>
-    <div class="program-logo">
+        </div>
+        </div>
+        <div class="program-logo">
     <?php if (!empty($page['header'])): ?>
       <?php print render($page['header']); ?>
       <?php endif; ?></div>
-    <div class="main-menu hide-for-small-only columns">
+    </div>
+
+    <div class="main-menu hide-for-small-only">
       <div class="menu-wrapper">
       <?php if (!empty($page['main_menu'])): ?>
       <?php print render($page['main_menu']); ?>

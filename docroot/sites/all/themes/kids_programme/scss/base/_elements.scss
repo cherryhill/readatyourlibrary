@@ -57,3 +57,83 @@
 // }
 
 // select {}
+h1, h2, h3, h4, h5, h6 {
+  @include primary_fonts;
+  font-weight: normal;
+}
+p {
+  @include secondary_fonts;
+  @include primary_fsize;
+}
+h1 {
+  .cs-default & {
+    font-size: 28px;
+  }
+
+  .cs-classic &, .elegent & {
+    font-size: 30px;
+  }
+}
+
+h2 {
+  .cs-default & {
+    font-size: 25px;
+  }
+
+  .cs-classic &, .elegent & {
+    font-size: 28px;
+  }
+}
+
+h3 {
+  .cs-default & {
+    font-size: 22px;
+  }
+
+  .cs-classic &, .elegent & {
+    font-size: 25px;
+  }
+}
+
+h4 {
+  .cs-classic &, .elegent & {
+    font-size: 22px;
+  }
+
+  font-size: 20px;
+}
+
+h5 {
+  .cs-classic &, .elegent & {
+    font-size: 19px;
+  }
+
+  font-size: 17px;
+}
+
+h6 {
+  .cs-classic &, .elegent & {
+    font-size: 16px;
+  }
+
+  font-size: 14px;
+}
+
+body {
+   font-size: 17px;
+   line-height: 26px;
+    &.cs-default {
+    font-family: 'arial';
+    font-weight: normal;
+  }
+
+  &.cs-classic  {
+    font-family: 'Conv_PTS55F';
+    font-weight: normal;
+  }
+
+  &.cs-elegant  {
+    font-family: 'Opensans-regular';
+    font-weight: normal;
+  }
+}

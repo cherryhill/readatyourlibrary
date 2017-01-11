@@ -14,3 +14,105 @@
   position: static;
   left: auto;
 }
+
+//font-families
+@mixin primary_fonts {
+  .cs-default & {
+    font-family: 'Conv_McLaren-Regular';
+    font-weight: normal;
+  }
+
+  .cs-classic & {
+    font-family: 'Conv_ArchitectsDaughter';
+    font-weight: normal;
+  }
+
+  .cs-elegant & {
+    font-family: 'Conv_margarine-regular';
+    font-weight: normal;
+  }
+}
+
+@mixin secondary_fonts {
+  .cs-default & {
+    font-family: 'arial';
+    font-weight: normal;
+  }
+
+  .cs-classic & {
+    font-family: 'Conv_PTS55F';
+    font-weight: normal;
+  }
+
+  .cs-elegant & {
+    font-family: 'Opensans-regular';
+    font-weight: normal;
+  }
+}
+
+@mixin bold_fonts {
+  .cs-default & {
+    font-family: 'arial';
+    font-weight: bold;
+  }
+
+  .cs-classic & {
+    font-family: 'Conv_PTS75F';
+  }
+
+  .cs-elegant & {
+    font-family: 'Opensans-Bold';
+  }
+}
+
+@mixin menu($border: null) {
+  color: $white;
+   @if $border == "m" {
+    .cs-default &  {
+      &:hover, &.active, &:focus {
+        border-bottom: 1px solid $orange;
+      }
+    }
+    .cs-elegant & {
+      &:hover, &.active, &:focus {
+        border-bottom: 1px solid $darkblue;
+      }
+    }
+
+    }
+  .cs-default & {
+    background: $orange;
+
+    &:hover, &.active, &:focus {
+      color: $orange;
+      background: #fff;
+    }
+  }
+
+  .cs-classic & {
+    background: $sky-blue;
+
+    &:hover, &.active, &:focus {
+      @extend .dark-blue;
+    }
+  }
+
+  .cs-elegant & {
+    background: $blue;
+
+    &:hover, &.active, &:focus {
+      background: $white;
+      color: $darkblue;
+    }
+  }
+}
+
+@mixin primary_fsize {
+  .cs-default & {
+    font-size: 17px;
+  }
+
+  .cs-classic &, .cs-elegant & {
+    font-size: 19px;
+  }
+}

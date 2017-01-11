@@ -1,8 +1,10 @@
 (function ($, Drupal) {
 
-  Drupal.behaviors.STARTER = {
+  Drupal.behaviors.kids_programmePhoneNumberLinksOnMobile = {
     attach: function(context, settings) {
-      // Get your Yeti started.
+        jQuery('.msg:has(.new)').addClass('new');
+
+
     }
   };
 

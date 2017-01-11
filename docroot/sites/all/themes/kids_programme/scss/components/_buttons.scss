@@ -3,4 +3,156 @@
 // Before adding styles be sure to modify variables in the
 // "scss/_variables.scss" file.
 
-.button {}
+.button,button {
+  display: inline-block !important;
+  padding: 6px 24px !important;
+  text-decoration: none;
+  box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+  text-transform: capitalize;
+  border-radius: 10px;
+  border: none;
+  line-height: 26px !important;
+  margin: 10px !important;
+  @include primary_fonts;
+   &.postfix.button {
+    border-radius: 10px;
+   }
+    .cs-default & {
+      font-size: 17px;
+
+      @extend .yellow;
+
+      color: $black;
+      }
+
+    .cs-classic &, .cs-elegant & {
+      font-size: 19px;
+
+      @extend .light-orange;
+
+      color: #fff;
+    }
+
+}
+.btn {
+  display: inline-block;
+  padding: 6px 24px;
+  font-size: 21px;
+  text-decoration: none;
+  box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+  text-transform: capitalize;
+  border-radius: 10px;
+  line-height: 30px;
+   .cs-default & {
+      @extend .blue;
+    }
+
+    .cs-classic & {
+      background: $sky-blue;
+    }
+  &:hover {
+    text-decoration: none;
+  }
+
+  @include primary_fonts;
+
+  &.btn-large {
+    color: $white;
+
+    &.msg {
+      padding-left: 50px;
+      position: relative;
+
+      &.new  {
+        .cs-default & {
+          @extend .red;
+        }
+
+        .cs-classic & {
+          @extend .light-orange;
+        }
+
+        .cs-elegant & {
+          @extend .yellow;
+
+          color: $color-blue;
+        }
+        &:after {
+           .cs-elegant & {
+            background-position: 72px 90px;
+          }
+        }
+      }
+
+      &:after {
+        content: "";
+        width: 30px;
+        height: 14px;
+        position: absolute;
+        left: 24px;
+        top: 14px;
+        background: url("../images/icons");
+        display: inline-block;
+        background-position: 72px 35px;
+
+
+      }
+    }
+    &.small {
+      font-size: 17px;
+      padding-top: 9px;
+      padding-bottom: 9px;
+      &.btn-mobile {
+        padding: 4px 13px 6px;
+      }
+       .cs-classic &, .cs-elegant & {
+        font-size: 19px;
+      }
+    }
+
+    &.full {
+      width: 100%;
+      font-size: 17px;
+      text-align: center;
+      padding-top: 9px;
+      padding-bottom: 9px;
+
+      .cs-classic &, .cs-elegant & {
+        font-size: 19px;
+      }
+    }
+
+    .cs-default & {
+      @extend .blue;
+    }
+
+    .cs-classic & {
+      background: $sky-blue;
+    }
+
+    .cs-elegant & {
+      @extend .red1;
+    }
+  }
+
+  &.btn-primary {
+    padding-top: 9px;
+    padding-bottom: 9px;
+
+    .cs-default & {
+      font-size: 17px;
+
+      @extend .yellow;
+
+      color: #333;
+    }
+
+    .cs-classic &, .cs-elegant & {
+      font-size: 19px;
+
+      @extend .light-orange;
+
+      color: #fff;
+    }
+  }
+}

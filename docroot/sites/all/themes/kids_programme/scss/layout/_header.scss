@@ -1,13 +1,200 @@
 // Non-modular or client styles for .l-header region.
 
-.l-header {}
+.l-header {
+  width: 100%;
+  display: block;
 
-// Top Bar
-//--------------------------------------------------
-.top-bar {
-  .title-area {}
+  .pre-header {
+    padding: 13px 18px 13px 25px;
+      .cs-default & {
+       @extend .yellow;
+     }
+     .cs-classic & {
+       @extend .dark-blue;
+     }
+     .cs-elegant & {
+       @extend .mint-green;
+     }
+     #topmostbranding {
+       -webkit-flex-wrap: wrap;
+      flex-wrap: wrap;
+      display: -webkit-flex;
+      display: flex;
+      width: 100%;
+     }
+     .breadcurm {
+       ul {
+         padding-left: 0;
+         margin: 0;
+         background: transparent;
+         border: none;
+
+          li {
+            &.current {
+               a {
+                color: $white;
+                .cs-default & {
+                  color: $black;
+                }
+               }
+              &:before {
+                content: ">";
+                @include secondary_fonts;
+                 @include primary_fsize;
+                 top: 0;
+                 margin: 0 5px;
+                 .cs-default & {
+                  color: $black;
+                 }
+                 color: $white;
+
+              }
+            }
+             a {
+              color: $white;
+              .cs-default & {
+                color: $blue;
+              }
+              @include primary_fsize;
+         @include secondary_fonts;
+             &:focus {
+                 outline: none;
+             }
+             }
+          }
+       }
+      @media screen and (min-width: 1025px) {
+        flex-basis: 20%;
+      }
+      flex-basis: 100%;
+      @extend .hide-for-small-only;
+     }
+     .top-menu {
+       @include primary-fonts;
+        .cs-default & {
+       color: $black;
+        a.username {
+          color: inherit;
+          font-family: inherit;
+          margin-right: 50px;
+        }
+     }
+     .cs-classic &, .cs-elegant & {
+       color: $white;
+        a.username {
+          color: inherit;
+          font-family: inherit;
+          margin-right: 50px;
+        }
+     }
+
+
+        .btn {
+          margin-left: 6px;
+        }
+      @media screen and (min-width: 1025px) {
+        flex-basis: 80%;
+      }
+      flex-basis: 100%;
+      @extend .hide-for-small-only;
+      .top-header-menu {
+        float: right;
+      }
+     }
+  }
+  .header-middle {
+     -webkit-flex-wrap: wrap;
+      flex-wrap: wrap;
+      display: -webkit-flex;
+      display: flex;
+      width: 100%;
+      padding-left: 25px;
+      padding-top: 20px;
+     .cs-default & {
+       @extend .green-gradiant;
+     }
+     .cs-classic & {
+       @extend .yellow;
+     }
+     .cs-elegant & {
+       @extend .light-orange;
+     }
+     .logo-block {
+      flex-basis: 25%;
+      .site-info {
+        width: 100%;
+        display: table;
+        > div {
+          display: table-cell;
+          vertical-align: top;
+          &.logo {
+            width: 80px;
+             img {
+               .cs-classic & {
+                background: $darkblue;
+               }
+             }
+          }
+        }
+        .site-name {
+          margin: -7px 0 0;
+          font-size: 36px;
+          font-family: 'Conv_PTS75F';
+          color: $white;
+          .cs-classic & {
+             color: $darkblue;
+          }
+          a {
+            color: inherit;
+            font-family: inherit;
+          }
+        }
+
+      }
+      .site-slogan {
+           margin: -10px 0 0;
+          font-size: 23px;
+         font-family: 'Conv_PTS55F';
+          color: $white;
+          .cs-classic & {
+             color: $darkblue;
+          }
+          a {
+            color: inherit;
+            font-family: inherit;
+          }
+        }
+       .program-logo {
+        margin-top: 15px;
+        margin-bottom: 20px;
+        img {
+          max-width: 200px;
+        }
+       }
+     }
+     .main-menu {
+       flex-basis: 75%;
+       .menu-wrapper {
+        section {
+          width: 100%;
+          display: inline-block;
+        }
+        .block-lang-dropdown {
+          .block-title {
+            display: none;
+          }
+          form {
+             float: right;
+          margin-right: 18px;
+          }
+
+        }
+         ul.menu {
+          margin-right: 3px;
+         }
+       }
+     }
+  }
 }
 
-.top-bar-section {}
-.top-bar-section .left {}
-.top-bar-section .right {}
+

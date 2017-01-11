@@ -34,7 +34,7 @@ function kids_programme_form_system_theme_settings_alter(&$form, &$form_state) {
     '#default_value' => theme_get_setting('choose_color'),
     '#options' => array(
       'cs-default' => t('default'),
-      'cs-classy' => t('classy'),
+      'cs-classic' => t('classic'),
       'cs-elegant' => t('elegant'),
     ),
   );

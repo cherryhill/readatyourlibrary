@@ -1,7 +1,55 @@
-// Common abstract classes to extend or parametrics are stored here.
+.yellow {
+  background: $yellow;
+}
 
-// Example parametrics.
-// ------------------------------------------------------
-// %font-FONTNAME   {}
-// %font-sans-serif { font-family: sans-serif; }
-// %font-serif      { font-family: serif; }
+.blue {
+  background: $blue;
+}
+
+.dark-blue1 {
+  background: $color-blue;
+}
+
+.red {
+  background: $red;
+}
+
+
+.white {
+  background: #fff;
+}
+
+.dark-blue {
+  background: $darkblue;
+}
+
+.light-orange {
+  background: $light-orange;
+}
+
+.mint-green {
+  background: $mint-green;
+}
+
+.red1 {
+  background: $light-red;
+}
+
+.white-text {
+  color: $white;
+}
+.green-gradiant {
+  background: #7cb301;
+  background: -webkit-radial-gradient(#7cb301, #6d9c05, #74a703);
+  background: -moz-radial-gradient(#7cb301, #6d9c05, #74a703);
+  background: radial-gradient(#7cb301, #6d9c05, #74a703);
+}
+
+.hide-for-small-only {
+  @media screen and (max-width: 767px) {
+    display: none;
+  }
+}
+.row {
+  max-width: 100% !important;
+}
