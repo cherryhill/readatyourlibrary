@@ -671,9 +671,18 @@ function pl_leaderblock_dashboard() {
  */
 function pl_program_logo_image() {
 
+  //Program image fid
   $imgFid = variable_get('pmc_progrm_image');
 
   if ($imgFid != 0) {
+
+    //Update Image status
+    $query = db_update('file_managed')
+    ->fields(array('status' => 1))
+    ->condition('fid',$imgFid)
+    ->execute();
+
+    //Image for Library Program
     $file = file_load($imgFid);
     $uri = $file->uri;
     $urlImg = file_create_url($uri);
