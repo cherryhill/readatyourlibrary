@@ -39,8 +39,6 @@ function pl_platform_configuration($form, &$form_state) {
     '#title' => t('Program Name'),
   );
 
-  $pmc_program_image = pl_program_logo_image();
-
   $form['program_configuration']['pmc_progrm_image'] = array(
     '#title' => t('Library Program Image'),
     '#type' => 'managed_file',
@@ -48,6 +46,9 @@ function pl_platform_configuration($form, &$form_state) {
     '#upload_location' => 'public://',
     '#default_value' => variable_get('pmc_progrm_image'),
   );
+
+  pl_program_logo_image();
+
 
   $program_footer = variable_get('pmc_program_footer', array('value' => '', 'format' => NULL));
   $form['program_configuration']['pmc_program_footer'] = array(
