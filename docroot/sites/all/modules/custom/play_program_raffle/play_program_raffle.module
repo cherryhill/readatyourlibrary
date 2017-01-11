@@ -543,9 +543,6 @@ function raffle_user_list($form, &$form_state) {
   $rf_dob_sdate = $_POST['rf_dob_sdate'];
   $rf_dob_edate = $_POST['rf_dob_edate'];
 
-  global $language;
-  $lang = $language->language;
-
   $library_id = explode(',', $rf_library);
   $school_id = explode(',', $rf_sch);
   $grade_id = explode(',', $rf_grade);
@@ -586,7 +583,6 @@ function raffle_user_list($form, &$form_state) {
   $query = db_select('eck_reward','eck');
   $query->join('field_data_field_rf_receieved_reward','rf_win','eck.id = rf_win.entity_id');
   $query->join('field_data_field_raffle_claim_id','claim','eck.id = claim.entity_id');
-  // $query->join('field_data_field_raffle_drawing_name','rf_draw','eck.id = rf_draw.entity_id');
   $query->join('users','u','u.uid = eck.uid');
   $query->join('profile','pf','pf.uid = u.uid');
 
@@ -608,19 +604,11 @@ function raffle_user_list($form, &$form_state) {
     $query->condition('grade.field_user_grade_tid',$grade_id);
   }
 
-  // $query->join('field_data_field_first_name','fname','fname.entity_id = pf.pid');
-  // $query->join('field_data_field_last_name','lname','lname.entity_id = pf.pid');
   $query->join('field_data_field_user_birthday','bday','bday.entity_id = pf.pid');
-  // $query->join('field_data_field_phone_number','c_no','c_no.entity_id = pf.pid');
   $query->fields('u', array('uid'));
   $query->fields('rf_win',array('field_rf_receieved_reward_value'));
-  // $query->fields('rf_draw',array('field_raffle_drawing_name_value'));
-  // $query->fields('pf', array('pid'));
   $query->fields('eck', array('id'));
 
-
-  // $query->fields('fname', array('field_first_name_value'));
-  // $query->fields('lname', array('field_last_name_value'));
   //Condition for age range
   if(!empty($rf_dob_sdate) && !empty($rf_dob_sedate)){
     $start_age_ts = time() - ($rf_dob_sdate*(60*60*24*365));
@@ -628,13 +616,9 @@ function raffle_user_list($form, &$form_state) {
     $age_range =  array($start_age_ts, $end_age_ts);
     $query->condition('bday.field_user_birthday_value', $age_range, 'IN');
   }
-  $query->fields('bday', array('field_user_birthday_value'));
-  // $query->fields('claim', array('field_raffle_claim_id_target_id'));
-  // $query->fields('c_no', array('field_phone_number_value'));
-  $query->condition('eck.type','raffle_claim');
-  
 
-  // $query->condition('rf_win.field_rf_receieved_reward_value',array(0,1));
+  $query->fields('bday', array('field_user_birthday_value'));
+  $query->condition('eck.type','raffle_claim');
 
   //get results based on Checkbox for including winners checkboxess
     $query->condition('claim.field_raffle_claim_id_target_id', $raffle_id);
@@ -662,23 +646,10 @@ function raffle_user_list($form, &$form_state) {
 
   $draw_time = time();
 
-
-  // $arraySize = sizeof($result);
-  
-  // // Getting all user_uids in an array 
+  //Getting all user_uids in an array 
   foreach ($result_all as $value) {
-    // $birthDate = $value->field_user_birthday_value;
-    // $diff = (date('Y') - date('Y',strtotime($birthDate)));
-
-    // if (!empty($rf_dob_sdate) && !empty($rf_dob_edate)) {
-    //   if (($rf_dob_sdate <= $diff) && ($diff <= $rf_dob_edate)){
-    //     $user_uid[] = $value->uid;
-    //   }
-    // } else {
-      $user_uid[] = $value->uid;
-    // }
+    $user_uid[] = $value->uid;
   }
-  // echo '<pre>'; print_r($user_uid); die();
 
   // Getting length of unique uids
   $arrUniLength = sizeof(array_unique($user_uid));
@@ -706,7 +677,7 @@ function raffle_user_list($form, &$form_state) {
       }
     }
 
-    // Claim reward forall ser ids in claim array
+    // Claim reward for all ser ids in claim array
     if (sizeof($claim_UIDs)>0){
       foreach ($claim_UIDs as $value) {
         pl_update_raffle_tbl($value, $raffle_id, $rf_drawing_name);
@@ -718,7 +689,7 @@ function raffle_user_list($form, &$form_state) {
 
     $qry = db_select('profile', 'pf');
     $qry->join('eck_reward', 'eck', 'eck.uid = pf.uid');
-    $qry->join('field_data_field_raffle_draw_timestamp', 'time', 'time.entity_id = eck.id');
+    $qry->join('field_data_field_raff_draw_timestamp', 'time', 'time.entity_id = eck.id');
     $qry->join('users', 'u', 'u.uid = pf.uid');
     $qry->join('field_data_field_first_name', 'fn', 'fn.entity_id = pf.pid');
     $qry->join('field_data_field_last_name', 'ln', 'ln.entity_id = pf.pid');
@@ -730,9 +701,11 @@ function raffle_user_list($form, &$form_state) {
     $qry->fields('dob', array('field_user_birthday_value'));
     $qry->fields('phn', array('field_phone_number_value'));
     $qry->condition('u.uid', $claim_UIDs);
-    $qry->condition('time.field_raffle_draw_timestamp_value', $draw_time);
+    $qry->condition('time.field_raff_draw_timestamp_value', $draw_time);
 
     $res = $qry->execute()->fetchAll();
+
+    // echo '<pre>'; print_r($res); die();
 
     foreach ($res as $value) {
       $tbl_rows[] = array(

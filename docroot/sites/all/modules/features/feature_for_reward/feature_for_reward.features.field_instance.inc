@@ -458,7 +458,7 @@ function feature_for_reward_field_default_field_instances() {
     'entity_type' => 'reward',
     'field_name' => 'field_raffle_claim_id',
     'label' => 'Raffle Claim ID',
-    'required' => 0,
+    'required' => 1,
     'settings' => array(
       'behaviors' => array(
         'prepopulate' => array(
@@ -553,6 +553,55 @@ function feature_for_reward_field_default_field_instances() {
       ),
       'type' => 'text_textfield',
       'weight' => 2,
+    ),
+    'workbench_access_field' => 0,
+  );
+
+  // Exported field_instance: 'reward-raffle_claim-field_raffle_drw_timestamp'.
+  $field_instances['reward-raffle_claim-field_raffle_drw_timestamp'] = array(
+    'bundle' => 'raffle_claim',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'number',
+        'settings' => array(
+          'decimal_separator' => '.',
+          'prefix_suffix' => TRUE,
+          'scale' => 0,
+          'thousand_separator' => '',
+        ),
+        'type' => 'number_integer',
+        'weight' => 4,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'display_label' => '',
+    'entity_type' => 'reward',
+    'field_name' => 'field_raffle_drw_timestamp',
+    'label' => 'Raffle Draw Timestamp',
+    'required' => 0,
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+      'max' => '',
+      'min' => '',
+      'prefix' => '',
+      'suffix' => '',
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'number',
+      'settings' => array(),
+      'type' => 'number',
+      'weight' => 3,
     ),
     'workbench_access_field' => 0,
   );
@@ -1373,6 +1422,7 @@ function feature_for_reward_field_default_field_instances() {
   t('Onscreen alert on winning this reward');
   t('Points to get reward or raffle ticket');
   t('Raffle Claim ID');
+  t('Raffle Draw Timestamp');
   t('Raffle Drawing Name');
   t('Raffle Prize or Reward Notifications');
   t('Raffle Ticket Image');

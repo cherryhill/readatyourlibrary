@@ -457,15 +457,21 @@ function pl_reward_claim($reward_id, $account_uid, $category, $filters = NULL, $
 		$reward_claim->field_filters_used[$field_filters_used][0]['value'] = $filters;
 		$reward_claim->field_rf_drawing_name[$field_rf_drawing_name][0]['value'] = $rf_drawing;
 		$reward_claim->field_raffle_claim[$field_raffle_claim][0]['value'] = $raffle_clm;
-		$reward_claim->field_raffle_draw_timestamp[$field_raffle_draw_timestamp][0]['value'] = $draw_time;
+		$reward_claim->field_raff_draw_timestamp[$field_raff_draw_timestamp][0]['value'] = $draw_time;
 		entity_save('reward', $reward_claim);
 		drupal_set_message(t($rewardOnscMsg), 'status');
 		_play_library_program_send_pm_message($account_uid, $reward_pm_sub, $reward_pm_body);
 	} else if ($category == 'raffle_reward') {
 		$title = t("@reward on @time", array('@reward' => $reward->title, '@time' => date('Y-m-d H:i')));
 		$raffle_entry = entity_create('reward', array('type' => 'raffle_claim', 'title' => $title, 'uid' => $account_uid));
-		$lang = field_language('reward',$raffle_entry);
+    $lang = field_language('reward',$raffle_entry);
+    foreach ($lang as $key => $value) {
+      ${$key} = $value;
+    }
+
 		$raffle_entry->field_raffle_claim_id[$field_raffle_claim_id][0]['target_id'] = $reward_id;
+      // echo '<pre>'; print_r($raffle_entry); die();
+    
 		entity_save('reward', $raffle_entry);
 		drupal_set_message(t($raffleOnsMsg),'status');
 		_play_library_program_send_pm_message($account_uid, $raffle_pm_sub, $raffle_pm_body);
