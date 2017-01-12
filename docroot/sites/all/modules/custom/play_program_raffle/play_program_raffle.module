@@ -419,12 +419,12 @@ function ppr_active_rafle_list(){
   if (isset($result['reward'])) {
     $raffle_rewards_id = array_keys($result['reward']);
     $raffle_rewards = entity_load('reward', $raffle_rewards_id);
-  }
 
   foreach ($raffle_rewards as $raffle) {
     $options_raffle[$raffle->id] = $raffle->title;
   }
   return $options_raffle;
+  }
 }
 
 /**
@@ -440,7 +440,7 @@ function ppr_raffle_entry_process($form, &$form_state) {
   $form['active_raffle'] = array(
     '#title' => t('Select Raffle'),
     '#type' => 'select',
-    '#options' => ppr_active_rafle_list(), 
+    '#options' => ppr_active_rafle_list() ? ppr_active_rafle_list() : array(''),  
     '#required' => TRUE,
   );
 
