@@ -1,0 +1,240 @@
+.menu-wrapper {
+  width: 100%;
+  display: inline-block;
+
+  ul.menu {
+    width: 745px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    float: right;
+
+    li {
+      width: 91px;
+      height: 103px;
+      display: inline-block;
+      vertical-align: bottom;
+      margin-left: 9px;
+
+      a {
+        width: inherit;
+        border-radius: 10px;
+        text-decoration: none;
+        height: 45px;
+        padding-top: 58px;
+        padding-bottom: 45px;
+        display: inline-block;
+        text-align: center;
+        vertical-align: center;
+        box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+        color: #fff;
+        position: relative;
+        transition: all linear 0.8s;
+
+        @include menu;
+
+        @include primary_fonts;
+
+        &:hover {
+          transform: rotateY(360deg);
+
+          &:after {
+            transform: rotateX(360deg);
+          }
+        }
+
+        .cs-default & {
+          font-size: 14px;
+          line-height: 18px;
+
+
+        }
+         .cs-classic & {
+          font-size: 13px;
+          line-height: 17px;
+         }
+         .cs-elegant & {
+          font-size: 15px;
+          line-height: 19px;
+        }
+
+        &:after {
+          content: " ";
+          width: 60px;
+          height: 40px;
+          position: absolute;
+          top: 20px;
+          left: 15px;
+          background: url("../images/icons");
+          transition: all ease 1.8s;
+          transition-duration: 0.09s;
+          transition-delay: 0.3s;
+        }
+
+        &.progress {
+          border: none;
+          font-weight: normal;
+          .cs-default & {
+            &:after {
+              background-position: -16px -9px;
+            }
+
+            &:hover:after,&:focus:after,&.active:after {
+              background-position: -16px -855px;
+            }
+          }
+
+          .cs-classic &, .cs-elegant & {
+            &:after {
+              background-position: -16px -975px;
+            }
+          }
+
+          .cs-elegant & {
+            &:hover:after,&:focus:after,&.active:after {
+              background-position: -16px -1460px;
+            }
+          }
+        }
+
+        &.activities {
+          .cs-default & {
+            &:after {
+              background-position: -9px -72px;
+            }
+
+            &:hover:after,&:focus:after,&.active:after {
+              background-position: -9px -713px;
+            }
+          }
+
+          .cs-classic &, .cs-elegant & {
+            &:after {
+              background-position: -9px -1039px;
+            }
+          }
+          .cs-elegant & {
+            &:hover:after,&:focus:after,&.active:after {
+              background-position: -9px -1803px;
+            }
+          }
+        }
+
+        &.rewards {
+          .cs-default & {
+            &:after {
+              background-position: -5px -145px;
+            }
+
+            &:hover:after,&:focus:after,&.active:after {
+              background-position: -5px -643px;
+            }
+          }
+
+          .cs-classic &, .cs-elegant & {
+            &:after {
+              background-position: -5px -1113px;
+            }
+          }
+          .cs-elegant & {
+            &:hover:after,&:focus:after,&.active:after {
+              background-position: -5px -1733px;
+            }
+          }
+        }
+
+        &.events {
+          .cs-default & {
+            &:after {
+              background-position: -5px -216px;
+            }
+
+            &:hover:after,&:focus:after,&.active:after {
+              background-position: -5px -917px;
+            }
+          }
+
+          .cs-classic &, .cs-elegant & {
+            &:after {
+              background-position: -5px -1184px;
+            }
+          }
+          .cs-elegant & {
+            &:hover:after,&:focus:after,&.active:after {
+              background-position: -5px -1527px;
+            }
+          }
+        }
+
+        &.reviews {
+          .cs-default & {
+            &:after {
+              background-position: -2px -286px;
+            }
+
+            &:hover:after,&:focus:after,&.active:after {
+              background-position: -2px -569px;
+            }
+          }
+
+          .cs-classic &, .cs-elegant & {
+            &:after {
+              background-position: -2px -1255px;
+            }
+          }
+          .cs-elegant & {
+            &:hover:after,&:focus:after,&.active:after {
+              background-position: -2px -1662px;
+            }
+          }
+        }
+
+        &.photos {
+          .cs-default & {
+            &:after {
+              background-position: -8px -355px;
+            }
+
+            &:hover:after,&:focus:after,&.active:after {
+              background-position: -8px -500px;
+            }
+          }
+
+          .cs-classic &, .cs-elegant & {
+            &:after {
+              background-position: -8px -1324px;
+            }
+          }
+          .cs-elegant & {
+            &:hover:after,&:focus:after,&.active:after {
+              background-position: -8px -1593px;
+            }
+          }
+        }
+
+        &.current-program {
+          .cs-default & {
+            &:after {
+              background-position: -8px -427px;
+            }
+
+            &:hover:after,&:focus:after,&.active:after {
+              background-position: -8px -786px;
+            }
+          }
+
+          .cs-classic &, .cs-elegant & {
+            &:after {
+              background-position: -8px -1394px;
+            }
+          }
+          .cs-elegant & {
+            &:hover:after,&:focus:after,&.active:after {
+              background-position: -8px -1879px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
