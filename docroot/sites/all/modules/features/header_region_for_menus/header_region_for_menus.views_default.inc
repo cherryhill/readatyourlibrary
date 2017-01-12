@@ -55,6 +55,11 @@ function header_region_for_menus_views_default_views() {
 
   /* Display: Header User Block */
   $handler = $view->new_display('block', 'Header User Block', 'block');
+  $handler->display->display_options['defaults']['access'] = FALSE;
+  $handler->display->display_options['access']['type'] = 'role';
+  $handler->display->display_options['access']['role'] = array(
+    4 => '4',
+  );
   $handler->display->display_options['defaults']['fields'] = FALSE;
   /* Field: User: Name */
   $handler->display->display_options['fields']['name']['id'] = 'name';
