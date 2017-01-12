@@ -47,7 +47,7 @@ function pl_platform_configuration($form, &$form_state) {
     '#default_value' => variable_get('pmc_progrm_image'),
   );
 
-  pl_program_logo_image();
+  // pl_program_logo_image();
 
 
   $program_footer = variable_get('pmc_program_footer', array('value' => '', 'format' => NULL));
