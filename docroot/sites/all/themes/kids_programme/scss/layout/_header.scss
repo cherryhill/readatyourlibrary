@@ -97,6 +97,18 @@
       }
       flex-basis: 100%;
       @extend .hide-for-small-only;
+      .block-menu-menu-anonymous-header-links {
+         width: 100%;
+          ul {
+            display: inline-block;
+            float: right;
+            margin: 0;
+            padding: 0;
+              li {
+                display: inline-block;
+              }
+          }
+      }
       .top-header-menu {
         float: right;
       }
@@ -172,6 +184,7 @@
         }
        }
      }
+
      .main-menu {
        flex-basis: 75%;
 
