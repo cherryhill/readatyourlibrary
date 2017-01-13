@@ -14,6 +14,24 @@
           return false;
         }
       });
+      //wrap 3 block in one and make a slider
+       $('input[type="radio"]').click(function(){
+         $(".slide").removeClass('open');
+        if($(this).attr("value")=="blslider1"){
+        $(".slide").not(".blslider1").addClass('close');
+        $(".blslider1.slide").removeClass('close').addClass('open');
+
+      }
+      if($(this).attr("value")=="blslider2"){
+        $(".slide").not(".blslider2").addClass('close');
+        $(".blslider2.slide").removeClass('close').addClass('open');
+      }
+      if($(this).attr("value")=="blslider3"){
+        $(".slide").not(".blslider3").addClass('close');
+        $(".blslider3.slide").removeClass('close').addClass('open');
+      }
+
+  });
       //making accordian
        $('.accordionWrapper .accordionItem').addClass('close');
        $('.accordionWrapper .accordionItem legend').click(function(){

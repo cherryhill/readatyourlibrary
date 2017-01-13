@@ -1,8 +1,178 @@
-// Blocks
-.block {}
-.block-title {}
-.block-content {}
+//homepage reward block
 
-// Drupal sytem blocks:
-// .block-search {}
-// .block-system {}
+.homepage-reward-block {
+  @extend .primary-background;
+
+  .view-header {
+    p {
+      margin-bottom: 0;
+
+      @extend .stroke-sidebar;
+    }
+  }
+
+  .view-footer {
+    padding-left: 20px;
+  }
+
+  .view-content {
+    padding: 25px 15px 0 30px;
+
+    * {
+      color: inherit;
+      font-family: inherit;
+    }
+
+    .reward-logo-text {
+      -webkit-flex-wrap: wrap;
+      flex-wrap: wrap;
+      display: -webkit-flex;
+      display: flex;
+      align-content: center;
+      align-items: center;
+      margin-bottom: 20px;
+
+      .reward-image {
+        flex-basis: 100px;
+      }
+
+      .reward-title {
+        flex-basis: calc(100% - 100px);
+        padding-left: 25px;
+      }
+    }
+  }
+}
+
+//home page vedio block
+.homepage-vedio-block {
+  @extend .primary-background;
+
+  .view-header {
+    p {
+      margin-bottom: 0;
+
+      @extend .stroke-main;
+    }
+  }
+
+  .view-footer {
+    padding: 0 35px;
+
+    a.button {
+      margin: 0;
+    }
+
+    p {
+      margin: 0;
+    }
+  }
+
+  .view-content {
+    padding: 20px 60px;
+
+    .owl-controls {
+      top: 20%;
+    }
+
+    .vedio-wrapper {
+      width: calc(100% - 6px);
+      margin: auto;
+      height: 0;
+      position: relative;
+      padding-bottom: 56.25%;
+
+      iframe, object, embed {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        left: 0;
+        top: 0;
+      }
+    }
+  }
+}
+
+//home-page booklist  slider
+.homepage-booklist-slider {
+  ul.booklist-pager {
+    margin: 0;
+    float: right;
+    display: inline-block;
+
+    input[type=radio] {
+      visibility: hidden;
+      position: absolute;
+      margin: 0;
+    }
+
+    input[type=radio] + label:before {
+      height: 20px;
+      width: 20px;
+      margin-right: 10px;
+      content: " ";
+      display: inline-block;
+      vertical-align: baseline;
+      border: 1px solid $white;
+      background: $white;
+      border-radius: 100%;
+
+      @media screen and (max-width: 767px) {
+        background: $orange;
+        border: 1px solid $orange;
+      }
+
+
+      @media only screen and (min-width: 768px) and (max-width: 1024px) {
+        background: $orange;
+        border: 1px solid $orange;
+      }
+    }
+
+    input[type=radio]:checked + label:before {
+      background: $blue;
+      border: 1px solid $blue;
+    }
+  }
+
+  .controls {
+    width: 100%;
+    display: inline-block;
+    position: relative;
+    bottom: -60px;
+    right: 20px;
+  }
+
+  .slide {
+    @extend .primary-background;
+
+    .stroke-main {
+      margin: 0;
+    }
+
+    .view-content {
+      padding: 20px 60px;
+    }
+
+    .booklist-wrapper {
+      width: 100%;
+      display: flex;
+      display: -webkit-flex;
+      align-items: center;
+      align-content: center;
+      height: 200px;
+    }
+
+    .view-footer {
+      padding: 0 35px;
+
+      a.button {
+        margin: 0;
+      }
+
+      p {
+        margin: 0;
+      }
+    }
+  }
+}

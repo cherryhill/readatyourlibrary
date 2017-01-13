@@ -60,6 +60,7 @@
 h1, h2, h3, h4, h5, h6 {
   @include primary_fonts;
   font-weight: normal;
+  text-transform: capitalize;
 }
 p {
   @include secondary_fonts;
@@ -70,7 +71,7 @@ h1 {
     font-size: 28px;
   }
 
-  .cs-classic &, .elegent & {
+  .cs-classic & .elegent & {
     font-size: 30px;
   }
 }
@@ -119,21 +120,11 @@ h6 {
   font-size: 14px;
 }
 
-body {
-   font-size: 17px;
-   line-height: 26px;
-    &.cs-default {
-    font-family: 'arial';
-    font-weight: normal;
-  }
 
-  &.cs-classic  {
-    font-family: 'Conv_PTS55F';
-    font-weight: normal;
-  }
 
-  &.cs-elegant  {
-    font-family: 'Opensans-regular';
-    font-weight: normal;
-  }
+ul, ol, dl {
+  list-style-position: inside;
+  @include primary_fsize;
 }
+
+

@@ -116,3 +116,46 @@
     font-size: 19px;
   }
 }
+
+.font-stroke-main {
+  @include primary_fonts;
+  height: 85px;
+  width: 100%;
+  background: url("../images/stroke");
+  padding-top: 14px;
+  border-radius: 15px 15px 0 0;
+  padding-left: 35px;
+  @extend h1;
+  @extend .white-text;
+   .cs-default & {
+     background-position: -95px -226px;
+   }
+   .cs-classic & {
+     background-position: -95px -569px;
+   }
+   .cs-elegant & {
+     background-position: -95px -914px;
+   }
+}
+.font-stroke-sidebar {
+    @include primary_fonts;
+  height: 85px;
+  width: 100%;
+  background: url("../images/stroke");
+  padding-top: 14px;
+  border-radius: 15px 15px 0 0;
+  padding-left: 30px;
+  @extend .white-text;
+   .cs-default & {
+     background-position: -60px -239px;
+     font-size: 22px;
+   }
+   .cs-classic & {
+     background-position: -60px -583px;
+     font-size: 25px;
+   }
+   .cs-elegant & {
+     background-position: -60px -928px;
+     font-size: 25px;
+   }
+}

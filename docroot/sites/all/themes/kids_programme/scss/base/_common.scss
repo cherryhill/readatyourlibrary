@@ -50,6 +50,106 @@
     display: none;
   }
 }
-.row {
-  max-width: 100% !important;
+
+
+.stroke-main {
+  @include primary_fonts;
+  height: 99px;
+  width: 100%;
+  background: url("../images/stroke");
+  padding-top: 14px;
+  border-radius: 15px 15px 0 0;
+  padding-left: 35px;
+  text-transform: capitalize;
+  @extend .white-text;
+   .cs-default & {
+     background-position: -95px -226px;
+     font-size: 28px;
+   }
+   .cs-classic & {
+     background-position: -95px -914px;
+     font-size: 30px;
+   }
+   .cs-elegant & {
+
+      background-position: -95px -569px;
+     font-size: 30px;
+   }
+}
+.stroke-sidebar {
+    @include primary_fonts;
+  height: 85px;
+  width: 100%;
+  text-transform: capitalize;
+  background: url("../images/stroke");
+  padding-top: 14px;
+  border-radius: 15px 15px 0 0;
+  padding-left: 30px;
+  @extend .white-text;
+   .cs-default & {
+     background-position: -60px -239px;
+     font-size: 22px;
+   }
+   .cs-classic & {
+      background-position: -60px -928px;
+     font-size: 25px;
+   }
+   .cs-elegant & {
+     background-position: -60px -583px;
+
+     font-size: 25px;
+   }
+}
+.primary-background {
+    .cs-default &,.cs-elegant & {
+      background: $blue;
+    }
+    .cs-classic & {
+      background: $darkblue;
+    }
+    color: $white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+    margin-bottom: 35px;
+    padding-bottom: 15px;
+    @include primary_fsize;
+    @include secondary_fonts;
+}
+.view-content {
+   position: relative;
+  .owl-controls {
+    margin-top: 0;
+    width: 100%;
+    position: absolute;
+    top: 40%;
+    left: -26px;
+    height: 0;
+    .owl-pagination {
+       display: none;
+    }
+    .owl-buttons {
+      width: calc(100% + 52px);
+      position: relative;
+      display: inline-block;
+      height: 0;
+       > div {
+        margin: 0;
+        border-radius: 0;
+        color: transparent;
+        background: transparent url("../images/dashboard");
+        padding: 0;
+        opacity: 1;
+       }
+      .owl-prev {
+         float: left;
+         background-position: -20px -595px;
+
+      }
+      .owl-next {
+        float: right;
+        background-position: -20px -1136px;
+      }
+    }
+  }
 }
