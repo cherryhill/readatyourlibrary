@@ -451,22 +451,6 @@ class LdapServer {
 
   public function createLdapEntry($attributes, $dn = NULL) {
 
-    $user_name = $_SESSION['sso_user_name'];
-    $user_email = $_SESSION['sso_user_email'];
-    $user_password =  $_SESSION['sso_user_pass'];
-
-    $attributes = array (
-    'cn' => $user_name,
-    'userPassword' => $user_password,
-    'objectclass' =>
-    array (
-      0 => 'inetOrgPerson',
-      1 => 'top',
-    ),
-    'sn' => '90',
-    'mail' => $user_email,
-   );
-
     if (!$this->connection) {
       $this->connect();
       $this->bind();
@@ -1135,7 +1119,7 @@ class LdapServer {
 			}
       else {
 				foreach ($errors as $err => $err_val){
-					watchdog('ldap_server', "Error storing picture: %$err", "%$err_val", WATCHDOG_ERROR );
+					watchdog('ldap_server', "Error storing picture: %$err", array("%$err" => $err_val), WATCHDOG_ERROR);
 				}
 				return FALSE;
 			}
