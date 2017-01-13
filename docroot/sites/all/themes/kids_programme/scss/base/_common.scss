@@ -1,3 +1,4 @@
+//backgrounds
 .yellow {
   background: $yellow;
 }
@@ -44,14 +45,14 @@
   background: -moz-radial-gradient(#7cb301, #6d9c05, #74a703);
   background: radial-gradient(#7cb301, #6d9c05, #74a703);
 }
-
+//hide
 .hide-for-small-only {
   @media screen and (max-width: 767px) {
     display: none;
   }
 }
 
-
+//stroke images
 .stroke-main {
   @include primary_fonts;
   height: 99px;
@@ -100,6 +101,7 @@
      font-size: 25px;
    }
 }
+//primary-background
 .primary-background {
     .cs-default &,.cs-elegant & {
       background: $blue;
@@ -116,6 +118,7 @@
     @include primary_fsize;
     @include secondary_fonts;
 }
+//default coursel
 .view-content {
    position: relative;
   .owl-controls {
@@ -152,4 +155,15 @@
       }
     }
   }
+}
+//default padding for zigzag image block content
+.b-padding {
+   padding: 20px 35px 18px;
+    p {
+       margin: 0;
+    }
+}
+//margin zer0 use
+.margin-0 {
+  margin: 0;
 }

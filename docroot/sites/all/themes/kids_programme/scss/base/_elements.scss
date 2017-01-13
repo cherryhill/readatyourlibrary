@@ -71,7 +71,7 @@ h1 {
     font-size: 28px;
   }
 
-  .cs-classic & .elegent & {
+  .cs-classic &,.cs-elegant & {
     font-size: 30px;
   }
 }
@@ -81,7 +81,7 @@ h2 {
     font-size: 25px;
   }
 
-  .cs-classic &, .elegent & {
+  .cs-classic &,.cs-elegant & {
     font-size: 28px;
   }
 }
@@ -91,13 +91,13 @@ h3 {
     font-size: 22px;
   }
 
-  .cs-classic &, .elegent & {
+  .cs-classic &,.cs-elegant & {
     font-size: 25px;
   }
 }
 
 h4 {
-  .cs-classic &, .elegent & {
+  .cs-classic &,.cs-elegant & {
     font-size: 22px;
   }
 
@@ -105,7 +105,7 @@ h4 {
 }
 
 h5 {
-  .cs-classic &, .elegent & {
+  .cs-classic &,.cs-elegant & {
     font-size: 19px;
   }
 
@@ -113,7 +113,7 @@ h5 {
 }
 
 h6 {
-  .cs-classic &, .elegent & {
+  .cs-classic &,.cs-elegant & {
     font-size: 16px;
   }
 
@@ -126,5 +126,11 @@ ul, ol, dl {
   list-style-position: inside;
   @include primary_fsize;
 }
-
+p {
+  @include primary_fsize;
+  margin-bottom: 20px;
+   .view-content &,.view-header &,.view-footer & {
+    margin-bottom: 0;
+   }
+}
 
