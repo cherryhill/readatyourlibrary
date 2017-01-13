@@ -186,6 +186,29 @@ function play_library_program_default_page_manager_pages() {
   $pane->uuid = '7e5f67e9-70fe-4ff0-9cab-51a7b7a4cfa7';
   $display->content['new-7e5f67e9-70fe-4ff0-9cab-51a7b7a4cfa7'] = $pane;
   $display->panels['top'][0] = 'new-7e5f67e9-70fe-4ff0-9cab-51a7b7a4cfa7';
+  $pane = new stdClass();
+  $pane->pid = 'new-93e8f228-d808-4e98-91ac-b889b8ed8eef';
+  $pane->panel = 'top';
+  $pane->type = 'block';
+  $pane->subtype = 'menu-menu-reports-for-patron-users';
+  $pane->shown = TRUE;
+  $pane->access = array();
+  $pane->configuration = array(
+    'override_title' => 1,
+    'override_title_text' => 'Statistical Reports ',
+    'override_title_heading' => 'h2',
+  );
+  $pane->cache = array();
+  $pane->style = array(
+    'settings' => NULL,
+  );
+  $pane->css = array();
+  $pane->extras = array();
+  $pane->position = 1;
+  $pane->locks = array();
+  $pane->uuid = '93e8f228-d808-4e98-91ac-b889b8ed8eef';
+  $display->content['new-93e8f228-d808-4e98-91ac-b889b8ed8eef'] = $pane;
+  $display->panels['top'][1] = 'new-93e8f228-d808-4e98-91ac-b889b8ed8eef';
   $display->hide_title = PANELS_TITLE_FIXED;
   $display->title_pane = 'new-7e5f67e9-70fe-4ff0-9cab-51a7b7a4cfa7';
   $handler->conf['display'] = $display;

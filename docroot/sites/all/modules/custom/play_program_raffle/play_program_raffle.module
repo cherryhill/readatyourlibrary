@@ -419,12 +419,12 @@ function ppr_active_rafle_list(){
   if (isset($result['reward'])) {
     $raffle_rewards_id = array_keys($result['reward']);
     $raffle_rewards = entity_load('reward', $raffle_rewards_id);
-  }
 
   foreach ($raffle_rewards as $raffle) {
     $options_raffle[$raffle->id] = $raffle->title;
   }
   return $options_raffle;
+  }
 }
 
 /**
@@ -440,7 +440,7 @@ function ppr_raffle_entry_process($form, &$form_state) {
   $form['active_raffle'] = array(
     '#title' => t('Select Raffle'),
     '#type' => 'select',
-    '#options' => ppr_active_rafle_list(), 
+    '#options' => ppr_active_rafle_list() ? ppr_active_rafle_list() : array(''),  
     '#required' => TRUE,
   );
 
@@ -621,7 +621,8 @@ function raffle_user_list($form, &$form_state) {
   $query->condition('eck.type','raffle_claim');
 
   //get results based on Checkbox for including winners checkboxess
-    $query->condition('claim.field_raffle_claim_id_target_id', $raffle_id);
+  $query->condition('claim.field_raffle_claim_id_target_id', $raffle_id);
+  
   if($rf_this == 0){
     $query->condition('rf_win.field_rf_receieved_reward_value', 0);
   }
@@ -705,7 +706,7 @@ function raffle_user_list($form, &$form_state) {
 
     $res = $qry->execute()->fetchAll();
 
-    // echo '<pre>'; print_r($res); die();
+    // echo '<pre>'; print_r($res); die('qwe');
 
     foreach ($res as $value) {
       $tbl_rows[] = array(
@@ -744,20 +745,21 @@ function pl_update_raffle_tbl($user_id, $raffle_id, $rf_drawing_name){
   $query->condition('eck.uid',$user_id);
   $sub_query = $query->execute()->fetchAll();
 
-  foreach ($sub_query as $value) {
-    $raffle_rewards_id[] = $value->id;
-  }
+  // echo '<pre>'; print_r($sub_query); die();
 
-  $reward_claim = entity_load('reward', array($raffle_rewards_id));
-  $reward_claim = reset($reward_claim);
-  //Get reward field language codes
-  $lang = field_language('reward',$reward_claim);
-  foreach ($lang as $key => $value) {
-    ${$key} = $value;
+  foreach ($sub_query as $value) {
+    $reward_claim = entity_load('reward', array($value->id));
+    $reward_claim = reset($reward_claim);
+    //Get reward field language codes
+    $lang = field_language('reward',$reward_claim);
+    foreach ($lang as $key => $value) {
+      ${$key} = $value;
+    }
+    $reward_claim->field_rf_receieved_reward[$field_rf_receieved_reward][0]['value'] = 1;
+    $reward_claim->field_raffle_drawing_name[$field_raffle_drawing_name][0]['value'] = $rf_drawing_name;
+    entity_save('reward', $reward_claim);
+    // $raffle_rewards_id[] = $value->id;
   }
-  $reward_claim->field_rf_receieved_reward[$field_rf_receieved_reward][0]['value'] = 1;
-  $reward_claim->field_raffle_drawing_name[$field_raffle_drawing_name][0]['value'] = $rf_drawing_name;
-  entity_save('reward', $reward_claim);
 }
 
 

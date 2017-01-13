@@ -105,7 +105,7 @@ function play_library_program_field_default_field_bases() {
       'profile2_private' => FALSE,
       'target_type' => 'activity',
     ),
-    'translatable' => 1,
+    'translatable' => 0,
     'type' => 'entityreference',
   );
 
@@ -388,7 +388,7 @@ function play_library_program_field_default_field_bases() {
       'max_length' => 255,
       'profile2_private' => FALSE,
     ),
-    'translatable' => 0,
+    'translatable' => 1,
     'type' => 'text',
   );
 
@@ -497,6 +497,27 @@ function play_library_program_field_default_field_bases() {
     'type' => 'text',
   );
 
+  // Exported field_base: 'field_raff_draw_timestamp'.
+  $field_bases['field_raff_draw_timestamp'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_raff_draw_timestamp',
+    'field_permissions' => array(
+      'type' => 0,
+    ),
+    'indexes' => array(),
+    'locked' => 0,
+    'module' => 'number',
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+      'profile2_private' => FALSE,
+    ),
+    'translatable' => 0,
+    'type' => 'number_integer',
+  );
+
   // Exported field_base: 'field_raffle_claim'.
   $field_bases['field_raffle_claim'] = array(
     'active' => 1,
@@ -514,7 +535,7 @@ function play_library_program_field_default_field_bases() {
       'entity_translation_sync' => FALSE,
       'profile2_private' => FALSE,
     ),
-    'translatable' => 0,
+    'translatable' => 1,
     'type' => 'number_integer',
   );
 
@@ -535,7 +556,7 @@ function play_library_program_field_default_field_bases() {
       'entity_translation_sync' => FALSE,
       'profile2_private' => FALSE,
     ),
-    'translatable' => 0,
+    'translatable' => 1,
     'type' => 'number_integer',
   );
 
@@ -546,6 +567,9 @@ function play_library_program_field_default_field_bases() {
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_reward_claim_id',
+    'field_permissions' => array(
+      'type' => 0,
+    ),
     'indexes' => array(
       'target_id' => array(
         0 => 'target_id',
@@ -566,10 +590,7 @@ function play_library_program_field_default_field_bases() {
           'type' => 'none',
         ),
         'target_bundles' => array(
-          'physical_reward' => 'physical_reward',
-          'print_reward' => 'print_reward',
           'reward' => 'reward',
-          'sticker' => 'sticker',
         ),
       ),
       'profile2_private' => FALSE,
@@ -645,7 +666,7 @@ function play_library_program_field_default_field_bases() {
       'max_length' => 255,
       'profile2_private' => FALSE,
     ),
-    'translatable' => 0,
+    'translatable' => 1,
     'type' => 'text',
   );
 
@@ -679,7 +700,7 @@ function play_library_program_field_default_field_bases() {
       'todate' => '',
       'tz_handling' => 'none',
     ),
-    'translatable' => 0,
+    'translatable' => 1,
     'type' => 'datetime',
   );
 
@@ -730,7 +751,7 @@ function play_library_program_field_default_field_bases() {
       'entity_translation_sync' => FALSE,
       'profile2_private' => FALSE,
     ),
-    'translatable' => 0,
+    'translatable' => 1,
     'type' => 'text_long',
   );
 
@@ -756,7 +777,7 @@ function play_library_program_field_default_field_bases() {
       'max_length' => 255,
       'profile2_private' => FALSE,
     ),
-    'translatable' => 0,
+    'translatable' => 1,
     'type' => 'text',
   );
 

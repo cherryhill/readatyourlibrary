@@ -360,26 +360,30 @@ function pl_adding_taxonomy_term_for_reward($entity, $type){
  * List of reward ids associated with particular activity
  */
 function pl_get_activity_reward_ids($activity_id, $account_uid = NULL){
+	//Get current user if account uid is not available
+	global $user;
+	if(empty($account_uid)){
+	$account = $user;
+	} else {
+	$account = user_load($account_uid);
+	}
 
-  global $user;
+	//Get reward ids based on activity
+	$query = new EntityFieldQuery();
+	$query->entityCondition('entity_type','reward');
+	$query->entityCondition('bundle','reward');
+	$query->fieldCondition('field_activities_reward', 'target_id', $activity_id);
+	$result = $query->execute();
 
-  if(empty($account_uid)){
-    $account = $user;
-  } else {
-    $account = user_load($account_uid);
-  }
-
-  $query = new EntityFieldQuery();
-  $query->entityCondition('entity_type','reward');
-  $query->entityCondition('bundle','reward');
-  $query->fieldCondition('field_activities_reward', 'target_id', $activity_id);
-  
-  $result = $query->execute();
-
-  foreach($result['reward'] as $reward){
-    $rids[] = $reward->id;
-  }
-  return $rids;
+	//get all reward ids in an array
+	foreach($result['reward'] as $reward){
+		$rids[] = $reward->id;
+	}
+	if(sizeof($rids)==0){
+		return FALSE;
+	}else{
+		return $rids;
+	}
 }
 
 /**
@@ -752,6 +756,8 @@ function play_library_program_userpoints($op, &$params = array()) {
         $claimed_points = $claimed_points + $reward_points;
         // drupal_set_message('User Points:'. $user_points.'|| Claimed points: '. $claimed_points.' || Received Rewards: '.$receieved_rewards. ' || Max repeat:'. $max_repeat);
       }
+      $_SESSION[${$user_points_category_name}] = $reward_points - $user_points;
+
       //deduct claimed points
       if($claimed_points > 0){
         $userpoint_rew = array(
@@ -766,6 +772,9 @@ function play_library_program_userpoints($op, &$params = array()) {
     }
   }
 }
+
+
+
 
 
 /**
@@ -900,72 +909,76 @@ function play_library_program_retrieve_activity_participation($activity_id, $acc
  * Creates a new activity entry
  */
 function play_library_program_create_activity_entry($activity_id, $account_id, $event_time = NULL, $sticker_tid) {
-	//Load required activity to be recorded
-	$activities = entity_load('activity', array($activity_id));
-	$activity = reset($activities);
-	//get language codes for activity fields
-	$lang = field_language('activity',$activity);
-	foreach ($lang as $key => $value) {
-  		${$key} = $value;
-  	}
-  	if ($event_time == NULL){
-  		$event_time = time();
-  	}
+	if ($event_time <= time()){
+		//Load required activity to be recorded
+		$activities = entity_load('activity', array($activity_id));
+		$activity = reset($activities);
+		//get language codes for activity fields
+		$lang = field_language('activity',$activity);
+		foreach ($lang as $key => $value) {
+	  		${$key} = $value;
+	  	}
+	  	if ($event_time == NULL){
+	  		$event_time = time();
+	  	}
 
-	// Count for number of times activity has been performed.
-	$count_activity_entry = play_library_program_retrieve_activity_participation($activity_id, $account_id);
+		// Count for number of times activity has been performed.
+		$count_activity_entry = play_library_program_retrieve_activity_participation($activity_id, $account_id);
 
-  	// Activity limit
-  	$no_of_time_user_perform_activity = $activity->field_activity_limit[$field_activity_limit][0]['value'];
-  	//Set $no_of_time_user_perform_activity to 0 if empty
-  	if (empty($no_of_time_user_perform_activity)){
-  		$no_of_time_user_perform_activity = 0;
-  	}
-  	// Activity points
-  	$activity_point = $activity->field_activity_points[$field_activity_points][0]['value'];
+	  	// Activity limit
+	  	$no_of_time_user_perform_activity = $activity->field_activity_limit[$field_activity_limit][0]['value'];
+	  	//Set $no_of_time_user_perform_activity to 0 if empty
+	  	if (empty($no_of_time_user_perform_activity)){
+	  		$no_of_time_user_perform_activity = 0;
+	  	}
+	  	// Activity points
+	  	$activity_point = $activity->field_activity_points[$field_activity_points][0]['value'];
 
-	// checking of activity frequency limit
-	$activity_frequency_limit = play_library_program_frequency_limit($activity, $event_time, $account_id);
+		// checking of activity frequency limit
+		$activity_frequency_limit = play_library_program_frequency_limit($activity, $event_time, $account_id);
 
-	// checking time range for activity to be performed
-	$activity_time_limit = play_library_program_activity_time_limit($activity, $event_time);
+		// checking time range for activity to be performed
+		$activity_time_limit = play_library_program_activity_time_limit($activity, $event_time);
 
-	//Record activity only if user has not hit the maximumnumber of times he can perform the activity
+		//Record activity only if user has not hit the maximumnumber of times he can perform the activity
 
-	if($count_activity_entry < $no_of_time_user_perform_activity || $no_of_time_user_perform_activity == 0) {
-		//Check frequency limits and time limits for activity 
-  		if (($activity_frequency_limit == TRUE) && ($activity_time_limit == TRUE)) {
-  			// title for activity entry in activity_entry bundle
-    		$title = t("@activity on @time", array('@activity' => $activity->title, '@time' => date("Y-m-d H:i", $event_time)));
-    		//if event time is set create activity for set event time 
-    		if ($event_time){
-    			$activity_entry = entity_create('activity', array('type' => 'activity_entry', 'title' => $title, 'uid' => $account_id, 'created' => $event_time, 'activity_points' => $activity_point));
-    		}
+		if($count_activity_entry < $no_of_time_user_perform_activity || $no_of_time_user_perform_activity == 0) {
+			//Check frequency limits and time limits for activity 
+	  		if (($activity_frequency_limit == TRUE) && ($activity_time_limit == TRUE)) {
+	  			// title for activity entry in activity_entry bundle
+	    		$title = t("@activity on @time", array('@activity' => $activity->title, '@time' => date("Y-m-d H:i", $event_time)));
+	    		//if event time is set create activity for set event time 
+	    		if ($event_time){
+	    			$activity_entry = entity_create('activity', array('type' => 'activity_entry', 'title' => $title, 'uid' => $account_id, 'created' => $event_time, 'activity_points' => $activity_point));
+	    		}
 
-			//get language code for newly created activity
-			$lang = field_language('activity',  $activity_entry);
-			foreach ($lang as $key => $value) {
-				${$key} = $value;
+				//get language code for newly created activity
+				$lang = field_language('activity',  $activity_entry);
+				foreach ($lang as $key => $value) {
+					${$key} = $value;
+		  		}
+
+	  			//Get all field values of activity entry to be updated
+	  			$activity_entry->field_activity_entry_activity[$field_activity_entry_activity][0]['target_id'] = $activity->id;
+	   			$activity_entry->field_activity_point[$field_activity_point][0]['value'] = $activity_point;
+	    		$activity_entry->field_calendar_sticker_id[$field_calendar_sticker_id][0]['tid'] = $sticker_tid;
+	    		//Save activity entry
+	    		entity_save('activity', $activity_entry);
+	    		$author = variable_get('pm_author');
+	    		$author_name = user_load_by_name($author);
+	    		$author_uid = $author_name->uid;
+	    		 
+	    		// Private message subject and body for every activity.
+	 			$message_subject = $activity->field_activity_message_subject[$field_activity_message_subject][0]['value'];
+				$message_body = $activity->field_activity_message[$field_activity_message][0]['value'];
+	    		//Send Private message
+	    		_play_library_program_send_pm_message($account_id, $message_subject, $message_body);
 	  		}
-
-  			//Get all field values of activity entry to be updated
-  			$activity_entry->field_activity_entry_activity[$field_activity_entry_activity][0]['target_id'] = $activity->id;
-   			$activity_entry->field_activity_point[$field_activity_point][0]['value'] = $activity_point;
-    		$activity_entry->field_calendar_sticker_id[$field_calendar_sticker_id][0]['tid'] = $sticker_tid;
-    		//Save activity entry
-    		entity_save('activity', $activity_entry);
-    		$author = variable_get('pm_author');
-    		$author_name = user_load_by_name($author);
-    		$author_uid = $author_name->uid;
-    		 
-    		// Private message subject and body for every activity.
- 			$message_subject = $activity->field_activity_message_subject[$field_activity_message_subject][0]['value'];
-			$message_body = $activity->field_activity_message[$field_activity_message][0]['value'];
-    		//Send Private message
-    		_play_library_program_send_pm_message($account_id, $message_subject, $message_body);
-  		}
-  	}else {
-		drupal_set_message(t('Thanks for your submission. However you will not receive any points as you have exceeded maximum number of submissions allowed for this activity'), 'warning');
+	  	}else {
+			drupal_set_message(t('Thanks for your submission. However you will not receive any points as you have exceeded maximum number of submissions allowed for this activity'), 'warning');
+		}
+	} else {
+		drupal_set_message(t('You can record an activity for today or past dates only'),'warning');
 	} 
 }
 
@@ -1897,7 +1910,6 @@ function _play_library_program_send_pm_message($account_id, $notification_subjec
   	$author = variable_get('pm_author');
   	$author_name = user_load_by_name($author);
   	$author_uid = array('author'=>$author_name);
-  	// print_r($author_uid);
   } else{
   	$author_uid = array('author'=>user_load($author_uid));
   }
@@ -1916,25 +1928,24 @@ function _play_library_program_send_pm_message($account_id, $notification_subjec
   }
 }
 
- //Function to update actiity entry
-  function play_library_program_update_activity_entry($activity_entry_id, $update_time, $user_id, $activity_id){
-    if ($user_id == Null){
-      global $user;
-      $user_id = $user->uid;
-    }
-    //print_r('activity_id='.$activity_id);
-    //Verify if new date is within activity date and frequency limit
-    
-    $activity = entity_load('activity', array($activity_id));
-    $activity_frequency_limit = play_library_program_frequency_limit(reset($activity), $update_time, $user_id);
-    $activity_time_limit = play_library_program_activity_time_limit(reset($activity), $update_time);
+//Function to update actiity entry
+function play_library_program_update_activity_entry($activity_entry_id, $update_time, $user_id, $activity_id){
+	if ($user_id == Null){
+		global $user;
+		$user_id = $user->uid;
+	}
 
-    //print_r('message ' .$activity_frequency_limit.'||'.$activity_time_limit);
-    $activity_entry = entity_load('activity',array($activity_entry_id));
-    if ($activity_frequency_limit == TRUE && $activity_time_limit == TRUE){
-        $w_activity = entity_metadata_wrapper('activity', reset($activity_entry));
-        $w_activity->created = $update_time;
-        $w_activity->save();
-        drupal_set_message(t('Your activity date is updated to '. date('Y-M-d',$update_time)), 'status');
-    }
-  }
+	//Verify if new date is within activity date and frequency limit
+	$activity = entity_load('activity', array($activity_id));
+	$activity_frequency_limit = play_library_program_frequency_limit(reset($activity), $update_time, $user_id);
+	$activity_time_limit = play_library_program_activity_time_limit(reset($activity), $update_time);
+
+	//print_r('message ' .$activity_frequency_limit.'||'.$activity_time_limit);
+	$activity_entry = entity_load('activity',array($activity_entry_id));
+	if ($activity_frequency_limit == TRUE && $activity_time_limit == TRUE){
+	    $w_activity = entity_metadata_wrapper('activity', reset($activity_entry));
+	    $w_activity->created = $update_time;
+	    $w_activity->save();
+	    drupal_set_message(t('Your activity date is updated to <b>'. date('d-M-Y',$update_time)).'</b>', 'status');
+	}
+}

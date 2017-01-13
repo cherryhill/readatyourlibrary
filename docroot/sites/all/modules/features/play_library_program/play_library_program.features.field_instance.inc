@@ -1547,6 +1547,55 @@ function play_library_program_field_default_field_instances() {
     'workbench_access_field' => 0,
   );
 
+  // Exported field_instance: 'reward-reward_claim-field_raff_draw_timestamp'.
+  $field_instances['reward-reward_claim-field_raff_draw_timestamp'] = array(
+    'bundle' => 'reward_claim',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'number',
+        'settings' => array(
+          'decimal_separator' => '.',
+          'prefix_suffix' => TRUE,
+          'scale' => 0,
+          'thousand_separator' => '',
+        ),
+        'type' => 'number_integer',
+        'weight' => 8,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'display_label' => '',
+    'entity_type' => 'reward',
+    'field_name' => 'field_raff_draw_timestamp',
+    'label' => 'Raffle Draw Timestamp',
+    'required' => 0,
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+      'max' => '',
+      'min' => '',
+      'prefix' => '',
+      'suffix' => '',
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'number',
+      'settings' => array(),
+      'type' => 'number',
+      'weight' => 9,
+    ),
+    'workbench_access_field' => 0,
+  );
+
   // Exported field_instance: 'reward-reward_claim-field_raffle_claim'.
   $field_instances['reward-reward_claim-field_raffle_claim'] = array(
     'bundle' => 'reward_claim',
@@ -1677,6 +1726,7 @@ function play_library_program_field_default_field_instances() {
         'weight' => 0,
       ),
     ),
+    'display_label' => '',
     'entity_type' => 'reward',
     'field_name' => 'field_reward_claim_id',
     'label' => 'Reward Claim ID',
@@ -1699,6 +1749,7 @@ function play_library_program_field_default_field_instances() {
       'type' => 'options_select',
       'weight' => 1,
     ),
+    'workbench_access_field' => 0,
   );
 
   // Exported field_instance: 'reward-reward_claim-field_rf_drawing_name'.
@@ -2231,6 +2282,7 @@ function play_library_program_field_default_field_instances() {
   t('Print Reward FIle');
   t('Progress page information');
   t('Raffle Claim');
+  t('Raffle Draw Timestamp');
   t('Raffle Drawing Name');
   t('Raffle reward pick up date');
   t('Reward Claim ID');
