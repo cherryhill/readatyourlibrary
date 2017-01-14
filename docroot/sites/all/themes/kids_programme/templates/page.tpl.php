@@ -135,7 +135,6 @@
     <?php if (!empty($page['sidebar_first'])): ?>
       <aside role="complementary" class="<?php print $sidebar_first_grid; ?> sidebar-first columns sidebar">
         <div class='first'><?php print render($page['sidebar_first']); ?> </div>
-        <?php print render($page['sidebar_first']); ?>
       </aside>
     <?php endif; ?>
 

@@ -1,8 +1,64 @@
-// Non-modular or client styles for the .l-content region.
+body {
+   font-size: 17px;
+   line-height: 26px;
 
-.l-main {}
+    &.cs-default {
+    font-family: 'arial';
+    font-weight: normal;
+
+  }
+
+  &.cs-classic  {
+    font-family: 'Conv_PTS55F';
+    font-weight: normal;
+     #admin-menu {
+    font-size: 9px;
+    font-family: "lucida grande", tahoma, verdana, arial, sans-serif !important;
+    line-height: 1;
+   }
+  }
+
+  &.cs-elegant  {
+    font-family: 'Opensans-regular';
+    font-weight: normal;
+     #admin-menu {
+    font-size: 9px;
+    font-family: "lucida grande", tahoma, verdana, arial, sans-serif !important;
+    line-height: 1;
+   }
+  }
+}
+
+
+
+.l-main {
+  width: 100%;
+  padding-top: 35px;
+  margin: auto;
+}
+
+.columns {
+  padding-left: 20px !important;
+  padding-right: 20px !important;
+}
+.row {
+  max-width: 100% !important;
+   &.l-main {
+      max-width: 1224px !important;
+   }
+}
 
 .node {}
 .body {}
 .image {}
 .breadcrumb {}
+ #admin-menu {
+    font-size: 9px !important;
+    font-family: "lucida grande", tahoma, verdana, arial, sans-serif !important;
+    line-height: 1 !important;
+      * {
+        font-size: inherit;
+        font-family: inherit;
+        line-height: inherit;
+      }
+   }

@@ -4,6 +4,9 @@
 // "scss/_variables.scss" file.
 
 .button,button {
+  &.radius {
+    border-radius: 10px;
+  }
   display: inline-block !important;
   padding: 6px 24px !important;
   text-decoration: none;
@@ -34,6 +37,9 @@
     }
 
 }
+.abc {
+  @extend .btn-large;
+}
 .btn {
   display: inline-block;
   padding: 6px 24px;
@@ -46,7 +52,9 @@
    .cs-default & {
       @extend .blue;
     }
-
+    .cs-elegant & {
+      @extend .red1;
+    }
     .cs-classic & {
       background: $sky-blue;
     }
@@ -152,7 +160,7 @@
 
       @extend .light-orange;
 
-      color: #fff;
+      color: $white;
     }
   }
 }
