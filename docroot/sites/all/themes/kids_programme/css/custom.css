@@ -1,35 +1,9 @@
-/* @file
- * This file is a custom file that loads all files. Each non-base layer
- * can be disabled.
- *
- * Do not name this file, "app.scss". If you run a compass update this file can
- * be wiped out with a compass update. By default, when a compass project is
- * created the file will be named app.scss. Thus this file is named,
- * THEMENAME.scss.
- *
- * This application file (THEMENAME.scss) is where all the partials are
- * imported.
- *
- * Theme styles are categorized using SMACSS standards. They utilize
- * categorization of styles into various categories. Those categories are the
- * following:
- *
- * - Base: CSS reset/normalize plus HTML element styling.
- * - Layout: Macro arrangement of a web page, including any grid systems.
- * - Component: Dictate minor layout modules or reusable elements.
- * - State: Describe the appearance of a module in various states.
- * - Theme: Purely visual optional styling ("look-and-feel") for a component.
- *
- * For more information about this new Drupal css file standard, please review
- * the following:
- * - https://drupal.org/node/1887922
- * - http://smacss.com/
- */
 /*
  * Theme specific variables. This takes the place of the normal _settings.scss.
  * See the STARTER/README.txt file regarding "CHANGING FOUNDATION DEFAULT
  * SETTINGS" for documentation.
  */
+@import url("https://fonts.googleapis.com/css?family=Architects+Daughter|Margarine|McLaren|Open+Sans:400,700|PT+Sans:400,700");
 /*! normalize.css v2.1.2 | MIT License | git.io/normalize */
 /* ==========================================================================
    HTML5 display definitions
@@ -7319,7 +7293,7 @@ a.th {
 }
 
 /* Each individual part that can be added in */
-/* line 120, ../scss/base/_mixins.scss */
+/* line 122, ../scss/base/_mixins.scss */
 .font-stroke-main {
   height: 85px;
   width: 100%;
@@ -7330,33 +7304,33 @@ a.th {
 }
 /* line 20, ../scss/base/_mixins.scss */
 .cs-default .font-stroke-main {
-  font-family: 'Conv_McLaren-Regular';
+  font-family: "McLaren", cursive;
   font-weight: normal;
 }
 /* line 25, ../scss/base/_mixins.scss */
 .cs-classic .font-stroke-main {
-  font-family: 'Conv_ArchitectsDaughter';
+  font-family: "Architects Daughter", cursive;
   font-weight: normal;
 }
 /* line 30, ../scss/base/_mixins.scss */
 .cs-elegant .font-stroke-main {
-  font-family: 'Conv_margarine-regular';
+  font-family: "Margarine", cursive;
   font-weight: normal;
 }
-/* line 130, ../scss/base/_mixins.scss */
+/* line 132, ../scss/base/_mixins.scss */
 .cs-default .font-stroke-main {
   background-position: -95px -226px;
 }
-/* line 133, ../scss/base/_mixins.scss */
+/* line 135, ../scss/base/_mixins.scss */
 .cs-classic .font-stroke-main {
   background-position: -95px -569px;
 }
-/* line 136, ../scss/base/_mixins.scss */
+/* line 138, ../scss/base/_mixins.scss */
 .cs-elegant .font-stroke-main {
   background-position: -95px -914px;
 }
 
-/* line 140, ../scss/base/_mixins.scss */
+/* line 142, ../scss/base/_mixins.scss */
 .font-stroke-sidebar {
   height: 85px;
   width: 100%;
@@ -7367,86 +7341,86 @@ a.th {
 }
 /* line 20, ../scss/base/_mixins.scss */
 .cs-default .font-stroke-sidebar {
-  font-family: 'Conv_McLaren-Regular';
+  font-family: "McLaren", cursive;
   font-weight: normal;
 }
 /* line 25, ../scss/base/_mixins.scss */
 .cs-classic .font-stroke-sidebar {
-  font-family: 'Conv_ArchitectsDaughter';
+  font-family: "Architects Daughter", cursive;
   font-weight: normal;
 }
 /* line 30, ../scss/base/_mixins.scss */
 .cs-elegant .font-stroke-sidebar {
-  font-family: 'Conv_margarine-regular';
+  font-family: "Margarine", cursive;
   font-weight: normal;
 }
-/* line 149, ../scss/base/_mixins.scss */
+/* line 151, ../scss/base/_mixins.scss */
 .cs-default .font-stroke-sidebar {
   background-position: -60px -239px;
   font-size: 22px;
 }
-/* line 153, ../scss/base/_mixins.scss */
+/* line 155, ../scss/base/_mixins.scss */
 .cs-classic .font-stroke-sidebar {
   background-position: -60px -583px;
   font-size: 25px;
 }
-/* line 157, ../scss/base/_mixins.scss */
+/* line 159, ../scss/base/_mixins.scss */
 .cs-elegant .font-stroke-sidebar {
   background-position: -60px -928px;
   font-size: 25px;
 }
 
-/* line 1, ../scss/base/_common.scss */
+/* line 2, ../scss/base/_common.scss */
 .yellow, .cs-default .l-header .pre-header, .cs-classic .l-header .header-middle, .cs-default .button, .cs-default button, .cs-elegant .btn.btn-large.msg.new, .cs-elegant .btn.msg.new.abc, .cs-default .btn.btn-primary, .cs-elegant .mobile-menu ul.mobile-top-menu li a.msg.new {
   background: #fdeb52;
 }
 
-/* line 5, ../scss/base/_common.scss */
+/* line 6, ../scss/base/_common.scss */
 .blue, .cs-default .block-menu-menu-anonymous-header-links ul.menu li a, .cs-default .btn, .cs-default .btn.btn-large, .cs-default .btn.abc, .cs-default .mobile-menu ul.mobile-top-menu li a {
   background: #267fda;
 }
 
-/* line 9, ../scss/base/_common.scss */
+/* line 10, ../scss/base/_common.scss */
 .dark-blue1 {
   background: #154c84;
 }
 
-/* line 13, ../scss/base/_common.scss */
+/* line 14, ../scss/base/_common.scss */
 .red, .cs-default .btn.btn-large.msg.new, .cs-default .btn.msg.new.abc, .cs-default .mobile-menu ul.mobile-top-menu li a.msg.new {
   background: #cc0d25;
 }
 
-/* line 18, ../scss/base/_common.scss */
+/* line 19, ../scss/base/_common.scss */
 .white {
   background: #fff;
 }
 
-/* line 22, ../scss/base/_common.scss */
+/* line 23, ../scss/base/_common.scss */
 .dark-blue, .cs-classic .l-header .pre-header, .cs-classic .post-footer.contain-to-grid, .cs-classic .l-footer, .cs-classic .menu-wrapper ul.menu li a:hover, .cs-classic .menu-wrapper ul.menu li a.active, .cs-classic .menu-wrapper ul.menu li a:focus, .cs-classic .mobile-menu + ul li a:hover, .cs-classic .mobile-menu + ul li a.active, .cs-classic .mobile-menu + ul li a:focus {
   background: #084899;
 }
 
-/* line 26, ../scss/base/_common.scss */
+/* line 27, ../scss/base/_common.scss */
 .light-orange, .cs-elegant .l-header .header-middle, .cs-elegant .post-footer.contain-to-grid, .cs-elegant .l-footer, .cs-classic .button, .cs-elegant .button, .cs-classic button, .cs-elegant button, .cs-classic .btn.btn-large.msg.new, .cs-classic .btn.msg.new.abc, .cs-classic .btn.btn-primary, .cs-elegant .btn.btn-primary, .cs-classic .mobile-menu ul.mobile-top-menu li a.msg.new {
   background: #ff9f1c;
 }
 
-/* line 30, ../scss/base/_common.scss */
+/* line 31, ../scss/base/_common.scss */
 .mint-green, .cs-elegant .l-header .pre-header {
   background: #2ec4b6;
 }
 
-/* line 34, ../scss/base/_common.scss */
+/* line 35, ../scss/base/_common.scss */
 .red1, .cs-elegant .block-menu-menu-anonymous-header-links ul.menu li a, .cs-elegant .btn, .cs-elegant .btn.btn-large, .cs-elegant .btn.abc, .cs-elegant .mobile-menu ul.mobile-top-menu li a {
   background: #e71d36;
 }
 
-/* line 38, ../scss/base/_common.scss */
+/* line 39, ../scss/base/_common.scss */
 .white-text, .font-stroke-main, .font-stroke-sidebar, .stroke-main, .homepage-vedio-block .view-header p, .stroke-sidebar, .homepage-reward-block .view-header p {
   color: #fff;
 }
 
-/* line 41, ../scss/base/_common.scss */
+/* line 42, ../scss/base/_common.scss */
 .green-gradiant, .cs-default .l-header .header-middle, .cs-default .post-footer.contain-to-grid, .cs-default .l-footer {
   background: #7cb301;
   background: -webkit-radial-gradient(#7cb301, #6d9c05, #74a703);
@@ -7455,13 +7429,13 @@ a.th {
 }
 
 @media screen and (max-width: 767px) {
-  /* line 48, ../scss/base/_common.scss */
+  /* line 49, ../scss/base/_common.scss */
   .hide-for-small-only, .l-header .pre-header .breadcurm, .l-header .pre-header .top-menu {
     display: none;
   }
 }
 
-/* line 55, ../scss/base/_common.scss */
+/* line 56, ../scss/base/_common.scss */
 .stroke-main, .homepage-vedio-block .view-header p {
   height: 99px;
   width: 100%;
@@ -7473,36 +7447,36 @@ a.th {
 }
 /* line 20, ../scss/base/_mixins.scss */
 .cs-default .stroke-main, .cs-default .homepage-vedio-block .view-header p, .homepage-vedio-block .view-header .cs-default p {
-  font-family: 'Conv_McLaren-Regular';
+  font-family: "McLaren", cursive;
   font-weight: normal;
 }
 /* line 25, ../scss/base/_mixins.scss */
 .cs-classic .stroke-main, .cs-classic .homepage-vedio-block .view-header p, .homepage-vedio-block .view-header .cs-classic p {
-  font-family: 'Conv_ArchitectsDaughter';
+  font-family: "Architects Daughter", cursive;
   font-weight: normal;
 }
 /* line 30, ../scss/base/_mixins.scss */
 .cs-elegant .stroke-main, .cs-elegant .homepage-vedio-block .view-header p, .homepage-vedio-block .view-header .cs-elegant p {
-  font-family: 'Conv_margarine-regular';
+  font-family: "Margarine", cursive;
   font-weight: normal;
 }
-/* line 65, ../scss/base/_common.scss */
+/* line 66, ../scss/base/_common.scss */
 .cs-default .stroke-main, .cs-default .homepage-vedio-block .view-header p, .homepage-vedio-block .view-header .cs-default p {
   background-position: -95px -226px;
   font-size: 28px;
 }
-/* line 69, ../scss/base/_common.scss */
+/* line 70, ../scss/base/_common.scss */
 .cs-classic .stroke-main, .cs-classic .homepage-vedio-block .view-header p, .homepage-vedio-block .view-header .cs-classic p {
   background-position: -95px -914px;
   font-size: 30px;
 }
-/* line 73, ../scss/base/_common.scss */
+/* line 74, ../scss/base/_common.scss */
 .cs-elegant .stroke-main, .cs-elegant .homepage-vedio-block .view-header p, .homepage-vedio-block .view-header .cs-elegant p {
   background-position: -95px -569px;
   font-size: 30px;
 }
 
-/* line 79, ../scss/base/_common.scss */
+/* line 80, ../scss/base/_common.scss */
 .stroke-sidebar, .homepage-reward-block .view-header p {
   height: 85px;
   width: 100%;
@@ -7514,36 +7488,36 @@ a.th {
 }
 /* line 20, ../scss/base/_mixins.scss */
 .cs-default .stroke-sidebar, .cs-default .homepage-reward-block .view-header p, .homepage-reward-block .view-header .cs-default p {
-  font-family: 'Conv_McLaren-Regular';
+  font-family: "McLaren", cursive;
   font-weight: normal;
 }
 /* line 25, ../scss/base/_mixins.scss */
 .cs-classic .stroke-sidebar, .cs-classic .homepage-reward-block .view-header p, .homepage-reward-block .view-header .cs-classic p {
-  font-family: 'Conv_ArchitectsDaughter';
+  font-family: "Architects Daughter", cursive;
   font-weight: normal;
 }
 /* line 30, ../scss/base/_mixins.scss */
 .cs-elegant .stroke-sidebar, .cs-elegant .homepage-reward-block .view-header p, .homepage-reward-block .view-header .cs-elegant p {
-  font-family: 'Conv_margarine-regular';
+  font-family: "Margarine", cursive;
   font-weight: normal;
 }
-/* line 89, ../scss/base/_common.scss */
+/* line 90, ../scss/base/_common.scss */
 .cs-default .stroke-sidebar, .cs-default .homepage-reward-block .view-header p, .homepage-reward-block .view-header .cs-default p {
   background-position: -60px -239px;
   font-size: 22px;
 }
-/* line 93, ../scss/base/_common.scss */
+/* line 94, ../scss/base/_common.scss */
 .cs-classic .stroke-sidebar, .cs-classic .homepage-reward-block .view-header p, .homepage-reward-block .view-header .cs-classic p {
   background-position: -60px -928px;
   font-size: 25px;
 }
-/* line 97, ../scss/base/_common.scss */
+/* line 98, ../scss/base/_common.scss */
 .cs-elegant .stroke-sidebar, .cs-elegant .homepage-reward-block .view-header p, .homepage-reward-block .view-header .cs-elegant p {
   background-position: -60px -583px;
   font-size: 25px;
 }
 
-/* line 103, ../scss/base/_common.scss */
+/* line 105, ../scss/base/_common.scss */
 .primary-background, .homepage-reward-block, .homepage-vedio-block, .homepage-booklist-slider .slide {
   color: #fff;
   border-radius: 15px;
@@ -7552,43 +7526,43 @@ a.th {
   margin-bottom: 35px;
   padding-bottom: 15px;
 }
-/* line 104, ../scss/base/_common.scss */
+/* line 106, ../scss/base/_common.scss */
 .cs-default .primary-background, .cs-default .homepage-reward-block, .cs-default .homepage-vedio-block, .cs-default .homepage-booklist-slider .slide, .homepage-booklist-slider .cs-default .slide, .cs-elegant .primary-background, .cs-elegant .homepage-reward-block, .cs-elegant .homepage-vedio-block, .cs-elegant .homepage-booklist-slider .slide, .homepage-booklist-slider .cs-elegant .slide {
   background: #267fda;
 }
-/* line 107, ../scss/base/_common.scss */
+/* line 109, ../scss/base/_common.scss */
 .cs-classic .primary-background, .cs-classic .homepage-reward-block, .cs-classic .homepage-vedio-block, .cs-classic .homepage-booklist-slider .slide, .homepage-booklist-slider .cs-classic .slide {
   background: #084899;
 }
-/* line 111, ../scss/base/_mixins.scss */
+/* line 113, ../scss/base/_mixins.scss */
 .cs-default .primary-background, .cs-default .homepage-reward-block, .cs-default .homepage-vedio-block, .cs-default .homepage-booklist-slider .slide, .homepage-booklist-slider .cs-default .slide {
   font-size: 17px;
 }
-/* line 115, ../scss/base/_mixins.scss */
+/* line 117, ../scss/base/_mixins.scss */
 .cs-classic .primary-background, .cs-classic .homepage-reward-block, .cs-classic .homepage-vedio-block, .cs-classic .homepage-booklist-slider .slide, .homepage-booklist-slider .cs-classic .slide, .cs-elegant .primary-background, .cs-elegant .homepage-reward-block, .cs-elegant .homepage-vedio-block, .cs-elegant .homepage-booklist-slider .slide, .homepage-booklist-slider .cs-elegant .slide {
   font-size: 19px;
 }
 /* line 37, ../scss/base/_mixins.scss */
 .cs-default .primary-background, .cs-default .homepage-reward-block, .cs-default .homepage-vedio-block, .cs-default .homepage-booklist-slider .slide, .homepage-booklist-slider .cs-default .slide {
-  font-family: 'arial';
+  font-family: "arial";
   font-weight: normal;
 }
 /* line 42, ../scss/base/_mixins.scss */
 .cs-classic .primary-background, .cs-classic .homepage-reward-block, .cs-classic .homepage-vedio-block, .cs-classic .homepage-booklist-slider .slide, .homepage-booklist-slider .cs-classic .slide {
-  font-family: 'Conv_PTS55F';
+  font-family: "PT Sans", sans-serif;
   font-weight: normal;
 }
 /* line 47, ../scss/base/_mixins.scss */
 .cs-elegant .primary-background, .cs-elegant .homepage-reward-block, .cs-elegant .homepage-vedio-block, .cs-elegant .homepage-booklist-slider .slide, .homepage-booklist-slider .cs-elegant .slide {
-  font-family: 'Opensans-regular';
+  font-family: "Open Sans", sans-serif;
   font-weight: normal;
 }
 
-/* line 119, ../scss/base/_common.scss */
+/* line 122, ../scss/base/_common.scss */
 .view-content {
   position: relative;
 }
-/* line 121, ../scss/base/_common.scss */
+/* line 124, ../scss/base/_common.scss */
 .view-content .owl-controls {
   margin-top: 0;
   width: 100%;
@@ -7597,18 +7571,18 @@ a.th {
   left: -26px;
   height: 0;
 }
-/* line 128, ../scss/base/_common.scss */
+/* line 131, ../scss/base/_common.scss */
 .view-content .owl-controls .owl-pagination {
   display: none;
 }
-/* line 131, ../scss/base/_common.scss */
+/* line 134, ../scss/base/_common.scss */
 .view-content .owl-controls .owl-buttons {
   width: calc(100% + 52px);
   position: relative;
   display: inline-block;
   height: 0;
 }
-/* line 136, ../scss/base/_common.scss */
+/* line 139, ../scss/base/_common.scss */
 .view-content .owl-controls .owl-buttons > div {
   margin: 0;
   border-radius: 0;
@@ -7617,15 +7591,29 @@ a.th {
   padding: 0;
   opacity: 1;
 }
-/* line 144, ../scss/base/_common.scss */
+/* line 147, ../scss/base/_common.scss */
 .view-content .owl-controls .owl-buttons .owl-prev {
   float: left;
   background-position: -20px -595px;
 }
-/* line 149, ../scss/base/_common.scss */
+/* line 152, ../scss/base/_common.scss */
 .view-content .owl-controls .owl-buttons .owl-next {
   float: right;
   background-position: -20px -1136px;
+}
+
+/* line 160, ../scss/base/_common.scss */
+.b-padding {
+  padding: 20px 35px 18px;
+}
+/* line 162, ../scss/base/_common.scss */
+.b-padding p {
+  margin: 0;
+}
+
+/* line 167, ../scss/base/_common.scss */
+.margin-0 {
+  margin: 0;
 }
 
 /* line 4, ../scss/base/_drupal.scss */
@@ -7662,40 +7650,40 @@ h1, .font-stroke-main, h2, h3, h4, h5, h6 {
 }
 /* line 20, ../scss/base/_mixins.scss */
 .cs-default h1, .cs-default .font-stroke-main, .cs-default h2, .cs-default h3, .cs-default h4, .cs-default h5, .cs-default h6 {
-  font-family: 'Conv_McLaren-Regular';
+  font-family: "McLaren", cursive;
   font-weight: normal;
 }
 /* line 25, ../scss/base/_mixins.scss */
 .cs-classic h1, .cs-classic .font-stroke-main, .cs-classic h2, .cs-classic h3, .cs-classic h4, .cs-classic h5, .cs-classic h6 {
-  font-family: 'Conv_ArchitectsDaughter';
+  font-family: "Architects Daughter", cursive;
   font-weight: normal;
 }
 /* line 30, ../scss/base/_mixins.scss */
 .cs-elegant h1, .cs-elegant .font-stroke-main, .cs-elegant h2, .cs-elegant h3, .cs-elegant h4, .cs-elegant h5, .cs-elegant h6 {
-  font-family: 'Conv_margarine-regular';
+  font-family: "Margarine", cursive;
   font-weight: normal;
 }
 
 /* line 37, ../scss/base/_mixins.scss */
 .cs-default p {
-  font-family: 'arial';
+  font-family: "arial";
   font-weight: normal;
 }
 /* line 42, ../scss/base/_mixins.scss */
 .cs-classic p {
-  font-family: 'Conv_PTS55F';
+  font-family: "PT Sans", sans-serif;
   font-weight: normal;
 }
 /* line 47, ../scss/base/_mixins.scss */
 .cs-elegant p {
-  font-family: 'Opensans-regular';
+  font-family: "Open Sans", sans-serif;
   font-weight: normal;
 }
-/* line 111, ../scss/base/_mixins.scss */
+/* line 113, ../scss/base/_mixins.scss */
 .cs-default p {
   font-size: 17px;
 }
-/* line 115, ../scss/base/_mixins.scss */
+/* line 117, ../scss/base/_mixins.scss */
 .cs-classic p, .cs-elegant p {
   font-size: 19px;
 }
@@ -7705,7 +7693,7 @@ h1, .font-stroke-main, h2, h3, h4, h5, h6 {
   font-size: 28px;
 }
 /* line 74, ../scss/base/_elements.scss */
-.cs-classic h1 .elegent h1, .cs-classic .font-stroke-main .elegent h1, .cs-classic h1 .elegent .font-stroke-main, .cs-classic .font-stroke-main .elegent .font-stroke-main {
+.cs-classic h1, .cs-classic .font-stroke-main, .cs-elegant h1, .cs-elegant .font-stroke-main {
   font-size: 30px;
 }
 
@@ -7714,7 +7702,7 @@ h1, .font-stroke-main, h2, h3, h4, h5, h6 {
   font-size: 25px;
 }
 /* line 84, ../scss/base/_elements.scss */
-.cs-classic h2, .elegent h2 {
+.cs-classic h2, .cs-elegant h2 {
   font-size: 28px;
 }
 
@@ -7723,7 +7711,7 @@ h1, .font-stroke-main, h2, h3, h4, h5, h6 {
   font-size: 22px;
 }
 /* line 94, ../scss/base/_elements.scss */
-.cs-classic h3, .elegent h3 {
+.cs-classic h3, .cs-elegant h3 {
   font-size: 25px;
 }
 
@@ -7732,7 +7720,7 @@ h4 {
   font-size: 20px;
 }
 /* line 100, ../scss/base/_elements.scss */
-.cs-classic h4, .elegent h4 {
+.cs-classic h4, .cs-elegant h4 {
   font-size: 22px;
 }
 
@@ -7741,7 +7729,7 @@ h5 {
   font-size: 17px;
 }
 /* line 108, ../scss/base/_elements.scss */
-.cs-classic h5, .elegent h5 {
+.cs-classic h5, .cs-elegant h5 {
   font-size: 19px;
 }
 
@@ -7750,7 +7738,7 @@ h6 {
   font-size: 14px;
 }
 /* line 116, ../scss/base/_elements.scss */
-.cs-classic h6, .elegent h6 {
+.cs-classic h6, .cs-elegant h6 {
   font-size: 16px;
 }
 
@@ -7758,13 +7746,30 @@ h6 {
 ul, ol, dl {
   list-style-position: inside;
 }
-/* line 111, ../scss/base/_mixins.scss */
+/* line 113, ../scss/base/_mixins.scss */
 .cs-default ul, .cs-default ol, .cs-default dl {
   font-size: 17px;
 }
-/* line 115, ../scss/base/_mixins.scss */
+/* line 117, ../scss/base/_mixins.scss */
 .cs-classic ul, .cs-elegant ul, .cs-classic ol, .cs-elegant ol, .cs-classic dl, .cs-elegant dl {
   font-size: 19px;
+}
+
+/* line 129, ../scss/base/_elements.scss */
+p {
+  margin-bottom: 20px;
+}
+/* line 113, ../scss/base/_mixins.scss */
+.cs-default p {
+  font-size: 17px;
+}
+/* line 117, ../scss/base/_mixins.scss */
+.cs-classic p, .cs-elegant p {
+  font-size: 19px;
+}
+/* line 132, ../scss/base/_elements.scss */
+.view-content p, .view-header p, .view-footer p {
+  margin-bottom: 0;
 }
 
 /* Grid HTML Classes */
@@ -8556,24 +8561,24 @@ ul, ol, dl {
 }
 /* line 37, ../scss/base/_mixins.scss */
 .cs-default .l-header .pre-header .breadcurm ul li.current:before {
-  font-family: 'arial';
+  font-family: "arial";
   font-weight: normal;
 }
 /* line 42, ../scss/base/_mixins.scss */
 .cs-classic .l-header .pre-header .breadcurm ul li.current:before {
-  font-family: 'Conv_PTS55F';
+  font-family: "PT Sans", sans-serif;
   font-weight: normal;
 }
 /* line 47, ../scss/base/_mixins.scss */
 .cs-elegant .l-header .pre-header .breadcurm ul li.current:before {
-  font-family: 'Opensans-regular';
+  font-family: "Open Sans", sans-serif;
   font-weight: normal;
 }
-/* line 111, ../scss/base/_mixins.scss */
+/* line 113, ../scss/base/_mixins.scss */
 .cs-default .l-header .pre-header .breadcurm ul li.current:before {
   font-size: 17px;
 }
-/* line 115, ../scss/base/_mixins.scss */
+/* line 117, ../scss/base/_mixins.scss */
 .cs-classic .l-header .pre-header .breadcurm ul li.current:before, .cs-elegant .l-header .pre-header .breadcurm ul li.current:before {
   font-size: 19px;
 }
@@ -8589,27 +8594,27 @@ ul, ol, dl {
 .cs-default .l-header .pre-header .breadcurm ul li a {
   color: #267fda;
 }
-/* line 111, ../scss/base/_mixins.scss */
+/* line 113, ../scss/base/_mixins.scss */
 .cs-default .l-header .pre-header .breadcurm ul li a {
   font-size: 17px;
 }
-/* line 115, ../scss/base/_mixins.scss */
+/* line 117, ../scss/base/_mixins.scss */
 .cs-classic .l-header .pre-header .breadcurm ul li a, .cs-elegant .l-header .pre-header .breadcurm ul li a {
   font-size: 19px;
 }
 /* line 37, ../scss/base/_mixins.scss */
 .cs-default .l-header .pre-header .breadcurm ul li a {
-  font-family: 'arial';
+  font-family: "arial";
   font-weight: normal;
 }
 /* line 42, ../scss/base/_mixins.scss */
 .cs-classic .l-header .pre-header .breadcurm ul li a {
-  font-family: 'Conv_PTS55F';
+  font-family: "PT Sans", sans-serif;
   font-weight: normal;
 }
 /* line 47, ../scss/base/_mixins.scss */
 .cs-elegant .l-header .pre-header .breadcurm ul li a {
-  font-family: 'Opensans-regular';
+  font-family: "Open Sans", sans-serif;
   font-weight: normal;
 }
 /* line 76, ../scss/layout/_header.scss */
@@ -8628,17 +8633,17 @@ ul, ol, dl {
 }
 /* line 20, ../scss/base/_mixins.scss */
 .cs-default .l-header .pre-header .top-menu {
-  font-family: 'Conv_McLaren-Regular';
+  font-family: "McLaren", cursive;
   font-weight: normal;
 }
 /* line 25, ../scss/base/_mixins.scss */
 .cs-classic .l-header .pre-header .top-menu {
-  font-family: 'Conv_ArchitectsDaughter';
+  font-family: "Architects Daughter", cursive;
   font-weight: normal;
 }
 /* line 30, ../scss/base/_mixins.scss */
 .cs-elegant .l-header .pre-header .top-menu {
-  font-family: 'Conv_margarine-regular';
+  font-family: "Margarine", cursive;
   font-weight: normal;
 }
 /* line 95, ../scss/layout/_header.scss */
@@ -8802,17 +8807,17 @@ ul, ol, dl {
 }
 /* line 20, ../scss/base/_mixins.scss */
 .cs-default .block-menu-menu-anonymous-header-links ul.menu li a {
-  font-family: 'Conv_McLaren-Regular';
+  font-family: "McLaren", cursive;
   font-weight: normal;
 }
 /* line 25, ../scss/base/_mixins.scss */
 .cs-classic .block-menu-menu-anonymous-header-links ul.menu li a {
-  font-family: 'Conv_ArchitectsDaughter';
+  font-family: "Architects Daughter", cursive;
   font-weight: normal;
 }
 /* line 30, ../scss/base/_mixins.scss */
 .cs-elegant .block-menu-menu-anonymous-header-links ul.menu li a {
-  font-family: 'Conv_margarine-regular';
+  font-family: "Margarine", cursive;
   font-weight: normal;
 }
 /* line 279, ../scss/layout/_header.scss */
@@ -8926,16 +8931,18 @@ body.cs-elegant #admin-menu {
 }
 /* line 54, ../scss/base/_mixins.scss */
 .cs-default .l-footer .footer .block-play-library-custom-program-footer-content .u-footer-content p {
-  font-family: 'arial';
-  font-weight: bold;
+  font-family: "arial";
+  font-weight: 700;
 }
 /* line 59, ../scss/base/_mixins.scss */
 .cs-classic .l-footer .footer .block-play-library-custom-program-footer-content .u-footer-content p {
-  font-family: 'Conv_PTS75F';
+  font-family: "PT Sans", sans-serif;
+  font-weight: 700;
 }
-/* line 63, ../scss/base/_mixins.scss */
+/* line 64, ../scss/base/_mixins.scss */
 .cs-elegant .l-footer .footer .block-play-library-custom-program-footer-content .u-footer-content p {
-  font-family: 'Opensans-Bold';
+  font-family: "Open Sans", sans-serif;
+  font-weight: 700;
 }
 /* line 50, ../scss/layout/_footer.scss */
 .l-footer .footer .block-play-library-custom-program-footer-content .u-footer-content p a {
@@ -8957,16 +8964,18 @@ body.cs-elegant #admin-menu {
 }
 /* line 54, ../scss/base/_mixins.scss */
 .cs-default .l-footer .footer .block-play-library-custom-program-footer-content .lower-footer-content {
-  font-family: 'arial';
-  font-weight: bold;
+  font-family: "arial";
+  font-weight: 700;
 }
 /* line 59, ../scss/base/_mixins.scss */
 .cs-classic .l-footer .footer .block-play-library-custom-program-footer-content .lower-footer-content {
-  font-family: 'Conv_PTS75F';
+  font-family: "PT Sans", sans-serif;
+  font-weight: 700;
 }
-/* line 63, ../scss/base/_mixins.scss */
+/* line 64, ../scss/base/_mixins.scss */
 .cs-elegant .l-footer .footer .block-play-library-custom-program-footer-content .lower-footer-content {
-  font-family: 'Opensans-Bold';
+  font-family: "Open Sans", sans-serif;
+  font-weight: 700;
 }
 /* line 67, ../scss/layout/_footer.scss */
 .l-footer .footer .block-play-library-custom-program-footer-content .lower-footer-content a {
@@ -8982,16 +8991,18 @@ body.cs-elegant #admin-menu {
 }
 /* line 54, ../scss/base/_mixins.scss */
 .cs-default .l-footer .footer .block-play-library-custom-program-footer-content .copy-right {
-  font-family: 'arial';
-  font-weight: bold;
+  font-family: "arial";
+  font-weight: 700;
 }
 /* line 59, ../scss/base/_mixins.scss */
 .cs-classic .l-footer .footer .block-play-library-custom-program-footer-content .copy-right {
-  font-family: 'Conv_PTS75F';
+  font-family: "PT Sans", sans-serif;
+  font-weight: 700;
 }
-/* line 63, ../scss/base/_mixins.scss */
+/* line 64, ../scss/base/_mixins.scss */
 .cs-elegant .l-footer .footer .block-play-library-custom-program-footer-content .copy-right {
-  font-family: 'Opensans-Bold';
+  font-family: "Open Sans", sans-serif;
+  font-weight: 700;
 }
 /* line 81, ../scss/layout/_footer.scss */
 .l-footer .footer .block-menu-menu-social-sharing-icons {
@@ -9041,25 +9052,17 @@ body.cs-elegant #admin-menu {
 }
 /* line 59, ../scss/components/_blocks.scss */
 .homepage-vedio-block .view-footer {
-  padding: 0 35px;
+  padding-left: 25px;
 }
-/* line 62, ../scss/components/_blocks.scss */
-.homepage-vedio-block .view-footer a.button {
-  margin: 0;
-}
-/* line 66, ../scss/components/_blocks.scss */
-.homepage-vedio-block .view-footer p {
-  margin: 0;
-}
-/* line 71, ../scss/components/_blocks.scss */
+/* line 63, ../scss/components/_blocks.scss */
 .homepage-vedio-block .view-content {
   padding: 20px 60px;
 }
-/* line 74, ../scss/components/_blocks.scss */
+/* line 66, ../scss/components/_blocks.scss */
 .homepage-vedio-block .view-content .owl-controls {
   top: 20%;
 }
-/* line 78, ../scss/components/_blocks.scss */
+/* line 70, ../scss/components/_blocks.scss */
 .homepage-vedio-block .view-content .vedio-wrapper {
   width: calc(100% - 6px);
   margin: auto;
@@ -9067,7 +9070,7 @@ body.cs-elegant #admin-menu {
   position: relative;
   padding-bottom: 56.25%;
 }
-/* line 85, ../scss/components/_blocks.scss */
+/* line 77, ../scss/components/_blocks.scss */
 .homepage-vedio-block .view-content .vedio-wrapper iframe, .homepage-vedio-block .view-content .vedio-wrapper object, .homepage-vedio-block .view-content .vedio-wrapper embed {
   width: 100%;
   height: 100%;
@@ -9076,19 +9079,19 @@ body.cs-elegant #admin-menu {
   top: 0;
 }
 
-/* line 98, ../scss/components/_blocks.scss */
+/* line 90, ../scss/components/_blocks.scss */
 .homepage-booklist-slider ul.booklist-pager {
   margin: 0;
   float: right;
   display: inline-block;
 }
-/* line 103, ../scss/components/_blocks.scss */
+/* line 95, ../scss/components/_blocks.scss */
 .homepage-booklist-slider ul.booklist-pager input[type=radio] {
   visibility: hidden;
   position: absolute;
   margin: 0;
 }
-/* line 109, ../scss/components/_blocks.scss */
+/* line 101, ../scss/components/_blocks.scss */
 .homepage-booklist-slider ul.booklist-pager input[type=radio] + label:before {
   height: 20px;
   width: 20px;
@@ -9101,25 +9104,25 @@ body.cs-elegant #admin-menu {
   border-radius: 100%;
 }
 @media screen and (max-width: 767px) {
-  /* line 109, ../scss/components/_blocks.scss */
+  /* line 101, ../scss/components/_blocks.scss */
   .homepage-booklist-slider ul.booklist-pager input[type=radio] + label:before {
     background: #f6511d;
     border: 1px solid #f6511d;
   }
 }
 @media only screen and (min-width: 768px) and (max-width: 1024px) {
-  /* line 109, ../scss/components/_blocks.scss */
+  /* line 101, ../scss/components/_blocks.scss */
   .homepage-booklist-slider ul.booklist-pager input[type=radio] + label:before {
     background: #f6511d;
     border: 1px solid #f6511d;
   }
 }
-/* line 132, ../scss/components/_blocks.scss */
+/* line 124, ../scss/components/_blocks.scss */
 .homepage-booklist-slider ul.booklist-pager input[type=radio]:checked + label:before {
   background: #267fda;
   border: 1px solid #267fda;
 }
-/* line 138, ../scss/components/_blocks.scss */
+/* line 130, ../scss/components/_blocks.scss */
 .homepage-booklist-slider .controls {
   width: 100%;
   display: inline-block;
@@ -9127,15 +9130,15 @@ body.cs-elegant #admin-menu {
   bottom: -60px;
   right: 20px;
 }
-/* line 149, ../scss/components/_blocks.scss */
+/* line 141, ../scss/components/_blocks.scss */
 .homepage-booklist-slider .slide .stroke-main, .homepage-booklist-slider .slide .homepage-vedio-block .view-header p, .homepage-vedio-block .view-header .homepage-booklist-slider .slide p {
   margin: 0;
 }
-/* line 153, ../scss/components/_blocks.scss */
+/* line 145, ../scss/components/_blocks.scss */
 .homepage-booklist-slider .slide .view-content {
   padding: 20px 60px;
 }
-/* line 157, ../scss/components/_blocks.scss */
+/* line 149, ../scss/components/_blocks.scss */
 .homepage-booklist-slider .slide .booklist-wrapper {
   width: 100%;
   display: flex;
@@ -9144,16 +9147,93 @@ body.cs-elegant #admin-menu {
   align-content: center;
   height: 200px;
 }
-/* line 166, ../scss/components/_blocks.scss */
+/* line 158, ../scss/components/_blocks.scss */
 .homepage-booklist-slider .slide .view-footer {
-  padding: 0 35px;
+  padding-left: 25px;
 }
-/* line 169, ../scss/components/_blocks.scss */
+/* line 161, ../scss/components/_blocks.scss */
 .homepage-booklist-slider .slide .view-footer a.button {
   margin: 0;
 }
-/* line 173, ../scss/components/_blocks.scss */
+/* line 165, ../scss/components/_blocks.scss */
 .homepage-booklist-slider .slide .view-footer p {
+  margin: 0;
+}
+
+/* line 172, ../scss/components/_blocks.scss */
+.annocement {
+  background-color: #fdeb52;
+  background-repeat: repeat;
+  color: #000;
+  padding: 28px 35px 18px;
+  box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+  display: inline-block;
+  width: 100%;
+  border-radius: 15px;
+}
+/* line 182, ../scss/components/_blocks.scss */
+.annocement h1, .annocement .font-stroke-main {
+  margin: 0;
+}
+/* line 186, ../scss/components/_blocks.scss */
+.annocement img {
+  display: none;
+}
+/* line 189, ../scss/components/_blocks.scss */
+.annocement p {
+  margin-bottom: 0;
+}
+/* line 54, ../scss/base/_mixins.scss */
+.cs-default .annocement p {
+  font-family: "arial";
+  font-weight: 700;
+}
+/* line 59, ../scss/base/_mixins.scss */
+.cs-classic .annocement p {
+  font-family: "PT Sans", sans-serif;
+  font-weight: 700;
+}
+/* line 64, ../scss/base/_mixins.scss */
+.cs-elegant .annocement p {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 700;
+}
+/* line 193, ../scss/components/_blocks.scss */
+.annocement ul, .annocement ol {
+  margin: 0;
+}
+/* line 113, ../scss/base/_mixins.scss */
+.cs-default .annocement ul, .cs-default .annocement ol {
+  font-size: 17px;
+}
+/* line 117, ../scss/base/_mixins.scss */
+.cs-classic .annocement ul, .cs-elegant .annocement ul, .cs-classic .annocement ol, .cs-elegant .annocement ol {
+  font-size: 19px;
+}
+/* line 196, ../scss/components/_blocks.scss */
+.annocement ul li, .annocement ol li {
+  padding-left: 35px;
+  position: relative;
+}
+/* line 199, ../scss/components/_blocks.scss */
+.annocement ul li:before, .annocement ol li:before {
+  content: "";
+  width: 35px;
+  height: 100%;
+  background: url("../images/arrow-list.png") no-repeat;
+  display: inline-block;
+  position: absolute;
+  top: 3px;
+  left: 0;
+}
+
+/* line 216, ../scss/components/_blocks.scss */
+.about-us .view-footer {
+  padding-left: 25px;
+}
+/* line 218, ../scss/components/_blocks.scss */
+.about-us .view-footer a.button {
   margin: 0;
 }
 
@@ -9175,17 +9255,17 @@ body.cs-elegant #admin-menu {
 }
 /* line 20, ../scss/base/_mixins.scss */
 .cs-default .button, .cs-default button {
-  font-family: 'Conv_McLaren-Regular';
+  font-family: "McLaren", cursive;
   font-weight: normal;
 }
 /* line 25, ../scss/base/_mixins.scss */
 .cs-classic .button, .cs-classic button {
-  font-family: 'Conv_ArchitectsDaughter';
+  font-family: "Architects Daughter", cursive;
   font-weight: normal;
 }
 /* line 30, ../scss/base/_mixins.scss */
 .cs-elegant .button, .cs-elegant button {
-  font-family: 'Conv_margarine-regular';
+  font-family: "Margarine", cursive;
   font-weight: normal;
 }
 /* line 20, ../scss/components/_buttons.scss */
@@ -9224,17 +9304,17 @@ body.cs-elegant #admin-menu {
 }
 /* line 20, ../scss/base/_mixins.scss */
 .cs-default .btn {
-  font-family: 'Conv_McLaren-Regular';
+  font-family: "McLaren", cursive;
   font-weight: normal;
 }
 /* line 25, ../scss/base/_mixins.scss */
 .cs-classic .btn {
-  font-family: 'Conv_ArchitectsDaughter';
+  font-family: "Architects Daughter", cursive;
   font-weight: normal;
 }
 /* line 30, ../scss/base/_mixins.scss */
 .cs-elegant .btn {
-  font-family: 'Conv_margarine-regular';
+  font-family: "Margarine", cursive;
   font-weight: normal;
 }
 /* line 67, ../scss/components/_buttons.scss */
@@ -9350,41 +9430,41 @@ body.cs-elegant #admin-menu {
   transition: all linear 0.8s;
   color: #fff;
 }
-/* line 83, ../scss/base/_mixins.scss */
+/* line 85, ../scss/base/_mixins.scss */
 .cs-default .menu-wrapper ul.menu li a {
   background: #f6511d;
 }
-/* line 86, ../scss/base/_mixins.scss */
+/* line 88, ../scss/base/_mixins.scss */
 .cs-default .menu-wrapper ul.menu li a:hover, .cs-default .menu-wrapper ul.menu li a.active, .cs-default .menu-wrapper ul.menu li a:focus {
   color: #f6511d;
   background: #fff;
 }
-/* line 92, ../scss/base/_mixins.scss */
+/* line 94, ../scss/base/_mixins.scss */
 .cs-classic .menu-wrapper ul.menu li a {
   background: #00a6ed;
 }
-/* line 100, ../scss/base/_mixins.scss */
+/* line 102, ../scss/base/_mixins.scss */
 .cs-elegant .menu-wrapper ul.menu li a {
   background: #267fda;
 }
-/* line 103, ../scss/base/_mixins.scss */
+/* line 105, ../scss/base/_mixins.scss */
 .cs-elegant .menu-wrapper ul.menu li a:hover, .cs-elegant .menu-wrapper ul.menu li a.active, .cs-elegant .menu-wrapper ul.menu li a:focus {
   background: #fff;
   color: #084899;
 }
 /* line 20, ../scss/base/_mixins.scss */
 .cs-default .menu-wrapper ul.menu li a {
-  font-family: 'Conv_McLaren-Regular';
+  font-family: "McLaren", cursive;
   font-weight: normal;
 }
 /* line 25, ../scss/base/_mixins.scss */
 .cs-classic .menu-wrapper ul.menu li a {
-  font-family: 'Conv_ArchitectsDaughter';
+  font-family: "Architects Daughter", cursive;
   font-weight: normal;
 }
 /* line 30, ../scss/base/_mixins.scss */
 .cs-elegant .menu-wrapper ul.menu li a {
-  font-family: 'Conv_margarine-regular';
+  font-family: "Margarine", cursive;
   font-weight: normal;
 }
 /* line 38, ../scss/components/_desktop-menu.scss */
@@ -9541,48 +9621,6 @@ body.cs-elegant #admin-menu {
   background-position: -8px -1879px;
 }
 
-@font-face {
-  font-family: 'Conv_ArchitectsDaughter';
-  src: url("../fonts/ArchitectsDaughter.ttf");
-  font-weight: normal;
-  font-style: normal;
-}
-@font-face {
-  font-family: 'Conv_margarine-regular';
-  src: url("../fonts/margarine-regular/fonts/margarine-regular.eot");
-  src: url("../fonts/margarine-regular/fonts/margarine-regular.woff") format("woff"), url("../fonts/margarine-regular/fonts/margarine-regular.ttf") format("truetype"), url("../fonts/margarine-regular/fonts/margarine-regular.svg") format("svg");
-  font-weight: normal;
-  font-style: normal;
-}
-@font-face {
-  font-family: 'Conv_McLaren-Regular';
-  src: url("../fonts/McLaren-Regular/fonts/McLaren-Regular.eot");
-  src: url("../fonts/McLaren-Regular/fonts/McLaren-Regular.woff") format("woff"), url("../fonts/McLaren-Regular/fonts/McLaren-Regular.ttf") format("truetype"), url("../fonts/McLaren-Regular/fonts/McLaren-Regular.svg") format("svg");
-  font-weight: normal;
-  font-style: normal;
-}
-@font-face {
-  font-family: 'OpenSans-Bold';
-  src: url("../fonts/OpenSans-Bold.ttf");
-}
-@font-face {
-  font-family: 'Opensans-regular';
-  src: url("../fonts/OpenSans-Regular.ttf");
-}
-@font-face {
-  font-family: 'Conv_PTS55F';
-  src: url("../fonts/PTS55F/fonts/PTS55F.eot");
-  src: url("../fonts/PTS55F/fonts/PTS55F.woff") format("woff"), url("../fonts/PTS55F/fonts/PTS55F.ttf") format("truetype"), url("../fonts/PTS55F/fonts/PTS55F.svg") format("svg");
-  font-weight: normal;
-  font-style: normal;
-}
-@font-face {
-  font-family: 'Conv_PTS75F';
-  src: url("../fonts/PTS75F/fonts/PTS75F.eot");
-  src: url("../fonts/PTS75F/fonts/PTS75F.woff") format("woff"), url("../fonts/PTS75F/fonts/PTS75F.ttf") format("truetype"), url("../fonts/PTS75F/fonts/PTS75F.svg") format("svg");
-  font-weight: normal;
-  font-style: normal;
-}
 /*
  * Foundation Icons v 3.0
  * Made by ZURB 2013 http://zurb.com/playground/foundation-icon-fonts-3
@@ -11341,24 +11379,24 @@ body.cs-elegant #admin-menu {
 }
 /* line 20, ../scss/base/_mixins.scss */
 .cs-default .mobile-menu ul.mobile-top-menu li a {
-  font-family: 'Conv_McLaren-Regular';
+  font-family: "McLaren", cursive;
   font-weight: normal;
 }
 /* line 25, ../scss/base/_mixins.scss */
 .cs-classic .mobile-menu ul.mobile-top-menu li a {
-  font-family: 'Conv_ArchitectsDaughter';
+  font-family: "Architects Daughter", cursive;
   font-weight: normal;
 }
 /* line 30, ../scss/base/_mixins.scss */
 .cs-elegant .mobile-menu ul.mobile-top-menu li a {
-  font-family: 'Conv_margarine-regular';
+  font-family: "Margarine", cursive;
   font-weight: normal;
 }
-/* line 111, ../scss/base/_mixins.scss */
+/* line 113, ../scss/base/_mixins.scss */
 .cs-default .mobile-menu ul.mobile-top-menu li a {
   font-size: 17px;
 }
-/* line 115, ../scss/base/_mixins.scss */
+/* line 117, ../scss/base/_mixins.scss */
 .cs-classic .mobile-menu ul.mobile-top-menu li a, .cs-elegant .mobile-menu ul.mobile-top-menu li a {
   font-size: 19px;
 }
@@ -11417,56 +11455,56 @@ body.cs-elegant #admin-menu {
   position: relative;
   color: #fff;
 }
-/* line 72, ../scss/base/_mixins.scss */
+/* line 74, ../scss/base/_mixins.scss */
 .cs-default .mobile-menu + ul li a:hover, .cs-default .mobile-menu + ul li a.active, .cs-default .mobile-menu + ul li a:focus {
   border-bottom: 1px solid #f6511d;
 }
-/* line 77, ../scss/base/_mixins.scss */
+/* line 79, ../scss/base/_mixins.scss */
 .cs-elegant .mobile-menu + ul li a:hover, .cs-elegant .mobile-menu + ul li a.active, .cs-elegant .mobile-menu + ul li a:focus {
   border-bottom: 1px solid #084899;
 }
-/* line 83, ../scss/base/_mixins.scss */
+/* line 85, ../scss/base/_mixins.scss */
 .cs-default .mobile-menu + ul li a {
   background: #f6511d;
 }
-/* line 86, ../scss/base/_mixins.scss */
+/* line 88, ../scss/base/_mixins.scss */
 .cs-default .mobile-menu + ul li a:hover, .cs-default .mobile-menu + ul li a.active, .cs-default .mobile-menu + ul li a:focus {
   color: #f6511d;
   background: #fff;
 }
-/* line 92, ../scss/base/_mixins.scss */
+/* line 94, ../scss/base/_mixins.scss */
 .cs-classic .mobile-menu + ul li a {
   background: #00a6ed;
 }
-/* line 100, ../scss/base/_mixins.scss */
+/* line 102, ../scss/base/_mixins.scss */
 .cs-elegant .mobile-menu + ul li a {
   background: #267fda;
 }
-/* line 103, ../scss/base/_mixins.scss */
+/* line 105, ../scss/base/_mixins.scss */
 .cs-elegant .mobile-menu + ul li a:hover, .cs-elegant .mobile-menu + ul li a.active, .cs-elegant .mobile-menu + ul li a:focus {
   background: #fff;
   color: #084899;
 }
 /* line 20, ../scss/base/_mixins.scss */
 .cs-default .mobile-menu + ul li a {
-  font-family: 'Conv_McLaren-Regular';
+  font-family: "McLaren", cursive;
   font-weight: normal;
 }
 /* line 25, ../scss/base/_mixins.scss */
 .cs-classic .mobile-menu + ul li a {
-  font-family: 'Conv_ArchitectsDaughter';
+  font-family: "Architects Daughter", cursive;
   font-weight: normal;
 }
 /* line 30, ../scss/base/_mixins.scss */
 .cs-elegant .mobile-menu + ul li a {
-  font-family: 'Conv_margarine-regular';
+  font-family: "Margarine", cursive;
   font-weight: normal;
 }
-/* line 111, ../scss/base/_mixins.scss */
+/* line 113, ../scss/base/_mixins.scss */
 .cs-default .mobile-menu + ul li a {
   font-size: 17px;
 }
-/* line 115, ../scss/base/_mixins.scss */
+/* line 117, ../scss/base/_mixins.scss */
 .cs-classic .mobile-menu + ul li a, .cs-elegant .mobile-menu + ul li a {
   font-size: 19px;
 }
@@ -11704,27 +11742,27 @@ body.cs-elegant #admin-menu {
   padding: 0;
   color: #fff;
 }
-/* line 111, ../scss/base/_mixins.scss */
+/* line 113, ../scss/base/_mixins.scss */
 .cs-default .pagination.pager li a {
   font-size: 17px;
 }
-/* line 115, ../scss/base/_mixins.scss */
+/* line 117, ../scss/base/_mixins.scss */
 .cs-classic .pagination.pager li a, .cs-elegant .pagination.pager li a {
   font-size: 19px;
 }
 /* line 37, ../scss/base/_mixins.scss */
 .cs-default .pagination.pager li a {
-  font-family: 'arial';
+  font-family: "arial";
   font-weight: normal;
 }
 /* line 42, ../scss/base/_mixins.scss */
 .cs-classic .pagination.pager li a {
-  font-family: 'Conv_PTS55F';
+  font-family: "PT Sans", sans-serif;
   font-weight: normal;
 }
 /* line 47, ../scss/base/_mixins.scss */
 .cs-elegant .pagination.pager li a {
-  font-family: 'Opensans-regular';
+  font-family: "Open Sans", sans-serif;
   font-weight: normal;
 }
 /* line 81, ../scss/components/_pager.scss */
