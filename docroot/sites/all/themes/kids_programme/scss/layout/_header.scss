@@ -35,10 +35,11 @@
         border: none;
 
         li {
+          font-size: 14px;
           &.current {
             a {
               color: $white;
-
+              font-size: 14px;
               .cs-default & {
                 color: $black;
               }
@@ -49,7 +50,6 @@
 
               @include secondary_fonts;
 
-              @include primary_fsize;
 
               top: 0;
               margin: 0 5px;
@@ -68,8 +68,6 @@
             .cs-default & {
               color: $blue;
             }
-
-            @include primary_fsize;
 
             @include secondary_fonts;
 
@@ -176,8 +174,9 @@
         .site-name {
           margin: -7px 0 0;
           font-size: 36px;
-          font-family: 'Conv_PTS75F';
+          font-family: $ptsans;
           color: $white;
+          font-weight: 700;
 
           .cs-classic & {
             color: $darkblue;
@@ -193,7 +192,7 @@
       .site-slogan {
         margin: -10px 0 0;
         font-size: 23px;
-        font-family: 'Conv_PTS55F';
+        font-family: $ptsans;
         color: $white;
 
         .cs-classic & {

@@ -7371,12 +7371,12 @@ a.th {
 }
 
 /* line 2, ../scss/base/_common.scss */
-.yellow, .cs-default .l-header .pre-header, .cs-classic .l-header .header-middle, .cs-default .button, .cs-default button, .cs-elegant .btn.btn-large.msg.new, .cs-elegant .btn.msg.new.abc, .cs-default .btn.btn-primary, .cs-elegant .mobile-menu ul.mobile-top-menu li a.msg.new {
+.yellow, .yellow-commonblock, .block-play-library-custom-pm-block, .homebox.homebox-auto-save #homebox-add .item-list, .homebox.homebox-auto-save .homebox-column-wrapper .homebox-portlet-inner, .cs-default .l-header .pre-header, .cs-classic .l-header .header-middle, .cs-default .button, .cs-default button, .cs-elegant .btn.btn-large.msg.new, .cs-default .btn.btn-primary, .cs-elegant .mobile-menu ul.mobile-top-menu li a.msg.new {
   background: #fdeb52;
 }
 
 /* line 6, ../scss/base/_common.scss */
-.blue, .cs-default .block-menu-menu-anonymous-header-links ul.menu li a, .cs-default .btn, .cs-default .btn.btn-large, .cs-default .btn.abc, .cs-default .mobile-menu ul.mobile-top-menu li a {
+.blue, .cs-default .block-menu-menu-anonymous-header-links ul.menu li a, .cs-default .btn, .cs-default .btn.btn-large, .cs-default .mobile-menu ul.mobile-top-menu li a {
   background: #267fda;
 }
 
@@ -7386,7 +7386,7 @@ a.th {
 }
 
 /* line 14, ../scss/base/_common.scss */
-.red, .cs-default .btn.btn-large.msg.new, .cs-default .btn.msg.new.abc, .cs-default .mobile-menu ul.mobile-top-menu li a.msg.new {
+.red, .cs-default .btn.btn-large.msg.new, .cs-default .mobile-menu ul.mobile-top-menu li a.msg.new {
   background: #cc0d25;
 }
 
@@ -7401,7 +7401,7 @@ a.th {
 }
 
 /* line 27, ../scss/base/_common.scss */
-.light-orange, .cs-elegant .l-header .header-middle, .cs-elegant .post-footer.contain-to-grid, .cs-elegant .l-footer, .cs-classic .button, .cs-elegant .button, .cs-classic button, .cs-elegant button, .cs-classic .btn.btn-large.msg.new, .cs-classic .btn.msg.new.abc, .cs-classic .btn.btn-primary, .cs-elegant .btn.btn-primary, .cs-classic .mobile-menu ul.mobile-top-menu li a.msg.new {
+.light-orange, .cs-elegant .l-header .header-middle, .cs-elegant .post-footer.contain-to-grid, .cs-elegant .l-footer, .cs-classic .button, .cs-elegant .button, .cs-classic button, .cs-elegant button, .cs-classic .btn.btn-large.msg.new, .cs-classic .btn.btn-primary, .cs-elegant .btn.btn-primary, .cs-classic .mobile-menu ul.mobile-top-menu li a.msg.new {
   background: #ff9f1c;
 }
 
@@ -7411,12 +7411,12 @@ a.th {
 }
 
 /* line 35, ../scss/base/_common.scss */
-.red1, .cs-elegant .block-menu-menu-anonymous-header-links ul.menu li a, .cs-elegant .btn, .cs-elegant .btn.btn-large, .cs-elegant .btn.abc, .cs-elegant .mobile-menu ul.mobile-top-menu li a {
+.red1, .cs-elegant .block-menu-menu-anonymous-header-links ul.menu li a, .cs-elegant .btn, .cs-elegant .btn.btn-large, .cs-elegant .mobile-menu ul.mobile-top-menu li a {
   background: #e71d36;
 }
 
 /* line 39, ../scss/base/_common.scss */
-.white-text, .font-stroke-main, .font-stroke-sidebar, .stroke-main, .homepage-vedio-block .view-header p, .stroke-sidebar, .homepage-reward-block .view-header p {
+.white-text, .font-stroke-main, .font-stroke-sidebar, .stroke-main, .homepage-vedio-block .view-header p, .stroke-sidebar, .homepage-reward-block .view-header p, .block-user-login .block-title {
   color: #fff;
 }
 
@@ -7437,6 +7437,8 @@ a.th {
 
 /* line 56, ../scss/base/_common.scss */
 .stroke-main, .homepage-vedio-block .view-header p {
+  line-height: 1.4;
+  margin: 0;
   height: 99px;
   width: 100%;
   background: url("../images/stroke");
@@ -7460,26 +7462,28 @@ a.th {
   font-family: "Margarine", cursive;
   font-weight: normal;
 }
-/* line 66, ../scss/base/_common.scss */
+/* line 68, ../scss/base/_common.scss */
 .cs-default .stroke-main, .cs-default .homepage-vedio-block .view-header p, .homepage-vedio-block .view-header .cs-default p {
   background-position: -95px -226px;
   font-size: 28px;
 }
-/* line 70, ../scss/base/_common.scss */
+/* line 72, ../scss/base/_common.scss */
 .cs-classic .stroke-main, .cs-classic .homepage-vedio-block .view-header p, .homepage-vedio-block .view-header .cs-classic p {
   background-position: -95px -914px;
   font-size: 30px;
 }
-/* line 74, ../scss/base/_common.scss */
+/* line 76, ../scss/base/_common.scss */
 .cs-elegant .stroke-main, .cs-elegant .homepage-vedio-block .view-header p, .homepage-vedio-block .view-header .cs-elegant p {
   background-position: -95px -569px;
   font-size: 30px;
 }
 
-/* line 80, ../scss/base/_common.scss */
-.stroke-sidebar, .homepage-reward-block .view-header p {
+/* line 82, ../scss/base/_common.scss */
+.stroke-sidebar, .homepage-reward-block .view-header p, .block-user-login .block-title {
   height: 85px;
   width: 100%;
+  margin: 0;
+  line-height: 1.4;
   text-transform: capitalize;
   background: url("../images/stroke");
   padding-top: 14px;
@@ -7487,38 +7491,38 @@ a.th {
   padding-left: 30px;
 }
 /* line 20, ../scss/base/_mixins.scss */
-.cs-default .stroke-sidebar, .cs-default .homepage-reward-block .view-header p, .homepage-reward-block .view-header .cs-default p {
+.cs-default .stroke-sidebar, .cs-default .homepage-reward-block .view-header p, .homepage-reward-block .view-header .cs-default p, .cs-default .block-user-login .block-title, .block-user-login .cs-default .block-title {
   font-family: "McLaren", cursive;
   font-weight: normal;
 }
 /* line 25, ../scss/base/_mixins.scss */
-.cs-classic .stroke-sidebar, .cs-classic .homepage-reward-block .view-header p, .homepage-reward-block .view-header .cs-classic p {
+.cs-classic .stroke-sidebar, .cs-classic .homepage-reward-block .view-header p, .homepage-reward-block .view-header .cs-classic p, .cs-classic .block-user-login .block-title, .block-user-login .cs-classic .block-title {
   font-family: "Architects Daughter", cursive;
   font-weight: normal;
 }
 /* line 30, ../scss/base/_mixins.scss */
-.cs-elegant .stroke-sidebar, .cs-elegant .homepage-reward-block .view-header p, .homepage-reward-block .view-header .cs-elegant p {
+.cs-elegant .stroke-sidebar, .cs-elegant .homepage-reward-block .view-header p, .homepage-reward-block .view-header .cs-elegant p, .cs-elegant .block-user-login .block-title, .block-user-login .cs-elegant .block-title {
   font-family: "Margarine", cursive;
   font-weight: normal;
 }
-/* line 90, ../scss/base/_common.scss */
-.cs-default .stroke-sidebar, .cs-default .homepage-reward-block .view-header p, .homepage-reward-block .view-header .cs-default p {
+/* line 94, ../scss/base/_common.scss */
+.cs-default .stroke-sidebar, .cs-default .homepage-reward-block .view-header p, .homepage-reward-block .view-header .cs-default p, .cs-default .block-user-login .block-title, .block-user-login .cs-default .block-title {
   background-position: -60px -239px;
   font-size: 22px;
 }
-/* line 94, ../scss/base/_common.scss */
-.cs-classic .stroke-sidebar, .cs-classic .homepage-reward-block .view-header p, .homepage-reward-block .view-header .cs-classic p {
+/* line 98, ../scss/base/_common.scss */
+.cs-classic .stroke-sidebar, .cs-classic .homepage-reward-block .view-header p, .homepage-reward-block .view-header .cs-classic p, .cs-classic .block-user-login .block-title, .block-user-login .cs-classic .block-title {
   background-position: -60px -928px;
   font-size: 25px;
 }
-/* line 98, ../scss/base/_common.scss */
-.cs-elegant .stroke-sidebar, .cs-elegant .homepage-reward-block .view-header p, .homepage-reward-block .view-header .cs-elegant p {
+/* line 102, ../scss/base/_common.scss */
+.cs-elegant .stroke-sidebar, .cs-elegant .homepage-reward-block .view-header p, .homepage-reward-block .view-header .cs-elegant p, .cs-elegant .block-user-login .block-title, .block-user-login .cs-elegant .block-title {
   background-position: -60px -583px;
   font-size: 25px;
 }
 
-/* line 105, ../scss/base/_common.scss */
-.primary-background, .homepage-reward-block, .homepage-vedio-block, .homepage-booklist-slider .slide {
+/* line 109, ../scss/base/_common.scss */
+.primary-background, .homepage-reward-block, .homepage-vedio-block, .homepage-booklist-slider .slide, .block-user-login {
   color: #fff;
   border-radius: 15px;
   overflow: hidden;
@@ -7526,43 +7530,43 @@ a.th {
   margin-bottom: 35px;
   padding-bottom: 15px;
 }
-/* line 106, ../scss/base/_common.scss */
-.cs-default .primary-background, .cs-default .homepage-reward-block, .cs-default .homepage-vedio-block, .cs-default .homepage-booklist-slider .slide, .homepage-booklist-slider .cs-default .slide, .cs-elegant .primary-background, .cs-elegant .homepage-reward-block, .cs-elegant .homepage-vedio-block, .cs-elegant .homepage-booklist-slider .slide, .homepage-booklist-slider .cs-elegant .slide {
+/* line 110, ../scss/base/_common.scss */
+.cs-default .primary-background, .cs-default .homepage-reward-block, .cs-default .homepage-vedio-block, .cs-default .homepage-booklist-slider .slide, .homepage-booklist-slider .cs-default .slide, .cs-default .block-user-login, .cs-elegant .primary-background, .cs-elegant .homepage-reward-block, .cs-elegant .homepage-vedio-block, .cs-elegant .homepage-booklist-slider .slide, .homepage-booklist-slider .cs-elegant .slide, .cs-elegant .block-user-login {
   background: #267fda;
 }
-/* line 109, ../scss/base/_common.scss */
-.cs-classic .primary-background, .cs-classic .homepage-reward-block, .cs-classic .homepage-vedio-block, .cs-classic .homepage-booklist-slider .slide, .homepage-booklist-slider .cs-classic .slide {
+/* line 113, ../scss/base/_common.scss */
+.cs-classic .primary-background, .cs-classic .homepage-reward-block, .cs-classic .homepage-vedio-block, .cs-classic .homepage-booklist-slider .slide, .homepage-booklist-slider .cs-classic .slide, .cs-classic .block-user-login {
   background: #084899;
 }
 /* line 113, ../scss/base/_mixins.scss */
-.cs-default .primary-background, .cs-default .homepage-reward-block, .cs-default .homepage-vedio-block, .cs-default .homepage-booklist-slider .slide, .homepage-booklist-slider .cs-default .slide {
+.cs-default .primary-background, .cs-default .homepage-reward-block, .cs-default .homepage-vedio-block, .cs-default .homepage-booklist-slider .slide, .homepage-booklist-slider .cs-default .slide, .cs-default .block-user-login {
   font-size: 17px;
 }
 /* line 117, ../scss/base/_mixins.scss */
-.cs-classic .primary-background, .cs-classic .homepage-reward-block, .cs-classic .homepage-vedio-block, .cs-classic .homepage-booklist-slider .slide, .homepage-booklist-slider .cs-classic .slide, .cs-elegant .primary-background, .cs-elegant .homepage-reward-block, .cs-elegant .homepage-vedio-block, .cs-elegant .homepage-booklist-slider .slide, .homepage-booklist-slider .cs-elegant .slide {
+.cs-classic .primary-background, .cs-classic .homepage-reward-block, .cs-classic .homepage-vedio-block, .cs-classic .homepage-booklist-slider .slide, .homepage-booklist-slider .cs-classic .slide, .cs-classic .block-user-login, .cs-elegant .primary-background, .cs-elegant .homepage-reward-block, .cs-elegant .homepage-vedio-block, .cs-elegant .homepage-booklist-slider .slide, .homepage-booklist-slider .cs-elegant .slide, .cs-elegant .block-user-login {
   font-size: 19px;
 }
 /* line 37, ../scss/base/_mixins.scss */
-.cs-default .primary-background, .cs-default .homepage-reward-block, .cs-default .homepage-vedio-block, .cs-default .homepage-booklist-slider .slide, .homepage-booklist-slider .cs-default .slide {
+.cs-default .primary-background, .cs-default .homepage-reward-block, .cs-default .homepage-vedio-block, .cs-default .homepage-booklist-slider .slide, .homepage-booklist-slider .cs-default .slide, .cs-default .block-user-login {
   font-family: "arial";
   font-weight: normal;
 }
 /* line 42, ../scss/base/_mixins.scss */
-.cs-classic .primary-background, .cs-classic .homepage-reward-block, .cs-classic .homepage-vedio-block, .cs-classic .homepage-booklist-slider .slide, .homepage-booklist-slider .cs-classic .slide {
+.cs-classic .primary-background, .cs-classic .homepage-reward-block, .cs-classic .homepage-vedio-block, .cs-classic .homepage-booklist-slider .slide, .homepage-booklist-slider .cs-classic .slide, .cs-classic .block-user-login {
   font-family: "PT Sans", sans-serif;
   font-weight: normal;
 }
 /* line 47, ../scss/base/_mixins.scss */
-.cs-elegant .primary-background, .cs-elegant .homepage-reward-block, .cs-elegant .homepage-vedio-block, .cs-elegant .homepage-booklist-slider .slide, .homepage-booklist-slider .cs-elegant .slide {
+.cs-elegant .primary-background, .cs-elegant .homepage-reward-block, .cs-elegant .homepage-vedio-block, .cs-elegant .homepage-booklist-slider .slide, .homepage-booklist-slider .cs-elegant .slide, .cs-elegant .block-user-login {
   font-family: "Open Sans", sans-serif;
   font-weight: normal;
 }
 
-/* line 122, ../scss/base/_common.scss */
+/* line 126, ../scss/base/_common.scss */
 .view-content {
   position: relative;
 }
-/* line 124, ../scss/base/_common.scss */
+/* line 128, ../scss/base/_common.scss */
 .view-content .owl-controls {
   margin-top: 0;
   width: 100%;
@@ -7571,18 +7575,18 @@ a.th {
   left: -26px;
   height: 0;
 }
-/* line 131, ../scss/base/_common.scss */
+/* line 135, ../scss/base/_common.scss */
 .view-content .owl-controls .owl-pagination {
   display: none;
 }
-/* line 134, ../scss/base/_common.scss */
+/* line 138, ../scss/base/_common.scss */
 .view-content .owl-controls .owl-buttons {
   width: calc(100% + 52px);
   position: relative;
   display: inline-block;
   height: 0;
 }
-/* line 139, ../scss/base/_common.scss */
+/* line 143, ../scss/base/_common.scss */
 .view-content .owl-controls .owl-buttons > div {
   margin: 0;
   border-radius: 0;
@@ -7591,29 +7595,62 @@ a.th {
   padding: 0;
   opacity: 1;
 }
-/* line 147, ../scss/base/_common.scss */
+/* line 151, ../scss/base/_common.scss */
 .view-content .owl-controls .owl-buttons .owl-prev {
   float: left;
   background-position: -20px -595px;
 }
-/* line 152, ../scss/base/_common.scss */
+/* line 156, ../scss/base/_common.scss */
 .view-content .owl-controls .owl-buttons .owl-next {
   float: right;
   background-position: -20px -1136px;
 }
 
-/* line 160, ../scss/base/_common.scss */
+/* line 164, ../scss/base/_common.scss */
 .b-padding {
   padding: 20px 35px 18px;
 }
-/* line 162, ../scss/base/_common.scss */
+/* line 166, ../scss/base/_common.scss */
 .b-padding p {
   margin: 0;
 }
 
-/* line 167, ../scss/base/_common.scss */
+/* line 171, ../scss/base/_common.scss */
 .margin-0 {
   margin: 0;
+}
+
+/* line 175, ../scss/base/_common.scss */
+.yellow-commonblock, .block-play-library-custom-pm-block, .homebox.homebox-auto-save #homebox-add .item-list, .homebox.homebox-auto-save .homebox-column-wrapper .homebox-portlet-inner {
+  padding: 14px 25px 15px;
+  color: #000;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+  margin-bottom: 35px;
+}
+/* line 113, ../scss/base/_mixins.scss */
+.cs-default .yellow-commonblock, .cs-default .block-play-library-custom-pm-block, .cs-default .homebox.homebox-auto-save #homebox-add .item-list, .homebox.homebox-auto-save #homebox-add .cs-default .item-list, .cs-default .homebox.homebox-auto-save .homebox-column-wrapper .homebox-portlet-inner, .homebox.homebox-auto-save .homebox-column-wrapper .cs-default .homebox-portlet-inner {
+  font-size: 17px;
+}
+/* line 117, ../scss/base/_mixins.scss */
+.cs-classic .yellow-commonblock, .cs-classic .block-play-library-custom-pm-block, .cs-classic .homebox.homebox-auto-save #homebox-add .item-list, .homebox.homebox-auto-save #homebox-add .cs-classic .item-list, .cs-classic .homebox.homebox-auto-save .homebox-column-wrapper .homebox-portlet-inner, .homebox.homebox-auto-save .homebox-column-wrapper .cs-classic .homebox-portlet-inner, .cs-elegant .yellow-commonblock, .cs-elegant .block-play-library-custom-pm-block, .cs-elegant .homebox.homebox-auto-save #homebox-add .item-list, .homebox.homebox-auto-save #homebox-add .cs-elegant .item-list, .cs-elegant .homebox.homebox-auto-save .homebox-column-wrapper .homebox-portlet-inner, .homebox.homebox-auto-save .homebox-column-wrapper .cs-elegant .homebox-portlet-inner {
+  font-size: 19px;
+}
+/* line 37, ../scss/base/_mixins.scss */
+.cs-default .yellow-commonblock, .cs-default .block-play-library-custom-pm-block, .cs-default .homebox.homebox-auto-save #homebox-add .item-list, .homebox.homebox-auto-save #homebox-add .cs-default .item-list, .cs-default .homebox.homebox-auto-save .homebox-column-wrapper .homebox-portlet-inner, .homebox.homebox-auto-save .homebox-column-wrapper .cs-default .homebox-portlet-inner {
+  font-family: "arial";
+  font-weight: normal;
+}
+/* line 42, ../scss/base/_mixins.scss */
+.cs-classic .yellow-commonblock, .cs-classic .block-play-library-custom-pm-block, .cs-classic .homebox.homebox-auto-save #homebox-add .item-list, .homebox.homebox-auto-save #homebox-add .cs-classic .item-list, .cs-classic .homebox.homebox-auto-save .homebox-column-wrapper .homebox-portlet-inner, .homebox.homebox-auto-save .homebox-column-wrapper .cs-classic .homebox-portlet-inner {
+  font-family: "PT Sans", sans-serif;
+  font-weight: normal;
+}
+/* line 47, ../scss/base/_mixins.scss */
+.cs-elegant .yellow-commonblock, .cs-elegant .block-play-library-custom-pm-block, .cs-elegant .homebox.homebox-auto-save #homebox-add .item-list, .homebox.homebox-auto-save #homebox-add .cs-elegant .item-list, .cs-elegant .homebox.homebox-auto-save .homebox-column-wrapper .homebox-portlet-inner, .homebox.homebox-auto-save .homebox-column-wrapper .cs-elegant .homebox-portlet-inner {
+  font-family: "Open Sans", sans-serif;
+  font-weight: normal;
 }
 
 /* line 4, ../scss/base/_drupal.scss */
@@ -7665,26 +7702,26 @@ h1, .font-stroke-main, h2, h3, h4, h5, h6 {
 }
 
 /* line 37, ../scss/base/_mixins.scss */
-.cs-default p {
+.cs-default p, .cs-default li {
   font-family: "arial";
   font-weight: normal;
 }
 /* line 42, ../scss/base/_mixins.scss */
-.cs-classic p {
+.cs-classic p, .cs-classic li {
   font-family: "PT Sans", sans-serif;
   font-weight: normal;
 }
 /* line 47, ../scss/base/_mixins.scss */
-.cs-elegant p {
+.cs-elegant p, .cs-elegant li {
   font-family: "Open Sans", sans-serif;
   font-weight: normal;
 }
 /* line 113, ../scss/base/_mixins.scss */
-.cs-default p {
+.cs-default p, .cs-default li {
   font-size: 17px;
 }
 /* line 117, ../scss/base/_mixins.scss */
-.cs-classic p, .cs-elegant p {
+.cs-classic p, .cs-elegant p, .cs-classic li, .cs-elegant li {
   font-size: 19px;
 }
 
@@ -8544,15 +8581,20 @@ p {
   background: transparent;
   border: none;
 }
-/* line 39, ../scss/layout/_header.scss */
+/* line 37, ../scss/layout/_header.scss */
+.l-header .pre-header .breadcurm ul li {
+  font-size: 14px;
+}
+/* line 40, ../scss/layout/_header.scss */
 .l-header .pre-header .breadcurm ul li.current a {
   color: #fff;
+  font-size: 14px;
 }
-/* line 42, ../scss/layout/_header.scss */
+/* line 43, ../scss/layout/_header.scss */
 .cs-default .l-header .pre-header .breadcurm ul li.current a {
   color: #000;
 }
-/* line 47, ../scss/layout/_header.scss */
+/* line 48, ../scss/layout/_header.scss */
 .l-header .pre-header .breadcurm ul li.current:before {
   content: ">";
   top: 0;
@@ -8574,14 +8616,6 @@ p {
   font-family: "Open Sans", sans-serif;
   font-weight: normal;
 }
-/* line 113, ../scss/base/_mixins.scss */
-.cs-default .l-header .pre-header .breadcurm ul li.current:before {
-  font-size: 17px;
-}
-/* line 117, ../scss/base/_mixins.scss */
-.cs-classic .l-header .pre-header .breadcurm ul li.current:before, .cs-elegant .l-header .pre-header .breadcurm ul li.current:before {
-  font-size: 19px;
-}
 /* line 57, ../scss/layout/_header.scss */
 .cs-default .l-header .pre-header .breadcurm ul li.current:before {
   color: #000;
@@ -8593,14 +8627,6 @@ p {
 /* line 68, ../scss/layout/_header.scss */
 .cs-default .l-header .pre-header .breadcurm ul li a {
   color: #267fda;
-}
-/* line 113, ../scss/base/_mixins.scss */
-.cs-default .l-header .pre-header .breadcurm ul li a {
-  font-size: 17px;
-}
-/* line 117, ../scss/base/_mixins.scss */
-.cs-classic .l-header .pre-header .breadcurm ul li a, .cs-elegant .l-header .pre-header .breadcurm ul li a {
-  font-size: 19px;
 }
 /* line 37, ../scss/base/_mixins.scss */
 .cs-default .l-header .pre-header .breadcurm ul li a {
@@ -8617,7 +8643,7 @@ p {
   font-family: "Open Sans", sans-serif;
   font-weight: normal;
 }
-/* line 76, ../scss/layout/_header.scss */
+/* line 74, ../scss/layout/_header.scss */
 .l-header .pre-header .breadcurm ul li a:focus {
   outline: none;
 }
@@ -8627,7 +8653,7 @@ p {
     flex-basis: 20%;
   }
 }
-/* line 92, ../scss/layout/_header.scss */
+/* line 90, ../scss/layout/_header.scss */
 .l-header .pre-header .top-menu {
   flex-basis: 100%;
 }
@@ -8646,41 +8672,41 @@ p {
   font-family: "Margarine", cursive;
   font-weight: normal;
 }
-/* line 95, ../scss/layout/_header.scss */
+/* line 93, ../scss/layout/_header.scss */
 .cs-default .l-header .pre-header .top-menu {
   color: #000;
 }
-/* line 98, ../scss/layout/_header.scss */
+/* line 96, ../scss/layout/_header.scss */
 .cs-default .l-header .pre-header .top-menu a.username {
   color: inherit;
   font-family: inherit;
   margin-right: 50px;
 }
-/* line 105, ../scss/layout/_header.scss */
+/* line 103, ../scss/layout/_header.scss */
 .cs-classic .l-header .pre-header .top-menu, .cs-elegant .l-header .pre-header .top-menu {
   color: #fff;
 }
-/* line 108, ../scss/layout/_header.scss */
+/* line 106, ../scss/layout/_header.scss */
 .cs-classic .l-header .pre-header .top-menu a.username, .cs-elegant .l-header .pre-header .top-menu a.username {
   color: inherit;
   font-family: inherit;
   margin-right: 50px;
 }
-/* line 115, ../scss/layout/_header.scss */
+/* line 113, ../scss/layout/_header.scss */
 .l-header .pre-header .top-menu .btn {
   margin-left: 6px;
 }
 @media screen and (min-width: 1025px) {
-  /* line 92, ../scss/layout/_header.scss */
+  /* line 90, ../scss/layout/_header.scss */
   .l-header .pre-header .top-menu {
     flex-basis: 80%;
   }
 }
-/* line 127, ../scss/layout/_header.scss */
+/* line 125, ../scss/layout/_header.scss */
 .l-header .pre-header .top-menu .top-header-menu {
   float: right;
 }
-/* line 133, ../scss/layout/_header.scss */
+/* line 131, ../scss/layout/_header.scss */
 .l-header .header-middle {
   -webkit-flex-wrap: wrap;
   flex-wrap: wrap;
@@ -8690,109 +8716,110 @@ p {
   padding-left: 25px;
   padding-top: 20px;
 }
-/* line 154, ../scss/layout/_header.scss */
+/* line 152, ../scss/layout/_header.scss */
 .l-header .header-middle .logo-block {
   flex-basis: 25%;
 }
-/* line 157, ../scss/layout/_header.scss */
+/* line 155, ../scss/layout/_header.scss */
 .l-header .header-middle .logo-block .site-info {
   width: 100%;
   display: table;
 }
-/* line 161, ../scss/layout/_header.scss */
+/* line 159, ../scss/layout/_header.scss */
 .l-header .header-middle .logo-block .site-info > div {
   display: table-cell;
   vertical-align: top;
 }
-/* line 165, ../scss/layout/_header.scss */
+/* line 163, ../scss/layout/_header.scss */
 .l-header .header-middle .logo-block .site-info > div.logo {
   width: 80px;
 }
-/* line 169, ../scss/layout/_header.scss */
+/* line 167, ../scss/layout/_header.scss */
 .cs-classic .l-header .header-middle .logo-block .site-info > div.logo img {
   background: #084899;
 }
-/* line 176, ../scss/layout/_header.scss */
+/* line 174, ../scss/layout/_header.scss */
 .l-header .header-middle .logo-block .site-info .site-name {
   margin: -7px 0 0;
   font-size: 36px;
-  font-family: 'Conv_PTS75F';
+  font-family: "PT Sans", sans-serif;
   color: #fff;
+  font-weight: 700;
 }
-/* line 182, ../scss/layout/_header.scss */
+/* line 181, ../scss/layout/_header.scss */
 .cs-classic .l-header .header-middle .logo-block .site-info .site-name {
   color: #084899;
 }
-/* line 186, ../scss/layout/_header.scss */
+/* line 185, ../scss/layout/_header.scss */
 .l-header .header-middle .logo-block .site-info .site-name a {
   color: inherit;
   font-family: inherit;
 }
-/* line 193, ../scss/layout/_header.scss */
+/* line 192, ../scss/layout/_header.scss */
 .l-header .header-middle .logo-block .site-slogan {
   margin: -10px 0 0;
   font-size: 23px;
-  font-family: 'Conv_PTS55F';
+  font-family: "PT Sans", sans-serif;
   color: #fff;
 }
-/* line 199, ../scss/layout/_header.scss */
+/* line 198, ../scss/layout/_header.scss */
 .cs-classic .l-header .header-middle .logo-block .site-slogan {
   color: #084899;
 }
-/* line 203, ../scss/layout/_header.scss */
+/* line 202, ../scss/layout/_header.scss */
 .l-header .header-middle .logo-block .site-slogan a {
   color: inherit;
   font-family: inherit;
 }
-/* line 209, ../scss/layout/_header.scss */
+/* line 208, ../scss/layout/_header.scss */
 .l-header .header-middle .logo-block .program-logo {
   margin-top: 15px;
   margin-bottom: 20px;
 }
-/* line 213, ../scss/layout/_header.scss */
+/* line 212, ../scss/layout/_header.scss */
 .l-header .header-middle .logo-block .program-logo img {
   max-width: 200px;
 }
-/* line 219, ../scss/layout/_header.scss */
+/* line 218, ../scss/layout/_header.scss */
 .l-header .header-middle .main-menu {
   flex-basis: 75%;
 }
-/* line 223, ../scss/layout/_header.scss */
+/* line 222, ../scss/layout/_header.scss */
 .l-header .header-middle .main-menu .menu-wrapper section {
   width: 100%;
   display: inline-block;
 }
-/* line 229, ../scss/layout/_header.scss */
+/* line 228, ../scss/layout/_header.scss */
 .l-header .header-middle .main-menu .menu-wrapper .block-lang-dropdown .block-title {
   display: none;
 }
-/* line 233, ../scss/layout/_header.scss */
+/* line 232, ../scss/layout/_header.scss */
 .l-header .header-middle .main-menu .menu-wrapper .block-lang-dropdown form {
   float: right;
   margin-right: 18px;
 }
-/* line 239, ../scss/layout/_header.scss */
+/* line 238, ../scss/layout/_header.scss */
 .l-header .header-middle .main-menu .menu-wrapper ul.menu {
   margin-right: 3px;
   margin-bottom: 10px;
 }
 
-/* line 249, ../scss/layout/_header.scss */
+/* line 248, ../scss/layout/_header.scss */
 .block-menu-menu-anonymous-header-links {
   width: 100%;
 }
-/* line 252, ../scss/layout/_header.scss */
+/* line 251, ../scss/layout/_header.scss */
 .block-menu-menu-anonymous-header-links ul.menu {
   display: inline-block;
   float: right;
   margin: 0;
   padding: 0;
 }
-/* line 258, ../scss/layout/_header.scss */
+/* line 257, ../scss/layout/_header.scss */
 .block-menu-menu-anonymous-header-links ul.menu li {
   display: inline-block;
 }
-/* line 261, ../scss/layout/_header.scss */
+/* line 260, ../scss/layout/_header.scss */
 .block-menu-menu-anonymous-header-links ul.menu li a {
   display: inline-block;
   padding: 6px 24px;
@@ -8820,11 +8847,11 @@ p {
   font-family: "Margarine", cursive;
   font-weight: normal;
 }
-/* line 279, ../scss/layout/_header.scss */
+/* line 278, ../scss/layout/_header.scss */
 .cs-classic .block-menu-menu-anonymous-header-links ul.menu li a {
   background: #00a6ed;
 }
-/* line 287, ../scss/layout/_header.scss */
+/* line 286, ../scss/layout/_header.scss */
 .block-menu-menu-anonymous-header-links ul.menu li a:hover {
   text-decoration: none;
 }
@@ -8834,67 +8861,85 @@ body {
   font-size: 17px;
   line-height: 26px;
 }
-/* line 5, ../scss/layout/_main.scss */
+/* line 4, ../scss/layout/_main.scss */
+body.cs-default, body.cs-classic, body.cs-elegant {
+  width: 100%;
+  display: block;
+  height: auto;
+  background: #fff;
+  max-width: 1280px;
+  margin: auto;
+}
+/* line 13, ../scss/layout/_main.scss */
 body.cs-default {
-  font-family: 'arial';
+  font-family: "arial";
   font-weight: normal;
 }
-/* line 11, ../scss/layout/_main.scss */
+/* line 19, ../scss/layout/_main.scss */
 body.cs-classic {
-  font-family: 'Conv_PTS55F';
+  font-family: "PT Sans", sans-serif;
   font-weight: normal;
 }
-/* line 14, ../scss/layout/_main.scss */
+/* line 22, ../scss/layout/_main.scss */
 body.cs-classic #admin-menu {
   font-size: 9px;
   font-family: "lucida grande", tahoma, verdana, arial, sans-serif !important;
   line-height: 1;
 }
-/* line 21, ../scss/layout/_main.scss */
+/* line 29, ../scss/layout/_main.scss */
 body.cs-elegant {
-  font-family: 'Opensans-regular';
+  font-family: "Open Sans", sans-serif;
   font-weight: normal;
 }
-/* line 24, ../scss/layout/_main.scss */
+/* line 32, ../scss/layout/_main.scss */
 body.cs-elegant #admin-menu {
   font-size: 9px;
   font-family: "lucida grande", tahoma, verdana, arial, sans-serif !important;
   line-height: 1;
 }
 
-/* line 34, ../scss/layout/_main.scss */
+/* line 42, ../scss/layout/_main.scss */
 .l-main {
   width: 100%;
   padding-top: 35px;
   margin: auto;
 }
 
-/* line 40, ../scss/layout/_main.scss */
+/* line 48, ../scss/layout/_main.scss */
 .columns {
   padding-left: 20px !important;
   padding-right: 20px !important;
 }
 
-/* line 44, ../scss/layout/_main.scss */
+/* line 52, ../scss/layout/_main.scss */
 .row {
   max-width: 100% !important;
 }
-/* line 46, ../scss/layout/_main.scss */
+/* line 54, ../scss/layout/_main.scss */
 .row.l-main {
   max-width: 1224px !important;
 }
 
-/* line 55, ../scss/layout/_main.scss */
+/* line 63, ../scss/layout/_main.scss */
 #admin-menu {
   font-size: 9px !important;
   font-family: "lucida grande", tahoma, verdana, arial, sans-serif !important;
   line-height: 1 !important;
 }
-/* line 59, ../scss/layout/_main.scss */
+/* line 67, ../scss/layout/_main.scss */
 #admin-menu * {
   font-size: inherit;
   font-family: inherit;
   line-height: inherit;
+}
+
+/* line 73, ../scss/layout/_main.scss */
+html {
+  width: 100%;
+  height: 100%;
+  background: -prefix-linear-gradient(top, #cccccc, #f2f2f2 80%, #d9d9d9);
+  background: linear-gradient(to bottom, #cccccc, #f2f2f2 80%, #d9d9d9);
+  display: block;
 }
 
 /* line 16, ../scss/layout/_footer.scss */
@@ -9103,26 +9148,17 @@ body.cs-elegant #admin-menu {
   background: #fff;
   border-radius: 100%;
 }
-@media screen and (max-width: 767px) {
-  /* line 101, ../scss/components/_blocks.scss */
-  .homepage-booklist-slider ul.booklist-pager input[type=radio] + label:before {
-    background: #f6511d;
-    border: 1px solid #f6511d;
-  }
-}
-@media only screen and (min-width: 768px) and (max-width: 1024px) {
-  /* line 101, ../scss/components/_blocks.scss */
-  .homepage-booklist-slider ul.booklist-pager input[type=radio] + label:before {
-    background: #f6511d;
-    border: 1px solid #f6511d;
-  }
-}
-/* line 124, ../scss/components/_blocks.scss */
+/* line 113, ../scss/components/_blocks.scss */
 .homepage-booklist-slider ul.booklist-pager input[type=radio]:checked + label:before {
   background: #267fda;
   border: 1px solid #267fda;
 }
-/* line 130, ../scss/components/_blocks.scss */
+/* line 117, ../scss/components/_blocks.scss */
+.cs-classic .homepage-booklist-slider ul.booklist-pager input[type=radio]:checked + label:before {
+  background: #fdeb52;
+  border: 1px solid #fdeb52;
+}
+/* line 124, ../scss/components/_blocks.scss */
 .homepage-booklist-slider .controls {
   width: 100%;
   display: inline-block;
@@ -9130,15 +9166,15 @@ body.cs-elegant #admin-menu {
   bottom: -60px;
   right: 20px;
 }
-/* line 141, ../scss/components/_blocks.scss */
+/* line 135, ../scss/components/_blocks.scss */
 .homepage-booklist-slider .slide .stroke-main, .homepage-booklist-slider .slide .homepage-vedio-block .view-header p, .homepage-vedio-block .view-header .homepage-booklist-slider .slide p {
   margin: 0;
 }
-/* line 145, ../scss/components/_blocks.scss */
+/* line 139, ../scss/components/_blocks.scss */
 .homepage-booklist-slider .slide .view-content {
   padding: 20px 60px;
 }
-/* line 149, ../scss/components/_blocks.scss */
+/* line 143, ../scss/components/_blocks.scss */
 .homepage-booklist-slider .slide .booklist-wrapper {
   width: 100%;
   display: flex;
@@ -9147,20 +9183,16 @@ body.cs-elegant #admin-menu {
   align-content: center;
   height: 200px;
 }
-/* line 158, ../scss/components/_blocks.scss */
+/* line 152, ../scss/components/_blocks.scss */
 .homepage-booklist-slider .slide .view-footer {
   padding-left: 25px;
 }
-/* line 161, ../scss/components/_blocks.scss */
-.homepage-booklist-slider .slide .view-footer a.button {
-  margin: 0;
-}
-/* line 165, ../scss/components/_blocks.scss */
+/* line 155, ../scss/components/_blocks.scss */
 .homepage-booklist-slider .slide .view-footer p {
   margin: 0;
 }
 
-/* line 172, ../scss/components/_blocks.scss */
+/* line 163, ../scss/components/_blocks.scss */
 .annocement {
   background-color: #fdeb52;
   background-repeat: repeat;
@@ -9172,15 +9204,16 @@ body.cs-elegant #admin-menu {
   width: 100%;
   border-radius: 15px;
 }
-/* line 182, ../scss/components/_blocks.scss */
+/* line 174, ../scss/components/_blocks.scss */
 .annocement h1, .annocement .font-stroke-main {
   margin: 0;
+  color: #000;
 }
-/* line 186, ../scss/components/_blocks.scss */
+/* line 179, ../scss/components/_blocks.scss */
 .annocement img {
   display: none;
 }
-/* line 189, ../scss/components/_blocks.scss */
+/* line 183, ../scss/components/_blocks.scss */
 .annocement p {
   margin-bottom: 0;
 }
@@ -9199,7 +9232,7 @@ body.cs-elegant #admin-menu {
   font-family: "Open Sans", sans-serif;
   font-weight: 700;
 }
-/* line 193, ../scss/components/_blocks.scss */
+/* line 189, ../scss/components/_blocks.scss */
 .annocement ul, .annocement ol {
   margin: 0;
 }
@@ -9211,12 +9244,12 @@ body.cs-elegant #admin-menu {
 .cs-classic .annocement ul, .cs-elegant .annocement ul, .cs-classic .annocement ol, .cs-elegant .annocement ol {
   font-size: 19px;
 }
-/* line 196, ../scss/components/_blocks.scss */
+/* line 194, ../scss/components/_blocks.scss */
 .annocement ul li, .annocement ol li {
   padding-left: 35px;
   position: relative;
 }
-/* line 199, ../scss/components/_blocks.scss */
+/* line 198, ../scss/components/_blocks.scss */
 .annocement ul li:before, .annocement ol li:before {
   content: "";
   width: 35px;
@@ -9228,13 +9261,171 @@ body.cs-elegant #admin-menu {
   left: 0;
 }
 
-/* line 216, ../scss/components/_blocks.scss */
+/* line 214, ../scss/components/_blocks.scss */
 .about-us .view-footer {
   padding-left: 25px;
 }
-/* line 218, ../scss/components/_blocks.scss */
-.about-us .view-footer a.button {
+
+/* line 227, ../scss/components/_blocks.scss */
+.block-user-login form {
+  margin-bottom: 0;
+  padding-left: 30px;
+  padding-right: 30px;
+}
+/* line 232, ../scss/components/_blocks.scss */
+.block-user-login form label {
+  color: #fff;
+}
+/* line 54, ../scss/base/_mixins.scss */
+.cs-default .block-user-login form label {
+  font-family: "arial";
+  font-weight: 700;
+}
+/* line 59, ../scss/base/_mixins.scss */
+.cs-classic .block-user-login form label {
+  font-family: "PT Sans", sans-serif;
+  font-weight: 700;
+}
+/* line 64, ../scss/base/_mixins.scss */
+.cs-elegant .block-user-login form label {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 700;
+}
+/* line 240, ../scss/components/_blocks.scss */
+.block-user-login form .item-list ul li {
   margin: 0;
+  list-style: none;
+  display: inline-block;
+  height: 20px;
+  width: 100%;
+  color: white;
+  text-align: center;
+  font-family: Verdana, sans-serif;
+}
+/* line 250, ../scss/components/_blocks.scss */
+.block-user-login form .item-list ul li.first {
+  transform: rotateX(40deg);
+  animation: one 2s infinite;
+  animation-direction: alternate;
+}
+/* line 256, ../scss/components/_blocks.scss */
+.block-user-login form .item-list ul li.last {
+  transform: rotateX(40deg);
+  animation: one 2s infinite;
+  animation-direction: alternate;
+}
+/* line 262, ../scss/components/_blocks.scss */
+.block-user-login form .item-list ul li a {
+  color: #fff;
+}
+/* line 37, ../scss/base/_mixins.scss */
+.cs-default .block-user-login form .item-list ul li a {
+  font-family: "arial";
+  font-weight: normal;
+}
+/* line 42, ../scss/base/_mixins.scss */
+.cs-classic .block-user-login form .item-list ul li a {
+  font-family: "PT Sans", sans-serif;
+  font-weight: normal;
+}
+/* line 47, ../scss/base/_mixins.scss */
+.cs-elegant .block-user-login form .item-list ul li a {
+  font-family: "Open Sans", sans-serif;
+  font-weight: normal;
+}
+/* line 113, ../scss/base/_mixins.scss */
+.cs-default .block-user-login form .item-list ul li a {
+  font-size: 17px;
+}
+/* line 117, ../scss/base/_mixins.scss */
+.cs-classic .block-user-login form .item-list ul li a, .cs-elegant .block-user-login form .item-list ul li a {
+  font-size: 19px;
+}
+
+@keyframes one {
+  0% {
+    transform: rotateX(0);
+  }
+  100% {
+    transform: rotateX(50deg);
+  }
+}
+@keyframes two {
+  0% {
+    transform: rotateY(0);
+  }
+  100% {
+    transform: rotateY(70deg);
+  }
+}
+/* line 299, ../scss/components/_blocks.scss */
+.block-play-library-custom-pm-block .block-title {
+  margin: 0;
+}
+/* line 303, ../scss/components/_blocks.scss */
+.block-play-library-custom-pm-block .pm-custom {
+  padding-top: 17px;
+  padding-bottom: 12px;
+  -webkit-flex-wrap: wrap;
+  flex-wrap: wrap;
+  display: -webkit-flex;
+  display: flex;
+  align-content: center;
+  align-items: center;
+}
+/* line 314, ../scss/components/_blocks.scss */
+.block-play-library-custom-pm-block .pm-custom > div:nth-of-type(1) {
+  flex-basis: 78%;
+}
+/* line 318, ../scss/components/_blocks.scss */
+.block-play-library-custom-pm-block .pm-custom > div:nth-of-type(2) {
+  flex-basis: 22%;
+}
+/* line 323, ../scss/components/_blocks.scss */
+.block-play-library-custom-pm-block .pm-custom .pm {
+  -webkit-flex-wrap: wrap;
+  flex-wrap: wrap;
+  display: -webkit-flex;
+  display: flex;
+  align-content: center;
+  align-items: center;
+}
+/* line 113, ../scss/base/_mixins.scss */
+.cs-default .block-play-library-custom-pm-block .pm-custom .pm {
+  font-size: 17px;
+}
+/* line 117, ../scss/base/_mixins.scss */
+.cs-classic .block-play-library-custom-pm-block .pm-custom .pm, .cs-elegant .block-play-library-custom-pm-block .pm-custom .pm {
+  font-size: 19px;
+}
+/* line 333, ../scss/components/_blocks.scss */
+.block-play-library-custom-pm-block .pm-custom .pm .pm-subject {
+  flex-basis: 60%;
+  padding-right: 10px;
+}
+/* line 337, ../scss/components/_blocks.scss */
+.block-play-library-custom-pm-block .pm-custom .pm .pm-subject a {
+  font-weight: 700;
+  color: #000;
+}
+/* line 342, ../scss/components/_blocks.scss */
+.block-play-library-custom-pm-block .pm-custom .pm .pm-subject .pm-new {
+  color: #cc0d25;
+  display: inline-block;
+  padding-right: 5px;
+  font-weight: 700;
+}
+/* line 348, ../scss/components/_blocks.scss */
+.block-play-library-custom-pm-block .pm-custom .pm .pm-subject .pm-new + a {
+  color: #cc0d25;
+}
+/* line 354, ../scss/components/_blocks.scss */
+.block-play-library-custom-pm-block .pm-custom .pm .pm-admin {
+  padding-right: 10px;
+}
+/* line 358, ../scss/components/_blocks.scss */
+.block-play-library-custom-pm-block .pm-custom .pm .pm-admin, .block-play-library-custom-pm-block .pm-custom .pm .pm-date {
+  flex-basis: 20%;
 }
 
 /* line 6, ../scss/components/_buttons.scss */
@@ -9247,7 +9438,7 @@ body.cs-elegant #admin-menu {
   border-radius: 10px;
   border: none;
   line-height: 26px !important;
-  margin: 10px !important;
+  margin: 10px;
 }
 /* line 7, ../scss/components/_buttons.scss */
 .button.radius, button.radius {
@@ -9268,22 +9459,22 @@ body.cs-elegant #admin-menu {
   font-family: "Margarine", cursive;
   font-weight: normal;
 }
-/* line 20, ../scss/components/_buttons.scss */
+/* line 23, ../scss/components/_buttons.scss */
 .button.postfix.button, button.postfix.button {
   border-radius: 10px;
 }
-/* line 23, ../scss/components/_buttons.scss */
+/* line 27, ../scss/components/_buttons.scss */
 .cs-default .button, .cs-default button {
   font-size: 17px;
   color: #000;
 }
-/* line 31, ../scss/components/_buttons.scss */
+/* line 35, ../scss/components/_buttons.scss */
 .cs-classic .button, .cs-elegant .button, .cs-classic button, .cs-elegant button {
   font-size: 19px;
   color: #fff;
 }
 
-/* line 43, ../scss/components/_buttons.scss */
+/* line 44, ../scss/components/_buttons.scss */
 .btn {
   display: inline-block;
   padding: 6px 24px;
@@ -9294,11 +9485,11 @@ body.cs-elegant #admin-menu {
   border-radius: 10px;
   line-height: 30px;
 }
-/* line 58, ../scss/components/_buttons.scss */
+/* line 62, ../scss/components/_buttons.scss */
 .cs-classic .btn {
   background: #00a6ed;
 }
-/* line 61, ../scss/components/_buttons.scss */
+/* line 66, ../scss/components/_buttons.scss */
 .btn:hover {
   text-decoration: none;
 }
@@ -9317,25 +9508,25 @@ body.cs-elegant #admin-menu {
   font-family: "Margarine", cursive;
   font-weight: normal;
 }
-/* line 67, ../scss/components/_buttons.scss */
-.btn.btn-large, .btn.abc {
+/* line 72, ../scss/components/_buttons.scss */
+.btn.btn-large {
   color: #fff;
 }
-/* line 70, ../scss/components/_buttons.scss */
-.btn.btn-large.msg, .btn.msg.abc {
+/* line 75, ../scss/components/_buttons.scss */
+.btn.btn-large.msg {
   padding-left: 50px;
   position: relative;
 }
-/* line 83, ../scss/components/_buttons.scss */
-.cs-elegant .btn.btn-large.msg.new, .cs-elegant .btn.msg.new.abc {
+/* line 88, ../scss/components/_buttons.scss */
+.cs-elegant .btn.btn-large.msg.new {
   color: #154c84;
 }
-/* line 89, ../scss/components/_buttons.scss */
-.cs-elegant .btn.btn-large.msg.new:after, .cs-elegant .btn.msg.new.abc:after {
+/* line 95, ../scss/components/_buttons.scss */
+.cs-elegant .btn.btn-large.msg.new:after {
   background-position: 72px 90px;
 }
-/* line 95, ../scss/components/_buttons.scss */
-.btn.btn-large.msg:after, .btn.msg.abc:after {
+/* line 101, ../scss/components/_buttons.scss */
+.btn.btn-large.msg:after {
   content: "";
   width: 30px;
   height: 14px;
@@ -9346,50 +9537,98 @@ body.cs-elegant #admin-menu {
   display: inline-block;
   background-position: 72px 35px;
 }
-/* line 109, ../scss/components/_buttons.scss */
-.btn.btn-large.small, .btn.small.abc {
+/* line 114, ../scss/components/_buttons.scss */
+.btn.btn-large.small {
   font-size: 17px;
   padding-top: 9px;
   padding-bottom: 9px;
 }
-/* line 113, ../scss/components/_buttons.scss */
-.btn.btn-large.small.btn-mobile, .btn.small.btn-mobile.abc {
+/* line 119, ../scss/components/_buttons.scss */
+.btn.btn-large.small.btn-mobile {
   padding: 4px 13px 6px;
 }
-/* line 116, ../scss/components/_buttons.scss */
-.cs-classic .btn.btn-large.small, .cs-classic .btn.small.abc, .cs-elegant .btn.btn-large.small, .cs-elegant .btn.small.abc {
+/* line 123, ../scss/components/_buttons.scss */
+.cs-classic .btn.btn-large.small, .cs-elegant .btn.btn-large.small {
   font-size: 19px;
 }
-/* line 121, ../scss/components/_buttons.scss */
-.btn.btn-large.full, .btn.full.abc {
+/* line 128, ../scss/components/_buttons.scss */
+.btn.btn-large.full {
   width: 100%;
   font-size: 17px;
   text-align: center;
   padding-top: 9px;
   padding-bottom: 9px;
 }
-/* line 128, ../scss/components/_buttons.scss */
-.cs-classic .btn.btn-large.full, .cs-classic .btn.full.abc, .cs-elegant .btn.btn-large.full, .cs-elegant .btn.full.abc {
+/* line 135, ../scss/components/_buttons.scss */
+.cs-classic .btn.btn-large.full, .cs-elegant .btn.btn-large.full {
   font-size: 19px;
 }
-/* line 137, ../scss/components/_buttons.scss */
-.cs-classic .btn.btn-large, .cs-classic .btn.abc {
+/* line 144, ../scss/components/_buttons.scss */
+.cs-classic .btn.btn-large {
   background: #00a6ed;
 }
-/* line 146, ../scss/components/_buttons.scss */
+/* line 153, ../scss/components/_buttons.scss */
 .btn.btn-primary {
   padding-top: 9px;
   padding-bottom: 9px;
 }
-/* line 150, ../scss/components/_buttons.scss */
+/* line 157, ../scss/components/_buttons.scss */
 .cs-default .btn.btn-primary {
   font-size: 17px;
   color: #333;
 }
-/* line 158, ../scss/components/_buttons.scss */
+/* line 165, ../scss/components/_buttons.scss */
 .cs-classic .btn.btn-primary, .cs-elegant .btn.btn-primary {
   font-size: 19px;
   color: #fff;
+}
+
+/* line 177, ../scss/components/_buttons.scss */
+.blue-button, .homebox.homebox-auto-save #homebox-buttons > a, .homebox.homebox-auto-save #homebox-add .item-list ul li a, .homebox.homebox-auto-save .view-footer a.button {
+  display: inline-block;
+  padding: 6px 24px;
+  font-size: 21px;
+  text-decoration: none;
+  box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+  text-transform: capitalize;
+  border-radius: 10px;
+  line-height: 30px;
+  color: #fff;
+}
+/* line 187, ../scss/components/_buttons.scss */
+.cs-default .blue-button, .cs-default .homebox.homebox-auto-save #homebox-buttons > a, .homebox.homebox-auto-save .cs-default #homebox-buttons > a, .cs-default .homebox.homebox-auto-save #homebox-add .item-list ul li a, .homebox.homebox-auto-save #homebox-add .item-list ul li .cs-default a, .cs-default .homebox.homebox-auto-save .view-footer a.button, .homebox.homebox-auto-save .view-footer .cs-default a.button {
+  background: #267fda;
+}
+/* line 191, ../scss/components/_buttons.scss */
+.cs-elegant .blue-button, .cs-elegant .homebox.homebox-auto-save #homebox-buttons > a, .homebox.homebox-auto-save .cs-elegant #homebox-buttons > a, .cs-elegant .homebox.homebox-auto-save #homebox-add .item-list ul li a, .homebox.homebox-auto-save #homebox-add .item-list ul li .cs-elegant a, .cs-elegant .homebox.homebox-auto-save .view-footer a.button, .homebox.homebox-auto-save .view-footer .cs-elegant a.button {
+  background: #e71d36;
+}
+/* line 195, ../scss/components/_buttons.scss */
+.cs-classic .blue-button, .cs-classic .homebox.homebox-auto-save #homebox-buttons > a, .homebox.homebox-auto-save .cs-classic #homebox-buttons > a, .cs-classic .homebox.homebox-auto-save #homebox-add .item-list ul li a, .homebox.homebox-auto-save #homebox-add .item-list ul li .cs-classic a, .cs-classic .homebox.homebox-auto-save .view-footer a.button, .homebox.homebox-auto-save .view-footer .cs-classic a.button {
+  background: #00a6ed;
+}
+/* line 199, ../scss/components/_buttons.scss */
+.blue-button:hover, .homebox.homebox-auto-save #homebox-buttons > a:hover, .homebox.homebox-auto-save #homebox-add .item-list ul li a:hover, .homebox.homebox-auto-save .view-footer a.button:hover {
+  text-decoration: none;
+}
+/* line 202, ../scss/components/_buttons.scss */
+.blue-button:focus, .homebox.homebox-auto-save #homebox-buttons > a:focus, .homebox.homebox-auto-save #homebox-add .item-list ul li a:focus, .homebox.homebox-auto-save .view-footer a.button:focus {
+  outline: none;
+}
+/* line 20, ../scss/base/_mixins.scss */
+.cs-default .blue-button, .cs-default .homebox.homebox-auto-save #homebox-buttons > a, .homebox.homebox-auto-save .cs-default #homebox-buttons > a, .cs-default .homebox.homebox-auto-save #homebox-add .item-list ul li a, .homebox.homebox-auto-save #homebox-add .item-list ul li .cs-default a, .cs-default .homebox.homebox-auto-save .view-footer a.button, .homebox.homebox-auto-save .view-footer .cs-default a.button {
+  font-family: "McLaren", cursive;
+  font-weight: normal;
+}
+/* line 25, ../scss/base/_mixins.scss */
+.cs-classic .blue-button, .cs-classic .homebox.homebox-auto-save #homebox-buttons > a, .homebox.homebox-auto-save .cs-classic #homebox-buttons > a, .cs-classic .homebox.homebox-auto-save #homebox-add .item-list ul li a, .homebox.homebox-auto-save #homebox-add .item-list ul li .cs-classic a, .cs-classic .homebox.homebox-auto-save .view-footer a.button, .homebox.homebox-auto-save .view-footer .cs-classic a.button {
+  font-family: "Architects Daughter", cursive;
+  font-weight: normal;
+}
+/* line 30, ../scss/base/_mixins.scss */
+.cs-elegant .blue-button, .cs-elegant .homebox.homebox-auto-save #homebox-buttons > a, .homebox.homebox-auto-save .cs-elegant #homebox-buttons > a, .cs-elegant .homebox.homebox-auto-save #homebox-add .item-list ul li a, .homebox.homebox-auto-save #homebox-add .item-list ul li .cs-elegant a, .cs-elegant .homebox.homebox-auto-save .view-footer a.button, .homebox.homebox-auto-save .view-footer .cs-elegant a.button {
+  font-family: "Margarine", cursive;
+  font-weight: normal;
 }
 
 /* line 1, ../scss/components/_desktop-menu.scss */
@@ -11843,6 +12082,174 @@ body.cs-elegant #admin-menu {
   -webkit-filter: hue-rotate(180deg);
   filter: hue-rotate(180deg);
   transform: rotateY(360deg);
+}
+
+/* line 1, ../scss/pages/_dashboard.scss */
+.homebox.homebox-auto-save {
+  width: calc(100% + 40px);
+  margin-left: -20px;
+  overflow: hidden;
+}
+/* line 6, ../scss/pages/_dashboard.scss */
+.homebox.homebox-auto-save #homebox-buttons {
+  padding-left: 20px;
+}
+/* line 14, ../scss/pages/_dashboard.scss */
+.homebox.homebox-auto-save #homebox-add {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+/* line 21, ../scss/pages/_dashboard.scss */
+.homebox.homebox-auto-save #homebox-add .item-list ul li {
+  margin-bottom: 0;
+  padding-top: 10px;
+}
+/* line 25, ../scss/pages/_dashboard.scss */
+.homebox.homebox-auto-save #homebox-add .item-list ul li.last {
+  float: right;
+}
+/* line 29, ../scss/pages/_dashboard.scss */
+.homebox.homebox-auto-save #homebox-add .item-list ul li a {
+  border: none;
+  outline: none;
+}
+/* line 113, ../scss/base/_mixins.scss */
+.cs-default .homebox.homebox-auto-save #homebox-add .item-list ul li a {
+  font-size: 17px;
+}
+/* line 117, ../scss/base/_mixins.scss */
+.cs-classic .homebox.homebox-auto-save #homebox-add .item-list ul li a, .cs-elegant .homebox.homebox-auto-save #homebox-add .item-list ul li a {
+  font-size: 19px;
+}
+/* line 41, ../scss/pages/_dashboard.scss */
+.homebox.homebox-auto-save .homebox-column-wrapper {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+/* line 45, ../scss/pages/_dashboard.scss */
+.homebox.homebox-auto-save .homebox-column-wrapper .homebox-column {
+  margin: 0 !important;
+  padding: 0 !important;
+  background: none !important;
+}
+/* line 51, ../scss/pages/_dashboard.scss */
+.homebox.homebox-auto-save .homebox-column-wrapper .homebox-portlet {
+  border: none !important;
+}
+/* line 55, ../scss/pages/_dashboard.scss */
+.homebox.homebox-auto-save .homebox-column-wrapper .homebox-portlet-inner {
+  border: none !important;
+  padding: 0;
+}
+/* line 64, ../scss/pages/_dashboard.scss */
+.homebox.homebox-auto-save .homebox-column-wrapper .portlet-header {
+  border-radius: 15px 15px 0 0;
+  color: #fff !important;
+  padding: 15px 10px 15px 25px !important;
+}
+/* line 20, ../scss/base/_mixins.scss */
+.cs-default .homebox.homebox-auto-save .homebox-column-wrapper .portlet-header {
+  font-family: "McLaren", cursive;
+  font-weight: normal;
+}
+/* line 25, ../scss/base/_mixins.scss */
+.cs-classic .homebox.homebox-auto-save .homebox-column-wrapper .portlet-header {
+  font-family: "Architects Daughter", cursive;
+  font-weight: normal;
+}
+/* line 30, ../scss/base/_mixins.scss */
+.cs-elegant .homebox.homebox-auto-save .homebox-column-wrapper .portlet-header {
+  font-family: "Margarine", cursive;
+  font-weight: normal;
+}
+/* line 72, ../scss/pages/_dashboard.scss */
+.cs-default .homebox.homebox-auto-save .homebox-column-wrapper .portlet-header {
+  background: #267fda !important;
+  font-size: 22px !important;
+}
+/* line 77, ../scss/pages/_dashboard.scss */
+.cs-elegant .homebox.homebox-auto-save .homebox-column-wrapper .portlet-header {
+  background: #e71d36 !important;
+  font-size: 25px !important;
+}
+/* line 82, ../scss/pages/_dashboard.scss */
+.cs-classic .homebox.homebox-auto-save .homebox-column-wrapper .portlet-header {
+  background: #00a6ed !important;
+  font-size: 25px !important;
+}
+/* line 87, ../scss/pages/_dashboard.scss */
+.homebox.homebox-auto-save .homebox-column-wrapper .portlet-content {
+  padding: 25px !important;
+}
+/* line 92, ../scss/pages/_dashboard.scss */
+.homebox.homebox-auto-save .view-header * {
+  color: #000;
+  font-size: 14px;
+  text-transform: uppercase;
+}
+/* line 54, ../scss/base/_mixins.scss */
+.cs-default .homebox.homebox-auto-save .view-header * {
+  font-family: "arial";
+  font-weight: 700;
+}
+/* line 59, ../scss/base/_mixins.scss */
+.cs-classic .homebox.homebox-auto-save .view-header * {
+  font-family: "PT Sans", sans-serif;
+  font-weight: 700;
+}
+/* line 64, ../scss/base/_mixins.scss */
+.cs-elegant .homebox.homebox-auto-save .view-header * {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 700;
+}
+/* line 100, ../scss/pages/_dashboard.scss */
+.homebox.homebox-auto-save .view-content * {
+  font-size: 14px;
+}
+/* line 37, ../scss/base/_mixins.scss */
+.cs-default .homebox.homebox-auto-save .view-content * {
+  font-family: "arial";
+  font-weight: normal;
+}
+/* line 42, ../scss/base/_mixins.scss */
+.cs-classic .homebox.homebox-auto-save .view-content * {
+  font-family: "PT Sans", sans-serif;
+  font-weight: normal;
+}
+/* line 47, ../scss/base/_mixins.scss */
+.cs-elegant .homebox.homebox-auto-save .view-content * {
+  font-family: "Open Sans", sans-serif;
+  font-weight: normal;
+}
+/* line 106, ../scss/pages/_dashboard.scss */
+.homebox.homebox-auto-save .view-footer p {
+  width: 100%;
+  display: inline-block;
+}
+/* line 109, ../scss/pages/_dashboard.scss */
+.homebox.homebox-auto-save .view-footer p a {
+  float: right;
+  font-size: 17px;
+}
+/* line 20, ../scss/base/_mixins.scss */
+.cs-default .homebox.homebox-auto-save .view-footer p a {
+  font-family: "McLaren", cursive;
+  font-weight: normal;
+}
+/* line 25, ../scss/base/_mixins.scss */
+.cs-classic .homebox.homebox-auto-save .view-footer p a {
+  font-family: "Architects Daughter", cursive;
+  font-weight: normal;
+}
+/* line 30, ../scss/base/_mixins.scss */
+.cs-elegant .homebox.homebox-auto-save .view-footer p a {
+  font-family: "Margarine", cursive;
+  font-weight: normal;
+}
+/* line 116, ../scss/pages/_dashboard.scss */
+.homebox.homebox-auto-save .view-footer a.button {
+  margin: 10px 0;
+  width: 100%;
 }
 
 /*# sourceMappingURL=custom.css.map */

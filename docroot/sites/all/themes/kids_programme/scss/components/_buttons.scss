@@ -3,10 +3,11 @@
 // Before adding styles be sure to modify variables in the
 // "scss/_variables.scss" file.
 
-.button,button {
+.button, button {
   &.radius {
     border-radius: 10px;
   }
+
   display: inline-block !important;
   padding: 6px 24px !important;
   text-decoration: none;
@@ -15,31 +16,31 @@
   border-radius: 10px;
   border: none;
   line-height: 26px !important;
-  margin: 10px !important;
+  margin: 10px;
+
   @include primary_fonts;
-   &.postfix.button {
+
+  &.postfix.button {
     border-radius: 10px;
-   }
-    .cs-default & {
-      font-size: 17px;
+  }
 
-      @extend .yellow;
+  .cs-default & {
+    font-size: 17px;
 
-      color: $black;
-      }
+    @extend .yellow;
 
-    .cs-classic &, .cs-elegant & {
-      font-size: 19px;
+    color: $black;
+  }
 
-      @extend .light-orange;
+  .cs-classic &, .cs-elegant & {
+    font-size: 19px;
 
-      color: #fff;
-    }
+    @extend .light-orange;
 
+    color: #fff;
+  }
 }
-.abc {
-  @extend .btn-large;
-}
+
 .btn {
   display: inline-block;
   padding: 6px 24px;
@@ -49,15 +50,19 @@
   text-transform: capitalize;
   border-radius: 10px;
   line-height: 30px;
-   .cs-default & {
-      @extend .blue;
-    }
-    .cs-elegant & {
-      @extend .red1;
-    }
-    .cs-classic & {
-      background: $sky-blue;
-    }
+
+  .cs-default & {
+    @extend .blue;
+  }
+
+  .cs-elegant & {
+    @extend .red1;
+  }
+
+  .cs-classic & {
+    background: $sky-blue;
+  }
+
   &:hover {
     text-decoration: none;
   }
@@ -71,7 +76,7 @@
       padding-left: 50px;
       position: relative;
 
-      &.new  {
+      &.new {
         .cs-default & {
           @extend .red;
         }
@@ -85,8 +90,9 @@
 
           color: $color-blue;
         }
+
         &:after {
-           .cs-elegant & {
+          .cs-elegant & {
             background-position: 72px 90px;
           }
         }
@@ -102,18 +108,19 @@
         background: url("../images/icons");
         display: inline-block;
         background-position: 72px 35px;
-
-
       }
     }
+
     &.small {
       font-size: 17px;
       padding-top: 9px;
       padding-bottom: 9px;
+
       &.btn-mobile {
         padding: 4px 13px 6px;
       }
-       .cs-classic &, .cs-elegant & {
+
+      .cs-classic &, .cs-elegant & {
         font-size: 19px;
       }
     }
@@ -163,4 +170,37 @@
       color: $white;
     }
   }
+}
+
+//above is not expend-able
+
+.blue-button {
+  display: inline-block;
+  padding: 6px 24px;
+  font-size: 21px;
+  text-decoration: none;
+  box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+  text-transform: capitalize;
+  border-radius: 10px;
+  line-height: 30px;
+  color: $white;
+  .cs-default & {
+   background: $blue;
+  }
+
+  .cs-elegant & {
+    background: $light-red;
+  }
+
+  .cs-classic & {
+    background: $sky-blue;
+  }
+
+  &:hover {
+    text-decoration: none;
+  }
+  &:focus {
+    outline: none;
+  }
+  @include primary_fonts;
 }

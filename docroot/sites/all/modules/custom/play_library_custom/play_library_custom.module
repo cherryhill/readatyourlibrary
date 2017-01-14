@@ -284,7 +284,7 @@ function pl_pm_block_view() {
   ->fetchAll();
 
   $no_result = count($query);
-  $output = '<div class = "pm-custom">';
+  $output = '<div class = "pm-custom"><div>';
 
   if ($no_result != 0) {
     foreach($query as $res) {
@@ -305,7 +305,7 @@ function pl_pm_block_view() {
 
       $output .= '<div class="pm">'.'<div class = "pm-subject"><a href = '.'../messages/view/'.$msg_id.'>'.$new.$pm_subject = $result['subject'].'</a></div>'.'<div class = "pm-admin">'.$author.'</div>'.'<div class = "pm-date">'.$pm_date = date('F d, Y',$result['timestamp']).'</div>'.'</div>';
     }
-    return $output.'<a class="pm-view" href="../messages">'.t('View All Messages').'</a>'.'</div>';
+    return $output.'</div><div><a class="pm-view btn btn-large" href="../messages">'.t('View All Messages').'</a>'.'</div></div>';
   } else {
     return t('No Messages to display');
   }
