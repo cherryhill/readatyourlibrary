@@ -206,14 +206,22 @@ function calendar_data2() {
         } else{
             $days_read = t($day_count . ' days read');
         }
-        //Get URLs of stickers
-        if($value->field_calendar_sticker_id_tid){
-            $term = taxonomy_term_load($value->field_calendar_sticker_id_tid);
-            if ($image_items = field_get_items('taxonomy_term', $term, 'field_cal_sticker_image')) {
-                $uri = $image_items[0]['uri'];
-                $external_url = file_create_url($uri);
-            }
-        }
+        // //Get URLs of stickers
+        // if($value->field_calendar_sticker_id_tid){
+        //   $sticker_tid = $value->field_calendar_sticker_id_tid;
+        //   //get image URL only if not loaded previously
+        //   if (!array_key_exists($sticker_tid, $external_url)){
+        //     $term = taxonomy_term_load($value->field_calendar_sticker_id_tid);
+        //     if ($image_items = field_get_items('taxonomy_term', $term, 'field_cal_sticker_image')) {
+        //         $uri = $image_items[0]['uri'];
+        //         $external_urls[$sticker_tid] = file_create_url($uri);
+        //         // echo ($sticker_tid);
+        //     }
+        //   }
+        // }
+        // echo "<pre>";
+        // var_dump(${'url_'.$sticker_tid});
+
         //Print congratulations message and add reward-won class if user has won a prize
         if($value->field_rw_claim_id_value <> null){
          $days_read = t('<span class="cong-message">Congratulations!</span><br/> <span class="msg">You have won a reward</span>');
@@ -228,7 +236,7 @@ function calendar_data2() {
                       'id'=> $value->id,
                       'class' => $class,
                       // 'title'=>$value->title,//substr($value->title, 0, -20),
-                      'imageurl' => $external_url,
+                      'imageurl_id' => $value->field_calendar_sticker_id_tid,//$external_urls[$sticker_tid],
                       'read_days'=>$days_read,
                       'start'=>date('Y-m-d', $value->created)
                       );

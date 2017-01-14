@@ -148,11 +148,13 @@
         //render evevnt images and add classes wherever required
         eventRender: function(event, element, view) {
           //Append image tag after fc-content
-          if(event.imageurl){
+          if(event.imageurl_id){
+            var imageurl = $('#sticker_'+event.imageurl_id).attr('src');
             if(event.allDay){
-              $(element).find('[class=fc-content]').append('<img src="'+event.imageurl+'" /><br/>');
+              // var imageurl = $('#external-events').('#'+event.imageurl_id).getAttribute('src');
+              $(element).find('[class=fc-content]').append('<img src="'+imageurl+'" /><br/>');
             }else{
-              $(element).find('[class=fc-content]').append('<img src="'+event.imageurl+'" /><br/>');
+              $(element).find('[class=fc-content]').append('<img src="'+imageurl+'" /><br/>');
             }
           }
           //Append days read after image
