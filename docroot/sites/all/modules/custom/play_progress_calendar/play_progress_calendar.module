@@ -172,9 +172,9 @@ function calendar_data2() {
     //Get Activity count till start date
     $quer = db_select('eck_activity', 'eck_a');
     $quer->LEFTJOIN ('field_data_field_activity_entry_activity' , 'fdfae' , 'fdfae.entity_id = eck_a.id');
-    $quer->LEFTJOIN ('field_data_field_rw_claim_id' , 'fdrw' , 'fdrw.entity_id = eck_a.id');
+    // $quer->LEFTJOIN ('field_data_field_rw_claim_id' , 'fdrw' , 'fdrw.entity_id = eck_a.id');
     //$que->JOIN ('field_data_field_activity_fired_hook', 'hook', 'hook.entity_id = fdfae.field_activity_entry_activity_target_id');
-    $quer->LEFTJOIN('field_data_field_calendar_sticker_id', 'fds', 'fds.entity_id = eck_a.id');
+    // $quer->LEFTJOIN('field_data_field_calendar_sticker_id', 'fds', 'fds.entity_id = eck_a.id');
     $quer->condition('eck_a.uid', $uid);
     $quer->condition('fdfae.field_activity_entry_activity_target_id', $activity_list, 'IN');
     $quer->condition('eck_a.created', $start_date, '<');
@@ -219,8 +219,6 @@ function calendar_data2() {
         //     }
         //   }
         // }
-        // echo "<pre>";
-        // var_dump(${'url_'.$sticker_tid});
 
         //Print congratulations message and add reward-won class if user has won a prize
         if($value->field_rw_claim_id_value <> null){
