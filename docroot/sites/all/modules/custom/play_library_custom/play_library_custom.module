@@ -678,20 +678,20 @@ function pl_program_logo_image() {
   if ($imgFid != 0) {
 
     //Getting Image status
-    // $queryFile = db_select('file_managed','fm');
-    // $queryFile->fields('fm', array('status'));
-    // $queryFile->condition('fid',$imgFid);
-    // $result = $queryFile->execute()->fetchAssoc();
+    $queryFile = db_select('file_managed','fm');
+    $queryFile->fields('fm', array('status'));
+    $queryFile->condition('fid',$imgFid);
+    $result = $queryFile->execute()->fetchAssoc();
 
-    // $status = $result['status'];
+    $status = $result['status'];
 
     //Update Image status
-    // if($status != 1) {
-    //   $query = db_update('file_managed')
-    //   ->fields(array('status' => 1))
-    //   ->condition('fid',$imgFid)
-    //   ->execute();
-    // }
+    if($status != 1) {
+      $query = db_update('file_managed')
+      ->fields(array('status' => 1))
+      ->condition('fid',$imgFid)
+      ->execute();
+    }
 
     //Image for Library Program
     $file = file_load($imgFid);
