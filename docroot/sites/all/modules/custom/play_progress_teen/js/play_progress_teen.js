@@ -11,6 +11,27 @@ Drupal.behaviors.play_progress_teen = {
     $('#edit-activity-progress-select').append('<option value = 0>Please select activity</option>');
   }
 
+  $('.print_pg').on('click', function() {
+    printDiv('.progress-page');
+  });
+
+  function printDiv(elem) {
+    Popup($(elem).html());
+  }
+  
+  function Popup(data){
+    var mywindow = window.open('', 'new div', 'height=400,width=600');
+    mywindow.document.write('<html><head><title>my div</title>');
+    mywindow.document.write('</head><body >');
+    mywindow.document.write(data);
+    mywindow.document.write('</body></html>');
+
+    mywindow.print();
+    mywindow.close();
+
+    return true;
+  }
+
   $('#pg-report').click(function() {
     var errors = 0;
     var tid = $("#edit-activity-progress-select option:selected").val();

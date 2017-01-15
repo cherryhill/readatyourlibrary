@@ -55,7 +55,7 @@
 	print $page_desc['value']; ?>
 </div>
 <div class="print-page">
-	<a href = "progress-print"><button class="print"><?php print t('Print Progress Report'); ?><span style="margin-left: 5px;">(pdf) </span></button></a>
+	<button class="print_pg"><?php print t('Print Progress Report'); ?><span style="margin-left: 5px;">(pdf) </span></button>
 </div>
 <div class="user-desc">
 <div class="avatar-id">
@@ -100,7 +100,7 @@ $grids = 18;
 	<div><?php $report_block_text = variable_get('report_block_desc', array('value' => '', 'format' => NULL)); ?></div>
 </div>
 
-<div class="reward-won"><?php print views_embed_view('prize_won_for_progress_page','block'); ?> </div>
+<div class="reward-won"><?php print views_embed_view('rewards_dashboard','block'); ?> </div>
 
 <div class="progress-rewards"><?php
   $reward_block = variable_get('progress_rewards', array('value' => '', 'format' => NULL)); 
@@ -121,7 +121,6 @@ $grids = 18;
     $n_date = date("m.d.y", strtotime($date));
 
     if(!empty($value->field_rw_claim_id[$field_rw_claim_id])){
-      echo '123';
       $activityReward = $value->field_rw_claim_id[$field_rw_claim_id][0]['value'];
     } else {
       $activityReward = 1;
