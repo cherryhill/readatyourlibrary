@@ -347,10 +347,10 @@ function pl_activity_report_node_create($activity_id, $activity_date, $term_tid,
  */
 function pl_raffle_count($uid){
 
-  $query = db_select('eck_raffle','raf')
+  $query = db_select('eck_reward','raf')
     ->fields('raf',array('id'))
     ->condition('uid',$uid)
-    ->condition('type','raffle_entry')
+    ->condition('type','raffle_claim')
     ->execute();
   $num = $query->rowCount();
 
