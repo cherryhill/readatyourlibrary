@@ -60,12 +60,21 @@ function home_page_slideshow_views_default_views() {
 
   /* Display: Block */
   $handler = $view->new_display('block', 'Block', 'block');
+  $handler->display->display_options['defaults']['css_class'] = FALSE;
+  $handler->display->display_options['css_class'] = 'homepage-vedio-block';
+  $handler->display->display_options['defaults']['header'] = FALSE;
+  /* Header: Global: Text area */
+  $handler->display->display_options['header']['area']['id'] = 'area';
+  $handler->display->display_options['header']['area']['table'] = 'views';
+  $handler->display->display_options['header']['area']['field'] = 'area';
+  $handler->display->display_options['header']['area']['content'] = 'Videos';
+  $handler->display->display_options['header']['area']['format'] = 'filtered_html';
   $handler->display->display_options['defaults']['footer'] = FALSE;
   /* Footer: Global: Text area */
   $handler->display->display_options['footer']['area']['id'] = 'area';
   $handler->display->display_options['footer']['area']['table'] = 'views';
   $handler->display->display_options['footer']['area']['field'] = 'area';
-  $handler->display->display_options['footer']['area']['content'] = '<button><a href="/kids2016/media">View More Videos</a></button>';
+  $handler->display->display_options['footer']['area']['content'] = '<a href="/kids2016/media" class="button">View More Videos</a>';
   $handler->display->display_options['footer']['area']['format'] = 'full_html';
   $handler->display->display_options['defaults']['fields'] = FALSE;
   /* Field: Content: Title */
@@ -82,6 +91,7 @@ function home_page_slideshow_views_default_views() {
   $handler->display->display_options['fields']['field_video_link']['table'] = 'field_data_field_video_link';
   $handler->display->display_options['fields']['field_video_link']['field'] = 'field_video_link';
   $handler->display->display_options['fields']['field_video_link']['label'] = '';
+  $handler->display->display_options['fields']['field_video_link']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_video_link']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_video_link']['click_sort_column'] = 'fid';
   $handler->display->display_options['fields']['field_video_link']['type'] = 'media';
@@ -89,6 +99,13 @@ function home_page_slideshow_views_default_views() {
     'file_view_mode' => 'default',
   );
   $handler->display->display_options['fields']['field_video_link']['delta_offset'] = '0';
+  /* Field: Global: Custom text */
+  $handler->display->display_options['fields']['nothing']['id'] = 'nothing';
+  $handler->display->display_options['fields']['nothing']['table'] = 'views';
+  $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
+  $handler->display->display_options['fields']['nothing']['label'] = '';
+  $handler->display->display_options['fields']['nothing']['alter']['text'] = '<div class="vedio-wrapper">[field_video_link] </div>';
+  $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
   $handler->display->display_options['block_description'] = 'video slideshow';
   $export['home_page_video_slideshow'] = $view;
 

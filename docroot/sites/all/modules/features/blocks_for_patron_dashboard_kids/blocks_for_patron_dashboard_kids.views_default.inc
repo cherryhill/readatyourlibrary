@@ -182,6 +182,20 @@ echo \'<div>\'.$activity_title.\'</div>\' . \'<div><span>Completed </span>\'.$ac
   $handler->display->display_options['pager']['options']['items_per_page'] = '5';
   $handler->display->display_options['style_plugin'] = 'default';
   $handler->display->display_options['row_plugin'] = 'fields';
+  /* Header: Global: PHP */
+  $handler->display->display_options['header']['php']['id'] = 'php';
+  $handler->display->display_options['header']['php']['table'] = 'views';
+  $handler->display->display_options['header']['php']['field'] = 'php';
+  $handler->display->display_options['header']['php']['php_output'] = '<?php
+$title = $results[0]->_field_data[\'field_book_eck_booklist_item_nid\'][\'entity\']->title;
+
+echo \'<div class = "booklist_slideshow_title">\'.$title.\'</div>\';
+echo \'<div class = "booklist_slideshow_title">test</div>\';
+?>';
+  /* Footer: Global: PHP */
+  $handler->display->display_options['footer']['php']['id'] = 'php';
+  $handler->display->display_options['footer']['php']['table'] = 'views';
+  $handler->display->display_options['footer']['php']['field'] = 'php';
   /* No results behavior: Global: Text area */
   $handler->display->display_options['empty']['area']['id'] = 'area';
   $handler->display->display_options['empty']['area']['table'] = 'views';
@@ -628,6 +642,26 @@ print render(_block_get_renderable_array( _block_render_blocks(array($block))));
   $handler->display->display_options['defaults']['row_plugin'] = FALSE;
   $handler->display->display_options['row_plugin'] = 'fields';
   $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['header'] = FALSE;
+  /* Header: Global: PHP */
+  $handler->display->display_options['header']['php']['id'] = 'php';
+  $handler->display->display_options['header']['php']['table'] = 'views';
+  $handler->display->display_options['header']['php']['field'] = 'php';
+  $handler->display->display_options['header']['php']['php_output'] = '<?php
+echo \'<h2 class="stroke-main">\';
+echo $results[0]->field_field_booklist_title[0][\'raw\'][\'value\'];
+echo "</h2>";
+?>';
+  $handler->display->display_options['defaults']['footer'] = FALSE;
+  /* Footer: Global: PHP */
+  $handler->display->display_options['footer']['php']['id'] = 'php';
+  $handler->display->display_options['footer']['php']['table'] = 'views';
+  $handler->display->display_options['footer']['php']['field'] = 'php';
+  $handler->display->display_options['footer']['php']['php_output'] = '<?php
+$book_nid = $results[0]->field_book_eck_booklist_item_nid;
+echo "<a class=\'button\' href=\'node/" . $book_nid. "\'> View This Booklist </a>";
+?>
+';
   $handler->display->display_options['defaults']['empty'] = FALSE;
   $handler->display->display_options['defaults']['relationships'] = FALSE;
   /* Relationship: Entity Reference: Referenced Entity */
@@ -649,13 +683,28 @@ print render(_block_get_renderable_array( _block_render_blocks(array($block))));
   $handler->display->display_options['fields']['field_booklist_cover_image']['field'] = 'field_booklist_cover_image';
   $handler->display->display_options['fields']['field_booklist_cover_image']['relationship'] = 'field_book_target_id';
   $handler->display->display_options['fields']['field_booklist_cover_image']['label'] = '';
+  $handler->display->display_options['fields']['field_booklist_cover_image']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_booklist_cover_image']['alter']['alter_text'] = TRUE;
-  $handler->display->display_options['fields']['field_booklist_cover_image']['alter']['text'] = '<img src ="[field_booklist_cover_image-value]" height = "200" width="200">';
+  $handler->display->display_options['fields']['field_booklist_cover_image']['alter']['text'] = '<img src ="[field_booklist_cover_image-value]">';
   $handler->display->display_options['fields']['field_booklist_cover_image']['element_type'] = 'div';
   $handler->display->display_options['fields']['field_booklist_cover_image']['element_class'] = 'booklist-cover-image';
   $handler->display->display_options['fields']['field_booklist_cover_image']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_booklist_cover_image']['empty'] = '<img src="http://www.clker.com/cliparts/7/1/a/f/11971220941184963828dniezby_Generic_Book.svg.med.png" width = "200" height="200px">';
   $handler->display->display_options['fields']['field_booklist_cover_image']['type'] = 'text_plain';
+  /* Field: Content: Booklist Title */
+  $handler->display->display_options['fields']['field_booklist_title']['id'] = 'field_booklist_title';
+  $handler->display->display_options['fields']['field_booklist_title']['table'] = 'field_data_field_booklist_title';
+  $handler->display->display_options['fields']['field_booklist_title']['field'] = 'field_booklist_title';
+  $handler->display->display_options['fields']['field_booklist_title']['label'] = '';
+  $handler->display->display_options['fields']['field_booklist_title']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_booklist_title']['element_label_colon'] = FALSE;
+  /* Field: Global: Custom text */
+  $handler->display->display_options['fields']['nothing']['id'] = 'nothing';
+  $handler->display->display_options['fields']['nothing']['table'] = 'views';
+  $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
+  $handler->display->display_options['fields']['nothing']['label'] = '';
+  $handler->display->display_options['fields']['nothing']['alter']['text'] = '<div class="booklist-wrapper">[field_booklist_cover_image]</div>';
+  $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
   /* Filter criterion: Content: Published */
@@ -693,6 +742,26 @@ print render(_block_get_renderable_array( _block_render_blocks(array($block))));
   $handler->display->display_options['defaults']['row_plugin'] = FALSE;
   $handler->display->display_options['row_plugin'] = 'fields';
   $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['header'] = FALSE;
+  /* Header: Global: PHP */
+  $handler->display->display_options['header']['php']['id'] = 'php';
+  $handler->display->display_options['header']['php']['table'] = 'views';
+  $handler->display->display_options['header']['php']['field'] = 'php';
+  $handler->display->display_options['header']['php']['php_output'] = '<?php
+echo \'<h2 class="stroke-main">\';
+echo $results[0]->field_field_booklist_title[0][\'raw\'][\'value\'];
+echo "</h2>";
+?>';
+  $handler->display->display_options['defaults']['footer'] = FALSE;
+  /* Footer: Global: PHP */
+  $handler->display->display_options['footer']['php']['id'] = 'php';
+  $handler->display->display_options['footer']['php']['table'] = 'views';
+  $handler->display->display_options['footer']['php']['field'] = 'php';
+  $handler->display->display_options['footer']['php']['php_output'] = '<?php
+$book_nid = $results[0]->field_book_eck_booklist_item_nid;
+echo "<a class=\'button\' href=\'node/" . $book_nid. "\'> View This Booklist </a>";
+?>
+';
   $handler->display->display_options['defaults']['empty'] = FALSE;
   $handler->display->display_options['defaults']['relationships'] = FALSE;
   /* Relationship: Entity Reference: Referenced Entity */
@@ -714,13 +783,28 @@ print render(_block_get_renderable_array( _block_render_blocks(array($block))));
   $handler->display->display_options['fields']['field_booklist_cover_image']['field'] = 'field_booklist_cover_image';
   $handler->display->display_options['fields']['field_booklist_cover_image']['relationship'] = 'field_book_target_id';
   $handler->display->display_options['fields']['field_booklist_cover_image']['label'] = '';
+  $handler->display->display_options['fields']['field_booklist_cover_image']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_booklist_cover_image']['alter']['alter_text'] = TRUE;
-  $handler->display->display_options['fields']['field_booklist_cover_image']['alter']['text'] = '<img src ="[field_booklist_cover_image-value]" height = "200" width="200">';
+  $handler->display->display_options['fields']['field_booklist_cover_image']['alter']['text'] = '<img src ="[field_booklist_cover_image-value]">';
   $handler->display->display_options['fields']['field_booklist_cover_image']['element_type'] = 'div';
   $handler->display->display_options['fields']['field_booklist_cover_image']['element_class'] = 'booklist-cover-image';
   $handler->display->display_options['fields']['field_booklist_cover_image']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_booklist_cover_image']['empty'] = '<img src="http://www.clker.com/cliparts/7/1/a/f/11971220941184963828dniezby_Generic_Book.svg.med.png" width = "200" height="200px">';
   $handler->display->display_options['fields']['field_booklist_cover_image']['type'] = 'text_plain';
+  /* Field: Content: Booklist Title */
+  $handler->display->display_options['fields']['field_booklist_title']['id'] = 'field_booklist_title';
+  $handler->display->display_options['fields']['field_booklist_title']['table'] = 'field_data_field_booklist_title';
+  $handler->display->display_options['fields']['field_booklist_title']['field'] = 'field_booklist_title';
+  $handler->display->display_options['fields']['field_booklist_title']['label'] = '';
+  $handler->display->display_options['fields']['field_booklist_title']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_booklist_title']['element_label_colon'] = FALSE;
+  /* Field: Global: Custom text */
+  $handler->display->display_options['fields']['nothing']['id'] = 'nothing';
+  $handler->display->display_options['fields']['nothing']['table'] = 'views';
+  $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
+  $handler->display->display_options['fields']['nothing']['label'] = '';
+  $handler->display->display_options['fields']['nothing']['alter']['text'] = '<div class="booklist-wrapper">[field_booklist_cover_image]</div>';
+  $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
   /* Filter criterion: Content: Published */
@@ -758,6 +842,26 @@ print render(_block_get_renderable_array( _block_render_blocks(array($block))));
   $handler->display->display_options['defaults']['row_plugin'] = FALSE;
   $handler->display->display_options['row_plugin'] = 'fields';
   $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['header'] = FALSE;
+  /* Header: Global: PHP */
+  $handler->display->display_options['header']['php']['id'] = 'php';
+  $handler->display->display_options['header']['php']['table'] = 'views';
+  $handler->display->display_options['header']['php']['field'] = 'php';
+  $handler->display->display_options['header']['php']['php_output'] = '<?php
+echo \'<h2 class="stroke-main">\';
+echo $results[0]->field_field_booklist_title[0][\'raw\'][\'value\'];
+echo "</h2>";
+?>';
+  $handler->display->display_options['defaults']['footer'] = FALSE;
+  /* Footer: Global: PHP */
+  $handler->display->display_options['footer']['php']['id'] = 'php';
+  $handler->display->display_options['footer']['php']['table'] = 'views';
+  $handler->display->display_options['footer']['php']['field'] = 'php';
+  $handler->display->display_options['footer']['php']['php_output'] = '<?php
+$book_nid = $results[0]->field_book_eck_booklist_item_nid;
+echo "<a class=\'button\' href=\'node/" . $book_nid. "\'> View This Booklist </a>";
+?>
+';
   $handler->display->display_options['defaults']['empty'] = FALSE;
   $handler->display->display_options['defaults']['relationships'] = FALSE;
   /* Relationship: Entity Reference: Referenced Entity */
@@ -779,13 +883,28 @@ print render(_block_get_renderable_array( _block_render_blocks(array($block))));
   $handler->display->display_options['fields']['field_booklist_cover_image']['field'] = 'field_booklist_cover_image';
   $handler->display->display_options['fields']['field_booklist_cover_image']['relationship'] = 'field_book_target_id';
   $handler->display->display_options['fields']['field_booklist_cover_image']['label'] = '';
+  $handler->display->display_options['fields']['field_booklist_cover_image']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_booklist_cover_image']['alter']['alter_text'] = TRUE;
-  $handler->display->display_options['fields']['field_booklist_cover_image']['alter']['text'] = '<img src ="[field_booklist_cover_image-value]" height = "200" width="200">';
+  $handler->display->display_options['fields']['field_booklist_cover_image']['alter']['text'] = '<img src ="[field_booklist_cover_image-value]">';
   $handler->display->display_options['fields']['field_booklist_cover_image']['element_type'] = 'div';
   $handler->display->display_options['fields']['field_booklist_cover_image']['element_class'] = 'booklist-cover-image';
   $handler->display->display_options['fields']['field_booklist_cover_image']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_booklist_cover_image']['empty'] = '<img src="http://www.clker.com/cliparts/7/1/a/f/11971220941184963828dniezby_Generic_Book.svg.med.png" width = "200" height="200px">';
   $handler->display->display_options['fields']['field_booklist_cover_image']['type'] = 'text_plain';
+  /* Field: Content: Booklist Title */
+  $handler->display->display_options['fields']['field_booklist_title']['id'] = 'field_booklist_title';
+  $handler->display->display_options['fields']['field_booklist_title']['table'] = 'field_data_field_booklist_title';
+  $handler->display->display_options['fields']['field_booklist_title']['field'] = 'field_booklist_title';
+  $handler->display->display_options['fields']['field_booklist_title']['label'] = '';
+  $handler->display->display_options['fields']['field_booklist_title']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_booklist_title']['element_label_colon'] = FALSE;
+  /* Field: Global: Custom text */
+  $handler->display->display_options['fields']['nothing']['id'] = 'nothing';
+  $handler->display->display_options['fields']['nothing']['table'] = 'views';
+  $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
+  $handler->display->display_options['fields']['nothing']['label'] = '';
+  $handler->display->display_options['fields']['nothing']['alter']['text'] = '<div class="booklist-wrapper">[field_booklist_cover_image]</div>';
+  $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
   /* Filter criterion: Content: Published */
@@ -1254,6 +1373,8 @@ echo \'<div>\'.$reward_title.\'</div>\' . \'<div><span>Received </span>\'.$rewar
   $handler = $view->new_display('block', 'homepage rewards block', 'block_2');
   $handler->display->display_options['defaults']['title'] = FALSE;
   $handler->display->display_options['title'] = 'Reward Earn';
+  $handler->display->display_options['defaults']['css_class'] = FALSE;
+  $handler->display->display_options['css_class'] = 'homepage-reward-block';
   $handler->display->display_options['defaults']['pager'] = FALSE;
   $handler->display->display_options['pager']['type'] = 'some';
   $handler->display->display_options['pager']['options']['items_per_page'] = '3';
@@ -1265,7 +1386,7 @@ echo \'<div>\'.$reward_title.\'</div>\' . \'<div><span>Received </span>\'.$rewar
   $handler->display->display_options['header']['area']['field'] = 'area';
   $handler->display->display_options['header']['area']['empty'] = TRUE;
   $handler->display->display_options['header']['area']['content'] = 'Earn Your Next Rewards!';
-  $handler->display->display_options['header']['area']['format'] = 'filtered_html';
+  $handler->display->display_options['header']['area']['format'] = 'full_html';
   $handler->display->display_options['defaults']['footer'] = FALSE;
   /* Footer: Global: Text area */
   $handler->display->display_options['footer']['area']['id'] = 'area';
@@ -1288,21 +1409,11 @@ echo \'<div>\'.$reward_title.\'</div>\' . \'<div><span>Received </span>\'.$rewar
   $handler->display->display_options['fields']['field_raffle_prize_or_reward_ima']['table'] = 'field_data_field_raffle_prize_or_reward_ima';
   $handler->display->display_options['fields']['field_raffle_prize_or_reward_ima']['field'] = 'field_raffle_prize_or_reward_ima';
   $handler->display->display_options['fields']['field_raffle_prize_or_reward_ima']['label'] = '';
+  $handler->display->display_options['fields']['field_raffle_prize_or_reward_ima']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_raffle_prize_or_reward_ima']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_raffle_prize_or_reward_ima']['click_sort_column'] = 'fid';
   $handler->display->display_options['fields']['field_raffle_prize_or_reward_ima']['settings'] = array(
-    'image_style' => '',
-    'image_link' => '',
-  );
-  /* Field: Reward: Raffle Ticket Image */
-  $handler->display->display_options['fields']['field_raffle_ticket_image']['id'] = 'field_raffle_ticket_image';
-  $handler->display->display_options['fields']['field_raffle_ticket_image']['table'] = 'field_data_field_raffle_ticket_image';
-  $handler->display->display_options['fields']['field_raffle_ticket_image']['field'] = 'field_raffle_ticket_image';
-  $handler->display->display_options['fields']['field_raffle_ticket_image']['label'] = '';
-  $handler->display->display_options['fields']['field_raffle_ticket_image']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_raffle_ticket_image']['click_sort_column'] = 'fid';
-  $handler->display->display_options['fields']['field_raffle_ticket_image']['settings'] = array(
-    'image_style' => '',
+    'image_style' => 'thumbnail',
     'image_link' => '',
   );
   /* Field: Reward: Title */
@@ -1310,7 +1421,18 @@ echo \'<div>\'.$reward_title.\'</div>\' . \'<div><span>Received </span>\'.$rewar
   $handler->display->display_options['fields']['title']['table'] = 'eck_reward';
   $handler->display->display_options['fields']['title']['field'] = 'title';
   $handler->display->display_options['fields']['title']['label'] = '';
+  $handler->display->display_options['fields']['title']['exclude'] = TRUE;
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
+  /* Field: Global: Custom text */
+  $handler->display->display_options['fields']['nothing']['id'] = 'nothing';
+  $handler->display->display_options['fields']['nothing']['table'] = 'views';
+  $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
+  $handler->display->display_options['fields']['nothing']['label'] = '';
+  $handler->display->display_options['fields']['nothing']['alter']['text'] = '<div class="primary-block-bg reward-logo-text">
+<div class="reward-image">[field_raffle_prize_or_reward_ima]</div>
+<div class="reward-title">[title]</div>
+</div>';
+  $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
   /* Filter criterion: Reward: reward type */

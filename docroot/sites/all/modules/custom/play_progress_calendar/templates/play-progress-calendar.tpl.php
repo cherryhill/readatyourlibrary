@@ -22,44 +22,37 @@
     <div id='sticker-wrap'>
   		<?php 
   			$query = db_select('eck_activity','act');
-        		$query->join('field_data_field_activity_fired_hook','hook', 'hook.entity_id = act.id');
-        		$query->fields('act', array('id'));
-        		$query->condition('hook.field_activity_fired_hook_value','progress_page');
-        		$result = $query->execute()->fetchAll();
-        			foreach ($result as $key => $value) {
-        				if (isset($activity_list)){
-            				$activity_list = $activity_list.','. $value->id ;
-            			} else{
-            				$activity_list = $value->id ;
-            			}
-            			//$GLOBALS['activity_list']= array($value->id);
-            		}
+        $query->join('field_data_field_activity_fired_hook','hook', 'hook.entity_id = act.id');
+        $query->fields('act', array('id'));
+        $query->condition('hook.field_activity_fired_hook_value','progress_page');
+        $result = $query->execute()->fetchAll();
+        foreach ($result as $key => $value) {
+          if (isset($activity_list)){
+            $activity_list = $activity_list.','. $value->id ;
+          } else{
+            $activity_list = $value->id ;
+          }
+          //$GLOBALS['activity_list']= array($value->id);
+        }
 
   			if ($vocabulary = taxonomy_vocabulary_machine_name_load('calendar_sticker')) {
-      			$tree = taxonomy_get_tree($vocabulary->vid); ?>
-      			<div id='external-events' value=<?php print($activity_list); ?> >
-      			<?php 
-  				foreach ($tree as $term) {
+          $tree = taxonomy_get_tree($vocabulary->vid);
+      ?>
+      		<div id='external-events' value=<?php print($activity_list); ?> >
+      		<?php 
+  				  foreach ($tree as $term) {
   						$image = taxonomy_term_load($term->tid);
-              			if ($image_items = field_get_items('taxonomy_term', $image, 'field_cal_sticker_image')) {
+              if ($image_items = field_get_items('taxonomy_term', $image, 'field_cal_sticker_image')) {
   							$uri = $image_items[0]['uri'];
   							$external_url = file_create_url($uri);
-  							print('<div id ='.$term->tid.' class="fc-event" style="inline-block">'.'<img src ='.$external_url.'></div>');
-                			}
-                	}
-        		}
+                // $external_urls[$term->tid] = $external_url;
+  							print('<div id ='.$term->tid.' class="fc-event" style="inline-block">'.'<img src ='.$external_url.' id = sticker_'.$term->tid.'></div>');
+              }
+          	}
+      	}
   		?>
     </div>
-		<?php 
-			$query = db_select('eck_activity','act');
-      		$query->join('field_data_field_activity_fired_hook','hook', 'hook.entity_id = act.id');
-      		$query->fields('act', array('id'));
-      		$query->condition('hook.field_activity_fired_hook_value','progress_page');
-      		$result = $query->execute()->fetchAll();
-      			foreach ($result as $key => $value) {
-          	//		global $activity_list = array($value->id);
-          		}
-        ?>
+
 <?php
 	$block = module_invoke('views', 'block', 'view', 'block_sticker');
     print $block['content'];

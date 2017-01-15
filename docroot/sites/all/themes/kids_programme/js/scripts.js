@@ -2,7 +2,16 @@
 
   Drupal.behaviors.kids_programmePhoneNumberLinksOnMobile = {
     attach: function(context, settings) {
-        jQuery('.msg:has(.new)').addClass('new');
+        //message button change its background color by adding class new
+        $('.msg:has(.new)').addClass('new');
+        //announcement block change its image field as background image
+           $('.annoncement-block .annocement').each(function() {
+      if ($(this).find('img').length) {
+        var imgURL = $(this).find('img').attr('src');
+        $(this).css('background-image', 'url(' + imgURL + ')');
+      }
+
+  });
 
 
     }

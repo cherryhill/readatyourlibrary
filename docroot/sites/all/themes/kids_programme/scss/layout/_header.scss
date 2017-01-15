@@ -6,210 +6,287 @@
 
   .pre-header {
     padding: 13px 18px 13px 25px;
-      .cs-default & {
-       @extend .yellow;
-     }
-     .cs-classic & {
-       @extend .dark-blue;
-     }
-     .cs-elegant & {
-       @extend .mint-green;
-     }
-     #topmostbranding {
-       -webkit-flex-wrap: wrap;
+
+    .cs-default & {
+      @extend .yellow;
+    }
+
+    .cs-classic & {
+      @extend .dark-blue;
+    }
+
+    .cs-elegant & {
+      @extend .mint-green;
+    }
+
+    #topmostbranding {
+      -webkit-flex-wrap: wrap;
       flex-wrap: wrap;
       display: -webkit-flex;
       display: flex;
       width: 100%;
-     }
-     .breadcurm {
-       ul {
-         padding-left: 0;
-         margin: 0;
-         background: transparent;
-         border: none;
+    }
 
-          li {
-            &.current {
-               a {
-                color: $white;
-                .cs-default & {
-                  color: $black;
-                }
-               }
-              &:before {
-                content: ">";
-                @include secondary_fonts;
-                 @include primary_fsize;
-                 top: 0;
-                 margin: 0 5px;
-                 .cs-default & {
-                  color: $black;
-                 }
-                 color: $white;
+    .breadcurm {
+      ul {
+        padding-left: 0;
+        margin: 0;
+        background: transparent;
+        border: none;
 
+        li {
+          font-size: 14px;
+          &.current {
+            a {
+              color: $white;
+              font-size: 14px;
+              .cs-default & {
+                color: $black;
               }
             }
-             a {
-              color: $white;
+
+            &:before {
+              content: ">";
+
+              @include secondary_fonts;
+
+
+              top: 0;
+              margin: 0 5px;
+
               .cs-default & {
-                color: $blue;
+                color: $black;
               }
-              @include primary_fsize;
-         @include secondary_fonts;
-             &:focus {
-                 outline: none;
-             }
-             }
+
+              color: $white;
+            }
           }
-       }
+
+          a {
+            color: $white;
+
+            .cs-default & {
+              color: $blue;
+            }
+
+            @include secondary_fonts;
+
+            &:focus {
+              outline: none;
+            }
+          }
+        }
+      }
+
       @media screen and (min-width: 1025px) {
         flex-basis: 20%;
       }
+
       flex-basis: 100%;
+
       @extend .hide-for-small-only;
-     }
-     .top-menu {
-       @include primary-fonts;
-        .cs-default & {
-       color: $black;
+    }
+
+    .top-menu {
+      @include primary-fonts;
+
+      .cs-default & {
+        color: $black;
+
         a.username {
           color: inherit;
           font-family: inherit;
           margin-right: 50px;
         }
-     }
-     .cs-classic &, .cs-elegant & {
-       color: $white;
+      }
+
+      .cs-classic &, .cs-elegant & {
+        color: $white;
+
         a.username {
           color: inherit;
           font-family: inherit;
           margin-right: 50px;
         }
-     }
+      }
 
+      .btn {
+        margin-left: 6px;
+      }
 
-        .btn {
-          margin-left: 6px;
-        }
       @media screen and (min-width: 1025px) {
         flex-basis: 80%;
       }
+
       flex-basis: 100%;
+
       @extend .hide-for-small-only;
-      .block-menu-menu-anonymous-header-links {
-         width: 100%;
-          ul {
-            display: inline-block;
-            float: right;
-            margin: 0;
-            padding: 0;
-              li {
-                display: inline-block;
-              }
-          }
-      }
+
       .top-header-menu {
         float: right;
       }
-     }
+    }
   }
+
   .header-middle {
-     -webkit-flex-wrap: wrap;
-      flex-wrap: wrap;
-      display: -webkit-flex;
-      display: flex;
-      width: 100%;
-      padding-left: 25px;
-      padding-top: 20px;
-     .cs-default & {
-       @extend .green-gradiant;
-     }
-     .cs-classic & {
-       @extend .yellow;
-     }
-     .cs-elegant & {
-       @extend .light-orange;
-     }
-     .logo-block {
+    -webkit-flex-wrap: wrap;
+    flex-wrap: wrap;
+    display: -webkit-flex;
+    display: flex;
+    width: 100%;
+    padding-left: 25px;
+    padding-top: 20px;
+
+    .cs-default & {
+      @extend .green-gradiant;
+    }
+
+    .cs-classic & {
+      @extend .yellow;
+    }
+
+    .cs-elegant & {
+      @extend .light-orange;
+    }
+
+    .logo-block {
       flex-basis: 25%;
+
       .site-info {
         width: 100%;
         display: table;
+
         > div {
           display: table-cell;
           vertical-align: top;
+
           &.logo {
             width: 80px;
-             img {
-               .cs-classic & {
+
+            img {
+              .cs-classic & {
                 background: $darkblue;
-               }
-             }
+              }
+            }
           }
         }
+
         .site-name {
           margin: -7px 0 0;
           font-size: 36px;
-          font-family: 'Conv_PTS75F';
+          font-family: $ptsans;
           color: $white;
+          font-weight: 700;
+
           .cs-classic & {
-             color: $darkblue;
+            color: $darkblue;
           }
+
           a {
             color: inherit;
             font-family: inherit;
           }
+        }
+      }
+
+      .site-slogan {
+        margin: -10px 0 0;
+        font-size: 23px;
+        font-family: $ptsans;
+        color: $white;
+
+        .cs-classic & {
+          color: $darkblue;
         }
 
-      }
-      .site-slogan {
-           margin: -10px 0 0;
-          font-size: 23px;
-         font-family: 'Conv_PTS55F';
-          color: $white;
-          .cs-classic & {
-             color: $darkblue;
-          }
-          a {
-            color: inherit;
-            font-family: inherit;
-          }
+        a {
+          color: inherit;
+          font-family: inherit;
         }
-       .program-logo {
+      }
+
+      .program-logo {
         margin-top: 15px;
         margin-bottom: 20px;
+
         img {
           max-width: 200px;
         }
-       }
-     }
+      }
+    }
 
-     .main-menu {
-       flex-basis: 75%;
+    .main-menu {
+      flex-basis: 75%;
 
-       .menu-wrapper {
+      .menu-wrapper {
         section {
           width: 100%;
           display: inline-block;
         }
+
         .block-lang-dropdown {
           .block-title {
             display: none;
           }
-          form {
-             float: right;
-          margin-right: 18px;
-          }
 
+          form {
+            float: right;
+            margin-right: 18px;
+          }
         }
-         ul.menu {
+
+        ul.menu {
           margin-right: 3px;
           margin-bottom: 10px;
-         }
-       }
-     }
+        }
+      }
+    }
   }
 }
 
+//anonymous header buttons login and signin
+.block-menu-menu-anonymous-header-links {
+  width: 100%;
 
+  ul.menu {
+    display: inline-block;
+    float: right;
+    margin: 0;
+    padding: 0;
+
+    li {
+      display: inline-block;
+
+      a {
+        display: inline-block;
+        padding: 6px 24px;
+        font-size: 21px;
+        text-decoration: none;
+        box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+        text-transform: capitalize;
+        border-radius: 10px;
+        line-height: 30px;
+        color: $white;
+        @include primary-fonts;
+
+        margin-left: 6px;
+
+        .cs-default & {
+          @extend .blue;
+        }
+
+        .cs-classic & {
+          background: $sky-blue;
+        }
+
+        .cs-elegant & {
+          @extend .red1;
+        }
+
+        &:hover {
+          text-decoration: none;
+        }
+      }
+    }
+  }
+}

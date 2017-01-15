@@ -284,7 +284,7 @@ function pl_pm_block_view() {
   ->fetchAll();
 
   $no_result = count($query);
-  $output = '<div class = "pm-custom">';
+  $output = '<div class = "pm-custom"><div>';
 
   if ($no_result != 0) {
     foreach($query as $res) {
@@ -305,7 +305,7 @@ function pl_pm_block_view() {
 
       $output .= '<div class="pm">'.'<div class = "pm-subject"><a href = '.'../messages/view/'.$msg_id.'>'.$new.$pm_subject = $result['subject'].'</a></div>'.'<div class = "pm-admin">'.$author.'</div>'.'<div class = "pm-date">'.$pm_date = date('F d, Y',$result['timestamp']).'</div>'.'</div>';
     }
-    return $output.'<a class="pm-view" href="../messages">'.t('View All Messages').'</a>'.'</div>';
+    return $output.'</div><div><a class="pm-view btn btn-large" href="../messages">'.t('View All Messages').'</a>'.'</div></div>';
   } else {
     return t('No Messages to display');
   }
@@ -316,15 +316,16 @@ function pl_pm_block_view() {
  */
 function pl_homepage_slider(){
 
-  $output .= '<ul class="booklist-pager"><input type="radio" name="colorRadio" id="r1" value="blslider1" checked><label for="r1"></label><input type="radio" name="colorRadio" id="r2" value="blslider2"><label for="r2"></label><input type="radio" name="colorRadio" id="r3" value="blslider3"><label for="r3"></label></ul>';
+ $output .= '<div class="homepage-booklist-slider"><div class="controls">';
+  $output .= '<ul class="booklist-pager"><input type="radio" name="colorRadio" id="r1" value="blslider1" checked><label for="r1"></label><input type="radio" name="colorRadio" id="r2" value="blslider2"><label for="r2"></label><input type="radio" name="colorRadio" id="r3" value="blslider3"><label for="r3"></label></ul></div>';
   $block = module_invoke('views', 'block_view', 'book_reviews_dashboard-block_3');
-  $output .= '<div class="blslider1 slide">'. render($block['content']). '</div>';
+  $output .= '<div class="blslider1 slide open">'. render($block['content']). '</div>';
 
   $block = module_invoke('views', 'block_view', 'book_reviews_dashboard-block_4');
-  $output .= '<div class="blslider2 slide">'. render($block['content']). '</div>';
+  $output .= '<div class="blslider2 slide close">'. render($block['content']). '</div>';
 
   $block = module_invoke('views', 'block_view', 'book_reviews_dashboard-block_5');
-  $output .= '<div class="blslider3 slide">'. render($block['content']). '</div>';
+  $output .= '<div class="blslider3 slide close">'. render($block['content']). '</div></div>';
 
   return $output;
 }
