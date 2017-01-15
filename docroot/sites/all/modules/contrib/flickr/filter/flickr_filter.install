@@ -1,0 +1,25 @@
+<?php
+/**
+ * @file
+ * The Flickr Filter install and uninstall hooks.
+ */
+
+/**
+ * Implements hook_install().
+ */
+function flickr_filter_install() {
+  // For the preview in the settings form we need Colorbox also on admin pages.
+  if (module_exists('colorbox')) {
+    $pages = variable_get('colorbox_pages', "admin*\nimagebrowser*\nimg_assist*\nimce*\nnode/add/*\nnode/*/edit\nprint/*\nprintpdf/*\nsystem/ajax\nsystem/ajax/*");
+    variable_set('colorbox_pages', str_replace("admin*", "", $pages));
+  }
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function flickr_filter_uninstall() {
+  variable_del('flickr_filter_heading');
+  variable_del('flickr_filter_default_size');
+  variable_del('flickr_filter_collapsible');
+}
