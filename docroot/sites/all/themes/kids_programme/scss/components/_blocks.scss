@@ -87,6 +87,13 @@
 
 //home-page booklist  slider
 .homepage-booklist-slider {
+  .stroke-main span {
+     width: calc(100% - 125px);
+     display: inline-block;
+     overflow: hidden;
+    text-overflow: ellipsis;
+     white-space: nowrap;
+  }
   ul.booklist-pager {
     margin: 0;
     float: right;
@@ -122,11 +129,10 @@
   }
 
   .controls {
-    width: 100%;
+    width: calc(100% - 20px);
     display: inline-block;
     position: relative;
     bottom: -60px;
-    right: 20px;
   }
 
   .slide {
@@ -255,7 +261,7 @@
 
           &.last {
             transform: rotateX(40deg);
-            animation: one 2s infinite;
+            animation: two 2s infinite;
             animation-direction: alternate;
           }
 
@@ -334,6 +340,10 @@
       .pm-subject {
         flex-basis: 60%;
         padding-right: 10px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+
 
         a {
           font-weight: 700;
@@ -361,4 +371,39 @@
       }
     }
   }
+}
+//home page photo block
+.flicker-block  {
+  @extend .primary-background;
+   .view-header {
+     @extend .stroke-main;
+   }
+   .owl-controls {
+    top: 25% !important;
+   }
+   .view-footer {
+    padding-left: 35px;
+   }
+   .view-content {
+    padding: 20px 60px;
+   }
+   .flicker-image-wrapper {
+    width: calc(100% - 6px);
+    margin: auto;
+    .flickr-citation {display: none}
+     .flickr-photoset-img {
+       img {
+        border: none;
+        box-shadow: none;
+        border-radius: 0;
+        top: 0;
+-webkit-transform: scale(1);
+-moz-transform: scale(1);
+    transform: scale(1);
+-ms-transform: scale(1);
+-o-transform: scale(1);
+transform: scale(1);
+       }
+     }
+   }
 }

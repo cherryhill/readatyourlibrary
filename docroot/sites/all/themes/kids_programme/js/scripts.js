@@ -17,6 +17,7 @@
     var reviews =$('.homebox-draggable:has(.view-book-reviews-dashboard.review)').addClass('dashboard-reviews');
     var booklist =$('.homebox-draggable:has(.view-book-reviews-dashboard.booklist)').addClass('dashboard-booklists');
     var follow =$('.homebox-draggable:has(.view-follow-block-dashboard)').addClass('dashboard-following');
+    var follow =$('.homebox-draggable:has(.msg-highlight)').addClass('dashboard-progress');
     var obj =$("#homebox-add ul li");
     $.each( obj , function( key, value ) {
     $(value).addClass($(value).find('a').text().toLowerCase());

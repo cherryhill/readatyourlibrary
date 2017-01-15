@@ -23,6 +23,7 @@ function home_page_slideshow_views_default_views() {
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
   $handler->display->display_options['title'] = 'home page video slideshow';
+  $handler->display->display_options['css_class'] = 'flicker-block';
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['cache']['type'] = 'none';
@@ -58,8 +59,8 @@ function home_page_slideshow_views_default_views() {
     'videos' => 'videos',
   );
 
-  /* Display: Block */
-  $handler = $view->new_display('block', 'Block', 'block');
+  /* Display: Video */
+  $handler = $view->new_display('block', 'Video', 'block');
   $handler->display->display_options['defaults']['css_class'] = FALSE;
   $handler->display->display_options['css_class'] = 'homepage-vedio-block';
   $handler->display->display_options['defaults']['header'] = FALSE;
@@ -107,6 +108,74 @@ function home_page_slideshow_views_default_views() {
   $handler->display->display_options['fields']['nothing']['alter']['text'] = '<div class="vedio-wrapper">[field_video_link] </div>';
   $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
   $handler->display->display_options['block_description'] = 'video slideshow';
+
+  /* Display: Flickr */
+  $handler = $view->new_display('block', 'Flickr', 'block_1');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'home page flickr image slideshow';
+  $handler->display->display_options['defaults']['css_class'] = FALSE;
+  $handler->display->display_options['css_class'] = 'flicker-block';
+  $handler->display->display_options['defaults']['pager'] = FALSE;
+  $handler->display->display_options['pager']['type'] = 'some';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '6';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'owlcarousel';
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['row_plugin'] = 'fields';
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['header'] = FALSE;
+  /* Header: Global: Text area */
+  $handler->display->display_options['header']['area']['id'] = 'area';
+  $handler->display->display_options['header']['area']['table'] = 'views';
+  $handler->display->display_options['header']['area']['field'] = 'area';
+  $handler->display->display_options['header']['area']['content'] = '<div class="stroke">photos</div>';
+  $handler->display->display_options['header']['area']['format'] = 'full_html';
+  $handler->display->display_options['defaults']['footer'] = FALSE;
+  /* Footer: Global: Text area */
+  $handler->display->display_options['footer']['area']['id'] = 'area';
+  $handler->display->display_options['footer']['area']['table'] = 'views';
+  $handler->display->display_options['footer']['area']['field'] = 'area';
+  $handler->display->display_options['footer']['area']['content'] = '<a href="media" class="button">View More Photos</a>';
+  $handler->display->display_options['footer']['area']['format'] = 'full_html';
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Content: Flickr Album */
+  $handler->display->display_options['fields']['field_flicker_images']['id'] = 'field_flicker_images';
+  $handler->display->display_options['fields']['field_flicker_images']['table'] = 'field_data_field_flicker_images';
+  $handler->display->display_options['fields']['field_flicker_images']['field'] = 'field_flicker_images';
+  $handler->display->display_options['fields']['field_flicker_images']['label'] = '';
+  $handler->display->display_options['fields']['field_flicker_images']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_flicker_images']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_flicker_images']['type'] = 'photoset_primaryphoto_sizeq_linkflickrcomset';
+  $handler->display->display_options['fields']['field_flicker_images']['group_rows'] = FALSE;
+  $handler->display->display_options['fields']['field_flicker_images']['delta_offset'] = '0';
+  /* Field: Global: Custom text */
+  $handler->display->display_options['fields']['nothing']['id'] = 'nothing';
+  $handler->display->display_options['fields']['nothing']['table'] = 'views';
+  $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
+  $handler->display->display_options['fields']['nothing']['label'] = '';
+  $handler->display->display_options['fields']['nothing']['alter']['text'] = '<div class="flicker-image-wrapper">
+[field_flicker_images]
+</div>';
+  $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = '1';
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    '_flickr_images' => '_flickr_images',
+  );
+  $handler->display->display_options['block_description'] = 'home page flickr image slideshow';
   $export['home_page_video_slideshow'] = $view;
 
   return $export;

@@ -7371,7 +7371,7 @@ a.th {
 }
 
 /* line 2, ../scss/base/_common.scss */
-.yellow, .yellow-commonblock, .block-play-library-custom-pm-block, .homebox.homebox-auto-save #homebox-add .item-list, .homebox.homebox-auto-save .homebox-column-wrapper .homebox-portlet-inner, .cs-default .l-header .pre-header, .cs-classic .l-header .header-middle, .cs-default .button, .cs-default button, .cs-elegant .btn.btn-large.msg.new, .cs-default .btn.btn-primary, .cs-elegant .mobile-menu ul.mobile-top-menu li a.msg.new {
+.yellow, .yellow-commonblock, .block-play-library-custom-pm-block, .homebox.homebox-auto-save #homebox-add .item-list, .homebox.homebox-auto-save .homebox-column-wrapper .homebox-portlet-inner, .cs-default .l-header .pre-header, .cs-classic .l-header .header-middle, .cs-default .button, .cs-default button, .cs-elegant .btn.btn-large.msg.new, .cs-default .btn.btn-primary, .cs-elegant .mobile-menu ul.mobile-top-menu li a.msg.new, .page-messages.cs-default #page-title.title + .primary-tabs + ul.action-links li a {
   background: #fdeb52;
 }
 
@@ -7401,7 +7401,7 @@ a.th {
 }
 
 /* line 27, ../scss/base/_common.scss */
-.light-orange, .cs-elegant .l-header .header-middle, .cs-elegant .post-footer.contain-to-grid, .cs-elegant .l-footer, .cs-classic .button, .cs-elegant .button, .cs-classic button, .cs-elegant button, .cs-classic .btn.btn-large.msg.new, .cs-classic .btn.btn-primary, .cs-elegant .btn.btn-primary, .cs-classic .mobile-menu ul.mobile-top-menu li a.msg.new {
+.light-orange, .cs-elegant .l-header .header-middle, .cs-elegant .post-footer.contain-to-grid, .cs-elegant .l-footer, .cs-classic .button, .cs-elegant .button, .cs-classic button, .cs-elegant button, .cs-classic .btn.btn-large.msg.new, .cs-classic .btn.btn-primary, .cs-elegant .btn.btn-primary, .cs-classic .mobile-menu ul.mobile-top-menu li a.msg.new, .page-messages.cs-classic #page-title.title + .primary-tabs + ul.action-links li a, .page-messages.cs-elegant #page-title.title + .primary-tabs + ul.action-links li a {
   background: #ff9f1c;
 }
 
@@ -7416,7 +7416,7 @@ a.th {
 }
 
 /* line 39, ../scss/base/_common.scss */
-.white-text, .font-stroke-main, .font-stroke-sidebar, .stroke-main, .homepage-vedio-block .view-header p, .my-dashbord-block .view-header *, .stroke-sidebar, .homepage-reward-block .view-header p, .block-user-login .block-title {
+.white-text, .font-stroke-main, .font-stroke-sidebar, .stroke-main, .homepage-vedio-block .view-header p, .flicker-block .view-header, .my-dashbord-block .view-header *, .stroke-sidebar, .homepage-reward-block .view-header p, .block-user-login .block-title {
   color: #fff;
 }
 
@@ -7436,7 +7436,7 @@ a.th {
 }
 
 /* line 56, ../scss/base/_common.scss */
-.stroke-main, .homepage-vedio-block .view-header p, .my-dashbord-block .view-header * {
+.stroke-main, .homepage-vedio-block .view-header p, .flicker-block .view-header, .my-dashbord-block .view-header * {
   line-height: 1.4;
   margin: 0;
   height: 99px;
@@ -7448,37 +7448,43 @@ a.th {
   text-transform: capitalize;
 }
 /* line 20, ../scss/base/_mixins.scss */
-.cs-default .stroke-main, .cs-default .homepage-vedio-block .view-header p, .homepage-vedio-block .view-header .cs-default p, .cs-default .my-dashbord-block .view-header *, .my-dashbord-block .view-header .cs-default * {
+.cs-default .stroke-main, .cs-default .homepage-vedio-block .view-header p, .homepage-vedio-block .view-header .cs-default p, .cs-default .flicker-block .view-header, .flicker-block .cs-default .view-header, .cs-default .my-dashbord-block .view-header *, .my-dashbord-block .view-header .cs-default * {
   font-family: "McLaren", cursive;
   font-weight: normal;
 }
 /* line 25, ../scss/base/_mixins.scss */
-.cs-classic .stroke-main, .cs-classic .homepage-vedio-block .view-header p, .homepage-vedio-block .view-header .cs-classic p, .cs-classic .my-dashbord-block .view-header *, .my-dashbord-block .view-header .cs-classic * {
+.cs-classic .stroke-main, .cs-classic .homepage-vedio-block .view-header p, .homepage-vedio-block .view-header .cs-classic p, .cs-classic .flicker-block .view-header, .flicker-block .cs-classic .view-header, .cs-classic .my-dashbord-block .view-header *, .my-dashbord-block .view-header .cs-classic * {
   font-family: "Architects Daughter", cursive;
   font-weight: normal;
 }
 /* line 30, ../scss/base/_mixins.scss */
-.cs-elegant .stroke-main, .cs-elegant .homepage-vedio-block .view-header p, .homepage-vedio-block .view-header .cs-elegant p, .cs-elegant .my-dashbord-block .view-header *, .my-dashbord-block .view-header .cs-elegant * {
+.cs-elegant .stroke-main, .cs-elegant .homepage-vedio-block .view-header p, .homepage-vedio-block .view-header .cs-elegant p, .cs-elegant .flicker-block .view-header, .flicker-block .cs-elegant .view-header, .cs-elegant .my-dashbord-block .view-header *, .my-dashbord-block .view-header .cs-elegant * {
   font-family: "Margarine", cursive;
   font-weight: normal;
 }
 /* line 68, ../scss/base/_common.scss */
-.cs-default .stroke-main, .cs-default .homepage-vedio-block .view-header p, .homepage-vedio-block .view-header .cs-default p, .cs-default .my-dashbord-block .view-header *, .my-dashbord-block .view-header .cs-default * {
+.stroke-main *, .homepage-vedio-block .view-header p *, .flicker-block .view-header *, .my-dashbord-block .view-header * * {
+  font-size: inherit;
+  font-family: inherit;
+  color: inherit;
+}
+/* line 74, ../scss/base/_common.scss */
+.cs-default .stroke-main, .cs-default .homepage-vedio-block .view-header p, .homepage-vedio-block .view-header .cs-default p, .cs-default .flicker-block .view-header, .flicker-block .cs-default .view-header, .cs-default .my-dashbord-block .view-header *, .my-dashbord-block .view-header .cs-default * {
   background-position: -95px -226px;
   font-size: 28px;
 }
-/* line 72, ../scss/base/_common.scss */
-.cs-classic .stroke-main, .cs-classic .homepage-vedio-block .view-header p, .homepage-vedio-block .view-header .cs-classic p, .cs-classic .my-dashbord-block .view-header *, .my-dashbord-block .view-header .cs-classic * {
+/* line 78, ../scss/base/_common.scss */
+.cs-classic .stroke-main, .cs-classic .homepage-vedio-block .view-header p, .homepage-vedio-block .view-header .cs-classic p, .cs-classic .flicker-block .view-header, .flicker-block .cs-classic .view-header, .cs-classic .my-dashbord-block .view-header *, .my-dashbord-block .view-header .cs-classic * {
   background-position: -95px -914px;
   font-size: 30px;
 }
-/* line 76, ../scss/base/_common.scss */
-.cs-elegant .stroke-main, .cs-elegant .homepage-vedio-block .view-header p, .homepage-vedio-block .view-header .cs-elegant p, .cs-elegant .my-dashbord-block .view-header *, .my-dashbord-block .view-header .cs-elegant * {
+/* line 82, ../scss/base/_common.scss */
+.cs-elegant .stroke-main, .cs-elegant .homepage-vedio-block .view-header p, .homepage-vedio-block .view-header .cs-elegant p, .cs-elegant .flicker-block .view-header, .flicker-block .cs-elegant .view-header, .cs-elegant .my-dashbord-block .view-header *, .my-dashbord-block .view-header .cs-elegant * {
   background-position: -95px -569px;
   font-size: 30px;
 }
 
-/* line 82, ../scss/base/_common.scss */
+/* line 88, ../scss/base/_common.scss */
 .stroke-sidebar, .homepage-reward-block .view-header p, .block-user-login .block-title {
   height: 85px;
   width: 100%;
@@ -7505,24 +7511,24 @@ a.th {
   font-family: "Margarine", cursive;
   font-weight: normal;
 }
-/* line 94, ../scss/base/_common.scss */
+/* line 100, ../scss/base/_common.scss */
 .cs-default .stroke-sidebar, .cs-default .homepage-reward-block .view-header p, .homepage-reward-block .view-header .cs-default p, .cs-default .block-user-login .block-title, .block-user-login .cs-default .block-title {
   background-position: -60px -239px;
   font-size: 22px;
 }
-/* line 98, ../scss/base/_common.scss */
+/* line 104, ../scss/base/_common.scss */
 .cs-classic .stroke-sidebar, .cs-classic .homepage-reward-block .view-header p, .homepage-reward-block .view-header .cs-classic p, .cs-classic .block-user-login .block-title, .block-user-login .cs-classic .block-title {
   background-position: -60px -928px;
   font-size: 25px;
 }
-/* line 102, ../scss/base/_common.scss */
+/* line 108, ../scss/base/_common.scss */
 .cs-elegant .stroke-sidebar, .cs-elegant .homepage-reward-block .view-header p, .homepage-reward-block .view-header .cs-elegant p, .cs-elegant .block-user-login .block-title, .block-user-login .cs-elegant .block-title {
   background-position: -60px -583px;
   font-size: 25px;
 }
 
-/* line 109, ../scss/base/_common.scss */
-.primary-background, .homepage-reward-block, .homepage-vedio-block, .homepage-booklist-slider .slide, .block-user-login, .my-dashbord-block {
+/* line 115, ../scss/base/_common.scss */
+.primary-background, .homepage-reward-block, .homepage-vedio-block, .homepage-booklist-slider .slide, .block-user-login, .flicker-block, .my-dashbord-block {
   color: #fff;
   border-radius: 15px;
   overflow: hidden;
@@ -7530,43 +7536,43 @@ a.th {
   margin-bottom: 35px;
   padding-bottom: 15px;
 }
-/* line 110, ../scss/base/_common.scss */
-.cs-default .primary-background, .cs-default .homepage-reward-block, .cs-default .homepage-vedio-block, .cs-default .homepage-booklist-slider .slide, .homepage-booklist-slider .cs-default .slide, .cs-default .block-user-login, .cs-default .my-dashbord-block, .cs-elegant .primary-background, .cs-elegant .homepage-reward-block, .cs-elegant .homepage-vedio-block, .cs-elegant .homepage-booklist-slider .slide, .homepage-booklist-slider .cs-elegant .slide, .cs-elegant .block-user-login, .cs-elegant .my-dashbord-block {
+/* line 116, ../scss/base/_common.scss */
+.cs-default .primary-background, .cs-default .homepage-reward-block, .cs-default .homepage-vedio-block, .cs-default .homepage-booklist-slider .slide, .homepage-booklist-slider .cs-default .slide, .cs-default .block-user-login, .cs-default .flicker-block, .cs-default .my-dashbord-block, .cs-elegant .primary-background, .cs-elegant .homepage-reward-block, .cs-elegant .homepage-vedio-block, .cs-elegant .homepage-booklist-slider .slide, .homepage-booklist-slider .cs-elegant .slide, .cs-elegant .block-user-login, .cs-elegant .flicker-block, .cs-elegant .my-dashbord-block {
   background: #267fda;
 }
-/* line 113, ../scss/base/_common.scss */
-.cs-classic .primary-background, .cs-classic .homepage-reward-block, .cs-classic .homepage-vedio-block, .cs-classic .homepage-booklist-slider .slide, .homepage-booklist-slider .cs-classic .slide, .cs-classic .block-user-login, .cs-classic .my-dashbord-block {
+/* line 119, ../scss/base/_common.scss */
+.cs-classic .primary-background, .cs-classic .homepage-reward-block, .cs-classic .homepage-vedio-block, .cs-classic .homepage-booklist-slider .slide, .homepage-booklist-slider .cs-classic .slide, .cs-classic .block-user-login, .cs-classic .flicker-block, .cs-classic .my-dashbord-block {
   background: #084899;
 }
 /* line 113, ../scss/base/_mixins.scss */
-.cs-default .primary-background, .cs-default .homepage-reward-block, .cs-default .homepage-vedio-block, .cs-default .homepage-booklist-slider .slide, .homepage-booklist-slider .cs-default .slide, .cs-default .block-user-login, .cs-default .my-dashbord-block {
+.cs-default .primary-background, .cs-default .homepage-reward-block, .cs-default .homepage-vedio-block, .cs-default .homepage-booklist-slider .slide, .homepage-booklist-slider .cs-default .slide, .cs-default .block-user-login, .cs-default .flicker-block, .cs-default .my-dashbord-block {
   font-size: 17px;
 }
 /* line 117, ../scss/base/_mixins.scss */
-.cs-classic .primary-background, .cs-classic .homepage-reward-block, .cs-classic .homepage-vedio-block, .cs-classic .homepage-booklist-slider .slide, .homepage-booklist-slider .cs-classic .slide, .cs-classic .block-user-login, .cs-classic .my-dashbord-block, .cs-elegant .primary-background, .cs-elegant .homepage-reward-block, .cs-elegant .homepage-vedio-block, .cs-elegant .homepage-booklist-slider .slide, .homepage-booklist-slider .cs-elegant .slide, .cs-elegant .block-user-login, .cs-elegant .my-dashbord-block {
+.cs-classic .primary-background, .cs-classic .homepage-reward-block, .cs-classic .homepage-vedio-block, .cs-classic .homepage-booklist-slider .slide, .homepage-booklist-slider .cs-classic .slide, .cs-classic .block-user-login, .cs-classic .flicker-block, .cs-classic .my-dashbord-block, .cs-elegant .primary-background, .cs-elegant .homepage-reward-block, .cs-elegant .homepage-vedio-block, .cs-elegant .homepage-booklist-slider .slide, .homepage-booklist-slider .cs-elegant .slide, .cs-elegant .block-user-login, .cs-elegant .flicker-block, .cs-elegant .my-dashbord-block {
   font-size: 19px;
 }
 /* line 37, ../scss/base/_mixins.scss */
-.cs-default .primary-background, .cs-default .homepage-reward-block, .cs-default .homepage-vedio-block, .cs-default .homepage-booklist-slider .slide, .homepage-booklist-slider .cs-default .slide, .cs-default .block-user-login, .cs-default .my-dashbord-block {
+.cs-default .primary-background, .cs-default .homepage-reward-block, .cs-default .homepage-vedio-block, .cs-default .homepage-booklist-slider .slide, .homepage-booklist-slider .cs-default .slide, .cs-default .block-user-login, .cs-default .flicker-block, .cs-default .my-dashbord-block {
   font-family: "arial";
   font-weight: normal;
 }
 /* line 42, ../scss/base/_mixins.scss */
-.cs-classic .primary-background, .cs-classic .homepage-reward-block, .cs-classic .homepage-vedio-block, .cs-classic .homepage-booklist-slider .slide, .homepage-booklist-slider .cs-classic .slide, .cs-classic .block-user-login, .cs-classic .my-dashbord-block {
+.cs-classic .primary-background, .cs-classic .homepage-reward-block, .cs-classic .homepage-vedio-block, .cs-classic .homepage-booklist-slider .slide, .homepage-booklist-slider .cs-classic .slide, .cs-classic .block-user-login, .cs-classic .flicker-block, .cs-classic .my-dashbord-block {
   font-family: "PT Sans", sans-serif;
   font-weight: normal;
 }
 /* line 47, ../scss/base/_mixins.scss */
-.cs-elegant .primary-background, .cs-elegant .homepage-reward-block, .cs-elegant .homepage-vedio-block, .cs-elegant .homepage-booklist-slider .slide, .homepage-booklist-slider .cs-elegant .slide, .cs-elegant .block-user-login, .cs-elegant .my-dashbord-block {
+.cs-elegant .primary-background, .cs-elegant .homepage-reward-block, .cs-elegant .homepage-vedio-block, .cs-elegant .homepage-booklist-slider .slide, .homepage-booklist-slider .cs-elegant .slide, .cs-elegant .block-user-login, .cs-elegant .flicker-block, .cs-elegant .my-dashbord-block {
   font-family: "Open Sans", sans-serif;
   font-weight: normal;
 }
 
-/* line 126, ../scss/base/_common.scss */
+/* line 132, ../scss/base/_common.scss */
 .view-content {
   position: relative;
 }
-/* line 128, ../scss/base/_common.scss */
+/* line 134, ../scss/base/_common.scss */
 .view-content .owl-controls {
   margin-top: 0;
   width: 100%;
@@ -7575,18 +7581,18 @@ a.th {
   left: -26px;
   height: 0;
 }
-/* line 135, ../scss/base/_common.scss */
+/* line 141, ../scss/base/_common.scss */
 .view-content .owl-controls .owl-pagination {
   display: none;
 }
-/* line 138, ../scss/base/_common.scss */
+/* line 144, ../scss/base/_common.scss */
 .view-content .owl-controls .owl-buttons {
   width: calc(100% + 52px);
   position: relative;
   display: inline-block;
   height: 0;
 }
-/* line 143, ../scss/base/_common.scss */
+/* line 149, ../scss/base/_common.scss */
 .view-content .owl-controls .owl-buttons > div {
   margin: 0;
   border-radius: 0;
@@ -7595,32 +7601,32 @@ a.th {
   padding: 0;
   opacity: 1;
 }
-/* line 151, ../scss/base/_common.scss */
+/* line 157, ../scss/base/_common.scss */
 .view-content .owl-controls .owl-buttons .owl-prev {
   float: left;
   background-position: -20px -595px;
 }
-/* line 156, ../scss/base/_common.scss */
+/* line 162, ../scss/base/_common.scss */
 .view-content .owl-controls .owl-buttons .owl-next {
   float: right;
   background-position: -20px -1136px;
 }
 
-/* line 164, ../scss/base/_common.scss */
+/* line 170, ../scss/base/_common.scss */
 .b-padding {
   padding: 20px 35px 18px;
 }
-/* line 166, ../scss/base/_common.scss */
+/* line 172, ../scss/base/_common.scss */
 .b-padding p {
   margin: 0;
 }
 
-/* line 171, ../scss/base/_common.scss */
+/* line 177, ../scss/base/_common.scss */
 .margin-0 {
   margin: 0;
 }
 
-/* line 175, ../scss/base/_common.scss */
+/* line 181, ../scss/base/_common.scss */
 .yellow-commonblock, .block-play-library-custom-pm-block, .homebox.homebox-auto-save #homebox-add .item-list, .homebox.homebox-auto-save .homebox-column-wrapper .homebox-portlet-inner {
   padding: 14px 25px 15px;
   color: #000;
@@ -7807,6 +7813,13 @@ p {
 /* line 132, ../scss/base/_elements.scss */
 .view-content p, .view-header p, .view-footer p {
   margin-bottom: 0;
+}
+
+/* line 137, ../scss/base/_elements.scss */
+li.progress {
+  border: none;
+  outline: none;
+  padding: 0;
 }
 
 /* Grid HTML Classes */
@@ -9125,18 +9138,26 @@ html {
 }
 
 /* line 90, ../scss/components/_blocks.scss */
+.homepage-booklist-slider .stroke-main span, .homepage-booklist-slider .homepage-vedio-block .view-header p span, .homepage-vedio-block .view-header .homepage-booklist-slider p span, .homepage-booklist-slider .flicker-block .view-header span, .flicker-block .homepage-booklist-slider .view-header span, .homepage-booklist-slider .my-dashbord-block .view-header * span, .my-dashbord-block .view-header .homepage-booklist-slider * span {
+  width: calc(100% - 125px);
+  display: inline-block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+/* line 97, ../scss/components/_blocks.scss */
 .homepage-booklist-slider ul.booklist-pager {
   margin: 0;
   float: right;
   display: inline-block;
 }
-/* line 95, ../scss/components/_blocks.scss */
+/* line 102, ../scss/components/_blocks.scss */
 .homepage-booklist-slider ul.booklist-pager input[type=radio] {
   visibility: hidden;
   position: absolute;
   margin: 0;
 }
-/* line 101, ../scss/components/_blocks.scss */
+/* line 108, ../scss/components/_blocks.scss */
 .homepage-booklist-slider ul.booklist-pager input[type=radio] + label:before {
   height: 20px;
   width: 20px;
@@ -9148,33 +9169,32 @@ html {
   background: #fff;
   border-radius: 100%;
 }
-/* line 113, ../scss/components/_blocks.scss */
+/* line 120, ../scss/components/_blocks.scss */
 .homepage-booklist-slider ul.booklist-pager input[type=radio]:checked + label:before {
   background: #267fda;
   border: 1px solid #267fda;
 }
-/* line 117, ../scss/components/_blocks.scss */
+/* line 124, ../scss/components/_blocks.scss */
 .cs-classic .homepage-booklist-slider ul.booklist-pager input[type=radio]:checked + label:before {
   background: #fdeb52;
   border: 1px solid #fdeb52;
 }
-/* line 124, ../scss/components/_blocks.scss */
+/* line 131, ../scss/components/_blocks.scss */
 .homepage-booklist-slider .controls {
-  width: 100%;
+  width: calc(100% - 20px);
   display: inline-block;
   position: relative;
   bottom: -60px;
-  right: 20px;
 }
-/* line 135, ../scss/components/_blocks.scss */
-.homepage-booklist-slider .slide .stroke-main, .homepage-booklist-slider .slide .homepage-vedio-block .view-header p, .homepage-vedio-block .view-header .homepage-booklist-slider .slide p, .homepage-booklist-slider .slide .my-dashbord-block .view-header *, .my-dashbord-block .view-header .homepage-booklist-slider .slide * {
+/* line 141, ../scss/components/_blocks.scss */
+.homepage-booklist-slider .slide .stroke-main, .homepage-booklist-slider .slide .homepage-vedio-block .view-header p, .homepage-vedio-block .view-header .homepage-booklist-slider .slide p, .homepage-booklist-slider .slide .flicker-block .view-header, .flicker-block .homepage-booklist-slider .slide .view-header, .homepage-booklist-slider .slide .my-dashbord-block .view-header *, .my-dashbord-block .view-header .homepage-booklist-slider .slide * {
   margin: 0;
 }
-/* line 139, ../scss/components/_blocks.scss */
+/* line 145, ../scss/components/_blocks.scss */
 .homepage-booklist-slider .slide .view-content {
   padding: 20px 60px;
 }
-/* line 143, ../scss/components/_blocks.scss */
+/* line 149, ../scss/components/_blocks.scss */
 .homepage-booklist-slider .slide .booklist-wrapper {
   width: 100%;
   display: flex;
@@ -9183,16 +9203,16 @@ html {
   align-content: center;
   height: 200px;
 }
-/* line 152, ../scss/components/_blocks.scss */
+/* line 158, ../scss/components/_blocks.scss */
 .homepage-booklist-slider .slide .view-footer {
   padding-left: 25px;
 }
-/* line 155, ../scss/components/_blocks.scss */
+/* line 161, ../scss/components/_blocks.scss */
 .homepage-booklist-slider .slide .view-footer p {
   margin: 0;
 }
 
-/* line 163, ../scss/components/_blocks.scss */
+/* line 169, ../scss/components/_blocks.scss */
 .annocement {
   background-color: #fdeb52;
   background-repeat: repeat;
@@ -9204,16 +9224,16 @@ html {
   width: 100%;
   border-radius: 15px;
 }
-/* line 174, ../scss/components/_blocks.scss */
+/* line 180, ../scss/components/_blocks.scss */
 .annocement h1, .annocement .font-stroke-main {
   margin: 0;
   color: #000;
 }
-/* line 179, ../scss/components/_blocks.scss */
+/* line 185, ../scss/components/_blocks.scss */
 .annocement img {
   display: none;
 }
-/* line 183, ../scss/components/_blocks.scss */
+/* line 189, ../scss/components/_blocks.scss */
 .annocement p {
   margin-bottom: 0;
 }
@@ -9232,7 +9252,7 @@ html {
   font-family: "Open Sans", sans-serif;
   font-weight: 700;
 }
-/* line 189, ../scss/components/_blocks.scss */
+/* line 195, ../scss/components/_blocks.scss */
 .annocement ul, .annocement ol {
   margin: 0;
 }
@@ -9244,12 +9264,12 @@ html {
 .cs-classic .annocement ul, .cs-elegant .annocement ul, .cs-classic .annocement ol, .cs-elegant .annocement ol {
   font-size: 19px;
 }
-/* line 194, ../scss/components/_blocks.scss */
+/* line 200, ../scss/components/_blocks.scss */
 .annocement ul li, .annocement ol li {
   padding-left: 35px;
   position: relative;
 }
-/* line 198, ../scss/components/_blocks.scss */
+/* line 204, ../scss/components/_blocks.scss */
 .annocement ul li:before, .annocement ol li:before {
   content: "";
   width: 35px;
@@ -9261,18 +9281,18 @@ html {
   left: 0;
 }
 
-/* line 214, ../scss/components/_blocks.scss */
+/* line 220, ../scss/components/_blocks.scss */
 .about-us .view-footer {
   padding-left: 25px;
 }
 
-/* line 227, ../scss/components/_blocks.scss */
+/* line 233, ../scss/components/_blocks.scss */
 .block-user-login form {
   margin-bottom: 0;
   padding-left: 30px;
   padding-right: 30px;
 }
-/* line 232, ../scss/components/_blocks.scss */
+/* line 238, ../scss/components/_blocks.scss */
 .block-user-login form label {
   color: #fff;
 }
@@ -9291,7 +9311,7 @@ html {
   font-family: "Open Sans", sans-serif;
   font-weight: 700;
 }
-/* line 240, ../scss/components/_blocks.scss */
+/* line 246, ../scss/components/_blocks.scss */
 .block-user-login form .item-list ul li {
   margin: 0;
   list-style: none;
@@ -9302,19 +9322,19 @@ html {
   text-align: center;
   font-family: Verdana, sans-serif;
 }
-/* line 250, ../scss/components/_blocks.scss */
+/* line 256, ../scss/components/_blocks.scss */
 .block-user-login form .item-list ul li.first {
   transform: rotateX(40deg);
   animation: one 2s infinite;
   animation-direction: alternate;
 }
-/* line 256, ../scss/components/_blocks.scss */
+/* line 262, ../scss/components/_blocks.scss */
 .block-user-login form .item-list ul li.last {
   transform: rotateX(40deg);
-  animation: one 2s infinite;
+  animation: two 2s infinite;
   animation-direction: alternate;
 }
-/* line 262, ../scss/components/_blocks.scss */
+/* line 268, ../scss/components/_blocks.scss */
 .block-user-login form .item-list ul li a {
   color: #fff;
 }
@@ -9358,15 +9378,15 @@ html {
     transform: rotateY(70deg);
   }
 }
-/* line 296, ../scss/components/_blocks.scss */
+/* line 302, ../scss/components/_blocks.scss */
 .block-play-library-custom-pm-block {
   margin-bottom: 30px;
 }
-/* line 300, ../scss/components/_blocks.scss */
+/* line 306, ../scss/components/_blocks.scss */
 .block-play-library-custom-pm-block .block-title {
   margin: 0;
 }
-/* line 304, ../scss/components/_blocks.scss */
+/* line 310, ../scss/components/_blocks.scss */
 .block-play-library-custom-pm-block .pm-custom {
   padding-top: 17px;
   padding-bottom: 12px;
@@ -9377,15 +9397,15 @@ html {
   align-content: center;
   align-items: center;
 }
-/* line 315, ../scss/components/_blocks.scss */
+/* line 321, ../scss/components/_blocks.scss */
 .block-play-library-custom-pm-block .pm-custom > div:nth-of-type(1) {
   flex-basis: 78%;
 }
-/* line 319, ../scss/components/_blocks.scss */
+/* line 325, ../scss/components/_blocks.scss */
 .block-play-library-custom-pm-block .pm-custom > div:nth-of-type(2) {
   flex-basis: 22%;
 }
-/* line 324, ../scss/components/_blocks.scss */
+/* line 330, ../scss/components/_blocks.scss */
 .block-play-library-custom-pm-block .pm-custom .pm {
   -webkit-flex-wrap: wrap;
   flex-wrap: wrap;
@@ -9402,34 +9422,72 @@ html {
 .cs-classic .block-play-library-custom-pm-block .pm-custom .pm, .cs-elegant .block-play-library-custom-pm-block .pm-custom .pm {
   font-size: 19px;
 }
-/* line 334, ../scss/components/_blocks.scss */
+/* line 340, ../scss/components/_blocks.scss */
 .block-play-library-custom-pm-block .pm-custom .pm .pm-subject {
   flex-basis: 60%;
   padding-right: 10px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
-/* line 338, ../scss/components/_blocks.scss */
+/* line 348, ../scss/components/_blocks.scss */
 .block-play-library-custom-pm-block .pm-custom .pm .pm-subject a {
   font-weight: 700;
   color: #000;
 }
-/* line 343, ../scss/components/_blocks.scss */
+/* line 353, ../scss/components/_blocks.scss */
 .block-play-library-custom-pm-block .pm-custom .pm .pm-subject .pm-new {
   color: #cc0d25;
   display: inline-block;
   padding-right: 5px;
   font-weight: 700;
 }
-/* line 349, ../scss/components/_blocks.scss */
+/* line 359, ../scss/components/_blocks.scss */
 .block-play-library-custom-pm-block .pm-custom .pm .pm-subject .pm-new + * {
   color: #cc0d25;
 }
-/* line 355, ../scss/components/_blocks.scss */
+/* line 365, ../scss/components/_blocks.scss */
 .block-play-library-custom-pm-block .pm-custom .pm .pm-admin {
   padding-right: 10px;
 }
-/* line 359, ../scss/components/_blocks.scss */
+/* line 369, ../scss/components/_blocks.scss */
 .block-play-library-custom-pm-block .pm-custom .pm .pm-admin, .block-play-library-custom-pm-block .pm-custom .pm .pm-date {
   flex-basis: 20%;
+}
+
+/* line 381, ../scss/components/_blocks.scss */
+.flicker-block .owl-controls {
+  top: 25% !important;
+}
+/* line 384, ../scss/components/_blocks.scss */
+.flicker-block .view-footer {
+  padding-left: 35px;
+}
+/* line 387, ../scss/components/_blocks.scss */
+.flicker-block .view-content {
+  padding: 20px 60px;
+}
+/* line 390, ../scss/components/_blocks.scss */
+.flicker-block .flicker-image-wrapper {
+  width: calc(100% - 6px);
+  margin: auto;
+}
+/* line 393, ../scss/components/_blocks.scss */
+.flicker-block .flicker-image-wrapper .flickr-citation {
+  display: none;
+}
+/* line 395, ../scss/components/_blocks.scss */
+.flicker-block .flicker-image-wrapper .flickr-photoset-img img {
+  border: none;
+  box-shadow: none;
+  border-radius: 0;
+  top: 0;
+  -webkit-transform: scale(1);
+  -moz-transform: scale(1);
+  transform: scale(1);
+  -ms-transform: scale(1);
+  -o-transform: scale(1);
+  transform: scale(1);
 }
 
 /* line 6, ../scss/components/_buttons.scss */
@@ -12477,6 +12535,55 @@ html {
 /* line 314, ../scss/pages/_dashboard.scss */
 .homebox.homebox-auto-save .homebox-column-wrapper .homebox-draggable.dashboard-rewards .portlet-header .portlet-title::before {
   background-position: -11px -321px;
+}
+
+/* line 3, ../scss/pages/_messages.scss */
+.page-messages #page-title.title + .primary-tabs {
+  display: inline-block;
+  vertical-align: top;
+}
+/* line 6, ../scss/pages/_messages.scss */
+.page-messages #page-title.title + .primary-tabs + ul.action-links {
+  display: inline-block;
+  list-style: none;
+  vertical-align: top;
+  margin: 0;
+}
+/* line 11, ../scss/pages/_messages.scss */
+.page-messages #page-title.title + .primary-tabs + ul.action-links li a {
+  padding: 6px 24px;
+  display: inline-block;
+  text-decoration: none;
+  box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+  text-transform: capitalize;
+  border-radius: 10px;
+  border: none;
+  line-height: 26px;
+  margin: 10px;
+}
+
+/* line 26, ../scss/pages/_messages.scss */
+.page-messages.cs-default #page-title.title + .primary-tabs + ul.action-links li a {
+  font-family: "McLaren", cursive;
+  font-weight: normal;
+  font-size: 17px;
+  color: #000;
+}
+
+/* line 33, ../scss/pages/_messages.scss */
+.page-messages.cs-classic #page-title.title + .primary-tabs + ul.action-links li a {
+  font-family: "Architects Daughter", cursive;
+  font-weight: normal;
+  font-size: 19px;
+  color: #fff;
+}
+
+/* line 40, ../scss/pages/_messages.scss */
+.page-messages.cs-elegant #page-title.title + .primary-tabs + ul.action-links li a {
+  font-family: "Margarine", cursive;
+  font-weight: normal;
+  font-size: 19px;
+  color: #fff;
 }
 
 /*# sourceMappingURL=custom.css.map */

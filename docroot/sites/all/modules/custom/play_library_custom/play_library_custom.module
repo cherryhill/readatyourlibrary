@@ -303,7 +303,7 @@ function pl_pm_block_view() {
         $new = '<div class = "pm-new">'.'NEW! '.'</div>';
       }
 
-      $output .= '<div class="pm">'.'<div class = "pm-subject"><a href = '.'../messages/view/'.$msg_id.'>'.$new.'<span>'.$pm_subject = $result['subject'].'<span></a></div>'.'<div class = "pm-admin">'.$author.'</div>'.'<div class = "pm-date">'.$pm_date = date('F d, Y',$result['timestamp']).'</div>'.'</div>';
+      $output .= '<div class="pm">'.'<div class = "pm-subject"><a href = '.'../messages/view/'.$msg_id.'>'.$new.'<span>'.$pm_subject = $result['subject'].'</span></a></div>'.'<div class = "pm-admin">'.$author.'</div>'.'<div class = "pm-date">'.$pm_date = date('F d, Y',$result['timestamp']).'</div>'.'</div>';
     }
     return $output.'</div><div><a class="pm-view btn btn-large" href="../messages">'.t('View All Messages').'</a>'.'</div></div>';
   } else {
