@@ -2,7 +2,7 @@
   //drupal_add_js(drupal_get_path('module', 'play_progress_calendar') . '/js/jquery-ui.min.js');
   //drupal_add_js(drupal_get_path('module', 'play_progress_calendar') . '/js/fullcalendar.min.js');
   //drupal_add_js(drupal_get_path('module', 'play_progress_calendar') . '/js/gcal.js');
-  
+
   drupal_add_js(drupal_get_path('module', 'play_progress_calendar') . '/fullcalendar/lib/moment.min.js');
   drupal_add_js(drupal_get_path('module', 'play_progress_calendar') . '/fullcalendar/lib/jquery.min.js');
   drupal_add_js(drupal_get_path('module', 'play_progress_calendar') . '/fullcalendar/lib/jquery-ui.min.js');
@@ -19,12 +19,13 @@
 
 <!-- Tpl file for children progress page -->
 <div class="progress-page-wrap">
+<div class="print-pdf"><button class="printBtn hidden-print">Print Calendar</button></div>
 	<div id='wrap'>
     <div class= 'sticker-block' id='sticker-wrap'>
       <span class="prog-name"><h2> <?php print(t("Kids Summer Reading")) ?> </h2></span>
       <span class="prog-days"><h3> <?php print(t("Days of Reading")) ?> </h3></span>
-      <span class="prog-sticker-info"><p> <?php print(t("Drag and drop a sticker to mark the days you've read!")) ?> </p></span>	
-      <?php 
+      <span class="prog-sticker-info"><p> <?php print(t("Drag and drop a sticker to mark the days you've read!")) ?> </p></span>
+      <?php
   			$query = db_select('eck_activity','act');
         $query->join('field_data_field_activity_fired_hook','hook', 'hook.entity_id = act.id');
         $query->fields('act', array('id'));
@@ -39,7 +40,7 @@
           }
           //$GLOBALS['activity_list']= array($value->id);
         }
-        $associated_rewards = pl_get_activity_reward_ids($activity_ids);        
+        $associated_rewards = pl_get_activity_reward_ids($activity_ids);
         // print_r($associated_rewards);
         // // unset($_SESSION);
         // print_r($_SESSION);
@@ -48,7 +49,7 @@
           $tree = taxonomy_get_tree($vocabulary->vid);
       ?>
       		<div id='external-events' value=<?php print($activity_list); ?> >
-      		<?php 
+      		<?php
   				  foreach ($tree as $term) {
   						$image = taxonomy_term_load($term->tid);
               if ($image_items = field_get_items('taxonomy_term', $image, 'field_cal_sticker_image')) {
@@ -85,7 +86,7 @@
         else if ($req_points > 1){
           $next_rew = t('<strong>'.$req_points.'</strong> more days of reading needed to receive your next prize');
         }
-      
+
         else {
           $next_rew = t('<strong>Congratulations!</strong> You have completed Reading Program.');
         }
@@ -93,25 +94,25 @@
       ?>
     </div>
   </div>
-    
+
 	   <!-- This is the drupal views block of sticker -->
 
-		<div class="sticker-block"> 
+		<div class="sticker-block">
           <?php //print views_embed_view('dropdown_sticker_list', 'block'); ?>
 		</div>
 
 		<!-- This is the reward list won by patron  -->
 
-		<div class="pro-reward-block"> 
+		<div class="pro-reward-block">
           <?php //print views_embed_view('user_rewrad_for_progress_page', 'block'); ?>
 		</div>
-         
+
          <!-- This is the user progress for read activity. -->
 
-		<div class="pro-progress-block"> 
-          <?php 
+		<div class="pro-progress-block">
+          <?php
             //$block = module_invoke('play_progress_calendar', 'block_view', 'user_prize_block');
-            print render($block['content']); 
+            print render($block['content']);
           ?>
 		</div>
 	</div>
@@ -131,6 +132,6 @@
   	<div id='calendar'></div>
   	<!-- <div id="print_button">Print Calendar</div> -->
     <!-- <button onclick="printPage()">Print this page</button> -->
-    <button class="printBtn hidden-print">Print Calendar</button>
+
   </div>
 </div>

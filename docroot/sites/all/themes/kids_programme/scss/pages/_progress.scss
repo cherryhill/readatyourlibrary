@@ -1,0 +1,271 @@
+.main {
+  .page-progress.cs-default &, .page-progress.cs-elegant & {
+    background: $blue;
+  }
+
+  .page-progress.cs-classic & {
+    background: $darkblue;
+  }
+
+  .page-progress & {
+    color: $white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+    margin-bottom: 35px;
+    padding-bottom: 15px;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+}
+
+#page-title {
+  .page-progress & {
+    line-height: 1.4;
+    margin: 0;
+    height: 99px;
+    width: 100%;
+    background: url(../images/big-strokes);
+    padding-top: 14px;
+    border-radius: 15px 15px 0 0;
+    padding-left: 35px;
+    text-transform: capitalize;
+  }
+
+  @extend .white-text;
+
+  @include primary_fonts;
+
+  .page-progress.cs-default & {
+    background-position: -60px -569px;
+  }
+
+  .page-progress.cs-classic & {
+    background-position: -60px -225px;
+  }
+
+  .page-progress.cs-elegant & {
+    background-position: -60px -914px;
+  }
+}
+.progress-page-wrap {
+  padding-left: 35px;
+  padding-right: 35px;
+  .print-pdf {
+    width: 100%;
+    display: inline-block;
+    height: 26px;
+    top: -90px;
+    position: relative;
+     button {
+      float: right;
+      position: relative;
+      padding-left: 58px !important;
+       &:after {
+         content: "";
+         height: 30px;
+         width: 30px;
+         background: url('../images/social-icons.png');
+         position: absolute;
+         background-position: -20px -229px;
+         left: 25px;
+         top: 3px;
+       }
+     }
+  }
+    #wrap {
+       @extend .yellow-commonblock;
+      -webkit-flex-wrap: wrap;
+      flex-wrap: wrap;
+      display: -webkit-flex;
+      display: flex;
+       > div {
+         &.sticker-block {
+          flex: 0 0 45%;
+          padding-right: 20px;
+           span.prog-name {
+             * {
+              color: $black;
+              margin: 0;
+               .cs-default & {
+                font-size: 22px;
+               }
+               .cs-classic &, .cs-elegant & {
+                font-size: 25px;
+               }
+             }
+           }
+             .prog-days {
+               * {
+                 color: $red;
+                 margin: 0;
+                  .cs-default & {
+                    font-size: 26px;
+                  }
+                  .cs-classic &, .cs-elegant & {
+                    font-size: 28px;
+                  }
+               }
+             }
+
+          #external-events {
+            div {
+               background: $yellow;
+               border: none;
+               display: inline-block;
+               width: 16%;
+                img {
+                  width: 58px;
+                }
+            }
+
+          }
+         }
+         &.rewards {
+          flex: 0 0 33%;
+          padding-right: 20px;
+           .view-Rewards-Progress {
+             width: 100%;
+             background: $white;
+             color: $black;
+             border-radius: 15px;
+             box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+             @include primary_fonts;
+             padding: 15px 20px;
+              .view-header {
+                p {
+                   font-size: 20px;
+                   color: $blue;
+                   @include primary_fonts;
+                    &:nth-of-type(2) {
+                      font-size: 13px;
+                      color: $black;
+                      text-transform: uppercase;
+                    }
+                }
+              }
+              .view-content {
+                counter-reset: section;
+                position: relative;
+                padding-left: 110px;
+                margin-top: -17px;
+                 .views-row {
+                  font-size: 13px;
+                  position: relative;
+                  @include primary_fonts;
+                  line-height: 17px;
+                  margin-bottom: 5px;
+                   &:before {
+                     counter-increment: section;
+                     content: counter(section) ". ";
+                     display: inline-block;
+                     position: absolute;
+                     left: -17px;
+                     top: 0;
+                   }
+                   .views-field-title {
+                     display: inline-block;
+
+                   }
+                 }
+              }
+           }
+         }
+         &.reading-progress {
+          flex: 0 0 22%;
+          border-radius: 15px;
+          box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+          padding: 20px;
+          font-size: 15px;
+          text-align: center;
+           * {
+             font-size: inherit;
+             color: inherit;
+
+           }
+          @include primary_fonts;
+          display: flex;
+          align-content: center;
+          align-items: center;
+          color: $white;
+           .cs-default & {
+             background: $orange;
+           }
+           .cs-classic & {
+             background: $sky-blue;
+           }
+           .cs-elegant & {
+             background: $mint-green;
+           }
+
+         }
+       }
+    }
+    .calendar-wrapper {
+      .fc-center {
+        width: 100%;
+        max-width: 360px;
+        margin: auto;
+
+         h2 {
+           color: $white;
+         }
+
+         * {
+          display: inline-block;
+          margin: 2px;
+         }
+      }
+    }
+    table {
+       background: $white;
+       border: none;
+       position: relative;
+       th {
+        border: none;
+       }
+       .fc-body {
+        thead {
+          border: none !important;
+          background: $white !important;
+           td {
+            border-left: 1px solid;
+           }
+
+        }
+        tbody {
+          td {
+            border-top: none;
+          }
+        }
+       }
+       .fc-head {
+        td {
+          border: none;
+        }
+        th {
+           font-size: 22px;
+           @include primary_fonts;
+           color: $white;
+        }
+        .fc-row.fc-widget-header {
+          margin-right: 0 !important;
+          border: none;
+        }
+       }
+      .fc-scroller {
+        overflow-y: hidden !important;
+      }
+       .fc-head thead {
+        border: none;
+        margin: 0;
+        .cs-default &,.cs-elegant & {
+          background: $blue;
+        }
+          .cs-classic & {
+          background: $darkblue;
+          }
+       }
+    }
+}
+

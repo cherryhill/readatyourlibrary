@@ -75,34 +75,24 @@ function rewards_progress_feature_views_default_views() {
   $handler->display->display_options['header']['php']['field'] = 'php';
   $handler->display->display_options['header']['php']['php_output'] = '<?php 
 global $user;
-print($user->name);
+print "<p>".($user->name)."</p>";
+
+print "<p><span>".("prizes won")."</span></p>"; 
 ?>';
   $handler->display->display_options['defaults']['footer'] = FALSE;
   $handler->display->display_options['defaults']['fields'] = FALSE;
-  /* Field: Reward: Raffle prize or reward image */
-  $handler->display->display_options['fields']['field_raffle_prize_or_reward_ima']['id'] = 'field_raffle_prize_or_reward_ima';
-  $handler->display->display_options['fields']['field_raffle_prize_or_reward_ima']['table'] = 'field_data_field_raffle_prize_or_reward_ima';
-  $handler->display->display_options['fields']['field_raffle_prize_or_reward_ima']['field'] = 'field_raffle_prize_or_reward_ima';
-  $handler->display->display_options['fields']['field_raffle_prize_or_reward_ima']['relationship'] = 'field_reward_claim_id_target_id';
-  $handler->display->display_options['fields']['field_raffle_prize_or_reward_ima']['label'] = '';
-  $handler->display->display_options['fields']['field_raffle_prize_or_reward_ima']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_raffle_prize_or_reward_ima']['click_sort_column'] = 'fid';
-  $handler->display->display_options['fields']['field_raffle_prize_or_reward_ima']['settings'] = array(
-    'image_style' => 'thumbnail',
-    'image_link' => '',
-  );
   /* Field: Reward: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'eck_reward';
   $handler->display->display_options['fields']['title']['field'] = 'title';
   $handler->display->display_options['fields']['title']['label'] = '';
-  $handler->display->display_options['fields']['title']['exclude'] = TRUE;
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
   /* Field: Global: PHP */
   $handler->display->display_options['fields']['php']['id'] = 'php';
   $handler->display->display_options['fields']['php']['table'] = 'views';
   $handler->display->display_options['fields']['php']['field'] = 'php';
   $handler->display->display_options['fields']['php']['label'] = '';
+  $handler->display->display_options['fields']['php']['exclude'] = TRUE;
   $handler->display->display_options['fields']['php']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['php']['use_php_setup'] = 0;
   $handler->display->display_options['fields']['php']['php_output'] = '<?php
@@ -120,18 +110,6 @@ echo \'<div>\'.$reward_title.\'</div><span>\'.$reward_date_time.\'</span>\';// .
 ?>';
   $handler->display->display_options['fields']['php']['use_php_click_sortable'] = '0';
   $handler->display->display_options['fields']['php']['php_click_sortable'] = '';
-  /* Field: Reward: Raffle Ticket Image */
-  $handler->display->display_options['fields']['field_raffle_ticket_image']['id'] = 'field_raffle_ticket_image';
-  $handler->display->display_options['fields']['field_raffle_ticket_image']['table'] = 'field_data_field_raffle_ticket_image';
-  $handler->display->display_options['fields']['field_raffle_ticket_image']['field'] = 'field_raffle_ticket_image';
-  $handler->display->display_options['fields']['field_raffle_ticket_image']['relationship'] = 'field_raffle_claim_id_target_id';
-  $handler->display->display_options['fields']['field_raffle_ticket_image']['label'] = '';
-  $handler->display->display_options['fields']['field_raffle_ticket_image']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_raffle_ticket_image']['click_sort_column'] = 'fid';
-  $handler->display->display_options['fields']['field_raffle_ticket_image']['settings'] = array(
-    'image_style' => 'thumbnail',
-    'image_link' => '',
-  );
   $handler->display->display_options['defaults']['arguments'] = FALSE;
   /* Contextual filter: Reward: Author */
   $handler->display->display_options['arguments']['uid']['id'] = 'uid';
