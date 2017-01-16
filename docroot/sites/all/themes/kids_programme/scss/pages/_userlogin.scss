@@ -1,0 +1,152 @@
+.page-user-register {
+	.form-type-date-select {
+		width: 100%;
+		.date-padding {
+			width: 100%;
+			padding: 0 !important;
+			.form-type-select {
+				width: 30%;
+				margin-right: 3%;
+				.chosen-container {
+					width: 100%;
+				}
+			}
+		}
+	}
+	.form-wrapper {
+		.field-type-text, .field-type-phone, .field-type-email  {
+	    width: 30%;
+	    float: left;
+	    margin-right: 3%;
+	    &.field-name-field-email {
+	    	margin-right: 0;
+	    }
+  	}
+	}
+	.field-type-addressfield {
+		display: inline-block;
+		width: 100%;
+		.form-type-select, .form-type-textfield {
+			width: 30%;
+			float: left;
+			margin-right: 3%;
+			.chosen-container {
+				width: 100%;
+			}
+		}
+	}
+	.field-type-taxonomy-term-reference,.field-name-field-library-card-number,
+	.field-name-field-school, .field-name-field-user-grade, .field-name-field-organization,
+	.field-name-field-hear-about {
+    width: 30%;
+    float: left;
+    margin-right: 3%;
+    .chosen-container {
+			width: 100%;
+		}
+	}
+	.field-name-field-user-grade, .username-curr, .password-suggestions.description,
+	.description {
+		clear: both;
+		line-height: 1.3em;
+	}
+	.field-widget-random-list-widget-randomizer {
+		float: left;
+		margin-bottom: 1em;
+	}
+	.form-item-mail {
+		clear: both;
+		input {
+			width: 30%;
+		}
+	}
+	.form-type-password-confirm {
+		.form-type-password {
+			width: 100%;
+		}
+		.password-strength, .password-confirm {
+	    width: 20%;
+	    float: right;
+	    margin-right: 45%;
+	  }
+		input {
+			width: 30%;
+		}
+		input.password-confirm {
+			width: 30%;
+			float: none;
+			margin-right: 0;
+		}
+	}
+	.form-type-radio {
+		float: left;
+		margin-right: 15px;
+	}
+	fieldset {
+		padding: 0.35em 0.625em 0.75em;
+	}
+	.form-item {
+		margin-top: 5px;
+		margin-bottom: 5px;
+	}
+	label {
+		line-height: 1.3em;
+		margin-bottom: 5px;
+	}
+}
+
+@media all and (max-width: 767px) {
+	.page-user-register {
+		.form-type-date-select {
+			.date-padding {
+				.form-type-select {
+					width: 100%;
+					margin-right: 0;
+				}
+			}
+		}
+		.form-wrapper {
+		 .field-type-text, .field-type-phone, .field-type-email  {
+			 	width: 100%;
+			 	margin-right: 0;
+			}
+		}
+		.field-type-addressfield {
+			.form-type-select, .form-type-textfield {
+				width: 100%;
+				margin-right: 0;
+			}
+		}
+		.field-type-taxonomy-term-reference,.field-name-field-library-card-number,
+		.field-name-field-school, .field-name-field-user-grade, .field-name-field-organization,
+		.field-name-field-hear-about {
+	    width: 100%;
+	    margin-right: 0;
+	  }
+	  .field-widget-random-list-widget-randomizer {
+			float: none;
+	  }
+	  .form-item-mail {
+			input {
+				width: 65%;
+			}
+		}
+	  .form-type-password-confirm {
+	  	.password-strength, .password-confirm {
+	  		width: 25%;
+		    margin-right: 5%;
+		    line-height: 1.1em;
+	  	}
+	  	input {
+	  		width: 65%;
+	  	}
+	  	input.password-confirm {
+				width: 65%;
+			}
+	  }
+	  .form-type-radio {
+	  	margin-right: 0;
+	  	float: none;
+	  }
+	}
+}
