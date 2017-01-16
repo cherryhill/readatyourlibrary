@@ -7822,6 +7822,11 @@ li.progress {
   padding: 0;
 }
 
+/* line 143, ../scss/base/_elements.scss */
+a:focus, button:focus {
+  outline: none;
+}
+
 /* Grid HTML Classes */
 /* line 127, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_grid-5.scss */
 .row {
@@ -8585,7 +8590,7 @@ li.progress {
 }
 /* line 30, ../scss/layout/_header.scss */
 .l-header .pre-header .breadcurm {
-  flex-basis: 100%;
+  flex: 0 0 100%;
 }
 /* line 31, ../scss/layout/_header.scss */
 .l-header .pre-header .breadcurm ul {
@@ -8663,12 +8668,12 @@ li.progress {
 @media screen and (min-width: 1025px) {
   /* line 30, ../scss/layout/_header.scss */
   .l-header .pre-header .breadcurm {
-    flex-basis: 20%;
+    flex: 0 0 20%;
   }
 }
 /* line 90, ../scss/layout/_header.scss */
 .l-header .pre-header .top-menu {
-  flex-basis: 100%;
+  flex: 0 0 100%;
 }
 /* line 20, ../scss/base/_mixins.scss */
 .cs-default .l-header .pre-header .top-menu {
@@ -8712,7 +8717,7 @@ li.progress {
 @media screen and (min-width: 1025px) {
   /* line 90, ../scss/layout/_header.scss */
   .l-header .pre-header .top-menu {
-    flex-basis: 80%;
+    flex: 0 0 80%;
   }
 }
 /* line 125, ../scss/layout/_header.scss */
@@ -8731,7 +8736,7 @@ li.progress {
 }
 /* line 152, ../scss/layout/_header.scss */
 .l-header .header-middle .logo-block {
-  flex-basis: 25%;
+  flex: 0 0 25%;
 }
 /* line 155, ../scss/layout/_header.scss */
 .l-header .header-middle .logo-block .site-info {
@@ -8795,7 +8800,7 @@ li.progress {
 }
 /* line 218, ../scss/layout/_header.scss */
 .l-header .header-middle .main-menu {
-  flex-basis: 75%;
+  flex: 0 0 75%;
 }
 /* line 222, ../scss/layout/_header.scss */
 .l-header .header-middle .main-menu .menu-wrapper section {
@@ -8973,7 +8978,7 @@ html {
 }
 /* line 39, ../scss/layout/_footer.scss */
 .l-footer .footer .block-play-library-custom-program-footer-content {
-  flex-basis: 70%;
+  flex: 0 0 70%;
 }
 /* line 41, ../scss/layout/_footer.scss */
 .l-footer .footer .block-play-library-custom-program-footer-content .u-footer-content {
@@ -9064,7 +9069,7 @@ html {
 }
 /* line 81, ../scss/layout/_footer.scss */
 .l-footer .footer .block-menu-menu-social-sharing-icons {
-  flex-basis: 30%;
+  flex: 0 0 30%;
 }
 
 /* line 7, ../scss/components/_blocks.scss */
@@ -9096,11 +9101,11 @@ html {
 }
 /* line 35, ../scss/components/_blocks.scss */
 .homepage-reward-block .view-content .reward-logo-text .reward-image {
-  flex-basis: 100px;
+  flex: 0 0 100px;
 }
 /* line 39, ../scss/components/_blocks.scss */
 .homepage-reward-block .view-content .reward-logo-text .reward-title {
-  flex-basis: calc(100% - 100px);
+  flex: 0 0 calc(100% - 100px);
   padding-left: 25px;
 }
 
@@ -9399,11 +9404,11 @@ html {
 }
 /* line 321, ../scss/components/_blocks.scss */
 .block-play-library-custom-pm-block .pm-custom > div:nth-of-type(1) {
-  flex-basis: 78%;
+  flex: 0 0 78%;
 }
 /* line 325, ../scss/components/_blocks.scss */
 .block-play-library-custom-pm-block .pm-custom > div:nth-of-type(2) {
-  flex-basis: 22%;
+  flex: 0 0 22%;
 }
 /* line 330, ../scss/components/_blocks.scss */
 .block-play-library-custom-pm-block .pm-custom .pm {
@@ -9424,7 +9429,7 @@ html {
 }
 /* line 340, ../scss/components/_blocks.scss */
 .block-play-library-custom-pm-block .pm-custom .pm .pm-subject {
-  flex-basis: 60%;
+  flex: 0 0 60%;
   padding-right: 10px;
   white-space: nowrap;
   overflow: hidden;
@@ -9452,7 +9457,7 @@ html {
 }
 /* line 369, ../scss/components/_blocks.scss */
 .block-play-library-custom-pm-block .pm-custom .pm .pm-admin, .block-play-library-custom-pm-block .pm-custom .pm .pm-date {
-  flex-basis: 20%;
+  flex: 0 0 20%;
 }
 
 /* line 381, ../scss/components/_blocks.scss */
@@ -12468,7 +12473,7 @@ html {
 }
 /* line 267, ../scss/pages/_dashboard.scss */
 .homebox.homebox-auto-save .view-activities-dashboard .field-content > div {
-  flex-basis: 50%;
+  flex: 0 0  50%;
 }
 /* line 272, ../scss/pages/_dashboard.scss */
 .homebox.homebox-auto-save .view-content * {
@@ -12585,5 +12590,150 @@ html {
   font-size: 19px;
   color: #fff;
 }
+
+/* .main {
+  .page-progress.cs-default &, .page-progress.cs-elegant & {
+    background: $blue;
+  }
+
+  .page-progress.cs-classic & {
+    background: $darkblue;
+  }
+
+  .page-progress & {
+    color: $white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+    margin-bottom: 35px;
+    padding-bottom: 15px;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+}
+
+#page-title {
+  .page-progress & {
+    line-height: 1.4;
+    margin: 0;
+    height: 99px;
+    width: 100%;
+    background: url(../images/big-strokes);
+    padding-top: 14px;
+    border-radius: 15px 15px 0 0;
+    padding-left: 35px;
+    text-transform: capitalize;
+  }
+
+  @extend .white-text;
+
+  @include primary_fonts;
+
+  .page-progress.cs-default & {
+    background-position: -60px -569px;
+  }
+
+  .page-progress.cs-classic & {
+    background-position: -60px -225px;
+  }
+
+  .page-progress.cs-elegant & {
+    background-position: -60px -914px;
+  }
+}
+.progress-page-wrap {
+  padding-left: 35px;
+  padding-right: 35px;
+    #wrap {
+       @extend .yellow-commonblock;
+      -webkit-flex-wrap: wrap;
+      flex-wrap: wrap;
+      display: -webkit-flex;
+      display: flex;
+       > div {
+         &.sticker-block {
+          flex: 0 0 45%;
+          padding-right: 20px;
+           span.prog-name {
+             * {
+              color: $black;
+              margin: 0;
+               .cs-default & {
+                font-size: 22px;
+               }
+               .cs-classic &, .cs-elegant & {
+                font-size: 25px;
+               }
+             }
+           }
+             .prog-days {
+               * {
+                 color: $red;
+                 margin: 0;
+                  .cs-default & {
+                    font-size: 26px;
+                  }
+                  .cs-classic &, .cs-elegant & {
+                    font-size: 28px;
+                  }
+               }
+             }
+
+          #external-events {
+            div {
+               background: $yellow;
+               border: none;
+               display: inline-block;
+               width: 16%;
+                img {
+                  width: 58px;
+                }
+            }
+
+          }
+         }
+         &.rewards {
+          flex: 0 0 33%;
+          padding-right: 20px;
+           .view-Rewards-Progress {
+             width: 100%;
+             background: $white;
+             color: $black;
+             border-radius: 15px;
+             box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+             @include primary_fonts;
+             padding: 15px 20px;
+              .view-header {
+                p {
+                   font-size: 20px;
+                   color:
+                }
+              }
+           }
+         }
+         &.reading-progress {
+          flex: 0 0 22%;
+          border-radius: 15px;
+          box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+          @include primary_fonts;
+          display: flex;
+          align-content: center;
+          align-items: center;
+          color: $white;
+           .cs-default & {
+             background: $orange;
+           }
+           .cs-classic & {
+             background: $sky-blue;
+           }
+           .cs-elegant & {
+             background: $mint-green;
+           }
+
+         }
+       }
+    }
+}
+ */
 
 /*# sourceMappingURL=custom.css.map */
