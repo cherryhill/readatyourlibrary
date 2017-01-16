@@ -73,7 +73,7 @@ function play_progress_calendar_init() {
 function play_progress_calendar_menu() {
 
   $items['calendar'] = array(
-    'title' => 'Test Page',
+    'title' => 'Calendar Page',
     'page callback' => 'calendar_page',
     'access arguments' => array('access content'),
     'type' => MENU_NORMAL_ITEM,
@@ -87,15 +87,15 @@ function play_progress_calendar_menu() {
     'file' => 'inc/play_progress_calendar_page.inc',
     'file path' => drupal_get_path('module', 'play_progress_calendar'),
   );
-  $items['test'] = array(
-    'title' => 'Test Menu',
-    'page callback' => 'test',
-    'access arguments' => array('access content'),
-    'type' => MENU_CALLBACK,
-  );
   $items['calendar2'] = array(
     'title' => 'calendar data',
     'page callback' => 'calendar_data2',
+    'access arguments' => array('access content'),
+    'type' => MENU_NORMAL_ITEM,
+  );
+  $items['rewardloader'] = array(
+    'title' => 'reward data',
+    'page callback' => 'reward_loader',
     'access arguments' => array('access content'),
     'type' => MENU_NORMAL_ITEM,
   );
@@ -128,36 +128,49 @@ function play_progress_calendar_menu() {
  */
 
 function calendar_page() {
-  //Check if request contains a sticker id
-  //print_r($_REQUEST);
-if (strtotime($_REQUEST['drop_date']) <= time()){
-  if (isset($_REQUEST['tid'])){
-      //Get all activities to be recorded for dropped sticker
-      $activity_list = explode(',', $_REQUEST['act_ids']); 
-      //Create activity entry for all activities associated
-      foreach ($activity_list as $activity) {
-        play_library_program_create_activity_entry($activity , $_REQUEST['user_id'], strtotime($_REQUEST['drop_date']), $_REQUEST['tid']);
-          // play_library_program_update_activity_entry(184, strtotime('11-AUG-2017'));
-      }
+    //Check if request contains a sticker id
+    //print_r($_REQUEST);
+  //Get all activities to be recorded for dropped sticker
+  $activity_list = explode(',', $_REQUEST['act_ids']);
+  if (strtotime($_REQUEST['drop_date']) <= time()){
+    if (isset($_REQUEST['tid'])){ 
+        //Create activity entry for all activities associated
+        foreach ($activity_list as $activity) {
+          play_library_program_create_activity_entry($activity , $_REQUEST['user_id'], strtotime($_REQUEST['drop_date']), $_REQUEST['tid']);
+            // play_library_program_update_activity_entry(184, strtotime('11-AUG-2017'));
+        }
+    }
+    //if activity id is present in post update activity
+    if (isset($_REQUEST['entry_id'])){
+        //Get all activities to be recorded for dropped sticker
+        // $activity_list = explode(',', $_REQUEST['act_ids']);
+        //print_r($activity_list) ;
+        //Create activity entry for all activities associated
+        foreach ($activity_list as $activity) {
+          // //print_r($_REQUEST['entry_id'].strtotime($_REQUEST['drop_date']));
+          play_library_program_update_activity_entry($_REQUEST['entry_id'], strtotime($_REQUEST['drop_date']),$_REQUEST['user_id'], $activity);
+            // play_library_program_update_activity_entry(184, strtotime('11-AUG-2017'));
+        }
+    }
+  }
+  else{
+    drupal_set_message(t('Please drop sticker for todays date or past dates'),'warning');
+  }
+  $req_points = play_library_program_next_close_reward_points($activity_list);
+
+  if($req_points == 1) {
+     $next_rew = t('<strong>'.$req_points.'</strong> more day of reading needed to receive your next prize');
   }
 
-  if (isset($_REQUEST['entry_id'])){
-      //Get all activities to be recorded for dropped sticker
-      $activity_list = explode(',', $_REQUEST['act_ids']);
-      //print_r($activity_list) ;
-      //Create activity entry for all activities associated
-      foreach ($activity_list as $activity) {
-        // //print_r($_REQUEST['entry_id'].strtotime($_REQUEST['drop_date']));
-        play_library_program_update_activity_entry($_REQUEST['entry_id'], strtotime($_REQUEST['drop_date']),$_REQUEST['user_id'], $activity);
-          // play_library_program_update_activity_entry(184, strtotime('11-AUG-2017'));
-      }
+  else if ($req_points > 1){
+      $next_rew = t('<strong>'.$req_points.'</strong> more days of reading needed to receive your next prize');
+  } 
+  
+  else {
+    $next_rew =  t('<strong>Congratulations!<strong> You have completed Reading Program.'); 
   }
-}
-else{
-  drupal_set_message(t('Please drop sticker for todays date or past dates'),'warning');
-}
   //Print message que from drupal_set_message
-  echo (theme('status_messages')); 
+  echo json_encode(array('next_reward'=>$next_rew, 'drupal_message'=>(theme('status_messages')))); 
 }
 
 //Function to generate json data on calendar load
@@ -173,7 +186,7 @@ function calendar_data2() {
     $quer = db_select('eck_activity', 'eck_a');
     $quer->LEFTJOIN ('field_data_field_activity_entry_activity' , 'fdfae' , 'fdfae.entity_id = eck_a.id');
     // $quer->LEFTJOIN ('field_data_field_rw_claim_id' , 'fdrw' , 'fdrw.entity_id = eck_a.id');
-    //$que->JOIN ('field_data_field_activity_fired_hook', 'hook', 'hook.entity_id = fdfae.field_activity_entry_activity_target_id');
+    // $que->JOIN ('field_data_field_activity_fired_hook', 'hook', 'hook.entity_id = fdfae.field_activity_entry_activity_target_id');
     // $quer->LEFTJOIN('field_data_field_calendar_sticker_id', 'fds', 'fds.entity_id = eck_a.id');
     $quer->condition('eck_a.uid', $uid);
     $quer->condition('fdfae.field_activity_entry_activity_target_id', $activity_list, 'IN');
@@ -227,7 +240,7 @@ function calendar_data2() {
         }
         //Add day-read class for all non prize days
         else{
-         $class = 'day-read'; 
+          $class = 'day-read'; 
         }
         //create events array
         $events[] = array(
@@ -242,4 +255,10 @@ function calendar_data2() {
     unset($_REQUEST);
     //Encode json data for calendar
     echo json_encode($events);
+}
+
+
+
+function reward_loader(){
+  return('123');
 }

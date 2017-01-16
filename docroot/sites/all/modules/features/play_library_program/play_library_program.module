@@ -359,20 +359,24 @@ function pl_adding_taxonomy_term_for_reward($entity, $type){
 /**
  * List of reward ids associated with particular activity
  */
-function pl_get_activity_reward_ids($activity_id, $account_uid = NULL){
+function pl_get_activity_reward_ids($activity_ids, $account_uid = NULL){
 	//Get current user if account uid is not available
 	global $user;
 	if(empty($account_uid)){
-	$account = $user;
+		$account = $user;
 	} else {
-	$account = user_load($account_uid);
+		$account = user_load($account_uid);
 	}
 
+	//change activity_id to array if its not
+	if (!is_array($activity_ids)){
+		$activity_ids = array($activity_ids);
+	}
 	//Get reward ids based on activity
 	$query = new EntityFieldQuery();
 	$query->entityCondition('entity_type','reward');
 	$query->entityCondition('bundle','reward');
-	$query->fieldCondition('field_activities_reward', 'target_id', $activity_id);
+	$query->fieldCondition('field_activities_reward', 'target_id', $activity_ids, 'IN');
 	$result = $query->execute();
 
 	//get all reward ids in an array
@@ -717,60 +721,61 @@ function play_library_program_theme($existing, $type, $theme, $path) {
 **/
 
 function play_library_program_userpoints($op, &$params = array()) {
-  
-  if ($op == 'points after') {
-    //Call all reward calculations if reward category is not general
-    if ($params['tid'] !=0 and $params['points'] >= 1 ) {
-      $claimed_points = 0;
-      //Get user current points
-      $user_points = userpoints_get_current_points($params['uid'],$params['tid']);
-      //$user_pre_points = $user_points - $params['points'];
-      $term = taxonomy_term_load($params['tid']);
-      $user_points_category_name = $term->name;
-      $reward_id = explode('R_', $user_points_category_name);
-      $rewards = entity_load('reward', array($reward_id[1]));
-      $reward = reset($rewards);
-      //get language codes for reward
-      $lang = field_language('reward',$reward);
-      foreach ($lang as $key => $value) {
-      	${$key} = $value; 
-      }
-      $reward_category = $reward->field_category[$field_category][0]['value'];
-      $repeatable = $reward->field_repeatable[$field_repeatable][0]['value'];
-      //get repeat count if reward is set as repeatable
-      if($repeatable == 1 ){
-        $max_repeat = $reward->field_maximum_num_reward[$field_maximum_num_reward][0]['value'];
-      } else{
-        $max_repeat = 1;
-      }
-      $reward_points = $reward->field_points[$field_points][0]['value'];
-      $receieved_rewards = pl_receieved_rewards($params['uid'], $reward_id[1]);
-      $claimed_points = 0;
-      //Claim rewards till user has enough points to get reward
-      while($user_points >= $reward_points) {
-        if($receieved_rewards < $max_repeat || empty($max_repeat)){
-          pl_reward_claim($reward_id[1], $params['uid'], $reward_category);
-          $receieved_rewards = $receieved_rewards + 1;
-        }
-        $user_points =  $user_points - $reward_points;
-        $claimed_points = $claimed_points + $reward_points;
-        // drupal_set_message('User Points:'. $user_points.'|| Claimed points: '. $claimed_points.' || Received Rewards: '.$receieved_rewards. ' || Max repeat:'. $max_repeat);
-      }
-      $_SESSION[${$user_points_category_name}] = $reward_points - $user_points;
-
-      //deduct claimed points
-      if($claimed_points > 0){
-        $userpoint_rew = array(
-        'uid' => $params['uid'],
-        'points' => 0-$claimed_points,
-        'tid' => $params['tid'],
-        'display' => 0,
-        'description' => t('Deduction for reward claim for reward id '). $reward_id[1]
-        );
-        userpoints_userpointsapi($userpoint_rew);
-      }
-    }
-  }
+	//check if patron can get reward after getting points for activity
+	if ($op == 'points after') {
+		//Call all reward calculations if reward category is not general
+		if ($params['tid'] !=0 and $params['points'] >= 1 ) {
+			$claimed_points = 0;
+			//Get user current points
+			$user_points = userpoints_get_current_points($params['uid'],$params['tid']);
+			//$user_pre_points = $user_points - $params['points'];
+			$term = taxonomy_term_load($params['tid']);
+			$user_points_category_name = $term->name;
+			$reward_id = explode('R_', $user_points_category_name);
+			$rewards = entity_load('reward', array($reward_id[1]));
+			$reward = reset($rewards);
+			//get language codes for reward
+			$lang = field_language('reward',$reward);
+			foreach ($lang as $key => $value) {
+				${$key} = $value; 
+			}
+			$reward_category = $reward->field_category[$field_category][0]['value'];
+			$repeatable = $reward->field_repeatable[$field_repeatable][0]['value'];
+			//get repeat count if reward is set as repeatable
+			if($repeatable == 1 ){
+				$max_repeat = $reward->field_maximum_num_reward[$field_maximum_num_reward][0]['value'];
+			} else{
+				$max_repeat = 1;
+			}
+			$reward_points = $reward->field_points[$field_points][0]['value'];
+			$receieved_rewards = pl_receieved_rewards($params['uid'], $reward_id[1]);
+			$claimed_points = 0;
+			//Claim rewards till user has enough points to get reward
+			while($user_points >= $reward_points) {
+				if($receieved_rewards < $max_repeat || empty($max_repeat)){
+					pl_reward_claim($reward_id[1], $params['uid'], $reward_category);
+					$receieved_rewards = $receieved_rewards + 1;
+				}
+				$user_points =  $user_points - $reward_points;
+				$claimed_points = $claimed_points + $reward_points;
+				// drupal_set_message('User Points:'. $user_points.'|| Claimed points: '. $claimed_points.' || Received Rewards: '.$receieved_rewards. ' || Max repeat:'. $max_repeat);
+			}
+			if (($reward_points - $user_points) > 0){
+				$_SESSION[$user_points_category_name] = $reward_points - $user_points;
+			}
+			//deduct claimed points
+			if($claimed_points > 0){
+				$userpoint_rew = array(
+				'uid' => $params['uid'],
+				'points' => 0-$claimed_points,
+				'tid' => $params['tid'],
+				'display' => 0,
+				'description' => t('Deduction for reward claim for reward id '). $reward_id[1]
+			);
+				userpoints_userpointsapi($userpoint_rew);
+			}
+		}
+	}
 }
 
 
@@ -1476,6 +1481,8 @@ function chk_reward_expiry($criteria_start_date, $criteria_end_date) {
     }
 }
 
+
+//Function to validate user age group
 function chk_user_age_for_reward($user_age, $start_age, $end_age) {
 	//If only start age is set reward can be given to all users higher than this age
 	if (empty($start_age) && empty($end_age)){
@@ -1879,6 +1886,8 @@ function _play_library_program_add_points_to_rewards($activity_id, $points_to_ad
           			$reward_points_to_add = $max_points;
         		}
       		}
+      		//Add required points for next reward to session variable
+      		// $_SESSION($tax_reward) = $reward_points - $reward_points_to_add;
       		//Update user points for reward category
       		if($reward_points_to_add > 0 ){
 				$term = _get_term_from_name('R_'.$reward_id, 'userpoints');
@@ -1948,4 +1957,76 @@ function play_library_program_update_activity_entry($activity_entry_id, $update_
 	    $w_activity->save();
 	    drupal_set_message(t('Your activity date is updated to <b>'. date('d-M-Y',$update_time)).'</b>', 'status');
 	}
+}
+
+
+
+
+
+function play_library_program_next_close_reward_points($activity_ids, $uid = NULL) {
+	//Get cuurent logged in user if UID is NULL
+	if ($uid == NULL){
+		global $user;
+		$uid = $user->uid;
+	}
+
+	if(!is_array($activity_ids)){
+		$activity_ids = array($activity_ids);
+	}
+
+	// get reward points for all associated rewards
+	$que = db_select('eck_reward', 'eck_r');
+	$que->leftjoin('field_data_field_points', 'fdfp', 'eck_r.id = fdfp.entity_id');
+	$que->leftjoin('field_data_field_activities_reward', 'fdfar', 'eck_r.id = fdfar.entity_id');
+	$que->leftjoin('field_data_field_status_reward', 'fdfsr', 'eck_r.id = fdfsr.entity_id');
+	$que->leftjoin('field_data_field_repeatable', 'fdfr', 'eck_r.id = fdfr.entity_id');
+	$que->leftjoin('field_data_field_maximum_num_reward', 'fdfmnr', 'eck_r.id = fdfmnr.entity_id');
+	$que->condition('fdfar.field_activities_reward_target_id', $activity_ids, 'IN');
+	$que->condition('eck_r.uid', $uid);
+	$que->condition('fdfsr.field_status_reward_value', 'active');
+	$que->fields('eck_r', array('id'));
+	$que->fields('fdfp', array('field_points_value'));
+	$que->fields('fdfr', array('field_repeatable_value'));
+	$que->fields('fdfmnr', array('field_maximum_num_reward_value'));
+	$res = $que->execute()->fetchAll();
+	// $associated_rewards = pl_get_activity_reward_ids($activity_ids);
+	// print_r($res); die();
+	//Get reward points for all assosiated rewards
+
+
+	// //Validate conditions
+	foreach ($res as $key=>$value) {
+		//Get current points of user
+		$receieved_rewards = pl_receieved_rewards($uid, $value->id);
+		$rew_tid = _get_term_from_name('R_'.$value->id, 'userpoints');	
+		$user_points = userpoints_get_current_points($uid, $rew_tid);
+		$req_points = ($value->field_points_value) - $user_points;
+
+		if ($value->field_repeatable_value = 1){
+			if(!empty($value->field_maximum_num_reward_value)){
+				if ($receieved_rewards <= $value->field_maximum_num_reward_value){
+					if ($req_points > 0){
+						if($prev_point < $req_points){
+							$prev_point = $req_points;
+						}
+					}
+				}
+			}else{
+				if ($req_points > 0){
+					if($prev_point < $req_points){
+						$prev_point = $req_points;
+					}
+				}
+			}
+		} else{
+			if($receieved_rewards <= 0){
+				if ($req_points > 0){
+					if($prev_point < $req_points){
+						$prev_point = $req_points;
+					}
+				}	
+			}
+		}
+	}
+	return $req_points;
 }

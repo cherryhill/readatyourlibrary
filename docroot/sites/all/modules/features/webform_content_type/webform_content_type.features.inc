@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * content_type_sticker.features.inc
+ * webform_content_type.features.inc
  */
 
 /**
  * Implements hook_ctools_plugin_api().
  */
-function content_type_sticker_ctools_plugin_api($module = NULL, $api = NULL) {
+function webform_content_type_ctools_plugin_api($module = NULL, $api = NULL) {
   if ($module == "strongarm" && $api == "strongarm") {
     return array("version" => "1");
   }
@@ -16,12 +16,12 @@ function content_type_sticker_ctools_plugin_api($module = NULL, $api = NULL) {
 /**
  * Implements hook_node_info().
  */
-function content_type_sticker_node_info() {
+function webform_content_type_node_info() {
   $items = array(
-    'sticker' => array(
-      'name' => t('sticker'),
+    'webform' => array(
+      'name' => t('Webform'),
       'base' => 'node_content',
-      'description' => t('This is used for Sticker calendar.'),
+      'description' => t('Create a new form or questionnaire accessible to users. Submission results and statistics are recorded and accessible to privileged users.'),
       'has_title' => '1',
       'title_label' => t('Title'),
       'help' => '',
