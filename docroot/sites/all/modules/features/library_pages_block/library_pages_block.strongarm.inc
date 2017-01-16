@@ -87,7 +87,6 @@ function library_pages_block_strongarm() {
   $strongarm->name = 'node_options_library_pages';
   $strongarm->value = array(
     0 => 'status',
-    1 => 'promote',
   );
   $export['node_options_library_pages'] = $strongarm;
 
