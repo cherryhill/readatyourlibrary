@@ -1,6 +1,11 @@
 (function($) {
   Drupal.behaviors.play_progress_teen = {
     attach: function (context, settings) {
+
+    $('.printBtn').on('click', function (){
+      $(".progress-page-wrap").printThis({debug: true});
+    });
+
       /* initialize the external events
       -----------------------------------------------------------------*/
       $('#external-events .fc-event').each(function() {
@@ -33,6 +38,7 @@
         droppable: true, // this allows things to be dropped onto the calendar
         drop: function(date, allDay) {
           $('#message').remove();
+          $('#next-reward').remove();
           $('.reward-won').removeClass('reward-won');
           //Create event object for dropped sticker
           var eventObject = {
@@ -60,7 +66,21 @@
             data: 'act_ids='+act_ids+'&tid='+tid+'&drop_date='+moment(date).format('YYYY-MMM-DD')+'&start_date='+start+'&end_date='+end+'&user_id='+currentUser,
             //on Successs render drupal set messages
             success: function(res){
-              $('#sticker-wrap').after('<div id = "message"><div class="section clearfix">' + res + '</div></div>');
+              console.log(res);
+              jq_json_obj = $.parseJSON(res); //Convert the JSON object to jQuery-compatible
+              if(typeof jq_json_obj == 'object'){ //Test if variable is a [JSON] object
+                jq_obj = eval (jq_json_obj);
+                //Convert back to an array
+                jq_array = [];
+                for(elem in jq_obj){
+                  jq_array.push(jq_obj[elem]);
+                }
+                console.log(jq_array);
+              }else{
+                console.log("Error occurred!"); 
+              }
+              $('.reading-progress').after('<div id = "message"><div class="section clearfix">' + jq_array[1] + '</div></div>');
+              $('.reading-progress').append('<div id = "next-reward"><h3>' + jq_array[0] + '</h3></div>');
               $('#message .section').css('width' , '960px');
               $('#message .section').css('margin-left' , 'auto');
               $('#message .section').css('margin-right' , 'auto');               
@@ -87,6 +107,7 @@
         //For internal drag drop of sticker
         eventDrop: function( event, dayDelta, minuteDelta, allDay, revertFunc, jsEvent, ui, view ) {
           $('.reward-won').removeClass('reward-won');
+          $('#next-reward').remove();
           $('#message').remove();
           var eventObject = {
             title: jQuery.trim(jQuery(this).html()) // use the element's text as the event title
@@ -112,11 +133,25 @@
 
             //On success show drupal messages
             success: function(html){
+
+              jq_json_obj = $.parseJSON(html); //Convert the JSON object to jQuery-compatible
+              if(typeof jq_json_obj == 'object'){ //Test if variable is a [JSON] object
+                jq_obj = eval (jq_json_obj);
+                //Convert back to an array
+                jq_array = [];
+                for(elem in jq_obj){
+                  jq_array.push(jq_obj[elem]);
+                }
+                console.log(jq_array);
+              }else{
+                console.log("Error occurred!"); 
+              }
               //Show drupal set message above calendar
-              $('#sticker-wrap').after('<div id = "message"><div class="section clearfix">' + html + '</div></div>');
+              $('.reading-progress').after('<div id = "message"><div class="section clearfix">' + jq_array[1] + '</div></div>');
+              $('.reading-progress').append('<div id = "next-reward"><h3>' + jq_array[0] + '</h3></div>');
               $('#message .section').css('width' , '960px');
               $('#message .section').css('margin-left' , 'auto');
-              $('#message .section').css('margin-right' , 'auto');
+              $('#message .section').css('margin-right' , 'auto');               
               $('#calendar').fullCalendar('refetchEvents');
             },
             //On error show error alert
@@ -174,4 +209,14 @@
       });
     }
   }
+  //jQuery for rewards block
+  $("#reward-won-block").load("reward-loader?page=1");
+    $("#pagination li").live('click',function(e){
+    e.preventDefault();
+        $("#reward-won-block").html('loading...');
+        $("#pagination li").removeClass('active');
+        $(this).addClass('active');
+        var pageNum = this.id;
+        $("#reward-won-block").load("reward-loader?page=" + pageNum);
+    });
 })(jQuery);
