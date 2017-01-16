@@ -1379,6 +1379,14 @@ echo \'<div>\'.$reward_title.\'</div>\' . \'<div><span>Received </span>\'.$rewar
   $handler->display->display_options['relationships']['uid']['id'] = 'uid';
   $handler->display->display_options['relationships']['uid']['table'] = 'eck_reward';
   $handler->display->display_options['relationships']['uid']['field'] = 'uid';
+  /* Relationship: User: Profile */
+  $handler->display->display_options['relationships']['profile']['id'] = 'profile';
+  $handler->display->display_options['relationships']['profile']['table'] = 'users';
+  $handler->display->display_options['relationships']['profile']['field'] = 'profile';
+  $handler->display->display_options['relationships']['profile']['relationship'] = 'uid';
+  $handler->display->display_options['relationships']['profile']['bundle_types'] = array(
+    'main' => 'main',
+  );
   $handler->display->display_options['defaults']['fields'] = FALSE;
   /* Field: User: Name */
   $handler->display->display_options['fields']['name']['id'] = 'name';
@@ -1387,6 +1395,19 @@ echo \'<div>\'.$reward_title.\'</div>\' . \'<div><span>Received </span>\'.$rewar
   $handler->display->display_options['fields']['name']['relationship'] = 'uid';
   $handler->display->display_options['fields']['name']['label'] = '';
   $handler->display->display_options['fields']['name']['element_label_colon'] = FALSE;
+  /* Field: Profile: Avatar image */
+  $handler->display->display_options['fields']['field_user_avatar']['id'] = 'field_user_avatar';
+  $handler->display->display_options['fields']['field_user_avatar']['table'] = 'field_data_field_user_avatar';
+  $handler->display->display_options['fields']['field_user_avatar']['field'] = 'field_user_avatar';
+  $handler->display->display_options['fields']['field_user_avatar']['relationship'] = 'profile';
+  $handler->display->display_options['fields']['field_user_avatar']['label'] = '';
+  $handler->display->display_options['fields']['field_user_avatar']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_user_avatar']['type'] = 'entityreference_entity_view';
+  $handler->display->display_options['fields']['field_user_avatar']['settings'] = array(
+    'view_mode' => 'default',
+    'links' => 0,
+    'use_content_language' => 1,
+  );
   $handler->display->display_options['defaults']['arguments'] = FALSE;
   /* Contextual filter: User: Uid */
   $handler->display->display_options['arguments']['uid']['id'] = 'uid';
