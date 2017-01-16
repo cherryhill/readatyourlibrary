@@ -5,7 +5,7 @@
 			width: 100%;
 			padding: 0 !important;
 			.form-type-select {
-				width: 30%;
+				width: 15%;
 				margin-right: 3%;
 				.chosen-container {
 					width: 100%;
@@ -61,6 +61,7 @@
 		}
 	}
 	.form-type-password-confirm {
+		margin-top: 10px !important;
 		.form-type-password {
 			width: 100%;
 		}
@@ -91,6 +92,20 @@
 	}
 	label {
 		line-height: 1.3em;
+		margin-bottom: 5px;
+	}
+	input {
+		margin-bottom: 5px;
+	}
+	.field-type-addressfield {
+		input {
+		 margin-bottom: 12px;
+	 	}
+	}
+	.chosen-container {
+		margin-bottom: 5px;
+	}
+	.form-select {
 		margin-bottom: 5px;
 	}
 }
@@ -148,5 +163,10 @@
 	  	margin-right: 0;
 	  	float: none;
 	  }
+	  .field-type-addressfield {
+			input {
+			 margin-bottom: 5px;
+		 	}
+		}
 	}
 }
