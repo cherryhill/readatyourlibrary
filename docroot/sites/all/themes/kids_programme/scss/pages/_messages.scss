@@ -1,0 +1,46 @@
+.page-messages {
+  #page-title.title {
+    &+ .primary-tabs {
+      display: inline-block;
+      vertical-align: top;
+        &+ ul.action-links {
+          display: inline-block;
+          list-style: none;
+          vertical-align: top;
+          margin: 0;
+           li a {
+              padding: 6px 24px;
+              display: inline-block;
+              text-decoration: none;
+              box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+              text-transform: capitalize;
+              border-radius: 10px;
+              border: none;
+              line-height: 26px;
+              margin: 10px;
+           }
+        }
+    }
+  }
+}
+.page-messages.cs-default #page-title.title + .primary-tabs + ul.action-links li a {
+  font-family: $mclaren;
+  font-weight: normal;
+  font-size: 17px;
+  @extend .yellow;
+  color: $black;
+}
+.page-messages.cs-classic #page-title.title + .primary-tabs + ul.action-links li a {
+   font-family: $Architects;
+    font-weight: normal;
+    font-size: 19px;
+    @extend .light-orange;
+    color: $white;
+}
+.page-messages.cs-elegant #page-title.title + .primary-tabs + ul.action-links li a {
+  font-family: $margarine;
+    font-weight: normal;
+    font-size: 19px;
+    @extend .light-orange;
+    color: $white;
+}
