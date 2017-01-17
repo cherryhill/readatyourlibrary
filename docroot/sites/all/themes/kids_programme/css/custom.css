@@ -13371,10 +13371,12 @@ html {
 /* line 255, ../scss/pages/_progress.scss */
 .progress-page-wrap .fc-content-skeleton > table {
   margin: 0;
-  z-index: -1;
   position: relative;
-  top: 10px;
   background: transparent;
+}
+/* line 261, ../scss/pages/_progress.scss */
+.progress-page-wrap .fc-content-skeleton > table .fc-day-top {
+  padding-top: 10px;
 }
 /* line 263, ../scss/pages/_progress.scss */
 .cs-default .progress-page-wrap .fc-content-skeleton > table .fc-day-top {
@@ -13426,7 +13428,7 @@ html {
 }
 /* line 282, ../scss/pages/_progress.scss */
 .progress-page-wrap .fc-content-skeleton > table tbody {
-  /* display: none; */
+  border: none;
 }
 /* line 290, ../scss/pages/_progress.scss */
 .cs-default .progress-page-wrap .fc-day-grid .fc-row.fc-week:nth-of-type(1) {
@@ -13456,42 +13458,38 @@ html {
 th {
   border: none;
 }
-/* line 318, ../scss/pages/_progress.scss */
-.progress-page-wrap table .fc-body thead {
-  border: none !important;
-  background: #fff !important;
-}
-/* line 321, ../scss/pages/_progress.scss */
-.progress-page-wrap table .fc-body thead td {
-  border-left: 1px solid;
-}
-/* line 327, ../scss/pages/_progress.scss */
-.progress-page-wrap table .fc-body tbody td {
+/* line 319, ../scss/pages/_progress.scss */
+.progress-page-wrap table .fc-bg table > tbody > tr td {
   border-top: none;
 }
-/* line 329, ../scss/pages/_progress.scss */
-.cs-default .progress-page-wrap table .fc-body tbody td {
+/* line 321, ../scss/pages/_progress.scss */
+.cs-default .progress-page-wrap table .fc-bg table > tbody > tr td {
   border-left: 2px solid #f6511d;
   border-right: 2px solid #f6511d;
   border-bottom: 2px solid #f6511d;
 }
-/* line 334, ../scss/pages/_progress.scss */
-.cs-elegant .progress-page-wrap table .fc-body tbody td {
+/* line 326, ../scss/pages/_progress.scss */
+.cs-elegant .progress-page-wrap table .fc-bg table > tbody > tr td {
   border-left: 2px solid #2ec4b6;
   border-right: 2px solid #2ec4b6;
   border-bottom: 2px solid #2ec4b6;
 }
-/* line 339, ../scss/pages/_progress.scss */
-.cs-classic .progress-page-wrap table .fc-body tbody td {
+/* line 331, ../scss/pages/_progress.scss */
+.cs-classic .progress-page-wrap table .fc-bg table > tbody > tr td {
   border-left: 2px solid #00a6ed;
   border-right: 2px solid #00a6ed;
   border-bottom: 2px solid #00a6ed;
 }
-/* line 348, ../scss/pages/_progress.scss */
+/* line 340, ../scss/pages/_progress.scss */
+.progress-page-wrap table .fc-body thead {
+  border: none !important;
+  background: #fff !important;
+}
+/* line 353, ../scss/pages/_progress.scss */
 .progress-page-wrap table .fc-head td {
   border: none;
 }
-/* line 351, ../scss/pages/_progress.scss */
+/* line 356, ../scss/pages/_progress.scss */
 .progress-page-wrap table .fc-head th {
   font-size: 22px;
   color: #fff;
@@ -13524,25 +13522,25 @@ th {
   text-rendering: optimizeLegibility;
   -moz-font-smoothing: grayscale;
 }
-/* line 357, ../scss/pages/_progress.scss */
+/* line 362, ../scss/pages/_progress.scss */
 .progress-page-wrap table .fc-head .fc-row.fc-widget-header {
   margin-right: 0 !important;
   border: none;
 }
-/* line 362, ../scss/pages/_progress.scss */
+/* line 367, ../scss/pages/_progress.scss */
 .progress-page-wrap table .fc-scroller {
   overflow-y: hidden !important;
 }
-/* line 365, ../scss/pages/_progress.scss */
+/* line 370, ../scss/pages/_progress.scss */
 .progress-page-wrap table .fc-head thead {
   border: none;
   margin: 0;
 }
-/* line 368, ../scss/pages/_progress.scss */
+/* line 373, ../scss/pages/_progress.scss */
 .cs-default .progress-page-wrap table .fc-head thead, .cs-elegant .progress-page-wrap table .fc-head thead {
   background: #267fda;
 }
-/* line 371, ../scss/pages/_progress.scss */
+/* line 376, ../scss/pages/_progress.scss */
 .cs-classic .progress-page-wrap table .fc-head thead {
   background: #084899;
 }

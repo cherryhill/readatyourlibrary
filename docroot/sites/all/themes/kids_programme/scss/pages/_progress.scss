@@ -254,12 +254,12 @@
     }
     .fc-content-skeleton > table {
       margin: 0;
-      z-index: -1;
+
       position: relative;
-      top: 10px;
+
       background: transparent;
        .fc-day-top {
-
+         padding-top: 10px;
          .cs-default & {
            border-left: 2px solid $orange;
          border-right: 2px solid $orange;
@@ -280,7 +280,7 @@
           }
        }
       tbody {
-        /* display: none; */
+        border: none;
       }
     }
     .fc-day-grid {
@@ -314,16 +314,8 @@
        th {
         border: none;
        }
-       .fc-body {
-        thead {
-          border: none !important;
-          background: $white !important;
-           td {
-            border-left: 1px solid;
-           }
-
-        }
-        tbody {
+       .fc-bg {
+        table > tbody > tr {
           td {
             border-top: none;
              .cs-default & {
@@ -341,6 +333,19 @@
          border-right: 2px solid $sky-blue;
          border-bottom: 2px solid $sky-blue;
          }
+          }
+        }
+       }
+       .fc-body {
+        thead {
+          border: none !important;
+          background: $white !important;
+
+
+        }
+        > tbody {
+         > tr > td {
+
           }
         }
        }
