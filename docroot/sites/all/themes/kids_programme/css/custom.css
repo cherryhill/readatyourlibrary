@@ -12683,59 +12683,60 @@ html {
 }
 /* line 76, ../scss/pages/_progress.scss */
 .progress-page-wrap #wrap {
+  overflow: visible !important;
   -webkit-flex-wrap: wrap;
   flex-wrap: wrap;
   display: -webkit-flex;
   display: flex;
 }
-/* line 83, ../scss/pages/_progress.scss */
+/* line 84, ../scss/pages/_progress.scss */
 .progress-page-wrap #wrap > div.sticker-block {
   flex: 0 0 45%;
   padding-right: 20px;
 }
-/* line 87, ../scss/pages/_progress.scss */
+/* line 88, ../scss/pages/_progress.scss */
 .progress-page-wrap #wrap > div.sticker-block span.prog-name * {
   color: #000;
   margin: 0;
 }
-/* line 90, ../scss/pages/_progress.scss */
+/* line 91, ../scss/pages/_progress.scss */
 .cs-default .progress-page-wrap #wrap > div.sticker-block span.prog-name * {
   font-size: 22px;
 }
-/* line 93, ../scss/pages/_progress.scss */
+/* line 94, ../scss/pages/_progress.scss */
 .cs-classic .progress-page-wrap #wrap > div.sticker-block span.prog-name *, .cs-elegant .progress-page-wrap #wrap > div.sticker-block span.prog-name * {
   font-size: 25px;
 }
-/* line 99, ../scss/pages/_progress.scss */
+/* line 100, ../scss/pages/_progress.scss */
 .progress-page-wrap #wrap > div.sticker-block .prog-days * {
   color: #cc0d25;
   margin: 0;
 }
-/* line 102, ../scss/pages/_progress.scss */
+/* line 103, ../scss/pages/_progress.scss */
 .cs-default .progress-page-wrap #wrap > div.sticker-block .prog-days * {
   font-size: 26px;
 }
-/* line 105, ../scss/pages/_progress.scss */
+/* line 106, ../scss/pages/_progress.scss */
 .cs-classic .progress-page-wrap #wrap > div.sticker-block .prog-days *, .cs-elegant .progress-page-wrap #wrap > div.sticker-block .prog-days * {
   font-size: 28px;
 }
-/* line 112, ../scss/pages/_progress.scss */
+/* line 113, ../scss/pages/_progress.scss */
 .progress-page-wrap #wrap > div.sticker-block #external-events div {
-  background: #fdeb52;
+  background: transparent;
   border: none;
   display: inline-block;
   width: 16%;
 }
-/* line 117, ../scss/pages/_progress.scss */
+/* line 118, ../scss/pages/_progress.scss */
 .progress-page-wrap #wrap > div.sticker-block #external-events div img {
   width: 58px;
 }
-/* line 124, ../scss/pages/_progress.scss */
+/* line 125, ../scss/pages/_progress.scss */
 .progress-page-wrap #wrap > div.rewards {
   flex: 0 0 33%;
   padding-right: 20px;
 }
-/* line 127, ../scss/pages/_progress.scss */
+/* line 128, ../scss/pages/_progress.scss */
 .progress-page-wrap #wrap > div.rewards .view-Rewards-Progress {
   width: 100%;
   background: #fff;
@@ -12759,7 +12760,7 @@ html {
   font-family: "Margarine", cursive;
   font-weight: normal;
 }
-/* line 136, ../scss/pages/_progress.scss */
+/* line 137, ../scss/pages/_progress.scss */
 .progress-page-wrap #wrap > div.rewards .view-Rewards-Progress .view-header p {
   font-size: 20px;
   color: #267fda;
@@ -12779,20 +12780,20 @@ html {
   font-family: "Margarine", cursive;
   font-weight: normal;
 }
-/* line 140, ../scss/pages/_progress.scss */
+/* line 141, ../scss/pages/_progress.scss */
 .progress-page-wrap #wrap > div.rewards .view-Rewards-Progress .view-header p:nth-of-type(2) {
   font-size: 13px;
   color: #000;
   text-transform: uppercase;
 }
-/* line 147, ../scss/pages/_progress.scss */
+/* line 148, ../scss/pages/_progress.scss */
 .progress-page-wrap #wrap > div.rewards .view-Rewards-Progress .view-content {
   counter-reset: section;
   position: relative;
   padding-left: 110px;
   margin-top: -17px;
 }
-/* line 152, ../scss/pages/_progress.scss */
+/* line 153, ../scss/pages/_progress.scss */
 .progress-page-wrap #wrap > div.rewards .view-Rewards-Progress .view-content .views-row {
   font-size: 13px;
   position: relative;
@@ -12814,7 +12815,7 @@ html {
   font-family: "Margarine", cursive;
   font-weight: normal;
 }
-/* line 158, ../scss/pages/_progress.scss */
+/* line 159, ../scss/pages/_progress.scss */
 .progress-page-wrap #wrap > div.rewards .view-Rewards-Progress .view-content .views-row:before {
   counter-increment: section;
   content: counter(section) ". ";
@@ -12823,11 +12824,11 @@ html {
   left: -17px;
   top: 0;
 }
-/* line 166, ../scss/pages/_progress.scss */
+/* line 167, ../scss/pages/_progress.scss */
 .progress-page-wrap #wrap > div.rewards .view-Rewards-Progress .view-content .views-row .views-field-title {
   display: inline-block;
 }
-/* line 174, ../scss/pages/_progress.scss */
+/* line 175, ../scss/pages/_progress.scss */
 .progress-page-wrap #wrap > div.reading-progress {
   flex: 0 0 22%;
   border-radius: 15px;
@@ -12840,7 +12841,7 @@ html {
   align-items: center;
   color: #fff;
 }
-/* line 181, ../scss/pages/_progress.scss */
+/* line 182, ../scss/pages/_progress.scss */
 .progress-page-wrap #wrap > div.reading-progress * {
   font-size: inherit;
   color: inherit;
@@ -12860,61 +12861,61 @@ html {
   font-family: "Margarine", cursive;
   font-weight: normal;
 }
-/* line 191, ../scss/pages/_progress.scss */
+/* line 192, ../scss/pages/_progress.scss */
 .cs-default .progress-page-wrap #wrap > div.reading-progress {
   background: #f6511d;
 }
-/* line 194, ../scss/pages/_progress.scss */
+/* line 195, ../scss/pages/_progress.scss */
 .cs-classic .progress-page-wrap #wrap > div.reading-progress {
   background: #00a6ed;
 }
-/* line 197, ../scss/pages/_progress.scss */
+/* line 198, ../scss/pages/_progress.scss */
 .cs-elegant .progress-page-wrap #wrap > div.reading-progress {
   background: #2ec4b6;
 }
-/* line 205, ../scss/pages/_progress.scss */
+/* line 206, ../scss/pages/_progress.scss */
 .progress-page-wrap .calendar-wrapper .fc-center {
   width: 100%;
   max-width: 360px;
   margin: auto;
 }
-/* line 210, ../scss/pages/_progress.scss */
+/* line 211, ../scss/pages/_progress.scss */
 .progress-page-wrap .calendar-wrapper .fc-center h2 {
   color: #fff;
 }
-/* line 214, ../scss/pages/_progress.scss */
+/* line 215, ../scss/pages/_progress.scss */
 .progress-page-wrap .calendar-wrapper .fc-center * {
   display: inline-block;
   margin: 2px;
 }
-/* line 220, ../scss/pages/_progress.scss */
+/* line 221, ../scss/pages/_progress.scss */
 .progress-page-wrap table {
   background: #fff;
   border: none;
   position: relative;
 }
-/* line 224, ../scss/pages/_progress.scss */
+/* line 225, ../scss/pages/_progress.scss */
 .progress-page-wrap table th {
   border: none;
 }
-/* line 228, ../scss/pages/_progress.scss */
+/* line 229, ../scss/pages/_progress.scss */
 .progress-page-wrap table .fc-body thead {
   border: none !important;
   background: #fff !important;
 }
-/* line 231, ../scss/pages/_progress.scss */
+/* line 232, ../scss/pages/_progress.scss */
 .progress-page-wrap table .fc-body thead td {
   border-left: 1px solid;
 }
-/* line 237, ../scss/pages/_progress.scss */
+/* line 238, ../scss/pages/_progress.scss */
 .progress-page-wrap table .fc-body tbody td {
   border-top: none;
 }
-/* line 243, ../scss/pages/_progress.scss */
+/* line 244, ../scss/pages/_progress.scss */
 .progress-page-wrap table .fc-head td {
   border: none;
 }
-/* line 246, ../scss/pages/_progress.scss */
+/* line 247, ../scss/pages/_progress.scss */
 .progress-page-wrap table .fc-head th {
   font-size: 22px;
   color: #fff;
@@ -12934,25 +12935,25 @@ html {
   font-family: "Margarine", cursive;
   font-weight: normal;
 }
-/* line 251, ../scss/pages/_progress.scss */
+/* line 252, ../scss/pages/_progress.scss */
 .progress-page-wrap table .fc-head .fc-row.fc-widget-header {
   margin-right: 0 !important;
   border: none;
 }
-/* line 256, ../scss/pages/_progress.scss */
+/* line 257, ../scss/pages/_progress.scss */
 .progress-page-wrap table .fc-scroller {
   overflow-y: hidden !important;
 }
-/* line 259, ../scss/pages/_progress.scss */
+/* line 260, ../scss/pages/_progress.scss */
 .progress-page-wrap table .fc-head thead {
   border: none;
   margin: 0;
 }
-/* line 262, ../scss/pages/_progress.scss */
+/* line 263, ../scss/pages/_progress.scss */
 .cs-default .progress-page-wrap table .fc-head thead, .cs-elegant .progress-page-wrap table .fc-head thead {
   background: #267fda;
 }
-/* line 265, ../scss/pages/_progress.scss */
+/* line 266, ../scss/pages/_progress.scss */
 .cs-classic .progress-page-wrap table .fc-head thead {
   background: #084899;
 }

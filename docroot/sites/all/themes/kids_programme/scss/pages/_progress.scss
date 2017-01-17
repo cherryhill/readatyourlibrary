@@ -75,6 +75,7 @@
   }
     #wrap {
        @extend .yellow-commonblock;
+       overflow: visible !important;
       -webkit-flex-wrap: wrap;
       flex-wrap: wrap;
       display: -webkit-flex;
@@ -110,7 +111,7 @@
 
           #external-events {
             div {
-               background: $yellow;
+               background: transparent;
                border: none;
                display: inline-block;
                width: 16%;
