@@ -138,10 +138,18 @@
               .view-header {
                 p {
                    font-size: 20px;
+                   .cs-classic &, .cs-elegant & {
+                    font-size: 22px;
+                   }
                    color: $blue;
                    @include primary_fonts;
                     &:nth-of-type(2) {
-                      font-size: 13px;
+                      .cs-classic &, .cs-elegant & {
+                        font-size: 15px;
+                      }
+                      .cs-default & {
+                        font-size: 13px;
+                      }
                       color: $black;
                       text-transform: uppercase;
                     }
@@ -150,13 +158,32 @@
               .view-content {
                 counter-reset: section;
                 position: relative;
-                padding-left: 110px;
-                margin-top: -17px;
+                .cs-default &{
+                  padding-left: 110px;
+                margin-top: -20px;
+                }
+                .cs-classic & {
+                  padding-left: 122px;
+                  margin-top: -24px;
+                }
+                .cs-elegant & {
+                  padding-left: 110px;
+                  margin-top: -22px;
+                }
+
                  .views-row {
-                  font-size: 13px;
+                  .cs-default & {
+                    font-size: 13px;
+                     line-height: 17px;
+                  }
+                  .cs-elegant &, .cs-classic & {
+                    font-size: 15px;
+                     line-height: 19px;
+                  }
+
                   position: relative;
                   @include primary_fonts;
-                  line-height: 17px;
+
                   margin-bottom: 5px;
                    &:before {
                      counter-increment: section;
@@ -220,10 +247,70 @@
          }
       }
     }
+    .fc-month-view {
+        table {
+          margin: 0;
+        }
+    }
+    .fc-content-skeleton > table {
+      margin: 0;
+      z-index: -1;
+      position: relative;
+      top: 10px;
+      background: transparent;
+       .fc-day-top {
+
+         .cs-default & {
+           border-left: 2px solid $orange;
+         border-right: 2px solid $orange;
+         }
+         .cs-elegant & {
+           border-left: 2px solid $mint-green;
+         border-right: 2px solid $mint-green;
+         }
+         .cs-classic & {
+           border-left: 2px solid $sky-blue;
+         border-right: 2px solid $sky-blue;
+         }
+          span {
+            float: left !important;
+            font-size: 30px;
+            color: $blue;
+            @include primary_fonts;
+          }
+       }
+      tbody {
+        display: none;
+      }
+    }
+    .fc-day-grid {
+       .fc-row.fc-week {
+         &:nth-of-type(1) {
+
+           .cs-default & {
+           border-top: 2px solid $orange;
+
+         }
+         .cs-elegant & {
+           border-top: 2px solid $mint-green;
+
+         }
+         .cs-classic & {
+           border-top: 2px solid $sky-blue;
+
+         }
+         }
+       }
+    }
     table {
        background: $white;
        border: none;
        position: relative;
+       border-color: $orange;
+        * td{
+          border-color: inherit;
+        }
+        *
        th {
         border: none;
        }
@@ -239,6 +326,21 @@
         tbody {
           td {
             border-top: none;
+             .cs-default & {
+           border-left: 2px solid $orange;
+         border-right: 2px solid $orange;
+         border-bottom: 2px solid $orange;
+         }
+         .cs-elegant & {
+           border-left: 2px solid $mint-green;
+         border-right: 2px solid $mint-green;
+         border-bottom: 2px solid $mint-green;
+         }
+         .cs-classic & {
+           border-left: 2px solid $sky-blue;
+         border-right: 2px solid $sky-blue;
+         border-bottom: 2px solid $sky-blue;
+         }
           }
         }
        }
@@ -250,6 +352,7 @@
            font-size: 22px;
            @include primary_fonts;
            color: $white;
+           padding-bottom: 10px;
         }
         .fc-row.fc-widget-header {
           margin-right: 0 !important;
