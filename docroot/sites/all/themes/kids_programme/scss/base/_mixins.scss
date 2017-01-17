@@ -20,16 +20,28 @@
   .cs-default & {
     font-family: $mclaren;
     font-weight: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    -moz-font-smoothing: grayscale;
   }
 
   .cs-classic & {
     font-family: $Architects;
     font-weight: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    -moz-font-smoothing: grayscale;
   }
 
   .cs-elegant & {
     font-family: $margarine;
     font-weight: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    -moz-font-smoothing: grayscale;
   }
 }
 
@@ -37,16 +49,28 @@
   .cs-default & {
     font-family: $arial;
     font-weight: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    -moz-font-smoothing: grayscale;
   }
 
   .cs-classic & {
     font-family: $ptsans;
     font-weight: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    -moz-font-smoothing: grayscale;
   }
 
   .cs-elegant & {
     font-family: $open-sans;
     font-weight: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    -moz-font-smoothing: grayscale;
   }
 }
 
@@ -54,34 +78,48 @@
   .cs-default & {
     font-family: $arial;
     font-weight: 700;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    -moz-font-smoothing: grayscale;
   }
 
   .cs-classic & {
     font-family: $ptsans;
     font-weight: 700;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    -moz-font-smoothing: grayscale;
   }
 
   .cs-elegant & {
     font-family: $open-sans;
     font-weight: 700;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    -moz-font-smoothing: grayscale;
   }
 }
 
 @mixin menu($border: null) {
   color: $white;
-   @if $border == "m" {
-    .cs-default &  {
+
+  @if $border == "m" {
+    .cs-default & {
       &:hover, &.active, &:focus {
         border-bottom: 1px solid $orange;
       }
     }
+
     .cs-elegant & {
       &:hover, &.active, &:focus {
         border-bottom: 1px solid $darkblue;
       }
     }
+  }
 
-    }
   .cs-default & {
     background: $orange;
 
@@ -121,44 +159,57 @@
 
 .font-stroke-main {
   @include primary_fonts;
+
   height: 85px;
   width: 100%;
   background: url("../images/stroke");
   padding-top: 14px;
   border-radius: 15px 15px 0 0;
   padding-left: 35px;
+
   @extend h1;
+
   @extend .white-text;
-   .cs-default & {
-     background-position: -95px -226px;
-   }
-   .cs-classic & {
-     background-position: -95px -569px;
-   }
-   .cs-elegant & {
-     background-position: -95px -914px;
-   }
+
+  .cs-default & {
+    background-position: -95px -226px;
+  }
+
+  .cs-classic & {
+    background-position: -95px -569px;
+  }
+
+  .cs-elegant & {
+    background-position: -95px -914px;
+  }
 }
+
 .font-stroke-sidebar {
-    @include primary_fonts;
+  @include primary_fonts;
+
   height: 85px;
   width: 100%;
   background: url("../images/stroke");
   padding-top: 14px;
   border-radius: 15px 15px 0 0;
   padding-left: 30px;
+
   @extend .white-text;
-   .cs-default & {
-     background-position: -60px -239px;
-     font-size: 22px;
-   }
-   .cs-classic & {
-     background-position: -60px -583px;
-     font-size: 25px;
-   }
-   .cs-elegant & {
-     background-position: -60px -928px;
-     font-size: 25px;
-   }
+
+  .cs-default & {
+    background-position: -60px -239px;
+    font-size: 22px;
+  }
+
+  .cs-classic & {
+    background-position: -60px -583px;
+    font-size: 25px;
+  }
+
+  .cs-elegant & {
+    background-position: -60px -928px;
+    font-size: 25px;
+  }
 }
+
 //all support mixin
