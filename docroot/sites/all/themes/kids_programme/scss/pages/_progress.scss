@@ -54,13 +54,16 @@
   .print-pdf {
     width: 100%;
     display: inline-block;
-    height: 26px;
-    top: -90px;
-    position: relative;
+    position: absolute;
+    top: 0;
+    right: 0;
      button {
       float: right;
       position: relative;
       padding-left: 58px !important;
+      margin: 0;
+      right: 35px;
+      top: 20px;
        &:after {
          content: "";
          height: 30px;
@@ -73,6 +76,12 @@
        }
      }
   }
+  td.reward-won.fc-day-top {
+    background: $yellow;
+  }
+  td.fc-event-container .fc-event .fc-content.reward-content {
+    background: $yellow;
+  }
   .fc-event {
     color: $black;
     background: transparent;
@@ -84,6 +93,7 @@
      }
   }
     #wrap {
+       margin-top: 20px;
        @extend .yellow-commonblock;
        overflow: visible !important;
       -webkit-flex-wrap: wrap;
@@ -135,6 +145,50 @@
          &.rewards {
           flex: 0 0 33%;
           padding-right: 20px;
+           .pager {
+              a {
+                color: $blue;
+                @include primary_fonts;
+                @include primary_fsize;
+                position: relative;
+                 &:after {
+                   content: "";
+                   width: 20px;
+                   height: 20px;
+                   display: inline-block;
+                   position: absolute;
+                   background: url(../images/dashboard);
+                   background-size: 40px;
+                 }
+              }
+              .pager-current {
+                 display: none;
+              }
+              .pager-previous {
+                float: left;
+                 a {
+                   padding-left: 18px;
+                    &:after {
+                      left: 0;
+                      top: 5px;
+                      background-position: -12px -376px;
+                    }
+
+
+                 }
+              }
+              .pager-next {
+                float: right;
+                 a {
+                padding-right: 18px;
+                 &:after {
+                  background-position: -4px -684px;
+                  top: 5px;
+                  right: 0;
+                 }
+               }
+              }
+           }
            .view-Rewards-Progress {
              width: 100%;
              display: inline-block;
@@ -166,7 +220,20 @@
                 }
               }
               .view-content {
-                counter-reset: section;
+                .reward-list {
+                  -webkit-flex-wrap: wrap;
+                    flex-wrap: wrap;
+          display: -webkit-flex;
+          display: flex;
+                      > div {
+                    &:nth-of-type(1) {
+                      flex: 0 0 20px;
+                    }
+                    &:nth-of-type(2) {
+                      flex: 0 0 calc(100% - 20px);
+                    }
+                  }
+                }
                 position: relative;
                 .cs-default &{
                   padding-left: 110px;
@@ -195,14 +262,7 @@
                   @include primary_fonts;
 
                   margin-bottom: 5px;
-                   &:before {
-                     counter-increment: section;
-                     content: counter(section) ". ";
-                     display: inline-block;
-                     position: absolute;
-                     left: -17px;
-                     top: 0;
-                   }
+
                    .views-field-title {
                      display: inline-block;
 

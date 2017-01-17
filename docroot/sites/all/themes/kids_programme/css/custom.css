@@ -7923,6 +7923,11 @@ a:focus, button:focus {
   outline: none;
 }
 
+/* line 148, ../scss/base/_elements.scss */
+.view-footer button, .view-footer .button {
+  margin-left: 0;
+}
+
 /* Grid HTML Classes */
 /* line 127, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_grid-5.scss */
 .row {
@@ -9268,7 +9273,7 @@ html {
 }
 /* line 14, ../scss/components/_blocks.scss */
 .homepage-reward-block .view-footer {
-  padding-left: 20px;
+  padding-left: 30px;
 }
 /* line 18, ../scss/components/_blocks.scss */
 .homepage-reward-block .view-content {
@@ -9305,7 +9310,7 @@ html {
 }
 /* line 59, ../scss/components/_blocks.scss */
 .homepage-vedio-block .view-footer {
-  padding-left: 25px;
+  padding-left: 35px;
 }
 /* line 63, ../scss/components/_blocks.scss */
 .homepage-vedio-block .view-content {
@@ -9400,7 +9405,7 @@ html {
 }
 /* line 158, ../scss/components/_blocks.scss */
 .homepage-booklist-slider .slide .view-footer {
-  padding-left: 25px;
+  padding-left: 35px;
 }
 /* line 161, ../scss/components/_blocks.scss */
 .homepage-booklist-slider .slide .view-footer p {
@@ -9490,7 +9495,7 @@ html {
 
 /* line 220, ../scss/components/_blocks.scss */
 .about-us .view-footer {
-  padding-left: 25px;
+  padding-left: 35px;
 }
 
 /* line 233, ../scss/components/_blocks.scss */
@@ -9499,7 +9504,11 @@ html {
   padding-left: 30px;
   padding-right: 30px;
 }
-/* line 238, ../scss/components/_blocks.scss */
+/* line 237, ../scss/components/_blocks.scss */
+.block-user-login form button {
+  margin-left: 0;
+}
+/* line 240, ../scss/components/_blocks.scss */
 .block-user-login form label {
   color: #fff;
 }
@@ -9530,7 +9539,7 @@ html {
   text-rendering: optimizeLegibility;
   -moz-font-smoothing: grayscale;
 }
-/* line 246, ../scss/components/_blocks.scss */
+/* line 248, ../scss/components/_blocks.scss */
 .block-user-login form .item-list ul li {
   margin: 0;
   list-style: none;
@@ -9541,19 +9550,19 @@ html {
   text-align: center;
   font-family: Verdana, sans-serif;
 }
-/* line 256, ../scss/components/_blocks.scss */
+/* line 258, ../scss/components/_blocks.scss */
 .block-user-login form .item-list ul li.first {
   transform: rotateX(40deg);
   animation: one 2s infinite;
   animation-direction: alternate;
 }
-/* line 262, ../scss/components/_blocks.scss */
+/* line 264, ../scss/components/_blocks.scss */
 .block-user-login form .item-list ul li.last {
   transform: rotateX(40deg);
   animation: two 2s infinite;
   animation-direction: alternate;
 }
-/* line 268, ../scss/components/_blocks.scss */
+/* line 270, ../scss/components/_blocks.scss */
 .block-user-login form .item-list ul li a {
   color: #fff;
 }
@@ -9609,15 +9618,15 @@ html {
     transform: rotateY(70deg);
   }
 }
-/* line 302, ../scss/components/_blocks.scss */
+/* line 304, ../scss/components/_blocks.scss */
 .block-play-library-custom-pm-block {
   margin-bottom: 30px;
 }
-/* line 306, ../scss/components/_blocks.scss */
+/* line 308, ../scss/components/_blocks.scss */
 .block-play-library-custom-pm-block .block-title {
   margin: 0;
 }
-/* line 310, ../scss/components/_blocks.scss */
+/* line 312, ../scss/components/_blocks.scss */
 .block-play-library-custom-pm-block .pm-custom {
   padding-top: 17px;
   padding-bottom: 12px;
@@ -9628,15 +9637,15 @@ html {
   align-content: center;
   align-items: center;
 }
-/* line 321, ../scss/components/_blocks.scss */
+/* line 323, ../scss/components/_blocks.scss */
 .block-play-library-custom-pm-block .pm-custom > div:nth-of-type(1) {
   flex: 0 0 78%;
 }
-/* line 325, ../scss/components/_blocks.scss */
+/* line 327, ../scss/components/_blocks.scss */
 .block-play-library-custom-pm-block .pm-custom > div:nth-of-type(2) {
   flex: 0 0 22%;
 }
-/* line 330, ../scss/components/_blocks.scss */
+/* line 332, ../scss/components/_blocks.scss */
 .block-play-library-custom-pm-block .pm-custom .pm {
   -webkit-flex-wrap: wrap;
   flex-wrap: wrap;
@@ -9653,7 +9662,7 @@ html {
 .cs-classic .block-play-library-custom-pm-block .pm-custom .pm, .cs-elegant .block-play-library-custom-pm-block .pm-custom .pm {
   font-size: 19px;
 }
-/* line 340, ../scss/components/_blocks.scss */
+/* line 342, ../scss/components/_blocks.scss */
 .block-play-library-custom-pm-block .pm-custom .pm .pm-subject {
   flex: 0 0 60%;
   padding-right: 10px;
@@ -9661,53 +9670,53 @@ html {
   overflow: hidden;
   text-overflow: ellipsis;
 }
-/* line 348, ../scss/components/_blocks.scss */
+/* line 350, ../scss/components/_blocks.scss */
 .block-play-library-custom-pm-block .pm-custom .pm .pm-subject a {
   font-weight: 700;
   color: #000;
 }
-/* line 353, ../scss/components/_blocks.scss */
+/* line 355, ../scss/components/_blocks.scss */
 .block-play-library-custom-pm-block .pm-custom .pm .pm-subject .pm-new {
   color: #cc0d25;
   display: inline-block;
   padding-right: 5px;
   font-weight: 700;
 }
-/* line 359, ../scss/components/_blocks.scss */
+/* line 361, ../scss/components/_blocks.scss */
 .block-play-library-custom-pm-block .pm-custom .pm .pm-subject .pm-new + * {
   color: #cc0d25;
 }
-/* line 365, ../scss/components/_blocks.scss */
+/* line 367, ../scss/components/_blocks.scss */
 .block-play-library-custom-pm-block .pm-custom .pm .pm-admin {
   padding-right: 10px;
 }
-/* line 369, ../scss/components/_blocks.scss */
+/* line 371, ../scss/components/_blocks.scss */
 .block-play-library-custom-pm-block .pm-custom .pm .pm-admin, .block-play-library-custom-pm-block .pm-custom .pm .pm-date {
   flex: 0 0 20%;
 }
 
-/* line 381, ../scss/components/_blocks.scss */
+/* line 383, ../scss/components/_blocks.scss */
 .flicker-block .owl-controls {
   top: 25% !important;
 }
-/* line 384, ../scss/components/_blocks.scss */
+/* line 386, ../scss/components/_blocks.scss */
 .flicker-block .view-footer {
   padding-left: 35px;
 }
-/* line 387, ../scss/components/_blocks.scss */
+/* line 389, ../scss/components/_blocks.scss */
 .flicker-block .view-content {
   padding: 20px 60px;
 }
-/* line 390, ../scss/components/_blocks.scss */
+/* line 392, ../scss/components/_blocks.scss */
 .flicker-block .flicker-image-wrapper {
   width: calc(100% - 6px);
   margin: auto;
 }
-/* line 393, ../scss/components/_blocks.scss */
+/* line 395, ../scss/components/_blocks.scss */
 .flicker-block .flicker-image-wrapper .flickr-citation {
   display: none;
 }
-/* line 395, ../scss/components/_blocks.scss */
+/* line 397, ../scss/components/_blocks.scss */
 .flicker-block .flicker-image-wrapper .flickr-photoset-img img {
   border: none;
   box-shadow: none;
@@ -13054,17 +13063,20 @@ html {
 .progress-page-wrap .print-pdf {
   width: 100%;
   display: inline-block;
-  height: 26px;
-  top: -90px;
-  position: relative;
+  position: absolute;
+  top: 0;
+  right: 0;
 }
 /* line 60, ../scss/pages/_progress.scss */
 .progress-page-wrap .print-pdf button {
   float: right;
   position: relative;
   padding-left: 58px !important;
+  margin: 0;
+  right: 35px;
+  top: 20px;
 }
-/* line 64, ../scss/pages/_progress.scss */
+/* line 67, ../scss/pages/_progress.scss */
 .progress-page-wrap .print-pdf button:after {
   content: "";
   height: 30px;
@@ -13075,7 +13087,15 @@ html {
   left: 25px;
   top: 3px;
 }
-/* line 76, ../scss/pages/_progress.scss */
+/* line 79, ../scss/pages/_progress.scss */
+.progress-page-wrap td.reward-won.fc-day-top {
+  background: #fdeb52;
+}
+/* line 82, ../scss/pages/_progress.scss */
+.progress-page-wrap td.fc-event-container .fc-event .fc-content.reward-content {
+  background: #fdeb52;
+}
+/* line 85, ../scss/pages/_progress.scss */
 .progress-page-wrap .fc-event {
   color: #000;
   background: transparent;
@@ -13083,66 +13103,149 @@ html {
   margin-bottom: 10px;
   text-align: center;
 }
-/* line 82, ../scss/pages/_progress.scss */
+/* line 91, ../scss/pages/_progress.scss */
 .progress-page-wrap .fc-event img {
   width: 58px;
 }
-/* line 86, ../scss/pages/_progress.scss */
+/* line 95, ../scss/pages/_progress.scss */
 .progress-page-wrap #wrap {
+  margin-top: 20px;
   overflow: visible !important;
   -webkit-flex-wrap: wrap;
   flex-wrap: wrap;
   display: -webkit-flex;
   display: flex;
 }
-/* line 94, ../scss/pages/_progress.scss */
+/* line 104, ../scss/pages/_progress.scss */
 .progress-page-wrap #wrap > div.sticker-block {
   flex: 0 0 45%;
   padding-right: 20px;
 }
-/* line 98, ../scss/pages/_progress.scss */
+/* line 108, ../scss/pages/_progress.scss */
 .progress-page-wrap #wrap > div.sticker-block span.prog-name * {
   color: #000;
   margin: 0;
 }
-/* line 101, ../scss/pages/_progress.scss */
+/* line 111, ../scss/pages/_progress.scss */
 .cs-default .progress-page-wrap #wrap > div.sticker-block span.prog-name * {
   font-size: 22px;
 }
-/* line 104, ../scss/pages/_progress.scss */
+/* line 114, ../scss/pages/_progress.scss */
 .cs-classic .progress-page-wrap #wrap > div.sticker-block span.prog-name *, .cs-elegant .progress-page-wrap #wrap > div.sticker-block span.prog-name * {
   font-size: 25px;
 }
-/* line 110, ../scss/pages/_progress.scss */
+/* line 120, ../scss/pages/_progress.scss */
 .progress-page-wrap #wrap > div.sticker-block .prog-days * {
   color: #cc0d25;
   margin: 0;
 }
-/* line 113, ../scss/pages/_progress.scss */
+/* line 123, ../scss/pages/_progress.scss */
 .cs-default .progress-page-wrap #wrap > div.sticker-block .prog-days * {
   font-size: 26px;
 }
-/* line 116, ../scss/pages/_progress.scss */
+/* line 126, ../scss/pages/_progress.scss */
 .cs-classic .progress-page-wrap #wrap > div.sticker-block .prog-days *, .cs-elegant .progress-page-wrap #wrap > div.sticker-block .prog-days * {
   font-size: 28px;
 }
-/* line 123, ../scss/pages/_progress.scss */
+/* line 133, ../scss/pages/_progress.scss */
 .progress-page-wrap #wrap > div.sticker-block #external-events div {
   background: transparent;
   border: none;
   display: inline-block;
   width: 16%;
 }
-/* line 128, ../scss/pages/_progress.scss */
+/* line 138, ../scss/pages/_progress.scss */
 .progress-page-wrap #wrap > div.sticker-block #external-events div img {
   width: 58px;
 }
-/* line 135, ../scss/pages/_progress.scss */
+/* line 145, ../scss/pages/_progress.scss */
 .progress-page-wrap #wrap > div.rewards {
   flex: 0 0 33%;
   padding-right: 20px;
 }
-/* line 138, ../scss/pages/_progress.scss */
+/* line 149, ../scss/pages/_progress.scss */
+.progress-page-wrap #wrap > div.rewards .pager a {
+  color: #267fda;
+  position: relative;
+}
+/* line 20, ../scss/base/_mixins.scss */
+.cs-default .progress-page-wrap #wrap > div.rewards .pager a {
+  font-family: "McLaren", cursive;
+  font-weight: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  -moz-font-smoothing: grayscale;
+}
+/* line 29, ../scss/base/_mixins.scss */
+.cs-classic .progress-page-wrap #wrap > div.rewards .pager a {
+  font-family: "Architects Daughter", cursive;
+  font-weight: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  -moz-font-smoothing: grayscale;
+}
+/* line 38, ../scss/base/_mixins.scss */
+.cs-elegant .progress-page-wrap #wrap > div.rewards .pager a {
+  font-family: "Margarine", cursive;
+  font-weight: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  -moz-font-smoothing: grayscale;
+}
+/* line 151, ../scss/base/_mixins.scss */
+.cs-default .progress-page-wrap #wrap > div.rewards .pager a {
+  font-size: 17px;
+}
+/* line 155, ../scss/base/_mixins.scss */
+.cs-classic .progress-page-wrap #wrap > div.rewards .pager a, .cs-elegant .progress-page-wrap #wrap > div.rewards .pager a {
+  font-size: 19px;
+}
+/* line 154, ../scss/pages/_progress.scss */
+.progress-page-wrap #wrap > div.rewards .pager a:after {
+  content: "";
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  position: absolute;
+  background: url(../images/dashboard);
+  background-size: 40px;
+}
+/* line 164, ../scss/pages/_progress.scss */
+.progress-page-wrap #wrap > div.rewards .pager .pager-current {
+  display: none;
+}
+/* line 167, ../scss/pages/_progress.scss */
+.progress-page-wrap #wrap > div.rewards .pager .pager-previous {
+  float: left;
+}
+/* line 169, ../scss/pages/_progress.scss */
+.progress-page-wrap #wrap > div.rewards .pager .pager-previous a {
+  padding-left: 18px;
+}
+/* line 171, ../scss/pages/_progress.scss */
+.progress-page-wrap #wrap > div.rewards .pager .pager-previous a:after {
+  left: 0;
+  top: 5px;
+  background-position: -12px -376px;
+}
+/* line 180, ../scss/pages/_progress.scss */
+.progress-page-wrap #wrap > div.rewards .pager .pager-next {
+  float: right;
+}
+/* line 182, ../scss/pages/_progress.scss */
+.progress-page-wrap #wrap > div.rewards .pager .pager-next a {
+  padding-right: 18px;
+}
+/* line 184, ../scss/pages/_progress.scss */
+.progress-page-wrap #wrap > div.rewards .pager .pager-next a:after {
+  background-position: -4px -684px;
+  top: 5px;
+  right: 0;
+}
+/* line 192, ../scss/pages/_progress.scss */
 .progress-page-wrap #wrap > div.rewards .view-Rewards-Progress {
   width: 100%;
   display: inline-block;
@@ -13180,12 +13283,12 @@ html {
   text-rendering: optimizeLegibility;
   -moz-font-smoothing: grayscale;
 }
-/* line 149, ../scss/pages/_progress.scss */
+/* line 203, ../scss/pages/_progress.scss */
 .progress-page-wrap #wrap > div.rewards .view-Rewards-Progress .view-header p {
   font-size: 20px;
   color: #267fda;
 }
-/* line 151, ../scss/pages/_progress.scss */
+/* line 205, ../scss/pages/_progress.scss */
 .cs-classic .progress-page-wrap #wrap > div.rewards .view-Rewards-Progress .view-header p, .cs-elegant .progress-page-wrap #wrap > div.rewards .view-Rewards-Progress .view-header p {
   font-size: 22px;
 }
@@ -13216,50 +13319,64 @@ html {
   text-rendering: optimizeLegibility;
   -moz-font-smoothing: grayscale;
 }
-/* line 156, ../scss/pages/_progress.scss */
+/* line 210, ../scss/pages/_progress.scss */
 .progress-page-wrap #wrap > div.rewards .view-Rewards-Progress .view-header p:nth-of-type(2) {
   color: #000;
   text-transform: uppercase;
 }
-/* line 157, ../scss/pages/_progress.scss */
+/* line 211, ../scss/pages/_progress.scss */
 .cs-classic .progress-page-wrap #wrap > div.rewards .view-Rewards-Progress .view-header p:nth-of-type(2), .cs-elegant .progress-page-wrap #wrap > div.rewards .view-Rewards-Progress .view-header p:nth-of-type(2) {
   font-size: 15px;
 }
-/* line 160, ../scss/pages/_progress.scss */
+/* line 214, ../scss/pages/_progress.scss */
 .cs-default .progress-page-wrap #wrap > div.rewards .view-Rewards-Progress .view-header p:nth-of-type(2) {
   font-size: 13px;
 }
-/* line 168, ../scss/pages/_progress.scss */
+/* line 222, ../scss/pages/_progress.scss */
 .progress-page-wrap #wrap > div.rewards .view-Rewards-Progress .view-content {
-  counter-reset: section;
   position: relative;
 }
-/* line 171, ../scss/pages/_progress.scss */
+/* line 223, ../scss/pages/_progress.scss */
+.progress-page-wrap #wrap > div.rewards .view-Rewards-Progress .view-content .reward-list {
+  -webkit-flex-wrap: wrap;
+  flex-wrap: wrap;
+  display: -webkit-flex;
+  display: flex;
+}
+/* line 229, ../scss/pages/_progress.scss */
+.progress-page-wrap #wrap > div.rewards .view-Rewards-Progress .view-content .reward-list > div:nth-of-type(1) {
+  flex: 0 0 20px;
+}
+/* line 232, ../scss/pages/_progress.scss */
+.progress-page-wrap #wrap > div.rewards .view-Rewards-Progress .view-content .reward-list > div:nth-of-type(2) {
+  flex: 0 0 calc(100% - 20px);
+}
+/* line 238, ../scss/pages/_progress.scss */
 .cs-default .progress-page-wrap #wrap > div.rewards .view-Rewards-Progress .view-content {
   padding-left: 110px;
   margin-top: -20px;
 }
-/* line 175, ../scss/pages/_progress.scss */
+/* line 242, ../scss/pages/_progress.scss */
 .cs-classic .progress-page-wrap #wrap > div.rewards .view-Rewards-Progress .view-content {
   padding-left: 122px;
   margin-top: -24px;
 }
-/* line 179, ../scss/pages/_progress.scss */
+/* line 246, ../scss/pages/_progress.scss */
 .cs-elegant .progress-page-wrap #wrap > div.rewards .view-Rewards-Progress .view-content {
   padding-left: 110px;
   margin-top: -22px;
 }
-/* line 184, ../scss/pages/_progress.scss */
+/* line 251, ../scss/pages/_progress.scss */
 .progress-page-wrap #wrap > div.rewards .view-Rewards-Progress .view-content .views-row {
   position: relative;
   margin-bottom: 5px;
 }
-/* line 185, ../scss/pages/_progress.scss */
+/* line 252, ../scss/pages/_progress.scss */
 .cs-default .progress-page-wrap #wrap > div.rewards .view-Rewards-Progress .view-content .views-row {
   font-size: 13px;
   line-height: 17px;
 }
-/* line 189, ../scss/pages/_progress.scss */
+/* line 256, ../scss/pages/_progress.scss */
 .cs-elegant .progress-page-wrap #wrap > div.rewards .view-Rewards-Progress .view-content .views-row, .cs-classic .progress-page-wrap #wrap > div.rewards .view-Rewards-Progress .view-content .views-row {
   font-size: 15px;
   line-height: 19px;
@@ -13291,20 +13408,11 @@ html {
   text-rendering: optimizeLegibility;
   -moz-font-smoothing: grayscale;
 }
-/* line 198, ../scss/pages/_progress.scss */
-.progress-page-wrap #wrap > div.rewards .view-Rewards-Progress .view-content .views-row:before {
-  counter-increment: section;
-  content: counter(section) ". ";
-  display: inline-block;
-  position: absolute;
-  left: -17px;
-  top: 0;
-}
-/* line 206, ../scss/pages/_progress.scss */
+/* line 266, ../scss/pages/_progress.scss */
 .progress-page-wrap #wrap > div.rewards .view-Rewards-Progress .view-content .views-row .views-field-title {
   display: inline-block;
 }
-/* line 214, ../scss/pages/_progress.scss */
+/* line 274, ../scss/pages/_progress.scss */
 .progress-page-wrap #wrap > div.reading-progress {
   flex: 0 0 22%;
   border-radius: 15px;
@@ -13317,7 +13425,7 @@ html {
   align-items: center;
   color: #fff;
 }
-/* line 221, ../scss/pages/_progress.scss */
+/* line 281, ../scss/pages/_progress.scss */
 .progress-page-wrap #wrap > div.reading-progress * {
   font-size: inherit;
   color: inherit;
@@ -13349,63 +13457,63 @@ html {
   text-rendering: optimizeLegibility;
   -moz-font-smoothing: grayscale;
 }
-/* line 231, ../scss/pages/_progress.scss */
+/* line 291, ../scss/pages/_progress.scss */
 .cs-default .progress-page-wrap #wrap > div.reading-progress {
   background: #f6511d;
 }
-/* line 234, ../scss/pages/_progress.scss */
+/* line 294, ../scss/pages/_progress.scss */
 .cs-classic .progress-page-wrap #wrap > div.reading-progress {
   background: #00a6ed;
 }
-/* line 237, ../scss/pages/_progress.scss */
+/* line 297, ../scss/pages/_progress.scss */
 .cs-elegant .progress-page-wrap #wrap > div.reading-progress {
   background: #2ec4b6;
 }
-/* line 245, ../scss/pages/_progress.scss */
+/* line 305, ../scss/pages/_progress.scss */
 .progress-page-wrap .calendar-wrapper .fc-center {
   width: 100%;
   max-width: 360px;
   margin: auto;
 }
-/* line 250, ../scss/pages/_progress.scss */
+/* line 310, ../scss/pages/_progress.scss */
 .progress-page-wrap .calendar-wrapper .fc-center h2 {
   color: #fff;
 }
-/* line 254, ../scss/pages/_progress.scss */
+/* line 314, ../scss/pages/_progress.scss */
 .progress-page-wrap .calendar-wrapper .fc-center * {
   display: inline-block;
   margin: 2px;
 }
-/* line 261, ../scss/pages/_progress.scss */
+/* line 321, ../scss/pages/_progress.scss */
 .progress-page-wrap .fc-month-view table {
   margin: 0;
 }
-/* line 265, ../scss/pages/_progress.scss */
+/* line 325, ../scss/pages/_progress.scss */
 .progress-page-wrap .fc-content-skeleton > table {
   margin: 0;
   position: relative;
   background: transparent;
 }
-/* line 271, ../scss/pages/_progress.scss */
+/* line 331, ../scss/pages/_progress.scss */
 .progress-page-wrap .fc-content-skeleton > table .fc-day-top {
   padding-top: 10px;
 }
-/* line 273, ../scss/pages/_progress.scss */
+/* line 333, ../scss/pages/_progress.scss */
 .cs-default .progress-page-wrap .fc-content-skeleton > table .fc-day-top {
   border-left: 2px solid #f6511d;
   border-right: 2px solid #f6511d;
 }
-/* line 277, ../scss/pages/_progress.scss */
+/* line 337, ../scss/pages/_progress.scss */
 .cs-elegant .progress-page-wrap .fc-content-skeleton > table .fc-day-top {
   border-left: 2px solid #2ec4b6;
   border-right: 2px solid #2ec4b6;
 }
-/* line 281, ../scss/pages/_progress.scss */
+/* line 341, ../scss/pages/_progress.scss */
 .cs-classic .progress-page-wrap .fc-content-skeleton > table .fc-day-top {
   border-left: 2px solid #00a6ed;
   border-right: 2px solid #00a6ed;
 }
-/* line 285, ../scss/pages/_progress.scss */
+/* line 345, ../scss/pages/_progress.scss */
 .progress-page-wrap .fc-content-skeleton > table .fc-day-top span {
   float: left !important;
   font-size: 30px;
@@ -13438,70 +13546,70 @@ html {
   text-rendering: optimizeLegibility;
   -moz-font-smoothing: grayscale;
 }
-/* line 292, ../scss/pages/_progress.scss */
+/* line 352, ../scss/pages/_progress.scss */
 .progress-page-wrap .fc-content-skeleton > table tbody {
   border: none;
 }
-/* line 300, ../scss/pages/_progress.scss */
+/* line 360, ../scss/pages/_progress.scss */
 .cs-default .progress-page-wrap .fc-day-grid .fc-row.fc-week:nth-of-type(1) {
   border-top: 2px solid #f6511d;
 }
-/* line 304, ../scss/pages/_progress.scss */
+/* line 364, ../scss/pages/_progress.scss */
 .cs-elegant .progress-page-wrap .fc-day-grid .fc-row.fc-week:nth-of-type(1) {
   border-top: 2px solid #2ec4b6;
 }
-/* line 308, ../scss/pages/_progress.scss */
+/* line 368, ../scss/pages/_progress.scss */
 .cs-classic .progress-page-wrap .fc-day-grid .fc-row.fc-week:nth-of-type(1) {
   border-top: 2px solid #00a6ed;
 }
-/* line 315, ../scss/pages/_progress.scss */
+/* line 375, ../scss/pages/_progress.scss */
 .progress-page-wrap table {
   background: #fff;
   border: none;
   position: relative;
   border-color: #f6511d;
 }
-/* line 320, ../scss/pages/_progress.scss */
+/* line 380, ../scss/pages/_progress.scss */
 .progress-page-wrap table * td {
   border-color: inherit;
 }
-/* line 323, ../scss/pages/_progress.scss */
+/* line 383, ../scss/pages/_progress.scss */
 .progress-page-wrap table *
 th {
   border: none;
 }
-/* line 329, ../scss/pages/_progress.scss */
+/* line 389, ../scss/pages/_progress.scss */
 .progress-page-wrap table .fc-bg table > tbody > tr td {
   border-top: none;
 }
-/* line 331, ../scss/pages/_progress.scss */
+/* line 391, ../scss/pages/_progress.scss */
 .cs-default .progress-page-wrap table .fc-bg table > tbody > tr td {
   border-left: 2px solid #f6511d;
   border-right: 2px solid #f6511d;
   border-bottom: 2px solid #f6511d;
 }
-/* line 336, ../scss/pages/_progress.scss */
+/* line 396, ../scss/pages/_progress.scss */
 .cs-elegant .progress-page-wrap table .fc-bg table > tbody > tr td {
   border-left: 2px solid #2ec4b6;
   border-right: 2px solid #2ec4b6;
   border-bottom: 2px solid #2ec4b6;
 }
-/* line 341, ../scss/pages/_progress.scss */
+/* line 401, ../scss/pages/_progress.scss */
 .cs-classic .progress-page-wrap table .fc-bg table > tbody > tr td {
   border-left: 2px solid #00a6ed;
   border-right: 2px solid #00a6ed;
   border-bottom: 2px solid #00a6ed;
 }
-/* line 350, ../scss/pages/_progress.scss */
+/* line 410, ../scss/pages/_progress.scss */
 .progress-page-wrap table .fc-body thead {
   border: none !important;
   background: #fff !important;
 }
-/* line 363, ../scss/pages/_progress.scss */
+/* line 423, ../scss/pages/_progress.scss */
 .progress-page-wrap table .fc-head td {
   border: none;
 }
-/* line 366, ../scss/pages/_progress.scss */
+/* line 426, ../scss/pages/_progress.scss */
 .progress-page-wrap table .fc-head th {
   font-size: 22px;
   color: #fff;
@@ -13534,25 +13642,25 @@ th {
   text-rendering: optimizeLegibility;
   -moz-font-smoothing: grayscale;
 }
-/* line 372, ../scss/pages/_progress.scss */
+/* line 432, ../scss/pages/_progress.scss */
 .progress-page-wrap table .fc-head .fc-row.fc-widget-header {
   margin-right: 0 !important;
   border: none;
 }
-/* line 377, ../scss/pages/_progress.scss */
+/* line 437, ../scss/pages/_progress.scss */
 .progress-page-wrap table .fc-scroller {
   overflow-y: hidden !important;
 }
-/* line 380, ../scss/pages/_progress.scss */
+/* line 440, ../scss/pages/_progress.scss */
 .progress-page-wrap table .fc-head thead {
   border: none;
   margin: 0;
 }
-/* line 383, ../scss/pages/_progress.scss */
+/* line 443, ../scss/pages/_progress.scss */
 .cs-default .progress-page-wrap table .fc-head thead, .cs-elegant .progress-page-wrap table .fc-head thead {
   background: #267fda;
 }
-/* line 386, ../scss/pages/_progress.scss */
+/* line 446, ../scss/pages/_progress.scss */
 .cs-classic .progress-page-wrap table .fc-head thead {
   background: #084899;
 }
