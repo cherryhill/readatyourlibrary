@@ -1,84 +1,208 @@
+p.more-link {
+  position: relative;
+  padding-right: 18px;
+
+  &:after {
+    content: "";
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    position: absolute;
+    background: url(../images/dashboard);
+    background-size: 40px;
+    background-position: -4px -684px;
+    top: 5px;
+    right: 0;
+  }
+}
+
 .page-user-profile {
+  .reward-block-dashboard {
+     -webkit-flex-wrap: wrap;
+    flex-wrap: wrap;
+    display: -webkit-flex;
+    display: flex;
+    align-content: center;
+    align-items: center;
+     .reward-image {
+      flex: 0 0 100px;
+     }
+     .reward-description {
+      flex: 0 0 calc(100% - 100px);
+      padding-left: 10px;
+     }
+  }
+  .dashboard-progress {
+    .portlet-content {
+      background: url("../images/fi-calendar.svg") no-repeat scroll left 7px center;
+       > div {
+         display: flex;
+         width: 100%;
+         min-height: 90px;
+         align-content: center;
+         align-items: center;
+
+         padding-left: 90px;
+       }
+    }
+  }
   #page-title.title {
     display: none;
   }
 
-}
-  .my-dashbord-block {
-    @extend .primary-background;
-    .view-header {
-       * {
-          @extend .stroke-main;
-          background: url(../images/big-strokes);
-           .cs-default & {
-             background-position: -60px -569px;
-           }
-           .cs-classic & {
-            background-position: -60px -225px;
-           }
-           .cs-elegant & {
-             background-position: -60px -914px;
-           }
-       }
+  .view-empty {
+    p {
+      font-size: 14px;
+    }
+  }
+
+  .view-book-reviews-dashboard {
+    position: relative;
+    .view-footer {
+
     }
     .view-content {
-      padding-right: 35px;
-      width: 70%;
-      float: left;
-      padding-top: 60px;
-      table {
-        float: right;
-      }
+      padding-bottom: 30px;
     }
-    .attachment {
-      padding-left: 35px;
-      padding-right: 10px;
-      padding-top: 45px;
-      width: 30%;
-      float: left;
-      a {
-        color: $white;
-        @include primary_fsize;
-        @include bold_fonts;
-      }
-    }
-    .pagination-centered {
-      padding-right: 30px;
-      position: absolute;
-      top: 115px;
-      left: 0;
-      .pagination.pager {
-        li {
-          height: 20px;
-          width: 20px;
-          border-radius: 100%;
-          margin-left: 3px;
-          margin-right: 3px;
-           &.arrow {
-            display: none;
-           }
-           &.current {
-            a {
-              .cs-default & {
-                background: $orange;
 
-              }
-              .cs-classic & {
-                background: $sky-blue;
-              }
-              .cs-elegant & {
-                background: $mint-green;
-              }
+  }
+
+  .likes {
+    span {
+      position: relative;
+      padding-right: 32px;
+
+      &:after {
+        content: "";
+        width: 25px;
+        height: 25px;
+        display: inline-block;
+        background: url("../images/smily.png") no-repeat scroll center center;
+        position: absolute;
+        right: 2px;
+        top: -5px;
+      }
+    }
+  }
+
+  .review-wrapper {
+    -webkit-flex-wrap: wrap;
+    flex-wrap: wrap;
+    display: -webkit-flex;
+    display: flex;
+
+    .count {
+      flex: 0 0 20px;
+    }
+
+    .title {
+      flex: 0 0 calc(100% - 20px);
+
+      * {
+        color: $black;
+      }
+    }
+
+    .likes {
+      flex: 0 0 100%;
+      padding-left: 20px;
+    }
+  }
+}
+
+.my-dashbord-block {
+  @extend .primary-background;
+
+  .view-header {
+    * {
+      @extend .stroke-main;
+
+      background: url(../images/big-strokes);
+
+      .cs-default & {
+        background-position: -60px -569px;
+      }
+
+      .cs-classic & {
+        background-position: -60px -225px;
+      }
+
+      .cs-elegant & {
+        background-position: -60px -914px;
+      }
+    }
+  }
+
+  .view-content {
+    padding-right: 35px;
+    width: 70%;
+    float: left;
+    padding-top: 60px;
+
+    table {
+      float: right;
+    }
+  }
+
+  .attachment {
+    padding-left: 35px;
+    padding-right: 10px;
+    padding-top: 45px;
+    width: 30%;
+    float: left;
+
+    a {
+      color: $white;
+
+      @include primary_fsize;
+
+      @include bold_fonts;
+    }
+  }
+
+  .pagination-centered {
+    padding-right: 30px;
+    position: absolute;
+    top: 115px;
+    left: 0;
+
+    .pagination.pager {
+      li {
+        height: 20px;
+        width: 20px;
+        border-radius: 100%;
+        margin-left: 3px;
+        margin-right: 3px;
+
+        &.arrow {
+          display: none;
+        }
+
+        &.current {
+          a {
+            .cs-default & {
+              background: $orange;
             }
-           }
-           a {
-            color: transparent;
-            background: $white;
-           }
+
+            .cs-classic & {
+              background: $sky-blue;
+            }
+
+            .cs-elegant & {
+              background: $mint-green;
+            }
+          }
+        }
+
+        a {
+          color: transparent;
+          background: $white;
         }
       }
     }
   }
+}
+
 .homebox.homebox-auto-save {
   width: calc(100% + 40px);
   margin-left: -20px;
@@ -149,84 +273,98 @@
       padding: 10px 10px 15px 80px !important;
       border: none !important;
       position: relative;
-       .portlet-title:before {
-         content: "";
-         height: 40px;
-         width: 40px;
-         display: inline-block;
-         position: absolute;
-         border-radius: 12px;
-         left: -54px;
-         top: 0;
-         background-image: url('../images/dashboard');
-         background-position: -15px -201px;
-           .cs-default & {
-             background-color: $orange;
-           }
-           .cs-classic & {
-            background-color: $darkblue;
-           }
-           .cs-elegant & {
-            background-color: $mint-green;
-           }
-       }
 
-       .portlet-title:after {
-         content: "";
-         height: 30px;
-         width: 30px;
-         display: inline-block;
-         position: relative;
-         background: url('../images/dashboard');
-         background-position: -6px -1488px;
-         background-size: 44px;
-         left: 0;
-         top: 9px;
-       }
-       .portlet-icon {
-         color: transparent;
-         height: 30px;
-         width: 30px;
-         top: 5px;
-         background: url('../images/dashboard');
-          &.portlet-maximize {
-            display: none;
-          }
-          &.portlet-close {
-             .cs-default &{
-                background-position: -20px -458px;
-             }
-             .cs-classic & {
-              background-position: -20px -391px;
-             }
-             .cs-elegant & {
-              background-position: -20px -525px;
-             }
-          }
-          &.portlet-minus {
-             .cs-default & {
-              background-position: -20px -794px;
-             }
-             .cs-classic & {
-               background-position: -20px -726px;
-             }
-             .cs-elegant & {
-              background-position: -20px -860px;
-             }
-          }
-          &.portlet-plus {
-             .cs-default & {
-               background-position: -20px -994px;
-             }
-             .cs-classic & {
-               background-position: -20px -927px;
-             }
-             .cs-elegant & {
-               background-position: -20px -1061px;
-             }
-          }
-       }
+      .portlet-title:before {
+        content: "";
+        height: 40px;
+        width: 40px;
+        display: inline-block;
+        position: absolute;
+        border-radius: 12px;
+        left: -54px;
+        top: 0;
+        background-image: url("../images/dashboard");
+        background-position: -15px -201px;
 
+        .cs-default & {
+          background-color: $orange;
+        }
+
+        .cs-classic & {
+          background-color: $darkblue;
+        }
+
+        .cs-elegant & {
+          background-color: $mint-green;
+        }
+      }
+
+      .portlet-title:after {
+        content: "";
+        height: 30px;
+        width: 30px;
+        display: inline-block;
+        position: relative;
+        background: url("../images/dashboard");
+        background-position: -6px -1488px;
+        background-size: 44px;
+        left: 0;
+        top: 9px;
+      }
+
+      .portlet-icon {
+        color: transparent;
+        height: 30px;
+        width: 30px;
+        top: 5px;
+        background: url("../images/dashboard");
+
+        &.portlet-maximize {
+          display: none;
+        }
+
+        &.portlet-close {
+          .cs-default & {
+            background-position: -20px -458px;
+          }
+
+          .cs-classic & {
+            background-position: -20px -391px;
+          }
+
+          .cs-elegant & {
+            background-position: -20px -525px;
+          }
+        }
+
+        &.portlet-minus {
+          .cs-default & {
+            background-position: -20px -794px;
+          }
+
+          .cs-classic & {
+            background-position: -20px -726px;
+          }
+
+          .cs-elegant & {
+            background-position: -20px -860px;
+          }
+        }
+
+        &.portlet-plus {
+          .cs-default & {
+            background-position: -20px -994px;
+          }
+
+          .cs-classic & {
+            background-position: -20px -927px;
+          }
+
+          .cs-elegant & {
+            background-position: -20px -1061px;
+          }
+        }
+      }
 
       @include primary_fonts;
 
@@ -245,45 +383,76 @@
         font-size: 25px !important;
       }
     }
+
     .portlet-content {
       padding: 25px !important;
     }
   }
+
   .view-header {
     * {
       color: $black;
+
       @include bold_fonts;
+
       font-size: 14px;
       text-transform: uppercase;
     }
   }
-  .view-activities-dashboard .field-content {
-     -webkit-flex-wrap: wrap;
-      flex-wrap: wrap;
-      display: -webkit-flex;
-      display: flex;
-      align-content: center;
-      align-items: center;
-       > div {
-        flex: 0 0  50%;
-       }
+
+  .view-activities-dashboard .view-footer {
+    padding-top: 25px;
+
+    > p {
+      margin-bottom: 10px;
+    }
   }
+
+  .view-activities-dashboard .field-content {
+    -webkit-flex-wrap: wrap;
+    flex-wrap: wrap;
+    display: -webkit-flex;
+    display: flex;
+    align-content: center;
+    align-items: center;
+
+    > div {
+      &.activity-count {
+        flex: 0 0 20px;
+      }
+
+      &.title {
+        flex: 0 0 calc(50% - 10px);
+        padding-right: 10px;
+      }
+
+      &.completed {
+        flex: 0 0 calc(50% - 10px);
+      }
+    }
+  }
+
   .view-content {
     * {
       @include secondary_fonts;
+
       font-size: 14px;
     }
   }
+
   .view-footer {
     p {
       width: 100%;
       display: inline-block;
-       a {
-      float: right;
-      @include primary_fonts;
-      font-size: 17px;
-    }
+
+      a {
+        float: right;
+
+        @include primary_fonts;
+
+        font-size: 17px;
       }
+    }
 
     a.button {
       margin: 10px 0;
@@ -294,24 +463,28 @@
     }
   }
 }
+
 .homebox.homebox-auto-save .homebox-column-wrapper .homebox-draggable {
   &.dashboard-activities {
     .portlet-header .portlet-title::before {
       background-position: -15px -13px;
     }
   }
-  &.dashboard-reviews,&.dashboard-booklists {
-     .portlet-header .portlet-title::before {
+
+  &.dashboard-reviews, &.dashboard-booklists {
+    .portlet-header .portlet-title::before {
       background-position: -9px -78px;
     }
   }
-   &.dashboard-following {
-     .portlet-header .portlet-title::before {
+
+  &.dashboard-following {
+    .portlet-header .portlet-title::before {
       background-position: -12px -141px;
     }
   }
+
   &.dashboard-rewards {
-     .portlet-header .portlet-title::before {
+    .portlet-header .portlet-title::before {
       background-position: -11px -321px;
     }
   }
