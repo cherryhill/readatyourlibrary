@@ -159,7 +159,54 @@ function feature_for_reward_page_views_default_views() {
   $handler->display->display_options['filters']['field_type_of_reward_raffle_priz_tid']['type'] = 'select';
   $handler->display->display_options['filters']['field_type_of_reward_raffle_priz_tid']['vocabulary'] = 'type_of_reward';
   $handler->display->display_options['filters']['field_type_of_reward_raffle_priz_tid']['hierarchy'] = 1;
+  /* Filter criterion: Reward: Category (field_category) */
+  $handler->display->display_options['filters']['field_category_value']['id'] = 'field_category_value';
+  $handler->display->display_options['filters']['field_category_value']['table'] = 'field_data_field_category';
+  $handler->display->display_options['filters']['field_category_value']['field'] = 'field_category_value';
+  $handler->display->display_options['filters']['field_category_value']['value'] = array(
+    'reward' => 'reward',
+  );
   $handler->display->display_options['block_description'] = 'My Badges for rewrad page';
+
+  /* Display: My Raffles */
+  $handler = $view->new_display('block', 'My Raffles', 'block_2');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'My Raffles';
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Reward: Raffle Ticket Image */
+  $handler->display->display_options['fields']['field_raffle_ticket_image']['id'] = 'field_raffle_ticket_image';
+  $handler->display->display_options['fields']['field_raffle_ticket_image']['table'] = 'field_data_field_raffle_ticket_image';
+  $handler->display->display_options['fields']['field_raffle_ticket_image']['field'] = 'field_raffle_ticket_image';
+  $handler->display->display_options['fields']['field_raffle_ticket_image']['label'] = '';
+  $handler->display->display_options['fields']['field_raffle_ticket_image']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_raffle_ticket_image']['click_sort_column'] = 'fid';
+  $handler->display->display_options['fields']['field_raffle_ticket_image']['settings'] = array(
+    'image_style' => 'thumbnail',
+    'image_link' => '',
+  );
+  /* Field: Reward: Title */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'eck_reward';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['label'] = '';
+  $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Reward: reward type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'eck_reward';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'reward' => 'reward',
+  );
+  /* Filter criterion: Reward: Category (field_category) */
+  $handler->display->display_options['filters']['field_category_value']['id'] = 'field_category_value';
+  $handler->display->display_options['filters']['field_category_value']['table'] = 'field_data_field_category';
+  $handler->display->display_options['filters']['field_category_value']['field'] = 'field_category_value';
+  $handler->display->display_options['filters']['field_category_value']['value'] = array(
+    'raffle_reward' => 'raffle_reward',
+  );
+  $handler->display->display_options['block_description'] = 'My Raffles for reward page';
   $export['my_reward_blocks_on_reward_page_sidebar'] = $view;
 
   $view = new view();
