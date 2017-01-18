@@ -1,0 +1,16 @@
+name = Feature for reward page
+core = 7.x
+package = Features
+version = 7.x-1.0
+dependencies[] = entityqueue
+dependencies[] = views
+features[ctools][] = entityqueue:entityqueue_default:1
+features[ctools][] = views:views_default:3.0
+features[entityqueue_queue][] = badges_for_reading
+features[entityqueue_queue][] = other_badges
+features[features_api][] = api:2
+features[views_view][] = my_reward_blocks_on_reward_page_sidebar
+features[views_view][] = reading_badge_views
+features[views_view][] = reward_page_views
+features_exclude[dependencies][ctools] = ctools
+project path = sites/all/modules/features
