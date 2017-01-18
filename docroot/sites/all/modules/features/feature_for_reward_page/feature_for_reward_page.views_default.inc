@@ -106,6 +106,8 @@ function feature_for_reward_page_views_default_views() {
 
   /* Display: My Badges */
   $handler = $view->new_display('block', 'My Badges', 'block_1');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'My Badges';
   $handler->display->display_options['defaults']['fields'] = FALSE;
   /* Field: Reward: Raffle prize or reward image */
   $handler->display->display_options['fields']['field_raffle_prize_or_reward_ima']['id'] = 'field_raffle_prize_or_reward_ima';
@@ -413,6 +415,13 @@ You will get online badges for reading this summer, and actual prizes that you c
 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
+  $handler->display->display_options['defaults']['footer'] = FALSE;
+  /* Footer: Global: Text area */
+  $handler->display->display_options['footer']['area']['id'] = 'area';
+  $handler->display->display_options['footer']['area']['table'] = 'views';
+  $handler->display->display_options['footer']['area']['field'] = 'area';
+  $handler->display->display_options['footer']['area']['content'] = '<h1>Badges You Can Earn </h1>';
+  $handler->display->display_options['footer']['area']['format'] = 'filtered_html';
   $handler->display->display_options['defaults']['fields'] = FALSE;
   /* Field: Reward: Id */
   $handler->display->display_options['fields']['id']['id'] = 'id';
