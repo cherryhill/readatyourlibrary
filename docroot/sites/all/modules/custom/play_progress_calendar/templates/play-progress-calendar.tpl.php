@@ -72,15 +72,11 @@
   ?>
 </div>
 
-
-
-
-
   <div class='reading-progress'>
     <div id='next-reward'>
       <?php
         $req_points = play_library_program_next_close_reward_points($activity_ids);
-          if($req_points == 1) {
+        if($req_points == 1) {
           $next_rew = t('<strong>'.$req_points.'</strong> more day of reading needed to receive your next prize');
         }
         else if ($req_points > 1){
@@ -94,27 +90,6 @@
       ?>
     </div>
   </div>
-
-	   <!-- This is the drupal views block of sticker -->
-
-		<div class="sticker-block">
-          <?php //print views_embed_view('dropdown_sticker_list', 'block'); ?>
-		</div>
-
-		<!-- This is the reward list won by patron  -->
-
-		<div class="pro-reward-block">
-          <?php //print views_embed_view('user_rewrad_for_progress_page', 'block'); ?>
-		</div>
-
-         <!-- This is the user progress for read activity. -->
-
-		<div class="pro-progress-block">
-          <?php
-            //$block = module_invoke('play_progress_calendar', 'block_view', 'user_prize_block');
-            print render($block['content']);
-          ?>
-		</div>
 	</div>
 <!-- Loading HTML -->
 
@@ -132,6 +107,5 @@
   	<div id='calendar'></div>
   	<!-- <div id="print_button">Print Calendar</div> -->
     <!-- <button onclick="printPage()">Print this page</button> -->
-
   </div>
 </div>
