@@ -13,6 +13,24 @@ function feature_for_reward_page_entityqueue_default_queues() {
   $queue = new EntityQueue();
   $queue->disabled = FALSE; /* Edit this to true to make a default queue disabled initially */
   $queue->api_version = 1;
+  $queue->name = 'badges_for_booklists';
+  $queue->label = 'Badges for Booklists';
+  $queue->language = 'en';
+  $queue->handler = 'simple';
+  $queue->target_type = 'reward';
+  $queue->settings = array(
+    'target_bundles' => array(
+      'reward' => 'reward',
+    ),
+    'min_size' => '0',
+    'max_size' => '0',
+    'act_as_queue' => 0,
+  );
+  $export['badges_for_booklists'] = $queue;
+
+  $queue = new EntityQueue();
+  $queue->disabled = FALSE; /* Edit this to true to make a default queue disabled initially */
+  $queue->api_version = 1;
   $queue->name = 'badges_for_reading';
   $queue->label = 'Badges for Reading';
   $queue->language = 'en';
@@ -27,6 +45,24 @@ function feature_for_reward_page_entityqueue_default_queues() {
     'act_as_queue' => 0,
   );
   $export['badges_for_reading'] = $queue;
+
+  $queue = new EntityQueue();
+  $queue->disabled = FALSE; /* Edit this to true to make a default queue disabled initially */
+  $queue->api_version = 1;
+  $queue->name = 'badges_for_reviews';
+  $queue->label = 'Badges for Reviews';
+  $queue->language = 'en';
+  $queue->handler = 'simple';
+  $queue->target_type = 'reward';
+  $queue->settings = array(
+    'target_bundles' => array(
+      'reward' => 'reward',
+    ),
+    'min_size' => '0',
+    'max_size' => '0',
+    'act_as_queue' => 0,
+  );
+  $export['badges_for_reviews'] = $queue;
 
   $queue = new EntityQueue();
   $queue->disabled = FALSE; /* Edit this to true to make a default queue disabled initially */
