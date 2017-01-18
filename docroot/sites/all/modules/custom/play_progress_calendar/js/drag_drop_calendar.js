@@ -37,9 +37,6 @@
         editable: true,
         droppable: true, // this allows things to be dropped onto the calendar
         drop: function(date, allDay) {
-          $('#message').remove();
-          $('#next-reward').remove();
-          $('.reward-won').removeClass('reward-won');
           //Create event object for dropped sticker
           var eventObject = {
             title: jQuery.trim(jQuery(this).html()) // use the element's text as the event title
@@ -66,6 +63,7 @@
             data: 'act_ids='+act_ids+'&tid='+tid+'&drop_date='+moment(date).format('YYYY-MMM-DD')+'&start_date='+start+'&end_date='+end+'&user_id='+currentUser,
             //on Successs render drupal set messages
             success: function(res){
+              $('#calendar').fullCalendar('refetchEvents');
               console.log(res);
               jq_json_obj = $.parseJSON(res); //Convert the JSON object to jQuery-compatible
               if(typeof jq_json_obj == 'object'){ //Test if variable is a [JSON] object
@@ -79,12 +77,15 @@
               }else{
                 console.log("Error occurred!"); 
               }
-              $('.reading-progress').after('<div id = "message"><div class="section clearfix">' + jq_array[1] + '</div></div>');
+              $('#message').remove();
+              $('#next-reward').remove();
+              $('.reward-won').removeClass('reward-won');
+              $('#wrap').after('<div id = "message"><div class="section clearfix">' + jq_array[1] + '</div></div>');
               $('.reading-progress').append('<div id = "next-reward"><h3>' + jq_array[0] + '</h3></div>');
               $('#message .section').css('width' , '960px');
               $('#message .section').css('margin-left' , 'auto');
-              $('#message .section').css('margin-right' , 'auto');               
-              $('#calendar').fullCalendar('refetchEvents');
+              $('#message .section').css('margin-right' , 'auto');
+              
             },
             error: function(jqXHR, data, error){
               alert("Apologies. There is some error in the system. " + error );
@@ -106,9 +107,6 @@
 
         //For internal drag drop of sticker
         eventDrop: function( event, dayDelta, minuteDelta, allDay, revertFunc, jsEvent, ui, view ) {
-          $('.reward-won').removeClass('reward-won');
-          $('#next-reward').remove();
-          $('#message').remove();
           var eventObject = {
             title: jQuery.trim(jQuery(this).html()) // use the element's text as the event title
           };
@@ -133,7 +131,8 @@
 
             //On success show drupal messages
             success: function(html){
-
+              $('#calendar').fullCalendar('refetchEvents');
+              console.log(html);
               jq_json_obj = $.parseJSON(html); //Convert the JSON object to jQuery-compatible
               if(typeof jq_json_obj == 'object'){ //Test if variable is a [JSON] object
                 jq_obj = eval (jq_json_obj);
@@ -146,13 +145,15 @@
               }else{
                 console.log("Error occurred!"); 
               }
-              //Show drupal set message above calendar
-              $('.reading-progress').after('<div id = "message"><div class="section clearfix">' + jq_array[1] + '</div></div>');
+              $('#message').remove();
+              $('#next-reward').remove();
+              $('.reward-won').removeClass('reward-won');
+              $('#wrap').after('<div id = "message"><div class="section clearfix">' + jq_array[1] + '</div></div>');
               $('.reading-progress').append('<div id = "next-reward"><h3>' + jq_array[0] + '</h3></div>');
               $('#message .section').css('width' , '960px');
               $('#message .section').css('margin-left' , 'auto');
-              $('#message .section').css('margin-right' , 'auto');               
-              $('#calendar').fullCalendar('refetchEvents');
+              $('#message .section').css('margin-right' , 'auto');
+              
             },
             //On error show error alert
             error: function(jqXHR, data, error){
@@ -200,6 +201,10 @@
               $(element).find('[class=fc-content]').append('<div>'+event.read_days+'</div>');
             }
           }
+          if(event.class == 'day-read'){
+            $(element).find('[class=fc-content]').addClass('read-content')
+            $("[data-date='"+moment(event.start).format('YYYY-MM-DD')+"']").addClass('day-read');
+          }
           //Add reward won class if reward won class is present
           if(event.class == 'reward-won'){
             $(element).find('[class=fc-content]').addClass('reward-content')
@@ -209,14 +214,4 @@
       });
     }
   }
-  //jQuery for rewards block
-  $("#reward-won-block").load("reward-loader?page=1");
-    $("#pagination li").live('click',function(e){
-    e.preventDefault();
-        $("#reward-won-block").html('loading...');
-        $("#pagination li").removeClass('active');
-        $(this).addClass('active');
-        var pageNum = this.id;
-        $("#reward-won-block").load("reward-loader?page=" + pageNum);
-    });
 })(jQuery);
