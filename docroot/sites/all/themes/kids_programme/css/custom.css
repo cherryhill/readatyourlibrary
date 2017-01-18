@@ -7425,7 +7425,7 @@ a.th {
 }
 
 /* line 27, ../scss/base/_common.scss */
-.light-orange, .cs-elegant .l-header .header-middle, .cs-elegant .post-footer.contain-to-grid, .cs-elegant .l-footer, .cs-elegant .button, .cs-elegant button, .cs-classic .btn.btn-large.msg.new, .cs-elegant .btn.btn-primary, .cs-classic .mobile-menu ul.mobile-top-menu li a.msg.new, .page-messages.cs-classic #page-title.title + .primary-tabs + ul.action-links li a, .page-messages.cs-elegant #page-title.title + .primary-tabs + ul.action-links li a {
+.light-orange, .cs-elegant .l-header .header-middle, .cs-elegant .post-footer.contain-to-grid, .cs-elegant .l-footer, .cs-classic .button, .cs-classic button, .cs-elegant .button, .cs-elegant button, .cs-classic .btn.btn-large.msg.new, .cs-classic .btn.btn-primary, .cs-elegant .btn.btn-primary, .cs-classic .mobile-menu ul.mobile-top-menu li a.msg.new, .page-messages.cs-classic #page-title.title + .primary-tabs + ul.action-links li a, .page-messages.cs-elegant #page-title.title + .primary-tabs + ul.action-links li a {
   background: #ff9f1c;
 }
 
@@ -9811,14 +9811,15 @@ html {
 /* line 34, ../scss/components/_buttons.scss */
 .cs-classic .button, .cs-classic button {
   font-size: 18px;
+  color: #fff;
 }
-/* line 37, ../scss/components/_buttons.scss */
+/* line 39, ../scss/components/_buttons.scss */
 .cs-elegant .button, .cs-elegant button {
   font-size: 19px;
   color: #fff;
 }
 
-/* line 46, ../scss/components/_buttons.scss */
+/* line 48, ../scss/components/_buttons.scss */
 .btn {
   display: inline-block;
   padding: 6px 24px;
@@ -9829,11 +9830,11 @@ html {
   border-radius: 10px;
   line-height: 30px;
 }
-/* line 64, ../scss/components/_buttons.scss */
+/* line 66, ../scss/components/_buttons.scss */
 .cs-classic .btn {
   background: #00a6ed;
 }
-/* line 68, ../scss/components/_buttons.scss */
+/* line 70, ../scss/components/_buttons.scss */
 .btn:hover {
   text-decoration: none;
 }
@@ -9864,24 +9865,24 @@ html {
   text-rendering: optimizeLegibility;
   -moz-font-smoothing: grayscale;
 }
-/* line 74, ../scss/components/_buttons.scss */
+/* line 76, ../scss/components/_buttons.scss */
 .btn.btn-large {
   color: #fff;
 }
-/* line 77, ../scss/components/_buttons.scss */
+/* line 79, ../scss/components/_buttons.scss */
 .btn.btn-large.msg {
   padding-left: 50px;
   position: relative;
 }
-/* line 90, ../scss/components/_buttons.scss */
+/* line 92, ../scss/components/_buttons.scss */
 .cs-elegant .btn.btn-large.msg.new {
   color: #154c84;
 }
-/* line 97, ../scss/components/_buttons.scss */
+/* line 99, ../scss/components/_buttons.scss */
 .cs-elegant .btn.btn-large.msg.new:after {
   background-position: 72px 90px;
 }
-/* line 103, ../scss/components/_buttons.scss */
+/* line 105, ../scss/components/_buttons.scss */
 .btn.btn-large.msg:after {
   content: "";
   width: 30px;
@@ -9893,25 +9894,25 @@ html {
   display: inline-block;
   background-position: 72px 35px;
 }
-/* line 116, ../scss/components/_buttons.scss */
+/* line 118, ../scss/components/_buttons.scss */
 .btn.btn-large.small {
   font-size: 17px;
   padding-top: 9px;
   padding-bottom: 9px;
 }
-/* line 121, ../scss/components/_buttons.scss */
+/* line 123, ../scss/components/_buttons.scss */
 .btn.btn-large.small.btn-mobile {
   padding: 4px 13px 6px;
 }
-/* line 124, ../scss/components/_buttons.scss */
+/* line 126, ../scss/components/_buttons.scss */
 .cs-classic .btn.btn-large.small {
   font-size: 18px;
 }
-/* line 127, ../scss/components/_buttons.scss */
+/* line 129, ../scss/components/_buttons.scss */
 .cs-elegant .btn.btn-large.small {
   font-size: 19px;
 }
-/* line 132, ../scss/components/_buttons.scss */
+/* line 134, ../scss/components/_buttons.scss */
 .btn.btn-large.full {
   width: 100%;
   font-size: 17px;
@@ -9919,39 +9920,40 @@ html {
   padding-top: 9px;
   padding-bottom: 9px;
 }
-/* line 138, ../scss/components/_buttons.scss */
+/* line 140, ../scss/components/_buttons.scss */
 .cs-classic .btn.btn-large.full {
   font-size: 18px;
 }
-/* line 141, ../scss/components/_buttons.scss */
+/* line 143, ../scss/components/_buttons.scss */
 .cs-elegant .btn.btn-large.full {
   font-size: 19px;
 }
-/* line 150, ../scss/components/_buttons.scss */
+/* line 152, ../scss/components/_buttons.scss */
 .cs-classic .btn.btn-large {
   background: #00a6ed;
 }
-/* line 159, ../scss/components/_buttons.scss */
+/* line 161, ../scss/components/_buttons.scss */
 .btn.btn-primary {
   padding-top: 9px;
   padding-bottom: 9px;
 }
-/* line 163, ../scss/components/_buttons.scss */
+/* line 165, ../scss/components/_buttons.scss */
 .cs-default .btn.btn-primary {
   font-size: 17px;
   color: #333;
 }
-/* line 170, ../scss/components/_buttons.scss */
+/* line 172, ../scss/components/_buttons.scss */
 .cs-classic .btn.btn-primary {
   font-size: 18px;
+  color: #fff;
 }
-/* line 173, ../scss/components/_buttons.scss */
+/* line 177, ../scss/components/_buttons.scss */
 .cs-elegant .btn.btn-primary {
   font-size: 19px;
   color: #fff;
 }
 
-/* line 185, ../scss/components/_buttons.scss */
+/* line 189, ../scss/components/_buttons.scss */
 .blue-button, .homebox.homebox-auto-save #homebox-buttons > a, .homebox.homebox-auto-save #homebox-add .item-list ul li a, .homebox.homebox-auto-save .view-footer a.button {
   display: inline-block;
   padding: 6px 24px;
@@ -9963,24 +9965,24 @@ html {
   line-height: 30px;
   color: #fff;
 }
-/* line 195, ../scss/components/_buttons.scss */
+/* line 199, ../scss/components/_buttons.scss */
 .cs-default .blue-button, .cs-default .homebox.homebox-auto-save #homebox-buttons > a, .homebox.homebox-auto-save .cs-default #homebox-buttons > a, .cs-default .homebox.homebox-auto-save #homebox-add .item-list ul li a, .homebox.homebox-auto-save #homebox-add .item-list ul li .cs-default a, .cs-default .homebox.homebox-auto-save .view-footer a.button, .homebox.homebox-auto-save .view-footer .cs-default a.button {
   background: #267fda;
 }
-/* line 199, ../scss/components/_buttons.scss */
+/* line 203, ../scss/components/_buttons.scss */
 .cs-elegant .blue-button, .cs-elegant .homebox.homebox-auto-save #homebox-buttons > a, .homebox.homebox-auto-save .cs-elegant #homebox-buttons > a, .cs-elegant .homebox.homebox-auto-save #homebox-add .item-list ul li a, .homebox.homebox-auto-save #homebox-add .item-list ul li .cs-elegant a, .cs-elegant .homebox.homebox-auto-save .view-footer a.button, .homebox.homebox-auto-save .view-footer .cs-elegant a.button {
   background: #e71d36;
 }
-/* line 203, ../scss/components/_buttons.scss */
+/* line 207, ../scss/components/_buttons.scss */
 .cs-classic .blue-button, .cs-classic .homebox.homebox-auto-save #homebox-buttons > a, .homebox.homebox-auto-save .cs-classic #homebox-buttons > a, .cs-classic .homebox.homebox-auto-save #homebox-add .item-list ul li a, .homebox.homebox-auto-save #homebox-add .item-list ul li .cs-classic a, .cs-classic .homebox.homebox-auto-save .view-footer a.button, .homebox.homebox-auto-save .view-footer .cs-classic a.button {
   background: #00a6ed;
   font-size: 20px;
 }
-/* line 208, ../scss/components/_buttons.scss */
+/* line 212, ../scss/components/_buttons.scss */
 .blue-button:hover, .homebox.homebox-auto-save #homebox-buttons > a:hover, .homebox.homebox-auto-save #homebox-add .item-list ul li a:hover, .homebox.homebox-auto-save .view-footer a.button:hover {
   text-decoration: none;
 }
-/* line 211, ../scss/components/_buttons.scss */
+/* line 215, ../scss/components/_buttons.scss */
 .blue-button:focus, .homebox.homebox-auto-save #homebox-buttons > a:focus, .homebox.homebox-auto-save #homebox-add .item-list ul li a:focus, .homebox.homebox-auto-save .view-footer a.button:focus {
   outline: none;
 }
