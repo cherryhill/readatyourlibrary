@@ -31,8 +31,10 @@
 
     color: $black;
   }
-
-  .cs-classic &, .cs-elegant & {
+  .cs-classic & {
+    font-size: 18px;
+  }
+   .cs-elegant & {
     font-size: 19px;
 
     @extend .light-orange;
@@ -119,8 +121,10 @@
       &.btn-mobile {
         padding: 4px 13px 6px;
       }
-
-      .cs-classic &, .cs-elegant & {
+      .cs-classic & {
+        font-size: 18px;
+      }
+       .cs-elegant & {
         font-size: 19px;
       }
     }
@@ -131,8 +135,10 @@
       text-align: center;
       padding-top: 9px;
       padding-bottom: 9px;
-
-      .cs-classic &, .cs-elegant & {
+     .cs-classic & {
+      font-size: 18px;
+     }
+       .cs-elegant & {
         font-size: 19px;
       }
     }
@@ -161,8 +167,10 @@
 
       color: #333;
     }
-
-    .cs-classic &, .cs-elegant & {
+    .cs-classic & {
+      font-size: 18px;
+    }
+     .cs-elegant & {
       font-size: 19px;
 
       @extend .light-orange;
@@ -194,6 +202,7 @@
 
   .cs-classic & {
     background: $sky-blue;
+    font-size: 20px;
   }
 
   &:hover {
