@@ -1,7 +1,9 @@
 (function($) {
   Drupal.behaviors.play_progress_teen = {
     attach: function (context, settings) {
-
+    //message button change its background color by adding class new(done for theming)
+        $('.msg:has(.new)').addClass('new');
+    //
     $('.printBtn').on('click', function (){
       $(".progress-page-wrap").printThis({debug: true});
     });
@@ -16,7 +18,7 @@
 
         //var draggedElement = $(this).data('eventObject', eventObject, { stick: true});
         $(this).data('eventObject', eventObject, { stick: true});
-        
+
         // make the event draggable using jQuery UI
         $(this).draggable({
           zIndex: 999,
@@ -24,11 +26,11 @@
           revertDuration: 0  //  original position after the drag
         });
       });
-  
+
       /* initialize the calendar
       -----------------------------------------------------------------*/
       $('#calendar').fullCalendar({
-        //Render header 
+        //Render header
         header: {
           left: '',//'next today',
           center: 'prev,title,next',
@@ -53,7 +55,7 @@
           var view = calendar.view;
           var start = view.start._d;
           var end = view.end._d;
-        
+
           var baseUrl = Drupal.settings.basePath + 'calendar';
           //post drop details to calendar function
           jQuery.ajax({
@@ -75,7 +77,7 @@
                 }
                 console.log(jq_array);
               }else{
-                console.log("Error occurred!"); 
+                console.log("Error occurred!");
               }
               $('#message').remove();
               $('#next-reward').remove();
@@ -85,7 +87,6 @@
               $('#message .section').css('width' , '960px');
               $('#message .section').css('margin-left' , 'auto');
               $('#message .section').css('margin-right' , 'auto');
-              
             },
             error: function(jqXHR, data, error){
               alert("Apologies. There is some error in the system. " + error );
@@ -99,7 +100,7 @@
             $('#loading').show();
             $('#external-events').hide();
           }
-          else { 
+          else {
             $('#loading').hide();
             $('#external-events').show();
           }
@@ -143,7 +144,7 @@
                 }
                 console.log(jq_array);
               }else{
-                console.log("Error occurred!"); 
+                console.log("Error occurred!");
               }
               $('#message').remove();
               $('#next-reward').remove();
@@ -153,13 +154,12 @@
               $('#message .section').css('width' , '960px');
               $('#message .section').css('margin-left' , 'auto');
               $('#message .section').css('margin-right' , 'auto');
-              
             },
             //On error show error alert
             error: function(jqXHR, data, error){
               alert("Apologies. There is some error in the system" + error );
             }
-          });    
+          });
         },
 
         //Disable all future dates
@@ -173,7 +173,7 @@
         events: {
           url: Drupal.settings.basePath + 'calendar2'+'?'+'act_ids='+$('#external-events').attr('value'),
           success: function(res){
-            // console.log (res) ;  
+            // console.log (res) ;
           },
           //Alert error message
           error: function(res) {

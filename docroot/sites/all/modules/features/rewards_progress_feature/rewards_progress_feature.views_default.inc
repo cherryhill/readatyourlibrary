@@ -61,13 +61,12 @@ function rewards_progress_feature_views_default_views() {
   /* Display: Rewards Progress Page */
   $handler = $view->new_display('block', 'Rewards Progress Page', 'block');
   $handler->display->display_options['defaults']['pager'] = FALSE;
-  $handler->display->display_options['pager']['type'] = 'full';
+  $handler->display->display_options['pager']['type'] = 'mini';
   $handler->display->display_options['pager']['options']['items_per_page'] = '5';
   $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['pager']['options']['id'] = '0';
-  $handler->display->display_options['pager']['options']['quantity'] = '0';
-  $handler->display->display_options['pager']['options']['tags']['first'] = '';
-  $handler->display->display_options['pager']['options']['tags']['last'] = '';
+  $handler->display->display_options['pager']['options']['tags']['previous'] = 'Back';
+  $handler->display->display_options['pager']['options']['tags']['next'] = 'Next';
   $handler->display->display_options['defaults']['header'] = FALSE;
   /* Header: Global: PHP */
   $handler->display->display_options['header']['php']['id'] = 'php';
@@ -86,7 +85,17 @@ print "<p><span>".("prizes won")."</span></p>";
   $handler->display->display_options['fields']['title']['table'] = 'eck_reward';
   $handler->display->display_options['fields']['title']['field'] = 'title';
   $handler->display->display_options['fields']['title']['label'] = '';
+  $handler->display->display_options['fields']['title']['exclude'] = TRUE;
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
+  /* Field: Global: View result counter */
+  $handler->display->display_options['fields']['counter']['id'] = 'counter';
+  $handler->display->display_options['fields']['counter']['table'] = 'views';
+  $handler->display->display_options['fields']['counter']['field'] = 'counter';
+  $handler->display->display_options['fields']['counter']['label'] = '';
+  $handler->display->display_options['fields']['counter']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['counter']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['counter']['counter_start'] = '1';
+  $handler->display->display_options['fields']['counter']['reverse'] = 0;
   /* Field: Global: PHP */
   $handler->display->display_options['fields']['php']['id'] = 'php';
   $handler->display->display_options['fields']['php']['table'] = 'views';
@@ -96,6 +105,7 @@ print "<p><span>".("prizes won")."</span></p>";
   $handler->display->display_options['fields']['php']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['php']['use_php_setup'] = 0;
   $handler->display->display_options['fields']['php']['php_output'] = '<?php
+$count = $row->counter;
 $reward_title = $row->title;
 $leng = strlen($reward_title);
 $title_leng = $leng - 17; 
@@ -104,12 +114,19 @@ $reward_date = substr($reward_title, -17);
 $reward_date_time = substr($reward_date, 0, 12); 
 $reward_title = substr($reward_title, 0 , $title_leng - 2);
 
-echo \'<div>\'.$reward_title.\'</div><span>\'.$reward_date_time.\'</span>\';// . \'<div><span>Received <div>\'.$reward_date_time.\'</div>\';
+echo \'<div>\'.$count.$reward_title.\'</div><span>\'.$reward_date_time.\'</span>\';// . \'<div><span>Received <div>\'.$reward_date_time.\'</div>\';
 
 
 ?>';
   $handler->display->display_options['fields']['php']['use_php_click_sortable'] = '0';
   $handler->display->display_options['fields']['php']['php_click_sortable'] = '';
+  /* Field: Global: Custom text */
+  $handler->display->display_options['fields']['nothing']['id'] = 'nothing';
+  $handler->display->display_options['fields']['nothing']['table'] = 'views';
+  $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
+  $handler->display->display_options['fields']['nothing']['label'] = '';
+  $handler->display->display_options['fields']['nothing']['alter']['text'] = '<div class="reward-list"><div>[counter]. </div><div>[title]</div></div>';
+  $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
   $handler->display->display_options['defaults']['arguments'] = FALSE;
   /* Contextual filter: Reward: Author */
   $handler->display->display_options['arguments']['uid']['id'] = 'uid';
