@@ -48,15 +48,16 @@ function feature_for_activity_page_views_default_views() {
   $handler = $view->new_display('page', 'Activities', 'page');
   $handler->display->display_options['defaults']['title'] = FALSE;
   $handler->display->display_options['title'] = 'Activities';
+  $handler->display->display_options['defaults']['css_class'] = FALSE;
+  $handler->display->display_options['css_class'] = 'activity-page-kids';
   $handler->display->display_options['defaults']['header'] = FALSE;
   /* Header: Global: Text area */
   $handler->display->display_options['header']['area']['id'] = 'area';
   $handler->display->display_options['header']['area']['table'] = 'views';
   $handler->display->display_options['header']['area']['field'] = 'area';
-  $handler->display->display_options['header']['area']['content'] = '<div>
-<h2>Activities for Kids Summer Reading</h2>
+  $handler->display->display_options['header']['area']['content'] = '<h1>Activities for Kids Summer Reading</h1>
  <p>Here are the activites you can do in Play @ Your Library. Also check out <a href="events">events</a> for all sorts of programs happening at your library!</p>
-</div>';
+';
   $handler->display->display_options['header']['area']['format'] = 'full_html';
   $handler->display->display_options['defaults']['fields'] = FALSE;
   /* Field: Activity: Id */
