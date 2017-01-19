@@ -7399,7 +7399,7 @@ a.th {
 }
 
 /* line 2, ../scss/base/_common.scss */
-.yellow, .yellow-commonblock, .block-play-library-custom-pm-block, .homebox.homebox-auto-save #homebox-add .item-list, .homebox.homebox-auto-save .homebox-column-wrapper .homebox-portlet-inner, .progress-page-wrap #wrap, .cs-default .l-header .pre-header, .cs-classic .l-header .header-middle, .cs-default .button, .cs-default .other-programme.view .other-programme .programme-content .sign-up a, .other-programme.view .other-programme .programme-content .sign-up .cs-default a, .cs-default button, .cs-elegant .btn.btn-large.msg.new, .cs-default .btn.btn-primary, .cs-elegant .mobile-menu ul.mobile-top-menu li a.msg.new, .page-messages.cs-default #page-title.title + .primary-tabs + ul.action-links li a {
+.yellow, .yellow-commonblock, .block-play-library-custom-pm-block, .homebox.homebox-auto-save #homebox-add .item-list, .homebox.homebox-auto-save .homebox-column-wrapper .homebox-portlet-inner, .progress-page-wrap #wrap, .cs-default .l-header .pre-header, .cs-classic .l-header .header-middle, .cs-default .button, .cs-default .other-programme.view .other-programme .programme-content .sign-up a, .other-programme.view .other-programme .programme-content .sign-up .cs-default a, .cs-default button, .cs-elegant .btn.btn-large.msg.new, .cs-default .btn.btn-primary, .cs-elegant .mobile-menu ul.mobile-top-menu li a.msg.new, .page-messages.cs-default .message-button, .page-messages.cs-default #page-title.title + .primary-tabs + ul.action-links li a, #page-title.title + .primary-tabs + ul.action-links li .page-messages.cs-default a, .page-messages.cs-default form fieldset legend a, .page-messages.cs-default .chosen-container a, .page-messages.cs-default #edit-cancel, .page-messages.cs-default .privatemsg-message-actions a, .page-messages.cs-default .chosen-drop {
   background: #fdeb52;
 }
 
@@ -7429,7 +7429,7 @@ a.th {
 }
 
 /* line 27, ../scss/base/_common.scss */
-.light-orange, .cs-elegant .l-header .header-middle, .cs-elegant .post-footer.contain-to-grid, .cs-elegant .l-footer, .cs-classic .button, .cs-classic .other-programme.view .other-programme .programme-content .sign-up a, .other-programme.view .other-programme .programme-content .sign-up .cs-classic a, .cs-classic button, .cs-elegant .button, .cs-elegant .other-programme.view .other-programme .programme-content .sign-up a, .other-programme.view .other-programme .programme-content .sign-up .cs-elegant a, .cs-elegant button, .cs-classic .btn.btn-large.msg.new, .cs-classic .btn.btn-primary, .cs-elegant .btn.btn-primary, .cs-classic .mobile-menu ul.mobile-top-menu li a.msg.new, .page-messages.cs-classic #page-title.title + .primary-tabs + ul.action-links li a, .page-messages.cs-elegant #page-title.title + .primary-tabs + ul.action-links li a {
+.light-orange, .cs-elegant .l-header .header-middle, .cs-elegant .post-footer.contain-to-grid, .cs-elegant .l-footer, .cs-classic .button, .cs-classic .other-programme.view .other-programme .programme-content .sign-up a, .other-programme.view .other-programme .programme-content .sign-up .cs-classic a, .cs-classic button, .cs-elegant .button, .cs-elegant .other-programme.view .other-programme .programme-content .sign-up a, .other-programme.view .other-programme .programme-content .sign-up .cs-elegant a, .cs-elegant button, .cs-classic .btn.btn-large.msg.new, .cs-classic .btn.btn-primary, .cs-elegant .btn.btn-primary, .cs-classic .mobile-menu ul.mobile-top-menu li a.msg.new, .page-messages.cs-classic .message-button, .page-messages.cs-classic #page-title.title + .primary-tabs + ul.action-links li a, #page-title.title + .primary-tabs + ul.action-links li .page-messages.cs-classic a, .page-messages.cs-classic form fieldset legend a, .page-messages.cs-classic .chosen-container a, .page-messages.cs-classic #edit-cancel, .page-messages.cs-classic .privatemsg-message-actions a, .page-messages.cs-elegant .message-button, .page-messages.cs-elegant #page-title.title + .primary-tabs + ul.action-links li a, #page-title.title + .primary-tabs + ul.action-links li .page-messages.cs-elegant a, .page-messages.cs-elegant form fieldset legend a, .page-messages.cs-elegant .chosen-container a, .page-messages.cs-elegant #edit-cancel, .page-messages.cs-elegant .privatemsg-message-actions a, .page-messages.cs-classic .chosen-drop, .page-messages.cs-elegant .chosen-drop {
   background: #ff9f1c;
 }
 
@@ -7444,7 +7444,7 @@ a.th {
 }
 
 /* line 39, ../scss/base/_common.scss */
-.white-text, .font-stroke-main, .font-stroke-sidebar, .stroke-main, .homepage-vedio-block .view-header p, .flicker-block .view-header, .my-dashbord-block .view-header *, .stroke-sidebar, .homepage-reward-block .view-header p, .block-user-login .block-title, .page-progress #page-title {
+.white-text, .font-stroke-main, .font-stroke-sidebar, .stroke-main, .homepage-vedio-block .view-header p, .flicker-block .view-header, .my-dashbord-block .view-header *, .stroke-sidebar, .homepage-reward-block .view-header p, .block-user-login .block-title, #page-title.title, .page-progress #page-title {
   color: #fff;
 }
 
@@ -13114,15 +13114,17 @@ p.more-link:after {
 .page-messages #page-title.title + .primary-tabs {
   display: inline-block;
   vertical-align: top;
+  margin-top: 26px;
 }
-/* line 6, ../scss/pages/_messages.scss */
+/* line 7, ../scss/pages/_messages.scss */
 .page-messages #page-title.title + .primary-tabs + ul.action-links {
   display: inline-block;
   list-style: none;
   vertical-align: top;
   margin: 0;
+  margin-top: 26px;
 }
-/* line 11, ../scss/pages/_messages.scss */
+/* line 13, ../scss/pages/_messages.scss */
 .page-messages #page-title.title + .primary-tabs + ul.action-links li a {
   padding: 6px 24px;
   display: inline-block;
@@ -13135,42 +13137,516 @@ p.more-link:after {
   margin: 10px;
 }
 
-/* line 26, ../scss/pages/_messages.scss */
-.page-messages.cs-default #page-title.title + .primary-tabs + ul.action-links li a {
+/* line 28, ../scss/pages/_messages.scss */
+.message-button, #page-title.title + .primary-tabs + ul.action-links li a, .page-messages form fieldset legend a, .page-messages .chosen-container a, .page-messages #edit-cancel, .page-messages .privatemsg-message-actions a {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  -moz-font-smoothing: grayscale;
+}
+/* line 29, ../scss/pages/_messages.scss */
+.page-messages.cs-default .message-button, .page-messages.cs-default #page-title.title + .primary-tabs + ul.action-links li a, #page-title.title + .primary-tabs + ul.action-links li .page-messages.cs-default a, .page-messages.cs-default form fieldset legend a, .page-messages.cs-default .chosen-container a, .page-messages.cs-default #edit-cancel, .page-messages.cs-default .privatemsg-message-actions a {
   font-family: "McLaren", cursive;
   font-weight: normal;
   font-size: 17px;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-rendering: optimizeLegibility;
-  -moz-font-smoothing: grayscale;
   color: #000;
 }
-
-/* line 37, ../scss/pages/_messages.scss */
-.page-messages.cs-classic #page-title.title + .primary-tabs + ul.action-links li a {
+/* line 36, ../scss/pages/_messages.scss */
+.page-messages.cs-classic .message-button, .page-messages.cs-classic #page-title.title + .primary-tabs + ul.action-links li a, #page-title.title + .primary-tabs + ul.action-links li .page-messages.cs-classic a, .page-messages.cs-classic form fieldset legend a, .page-messages.cs-classic .chosen-container a, .page-messages.cs-classic #edit-cancel, .page-messages.cs-classic .privatemsg-message-actions a {
   font-family: "Architects Daughter", cursive;
-  font-weight: normal;
+  font-weight: 700;
   font-size: 18px;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-rendering: optimizeLegibility;
-  -moz-font-smoothing: grayscale;
   color: #fff;
 }
-
-/* line 48, ../scss/pages/_messages.scss */
-.page-messages.cs-elegant #page-title.title + .primary-tabs + ul.action-links li a {
+/* line 43, ../scss/pages/_messages.scss */
+.page-messages.cs-elegant .message-button, .page-messages.cs-elegant #page-title.title + .primary-tabs + ul.action-links li a, #page-title.title + .primary-tabs + ul.action-links li .page-messages.cs-elegant a, .page-messages.cs-elegant form fieldset legend a, .page-messages.cs-elegant .chosen-container a, .page-messages.cs-elegant #edit-cancel, .page-messages.cs-elegant .privatemsg-message-actions a {
   font-family: "Margarine", cursive;
   font-weight: normal;
   font-size: 19px;
+  color: #fff;
+}
+
+/* line 60, ../scss/pages/_messages.scss */
+.page-messages #page-title.title {
+  line-height: 1.4;
+  margin: 0;
+  height: 99px;
+  width: 100%;
+  background: url(../images/big-strokes);
+  padding-top: 14px;
+  border-radius: 15px 15px 0 0;
+  padding-left: 35px;
+  text-transform: capitalize;
+}
+/* line 20, ../scss/base/_mixins.scss */
+.cs-default #page-title.title {
+  font-family: "McLaren", cursive;
+  font-weight: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
   -moz-font-smoothing: grayscale;
+}
+/* line 29, ../scss/base/_mixins.scss */
+.cs-classic #page-title.title {
+  font-family: "Architects Daughter", cursive;
+  font-weight: 700;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  -moz-font-smoothing: grayscale;
+}
+/* line 38, ../scss/base/_mixins.scss */
+.cs-elegant #page-title.title {
+  font-family: "Margarine", cursive;
+  font-weight: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  -moz-font-smoothing: grayscale;
+}
+/* line 76, ../scss/pages/_messages.scss */
+.page-messages.cs-default #page-title.title {
+  background-position: -60px -569px;
+}
+/* line 80, ../scss/pages/_messages.scss */
+.page-messages.cs-classic #page-title.title {
+  background-position: -60px -225px;
+}
+/* line 84, ../scss/pages/_messages.scss */
+.page-messages.cs-elegant #page-title.title {
+  background-position: -60px -914px;
+}
+
+/* line 89, ../scss/pages/_messages.scss */
+.page-messages .main {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  width: calc(100% - 40px);
+  margin: auto;
+  float: none;
+  margin-bottom: 35px;
+  color: #fff;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+  margin-bottom: 35px;
+  padding-bottom: 15px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  -moz-font-smoothing: grayscale;
+}
+/* line 109, ../scss/pages/_messages.scss */
+.page-messages.cs-default .main {
+  background: #267fda;
+  font-size: 17px;
+  font-family: "arial";
+  font-weight: normal;
+}
+/* line 116, ../scss/pages/_messages.scss */
+.page-messages.cs-elegant .main {
+  background: #267fda;
+  font-size: 17px;
+  font-family: "PT Sans", sans-serif;
+  font-weight: normal;
+}
+/* line 122, ../scss/pages/_messages.scss */
+.page-messages.cs-classic .main {
+  background: #084899;
+  font-size: 19px;
+  font-family: "Open Sans", sans-serif;
+  font-weight: normal;
+}
+
+/* line 133, ../scss/pages/_messages.scss */
+.page-messages .button-group {
+  margin-left: 35px;
+}
+
+/* line 138, ../scss/pages/_messages.scss */
+.page-messages .block-block-3 {
+  display: inline-block;
+  margin-top: 26px;
+}
+/* line 142, ../scss/pages/_messages.scss */
+.page-messages form {
+  padding: 0 35px;
+  margin-bottom: 0;
+}
+/* line 145, ../scss/pages/_messages.scss */
+.page-messages form fieldset {
+  border: none;
+  padding-left: 0;
+  margin: 0 0 0 -6px;
+  margin-bottom: 39px;
+}
+/* line 150, ../scss/pages/_messages.scss */
+.page-messages form fieldset legend {
+  background: transparent none repeat scroll 0 0;
+  font-weight: normal;
+  margin-top: 15px;
+}
+/* line 154, ../scss/pages/_messages.scss */
+.page-messages form fieldset legend a {
+  padding: 6px 24px;
+  display: inline-block;
+  text-decoration: none;
+  box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+  text-transform: capitalize;
+  border-radius: 10px;
+  border: none;
+  line-height: 26px;
+}
+/* line 166, ../scss/pages/_messages.scss */
+.page-messages form fieldset label {
+  color: #fff;
+  font-weight: bold;
+  text-align: left !important;
+}
+/* line 172, ../scss/pages/_messages.scss */
+.page-messages form .container-inline {
+  margin-top: 10px;
+}
+/* line 174, ../scss/pages/_messages.scss */
+.page-messages form .container-inline .form-type-textfield {
+  display: inline-block;
+  max-width: 32.5%;
+  width: 100%;
+}
+/* line 181, ../scss/pages/_messages.scss */
+.page-messages .form-item-operation {
+  display: inline-block;
+}
+/* line 184, ../scss/pages/_messages.scss */
+.page-messages .chosen-container {
+  width: 200px;
+}
+/* line 186, ../scss/pages/_messages.scss */
+.page-messages .chosen-container a {
+  border: medium none;
+  border-radius: 10px;
+  bottom: 2px;
+  box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+  font-style: normal !important;
+  height: auto !important;
+  padding: 6px 20px 8px;
+  position: relative;
+  text-rendering: optimizelegibility !important;
+  text-transform: capitalize;
+}
+/* line 198, ../scss/pages/_messages.scss */
+.page-messages .chosen-container a div {
+  margin-top: 7px !important;
+}
+/* line 203, ../scss/pages/_messages.scss */
+.page-messages table.sticky-enabled {
+  margin: 23px 0 40px 0;
+}
+/* line 206, ../scss/pages/_messages.scss */
+.page-messages table.sticky-header {
+  border: 5px solid #267fda;
+}
+/* line 208, ../scss/pages/_messages.scss */
+.page-messages table.sticky-header thead {
+  background: #267fda;
+}
+/* line 213, ../scss/pages/_messages.scss */
+.page-messages .privatemsg-list {
+  width: 100%;
+  background: transparent;
+  border: none;
+}
+/* line 217, ../scss/pages/_messages.scss */
+.page-messages .privatemsg-list thead {
+  background: #267fda;
+  border-bottom: 5px solid transparent;
+}
+/* line 220, ../scss/pages/_messages.scss */
+.page-messages .privatemsg-list thead .select-all {
+  width: 1%;
+  position: relative;
+  top: 7px;
+}
+/* line 225, ../scss/pages/_messages.scss */
+.page-messages .privatemsg-list thead th {
+  padding-bottom: 0;
+}
+/* line 229, ../scss/pages/_messages.scss */
+.page-messages .privatemsg-list tbody {
+  border-top: none;
+}
+/* line 231, ../scss/pages/_messages.scss */
+.page-messages .privatemsg-list tbody tr {
+  background: transparent;
+  border-bottom: none;
+}
+/* line 234, ../scss/pages/_messages.scss */
+.page-messages .privatemsg-list tbody tr td {
+  padding-bottom: 2px;
+}
+/* line 238, ../scss/pages/_messages.scss */
+.page-messages .privatemsg-list tbody tr.selected td {
+  background: transparent;
+}
+/* line 245, ../scss/pages/_messages.scss */
+.page-messages .privatemsg-list tbody .form-type-checkbox .form-checkbox {
+  margin-bottom: 0;
+}
+/* line 253, ../scss/pages/_messages.scss */
+.page-messages .privatemsg-header-subject a, .page-messages .privatemsg-header-lastupdated a,
+.page-messages .privatemsg-list-subject a {
+  color: #fff;
+  font-size: 19px;
+}
+/* line 257, ../scss/pages/_messages.scss */
+.page-messages .privatemsg-header-subject img, .page-messages .privatemsg-header-lastupdated img,
+.page-messages .privatemsg-list-subject img {
+  margin-left: 5px;
+}
+/* line 261, ../scss/pages/_messages.scss */
+.page-messages .privatemsg-list-date, .page-messages .empty.message {
+  color: #fff;
+  font-size: 19px;
+}
+/* line 265, ../scss/pages/_messages.scss */
+.page-messages .privatemsg-header-participants, .page-messages .privatemsg-list-participants {
+  display: none;
+}
+/* line 268, ../scss/pages/_messages.scss */
+.page-messages .warning {
+  margin: 30px 0 40px 0;
+}
+/* line 271, ../scss/pages/_messages.scss */
+.page-messages .privatemsg-message-participants {
+  margin: 18px 35px 0;
+  font-size: 19px;
+}
+/* line 275, ../scss/pages/_messages.scss */
+.page-messages .privatemsg-message {
+  max-width: 100%;
+  padding: 30px 35px 0;
+}
+/* line 279, ../scss/pages/_messages.scss */
+.page-messages .privatemsg-message-column {
+  width: 100%;
+  border-bottom: 2px solid #C5C5C5;
+  margin-bottom: 22px;
+}
+/* line 284, ../scss/pages/_messages.scss */
+.page-messages .privatemsg-author-name, .page-messages .privatemsg-message-date {
+  font-size: 19px;
+  color: #fff;
+}
+/* line 288, ../scss/pages/_messages.scss */
+.page-messages .privatemsg-message-information {
+  border-bottom: none;
+}
+/* line 291, ../scss/pages/_messages.scss */
+.page-messages .privatemsg-message-body {
+  margin-left: 0;
+}
+/* line 293, ../scss/pages/_messages.scss */
+.page-messages .privatemsg-message-body p {
+  font-size: 19px;
+}
+/* line 297, ../scss/pages/_messages.scss */
+.page-messages .privatemsg-reply {
+  color: #fff;
+}
+/* line 300, ../scss/pages/_messages.scss */
+.page-messages .text-format-wrapper {
+  margin-bottom: 26px;
+}
+/* line 302, ../scss/pages/_messages.scss */
+.page-messages .text-format-wrapper label {
+  font-size: 19px;
+  color: #fff;
+}
+/* line 307, ../scss/pages/_messages.scss */
+.page-messages .button, .page-messages .other-programme.view .other-programme .programme-content .sign-up a, .other-programme.view .other-programme .programme-content .sign-up .page-messages a {
+  margin-left: 0;
+  margin-right: 15px;
+}
+/* line 311, ../scss/pages/_messages.scss */
+.page-messages #edit-cancel {
+  padding: 6px 24px;
+  display: inline-block;
+  text-decoration: none;
+  box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+  text-transform: capitalize;
+  border-radius: 10px;
+  border: none;
+  line-height: 26px;
+}
+/* line 323, ../scss/pages/_messages.scss */
+.page-messages .privatemsg-message-actions {
+  list-style: none;
+  margin: 28px 0;
+}
+/* line 326, ../scss/pages/_messages.scss */
+.page-messages .privatemsg-message-actions a {
+  padding: 6px 24px;
+  display: inline-block;
+  text-decoration: none;
+  box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+  text-transform: capitalize;
+  border-radius: 10px;
+  border: none;
+  line-height: 26px;
+}
+
+/* line 20, ../scss/base/_mixins.scss */
+.cs-default .chosen-drop * {
+  font-family: "McLaren", cursive;
+  font-weight: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  -moz-font-smoothing: grayscale;
+}
+/* line 29, ../scss/base/_mixins.scss */
+.cs-classic .chosen-drop * {
+  font-family: "Architects Daughter", cursive;
+  font-weight: 700;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  -moz-font-smoothing: grayscale;
+}
+/* line 38, ../scss/base/_mixins.scss */
+.cs-elegant .chosen-drop * {
+  font-family: "Margarine", cursive;
+  font-weight: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  -moz-font-smoothing: grayscale;
+}
+/* line 151, ../scss/base/_mixins.scss */
+.cs-default .chosen-drop * {
+  font-size: 17px;
+}
+/* line 155, ../scss/base/_mixins.scss */
+.cs-classic .chosen-drop *, .cs-elegant .chosen-drop * {
+  font-size: 19px;
+}
+/* line 344, ../scss/pages/_messages.scss */
+.page-messages.cs-default .chosen-drop {
+  top: 40px;
+  color: #000;
+}
+/* line 349, ../scss/pages/_messages.scss */
+.page-messages.cs-classic .chosen-drop {
+  top: 40px;
+  color: #fff;
+}
+/* line 354, ../scss/pages/_messages.scss */
+.page-messages.cs-elegant .chosen-drop {
+  top: 40px;
   color: #fff;
 }
 
+/* line 364, ../scss/pages/_messages.scss */
+.page-messages.cs-default .pagination.pager li.current a, .page-messages.cs-classic .pagination.pager li.current a, .page-messages.cs-elegant .pagination.pager li.current a {
+  background: #fdeb52;
+  color: #000;
+}
+/* line 373, ../scss/pages/_messages.scss */
+.page-messages.cs-default .pagination.pager li a:hover, .page-messages.cs-classic .pagination.pager li a:hover, .page-messages.cs-elegant .pagination.pager li a:hover, .page-messages.cs-default .pagination.pager li a:focus, .page-messages.cs-classic .pagination.pager li a:focus, .page-messages.cs-elegant .pagination.pager li a:focus {
+  background: #fdeb52;
+  color: #000;
+}
+
+@media all and (max-width: 767px) {
+  /* line 386, ../scss/pages/_messages.scss */
+  .page-messages .action-links {
+    display: none !important;
+  }
+  /* line 389, ../scss/pages/_messages.scss */
+  .page-messages .button-group {
+    margin-left: 10px;
+  }
+  /* line 393, ../scss/pages/_messages.scss */
+  .page-messages .container-inline button, .page-messages .container-inline .form-type-select {
+    margin-bottom: 20px !important;
+  }
+  /* line 397, ../scss/pages/_messages.scss */
+  .page-messages form {
+    padding: 0 10px;
+  }
+  /* line 402, ../scss/pages/_messages.scss */
+  .page-messages .privatemsg-header-subject a, .page-messages .privatemsg-header-lastupdated a,
+  .page-messages .privatemsg-list-subject a {
+    font-size: 14px;
+  }
+  /* line 405, ../scss/pages/_messages.scss */
+  .page-messages .privatemsg-header-subject img, .page-messages .privatemsg-header-lastupdated img,
+  .page-messages .privatemsg-list-subject img {
+    margin-left: 0;
+  }
+  /* line 409, ../scss/pages/_messages.scss */
+  .page-messages .privatemsg-author-name, .page-messages .privatemsg-message-date,
+  .page-messages .privatemsg-list-date, .page-messages .empty.message {
+    font-size: 14px;
+  }
+  /* line 413, ../scss/pages/_messages.scss */
+  .page-messages .privatemsg-message-participants {
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+  /* line 417, ../scss/pages/_messages.scss */
+  .page-messages .privatemsg-message {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  /* line 422, ../scss/pages/_messages.scss */
+  .page-messages .privatemsg-message-body p {
+    font-size: 14px;
+  }
+  /* line 427, ../scss/pages/_messages.scss */
+  .page-messages .text-format-wrapper label {
+    font-size: 14px;
+  }
+}
+@media all and (max-width: 1024px) {
+  /* line 436, ../scss/pages/_messages.scss */
+  .page-messages.cs-default .form-select {
+    font-family: "McLaren", cursive;
+    font-weight: normal;
+    font-size: 17px;
+    background: #fdeb52;
+    color: #000;
+  }
+  /* line 443, ../scss/pages/_messages.scss */
+  .page-messages.cs-classic .form-select {
+    font-family: "Architects Daughter", cursive;
+    font-weight: 700;
+    font-size: 18px;
+    background: #ff9f1c;
+    color: #fff;
+  }
+  /* line 450, ../scss/pages/_messages.scss */
+  .page-messages.cs-elegant .form-select {
+    font-family: "Margarine", cursive;
+    font-weight: normal;
+    font-size: 19px;
+    background: #ff9f1c;
+    color: #fff;
+  }
+
+  /* line 459, ../scss/pages/_messages.scss */
+  .page-messages .form-select {
+    padding: 6px 24px;
+    display: inline-block;
+    text-decoration: none;
+    box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+    text-transform: capitalize;
+    border-radius: 10px;
+    border: none;
+    line-height: 26px;
+  }
+}
 /* line 3, ../scss/pages/_photo-vedios.scss */
 .view.video-block .view-content {
   -webkit-flex-wrap: wrap;
