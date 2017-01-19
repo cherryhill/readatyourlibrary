@@ -30,9 +30,10 @@
     border-radius: 15px 15px 0 0;
     padding-left: 35px;
     text-transform: capitalize;
+    @extend .white-text;
   }
 
-  @extend .white-text;
+
 
   @include primary_fonts;
 
@@ -128,7 +129,10 @@
               font-size: 22px;
             }
 
-            .cs-classic &, .cs-elegant & {
+            .cs-classic & {
+              font-size: 24px;
+            }
+             .cs-elegant & {
               font-size: 25px;
             }
           }
@@ -143,7 +147,10 @@
               font-size: 26px;
             }
 
-            .cs-classic &, .cs-elegant & {
+            .cs-classic & {
+              font-size: 27px;
+            }
+             .cs-elegant & {
               font-size: 28px;
             }
           }
@@ -247,7 +254,10 @@
               @include primary_fonts;
 
               &:nth-of-type(2) {
-                .cs-classic &, .cs-elegant & {
+                .cs-classic & {
+                  font-size: 14px;
+                }
+                 .cs-elegant & {
                   font-size: 15px;
                 }
 
@@ -302,7 +312,12 @@
                 line-height: 17px;
               }
 
-              .cs-elegant &, .cs-classic & {
+              .cs-elegant & {
+                font-size: 14px;
+                line-height: 18px;
+              }
+
+               .cs-classic & {
                 font-size: 15px;
                 line-height: 19px;
               }
