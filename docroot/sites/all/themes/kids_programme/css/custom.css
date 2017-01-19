@@ -13171,6 +13171,108 @@ p.more-link:after {
   color: #fff;
 }
 
+/* line 3, ../scss/pages/_photo-vedios.scss */
+.view.video-block .view-content {
+  -webkit-flex-wrap: wrap;
+  flex-wrap: wrap;
+  display: -webkit-flex;
+  display: flex;
+  width: calc(100% + 30px);
+  margin-left: -15px;
+}
+/* line 10, ../scss/pages/_photo-vedios.scss */
+.view.video-block .view-content .views-row {
+  margin-bottom: 30px;
+  flex: 0 0 25%;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+/* line 12, ../scss/pages/_photo-vedios.scss */
+.view.video-block .view-content .views-row .vedio-wrapper {
+  width: 100%;
+  height: 0;
+  padding-bottom: 56.25%;
+  position: relative;
+}
+/* line 17, ../scss/pages/_photo-vedios.scss */
+.view.video-block .view-content .views-row .vedio-wrapper iframe, .view.video-block .view-content .views-row .vedio-wrapper object, .view.video-block .view-content .views-row .vedio-wrapper embed {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+/* line 25, ../scss/pages/_photo-vedios.scss */
+.view.video-block .view-content .views-row .description {
+  padding-top: 14px;
+  padding-bottom: 14px;
+}
+/* line 49, ../scss/base/_mixins.scss */
+.cs-default .view.video-block .view-content .views-row .description * {
+  font-family: "arial";
+  font-weight: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  -moz-font-smoothing: grayscale;
+}
+/* line 58, ../scss/base/_mixins.scss */
+.cs-classic .view.video-block .view-content .views-row .description * {
+  font-family: "PT Sans", sans-serif;
+  font-weight: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  -moz-font-smoothing: grayscale;
+}
+/* line 67, ../scss/base/_mixins.scss */
+.cs-elegant .view.video-block .view-content .views-row .description * {
+  font-family: "Open Sans", sans-serif;
+  font-weight: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  -moz-font-smoothing: grayscale;
+}
+/* line 32, ../scss/pages/_photo-vedios.scss */
+.cs-default .view.video-block .view-content .views-row .description * {
+  font-size: 12px;
+  line-height: 15px;
+}
+/* line 36, ../scss/pages/_photo-vedios.scss */
+.cs-classic .view.video-block .view-content .views-row .description *, .cs-elegant .view.video-block .view-content .views-row .description * {
+  font-size: 14px;
+  line-height: 16px;
+}
+/* line 44, ../scss/pages/_photo-vedios.scss */
+.view.video-block .view-content .views-row * {
+  width: 100%;
+}
+/* line 52, ../scss/pages/_photo-vedios.scss */
+.view.photos-block .view-content {
+  -webkit-flex-wrap: wrap;
+  flex-wrap: wrap;
+  display: -webkit-flex;
+  display: flex;
+  width: calc(100% + 50px);
+  margin-left: -25px;
+}
+/* line 59, ../scss/pages/_photo-vedios.scss */
+.view.photos-block .view-content .views-row {
+  flex: 0 0 33%;
+  padding-left: 25px;
+  padding-right: 25px;
+  margin-bottom: 30px;
+}
+/* line 64, ../scss/pages/_photo-vedios.scss */
+.view.photos-block .view-content .views-row .flickr-citation {
+  display: none;
+}
+/* line 67, ../scss/pages/_photo-vedios.scss */
+.view.photos-block .view-content .views-row * {
+  width: 100%;
+}
+
 /* line 1, ../scss/pages/_program.scss */
 #page-title {
   margin-top: 0;
@@ -14153,107 +14255,6 @@ th {
   .page-user-register .field-type-addressfield input {
     margin-bottom: 5px;
   }
-}
-/* line 3, ../scss/pages/photo-vedios.scss */
-.view.video-block .view-content {
-  -webkit-flex-wrap: wrap;
-  flex-wrap: wrap;
-  display: -webkit-flex;
-  display: flex;
-  width: calc(100% + 30px);
-  margin-left: -15px;
-}
-/* line 10, ../scss/pages/photo-vedios.scss */
-.view.video-block .view-content .views-row {
-  margin-bottom: 30px;
-  flex: 0 0 25%;
-  padding-left: 15px;
-  padding-right: 15px;
-}
-/* line 12, ../scss/pages/photo-vedios.scss */
-.view.video-block .view-content .views-row .vedio-wrapper {
-  width: 100%;
-  height: 0;
-  padding-bottom: 56.25%;
-  position: relative;
-}
-/* line 17, ../scss/pages/photo-vedios.scss */
-.view.video-block .view-content .views-row .vedio-wrapper iframe, .view.video-block .view-content .views-row .vedio-wrapper object, .view.video-block .view-content .views-row .vedio-wrapper embed {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-/* line 25, ../scss/pages/photo-vedios.scss */
-.view.video-block .view-content .views-row .description {
-  padding-top: 14px;
-  padding-bottom: 14px;
-}
-/* line 49, ../scss/base/_mixins.scss */
-.cs-default .view.video-block .view-content .views-row .description * {
-  font-family: "arial";
-  font-weight: normal;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-rendering: optimizeLegibility;
-  -moz-font-smoothing: grayscale;
-}
-/* line 58, ../scss/base/_mixins.scss */
-.cs-classic .view.video-block .view-content .views-row .description * {
-  font-family: "PT Sans", sans-serif;
-  font-weight: normal;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-rendering: optimizeLegibility;
-  -moz-font-smoothing: grayscale;
-}
-/* line 67, ../scss/base/_mixins.scss */
-.cs-elegant .view.video-block .view-content .views-row .description * {
-  font-family: "Open Sans", sans-serif;
-  font-weight: normal;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-rendering: optimizeLegibility;
-  -moz-font-smoothing: grayscale;
-}
-/* line 32, ../scss/pages/photo-vedios.scss */
-.cs-default .view.video-block .view-content .views-row .description * {
-  font-size: 12px;
-  line-height: 15px;
-}
-/* line 36, ../scss/pages/photo-vedios.scss */
-.cs-classic .view.video-block .view-content .views-row .description *, .cs-elegant .view.video-block .view-content .views-row .description * {
-  font-size: 14px;
-  line-height: 16px;
-}
-/* line 44, ../scss/pages/photo-vedios.scss */
-.view.video-block .view-content .views-row * {
-  width: 100%;
-}
-/* line 52, ../scss/pages/photo-vedios.scss */
-.view.photos-block .view-content {
-  -webkit-flex-wrap: wrap;
-  flex-wrap: wrap;
-  display: -webkit-flex;
-  display: flex;
-  width: calc(100% + 50px);
-  margin-left: -25px;
-}
-/* line 59, ../scss/pages/photo-vedios.scss */
-.view.photos-block .view-content .views-row {
-  flex: 0 0 33%;
-  padding-left: 25px;
-  padding-right: 25px;
-  margin-bottom: 30px;
-}
-/* line 64, ../scss/pages/photo-vedios.scss */
-.view.photos-block .view-content .views-row .flickr-citation {
-  display: none;
-}
-/* line 67, ../scss/pages/photo-vedios.scss */
-.view.photos-block .view-content .views-row * {
-  width: 100%;
 }
 
 /*# sourceMappingURL=custom.css.map */
