@@ -1808,7 +1808,7 @@ function _play_library_program_add_points_to_rewards($activity_ids, $points_to_a
   }
 
   // Array of reward ids associated with reward.
-  $rewards_associated = pl_get_activity_reward_ids($activity_id, $account_uid);
+  // $rewards_associated = pl_get_activity_reward_ids($activity_id, $account_uid);
    //Get user Age
   $dob_query = db_select('profile', 'pf');
   $dob_query->LEFTJOIN('field_data_field_user_birthday', 'fdfub', 'fdfub.entity_id = pf.pid');
@@ -1862,8 +1862,8 @@ function _play_library_program_add_points_to_rewards($activity_ids, $points_to_a
       if (strtotime($value->field_dates_reward_value)<= time() && strtotime($value->field_dates_reward_value2) >= time()){
         $repeatable = $value->field_repeatable_value;
         $max_repeat = $value->field_maximum_num_reward_value;
-        $receieved_rewards = pl_receieved_rewards($account_uid, $reward_id);
         $reward_id = $value->id;
+        $receieved_rewards = pl_receieved_rewards($account_uid, $reward_id);
         //get max repeat only if repeatable flag set
         if ($repeatable == 0){
           $max_repeat = 1;
@@ -1906,7 +1906,7 @@ function _play_library_program_send_pm_message($account_id, $notification_subjec
       global $user;
       $account_id = $user->uid;
   }
-  
+
   //Get Author id set on config page if not set
   if($author_uid == NULL){
   	$author = variable_get('pm_author');

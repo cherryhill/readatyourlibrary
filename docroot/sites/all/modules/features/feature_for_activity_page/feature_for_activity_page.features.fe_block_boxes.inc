@@ -15,7 +15,7 @@ function feature_for_activity_page_default_fe_block_boxes() {
   $fe_block_boxes->format = 'full_html';
   $fe_block_boxes->machine_name = 'create_your_own_booklist_activit';
   $fe_block_boxes->body = '<p>You can also share lists of favorite books</p>
-<div><a class="button" href="node/add/review-book">Create a Booklist</a></div>';
+<div><a class="button" href="node/add/booklist">Create a Booklist</a></div>';
 
   $export['create_your_own_booklist_activit'] = $fe_block_boxes;
 

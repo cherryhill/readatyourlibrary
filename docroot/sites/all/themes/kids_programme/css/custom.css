@@ -124,7 +124,7 @@ a:hover {
  * contexts in Firefox 4+, Safari 5, and Chrome.
  */
 /* line 122, ../scss/_normalize.scss */
-h1, .font-stroke-main {
+h1, .font-stroke-main, .activity-page-kids .view-header p:nth-of-type(1), .other-programme.view .view-header * {
   font-size: 2em;
   margin: 0.67em 0;
 }
@@ -2017,6 +2017,8 @@ ol,
 li,
 h1,
 .font-stroke-main,
+.activity-page-kids .view-header p:nth-of-type(1),
+.other-programme.view .view-header *,
 h2,
 h3,
 h4,
@@ -2068,7 +2070,7 @@ p aside {
 
 /* Default header styles */
 /* line 182, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_type.scss */
-h1, .font-stroke-main, h2, h3, h4, h5, h6 {
+h1, .font-stroke-main, .activity-page-kids .view-header p:nth-of-type(1), .other-programme.view .view-header *, h2, h3, h4, h5, h6 {
   font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
   font-weight: bold;
   font-style: normal;
@@ -2079,14 +2081,14 @@ h1, .font-stroke-main, h2, h3, h4, h5, h6 {
   line-height: 1.2125em;
 }
 /* line 192, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_type.scss */
-h1 small, .font-stroke-main small, h2 small, h3 small, h4 small, h5 small, h6 small {
+h1 small, .font-stroke-main small, .activity-page-kids .view-header p:nth-of-type(1) small, .other-programme.view .view-header * small, h2 small, h3 small, h4 small, h5 small, h6 small {
   font-size: 60%;
   color: #6f6f6f;
   line-height: 0;
 }
 
 /* line 199, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_type.scss */
-h1, .font-stroke-main {
+h1, .font-stroke-main, .activity-page-kids .view-header p:nth-of-type(1), .other-programme.view .view-header * {
   font-size: 2.125em;
 }
 
@@ -2302,12 +2304,12 @@ blockquote p {
 
 @media only screen and (min-width: 768px) {
   /* line 368, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_type.scss */
-  h1, .font-stroke-main, h2, h3, h4, h5, h6 {
+  h1, .font-stroke-main, .activity-page-kids .view-header p:nth-of-type(1), .other-programme.view .view-header *, h2, h3, h4, h5, h6 {
     line-height: 1.4;
   }
 
   /* line 369, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_type.scss */
-  h1, .font-stroke-main {
+  h1, .font-stroke-main, .activity-page-kids .view-header p:nth-of-type(1), .other-programme.view .view-header * {
     font-size: 2.75em;
   }
 
@@ -2432,7 +2434,7 @@ blockquote p {
   }
 }
 /* line 171, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_buttons.scss */
-button, .button {
+button, .button, .other-programme.view .other-programme .programme-content .sign-up a {
   border-style: solid;
   border-width: 1px;
   cursor: pointer;
@@ -2454,57 +2456,57 @@ button, .button {
   color: #fff;
 }
 /* line 121, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_buttons.scss */
-button:hover, button:focus, .button:hover, .button:focus {
+button:hover, button:focus, .button:hover, .other-programme.view .other-programme .programme-content .sign-up a:hover, .button:focus, .other-programme.view .other-programme .programme-content .sign-up a:focus {
   background-color: #2284a1;
 }
 /* line 132, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_buttons.scss */
-button:hover, button:focus, .button:hover, .button:focus {
+button:hover, button:focus, .button:hover, .other-programme.view .other-programme .programme-content .sign-up a:hover, .button:focus, .other-programme.view .other-programme .programme-content .sign-up a:focus {
   color: #fff;
 }
 /* line 176, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_buttons.scss */
-button.secondary, .button.secondary {
+button.secondary, .button.secondary, .other-programme.view .other-programme .programme-content .sign-up a.secondary {
   background-color: #e9e9e9;
   border-color: #d0d0d0;
   color: #333;
 }
 /* line 121, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_buttons.scss */
-button.secondary:hover, button.secondary:focus, .button.secondary:hover, .button.secondary:focus {
+button.secondary:hover, button.secondary:focus, .button.secondary:hover, .other-programme.view .other-programme .programme-content .sign-up a.secondary:hover, .button.secondary:focus, .other-programme.view .other-programme .programme-content .sign-up a.secondary:focus {
   background-color: #d0d0d0;
 }
 /* line 127, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_buttons.scss */
-button.secondary:hover, button.secondary:focus, .button.secondary:hover, .button.secondary:focus {
+button.secondary:hover, button.secondary:focus, .button.secondary:hover, .other-programme.view .other-programme .programme-content .sign-up a.secondary:hover, .button.secondary:focus, .other-programme.view .other-programme .programme-content .sign-up a.secondary:focus {
   color: #333;
 }
 /* line 177, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_buttons.scss */
-button.success, .button.success {
+button.success, .button.success, .other-programme.view .other-programme .programme-content .sign-up a.success {
   background-color: #5da423;
   border-color: #457a1a;
   color: #fff;
 }
 /* line 121, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_buttons.scss */
-button.success:hover, button.success:focus, .button.success:hover, .button.success:focus {
+button.success:hover, button.success:focus, .button.success:hover, .other-programme.view .other-programme .programme-content .sign-up a.success:hover, .button.success:focus, .other-programme.view .other-programme .programme-content .sign-up a.success:focus {
   background-color: #457a1a;
 }
 /* line 132, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_buttons.scss */
-button.success:hover, button.success:focus, .button.success:hover, .button.success:focus {
+button.success:hover, button.success:focus, .button.success:hover, .other-programme.view .other-programme .programme-content .sign-up a.success:hover, .button.success:focus, .other-programme.view .other-programme .programme-content .sign-up a.success:focus {
   color: #fff;
 }
 /* line 178, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_buttons.scss */
-button.alert, .button.alert {
+button.alert, .button.alert, .other-programme.view .other-programme .programme-content .sign-up a.alert {
   background-color: #c60f13;
   border-color: #970b0e;
   color: #fff;
 }
 /* line 121, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_buttons.scss */
-button.alert:hover, button.alert:focus, .button.alert:hover, .button.alert:focus {
+button.alert:hover, button.alert:focus, .button.alert:hover, .other-programme.view .other-programme .programme-content .sign-up a.alert:hover, .button.alert:focus, .other-programme.view .other-programme .programme-content .sign-up a.alert:focus {
   background-color: #970b0e;
 }
 /* line 132, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_buttons.scss */
-button.alert:hover, button.alert:focus, .button.alert:hover, .button.alert:focus {
+button.alert:hover, button.alert:focus, .button.alert:hover, .other-programme.view .other-programme .programme-content .sign-up a.alert:hover, .button.alert:focus, .other-programme.view .other-programme .programme-content .sign-up a.alert:focus {
   color: #fff;
 }
 /* line 180, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_buttons.scss */
-button.large, .button.large {
+button.large, .button.large, .other-programme.view .other-programme .programme-content .sign-up a.large {
   padding-top: 1em;
   padding-right: 2em;
   padding-bottom: 1.0625em;
@@ -2512,7 +2514,7 @@ button.large, .button.large {
   font-size: 1.25em;
 }
 /* line 181, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_buttons.scss */
-button.small, .button.small {
+button.small, .button.small, .other-programme.view .other-programme .programme-content .sign-up a.small {
   padding-top: 0.5625em;
   padding-right: 1.125em;
   padding-bottom: 0.625em;
@@ -2520,7 +2522,7 @@ button.small, .button.small {
   font-size: 0.8125em;
 }
 /* line 182, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_buttons.scss */
-button.tiny, .button.tiny {
+button.tiny, .button.tiny, .other-programme.view .other-programme .programme-content .sign-up a.tiny {
   padding-top: 0.4375em;
   padding-right: 0.875em;
   padding-bottom: 0.5em;
@@ -2528,23 +2530,23 @@ button.tiny, .button.tiny {
   font-size: 0.6875em;
 }
 /* line 183, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_buttons.scss */
-button.expand, .button.expand {
+button.expand, .button.expand, .other-programme.view .other-programme .programme-content .sign-up a.expand {
   padding-right: 0;
   padding-left: 0;
   width: 100%;
 }
 /* line 185, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_buttons.scss */
-button.left-align, .button.left-align {
+button.left-align, .button.left-align, .other-programme.view .other-programme .programme-content .sign-up a.left-align {
   text-align: left;
   text-indent: 0.75em;
 }
 /* line 186, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_buttons.scss */
-button.right-align, .button.right-align {
+button.right-align, .button.right-align, .other-programme.view .other-programme .programme-content .sign-up a.right-align {
   text-align: right;
   padding-right: 0.75em;
 }
 /* line 188, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_buttons.scss */
-button.disabled, button[disabled], .button.disabled, .button[disabled] {
+button.disabled, button[disabled], .button.disabled, .other-programme.view .other-programme .programme-content .sign-up a.disabled, .button[disabled], .other-programme.view .other-programme .programme-content .sign-up a[disabled] {
   background-color: #2ba6cb;
   border-color: #2284a1;
   color: #fff;
@@ -2554,19 +2556,19 @@ button.disabled, button[disabled], .button.disabled, .button[disabled] {
   box-shadow: none;
 }
 /* line 121, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_buttons.scss */
-button.disabled:hover, button.disabled:focus, button[disabled]:hover, button[disabled]:focus, .button.disabled:hover, .button.disabled:focus, .button[disabled]:hover, .button[disabled]:focus {
+button.disabled:hover, button.disabled:focus, button[disabled]:hover, button[disabled]:focus, .button.disabled:hover, .other-programme.view .other-programme .programme-content .sign-up a.disabled:hover, .button.disabled:focus, .other-programme.view .other-programme .programme-content .sign-up a.disabled:focus, .button[disabled]:hover, .other-programme.view .other-programme .programme-content .sign-up a[disabled]:hover, .button[disabled]:focus, .other-programme.view .other-programme .programme-content .sign-up a[disabled]:focus {
   background-color: #2284a1;
 }
 /* line 132, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_buttons.scss */
-button.disabled:hover, button.disabled:focus, button[disabled]:hover, button[disabled]:focus, .button.disabled:hover, .button.disabled:focus, .button[disabled]:hover, .button[disabled]:focus {
+button.disabled:hover, button.disabled:focus, button[disabled]:hover, button[disabled]:focus, .button.disabled:hover, .other-programme.view .other-programme .programme-content .sign-up a.disabled:hover, .button.disabled:focus, .other-programme.view .other-programme .programme-content .sign-up a.disabled:focus, .button[disabled]:hover, .other-programme.view .other-programme .programme-content .sign-up a[disabled]:hover, .button[disabled]:focus, .other-programme.view .other-programme .programme-content .sign-up a[disabled]:focus {
   color: #fff;
 }
 /* line 145, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_buttons.scss */
-button.disabled:hover, button.disabled:focus, button[disabled]:hover, button[disabled]:focus, .button.disabled:hover, .button.disabled:focus, .button[disabled]:hover, .button[disabled]:focus {
+button.disabled:hover, button.disabled:focus, button[disabled]:hover, button[disabled]:focus, .button.disabled:hover, .other-programme.view .other-programme .programme-content .sign-up a.disabled:hover, .button.disabled:focus, .other-programme.view .other-programme .programme-content .sign-up a.disabled:focus, .button[disabled]:hover, .other-programme.view .other-programme .programme-content .sign-up a[disabled]:hover, .button[disabled]:focus, .other-programme.view .other-programme .programme-content .sign-up a[disabled]:focus {
   background-color: #2ba6cb;
 }
 /* line 189, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_buttons.scss */
-button.disabled.secondary, button[disabled].secondary, .button.disabled.secondary, .button[disabled].secondary {
+button.disabled.secondary, button[disabled].secondary, .button.disabled.secondary, .other-programme.view .other-programme .programme-content .sign-up a.disabled.secondary, .button[disabled].secondary, .other-programme.view .other-programme .programme-content .sign-up a[disabled].secondary {
   background-color: #e9e9e9;
   border-color: #d0d0d0;
   color: #333;
@@ -2576,19 +2578,19 @@ button.disabled.secondary, button[disabled].secondary, .button.disabled.secondar
   box-shadow: none;
 }
 /* line 121, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_buttons.scss */
-button.disabled.secondary:hover, button.disabled.secondary:focus, button[disabled].secondary:hover, button[disabled].secondary:focus, .button.disabled.secondary:hover, .button.disabled.secondary:focus, .button[disabled].secondary:hover, .button[disabled].secondary:focus {
+button.disabled.secondary:hover, button.disabled.secondary:focus, button[disabled].secondary:hover, button[disabled].secondary:focus, .button.disabled.secondary:hover, .other-programme.view .other-programme .programme-content .sign-up a.disabled.secondary:hover, .button.disabled.secondary:focus, .other-programme.view .other-programme .programme-content .sign-up a.disabled.secondary:focus, .button[disabled].secondary:hover, .other-programme.view .other-programme .programme-content .sign-up a[disabled].secondary:hover, .button[disabled].secondary:focus, .other-programme.view .other-programme .programme-content .sign-up a[disabled].secondary:focus {
   background-color: #d0d0d0;
 }
 /* line 127, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_buttons.scss */
-button.disabled.secondary:hover, button.disabled.secondary:focus, button[disabled].secondary:hover, button[disabled].secondary:focus, .button.disabled.secondary:hover, .button.disabled.secondary:focus, .button[disabled].secondary:hover, .button[disabled].secondary:focus {
+button.disabled.secondary:hover, button.disabled.secondary:focus, button[disabled].secondary:hover, button[disabled].secondary:focus, .button.disabled.secondary:hover, .other-programme.view .other-programme .programme-content .sign-up a.disabled.secondary:hover, .button.disabled.secondary:focus, .other-programme.view .other-programme .programme-content .sign-up a.disabled.secondary:focus, .button[disabled].secondary:hover, .other-programme.view .other-programme .programme-content .sign-up a[disabled].secondary:hover, .button[disabled].secondary:focus, .other-programme.view .other-programme .programme-content .sign-up a[disabled].secondary:focus {
   color: #333;
 }
 /* line 145, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_buttons.scss */
-button.disabled.secondary:hover, button.disabled.secondary:focus, button[disabled].secondary:hover, button[disabled].secondary:focus, .button.disabled.secondary:hover, .button.disabled.secondary:focus, .button[disabled].secondary:hover, .button[disabled].secondary:focus {
+button.disabled.secondary:hover, button.disabled.secondary:focus, button[disabled].secondary:hover, button[disabled].secondary:focus, .button.disabled.secondary:hover, .other-programme.view .other-programme .programme-content .sign-up a.disabled.secondary:hover, .button.disabled.secondary:focus, .other-programme.view .other-programme .programme-content .sign-up a.disabled.secondary:focus, .button[disabled].secondary:hover, .other-programme.view .other-programme .programme-content .sign-up a[disabled].secondary:hover, .button[disabled].secondary:focus, .other-programme.view .other-programme .programme-content .sign-up a[disabled].secondary:focus {
   background-color: #e9e9e9;
 }
 /* line 190, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_buttons.scss */
-button.disabled.success, button[disabled].success, .button.disabled.success, .button[disabled].success {
+button.disabled.success, button[disabled].success, .button.disabled.success, .other-programme.view .other-programme .programme-content .sign-up a.disabled.success, .button[disabled].success, .other-programme.view .other-programme .programme-content .sign-up a[disabled].success {
   background-color: #5da423;
   border-color: #457a1a;
   color: #fff;
@@ -2598,19 +2600,19 @@ button.disabled.success, button[disabled].success, .button.disabled.success, .bu
   box-shadow: none;
 }
 /* line 121, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_buttons.scss */
-button.disabled.success:hover, button.disabled.success:focus, button[disabled].success:hover, button[disabled].success:focus, .button.disabled.success:hover, .button.disabled.success:focus, .button[disabled].success:hover, .button[disabled].success:focus {
+button.disabled.success:hover, button.disabled.success:focus, button[disabled].success:hover, button[disabled].success:focus, .button.disabled.success:hover, .other-programme.view .other-programme .programme-content .sign-up a.disabled.success:hover, .button.disabled.success:focus, .other-programme.view .other-programme .programme-content .sign-up a.disabled.success:focus, .button[disabled].success:hover, .other-programme.view .other-programme .programme-content .sign-up a[disabled].success:hover, .button[disabled].success:focus, .other-programme.view .other-programme .programme-content .sign-up a[disabled].success:focus {
   background-color: #457a1a;
 }
 /* line 132, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_buttons.scss */
-button.disabled.success:hover, button.disabled.success:focus, button[disabled].success:hover, button[disabled].success:focus, .button.disabled.success:hover, .button.disabled.success:focus, .button[disabled].success:hover, .button[disabled].success:focus {
+button.disabled.success:hover, button.disabled.success:focus, button[disabled].success:hover, button[disabled].success:focus, .button.disabled.success:hover, .other-programme.view .other-programme .programme-content .sign-up a.disabled.success:hover, .button.disabled.success:focus, .other-programme.view .other-programme .programme-content .sign-up a.disabled.success:focus, .button[disabled].success:hover, .other-programme.view .other-programme .programme-content .sign-up a[disabled].success:hover, .button[disabled].success:focus, .other-programme.view .other-programme .programme-content .sign-up a[disabled].success:focus {
   color: #fff;
 }
 /* line 145, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_buttons.scss */
-button.disabled.success:hover, button.disabled.success:focus, button[disabled].success:hover, button[disabled].success:focus, .button.disabled.success:hover, .button.disabled.success:focus, .button[disabled].success:hover, .button[disabled].success:focus {
+button.disabled.success:hover, button.disabled.success:focus, button[disabled].success:hover, button[disabled].success:focus, .button.disabled.success:hover, .other-programme.view .other-programme .programme-content .sign-up a.disabled.success:hover, .button.disabled.success:focus, .other-programme.view .other-programme .programme-content .sign-up a.disabled.success:focus, .button[disabled].success:hover, .other-programme.view .other-programme .programme-content .sign-up a[disabled].success:hover, .button[disabled].success:focus, .other-programme.view .other-programme .programme-content .sign-up a[disabled].success:focus {
   background-color: #5da423;
 }
 /* line 191, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_buttons.scss */
-button.disabled.alert, button[disabled].alert, .button.disabled.alert, .button[disabled].alert {
+button.disabled.alert, button[disabled].alert, .button.disabled.alert, .other-programme.view .other-programme .programme-content .sign-up a.disabled.alert, .button[disabled].alert, .other-programme.view .other-programme .programme-content .sign-up a[disabled].alert {
   background-color: #c60f13;
   border-color: #970b0e;
   color: #fff;
@@ -2620,38 +2622,38 @@ button.disabled.alert, button[disabled].alert, .button.disabled.alert, .button[d
   box-shadow: none;
 }
 /* line 121, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_buttons.scss */
-button.disabled.alert:hover, button.disabled.alert:focus, button[disabled].alert:hover, button[disabled].alert:focus, .button.disabled.alert:hover, .button.disabled.alert:focus, .button[disabled].alert:hover, .button[disabled].alert:focus {
+button.disabled.alert:hover, button.disabled.alert:focus, button[disabled].alert:hover, button[disabled].alert:focus, .button.disabled.alert:hover, .other-programme.view .other-programme .programme-content .sign-up a.disabled.alert:hover, .button.disabled.alert:focus, .other-programme.view .other-programme .programme-content .sign-up a.disabled.alert:focus, .button[disabled].alert:hover, .other-programme.view .other-programme .programme-content .sign-up a[disabled].alert:hover, .button[disabled].alert:focus, .other-programme.view .other-programme .programme-content .sign-up a[disabled].alert:focus {
   background-color: #970b0e;
 }
 /* line 132, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_buttons.scss */
-button.disabled.alert:hover, button.disabled.alert:focus, button[disabled].alert:hover, button[disabled].alert:focus, .button.disabled.alert:hover, .button.disabled.alert:focus, .button[disabled].alert:hover, .button[disabled].alert:focus {
+button.disabled.alert:hover, button.disabled.alert:focus, button[disabled].alert:hover, button[disabled].alert:focus, .button.disabled.alert:hover, .other-programme.view .other-programme .programme-content .sign-up a.disabled.alert:hover, .button.disabled.alert:focus, .other-programme.view .other-programme .programme-content .sign-up a.disabled.alert:focus, .button[disabled].alert:hover, .other-programme.view .other-programme .programme-content .sign-up a[disabled].alert:hover, .button[disabled].alert:focus, .other-programme.view .other-programme .programme-content .sign-up a[disabled].alert:focus {
   color: #fff;
 }
 /* line 145, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_buttons.scss */
-button.disabled.alert:hover, button.disabled.alert:focus, button[disabled].alert:hover, button[disabled].alert:focus, .button.disabled.alert:hover, .button.disabled.alert:focus, .button[disabled].alert:hover, .button[disabled].alert:focus {
+button.disabled.alert:hover, button.disabled.alert:focus, button[disabled].alert:hover, button[disabled].alert:focus, .button.disabled.alert:hover, .other-programme.view .other-programme .programme-content .sign-up a.disabled.alert:hover, .button.disabled.alert:focus, .other-programme.view .other-programme .programme-content .sign-up a.disabled.alert:focus, .button[disabled].alert:hover, .other-programme.view .other-programme .programme-content .sign-up a[disabled].alert:hover, .button[disabled].alert:focus, .other-programme.view .other-programme .programme-content .sign-up a[disabled].alert:focus {
   background-color: #c60f13;
 }
 
 /* line 196, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_buttons.scss */
-button, .button {
+button, .button, .other-programme.view .other-programme .programme-content .sign-up a {
   padding-top: 0.8125em;
   padding-bottom: 0.75em;
   -webkit-appearance: none;
 }
 /* line 198, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_buttons.scss */
-button.tiny, .button.tiny {
+button.tiny, .button.tiny, .other-programme.view .other-programme .programme-content .sign-up a.tiny {
   padding-top: 0.5em;
   padding-bottom: 0.4375em;
   -webkit-appearance: none;
 }
 /* line 199, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_buttons.scss */
-button.small, .button.small {
+button.small, .button.small, .other-programme.view .other-programme .programme-content .sign-up a.small {
   padding-top: 0.625em;
   padding-bottom: 0.5625em;
   -webkit-appearance: none;
 }
 /* line 200, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_buttons.scss */
-button.large, .button.large {
+button.large, .button.large, .other-programme.view .other-programme .programme-content .sign-up a.large {
   padding-top: 1.03125em;
   padding-bottom: 1.03125em;
   -webkit-appearance: none;
@@ -2659,7 +2661,7 @@ button.large, .button.large {
 
 @media only screen {
   /* line 206, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_buttons.scss */
-  button, .button {
+  button, .button, .other-programme.view .other-programme .programme-content .sign-up a {
     -webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5) inset;
     box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5) inset;
     -webkit-transition: background-color 300ms ease-out;
@@ -2667,24 +2669,24 @@ button.large, .button.large {
     transition: background-color 300ms ease-out;
   }
   /* line 68, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_global.scss */
-  button:active, .button:active {
+  button:active, .button:active, .other-programme.view .other-programme .programme-content .sign-up a:active {
     -webkit-box-shadow: 0 1px 0 rgba(0, 0, 0, 0.2) inset;
     box-shadow: 0 1px 0 rgba(0, 0, 0, 0.2) inset;
   }
   /* line 214, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_buttons.scss */
-  button.radius, .button.radius {
+  button.radius, .button.radius, .other-programme.view .other-programme .programme-content .sign-up a.radius {
     -webkit-border-radius: 3px;
     border-radius: 3px;
   }
   /* line 215, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_buttons.scss */
-  button.round, .button.round {
+  button.round, .button.round, .other-programme.view .other-programme .programme-content .sign-up a.round {
     -webkit-border-radius: 1000px;
     border-radius: 1000px;
   }
 }
 @media only screen and (min-width: 768px) {
   /* line 223, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_buttons.scss */
-  button, .button {
+  button, .button, .other-programme.view .other-programme .programme-content .sign-up a {
     display: inline-block;
   }
 }
@@ -2776,7 +2778,7 @@ label small {
 
 /* Adjust padding, alignment and radius if pre/post element is a button */
 /* line 285, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_forms.scss */
-.postfix.button {
+.postfix.button, .other-programme.view .other-programme .programme-content .sign-up a.postfix {
   padding-left: 0;
   padding-right: 0;
   padding-top: 0;
@@ -2786,7 +2788,7 @@ label small {
 }
 
 /* line 286, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_forms.scss */
-.prefix.button {
+.prefix.button, .other-programme.view .other-programme .programme-content .sign-up a.prefix {
   padding-left: 0;
   padding-right: 0;
   padding-top: 0;
@@ -2796,7 +2798,7 @@ label small {
 }
 
 /* line 288, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_forms.scss */
-.prefix.button.radius {
+.prefix.button.radius, .other-programme.view .other-programme .programme-content .sign-up a.prefix.radius {
   -webkit-border-radius: 0;
   border-radius: 0;
   -moz-border-radius-bottomleft: 3px;
@@ -2808,7 +2810,7 @@ label small {
 }
 
 /* line 289, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_forms.scss */
-.postfix.button.radius {
+.postfix.button.radius, .other-programme.view .other-programme .programme-content .sign-up a.postfix.radius {
   -webkit-border-radius: 0;
   border-radius: 0;
   -moz-border-radius-topright: 3px;
@@ -2820,7 +2822,7 @@ label small {
 }
 
 /* line 290, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_forms.scss */
-.prefix.button.round {
+.prefix.button.round, .other-programme.view .other-programme .programme-content .sign-up a.prefix.round {
   -webkit-border-radius: 0;
   border-radius: 0;
   -moz-border-radius-bottomleft: 1000px;
@@ -2832,7 +2834,7 @@ label small {
 }
 
 /* line 291, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_forms.scss */
-.postfix.button.round {
+.postfix.button.round, .other-programme.view .other-programme .programme-content .sign-up a.postfix.round {
   -webkit-border-radius: 0;
   border-radius: 0;
   -moz-border-radius-topright: 1000px;
@@ -3168,7 +3170,7 @@ label.error {
   margin-left: 0;
 }
 /* line 50, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_button-groups.scss */
-.button-group.radius > *:first-child, .button-group.radius > *:first-child > a, .button-group.radius > *:first-child > button, .button-group.radius > *:first-child > .button {
+.button-group.radius > *:first-child, .button-group.radius > *:first-child > a, .button-group.radius > *:first-child > button, .button-group.radius > *:first-child > .button, .other-programme.view .other-programme .programme-content .sign-up .button-group.radius > *:first-child > a {
   -moz-border-radius-bottomleft: 3px;
   -moz-border-radius-topleft: 3px;
   -webkit-border-bottom-left-radius: 3px;
@@ -3177,7 +3179,7 @@ label.error {
   border-top-left-radius: 3px;
 }
 /* line 54, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_button-groups.scss */
-.button-group.radius > *:last-child, .button-group.radius > *:last-child > a, .button-group.radius > *:last-child > button, .button-group.radius > *:last-child > .button {
+.button-group.radius > *:last-child, .button-group.radius > *:last-child > a, .button-group.radius > *:last-child > button, .button-group.radius > *:last-child > .button, .other-programme.view .other-programme .programme-content .sign-up .button-group.radius > *:last-child > a {
   -moz-border-radius-topright: 3px;
   -moz-border-radius-bottomright: 3px;
   -webkit-border-top-right-radius: 3px;
@@ -3186,7 +3188,7 @@ label.error {
   border-bottom-right-radius: 3px;
 }
 /* line 50, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_button-groups.scss */
-.button-group.round > *:first-child, .button-group.round > *:first-child > a, .button-group.round > *:first-child > button, .button-group.round > *:first-child > .button {
+.button-group.round > *:first-child, .button-group.round > *:first-child > a, .button-group.round > *:first-child > button, .button-group.round > *:first-child > .button, .other-programme.view .other-programme .programme-content .sign-up .button-group.round > *:first-child > a {
   -moz-border-radius-bottomleft: 1000px;
   -moz-border-radius-topleft: 1000px;
   -webkit-border-bottom-left-radius: 1000px;
@@ -3195,7 +3197,7 @@ label.error {
   border-top-left-radius: 1000px;
 }
 /* line 54, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_button-groups.scss */
-.button-group.round > *:last-child, .button-group.round > *:last-child > a, .button-group.round > *:last-child > button, .button-group.round > *:last-child > .button {
+.button-group.round > *:last-child, .button-group.round > *:last-child > a, .button-group.round > *:last-child > button, .button-group.round > *:last-child > .button, .other-programme.view .other-programme .programme-content .sign-up .button-group.round > *:last-child > a {
   -moz-border-radius-topright: 1000px;
   -moz-border-radius-bottomright: 1000px;
   -webkit-border-top-right-radius: 1000px;
@@ -3208,7 +3210,7 @@ label.error {
   width: 50%;
 }
 /* line 63, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_button-groups.scss */
-.button-group.even-2 li button, .button-group.even-2 li .button {
+.button-group.even-2 li button, .button-group.even-2 li .button, .button-group.even-2 li .other-programme.view .other-programme .programme-content .sign-up a, .other-programme.view .other-programme .programme-content .sign-up .button-group.even-2 li a {
   width: 100%;
 }
 /* line 80, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_button-groups.scss */
@@ -3216,7 +3218,7 @@ label.error {
   width: 33.33333%;
 }
 /* line 63, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_button-groups.scss */
-.button-group.even-3 li button, .button-group.even-3 li .button {
+.button-group.even-3 li button, .button-group.even-3 li .button, .button-group.even-3 li .other-programme.view .other-programme .programme-content .sign-up a, .other-programme.view .other-programme .programme-content .sign-up .button-group.even-3 li a {
   width: 100%;
 }
 /* line 80, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_button-groups.scss */
@@ -3224,7 +3226,7 @@ label.error {
   width: 25%;
 }
 /* line 63, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_button-groups.scss */
-.button-group.even-4 li button, .button-group.even-4 li .button {
+.button-group.even-4 li button, .button-group.even-4 li .button, .button-group.even-4 li .other-programme.view .other-programme .programme-content .sign-up a, .other-programme.view .other-programme .programme-content .sign-up .button-group.even-4 li a {
   width: 100%;
 }
 /* line 80, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_button-groups.scss */
@@ -3232,7 +3234,7 @@ label.error {
   width: 20%;
 }
 /* line 63, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_button-groups.scss */
-.button-group.even-5 li button, .button-group.even-5 li .button {
+.button-group.even-5 li button, .button-group.even-5 li .button, .button-group.even-5 li .other-programme.view .other-programme .programme-content .sign-up a, .other-programme.view .other-programme .programme-content .sign-up .button-group.even-5 li a {
   width: 100%;
 }
 /* line 80, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_button-groups.scss */
@@ -3240,7 +3242,7 @@ label.error {
   width: 16.66667%;
 }
 /* line 63, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_button-groups.scss */
-.button-group.even-6 li button, .button-group.even-6 li .button {
+.button-group.even-6 li button, .button-group.even-6 li .button, .button-group.even-6 li .other-programme.view .other-programme .programme-content .sign-up a, .other-programme.view .other-programme .programme-content .sign-up .button-group.even-6 li a {
   width: 100%;
 }
 /* line 80, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_button-groups.scss */
@@ -3248,7 +3250,7 @@ label.error {
   width: 14.28571%;
 }
 /* line 63, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_button-groups.scss */
-.button-group.even-7 li button, .button-group.even-7 li .button {
+.button-group.even-7 li button, .button-group.even-7 li .button, .button-group.even-7 li .other-programme.view .other-programme .programme-content .sign-up a, .other-programme.view .other-programme .programme-content .sign-up .button-group.even-7 li a {
   width: 100%;
 }
 /* line 80, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_button-groups.scss */
@@ -3256,7 +3258,7 @@ label.error {
   width: 12.5%;
 }
 /* line 63, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_button-groups.scss */
-.button-group.even-8 li button, .button-group.even-8 li .button {
+.button-group.even-8 li button, .button-group.even-8 li .button, .button-group.even-8 li .other-programme.view .other-programme .programme-content .sign-up a, .other-programme.view .other-programme .programme-content .sign-up .button-group.even-8 li a {
   width: 100%;
 }
 
@@ -3285,12 +3287,12 @@ label.error {
 
 /* Dropdown Button */
 /* line 108, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_dropdown-buttons.scss */
-.dropdown.button {
+.dropdown.button, .other-programme.view .other-programme .programme-content .sign-up a.dropdown {
   position: relative;
   padding-right: 3.1875em;
 }
 /* line 46, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_dropdown-buttons.scss */
-.dropdown.button:before {
+.dropdown.button:before, .other-programme.view .other-programme .programme-content .sign-up a.dropdown:before {
   position: absolute;
   content: "";
   width: 0;
@@ -3301,70 +3303,70 @@ label.error {
   top: 50%;
 }
 /* line 81, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_dropdown-buttons.scss */
-.dropdown.button:before {
+.dropdown.button:before, .other-programme.view .other-programme .programme-content .sign-up a.dropdown:before {
   border-width: 0.5625em;
   right: 1.5em;
   margin-top: -0.25em;
 }
 /* line 100, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_dropdown-buttons.scss */
-.dropdown.button:before {
+.dropdown.button:before, .other-programme.view .other-programme .programme-content .sign-up a.dropdown:before {
   border-color: #fff transparent transparent transparent;
 }
 /* line 109, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_dropdown-buttons.scss */
-.dropdown.button.tiny {
+.dropdown.button.tiny, .other-programme.view .other-programme .programme-content .sign-up a.dropdown.tiny {
   padding-right: 2.1875em;
 }
 /* line 61, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_dropdown-buttons.scss */
-.dropdown.button.tiny:before {
+.dropdown.button.tiny:before, .other-programme.view .other-programme .programme-content .sign-up a.dropdown.tiny:before {
   border-width: 0.4375em;
   right: 0.875em;
   margin-top: -0.15625em;
 }
 /* line 100, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_dropdown-buttons.scss */
-.dropdown.button.tiny:before {
+.dropdown.button.tiny:before, .other-programme.view .other-programme .programme-content .sign-up a.dropdown.tiny:before {
   border-color: #fff transparent transparent transparent;
 }
 /* line 110, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_dropdown-buttons.scss */
-.dropdown.button.small {
+.dropdown.button.small, .other-programme.view .other-programme .programme-content .sign-up a.dropdown.small {
   padding-right: 2.8125em;
 }
 /* line 71, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_dropdown-buttons.scss */
-.dropdown.button.small:before {
+.dropdown.button.small:before, .other-programme.view .other-programme .programme-content .sign-up a.dropdown.small:before {
   border-width: 0.5625em;
   right: 1.125em;
   margin-top: -0.21875em;
 }
 /* line 100, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_dropdown-buttons.scss */
-.dropdown.button.small:before {
+.dropdown.button.small:before, .other-programme.view .other-programme .programme-content .sign-up a.dropdown.small:before {
   border-color: #fff transparent transparent transparent;
 }
 /* line 111, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_dropdown-buttons.scss */
-.dropdown.button.large {
+.dropdown.button.large, .other-programme.view .other-programme .programme-content .sign-up a.dropdown.large {
   padding-right: 4em;
 }
 /* line 91, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_dropdown-buttons.scss */
-.dropdown.button.large:before {
+.dropdown.button.large:before, .other-programme.view .other-programme .programme-content .sign-up a.dropdown.large:before {
   border-width: 0.625em;
   right: 1.75em;
   margin-top: -0.3125em;
 }
 /* line 100, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_dropdown-buttons.scss */
-.dropdown.button.large:before {
+.dropdown.button.large:before, .other-programme.view .other-programme .programme-content .sign-up a.dropdown.large:before {
   border-color: #fff transparent transparent transparent;
 }
 /* line 112, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_dropdown-buttons.scss */
-.dropdown.button.secondary:before {
+.dropdown.button.secondary:before, .other-programme.view .other-programme .programme-content .sign-up a.dropdown.secondary:before {
   border-color: #333 transparent transparent transparent;
 }
 
 /* Split Buttons */
 /* line 150, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_split-buttons.scss */
-.split.button {
+.split.button, .other-programme.view .other-programme .programme-content .sign-up a.split {
   position: relative;
   padding-right: 4.8em;
 }
 /* line 53, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_split-buttons.scss */
-.split.button span {
+.split.button span, .other-programme.view .other-programme .programme-content .sign-up a.split span {
   display: block;
   height: 100%;
   position: absolute;
@@ -3373,7 +3375,7 @@ label.error {
   border-left: solid 1px;
 }
 /* line 62, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_split-buttons.scss */
-.split.button span:before {
+.split.button span:before, .other-programme.view .other-programme .programme-content .sign-up a.split span:before {
   position: absolute;
   content: "";
   width: 0;
@@ -3383,99 +3385,99 @@ label.error {
   left: 50%;
 }
 /* line 73, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_split-buttons.scss */
-.split.button span:active {
+.split.button span:active, .other-programme.view .other-programme .programme-content .sign-up a.split span:active {
   background-color: rgba(0, 0, 0, 0.1);
 }
 /* line 79, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_split-buttons.scss */
-.split.button span {
+.split.button span, .other-programme.view .other-programme .programme-content .sign-up a.split span {
   border-left-color: #1e728c;
 }
 /* line 116, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_split-buttons.scss */
-.split.button span {
+.split.button span, .other-programme.view .other-programme .programme-content .sign-up a.split span {
   width: 3em;
 }
 /* line 117, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_split-buttons.scss */
-.split.button span:before {
+.split.button span:before, .other-programme.view .other-programme .programme-content .sign-up a.split span:before {
   border-top-style: solid;
   border-width: 0.5625em;
   top: 1.125em;
   margin-left: -0.5625em;
 }
 /* line 142, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_split-buttons.scss */
-.split.button span:before {
+.split.button span:before, .other-programme.view .other-programme .programme-content .sign-up a.split span:before {
   border-color: #fff transparent transparent transparent;
 }
 /* line 79, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_split-buttons.scss */
-.split.button.secondary span {
+.split.button.secondary span, .other-programme.view .other-programme .programme-content .sign-up a.split.secondary span {
   border-left-color: #c3c3c3;
 }
 /* line 142, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_split-buttons.scss */
-.split.button.secondary span:before {
+.split.button.secondary span:before, .other-programme.view .other-programme .programme-content .sign-up a.split.secondary span:before {
   border-color: #fff transparent transparent transparent;
 }
 /* line 79, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_split-buttons.scss */
-.split.button.alert span {
+.split.button.alert span, .other-programme.view .other-programme .programme-content .sign-up a.split.alert span {
   border-left-color: #7f0a0c;
 }
 /* line 79, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_split-buttons.scss */
-.split.button.success span {
+.split.button.success span, .other-programme.view .other-programme .programme-content .sign-up a.split.success span {
   border-left-color: #396516;
 }
 /* line 156, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_split-buttons.scss */
-.split.button.tiny {
+.split.button.tiny, .other-programme.view .other-programme .programme-content .sign-up a.split.tiny {
   padding-right: 3.9375em;
 }
 /* line 88, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_split-buttons.scss */
-.split.button.tiny span {
+.split.button.tiny span, .other-programme.view .other-programme .programme-content .sign-up a.split.tiny span {
   width: 2.84375em;
 }
 /* line 89, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_split-buttons.scss */
-.split.button.tiny span:before {
+.split.button.tiny span:before, .other-programme.view .other-programme .programme-content .sign-up a.split.tiny span:before {
   border-top-style: solid;
   border-width: 0.4375em;
   top: 0.875em;
   margin-left: -0.3125em;
 }
 /* line 157, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_split-buttons.scss */
-.split.button.small {
+.split.button.small, .other-programme.view .other-programme .programme-content .sign-up a.split.small {
   padding-right: 3.9375em;
 }
 /* line 102, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_split-buttons.scss */
-.split.button.small span {
+.split.button.small span, .other-programme.view .other-programme .programme-content .sign-up a.split.small span {
   width: 2.8125em;
 }
 /* line 103, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_split-buttons.scss */
-.split.button.small span:before {
+.split.button.small span:before, .other-programme.view .other-programme .programme-content .sign-up a.split.small span:before {
   border-top-style: solid;
   border-width: 0.5625em;
   top: 0.84375em;
   margin-left: -0.5625em;
 }
 /* line 158, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_split-buttons.scss */
-.split.button.large {
+.split.button.large, .other-programme.view .other-programme .programme-content .sign-up a.split.large {
   padding-right: 6em;
 }
 /* line 130, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_split-buttons.scss */
-.split.button.large span {
+.split.button.large span, .other-programme.view .other-programme .programme-content .sign-up a.split.large span {
   width: 3.75em;
 }
 /* line 131, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_split-buttons.scss */
-.split.button.large span:before {
+.split.button.large span:before, .other-programme.view .other-programme .programme-content .sign-up a.split.large span:before {
   border-top-style: solid;
   border-width: 0.625em;
   top: 1.3125em;
   margin-left: -0.5625em;
 }
 /* line 159, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_split-buttons.scss */
-.split.button.expand {
+.split.button.expand, .other-programme.view .other-programme .programme-content .sign-up a.split.expand {
   padding-left: 2em;
 }
 /* line 142, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_split-buttons.scss */
-.split.button.secondary span:before {
+.split.button.secondary span:before, .other-programme.view .other-programme .programme-content .sign-up a.split.secondary span:before {
   border-color: #333 transparent transparent transparent;
 }
 /* line 163, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_split-buttons.scss */
-.split.button.radius span {
+.split.button.radius span, .other-programme.view .other-programme .programme-content .sign-up a.split.radius span {
   -moz-border-radius-topright: 3px;
   -moz-border-radius-bottomright: 3px;
   -webkit-border-top-right-radius: 3px;
@@ -3484,7 +3486,7 @@ label.error {
   border-bottom-right-radius: 3px;
 }
 /* line 164, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_split-buttons.scss */
-.split.button.round span {
+.split.button.round span, .other-programme.view .other-programme .programme-content .sign-up a.split.round span {
   -moz-border-radius-topright: 1000px;
   -moz-border-radius-bottomright: 1000px;
   -webkit-border-top-right-radius: 1000px;
@@ -4644,7 +4646,7 @@ label.error {
   height: 2.45em;
 }
 /* line 127, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_top-bar.scss */
-.top-bar .button {
+.top-bar .button, .top-bar .other-programme.view .other-programme .programme-content .sign-up a, .other-programme.view .other-programme .programme-content .sign-up .top-bar a {
   padding-top: .5em;
   padding-bottom: .5em;
   margin-bottom: 0;
@@ -4661,13 +4663,13 @@ label.error {
   font-size: 16px;
 }
 /* line 140, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_top-bar.scss */
-.top-bar .name h1, .top-bar .name .font-stroke-main {
+.top-bar .name h1, .top-bar .name .font-stroke-main, .top-bar .name .activity-page-kids .view-header p:nth-of-type(1), .activity-page-kids .view-header .top-bar .name p:nth-of-type(1), .top-bar .name .other-programme.view .view-header *, .other-programme.view .view-header .top-bar .name * {
   line-height: 45px;
   font-size: 1.0625em;
   margin: 0;
 }
 /* line 144, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_top-bar.scss */
-.top-bar .name h1 a, .top-bar .name .font-stroke-main a {
+.top-bar .name h1 a, .top-bar .name .font-stroke-main a, .top-bar .name .activity-page-kids .view-header p:nth-of-type(1) a, .activity-page-kids .view-header .top-bar .name p:nth-of-type(1) a, .top-bar .name .other-programme.view .view-header * a, .other-programme.view .view-header .top-bar .name * a {
   font-weight: bold;
   color: #fff;
   width: 50%;
@@ -4776,38 +4778,38 @@ label.error {
   background: #222;
 }
 /* line 269, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_top-bar.scss */
-.top-bar-section ul li > a.button {
+.top-bar-section ul li > a.button, .top-bar-section ul .other-programme.view .other-programme .programme-content .sign-up li > a, .other-programme.view .other-programme .programme-content .sign-up .top-bar-section ul li > a {
   background: #2ba6cb;
   font-size: 0.8125em;
   padding-right: 15px;
   padding-left: 15px;
 }
 /* line 274, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_top-bar.scss */
-.top-bar-section ul li > a.button:hover {
+.top-bar-section ul li > a.button:hover, .top-bar-section ul .other-programme.view .other-programme .programme-content .sign-up li > a:hover, .other-programme.view .other-programme .programme-content .sign-up .top-bar-section ul li > a:hover {
   background: #2284a1;
 }
 /* line 278, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_top-bar.scss */
-.top-bar-section ul li > a.button.secondary {
+.top-bar-section ul li > a.button.secondary, .top-bar-section ul .other-programme.view .other-programme .programme-content .sign-up li > a.secondary, .other-programme.view .other-programme .programme-content .sign-up .top-bar-section ul li > a.secondary {
   background: #e9e9e9;
 }
 /* line 280, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_top-bar.scss */
-.top-bar-section ul li > a.button.secondary:hover {
+.top-bar-section ul li > a.button.secondary:hover, .top-bar-section ul .other-programme.view .other-programme .programme-content .sign-up li > a.secondary:hover, .other-programme.view .other-programme .programme-content .sign-up .top-bar-section ul li > a.secondary:hover {
   background: #d0d0d0;
 }
 /* line 284, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_top-bar.scss */
-.top-bar-section ul li > a.button.success {
+.top-bar-section ul li > a.button.success, .top-bar-section ul .other-programme.view .other-programme .programme-content .sign-up li > a.success, .other-programme.view .other-programme .programme-content .sign-up .top-bar-section ul li > a.success {
   background: #5da423;
 }
 /* line 286, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_top-bar.scss */
-.top-bar-section ul li > a.button.success:hover {
+.top-bar-section ul li > a.button.success:hover, .top-bar-section ul .other-programme.view .other-programme .programme-content .sign-up li > a.success:hover, .other-programme.view .other-programme .programme-content .sign-up .top-bar-section ul li > a.success:hover {
   background: #457a1a;
 }
 /* line 290, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_top-bar.scss */
-.top-bar-section ul li > a.button.alert {
+.top-bar-section ul li > a.button.alert, .top-bar-section ul .other-programme.view .other-programme .programme-content .sign-up li > a.alert, .other-programme.view .other-programme .programme-content .sign-up .top-bar-section ul li > a.alert {
   background: #c60f13;
 }
 /* line 292, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_top-bar.scss */
-.top-bar-section ul li > a.button.alert:hover {
+.top-bar-section ul li > a.button.alert:hover, .top-bar-section ul .other-programme.view .other-programme .programme-content .sign-up li > a.alert:hover, .other-programme.view .other-programme .programme-content .sign-up .top-bar-section ul li > a.alert:hover {
   background: #970b0e;
 }
 /* line 300, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_top-bar.scss */
@@ -4929,12 +4931,14 @@ label.error {
     float: left;
   }
   /* line 397, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_top-bar.scss */
-  .top-bar .name h1 a, .top-bar .name .font-stroke-main a {
+  .top-bar .name h1 a, .top-bar .name .font-stroke-main a, .top-bar .name .activity-page-kids .view-header p:nth-of-type(1) a, .activity-page-kids .view-header .top-bar .name p:nth-of-type(1) a, .top-bar .name .other-programme.view .view-header * a, .other-programme.view .view-header .top-bar .name * a {
     width: auto;
   }
   /* line 399, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_top-bar.scss */
   .top-bar input,
-  .top-bar .button {
+  .top-bar .button,
+  .top-bar .other-programme.view .other-programme .programme-content .sign-up a,
+  .other-programme.view .other-programme .programme-content .sign-up .top-bar a {
     line-height: 2em;
     font-size: 0.875em;
     height: 2em;
@@ -5540,7 +5544,7 @@ label.error {
   padding: 1.125em 1.25em 1.5em;
 }
 /* line 68, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_joyride.scss */
-.joyride-content-wrapper .button {
+.joyride-content-wrapper .button, .joyride-content-wrapper .other-programme.view .other-programme .programme-content .sign-up a, .other-programme.view .other-programme .programme-content .sign-up .joyride-content-wrapper a {
   margin-bottom: 0 !important;
 }
 
@@ -5583,7 +5587,7 @@ label.error {
 
 /* Typography */
 /* line 104, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_joyride.scss */
-.joyride-tip-guide h1, .joyride-tip-guide .font-stroke-main,
+.joyride-tip-guide h1, .joyride-tip-guide .font-stroke-main, .joyride-tip-guide .activity-page-kids .view-header p:nth-of-type(1), .activity-page-kids .view-header .joyride-tip-guide p:nth-of-type(1), .joyride-tip-guide .other-programme.view .view-header *, .other-programme.view .view-header .joyride-tip-guide *,
 .joyride-tip-guide h2,
 .joyride-tip-guide h3,
 .joyride-tip-guide h4,
@@ -6493,16 +6497,16 @@ ul.pagination li {
   margin-bottom: 0;
 }
 /* line 50, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_panels.scss */
-.panel h1, .panel .font-stroke-main, .panel h2, .panel h3, .panel h4, .panel h5, .panel h6, .panel p {
+.panel h1, .panel .font-stroke-main, .panel .activity-page-kids .view-header p:nth-of-type(1), .activity-page-kids .view-header .panel p:nth-of-type(1), .panel .other-programme.view .view-header *, .other-programme.view .view-header .panel *, .panel h2, .panel h3, .panel h4, .panel h5, .panel h6, .panel p {
   color: #333;
 }
 /* line 54, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_panels.scss */
-.panel h1, .panel .font-stroke-main, .panel h2, .panel h3, .panel h4, .panel h5, .panel h6 {
+.panel h1, .panel .font-stroke-main, .panel .activity-page-kids .view-header p:nth-of-type(1), .activity-page-kids .view-header .panel p:nth-of-type(1), .panel .other-programme.view .view-header *, .other-programme.view .view-header .panel *, .panel h2, .panel h3, .panel h4, .panel h5, .panel h6 {
   line-height: 1;
   margin-bottom: 0.625em;
 }
 /* line 56, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_panels.scss */
-.panel h1.subheader, .panel .subheader.font-stroke-main, .panel h2.subheader, .panel h3.subheader, .panel h4.subheader, .panel h5.subheader, .panel h6.subheader {
+.panel h1.subheader, .panel .subheader.font-stroke-main, .panel .activity-page-kids .view-header p.subheader:nth-of-type(1), .activity-page-kids .view-header .panel p.subheader:nth-of-type(1), .panel .other-programme.view .view-header .subheader, .other-programme.view .view-header .panel .subheader, .panel h2.subheader, .panel h3.subheader, .panel h4.subheader, .panel h5.subheader, .panel h6.subheader {
   line-height: 1.4;
 }
 /* line 68, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_panels.scss */
@@ -6525,16 +6529,16 @@ ul.pagination li {
   margin-bottom: 0;
 }
 /* line 51, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_panels.scss */
-.panel.callout h1, .panel.callout .font-stroke-main, .panel.callout h2, .panel.callout h3, .panel.callout h4, .panel.callout h5, .panel.callout h6, .panel.callout p {
+.panel.callout h1, .panel.callout .font-stroke-main, .panel.callout .activity-page-kids .view-header p:nth-of-type(1), .activity-page-kids .view-header .panel.callout p:nth-of-type(1), .panel.callout .other-programme.view .view-header *, .other-programme.view .view-header .panel.callout *, .panel.callout h2, .panel.callout h3, .panel.callout h4, .panel.callout h5, .panel.callout h6, .panel.callout p {
   color: #fff;
 }
 /* line 54, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_panels.scss */
-.panel.callout h1, .panel.callout .font-stroke-main, .panel.callout h2, .panel.callout h3, .panel.callout h4, .panel.callout h5, .panel.callout h6 {
+.panel.callout h1, .panel.callout .font-stroke-main, .panel.callout .activity-page-kids .view-header p:nth-of-type(1), .activity-page-kids .view-header .panel.callout p:nth-of-type(1), .panel.callout .other-programme.view .view-header *, .other-programme.view .view-header .panel.callout *, .panel.callout h2, .panel.callout h3, .panel.callout h4, .panel.callout h5, .panel.callout h6 {
   line-height: 1;
   margin-bottom: 0.625em;
 }
 /* line 56, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_panels.scss */
-.panel.callout h1.subheader, .panel.callout .subheader.font-stroke-main, .panel.callout h2.subheader, .panel.callout h3.subheader, .panel.callout h4.subheader, .panel.callout h5.subheader, .panel.callout h6.subheader {
+.panel.callout h1.subheader, .panel.callout .subheader.font-stroke-main, .panel.callout .activity-page-kids .view-header p.subheader:nth-of-type(1), .activity-page-kids .view-header .panel.callout p.subheader:nth-of-type(1), .panel.callout .other-programme.view .view-header .subheader, .other-programme.view .view-header .panel.callout .subheader, .panel.callout h2.subheader, .panel.callout h3.subheader, .panel.callout h4.subheader, .panel.callout h5.subheader, .panel.callout h6.subheader {
   line-height: 1.4;
 }
 /* line 71, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_panels.scss */
@@ -7395,7 +7399,7 @@ a.th {
 }
 
 /* line 2, ../scss/base/_common.scss */
-.yellow, .yellow-commonblock, .block-play-library-custom-pm-block, .homebox.homebox-auto-save #homebox-add .item-list, .homebox.homebox-auto-save .homebox-column-wrapper .homebox-portlet-inner, .progress-page-wrap #wrap, .cs-default .l-header .pre-header, .cs-classic .l-header .header-middle, .cs-default .button, .cs-default button, .cs-elegant .btn.btn-large.msg.new, .cs-default .btn.btn-primary, .cs-elegant .mobile-menu ul.mobile-top-menu li a.msg.new, .page-messages.cs-default #page-title.title + .primary-tabs + ul.action-links li a {
+.yellow, .yellow-commonblock, .block-play-library-custom-pm-block, .homebox.homebox-auto-save #homebox-add .item-list, .homebox.homebox-auto-save .homebox-column-wrapper .homebox-portlet-inner, .progress-page-wrap #wrap, .cs-default .l-header .pre-header, .cs-classic .l-header .header-middle, .cs-default .button, .cs-default .other-programme.view .other-programme .programme-content .sign-up a, .other-programme.view .other-programme .programme-content .sign-up .cs-default a, .cs-default button, .cs-elegant .btn.btn-large.msg.new, .cs-default .btn.btn-primary, .cs-elegant .mobile-menu ul.mobile-top-menu li a.msg.new, .page-messages.cs-default .message-button, .page-messages.cs-default #page-title.title + .primary-tabs + ul.action-links li a, #page-title.title + .primary-tabs + ul.action-links li .page-messages.cs-default a, .page-messages.cs-default form fieldset legend a, .page-messages.cs-default .chosen-container a, .page-messages.cs-default #edit-cancel, .page-messages.cs-default .privatemsg-message-actions a, .page-messages.cs-default .chosen-drop {
   background: #fdeb52;
 }
 
@@ -7425,7 +7429,7 @@ a.th {
 }
 
 /* line 27, ../scss/base/_common.scss */
-.light-orange, .cs-elegant .l-header .header-middle, .cs-elegant .post-footer.contain-to-grid, .cs-elegant .l-footer, .cs-classic .button, .cs-classic button, .cs-elegant .button, .cs-elegant button, .cs-classic .btn.btn-large.msg.new, .cs-classic .btn.btn-primary, .cs-elegant .btn.btn-primary, .cs-classic .mobile-menu ul.mobile-top-menu li a.msg.new, .page-messages.cs-classic #page-title.title + .primary-tabs + ul.action-links li a, .page-messages.cs-elegant #page-title.title + .primary-tabs + ul.action-links li a {
+.light-orange, .cs-elegant .l-header .header-middle, .cs-elegant .post-footer.contain-to-grid, .cs-elegant .l-footer, .cs-classic .button, .cs-classic .other-programme.view .other-programme .programme-content .sign-up a, .other-programme.view .other-programme .programme-content .sign-up .cs-classic a, .cs-classic button, .cs-elegant .button, .cs-elegant .other-programme.view .other-programme .programme-content .sign-up a, .other-programme.view .other-programme .programme-content .sign-up .cs-elegant a, .cs-elegant button, .cs-classic .btn.btn-large.msg.new, .cs-classic .btn.btn-primary, .cs-elegant .btn.btn-primary, .cs-classic .mobile-menu ul.mobile-top-menu li a.msg.new, .page-messages.cs-classic .message-button, .page-messages.cs-classic #page-title.title + .primary-tabs + ul.action-links li a, #page-title.title + .primary-tabs + ul.action-links li .page-messages.cs-classic a, .page-messages.cs-classic form fieldset legend a, .page-messages.cs-classic .chosen-container a, .page-messages.cs-classic #edit-cancel, .page-messages.cs-classic .privatemsg-message-actions a, .page-messages.cs-elegant .message-button, .page-messages.cs-elegant #page-title.title + .primary-tabs + ul.action-links li a, #page-title.title + .primary-tabs + ul.action-links li .page-messages.cs-elegant a, .page-messages.cs-elegant form fieldset legend a, .page-messages.cs-elegant .chosen-container a, .page-messages.cs-elegant #edit-cancel, .page-messages.cs-elegant .privatemsg-message-actions a, .page-messages.cs-classic .chosen-drop, .page-messages.cs-elegant .chosen-drop {
   background: #ff9f1c;
 }
 
@@ -7440,7 +7444,7 @@ a.th {
 }
 
 /* line 39, ../scss/base/_common.scss */
-.white-text, .font-stroke-main, .font-stroke-sidebar, .stroke-main, .homepage-vedio-block .view-header p, .flicker-block .view-header, .my-dashbord-block .view-header *, .stroke-sidebar, .homepage-reward-block .view-header p, .block-user-login .block-title, .page-progress #page-title {
+.white-text, .font-stroke-main, .font-stroke-sidebar, .stroke-main, .homepage-vedio-block .view-header p, .flicker-block .view-header, .my-dashbord-block .view-header *, .stroke-sidebar, .homepage-reward-block .view-header p, .block-user-login .block-title, #page-title.title, .page-progress #page-title {
   color: #fff;
 }
 
@@ -7760,12 +7764,12 @@ a.th {
 }
 
 /* line 60, ../scss/base/_elements.scss */
-h1, .font-stroke-main, h2, h3, h4, h5, h6 {
+h1, .font-stroke-main, .activity-page-kids .view-header p:nth-of-type(1), .other-programme.view .view-header *, h2, h3, h4, h5, h6 {
   font-weight: normal;
   text-transform: capitalize;
 }
 /* line 20, ../scss/base/_mixins.scss */
-.cs-default h1, .cs-default .font-stroke-main, .cs-default h2, .cs-default h3, .cs-default h4, .cs-default h5, .cs-default h6 {
+.cs-default h1, .cs-default .font-stroke-main, .cs-default .activity-page-kids .view-header p:nth-of-type(1), .activity-page-kids .view-header .cs-default p:nth-of-type(1), .cs-default .other-programme.view .view-header *, .other-programme.view .view-header .cs-default *, .cs-default h2, .cs-default h3, .cs-default h4, .cs-default h5, .cs-default h6 {
   font-family: "McLaren", cursive;
   font-weight: normal;
   -webkit-font-smoothing: antialiased;
@@ -7774,7 +7778,7 @@ h1, .font-stroke-main, h2, h3, h4, h5, h6 {
   -moz-font-smoothing: grayscale;
 }
 /* line 29, ../scss/base/_mixins.scss */
-.cs-classic h1, .cs-classic .font-stroke-main, .cs-classic h2, .cs-classic h3, .cs-classic h4, .cs-classic h5, .cs-classic h6 {
+.cs-classic h1, .cs-classic .font-stroke-main, .cs-classic .activity-page-kids .view-header p:nth-of-type(1), .activity-page-kids .view-header .cs-classic p:nth-of-type(1), .cs-classic .other-programme.view .view-header *, .other-programme.view .view-header .cs-classic *, .cs-classic h2, .cs-classic h3, .cs-classic h4, .cs-classic h5, .cs-classic h6 {
   font-family: "Architects Daughter", cursive;
   font-weight: 700;
   -webkit-font-smoothing: antialiased;
@@ -7783,7 +7787,7 @@ h1, .font-stroke-main, h2, h3, h4, h5, h6 {
   -moz-font-smoothing: grayscale;
 }
 /* line 38, ../scss/base/_mixins.scss */
-.cs-elegant h1, .cs-elegant .font-stroke-main, .cs-elegant h2, .cs-elegant h3, .cs-elegant h4, .cs-elegant h5, .cs-elegant h6 {
+.cs-elegant h1, .cs-elegant .font-stroke-main, .cs-elegant .activity-page-kids .view-header p:nth-of-type(1), .activity-page-kids .view-header .cs-elegant p:nth-of-type(1), .cs-elegant .other-programme.view .view-header *, .other-programme.view .view-header .cs-elegant *, .cs-elegant h2, .cs-elegant h3, .cs-elegant h4, .cs-elegant h5, .cs-elegant h6 {
   font-family: "Margarine", cursive;
   font-weight: normal;
   -webkit-font-smoothing: antialiased;
@@ -7829,15 +7833,15 @@ h1, .font-stroke-main, h2, h3, h4, h5, h6 {
 }
 
 /* line 70, ../scss/base/_elements.scss */
-.cs-default h1, .cs-default .font-stroke-main {
+.cs-default h1, .cs-default .font-stroke-main, .cs-default .activity-page-kids .view-header p:nth-of-type(1), .activity-page-kids .view-header .cs-default p:nth-of-type(1), .cs-default .other-programme.view .view-header *, .other-programme.view .view-header .cs-default * {
   font-size: 28px;
 }
 /* line 73, ../scss/base/_elements.scss */
-.cs-classic h1, .cs-classic .font-stroke-main {
+.cs-classic h1, .cs-classic .font-stroke-main, .cs-classic .activity-page-kids .view-header p:nth-of-type(1), .activity-page-kids .view-header .cs-classic p:nth-of-type(1), .cs-classic .other-programme.view .view-header *, .other-programme.view .view-header .cs-classic * {
   font-size: 29px;
 }
 /* line 76, ../scss/base/_elements.scss */
-.cs-elegant h1, .cs-elegant .font-stroke-main {
+.cs-elegant h1, .cs-elegant .font-stroke-main, .cs-elegant .activity-page-kids .view-header p:nth-of-type(1), .activity-page-kids .view-header .cs-elegant p:nth-of-type(1), .cs-elegant .other-programme.view .view-header *, .other-programme.view .view-header .cs-elegant * {
   font-size: 30px;
 }
 
@@ -7949,7 +7953,7 @@ a:focus, button:focus {
 }
 
 /* line 163, ../scss/base/_elements.scss */
-.view-footer button, .view-footer .button {
+.view-footer button, .view-footer .button, .view-footer .other-programme.view .other-programme .programme-content .sign-up a, .other-programme.view .other-programme .programme-content .sign-up .view-footer a {
   margin-left: 0;
 }
 
@@ -9454,7 +9458,7 @@ html {
   border-radius: 15px;
 }
 /* line 183, ../scss/components/_blocks.scss */
-.annocement h1, .annocement .font-stroke-main {
+.annocement h1, .annocement .font-stroke-main, .annocement .activity-page-kids .view-header p:nth-of-type(1), .activity-page-kids .view-header .annocement p:nth-of-type(1), .annocement .other-programme.view .view-header *, .other-programme.view .view-header .annocement * {
   margin: 0;
   color: #000;
 }
@@ -9761,7 +9765,7 @@ html {
 }
 
 /* line 6, ../scss/components/_buttons.scss */
-.button, button {
+.button, .other-programme.view .other-programme .programme-content .sign-up a, button {
   display: inline-block !important;
   padding: 6px 24px !important;
   text-decoration: none;
@@ -9773,11 +9777,11 @@ html {
   margin: 10px;
 }
 /* line 7, ../scss/components/_buttons.scss */
-.button.radius, button.radius {
+.button.radius, .other-programme.view .other-programme .programme-content .sign-up a.radius, button.radius {
   border-radius: 10px;
 }
 /* line 20, ../scss/base/_mixins.scss */
-.cs-default .button, .cs-default button {
+.cs-default .button, .cs-default .other-programme.view .other-programme .programme-content .sign-up a, .other-programme.view .other-programme .programme-content .sign-up .cs-default a, .cs-default button {
   font-family: "McLaren", cursive;
   font-weight: normal;
   -webkit-font-smoothing: antialiased;
@@ -9786,7 +9790,7 @@ html {
   -moz-font-smoothing: grayscale;
 }
 /* line 29, ../scss/base/_mixins.scss */
-.cs-classic .button, .cs-classic button {
+.cs-classic .button, .cs-classic .other-programme.view .other-programme .programme-content .sign-up a, .other-programme.view .other-programme .programme-content .sign-up .cs-classic a, .cs-classic button {
   font-family: "Architects Daughter", cursive;
   font-weight: 700;
   -webkit-font-smoothing: antialiased;
@@ -9795,7 +9799,7 @@ html {
   -moz-font-smoothing: grayscale;
 }
 /* line 38, ../scss/base/_mixins.scss */
-.cs-elegant .button, .cs-elegant button {
+.cs-elegant .button, .cs-elegant .other-programme.view .other-programme .programme-content .sign-up a, .other-programme.view .other-programme .programme-content .sign-up .cs-elegant a, .cs-elegant button {
   font-family: "Margarine", cursive;
   font-weight: normal;
   -webkit-font-smoothing: antialiased;
@@ -9804,21 +9808,21 @@ html {
   -moz-font-smoothing: grayscale;
 }
 /* line 23, ../scss/components/_buttons.scss */
-.button.postfix.button, button.postfix.button {
+.button.postfix.button, .other-programme.view .other-programme .programme-content .sign-up a.postfix, button.postfix.button {
   border-radius: 10px;
 }
 /* line 27, ../scss/components/_buttons.scss */
-.cs-default .button, .cs-default button {
+.cs-default .button, .cs-default .other-programme.view .other-programme .programme-content .sign-up a, .other-programme.view .other-programme .programme-content .sign-up .cs-default a, .cs-default button {
   font-size: 17px;
   color: #000;
 }
 /* line 34, ../scss/components/_buttons.scss */
-.cs-classic .button, .cs-classic button {
+.cs-classic .button, .cs-classic .other-programme.view .other-programme .programme-content .sign-up a, .other-programme.view .other-programme .programme-content .sign-up .cs-classic a, .cs-classic button {
   font-size: 18px;
   color: #fff;
 }
 /* line 39, ../scss/components/_buttons.scss */
-.cs-elegant .button, .cs-elegant button {
+.cs-elegant .button, .cs-elegant .other-programme.view .other-programme .programme-content .sign-up a, .other-programme.view .other-programme .programme-content .sign-up .cs-elegant a, .cs-elegant button {
   font-size: 19px;
   color: #fff;
 }
@@ -9958,7 +9962,7 @@ html {
 }
 
 /* line 189, ../scss/components/_buttons.scss */
-.blue-button, .homebox.homebox-auto-save #homebox-buttons > a, .homebox.homebox-auto-save #homebox-add .item-list ul li a, .homebox.homebox-auto-save .view-footer a.button {
+.blue-button, .homebox.homebox-auto-save #homebox-buttons > a, .homebox.homebox-auto-save #homebox-add .item-list ul li a, .homebox.homebox-auto-save .view-footer a.button, .homebox.homebox-auto-save .view-footer .other-programme.view .other-programme .programme-content .sign-up a, .other-programme.view .other-programme .programme-content .sign-up .homebox.homebox-auto-save .view-footer a {
   display: inline-block;
   padding: 6px 24px;
   font-size: 21px;
@@ -9970,28 +9974,28 @@ html {
   color: #fff;
 }
 /* line 199, ../scss/components/_buttons.scss */
-.cs-default .blue-button, .cs-default .homebox.homebox-auto-save #homebox-buttons > a, .homebox.homebox-auto-save .cs-default #homebox-buttons > a, .cs-default .homebox.homebox-auto-save #homebox-add .item-list ul li a, .homebox.homebox-auto-save #homebox-add .item-list ul li .cs-default a, .cs-default .homebox.homebox-auto-save .view-footer a.button, .homebox.homebox-auto-save .view-footer .cs-default a.button {
+.cs-default .blue-button, .cs-default .homebox.homebox-auto-save #homebox-buttons > a, .homebox.homebox-auto-save .cs-default #homebox-buttons > a, .cs-default .homebox.homebox-auto-save #homebox-add .item-list ul li a, .homebox.homebox-auto-save #homebox-add .item-list ul li .cs-default a, .cs-default .homebox.homebox-auto-save .view-footer a.button, .homebox.homebox-auto-save .view-footer .cs-default a.button, .cs-default .homebox.homebox-auto-save .view-footer .other-programme.view .other-programme .programme-content .sign-up a, .homebox.homebox-auto-save .view-footer .other-programme.view .other-programme .programme-content .sign-up .cs-default a, .cs-default .other-programme.view .other-programme .programme-content .sign-up .homebox.homebox-auto-save .view-footer a, .other-programme.view .other-programme .programme-content .sign-up .homebox.homebox-auto-save .view-footer .cs-default a {
   background: #267fda;
 }
 /* line 203, ../scss/components/_buttons.scss */
-.cs-elegant .blue-button, .cs-elegant .homebox.homebox-auto-save #homebox-buttons > a, .homebox.homebox-auto-save .cs-elegant #homebox-buttons > a, .cs-elegant .homebox.homebox-auto-save #homebox-add .item-list ul li a, .homebox.homebox-auto-save #homebox-add .item-list ul li .cs-elegant a, .cs-elegant .homebox.homebox-auto-save .view-footer a.button, .homebox.homebox-auto-save .view-footer .cs-elegant a.button {
+.cs-elegant .blue-button, .cs-elegant .homebox.homebox-auto-save #homebox-buttons > a, .homebox.homebox-auto-save .cs-elegant #homebox-buttons > a, .cs-elegant .homebox.homebox-auto-save #homebox-add .item-list ul li a, .homebox.homebox-auto-save #homebox-add .item-list ul li .cs-elegant a, .cs-elegant .homebox.homebox-auto-save .view-footer a.button, .homebox.homebox-auto-save .view-footer .cs-elegant a.button, .cs-elegant .homebox.homebox-auto-save .view-footer .other-programme.view .other-programme .programme-content .sign-up a, .homebox.homebox-auto-save .view-footer .other-programme.view .other-programme .programme-content .sign-up .cs-elegant a, .cs-elegant .other-programme.view .other-programme .programme-content .sign-up .homebox.homebox-auto-save .view-footer a, .other-programme.view .other-programme .programme-content .sign-up .homebox.homebox-auto-save .view-footer .cs-elegant a {
   background: #e71d36;
 }
 /* line 207, ../scss/components/_buttons.scss */
-.cs-classic .blue-button, .cs-classic .homebox.homebox-auto-save #homebox-buttons > a, .homebox.homebox-auto-save .cs-classic #homebox-buttons > a, .cs-classic .homebox.homebox-auto-save #homebox-add .item-list ul li a, .homebox.homebox-auto-save #homebox-add .item-list ul li .cs-classic a, .cs-classic .homebox.homebox-auto-save .view-footer a.button, .homebox.homebox-auto-save .view-footer .cs-classic a.button {
+.cs-classic .blue-button, .cs-classic .homebox.homebox-auto-save #homebox-buttons > a, .homebox.homebox-auto-save .cs-classic #homebox-buttons > a, .cs-classic .homebox.homebox-auto-save #homebox-add .item-list ul li a, .homebox.homebox-auto-save #homebox-add .item-list ul li .cs-classic a, .cs-classic .homebox.homebox-auto-save .view-footer a.button, .homebox.homebox-auto-save .view-footer .cs-classic a.button, .cs-classic .homebox.homebox-auto-save .view-footer .other-programme.view .other-programme .programme-content .sign-up a, .homebox.homebox-auto-save .view-footer .other-programme.view .other-programme .programme-content .sign-up .cs-classic a, .cs-classic .other-programme.view .other-programme .programme-content .sign-up .homebox.homebox-auto-save .view-footer a, .other-programme.view .other-programme .programme-content .sign-up .homebox.homebox-auto-save .view-footer .cs-classic a {
   background: #00a6ed;
   font-size: 20px;
 }
 /* line 212, ../scss/components/_buttons.scss */
-.blue-button:hover, .homebox.homebox-auto-save #homebox-buttons > a:hover, .homebox.homebox-auto-save #homebox-add .item-list ul li a:hover, .homebox.homebox-auto-save .view-footer a.button:hover {
+.blue-button:hover, .homebox.homebox-auto-save #homebox-buttons > a:hover, .homebox.homebox-auto-save #homebox-add .item-list ul li a:hover, .homebox.homebox-auto-save .view-footer a.button:hover, .homebox.homebox-auto-save .view-footer .other-programme.view .other-programme .programme-content .sign-up a:hover, .other-programme.view .other-programme .programme-content .sign-up .homebox.homebox-auto-save .view-footer a:hover {
   text-decoration: none;
 }
 /* line 215, ../scss/components/_buttons.scss */
-.blue-button:focus, .homebox.homebox-auto-save #homebox-buttons > a:focus, .homebox.homebox-auto-save #homebox-add .item-list ul li a:focus, .homebox.homebox-auto-save .view-footer a.button:focus {
+.blue-button:focus, .homebox.homebox-auto-save #homebox-buttons > a:focus, .homebox.homebox-auto-save #homebox-add .item-list ul li a:focus, .homebox.homebox-auto-save .view-footer a.button:focus, .homebox.homebox-auto-save .view-footer .other-programme.view .other-programme .programme-content .sign-up a:focus, .other-programme.view .other-programme .programme-content .sign-up .homebox.homebox-auto-save .view-footer a:focus {
   outline: none;
 }
 /* line 20, ../scss/base/_mixins.scss */
-.cs-default .blue-button, .cs-default .homebox.homebox-auto-save #homebox-buttons > a, .homebox.homebox-auto-save .cs-default #homebox-buttons > a, .cs-default .homebox.homebox-auto-save #homebox-add .item-list ul li a, .homebox.homebox-auto-save #homebox-add .item-list ul li .cs-default a, .cs-default .homebox.homebox-auto-save .view-footer a.button, .homebox.homebox-auto-save .view-footer .cs-default a.button {
+.cs-default .blue-button, .cs-default .homebox.homebox-auto-save #homebox-buttons > a, .homebox.homebox-auto-save .cs-default #homebox-buttons > a, .cs-default .homebox.homebox-auto-save #homebox-add .item-list ul li a, .homebox.homebox-auto-save #homebox-add .item-list ul li .cs-default a, .cs-default .homebox.homebox-auto-save .view-footer a.button, .homebox.homebox-auto-save .view-footer .cs-default a.button, .cs-default .homebox.homebox-auto-save .view-footer .other-programme.view .other-programme .programme-content .sign-up a, .homebox.homebox-auto-save .view-footer .other-programme.view .other-programme .programme-content .sign-up .cs-default a, .cs-default .other-programme.view .other-programme .programme-content .sign-up .homebox.homebox-auto-save .view-footer a, .other-programme.view .other-programme .programme-content .sign-up .homebox.homebox-auto-save .view-footer .cs-default a {
   font-family: "McLaren", cursive;
   font-weight: normal;
   -webkit-font-smoothing: antialiased;
@@ -10000,7 +10004,7 @@ html {
   -moz-font-smoothing: grayscale;
 }
 /* line 29, ../scss/base/_mixins.scss */
-.cs-classic .blue-button, .cs-classic .homebox.homebox-auto-save #homebox-buttons > a, .homebox.homebox-auto-save .cs-classic #homebox-buttons > a, .cs-classic .homebox.homebox-auto-save #homebox-add .item-list ul li a, .homebox.homebox-auto-save #homebox-add .item-list ul li .cs-classic a, .cs-classic .homebox.homebox-auto-save .view-footer a.button, .homebox.homebox-auto-save .view-footer .cs-classic a.button {
+.cs-classic .blue-button, .cs-classic .homebox.homebox-auto-save #homebox-buttons > a, .homebox.homebox-auto-save .cs-classic #homebox-buttons > a, .cs-classic .homebox.homebox-auto-save #homebox-add .item-list ul li a, .homebox.homebox-auto-save #homebox-add .item-list ul li .cs-classic a, .cs-classic .homebox.homebox-auto-save .view-footer a.button, .homebox.homebox-auto-save .view-footer .cs-classic a.button, .cs-classic .homebox.homebox-auto-save .view-footer .other-programme.view .other-programme .programme-content .sign-up a, .homebox.homebox-auto-save .view-footer .other-programme.view .other-programme .programme-content .sign-up .cs-classic a, .cs-classic .other-programme.view .other-programme .programme-content .sign-up .homebox.homebox-auto-save .view-footer a, .other-programme.view .other-programme .programme-content .sign-up .homebox.homebox-auto-save .view-footer .cs-classic a {
   font-family: "Architects Daughter", cursive;
   font-weight: 700;
   -webkit-font-smoothing: antialiased;
@@ -10009,7 +10013,7 @@ html {
   -moz-font-smoothing: grayscale;
 }
 /* line 38, ../scss/base/_mixins.scss */
-.cs-elegant .blue-button, .cs-elegant .homebox.homebox-auto-save #homebox-buttons > a, .homebox.homebox-auto-save .cs-elegant #homebox-buttons > a, .cs-elegant .homebox.homebox-auto-save #homebox-add .item-list ul li a, .homebox.homebox-auto-save #homebox-add .item-list ul li .cs-elegant a, .cs-elegant .homebox.homebox-auto-save .view-footer a.button, .homebox.homebox-auto-save .view-footer .cs-elegant a.button {
+.cs-elegant .blue-button, .cs-elegant .homebox.homebox-auto-save #homebox-buttons > a, .homebox.homebox-auto-save .cs-elegant #homebox-buttons > a, .cs-elegant .homebox.homebox-auto-save #homebox-add .item-list ul li a, .homebox.homebox-auto-save #homebox-add .item-list ul li .cs-elegant a, .cs-elegant .homebox.homebox-auto-save .view-footer a.button, .homebox.homebox-auto-save .view-footer .cs-elegant a.button, .cs-elegant .homebox.homebox-auto-save .view-footer .other-programme.view .other-programme .programme-content .sign-up a, .homebox.homebox-auto-save .view-footer .other-programme.view .other-programme .programme-content .sign-up .cs-elegant a, .cs-elegant .other-programme.view .other-programme .programme-content .sign-up .homebox.homebox-auto-save .view-footer a, .other-programme.view .other-programme .programme-content .sign-up .homebox.homebox-auto-save .view-footer .cs-elegant a {
   font-family: "Margarine", cursive;
   font-weight: normal;
   -webkit-font-smoothing: antialiased;
@@ -12523,6 +12527,19 @@ html {
   transform: rotateY(360deg);
 }
 
+/* line 2, ../scss/pages/_activity.scss */
+.page-activities #page-title {
+  display: none;
+}
+/* line 5, ../scss/pages/_activity.scss */
+.page-activities .button, .page-activities .other-programme.view .other-programme .programme-content .sign-up a, .other-programme.view .other-programme .programme-content .sign-up .page-activities a {
+  margin-left: 0;
+}
+/* line 8, ../scss/pages/_activity.scss */
+.page-activities .flicker-block {
+  margin-top: 50px;
+}
+
 /* line 1, ../scss/pages/_dashboard.scss */
 p.more-link {
   position: relative;
@@ -13071,7 +13088,7 @@ p.more-link:after {
   -moz-font-smoothing: grayscale;
 }
 /* line 457, ../scss/pages/_dashboard.scss */
-.homebox.homebox-auto-save .view-footer a.button {
+.homebox.homebox-auto-save .view-footer a.button, .homebox.homebox-auto-save .view-footer .other-programme.view .other-programme .programme-content .sign-up a, .other-programme.view .other-programme .programme-content .sign-up .homebox.homebox-auto-save .view-footer a {
   margin: 10px 0;
   width: 100%;
 }
@@ -13097,15 +13114,17 @@ p.more-link:after {
 .page-messages #page-title.title + .primary-tabs {
   display: inline-block;
   vertical-align: top;
+  margin-top: 26px;
 }
-/* line 6, ../scss/pages/_messages.scss */
+/* line 7, ../scss/pages/_messages.scss */
 .page-messages #page-title.title + .primary-tabs + ul.action-links {
   display: inline-block;
   list-style: none;
   vertical-align: top;
   margin: 0;
+  margin-top: 26px;
 }
-/* line 11, ../scss/pages/_messages.scss */
+/* line 13, ../scss/pages/_messages.scss */
 .page-messages #page-title.title + .primary-tabs + ul.action-links li a {
   padding: 6px 24px;
   display: inline-block;
@@ -13118,40 +13137,699 @@ p.more-link:after {
   margin: 10px;
 }
 
-/* line 26, ../scss/pages/_messages.scss */
-.page-messages.cs-default #page-title.title + .primary-tabs + ul.action-links li a {
+/* line 28, ../scss/pages/_messages.scss */
+.message-button, #page-title.title + .primary-tabs + ul.action-links li a, .page-messages form fieldset legend a, .page-messages .chosen-container a, .page-messages #edit-cancel, .page-messages .privatemsg-message-actions a {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  -moz-font-smoothing: grayscale;
+}
+/* line 29, ../scss/pages/_messages.scss */
+.page-messages.cs-default .message-button, .page-messages.cs-default #page-title.title + .primary-tabs + ul.action-links li a, #page-title.title + .primary-tabs + ul.action-links li .page-messages.cs-default a, .page-messages.cs-default form fieldset legend a, .page-messages.cs-default .chosen-container a, .page-messages.cs-default #edit-cancel, .page-messages.cs-default .privatemsg-message-actions a {
   font-family: "McLaren", cursive;
   font-weight: normal;
   font-size: 17px;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-rendering: optimizeLegibility;
-  -moz-font-smoothing: grayscale;
   color: #000;
 }
-
-/* line 37, ../scss/pages/_messages.scss */
-.page-messages.cs-classic #page-title.title + .primary-tabs + ul.action-links li a {
+/* line 36, ../scss/pages/_messages.scss */
+.page-messages.cs-classic .message-button, .page-messages.cs-classic #page-title.title + .primary-tabs + ul.action-links li a, #page-title.title + .primary-tabs + ul.action-links li .page-messages.cs-classic a, .page-messages.cs-classic form fieldset legend a, .page-messages.cs-classic .chosen-container a, .page-messages.cs-classic #edit-cancel, .page-messages.cs-classic .privatemsg-message-actions a {
   font-family: "Architects Daughter", cursive;
-  font-weight: normal;
+  font-weight: 700;
   font-size: 18px;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-rendering: optimizeLegibility;
-  -moz-font-smoothing: grayscale;
   color: #fff;
 }
-
-/* line 48, ../scss/pages/_messages.scss */
-.page-messages.cs-elegant #page-title.title + .primary-tabs + ul.action-links li a {
+/* line 43, ../scss/pages/_messages.scss */
+.page-messages.cs-elegant .message-button, .page-messages.cs-elegant #page-title.title + .primary-tabs + ul.action-links li a, #page-title.title + .primary-tabs + ul.action-links li .page-messages.cs-elegant a, .page-messages.cs-elegant form fieldset legend a, .page-messages.cs-elegant .chosen-container a, .page-messages.cs-elegant #edit-cancel, .page-messages.cs-elegant .privatemsg-message-actions a {
   font-family: "Margarine", cursive;
   font-weight: normal;
   font-size: 19px;
+  color: #fff;
+}
+
+/* line 60, ../scss/pages/_messages.scss */
+.page-messages #page-title.title {
+  line-height: 1.4;
+  margin: 0;
+  height: 99px;
+  width: 100%;
+  background: url(../images/big-strokes);
+  padding-top: 14px;
+  border-radius: 15px 15px 0 0;
+  padding-left: 35px;
+  text-transform: capitalize;
+}
+/* line 20, ../scss/base/_mixins.scss */
+.cs-default #page-title.title {
+  font-family: "McLaren", cursive;
+  font-weight: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
   -moz-font-smoothing: grayscale;
+}
+/* line 29, ../scss/base/_mixins.scss */
+.cs-classic #page-title.title {
+  font-family: "Architects Daughter", cursive;
+  font-weight: 700;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  -moz-font-smoothing: grayscale;
+}
+/* line 38, ../scss/base/_mixins.scss */
+.cs-elegant #page-title.title {
+  font-family: "Margarine", cursive;
+  font-weight: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  -moz-font-smoothing: grayscale;
+}
+/* line 76, ../scss/pages/_messages.scss */
+.page-messages.cs-default #page-title.title {
+  background-position: -60px -569px;
+}
+/* line 80, ../scss/pages/_messages.scss */
+.page-messages.cs-classic #page-title.title {
+  background-position: -60px -225px;
+}
+/* line 84, ../scss/pages/_messages.scss */
+.page-messages.cs-elegant #page-title.title {
+  background-position: -60px -914px;
+}
+
+/* line 89, ../scss/pages/_messages.scss */
+.page-messages .main {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  width: calc(100% - 40px);
+  margin: auto;
+  float: none;
+  margin-bottom: 35px;
   color: #fff;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+  margin-bottom: 35px;
+  padding-bottom: 15px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  -moz-font-smoothing: grayscale;
+}
+/* line 109, ../scss/pages/_messages.scss */
+.page-messages.cs-default .main {
+  background: #267fda;
+  font-size: 17px;
+  font-family: "arial";
+  font-weight: normal;
+}
+/* line 116, ../scss/pages/_messages.scss */
+.page-messages.cs-elegant .main {
+  background: #267fda;
+  font-size: 17px;
+  font-family: "PT Sans", sans-serif;
+  font-weight: normal;
+}
+/* line 122, ../scss/pages/_messages.scss */
+.page-messages.cs-classic .main {
+  background: #084899;
+  font-size: 19px;
+  font-family: "Open Sans", sans-serif;
+  font-weight: normal;
+}
+
+/* line 133, ../scss/pages/_messages.scss */
+.page-messages .button-group {
+  margin-left: 35px;
+}
+
+/* line 138, ../scss/pages/_messages.scss */
+.page-messages .block-block-3 {
+  display: inline-block;
+  margin-top: 26px;
+}
+/* line 142, ../scss/pages/_messages.scss */
+.page-messages form {
+  padding: 0 35px;
+  margin-bottom: 0;
+}
+/* line 145, ../scss/pages/_messages.scss */
+.page-messages form fieldset {
+  border: none;
+  padding-left: 0;
+  margin: 0 0 0 -6px;
+  margin-bottom: 39px;
+}
+/* line 150, ../scss/pages/_messages.scss */
+.page-messages form fieldset legend {
+  background: transparent none repeat scroll 0 0;
+  font-weight: normal;
+  margin-top: 15px;
+}
+/* line 154, ../scss/pages/_messages.scss */
+.page-messages form fieldset legend a {
+  padding: 6px 24px;
+  display: inline-block;
+  text-decoration: none;
+  box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+  text-transform: capitalize;
+  border-radius: 10px;
+  border: none;
+  line-height: 26px;
+}
+/* line 166, ../scss/pages/_messages.scss */
+.page-messages form fieldset label {
+  color: #fff;
+  font-weight: bold;
+  text-align: left !important;
+}
+/* line 172, ../scss/pages/_messages.scss */
+.page-messages form .container-inline {
+  margin-top: 10px;
+}
+/* line 174, ../scss/pages/_messages.scss */
+.page-messages form .container-inline .form-type-textfield {
+  display: inline-block;
+  max-width: 32.5%;
+  width: 100%;
+}
+/* line 181, ../scss/pages/_messages.scss */
+.page-messages .form-item-operation {
+  display: inline-block;
+}
+/* line 184, ../scss/pages/_messages.scss */
+.page-messages .chosen-container {
+  width: 200px;
+}
+/* line 186, ../scss/pages/_messages.scss */
+.page-messages .chosen-container a {
+  border: medium none;
+  border-radius: 10px;
+  bottom: 2px;
+  box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+  font-style: normal !important;
+  height: auto !important;
+  padding: 6px 20px 8px;
+  position: relative;
+  text-rendering: optimizelegibility !important;
+  text-transform: capitalize;
+}
+/* line 198, ../scss/pages/_messages.scss */
+.page-messages .chosen-container a div {
+  margin-top: 7px !important;
+}
+/* line 203, ../scss/pages/_messages.scss */
+.page-messages table.sticky-enabled {
+  margin: 23px 0 40px 0;
+}
+/* line 206, ../scss/pages/_messages.scss */
+.page-messages table.sticky-header {
+  border: 5px solid #267fda;
+}
+/* line 208, ../scss/pages/_messages.scss */
+.page-messages table.sticky-header thead {
+  background: #267fda;
+}
+/* line 213, ../scss/pages/_messages.scss */
+.page-messages .privatemsg-list {
+  width: 100%;
+  background: transparent;
+  border: none;
+}
+/* line 217, ../scss/pages/_messages.scss */
+.page-messages .privatemsg-list thead {
+  background: #267fda;
+  border-bottom: 5px solid transparent;
+}
+/* line 220, ../scss/pages/_messages.scss */
+.page-messages .privatemsg-list thead .select-all {
+  width: 1%;
+  position: relative;
+  top: 7px;
+}
+/* line 225, ../scss/pages/_messages.scss */
+.page-messages .privatemsg-list thead th {
+  padding-bottom: 0;
+}
+/* line 229, ../scss/pages/_messages.scss */
+.page-messages .privatemsg-list tbody {
+  border-top: none;
+}
+/* line 231, ../scss/pages/_messages.scss */
+.page-messages .privatemsg-list tbody tr {
+  background: transparent;
+  border-bottom: none;
+}
+/* line 234, ../scss/pages/_messages.scss */
+.page-messages .privatemsg-list tbody tr td {
+  padding-bottom: 2px;
+}
+/* line 238, ../scss/pages/_messages.scss */
+.page-messages .privatemsg-list tbody tr.selected td {
+  background: transparent;
+}
+/* line 245, ../scss/pages/_messages.scss */
+.page-messages .privatemsg-list tbody .form-type-checkbox .form-checkbox {
+  margin-bottom: 0;
+}
+/* line 253, ../scss/pages/_messages.scss */
+.page-messages .privatemsg-header-subject a, .page-messages .privatemsg-header-lastupdated a,
+.page-messages .privatemsg-list-subject a {
+  color: #fff;
+  font-size: 19px;
+}
+/* line 257, ../scss/pages/_messages.scss */
+.page-messages .privatemsg-header-subject img, .page-messages .privatemsg-header-lastupdated img,
+.page-messages .privatemsg-list-subject img {
+  margin-left: 5px;
+}
+/* line 261, ../scss/pages/_messages.scss */
+.page-messages .privatemsg-list-date, .page-messages .empty.message {
+  color: #fff;
+  font-size: 19px;
+}
+/* line 265, ../scss/pages/_messages.scss */
+.page-messages .privatemsg-header-participants, .page-messages .privatemsg-list-participants {
+  display: none;
+}
+/* line 268, ../scss/pages/_messages.scss */
+.page-messages .warning {
+  margin: 30px 0 40px 0;
+}
+/* line 271, ../scss/pages/_messages.scss */
+.page-messages .privatemsg-message-participants {
+  margin: 18px 35px 0;
+  font-size: 19px;
+}
+/* line 275, ../scss/pages/_messages.scss */
+.page-messages .privatemsg-message {
+  max-width: 100%;
+  padding: 30px 35px 0;
+}
+/* line 279, ../scss/pages/_messages.scss */
+.page-messages .privatemsg-message-column {
+  width: 100%;
+  border-bottom: 2px solid #C5C5C5;
+  margin-bottom: 22px;
+}
+/* line 284, ../scss/pages/_messages.scss */
+.page-messages .privatemsg-author-name, .page-messages .privatemsg-message-date {
+  font-size: 19px;
+  color: #fff;
+}
+/* line 288, ../scss/pages/_messages.scss */
+.page-messages .privatemsg-message-information {
+  border-bottom: none;
+}
+/* line 291, ../scss/pages/_messages.scss */
+.page-messages .privatemsg-message-body {
+  margin-left: 0;
+}
+/* line 293, ../scss/pages/_messages.scss */
+.page-messages .privatemsg-message-body p {
+  font-size: 19px;
+}
+/* line 297, ../scss/pages/_messages.scss */
+.page-messages .privatemsg-reply {
+  color: #fff;
+}
+/* line 300, ../scss/pages/_messages.scss */
+.page-messages .text-format-wrapper {
+  margin-bottom: 26px;
+}
+/* line 302, ../scss/pages/_messages.scss */
+.page-messages .text-format-wrapper label {
+  font-size: 19px;
+  color: #fff;
+}
+/* line 307, ../scss/pages/_messages.scss */
+.page-messages .button, .page-messages .other-programme.view .other-programme .programme-content .sign-up a, .other-programme.view .other-programme .programme-content .sign-up .page-messages a {
+  margin-left: 0;
+  margin-right: 15px;
+}
+/* line 311, ../scss/pages/_messages.scss */
+.page-messages #edit-cancel {
+  padding: 6px 24px;
+  display: inline-block;
+  text-decoration: none;
+  box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+  text-transform: capitalize;
+  border-radius: 10px;
+  border: none;
+  line-height: 26px;
+}
+/* line 323, ../scss/pages/_messages.scss */
+.page-messages .privatemsg-message-actions {
+  list-style: none;
+  margin: 28px 0;
+}
+/* line 326, ../scss/pages/_messages.scss */
+.page-messages .privatemsg-message-actions a {
+  padding: 6px 24px;
+  display: inline-block;
+  text-decoration: none;
+  box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+  text-transform: capitalize;
+  border-radius: 10px;
+  border: none;
+  line-height: 26px;
+}
+
+/* line 20, ../scss/base/_mixins.scss */
+.cs-default .chosen-drop * {
+  font-family: "McLaren", cursive;
+  font-weight: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  -moz-font-smoothing: grayscale;
+}
+/* line 29, ../scss/base/_mixins.scss */
+.cs-classic .chosen-drop * {
+  font-family: "Architects Daughter", cursive;
+  font-weight: 700;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  -moz-font-smoothing: grayscale;
+}
+/* line 38, ../scss/base/_mixins.scss */
+.cs-elegant .chosen-drop * {
+  font-family: "Margarine", cursive;
+  font-weight: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  -moz-font-smoothing: grayscale;
+}
+/* line 151, ../scss/base/_mixins.scss */
+.cs-default .chosen-drop * {
+  font-size: 17px;
+}
+/* line 155, ../scss/base/_mixins.scss */
+.cs-classic .chosen-drop *, .cs-elegant .chosen-drop * {
+  font-size: 19px;
+}
+/* line 344, ../scss/pages/_messages.scss */
+.page-messages.cs-default .chosen-drop {
+  top: 40px;
+  color: #000;
+}
+/* line 349, ../scss/pages/_messages.scss */
+.page-messages.cs-classic .chosen-drop {
+  top: 40px;
+  color: #fff;
+}
+/* line 354, ../scss/pages/_messages.scss */
+.page-messages.cs-elegant .chosen-drop {
+  top: 40px;
+  color: #fff;
+}
+
+/* line 364, ../scss/pages/_messages.scss */
+.page-messages.cs-default .pagination.pager li.current a, .page-messages.cs-classic .pagination.pager li.current a, .page-messages.cs-elegant .pagination.pager li.current a {
+  background: #fdeb52;
+  color: #000;
+}
+/* line 373, ../scss/pages/_messages.scss */
+.page-messages.cs-default .pagination.pager li a:hover, .page-messages.cs-classic .pagination.pager li a:hover, .page-messages.cs-elegant .pagination.pager li a:hover, .page-messages.cs-default .pagination.pager li a:focus, .page-messages.cs-classic .pagination.pager li a:focus, .page-messages.cs-elegant .pagination.pager li a:focus {
+  background: #fdeb52;
+  color: #000;
+}
+
+@media all and (max-width: 767px) {
+  /* line 386, ../scss/pages/_messages.scss */
+  .page-messages .action-links {
+    display: none !important;
+  }
+  /* line 389, ../scss/pages/_messages.scss */
+  .page-messages .button-group {
+    margin-left: 10px;
+  }
+  /* line 393, ../scss/pages/_messages.scss */
+  .page-messages .container-inline button, .page-messages .container-inline .form-type-select {
+    margin-bottom: 20px !important;
+  }
+  /* line 397, ../scss/pages/_messages.scss */
+  .page-messages form {
+    padding: 0 10px;
+  }
+  /* line 402, ../scss/pages/_messages.scss */
+  .page-messages .privatemsg-header-subject a, .page-messages .privatemsg-header-lastupdated a,
+  .page-messages .privatemsg-list-subject a {
+    font-size: 14px;
+  }
+  /* line 405, ../scss/pages/_messages.scss */
+  .page-messages .privatemsg-header-subject img, .page-messages .privatemsg-header-lastupdated img,
+  .page-messages .privatemsg-list-subject img {
+    margin-left: 0;
+  }
+  /* line 409, ../scss/pages/_messages.scss */
+  .page-messages .privatemsg-author-name, .page-messages .privatemsg-message-date,
+  .page-messages .privatemsg-list-date, .page-messages .empty.message {
+    font-size: 14px;
+  }
+  /* line 413, ../scss/pages/_messages.scss */
+  .page-messages .privatemsg-message-participants {
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+  /* line 417, ../scss/pages/_messages.scss */
+  .page-messages .privatemsg-message {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  /* line 422, ../scss/pages/_messages.scss */
+  .page-messages .privatemsg-message-body p {
+    font-size: 14px;
+  }
+  /* line 427, ../scss/pages/_messages.scss */
+  .page-messages .text-format-wrapper label {
+    font-size: 14px;
+  }
+}
+@media all and (max-width: 1024px) {
+  /* line 436, ../scss/pages/_messages.scss */
+  .page-messages.cs-default .form-select {
+    font-family: "McLaren", cursive;
+    font-weight: normal;
+    font-size: 17px;
+    background: #fdeb52;
+    color: #000;
+  }
+  /* line 443, ../scss/pages/_messages.scss */
+  .page-messages.cs-classic .form-select {
+    font-family: "Architects Daughter", cursive;
+    font-weight: 700;
+    font-size: 18px;
+    background: #ff9f1c;
+    color: #fff;
+  }
+  /* line 450, ../scss/pages/_messages.scss */
+  .page-messages.cs-elegant .form-select {
+    font-family: "Margarine", cursive;
+    font-weight: normal;
+    font-size: 19px;
+    background: #ff9f1c;
+    color: #fff;
+  }
+
+  /* line 459, ../scss/pages/_messages.scss */
+  .page-messages .form-select {
+    padding: 6px 24px;
+    display: inline-block;
+    text-decoration: none;
+    box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+    text-transform: capitalize;
+    border-radius: 10px;
+    border: none;
+    line-height: 26px;
+  }
+}
+/* line 3, ../scss/pages/_photo-vedios.scss */
+.view.video-block .view-content {
+  -webkit-flex-wrap: wrap;
+  flex-wrap: wrap;
+  display: -webkit-flex;
+  display: flex;
+  width: calc(100% + 30px);
+  margin-left: -15px;
+}
+/* line 10, ../scss/pages/_photo-vedios.scss */
+.view.video-block .view-content .views-row {
+  margin-bottom: 30px;
+  flex: 0 0 25%;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+/* line 12, ../scss/pages/_photo-vedios.scss */
+.view.video-block .view-content .views-row .vedio-wrapper {
+  width: 100%;
+  height: 0;
+  padding-bottom: 56.25%;
+  position: relative;
+}
+/* line 17, ../scss/pages/_photo-vedios.scss */
+.view.video-block .view-content .views-row .vedio-wrapper iframe, .view.video-block .view-content .views-row .vedio-wrapper object, .view.video-block .view-content .views-row .vedio-wrapper embed {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+/* line 25, ../scss/pages/_photo-vedios.scss */
+.view.video-block .view-content .views-row .description {
+  padding-top: 14px;
+  padding-bottom: 14px;
+}
+/* line 49, ../scss/base/_mixins.scss */
+.cs-default .view.video-block .view-content .views-row .description * {
+  font-family: "arial";
+  font-weight: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  -moz-font-smoothing: grayscale;
+}
+/* line 58, ../scss/base/_mixins.scss */
+.cs-classic .view.video-block .view-content .views-row .description * {
+  font-family: "PT Sans", sans-serif;
+  font-weight: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  -moz-font-smoothing: grayscale;
+}
+/* line 67, ../scss/base/_mixins.scss */
+.cs-elegant .view.video-block .view-content .views-row .description * {
+  font-family: "Open Sans", sans-serif;
+  font-weight: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  -moz-font-smoothing: grayscale;
+}
+/* line 32, ../scss/pages/_photo-vedios.scss */
+.cs-default .view.video-block .view-content .views-row .description * {
+  font-size: 12px;
+  line-height: 15px;
+}
+/* line 36, ../scss/pages/_photo-vedios.scss */
+.cs-classic .view.video-block .view-content .views-row .description *, .cs-elegant .view.video-block .view-content .views-row .description * {
+  font-size: 14px;
+  line-height: 16px;
+}
+/* line 44, ../scss/pages/_photo-vedios.scss */
+.view.video-block .view-content .views-row * {
+  width: 100%;
+}
+/* line 52, ../scss/pages/_photo-vedios.scss */
+.view.photos-block .view-content {
+  -webkit-flex-wrap: wrap;
+  flex-wrap: wrap;
+  display: -webkit-flex;
+  display: flex;
+  width: calc(100% + 50px);
+  margin-left: -25px;
+}
+/* line 59, ../scss/pages/_photo-vedios.scss */
+.view.photos-block .view-content .views-row {
+  flex: 0 0 33%;
+  padding-left: 25px;
+  padding-right: 25px;
+  margin-bottom: 30px;
+}
+/* line 64, ../scss/pages/_photo-vedios.scss */
+.view.photos-block .view-content .views-row .flickr-citation {
+  display: none;
+}
+/* line 67, ../scss/pages/_photo-vedios.scss */
+.view.photos-block .view-content .views-row * {
+  width: 100%;
+}
+
+/* line 1, ../scss/pages/_program.scss */
+#page-title {
+  margin-top: 0;
+}
+
+/* line 5, ../scss/pages/_program.scss */
+.current-program .programme-content {
+  display: flex;
+  display: -webkit-flex;
+  padding: 35px;
+}
+/* line 9, ../scss/pages/_program.scss */
+.current-program .programme-content a {
+  font-weight: 700;
+  text-decoration: underline;
+  color: #fff;
+}
+/* line 14, ../scss/pages/_program.scss */
+.current-program .programme-content .image {
+  flex: 0 0 200px;
+  padding-top: 8px;
+}
+/* line 18, ../scss/pages/_program.scss */
+.current-program .programme-content .body {
+  flex: 0 0 calc(100% - 200px);
+  padding-left: 35px;
+}
+
+/* line 24, ../scss/pages/_program.scss */
+.other-programme.view {
+  padding-bottom: 80px;
+}
+/* line 29, ../scss/pages/_program.scss */
+.other-programme.view .other-programme {
+  display: flex;
+  display: -webkit-flex;
+  padding: 35px 35px 0;
+}
+/* line 33, ../scss/pages/_program.scss */
+.other-programme.view .other-programme .programme-image {
+  flex: 0 0 200px;
+  padding-top: 8px;
+}
+/* line 37, ../scss/pages/_program.scss */
+.other-programme.view .other-programme .programme-content {
+  flex: 0 0 calc(100% - 200px);
+  padding-left: 35px;
+}
+/* line 40, ../scss/pages/_program.scss */
+.other-programme.view .other-programme .programme-content h2 {
+  margin-top: 0;
+  margin-bottom: 30px;
+}
+/* line 43, ../scss/pages/_program.scss */
+.cs-default .other-programme.view .other-programme .programme-content h2 {
+  color: #f6511d;
+}
+/* line 46, ../scss/pages/_program.scss */
+.cs-elegant .other-programme.view .other-programme .programme-content h2 {
+  color: #2ec4b6;
+}
+/* line 49, ../scss/pages/_program.scss */
+.cs-classic .other-programme.view .other-programme .programme-content h2 {
+  color: #00a6ed;
+}
+/* line 52, ../scss/pages/_program.scss */
+.other-programme.view .other-programme .programme-content h2 * {
+  color: inherit;
+}
+/* line 56, ../scss/pages/_program.scss */
+.other-programme.view .other-programme .programme-content .sign-up {
+  margin-top: 5px;
+}
+/* line 58, ../scss/pages/_program.scss */
+.other-programme.view .other-programme .programme-content .sign-up a {
+  margin-left: 0;
+}
+
+/* line 67, ../scss/pages/_program.scss */
+.page-programs #page-title {
+  margin-bottom: 30px;
 }
 
 /* line 2, ../scss/pages/_progress.scss */

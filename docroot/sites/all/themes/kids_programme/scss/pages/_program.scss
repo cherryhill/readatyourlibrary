@@ -1,0 +1,70 @@
+#page-title {
+  margin-top: 0;
+}
+.current-program {
+   .programme-content {
+     display: flex;
+     display: -webkit-flex;
+     padding: 35px;
+      a {
+        font-weight: 700;
+        text-decoration: underline;
+        color: $white;
+      }
+      .image {
+        flex: 0 0 200px;
+        padding-top: 8px;
+      }
+      .body {
+        flex: 0 0 calc(100% - 200px);
+        padding-left: 35px;
+      }
+   }
+}
+.other-programme.view {
+  padding-bottom: 80px;
+   .view-header * {
+     @extend h1;
+   }
+   .other-programme {
+     display: flex;
+     display: -webkit-flex;
+     padding: 35px 35px 0;
+      .programme-image {
+        flex: 0 0 200px;
+        padding-top: 8px;
+      }
+      .programme-content {
+        flex: 0 0 calc(100% - 200px);
+        padding-left: 35px;
+         h2 {
+            margin-top: 0;
+            margin-bottom: 30px;
+            .cs-default & {
+             color: $orange;
+            }
+            .cs-elegant & {
+                color: $mint-green;
+              }
+              .cs-classic & {
+                color: $sky-blue;
+              }
+              * {
+                color: inherit;
+              }
+         }
+         .sign-up {
+          margin-top: 5px;
+           a {
+             @extend .button;
+             margin-left: 0;
+           }
+         }
+      }
+   }
+}
+.page-programs {
+  #page-title {
+    margin-bottom: 30px;
+  }
+}

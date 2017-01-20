@@ -3,11 +3,13 @@
     &+ .primary-tabs {
       display: inline-block;
       vertical-align: top;
+      margin-top: 26px;
         &+ ul.action-links {
           display: inline-block;
           list-style: none;
           vertical-align: top;
           margin: 0;
+          margin-top: 26px;
            li a {
               padding: 6px 24px;
               display: inline-block;
@@ -23,36 +25,446 @@
     }
   }
 }
-.page-messages.cs-default #page-title.title + .primary-tabs + ul.action-links li a {
-  font-family: $mclaren;
+.message-button {
+  .page-messages.cs-default & {
+     font-family: $mclaren;
   font-weight: normal;
   font-size: 17px;
+    @extend .yellow;
+  color: $black;
+   }
+   .page-messages.cs-classic & {
+        font-family: $Architects;
+    font-weight: 700;
+    font-size: 18px;
+     @extend .light-orange;
+    color: $white;
+   }
+   .page-messages.cs-elegant & {
+     font-family: $margarine;
+    font-weight: normal;
+    font-size: 19px;
+     @extend .light-orange;
+    color: $white;
+   }
     -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
   -moz-font-smoothing: grayscale;
-  @extend .yellow;
-  color: $black;
 }
-.page-messages.cs-classic #page-title.title + .primary-tabs + ul.action-links li a {
-   font-family: $Architects;
+ #page-title.title + .primary-tabs + ul.action-links li a {
+   @extend  .message-button;
+}
+
+#page-title.title {
+    .page-messages & {
+    line-height: 1.4;
+    margin: 0;
+    height: 99px;
+    width: 100%;
+    background: url(../images/big-strokes);
+    padding-top: 14px;
+    border-radius: 15px 15px 0 0;
+    padding-left: 35px;
+    text-transform: capitalize;
+  }
+
+  @extend .white-text;
+
+  @include primary_fonts;
+
+  .page-messages.cs-default & {
+    background-position: -60px -569px;
+  }
+
+  .page-messages.cs-classic & {
+    background-position: -60px -225px;
+  }
+
+  .page-messages.cs-elegant & {
+    background-position: -60px -914px;
+  }
+}
+.main {
+  .page-messages & {
+     padding-left: 0 !important;
+  padding-right: 0 !important;
+  width: calc(100% - 40px);
+  margin: auto;
+  float: none;
+  margin-bottom: 35px;
+  color: $white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+    margin-bottom: 35px;
+    padding-bottom: 15px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    -moz-font-smoothing: grayscale;
+
+  }
+
+   .page-messages.cs-default & {
+     background: $blue;
+      font-size: 17px;
+      font-family: $arial;
     font-weight: normal;
-    font-size: 18px;
-      -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-rendering: optimizeLegibility;
-  -moz-font-smoothing: grayscale;
-    @extend .light-orange;
+
+   }
+   .page-messages.cs-elegant & {
+      background: $blue;
+      font-size: 17px;
+      font-family: $ptsans;
+    font-weight: normal;
+    }
+    .page-messages.cs-classic & {
+      background: $darkblue;
+      font-size: 19px;
+      font-family: $open-sans;
+    font-weight: normal;
+
+    }
+
+}
+
+.button-group {
+  .page-messages & {
+    margin-left: 35px;
+  }
+}
+.page-messages {
+ .block-block-3 {
+    display: inline-block;
+    margin-top: 26px;
+  }
+  form {
+   padding: 0 35px;
+   margin-bottom: 0;
+    fieldset {
+      border: none;
+      padding-left: 0;
+      margin: 0 0 0 -6px;
+      margin-bottom: 39px;
+      legend {
+        background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
+        font-weight: normal;
+        margin-top: 15px;
+        a {
+          @extend .message-button;
+          padding: 6px 24px;
+          display: inline-block;
+          text-decoration: none;
+          box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+          text-transform: capitalize;
+          border-radius: 10px;
+          border: none;
+          line-height: 26px;
+        }
+      }
+      label {
+        color: $white;
+        font-weight: bold;
+        text-align: left !important;
+      }
+    }
+    .container-inline {
+      margin-top: 10px;
+      .form-type-textfield {
+        display: inline-block;
+        max-width: 32.5%;
+        width: 100%;
+      }
+    }
+  }
+  .form-item-operation {
+    display: inline-block;
+  }
+  .chosen-container {
+    width: 200px;
+    a {
+      @extend .message-button;
+      border: medium none;
+      border-radius: 10px;
+      bottom: 2px;
+      box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+      font-style: normal !important;
+      height: auto !important;
+      padding: 6px 20px 8px;
+      position: relative;
+      text-rendering: optimizelegibility !important;
+      text-transform: capitalize;
+      div {
+        margin-top: 7px !important;
+      }
+    }
+  }
+  table.sticky-enabled {
+    margin: 23px 0 40px 0;
+  }
+  table.sticky-header {
+    border: 5px solid $blue;
+    thead {
+      background: $blue;
+    }
+
+  }
+  .privatemsg-list {
+   width: 100%;
+   background: transparent;
+   border: none;
+    thead {
+      background: $blue;
+      border-bottom: 5px solid transparent;
+      .select-all {
+        width: 1%;
+        position: relative;
+        top: 7px;
+      }
+      th {
+        padding-bottom: 0;
+      }
+    }
+    tbody {
+      border-top: none;
+      tr {
+        background: transparent;
+        border-bottom: none;
+        td {
+          padding-bottom: 2px;
+        }
+        &.selected {
+          td {
+            background: transparent;
+
+          }
+        }
+      }
+      .form-type-checkbox {
+        .form-checkbox {
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
+  .privatemsg-header-subject, .privatemsg-header-lastupdated,
+  .privatemsg-list-subject{
+    a {
+      color: $white;
+      font-size: 19px;
+    }
+    img {
+      margin-left: 5px;
+    }
+  }
+  .privatemsg-list-date, .empty.message  {
     color: $white;
-}
-.page-messages.cs-elegant #page-title.title + .primary-tabs + ul.action-links li a {
-  font-family: $margarine;
-    font-weight: normal;
     font-size: 19px;
-      -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-rendering: optimizeLegibility;
-  -moz-font-smoothing: grayscale;
+  }
+  .privatemsg-header-participants, .privatemsg-list-participants {
+    display: none;
+  }
+  .warning {
+    margin: 30px 0 40px 0;
+  }
+  .privatemsg-message-participants {
+    margin: 18px 35px 0;
+    font-size: 19px;
+  }
+  .privatemsg-message {
+    max-width: 100%;
+    padding: 30px 35px 0;
+  }
+  .privatemsg-message-column {
+    width: 100%;
+    border-bottom: 2px solid #C5C5C5;
+    margin-bottom: 22px;
+  }
+  .privatemsg-author-name, .privatemsg-message-date {
+    font-size: 19px;
+    color: $white;
+  }
+  .privatemsg-message-information {
+    border-bottom: none;
+  }
+  .privatemsg-message-body {
+    margin-left: 0;
+    p {
+       font-size: 19px;
+    }
+  }
+  .privatemsg-reply {
+    color: $white;
+  }
+  .text-format-wrapper {
+    margin-bottom: 26px;
+    label {
+      font-size: 19px;
+      color: $white;
+    }
+  }
+  .button {
+    margin-left: 0;
+    margin-right: 15px;
+  }
+  #edit-cancel {
+    @extend .message-button;
+    padding: 6px 24px;
+    display: inline-block;
+    text-decoration: none;
+    box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+    text-transform: capitalize;
+    border-radius: 10px;
+    border: none;
+    line-height: 26px;
+
+  }
+  .privatemsg-message-actions {
+    list-style: none;
+    margin: 28px 0;
+    a {
+      @extend .message-button;
+      padding: 6px 24px;
+      display: inline-block;
+      text-decoration: none;
+      box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+      text-transform: capitalize;
+      border-radius: 10px;
+      border: none;
+      line-height: 26px;
+    }
+  }
+}
+.chosen-drop {
+ * {
+   @include primary_fonts;
+   @include primary_fsize;
+ }
+  .page-messages.cs-default & {
+    top: 40px;
+    @extend .yellow;
+    color: $black;
+  }
+  .page-messages.cs-classic & {
+    top: 40px;
     @extend .light-orange;
     color: $white;
+  }
+  .page-messages.cs-elegant & {
+    top: 40px;
+    @extend .light-orange;
+    color: $white;
+  }
+}
+.pagination.pager {
+  li {
+    &.current {
+      a {
+        .page-messages.cs-default &, .page-messages.cs-classic &,
+        .page-messages.cs-elegant & {
+          background: $yellow;
+          color: $black;
+        }
+      }
+    }
+    a {
+      &:hover,&:focus {
+        .page-messages.cs-default &, .page-messages.cs-classic &,
+        .page-messages.cs-elegant &
+        {
+          background: $yellow;
+          color: $black;
+        }
+      }
+    }
+  }
+}
+
+@media all and (max-width: 767px) {
+  .page-messages {
+    .action-links {
+      display: none !important;
+    }
+    .button-group {
+      margin-left: 10px;
+    }
+    .container-inline {
+      button, .form-type-select {
+        margin-bottom: 20px !important;
+      }
+    }
+    form {
+      padding: 0 10px;
+    }
+    .privatemsg-header-subject, .privatemsg-header-lastupdated,
+    .privatemsg-list-subject {
+      a {
+        font-size: 14px;
+      }
+      img {
+        margin-left: 0;
+      }
+    }
+    .privatemsg-author-name, .privatemsg-message-date,
+    .privatemsg-list-date, .empty.message  {
+      font-size: 14px;
+    }
+    .privatemsg-message-participants {
+      margin-left: 10px;
+      margin-right: 10px;
+    }
+    .privatemsg-message {
+      padding-left: 10px;
+      padding-right: 10px;
+    }
+    .privatemsg-message-body {
+      p {
+        font-size: 14px;
+      }
+    }
+    .text-format-wrapper {
+      label {
+        font-size : 14px;
+      }
+    }
+  }
+}
+
+@media all and (max-width: 1024px) {
+  .form-select {
+   .page-messages.cs-default & {
+      font-family: $mclaren;
+      font-weight: normal;
+      font-size: 17px;
+      background: $yellow;
+      color: $black;
+    }
+     .page-messages.cs-classic & {
+      font-family: $Architects;
+      font-weight: 700;
+      font-size: 18px;
+      background: $light-orange;
+      color: $white;
+    }
+   .page-messages.cs-elegant & {
+      font-family: $margarine;
+      font-weight: normal;
+      font-size: 19px;
+      background: $light-orange;
+      color: $white;
+    }
+  }
+  .page-messages {
+    .form-select {
+      padding: 6px 24px;
+      display: inline-block;
+      text-decoration: none;
+      box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+      text-transform: capitalize;
+      border-radius: 10px;
+      border: none;
+      line-height: 26px;
+    }
+  }
 }
