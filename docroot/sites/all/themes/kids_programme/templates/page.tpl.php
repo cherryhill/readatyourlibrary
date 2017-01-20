@@ -132,7 +132,7 @@
     </div>
     <!--/.main region -->
       <?php if (!empty($page['sidebar_activity'])): ?>
-      <aside role="complementary" class="<?php print $sidebar_first_grid; ?> sidebar-first columns sidebar2">
+      <aside role="complementary" class="<?php print $sidebar_first_grid; ?> sidebar-activity columns sidebar2">
         <div class='first'><?php print render($page['sidebar_activity']); ?> </div>
       </aside>
     <?php endif; ?>

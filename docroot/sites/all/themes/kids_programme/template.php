@@ -214,7 +214,7 @@ function kids_programme_preprocess_page(&$variables) {
 
 if (!empty($variables['page']['sidebar_first']) || !empty($variables['page']['sidebar_activity'])){
     $left = $variables['page']['sidebar_first'];
-    $left1 = $variables['page']['login_form'];
+    $left1 = $variables['page']['sidebar_activity'];
 
   }
 

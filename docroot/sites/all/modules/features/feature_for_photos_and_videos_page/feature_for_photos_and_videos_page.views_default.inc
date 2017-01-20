@@ -85,7 +85,7 @@ function feature_for_photos_and_videos_page_views_default_views() {
   $handler->display->display_options['fields']['field_flicker_images']['field'] = 'field_flicker_images';
   $handler->display->display_options['fields']['field_flicker_images']['label'] = '';
   $handler->display->display_options['fields']['field_flicker_images']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_flicker_images']['type'] = 'photoset_primaryphoto_sizeq_linknode';
+  $handler->display->display_options['fields']['field_flicker_images']['type'] = 'photoset_primaryphoto_sizeb_linkflickrcomset';
   $handler->display->display_options['fields']['field_flicker_images']['group_rows'] = FALSE;
   $handler->display->display_options['fields']['field_flicker_images']['delta_offset'] = '0';
   $handler->display->display_options['block_description'] = 'photo block for photo video page';
