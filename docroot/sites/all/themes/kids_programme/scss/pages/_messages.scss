@@ -134,6 +134,28 @@
     margin-left: 35px;
   }
 }
+table.sticky-header {
+  thead {
+    .page-messages.cs-default &, .page-messages.cs-elegant & {
+      background: $blue;
+      border-bottom: 5px solid $blue;
+    }
+    .page-messages.cs-classic & {
+      background: $darkblue;
+      border-bottom: 5px solid $darkblue;
+    }
+  }
+}
+.privatemsg-list {
+  thead {
+    .page-messages.cs-default &, .page-messages.cs-elegant & {
+      background: $blue;
+    }
+    .page-messages.cs-classic & {
+      background: $darkblue;
+    }
+  }
+}
 .page-messages {
  .block-block-3 {
     display: inline-block;
@@ -204,11 +226,7 @@
     margin: 23px 0 40px 0;
   }
   table.sticky-header {
-    border: 5px solid $blue;
-    thead {
-      background: $blue;
-    }
-
+    border: none;
   }
   .privatemsg-list {
    width: 100%;
