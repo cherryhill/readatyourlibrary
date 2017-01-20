@@ -131,19 +131,18 @@
       <?php print render($page['content']); ?>
     </div>
     <!--/.main region -->
-
+      <?php if (!empty($page['sidebar_activity'])): ?>
+      <aside role="complementary" class="<?php print $sidebar_first_grid; ?> sidebar-first columns sidebar2">
+        <div class='first'><?php print render($page['sidebar_activity']); ?> </div>
+      </aside>
+    <?php endif; ?>
     <?php if (!empty($page['sidebar_first'])): ?>
       <aside role="complementary" class="<?php print $sidebar_first_grid; ?> sidebar-first columns sidebar">
         <div class='first'><?php print render($page['sidebar_first']); ?> </div>
       </aside>
     <?php endif; ?>
 
-    <?php if (!empty($page['login_form'])): ?>
-      <aside role="complementary" class="<?php print $sidebar_first_grid; ?> sidebar-first columns sidebar2">
-        <div class='first'><?php print render($page['login_form']); ?> </div>
-        <?php print render($page['login_form']); ?>
-      </aside>
-    <?php endif; ?>
+
 
 
     <?php if (!empty($page['sidebar_second'])): ?>
