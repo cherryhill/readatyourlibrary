@@ -1827,8 +1827,8 @@ function _play_library_program_add_points_to_rewards($activity_ids, $points_to_a
   
   
   // Array of reward ids associated with reward.
-  // $rewards_associated = pl_get_activity_reward_ids($activity_id, $account_uid);
-   //Get user Age
+  
+  //Get user DOB
   $dob_query = db_select('profile', 'pf');
   $dob_query->LEFTJOIN('field_data_field_user_birthday', 'fdfub', 'fdfub.entity_id = pf.pid');
   $dob_query->condition('pf.uid', $account_uid);
@@ -1838,15 +1838,16 @@ function _play_library_program_add_points_to_rewards($activity_ids, $points_to_a
   //Get user age if DOB is available
   if(!empty($res_dob)){
     //Get DOB
-    $dob_timestamp = strtotime($res_dob[0]->field_user_birthday_value); 
-    //Calculate user Age
-    $current_time = time();
-    $user_age = floor(($current_time - $dob_timestamp) / (60*60*24*365));  
+    $dob_timestamp = strtotime($res_dob[0]->field_user_birthday_value);   
   } else {
-      $dob_timestamp = $_SESSION['user_birth_dt'];
-      unset($_SESSION['user_birth_dt']);
+    //get DOB from session 
+    $dob_timestamp = $_SESSION['user_birth_dt'];
+    // unset($_SESSION['user_birth_dt']);
   }
-  $date_from = date('Y-m-d H:i:s', time());
+  //Calculate user Age
+  $current_time = time();
+  $user_age = floor(($current_time - $dob_timestamp) / (60*60*24*365));
+  // $date_from = date('Y-m-d H:i:s', time());
   // get reward points for all associated rewards
   $que = db_select('eck_reward', 'eck_r');
   $que->leftjoin('field_data_field_points', 'fdfp', 'eck_r.id = fdfp.entity_id');
@@ -1879,18 +1880,18 @@ function _play_library_program_add_points_to_rewards($activity_ids, $points_to_a
   //Add points to all retrived rewards
   if(!empty($res)){
     foreach ($res as $key => $value) {
-      // drupal_set_message(strtotime($value->field_dates_reward_value).'|'.time().'|'.strtotime($value->field_dates_reward_value2));
       if (strtotime($value->field_dates_reward_value)<= time() && strtotime($value->field_dates_reward_value2) >= time()){
         $repeatable = $value->field_repeatable_value;
         $max_repeat = $value->field_maximum_num_reward_value;
         $reward_id = $value->id;
+        $rew_points = $value->field_points_value;
         $receieved_rewards = pl_receieved_rewards($account_uid, $reward_id);
         //get max repeat only if repeatable flag set
         if ($repeatable == 0){
           $max_repeat = 1;
         }
         if (!empty($max_repeat) || $max_repeat > 0){
-          $max_points = ($max_repeat-$receieved_rewards) *  $points;
+          $max_points = ($max_repeat-$receieved_rewards) *  $rew_points;
         }else{
           $max_points = $points_to_add;
         }
