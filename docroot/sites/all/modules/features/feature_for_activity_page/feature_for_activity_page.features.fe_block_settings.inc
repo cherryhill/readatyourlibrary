@@ -30,7 +30,7 @@ function feature_for_activity_page_default_fe_block_settings() {
         'region' => 'content',
         'status' => 1,
         'theme' => 'kids_programme',
-        'weight' => 0,
+        'weight' => -64,
       ),
       'seven' => array(
         'region' => '',
@@ -61,10 +61,10 @@ function feature_for_activity_page_default_fe_block_settings() {
     ),
     'themes' => array(
       'kids_programme' => array(
-        'region' => 'content',
-        'status' => 1,
+        'region' => '',
+        'status' => 0,
         'theme' => 'kids_programme',
-        'weight' => 0,
+        'weight' => -68,
       ),
       'seven' => array(
         'region' => '',
@@ -92,10 +92,10 @@ function feature_for_activity_page_default_fe_block_settings() {
     ),
     'themes' => array(
       'kids_programme' => array(
-        'region' => 'sidebar_first',
+        'region' => 'sidebar_activity',
         'status' => 1,
         'theme' => 'kids_programme',
-        'weight' => 0,
+        'weight' => -68,
       ),
       'seven' => array(
         'region' => '',
@@ -126,7 +126,7 @@ function feature_for_activity_page_default_fe_block_settings() {
         'region' => 'content',
         'status' => 1,
         'theme' => 'kids_programme',
-        'weight' => 0,
+        'weight' => -65,
       ),
       'seven' => array(
         'region' => '',
