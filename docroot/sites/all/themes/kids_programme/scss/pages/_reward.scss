@@ -1,0 +1,72 @@
+.section-rewards {
+  #page-title {
+    display: none;
+  }
+}
+
+.view-reward-page-views {
+  .view-header {
+    p {
+      &:first-line {
+        @extend h1;
+       line-height: 45px;
+       display: block;
+      }
+    }
+  }
+  .view-footer {
+    * {
+      @extend h1;
+    }
+  }
+  .reward-page-for-kids {
+    width: 100%;
+    -webkit-flex-wrap: wrap;
+    flex-wrap: wrap;
+    display: -webkit-flex;
+    display: flex;
+    align-content: center;
+    align-items: center;
+    margin-top: 30px;
+    margin-bottom: 30px;
+     .reward-image-title {
+      flex: 0 0 131px;
+     }
+     .description {
+      flex: 0 0 calc(100% - 131px);
+     }
+  }
+}
+.reward-block-reward-page {
+  .view-header {
+    margin-bottom: 15px;
+    * {
+       @include primary_fonts;
+       text-transform: capitalize;
+       .cs-default & {
+         color: $orange;
+       }
+       .cs-classic & {
+         color: $sky-blue;
+       }
+       .cs-elegant &  {
+         color: $mint-green;
+       }
+    }
+  }
+  .view-content {
+    margin-bottom: 35px;
+    -webkit-flex-wrap: wrap;
+    flex-wrap: wrap;
+    display: -webkit-flex;
+    display: flex;
+    width: calc(100% + 40px);
+    margin-left: -20px;
+     .views-row {
+       flex: 0 0 100px;
+       margin-left: 20px;
+       margin-right: 20px;
+       text-align: center;
+     }
+  }
+  }

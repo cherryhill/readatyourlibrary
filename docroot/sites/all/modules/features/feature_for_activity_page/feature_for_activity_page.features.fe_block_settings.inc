@@ -61,8 +61,8 @@ function feature_for_activity_page_default_fe_block_settings() {
     ),
     'themes' => array(
       'kids_programme' => array(
-        'region' => 'content',
-        'status' => 1,
+        'region' => '',
+        'status' => 0,
         'theme' => 'kids_programme',
         'weight' => -68,
       ),
@@ -92,7 +92,7 @@ function feature_for_activity_page_default_fe_block_settings() {
     ),
     'themes' => array(
       'kids_programme' => array(
-        'region' => 'sidebar_first',
+        'region' => 'sidebar_activity',
         'status' => 1,
         'theme' => 'kids_programme',
         'weight' => -68,
