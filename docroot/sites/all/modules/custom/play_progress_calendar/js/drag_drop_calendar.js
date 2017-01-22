@@ -39,6 +39,7 @@
         editable: true,
         droppable: true, // this allows things to be dropped onto the calendar
         drop: function(date, allDay) {
+          $('.calendar-wrapper').addClass('disabled');
           //Create event object for dropped sticker
           var eventObject = {
             title: jQuery.trim(jQuery(this).html()) // use the element's text as the event title
@@ -87,6 +88,7 @@
               $('#message .section').css('width' , '960px');
               $('#message .section').css('margin-left' , 'auto');
               $('#message .section').css('margin-right' , 'auto');
+              $('.calendar-wrapper').removeClass('disabled');
             },
             error: function(jqXHR, data, error){
               alert("Apologies. There is some error in the system. " + error );
@@ -108,6 +110,7 @@
 
         //For internal drag drop of sticker
         eventDrop: function( event, dayDelta, minuteDelta, allDay, revertFunc, jsEvent, ui, view ) {
+          $('.calendar-wrapper').addClass('disabled');
           var eventObject = {
             title: jQuery.trim(jQuery(this).html()) // use the element's text as the event title
           };
@@ -154,6 +157,7 @@
               $('#message .section').css('width' , '960px');
               $('#message .section').css('margin-left' , 'auto');
               $('#message .section').css('margin-right' , 'auto');
+              $('.calendar-wrapper').removeClass('disabled');
             },
             //On error show error alert
             error: function(jqXHR, data, error){

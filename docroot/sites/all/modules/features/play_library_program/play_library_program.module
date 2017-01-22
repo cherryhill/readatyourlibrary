@@ -394,15 +394,33 @@ function pl_get_activity_reward_ids($activity_ids, $account_uid = NULL){
  * count of reward claimed by user
  */
 function pl_receieved_rewards($account_uid, $reward_id){
-
-  $query = new EntityFieldQuery();
-  $query->entityCondition('entity_type', 'reward');
-  $query->entityCondition('bundle', 'reward_claim');
-  $query->propertyCondition('uid', $account_uid);
-  $query->fieldCondition('field_reward_claim_id', 'target_id', $reward_id);
-  $result = $query->count()->execute();
-
-  return $result;
+  //Get reward type
+  $sub_query= db_select('field_data_field_category','fdfc');
+  $sub_query-> fields('fdfc', array('field_category_value'));
+  $sub_query-> condition('fdfc.entity_id', $reward_id);
+  $reward_type = $sub_query->execute()->fetchAll();
+  
+  //Get count of raffle entries or reward claims
+  $que = db_select('eck_reward', 'eck_r');
+  //Switch to get count from raffle/reward fields
+  switch ($reward_type[0]->field_category_value) {
+    case 'raffle_reward':
+      $que->leftjoin('field_data_field_raffle_claim_id', 'fdfrfci', 'eck_r.id = fdfrfci.entity_id');
+      $que->condition('fdfrfci.field_raffle_claim_id_target_id', array($reward_id), 'IN');
+      break;
+    case 'reward':
+      $que->leftjoin('field_data_field_reward_claim_id', 'fdfrwci', 'eck_r.id = fdfrwci.entity_id');  
+      $que->condition('fdfrwci.field_reward_claim_id_target_id',  array($reward_id), 'IN');
+      break;
+    default:
+      $que->leftjoin('field_data_field_reward_claim_id', 'fdfrwci', 'eck_r.id = fdfrwci.entity_id');
+      $que->condition('fdfrwci.field_reward_claim_id_target_id',  array($reward_id), 'IN');
+      break;
+  }
+  $que->condition('eck_r.uid', $account_uid);
+  $que->fields('eck_r', array('id'));
+  $res = $que->execute()->rowCount();
+  return $res;
 }
 
 function pl_reward_claim($reward_id, $account_uid, $category, $filters = NULL, $rf_drawing = NULL, $raffle_clm = NULL, $draw_time= NULL){
@@ -1799,104 +1817,108 @@ function _play_library_program_add_points_to_rewards($activity_ids, $points_to_a
   // print_r($user->roles);
   //Get role ids from session if not available 
   if(sizeof($role_ids)<2){
-    $role_ids = $_SESSION['program_user_role_id'];
+    $role_ids = array_keys($_SESSION['program_user_role_id']);
+    print_r("session");
   }
   // print_r($role_ids);die();
   	
   if (!is_array($activity_ids)){
     $activity_ids = array($activity_ids);
   }
-
+  
+  
   // Array of reward ids associated with reward.
-  // $rewards_associated = pl_get_activity_reward_ids($activity_id, $account_uid);
-   //Get user Age
+  
+  //Get user DOB
   $dob_query = db_select('profile', 'pf');
   $dob_query->LEFTJOIN('field_data_field_user_birthday', 'fdfub', 'fdfub.entity_id = pf.pid');
   $dob_query->condition('pf.uid', $account_uid);
   $dob_query->fields('fdfub', array('field_user_birthday_value'));
   $res_dob = $dob_query->execute()->fetchAll();
 
+
   //Get user age if DOB is available
   if(!empty($res_dob)){
     //Get DOB
-    $dob_timestamp = strtotime($res_dob[0]->field_user_birthday_value); 
-    //Calculate user Age
-    $current_time = time();
-    $user_age = floor(($current_time - $dob_timestamp) / (60*60*24*365));  
+    $dob_timestamp = strtotime($res_dob[0]->field_user_birthday_value);   
   } else {
-      $dob_timestamp = $_SESSION['user_birth_dt'];
-      unset($_SESSION['user_birth_dt']);
+    //get DOB from session 
+    $dob_timestamp = $_SESSION['user_birth_dt'];
+    // unset($_SESSION['user_birth_dt']);
   }
-  $date_from = date('Y-m-d H:i:s', time());
+  //Calculate user Age
+  $current_time = time();
+  $user_age = floor(($current_time - $dob_timestamp) / (60*60*24*365));
+
   // get reward points for all associated rewards
-  $que = db_select('eck_reward', 'eck_r');
-  $que->leftjoin('field_data_field_points', 'fdfp', 'eck_r.id = fdfp.entity_id');
-  $que->leftjoin('field_data_field_activities_reward', 'fdfar', 'eck_r.id = fdfar.entity_id');
-  $que->leftjoin('field_data_field_roles_reward', 'fdfrr', 'eck_r.id = fdfrr.entity_id');
-  $que->leftjoin('field_data_field_status_reward', 'fdfsr', 'eck_r.id = fdfsr.entity_id');
-  $que->leftjoin('field_data_field_repeatable', 'fdfr', 'eck_r.id = fdfr.entity_id');
-  $que->leftjoin('field_data_field_age_group', 'fdfag', 'eck_r.id = fdfag.entity_id');
-  $que->leftjoin('field_data_field_maximum_num_reward', 'fdfmnr', 'eck_r.id = fdfmnr.entity_id');
-  $que->leftjoin('field_data_field_dates_reward', 'fdfdr', 'eck_r.id = fdfdr.entity_id');
-  $que->condition('fdfar.field_activities_reward_target_id', $activity_ids, 'IN');
-  //Verify age group only if DOB is available
-  if(!empty($res_dob)){
+  if (isset($dob_timestamp)){ 
+    $que = db_select('eck_reward', 'eck_r');
+    $que->leftjoin('field_data_field_points', 'fdfp', 'eck_r.id = fdfp.entity_id');
+    $que->leftjoin('field_data_field_activities_reward', 'fdfar', 'eck_r.id = fdfar.entity_id');
+    $que->leftjoin('field_data_field_roles_reward', 'fdfrr', 'eck_r.id = fdfrr.entity_id');
+    $que->leftjoin('field_data_field_status_reward', 'fdfsr', 'eck_r.id = fdfsr.entity_id');
+    $que->leftjoin('field_data_field_repeatable', 'fdfr', 'eck_r.id = fdfr.entity_id');
+    $que->leftjoin('field_data_field_age_group', 'fdfag', 'eck_r.id = fdfag.entity_id');
+    $que->leftjoin('field_data_field_maximum_num_reward', 'fdfmnr', 'eck_r.id = fdfmnr.entity_id');
+    $que->leftjoin('field_data_field_dates_reward', 'fdfdr', 'eck_r.id = fdfdr.entity_id');
+    $que->condition('fdfar.field_activities_reward_target_id', $activity_ids, 'IN');
     $que->condition(db_or()->condition('fdfag.field_age_group_from', $user_age, '<=')->isNull('fdfag.field_age_group_from'));
     $que->condition(db_or()->condition('fdfag.field_age_group_to', $user_age, '>=')->isNull('fdfag.field_age_group_to'));
-  }
-  $que->condition('fdfrr.field_roles_reward_value', $role_ids, 'IN');
-  // $que->condition('fdfdr.field_dates_reward_value', time(), '<');
-  // $que->condition('fdfdr.field_dates_reward_value2', time(), '>');
-  $que->condition('fdfsr.field_status_reward_value', 'active');
-  $que->fields('eck_r', array('id'));
-  $que->fields('fdfp', array('field_points_value'));
-  $que->fields('fdfr', array('field_repeatable_value'));
-  $que->fields('fdfdr', array('field_dates_reward_value'));
-  $que->fields('fdfdr', array('field_dates_reward_value2'));
-  $que->fields('fdfmnr', array('field_maximum_num_reward_value'));
-  $res = $que->execute()->fetchAll();
-  // print_r($res);die();
-  if(!empty($res)){
-    foreach ($res as $key => $value) {
-      // drupal_set_message(strtotime($value->field_dates_reward_value).'|'.time().'|'.strtotime($value->field_dates_reward_value2));
-      if (strtotime($value->field_dates_reward_value)<= time() && strtotime($value->field_dates_reward_value2) >= time()){
-        $repeatable = $value->field_repeatable_value;
-        $max_repeat = $value->field_maximum_num_reward_value;
-        $reward_id = $value->id;
-        $receieved_rewards = pl_receieved_rewards($account_uid, $reward_id);
-        //get max repeat only if repeatable flag set
-        if ($repeatable == 0){
-          $max_repeat = 1;
-        }
-        if (!empty($max_repeat) || $max_repeat > 0){
-          $max_points = ($max_repeat-$receieved_rewards) *  $points;
-        }else{
-          $max_points = $points_to_add;
-        }
-        //Add only points that are required for the reward
-        if($points_to_add < $max_points){
-          $reward_points_to_add = $points_to_add;
-        } else{
-          $reward_points_to_add = $max_points;
-        }      
-  
-        if($reward_points_to_add > 0 ){
-          $term = _get_term_from_name('R_'.$reward_id, 'userpoints');
-          if(isset($term)){
-            $userpoint_rew = array(
-              'uid' => $account_uid,
-              'points' => $reward_points_to_add,
-              'tid' => $term,
-              'display' => 0,
-            );
-            userpoints_userpointsapi($userpoint_rew);
+    $que->condition('fdfrr.field_roles_reward_value', $role_ids, 'IN');
+    // $que->condition('fdfdr.field_dates_reward_value', time(), '<');
+    // $que->condition('fdfdr.field_dates_reward_value2', time(), '>');
+    $que->condition('fdfsr.field_status_reward_value', 'active');
+    $que->fields('eck_r', array('id'));
+    $que->fields('fdfp', array('field_points_value'));
+    $que->fields('fdfr', array('field_repeatable_value'));
+    $que->fields('fdfdr', array('field_dates_reward_value'));
+    $que->fields('fdfdr', array('field_dates_reward_value2'));
+    $que->fields('fdfmnr', array('field_maximum_num_reward_value'));
+    $que->distinct('eck_r', array('id'));
+    $res = $que->execute()->fetchAll();
+    
+    //Add points to all retrived rewards
+    if(!empty($res)){
+      foreach ($res as $key => $value) {
+        if (strtotime($value->field_dates_reward_value)<= time() && strtotime($value->field_dates_reward_value2) >= time()){
+          $repeatable = $value->field_repeatable_value;
+          $max_repeat = $value->field_maximum_num_reward_value;
+          $reward_id = $value->id;
+          $rew_points = $value->field_points_value;
+          $receieved_rewards = pl_receieved_rewards($account_uid, $reward_id);
+          //get max repeat only if repeatable flag set
+          if ($repeatable == 0){
+            $max_repeat = 1;
           }
-        }
-      } // foreach ends here.
-    } // if conditions for giving rewards ends here.
+          if (!empty($max_repeat) || $max_repeat > 0){
+            $max_points = ($max_repeat-$receieved_rewards) *  $rew_points;
+          }else{
+            $max_points = $points_to_add;
+          }
+          //Add only points that are required for the reward
+          if($points_to_add < $max_points){
+            $reward_points_to_add = $points_to_add;
+          } else{
+            $reward_points_to_add = $max_points;
+          }      
+          if($reward_points_to_add > 0 ){
+            //Get reward term id
+            $term = _get_term_from_name('R_'.$reward_id, 'userpoints');
+            if(isset($term)){
+              $userpoint_rew = array(
+                'uid' => $account_uid,
+                'points' => $reward_points_to_add,
+                'tid' => $term,
+                'display' => 0,
+              );
+              userpoints_userpointsapi($userpoint_rew);
+            }
+          }
+        } // foreach ends here.
+      } // if conditions for giving rewards ends here.
+    }
   }
 }
-
 
 
 //Fuction to send private message

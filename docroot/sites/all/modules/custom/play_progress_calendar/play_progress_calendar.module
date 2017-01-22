@@ -1,53 +1,53 @@
 <?php
 
-/**
- * Implements hook_block(). . 
- */
+// /**
+//  * Implements hook_block(). . 
+//  */
 
 
-function play_progress_calendar_block_info() {
-  $block = array();
+// function play_progress_calendar_block_info() {
+//   $block = array();
   
-  $blocks['mobile_progress'] = array(
-    'info' => t('Mobile Progress Report'),
-    'cache' => DRUPAL_NO_CACHE,
-    );
-  $blocks['mobile_sticker_count'] = array(
-    'info' => t('Mobile Sticker count'),
-    'cache' => DRUPAL_NO_CACHE,
-    );
-  $blocks['calendar-data'] = array(
-    'info' => t('Show calendar data json'),
-    'cache' => DRUPAL_NO_CACHE,
-    );
-  $blocks['user_prize_block'] = array(
-    'info' => t('User Progress Page Block'),
-    'cache' => DRUPAL_NO_CACHE,
-    );
-  return $blocks;
-}
+//   $blocks['mobile_progress'] = array(
+//     'info' => t('Mobile Progress Report'),
+//     'cache' => DRUPAL_NO_CACHE,
+//     );
+//   $blocks['mobile_sticker_count'] = array(
+//     'info' => t('Mobile Sticker count'),
+//     'cache' => DRUPAL_NO_CACHE,
+//     );
+//   $blocks['calendar-data'] = array(
+//     'info' => t('Show calendar data json'),
+//     'cache' => DRUPAL_NO_CACHE,
+//     );
+//   $blocks['user_prize_block'] = array(
+//     'info' => t('User Progress Page Block'),
+//     'cache' => DRUPAL_NO_CACHE,
+//     );
+//   return $blocks;
+// }
 
-function play_progress_calendar_block_view($block_name = '') {
-  switch ($block_name) {
-    case 'mobile_progress':
-    $block['subject'] = '';
-    $block['content'] = drupal_get_form('generate_mobile_progress_form');
-    break;
-    case 'mobile_sticker_count':
-    $block['subject'] = '';
-    $block['content'] = no_of_sticker_on_mobile();
-    break;
-    case 'calendar-data':
-    $block['subject'] = '';
-    $block['content'] = generate_json_data();
-    break;
-    case 'user_prize_block':
-    $block['subject'] = '';
-    $block['content'] = progress_user_block();
-    break;                               
-  }
-  return $block;
-}
+// function play_progress_calendar_block_view($block_name = '') {
+//   switch ($block_name) {
+//     case 'mobile_progress':
+//     $block['subject'] = '';
+//     $block['content'] = drupal_get_form('generate_mobile_progress_form');
+//     break;
+//     case 'mobile_sticker_count':
+//     $block['subject'] = '';
+//     $block['content'] = no_of_sticker_on_mobile();
+//     break;
+//     case 'calendar-data':
+//     $block['subject'] = '';
+//     $block['content'] = generate_json_data();
+//     break;
+//     case 'user_prize_block':
+//     $block['subject'] = '';
+//     $block['content'] = progress_user_block();
+//     break;                               
+//   }
+//   return $block;
+// }
 
 
 
@@ -128,10 +128,9 @@ function play_progress_calendar_menu() {
  */
 
 function calendar_page() {
-    //Check if request contains a sticker id
-    //print_r($_REQUEST);
-  //Get all activities to be recorded for dropped sticker
+
   $activity_list = explode(',', $_REQUEST['act_ids']);
+  //Check if request contains a sticker id
   if (strtotime($_REQUEST['drop_date']) <= time()){
     if (isset($_REQUEST['tid'])){ 
         //Create activity entry for all activities associated
@@ -142,9 +141,6 @@ function calendar_page() {
     }
     //if activity id is present in post update activity
     if (isset($_REQUEST['entry_id'])){
-        //Get all activities to be recorded for dropped sticker
-        // $activity_list = explode(',', $_REQUEST['act_ids']);
-        //print_r($activity_list) ;
         //Create activity entry for all activities associated
         foreach ($activity_list as $activity) {
           // //print_r($_REQUEST['entry_id'].strtotime($_REQUEST['drop_date']));
@@ -156,6 +152,7 @@ function calendar_page() {
   else{
     drupal_set_message(t('Please drop sticker for todays date or past dates'),'warning');
   }
+  
   $req_points = play_library_program_next_close_reward_points($activity_list);
 
   if($req_points == 1) {
