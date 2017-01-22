@@ -1,12 +1,14 @@
 name = Booklist page feature
 core = 7.x
 package = Features
-version = 7.x-1.0
+version = 7.x-1.1
 dependencies[] = flag
+dependencies[] = owlcarousel_views
 dependencies[] = views
 features[ctools][] = views:views_default:3.0
 features[features_api][] = api:2
 features[flag][] = primary_booklist
 features[views_view][] = booklist_page_view
+features[views_view][] = booklist_slideshow
 features_exclude[dependencies][ctools] = ctools
 project path = sites/all/modules/features

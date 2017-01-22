@@ -419,5 +419,710 @@ print \'Created by \';
   $handler->display->display_options['path'] = 'booklists';
   $export['booklist_page_view'] = $view;
 
+  $view = new view();
+  $view->name = 'booklist_slideshow';
+  $view->description = '';
+  $view->tag = 'default';
+  $view->base_table = 'eck_booklist_item';
+  $view->human_name = 'Booklist slideshow';
+  $view->core = 7;
+  $view->api_version = '3.0';
+  $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
+
+  /* Display: Master */
+  $handler = $view->new_display('default', 'Master', 'default');
+  $handler->display->display_options['title'] = 'Booklist slideshow';
+  $handler->display->display_options['use_more_always'] = FALSE;
+  $handler->display->display_options['access']['type'] = 'none';
+  $handler->display->display_options['cache']['type'] = 'none';
+  $handler->display->display_options['query']['type'] = 'views_query';
+  $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['pager']['type'] = 'none';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['style_plugin'] = 'default';
+  $handler->display->display_options['row_plugin'] = 'fields';
+  /* Field: Booklist item: Id */
+  $handler->display->display_options['fields']['id']['id'] = 'id';
+  $handler->display->display_options['fields']['id']['table'] = 'eck_booklist_item';
+  $handler->display->display_options['fields']['id']['field'] = 'id';
+
+  /* Display: Block */
+  $handler = $view->new_display('block', 'Block', 'block_1');
+  $handler->display->display_options['defaults']['pager'] = FALSE;
+  $handler->display->display_options['pager']['type'] = 'none';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'owlcarousel';
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['row_plugin'] = 'fields';
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['header'] = FALSE;
+  /* Header: Global: PHP */
+  $handler->display->display_options['header']['php']['id'] = 'php';
+  $handler->display->display_options['header']['php']['table'] = 'views';
+  $handler->display->display_options['header']['php']['field'] = 'php';
+  $handler->display->display_options['header']['php']['php_output'] = '<?php
+$book_nid = $results[0]->field_book_eck_booklist_item_title;
+echo "<h1 class=\'block-title\'>".$book_nid."</h1>";
+?>';
+  $handler->display->display_options['defaults']['footer'] = FALSE;
+  /* Footer: Global: PHP */
+  $handler->display->display_options['footer']['php']['id'] = 'php';
+  $handler->display->display_options['footer']['php']['table'] = 'views';
+  $handler->display->display_options['footer']['php']['field'] = 'php';
+  $handler->display->display_options['footer']['php']['php_output'] = '<?php
+$book_nid = $results[0]->field_book_eck_booklist_item_nid;
+echo "<a class=\'button\' href=\'node/" . $book_nid. "\'> View This Booklist </a>";
+?>';
+  $handler->display->display_options['defaults']['relationships'] = FALSE;
+  /* Relationship: Entity Reference: Referencing entity */
+  $handler->display->display_options['relationships']['reverse_field_book_node']['id'] = 'reverse_field_book_node';
+  $handler->display->display_options['relationships']['reverse_field_book_node']['table'] = 'eck_booklist_item';
+  $handler->display->display_options['relationships']['reverse_field_book_node']['field'] = 'reverse_field_book_node';
+  /* Relationship: Nodequeue: Queue */
+  $handler->display->display_options['relationships']['nodequeue_rel']['id'] = 'nodequeue_rel';
+  $handler->display->display_options['relationships']['nodequeue_rel']['table'] = 'node';
+  $handler->display->display_options['relationships']['nodequeue_rel']['field'] = 'nodequeue_rel';
+  $handler->display->display_options['relationships']['nodequeue_rel']['relationship'] = 'reverse_field_book_node';
+  $handler->display->display_options['relationships']['nodequeue_rel']['required'] = TRUE;
+  $handler->display->display_options['relationships']['nodequeue_rel']['limit'] = 1;
+  $handler->display->display_options['relationships']['nodequeue_rel']['names'] = array(
+    'booklist_book_cover_image' => 'booklist_book_cover_image',
+  );
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Booklist item: Booklist Cover Image */
+  $handler->display->display_options['fields']['field_booklist_cover_image']['id'] = 'field_booklist_cover_image';
+  $handler->display->display_options['fields']['field_booklist_cover_image']['table'] = 'field_data_field_booklist_cover_image';
+  $handler->display->display_options['fields']['field_booklist_cover_image']['field'] = 'field_booklist_cover_image';
+  $handler->display->display_options['fields']['field_booklist_cover_image']['label'] = '';
+  $handler->display->display_options['fields']['field_booklist_cover_image']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_booklist_cover_image']['alter']['text'] = '<img src="[field_booklist_cover_image]" width="220" height="220">';
+  $handler->display->display_options['fields']['field_booklist_cover_image']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_booklist_cover_image']['type'] = 'text_plain';
+  /* Field: Content: Title */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'node';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['relationship'] = 'reverse_field_book_node';
+  $handler->display->display_options['fields']['title']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['title']['link_to_node'] = FALSE;
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Nodequeue: Position */
+  $handler->display->display_options['filters']['position']['id'] = 'position';
+  $handler->display->display_options['filters']['position']['table'] = 'nodequeue_nodes';
+  $handler->display->display_options['filters']['position']['field'] = 'position';
+  $handler->display->display_options['filters']['position']['relationship'] = 'nodequeue_rel';
+  $handler->display->display_options['filters']['position']['value']['value'] = '1';
+  $handler->display->display_options['block_description'] = 'booklist item block';
+
+  /* Display: Block */
+  $handler = $view->new_display('block', 'Block', 'block_2');
+  $handler->display->display_options['defaults']['pager'] = FALSE;
+  $handler->display->display_options['pager']['type'] = 'none';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'owlcarousel';
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['row_plugin'] = 'fields';
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['header'] = FALSE;
+  /* Header: Global: Text area */
+  $handler->display->display_options['header']['area']['id'] = 'area';
+  $handler->display->display_options['header']['area']['table'] = 'views';
+  $handler->display->display_options['header']['area']['field'] = 'area';
+  $handler->display->display_options['header']['area']['content'] = '<h2 class="featured">Featured Booklists</h2>';
+  $handler->display->display_options['header']['area']['format'] = 'full_html';
+  /* Header: Global: PHP */
+  $handler->display->display_options['header']['php']['id'] = 'php';
+  $handler->display->display_options['header']['php']['table'] = 'views';
+  $handler->display->display_options['header']['php']['field'] = 'php';
+  $handler->display->display_options['header']['php']['php_output'] = '<?php
+$title = $results[0]->_field_data[\'field_book_eck_booklist_item_nid\'][\'entity\']->title;
+
+echo \'<div class = "booklist_slideshow_title">\'.$title.\'</div>\';
+?>
+';
+  $handler->display->display_options['defaults']['footer'] = FALSE;
+  /* Footer: Global: PHP */
+  $handler->display->display_options['footer']['php']['id'] = 'php';
+  $handler->display->display_options['footer']['php']['table'] = 'views';
+  $handler->display->display_options['footer']['php']['field'] = 'php';
+  $handler->display->display_options['footer']['php']['php_output'] = '<?php
+$book_nid = $results[0]->field_book_eck_booklist_item_nid;
+echo "<a class=\'button\' href=\'node/" . $book_nid. "\'> View This Booklist </a>";
+?>';
+  $handler->display->display_options['defaults']['relationships'] = FALSE;
+  /* Relationship: Entity Reference: Referencing entity */
+  $handler->display->display_options['relationships']['reverse_field_book_node']['id'] = 'reverse_field_book_node';
+  $handler->display->display_options['relationships']['reverse_field_book_node']['table'] = 'eck_booklist_item';
+  $handler->display->display_options['relationships']['reverse_field_book_node']['field'] = 'reverse_field_book_node';
+  /* Relationship: Nodequeue: Queue */
+  $handler->display->display_options['relationships']['nodequeue_rel']['id'] = 'nodequeue_rel';
+  $handler->display->display_options['relationships']['nodequeue_rel']['table'] = 'node';
+  $handler->display->display_options['relationships']['nodequeue_rel']['field'] = 'nodequeue_rel';
+  $handler->display->display_options['relationships']['nodequeue_rel']['relationship'] = 'reverse_field_book_node';
+  $handler->display->display_options['relationships']['nodequeue_rel']['required'] = TRUE;
+  $handler->display->display_options['relationships']['nodequeue_rel']['limit'] = 1;
+  $handler->display->display_options['relationships']['nodequeue_rel']['names'] = array(
+    'booklist_book_cover_image' => 'booklist_book_cover_image',
+  );
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Booklist item: Booklist Cover Image */
+  $handler->display->display_options['fields']['field_booklist_cover_image']['id'] = 'field_booklist_cover_image';
+  $handler->display->display_options['fields']['field_booklist_cover_image']['table'] = 'field_data_field_booklist_cover_image';
+  $handler->display->display_options['fields']['field_booklist_cover_image']['field'] = 'field_booklist_cover_image';
+  $handler->display->display_options['fields']['field_booklist_cover_image']['label'] = '';
+  $handler->display->display_options['fields']['field_booklist_cover_image']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_booklist_cover_image']['alter']['text'] = '<img src="[field_booklist_cover_image]" width="220" height="220">';
+  $handler->display->display_options['fields']['field_booklist_cover_image']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_booklist_cover_image']['type'] = 'text_plain';
+  /* Field: Content: Booklist Title */
+  $handler->display->display_options['fields']['field_booklist_title']['id'] = 'field_booklist_title';
+  $handler->display->display_options['fields']['field_booklist_title']['table'] = 'field_data_field_booklist_title';
+  $handler->display->display_options['fields']['field_booklist_title']['field'] = 'field_booklist_title';
+  $handler->display->display_options['fields']['field_booklist_title']['relationship'] = 'reverse_field_book_node';
+  $handler->display->display_options['fields']['field_booklist_title']['label'] = '';
+  $handler->display->display_options['fields']['field_booklist_title']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_booklist_title']['element_label_colon'] = FALSE;
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Nodequeue: Position */
+  $handler->display->display_options['filters']['position']['id'] = 'position';
+  $handler->display->display_options['filters']['position']['table'] = 'nodequeue_nodes';
+  $handler->display->display_options['filters']['position']['field'] = 'position';
+  $handler->display->display_options['filters']['position']['relationship'] = 'nodequeue_rel';
+  $handler->display->display_options['filters']['position']['value']['value'] = '1';
+  $handler->display->display_options['block_description'] = 'booklist item block 1';
+
+  /* Display: Block */
+  $handler = $view->new_display('block', 'Block', 'block_3');
+  $handler->display->display_options['defaults']['pager'] = FALSE;
+  $handler->display->display_options['pager']['type'] = 'none';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'owlcarousel';
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['row_plugin'] = 'fields';
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['header'] = FALSE;
+  /* Header: Global: PHP */
+  $handler->display->display_options['header']['php']['id'] = 'php';
+  $handler->display->display_options['header']['php']['table'] = 'views';
+  $handler->display->display_options['header']['php']['field'] = 'php';
+  $handler->display->display_options['header']['php']['php_output'] = '<?php
+$title = $results[0]->_field_data[\'field_book_eck_booklist_item_nid\'][\'entity\']->title;
+
+echo \'<div class = "booklist_slideshow_title">\'.$title.\'</div>\';
+?>
+';
+  $handler->display->display_options['defaults']['footer'] = FALSE;
+  /* Footer: Global: PHP */
+  $handler->display->display_options['footer']['php']['id'] = 'php';
+  $handler->display->display_options['footer']['php']['table'] = 'views';
+  $handler->display->display_options['footer']['php']['field'] = 'php';
+  $handler->display->display_options['footer']['php']['php_output'] = '<?php
+$book_nid = $results[0]->field_book_eck_booklist_item_nid;
+echo "<a class=\'button\' href=\'node/" . $book_nid. "\'> View This Booklist </a>";
+?>';
+  $handler->display->display_options['defaults']['relationships'] = FALSE;
+  /* Relationship: Entity Reference: Referencing entity */
+  $handler->display->display_options['relationships']['reverse_field_book_node']['id'] = 'reverse_field_book_node';
+  $handler->display->display_options['relationships']['reverse_field_book_node']['table'] = 'eck_booklist_item';
+  $handler->display->display_options['relationships']['reverse_field_book_node']['field'] = 'reverse_field_book_node';
+  /* Relationship: Nodequeue: Queue */
+  $handler->display->display_options['relationships']['nodequeue_rel']['id'] = 'nodequeue_rel';
+  $handler->display->display_options['relationships']['nodequeue_rel']['table'] = 'node';
+  $handler->display->display_options['relationships']['nodequeue_rel']['field'] = 'nodequeue_rel';
+  $handler->display->display_options['relationships']['nodequeue_rel']['relationship'] = 'reverse_field_book_node';
+  $handler->display->display_options['relationships']['nodequeue_rel']['required'] = TRUE;
+  $handler->display->display_options['relationships']['nodequeue_rel']['limit'] = 1;
+  $handler->display->display_options['relationships']['nodequeue_rel']['names'] = array(
+    'booklist_book_cover_image' => 'booklist_book_cover_image',
+  );
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Booklist item: Booklist Cover Image */
+  $handler->display->display_options['fields']['field_booklist_cover_image']['id'] = 'field_booklist_cover_image';
+  $handler->display->display_options['fields']['field_booklist_cover_image']['table'] = 'field_data_field_booklist_cover_image';
+  $handler->display->display_options['fields']['field_booklist_cover_image']['field'] = 'field_booklist_cover_image';
+  $handler->display->display_options['fields']['field_booklist_cover_image']['label'] = '';
+  $handler->display->display_options['fields']['field_booklist_cover_image']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_booklist_cover_image']['alter']['text'] = '<img src="[field_booklist_cover_image]" width="220" height="220">';
+  $handler->display->display_options['fields']['field_booklist_cover_image']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_booklist_cover_image']['type'] = 'text_plain';
+  /* Field: Content: Booklist Title */
+  $handler->display->display_options['fields']['field_booklist_title']['id'] = 'field_booklist_title';
+  $handler->display->display_options['fields']['field_booklist_title']['table'] = 'field_data_field_booklist_title';
+  $handler->display->display_options['fields']['field_booklist_title']['field'] = 'field_booklist_title';
+  $handler->display->display_options['fields']['field_booklist_title']['relationship'] = 'reverse_field_book_node';
+  $handler->display->display_options['fields']['field_booklist_title']['label'] = '';
+  $handler->display->display_options['fields']['field_booklist_title']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_booklist_title']['element_label_colon'] = FALSE;
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Nodequeue: Position */
+  $handler->display->display_options['filters']['position']['id'] = 'position';
+  $handler->display->display_options['filters']['position']['table'] = 'nodequeue_nodes';
+  $handler->display->display_options['filters']['position']['field'] = 'position';
+  $handler->display->display_options['filters']['position']['relationship'] = 'nodequeue_rel';
+  $handler->display->display_options['filters']['position']['value']['value'] = '2';
+  $handler->display->display_options['block_description'] = 'booklist item block 2';
+
+  /* Display: Block */
+  $handler = $view->new_display('block', 'Block', 'block_4');
+  $handler->display->display_options['defaults']['pager'] = FALSE;
+  $handler->display->display_options['pager']['type'] = 'none';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'owlcarousel';
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['row_plugin'] = 'fields';
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['header'] = FALSE;
+  /* Header: Global: PHP */
+  $handler->display->display_options['header']['php']['id'] = 'php';
+  $handler->display->display_options['header']['php']['table'] = 'views';
+  $handler->display->display_options['header']['php']['field'] = 'php';
+  $handler->display->display_options['header']['php']['php_output'] = '<?php
+$title = $results[0]->_field_data[\'field_book_eck_booklist_item_nid\'][\'entity\']->title;
+echo \'<div class = "booklist_slideshow_title">\'.$title.\'</div>\';
+?>
+';
+  $handler->display->display_options['defaults']['footer'] = FALSE;
+  /* Footer: Global: PHP */
+  $handler->display->display_options['footer']['php']['id'] = 'php';
+  $handler->display->display_options['footer']['php']['table'] = 'views';
+  $handler->display->display_options['footer']['php']['field'] = 'php';
+  $handler->display->display_options['footer']['php']['php_output'] = '<?php
+$book_nid = $results[0]->field_book_eck_booklist_item_nid;
+echo "<a class=\'button\' href=\'node/" . $book_nid. "\'> View This Booklist </a>";
+?>';
+  $handler->display->display_options['defaults']['relationships'] = FALSE;
+  /* Relationship: Entity Reference: Referencing entity */
+  $handler->display->display_options['relationships']['reverse_field_book_node']['id'] = 'reverse_field_book_node';
+  $handler->display->display_options['relationships']['reverse_field_book_node']['table'] = 'eck_booklist_item';
+  $handler->display->display_options['relationships']['reverse_field_book_node']['field'] = 'reverse_field_book_node';
+  /* Relationship: Nodequeue: Queue */
+  $handler->display->display_options['relationships']['nodequeue_rel']['id'] = 'nodequeue_rel';
+  $handler->display->display_options['relationships']['nodequeue_rel']['table'] = 'node';
+  $handler->display->display_options['relationships']['nodequeue_rel']['field'] = 'nodequeue_rel';
+  $handler->display->display_options['relationships']['nodequeue_rel']['relationship'] = 'reverse_field_book_node';
+  $handler->display->display_options['relationships']['nodequeue_rel']['required'] = TRUE;
+  $handler->display->display_options['relationships']['nodequeue_rel']['limit'] = 1;
+  $handler->display->display_options['relationships']['nodequeue_rel']['names'] = array(
+    'booklist_book_cover_image' => 'booklist_book_cover_image',
+  );
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Booklist item: Booklist Cover Image */
+  $handler->display->display_options['fields']['field_booklist_cover_image']['id'] = 'field_booklist_cover_image';
+  $handler->display->display_options['fields']['field_booklist_cover_image']['table'] = 'field_data_field_booklist_cover_image';
+  $handler->display->display_options['fields']['field_booklist_cover_image']['field'] = 'field_booklist_cover_image';
+  $handler->display->display_options['fields']['field_booklist_cover_image']['label'] = '';
+  $handler->display->display_options['fields']['field_booklist_cover_image']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_booklist_cover_image']['alter']['text'] = '<img src="[field_booklist_cover_image]" width="220" height="220">';
+  $handler->display->display_options['fields']['field_booklist_cover_image']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_booklist_cover_image']['type'] = 'text_plain';
+  /* Field: Content: Booklist Title */
+  $handler->display->display_options['fields']['field_booklist_title']['id'] = 'field_booklist_title';
+  $handler->display->display_options['fields']['field_booklist_title']['table'] = 'field_data_field_booklist_title';
+  $handler->display->display_options['fields']['field_booklist_title']['field'] = 'field_booklist_title';
+  $handler->display->display_options['fields']['field_booklist_title']['relationship'] = 'reverse_field_book_node';
+  $handler->display->display_options['fields']['field_booklist_title']['label'] = '';
+  $handler->display->display_options['fields']['field_booklist_title']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_booklist_title']['element_label_colon'] = FALSE;
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Nodequeue: Position */
+  $handler->display->display_options['filters']['position']['id'] = 'position';
+  $handler->display->display_options['filters']['position']['table'] = 'nodequeue_nodes';
+  $handler->display->display_options['filters']['position']['field'] = 'position';
+  $handler->display->display_options['filters']['position']['relationship'] = 'nodequeue_rel';
+  $handler->display->display_options['filters']['position']['value']['value'] = '3';
+  $handler->display->display_options['block_description'] = 'booklist item block 3';
+
+  /* Display: Block */
+  $handler = $view->new_display('block', 'Block', 'block_5');
+  $handler->display->display_options['defaults']['pager'] = FALSE;
+  $handler->display->display_options['pager']['type'] = 'some';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '1';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'owlcarousel';
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['row_plugin'] = 'fields';
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['header'] = FALSE;
+  $handler->display->display_options['defaults']['relationships'] = FALSE;
+  /* Relationship: Entity Reference: Referencing entity */
+  $handler->display->display_options['relationships']['reverse_field_book_node']['id'] = 'reverse_field_book_node';
+  $handler->display->display_options['relationships']['reverse_field_book_node']['table'] = 'eck_booklist_item';
+  $handler->display->display_options['relationships']['reverse_field_book_node']['field'] = 'reverse_field_book_node';
+  /* Relationship: Nodequeue: Queue */
+  $handler->display->display_options['relationships']['nodequeue_rel']['id'] = 'nodequeue_rel';
+  $handler->display->display_options['relationships']['nodequeue_rel']['table'] = 'node';
+  $handler->display->display_options['relationships']['nodequeue_rel']['field'] = 'nodequeue_rel';
+  $handler->display->display_options['relationships']['nodequeue_rel']['relationship'] = 'reverse_field_book_node';
+  $handler->display->display_options['relationships']['nodequeue_rel']['required'] = TRUE;
+  $handler->display->display_options['relationships']['nodequeue_rel']['limit'] = 1;
+  $handler->display->display_options['relationships']['nodequeue_rel']['names'] = array(
+    'booklist_book_cover_image' => 'booklist_book_cover_image',
+  );
+  /* Relationship: Content: Author */
+  $handler->display->display_options['relationships']['uid']['id'] = 'uid';
+  $handler->display->display_options['relationships']['uid']['table'] = 'node';
+  $handler->display->display_options['relationships']['uid']['field'] = 'uid';
+  $handler->display->display_options['relationships']['uid']['relationship'] = 'reverse_field_book_node';
+  /* Relationship: User: Profile */
+  $handler->display->display_options['relationships']['profile']['id'] = 'profile';
+  $handler->display->display_options['relationships']['profile']['table'] = 'users';
+  $handler->display->display_options['relationships']['profile']['field'] = 'profile';
+  $handler->display->display_options['relationships']['profile']['relationship'] = 'uid';
+  /* Relationship: Flags: like */
+  $handler->display->display_options['relationships']['flag_content_rel']['id'] = 'flag_content_rel';
+  $handler->display->display_options['relationships']['flag_content_rel']['table'] = 'node';
+  $handler->display->display_options['relationships']['flag_content_rel']['field'] = 'flag_content_rel';
+  $handler->display->display_options['relationships']['flag_content_rel']['relationship'] = 'reverse_field_book_node';
+  $handler->display->display_options['relationships']['flag_content_rel']['required'] = 0;
+  $handler->display->display_options['relationships']['flag_content_rel']['flag'] = 'like';
+  /* Relationship: Flags: like counter */
+  $handler->display->display_options['relationships']['flag_count_rel']['id'] = 'flag_count_rel';
+  $handler->display->display_options['relationships']['flag_count_rel']['table'] = 'node';
+  $handler->display->display_options['relationships']['flag_count_rel']['field'] = 'flag_count_rel';
+  $handler->display->display_options['relationships']['flag_count_rel']['relationship'] = 'reverse_field_book_node';
+  $handler->display->display_options['relationships']['flag_count_rel']['required'] = 0;
+  $handler->display->display_options['relationships']['flag_count_rel']['flag'] = 'like';
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Content: Title */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'node';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['relationship'] = 'reverse_field_book_node';
+  $handler->display->display_options['fields']['title']['label'] = '1.';
+  $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
+  /* Field: User: Name */
+  $handler->display->display_options['fields']['name']['id'] = 'name';
+  $handler->display->display_options['fields']['name']['table'] = 'users';
+  $handler->display->display_options['fields']['name']['field'] = 'name';
+  $handler->display->display_options['fields']['name']['relationship'] = 'uid';
+  $handler->display->display_options['fields']['name']['label'] = '';
+  $handler->display->display_options['fields']['name']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['name']['element_label_colon'] = FALSE;
+  /* Field: Profile: Avatar image */
+  $handler->display->display_options['fields']['field_user_avatar']['id'] = 'field_user_avatar';
+  $handler->display->display_options['fields']['field_user_avatar']['table'] = 'field_data_field_user_avatar';
+  $handler->display->display_options['fields']['field_user_avatar']['field'] = 'field_user_avatar';
+  $handler->display->display_options['fields']['field_user_avatar']['relationship'] = 'profile';
+  $handler->display->display_options['fields']['field_user_avatar']['label'] = '';
+  $handler->display->display_options['fields']['field_user_avatar']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_user_avatar']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_user_avatar']['type'] = 'entityreference_entity_view';
+  $handler->display->display_options['fields']['field_user_avatar']['settings'] = array(
+    'view_mode' => 'default',
+    'links' => 1,
+  );
+  /* Field: User: Roles */
+  $handler->display->display_options['fields']['rid']['id'] = 'rid';
+  $handler->display->display_options['fields']['rid']['table'] = 'users_roles';
+  $handler->display->display_options['fields']['rid']['field'] = 'rid';
+  $handler->display->display_options['fields']['rid']['relationship'] = 'uid';
+  $handler->display->display_options['fields']['rid']['label'] = '';
+  $handler->display->display_options['fields']['rid']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['rid']['element_label_colon'] = FALSE;
+  /* Field: Global: PHP */
+  $handler->display->display_options['fields']['php']['id'] = 'php';
+  $handler->display->display_options['fields']['php']['table'] = 'views';
+  $handler->display->display_options['fields']['php']['field'] = 'php';
+  $handler->display->display_options['fields']['php']['label'] = '';
+  $handler->display->display_options['fields']['php']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['php']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['php']['use_php_setup'] = 0;
+  $handler->display->display_options['fields']['php']['php_output'] = '<?php
+$role = $row->rid;
+if($role != 6){
+echo "Staff";
+}else{
+echo "Patron";
+}
+?>';
+  $handler->display->display_options['fields']['php']['use_php_click_sortable'] = '0';
+  $handler->display->display_options['fields']['php']['php_click_sortable'] = '';
+  /* Field: Global: Custom text */
+  $handler->display->display_options['fields']['nothing']['id'] = 'nothing';
+  $handler->display->display_options['fields']['nothing']['table'] = 'views';
+  $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
+  $handler->display->display_options['fields']['nothing']['label'] = '';
+  $handler->display->display_options['fields']['nothing']['alter']['text'] = '<div>Created by </div>[field_user_avatar]<div> [name] ([php])</div>';
+  $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
+  /* Field: Flags: Flag counter */
+  $handler->display->display_options['fields']['count']['id'] = 'count';
+  $handler->display->display_options['fields']['count']['table'] = 'flag_counts';
+  $handler->display->display_options['fields']['count']['field'] = 'count';
+  $handler->display->display_options['fields']['count']['relationship'] = 'flag_count_rel';
+  $handler->display->display_options['fields']['count']['label'] = 'Likes';
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Nodequeue: Position */
+  $handler->display->display_options['filters']['position']['id'] = 'position';
+  $handler->display->display_options['filters']['position']['table'] = 'nodequeue_nodes';
+  $handler->display->display_options['filters']['position']['field'] = 'position';
+  $handler->display->display_options['filters']['position']['relationship'] = 'nodequeue_rel';
+  $handler->display->display_options['filters']['position']['value']['value'] = '1';
+  $handler->display->display_options['block_description'] = 'booklist item block 1-footer';
+
+  /* Display: Block */
+  $handler = $view->new_display('block', 'Block', 'block_6');
+  $handler->display->display_options['defaults']['pager'] = FALSE;
+  $handler->display->display_options['pager']['type'] = 'some';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '1';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'owlcarousel';
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['row_plugin'] = 'fields';
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['header'] = FALSE;
+  $handler->display->display_options['defaults']['relationships'] = FALSE;
+  /* Relationship: Entity Reference: Referencing entity */
+  $handler->display->display_options['relationships']['reverse_field_book_node']['id'] = 'reverse_field_book_node';
+  $handler->display->display_options['relationships']['reverse_field_book_node']['table'] = 'eck_booklist_item';
+  $handler->display->display_options['relationships']['reverse_field_book_node']['field'] = 'reverse_field_book_node';
+  /* Relationship: Nodequeue: Queue */
+  $handler->display->display_options['relationships']['nodequeue_rel']['id'] = 'nodequeue_rel';
+  $handler->display->display_options['relationships']['nodequeue_rel']['table'] = 'node';
+  $handler->display->display_options['relationships']['nodequeue_rel']['field'] = 'nodequeue_rel';
+  $handler->display->display_options['relationships']['nodequeue_rel']['relationship'] = 'reverse_field_book_node';
+  $handler->display->display_options['relationships']['nodequeue_rel']['required'] = TRUE;
+  $handler->display->display_options['relationships']['nodequeue_rel']['limit'] = 1;
+  $handler->display->display_options['relationships']['nodequeue_rel']['names'] = array(
+    'booklist_book_cover_image' => 'booklist_book_cover_image',
+  );
+  /* Relationship: Content: Author */
+  $handler->display->display_options['relationships']['uid']['id'] = 'uid';
+  $handler->display->display_options['relationships']['uid']['table'] = 'node';
+  $handler->display->display_options['relationships']['uid']['field'] = 'uid';
+  $handler->display->display_options['relationships']['uid']['relationship'] = 'reverse_field_book_node';
+  /* Relationship: User: Profile */
+  $handler->display->display_options['relationships']['profile']['id'] = 'profile';
+  $handler->display->display_options['relationships']['profile']['table'] = 'users';
+  $handler->display->display_options['relationships']['profile']['field'] = 'profile';
+  $handler->display->display_options['relationships']['profile']['relationship'] = 'uid';
+  /* Relationship: Flags: like */
+  $handler->display->display_options['relationships']['flag_content_rel']['id'] = 'flag_content_rel';
+  $handler->display->display_options['relationships']['flag_content_rel']['table'] = 'node';
+  $handler->display->display_options['relationships']['flag_content_rel']['field'] = 'flag_content_rel';
+  $handler->display->display_options['relationships']['flag_content_rel']['relationship'] = 'reverse_field_book_node';
+  $handler->display->display_options['relationships']['flag_content_rel']['required'] = 0;
+  $handler->display->display_options['relationships']['flag_content_rel']['flag'] = 'like';
+  /* Relationship: Flags: like counter */
+  $handler->display->display_options['relationships']['flag_count_rel']['id'] = 'flag_count_rel';
+  $handler->display->display_options['relationships']['flag_count_rel']['table'] = 'node';
+  $handler->display->display_options['relationships']['flag_count_rel']['field'] = 'flag_count_rel';
+  $handler->display->display_options['relationships']['flag_count_rel']['relationship'] = 'reverse_field_book_node';
+  $handler->display->display_options['relationships']['flag_count_rel']['required'] = 0;
+  $handler->display->display_options['relationships']['flag_count_rel']['flag'] = 'like';
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Content: Title */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'node';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['relationship'] = 'reverse_field_book_node';
+  $handler->display->display_options['fields']['title']['label'] = '2.';
+  $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
+  /* Field: User: Name */
+  $handler->display->display_options['fields']['name']['id'] = 'name';
+  $handler->display->display_options['fields']['name']['table'] = 'users';
+  $handler->display->display_options['fields']['name']['field'] = 'name';
+  $handler->display->display_options['fields']['name']['relationship'] = 'uid';
+  $handler->display->display_options['fields']['name']['exclude'] = TRUE;
+  /* Field: Profile: Avatar image */
+  $handler->display->display_options['fields']['field_user_avatar']['id'] = 'field_user_avatar';
+  $handler->display->display_options['fields']['field_user_avatar']['table'] = 'field_data_field_user_avatar';
+  $handler->display->display_options['fields']['field_user_avatar']['field'] = 'field_user_avatar';
+  $handler->display->display_options['fields']['field_user_avatar']['relationship'] = 'profile';
+  $handler->display->display_options['fields']['field_user_avatar']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_user_avatar']['type'] = 'entityreference_entity_view';
+  $handler->display->display_options['fields']['field_user_avatar']['settings'] = array(
+    'view_mode' => 'default',
+    'links' => 1,
+  );
+  /* Field: User: Roles */
+  $handler->display->display_options['fields']['rid']['id'] = 'rid';
+  $handler->display->display_options['fields']['rid']['table'] = 'users_roles';
+  $handler->display->display_options['fields']['rid']['field'] = 'rid';
+  $handler->display->display_options['fields']['rid']['relationship'] = 'uid';
+  $handler->display->display_options['fields']['rid']['exclude'] = TRUE;
+  /* Field: Global: PHP */
+  $handler->display->display_options['fields']['php']['id'] = 'php';
+  $handler->display->display_options['fields']['php']['table'] = 'views';
+  $handler->display->display_options['fields']['php']['field'] = 'php';
+  $handler->display->display_options['fields']['php']['label'] = '';
+  $handler->display->display_options['fields']['php']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['php']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['php']['use_php_setup'] = 0;
+  $handler->display->display_options['fields']['php']['php_output'] = '<?php
+$role = $row->rid;
+if($role != 6){
+echo "Staff";
+}else{
+echo "Patron";
+}
+?>';
+  $handler->display->display_options['fields']['php']['use_php_click_sortable'] = '0';
+  $handler->display->display_options['fields']['php']['php_click_sortable'] = '';
+  /* Field: Global: Custom text */
+  $handler->display->display_options['fields']['nothing']['id'] = 'nothing';
+  $handler->display->display_options['fields']['nothing']['table'] = 'views';
+  $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
+  $handler->display->display_options['fields']['nothing']['label'] = '';
+  $handler->display->display_options['fields']['nothing']['alter']['text'] = '<div>Created by </div> [field_user_avatar] <div>[name] ([php])</div>';
+  $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
+  /* Field: Flags: Flag counter */
+  $handler->display->display_options['fields']['count']['id'] = 'count';
+  $handler->display->display_options['fields']['count']['table'] = 'flag_counts';
+  $handler->display->display_options['fields']['count']['field'] = 'count';
+  $handler->display->display_options['fields']['count']['relationship'] = 'flag_count_rel';
+  $handler->display->display_options['fields']['count']['label'] = 'Likes';
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Nodequeue: Position */
+  $handler->display->display_options['filters']['position']['id'] = 'position';
+  $handler->display->display_options['filters']['position']['table'] = 'nodequeue_nodes';
+  $handler->display->display_options['filters']['position']['field'] = 'position';
+  $handler->display->display_options['filters']['position']['relationship'] = 'nodequeue_rel';
+  $handler->display->display_options['filters']['position']['value']['value'] = '2';
+  $handler->display->display_options['block_description'] = 'booklist item block 2-footer';
+
+  /* Display: Block */
+  $handler = $view->new_display('block', 'Block', 'block_7');
+  $handler->display->display_options['defaults']['pager'] = FALSE;
+  $handler->display->display_options['pager']['type'] = 'some';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '1';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'owlcarousel';
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['row_plugin'] = 'fields';
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['header'] = FALSE;
+  $handler->display->display_options['defaults']['relationships'] = FALSE;
+  /* Relationship: Entity Reference: Referencing entity */
+  $handler->display->display_options['relationships']['reverse_field_book_node']['id'] = 'reverse_field_book_node';
+  $handler->display->display_options['relationships']['reverse_field_book_node']['table'] = 'eck_booklist_item';
+  $handler->display->display_options['relationships']['reverse_field_book_node']['field'] = 'reverse_field_book_node';
+  /* Relationship: Nodequeue: Queue */
+  $handler->display->display_options['relationships']['nodequeue_rel']['id'] = 'nodequeue_rel';
+  $handler->display->display_options['relationships']['nodequeue_rel']['table'] = 'node';
+  $handler->display->display_options['relationships']['nodequeue_rel']['field'] = 'nodequeue_rel';
+  $handler->display->display_options['relationships']['nodequeue_rel']['relationship'] = 'reverse_field_book_node';
+  $handler->display->display_options['relationships']['nodequeue_rel']['required'] = TRUE;
+  $handler->display->display_options['relationships']['nodequeue_rel']['limit'] = 1;
+  $handler->display->display_options['relationships']['nodequeue_rel']['names'] = array(
+    'booklist_book_cover_image' => 'booklist_book_cover_image',
+  );
+  /* Relationship: Content: Author */
+  $handler->display->display_options['relationships']['uid']['id'] = 'uid';
+  $handler->display->display_options['relationships']['uid']['table'] = 'node';
+  $handler->display->display_options['relationships']['uid']['field'] = 'uid';
+  $handler->display->display_options['relationships']['uid']['relationship'] = 'reverse_field_book_node';
+  /* Relationship: User: Profile */
+  $handler->display->display_options['relationships']['profile']['id'] = 'profile';
+  $handler->display->display_options['relationships']['profile']['table'] = 'users';
+  $handler->display->display_options['relationships']['profile']['field'] = 'profile';
+  $handler->display->display_options['relationships']['profile']['relationship'] = 'uid';
+  /* Relationship: Flags: like */
+  $handler->display->display_options['relationships']['flag_content_rel']['id'] = 'flag_content_rel';
+  $handler->display->display_options['relationships']['flag_content_rel']['table'] = 'node';
+  $handler->display->display_options['relationships']['flag_content_rel']['field'] = 'flag_content_rel';
+  $handler->display->display_options['relationships']['flag_content_rel']['relationship'] = 'reverse_field_book_node';
+  $handler->display->display_options['relationships']['flag_content_rel']['required'] = 0;
+  $handler->display->display_options['relationships']['flag_content_rel']['flag'] = 'like';
+  $handler->display->display_options['relationships']['flag_content_rel']['user_scope'] = 'any';
+  /* Relationship: Flags: like counter */
+  $handler->display->display_options['relationships']['flag_count_rel']['id'] = 'flag_count_rel';
+  $handler->display->display_options['relationships']['flag_count_rel']['table'] = 'node';
+  $handler->display->display_options['relationships']['flag_count_rel']['field'] = 'flag_count_rel';
+  $handler->display->display_options['relationships']['flag_count_rel']['relationship'] = 'reverse_field_book_node';
+  $handler->display->display_options['relationships']['flag_count_rel']['required'] = 0;
+  $handler->display->display_options['relationships']['flag_count_rel']['flag'] = 'like';
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Content: Title */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'node';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['relationship'] = 'reverse_field_book_node';
+  $handler->display->display_options['fields']['title']['label'] = '3.';
+  $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
+  /* Field: User: Name */
+  $handler->display->display_options['fields']['name']['id'] = 'name';
+  $handler->display->display_options['fields']['name']['table'] = 'users';
+  $handler->display->display_options['fields']['name']['field'] = 'name';
+  $handler->display->display_options['fields']['name']['relationship'] = 'uid';
+  $handler->display->display_options['fields']['name']['exclude'] = TRUE;
+  /* Field: Profile: Avatar image */
+  $handler->display->display_options['fields']['field_user_avatar']['id'] = 'field_user_avatar';
+  $handler->display->display_options['fields']['field_user_avatar']['table'] = 'field_data_field_user_avatar';
+  $handler->display->display_options['fields']['field_user_avatar']['field'] = 'field_user_avatar';
+  $handler->display->display_options['fields']['field_user_avatar']['relationship'] = 'profile';
+  $handler->display->display_options['fields']['field_user_avatar']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_user_avatar']['type'] = 'entityreference_entity_view';
+  $handler->display->display_options['fields']['field_user_avatar']['settings'] = array(
+    'view_mode' => 'default',
+    'links' => 1,
+  );
+  /* Field: User: Roles */
+  $handler->display->display_options['fields']['rid']['id'] = 'rid';
+  $handler->display->display_options['fields']['rid']['table'] = 'users_roles';
+  $handler->display->display_options['fields']['rid']['field'] = 'rid';
+  $handler->display->display_options['fields']['rid']['relationship'] = 'uid';
+  $handler->display->display_options['fields']['rid']['exclude'] = TRUE;
+  /* Field: Global: PHP */
+  $handler->display->display_options['fields']['php']['id'] = 'php';
+  $handler->display->display_options['fields']['php']['table'] = 'views';
+  $handler->display->display_options['fields']['php']['field'] = 'php';
+  $handler->display->display_options['fields']['php']['label'] = '';
+  $handler->display->display_options['fields']['php']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['php']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['php']['use_php_setup'] = 0;
+  $handler->display->display_options['fields']['php']['php_output'] = '<?php
+$role = $row->rid;
+if($role != 6){
+echo "Staff";
+}else{
+echo "Patron";
+}
+?>';
+  $handler->display->display_options['fields']['php']['use_php_click_sortable'] = '0';
+  $handler->display->display_options['fields']['php']['php_click_sortable'] = '';
+  /* Field: Global: Custom text */
+  $handler->display->display_options['fields']['nothing']['id'] = 'nothing';
+  $handler->display->display_options['fields']['nothing']['table'] = 'views';
+  $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
+  $handler->display->display_options['fields']['nothing']['label'] = '';
+  $handler->display->display_options['fields']['nothing']['alter']['text'] = '<div>Created by </div> [field_user_avatar]<div> [name] ([php])</div>';
+  $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
+  /* Field: Flags: Flag counter */
+  $handler->display->display_options['fields']['count']['id'] = 'count';
+  $handler->display->display_options['fields']['count']['table'] = 'flag_counts';
+  $handler->display->display_options['fields']['count']['field'] = 'count';
+  $handler->display->display_options['fields']['count']['relationship'] = 'flag_count_rel';
+  $handler->display->display_options['fields']['count']['label'] = 'Likes';
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Nodequeue: Position */
+  $handler->display->display_options['filters']['position']['id'] = 'position';
+  $handler->display->display_options['filters']['position']['table'] = 'nodequeue_nodes';
+  $handler->display->display_options['filters']['position']['field'] = 'position';
+  $handler->display->display_options['filters']['position']['relationship'] = 'nodequeue_rel';
+  $handler->display->display_options['filters']['position']['value']['value'] = '3';
+  $handler->display->display_options['block_description'] = 'booklist item block 3-footer';
+  $export['booklist_slideshow'] = $view;
+
   return $export;
 }
