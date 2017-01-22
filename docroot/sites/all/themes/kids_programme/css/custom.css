@@ -7450,7 +7450,7 @@ a.th {
 }
 
 /* line 39, ../scss/base/_common.scss */
-.white-text, .font-stroke-main, .font-stroke-sidebar, .stroke-main, .homepage-vedio-block .view-header p, .flicker-block .view-header, .my-dashbord-block .view-header *, .stroke-sidebar, .homepage-reward-block .view-header p, .block-user-login .block-title, #page-title.title, .page-progress #page-title {
+.white-text, .font-stroke-main, .font-stroke-sidebar, .stroke-main, .homepage-vedio-block .view-header p, .flicker-block .view-header, .my-dashbord-block .view-header *, .stroke-sidebar, .homepage-reward-block .view-header p, .block-user-login .block-title, .page-messages #page-title.title, .page-progress #page-title {
   color: #fff;
 }
 
@@ -12557,15 +12557,19 @@ html {
   margin-left: 1px;
 }
 /* line 28, ../scss/components/_pager.scss */
+.pagination.pager li.unavailable a {
+  color: #fff;
+}
+/* line 33, ../scss/components/_pager.scss */
 .pagination.pager li.arrow.first, .pagination.pager li.arrow.last {
   display: none;
 }
-/* line 31, ../scss/components/_pager.scss */
+/* line 36, ../scss/components/_pager.scss */
 .pagination.pager li.arrow a {
   color: transparent;
   position: relative;
 }
-/* line 34, ../scss/components/_pager.scss */
+/* line 39, ../scss/components/_pager.scss */
 .pagination.pager li.arrow a:after {
   content: "";
   width: 100%;
@@ -12576,35 +12580,35 @@ html {
   top: 0;
   display: inline-block;
 }
-/* line 45, ../scss/components/_pager.scss */
+/* line 50, ../scss/components/_pager.scss */
 .pagination.pager li.arrow:nth-of-type(2) {
   border-radius: 10px 0px 0px 10px;
 }
-/* line 47, ../scss/components/_pager.scss */
+/* line 52, ../scss/components/_pager.scss */
 .pagination.pager li.arrow:nth-of-type(2) a:after {
   background-position: -14px -590px;
 }
-/* line 51, ../scss/components/_pager.scss */
+/* line 56, ../scss/components/_pager.scss */
 .pagination.pager li.arrow:nth-last-of-type(2) {
   border-radius: 0px 10px 10px 0px;
 }
-/* line 53, ../scss/components/_pager.scss */
+/* line 58, ../scss/components/_pager.scss */
 .pagination.pager li.arrow:nth-last-of-type(2) a:after {
   background-position: -17px -1130px;
 }
-/* line 60, ../scss/components/_pager.scss */
+/* line 65, ../scss/components/_pager.scss */
 .cs-default .pagination.pager li.current a {
   background: #267fda;
 }
-/* line 63, ../scss/components/_pager.scss */
+/* line 68, ../scss/components/_pager.scss */
 .cs-classic .pagination.pager li.current a {
   background: #084899;
 }
-/* line 66, ../scss/components/_pager.scss */
+/* line 71, ../scss/components/_pager.scss */
 .cs-elegant .pagination.pager li.current a {
   background: #267fda;
 }
-/* line 72, ../scss/components/_pager.scss */
+/* line 77, ../scss/components/_pager.scss */
 .pagination.pager li a {
   width: 100%;
   height: 100%;
@@ -12646,30 +12650,30 @@ html {
   text-rendering: optimizeLegibility;
   -moz-font-smoothing: grayscale;
 }
-/* line 81, ../scss/components/_pager.scss */
+/* line 86, ../scss/components/_pager.scss */
 .cs-default .pagination.pager li a:hover, .cs-default .pagination.pager li a:focus {
   background: #267fda;
 }
-/* line 84, ../scss/components/_pager.scss */
+/* line 89, ../scss/components/_pager.scss */
 .cs-classic .pagination.pager li a:hover, .cs-classic .pagination.pager li a:focus {
   background: #084899;
 }
-/* line 87, ../scss/components/_pager.scss */
+/* line 92, ../scss/components/_pager.scss */
 .cs-elegant .pagination.pager li a:hover, .cs-elegant .pagination.pager li a:focus {
   background: #267fda;
 }
-/* line 91, ../scss/components/_pager.scss */
+/* line 96, ../scss/components/_pager.scss */
 .cs-default .pagination.pager li a {
   font-size: 17px;
   line-height: 34px;
   background: #f6511d;
 }
-/* line 97, ../scss/components/_pager.scss */
+/* line 102, ../scss/components/_pager.scss */
 .cs-classic .pagination.pager li a {
   font-size: 19px;
   background: #00a6ed;
 }
-/* line 101, ../scss/components/_pager.scss */
+/* line 106, ../scss/components/_pager.scss */
 .cs-elegant .pagination.pager li a {
   font-size: 19px;
   background: #2ec4b6;
@@ -13309,6 +13313,69 @@ p.more-link:after {
   background-position: -11px -321px;
 }
 
+/* line 2, ../scss/pages/_events.scss */
+.events-page-events .view-content {
+  margin-bottom: 50px;
+}
+/* line 3, ../scss/pages/_events.scss */
+.events-page-events .view-content h3 {
+  padding: 6px 24px;
+  color: #fff;
+  margin-top: 20px;
+  margin-bottom: 0;
+}
+/* line 8, ../scss/pages/_events.scss */
+.cs-default .events-page-events .view-content h3 {
+  font-size: 18px;
+  background: #f6511d;
+}
+/* line 12, ../scss/pages/_events.scss */
+.cs-classic .events-page-events .view-content h3 {
+  font-size: 19px;
+  background: #00a6ed;
+}
+/* line 16, ../scss/pages/_events.scss */
+.cs-elegant .events-page-events .view-content h3 {
+  font-size: 20px;
+  background: #2ec4b6;
+}
+/* line 23, ../scss/pages/_events.scss */
+.events-page-events .view-header {
+  margin-bottom: 10px;
+}
+/* line 26, ../scss/pages/_events.scss */
+.events-page-events .events-wrapper {
+  -webkit-flex-wrap: wrap;
+  flex-wrap: wrap;
+  display: -webkit-flex;
+  display: flex;
+  align-content: center;
+  align-items: center;
+  width: 100%;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+/* line 36, ../scss/pages/_events.scss */
+.events-page-events .events-wrapper .title {
+  flex: 0 0 60%;
+}
+/* line 38, ../scss/pages/_events.scss */
+.events-page-events .events-wrapper .title a {
+  width: 100%;
+  display: inline-block;
+  padding-right: 10px;
+  color: #000;
+  padding-left: 24px;
+}
+/* line 46, ../scss/pages/_events.scss */
+.events-page-events .events-wrapper .date {
+  flex: 0 0 20%;
+}
+/* line 49, ../scss/pages/_events.scss */
+.events-page-events .events-wrapper .location {
+  flex: 0 0 20%;
+}
+
 /* line 3, ../scss/pages/_messages.scss */
 .page-messages #page-title.title + .primary-tabs {
   display: inline-block;
@@ -13404,20 +13471,20 @@ p.more-link:after {
   text-rendering: optimizeLegibility;
   -moz-font-smoothing: grayscale;
 }
-/* line 76, ../scss/pages/_messages.scss */
+/* line 77, ../scss/pages/_messages.scss */
 .page-messages.cs-default #page-title.title {
   background-position: -60px -569px;
 }
-/* line 80, ../scss/pages/_messages.scss */
+/* line 81, ../scss/pages/_messages.scss */
 .page-messages.cs-classic #page-title.title {
   background-position: -60px -225px;
 }
-/* line 84, ../scss/pages/_messages.scss */
+/* line 85, ../scss/pages/_messages.scss */
 .page-messages.cs-elegant #page-title.title {
   background-position: -60px -914px;
 }
 
-/* line 89, ../scss/pages/_messages.scss */
+/* line 90, ../scss/pages/_messages.scss */
 .page-messages .main {
   padding-left: 0 !important;
   padding-right: 0 !important;
@@ -13436,21 +13503,21 @@ p.more-link:after {
   text-rendering: optimizeLegibility;
   -moz-font-smoothing: grayscale;
 }
-/* line 109, ../scss/pages/_messages.scss */
+/* line 110, ../scss/pages/_messages.scss */
 .page-messages.cs-default .main {
   background: #267fda;
   font-size: 17px;
   font-family: "arial";
   font-weight: normal;
 }
-/* line 116, ../scss/pages/_messages.scss */
+/* line 117, ../scss/pages/_messages.scss */
 .page-messages.cs-elegant .main {
   background: #267fda;
   font-size: 17px;
   font-family: "PT Sans", sans-serif;
   font-weight: normal;
 }
-/* line 122, ../scss/pages/_messages.scss */
+/* line 123, ../scss/pages/_messages.scss */
 .page-messages.cs-classic .main {
   background: #084899;
   font-size: 19px;
@@ -13458,55 +13525,55 @@ p.more-link:after {
   font-weight: normal;
 }
 
-/* line 133, ../scss/pages/_messages.scss */
+/* line 134, ../scss/pages/_messages.scss */
 .page-messages .button-group {
   margin-left: 35px;
 }
 
-/* line 139, ../scss/pages/_messages.scss */
+/* line 140, ../scss/pages/_messages.scss */
 .page-messages.cs-default table.sticky-header thead, .page-messages.cs-elegant table.sticky-header thead {
   background: #267fda;
   border-bottom: 5px solid #267fda;
 }
-/* line 143, ../scss/pages/_messages.scss */
+/* line 144, ../scss/pages/_messages.scss */
 .page-messages.cs-classic table.sticky-header thead {
   background: #084899;
   border-bottom: 5px solid #084899;
 }
 
-/* line 151, ../scss/pages/_messages.scss */
+/* line 152, ../scss/pages/_messages.scss */
 .page-messages.cs-default .privatemsg-list thead, .page-messages.cs-elegant .privatemsg-list thead {
   background: #267fda;
 }
-/* line 154, ../scss/pages/_messages.scss */
+/* line 155, ../scss/pages/_messages.scss */
 .page-messages.cs-classic .privatemsg-list thead {
   background: #084899;
 }
 
-/* line 160, ../scss/pages/_messages.scss */
+/* line 161, ../scss/pages/_messages.scss */
 .page-messages .block-block-3 {
   display: inline-block;
   margin-top: 26px;
 }
-/* line 164, ../scss/pages/_messages.scss */
+/* line 165, ../scss/pages/_messages.scss */
 .page-messages form {
   padding: 0 35px;
   margin-bottom: 0;
 }
-/* line 167, ../scss/pages/_messages.scss */
+/* line 168, ../scss/pages/_messages.scss */
 .page-messages form fieldset {
   border: none;
   padding-left: 0;
   margin: 0 0 0 -6px;
   margin-bottom: 39px;
 }
-/* line 172, ../scss/pages/_messages.scss */
+/* line 173, ../scss/pages/_messages.scss */
 .page-messages form fieldset legend {
   background: transparent none repeat scroll 0 0;
   font-weight: normal;
   margin-top: 15px;
 }
-/* line 176, ../scss/pages/_messages.scss */
+/* line 177, ../scss/pages/_messages.scss */
 .page-messages form fieldset legend a {
   padding: 6px 24px;
   display: inline-block;
@@ -13517,31 +13584,31 @@ p.more-link:after {
   border: none;
   line-height: 26px;
 }
-/* line 188, ../scss/pages/_messages.scss */
+/* line 189, ../scss/pages/_messages.scss */
 .page-messages form fieldset label {
   color: #fff;
   font-weight: bold;
   text-align: left !important;
 }
-/* line 194, ../scss/pages/_messages.scss */
+/* line 195, ../scss/pages/_messages.scss */
 .page-messages form .container-inline {
   margin-top: 10px;
 }
-/* line 196, ../scss/pages/_messages.scss */
+/* line 197, ../scss/pages/_messages.scss */
 .page-messages form .container-inline .form-type-textfield {
   display: inline-block;
   max-width: 32.5%;
   width: 100%;
 }
-/* line 203, ../scss/pages/_messages.scss */
+/* line 204, ../scss/pages/_messages.scss */
 .page-messages .form-item-operation {
   display: inline-block;
 }
-/* line 206, ../scss/pages/_messages.scss */
+/* line 207, ../scss/pages/_messages.scss */
 .page-messages .chosen-container {
   width: 200px;
 }
-/* line 208, ../scss/pages/_messages.scss */
+/* line 209, ../scss/pages/_messages.scss */
 .page-messages .chosen-container a {
   border: medium none;
   border-radius: 10px;
@@ -13554,136 +13621,136 @@ p.more-link:after {
   text-rendering: optimizelegibility !important;
   text-transform: capitalize;
 }
-/* line 220, ../scss/pages/_messages.scss */
+/* line 221, ../scss/pages/_messages.scss */
 .page-messages .chosen-container a div {
   margin-top: 7px !important;
 }
-/* line 225, ../scss/pages/_messages.scss */
+/* line 226, ../scss/pages/_messages.scss */
 .page-messages table.sticky-enabled {
   margin: 23px 0 40px 0;
 }
-/* line 228, ../scss/pages/_messages.scss */
+/* line 229, ../scss/pages/_messages.scss */
 .page-messages table.sticky-header {
   border: none;
 }
-/* line 231, ../scss/pages/_messages.scss */
+/* line 232, ../scss/pages/_messages.scss */
 .page-messages .privatemsg-list {
   width: 100%;
   background: transparent;
   border: none;
 }
-/* line 235, ../scss/pages/_messages.scss */
+/* line 236, ../scss/pages/_messages.scss */
 .page-messages .privatemsg-list thead {
   background: #267fda;
   border-bottom: 5px solid transparent;
 }
-/* line 238, ../scss/pages/_messages.scss */
+/* line 239, ../scss/pages/_messages.scss */
 .page-messages .privatemsg-list thead .select-all {
   width: 1%;
   position: relative;
   top: 7px;
 }
-/* line 243, ../scss/pages/_messages.scss */
+/* line 244, ../scss/pages/_messages.scss */
 .page-messages .privatemsg-list thead th {
   padding-bottom: 0;
 }
-/* line 247, ../scss/pages/_messages.scss */
+/* line 248, ../scss/pages/_messages.scss */
 .page-messages .privatemsg-list tbody {
   border-top: none;
 }
-/* line 249, ../scss/pages/_messages.scss */
+/* line 250, ../scss/pages/_messages.scss */
 .page-messages .privatemsg-list tbody tr {
   background: transparent;
   border-bottom: none;
 }
-/* line 252, ../scss/pages/_messages.scss */
+/* line 253, ../scss/pages/_messages.scss */
 .page-messages .privatemsg-list tbody tr td {
   padding-bottom: 2px;
 }
-/* line 256, ../scss/pages/_messages.scss */
+/* line 257, ../scss/pages/_messages.scss */
 .page-messages .privatemsg-list tbody tr.selected td {
   background: transparent;
 }
-/* line 263, ../scss/pages/_messages.scss */
+/* line 264, ../scss/pages/_messages.scss */
 .page-messages .privatemsg-list tbody .form-type-checkbox .form-checkbox {
   margin-bottom: 0;
 }
-/* line 271, ../scss/pages/_messages.scss */
+/* line 272, ../scss/pages/_messages.scss */
 .page-messages .privatemsg-header-subject a, .page-messages .privatemsg-header-lastupdated a,
 .page-messages .privatemsg-list-subject a {
   color: #fff;
   font-size: 19px;
 }
-/* line 275, ../scss/pages/_messages.scss */
+/* line 276, ../scss/pages/_messages.scss */
 .page-messages .privatemsg-header-subject img, .page-messages .privatemsg-header-lastupdated img,
 .page-messages .privatemsg-list-subject img {
   margin-left: 5px;
 }
-/* line 279, ../scss/pages/_messages.scss */
+/* line 280, ../scss/pages/_messages.scss */
 .page-messages .privatemsg-list-date, .page-messages .empty.message {
   color: #fff;
   font-size: 19px;
 }
-/* line 283, ../scss/pages/_messages.scss */
+/* line 284, ../scss/pages/_messages.scss */
 .page-messages .privatemsg-header-participants, .page-messages .privatemsg-list-participants {
   display: none;
 }
-/* line 286, ../scss/pages/_messages.scss */
+/* line 287, ../scss/pages/_messages.scss */
 .page-messages .warning {
   margin: 30px 0 40px 0;
 }
-/* line 289, ../scss/pages/_messages.scss */
+/* line 290, ../scss/pages/_messages.scss */
 .page-messages .privatemsg-message-participants {
   margin: 18px 35px 0;
   font-size: 19px;
 }
-/* line 293, ../scss/pages/_messages.scss */
+/* line 294, ../scss/pages/_messages.scss */
 .page-messages .privatemsg-message {
   max-width: 100%;
   padding: 30px 35px 0;
 }
-/* line 297, ../scss/pages/_messages.scss */
+/* line 298, ../scss/pages/_messages.scss */
 .page-messages .privatemsg-message-column {
   width: 100%;
   border-bottom: 2px solid #C5C5C5;
   margin-bottom: 22px;
 }
-/* line 302, ../scss/pages/_messages.scss */
+/* line 303, ../scss/pages/_messages.scss */
 .page-messages .privatemsg-author-name, .page-messages .privatemsg-message-date {
   font-size: 19px;
   color: #fff;
 }
-/* line 306, ../scss/pages/_messages.scss */
+/* line 307, ../scss/pages/_messages.scss */
 .page-messages .privatemsg-message-information {
   border-bottom: none;
 }
-/* line 309, ../scss/pages/_messages.scss */
+/* line 310, ../scss/pages/_messages.scss */
 .page-messages .privatemsg-message-body {
   margin-left: 0;
 }
-/* line 311, ../scss/pages/_messages.scss */
+/* line 312, ../scss/pages/_messages.scss */
 .page-messages .privatemsg-message-body p {
   font-size: 19px;
 }
-/* line 315, ../scss/pages/_messages.scss */
+/* line 316, ../scss/pages/_messages.scss */
 .page-messages .privatemsg-reply {
   color: #fff;
 }
-/* line 318, ../scss/pages/_messages.scss */
+/* line 319, ../scss/pages/_messages.scss */
 .page-messages .text-format-wrapper {
   margin-bottom: 26px;
 }
-/* line 320, ../scss/pages/_messages.scss */
+/* line 321, ../scss/pages/_messages.scss */
 .page-messages .text-format-wrapper label {
   font-size: 19px;
   color: #fff;
 }
-/* line 325, ../scss/pages/_messages.scss */
+/* line 326, ../scss/pages/_messages.scss */
 .page-messages .button, .page-messages .other-programme.view .other-programme .programme-content .sign-up a, .other-programme.view .other-programme .programme-content .sign-up .page-messages a {
   margin-left: 0;
   margin-right: 15px;
 }
-/* line 329, ../scss/pages/_messages.scss */
+/* line 330, ../scss/pages/_messages.scss */
 .page-messages #edit-cancel {
   padding: 6px 24px;
   display: inline-block;
@@ -13694,12 +13761,12 @@ p.more-link:after {
   border: none;
   line-height: 26px;
 }
-/* line 341, ../scss/pages/_messages.scss */
+/* line 342, ../scss/pages/_messages.scss */
 .page-messages .privatemsg-message-actions {
   list-style: none;
   margin: 28px 0;
 }
-/* line 344, ../scss/pages/_messages.scss */
+/* line 345, ../scss/pages/_messages.scss */
 .page-messages .privatemsg-message-actions a {
   padding: 6px 24px;
   display: inline-block;
@@ -13746,86 +13813,86 @@ p.more-link:after {
 .cs-classic .chosen-drop *, .cs-elegant .chosen-drop * {
   font-size: 19px;
 }
-/* line 362, ../scss/pages/_messages.scss */
+/* line 363, ../scss/pages/_messages.scss */
 .page-messages.cs-default .chosen-drop {
   top: 40px;
   color: #000;
 }
-/* line 367, ../scss/pages/_messages.scss */
+/* line 368, ../scss/pages/_messages.scss */
 .page-messages.cs-classic .chosen-drop {
   top: 40px;
   color: #fff;
 }
-/* line 372, ../scss/pages/_messages.scss */
+/* line 373, ../scss/pages/_messages.scss */
 .page-messages.cs-elegant .chosen-drop {
   top: 40px;
   color: #fff;
 }
 
-/* line 382, ../scss/pages/_messages.scss */
+/* line 383, ../scss/pages/_messages.scss */
 .page-messages.cs-default .pagination.pager li.current a, .page-messages.cs-classic .pagination.pager li.current a, .page-messages.cs-elegant .pagination.pager li.current a {
   background: #fdeb52;
   color: #000;
 }
-/* line 391, ../scss/pages/_messages.scss */
+/* line 392, ../scss/pages/_messages.scss */
 .page-messages.cs-default .pagination.pager li a:hover, .page-messages.cs-classic .pagination.pager li a:hover, .page-messages.cs-elegant .pagination.pager li a:hover, .page-messages.cs-default .pagination.pager li a:focus, .page-messages.cs-classic .pagination.pager li a:focus, .page-messages.cs-elegant .pagination.pager li a:focus {
   background: #fdeb52;
   color: #000;
 }
 
 @media all and (max-width: 767px) {
-  /* line 404, ../scss/pages/_messages.scss */
+  /* line 405, ../scss/pages/_messages.scss */
   .page-messages .action-links {
     display: none !important;
   }
-  /* line 407, ../scss/pages/_messages.scss */
+  /* line 408, ../scss/pages/_messages.scss */
   .page-messages .button-group {
     margin-left: 10px;
   }
-  /* line 411, ../scss/pages/_messages.scss */
+  /* line 412, ../scss/pages/_messages.scss */
   .page-messages .container-inline button, .page-messages .container-inline .form-type-select {
     margin-bottom: 20px !important;
   }
-  /* line 415, ../scss/pages/_messages.scss */
+  /* line 416, ../scss/pages/_messages.scss */
   .page-messages form {
     padding: 0 10px;
   }
-  /* line 420, ../scss/pages/_messages.scss */
+  /* line 421, ../scss/pages/_messages.scss */
   .page-messages .privatemsg-header-subject a, .page-messages .privatemsg-header-lastupdated a,
   .page-messages .privatemsg-list-subject a {
     font-size: 14px;
   }
-  /* line 423, ../scss/pages/_messages.scss */
+  /* line 424, ../scss/pages/_messages.scss */
   .page-messages .privatemsg-header-subject img, .page-messages .privatemsg-header-lastupdated img,
   .page-messages .privatemsg-list-subject img {
     margin-left: 0;
   }
-  /* line 427, ../scss/pages/_messages.scss */
+  /* line 428, ../scss/pages/_messages.scss */
   .page-messages .privatemsg-author-name, .page-messages .privatemsg-message-date,
   .page-messages .privatemsg-list-date, .page-messages .empty.message {
     font-size: 14px;
   }
-  /* line 431, ../scss/pages/_messages.scss */
+  /* line 432, ../scss/pages/_messages.scss */
   .page-messages .privatemsg-message-participants {
     margin-left: 10px;
     margin-right: 10px;
   }
-  /* line 435, ../scss/pages/_messages.scss */
+  /* line 436, ../scss/pages/_messages.scss */
   .page-messages .privatemsg-message {
     padding-left: 10px;
     padding-right: 10px;
   }
-  /* line 440, ../scss/pages/_messages.scss */
+  /* line 441, ../scss/pages/_messages.scss */
   .page-messages .privatemsg-message-body p {
     font-size: 14px;
   }
-  /* line 445, ../scss/pages/_messages.scss */
+  /* line 446, ../scss/pages/_messages.scss */
   .page-messages .text-format-wrapper label {
     font-size: 14px;
   }
 }
 @media all and (max-width: 1024px) {
-  /* line 454, ../scss/pages/_messages.scss */
+  /* line 455, ../scss/pages/_messages.scss */
   .page-messages.cs-default .form-select {
     font-family: "McLaren", cursive;
     font-weight: normal;
@@ -13833,7 +13900,7 @@ p.more-link:after {
     background: #fdeb52;
     color: #000;
   }
-  /* line 461, ../scss/pages/_messages.scss */
+  /* line 462, ../scss/pages/_messages.scss */
   .page-messages.cs-classic .form-select {
     font-family: "Architects Daughter", cursive;
     font-weight: 700;
@@ -13841,7 +13908,7 @@ p.more-link:after {
     background: #ff9f1c;
     color: #fff;
   }
-  /* line 468, ../scss/pages/_messages.scss */
+  /* line 469, ../scss/pages/_messages.scss */
   .page-messages.cs-elegant .form-select {
     font-family: "Margarine", cursive;
     font-weight: normal;
@@ -13850,7 +13917,7 @@ p.more-link:after {
     color: #fff;
   }
 
-  /* line 477, ../scss/pages/_messages.scss */
+  /* line 478, ../scss/pages/_messages.scss */
   .page-messages .form-select {
     padding: 6px 24px;
     display: inline-block;
