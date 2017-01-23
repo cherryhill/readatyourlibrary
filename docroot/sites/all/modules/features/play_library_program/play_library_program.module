@@ -2059,8 +2059,10 @@ function play_library_program_next_close_reward_points($activity_ids, $uid = NUL
 					if($prev_point > $req_points){
 						$prev_point = $req_points;
 					}
-				}	
-			}
+				}
+			}else{
+        $req_points = 0;
+      }
 		}
 	}
 	return $req_points;
