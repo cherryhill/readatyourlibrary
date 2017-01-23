@@ -25,7 +25,7 @@ function feature_for_reviews_page_default_fe_block_settings() {
     'roles' => array(),
     'themes' => array(
       'kids_programme' => array(
-        'region' => 'sidebar_first',
+        'region' => 'sidebar_activity',
         'status' => 1,
         'theme' => 'kids_programme',
         'weight' => 0,

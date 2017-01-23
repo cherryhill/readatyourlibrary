@@ -48,11 +48,11 @@ function booklist_page_feature_flag_default_flags() {
     'access_author' => '',
     'show_contextual_link' => 1,
     'i18n' => 0,
-    'api_version' => 3,
     'module' => 'booklist_page_feature',
     'locked' => array(
       0 => 'name',
     ),
+    'api_version' => 3,
   );
   return $flags;
 
