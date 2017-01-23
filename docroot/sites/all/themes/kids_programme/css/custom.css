@@ -124,7 +124,7 @@ a:hover {
  * contexts in Firefox 4+, Safari 5, and Chrome.
  */
 /* line 122, ../scss/_normalize.scss */
-h1, .font-stroke-main, .activity-page-kids .view-header p:nth-of-type(1), .other-programme.view .view-header * {
+h1, .font-stroke-main, .activity-page-kids .view-header p:nth-of-type(1), .other-programme.view .view-header *, .view-reward-page-views .view-header p:first-line, .view-reward-page-views .view-footer * {
   font-size: 2em;
   margin: 0.67em 0;
 }
@@ -2019,7 +2019,10 @@ h1,
 .font-stroke-main,
 .activity-page-kids .view-header p:nth-of-type(1),
 .other-programme.view .view-header *,
+.view-reward-page-views .view-header p:first-line,
+.view-reward-page-views .view-footer *,
 h2,
+.view-reward-activity .view-header *,
 h3,
 h4,
 h5,
@@ -2070,7 +2073,7 @@ p aside {
 
 /* Default header styles */
 /* line 182, ../../../../../../../../../Ruby23/lib/ruby/gems/2.3.0/gems/zurb-foundation-4.3.2/scss/foundation/components/_type.scss */
-h1, .font-stroke-main, .activity-page-kids .view-header p:nth-of-type(1), .other-programme.view .view-header *, h2, h3, h4, h5, h6 {
+h1, .font-stroke-main, .activity-page-kids .view-header p:nth-of-type(1), .other-programme.view .view-header *, .view-reward-page-views .view-header p:first-line, .view-reward-page-views .view-footer *, h2, .view-reward-activity .view-header *, h3, h4, h5, h6 {
   font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
   font-weight: bold;
   font-style: normal;
@@ -2081,19 +2084,19 @@ h1, .font-stroke-main, .activity-page-kids .view-header p:nth-of-type(1), .other
   line-height: 1.2125em;
 }
 /* line 192, ../../../../../../../../../Ruby23/lib/ruby/gems/2.3.0/gems/zurb-foundation-4.3.2/scss/foundation/components/_type.scss */
-h1 small, .font-stroke-main small, .activity-page-kids .view-header p:nth-of-type(1) small, .other-programme.view .view-header * small, h2 small, h3 small, h4 small, h5 small, h6 small {
+h1 small, .font-stroke-main small, .activity-page-kids .view-header p:nth-of-type(1) small, .other-programme.view .view-header * small, .view-reward-page-views .view-header p:first-line small, .view-reward-page-views .view-footer * small, h2 small, .view-reward-activity .view-header * small, h3 small, h4 small, h5 small, h6 small {
   font-size: 60%;
   color: #6f6f6f;
   line-height: 0;
 }
 
 /* line 199, ../../../../../../../../../Ruby23/lib/ruby/gems/2.3.0/gems/zurb-foundation-4.3.2/scss/foundation/components/_type.scss */
-h1, .font-stroke-main, .activity-page-kids .view-header p:nth-of-type(1), .other-programme.view .view-header * {
+h1, .font-stroke-main, .activity-page-kids .view-header p:nth-of-type(1), .other-programme.view .view-header *, .view-reward-page-views .view-header p:first-line, .view-reward-page-views .view-footer * {
   font-size: 2.125em;
 }
 
 /* line 200, ../../../../../../../../../Ruby23/lib/ruby/gems/2.3.0/gems/zurb-foundation-4.3.2/scss/foundation/components/_type.scss */
-h2 {
+h2, .view-reward-activity .view-header * {
   font-size: 1.6875em;
 }
 
@@ -2304,17 +2307,17 @@ blockquote p {
 
 @media only screen and (min-width: 768px) {
   /* line 368, ../../../../../../../../../Ruby23/lib/ruby/gems/2.3.0/gems/zurb-foundation-4.3.2/scss/foundation/components/_type.scss */
-  h1, .font-stroke-main, .activity-page-kids .view-header p:nth-of-type(1), .other-programme.view .view-header *, h2, h3, h4, h5, h6 {
+  h1, .font-stroke-main, .activity-page-kids .view-header p:nth-of-type(1), .other-programme.view .view-header *, .view-reward-page-views .view-header p:first-line, .view-reward-page-views .view-footer *, h2, .view-reward-activity .view-header *, h3, h4, h5, h6 {
     line-height: 1.4;
   }
 
   /* line 369, ../../../../../../../../../Ruby23/lib/ruby/gems/2.3.0/gems/zurb-foundation-4.3.2/scss/foundation/components/_type.scss */
-  h1, .font-stroke-main, .activity-page-kids .view-header p:nth-of-type(1), .other-programme.view .view-header * {
+  h1, .font-stroke-main, .activity-page-kids .view-header p:nth-of-type(1), .other-programme.view .view-header *, .view-reward-page-views .view-header p:first-line, .view-reward-page-views .view-footer * {
     font-size: 2.75em;
   }
 
   /* line 370, ../../../../../../../../../Ruby23/lib/ruby/gems/2.3.0/gems/zurb-foundation-4.3.2/scss/foundation/components/_type.scss */
-  h2 {
+  h2, .view-reward-activity .view-header * {
     font-size: 2.3125em;
   }
 
@@ -2402,13 +2405,14 @@ blockquote p {
   /* line 418, ../../../../../../../../../Ruby23/lib/ruby/gems/2.3.0/gems/zurb-foundation-4.3.2/scss/foundation/components/_type.scss */
   p,
   h2,
+  .view-reward-activity .view-header *,
   h3 {
     orphans: 3;
     widows: 3;
   }
 
   /* line 425, ../../../../../../../../../Ruby23/lib/ruby/gems/2.3.0/gems/zurb-foundation-4.3.2/scss/foundation/components/_type.scss */
-  h2,
+  h2, .view-reward-activity .view-header *,
   h3 {
     page-break-after: avoid;
   }
@@ -4663,13 +4667,13 @@ label.error {
   font-size: 16px;
 }
 /* line 140, ../../../../../../../../../Ruby23/lib/ruby/gems/2.3.0/gems/zurb-foundation-4.3.2/scss/foundation/components/_top-bar.scss */
-.top-bar .name h1, .top-bar .name .font-stroke-main, .top-bar .name .activity-page-kids .view-header p:nth-of-type(1), .activity-page-kids .view-header .top-bar .name p:nth-of-type(1), .top-bar .name .other-programme.view .view-header *, .other-programme.view .view-header .top-bar .name * {
+.top-bar .name h1, .top-bar .name .font-stroke-main, .top-bar .name .activity-page-kids .view-header p:nth-of-type(1), .activity-page-kids .view-header .top-bar .name p:nth-of-type(1), .top-bar .name .other-programme.view .view-header *, .other-programme.view .view-header .top-bar .name *, .top-bar .name .view-reward-page-views .view-header p:first-line, .view-reward-page-views .view-header .top-bar .name p:first-line, .top-bar .name .view-reward-page-views .view-footer *, .view-reward-page-views .view-footer .top-bar .name * {
   line-height: 45px;
   font-size: 1.0625em;
   margin: 0;
 }
 /* line 144, ../../../../../../../../../Ruby23/lib/ruby/gems/2.3.0/gems/zurb-foundation-4.3.2/scss/foundation/components/_top-bar.scss */
-.top-bar .name h1 a, .top-bar .name .font-stroke-main a, .top-bar .name .activity-page-kids .view-header p:nth-of-type(1) a, .activity-page-kids .view-header .top-bar .name p:nth-of-type(1) a, .top-bar .name .other-programme.view .view-header * a, .other-programme.view .view-header .top-bar .name * a {
+.top-bar .name h1 a, .top-bar .name .font-stroke-main a, .top-bar .name .activity-page-kids .view-header p:nth-of-type(1) a, .activity-page-kids .view-header .top-bar .name p:nth-of-type(1) a, .top-bar .name .other-programme.view .view-header * a, .other-programme.view .view-header .top-bar .name * a, .top-bar .name .view-reward-page-views .view-header p:first-line a, .view-reward-page-views .view-header .top-bar .name p:first-line a, .top-bar .name .view-reward-page-views .view-footer * a, .view-reward-page-views .view-footer .top-bar .name * a {
   font-weight: bold;
   color: #fff;
   width: 50%;
@@ -4931,7 +4935,7 @@ label.error {
     float: left;
   }
   /* line 397, ../../../../../../../../../Ruby23/lib/ruby/gems/2.3.0/gems/zurb-foundation-4.3.2/scss/foundation/components/_top-bar.scss */
-  .top-bar .name h1 a, .top-bar .name .font-stroke-main a, .top-bar .name .activity-page-kids .view-header p:nth-of-type(1) a, .activity-page-kids .view-header .top-bar .name p:nth-of-type(1) a, .top-bar .name .other-programme.view .view-header * a, .other-programme.view .view-header .top-bar .name * a {
+  .top-bar .name h1 a, .top-bar .name .font-stroke-main a, .top-bar .name .activity-page-kids .view-header p:nth-of-type(1) a, .activity-page-kids .view-header .top-bar .name p:nth-of-type(1) a, .top-bar .name .other-programme.view .view-header * a, .other-programme.view .view-header .top-bar .name * a, .top-bar .name .view-reward-page-views .view-header p:first-line a, .view-reward-page-views .view-header .top-bar .name p:first-line a, .top-bar .name .view-reward-page-views .view-footer * a, .view-reward-page-views .view-footer .top-bar .name * a {
     width: auto;
   }
   /* line 399, ../../../../../../../../../Ruby23/lib/ruby/gems/2.3.0/gems/zurb-foundation-4.3.2/scss/foundation/components/_top-bar.scss */
@@ -5587,8 +5591,10 @@ label.error {
 
 /* Typography */
 /* line 104, ../../../../../../../../../Ruby23/lib/ruby/gems/2.3.0/gems/zurb-foundation-4.3.2/scss/foundation/components/_joyride.scss */
-.joyride-tip-guide h1, .joyride-tip-guide .font-stroke-main, .joyride-tip-guide .activity-page-kids .view-header p:nth-of-type(1), .activity-page-kids .view-header .joyride-tip-guide p:nth-of-type(1), .joyride-tip-guide .other-programme.view .view-header *, .other-programme.view .view-header .joyride-tip-guide *,
+.joyride-tip-guide h1, .joyride-tip-guide .font-stroke-main, .joyride-tip-guide .activity-page-kids .view-header p:nth-of-type(1), .activity-page-kids .view-header .joyride-tip-guide p:nth-of-type(1), .joyride-tip-guide .other-programme.view .view-header *, .other-programme.view .view-header .joyride-tip-guide *, .joyride-tip-guide .view-reward-page-views .view-header p:first-line, .view-reward-page-views .view-header .joyride-tip-guide p:first-line, .joyride-tip-guide .view-reward-page-views .view-footer *, .view-reward-page-views .view-footer .joyride-tip-guide *,
 .joyride-tip-guide h2,
+.joyride-tip-guide .view-reward-activity .view-header *,
+.view-reward-activity .view-header .joyride-tip-guide *,
 .joyride-tip-guide h3,
 .joyride-tip-guide h4,
 .joyride-tip-guide h5,
@@ -6497,16 +6503,16 @@ ul.pagination li {
   margin-bottom: 0;
 }
 /* line 50, ../../../../../../../../../Ruby23/lib/ruby/gems/2.3.0/gems/zurb-foundation-4.3.2/scss/foundation/components/_panels.scss */
-.panel h1, .panel .font-stroke-main, .panel .activity-page-kids .view-header p:nth-of-type(1), .activity-page-kids .view-header .panel p:nth-of-type(1), .panel .other-programme.view .view-header *, .other-programme.view .view-header .panel *, .panel h2, .panel h3, .panel h4, .panel h5, .panel h6, .panel p {
+.panel h1, .panel .font-stroke-main, .panel .activity-page-kids .view-header p:nth-of-type(1), .activity-page-kids .view-header .panel p:nth-of-type(1), .panel .other-programme.view .view-header *, .other-programme.view .view-header .panel *, .panel .view-reward-page-views .view-header p:first-line, .view-reward-page-views .view-header .panel p:first-line, .panel .view-reward-page-views .view-footer *, .view-reward-page-views .view-footer .panel *, .panel h2, .panel .view-reward-activity .view-header *, .view-reward-activity .view-header .panel *, .panel h3, .panel h4, .panel h5, .panel h6, .panel p {
   color: #333;
 }
 /* line 54, ../../../../../../../../../Ruby23/lib/ruby/gems/2.3.0/gems/zurb-foundation-4.3.2/scss/foundation/components/_panels.scss */
-.panel h1, .panel .font-stroke-main, .panel .activity-page-kids .view-header p:nth-of-type(1), .activity-page-kids .view-header .panel p:nth-of-type(1), .panel .other-programme.view .view-header *, .other-programme.view .view-header .panel *, .panel h2, .panel h3, .panel h4, .panel h5, .panel h6 {
+.panel h1, .panel .font-stroke-main, .panel .activity-page-kids .view-header p:nth-of-type(1), .activity-page-kids .view-header .panel p:nth-of-type(1), .panel .other-programme.view .view-header *, .other-programme.view .view-header .panel *, .panel .view-reward-page-views .view-header p:first-line, .view-reward-page-views .view-header .panel p:first-line, .panel .view-reward-page-views .view-footer *, .view-reward-page-views .view-footer .panel *, .panel h2, .panel .view-reward-activity .view-header *, .view-reward-activity .view-header .panel *, .panel h3, .panel h4, .panel h5, .panel h6 {
   line-height: 1;
   margin-bottom: 0.625em;
 }
 /* line 56, ../../../../../../../../../Ruby23/lib/ruby/gems/2.3.0/gems/zurb-foundation-4.3.2/scss/foundation/components/_panels.scss */
-.panel h1.subheader, .panel .subheader.font-stroke-main, .panel .activity-page-kids .view-header p.subheader:nth-of-type(1), .activity-page-kids .view-header .panel p.subheader:nth-of-type(1), .panel .other-programme.view .view-header .subheader, .other-programme.view .view-header .panel .subheader, .panel h2.subheader, .panel h3.subheader, .panel h4.subheader, .panel h5.subheader, .panel h6.subheader {
+.panel h1.subheader, .panel .subheader.font-stroke-main, .panel .activity-page-kids .view-header p.subheader:nth-of-type(1), .activity-page-kids .view-header .panel p.subheader:nth-of-type(1), .panel .other-programme.view .view-header .subheader, .other-programme.view .view-header .panel .subheader, .panel .view-reward-page-views .view-header p.subheader:first-line, .view-reward-page-views .view-header .panel p.subheader:first-line, .panel .view-reward-page-views .view-footer .subheader, .view-reward-page-views .view-footer .panel .subheader, .panel h2.subheader, .panel .view-reward-activity .view-header .subheader, .view-reward-activity .view-header .panel .subheader, .panel h3.subheader, .panel h4.subheader, .panel h5.subheader, .panel h6.subheader {
   line-height: 1.4;
 }
 /* line 68, ../../../../../../../../../Ruby23/lib/ruby/gems/2.3.0/gems/zurb-foundation-4.3.2/scss/foundation/components/_panels.scss */
@@ -6529,16 +6535,16 @@ ul.pagination li {
   margin-bottom: 0;
 }
 /* line 51, ../../../../../../../../../Ruby23/lib/ruby/gems/2.3.0/gems/zurb-foundation-4.3.2/scss/foundation/components/_panels.scss */
-.panel.callout h1, .panel.callout .font-stroke-main, .panel.callout .activity-page-kids .view-header p:nth-of-type(1), .activity-page-kids .view-header .panel.callout p:nth-of-type(1), .panel.callout .other-programme.view .view-header *, .other-programme.view .view-header .panel.callout *, .panel.callout h2, .panel.callout h3, .panel.callout h4, .panel.callout h5, .panel.callout h6, .panel.callout p {
+.panel.callout h1, .panel.callout .font-stroke-main, .panel.callout .activity-page-kids .view-header p:nth-of-type(1), .activity-page-kids .view-header .panel.callout p:nth-of-type(1), .panel.callout .other-programme.view .view-header *, .other-programme.view .view-header .panel.callout *, .panel.callout .view-reward-page-views .view-header p:first-line, .view-reward-page-views .view-header .panel.callout p:first-line, .panel.callout .view-reward-page-views .view-footer *, .view-reward-page-views .view-footer .panel.callout *, .panel.callout h2, .panel.callout .view-reward-activity .view-header *, .view-reward-activity .view-header .panel.callout *, .panel.callout h3, .panel.callout h4, .panel.callout h5, .panel.callout h6, .panel.callout p {
   color: #fff;
 }
 /* line 54, ../../../../../../../../../Ruby23/lib/ruby/gems/2.3.0/gems/zurb-foundation-4.3.2/scss/foundation/components/_panels.scss */
-.panel.callout h1, .panel.callout .font-stroke-main, .panel.callout .activity-page-kids .view-header p:nth-of-type(1), .activity-page-kids .view-header .panel.callout p:nth-of-type(1), .panel.callout .other-programme.view .view-header *, .other-programme.view .view-header .panel.callout *, .panel.callout h2, .panel.callout h3, .panel.callout h4, .panel.callout h5, .panel.callout h6 {
+.panel.callout h1, .panel.callout .font-stroke-main, .panel.callout .activity-page-kids .view-header p:nth-of-type(1), .activity-page-kids .view-header .panel.callout p:nth-of-type(1), .panel.callout .other-programme.view .view-header *, .other-programme.view .view-header .panel.callout *, .panel.callout .view-reward-page-views .view-header p:first-line, .view-reward-page-views .view-header .panel.callout p:first-line, .panel.callout .view-reward-page-views .view-footer *, .view-reward-page-views .view-footer .panel.callout *, .panel.callout h2, .panel.callout .view-reward-activity .view-header *, .view-reward-activity .view-header .panel.callout *, .panel.callout h3, .panel.callout h4, .panel.callout h5, .panel.callout h6 {
   line-height: 1;
   margin-bottom: 0.625em;
 }
 /* line 56, ../../../../../../../../../Ruby23/lib/ruby/gems/2.3.0/gems/zurb-foundation-4.3.2/scss/foundation/components/_panels.scss */
-.panel.callout h1.subheader, .panel.callout .subheader.font-stroke-main, .panel.callout .activity-page-kids .view-header p.subheader:nth-of-type(1), .activity-page-kids .view-header .panel.callout p.subheader:nth-of-type(1), .panel.callout .other-programme.view .view-header .subheader, .other-programme.view .view-header .panel.callout .subheader, .panel.callout h2.subheader, .panel.callout h3.subheader, .panel.callout h4.subheader, .panel.callout h5.subheader, .panel.callout h6.subheader {
+.panel.callout h1.subheader, .panel.callout .subheader.font-stroke-main, .panel.callout .activity-page-kids .view-header p.subheader:nth-of-type(1), .activity-page-kids .view-header .panel.callout p.subheader:nth-of-type(1), .panel.callout .other-programme.view .view-header .subheader, .other-programme.view .view-header .panel.callout .subheader, .panel.callout .view-reward-page-views .view-header p.subheader:first-line, .view-reward-page-views .view-header .panel.callout p.subheader:first-line, .panel.callout .view-reward-page-views .view-footer .subheader, .view-reward-page-views .view-footer .panel.callout .subheader, .panel.callout h2.subheader, .panel.callout .view-reward-activity .view-header .subheader, .view-reward-activity .view-header .panel.callout .subheader, .panel.callout h3.subheader, .panel.callout h4.subheader, .panel.callout h5.subheader, .panel.callout h6.subheader {
   line-height: 1.4;
 }
 /* line 71, ../../../../../../../../../Ruby23/lib/ruby/gems/2.3.0/gems/zurb-foundation-4.3.2/scss/foundation/components/_panels.scss */
@@ -7444,7 +7450,7 @@ a.th {
 }
 
 /* line 39, ../scss/base/_common.scss */
-.white-text, .font-stroke-main, .font-stroke-sidebar, .stroke-main, .homepage-vedio-block .view-header p, .flicker-block .view-header, .my-dashbord-block .view-header *, .stroke-sidebar, .homepage-reward-block .view-header p, .block-user-login .block-title, #page-title.title, .page-progress #page-title {
+.white-text, .font-stroke-main, .font-stroke-sidebar, .stroke-main, .homepage-vedio-block .view-header p, .flicker-block .view-header, .my-dashbord-block .view-header *, .stroke-sidebar, .homepage-reward-block .view-header p, .block-user-login .block-title, .page-messages #page-title.title, .page-progress #page-title {
   color: #fff;
 }
 
@@ -7581,7 +7587,7 @@ a.th {
 }
 
 /* line 116, ../scss/base/_common.scss */
-.primary-background, .homepage-reward-block, .homepage-vedio-block, .homepage-booklist-slider .slide, .block-user-login, .flicker-block, .my-dashbord-block {
+.primary-background, .sidebar2 > .first, .homepage-reward-block, .homepage-vedio-block, .homepage-booklist-slider .slide, .block-user-login, .flicker-block, .my-dashbord-block {
   color: #fff;
   border-radius: 15px;
   overflow: hidden;
@@ -7590,23 +7596,23 @@ a.th {
   padding-bottom: 15px;
 }
 /* line 117, ../scss/base/_common.scss */
-.cs-default .primary-background, .cs-default .homepage-reward-block, .cs-default .homepage-vedio-block, .cs-default .homepage-booklist-slider .slide, .homepage-booklist-slider .cs-default .slide, .cs-default .block-user-login, .cs-default .flicker-block, .cs-default .my-dashbord-block, .cs-elegant .primary-background, .cs-elegant .homepage-reward-block, .cs-elegant .homepage-vedio-block, .cs-elegant .homepage-booklist-slider .slide, .homepage-booklist-slider .cs-elegant .slide, .cs-elegant .block-user-login, .cs-elegant .flicker-block, .cs-elegant .my-dashbord-block {
+.cs-default .primary-background, .cs-default .sidebar2 > .first, .cs-default .homepage-reward-block, .cs-default .homepage-vedio-block, .cs-default .homepage-booklist-slider .slide, .homepage-booklist-slider .cs-default .slide, .cs-default .block-user-login, .cs-default .flicker-block, .cs-default .my-dashbord-block, .cs-elegant .primary-background, .cs-elegant .sidebar2 > .first, .cs-elegant .homepage-reward-block, .cs-elegant .homepage-vedio-block, .cs-elegant .homepage-booklist-slider .slide, .homepage-booklist-slider .cs-elegant .slide, .cs-elegant .block-user-login, .cs-elegant .flicker-block, .cs-elegant .my-dashbord-block {
   background: #267fda;
 }
 /* line 120, ../scss/base/_common.scss */
-.cs-classic .primary-background, .cs-classic .homepage-reward-block, .cs-classic .homepage-vedio-block, .cs-classic .homepage-booklist-slider .slide, .homepage-booklist-slider .cs-classic .slide, .cs-classic .block-user-login, .cs-classic .flicker-block, .cs-classic .my-dashbord-block {
+.cs-classic .primary-background, .cs-classic .sidebar2 > .first, .cs-classic .homepage-reward-block, .cs-classic .homepage-vedio-block, .cs-classic .homepage-booklist-slider .slide, .homepage-booklist-slider .cs-classic .slide, .cs-classic .block-user-login, .cs-classic .flicker-block, .cs-classic .my-dashbord-block {
   background: #084899;
 }
 /* line 151, ../scss/base/_mixins.scss */
-.cs-default .primary-background, .cs-default .homepage-reward-block, .cs-default .homepage-vedio-block, .cs-default .homepage-booklist-slider .slide, .homepage-booklist-slider .cs-default .slide, .cs-default .block-user-login, .cs-default .flicker-block, .cs-default .my-dashbord-block {
+.cs-default .primary-background, .cs-default .sidebar2 > .first, .cs-default .homepage-reward-block, .cs-default .homepage-vedio-block, .cs-default .homepage-booklist-slider .slide, .homepage-booklist-slider .cs-default .slide, .cs-default .block-user-login, .cs-default .flicker-block, .cs-default .my-dashbord-block {
   font-size: 17px;
 }
 /* line 155, ../scss/base/_mixins.scss */
-.cs-classic .primary-background, .cs-classic .homepage-reward-block, .cs-classic .homepage-vedio-block, .cs-classic .homepage-booklist-slider .slide, .homepage-booklist-slider .cs-classic .slide, .cs-classic .block-user-login, .cs-classic .flicker-block, .cs-classic .my-dashbord-block, .cs-elegant .primary-background, .cs-elegant .homepage-reward-block, .cs-elegant .homepage-vedio-block, .cs-elegant .homepage-booklist-slider .slide, .homepage-booklist-slider .cs-elegant .slide, .cs-elegant .block-user-login, .cs-elegant .flicker-block, .cs-elegant .my-dashbord-block {
+.cs-classic .primary-background, .cs-classic .sidebar2 > .first, .cs-classic .homepage-reward-block, .cs-classic .homepage-vedio-block, .cs-classic .homepage-booklist-slider .slide, .homepage-booklist-slider .cs-classic .slide, .cs-classic .block-user-login, .cs-classic .flicker-block, .cs-classic .my-dashbord-block, .cs-elegant .primary-background, .cs-elegant .sidebar2 > .first, .cs-elegant .homepage-reward-block, .cs-elegant .homepage-vedio-block, .cs-elegant .homepage-booklist-slider .slide, .homepage-booklist-slider .cs-elegant .slide, .cs-elegant .block-user-login, .cs-elegant .flicker-block, .cs-elegant .my-dashbord-block {
   font-size: 19px;
 }
 /* line 49, ../scss/base/_mixins.scss */
-.cs-default .primary-background, .cs-default .homepage-reward-block, .cs-default .homepage-vedio-block, .cs-default .homepage-booklist-slider .slide, .homepage-booklist-slider .cs-default .slide, .cs-default .block-user-login, .cs-default .flicker-block, .cs-default .my-dashbord-block {
+.cs-default .primary-background, .cs-default .sidebar2 > .first, .cs-default .homepage-reward-block, .cs-default .homepage-vedio-block, .cs-default .homepage-booklist-slider .slide, .homepage-booklist-slider .cs-default .slide, .cs-default .block-user-login, .cs-default .flicker-block, .cs-default .my-dashbord-block {
   font-family: "arial";
   font-weight: normal;
   -webkit-font-smoothing: antialiased;
@@ -7615,7 +7621,7 @@ a.th {
   -moz-font-smoothing: grayscale;
 }
 /* line 58, ../scss/base/_mixins.scss */
-.cs-classic .primary-background, .cs-classic .homepage-reward-block, .cs-classic .homepage-vedio-block, .cs-classic .homepage-booklist-slider .slide, .homepage-booklist-slider .cs-classic .slide, .cs-classic .block-user-login, .cs-classic .flicker-block, .cs-classic .my-dashbord-block {
+.cs-classic .primary-background, .cs-classic .sidebar2 > .first, .cs-classic .homepage-reward-block, .cs-classic .homepage-vedio-block, .cs-classic .homepage-booklist-slider .slide, .homepage-booklist-slider .cs-classic .slide, .cs-classic .block-user-login, .cs-classic .flicker-block, .cs-classic .my-dashbord-block {
   font-family: "PT Sans", sans-serif;
   font-weight: normal;
   -webkit-font-smoothing: antialiased;
@@ -7624,7 +7630,7 @@ a.th {
   -moz-font-smoothing: grayscale;
 }
 /* line 67, ../scss/base/_mixins.scss */
-.cs-elegant .primary-background, .cs-elegant .homepage-reward-block, .cs-elegant .homepage-vedio-block, .cs-elegant .homepage-booklist-slider .slide, .homepage-booklist-slider .cs-elegant .slide, .cs-elegant .block-user-login, .cs-elegant .flicker-block, .cs-elegant .my-dashbord-block {
+.cs-elegant .primary-background, .cs-elegant .sidebar2 > .first, .cs-elegant .homepage-reward-block, .cs-elegant .homepage-vedio-block, .cs-elegant .homepage-booklist-slider .slide, .homepage-booklist-slider .cs-elegant .slide, .cs-elegant .block-user-login, .cs-elegant .flicker-block, .cs-elegant .my-dashbord-block {
   font-family: "Open Sans", sans-serif;
   font-weight: normal;
   -webkit-font-smoothing: antialiased;
@@ -7764,12 +7770,17 @@ a.th {
 }
 
 /* line 60, ../scss/base/_elements.scss */
-h1, .font-stroke-main, .activity-page-kids .view-header p:nth-of-type(1), .other-programme.view .view-header *, h2, h3, h4, h5, h6 {
+h1.title#page-title, .title#page-title.font-stroke-main, .activity-page-kids .view-header p.title#page-title:nth-of-type(1), .other-programme.view .view-header .title#page-title, .view-reward-page-views .view-header p.title#page-title:first-line, .view-reward-page-views .view-footer .title#page-title {
+  color: #000;
+}
+
+/* line 63, ../scss/base/_elements.scss */
+h1, .font-stroke-main, .activity-page-kids .view-header p:nth-of-type(1), .other-programme.view .view-header *, .view-reward-page-views .view-header p:first-line, .view-reward-page-views .view-footer *, h2, .view-reward-activity .view-header *, h3, h4, h5, h6 {
   font-weight: normal;
   text-transform: capitalize;
 }
 /* line 20, ../scss/base/_mixins.scss */
-.cs-default h1, .cs-default .font-stroke-main, .cs-default .activity-page-kids .view-header p:nth-of-type(1), .activity-page-kids .view-header .cs-default p:nth-of-type(1), .cs-default .other-programme.view .view-header *, .other-programme.view .view-header .cs-default *, .cs-default h2, .cs-default h3, .cs-default h4, .cs-default h5, .cs-default h6 {
+.cs-default h1, .cs-default .font-stroke-main, .cs-default .activity-page-kids .view-header p:nth-of-type(1), .activity-page-kids .view-header .cs-default p:nth-of-type(1), .cs-default .other-programme.view .view-header *, .other-programme.view .view-header .cs-default *, .cs-default .view-reward-page-views .view-header p:first-line, .view-reward-page-views .view-header .cs-default p:first-line, .cs-default .view-reward-page-views .view-footer *, .view-reward-page-views .view-footer .cs-default *, .cs-default h2, .cs-default .view-reward-activity .view-header *, .view-reward-activity .view-header .cs-default *, .cs-default h3, .cs-default h4, .cs-default h5, .cs-default h6 {
   font-family: "McLaren", cursive;
   font-weight: normal;
   -webkit-font-smoothing: antialiased;
@@ -7778,7 +7789,7 @@ h1, .font-stroke-main, .activity-page-kids .view-header p:nth-of-type(1), .other
   -moz-font-smoothing: grayscale;
 }
 /* line 29, ../scss/base/_mixins.scss */
-.cs-classic h1, .cs-classic .font-stroke-main, .cs-classic .activity-page-kids .view-header p:nth-of-type(1), .activity-page-kids .view-header .cs-classic p:nth-of-type(1), .cs-classic .other-programme.view .view-header *, .other-programme.view .view-header .cs-classic *, .cs-classic h2, .cs-classic h3, .cs-classic h4, .cs-classic h5, .cs-classic h6 {
+.cs-classic h1, .cs-classic .font-stroke-main, .cs-classic .activity-page-kids .view-header p:nth-of-type(1), .activity-page-kids .view-header .cs-classic p:nth-of-type(1), .cs-classic .other-programme.view .view-header *, .other-programme.view .view-header .cs-classic *, .cs-classic .view-reward-page-views .view-header p:first-line, .view-reward-page-views .view-header .cs-classic p:first-line, .cs-classic .view-reward-page-views .view-footer *, .view-reward-page-views .view-footer .cs-classic *, .cs-classic h2, .cs-classic .view-reward-activity .view-header *, .view-reward-activity .view-header .cs-classic *, .cs-classic h3, .cs-classic h4, .cs-classic h5, .cs-classic h6 {
   font-family: "Architects Daughter", cursive;
   font-weight: 700;
   -webkit-font-smoothing: antialiased;
@@ -7787,7 +7798,7 @@ h1, .font-stroke-main, .activity-page-kids .view-header p:nth-of-type(1), .other
   -moz-font-smoothing: grayscale;
 }
 /* line 38, ../scss/base/_mixins.scss */
-.cs-elegant h1, .cs-elegant .font-stroke-main, .cs-elegant .activity-page-kids .view-header p:nth-of-type(1), .activity-page-kids .view-header .cs-elegant p:nth-of-type(1), .cs-elegant .other-programme.view .view-header *, .other-programme.view .view-header .cs-elegant *, .cs-elegant h2, .cs-elegant h3, .cs-elegant h4, .cs-elegant h5, .cs-elegant h6 {
+.cs-elegant h1, .cs-elegant .font-stroke-main, .cs-elegant .activity-page-kids .view-header p:nth-of-type(1), .activity-page-kids .view-header .cs-elegant p:nth-of-type(1), .cs-elegant .other-programme.view .view-header *, .other-programme.view .view-header .cs-elegant *, .cs-elegant .view-reward-page-views .view-header p:first-line, .view-reward-page-views .view-header .cs-elegant p:first-line, .cs-elegant .view-reward-page-views .view-footer *, .view-reward-page-views .view-footer .cs-elegant *, .cs-elegant h2, .cs-elegant .view-reward-activity .view-header *, .view-reward-activity .view-header .cs-elegant *, .cs-elegant h3, .cs-elegant h4, .cs-elegant h5, .cs-elegant h6 {
   font-family: "Margarine", cursive;
   font-weight: normal;
   -webkit-font-smoothing: antialiased;
@@ -7832,85 +7843,85 @@ h1, .font-stroke-main, .activity-page-kids .view-header p:nth-of-type(1), .other
   font-size: 19px;
 }
 
-/* line 70, ../scss/base/_elements.scss */
-.cs-default h1, .cs-default .font-stroke-main, .cs-default .activity-page-kids .view-header p:nth-of-type(1), .activity-page-kids .view-header .cs-default p:nth-of-type(1), .cs-default .other-programme.view .view-header *, .other-programme.view .view-header .cs-default * {
+/* line 73, ../scss/base/_elements.scss */
+.cs-default h1, .cs-default .font-stroke-main, .cs-default .activity-page-kids .view-header p:nth-of-type(1), .activity-page-kids .view-header .cs-default p:nth-of-type(1), .cs-default .other-programme.view .view-header *, .other-programme.view .view-header .cs-default *, .cs-default .view-reward-page-views .view-header p:first-line, .view-reward-page-views .view-header .cs-default p:first-line, .cs-default .view-reward-page-views .view-footer *, .view-reward-page-views .view-footer .cs-default * {
   font-size: 28px;
 }
-/* line 73, ../scss/base/_elements.scss */
-.cs-classic h1, .cs-classic .font-stroke-main, .cs-classic .activity-page-kids .view-header p:nth-of-type(1), .activity-page-kids .view-header .cs-classic p:nth-of-type(1), .cs-classic .other-programme.view .view-header *, .other-programme.view .view-header .cs-classic * {
+/* line 76, ../scss/base/_elements.scss */
+.cs-classic h1, .cs-classic .font-stroke-main, .cs-classic .activity-page-kids .view-header p:nth-of-type(1), .activity-page-kids .view-header .cs-classic p:nth-of-type(1), .cs-classic .other-programme.view .view-header *, .other-programme.view .view-header .cs-classic *, .cs-classic .view-reward-page-views .view-header p:first-line, .view-reward-page-views .view-header .cs-classic p:first-line, .cs-classic .view-reward-page-views .view-footer *, .view-reward-page-views .view-footer .cs-classic * {
   font-size: 29px;
 }
-/* line 76, ../scss/base/_elements.scss */
-.cs-elegant h1, .cs-elegant .font-stroke-main, .cs-elegant .activity-page-kids .view-header p:nth-of-type(1), .activity-page-kids .view-header .cs-elegant p:nth-of-type(1), .cs-elegant .other-programme.view .view-header *, .other-programme.view .view-header .cs-elegant * {
+/* line 79, ../scss/base/_elements.scss */
+.cs-elegant h1, .cs-elegant .font-stroke-main, .cs-elegant .activity-page-kids .view-header p:nth-of-type(1), .activity-page-kids .view-header .cs-elegant p:nth-of-type(1), .cs-elegant .other-programme.view .view-header *, .other-programme.view .view-header .cs-elegant *, .cs-elegant .view-reward-page-views .view-header p:first-line, .view-reward-page-views .view-header .cs-elegant p:first-line, .cs-elegant .view-reward-page-views .view-footer *, .view-reward-page-views .view-footer .cs-elegant * {
   font-size: 30px;
 }
 
-/* line 82, ../scss/base/_elements.scss */
-.cs-default h2 {
+/* line 85, ../scss/base/_elements.scss */
+.cs-default h2, .cs-default .view-reward-activity .view-header *, .view-reward-activity .view-header .cs-default * {
   font-size: 25px;
 }
-/* line 85, ../scss/base/_elements.scss */
-.cs-classic h2 {
+/* line 88, ../scss/base/_elements.scss */
+.cs-classic h2, .cs-classic .view-reward-activity .view-header *, .view-reward-activity .view-header .cs-classic * {
   font-size: 27px;
 }
-/* line 88, ../scss/base/_elements.scss */
-.cs-elegant h2 {
+/* line 91, ../scss/base/_elements.scss */
+.cs-elegant h2, .cs-elegant .view-reward-activity .view-header *, .view-reward-activity .view-header .cs-elegant * {
   font-size: 28px;
 }
 
-/* line 94, ../scss/base/_elements.scss */
+/* line 97, ../scss/base/_elements.scss */
 .cs-default h3 {
   font-size: 22px;
 }
-/* line 97, ../scss/base/_elements.scss */
+/* line 100, ../scss/base/_elements.scss */
 .cs-classic h3 {
   font-size: 24px;
 }
-/* line 100, ../scss/base/_elements.scss */
+/* line 103, ../scss/base/_elements.scss */
 .cs-elegant h3 {
   font-size: 25px;
 }
 
-/* line 105, ../scss/base/_elements.scss */
+/* line 108, ../scss/base/_elements.scss */
 h4 {
   font-size: 20px;
 }
-/* line 106, ../scss/base/_elements.scss */
+/* line 109, ../scss/base/_elements.scss */
 .cs-classic h4 {
   font-size: 21px;
 }
-/* line 109, ../scss/base/_elements.scss */
+/* line 112, ../scss/base/_elements.scss */
 .cs-elegant h4 {
   font-size: 22px;
 }
 
-/* line 116, ../scss/base/_elements.scss */
+/* line 119, ../scss/base/_elements.scss */
 h5 {
   font-size: 17px;
 }
-/* line 117, ../scss/base/_elements.scss */
+/* line 120, ../scss/base/_elements.scss */
 .cs-classic h5 {
   font-size: 18px;
 }
-/* line 120, ../scss/base/_elements.scss */
+/* line 123, ../scss/base/_elements.scss */
 .cs-elegant h5 {
   font-size: 19px;
 }
 
-/* line 127, ../scss/base/_elements.scss */
+/* line 130, ../scss/base/_elements.scss */
 h6 {
   font-size: 14px;
 }
-/* line 128, ../scss/base/_elements.scss */
+/* line 131, ../scss/base/_elements.scss */
 .cs-classic h6 {
   font-size: 15px;
 }
-/* line 131, ../scss/base/_elements.scss */
+/* line 134, ../scss/base/_elements.scss */
 .cs-elegant h6 {
   font-size: 16px;
 }
 
-/* line 140, ../scss/base/_elements.scss */
+/* line 143, ../scss/base/_elements.scss */
 ul, ol, dl {
   list-style-position: inside;
 }
@@ -7923,7 +7934,7 @@ ul, ol, dl {
   font-size: 19px;
 }
 
-/* line 144, ../scss/base/_elements.scss */
+/* line 147, ../scss/base/_elements.scss */
 p {
   margin-bottom: 20px;
 }
@@ -7935,24 +7946,24 @@ p {
 .cs-classic p, .cs-elegant p {
   font-size: 19px;
 }
-/* line 147, ../scss/base/_elements.scss */
+/* line 150, ../scss/base/_elements.scss */
 .view-content p, .view-header p, .view-footer p {
   margin-bottom: 0;
 }
 
-/* line 152, ../scss/base/_elements.scss */
+/* line 155, ../scss/base/_elements.scss */
 li.progress {
   border: none;
   outline: none;
   padding: 0;
 }
 
-/* line 158, ../scss/base/_elements.scss */
+/* line 161, ../scss/base/_elements.scss */
 a:focus, button:focus {
   outline: none;
 }
 
-/* line 163, ../scss/base/_elements.scss */
+/* line 166, ../scss/base/_elements.scss */
 .view-footer button, .view-footer .button, .view-footer .other-programme.view .other-programme .programme-content .sign-up a, .other-programme.view .other-programme .programme-content .sign-up .view-footer a {
   margin-left: 0;
 }
@@ -9296,6 +9307,194 @@ html {
   flex: 0 0 30%;
 }
 
+/* line 2, ../scss/components/_activityandreward-page-sidebar.scss */
+.sidebar2 > .first {
+  height: inherit;
+  padding: 12px 20px 18px;
+}
+/* line 7, ../scss/components/_activityandreward-page-sidebar.scss */
+.sidebar2 > .first h1, .sidebar2 > .first .font-stroke-main, .sidebar2 > .first .activity-page-kids .view-header p:nth-of-type(1), .activity-page-kids .view-header .sidebar2 > .first p:nth-of-type(1), .sidebar2 > .first .other-programme.view .view-header *, .other-programme.view .view-header .sidebar2 > .first *, .sidebar2 > .first .view-reward-page-views .view-header p:first-line, .view-reward-page-views .view-header .sidebar2 > .first p:first-line, .sidebar2 > .first .view-reward-page-views .view-footer *, .view-reward-page-views .view-footer .sidebar2 > .first *, .sidebar2 > .first h2, .sidebar2 > .first .view-reward-activity .view-header *, .view-reward-activity .view-header .sidebar2 > .first *, .sidebar2 > .first h3, .sidebar2 > .first h4, .sidebar2 > .first h5, .sidebar2 > .first p {
+  color: #fff;
+}
+/* line 10, ../scss/components/_activityandreward-page-sidebar.scss */
+.sidebar2 > .first h1, .sidebar2 > .first .font-stroke-main, .sidebar2 > .first .activity-page-kids .view-header p:nth-of-type(1), .activity-page-kids .view-header .sidebar2 > .first p:nth-of-type(1), .sidebar2 > .first .other-programme.view .view-header *, .other-programme.view .view-header .sidebar2 > .first *, .sidebar2 > .first .view-reward-page-views .view-header p:first-line, .view-reward-page-views .view-header .sidebar2 > .first p:first-line, .sidebar2 > .first .view-reward-page-views .view-footer *, .view-reward-page-views .view-footer .sidebar2 > .first *, .sidebar2 > .first h2, .sidebar2 > .first .view-reward-activity .view-header *, .view-reward-activity .view-header .sidebar2 > .first *, .sidebar2 > .first h3, .sidebar2 > .first h4, .sidebar2 > .first h5 {
+  margin-top: 0;
+}
+/* line 16, ../scss/components/_activityandreward-page-sidebar.scss */
+.page-activities .sidebar2 > .first > .block-block:nth-of-type(1) p {
+  font-weight: 700;
+}
+/* line 20, ../scss/components/_activityandreward-page-sidebar.scss */
+.page-activities .sidebar2 > .first > .block-block:nth-of-type(1) p a.button, .page-activities .sidebar2 > .first > .block-block:nth-of-type(1) p .other-programme.view .other-programme .programme-content .sign-up a, .other-programme.view .other-programme .programme-content .sign-up .page-activities .sidebar2 > .first > .block-block:nth-of-type(1) p a {
+  margin-top: 17px;
+}
+/* line 27, ../scss/components/_activityandreward-page-sidebar.scss */
+.sidebar2 > .first .view-bookreviews-and-booklist-for-activity .view-header {
+  margin-bottom: 7px;
+}
+/* line 29, ../scss/components/_activityandreward-page-sidebar.scss */
+.sidebar2 > .first .view-bookreviews-and-booklist-for-activity .view-header * {
+  text-transform: uppercase;
+}
+/* line 78, ../scss/base/_mixins.scss */
+.cs-default .sidebar2 > .first .view-bookreviews-and-booklist-for-activity .view-header * {
+  font-family: "arial";
+  font-weight: 700;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  -moz-font-smoothing: grayscale;
+}
+/* line 87, ../scss/base/_mixins.scss */
+.cs-classic .sidebar2 > .first .view-bookreviews-and-booklist-for-activity .view-header * {
+  font-family: "PT Sans", sans-serif;
+  font-weight: 700;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  -moz-font-smoothing: grayscale;
+}
+/* line 96, ../scss/base/_mixins.scss */
+.cs-elegant .sidebar2 > .first .view-bookreviews-and-booklist-for-activity .view-header * {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 700;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  -moz-font-smoothing: grayscale;
+}
+/* line 36, ../scss/components/_activityandreward-page-sidebar.scss */
+.sidebar2 > .first .view-bookreviews-and-booklist-for-activity .views-field-title {
+  margin-bottom: 4px;
+}
+/* line 38, ../scss/components/_activityandreward-page-sidebar.scss */
+.sidebar2 > .first .view-bookreviews-and-booklist-for-activity .views-field-title a {
+  color: #fff;
+  text-transform: capitalize;
+  text-decoration: underline;
+}
+/* line 44, ../scss/components/_activityandreward-page-sidebar.scss */
+.sidebar2 > .first .view-bookreviews-and-booklist-for-activity .views-row {
+  margin-bottom: 20px;
+}
+/* line 47, ../scss/components/_activityandreward-page-sidebar.scss */
+.sidebar2 > .first .view-bookreviews-and-booklist-for-activity .view-footer {
+  margin-bottom: 15px;
+}
+/* line 51, ../scss/components/_activityandreward-page-sidebar.scss */
+.sidebar2 > .first .view-bookreviews-and-booklist-for-activity .views-field-count .views-label-count {
+  position: relative;
+  padding-right: 32px;
+}
+/* line 55, ../scss/components/_activityandreward-page-sidebar.scss */
+.sidebar2 > .first .view-bookreviews-and-booklist-for-activity .views-field-count .views-label-count:after {
+  content: "";
+  width: 25px;
+  height: 25px;
+  display: inline-block;
+  background: url("../images/smily.png") no-repeat scroll center center;
+  position: absolute;
+  right: 6px;
+  top: -3px;
+}
+
+/* line 71, ../scss/components/_activityandreward-page-sidebar.scss */
+.view-reward-activity {
+  color: #fff;
+  border-radius: 15px;
+  overflow: hidden;
+  margin-bottom: 35px;
+  padding-bottom: 15px;
+}
+/* line 72, ../scss/components/_activityandreward-page-sidebar.scss */
+.cs-default .view-reward-activity, .cs-elegant .view-reward-activity {
+  background: #267fda;
+}
+/* line 75, ../scss/components/_activityandreward-page-sidebar.scss */
+.cs-classic .view-reward-activity {
+  background: #084899;
+}
+/* line 151, ../scss/base/_mixins.scss */
+.cs-default .view-reward-activity {
+  font-size: 17px;
+}
+/* line 155, ../scss/base/_mixins.scss */
+.cs-classic .view-reward-activity, .cs-elegant .view-reward-activity {
+  font-size: 19px;
+}
+/* line 49, ../scss/base/_mixins.scss */
+.cs-default .view-reward-activity {
+  font-family: "arial";
+  font-weight: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  -moz-font-smoothing: grayscale;
+}
+/* line 58, ../scss/base/_mixins.scss */
+.cs-classic .view-reward-activity {
+  font-family: "PT Sans", sans-serif;
+  font-weight: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  -moz-font-smoothing: grayscale;
+}
+/* line 67, ../scss/base/_mixins.scss */
+.cs-elegant .view-reward-activity {
+  font-family: "Open Sans", sans-serif;
+  font-weight: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  -moz-font-smoothing: grayscale;
+}
+/* line 85, ../scss/components/_activityandreward-page-sidebar.scss */
+.view-reward-activity .view-header * {
+  margin-top: 0;
+}
+/* line 89, ../scss/components/_activityandreward-page-sidebar.scss */
+.view-reward-activity .earn-next-reward {
+  -webkit-flex-wrap: wrap;
+  flex-wrap: wrap;
+  display: -webkit-flex;
+  display: flex;
+  align-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+/* line 97, ../scss/components/_activityandreward-page-sidebar.scss */
+.view-reward-activity .earn-next-reward .reward-image {
+  flex: 0 0 100px;
+}
+/* line 100, ../scss/components/_activityandreward-page-sidebar.scss */
+.view-reward-activity .earn-next-reward .reward-title {
+  flex: 0 0 calc(100% - 100px);
+  padding-left: 25px;
+}
+
+/* line 109, ../scss/components/_activityandreward-page-sidebar.scss */
+.not-logged-in.page-activities .l-main,
+.not-logged-in.section-media .l-main,
+.not-logged-in.section-programs .l-main {
+  position: relative;
+}
+@media screen and (min-width: 768px) {
+  /* line 112, ../scss/components/_activityandreward-page-sidebar.scss */
+  .not-logged-in.page-activities .sidebar2,
+  .not-logged-in.section-media .sidebar2,
+  .not-logged-in.section-programs .sidebar2 {
+    position: absolute;
+    height: calc(100% - 35px);
+  }
+}
+/* line 119, ../scss/components/_activityandreward-page-sidebar.scss */
+.not-logged-in.page-activities .sidebar2 > .first,
+.not-logged-in.section-media .sidebar2 > .first,
+.not-logged-in.section-programs .sidebar2 > .first {
+  height: inherit;
+}
+
 /* line 7, ../scss/components/_blocks.scss */
 .homepage-reward-block .view-header p {
   margin-bottom: 0;
@@ -9458,7 +9657,7 @@ html {
   border-radius: 15px;
 }
 /* line 183, ../scss/components/_blocks.scss */
-.annocement h1, .annocement .font-stroke-main, .annocement .activity-page-kids .view-header p:nth-of-type(1), .activity-page-kids .view-header .annocement p:nth-of-type(1), .annocement .other-programme.view .view-header *, .other-programme.view .view-header .annocement * {
+.annocement h1, .annocement .font-stroke-main, .annocement .activity-page-kids .view-header p:nth-of-type(1), .activity-page-kids .view-header .annocement p:nth-of-type(1), .annocement .other-programme.view .view-header *, .other-programme.view .view-header .annocement *, .annocement .view-reward-page-views .view-header p:first-line, .view-reward-page-views .view-header .annocement p:first-line, .annocement .view-reward-page-views .view-footer *, .view-reward-page-views .view-footer .annocement * {
   margin: 0;
   color: #000;
 }
@@ -12358,15 +12557,19 @@ html {
   margin-left: 1px;
 }
 /* line 28, ../scss/components/_pager.scss */
+.pagination.pager li.unavailable a {
+  color: #fff;
+}
+/* line 33, ../scss/components/_pager.scss */
 .pagination.pager li.arrow.first, .pagination.pager li.arrow.last {
   display: none;
 }
-/* line 31, ../scss/components/_pager.scss */
+/* line 36, ../scss/components/_pager.scss */
 .pagination.pager li.arrow a {
   color: transparent;
   position: relative;
 }
-/* line 34, ../scss/components/_pager.scss */
+/* line 39, ../scss/components/_pager.scss */
 .pagination.pager li.arrow a:after {
   content: "";
   width: 100%;
@@ -12377,35 +12580,35 @@ html {
   top: 0;
   display: inline-block;
 }
-/* line 45, ../scss/components/_pager.scss */
+/* line 50, ../scss/components/_pager.scss */
 .pagination.pager li.arrow:nth-of-type(2) {
   border-radius: 10px 0px 0px 10px;
 }
-/* line 47, ../scss/components/_pager.scss */
+/* line 52, ../scss/components/_pager.scss */
 .pagination.pager li.arrow:nth-of-type(2) a:after {
   background-position: -14px -590px;
 }
-/* line 51, ../scss/components/_pager.scss */
+/* line 56, ../scss/components/_pager.scss */
 .pagination.pager li.arrow:nth-last-of-type(2) {
   border-radius: 0px 10px 10px 0px;
 }
-/* line 53, ../scss/components/_pager.scss */
+/* line 58, ../scss/components/_pager.scss */
 .pagination.pager li.arrow:nth-last-of-type(2) a:after {
   background-position: -17px -1130px;
 }
-/* line 60, ../scss/components/_pager.scss */
+/* line 65, ../scss/components/_pager.scss */
 .cs-default .pagination.pager li.current a {
   background: #267fda;
 }
-/* line 63, ../scss/components/_pager.scss */
+/* line 68, ../scss/components/_pager.scss */
 .cs-classic .pagination.pager li.current a {
   background: #084899;
 }
-/* line 66, ../scss/components/_pager.scss */
+/* line 71, ../scss/components/_pager.scss */
 .cs-elegant .pagination.pager li.current a {
   background: #267fda;
 }
-/* line 72, ../scss/components/_pager.scss */
+/* line 77, ../scss/components/_pager.scss */
 .pagination.pager li a {
   width: 100%;
   height: 100%;
@@ -12447,30 +12650,30 @@ html {
   text-rendering: optimizeLegibility;
   -moz-font-smoothing: grayscale;
 }
-/* line 81, ../scss/components/_pager.scss */
+/* line 86, ../scss/components/_pager.scss */
 .cs-default .pagination.pager li a:hover, .cs-default .pagination.pager li a:focus {
   background: #267fda;
 }
-/* line 84, ../scss/components/_pager.scss */
+/* line 89, ../scss/components/_pager.scss */
 .cs-classic .pagination.pager li a:hover, .cs-classic .pagination.pager li a:focus {
   background: #084899;
 }
-/* line 87, ../scss/components/_pager.scss */
+/* line 92, ../scss/components/_pager.scss */
 .cs-elegant .pagination.pager li a:hover, .cs-elegant .pagination.pager li a:focus {
   background: #267fda;
 }
-/* line 91, ../scss/components/_pager.scss */
+/* line 96, ../scss/components/_pager.scss */
 .cs-default .pagination.pager li a {
   font-size: 17px;
   line-height: 34px;
   background: #f6511d;
 }
-/* line 97, ../scss/components/_pager.scss */
+/* line 102, ../scss/components/_pager.scss */
 .cs-classic .pagination.pager li a {
   font-size: 19px;
   background: #00a6ed;
 }
-/* line 101, ../scss/components/_pager.scss */
+/* line 106, ../scss/components/_pager.scss */
 .cs-elegant .pagination.pager li a {
   font-size: 19px;
   background: #2ec4b6;
@@ -13110,6 +13313,69 @@ p.more-link:after {
   background-position: -11px -321px;
 }
 
+/* line 2, ../scss/pages/_events.scss */
+.events-page-events .view-content {
+  margin-bottom: 50px;
+}
+/* line 3, ../scss/pages/_events.scss */
+.events-page-events .view-content h3 {
+  padding: 6px 24px;
+  color: #fff;
+  margin-top: 20px;
+  margin-bottom: 0;
+}
+/* line 8, ../scss/pages/_events.scss */
+.cs-default .events-page-events .view-content h3 {
+  font-size: 18px;
+  background: #f6511d;
+}
+/* line 12, ../scss/pages/_events.scss */
+.cs-classic .events-page-events .view-content h3 {
+  font-size: 19px;
+  background: #00a6ed;
+}
+/* line 16, ../scss/pages/_events.scss */
+.cs-elegant .events-page-events .view-content h3 {
+  font-size: 20px;
+  background: #2ec4b6;
+}
+/* line 23, ../scss/pages/_events.scss */
+.events-page-events .view-header {
+  margin-bottom: 10px;
+}
+/* line 26, ../scss/pages/_events.scss */
+.events-page-events .events-wrapper {
+  -webkit-flex-wrap: wrap;
+  flex-wrap: wrap;
+  display: -webkit-flex;
+  display: flex;
+  align-content: center;
+  align-items: center;
+  width: 100%;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+/* line 36, ../scss/pages/_events.scss */
+.events-page-events .events-wrapper .title {
+  flex: 0 0 60%;
+}
+/* line 38, ../scss/pages/_events.scss */
+.events-page-events .events-wrapper .title a {
+  width: 100%;
+  display: inline-block;
+  padding-right: 10px;
+  color: #000;
+  padding-left: 24px;
+}
+/* line 46, ../scss/pages/_events.scss */
+.events-page-events .events-wrapper .date {
+  flex: 0 0 20%;
+}
+/* line 49, ../scss/pages/_events.scss */
+.events-page-events .events-wrapper .location {
+  flex: 0 0 20%;
+}
+
 /* line 3, ../scss/pages/_messages.scss */
 .page-messages #page-title.title + .primary-tabs {
   display: inline-block;
@@ -13205,20 +13471,20 @@ p.more-link:after {
   text-rendering: optimizeLegibility;
   -moz-font-smoothing: grayscale;
 }
-/* line 76, ../scss/pages/_messages.scss */
+/* line 77, ../scss/pages/_messages.scss */
 .page-messages.cs-default #page-title.title {
   background-position: -60px -569px;
 }
-/* line 80, ../scss/pages/_messages.scss */
+/* line 81, ../scss/pages/_messages.scss */
 .page-messages.cs-classic #page-title.title {
   background-position: -60px -225px;
 }
-/* line 84, ../scss/pages/_messages.scss */
+/* line 85, ../scss/pages/_messages.scss */
 .page-messages.cs-elegant #page-title.title {
   background-position: -60px -914px;
 }
 
-/* line 89, ../scss/pages/_messages.scss */
+/* line 90, ../scss/pages/_messages.scss */
 .page-messages .main {
   padding-left: 0 !important;
   padding-right: 0 !important;
@@ -13237,21 +13503,21 @@ p.more-link:after {
   text-rendering: optimizeLegibility;
   -moz-font-smoothing: grayscale;
 }
-/* line 109, ../scss/pages/_messages.scss */
+/* line 110, ../scss/pages/_messages.scss */
 .page-messages.cs-default .main {
   background: #267fda;
   font-size: 17px;
   font-family: "arial";
   font-weight: normal;
 }
-/* line 116, ../scss/pages/_messages.scss */
+/* line 117, ../scss/pages/_messages.scss */
 .page-messages.cs-elegant .main {
   background: #267fda;
   font-size: 17px;
   font-family: "PT Sans", sans-serif;
   font-weight: normal;
 }
-/* line 122, ../scss/pages/_messages.scss */
+/* line 123, ../scss/pages/_messages.scss */
 .page-messages.cs-classic .main {
   background: #084899;
   font-size: 19px;
@@ -13259,55 +13525,55 @@ p.more-link:after {
   font-weight: normal;
 }
 
-/* line 133, ../scss/pages/_messages.scss */
+/* line 134, ../scss/pages/_messages.scss */
 .page-messages .button-group {
   margin-left: 35px;
 }
 
-/* line 139, ../scss/pages/_messages.scss */
+/* line 140, ../scss/pages/_messages.scss */
 .page-messages.cs-default table.sticky-header thead, .page-messages.cs-elegant table.sticky-header thead {
   background: #267fda;
   border-bottom: 5px solid #267fda;
 }
-/* line 143, ../scss/pages/_messages.scss */
+/* line 144, ../scss/pages/_messages.scss */
 .page-messages.cs-classic table.sticky-header thead {
   background: #084899;
   border-bottom: 5px solid #084899;
 }
 
-/* line 151, ../scss/pages/_messages.scss */
+/* line 152, ../scss/pages/_messages.scss */
 .page-messages.cs-default .privatemsg-list thead, .page-messages.cs-elegant .privatemsg-list thead {
   background: #267fda;
 }
-/* line 154, ../scss/pages/_messages.scss */
+/* line 155, ../scss/pages/_messages.scss */
 .page-messages.cs-classic .privatemsg-list thead {
   background: #084899;
 }
 
-/* line 160, ../scss/pages/_messages.scss */
+/* line 161, ../scss/pages/_messages.scss */
 .page-messages .block-block-3 {
   display: inline-block;
   margin-top: 26px;
 }
-/* line 164, ../scss/pages/_messages.scss */
+/* line 165, ../scss/pages/_messages.scss */
 .page-messages form {
   padding: 0 35px;
   margin-bottom: 0;
 }
-/* line 167, ../scss/pages/_messages.scss */
+/* line 168, ../scss/pages/_messages.scss */
 .page-messages form fieldset {
   border: none;
   padding-left: 0;
   margin: 0 0 0 -6px;
   margin-bottom: 39px;
 }
-/* line 172, ../scss/pages/_messages.scss */
+/* line 173, ../scss/pages/_messages.scss */
 .page-messages form fieldset legend {
   background: transparent none repeat scroll 0 0;
   font-weight: normal;
   margin-top: 15px;
 }
-/* line 176, ../scss/pages/_messages.scss */
+/* line 177, ../scss/pages/_messages.scss */
 .page-messages form fieldset legend a {
   padding: 6px 24px;
   display: inline-block;
@@ -13318,31 +13584,31 @@ p.more-link:after {
   border: none;
   line-height: 26px;
 }
-/* line 188, ../scss/pages/_messages.scss */
+/* line 189, ../scss/pages/_messages.scss */
 .page-messages form fieldset label {
   color: #fff;
   font-weight: bold;
   text-align: left !important;
 }
-/* line 194, ../scss/pages/_messages.scss */
+/* line 195, ../scss/pages/_messages.scss */
 .page-messages form .container-inline {
   margin-top: 10px;
 }
-/* line 196, ../scss/pages/_messages.scss */
+/* line 197, ../scss/pages/_messages.scss */
 .page-messages form .container-inline .form-type-textfield {
   display: inline-block;
   max-width: 32.5%;
   width: 100%;
 }
-/* line 203, ../scss/pages/_messages.scss */
+/* line 204, ../scss/pages/_messages.scss */
 .page-messages .form-item-operation {
   display: inline-block;
 }
-/* line 206, ../scss/pages/_messages.scss */
+/* line 207, ../scss/pages/_messages.scss */
 .page-messages .chosen-container {
   width: 200px;
 }
-/* line 208, ../scss/pages/_messages.scss */
+/* line 209, ../scss/pages/_messages.scss */
 .page-messages .chosen-container a {
   border: medium none;
   border-radius: 10px;
@@ -13355,136 +13621,136 @@ p.more-link:after {
   text-rendering: optimizelegibility !important;
   text-transform: capitalize;
 }
-/* line 220, ../scss/pages/_messages.scss */
+/* line 221, ../scss/pages/_messages.scss */
 .page-messages .chosen-container a div {
   margin-top: 7px !important;
 }
-/* line 225, ../scss/pages/_messages.scss */
+/* line 226, ../scss/pages/_messages.scss */
 .page-messages table.sticky-enabled {
   margin: 23px 0 40px 0;
 }
-/* line 228, ../scss/pages/_messages.scss */
+/* line 229, ../scss/pages/_messages.scss */
 .page-messages table.sticky-header {
   border: none;
 }
-/* line 231, ../scss/pages/_messages.scss */
+/* line 232, ../scss/pages/_messages.scss */
 .page-messages .privatemsg-list {
   width: 100%;
   background: transparent;
   border: none;
 }
-/* line 235, ../scss/pages/_messages.scss */
+/* line 236, ../scss/pages/_messages.scss */
 .page-messages .privatemsg-list thead {
   background: #267fda;
   border-bottom: 5px solid transparent;
 }
-/* line 238, ../scss/pages/_messages.scss */
+/* line 239, ../scss/pages/_messages.scss */
 .page-messages .privatemsg-list thead .select-all {
   width: 1%;
   position: relative;
   top: 7px;
 }
-/* line 243, ../scss/pages/_messages.scss */
+/* line 244, ../scss/pages/_messages.scss */
 .page-messages .privatemsg-list thead th {
   padding-bottom: 0;
 }
-/* line 247, ../scss/pages/_messages.scss */
+/* line 248, ../scss/pages/_messages.scss */
 .page-messages .privatemsg-list tbody {
   border-top: none;
 }
-/* line 249, ../scss/pages/_messages.scss */
+/* line 250, ../scss/pages/_messages.scss */
 .page-messages .privatemsg-list tbody tr {
   background: transparent;
   border-bottom: none;
 }
-/* line 252, ../scss/pages/_messages.scss */
+/* line 253, ../scss/pages/_messages.scss */
 .page-messages .privatemsg-list tbody tr td {
   padding-bottom: 2px;
 }
-/* line 256, ../scss/pages/_messages.scss */
+/* line 257, ../scss/pages/_messages.scss */
 .page-messages .privatemsg-list tbody tr.selected td {
   background: transparent;
 }
-/* line 263, ../scss/pages/_messages.scss */
+/* line 264, ../scss/pages/_messages.scss */
 .page-messages .privatemsg-list tbody .form-type-checkbox .form-checkbox {
   margin-bottom: 0;
 }
-/* line 271, ../scss/pages/_messages.scss */
+/* line 272, ../scss/pages/_messages.scss */
 .page-messages .privatemsg-header-subject a, .page-messages .privatemsg-header-lastupdated a,
 .page-messages .privatemsg-list-subject a {
   color: #fff;
   font-size: 19px;
 }
-/* line 275, ../scss/pages/_messages.scss */
+/* line 276, ../scss/pages/_messages.scss */
 .page-messages .privatemsg-header-subject img, .page-messages .privatemsg-header-lastupdated img,
 .page-messages .privatemsg-list-subject img {
   margin-left: 5px;
 }
-/* line 279, ../scss/pages/_messages.scss */
+/* line 280, ../scss/pages/_messages.scss */
 .page-messages .privatemsg-list-date, .page-messages .empty.message {
   color: #fff;
   font-size: 19px;
 }
-/* line 283, ../scss/pages/_messages.scss */
+/* line 284, ../scss/pages/_messages.scss */
 .page-messages .privatemsg-header-participants, .page-messages .privatemsg-list-participants {
   display: none;
 }
-/* line 286, ../scss/pages/_messages.scss */
+/* line 287, ../scss/pages/_messages.scss */
 .page-messages .warning {
   margin: 30px 0 40px 0;
 }
-/* line 289, ../scss/pages/_messages.scss */
+/* line 290, ../scss/pages/_messages.scss */
 .page-messages .privatemsg-message-participants {
   margin: 18px 35px 0;
   font-size: 19px;
 }
-/* line 293, ../scss/pages/_messages.scss */
+/* line 294, ../scss/pages/_messages.scss */
 .page-messages .privatemsg-message {
   max-width: 100%;
   padding: 30px 35px 0;
 }
-/* line 297, ../scss/pages/_messages.scss */
+/* line 298, ../scss/pages/_messages.scss */
 .page-messages .privatemsg-message-column {
   width: 100%;
   border-bottom: 2px solid #C5C5C5;
   margin-bottom: 22px;
 }
-/* line 302, ../scss/pages/_messages.scss */
+/* line 303, ../scss/pages/_messages.scss */
 .page-messages .privatemsg-author-name, .page-messages .privatemsg-message-date {
   font-size: 19px;
   color: #fff;
 }
-/* line 306, ../scss/pages/_messages.scss */
+/* line 307, ../scss/pages/_messages.scss */
 .page-messages .privatemsg-message-information {
   border-bottom: none;
 }
-/* line 309, ../scss/pages/_messages.scss */
+/* line 310, ../scss/pages/_messages.scss */
 .page-messages .privatemsg-message-body {
   margin-left: 0;
 }
-/* line 311, ../scss/pages/_messages.scss */
+/* line 312, ../scss/pages/_messages.scss */
 .page-messages .privatemsg-message-body p {
   font-size: 19px;
 }
-/* line 315, ../scss/pages/_messages.scss */
+/* line 316, ../scss/pages/_messages.scss */
 .page-messages .privatemsg-reply {
   color: #fff;
 }
-/* line 318, ../scss/pages/_messages.scss */
+/* line 319, ../scss/pages/_messages.scss */
 .page-messages .text-format-wrapper {
   margin-bottom: 26px;
 }
-/* line 320, ../scss/pages/_messages.scss */
+/* line 321, ../scss/pages/_messages.scss */
 .page-messages .text-format-wrapper label {
   font-size: 19px;
   color: #fff;
 }
-/* line 325, ../scss/pages/_messages.scss */
+/* line 326, ../scss/pages/_messages.scss */
 .page-messages .button, .page-messages .other-programme.view .other-programme .programme-content .sign-up a, .other-programme.view .other-programme .programme-content .sign-up .page-messages a {
   margin-left: 0;
   margin-right: 15px;
 }
-/* line 329, ../scss/pages/_messages.scss */
+/* line 330, ../scss/pages/_messages.scss */
 .page-messages #edit-cancel {
   padding: 6px 24px;
   display: inline-block;
@@ -13495,12 +13761,12 @@ p.more-link:after {
   border: none;
   line-height: 26px;
 }
-/* line 341, ../scss/pages/_messages.scss */
+/* line 342, ../scss/pages/_messages.scss */
 .page-messages .privatemsg-message-actions {
   list-style: none;
   margin: 28px 0;
 }
-/* line 344, ../scss/pages/_messages.scss */
+/* line 345, ../scss/pages/_messages.scss */
 .page-messages .privatemsg-message-actions a {
   padding: 6px 24px;
   display: inline-block;
@@ -13547,86 +13813,86 @@ p.more-link:after {
 .cs-classic .chosen-drop *, .cs-elegant .chosen-drop * {
   font-size: 19px;
 }
-/* line 362, ../scss/pages/_messages.scss */
+/* line 363, ../scss/pages/_messages.scss */
 .page-messages.cs-default .chosen-drop {
   top: 40px;
   color: #000;
 }
-/* line 367, ../scss/pages/_messages.scss */
+/* line 368, ../scss/pages/_messages.scss */
 .page-messages.cs-classic .chosen-drop {
   top: 40px;
   color: #fff;
 }
-/* line 372, ../scss/pages/_messages.scss */
+/* line 373, ../scss/pages/_messages.scss */
 .page-messages.cs-elegant .chosen-drop {
   top: 40px;
   color: #fff;
 }
 
-/* line 382, ../scss/pages/_messages.scss */
+/* line 383, ../scss/pages/_messages.scss */
 .page-messages.cs-default .pagination.pager li.current a, .page-messages.cs-classic .pagination.pager li.current a, .page-messages.cs-elegant .pagination.pager li.current a {
   background: #fdeb52;
   color: #000;
 }
-/* line 391, ../scss/pages/_messages.scss */
+/* line 392, ../scss/pages/_messages.scss */
 .page-messages.cs-default .pagination.pager li a:hover, .page-messages.cs-classic .pagination.pager li a:hover, .page-messages.cs-elegant .pagination.pager li a:hover, .page-messages.cs-default .pagination.pager li a:focus, .page-messages.cs-classic .pagination.pager li a:focus, .page-messages.cs-elegant .pagination.pager li a:focus {
   background: #fdeb52;
   color: #000;
 }
 
 @media all and (max-width: 767px) {
-  /* line 404, ../scss/pages/_messages.scss */
+  /* line 405, ../scss/pages/_messages.scss */
   .page-messages .action-links {
     display: none !important;
   }
-  /* line 407, ../scss/pages/_messages.scss */
+  /* line 408, ../scss/pages/_messages.scss */
   .page-messages .button-group {
     margin-left: 10px;
   }
-  /* line 411, ../scss/pages/_messages.scss */
+  /* line 412, ../scss/pages/_messages.scss */
   .page-messages .container-inline button, .page-messages .container-inline .form-type-select {
     margin-bottom: 20px !important;
   }
-  /* line 415, ../scss/pages/_messages.scss */
+  /* line 416, ../scss/pages/_messages.scss */
   .page-messages form {
     padding: 0 10px;
   }
-  /* line 420, ../scss/pages/_messages.scss */
+  /* line 421, ../scss/pages/_messages.scss */
   .page-messages .privatemsg-header-subject a, .page-messages .privatemsg-header-lastupdated a,
   .page-messages .privatemsg-list-subject a {
     font-size: 14px;
   }
-  /* line 423, ../scss/pages/_messages.scss */
+  /* line 424, ../scss/pages/_messages.scss */
   .page-messages .privatemsg-header-subject img, .page-messages .privatemsg-header-lastupdated img,
   .page-messages .privatemsg-list-subject img {
     margin-left: 0;
   }
-  /* line 427, ../scss/pages/_messages.scss */
+  /* line 428, ../scss/pages/_messages.scss */
   .page-messages .privatemsg-author-name, .page-messages .privatemsg-message-date,
   .page-messages .privatemsg-list-date, .page-messages .empty.message {
     font-size: 14px;
   }
-  /* line 431, ../scss/pages/_messages.scss */
+  /* line 432, ../scss/pages/_messages.scss */
   .page-messages .privatemsg-message-participants {
     margin-left: 10px;
     margin-right: 10px;
   }
-  /* line 435, ../scss/pages/_messages.scss */
+  /* line 436, ../scss/pages/_messages.scss */
   .page-messages .privatemsg-message {
     padding-left: 10px;
     padding-right: 10px;
   }
-  /* line 440, ../scss/pages/_messages.scss */
+  /* line 441, ../scss/pages/_messages.scss */
   .page-messages .privatemsg-message-body p {
     font-size: 14px;
   }
-  /* line 445, ../scss/pages/_messages.scss */
+  /* line 446, ../scss/pages/_messages.scss */
   .page-messages .text-format-wrapper label {
     font-size: 14px;
   }
 }
 @media all and (max-width: 1024px) {
-  /* line 454, ../scss/pages/_messages.scss */
+  /* line 455, ../scss/pages/_messages.scss */
   .page-messages.cs-default .form-select {
     font-family: "McLaren", cursive;
     font-weight: normal;
@@ -13634,7 +13900,7 @@ p.more-link:after {
     background: #fdeb52;
     color: #000;
   }
-  /* line 461, ../scss/pages/_messages.scss */
+  /* line 462, ../scss/pages/_messages.scss */
   .page-messages.cs-classic .form-select {
     font-family: "Architects Daughter", cursive;
     font-weight: 700;
@@ -13642,7 +13908,7 @@ p.more-link:after {
     background: #ff9f1c;
     color: #fff;
   }
-  /* line 468, ../scss/pages/_messages.scss */
+  /* line 469, ../scss/pages/_messages.scss */
   .page-messages.cs-elegant .form-select {
     font-family: "Margarine", cursive;
     font-weight: normal;
@@ -13651,7 +13917,7 @@ p.more-link:after {
     color: #fff;
   }
 
-  /* line 477, ../scss/pages/_messages.scss */
+  /* line 478, ../scss/pages/_messages.scss */
   .page-messages .form-select {
     padding: 6px 24px;
     display: inline-block;
@@ -13663,6 +13929,120 @@ p.more-link:after {
     line-height: 26px;
   }
 }
+/* line 3, ../scss/pages/_photo-vedios.scss */
+.view.video-block .view-content {
+  -webkit-flex-wrap: wrap;
+  flex-wrap: wrap;
+  display: -webkit-flex;
+  display: flex;
+  width: calc(100% + 30px);
+  margin-left: -15px;
+}
+/* line 10, ../scss/pages/_photo-vedios.scss */
+.view.video-block .view-content .views-row {
+  margin-bottom: 30px;
+  flex: 0 0 25%;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+/* line 12, ../scss/pages/_photo-vedios.scss */
+.view.video-block .view-content .views-row .vedio-wrapper {
+  width: 100%;
+  height: 0;
+  padding-bottom: 56.25%;
+  position: relative;
+}
+/* line 17, ../scss/pages/_photo-vedios.scss */
+.view.video-block .view-content .views-row .vedio-wrapper iframe, .view.video-block .view-content .views-row .vedio-wrapper object, .view.video-block .view-content .views-row .vedio-wrapper embed {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+/* line 25, ../scss/pages/_photo-vedios.scss */
+.view.video-block .view-content .views-row .description {
+  padding-top: 14px;
+  padding-bottom: 14px;
+}
+/* line 49, ../scss/base/_mixins.scss */
+.cs-default .view.video-block .view-content .views-row .description * {
+  font-family: "arial";
+  font-weight: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  -moz-font-smoothing: grayscale;
+}
+/* line 58, ../scss/base/_mixins.scss */
+.cs-classic .view.video-block .view-content .views-row .description * {
+  font-family: "PT Sans", sans-serif;
+  font-weight: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  -moz-font-smoothing: grayscale;
+}
+/* line 67, ../scss/base/_mixins.scss */
+.cs-elegant .view.video-block .view-content .views-row .description * {
+  font-family: "Open Sans", sans-serif;
+  font-weight: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  -moz-font-smoothing: grayscale;
+}
+/* line 32, ../scss/pages/_photo-vedios.scss */
+.cs-default .view.video-block .view-content .views-row .description * {
+  font-size: 12px;
+  line-height: 15px;
+}
+/* line 36, ../scss/pages/_photo-vedios.scss */
+.cs-classic .view.video-block .view-content .views-row .description *, .cs-elegant .view.video-block .view-content .views-row .description * {
+  font-size: 14px;
+  line-height: 16px;
+}
+/* line 44, ../scss/pages/_photo-vedios.scss */
+.view.video-block .view-content .views-row * {
+  width: 100%;
+}
+/* line 52, ../scss/pages/_photo-vedios.scss */
+.view.photos-block .view-content {
+  -webkit-flex-wrap: wrap;
+  flex-wrap: wrap;
+  display: -webkit-flex;
+  display: flex;
+  width: calc(100% + 50px);
+  margin-left: -25px;
+}
+/* line 59, ../scss/pages/_photo-vedios.scss */
+.view.photos-block .view-content .views-row {
+  flex: 0 0 33%;
+  padding-left: 25px;
+  padding-right: 25px;
+  margin-bottom: 30px;
+}
+/* line 65, ../scss/pages/_photo-vedios.scss */
+.view.photos-block .view-content .views-row .flickr-photoset-img img {
+  height: 167px;
+  width: 256px;
+  object-fit: cover;
+}
+/* line 69, ../scss/pages/_photo-vedios.scss */
+.view.photos-block .view-content .views-row .flickr-photoset-img img:hover {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+/* line 76, ../scss/pages/_photo-vedios.scss */
+.view.photos-block .view-content .views-row .flickr-citation {
+  display: none;
+}
+/* line 79, ../scss/pages/_photo-vedios.scss */
+.view.photos-block .view-content .views-row * {
+  width: 100%;
+}
+
 /* line 1, ../scss/pages/_program.scss */
 #page-title {
   margin-top: 0;
@@ -13712,24 +14092,24 @@ p.more-link:after {
   padding-left: 35px;
 }
 /* line 40, ../scss/pages/_program.scss */
-.other-programme.view .other-programme .programme-content h2 {
+.other-programme.view .other-programme .programme-content h2, .other-programme.view .other-programme .programme-content .view-reward-activity .view-header *, .view-reward-activity .view-header .other-programme.view .other-programme .programme-content * {
   margin-top: 0;
   margin-bottom: 30px;
 }
 /* line 43, ../scss/pages/_program.scss */
-.cs-default .other-programme.view .other-programme .programme-content h2 {
+.cs-default .other-programme.view .other-programme .programme-content h2, .cs-default .other-programme.view .other-programme .programme-content .view-reward-activity .view-header *, .view-reward-activity .view-header .cs-default .other-programme.view .other-programme .programme-content * {
   color: #f6511d;
 }
 /* line 46, ../scss/pages/_program.scss */
-.cs-elegant .other-programme.view .other-programme .programme-content h2 {
+.cs-elegant .other-programme.view .other-programme .programme-content h2, .cs-elegant .other-programme.view .other-programme .programme-content .view-reward-activity .view-header *, .view-reward-activity .view-header .cs-elegant .other-programme.view .other-programme .programme-content * {
   color: #2ec4b6;
 }
 /* line 49, ../scss/pages/_program.scss */
-.cs-classic .other-programme.view .other-programme .programme-content h2 {
+.cs-classic .other-programme.view .other-programme .programme-content h2, .cs-classic .other-programme.view .other-programme .programme-content .view-reward-activity .view-header *, .view-reward-activity .view-header .cs-classic .other-programme.view .other-programme .programme-content * {
   color: #00a6ed;
 }
 /* line 52, ../scss/pages/_program.scss */
-.other-programme.view .other-programme .programme-content h2 * {
+.other-programme.view .other-programme .programme-content h2 *, .other-programme.view .other-programme .programme-content .view-reward-activity .view-header * *, .view-reward-activity .view-header .other-programme.view .other-programme .programme-content * * {
   color: inherit;
 }
 /* line 56, ../scss/pages/_program.scss */
@@ -13744,6 +14124,23 @@ p.more-link:after {
 /* line 67, ../scss/pages/_program.scss */
 .page-programs #page-title {
   margin-bottom: 30px;
+}
+
+/* line 71, ../scss/pages/_program.scss */
+.left-sidebar-program-block {
+  margin-bottom: 35px;
+}
+/* line 73, ../scss/pages/_program.scss */
+.left-sidebar-program-block img {
+  max-width: 130px;
+}
+/* line 76, ../scss/pages/_program.scss */
+.left-sidebar-program-block .views-field-title {
+  margin-top: 10px;
+}
+/* line 78, ../scss/pages/_program.scss */
+.left-sidebar-program-block .views-field-title a {
+  color: #fff;
 }
 
 /* line 2, ../scss/pages/_progress.scss */
@@ -14261,7 +14658,7 @@ p.more-link:after {
   margin: auto;
 }
 /* line 380, ../scss/pages/_progress.scss */
-.progress-page-wrap .calendar-wrapper .fc-center h2 {
+.progress-page-wrap .calendar-wrapper .fc-center h2, .progress-page-wrap .calendar-wrapper .fc-center .view-reward-activity .view-header *, .view-reward-activity .view-header .progress-page-wrap .calendar-wrapper .fc-center * {
   color: #fff;
 }
 /* line 384, ../scss/pages/_progress.scss */
@@ -14448,6 +14845,102 @@ th {
 /* line 536, ../scss/pages/_progress.scss */
 .cs-classic .progress-page-wrap table .fc-head thead {
   background: #084899;
+}
+
+/* line 2, ../scss/pages/_reward.scss */
+.section-rewards #page-title {
+  display: none;
+}
+
+/* line 10, ../scss/pages/_reward.scss */
+.view-reward-page-views .view-header p:first-line {
+  line-height: 45px;
+  display: block;
+}
+/* line 22, ../scss/pages/_reward.scss */
+.view-reward-page-views .reward-page-for-kids {
+  width: 100%;
+  -webkit-flex-wrap: wrap;
+  flex-wrap: wrap;
+  display: -webkit-flex;
+  display: flex;
+  align-content: center;
+  align-items: center;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+/* line 32, ../scss/pages/_reward.scss */
+.view-reward-page-views .reward-page-for-kids .reward-image-title {
+  flex: 0 0 131px;
+}
+/* line 35, ../scss/pages/_reward.scss */
+.view-reward-page-views .reward-page-for-kids .description {
+  flex: 0 0 calc(100% - 131px);
+}
+
+/* line 41, ../scss/pages/_reward.scss */
+.reward-block-reward-page .view-header {
+  margin-bottom: 15px;
+}
+/* line 43, ../scss/pages/_reward.scss */
+.reward-block-reward-page .view-header * {
+  text-transform: capitalize;
+}
+/* line 20, ../scss/base/_mixins.scss */
+.cs-default .reward-block-reward-page .view-header * {
+  font-family: "McLaren", cursive;
+  font-weight: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  -moz-font-smoothing: grayscale;
+}
+/* line 29, ../scss/base/_mixins.scss */
+.cs-classic .reward-block-reward-page .view-header * {
+  font-family: "Architects Daughter", cursive;
+  font-weight: 700;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  -moz-font-smoothing: grayscale;
+}
+/* line 38, ../scss/base/_mixins.scss */
+.cs-elegant .reward-block-reward-page .view-header * {
+  font-family: "Margarine", cursive;
+  font-weight: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  -moz-font-smoothing: grayscale;
+}
+/* line 46, ../scss/pages/_reward.scss */
+.cs-default .reward-block-reward-page .view-header * {
+  color: #f6511d;
+}
+/* line 49, ../scss/pages/_reward.scss */
+.cs-classic .reward-block-reward-page .view-header * {
+  color: #00a6ed;
+}
+/* line 52, ../scss/pages/_reward.scss */
+.cs-elegant .reward-block-reward-page .view-header * {
+  color: #2ec4b6;
+}
+/* line 57, ../scss/pages/_reward.scss */
+.reward-block-reward-page .view-content {
+  margin-bottom: 35px;
+  -webkit-flex-wrap: wrap;
+  flex-wrap: wrap;
+  display: -webkit-flex;
+  display: flex;
+  width: calc(100% + 40px);
+  margin-left: -20px;
+}
+/* line 65, ../scss/pages/_reward.scss */
+.reward-block-reward-page .view-content .views-row {
+  flex: 0 0 100px;
+  margin-left: 20px;
+  margin-right: 20px;
+  text-align: center;
 }
 
 /* line 2, ../scss/pages/_userlogin.scss */
@@ -14651,107 +15144,6 @@ th {
     max-width: 100%;
     width: 100%;
   }
-}
-/* line 3, ../scss/pages/photo-vedios.scss */
-.view.video-block .view-content {
-  -webkit-flex-wrap: wrap;
-  flex-wrap: wrap;
-  display: -webkit-flex;
-  display: flex;
-  width: calc(100% + 30px);
-  margin-left: -15px;
-}
-/* line 10, ../scss/pages/photo-vedios.scss */
-.view.video-block .view-content .views-row {
-  margin-bottom: 30px;
-  flex: 0 0 25%;
-  padding-left: 15px;
-  padding-right: 15px;
-}
-/* line 12, ../scss/pages/photo-vedios.scss */
-.view.video-block .view-content .views-row .vedio-wrapper {
-  width: 100%;
-  height: 0;
-  padding-bottom: 56.25%;
-  position: relative;
-}
-/* line 17, ../scss/pages/photo-vedios.scss */
-.view.video-block .view-content .views-row .vedio-wrapper iframe, .view.video-block .view-content .views-row .vedio-wrapper object, .view.video-block .view-content .views-row .vedio-wrapper embed {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-/* line 25, ../scss/pages/photo-vedios.scss */
-.view.video-block .view-content .views-row .description {
-  padding-top: 14px;
-  padding-bottom: 14px;
-}
-/* line 49, ../scss/base/_mixins.scss */
-.cs-default .view.video-block .view-content .views-row .description * {
-  font-family: "arial";
-  font-weight: normal;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-rendering: optimizeLegibility;
-  -moz-font-smoothing: grayscale;
-}
-/* line 58, ../scss/base/_mixins.scss */
-.cs-classic .view.video-block .view-content .views-row .description * {
-  font-family: "PT Sans", sans-serif;
-  font-weight: normal;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-rendering: optimizeLegibility;
-  -moz-font-smoothing: grayscale;
-}
-/* line 67, ../scss/base/_mixins.scss */
-.cs-elegant .view.video-block .view-content .views-row .description * {
-  font-family: "Open Sans", sans-serif;
-  font-weight: normal;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-rendering: optimizeLegibility;
-  -moz-font-smoothing: grayscale;
-}
-/* line 32, ../scss/pages/photo-vedios.scss */
-.cs-default .view.video-block .view-content .views-row .description * {
-  font-size: 12px;
-  line-height: 15px;
-}
-/* line 36, ../scss/pages/photo-vedios.scss */
-.cs-classic .view.video-block .view-content .views-row .description *, .cs-elegant .view.video-block .view-content .views-row .description * {
-  font-size: 14px;
-  line-height: 16px;
-}
-/* line 44, ../scss/pages/photo-vedios.scss */
-.view.video-block .view-content .views-row * {
-  width: 100%;
-}
-/* line 52, ../scss/pages/photo-vedios.scss */
-.view.photos-block .view-content {
-  -webkit-flex-wrap: wrap;
-  flex-wrap: wrap;
-  display: -webkit-flex;
-  display: flex;
-  width: calc(100% + 50px);
-  margin-left: -25px;
-}
-/* line 59, ../scss/pages/photo-vedios.scss */
-.view.photos-block .view-content .views-row {
-  flex: 0 0 33%;
-  padding-left: 25px;
-  padding-right: 25px;
-  margin-bottom: 30px;
-}
-/* line 64, ../scss/pages/photo-vedios.scss */
-.view.photos-block .view-content .views-row .flickr-citation {
-  display: none;
-}
-/* line 67, ../scss/pages/photo-vedios.scss */
-.view.photos-block .view-content .views-row * {
-  width: 100%;
 }
 
 /*# sourceMappingURL=custom.css.map */

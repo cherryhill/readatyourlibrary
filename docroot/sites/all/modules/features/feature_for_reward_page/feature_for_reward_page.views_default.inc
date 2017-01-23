@@ -63,6 +63,14 @@ function feature_for_reward_page_views_default_views() {
   $handler->display->display_options['defaults']['title'] = FALSE;
   $handler->display->display_options['title'] = 'My Rewards';
   $handler->display->display_options['defaults']['relationships'] = FALSE;
+  /* Relationship: Reward: Type of reward/raffle prize (field_type_of_reward_raffle_priz) */
+  $handler->display->display_options['relationships']['field_type_of_reward_raffle_priz_tid']['id'] = 'field_type_of_reward_raffle_priz_tid';
+  $handler->display->display_options['relationships']['field_type_of_reward_raffle_priz_tid']['table'] = 'field_data_field_type_of_reward_raffle_priz';
+  $handler->display->display_options['relationships']['field_type_of_reward_raffle_priz_tid']['field'] = 'field_type_of_reward_raffle_priz_tid';
+  /* Relationship: Entity Reference: Referenced Entity */
+  $handler->display->display_options['relationships']['field_reward_claim_id_target_id']['id'] = 'field_reward_claim_id_target_id';
+  $handler->display->display_options['relationships']['field_reward_claim_id_target_id']['table'] = 'field_data_field_reward_claim_id';
+  $handler->display->display_options['relationships']['field_reward_claim_id_target_id']['field'] = 'field_reward_claim_id_target_id';
   $handler->display->display_options['defaults']['fields'] = FALSE;
   /* Field: Reward: Raffle prize or reward image */
   $handler->display->display_options['fields']['field_raffle_prize_or_reward_ima']['id'] = 'field_raffle_prize_or_reward_ima';
@@ -81,7 +89,20 @@ function feature_for_reward_page_views_default_views() {
   $handler->display->display_options['fields']['title']['table'] = 'eck_reward';
   $handler->display->display_options['fields']['title']['field'] = 'title';
   $handler->display->display_options['fields']['title']['label'] = '';
+  $handler->display->display_options['fields']['title']['exclude'] = TRUE;
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
+  /* Field: Global: PHP */
+  $handler->display->display_options['fields']['php']['id'] = 'php';
+  $handler->display->display_options['fields']['php']['table'] = 'views';
+  $handler->display->display_options['fields']['php']['field'] = 'php';
+  $handler->display->display_options['fields']['php']['label'] = '';
+  $handler->display->display_options['fields']['php']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['php']['use_php_setup'] = 0;
+  $handler->display->display_options['fields']['php']['php_output'] = '<?php 
+echo substr($row->title ,0,-20);
+?>';
+  $handler->display->display_options['fields']['php']['use_php_click_sortable'] = '0';
+  $handler->display->display_options['fields']['php']['php_click_sortable'] = '';
   /* Field: Reward: Created */
   $handler->display->display_options['fields']['created']['id'] = 'created';
   $handler->display->display_options['fields']['created']['table'] = 'eck_reward';
@@ -108,6 +129,15 @@ function feature_for_reward_page_views_default_views() {
   $handler = $view->new_display('block', 'My Badges', 'block_1');
   $handler->display->display_options['defaults']['title'] = FALSE;
   $handler->display->display_options['title'] = 'My Badges';
+  $handler->display->display_options['defaults']['relationships'] = FALSE;
+  /* Relationship: Reward: Type of reward/raffle prize (field_type_of_reward_raffle_priz) */
+  $handler->display->display_options['relationships']['field_type_of_reward_raffle_priz_tid']['id'] = 'field_type_of_reward_raffle_priz_tid';
+  $handler->display->display_options['relationships']['field_type_of_reward_raffle_priz_tid']['table'] = 'field_data_field_type_of_reward_raffle_priz';
+  $handler->display->display_options['relationships']['field_type_of_reward_raffle_priz_tid']['field'] = 'field_type_of_reward_raffle_priz_tid';
+  /* Relationship: Entity Reference: Referenced Entity */
+  $handler->display->display_options['relationships']['field_reward_claim_id_target_id']['id'] = 'field_reward_claim_id_target_id';
+  $handler->display->display_options['relationships']['field_reward_claim_id_target_id']['table'] = 'field_data_field_reward_claim_id';
+  $handler->display->display_options['relationships']['field_reward_claim_id_target_id']['field'] = 'field_reward_claim_id_target_id';
   $handler->display->display_options['defaults']['fields'] = FALSE;
   /* Field: Reward: Raffle prize or reward image */
   $handler->display->display_options['fields']['field_raffle_prize_or_reward_ima']['id'] = 'field_raffle_prize_or_reward_ima';
@@ -126,7 +156,30 @@ function feature_for_reward_page_views_default_views() {
   $handler->display->display_options['fields']['title']['table'] = 'eck_reward';
   $handler->display->display_options['fields']['title']['field'] = 'title';
   $handler->display->display_options['fields']['title']['label'] = '';
+  $handler->display->display_options['fields']['title']['exclude'] = TRUE;
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
+  /* Field: Global: PHP */
+  $handler->display->display_options['fields']['php']['id'] = 'php';
+  $handler->display->display_options['fields']['php']['table'] = 'views';
+  $handler->display->display_options['fields']['php']['field'] = 'php';
+  $handler->display->display_options['fields']['php']['label'] = '';
+  $handler->display->display_options['fields']['php']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['php']['use_php_setup'] = 0;
+  $handler->display->display_options['fields']['php']['php_output'] = '<?php 
+echo substr($row->title ,0,-20);
+?>';
+  $handler->display->display_options['fields']['php']['use_php_click_sortable'] = '0';
+  $handler->display->display_options['fields']['php']['php_click_sortable'] = '';
+  $handler->display->display_options['defaults']['arguments'] = FALSE;
+  /* Contextual filter: Reward: Author */
+  $handler->display->display_options['arguments']['uid']['id'] = 'uid';
+  $handler->display->display_options['arguments']['uid']['table'] = 'eck_reward';
+  $handler->display->display_options['arguments']['uid']['field'] = 'uid';
+  $handler->display->display_options['arguments']['uid']['default_action'] = 'default';
+  $handler->display->display_options['arguments']['uid']['default_argument_type'] = 'current_user';
+  $handler->display->display_options['arguments']['uid']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['uid']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['uid']['summary_options']['items_per_page'] = '25';
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
   /* Filter criterion: Reward: reward type */
@@ -137,42 +190,18 @@ function feature_for_reward_page_views_default_views() {
     'reward_claim' => 'reward_claim',
   );
   $handler->display->display_options['filters']['type']['group'] = 1;
+  /* Filter criterion: Reward: Type of reward/raffle prize (field_type_of_reward_raffle_priz) */
+  $handler->display->display_options['filters']['field_type_of_reward_raffle_priz_tid']['id'] = 'field_type_of_reward_raffle_priz_tid';
+  $handler->display->display_options['filters']['field_type_of_reward_raffle_priz_tid']['table'] = 'field_data_field_type_of_reward_raffle_priz';
+  $handler->display->display_options['filters']['field_type_of_reward_raffle_priz_tid']['field'] = 'field_type_of_reward_raffle_priz_tid';
+  $handler->display->display_options['filters']['field_type_of_reward_raffle_priz_tid']['relationship'] = 'field_reward_claim_id_target_id';
+  $handler->display->display_options['filters']['field_type_of_reward_raffle_priz_tid']['value'] = array(
+    2 => '2',
+  );
+  $handler->display->display_options['filters']['field_type_of_reward_raffle_priz_tid']['type'] = 'select';
+  $handler->display->display_options['filters']['field_type_of_reward_raffle_priz_tid']['vocabulary'] = 'type_of_reward';
+  $handler->display->display_options['filters']['field_type_of_reward_raffle_priz_tid']['hierarchy'] = 1;
   $handler->display->display_options['block_description'] = 'My Badges for rewrad page';
-
-  /* Display: My Raffles */
-  $handler = $view->new_display('block', 'My Raffles', 'block_2');
-  $handler->display->display_options['defaults']['title'] = FALSE;
-  $handler->display->display_options['title'] = 'My Raffles';
-  $handler->display->display_options['defaults']['relationships'] = FALSE;
-  $handler->display->display_options['defaults']['fields'] = FALSE;
-  /* Field: Reward: Raffle Ticket Image */
-  $handler->display->display_options['fields']['field_raffle_ticket_image']['id'] = 'field_raffle_ticket_image';
-  $handler->display->display_options['fields']['field_raffle_ticket_image']['table'] = 'field_data_field_raffle_ticket_image';
-  $handler->display->display_options['fields']['field_raffle_ticket_image']['field'] = 'field_raffle_ticket_image';
-  $handler->display->display_options['fields']['field_raffle_ticket_image']['relationship'] = 'field_reward_claim_id_target_id';
-  $handler->display->display_options['fields']['field_raffle_ticket_image']['label'] = '';
-  $handler->display->display_options['fields']['field_raffle_ticket_image']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_raffle_ticket_image']['click_sort_column'] = 'fid';
-  $handler->display->display_options['fields']['field_raffle_ticket_image']['settings'] = array(
-    'image_style' => 'thumbnail',
-    'image_link' => '',
-  );
-  /* Field: Reward: Title */
-  $handler->display->display_options['fields']['title']['id'] = 'title';
-  $handler->display->display_options['fields']['title']['table'] = 'eck_reward';
-  $handler->display->display_options['fields']['title']['field'] = 'title';
-  $handler->display->display_options['fields']['title']['label'] = '';
-  $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
-  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
-  $handler->display->display_options['defaults']['filters'] = FALSE;
-  /* Filter criterion: Reward: reward type */
-  $handler->display->display_options['filters']['type']['id'] = 'type';
-  $handler->display->display_options['filters']['type']['table'] = 'eck_reward';
-  $handler->display->display_options['filters']['type']['field'] = 'type';
-  $handler->display->display_options['filters']['type']['value'] = array(
-    'reward_claim' => 'reward_claim',
-  );
-  $handler->display->display_options['block_description'] = 'My Raffles for reward page';
   $export['my_reward_blocks_on_reward_page_sidebar'] = $view;
 
   $view = new view();
@@ -239,6 +268,7 @@ function feature_for_reward_page_views_default_views() {
   $handler = $view->new_display('block', 'Badges for Reading', 'block');
   $handler->display->display_options['defaults']['title'] = FALSE;
   $handler->display->display_options['title'] = 'Badges for Reading';
+  $handler->display->display_options['defaults']['header'] = FALSE;
   $handler->display->display_options['defaults']['fields'] = FALSE;
   /* Field: Reward: Raffle prize or reward image */
   $handler->display->display_options['fields']['field_raffle_prize_or_reward_ima']['id'] = 'field_raffle_prize_or_reward_ima';
@@ -428,6 +458,17 @@ You will get online badges for reading this summer, and actual prizes that you c
   $handler->display->display_options['fields']['id']['table'] = 'eck_reward';
   $handler->display->display_options['fields']['id']['field'] = 'id';
   $handler->display->display_options['fields']['id']['exclude'] = TRUE;
+  /* Field: Reward: Raffle prize or reward image */
+  $handler->display->display_options['fields']['field_raffle_prize_or_reward_ima']['id'] = 'field_raffle_prize_or_reward_ima';
+  $handler->display->display_options['fields']['field_raffle_prize_or_reward_ima']['table'] = 'field_data_field_raffle_prize_or_reward_ima';
+  $handler->display->display_options['fields']['field_raffle_prize_or_reward_ima']['field'] = 'field_raffle_prize_or_reward_ima';
+  $handler->display->display_options['fields']['field_raffle_prize_or_reward_ima']['label'] = '';
+  $handler->display->display_options['fields']['field_raffle_prize_or_reward_ima']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_raffle_prize_or_reward_ima']['click_sort_column'] = 'fid';
+  $handler->display->display_options['fields']['field_raffle_prize_or_reward_ima']['settings'] = array(
+    'image_style' => 'thumbnail',
+    'image_link' => '',
+  );
   /* Field: Reward: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'eck_reward';
@@ -450,17 +491,6 @@ You will get online badges for reading this summer, and actual prizes that you c
   $handler->display->display_options['fields']['field_raffle_prize_desc']['label'] = '';
   $handler->display->display_options['fields']['field_raffle_prize_desc']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_raffle_prize_desc']['hide_empty'] = TRUE;
-  /* Field: Reward: Raffle prize or reward image */
-  $handler->display->display_options['fields']['field_raffle_prize_or_reward_ima']['id'] = 'field_raffle_prize_or_reward_ima';
-  $handler->display->display_options['fields']['field_raffle_prize_or_reward_ima']['table'] = 'field_data_field_raffle_prize_or_reward_ima';
-  $handler->display->display_options['fields']['field_raffle_prize_or_reward_ima']['field'] = 'field_raffle_prize_or_reward_ima';
-  $handler->display->display_options['fields']['field_raffle_prize_or_reward_ima']['label'] = '';
-  $handler->display->display_options['fields']['field_raffle_prize_or_reward_ima']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_raffle_prize_or_reward_ima']['click_sort_column'] = 'fid';
-  $handler->display->display_options['fields']['field_raffle_prize_or_reward_ima']['settings'] = array(
-    'image_style' => 'thumbnail',
-    'image_link' => '',
-  );
   $handler->display->display_options['path'] = 'rewards';
   $export['reward_page_views'] = $view;
 

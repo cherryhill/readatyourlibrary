@@ -1,0 +1,54 @@
+.events-page-events {
+  .view-content {
+    h3 {
+        padding: 6px 24px;
+        color: $white;
+        margin-top: 20px;
+        margin-bottom: 0;
+        .cs-default & {
+          font-size: 18px;
+          background: $orange;
+        }
+        .cs-classic & {
+          font-size: 19px;
+          background: $sky-blue;
+        }
+      .cs-elegant & {
+       font-size: 20px;
+       background: $mint-green;
+      }
+    }
+    margin-bottom: 50px;
+  }
+  .view-header {
+    margin-bottom: 10px;
+  }
+  .events-wrapper {
+    -webkit-flex-wrap: wrap;
+    flex-wrap: wrap;
+    display: -webkit-flex;
+    display: flex;
+    align-content: center;
+    align-items: center;
+    width: 100%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+     .title {
+      flex: 0 0 60%;
+      a {
+         width: 100%;
+         display: inline-block;
+         padding-right: 10px;
+         color: $black;
+         padding-left: 24px;
+      }
+     }
+     .date {
+       flex: 0 0 20%;
+     }
+     .location {
+      flex: 0 0 20%;
+     }
+
+  }
+}
