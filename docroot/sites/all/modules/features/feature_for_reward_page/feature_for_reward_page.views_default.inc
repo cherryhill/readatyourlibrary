@@ -89,7 +89,20 @@ function feature_for_reward_page_views_default_views() {
   $handler->display->display_options['fields']['title']['table'] = 'eck_reward';
   $handler->display->display_options['fields']['title']['field'] = 'title';
   $handler->display->display_options['fields']['title']['label'] = '';
+  $handler->display->display_options['fields']['title']['exclude'] = TRUE;
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
+  /* Field: Global: PHP */
+  $handler->display->display_options['fields']['php']['id'] = 'php';
+  $handler->display->display_options['fields']['php']['table'] = 'views';
+  $handler->display->display_options['fields']['php']['field'] = 'php';
+  $handler->display->display_options['fields']['php']['label'] = '';
+  $handler->display->display_options['fields']['php']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['php']['use_php_setup'] = 0;
+  $handler->display->display_options['fields']['php']['php_output'] = '<?php 
+echo substr($row->title ,0,-20);
+?>';
+  $handler->display->display_options['fields']['php']['use_php_click_sortable'] = '0';
+  $handler->display->display_options['fields']['php']['php_click_sortable'] = '';
   /* Field: Reward: Created */
   $handler->display->display_options['fields']['created']['id'] = 'created';
   $handler->display->display_options['fields']['created']['table'] = 'eck_reward';
@@ -143,7 +156,20 @@ function feature_for_reward_page_views_default_views() {
   $handler->display->display_options['fields']['title']['table'] = 'eck_reward';
   $handler->display->display_options['fields']['title']['field'] = 'title';
   $handler->display->display_options['fields']['title']['label'] = '';
+  $handler->display->display_options['fields']['title']['exclude'] = TRUE;
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
+  /* Field: Global: PHP */
+  $handler->display->display_options['fields']['php']['id'] = 'php';
+  $handler->display->display_options['fields']['php']['table'] = 'views';
+  $handler->display->display_options['fields']['php']['field'] = 'php';
+  $handler->display->display_options['fields']['php']['label'] = '';
+  $handler->display->display_options['fields']['php']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['php']['use_php_setup'] = 0;
+  $handler->display->display_options['fields']['php']['php_output'] = '<?php 
+echo substr($row->title ,0,-20);
+?>';
+  $handler->display->display_options['fields']['php']['use_php_click_sortable'] = '0';
+  $handler->display->display_options['fields']['php']['php_click_sortable'] = '';
   $handler->display->display_options['defaults']['arguments'] = FALSE;
   /* Contextual filter: Reward: Author */
   $handler->display->display_options['arguments']['uid']['id'] = 'uid';
@@ -168,6 +194,7 @@ function feature_for_reward_page_views_default_views() {
   $handler->display->display_options['filters']['field_type_of_reward_raffle_priz_tid']['id'] = 'field_type_of_reward_raffle_priz_tid';
   $handler->display->display_options['filters']['field_type_of_reward_raffle_priz_tid']['table'] = 'field_data_field_type_of_reward_raffle_priz';
   $handler->display->display_options['filters']['field_type_of_reward_raffle_priz_tid']['field'] = 'field_type_of_reward_raffle_priz_tid';
+  $handler->display->display_options['filters']['field_type_of_reward_raffle_priz_tid']['relationship'] = 'field_reward_claim_id_target_id';
   $handler->display->display_options['filters']['field_type_of_reward_raffle_priz_tid']['value'] = array(
     2 => '2',
   );
