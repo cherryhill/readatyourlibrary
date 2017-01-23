@@ -2037,7 +2037,7 @@ function play_library_program_next_close_reward_points($activity_ids, $uid = NUL
 		$user_points = userpoints_get_current_points($uid, $rew_tid);
 		$req_points = ($value->field_points_value) - $user_points;
 
-		if ($value->field_repeatable_value = 1){
+		if ($value->field_repeatable_value == 1){
 			if(!empty($value->field_maximum_num_reward_value)){
 				if ($receieved_rewards <= $value->field_maximum_num_reward_value){
 					if ($req_points > 0){
