@@ -61,65 +61,27 @@ function play_program_raffle_block_view($block_name = '') {
 
 /* Progress block of user on program page */
 function progress_user_block_program() {
-  global $user, $base_url;
+  global $user;
   $uid = $user->uid;
-  $count_query = db_query("SELECT COUNT(image_url) as image_url
-    FROM {calendar} c
-    WHERE c.uid = :uid",array(':uid' => $uid))->fetchAll();
-  $total_read_days = $count_query[0]->image_url;
+  $out = '';
 
-  // get all rewards
-  $qry = db_select('field_data_field_activity_fired_hook', 'fh');
-  $qry->join('field_data_field_activity_points', 'ap', 'ap.entity_id = fh.entity_id');
-  $qry->Join('field_data_field_reward_criteria_activity', 'rca', 'fh.entity_id = rca.field_reward_criteria_activity_target_id');
-  $qry->Join('field_data_field_reward_criteria_point_mark', 'rcpm', 'rca.entity_id = rcpm.entity_id');
-  $qry->fields('rcpm', array('field_reward_criteria_point_mark_value'));
-  $qry->fields('ap', array('field_activity_points_value'));
-  $qry->condition('fh.field_activity_fired_hook_value', 'node_update|node|sticker|updated');
-  $rs = $qry->execute()->fetchAll();
-  
-  $activity_point = 0;
-  $next_reward_in_days = 0;
-  $user_points = 0;
-  $closest_reward = 0;
-
-  foreach($rs as $v) {
-    if (!$activity_point) {
-      $activity_point = $v->field_activity_points_value;
-      $user_points = $total_read_days * $activity_point;
-    }
-
-    $reward_point = $v->field_reward_criteria_point_mark_value;
-    if ($reward_point > $user_points) {
-      if(!$closest_reward) {
-        $closest_reward = $reward_point;
-      } else {
-        if($reward_point < $closest_reward) {
-          $closest_reward = $reward_point;
-        }
-      }
-    }
-  }
-
-  $reads_for_next_reward = ($closest_reward / $activity_point) - $total_read_days;
-  if($reads_for_next_reward < 0) {
-    return t("<div class='all_rewrad_won'>Congratulations! You have completed the reading program and have received all the reading rewards.</div>");
-  }
-  else {
-    if($reads_for_next_reward == 1) {
-      $msg = t("<span class='msg-highlight'>Total days read: $total_read_days</span><br/>");
-      $msg .= t("<div class='days-left'>$reads_for_next_reward more day of reading needed to receive your next prize</div>");
-      $msg .= t("<div><a href='".$base_url."/progress'>Go to the Progress Page</a></div>");
+   $quer = db_select('eck_activity', 'eck_a');
+    $quer->LEFTJOIN ('field_data_field_activity_entry_activity' , 'fdfae' , 'fdfae.entity_id = eck_a.id');
+    $quer->join('field_data_field_activity_fired_hook', 'hook', 'hook.entity_id = fdfae.field_activity_entry_activity_target_id');
+    $quer->condition('eck_a.uid', $uid);
+    $quer->condition('eck_a.type', 'activity_entry');
+    $quer->condition('hook.field_activity_fired_hook_value', 'progress_page');
+    $quer->fields('eck_a', array('title'));
+    $resu = $quer->execute()->fetchAll();
+    $day_count = count($resu);
+    if($day_count == 1) {
+      $out = t("<span class='msg-highlight'>Total day read: $day_count</span><br/>");
     }
     else {
-      $msg = t("<span class='msg-highlight'>Total days read: $total_read_days</span><br/>");
-      $msg .= t("<div class='days-left'>$reads_for_next_reward more days of reading needed to receive your next prize</div>");
-      $msg .= t("<div><a href='".$base_url."/progress'>Go to the Progress Page</a></div>");
-    }
-    
+      $out = t("<span class='msg-highlight'>Total days read: $day_count</span><br/>");
+    } 
 
-    return "<div>$msg</div>";
-  }
+    return "<div>$out</div>";
 }
 
 
