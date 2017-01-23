@@ -6,13 +6,13 @@
 
 .view-reward-page-views {
   .view-header {
-    p {
+    /* p {
       &:first-line {
         @extend h1;
        line-height: 45px;
        display: block;
       }
-    }
+    } */
   }
   .view-footer {
     * {
@@ -70,3 +70,20 @@
      }
   }
   }
+.left-sidebar-reward {
+  .reward-sidebar-block-reward-page {
+     -webkit-flex-wrap: wrap;
+    flex-wrap: wrap;
+    display: -webkit-flex;
+    display: flex;
+    align-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+     .image {
+      flex: 0 0 80px;
+     }
+     .description {
+      flex: 0 0 calc(100% - 80px);
+     }
+  }
+}
