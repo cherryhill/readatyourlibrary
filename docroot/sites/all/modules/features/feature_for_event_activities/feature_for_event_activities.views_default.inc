@@ -70,8 +70,26 @@ function feature_for_event_activities_views_default_views() {
   $handler->display->display_options['fields']['field_url_events_activities']['table'] = 'field_data_field_url_events_activities';
   $handler->display->display_options['fields']['field_url_events_activities']['field'] = 'field_url_events_activities';
   $handler->display->display_options['fields']['field_url_events_activities']['label'] = '';
+  $handler->display->display_options['fields']['field_url_events_activities']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_url_events_activities']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_url_events_activities']['click_sort_column'] = 'url';
+  /* Field: Global: View result counter */
+  $handler->display->display_options['fields']['counter']['id'] = 'counter';
+  $handler->display->display_options['fields']['counter']['table'] = 'views';
+  $handler->display->display_options['fields']['counter']['field'] = 'counter';
+  $handler->display->display_options['fields']['counter']['label'] = '';
+  $handler->display->display_options['fields']['counter']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['counter']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['counter']['counter_start'] = '1';
+  $handler->display->display_options['fields']['counter']['reverse'] = 0;
+  /* Field: Global: Custom text */
+  $handler->display->display_options['fields']['nothing']['id'] = 'nothing';
+  $handler->display->display_options['fields']['nothing']['table'] = 'views';
+  $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
+  $handler->display->display_options['fields']['nothing']['label'] = '';
+  $handler->display->display_options['fields']['nothing']['alter']['text'] = '<div class="event-side-bar">[counter]. [field_url_events_activities]</div>';
+  $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
+  $handler->display->display_options['block_description'] = 'Event activies block for event page';
 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page_1');
