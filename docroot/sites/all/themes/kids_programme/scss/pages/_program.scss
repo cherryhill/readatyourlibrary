@@ -3,8 +3,10 @@
 }
 .current-program {
    .programme-content {
-     display: flex;
-     display: -webkit-flex;
+    -webkit-flex-wrap: wrap;
+      flex-wrap: wrap;
+      display: -webkit-flex;
+      display: flex;
      padding: 35px;
       a {
         font-weight: 700;
@@ -27,8 +29,10 @@
      @extend h1;
    }
    .other-programme {
-     display: flex;
-     display: -webkit-flex;
+      -webkit-flex-wrap: wrap;
+      flex-wrap: wrap;
+      display: -webkit-flex;
+      display: flex;
      padding: 35px 35px 0;
       .programme-image {
         flex: 0 0 200px;
@@ -64,6 +68,25 @@
    }
 }
 .page-programs {
+  .block.block-play-program-raffle {
+    .msg-highlight {
+      position: relative;
+      padding-left: 70px;
+      height: 72px;
+      display: flex;
+      width: 100%;
+      align-items: center;
+       &:before {
+        content: "";
+        position: absolute;
+        width: 65px;
+        height: 72px;
+        background: url('../images/white-calender.png') no-repeat scroll center center;
+        top: 0;
+        left: 0;
+       }
+    }
+  }
   #page-title {
     margin-bottom: 30px;
   }
