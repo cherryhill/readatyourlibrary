@@ -112,8 +112,15 @@ p.more-link {
 
 .my-dashbord-block {
   @extend .primary-background;
+  padding-bottom: 25px;
+  -webkit-flex-wrap: wrap;
+      flex-wrap: wrap;
+      display: -webkit-flex;
+      display: flex;
+      align-items: baseline;
 
   .view-header {
+    flex: 0 0 100%;
     * {
       @extend .stroke-main;
 
@@ -133,23 +140,30 @@ p.more-link {
     }
   }
 
-  .view-content {
-    padding-right: 35px;
-    width: 70%;
-    float: left;
+  > .view-content {
+   flex: 0 0 70%;
     padding-top: 60px;
 
     table {
       float: right;
+      margin-bottom: 0;
+      background: transparent;
+      border: none;
+      margin-right: 27px;
+       tr {
+        background: transparent !important;
+         td {
+           padding: 10px 5px 0;
+            img {
+              width: 58px;
+            }
+         }
+       }
     }
   }
 
   .attachment {
-    padding-left: 35px;
-    padding-right: 10px;
-    padding-top: 45px;
-    width: 30%;
-    float: left;
+   flex: 0 0 30%;
 
     a {
       color: $white;
@@ -158,13 +172,33 @@ p.more-link {
 
       @include bold_fonts;
     }
+     .view-content {
+       .views-field-nothing {
+      .field-content > div {
+        padding-left: 35px;
+      }
+      .image {
+         display: table-cell;
+         vertical-align: bottom;
+      }
+      .name {
+        display: table-cell;
+        vertical-align: bottom;
+         * {
+           color: $white;
+           font-weight: 700;
+         }
+      }
+     }
+     }
   }
 
   .pagination-centered {
     padding-right: 30px;
     position: absolute;
-    top: 115px;
-    left: 0;
+    top: 125px;
+    right: 22px;
+    width: auto;
 
     .pagination.pager {
       li {
@@ -399,7 +433,25 @@ p.more-link {
       text-transform: uppercase;
     }
   }
-
+  .view-rewards-dashboard {
+     .reward-hombox-dashboard {
+      margin: 5px 0 10px;
+       > div {
+         display: table-cell;
+         vertical-align: middle;
+          &.image {
+            width: 30%;
+          }
+          &.description {
+            width: 70%;
+            padding-left: 10px;
+          }
+          img {
+             width: 58px;
+          }
+       }
+     }
+   }
   .view-activities-dashboard .view-footer {
     padding-top: 25px;
 

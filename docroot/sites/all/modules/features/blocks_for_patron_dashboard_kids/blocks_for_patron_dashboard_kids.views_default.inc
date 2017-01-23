@@ -1326,6 +1326,7 @@ echo "<a class=\'button\' href=\'node/" . $book_nid. "\'> View This Booklist </a
   $handler->display->display_options['fields']['field_raffle_prize_or_reward_ima']['field'] = 'field_raffle_prize_or_reward_ima';
   $handler->display->display_options['fields']['field_raffle_prize_or_reward_ima']['relationship'] = 'field_reward_claim_id_target_id';
   $handler->display->display_options['fields']['field_raffle_prize_or_reward_ima']['label'] = '';
+  $handler->display->display_options['fields']['field_raffle_prize_or_reward_ima']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_raffle_prize_or_reward_ima']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_raffle_prize_or_reward_ima']['click_sort_column'] = 'fid';
   $handler->display->display_options['fields']['field_raffle_prize_or_reward_ima']['settings'] = array(
@@ -1344,6 +1345,7 @@ echo "<a class=\'button\' href=\'node/" . $book_nid. "\'> View This Booklist </a
   $handler->display->display_options['fields']['php']['table'] = 'views';
   $handler->display->display_options['fields']['php']['field'] = 'php';
   $handler->display->display_options['fields']['php']['label'] = '';
+  $handler->display->display_options['fields']['php']['exclude'] = TRUE;
   $handler->display->display_options['fields']['php']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['php']['use_php_setup'] = 0;
   $handler->display->display_options['fields']['php']['php_output'] = '<?php
@@ -1367,12 +1369,23 @@ echo \'<div>\'.$reward_title.\'</div>\' . \'<div><span>Received </span>\'.$rewar
   $handler->display->display_options['fields']['field_raffle_ticket_image']['field'] = 'field_raffle_ticket_image';
   $handler->display->display_options['fields']['field_raffle_ticket_image']['relationship'] = 'field_raffle_claim_id_target_id';
   $handler->display->display_options['fields']['field_raffle_ticket_image']['label'] = '';
+  $handler->display->display_options['fields']['field_raffle_ticket_image']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_raffle_ticket_image']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_raffle_ticket_image']['click_sort_column'] = 'fid';
   $handler->display->display_options['fields']['field_raffle_ticket_image']['settings'] = array(
     'image_style' => 'thumbnail',
     'image_link' => '',
   );
+  /* Field: Global: Custom text */
+  $handler->display->display_options['fields']['nothing']['id'] = 'nothing';
+  $handler->display->display_options['fields']['nothing']['table'] = 'views';
+  $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
+  $handler->display->display_options['fields']['nothing']['label'] = '';
+  $handler->display->display_options['fields']['nothing']['alter']['text'] = '<div class="reward-hombox-dashboard">
+<div class="image>[field_raffle_prize_or_reward_ima][field_raffle_ticket_image] </div>
+<div class="description">[php]</div>
+</div>';
+  $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
   $handler->display->display_options['defaults']['arguments'] = FALSE;
   /* Contextual filter: Reward: Author */
   $handler->display->display_options['arguments']['uid']['id'] = 'uid';
@@ -1498,6 +1511,7 @@ echo \'<div>\'.$reward_title.\'</div>\' . \'<div><span>Received </span>\'.$rewar
   $handler->display->display_options['fields']['name']['field'] = 'name';
   $handler->display->display_options['fields']['name']['relationship'] = 'uid';
   $handler->display->display_options['fields']['name']['label'] = '';
+  $handler->display->display_options['fields']['name']['exclude'] = TRUE;
   $handler->display->display_options['fields']['name']['element_label_colon'] = FALSE;
   /* Field: Profile: Avatar image */
   $handler->display->display_options['fields']['field_user_avatar']['id'] = 'field_user_avatar';
@@ -1505,6 +1519,7 @@ echo \'<div>\'.$reward_title.\'</div>\' . \'<div><span>Received </span>\'.$rewar
   $handler->display->display_options['fields']['field_user_avatar']['field'] = 'field_user_avatar';
   $handler->display->display_options['fields']['field_user_avatar']['relationship'] = 'profile';
   $handler->display->display_options['fields']['field_user_avatar']['label'] = '';
+  $handler->display->display_options['fields']['field_user_avatar']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_user_avatar']['alter']['alter_text'] = TRUE;
   $handler->display->display_options['fields']['field_user_avatar']['alter']['text'] = '[field_user_avatar]';
   $handler->display->display_options['fields']['field_user_avatar']['element_label_colon'] = FALSE;
@@ -1514,6 +1529,14 @@ echo \'<div>\'.$reward_title.\'</div>\' . \'<div><span>Received </span>\'.$rewar
     'links' => 1,
     'use_content_language' => 1,
   );
+  /* Field: Global: Custom text */
+  $handler->display->display_options['fields']['nothing']['id'] = 'nothing';
+  $handler->display->display_options['fields']['nothing']['table'] = 'views';
+  $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
+  $handler->display->display_options['fields']['nothing']['label'] = '';
+  $handler->display->display_options['fields']['nothing']['alter']['text'] = '<div class="image">[field_user_avatar]</div>
+<div class="name">[name]</div>';
+  $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
   $handler->display->display_options['defaults']['arguments'] = FALSE;
   /* Contextual filter: User: Uid */
   $handler->display->display_options['arguments']['uid']['id'] = 'uid';
