@@ -27,6 +27,9 @@ function event_page_feature_strongarm() {
         'workbench_access' => array(
           'weight' => '1',
         ),
+        'language' => array(
+          'weight' => '0',
+        ),
       ),
       'display' => array(),
     ),
