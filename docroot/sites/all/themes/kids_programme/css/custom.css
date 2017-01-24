@@ -9777,22 +9777,9 @@ html {
   height: 20px;
   width: 100%;
   color: white;
-  text-align: center;
   font-family: Verdana, sans-serif;
 }
-/* line 261, ../scss/components/_blocks.scss */
-.block-user-login form .item-list ul li.first {
-  transform: rotateX(40deg);
-  animation: one 2s infinite;
-  animation-direction: alternate;
-}
-/* line 267, ../scss/components/_blocks.scss */
-.block-user-login form .item-list ul li.last {
-  transform: rotateX(40deg);
-  animation: two 2s infinite;
-  animation-direction: alternate;
-}
-/* line 273, ../scss/components/_blocks.scss */
+/* line 260, ../scss/components/_blocks.scss */
 .block-user-login form .item-list ul li a {
   color: #fff;
 }
@@ -9832,32 +9819,16 @@ html {
   font-size: 19px;
 }
 
-@keyframes one {
-  0% {
-    transform: rotateX(0);
-  }
-  100% {
-    transform: rotateX(50deg);
-  }
-}
-@keyframes two {
-  0% {
-    transform: rotateY(0);
-  }
-  100% {
-    transform: rotateY(70deg);
-  }
-}
-/* line 307, ../scss/components/_blocks.scss */
+/* line 276, ../scss/components/_blocks.scss */
 .block-play-library-custom-pm-block {
   margin-bottom: 30px;
 }
-/* line 311, ../scss/components/_blocks.scss */
+/* line 280, ../scss/components/_blocks.scss */
 .block-play-library-custom-pm-block .block-title {
   margin: 0;
   color: #000;
 }
-/* line 316, ../scss/components/_blocks.scss */
+/* line 285, ../scss/components/_blocks.scss */
 .block-play-library-custom-pm-block .pm-custom {
   padding-top: 17px;
   padding-bottom: 12px;
@@ -9868,15 +9839,15 @@ html {
   align-content: center;
   align-items: center;
 }
-/* line 327, ../scss/components/_blocks.scss */
+/* line 296, ../scss/components/_blocks.scss */
 .block-play-library-custom-pm-block .pm-custom > div:nth-of-type(1) {
   flex: 0 0 78%;
 }
-/* line 331, ../scss/components/_blocks.scss */
+/* line 300, ../scss/components/_blocks.scss */
 .block-play-library-custom-pm-block .pm-custom > div:nth-of-type(2) {
   flex: 0 0 22%;
 }
-/* line 336, ../scss/components/_blocks.scss */
+/* line 305, ../scss/components/_blocks.scss */
 .block-play-library-custom-pm-block .pm-custom .pm {
   -webkit-flex-wrap: wrap;
   flex-wrap: wrap;
@@ -9893,7 +9864,7 @@ html {
 .cs-classic .block-play-library-custom-pm-block .pm-custom .pm, .cs-elegant .block-play-library-custom-pm-block .pm-custom .pm {
   font-size: 19px;
 }
-/* line 346, ../scss/components/_blocks.scss */
+/* line 315, ../scss/components/_blocks.scss */
 .block-play-library-custom-pm-block .pm-custom .pm .pm-subject {
   flex: 0 0 60%;
   padding-right: 10px;
@@ -9901,53 +9872,53 @@ html {
   overflow: hidden;
   text-overflow: ellipsis;
 }
-/* line 354, ../scss/components/_blocks.scss */
+/* line 323, ../scss/components/_blocks.scss */
 .block-play-library-custom-pm-block .pm-custom .pm .pm-subject a {
   font-weight: 700;
   color: #000;
 }
-/* line 359, ../scss/components/_blocks.scss */
+/* line 328, ../scss/components/_blocks.scss */
 .block-play-library-custom-pm-block .pm-custom .pm .pm-subject .pm-new {
   color: #cc0d25;
   display: inline-block;
   padding-right: 5px;
   font-weight: 700;
 }
-/* line 365, ../scss/components/_blocks.scss */
+/* line 334, ../scss/components/_blocks.scss */
 .block-play-library-custom-pm-block .pm-custom .pm .pm-subject .pm-new + * {
   color: #cc0d25;
 }
-/* line 371, ../scss/components/_blocks.scss */
+/* line 340, ../scss/components/_blocks.scss */
 .block-play-library-custom-pm-block .pm-custom .pm .pm-admin {
   padding-right: 10px;
 }
-/* line 375, ../scss/components/_blocks.scss */
+/* line 344, ../scss/components/_blocks.scss */
 .block-play-library-custom-pm-block .pm-custom .pm .pm-admin, .block-play-library-custom-pm-block .pm-custom .pm .pm-date {
   flex: 0 0 20%;
 }
 
-/* line 387, ../scss/components/_blocks.scss */
+/* line 356, ../scss/components/_blocks.scss */
 .flicker-block .owl-controls {
   top: 25% !important;
 }
-/* line 390, ../scss/components/_blocks.scss */
+/* line 359, ../scss/components/_blocks.scss */
 .flicker-block .view-footer {
   padding-left: 35px;
 }
-/* line 393, ../scss/components/_blocks.scss */
+/* line 362, ../scss/components/_blocks.scss */
 .flicker-block .view-content {
   padding: 20px 60px;
 }
-/* line 396, ../scss/components/_blocks.scss */
+/* line 365, ../scss/components/_blocks.scss */
 .flicker-block .flicker-image-wrapper {
   width: calc(100% - 6px);
   margin: auto;
 }
-/* line 399, ../scss/components/_blocks.scss */
+/* line 368, ../scss/components/_blocks.scss */
 .flicker-block .flicker-image-wrapper .flickr-citation {
   display: none;
 }
-/* line 401, ../scss/components/_blocks.scss */
+/* line 370, ../scss/components/_blocks.scss */
 .flicker-block .flicker-image-wrapper .flickr-photoset-img img {
   border: none;
   box-shadow: none;
@@ -12823,32 +12794,32 @@ p.more-link:after {
   right: 2px;
   top: -5px;
 }
-/* line 88, ../scss/pages/_dashboard.scss */
-.page-user-profile .review-wrapper {
+/* line 90, ../scss/pages/_dashboard.scss */
+.page-user-profile .review-wrapper, .page-user-profile .booklist-wrapper {
   -webkit-flex-wrap: wrap;
   flex-wrap: wrap;
   display: -webkit-flex;
   display: flex;
 }
-/* line 94, ../scss/pages/_dashboard.scss */
-.page-user-profile .review-wrapper .count {
+/* line 96, ../scss/pages/_dashboard.scss */
+.page-user-profile .review-wrapper .count, .page-user-profile .booklist-wrapper .count {
   flex: 0 0 20px;
 }
-/* line 98, ../scss/pages/_dashboard.scss */
-.page-user-profile .review-wrapper .title {
+/* line 100, ../scss/pages/_dashboard.scss */
+.page-user-profile .review-wrapper .title, .page-user-profile .booklist-wrapper .title {
   flex: 0 0 calc(100% - 20px);
 }
-/* line 101, ../scss/pages/_dashboard.scss */
-.page-user-profile .review-wrapper .title * {
+/* line 103, ../scss/pages/_dashboard.scss */
+.page-user-profile .review-wrapper .title *, .page-user-profile .booklist-wrapper .title * {
   color: #000;
 }
-/* line 106, ../scss/pages/_dashboard.scss */
-.page-user-profile .review-wrapper .likes {
+/* line 108, ../scss/pages/_dashboard.scss */
+.page-user-profile .review-wrapper .likes, .page-user-profile .booklist-wrapper .likes {
   flex: 0 0 100%;
   padding-left: 20px;
 }
 
-/* line 113, ../scss/pages/_dashboard.scss */
+/* line 115, ../scss/pages/_dashboard.scss */
 .my-dashbord-block {
   padding-bottom: 25px;
   -webkit-flex-wrap: wrap;
@@ -12857,32 +12828,32 @@ p.more-link:after {
   display: flex;
   align-items: baseline;
 }
-/* line 122, ../scss/pages/_dashboard.scss */
+/* line 124, ../scss/pages/_dashboard.scss */
 .my-dashbord-block .view-header {
   flex: 0 0 100%;
 }
-/* line 124, ../scss/pages/_dashboard.scss */
+/* line 126, ../scss/pages/_dashboard.scss */
 .my-dashbord-block .view-header * {
   background: url(../images/big-strokes);
 }
-/* line 129, ../scss/pages/_dashboard.scss */
+/* line 131, ../scss/pages/_dashboard.scss */
 .cs-default .my-dashbord-block .view-header * {
   background-position: -60px -569px;
 }
-/* line 133, ../scss/pages/_dashboard.scss */
+/* line 135, ../scss/pages/_dashboard.scss */
 .cs-classic .my-dashbord-block .view-header * {
   background-position: -60px -225px;
 }
-/* line 137, ../scss/pages/_dashboard.scss */
+/* line 139, ../scss/pages/_dashboard.scss */
 .cs-elegant .my-dashbord-block .view-header * {
   background-position: -60px -914px;
 }
-/* line 143, ../scss/pages/_dashboard.scss */
+/* line 145, ../scss/pages/_dashboard.scss */
 .my-dashbord-block > .view-content {
   flex: 0 0 70%;
   padding-top: 60px;
 }
-/* line 147, ../scss/pages/_dashboard.scss */
+/* line 149, ../scss/pages/_dashboard.scss */
 .my-dashbord-block > .view-content table {
   float: right;
   margin-bottom: 0;
@@ -12890,23 +12861,23 @@ p.more-link:after {
   border: none;
   margin-right: 27px;
 }
-/* line 153, ../scss/pages/_dashboard.scss */
+/* line 155, ../scss/pages/_dashboard.scss */
 .my-dashbord-block > .view-content table tr {
   background: transparent !important;
 }
-/* line 155, ../scss/pages/_dashboard.scss */
+/* line 157, ../scss/pages/_dashboard.scss */
 .my-dashbord-block > .view-content table tr td {
   padding: 10px 5px 0;
 }
-/* line 157, ../scss/pages/_dashboard.scss */
+/* line 159, ../scss/pages/_dashboard.scss */
 .my-dashbord-block > .view-content table tr td img {
   width: 58px;
 }
-/* line 165, ../scss/pages/_dashboard.scss */
+/* line 167, ../scss/pages/_dashboard.scss */
 .my-dashbord-block .attachment {
   flex: 0 0 30%;
 }
-/* line 168, ../scss/pages/_dashboard.scss */
+/* line 170, ../scss/pages/_dashboard.scss */
 .my-dashbord-block .attachment a {
   color: #fff;
 }
@@ -12945,30 +12916,30 @@ p.more-link:after {
   text-rendering: optimizeLegibility;
   -moz-font-smoothing: grayscale;
 }
-/* line 177, ../scss/pages/_dashboard.scss */
+/* line 179, ../scss/pages/_dashboard.scss */
 .my-dashbord-block .attachment .view-content .views-field-nothing .field-content > div {
   padding-left: 35px;
 }
-/* line 180, ../scss/pages/_dashboard.scss */
+/* line 182, ../scss/pages/_dashboard.scss */
 .my-dashbord-block .attachment .view-content .views-field-nothing .image {
   display: table-cell;
   vertical-align: bottom;
 }
-/* line 183, ../scss/pages/_dashboard.scss */
+/* line 185, ../scss/pages/_dashboard.scss */
 .my-dashbord-block .attachment .view-content .views-field-nothing .image h2, .my-dashbord-block .attachment .view-content .views-field-nothing .image .view-reward-activity .view-header *, .view-reward-activity .view-header .my-dashbord-block .attachment .view-content .views-field-nothing .image * {
   display: none;
 }
-/* line 187, ../scss/pages/_dashboard.scss */
+/* line 189, ../scss/pages/_dashboard.scss */
 .my-dashbord-block .attachment .view-content .views-field-nothing .name {
   display: table-cell;
   vertical-align: bottom;
 }
-/* line 190, ../scss/pages/_dashboard.scss */
+/* line 192, ../scss/pages/_dashboard.scss */
 .my-dashbord-block .attachment .view-content .views-field-nothing .name * {
   color: #fff;
   font-weight: 700;
 }
-/* line 199, ../scss/pages/_dashboard.scss */
+/* line 201, ../scss/pages/_dashboard.scss */
 .my-dashbord-block .pagination-centered {
   padding-right: 30px;
   position: absolute;
@@ -12976,7 +12947,7 @@ p.more-link:after {
   right: 22px;
   width: auto;
 }
-/* line 207, ../scss/pages/_dashboard.scss */
+/* line 209, ../scss/pages/_dashboard.scss */
 .my-dashbord-block .pagination-centered .pagination.pager li {
   height: 20px;
   width: 20px;
@@ -12984,54 +12955,54 @@ p.more-link:after {
   margin-left: 3px;
   margin-right: 3px;
 }
-/* line 214, ../scss/pages/_dashboard.scss */
+/* line 216, ../scss/pages/_dashboard.scss */
 .my-dashbord-block .pagination-centered .pagination.pager li.arrow {
   display: none;
 }
-/* line 220, ../scss/pages/_dashboard.scss */
+/* line 222, ../scss/pages/_dashboard.scss */
 .cs-default .my-dashbord-block .pagination-centered .pagination.pager li.current a {
   background: #f6511d;
 }
-/* line 224, ../scss/pages/_dashboard.scss */
+/* line 226, ../scss/pages/_dashboard.scss */
 .cs-classic .my-dashbord-block .pagination-centered .pagination.pager li.current a {
   background: #00a6ed;
 }
-/* line 228, ../scss/pages/_dashboard.scss */
+/* line 230, ../scss/pages/_dashboard.scss */
 .cs-elegant .my-dashbord-block .pagination-centered .pagination.pager li.current a {
   background: #2ec4b6;
 }
-/* line 234, ../scss/pages/_dashboard.scss */
+/* line 236, ../scss/pages/_dashboard.scss */
 .my-dashbord-block .pagination-centered .pagination.pager li a {
   color: transparent;
   background: #fff;
 }
 
-/* line 243, ../scss/pages/_dashboard.scss */
+/* line 245, ../scss/pages/_dashboard.scss */
 .homebox.homebox-auto-save {
   width: calc(100% + 40px);
   margin-left: -20px;
   overflow: hidden;
 }
-/* line 248, ../scss/pages/_dashboard.scss */
+/* line 250, ../scss/pages/_dashboard.scss */
 .homebox.homebox-auto-save #homebox-buttons {
   padding-left: 20px;
   margin-bottom: 30px;
 }
-/* line 257, ../scss/pages/_dashboard.scss */
+/* line 259, ../scss/pages/_dashboard.scss */
 .homebox.homebox-auto-save #homebox-add {
   padding-left: 20px;
   padding-right: 20px;
 }
-/* line 264, ../scss/pages/_dashboard.scss */
+/* line 266, ../scss/pages/_dashboard.scss */
 .homebox.homebox-auto-save #homebox-add .item-list ul li {
   margin-bottom: 0;
   padding-top: 10px;
 }
-/* line 268, ../scss/pages/_dashboard.scss */
+/* line 270, ../scss/pages/_dashboard.scss */
 .homebox.homebox-auto-save #homebox-add .item-list ul li.last {
   float: right;
 }
-/* line 272, ../scss/pages/_dashboard.scss */
+/* line 274, ../scss/pages/_dashboard.scss */
 .homebox.homebox-auto-save #homebox-add .item-list ul li a {
   border: none;
   outline: none;
@@ -13044,27 +13015,27 @@ p.more-link:after {
 .cs-classic .homebox.homebox-auto-save #homebox-add .item-list ul li a, .cs-elegant .homebox.homebox-auto-save #homebox-add .item-list ul li a {
   font-size: 19px;
 }
-/* line 284, ../scss/pages/_dashboard.scss */
+/* line 286, ../scss/pages/_dashboard.scss */
 .homebox.homebox-auto-save .homebox-column-wrapper {
   padding-left: 20px;
   padding-right: 20px;
 }
-/* line 288, ../scss/pages/_dashboard.scss */
+/* line 290, ../scss/pages/_dashboard.scss */
 .homebox.homebox-auto-save .homebox-column-wrapper .homebox-column {
   margin: 0 !important;
   padding: 0 !important;
   background: none !important;
 }
-/* line 294, ../scss/pages/_dashboard.scss */
+/* line 296, ../scss/pages/_dashboard.scss */
 .homebox.homebox-auto-save .homebox-column-wrapper .homebox-portlet {
   border: none !important;
 }
-/* line 298, ../scss/pages/_dashboard.scss */
+/* line 300, ../scss/pages/_dashboard.scss */
 .homebox.homebox-auto-save .homebox-column-wrapper .homebox-portlet-inner {
   border: none !important;
   padding: 0;
 }
-/* line 307, ../scss/pages/_dashboard.scss */
+/* line 309, ../scss/pages/_dashboard.scss */
 .homebox.homebox-auto-save .homebox-column-wrapper .portlet-header {
   border-radius: 15px 15px 0 0;
   color: #fff !important;
@@ -13072,7 +13043,7 @@ p.more-link:after {
   border: none !important;
   position: relative;
 }
-/* line 314, ../scss/pages/_dashboard.scss */
+/* line 316, ../scss/pages/_dashboard.scss */
 .homebox.homebox-auto-save .homebox-column-wrapper .portlet-header .portlet-title:before {
   content: "";
   height: 40px;
@@ -13085,19 +13056,19 @@ p.more-link:after {
   background-image: url("../images/dashboard");
   background-position: -15px -201px;
 }
-/* line 326, ../scss/pages/_dashboard.scss */
+/* line 328, ../scss/pages/_dashboard.scss */
 .cs-default .homebox.homebox-auto-save .homebox-column-wrapper .portlet-header .portlet-title:before {
   background-color: #f6511d;
 }
-/* line 330, ../scss/pages/_dashboard.scss */
+/* line 332, ../scss/pages/_dashboard.scss */
 .cs-classic .homebox.homebox-auto-save .homebox-column-wrapper .portlet-header .portlet-title:before {
   background-color: #084899;
 }
-/* line 334, ../scss/pages/_dashboard.scss */
+/* line 336, ../scss/pages/_dashboard.scss */
 .cs-elegant .homebox.homebox-auto-save .homebox-column-wrapper .portlet-header .portlet-title:before {
   background-color: #2ec4b6;
 }
-/* line 339, ../scss/pages/_dashboard.scss */
+/* line 341, ../scss/pages/_dashboard.scss */
 .homebox.homebox-auto-save .homebox-column-wrapper .portlet-header .portlet-title:after {
   content: "";
   height: 30px;
@@ -13110,7 +13081,7 @@ p.more-link:after {
   left: 0;
   top: 9px;
 }
-/* line 352, ../scss/pages/_dashboard.scss */
+/* line 354, ../scss/pages/_dashboard.scss */
 .homebox.homebox-auto-save .homebox-column-wrapper .portlet-header .portlet-icon {
   color: transparent;
   height: 30px;
@@ -13118,43 +13089,43 @@ p.more-link:after {
   top: 5px;
   background: url("../images/dashboard");
 }
-/* line 359, ../scss/pages/_dashboard.scss */
+/* line 361, ../scss/pages/_dashboard.scss */
 .homebox.homebox-auto-save .homebox-column-wrapper .portlet-header .portlet-icon.portlet-maximize {
   display: none;
 }
-/* line 364, ../scss/pages/_dashboard.scss */
+/* line 366, ../scss/pages/_dashboard.scss */
 .cs-default .homebox.homebox-auto-save .homebox-column-wrapper .portlet-header .portlet-icon.portlet-close {
   background-position: -20px -458px;
 }
-/* line 368, ../scss/pages/_dashboard.scss */
+/* line 370, ../scss/pages/_dashboard.scss */
 .cs-classic .homebox.homebox-auto-save .homebox-column-wrapper .portlet-header .portlet-icon.portlet-close {
   background-position: -20px -391px;
 }
-/* line 372, ../scss/pages/_dashboard.scss */
+/* line 374, ../scss/pages/_dashboard.scss */
 .cs-elegant .homebox.homebox-auto-save .homebox-column-wrapper .portlet-header .portlet-icon.portlet-close {
   background-position: -20px -525px;
 }
-/* line 378, ../scss/pages/_dashboard.scss */
+/* line 380, ../scss/pages/_dashboard.scss */
 .cs-default .homebox.homebox-auto-save .homebox-column-wrapper .portlet-header .portlet-icon.portlet-minus {
   background-position: -20px -794px;
 }
-/* line 382, ../scss/pages/_dashboard.scss */
+/* line 384, ../scss/pages/_dashboard.scss */
 .cs-classic .homebox.homebox-auto-save .homebox-column-wrapper .portlet-header .portlet-icon.portlet-minus {
   background-position: -20px -726px;
 }
-/* line 386, ../scss/pages/_dashboard.scss */
+/* line 388, ../scss/pages/_dashboard.scss */
 .cs-elegant .homebox.homebox-auto-save .homebox-column-wrapper .portlet-header .portlet-icon.portlet-minus {
   background-position: -20px -860px;
 }
-/* line 392, ../scss/pages/_dashboard.scss */
+/* line 394, ../scss/pages/_dashboard.scss */
 .cs-default .homebox.homebox-auto-save .homebox-column-wrapper .portlet-header .portlet-icon.portlet-plus {
   background-position: -20px -994px;
 }
-/* line 396, ../scss/pages/_dashboard.scss */
+/* line 398, ../scss/pages/_dashboard.scss */
 .cs-classic .homebox.homebox-auto-save .homebox-column-wrapper .portlet-header .portlet-icon.portlet-plus {
   background-position: -20px -927px;
 }
-/* line 400, ../scss/pages/_dashboard.scss */
+/* line 402, ../scss/pages/_dashboard.scss */
 .cs-elegant .homebox.homebox-auto-save .homebox-column-wrapper .portlet-header .portlet-icon.portlet-plus {
   background-position: -20px -1061px;
 }
@@ -13185,26 +13156,26 @@ p.more-link:after {
   text-rendering: optimizeLegibility;
   -moz-font-smoothing: grayscale;
 }
-/* line 408, ../scss/pages/_dashboard.scss */
+/* line 410, ../scss/pages/_dashboard.scss */
 .cs-default .homebox.homebox-auto-save .homebox-column-wrapper .portlet-header {
   background: #267fda !important;
   font-size: 22px !important;
 }
-/* line 413, ../scss/pages/_dashboard.scss */
+/* line 415, ../scss/pages/_dashboard.scss */
 .cs-elegant .homebox.homebox-auto-save .homebox-column-wrapper .portlet-header {
   background: #e71d36 !important;
   font-size: 25px !important;
 }
-/* line 418, ../scss/pages/_dashboard.scss */
+/* line 420, ../scss/pages/_dashboard.scss */
 .cs-classic .homebox.homebox-auto-save .homebox-column-wrapper .portlet-header {
   background: #00a6ed !important;
   font-size: 25px !important;
 }
-/* line 424, ../scss/pages/_dashboard.scss */
+/* line 426, ../scss/pages/_dashboard.scss */
 .homebox.homebox-auto-save .homebox-column-wrapper .portlet-content {
   padding: 25px !important;
 }
-/* line 430, ../scss/pages/_dashboard.scss */
+/* line 432, ../scss/pages/_dashboard.scss */
 .homebox.homebox-auto-save .view-header * {
   color: #000;
   font-size: 14px;
@@ -13237,37 +13208,37 @@ p.more-link:after {
   text-rendering: optimizeLegibility;
   -moz-font-smoothing: grayscale;
 }
-/* line 440, ../scss/pages/_dashboard.scss */
+/* line 442, ../scss/pages/_dashboard.scss */
 .homebox.homebox-auto-save .view-rewards-dashboard .reward-hombox-dashboard {
   margin: 5px 0 10px;
 }
-/* line 442, ../scss/pages/_dashboard.scss */
+/* line 444, ../scss/pages/_dashboard.scss */
 .homebox.homebox-auto-save .view-rewards-dashboard .reward-hombox-dashboard > div {
   display: table-cell;
   vertical-align: middle;
 }
-/* line 445, ../scss/pages/_dashboard.scss */
+/* line 447, ../scss/pages/_dashboard.scss */
 .homebox.homebox-auto-save .view-rewards-dashboard .reward-hombox-dashboard > div.image {
   width: 30%;
 }
-/* line 448, ../scss/pages/_dashboard.scss */
+/* line 450, ../scss/pages/_dashboard.scss */
 .homebox.homebox-auto-save .view-rewards-dashboard .reward-hombox-dashboard > div.description {
   width: 70%;
   padding-left: 10px;
 }
-/* line 452, ../scss/pages/_dashboard.scss */
+/* line 454, ../scss/pages/_dashboard.scss */
 .homebox.homebox-auto-save .view-rewards-dashboard .reward-hombox-dashboard > div img {
   width: 58px;
 }
-/* line 458, ../scss/pages/_dashboard.scss */
+/* line 460, ../scss/pages/_dashboard.scss */
 .homebox.homebox-auto-save .view-activities-dashboard .view-footer {
   padding-top: 25px;
 }
-/* line 461, ../scss/pages/_dashboard.scss */
+/* line 463, ../scss/pages/_dashboard.scss */
 .homebox.homebox-auto-save .view-activities-dashboard .view-footer > p {
   margin-bottom: 10px;
 }
-/* line 466, ../scss/pages/_dashboard.scss */
+/* line 468, ../scss/pages/_dashboard.scss */
 .homebox.homebox-auto-save .view-activities-dashboard .field-content {
   -webkit-flex-wrap: wrap;
   flex-wrap: wrap;
@@ -13276,20 +13247,20 @@ p.more-link:after {
   align-content: center;
   align-items: center;
 }
-/* line 475, ../scss/pages/_dashboard.scss */
+/* line 477, ../scss/pages/_dashboard.scss */
 .homebox.homebox-auto-save .view-activities-dashboard .field-content > div.activity-count {
   flex: 0 0 20px;
 }
-/* line 479, ../scss/pages/_dashboard.scss */
+/* line 481, ../scss/pages/_dashboard.scss */
 .homebox.homebox-auto-save .view-activities-dashboard .field-content > div.title {
   flex: 0 0 calc(50% - 10px);
   padding-right: 10px;
 }
-/* line 484, ../scss/pages/_dashboard.scss */
+/* line 486, ../scss/pages/_dashboard.scss */
 .homebox.homebox-auto-save .view-activities-dashboard .field-content > div.completed {
   flex: 0 0 calc(50% - 10px);
 }
-/* line 491, ../scss/pages/_dashboard.scss */
+/* line 493, ../scss/pages/_dashboard.scss */
 .homebox.homebox-auto-save .view-content * {
   font-size: 14px;
 }
@@ -13320,12 +13291,12 @@ p.more-link:after {
   text-rendering: optimizeLegibility;
   -moz-font-smoothing: grayscale;
 }
-/* line 499, ../scss/pages/_dashboard.scss */
+/* line 501, ../scss/pages/_dashboard.scss */
 .homebox.homebox-auto-save .view-footer p {
   width: 100%;
   display: inline-block;
 }
-/* line 503, ../scss/pages/_dashboard.scss */
+/* line 505, ../scss/pages/_dashboard.scss */
 .homebox.homebox-auto-save .view-footer p a {
   float: right;
   font-size: 17px;
@@ -13357,25 +13328,25 @@ p.more-link:after {
   text-rendering: optimizeLegibility;
   -moz-font-smoothing: grayscale;
 }
-/* line 512, ../scss/pages/_dashboard.scss */
+/* line 514, ../scss/pages/_dashboard.scss */
 .homebox.homebox-auto-save .view-footer a.button, .homebox.homebox-auto-save .view-footer .other-programme.view .other-programme .programme-content .sign-up a, .other-programme.view .other-programme .programme-content .sign-up .homebox.homebox-auto-save .view-footer a {
   margin: 10px 0;
   width: 100%;
 }
 
-/* line 524, ../scss/pages/_dashboard.scss */
+/* line 526, ../scss/pages/_dashboard.scss */
 .homebox.homebox-auto-save .homebox-column-wrapper .homebox-draggable.dashboard-activities .portlet-header .portlet-title::before {
   background-position: -15px -13px;
 }
-/* line 530, ../scss/pages/_dashboard.scss */
+/* line 532, ../scss/pages/_dashboard.scss */
 .homebox.homebox-auto-save .homebox-column-wrapper .homebox-draggable.dashboard-reviews .portlet-header .portlet-title::before, .homebox.homebox-auto-save .homebox-column-wrapper .homebox-draggable.dashboard-booklists .portlet-header .portlet-title::before {
   background-position: -9px -78px;
 }
-/* line 536, ../scss/pages/_dashboard.scss */
+/* line 538, ../scss/pages/_dashboard.scss */
 .homebox.homebox-auto-save .homebox-column-wrapper .homebox-draggable.dashboard-following .portlet-header .portlet-title::before {
   background-position: -12px -141px;
 }
-/* line 542, ../scss/pages/_dashboard.scss */
+/* line 544, ../scss/pages/_dashboard.scss */
 .homebox.homebox-auto-save .homebox-column-wrapper .homebox-draggable.dashboard-rewards .portlet-header .portlet-title::before {
   background-position: -11px -321px;
 }
@@ -15112,17 +15083,7 @@ aside .block-menu ul.menu li a.active-trail.active:before {
   display: none;
 }
 
-/* line 8, ../scss/pages/_reward.scss */
-.view-reward-page-views .view-header {
-  /* p {
-    &:first-line {
-      @extend h1;
-     line-height: 45px;
-     display: block;
-    }
-  } */
-}
-/* line 22, ../scss/pages/_reward.scss */
+/* line 13, ../scss/pages/_reward.scss */
 .view-reward-page-views .reward-page-for-kids {
   width: 100%;
   -webkit-flex-wrap: wrap;
@@ -15134,20 +15095,24 @@ aside .block-menu ul.menu li a.active-trail.active:before {
   margin-top: 30px;
   margin-bottom: 30px;
 }
-/* line 32, ../scss/pages/_reward.scss */
+/* line 23, ../scss/pages/_reward.scss */
 .view-reward-page-views .reward-page-for-kids .reward-image-title {
-  flex: 0 0 131px;
+  flex: 0 0 150px;
 }
-/* line 35, ../scss/pages/_reward.scss */
+/* line 26, ../scss/pages/_reward.scss */
 .view-reward-page-views .reward-page-for-kids .description {
-  flex: 0 0 calc(100% - 131px);
+  flex: 0 0 calc(100% - 150px);
+}
+/* line 28, ../scss/pages/_reward.scss */
+.view-reward-page-views .reward-page-for-kids .description div {
+  padding-left: 10px;
 }
 
-/* line 41, ../scss/pages/_reward.scss */
+/* line 35, ../scss/pages/_reward.scss */
 .reward-block-reward-page .view-header {
   margin-bottom: 15px;
 }
-/* line 43, ../scss/pages/_reward.scss */
+/* line 37, ../scss/pages/_reward.scss */
 .reward-block-reward-page .view-header * {
   text-transform: capitalize;
 }
@@ -15178,19 +15143,19 @@ aside .block-menu ul.menu li a.active-trail.active:before {
   text-rendering: optimizeLegibility;
   -moz-font-smoothing: grayscale;
 }
-/* line 46, ../scss/pages/_reward.scss */
+/* line 40, ../scss/pages/_reward.scss */
 .cs-default .reward-block-reward-page .view-header * {
   color: #f6511d;
 }
-/* line 49, ../scss/pages/_reward.scss */
+/* line 43, ../scss/pages/_reward.scss */
 .cs-classic .reward-block-reward-page .view-header * {
   color: #00a6ed;
 }
-/* line 52, ../scss/pages/_reward.scss */
+/* line 46, ../scss/pages/_reward.scss */
 .cs-elegant .reward-block-reward-page .view-header * {
   color: #2ec4b6;
 }
-/* line 57, ../scss/pages/_reward.scss */
+/* line 51, ../scss/pages/_reward.scss */
 .reward-block-reward-page .view-content {
   margin-bottom: 35px;
   -webkit-flex-wrap: wrap;
@@ -15200,7 +15165,7 @@ aside .block-menu ul.menu li a.active-trail.active:before {
   width: calc(100% + 40px);
   margin-left: -20px;
 }
-/* line 65, ../scss/pages/_reward.scss */
+/* line 59, ../scss/pages/_reward.scss */
 .reward-block-reward-page .view-content .views-row {
   flex: 0 0 100px;
   margin-left: 20px;
@@ -15208,7 +15173,7 @@ aside .block-menu ul.menu li a.active-trail.active:before {
   text-align: center;
 }
 
-/* line 74, ../scss/pages/_reward.scss */
+/* line 68, ../scss/pages/_reward.scss */
 .left-sidebar-reward .reward-sidebar-block-reward-page {
   -webkit-flex-wrap: wrap;
   flex-wrap: wrap;
@@ -15218,11 +15183,11 @@ aside .block-menu ul.menu li a.active-trail.active:before {
   align-items: center;
   margin-bottom: 10px;
 }
-/* line 82, ../scss/pages/_reward.scss */
+/* line 76, ../scss/pages/_reward.scss */
 .left-sidebar-reward .reward-sidebar-block-reward-page .image {
   flex: 0 0 80px;
 }
-/* line 85, ../scss/pages/_reward.scss */
+/* line 79, ../scss/pages/_reward.scss */
 .left-sidebar-reward .reward-sidebar-block-reward-page .description {
   flex: 0 0 calc(100% - 80px);
 }

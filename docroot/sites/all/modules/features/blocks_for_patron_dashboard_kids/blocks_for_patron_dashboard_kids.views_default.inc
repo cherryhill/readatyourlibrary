@@ -64,8 +64,8 @@ function blocks_for_patron_dashboard_kids_views_default_views() {
   $handler->display->display_options['footer']['area']['table'] = 'views';
   $handler->display->display_options['footer']['area']['field'] = 'area';
   $handler->display->display_options['footer']['area']['content'] = '<p ><a class="btn btn-large full" href = "../activities">View all completed activities</a></p>
-<p><a class="btn btn-large full" href = "#">View all completed activities</a></p>
-<p><a class="btn btn-large full" href = "#">View all completed activities</a></p>';
+<p><a class="btn btn-large full" href = "#">Reported a Completed Activity</a></p>
+<p><a class="btn btn-large full" href = "#">Show My Progress</a></p>';
   $handler->display->display_options['footer']['area']['format'] = 'full_html';
   $handler->display->display_options['defaults']['fields'] = FALSE;
   /* Field: Activity: Title */
