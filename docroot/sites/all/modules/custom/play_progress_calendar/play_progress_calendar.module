@@ -164,7 +164,7 @@ function calendar_page() {
   } 
   
   else {
-    $next_rew =  t('<strong>Congratulations!<strong> You have completed Reading Program.'); 
+    $next_rew =  t('<strong>Congratulations!</strong> You have completed Reading Program.'); 
   }
   //Print message que from drupal_set_message
   echo json_encode(array('next_reward'=>$next_rew, 'drupal_message'=>(theme('status_messages')))); 
