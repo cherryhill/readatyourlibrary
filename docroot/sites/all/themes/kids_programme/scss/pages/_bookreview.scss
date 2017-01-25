@@ -97,12 +97,14 @@
 	.date {
 		margin-bottom: 10px;
 	}
-	.review, .views-field-field-user-avatar,.user {
+	.review, .views-field-field-user-avatar {
     float: left;
     margin-right: 7px;
-    a {
-    	text-decoration: none;
-    }
+	}
+	.user {
+		a {
+	    text-decoration: none;
+	  }
 	}
 }
 .node-link {
@@ -181,6 +183,15 @@
 	.pagination {
 		a {
 			text-decoration: none;
+		}
+	}
+}
+.not-logged-in {
+	.book-reviews-page {
+		.user {
+			a {
+				color: #7e7e7e;
+			}
 		}
 	}
 }
