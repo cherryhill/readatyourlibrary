@@ -2025,8 +2025,11 @@ h3,
 aside .block-menu ul.menu li a,
 h4,
 .booklist-wrapp .book-body-wrapp div,
+.reviews-wrapper .reviews-title,
 h5,
 .booklist-wrapp .book-user-likes > div,
+.reviews-wrapper .review-wrapp,
+.reviews-wrapper .like-count,
 h6,
 pre,
 form,
@@ -2074,7 +2077,7 @@ p aside {
 
 /* Default header styles */
 /* line 182, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_type.scss */
-h1, .font-stroke-main, .other-programme.view .view-header *, .view-reward-page-views .view-footer *, h2, .view-reward-activity .view-header *, h3, aside .block-menu ul.menu li a, h4, .booklist-wrapp .book-body-wrapp div, h5, .booklist-wrapp .book-user-likes > div, h6 {
+h1, .font-stroke-main, .other-programme.view .view-header *, .view-reward-page-views .view-footer *, h2, .view-reward-activity .view-header *, h3, aside .block-menu ul.menu li a, h4, .booklist-wrapp .book-body-wrapp div, .reviews-wrapper .reviews-title, h5, .booklist-wrapp .book-user-likes > div, .reviews-wrapper .review-wrapp, .reviews-wrapper .like-count, h6 {
   font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
   font-weight: bold;
   font-style: normal;
@@ -2085,7 +2088,7 @@ h1, .font-stroke-main, .other-programme.view .view-header *, .view-reward-page-v
   line-height: 1.2125em;
 }
 /* line 192, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_type.scss */
-h1 small, .font-stroke-main small, .other-programme.view .view-header * small, .view-reward-page-views .view-footer * small, h2 small, .view-reward-activity .view-header * small, h3 small, aside .block-menu ul.menu li a small, h4 small, .booklist-wrapp .book-body-wrapp div small, h5 small, .booklist-wrapp .book-user-likes > div small, h6 small {
+h1 small, .font-stroke-main small, .other-programme.view .view-header * small, .view-reward-page-views .view-footer * small, h2 small, .view-reward-activity .view-header * small, h3 small, aside .block-menu ul.menu li a small, h4 small, .booklist-wrapp .book-body-wrapp div small, .reviews-wrapper .reviews-title small, h5 small, .booklist-wrapp .book-user-likes > div small, .reviews-wrapper .review-wrapp small, .reviews-wrapper .like-count small, h6 small {
   font-size: 60%;
   color: #6f6f6f;
   line-height: 0;
@@ -2107,12 +2110,12 @@ h3, aside .block-menu ul.menu li a {
 }
 
 /* line 202, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_type.scss */
-h4, .booklist-wrapp .book-body-wrapp div {
+h4, .booklist-wrapp .book-body-wrapp div, .reviews-wrapper .reviews-title {
   font-size: 1.125em;
 }
 
 /* line 203, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_type.scss */
-h5, .booklist-wrapp .book-user-likes > div {
+h5, .booklist-wrapp .book-user-likes > div, .reviews-wrapper .review-wrapp, .reviews-wrapper .like-count {
   font-size: 1.125em;
 }
 
@@ -2308,7 +2311,7 @@ blockquote p {
 
 @media only screen and (min-width: 768px) {
   /* line 368, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_type.scss */
-  h1, .font-stroke-main, .other-programme.view .view-header *, .view-reward-page-views .view-footer *, h2, .view-reward-activity .view-header *, h3, aside .block-menu ul.menu li a, h4, .booklist-wrapp .book-body-wrapp div, h5, .booklist-wrapp .book-user-likes > div, h6 {
+  h1, .font-stroke-main, .other-programme.view .view-header *, .view-reward-page-views .view-footer *, h2, .view-reward-activity .view-header *, h3, aside .block-menu ul.menu li a, h4, .booklist-wrapp .book-body-wrapp div, .reviews-wrapper .reviews-title, h5, .booklist-wrapp .book-user-likes > div, .reviews-wrapper .review-wrapp, .reviews-wrapper .like-count, h6 {
     line-height: 1.4;
   }
 
@@ -2328,7 +2331,7 @@ blockquote p {
   }
 
   /* line 372, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_type.scss */
-  h4, .booklist-wrapp .book-body-wrapp div {
+  h4, .booklist-wrapp .book-body-wrapp div, .reviews-wrapper .reviews-title {
     font-size: 1.4375em;
   }
 }
@@ -4883,11 +4886,11 @@ label.error {
   font-weight: bold;
 }
 /* line 359, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_top-bar.scss */
-.top-bar-section .dropdown li.title h5, .top-bar-section .dropdown li.title .booklist-wrapp .book-user-likes > div, .booklist-wrapp .top-bar-section .dropdown li.title .book-user-likes > div {
+.top-bar-section .dropdown li.title h5, .top-bar-section .dropdown li.title .booklist-wrapp .book-user-likes > div, .booklist-wrapp .top-bar-section .dropdown li.title .book-user-likes > div, .top-bar-section .dropdown li.title .reviews-wrapper .review-wrapp, .reviews-wrapper .top-bar-section .dropdown li.title .review-wrapp, .top-bar-section .dropdown li.title .reviews-wrapper .like-count, .reviews-wrapper .top-bar-section .dropdown li.title .like-count {
   margin-bottom: 0;
 }
 /* line 360, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_top-bar.scss */
-.top-bar-section .dropdown li.title h5 a, .top-bar-section .dropdown li.title .booklist-wrapp .book-user-likes > div a, .booklist-wrapp .top-bar-section .dropdown li.title .book-user-likes > div a {
+.top-bar-section .dropdown li.title h5 a, .top-bar-section .dropdown li.title .booklist-wrapp .book-user-likes > div a, .booklist-wrapp .top-bar-section .dropdown li.title .book-user-likes > div a, .top-bar-section .dropdown li.title .reviews-wrapper .review-wrapp a, .reviews-wrapper .top-bar-section .dropdown li.title .review-wrapp a, .top-bar-section .dropdown li.title .reviews-wrapper .like-count a, .reviews-wrapper .top-bar-section .dropdown li.title .like-count a {
   color: #fff;
   line-height: 22.5px;
   display: block;
@@ -5604,9 +5607,15 @@ aside .block-menu ul.menu li .joyride-tip-guide a,
 .joyride-tip-guide h4,
 .joyride-tip-guide .booklist-wrapp .book-body-wrapp div,
 .booklist-wrapp .book-body-wrapp .joyride-tip-guide div,
+.joyride-tip-guide .reviews-wrapper .reviews-title,
+.reviews-wrapper .joyride-tip-guide .reviews-title,
 .joyride-tip-guide h5,
 .joyride-tip-guide .booklist-wrapp .book-user-likes > div,
 .booklist-wrapp .joyride-tip-guide .book-user-likes > div,
+.joyride-tip-guide .reviews-wrapper .review-wrapp,
+.reviews-wrapper .joyride-tip-guide .review-wrapp,
+.joyride-tip-guide .reviews-wrapper .like-count,
+.reviews-wrapper .joyride-tip-guide .like-count,
 .joyride-tip-guide h6 {
   line-height: 1.25;
   margin: 0;
@@ -6512,16 +6521,16 @@ ul.pagination li {
   margin-bottom: 0;
 }
 /* line 50, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_panels.scss */
-.panel h1, .panel .font-stroke-main, .panel .other-programme.view .view-header *, .other-programme.view .view-header .panel *, .panel .view-reward-page-views .view-footer *, .view-reward-page-views .view-footer .panel *, .panel h2, .panel .view-reward-activity .view-header *, .view-reward-activity .view-header .panel *, .panel h3, .panel aside .block-menu ul.menu li a, aside .block-menu ul.menu li .panel a, .panel h4, .panel .booklist-wrapp .book-body-wrapp div, .booklist-wrapp .book-body-wrapp .panel div, .panel h5, .panel .booklist-wrapp .book-user-likes > div, .booklist-wrapp .panel .book-user-likes > div, .panel h6, .panel p {
+.panel h1, .panel .font-stroke-main, .panel .other-programme.view .view-header *, .other-programme.view .view-header .panel *, .panel .view-reward-page-views .view-footer *, .view-reward-page-views .view-footer .panel *, .panel h2, .panel .view-reward-activity .view-header *, .view-reward-activity .view-header .panel *, .panel h3, .panel aside .block-menu ul.menu li a, aside .block-menu ul.menu li .panel a, .panel h4, .panel .booklist-wrapp .book-body-wrapp div, .booklist-wrapp .book-body-wrapp .panel div, .panel .reviews-wrapper .reviews-title, .reviews-wrapper .panel .reviews-title, .panel h5, .panel .booklist-wrapp .book-user-likes > div, .booklist-wrapp .panel .book-user-likes > div, .panel .reviews-wrapper .review-wrapp, .reviews-wrapper .panel .review-wrapp, .panel .reviews-wrapper .like-count, .reviews-wrapper .panel .like-count, .panel h6, .panel p {
   color: #333;
 }
 /* line 54, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_panels.scss */
-.panel h1, .panel .font-stroke-main, .panel .other-programme.view .view-header *, .other-programme.view .view-header .panel *, .panel .view-reward-page-views .view-footer *, .view-reward-page-views .view-footer .panel *, .panel h2, .panel .view-reward-activity .view-header *, .view-reward-activity .view-header .panel *, .panel h3, .panel aside .block-menu ul.menu li a, aside .block-menu ul.menu li .panel a, .panel h4, .panel .booklist-wrapp .book-body-wrapp div, .booklist-wrapp .book-body-wrapp .panel div, .panel h5, .panel .booklist-wrapp .book-user-likes > div, .booklist-wrapp .panel .book-user-likes > div, .panel h6 {
+.panel h1, .panel .font-stroke-main, .panel .other-programme.view .view-header *, .other-programme.view .view-header .panel *, .panel .view-reward-page-views .view-footer *, .view-reward-page-views .view-footer .panel *, .panel h2, .panel .view-reward-activity .view-header *, .view-reward-activity .view-header .panel *, .panel h3, .panel aside .block-menu ul.menu li a, aside .block-menu ul.menu li .panel a, .panel h4, .panel .booklist-wrapp .book-body-wrapp div, .booklist-wrapp .book-body-wrapp .panel div, .panel .reviews-wrapper .reviews-title, .reviews-wrapper .panel .reviews-title, .panel h5, .panel .booklist-wrapp .book-user-likes > div, .booklist-wrapp .panel .book-user-likes > div, .panel .reviews-wrapper .review-wrapp, .reviews-wrapper .panel .review-wrapp, .panel .reviews-wrapper .like-count, .reviews-wrapper .panel .like-count, .panel h6 {
   line-height: 1;
   margin-bottom: 0.625em;
 }
 /* line 56, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_panels.scss */
-.panel h1.subheader, .panel .subheader.font-stroke-main, .panel .other-programme.view .view-header .subheader, .other-programme.view .view-header .panel .subheader, .panel .view-reward-page-views .view-footer .subheader, .view-reward-page-views .view-footer .panel .subheader, .panel h2.subheader, .panel .view-reward-activity .view-header .subheader, .view-reward-activity .view-header .panel .subheader, .panel h3.subheader, .panel aside .block-menu ul.menu li a.subheader, aside .block-menu ul.menu li .panel a.subheader, .panel h4.subheader, .panel .booklist-wrapp .book-body-wrapp div.subheader, .booklist-wrapp .book-body-wrapp .panel div.subheader, .panel h5.subheader, .panel .booklist-wrapp .book-user-likes > div.subheader, .booklist-wrapp .panel .book-user-likes > div.subheader, .panel h6.subheader {
+.panel h1.subheader, .panel .subheader.font-stroke-main, .panel .other-programme.view .view-header .subheader, .other-programme.view .view-header .panel .subheader, .panel .view-reward-page-views .view-footer .subheader, .view-reward-page-views .view-footer .panel .subheader, .panel h2.subheader, .panel .view-reward-activity .view-header .subheader, .view-reward-activity .view-header .panel .subheader, .panel h3.subheader, .panel aside .block-menu ul.menu li a.subheader, aside .block-menu ul.menu li .panel a.subheader, .panel h4.subheader, .panel .booklist-wrapp .book-body-wrapp div.subheader, .booklist-wrapp .book-body-wrapp .panel div.subheader, .panel .reviews-wrapper .subheader.reviews-title, .reviews-wrapper .panel .subheader.reviews-title, .panel h5.subheader, .panel .booklist-wrapp .book-user-likes > div.subheader, .booklist-wrapp .panel .book-user-likes > div.subheader, .panel .reviews-wrapper .subheader.review-wrapp, .reviews-wrapper .panel .subheader.review-wrapp, .panel .reviews-wrapper .subheader.like-count, .reviews-wrapper .panel .subheader.like-count, .panel h6.subheader {
   line-height: 1.4;
 }
 /* line 68, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_panels.scss */
@@ -6544,16 +6553,16 @@ ul.pagination li {
   margin-bottom: 0;
 }
 /* line 51, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_panels.scss */
-.panel.callout h1, .panel.callout .font-stroke-main, .panel.callout .other-programme.view .view-header *, .other-programme.view .view-header .panel.callout *, .panel.callout .view-reward-page-views .view-footer *, .view-reward-page-views .view-footer .panel.callout *, .panel.callout h2, .panel.callout .view-reward-activity .view-header *, .view-reward-activity .view-header .panel.callout *, .panel.callout h3, .panel.callout aside .block-menu ul.menu li a, aside .block-menu ul.menu li .panel.callout a, .panel.callout h4, .panel.callout .booklist-wrapp .book-body-wrapp div, .booklist-wrapp .book-body-wrapp .panel.callout div, .panel.callout h5, .panel.callout .booklist-wrapp .book-user-likes > div, .booklist-wrapp .panel.callout .book-user-likes > div, .panel.callout h6, .panel.callout p {
+.panel.callout h1, .panel.callout .font-stroke-main, .panel.callout .other-programme.view .view-header *, .other-programme.view .view-header .panel.callout *, .panel.callout .view-reward-page-views .view-footer *, .view-reward-page-views .view-footer .panel.callout *, .panel.callout h2, .panel.callout .view-reward-activity .view-header *, .view-reward-activity .view-header .panel.callout *, .panel.callout h3, .panel.callout aside .block-menu ul.menu li a, aside .block-menu ul.menu li .panel.callout a, .panel.callout h4, .panel.callout .booklist-wrapp .book-body-wrapp div, .booklist-wrapp .book-body-wrapp .panel.callout div, .panel.callout .reviews-wrapper .reviews-title, .reviews-wrapper .panel.callout .reviews-title, .panel.callout h5, .panel.callout .booklist-wrapp .book-user-likes > div, .booklist-wrapp .panel.callout .book-user-likes > div, .panel.callout .reviews-wrapper .review-wrapp, .reviews-wrapper .panel.callout .review-wrapp, .panel.callout .reviews-wrapper .like-count, .reviews-wrapper .panel.callout .like-count, .panel.callout h6, .panel.callout p {
   color: #fff;
 }
 /* line 54, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_panels.scss */
-.panel.callout h1, .panel.callout .font-stroke-main, .panel.callout .other-programme.view .view-header *, .other-programme.view .view-header .panel.callout *, .panel.callout .view-reward-page-views .view-footer *, .view-reward-page-views .view-footer .panel.callout *, .panel.callout h2, .panel.callout .view-reward-activity .view-header *, .view-reward-activity .view-header .panel.callout *, .panel.callout h3, .panel.callout aside .block-menu ul.menu li a, aside .block-menu ul.menu li .panel.callout a, .panel.callout h4, .panel.callout .booklist-wrapp .book-body-wrapp div, .booklist-wrapp .book-body-wrapp .panel.callout div, .panel.callout h5, .panel.callout .booklist-wrapp .book-user-likes > div, .booklist-wrapp .panel.callout .book-user-likes > div, .panel.callout h6 {
+.panel.callout h1, .panel.callout .font-stroke-main, .panel.callout .other-programme.view .view-header *, .other-programme.view .view-header .panel.callout *, .panel.callout .view-reward-page-views .view-footer *, .view-reward-page-views .view-footer .panel.callout *, .panel.callout h2, .panel.callout .view-reward-activity .view-header *, .view-reward-activity .view-header .panel.callout *, .panel.callout h3, .panel.callout aside .block-menu ul.menu li a, aside .block-menu ul.menu li .panel.callout a, .panel.callout h4, .panel.callout .booklist-wrapp .book-body-wrapp div, .booklist-wrapp .book-body-wrapp .panel.callout div, .panel.callout .reviews-wrapper .reviews-title, .reviews-wrapper .panel.callout .reviews-title, .panel.callout h5, .panel.callout .booklist-wrapp .book-user-likes > div, .booklist-wrapp .panel.callout .book-user-likes > div, .panel.callout .reviews-wrapper .review-wrapp, .reviews-wrapper .panel.callout .review-wrapp, .panel.callout .reviews-wrapper .like-count, .reviews-wrapper .panel.callout .like-count, .panel.callout h6 {
   line-height: 1;
   margin-bottom: 0.625em;
 }
 /* line 56, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_panels.scss */
-.panel.callout h1.subheader, .panel.callout .subheader.font-stroke-main, .panel.callout .other-programme.view .view-header .subheader, .other-programme.view .view-header .panel.callout .subheader, .panel.callout .view-reward-page-views .view-footer .subheader, .view-reward-page-views .view-footer .panel.callout .subheader, .panel.callout h2.subheader, .panel.callout .view-reward-activity .view-header .subheader, .view-reward-activity .view-header .panel.callout .subheader, .panel.callout h3.subheader, .panel.callout aside .block-menu ul.menu li a.subheader, aside .block-menu ul.menu li .panel.callout a.subheader, .panel.callout h4.subheader, .panel.callout .booklist-wrapp .book-body-wrapp div.subheader, .booklist-wrapp .book-body-wrapp .panel.callout div.subheader, .panel.callout h5.subheader, .panel.callout .booklist-wrapp .book-user-likes > div.subheader, .booklist-wrapp .panel.callout .book-user-likes > div.subheader, .panel.callout h6.subheader {
+.panel.callout h1.subheader, .panel.callout .subheader.font-stroke-main, .panel.callout .other-programme.view .view-header .subheader, .other-programme.view .view-header .panel.callout .subheader, .panel.callout .view-reward-page-views .view-footer .subheader, .view-reward-page-views .view-footer .panel.callout .subheader, .panel.callout h2.subheader, .panel.callout .view-reward-activity .view-header .subheader, .view-reward-activity .view-header .panel.callout .subheader, .panel.callout h3.subheader, .panel.callout aside .block-menu ul.menu li a.subheader, aside .block-menu ul.menu li .panel.callout a.subheader, .panel.callout h4.subheader, .panel.callout .booklist-wrapp .book-body-wrapp div.subheader, .booklist-wrapp .book-body-wrapp .panel.callout div.subheader, .panel.callout .reviews-wrapper .subheader.reviews-title, .reviews-wrapper .panel.callout .subheader.reviews-title, .panel.callout h5.subheader, .panel.callout .booklist-wrapp .book-user-likes > div.subheader, .booklist-wrapp .panel.callout .book-user-likes > div.subheader, .panel.callout .reviews-wrapper .subheader.review-wrapp, .reviews-wrapper .panel.callout .subheader.review-wrapp, .panel.callout .reviews-wrapper .subheader.like-count, .reviews-wrapper .panel.callout .subheader.like-count, .panel.callout h6.subheader {
   line-height: 1.4;
 }
 /* line 71, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_panels.scss */
@@ -7414,7 +7423,7 @@ a.th {
 }
 
 /* line 2, ../scss/base/_common.scss */
-.yellow, .yellow-commonblock, .block-play-library-custom-pm-block, .view-booklist-page-view .view-filters, .homebox.homebox-auto-save #homebox-add .item-list, .homebox.homebox-auto-save .homebox-column-wrapper .homebox-portlet-inner, .progress-page-wrap #wrap, .cs-default .l-header .pre-header, .cs-classic .l-header .header-middle, .cs-default .button, .cs-default .other-programme.view .other-programme .programme-content .sign-up a, .other-programme.view .other-programme .programme-content .sign-up .cs-default a, .cs-default button, .cs-elegant .btn.btn-large.msg.new, .cs-default .btn.btn-primary, .cs-elegant .mobile-menu ul.mobile-top-menu li a.msg.new, .page-reviews .view-filters, .page-messages.cs-default .message-button, .page-messages.cs-default #page-title.title + .primary-tabs + ul.action-links li a, #page-title.title + .primary-tabs + ul.action-links li .page-messages.cs-default a, .page-messages.cs-default form fieldset legend a, .page-messages.cs-default .chosen-container a, .page-messages.cs-default #edit-cancel, .page-messages.cs-default .privatemsg-message-actions a, .page-messages.cs-default .chosen-drop {
+.yellow, .yellow-commonblock, .block-play-library-custom-pm-block, .view-booklist-page-view .view-filters, .page-reviews .view-filters, .homebox.homebox-auto-save #homebox-add .item-list, .homebox.homebox-auto-save .homebox-column-wrapper .homebox-portlet-inner, .progress-page-wrap #wrap, .cs-default .l-header .pre-header, .cs-classic .l-header .header-middle, .cs-default .button, .cs-default .other-programme.view .other-programme .programme-content .sign-up a, .other-programme.view .other-programme .programme-content .sign-up .cs-default a, .cs-default button, .cs-elegant .btn.btn-large.msg.new, .cs-default .btn.btn-primary, .cs-elegant .mobile-menu ul.mobile-top-menu li a.msg.new, .page-messages.cs-default .message-button, .page-messages.cs-default #page-title.title + .primary-tabs + ul.action-links li a, #page-title.title + .primary-tabs + ul.action-links li .page-messages.cs-default a, .page-messages.cs-default form fieldset legend a, .page-messages.cs-default .chosen-container a, .page-messages.cs-default #edit-cancel, .page-messages.cs-default .privatemsg-message-actions a, .page-messages.cs-default .chosen-drop {
   background: #fdeb52;
 }
 
@@ -7707,7 +7716,7 @@ a.th {
 }
 
 /* line 182, ../scss/base/_common.scss */
-.yellow-commonblock, .block-play-library-custom-pm-block, .view-booklist-page-view .view-filters, .homebox.homebox-auto-save #homebox-add .item-list, .homebox.homebox-auto-save .homebox-column-wrapper .homebox-portlet-inner, .progress-page-wrap #wrap {
+.yellow-commonblock, .block-play-library-custom-pm-block, .view-booklist-page-view .view-filters, .page-reviews .view-filters, .homebox.homebox-auto-save #homebox-add .item-list, .homebox.homebox-auto-save .homebox-column-wrapper .homebox-portlet-inner, .progress-page-wrap #wrap {
   padding: 14px 25px 15px;
   color: #000;
   border-radius: 15px;
@@ -7716,15 +7725,15 @@ a.th {
   margin-bottom: 35px;
 }
 /* line 151, ../scss/base/_mixins.scss */
-.cs-default .yellow-commonblock, .cs-default .block-play-library-custom-pm-block, .cs-default .view-booklist-page-view .view-filters, .view-booklist-page-view .cs-default .view-filters, .cs-default .homebox.homebox-auto-save #homebox-add .item-list, .homebox.homebox-auto-save #homebox-add .cs-default .item-list, .cs-default .homebox.homebox-auto-save .homebox-column-wrapper .homebox-portlet-inner, .homebox.homebox-auto-save .homebox-column-wrapper .cs-default .homebox-portlet-inner, .cs-default .progress-page-wrap #wrap, .progress-page-wrap .cs-default #wrap {
+.cs-default .yellow-commonblock, .cs-default .block-play-library-custom-pm-block, .cs-default .view-booklist-page-view .view-filters, .view-booklist-page-view .cs-default .view-filters, .cs-default .page-reviews .view-filters, .page-reviews .cs-default .view-filters, .cs-default .homebox.homebox-auto-save #homebox-add .item-list, .homebox.homebox-auto-save #homebox-add .cs-default .item-list, .cs-default .homebox.homebox-auto-save .homebox-column-wrapper .homebox-portlet-inner, .homebox.homebox-auto-save .homebox-column-wrapper .cs-default .homebox-portlet-inner, .cs-default .progress-page-wrap #wrap, .progress-page-wrap .cs-default #wrap {
   font-size: 17px;
 }
 /* line 155, ../scss/base/_mixins.scss */
-.cs-classic .yellow-commonblock, .cs-classic .block-play-library-custom-pm-block, .cs-classic .view-booklist-page-view .view-filters, .view-booklist-page-view .cs-classic .view-filters, .cs-classic .homebox.homebox-auto-save #homebox-add .item-list, .homebox.homebox-auto-save #homebox-add .cs-classic .item-list, .cs-classic .homebox.homebox-auto-save .homebox-column-wrapper .homebox-portlet-inner, .homebox.homebox-auto-save .homebox-column-wrapper .cs-classic .homebox-portlet-inner, .cs-classic .progress-page-wrap #wrap, .progress-page-wrap .cs-classic #wrap, .cs-elegant .yellow-commonblock, .cs-elegant .block-play-library-custom-pm-block, .cs-elegant .view-booklist-page-view .view-filters, .view-booklist-page-view .cs-elegant .view-filters, .cs-elegant .homebox.homebox-auto-save #homebox-add .item-list, .homebox.homebox-auto-save #homebox-add .cs-elegant .item-list, .cs-elegant .homebox.homebox-auto-save .homebox-column-wrapper .homebox-portlet-inner, .homebox.homebox-auto-save .homebox-column-wrapper .cs-elegant .homebox-portlet-inner, .cs-elegant .progress-page-wrap #wrap, .progress-page-wrap .cs-elegant #wrap {
+.cs-classic .yellow-commonblock, .cs-classic .block-play-library-custom-pm-block, .cs-classic .view-booklist-page-view .view-filters, .view-booklist-page-view .cs-classic .view-filters, .cs-classic .page-reviews .view-filters, .page-reviews .cs-classic .view-filters, .cs-classic .homebox.homebox-auto-save #homebox-add .item-list, .homebox.homebox-auto-save #homebox-add .cs-classic .item-list, .cs-classic .homebox.homebox-auto-save .homebox-column-wrapper .homebox-portlet-inner, .homebox.homebox-auto-save .homebox-column-wrapper .cs-classic .homebox-portlet-inner, .cs-classic .progress-page-wrap #wrap, .progress-page-wrap .cs-classic #wrap, .cs-elegant .yellow-commonblock, .cs-elegant .block-play-library-custom-pm-block, .cs-elegant .view-booklist-page-view .view-filters, .view-booklist-page-view .cs-elegant .view-filters, .cs-elegant .page-reviews .view-filters, .page-reviews .cs-elegant .view-filters, .cs-elegant .homebox.homebox-auto-save #homebox-add .item-list, .homebox.homebox-auto-save #homebox-add .cs-elegant .item-list, .cs-elegant .homebox.homebox-auto-save .homebox-column-wrapper .homebox-portlet-inner, .homebox.homebox-auto-save .homebox-column-wrapper .cs-elegant .homebox-portlet-inner, .cs-elegant .progress-page-wrap #wrap, .progress-page-wrap .cs-elegant #wrap {
   font-size: 19px;
 }
 /* line 49, ../scss/base/_mixins.scss */
-.cs-default .yellow-commonblock, .cs-default .block-play-library-custom-pm-block, .cs-default .view-booklist-page-view .view-filters, .view-booklist-page-view .cs-default .view-filters, .cs-default .homebox.homebox-auto-save #homebox-add .item-list, .homebox.homebox-auto-save #homebox-add .cs-default .item-list, .cs-default .homebox.homebox-auto-save .homebox-column-wrapper .homebox-portlet-inner, .homebox.homebox-auto-save .homebox-column-wrapper .cs-default .homebox-portlet-inner, .cs-default .progress-page-wrap #wrap, .progress-page-wrap .cs-default #wrap {
+.cs-default .yellow-commonblock, .cs-default .block-play-library-custom-pm-block, .cs-default .view-booklist-page-view .view-filters, .view-booklist-page-view .cs-default .view-filters, .cs-default .page-reviews .view-filters, .page-reviews .cs-default .view-filters, .cs-default .homebox.homebox-auto-save #homebox-add .item-list, .homebox.homebox-auto-save #homebox-add .cs-default .item-list, .cs-default .homebox.homebox-auto-save .homebox-column-wrapper .homebox-portlet-inner, .homebox.homebox-auto-save .homebox-column-wrapper .cs-default .homebox-portlet-inner, .cs-default .progress-page-wrap #wrap, .progress-page-wrap .cs-default #wrap {
   font-family: "arial";
   font-weight: normal;
   -webkit-font-smoothing: antialiased;
@@ -7733,7 +7742,7 @@ a.th {
   -moz-font-smoothing: grayscale;
 }
 /* line 58, ../scss/base/_mixins.scss */
-.cs-classic .yellow-commonblock, .cs-classic .block-play-library-custom-pm-block, .cs-classic .view-booklist-page-view .view-filters, .view-booklist-page-view .cs-classic .view-filters, .cs-classic .homebox.homebox-auto-save #homebox-add .item-list, .homebox.homebox-auto-save #homebox-add .cs-classic .item-list, .cs-classic .homebox.homebox-auto-save .homebox-column-wrapper .homebox-portlet-inner, .homebox.homebox-auto-save .homebox-column-wrapper .cs-classic .homebox-portlet-inner, .cs-classic .progress-page-wrap #wrap, .progress-page-wrap .cs-classic #wrap {
+.cs-classic .yellow-commonblock, .cs-classic .block-play-library-custom-pm-block, .cs-classic .view-booklist-page-view .view-filters, .view-booklist-page-view .cs-classic .view-filters, .cs-classic .page-reviews .view-filters, .page-reviews .cs-classic .view-filters, .cs-classic .homebox.homebox-auto-save #homebox-add .item-list, .homebox.homebox-auto-save #homebox-add .cs-classic .item-list, .cs-classic .homebox.homebox-auto-save .homebox-column-wrapper .homebox-portlet-inner, .homebox.homebox-auto-save .homebox-column-wrapper .cs-classic .homebox-portlet-inner, .cs-classic .progress-page-wrap #wrap, .progress-page-wrap .cs-classic #wrap {
   font-family: "PT Sans", sans-serif;
   font-weight: normal;
   -webkit-font-smoothing: antialiased;
@@ -7742,7 +7751,7 @@ a.th {
   -moz-font-smoothing: grayscale;
 }
 /* line 67, ../scss/base/_mixins.scss */
-.cs-elegant .yellow-commonblock, .cs-elegant .block-play-library-custom-pm-block, .cs-elegant .view-booklist-page-view .view-filters, .view-booklist-page-view .cs-elegant .view-filters, .cs-elegant .homebox.homebox-auto-save #homebox-add .item-list, .homebox.homebox-auto-save #homebox-add .cs-elegant .item-list, .cs-elegant .homebox.homebox-auto-save .homebox-column-wrapper .homebox-portlet-inner, .homebox.homebox-auto-save .homebox-column-wrapper .cs-elegant .homebox-portlet-inner, .cs-elegant .progress-page-wrap #wrap, .progress-page-wrap .cs-elegant #wrap {
+.cs-elegant .yellow-commonblock, .cs-elegant .block-play-library-custom-pm-block, .cs-elegant .view-booklist-page-view .view-filters, .view-booklist-page-view .cs-elegant .view-filters, .cs-elegant .page-reviews .view-filters, .page-reviews .cs-elegant .view-filters, .cs-elegant .homebox.homebox-auto-save #homebox-add .item-list, .homebox.homebox-auto-save #homebox-add .cs-elegant .item-list, .cs-elegant .homebox.homebox-auto-save .homebox-column-wrapper .homebox-portlet-inner, .homebox.homebox-auto-save .homebox-column-wrapper .cs-elegant .homebox-portlet-inner, .cs-elegant .progress-page-wrap #wrap, .progress-page-wrap .cs-elegant #wrap {
   font-family: "Open Sans", sans-serif;
   font-weight: normal;
   -webkit-font-smoothing: antialiased;
@@ -7779,12 +7788,12 @@ a.th {
 }
 
 /* line 61, ../scss/base/_elements.scss */
-h1, .font-stroke-main, .other-programme.view .view-header *, .view-reward-page-views .view-footer *, h2, .view-reward-activity .view-header *, h3, aside .block-menu ul.menu li a, h4, .booklist-wrapp .book-body-wrapp div, h5, .booklist-wrapp .book-user-likes > div, h6 {
+h1, .font-stroke-main, .other-programme.view .view-header *, .view-reward-page-views .view-footer *, h2, .view-reward-activity .view-header *, h3, aside .block-menu ul.menu li a, h4, .booklist-wrapp .book-body-wrapp div, .reviews-wrapper .reviews-title, h5, .booklist-wrapp .book-user-likes > div, .reviews-wrapper .review-wrapp, .reviews-wrapper .like-count, h6 {
   font-weight: normal;
   text-transform: capitalize;
 }
 /* line 20, ../scss/base/_mixins.scss */
-.cs-default h1, .cs-default .font-stroke-main, .cs-default .other-programme.view .view-header *, .other-programme.view .view-header .cs-default *, .cs-default .view-reward-page-views .view-footer *, .view-reward-page-views .view-footer .cs-default *, .cs-default h2, .cs-default .view-reward-activity .view-header *, .view-reward-activity .view-header .cs-default *, .cs-default h3, .cs-default aside .block-menu ul.menu li a, aside .block-menu ul.menu li .cs-default a, .cs-default h4, .cs-default .booklist-wrapp .book-body-wrapp div, .booklist-wrapp .book-body-wrapp .cs-default div, .cs-default h5, .cs-default .booklist-wrapp .book-user-likes > div, .booklist-wrapp .cs-default .book-user-likes > div, .cs-default h6 {
+.cs-default h1, .cs-default .font-stroke-main, .cs-default .other-programme.view .view-header *, .other-programme.view .view-header .cs-default *, .cs-default .view-reward-page-views .view-footer *, .view-reward-page-views .view-footer .cs-default *, .cs-default h2, .cs-default .view-reward-activity .view-header *, .view-reward-activity .view-header .cs-default *, .cs-default h3, .cs-default aside .block-menu ul.menu li a, aside .block-menu ul.menu li .cs-default a, .cs-default h4, .cs-default .booklist-wrapp .book-body-wrapp div, .booklist-wrapp .book-body-wrapp .cs-default div, .cs-default .reviews-wrapper .reviews-title, .reviews-wrapper .cs-default .reviews-title, .cs-default h5, .cs-default .booklist-wrapp .book-user-likes > div, .booklist-wrapp .cs-default .book-user-likes > div, .cs-default .reviews-wrapper .review-wrapp, .reviews-wrapper .cs-default .review-wrapp, .cs-default .reviews-wrapper .like-count, .reviews-wrapper .cs-default .like-count, .cs-default h6 {
   font-family: "McLaren", cursive;
   font-weight: normal;
   -webkit-font-smoothing: antialiased;
@@ -7793,7 +7802,7 @@ h1, .font-stroke-main, .other-programme.view .view-header *, .view-reward-page-v
   -moz-font-smoothing: grayscale;
 }
 /* line 29, ../scss/base/_mixins.scss */
-.cs-classic h1, .cs-classic .font-stroke-main, .cs-classic .other-programme.view .view-header *, .other-programme.view .view-header .cs-classic *, .cs-classic .view-reward-page-views .view-footer *, .view-reward-page-views .view-footer .cs-classic *, .cs-classic h2, .cs-classic .view-reward-activity .view-header *, .view-reward-activity .view-header .cs-classic *, .cs-classic h3, .cs-classic aside .block-menu ul.menu li a, aside .block-menu ul.menu li .cs-classic a, .cs-classic h4, .cs-classic .booklist-wrapp .book-body-wrapp div, .booklist-wrapp .book-body-wrapp .cs-classic div, .cs-classic h5, .cs-classic .booklist-wrapp .book-user-likes > div, .booklist-wrapp .cs-classic .book-user-likes > div, .cs-classic h6 {
+.cs-classic h1, .cs-classic .font-stroke-main, .cs-classic .other-programme.view .view-header *, .other-programme.view .view-header .cs-classic *, .cs-classic .view-reward-page-views .view-footer *, .view-reward-page-views .view-footer .cs-classic *, .cs-classic h2, .cs-classic .view-reward-activity .view-header *, .view-reward-activity .view-header .cs-classic *, .cs-classic h3, .cs-classic aside .block-menu ul.menu li a, aside .block-menu ul.menu li .cs-classic a, .cs-classic h4, .cs-classic .booklist-wrapp .book-body-wrapp div, .booklist-wrapp .book-body-wrapp .cs-classic div, .cs-classic .reviews-wrapper .reviews-title, .reviews-wrapper .cs-classic .reviews-title, .cs-classic h5, .cs-classic .booklist-wrapp .book-user-likes > div, .booklist-wrapp .cs-classic .book-user-likes > div, .cs-classic .reviews-wrapper .review-wrapp, .reviews-wrapper .cs-classic .review-wrapp, .cs-classic .reviews-wrapper .like-count, .reviews-wrapper .cs-classic .like-count, .cs-classic h6 {
   font-family: "Architects Daughter", cursive;
   font-weight: 700;
   -webkit-font-smoothing: antialiased;
@@ -7802,7 +7811,7 @@ h1, .font-stroke-main, .other-programme.view .view-header *, .view-reward-page-v
   -moz-font-smoothing: grayscale;
 }
 /* line 38, ../scss/base/_mixins.scss */
-.cs-elegant h1, .cs-elegant .font-stroke-main, .cs-elegant .other-programme.view .view-header *, .other-programme.view .view-header .cs-elegant *, .cs-elegant .view-reward-page-views .view-footer *, .view-reward-page-views .view-footer .cs-elegant *, .cs-elegant h2, .cs-elegant .view-reward-activity .view-header *, .view-reward-activity .view-header .cs-elegant *, .cs-elegant h3, .cs-elegant aside .block-menu ul.menu li a, aside .block-menu ul.menu li .cs-elegant a, .cs-elegant h4, .cs-elegant .booklist-wrapp .book-body-wrapp div, .booklist-wrapp .book-body-wrapp .cs-elegant div, .cs-elegant h5, .cs-elegant .booklist-wrapp .book-user-likes > div, .booklist-wrapp .cs-elegant .book-user-likes > div, .cs-elegant h6 {
+.cs-elegant h1, .cs-elegant .font-stroke-main, .cs-elegant .other-programme.view .view-header *, .other-programme.view .view-header .cs-elegant *, .cs-elegant .view-reward-page-views .view-footer *, .view-reward-page-views .view-footer .cs-elegant *, .cs-elegant h2, .cs-elegant .view-reward-activity .view-header *, .view-reward-activity .view-header .cs-elegant *, .cs-elegant h3, .cs-elegant aside .block-menu ul.menu li a, aside .block-menu ul.menu li .cs-elegant a, .cs-elegant h4, .cs-elegant .booklist-wrapp .book-body-wrapp div, .booklist-wrapp .book-body-wrapp .cs-elegant div, .cs-elegant .reviews-wrapper .reviews-title, .reviews-wrapper .cs-elegant .reviews-title, .cs-elegant h5, .cs-elegant .booklist-wrapp .book-user-likes > div, .booklist-wrapp .cs-elegant .book-user-likes > div, .cs-elegant .reviews-wrapper .review-wrapp, .reviews-wrapper .cs-elegant .review-wrapp, .cs-elegant .reviews-wrapper .like-count, .reviews-wrapper .cs-elegant .like-count, .cs-elegant h6 {
   font-family: "Margarine", cursive;
   font-weight: normal;
   -webkit-font-smoothing: antialiased;
@@ -7887,28 +7896,28 @@ h1, .font-stroke-main, .other-programme.view .view-header *, .view-reward-page-v
 }
 
 /* line 106, ../scss/base/_elements.scss */
-h4, .booklist-wrapp .book-body-wrapp div {
+h4, .booklist-wrapp .book-body-wrapp div, .reviews-wrapper .reviews-title {
   font-size: 20px;
 }
 /* line 107, ../scss/base/_elements.scss */
-.cs-classic h4, .cs-classic .booklist-wrapp .book-body-wrapp div, .booklist-wrapp .book-body-wrapp .cs-classic div {
+.cs-classic h4, .cs-classic .booklist-wrapp .book-body-wrapp div, .booklist-wrapp .book-body-wrapp .cs-classic div, .cs-classic .reviews-wrapper .reviews-title, .reviews-wrapper .cs-classic .reviews-title {
   font-size: 21px;
 }
 /* line 110, ../scss/base/_elements.scss */
-.cs-elegant h4, .cs-elegant .booklist-wrapp .book-body-wrapp div, .booklist-wrapp .book-body-wrapp .cs-elegant div {
+.cs-elegant h4, .cs-elegant .booklist-wrapp .book-body-wrapp div, .booklist-wrapp .book-body-wrapp .cs-elegant div, .cs-elegant .reviews-wrapper .reviews-title, .reviews-wrapper .cs-elegant .reviews-title {
   font-size: 22px;
 }
 
 /* line 117, ../scss/base/_elements.scss */
-h5, .booklist-wrapp .book-user-likes > div {
+h5, .booklist-wrapp .book-user-likes > div, .reviews-wrapper .review-wrapp, .reviews-wrapper .like-count {
   font-size: 17px;
 }
 /* line 118, ../scss/base/_elements.scss */
-.cs-classic h5, .cs-classic .booklist-wrapp .book-user-likes > div, .booklist-wrapp .cs-classic .book-user-likes > div {
+.cs-classic h5, .cs-classic .booklist-wrapp .book-user-likes > div, .booklist-wrapp .cs-classic .book-user-likes > div, .cs-classic .reviews-wrapper .review-wrapp, .reviews-wrapper .cs-classic .review-wrapp, .cs-classic .reviews-wrapper .like-count, .reviews-wrapper .cs-classic .like-count {
   font-size: 18px;
 }
 /* line 121, ../scss/base/_elements.scss */
-.cs-elegant h5, .cs-elegant .booklist-wrapp .book-user-likes > div, .booklist-wrapp .cs-elegant .book-user-likes > div {
+.cs-elegant h5, .cs-elegant .booklist-wrapp .book-user-likes > div, .booklist-wrapp .cs-elegant .book-user-likes > div, .cs-elegant .reviews-wrapper .review-wrapp, .reviews-wrapper .cs-elegant .review-wrapp, .cs-elegant .reviews-wrapper .like-count, .reviews-wrapper .cs-elegant .like-count {
   font-size: 19px;
 }
 
@@ -9317,11 +9326,11 @@ html {
   padding: 12px 20px 18px;
 }
 /* line 7, ../scss/components/_activityandreward-page-sidebar.scss */
-.sidebar2 > .first h1, .sidebar2 > .first .font-stroke-main, .sidebar2 > .first .other-programme.view .view-header *, .other-programme.view .view-header .sidebar2 > .first *, .sidebar2 > .first .view-reward-page-views .view-footer *, .view-reward-page-views .view-footer .sidebar2 > .first *, .sidebar2 > .first h2, .sidebar2 > .first .view-reward-activity .view-header *, .view-reward-activity .view-header .sidebar2 > .first *, .sidebar2 > .first h3, .sidebar2 > .first aside .block-menu ul.menu li a, aside .block-menu ul.menu li .sidebar2 > .first a, .sidebar2 > .first h4, .sidebar2 > .first .booklist-wrapp .book-body-wrapp div, .booklist-wrapp .book-body-wrapp .sidebar2 > .first div, .sidebar2 > .first h5, .sidebar2 > .first .booklist-wrapp .book-user-likes > div, .booklist-wrapp .sidebar2 > .first .book-user-likes > div, .sidebar2 > .first p {
+.sidebar2 > .first h1, .sidebar2 > .first .font-stroke-main, .sidebar2 > .first .other-programme.view .view-header *, .other-programme.view .view-header .sidebar2 > .first *, .sidebar2 > .first .view-reward-page-views .view-footer *, .view-reward-page-views .view-footer .sidebar2 > .first *, .sidebar2 > .first h2, .sidebar2 > .first .view-reward-activity .view-header *, .view-reward-activity .view-header .sidebar2 > .first *, .sidebar2 > .first h3, .sidebar2 > .first aside .block-menu ul.menu li a, aside .block-menu ul.menu li .sidebar2 > .first a, .sidebar2 > .first h4, .sidebar2 > .first .booklist-wrapp .book-body-wrapp div, .booklist-wrapp .book-body-wrapp .sidebar2 > .first div, .sidebar2 > .first .reviews-wrapper .reviews-title, .reviews-wrapper .sidebar2 > .first .reviews-title, .sidebar2 > .first h5, .sidebar2 > .first .booklist-wrapp .book-user-likes > div, .booklist-wrapp .sidebar2 > .first .book-user-likes > div, .sidebar2 > .first .reviews-wrapper .review-wrapp, .reviews-wrapper .sidebar2 > .first .review-wrapp, .sidebar2 > .first .reviews-wrapper .like-count, .reviews-wrapper .sidebar2 > .first .like-count, .sidebar2 > .first p {
   color: #fff;
 }
 /* line 10, ../scss/components/_activityandreward-page-sidebar.scss */
-.sidebar2 > .first h1, .sidebar2 > .first .font-stroke-main, .sidebar2 > .first .other-programme.view .view-header *, .other-programme.view .view-header .sidebar2 > .first *, .sidebar2 > .first .view-reward-page-views .view-footer *, .view-reward-page-views .view-footer .sidebar2 > .first *, .sidebar2 > .first h2, .sidebar2 > .first .view-reward-activity .view-header *, .view-reward-activity .view-header .sidebar2 > .first *, .sidebar2 > .first h3, .sidebar2 > .first aside .block-menu ul.menu li a, aside .block-menu ul.menu li .sidebar2 > .first a, .sidebar2 > .first h4, .sidebar2 > .first .booklist-wrapp .book-body-wrapp div, .booklist-wrapp .book-body-wrapp .sidebar2 > .first div, .sidebar2 > .first h5, .sidebar2 > .first .booklist-wrapp .book-user-likes > div, .booklist-wrapp .sidebar2 > .first .book-user-likes > div {
+.sidebar2 > .first h1, .sidebar2 > .first .font-stroke-main, .sidebar2 > .first .other-programme.view .view-header *, .other-programme.view .view-header .sidebar2 > .first *, .sidebar2 > .first .view-reward-page-views .view-footer *, .view-reward-page-views .view-footer .sidebar2 > .first *, .sidebar2 > .first h2, .sidebar2 > .first .view-reward-activity .view-header *, .view-reward-activity .view-header .sidebar2 > .first *, .sidebar2 > .first h3, .sidebar2 > .first aside .block-menu ul.menu li a, aside .block-menu ul.menu li .sidebar2 > .first a, .sidebar2 > .first h4, .sidebar2 > .first .booklist-wrapp .book-body-wrapp div, .booklist-wrapp .book-body-wrapp .sidebar2 > .first div, .sidebar2 > .first .reviews-wrapper .reviews-title, .reviews-wrapper .sidebar2 > .first .reviews-title, .sidebar2 > .first h5, .sidebar2 > .first .booklist-wrapp .book-user-likes > div, .booklist-wrapp .sidebar2 > .first .book-user-likes > div, .sidebar2 > .first .reviews-wrapper .review-wrapp, .reviews-wrapper .sidebar2 > .first .review-wrapp, .sidebar2 > .first .reviews-wrapper .like-count, .reviews-wrapper .sidebar2 > .first .like-count {
   margin-top: 0;
 }
 /* line 16, ../scss/components/_activityandreward-page-sidebar.scss */
@@ -10136,7 +10145,7 @@ html {
 }
 
 /* line 189, ../scss/components/_buttons.scss */
-.blue-button, .view-booklist-page-view .form-submit, .view-booklist-page-view .chosen-container a, .view-reviews-page-views .view-filters .form-submit, .view-reviews-page-views .chosen-container a, .homebox.homebox-auto-save #homebox-buttons > a, .homebox.homebox-auto-save #homebox-add .item-list ul li a, .homebox.homebox-auto-save .view-footer a.button, .homebox.homebox-auto-save .view-footer .other-programme.view .other-programme .programme-content .sign-up a, .other-programme.view .other-programme .programme-content .sign-up .homebox.homebox-auto-save .view-footer a {
+.blue-button, .view-booklist-page-view .form-submit, .view-booklist-page-view .chosen-container a, .book-reviews-page .node-link a, .book-reviews-page .view-filters .form-submit, .book-reviews-page .chosen-container a, .homebox.homebox-auto-save #homebox-buttons > a, .homebox.homebox-auto-save #homebox-add .item-list ul li a, .homebox.homebox-auto-save .view-footer a.button, .homebox.homebox-auto-save .view-footer .other-programme.view .other-programme .programme-content .sign-up a, .other-programme.view .other-programme .programme-content .sign-up .homebox.homebox-auto-save .view-footer a {
   display: inline-block;
   padding: 6px 24px;
   font-size: 21px;
@@ -10148,28 +10157,28 @@ html {
   color: #fff;
 }
 /* line 199, ../scss/components/_buttons.scss */
-.cs-default .blue-button, .cs-default .view-booklist-page-view .form-submit, .view-booklist-page-view .cs-default .form-submit, .cs-default .view-booklist-page-view .chosen-container a, .view-booklist-page-view .chosen-container .cs-default a, .cs-default .view-reviews-page-views .view-filters .form-submit, .view-reviews-page-views .view-filters .cs-default .form-submit, .cs-default .view-reviews-page-views .chosen-container a, .view-reviews-page-views .chosen-container .cs-default a, .cs-default .homebox.homebox-auto-save #homebox-buttons > a, .homebox.homebox-auto-save .cs-default #homebox-buttons > a, .cs-default .homebox.homebox-auto-save #homebox-add .item-list ul li a, .homebox.homebox-auto-save #homebox-add .item-list ul li .cs-default a, .cs-default .homebox.homebox-auto-save .view-footer a.button, .homebox.homebox-auto-save .view-footer .cs-default a.button, .cs-default .homebox.homebox-auto-save .view-footer .other-programme.view .other-programme .programme-content .sign-up a, .homebox.homebox-auto-save .view-footer .other-programme.view .other-programme .programme-content .sign-up .cs-default a, .cs-default .other-programme.view .other-programme .programme-content .sign-up .homebox.homebox-auto-save .view-footer a, .other-programme.view .other-programme .programme-content .sign-up .homebox.homebox-auto-save .view-footer .cs-default a {
+.cs-default .blue-button, .cs-default .view-booklist-page-view .form-submit, .view-booklist-page-view .cs-default .form-submit, .cs-default .view-booklist-page-view .chosen-container a, .view-booklist-page-view .chosen-container .cs-default a, .cs-default .book-reviews-page .node-link a, .book-reviews-page .node-link .cs-default a, .cs-default .book-reviews-page .view-filters .form-submit, .book-reviews-page .view-filters .cs-default .form-submit, .cs-default .book-reviews-page .chosen-container a, .book-reviews-page .chosen-container .cs-default a, .cs-default .homebox.homebox-auto-save #homebox-buttons > a, .homebox.homebox-auto-save .cs-default #homebox-buttons > a, .cs-default .homebox.homebox-auto-save #homebox-add .item-list ul li a, .homebox.homebox-auto-save #homebox-add .item-list ul li .cs-default a, .cs-default .homebox.homebox-auto-save .view-footer a.button, .homebox.homebox-auto-save .view-footer .cs-default a.button, .cs-default .homebox.homebox-auto-save .view-footer .other-programme.view .other-programme .programme-content .sign-up a, .homebox.homebox-auto-save .view-footer .other-programme.view .other-programme .programme-content .sign-up .cs-default a, .cs-default .other-programme.view .other-programme .programme-content .sign-up .homebox.homebox-auto-save .view-footer a, .other-programme.view .other-programme .programme-content .sign-up .homebox.homebox-auto-save .view-footer .cs-default a {
   background: #267fda;
 }
 /* line 203, ../scss/components/_buttons.scss */
-.cs-elegant .blue-button, .cs-elegant .view-booklist-page-view .form-submit, .view-booklist-page-view .cs-elegant .form-submit, .cs-elegant .view-booklist-page-view .chosen-container a, .view-booklist-page-view .chosen-container .cs-elegant a, .cs-elegant .view-reviews-page-views .view-filters .form-submit, .view-reviews-page-views .view-filters .cs-elegant .form-submit, .cs-elegant .view-reviews-page-views .chosen-container a, .view-reviews-page-views .chosen-container .cs-elegant a, .cs-elegant .homebox.homebox-auto-save #homebox-buttons > a, .homebox.homebox-auto-save .cs-elegant #homebox-buttons > a, .cs-elegant .homebox.homebox-auto-save #homebox-add .item-list ul li a, .homebox.homebox-auto-save #homebox-add .item-list ul li .cs-elegant a, .cs-elegant .homebox.homebox-auto-save .view-footer a.button, .homebox.homebox-auto-save .view-footer .cs-elegant a.button, .cs-elegant .homebox.homebox-auto-save .view-footer .other-programme.view .other-programme .programme-content .sign-up a, .homebox.homebox-auto-save .view-footer .other-programme.view .other-programme .programme-content .sign-up .cs-elegant a, .cs-elegant .other-programme.view .other-programme .programme-content .sign-up .homebox.homebox-auto-save .view-footer a, .other-programme.view .other-programme .programme-content .sign-up .homebox.homebox-auto-save .view-footer .cs-elegant a {
+.cs-elegant .blue-button, .cs-elegant .view-booklist-page-view .form-submit, .view-booklist-page-view .cs-elegant .form-submit, .cs-elegant .view-booklist-page-view .chosen-container a, .view-booklist-page-view .chosen-container .cs-elegant a, .cs-elegant .book-reviews-page .node-link a, .book-reviews-page .node-link .cs-elegant a, .cs-elegant .book-reviews-page .view-filters .form-submit, .book-reviews-page .view-filters .cs-elegant .form-submit, .cs-elegant .book-reviews-page .chosen-container a, .book-reviews-page .chosen-container .cs-elegant a, .cs-elegant .homebox.homebox-auto-save #homebox-buttons > a, .homebox.homebox-auto-save .cs-elegant #homebox-buttons > a, .cs-elegant .homebox.homebox-auto-save #homebox-add .item-list ul li a, .homebox.homebox-auto-save #homebox-add .item-list ul li .cs-elegant a, .cs-elegant .homebox.homebox-auto-save .view-footer a.button, .homebox.homebox-auto-save .view-footer .cs-elegant a.button, .cs-elegant .homebox.homebox-auto-save .view-footer .other-programme.view .other-programme .programme-content .sign-up a, .homebox.homebox-auto-save .view-footer .other-programme.view .other-programme .programme-content .sign-up .cs-elegant a, .cs-elegant .other-programme.view .other-programme .programme-content .sign-up .homebox.homebox-auto-save .view-footer a, .other-programme.view .other-programme .programme-content .sign-up .homebox.homebox-auto-save .view-footer .cs-elegant a {
   background: #e71d36;
 }
 /* line 207, ../scss/components/_buttons.scss */
-.cs-classic .blue-button, .cs-classic .view-booklist-page-view .form-submit, .view-booklist-page-view .cs-classic .form-submit, .cs-classic .view-booklist-page-view .chosen-container a, .view-booklist-page-view .chosen-container .cs-classic a, .cs-classic .view-reviews-page-views .view-filters .form-submit, .view-reviews-page-views .view-filters .cs-classic .form-submit, .cs-classic .view-reviews-page-views .chosen-container a, .view-reviews-page-views .chosen-container .cs-classic a, .cs-classic .homebox.homebox-auto-save #homebox-buttons > a, .homebox.homebox-auto-save .cs-classic #homebox-buttons > a, .cs-classic .homebox.homebox-auto-save #homebox-add .item-list ul li a, .homebox.homebox-auto-save #homebox-add .item-list ul li .cs-classic a, .cs-classic .homebox.homebox-auto-save .view-footer a.button, .homebox.homebox-auto-save .view-footer .cs-classic a.button, .cs-classic .homebox.homebox-auto-save .view-footer .other-programme.view .other-programme .programme-content .sign-up a, .homebox.homebox-auto-save .view-footer .other-programme.view .other-programme .programme-content .sign-up .cs-classic a, .cs-classic .other-programme.view .other-programme .programme-content .sign-up .homebox.homebox-auto-save .view-footer a, .other-programme.view .other-programme .programme-content .sign-up .homebox.homebox-auto-save .view-footer .cs-classic a {
+.cs-classic .blue-button, .cs-classic .view-booklist-page-view .form-submit, .view-booklist-page-view .cs-classic .form-submit, .cs-classic .view-booklist-page-view .chosen-container a, .view-booklist-page-view .chosen-container .cs-classic a, .cs-classic .book-reviews-page .node-link a, .book-reviews-page .node-link .cs-classic a, .cs-classic .book-reviews-page .view-filters .form-submit, .book-reviews-page .view-filters .cs-classic .form-submit, .cs-classic .book-reviews-page .chosen-container a, .book-reviews-page .chosen-container .cs-classic a, .cs-classic .homebox.homebox-auto-save #homebox-buttons > a, .homebox.homebox-auto-save .cs-classic #homebox-buttons > a, .cs-classic .homebox.homebox-auto-save #homebox-add .item-list ul li a, .homebox.homebox-auto-save #homebox-add .item-list ul li .cs-classic a, .cs-classic .homebox.homebox-auto-save .view-footer a.button, .homebox.homebox-auto-save .view-footer .cs-classic a.button, .cs-classic .homebox.homebox-auto-save .view-footer .other-programme.view .other-programme .programme-content .sign-up a, .homebox.homebox-auto-save .view-footer .other-programme.view .other-programme .programme-content .sign-up .cs-classic a, .cs-classic .other-programme.view .other-programme .programme-content .sign-up .homebox.homebox-auto-save .view-footer a, .other-programme.view .other-programme .programme-content .sign-up .homebox.homebox-auto-save .view-footer .cs-classic a {
   background: #00a6ed;
   font-size: 20px;
 }
 /* line 212, ../scss/components/_buttons.scss */
-.blue-button:hover, .view-booklist-page-view .form-submit:hover, .view-booklist-page-view .chosen-container a:hover, .view-reviews-page-views .view-filters .form-submit:hover, .view-reviews-page-views .chosen-container a:hover, .homebox.homebox-auto-save #homebox-buttons > a:hover, .homebox.homebox-auto-save #homebox-add .item-list ul li a:hover, .homebox.homebox-auto-save .view-footer a.button:hover, .homebox.homebox-auto-save .view-footer .other-programme.view .other-programme .programme-content .sign-up a:hover, .other-programme.view .other-programme .programme-content .sign-up .homebox.homebox-auto-save .view-footer a:hover {
+.blue-button:hover, .view-booklist-page-view .form-submit:hover, .view-booklist-page-view .chosen-container a:hover, .book-reviews-page .node-link a:hover, .book-reviews-page .view-filters .form-submit:hover, .book-reviews-page .chosen-container a:hover, .homebox.homebox-auto-save #homebox-buttons > a:hover, .homebox.homebox-auto-save #homebox-add .item-list ul li a:hover, .homebox.homebox-auto-save .view-footer a.button:hover, .homebox.homebox-auto-save .view-footer .other-programme.view .other-programme .programme-content .sign-up a:hover, .other-programme.view .other-programme .programme-content .sign-up .homebox.homebox-auto-save .view-footer a:hover {
   text-decoration: none;
 }
 /* line 215, ../scss/components/_buttons.scss */
-.blue-button:focus, .view-booklist-page-view .form-submit:focus, .view-booklist-page-view .chosen-container a:focus, .view-reviews-page-views .view-filters .form-submit:focus, .view-reviews-page-views .chosen-container a:focus, .homebox.homebox-auto-save #homebox-buttons > a:focus, .homebox.homebox-auto-save #homebox-add .item-list ul li a:focus, .homebox.homebox-auto-save .view-footer a.button:focus, .homebox.homebox-auto-save .view-footer .other-programme.view .other-programme .programme-content .sign-up a:focus, .other-programme.view .other-programme .programme-content .sign-up .homebox.homebox-auto-save .view-footer a:focus {
+.blue-button:focus, .view-booklist-page-view .form-submit:focus, .view-booklist-page-view .chosen-container a:focus, .book-reviews-page .node-link a:focus, .book-reviews-page .view-filters .form-submit:focus, .book-reviews-page .chosen-container a:focus, .homebox.homebox-auto-save #homebox-buttons > a:focus, .homebox.homebox-auto-save #homebox-add .item-list ul li a:focus, .homebox.homebox-auto-save .view-footer a.button:focus, .homebox.homebox-auto-save .view-footer .other-programme.view .other-programme .programme-content .sign-up a:focus, .other-programme.view .other-programme .programme-content .sign-up .homebox.homebox-auto-save .view-footer a:focus {
   outline: none;
 }
 /* line 20, ../scss/base/_mixins.scss */
-.cs-default .blue-button, .cs-default .view-booklist-page-view .form-submit, .view-booklist-page-view .cs-default .form-submit, .cs-default .view-booklist-page-view .chosen-container a, .view-booklist-page-view .chosen-container .cs-default a, .cs-default .view-reviews-page-views .view-filters .form-submit, .view-reviews-page-views .view-filters .cs-default .form-submit, .cs-default .view-reviews-page-views .chosen-container a, .view-reviews-page-views .chosen-container .cs-default a, .cs-default .homebox.homebox-auto-save #homebox-buttons > a, .homebox.homebox-auto-save .cs-default #homebox-buttons > a, .cs-default .homebox.homebox-auto-save #homebox-add .item-list ul li a, .homebox.homebox-auto-save #homebox-add .item-list ul li .cs-default a, .cs-default .homebox.homebox-auto-save .view-footer a.button, .homebox.homebox-auto-save .view-footer .cs-default a.button, .cs-default .homebox.homebox-auto-save .view-footer .other-programme.view .other-programme .programme-content .sign-up a, .homebox.homebox-auto-save .view-footer .other-programme.view .other-programme .programme-content .sign-up .cs-default a, .cs-default .other-programme.view .other-programme .programme-content .sign-up .homebox.homebox-auto-save .view-footer a, .other-programme.view .other-programme .programme-content .sign-up .homebox.homebox-auto-save .view-footer .cs-default a {
+.cs-default .blue-button, .cs-default .view-booklist-page-view .form-submit, .view-booklist-page-view .cs-default .form-submit, .cs-default .view-booklist-page-view .chosen-container a, .view-booklist-page-view .chosen-container .cs-default a, .cs-default .book-reviews-page .node-link a, .book-reviews-page .node-link .cs-default a, .cs-default .book-reviews-page .view-filters .form-submit, .book-reviews-page .view-filters .cs-default .form-submit, .cs-default .book-reviews-page .chosen-container a, .book-reviews-page .chosen-container .cs-default a, .cs-default .homebox.homebox-auto-save #homebox-buttons > a, .homebox.homebox-auto-save .cs-default #homebox-buttons > a, .cs-default .homebox.homebox-auto-save #homebox-add .item-list ul li a, .homebox.homebox-auto-save #homebox-add .item-list ul li .cs-default a, .cs-default .homebox.homebox-auto-save .view-footer a.button, .homebox.homebox-auto-save .view-footer .cs-default a.button, .cs-default .homebox.homebox-auto-save .view-footer .other-programme.view .other-programme .programme-content .sign-up a, .homebox.homebox-auto-save .view-footer .other-programme.view .other-programme .programme-content .sign-up .cs-default a, .cs-default .other-programme.view .other-programme .programme-content .sign-up .homebox.homebox-auto-save .view-footer a, .other-programme.view .other-programme .programme-content .sign-up .homebox.homebox-auto-save .view-footer .cs-default a {
   font-family: "McLaren", cursive;
   font-weight: normal;
   -webkit-font-smoothing: antialiased;
@@ -10178,7 +10187,7 @@ html {
   -moz-font-smoothing: grayscale;
 }
 /* line 29, ../scss/base/_mixins.scss */
-.cs-classic .blue-button, .cs-classic .view-booklist-page-view .form-submit, .view-booklist-page-view .cs-classic .form-submit, .cs-classic .view-booklist-page-view .chosen-container a, .view-booklist-page-view .chosen-container .cs-classic a, .cs-classic .view-reviews-page-views .view-filters .form-submit, .view-reviews-page-views .view-filters .cs-classic .form-submit, .cs-classic .view-reviews-page-views .chosen-container a, .view-reviews-page-views .chosen-container .cs-classic a, .cs-classic .homebox.homebox-auto-save #homebox-buttons > a, .homebox.homebox-auto-save .cs-classic #homebox-buttons > a, .cs-classic .homebox.homebox-auto-save #homebox-add .item-list ul li a, .homebox.homebox-auto-save #homebox-add .item-list ul li .cs-classic a, .cs-classic .homebox.homebox-auto-save .view-footer a.button, .homebox.homebox-auto-save .view-footer .cs-classic a.button, .cs-classic .homebox.homebox-auto-save .view-footer .other-programme.view .other-programme .programme-content .sign-up a, .homebox.homebox-auto-save .view-footer .other-programme.view .other-programme .programme-content .sign-up .cs-classic a, .cs-classic .other-programme.view .other-programme .programme-content .sign-up .homebox.homebox-auto-save .view-footer a, .other-programme.view .other-programme .programme-content .sign-up .homebox.homebox-auto-save .view-footer .cs-classic a {
+.cs-classic .blue-button, .cs-classic .view-booklist-page-view .form-submit, .view-booklist-page-view .cs-classic .form-submit, .cs-classic .view-booklist-page-view .chosen-container a, .view-booklist-page-view .chosen-container .cs-classic a, .cs-classic .book-reviews-page .node-link a, .book-reviews-page .node-link .cs-classic a, .cs-classic .book-reviews-page .view-filters .form-submit, .book-reviews-page .view-filters .cs-classic .form-submit, .cs-classic .book-reviews-page .chosen-container a, .book-reviews-page .chosen-container .cs-classic a, .cs-classic .homebox.homebox-auto-save #homebox-buttons > a, .homebox.homebox-auto-save .cs-classic #homebox-buttons > a, .cs-classic .homebox.homebox-auto-save #homebox-add .item-list ul li a, .homebox.homebox-auto-save #homebox-add .item-list ul li .cs-classic a, .cs-classic .homebox.homebox-auto-save .view-footer a.button, .homebox.homebox-auto-save .view-footer .cs-classic a.button, .cs-classic .homebox.homebox-auto-save .view-footer .other-programme.view .other-programme .programme-content .sign-up a, .homebox.homebox-auto-save .view-footer .other-programme.view .other-programme .programme-content .sign-up .cs-classic a, .cs-classic .other-programme.view .other-programme .programme-content .sign-up .homebox.homebox-auto-save .view-footer a, .other-programme.view .other-programme .programme-content .sign-up .homebox.homebox-auto-save .view-footer .cs-classic a {
   font-family: "Architects Daughter", cursive;
   font-weight: 700;
   -webkit-font-smoothing: antialiased;
@@ -10187,7 +10196,7 @@ html {
   -moz-font-smoothing: grayscale;
 }
 /* line 38, ../scss/base/_mixins.scss */
-.cs-elegant .blue-button, .cs-elegant .view-booklist-page-view .form-submit, .view-booklist-page-view .cs-elegant .form-submit, .cs-elegant .view-booklist-page-view .chosen-container a, .view-booklist-page-view .chosen-container .cs-elegant a, .cs-elegant .view-reviews-page-views .view-filters .form-submit, .view-reviews-page-views .view-filters .cs-elegant .form-submit, .cs-elegant .view-reviews-page-views .chosen-container a, .view-reviews-page-views .chosen-container .cs-elegant a, .cs-elegant .homebox.homebox-auto-save #homebox-buttons > a, .homebox.homebox-auto-save .cs-elegant #homebox-buttons > a, .cs-elegant .homebox.homebox-auto-save #homebox-add .item-list ul li a, .homebox.homebox-auto-save #homebox-add .item-list ul li .cs-elegant a, .cs-elegant .homebox.homebox-auto-save .view-footer a.button, .homebox.homebox-auto-save .view-footer .cs-elegant a.button, .cs-elegant .homebox.homebox-auto-save .view-footer .other-programme.view .other-programme .programme-content .sign-up a, .homebox.homebox-auto-save .view-footer .other-programme.view .other-programme .programme-content .sign-up .cs-elegant a, .cs-elegant .other-programme.view .other-programme .programme-content .sign-up .homebox.homebox-auto-save .view-footer a, .other-programme.view .other-programme .programme-content .sign-up .homebox.homebox-auto-save .view-footer .cs-elegant a {
+.cs-elegant .blue-button, .cs-elegant .view-booklist-page-view .form-submit, .view-booklist-page-view .cs-elegant .form-submit, .cs-elegant .view-booklist-page-view .chosen-container a, .view-booklist-page-view .chosen-container .cs-elegant a, .cs-elegant .book-reviews-page .node-link a, .book-reviews-page .node-link .cs-elegant a, .cs-elegant .book-reviews-page .view-filters .form-submit, .book-reviews-page .view-filters .cs-elegant .form-submit, .cs-elegant .book-reviews-page .chosen-container a, .book-reviews-page .chosen-container .cs-elegant a, .cs-elegant .homebox.homebox-auto-save #homebox-buttons > a, .homebox.homebox-auto-save .cs-elegant #homebox-buttons > a, .cs-elegant .homebox.homebox-auto-save #homebox-add .item-list ul li a, .homebox.homebox-auto-save #homebox-add .item-list ul li .cs-elegant a, .cs-elegant .homebox.homebox-auto-save .view-footer a.button, .homebox.homebox-auto-save .view-footer .cs-elegant a.button, .cs-elegant .homebox.homebox-auto-save .view-footer .other-programme.view .other-programme .programme-content .sign-up a, .homebox.homebox-auto-save .view-footer .other-programme.view .other-programme .programme-content .sign-up .cs-elegant a, .cs-elegant .other-programme.view .other-programme .programme-content .sign-up .homebox.homebox-auto-save .view-footer a, .other-programme.view .other-programme .programme-content .sign-up .homebox.homebox-auto-save .view-footer .cs-elegant a {
   font-family: "Margarine", cursive;
   font-weight: normal;
   -webkit-font-smoothing: antialiased;
@@ -12931,50 +12940,10 @@ html {
 
 /* line 2, ../scss/pages/_bookreview.scss */
 .page-reviews .view-filters {
-  margin-top: 25px;
-  padding: 14px 25px 15px;
-  color: #000;
-  border-radius: 15px;
-  overflow: hidden;
-  box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
-  margin-bottom: 35px;
+  overflow: visible;
+  margin-top: 17px;
 }
-/* line 151, ../scss/base/_mixins.scss */
-.cs-default .page-reviews .view-filters {
-  font-size: 17px;
-}
-/* line 155, ../scss/base/_mixins.scss */
-.cs-classic .page-reviews .view-filters, .cs-elegant .page-reviews .view-filters {
-  font-size: 19px;
-}
-/* line 49, ../scss/base/_mixins.scss */
-.cs-default .page-reviews .view-filters {
-  font-family: "arial";
-  font-weight: normal;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-rendering: optimizeLegibility;
-  -moz-font-smoothing: grayscale;
-}
-/* line 58, ../scss/base/_mixins.scss */
-.cs-classic .page-reviews .view-filters {
-  font-family: "PT Sans", sans-serif;
-  font-weight: normal;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-rendering: optimizeLegibility;
-  -moz-font-smoothing: grayscale;
-}
-/* line 67, ../scss/base/_mixins.scss */
-.cs-elegant .page-reviews .view-filters {
-  font-family: "Open Sans", sans-serif;
-  font-weight: normal;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-rendering: optimizeLegibility;
-  -moz-font-smoothing: grayscale;
-}
-/* line 15, ../scss/pages/_bookreview.scss */
+/* line 8, ../scss/pages/_bookreview.scss */
 .page-reviews .views-exposed-widgets {
   width: calc(100% + 10px);
   -webkit-flex-wrap: wrap;
@@ -12984,7 +12953,7 @@ html {
   align-content: center;
   align-items: center;
 }
-/* line 25, ../scss/pages/_bookreview.scss */
+/* line 18, ../scss/pages/_bookreview.scss */
 .page-reviews .views-exposed-widget {
   flex: 0 0 calc(25% - 10px);
   -ms-box-flex: 0 0 24%;
@@ -12994,13 +12963,140 @@ html {
   float: none;
   margin-right: 10px;
 }
-/* line 36, ../scss/pages/_bookreview.scss */
-.page-reviews .chosen-container .chosen-single b {
+/* line 26, ../scss/pages/_bookreview.scss */
+.page-reviews .views-exposed-widget input[type="text"] {
+  height: 40px;
+  position: relative;
+  top: 3px;
+  border: none;
+  box-shadow: none !important;
+}
+/* line 35, ../scss/pages/_bookreview.scss */
+.page-reviews .book-reviews-page .view-content {
+  margin-bottom: 30px;
+}
+/* line 37, ../scss/pages/_bookreview.scss */
+.page-reviews .book-reviews-page .view-content .views-row {
+  display: inline-block;
+  width: 100%;
+  padding: 35px 0;
+  border-bottom: 1px solid #cccccc;
+}
+/* line 45, ../scss/pages/_bookreview.scss */
+.page-reviews .views-field-field-book-cover-image-link {
+  width: 37%;
+  float: left;
+}
+
+/* line 51, ../scss/pages/_bookreview.scss */
+.reviews-wrapper {
+  width: 63%;
+  display: inline-block;
+}
+/* line 54, ../scss/pages/_bookreview.scss */
+.reviews-wrapper .reviews-title {
+  display: inline-block;
+  width: 100%;
+}
+/* line 60, ../scss/pages/_bookreview.scss */
+.reviews-wrapper .bookreview_title a {
+  text-decoration: none;
+}
+/* line 64, ../scss/pages/_bookreview.scss */
+.reviews-wrapper .counte {
+  float: left;
+  margin-right: 6px;
+}
+/* line 68, ../scss/pages/_bookreview.scss */
+.reviews-wrapper .review-wrapp {
+  float: left;
+  width: 80%;
+}
+/* line 73, ../scss/pages/_bookreview.scss */
+.reviews-wrapper .like-count {
+  float: right;
+}
+/* line 76, ../scss/pages/_bookreview.scss */
+.reviews-wrapper .like-count span {
+  position: relative;
+  padding-right: 32px;
+}
+/* line 79, ../scss/pages/_bookreview.scss */
+.reviews-wrapper .like-count span:after {
+  content: "";
+  width: 25px;
+  height: 25px;
+  display: inline-block;
+  background: url("../images/smily.png") no-repeat scroll center center;
+  position: absolute;
+  right: 2px;
+  top: -1px;
+}
+/* line 91, ../scss/pages/_bookreview.scss */
+.reviews-wrapper .date-wrapp {
+  clear: both;
+  display: inline-block;
+  margin: 2px 0 17px 0;
+  width: 100%;
+}
+/* line 97, ../scss/pages/_bookreview.scss */
+.reviews-wrapper .date {
+  margin-bottom: 10px;
+}
+/* line 100, ../scss/pages/_bookreview.scss */
+.reviews-wrapper .review, .reviews-wrapper .views-field-field-user-avatar {
+  float: left;
+  margin-right: 7px;
+}
+/* line 103, ../scss/pages/_bookreview.scss */
+.reviews-wrapper .review img, .reviews-wrapper .views-field-field-user-avatar img {
+  margin-top: -9px;
+}
+/* line 108, ../scss/pages/_bookreview.scss */
+.reviews-wrapper .user a {
+  text-decoration: none;
+}
+
+/* line 131, ../scss/pages/_bookreview.scss */
+.book-reviews-page .chosen-container a {
+  height: auto;
+  width: 100%;
+  display: inline-block;
+  border: none;
+  position: relative;
+}
+/* line 151, ../scss/base/_mixins.scss */
+.cs-default .book-reviews-page .chosen-container a {
+  font-size: 17px;
+}
+/* line 155, ../scss/base/_mixins.scss */
+.cs-classic .book-reviews-page .chosen-container a, .cs-elegant .book-reviews-page .chosen-container a {
+  font-size: 19px;
+}
+
+/* line 146, ../scss/pages/_bookreview.scss */
+.book-reviews-page .chosen-container {
+  width: 100% !important;
+}
+/* line 149, ../scss/pages/_bookreview.scss */
+.book-reviews-page .chosen-container.chosen-with-drop.chosen-container-active a {
+  border-radius: 10px !important;
+  box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+  border: none;
+}
+/* line 155, ../scss/pages/_bookreview.scss */
+.book-reviews-page .chosen-container .chosen-drop {
+  position: absolute;
+  width: 100%;
+  top: 48px;
+}
+/* line 161, ../scss/pages/_bookreview.scss */
+.book-reviews-page .chosen-container .chosen-single b {
   visibility: hidden;
   position: relative;
 }
-/* line 39, ../scss/pages/_bookreview.scss */
-.page-reviews .chosen-container .chosen-single b:after {
+/* line 164, ../scss/pages/_bookreview.scss */
+.book-reviews-page .chosen-container .chosen-single b:after {
   content: "";
   border-left: 5px solid transparent;
   border-right: 5px solid transparent;
@@ -13011,71 +13107,24 @@ html {
   left: 0;
   visibility: visible;
 }
-/* line 54, ../scss/pages/_bookreview.scss */
-.page-reviews .view-content .views-row {
-  display: inline-block;
-  width: 100%;
-  padding: 35px 0;
-  border-bottom: 1px solid #cccccc;
+/* line 177, ../scss/pages/_bookreview.scss */
+.book-reviews-page .chosen-container .chosen-results {
+  background: #267fda;
+  margin: 0;
+  padding: 0;
 }
-/* line 61, ../scss/pages/_bookreview.scss */
-.page-reviews .views-field-field-book-cover-image-link {
-  width: 37%;
-  float: left;
+/* line 182, ../scss/pages/_bookreview.scss */
+.book-reviews-page .chosen-container .chosen-search {
+  padding: 0;
 }
-/* line 64, ../scss/pages/_bookreview.scss */
-.page-reviews .views-field-field-book-cover-image-link img {
-  width: 240px !important;
-  height: 360px !important;
+/* line 187, ../scss/pages/_bookreview.scss */
+.book-reviews-page .pagination a {
+  text-decoration: none;
 }
 
-/* line 72, ../scss/pages/_bookreview.scss */
-.reviews-wrapper {
-  width: 63%;
-  display: inline-block;
-}
-/* line 75, ../scss/pages/_bookreview.scss */
-.reviews-wrapper .reviews-title {
-  display: inline-block;
-  width: 100%;
-}
-/* line 79, ../scss/pages/_bookreview.scss */
-.reviews-wrapper .bookreview_title, .reviews-wrapper .catalog-links {
-  float: left;
-  margin-right: 10px;
-}
-
-/* line 92, ../scss/pages/_bookreview.scss */
-.chosen-container {
-  width: 100% !important;
-}
-/* line 95, ../scss/pages/_bookreview.scss */
-.chosen-container.chosen-with-drop.chosen-container-active a {
-  border-radius: 10px !important;
-  box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
-  border: none;
-}
-/* line 101, ../scss/pages/_bookreview.scss */
-.chosen-container .chosen-drop {
-  position: absolute;
-  width: 100%;
-  top: 48px;
-}
-/* line 107, ../scss/pages/_bookreview.scss */
-.view-reviews-page-views .chosen-container a {
-  height: auto;
-  width: 100%;
-  display: inline-block;
-  border: none;
-  position: relative;
-}
-/* line 151, ../scss/base/_mixins.scss */
-.cs-default .view-reviews-page-views .chosen-container a {
-  font-size: 17px;
-}
-/* line 155, ../scss/base/_mixins.scss */
-.cs-classic .view-reviews-page-views .chosen-container a, .cs-elegant .view-reviews-page-views .chosen-container a {
-  font-size: 19px;
+/* line 195, ../scss/pages/_bookreview.scss */
+.not-logged-in .book-reviews-page .user a {
+  color: #7e7e7e;
 }
 
 /* line 1, ../scss/pages/_dashboard.scss */
@@ -15374,7 +15423,7 @@ aside .block-menu ul.menu li a.active-trail.active:before {
   font-size: inherit;
 }
 /* line 78, ../scss/base/_mixins.scss */
-.cs-default .view-reviews-page-views > .view-header h5, .cs-default .view-reviews-page-views > .view-header .booklist-wrapp .book-user-likes > div, .booklist-wrapp .cs-default .view-reviews-page-views > .view-header .book-user-likes > div, .cs-default .view-booklist-page-left-side-bar > .view-header h5, .cs-default .view-booklist-page-left-side-bar > .view-header .booklist-wrapp .book-user-likes > div, .booklist-wrapp .cs-default .view-booklist-page-left-side-bar > .view-header .book-user-likes > div {
+.cs-default .view-reviews-page-views > .view-header h5, .cs-default .view-reviews-page-views > .view-header .booklist-wrapp .book-user-likes > div, .booklist-wrapp .cs-default .view-reviews-page-views > .view-header .book-user-likes > div, .cs-default .view-reviews-page-views > .view-header .reviews-wrapper .review-wrapp, .reviews-wrapper .cs-default .view-reviews-page-views > .view-header .review-wrapp, .cs-default .view-reviews-page-views > .view-header .reviews-wrapper .like-count, .reviews-wrapper .cs-default .view-reviews-page-views > .view-header .like-count, .cs-default .view-booklist-page-left-side-bar > .view-header h5, .cs-default .view-booklist-page-left-side-bar > .view-header .booklist-wrapp .book-user-likes > div, .booklist-wrapp .cs-default .view-booklist-page-left-side-bar > .view-header .book-user-likes > div, .cs-default .view-booklist-page-left-side-bar > .view-header .reviews-wrapper .review-wrapp, .reviews-wrapper .cs-default .view-booklist-page-left-side-bar > .view-header .review-wrapp, .cs-default .view-booklist-page-left-side-bar > .view-header .reviews-wrapper .like-count, .reviews-wrapper .cs-default .view-booklist-page-left-side-bar > .view-header .like-count {
   font-family: "arial";
   font-weight: 700;
   -webkit-font-smoothing: antialiased;
@@ -15383,7 +15432,7 @@ aside .block-menu ul.menu li a.active-trail.active:before {
   -moz-font-smoothing: grayscale;
 }
 /* line 87, ../scss/base/_mixins.scss */
-.cs-classic .view-reviews-page-views > .view-header h5, .cs-classic .view-reviews-page-views > .view-header .booklist-wrapp .book-user-likes > div, .booklist-wrapp .cs-classic .view-reviews-page-views > .view-header .book-user-likes > div, .cs-classic .view-booklist-page-left-side-bar > .view-header h5, .cs-classic .view-booklist-page-left-side-bar > .view-header .booklist-wrapp .book-user-likes > div, .booklist-wrapp .cs-classic .view-booklist-page-left-side-bar > .view-header .book-user-likes > div {
+.cs-classic .view-reviews-page-views > .view-header h5, .cs-classic .view-reviews-page-views > .view-header .booklist-wrapp .book-user-likes > div, .booklist-wrapp .cs-classic .view-reviews-page-views > .view-header .book-user-likes > div, .cs-classic .view-reviews-page-views > .view-header .reviews-wrapper .review-wrapp, .reviews-wrapper .cs-classic .view-reviews-page-views > .view-header .review-wrapp, .cs-classic .view-reviews-page-views > .view-header .reviews-wrapper .like-count, .reviews-wrapper .cs-classic .view-reviews-page-views > .view-header .like-count, .cs-classic .view-booklist-page-left-side-bar > .view-header h5, .cs-classic .view-booklist-page-left-side-bar > .view-header .booklist-wrapp .book-user-likes > div, .booklist-wrapp .cs-classic .view-booklist-page-left-side-bar > .view-header .book-user-likes > div, .cs-classic .view-booklist-page-left-side-bar > .view-header .reviews-wrapper .review-wrapp, .reviews-wrapper .cs-classic .view-booklist-page-left-side-bar > .view-header .review-wrapp, .cs-classic .view-booklist-page-left-side-bar > .view-header .reviews-wrapper .like-count, .reviews-wrapper .cs-classic .view-booklist-page-left-side-bar > .view-header .like-count {
   font-family: "PT Sans", sans-serif;
   font-weight: 700;
   -webkit-font-smoothing: antialiased;
@@ -15392,7 +15441,7 @@ aside .block-menu ul.menu li a.active-trail.active:before {
   -moz-font-smoothing: grayscale;
 }
 /* line 96, ../scss/base/_mixins.scss */
-.cs-elegant .view-reviews-page-views > .view-header h5, .cs-elegant .view-reviews-page-views > .view-header .booklist-wrapp .book-user-likes > div, .booklist-wrapp .cs-elegant .view-reviews-page-views > .view-header .book-user-likes > div, .cs-elegant .view-booklist-page-left-side-bar > .view-header h5, .cs-elegant .view-booklist-page-left-side-bar > .view-header .booklist-wrapp .book-user-likes > div, .booklist-wrapp .cs-elegant .view-booklist-page-left-side-bar > .view-header .book-user-likes > div {
+.cs-elegant .view-reviews-page-views > .view-header h5, .cs-elegant .view-reviews-page-views > .view-header .booklist-wrapp .book-user-likes > div, .booklist-wrapp .cs-elegant .view-reviews-page-views > .view-header .book-user-likes > div, .cs-elegant .view-reviews-page-views > .view-header .reviews-wrapper .review-wrapp, .reviews-wrapper .cs-elegant .view-reviews-page-views > .view-header .review-wrapp, .cs-elegant .view-reviews-page-views > .view-header .reviews-wrapper .like-count, .reviews-wrapper .cs-elegant .view-reviews-page-views > .view-header .like-count, .cs-elegant .view-booklist-page-left-side-bar > .view-header h5, .cs-elegant .view-booklist-page-left-side-bar > .view-header .booklist-wrapp .book-user-likes > div, .booklist-wrapp .cs-elegant .view-booklist-page-left-side-bar > .view-header .book-user-likes > div, .cs-elegant .view-booklist-page-left-side-bar > .view-header .reviews-wrapper .review-wrapp, .reviews-wrapper .cs-elegant .view-booklist-page-left-side-bar > .view-header .review-wrapp, .cs-elegant .view-booklist-page-left-side-bar > .view-header .reviews-wrapper .like-count, .reviews-wrapper .cs-elegant .view-booklist-page-left-side-bar > .view-header .like-count {
   font-family: "Open Sans", sans-serif;
   font-weight: 700;
   -webkit-font-smoothing: antialiased;

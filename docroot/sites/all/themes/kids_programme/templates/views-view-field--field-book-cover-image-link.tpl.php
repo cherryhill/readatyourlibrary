@@ -23,7 +23,7 @@
  */
 
 if ($output) {                 
-    $bimg = "<img src='".trim($output)."' style='width:200px;height:200px;'>";  
+    $bimg = "<img src='".trim($output)."' style='width:240px;height:360px;'>";  
   }
   else {
     $bimg =  "<img src='http://www.clker.com/cliparts/7/1/a/f/11971220941184963828dniezby_Generic_Book.svg.med.png' style='width:200px;height:200px;'>";
