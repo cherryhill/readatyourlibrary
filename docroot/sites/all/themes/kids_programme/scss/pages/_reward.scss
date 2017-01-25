@@ -5,15 +5,6 @@
 }
 
 .view-reward-page-views {
-  .view-header {
-    /* p {
-      &:first-line {
-        @extend h1;
-       line-height: 45px;
-       display: block;
-      }
-    } */
-  }
   .view-footer {
     * {
       @extend h1;
@@ -30,10 +21,13 @@
     margin-top: 30px;
     margin-bottom: 30px;
      .reward-image-title {
-      flex: 0 0 131px;
+      flex: 0 0 150px;
      }
      .description {
-      flex: 0 0 calc(100% - 131px);
+      flex: 0 0 calc(100% - 150px);
+        div {
+          padding-left: 10px;
+        }
      }
   }
 }
