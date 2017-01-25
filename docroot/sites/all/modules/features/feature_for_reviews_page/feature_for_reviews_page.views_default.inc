@@ -96,6 +96,8 @@ function feature_for_reviews_page_views_default_views() {
   $handler = $view->new_display('page', 'Book reviews page', 'page');
   $handler->display->display_options['defaults']['title'] = FALSE;
   $handler->display->display_options['title'] = '<none>';
+  $handler->display->display_options['defaults']['css_class'] = FALSE;
+  $handler->display->display_options['css_class'] = 'book-reviews-page';
   $handler->display->display_options['defaults']['exposed_form'] = FALSE;
   $handler->display->display_options['exposed_form']['type'] = 'basic';
   $handler->display->display_options['exposed_form']['options']['submit_button'] = 'Search';
@@ -150,16 +152,6 @@ function feature_for_reviews_page_views_default_views() {
   $handler->display->display_options['fields']['url']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['url']['display_as_link'] = FALSE;
   $handler->display->display_options['fields']['url']['link_to_entity'] = 0;
-  /* Field: Content: Title */
-  $handler->display->display_options['fields']['title']['id'] = 'title';
-  $handler->display->display_options['fields']['title']['table'] = 'node';
-  $handler->display->display_options['fields']['title']['field'] = 'title';
-  $handler->display->display_options['fields']['title']['label'] = '';
-  $handler->display->display_options['fields']['title']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
-  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
-  $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['title']['link_to_node'] = FALSE;
   /* Field: Content: Author first name */
   $handler->display->display_options['fields']['field_author_first_name']['id'] = 'field_author_first_name';
   $handler->display->display_options['fields']['field_author_first_name']['table'] = 'field_data_field_author_first_name';
@@ -174,14 +166,23 @@ function feature_for_reviews_page_views_default_views() {
   $handler->display->display_options['fields']['field_author_last_name']['label'] = '';
   $handler->display->display_options['fields']['field_author_last_name']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_author_last_name']['element_label_colon'] = FALSE;
+  /* Field: Content: Title */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'node';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['label'] = '';
+  $handler->display->display_options['fields']['title']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
+  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
+  $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
   /* Field: Global: Custom text */
   $handler->display->display_options['fields']['nothing']['id'] = 'nothing';
   $handler->display->display_options['fields']['nothing']['table'] = 'views';
   $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
   $handler->display->display_options['fields']['nothing']['label'] = '';
   $handler->display->display_options['fields']['nothing']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['nothing']['alter']['text'] = '<div class="bookreview_title">[title] [field_author_last_name] </div>
-<div class="catalog-links"><a href="[field_catalog_link]" target="_blank">View in Library Catalog</a></div>';
+  $handler->display->display_options['fields']['nothing']['alter']['text'] = '<div class="bookreview_title">[title] by [field_author_last_name] </div>
+';
   $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
   /* Field: Flags: Flag link */
   $handler->display->display_options['fields']['ops']['id'] = 'ops';
@@ -357,14 +358,18 @@ print \'Reviewed by \';
 
 <div class="reviews-body">
 
-<div class="reviews-title">[counter] [nothing]</div>
+<div class="reviews-title"><div class="counte">[counter].</div> <div class="author-name">[nothing]</div></div>
+<div class="review-wrapp">
 <div class="review">[php_2]</div>
 <div class = "views-field-field-user-avatar">[php_1]</div>
 <div class="user">[php]</div>
+</div>
 <div class="like-count">Likes: [count]</div>
+<div class="date-wrapp">
 <div class="date">[created]</div>
 <div>[body]</div>
-<div>[view_node]</div>
+</div>
+<div class="node-link">[view_node]</div>
 
 </div>
 

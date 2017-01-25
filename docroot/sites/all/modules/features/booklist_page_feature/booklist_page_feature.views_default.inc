@@ -385,6 +385,8 @@ function booklist_page_feature_views_default_views() {
   /* Display: Booklist Page */
   $handler = $view->new_display('page', 'Booklist Page', 'page');
   $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['defaults']['css_class'] = FALSE;
+  $handler->display->display_options['css_class'] = 'booklist-listing-page';
   $handler->display->display_options['defaults']['pager'] = FALSE;
   $handler->display->display_options['pager']['type'] = 'full';
   $handler->display->display_options['pager']['options']['items_per_page'] = '10';
@@ -611,7 +613,9 @@ print \'Created by \';
   $handler->display->display_options['fields']['nothing']['alter']['text'] = '<div class="booklist-wrapp">
 <div class="book-body-wrapp">
   <div class="title">[counter] [title]</div>
+<div class="review-wrapp">
 <div class="book-created">[php_2]</div><div class = "views-field-field-user-avatar">[php_1]</div><div class="creator-name">[php]</div>
+</div>
 </div>
 <div class="booklist-like"><div class="book-like">Likes: [count]</div></div>
 </div>
@@ -1155,7 +1159,7 @@ echo "Patron";
   $handler->display->display_options['fields']['nothing']['label'] = '';
   $handler->display->display_options['fields']['nothing']['alter']['text'] = '<div class="booklist-wrapp">
 <div class="book-body-wrapp">
-  <div class="title">[counter]. [title]</div>
+  <div class="title"><div class="counte">[counter].</div> <div class="title-wrap">[title]</div></div>
 <div class="book-created">Created by [field_user_avatar] [name] ([php])</div>
 </div>
 <div class="book-like">Likes: [count] </div>
@@ -1291,7 +1295,7 @@ echo "Patron";
   $handler->display->display_options['fields']['counter']['table'] = 'views';
   $handler->display->display_options['fields']['counter']['field'] = 'counter';
   $handler->display->display_options['fields']['counter']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['counter']['counter_start'] = '1';
+  $handler->display->display_options['fields']['counter']['counter_start'] = '2';
   $handler->display->display_options['fields']['counter']['reverse'] = 0;
   /* Field: Global: Custom text */
   $handler->display->display_options['fields']['nothing']['id'] = 'nothing';
@@ -1300,7 +1304,7 @@ echo "Patron";
   $handler->display->display_options['fields']['nothing']['label'] = '';
   $handler->display->display_options['fields']['nothing']['alter']['text'] = '<div class="booklist-wrapp">
 <div class="book-body-wrapp">
-  <div class="title">[counter]. [title]</div>
+  <div class="title"><div class="counte">[counter].</div> <div class="title-wrap">[title]</div></div>
 <div class="book-created">Created by [field_user_avatar] [name] ([php])</div>
 </div>
 <div class="book-like">Likes: [count] </div>
@@ -1437,7 +1441,7 @@ echo "Patron";
   $handler->display->display_options['fields']['counter']['table'] = 'views';
   $handler->display->display_options['fields']['counter']['field'] = 'counter';
   $handler->display->display_options['fields']['counter']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['counter']['counter_start'] = '1';
+  $handler->display->display_options['fields']['counter']['counter_start'] = '3';
   $handler->display->display_options['fields']['counter']['reverse'] = 0;
   /* Field: Global: Custom text */
   $handler->display->display_options['fields']['nothing']['id'] = 'nothing';
@@ -1446,7 +1450,7 @@ echo "Patron";
   $handler->display->display_options['fields']['nothing']['label'] = '';
   $handler->display->display_options['fields']['nothing']['alter']['text'] = '<div class="booklist-wrapp">
 <div class="book-body-wrapp">
-  <div class="title">[counter]. [title]</div>
+  <div class="title"><div class="counte">[counter].</div> <div class="title-wrap">[title]</div></div>
 <div class="book-created">Created by [field_user_avatar] [name] ([php])</div>
 </div>
 <div class="book-like">Likes: [count] </div>
