@@ -1,0 +1,119 @@
+.page-reviews {
+	.view-filters {
+		@extend .yellow;
+		margin-top: 25px;
+		padding: 14px 25px 15px;
+   	color: $black;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+    margin-bottom: 35px;
+    @include primary_fsize;
+    @include secondary_fonts;
+
+	}
+	.views-exposed-widgets {
+		width: calc(100% + 10px);
+    -webkit-flex-wrap: wrap;
+    flex-wrap: wrap;
+    display: -webkit-flex;
+    display: flex;
+    align-content: center;
+    align-items: center;
+
+	}
+	.views-exposed-widget {
+	  flex: 0 0 calc(25% - 10px);
+	  -ms-box-flex: 0 0 24%;
+	  -ms-flex: 0 0 24%;
+	  -ms-padding-right: 1%;
+	  padding: 0;
+	  float: none;
+	  margin-right: 10px;
+	}
+	.chosen-container {
+		.chosen-single {
+			b {
+				visibility: hidden;
+				position: relative;
+				&:after {
+					content: "";
+			    border-left: 5px solid transparent;
+			    border-right: 5px solid transparent;
+			    border-top: 5px solid #fff;
+			    position: absolute;
+			    top: 45%;
+			    display: block;
+			    left: 0;
+			    visibility: visible;
+				}
+			}
+		}
+	}
+	.view-content {
+		.views-row {
+			display: inline-block;
+			width: 100%;
+			padding: 35px 0;
+			border-bottom: 1px solid #cccccc;
+		}
+	}
+	.views-field-field-book-cover-image-link {
+		width: 37%;
+		float: left;
+		img {
+			width: 240px !important;
+			height: 360px !important;
+
+		}
+	}
+}
+
+.reviews-wrapper {
+	width: 63%;
+	display: inline-block;
+	.reviews-title {
+		display: inline-block;
+		width: 100%;
+	}
+	.bookreview_title, .catalog-links {
+    float: left;
+    margin-right: 10px;
+	}
+}
+
+.view-filters {
+	.form-submit {
+		.view-reviews-page-views & {
+			@extend .blue-button;
+		}
+	}
+}
+.chosen-container {
+	width: 100% !important;
+	&.chosen-with-drop.chosen-container-active {
+		a {
+	 	  border-radius: 10px !important;
+	 	  box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+	 	  border: none;
+		}
+	}
+	.chosen-drop  {
+	 	position: absolute;
+	 	width: 100%;
+	 	top: 48px;
+ 	}
+	a {
+		.view-reviews-page-views & {
+			@extend .blue-button;
+			@include  primary_fsize;
+			height: auto;
+			width: 100%;
+			display: inline-block;
+			border: none;
+			position: relative;
+
+
+		}
+	}
+}
