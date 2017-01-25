@@ -1,15 +1,8 @@
 .page-reviews {
 	.view-filters {
-		@extend .yellow;
-		margin-top: 25px;
-		padding: 14px 25px 15px;
-   	color: $black;
-    border-radius: 15px;
-    overflow: hidden;
-    box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
-    margin-bottom: 35px;
-    @include primary_fsize;
-    @include secondary_fonts;
+		@extend .yellow-commonblock;
+		overflow: visible;
+		margin-top: 17px;
 
 	}
 	.views-exposed-widgets {
@@ -30,9 +23,136 @@
 	  padding: 0;
 	  float: none;
 	  margin-right: 10px;
+	  input[type="text"] {
+	  	height: 40px;
+	  	position: relative;
+   		top: 3px;
+   		border: none;
+   		box-shadow: none !important;
+	  }
 	}
+	.book-reviews-page {
+		.view-content {
+			margin-bottom: 30px;
+			.views-row {
+				display: inline-block;
+				width: 100%;
+				padding: 35px 0;
+				border-bottom: 1px solid #cccccc;
+			}
+		}
+	}
+	.views-field-field-book-cover-image-link {
+		width: 37%;
+		float: left;
+	}
+}
+
+.reviews-wrapper {
+	width: 63%;
+	display: inline-block;
+	.reviews-title {
+		display: inline-block;
+		width: 100%;
+		@extend h4;
+	}
+	.bookreview_title {
+		a {
+    	text-decoration: none;
+    }
+	}
+	.counte {
+    float: left;
+    margin-right: 6px;
+	}
+	.review-wrapp {
+    float: left;
+    width: 80%;
+    @extend h5;
+	}
+	.like-count {
+		float: right;
+		@extend h5;
+		span {
+			position: relative;
+   		padding-right: 32px;
+   		&:after {
+   			content: "";
+        width: 25px;
+        height: 25px;
+        display: inline-block;
+        background: url("../images/smily.png") no-repeat scroll center center;
+        position: absolute;
+        right: 2px;
+        top: -1px;
+   		}
+		}
+	}
+	.date-wrapp {
+		clear: both;
+		display: inline-block;
+    margin: 2px 0 17px 0;
+    width: 100%;
+	}
+	.date {
+		margin-bottom: 10px;
+	}
+	.review, .views-field-field-user-avatar,.user {
+    float: left;
+    margin-right: 7px;
+    a {
+    	text-decoration: none;
+    }
+	}
+}
+.node-link {
+	a {
+		.book-reviews-page & {
+			@extend .blue-button;
+		}
+	}
+}
+
+.view-filters {
+	.form-submit {
+		.book-reviews-page & {
+			@extend .blue-button;
+		}
+	}
+}
+
+.chosen-container {
+	a {
+		.book-reviews-page & {
+			@extend .blue-button;
+			@include  primary_fsize;
+			height: auto;
+			width: 100%;
+			display: inline-block;
+			border: none;
+			position: relative;
+
+
+		}
+	}
+}
+
+.book-reviews-page {
 	.chosen-container {
-		.chosen-single {
+		width: 100% !important;
+		&.chosen-with-drop.chosen-container-active {
+			a {
+		 	  border-radius: 10px !important;
+		 	  box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+		 	  border: none;
+			}
+		}
+		.chosen-drop  {
+		 	position: absolute;
+		 	width: 100%;
+		 	top: 48px;
+	 	}
+	 	.chosen-single {
 			b {
 				visibility: hidden;
 				position: relative;
@@ -49,71 +169,18 @@
 				}
 			}
 		}
-	}
-	.view-content {
-		.views-row {
-			display: inline-block;
-			width: 100%;
-			padding: 35px 0;
-			border-bottom: 1px solid #cccccc;
+		.chosen-results {
+			background: $blue;
+			margin: 0;
+			padding: 0;
+		}
+		.chosen-search {
+			padding: 0;
 		}
 	}
-	.views-field-field-book-cover-image-link {
-		width: 37%;
-		float: left;
-		img {
-			width: 240px !important;
-			height: 360px !important;
-
-		}
-	}
-}
-
-.reviews-wrapper {
-	width: 63%;
-	display: inline-block;
-	.reviews-title {
-		display: inline-block;
-		width: 100%;
-	}
-	.bookreview_title, .catalog-links {
-    float: left;
-    margin-right: 10px;
-	}
-}
-
-.view-filters {
-	.form-submit {
-		.view-reviews-page-views & {
-			@extend .blue-button;
-		}
-	}
-}
-.chosen-container {
-	width: 100% !important;
-	&.chosen-with-drop.chosen-container-active {
+	.pagination {
 		a {
-	 	  border-radius: 10px !important;
-	 	  box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
-	 	  border: none;
-		}
-	}
-	.chosen-drop  {
-	 	position: absolute;
-	 	width: 100%;
-	 	top: 48px;
- 	}
-	a {
-		.view-reviews-page-views & {
-			@extend .blue-button;
-			@include  primary_fsize;
-			height: auto;
-			width: 100%;
-			display: inline-block;
-			border: none;
-			position: relative;
-
-
+			text-decoration: none;
 		}
 	}
 }
