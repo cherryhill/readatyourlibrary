@@ -612,17 +612,14 @@ print \'Created by \';
   $handler->display->display_options['fields']['nothing']['label'] = '';
   $handler->display->display_options['fields']['nothing']['alter']['text'] = '<div class="booklist-wrapp">
 <div class="book-body-wrapp">
-  <div class="title">[counter] [title]</div>
-<div class="review-wrapp">
-<div class="book-created">[php_2]</div><div class = "views-field-field-user-avatar">[php_1]</div><div class="creator-name">[php]</div>
+  <div class="title">[counter].  [title]</div>
 </div>
-</div>
-<div class="booklist-like"><div class="book-like">Likes: [count]</div></div>
+<div class="book-user-likes">
+<div class="book-created">[php_2]  [php_1]  [php_2]</div>
+<div class="book-like"><span>Likes:</span> [count] </div>
 </div>
 
-
-
-';
+</div>';
   $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
   $handler->display->display_options['defaults']['sorts'] = FALSE;
   /* Sort criterion: Content: Post date */
@@ -869,7 +866,8 @@ echo "<a class=\'button\' href=\'node/" . $book_nid. "\'> View This Booklist </a
   $handler->display->display_options['header']['area']['id'] = 'area';
   $handler->display->display_options['header']['area']['table'] = 'views';
   $handler->display->display_options['header']['area']['field'] = 'area';
-  $handler->display->display_options['header']['area']['content'] = '<div class="viewmenu">View: <a href="/booklists">All</a> | <a href="/booklists/staff">Posted by Staff</a> | <a href="/booklists/patrons">Posted by Kids</a></div>
+  $handler->display->display_options['header']['area']['content'] = '<h1>Reviews and Booklists</h1>
+<div class="viewmenu">View: <a href="/booklists">All</a> | <a href="/booklists/staff">Posted by Staff</a> | <a href="/booklists/patrons">Posted by Kids</a></div>
 <h2 class="featured">Featured Booklists</h2>';
   $handler->display->display_options['header']['area']['format'] = 'full_html';
   $handler->display->display_options['defaults']['footer'] = FALSE;
@@ -1030,6 +1028,8 @@ echo "<a class=\'button\' href=\'node/" . $book_nid. "\'> View This Booklist </a
 
   /* Display: Block */
   $handler = $view->new_display('block', 'Block', 'block_5');
+  $handler->display->display_options['defaults']['css_class'] = FALSE;
+  $handler->display->display_options['css_class'] = 'created-by-user';
   $handler->display->display_options['defaults']['pager'] = FALSE;
   $handler->display->display_options['pager']['type'] = 'some';
   $handler->display->display_options['pager']['options']['items_per_page'] = '1';
@@ -1160,14 +1160,13 @@ echo "Patron";
   $handler->display->display_options['fields']['nothing']['alter']['text'] = '<div class="booklist-wrapp">
 <div class="book-body-wrapp">
   <div class="title"><div class="counte">[counter].</div> <div class="title-wrap">[title]</div></div>
-<div class="book-created">Created by [field_user_avatar] [name] ([php])</div>
 </div>
-<div class="book-like">Likes: [count] </div>
-
+<div class="book-user-likes">
+<div class="book-created">Created by  [field_user_avatar]  [name] ([php])</div>
+<div class="book-like"><span>Likes:</span> [count] </div>
 </div>
 
-
-
+</div>
 ';
   $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
@@ -1182,6 +1181,8 @@ echo "Patron";
 
   /* Display: Block */
   $handler = $view->new_display('block', 'Block', 'block_6');
+  $handler->display->display_options['defaults']['css_class'] = FALSE;
+  $handler->display->display_options['css_class'] = 'created-by-user';
   $handler->display->display_options['defaults']['pager'] = FALSE;
   $handler->display->display_options['pager']['type'] = 'some';
   $handler->display->display_options['pager']['options']['items_per_page'] = '1';
@@ -1305,14 +1306,13 @@ echo "Patron";
   $handler->display->display_options['fields']['nothing']['alter']['text'] = '<div class="booklist-wrapp">
 <div class="book-body-wrapp">
   <div class="title"><div class="counte">[counter].</div> <div class="title-wrap">[title]</div></div>
-<div class="book-created">Created by [field_user_avatar] [name] ([php])</div>
 </div>
-<div class="book-like">Likes: [count] </div>
-
+<div class="book-user-likes">
+<div class="book-created">Created by  [field_user_avatar]  [name] ([php])</div>
+<div class="book-like"><span>Likes:</span> [count] </div>
 </div>
 
-
-
+</div>
 ';
   $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
@@ -1327,6 +1327,8 @@ echo "Patron";
 
   /* Display: Block */
   $handler = $view->new_display('block', 'Block', 'block_7');
+  $handler->display->display_options['defaults']['css_class'] = FALSE;
+  $handler->display->display_options['css_class'] = 'created-by-user';
   $handler->display->display_options['defaults']['pager'] = FALSE;
   $handler->display->display_options['pager']['type'] = 'some';
   $handler->display->display_options['pager']['options']['items_per_page'] = '1';
@@ -1451,14 +1453,13 @@ echo "Patron";
   $handler->display->display_options['fields']['nothing']['alter']['text'] = '<div class="booklist-wrapp">
 <div class="book-body-wrapp">
   <div class="title"><div class="counte">[counter].</div> <div class="title-wrap">[title]</div></div>
-<div class="book-created">Created by [field_user_avatar] [name] ([php])</div>
 </div>
-<div class="book-like">Likes: [count] </div>
-
+<div class="book-user-likes">
+<div class="book-created">Created by  [field_user_avatar]  [name] ([php])</div>
+<div class="book-like"><span>Likes:</span> [count] </div>
 </div>
 
-
-
+</div>
 ';
   $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
