@@ -7,6 +7,7 @@
   &.radius {
     border-radius: 10px;
   }
+  transition: all linear 0.5s;
 
   display: inline-block !important;
   padding: 6px 24px !important;
@@ -28,18 +29,29 @@
     font-size: 17px;
 
     @extend .yellow;
-
+    &:hover {
+          background: $hover-yellow;
+        }
+        &:focus {
+          background: $focus-yellow;
+        }
     color: $black;
   }
   .cs-classic & {
     font-size: 18px;
     @extend .light-orange;
     color: $white;
+     &:hover,&:focus {
+          background: $hover-palettes-buttons;
+        }
   }
    .cs-elegant & {
     font-size: 19px;
 
     @extend .light-orange;
+     &:hover,&:focus {
+          background: $hover-palettes-buttons;
+        }
 
     color: $white;
   }
@@ -161,24 +173,35 @@
   &.btn-primary {
     padding-top: 9px;
     padding-bottom: 9px;
-
+   transition: all linear 0.5s;
     .cs-default & {
       font-size: 17px;
 
       @extend .yellow;
 
-      color: #333;
+      color: $black;
+        &:hover {
+          background: $hover-yellow;
+        }
+        &:focus {
+          background: $focus-yellow;
+        }
     }
     .cs-classic & {
       font-size: 18px;
        @extend .light-orange;
        color: $white;
+        &:hover,&:focus {
+          background: $hover-palettes-buttons;
+        }
     }
      .cs-elegant & {
       font-size: 19px;
 
       @extend .light-orange;
-
+        &:hover,&:focus {
+          background: $hover-palettes-buttons;
+        }
       color: $white;
     }
   }
