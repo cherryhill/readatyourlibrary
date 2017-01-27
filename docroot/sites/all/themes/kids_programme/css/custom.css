@@ -12762,49 +12762,54 @@ html {
 .page-reviews .book-reviews-page .view-content .views-row {
   display: inline-block;
   width: 100%;
-  padding: 35px 0;
+  padding: 35px 0 15px;
+  margin: 0;
   border-bottom: 1px solid #cccccc;
 }
-/* line 45, ../scss/pages/_bookreview.scss */
+/* line 46, ../scss/pages/_bookreview.scss */
 .page-reviews .views-field-field-book-cover-image-link {
   width: 37%;
   float: left;
 }
+/* line 49, ../scss/pages/_bookreview.scss */
+.page-reviews .views-field-field-book-cover-image-link table, .page-reviews .views-field-field-book-cover-image-link tbody {
+  border: none;
+}
 
-/* line 51, ../scss/pages/_bookreview.scss */
+/* line 55, ../scss/pages/_bookreview.scss */
 .reviews-wrapper {
   width: 63%;
   display: inline-block;
 }
-/* line 54, ../scss/pages/_bookreview.scss */
+/* line 58, ../scss/pages/_bookreview.scss */
 .reviews-wrapper .reviews-title {
   display: inline-block;
   width: 100%;
 }
-/* line 60, ../scss/pages/_bookreview.scss */
+/* line 64, ../scss/pages/_bookreview.scss */
 .reviews-wrapper .bookreview_title a {
   text-decoration: none;
 }
-/* line 64, ../scss/pages/_bookreview.scss */
+/* line 68, ../scss/pages/_bookreview.scss */
 .reviews-wrapper .counte {
   float: left;
   margin-right: 6px;
 }
-/* line 68, ../scss/pages/_bookreview.scss */
+/* line 72, ../scss/pages/_bookreview.scss */
 .reviews-wrapper .review-wrapp {
   float: left;
   width: 78%;
 }
-/* line 73, ../scss/pages/_bookreview.scss */
+/* line 77, ../scss/pages/_bookreview.scss */
 .reviews-wrapper .like-count {
   float: right;
 }
-/* line 76, ../scss/pages/_bookreview.scss */
+/* line 80, ../scss/pages/_bookreview.scss */
 .reviews-wrapper .like-count span {
   position: relative;
   padding-right: 32px;
 }
-/* line 79, ../scss/pages/_bookreview.scss */
+/* line 83, ../scss/pages/_bookreview.scss */
 .reviews-wrapper .like-count span:after {
   content: "";
   width: 25px;
@@ -12815,32 +12820,32 @@ html {
   right: 2px;
   top: -1px;
 }
-/* line 91, ../scss/pages/_bookreview.scss */
+/* line 95, ../scss/pages/_bookreview.scss */
 .reviews-wrapper .date-wrapp {
   clear: both;
   display: inline-block;
   margin: 2px 0 17px 0;
   width: 100%;
 }
-/* line 97, ../scss/pages/_bookreview.scss */
+/* line 101, ../scss/pages/_bookreview.scss */
 .reviews-wrapper .date {
   margin-bottom: 10px;
 }
-/* line 100, ../scss/pages/_bookreview.scss */
+/* line 104, ../scss/pages/_bookreview.scss */
 .reviews-wrapper .review, .reviews-wrapper .views-field-field-user-avatar {
   float: left;
   margin-right: 7px;
 }
-/* line 103, ../scss/pages/_bookreview.scss */
+/* line 107, ../scss/pages/_bookreview.scss */
 .reviews-wrapper .review img, .reviews-wrapper .views-field-field-user-avatar img {
   margin-top: -9px;
 }
-/* line 108, ../scss/pages/_bookreview.scss */
+/* line 112, ../scss/pages/_bookreview.scss */
 .reviews-wrapper .user a {
   text-decoration: none;
 }
 
-/* line 131, ../scss/pages/_bookreview.scss */
+/* line 135, ../scss/pages/_bookreview.scss */
 .book-reviews-page .chosen-container a {
   height: auto;
   width: 100%;
@@ -12857,28 +12862,28 @@ html {
   font-size: 19px;
 }
 
-/* line 146, ../scss/pages/_bookreview.scss */
+/* line 150, ../scss/pages/_bookreview.scss */
 .book-reviews-page .chosen-container {
   width: 100% !important;
 }
-/* line 149, ../scss/pages/_bookreview.scss */
+/* line 153, ../scss/pages/_bookreview.scss */
 .book-reviews-page .chosen-container.chosen-with-drop.chosen-container-active a {
   border-radius: 10px !important;
   box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
   border: none;
 }
-/* line 155, ../scss/pages/_bookreview.scss */
+/* line 159, ../scss/pages/_bookreview.scss */
 .book-reviews-page .chosen-container .chosen-drop {
   position: absolute;
   width: 100%;
   top: 48px;
 }
-/* line 161, ../scss/pages/_bookreview.scss */
+/* line 165, ../scss/pages/_bookreview.scss */
 .book-reviews-page .chosen-container .chosen-single b {
   visibility: hidden;
   position: relative;
 }
-/* line 164, ../scss/pages/_bookreview.scss */
+/* line 168, ../scss/pages/_bookreview.scss */
 .book-reviews-page .chosen-container .chosen-single b:after {
   content: "";
   border-left: 5px solid transparent;
@@ -12890,21 +12895,21 @@ html {
   left: 0;
   visibility: visible;
 }
-/* line 177, ../scss/pages/_bookreview.scss */
+/* line 181, ../scss/pages/_bookreview.scss */
 .book-reviews-page .chosen-container .chosen-results {
   margin: 0;
   padding: 0;
 }
-/* line 181, ../scss/pages/_bookreview.scss */
+/* line 185, ../scss/pages/_bookreview.scss */
 .book-reviews-page .chosen-container .chosen-search {
   padding: 0;
 }
-/* line 186, ../scss/pages/_bookreview.scss */
+/* line 190, ../scss/pages/_bookreview.scss */
 .book-reviews-page .pagination a {
   text-decoration: none;
 }
 
-/* line 194, ../scss/pages/_bookreview.scss */
+/* line 198, ../scss/pages/_bookreview.scss */
 .not-logged-in .book-reviews-page .user a {
   color: #7e7e7e;
 }
@@ -15400,7 +15405,7 @@ aside .block-menu ul.menu li a.active-trail.active:before {
 }
 /* line 10, ../scss/pages/_userlogin.scss */
 .page-user-register .form-type-date-select .date-padding .form-type-select .chosen-container {
-  width: 100%;
+  width: 100% !important;
 }
 /* line 17, ../scss/pages/_userlogin.scss */
 .page-user-register .form-wrapper .field-type-text, .page-user-register .form-wrapper .field-type-phone, .page-user-register .form-wrapper .field-type-email {
@@ -15425,7 +15430,7 @@ aside .block-menu ul.menu li a.active-trail.active:before {
 }
 /* line 33, ../scss/pages/_userlogin.scss */
 .page-user-register .field-type-addressfield .form-type-select .chosen-container, .page-user-register .field-type-addressfield .form-type-textfield .chosen-container {
-  width: 100%;
+  width: 100% !important;
 }
 /* line 38, ../scss/pages/_userlogin.scss */
 .page-user-register .field-type-taxonomy-term-reference, .page-user-register .field-name-field-library-card-number,
@@ -15439,7 +15444,7 @@ aside .block-menu ul.menu li a.active-trail.active:before {
 .page-user-register .field-type-taxonomy-term-reference .chosen-container, .page-user-register .field-name-field-library-card-number .chosen-container,
 .page-user-register .field-name-field-school .chosen-container, .page-user-register .field-name-field-user-grade .chosen-container, .page-user-register .field-name-field-organization .chosen-container,
 .page-user-register .field-name-field-hear-about .chosen-container {
-  width: 100%;
+  width: 100% !important;
 }
 /* line 48, ../scss/pages/_userlogin.scss */
 .page-user-register .field-name-field-user-grade, .page-user-register .username-curr, .page-user-register .password-suggestions.description,
