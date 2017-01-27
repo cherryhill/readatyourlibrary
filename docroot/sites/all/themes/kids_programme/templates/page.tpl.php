@@ -5,9 +5,7 @@
     <!-- City Branding -->
     <div class="pre-header">
       <section class="row" id="topmostbranding">
-         <div class="breadcurm hide-for-small-only">
-          <?php if ($breadcrumb): print $breadcrumb; endif; ?>
-        </div>
+
         <div class="top-menu hide-for-small-only">
           <?php if (!empty($page['top_links'])): ?>
           <?php print render($page['top_links']); ?>
@@ -85,6 +83,7 @@
       <div class="large-12 columns">
         <?php if ($messages): print $messages; endif; ?>
       </div>
+
     </section>
     <!--/.l-messages -->
   <?php endif; ?>
@@ -98,8 +97,15 @@
     </section>
     <!--/.l-help -->
   <?php endif; ?>
+  <div class="row breadcrum-wrapper">
+     <div class="breadcurm large-12 columns">
+          <?php if ($breadcrumb): print $breadcrumb; endif; ?>
+        </div>
+
+  </div>
 
   <main role="main" class="row l-main">
+
     <div class="<?php print $main_grid; ?> main columns">
       <?php if (!empty($page['highlighted'])): ?>
         <div class="highlight panel callout">

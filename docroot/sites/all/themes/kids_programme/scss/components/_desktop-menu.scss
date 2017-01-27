@@ -3,7 +3,7 @@
   display: inline-block;
 
   ul.menu {
-    width: 745px;
+    //width: 745px;
     list-style: none;
     margin: 0;
     padding: 0;
@@ -170,7 +170,7 @@
         }
 
         &.reviews {
-          .cs-default & {
+          .cs-default &  {
             &:after {
               background-position: -2px -286px;
             }
@@ -190,6 +190,28 @@
               background-position: -2px -1662px;
             }
           }
+        }
+        &.reviews {
+          .cs-default.page-booklists &  {
+            color: $orange;
+            background: $white;
+            &:after {
+              background-position: -2px -569px;
+            }
+           }
+          .cs-classic.page-booklists & {
+            @extend .dark-blue;
+          }
+          .cs-elegant.page-booklists & {
+             background: $white;
+      color: $darkblue;
+          }
+          .cs-classic.page-booklists &, .cs-elegant.page-booklists & {
+            &:after {
+              background-position: -2px -1662px;
+            }
+          }
+
         }
 
         &.photos {
