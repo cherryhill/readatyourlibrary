@@ -37,7 +37,8 @@
 			.views-row {
 				display: inline-block;
 				width: 100%;
-				padding: 35px 0;
+				padding: 35px 0 15px;
+				margin: 0;
 				border-bottom: 1px solid #cccccc;
 			}
 		}
@@ -45,6 +46,9 @@
 	.views-field-field-book-cover-image-link {
 		width: 37%;
 		float: left;
+		table, tbody {
+			border: none;
+		}
 	}
 }
 
@@ -67,7 +71,7 @@
 	}
 	.review-wrapp {
     float: left;
-    width: 80%;
+    width: 78%;
     @extend h5;
 	}
 	.like-count {
@@ -175,7 +179,6 @@
 			}
 		}
 		.chosen-results {
-			background: $blue;
 			margin: 0;
 			padding: 0;
 		}
