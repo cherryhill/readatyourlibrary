@@ -1,0 +1,15 @@
+name = Book reviews page sidebar menu for teen
+core = 7.x
+package = Features
+version = 7.x-1.0
+dependencies[] = features
+dependencies[] = menu
+features[features_api][] = api:2
+features[menu_custom][] = menu-book-reviews-sidebar-menu-f
+features[menu_links][] = menu-book-reviews-sidebar-menu-f_activity-reviews:<front>
+features[menu_links][] = menu-book-reviews-sidebar-menu-f_book-reviews:reviews
+features[menu_links][] = menu-book-reviews-sidebar-menu-f_booklists:booklists
+features[menu_links][] = menu-book-reviews-sidebar-menu-f_movie-reviews:movie-review
+features[menu_links][] = menu-book-reviews-sidebar-menu-f_music-reviews:music-review-listing
+features[menu_links][] = menu-book-reviews-sidebar-menu-f_video-game-reviews:video-game-review
+project path = sites/all/modules/features
