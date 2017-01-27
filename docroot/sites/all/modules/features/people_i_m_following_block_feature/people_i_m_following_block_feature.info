@@ -1,0 +1,10 @@
+name = People I'm Following block feature
+core = 7.x
+package = Features
+version = 7.x-1.0
+dependencies[] = views
+features[ctools][] = views:views_default:3.0
+features[features_api][] = api:2
+features[views_view][] = people_i_m_following
+features_exclude[dependencies][ctools] = ctools
+project path = sites/all/modules/features
