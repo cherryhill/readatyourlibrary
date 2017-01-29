@@ -3,4 +3,136 @@
 // Before adding styles be sure to modify variables in the
 // "scss/_variables.scss" file.
 
-.button {}
+.button, button {
+  @extend .teen-button;
+  @extend .main-button;
+}
+//buttons
+.teen-button {
+    display: inline-block;
+    @extend .border-none;
+  text-decoration: none;
+  @include button-font;
+  box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+  font-size: 18px;
+  text-transform: capitalize;
+  .cs-default & {
+    line-height: 1;
+  }
+  .cs-classic & {
+    line-height: 22px;
+  }
+  .cs-elegant & {
+    line-height: 23px;
+  }
+}
+.main-button {
+   @extend .teen-button;
+   transition: all linear 0.5s;
+  .cs-default & {
+    @extend .yellow;
+    color: $purple;
+    padding: 9px 14px 5px;
+
+     &:hover,&:focus {
+      @extend .yellow-btn-hover-default;
+     }
+  }
+  .cs-classic & {
+    @extend .light-blue;
+    color: $dark-blue;
+    padding: 4px 14px 5px;
+     &:hover, &:focus {
+      @extend .classic-btn-hover;
+     }
+  }
+  .cs-elegant & {
+    @extend .yellow-btn-elegant;
+    padding: 4px 14px;
+    color: $black;
+    &:hover, &:focus {
+      @extend .elegant-btn-hover;
+    }
+  }
+}
+.msg-button {
+  &.new {
+    &:after {
+       .cs-default &{
+        background-position: -20px -1209px;
+       }
+
+      }
+    .cs-default &, .cs-classic & {
+      @extend .msg-blue;
+      @extend .white-text;
+       &:hover,&:focus {
+        @extend .msg-blue;
+      @extend .white-text;
+       }
+    }
+    .cs-elegant & {
+      @extend .orange;
+    }
+  }
+  @extend .teen-button;
+  position: relative;
+   .cs-default & {
+    @extend .yellow;
+    color: $purple;
+    padding: 9px 14px 5px 50px;
+
+     &:hover,&:focus {
+      @extend .yellow-btn-hover-default;
+     }
+  }
+  .cs-classic & {
+    @extend .dark-blue;
+    @extend .white-text;
+    padding: 4px 14px 5px 50px;
+
+  }
+  .cs-elegant & {
+    @extend .gray-btn;
+    padding: 4px 14px 4px 50px;
+    @extend .white-text;
+  }
+    &:after {
+      content: "";
+      width: 30px;
+      height: 14px;
+      position: absolute;
+      left: 20px;
+      top: 9px;
+      background: url('../images/teen-spritesheet');
+      background-position: -20px -1209px;
+       .cs-default & {
+        background-position: -20px -1265px;
+
+       }
+    }
+}
+.top-menu-button {
+  @extend .teen-button;
+   .cs-default & {
+    @extend .yellow;
+    color: $purple;
+    padding: 9px 14px 5px;
+
+     &:hover,&:focus {
+      @extend .yellow-btn-hover-default;
+     }
+  }
+  .cs-classic & {
+    @extend .dark-blue;
+    @extend .white-text;
+    padding: 4px 14px 5px;
+
+  }
+  .cs-elegant & {
+    @extend .gray-btn;
+    padding: 4px 14px 4px;
+    @extend .white-text;
+  }
+}
+//menu

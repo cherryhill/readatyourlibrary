@@ -57,3 +57,59 @@
 // }
 
 // select {}
+a {
+  color: $link-color;
+}
+
+h1,h2,h3,h4,h5 {
+  @include heading-font;
+}
+h1 {
+  .cs-default & {
+    font-size: 26px;
+
+  }
+  font-size: 28px;
+}
+h2 {
+  .cs-default & {
+    font-size: 24px;
+  }
+  font-size: 25px;
+}
+h3 {
+  font-size: 22px;
+}
+h4 {
+  font-size: 20px;
+}
+h5 {
+  font-size: 17px;
+}
+ul, ol, dl {
+  list-style-position: inside;
+  @include primary_fsize;
+}
+p {
+  @include primary_fsize;
+  margin-bottom: 20px;
+   .view-content &,.view-header &,.view-footer & {
+    margin-bottom: 0;
+   }
+}
+
+li.progress {
+  border: none;
+  outline: none;
+  padding: 0;
+}
+a,button {
+  &:focus {
+    outline: none;
+  }
+}
+.view-footer {
+  button,.button {
+    margin-left: 0;
+  }
+}

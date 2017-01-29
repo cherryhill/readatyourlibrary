@@ -5,12 +5,84 @@
 //
 // Mixin: Base Utility
 //
-@mixin stage {
-  position: absolute;
-  left: -999em;
+@mixin heading-font {
+  .cs-default & {
+    font-family: $Special-elite;
+    font-weight: 400;
+  }
+  .cs-classic & {
+   font-family: $Exo2;
+   font-weight: 600;
+  }
+  .cs-elegant & {
+    font-family: $Sniglet;
+    font-weight: 400;
+  }
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  -moz-font-smoothing: grayscale;
 }
 
-@mixin unstage {
-  position: static;
-  left: auto;
+
+@mixin  button-font {
+   .cs-default & {
+    font-family: $Special-elite;
+    font-weight: 400;
+  }
+  .cs-classic & {
+   font-family: $Exo2;
+   font-weight: 400;
+  }
+  .cs-elegant & {
+    font-family: $Sniglet;
+    font-weight: 400;
+  }
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  -moz-font-smoothing: grayscale;
+}
+
+@mixin body-font {
+    .cs-default & {
+    font-family: $Raleway;
+    font-weight: 400;
+  }
+  .cs-classic & {
+   font-family: $Exo2;
+   font-weight: 500;
+  }
+  .cs-elegant & {
+    font-family: $Roboto;
+    font-weight: 400;
+  }
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  -moz-font-smoothing: grayscale;
+}
+@mixin bold-font {
+      .cs-default & {
+    font-family: $Raleway;
+    font-weight: 700;
+  }
+  .cs-classic & {
+   font-family: $Exo2;
+   font-weight: 600;
+  }
+  .cs-elegant & {
+    font-family: $Roboto;
+    font-weight: 700;
+  }
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  -moz-font-smoothing: grayscale;
+}
+
+@mixin primary_fsize {
+  @include body-font;
+  font-size: 17px;
+  line-height: 26px;
 }
