@@ -77,7 +77,7 @@ function progress_user_block_program() {
     $day_count = count($resu);
     
     //Get points for next reward
-    $req_points = play_library_program_next_close_reward_points($resu->field_activity_entry_activity_target_id[0]);
+    $req_points = play_library_program_next_close_reward_points($resu[0]->field_activity_entry_activity_target_id);
 
     if($req_points == 1) {
       $next_rew = t("<span><strong>$req_points</strong> more day of reading needed to receive your next prize</span>");
@@ -779,11 +779,12 @@ function user_progress() {
     $quer->condition('eck_a.type', 'activity_entry');
     $quer->condition('hook.field_activity_fired_hook_value', 'progress_page');
     $quer->fields('eck_a', array('title'));
+    $quer->fields('fdfae', array('field_activity_entry_activity_target_id'));
     $resu = $quer->execute()->fetchAll();
     $day_count = count($resu);
 
     //Get points for next reward
-    $req_points = play_library_program_next_close_reward_points($resu->field_activity_entry_activity_target_id[0]);
+    $req_points = play_library_program_next_close_reward_points($resu[0]->field_activity_entry_activity_target_id);
 
     if($req_points == 1) {
       $next_rew = t("<span><strong>$req_points</strong> more day of reading needed to receive your next prize</span>");
