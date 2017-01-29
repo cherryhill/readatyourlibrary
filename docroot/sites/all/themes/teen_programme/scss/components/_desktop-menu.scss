@@ -1,0 +1,294 @@
+//menu
+.menu-wrapper {
+  width: 100%;
+  display: inline-block;
+
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    float: right;
+
+    li {
+      width: 91px;
+      height: 103px;
+      display: inline-block;
+      vertical-align: bottom;
+      margin-left: 9px;
+
+
+      a {
+        width: inherit;
+        border-radius: 10px;
+        text-decoration: none;
+        height: 45px;
+        padding-top: 58px;
+        display: inline-block;
+        text-align: center;
+        vertical-align: center;
+        position: relative;
+        transition: all linear 0.8s;
+        font-size: 15px;
+        color: $white;
+        line-height: 18px;
+        @extend .border-none;
+
+        @include heading-font;
+
+        &:hover, &:focus, &.active {
+          //transform: rotateY(360deg);
+
+          &:after {
+            transform: rotateX(360deg);
+          }
+        }
+
+        .cs-default & {
+
+
+          &:hover, &:focus, &.active {
+            color: $purple;
+          }
+        }
+
+        .cs-classic & {
+           color: $dark-blue;
+
+          &:hover, &:focus, &.active {
+            color: $red;
+          }
+        }
+
+        .cs-elegant & {
+          &:hover, &:focus, &.active {
+            color: $gray-btn;
+          }
+        }
+
+        &:after {
+          content: " ";
+          width: 60px;
+          height: 40px;
+          position: absolute;
+
+          //background: red;
+          top: 18px;
+          left: 15px;
+          background: url("../images/teen-spritesheet");
+          transition: all ease 1.8s;
+          //transition-duration: 0.09s;
+          transition-delay: 0.3s;
+        }
+
+        &.progress {
+          .cs-default & {
+            &:after {
+              background-position: -16px -2193px;
+            }
+
+            &:hover:after, &:focus:after, &.active:after {
+              background-position: -16px -2138px;
+            }
+          }
+
+          .cs-classic & {
+            &:after {
+              background-position: -16px -2029px;
+            }
+            &:hover:after, &:focus:after, &.active:after {
+              background-position: -16px -2084px;
+            }
+          }
+
+          .cs-elegant & {
+              &:after {
+              background-position: -16px -2193px;
+            }
+            &:hover:after, &:focus:after, &.active:after {
+              background-position: -16px -2245px;
+            }
+          }
+        }
+
+        &.activities {
+          .cs-default & {
+            &:after {
+              background-position: -9px -92px;
+            }
+
+            &:hover:after, &:focus:after, &.active:after {
+              background-position: -9px -20px;
+            }
+          }
+
+          .cs-classic & {
+            &:after {
+              background-position: -9px -236px;
+            }
+            &:hover:after, &:focus:after, &.active:after {
+              background-position: -9px -309px;
+            }
+          }
+          .cs-elegant & {
+            &:after {
+              background-position: -9px -92px;
+            }
+            &:hover:after, &:focus:after, &.active:after {
+              background-position: -9px -164px;
+            }
+          }
+        }
+
+        &.rewards {
+          .cs-default & {
+            &:after {
+              background-position: -5px -2737px;
+            }
+
+            &:hover:after, &:focus:after, &.active:after {
+              background-position: -5px -2664px;
+            }
+          }
+
+          .cs-classic & {
+            &:after {
+              background-position: -5px -2877px;
+            }
+            &:hover:after, &:focus:after, &.active:after {
+              background-position: -5px -2949px;
+            }
+          }
+          .cs-elegant & {
+              &:after {
+              background-position: -5px -2737px;
+            }
+            &:hover:after, &:focus:after, &.active:after {
+              background-position: -5px -2805px;
+            }
+          }
+        }
+
+        &.events {
+          .cs-default & {
+            &:after {
+              background-position: -5px -450px;
+            }
+
+            &:hover:after, &:focus:after, &.active:after {
+              background-position: -5px -380px;
+            }
+          }
+
+          .cs-classic &  {
+            &:after {
+              background-position: -5px -590px;
+            }
+            &:hover:after, &:focus:after, &.active:after {
+              background-position: -5px -660px;
+            }
+          }
+          .cs-elegant & {
+            &:after {
+              background-position: -5px -450px;
+            }
+            &:hover:after, &:focus:after, &.active:after {
+              background-position: -5px -520px;
+            }
+          }
+        }
+
+        &.reviews {
+          .cs-default & {
+            &:after {
+              background-position: -2px -2379px;
+            }
+
+            &:hover:after, &:focus:after, &.active:after {
+              background-position: -2px -2306px;
+            }
+          }
+
+          .cs-classic &  {
+              &:after {
+              background-position: -2px -2524px;
+            }
+
+            &:hover:after, &:focus:after, &.active:after {
+              background-position: -2px -2597px;
+            }
+          }
+          .cs-elegant & {
+              &:after {
+              background-position: -2px -2379px;
+            }
+
+            &:hover:after, &:focus:after, &.active:after {
+              background-position: -2px -2452px;
+            }
+          }
+        }
+
+        &.photos {
+          .cs-default & {
+            &:after {
+              background-position: -8px -1380px;
+            }
+
+            &:hover:after, &:focus:after, &.active:after {
+              background-position: -8px -1314px;
+            }
+          }
+
+          .cs-classic & {
+            &:after {
+              background-position: -8px -1514px;
+            }
+
+            &:hover:after, &:focus:after, &.active:after {
+              background-position: -8px -1578px;
+            }
+          }
+          .cs-elegant & {
+            &:after {
+              background-position: -8px -1380px;
+            }
+            &:hover:after, &:focus:after, &.active:after {
+              background-position: -8px -1447px;
+            }
+          }
+        }
+
+        &.current-program {
+          .cs-default & {
+            &:after {
+              background-position: -8px -1728px;
+            }
+
+            &:hover:after, &:focus:after, &.active:after {
+              background-position: -8px -1650px;
+            }
+          }
+
+          .cs-classic & {
+           &:after {
+              background-position: -8px -1884px;
+            }
+
+            &:hover:after, &:focus:after, &.active:after {
+              background-position: -8px -1963px;
+            }
+          }
+          .cs-elegant & {
+           &:after {
+              background-position: -8px -1728px;
+            }
+
+            &:hover:after, &:focus:after, &.active:after {
+              background-position: -8px -1806px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
