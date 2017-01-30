@@ -84,14 +84,14 @@ function play_progress_calendar_menu() {
     'title' => 'Calendar Page',
     'page callback' => 'calendar_page',
     'access arguments' => array('access content'),
-    'type' => MENU_NORMAL_ITEM,
+    // 'type' => MENU_NORMAL_ITEM,
   );
 
   $items['progress'] = array(
     'title' => 'Progress',
     'page callback' => 'play_progress_calendar',
     'access arguments' => array('view progress page'),
-    'type' => MENU_NORMAL_ITEM,
+    // 'type' => MENU_NORMAL_ITEM,
     'file' => 'inc/play_progress_calendar_page.inc',
     'file path' => drupal_get_path('module', 'play_progress_calendar'),
   );
@@ -99,13 +99,13 @@ function play_progress_calendar_menu() {
     'title' => 'calendar data',
     'page callback' => 'calendar_data2',
     'access arguments' => array('access content'),
-    'type' => MENU_NORMAL_ITEM,
+    // 'type' => MENU_NORMAL_ITEM,
   );
   $items['rewardloader'] = array(
     'title' => 'reward data',
     'page callback' => 'reward_loader',
     'access arguments' => array('access content'),
-    'type' => MENU_NORMAL_ITEM,
+    // 'type' => MENU_NORMAL_ITEM,
   );
   
   
@@ -132,29 +132,26 @@ function play_progress_calendar_menu() {
 
 
 /**
- * This is for calendar ajax functinality user drag and drop sticker and get point and reward.
+ * This is for calendar ajax callback function. Called when user drags and drops a sticker
  */
 
 function calendar_page() {
 
   $activity_list = explode(',', $_REQUEST['act_ids']);
-  //Check if request contains a sticker id
+  //Check if request contains a sticker id for external drop to create new activity
   if (strtotime($_REQUEST['drop_date']) <= time()){
     if (isset($_REQUEST['tid'])){ 
-        //Create activity entry for all activities associated
-        foreach ($activity_list as $activity) {
-          play_library_program_create_activity_entry($activity , $_REQUEST['user_id'], strtotime($_REQUEST['drop_date']), $_REQUEST['tid']);
-            // play_library_program_update_activity_entry(184, strtotime('11-AUG-2017'));
-        }
+      //Create activity entry for all activities associated
+      foreach ($activity_list as $activity) {
+        play_library_program_create_activity_entry($activity , $_REQUEST['user_id'], strtotime($_REQUEST['drop_date']), $_REQUEST['tid']);
+      }
     }
-    //if activity id is present in post update activity
+    //if activity id is present in post update activity for internal drop
     if (isset($_REQUEST['entry_id'])){
-        //Create activity entry for all activities associated
-        foreach ($activity_list as $activity) {
-          // //print_r($_REQUEST['entry_id'].strtotime($_REQUEST['drop_date']));
-          play_library_program_update_activity_entry($_REQUEST['entry_id'], strtotime($_REQUEST['drop_date']),$_REQUEST['user_id'], $activity);
-            // play_library_program_update_activity_entry(184, strtotime('11-AUG-2017'));
-        }
+      //Update activity entry for all activities associated
+      foreach ($activity_list as $activity) {
+        play_library_program_update_activity_entry($_REQUEST['entry_id'], strtotime($_REQUEST['drop_date']),$_REQUEST['user_id'], $activity);
+      }
     }
   }
   else{
@@ -175,7 +172,7 @@ function calendar_page() {
     $next_rew =  t('<strong>Congratulations!</strong> You have completed Reading Program.'); 
   }
   //Print message que from drupal_set_message
-  echo json_encode(array('next_reward'=>$next_rew, 'drupal_message'=>(theme('status_messages')))); 
+  echo array('next_reward'=>$next_rew, 'drupal_message'=>(theme('status_messages'))); 
 }
 
 //Function to generate json data on calendar load
