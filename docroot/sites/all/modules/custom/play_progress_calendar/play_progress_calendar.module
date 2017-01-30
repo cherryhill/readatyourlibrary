@@ -50,13 +50,21 @@
 // }
 
 
+/**
+/Implement hook permissions
+**/
+function play_progress_calendar_permission() {
+  return array(
+    'view progress page' => array(
+      'title' => t('View Calendar Progress Page'),
+      'description' => t('Access to view Calendar Progress Page'),
+    ),
+  );
+}
 
-// This is custom block shown the user progress of reading activity.
 
 
 // children progress page on mobile.
-
-
 function play_progress_calendar_init() {
   global $user;
   $current_time = time();
@@ -82,7 +90,7 @@ function play_progress_calendar_menu() {
   $items['progress'] = array(
     'title' => 'Progress',
     'page callback' => 'play_progress_calendar',
-    'access arguments' => array('access content'),
+    'access arguments' => array('view progress page'),
     'type' => MENU_NORMAL_ITEM,
     'file' => 'inc/play_progress_calendar_page.inc',
     'file path' => drupal_get_path('module', 'play_progress_calendar'),
