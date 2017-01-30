@@ -2028,42 +2028,43 @@ function play_library_program_next_close_reward_points($activity_ids, $uid = NUL
 	$que->fields('fdfr', array('field_repeatable_value'));
 	$que->fields('fdfmnr', array('field_maximum_num_reward_value'));
 	$res = $que->execute()->fetchAll();
-
-	// //Validate conditions
+  
+	//Validate conditions
 	foreach ($res as $key=>$value) {
 		//Get current points of user
 		$receieved_rewards = pl_receieved_rewards($uid, $value->id);
-		$rew_tid = _get_term_from_name('R_'.$value->id, 'userpoints');	
+		$rew_tid = _get_term_from_name('R_'.$value->id, 'userpoints');
 		$user_points = userpoints_get_current_points($uid, $rew_tid);
-		$req_points = ($value->field_points_value) - $user_points;
-
+    $req_points = ($value->field_points_value) - $user_points;
+    
 		if ($value->field_repeatable_value == 1){
 			if(!empty($value->field_maximum_num_reward_value)){
-				if ($receieved_rewards <= $value->field_maximum_num_reward_value){
+				if ($receieved_rewards < $value->field_maximum_num_reward_value){
 					if ($req_points > 0){
-						if($prev_point > $req_points){
-							$prev_point = $req_points;
-						}
+            $points_needed[] = $req_points;
 					}
 				}
 			}else{
 				if ($req_points > 0){
-					if($prev_point > $req_points){
-						$prev_point = $req_points;
-					}
+          $points_needed[] = $req_points;
 				}
 			}
 		} else{
 			if($receieved_rewards <= 0){
 				if ($req_points > 0){
-					if($prev_point > $req_points){
-						$prev_point = $req_points;
-					}
+          $points_needed[] = $req_points;
 				}
 			}else{
-        $req_points = 0;
+        $prev_point[] = $req_points;
       }
 		}
-	}
-	return $req_points;
+	}//end of for each
+  
+  if(!empty($points_needed)){
+    $next_rew_points = min($points_needed);
+  }
+  else{
+   $next_rew_points=0; 
+  }
+	return $next_rew_points;
 }

@@ -72,16 +72,33 @@ function progress_user_block_program() {
     $quer->condition('eck_a.type', 'activity_entry');
     $quer->condition('hook.field_activity_fired_hook_value', 'progress_page');
     $quer->fields('eck_a', array('title'));
+    $quer->fields('fdfae', array('field_activity_entry_activity_target_id'));
     $resu = $quer->execute()->fetchAll();
     $day_count = count($resu);
+    
+    //Get points for next reward
+    $req_points = play_library_program_next_close_reward_points($resu[0]->field_activity_entry_activity_target_id);
+
+    if($req_points == 1) {
+      $next_rew = t("<span><strong>$req_points</strong> more day of reading needed to receive your next prize</span>");
+    }
+
+    else if ($req_points > 1){
+      $next_rew = t("<span><strong>$req_points</strong> more days of reading needed to receive your next prize</span>");
+    } 
+  
+    else {
+      $next_rew =  t("<span><strong>Congratulations!</strong> You have completed Reading Program.</span>"); 
+    }
+
+
     if($day_count == 1) {
       $out = t("<span class='msg-highlight'>Total day read: $day_count</span><br/>");
     }
     else {
       $out = t("<span class='msg-highlight'>Total days read: $day_count</span><br/>");
     } 
-
-    return "<div>$out</div>";
+    return "<div>$out$next_rew</div>";
 }
 
 
@@ -762,8 +779,25 @@ function user_progress() {
     $quer->condition('eck_a.type', 'activity_entry');
     $quer->condition('hook.field_activity_fired_hook_value', 'progress_page');
     $quer->fields('eck_a', array('title'));
+    $quer->fields('fdfae', array('field_activity_entry_activity_target_id'));
     $resu = $quer->execute()->fetchAll();
     $day_count = count($resu);
+
+    //Get points for next reward
+    $req_points = play_library_program_next_close_reward_points($resu[0]->field_activity_entry_activity_target_id);
+
+    if($req_points == 1) {
+      $next_rew = t("<span><strong>$req_points</strong> more day of reading needed to receive your next prize</span>");
+    }
+
+    else if ($req_points > 1){
+      $next_rew = t("<span><strong>$req_points</strong> more days of reading needed to receive your next prize</span>");
+    } 
+  
+    else {
+      $next_rew =  t("<span><strong>Congratulations!</strong> You have completed Reading Program.</span>"); 
+    }
+
     if($day_count == 1) {
       $out = t("<span class='msg-highlight'>Total day read: $day_count</span><br/>");
     }
@@ -771,7 +805,7 @@ function user_progress() {
       $out = t("<span class='msg-highlight'>Total days read: $day_count</span><br/>");
     } 
 
-    return "<div>$out</div>";
+    return "<div>$out</div><div>$next_rew</div>";
 
 }
 
