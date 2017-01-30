@@ -212,9 +212,7 @@ if(isset($catalog_lk)){
   <?php 
     if($node_privacy === 'public'){ print flag_create_link('follow', $node->uid); } ?>
   </div>
-  <span>
-  <?php print flag_create_link('like', $node->nid) ?>
-  </span>
+  
   </div>
 
 </article>
