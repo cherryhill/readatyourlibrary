@@ -1,0 +1,12 @@
+.sidebar2 {
+  > .first {
+    padding: 10px 30px;
+     @extend .primary-background;
+     *:not(button) {
+       color: inherit;
+     }
+     *:not(button,h1,h2) {
+       font-family: inherit;
+     }
+  }
+}

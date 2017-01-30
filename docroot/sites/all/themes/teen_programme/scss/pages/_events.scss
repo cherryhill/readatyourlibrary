@@ -1,0 +1,62 @@
+.events-page-events {
+  .view-content {
+    h3 {
+        padding: 6px 24px;
+        color: $white;
+        margin-top: 20px;
+        margin-bottom: 0;
+        font-size: 18px;
+        .cs-default & {
+          background: $purple;
+        }
+        .cs-classic & {
+          background: $light-blue;
+        }
+      .cs-elegant & {
+       background: $blue;
+      }
+    }
+    margin-bottom: 50px;
+  }
+  .view-header {
+    margin-bottom: 10px;
+  }
+  .events-wrapper {
+    -webkit-flex-wrap: wrap;
+    flex-wrap: wrap;
+    display: -webkit-flex;
+    display: flex;
+    //align-content: center;
+    //align-items: center;
+    width: 100%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+     .title {
+      flex: 0 0 60%;
+      a {
+         width: 100%;
+         display: inline-block;
+         padding-right: 10px;
+         color: $black;
+         padding-left: 24px;
+      }
+     }
+     .date {
+       flex: 0 0 20%;
+     }
+     .location {
+      flex: 0 0 20%;
+     }
+
+  }
+}
+.event-side-bar {
+  margin: 5px 0;
+  a {
+    .sidebar2 & {
+    color: $white;
+    text-decoration: underline;
+  }
+  }
+
+}
