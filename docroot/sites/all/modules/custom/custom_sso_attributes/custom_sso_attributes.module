@@ -8,12 +8,13 @@ function custom_sso_attributes_user_login(&$edit, $account) {
 	if($_REQUEST['form_id'] == 'user_login_block' || $_REQUEST['form_id'] == 'user_login') {
       global $user;
       $prof = profile2_by_uid_load($user->uid, 'main');
-      print_r($prof->pid);die('qwe');
-      if(empty($prof->pid)) {
-      	$_GET['destination'] = 'user/'.$user->uid.'/edit/main';
+      //print_r($prof->pid);die('qwe');
+      if(!empty($prof->pid)) {
+      	drupal_goto('<front>');
       }
       else {
-      	drupal_goto('<front>');
+      	$_GET['destination'] = 'user/'.$user->uid.'/edit/main';
+      	
       }
       
 	}
