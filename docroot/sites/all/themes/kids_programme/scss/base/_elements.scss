@@ -70,12 +70,32 @@ p,li{
 h1 {
   .cs-default & {
     font-size: 28px;
+    @media screen and (max-width: 767px) {
+      font-size: 22px;
+    }
   }
-   .cs-classic & {
+  .cs-classic & {
     font-size: 29px;
-   }
+    @media screen and (max-width: 767px) {
+      font-size: 23px;
+    }
+  }
   .cs-elegant & {
     font-size: 30px;
+    @media screen and (max-width: 767px) {
+      font-size: 24px;
+    }
+  }
+  @media screen and (min-width: 768px) and (max-width: 1024px) {
+    .cs-default & {
+      font-size: 26px;
+    }
+   .cs-classic & {
+      font-size: 27px;
+    }
+    .cs-elegant & {
+      font-size: 28px;
+    }
   }
 }
 
@@ -83,11 +103,22 @@ h2 {
   .cs-default & {
     font-size: 25px;
   }
-   .cs-classic & {
+  .cs-classic & {
     font-size: 27px;
-   }
+  }
   .cs-elegant & {
     font-size: 28px;
+  }
+  @media screen and (min-width: 768px) and (max-width: 1024px) {
+    .cs-default & {
+      font-size: 23px;
+    }
+    .cs-classic & {
+      font-size: 25px;
+    }
+    .cs-elegant & {
+      font-size: 26px;
+    }
   }
 }
 
@@ -101,6 +132,17 @@ h3 {
   .cs-elegant & {
     font-size: 25px;
   }
+  @media screen and (min-width: 768px) and (max-width: 1024px) {
+    .cs-default & {
+      font-size: 20px;
+    }
+    .cs-classic & {
+      font-size: 22px;
+    }
+    .cs-elegant & {
+      font-size: 23px;
+    }
+  }
 }
 
 h4 {
@@ -112,6 +154,16 @@ h4 {
   }
 
   font-size: 20px;
+  @media screen and (min-width: 768px) and (max-width: 1024px) {
+    .cs-classic & {
+      font-size: 19px;
+    }
+    .cs-elegant & {
+      font-size: 20px;
+    }
+
+    font-size: 18px;
+  }
 }
 
 h5 {
@@ -123,6 +175,16 @@ h5 {
   }
 
   font-size: 17px;
+  @media screen and (min-width: 768px) and (max-width: 1024px) {
+    .cs-classic & {
+      font-size: 16px;
+    }
+    .cs-elegant & {
+      font-size: 17px;
+    }
+
+    font-size: 15px;
+  }
 }
 
 h6 {

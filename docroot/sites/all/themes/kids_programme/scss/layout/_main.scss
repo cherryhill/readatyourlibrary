@@ -1,5 +1,8 @@
 body {
    font-size: 17px;
+   @media screen and (min-width: 768px) and (max-width: 1024px) {
+    font-size: 15px;
+   }
    line-height: 26px;
    &.cs-default,&.cs-classic,&.cs-elegant {
      width: 100%;
@@ -46,8 +49,15 @@ body {
 }
 
 .columns {
-  padding-left: 20px !important;
-  padding-right: 20px !important;
+  @media screen and (min-width: 1025px) {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
+  @media screen and (max-width: 1024px) {
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+  }
+  
 }
 .row {
   max-width: 100% !important;
