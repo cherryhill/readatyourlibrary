@@ -1,0 +1,21 @@
+<?php
+
+/**
+ * Implement hook_user_login(&$edit, $account); for redirect login user to profile page.
+ */
+
+function sso_user_redirect_user_login(&$edit, $account) {
+	if($_REQUEST['form_id'] == 'user_login_block' || $_REQUEST['form_id'] == 'user_login') {
+        global $user;
+        $prof = profile2_by_uid_load($user->uid, 'main');
+        if(!empty($prof->pid)) {
+          $_GET['destination'] = '<front>';
+        }
+        else {
+          $_GET['destination'] = 'user/'.$user->uid.'/edit/main';
+        }
+      
+	}
+	
+}
+

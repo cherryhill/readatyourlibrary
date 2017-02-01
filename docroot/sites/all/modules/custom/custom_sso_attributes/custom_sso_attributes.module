@@ -1,14 +1,23 @@
 <?php
 
+/**
+ * Implement  	hook_user_login(&$edit, $account); for redirect login user to profile page.
+ */
 
- function  custom_sso_attributes_user_presave(&$edit, $account, $category) {
-    $user_name = $account->name;
-    $user_email = $account->mail;
-    $user_pass = $account->pass;
-
-   $_SESSION['sso_user_name'] = $account->name;
-   $_SESSION['sso_user_email'] = $account->mail;
-   $_SESSION['sso_user_pass'] = $user_pass;
-
-  }
+function custom_sso_attributes_user_login(&$edit, $account) {
+	if($_REQUEST['form_id'] == 'user_login_block' || $_REQUEST['form_id'] == 'user_login') {
+      global $user;
+      $prof = profile2_by_uid_load($user->uid, 'main');
+      //print_r($prof->pid);die();
+      if(!empty($prof->pid)) {
+      	$_GET['destination'] = '<front>';
+      }
+      else {
+      	$_GET['destination'] = 'user/'.$user->uid.'/edit/main';
+      	//drupal_goto('<front>');
+      }
+      
+	}
+	
+}
 
