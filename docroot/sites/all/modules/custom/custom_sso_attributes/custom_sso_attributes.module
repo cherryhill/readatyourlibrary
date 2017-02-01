@@ -9,14 +9,12 @@ function custom_sso_attributes_user_login(&$edit, $account) {
       global $user;
       $prof = profile2_by_uid_load($user->uid, 'main');
       //print_r($prof->pid);die('qwe');
-      if(empty($prof->pid)) {
-      	
-      	$_GET['destination'] = 'user/'.$user->uid.'/edit/main';
-      	die('if');
+      if(!empty($prof->pid)) {
+      	$_GET['destination'] = '<front>';
       }
       else {
-      	die('else');
-      	drupal_goto('<front>');
+      	$_GET['destination'] = 'user/'.$user->uid.'/edit/main';
+      	//drupal_goto('<front>');
       }
       
 	}
