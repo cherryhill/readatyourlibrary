@@ -1,0 +1,12 @@
+<?php
+
+function activities_term_save($terms, $activity) {
+	$vocabulary = taxonomy_vocabulary_machine_name_load($terms);
+	$activity_term_vid = $vocabulary->vid; 
+	$activity_title = $activity->title;
+    $activity_term = new stdClass();
+    $activity_term->name = $activity->title;
+    $activity_term->vid = $activity_term_vid;
+    $activity_term->parent = 0;
+    taxonomy_term_save($activity_term);
+}
