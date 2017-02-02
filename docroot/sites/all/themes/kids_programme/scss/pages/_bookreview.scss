@@ -145,6 +145,17 @@
 		}
 	}
 }
+select.form-select {
+	.book-reviews-page & {
+		@extend .blue-button;
+		@include  primary_fsize;
+		height: auto;
+		width: 100%;
+		display: inline-block;
+		border: none;
+		position: relative;
+	}
+}
 
 .book-reviews-page {
 	.chosen-container {

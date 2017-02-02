@@ -1,0 +1,101 @@
+/*------------Mobile Responsive--------------*/
+@media screen and (max-width: 767px) {
+	/*-------------Dashboard Page-------------*/
+	.homebox {
+		&.homebox-auto-save {
+			.homebox-column-wrapper {
+				width: 100% !important;
+				.portlet-header {
+					.cs-default & {
+		        font-size: 18px !important;
+	      	}
+		      .cs-elegant & {
+		        font-size: 21px !important;
+		      }
+		      .cs-classic & {
+		        font-size: 21px !important;
+		      }
+				}
+			}
+		}
+	}
+	/*-------------Dashboard Page Ends-------------*/
+
+	/*-------------Home Page-------------*/
+	.homepage-booklist-slider {
+		padding-top: 30px;
+		ul {
+			&.booklist-pager {
+				text-align: center;
+				width: 100%;
+				input[type=radio] + label {
+					&:before {
+						background: $orange;
+						border: 1px solid $orange;
+					}
+				}
+			}
+		}
+		.controls {
+			width: 100%;
+			bottom: 10px;
+		}
+	}
+	.view-home-page-video-slideshow {
+		&.flicker-block {
+			.owl-item {
+				text-align: center;
+			}
+		}
+	}
+}
+
+/*------------Tab Responsive--------------*/
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+	/*-------------Dashboard Page-------------*/
+	.homebox {
+		&.homebox-auto-save {
+			width: 100%;
+			margin: auto;
+			.homebox-column-wrapper {
+				padding: 0 5px;
+				.portlet-header {
+					padding: 10px 1px 15px 50px !important;
+					.portlet-title {
+						&:before {
+							left: -44px;
+						}
+					}
+					.cs-default & {
+		        font-size: 20px !important;
+	      	}
+		      .cs-elegant & {
+		        font-size: 23px !important;
+		      }
+		      .cs-classic & {
+		        font-size: 23px !important;
+		      }
+		    }
+		    .homebox-portlet-inner {
+		    	margin-bottom: 5px;
+		    }
+			}
+		}
+	}
+	/*-------------Dashboard Page Ends-------------*/
+
+	/*-------------Home Page-------------*/
+	.view-home-page-video-slideshow {
+		&.flicker-block {
+			.owl-item {
+				text-align: center;
+			}
+		}
+	}
+
+	.page-reviews  {
+		.views-exposed-widget {
+			flex: 0 0 calc(50% - 10px);
+		}
+	}
+}
