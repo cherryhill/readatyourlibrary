@@ -12,7 +12,11 @@
           <?php endif; ?>
         </div>
         <div class="mobile-hamburger hide-for-medium-up">
-           <button></button>
+           <button>
+             <span class="icon"></span>
+             <span class="icon"></span>
+             <span class="icon"></span>
+           </button>
         </div>
       <!--mobile menu-->
       <div class="mobile-menu columns">

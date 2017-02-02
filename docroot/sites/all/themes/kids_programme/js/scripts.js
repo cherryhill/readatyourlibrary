@@ -11,6 +11,14 @@
         $(this).css('background-image', 'url(' + imgURL + ')');
       }
     });
+    //mobile menu
+     if($(window).width() < 768) {
+      $(".mobile-hamburger button").click(function() {
+         $(".mobile-menu").toggle();
+         $(".mobile-menu + ul").toggle();
+
+      })
+     }
     //dashboard page overwrite homepage module jquery and make theming easier
     var activites =$('.homebox-draggable:has(.view-activities-dashboard)').addClass('dashboard-activities');
     var rewards =$('.homebox-draggable:has(.view-rewards-dashboard)').addClass('dashboard-rewards');

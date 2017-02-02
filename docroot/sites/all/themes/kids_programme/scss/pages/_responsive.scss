@@ -1,5 +1,31 @@
 /*------------Mobile Responsive--------------*/
 @media screen and (max-width: 767px) {
+	.mobile-hamburger {
+		button {
+			float: left;
+	    margin-left: 10px;
+	    margin-bottom: 0;
+	    margin-top: 10px;
+	    border: none;
+	    outline: none;
+	    position: relative;
+	    padding: 17px;
+	    box-shadow: none;
+	    visibility: hidden;
+	    &:after {
+	    	content: "";
+		    width: 35px;
+		    height: 5px;
+		    display: block;
+		    visibility: visible;
+		    position: absolute;
+		    top: -11px;
+		    left: 0;
+		    border-top: 5px solid $light-red;
+		    box-shadow: 0px 10px 0px 0px $light-red, 0px 20px 0px 0px $light-red;
+	    }
+		}
+	}
 	/*-------------Dashboard Page-------------*/
 	.homebox {
 		&.homebox-auto-save {
@@ -17,6 +43,9 @@
 		      }
 				}
 			}
+			.homebox-column {
+				height: auto !important;
+			}
 		}
 	}
 	/*-------------Dashboard Page Ends-------------*/
@@ -32,6 +61,14 @@
 					&:before {
 						background: $orange;
 						border: 1px solid $orange;
+					 	.cs-elegant & {
+					 		background: $sky-blue;
+					 		border: 1px solid $sky-blue;
+					 	}
+					 	.cs-elegant & {
+					 		background: $mint-green;
+					 		border: 1px solid $mint-green;
+					 	}
 					}
 				}
 			}
@@ -48,6 +85,60 @@
 			}
 		}
 	}
+	/*-------------Home Page Ends-------------*/
+
+	/*-------------Bookreview Page-------------*/
+	.page-reviews  {
+		.views-exposed-widget {
+			flex: 0 0 calc(100% - 10px);
+		}
+		.views-field-field-book-cover-image-link {
+			width: 100%;
+			table {
+				width: 100%;
+			}
+			img {
+				margin: auto;
+				display: block;
+			}
+		}
+	}
+	.reviews-wrapper {
+		width: 100%;
+	}
+	/*-------------Bookreview Page Ends-------------*/
+
+	/*-------------Booklisting Page-------------*/
+	.page-booklists {
+		.booklist-content {
+			.view-content {
+				padding-left: 10px;
+				padding-right: 10px;
+			}
+		}
+	}
+	.booklist-wrapp {
+		.book-body-wrapp {
+			div.title {
+				width: 100%;
+			}
+		}
+		.book-user-likes {
+		 	div.book-created {
+    		width: 100%;
+    	}
+    	div.book-like {
+    		width: 100%;
+    		float: right;
+    	}
+    }
+	}
+	.view-booklist-page-view {
+		.views-exposed-widget {
+			flex: 0 0 calc(100% - 10px);
+		}
+	}
+	/*-------------Booklisting Page Ends-------------*/
 }
 
 /*------------Tab Responsive--------------*/
@@ -92,10 +183,33 @@
 			}
 		}
 	}
+	/*-------------Home Page Ends-------------*/
 
+	/*-------------Bookreview Page-------------*/
 	.page-reviews  {
 		.views-exposed-widget {
 			flex: 0 0 calc(50% - 10px);
 		}
 	}
+	.sidebar2 {
+  	> .first {
+  		padding-left: 10px;
+  		padding-right: 10px;
+  	}
+  	.block-menu {
+  		ul.menu {
+  			padding-right: 0;
+  			padding-left: 0;
+  		}
+  	}
+  }
+	/*-------------Bookreview Page Ends-------------*/
+
+	/*-------------Booklisting Page-------------*/
+	.booklist-listing-page {
+		.views-exposed-widget {
+			flex: 0 0 calc(50% - 10px);
+		}
+	}
+	/*-------------Booklisting Page Ends-------------*/
 }

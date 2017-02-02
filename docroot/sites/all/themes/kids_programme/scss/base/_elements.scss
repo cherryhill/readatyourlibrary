@@ -102,12 +102,21 @@ h1 {
 h2 {
   .cs-default & {
     font-size: 25px;
+    @media screen and (max-width: 767px) {
+      font-size: 20px;
+    }
   }
   .cs-classic & {
     font-size: 27px;
+    @media screen and (max-width: 767px) {
+      font-size: 22px;
+    }
   }
   .cs-elegant & {
     font-size: 28px;
+    @media screen and (max-width: 767px) {
+      font-size: 23px;
+    }
   }
   @media screen and (min-width: 768px) and (max-width: 1024px) {
     .cs-default & {
@@ -148,12 +157,21 @@ h3 {
 h4 {
   .cs-classic & {
     font-size: 21px;
+    @media screen and (max-width: 767px) {
+      font-size: 19px;
+    }
   }
   .cs-elegant & {
     font-size: 22px;
+    @media screen and (max-width: 767px) {
+      font-size: 20px;
+    }
   }
 
   font-size: 20px;
+  @media screen and (max-width: 767px) {
+    font-size: 18px;
+  }
   @media screen and (min-width: 768px) and (max-width: 1024px) {
     .cs-classic & {
       font-size: 19px;
