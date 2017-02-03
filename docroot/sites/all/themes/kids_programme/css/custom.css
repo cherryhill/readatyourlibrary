@@ -15763,7 +15763,8 @@ th {
 
 /*------------Mobile Responsive--------------*/
 @media screen and (max-width: 767px) {
-  /* line 4, ../scss/pages/_responsive.scss */
+  /*------------Mobile Menu--------------*/
+  /* line 6, ../scss/pages/_responsive.scss */
   .mobile-hamburger button {
     float: left;
     margin-left: 10px;
@@ -15772,194 +15773,323 @@ th {
     border: none;
     outline: none;
     position: relative;
-    padding: 17px;
+    padding: 0 !important;
     box-shadow: none;
-    visibility: hidden;
   }
-  /* line 15, ../scss/pages/_responsive.scss */
-  .mobile-hamburger button:after {
-    content: "";
+  /* line 16, ../scss/pages/_responsive.scss */
+  .mobile-hamburger button span.icon {
+    display: block;
+    background: #e71d36;
     width: 35px;
     height: 5px;
-    display: block;
-    visibility: visible;
-    position: absolute;
-    top: -11px;
-    left: 0;
-    border-top: 5px solid #e71d36;
-    box-shadow: 0px 10px 0px 0px #e71d36, 0px 20px 0px 0px #e71d36;
+    margin-bottom: 5px;
+  }
+  /* line 24, ../scss/pages/_responsive.scss */
+  .cs-default .mobile-hamburger button:hover, .cs-default .mobile-hamburger button:focus {
+    background: transparent;
   }
 
+  /* line 30, ../scss/pages/_responsive.scss */
+  .pre-header {
+    padding-right: 0 !important;
+    padding-left: 0 !important;
+  }
+
+  /* line 35, ../scss/pages/_responsive.scss */
+  .mobile-menu.columns {
+    padding-right: 0 !important;
+    padding-left: 0 !important;
+  }
+
+  /*------------Mobile Menu Ends--------------*/
+  /*------------Header--------------*/
+  /* line 44, ../scss/pages/_responsive.scss */
+  .l-header .header-middle {
+    padding: 15px 0 15px 10px;
+  }
+  /* line 46, ../scss/pages/_responsive.scss */
+  .l-header .header-middle .logo-block {
+    flex: 0 0 100%;
+  }
+  /* line 48, ../scss/pages/_responsive.scss */
+  .l-header .header-middle .logo-block .site-info {
+    width: 50%;
+    float: left;
+  }
+  /* line 51, ../scss/pages/_responsive.scss */
+  .l-header .header-middle .logo-block .site-info img {
+    width: 100%;
+  }
+  /* line 54, ../scss/pages/_responsive.scss */
+  .l-header .header-middle .logo-block .site-info .site-name {
+    font-size: 25px;
+    margin: 10px 0 10px 5px;
+  }
+  /* line 58, ../scss/pages/_responsive.scss */
+  .l-header .header-middle .logo-block .site-info .site-slogan {
+    font-size: 15px;
+    margin: -10px 0 0 5px;
+  }
+  /* line 63, ../scss/pages/_responsive.scss */
+  .l-header .header-middle .logo-block .program-logo {
+    width: 50%;
+    float: left;
+    margin-top: 0 !important;
+    padding: 0 10px 0 20px;
+    margin-bottom: 0;
+  }
+  /* line 69, ../scss/pages/_responsive.scss */
+  .l-header .header-middle .logo-block .program-logo img {
+    width: 100%;
+    height: 100%;
+  }
+
+  /*------------Header Ends--------------*/
   /*-------------Dashboard Page-------------*/
-  /* line 32, ../scss/pages/_responsive.scss */
+  /* line 82, ../scss/pages/_responsive.scss */
   .homebox.homebox-auto-save .homebox-column-wrapper {
     width: 100% !important;
   }
-  /* line 35, ../scss/pages/_responsive.scss */
+  /* line 85, ../scss/pages/_responsive.scss */
   .cs-default .homebox.homebox-auto-save .homebox-column-wrapper .portlet-header {
     font-size: 18px !important;
   }
-  /* line 38, ../scss/pages/_responsive.scss */
+  /* line 88, ../scss/pages/_responsive.scss */
   .cs-elegant .homebox.homebox-auto-save .homebox-column-wrapper .portlet-header {
     font-size: 21px !important;
   }
-  /* line 41, ../scss/pages/_responsive.scss */
+  /* line 91, ../scss/pages/_responsive.scss */
   .cs-classic .homebox.homebox-auto-save .homebox-column-wrapper .portlet-header {
     font-size: 21px !important;
   }
-  /* line 46, ../scss/pages/_responsive.scss */
+  /* line 96, ../scss/pages/_responsive.scss */
   .homebox.homebox-auto-save .homebox-column {
     height: auto !important;
   }
 
   /*-------------Dashboard Page Ends-------------*/
   /*-------------Home Page-------------*/
-  /* line 54, ../scss/pages/_responsive.scss */
+  /* line 104, ../scss/pages/_responsive.scss */
   .homepage-booklist-slider {
     padding-top: 30px;
   }
-  /* line 57, ../scss/pages/_responsive.scss */
+  /* line 107, ../scss/pages/_responsive.scss */
   .homepage-booklist-slider ul.booklist-pager {
     text-align: center;
     width: 100%;
   }
-  /* line 61, ../scss/pages/_responsive.scss */
+  /* line 111, ../scss/pages/_responsive.scss */
   .homepage-booklist-slider ul.booklist-pager input[type=radio] + label:before {
     background: #f6511d;
     border: 1px solid #f6511d;
   }
-  /* line 64, ../scss/pages/_responsive.scss */
+  /* line 114, ../scss/pages/_responsive.scss */
   .cs-elegant .homepage-booklist-slider ul.booklist-pager input[type=radio] + label:before {
     background: #00a6ed;
     border: 1px solid #00a6ed;
   }
-  /* line 68, ../scss/pages/_responsive.scss */
+  /* line 118, ../scss/pages/_responsive.scss */
   .cs-elegant .homepage-booklist-slider ul.booklist-pager input[type=radio] + label:before {
     background: #2ec4b6;
     border: 1px solid #2ec4b6;
   }
-  /* line 76, ../scss/pages/_responsive.scss */
+  /* line 126, ../scss/pages/_responsive.scss */
   .homepage-booklist-slider .controls {
     width: 100%;
     bottom: 10px;
   }
 
-  /* line 83, ../scss/pages/_responsive.scss */
+  /* line 133, ../scss/pages/_responsive.scss */
   .view-home-page-video-slideshow.flicker-block .owl-item {
     text-align: center;
   }
 
   /*-------------Home Page Ends-------------*/
   /*-------------Bookreview Page-------------*/
-  /* line 92, ../scss/pages/_responsive.scss */
+  /* line 142, ../scss/pages/_responsive.scss */
   .page-reviews .views-exposed-widget {
     flex: 0 0 calc(100% - 10px);
   }
-  /* line 95, ../scss/pages/_responsive.scss */
+  /* line 145, ../scss/pages/_responsive.scss */
   .page-reviews .views-field-field-book-cover-image-link {
     width: 100%;
   }
-  /* line 97, ../scss/pages/_responsive.scss */
+  /* line 147, ../scss/pages/_responsive.scss */
   .page-reviews .views-field-field-book-cover-image-link table {
     width: 100%;
   }
-  /* line 100, ../scss/pages/_responsive.scss */
+  /* line 150, ../scss/pages/_responsive.scss */
   .page-reviews .views-field-field-book-cover-image-link img {
     margin: auto;
     display: block;
   }
 
-  /* line 106, ../scss/pages/_responsive.scss */
+  /* line 156, ../scss/pages/_responsive.scss */
   .reviews-wrapper {
     width: 100%;
   }
 
   /*-------------Bookreview Page Ends-------------*/
   /*-------------Booklisting Page-------------*/
-  /* line 114, ../scss/pages/_responsive.scss */
+  /* line 164, ../scss/pages/_responsive.scss */
   .page-booklists .created-by-user .view-content {
     padding-left: 10px;
     padding-right: 10px;
   }
 
-  /* line 122, ../scss/pages/_responsive.scss */
+  /* line 172, ../scss/pages/_responsive.scss */
   .booklist-wrapp .book-body-wrapp div.title {
     width: 100%;
   }
-  /* line 127, ../scss/pages/_responsive.scss */
+  /* line 177, ../scss/pages/_responsive.scss */
   .booklist-wrapp .book-user-likes div.book-created {
     width: 100%;
   }
-  /* line 130, ../scss/pages/_responsive.scss */
+  /* line 180, ../scss/pages/_responsive.scss */
   .booklist-wrapp .book-user-likes div.book-like {
     width: 100%;
     float: right;
   }
 
-  /* line 137, ../scss/pages/_responsive.scss */
+  /* line 187, ../scss/pages/_responsive.scss */
   .view-booklist-page-view .views-exposed-widget {
     flex: 0 0 calc(100% - 10px);
   }
 
   /*-------------Booklisting Page Ends-------------*/
+  /*-------------Current-Programme Page-------------*/
+  /* line 195, ../scss/pages/_responsive.scss */
+  .current-program .programme-content {
+    padding: 35px 0;
+  }
+  /* line 197, ../scss/pages/_responsive.scss */
+  .current-program .programme-content .image {
+    flex: 0 0 100%;
+    padding-top: 0;
+  }
+  /* line 200, ../scss/pages/_responsive.scss */
+  .current-program .programme-content .image img {
+    display: block;
+    margin: auto;
+  }
+  /* line 205, ../scss/pages/_responsive.scss */
+  .current-program .programme-content .body {
+    flex: 0 0 100%;
+    padding: 20px 10px 0;
+  }
+
+  /* line 212, ../scss/pages/_responsive.scss */
+  .other-programme.view {
+    padding-bottom: 50px;
+  }
+  /* line 214, ../scss/pages/_responsive.scss */
+  .other-programme.view .other-programme {
+    padding: 10px 0;
+  }
+  /* line 216, ../scss/pages/_responsive.scss */
+  .other-programme.view .other-programme .programme-image {
+    flex: 0 0 100%;
+    padding-top: 0;
+  }
+  /* line 219, ../scss/pages/_responsive.scss */
+  .other-programme.view .other-programme .programme-image img {
+    display: block;
+    margin: auto;
+  }
+  /* line 224, ../scss/pages/_responsive.scss */
+  .other-programme.view .other-programme .programme-content {
+    flex: 0 0 100%;
+    padding: 20px 0 0 0;
+  }
+
+  /*-------------Current-Programme Page Ends-------------*/
+  /*-------------Events Page-------------*/
+  /* line 237, ../scss/pages/_responsive.scss */
+  .section-events .view-events .view-content .views-row {
+    border-bottom: 1px dotted #000;
+    padding: 10px 0;
+  }
+  /* line 240, ../scss/pages/_responsive.scss */
+  .section-events .view-events .view-content .views-row.views-row-last {
+    border-bottom: none;
+  }
+  /* line 244, ../scss/pages/_responsive.scss */
+  .section-events .view-events .view-content h3, .section-events .view-events .view-content aside .block-menu ul.menu li a, aside .block-menu ul.menu li .section-events .view-events .view-content a {
+    text-align: center;
+  }
+
+  /* line 251, ../scss/pages/_responsive.scss */
+  .events-page-events .events-wrapper {
+    text-align: center;
+  }
+  /* line 253, ../scss/pages/_responsive.scss */
+  .events-page-events .events-wrapper .title, .events-page-events .events-wrapper .date, .events-page-events .events-wrapper .location {
+    flex: 0 0 100%;
+  }
+  /* line 255, ../scss/pages/_responsive.scss */
+  .events-page-events .events-wrapper .title a, .events-page-events .events-wrapper .date a, .events-page-events .events-wrapper .location a {
+    padding-left: 0;
+  }
+
+  /*-------------Events Page Ends-------------*/
 }
 /*------------Tab Responsive--------------*/
 @media screen and (min-width: 768px) and (max-width: 1024px) {
   /*-------------Dashboard Page-------------*/
-  /* line 148, ../scss/pages/_responsive.scss */
+  /* line 269, ../scss/pages/_responsive.scss */
   .homebox.homebox-auto-save {
     width: 100%;
     margin: auto;
   }
-  /* line 151, ../scss/pages/_responsive.scss */
+  /* line 272, ../scss/pages/_responsive.scss */
   .homebox.homebox-auto-save .homebox-column-wrapper {
     padding: 0 5px;
   }
-  /* line 153, ../scss/pages/_responsive.scss */
+  /* line 274, ../scss/pages/_responsive.scss */
   .homebox.homebox-auto-save .homebox-column-wrapper .portlet-header {
     padding: 10px 1px 15px 50px !important;
   }
-  /* line 156, ../scss/pages/_responsive.scss */
+  /* line 277, ../scss/pages/_responsive.scss */
   .homebox.homebox-auto-save .homebox-column-wrapper .portlet-header .portlet-title:before {
     left: -44px;
   }
-  /* line 160, ../scss/pages/_responsive.scss */
+  /* line 281, ../scss/pages/_responsive.scss */
   .cs-default .homebox.homebox-auto-save .homebox-column-wrapper .portlet-header {
     font-size: 20px !important;
   }
-  /* line 163, ../scss/pages/_responsive.scss */
+  /* line 284, ../scss/pages/_responsive.scss */
   .cs-elegant .homebox.homebox-auto-save .homebox-column-wrapper .portlet-header {
     font-size: 23px !important;
   }
-  /* line 166, ../scss/pages/_responsive.scss */
+  /* line 287, ../scss/pages/_responsive.scss */
   .cs-classic .homebox.homebox-auto-save .homebox-column-wrapper .portlet-header {
     font-size: 23px !important;
   }
-  /* line 170, ../scss/pages/_responsive.scss */
+  /* line 291, ../scss/pages/_responsive.scss */
   .homebox.homebox-auto-save .homebox-column-wrapper .homebox-portlet-inner {
     margin-bottom: 5px;
   }
 
   /*-------------Dashboard Page Ends-------------*/
   /*-------------Home Page-------------*/
-  /* line 181, ../scss/pages/_responsive.scss */
+  /* line 302, ../scss/pages/_responsive.scss */
   .view-home-page-video-slideshow.flicker-block .owl-item {
     text-align: center;
   }
 
   /*-------------Home Page Ends-------------*/
   /*-------------Bookreview Page-------------*/
-  /* line 190, ../scss/pages/_responsive.scss */
+  /* line 311, ../scss/pages/_responsive.scss */
   .page-reviews .views-exposed-widget {
     flex: 0 0 calc(50% - 10px);
   }
 
-  /* line 195, ../scss/pages/_responsive.scss */
+  /* line 316, ../scss/pages/_responsive.scss */
   .sidebar2 > .first {
     padding-left: 10px;
     padding-right: 10px;
   }
-  /* line 200, ../scss/pages/_responsive.scss */
+  /* line 321, ../scss/pages/_responsive.scss */
   .sidebar2 .block-menu ul.menu {
     padding-right: 0;
     padding-left: 0;
@@ -15967,12 +16097,24 @@ th {
 
   /*-------------Bookreview Page Ends-------------*/
   /*-------------Booklisting Page-------------*/
-  /* line 210, ../scss/pages/_responsive.scss */
+  /* line 331, ../scss/pages/_responsive.scss */
   .booklist-listing-page .views-exposed-widget {
     flex: 0 0 calc(50% - 10px);
   }
 
   /*-------------Booklisting Page Ends-------------*/
+  /*-------------Events Page-------------*/
+  /* line 341, ../scss/pages/_responsive.scss */
+  .section-events .view-events .view-content .views-row {
+    border-bottom: 1px dotted #000;
+    padding: 10px 0;
+  }
+  /* line 344, ../scss/pages/_responsive.scss */
+  .section-events .view-events .view-content .views-row.views-row-last {
+    border-bottom: none;
+  }
+
+  /*-------------Events Page Ends-------------*/
 }
 /* line 3, ../scss/pages/_review.scss */
 aside .button, aside .other-programme.view .other-programme .programme-content .sign-up a, .other-programme.view .other-programme .programme-content .sign-up aside a {
