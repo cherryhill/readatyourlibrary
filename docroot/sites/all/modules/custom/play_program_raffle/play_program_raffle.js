@@ -10,12 +10,12 @@
       $("#user-register-form .username-curr").insertAfter("#user-register-form #checkboxes-div");
       $("#user-register-form #edit-profile-main-field-receive-notifications").hide();
 
-      // validate email field  
-      // $('#edit-mail').on('keyup', function(){
-      //   var valid = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/.test(this.value);
-      //   if(valid) { $("#user-register-form #edit-profile-main-field-receive-notifications").show(); }
-      //   else{ $("#user-register-form #edit-profile-main-field-receive-notifications").hide(); }
-      // });
+      //validate email field  
+      $('#edit-mail').on('keyup', function(){
+        var valid = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/.test(this.value);
+        if(valid) { $("#user-register-form #edit-profile-main-field-receive-notifications").show(); }
+        else{ $("#user-register-form #edit-profile-main-field-receive-notifications").hide(); }
+      });
       // $(':checkbox').on('change',function(){
       //   var th = $(this), name = th.prop('class'); 
       //   if(th.is(':checked')){
