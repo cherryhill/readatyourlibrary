@@ -1,5 +1,7 @@
 <?php
-
+/**
+ *   Function for creating a taxonomy term for relative activity when a activity is created.
+ */
 function activities_term_save($terms, $activity) {
 	$vocabulary = taxonomy_vocabulary_machine_name_load($terms);
 	$activity_term_vid = $vocabulary->vid; 
@@ -9,4 +11,15 @@ function activities_term_save($terms, $activity) {
     $activity_term->vid = $activity_term_vid;
     $activity_term->parent = 0;
     taxonomy_term_save($activity_term);
+}
+
+/**
+ * Function for deleting a taxonomy term for ralative activity when a activity is deleted.
+ */
+function activities_taxonomy_term_delete($terms, $activity) {
+	$activity_title = $activity->title;
+	$term_name = taxonomy_get_term_by_name($activity_title);
+	$termid = reset($term_name);
+	$term_id = $termid->tid;  
+	taxonomy_term_delete($term_id);
 }
