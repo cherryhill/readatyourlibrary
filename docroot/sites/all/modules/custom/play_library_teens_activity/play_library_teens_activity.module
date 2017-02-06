@@ -1,16 +1,201 @@
 <?php
+
 /**
  *   Function for creating a taxonomy term for relative activity when a activity is created.
  */
 function activities_term_save($terms, $activity) {
-	$vocabulary = taxonomy_vocabulary_machine_name_load($terms);
-	$activity_term_vid = $vocabulary->vid; 
-	$activity_title = $activity->title;
-    $activity_term = new stdClass();
-    $activity_term->name = $activity->title;
-    $activity_term->vid = $activity_term_vid;
-    $activity_term->parent = 0;
-    taxonomy_term_save($activity_term);
+	$activity_id = $activity->id;
+	$firing_hook = $activity->field_activity_fired_hook['und'][0]['value'];
+	$firing_explo = explode('|', $firing_hook);
+	$firing_hook_name = $firing_explo[2];
+	$firing_hook_webform_name = $firing_explo[0];
+
+    // Getting the activity id value from term activity id field.
+    $query = db_select('field_data_field_activity_id','activity_id')
+    ->fields('activity_id',array('field_activity_id_value','entity_id'))
+    ->condition('field_activity_id_value',$activity_id)
+    ->execute()
+    ->fetchAssoc();
+    $field_activity_id = $query['field_activity_id_value'];
+    $entity_field_id = $query['entity_id'];
+
+    if(!isset($field_activity_id)) {
+ 
+	  if($firing_hook == 'user_insert' || $firing_hook == 'Poll answer submitted' || $firing_hook_webform_name == 'webform_submit') {
+        return FALSE;
+	  }
+	  elseif ($firing_hook_name == 'review_book' || $firing_hook_name == 'booklist' || $firing_hook_name == 'movie_review' || $firing_hook_name == 'music_review' || $firing_hook_name == 'video_game_review') {
+
+	    $vocabulary = taxonomy_vocabulary_machine_name_load($terms);
+	    $activity_term_vid = $vocabulary->vid; 
+	    $activity_title = $activity->title;
+        $activity_term = new stdClass();
+        $activity_term->name = $activity->title;
+        $activity_term->vid = $activity_term_vid;
+        $activity_term->parent = 0;
+        if($firing_hook_name == 'review_book') {
+          taxonomy_term_save($activity_term);
+          $tid_term = $activity_term->tid;
+          $activity_term_load = taxonomy_term_load($tid_term);
+          $activity_term_load->field_activity_id['und'][0]['value'] = $activity_id;
+          $activity_term_load->field_read_review['und'][0]['url'] = 'reviews';
+          $activity_term_load->field_read_review['und'][0]['title'] = $activity->title;
+          $activity_term_load->field_write_review['und'][0]['url'] = 'node/add/review-book';
+          $activity_term_load->field_write_review['und'][0]['title'] = $activity->title;
+          taxonomy_term_save($activity_term_load);
+        }
+        if($firing_hook_name == 'booklist') {
+          taxonomy_term_save($activity_term);
+          $tid_term = $activity_term->tid;
+          $activity_term_load = taxonomy_term_load($tid_term);
+          $activity_term_load->field_activity_id['und'][0]['value'] = $activity_id;
+      	  $activity_term_load->field_read_review['und'][0]['url'] = 'booklists';
+          $activity_term_load->field_read_review['und'][0]['title'] = $activity->title;
+          $activity_term_load->field_write_review['und'][0]['url'] = 'node/add/booklist';
+          $activity_term_load->field_write_review['und'][0]['title'] = $activity->title;
+          taxonomy_term_save($activity_term_load);
+        }
+        if($firing_hook_name == 'movie_review') {
+          taxonomy_term_save($activity_term);
+          $tid_term = $activity_term->tid;
+          $activity_term_load = taxonomy_term_load($tid_term);
+          $activity_term_load->field_activity_id['und'][0]['value'] = $activity_id;
+      	  $activity_term_load->field_read_review['und'][0]['url'] = 'movie-review';
+          $activity_term_load->field_read_review['und'][0]['title'] = $activity->title;
+          $activity_term_load->field_write_review['und'][0]['url'] = 'node/add/movie-review';
+          $activity_term_load->field_write_review['und'][0]['title'] = $activity->title;
+          taxonomy_term_save($activity_term_load);
+        }
+        if($firing_hook_name == 'music_review') {
+          taxonomy_term_save($activity_term);
+          $tid_term = $activity_term->tid;
+          $activity_term_load = taxonomy_term_load($tid_term);
+          $activity_term_load->field_activity_id['und'][0]['value'] = $activity_id;
+      	  $activity_term_load->field_read_review['und'][0]['url'] = 'music-review';
+          $activity_term_load->field_read_review['und'][0]['title'] = $activity->title;
+          $activity_term_load->field_write_review['und'][0]['url'] = 'node/add/music-review';
+          $activity_term_load->field_write_review['und'][0]['title'] = $activity->title;
+          taxonomy_term_save($activity_term_load);
+        }
+        if($firing_hook_name == 'video_game_review') {
+          taxonomy_term_save($activity_term);
+          $tid_term = $activity_term->tid;
+          $activity_term_load = taxonomy_term_load($tid_term);
+          $activity_term_load->field_activity_id['und'][0]['value'] = $activity_id; 	
+      	  $activity_term_load->field_read_review['und'][0]['url'] = 'video-game-review';
+          $activity_term_load->field_read_review['und'][0]['title'] = $activity->title;
+          $activity_term_load->field_write_review['und'][0]['url'] = 'node/add/video-game-review';
+          $activity_term_load->field_write_review['und'][0]['title'] = $activity->title;
+          taxonomy_term_save($activity_term_load);
+        }
+      
+      
+      }
+      elseif ($firing_hook == 'progress_page') {
+        $vocabulary = taxonomy_vocabulary_machine_name_load($terms);
+	    $activity_term_vid = $vocabulary->vid; 
+	    $activity_title = $activity->title;
+        $activity_term = new stdClass();
+        $activity_term->name = $activity->title;
+        $activity_term->vid = $activity_term_vid;
+        $activity_term->parent = 0;
+        taxonomy_term_save($activity_term);
+        $tid_term = $activity_term->tid;
+        $activity_term_load = taxonomy_term_load($tid_term);
+        $activity_term_load->field_activity_id['und'][0]['value'] = $activity_id;
+        $activity_term_load->field_read_review['und'][0]['url'] = 'progress';
+        $activity_term_load->field_read_review['und'][0]['title'] = $activity->title;
+        taxonomy_term_save($activity_term_load);
+      }
+    }
+    elseif (isset($field_activity_id)) {
+      $tid_query = db_select('taxonomy_term_data','tax')
+      ->fields('tax',array('tid'))
+      ->condition('tid',$entity_field_id)
+      ->execute()
+      ->fetchAssoc();
+      $tid = $tid_query['tid'];
+
+
+	  if($firing_hook == 'user_insert' || $firing_hook == 'Poll answer submitted' || $firing_hook_webform_name == 'webform_submit') {
+        return FALSE;
+	  }
+	  elseif ($firing_hook_name == 'review_book' || $firing_hook_name == 'booklist' || $firing_hook_name == 'movie_review' || $firing_hook_name == 'music_review' || $firing_hook_name == 'video_game_review') {
+
+	    $vocabulary = taxonomy_vocabulary_machine_name_load($terms);
+	    $activity_term_vid = $vocabulary->vid; 
+	    $activity_title = $activity->title;
+        $activity_term = new stdClass();
+        $activity_term->name = $activity->title;
+        $activity_term->vid = $activity_term_vid;
+        $activity_term->parent = 0;
+        if($firing_hook_name == 'review_book') {
+          $activity_term_load = taxonomy_term_load($tid);
+          $activity_term_load->field_activity_id['und'][0]['value'] = $activity_id;
+          $activity_term_load->field_read_review['und'][0]['url'] = 'reviews';
+          $activity_term_load->field_read_review['und'][0]['title'] = $activity->title;
+          $activity_term_load->field_write_review['und'][0]['url'] = 'node/add/review-book';
+          $activity_term_load->name = $activity->title;
+          taxonomy_term_save($activity_term_load);
+        }
+        if($firing_hook_name == 'booklist') {
+          $activity_term_load = taxonomy_term_load($tid);
+          $activity_term_load->field_activity_id['und'][0]['value'] = $activity_id;
+      	  $activity_term_load->field_read_review['und'][0]['url'] = 'booklists';
+          $activity_term_load->field_read_review['und'][0]['title'] = $activity->title;
+          $activity_term_load->field_write_review['und'][0]['url'] = 'node/add/booklist';
+          $activity_term_load->name = $activity->title;
+          taxonomy_term_save($activity_term_load);
+        }
+        if($firing_hook_name == 'movie_review') {
+          $activity_term_load = taxonomy_term_load($tid);
+          $activity_term_load->field_activity_id['und'][0]['value'] = $activity_id;
+      	  $activity_term_load->field_read_review['und'][0]['url'] = 'movie-review';
+          $activity_term_load->field_read_review['und'][0]['title'] = $activity->title;
+          $activity_term_load->field_write_review['und'][0]['url'] = 'node/add/movie-review';
+          $activity_term_load->name = $activity->title;
+          taxonomy_term_save($activity_term_load);
+        }
+        if($firing_hook_name == 'music_review') {
+          $activity_term_load = taxonomy_term_load($tid);
+          $activity_term_load->field_activity_id['und'][0]['value'] = $activity_id;
+      	  $activity_term_load->field_read_review['und'][0]['url'] = 'music-review';
+          $activity_term_load->field_read_review['und'][0]['title'] = $activity->title;
+          $activity_term_load->field_write_review['und'][0]['url'] = 'node/add/music-review';
+          $activity_term_load->name = $activity->title;
+          taxonomy_term_save($activity_term_load);
+        }
+        if($firing_hook_name == 'video_game_review') {
+          $activity_term_load = taxonomy_term_load($tid);
+          $activity_term_load->field_activity_id['und'][0]['value'] = $activity_id; 	
+      	  $activity_term_load->field_read_review['und'][0]['url'] = 'video-game-review';
+          $activity_term_load->field_read_review['und'][0]['title'] = $activity->title;
+          $activity_term_load->field_write_review['und'][0]['url'] = 'node/add/video-game-review';
+          $activity_term_load->name = $activity->title;
+          taxonomy_term_save($activity_term_load);
+        }
+      
+      
+      }
+      elseif ($firing_hook == 'progress_page') {
+        $vocabulary = taxonomy_vocabulary_machine_name_load($terms);
+	    $activity_term_vid = $vocabulary->vid; 
+	    $activity_title = $activity->title;
+        $activity_term = new stdClass();
+        $activity_term->name = $activity->title;
+        $activity_term->vid = $activity_term_vid;
+        $activity_term->parent = 0;
+        $activity_term_load = taxonomy_term_load($tid);
+        $activity_term_load->field_activity_id['und'][0]['value'] = $activity_id;
+        $activity_term_load->field_read_review['und'][0]['url'] = 'progress';
+        $activity_term_load->name = $activity->title;
+        taxonomy_term_save($activity_term_load);
+      }
+
+
+    }
+    
+	
 }
 
 /**
