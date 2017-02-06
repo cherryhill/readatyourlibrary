@@ -1,16 +1,75 @@
 <?php
+
 /**
  *   Function for creating a taxonomy term for relative activity when a activity is created.
  */
 function activities_term_save($terms, $activity) {
-	$vocabulary = taxonomy_vocabulary_machine_name_load($terms);
-	$activity_term_vid = $vocabulary->vid; 
-	$activity_title = $activity->title;
-    $activity_term = new stdClass();
-    $activity_term->name = $activity->title;
-    $activity_term->vid = $activity_term_vid;
-    $activity_term->parent = 0;
-    taxonomy_term_save($activity_term);
+	$firing_hook = $activity->field_activity_fired_hook['und'][0]['value'];
+	$firing_explo = explode('|', $firing_hook);
+	$firing_hook_name = $firing_explo[2];
+	$firing_hook_webform_name = $firing_explo[0];
+	if($firing_hook == 'user_insert' || $firing_hook == 'Poll answer submitted' || $firing_hook_webform_name == 'webform_submit') {
+       return FALSE;
+	}
+	elseif ($firing_hook_name == 'review_book' || $firing_hook_name == 'booklist' || $firing_hook_name == 'movie_review' || $firing_hook_name == 'music_review' || $firing_hook_name == 'video_game_review') {
+	  $vocabulary = taxonomy_vocabulary_machine_name_load($terms);
+	  $activity_term_vid = $vocabulary->vid; 
+	  $activity_title = $activity->title;
+      $activity_term = new stdClass();
+      $activity_term->name = $activity->title;
+      $activity_term->vid = $activity_term_vid;
+      $activity_term->parent = 0;
+      if($firing_hook_name == 'review_book') {
+      	$activity_term->field_read_review['und'][0]['url'] = 'reviews';
+        $activity_term->field_read_review['und'][0]['title'] = $activity->title;
+        $activity_term->field_write_review['und'][0]['url'] = 'node/add/review-book';
+        $activity_term->field_write_review['und'][0]['title'] = $activity->title;
+        taxonomy_term_save($activity_term);
+      }
+      if($firing_hook_name == 'booklist') {
+      	$activity_term->field_read_review['und'][0]['url'] = 'booklists';
+        $activity_term->field_read_review['und'][0]['title'] = $activity->title;
+        $activity_term->field_write_review['und'][0]['url'] = 'node/add/booklist';
+        $activity_term->field_write_review['und'][0]['title'] = $activity->title;
+        taxonomy_term_save($activity_term);
+      }
+      if($firing_hook_name == 'movie_review') {
+      	$activity_term->field_read_review['und'][0]['url'] = 'movie-review';
+        $activity_term->field_read_review['und'][0]['title'] = $activity->title;
+        $activity_term->field_write_review['und'][0]['url'] = 'node/add/movie-review';
+        $activity_term->field_write_review['und'][0]['title'] = $activity->title;
+        taxonomy_term_save($activity_term);
+      }
+      if($firing_hook_name == 'music_review') {
+      	$activity_term->field_read_review['und'][0]['url'] = 'music-review';
+        $activity_term->field_read_review['und'][0]['title'] = $activity->title;
+        $activity_term->field_write_review['und'][0]['url'] = 'node/add/music-review';
+        $activity_term->field_write_review['und'][0]['title'] = $activity->title;
+        taxonomy_term_save($activity_term);
+      }
+      if($firing_hook_name == 'video_game_review') {
+      	$activity_term->field_read_review['und'][0]['url'] = 'video-game-review';
+        $activity_term->field_read_review['und'][0]['title'] = $activity->title;
+        $activity_term->field_write_review['und'][0]['url'] = 'node/add/video-game-review';
+        $activity_term->field_write_review['und'][0]['title'] = $activity->title;
+        taxonomy_term_save($activity_term);
+      }
+      
+      
+    }
+    elseif ($firing_hook == 'progress_page') {
+      $vocabulary = taxonomy_vocabulary_machine_name_load($terms);
+	  $activity_term_vid = $vocabulary->vid; 
+	  $activity_title = $activity->title;
+      $activity_term = new stdClass();
+      $activity_term->name = $activity->title;
+      $activity_term->vid = $activity_term_vid;
+      $activity_term->parent = 0;
+      $activity_term->field_read_review['und'][0]['url'] = 'progress';
+      $activity_term->field_read_review['und'][0]['title'] = $activity->title;
+      taxonomy_term_save($activity_term);
+    }
+	
 }
 
 /**
