@@ -48,10 +48,16 @@
     <!-- Print Points info -->
     <div class="user-points">
       <?php
-        $points = play_library_program_get_activity_points(); 
-        print("<div class='review-points'>Review Points: <strong>". $points['review']. "</strong></div>" );
-        print("<div class='booklist-points'>Booklist Points: <strong>". $points['booklist']. "</strong></div>" );
-        print("<div class='activity-points'>Activity Points: <strong>". $points['activity']. "</strong></div>" );
+        $points = play_library_program_get_activity_points();
+        if($points['review']>0){ 
+          print(t("<div class='review-points'>Review Points: <strong>". $points['review']. "</strong></div>") );
+        }
+        if($points['booklist']>0){
+          print(t("<div class='booklist-points'>Booklist Points: <strong>". $points['booklist']. "</strong></div>") );
+        }
+        if($points['activity']>0){
+          print(t("<div class='activity-points'>Activity Points: <strong>". $points['activity']. "</strong></div>") );
+        }
       ?>
     </div>
   
@@ -60,8 +66,8 @@
         $raff_count = _play_library_program_get_raffle_ticket_count();
         if($raff_count>0){
           print (t("Raffle Tickets Earned: <strong>$raff_count</strong>"));
-          print("<div class='general-points'>Total Points: <strong>". $points['general']. "</strong></div>" );
         }
+        print(t("<div class='general-points'>Total Points: <strong>". $points['general']. "</strong></div>") );
       ?>
     </div>
   </div>
@@ -147,9 +153,9 @@
                 print('<td id='.$cell_counter.'>');
               }
               if(array_key_exists($cell_counter, $value)){
-                print("<td id=$cell_counter class ='filled-cell' >");
-                print('<span class="act-date">'.$value[$cell_counter]['date'].'</span>');
-                print('<span class="act-title">'.$value[$cell_counter]['title'].'</span>');
+                print(t("<td id=$cell_counter class ='filled-cell' >"));
+                print(t('<span class="act-date">'.$value[$cell_counter]['date'].'</span>'));
+                print(t('<span class="act-title">'.$value[$cell_counter]['title'].'</span>'));
                 print("</div>");
               }
               print('</td>');
@@ -166,10 +172,10 @@
             $node_title = $value['title'];
             $node_date = $value['date'];
             $node_type = $value['type'];
-            print("<div class='non-bingo-card'><table id = $key><tbody><tr><td id=1 class='filled-cell'><span>$node_date</span><span>$node_type</span><span><a href='node/$key'>$node_title</a></span></td></tr></tbody></table></div>");
+            print(t("<div class='non-bingo-card'><table id = $key><tbody><tr><td id=1 class='filled-cell'><span>$node_date</span><span>$node_type</span><span><a href='node/$key'>$node_title</a></span></td></tr></tbody></table></div>"));
           }
           //Print card Number
-          print("<div class='card-no'>Card ". (array_search($key, $pager)+1) ."</div>");
+          print(t("<div class='card-no'>Card ". (array_search($key, $pager)+1) ."</div>"));
           print('</div>');
         }
       ?>

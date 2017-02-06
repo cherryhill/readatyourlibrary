@@ -324,11 +324,11 @@ function play_library_program_entity_insert($entity, $type) {
   }
 
   if ($entity->type == 'reward') {
-    pl_add_taxonomy_term('R_'.$entity->id, 'userpoints');
+    pl_add_taxonomy_term('R_'.$entity->id, 'userpoints',1);
   }
 
   if ($entity->type == 'activity') {
-    pl_add_taxonomy_term('A_'.$entity->id,'userpoints');
+    pl_add_taxonomy_term('A_'.$entity->id,'userpoints',1);
   }
 
   if ($entity->type == 'activity_entry') {
@@ -346,7 +346,7 @@ function play_library_program_entity_insert($entity, $type) {
 /**
  * Adding taxonomy term to a vocabulary
  */
-function pl_add_taxonomy_term($name, $type, $display = 1 ){
+function pl_add_taxonomy_term($name, $type, $display = 0 ){
 
   $term = new stdClass();
   $term_load = taxonomy_vocabulary_machine_name_load($type);

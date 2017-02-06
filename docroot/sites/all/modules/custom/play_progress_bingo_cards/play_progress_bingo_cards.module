@@ -6,7 +6,7 @@
 function play_progress_bingo_cards_menu(){
 	$items = array();
 
- $items['progress-test'] = array(
+ $items['progress'] = array(
     'page title' => 'BProgress',
     'page callback' => 'play_progress_bingo_cards_grid',
     'access arguments' => array('progress page access'), // permission for view progress page
@@ -98,11 +98,14 @@ function play_progress_bingo_cards_progress($form, $form_state) {
   $query->fields('act', array('id', 'title'));
   $query->condition('hook.field_activity_fired_hook_value','progress_page');
   $result = $query->execute()->fetchAll();
+
+  $activity_ids[0] = t('--Please select an activity--');
   foreach ($result as $key => $value) {
     $activity_ids[$value->id] = $value->title;
   }
   $options = $activity_ids;
-  // print_r($options);
+  
+  
   $form['activity'] = array(
     '#type' => 'select',
     '#title' => 'I completed',
@@ -170,6 +173,10 @@ function play_progress_bingo_cards_progress_submit($form, $form_state) {
   // echo'<pre>'; print_r($res);die();
   //get Activity ID and date
   $activity_Id = $form_state['values']['activity'];
+  if ($activity_Id ==0){
+    drupal_set_message(t('Please select an activity'),'warning');
+    return false;
+  }
   $activity_name = $form_state['complete form']['activity']['#options'][$activity_Id];
   $activity_date_ts = strtotime($form_state['values']['date']);
   $record_status = play_library_program_create_activity_entry($activity_Id , $user->uid, $activity_date_ts);
@@ -236,9 +243,9 @@ function play_progress_bingo_cards_progress_submit($form, $form_state) {
       }
       //Save node
       $entity->save();
-      drupal_goto('progress-test');
+      drupal_goto('progress');
     } else{
-      drupal_set_message('Apologies. We are not able to create or update a bingo card for you. Please contact system administrator', 'error');
+      drupal_set_message(t('Apologies. We are not able to create or update a bingo card for you. Please contact system administrator'), 'error');
     }
     if(empty($_SESSION['bingo_node'])){
       play_progress_bingo_cards_get_bingo_node();
@@ -339,26 +346,14 @@ function play_progress_bingo_cards_get_pager_array(){
   //Query to get bingo card field values
   $node_que = db_select('node', 'n');
   $node_que->LEFTJOIN('node_type', 'nt', 'nt.type = n.type');
-  // $node_que->LEFTJOIN('field_data_field_card_data', 'fdfcd', 'n.nid = fdfcd.entity_id');
-  // $node_que->LEFTJOIN('field_data_field_cell_id', 'fdfci', 'fdfcd.field_card_data_value = fdfci.entity_id');
-  // $node_que->LEFTJOIN('field_data_field_cell_data', 'fdfced', 'fdfcd.field_card_data_value = fdfced.entity_id');
-  // $node_que->LEFTJOIN('field_data_field_bingo_activity_date', 'fdfbad', 'fdfcd.field_card_data_value = fdfbad.entity_id');
-  // $node_que->LEFTJOIN('field_data_field_card_status', 'fdfcs', 'n.nid = fdfcs.entity_id');
   $node_que->CONDITION('n.type', array('bingo_card','review_book'), 'IN');
   $node_que->CONDITION('n.uid', $user->uid);
   $node_que->CONDITION('n.status', 1);
-  // $node_que->FIELDS('fdfcs',array('field_card_status_value'));
   $node_que->FIELDS('n', array('nid'));
-  // $node_que->FIELDS('nt', array('name'));
-  // $node_que->FIELDS('fdfci', array('field_cell_id_value'));  
-  // $node_que->FIELDS('fdfced', array('field_cell_data_value'));
-  // $node_que->FIELDS('fdfbad', array('field_bingo_activity_date_value'));
-  // $node_que->DISTINCT('n', array('n.nid'))->Range(0,8);
   $node_que->ORDERBY('n.nid', 'DESC');
-  // $node_que->ORDERBY('fdfci.field_cell_id_value', 'ASC');
   $res = $node_que->execute()->fetchAll();
-  // print_r($res);die();
-
+  
+  //get all nids in an array
   foreach ($res as $key => $value) {
     $nids[]=$value->nid;
   }
