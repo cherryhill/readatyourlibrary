@@ -324,7 +324,11 @@ function play_library_program_entity_insert($entity, $type) {
   }
 
   if ($entity->type == 'reward') {
-    pl_adding_taxonomy_term_for_reward($entity, $type);
+    pl_add_taxonomy_term('R_'.$entity->id, 'userpoints');
+  }
+
+  if ($entity->type == 'activity') {
+    pl_add_taxonomy_term('A_'.$entity->id,'userpoints');
   }
 
   if ($entity->type == 'activity_entry') {
@@ -340,21 +344,45 @@ function play_library_program_entity_insert($entity, $type) {
 
 
 /**
- * Adding taxonomy term on adding of reward
+ * Adding taxonomy term to a vocabulary
  */
-function pl_adding_taxonomy_term_for_reward($entity, $type){
-
-  $r_id = $entity->id;
+function pl_add_taxonomy_term($name, $type, $display = 1 ){
 
   $term = new stdClass();
-  $term_load = taxonomy_vocabulary_machine_name_load('userpoints');
-  $vid = $term_load->vid;
-  $term->name = 'R_'.$r_id;
-  $term->vid = $vid;
-  taxonomy_term_save($term);
-
-  drupal_set_message(t('term saved for reward'));
+  $term_load = taxonomy_vocabulary_machine_name_load($type);
+  if($term_load){
+    $vid = $term_load->vid;
+    $term->name = $name;
+    $term->vid = $vid;
+    taxonomy_term_save($term);
+    if ($display){
+      drupal_set_message(t($term->name. ' term saved for '. $type. 'vocabulory'), 'status');
+      return TRUE;
+    }
+  } else {
+    if ($display){
+      drupal_set_message(t($term->name. ' term could nnot be added for '. $type . 'vocabulory'), 'error');
+      return FALSE;
+    }
+  }
 }
+
+// /**
+//  * Adding taxonomy term on adding of Activity wntity
+//  */
+// function pl_adding_taxonomy_term_for_activity($entity, $type){
+
+//   $a_id = $entity->id;
+
+//   $term = new stdClass();
+//   $term_load = taxonomy_vocabulary_machine_name_load('userpoints');
+//   $vid = $term_load->vid;
+//   $term->name = 'A_'.$a_id;
+//   $term->vid = $vid;
+//   taxonomy_term_save($term);
+
+//   drupal_set_message(t('New term term '. $term->name .' added for userpoints'));
+// }
 
 /**
  * List of reward ids associated with particular activity
@@ -743,54 +771,56 @@ function play_library_program_userpoints($op, &$params = array()) {
 	if ($op == 'points after') {
 		//Call all reward calculations if reward category is not general
 		if ($params['tid'] !=0 and $params['points'] >= 1 ) {
-			$claimed_points = 0;
-			//Get user current points
-			$user_points = userpoints_get_current_points($params['uid'],$params['tid']);
-			//$user_pre_points = $user_points - $params['points'];
 			$term = taxonomy_term_load($params['tid']);
-			$user_points_category_name = $term->name;
-			$reward_id = explode('R_', $user_points_category_name);
-			$rewards = entity_load('reward', array($reward_id[1]));
-			$reward = reset($rewards);
-			//get language codes for reward
-			$lang = field_language('reward',$reward);
-			foreach ($lang as $key => $value) {
-				${$key} = $value; 
-			}
-			$reward_category = $reward->field_category[$field_category][0]['value'];
-			$repeatable = $reward->field_repeatable[$field_repeatable][0]['value'];
-			//get repeat count if reward is set as repeatable
-			if($repeatable == 1 ){
-				$max_repeat = $reward->field_maximum_num_reward[$field_maximum_num_reward][0]['value'];
-			} else{
-				$max_repeat = 1;
-			}
-			$reward_points = $reward->field_points[$field_points][0]['value'];
-			$receieved_rewards = pl_receieved_rewards($params['uid'], $reward_id[1]);
-			$claimed_points = 0;
-			//Claim rewards till user has enough points to get reward
-			while($user_points >= $reward_points) {
-				if($receieved_rewards < $max_repeat || empty($max_repeat)){
-					pl_reward_claim($reward_id[1], $params['uid'], $reward_category);
-					$receieved_rewards = $receieved_rewards + 1;
-				}
-				$user_points =  $user_points - $reward_points;
-				$claimed_points = $claimed_points + $reward_points;
-				// drupal_set_message('User Points:'. $user_points.'|| Claimed points: '. $claimed_points.' || Received Rewards: '.$receieved_rewards. ' || Max repeat:'. $max_repeat);
-			}
-			if (($reward_points - $user_points) > 0){
-				$_SESSION[$user_points_category_name] = $reward_points - $user_points;
-			}
-			//deduct claimed points
-			if($claimed_points > 0){
-				$userpoint_rew = array(
-				'uid' => $params['uid'],
-				'points' => 0-$claimed_points,
-				'tid' => $params['tid'],
-				'display' => 0,
-				'description' => t('Deduction for reward claim for reward id '). $reward_id[1]
-			);
-				userpoints_userpointsapi($userpoint_rew);
+      $user_points_category_name = $term->name;
+      if(substr($user_points_category_name, 0, 2) == 'R_'){
+        $claimed_points = 0;
+		    //Get user current points
+			  $user_points = userpoints_get_current_points($params['uid'],$params['tid']);
+        //$user_pre_points = $user_points - $params['points'];
+				$reward_id = explode('R_', $user_points_category_name);
+  			$rewards = entity_load('reward', array($reward_id[1]));
+  			$reward = reset($rewards);
+  			//get language codes for reward
+  			$lang = field_language('reward',$reward);
+  			foreach ($lang as $key => $value) {
+  				${$key} = $value; 
+  			}
+  			$reward_category = $reward->field_category[$field_category][0]['value'];
+  			$repeatable = $reward->field_repeatable[$field_repeatable][0]['value'];
+  			//get repeat count if reward is set as repeatable
+  			if($repeatable == 1 ){
+  				$max_repeat = $reward->field_maximum_num_reward[$field_maximum_num_reward][0]['value'];
+  			} else{
+  				$max_repeat = 1;
+  			}
+  			$reward_points = $reward->field_points[$field_points][0]['value'];
+  			$receieved_rewards = pl_receieved_rewards($params['uid'], $reward_id[1]);
+  			$claimed_points = 0;
+  			//Claim rewards till user has enough points to get reward
+  			while($user_points >= $reward_points) {
+  				if($receieved_rewards < $max_repeat || empty($max_repeat)){
+  					pl_reward_claim($reward_id[1], $params['uid'], $reward_category);
+  					$receieved_rewards = $receieved_rewards + 1;
+  				}
+  				$user_points =  $user_points - $reward_points;
+  				$claimed_points = $claimed_points + $reward_points;
+  				// drupal_set_message('User Points:'. $user_points.'|| Claimed points: '. $claimed_points.' || Received Rewards: '.$receieved_rewards. ' || Max repeat:'. $max_repeat);
+  			}
+  			if (($reward_points - $user_points) > 0){
+  				$_SESSION[$user_points_category_name] = $reward_points - $user_points;
+  			}
+  			//deduct claimed points
+  			if($claimed_points > 0){
+  				$userpoint_rew = array(
+  				'uid' => $params['uid'],
+  				'points' => 0-$claimed_points,
+  				'tid' => $params['tid'],
+  				'display' => 0,
+  				'description' => t('Deduction for reward claim for reward id '). $reward_id[1]
+  			);
+  				userpoints_userpointsapi($userpoint_rew);
+        }
 			}
 		}
 	}
@@ -979,30 +1009,38 @@ function play_library_program_create_activity_entry($activity_id, $account_id, $
 				$lang = field_language('activity',  $activity_entry);
 				foreach ($lang as $key => $value) {
 					${$key} = $value;
-		  		}
+	  		}
 
-	  			//Get all field values of activity entry to be updated
-	  			$activity_entry->field_activity_entry_activity[$field_activity_entry_activity][0]['target_id'] = $activity->id;
-	   			$activity_entry->field_activity_point[$field_activity_point][0]['value'] = $activity_point;
-	    		$activity_entry->field_calendar_sticker_id[$field_calendar_sticker_id][0]['tid'] = $sticker_tid;
-	    		//Save activity entry
-	    		entity_save('activity', $activity_entry);
-	    		$author = variable_get('pm_author');
-	    		$author_name = user_load_by_name($author);
-	    		$author_uid = $author_name->uid;
-	    		 
-	    		// Private message subject and body for every activity.
+  			//Get all field values of activity entry to be updated
+  			$activity_entry->field_activity_entry_activity[$field_activity_entry_activity][0]['target_id'] = $activity->id;
+   			$activity_entry->field_activity_point[$field_activity_point][0]['value'] = $activity_point;
+    		$activity_entry->field_calendar_sticker_id[$field_calendar_sticker_id][0]['tid'] = $sticker_tid;
+    		//Save activity entry
+
+        $wrapper = entity_metadata_wrapper('activity', $activity_entry);
+        $wrapper->save();
+        $activity_entry_id = $wrapper->value();
+    		//Return created activity entry id
+    		$author = variable_get('pm_author');
+    		$author_name = user_load_by_name($author);
+    		$author_uid = $author_name->uid;
+    		 
+    		// Private message subject and body for every activity.
 	 			$message_subject = $activity->field_activity_message_subject[$field_activity_message_subject][0]['value'];
 				$message_body = $activity->field_activity_message[$field_activity_message][0]['value'];
-	    		//Send Private message
-	    		_play_library_program_send_pm_message($account_id, $message_subject, $message_body);
+	    	//Send Private message
+	    	_play_library_program_send_pm_message($account_id, $message_subject, $message_body);
+        return $activity_entry_id->id;
 	  		}
 	  	}else {
+      
 			drupal_set_message(t('Thanks for your submission. However you will not receive any points as you have exceeded maximum number of submissions allowed for this activity'), 'warning');
-		}
+		  return FALSE;
+    }
 	} else {
 		drupal_set_message(t('You can record an activity for today or past dates only'),'warning');
-	} 
+    return FALSE;
+  } 
 }
 
 /**
@@ -1086,59 +1124,7 @@ function play_library_program_create_reward_claim($reward_id, $account_id, $raff
     }
 }
 
-/**
- * Creates a new raffle entry
- */
-// function play_library_program_create_raffle_entry($raffle_id, $account_id) {
 
-//   $user_uid = variable_get('follow_author');
-//   $author_name = user_load_by_name($user_uid);
-//   $author_uid = $author_name->uid;
-
-//   $raffles = entity_load('raffle', array($raffle_id));
-//   $raffle = reset($raffles);
-
-//   $title = t("@raffle on @time", array('@raffle' => $raffle->title, '@time' => date('Y-m-d H:i')));
-//   $raffle_entry = entity_create('raffle', array('type' => 'raffle_entry', 'title' => $title, 'uid' => $account_id));
-//   $raffle_entry->field_raffle_entry_raffle[LANGUAGE_NONE][0]['target_id'] = $raffle->id;
-//   entity_save('raffle', $raffle_entry);
-
-//   $query = db_select('field_data_field_reward_message', 'fdfrm');
-//   $query->join('field_data_field_reward_raffle', 'fdfrf', 'fdfrf.entity_id = fdfrm.entity_id');
-//   $query->join('field_data_field_reward_notification', 'fdfrn', 'fdfrn.entity_id = fdfrf.entity_id');
-//   $query->condition('field_reward_raffle_target_id', $raffle_id);
-//   $query->fields('fdfrm', array('field_reward_message_value'));
-//   $query->fields('fdfrn', array('field_reward_notification_value'));
-//   $res = $query->execute()->fetchAll();
-//   $message = $res[0]->field_reward_message_value;
-//   $notification = $res[0]->field_reward_notification_value;
-//   $notification_subject = "Congratulations! You've earned a raffle ticket.";
-
-//   _play_library_program_send_pm_message($account_id, $notification_subject, $notification, $author_uid);
-//   drupal_set_message($message);
-// }
-
-/**
- * Creates a new badge entry.
- */
-function play_library_program_add_user_badge($badge_id, $account_id) {
-    $query = new EntityFieldQuery();
-    $query->entityCondition('entity_type', 'badge');
-    $query->entityCondition('bundle', 'user_badge');
-    $query->propertyCondition('uid', $account_id);
-    $query->fieldCondition('field_user_badge_id', 'target_id', $badge_id);
-    $count = $query->count()->execute();
-    if (!empty($count)) {
-        return;
-    }
-
-    $badges = entity_load('badge', array($badge_id));
-    $badge = reset($badges);
-    $title = t("@badge on @time", array('@badge' => $badge->title, '@time' => date('Y-m-d H:i')));
-    $user_badge = entity_create('badge', array('type' => 'user_badge', 'title' => $title, 'uid' => $account_id));
-    $user_badge->field_user_badge_id[LANGUAGE_NONE][0]['target_id'] = $badge->id;
-    entity_save('raffle', $user_badge);
-}
 
 function _play_library_program_get_webforms() {
     $query = db_select('webform', 'w');
@@ -1203,18 +1189,19 @@ function _get_activity_frequency($aid) {
   }
 }
 
-
+//Returns tid for a term name
 function _get_term_from_name($term_name, $vocabulary_name) {
-  if ($vocabulary = taxonomy_vocabulary_machine_name_load($vocabulary_name)) {
-    $tree = taxonomy_get_tree($vocabulary->vid);
-    foreach ($tree as $term) {
-      if ($term->name == $term_name) {
-        return $term->tid;
-      }
-    }
-  }
 
-  return FALSE;
+  $term = taxonomy_get_term_by_name($term_name, $vocabulary_name);
+  if(empty($term)) {
+    // $activity_id = filter_var($term_name, FILTER_SANITIZE_NUMBER_INT);
+    //$entity = entity_load('activity',$activity_id);
+    pl_add_taxonomy_term($term_name, $vocabulary_name);
+    $term = taxonomy_get_term_by_name($term_name, $vocabulary_name);
+    // print_r("bsdasda");
+  }
+  // print_r(reset(reset($term)));die();
+  return reset(reset($term));
 }
 
 function pl_userpoints_per_reward($tax_reward, $account_id, $points_for_reward){
@@ -1251,173 +1238,28 @@ function _play_library_program_process_activity_entry($entity, $type) {
         $userpoints_txn = array(
         'uid' => $entity->uid,
         'points' => $points_from_activity,
+        'display' => 0,
       );
 
       //Update user general points 
       userpoints_userpointsapi($userpoints_txn);
-   
+
+
+      // Update points for activity category
+      $term = _get_term_from_name('A_'.$activity_id, 'userpoints');
+      $user_act_points_txn = array(
+        'uid' => $entity->uid,
+        'points' => $points_from_activity,
+        'tid' => $term,
+        'display' => 0,
+      );
+      userpoints_userpointsapi($user_act_points_txn);   
       //Add points for reward category
       _play_library_program_add_points_to_rewards($activity_id, $points_from_activity, $entity->uid);
   }
 }
 
 
-
-/**
-*  Check all the condition for reward claim
-*/
-// function check_rewards_user_can_claim($account_id, $reward_ids, $activity_id) {
-
-//   // array to hold all rid's user can claim
-//   $rewards_user_can_claim = array();
-
-//   if(count($reward_ids)) {
-
-//     $uid = $account_id;
-//     $user = user_load($uid);
-
-//     if(array_key_exists(12, $user->roles)) {
-//       $profile_name = 'group_lead';
-//     }
-//     else {
-//       $profile_name = 'main';
-//     }
-
-//     $user_profile = profile2_load_by_user($account_id, $profile_name);
-
-//     if(is_object($user_profile)) {
-//     $dob = $user_profile->field_user_birthday[LANGUAGE_NONE][0]['value'];
-//     $time_stamp_dob = strtotime($dob);
-//     } else {
-//       $time_stamp_dob = $_SESSION['user_birth_dt'];
-//       unset($_SESSION['user_birth_dt']);
-//     }
-
-//     $current_time = time();
-//     $user_age = floor(($current_time - $time_stamp_dob) / (60*60*24*365));
-
-
-//     foreach ($reward_ids as $criteria_id => $rewards_id_ary) {
-//       // get list of activities that are eligible for reward claim
-//       $eligible_activities = get_eligible_activities($rewards_id_ary);
-
-//       // exit current iteration if no activity found to work on.
-//       if(!count($eligible_activities)) {
-//         continue;
-//       }
-
-//       // get all activity entries for given set of eligible activities
-//       $activity_entries_rs = get_activity_entries_for_eligible_activities($account_id, $eligible_activities);
-//       $activity_entry_count = $activity_entries_rs->rowCount();
-
-//       // variable to hold the points user can claim
-//       $total_user_points_for_claim = 0;
-    
-//       if($activity_entry_count) {
-//         $user_activity_entries = array();
-//         while ($obj = $activity_entries_rs->fetchObject()) {
-//           $claimed_points = $obj->field_claimed_point_value;
-//           $activity_points = $obj->field_activity_point_value;
-//           $user_activity_entries[$obj->entity_id] = array(
-//             'claimed_points' => $claimed_points,
-//             'acivity_points' => $activity_points,
-//           );
-//           $total_user_points_for_claim += ($activity_points - $claimed_points);
-//         }
-//       }
-
-//       // fetch all reward criterias
-//       $reward_criteria_load = entity_load('reward', array($criteria_id));
-//       $reward_criteria_entity = reset($reward_criteria_load);
-//       //Check repetable or not
-//       $reward_criteria_repetable = $reward_criteria_entity->field_reward_criteria_repeatable[LANGUAGE_NONE][0]['value'];
-//       $reward_criteria_limit = $reward_criteria_entity->field_max_points[LANGUAGE_NONE][0]['value'];
-//       // points required to claim reward
-//       $reward_criteri_point = $reward_criteria_entity->field_reward_criteria_point_mark[LANGUAGE_NONE][0]['value'];
-        
-//       // check if user has enough points to claim reward from current reward criteria
-//       //If the reward criteria is not repeatable
-//       if($reward_criteria_repetable == 0 ) {
-//         if($total_user_points_for_claim / $reward_criteri_point == 1 && $total_user_points_for_claim % $reward_criteri_point == 0 ) {
-//           $reward_criteria_start_date = $reward_criteria_entity->field_reward_criteria_date_limit[LANGUAGE_NONE][0]['value'];
-//           $reward_criteria_end_date = $reward_criteria_entity->field_reward_criteria_date_limit[LANGUAGE_NONE][0]['value2'];
-//           $reward_criteria_start_age = $reward_criteria_entity->field_start_age[LANGUAGE_NONE][0]['value'];
-//           $reward_criteria_end_age = $reward_criteria_entity->field_end_age[LANGUAGE_NONE][0]['value'];
-//           // validate reward for expiry and age limit
-//           $reward_expired = chk_reward_expiry($reward_criteria_start_date, $reward_criteria_end_date);
-
-//           if($reward_expired) {
-//             continue;
-//           } else {
-//             $user_age_valid = chk_user_age_for_reward($user_age, $reward_criteria_start_age, $reward_criteria_end_age);
-//             if(!$user_age_valid) {
-//               continue;
-//             }
-//           }
-
-//           // if all conditions meet, give all reward's to user
-//           foreach($rewards_id_ary as $reward_id) {
-//             $rewards_user_can_claim[] = $reward_id;
-//           }
-//         }
-//       }
-//        //If reward criteria is repetable
-//       else {
-//         if(isset($reward_criteria_limit)){
-//           // check claim points is less than reward limit points
-//           if($total_user_points_for_claim <= $reward_criteria_limit){
-//             if($total_user_points_for_claim / $reward_criteri_point >= 1 && $total_user_points_for_claim % $reward_criteri_point == 0 ) {
-//               $reward_criteria_start_date = $reward_criteria_entity->field_reward_criteria_date_limit[LANGUAGE_NONE][0]['value'];
-//               $reward_criteria_end_date = $reward_criteria_entity->field_reward_criteria_date_limit[LANGUAGE_NONE][0]['value2'];
-//               $reward_criteria_start_age = $reward_criteria_entity->field_start_age[LANGUAGE_NONE][0]['value'];
-//               $reward_criteria_end_age = $reward_criteria_entity->field_end_age[LANGUAGE_NONE][0]['value'];
-//               // validate reward for expiry and age limit
-//               $reward_expired = chk_reward_expiry($reward_criteria_start_date, $reward_criteria_end_date);
-
-//               if($reward_expired) {
-//                 continue;
-//               } else {
-//                 $user_age_valid = chk_user_age_for_reward($user_age, $reward_criteria_start_age, $reward_criteria_end_age);
-//                 if(!$user_age_valid) {
-//                   continue;
-//                 }
-//               }
-
-//               // if all conditions meet, give all reward's to user
-//               foreach($rewards_id_ary as $reward_id) {
-//                 $rewards_user_can_claim[] = $reward_id;
-//               }
-//             }
-//           }         
-//         }else{
-//           if($total_user_points_for_claim / $reward_criteri_point >= 1 && $total_user_points_for_claim % $reward_criteri_point == 0 ) {
-//             $reward_criteria_start_date = $reward_criteria_entity->field_reward_criteria_date_limit[LANGUAGE_NONE][0]['value'];
-//             $reward_criteria_end_date = $reward_criteria_entity->field_reward_criteria_date_limit[LANGUAGE_NONE][0]['value2'];
-//             $reward_criteria_start_age = $reward_criteria_entity->field_start_age[LANGUAGE_NONE][0]['value'];
-//             $reward_criteria_end_age = $reward_criteria_entity->field_end_age[LANGUAGE_NONE][0]['value'];
-//             // validate reward for expiry and age limit
-//             $reward_expired = chk_reward_expiry($reward_criteria_start_date, $reward_criteria_end_date);
-
-//             if($reward_expired) {
-//               continue;
-//             } else {
-//               $user_age_valid = chk_user_age_for_reward($user_age, $reward_criteria_start_age, $reward_criteria_end_age);
-//               if(!$user_age_valid) {
-//                 continue;
-//               }
-//             }
-
-//             // if all conditions meet, give all reward's to user
-//             foreach($rewards_id_ary as $reward_id) {
-//               $rewards_user_can_claim[] = $reward_id;
-//             }
-//           }
-//         }
-//       }
-//     }
-//   }
-//   return $rewards_user_can_claim;
-// }
 
 // /**
 //  * Function to update activity entry claimed points.
@@ -1534,24 +1376,6 @@ function play_library_program_update_user_calendar_state($rid) {
         ->execute();
 }
 
-/**
- * Processes a reward claim.
- */
-// function _play_library_program_process_user_reward_claim($entity, $type) {
-//     $account_uid = $entity->uid;
-//     if (is_object($account_uid)) {
-//         $account_uid = $account_uid->uid;
-//     }
-//     $rewards = entity_load('reward', array($entity->field_reward_claim_id[LANGUAGE_NONE][0]['target_id']));
-//     $reward = reset($rewards);
-//     // if (!empty($reward->field_reward_raffle)) {
-//     //      play_library_program_create_raffle_entry($reward->field_reward_raffle[LANGUAGE_NONE][0]['target_id'], $account_uid);
-//     // }
-//     if (!empty($reward->field_reward_badge)) {
-//         play_library_program_add_user_badge($reward->field_reward_badge[LANGUAGE_NONE][0]['target_id'], $account_uid);
-//     }
-//     _play_library_program_set_message($reward, $account_uid);
-// }
 
 /**
  * Retrieves satisfied reward criteria based on global points.
@@ -1630,134 +1454,6 @@ function _play_library_program_get_global_reward_ids($user_pre_points, $user_poi
     return array_unique($rids);
 }
 
-// /**
-//  * Function to return all rewards that are linked to an activity.
-//  */
-// function _play_library_program_get_activity_reward_ids($activity_id, $user_activity_completed, $account_uid = NULL) {
-
-//   global $user;
-//   if (empty($account_uid)) {
-//     $account = $user;
-//   } else {
-//     $account = user_load($account_uid);
-//   }
-
-//   $date = "" . date('Y-m-d') . " 00:00:00";
-//   $rids = array();
-
-//   // Get the non-repeated rewards first.
-//   $query = new EntityFieldQuery();
-//   $query->entityCondition('entity_type', 'reward');
-//   $query->entityCondition('bundle', 'reward');
-//   $query->fieldCondition('field_activities_reward ', 'target_id', 24);
-//   //$query->fieldCondition('field_reward_criteria_point_mark', 'value', $user_activity_completed);
-//   $query->fieldCondition('field_dates_reward', 'value', $date, '<=');
-//   $query->fieldCondition('field_dates_reward', 'value2', $date, '>=');
-//   $query->fieldCondition('field_repeatable', 'value', 0);
-//   $results = $query->execute();
-    
-//   if (!empty($results['reward'])) {
-//     $rid = array();
-
-//     foreach($results['reward'] as $reward) {
-//       $reward_criteria_id = $reward->id;
-//       $reward_entities = entity_load('reward', array($reward_criteria_id));
-//       $reward_entity = reset($reward_entities);
-
-//       // check if the user (role) performing activity can receive the reward
-//       if (_play_library_program_reward_criteria_fulfilled($reward_entity, $account)) {
-//         foreach ($reward_entity->field_activities_reward[LANGUAGE_NONE] as $reward) {
-//           // add the reward id into the arary of rewards that can be claimed.
-//           $rid[] = $reward['target_id'];
-//         }
-//       }
-//       $rids[$reward_criteria_id] = array_unique($rid);
-//       $rid = array();
-//     }
-//   }
-
-//   // Process the repeated ones next.
-//   $query = new EntityFieldQuery();
-//   $query->entityCondition('entity_type', 'reward');
-//   $query->entityCondition('bundle', 'reward_criteria');
-//   $query->fieldCondition('field_reward_criteria_activity ', 'target_id', $activity_id);
-//   $query->fieldCondition('field_reward_criteria_date_limit', 'value', $date, '<=');
-//   $query->fieldCondition('field_reward_criteria_date_limit', 'value2', $date, '>=');
-//   $query->fieldCondition('field_reward_criteria_repeatable', 'value', 1);
-//   $results = $query->execute();
-
-//   if (!empty($results['reward'])) {
-//     $rid = array();
-//     foreach($results['reward'] as $reward) {
-//       $reward_criteria_id = $reward->id;
-//       $reward_entities = entity_load('reward', array($reward_criteria_id));
-//       $reward_entity = reset($reward_entities);
-//       // check if the user (role) performing activity can receive the reward
-//       if (_play_library_program_reward_criteria_fulfilled($reward_entity, $account)) {
-//         foreach ($reward_entity->field_reward_criteria_reward[LANGUAGE_NONE] as $reward) {
-//           // add the reward id into the arary of rewards that can be claimed.
-//           $rid[] = $reward['target_id'];
-//         }
-//       }
-            
-//       if(array_key_exists($reward_criteria_id, $rids)) {
-//         $existing_rids = $rids[$reward_criteria_id];
-//         $rid = array_unique($rid);
-//         $merged_ary = array_merge($existing_rids, $rid);
-//         $rids[$reward_criteria_id] = $merged_ary;
-//       } else {
-//         $rids[$reward_criteria_id] = array_unique($rid);
-//       }
-//         $rid = array();
-//     }
-//   }
-
-//   return $rids;
-// }
-/**
- * Creates a new message.
- */
-// function _play_library_program_set_message($reward, $account_uid) {
-    
-//     // Only use this if we opt to switch back to using the MNC module. Would require debugging and further development.
-//     $notification_message = FALSE;
-//     if ($reward->type == 'physical_reward') {
-//         $notification_message = 'Congratulations, you just won a reward: ' . $reward->title;
-//     }
-//     if (!empty($notification_message)) {
-//         $message = message_create('user_notification_reward', array('uid' => $account_uid));
-
-//         $wrapper = entity_metadata_wrapper('message', $message);
-//         $wrapper->field_notification_message->set(array('value' => $notification_message, 'format' => filter_default_format()));
-//         $wrapper->save();
-//     }
-
-//     $options['mnc_recipients'] = array(
-//         array(
-//             'user' => user_load(1),
-//         ),
-//         array(
-//             'user' => $account_uid,
-//         ),
-//     );
-
-//     message_notify_send_message($message, $options, 'mnc_email');
-    
-
-//     // Send a privatemsg
-//     if (!module_exists('privatemsg')) {
-//         return;
-//     }
-//     if (!empty($reward->field_reward_notification)) {
-//         $options = array(
-//             'author' => user_load(1),
-//         );
-//         $recipient = user_load($account_uid);
-//         $subject = t('[OPL] Congratulations, you just won a prize!');
-//         $body = $reward->field_reward_notification[LANGUAGE_NONE][0]['value'];
-//         $result = privatemsg_new_thread(array($recipient), $subject, $body, $options);
-//     }
-// }
 
 function _play_library_program_reward_criteria_fulfilled($reward_entity, $account_uid) {
 	global $language;
@@ -1850,7 +1546,7 @@ function _play_library_program_add_points_to_rewards($activity_ids, $points_to_a
   $current_time = time();
   $user_age = floor(($current_time - $dob_timestamp) / (60*60*24*365));
 
-  // get reward points for all associated rewards
+  // get reward field values for all associated rewards
   if (isset($dob_timestamp)){ 
     $que = db_select('eck_reward', 'eck_r');
     $que->leftjoin('field_data_field_points', 'fdfp', 'eck_r.id = fdfp.entity_id');
@@ -1921,7 +1617,9 @@ function _play_library_program_add_points_to_rewards($activity_ids, $points_to_a
 }
 
 
-//Fuction to send private message
+/*
+Fuction to send private message
+*/
 function _play_library_program_send_pm_message($account_id, $notification_subject, $notification, $author_uid = NULL){
 
   if (empty($account_id)) {
@@ -1952,7 +1650,9 @@ function _play_library_program_send_pm_message($account_id, $notification_subjec
   }
 }
 
-//Function to update actiity entry
+/*
+/Function to update actiity entry
+*/
 function play_library_program_update_activity_entry($activity_entry_id, $update_time, $user_id, $activity_id){
 	if ($user_id == Null){
 		global $user;
@@ -1976,8 +1676,9 @@ function play_library_program_update_activity_entry($activity_entry_id, $update_
 
 
 
-
-
+/*
+Function to get next closest reward 
+*/
 function play_library_program_next_close_reward_points($activity_ids, $uid = NULL) {
 	//Get cuurent logged in user if UID is NULL
 	if ($uid == NULL){
@@ -2067,4 +1768,69 @@ function play_library_program_next_close_reward_points($activity_ids, $uid = NUL
    $next_rew_points=0; 
   }
 	return $next_rew_points;
+}
+
+
+
+/*
+/Function to get totalpoints based on firing hook
+*/
+function play_library_program_get_activity_points(){
+  global $user;
+  $uid = $user->uid;
+  $query = db_select('eck_activity','act');
+  $query->join('field_data_field_activity_fired_hook','hook', 'hook.entity_id = act.id');
+  $query->fields('act', array('id'));
+  $query->fields('hook',array('field_activity_fired_hook_value'));
+  $result = $query->execute()->fetchAll();
+  //Get activity IDs for every firing hook
+  foreach ($result as $value) {
+    $act_tid = _get_term_from_name('A_'.$value->id, 'userpoints');
+    switch ($value->field_activity_fired_hook_value) {
+      case 'node_update|node|review_book|published':
+        $points['book review'] = $points['book review'] + userpoints_get_current_points($uid, $act_tid);
+        break;
+      case 'node_update|node|review_activity|published':
+        $points['activity review'] = $points['activity review'] + userpoints_get_current_points($uid, $act_tid);
+        break;
+      case 'node_update|node|music_review|published':
+        $points['music review'] = $points['music review'] + userpoints_get_current_points($uid, $act_tid);
+        break;
+      case 'node_update|node|movie_review|published':
+        $points['movie review'] = $points['movie review'] + userpoints_get_current_points($uid, $act_tid);
+        break;
+      case 'node_update|node|video_game_review|published':
+        $points['video game review'] = $points['video game review'] + userpoints_get_current_points($uid, $act_tid);
+        break;
+      case 'node_update|node|booklist|published':
+        $points['booklist'] = $points['booklist'] + userpoints_get_current_points($uid, $act_tid);
+        break;
+      case 'progress_page':
+        $points['activity'] = $points['activity'] + userpoints_get_current_points($uid, $act_tid);
+        break;
+      default:
+        break;
+    }
+  }
+  //Get general Points
+  $points['general'] = $points['general'] + userpoints_get_current_points($uid,0);
+  //Add all review points
+  $points['review'] =  $points['book review'] + $points['activity review'] + $points['music review'] +$points['movie review'] + $points['video game review'];
+  
+  return $points;
+}
+
+/*
+/Function to get user raffle ticket count
+*/
+function _play_library_program_get_raffle_ticket_count(){
+  global $user;
+  $user_id = $user->uid;
+  $que = db_select('eck_reward', 'rew');
+  $que-> CONDITION('rew.type', 'raffle_claim');
+  $que-> CONDITION('rew.uid', $user_id);
+  $que->FIELDS('rew', array('id'));
+  $result = $que->execute()->fetchAll();
+  $reward_count=count($result);
+  return $reward_count;
 }

@@ -5,7 +5,19 @@
         $('.msg:has(.new)').addClass('new');
     //
     $('.printBtn').on('click', function (){
-      $(".progress-page-wrap").printThis({debug: true});
+      $(".progress-page-wrap").printThis({
+        debug: false,               //* show the iframe for debugging
+        importCSS: true,            //* import page CSS
+        importStyle: false,         //* import style tags
+        printContainer: true,       //* grab outer container as well as the contents of the selector
+        loadCSS: "http://localhost/kids17/playatyourlibrary/docroot/sites/all/themes/kids_programme/css/custom.css",  //* path to additional css file - use an array [] for multiple
+        pageTitle: "",              //* add title to print page
+        removeInline: false,        //* remove all inline styles from print elements
+        printDelay: 333,            //* variable print delay; depending on complexity a higher value may be necessary
+        header: null,               //* prefix to html
+        base: false,                 //* preserve the BASE tag, or accept a string for the URL
+        formValues: true,            //* preserve input/form values
+      });
     });
 
       /* initialize the external events
