@@ -76,6 +76,16 @@
 	}
 	/*------------Header Ends--------------*/
 
+	/*------------Footer--------------*/
+	.block-menu-menu-social-sharing-icons {
+		ul {
+			&.menu {
+				float: none;
+			}
+		}
+	}
+	/*------------Footer Ends--------------*/
+
 	/*-------------Dashboard Page-------------*/
 	.homebox {
 		&.homebox-auto-save {
@@ -259,10 +269,112 @@
 		}
 	}
 	/*-------------Events Page Ends-------------*/
+
+ 	/*-------------Rewards Page-------------*/
+	.view-reward-page-views {
+		.views-row {
+			.reward-page-for-kids {
+				border-bottom: 2px dotted #000;
+				padding-bottom: 30px;
+				.reward-image-title {
+					flex: 0 0 100%;
+					padding-right: 0;
+					img {
+						display: block;
+						margin: auto;
+					}
+					div {
+						text-align: center;
+					}
+				}
+				.description {
+					flex: calc(100%);
+					margin-top: 20px;
+				}
+			}
+		}
+	}
+	.reward-block-reward-page {
+		&.view-reading-badge-views {
+			.view-header {
+				margin-top: 30px;
+			}
+			.view-content {
+				width: 100%;
+				margin-left: 0;
+				margin-bottom: 10px;
+				.views-row {
+			    flex: 0 0 100%;
+			    margin-left: 0;
+			    margin-right: 0;
+			    border-bottom: 2px dotted #000;
+			    padding: 15px 0;
+			  }
+			}
+		}
+	}
+	.section-rewards {
+		aside.sidebar-activity {
+			margin-top: 20px;
+		}
+	}
+	/*-------------Rewards Page Ends-------------*/
 }
 
 /*------------Tab Responsive--------------*/
 @media screen and (min-width: 768px) and (max-width: 1024px) {
+
+	/*-------------Header-------------*/
+	.top-header-menu {
+		.username {
+			width: 85%;
+  		display: inline-block;
+  		margin-bottom: 10px;
+		}
+	}
+	.l-header {
+		.header-middle {
+			.logo-block {
+				flex: 0 0 100%;
+				.site-info {
+					display: inline-block;
+		    	float: left;
+		   		width: 50%;
+				}
+				.program-logo {
+					display: inline-block;
+		    	width: 50%;
+		    	float: right;
+		    	text-align: right;
+		    	padding-right: 25px;
+		    	margin-top: 0 !important;
+		    	margin-bottom: 10px;
+				}
+			}
+			.main-menu {
+    		flex: 0 0 100%;
+    		.menu-wrapper {
+    			.block-lang-dropdown {
+    				form {
+    					margin-right: 25px;
+    				}
+    			}
+    		}
+    	}
+			select, form {
+				margin-bottom: 0;
+			}
+		}
+		.pre-header {
+			.top-menu {
+				.btn {
+   			 	margin-left: 0;
+    			margin-right: 6px;
+    		}
+    	}
+    }
+	}
+	/*-------------Header Ends-------------*/
 
 	/*-------------Dashboard Page-------------*/
 	.homebox {
