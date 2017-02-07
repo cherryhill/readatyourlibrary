@@ -6,6 +6,9 @@
 .button, button {
   @extend .teen-button;
   @extend .main-button;
+  &.small {
+    font-size: 18px;
+  }
   &.radius {
     border-radius: 0;
   }
@@ -29,6 +32,9 @@
   .cs-elegant & {
     line-height: 23px;
   }
+  &:hover {
+    text-decoration: underline;
+  }
 }
 .main-button {
    @extend .teen-button;
@@ -36,7 +42,7 @@
   .cs-default & {
     @extend .yellow;
     color: $purple;
-    padding: 9px 14px 5px;
+    padding: 9px 14px 4px;
 
      &:hover,&:focus {
       @extend .yellow-btn-hover-default;
