@@ -212,9 +212,10 @@ function teen_programme_css_alter(&$css) {
 function teen_programme_preprocess_page(&$variables) {
 
 
-if (!empty($variables['page']['sidebar_first']) || !empty($variables['page']['sidebar_activity'])){
+if (!empty($variables['page']['sidebar_first']) || !empty($variables['page']['sidebar_activity']) || !empty($variables['page']['sidebar_shareit'])){
     $left = $variables['page']['sidebar_first'];
     $left1 = $variables['page']['sidebar_activity'];
+    $left2 = $variables['page']['sidebar_shareit'];
 
   }
 
@@ -223,15 +224,15 @@ if (!empty($variables['page']['sidebar_first']) || !empty($variables['page']['si
   }
 
   // Dynamic sidebars
-  if ((!empty($left) || !empty($left1)) && !empty($right)) {
+  if ((!empty($left) || !empty($left1) || !empty($left2)) && !empty($right)) {
     $variables['main_grid'] = 'large-6 push-3';
     $variables['sidebar_first_grid'] = 'large-3 pull-6';
     $variables['sidebar_sec_grid'] = 'large-3';
-  } elseif ((!empty($left) || !empty($left1)) && !empty($right)) {
+  } elseif ((!empty($left) || !empty($left1) || !empty($left2)) && !empty($right)) {
     $variables['main_grid'] = 'large-9';
     $variables['sidebar_first_grid'] = '';
     $variables['sidebar_sec_grid'] = 'large-3';
-  } elseif ((!empty($left) || !empty($left1)) && empty($right)) {
+  } elseif ((!empty($left) || !empty($left1) || !empty($left2)) && empty($right)) {
     $variables['main_grid'] = 'medium-8 medium-push-4';
     $variables['sidebar_first_grid'] = 'medium-4 medium-pull-8';
     $variables['sidebar_sec_grid'] = '';

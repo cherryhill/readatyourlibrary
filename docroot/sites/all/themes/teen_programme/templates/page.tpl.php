@@ -137,6 +137,11 @@
       <?php print render($page['content']); ?>
     </div>
     <!--/.main region -->
+      <?php if (!empty($page['sidebar_shareit'])): ?>
+      <aside role="complementary" class="<?php print $sidebar_first_grid; ?> sidebar-shareit columns sidebar2">
+        <div class='first'><?php print render($page['sidebar_shareit']); ?> </div>
+      </aside>
+    <?php endif; ?>
       <?php if (!empty($page['sidebar_activity'])): ?>
       <aside role="complementary" class="<?php print $sidebar_first_grid; ?> sidebar-activity columns sidebar2">
         <div class='first'><?php print render($page['sidebar_activity']); ?> </div>
