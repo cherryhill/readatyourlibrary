@@ -9227,6 +9227,7 @@ a:focus, button:focus {
 /* line 265, ../scss/layout/_header.scss */
 .breadcurm ul li a {
   color: #267fda;
+  text-transform: capitalize;
 }
 /* line 49, ../scss/base/_mixins.scss */
 .cs-default .breadcurm ul li a {
@@ -9255,7 +9256,7 @@ a:focus, button:focus {
   text-rendering: optimizeLegibility;
   -moz-font-smoothing: grayscale;
 }
-/* line 271, ../scss/layout/_header.scss */
+/* line 270, ../scss/layout/_header.scss */
 .breadcurm ul li a:focus {
   outline: none;
 }
@@ -9391,12 +9392,19 @@ html {
 .l-footer .footer .block-play-library-custom-program-footer-content {
   flex: 0 0 70%;
 }
-/* line 41, ../scss/layout/_footer.scss */
+@media screen and (max-width: 767px) {
+  /* line 39, ../scss/layout/_footer.scss */
+  .l-footer .footer .block-play-library-custom-program-footer-content {
+    flex: 0 0 100%;
+    order: 2;
+  }
+}
+/* line 45, ../scss/layout/_footer.scss */
 .l-footer .footer .block-play-library-custom-program-footer-content .u-footer-content {
   font-size: 14px;
   color: #fff;
 }
-/* line 44, ../scss/layout/_footer.scss */
+/* line 48, ../scss/layout/_footer.scss */
 .l-footer .footer .block-play-library-custom-program-footer-content .u-footer-content p {
   margin-bottom: 0;
   line-height: 20px;
@@ -9430,19 +9438,19 @@ html {
   text-rendering: optimizeLegibility;
   -moz-font-smoothing: grayscale;
 }
-/* line 50, ../scss/layout/_footer.scss */
+/* line 54, ../scss/layout/_footer.scss */
 .l-footer .footer .block-play-library-custom-program-footer-content .u-footer-content p a {
   color: inherit;
   font-size: inherit;
   font-family: inherit;
 }
-/* line 54, ../scss/layout/_footer.scss */
+/* line 58, ../scss/layout/_footer.scss */
 .l-footer .footer .block-play-library-custom-program-footer-content .u-footer-content p a:hover {
   color: inherit;
   font-size: inherit;
   text-decoration: underline;
 }
-/* line 62, ../scss/layout/_footer.scss */
+/* line 66, ../scss/layout/_footer.scss */
 .l-footer .footer .block-play-library-custom-program-footer-content .lower-footer-content {
   font-size: 12px;
   margin-top: 25px;
@@ -9475,13 +9483,13 @@ html {
   text-rendering: optimizeLegibility;
   -moz-font-smoothing: grayscale;
 }
-/* line 67, ../scss/layout/_footer.scss */
+/* line 71, ../scss/layout/_footer.scss */
 .l-footer .footer .block-play-library-custom-program-footer-content .lower-footer-content a {
   font-size: inherit;
   font-family: inherit;
   color: inherit;
 }
-/* line 74, ../scss/layout/_footer.scss */
+/* line 78, ../scss/layout/_footer.scss */
 .l-footer .footer .block-play-library-custom-program-footer-content .copy-right {
   font-size: 12px;
   color: #fff;
@@ -9514,9 +9522,15 @@ html {
   text-rendering: optimizeLegibility;
   -moz-font-smoothing: grayscale;
 }
-/* line 81, ../scss/layout/_footer.scss */
+/* line 85, ../scss/layout/_footer.scss */
 .l-footer .footer .block-menu-menu-social-sharing-icons {
   flex: 0 0 30%;
+}
+@media screen and (max-width: 767px) {
+  /* line 85, ../scss/layout/_footer.scss */
+  .l-footer .footer .block-menu-menu-social-sharing-icons {
+    flex: 0 0 100%;
+  }
 }
 
 /* line 2, ../scss/components/_activityandreward-page-sidebar.scss */
@@ -15845,158 +15859,165 @@ th {
   }
 
   /*------------Header Ends--------------*/
-  /*-------------Dashboard Page-------------*/
+  /*------------Footer--------------*/
   /* line 82, ../scss/pages/_responsive.scss */
+  .block-menu-menu-social-sharing-icons ul.menu {
+    float: none;
+  }
+
+  /*------------Footer Ends--------------*/
+  /*-------------Dashboard Page-------------*/
+  /* line 92, ../scss/pages/_responsive.scss */
   .homebox.homebox-auto-save .homebox-column-wrapper {
     width: 100% !important;
   }
-  /* line 85, ../scss/pages/_responsive.scss */
+  /* line 95, ../scss/pages/_responsive.scss */
   .cs-default .homebox.homebox-auto-save .homebox-column-wrapper .portlet-header {
     font-size: 18px !important;
   }
-  /* line 88, ../scss/pages/_responsive.scss */
+  /* line 98, ../scss/pages/_responsive.scss */
   .cs-elegant .homebox.homebox-auto-save .homebox-column-wrapper .portlet-header {
     font-size: 21px !important;
   }
-  /* line 91, ../scss/pages/_responsive.scss */
+  /* line 101, ../scss/pages/_responsive.scss */
   .cs-classic .homebox.homebox-auto-save .homebox-column-wrapper .portlet-header {
     font-size: 21px !important;
   }
-  /* line 96, ../scss/pages/_responsive.scss */
+  /* line 106, ../scss/pages/_responsive.scss */
   .homebox.homebox-auto-save .homebox-column {
     height: auto !important;
   }
 
   /*-------------Dashboard Page Ends-------------*/
   /*-------------Home Page-------------*/
-  /* line 104, ../scss/pages/_responsive.scss */
+  /* line 114, ../scss/pages/_responsive.scss */
   .homepage-booklist-slider {
     padding-top: 30px;
   }
-  /* line 107, ../scss/pages/_responsive.scss */
+  /* line 117, ../scss/pages/_responsive.scss */
   .homepage-booklist-slider ul.booklist-pager {
     text-align: center;
     width: 100%;
   }
-  /* line 111, ../scss/pages/_responsive.scss */
+  /* line 121, ../scss/pages/_responsive.scss */
   .homepage-booklist-slider ul.booklist-pager input[type=radio] + label:before {
     background: #f6511d;
     border: 1px solid #f6511d;
   }
-  /* line 114, ../scss/pages/_responsive.scss */
+  /* line 124, ../scss/pages/_responsive.scss */
   .cs-elegant .homepage-booklist-slider ul.booklist-pager input[type=radio] + label:before {
     background: #00a6ed;
     border: 1px solid #00a6ed;
   }
-  /* line 118, ../scss/pages/_responsive.scss */
+  /* line 128, ../scss/pages/_responsive.scss */
   .cs-elegant .homepage-booklist-slider ul.booklist-pager input[type=radio] + label:before {
     background: #2ec4b6;
     border: 1px solid #2ec4b6;
   }
-  /* line 126, ../scss/pages/_responsive.scss */
+  /* line 136, ../scss/pages/_responsive.scss */
   .homepage-booklist-slider .controls {
     width: 100%;
     bottom: 10px;
   }
 
-  /* line 133, ../scss/pages/_responsive.scss */
+  /* line 143, ../scss/pages/_responsive.scss */
   .view-home-page-video-slideshow.flicker-block .owl-item {
     text-align: center;
   }
 
   /*-------------Home Page Ends-------------*/
   /*-------------Bookreview Page-------------*/
-  /* line 142, ../scss/pages/_responsive.scss */
+  /* line 152, ../scss/pages/_responsive.scss */
   .page-reviews .views-exposed-widget {
     flex: 0 0 calc(100% - 10px);
   }
-  /* line 145, ../scss/pages/_responsive.scss */
+  /* line 155, ../scss/pages/_responsive.scss */
   .page-reviews .views-field-field-book-cover-image-link {
     width: 100%;
   }
-  /* line 147, ../scss/pages/_responsive.scss */
+  /* line 157, ../scss/pages/_responsive.scss */
   .page-reviews .views-field-field-book-cover-image-link table {
     width: 100%;
   }
-  /* line 150, ../scss/pages/_responsive.scss */
+  /* line 160, ../scss/pages/_responsive.scss */
   .page-reviews .views-field-field-book-cover-image-link img {
     margin: auto;
     display: block;
   }
 
-  /* line 156, ../scss/pages/_responsive.scss */
+  /* line 166, ../scss/pages/_responsive.scss */
   .reviews-wrapper {
     width: 100%;
   }
 
   /*-------------Bookreview Page Ends-------------*/
   /*-------------Booklisting Page-------------*/
-  /* line 164, ../scss/pages/_responsive.scss */
+  /* line 174, ../scss/pages/_responsive.scss */
   .page-booklists .created-by-user .view-content {
     padding-left: 10px;
     padding-right: 10px;
   }
 
-  /* line 172, ../scss/pages/_responsive.scss */
+  /* line 182, ../scss/pages/_responsive.scss */
   .booklist-wrapp .book-body-wrapp div.title {
     width: 100%;
   }
-  /* line 177, ../scss/pages/_responsive.scss */
+  /* line 187, ../scss/pages/_responsive.scss */
   .booklist-wrapp .book-user-likes div.book-created {
     width: 100%;
   }
-  /* line 180, ../scss/pages/_responsive.scss */
+  /* line 190, ../scss/pages/_responsive.scss */
   .booklist-wrapp .book-user-likes div.book-like {
     width: 100%;
     float: right;
   }
 
-  /* line 187, ../scss/pages/_responsive.scss */
+  /* line 197, ../scss/pages/_responsive.scss */
   .view-booklist-page-view .views-exposed-widget {
     flex: 0 0 calc(100% - 10px);
   }
 
   /*-------------Booklisting Page Ends-------------*/
   /*-------------Current-Programme Page-------------*/
-  /* line 195, ../scss/pages/_responsive.scss */
+  /* line 205, ../scss/pages/_responsive.scss */
   .current-program .programme-content {
     padding: 35px 0;
   }
-  /* line 197, ../scss/pages/_responsive.scss */
+  /* line 207, ../scss/pages/_responsive.scss */
   .current-program .programme-content .image {
     flex: 0 0 100%;
     padding-top: 0;
   }
-  /* line 200, ../scss/pages/_responsive.scss */
+  /* line 210, ../scss/pages/_responsive.scss */
   .current-program .programme-content .image img {
     display: block;
     margin: auto;
   }
-  /* line 205, ../scss/pages/_responsive.scss */
+  /* line 215, ../scss/pages/_responsive.scss */
   .current-program .programme-content .body {
     flex: 0 0 100%;
     padding: 20px 10px 0;
   }
 
-  /* line 212, ../scss/pages/_responsive.scss */
+  /* line 222, ../scss/pages/_responsive.scss */
   .other-programme.view {
     padding-bottom: 50px;
   }
-  /* line 214, ../scss/pages/_responsive.scss */
+  /* line 224, ../scss/pages/_responsive.scss */
   .other-programme.view .other-programme {
     padding: 10px 0;
   }
-  /* line 216, ../scss/pages/_responsive.scss */
+  /* line 226, ../scss/pages/_responsive.scss */
   .other-programme.view .other-programme .programme-image {
     flex: 0 0 100%;
     padding-top: 0;
   }
-  /* line 219, ../scss/pages/_responsive.scss */
+  /* line 229, ../scss/pages/_responsive.scss */
   .other-programme.view .other-programme .programme-image img {
     display: block;
     margin: auto;
   }
-  /* line 224, ../scss/pages/_responsive.scss */
+  /* line 234, ../scss/pages/_responsive.scss */
   .other-programme.view .other-programme .programme-content {
     flex: 0 0 100%;
     padding: 20px 0 0 0;
@@ -16004,92 +16025,190 @@ th {
 
   /*-------------Current-Programme Page Ends-------------*/
   /*-------------Events Page-------------*/
-  /* line 237, ../scss/pages/_responsive.scss */
+  /* line 247, ../scss/pages/_responsive.scss */
   .section-events .view-events .view-content .views-row {
     border-bottom: 1px dotted #000;
     padding: 10px 0;
   }
-  /* line 240, ../scss/pages/_responsive.scss */
+  /* line 250, ../scss/pages/_responsive.scss */
   .section-events .view-events .view-content .views-row.views-row-last {
     border-bottom: none;
   }
-  /* line 244, ../scss/pages/_responsive.scss */
+  /* line 254, ../scss/pages/_responsive.scss */
   .section-events .view-events .view-content h3, .section-events .view-events .view-content aside .block-menu ul.menu li a, aside .block-menu ul.menu li .section-events .view-events .view-content a {
     text-align: center;
   }
 
-  /* line 251, ../scss/pages/_responsive.scss */
+  /* line 261, ../scss/pages/_responsive.scss */
   .events-page-events .events-wrapper {
     text-align: center;
   }
-  /* line 253, ../scss/pages/_responsive.scss */
+  /* line 263, ../scss/pages/_responsive.scss */
   .events-page-events .events-wrapper .title, .events-page-events .events-wrapper .date, .events-page-events .events-wrapper .location {
     flex: 0 0 100%;
   }
-  /* line 255, ../scss/pages/_responsive.scss */
+  /* line 265, ../scss/pages/_responsive.scss */
   .events-page-events .events-wrapper .title a, .events-page-events .events-wrapper .date a, .events-page-events .events-wrapper .location a {
     padding-left: 0;
   }
 
   /*-------------Events Page Ends-------------*/
+  /*-------------Rewards Page-------------*/
+  /* line 276, ../scss/pages/_responsive.scss */
+  .view-reward-page-views .views-row .reward-page-for-kids {
+    border-bottom: 2px dotted #000;
+    padding-bottom: 30px;
+  }
+  /* line 279, ../scss/pages/_responsive.scss */
+  .view-reward-page-views .views-row .reward-page-for-kids .reward-image-title {
+    flex: 0 0 100%;
+    padding-right: 0;
+  }
+  /* line 282, ../scss/pages/_responsive.scss */
+  .view-reward-page-views .views-row .reward-page-for-kids .reward-image-title img {
+    display: block;
+    margin: auto;
+  }
+  /* line 286, ../scss/pages/_responsive.scss */
+  .view-reward-page-views .views-row .reward-page-for-kids .reward-image-title div {
+    text-align: center;
+  }
+  /* line 290, ../scss/pages/_responsive.scss */
+  .view-reward-page-views .views-row .reward-page-for-kids .description {
+    flex: calc(100%);
+    margin-top: 20px;
+  }
+
+  /* line 299, ../scss/pages/_responsive.scss */
+  .reward-block-reward-page.view-reading-badge-views .view-header {
+    margin-top: 30px;
+  }
+  /* line 302, ../scss/pages/_responsive.scss */
+  .reward-block-reward-page.view-reading-badge-views .view-content {
+    width: 100%;
+    margin-left: 0;
+    margin-bottom: 10px;
+  }
+  /* line 306, ../scss/pages/_responsive.scss */
+  .reward-block-reward-page.view-reading-badge-views .view-content .views-row {
+    flex: 0 0 100%;
+    margin-left: 0;
+    margin-right: 0;
+    border-bottom: 2px dotted #000;
+    padding: 15px 0;
+  }
+
+  /* line 317, ../scss/pages/_responsive.scss */
+  .section-rewards aside.sidebar-activity {
+    margin-top: 20px;
+  }
+
+  /*-------------Rewards Page Ends-------------*/
 }
 /*------------Tab Responsive--------------*/
 @media screen and (min-width: 768px) and (max-width: 1024px) {
+  /*-------------Header-------------*/
+  /* line 329, ../scss/pages/_responsive.scss */
+  .top-header-menu .username {
+    width: 85%;
+    display: inline-block;
+    margin-bottom: 10px;
+  }
+
+  /* line 337, ../scss/pages/_responsive.scss */
+  .l-header .header-middle .logo-block {
+    flex: 0 0 100%;
+  }
+  /* line 339, ../scss/pages/_responsive.scss */
+  .l-header .header-middle .logo-block .site-info {
+    display: inline-block;
+    float: left;
+    width: 50%;
+  }
+  /* line 344, ../scss/pages/_responsive.scss */
+  .l-header .header-middle .logo-block .program-logo {
+    display: inline-block;
+    width: 50%;
+    float: right;
+    text-align: right;
+    padding-right: 25px;
+    margin-top: 0 !important;
+    margin-bottom: 10px;
+  }
+  /* line 354, ../scss/pages/_responsive.scss */
+  .l-header .header-middle .main-menu {
+    flex: 0 0 100%;
+  }
+  /* line 358, ../scss/pages/_responsive.scss */
+  .l-header .header-middle .main-menu .menu-wrapper .block-lang-dropdown form {
+    margin-right: 25px;
+  }
+  /* line 364, ../scss/pages/_responsive.scss */
+  .l-header .header-middle select, .l-header .header-middle form {
+    margin-bottom: 0;
+  }
+  /* line 370, ../scss/pages/_responsive.scss */
+  .l-header .pre-header .top-menu .btn {
+    margin-left: 0;
+    margin-right: 6px;
+  }
+
+  /*-------------Header Ends-------------*/
   /*-------------Dashboard Page-------------*/
-  /* line 269, ../scss/pages/_responsive.scss */
+  /* line 381, ../scss/pages/_responsive.scss */
   .homebox.homebox-auto-save {
     width: 100%;
     margin: auto;
   }
-  /* line 272, ../scss/pages/_responsive.scss */
+  /* line 384, ../scss/pages/_responsive.scss */
   .homebox.homebox-auto-save .homebox-column-wrapper {
     padding: 0 5px;
   }
-  /* line 274, ../scss/pages/_responsive.scss */
+  /* line 386, ../scss/pages/_responsive.scss */
   .homebox.homebox-auto-save .homebox-column-wrapper .portlet-header {
     padding: 10px 1px 15px 50px !important;
   }
-  /* line 277, ../scss/pages/_responsive.scss */
+  /* line 389, ../scss/pages/_responsive.scss */
   .homebox.homebox-auto-save .homebox-column-wrapper .portlet-header .portlet-title:before {
     left: -44px;
   }
-  /* line 281, ../scss/pages/_responsive.scss */
+  /* line 393, ../scss/pages/_responsive.scss */
   .cs-default .homebox.homebox-auto-save .homebox-column-wrapper .portlet-header {
     font-size: 20px !important;
   }
-  /* line 284, ../scss/pages/_responsive.scss */
+  /* line 396, ../scss/pages/_responsive.scss */
   .cs-elegant .homebox.homebox-auto-save .homebox-column-wrapper .portlet-header {
     font-size: 23px !important;
   }
-  /* line 287, ../scss/pages/_responsive.scss */
+  /* line 399, ../scss/pages/_responsive.scss */
   .cs-classic .homebox.homebox-auto-save .homebox-column-wrapper .portlet-header {
     font-size: 23px !important;
   }
-  /* line 291, ../scss/pages/_responsive.scss */
+  /* line 403, ../scss/pages/_responsive.scss */
   .homebox.homebox-auto-save .homebox-column-wrapper .homebox-portlet-inner {
     margin-bottom: 5px;
   }
 
   /*-------------Dashboard Page Ends-------------*/
   /*-------------Home Page-------------*/
-  /* line 302, ../scss/pages/_responsive.scss */
+  /* line 414, ../scss/pages/_responsive.scss */
   .view-home-page-video-slideshow.flicker-block .owl-item {
     text-align: center;
   }
 
   /*-------------Home Page Ends-------------*/
   /*-------------Bookreview Page-------------*/
-  /* line 311, ../scss/pages/_responsive.scss */
+  /* line 423, ../scss/pages/_responsive.scss */
   .page-reviews .views-exposed-widget {
     flex: 0 0 calc(50% - 10px);
   }
 
-  /* line 316, ../scss/pages/_responsive.scss */
+  /* line 428, ../scss/pages/_responsive.scss */
   .sidebar2 > .first {
     padding-left: 10px;
     padding-right: 10px;
   }
-  /* line 321, ../scss/pages/_responsive.scss */
+  /* line 433, ../scss/pages/_responsive.scss */
   .sidebar2 .block-menu ul.menu {
     padding-right: 0;
     padding-left: 0;
@@ -16097,19 +16216,19 @@ th {
 
   /*-------------Bookreview Page Ends-------------*/
   /*-------------Booklisting Page-------------*/
-  /* line 331, ../scss/pages/_responsive.scss */
+  /* line 443, ../scss/pages/_responsive.scss */
   .booklist-listing-page .views-exposed-widget {
     flex: 0 0 calc(50% - 10px);
   }
 
   /*-------------Booklisting Page Ends-------------*/
   /*-------------Events Page-------------*/
-  /* line 341, ../scss/pages/_responsive.scss */
+  /* line 453, ../scss/pages/_responsive.scss */
   .section-events .view-events .view-content .views-row {
     border-bottom: 1px dotted #000;
     padding: 10px 0;
   }
-  /* line 344, ../scss/pages/_responsive.scss */
+  /* line 456, ../scss/pages/_responsive.scss */
   .section-events .view-events .view-content .views-row.views-row-last {
     border-bottom: none;
   }
