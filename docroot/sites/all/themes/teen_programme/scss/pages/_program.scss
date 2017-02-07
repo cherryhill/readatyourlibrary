@@ -1,7 +1,10 @@
 #page-title {
   margin-top: 0;
 }
-.current-program-wrapper {
+.current-program.primary-background {
+   * {
+    color: $white;
+   }
   .stroke-main.programme-title {
     color: $white;
   }
@@ -18,12 +21,7 @@
     @extend .orange;
   }
 
-  @extend .white-text;
 
-  overflow: hidden;
-  box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
-  margin-bottom: 35px;
-  padding-bottom: 15px;
 
   @include primary_fsize;
 

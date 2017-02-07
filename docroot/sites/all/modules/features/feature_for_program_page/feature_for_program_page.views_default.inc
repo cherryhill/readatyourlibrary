@@ -218,7 +218,7 @@ function feature_for_program_page_views_default_views() {
   $handler->display->display_options['fields']['nothing']['table'] = 'views';
   $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
   $handler->display->display_options['fields']['nothing']['label'] = '';
-  $handler->display->display_options['fields']['nothing']['alter']['text'] = '<div class = "current-program-wrapper">
+  $handler->display->display_options['fields']['nothing']['alter']['text'] = '<div class = "current-program primary-background">
 <div class="stroke-main programme-title">[title]</div>
 <div class="programme-content">
 <div class="image">[field_program_image] </div>
