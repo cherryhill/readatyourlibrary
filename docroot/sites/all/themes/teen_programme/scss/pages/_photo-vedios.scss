@@ -83,3 +83,28 @@
     }
   }
 }
+.section-media #page-title {
+  background-size: 100%;
+  background-repeat: repeat;
+  margin-bottom: 10px;
+  width: calc(100% + 40px);
+  margin-left: -40px;
+}
+#page-title {
+  .section-media.cs-default & {
+    background-image: url("../images/yellowbrushstroke_lg.png");
+    padding: 27px 10px 14px 40px;
+    color: $purple;
+  }
+  .section-media.cs-classic & {
+    background-image: url("../images/redbrushstroke_lg.png");
+    color: $dark-blue;
+    padding: 24px 10px 24px 40px;
+  }
+  .section-media.cs-elegant & {
+    background-image: url("../images/bluebrushstroke_lg.png");
+    color: $gray;
+    padding: 24px 10px 24px 40px;
+  }
+
+}

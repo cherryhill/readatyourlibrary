@@ -242,7 +242,9 @@
     }
     label {
       color: $white;
-
+      .cs-elegant & {
+        color: $gray;
+      }
       @include bold-font;
     }
 
@@ -260,7 +262,7 @@
           a {
             color: $white;
             .cs-elegant & {
-              color: $black;
+              color: $gray;
             }
             @include body-font;
 

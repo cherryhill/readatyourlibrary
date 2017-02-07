@@ -1,7 +1,33 @@
 #page-title {
   margin-top: 0;
 }
-.current-program {
+.current-program-wrapper {
+  .stroke-main.programme-title {
+    color: $white;
+  }
+  .cs-default & {
+    background: url("../images/background.jpeg") scroll repeat;
+    background-size: cover;
+  }
+
+  .cs-classic & {
+    @extend .medium-blue;
+  }
+
+  .cs-elegant & {
+    @extend .orange;
+  }
+
+  @extend .white-text;
+
+  overflow: hidden;
+  box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+  margin-bottom: 35px;
+  padding-bottom: 15px;
+
+  @include primary_fsize;
+
+  @include body-font;
    .programme-content {
     -webkit-flex-wrap: wrap;
       flex-wrap: wrap;
@@ -48,17 +74,18 @@
              color: $purple;
             }
             .cs-elegant & {
-                color: $dark-blue;
+              color: $gray;
+
               }
               .cs-classic & {
-                color: $blue;
+                color: $dark-blue;
               }
               * {
                 color: inherit;
               }
          }
          .sign-up {
-          margin-top: 5px;
+          margin-top: 10px;
            a {
              @extend .button;
              margin-left: 0;
@@ -100,7 +127,35 @@
     margin-top: 10px;
     a {
       color: $white;
+      .cs-elegant & {
+        color: $gray;
+      }
 
     }
   }
+}
+.page-programs #page-title {
+  background-size: 100%;
+  background-repeat: repeat;
+  margin-bottom: 10px;
+  width: calc(100% + 40px);
+  margin-left: -40px;
+}
+#page-title {
+  .page-programs.cs-default & {
+    background-image: url("../images/yellowbrushstroke_lg.png");
+    padding: 27px 10px 14px 40px;
+    color: $purple;
+  }
+  .page-programs.cs-classic & {
+    background-image: url("../images/redbrushstroke_lg.png");
+    color: $dark-blue;
+    padding: 24px 10px 24px 40px;
+  }
+  .page-programs.cs-elegant & {
+    background-image: url("../images/bluebrushstroke_lg.png");
+    color: $gray;
+    padding: 24px 10px 24px 40px;
+  }
+
 }
