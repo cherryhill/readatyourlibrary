@@ -237,9 +237,11 @@ function play_library_program_review_selectlist($nid){
   $res = $que->execute()->fetchAll();
   // echo "<pre>";
   // print_r($res);die();
+  $activity_write_fields_title['all'] = 'select from following';
+  $activity_read_fields_title['all'] = 'Select from following';
 
-  $activity_read_fields[0] = t('--Select from the following--');
-  $activity_write_fields[0] = t('--Select from the following--');
+  //$activity_read_fields[0] = t('--Select from the following--');
+  //$activity_write_fields[0] = t('--Select from the following--');
   foreach ($res as $key => $value) {
     if (!empty($value->field_read_review_url) && !empty($value->field_read_review_title)){
       $activity_read_fields_title[$value->field_read_review_url] = $value->field_read_review_title;
