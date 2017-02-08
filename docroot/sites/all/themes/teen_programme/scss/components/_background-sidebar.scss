@@ -16,7 +16,9 @@
   &.sidebar-shareit {
     > .first {
       margin-bottom: 0;
-
+       .not-logged-in & {
+        display: none;
+       }
       .block-sharethis {
         display: flex;
         display: -webkit-flex;

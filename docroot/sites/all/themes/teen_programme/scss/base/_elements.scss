@@ -59,10 +59,26 @@
 // select {}
 a {
   color: $link-color;
+   &:hover {
+    text-decoration: underline;
+   }
 }
+body {
+  &.cs-default {
+    color: $purple;
+  }
 
+  &.cs-classic {
+    color: $dark-blue;
+  }
+
+  &.cs-elegant {
+    color: $gray;
+  }
+}
 h1,h2,h3,h4,h5 {
   @include heading-font;
+  @extend .primary-color;
 }
 h1 {
   .cs-default & {
@@ -111,5 +127,12 @@ a,button {
 .view-footer {
   button,.button {
     margin-left: 0;
+  }
+}
+.primary-tabs {
+  .button-group {
+    li {
+      margin-right: 10px;
+    }
   }
 }
