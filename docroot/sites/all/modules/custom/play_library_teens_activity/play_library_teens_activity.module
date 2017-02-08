@@ -219,17 +219,17 @@ function activities_taxonomy_term_delete($terms, $activity) {
 	taxonomy_term_delete($term_id);
 }
 
-/**
- * Implementation of hook_menu().
- */
-function play_library_teens_activity_menu() {
-  $items['activities'] = array(
-    'title' => 'Activities for the teen Summer Passport',
-    'page callback' => 'activities_page',
-    'access arguments' => array('access content'),
-    'type' => MENU_SUGGESTED_ITEM,
-    'file' => 'inc/hotspot_activities_block.inc',
-    'file path' => drupal_get_path('module', 'play_library_teens_activity'),
-  );
-  return $items;
-}
+// /**
+//  * Implementation of hook_menu().
+//  */
+// function play_library_teens_activity_menu() {
+//   $items['activities'] = array(
+//     'title' => 'Activities for the teen Summer Passport',
+//     'page callback' => 'activities_page',
+//     'access arguments' => array('access content'),
+//     'type' => MENU_SUGGESTED_ITEM,
+//     'file' => 'inc/hotspot_activities_block.inc',
+//     'file path' => drupal_get_path('module', 'play_library_teens_activity'),
+//   );
+//   return $items;
+// }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * function callback for Activities landing page
  */
