@@ -103,9 +103,9 @@ function activities_term_save($terms, $activity) {
         $tid_term = $activity_term->tid;
         $activity_term_load = taxonomy_term_load($tid_term);
         $activity_term_load->field_activity_id['und'][0]['value'] = $activity_id;
-        $activity_term_load->field_read_review['und'][0]['url'] = 'progress';
+        $activity_term_load->field_read_review['und'][0]['url'] = 'activities-listing/' . $tid_term;
         $activity_term_load->field_read_review['und'][0]['title'] = $activity->title;
-        $activity_term_load->field_write_review['und'][0]['url'] = 'progress';
+        $activity_term_load->field_write_review['und'][0]['url'] = 'node/add/review-activity/' . $tid_term;
         $activity_term_load->field_write_review['und'][0]['title'] = $activity->title;
         taxonomy_term_save($activity_term_load);
       }
@@ -195,9 +195,9 @@ function activities_term_save($terms, $activity) {
         $activity_term_load = taxonomy_term_load($tid);
         $activity_term_load->field_activity_id['und'][0]['value'] = $activity_id;
         $activity_term_load->field_read_review['und'][0]['title'] = $activity->title;
-        $activity_term_load->field_read_review['und'][0]['url'] = 'progress';
+        $activity_term_load->field_read_review['und'][0]['url'] = 'activities-listing/' . $tid;
         $activity_term_load->field_write_review['und'][0]['title'] = $activity->title;
-        $activity_term_load->field_write_review['und'][0]['url'] = 'progress';
+        $activity_term_load->field_write_review['und'][0]['url'] = 'node/add/review-activity/' . $tid;
         $activity_term_load->name = $activity->title;
         taxonomy_term_save($activity_term_load);
       }
@@ -219,17 +219,3 @@ function activities_taxonomy_term_delete($terms, $activity) {
 	taxonomy_term_delete($term_id);
 }
 
-// /**
-//  * Implementation of hook_menu().
-//  */
-// function play_library_teens_activity_menu() {
-//   $items['activities'] = array(
-//     'title' => 'Activities for the teen Summer Passport',
-//     'page callback' => 'activities_page',
-//     'access arguments' => array('access content'),
-//     'type' => MENU_SUGGESTED_ITEM,
-//     'file' => 'inc/hotspot_activities_block.inc',
-//     'file path' => drupal_get_path('module', 'play_library_teens_activity'),
-//   );
-//   return $items;
-// }
