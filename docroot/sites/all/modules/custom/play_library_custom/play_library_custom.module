@@ -102,8 +102,10 @@ function play_library_custom_form_alter(&$form, &$form_state, $form_id) {
   }
 
   if($form_id == 'review_activity_node_form') {
-    $tid = arg(3);    
-    $form['field_activity']['und']['#default_value'] = $tid;
+    $tid = arg(3);
+    if(isset($tid)) {
+      $form['field_activity']['und']['#default_value'] = $tid;
+    } 
     
   }
 
