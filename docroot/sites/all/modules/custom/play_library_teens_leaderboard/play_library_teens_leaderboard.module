@@ -114,6 +114,7 @@ function leader_board_teens_dashboard() {
     $query->fields('eck_act', array('uid'));
     $query->fields('u', array('name'));
     $query->groupBy('eck_act.uid');
+    $query->range(0, 5);
     $result = $query->execute()->fetchAll();
     $out ='';
     $out .= '<div><ol>';
@@ -127,6 +128,7 @@ function leader_board_teens_dashboard() {
 
       
     }
+    $out .= '<span><a href="leaderboard">More</a></span>';
 
     $out .= '</ol></div>';
 
