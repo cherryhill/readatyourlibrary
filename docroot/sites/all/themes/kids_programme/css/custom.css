@@ -13240,18 +13240,19 @@ html {
 .booklist-wrapp .book-user-likes > div.book-like {
   width: 30%;
   text-align: right;
+  padding-right: 10px;
 }
-/* line 182, ../scss/pages/_booklist.scss */
+/* line 183, ../scss/pages/_booklist.scss */
 .booklist-wrapp .book-user-likes > div.book-like * {
   font-family: inherit;
   font-size: inherit;
 }
-/* line 186, ../scss/pages/_booklist.scss */
+/* line 187, ../scss/pages/_booklist.scss */
 .booklist-wrapp .book-user-likes > div.book-like span {
   padding-right: 32px;
   position: relative;
 }
-/* line 189, ../scss/pages/_booklist.scss */
+/* line 190, ../scss/pages/_booklist.scss */
 .booklist-wrapp .book-user-likes > div.book-like span:after {
   content: "";
   width: 25px;
@@ -13263,16 +13264,16 @@ html {
   top: -3px;
 }
 
-/* line 205, ../scss/pages/_booklist.scss */
+/* line 206, ../scss/pages/_booklist.scss */
 .page-booklists .viewmenu {
   margin-bottom: 26px;
 }
-/* line 209, ../scss/pages/_booklist.scss */
+/* line 210, ../scss/pages/_booklist.scss */
 .page-booklists .view-booklist-page-view > .view-header {
   margin-top: 20px;
   margin-bottom: 20px;
 }
-/* line 214, ../scss/pages/_booklist.scss */
+/* line 215, ../scss/pages/_booklist.scss */
 .page-booklists .view-booklist-page-view > .view-content .views-row {
   margin-bottom: 23px;
   display: inline-block;
@@ -16143,11 +16144,16 @@ th {
   .l-header .header-middle .main-menu .menu-wrapper .block-lang-dropdown form {
     margin-right: 25px;
   }
-  /* line 364, ../scss/pages/_responsive.scss */
+  /* line 363, ../scss/pages/_responsive.scss */
+  .l-header .header-middle .main-menu .menu-wrapper ul.menu li {
+    margin-left: 0;
+    margin-right: 5px;
+  }
+  /* line 370, ../scss/pages/_responsive.scss */
   .l-header .header-middle select, .l-header .header-middle form {
     margin-bottom: 0;
   }
-  /* line 370, ../scss/pages/_responsive.scss */
+  /* line 376, ../scss/pages/_responsive.scss */
   .l-header .pre-header .top-menu .btn {
     margin-left: 0;
     margin-right: 6px;
@@ -16155,60 +16161,60 @@ th {
 
   /*-------------Header Ends-------------*/
   /*-------------Dashboard Page-------------*/
-  /* line 381, ../scss/pages/_responsive.scss */
+  /* line 387, ../scss/pages/_responsive.scss */
   .homebox.homebox-auto-save {
     width: 100%;
     margin: auto;
   }
-  /* line 384, ../scss/pages/_responsive.scss */
+  /* line 390, ../scss/pages/_responsive.scss */
   .homebox.homebox-auto-save .homebox-column-wrapper {
     padding: 0 5px;
   }
-  /* line 386, ../scss/pages/_responsive.scss */
+  /* line 392, ../scss/pages/_responsive.scss */
   .homebox.homebox-auto-save .homebox-column-wrapper .portlet-header {
     padding: 10px 1px 15px 50px !important;
   }
-  /* line 389, ../scss/pages/_responsive.scss */
+  /* line 395, ../scss/pages/_responsive.scss */
   .homebox.homebox-auto-save .homebox-column-wrapper .portlet-header .portlet-title:before {
     left: -44px;
   }
-  /* line 393, ../scss/pages/_responsive.scss */
+  /* line 399, ../scss/pages/_responsive.scss */
   .cs-default .homebox.homebox-auto-save .homebox-column-wrapper .portlet-header {
     font-size: 20px !important;
   }
-  /* line 396, ../scss/pages/_responsive.scss */
+  /* line 402, ../scss/pages/_responsive.scss */
   .cs-elegant .homebox.homebox-auto-save .homebox-column-wrapper .portlet-header {
     font-size: 23px !important;
   }
-  /* line 399, ../scss/pages/_responsive.scss */
+  /* line 405, ../scss/pages/_responsive.scss */
   .cs-classic .homebox.homebox-auto-save .homebox-column-wrapper .portlet-header {
     font-size: 23px !important;
   }
-  /* line 403, ../scss/pages/_responsive.scss */
+  /* line 409, ../scss/pages/_responsive.scss */
   .homebox.homebox-auto-save .homebox-column-wrapper .homebox-portlet-inner {
     margin-bottom: 5px;
   }
 
   /*-------------Dashboard Page Ends-------------*/
   /*-------------Home Page-------------*/
-  /* line 414, ../scss/pages/_responsive.scss */
+  /* line 420, ../scss/pages/_responsive.scss */
   .view-home-page-video-slideshow.flicker-block .owl-item {
     text-align: center;
   }
 
   /*-------------Home Page Ends-------------*/
   /*-------------Bookreview Page-------------*/
-  /* line 423, ../scss/pages/_responsive.scss */
+  /* line 429, ../scss/pages/_responsive.scss */
   .page-reviews .views-exposed-widget {
     flex: 0 0 calc(50% - 10px);
   }
 
-  /* line 428, ../scss/pages/_responsive.scss */
+  /* line 434, ../scss/pages/_responsive.scss */
   .sidebar2 > .first {
     padding-left: 10px;
     padding-right: 10px;
   }
-  /* line 433, ../scss/pages/_responsive.scss */
+  /* line 439, ../scss/pages/_responsive.scss */
   .sidebar2 .block-menu ul.menu {
     padding-right: 0;
     padding-left: 0;
@@ -16216,19 +16222,19 @@ th {
 
   /*-------------Bookreview Page Ends-------------*/
   /*-------------Booklisting Page-------------*/
-  /* line 443, ../scss/pages/_responsive.scss */
+  /* line 449, ../scss/pages/_responsive.scss */
   .booklist-listing-page .views-exposed-widget {
     flex: 0 0 calc(50% - 10px);
   }
 
   /*-------------Booklisting Page Ends-------------*/
   /*-------------Events Page-------------*/
-  /* line 453, ../scss/pages/_responsive.scss */
+  /* line 459, ../scss/pages/_responsive.scss */
   .section-events .view-events .view-content .views-row {
     border-bottom: 1px dotted #000;
     padding: 10px 0;
   }
-  /* line 456, ../scss/pages/_responsive.scss */
+  /* line 462, ../scss/pages/_responsive.scss */
   .section-events .view-events .view-content .views-row.views-row-last {
     border-bottom: none;
   }
