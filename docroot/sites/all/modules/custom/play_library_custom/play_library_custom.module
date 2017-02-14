@@ -102,17 +102,11 @@ function play_library_custom_form_alter(&$form, &$form_state, $form_id) {
   }
 
   if($form_id == 'review_activity_node_form') {
-    $sel_options = $form['field_activity_type']['und']['#options'];
-    foreach ($sel_options as $key => $value) {
-      $activity_term = taxonomy_term_load($key);
-      if(!empty($activity_term->field_hotspot_activity_type['und'][0]['value']) == 1){
-        $opt[$key] = $value;
-      }
-    }
-    $form['field_activity_type']['und']['#options'] = $opt;
-    $form['field_activity_type']['#prefix'] = $sub_title;
-    unset($form['field_privacy_settings']['und']['#options']['_none']);
-    drupal_set_title('Write an Activity Review');
+    $tid = arg(3);
+    if(isset($tid)) {
+      $form['field_activity']['und']['#default_value'] = $tid;
+    } 
+    
   }
 
   // Adding purchase link for booklist
