@@ -11,6 +11,8 @@
         $(this).css('background-image', 'url(' + imgURL + ')');
       }
     });
+    //booklist and book-review title replacement
+     $('.book-reviews-page .reviews-subtitle').insertAfter('.book-reviews-page .view-filters');
     //dashboard page overwrite homepage module jquery and make theming easier
     var activites =$('.homebox-draggable:has(.view-activities-dashboard)').addClass('dashboard-activities');
     var rewards =$('.homebox-draggable:has(.view-rewards-dashboard)').addClass('dashboard-rewards');
