@@ -12,7 +12,12 @@ function play_progress_calendar_permission() {
       'title' => t('View Calendar Progress Page'),
       'description' => t('Access to view Calendar Progress Page'),
     ),
+    'view_activity_record_for_patron' => array(
+      'title' => t('Access activity record page'),
+      'description' => t('Access activity record page'),
+    ),
   );
+  
 }
 
 
@@ -64,7 +69,7 @@ function play_progress_calendar_menu() {
     'title' => 'Record Activity for Patron',
     'page callback' => 'drupal_get_form',
     'page arguments' => array('patron_activity_record_form'),
-    'access arguments' => array('activity record access'),
+    'access arguments' => array('view_activity_record_for_patron'),
     'type' => MENU_CALLBACK,
   );
   
@@ -293,5 +298,6 @@ function patron_activity_record_form_submit($form, &$form_state) {
     $date = strtotime(date("Y-m-d", $i));
     $tid = 47;
      play_library_program_create_activity_entry($activity_id , $user_uid, $i, $tid);
+     drupal_set_message('You have entered the read on a day activity.');
   }
 }
