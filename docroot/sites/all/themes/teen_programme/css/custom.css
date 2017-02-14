@@ -125,7 +125,7 @@ a:hover {
  * contexts in Firefox 4+, Safari 5, and Chrome.
  */
 /* line 122, ../scss/_normalize.scss */
-h1, .other-programme.view .view-header * {
+h1, .other-programme.view .view-header *, h2.reviews-title, .view-booklist-slideshow .view-header h1 {
   font-size: 2em;
   margin: 0.67em 0;
 }
@@ -2018,10 +2018,14 @@ ol,
 li,
 h1,
 .other-programme.view .view-header *,
+h2.reviews-title,
+.view-booklist-slideshow .view-header h1,
 h2,
 h3,
 h4,
+.booklist-wrapp .book-body-wrapp div,
 h5,
+.booklist-wrapp .book-user-likes > div,
 h6,
 pre,
 form,
@@ -2069,7 +2073,7 @@ p aside {
 
 /* Default header styles */
 /* line 182, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_type.scss */
-h1, .other-programme.view .view-header *, h2, h3, h4, h5, h6 {
+h1, .other-programme.view .view-header *, h2.reviews-title, .view-booklist-slideshow .view-header h1, h2, h3, h4, .booklist-wrapp .book-body-wrapp div, h5, .booklist-wrapp .book-user-likes > div, h6 {
   font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
   font-weight: bold;
   font-style: normal;
@@ -2080,14 +2084,14 @@ h1, .other-programme.view .view-header *, h2, h3, h4, h5, h6 {
   line-height: 1.2125em;
 }
 /* line 192, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_type.scss */
-h1 small, .other-programme.view .view-header * small, h2 small, h3 small, h4 small, h5 small, h6 small {
+h1 small, .other-programme.view .view-header * small, h2.reviews-title small, .view-booklist-slideshow .view-header h1 small, h2 small, h3 small, h4 small, .booklist-wrapp .book-body-wrapp div small, h5 small, .booklist-wrapp .book-user-likes > div small, h6 small {
   font-size: 60%;
   color: #6f6f6f;
   line-height: 0;
 }
 
 /* line 199, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_type.scss */
-h1, .other-programme.view .view-header * {
+h1, .other-programme.view .view-header *, h2.reviews-title, .view-booklist-slideshow .view-header h1 {
   font-size: 2.125em;
 }
 
@@ -2102,12 +2106,12 @@ h3 {
 }
 
 /* line 202, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_type.scss */
-h4 {
+h4, .booklist-wrapp .book-body-wrapp div {
   font-size: 1.125em;
 }
 
 /* line 203, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_type.scss */
-h5 {
+h5, .booklist-wrapp .book-user-likes > div {
   font-size: 1.125em;
 }
 
@@ -2303,12 +2307,12 @@ blockquote p {
 
 @media only screen and (min-width: 768px) {
   /* line 368, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_type.scss */
-  h1, .other-programme.view .view-header *, h2, h3, h4, h5, h6 {
+  h1, .other-programme.view .view-header *, h2.reviews-title, .view-booklist-slideshow .view-header h1, h2, h3, h4, .booklist-wrapp .book-body-wrapp div, h5, .booklist-wrapp .book-user-likes > div, h6 {
     line-height: 1.4;
   }
 
   /* line 369, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_type.scss */
-  h1, .other-programme.view .view-header * {
+  h1, .other-programme.view .view-header *, h2.reviews-title, .view-booklist-slideshow .view-header h1 {
     font-size: 2.75em;
   }
 
@@ -2323,7 +2327,7 @@ blockquote p {
   }
 
   /* line 372, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_type.scss */
-  h4 {
+  h4, .booklist-wrapp .book-body-wrapp div {
     font-size: 1.4375em;
   }
 }
@@ -4662,13 +4666,13 @@ label.error {
   font-size: 16px;
 }
 /* line 140, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_top-bar.scss */
-.top-bar .name h1, .top-bar .name .other-programme.view .view-header *, .other-programme.view .view-header .top-bar .name * {
+.top-bar .name h1, .top-bar .name .other-programme.view .view-header *, .other-programme.view .view-header .top-bar .name *, .top-bar .name h2.reviews-title {
   line-height: 45px;
   font-size: 1.0625em;
   margin: 0;
 }
 /* line 144, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_top-bar.scss */
-.top-bar .name h1 a, .top-bar .name .other-programme.view .view-header * a, .other-programme.view .view-header .top-bar .name * a {
+.top-bar .name h1 a, .top-bar .name .other-programme.view .view-header * a, .other-programme.view .view-header .top-bar .name * a, .top-bar .name h2.reviews-title a {
   font-weight: bold;
   color: #fff;
   width: 50%;
@@ -4875,11 +4879,11 @@ label.error {
   font-weight: bold;
 }
 /* line 359, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_top-bar.scss */
-.top-bar-section .dropdown li.title h5 {
+.top-bar-section .dropdown li.title h5, .top-bar-section .dropdown li.title .booklist-wrapp .book-user-likes > div, .booklist-wrapp .top-bar-section .dropdown li.title .book-user-likes > div {
   margin-bottom: 0;
 }
 /* line 360, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_top-bar.scss */
-.top-bar-section .dropdown li.title h5 a {
+.top-bar-section .dropdown li.title h5 a, .top-bar-section .dropdown li.title .booklist-wrapp .book-user-likes > div a, .booklist-wrapp .top-bar-section .dropdown li.title .book-user-likes > div a {
   color: #fff;
   line-height: 22.5px;
   display: block;
@@ -4930,7 +4934,7 @@ label.error {
     float: left;
   }
   /* line 397, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_top-bar.scss */
-  .top-bar .name h1 a, .top-bar .name .other-programme.view .view-header * a, .other-programme.view .view-header .top-bar .name * a {
+  .top-bar .name h1 a, .top-bar .name .other-programme.view .view-header * a, .other-programme.view .view-header .top-bar .name * a, .top-bar .name h2.reviews-title a {
     width: auto;
   }
   /* line 399, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_top-bar.scss */
@@ -5586,11 +5590,15 @@ label.error {
 
 /* Typography */
 /* line 104, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_joyride.scss */
-.joyride-tip-guide h1, .joyride-tip-guide .other-programme.view .view-header *, .other-programme.view .view-header .joyride-tip-guide *,
+.joyride-tip-guide h1, .joyride-tip-guide .other-programme.view .view-header *, .other-programme.view .view-header .joyride-tip-guide *, .joyride-tip-guide h2.reviews-title, .joyride-tip-guide .view-booklist-slideshow .view-header h1, .view-booklist-slideshow .view-header .joyride-tip-guide h1,
 .joyride-tip-guide h2,
 .joyride-tip-guide h3,
 .joyride-tip-guide h4,
+.joyride-tip-guide .booklist-wrapp .book-body-wrapp div,
+.booklist-wrapp .book-body-wrapp .joyride-tip-guide div,
 .joyride-tip-guide h5,
+.joyride-tip-guide .booklist-wrapp .book-user-likes > div,
+.booklist-wrapp .joyride-tip-guide .book-user-likes > div,
 .joyride-tip-guide h6 {
   line-height: 1.25;
   margin: 0;
@@ -6496,16 +6504,16 @@ ul.pagination li {
   margin-bottom: 0;
 }
 /* line 50, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_panels.scss */
-.panel h1, .panel .other-programme.view .view-header *, .other-programme.view .view-header .panel *, .panel h2, .panel h3, .panel h4, .panel h5, .panel h6, .panel p {
+.panel h1, .panel .other-programme.view .view-header *, .other-programme.view .view-header .panel *, .panel h2.reviews-title, .panel .view-booklist-slideshow .view-header h1, .view-booklist-slideshow .view-header .panel h1, .panel h2, .panel h3, .panel h4, .panel .booklist-wrapp .book-body-wrapp div, .booklist-wrapp .book-body-wrapp .panel div, .panel h5, .panel .booklist-wrapp .book-user-likes > div, .booklist-wrapp .panel .book-user-likes > div, .panel h6, .panel p {
   color: #333;
 }
 /* line 54, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_panels.scss */
-.panel h1, .panel .other-programme.view .view-header *, .other-programme.view .view-header .panel *, .panel h2, .panel h3, .panel h4, .panel h5, .panel h6 {
+.panel h1, .panel .other-programme.view .view-header *, .other-programme.view .view-header .panel *, .panel h2.reviews-title, .panel .view-booklist-slideshow .view-header h1, .view-booklist-slideshow .view-header .panel h1, .panel h2, .panel h3, .panel h4, .panel .booklist-wrapp .book-body-wrapp div, .booklist-wrapp .book-body-wrapp .panel div, .panel h5, .panel .booklist-wrapp .book-user-likes > div, .booklist-wrapp .panel .book-user-likes > div, .panel h6 {
   line-height: 1;
   margin-bottom: 0.625em;
 }
 /* line 56, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_panels.scss */
-.panel h1.subheader, .panel .other-programme.view .view-header .subheader, .other-programme.view .view-header .panel .subheader, .panel h2.subheader, .panel h3.subheader, .panel h4.subheader, .panel h5.subheader, .panel h6.subheader {
+.panel h1.subheader, .panel .other-programme.view .view-header .subheader, .other-programme.view .view-header .panel .subheader, .panel h2.subheader.reviews-title, .panel h2.subheader, .panel h3.subheader, .panel h4.subheader, .panel .booklist-wrapp .book-body-wrapp div.subheader, .booklist-wrapp .book-body-wrapp .panel div.subheader, .panel h5.subheader, .panel .booklist-wrapp .book-user-likes > div.subheader, .booklist-wrapp .panel .book-user-likes > div.subheader, .panel h6.subheader {
   line-height: 1.4;
 }
 /* line 68, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_panels.scss */
@@ -6528,16 +6536,16 @@ ul.pagination li {
   margin-bottom: 0;
 }
 /* line 51, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_panels.scss */
-.panel.callout h1, .panel.callout .other-programme.view .view-header *, .other-programme.view .view-header .panel.callout *, .panel.callout h2, .panel.callout h3, .panel.callout h4, .panel.callout h5, .panel.callout h6, .panel.callout p {
+.panel.callout h1, .panel.callout .other-programme.view .view-header *, .other-programme.view .view-header .panel.callout *, .panel.callout h2.reviews-title, .panel.callout h2, .panel.callout h3, .panel.callout h4, .panel.callout .booklist-wrapp .book-body-wrapp div, .booklist-wrapp .book-body-wrapp .panel.callout div, .panel.callout h5, .panel.callout .booklist-wrapp .book-user-likes > div, .booklist-wrapp .panel.callout .book-user-likes > div, .panel.callout h6, .panel.callout p {
   color: #fff;
 }
 /* line 54, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_panels.scss */
-.panel.callout h1, .panel.callout .other-programme.view .view-header *, .other-programme.view .view-header .panel.callout *, .panel.callout h2, .panel.callout h3, .panel.callout h4, .panel.callout h5, .panel.callout h6 {
+.panel.callout h1, .panel.callout .other-programme.view .view-header *, .other-programme.view .view-header .panel.callout *, .panel.callout h2.reviews-title, .panel.callout h2, .panel.callout h3, .panel.callout h4, .panel.callout .booklist-wrapp .book-body-wrapp div, .booklist-wrapp .book-body-wrapp .panel.callout div, .panel.callout h5, .panel.callout .booklist-wrapp .book-user-likes > div, .booklist-wrapp .panel.callout .book-user-likes > div, .panel.callout h6 {
   line-height: 1;
   margin-bottom: 0.625em;
 }
 /* line 56, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_panels.scss */
-.panel.callout h1.subheader, .panel.callout .other-programme.view .view-header .subheader, .other-programme.view .view-header .panel.callout .subheader, .panel.callout h2.subheader, .panel.callout h3.subheader, .panel.callout h4.subheader, .panel.callout h5.subheader, .panel.callout h6.subheader {
+.panel.callout h1.subheader, .panel.callout .other-programme.view .view-header .subheader, .other-programme.view .view-header .panel.callout .subheader, .panel.callout h2.subheader.reviews-title, .panel.callout h2.subheader, .panel.callout h3.subheader, .panel.callout h4.subheader, .panel.callout .booklist-wrapp .book-body-wrapp div.subheader, .booklist-wrapp .book-body-wrapp .panel.callout div.subheader, .panel.callout h5.subheader, .panel.callout .booklist-wrapp .book-user-likes > div.subheader, .booklist-wrapp .panel.callout .book-user-likes > div.subheader, .panel.callout h6.subheader {
   line-height: 1.4;
 }
 /* line 71, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_panels.scss */
@@ -7297,12 +7305,12 @@ a.th {
 
 /* Each individual part that can be added in */
 /* line 9, ../scss/base/_common.scss */
-.elegant-btn-hover, .cs-elegant .main-button:hover, .cs-elegant .button:hover, .cs-elegant .other-programme.view .other-programme .programme-content .sign-up a:hover, .other-programme.view .other-programme .programme-content .sign-up .cs-elegant a:hover, .cs-elegant button:hover, .cs-elegant .main-button:focus, .cs-elegant .button:focus, .cs-elegant .other-programme.view .other-programme .programme-content .sign-up a:focus, .other-programme.view .other-programme .programme-content .sign-up .cs-elegant a:focus, .cs-elegant button:focus, .page-messages.cs-elegant .message-button:hover, .page-messages.cs-elegant #page-title.title + .primary-tabs + ul.action-links li a:hover, #page-title.title + .primary-tabs + ul.action-links li .page-messages.cs-elegant a:hover, .page-messages.cs-elegant form fieldset legend a:hover, .page-messages.cs-elegant .chosen-container a:hover, .page-messages.cs-elegant #edit-cancel:hover, .page-messages.cs-elegant .privatemsg-message-actions a:hover, .page-messages.cs-elegant .chosen-container-single .chosen-single:hover, .page-messages.cs-elegant .message-button:focus, .page-messages.cs-elegant #page-title.title + .primary-tabs + ul.action-links li a:focus, #page-title.title + .primary-tabs + ul.action-links li .page-messages.cs-elegant a:focus, .page-messages.cs-elegant form fieldset legend a:focus, .page-messages.cs-elegant .chosen-container a:focus, .page-messages.cs-elegant #edit-cancel:focus, .page-messages.cs-elegant .privatemsg-message-actions a:focus, .page-messages.cs-elegant .chosen-container-single .chosen-single:focus {
+.elegant-btn-hover, .cs-elegant .main-button:hover, .cs-elegant .button:hover, .cs-elegant .other-programme.view .other-programme .programme-content .sign-up a:hover, .other-programme.view .other-programme .programme-content .sign-up .cs-elegant a:hover, .cs-elegant button:hover, .cs-elegant .view-booklist-page-view .form-submit:hover, .view-booklist-page-view .cs-elegant .form-submit:hover, .cs-elegant .book-reviews-page .form-submit:hover, .book-reviews-page .cs-elegant .form-submit:hover, .cs-elegant .view-movie-review .form-submit:hover, .view-movie-review .cs-elegant .form-submit:hover, .cs-elegant .view-music-review-listing .form-submit:hover, .view-music-review-listing .cs-elegant .form-submit:hover, .cs-elegant .view--video-game-review .form-submit:hover, .view--video-game-review .cs-elegant .form-submit:hover, .cs-elegant .view-booklist-page-view .chosen-container a:hover, .view-booklist-page-view .chosen-container .cs-elegant a:hover, .cs-elegant .book-reviews-page .chosen-container a:hover, .book-reviews-page .chosen-container .cs-elegant a:hover, .cs-elegant .view-movie-review .chosen-container a:hover, .view-movie-review .chosen-container .cs-elegant a:hover, .cs-elegant .view-music-review-listing .chosen-container a:hover, .view-music-review-listing .chosen-container .cs-elegant a:hover, .cs-elegant .view--video-game-review .chosen-container a:hover, .view--video-game-review .chosen-container .cs-elegant a:hover, .cs-elegant .main-button:focus, .cs-elegant .button:focus, .cs-elegant .other-programme.view .other-programme .programme-content .sign-up a:focus, .other-programme.view .other-programme .programme-content .sign-up .cs-elegant a:focus, .cs-elegant button:focus, .cs-elegant .view-booklist-page-view .form-submit:focus, .view-booklist-page-view .cs-elegant .form-submit:focus, .cs-elegant .book-reviews-page .form-submit:focus, .book-reviews-page .cs-elegant .form-submit:focus, .cs-elegant .view-movie-review .form-submit:focus, .view-movie-review .cs-elegant .form-submit:focus, .cs-elegant .view-music-review-listing .form-submit:focus, .view-music-review-listing .cs-elegant .form-submit:focus, .cs-elegant .view--video-game-review .form-submit:focus, .view--video-game-review .cs-elegant .form-submit:focus, .cs-elegant .view-booklist-page-view .chosen-container a:focus, .view-booklist-page-view .chosen-container .cs-elegant a:focus, .cs-elegant .book-reviews-page .chosen-container a:focus, .book-reviews-page .chosen-container .cs-elegant a:focus, .cs-elegant .view-movie-review .chosen-container a:focus, .view-movie-review .chosen-container .cs-elegant a:focus, .cs-elegant .view-music-review-listing .chosen-container a:focus, .view-music-review-listing .chosen-container .cs-elegant a:focus, .cs-elegant .view--video-game-review .chosen-container a:focus, .view--video-game-review .chosen-container .cs-elegant a:focus, .page-messages.cs-elegant .message-button:hover, .page-messages.cs-elegant #page-title.title + .primary-tabs + ul.action-links li a:hover, #page-title.title + .primary-tabs + ul.action-links li .page-messages.cs-elegant a:hover, .page-messages.cs-elegant form fieldset legend a:hover, .page-messages.cs-elegant .chosen-container a:hover, .page-messages.cs-elegant #edit-cancel:hover, .page-messages.cs-elegant .privatemsg-message-actions a:hover, .page-messages.cs-elegant .chosen-container-single .chosen-single:hover, .page-messages.cs-elegant .message-button:focus, .page-messages.cs-elegant #page-title.title + .primary-tabs + ul.action-links li a:focus, #page-title.title + .primary-tabs + ul.action-links li .page-messages.cs-elegant a:focus, .page-messages.cs-elegant form fieldset legend a:focus, .page-messages.cs-elegant .chosen-container a:focus, .page-messages.cs-elegant #edit-cancel:focus, .page-messages.cs-elegant .privatemsg-message-actions a:focus, .page-messages.cs-elegant .chosen-container-single .chosen-single:focus {
   background: #fae714;
 }
 
 /* line 13, ../scss/base/_common.scss */
-.classic-btn-hover, .cs-classic .main-button:hover, .cs-classic .button:hover, .cs-classic .other-programme.view .other-programme .programme-content .sign-up a:hover, .other-programme.view .other-programme .programme-content .sign-up .cs-classic a:hover, .cs-classic button:hover, .cs-classic .main-button:focus, .cs-classic .button:focus, .cs-classic .other-programme.view .other-programme .programme-content .sign-up a:focus, .other-programme.view .other-programme .programme-content .sign-up .cs-classic a:focus, .cs-classic button:focus, .page-messages.cs-classic .message-button:hover, .page-messages.cs-classic #page-title.title + .primary-tabs + ul.action-links li a:hover, #page-title.title + .primary-tabs + ul.action-links li .page-messages.cs-classic a:hover, .page-messages.cs-classic form fieldset legend a:hover, .page-messages.cs-classic .chosen-container a:hover, .page-messages.cs-classic #edit-cancel:hover, .page-messages.cs-classic .privatemsg-message-actions a:hover, .page-messages.cs-classic .chosen-container-single .chosen-single:hover, .page-messages.cs-classic .message-button:focus, .page-messages.cs-classic #page-title.title + .primary-tabs + ul.action-links li a:focus, #page-title.title + .primary-tabs + ul.action-links li .page-messages.cs-classic a:focus, .page-messages.cs-classic form fieldset legend a:focus, .page-messages.cs-classic .chosen-container a:focus, .page-messages.cs-classic #edit-cancel:focus, .page-messages.cs-classic .privatemsg-message-actions a:focus, .page-messages.cs-classic .chosen-container-single .chosen-single:focus {
+.classic-btn-hover, .cs-classic .main-button:hover, .cs-classic .button:hover, .cs-classic .other-programme.view .other-programme .programme-content .sign-up a:hover, .other-programme.view .other-programme .programme-content .sign-up .cs-classic a:hover, .cs-classic button:hover, .cs-classic .view-booklist-page-view .form-submit:hover, .view-booklist-page-view .cs-classic .form-submit:hover, .cs-classic .book-reviews-page .form-submit:hover, .book-reviews-page .cs-classic .form-submit:hover, .cs-classic .view-movie-review .form-submit:hover, .view-movie-review .cs-classic .form-submit:hover, .cs-classic .view-music-review-listing .form-submit:hover, .view-music-review-listing .cs-classic .form-submit:hover, .cs-classic .view--video-game-review .form-submit:hover, .view--video-game-review .cs-classic .form-submit:hover, .cs-classic .view-booklist-page-view .chosen-container a:hover, .view-booklist-page-view .chosen-container .cs-classic a:hover, .cs-classic .book-reviews-page .chosen-container a:hover, .book-reviews-page .chosen-container .cs-classic a:hover, .cs-classic .view-movie-review .chosen-container a:hover, .view-movie-review .chosen-container .cs-classic a:hover, .cs-classic .view-music-review-listing .chosen-container a:hover, .view-music-review-listing .chosen-container .cs-classic a:hover, .cs-classic .view--video-game-review .chosen-container a:hover, .view--video-game-review .chosen-container .cs-classic a:hover, .cs-classic .main-button:focus, .cs-classic .button:focus, .cs-classic .other-programme.view .other-programme .programme-content .sign-up a:focus, .other-programme.view .other-programme .programme-content .sign-up .cs-classic a:focus, .cs-classic button:focus, .cs-classic .view-booklist-page-view .form-submit:focus, .view-booklist-page-view .cs-classic .form-submit:focus, .cs-classic .book-reviews-page .form-submit:focus, .book-reviews-page .cs-classic .form-submit:focus, .cs-classic .view-movie-review .form-submit:focus, .view-movie-review .cs-classic .form-submit:focus, .cs-classic .view-music-review-listing .form-submit:focus, .view-music-review-listing .cs-classic .form-submit:focus, .cs-classic .view--video-game-review .form-submit:focus, .view--video-game-review .cs-classic .form-submit:focus, .cs-classic .view-booklist-page-view .chosen-container a:focus, .view-booklist-page-view .chosen-container .cs-classic a:focus, .cs-classic .book-reviews-page .chosen-container a:focus, .book-reviews-page .chosen-container .cs-classic a:focus, .cs-classic .view-movie-review .chosen-container a:focus, .view-movie-review .chosen-container .cs-classic a:focus, .cs-classic .view-music-review-listing .chosen-container a:focus, .view-music-review-listing .chosen-container .cs-classic a:focus, .cs-classic .view--video-game-review .chosen-container a:focus, .view--video-game-review .chosen-container .cs-classic a:focus, .page-messages.cs-classic .message-button:hover, .page-messages.cs-classic #page-title.title + .primary-tabs + ul.action-links li a:hover, #page-title.title + .primary-tabs + ul.action-links li .page-messages.cs-classic a:hover, .page-messages.cs-classic form fieldset legend a:hover, .page-messages.cs-classic .chosen-container a:hover, .page-messages.cs-classic #edit-cancel:hover, .page-messages.cs-classic .privatemsg-message-actions a:hover, .page-messages.cs-classic .chosen-container-single .chosen-single:hover, .page-messages.cs-classic .message-button:focus, .page-messages.cs-classic #page-title.title + .primary-tabs + ul.action-links li a:focus, #page-title.title + .primary-tabs + ul.action-links li .page-messages.cs-classic a:focus, .page-messages.cs-classic form fieldset legend a:focus, .page-messages.cs-classic .chosen-container a:focus, .page-messages.cs-classic #edit-cancel:focus, .page-messages.cs-classic .privatemsg-message-actions a:focus, .page-messages.cs-classic .chosen-container-single .chosen-single:focus {
   background: #9ffafe;
 }
 
@@ -7312,7 +7320,7 @@ a.th {
 }
 
 /* line 21, ../scss/base/_common.scss */
-.white-text, .stroke-main, .homepage-vedio-block .view-header p, .flicker-block .view-header, .stroke-sidebar, .homepage-reward-block .view-header p, .block-user-login .block-title, .primary-background, .sidebar2 > .first, .homepage-reward-block, .homepage-vedio-block, .homepage-booklist-slider .slide, .block-user-login, .flicker-block, .yellow-commonblock, .l-header .pre-header .top-menu a.username, .l-header .pre-header .top-menu .top-header-menu, .l-header .pre-header .mobile-top-header, .l-header .header-middle .logo-block .site-info .site-name, .l-header .header-middle .logo-block .site-slogan, .cs-default .l-footer .footer .block-play-library-custom-program-footer-content .u-footer-content, .cs-default .l-footer .footer .block-play-library-custom-program-footer-content .lower-footer-content, .cs-default .l-footer .footer .block-play-library-custom-program-footer-content .copy-right, .cs-default .msg-button.new, .cs-default .l-header .pre-header .top-menu a.new.btn.btn-large.msg, .l-header .pre-header .top-menu .cs-default a.new.btn.btn-large.msg, .cs-classic .msg-button.new, .cs-default .msg-button.new:hover, .cs-default .msg-button.new:focus, .cs-classic .msg-button.new:hover, .cs-classic .msg-button.new:focus, .cs-classic .msg-button, .cs-elegant .msg-button, .cs-classic .top-menu-button, .cs-classic .l-header .pre-header .top-menu a.btn.btn-large, .l-header .pre-header .top-menu .cs-classic a.btn.btn-large, .cs-classic .block-menu-menu-anonymous-header-links ul.menu li a, .block-menu-menu-anonymous-header-links ul.menu li .cs-classic a, .cs-elegant .top-menu-button, .cs-elegant .l-header .pre-header .top-menu a.btn.btn-large, .l-header .pre-header .top-menu .cs-elegant a.btn.btn-large, .cs-elegant .block-menu-menu-anonymous-header-links ul.menu li a, .block-menu-menu-anonymous-header-links ul.menu li .cs-elegant a, .mobile-menu ul.mobile-top-menu li a, .cs-classic .mobile-menu ul.mobile-top-menu li a, .cs-elegant .mobile-menu ul.mobile-top-menu li a, .cs-default .mobile-menu ul.mobile-top-menu li a.msg.new, .cs-classic .mobile-menu ul.mobile-top-menu li a.msg.new, .cs-default .mobile-menu ul.mobile-top-menu li a.msg.new:hover, .cs-default .mobile-menu ul.mobile-top-menu li a.msg.new:focus, .cs-classic .mobile-menu ul.mobile-top-menu li a.msg.new:hover, .cs-classic .mobile-menu ul.mobile-top-menu li a.msg.new:focus, .cs-classic .mobile-menu ul.mobile-top-menu li a.msg, .cs-elegant .mobile-menu ul.mobile-top-menu li a.msg, .page-messages #page-title.title {
+.white-text, .stroke-main, .homepage-vedio-block .view-header p, .flicker-block .view-header, .stroke-sidebar, .homepage-reward-block .view-header p, .block-user-login .block-title, .primary-background, .sidebar2 > .first, .homepage-reward-block, .homepage-vedio-block, .homepage-booklist-slider .slide, .block-user-login, .flicker-block, .view-booklist-page-view .view-filters, .book-reviews-page .view-filters, .view-movie-review .view-filters, .view-music-review-listing .view-filters, .view--video-game-review .view-filters, .yellow-commonblock, .l-header .pre-header .top-menu a.username, .l-header .pre-header .top-menu .top-header-menu, .l-header .pre-header .mobile-top-header, .l-header .header-middle .logo-block .site-info .site-name, .l-header .header-middle .logo-block .site-slogan, .cs-default .l-footer .footer .block-play-library-custom-program-footer-content .u-footer-content, .cs-default .l-footer .footer .block-play-library-custom-program-footer-content .lower-footer-content, .cs-default .l-footer .footer .block-play-library-custom-program-footer-content .copy-right, .cs-default .msg-button.new, .cs-default .l-header .pre-header .top-menu a.new.btn.btn-large.msg, .l-header .pre-header .top-menu .cs-default a.new.btn.btn-large.msg, .cs-classic .msg-button.new, .cs-default .msg-button.new:hover, .cs-default .msg-button.new:focus, .cs-classic .msg-button.new:hover, .cs-classic .msg-button.new:focus, .cs-classic .msg-button, .cs-elegant .msg-button, .cs-classic .top-menu-button, .cs-classic .l-header .pre-header .top-menu a.btn.btn-large, .l-header .pre-header .top-menu .cs-classic a.btn.btn-large, .cs-classic .block-menu-menu-anonymous-header-links ul.menu li a, .block-menu-menu-anonymous-header-links ul.menu li .cs-classic a, .cs-elegant .top-menu-button, .cs-elegant .l-header .pre-header .top-menu a.btn.btn-large, .l-header .pre-header .top-menu .cs-elegant a.btn.btn-large, .cs-elegant .block-menu-menu-anonymous-header-links ul.menu li a, .block-menu-menu-anonymous-header-links ul.menu li .cs-elegant a, .mobile-menu ul.mobile-top-menu li a, .cs-classic .mobile-menu ul.mobile-top-menu li a, .cs-elegant .mobile-menu ul.mobile-top-menu li a, .cs-default .mobile-menu ul.mobile-top-menu li a.msg.new, .cs-classic .mobile-menu ul.mobile-top-menu li a.msg.new, .cs-default .mobile-menu ul.mobile-top-menu li a.msg.new:hover, .cs-default .mobile-menu ul.mobile-top-menu li a.msg.new:focus, .cs-classic .mobile-menu ul.mobile-top-menu li a.msg.new:hover, .cs-classic .mobile-menu ul.mobile-top-menu li a.msg.new:focus, .cs-classic .mobile-menu ul.mobile-top-menu li a.msg, .cs-elegant .mobile-menu ul.mobile-top-menu li a.msg, .page-messages #page-title.title {
   color: #fff;
 }
 
@@ -7332,12 +7340,12 @@ a.th {
 }
 
 /* line 37, ../scss/base/_common.scss */
-.orange, .cs-elegant .l-header .header-middle, .cs-elegant .msg-button.new, .cs-elegant .l-header .pre-header .top-menu a.new.btn.btn-large.msg, .l-header .pre-header .top-menu .cs-elegant a.new.btn.btn-large.msg, .cs-elegant .mobile-menu ul.mobile-top-menu li a.msg.new, .cs-elegant .mobile-menu + ul li a, .cs-elegant .pagination.pager li a:hover, .cs-elegant .pagination.pager li a:focus, .cs-elegant .pagination.pager li a, .cs-elegant .current-program.primary-background, .cs-elegant .sidebar2 > .current-program.first, .cs-elegant .current-program.homepage-reward-block, .cs-elegant .current-program.homepage-vedio-block, .cs-elegant .homepage-booklist-slider .current-program.slide, .homepage-booklist-slider .cs-elegant .current-program.slide, .cs-elegant .current-program.block-user-login, .cs-elegant .current-program.flicker-block {
+.orange, .cs-elegant .l-header .header-middle, .cs-elegant .msg-button.new, .cs-elegant .l-header .pre-header .top-menu a.new.btn.btn-large.msg, .l-header .pre-header .top-menu .cs-elegant a.new.btn.btn-large.msg, .cs-elegant .mobile-menu ul.mobile-top-menu li a.msg.new, .cs-elegant .mobile-menu + ul li a, .cs-elegant .pagination.pager li a:hover, .cs-elegant .pagination.pager li a:focus, .cs-elegant .pagination.pager li a, .cs-elegant .current-program.primary-background, .cs-elegant .sidebar2 > .current-program.first, .cs-elegant .current-program.homepage-reward-block, .cs-elegant .current-program.homepage-vedio-block, .cs-elegant .homepage-booklist-slider .current-program.slide, .homepage-booklist-slider .cs-elegant .current-program.slide, .cs-elegant .current-program.block-user-login, .cs-elegant .current-program.flicker-block, .cs-elegant .view-booklist-page-view .current-program.view-filters, .view-booklist-page-view .cs-elegant .current-program.view-filters, .cs-elegant .book-reviews-page .current-program.view-filters, .book-reviews-page .cs-elegant .current-program.view-filters, .cs-elegant .view-movie-review .current-program.view-filters, .view-movie-review .cs-elegant .current-program.view-filters, .cs-elegant .view-music-review-listing .current-program.view-filters, .view-music-review-listing .cs-elegant .current-program.view-filters, .cs-elegant .view--video-game-review .current-program.view-filters, .view--video-game-review .cs-elegant .current-program.view-filters {
   background: #ff5714;
 }
 
 /* line 41, ../scss/base/_common.scss */
-.green, .cs-elegant .primary-background, .cs-elegant .sidebar2 > .first, .cs-elegant .homepage-reward-block, .cs-elegant .homepage-vedio-block, .cs-elegant .homepage-booklist-slider .slide, .homepage-booklist-slider .cs-elegant .slide, .cs-elegant .block-user-login, .cs-elegant .flicker-block, .page-messages.cs-elegant .main, .page-messages.cs-elegant table.sticky-header thead, .page-messages.cs-elegant .privatemsg-list thead {
+.green, .cs-elegant .primary-background, .cs-elegant .sidebar2 > .first, .cs-elegant .homepage-reward-block, .cs-elegant .homepage-vedio-block, .cs-elegant .homepage-booklist-slider .slide, .homepage-booklist-slider .cs-elegant .slide, .cs-elegant .block-user-login, .cs-elegant .flicker-block, .cs-elegant .view-booklist-page-view .view-filters, .view-booklist-page-view .cs-elegant .view-filters, .cs-elegant .book-reviews-page .view-filters, .book-reviews-page .cs-elegant .view-filters, .cs-elegant .view-movie-review .view-filters, .view-movie-review .cs-elegant .view-filters, .cs-elegant .view-music-review-listing .view-filters, .view-music-review-listing .cs-elegant .view-filters, .cs-elegant .view--video-game-review .view-filters, .view--video-game-review .cs-elegant .view-filters, .page-messages.cs-elegant .main, .page-messages.cs-elegant table.sticky-header thead, .page-messages.cs-elegant .privatemsg-list thead {
   background: #6eeb83;
 }
 
@@ -7355,7 +7363,7 @@ a.th {
 }
 
 /* line 56, ../scss/base/_common.scss */
-.purple, .cs-default .primary-background, .cs-default .sidebar2 > .first, .cs-default .homepage-reward-block, .cs-default .homepage-vedio-block, .cs-default .homepage-booklist-slider .slide, .homepage-booklist-slider .cs-default .slide, .cs-default .block-user-login, .cs-default .flicker-block, .cs-default .l-header .pre-header, .page-messages.cs-default .main, .page-messages.cs-default table.sticky-header thead, .page-messages.cs-default .privatemsg-list thead {
+.purple, .cs-default .primary-background, .cs-default .sidebar2 > .first, .cs-default .homepage-reward-block, .cs-default .homepage-vedio-block, .cs-default .homepage-booklist-slider .slide, .homepage-booklist-slider .cs-default .slide, .cs-default .block-user-login, .cs-default .flicker-block, .cs-default .view-booklist-page-view .view-filters, .view-booklist-page-view .cs-default .view-filters, .cs-default .book-reviews-page .view-filters, .book-reviews-page .cs-default .view-filters, .cs-default .view-movie-review .view-filters, .view-movie-review .cs-default .view-filters, .cs-default .view-music-review-listing .view-filters, .view-music-review-listing .cs-default .view-filters, .cs-default .view--video-game-review .view-filters, .view--video-game-review .cs-default .view-filters, .cs-default .l-header .pre-header, .page-messages.cs-default .main, .page-messages.cs-default table.sticky-header thead, .page-messages.cs-default .privatemsg-list thead {
   background: #32024e;
 }
 
@@ -7370,12 +7378,12 @@ a.th {
 }
 
 /* line 68, ../scss/base/_common.scss */
-.light-blue, .cs-classic .l-header .header-middle, .cs-classic .post-footer.contain-to-grid, .cs-classic .l-footer, .cs-classic .main-button, .cs-classic .button, .cs-classic .other-programme.view .other-programme .programme-content .sign-up a, .other-programme.view .other-programme .programme-content .sign-up .cs-classic a, .cs-classic button, .cs-classic .mobile-menu + ul li a, .cs-classic .pagination.pager li a:hover, .cs-classic .pagination.pager li a:focus, .cs-classic .pagination.pager li a, .page-messages.cs-classic .message-button, .page-messages.cs-classic #page-title.title + .primary-tabs + ul.action-links li a, #page-title.title + .primary-tabs + ul.action-links li .page-messages.cs-classic a, .page-messages.cs-classic form fieldset legend a, .page-messages.cs-classic .chosen-container a, .page-messages.cs-classic #edit-cancel, .page-messages.cs-classic .privatemsg-message-actions a, .page-messages.cs-classic .chosen-container-single .chosen-single {
+.light-blue, .cs-classic .l-header .header-middle, .cs-classic .post-footer.contain-to-grid, .cs-classic .l-footer, .cs-classic .main-button, .cs-classic .button, .cs-classic .other-programme.view .other-programme .programme-content .sign-up a, .other-programme.view .other-programme .programme-content .sign-up .cs-classic a, .cs-classic button, .cs-classic .view-booklist-page-view .form-submit, .view-booklist-page-view .cs-classic .form-submit, .cs-classic .book-reviews-page .form-submit, .book-reviews-page .cs-classic .form-submit, .cs-classic .view-movie-review .form-submit, .view-movie-review .cs-classic .form-submit, .cs-classic .view-music-review-listing .form-submit, .view-music-review-listing .cs-classic .form-submit, .cs-classic .view--video-game-review .form-submit, .view--video-game-review .cs-classic .form-submit, .cs-classic .view-booklist-page-view .chosen-container a, .view-booklist-page-view .chosen-container .cs-classic a, .cs-classic .book-reviews-page .chosen-container a, .book-reviews-page .chosen-container .cs-classic a, .cs-classic .view-movie-review .chosen-container a, .view-movie-review .chosen-container .cs-classic a, .cs-classic .view-music-review-listing .chosen-container a, .view-music-review-listing .chosen-container .cs-classic a, .cs-classic .view--video-game-review .chosen-container a, .view--video-game-review .chosen-container .cs-classic a, .cs-classic .mobile-menu + ul li a, .cs-classic .pagination.pager li a:hover, .cs-classic .pagination.pager li a:focus, .cs-classic .pagination.pager li a, .page-messages.cs-classic .message-button, .page-messages.cs-classic #page-title.title + .primary-tabs + ul.action-links li a, #page-title.title + .primary-tabs + ul.action-links li .page-messages.cs-classic a, .page-messages.cs-classic form fieldset legend a, .page-messages.cs-classic .chosen-container a, .page-messages.cs-classic #edit-cancel, .page-messages.cs-classic .privatemsg-message-actions a, .page-messages.cs-classic .chosen-container-single .chosen-single {
   background: #a8dadc;
 }
 
 /* line 72, ../scss/base/_common.scss */
-.medium-blue, .cs-classic .primary-background, .cs-classic .sidebar2 > .first, .cs-classic .homepage-reward-block, .cs-classic .homepage-vedio-block, .cs-classic .homepage-booklist-slider .slide, .homepage-booklist-slider .cs-classic .slide, .cs-classic .block-user-login, .cs-classic .flicker-block, .page-messages.cs-classic .main, .page-messages.cs-classic table.sticky-header thead, .page-messages.cs-classic .privatemsg-list thead, .cs-classic .current-program.primary-background, .cs-classic .current-program.homepage-reward-block, .cs-classic .current-program.homepage-vedio-block, .cs-classic .current-program.block-user-login, .cs-classic .current-program.flicker-block {
+.medium-blue, .cs-classic .primary-background, .cs-classic .sidebar2 > .first, .cs-classic .homepage-reward-block, .cs-classic .homepage-vedio-block, .cs-classic .homepage-booklist-slider .slide, .homepage-booklist-slider .cs-classic .slide, .cs-classic .block-user-login, .cs-classic .flicker-block, .cs-classic .view-booklist-page-view .view-filters, .view-booklist-page-view .cs-classic .view-filters, .cs-classic .book-reviews-page .view-filters, .book-reviews-page .cs-classic .view-filters, .cs-classic .view-movie-review .view-filters, .view-movie-review .cs-classic .view-filters, .cs-classic .view-music-review-listing .view-filters, .view-music-review-listing .cs-classic .view-filters, .cs-classic .view--video-game-review .view-filters, .view--video-game-review .cs-classic .view-filters, .page-messages.cs-classic .main, .page-messages.cs-classic table.sticky-header thead, .page-messages.cs-classic .privatemsg-list thead, .cs-classic .current-program.primary-background, .cs-classic .current-program.homepage-reward-block, .cs-classic .current-program.homepage-vedio-block, .cs-classic .current-program.block-user-login, .cs-classic .current-program.flicker-block {
   background: #457b9d;
 }
 
@@ -7385,12 +7393,12 @@ a.th {
 }
 
 /* line 80, ../scss/base/_common.scss */
-.yellow-btn-hover-default, .cs-default .main-button:hover, .cs-default .button:hover, .cs-default .other-programme.view .other-programme .programme-content .sign-up a:hover, .other-programme.view .other-programme .programme-content .sign-up .cs-default a:hover, .cs-default button:hover, .cs-default .main-button:focus, .cs-default .button:focus, .cs-default .other-programme.view .other-programme .programme-content .sign-up a:focus, .other-programme.view .other-programme .programme-content .sign-up .cs-default a:focus, .cs-default button:focus, .cs-default .msg-button:hover, .cs-default .msg-button:focus, .cs-default .top-menu-button:hover, .cs-default .l-header .pre-header .top-menu a.btn.btn-large:hover, .l-header .pre-header .top-menu .cs-default a.btn.btn-large:hover, .cs-default .block-menu-menu-anonymous-header-links ul.menu li a:hover, .block-menu-menu-anonymous-header-links ul.menu li .cs-default a:hover, .cs-default .top-menu-button:focus, .cs-default .l-header .pre-header .top-menu a.btn.btn-large:focus, .l-header .pre-header .top-menu .cs-default a.btn.btn-large:focus, .cs-default .block-menu-menu-anonymous-header-links ul.menu li a:focus, .block-menu-menu-anonymous-header-links ul.menu li .cs-default a:focus, .cs-default .mobile-menu ul.mobile-top-menu li a.active, .cs-default .mobile-menu ul.mobile-top-menu li a:focus, .cs-default .mobile-menu ul.mobile-top-menu li a.msg:hover, .cs-default .mobile-menu ul.mobile-top-menu li a.msg:focus, .page-messages.cs-default .message-button:hover, .page-messages.cs-default #page-title.title + .primary-tabs + ul.action-links li a:hover, #page-title.title + .primary-tabs + ul.action-links li .page-messages.cs-default a:hover, .page-messages.cs-default form fieldset legend a:hover, .page-messages.cs-default .chosen-container a:hover, .page-messages.cs-default #edit-cancel:hover, .page-messages.cs-default .privatemsg-message-actions a:hover, .page-messages.cs-default .chosen-container-single .chosen-single:hover, .page-messages.cs-default .message-button:focus, .page-messages.cs-default #page-title.title + .primary-tabs + ul.action-links li a:focus, #page-title.title + .primary-tabs + ul.action-links li .page-messages.cs-default a:focus, .page-messages.cs-default form fieldset legend a:focus, .page-messages.cs-default .chosen-container a:focus, .page-messages.cs-default #edit-cancel:focus, .page-messages.cs-default .privatemsg-message-actions a:focus, .page-messages.cs-default .chosen-container-single .chosen-single:focus, .yellow-btn-default {
+.yellow-btn-hover-default, .cs-default .main-button:hover, .cs-default .button:hover, .cs-default .other-programme.view .other-programme .programme-content .sign-up a:hover, .other-programme.view .other-programme .programme-content .sign-up .cs-default a:hover, .cs-default button:hover, .cs-default .view-booklist-page-view .form-submit:hover, .view-booklist-page-view .cs-default .form-submit:hover, .cs-default .book-reviews-page .form-submit:hover, .book-reviews-page .cs-default .form-submit:hover, .cs-default .view-movie-review .form-submit:hover, .view-movie-review .cs-default .form-submit:hover, .cs-default .view-music-review-listing .form-submit:hover, .view-music-review-listing .cs-default .form-submit:hover, .cs-default .view--video-game-review .form-submit:hover, .view--video-game-review .cs-default .form-submit:hover, .cs-default .view-booklist-page-view .chosen-container a:hover, .view-booklist-page-view .chosen-container .cs-default a:hover, .cs-default .book-reviews-page .chosen-container a:hover, .book-reviews-page .chosen-container .cs-default a:hover, .cs-default .view-movie-review .chosen-container a:hover, .view-movie-review .chosen-container .cs-default a:hover, .cs-default .view-music-review-listing .chosen-container a:hover, .view-music-review-listing .chosen-container .cs-default a:hover, .cs-default .view--video-game-review .chosen-container a:hover, .view--video-game-review .chosen-container .cs-default a:hover, .cs-default .main-button:focus, .cs-default .button:focus, .cs-default .other-programme.view .other-programme .programme-content .sign-up a:focus, .other-programme.view .other-programme .programme-content .sign-up .cs-default a:focus, .cs-default button:focus, .cs-default .view-booklist-page-view .form-submit:focus, .view-booklist-page-view .cs-default .form-submit:focus, .cs-default .book-reviews-page .form-submit:focus, .book-reviews-page .cs-default .form-submit:focus, .cs-default .view-movie-review .form-submit:focus, .view-movie-review .cs-default .form-submit:focus, .cs-default .view-music-review-listing .form-submit:focus, .view-music-review-listing .cs-default .form-submit:focus, .cs-default .view--video-game-review .form-submit:focus, .view--video-game-review .cs-default .form-submit:focus, .cs-default .view-booklist-page-view .chosen-container a:focus, .view-booklist-page-view .chosen-container .cs-default a:focus, .cs-default .book-reviews-page .chosen-container a:focus, .book-reviews-page .chosen-container .cs-default a:focus, .cs-default .view-movie-review .chosen-container a:focus, .view-movie-review .chosen-container .cs-default a:focus, .cs-default .view-music-review-listing .chosen-container a:focus, .view-music-review-listing .chosen-container .cs-default a:focus, .cs-default .view--video-game-review .chosen-container a:focus, .view--video-game-review .chosen-container .cs-default a:focus, .cs-default .msg-button:hover, .cs-default .msg-button:focus, .cs-default .top-menu-button:hover, .cs-default .l-header .pre-header .top-menu a.btn.btn-large:hover, .l-header .pre-header .top-menu .cs-default a.btn.btn-large:hover, .cs-default .block-menu-menu-anonymous-header-links ul.menu li a:hover, .block-menu-menu-anonymous-header-links ul.menu li .cs-default a:hover, .cs-default .top-menu-button:focus, .cs-default .l-header .pre-header .top-menu a.btn.btn-large:focus, .l-header .pre-header .top-menu .cs-default a.btn.btn-large:focus, .cs-default .block-menu-menu-anonymous-header-links ul.menu li a:focus, .block-menu-menu-anonymous-header-links ul.menu li .cs-default a:focus, .cs-default .mobile-menu ul.mobile-top-menu li a.active, .cs-default .mobile-menu ul.mobile-top-menu li a:focus, .cs-default .mobile-menu ul.mobile-top-menu li a.msg:hover, .cs-default .mobile-menu ul.mobile-top-menu li a.msg:focus, .page-messages.cs-default .message-button:hover, .page-messages.cs-default #page-title.title + .primary-tabs + ul.action-links li a:hover, #page-title.title + .primary-tabs + ul.action-links li .page-messages.cs-default a:hover, .page-messages.cs-default form fieldset legend a:hover, .page-messages.cs-default .chosen-container a:hover, .page-messages.cs-default #edit-cancel:hover, .page-messages.cs-default .privatemsg-message-actions a:hover, .page-messages.cs-default .chosen-container-single .chosen-single:hover, .page-messages.cs-default .message-button:focus, .page-messages.cs-default #page-title.title + .primary-tabs + ul.action-links li a:focus, #page-title.title + .primary-tabs + ul.action-links li .page-messages.cs-default a:focus, .page-messages.cs-default form fieldset legend a:focus, .page-messages.cs-default .chosen-container a:focus, .page-messages.cs-default #edit-cancel:focus, .page-messages.cs-default .privatemsg-message-actions a:focus, .page-messages.cs-default .chosen-container-single .chosen-single:focus, .yellow-btn-default {
   background: #feed40;
 }
 
 /* line 84, ../scss/base/_common.scss */
-.yellow-btn-elegant, .cs-elegant .main-button, .cs-elegant .button, .cs-elegant .other-programme.view .other-programme .programme-content .sign-up a, .other-programme.view .other-programme .programme-content .sign-up .cs-elegant a, .cs-elegant button, .page-messages.cs-elegant .message-button, .page-messages.cs-elegant #page-title.title + .primary-tabs + ul.action-links li a, #page-title.title + .primary-tabs + ul.action-links li .page-messages.cs-elegant a, .page-messages.cs-elegant form fieldset legend a, .page-messages.cs-elegant .chosen-container a, .page-messages.cs-elegant #edit-cancel, .page-messages.cs-elegant .privatemsg-message-actions a, .page-messages.cs-elegant .chosen-container-single .chosen-single {
+.yellow-btn-elegant, .cs-elegant .main-button, .cs-elegant .button, .cs-elegant .other-programme.view .other-programme .programme-content .sign-up a, .other-programme.view .other-programme .programme-content .sign-up .cs-elegant a, .cs-elegant button, .cs-elegant .view-booklist-page-view .form-submit, .view-booklist-page-view .cs-elegant .form-submit, .cs-elegant .book-reviews-page .form-submit, .book-reviews-page .cs-elegant .form-submit, .cs-elegant .view-movie-review .form-submit, .view-movie-review .cs-elegant .form-submit, .cs-elegant .view-music-review-listing .form-submit, .view-music-review-listing .cs-elegant .form-submit, .cs-elegant .view--video-game-review .form-submit, .view--video-game-review .cs-elegant .form-submit, .cs-elegant .view-booklist-page-view .chosen-container a, .view-booklist-page-view .chosen-container .cs-elegant a, .cs-elegant .book-reviews-page .chosen-container a, .book-reviews-page .chosen-container .cs-elegant a, .cs-elegant .view-movie-review .chosen-container a, .view-movie-review .chosen-container .cs-elegant a, .cs-elegant .view-music-review-listing .chosen-container a, .view-music-review-listing .chosen-container .cs-elegant a, .cs-elegant .view--video-game-review .chosen-container a, .view--video-game-review .chosen-container .cs-elegant a, .page-messages.cs-elegant .message-button, .page-messages.cs-elegant #page-title.title + .primary-tabs + ul.action-links li a, #page-title.title + .primary-tabs + ul.action-links li .page-messages.cs-elegant a, .page-messages.cs-elegant form fieldset legend a, .page-messages.cs-elegant .chosen-container a, .page-messages.cs-elegant #edit-cancel, .page-messages.cs-elegant .privatemsg-message-actions a, .page-messages.cs-elegant .chosen-container-single .chosen-single {
   background: #e4ff1a;
 }
 
@@ -7410,12 +7418,12 @@ a.th {
 }
 
 /* line 100, ../scss/base/_common.scss */
-.yellow, .cs-default .main-button, .cs-default .button, .cs-default .other-programme.view .other-programme .programme-content .sign-up a, .other-programme.view .other-programme .programme-content .sign-up .cs-default a, .cs-default button, .cs-default .msg-button, .cs-default .top-menu-button, .cs-default .l-header .pre-header .top-menu a.btn.btn-large, .l-header .pre-header .top-menu .cs-default a.btn.btn-large, .cs-default .block-menu-menu-anonymous-header-links ul.menu li a, .block-menu-menu-anonymous-header-links ul.menu li .cs-default a, .cs-default .mobile-menu ul.mobile-top-menu li a, .cs-default .mobile-menu ul.mobile-top-menu li a.msg, .page-messages.cs-default .message-button, .page-messages.cs-default #page-title.title + .primary-tabs + ul.action-links li a, #page-title.title + .primary-tabs + ul.action-links li .page-messages.cs-default a, .page-messages.cs-default form fieldset legend a, .page-messages.cs-default .chosen-container a, .page-messages.cs-default #edit-cancel, .page-messages.cs-default .privatemsg-message-actions a, .page-messages.cs-default .chosen-container-single .chosen-single {
+.yellow, .cs-default .main-button, .cs-default .button, .cs-default .other-programme.view .other-programme .programme-content .sign-up a, .other-programme.view .other-programme .programme-content .sign-up .cs-default a, .cs-default button, .cs-default .view-booklist-page-view .form-submit, .view-booklist-page-view .cs-default .form-submit, .cs-default .book-reviews-page .form-submit, .book-reviews-page .cs-default .form-submit, .cs-default .view-movie-review .form-submit, .view-movie-review .cs-default .form-submit, .cs-default .view-music-review-listing .form-submit, .view-music-review-listing .cs-default .form-submit, .cs-default .view--video-game-review .form-submit, .view--video-game-review .cs-default .form-submit, .cs-default .view-booklist-page-view .chosen-container a, .view-booklist-page-view .chosen-container .cs-default a, .cs-default .book-reviews-page .chosen-container a, .book-reviews-page .chosen-container .cs-default a, .cs-default .view-movie-review .chosen-container a, .view-movie-review .chosen-container .cs-default a, .cs-default .view-music-review-listing .chosen-container a, .view-music-review-listing .chosen-container .cs-default a, .cs-default .view--video-game-review .chosen-container a, .view--video-game-review .chosen-container .cs-default a, .cs-default .msg-button, .cs-default .top-menu-button, .cs-default .l-header .pre-header .top-menu a.btn.btn-large, .l-header .pre-header .top-menu .cs-default a.btn.btn-large, .cs-default .block-menu-menu-anonymous-header-links ul.menu li a, .block-menu-menu-anonymous-header-links ul.menu li .cs-default a, .cs-default .mobile-menu ul.mobile-top-menu li a, .cs-default .mobile-menu ul.mobile-top-menu li a.msg, .page-messages.cs-default .message-button, .page-messages.cs-default #page-title.title + .primary-tabs + ul.action-links li a, #page-title.title + .primary-tabs + ul.action-links li .page-messages.cs-default a, .page-messages.cs-default form fieldset legend a, .page-messages.cs-default .chosen-container a, .page-messages.cs-default #edit-cancel, .page-messages.cs-default .privatemsg-message-actions a, .page-messages.cs-default .chosen-container-single .chosen-single {
   background: #f6f45a;
 }
 
 /* line 105, ../scss/base/_common.scss */
-.border-none, .teen-button, .l-header .pre-header .top-menu a.btn.btn-large, .l-header .pre-header .top-menu a.btn.btn-large.msg, .block-menu-menu-anonymous-header-links ul.menu li a, .button, .other-programme.view .other-programme .programme-content .sign-up a, button, .main-button, .msg-button, .top-menu-button, .menu-wrapper ul li a {
+.border-none, .teen-button, .l-header .pre-header .top-menu a.btn.btn-large, .l-header .pre-header .top-menu a.btn.btn-large.msg, .block-menu-menu-anonymous-header-links ul.menu li a, .button, .other-programme.view .other-programme .programme-content .sign-up a, button, .main-button, .view-booklist-page-view .form-submit, .book-reviews-page .form-submit, .view-movie-review .form-submit, .view-music-review-listing .form-submit, .view--video-game-review .form-submit, .view-booklist-page-view .chosen-container a, .book-reviews-page .chosen-container a, .view-movie-review .chosen-container a, .view-music-review-listing .chosen-container a, .view--video-game-review .chosen-container a, .msg-button, .top-menu-button, .menu-wrapper ul li a {
   border: none;
 }
 
@@ -7518,7 +7526,7 @@ a.th {
 }
 
 /* line 182, ../scss/base/_common.scss */
-.primary-background, .sidebar2 > .first, .homepage-reward-block, .homepage-vedio-block, .homepage-booklist-slider .slide, .block-user-login, .flicker-block {
+.primary-background, .sidebar2 > .first, .homepage-reward-block, .homepage-vedio-block, .homepage-booklist-slider .slide, .block-user-login, .flicker-block, .view-booklist-page-view .view-filters, .book-reviews-page .view-filters, .view-movie-review .view-filters, .view-music-review-listing .view-filters, .view--video-game-review .view-filters {
   overflow: hidden;
   box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
   margin-bottom: 35px;
@@ -7535,36 +7543,36 @@ a.th {
   -moz-font-smoothing: grayscale;
 }
 /* line 191, ../scss/base/_common.scss */
-.cs-elegant .primary-background, .cs-elegant .sidebar2 > .first, .cs-elegant .homepage-reward-block, .cs-elegant .homepage-vedio-block, .cs-elegant .homepage-booklist-slider .slide, .homepage-booklist-slider .cs-elegant .slide, .cs-elegant .block-user-login, .cs-elegant .flicker-block {
+.cs-elegant .primary-background, .cs-elegant .sidebar2 > .first, .cs-elegant .homepage-reward-block, .cs-elegant .homepage-vedio-block, .cs-elegant .homepage-booklist-slider .slide, .homepage-booklist-slider .cs-elegant .slide, .cs-elegant .block-user-login, .cs-elegant .flicker-block, .cs-elegant .view-booklist-page-view .view-filters, .view-booklist-page-view .cs-elegant .view-filters, .cs-elegant .book-reviews-page .view-filters, .book-reviews-page .cs-elegant .view-filters, .cs-elegant .view-movie-review .view-filters, .view-movie-review .cs-elegant .view-filters, .cs-elegant .view-music-review-listing .view-filters, .view-music-review-listing .cs-elegant .view-filters, .cs-elegant .view--video-game-review .view-filters, .view--video-game-review .cs-elegant .view-filters {
   color: #333333;
 }
 /* line 48, ../scss/base/_mixins.scss */
-.cs-default .primary-background, .cs-default .sidebar2 > .first, .cs-default .homepage-reward-block, .cs-default .homepage-vedio-block, .cs-default .homepage-booklist-slider .slide, .homepage-booklist-slider .cs-default .slide, .cs-default .block-user-login, .cs-default .flicker-block {
+.cs-default .primary-background, .cs-default .sidebar2 > .first, .cs-default .homepage-reward-block, .cs-default .homepage-vedio-block, .cs-default .homepage-booklist-slider .slide, .homepage-booklist-slider .cs-default .slide, .cs-default .block-user-login, .cs-default .flicker-block, .cs-default .view-booklist-page-view .view-filters, .view-booklist-page-view .cs-default .view-filters, .cs-default .book-reviews-page .view-filters, .book-reviews-page .cs-default .view-filters, .cs-default .view-movie-review .view-filters, .view-movie-review .cs-default .view-filters, .cs-default .view-music-review-listing .view-filters, .view-music-review-listing .cs-default .view-filters, .cs-default .view--video-game-review .view-filters, .view--video-game-review .cs-default .view-filters {
   font-family: "Raleway", sans-serif;
   font-weight: 400;
 }
 /* line 52, ../scss/base/_mixins.scss */
-.cs-classic .primary-background, .cs-classic .sidebar2 > .first, .cs-classic .homepage-reward-block, .cs-classic .homepage-vedio-block, .cs-classic .homepage-booklist-slider .slide, .homepage-booklist-slider .cs-classic .slide, .cs-classic .block-user-login, .cs-classic .flicker-block {
+.cs-classic .primary-background, .cs-classic .sidebar2 > .first, .cs-classic .homepage-reward-block, .cs-classic .homepage-vedio-block, .cs-classic .homepage-booklist-slider .slide, .homepage-booklist-slider .cs-classic .slide, .cs-classic .block-user-login, .cs-classic .flicker-block, .cs-classic .view-booklist-page-view .view-filters, .view-booklist-page-view .cs-classic .view-filters, .cs-classic .book-reviews-page .view-filters, .book-reviews-page .cs-classic .view-filters, .cs-classic .view-movie-review .view-filters, .view-movie-review .cs-classic .view-filters, .cs-classic .view-music-review-listing .view-filters, .view-music-review-listing .cs-classic .view-filters, .cs-classic .view--video-game-review .view-filters, .view--video-game-review .cs-classic .view-filters {
   font-family: "Exo 2", sans-serif;
   font-weight: 500;
 }
 /* line 56, ../scss/base/_mixins.scss */
-.cs-elegant .primary-background, .cs-elegant .sidebar2 > .first, .cs-elegant .homepage-reward-block, .cs-elegant .homepage-vedio-block, .cs-elegant .homepage-booklist-slider .slide, .homepage-booklist-slider .cs-elegant .slide, .cs-elegant .block-user-login, .cs-elegant .flicker-block {
+.cs-elegant .primary-background, .cs-elegant .sidebar2 > .first, .cs-elegant .homepage-reward-block, .cs-elegant .homepage-vedio-block, .cs-elegant .homepage-booklist-slider .slide, .homepage-booklist-slider .cs-elegant .slide, .cs-elegant .block-user-login, .cs-elegant .flicker-block, .cs-elegant .view-booklist-page-view .view-filters, .view-booklist-page-view .cs-elegant .view-filters, .cs-elegant .book-reviews-page .view-filters, .book-reviews-page .cs-elegant .view-filters, .cs-elegant .view-movie-review .view-filters, .view-movie-review .cs-elegant .view-filters, .cs-elegant .view-music-review-listing .view-filters, .view-music-review-listing .cs-elegant .view-filters, .cs-elegant .view--video-game-review .view-filters, .view--video-game-review .cs-elegant .view-filters {
   font-family: "Roboto", sans-serif;
   font-weight: 400;
 }
 /* line 48, ../scss/base/_mixins.scss */
-.cs-default .primary-background, .cs-default .sidebar2 > .first, .cs-default .homepage-reward-block, .cs-default .homepage-vedio-block, .cs-default .homepage-booklist-slider .slide, .homepage-booklist-slider .cs-default .slide, .cs-default .block-user-login, .cs-default .flicker-block {
+.cs-default .primary-background, .cs-default .sidebar2 > .first, .cs-default .homepage-reward-block, .cs-default .homepage-vedio-block, .cs-default .homepage-booklist-slider .slide, .homepage-booklist-slider .cs-default .slide, .cs-default .block-user-login, .cs-default .flicker-block, .cs-default .view-booklist-page-view .view-filters, .view-booklist-page-view .cs-default .view-filters, .cs-default .book-reviews-page .view-filters, .book-reviews-page .cs-default .view-filters, .cs-default .view-movie-review .view-filters, .view-movie-review .cs-default .view-filters, .cs-default .view-music-review-listing .view-filters, .view-music-review-listing .cs-default .view-filters, .cs-default .view--video-game-review .view-filters, .view--video-game-review .cs-default .view-filters {
   font-family: "Raleway", sans-serif;
   font-weight: 400;
 }
 /* line 52, ../scss/base/_mixins.scss */
-.cs-classic .primary-background, .cs-classic .sidebar2 > .first, .cs-classic .homepage-reward-block, .cs-classic .homepage-vedio-block, .cs-classic .homepage-booklist-slider .slide, .homepage-booklist-slider .cs-classic .slide, .cs-classic .block-user-login, .cs-classic .flicker-block {
+.cs-classic .primary-background, .cs-classic .sidebar2 > .first, .cs-classic .homepage-reward-block, .cs-classic .homepage-vedio-block, .cs-classic .homepage-booklist-slider .slide, .homepage-booklist-slider .cs-classic .slide, .cs-classic .block-user-login, .cs-classic .flicker-block, .cs-classic .view-booklist-page-view .view-filters, .view-booklist-page-view .cs-classic .view-filters, .cs-classic .book-reviews-page .view-filters, .book-reviews-page .cs-classic .view-filters, .cs-classic .view-movie-review .view-filters, .view-movie-review .cs-classic .view-filters, .cs-classic .view-music-review-listing .view-filters, .view-music-review-listing .cs-classic .view-filters, .cs-classic .view--video-game-review .view-filters, .view--video-game-review .cs-classic .view-filters {
   font-family: "Exo 2", sans-serif;
   font-weight: 500;
 }
 /* line 56, ../scss/base/_mixins.scss */
-.cs-elegant .primary-background, .cs-elegant .sidebar2 > .first, .cs-elegant .homepage-reward-block, .cs-elegant .homepage-vedio-block, .cs-elegant .homepage-booklist-slider .slide, .homepage-booklist-slider .cs-elegant .slide, .cs-elegant .block-user-login, .cs-elegant .flicker-block {
+.cs-elegant .primary-background, .cs-elegant .sidebar2 > .first, .cs-elegant .homepage-reward-block, .cs-elegant .homepage-vedio-block, .cs-elegant .homepage-booklist-slider .slide, .homepage-booklist-slider .cs-elegant .slide, .cs-elegant .block-user-login, .cs-elegant .flicker-block, .cs-elegant .view-booklist-page-view .view-filters, .view-booklist-page-view .cs-elegant .view-filters, .cs-elegant .book-reviews-page .view-filters, .book-reviews-page .cs-elegant .view-filters, .cs-elegant .view-movie-review .view-filters, .view-movie-review .cs-elegant .view-filters, .cs-elegant .view-music-review-listing .view-filters, .view-music-review-listing .cs-elegant .view-filters, .cs-elegant .view--video-game-review .view-filters, .view--video-game-review .cs-elegant .view-filters {
   font-family: "Roboto", sans-serif;
   font-weight: 400;
 }
@@ -7685,40 +7693,40 @@ a.th {
 }
 
 /* line 294, ../scss/base/_common.scss */
-.brush-stroke, .annocement h1, .annocement .other-programme.view .view-header *, .other-programme.view .view-header .annocement * {
+.brush-stroke, .annocement h1, .annocement .other-programme.view .view-header *, .other-programme.view .view-header .annocement *, .annocement h2.reviews-title, .annocement .view-booklist-slideshow .view-header h1, .view-booklist-slideshow .view-header .annocement h1 {
   background-size: 100%;
   background-repeat: no-repeat;
   margin-bottom: 10px;
 }
 /* line 299, ../scss/base/_common.scss */
-.cs-default .brush-stroke, .cs-default .annocement h1, .annocement .cs-default h1, .cs-default .annocement .other-programme.view .view-header *, .annocement .other-programme.view .view-header .cs-default *, .cs-default .other-programme.view .view-header .annocement *, .other-programme.view .view-header .annocement .cs-default * {
+.cs-default .brush-stroke, .cs-default .annocement h1, .annocement .cs-default h1, .cs-default .annocement .other-programme.view .view-header *, .annocement .other-programme.view .view-header .cs-default *, .cs-default .other-programme.view .view-header .annocement *, .other-programme.view .view-header .annocement .cs-default *, .cs-default .annocement h2.reviews-title, .annocement .cs-default h2.reviews-title {
   background-image: url("../images/yellowbrushstroke_sm.png");
   padding: 12px 10px 14px 40px;
   color: #32024e;
 }
 /* line 305, ../scss/base/_common.scss */
-.cs-classic .brush-stroke, .cs-classic .annocement h1, .annocement .cs-classic h1, .cs-classic .annocement .other-programme.view .view-header *, .annocement .other-programme.view .view-header .cs-classic *, .cs-classic .other-programme.view .view-header .annocement *, .other-programme.view .view-header .annocement .cs-classic * {
+.cs-classic .brush-stroke, .cs-classic .annocement h1, .annocement .cs-classic h1, .cs-classic .annocement .other-programme.view .view-header *, .annocement .other-programme.view .view-header .cs-classic *, .cs-classic .other-programme.view .view-header .annocement *, .other-programme.view .view-header .annocement .cs-classic *, .cs-classic .annocement h2.reviews-title, .annocement .cs-classic h2.reviews-title {
   background-image: url("../images/redbrushstroke_sm.png");
   color: #fff;
   padding: 7px 10px 14px 40px;
 }
 /* line 311, ../scss/base/_common.scss */
-.cs-elegant .brush-stroke, .cs-elegant .annocement h1, .annocement .cs-elegant h1, .cs-elegant .annocement .other-programme.view .view-header *, .annocement .other-programme.view .view-header .cs-elegant *, .cs-elegant .other-programme.view .view-header .annocement *, .other-programme.view .view-header .annocement .cs-elegant * {
+.cs-elegant .brush-stroke, .cs-elegant .annocement h1, .annocement .cs-elegant h1, .cs-elegant .annocement .other-programme.view .view-header *, .annocement .other-programme.view .view-header .cs-elegant *, .cs-elegant .other-programme.view .view-header .annocement *, .other-programme.view .view-header .annocement .cs-elegant *, .cs-elegant .annocement h2.reviews-title, .annocement .cs-elegant h2.reviews-title {
   background-image: url("../images/bluebrushstroke_sm.png");
   color: #333333;
   padding: 10px 10px 14px 40px;
 }
 
 /* line 322, ../scss/base/_common.scss */
-.cs-default .primary-color, .cs-default h1, .cs-default .other-programme.view .view-header *, .other-programme.view .view-header .cs-default *, .cs-default h2, .cs-default h3, .cs-default h4, .cs-default h5, .cs-default .sidebar2.sidebar-shareit > .first .block-sharethis, .sidebar2.sidebar-shareit > .first .cs-default .block-sharethis, .cs-default .events-page-events .events-wrapper .title a, .events-page-events .events-wrapper .title .cs-default a, .cs-default .events-page-events .events-wrapper .date, .events-page-events .events-wrapper .cs-default .date, .cs-default .events-page-events .events-wrapper .location, .events-page-events .events-wrapper .cs-default .location {
+.cs-default .primary-color, .cs-default h1, .cs-default .other-programme.view .view-header *, .other-programme.view .view-header .cs-default *, .cs-default h2.reviews-title, .cs-default .view-booklist-slideshow .view-header h1, .view-booklist-slideshow .view-header .cs-default h1, .cs-default h2, .cs-default h3, .cs-default h4, .cs-default .booklist-wrapp .book-body-wrapp div, .booklist-wrapp .book-body-wrapp .cs-default div, .cs-default h5, .cs-default .booklist-wrapp .book-user-likes > div, .booklist-wrapp .cs-default .book-user-likes > div, .cs-default .sidebar2.sidebar-shareit > .first .block-sharethis, .sidebar2.sidebar-shareit > .first .cs-default .block-sharethis, .cs-default .view-booklist-page-view .chosen-container .chosen-drop, .view-booklist-page-view .chosen-container .cs-default .chosen-drop, .cs-default .book-reviews-page .chosen-container .chosen-drop, .book-reviews-page .chosen-container .cs-default .chosen-drop, .cs-default .view-movie-review .chosen-container .chosen-drop, .view-movie-review .chosen-container .cs-default .chosen-drop, .cs-default .view-music-review-listing .chosen-container .chosen-drop, .view-music-review-listing .chosen-container .cs-default .chosen-drop, .cs-default .view--video-game-review .chosen-container .chosen-drop, .view--video-game-review .chosen-container .cs-default .chosen-drop, .cs-default .events-page-events .events-wrapper .title a, .events-page-events .events-wrapper .title .cs-default a, .cs-default .events-page-events .events-wrapper .date, .events-page-events .events-wrapper .cs-default .date, .cs-default .events-page-events .events-wrapper .location, .events-page-events .events-wrapper .cs-default .location {
   color: #32024e;
 }
 /* line 326, ../scss/base/_common.scss */
-.cs-classic .primary-color, .cs-classic h1, .cs-classic .other-programme.view .view-header *, .other-programme.view .view-header .cs-classic *, .cs-classic h2, .cs-classic h3, .cs-classic h4, .cs-classic h5, .cs-classic .sidebar2.sidebar-shareit > .first .block-sharethis, .sidebar2.sidebar-shareit > .first .cs-classic .block-sharethis, .cs-classic .events-page-events .events-wrapper .title a, .events-page-events .events-wrapper .title .cs-classic a, .cs-classic .events-page-events .events-wrapper .date, .events-page-events .events-wrapper .cs-classic .date, .cs-classic .events-page-events .events-wrapper .location, .events-page-events .events-wrapper .cs-classic .location {
+.cs-classic .primary-color, .cs-classic h1, .cs-classic .other-programme.view .view-header *, .other-programme.view .view-header .cs-classic *, .cs-classic h2.reviews-title, .cs-classic .view-booklist-slideshow .view-header h1, .view-booklist-slideshow .view-header .cs-classic h1, .cs-classic h2, .cs-classic h3, .cs-classic h4, .cs-classic .booklist-wrapp .book-body-wrapp div, .booklist-wrapp .book-body-wrapp .cs-classic div, .cs-classic h5, .cs-classic .booklist-wrapp .book-user-likes > div, .booklist-wrapp .cs-classic .book-user-likes > div, .cs-classic .sidebar2.sidebar-shareit > .first .block-sharethis, .sidebar2.sidebar-shareit > .first .cs-classic .block-sharethis, .cs-classic .view-booklist-page-view .chosen-container .chosen-drop, .view-booklist-page-view .chosen-container .cs-classic .chosen-drop, .cs-classic .book-reviews-page .chosen-container .chosen-drop, .book-reviews-page .chosen-container .cs-classic .chosen-drop, .cs-classic .view-movie-review .chosen-container .chosen-drop, .view-movie-review .chosen-container .cs-classic .chosen-drop, .cs-classic .view-music-review-listing .chosen-container .chosen-drop, .view-music-review-listing .chosen-container .cs-classic .chosen-drop, .cs-classic .view--video-game-review .chosen-container .chosen-drop, .view--video-game-review .chosen-container .cs-classic .chosen-drop, .cs-classic .events-page-events .events-wrapper .title a, .events-page-events .events-wrapper .title .cs-classic a, .cs-classic .events-page-events .events-wrapper .date, .events-page-events .events-wrapper .cs-classic .date, .cs-classic .events-page-events .events-wrapper .location, .events-page-events .events-wrapper .cs-classic .location {
   color: #1d3557;
 }
 /* line 330, ../scss/base/_common.scss */
-.cs-elegant .primary-color, .cs-elegant h1, .cs-elegant .other-programme.view .view-header *, .other-programme.view .view-header .cs-elegant *, .cs-elegant h2, .cs-elegant h3, .cs-elegant h4, .cs-elegant h5, .cs-elegant .sidebar2.sidebar-shareit > .first .block-sharethis, .sidebar2.sidebar-shareit > .first .cs-elegant .block-sharethis, .cs-elegant .events-page-events .events-wrapper .title a, .events-page-events .events-wrapper .title .cs-elegant a, .cs-elegant .events-page-events .events-wrapper .date, .events-page-events .events-wrapper .cs-elegant .date, .cs-elegant .events-page-events .events-wrapper .location, .events-page-events .events-wrapper .cs-elegant .location {
+.cs-elegant .primary-color, .cs-elegant h1, .cs-elegant .other-programme.view .view-header *, .other-programme.view .view-header .cs-elegant *, .cs-elegant h2.reviews-title, .cs-elegant .view-booklist-slideshow .view-header h1, .view-booklist-slideshow .view-header .cs-elegant h1, .cs-elegant h2, .cs-elegant h3, .cs-elegant h4, .cs-elegant .booklist-wrapp .book-body-wrapp div, .booklist-wrapp .book-body-wrapp .cs-elegant div, .cs-elegant h5, .cs-elegant .booklist-wrapp .book-user-likes > div, .booklist-wrapp .cs-elegant .book-user-likes > div, .cs-elegant .sidebar2.sidebar-shareit > .first .block-sharethis, .sidebar2.sidebar-shareit > .first .cs-elegant .block-sharethis, .cs-elegant .view-booklist-page-view .chosen-container .chosen-drop, .view-booklist-page-view .chosen-container .cs-elegant .chosen-drop, .cs-elegant .book-reviews-page .chosen-container .chosen-drop, .book-reviews-page .chosen-container .cs-elegant .chosen-drop, .cs-elegant .view-movie-review .chosen-container .chosen-drop, .view-movie-review .chosen-container .cs-elegant .chosen-drop, .cs-elegant .view-music-review-listing .chosen-container .chosen-drop, .view-music-review-listing .chosen-container .cs-elegant .chosen-drop, .cs-elegant .view--video-game-review .chosen-container .chosen-drop, .view--video-game-review .chosen-container .cs-elegant .chosen-drop, .cs-elegant .events-page-events .events-wrapper .title a, .events-page-events .events-wrapper .title .cs-elegant a, .cs-elegant .events-page-events .events-wrapper .date, .events-page-events .events-wrapper .cs-elegant .date, .cs-elegant .events-page-events .events-wrapper .location, .events-page-events .events-wrapper .cs-elegant .location {
   color: #333333;
 }
 
@@ -7785,34 +7793,34 @@ body.cs-elegant {
 }
 
 /* line 79, ../scss/base/_elements.scss */
-h1, .other-programme.view .view-header *, h2, h3, h4, h5 {
+h1, .other-programme.view .view-header *, h2.reviews-title, .view-booklist-slideshow .view-header h1, h2, h3, h4, .booklist-wrapp .book-body-wrapp div, h5, .booklist-wrapp .book-user-likes > div {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
   -moz-font-smoothing: grayscale;
 }
 /* line 9, ../scss/base/_mixins.scss */
-.cs-default h1, .cs-default .other-programme.view .view-header *, .other-programme.view .view-header .cs-default *, .cs-default h2, .cs-default h3, .cs-default h4, .cs-default h5 {
+.cs-default h1, .cs-default .other-programme.view .view-header *, .other-programme.view .view-header .cs-default *, .cs-default h2.reviews-title, .cs-default .view-booklist-slideshow .view-header h1, .view-booklist-slideshow .view-header .cs-default h1, .cs-default h2, .cs-default h3, .cs-default h4, .cs-default .booklist-wrapp .book-body-wrapp div, .booklist-wrapp .book-body-wrapp .cs-default div, .cs-default h5, .cs-default .booklist-wrapp .book-user-likes > div, .booklist-wrapp .cs-default .book-user-likes > div {
   font-family: "Special Elite", cursive;
   font-weight: 400;
 }
 /* line 13, ../scss/base/_mixins.scss */
-.cs-classic h1, .cs-classic .other-programme.view .view-header *, .other-programme.view .view-header .cs-classic *, .cs-classic h2, .cs-classic h3, .cs-classic h4, .cs-classic h5 {
+.cs-classic h1, .cs-classic .other-programme.view .view-header *, .other-programme.view .view-header .cs-classic *, .cs-classic h2.reviews-title, .cs-classic .view-booklist-slideshow .view-header h1, .view-booklist-slideshow .view-header .cs-classic h1, .cs-classic h2, .cs-classic h3, .cs-classic h4, .cs-classic .booklist-wrapp .book-body-wrapp div, .booklist-wrapp .book-body-wrapp .cs-classic div, .cs-classic h5, .cs-classic .booklist-wrapp .book-user-likes > div, .booklist-wrapp .cs-classic .book-user-likes > div {
   font-family: "Exo 2", sans-serif;
   font-weight: 600;
 }
 /* line 17, ../scss/base/_mixins.scss */
-.cs-elegant h1, .cs-elegant .other-programme.view .view-header *, .other-programme.view .view-header .cs-elegant *, .cs-elegant h2, .cs-elegant h3, .cs-elegant h4, .cs-elegant h5 {
+.cs-elegant h1, .cs-elegant .other-programme.view .view-header *, .other-programme.view .view-header .cs-elegant *, .cs-elegant h2.reviews-title, .cs-elegant .view-booklist-slideshow .view-header h1, .view-booklist-slideshow .view-header .cs-elegant h1, .cs-elegant h2, .cs-elegant h3, .cs-elegant h4, .cs-elegant .booklist-wrapp .book-body-wrapp div, .booklist-wrapp .book-body-wrapp .cs-elegant div, .cs-elegant h5, .cs-elegant .booklist-wrapp .book-user-likes > div, .booklist-wrapp .cs-elegant .book-user-likes > div {
   font-family: "Sniglet", cursive;
   font-weight: 400;
 }
 
 /* line 83, ../scss/base/_elements.scss */
-h1, .other-programme.view .view-header * {
+h1, .other-programme.view .view-header *, h2.reviews-title, .view-booklist-slideshow .view-header h1 {
   font-size: 28px;
 }
 /* line 84, ../scss/base/_elements.scss */
-.cs-default h1, .cs-default .other-programme.view .view-header *, .other-programme.view .view-header .cs-default * {
+.cs-default h1, .cs-default .other-programme.view .view-header *, .other-programme.view .view-header .cs-default *, .cs-default h2.reviews-title, .cs-default .view-booklist-slideshow .view-header h1, .view-booklist-slideshow .view-header .cs-default h1 {
   font-size: 26px;
 }
 
@@ -7831,12 +7839,12 @@ h3 {
 }
 
 /* line 99, ../scss/base/_elements.scss */
-h4 {
+h4, .booklist-wrapp .book-body-wrapp div {
   font-size: 20px;
 }
 
 /* line 102, ../scss/base/_elements.scss */
-h5 {
+h5, .booklist-wrapp .book-user-likes > div {
   font-size: 17px;
 }
 
@@ -8899,6 +8907,10 @@ body {
   line-height: 26px;
 }
 /* line 4, ../scss/layout/_main.scss */
+body.mceContentBody {
+  height: 100%;
+}
+/* line 7, ../scss/layout/_main.scss */
 body.cs-default, body.cs-classic, body.cs-elegant {
   width: 100%;
   display: block;
@@ -8907,70 +8919,70 @@ body.cs-default, body.cs-classic, body.cs-elegant {
   max-width: 1280px;
   margin: auto;
 }
-/* line 13, ../scss/layout/_main.scss */
+/* line 16, ../scss/layout/_main.scss */
 body.cs-default {
   font-family: "Raleway", sans-serif;
   font-weight: 400;
 }
-/* line 19, ../scss/layout/_main.scss */
+/* line 22, ../scss/layout/_main.scss */
 body.cs-classic {
   font-family: "Exo 2", sans-serif;
   font-weight: 500;
 }
-/* line 22, ../scss/layout/_main.scss */
+/* line 25, ../scss/layout/_main.scss */
 body.cs-classic #admin-menu {
   font-size: 9px;
   font-family: "lucida grande", tahoma, verdana, arial, sans-serif !important;
   line-height: 1;
 }
-/* line 29, ../scss/layout/_main.scss */
+/* line 32, ../scss/layout/_main.scss */
 body.cs-elegant {
   font-family: "Roboto", sans-serif;
   font-weight: 400;
 }
-/* line 32, ../scss/layout/_main.scss */
+/* line 35, ../scss/layout/_main.scss */
 body.cs-elegant #admin-menu {
   font-size: 9px;
   font-family: "lucida grande", tahoma, verdana, arial, sans-serif !important;
   line-height: 1;
 }
 
-/* line 42, ../scss/layout/_main.scss */
+/* line 45, ../scss/layout/_main.scss */
 .l-main {
   width: 100%;
   padding-top: 35px;
   margin: auto;
 }
 
-/* line 48, ../scss/layout/_main.scss */
+/* line 51, ../scss/layout/_main.scss */
 .columns {
   padding-left: 20px !important;
   padding-right: 20px !important;
 }
 
-/* line 52, ../scss/layout/_main.scss */
+/* line 55, ../scss/layout/_main.scss */
 .row {
   max-width: 100% !important;
 }
-/* line 54, ../scss/layout/_main.scss */
+/* line 57, ../scss/layout/_main.scss */
 .row.l-main {
   max-width: 1224px !important;
 }
 
-/* line 63, ../scss/layout/_main.scss */
+/* line 66, ../scss/layout/_main.scss */
 #admin-menu {
   font-size: 9px !important;
   font-family: "lucida grande", tahoma, verdana, arial, sans-serif !important;
   line-height: 1 !important;
 }
-/* line 67, ../scss/layout/_main.scss */
+/* line 70, ../scss/layout/_main.scss */
 #admin-menu * {
   font-size: inherit;
   font-family: inherit;
   line-height: inherit;
 }
 
-/* line 73, ../scss/layout/_main.scss */
+/* line 76, ../scss/layout/_main.scss */
 html {
   width: 100%;
   height: 100%;
@@ -8979,12 +8991,12 @@ html {
   display: block;
 }
 
-/* line 82, ../scss/layout/_main.scss */
+/* line 85, ../scss/layout/_main.scss */
 .front #page-title {
   display: none;
 }
 
-/* line 86, ../scss/layout/_main.scss */
+/* line 89, ../scss/layout/_main.scss */
 #first-time {
   display: none;
 }
@@ -9122,7 +9134,7 @@ html {
   color: inherit;
 }
 /* line 11, ../scss/components/_background-sidebar.scss */
-.sidebar2 > .first *:not(button, h1, h2) {
+.sidebar2 > .first *:not(button, h1, h2.reviews-title, h2) {
   font-family: inherit;
 }
 /* line 17, ../scss/components/_background-sidebar.scss */
@@ -9359,7 +9371,7 @@ html {
   width: 100%;
 }
 /* line 183, ../scss/components/_blocks.scss */
-.annocement h1, .annocement .other-programme.view .view-header *, .other-programme.view .view-header .annocement * {
+.annocement h1, .annocement .other-programme.view .view-header *, .other-programme.view .view-header .annocement *, .annocement h2.reviews-title, .annocement .view-booklist-slideshow .view-header h1, .view-booklist-slideshow .view-header .annocement h1 {
   margin: auto;
 }
 /* line 188, ../scss/components/_blocks.scss */
@@ -9651,7 +9663,7 @@ html {
 }
 
 /* line 18, ../scss/components/_buttons.scss */
-.teen-button, .l-header .pre-header .top-menu a.btn.btn-large, .l-header .pre-header .top-menu a.btn.btn-large.msg, .block-menu-menu-anonymous-header-links ul.menu li a, .button, .other-programme.view .other-programme .programme-content .sign-up a, button, .main-button, .msg-button, .top-menu-button {
+.teen-button, .l-header .pre-header .top-menu a.btn.btn-large, .l-header .pre-header .top-menu a.btn.btn-large.msg, .block-menu-menu-anonymous-header-links ul.menu li a, .button, .other-programme.view .other-programme .programme-content .sign-up a, button, .main-button, .view-booklist-page-view .form-submit, .book-reviews-page .form-submit, .view-movie-review .form-submit, .view-music-review-listing .form-submit, .view--video-game-review .form-submit, .view-booklist-page-view .chosen-container a, .book-reviews-page .chosen-container a, .view-movie-review .chosen-container a, .view-music-review-listing .chosen-container a, .view--video-game-review .chosen-container a, .msg-button, .top-menu-button {
   display: inline-block;
   text-decoration: none;
   -webkit-font-smoothing: antialiased;
@@ -9663,53 +9675,53 @@ html {
   text-transform: capitalize;
 }
 /* line 29, ../scss/base/_mixins.scss */
-.cs-default .teen-button, .cs-default .l-header .pre-header .top-menu a.btn.btn-large, .l-header .pre-header .top-menu .cs-default a.btn.btn-large, .cs-default .block-menu-menu-anonymous-header-links ul.menu li a, .block-menu-menu-anonymous-header-links ul.menu li .cs-default a, .cs-default .button, .cs-default .other-programme.view .other-programme .programme-content .sign-up a, .other-programme.view .other-programme .programme-content .sign-up .cs-default a, .cs-default button, .cs-default .main-button, .cs-default .msg-button, .cs-default .top-menu-button {
+.cs-default .teen-button, .cs-default .l-header .pre-header .top-menu a.btn.btn-large, .l-header .pre-header .top-menu .cs-default a.btn.btn-large, .cs-default .block-menu-menu-anonymous-header-links ul.menu li a, .block-menu-menu-anonymous-header-links ul.menu li .cs-default a, .cs-default .button, .cs-default .other-programme.view .other-programme .programme-content .sign-up a, .other-programme.view .other-programme .programme-content .sign-up .cs-default a, .cs-default button, .cs-default .main-button, .cs-default .view-booklist-page-view .form-submit, .view-booklist-page-view .cs-default .form-submit, .cs-default .book-reviews-page .form-submit, .book-reviews-page .cs-default .form-submit, .cs-default .view-movie-review .form-submit, .view-movie-review .cs-default .form-submit, .cs-default .view-music-review-listing .form-submit, .view-music-review-listing .cs-default .form-submit, .cs-default .view--video-game-review .form-submit, .view--video-game-review .cs-default .form-submit, .cs-default .view-booklist-page-view .chosen-container a, .view-booklist-page-view .chosen-container .cs-default a, .cs-default .book-reviews-page .chosen-container a, .book-reviews-page .chosen-container .cs-default a, .cs-default .view-movie-review .chosen-container a, .view-movie-review .chosen-container .cs-default a, .cs-default .view-music-review-listing .chosen-container a, .view-music-review-listing .chosen-container .cs-default a, .cs-default .view--video-game-review .chosen-container a, .view--video-game-review .chosen-container .cs-default a, .cs-default .msg-button, .cs-default .top-menu-button {
   font-family: "Special Elite", cursive;
   font-weight: 400;
 }
 /* line 33, ../scss/base/_mixins.scss */
-.cs-classic .teen-button, .cs-classic .l-header .pre-header .top-menu a.btn.btn-large, .l-header .pre-header .top-menu .cs-classic a.btn.btn-large, .cs-classic .block-menu-menu-anonymous-header-links ul.menu li a, .block-menu-menu-anonymous-header-links ul.menu li .cs-classic a, .cs-classic .button, .cs-classic .other-programme.view .other-programme .programme-content .sign-up a, .other-programme.view .other-programme .programme-content .sign-up .cs-classic a, .cs-classic button, .cs-classic .main-button, .cs-classic .msg-button, .cs-classic .top-menu-button {
+.cs-classic .teen-button, .cs-classic .l-header .pre-header .top-menu a.btn.btn-large, .l-header .pre-header .top-menu .cs-classic a.btn.btn-large, .cs-classic .block-menu-menu-anonymous-header-links ul.menu li a, .block-menu-menu-anonymous-header-links ul.menu li .cs-classic a, .cs-classic .button, .cs-classic .other-programme.view .other-programme .programme-content .sign-up a, .other-programme.view .other-programme .programme-content .sign-up .cs-classic a, .cs-classic button, .cs-classic .main-button, .cs-classic .view-booklist-page-view .form-submit, .view-booklist-page-view .cs-classic .form-submit, .cs-classic .book-reviews-page .form-submit, .book-reviews-page .cs-classic .form-submit, .cs-classic .view-movie-review .form-submit, .view-movie-review .cs-classic .form-submit, .cs-classic .view-music-review-listing .form-submit, .view-music-review-listing .cs-classic .form-submit, .cs-classic .view--video-game-review .form-submit, .view--video-game-review .cs-classic .form-submit, .cs-classic .view-booklist-page-view .chosen-container a, .view-booklist-page-view .chosen-container .cs-classic a, .cs-classic .book-reviews-page .chosen-container a, .book-reviews-page .chosen-container .cs-classic a, .cs-classic .view-movie-review .chosen-container a, .view-movie-review .chosen-container .cs-classic a, .cs-classic .view-music-review-listing .chosen-container a, .view-music-review-listing .chosen-container .cs-classic a, .cs-classic .view--video-game-review .chosen-container a, .view--video-game-review .chosen-container .cs-classic a, .cs-classic .msg-button, .cs-classic .top-menu-button {
   font-family: "Exo 2", sans-serif;
   font-weight: 400;
 }
 /* line 37, ../scss/base/_mixins.scss */
-.cs-elegant .teen-button, .cs-elegant .l-header .pre-header .top-menu a.btn.btn-large, .l-header .pre-header .top-menu .cs-elegant a.btn.btn-large, .cs-elegant .block-menu-menu-anonymous-header-links ul.menu li a, .block-menu-menu-anonymous-header-links ul.menu li .cs-elegant a, .cs-elegant .button, .cs-elegant .other-programme.view .other-programme .programme-content .sign-up a, .other-programme.view .other-programme .programme-content .sign-up .cs-elegant a, .cs-elegant button, .cs-elegant .main-button, .cs-elegant .msg-button, .cs-elegant .top-menu-button {
+.cs-elegant .teen-button, .cs-elegant .l-header .pre-header .top-menu a.btn.btn-large, .l-header .pre-header .top-menu .cs-elegant a.btn.btn-large, .cs-elegant .block-menu-menu-anonymous-header-links ul.menu li a, .block-menu-menu-anonymous-header-links ul.menu li .cs-elegant a, .cs-elegant .button, .cs-elegant .other-programme.view .other-programme .programme-content .sign-up a, .other-programme.view .other-programme .programme-content .sign-up .cs-elegant a, .cs-elegant button, .cs-elegant .main-button, .cs-elegant .view-booklist-page-view .form-submit, .view-booklist-page-view .cs-elegant .form-submit, .cs-elegant .book-reviews-page .form-submit, .book-reviews-page .cs-elegant .form-submit, .cs-elegant .view-movie-review .form-submit, .view-movie-review .cs-elegant .form-submit, .cs-elegant .view-music-review-listing .form-submit, .view-music-review-listing .cs-elegant .form-submit, .cs-elegant .view--video-game-review .form-submit, .view--video-game-review .cs-elegant .form-submit, .cs-elegant .view-booklist-page-view .chosen-container a, .view-booklist-page-view .chosen-container .cs-elegant a, .cs-elegant .book-reviews-page .chosen-container a, .book-reviews-page .chosen-container .cs-elegant a, .cs-elegant .view-movie-review .chosen-container a, .view-movie-review .chosen-container .cs-elegant a, .cs-elegant .view-music-review-listing .chosen-container a, .view-music-review-listing .chosen-container .cs-elegant a, .cs-elegant .view--video-game-review .chosen-container a, .view--video-game-review .chosen-container .cs-elegant a, .cs-elegant .msg-button, .cs-elegant .top-menu-button {
   font-family: "Sniglet", cursive;
   font-weight: 400;
 }
 /* line 26, ../scss/components/_buttons.scss */
-.cs-default .teen-button, .cs-default .l-header .pre-header .top-menu a.btn.btn-large, .l-header .pre-header .top-menu .cs-default a.btn.btn-large, .cs-default .block-menu-menu-anonymous-header-links ul.menu li a, .block-menu-menu-anonymous-header-links ul.menu li .cs-default a, .cs-default .button, .cs-default .other-programme.view .other-programme .programme-content .sign-up a, .other-programme.view .other-programme .programme-content .sign-up .cs-default a, .cs-default button, .cs-default .main-button, .cs-default .msg-button, .cs-default .top-menu-button {
+.cs-default .teen-button, .cs-default .l-header .pre-header .top-menu a.btn.btn-large, .l-header .pre-header .top-menu .cs-default a.btn.btn-large, .cs-default .block-menu-menu-anonymous-header-links ul.menu li a, .block-menu-menu-anonymous-header-links ul.menu li .cs-default a, .cs-default .button, .cs-default .other-programme.view .other-programme .programme-content .sign-up a, .other-programme.view .other-programme .programme-content .sign-up .cs-default a, .cs-default button, .cs-default .main-button, .cs-default .view-booklist-page-view .form-submit, .view-booklist-page-view .cs-default .form-submit, .cs-default .book-reviews-page .form-submit, .book-reviews-page .cs-default .form-submit, .cs-default .view-movie-review .form-submit, .view-movie-review .cs-default .form-submit, .cs-default .view-music-review-listing .form-submit, .view-music-review-listing .cs-default .form-submit, .cs-default .view--video-game-review .form-submit, .view--video-game-review .cs-default .form-submit, .cs-default .view-booklist-page-view .chosen-container a, .view-booklist-page-view .chosen-container .cs-default a, .cs-default .book-reviews-page .chosen-container a, .book-reviews-page .chosen-container .cs-default a, .cs-default .view-movie-review .chosen-container a, .view-movie-review .chosen-container .cs-default a, .cs-default .view-music-review-listing .chosen-container a, .view-music-review-listing .chosen-container .cs-default a, .cs-default .view--video-game-review .chosen-container a, .view--video-game-review .chosen-container .cs-default a, .cs-default .msg-button, .cs-default .top-menu-button {
   line-height: 1;
 }
 /* line 29, ../scss/components/_buttons.scss */
-.cs-classic .teen-button, .cs-classic .l-header .pre-header .top-menu a.btn.btn-large, .l-header .pre-header .top-menu .cs-classic a.btn.btn-large, .cs-classic .block-menu-menu-anonymous-header-links ul.menu li a, .block-menu-menu-anonymous-header-links ul.menu li .cs-classic a, .cs-classic .button, .cs-classic .other-programme.view .other-programme .programme-content .sign-up a, .other-programme.view .other-programme .programme-content .sign-up .cs-classic a, .cs-classic button, .cs-classic .main-button, .cs-classic .msg-button, .cs-classic .top-menu-button {
+.cs-classic .teen-button, .cs-classic .l-header .pre-header .top-menu a.btn.btn-large, .l-header .pre-header .top-menu .cs-classic a.btn.btn-large, .cs-classic .block-menu-menu-anonymous-header-links ul.menu li a, .block-menu-menu-anonymous-header-links ul.menu li .cs-classic a, .cs-classic .button, .cs-classic .other-programme.view .other-programme .programme-content .sign-up a, .other-programme.view .other-programme .programme-content .sign-up .cs-classic a, .cs-classic button, .cs-classic .main-button, .cs-classic .view-booklist-page-view .form-submit, .view-booklist-page-view .cs-classic .form-submit, .cs-classic .book-reviews-page .form-submit, .book-reviews-page .cs-classic .form-submit, .cs-classic .view-movie-review .form-submit, .view-movie-review .cs-classic .form-submit, .cs-classic .view-music-review-listing .form-submit, .view-music-review-listing .cs-classic .form-submit, .cs-classic .view--video-game-review .form-submit, .view--video-game-review .cs-classic .form-submit, .cs-classic .view-booklist-page-view .chosen-container a, .view-booklist-page-view .chosen-container .cs-classic a, .cs-classic .book-reviews-page .chosen-container a, .book-reviews-page .chosen-container .cs-classic a, .cs-classic .view-movie-review .chosen-container a, .view-movie-review .chosen-container .cs-classic a, .cs-classic .view-music-review-listing .chosen-container a, .view-music-review-listing .chosen-container .cs-classic a, .cs-classic .view--video-game-review .chosen-container a, .view--video-game-review .chosen-container .cs-classic a, .cs-classic .msg-button, .cs-classic .top-menu-button {
   line-height: 22px;
 }
 /* line 32, ../scss/components/_buttons.scss */
-.cs-elegant .teen-button, .cs-elegant .l-header .pre-header .top-menu a.btn.btn-large, .l-header .pre-header .top-menu .cs-elegant a.btn.btn-large, .cs-elegant .block-menu-menu-anonymous-header-links ul.menu li a, .block-menu-menu-anonymous-header-links ul.menu li .cs-elegant a, .cs-elegant .button, .cs-elegant .other-programme.view .other-programme .programme-content .sign-up a, .other-programme.view .other-programme .programme-content .sign-up .cs-elegant a, .cs-elegant button, .cs-elegant .main-button, .cs-elegant .msg-button, .cs-elegant .top-menu-button {
+.cs-elegant .teen-button, .cs-elegant .l-header .pre-header .top-menu a.btn.btn-large, .l-header .pre-header .top-menu .cs-elegant a.btn.btn-large, .cs-elegant .block-menu-menu-anonymous-header-links ul.menu li a, .block-menu-menu-anonymous-header-links ul.menu li .cs-elegant a, .cs-elegant .button, .cs-elegant .other-programme.view .other-programme .programme-content .sign-up a, .other-programme.view .other-programme .programme-content .sign-up .cs-elegant a, .cs-elegant button, .cs-elegant .main-button, .cs-elegant .view-booklist-page-view .form-submit, .view-booklist-page-view .cs-elegant .form-submit, .cs-elegant .book-reviews-page .form-submit, .book-reviews-page .cs-elegant .form-submit, .cs-elegant .view-movie-review .form-submit, .view-movie-review .cs-elegant .form-submit, .cs-elegant .view-music-review-listing .form-submit, .view-music-review-listing .cs-elegant .form-submit, .cs-elegant .view--video-game-review .form-submit, .view--video-game-review .cs-elegant .form-submit, .cs-elegant .view-booklist-page-view .chosen-container a, .view-booklist-page-view .chosen-container .cs-elegant a, .cs-elegant .book-reviews-page .chosen-container a, .book-reviews-page .chosen-container .cs-elegant a, .cs-elegant .view-movie-review .chosen-container a, .view-movie-review .chosen-container .cs-elegant a, .cs-elegant .view-music-review-listing .chosen-container a, .view-music-review-listing .chosen-container .cs-elegant a, .cs-elegant .view--video-game-review .chosen-container a, .view--video-game-review .chosen-container .cs-elegant a, .cs-elegant .msg-button, .cs-elegant .top-menu-button {
   line-height: 23px;
 }
 /* line 35, ../scss/components/_buttons.scss */
-.teen-button:hover, .l-header .pre-header .top-menu a.btn.btn-large:hover, .block-menu-menu-anonymous-header-links ul.menu li a:hover, .button:hover, .other-programme.view .other-programme .programme-content .sign-up a:hover, button:hover, .main-button:hover, .msg-button:hover, .top-menu-button:hover {
+.teen-button:hover, .l-header .pre-header .top-menu a.btn.btn-large:hover, .block-menu-menu-anonymous-header-links ul.menu li a:hover, .button:hover, .other-programme.view .other-programme .programme-content .sign-up a:hover, button:hover, .main-button:hover, .view-booklist-page-view .form-submit:hover, .book-reviews-page .form-submit:hover, .view-movie-review .form-submit:hover, .view-music-review-listing .form-submit:hover, .view--video-game-review .form-submit:hover, .view-booklist-page-view .chosen-container a:hover, .book-reviews-page .chosen-container a:hover, .view-movie-review .chosen-container a:hover, .view-music-review-listing .chosen-container a:hover, .view--video-game-review .chosen-container a:hover, .msg-button:hover, .top-menu-button:hover {
   text-decoration: underline;
 }
 
 /* line 39, ../scss/components/_buttons.scss */
-.main-button, .button, .other-programme.view .other-programme .programme-content .sign-up a, button {
+.main-button, .button, .other-programme.view .other-programme .programme-content .sign-up a, button, .view-booklist-page-view .form-submit, .book-reviews-page .form-submit, .view-movie-review .form-submit, .view-music-review-listing .form-submit, .view--video-game-review .form-submit, .view-booklist-page-view .chosen-container a, .book-reviews-page .chosen-container a, .view-movie-review .chosen-container a, .view-music-review-listing .chosen-container a, .view--video-game-review .chosen-container a {
   transition: all linear 0.5s;
 }
 /* line 42, ../scss/components/_buttons.scss */
-.cs-default .main-button, .cs-default .button, .cs-default .other-programme.view .other-programme .programme-content .sign-up a, .other-programme.view .other-programme .programme-content .sign-up .cs-default a, .cs-default button {
+.cs-default .main-button, .cs-default .button, .cs-default .other-programme.view .other-programme .programme-content .sign-up a, .other-programme.view .other-programme .programme-content .sign-up .cs-default a, .cs-default button, .cs-default .view-booklist-page-view .form-submit, .view-booklist-page-view .cs-default .form-submit, .cs-default .book-reviews-page .form-submit, .book-reviews-page .cs-default .form-submit, .cs-default .view-movie-review .form-submit, .view-movie-review .cs-default .form-submit, .cs-default .view-music-review-listing .form-submit, .view-music-review-listing .cs-default .form-submit, .cs-default .view--video-game-review .form-submit, .view--video-game-review .cs-default .form-submit, .cs-default .view-booklist-page-view .chosen-container a, .view-booklist-page-view .chosen-container .cs-default a, .cs-default .book-reviews-page .chosen-container a, .book-reviews-page .chosen-container .cs-default a, .cs-default .view-movie-review .chosen-container a, .view-movie-review .chosen-container .cs-default a, .cs-default .view-music-review-listing .chosen-container a, .view-music-review-listing .chosen-container .cs-default a, .cs-default .view--video-game-review .chosen-container a, .view--video-game-review .chosen-container .cs-default a {
   color: #32024e;
   padding: 9px 14px 4px;
 }
 /* line 51, ../scss/components/_buttons.scss */
-.cs-classic .main-button, .cs-classic .button, .cs-classic .other-programme.view .other-programme .programme-content .sign-up a, .other-programme.view .other-programme .programme-content .sign-up .cs-classic a, .cs-classic button {
+.cs-classic .main-button, .cs-classic .button, .cs-classic .other-programme.view .other-programme .programme-content .sign-up a, .other-programme.view .other-programme .programme-content .sign-up .cs-classic a, .cs-classic button, .cs-classic .view-booklist-page-view .form-submit, .view-booklist-page-view .cs-classic .form-submit, .cs-classic .book-reviews-page .form-submit, .book-reviews-page .cs-classic .form-submit, .cs-classic .view-movie-review .form-submit, .view-movie-review .cs-classic .form-submit, .cs-classic .view-music-review-listing .form-submit, .view-music-review-listing .cs-classic .form-submit, .cs-classic .view--video-game-review .form-submit, .view--video-game-review .cs-classic .form-submit, .cs-classic .view-booklist-page-view .chosen-container a, .view-booklist-page-view .chosen-container .cs-classic a, .cs-classic .book-reviews-page .chosen-container a, .book-reviews-page .chosen-container .cs-classic a, .cs-classic .view-movie-review .chosen-container a, .view-movie-review .chosen-container .cs-classic a, .cs-classic .view-music-review-listing .chosen-container a, .view-music-review-listing .chosen-container .cs-classic a, .cs-classic .view--video-game-review .chosen-container a, .view--video-game-review .chosen-container .cs-classic a {
   color: #1d3557;
   padding: 4px 14px 5px;
 }
 /* line 59, ../scss/components/_buttons.scss */
-.cs-elegant .main-button, .cs-elegant .button, .cs-elegant .other-programme.view .other-programme .programme-content .sign-up a, .other-programme.view .other-programme .programme-content .sign-up .cs-elegant a, .cs-elegant button {
+.cs-elegant .main-button, .cs-elegant .button, .cs-elegant .other-programme.view .other-programme .programme-content .sign-up a, .other-programme.view .other-programme .programme-content .sign-up .cs-elegant a, .cs-elegant button, .cs-elegant .view-booklist-page-view .form-submit, .view-booklist-page-view .cs-elegant .form-submit, .cs-elegant .book-reviews-page .form-submit, .book-reviews-page .cs-elegant .form-submit, .cs-elegant .view-movie-review .form-submit, .view-movie-review .cs-elegant .form-submit, .cs-elegant .view-music-review-listing .form-submit, .view-music-review-listing .cs-elegant .form-submit, .cs-elegant .view--video-game-review .form-submit, .view--video-game-review .cs-elegant .form-submit, .cs-elegant .view-booklist-page-view .chosen-container a, .view-booklist-page-view .chosen-container .cs-elegant a, .cs-elegant .book-reviews-page .chosen-container a, .book-reviews-page .chosen-container .cs-elegant a, .cs-elegant .view-movie-review .chosen-container a, .view-movie-review .chosen-container .cs-elegant a, .cs-elegant .view-music-review-listing .chosen-container a, .view-music-review-listing .chosen-container .cs-elegant a, .cs-elegant .view--video-game-review .chosen-container a, .view--video-game-review .chosen-container .cs-elegant a {
   padding: 4px 14px;
   color: #000;
 }
@@ -12318,6 +12330,245 @@ html {
   color: #fff;
 }
 
+/* line 5, ../scss/pages/_booklist.scss */
+.page-booklists .view-booklist-slideshow.created-by-user .view-content {
+  padding: 0px 20px 20px;
+  border-bottom: 1px solid #efefef;
+}
+/* line 9, ../scss/pages/_booklist.scss */
+.page-booklists .view-booklist-slideshow.created-by-user .owl-item {
+  width: 100%;
+}
+/* line 15, ../scss/pages/_booklist.scss */
+.page-booklists .view-booklist-slideshow .view-content {
+  padding: 10px 60px 0;
+  border-bottom: none;
+}
+/* line 19, ../scss/pages/_booklist.scss */
+.page-booklists .view-booklist-slideshow .view-content .owl-wrapper-outer {
+  width: calc(100% - 10px);
+}
+/* line 24, ../scss/pages/_booklist.scss */
+.page-booklists .view-booklist-slideshow .view-content .owl-controls .owl-buttons .owl-prev {
+  background-position: -20px -660px;
+  margin-left: -18px;
+}
+/* line 28, ../scss/pages/_booklist.scss */
+.page-booklists .view-booklist-slideshow .view-content .owl-controls .owl-buttons .owl-next {
+  background-position: -20px -1198px;
+  margin-right: -2px;
+}
+/* line 33, ../scss/pages/_booklist.scss */
+.page-booklists .view-booklist-slideshow .view-content .views-field-field-booklist-cover-image {
+  width: calc(100% + 10px);
+  display: flex;
+  display: -webkit-flex;
+  align-items: center;
+  align-content: center;
+  height: 200px;
+}
+/* line 40, ../scss/pages/_booklist.scss */
+.page-booklists .view-booklist-slideshow .view-content .views-field-field-booklist-cover-image .field-content {
+  width: calc(100% - 10px);
+  padding-right: 10px;
+}
+/* line 43, ../scss/pages/_booklist.scss */
+.page-booklists .view-booklist-slideshow .view-content .views-field-field-booklist-cover-image .field-content img {
+  width: 100%;
+}
+
+/* line 54, ../scss/pages/_booklist.scss */
+.view-booklist-page-view ul, .book-reviews-page ul, .view-movie-review ul, .view-music-review-listing ul, .view--video-game-review ul {
+  list-style: none;
+  margin-left: 0;
+}
+/* line 57, ../scss/pages/_booklist.scss */
+.view-booklist-page-view ul li, .book-reviews-page ul li, .view-movie-review ul li, .view-music-review-listing ul li, .view--video-game-review ul li {
+  margin-left: inherit;
+}
+/* line 61, ../scss/pages/_booklist.scss */
+.view-booklist-page-view .view-filters, .book-reviews-page .view-filters, .view-movie-review .view-filters, .view-music-review-listing .view-filters, .view--video-game-review .view-filters {
+  overflow: visible;
+}
+/* line 63, ../scss/pages/_booklist.scss */
+.cs-default .view-booklist-page-view .view-filters, .cs-default .book-reviews-page .view-filters, .cs-default .view-movie-review .view-filters, .cs-default .view-music-review-listing .view-filters, .cs-default .view--video-game-review .view-filters {
+  background: url("../images/background.jpeg");
+  padding: 8px 24px 4px;
+  background-size: cover;
+}
+/* line 68, ../scss/pages/_booklist.scss */
+.cs-classic .view-booklist-page-view .view-filters, .cs-classic .book-reviews-page .view-filters, .cs-classic .view-movie-review .view-filters, .cs-classic .view-music-review-listing .view-filters, .cs-classic .view--video-game-review .view-filters {
+  background: #457b9d;
+  padding: 5px 24px 7px;
+}
+/* line 72, ../scss/pages/_booklist.scss */
+.cs-elegant .view-booklist-page-view .view-filters, .cs-elegant .book-reviews-page .view-filters, .cs-elegant .view-movie-review .view-filters, .cs-elegant .view-music-review-listing .view-filters, .cs-elegant .view--video-game-review .view-filters {
+  background: #ff5714;
+}
+/* line 75, ../scss/pages/_booklist.scss */
+.view-booklist-page-view .view-filters label, .book-reviews-page .view-filters label, .view-movie-review .view-filters label, .view-music-review-listing .view-filters label, .view--video-game-review .view-filters label {
+  color: #fff;
+}
+/* line 81, ../scss/pages/_booklist.scss */
+.view-booklist-page-view .views-exposed-widgets, .book-reviews-page .views-exposed-widgets, .view-movie-review .views-exposed-widgets, .view-music-review-listing .views-exposed-widgets, .view--video-game-review .views-exposed-widgets {
+  width: calc(100% + 10px);
+  -webkit-flex-wrap: wrap;
+  flex-wrap: wrap;
+  display: -webkit-flex;
+  display: flex;
+  align-content: center;
+  align-items: center;
+}
+/* line 91, ../scss/pages/_booklist.scss */
+.view-booklist-page-view .views-exposed-widget, .book-reviews-page .views-exposed-widget, .view-movie-review .views-exposed-widget, .view-music-review-listing .views-exposed-widget, .view--video-game-review .views-exposed-widget {
+  flex: 0 0 calc(25% - 10px);
+  -ms-box-flex: 0 0 24%;
+  -ms-flex: 0 0 24%;
+  -ms-padding-right: 1%;
+  padding: 0;
+  float: none;
+  margin-right: 10px;
+}
+/* line 103, ../scss/pages/_booklist.scss */
+.view-booklist-page-view .chosen-container .chosen-single:hover, .view-booklist-page-view .chosen-container .chosen-single:focus, .book-reviews-page .chosen-container .chosen-single:hover, .book-reviews-page .chosen-container .chosen-single:focus, .view-movie-review .chosen-container .chosen-single:hover, .view-movie-review .chosen-container .chosen-single:focus, .view-music-review-listing .chosen-container .chosen-single:hover, .view-music-review-listing .chosen-container .chosen-single:focus, .view--video-game-review .chosen-container .chosen-single:hover, .view--video-game-review .chosen-container .chosen-single:focus {
+  border-radius: 0;
+}
+/* line 106, ../scss/pages/_booklist.scss */
+.view-booklist-page-view .chosen-container .chosen-single b, .book-reviews-page .chosen-container .chosen-single b, .view-movie-review .chosen-container .chosen-single b, .view-music-review-listing .chosen-container .chosen-single b, .view--video-game-review .chosen-container .chosen-single b {
+  visibility: hidden;
+  position: relative;
+}
+/* line 109, ../scss/pages/_booklist.scss */
+.view-booklist-page-view .chosen-container .chosen-single b:after, .book-reviews-page .chosen-container .chosen-single b:after, .view-movie-review .chosen-container .chosen-single b:after, .view-music-review-listing .chosen-container .chosen-single b:after, .view--video-game-review .chosen-container .chosen-single b:after {
+  content: "";
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  position: absolute;
+  top: 45%;
+  display: block;
+  left: 0;
+  visibility: visible;
+}
+/* line 113, ../scss/pages/_booklist.scss */
+.cs-default .view-booklist-page-view .chosen-container .chosen-single b:after, .cs-default .book-reviews-page .chosen-container .chosen-single b:after, .cs-default .view-movie-review .chosen-container .chosen-single b:after, .cs-default .view-music-review-listing .chosen-container .chosen-single b:after, .cs-default .view--video-game-review .chosen-container .chosen-single b:after {
+  border-top: 5px solid #32024e;
+}
+/* line 116, ../scss/pages/_booklist.scss */
+.cs-classic .view-booklist-page-view .chosen-container .chosen-single b:after, .cs-classic .book-reviews-page .chosen-container .chosen-single b:after, .cs-classic .view-movie-review .chosen-container .chosen-single b:after, .cs-classic .view-music-review-listing .chosen-container .chosen-single b:after, .cs-classic .view--video-game-review .chosen-container .chosen-single b:after {
+  border-top: 5px solid #457b9d;
+}
+/* line 119, ../scss/pages/_booklist.scss */
+.cs-elegant .view-booklist-page-view .chosen-container .chosen-single b:after, .cs-elegant .book-reviews-page .chosen-container .chosen-single b:after, .cs-elegant .view-movie-review .chosen-container .chosen-single b:after, .cs-elegant .view-music-review-listing .chosen-container .chosen-single b:after, .cs-elegant .view--video-game-review .chosen-container .chosen-single b:after {
+  border-top: 5px solid #333333;
+}
+/* line 132, ../scss/pages/_booklist.scss */
+.view-booklist-page-view .views-submit-button button.form-submit, .book-reviews-page .views-submit-button button.form-submit, .view-movie-review .views-submit-button button.form-submit, .view-music-review-listing .views-submit-button button.form-submit, .view--video-game-review .views-submit-button button.form-submit {
+  height: 31px;
+  margin-top: 21px;
+}
+/* line 142, ../scss/pages/_booklist.scss */
+.view-booklist-page-view .chosen-container, .book-reviews-page .chosen-container, .view-movie-review .chosen-container, .view-music-review-listing .chosen-container, .view--video-game-review .chosen-container {
+  width: 100% !important;
+}
+/* line 145, ../scss/pages/_booklist.scss */
+.view-booklist-page-view .chosen-container.chosen-with-drop.chosen-container-active a, .book-reviews-page .chosen-container.chosen-with-drop.chosen-container-active a, .view-movie-review .chosen-container.chosen-with-drop.chosen-container-active a, .view-music-review-listing .chosen-container.chosen-with-drop.chosen-container-active a, .view--video-game-review .chosen-container.chosen-with-drop.chosen-container-active a {
+  box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+  border: none;
+}
+/* line 151, ../scss/pages/_booklist.scss */
+.view-booklist-page-view .chosen-container .chosen-drop, .book-reviews-page .chosen-container .chosen-drop, .view-movie-review .chosen-container .chosen-drop, .view-music-review-listing .chosen-container .chosen-drop, .view--video-game-review .chosen-container .chosen-drop {
+  position: absolute;
+  width: 100%;
+  top: calc(100% - 5px);
+}
+/* line 157, ../scss/pages/_booklist.scss */
+.view-booklist-page-view .chosen-container a, .book-reviews-page .chosen-container a, .view-movie-review .chosen-container a, .view-music-review-listing .chosen-container a, .view--video-game-review .chosen-container a {
+  border-radius: 0;
+  border: none;
+  height: auto;
+  width: 100%;
+  display: inline-block;
+  border: none;
+  position: relative;
+}
+
+/* line 175, ../scss/pages/_booklist.scss */
+.booklist-wrapp .book-body-wrapp div {
+  display: inline-block;
+  margin: 0;
+}
+/* line 177, ../scss/pages/_booklist.scss */
+.booklist-wrapp .book-body-wrapp div.title {
+  width: calc(100% - 125px);
+  display: inline-block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+/* line 186, ../scss/pages/_booklist.scss */
+.booklist-wrapp .book-body-wrapp div * {
+  font-family: inherit;
+  font-size: inherit;
+  margin-bottom: 0;
+}
+/* line 195, ../scss/pages/_booklist.scss */
+.booklist-wrapp .book-user-likes > div {
+  padding-left: 23px;
+  margin: 0;
+  float: left;
+}
+/* line 201, ../scss/pages/_booklist.scss */
+.booklist-wrapp .book-user-likes > div.book-created {
+  width: 70%;
+}
+/* line 204, ../scss/pages/_booklist.scss */
+.booklist-wrapp .book-user-likes > div.book-created * {
+  font-family: inherit;
+  font-size: inherit;
+}
+/* line 209, ../scss/pages/_booklist.scss */
+.booklist-wrapp .book-user-likes > div.book-like {
+  width: 30%;
+  text-align: right;
+}
+/* line 212, ../scss/pages/_booklist.scss */
+.booklist-wrapp .book-user-likes > div.book-like * {
+  font-family: inherit;
+  font-size: inherit;
+}
+/* line 216, ../scss/pages/_booklist.scss */
+.booklist-wrapp .book-user-likes > div.book-like span {
+  padding-right: 32px;
+  position: relative;
+}
+/* line 219, ../scss/pages/_booklist.scss */
+.booklist-wrapp .book-user-likes > div.book-like span:after {
+  content: "";
+  width: 25px;
+  height: 25px;
+  display: inline-block;
+  background: url("../images/smily.png") no-repeat scroll center center;
+  position: absolute;
+  right: 2px;
+  top: -3px;
+}
+
+/* line 235, ../scss/pages/_booklist.scss */
+.page-booklists .viewmenu {
+  margin-bottom: 26px;
+}
+/* line 239, ../scss/pages/_booklist.scss */
+.page-booklists .view-booklist-page-view > .view-header {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+/* line 244, ../scss/pages/_booklist.scss */
+.page-booklists .view-booklist-page-view > .view-content .views-row {
+  margin-bottom: 23px;
+  display: inline-block;
+  width: 100%;
+}
+
 /* line 2, ../scss/pages/_events.scss */
 .events-page-events .view-content {
   margin-bottom: 50px;
@@ -12400,20 +12651,20 @@ html {
 /* line 76, ../scss/pages/_events.scss */
 .page-events.cs-default #page-title {
   background-image: url("../images/yellowbrushstroke_lg.png");
-  padding: 27px 10px 14px 40px;
+  padding: 27px 10px 30px 40px;
   color: #32024e;
 }
 /* line 81, ../scss/pages/_events.scss */
 .page-events.cs-classic #page-title {
   background-image: url("../images/redbrushstroke_lg.png");
   color: #1d3557;
-  padding: 24px 10px 24px 40px;
+  padding: 24px 10px 30px 40px;
 }
 /* line 86, ../scss/pages/_events.scss */
 .page-events.cs-elegant #page-title {
   background-image: url("../images/bluebrushstroke_lg.png");
   color: #333333;
-  padding: 24px 10px 24px 40px;
+  padding: 24px 10px 30px 40px;
 }
 
 /* line 2, ../scss/pages/_messages.scss */
@@ -13035,20 +13286,20 @@ html {
 /* line 94, ../scss/pages/_photo-vedios.scss */
 .section-media.cs-default #page-title {
   background-image: url("../images/yellowbrushstroke_lg.png");
-  padding: 27px 10px 14px 40px;
+  padding: 27px 10px 30px 40px;
   color: #32024e;
 }
 /* line 99, ../scss/pages/_photo-vedios.scss */
 .section-media.cs-classic #page-title {
   background-image: url("../images/redbrushstroke_lg.png");
   color: #1d3557;
-  padding: 24px 10px 24px 40px;
+  padding: 24px 10px 30px 40px;
 }
 /* line 104, ../scss/pages/_photo-vedios.scss */
 .section-media.cs-elegant #page-title {
   background-image: url("../images/bluebrushstroke_lg.png");
   color: #333333;
-  padding: 24px 10px 24px 40px;
+  padding: 24px 10px 30px 40px;
 }
 
 /* line 1, ../scss/pages/_program.scss */
@@ -13057,7 +13308,7 @@ html {
 }
 
 /* line 4, ../scss/pages/_program.scss */
-.current-program.primary-background, .sidebar2 > .current-program.first, .current-program.homepage-reward-block, .current-program.homepage-vedio-block, .homepage-booklist-slider .current-program.slide, .current-program.block-user-login, .current-program.flicker-block {
+.current-program.primary-background, .sidebar2 > .current-program.first, .current-program.homepage-reward-block, .current-program.homepage-vedio-block, .homepage-booklist-slider .current-program.slide, .current-program.block-user-login, .current-program.flicker-block, .view-booklist-page-view .current-program.view-filters, .book-reviews-page .current-program.view-filters, .view-movie-review .current-program.view-filters, .view-music-review-listing .current-program.view-filters, .view--video-game-review .current-program.view-filters {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
@@ -13070,50 +13321,50 @@ html {
   -moz-font-smoothing: grayscale;
 }
 /* line 5, ../scss/pages/_program.scss */
-.current-program.primary-background *, .sidebar2 > .current-program.first *, .current-program.homepage-reward-block *, .current-program.homepage-vedio-block *, .homepage-booklist-slider .current-program.slide *, .current-program.block-user-login *, .current-program.flicker-block * {
+.current-program.primary-background *, .sidebar2 > .current-program.first *, .current-program.homepage-reward-block *, .current-program.homepage-vedio-block *, .homepage-booklist-slider .current-program.slide *, .current-program.block-user-login *, .current-program.flicker-block *, .view-booklist-page-view .current-program.view-filters *, .book-reviews-page .current-program.view-filters *, .view-movie-review .current-program.view-filters *, .view-music-review-listing .current-program.view-filters *, .view--video-game-review .current-program.view-filters * {
   color: #fff;
 }
 /* line 8, ../scss/pages/_program.scss */
-.current-program.primary-background .stroke-main.programme-title, .sidebar2 > .current-program.first .stroke-main.programme-title, .current-program.homepage-reward-block .stroke-main.programme-title, .current-program.homepage-vedio-block .stroke-main.programme-title, .homepage-booklist-slider .current-program.slide .stroke-main.programme-title, .current-program.block-user-login .stroke-main.programme-title, .current-program.flicker-block .stroke-main.programme-title, .current-program.primary-background .homepage-vedio-block .view-header p.programme-title, .homepage-vedio-block .view-header .current-program.primary-background p.programme-title, .sidebar2 > .current-program.first .homepage-vedio-block .view-header p.programme-title, .homepage-vedio-block .view-header .sidebar2 > .current-program.first p.programme-title, .current-program.homepage-reward-block .homepage-vedio-block .view-header p.programme-title, .homepage-vedio-block .view-header .current-program.homepage-reward-block p.programme-title, .current-program.homepage-vedio-block .view-header p.programme-title, .homepage-booklist-slider .current-program.slide .homepage-vedio-block .view-header p.programme-title, .homepage-vedio-block .view-header .homepage-booklist-slider .current-program.slide p.programme-title, .current-program.block-user-login .homepage-vedio-block .view-header p.programme-title, .homepage-vedio-block .view-header .current-program.block-user-login p.programme-title, .current-program.flicker-block .homepage-vedio-block .view-header p.programme-title, .homepage-vedio-block .view-header .current-program.flicker-block p.programme-title, .current-program.primary-background .flicker-block .programme-title.view-header, .flicker-block .current-program.primary-background .programme-title.view-header, .sidebar2 > .current-program.first .flicker-block .programme-title.view-header, .flicker-block .sidebar2 > .current-program.first .programme-title.view-header, .current-program.homepage-reward-block .flicker-block .programme-title.view-header, .flicker-block .current-program.homepage-reward-block .programme-title.view-header, .current-program.homepage-vedio-block .flicker-block .programme-title.view-header, .flicker-block .current-program.homepage-vedio-block .programme-title.view-header, .homepage-booklist-slider .current-program.slide .flicker-block .programme-title.view-header, .flicker-block .homepage-booklist-slider .current-program.slide .programme-title.view-header, .current-program.block-user-login .flicker-block .programme-title.view-header, .flicker-block .current-program.block-user-login .programme-title.view-header, .current-program.flicker-block .programme-title.view-header {
+.current-program.primary-background .stroke-main.programme-title, .sidebar2 > .current-program.first .stroke-main.programme-title, .current-program.homepage-reward-block .stroke-main.programme-title, .current-program.homepage-vedio-block .stroke-main.programme-title, .homepage-booklist-slider .current-program.slide .stroke-main.programme-title, .current-program.block-user-login .stroke-main.programme-title, .current-program.flicker-block .stroke-main.programme-title, .view-booklist-page-view .current-program.view-filters .stroke-main.programme-title, .book-reviews-page .current-program.view-filters .stroke-main.programme-title, .view-movie-review .current-program.view-filters .stroke-main.programme-title, .view-music-review-listing .current-program.view-filters .stroke-main.programme-title, .view--video-game-review .current-program.view-filters .stroke-main.programme-title, .current-program.primary-background .homepage-vedio-block .view-header p.programme-title, .homepage-vedio-block .view-header .current-program.primary-background p.programme-title, .sidebar2 > .current-program.first .homepage-vedio-block .view-header p.programme-title, .homepage-vedio-block .view-header .sidebar2 > .current-program.first p.programme-title, .current-program.homepage-reward-block .homepage-vedio-block .view-header p.programme-title, .homepage-vedio-block .view-header .current-program.homepage-reward-block p.programme-title, .current-program.homepage-vedio-block .view-header p.programme-title, .homepage-booklist-slider .current-program.slide .homepage-vedio-block .view-header p.programme-title, .homepage-vedio-block .view-header .homepage-booklist-slider .current-program.slide p.programme-title, .current-program.block-user-login .homepage-vedio-block .view-header p.programme-title, .homepage-vedio-block .view-header .current-program.block-user-login p.programme-title, .current-program.flicker-block .homepage-vedio-block .view-header p.programme-title, .homepage-vedio-block .view-header .current-program.flicker-block p.programme-title, .view-booklist-page-view .current-program.view-filters .homepage-vedio-block .view-header p.programme-title, .homepage-vedio-block .view-header .view-booklist-page-view .current-program.view-filters p.programme-title, .book-reviews-page .current-program.view-filters .homepage-vedio-block .view-header p.programme-title, .homepage-vedio-block .view-header .book-reviews-page .current-program.view-filters p.programme-title, .view-movie-review .current-program.view-filters .homepage-vedio-block .view-header p.programme-title, .homepage-vedio-block .view-header .view-movie-review .current-program.view-filters p.programme-title, .view-music-review-listing .current-program.view-filters .homepage-vedio-block .view-header p.programme-title, .homepage-vedio-block .view-header .view-music-review-listing .current-program.view-filters p.programme-title, .view--video-game-review .current-program.view-filters .homepage-vedio-block .view-header p.programme-title, .homepage-vedio-block .view-header .view--video-game-review .current-program.view-filters p.programme-title, .current-program.primary-background .flicker-block .programme-title.view-header, .flicker-block .current-program.primary-background .programme-title.view-header, .sidebar2 > .current-program.first .flicker-block .programme-title.view-header, .flicker-block .sidebar2 > .current-program.first .programme-title.view-header, .current-program.homepage-reward-block .flicker-block .programme-title.view-header, .flicker-block .current-program.homepage-reward-block .programme-title.view-header, .current-program.homepage-vedio-block .flicker-block .programme-title.view-header, .flicker-block .current-program.homepage-vedio-block .programme-title.view-header, .homepage-booklist-slider .current-program.slide .flicker-block .programme-title.view-header, .flicker-block .homepage-booklist-slider .current-program.slide .programme-title.view-header, .current-program.block-user-login .flicker-block .programme-title.view-header, .flicker-block .current-program.block-user-login .programme-title.view-header, .current-program.flicker-block .programme-title.view-header, .view-booklist-page-view .current-program.view-filters .flicker-block .programme-title.view-header, .flicker-block .view-booklist-page-view .current-program.view-filters .programme-title.view-header, .book-reviews-page .current-program.view-filters .flicker-block .programme-title.view-header, .flicker-block .book-reviews-page .current-program.view-filters .programme-title.view-header, .view-movie-review .current-program.view-filters .flicker-block .programme-title.view-header, .flicker-block .view-movie-review .current-program.view-filters .programme-title.view-header, .view-music-review-listing .current-program.view-filters .flicker-block .programme-title.view-header, .flicker-block .view-music-review-listing .current-program.view-filters .programme-title.view-header, .view--video-game-review .current-program.view-filters .flicker-block .programme-title.view-header, .flicker-block .view--video-game-review .current-program.view-filters .programme-title.view-header {
   color: #fff;
 }
 /* line 11, ../scss/pages/_program.scss */
-.cs-default .current-program.primary-background, .cs-default .sidebar2 > .current-program.first, .cs-default .current-program.homepage-reward-block, .cs-default .current-program.homepage-vedio-block, .cs-default .homepage-booklist-slider .current-program.slide, .homepage-booklist-slider .cs-default .current-program.slide, .cs-default .current-program.block-user-login, .cs-default .current-program.flicker-block {
+.cs-default .current-program.primary-background, .cs-default .sidebar2 > .current-program.first, .cs-default .current-program.homepage-reward-block, .cs-default .current-program.homepage-vedio-block, .cs-default .homepage-booklist-slider .current-program.slide, .homepage-booklist-slider .cs-default .current-program.slide, .cs-default .current-program.block-user-login, .cs-default .current-program.flicker-block, .cs-default .view-booklist-page-view .current-program.view-filters, .view-booklist-page-view .cs-default .current-program.view-filters, .cs-default .book-reviews-page .current-program.view-filters, .book-reviews-page .cs-default .current-program.view-filters, .cs-default .view-movie-review .current-program.view-filters, .view-movie-review .cs-default .current-program.view-filters, .cs-default .view-music-review-listing .current-program.view-filters, .view-music-review-listing .cs-default .current-program.view-filters, .cs-default .view--video-game-review .current-program.view-filters, .view--video-game-review .cs-default .current-program.view-filters {
   background: url("../images/background.jpeg") scroll repeat;
   background-size: cover;
 }
 /* line 48, ../scss/base/_mixins.scss */
-.cs-default .current-program.primary-background, .cs-default .sidebar2 > .current-program.first, .cs-default .current-program.homepage-reward-block, .cs-default .current-program.homepage-vedio-block, .cs-default .homepage-booklist-slider .current-program.slide, .homepage-booklist-slider .cs-default .current-program.slide, .cs-default .current-program.block-user-login, .cs-default .current-program.flicker-block {
+.cs-default .current-program.primary-background, .cs-default .sidebar2 > .current-program.first, .cs-default .current-program.homepage-reward-block, .cs-default .current-program.homepage-vedio-block, .cs-default .homepage-booklist-slider .current-program.slide, .homepage-booklist-slider .cs-default .current-program.slide, .cs-default .current-program.block-user-login, .cs-default .current-program.flicker-block, .cs-default .view-booklist-page-view .current-program.view-filters, .view-booklist-page-view .cs-default .current-program.view-filters, .cs-default .book-reviews-page .current-program.view-filters, .book-reviews-page .cs-default .current-program.view-filters, .cs-default .view-movie-review .current-program.view-filters, .view-movie-review .cs-default .current-program.view-filters, .cs-default .view-music-review-listing .current-program.view-filters, .view-music-review-listing .cs-default .current-program.view-filters, .cs-default .view--video-game-review .current-program.view-filters, .view--video-game-review .cs-default .current-program.view-filters {
   font-family: "Raleway", sans-serif;
   font-weight: 400;
 }
 /* line 52, ../scss/base/_mixins.scss */
-.cs-classic .current-program.primary-background, .cs-classic .sidebar2 > .current-program.first, .cs-classic .current-program.homepage-reward-block, .cs-classic .current-program.homepage-vedio-block, .cs-classic .homepage-booklist-slider .current-program.slide, .homepage-booklist-slider .cs-classic .current-program.slide, .cs-classic .current-program.block-user-login, .cs-classic .current-program.flicker-block {
+.cs-classic .current-program.primary-background, .cs-classic .sidebar2 > .current-program.first, .cs-classic .current-program.homepage-reward-block, .cs-classic .current-program.homepage-vedio-block, .cs-classic .homepage-booklist-slider .current-program.slide, .homepage-booklist-slider .cs-classic .current-program.slide, .cs-classic .current-program.block-user-login, .cs-classic .current-program.flicker-block, .cs-classic .view-booklist-page-view .current-program.view-filters, .view-booklist-page-view .cs-classic .current-program.view-filters, .cs-classic .book-reviews-page .current-program.view-filters, .book-reviews-page .cs-classic .current-program.view-filters, .cs-classic .view-movie-review .current-program.view-filters, .view-movie-review .cs-classic .current-program.view-filters, .cs-classic .view-music-review-listing .current-program.view-filters, .view-music-review-listing .cs-classic .current-program.view-filters, .cs-classic .view--video-game-review .current-program.view-filters, .view--video-game-review .cs-classic .current-program.view-filters {
   font-family: "Exo 2", sans-serif;
   font-weight: 500;
 }
 /* line 56, ../scss/base/_mixins.scss */
-.cs-elegant .current-program.primary-background, .cs-elegant .sidebar2 > .current-program.first, .cs-elegant .current-program.homepage-reward-block, .cs-elegant .current-program.homepage-vedio-block, .cs-elegant .homepage-booklist-slider .current-program.slide, .homepage-booklist-slider .cs-elegant .current-program.slide, .cs-elegant .current-program.block-user-login, .cs-elegant .current-program.flicker-block {
+.cs-elegant .current-program.primary-background, .cs-elegant .sidebar2 > .current-program.first, .cs-elegant .current-program.homepage-reward-block, .cs-elegant .current-program.homepage-vedio-block, .cs-elegant .homepage-booklist-slider .current-program.slide, .homepage-booklist-slider .cs-elegant .current-program.slide, .cs-elegant .current-program.block-user-login, .cs-elegant .current-program.flicker-block, .cs-elegant .view-booklist-page-view .current-program.view-filters, .view-booklist-page-view .cs-elegant .current-program.view-filters, .cs-elegant .book-reviews-page .current-program.view-filters, .book-reviews-page .cs-elegant .current-program.view-filters, .cs-elegant .view-movie-review .current-program.view-filters, .view-movie-review .cs-elegant .current-program.view-filters, .cs-elegant .view-music-review-listing .current-program.view-filters, .view-music-review-listing .cs-elegant .current-program.view-filters, .cs-elegant .view--video-game-review .current-program.view-filters, .view--video-game-review .cs-elegant .current-program.view-filters {
   font-family: "Roboto", sans-serif;
   font-weight: 400;
 }
 /* line 48, ../scss/base/_mixins.scss */
-.cs-default .current-program.primary-background, .cs-default .sidebar2 > .current-program.first, .cs-default .current-program.homepage-reward-block, .cs-default .current-program.homepage-vedio-block, .cs-default .homepage-booklist-slider .current-program.slide, .homepage-booklist-slider .cs-default .current-program.slide, .cs-default .current-program.block-user-login, .cs-default .current-program.flicker-block {
+.cs-default .current-program.primary-background, .cs-default .sidebar2 > .current-program.first, .cs-default .current-program.homepage-reward-block, .cs-default .current-program.homepage-vedio-block, .cs-default .homepage-booklist-slider .current-program.slide, .homepage-booklist-slider .cs-default .current-program.slide, .cs-default .current-program.block-user-login, .cs-default .current-program.flicker-block, .cs-default .view-booklist-page-view .current-program.view-filters, .view-booklist-page-view .cs-default .current-program.view-filters, .cs-default .book-reviews-page .current-program.view-filters, .book-reviews-page .cs-default .current-program.view-filters, .cs-default .view-movie-review .current-program.view-filters, .view-movie-review .cs-default .current-program.view-filters, .cs-default .view-music-review-listing .current-program.view-filters, .view-music-review-listing .cs-default .current-program.view-filters, .cs-default .view--video-game-review .current-program.view-filters, .view--video-game-review .cs-default .current-program.view-filters {
   font-family: "Raleway", sans-serif;
   font-weight: 400;
 }
 /* line 52, ../scss/base/_mixins.scss */
-.cs-classic .current-program.primary-background, .cs-classic .sidebar2 > .current-program.first, .cs-classic .current-program.homepage-reward-block, .cs-classic .current-program.homepage-vedio-block, .cs-classic .homepage-booklist-slider .current-program.slide, .homepage-booklist-slider .cs-classic .current-program.slide, .cs-classic .current-program.block-user-login, .cs-classic .current-program.flicker-block {
+.cs-classic .current-program.primary-background, .cs-classic .sidebar2 > .current-program.first, .cs-classic .current-program.homepage-reward-block, .cs-classic .current-program.homepage-vedio-block, .cs-classic .homepage-booklist-slider .current-program.slide, .homepage-booklist-slider .cs-classic .current-program.slide, .cs-classic .current-program.block-user-login, .cs-classic .current-program.flicker-block, .cs-classic .view-booklist-page-view .current-program.view-filters, .view-booklist-page-view .cs-classic .current-program.view-filters, .cs-classic .book-reviews-page .current-program.view-filters, .book-reviews-page .cs-classic .current-program.view-filters, .cs-classic .view-movie-review .current-program.view-filters, .view-movie-review .cs-classic .current-program.view-filters, .cs-classic .view-music-review-listing .current-program.view-filters, .view-music-review-listing .cs-classic .current-program.view-filters, .cs-classic .view--video-game-review .current-program.view-filters, .view--video-game-review .cs-classic .current-program.view-filters {
   font-family: "Exo 2", sans-serif;
   font-weight: 500;
 }
 /* line 56, ../scss/base/_mixins.scss */
-.cs-elegant .current-program.primary-background, .cs-elegant .sidebar2 > .current-program.first, .cs-elegant .current-program.homepage-reward-block, .cs-elegant .current-program.homepage-vedio-block, .cs-elegant .homepage-booklist-slider .current-program.slide, .homepage-booklist-slider .cs-elegant .current-program.slide, .cs-elegant .current-program.block-user-login, .cs-elegant .current-program.flicker-block {
+.cs-elegant .current-program.primary-background, .cs-elegant .sidebar2 > .current-program.first, .cs-elegant .current-program.homepage-reward-block, .cs-elegant .current-program.homepage-vedio-block, .cs-elegant .homepage-booklist-slider .current-program.slide, .homepage-booklist-slider .cs-elegant .current-program.slide, .cs-elegant .current-program.block-user-login, .cs-elegant .current-program.flicker-block, .cs-elegant .view-booklist-page-view .current-program.view-filters, .view-booklist-page-view .cs-elegant .current-program.view-filters, .cs-elegant .book-reviews-page .current-program.view-filters, .book-reviews-page .cs-elegant .current-program.view-filters, .cs-elegant .view-movie-review .current-program.view-filters, .view-movie-review .cs-elegant .current-program.view-filters, .cs-elegant .view-music-review-listing .current-program.view-filters, .view-music-review-listing .cs-elegant .current-program.view-filters, .cs-elegant .view--video-game-review .current-program.view-filters, .view--video-game-review .cs-elegant .current-program.view-filters {
   font-family: "Roboto", sans-serif;
   font-weight: 400;
 }
 /* line 29, ../scss/pages/_program.scss */
-.current-program.primary-background .programme-content, .sidebar2 > .current-program.first .programme-content, .current-program.homepage-reward-block .programme-content, .current-program.homepage-vedio-block .programme-content, .homepage-booklist-slider .current-program.slide .programme-content, .current-program.block-user-login .programme-content, .current-program.flicker-block .programme-content {
+.current-program.primary-background .programme-content, .sidebar2 > .current-program.first .programme-content, .current-program.homepage-reward-block .programme-content, .current-program.homepage-vedio-block .programme-content, .homepage-booklist-slider .current-program.slide .programme-content, .current-program.block-user-login .programme-content, .current-program.flicker-block .programme-content, .view-booklist-page-view .current-program.view-filters .programme-content, .book-reviews-page .current-program.view-filters .programme-content, .view-movie-review .current-program.view-filters .programme-content, .view-music-review-listing .current-program.view-filters .programme-content, .view--video-game-review .current-program.view-filters .programme-content {
   -webkit-flex-wrap: wrap;
   flex-wrap: wrap;
   display: -webkit-flex;
@@ -13121,18 +13372,18 @@ html {
   padding: 35px;
 }
 /* line 35, ../scss/pages/_program.scss */
-.current-program.primary-background .programme-content a, .sidebar2 > .current-program.first .programme-content a, .current-program.homepage-reward-block .programme-content a, .current-program.homepage-vedio-block .programme-content a, .homepage-booklist-slider .current-program.slide .programme-content a, .current-program.block-user-login .programme-content a, .current-program.flicker-block .programme-content a {
+.current-program.primary-background .programme-content a, .sidebar2 > .current-program.first .programme-content a, .current-program.homepage-reward-block .programme-content a, .current-program.homepage-vedio-block .programme-content a, .homepage-booklist-slider .current-program.slide .programme-content a, .current-program.block-user-login .programme-content a, .current-program.flicker-block .programme-content a, .view-booklist-page-view .current-program.view-filters .programme-content a, .book-reviews-page .current-program.view-filters .programme-content a, .view-movie-review .current-program.view-filters .programme-content a, .view-music-review-listing .current-program.view-filters .programme-content a, .view--video-game-review .current-program.view-filters .programme-content a {
   font-weight: 700;
   text-decoration: underline;
   color: #fff;
 }
 /* line 40, ../scss/pages/_program.scss */
-.current-program.primary-background .programme-content .image, .sidebar2 > .current-program.first .programme-content .image, .current-program.homepage-reward-block .programme-content .image, .current-program.homepage-vedio-block .programme-content .image, .homepage-booklist-slider .current-program.slide .programme-content .image, .current-program.block-user-login .programme-content .image, .current-program.flicker-block .programme-content .image {
+.current-program.primary-background .programme-content .image, .sidebar2 > .current-program.first .programme-content .image, .current-program.homepage-reward-block .programme-content .image, .current-program.homepage-vedio-block .programme-content .image, .homepage-booklist-slider .current-program.slide .programme-content .image, .current-program.block-user-login .programme-content .image, .current-program.flicker-block .programme-content .image, .view-booklist-page-view .current-program.view-filters .programme-content .image, .book-reviews-page .current-program.view-filters .programme-content .image, .view-movie-review .current-program.view-filters .programme-content .image, .view-music-review-listing .current-program.view-filters .programme-content .image, .view--video-game-review .current-program.view-filters .programme-content .image {
   flex: 0 0 200px;
   padding-top: 8px;
 }
 /* line 44, ../scss/pages/_program.scss */
-.current-program.primary-background .programme-content .body, .sidebar2 > .current-program.first .programme-content .body, .current-program.homepage-reward-block .programme-content .body, .current-program.homepage-vedio-block .programme-content .body, .homepage-booklist-slider .current-program.slide .programme-content .body, .current-program.block-user-login .programme-content .body, .current-program.flicker-block .programme-content .body {
+.current-program.primary-background .programme-content .body, .sidebar2 > .current-program.first .programme-content .body, .current-program.homepage-reward-block .programme-content .body, .current-program.homepage-vedio-block .programme-content .body, .homepage-booklist-slider .current-program.slide .programme-content .body, .current-program.block-user-login .programme-content .body, .current-program.flicker-block .programme-content .body, .view-booklist-page-view .current-program.view-filters .programme-content .body, .book-reviews-page .current-program.view-filters .programme-content .body, .view-movie-review .current-program.view-filters .programme-content .body, .view-music-review-listing .current-program.view-filters .programme-content .body, .view--video-game-review .current-program.view-filters .programme-content .body {
   flex: 0 0 calc(100% - 200px);
   padding-left: 35px;
 }
@@ -13246,20 +13497,482 @@ html {
 /* line 143, ../scss/pages/_program.scss */
 .page-programs.cs-default #page-title {
   background-image: url("../images/yellowbrushstroke_lg.png");
-  padding: 27px 10px 14px 40px;
+  padding: 27px 10px 30px 40px;
   color: #32024e;
 }
 /* line 148, ../scss/pages/_program.scss */
 .page-programs.cs-classic #page-title {
   background-image: url("../images/redbrushstroke_lg.png");
   color: #1d3557;
-  padding: 24px 10px 24px 40px;
+  padding: 24px 10px 30px 40px;
 }
 /* line 153, ../scss/pages/_program.scss */
 .page-programs.cs-elegant #page-title {
   background-image: url("../images/bluebrushstroke_lg.png");
   color: #333333;
-  padding: 24px 10px 24px 40px;
+  padding: 24px 10px 30px 40px;
+}
+
+/* line 4, ../scss/pages/_review-pages.scss */
+.view-booklist-page-view ul, .book-reviews-page ul, .view-movie-review ul, .view-music-review-listing ul, .view--video-game-review ul {
+  list-style: none;
+  margin-left: 0;
+}
+/* line 7, ../scss/pages/_review-pages.scss */
+.view-booklist-page-view ul li, .book-reviews-page ul li, .view-movie-review ul li, .view-music-review-listing ul li, .view--video-game-review ul li {
+  margin-left: inherit;
+}
+/* line 11, ../scss/pages/_review-pages.scss */
+.view-booklist-page-view .view-filters, .book-reviews-page .view-filters, .view-movie-review .view-filters, .view-music-review-listing .view-filters, .view--video-game-review .view-filters {
+  overflow: visible;
+}
+/* line 13, ../scss/pages/_review-pages.scss */
+.cs-default .view-booklist-page-view .view-filters, .cs-default .book-reviews-page .view-filters, .cs-default .view-movie-review .view-filters, .cs-default .view-music-review-listing .view-filters, .cs-default .view--video-game-review .view-filters {
+  background: url("../images/background.jpeg");
+  padding: 8px 24px 4px;
+  background-size: cover;
+}
+/* line 18, ../scss/pages/_review-pages.scss */
+.cs-classic .view-booklist-page-view .view-filters, .cs-classic .book-reviews-page .view-filters, .cs-classic .view-movie-review .view-filters, .cs-classic .view-music-review-listing .view-filters, .cs-classic .view--video-game-review .view-filters {
+  background: #457b9d;
+  padding: 8px 24px 4px;
+  background-size: cover;
+}
+/* line 23, ../scss/pages/_review-pages.scss */
+.cs-elegant .view-booklist-page-view .view-filters, .cs-elegant .book-reviews-page .view-filters, .cs-elegant .view-movie-review .view-filters, .cs-elegant .view-music-review-listing .view-filters, .cs-elegant .view--video-game-review .view-filters {
+  background: #ff5714;
+  padding: 8px 24px 4px;
+  background-size: cover;
+}
+/* line 28, ../scss/pages/_review-pages.scss */
+.view-booklist-page-view .view-filters label, .book-reviews-page .view-filters label, .view-movie-review .view-filters label, .view-music-review-listing .view-filters label, .view--video-game-review .view-filters label {
+  color: #fff;
+}
+/* line 34, ../scss/pages/_review-pages.scss */
+.view-booklist-page-view .views-exposed-widgets, .book-reviews-page .views-exposed-widgets, .view-movie-review .views-exposed-widgets, .view-music-review-listing .views-exposed-widgets, .view--video-game-review .views-exposed-widgets {
+  width: calc(100% + 10px);
+  -webkit-flex-wrap: wrap;
+  flex-wrap: wrap;
+  display: -webkit-flex;
+  display: flex;
+  align-content: center;
+  align-items: center;
+}
+/* line 44, ../scss/pages/_review-pages.scss */
+.view-booklist-page-view .views-exposed-widget, .book-reviews-page .views-exposed-widget, .view-movie-review .views-exposed-widget, .view-music-review-listing .views-exposed-widget, .view--video-game-review .views-exposed-widget {
+  flex: 0 0 calc(25% - 10px);
+  -ms-box-flex: 0 0 24%;
+  -ms-flex: 0 0 24%;
+  -ms-padding-right: 1%;
+  padding: 0;
+  float: none;
+  margin-right: 10px;
+}
+/* line 56, ../scss/pages/_review-pages.scss */
+.view-booklist-page-view .chosen-container .chosen-single:hover, .view-booklist-page-view .chosen-container .chosen-single:focus, .book-reviews-page .chosen-container .chosen-single:hover, .book-reviews-page .chosen-container .chosen-single:focus, .view-movie-review .chosen-container .chosen-single:hover, .view-movie-review .chosen-container .chosen-single:focus, .view-music-review-listing .chosen-container .chosen-single:hover, .view-music-review-listing .chosen-container .chosen-single:focus, .view--video-game-review .chosen-container .chosen-single:hover, .view--video-game-review .chosen-container .chosen-single:focus {
+  border-radius: 0;
+}
+/* line 59, ../scss/pages/_review-pages.scss */
+.view-booklist-page-view .chosen-container .chosen-single b, .book-reviews-page .chosen-container .chosen-single b, .view-movie-review .chosen-container .chosen-single b, .view-music-review-listing .chosen-container .chosen-single b, .view--video-game-review .chosen-container .chosen-single b {
+  visibility: hidden;
+  position: relative;
+}
+/* line 62, ../scss/pages/_review-pages.scss */
+.view-booklist-page-view .chosen-container .chosen-single b:after, .book-reviews-page .chosen-container .chosen-single b:after, .view-movie-review .chosen-container .chosen-single b:after, .view-music-review-listing .chosen-container .chosen-single b:after, .view--video-game-review .chosen-container .chosen-single b:after {
+  content: "";
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  position: absolute;
+  top: 45%;
+  display: block;
+  left: 0;
+  visibility: visible;
+}
+/* line 66, ../scss/pages/_review-pages.scss */
+.cs-default .view-booklist-page-view .chosen-container .chosen-single b:after, .cs-default .book-reviews-page .chosen-container .chosen-single b:after, .cs-default .view-movie-review .chosen-container .chosen-single b:after, .cs-default .view-music-review-listing .chosen-container .chosen-single b:after, .cs-default .view--video-game-review .chosen-container .chosen-single b:after {
+  border-top: 5px solid #32024e;
+}
+/* line 69, ../scss/pages/_review-pages.scss */
+.cs-classic .view-booklist-page-view .chosen-container .chosen-single b:after, .cs-classic .book-reviews-page .chosen-container .chosen-single b:after, .cs-classic .view-movie-review .chosen-container .chosen-single b:after, .cs-classic .view-music-review-listing .chosen-container .chosen-single b:after, .cs-classic .view--video-game-review .chosen-container .chosen-single b:after {
+  border-top: 5px solid #457b9d;
+}
+/* line 72, ../scss/pages/_review-pages.scss */
+.cs-elegant .view-booklist-page-view .chosen-container .chosen-single b:after, .cs-elegant .book-reviews-page .chosen-container .chosen-single b:after, .cs-elegant .view-movie-review .chosen-container .chosen-single b:after, .cs-elegant .view-music-review-listing .chosen-container .chosen-single b:after, .cs-elegant .view--video-game-review .chosen-container .chosen-single b:after {
+  border-top: 5px solid #333333;
+}
+/* line 85, ../scss/pages/_review-pages.scss */
+.view-booklist-page-view .views-submit-button button.form-submit, .book-reviews-page .views-submit-button button.form-submit, .view-movie-review .views-submit-button button.form-submit, .view-music-review-listing .views-submit-button button.form-submit, .view--video-game-review .views-submit-button button.form-submit {
+  height: 31px;
+  margin-top: 21px;
+}
+/* line 95, ../scss/pages/_review-pages.scss */
+.view-booklist-page-view .chosen-container, .book-reviews-page .chosen-container, .view-movie-review .chosen-container, .view-music-review-listing .chosen-container, .view--video-game-review .chosen-container {
+  width: 100% !important;
+}
+/* line 98, ../scss/pages/_review-pages.scss */
+.view-booklist-page-view .chosen-container.chosen-with-drop.chosen-container-active a, .book-reviews-page .chosen-container.chosen-with-drop.chosen-container-active a, .view-movie-review .chosen-container.chosen-with-drop.chosen-container-active a, .view-music-review-listing .chosen-container.chosen-with-drop.chosen-container-active a, .view--video-game-review .chosen-container.chosen-with-drop.chosen-container-active a {
+  box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+  border: none;
+}
+/* line 104, ../scss/pages/_review-pages.scss */
+.view-booklist-page-view .chosen-container .chosen-drop, .book-reviews-page .chosen-container .chosen-drop, .view-movie-review .chosen-container .chosen-drop, .view-music-review-listing .chosen-container .chosen-drop, .view--video-game-review .chosen-container .chosen-drop {
+  position: absolute;
+  width: 100%;
+  top: calc(100% - 5px);
+}
+/* line 110, ../scss/pages/_review-pages.scss */
+.view-booklist-page-view .chosen-container a, .book-reviews-page .chosen-container a, .view-movie-review .chosen-container a, .view-music-review-listing .chosen-container a, .view--video-game-review .chosen-container a {
+  border-radius: 0;
+  border: none;
+  height: auto;
+  width: 100%;
+  display: inline-block;
+  border: none;
+  position: relative;
+}
+
+/* line 128, ../scss/pages/_review-pages.scss */
+.booklist-wrapp .book-body-wrapp div {
+  display: inline-block;
+  margin: 0;
+}
+/* line 130, ../scss/pages/_review-pages.scss */
+.booklist-wrapp .book-body-wrapp div.title {
+  width: calc(100% - 125px);
+  display: inline-block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+/* line 139, ../scss/pages/_review-pages.scss */
+.booklist-wrapp .book-body-wrapp div * {
+  font-family: inherit;
+  font-size: inherit;
+  margin-bottom: 0;
+}
+/* line 148, ../scss/pages/_review-pages.scss */
+.booklist-wrapp .book-user-likes > div {
+  padding-left: 23px;
+  margin: 0;
+  float: left;
+}
+/* line 154, ../scss/pages/_review-pages.scss */
+.booklist-wrapp .book-user-likes > div.book-created {
+  width: 70%;
+}
+/* line 157, ../scss/pages/_review-pages.scss */
+.booklist-wrapp .book-user-likes > div.book-created * {
+  font-family: inherit;
+  font-size: inherit;
+}
+/* line 162, ../scss/pages/_review-pages.scss */
+.booklist-wrapp .book-user-likes > div.book-like {
+  width: 30%;
+  text-align: right;
+}
+/* line 165, ../scss/pages/_review-pages.scss */
+.booklist-wrapp .book-user-likes > div.book-like * {
+  font-family: inherit;
+  font-size: inherit;
+}
+/* line 169, ../scss/pages/_review-pages.scss */
+.booklist-wrapp .book-user-likes > div.book-like span {
+  padding-right: 32px;
+  position: relative;
+}
+/* line 172, ../scss/pages/_review-pages.scss */
+.booklist-wrapp .book-user-likes > div.book-like span:after {
+  content: "";
+  width: 25px;
+  height: 25px;
+  display: inline-block;
+  background: url("../images/smily.png") no-repeat scroll center center;
+  position: absolute;
+  right: 2px;
+  top: -3px;
+}
+
+/* line 189, ../scss/pages/_review-pages.scss */
+.block-menu-menu-book-reviews-sidebar-menu-f .menu {
+  list-style: none;
+  margin-left: 0;
+  padding-left: 0;
+}
+/* line 193, ../scss/pages/_review-pages.scss */
+.block-menu-menu-book-reviews-sidebar-menu-f .menu li {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+/* line 197, ../scss/pages/_review-pages.scss */
+.block-menu-menu-book-reviews-sidebar-menu-f .menu li a {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  -moz-font-smoothing: grayscale;
+  width: 100%;
+  display: inline-block;
+  position: relative;
+  padding: 10px 10px 10px 60px;
+  border-bottom: 1px solid #f2f2f2;
+  color: #fff;
+}
+/* line 29, ../scss/base/_mixins.scss */
+.cs-default .block-menu-menu-book-reviews-sidebar-menu-f .menu li a {
+  font-family: "Special Elite", cursive;
+  font-weight: 400;
+}
+/* line 33, ../scss/base/_mixins.scss */
+.cs-classic .block-menu-menu-book-reviews-sidebar-menu-f .menu li a {
+  font-family: "Exo 2", sans-serif;
+  font-weight: 400;
+}
+/* line 37, ../scss/base/_mixins.scss */
+.cs-elegant .block-menu-menu-book-reviews-sidebar-menu-f .menu li a {
+  font-family: "Sniglet", cursive;
+  font-weight: 400;
+}
+/* line 205, ../scss/pages/_review-pages.scss */
+.block-menu-menu-book-reviews-sidebar-menu-f .menu li a:after {
+  content: "";
+  width: 48px;
+  height: 100%;
+  background: url("../images/review-spritesheet");
+  display: block;
+  position: absolute;
+  left: 10px;
+  top: 0;
+}
+/* line 217, ../scss/pages/_review-pages.scss */
+.block-menu-menu-book-reviews-sidebar-menu-f .menu li a.activity-review:after {
+  background-position: 0px -1199px;
+}
+/* line 223, ../scss/pages/_review-pages.scss */
+.block-menu-menu-book-reviews-sidebar-menu-f .menu li a.book-review:after {
+  background-position: -3px -1333px;
+}
+/* line 228, ../scss/pages/_review-pages.scss */
+.block-menu-menu-book-reviews-sidebar-menu-f .menu li a.booklist-review:after {
+  background-position: -3px -1265px;
+}
+/* line 233, ../scss/pages/_review-pages.scss */
+.block-menu-menu-book-reviews-sidebar-menu-f .menu li a.movie-review:after {
+  background-position: -4px -1400px;
+}
+/* line 238, ../scss/pages/_review-pages.scss */
+.block-menu-menu-book-reviews-sidebar-menu-f .menu li a.music-review:after {
+  background-position: -4px -1462px;
+}
+/* line 243, ../scss/pages/_review-pages.scss */
+.block-menu-menu-book-reviews-sidebar-menu-f .menu li a.video-review:after {
+  background-position: -8px -1530px;
+}
+/* line 247, ../scss/pages/_review-pages.scss */
+.cs-default .block-menu-menu-book-reviews-sidebar-menu-f .menu li a {
+  background: #7db600;
+}
+/* line 249, ../scss/pages/_review-pages.scss */
+.cs-default .block-menu-menu-book-reviews-sidebar-menu-f .menu li a:hover, .cs-default .block-menu-menu-book-reviews-sidebar-menu-f .menu li a:focus, .cs-default .block-menu-menu-book-reviews-sidebar-menu-f .menu li a.active {
+  background: #fff;
+  color: #7db600;
+}
+/* line 255, ../scss/pages/_review-pages.scss */
+.cs-default .block-menu-menu-book-reviews-sidebar-menu-f .menu li a.activity-review:hover:after, .cs-default .block-menu-menu-book-reviews-sidebar-menu-f .menu li a.activity-review:focus:after, .cs-default .block-menu-menu-book-reviews-sidebar-menu-f .menu li a.activity-review.active:after {
+  background-position: 0px -15px;
+}
+/* line 262, ../scss/pages/_review-pages.scss */
+.cs-default .block-menu-menu-book-reviews-sidebar-menu-f .menu li a.book-review:hover:after, .cs-default .block-menu-menu-book-reviews-sidebar-menu-f .menu li a.book-review:focus:after, .cs-default .block-menu-menu-book-reviews-sidebar-menu-f .menu li a.book-review.active:after {
+  background-position: -3px -150px;
+}
+/* line 270, ../scss/pages/_review-pages.scss */
+.cs-default .block-menu-menu-book-reviews-sidebar-menu-f .menu li a.booklist-review:hover:after, .cs-default .block-menu-menu-book-reviews-sidebar-menu-f .menu li a.booklist-review:focus:after, .cs-default .block-menu-menu-book-reviews-sidebar-menu-f .menu li a.booklist-review.active:after {
+  background-position: -3px -82px;
+}
+/* line 278, ../scss/pages/_review-pages.scss */
+.cs-default .block-menu-menu-book-reviews-sidebar-menu-f .menu li a.movie-review:hover:after, .cs-default .block-menu-menu-book-reviews-sidebar-menu-f .menu li a.movie-review:focus:after, .cs-default .block-menu-menu-book-reviews-sidebar-menu-f .menu li a.movie-review.active:after {
+  background-position: -4px -215px;
+}
+/* line 286, ../scss/pages/_review-pages.scss */
+.cs-default .block-menu-menu-book-reviews-sidebar-menu-f .menu li a.music-review:hover:after, .cs-default .block-menu-menu-book-reviews-sidebar-menu-f .menu li a.music-review:focus:after, .cs-default .block-menu-menu-book-reviews-sidebar-menu-f .menu li a.music-review.active:after {
+  background-position: -4px -277px;
+}
+/* line 294, ../scss/pages/_review-pages.scss */
+.cs-default .block-menu-menu-book-reviews-sidebar-menu-f .menu li a.video-review:hover:after, .cs-default .block-menu-menu-book-reviews-sidebar-menu-f .menu li a.video-review:focus:after, .cs-default .block-menu-menu-book-reviews-sidebar-menu-f .menu li a.video-review.active:after {
+  background-position: -8px -347px;
+}
+/* line 301, ../scss/pages/_review-pages.scss */
+.cs-classic .block-menu-menu-book-reviews-sidebar-menu-f .menu li a {
+  background: #1d3557;
+}
+/* line 303, ../scss/pages/_review-pages.scss */
+.cs-classic .block-menu-menu-book-reviews-sidebar-menu-f .menu li a:hover, .cs-classic .block-menu-menu-book-reviews-sidebar-menu-f .menu li a:focus, .cs-classic .block-menu-menu-book-reviews-sidebar-menu-f .menu li a.active {
+  background: #fff;
+  color: #1d3557;
+}
+/* line 309, ../scss/pages/_review-pages.scss */
+.cs-classic .block-menu-menu-book-reviews-sidebar-menu-f .menu li a.activity-review:hover:after, .cs-classic .block-menu-menu-book-reviews-sidebar-menu-f .menu li a.activity-review:focus:after, .cs-classic .block-menu-menu-book-reviews-sidebar-menu-f .menu li a.activity-review.active:after {
+  background-position: 0px -409px;
+}
+/* line 316, ../scss/pages/_review-pages.scss */
+.cs-classic .block-menu-menu-book-reviews-sidebar-menu-f .menu li a.book-review:hover:after, .cs-classic .block-menu-menu-book-reviews-sidebar-menu-f .menu li a.book-review:focus:after, .cs-classic .block-menu-menu-book-reviews-sidebar-menu-f .menu li a.book-review.active:after {
+  background-position: -3px -543px;
+}
+/* line 324, ../scss/pages/_review-pages.scss */
+.cs-classic .block-menu-menu-book-reviews-sidebar-menu-f .menu li a.booklist-review:hover:after, .cs-classic .block-menu-menu-book-reviews-sidebar-menu-f .menu li a.booklist-review:focus:after, .cs-classic .block-menu-menu-book-reviews-sidebar-menu-f .menu li a.booklist-review.active:after {
+  background-position: -3px -475px;
+}
+/* line 332, ../scss/pages/_review-pages.scss */
+.cs-classic .block-menu-menu-book-reviews-sidebar-menu-f .menu li a.movie-review:hover:after, .cs-classic .block-menu-menu-book-reviews-sidebar-menu-f .menu li a.movie-review:focus:after, .cs-classic .block-menu-menu-book-reviews-sidebar-menu-f .menu li a.movie-review.active:after {
+  background-position: -4px -608px;
+}
+/* line 340, ../scss/pages/_review-pages.scss */
+.cs-classic .block-menu-menu-book-reviews-sidebar-menu-f .menu li a.music-review:hover:after, .cs-classic .block-menu-menu-book-reviews-sidebar-menu-f .menu li a.music-review:focus:after, .cs-classic .block-menu-menu-book-reviews-sidebar-menu-f .menu li a.music-review.active:after {
+  background-position: -4px -669px;
+}
+/* line 348, ../scss/pages/_review-pages.scss */
+.cs-classic .block-menu-menu-book-reviews-sidebar-menu-f .menu li a.video-review:hover:after, .cs-classic .block-menu-menu-book-reviews-sidebar-menu-f .menu li a.video-review:focus:after, .cs-classic .block-menu-menu-book-reviews-sidebar-menu-f .menu li a.video-review.active:after {
+  background-position: -8px -739px;
+}
+/* line 355, ../scss/pages/_review-pages.scss */
+.cs-elegant .block-menu-menu-book-reviews-sidebar-menu-f .menu li a {
+  background: #ff5714;
+}
+/* line 357, ../scss/pages/_review-pages.scss */
+.cs-elegant .block-menu-menu-book-reviews-sidebar-menu-f .menu li a:hover, .cs-elegant .block-menu-menu-book-reviews-sidebar-menu-f .menu li a:focus, .cs-elegant .block-menu-menu-book-reviews-sidebar-menu-f .menu li a.active {
+  background: #fff;
+  color: #ff5714;
+}
+/* line 363, ../scss/pages/_review-pages.scss */
+.cs-elegant .block-menu-menu-book-reviews-sidebar-menu-f .menu li a.activity-review:hover:after, .cs-elegant .block-menu-menu-book-reviews-sidebar-menu-f .menu li a.activity-review:focus:after, .cs-elegant .block-menu-menu-book-reviews-sidebar-menu-f .menu li a.activity-review.active:after {
+  background-position: 0px -803px;
+}
+/* line 370, ../scss/pages/_review-pages.scss */
+.cs-elegant .block-menu-menu-book-reviews-sidebar-menu-f .menu li a.book-review:hover:after, .cs-elegant .block-menu-menu-book-reviews-sidebar-menu-f .menu li a.book-review:focus:after, .cs-elegant .block-menu-menu-book-reviews-sidebar-menu-f .menu li a.book-review.active:after {
+  background-position: -3px -938px;
+}
+/* line 378, ../scss/pages/_review-pages.scss */
+.cs-elegant .block-menu-menu-book-reviews-sidebar-menu-f .menu li a.booklist-review:hover:after, .cs-elegant .block-menu-menu-book-reviews-sidebar-menu-f .menu li a.booklist-review:focus:after, .cs-elegant .block-menu-menu-book-reviews-sidebar-menu-f .menu li a.booklist-review.active:after {
+  background-position: -3px -870px;
+}
+/* line 386, ../scss/pages/_review-pages.scss */
+.cs-elegant .block-menu-menu-book-reviews-sidebar-menu-f .menu li a.movie-review:hover:after, .cs-elegant .block-menu-menu-book-reviews-sidebar-menu-f .menu li a.movie-review:focus:after, .cs-elegant .block-menu-menu-book-reviews-sidebar-menu-f .menu li a.movie-review.active:after {
+  background-position: -4px -1003px;
+}
+/* line 394, ../scss/pages/_review-pages.scss */
+.cs-elegant .block-menu-menu-book-reviews-sidebar-menu-f .menu li a.music-review:hover:after, .cs-elegant .block-menu-menu-book-reviews-sidebar-menu-f .menu li a.music-review:focus:after, .cs-elegant .block-menu-menu-book-reviews-sidebar-menu-f .menu li a.music-review.active:after {
+  background-position: -4px -1066px;
+}
+/* line 402, ../scss/pages/_review-pages.scss */
+.cs-elegant .block-menu-menu-book-reviews-sidebar-menu-f .menu li a.video-review:hover:after, .cs-elegant .block-menu-menu-book-reviews-sidebar-menu-f .menu li a.video-review:focus:after, .cs-elegant .block-menu-menu-book-reviews-sidebar-menu-f .menu li a.video-review.active:after {
+  background-position: -8px -1136px;
+}
+
+/* line 413, ../scss/pages/_review-pages.scss */
+h2.reviews-title, .view-booklist-slideshow .other-programme.view .view-header *, .other-programme.view .view-booklist-slideshow .view-header *, .view-booklist-slideshow .view-header h2.reviews-title, .view-booklist-slideshow .view-header h1 {
+  margin-top: 0;
+  background-size: 100%;
+  background-repeat: repeat;
+  margin-bottom: 10px;
+  width: calc(100% + 40px);
+  margin-left: -40px;
+}
+/* line 421, ../scss/pages/_review-pages.scss */
+.cs-default h2.reviews-title, .cs-default .view-booklist-slideshow .other-programme.view .view-header *, .other-programme.view .cs-default .view-booklist-slideshow .view-header *, .cs-default .view-booklist-slideshow .view-header h2.reviews-title, .cs-default .view-booklist-slideshow .view-header h1 {
+  background-image: url("../images/yellowbrushstroke_lg.png");
+  padding: 27px 10px 30px 40px;
+  color: #32024e;
+}
+/* line 426, ../scss/pages/_review-pages.scss */
+.cs-classic h2.reviews-title, .cs-classic .view-booklist-slideshow .other-programme.view .view-header *, .other-programme.view .cs-classic .view-booklist-slideshow .view-header *, .cs-classic .view-booklist-slideshow .view-header h2.reviews-title, .cs-classic .view-booklist-slideshow .view-header h1 {
+  background-image: url("../images/redbrushstroke_lg.png");
+  color: #1d3557;
+  padding: 24px 10px 30px 40px;
+}
+/* line 431, ../scss/pages/_review-pages.scss */
+.cs-elegant h2.reviews-title, .cs-elegant .view-booklist-slideshow .other-programme.view .view-header *, .other-programme.view .cs-elegant .view-booklist-slideshow .view-header *, .cs-elegant .view-booklist-slideshow .view-header h2.reviews-title, .cs-elegant .view-booklist-slideshow .view-header h1 {
+  background-image: url("../images/bluebrushstroke_lg.png");
+  color: #333333;
+  padding: 24px 10px 30px 40px;
+}
+
+/* line 439, ../scss/pages/_review-pages.scss */
+.section-movie-review #page-title, .section-music-review #page-title, .section-video-game-review #page-title {
+  display: none;
+}
+
+/* line 443, ../scss/pages/_review-pages.scss */
+.common-review-wrapper {
+  border-bottom: 1px solid #ccc;
+  margin-bottom: 20px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  -moz-font-smoothing: grayscale;
+}
+/* line 29, ../scss/base/_mixins.scss */
+.cs-default .common-review-wrapper {
+  font-family: "Special Elite", cursive;
+  font-weight: 400;
+}
+/* line 33, ../scss/base/_mixins.scss */
+.cs-classic .common-review-wrapper {
+  font-family: "Exo 2", sans-serif;
+  font-weight: 400;
+}
+/* line 37, ../scss/base/_mixins.scss */
+.cs-elegant .common-review-wrapper {
+  font-family: "Sniglet", cursive;
+  font-weight: 400;
+}
+/* line 447, ../scss/pages/_review-pages.scss */
+.common-review-wrapper > div:not(.body, .date) {
+  font-family: inherit;
+  margin-bottom: 10px;
+}
+/* line 449, ../scss/pages/_review-pages.scss */
+.common-review-wrapper > div:not(.body, .date) * {
+  font-family: inherit;
+}
+/* line 454, ../scss/pages/_review-pages.scss */
+.common-review-wrapper > div:not(.title) {
+  padding-left: 22px;
+}
+/* line 457, ../scss/pages/_review-pages.scss */
+.common-review-wrapper .title {
+  width: 100%;
+  display: block;
+}
+/* line 460, ../scss/pages/_review-pages.scss */
+.common-review-wrapper .title > div {
+  float: left;
+}
+/* line 462, ../scss/pages/_review-pages.scss */
+.common-review-wrapper .title > div:nth-of-type(1) {
+  width: 70%;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+/* line 468, ../scss/pages/_review-pages.scss */
+.common-review-wrapper .title > div.likes {
+  width: 30%;
+  text-align: right;
+}
+/* line 475, ../scss/pages/_review-pages.scss */
+.common-review-wrapper .review-by-user > div {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  display: inline-block;
+}
+/* line 480, ../scss/pages/_review-pages.scss */
+.common-review-wrapper .review-by-user > div.views-field-field-user-avatar {
+  margin-left: 5px;
+  margin-right: 5px;
+}
+/* line 487, ../scss/pages/_review-pages.scss */
+.common-review-wrapper .body {
+  margin-top: 10px;
+  margin-bottom: 20px;
 }
 
 /*# sourceMappingURL=custom.css.map */
