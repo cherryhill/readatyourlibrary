@@ -170,3 +170,104 @@ function payl_program_customizations_flag_flag($flag, $entity_id, $account, $fla
     privatemsg_new_thread(array(user_load($uid)), $user_name.' is now following you.', $user_name.' is now following you.');
   }
 }
+
+
+function payl_program_customizations_menu(){
+  $items = array();
+
+ $items['test-activity'] = array(
+    'page title' => 'BProgress',
+    'page callback' => 'payl_program_customizations_review_selectlist',
+    'access arguments' => array('progress page access'), // permission for view progress page
+    'type' => MENU_CALLBACK,
+    // 'file' => 'inc/pl_progress_page.inc',
+    // 'file path' => drupal_get_path('module', 'play_progress_teen'),
+  );
+
+  return $items;
+}
+
+/**
+ * Access Callback for /projects page.
+//  */
+// function payl_program_customizations_access_check() {
+//   global $user;
+//   if($user->uid){
+//     return TRUE;
+//   }else{
+//     return FALSE;
+//   }
+// }
+
+/**
+/Implement hook permissions
+**/
+function payl_program_customizations_permission() {
+   return array(
+    'progress page access' => array(
+      'title' => t('View Bingo Card Progress Page'),
+      'description' => t('Access to view bingo card progress page'),
+    ),
+    'report progress' => array(
+      'title' => t('Report progress theough Bingo Card Progress Page'),
+      'description' => t('Report progress theough Bingo Card Progress Page'),
+    ),
+
+  );
+}
+
+
+/*
+/Function to prinf activity review list box links 
+*/
+function play_library_program_review_selectlist($nid){
+ //query to retun reqired field values
+  $que = db_select('field_data_field_activity_list', 'fdfal');
+  $que->JOIN('field_data_field_label_for_read_review' , 'fdflfrr', 'fdflfrr.entity_id=fdfal.entity_id');
+  $que->JOIN('field_data_field_label_for_write_review' , 'fdflfwr', 'fdflfwr.entity_id=fdfal.entity_id');
+  $que->JOIN('field_data_field_read_review' , 'fdfrr', 'fdfrr.entity_id=fdfal.field_activity_list_tid');
+  $que->JOIN('field_data_field_write_review' , 'fdfwr', 'fdfwr.entity_id=fdfal.field_activity_list_tid');
+  $que->CONDITION('fdfal.entity_id', array($nid), 'IN');
+  $que->FIELDS('fdfrr', array('field_read_review_title'));
+  $que->FIELDS('fdfrr', array('field_read_review_url'));
+  $que->FIELDS('fdfwr', array('field_write_review_title'));
+  $que->FIELDS('fdfwr', array('field_write_review_url'));
+  $que->FIELDS('fdflfrr', array('field_label_for_read_review_value'));
+  $que->FIELDS('fdflfwr', array('field_label_for_write_review_value'));
+  $res = $que->execute()->fetchAll();
+  // echo "<pre>";
+  // print_r($res);die();
+  $activity_write_fields_title['all'] = 'select from following';
+  $activity_read_fields_title['all'] = 'Select from following';
+
+  //$activity_read_fields[0] = t('--Select from the following--');
+  //$activity_write_fields[0] = t('--Select from the following--');
+  foreach ($res as $key => $value) {
+    if (!empty($value->field_read_review_url) && !empty($value->field_read_review_title)){
+      $activity_read_fields_title[$value->field_read_review_url] = $value->field_read_review_title;
+    }
+    if (!empty($value->field_write_review_url) && !empty($value->field_write_review_title)){
+      $activity_write_fields_title[$value->field_write_review_url] = $value->field_write_review_title;
+    }
+  }
+ 
+ //Create dropdowns for read and write reviews.
+  $form['read activity'] = array(
+    '#type' => 'select',
+    '#title' => $res[0]->field_label_for_read_review_value,
+    '#options' => $activity_read_fields_title, 
+    '#multiple' => FALSE,
+    '#default_value' => '--Select an activity--',
+    '#attributes' => array('class'=>array('activity-form-element'),'urls'=>array($value->field_read_review_url)),
+    );
+
+  $form['write activity'] = array(
+    '#type' => 'select',
+    '#title' => $res[0]->field_label_for_write_review_value,
+    '#options' => $activity_write_fields_title, 
+    '#multiple' => FALSE,
+    '#default_value' => '--Select an activity--',
+    '#attributes' => array('class'=>array('activity-form-element')),
+    );
+  return $form;
+}

@@ -60,6 +60,13 @@ function play_progress_calendar_menu() {
     'access arguments' => array('access content'),
     // 'type' => MENU_NORMAL_ITEM,
   );
+  $items['activity_record'] = array(
+    'title' => 'Record Activity for Patron',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('patron_activity_record_form'),
+    'access arguments' => array('activity record access'),
+    'type' => MENU_CALLBACK,
+  );
   
   
   return $items;
@@ -212,3 +219,79 @@ function calendar_data2() {
     echo json_encode($events);
 }
 
+
+
+
+/**
+*  Patron Activity Record form build is is for activity_record page.
+*/
+
+function patron_activity_record_form($form, &$form_state) {
+  $qry = db_select('eck_activity', 'eck_a');
+    $qry->join('field_data_field_activity_fired_hook', 'fdfafh', 'fdfafh.entity_id = eck_a.id');
+    $qry->condition('fdfafh.field_activity_fired_hook_value', 'progress_page');
+    $qry->fields('eck_a', array('title','id'));
+    $resu = $qry->execute()->fetchAll();
+    foreach ($resu as $value) {
+      //$activity_id[] = $value->id; 
+      $activity_title[$value->id] = $value->title; 
+    }
+
+  $form['username'] = array(
+    '#title' => t('Username'),
+    '#type' => 'textfield',
+    '#autocomplete_path' => 'user/autocomplete',
+    '#attributes' => array(
+      'placeholder' => t('Username'),
+    ),
+  );        
+  $form['html'] = array(
+   '#type' => 'markup',
+   '#markup' => '<div>Search for patrons here: <a href="patron-users" target="_blank">http://play.dev.chillco.com/patron-users</a></div>',
+  );
+  $form['activity'] = array(
+    '#type' => 'select',
+    '#options' => $activity_title,
+  );
+  $form['from'] = array(
+    //'#title' => t('Start date'),
+    '#type' => 'date_popup',
+    '#date_format' => 'F d, Y',
+    '#date_year_range' => '0:+10',
+    '#required' => TRUE,
+    '#size' => 8,
+  );
+  $form['to'] = array(
+    //'#title' => t('End date'),
+    '#type' => 'date_popup',
+    '#date_format' => 'F d, Y',
+    '#date_year_range' => '0:+10',
+    '#required' => TRUE,
+    '#size' => 8,
+   );
+  $form['submit'] = array(
+    '#value' => 'Submit',
+    '#type' => 'submit',
+  );
+
+  return $form;
+}
+
+function patron_activity_record_form_submit($form, &$form_state) {
+  $username = $form_state['values']['username'];
+
+  $query = db_select('users', 'u');
+  $query->condition('u.name', $username);
+  $query->fields('u', array('uid'));
+  $user_uid = $query->execute()->fetchField();
+   
+  $activity_id = $form_state['values']['activity'];
+  $from = strtotime($form_state['values']['from']);
+  $to = strtotime($form_state['values']['to']);
+
+  for ($i=$from; $i<=$to; $i+=86400) {
+    $date = strtotime(date("Y-m-d", $i));
+    $tid = 47;
+     play_library_program_create_activity_entry($activity_id , $user_uid, $i, $tid);
+  }
+}
