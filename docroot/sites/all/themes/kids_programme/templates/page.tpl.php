@@ -5,12 +5,6 @@
     <!-- City Branding -->
     <div class="pre-header">
       <section class="row" id="topmostbranding">
-
-        <div class="top-menu hide-for-small-only">
-          <?php if (!empty($page['top_links'])): ?>
-          <?php print render($page['top_links']); ?>
-          <?php endif; ?>
-        </div>
         <div class="mobile-hamburger hide-for-medium-up">
            <button>
              <span class="icon"></span>
@@ -18,6 +12,12 @@
              <span class="icon"></span>
            </button>
         </div>
+        <div class="top-menu hide-for-only-small">
+          <?php if (!empty($page['top_links'])): ?>
+          <?php print render($page['top_links']); ?>
+          <?php endif; ?>
+        </div>
+        
       <!--mobile menu-->
       <div class="mobile-menu columns">
         <?php if (!empty($page['mobile_menu'])): ?>
@@ -57,7 +57,7 @@
       <?php endif; ?></div>
     </div>
 
-    <div class="main-menu hide-for-small-only">
+    <div class="main-menu hide-for-only-small">
       <div class="menu-wrapper">
       <?php if (!empty($page['main_menu'])): ?>
       <?php print render($page['main_menu']); ?>
