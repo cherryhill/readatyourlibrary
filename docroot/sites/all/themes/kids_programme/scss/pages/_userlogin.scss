@@ -1,4 +1,4 @@
-.page-user-register {
+.page-user-register, .page-user-edit {
 	.form-type-date-select {
 		width: 100%;
 		.date-padding {
@@ -112,10 +112,15 @@
 	.form-select {
 		margin-bottom: 5px;
 	}
+	.field-widget-options-buttons {
+		width: 100%;
+		display: inline-block;
+		margin-bottom: 10px;
+	} 
 }
 
 @media all and (max-width: 767px) {
-	.page-user-register {
+	.page-user-register, .page-user-edit {
 		.form-type-date-select {
 			.date-padding {
 				.form-type-select {

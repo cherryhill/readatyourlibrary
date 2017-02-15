@@ -3,6 +3,7 @@
 
 	/*------------Mobile Menu--------------*/
 	.mobile-hamburger {
+		flex: 1 1 40px;
 		button {
 			float: left;
 	    margin-left: 10px;
@@ -13,14 +14,20 @@
 	    position: relative;
 	    padding: 0 !important;
 	    box-shadow: none;
+	    background-color: transparent;
 	    span.icon {
 	      display: block;
-		    background: $light-red;
 		    width: 35px;
 		    height: 5px;
 		    margin-bottom: 5px;
+		    .cs-default &, .cs-elegant & {
+					background: $light-red;
+		    }
+		    .cs-classic & {
+		    	background: $sky-blue;
+		    }
 		  }
-		  .cs-default & {
+		  .cs-default &, .cs-elegant &, .cs-classic & {
 		  	&:hover, &:focus {
           background: transparent;
         }
@@ -37,6 +44,54 @@
 			padding-left: 0 !important;
 		}
 	}
+	.l-header {
+		.pre-header {
+			.top-menu {
+    		flex: 1 1 calc(100% - 60px);
+    	}
+		}
+	}
+	.block-menu-menu-anonymous-header-links {
+		ul.menu {
+			li {
+				a {
+					padding: 4px 10px;
+				}
+			}
+		}
+	}
+	.hide-for-only-small {
+		&.main-menu {
+			display: none;
+		}
+	}
+	.pre-header {
+		.top-menu {
+			&.hide-for-only-small {
+				display: block;
+				.top-header-menu {
+					display: flex;
+					display: -webkit-flex;
+			    align-items: center;
+					font-size: 14px;
+					margin-right: 10px;
+					.button-hide {
+						display: none;
+					}
+					.btn {
+						padding: 4px 10px;
+						white-space: nowrap;
+					}
+				}
+			}
+			.block-menu-menu-anonymous-header-links {
+				.menu {
+					margin-right: 10px;
+				}
+			}
+		}
+	}
+	
 	/*------------Mobile Menu Ends--------------*/
 
 	/*------------Header--------------*/
@@ -69,6 +124,7 @@
 			    img {
 			    	width: 100%;
 			    	height: 100%;
+			    	float: right;
 			    }
 				}
 			}
@@ -151,6 +207,9 @@
 	.page-reviews  {
 		.views-exposed-widget {
 			flex: 0 0 calc(100% - 10px);
+			button {
+				margin-left: 0;
+			}
 		}
 		.views-field-field-book-cover-image-link {
 			width: 100%;
@@ -165,6 +224,22 @@
 	}
 	.reviews-wrapper {
 		width: 100%;
+	}
+	.book-review-page-overlay {
+		margin-top: 20px;
+		.review_node_sidebar {
+			width: 100%;
+			table {
+				width: 100%;
+				img {
+					display: block;
+					margin: auto;
+				}
+			}
+		}
+		.node-review-book {
+			width: 100%;
+		}
 	}
 	/*-------------Bookreview Page Ends-------------*/
 
@@ -196,6 +271,30 @@
 	.view-booklist-page-view {
 		.views-exposed-widget {
 			flex: 0 0 calc(100% - 10px);
+		}
+		.views-submit-button {
+			button.form-submit {
+				margin-left: 0;
+			}
+		}
+	}
+
+	.book-review-page-overlay {
+		.booklist-title {
+			margin-bottom: 10px;
+		}
+		.bk_title {
+    	width: 100%;
+    }
+	}
+	.node-type-booklist, .node-type-review-book {
+		.button-group {
+			li {
+				a {
+					margin-left: 0;
+					margin-right: 20px;
+				}
+			}
 		}
 	}
 	/*-------------Booklisting Page Ends-------------*/
@@ -319,6 +418,63 @@
 		}
 	}
 	/*-------------Rewards Page Ends-------------*/
+
+	/*-------------Photo's Video's Page-------------*/
+	.view.photos-block, .view.video-block {
+		.view-content {
+			.views-row {
+				flex: 0 0 100%;
+				.flickr-photoset-img {
+					img {
+						display: block;
+						margin: auto;
+					} 
+				}
+			}
+		}
+	}
+	/*-------------Photo's Video's Page Ends-------------*/
+
+	/*-------------Progress Page-------------*/
+	.progress-page-wrap {
+    padding-left: 10px;
+    padding-right: 10px;
+    #wrap {
+    	padding-left: 15px;
+    	padding-right: 15px;
+    	div.sticker-block, div.rewards, div.reading-progress {
+    		flex: 0 0 100%;
+    		padding-right: 0;
+    		margin-bottom: 20px;
+    	}
+    }
+    .calendar-wrapper {
+	    .fc-center {
+	    	max-width: 320px;
+	    	button {
+	    		padding: 6px 20px !important;
+	    	}
+	    }
+	  }
+	  .fc-content-skeleton > table {
+	  	.fc-day-top {
+	  		span {
+	  			font-size: 25px;
+	  		}
+	  	}
+	  }
+	  table {
+	  	.fc-head {
+	  		th {
+	  			font-size: 20px
+	  		}
+	  	}
+	  	.fc-scroller {
+	  		height: auto !important;
+	  	}
+	  }
+	}
+	/*-------------Progress Page Ends-------------*/
 }
 
 /*------------Tab Responsive--------------*/
@@ -396,13 +552,10 @@
 							left: -44px;
 						}
 					}
-					.cs-default & {
+					.cs-default &, .cs-classic & {
 		        font-size: 20px !important;
 	      	}
 		      .cs-elegant & {
-		        font-size: 23px !important;
-		      }
-		      .cs-classic & {
 		        font-size: 23px !important;
 		      }
 		    }
@@ -467,4 +620,30 @@
 		}
 	}
 	/*-------------Events Page Ends-------------*/
+
+	/*-------------Reward Block-------------*/
+	.homepage-reward-block {
+		.view-header {
+			p {
+				line-height: 1.2;
+			}
+		}
+	}
+	/*-------------Reward Block Ends-------------*/
+
+	/*-------------Progress Page-------------*/
+	.progress-page-wrap {
+		#wrap {
+			div.sticker-block {
+				flex: 0 0 41%;
+			}
+			div.rewards {
+				flex: 0 0 30%;
+			}
+			div.reading-progress {
+				flex: 0 0 20%;
+			}
+		}
+	}
+	/*-------------Progress Page Ends-------------*/
 }
