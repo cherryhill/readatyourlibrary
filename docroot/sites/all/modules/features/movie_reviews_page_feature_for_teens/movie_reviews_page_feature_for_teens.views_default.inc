@@ -35,6 +35,12 @@ function movie_reviews_page_feature_for_teens_views_default_views() {
   $handler->display->display_options['pager']['options']['items_per_page'] = '10';
   $handler->display->display_options['style_plugin'] = 'default';
   $handler->display->display_options['row_plugin'] = 'node';
+  /* Footer: Global: Text area */
+  $handler->display->display_options['footer']['area']['id'] = 'area';
+  $handler->display->display_options['footer']['area']['table'] = 'views';
+  $handler->display->display_options['footer']['area']['field'] = 'area';
+  $handler->display->display_options['footer']['area']['content'] = '<h2 class = reviews-subtitle>Movie Reviews</h2>';
+  $handler->display->display_options['footer']['area']['format'] = 'full_html';
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
@@ -91,7 +97,7 @@ function movie_reviews_page_feature_for_teens_views_default_views() {
   $handler->display->display_options['header']['area']['table'] = 'views';
   $handler->display->display_options['header']['area']['field'] = 'area';
   $handler->display->display_options['header']['area']['empty'] = TRUE;
-  $handler->display->display_options['header']['area']['content'] = '<h2 class = reviews-title>Reviews & Booklists</h2>
+  $handler->display->display_options['header']['area']['content'] = '<h1 class = reviews-title>Reviews & Booklists</h1>
 ';
   $handler->display->display_options['header']['area']['format'] = 'full_html';
   /* Header: Global: PHP */
@@ -102,7 +108,7 @@ function movie_reviews_page_feature_for_teens_views_default_views() {
   $handler->display->display_options['header']['php']['php_output'] = '<?php
 global $base_url;
 echo \'<div class=\'."viewmenu".\'>View: <a href=\'.$base_url.\'/movie-review\'.\'>All</a> | <a href=\'.$base_url.\'/movie-review/staff\'.\'>Posted by Staff</a> | <a href=\'.$base_url.\'/movie-review/players\'.\'>Posted by Players</a></div>\';
-echo \'<h2 class = reviews-subtitle>Movie Reviews</h2>\';
+
 
 ?>
 ';
@@ -138,6 +144,7 @@ echo \'<h2 class = reviews-subtitle>Movie Reviews</h2>\';
   $handler->display->display_options['fields']['counter']['table'] = 'views';
   $handler->display->display_options['fields']['counter']['field'] = 'counter';
   $handler->display->display_options['fields']['counter']['label'] = '';
+  $handler->display->display_options['fields']['counter']['exclude'] = TRUE;
   $handler->display->display_options['fields']['counter']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['counter']['counter_start'] = '1';
   $handler->display->display_options['fields']['counter']['reverse'] = 0;
@@ -155,6 +162,7 @@ echo \'<h2 class = reviews-subtitle>Movie Reviews</h2>\';
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
   $handler->display->display_options['fields']['title']['label'] = '';
+  $handler->display->display_options['fields']['title']['exclude'] = TRUE;
   $handler->display->display_options['fields']['title']['alter']['path'] = '[field_catalog_link_movie_review_1]';
   $handler->display->display_options['fields']['title']['alter']['target'] = '_blank';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
@@ -172,15 +180,18 @@ echo \'<h2 class = reviews-subtitle>Movie Reviews</h2>\';
   $handler->display->display_options['fields']['count']['field'] = 'count';
   $handler->display->display_options['fields']['count']['relationship'] = 'flag_count_rel';
   $handler->display->display_options['fields']['count']['label'] = 'Likes';
+  $handler->display->display_options['fields']['count']['exclude'] = TRUE;
   /* Field: Content: Genre */
   $handler->display->display_options['fields']['field_genre']['id'] = 'field_genre';
   $handler->display->display_options['fields']['field_genre']['table'] = 'field_data_field_genre';
   $handler->display->display_options['fields']['field_genre']['field'] = 'field_genre';
+  $handler->display->display_options['fields']['field_genre']['exclude'] = TRUE;
   /* Field: Content: Actors */
   $handler->display->display_options['fields']['field_actors']['id'] = 'field_actors';
   $handler->display->display_options['fields']['field_actors']['table'] = 'field_data_field_actors';
   $handler->display->display_options['fields']['field_actors']['field'] = 'field_actors';
   $handler->display->display_options['fields']['field_actors']['label'] = '';
+  $handler->display->display_options['fields']['field_actors']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_actors']['alter']['alter_text'] = TRUE;
   $handler->display->display_options['fields']['field_actors']['alter']['text'] = 'Actors: [field_actors]';
   $handler->display->display_options['fields']['field_actors']['element_label_colon'] = FALSE;
@@ -189,6 +200,7 @@ echo \'<h2 class = reviews-subtitle>Movie Reviews</h2>\';
   $handler->display->display_options['fields']['field_director']['table'] = 'field_data_field_director';
   $handler->display->display_options['fields']['field_director']['field'] = 'field_director';
   $handler->display->display_options['fields']['field_director']['label'] = '';
+  $handler->display->display_options['fields']['field_director']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_director']['alter']['alter_text'] = TRUE;
   $handler->display->display_options['fields']['field_director']['alter']['text'] = 'Director: [field_director]';
   $handler->display->display_options['fields']['field_director']['element_label_colon'] = FALSE;
@@ -197,6 +209,7 @@ echo \'<h2 class = reviews-subtitle>Movie Reviews</h2>\';
   $handler->display->display_options['fields']['field_language']['table'] = 'field_data_field_language';
   $handler->display->display_options['fields']['field_language']['field'] = 'field_language';
   $handler->display->display_options['fields']['field_language']['label'] = '';
+  $handler->display->display_options['fields']['field_language']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_language']['alter']['alter_text'] = TRUE;
   $handler->display->display_options['fields']['field_language']['alter']['text'] = 'Language: [field_language]';
   $handler->display->display_options['fields']['field_language']['element_label_colon'] = FALSE;
@@ -205,6 +218,7 @@ echo \'<h2 class = reviews-subtitle>Movie Reviews</h2>\';
   $handler->display->display_options['fields']['field_release_year']['table'] = 'field_data_field_release_year';
   $handler->display->display_options['fields']['field_release_year']['field'] = 'field_release_year';
   $handler->display->display_options['fields']['field_release_year']['label'] = '';
+  $handler->display->display_options['fields']['field_release_year']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_release_year']['alter']['alter_text'] = TRUE;
   $handler->display->display_options['fields']['field_release_year']['alter']['text'] = 'Release Year: [field_release_year]';
   $handler->display->display_options['fields']['field_release_year']['element_label_colon'] = FALSE;
@@ -221,6 +235,7 @@ echo \'<h2 class = reviews-subtitle>Movie Reviews</h2>\';
   $handler->display->display_options['fields']['field_rating']['table'] = 'field_data_field_rating';
   $handler->display->display_options['fields']['field_rating']['field'] = 'field_rating';
   $handler->display->display_options['fields']['field_rating']['label'] = '';
+  $handler->display->display_options['fields']['field_rating']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_rating']['alter']['alter_text'] = TRUE;
   $handler->display->display_options['fields']['field_rating']['alter']['text'] = 'Rating: [field_rating]';
   $handler->display->display_options['fields']['field_rating']['element_label_colon'] = FALSE;
@@ -229,6 +244,7 @@ echo \'<h2 class = reviews-subtitle>Movie Reviews</h2>\';
   $handler->display->display_options['fields']['nothing_1']['table'] = 'views';
   $handler->display->display_options['fields']['nothing_1']['field'] = 'nothing';
   $handler->display->display_options['fields']['nothing_1']['label'] = '';
+  $handler->display->display_options['fields']['nothing_1']['exclude'] = TRUE;
   $handler->display->display_options['fields']['nothing_1']['alter']['text'] = '<a href="[field_catalog_link_movie_review]" target="_blank">View in Library Catalog</a>';
   $handler->display->display_options['fields']['nothing_1']['element_label_colon'] = FALSE;
   /* Field: Content: Please select one */
@@ -348,6 +364,7 @@ echo "<a href = users/public_profile/$row->uid>".$row->name."</a>";
   $handler->display->display_options['fields']['nothing']['table'] = 'views';
   $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
   $handler->display->display_options['fields']['nothing']['label'] = '';
+  $handler->display->display_options['fields']['nothing']['exclude'] = TRUE;
   $handler->display->display_options['fields']['nothing']['alter']['text'] = '<div class="review">[php]</div><div class = "views-field-field-user-avatar">[php_1]</div><div class="user">[php_2]</div>';
   $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
   /* Field: Content: Post date */
@@ -355,6 +372,7 @@ echo "<a href = users/public_profile/$row->uid>".$row->name."</a>";
   $handler->display->display_options['fields']['created']['table'] = 'node';
   $handler->display->display_options['fields']['created']['field'] = 'created';
   $handler->display->display_options['fields']['created']['label'] = '';
+  $handler->display->display_options['fields']['created']['exclude'] = TRUE;
   $handler->display->display_options['fields']['created']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['created']['date_format'] = 'custom';
   $handler->display->display_options['fields']['created']['custom_date_format'] = 'M d, Y';
@@ -364,6 +382,7 @@ echo "<a href = users/public_profile/$row->uid>".$row->name."</a>";
   $handler->display->display_options['fields']['body']['table'] = 'field_data_body';
   $handler->display->display_options['fields']['body']['field'] = 'body';
   $handler->display->display_options['fields']['body']['label'] = '';
+  $handler->display->display_options['fields']['body']['exclude'] = TRUE;
   $handler->display->display_options['fields']['body']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['body']['type'] = 'text_summary_or_trimmed';
   $handler->display->display_options['fields']['body']['settings'] = array(
@@ -374,8 +393,31 @@ echo "<a href = users/public_profile/$row->uid>".$row->name."</a>";
   $handler->display->display_options['fields']['view_node']['table'] = 'views_entity_node';
   $handler->display->display_options['fields']['view_node']['field'] = 'view_node';
   $handler->display->display_options['fields']['view_node']['label'] = '';
+  $handler->display->display_options['fields']['view_node']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['view_node']['alter']['make_link'] = TRUE;
+  $handler->display->display_options['fields']['view_node']['alter']['link_class'] = 'button';
   $handler->display->display_options['fields']['view_node']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['view_node']['text'] = 'View full review';
+  /* Field: Global: Custom text */
+  $handler->display->display_options['fields']['nothing_2']['id'] = 'nothing_2';
+  $handler->display->display_options['fields']['nothing_2']['table'] = 'views';
+  $handler->display->display_options['fields']['nothing_2']['field'] = 'nothing';
+  $handler->display->display_options['fields']['nothing_2']['label'] = '';
+  $handler->display->display_options['fields']['nothing_2']['alter']['text'] = '<div class= "common-review-wrapper">
+<div class="title"><div>[counter]. [title]</div><div class="likes">Likes:<span>[count]</span></div></div>
+<div>Genre: [field_genre]</div>
+<div>[field_actors]</div>
+<div>[field_director]</div>
+<div>[field_language] </div>
+<div>[field_release_year]</div>
+<div>[field_rating]</div>
+<div>[nothing_1]</div>
+<div class="review-by-user">[nothing]</div>
+<div class="date"><p>[created]</p> </div>
+<div class="body"><p>[body]</p></div>
+<div>[view_node]</div>
+</div>';
+  $handler->display->display_options['fields']['nothing_2']['element_label_colon'] = FALSE;
   $handler->display->display_options['defaults']['sorts'] = FALSE;
   /* Sort criterion: Content: Post date */
   $handler->display->display_options['sorts']['created']['id'] = 'created';
