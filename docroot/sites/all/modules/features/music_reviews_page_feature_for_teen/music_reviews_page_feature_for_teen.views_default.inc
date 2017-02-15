@@ -35,6 +35,13 @@ function music_reviews_page_feature_for_teen_views_default_views() {
   $handler->display->display_options['pager']['options']['items_per_page'] = '10';
   $handler->display->display_options['style_plugin'] = 'default';
   $handler->display->display_options['row_plugin'] = 'node';
+  /* Footer: Global: Text area */
+  $handler->display->display_options['footer']['area']['id'] = 'area';
+  $handler->display->display_options['footer']['area']['table'] = 'views';
+  $handler->display->display_options['footer']['area']['field'] = 'area';
+  $handler->display->display_options['footer']['area']['empty'] = TRUE;
+  $handler->display->display_options['footer']['area']['content'] = '<h2 class = reviews-subtitle>Music Reviews</h2>';
+  $handler->display->display_options['footer']['area']['format'] = 'full_html';
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
@@ -88,7 +95,7 @@ function music_reviews_page_feature_for_teen_views_default_views() {
   $handler->display->display_options['header']['area']['table'] = 'views';
   $handler->display->display_options['header']['area']['field'] = 'area';
   $handler->display->display_options['header']['area']['empty'] = TRUE;
-  $handler->display->display_options['header']['area']['content'] = '<h2 class = reviews-title>Reviews & Booklists</h2>
+  $handler->display->display_options['header']['area']['content'] = '<h1 class = reviews-title>Reviews & Booklists</h1>
 ';
   $handler->display->display_options['header']['area']['format'] = 'full_html';
   /* Header: Global: PHP */
@@ -100,7 +107,7 @@ function music_reviews_page_feature_for_teen_views_default_views() {
 global $base_url;
  echo\'<div class=\'."viewmenu".\'>View: <a href=\'.$base_url.\'/music-review-listing\'.\'
 >All</a> | <a href=\'.$base_url.\'/music-review-listing/staff\'.\'>Posted by Staff</a> | <a href=\'.$base_url.\'/music-review-listing/players\'.\'>Posted by Players</a></div>\';
- echo\'<h2 class = reviews-subtitle>Music Reviews</h2>\';
+ 
 ?>
 ';
   $handler->display->display_options['defaults']['relationships'] = FALSE;
@@ -144,6 +151,7 @@ global $base_url;
   $handler->display->display_options['fields']['counter']['table'] = 'views';
   $handler->display->display_options['fields']['counter']['field'] = 'counter';
   $handler->display->display_options['fields']['counter']['label'] = '';
+  $handler->display->display_options['fields']['counter']['exclude'] = TRUE;
   $handler->display->display_options['fields']['counter']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['counter']['counter_start'] = '1';
   $handler->display->display_options['fields']['counter']['reverse'] = 0;
@@ -152,6 +160,7 @@ global $base_url;
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
   $handler->display->display_options['fields']['title']['label'] = '';
+  $handler->display->display_options['fields']['title']['exclude'] = TRUE;
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
@@ -161,11 +170,13 @@ global $base_url;
   $handler->display->display_options['fields']['count']['field'] = 'count';
   $handler->display->display_options['fields']['count']['relationship'] = 'flag_count_rel';
   $handler->display->display_options['fields']['count']['label'] = 'Likes';
+  $handler->display->display_options['fields']['count']['exclude'] = TRUE;
   /* Field: Content: Artist/Performer */
   $handler->display->display_options['fields']['field_artist_performer']['id'] = 'field_artist_performer';
   $handler->display->display_options['fields']['field_artist_performer']['table'] = 'field_data_field_artist_performer';
   $handler->display->display_options['fields']['field_artist_performer']['field'] = 'field_artist_performer';
   $handler->display->display_options['fields']['field_artist_performer']['label'] = '';
+  $handler->display->display_options['fields']['field_artist_performer']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_artist_performer']['alter']['alter_text'] = TRUE;
   $handler->display->display_options['fields']['field_artist_performer']['alter']['text'] = 'Artist: [field_artist_performer]';
   $handler->display->display_options['fields']['field_artist_performer']['element_label_colon'] = FALSE;
@@ -190,6 +201,7 @@ global $base_url;
   $handler->display->display_options['fields']['php']['table'] = 'views';
   $handler->display->display_options['fields']['php']['field'] = 'php';
   $handler->display->display_options['fields']['php']['label'] = '';
+  $handler->display->display_options['fields']['php']['exclude'] = TRUE;
   $handler->display->display_options['fields']['php']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['php']['use_php_setup'] = 0;
   $handler->display->display_options['fields']['php']['php_output'] = '<?php
@@ -213,6 +225,7 @@ echo \'Genre: \'.$value;
   $handler->display->display_options['fields']['nothing_1']['table'] = 'views';
   $handler->display->display_options['fields']['nothing_1']['field'] = 'nothing';
   $handler->display->display_options['fields']['nothing_1']['label'] = '';
+  $handler->display->display_options['fields']['nothing_1']['exclude'] = TRUE;
   $handler->display->display_options['fields']['nothing_1']['alter']['text'] = '<a href="[field_catalog_link_music] " target="_blank">View in Library Catalog</a>';
   $handler->display->display_options['fields']['nothing_1']['element_label_colon'] = FALSE;
   /* Field: Content: Please select one: */
@@ -340,6 +353,7 @@ echo "<a href = users/public_profile/$row->uid>".$row->name."</a>";
   $handler->display->display_options['fields']['nothing']['table'] = 'views';
   $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
   $handler->display->display_options['fields']['nothing']['label'] = '';
+  $handler->display->display_options['fields']['nothing']['exclude'] = TRUE;
   $handler->display->display_options['fields']['nothing']['alter']['text'] = '<div class="review">[php_1]</div><div class = "views-field-field-user-avatar">[php_2]</div><div class="user">[php_3]</div>';
   $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
   /* Field: Content: Post date */
@@ -347,6 +361,7 @@ echo "<a href = users/public_profile/$row->uid>".$row->name."</a>";
   $handler->display->display_options['fields']['created']['table'] = 'node';
   $handler->display->display_options['fields']['created']['field'] = 'created';
   $handler->display->display_options['fields']['created']['label'] = '';
+  $handler->display->display_options['fields']['created']['exclude'] = TRUE;
   $handler->display->display_options['fields']['created']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['created']['date_format'] = 'custom';
   $handler->display->display_options['fields']['created']['custom_date_format'] = 'M d, Y';
@@ -356,6 +371,7 @@ echo "<a href = users/public_profile/$row->uid>".$row->name."</a>";
   $handler->display->display_options['fields']['body']['table'] = 'field_data_body';
   $handler->display->display_options['fields']['body']['field'] = 'body';
   $handler->display->display_options['fields']['body']['label'] = '';
+  $handler->display->display_options['fields']['body']['exclude'] = TRUE;
   $handler->display->display_options['fields']['body']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['body']['type'] = 'text_trimmed';
   $handler->display->display_options['fields']['body']['settings'] = array(
@@ -366,8 +382,28 @@ echo "<a href = users/public_profile/$row->uid>".$row->name."</a>";
   $handler->display->display_options['fields']['view_node']['table'] = 'views_entity_node';
   $handler->display->display_options['fields']['view_node']['field'] = 'view_node';
   $handler->display->display_options['fields']['view_node']['label'] = '';
+  $handler->display->display_options['fields']['view_node']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['view_node']['alter']['make_link'] = TRUE;
+  $handler->display->display_options['fields']['view_node']['alter']['link_class'] = 'button';
   $handler->display->display_options['fields']['view_node']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['view_node']['text'] = 'View full review';
+  /* Field: Global: Custom text */
+  $handler->display->display_options['fields']['nothing_2']['id'] = 'nothing_2';
+  $handler->display->display_options['fields']['nothing_2']['table'] = 'views';
+  $handler->display->display_options['fields']['nothing_2']['field'] = 'nothing';
+  $handler->display->display_options['fields']['nothing_2']['label'] = '';
+  $handler->display->display_options['fields']['nothing_2']['alter']['text'] = '<div class= "common-review-wrapper">
+<div class="title"><div>[counter]. [title]</div><div class="likes">Likes:<span>[count]</span></div></div>
+<div>[php]</div>
+
+<div>[field_artist_performer]</div>
+<div>[nothing_1] </div>
+<div class="review-by-user">[nothing]</div>
+<div class="date"><p>[created]</p> </div>
+<div class="body"><p>[body]</p></div>
+<div>[view_node]</div>
+</div>';
+  $handler->display->display_options['fields']['nothing_2']['element_label_colon'] = FALSE;
   $handler->display->display_options['defaults']['sorts'] = FALSE;
   /* Sort criterion: Content: Post date */
   $handler->display->display_options['sorts']['created']['id'] = 'created';
@@ -540,7 +576,7 @@ else if($last_segment == \'players\'){
   }
 }
 ';
-  $handler->display->display_options['path'] = 'music-review-listing';
+  $handler->display->display_options['path'] = 'music-review';
 
   /* Display: Staff */
   $handler = $view->new_display('page', 'Staff', 'page_1');
