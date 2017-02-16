@@ -256,6 +256,12 @@
 			width: 100%;
 			bottom: 10px;
 		}
+		.slide {
+			.view-footer {
+				padding-left: 0;
+				text-align: center;
+			}
+		}
 	}
 	.view-home-page-video-slideshow {
 		&.flicker-block {
@@ -316,6 +322,7 @@
 		}
 	}
 	.booklist-wrapp {
+		margin-top: 15px;
 		.book-body-wrapp {
 			div.title {
 				width: 100%;
@@ -328,6 +335,7 @@
     	div.book-like {
     		width: 100%;
     		float: right;
+    		margin-top: 10px;
     	}
     }
 	}
@@ -512,6 +520,18 @@
     		padding-right: 0;
     		margin-bottom: 20px;
     	}
+    	> div {
+		 	&.rewards {
+		 		.view-Rewards-Progress {
+		 			.view-content {
+		 				 .cs-default &, .cs-classic &, .cs-elegant & {
+			 				 	margin-top: 0;
+			 				 	padding-left: 0;
+		 				 	}	 
+		 				}
+		 			}
+		 		}
+		 	}
     }
     .calendar-wrapper {
 	    .fc-center {
@@ -527,6 +547,12 @@
 	  			font-size: 25px;
 	  		}
 	  	}
+	  	.fc-content {
+	  		white-space: inherit;
+	  		> div {
+	  			display: none;
+	  		}
+	  	}
 	  }
 	  table {
 	  	.fc-head {
@@ -537,6 +563,9 @@
 	  	.fc-scroller {
 	  		height: auto !important;
 	  	}
+	  }
+	  .print-pdf {
+	  	display: none;
 	  }
 	}
 	/*-------------Progress Page Ends-------------*/
@@ -706,6 +735,9 @@
 			flex: 0 0 calc(50% - 10px);
 		}
 	}
+	.booklist-wrapp {
+		margin-top: 15px;
+	}
 	/*-------------Booklisting Page Ends-------------*/
 
 	/*-------------Events Page-------------*/
@@ -740,12 +772,18 @@
 			div.sticker-block {
 				flex: 0 0 41%;
 			}
-			div.rewards {
-				flex: 0 0 30%;
-			}
-			div.reading-progress {
-				flex: 0 0 20%;
-			}
+		 > div {
+		 	&.rewards {
+		 		.view-Rewards-Progress {
+		 			.view-content {
+		 				 .cs-default &, .cs-classic &, .cs-elegant & {
+			 				 	margin-top: 0;
+			 				 	padding-left: 0;
+		 				 	}	 
+		 				}
+		 			}
+		 		}
+		 	}
 		}
 	}
 	/*-------------Progress Page Ends-------------*/
