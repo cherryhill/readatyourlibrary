@@ -75,6 +75,9 @@
 			    align-items: center;
 					font-size: 14px;
 					margin-right: 10px;
+					span {
+						margin-left: 5px;
+					}
 					.button-hide {
 						display: none;
 					}
@@ -145,8 +148,12 @@
 	/*-------------Dashboard Page-------------*/
 	.homebox {
 		&.homebox-auto-save {
+			width: 100%;
+			margin-left: 0;
 			.homebox-column-wrapper {
 				width: 100% !important;
+				padding-left: 0;
+				padding-right: 0;
 				.portlet-header {
 					.cs-default & {
 		        font-size: 18px !important;
@@ -161,6 +168,62 @@
 			}
 			.homebox-column {
 				height: auto !important;
+			}
+		}
+	}
+	.page-user-profile {
+		.block-play-library-custom-pm-block {
+			padding-right: 10px;
+			padding-left: 10px;
+			.pm-custom {
+				> div {
+					&:nth-of-type(1) {
+						flex: 0 0 100%;
+					}
+					&:nth-of-type(2) {
+						flex: 0 0 100%;
+						padding-top: 20px;
+					}
+				}
+				.pm {
+					border-bottom: 1px dotted #000;
+					padding: 10px 0;
+					.pm-subject, .pm-admin, .pm-date {
+						flex: 0 0 100%;
+						white-space: initial;
+						.pm-new {
+							span {
+								display: inline-block;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	.my-dashbord-block {
+		.attachment {
+			flex: 0 0 100%;
+			.view-content {
+				.views-field-nothing {
+					.image {
+						display: inline-block;
+					}
+					.name {
+						width: 100%;
+						text-align: center;
+						display: inline-block;
+					}
+					.field-content > div {
+						padding-left: 0;
+					}
+				}
+			}
+		}
+		.view-content {
+			flex: 0 0 100%;
+			table {
+				margin-right: 10px;
 			}
 		}
 	}
@@ -192,6 +255,12 @@
 		.controls {
 			width: 100%;
 			bottom: 10px;
+		}
+		.slide {
+			.view-footer {
+				padding-left: 0;
+				text-align: center;
+			}
 		}
 	}
 	.view-home-page-video-slideshow {
@@ -253,6 +322,7 @@
 		}
 	}
 	.booklist-wrapp {
+		margin-top: 15px;
 		.book-body-wrapp {
 			div.title {
 				width: 100%;
@@ -265,6 +335,7 @@
     	div.book-like {
     		width: 100%;
     		float: right;
+    		margin-top: 10px;
     	}
     }
 	}
@@ -422,6 +493,8 @@
 	/*-------------Photo's Video's Page-------------*/
 	.view.photos-block, .view.video-block {
 		.view-content {
+			width: 100%;
+			margin-left: 0;
 			.views-row {
 				flex: 0 0 100%;
 				.flickr-photoset-img {
@@ -447,6 +520,18 @@
     		padding-right: 0;
     		margin-bottom: 20px;
     	}
+    	> div {
+		 	&.rewards {
+		 		.view-Rewards-Progress {
+		 			.view-content {
+		 				 .cs-default &, .cs-classic &, .cs-elegant & {
+			 				 	margin-top: 0;
+			 				 	padding-left: 0;
+		 				 	}	 
+		 				}
+		 			}
+		 		}
+		 	}
     }
     .calendar-wrapper {
 	    .fc-center {
@@ -462,6 +547,12 @@
 	  			font-size: 25px;
 	  		}
 	  	}
+	  	.fc-content {
+	  		white-space: inherit;
+	  		> div {
+	  			display: none;
+	  		}
+	  	}
 	  }
 	  table {
 	  	.fc-head {
@@ -472,6 +563,9 @@
 	  	.fc-scroller {
 	  		height: auto !important;
 	  	}
+	  }
+	  .print-pdf {
+	  	display: none;
 	  }
 	}
 	/*-------------Progress Page Ends-------------*/
@@ -486,6 +580,7 @@
 			width: 85%;
   		display: inline-block;
   		margin-bottom: 10px;
+  		margin-left: 5px;
 		}
 	}
 	.l-header {
@@ -565,6 +660,43 @@
 			}
 		}
 	}
+	.page-user-profile {
+		.block-play-library-custom-pm-block {
+			.pm-custom {
+				> div {
+					&:nth-of-type(1) {
+						flex: 0 0 100%;
+					}
+					&:nth-of-type(2) {
+						flex: 0 0 100%;
+						padding-top: 20px;
+					}
+				}
+				.pm {
+					border-bottom: 1px dotted #000;
+					padding: 10px 0;
+					.pm-subject, .pm-admin, .pm-date {
+						flex: 0 0 100%;
+					}
+				}
+			}
+		}
+	}
+	.my-dashbord-block {
+		.attachment {
+			.view-content {
+				.views-field-nothing {
+					.image {
+						display: inline-block;
+					}
+					.name {
+						width: 100%;
+						text-align: center;
+					}
+				}
+			}
+		}
+	}
 	/*-------------Dashboard Page Ends-------------*/
 
 	/*-------------Home Page-------------*/
@@ -603,6 +735,9 @@
 			flex: 0 0 calc(50% - 10px);
 		}
 	}
+	.booklist-wrapp {
+		margin-top: 15px;
+	}
 	/*-------------Booklisting Page Ends-------------*/
 
 	/*-------------Events Page-------------*/
@@ -637,13 +772,31 @@
 			div.sticker-block {
 				flex: 0 0 41%;
 			}
-			div.rewards {
-				flex: 0 0 30%;
-			}
-			div.reading-progress {
-				flex: 0 0 20%;
-			}
+		 > div {
+		 	&.rewards {
+		 		.view-Rewards-Progress {
+		 			.view-content {
+		 				 .cs-default &, .cs-classic &, .cs-elegant & {
+			 				 	margin-top: 0;
+			 				 	padding-left: 0;
+		 				 	}	 
+		 				}
+		 			}
+		 		}
+		 	}
 		}
 	}
 	/*-------------Progress Page Ends-------------*/
+
+	/*-------------Photos/Videos Page-------------*/
+	.view.photos-block {
+		.view-content {
+			width: 100%;
+			.views-row {
+				padding-left: 25px;
+				padding-right: 0;
+			}
+		}
+	}
+	/*-------------Photos/Videos Page-------------*/
 }
