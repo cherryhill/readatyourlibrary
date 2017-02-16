@@ -1,0 +1,186 @@
+.page-user-register, .page-user-edit {
+	.form-type-date-select {
+		width: 100%;
+		.date-padding {
+			width: 100%;
+			padding: 0 !important;
+			.form-type-select {
+				width: 17%;
+				margin-right: 3%;
+				.chosen-container {
+					width: 100% !important;
+				}
+			}
+		}
+	}
+	.form-wrapper {
+		.field-type-text, .field-type-phone, .field-type-email  {
+	    width: 30%;
+	    float: left;
+	    margin-right: 3%;
+	    &.field-name-field-email {
+	    	margin-right: 0;
+	    }
+  	}
+	}
+	.field-type-addressfield {
+		display: inline-block;
+		width: 100%;
+		.form-type-select, .form-type-textfield {
+			width: 30%;
+			float: left;
+			margin-right: 3%;
+			.chosen-container {
+				width: 100% !important;
+			}
+		}
+	}
+	.field-type-taxonomy-term-reference,.field-name-field-library-card-number,
+	.field-name-field-school, .field-name-field-user-grade, .field-name-field-organization,
+	.field-name-field-hear-about {
+    width: 30%;
+    float: left;
+    margin-right: 3%;
+    .chosen-container {
+			width: 100% !important;
+		}
+	}
+	.field-name-field-user-grade, .username-curr, .password-suggestions.description,
+	.description {
+		clear: both;
+		line-height: 1.3em;
+	}
+	.field-widget-random-list-widget-randomizer {
+		float: left;
+		margin-bottom: 1em;
+	}
+	.form-submit, .secondary {
+		margin-left: 0;
+		margin-right: 20px;
+	}
+	.form-item-mail {
+		clear: both;
+		input {
+			width: 30%;
+		}
+	}
+	.form-type-password-confirm {
+		margin-top: 10px !important;
+		.form-type-password {
+			width: 100%;
+		}
+		.password-strength, .password-confirm {
+	    width: 20%;
+	    float: right;
+	    margin-right: 45%;
+	  }
+		input {
+			width: 30%;
+		}
+		input.password-confirm {
+			width: 30%;
+			float: none;
+			margin-right: 0;
+		}
+	}
+	.form-type-radio {
+		float: left;
+		margin-right: 15px;
+	}
+	fieldset {
+		padding: 0.35em 0.625em 0.75em;
+	}
+	.form-item {
+		margin-top: 5px;
+		margin-bottom: 5px;
+	}
+	label {
+		line-height: 1.3em;
+		margin-bottom: 5px;
+	}
+	input {
+		margin-bottom: 5px;
+	}
+	.field-type-addressfield {
+		input {
+		 margin-bottom: 12px;
+	 	}
+	}
+	.chosen-container {
+		margin-bottom: 5px;
+	}
+	.form-select {
+		margin-bottom: 5px;
+	}
+	.field-widget-options-buttons {
+		width: 100%;
+		display: inline-block;
+		margin-bottom: 10px;
+	} 
+}
+
+@media all and (max-width: 767px) {
+	.page-user-register, .page-user-edit {
+		.form-type-date-select {
+			.date-padding {
+				.form-type-select {
+					width: 100%;
+					margin-right: 0;
+				}
+			}
+		}
+		.form-wrapper {
+		 .field-type-text, .field-type-phone, .field-type-email  {
+			 	width: 100%;
+			 	margin-right: 0;
+			}
+		}
+		.field-type-addressfield {
+			.form-type-select, .form-type-textfield {
+				width: 100%;
+				margin-right: 0;
+			}
+		}
+		.field-type-taxonomy-term-reference,.field-name-field-library-card-number,
+		.field-name-field-school, .field-name-field-user-grade, .field-name-field-organization,
+		.field-name-field-hear-about {
+	    width: 100%;
+	    margin-right: 0;
+	  }
+	  .field-widget-random-list-widget-randomizer {
+			float: none;
+	  }
+	  .form-item-mail {
+			input {
+				width: 65%;
+			}
+		}
+	  .form-type-password-confirm {
+	  	.password-strength, .password-confirm {
+	  		width: 25%;
+		    margin-right: 5%;
+		    line-height: 1.1em;
+		    font-size: 14px;
+	  	}
+	  	input {
+	  		width: 65%;
+	  	}
+	  	input.password-confirm {
+				width: 65%;
+			}
+	  }
+	  .form-type-radio {
+	  	margin-right: 0;
+	  	float: none;
+	  }
+	  .field-type-addressfield {
+			input {
+			 margin-bottom: 5px;
+		 	}
+		}
+		.password-suggestions {
+			max-width: 100%;
+			width: 100%;
+		}
+	}
+}

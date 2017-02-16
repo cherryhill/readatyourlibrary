@@ -1,5 +1,9 @@
 //view filter block common in review pages
-.view-booklist-page-view,.book-reviews-page,.view-movie-review, .view-music-review-listing, .view--video-game-review {
+.view-booklist-page-view,
+.book-reviews-page,.view-movie-review,
+.view-music-review-listing,
+.view--video-game-review,
+.view--individual-activities-listing {
 
   ul {
     list-style: none;
@@ -9,6 +13,7 @@
      }
   }
   .view-filters {
+    margin-top: 23px;
    @extend .primary-background;
    .cs-default & {
           background: url("../images/background.jpeg");
@@ -410,7 +415,7 @@
      }
   }
 }
-h2.reviews-title, .view-booklist-slideshow .view-header h1 {
+h2.reviews-title, .view-booklist-slideshow .view-header h1{
   @extend h1;
   margin-top: 0;
   background-size: 100%;
@@ -435,7 +440,11 @@ h2.reviews-title, .view-booklist-slideshow .view-header h1 {
   }
 
 }
-.section-movie-review,.section-music-review,.section-video-game-review {
+.section-movie-review,
+.section-music-review,
+.section-video-game-review,
+.page-activities-list,
+.page-activities-listing {
   #page-title {
     display: none;
   }
@@ -488,4 +497,11 @@ h2.reviews-title, .view-booklist-slideshow .view-header h1 {
        margin-top: 10px;
        margin-bottom: 20px;
      }
+}
+.activity-list-wrapper {
+   a {
+     @include bold-font;
+     margin-top: 15px;
+     display: inline-block;
+   }
 }
