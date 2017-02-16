@@ -7857,6 +7857,29 @@ a.th {
   background-position: -20px -266px;
 }
 
+/* line 380, ../scss/base/_common.scss */
+.bold-fonts {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  -moz-font-smoothing: grayscale;
+}
+/* line 66, ../scss/base/_mixins.scss */
+.cs-default .bold-fonts {
+  font-family: "Raleway", sans-serif;
+  font-weight: 700;
+}
+/* line 70, ../scss/base/_mixins.scss */
+.cs-classic .bold-fonts {
+  font-family: "Exo 2", sans-serif;
+  font-weight: 600;
+}
+/* line 74, ../scss/base/_mixins.scss */
+.cs-elegant .bold-fonts {
+  font-family: "Roboto", sans-serif;
+  font-weight: 700;
+}
+
 /* line 4, ../scss/base/_drupal.scss */
 .admin-menu .fixed {
   top: 1.8125em;
@@ -9953,7 +9976,7 @@ html {
   vertical-align: bottom;
   margin-left: 9px;
 }
-/* line 20, ../scss/components/_desktop-menu.scss */
+/* line 19, ../scss/components/_desktop-menu.scss */
 .menu-wrapper ul li a {
   width: inherit;
   border-radius: 10px;
@@ -9992,23 +10015,23 @@ html {
 .menu-wrapper ul li a:hover:after, .menu-wrapper ul li a:focus:after, .menu-wrapper ul li a.active:after {
   transform: rotateX(360deg);
 }
-/* line 49, ../scss/components/_desktop-menu.scss */
+/* line 47, ../scss/components/_desktop-menu.scss */
 .cs-default .menu-wrapper ul li a:hover, .cs-default .menu-wrapper ul li a:focus, .cs-default .menu-wrapper ul li a.active {
   color: #32024e;
 }
-/* line 54, ../scss/components/_desktop-menu.scss */
+/* line 52, ../scss/components/_desktop-menu.scss */
 .cs-classic .menu-wrapper ul li a {
   color: #1d3557;
 }
-/* line 57, ../scss/components/_desktop-menu.scss */
+/* line 55, ../scss/components/_desktop-menu.scss */
 .cs-classic .menu-wrapper ul li a:hover, .cs-classic .menu-wrapper ul li a:focus, .cs-classic .menu-wrapper ul li a.active {
   color: #e63946;
 }
-/* line 63, ../scss/components/_desktop-menu.scss */
+/* line 61, ../scss/components/_desktop-menu.scss */
 .cs-elegant .menu-wrapper ul li a:hover, .cs-elegant .menu-wrapper ul li a:focus, .cs-elegant .menu-wrapper ul li a.active {
   color: #333333;
 }
-/* line 68, ../scss/components/_desktop-menu.scss */
+/* line 66, ../scss/components/_desktop-menu.scss */
 .menu-wrapper ul li a:after {
   content: " ";
   width: 60px;
@@ -10020,15 +10043,15 @@ html {
   transition: all ease 1.8s;
   transition-delay: 0.3s;
 }
-/* line 85, ../scss/components/_desktop-menu.scss */
+/* line 84, ../scss/components/_desktop-menu.scss */
 .cs-default .menu-wrapper ul li a.progress:after {
   background-position: -16px -2193px;
 }
-/* line 89, ../scss/components/_desktop-menu.scss */
+/* line 88, ../scss/components/_desktop-menu.scss */
 .cs-default .menu-wrapper ul li a.progress:hover:after, .cs-default .menu-wrapper ul li a.progress:focus:after, .cs-default .menu-wrapper ul li a.progress.active:after {
   background-position: -16px -2138px;
 }
-/* line 95, ../scss/components/_desktop-menu.scss */
+/* line 94, ../scss/components/_desktop-menu.scss */
 .cs-classic .menu-wrapper ul li a.progress:after {
   background-position: -16px -2029px;
 }
@@ -10040,151 +10063,175 @@ html {
 .cs-elegant .menu-wrapper ul li a.progress:after {
   background-position: -16px -2193px;
 }
-/* line 107, ../scss/components/_desktop-menu.scss */
+/* line 108, ../scss/components/_desktop-menu.scss */
 .cs-elegant .menu-wrapper ul li a.progress:hover:after, .cs-elegant .menu-wrapper ul li a.progress:focus:after, .cs-elegant .menu-wrapper ul li a.progress.active:after {
   background-position: -16px -2245px;
 }
-/* line 115, ../scss/components/_desktop-menu.scss */
+/* line 116, ../scss/components/_desktop-menu.scss */
 .cs-default .menu-wrapper ul li a.activities:after {
   background-position: -9px -92px;
 }
-/* line 119, ../scss/components/_desktop-menu.scss */
+/* line 120, ../scss/components/_desktop-menu.scss */
 .cs-default .menu-wrapper ul li a.activities:hover:after, .cs-default .menu-wrapper ul li a.activities:focus:after, .cs-default .menu-wrapper ul li a.activities.active:after {
   background-position: -9px -20px;
 }
-/* line 125, ../scss/components/_desktop-menu.scss */
+/* line 126, ../scss/components/_desktop-menu.scss */
 .cs-classic .menu-wrapper ul li a.activities:after {
   background-position: -9px -236px;
 }
-/* line 128, ../scss/components/_desktop-menu.scss */
+/* line 130, ../scss/components/_desktop-menu.scss */
 .cs-classic .menu-wrapper ul li a.activities:hover:after, .cs-classic .menu-wrapper ul li a.activities:focus:after, .cs-classic .menu-wrapper ul li a.activities.active:after {
   background-position: -9px -309px;
 }
-/* line 133, ../scss/components/_desktop-menu.scss */
+/* line 136, ../scss/components/_desktop-menu.scss */
 .cs-elegant .menu-wrapper ul li a.activities:after {
   background-position: -9px -92px;
 }
-/* line 136, ../scss/components/_desktop-menu.scss */
+/* line 140, ../scss/components/_desktop-menu.scss */
 .cs-elegant .menu-wrapper ul li a.activities:hover:after, .cs-elegant .menu-wrapper ul li a.activities:focus:after, .cs-elegant .menu-wrapper ul li a.activities.active:after {
   background-position: -9px -164px;
 }
-/* line 144, ../scss/components/_desktop-menu.scss */
+/* line 148, ../scss/components/_desktop-menu.scss */
 .cs-default .menu-wrapper ul li a.rewards:after {
   background-position: -5px -2737px;
 }
-/* line 148, ../scss/components/_desktop-menu.scss */
+/* line 152, ../scss/components/_desktop-menu.scss */
 .cs-default .menu-wrapper ul li a.rewards:hover:after, .cs-default .menu-wrapper ul li a.rewards:focus:after, .cs-default .menu-wrapper ul li a.rewards.active:after {
   background-position: -5px -2664px;
 }
-/* line 154, ../scss/components/_desktop-menu.scss */
+/* line 158, ../scss/components/_desktop-menu.scss */
 .cs-classic .menu-wrapper ul li a.rewards:after {
   background-position: -5px -2877px;
 }
-/* line 157, ../scss/components/_desktop-menu.scss */
+/* line 162, ../scss/components/_desktop-menu.scss */
 .cs-classic .menu-wrapper ul li a.rewards:hover:after, .cs-classic .menu-wrapper ul li a.rewards:focus:after, .cs-classic .menu-wrapper ul li a.rewards.active:after {
   background-position: -5px -2949px;
 }
-/* line 162, ../scss/components/_desktop-menu.scss */
+/* line 168, ../scss/components/_desktop-menu.scss */
 .cs-elegant .menu-wrapper ul li a.rewards:after {
   background-position: -5px -2737px;
 }
-/* line 165, ../scss/components/_desktop-menu.scss */
+/* line 172, ../scss/components/_desktop-menu.scss */
 .cs-elegant .menu-wrapper ul li a.rewards:hover:after, .cs-elegant .menu-wrapper ul li a.rewards:focus:after, .cs-elegant .menu-wrapper ul li a.rewards.active:after {
   background-position: -5px -2805px;
 }
-/* line 173, ../scss/components/_desktop-menu.scss */
+/* line 180, ../scss/components/_desktop-menu.scss */
 .cs-default .menu-wrapper ul li a.events:after {
   background-position: -5px -450px;
 }
-/* line 177, ../scss/components/_desktop-menu.scss */
+/* line 184, ../scss/components/_desktop-menu.scss */
 .cs-default .menu-wrapper ul li a.events:hover:after, .cs-default .menu-wrapper ul li a.events:focus:after, .cs-default .menu-wrapper ul li a.events.active:after {
   background-position: -5px -380px;
 }
-/* line 183, ../scss/components/_desktop-menu.scss */
+/* line 190, ../scss/components/_desktop-menu.scss */
 .cs-classic .menu-wrapper ul li a.events:after {
   background-position: -5px -590px;
 }
-/* line 186, ../scss/components/_desktop-menu.scss */
+/* line 194, ../scss/components/_desktop-menu.scss */
 .cs-classic .menu-wrapper ul li a.events:hover:after, .cs-classic .menu-wrapper ul li a.events:focus:after, .cs-classic .menu-wrapper ul li a.events.active:after {
   background-position: -5px -660px;
 }
-/* line 191, ../scss/components/_desktop-menu.scss */
+/* line 200, ../scss/components/_desktop-menu.scss */
 .cs-elegant .menu-wrapper ul li a.events:after {
   background-position: -5px -450px;
 }
-/* line 194, ../scss/components/_desktop-menu.scss */
+/* line 204, ../scss/components/_desktop-menu.scss */
 .cs-elegant .menu-wrapper ul li a.events:hover:after, .cs-elegant .menu-wrapper ul li a.events:focus:after, .cs-elegant .menu-wrapper ul li a.events.active:after {
   background-position: -5px -520px;
 }
-/* line 202, ../scss/components/_desktop-menu.scss */
+/* line 211, ../scss/components/_desktop-menu.scss */
+.page-booklists.cs-default .menu-wrapper ul li a.reviews, .page-movie-review.cs-default .menu-wrapper ul li a.reviews, .page-music-review.cs-default .menu-wrapper ul li a.reviews, .page-video-game-review.cs-default .menu-wrapper ul li a.reviews, .page-activities-list.cs-default .menu-wrapper ul li a.reviews, .page-activities-listing.cs-default .menu-wrapper ul li a.reviews {
+  color: #32024e;
+}
+/* line 219, ../scss/components/_desktop-menu.scss */
+.page-booklists.cs-default .menu-wrapper ul li a.reviews:after, .page-movie-review.cs-default .menu-wrapper ul li a.reviews:after, .page-music-review.cs-default .menu-wrapper ul li a.reviews:after, .page-video-game-review.cs-default .menu-wrapper ul li a.reviews:after, .page-activities-list.cs-default .menu-wrapper ul li a.reviews:after, .page-activities-listing.cs-default .menu-wrapper ul li a.reviews:after {
+  background-position: -2px -2306px;
+}
+/* line 225, ../scss/components/_desktop-menu.scss */
 .cs-default .menu-wrapper ul li a.reviews:after {
   background-position: -2px -2379px;
 }
-/* line 206, ../scss/components/_desktop-menu.scss */
+/* line 229, ../scss/components/_desktop-menu.scss */
 .cs-default .menu-wrapper ul li a.reviews:hover:after, .cs-default .menu-wrapper ul li a.reviews:focus:after, .cs-default .menu-wrapper ul li a.reviews.active:after {
   background-position: -2px -2306px;
 }
-/* line 212, ../scss/components/_desktop-menu.scss */
+/* line 234, ../scss/components/_desktop-menu.scss */
+.page-booklists.cs-classic .menu-wrapper ul li a.reviews, .page-movie-review.cs-classic .menu-wrapper ul li a.reviews, .page-music-review.cs-classic .menu-wrapper ul li a.reviews, .page-video-game-review.cs-classic .menu-wrapper ul li a.reviews, .page-activities-list.cs-classic .menu-wrapper ul li a.reviews, .page-activities-listing.cs-classic .menu-wrapper ul li a.reviews {
+  color: #e63946;
+}
+/* line 242, ../scss/components/_desktop-menu.scss */
+.page-booklists.cs-classic .menu-wrapper ul li a.reviews:after, .page-movie-review.cs-classic .menu-wrapper ul li a.reviews:after, .page-music-review.cs-classic .menu-wrapper ul li a.reviews:after, .page-video-game-review.cs-classic .menu-wrapper ul li a.reviews:after, .page-activities-list.cs-classic .menu-wrapper ul li a.reviews:after, .page-activities-listing.cs-classic .menu-wrapper ul li a.reviews:after {
+  background-position: -2px -2597px;
+}
+/* line 248, ../scss/components/_desktop-menu.scss */
 .cs-classic .menu-wrapper ul li a.reviews:after {
   background-position: -2px -2524px;
 }
-/* line 216, ../scss/components/_desktop-menu.scss */
+/* line 252, ../scss/components/_desktop-menu.scss */
 .cs-classic .menu-wrapper ul li a.reviews:hover:after, .cs-classic .menu-wrapper ul li a.reviews:focus:after, .cs-classic .menu-wrapper ul li a.reviews.active:after {
   background-position: -2px -2597px;
 }
-/* line 221, ../scss/components/_desktop-menu.scss */
+/* line 257, ../scss/components/_desktop-menu.scss */
+.page-booklists.cs-elegant .menu-wrapper ul li a.reviews, .page-movie-review.cs-elegant .menu-wrapper ul li a.reviews, .page-music-review.cs-elegant .menu-wrapper ul li a.reviews, .page-video-game-review.cs-elegant .menu-wrapper ul li a.reviews, .page-activities-list.cs-elegant .menu-wrapper ul li a.reviews, .page-activities-listing.cs-elegant .menu-wrapper ul li a.reviews {
+  color: #333333;
+}
+/* line 265, ../scss/components/_desktop-menu.scss */
+.page-booklists.cs-elegant .menu-wrapper ul li a.reviews:after, .page-movie-review.cs-elegant .menu-wrapper ul li a.reviews:after, .page-music-review.cs-elegant .menu-wrapper ul li a.reviews:after, .page-video-game-review.cs-elegant .menu-wrapper ul li a.reviews:after, .page-activities-list.cs-elegant .menu-wrapper ul li a.reviews:after, .page-activities-listing.cs-elegant .menu-wrapper ul li a.reviews:after {
+  background-position: -2px -2452px;
+}
+/* line 271, ../scss/components/_desktop-menu.scss */
 .cs-elegant .menu-wrapper ul li a.reviews:after {
   background-position: -2px -2379px;
 }
-/* line 225, ../scss/components/_desktop-menu.scss */
+/* line 275, ../scss/components/_desktop-menu.scss */
 .cs-elegant .menu-wrapper ul li a.reviews:hover:after, .cs-elegant .menu-wrapper ul li a.reviews:focus:after, .cs-elegant .menu-wrapper ul li a.reviews.active:after {
   background-position: -2px -2452px;
 }
-/* line 233, ../scss/components/_desktop-menu.scss */
+/* line 283, ../scss/components/_desktop-menu.scss */
 .cs-default .menu-wrapper ul li a.photos:after {
   background-position: -8px -1380px;
 }
-/* line 237, ../scss/components/_desktop-menu.scss */
+/* line 287, ../scss/components/_desktop-menu.scss */
 .cs-default .menu-wrapper ul li a.photos:hover:after, .cs-default .menu-wrapper ul li a.photos:focus:after, .cs-default .menu-wrapper ul li a.photos.active:after {
   background-position: -8px -1314px;
 }
-/* line 243, ../scss/components/_desktop-menu.scss */
+/* line 293, ../scss/components/_desktop-menu.scss */
 .cs-classic .menu-wrapper ul li a.photos:after {
   background-position: -8px -1514px;
 }
-/* line 247, ../scss/components/_desktop-menu.scss */
+/* line 297, ../scss/components/_desktop-menu.scss */
 .cs-classic .menu-wrapper ul li a.photos:hover:after, .cs-classic .menu-wrapper ul li a.photos:focus:after, .cs-classic .menu-wrapper ul li a.photos.active:after {
   background-position: -8px -1578px;
 }
-/* line 252, ../scss/components/_desktop-menu.scss */
+/* line 303, ../scss/components/_desktop-menu.scss */
 .cs-elegant .menu-wrapper ul li a.photos:after {
   background-position: -8px -1380px;
 }
-/* line 255, ../scss/components/_desktop-menu.scss */
+/* line 307, ../scss/components/_desktop-menu.scss */
 .cs-elegant .menu-wrapper ul li a.photos:hover:after, .cs-elegant .menu-wrapper ul li a.photos:focus:after, .cs-elegant .menu-wrapper ul li a.photos.active:after {
   background-position: -8px -1447px;
 }
-/* line 263, ../scss/components/_desktop-menu.scss */
+/* line 315, ../scss/components/_desktop-menu.scss */
 .cs-default .menu-wrapper ul li a.current-program:after {
   background-position: -8px -1728px;
 }
-/* line 267, ../scss/components/_desktop-menu.scss */
+/* line 319, ../scss/components/_desktop-menu.scss */
 .cs-default .menu-wrapper ul li a.current-program:hover:after, .cs-default .menu-wrapper ul li a.current-program:focus:after, .cs-default .menu-wrapper ul li a.current-program.active:after {
   background-position: -8px -1650px;
 }
-/* line 273, ../scss/components/_desktop-menu.scss */
+/* line 325, ../scss/components/_desktop-menu.scss */
 .cs-classic .menu-wrapper ul li a.current-program:after {
   background-position: -8px -1884px;
 }
-/* line 277, ../scss/components/_desktop-menu.scss */
+/* line 329, ../scss/components/_desktop-menu.scss */
 .cs-classic .menu-wrapper ul li a.current-program:hover:after, .cs-classic .menu-wrapper ul li a.current-program:focus:after, .cs-classic .menu-wrapper ul li a.current-program.active:after {
   background-position: -8px -1963px;
 }
-/* line 282, ../scss/components/_desktop-menu.scss */
+/* line 335, ../scss/components/_desktop-menu.scss */
 .cs-elegant .menu-wrapper ul li a.current-program:after {
   background-position: -8px -1728px;
 }
-/* line 286, ../scss/components/_desktop-menu.scss */
+/* line 339, ../scss/components/_desktop-menu.scss */
 .cs-elegant .menu-wrapper ul li a.current-program:hover:after, .cs-elegant .menu-wrapper ul li a.current-program:focus:after, .cs-elegant .menu-wrapper ul li a.current-program.active:after {
   background-position: -8px -1806px;
 }
@@ -12256,86 +12303,113 @@ html {
 .cs-elegant .mobile-menu + ul li a.events:focus:before, .cs-elegant .mobile-menu + ul li a.events.active:before {
   background-position: -5px -520px;
 }
-/* line 332, ../scss/components/_mobile-menu.scss */
-.cs-default .mobile-menu + ul li a.reviews:before {
-  background-position: -2px -2379px;
+/* line 331, ../scss/components/_mobile-menu.scss */
+.page-booklists.cs-default .mobile-menu + ul li a.reviews, .page-movie-review.cs-default .mobile-menu + ul li a.reviews, .page-music-review.cs-default .mobile-menu + ul li a.reviews, .page-video-game-review.cs-default .mobile-menu + ul li a.reviews, .page-activities-list.cs-default .mobile-menu + ul li a.reviews, .page-activities-listing.cs-default .mobile-menu + ul li a.reviews {
+  color: #32024e;
+  border-bottom: 1px solid #32024e;
 }
-/* line 336, ../scss/components/_mobile-menu.scss */
-.cs-default .mobile-menu + ul li a.reviews:focus:before, .cs-default .mobile-menu + ul li a.reviews.active:before {
+/* line 339, ../scss/components/_mobile-menu.scss */
+.page-booklists.cs-default .mobile-menu + ul li a.reviews:after, .page-movie-review.cs-default .mobile-menu + ul li a.reviews:after, .page-music-review.cs-default .mobile-menu + ul li a.reviews:after, .page-video-game-review.cs-default .mobile-menu + ul li a.reviews:after, .page-activities-list.cs-default .mobile-menu + ul li a.reviews:after, .page-activities-listing.cs-default .mobile-menu + ul li a.reviews:after {
   background-position: -2px -2306px;
 }
-/* line 342, ../scss/components/_mobile-menu.scss */
-.cs-classic .mobile-menu + ul li a.reviews:before {
-  background-position: -2px -2524px;
-}
-/* line 346, ../scss/components/_mobile-menu.scss */
-.cs-classic .mobile-menu + ul li a.reviews:focus:before, .cs-classic .mobile-menu + ul li a.reviews.active:before {
-  background-position: -2px -2597px;
-}
-/* line 351, ../scss/components/_mobile-menu.scss */
-.cs-elegant .mobile-menu + ul li a.reviews:before {
+/* line 345, ../scss/components/_mobile-menu.scss */
+.cs-default .mobile-menu + ul li a.reviews:after {
   background-position: -2px -2379px;
 }
-/* line 355, ../scss/components/_mobile-menu.scss */
-.cs-elegant .mobile-menu + ul li a.reviews:focus:before, .cs-elegant .mobile-menu + ul li a.reviews.active:before {
+/* line 349, ../scss/components/_mobile-menu.scss */
+.cs-default .mobile-menu + ul li a.reviews:hover:after, .cs-default .mobile-menu + ul li a.reviews:focus:after, .cs-default .mobile-menu + ul li a.reviews.active:after {
+  background-position: -2px -2306px;
+}
+/* line 353, ../scss/components/_mobile-menu.scss */
+.page-booklists.cs-classic .mobile-menu + ul li a.reviews, .page-movie-review.cs-classic .mobile-menu + ul li a.reviews, .page-music-review.cs-classic .mobile-menu + ul li a.reviews, .page-video-game-review.cs-classic .mobile-menu + ul li a.reviews, .page-activities-list.cs-classic .mobile-menu + ul li a.reviews, .page-activities-listing.cs-classic .mobile-menu + ul li a.reviews {
+  color: #e63946;
+  border-bottom: 1px solid #e63946;
+}
+/* line 361, ../scss/components/_mobile-menu.scss */
+.page-booklists.cs-classic .mobile-menu + ul li a.reviews:after, .page-movie-review.cs-classic .mobile-menu + ul li a.reviews:after, .page-music-review.cs-classic .mobile-menu + ul li a.reviews:after, .page-video-game-review.cs-classic .mobile-menu + ul li a.reviews:after, .page-activities-list.cs-classic .mobile-menu + ul li a.reviews:after, .page-activities-listing.cs-classic .mobile-menu + ul li a.reviews:after {
+  background-position: -2px -2597px;
+}
+/* line 366, ../scss/components/_mobile-menu.scss */
+.cs-classic .mobile-menu + ul li a.reviews:after {
+  background-position: -2px -2524px;
+}
+/* line 370, ../scss/components/_mobile-menu.scss */
+.cs-classic .mobile-menu + ul li a.reviews:hover:after, .cs-classic .mobile-menu + ul li a.reviews:focus:after, .cs-classic .mobile-menu + ul li a.reviews.active:after {
+  background-position: -2px -2597px;
+}
+/* line 374, ../scss/components/_mobile-menu.scss */
+.page-booklists.cs-elegant .mobile-menu + ul li a.reviews, .page-movie-review.cs-elegant .mobile-menu + ul li a.reviews, .page-music-review.cs-elegant .mobile-menu + ul li a.reviews, .page-video-game-review.cs-elegant .mobile-menu + ul li a.reviews, .page-activities-list.cs-elegant .mobile-menu + ul li a.reviews, .page-activities-listing.cs-elegant .mobile-menu + ul li a.reviews {
+  color: #333333;
+  border-bottom: 1px solid #333333;
+}
+/* line 382, ../scss/components/_mobile-menu.scss */
+.page-booklists.cs-elegant .mobile-menu + ul li a.reviews:after, .page-movie-review.cs-elegant .mobile-menu + ul li a.reviews:after, .page-music-review.cs-elegant .mobile-menu + ul li a.reviews:after, .page-video-game-review.cs-elegant .mobile-menu + ul li a.reviews:after, .page-activities-list.cs-elegant .mobile-menu + ul li a.reviews:after, .page-activities-listing.cs-elegant .mobile-menu + ul li a.reviews:after {
   background-position: -2px -2452px;
 }
-/* line 363, ../scss/components/_mobile-menu.scss */
+/* line 387, ../scss/components/_mobile-menu.scss */
+.cs-elegant .mobile-menu + ul li a.reviews:after {
+  background-position: -2px -2379px;
+}
+/* line 391, ../scss/components/_mobile-menu.scss */
+.cs-elegant .mobile-menu + ul li a.reviews:hover:after, .cs-elegant .mobile-menu + ul li a.reviews:focus:after, .cs-elegant .mobile-menu + ul li a.reviews.active:after {
+  background-position: -2px -2452px;
+}
+/* line 399, ../scss/components/_mobile-menu.scss */
 .cs-default .mobile-menu + ul li a.photos:before {
   background-position: -8px -1380px;
 }
-/* line 367, ../scss/components/_mobile-menu.scss */
+/* line 403, ../scss/components/_mobile-menu.scss */
 .cs-default .mobile-menu + ul li a.photos:focus:before, .cs-default .mobile-menu + ul li a.photos.active:before {
   background-position: -8px -1314px;
 }
-/* line 373, ../scss/components/_mobile-menu.scss */
+/* line 409, ../scss/components/_mobile-menu.scss */
 .cs-classic .mobile-menu + ul li a.photos:before {
   background-position: -8px -1514px;
 }
-/* line 377, ../scss/components/_mobile-menu.scss */
+/* line 413, ../scss/components/_mobile-menu.scss */
 .cs-classic .mobile-menu + ul li a.photos:focus:before, .cs-classic .mobile-menu + ul li a.photos.active:before {
   background-position: -8px -1578px;
 }
-/* line 382, ../scss/components/_mobile-menu.scss */
+/* line 418, ../scss/components/_mobile-menu.scss */
 .cs-elegant .mobile-menu + ul li a.photos:before {
   background-position: -8px -1380px;
 }
-/* line 385, ../scss/components/_mobile-menu.scss */
+/* line 421, ../scss/components/_mobile-menu.scss */
 .cs-elegant .mobile-menu + ul li a.photos:focus:before, .cs-elegant .mobile-menu + ul li a.photos.active:before {
   background-position: -8px -1447px;
 }
-/* line 393, ../scss/components/_mobile-menu.scss */
+/* line 429, ../scss/components/_mobile-menu.scss */
 .cs-default .mobile-menu + ul li a.current-program:before {
   background-position: -8px -1728px;
 }
-/* line 397, ../scss/components/_mobile-menu.scss */
+/* line 433, ../scss/components/_mobile-menu.scss */
 .cs-default .mobile-menu + ul li a.current-program:focus:before, .cs-default .mobile-menu + ul li a.current-program.active:before {
   background-position: -8px -1650px;
 }
-/* line 403, ../scss/components/_mobile-menu.scss */
+/* line 439, ../scss/components/_mobile-menu.scss */
 .cs-classic .mobile-menu + ul li a.current-program:before {
   background-position: -8px -1884px;
 }
-/* line 407, ../scss/components/_mobile-menu.scss */
+/* line 443, ../scss/components/_mobile-menu.scss */
 .cs-classic .mobile-menu + ul li a.current-program:focus:before, .cs-classic .mobile-menu + ul li a.current-program.active:before {
   background-position: -8px -1963px;
 }
-/* line 412, ../scss/components/_mobile-menu.scss */
+/* line 448, ../scss/components/_mobile-menu.scss */
 .cs-elegant .mobile-menu + ul li a.current-program:before {
   background-position: -8px -1728px;
 }
-/* line 416, ../scss/components/_mobile-menu.scss */
+/* line 452, ../scss/components/_mobile-menu.scss */
 .cs-elegant .mobile-menu + ul li a.current-program:focus:before, .cs-elegant .mobile-menu + ul li a.current-program.active:before {
   background-position: -8px -1806px;
 }
 
-/* line 427, ../scss/components/_mobile-menu.scss */
+/* line 463, ../scss/components/_mobile-menu.scss */
 .mobile-menu, .mobile-menu + ul {
   display: none;
   /*temporary*/
 }
 
-/* line 430, ../scss/components/_mobile-menu.scss */
+/* line 466, ../scss/components/_mobile-menu.scss */
 .mobile-top-header {
   display: none;
   /**temporary*/
@@ -13779,7 +13853,7 @@ html {
   padding: 24px 10px 30px 40px;
 }
 
-/* line 8, ../scss/pages/_review-pages.scss */
+/* line 7, ../scss/pages/_review-pages.scss */
 .view-booklist-page-view ul,
 .book-reviews-page ul, .view-movie-review ul,
 .view-music-review-listing ul,
@@ -13796,7 +13870,7 @@ html {
 .view--individual-activities-listing ul li {
   margin-left: inherit;
 }
-/* line 15, ../scss/pages/_review-pages.scss */
+/* line 16, ../scss/pages/_review-pages.scss */
 .view-booklist-page-view .view-filters,
 .book-reviews-page .view-filters, .view-movie-review .view-filters,
 .view-music-review-listing .view-filters,
@@ -13805,7 +13879,7 @@ html {
   margin-top: 23px;
   overflow: visible;
 }
-/* line 18, ../scss/pages/_review-pages.scss */
+/* line 21, ../scss/pages/_review-pages.scss */
 .cs-default .view-booklist-page-view .view-filters, .cs-default
 .book-reviews-page .view-filters, .cs-default .view-movie-review .view-filters, .cs-default
 .view-music-review-listing .view-filters, .cs-default
@@ -13815,7 +13889,7 @@ html {
   padding: 8px 24px 4px;
   background-size: cover;
 }
-/* line 23, ../scss/pages/_review-pages.scss */
+/* line 27, ../scss/pages/_review-pages.scss */
 .cs-classic .view-booklist-page-view .view-filters, .cs-classic
 .book-reviews-page .view-filters, .cs-classic .view-movie-review .view-filters, .cs-classic
 .view-music-review-listing .view-filters, .cs-classic
@@ -13825,7 +13899,7 @@ html {
   padding: 8px 24px 4px;
   background-size: cover;
 }
-/* line 28, ../scss/pages/_review-pages.scss */
+/* line 33, ../scss/pages/_review-pages.scss */
 .cs-elegant .view-booklist-page-view .view-filters, .cs-elegant
 .book-reviews-page .view-filters, .cs-elegant .view-movie-review .view-filters, .cs-elegant
 .view-music-review-listing .view-filters, .cs-elegant
@@ -13835,7 +13909,7 @@ html {
   padding: 8px 24px 4px;
   background-size: cover;
 }
-/* line 33, ../scss/pages/_review-pages.scss */
+/* line 39, ../scss/pages/_review-pages.scss */
 .view-booklist-page-view .view-filters label,
 .book-reviews-page .view-filters label, .view-movie-review .view-filters label,
 .view-music-review-listing .view-filters label,
@@ -13843,7 +13917,7 @@ html {
 .view--individual-activities-listing .view-filters label {
   color: #fff;
 }
-/* line 39, ../scss/pages/_review-pages.scss */
+/* line 46, ../scss/pages/_review-pages.scss */
 .view-booklist-page-view .views-exposed-widgets,
 .book-reviews-page .views-exposed-widgets, .view-movie-review .views-exposed-widgets,
 .view-music-review-listing .views-exposed-widgets,
@@ -13857,7 +13931,7 @@ html {
   align-content: center;
   align-items: center;
 }
-/* line 49, ../scss/pages/_review-pages.scss */
+/* line 56, ../scss/pages/_review-pages.scss */
 .view-booklist-page-view .views-exposed-widget,
 .book-reviews-page .views-exposed-widget, .view-movie-review .views-exposed-widget,
 .view-music-review-listing .views-exposed-widget,
@@ -13871,7 +13945,7 @@ html {
   float: none;
   margin-right: 10px;
 }
-/* line 61, ../scss/pages/_review-pages.scss */
+/* line 68, ../scss/pages/_review-pages.scss */
 .view-booklist-page-view .chosen-container .chosen-single:hover, .view-booklist-page-view .chosen-container .chosen-single:focus,
 .book-reviews-page .chosen-container .chosen-single:hover,
 .book-reviews-page .chosen-container .chosen-single:focus, .view-movie-review .chosen-container .chosen-single:hover, .view-movie-review .chosen-container .chosen-single:focus,
@@ -13883,7 +13957,7 @@ html {
 .view--individual-activities-listing .chosen-container .chosen-single:focus {
   border-radius: 0;
 }
-/* line 64, ../scss/pages/_review-pages.scss */
+/* line 72, ../scss/pages/_review-pages.scss */
 .view-booklist-page-view .chosen-container .chosen-single b,
 .book-reviews-page .chosen-container .chosen-single b, .view-movie-review .chosen-container .chosen-single b,
 .view-music-review-listing .chosen-container .chosen-single b,
@@ -13892,7 +13966,7 @@ html {
   visibility: hidden;
   position: relative;
 }
-/* line 67, ../scss/pages/_review-pages.scss */
+/* line 76, ../scss/pages/_review-pages.scss */
 .view-booklist-page-view .chosen-container .chosen-single b:after,
 .book-reviews-page .chosen-container .chosen-single b:after, .view-movie-review .chosen-container .chosen-single b:after,
 .view-music-review-listing .chosen-container .chosen-single b:after,
@@ -13907,7 +13981,7 @@ html {
   left: 0;
   visibility: visible;
 }
-/* line 71, ../scss/pages/_review-pages.scss */
+/* line 81, ../scss/pages/_review-pages.scss */
 .cs-default .view-booklist-page-view .chosen-container .chosen-single b:after, .cs-default
 .book-reviews-page .chosen-container .chosen-single b:after, .cs-default .view-movie-review .chosen-container .chosen-single b:after, .cs-default
 .view-music-review-listing .chosen-container .chosen-single b:after, .cs-default
@@ -13915,7 +13989,7 @@ html {
 .view--individual-activities-listing .chosen-container .chosen-single b:after {
   border-top: 5px solid #32024e;
 }
-/* line 74, ../scss/pages/_review-pages.scss */
+/* line 85, ../scss/pages/_review-pages.scss */
 .cs-classic .view-booklist-page-view .chosen-container .chosen-single b:after, .cs-classic
 .book-reviews-page .chosen-container .chosen-single b:after, .cs-classic .view-movie-review .chosen-container .chosen-single b:after, .cs-classic
 .view-music-review-listing .chosen-container .chosen-single b:after, .cs-classic
@@ -13923,7 +13997,7 @@ html {
 .view--individual-activities-listing .chosen-container .chosen-single b:after {
   border-top: 5px solid #457b9d;
 }
-/* line 77, ../scss/pages/_review-pages.scss */
+/* line 89, ../scss/pages/_review-pages.scss */
 .cs-elegant .view-booklist-page-view .chosen-container .chosen-single b:after, .cs-elegant
 .book-reviews-page .chosen-container .chosen-single b:after, .cs-elegant .view-movie-review .chosen-container .chosen-single b:after, .cs-elegant
 .view-music-review-listing .chosen-container .chosen-single b:after, .cs-elegant
@@ -13931,7 +14005,7 @@ html {
 .view--individual-activities-listing .chosen-container .chosen-single b:after {
   border-top: 5px solid #333333;
 }
-/* line 90, ../scss/pages/_review-pages.scss */
+/* line 104, ../scss/pages/_review-pages.scss */
 .view-booklist-page-view .views-submit-button button.form-submit,
 .book-reviews-page .views-submit-button button.form-submit, .view-movie-review .views-submit-button button.form-submit,
 .view-music-review-listing .views-submit-button button.form-submit,
@@ -13940,7 +14014,7 @@ html {
   height: 31px;
   margin-top: 21px;
 }
-/* line 100, ../scss/pages/_review-pages.scss */
+/* line 114, ../scss/pages/_review-pages.scss */
 .view-booklist-page-view .chosen-container,
 .book-reviews-page .chosen-container, .view-movie-review .chosen-container,
 .view-music-review-listing .chosen-container,
@@ -13948,7 +14022,7 @@ html {
 .view--individual-activities-listing .chosen-container {
   width: 100% !important;
 }
-/* line 103, ../scss/pages/_review-pages.scss */
+/* line 118, ../scss/pages/_review-pages.scss */
 .view-booklist-page-view .chosen-container.chosen-with-drop.chosen-container-active a,
 .book-reviews-page .chosen-container.chosen-with-drop.chosen-container-active a, .view-movie-review .chosen-container.chosen-with-drop.chosen-container-active a,
 .view-music-review-listing .chosen-container.chosen-with-drop.chosen-container-active a,
@@ -13957,7 +14031,7 @@ html {
   box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
   border: none;
 }
-/* line 109, ../scss/pages/_review-pages.scss */
+/* line 124, ../scss/pages/_review-pages.scss */
 .view-booklist-page-view .chosen-container .chosen-drop,
 .book-reviews-page .chosen-container .chosen-drop, .view-movie-review .chosen-container .chosen-drop,
 .view-music-review-listing .chosen-container .chosen-drop,
@@ -13967,7 +14041,7 @@ html {
   width: 100%;
   top: calc(100% - 5px);
 }
-/* line 115, ../scss/pages/_review-pages.scss */
+/* line 132, ../scss/pages/_review-pages.scss */
 .view-booklist-page-view .chosen-container a,
 .book-reviews-page .chosen-container a, .view-movie-review .chosen-container a,
 .view-music-review-listing .chosen-container a,
@@ -13982,19 +14056,19 @@ html {
   position: relative;
 }
 
-/* line 134, ../scss/pages/_review-pages.scss */
+/* line 148, ../scss/pages/_review-pages.scss */
 .block-menu-menu-book-reviews-sidebar-menu-f .menu {
   list-style: none;
   margin-left: 0;
   padding-left: 0;
 }
-/* line 138, ../scss/pages/_review-pages.scss */
+/* line 153, ../scss/pages/_review-pages.scss */
 .block-menu-menu-book-reviews-sidebar-menu-f .menu li {
   width: 100%;
   margin: 0;
   padding: 0;
 }
-/* line 142, ../scss/pages/_review-pages.scss */
+/* line 158, ../scss/pages/_review-pages.scss */
 .block-menu-menu-book-reviews-sidebar-menu-f .menu li a {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -14022,7 +14096,7 @@ html {
   font-family: "Sniglet", cursive;
   font-weight: 400;
 }
-/* line 150, ../scss/pages/_review-pages.scss */
+/* line 168, ../scss/pages/_review-pages.scss */
 .block-menu-menu-book-reviews-sidebar-menu-f .menu li a:after {
   content: "";
   width: 48px;
@@ -14033,131 +14107,158 @@ html {
   left: 10px;
   top: 0;
 }
-/* line 162, ../scss/pages/_review-pages.scss */
+/* line 180, ../scss/pages/_review-pages.scss */
+.page-activities-listing.cs-default .block-menu-menu-book-reviews-sidebar-menu-f .menu li a.activity-review {
+  background: #fff;
+  color: #7db600;
+}
+/* line 184, ../scss/pages/_review-pages.scss */
+.page-activities-listing.cs-default .block-menu-menu-book-reviews-sidebar-menu-f .menu li a.activity-review:after {
+  background-position: 0px -15px;
+}
+/* line 189, ../scss/pages/_review-pages.scss */
+.page-activities-listing.cs-classic .block-menu-menu-book-reviews-sidebar-menu-f .menu li a.activity-review {
+  background: #fff;
+  color: #1d3557;
+}
+/* line 193, ../scss/pages/_review-pages.scss */
+.page-activities-listing.cs-classic .block-menu-menu-book-reviews-sidebar-menu-f .menu li a.activity-review:after {
+  background-position: 0px -409px;
+}
+/* line 198, ../scss/pages/_review-pages.scss */
+.page-activities-listing.cs-elegant .block-menu-menu-book-reviews-sidebar-menu-f .menu li a.activity-review {
+  background: #fff;
+  color: #ff5714;
+}
+/* line 202, ../scss/pages/_review-pages.scss */
+.page-activities-listing.cs-elegant .block-menu-menu-book-reviews-sidebar-menu-f .menu li a.activity-review:after {
+  background-position: 0px -803px;
+}
+/* line 207, ../scss/pages/_review-pages.scss */
 .block-menu-menu-book-reviews-sidebar-menu-f .menu li a.activity-review:after {
   background-position: 0px -1199px;
 }
-/* line 168, ../scss/pages/_review-pages.scss */
+/* line 213, ../scss/pages/_review-pages.scss */
 .block-menu-menu-book-reviews-sidebar-menu-f .menu li a.book-review:after {
   background-position: -3px -1333px;
 }
-/* line 173, ../scss/pages/_review-pages.scss */
+/* line 219, ../scss/pages/_review-pages.scss */
 .block-menu-menu-book-reviews-sidebar-menu-f .menu li a.booklist-review:after {
   background-position: -3px -1265px;
 }
-/* line 178, ../scss/pages/_review-pages.scss */
+/* line 225, ../scss/pages/_review-pages.scss */
 .block-menu-menu-book-reviews-sidebar-menu-f .menu li a.movie-review:after {
   background-position: -4px -1400px;
 }
-/* line 183, ../scss/pages/_review-pages.scss */
+/* line 231, ../scss/pages/_review-pages.scss */
 .block-menu-menu-book-reviews-sidebar-menu-f .menu li a.music-review:after {
   background-position: -4px -1462px;
 }
-/* line 188, ../scss/pages/_review-pages.scss */
+/* line 237, ../scss/pages/_review-pages.scss */
 .block-menu-menu-book-reviews-sidebar-menu-f .menu li a.video-review:after {
   background-position: -8px -1530px;
 }
-/* line 192, ../scss/pages/_review-pages.scss */
+/* line 242, ../scss/pages/_review-pages.scss */
 .cs-default .block-menu-menu-book-reviews-sidebar-menu-f .menu li a {
   background: #7db600;
 }
-/* line 194, ../scss/pages/_review-pages.scss */
+/* line 245, ../scss/pages/_review-pages.scss */
 .cs-default .block-menu-menu-book-reviews-sidebar-menu-f .menu li a:hover, .cs-default .block-menu-menu-book-reviews-sidebar-menu-f .menu li a:focus, .cs-default .block-menu-menu-book-reviews-sidebar-menu-f .menu li a.active {
   background: #fff;
   color: #7db600;
 }
-/* line 200, ../scss/pages/_review-pages.scss */
+/* line 252, ../scss/pages/_review-pages.scss */
 .cs-default .block-menu-menu-book-reviews-sidebar-menu-f .menu li a.activity-review:hover:after, .cs-default .block-menu-menu-book-reviews-sidebar-menu-f .menu li a.activity-review:focus:after, .cs-default .block-menu-menu-book-reviews-sidebar-menu-f .menu li a.activity-review.active:after {
   background-position: 0px -15px;
 }
-/* line 207, ../scss/pages/_review-pages.scss */
+/* line 260, ../scss/pages/_review-pages.scss */
 .cs-default .block-menu-menu-book-reviews-sidebar-menu-f .menu li a.book-review:hover:after, .cs-default .block-menu-menu-book-reviews-sidebar-menu-f .menu li a.book-review:focus:after, .cs-default .block-menu-menu-book-reviews-sidebar-menu-f .menu li a.book-review.active:after {
   background-position: -3px -150px;
 }
-/* line 215, ../scss/pages/_review-pages.scss */
+/* line 268, ../scss/pages/_review-pages.scss */
 .cs-default .block-menu-menu-book-reviews-sidebar-menu-f .menu li a.booklist-review:hover:after, .cs-default .block-menu-menu-book-reviews-sidebar-menu-f .menu li a.booklist-review:focus:after, .cs-default .block-menu-menu-book-reviews-sidebar-menu-f .menu li a.booklist-review.active:after {
   background-position: -3px -82px;
 }
-/* line 223, ../scss/pages/_review-pages.scss */
+/* line 276, ../scss/pages/_review-pages.scss */
 .cs-default .block-menu-menu-book-reviews-sidebar-menu-f .menu li a.movie-review:hover:after, .cs-default .block-menu-menu-book-reviews-sidebar-menu-f .menu li a.movie-review:focus:after, .cs-default .block-menu-menu-book-reviews-sidebar-menu-f .menu li a.movie-review.active:after {
   background-position: -4px -215px;
 }
-/* line 231, ../scss/pages/_review-pages.scss */
+/* line 284, ../scss/pages/_review-pages.scss */
 .cs-default .block-menu-menu-book-reviews-sidebar-menu-f .menu li a.music-review:hover:after, .cs-default .block-menu-menu-book-reviews-sidebar-menu-f .menu li a.music-review:focus:after, .cs-default .block-menu-menu-book-reviews-sidebar-menu-f .menu li a.music-review.active:after {
   background-position: -4px -277px;
 }
-/* line 239, ../scss/pages/_review-pages.scss */
+/* line 292, ../scss/pages/_review-pages.scss */
 .cs-default .block-menu-menu-book-reviews-sidebar-menu-f .menu li a.video-review:hover:after, .cs-default .block-menu-menu-book-reviews-sidebar-menu-f .menu li a.video-review:focus:after, .cs-default .block-menu-menu-book-reviews-sidebar-menu-f .menu li a.video-review.active:after {
   background-position: -8px -347px;
 }
-/* line 246, ../scss/pages/_review-pages.scss */
+/* line 299, ../scss/pages/_review-pages.scss */
 .cs-classic .block-menu-menu-book-reviews-sidebar-menu-f .menu li a {
   background: #1d3557;
 }
-/* line 248, ../scss/pages/_review-pages.scss */
+/* line 302, ../scss/pages/_review-pages.scss */
 .cs-classic .block-menu-menu-book-reviews-sidebar-menu-f .menu li a:hover, .cs-classic .block-menu-menu-book-reviews-sidebar-menu-f .menu li a:focus, .cs-classic .block-menu-menu-book-reviews-sidebar-menu-f .menu li a.active {
   background: #fff;
   color: #1d3557;
 }
-/* line 254, ../scss/pages/_review-pages.scss */
+/* line 309, ../scss/pages/_review-pages.scss */
 .cs-classic .block-menu-menu-book-reviews-sidebar-menu-f .menu li a.activity-review:hover:after, .cs-classic .block-menu-menu-book-reviews-sidebar-menu-f .menu li a.activity-review:focus:after, .cs-classic .block-menu-menu-book-reviews-sidebar-menu-f .menu li a.activity-review.active:after {
   background-position: 0px -409px;
 }
-/* line 261, ../scss/pages/_review-pages.scss */
+/* line 317, ../scss/pages/_review-pages.scss */
 .cs-classic .block-menu-menu-book-reviews-sidebar-menu-f .menu li a.book-review:hover:after, .cs-classic .block-menu-menu-book-reviews-sidebar-menu-f .menu li a.book-review:focus:after, .cs-classic .block-menu-menu-book-reviews-sidebar-menu-f .menu li a.book-review.active:after {
   background-position: -3px -543px;
 }
-/* line 269, ../scss/pages/_review-pages.scss */
+/* line 325, ../scss/pages/_review-pages.scss */
 .cs-classic .block-menu-menu-book-reviews-sidebar-menu-f .menu li a.booklist-review:hover:after, .cs-classic .block-menu-menu-book-reviews-sidebar-menu-f .menu li a.booklist-review:focus:after, .cs-classic .block-menu-menu-book-reviews-sidebar-menu-f .menu li a.booklist-review.active:after {
   background-position: -3px -475px;
 }
-/* line 277, ../scss/pages/_review-pages.scss */
+/* line 333, ../scss/pages/_review-pages.scss */
 .cs-classic .block-menu-menu-book-reviews-sidebar-menu-f .menu li a.movie-review:hover:after, .cs-classic .block-menu-menu-book-reviews-sidebar-menu-f .menu li a.movie-review:focus:after, .cs-classic .block-menu-menu-book-reviews-sidebar-menu-f .menu li a.movie-review.active:after {
   background-position: -4px -608px;
 }
-/* line 285, ../scss/pages/_review-pages.scss */
+/* line 341, ../scss/pages/_review-pages.scss */
 .cs-classic .block-menu-menu-book-reviews-sidebar-menu-f .menu li a.music-review:hover:after, .cs-classic .block-menu-menu-book-reviews-sidebar-menu-f .menu li a.music-review:focus:after, .cs-classic .block-menu-menu-book-reviews-sidebar-menu-f .menu li a.music-review.active:after {
   background-position: -4px -669px;
 }
-/* line 293, ../scss/pages/_review-pages.scss */
+/* line 349, ../scss/pages/_review-pages.scss */
 .cs-classic .block-menu-menu-book-reviews-sidebar-menu-f .menu li a.video-review:hover:after, .cs-classic .block-menu-menu-book-reviews-sidebar-menu-f .menu li a.video-review:focus:after, .cs-classic .block-menu-menu-book-reviews-sidebar-menu-f .menu li a.video-review.active:after {
   background-position: -8px -739px;
 }
-/* line 300, ../scss/pages/_review-pages.scss */
+/* line 356, ../scss/pages/_review-pages.scss */
 .cs-elegant .block-menu-menu-book-reviews-sidebar-menu-f .menu li a {
   background: #ff5714;
 }
-/* line 302, ../scss/pages/_review-pages.scss */
+/* line 359, ../scss/pages/_review-pages.scss */
 .cs-elegant .block-menu-menu-book-reviews-sidebar-menu-f .menu li a:hover, .cs-elegant .block-menu-menu-book-reviews-sidebar-menu-f .menu li a:focus, .cs-elegant .block-menu-menu-book-reviews-sidebar-menu-f .menu li a.active {
   background: #fff;
   color: #ff5714;
 }
-/* line 308, ../scss/pages/_review-pages.scss */
+/* line 366, ../scss/pages/_review-pages.scss */
 .cs-elegant .block-menu-menu-book-reviews-sidebar-menu-f .menu li a.activity-review:hover:after, .cs-elegant .block-menu-menu-book-reviews-sidebar-menu-f .menu li a.activity-review:focus:after, .cs-elegant .block-menu-menu-book-reviews-sidebar-menu-f .menu li a.activity-review.active:after {
   background-position: 0px -803px;
 }
-/* line 315, ../scss/pages/_review-pages.scss */
+/* line 374, ../scss/pages/_review-pages.scss */
 .cs-elegant .block-menu-menu-book-reviews-sidebar-menu-f .menu li a.book-review:hover:after, .cs-elegant .block-menu-menu-book-reviews-sidebar-menu-f .menu li a.book-review:focus:after, .cs-elegant .block-menu-menu-book-reviews-sidebar-menu-f .menu li a.book-review.active:after {
   background-position: -3px -938px;
 }
-/* line 323, ../scss/pages/_review-pages.scss */
+/* line 382, ../scss/pages/_review-pages.scss */
 .cs-elegant .block-menu-menu-book-reviews-sidebar-menu-f .menu li a.booklist-review:hover:after, .cs-elegant .block-menu-menu-book-reviews-sidebar-menu-f .menu li a.booklist-review:focus:after, .cs-elegant .block-menu-menu-book-reviews-sidebar-menu-f .menu li a.booklist-review.active:after {
   background-position: -3px -870px;
 }
-/* line 331, ../scss/pages/_review-pages.scss */
+/* line 390, ../scss/pages/_review-pages.scss */
 .cs-elegant .block-menu-menu-book-reviews-sidebar-menu-f .menu li a.movie-review:hover:after, .cs-elegant .block-menu-menu-book-reviews-sidebar-menu-f .menu li a.movie-review:focus:after, .cs-elegant .block-menu-menu-book-reviews-sidebar-menu-f .menu li a.movie-review.active:after {
   background-position: -4px -1003px;
 }
-/* line 339, ../scss/pages/_review-pages.scss */
+/* line 398, ../scss/pages/_review-pages.scss */
 .cs-elegant .block-menu-menu-book-reviews-sidebar-menu-f .menu li a.music-review:hover:after, .cs-elegant .block-menu-menu-book-reviews-sidebar-menu-f .menu li a.music-review:focus:after, .cs-elegant .block-menu-menu-book-reviews-sidebar-menu-f .menu li a.music-review.active:after {
   background-position: -4px -1066px;
 }
-/* line 347, ../scss/pages/_review-pages.scss */
+/* line 406, ../scss/pages/_review-pages.scss */
 .cs-elegant .block-menu-menu-book-reviews-sidebar-menu-f .menu li a.video-review:hover:after, .cs-elegant .block-menu-menu-book-reviews-sidebar-menu-f .menu li a.video-review:focus:after, .cs-elegant .block-menu-menu-book-reviews-sidebar-menu-f .menu li a.video-review.active:after {
   background-position: -8px -1136px;
 }
 
-/* line 358, ../scss/pages/_review-pages.scss */
+/* line 417, ../scss/pages/_review-pages.scss */
 h2.reviews-title, .view-booklist-slideshow .other-programme.view .view-header *, .other-programme.view .view-booklist-slideshow .view-header *, .view-booklist-slideshow .view-header h2.reviews-title, .view-booklist-slideshow .view-header h1 {
   margin-top: 0;
   background-size: 100%;
@@ -14166,26 +14267,26 @@ h2.reviews-title, .view-booklist-slideshow .other-programme.view .view-header *,
   width: calc(100% + 40px);
   margin-left: -40px;
 }
-/* line 366, ../scss/pages/_review-pages.scss */
+/* line 427, ../scss/pages/_review-pages.scss */
 .cs-default h2.reviews-title, .cs-default .view-booklist-slideshow .other-programme.view .view-header *, .other-programme.view .cs-default .view-booklist-slideshow .view-header *, .cs-default .view-booklist-slideshow .view-header h2.reviews-title, .cs-default .view-booklist-slideshow .view-header h1 {
   background-image: url("../images/yellowbrushstroke_lg.png");
   padding: 27px 10px 30px 40px;
   color: #32024e;
 }
-/* line 371, ../scss/pages/_review-pages.scss */
+/* line 433, ../scss/pages/_review-pages.scss */
 .cs-classic h2.reviews-title, .cs-classic .view-booklist-slideshow .other-programme.view .view-header *, .other-programme.view .cs-classic .view-booklist-slideshow .view-header *, .cs-classic .view-booklist-slideshow .view-header h2.reviews-title, .cs-classic .view-booklist-slideshow .view-header h1 {
   background-image: url("../images/redbrushstroke_lg.png");
   color: #1d3557;
   padding: 24px 10px 30px 40px;
 }
-/* line 376, ../scss/pages/_review-pages.scss */
+/* line 439, ../scss/pages/_review-pages.scss */
 .cs-elegant h2.reviews-title, .cs-elegant .view-booklist-slideshow .other-programme.view .view-header *, .other-programme.view .cs-elegant .view-booklist-slideshow .view-header *, .cs-elegant .view-booklist-slideshow .view-header h2.reviews-title, .cs-elegant .view-booklist-slideshow .view-header h1 {
   background-image: url("../images/bluebrushstroke_lg.png");
   color: #333333;
   padding: 24px 10px 30px 40px;
 }
 
-/* line 388, ../scss/pages/_review-pages.scss */
+/* line 451, ../scss/pages/_review-pages.scss */
 .section-movie-review #page-title,
 .section-music-review #page-title,
 .section-video-game-review #page-title,
@@ -14194,7 +14295,7 @@ h2.reviews-title, .view-booklist-slideshow .other-programme.view .view-header *,
   display: none;
 }
 
-/* line 392, ../scss/pages/_review-pages.scss */
+/* line 456, ../scss/pages/_review-pages.scss */
 .common-review-wrapper {
   border-bottom: 1px solid #ccc;
   margin-bottom: 20px;
@@ -14218,66 +14319,70 @@ h2.reviews-title, .view-booklist-slideshow .other-programme.view .view-header *,
   font-family: "Sniglet", cursive;
   font-weight: 400;
 }
-/* line 396, ../scss/pages/_review-pages.scss */
+/* line 462, ../scss/pages/_review-pages.scss */
+.common-review-wrapper > div {
+  margin-bottom: 10px;
+}
+/* line 466, ../scss/pages/_review-pages.scss */
 .common-review-wrapper > div:not(.body, .date) {
   font-family: inherit;
   margin-bottom: 10px;
 }
-/* line 398, ../scss/pages/_review-pages.scss */
+/* line 469, ../scss/pages/_review-pages.scss */
 .common-review-wrapper > div:not(.body, .date) * {
   font-family: inherit;
 }
-/* line 403, ../scss/pages/_review-pages.scss */
+/* line 476, ../scss/pages/_review-pages.scss */
 .common-review-wrapper > div:not(.title) {
   padding-left: 22px;
 }
-/* line 406, ../scss/pages/_review-pages.scss */
+/* line 480, ../scss/pages/_review-pages.scss */
 .common-review-wrapper .likes span::after, .common-review-wrapper .reviews-wrapper .like-count span::after, .reviews-wrapper .common-review-wrapper .like-count span::after, .common-review-wrapper .booklist-wrapp .book-user-likes > div.book-like span::after, .booklist-wrapp .common-review-wrapper .book-user-likes > div.book-like span::after {
   right: -2px;
 }
-/* line 407, ../scss/pages/_review-pages.scss */
+/* line 481, ../scss/pages/_review-pages.scss */
 .cs-default .common-review-wrapper .likes span::after, .cs-default .common-review-wrapper .reviews-wrapper .like-count span::after, .reviews-wrapper .cs-default .common-review-wrapper .like-count span::after, .cs-default .common-review-wrapper .booklist-wrapp .book-user-likes > div.book-like span::after, .booklist-wrapp .cs-default .common-review-wrapper .book-user-likes > div.book-like span::after {
   top: -5px;
 }
-/* line 413, ../scss/pages/_review-pages.scss */
+/* line 488, ../scss/pages/_review-pages.scss */
 .common-review-wrapper .title {
   width: 100%;
   display: block;
 }
-/* line 416, ../scss/pages/_review-pages.scss */
+/* line 492, ../scss/pages/_review-pages.scss */
 .common-review-wrapper .title > div {
   float: left;
 }
-/* line 418, ../scss/pages/_review-pages.scss */
+/* line 495, ../scss/pages/_review-pages.scss */
 .common-review-wrapper .title > div:nth-of-type(1) {
   width: 70%;
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
 }
-/* line 424, ../scss/pages/_review-pages.scss */
+/* line 502, ../scss/pages/_review-pages.scss */
 .common-review-wrapper .title > div.likes, .common-review-wrapper .reviews-wrapper .title > div.like-count, .reviews-wrapper .common-review-wrapper .title > div.like-count, .common-review-wrapper .booklist-wrapp .book-user-likes.title > div.book-like, .booklist-wrapp .common-review-wrapper .book-user-likes.title > div.book-like {
   width: 30%;
   text-align: right;
 }
-/* line 431, ../scss/pages/_review-pages.scss */
+/* line 510, ../scss/pages/_review-pages.scss */
 .common-review-wrapper .review-by-user > div {
   margin-top: 10px;
   margin-bottom: 10px;
   display: inline-block;
 }
-/* line 436, ../scss/pages/_review-pages.scss */
+/* line 515, ../scss/pages/_review-pages.scss */
 .common-review-wrapper .review-by-user > div.views-field-field-user-avatar {
   margin-left: 5px;
   margin-right: 5px;
 }
-/* line 443, ../scss/pages/_review-pages.scss */
+/* line 522, ../scss/pages/_review-pages.scss */
 .common-review-wrapper .body {
   margin-top: 10px;
   margin-bottom: 20px;
 }
 
-/* line 449, ../scss/pages/_review-pages.scss */
+/* line 529, ../scss/pages/_review-pages.scss */
 .activity-list-wrapper a {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -14302,16 +14407,16 @@ h2.reviews-title, .view-booklist-slideshow .other-programme.view .view-header *,
   font-weight: 700;
 }
 
-/* line 455, ../scss/pages/_review-pages.scss */
+/* line 537, ../scss/pages/_review-pages.scss */
 .button, .book-reviews-page .node-link a, .other-programme.view .other-programme .programme-content .sign-up a {
   color: inherit;
 }
 
-/* line 460, ../scss/pages/_review-pages.scss */
+/* line 543, ../scss/pages/_review-pages.scss */
 .view-reviews-page-views .view-header h3, .view-booklist-page-left-side-bar .view-header h3 {
   padding-left: 0;
 }
-/* line 464, ../scss/pages/_review-pages.scss */
+/* line 549, ../scss/pages/_review-pages.scss */
 .view-reviews-page-views .view-header h5, .view-reviews-page-views .view-header .reviews-wrapper .review-wrapp, .reviews-wrapper .view-reviews-page-views .view-header .review-wrapp, .view-reviews-page-views .view-header .reviews-wrapper .like-count, .reviews-wrapper .view-reviews-page-views .view-header .like-count, .view-reviews-page-views .view-header .booklist-wrapp .book-user-likes > div, .booklist-wrapp .view-reviews-page-views .view-header .book-user-likes > div, .view-booklist-page-left-side-bar .view-header h5, .view-booklist-page-left-side-bar .view-header .reviews-wrapper .review-wrapp, .reviews-wrapper .view-booklist-page-left-side-bar .view-header .review-wrapp, .view-booklist-page-left-side-bar .view-header .reviews-wrapper .like-count, .reviews-wrapper .view-booklist-page-left-side-bar .view-header .like-count, .view-booklist-page-left-side-bar .view-header .booklist-wrapp .book-user-likes > div, .booklist-wrapp .view-booklist-page-left-side-bar .view-header .book-user-likes > div {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -14333,21 +14438,26 @@ h2.reviews-title, .view-booklist-slideshow .other-programme.view .view-header *,
   font-family: "Roboto", sans-serif;
   font-weight: 700;
 }
-/* line 469, ../scss/pages/_review-pages.scss */
+/* line 555, ../scss/pages/_review-pages.scss */
 .view-reviews-page-views .view-content ol, .view-booklist-page-left-side-bar .view-content ol {
   list-style: none;
 }
-/* line 471, ../scss/pages/_review-pages.scss */
+/* line 558, ../scss/pages/_review-pages.scss */
 .view-reviews-page-views .view-content ol .views-row, .view-booklist-page-left-side-bar .view-content ol .views-row {
   margin-bottom: 10px;
 }
-/* line 473, ../scss/pages/_review-pages.scss */
+/* line 561, ../scss/pages/_review-pages.scss */
 .view-reviews-page-views .view-content ol .views-row .title, .view-booklist-page-left-side-bar .view-content ol .views-row .title {
   font-weight: normal;
 }
-/* line 475, ../scss/pages/_review-pages.scss */
+/* line 564, ../scss/pages/_review-pages.scss */
 .view-reviews-page-views .view-content ol .views-row .title span a, .view-booklist-page-left-side-bar .view-content ol .views-row .title span a {
   text-decoration: underline;
+}
+
+/* line 572, ../scss/pages/_review-pages.scss */
+.view-footer .activity-desc {
+  margin-bottom: 20px;
 }
 
 /* line 2, ../scss/pages/_userlogin.scss */

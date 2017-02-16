@@ -1,41 +1,48 @@
 //view filter block common in review pages
 .view-booklist-page-view,
-.book-reviews-page,.view-movie-review,
+.book-reviews-page, .view-movie-review,
 .view-music-review-listing,
 .view--video-game-review,
 .view--individual-activities-listing {
-
   ul {
     list-style: none;
     margin-left: 0;
-     li {
+
+    li {
       margin-left: inherit;
-     }
+    }
   }
+
   .view-filters {
     margin-top: 23px;
-   @extend .primary-background;
-   .cs-default & {
-          background: url("../images/background.jpeg");
-          padding: 8px 24px 4px;
-          background-size: cover;
-        }
-        .cs-classic & {
-          background: $medium-blue;
-          padding: 8px 24px 4px;
-          background-size: cover;
-        }
-      .cs-elegant & {
-       background: $orange;
-        padding: 8px 24px 4px;
-          background-size: cover;
-      }
-      label {
-        color: $white;
-      }
-   overflow: visible;
 
+    @extend .primary-background;
+
+    .cs-default & {
+      background: url("../images/background.jpeg");
+      padding: 8px 24px 4px;
+      background-size: cover;
+    }
+
+    .cs-classic & {
+      background: $medium-blue;
+      padding: 8px 24px 4px;
+      background-size: cover;
+    }
+
+    .cs-elegant & {
+      background: $orange;
+      padding: 8px 24px 4px;
+      background-size: cover;
+    }
+
+    label {
+      color: $white;
+    }
+
+    overflow: visible;
   }
+
   .views-exposed-widgets {
     width: calc(100% + 10px);
     -webkit-flex-wrap: wrap;
@@ -44,8 +51,8 @@
     display: flex;
     align-content: center;
     align-items: center;
-
   }
+
   .views-exposed-widget {
     flex: 0 0 calc(25% - 10px);
     -ms-box-flex: 0 0 24%;
@@ -55,28 +62,34 @@
     float: none;
     margin-right: 10px;
   }
-  .chosen-container {
 
+  .chosen-container {
     .chosen-single {
-       &:hover,&:focus {
+      &:hover, &:focus {
         border-radius: 0;
-       }
+      }
+
       b {
         visibility: hidden;
         position: relative;
+
         &:after {
           content: "";
           border-left: 5px solid transparent;
           border-right: 5px solid transparent;
-           .cs-default & {
-             border-top: 5px solid $purple
-           }
-           .cs-classic & {
+
+          .cs-default & {
+            border-top: 5px solid $purple;
+          }
+
+          .cs-classic & {
             border-top: 5px solid $medium-blue;
-           }
-           .cs-elegant & {
+          }
+
+          .cs-elegant & {
             border-top: 5px solid $gray;
-           }
+          }
+
           position: absolute;
           top: 45%;
           display: block;
@@ -85,36 +98,40 @@
         }
       }
     }
-}
-.views-submit-button {
-  button.form-submit {
-    height: 31px;
-    margin-top: 21px;
   }
-}
-.form-submit {
-      @extend .main-button;
 
-
-  }
-  .chosen-container {
-  width: 100% !important;
-  &.chosen-with-drop.chosen-container-active {
-    a {
-
-      box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
-      border: none;
+  .views-submit-button {
+    button.form-submit {
+      height: 31px;
+      margin-top: 21px;
     }
   }
-  .chosen-drop  {
-    position: absolute;
-    width: 100%;
-    top: calc(100% - 5px);
-    @extend .primary-color;
-  }
-  a {
 
+  .form-submit {
+    @extend .main-button;
+  }
+
+  .chosen-container {
+    width: 100% !important;
+
+    &.chosen-with-drop.chosen-container-active {
+      a {
+        box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+        border: none;
+      }
+    }
+
+    .chosen-drop {
+      position: absolute;
+      width: 100%;
+      top: calc(100% - 5px);
+
+      @extend .primary-color;
+    }
+
+    a {
       @extend .main-button;
+
       border-radius: 0;
       border: none;
       height: auto;
@@ -122,11 +139,8 @@
       display: inline-block;
       border: none;
       position: relative;
-
-
-
+    }
   }
-}
 }
 
 //side bar menu common in review pages
@@ -135,251 +149,300 @@
     list-style: none;
     margin-left: 0;
     padding-left: 0;
-     li {
+
+    li {
       width: 100%;
       margin: 0;
       padding: 0;
-        a {
-          @include button-font;
-          width: 100%;
-          display: inline-block;
-          position: relative;
-          padding: 10px 10px 10px 60px;
-          border-bottom: 1px solid #f2f2f2;
-          color: $white;
+
+      a {
+        @include button-font;
+
+        width: 100%;
+        display: inline-block;
+        position: relative;
+        padding: 10px 10px 10px 60px;
+        border-bottom: 1px solid #f2f2f2;
+        color: $white;
+
+        &:after {
+          content: "";
+          width: 48px;
+          height: 100%;
+          background: url("../images/review-spritesheet");
+          display: block;
+          position: absolute;
+          left: 10px;
+          top: 0;
+        }
+
+        &.activity-review {
+          .page-activities-listing.cs-default & {
+            background: $white;
+            color: #7db600;
+
             &:after {
-              content: "";
-              width: 48px;
-              height: 100%;
-              background: url('../images/review-spritesheet');
-              display: block;
-              position: absolute;
-              left: 10px;
-              top: 0;
+              background-position: 0px -15px;
+            }
+          }
 
-            }
-            &.activity-review {
-              &:after {
-                background-position: 0px -1199px;
-              }
+          .page-activities-listing.cs-classic & {
+            background: $white;
+            color: $dark-blue;
 
+            &:after {
+              background-position: 0px -409px;
             }
-            &.book-review {
+          }
+
+          .page-activities-listing.cs-elegant & {
+            background: $white;
+            color: $orange;
+
+            &:after {
+              background-position: 0px -803px;
+            }
+          }
+
+          &:after {
+            background-position: 0px -1199px;
+          }
+        }
+
+        &.book-review {
+          &:after {
+            background-position: -3px -1333px;
+          }
+        }
+
+        &.booklist-review {
+          &:after {
+            background-position: -3px -1265px;
+          }
+        }
+
+        &.movie-review {
+          &:after {
+            background-position: -4px -1400px;
+          }
+        }
+
+        &.music-review {
+          &:after {
+            background-position: -4px -1462px;
+          }
+        }
+
+        &.video-review {
+          &:after {
+            background-position: -8px -1530px;
+          }
+        }
+
+        .cs-default & {
+          background: #7db600;
+
+          &:hover, &:focus, &.active {
+            background: $white;
+            color: #7db600;
+          }
+
+          &.activity-review {
+            &:hover, &:focus, &.active {
               &:after {
-                background-position: -3px -1333px;
-              }
-            }
-            &.booklist-review {
-              &:after {
-                background-position: -3px -1265px;
-              }
-            }
-            &.movie-review {
-              &:after {
-                background-position: -4px -1400px;
-              }
-            }
-            &.music-review {
-              &:after {
-                background-position: -4px -1462px;
-              }
-            }
-            &.video-review {
-              &:after {
-                background-position: -8px -1530px;
-              }
-            }
-          .cs-default & {
-             background: #7db600;
-             &:hover,&:focus,&.active {
-               background: $white;
-               color: #7db600;
-             }
-             &.activity-review {
-              &:hover,&:focus,&.active {
-                &:after {
                 background-position: 0px -15px;
-                }
               }
             }
-            &.book-review {
-              &:hover,&:focus,&.active {
-                 &:after {
+          }
+
+          &.book-review {
+            &:hover, &:focus, &.active {
+              &:after {
                 background-position: -3px -150px;
               }
-              }
-
             }
-            &.booklist-review {
-              &:hover,&:focus,&.active {
-                &:after {
+          }
+
+          &.booklist-review {
+            &:hover, &:focus, &.active {
+              &:after {
                 background-position: -3px -82px;
               }
-              }
-
             }
-            &.movie-review {
-              &:hover,&:focus,&.active {
-                 &:after {
+          }
+
+          &.movie-review {
+            &:hover, &:focus, &.active {
+              &:after {
                 background-position: -4px -215px;
               }
-              }
-
             }
-            &.music-review {
-              &:hover,&:focus,&.active {
-                   &:after {
+          }
+
+          &.music-review {
+            &:hover, &:focus, &.active {
+              &:after {
                 background-position: -4px -277px;
               }
-              }
-
             }
-            &.video-review {
-              &:hover,&:focus,&.active {
-                &:after {
+          }
+
+          &.video-review {
+            &:hover, &:focus, &.active {
+              &:after {
                 background-position: -8px -347px;
               }
-              }
-
-            }
-          }
-          .cs-classic & {
-                          background: $dark-blue;
-             &:hover,&:focus,&.active {
-               background: $white;
-               color: $dark-blue;
-             }
-             &.activity-review {
-              &:hover,&:focus,&.active {
-                &:after {
-                background-position: 0px -409px;
-                }
-              }
-            }
-            &.book-review {
-              &:hover,&:focus,&.active {
-                 &:after {
-                background-position: -3px -543px;
-              }
-              }
-
-            }
-            &.booklist-review {
-              &:hover,&:focus,&.active {
-                &:after {
-                background-position: -3px -475px;
-              }
-              }
-
-            }
-            &.movie-review {
-              &:hover,&:focus,&.active {
-                 &:after {
-                background-position: -4px -608px;
-              }
-              }
-
-            }
-            &.music-review {
-              &:hover,&:focus,&.active {
-                   &:after {
-                background-position: -4px -669px;
-              }
-              }
-
-            }
-            &.video-review {
-              &:hover,&:focus,&.active {
-                &:after {
-                background-position: -8px -739px;
-              }
-              }
-
-            }
-          }
-           .cs-elegant & {
-                          background: $orange;
-             &:hover,&:focus,&.active {
-               background: $white;
-               color: $orange;
-             }
-             &.activity-review {
-              &:hover,&:focus,&.active {
-                &:after {
-                background-position: 0px -803px;
-                }
-              }
-            }
-            &.book-review {
-              &:hover,&:focus,&.active {
-                 &:after {
-                background-position: -3px -938px;
-              }
-              }
-
-            }
-            &.booklist-review {
-              &:hover,&:focus,&.active {
-                &:after {
-                background-position: -3px -870px;
-              }
-              }
-
-            }
-            &.movie-review {
-              &:hover,&:focus,&.active {
-                 &:after {
-                background-position: -4px -1003px;
-              }
-              }
-
-            }
-            &.music-review {
-              &:hover,&:focus,&.active {
-                   &:after {
-                background-position: -4px -1066px;
-              }
-              }
-
-            }
-            &.video-review {
-              &:hover,&:focus,&.active {
-                &:after {
-                background-position: -8px -1136px;
-              }
-              }
-
             }
           }
         }
-     }
+
+        .cs-classic & {
+          background: $dark-blue;
+
+          &:hover, &:focus, &.active {
+            background: $white;
+            color: $dark-blue;
+          }
+
+          &.activity-review {
+            &:hover, &:focus, &.active {
+              &:after {
+                background-position: 0px -409px;
+              }
+            }
+          }
+
+          &.book-review {
+            &:hover, &:focus, &.active {
+              &:after {
+                background-position: -3px -543px;
+              }
+            }
+          }
+
+          &.booklist-review {
+            &:hover, &:focus, &.active {
+              &:after {
+                background-position: -3px -475px;
+              }
+            }
+          }
+
+          &.movie-review {
+            &:hover, &:focus, &.active {
+              &:after {
+                background-position: -4px -608px;
+              }
+            }
+          }
+
+          &.music-review {
+            &:hover, &:focus, &.active {
+              &:after {
+                background-position: -4px -669px;
+              }
+            }
+          }
+
+          &.video-review {
+            &:hover, &:focus, &.active {
+              &:after {
+                background-position: -8px -739px;
+              }
+            }
+          }
+        }
+
+        .cs-elegant & {
+          background: $orange;
+
+          &:hover, &:focus, &.active {
+            background: $white;
+            color: $orange;
+          }
+
+          &.activity-review {
+            &:hover, &:focus, &.active {
+              &:after {
+                background-position: 0px -803px;
+              }
+            }
+          }
+
+          &.book-review {
+            &:hover, &:focus, &.active {
+              &:after {
+                background-position: -3px -938px;
+              }
+            }
+          }
+
+          &.booklist-review {
+            &:hover, &:focus, &.active {
+              &:after {
+                background-position: -3px -870px;
+              }
+            }
+          }
+
+          &.movie-review {
+            &:hover, &:focus, &.active {
+              &:after {
+                background-position: -4px -1003px;
+              }
+            }
+          }
+
+          &.music-review {
+            &:hover, &:focus, &.active {
+              &:after {
+                background-position: -4px -1066px;
+              }
+            }
+          }
+
+          &.video-review {
+            &:hover, &:focus, &.active {
+              &:after {
+                background-position: -8px -1136px;
+              }
+            }
+          }
+        }
+      }
+    }
   }
 }
-h2.reviews-title, .view-booklist-slideshow .view-header h1{
+
+h2.reviews-title, .view-booklist-slideshow .view-header h1 {
   @extend h1;
+
   margin-top: 0;
   background-size: 100%;
   background-repeat: repeat;
   margin-bottom: 10px;
   width: calc(100% + 40px);
   margin-left: -40px;
-   .cs-default & {
+
+  .cs-default & {
     background-image: url("../images/yellowbrushstroke_lg.png");
     padding: 27px 10px 30px 40px;
     color: $purple;
   }
+
   .cs-classic & {
     background-image: url("../images/redbrushstroke_lg.png");
     color: $dark-blue;
     padding: 24px 10px 30px 40px;
   }
-   .cs-elegant & {
+
+  .cs-elegant & {
     background-image: url("../images/bluebrushstroke_lg.png");
     color: $gray;
     padding: 24px 10px 30px 40px;
   }
-
 }
+
 .section-movie-review,
 .section-music-review,
 .section-video-game-review,
@@ -389,95 +452,123 @@ h2.reviews-title, .view-booklist-slideshow .view-header h1{
     display: none;
   }
 }
+
 .common-review-wrapper {
   border-bottom: 1px solid #ccc;
   margin-bottom: 20px;
+
   @include button-font;
-     > div:not(.body,.date) {
-       font-family: inherit;
-        * {
-          font-family: inherit;
-        }
-        margin-bottom: 10px;
-     }
-     > div:not(.title) {
-       padding-left: 22px;
-     }
-     .likes span::after {
-      .cs-default & {
-          top: -5px;
+
+  > div {
+    margin-bottom: 10px;
+  }
+
+  > div:not(.body, .date) {
+    font-family: inherit;
+
+    * {
+      font-family: inherit;
+    }
+
+    margin-bottom: 10px;
+  }
+
+  > div:not(.title) {
+    padding-left: 22px;
+  }
+
+  .likes span::after {
+    .cs-default & {
+      top: -5px;
+    }
+
+    right: -2px;
+  }
+
+  .title {
+    width: 100%;
+    display: block;
+
+    > div {
+      float: left;
+
+      &:nth-of-type(1) {
+        width: 70%;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
       }
 
-       right: -2px;
-     }
-     .title {
-       width: 100%;
-       display: block;
-        > div {
-          float: left;
-           &:nth-of-type(1) {
-            width: 70%;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-            overflow: hidden;
-           }
-           &.likes {
-            width: 30%;
-            text-align: right;
-           }
-        }
-     }
-     .review-by-user {
-       > div {
-        margin-top: 10px;
-        margin-bottom: 10px;
-        display: inline-block;
+      &.likes {
+        width: 30%;
+        text-align: right;
+      }
+    }
+  }
 
-          &.views-field-field-user-avatar {
-            margin-left: 5px;
-            margin-right: 5px;
+  .review-by-user {
+    > div {
+      margin-top: 10px;
+      margin-bottom: 10px;
+      display: inline-block;
 
-          }
-       }
-     }
-     .body {
-       margin-top: 10px;
-       margin-bottom: 20px;
-     }
+      &.views-field-field-user-avatar {
+        margin-left: 5px;
+        margin-right: 5px;
+      }
+    }
+  }
+
+  .body {
+    margin-top: 10px;
+    margin-bottom: 20px;
+  }
 }
+
 .activity-list-wrapper {
-   a {
-     @include bold-font;
-     margin-top: 15px;
-     display: inline-block;
-   }
+  a {
+    @include bold-font;
+
+    margin-top: 15px;
+    display: inline-block;
+  }
 }
+
 .button {
   color: inherit;
 }
-.view-reviews-page-views,.view-booklist-page-left-side-bar {
+
+.view-reviews-page-views, .view-booklist-page-left-side-bar {
   .view-header {
     h3 {
-       @extend .stroke-sidebar;
-       padding-left: 0;
+      @extend .stroke-sidebar;
+
+      padding-left: 0;
     }
+
     h5 {
       @include bold-font;
     }
   }
+
   .view-content {
     ol {
       list-style: none;
-       .views-row {
-         margin-bottom: 10px;
-          .title {
-            font-weight: normal;
-            span a {
-              text-decoration: underline;
-            }
-          }
 
-       }
+      .views-row {
+        margin-bottom: 10px;
+
+        .title {
+          font-weight: normal;
+
+          span a {
+            text-decoration: underline;
+          }
+        }
+      }
     }
   }
+}
+.view-footer .activity-desc {
+  margin-bottom: 20px;
 }
