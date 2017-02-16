@@ -46,19 +46,12 @@
   .like-count {
     float: right;
     @extend h5;
-    span {
-      position: relative;
-      padding-right: 32px;
-      &:after {
-        content: "";
-        width: 25px;
-        height: 25px;
-        display: inline-block;
-        background: url("../images/smily.png") no-repeat scroll center center;
-        position: absolute;
-        right: 2px;
-        top: -1px;
-      }
+    @extend .likes;
+    span:after {
+      right: -2px;
+       .cs-default & {
+        top: -5px;
+       }
     }
   }
   .date-wrapp {
