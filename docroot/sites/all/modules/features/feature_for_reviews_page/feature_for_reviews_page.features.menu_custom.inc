@@ -16,7 +16,9 @@ function feature_for_reviews_page_menu_default_menu_custom() {
     'title' => 'Reviews menu for reviews page',
     'description' => 'This menu is used for book reviews left side bar.',
     'language' => 'und',
-    'i18n_mode' => 5,
+
+    'i18n_mode' => 0,
+
   );
   // Translatables
   // Included for use with string extractors like potx.
