@@ -19,4 +19,46 @@ function teens_reward_page() {
 	return '';
 }
 
+/**
+ * Implements hook_block_info().
+ */
+function teen_reward_page_block_info() {
 
+  $blocks = array();
+
+  $blocks['create_reviews_block'] = array(
+    'info' => t('Create Review Block'),
+  );
+
+  return $blocks;
+}
+
+/**
+ * Implements hook_block_view().
+ */
+function teen_reward_page_block_view($delta = '') {
+  $block = array();
+  
+  switch($delta) {
+    case 'create_reviews_block':
+      $block['content'] = drupal_get_form('pl_progress_create_reviews');
+      break;
+  }
+  
+  return $block;
+}
+
+function pl_progress_create_reviews($form, &$form_state) {
+
+  $option = array('all' => 'Select from following', 'node/add/review-activity' => 'Activity Reviews', 'node/add/review-book' => 'Book Reviews', 'node/add/movie-review' => 'Movie Reviews', 'node/add/music-review' => 'Music Reviews', 'node/add/video-game-review' => 'Video Game Reviews');
+
+  $form['read activity'] = array(
+      '#type' => 'select',
+      '#title' => 'Write A Review',
+      '#options' => $option, 
+      '#multiple' => FALSE,
+    );
+
+    return $form;
+
+}
