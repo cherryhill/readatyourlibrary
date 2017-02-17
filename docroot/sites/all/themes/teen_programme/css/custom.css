@@ -12579,37 +12579,70 @@ html {
   padding: 24px 10px 30px 40px;
 }
 
-/* line 21, ../scss/pages/_activity.scss */
-.view-activities-page-for-teens-site .views-field-field-suggest-a-new-bay-area-hot.views-field a {
-  font-weight: bold;
-}
-
-/* line 26, ../scss/pages/_activity.scss */
+/* line 19, ../scss/pages/_activity.scss */
 .activity-page-wrapper {
   margin-top: 10px;
   margin-bottom: 10px;
   display: inline-block;
   width: 100%;
 }
-/* line 31, ../scss/pages/_activity.scss */
-.activity-page-wrapper .body {
+/* line 25, ../scss/pages/_activity.scss */
+.activity-page-wrapper h2 a {
+  color: inherit;
+  font-family: inherit;
+  position: relative;
+}
+/* line 29, ../scss/pages/_activity.scss */
+.activity-page-wrapper h2 a:after {
+  content: "";
+  width: 0;
+  height: 0;
+  border-top: 6px solid transparent;
+  border-bottom: 6px solid transparent;
+  border-left: 10px solid;
+  display: inline-block;
+  margin-left: 10px;
+  top: 0;
+}
+/* line 41, ../scss/pages/_activity.scss */
+.activity-page-wrapper h2 a[href=""], .activity-page-wrapper h2 a[href="#"] {
+  pointer-events: none;
+}
+/* line 43, ../scss/pages/_activity.scss */
+.activity-page-wrapper h2 a[href=""]:hover, .activity-page-wrapper h2 a[href="#"]:hover {
+  text-decoration: none;
+}
+/* line 46, ../scss/pages/_activity.scss */
+.activity-page-wrapper h2 a[href=""]:after, .activity-page-wrapper h2 a[href="#"]:after {
+  border-left: none;
+}
+/* line 51, ../scss/pages/_activity.scss */
+.activity-page-wrapper .body, .activity-page-wrapper .link {
   padding-left: 30px;
 }
-/* line 34, ../scss/pages/_activity.scss */
+/* line 54, ../scss/pages/_activity.scss */
+.activity-page-wrapper .link {
+  font-weight: bold;
+  display: inline-block;
+  width: 100%;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+/* line 61, ../scss/pages/_activity.scss */
 .activity-page-wrapper .drop-downs-wrapper {
   padding-left: 30px;
 }
-/* line 36, ../scss/pages/_activity.scss */
+/* line 63, ../scss/pages/_activity.scss */
 .activity-page-wrapper .drop-downs-wrapper .form-type-select {
   display: flex;
   display: -webkit-flex;
   flex-wrap: wrap;
 }
-/* line 40, ../scss/pages/_activity.scss */
+/* line 67, ../scss/pages/_activity.scss */
 .activity-page-wrapper .drop-downs-wrapper .form-type-select label, .activity-page-wrapper .drop-downs-wrapper .form-type-select select, .activity-page-wrapper .drop-downs-wrapper .form-type-select > div {
   flex: 0 0 50%;
 }
-/* line 43, ../scss/pages/_activity.scss */
+/* line 70, ../scss/pages/_activity.scss */
 .activity-page-wrapper .drop-downs-wrapper .form-type-select label {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -12633,7 +12666,7 @@ html {
   font-family: "Roboto", sans-serif;
   font-weight: 400;
 }
-/* line 47, ../scss/pages/_activity.scss */
+/* line 74, ../scss/pages/_activity.scss */
 .activity-page-wrapper .drop-downs-wrapper .form-type-select .chosen-container {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -12657,7 +12690,7 @@ html {
   font-family: "Roboto", sans-serif;
   font-weight: 400;
 }
-/* line 49, ../scss/pages/_activity.scss */
+/* line 76, ../scss/pages/_activity.scss */
 .activity-page-wrapper .drop-downs-wrapper .form-type-select .chosen-container a.chosen-single {
   height: auto;
   border-radius: 0;
@@ -12665,12 +12698,12 @@ html {
   background: #fff;
   border: 1px solid #2ba6cb;
 }
-/* line 55, ../scss/pages/_activity.scss */
+/* line 82, ../scss/pages/_activity.scss */
 .activity-page-wrapper .drop-downs-wrapper .form-type-select .chosen-container a.chosen-single > div {
   width: 30px;
   background: #2ba6cb;
 }
-/* line 58, ../scss/pages/_activity.scss */
+/* line 85, ../scss/pages/_activity.scss */
 .activity-page-wrapper .drop-downs-wrapper .form-type-select .chosen-container a.chosen-single > div b {
   background: none;
   border-left: 7px solid transparent;
