@@ -16,20 +16,47 @@
   }
 }
 
-.view-activities-page-for-teens-site {
-  .views-field-field-suggest-a-new-bay-area-hot.views-field {
-     a {
-      font-weight: bold;
-     }
-  }
-}
 .activity-page-wrapper {
    margin-top: 10px;
    margin-bottom: 10px;
    display: inline-block;
    width: 100%;
-    .body {
+   h2 {
+      a {
+        color: inherit;
+        font-family: inherit;
+        position: relative;
+          &:after {
+             content: "";
+             width: 0;
+             height: 0;
+             border-top: 6px solid transparent;
+             border-bottom: 6px solid transparent;
+             border-left: 10px solid;
+             display: inline-block;
+             margin-left: 10px;
+             top: 0;
+          }
+      }
+      a[href=""],a[href="#"] {
+        pointer-events: none;
+         &:hover {
+          text-decoration: none;
+         }
+         &:after {
+          border-left: none;
+         }
+      }
+   }
+    .body, .link {
        padding-left: 30px;
+    }
+    .link {
+      font-weight: bold;
+      display: inline-block;
+      width: 100%;
+      margin-top: 10px;
+      margin-bottom: 10px;
     }
     .drop-downs-wrapper {
        padding-left: 30px;
