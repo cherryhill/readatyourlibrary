@@ -21,7 +21,8 @@ function feature_for_reviews_page_default_fe_block_settings() {
     'machine_name' => 'write_your_own_review_reviews_pa',
     'module' => 'block',
     'node_types' => array(),
-    'pages' => 'reviews',
+    'pages' => 'reviews
+reviews/*',
     'roles' => array(),
     'themes' => array(
       'kids_programme' => array(
