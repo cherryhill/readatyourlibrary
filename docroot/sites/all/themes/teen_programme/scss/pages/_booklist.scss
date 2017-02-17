@@ -21,12 +21,15 @@
       }
 
       .owl-controls .owl-buttons {
+          > div {
+            background: url("../images/star-sprite");
+          }
           .owl-prev {
-            background-position: -20px -660px;
+            background-position: -20px -20px;
             margin-left: -18px;
           }
           .owl-next {
-            background-position: -20px -1198px;
+            background-position: -20px -91px;
             margin-right: -2px;
           }
         }
@@ -213,19 +216,12 @@
           font-family: inherit;
         font-size: inherit;
         }
-        span {
-          padding-right: 32px;
-        position: relative;
-         &:after {
-           content: "";
-            width: 25px;
-            height: 25px;
-            display: inline-block;
-            background: url("../images/smily.png") no-repeat scroll center center;
-            position: absolute;
-            right: 2px;
-            top: -3px;
-         }
+        @extend .likes;
+        span:after {
+          right: -2px;
+          .cs-default & {
+            top: -5px;
+          }
         }
       }
     }

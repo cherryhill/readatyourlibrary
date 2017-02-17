@@ -144,7 +144,6 @@
 
   .cs-elegant & {
     font-size: 28px;
-
     color: $gray;
   }
 }
@@ -173,7 +172,6 @@
 
   .cs-elegant & {
     color: $gray;
-
     font-size: 25px;
   }
 }
@@ -314,8 +312,8 @@
     padding: 10px 10px 14px 40px;
   }
 }
-//bigger stroke images
 
+//bigger stroke images
 
 //primary color
 .primary-color {
@@ -343,4 +341,42 @@
   }
 
   background-repeat: repeat;
+}
+
+//like
+.likes {
+  padding-left: 14px;
+  padding-top: 5px;
+
+  span {
+    padding-right: 25px;
+    position: relative;
+
+    &:after {
+      content: "";
+      width: 21px;
+      height: 21px;
+      background: url("../images/star-sprite");
+      background-repeat: no-repeat;
+      position: absolute;
+      right: 0;
+      top: 0;
+      display: inline-block;
+
+      .cs-default & {
+        background-position: -20px -210px;
+      }
+
+      .cs-classic & {
+        background-position: -20px -152px;
+      }
+
+      .cs-elegant & {
+        background-position: -20px -266px;
+      }
+    }
+  }
+}
+.bold-fonts {
+  @include bold-font;
 }
