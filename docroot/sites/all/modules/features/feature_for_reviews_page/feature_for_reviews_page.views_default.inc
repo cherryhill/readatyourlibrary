@@ -364,7 +364,7 @@ print \'Reviewed by \';
 <div class = "views-field-field-user-avatar">[php_1]</div>
 <div class="user">[php]</div>
 </div>
-<div class="like-count">Likes: [count]</div>
+<div class="like-count"><span>Likes:</span> [count]</div>
 <div class="date-wrapp">
 <div class="date">[created]</div>
 <div>[body]</div>
@@ -523,6 +523,8 @@ print \'Reviewed by \';
 
   /* Display: Patron only */
   $handler = $view->new_display('page', 'Patron only', 'page_1');
+  $handler->display->display_options['defaults']['css_class'] = FALSE;
+  $handler->display->display_options['css_class'] = 'book-reviews-page';
   $handler->display->display_options['defaults']['style_plugin'] = FALSE;
   $handler->display->display_options['style_plugin'] = 'list';
   $handler->display->display_options['defaults']['style_options'] = FALSE;
@@ -552,6 +554,7 @@ print \'Reviewed by \';
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
   $handler->display->display_options['fields']['title']['label'] = '';
+  $handler->display->display_options['fields']['title']['exclude'] = TRUE;
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
@@ -567,6 +570,7 @@ print \'Reviewed by \';
   $handler->display->display_options['fields']['field_author_last_name']['table'] = 'field_data_field_author_last_name';
   $handler->display->display_options['fields']['field_author_last_name']['field'] = 'field_author_last_name';
   $handler->display->display_options['fields']['field_author_last_name']['label'] = '';
+  $handler->display->display_options['fields']['field_author_last_name']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_author_last_name']['element_label_colon'] = FALSE;
   /* Field: Flags: Flag counter */
   $handler->display->display_options['fields']['count']['id'] = 'count';
@@ -574,12 +578,14 @@ print \'Reviewed by \';
   $handler->display->display_options['fields']['count']['field'] = 'count';
   $handler->display->display_options['fields']['count']['relationship'] = 'flag_count_rel';
   $handler->display->display_options['fields']['count']['label'] = 'Likes';
+  $handler->display->display_options['fields']['count']['exclude'] = TRUE;
   /* Field: Flags: Flag link */
   $handler->display->display_options['fields']['ops']['id'] = 'ops';
   $handler->display->display_options['fields']['ops']['table'] = 'flagging';
   $handler->display->display_options['fields']['ops']['field'] = 'ops';
   $handler->display->display_options['fields']['ops']['relationship'] = 'flag_content_rel';
   $handler->display->display_options['fields']['ops']['label'] = '';
+  $handler->display->display_options['fields']['ops']['exclude'] = TRUE;
   $handler->display->display_options['fields']['ops']['element_label_colon'] = FALSE;
   /* Field: Profile: Avatar image */
   $handler->display->display_options['fields']['field_user_avatar']['id'] = 'field_user_avatar';
@@ -602,14 +608,17 @@ print \'Reviewed by \';
   $handler->display->display_options['fields']['name']['table'] = 'users';
   $handler->display->display_options['fields']['name']['field'] = 'name';
   $handler->display->display_options['fields']['name']['relationship'] = 'uid';
-  $handler->display->display_options['fields']['name']['label'] = 'Reviewed by';
+  $handler->display->display_options['fields']['name']['label'] = '';
+  $handler->display->display_options['fields']['name']['exclude'] = TRUE;
   $handler->display->display_options['fields']['name']['alter']['alter_text'] = TRUE;
   $handler->display->display_options['fields']['name']['alter']['text'] = '[field_user_avatar] [name]';
+  $handler->display->display_options['fields']['name']['element_label_colon'] = FALSE;
   /* Field: Content: Post date */
   $handler->display->display_options['fields']['created']['id'] = 'created';
   $handler->display->display_options['fields']['created']['table'] = 'node';
   $handler->display->display_options['fields']['created']['field'] = 'created';
   $handler->display->display_options['fields']['created']['label'] = '';
+  $handler->display->display_options['fields']['created']['exclude'] = TRUE;
   $handler->display->display_options['fields']['created']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['created']['date_format'] = 'custom';
   $handler->display->display_options['fields']['created']['custom_date_format'] = 'M d, Y';
@@ -619,6 +628,7 @@ print \'Reviewed by \';
   $handler->display->display_options['fields']['body']['table'] = 'field_data_body';
   $handler->display->display_options['fields']['body']['field'] = 'body';
   $handler->display->display_options['fields']['body']['label'] = '';
+  $handler->display->display_options['fields']['body']['exclude'] = TRUE;
   $handler->display->display_options['fields']['body']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['body']['type'] = 'text_summary_or_trimmed';
   $handler->display->display_options['fields']['body']['settings'] = array(
@@ -629,12 +639,132 @@ print \'Reviewed by \';
   $handler->display->display_options['fields']['view_node']['table'] = 'views_entity_node';
   $handler->display->display_options['fields']['view_node']['field'] = 'view_node';
   $handler->display->display_options['fields']['view_node']['label'] = '';
+  $handler->display->display_options['fields']['view_node']['exclude'] = TRUE;
   $handler->display->display_options['fields']['view_node']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['view_node']['text'] = 'Read full review';
   /* Field: Content: Book cover Image link */
   $handler->display->display_options['fields']['field_book_cover_image_link']['id'] = 'field_book_cover_image_link';
   $handler->display->display_options['fields']['field_book_cover_image_link']['table'] = 'field_data_field_book_cover_image_link';
   $handler->display->display_options['fields']['field_book_cover_image_link']['field'] = 'field_book_cover_image_link';
+  $handler->display->display_options['fields']['field_book_cover_image_link']['label'] = '';
+  $handler->display->display_options['fields']['field_book_cover_image_link']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_book_cover_image_link']['type'] = 'text_plain';
+  /* Field: Global: Custom text */
+  $handler->display->display_options['fields']['nothing_1']['id'] = 'nothing_1';
+  $handler->display->display_options['fields']['nothing_1']['table'] = 'views';
+  $handler->display->display_options['fields']['nothing_1']['field'] = 'nothing';
+  $handler->display->display_options['fields']['nothing_1']['label'] = '';
+  $handler->display->display_options['fields']['nothing_1']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['nothing_1']['alter']['text'] = '<div class="bookreview_title">[title] by [field_author_last_name] </div>';
+  $handler->display->display_options['fields']['nothing_1']['element_label_colon'] = FALSE;
+  /* Field: Global: PHP */
+  $handler->display->display_options['fields']['php']['id'] = 'php';
+  $handler->display->display_options['fields']['php']['table'] = 'views';
+  $handler->display->display_options['fields']['php']['field'] = 'php';
+  $handler->display->display_options['fields']['php']['label'] = '';
+  $handler->display->display_options['fields']['php']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['php']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['php']['use_php_setup'] = 0;
+  $handler->display->display_options['fields']['php']['php_output'] = '<?php
+$privacy = $data->_field_data[\'nid\'][\'entity\'];
+$privacy_key = $privacy->field_privacy_settings[LANGUAGE_NONE][0][\'value\'];
+
+if($privacy_key == \'public\'){
+echo "<a href = users/profile/$row->uid>".$row->name."</a>";
+}
+//echo \'<pre>\'; print_r($privacy_key);
+?>';
+  $handler->display->display_options['fields']['php']['use_php_click_sortable'] = '0';
+  $handler->display->display_options['fields']['php']['php_click_sortable'] = '';
+  /* Field: Global: PHP */
+  $handler->display->display_options['fields']['php_1']['id'] = 'php_1';
+  $handler->display->display_options['fields']['php_1']['table'] = 'views';
+  $handler->display->display_options['fields']['php_1']['field'] = 'php';
+  $handler->display->display_options['fields']['php_1']['label'] = '';
+  $handler->display->display_options['fields']['php_1']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['php_1']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['php_1']['use_php_setup'] = 0;
+  $handler->display->display_options['fields']['php_1']['php_output'] = '<?php
+
+$img_id = $row->field_user_avatar;
+
+$query = db_select(\'field_data_field_user_avatar\',\'avatar\')
+->fields(\'avatar\',array(\'field_user_avatar_target_id\'))
+->condition(\'entity_id\',$img_id)
+->execute()
+->fetchAssoc();
+
+$image_id =  $query[\'field_user_avatar_target_id\'];
+
+$query = db_select(\'field_data_field_avatar_image\', \'t\');
+$query->join(\'file_managed\', \'n\', \'n.fid = t.field_avatar_image_fid\');
+$result = $query
+  ->fields(\'n\', array(\'uri\'))
+  ->condition(\'t.entity_id\', $image_id)
+  ->execute();
+
+$img_uri = $result->fetchObject();
+$img_uri = $img_uri->uri;
+$style = \'avatar_style\';
+$img_path = image_style_url($style, $img_uri);
+
+$img = "<img src=\'$img_path\'>";
+
+$privacy = $data->_field_data[\'nid\'][\'entity\'];
+$privacy_key = $privacy->field_privacy_settings[LANGUAGE_NONE][0][\'value\'];
+
+if(isset($img_uri)){
+	if($privacy_key == \'public\'){
+	print $img;
+	}
+}
+?>';
+  $handler->display->display_options['fields']['php_1']['use_php_click_sortable'] = '0';
+  $handler->display->display_options['fields']['php_1']['php_click_sortable'] = '';
+  /* Field: Global: PHP */
+  $handler->display->display_options['fields']['php_2']['id'] = 'php_2';
+  $handler->display->display_options['fields']['php_2']['table'] = 'views';
+  $handler->display->display_options['fields']['php_2']['field'] = 'php';
+  $handler->display->display_options['fields']['php_2']['label'] = '';
+  $handler->display->display_options['fields']['php_2']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['php_2']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['php_2']['use_php_setup'] = 0;
+  $handler->display->display_options['fields']['php_2']['php_output'] = '<?php
+
+$privacy = $data->_field_data[\'nid\'][\'entity\'];
+$privacy_key = $privacy->field_privacy_settings[LANGUAGE_NONE][0][\'value\'];
+if($privacy_key == \'public\'){
+print \'Reviewed by \';
+}
+
+?>';
+  $handler->display->display_options['fields']['php_2']['use_php_click_sortable'] = '0';
+  $handler->display->display_options['fields']['php_2']['php_click_sortable'] = '';
+  /* Field: Global: Custom text */
+  $handler->display->display_options['fields']['nothing']['id'] = 'nothing';
+  $handler->display->display_options['fields']['nothing']['table'] = 'views';
+  $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
+  $handler->display->display_options['fields']['nothing']['label'] = '';
+  $handler->display->display_options['fields']['nothing']['alter']['text'] = '<div class="reviews-wrapper">
+   <div class="reviews-body">
+       <div class="reviews-title">
+            <div class="counte">[count]</div>
+            <div class="author-name">[nothing_1]</div>
+       </div>
+      <div class="review-wrapp">
+           <div class="review">[php_2]</div>
+           <div class="views-field-field-user-avatar">[php_1]</div>
+          <div class="user">[php] </div>
+      </div>
+      <div class="like-count"><span>Likes:</span> [count]</div>
+      <div class="date-wrapp">
+            <div class="date">[created]</div>
+	    <div>[body]</div>
+     </div>
+     <div class="node-link">[view_node]</div>
+</div>
+</div>';
+  $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
   $handler->display->display_options['defaults']['sorts'] = FALSE;
   /* Sort criterion: Content: Post date */
   $handler->display->display_options['sorts']['created']['id'] = 'created';
@@ -723,6 +853,8 @@ print \'Reviewed by \';
 
   /* Display: Staff only */
   $handler = $view->new_display('page', 'Staff only', 'page_2');
+  $handler->display->display_options['defaults']['css_class'] = FALSE;
+  $handler->display->display_options['css_class'] = 'book-reviews-page';
   $handler->display->display_options['defaults']['style_plugin'] = FALSE;
   $handler->display->display_options['style_plugin'] = 'list';
   $handler->display->display_options['defaults']['style_options'] = FALSE;
@@ -752,8 +884,10 @@ print \'Reviewed by \';
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
   $handler->display->display_options['fields']['title']['label'] = '';
+  $handler->display->display_options['fields']['title']['exclude'] = TRUE;
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
+  $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
   /* Field: Content: Author first name */
   $handler->display->display_options['fields']['field_author_first_name']['id'] = 'field_author_first_name';
   $handler->display->display_options['fields']['field_author_first_name']['table'] = 'field_data_field_author_first_name';
@@ -766,6 +900,7 @@ print \'Reviewed by \';
   $handler->display->display_options['fields']['field_author_last_name']['table'] = 'field_data_field_author_last_name';
   $handler->display->display_options['fields']['field_author_last_name']['field'] = 'field_author_last_name';
   $handler->display->display_options['fields']['field_author_last_name']['label'] = '';
+  $handler->display->display_options['fields']['field_author_last_name']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_author_last_name']['element_label_colon'] = FALSE;
   /* Field: Flags: Flag counter */
   $handler->display->display_options['fields']['count']['id'] = 'count';
@@ -773,12 +908,14 @@ print \'Reviewed by \';
   $handler->display->display_options['fields']['count']['field'] = 'count';
   $handler->display->display_options['fields']['count']['relationship'] = 'flag_count_rel';
   $handler->display->display_options['fields']['count']['label'] = 'Likes';
+  $handler->display->display_options['fields']['count']['exclude'] = TRUE;
   /* Field: Flags: Flag link */
   $handler->display->display_options['fields']['ops']['id'] = 'ops';
   $handler->display->display_options['fields']['ops']['table'] = 'flagging';
   $handler->display->display_options['fields']['ops']['field'] = 'ops';
   $handler->display->display_options['fields']['ops']['relationship'] = 'flag_content_rel';
   $handler->display->display_options['fields']['ops']['label'] = '';
+  $handler->display->display_options['fields']['ops']['exclude'] = TRUE;
   $handler->display->display_options['fields']['ops']['element_label_colon'] = FALSE;
   /* Field: Profile: Avatar image */
   $handler->display->display_options['fields']['field_user_avatar']['id'] = 'field_user_avatar';
@@ -801,14 +938,17 @@ print \'Reviewed by \';
   $handler->display->display_options['fields']['name']['table'] = 'users';
   $handler->display->display_options['fields']['name']['field'] = 'name';
   $handler->display->display_options['fields']['name']['relationship'] = 'uid';
-  $handler->display->display_options['fields']['name']['label'] = 'Reviewed by';
+  $handler->display->display_options['fields']['name']['label'] = '';
+  $handler->display->display_options['fields']['name']['exclude'] = TRUE;
   $handler->display->display_options['fields']['name']['alter']['alter_text'] = TRUE;
   $handler->display->display_options['fields']['name']['alter']['text'] = '[field_user_avatar] [name]';
+  $handler->display->display_options['fields']['name']['element_label_colon'] = FALSE;
   /* Field: Content: Post date */
   $handler->display->display_options['fields']['created']['id'] = 'created';
   $handler->display->display_options['fields']['created']['table'] = 'node';
   $handler->display->display_options['fields']['created']['field'] = 'created';
   $handler->display->display_options['fields']['created']['label'] = '';
+  $handler->display->display_options['fields']['created']['exclude'] = TRUE;
   $handler->display->display_options['fields']['created']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['created']['date_format'] = 'custom';
   $handler->display->display_options['fields']['created']['custom_date_format'] = 'M d, Y';
@@ -818,6 +958,7 @@ print \'Reviewed by \';
   $handler->display->display_options['fields']['body']['table'] = 'field_data_body';
   $handler->display->display_options['fields']['body']['field'] = 'body';
   $handler->display->display_options['fields']['body']['label'] = '';
+  $handler->display->display_options['fields']['body']['exclude'] = TRUE;
   $handler->display->display_options['fields']['body']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['body']['type'] = 'text_summary_or_trimmed';
   $handler->display->display_options['fields']['body']['settings'] = array(
@@ -828,12 +969,132 @@ print \'Reviewed by \';
   $handler->display->display_options['fields']['view_node']['table'] = 'views_entity_node';
   $handler->display->display_options['fields']['view_node']['field'] = 'view_node';
   $handler->display->display_options['fields']['view_node']['label'] = '';
+  $handler->display->display_options['fields']['view_node']['exclude'] = TRUE;
   $handler->display->display_options['fields']['view_node']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['view_node']['text'] = 'Read full review';
   /* Field: Content: Book cover Image link */
   $handler->display->display_options['fields']['field_book_cover_image_link']['id'] = 'field_book_cover_image_link';
   $handler->display->display_options['fields']['field_book_cover_image_link']['table'] = 'field_data_field_book_cover_image_link';
   $handler->display->display_options['fields']['field_book_cover_image_link']['field'] = 'field_book_cover_image_link';
+  $handler->display->display_options['fields']['field_book_cover_image_link']['label'] = '';
+  $handler->display->display_options['fields']['field_book_cover_image_link']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_book_cover_image_link']['type'] = 'text_plain';
+  /* Field: Global: Custom text */
+  $handler->display->display_options['fields']['nothing']['id'] = 'nothing';
+  $handler->display->display_options['fields']['nothing']['table'] = 'views';
+  $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
+  $handler->display->display_options['fields']['nothing']['label'] = '';
+  $handler->display->display_options['fields']['nothing']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['nothing']['alter']['text'] = '<div class="bookreview_title">[title] by [field_author_last_name] </div>';
+  $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
+  /* Field: Global: PHP */
+  $handler->display->display_options['fields']['php']['id'] = 'php';
+  $handler->display->display_options['fields']['php']['table'] = 'views';
+  $handler->display->display_options['fields']['php']['field'] = 'php';
+  $handler->display->display_options['fields']['php']['label'] = '';
+  $handler->display->display_options['fields']['php']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['php']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['php']['use_php_setup'] = 0;
+  $handler->display->display_options['fields']['php']['php_output'] = '<?php
+$privacy = $data->_field_data[\'nid\'][\'entity\'];
+$privacy_key = $privacy->field_privacy_settings[LANGUAGE_NONE][0][\'value\'];
+
+if($privacy_key == \'public\'){
+echo "<a href = users/profile/$row->uid>".$row->name."</a>";
+}
+//echo \'<pre>\'; print_r($privacy_key);
+?>';
+  $handler->display->display_options['fields']['php']['use_php_click_sortable'] = '0';
+  $handler->display->display_options['fields']['php']['php_click_sortable'] = '';
+  /* Field: Global: PHP */
+  $handler->display->display_options['fields']['php_1']['id'] = 'php_1';
+  $handler->display->display_options['fields']['php_1']['table'] = 'views';
+  $handler->display->display_options['fields']['php_1']['field'] = 'php';
+  $handler->display->display_options['fields']['php_1']['label'] = '';
+  $handler->display->display_options['fields']['php_1']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['php_1']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['php_1']['use_php_setup'] = 0;
+  $handler->display->display_options['fields']['php_1']['php_output'] = '<?php
+
+$img_id = $row->field_user_avatar;
+
+$query = db_select(\'field_data_field_user_avatar\',\'avatar\')
+->fields(\'avatar\',array(\'field_user_avatar_target_id\'))
+->condition(\'entity_id\',$img_id)
+->execute()
+->fetchAssoc();
+
+$image_id =  $query[\'field_user_avatar_target_id\'];
+
+$query = db_select(\'field_data_field_avatar_image\', \'t\');
+$query->join(\'file_managed\', \'n\', \'n.fid = t.field_avatar_image_fid\');
+$result = $query
+  ->fields(\'n\', array(\'uri\'))
+  ->condition(\'t.entity_id\', $image_id)
+  ->execute();
+
+$img_uri = $result->fetchObject();
+$img_uri = $img_uri->uri;
+$style = \'avatar_style\';
+$img_path = image_style_url($style, $img_uri);
+
+$img = "<img src=\'$img_path\'>";
+
+$privacy = $data->_field_data[\'nid\'][\'entity\'];
+$privacy_key = $privacy->field_privacy_settings[LANGUAGE_NONE][0][\'value\'];
+
+if(isset($img_uri)){
+	if($privacy_key == \'public\'){
+	print $img;
+	}
+}
+?>';
+  $handler->display->display_options['fields']['php_1']['use_php_click_sortable'] = '0';
+  $handler->display->display_options['fields']['php_1']['php_click_sortable'] = '';
+  /* Field: Global: PHP */
+  $handler->display->display_options['fields']['php_2']['id'] = 'php_2';
+  $handler->display->display_options['fields']['php_2']['table'] = 'views';
+  $handler->display->display_options['fields']['php_2']['field'] = 'php';
+  $handler->display->display_options['fields']['php_2']['label'] = '';
+  $handler->display->display_options['fields']['php_2']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['php_2']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['php_2']['use_php_setup'] = 0;
+  $handler->display->display_options['fields']['php_2']['php_output'] = '<?php
+
+$privacy = $data->_field_data[\'nid\'][\'entity\'];
+$privacy_key = $privacy->field_privacy_settings[LANGUAGE_NONE][0][\'value\'];
+if($privacy_key == \'public\'){
+print \'Reviewed by \';
+}
+
+?>';
+  $handler->display->display_options['fields']['php_2']['use_php_click_sortable'] = '0';
+  $handler->display->display_options['fields']['php_2']['php_click_sortable'] = '';
+  /* Field: Global: Custom text */
+  $handler->display->display_options['fields']['nothing_1']['id'] = 'nothing_1';
+  $handler->display->display_options['fields']['nothing_1']['table'] = 'views';
+  $handler->display->display_options['fields']['nothing_1']['field'] = 'nothing';
+  $handler->display->display_options['fields']['nothing_1']['label'] = '';
+  $handler->display->display_options['fields']['nothing_1']['alter']['text'] = '<div class="reviews-wrapper">
+   <div class="reviews-body">
+       <div class="reviews-title">
+            <div class="counte">[count]</div>
+            <div class="author-name">[nothing]</div>
+       </div>
+      <div class="review-wrapp">
+           <div class="review">[php_2]</div>
+           <div class="views-field-field-user-avatar">[php_1]</div>
+          <div class="user">[php] </div>
+      </div>
+      <div class="like-count"><span>Likes:</span> [count]</div>
+      <div class="date-wrapp">
+            <div class="date">[created]</div>
+	    <div>[body]</div>
+     </div>
+     <div class="node-link">[view_node]</div>
+</div>
+</div>';
+  $handler->display->display_options['fields']['nothing_1']['element_label_colon'] = FALSE;
   $handler->display->display_options['defaults']['sorts'] = FALSE;
   /* Sort criterion: Content: Post date */
   $handler->display->display_options['sorts']['created']['id'] = 'created';

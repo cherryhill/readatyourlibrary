@@ -572,3 +572,76 @@ h2.reviews-title, .view-booklist-slideshow .view-header h1 {
 .view-footer .activity-desc {
   margin-bottom: 20px;
 }
+.block-teen-reward-page {
+  padding: 20px;
+    .cs-default & {
+    @extend .yellow;
+    color: $purple;
+  }
+  .cs-classic & {
+    @extend .light-blue;
+    color: $dark-blue;
+  }
+  .cs-elegant & {
+    @extend .yellow-btn-elegant;
+    color: $black;
+  }
+  .form-type-select {
+           display: flex;
+           display: -webkit-flex;
+           flex-wrap: wrap;
+           label,select,> div {
+
+           }
+           label {
+             @extend .primary-color;
+             @include primary_fsize;
+             @include button-font;
+           }
+           .chosen-container {
+             @include primary_fsize;
+              a.chosen-single {
+                 height: auto;
+                 border-radius: 0;
+                 .cs-default &{
+                   color: $purple;
+                   border: 1px solid $purple;
+                 }
+                 .cs-classic & {
+                  color: $medium-blue;
+                  border: 1px solid $medium-blue;
+                 }
+                 .cs-elegant & {
+                   color: $green;
+                   border: 1px solid $green;
+                 }
+                 background: $white;
+                 border: 1px solid $link-color;
+                  > div {
+                     width: 30px;
+                     .cs-default & {
+                      background: $purple;
+                     }
+                     .cs-classic & {
+                      background: $medium-blue;
+                     }
+                     .cs-elegant & {
+                      background: $green;
+                     }
+                     b {
+                       background: none;
+                       border-left: 7px solid transparent;
+                       border-right: 7px solid transparent;
+                       display: inline-block;
+                       height: 0;
+                       width: 0;
+                       border-top: 7px solid white;
+                       margin-left: 9px;
+                       position: relative;
+                       top: -1px;
+                     }
+                  }
+              }
+           }
+        }
+}
