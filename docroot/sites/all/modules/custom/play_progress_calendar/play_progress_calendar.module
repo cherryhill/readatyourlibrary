@@ -4,7 +4,7 @@
 
 
 /**
-/Implement hook permissions
+*Implement hook permissions
 **/
 function play_progress_calendar_permission() {
   return array(
@@ -137,7 +137,7 @@ function calendar_page() {
     $next_rew =  t('<strong>Congratulations!</strong> You have completed Reading Program.'); 
   }
   //Print message que from drupal_set_message
-  echo array('next_reward'=>$next_rew, 'drupal_message'=>(theme('status_messages'))); 
+  echo json_encode(array('next_reward'=>$next_rew, 'drupal_message'=>(theme('status_messages')))); 
 }
 
 //Function to generate json data on calendar load
@@ -277,6 +277,13 @@ function patron_activity_record_form($form, &$form_state) {
   $form['submit'] = array(
     '#value' => 'Submit',
     '#type' => 'submit',
+    '#attributes' => array('id'=>array('activity-submit')),
+    '#ajax' => array(
+        'callback' => 'play_progress_bingo_cards_progress_add_activity',
+        'wrapper' => 'bingo-progress-main',
+        'method' => 'replace',
+        'effect' => 'fade',
+      ),
   );
 
   return $form;
@@ -291,13 +298,33 @@ function patron_activity_record_form_submit($form, &$form_state) {
   $user_uid = $query->execute()->fetchField();
    
   $activity_id = $form_state['values']['activity'];
+  $activity_title = $form_state['complete form']['activity']['#options'][$activity_id];
+  // $activity_title = 
   $from = strtotime($form_state['values']['from']);
   $to = strtotime($form_state['values']['to']);
 
-  for ($i=$from; $i<=$to; $i+=86400) {
-    $date = strtotime(date("Y-m-d", $i));
-    $tid = 47;
-     play_library_program_create_activity_entry($activity_id , $user_uid, $i, $tid);
-     drupal_set_message('You have entered the read on a day activity.');
+  //Get any staff sticker tid
+  $vocabulary = taxonomy_vocabulary_machine_name_load('calendar_sticker');
+  $tree = taxonomy_get_tree($vocabulary->vid);
+  foreach ($tree as $term) { 
+    $image = taxonomy_term_load($term->tid);
+    $staff_sticker_field = field_get_items('taxonomy_term', $image, 'field_staff_record_image');
+    $staff_sticker_flag = $staff_sticker_field[0]['value'];
+    if($staff_sticker_flag = 1){
+      $sticker_tid = $term->tid;
+    }
+  }
+  if(isset($sticker_tid)){
+    for ($i=$from; $i<=$to; $i+=86400) {
+      $date = date("m-d-Y", $i);
+      // $tid = 47;
+       $status = play_library_program_create_activity_entry($activity_id , $user_uid, $i, $sticker_tid);
+       if($status){
+        drupal_set_message("Recorded $activity_title activity for $date");
+       }
+       // drupal_set_message('You have entered the read on a day activity.');
+    }
+  } else {
+    drupal_set_message("Please add stickers for Calendar with 'Staff Record Image' as 'Yes'", "error");
   }
 }

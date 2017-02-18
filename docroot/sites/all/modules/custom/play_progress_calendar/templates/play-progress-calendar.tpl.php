@@ -52,13 +52,31 @@
       		<?php
   				  foreach ($tree as $term) {
   						$image = taxonomy_term_load($term->tid);
-              if ($image_items = field_get_items('taxonomy_term', $image, 'field_cal_sticker_image')) {
-  							$uri = $image_items[0]['uri'];
-  							$external_url = file_create_url($uri);
-                // $external_urls[$term->tid] = $external_url;
-  							print('<div id ='.$term->tid.' class="fc-event" style="inline-block">'.'<img src ='.$external_url.' id = sticker_'.$term->tid.'></div>');
+              $staff_sticker_field = field_get_items('taxonomy_term', $image, 'field_staff_record_image');
+              $staff_sticker_flag = $staff_sticker_field[0]['value'];
+              if($staff_sticker_flag <> 1){
+                if ($image_items = field_get_items('taxonomy_term', $image, 'field_cal_sticker_image')) {
+                  $sticker_counter++;
+                  if ($sticker_counter<=5){
+    							   $uri = $image_items[0]['uri'];
+    							   $external_url = file_create_url($uri);
+                      // $external_urls[$term->tid] = $external_url;
+    							   print('<div id ='.$term->tid.' class="fc-event" style="inline-block">'.'<img src ='.$external_url.' id = sticker_'.$term->tid.'></div>');
+                  }
+                }
+              }
+              else{
+               if ($image_items = field_get_items('taxonomy_term', $image, 'field_cal_sticker_image')) {
+                     $uri = $image_items[0]['uri'];
+                     $external_url = file_create_url($uri);
+                      // $external_urls[$term->tid] = $external_url;
+                     print('<div id ='.$term->tid.' style="display:none">'.'<img src ='.$external_url.' id = sticker_'.$term->tid.'></div>');
+                } 
               }
           	}
+            if($sticker_counter == 0){
+              drupal_set_message("No stickers are added for Calendar stickers", "error");
+            }
       	}
   		?>
     </div>

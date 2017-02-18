@@ -39,6 +39,31 @@
         });
       });
 
+      function update_result(result){
+              console.log(result);
+              jq_json_obj = $.parseJSON(result); //Convert the JSON object to jQuery-compatible
+              if(typeof jq_json_obj == 'object'){ //Test if variable is a [JSON] object
+                jq_obj = eval (jq_json_obj);
+                //Convert back to an array
+                jq_array = [];
+                for(elem in jq_obj){
+                  jq_array[elem]= jq_obj[elem];
+                }
+                console.log(jq_array);
+              }else{
+                console.log("Error occurred!");
+              }
+              $('#message').remove();
+              $('#next-reward').remove();
+              $('.reward-won').removeClass('reward-won');
+              $('#wrap').after('<div id = "message"><div class="section clearfix">' + jq_array['drupal_message'] + '</div></div>');
+              $('.reading-progress').append('<div id = "next-reward"><h3>' + jq_array['next_reward'] + '</h3></div>');
+              $('#message .section').css('width' , '960px');
+              $('#message .section').css('margin-left' , 'auto');
+              $('#message .section').css('margin-right' , 'auto');
+              $('.calendar-wrapper').removeClass('disabled');
+      }
+
       /* initialize the calendar
       -----------------------------------------------------------------*/
       $('#calendar').fullCalendar({
@@ -51,6 +76,7 @@
         editable: true,
         droppable: true, // this allows things to be dropped onto the calendar
         drop: function(date, allDay) {
+          $('#calendar').hide();
           $('.calendar-wrapper').addClass('disabled');
           //Create event object for dropped sticker
           var eventObject = {
@@ -78,29 +104,10 @@
             data: 'act_ids='+act_ids+'&tid='+tid+'&drop_date='+moment(date).format('YYYY-MMM-DD')+'&start_date='+start+'&end_date='+end+'&user_id='+currentUser,
             //on Successs render drupal set messages
             success: function(res){
+              $('#calendar').show();
               $('#calendar').fullCalendar('refetchEvents');
               console.log(res);
-              jq_json_obj = $.parseJSON(res); //Convert the JSON object to jQuery-compatible
-              if(typeof jq_json_obj == 'object'){ //Test if variable is a [JSON] object
-                jq_obj = eval (jq_json_obj);
-                //Convert back to an array
-                jq_array = [];
-                for(elem in jq_obj){
-                  jq_array.push(jq_obj[elem]);
-                }
-                console.log(jq_array);
-              }else{
-                console.log("Error occurred!");
-              }
-              $('#message').remove();
-              $('#next-reward').remove();
-              $('.reward-won').removeClass('reward-won');
-              $('#wrap').after('<div id = "message"><div class="section clearfix">' + jq_array[1] + '</div></div>');
-              $('.reading-progress').append('<div id = "next-reward"><h3>' + jq_array[0] + '</h3></div>');
-              $('#message .section').css('width' , '960px');
-              $('#message .section').css('margin-left' , 'auto');
-              $('#message .section').css('margin-right' , 'auto');
-              $('.calendar-wrapper').removeClass('disabled');
+              update_result(res);
             },
             error: function(jqXHR, data, error){
               alert("Apologies. There is some error in the system. " + error );
@@ -147,29 +154,8 @@
 
             //On success show drupal messages
             success: function(html){
+              update_result(html);
               $('#calendar').fullCalendar('refetchEvents');
-              console.log(html);
-              jq_json_obj = $.parseJSON(html); //Convert the JSON object to jQuery-compatible
-              if(typeof jq_json_obj == 'object'){ //Test if variable is a [JSON] object
-                jq_obj = eval (jq_json_obj);
-                //Convert back to an array
-                jq_array = [];
-                for(elem in jq_obj){
-                  jq_array.push(jq_obj[elem]);
-                }
-                console.log(jq_array);
-              }else{
-                console.log("Error occurred!");
-              }
-              $('#message').remove();
-              $('#next-reward').remove();
-              $('.reward-won').removeClass('reward-won');
-              $('#wrap').after('<div id = "message"><div class="section clearfix">' + jq_array[1] + '</div></div>');
-              $('.reading-progress').append('<div id = "next-reward"><h3>' + jq_array[0] + '</h3></div>');
-              $('#message .section').css('width' , '960px');
-              $('#message .section').css('margin-left' , 'auto');
-              $('#message .section').css('margin-right' , 'auto');
-              $('.calendar-wrapper').removeClass('disabled');
             },
             //On error show error alert
             error: function(jqXHR, data, error){
