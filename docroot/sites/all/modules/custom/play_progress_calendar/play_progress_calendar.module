@@ -65,7 +65,7 @@ function play_progress_calendar_menu() {
     'access arguments' => array('access content'),
     // 'type' => MENU_NORMAL_ITEM,
   );
-  $items['activity_record'] = array(
+  $items['record-activity'] = array(
     'title' => 'Record Activity for Patron',
     'page callback' => 'drupal_get_form',
     'page arguments' => array('patron_activity_record_form'),
@@ -202,7 +202,7 @@ function calendar_data2() {
 
         //Print congratulations message and add reward-won class if user has won a prize
         if($value->field_rw_claim_id_value <> null){
-         $days_read = t('<span class="cong-message">Congratulations!</span><br/> <span class="msg">You have won a reward</span>');
+         $days_read = t('<span class="cong-message"><strong>Congratulations!</strong></span><br/> <span class="msg">You have won a reward</span>');
          $class = 'reward-won';
         }
         //Add day-read class for all non prize days
@@ -247,9 +247,11 @@ function patron_activity_record_form($form, &$form_state) {
     '#type' => 'textfield',
     '#autocomplete_path' => 'user/autocomplete',
     '#attributes' => array(
-      'placeholder' => t('Username'),
+    'placeholder' => t('Username'),
+    '#required'=> TRUE,
     ),
-  );        
+  );
+          
   $form['html'] = array(
    '#type' => 'markup',
    '#markup' => '<div>Search for patrons here: <a href="patron-list" target="_blank">http://kids17.dev.chillco.com/patron-users</a></div>',
@@ -259,31 +261,35 @@ function patron_activity_record_form($form, &$form_state) {
     '#options' => $activity_title,
   );
   $form['from'] = array(
-    //'#title' => t('Start date'),
+    '#title' => t('From'),
     '#type' => 'date_popup',
     '#date_format' => 'F d, Y',
     '#date_year_range' => '0:+10',
+    '#datepicker_options' => array('maxDate' => '+0D'),
     '#required' => TRUE,
+    '#editable' =>'false',
     '#size' => 8,
   );
   $form['to'] = array(
-    //'#title' => t('End date'),
+    '#title' => t('To'),
     '#type' => 'date_popup',
     '#date_format' => 'F d, Y',
     '#date_year_range' => '0:+10',
+    '#datepicker_options' => array('maxDate' => '+0D'),
     '#required' => TRUE,
+    '#editable' =>'false',
     '#size' => 8,
    );
   $form['submit'] = array(
     '#value' => 'Submit',
     '#type' => 'submit',
     '#attributes' => array('id'=>array('activity-submit')),
-    '#ajax' => array(
-        'callback' => 'play_progress_bingo_cards_progress_add_activity',
-        'wrapper' => 'bingo-progress-main',
-        'method' => 'replace',
-        'effect' => 'fade',
-      ),
+    // '#ajax' => array(
+    //     'callback' => 'patron_activity_record_form_submit',
+    //     'wrapper' => 'bingo-progress-main',
+    //     'method' => 'replace',
+    //     'effect' => 'fade',
+    //   ),
   );
 
   return $form;
@@ -310,17 +316,18 @@ function patron_activity_record_form_submit($form, &$form_state) {
     $image = taxonomy_term_load($term->tid);
     $staff_sticker_field = field_get_items('taxonomy_term', $image, 'field_staff_record_image');
     $staff_sticker_flag = $staff_sticker_field[0]['value'];
-    if($staff_sticker_flag = 1){
+    if($staff_sticker_flag == 1){
       $sticker_tid = $term->tid;
     }
   }
+  $sticker_tid = 102;
   if(isset($sticker_tid)){
     for ($i=$from; $i<=$to; $i+=86400) {
       $date = date("m-d-Y", $i);
       // $tid = 47;
        $status = play_library_program_create_activity_entry($activity_id , $user_uid, $i, $sticker_tid);
        if($status){
-        drupal_set_message("Recorded $activity_title activity for $date");
+        drupal_set_message(t("Recorded $activity_title activity for $date for user $username"), 'status');
        }
        // drupal_set_message('You have entered the read on a day activity.');
     }
