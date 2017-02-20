@@ -1,45 +1,87 @@
-.progress-main h1 {
-	background: #7eb600 none repeat scroll 0 0;
-  border: 1px solid #7eb600;
-  color: #fff;
+
+.progress-page {
+  width: 100%;
   display: inline-block;
-  font-family: SpecialElite !important;
-  font-size: 24px;
-  font-style: normal !important;
-  font-weight: normal !important;
-  margin-bottom: 0;
+  padding: 20px;
+}
+h1#title {
   margin-top: 0;
-  padding-bottom: 7px;
-  padding-left: 15px;
-  padding-top: 15px;
-  width: 100%;
-  box-sizing: border-box;
+  width: 250px;
+  float: left;
 }
-
-.progress-main .new-row > .grid {
-  border: 1px solid #cccccc;
-  color: #32024e;
+.top-progress-header {
+  width: 100%;
   display: inline-block;
-  height: 160px;
-  padding: 10px 1.8%;
-  position: relative;
-  vertical-align: top;
-  width: 16.666%;
-  /*max-width: 190px;*/
 }
-
-.progress-main .new-row #cells p {
-  /*margin: 0 0 0.8em;*/
+.print-page {
+  width: calc(100% - 250px);
+  text-align: right;
+  float: left;
 }
-
-.reward-won-cell {
-  background: yellow;
+@media screen and (max-width: 767px) {
+  .print-page {
+     display: none;
+   }
 }
-
-td img {
-  margin-top: -35px;
+.user-desc {
+   display: flex;
+   display: -webkit-flex;
+   flex-wrap: wrap;
+   -webkit-flex-wrap: wrap;
+   align-items: flex-end;
+   box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
 }
+.avatar-id {
+  flex: 0 0 30%;
+}
+.point-status {
+  flex: 0 0 70%;
+  display: flex;
+  flex-direction: row;
+  display: -webkit-flex;
+  -webkit-flex-direction: row;
+}
+.point-status > div {
+  padding-right: 10px;
+  font-size: 14px;
+  flex: 1 1 33%;
+  text-align: center;
+}
+.progress-wrap {
+  display: flex;
+  display: -webkit-flex;
+  flex-wrap: wrap;
+  -webkit-flex-wrap: wrap;
+  margin-top: 20px;
+  margin-bottom: 20px;
 
-.progress-grid {
+}
+.progress-wrap > div {
+  flex: 1 1 32%;
+  box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+}
+.progress-wrap .reward-won {
+  margin-left: 1.5%;
+  margin-right: 1.5%;
+}
+table.progress-grid {
   width: 100%;
+  border: none;
+  display: table;
+}
+th {
+  border: none;
+  width: 100%;
+  display: table-row;
+  white-space: nowrap;
+}
+td {
+  width: 16.6%;
+  display: table-cell;
+  height: 180px;
+  border: 1px solid #ccc;
+}
+
+tr:not(.new-row) {
+  background: red;
 }
