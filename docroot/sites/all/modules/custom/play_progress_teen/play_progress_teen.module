@@ -69,12 +69,22 @@ function play_progress_teen_menu() {
     'type' => MENU_NORMAL_ITEM,
     'file' => 'inc/pl_configuration_page.inc',
   );
-  $items['activity_record'] = array(
+  
+  $items['progress-grid-data'] = array(
+    'title' => 'Record Activity for Patron',
+    'page callback' => 'pl_progress_page_grid_data',
+    // 'page arguments' => array('play_progress_teen_record_form'),
+    // 'access arguments' => array('view_activity_record_for_patron'),
+    'file' => 'inc/pl_progress_page.inc',
+    'type' => MENU_CALLBACK,
+  );
+
+  $items['record-activity'] = array(
     'title' => 'Record Activity for Patron',
     'page callback' => 'drupal_get_form',
-    'page arguments' => array('patron_activity_record_form'),
+    'page arguments' => array('play_progress_teen_record_form'),
     'access arguments' => array('view_activity_record_for_patron'),
-    'type' => MENU_CALLBACK,
+    'type' => MENU_NORMAL_ITEM,
   );
 
   return $items;
@@ -423,12 +433,11 @@ function pl_user_avatar_progress_page($uid, $style){
 }
 
 
-
 /**
 *  Patron Activity Record form build is is for activity_record page.
 */
 
-function patron_activity_record_form($form, &$form_state) {
+function play_progress_teen_record_form($form, &$form_state) {
   $qry = db_select('eck_activity', 'eck_a');
     $qry->join('field_data_field_activity_fired_hook', 'fdfafh', 'fdfafh.entity_id = eck_a.id');
     $qry->condition('fdfafh.field_activity_fired_hook_value', 'progress_page');
@@ -444,9 +453,11 @@ function patron_activity_record_form($form, &$form_state) {
     '#type' => 'textfield',
     '#autocomplete_path' => 'user/autocomplete',
     '#attributes' => array(
-      'placeholder' => t('Username'),
+    'placeholder' => t('Username'),
+    '#required'=> TRUE,
     ),
-  );        
+  );
+          
   $form['html'] = array(
    '#type' => 'markup',
    '#markup' => '<div>Search for patrons here: <a href="patron-list" target="_blank">http://kids17.dev.chillco.com/patron-users</a></div>',
@@ -455,31 +466,42 @@ function patron_activity_record_form($form, &$form_state) {
     '#type' => 'select',
     '#options' => $activity_title,
   );
-  $form['from'] = array(
-    //'#title' => t('Start date'),
+  $form['date'] = array(
+    '#title' => t('On'),
     '#type' => 'date_popup',
     '#date_format' => 'F d, Y',
     '#date_year_range' => '0:+10',
+    '#datepicker_options' => array('maxDate' => '+0D'),
     '#required' => TRUE,
+    '#editable' =>'false',
     '#size' => 8,
   );
-  $form['to'] = array(
-    //'#title' => t('End date'),
-    '#type' => 'date_popup',
-    '#date_format' => 'F d, Y',
-    '#date_year_range' => '0:+10',
-    '#required' => TRUE,
-    '#size' => 8,
-   );
+  // $form['to'] = array(
+  //   '#title' => t('To'),
+  //   '#type' => 'date_popup',
+  //   '#date_format' => 'F d, Y',
+  //   '#date_year_range' => '0:+10',
+  //   '#datepicker_options' => array('maxDate' => '+0D'),
+  //   '#required' => TRUE,
+  //   '#editable' =>'false',
+  //   '#size' => 8,
+  //  );
   $form['submit'] = array(
     '#value' => 'Submit',
     '#type' => 'submit',
+    '#attributes' => array('id'=>array('activity-submit')),
+    // '#ajax' => array(
+    //     'callback' => 'play_progress_teen_record_form_submit',
+    //     'wrapper' => 'bingo-progress-main',
+    //     'method' => 'replace',
+    //     'effect' => 'fade',
+    //   ),
   );
 
   return $form;
 }
 
-function patron_activity_record_form_submit($form, &$form_state) {
+function play_progress_teen_record_form_submit($form, &$form_state) {
   $username = $form_state['values']['username'];
 
   $query = db_select('users', 'u');
@@ -488,13 +510,12 @@ function patron_activity_record_form_submit($form, &$form_state) {
   $user_uid = $query->execute()->fetchField();
    
   $activity_id = $form_state['values']['activity'];
-  $from = strtotime($form_state['values']['from']);
-  $to = strtotime($form_state['values']['to']);
-
-  for ($i=$from; $i<=$to; $i+=86400) {
-    $date = strtotime(date("Y-m-d", $i));
-    $tid = 47;
-     play_library_program_create_activity_entry($activity_id , $user_uid, $i);
-     drupal_set_message('You have entered the read on a day activity.');
+  $activity_title = $form_state['complete form']['activity']['#options'][$activity_id];
+  // $activity_title = 
+  $from = strtotime($form_state['values']['date']);
+  $status = play_library_program_create_activity_entry($activity_id , $user_uid, $from, $sticker_tid);
+  if($status){
+    drupal_set_message(t("Recorded $activity_title activity for $from for user $username"), 'status');
   }
+  // drupal_set_message('You have entered the read on a day activity.');
 }

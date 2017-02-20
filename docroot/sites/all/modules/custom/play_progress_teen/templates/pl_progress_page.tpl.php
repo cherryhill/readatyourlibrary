@@ -9,11 +9,13 @@
   // global $language;
   // $lang = $language->language;
 
+  //Get values from configuration page
   $nonSelf = variable_get('nonself_activities_progress');
   $self = variable_get('activities_progress');
   $rewardMsg = variable_get('reward_msg');
   $imgFid = variable_get('progress_img');
 
+  //Get completion stamp image
   if ($imgFid != 0) {
     $file = file_load($imgFid);
     $uri = $file->uri;
@@ -21,8 +23,10 @@
     $imageCompleted = "<img src='$urlImg'>";
   }
 
+  //Get list of complete list of activities which need to be displayed on progress page
   $progressActi = array_merge($self, $nonSelf);
 
+  // print_r($nonSelf); die();
   $query = new EntityFieldQuery();
   $query->entityCondition('entity_type', 'activity');
   $query->entityCondition('bundle', 'activity_entry');
@@ -36,11 +40,13 @@
 
   $count = sizeof($activityIds);
 
-  $activiesList = entity_load('activity', $activityIds);
-  $activiesLis = reset($activiesList);
-  $lang = field_language('activity',$activiesLis);
-  foreach ($lang as $key => $value) {
-    ${$key} = $value;
+  if($count>0){
+    $activiesList = entity_load('activity', $activityIds);
+    $activiesLis = reset($activiesList);
+    $lang = field_language('activity',$activiesLis);
+    foreach ($lang as $key => $value) {
+      ${$key} = $value;
+    }
   }
 
   // echo "<pre>"; print_r($activiesList); die();
@@ -67,7 +73,8 @@
 </div>
 <div class="activity-remaining">
 <?php $grids = variable_get('no_of_grids'); $activities_left = $grids - $count;
-$grids = 18;
+// $grids = 40;
+// echo 'pre'; print_r($grids);die();
    if($activities_left < 0){ print t('Activities Left to Complete: 0 activities');
    }else{ print t('Activities Left to Complete: ').$activities_left.t(' activities'); } ?>
 </div>
@@ -108,7 +115,7 @@ $grids = 18;
 </div></div>
 
 <div class="progress-main"><?php 
-  echo '<h1>My Passport Stamps</h1>';
+  // echo '<h1>My Passport Stamps</h1>';
   $exceed_limit = '';
 
   foreach ($activiesList as $key => $value) {
@@ -130,29 +137,44 @@ $grids = 18;
     $hotspot_type_activity = '';
 
   	if($activityReward != 1){
-  	  $user_won_reward = '<p class = "rew">'.$rewardMsg.'</p>';
-  	}
+  	  $user_won_reward = '<p class = "rew"><strong>'.$rewardMsg.'</strong></p>';
+      $reward_won = 'reward-won-cell';
+  	} else{ $reward_won = ''; }
 
-    $act_id[] = '<p class  = "date-pg">'.$n_date.'</p>'.$hotspot_type_activity.'<p class = "title-pg">'.$title.'</p>'.$user_won_reward;
+    $act_id[] = array('data' => '<p class  = "date-pg">'.$n_date.'</p>'.$hotspot_type_activity.'<p class = "title-pg">'.$title.'</p>'.$user_won_reward, 
+      'selector'=> $reward_won,);
   }
 
   if(isset($_SESSION['exceed-activity-limit']['status'][0])){
     $exceed_limit = $_SESSION['exceed-activity-limit']['status'][0];
   }
 
+  // $grids = 100;
   $i=0; $gr = ceil($grids/6);
+
+  print("<table class='progress-grid'><tbody>");
+  print("<th><h1>My Passport Stamps</h1></th>");
   for($j=0;$j<$gr;$j++){
-    echo "<div class = 'new-row'>";
+    print("<tr id=$j class = 'new-row'>");
+    // echo "<div class = 'new-row'>";
     for($k=0; $k < 6; $k++){
-	  if(isset($act_id[$i])){
-	    echo "<div class = 'grid inserted' id = 'cells'.$i.'>".$act_id[$i].$imageCompleted."</div>";
-	  }
-	  else{
-	    echo "<div class = 'grid' id = 'cells'.$i.'></div>";
-	  }
+      $cell_counter ++;
+      if(isset($act_id[$i])){
+        print("<td class = 'grid inserted abc ". $act_id[$i]['selector']."' id = $cell_counter>".$act_id[$i]['data'].$imageCompleted."</td>");
+  	    // echo "<div class = 'grid inserted' id = 'cells'.$i.'>".$act_id[$i].$imageCompleted."</div>";
+  	  }
+  	  else{
+        print("<td class = 'grid inserted' id = $cell_counter active = 'yes'></td>");
+  	    // echo "<div class = 'grid' id = 'cells'.$i.'></div>";
+  	  }
 	  $i++;
 	}
-	echo '</div>';
+  print("</tr>");
+	// echo '</div>';
   }
-  unset($exceed_limit); ?>
+  print("</tbody></table>");
+  unset($exceed_limit); 
+  // $activity = entity_load('activity', array(1196));
+  // echo "<pre>"; print_r($activity[1196]);die();
+  ?>
 </div></div>
