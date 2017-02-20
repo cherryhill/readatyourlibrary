@@ -71,17 +71,17 @@
 	<?php print pl_user_avatar_progress_page($current_uid, $imgStyle); ?>
 </div>
 <div class="point-status">
-<div class="activity-status">
+<div class="activity-status" id = "activity-status">
   <?php print 'Activities Completed: '.$count.' activities'; ?>
 </div>
-<div class="activity-remaining">
+<div class="activity-remaining" id ="activity-remaining">
 <?php $grids = variable_get('no_of_grids'); $activities_left = $grids - $count;
 // $grids = 40;
 // echo 'pre'; print_r($grids);die();
    if($activities_left < 0){ print t('Activities Left to Complete: 0 activities');
    }else{ print t('Activities Left to Complete: ').$activities_left.t(' activities'); } ?>
 </div>
-<div class="points">
+<div class="points" id = "points">
 	<?php print t('Raffle Tickets Earned: ');
     if(isset($raff_count)){
       print $raff_count;
@@ -180,4 +180,5 @@
   // $activity = entity_load('activity', array(1196));
   // echo "<pre>"; print_r($activity[1196]);die();
   ?>
+  <div class='throbber'></div>
 </div></div>
