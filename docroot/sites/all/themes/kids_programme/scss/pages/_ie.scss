@@ -12,7 +12,7 @@
   	#wrap {
   		> div {
   			&.sticker-block {
-  				flex: 0 0 45%;
+  				flex: 0 0 40%;
   			}
   			&.rewards {
   				flex: 0 0 30%;
@@ -39,6 +39,17 @@
   			}
   		}
   	}
+  }
+  .page-user-profile {
+    .block-play-library-custom-pm-block {
+      .pm-custom {
+        .pm {
+          .pm-subject {
+            flex: 0 0 55%;
+          }
+        }
+      }
+    }
   }
   /*-------------------------Dashboard Page Ends--------------------------*/
 
@@ -90,14 +101,17 @@
 	}
 	/*-------------------------Events Page Ends--------------------------*/
 
+  /*----------------------Bookreview Node Page--------------------*/
   .page-reviews-patrons, .page-reviews-staff {
     .views-exposed-form {
       .views-exposed-widget {
         .form-submit {
           margin-top: 21px;
-          padding: 7px 10px !important
+          padding-top: 7px !important;
+          padding-bottom: 7px !important;
         }
       }
     }
   }
+  /*----------------------Bookreview Node Page Ends--------------------*/
 }
