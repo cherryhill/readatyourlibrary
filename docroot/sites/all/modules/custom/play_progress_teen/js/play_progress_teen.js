@@ -56,7 +56,7 @@ Drupal.behaviors.play_progress_teen = {
     }
 
     $(this).attr('disabled','disabled'); 
-    $(this).after('<div class="ajax-progress ajax-progress-throbber"><div class="throbber">&nbsp;</div></div>');
+    // $(this).after('<div class="ajax-progress ajax-progress-throbber"><div class="throbber">&nbsp;</div></div>');
     var tid = $("#edit-activity-progress-select option:selected").val();
     var date = $("#edit-date-datepicker-popup-0").val();
     // var count = $('.progress-grid td').length;
@@ -79,10 +79,10 @@ Drupal.behaviors.play_progress_teen = {
           // json_res = $.parseJSON(data);
           console.log (json_res);
           if (json_res.create_status) {
-            var views = settings.views.ajaxViews;
-            var dom_id = views[Object.keys(views)[0]]['view_dom_id'];
-            var selector = '.view-dom-id-' + dom_id;
-            $(selector).triggerHandler('RefreshView');
+            // var views = settings.views.ajaxViews;
+            // var dom_id = views[Object.keys(views)[0]]['view_dom_id'];
+            // var selector = '.view-dom-id-' + dom_id;
+            // $(selector).triggerHandler('RefreshView');
 
             var x =$(".progress-grid td[active='yes']");//document.getElementById("active");//.innerHTML=data;// = data;
             // console.log(x);
