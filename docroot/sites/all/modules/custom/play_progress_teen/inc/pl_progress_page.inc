@@ -73,7 +73,7 @@ function pl_complete_activity_progress(){
 
 
     $data = array(
-      'cell_data' => '<p class  = "date-pg">'.$date.'</p>'.$hotspot_type_activity.'<p class = "title-pg">'.$title.'</p>'.$user_won_reward . $imageCompleted, 'cell_selector' => $reward_won, 
+      'cell_data' => '<p class  = "date-pg">'.$date.'</p>'.$hotspot_type_activity.'<p class = "title-pg">'.$title.'</p>'.$user_won_reward . $imageCompleted, 'cell_selector' => "inserted ". $reward_won, 
       'act_completed' => t("Activities Completed: $count activities"),
       'act_remaining' => t("Activities Left to Complete: $activities_left  activities"),
       'raffle_count' => t("Raffle Tickets Earned: $raff_count"),

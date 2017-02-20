@@ -56,6 +56,7 @@ Drupal.behaviors.play_progress_teen = {
     }
 
     $(this).attr('disabled','disabled'); 
+    $(this).after('<div class="ajax-progress ajax-progress-throbber"><div class="throbber">&nbsp;</div></div>');
     var tid = $("#edit-activity-progress-select option:selected").val();
     var date = $("#edit-date-datepicker-popup-0").val();
     // var count = $('.progress-grid td').length;
@@ -69,6 +70,7 @@ Drupal.behaviors.play_progress_teen = {
         async: true,
         data: "id="+tid+"&date="+date,
         success: function (data) {
+          $('.ajax-progress').remove();
           // var selector = '.view-dom-id-'+ settings.view_dom_id;
           // console.log(selector);
           // $(selector).triggerHandler('RefreshView');

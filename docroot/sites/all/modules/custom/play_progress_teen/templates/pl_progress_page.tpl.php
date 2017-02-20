@@ -180,5 +180,6 @@
   // $activity = entity_load('activity', array(1196));
   // echo "<pre>"; print_r($activity[1196]);die();
   ?>
-  <div class='throbber'></div>
+  <div class="ajax-progress ajax-progress-throbber"><div class="throbber">&nbsp;</div></div>
+  <!-- <div class='throbber'></div> -->
 </div></div>
