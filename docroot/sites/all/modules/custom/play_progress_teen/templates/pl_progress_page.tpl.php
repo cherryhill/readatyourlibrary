@@ -163,7 +163,7 @@
     for($k=0; $k < 6; $k++){
       $cell_counter ++;
       if(isset($act_id[$i])){
-        print("<td class = 'grid inserted ". $act_id[$i]['selector']."' id = $cell_counter style='background: url($urlImg) no-repeat scroll center bottom'>".$act_id[$i]['data']."</td>");
+        print("<td class = 'grid inserted ". $act_id[$i]['selector']."' id = $cell_counter style='background: url($urlImg) no-repeat scroll center bottom 20px'>".$act_id[$i]['data']."</td>");
   	    // echo "<div class = 'grid inserted' id = 'cells'.$i.'>".$act_id[$i].$imageCompleted."</div>";
   	  }
   	  else{
