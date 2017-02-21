@@ -15,7 +15,9 @@ Drupal.behaviors.bfc_api_custom = {
       var url = jQuery(this).val();
       window.location.href = basePath + url;
     });
-  
+
+    jQuery('.page-admin-structure-entity-type-reward-reward-add #eck-entity-form-add-reward-reward .form-item-title label').text('Reward title / Name of raffle').append('<span class="form-required" title="This field is required.">*</span>');
+    jQuery('.page-admin-structure-entity-type-reward-reward-edit #eck-entity-form-edit-reward-reward .form-item-title label').text('Reward title / Name of raffle').append('<span class="form-required" title="This field is required.">*</span>');
   }
 };
 })(jQuery);
