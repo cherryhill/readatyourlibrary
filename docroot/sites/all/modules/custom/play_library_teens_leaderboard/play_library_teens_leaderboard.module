@@ -45,7 +45,7 @@ function pl_leaderboard_page() {
       $user_uid = $value->uid;
       $avatar = pl_user_avatar_progress_page($user_uid, $imgStyle);
       
-      $out .= '<li><span>'.$avatar.'</span><span>'. $no_stamp. '</span></li>';
+      $out .= '<li><span>'.$avatar.'</span><span>'. $no_stamp. 'stamps</span></li>';
 
       
     }
@@ -124,11 +124,11 @@ function leader_board_teens_dashboard() {
       $user_uid = $value->uid;
       $avatar = pl_user_avatar_progress_page($user_uid, $imgStyle);
       
-      $out .= '<li><span>'.$avatar.'</span><span>'. $no_stamp. '</span></li>';
+      $out .= '<li><span>'.$avatar.'</span><span>'. $no_stamp. 'stamps</span></li>';
 
       
     }
-    $out .= '<span><a href="leaderboard">More</a></span>';
+    $out .= '<span><a href="/leaderboard">More</a></span>';
 
     $out .= '</ol></div>';
 
