@@ -15,7 +15,6 @@ Drupal.behaviors.bfc_api_custom = {
       var url = jQuery(this).val();
       window.location.href = basePath + url;
     });
-  
   }
 };
 })(jQuery);

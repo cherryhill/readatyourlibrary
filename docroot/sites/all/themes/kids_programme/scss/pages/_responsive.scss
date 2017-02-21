@@ -8,7 +8,7 @@
 			float: left;
 	    margin-left: 10px;
 	    margin-bottom: 0;
-	    margin-top: 10px;
+	    margin-top: 4px;
 	    border: none;
 	    outline: none;
 	    position: relative;
@@ -75,7 +75,7 @@
 			    align-items: center;
 					font-size: 14px;
 					margin-right: 10px;
-					span {
+					.username {
 						margin-left: 5px;
 					}
 					.button-hide {
@@ -90,7 +90,22 @@
 			.block-menu-menu-anonymous-header-links {
 				.menu {
 					margin-right: 10px;
+					margin-top: 0;
 				}
+			}
+		}
+	}
+	.l-header {
+		.pre-header {
+			.top-menu {
+				a.username {
+					.cs-default &, .cs-classic & {
+						margin-right: 0;
+					}
+				}
+			}
+			.menu {
+				margin-top: 15px;
 			}
 		}
 	}
