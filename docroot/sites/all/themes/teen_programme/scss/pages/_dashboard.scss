@@ -1,18 +1,16 @@
 p.more-link {
   position: relative;
   padding-right: 18px;
+  a {
+    @include bold-font;
+    color: $white;
+     &:after {
+      content: ">";
+      display: inline-block;
+      padding-left: 5px;
 
-  &:after {
-    content: "";
-    width: 20px;
-    height: 20px;
-    display: inline-block;
-    position: absolute;
-    background: url(../images/dashboard);
-    background-size: 40px;
-    background-position: -4px -684px;
-    top: 5px;
-    right: 0;
+     }
+
   }
 }
 
@@ -58,9 +56,7 @@ p.more-link {
 
   .view-book-reviews-dashboard {
     position: relative;
-    .view-footer {
 
-    }
     .view-content {
       padding-bottom: 30px;
     }
@@ -85,7 +81,7 @@ p.more-link {
       flex: 0 0 calc(100% - 20px);
 
       * {
-        color: $black;
+        color: $white;
       }
     }
 
@@ -176,6 +172,9 @@ p.more-link {
          * {
            color: $white;
            font-weight: 700;
+           .cs-elegant & {
+             color: $gray;
+           }
          }
       }
      }
@@ -203,17 +202,17 @@ p.more-link {
 
         &.current {
           a {
-            /* .cs-default & {
-              background: $orange;
+            .cs-default & {
+              background: $yellow;
             }
 
             .cs-classic & {
-              background: $sky-blue;
+              background: $yellow;
             }
 
             .cs-elegant & {
-              background: $mint-green;
-            } */
+              background: $orange;
+            }
           }
         }
 
@@ -236,7 +235,26 @@ p.more-link {
     margin-bottom: 30px;
 
     > a {
-      @extend .button;
+      @extend .teen-button;
+      .cs-default & {
+        @extend .purple;
+        color: $white;
+        padding: 9px 14px 4px;
+      }
+      .cs-classic & {
+        @extend .red;
+        color: $white;
+        padding: 4px 14px 5px;
+      }
+      .cs-elegant & {
+       @extend .yellow-btn-elegant;
+       color: $gray;
+       padding: 4px 14px;
+       &:hover, &:focus {
+      @extend .elegant-btn-hover;
+    }
+
+      }
     }
   }
 
@@ -245,20 +263,43 @@ p.more-link {
     padding-right: 20px;
 
     .item-list {
-      @extend .yellow-commonblock;
-
+      padding-left: 20px;
+      padding-right: 20px;
+       .cs-default & {
+    background: $yellow;
+  }
+  .cs-classic & {
+     @extend .light-blue;
+  }
+  .cs-elegant & {
+    @extend .mustard-yellow;
+  }
       ul li {
         margin-bottom: 0;
-        padding-top: 10px;
+        padding-top: 25px;
+        padding-bottom: 10px;
 
         &.last {
           float: right;
         }
 
         a {
-          @extend .button;
-
-          @include primary_fsize;
+          @extend .teen-button;
+          @extend .post-footer.contain-to-grid;
+          color: $dark-blue;
+          margin-bottom: 10px;
+          .cs-default & {
+            padding: 9px 14px 4px;
+            color: $white;
+          }
+          .cs-elegant & {
+            padding: 4px 14px 4px;
+          }
+          .cs-classic & {
+            padding: 4px 14px 5px;
+            background: $dark-blue;
+            color: $white;
+          }
 
           border: none;
           outline: none;
@@ -284,19 +325,56 @@ p.more-link {
     .homebox-portlet-inner {
       border: none !important;
       padding: 0;
+      overflow: visible !important;
     }
 
     .homebox-portlet-inner {
-      @extend .yellow-commonblock;
+       box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+  margin-bottom: 35px;
+  @include primary_fsize;
+  @include body-font;
+     color: $white;
+      .cs-default & {
+         background: $purple;
+      }
+      .cs-classic & {
+        background: $dark-blue;
+
+      }
+      .cs-elegant & {
+        background: $orange;
+      }
     }
 
     .portlet-header {
 
-      color: $white !important;
-      padding: 10px 10px 15px 80px !important;
+
+      padding: 8px 10px 3px 80px !important;
       border: none !important;
       position: relative;
+      .cs-default & {
+         background: #7cb301 !important;
+          background: -webkit-radial-gradient(#7cb301, #6d9c05, #74a703) !important;
+          background: -moz-radial-gradient(#7cb301, #6d9c05, #74a703) !important;
+          background: radial-gradient(#7cb301, #6d9c05, #74a703) !important;
 
+      }
+      .cs-classic & {
+        background: $medium-blue !important;
+      }
+      .cs-elegant & {
+        background: $blue !important;
+      }
+       .portlet-title {
+        @extend h3;
+        .cs-classic &,.cs-default & {
+          color: $white !important;
+        }
+
+        .cs-elegant & {
+          color: $dark-blue !important;
+        }
+       }
       .portlet-title:before {
         content: "";
         height: 40px;
@@ -306,41 +384,25 @@ p.more-link {
 
         left: -54px;
         top: 0;
-        background-image: url("../images/dashboard");
-        background-position: -15px -201px;
-
-        /* .cs-default & {
-          background-color: $orange;
-        }
-
-        .cs-classic & {
-          background-color: $darkblue;
-        }
-
+        background-image: url("../images/dashboard-icons");
+        background-position: -9px -472px;
         .cs-elegant & {
-          background-color: $mint-green;
-        } */
+          background-position: -9px -532px;
+        }
+        .cs-default & {
+          background-position: -9px -478px;
+        }
+
+
       }
 
-      .portlet-title:after {
-        content: "";
-        height: 30px;
-        width: 30px;
-        display: inline-block;
-        position: relative;
-        background: url("../images/dashboard");
-        background-position: -6px -1488px;
-        background-size: 44px;
-        left: 0;
-        top: 9px;
-      }
 
       .portlet-icon {
         color: transparent;
         height: 30px;
         width: 30px;
         top: 5px;
-        background: url("../images/dashboard");
+        background: url("../images/dashboard-icons");
 
         &.portlet-maximize {
           display: none;
@@ -348,63 +410,50 @@ p.more-link {
 
         &.portlet-close {
           .cs-default & {
-            background-position: -20px -458px;
+            background-position: -20px -1639px;
           }
 
           .cs-classic & {
-            background-position: -20px -391px;
+            background-position: -20px -1505px;
           }
 
           .cs-elegant & {
-            background-position: -20px -525px;
+            background-position: -20px -1572px;
           }
         }
 
         &.portlet-minus {
           .cs-default & {
-            background-position: -20px -794px;
+            background-position: -20px -727px;
           }
 
           .cs-classic & {
-            background-position: -20px -726px;
+            background-position: -20px -593px;
           }
 
           .cs-elegant & {
-            background-position: -20px -860px;
+            background-position: -20px -660px;
           }
         }
 
         &.portlet-plus {
           .cs-default & {
-            background-position: -20px -994px;
+            background-position: -20px -928px;
           }
 
           .cs-classic & {
-            background-position: -20px -927px;
+            background-position: -20px -794px;
           }
 
           .cs-elegant & {
-            background-position: -20px -1061px;
+            background-position: -20px -862px;
           }
         }
       }
 
       @include button-font;
 
-      /* .cs-default & {
-        background: $blue !important;
-        font-size: 22px !important;
-      }
 
-      .cs-elegant & {
-        background: $light-red !important;
-        font-size: 25px !important;
-      }
-
-      .cs-classic & {
-        background: $sky-blue !important;
-        font-size: 25px !important;
-      } */
     }
 
     .portlet-content {
@@ -414,7 +463,7 @@ p.more-link {
 
   .view-header {
     * {
-      color: $black;
+      color: $white;
 
       @include button-font;
 
@@ -445,7 +494,7 @@ p.more-link {
     padding-top: 25px;
 
     > p {
-      margin-bottom: 10px;
+      margin-bottom: 0px;
     }
   }
 
@@ -489,12 +538,14 @@ p.more-link {
       a {
         float: right;
 
-        @include button-font;
-
         font-size: 17px;
       }
     }
-
+    a.btn.btn-large.full {
+      @extend .button;
+      display: inline-block;
+      width: 100%;
+    }
     a.button {
       margin: 10px 0;
 
@@ -504,29 +555,140 @@ p.more-link {
     }
   }
 }
-
+.block-play_library_teens_leaderboard {
+  .portlet-content {
+     li {
+       margin-bottom: 10px;
+        span {
+           img {
+             margin-right: 10px;
+           }
+           &:nth-of-type(2) {
+            float: right;
+           }
+        }
+     }
+     li + span {
+       @extend p.more-link;
+       width: 100%;
+       text-align: right;
+       display: inline-block;
+       margin-top: 10px;
+       margin-bottom: 10px;
+       padding-right: 0;
+     }
+  }
+}
 .homebox.homebox-auto-save .homebox-column-wrapper .homebox-draggable {
   &.dashboard-activities {
     .portlet-header .portlet-title::before {
-      background-position: -15px -13px;
+      background-position: -9px -18px;
+       .cs-elegant & {
+         background-position: -9px -86px;
+       }
     }
   }
 
   &.dashboard-reviews, &.dashboard-booklists {
     .portlet-header .portlet-title::before {
-      background-position: -9px -78px;
+      background-position: -9px 240px;
+      .cs-elegant & {
+        background-position: -9px 175px;
+      }
     }
   }
 
   &.dashboard-following {
+    a {
+      color: $white;
+    }
     .portlet-header .portlet-title::before {
-      background-position: -12px -141px;
+      background-position: -9px -352px;
+      .cs-elegant & {
+        background-position: -9px -415px;
+      }
     }
   }
 
   &.dashboard-rewards {
     .portlet-header .portlet-title::before {
-      background-position: -11px -321px;
+      background-position: -9px 112px;
+      .cs-elegant & {
+        background-position: -9px 46px;
+      }
     }
   }
+}
+.view-book-reviews-dashboard .view-footer > form > div {
+  padding: 20px;
+    .page-user-profile.cs-default & {
+    @extend .yellow;
+    color: $purple;
+  }
+  .page-user-profile.cs-classic & {
+    @extend .light-blue;
+    color: $dark-blue;
+  }
+  .page-user-profile.cs-elegant & {
+    @extend .yellow-btn-elegant;
+    color: $black;
+  }
+  .form-type-select {
+           display: flex;
+           display: -webkit-flex;
+           flex-wrap: wrap;
+           label,select,> div {
+
+           }
+           label {
+             @extend .primary-color;
+             @include primary_fsize;
+             @include button-font;
+           }
+           .chosen-container {
+             @include primary_fsize;
+              a.chosen-single {
+                 height: auto;
+                 border-radius: 0;
+                 .page-user-profile.cs-default &{
+                   color: $purple;
+                   border: 1px solid $purple;
+                 }
+                 .page-user-profile.cs-classic & {
+                  color: $medium-blue;
+                  border: 1px solid $medium-blue;
+                 }
+                 .page-user-profile.cs-elegant & {
+                   color: $green;
+                   border: 1px solid $green;
+                 }
+                 background: $white;
+                 border: 1px solid $link-color;
+                  > div {
+                     width: 30px;
+                     .page-user-profile.cs-default & {
+                      background: $purple;
+                     }
+                     .page-user-profile.cs-classic & {
+                      background: $medium-blue;
+                     }
+                     .page-user-profile.cs-elegant & {
+                      background: $green;
+                     }
+                     b {
+                       background: none;
+                       border-left: 7px solid transparent;
+                       border-right: 7px solid transparent;
+                       display: inline-block;
+                       height: 0;
+                       width: 0;
+                       border-top: 7px solid white;
+                       margin-left: 9px;
+                       position: relative;
+                       top: -1px;
+                     }
+                  }
+              }
+           }
+        }
 }
