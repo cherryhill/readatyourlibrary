@@ -56,6 +56,7 @@ Drupal.behaviors.play_progress_teen = {
     }
 
     $(this).attr('disabled','disabled'); 
+    $(this).after('<div class="ajax-progress ajax-progress-throbber"><div class="throbber">&nbsp;</div></div>');
     var tid = $("#edit-activity-progress-select option:selected").val();
     var date = $("#edit-date-datepicker-popup-0").val();
     // var count = $('.progress-grid td').length;
@@ -69,18 +70,19 @@ Drupal.behaviors.play_progress_teen = {
         async: true,
         data: "id="+tid+"&date="+date,
         success: function (data) {
+          $('.ajax-progress').remove();
           // var selector = '.view-dom-id-'+ settings.view_dom_id;
           // console.log(selector);
           // $(selector).triggerHandler('RefreshView');
           console.log(data) ;
           var json_res = JSON.parse(data) ;
-          // jq_json_obj = $.parseJSON(data);
-          // console.log (json_res.status);
-          if (json_res.status) {
-            var views = settings.views.ajaxViews;
-            var dom_id = views[Object.keys(views)[0]]['view_dom_id'];
-            var selector = '.view-dom-id-' + dom_id;
-            $(selector).triggerHandler('RefreshView');
+          // json_res = $.parseJSON(data);
+          console.log (json_res);
+          if (json_res.create_status) {
+            // var views = settings.views.ajaxViews;
+            // var dom_id = views[Object.keys(views)[0]]['view_dom_id'];
+            // var selector = '.view-dom-id-' + dom_id;
+            // $(selector).triggerHandler('RefreshView');
 
             var x =$(".progress-grid td[active='yes']");//document.getElementById("active");//.innerHTML=data;// = data;
             // console.log(x);
@@ -89,15 +91,23 @@ Drupal.behaviors.play_progress_teen = {
             $(x[0]).removeAttr("active");
             $(x[0]).addClass(json_res.cell_selector);
             $('#pg-report').removeAttr("disabled");
-            
             $('#message').remove();
             $('#next-reward').remove();
             $('.progress-wrap').after('<div id = "message"><div class="section clearfix">' + json_res.drupal_message + '</div></div>');
-            // $('.reading-progress').append('<div id = "next-reward"><h3>' + jq_array['next_reward'] + '</h3></div>');
             $('#message .section').css('width' , '960px');
             $('#message .section').css('margin-left' , 'auto');
             $('#message .section').css('margin-right' , 'auto');
-            // window.location.reload(true);
+            $(".activity-status").text(json_res.act_completed);
+            $(".activity-remaining").text(json_res.act_remaining);
+            $(".points").text(json_res.raffle_count);
+          }
+          else{
+            $('#pg-report').removeAttr("disabled");
+            $('#message').remove();
+            $('.progress-wrap').after('<div id = "message"><div class="section clearfix">' + json_res.drupal_message + '</div></div>');
+            $('#message .section').css('width' , '960px');
+            $('#message .section').css('margin-left' , 'auto');
+            $('#message .section').css('margin-right' , 'auto');
           }
         }
       });
