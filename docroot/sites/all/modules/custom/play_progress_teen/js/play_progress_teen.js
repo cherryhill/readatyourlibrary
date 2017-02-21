@@ -32,6 +32,15 @@ Drupal.behaviors.play_progress_teen = {
     return true;
   }
 
+  if($(".progress-grid td[active='yes']").length === 0){
+    $(this).attr('disabled','disabled');
+    $('.block-play-progress-teen').remove();
+    $('.report-acivity').text("<h1>Congratulations! You have completed the program.</h1>");
+    $('.ajax-progress').remove();
+    $('#message').remove();
+    $('.progress-wrap').after('<div id = "message"><div class="section clearfix"><div class="messages status"><h2 class="element-invisible">Status message</h2>Congratulations! You have completed the program.</div></div></div>');
+  }
+
 
   $('#pg-report').click(function() {
     var errors = 0;
@@ -113,7 +122,12 @@ Drupal.behaviors.play_progress_teen = {
       });
       // $("#cells"+insert).addClass("inserted");
     }else{
-      alert('Filled');
+      $(this).attr('disabled','disabled');
+      $('.block-play-progress-teen').remove();
+      $('.report-acivity h1').text("Congratulations! You have completed the program.");
+      $('.ajax-progress').remove();
+      $('#message').remove();
+      $('.progress-wrap').after('<div id = "message"><div class="section clearfix"><div class="messages status"><h2 class="element-invisible">Status message</h2>Congratulations! You have completed the program.</div></div></div>');
     }	
   });
   }
