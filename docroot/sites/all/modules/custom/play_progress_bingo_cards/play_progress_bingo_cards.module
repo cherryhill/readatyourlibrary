@@ -105,7 +105,15 @@ function play_progress_bingo_cards_progress($form, $form_state) {
   }
   $options = $activity_ids;
   
-  
+  if($user->){
+    $form['username'] = array(
+      '#title' => t('Username'),
+      '#type' => 'textfield',
+      '#autocomplete_path' => 'user/autocomplete',
+      '#attributes' => array('placeholder' => t('Username'),),
+    );
+  }
+
   $form['activity'] = array(
     '#type' => 'select',
     '#title' => 'I completed',

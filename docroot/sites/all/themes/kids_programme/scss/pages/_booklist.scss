@@ -75,17 +75,25 @@
   .views-exposed-widget {
     flex: 0 0 calc(25% - 10px);
     -ms-box-flex: 0 0 24%;
-    -ms-flex: 0 0 24%;
+    -ms-flex: 0 0 23%;
     -ms-padding-right: 1%;
     padding: 0;
     float: none;
     margin-right: 10px;
+    input[type="text"] {
+      height: 40px;
+      position: relative;
+      top: 3px;
+      border: none;
+      box-shadow: none !important;
+    }
   }
   .chosen-container {
     .chosen-single {
       b {
-        visibility: hidden;
+        visibility: visible;
         position: relative;
+        background: transparent !important;
         &:after {
           content: "";
           border-left: 5px solid transparent;

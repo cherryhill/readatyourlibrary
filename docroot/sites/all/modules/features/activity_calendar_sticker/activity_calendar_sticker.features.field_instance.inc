@@ -130,8 +130,48 @@ function activity_calendar_sticker_field_default_field_instances() {
     'workbench_access_field' => 0,
   );
 
+  // Exported field_instance:
+  // 'taxonomy_term-calendar_sticker-field_staff_record_image'.
+  $field_instances['taxonomy_term-calendar_sticker-field_staff_record_image'] = array(
+    'bundle' => 'calendar_sticker',
+    'default_value' => array(
+      0 => array(
+        'value' => 0,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => 'Select \'Yes\' if you want this image to appear on calendar for all staff recorded activities',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 1,
+      ),
+    ),
+    'display_label' => 'Staff Record Image',
+    'entity_type' => 'taxonomy_term',
+    'field_name' => 'field_staff_record_image',
+    'label' => 'Staff Record Image',
+    'required' => 1,
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_buttons',
+      'weight' => 32,
+    ),
+  );
+
   // Translatables
   // Included for use with string extractors like potx.
+  t('Select \'Yes\' if you want this image to appear on calendar for all staff recorded activities');
+  t('Staff Record Image');
   t('Sticker Image');
   t('calendar sticker id');
 

@@ -4,28 +4,91 @@
  * ajax callback for progress page
  */
 function pl_complete_activity_progress(){
-
   global $user;
   $activity_uid = $user->uid;
 
+  // $self = variable_get('activities_progress');
+  $rewardMsg = variable_get('reward_msg');
+  $imgFid = variable_get('progress_img');
+  $nonSelf = variable_get('nonself_activities_progress');
+  $self = variable_get('activities_progress');
+
+  if ($imgFid != 0) {
+    $file = file_load($imgFid);
+    $uri = $file->uri;
+    $urlImg = file_create_url($uri);
+    $imageCompleted = "<img src='$urlImg'>";
+  }
   $activity_id = $_REQUEST['id'];
   $activity_date = strtotime($_REQUEST['date']);
 
-  play_library_program_create_activity_entry($activity_id, $account_id, $activity_date);
+  $created_activity = play_library_program_create_activity_entry($activity_id, $account_id, $activity_date);
+  // echo $created_activity;
+  if ($created_activity){
+    $activity = entity_load('activity', array($created_activity));
+    $activityTitle = $activity[$created_activity]->title;
 
-  // $activity_term = taxonomy_term_load($tid);
-  // $activity_id = $activity_term->field_activity_id['und'][0]['value'];
+    if(!empty($activity[$created_activity]->field_rw_claim_id)){
 
-  // $activity_limit = pl_retrieve_activity_limit($activity_id);
-  // $node_created = pl_activity_report_node_creation($activity_uid, $activity_id);
+      $lang = field_language('activity',reset($activity));
+      foreach ($lang as $key => $value) {
+        ${$key} = $value;
+      }
+      $activityReward = $activity[$created_activity]->field_rw_claim_id[$field_rw_claim_id][0]['value'];
+      $user_won_reward = '<p class = "rew"><strong>'.$rewardMsg.'</strong></p>';
+      $reward_won = 'reward-won-cell';
+      //Get raffle count
+      $raff_count = pl_raffle_count($activity_uid);
+    } else{
+      $user_won_reward = '';
+      $reward_won = '';  
+    }
 
-  // if($node_created < $activity_limit){
-  //   pl_activity_report_node_create($activity_id, $activity_date, $tid);
-  //   play_library_program_create_activity_entry($activity_id, $activity_uid);
-  // }else{
-  //   $_SESSION['exceed-activity-limit'] = drupal_set_message(t('You have recorded maximum number of times this activity can be performed.'),'error');
-  // }
-  echo 1;
+    $title = substr($activityTitle, 0, -19);
+    $date = date('m.d.y', $activity[$created_activity]->created);
+
+    
+    $hotspot_type_activity = '';
+
+
+    //Get remaining activities and numer of activities completed
+
+    //Get list of complete list of activities which need to be displayed on progress page
+    $progressActi = array_merge($self, $nonSelf);
+
+    $query = new EntityFieldQuery();
+    $query->entityCondition('entity_type', 'activity');
+    $query->entityCondition('bundle', 'activity_entry');
+    $query->propertyCondition('uid', $activity_uid);
+    $query->fieldCondition('field_activity_entry_activity', 'target_id', $progressActi);
+    $result = $query->execute();
+
+    foreach ($result['activity'] as $key => $value) {
+      $activityIds[] = $value->id;
+    }
+
+    $count = sizeof($activityIds);
+    $grids = variable_get('no_of_grids'); 
+    $activities_left = $grids - $count;
+
+
+    $data = array(
+      'cell_data' => '<p class  = "date-pg">'.$date.'</p>'.$hotspot_type_activity.'<p class = "title-pg">'.$title.'</p>'.$user_won_reward . $imageCompleted, 'cell_selector' => "inserted ". $reward_won, 
+      'act_completed' => t("Activities Completed: $count activities"),
+      'act_remaining' => t("Activities Left to Complete: $activities_left  activities"),
+      'raffle_count' => t("Raffle Tickets Earned: $raff_count"),
+      'drupal_message' => theme('status_messages'),
+      'create_status' => $created_activity,
+    );
+  }
+  else{
+    $data = array(
+      'drupal_message' => theme('status_messages'),
+      'act_status' => 0,
+    );
+  }
+  
+  echo json_encode($data);
 }
 
 
@@ -273,4 +336,77 @@ function pl_progress_print_page(){
   $dompdf->render();
   $font = Font_Metrics::get_font("din", "regular");
   $dompdf->stream("Progress-Page.pdf");
+}
+
+
+function pl_progress_page_grid_data(){
+
+  global $user;
+  global $base_url;
+  $current_uid = $user->uid;
+  $raff_count = pl_raffle_count($current_uid);  
+  $imgStyle = 'avatar_style';
+
+  //Get values from configuration page
+  $nonSelf = variable_get('nonself_activities_progress');
+  $self = variable_get('activities_progress');
+  $rewardMsg = variable_get('reward_msg');
+  $imgFid = variable_get('progress_img');
+
+  //Get completion stamp image
+  if ($imgFid != 0) {
+    $file = file_load($imgFid);
+    $uri = $file->uri;
+    $urlImg = file_create_url($uri);
+    $imageCompleted = "<img src='$urlImg'>";
+  }
+
+  //Get list of complete list of activities which need to be displayed on progress page
+  $progressActi = array_merge($self, $nonSelf);
+
+  // print_r($nonSelf); die();
+  $query = new EntityFieldQuery();
+  $query->entityCondition('entity_type', 'activity');
+  $query->entityCondition('bundle', 'activity_entry');
+  $query->propertyCondition('uid', $current_uid);
+  $query->fieldCondition('field_activity_entry_activity', 'target_id', $progressActi);
+  $result = $query->execute();
+
+  foreach ($result['activity'] as $key => $value) {
+    $activityIds[] = $value->id;
+  }
+
+  $count = sizeof($activityIds);
+
+  if($count>0){
+    $activiesList = entity_load('activity', $activityIds);
+    $activiesLis = reset($activiesList);
+    $lang = field_language('activity',$activiesLis);
+    foreach ($lang as $key => $value) {
+      ${$key} = $value;
+    }
+  }
+
+  foreach ($activiesList as $key => $value) {
+    //Get Activity field values
+    $activityTitle = $value->title;
+    $title = substr($activityTitle, 0, -19);
+    $date = substr($activityTitle, -16);
+
+    $n_date = date("m.d.y", strtotime($date));
+
+    //Check if activity has won a reward
+    if(!empty($value->field_rw_claim_id[$field_rw_claim_id])){
+      $activityReward = $value->field_rw_claim_id[$field_rw_claim_id][0]['value'];
+      $user_won_reward = '<p class = "rew"><strong>'.$rewardMsg.'</strong></p>';
+      $reward_won = 'reward-won-cell';
+    } else {
+      $activityReward = 1;
+      $reward_won = '';
+    }
+
+    $act_id[] = '<p class  = "date-pg">'.$n_date.'</p>'.$hotspot_type_activity.'<p class = "title-pg">'.$title.'</p>'.$user_won_reward;
+  }
+
+  echo json_decode($act_id);
 }
