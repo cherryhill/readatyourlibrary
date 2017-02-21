@@ -1,9 +1,6 @@
 (function($) {
   Drupal.behaviors.play_progress_teen = {
     attach: function (context, settings) {
-      // js for changing add reward or raffle ticket title text.
-      jQuery('.page-admin-structure-entity-type-reward-reward-add #eck-entity-form-add-reward-reward .form-item-title label').text('Reward title / Name of raffle').append('<span class="form-required" title="This field is required.">*</span>');
-    jQuery('.page-admin-structure-entity-type-reward-reward-edit #eck-entity-form-edit-reward-reward .form-item-title label').text('Reward title / Name of raffle').append('<span class="form-required" title="This field is required.">*</span>');
     //message button change its background color by adding class new(done for theming)
         $('.msg:has(.new)').addClass('new');
     //
