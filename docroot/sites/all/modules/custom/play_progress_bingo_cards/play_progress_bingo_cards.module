@@ -91,7 +91,6 @@ function play_progress_bingo_cards_theme(){
  * Based on library branch
  */
 function play_progress_bingo_cards_progress($form, $form_state) {
-   global $user;
   //Get all Progress page activities
   $query = db_select('eck_activity','act');
   $query->join('field_data_field_activity_fired_hook','hook', 'hook.entity_id = act.id');
@@ -105,14 +104,14 @@ function play_progress_bingo_cards_progress($form, $form_state) {
   }
   $options = $activity_ids;
   
-  if($user->uid){
-    $form['username'] = array(
-      '#title' => t('Username'),
-      '#type' => 'textfield',
-      '#autocomplete_path' => 'user/autocomplete',
-      '#attributes' => array('placeholder' => t('Username'),),
-    );
-  }
+  // if($user->uid){
+  //   $form['username'] = array(
+  //     '#title' => t('Username'),
+  //     '#type' => 'textfield',
+  //     '#autocomplete_path' => 'user/autocomplete',
+  //     '#attributes' => array('placeholder' => t('Username'),),
+  //   );
+  // }
 
   $form['activity'] = array(
     '#type' => 'select',
