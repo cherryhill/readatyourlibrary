@@ -97,6 +97,7 @@
 	<?php
       if ($count >= $grids){
         print '<h1>Congratulations! You have completed the program.</h1>';
+
       }
       else{
         print '<h1>'.t('Report an Activity</h1>');
