@@ -99,13 +99,15 @@
 		.pre-header {
 			.top-menu {
 				a.username {
-					.cs-default &, .cs-classic & {
+					.cs-default &, .cs-classic & .cs-elegant & {
 						margin-right: 0;
 					}
 				}
 			}
 			.menu {
-				margin-top: 15px;
+				.not-logged-in & {
+					margin-top: 15px;
+				}
 			}
 		}
 	}
