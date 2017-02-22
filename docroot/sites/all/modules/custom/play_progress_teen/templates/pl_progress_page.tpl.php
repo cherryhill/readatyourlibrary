@@ -95,14 +95,19 @@
 <div class="progress-wrap">
 <div class="report-acivity">
 	<?php
-      print '<h1>'.t('Report an Activity</h1>');
-      print  '<div id = "errorwarn"></div>';
-      print  '<div id = "errorwarn-activity"></div>';
+      if ($count >= $grids){
+        print '<h1>Congratulations! You have completed the program.</h1>';
+      }
+      else{
+        print '<h1>'.t('Report an Activity</h1>');
+        print  '<div id = "errorwarn"></div>';
+        print  '<div id = "errorwarn-activity"></div>';
 
-	    $block = block_load('play_progress_teen', 'progress_submit_block');
-	    $render_block = _block_get_renderable_array(_block_render_blocks(array($block)));
-  	  $output = drupal_render($render_block);
-  	  print $output;
+        $block = block_load('play_progress_teen', 'progress_submit_block');
+        $render_block = _block_get_renderable_array(_block_render_blocks(array($block)));
+        $output = drupal_render($render_block);
+        print $output;
+      }
 	?>
 <!-- 	<div class="submit">
 		<button id="pg-report">Submit</button>
@@ -167,19 +172,16 @@
   	    // echo "<div class = 'grid inserted' id = 'cells'.$i.'>".$act_id[$i].$imageCompleted."</div>";
   	  }
   	  else{
-        print("<td class = 'grid' id = $cell_counter active = 'yes'></td>");
-  	    // echo "<div class = 'grid' id = 'cells'.$i.'></div>";
+        if($cell_counter > $grids){
+          print("<td class='filler-cell'></td>");
+        } else {
+          print("<td class = 'grid' id = $cell_counter active = 'yes'></td>");
+        }
   	  }
-	  $i++;
-	}
-  print("</tr>");
-	// echo '</div>';
+      $i++;
+    }
+    print("</tr>");
   }
   print("</tbody></table>");
-  unset($exceed_limit);
-  // $activity = entity_load('activity', array(1196));
-  // echo "<pre>"; print_r($activity[1196]);die();
-  ?>
-  <div class="ajax-progress ajax-progress-throbber"><div class="throbber">&nbsp;</div></div>
-  <!-- <div class='throbber'></div> -->
+?>
 </div></div>
