@@ -566,7 +566,7 @@ select {
 
 /* Grid HTML Classes */
 /* line 116, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_grid.scss */
-.row {
+.row, .page-my-reviews .view--reviews-for-all-type .view-content .views-row {
   width: 100%;
   margin-left: auto;
   margin-right: auto;
@@ -576,29 +576,34 @@ select {
   *zoom: 1;
 }
 /* line 121, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_global.scss */
-.row:before, .row:after {
+.row:before, .page-my-reviews .view--reviews-for-all-type .view-content .views-row:before, .row:after, .page-my-reviews .view--reviews-for-all-type .view-content .views-row:after {
   content: " ";
   display: table;
 }
 /* line 122, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_global.scss */
-.row:after {
+.row:after, .page-my-reviews .view--reviews-for-all-type .view-content .views-row:after {
   clear: both;
 }
 /* line 120, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_grid.scss */
-.row.collapse > .column,
-.row.collapse > .columns {
+.row.collapse > .column, .page-my-reviews .view--reviews-for-all-type .view-content .collapse.views-row > .column,
+.row.collapse > .columns,
+.page-my-reviews .view--reviews-for-all-type .view-content .collapse.views-row > .columns,
+.page-my-reviews .view--reviews-for-all-type .view-content .views-row .row.collapse > .views-field-field-book-cover-image-link,
+.page-my-reviews .view--reviews-for-all-type .view-content .collapse.views-row > .views-field-field-book-cover-image-link,
+.page-my-reviews .view--reviews-for-all-type .view-content .views-row .row.collapse > .views-field-nothing,
+.page-my-reviews .view--reviews-for-all-type .view-content .collapse.views-row > .views-field-nothing {
   position: relative;
   padding-left: 0;
   padding-right: 0;
   float: left;
 }
 /* line 123, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_grid.scss */
-.row.collapse .row {
+.row.collapse .row, .page-my-reviews .view--reviews-for-all-type .view-content .collapse.views-row .row, .row.collapse .page-my-reviews .view--reviews-for-all-type .view-content .views-row, .page-my-reviews .view--reviews-for-all-type .view-content .row.collapse .views-row, .page-my-reviews .view--reviews-for-all-type .view-content .collapse.views-row .views-row {
   margin-left: 0;
   margin-right: 0;
 }
 /* line 126, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_grid.scss */
-.row .row {
+.row .row, .page-my-reviews .view--reviews-for-all-type .view-content .views-row .row, .row .page-my-reviews .view--reviews-for-all-type .view-content .views-row, .page-my-reviews .view--reviews-for-all-type .view-content .row .views-row, .page-my-reviews .view--reviews-for-all-type .view-content .views-row .views-row {
   width: auto;
   margin-left: -0.9375em;
   margin-right: -0.9375em;
@@ -608,34 +613,36 @@ select {
   *zoom: 1;
 }
 /* line 121, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_global.scss */
-.row .row:before, .row .row:after {
+.row .row:before, .page-my-reviews .view--reviews-for-all-type .view-content .views-row .row:before, .row .page-my-reviews .view--reviews-for-all-type .view-content .views-row:before, .page-my-reviews .view--reviews-for-all-type .view-content .row .views-row:before, .page-my-reviews .view--reviews-for-all-type .view-content .views-row .views-row:before, .row .row:after, .page-my-reviews .view--reviews-for-all-type .view-content .views-row .row:after, .row .page-my-reviews .view--reviews-for-all-type .view-content .views-row:after, .page-my-reviews .view--reviews-for-all-type .view-content .row .views-row:after, .page-my-reviews .view--reviews-for-all-type .view-content .views-row .views-row:after {
   content: " ";
   display: table;
 }
 /* line 122, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_global.scss */
-.row .row:after {
+.row .row:after, .page-my-reviews .view--reviews-for-all-type .view-content .views-row .row:after, .row .page-my-reviews .view--reviews-for-all-type .view-content .views-row:after, .page-my-reviews .view--reviews-for-all-type .view-content .row .views-row:after, .page-my-reviews .view--reviews-for-all-type .view-content .views-row .views-row:after {
   clear: both;
 }
 /* line 127, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_grid.scss */
-.row .row.collapse {
+.row .row.collapse, .page-my-reviews .view--reviews-for-all-type .view-content .views-row .row.collapse, .row .page-my-reviews .view--reviews-for-all-type .view-content .collapse.views-row, .page-my-reviews .view--reviews-for-all-type .view-content .row .collapse.views-row, .page-my-reviews .view--reviews-for-all-type .view-content .views-row .collapse.views-row {
   width: auto;
   margin: 0;
   max-width: none;
   *zoom: 1;
 }
 /* line 121, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_global.scss */
-.row .row.collapse:before, .row .row.collapse:after {
+.row .row.collapse:before, .page-my-reviews .view--reviews-for-all-type .view-content .views-row .row.collapse:before, .row .page-my-reviews .view--reviews-for-all-type .view-content .collapse.views-row:before, .page-my-reviews .view--reviews-for-all-type .view-content .row .collapse.views-row:before, .page-my-reviews .view--reviews-for-all-type .view-content .views-row .collapse.views-row:before, .row .row.collapse:after, .page-my-reviews .view--reviews-for-all-type .view-content .views-row .row.collapse:after, .row .page-my-reviews .view--reviews-for-all-type .view-content .collapse.views-row:after, .page-my-reviews .view--reviews-for-all-type .view-content .row .collapse.views-row:after, .page-my-reviews .view--reviews-for-all-type .view-content .views-row .collapse.views-row:after {
   content: " ";
   display: table;
 }
 /* line 122, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_global.scss */
-.row .row.collapse:after {
+.row .row.collapse:after, .page-my-reviews .view--reviews-for-all-type .view-content .views-row .row.collapse:after, .row .page-my-reviews .view--reviews-for-all-type .view-content .collapse.views-row:after, .page-my-reviews .view--reviews-for-all-type .view-content .row .collapse.views-row:after, .page-my-reviews .view--reviews-for-all-type .view-content .views-row .collapse.views-row:after {
   clear: both;
 }
 
 /* line 131, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_grid.scss */
 .column,
-.columns {
+.columns,
+.page-my-reviews .view--reviews-for-all-type .view-content .views-row .views-field-field-book-cover-image-link,
+.page-my-reviews .view--reviews-for-all-type .view-content .views-row .views-field-nothing {
   position: relative;
   padding-left: 0.9375em;
   padding-right: 0.9375em;
@@ -646,7 +653,9 @@ select {
 @media only screen {
   /* line 136, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_grid.scss */
   .column,
-  .columns {
+  .columns,
+  .page-my-reviews .view--reviews-for-all-type .view-content .views-row .views-field-field-book-cover-image-link,
+  .page-my-reviews .view--reviews-for-all-type .view-content .views-row .views-field-nothing {
     position: relative;
     padding-left: 0.9375em;
     padding-right: 0.9375em;
@@ -803,7 +812,9 @@ select {
 
   /* line 150, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_grid.scss */
   .column.small-centered,
-  .columns.small-centered {
+  .columns.small-centered,
+  .page-my-reviews .view--reviews-for-all-type .view-content .views-row .small-centered.views-field-field-book-cover-image-link,
+  .page-my-reviews .view--reviews-for-all-type .view-content .views-row .small-centered.views-field-nothing {
     position: relative;
     margin-left: auto;
     margin-right: auto;
@@ -885,73 +896,73 @@ select {
   }
 
   /* line 162, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_grid.scss */
-  .row .large-offset-0 {
+  .row .large-offset-0, .page-my-reviews .view--reviews-for-all-type .view-content .views-row .large-offset-0 {
     position: relative;
     margin-left: 0%;
   }
 
   /* line 162, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_grid.scss */
-  .row .large-offset-1 {
+  .row .large-offset-1, .page-my-reviews .view--reviews-for-all-type .view-content .views-row .large-offset-1 {
     position: relative;
     margin-left: 8.33333%;
   }
 
   /* line 162, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_grid.scss */
-  .row .large-offset-2 {
+  .row .large-offset-2, .page-my-reviews .view--reviews-for-all-type .view-content .views-row .large-offset-2 {
     position: relative;
     margin-left: 16.66667%;
   }
 
   /* line 162, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_grid.scss */
-  .row .large-offset-3 {
+  .row .large-offset-3, .page-my-reviews .view--reviews-for-all-type .view-content .views-row .large-offset-3 {
     position: relative;
     margin-left: 25%;
   }
 
   /* line 162, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_grid.scss */
-  .row .large-offset-4 {
+  .row .large-offset-4, .page-my-reviews .view--reviews-for-all-type .view-content .views-row .large-offset-4 {
     position: relative;
     margin-left: 33.33333%;
   }
 
   /* line 162, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_grid.scss */
-  .row .large-offset-5 {
+  .row .large-offset-5, .page-my-reviews .view--reviews-for-all-type .view-content .views-row .large-offset-5 {
     position: relative;
     margin-left: 41.66667%;
   }
 
   /* line 162, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_grid.scss */
-  .row .large-offset-6 {
+  .row .large-offset-6, .page-my-reviews .view--reviews-for-all-type .view-content .views-row .large-offset-6 {
     position: relative;
     margin-left: 50%;
   }
 
   /* line 162, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_grid.scss */
-  .row .large-offset-7 {
+  .row .large-offset-7, .page-my-reviews .view--reviews-for-all-type .view-content .views-row .large-offset-7 {
     position: relative;
     margin-left: 58.33333%;
   }
 
   /* line 162, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_grid.scss */
-  .row .large-offset-8 {
+  .row .large-offset-8, .page-my-reviews .view--reviews-for-all-type .view-content .views-row .large-offset-8 {
     position: relative;
     margin-left: 66.66667%;
   }
 
   /* line 162, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_grid.scss */
-  .row .large-offset-9 {
+  .row .large-offset-9, .page-my-reviews .view--reviews-for-all-type .view-content .views-row .large-offset-9 {
     position: relative;
     margin-left: 75%;
   }
 
   /* line 162, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_grid.scss */
-  .row .large-offset-10 {
+  .row .large-offset-10, .page-my-reviews .view--reviews-for-all-type .view-content .views-row .large-offset-10 {
     position: relative;
     margin-left: 83.33333%;
   }
 
   /* line 162, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_grid.scss */
-  .row .large-offset-11 {
+  .row .large-offset-11, .page-my-reviews .view--reviews-for-all-type .view-content .views-row .large-offset-11 {
     position: relative;
     margin-left: 91.66667%;
   }
@@ -1112,7 +1123,9 @@ select {
 
   /* line 170, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_grid.scss */
   .column.large-centered,
-  .columns.large-centered {
+  .columns.large-centered,
+  .page-my-reviews .view--reviews-for-all-type .view-content .views-row .large-centered.views-field-field-book-cover-image-link,
+  .page-my-reviews .view--reviews-for-all-type .view-content .views-row .large-centered.views-field-nothing {
     position: relative;
     margin-left: auto;
     margin-right: auto;
@@ -1121,7 +1134,9 @@ select {
 
   /* line 173, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_grid.scss */
   .column.large-uncentered,
-  .columns.large-uncentered {
+  .columns.large-uncentered,
+  .page-my-reviews .view--reviews-for-all-type .view-content .views-row .large-uncentered.views-field-field-book-cover-image-link,
+  .page-my-reviews .view--reviews-for-all-type .view-content .views-row .large-uncentered.views-field-nothing {
     margin-left: 0;
     margin-right: 0;
     float: left !important;
@@ -1129,7 +1144,9 @@ select {
 
   /* line 180, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_grid.scss */
   .column.large-uncentered.opposite,
-  .columns.large-uncentered.opposite {
+  .columns.large-uncentered.opposite,
+  .page-my-reviews .view--reviews-for-all-type .view-content .views-row .large-uncentered.opposite.views-field-field-book-cover-image-link,
+  .page-my-reviews .view--reviews-for-all-type .view-content .views-row .large-uncentered.opposite.views-field-nothing {
     float: right !important;
   }
 }
@@ -2719,35 +2736,95 @@ form {
 
 /* Using forms within rows, we need to set some defaults */
 /* line 67, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_forms.scss */
-form .row .row {
+form .row .row, form .page-my-reviews .view--reviews-for-all-type .view-content .views-row .row, .page-my-reviews .view--reviews-for-all-type .view-content form .views-row .row, form .row .page-my-reviews .view--reviews-for-all-type .view-content .views-row, .page-my-reviews .view--reviews-for-all-type .view-content form .row .views-row, form .page-my-reviews .view--reviews-for-all-type .view-content .views-row .views-row, .page-my-reviews .view--reviews-for-all-type .view-content form .views-row .views-row {
   margin: 0 -0.5em;
 }
 /* line 69, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_forms.scss */
-form .row .row .column,
-form .row .row .columns {
+form .row .row .column, form .page-my-reviews .view--reviews-for-all-type .view-content .views-row .row .column, .page-my-reviews .view--reviews-for-all-type .view-content form .views-row .row .column, form .row .page-my-reviews .view--reviews-for-all-type .view-content .views-row .column, .page-my-reviews .view--reviews-for-all-type .view-content form .row .views-row .column, form .page-my-reviews .view--reviews-for-all-type .view-content .views-row .views-row .column, .page-my-reviews .view--reviews-for-all-type .view-content form .views-row .views-row .column,
+form .row .row .columns,
+form .page-my-reviews .view--reviews-for-all-type .view-content .views-row .row .columns,
+.page-my-reviews .view--reviews-for-all-type .view-content form .views-row .row .columns,
+form .row .page-my-reviews .view--reviews-for-all-type .view-content .views-row .columns,
+.page-my-reviews .view--reviews-for-all-type .view-content form .row .views-row .columns,
+form .page-my-reviews .view--reviews-for-all-type .view-content .views-row .views-row .columns,
+.page-my-reviews .view--reviews-for-all-type .view-content form .views-row .views-row .columns,
+.page-my-reviews .view--reviews-for-all-type .view-content .views-row form .row .row .views-field-field-book-cover-image-link,
+form .page-my-reviews .view--reviews-for-all-type .view-content .views-row .row .views-field-field-book-cover-image-link,
+.page-my-reviews .view--reviews-for-all-type .view-content form .views-row .row .views-field-field-book-cover-image-link,
+form .row .page-my-reviews .view--reviews-for-all-type .view-content .views-row .views-field-field-book-cover-image-link,
+.page-my-reviews .view--reviews-for-all-type .view-content form .row .views-row .views-field-field-book-cover-image-link,
+form .page-my-reviews .view--reviews-for-all-type .view-content .views-row .views-row .views-field-field-book-cover-image-link,
+.page-my-reviews .view--reviews-for-all-type .view-content form .views-row .views-row .views-field-field-book-cover-image-link,
+.page-my-reviews .view--reviews-for-all-type .view-content .views-row form .row .row .views-field-nothing,
+form .page-my-reviews .view--reviews-for-all-type .view-content .views-row .row .views-field-nothing,
+.page-my-reviews .view--reviews-for-all-type .view-content form .views-row .row .views-field-nothing,
+form .row .page-my-reviews .view--reviews-for-all-type .view-content .views-row .views-field-nothing,
+.page-my-reviews .view--reviews-for-all-type .view-content form .row .views-row .views-field-nothing,
+form .page-my-reviews .view--reviews-for-all-type .view-content .views-row .views-row .views-field-nothing,
+.page-my-reviews .view--reviews-for-all-type .view-content form .views-row .views-row .views-field-nothing {
   padding: 0 0.5em;
 }
 /* line 73, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_forms.scss */
-form .row .row.collapse {
+form .row .row.collapse, form .page-my-reviews .view--reviews-for-all-type .view-content .views-row .row.collapse, .page-my-reviews .view--reviews-for-all-type .view-content form .views-row .row.collapse, form .row .page-my-reviews .view--reviews-for-all-type .view-content .collapse.views-row, .page-my-reviews .view--reviews-for-all-type .view-content form .row .collapse.views-row, form .page-my-reviews .view--reviews-for-all-type .view-content .views-row .collapse.views-row, .page-my-reviews .view--reviews-for-all-type .view-content form .views-row .collapse.views-row {
   margin: 0;
 }
 /* line 75, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_forms.scss */
-form .row .row.collapse .column,
-form .row .row.collapse .columns {
+form .row .row.collapse .column, form .page-my-reviews .view--reviews-for-all-type .view-content .views-row .row.collapse .column, .page-my-reviews .view--reviews-for-all-type .view-content form .views-row .row.collapse .column, form .row .page-my-reviews .view--reviews-for-all-type .view-content .collapse.views-row .column, .page-my-reviews .view--reviews-for-all-type .view-content form .row .collapse.views-row .column, form .page-my-reviews .view--reviews-for-all-type .view-content .views-row .collapse.views-row .column, .page-my-reviews .view--reviews-for-all-type .view-content form .views-row .collapse.views-row .column,
+form .row .row.collapse .columns,
+form .page-my-reviews .view--reviews-for-all-type .view-content .views-row .row.collapse .columns,
+.page-my-reviews .view--reviews-for-all-type .view-content form .views-row .row.collapse .columns,
+form .row .page-my-reviews .view--reviews-for-all-type .view-content .collapse.views-row .columns,
+.page-my-reviews .view--reviews-for-all-type .view-content form .row .collapse.views-row .columns,
+form .page-my-reviews .view--reviews-for-all-type .view-content .views-row .collapse.views-row .columns,
+.page-my-reviews .view--reviews-for-all-type .view-content form .views-row .collapse.views-row .columns,
+form .row .row.collapse .page-my-reviews .view--reviews-for-all-type .view-content .views-row .views-field-field-book-cover-image-link,
+.page-my-reviews .view--reviews-for-all-type .view-content .views-row form .row .row.collapse .views-field-field-book-cover-image-link,
+form .page-my-reviews .view--reviews-for-all-type .view-content .views-row .row.collapse .views-field-field-book-cover-image-link,
+.page-my-reviews .view--reviews-for-all-type .view-content form .views-row .row.collapse .views-field-field-book-cover-image-link,
+form .row .page-my-reviews .view--reviews-for-all-type .view-content .collapse.views-row .views-field-field-book-cover-image-link,
+.page-my-reviews .view--reviews-for-all-type .view-content form .row .collapse.views-row .views-field-field-book-cover-image-link,
+form .page-my-reviews .view--reviews-for-all-type .view-content .collapse.views-row .collapse.views-row .views-field-field-book-cover-image-link,
+.page-my-reviews .view--reviews-for-all-type .view-content form .collapse.views-row .collapse.views-row .views-field-field-book-cover-image-link,
+form .row .row.collapse .page-my-reviews .view--reviews-for-all-type .view-content .views-row .views-field-nothing,
+.page-my-reviews .view--reviews-for-all-type .view-content .views-row form .row .row.collapse .views-field-nothing,
+form .page-my-reviews .view--reviews-for-all-type .view-content .views-row .row.collapse .views-field-nothing,
+.page-my-reviews .view--reviews-for-all-type .view-content form .views-row .row.collapse .views-field-nothing,
+form .row .page-my-reviews .view--reviews-for-all-type .view-content .collapse.views-row .views-field-nothing,
+.page-my-reviews .view--reviews-for-all-type .view-content form .row .collapse.views-row .views-field-nothing,
+form .page-my-reviews .view--reviews-for-all-type .view-content .collapse.views-row .collapse.views-row .views-field-nothing,
+.page-my-reviews .view--reviews-for-all-type .view-content form .collapse.views-row .collapse.views-row .views-field-nothing {
   padding: 0;
 }
 /* line 77, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_forms.scss */
-form .row .row.collapse input {
+form .row .row.collapse input, form .page-my-reviews .view--reviews-for-all-type .view-content .views-row .row.collapse input, .page-my-reviews .view--reviews-for-all-type .view-content form .views-row .row.collapse input, form .row .page-my-reviews .view--reviews-for-all-type .view-content .collapse.views-row input, .page-my-reviews .view--reviews-for-all-type .view-content form .row .collapse.views-row input, form .page-my-reviews .view--reviews-for-all-type .view-content .views-row .collapse.views-row input, .page-my-reviews .view--reviews-for-all-type .view-content form .views-row .collapse.views-row input {
   -moz-border-radius-bottomright: 0;
   -moz-border-radius-topright: 0;
   -webkit-border-bottom-right-radius: 0;
   -webkit-border-top-right-radius: 0;
 }
 /* line 86, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_forms.scss */
-form .row input.column,
+form .row input.column, form .page-my-reviews .view--reviews-for-all-type .view-content .views-row input.column, .page-my-reviews .view--reviews-for-all-type .view-content form .views-row input.column,
 form .row input.columns,
+form .page-my-reviews .view--reviews-for-all-type .view-content .views-row input.columns,
+.page-my-reviews .view--reviews-for-all-type .view-content form .views-row input.columns,
+.page-my-reviews .view--reviews-for-all-type .view-content .views-row form .row input.views-field-field-book-cover-image-link,
+form .page-my-reviews .view--reviews-for-all-type .view-content .views-row input.views-field-field-book-cover-image-link,
+.page-my-reviews .view--reviews-for-all-type .view-content form .views-row input.views-field-field-book-cover-image-link,
+.page-my-reviews .view--reviews-for-all-type .view-content .views-row form .row input.views-field-nothing,
+form .page-my-reviews .view--reviews-for-all-type .view-content .views-row input.views-field-nothing,
+.page-my-reviews .view--reviews-for-all-type .view-content form .views-row input.views-field-nothing,
 form .row textarea.column,
-form .row textarea.columns {
+form .page-my-reviews .view--reviews-for-all-type .view-content .views-row textarea.column,
+.page-my-reviews .view--reviews-for-all-type .view-content form .views-row textarea.column,
+form .row textarea.columns,
+form .page-my-reviews .view--reviews-for-all-type .view-content .views-row textarea.columns,
+.page-my-reviews .view--reviews-for-all-type .view-content form .views-row textarea.columns,
+.page-my-reviews .view--reviews-for-all-type .view-content .views-row form .row textarea.views-field-field-book-cover-image-link,
+form .page-my-reviews .view--reviews-for-all-type .view-content .views-row textarea.views-field-field-book-cover-image-link,
+.page-my-reviews .view--reviews-for-all-type .view-content form .views-row textarea.views-field-field-book-cover-image-link,
+.page-my-reviews .view--reviews-for-all-type .view-content .views-row form .row textarea.views-field-nothing,
+form .page-my-reviews .view--reviews-for-all-type .view-content .views-row textarea.views-field-nothing,
+.page-my-reviews .view--reviews-for-all-type .view-content form .views-row textarea.views-field-nothing {
   padding-left: 0.5em;
 }
 
@@ -4654,7 +4731,7 @@ label.error {
   list-style: none;
 }
 /* line 120, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_top-bar.scss */
-.top-bar .row {
+.top-bar .row, .top-bar .page-my-reviews .view--reviews-for-all-type .view-content .views-row, .page-my-reviews .view--reviews-for-all-type .view-content .top-bar .views-row {
   max-width: none;
 }
 /* line 122, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_top-bar.scss */
@@ -5476,7 +5553,11 @@ label.error {
 }
 /* line 61, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_reveal.scss */
 .reveal-modal .column,
-.reveal-modal .columns {
+.reveal-modal .columns,
+.reveal-modal .page-my-reviews .view--reviews-for-all-type .view-content .views-row .views-field-field-book-cover-image-link,
+.page-my-reviews .view--reviews-for-all-type .view-content .views-row .reveal-modal .views-field-field-book-cover-image-link,
+.reveal-modal .page-my-reviews .view--reviews-for-all-type .view-content .views-row .views-field-nothing,
+.page-my-reviews .view--reviews-for-all-type .view-content .views-row .reveal-modal .views-field-nothing {
   min-width: 0;
 }
 /* line 65, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_reveal.scss */
@@ -8094,7 +8175,7 @@ a:focus, button:focus {
 
 /* Grid HTML Classes */
 /* line 127, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_grid-5.scss */
-.row {
+.row, .page-my-reviews .view--reviews-for-all-type .view-content .views-row {
   margin-left: auto;
   margin-right: auto;
   margin-top: 0;
@@ -8104,23 +8185,30 @@ a:focus, button:focus {
   *zoom: 1;
 }
 /* line 121, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_global.scss */
-.row:before, .row:after {
+.row:before, .page-my-reviews .view--reviews-for-all-type .view-content .views-row:before, .row:after, .page-my-reviews .view--reviews-for-all-type .view-content .views-row:after {
   content: " ";
   display: table;
 }
 /* line 122, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_global.scss */
-.row:after {
+.row:after, .page-my-reviews .view--reviews-for-all-type .view-content .views-row:after {
   clear: both;
 }
 /* line 131, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_grid-5.scss */
-.row.collapse .column,
-.row.collapse .columns {
+.row.collapse .column, .page-my-reviews .view--reviews-for-all-type .view-content .collapse.views-row .column,
+.row.collapse .columns,
+.page-my-reviews .view--reviews-for-all-type .view-content .collapse.views-row .columns,
+.row.collapse .page-my-reviews .view--reviews-for-all-type .view-content .views-row .views-field-field-book-cover-image-link,
+.page-my-reviews .view--reviews-for-all-type .view-content .views-row .row.collapse .views-field-field-book-cover-image-link,
+.page-my-reviews .view--reviews-for-all-type .view-content .collapse.views-row .views-field-field-book-cover-image-link,
+.row.collapse .page-my-reviews .view--reviews-for-all-type .view-content .views-row .views-field-nothing,
+.page-my-reviews .view--reviews-for-all-type .view-content .views-row .row.collapse .views-field-nothing,
+.page-my-reviews .view--reviews-for-all-type .view-content .collapse.views-row .views-field-nothing {
   padding-left: 0;
   padding-right: 0;
   float: left;
 }
 /* line 135, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_grid-5.scss */
-.row .row {
+.row .row, .page-my-reviews .view--reviews-for-all-type .view-content .views-row .row, .row .page-my-reviews .view--reviews-for-all-type .view-content .views-row, .page-my-reviews .view--reviews-for-all-type .view-content .row .views-row, .page-my-reviews .view--reviews-for-all-type .view-content .views-row .views-row {
   margin-left: -0.9375em;
   margin-right: -0.9375em;
   max-width: none;
@@ -8128,16 +8216,16 @@ a:focus, button:focus {
   *zoom: 1;
 }
 /* line 121, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_global.scss */
-.row .row:before, .row .row:after {
+.row .row:before, .page-my-reviews .view--reviews-for-all-type .view-content .views-row .row:before, .row .page-my-reviews .view--reviews-for-all-type .view-content .views-row:before, .page-my-reviews .view--reviews-for-all-type .view-content .row .views-row:before, .page-my-reviews .view--reviews-for-all-type .view-content .views-row .views-row:before, .row .row:after, .page-my-reviews .view--reviews-for-all-type .view-content .views-row .row:after, .row .page-my-reviews .view--reviews-for-all-type .view-content .views-row:after, .page-my-reviews .view--reviews-for-all-type .view-content .row .views-row:after, .page-my-reviews .view--reviews-for-all-type .view-content .views-row .views-row:after {
   content: " ";
   display: table;
 }
 /* line 122, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_global.scss */
-.row .row:after {
+.row .row:after, .page-my-reviews .view--reviews-for-all-type .view-content .views-row .row:after, .row .page-my-reviews .view--reviews-for-all-type .view-content .views-row:after, .page-my-reviews .view--reviews-for-all-type .view-content .row .views-row:after, .page-my-reviews .view--reviews-for-all-type .view-content .views-row .views-row:after {
   clear: both;
 }
 /* line 136, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_grid-5.scss */
-.row .row.collapse {
+.row .row.collapse, .page-my-reviews .view--reviews-for-all-type .view-content .views-row .row.collapse, .row .page-my-reviews .view--reviews-for-all-type .view-content .collapse.views-row, .page-my-reviews .view--reviews-for-all-type .view-content .row .collapse.views-row, .page-my-reviews .view--reviews-for-all-type .view-content .views-row .collapse.views-row {
   margin-left: 0;
   margin-right: 0;
   max-width: none;
@@ -8145,18 +8233,20 @@ a:focus, button:focus {
   *zoom: 1;
 }
 /* line 121, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_global.scss */
-.row .row.collapse:before, .row .row.collapse:after {
+.row .row.collapse:before, .page-my-reviews .view--reviews-for-all-type .view-content .views-row .row.collapse:before, .row .page-my-reviews .view--reviews-for-all-type .view-content .collapse.views-row:before, .page-my-reviews .view--reviews-for-all-type .view-content .row .collapse.views-row:before, .page-my-reviews .view--reviews-for-all-type .view-content .views-row .collapse.views-row:before, .row .row.collapse:after, .page-my-reviews .view--reviews-for-all-type .view-content .views-row .row.collapse:after, .row .page-my-reviews .view--reviews-for-all-type .view-content .collapse.views-row:after, .page-my-reviews .view--reviews-for-all-type .view-content .row .collapse.views-row:after, .page-my-reviews .view--reviews-for-all-type .view-content .views-row .collapse.views-row:after {
   content: " ";
   display: table;
 }
 /* line 122, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_global.scss */
-.row .row.collapse:after {
+.row .row.collapse:after, .page-my-reviews .view--reviews-for-all-type .view-content .views-row .row.collapse:after, .row .page-my-reviews .view--reviews-for-all-type .view-content .collapse.views-row:after, .page-my-reviews .view--reviews-for-all-type .view-content .row .collapse.views-row:after, .page-my-reviews .view--reviews-for-all-type .view-content .views-row .collapse.views-row:after {
   clear: both;
 }
 
 /* line 140, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_grid-5.scss */
 .column,
-.columns {
+.columns,
+.page-my-reviews .view--reviews-for-all-type .view-content .views-row .views-field-field-book-cover-image-link,
+.page-my-reviews .view--reviews-for-all-type .view-content .views-row .views-field-nothing {
   padding-left: 0.9375em;
   padding-right: 0.9375em;
   width: 100%;
@@ -8292,7 +8382,9 @@ a:focus, button:focus {
 
   /* line 156, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_grid-5.scss */
   .column.small-centered,
-  .columns.small-centered {
+  .columns.small-centered,
+  .page-my-reviews .view--reviews-for-all-type .view-content .views-row .small-centered.views-field-field-book-cover-image-link,
+  .page-my-reviews .view--reviews-for-all-type .view-content .views-row .small-centered.views-field-nothing {
     margin-left: auto;
     margin-right: auto;
     float: none !important;
@@ -8320,7 +8412,7 @@ a:focus, button:focus {
   }
 
   /* line 163, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_grid-5.scss */
-  .medium-5 {
+  .medium-5, .page-my-reviews .view--reviews-for-all-type .view-content .views-row .views-field-field-book-cover-image-link {
     width: 41.66667%;
   }
 
@@ -8330,7 +8422,7 @@ a:focus, button:focus {
   }
 
   /* line 163, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_grid-5.scss */
-  .medium-7 {
+  .medium-7, .page-my-reviews .view--reviews-for-all-type .view-content .views-row .views-field-nothing {
     width: 58.33333%;
   }
 
@@ -8553,7 +8645,9 @@ a:focus, button:focus {
 
   /* line 175, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_grid-5.scss */
   .column.medium-centered,
-  .columns.medium-centered {
+  .columns.medium-centered,
+  .page-my-reviews .view--reviews-for-all-type .view-content .views-row .medium-centered.views-field-field-book-cover-image-link,
+  .page-my-reviews .view--reviews-for-all-type .view-content .views-row .medium-centered.views-field-nothing {
     margin-left: auto;
     margin-right: auto;
     float: none !important;
@@ -8561,7 +8655,9 @@ a:focus, button:focus {
 
   /* line 178, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_grid-5.scss */
   .column.medium-uncentered,
-  .columns.medium-uncentered {
+  .columns.medium-uncentered,
+  .page-my-reviews .view--reviews-for-all-type .view-content .views-row .medium-uncentered.views-field-field-book-cover-image-link,
+  .page-my-reviews .view--reviews-for-all-type .view-content .views-row .medium-uncentered.views-field-nothing {
     margin-left: 0;
     margin-right: 0;
     float: left !important;
@@ -8822,7 +8918,9 @@ a:focus, button:focus {
 
   /* line 202, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_grid-5.scss */
   .column.large-centered,
-  .columns.large-centered {
+  .columns.large-centered,
+  .page-my-reviews .view--reviews-for-all-type .view-content .views-row .large-centered.views-field-field-book-cover-image-link,
+  .page-my-reviews .view--reviews-for-all-type .view-content .views-row .large-centered.views-field-nothing {
     margin-left: auto;
     margin-right: auto;
     float: none !important;
@@ -8830,7 +8928,9 @@ a:focus, button:focus {
 
   /* line 205, ../../../../../../../../../../home/mukeshk/.rvm/gems/ruby-2.3.1/gems/zurb-foundation-4.3.2/scss/foundation/components/_grid-5.scss */
   .column.large-uncentered,
-  .columns.large-uncentered {
+  .columns.large-uncentered,
+  .page-my-reviews .view--reviews-for-all-type .view-content .views-row .large-uncentered.views-field-field-book-cover-image-link,
+  .page-my-reviews .view--reviews-for-all-type .view-content .views-row .large-uncentered.views-field-nothing {
     margin-left: 0;
     margin-right: 0;
     float: left !important;
@@ -8994,7 +9094,7 @@ a:focus, button:focus {
 }
 
 /* line 215, ../scss/layout/_header.scss */
-.breadcrum-wrapper.row {
+.breadcrum-wrapper.row, .page-my-reviews .view--reviews-for-all-type .view-content .breadcrum-wrapper.views-row {
   max-width: 1224px !important;
 }
 
@@ -9121,17 +9221,17 @@ body.cs-elegant #admin-menu {
 }
 
 /* line 51, ../scss/layout/_main.scss */
-.columns {
+.columns, .page-my-reviews .view--reviews-for-all-type .view-content .views-row .views-field-field-book-cover-image-link, .page-my-reviews .view--reviews-for-all-type .view-content .views-row .views-field-nothing {
   padding-left: 20px !important;
   padding-right: 20px !important;
 }
 
 /* line 55, ../scss/layout/_main.scss */
-.row {
+.row, .page-my-reviews .view--reviews-for-all-type .view-content .views-row {
   max-width: 100% !important;
 }
 /* line 57, ../scss/layout/_main.scss */
-.row.l-main {
+.row.l-main, .page-my-reviews .view--reviews-for-all-type .view-content .l-main.views-row {
   max-width: 1224px !important;
 }
 
@@ -12126,7 +12226,7 @@ html {
   display: inline-block;
 }
 /* line 5, ../scss/components/_mobile-menu.scss */
-.mobile-menu.columns {
+.mobile-menu.columns, .page-my-reviews .view--reviews-for-all-type .view-content .views-row .mobile-menu.views-field-field-book-cover-image-link, .page-my-reviews .view--reviews-for-all-type .view-content .views-row .mobile-menu.views-field-nothing {
   padding-left: 0;
   padding-right: 0;
 }
@@ -16616,6 +16716,121 @@ h2.reviews-title, .view-booklist-slideshow .other-programme.view .view-header *,
     max-width: 100%;
     width: 100%;
   }
+}
+/* line 2, ../scss/pages/my_reviews.scss */
+.page-my-reviews .pagination-centered {
+  margin-top: 20px;
+}
+/* line 5, ../scss/pages/my_reviews.scss */
+.page-my-reviews #page-title {
+  display: none;
+}
+/* line 10, ../scss/pages/my_reviews.scss */
+.page-my-reviews .view--reviews-for-all-type .view-content .views-row {
+  border-bottom: 1px solid #ccc;
+  padding: 35px 0 15px;
+}
+/* line 17, ../scss/pages/my_reviews.scss */
+.page-my-reviews .view--reviews-for-all-type .view-content .views-row .views-field-field-book-cover-image-link table {
+  border: none;
+}
+/* line 19, ../scss/pages/my_reviews.scss */
+.page-my-reviews .view--reviews-for-all-type .view-content .views-row .views-field-field-book-cover-image-link table tbody {
+  border: none;
+}
+/* line 22, ../scss/pages/my_reviews.scss */
+.page-my-reviews .view--reviews-for-all-type .view-content .views-row .views-field-field-book-cover-image-link table td {
+  padding: 0;
+  border: none;
+}
+/* line 33, ../scss/pages/my_reviews.scss */
+.page-my-reviews .view--reviews-for-all-type .view-content .views-row .views-field-nothing .title-wrap {
+  display: flex;
+  display: -webkit-flex;
+  flex-wrap: wrap;
+  -webkit-flex-wrap: wrap;
+}
+/* line 38, ../scss/pages/my_reviews.scss */
+.page-my-reviews .view--reviews-for-all-type .view-content .views-row .views-field-nothing .title-wrap .title {
+  flex: 1 1 70%;
+}
+@media screen and (max-width: 480px) {
+  /* line 38, ../scss/pages/my_reviews.scss */
+  .page-my-reviews .view--reviews-for-all-type .view-content .views-row .views-field-nothing .title-wrap .title {
+    flex: 1 1 100%;
+  }
+}
+/* line 45, ../scss/pages/my_reviews.scss */
+.page-my-reviews .view--reviews-for-all-type .view-content .views-row .views-field-nothing .title-wrap .likes, .page-my-reviews .view--reviews-for-all-type .view-content .views-row .views-field-nothing .title-wrap .reviews-wrapper .like-count, .reviews-wrapper .page-my-reviews .view--reviews-for-all-type .view-content .views-row .views-field-nothing .title-wrap .like-count, .page-my-reviews .view--reviews-for-all-type .view-content .views-row .views-field-nothing .title-wrap .booklist-wrapp .book-user-likes > div.book-like, .booklist-wrapp .page-my-reviews .view--reviews-for-all-type .view-content .views-row .views-field-nothing .title-wrap .book-user-likes > div.book-like {
+  flex: 1 1 30%;
+  text-align: right;
+}
+@media screen and (max-width: 480px) {
+  /* line 45, ../scss/pages/my_reviews.scss */
+  .page-my-reviews .view--reviews-for-all-type .view-content .views-row .views-field-nothing .title-wrap .likes, .page-my-reviews .view--reviews-for-all-type .view-content .views-row .views-field-nothing .title-wrap .reviews-wrapper .like-count, .reviews-wrapper .page-my-reviews .view--reviews-for-all-type .view-content .views-row .views-field-nothing .title-wrap .like-count, .page-my-reviews .view--reviews-for-all-type .view-content .views-row .views-field-nothing .title-wrap .booklist-wrapp .book-user-likes > div.book-like, .booklist-wrapp .page-my-reviews .view--reviews-for-all-type .view-content .views-row .views-field-nothing .title-wrap .book-user-likes > div.book-like {
+    flex: 1 1 100%;
+  }
+}
+/* line 53, ../scss/pages/my_reviews.scss */
+.page-my-reviews .view--reviews-for-all-type .view-content .views-row .views-field-nothing .body-text, .page-my-reviews .view--reviews-for-all-type .view-content .views-row .views-field-nothing .button-wrap {
+  padding-left: 30px;
+  margin-bottom: 25px;
+}
+
+/* line 63, ../scss/pages/my_reviews.scss */
+.view--reviews-for-all-type div.likes, .view--reviews-for-all-type .reviews-wrapper div.like-count, .reviews-wrapper .view--reviews-for-all-type div.like-count, .view--reviews-for-all-type .booklist-wrapp .book-user-likes > div.book-like, .booklist-wrapp .view--reviews-for-all-type .book-user-likes > div.book-like {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  -moz-font-smoothing: grayscale;
+}
+/* line 29, ../scss/base/_mixins.scss */
+.cs-default .view--reviews-for-all-type div.likes, .cs-default .view--reviews-for-all-type .reviews-wrapper div.like-count, .reviews-wrapper .cs-default .view--reviews-for-all-type div.like-count, .cs-default .view--reviews-for-all-type .booklist-wrapp .book-user-likes > div.book-like, .booklist-wrapp .cs-default .view--reviews-for-all-type .book-user-likes > div.book-like {
+  font-family: "Special Elite", cursive;
+  font-weight: 400;
+}
+/* line 33, ../scss/base/_mixins.scss */
+.cs-classic .view--reviews-for-all-type div.likes, .cs-classic .view--reviews-for-all-type .reviews-wrapper div.like-count, .reviews-wrapper .cs-classic .view--reviews-for-all-type div.like-count, .cs-classic .view--reviews-for-all-type .booklist-wrapp .book-user-likes > div.book-like, .booklist-wrapp .cs-classic .view--reviews-for-all-type .book-user-likes > div.book-like {
+  font-family: "Exo 2", sans-serif;
+  font-weight: 400;
+}
+/* line 37, ../scss/base/_mixins.scss */
+.cs-elegant .view--reviews-for-all-type div.likes, .cs-elegant .view--reviews-for-all-type .reviews-wrapper div.like-count, .reviews-wrapper .cs-elegant .view--reviews-for-all-type div.like-count, .cs-elegant .view--reviews-for-all-type .booklist-wrapp .book-user-likes > div.book-like, .booklist-wrapp .cs-elegant .view--reviews-for-all-type .book-user-likes > div.book-like {
+  font-family: "Sniglet", cursive;
+  font-weight: 400;
+}
+/* line 65, ../scss/pages/my_reviews.scss */
+.view--reviews-for-all-type div.likes span::after, .view--reviews-for-all-type .reviews-wrapper div.like-count span::after, .reviews-wrapper .view--reviews-for-all-type div.like-count span::after, .view--reviews-for-all-type .booklist-wrapp .book-user-likes > div.book-like span::after, .booklist-wrapp .view--reviews-for-all-type .book-user-likes > div.book-like span::after {
+  right: 4px;
+}
+/* line 67, ../scss/pages/my_reviews.scss */
+.cs-default .view--reviews-for-all-type div.likes span::after, .cs-default .view--reviews-for-all-type .reviews-wrapper div.like-count span::after, .reviews-wrapper .cs-default .view--reviews-for-all-type div.like-count span::after, .cs-default .view--reviews-for-all-type .booklist-wrapp .book-user-likes > div.book-like span::after, .booklist-wrapp .cs-default .view--reviews-for-all-type .book-user-likes > div.book-like span::after {
+  top: -5px;
+}
+/* line 74, ../scss/pages/my_reviews.scss */
+.view--reviews-for-all-type .view-header h1, .view--reviews-for-all-type .other-programme.view .view-header *, .other-programme.view .view--reviews-for-all-type .view-header *, .view--reviews-for-all-type .view-header h2.reviews-title {
+  width: calc(100% + 40px);
+  margin-left: -40px;
+  background-size: auto;
+  background-repeat: no-repeat;
+}
+/* line 79, ../scss/pages/my_reviews.scss */
+.page-my-reviews.cs-default .view--reviews-for-all-type .view-header h1, .page-my-reviews.cs-default .view--reviews-for-all-type .other-programme.view .view-header *, .other-programme.view .page-my-reviews.cs-default .view--reviews-for-all-type .view-header *, .page-my-reviews.cs-default .view--reviews-for-all-type .view-header h2.reviews-title {
+  background-image: url("../images/yellowbrushstroke_lg.png");
+  padding: 27px 10px 30px 40px;
+  color: #32024e;
+}
+/* line 84, ../scss/pages/my_reviews.scss */
+.page-my-reviews.cs-classic .view--reviews-for-all-type .view-header h1, .page-my-reviews.cs-classic .view--reviews-for-all-type .other-programme.view .view-header *, .other-programme.view .page-my-reviews.cs-classic .view--reviews-for-all-type .view-header *, .page-my-reviews.cs-classic .view--reviews-for-all-type .view-header h2.reviews-title {
+  background-image: url("../images/redbrushstroke_lg.png");
+  color: #1d3557;
+  padding: 24px 10px 30px 40px;
+}
+/* line 89, ../scss/pages/my_reviews.scss */
+.page-my-reviews.cs-elegant .view--reviews-for-all-type .view-header h1, .page-my-reviews.cs-elegant .view--reviews-for-all-type .other-programme.view .view-header *, .other-programme.view .page-my-reviews.cs-elegant .view--reviews-for-all-type .view-header *, .page-my-reviews.cs-elegant .view--reviews-for-all-type .view-header h2.reviews-title {
+  background-image: url("../images/bluebrushstroke_lg.png");
+  color: #333333;
+  padding: 24px 10px 30px 40px;
 }
 
 /*# sourceMappingURL=custom.css.map */
