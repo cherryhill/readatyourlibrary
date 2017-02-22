@@ -20,11 +20,14 @@
 		    width: 35px;
 		    height: 5px;
 		    margin-bottom: 5px;
-		    .cs-default &, .cs-elegant & {
-					background: $light-red;
+		    .cs-default & { 
+					background: $yellow;
+		    }
+		    .cs-elegant & {
+		    	background: $gray-btn;
 		    }
 		    .cs-classic & {
-		    	background: $sky-blue;
+		    	background: $dark-blue;
 		    }
 		  }
 		  .cs-default &, .cs-elegant &, .cs-classic & {
@@ -251,15 +254,15 @@
 				width: 100%;
 				input[type=radio] + label {
 					&:before {
-						background: $orange;
-						border: 1px solid $orange;
+						background: $purple;
+						border: 1px solid $purple;
 					 	.cs-classic & {
-					 		background: $sky-blue;
-					 		border: 1px solid $sky-blue;
+					 		background: $medium-blue;
+					 		border: 1px solid $medium-blue;
 					 	}
 					 	.cs-elegant & {
-					 		background: $mint-green;
-					 		border: 1px solid $mint-green;
+					 		background: $green;
+					 		border: 1px solid $green;
 					 	}
 					}
 				}
