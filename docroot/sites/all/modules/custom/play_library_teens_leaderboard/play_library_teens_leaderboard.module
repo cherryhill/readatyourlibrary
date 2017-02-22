@@ -1,6 +1,40 @@
 <?php
 
 /**
+ * returns user name and user avatar with public profile link.
+ */
+function pl_user_avatar_user_name($uid, $style){
+
+  if($uid == ''){
+    return FALSE;
+  }
+
+  if($style == ''){
+    $style = 'medium';
+  }
+
+  global $user;
+  $user_pf = profile2_load_by_user($uid);
+  $user_main = user_load($uid);
+
+  $img_id = $user_pf['main']->field_user_avatar[LANGUAGE_NONE][0]['target_id'];
+  $user_name = $user_main->name;
+
+  $query = db_select('field_data_field_avatar_image', 't');
+  $query->join('file_managed', 'n', 'n.fid = t.field_avatar_image_fid');
+  $result = $query
+    ->fields('n', array('uri'))
+    ->condition('t.entity_id', $img_id)
+    ->execute();
+
+  $img_uri_query = $result->fetchObject();
+  $img_uri = $img_uri_query->uri;
+  $img_path = image_style_url($style, $img_uri);
+  $img = "<img src='$img_path'>";
+  return $img.'<a href ="users/public_profile/'.$uid.'">'.$user_name.'</a>';
+}
+
+/**
  * Implement hook_menu(); for leaderboard page.
  */
 
@@ -31,6 +65,7 @@ function pl_leaderboard_page() {
     $query->condition('act_entry.field_activity_entry_activity_target_id', $activity_id, 'IN');
     $query->condition('act_entry.bundle', 'activity_entry', '=');
     $query->condition('eck_act.type', 'activity_entry', '=');
+    $query->condition('u.uid', 0, '!=');
     $query->fields('act_entry', array('field_activity_entry_activity_target_id'));
     $query->addExpression('COUNT(act_entry.field_activity_entry_activity_target_id)', 'label');
     $query->fields('eck_act', array('uid'));
@@ -40,16 +75,17 @@ function pl_leaderboard_page() {
     $out ='';
     $out .= '<div><ol>';
     foreach ($result as $key => $value) {
+
       $name = $value->name;
       $no_stamp = $value->label;
       $user_uid = $value->uid;
-      $avatar = pl_user_avatar_progress_page($user_uid, $imgStyle);
+      $avatar = pl_user_avatar_user_name($user_uid, $imgStyle);
       
       $out .= '<li><span>'.$avatar.'</span><span>'. $no_stamp. 'stamps</span></li>';
 
       
     }
-
+   
     $out .= '</ol></div>';
 
     return $out;
@@ -66,7 +102,7 @@ function play_library_teens_leaderboard_block_info() {
   $blocks = array();
 
   $blocks['leaderboard_block'] = array(
-    'info' => t('Leader Board block for teens dashboard'),
+    'info' => t('Leaderboard'),
     'cache' => DRUPAL_NO_CACHE,
   );
 
@@ -122,7 +158,7 @@ function leader_board_teens_dashboard() {
       $name = $value->name;
       $no_stamp = $value->label;
       $user_uid = $value->uid;
-      $avatar = pl_user_avatar_progress_page($user_uid, $imgStyle);
+      $avatar = pl_user_avatar_user_name($user_uid, $imgStyle);
       
       $out .= '<li><span>'.$avatar.'</span><span>'. $no_stamp. 'stamps</span></li>';
 
