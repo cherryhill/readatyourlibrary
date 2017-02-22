@@ -90,6 +90,7 @@
 			.block-menu-menu-anonymous-header-links {
 				.menu {
 					margin-right: 10px;
+					margin-top: 0;
 				}
 			}
 		}
@@ -98,10 +99,13 @@
 		.pre-header {
 			.top-menu {
 				a.username {
-					.cs-default & {
+					.cs-default &, .cs-classic & {
 						margin-right: 0;
 					}
 				}
+			}
+			.menu {
+				margin-top: 15px;
 			}
 		}
 	}
