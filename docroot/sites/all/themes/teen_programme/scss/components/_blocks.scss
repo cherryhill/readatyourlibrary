@@ -140,6 +140,11 @@
 
     .stroke-main {
       margin: 0;
+      display: inline-block;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: calc(100% - 119px);
     }
 
     .view-content {
