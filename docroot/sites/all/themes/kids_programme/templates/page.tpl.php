@@ -6,7 +6,7 @@
     <div class="pre-header">
       <section class="row" id="topmostbranding">
         <div class="mobile-hamburger hide-for-medium-up">
-           <button>
+           <button class="hamburger">
              <span class="icon"></span>
              <span class="icon"></span>
              <span class="icon"></span>
@@ -17,13 +17,15 @@
           <?php print render($page['top_links']); ?>
           <?php endif; ?>
         </div>
-        
+
       <!--mobile menu-->
+      <section class="mobile-menu-wrapper">
       <div class="mobile-menu columns">
         <?php if (!empty($page['mobile_menu'])): ?>
         <?php print render($page['mobile_menu']); ?>
         <?php endif; ?>
       </div>
+    </section>
     </section>
     </div>
     <!-- End City Branding and Account Links -->

@@ -539,3 +539,18 @@
     }
   }
 }
+#wrap.wrap {
+  .rewards, .reading-progress {
+    @media screen and (max-width: 767px) {
+    display: none !important;
+    }
+  }
+
+}
+#wrap.for-mobile {
+  @media screen and (min-width: 768px) {
+    display: none;
+  }
+  background: transparent;
+  box-shadow: none;
+}
