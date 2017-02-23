@@ -9792,6 +9792,11 @@ html {
 }
 
 /* line 90, ../scss/components/_blocks.scss */
+.homepage-booklist-slider .view-header {
+  position: relative;
+  z-index: 0;
+}
+/* line 94, ../scss/components/_blocks.scss */
 .homepage-booklist-slider .stroke-main span, .homepage-booklist-slider .homepage-vedio-block .view-header p span, .homepage-vedio-block .view-header .homepage-booklist-slider p span, .homepage-booklist-slider .flicker-block .view-header span, .flicker-block .homepage-booklist-slider .view-header span, .homepage-booklist-slider .my-dashbord-block .view-header * span, .my-dashbord-block .view-header .homepage-booklist-slider * span {
   width: calc(100% - 125px);
   display: inline-block;
@@ -9799,19 +9804,20 @@ html {
   text-overflow: ellipsis;
   white-space: nowrap;
 }
-/* line 97, ../scss/components/_blocks.scss */
+/* line 101, ../scss/components/_blocks.scss */
 .homepage-booklist-slider ul.booklist-pager {
   margin: 0;
   float: right;
   display: inline-block;
+  z-index: 1;
 }
-/* line 102, ../scss/components/_blocks.scss */
+/* line 107, ../scss/components/_blocks.scss */
 .homepage-booklist-slider ul.booklist-pager input[type=radio] {
   visibility: hidden;
   position: absolute;
   margin: 0;
 }
-/* line 108, ../scss/components/_blocks.scss */
+/* line 113, ../scss/components/_blocks.scss */
 .homepage-booklist-slider ul.booklist-pager input[type=radio] + label:before {
   height: 20px;
   width: 20px;
@@ -9823,32 +9829,64 @@ html {
   background: #fff;
   border-radius: 100%;
 }
-/* line 120, ../scss/components/_blocks.scss */
+/* line 125, ../scss/components/_blocks.scss */
 .homepage-booklist-slider ul.booklist-pager input[type=radio]:checked + label:before {
   background: #267fda;
   border: 1px solid #267fda;
 }
-/* line 124, ../scss/components/_blocks.scss */
+/* line 129, ../scss/components/_blocks.scss */
 .cs-classic .homepage-booklist-slider ul.booklist-pager input[type=radio]:checked + label:before {
   background: #fdeb52;
   border: 1px solid #fdeb52;
 }
-/* line 131, ../scss/components/_blocks.scss */
+/* line 136, ../scss/components/_blocks.scss */
 .homepage-booklist-slider .controls {
   width: calc(100% - 20px);
   display: inline-block;
   position: relative;
   bottom: -60px;
+  z-index: 1;
 }
-/* line 141, ../scss/components/_blocks.scss */
+/* line 148, ../scss/components/_blocks.scss */
 .homepage-booklist-slider .slide .stroke-main, .homepage-booklist-slider .slide .homepage-vedio-block .view-header p, .homepage-vedio-block .view-header .homepage-booklist-slider .slide p, .homepage-booklist-slider .slide .flicker-block .view-header, .flicker-block .homepage-booklist-slider .slide .view-header, .homepage-booklist-slider .slide .my-dashbord-block .view-header *, .my-dashbord-block .view-header .homepage-booklist-slider .slide * {
   margin: 0;
+  background: none !important;
+  display: inline-block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: calc(100% - 119px);
+  z-index: 1;
 }
-/* line 145, ../scss/components/_blocks.scss */
+/* line 157, ../scss/components/_blocks.scss */
+.homepage-booklist-slider .slide .stroke-main:after, .homepage-booklist-slider .slide .homepage-vedio-block .view-header p:after, .homepage-vedio-block .view-header .homepage-booklist-slider .slide p:after, .homepage-booklist-slider .slide .flicker-block .view-header:after, .flicker-block .homepage-booklist-slider .slide .view-header:after, .homepage-booklist-slider .slide .my-dashbord-block .view-header :after, .my-dashbord-block .view-header .homepage-booklist-slider .slide :after {
+  content: "";
+  width: calc(100% + 119px);
+  height: 100%;
+  background: url("../images/stroke");
+  z-index: -1;
+  display: inline-block;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+/* line 167, ../scss/components/_blocks.scss */
+.cs-default .homepage-booklist-slider .slide .stroke-main:after, .cs-default .homepage-booklist-slider .slide .homepage-vedio-block .view-header p:after, .homepage-vedio-block .view-header .cs-default .homepage-booklist-slider .slide p:after, .cs-default .homepage-booklist-slider .slide .flicker-block .view-header:after, .flicker-block .cs-default .homepage-booklist-slider .slide .view-header:after, .cs-default .homepage-booklist-slider .slide .my-dashbord-block .view-header :after, .my-dashbord-block .view-header .cs-default .homepage-booklist-slider .slide :after {
+  background-position: -95px -226px;
+}
+/* line 170, ../scss/components/_blocks.scss */
+.cs-classic .homepage-booklist-slider .slide .stroke-main:after, .cs-classic .homepage-booklist-slider .slide .homepage-vedio-block .view-header p:after, .homepage-vedio-block .view-header .cs-classic .homepage-booklist-slider .slide p:after, .cs-classic .homepage-booklist-slider .slide .flicker-block .view-header:after, .flicker-block .cs-classic .homepage-booklist-slider .slide .view-header:after, .cs-classic .homepage-booklist-slider .slide .my-dashbord-block .view-header :after, .my-dashbord-block .view-header .cs-classic .homepage-booklist-slider .slide :after {
+  background-position: -95px -914px;
+}
+/* line 173, ../scss/components/_blocks.scss */
+.cs-elegant .homepage-booklist-slider .slide .stroke-main:after, .cs-elegant .homepage-booklist-slider .slide .homepage-vedio-block .view-header p:after, .homepage-vedio-block .view-header .cs-elegant .homepage-booklist-slider .slide p:after, .cs-elegant .homepage-booklist-slider .slide .flicker-block .view-header:after, .flicker-block .cs-elegant .homepage-booklist-slider .slide .view-header:after, .cs-elegant .homepage-booklist-slider .slide .my-dashbord-block .view-header :after, .my-dashbord-block .view-header .cs-elegant .homepage-booklist-slider .slide :after {
+  background-position: -95px -569px;
+}
+/* line 179, ../scss/components/_blocks.scss */
 .homepage-booklist-slider .slide .view-content {
   padding: 20px 60px;
 }
-/* line 149, ../scss/components/_blocks.scss */
+/* line 183, ../scss/components/_blocks.scss */
 .homepage-booklist-slider .slide .booklist-wrapper {
   width: 100%;
   display: flex;
@@ -9857,20 +9895,20 @@ html {
   align-content: center;
   height: 200px;
 }
-/* line 156, ../scss/components/_blocks.scss */
+/* line 190, ../scss/components/_blocks.scss */
 .homepage-booklist-slider .slide .booklist-wrapper img {
   width: 100%;
 }
-/* line 161, ../scss/components/_blocks.scss */
+/* line 195, ../scss/components/_blocks.scss */
 .homepage-booklist-slider .slide .view-footer {
   padding-left: 35px;
 }
-/* line 164, ../scss/components/_blocks.scss */
+/* line 198, ../scss/components/_blocks.scss */
 .homepage-booklist-slider .slide .view-footer p {
   margin: 0;
 }
 
-/* line 172, ../scss/components/_blocks.scss */
+/* line 206, ../scss/components/_blocks.scss */
 .annocement {
   background-color: #fdeb52;
   background-repeat: repeat;
@@ -9882,16 +9920,16 @@ html {
   width: 100%;
   border-radius: 15px;
 }
-/* line 183, ../scss/components/_blocks.scss */
+/* line 217, ../scss/components/_blocks.scss */
 .annocement h1, .annocement .font-stroke-main, .annocement .other-programme.view .view-header *, .other-programme.view .view-header .annocement *, .annocement .view-reward-page-views .view-footer *, .view-reward-page-views .view-footer .annocement * {
   margin: 0;
   color: #000;
 }
-/* line 188, ../scss/components/_blocks.scss */
+/* line 222, ../scss/components/_blocks.scss */
 .annocement img {
   display: none;
 }
-/* line 192, ../scss/components/_blocks.scss */
+/* line 226, ../scss/components/_blocks.scss */
 .annocement p {
   margin-bottom: 0;
 }
@@ -9922,7 +9960,7 @@ html {
   text-rendering: optimizeLegibility;
   -moz-font-smoothing: grayscale;
 }
-/* line 198, ../scss/components/_blocks.scss */
+/* line 232, ../scss/components/_blocks.scss */
 .annocement ul, .annocement ol {
   margin: 0;
 }
@@ -9934,12 +9972,12 @@ html {
 .cs-classic .annocement ul, .cs-elegant .annocement ul, .cs-classic .annocement ol, .cs-elegant .annocement ol {
   font-size: 19px;
 }
-/* line 203, ../scss/components/_blocks.scss */
+/* line 237, ../scss/components/_blocks.scss */
 .annocement ul li, .annocement ol li {
   padding-left: 35px;
   position: relative;
 }
-/* line 207, ../scss/components/_blocks.scss */
+/* line 241, ../scss/components/_blocks.scss */
 .annocement ul li:before, .annocement ol li:before {
   content: "";
   width: 35px;
@@ -9951,22 +9989,22 @@ html {
   left: 0;
 }
 
-/* line 223, ../scss/components/_blocks.scss */
+/* line 257, ../scss/components/_blocks.scss */
 .about-us .view-footer {
   padding-left: 35px;
 }
 
-/* line 236, ../scss/components/_blocks.scss */
+/* line 270, ../scss/components/_blocks.scss */
 .block-user-login form {
   margin-bottom: 0;
   padding-left: 30px;
   padding-right: 30px;
 }
-/* line 240, ../scss/components/_blocks.scss */
+/* line 274, ../scss/components/_blocks.scss */
 .block-user-login form button {
   margin-left: 0;
 }
-/* line 243, ../scss/components/_blocks.scss */
+/* line 277, ../scss/components/_blocks.scss */
 .block-user-login form label {
   color: #fff;
 }
@@ -9997,7 +10035,7 @@ html {
   text-rendering: optimizeLegibility;
   -moz-font-smoothing: grayscale;
 }
-/* line 251, ../scss/components/_blocks.scss */
+/* line 285, ../scss/components/_blocks.scss */
 .block-user-login form .item-list ul li {
   margin: 0;
   list-style: none;
@@ -10007,7 +10045,7 @@ html {
   color: white;
   font-family: Verdana, sans-serif;
 }
-/* line 260, ../scss/components/_blocks.scss */
+/* line 294, ../scss/components/_blocks.scss */
 .block-user-login form .item-list ul li a {
   color: #fff;
 }
@@ -10047,16 +10085,16 @@ html {
   font-size: 19px;
 }
 
-/* line 276, ../scss/components/_blocks.scss */
+/* line 310, ../scss/components/_blocks.scss */
 .block-play-library-custom-pm-block {
   margin-bottom: 30px;
 }
-/* line 280, ../scss/components/_blocks.scss */
+/* line 314, ../scss/components/_blocks.scss */
 .block-play-library-custom-pm-block .block-title {
   margin: 0;
   color: #000;
 }
-/* line 285, ../scss/components/_blocks.scss */
+/* line 319, ../scss/components/_blocks.scss */
 .block-play-library-custom-pm-block .pm-custom {
   padding-top: 17px;
   padding-bottom: 12px;
@@ -10067,15 +10105,15 @@ html {
   align-content: center;
   align-items: center;
 }
-/* line 296, ../scss/components/_blocks.scss */
+/* line 330, ../scss/components/_blocks.scss */
 .block-play-library-custom-pm-block .pm-custom > div:nth-of-type(1) {
   flex: 0 0 78%;
 }
-/* line 300, ../scss/components/_blocks.scss */
+/* line 334, ../scss/components/_blocks.scss */
 .block-play-library-custom-pm-block .pm-custom > div:nth-of-type(2) {
   flex: 0 0 22%;
 }
-/* line 305, ../scss/components/_blocks.scss */
+/* line 339, ../scss/components/_blocks.scss */
 .block-play-library-custom-pm-block .pm-custom .pm {
   -webkit-flex-wrap: wrap;
   flex-wrap: wrap;
@@ -10092,7 +10130,7 @@ html {
 .cs-classic .block-play-library-custom-pm-block .pm-custom .pm, .cs-elegant .block-play-library-custom-pm-block .pm-custom .pm {
   font-size: 19px;
 }
-/* line 315, ../scss/components/_blocks.scss */
+/* line 349, ../scss/components/_blocks.scss */
 .block-play-library-custom-pm-block .pm-custom .pm .pm-subject {
   flex: 0 0 60%;
   padding-right: 10px;
@@ -10100,53 +10138,53 @@ html {
   overflow: hidden;
   text-overflow: ellipsis;
 }
-/* line 323, ../scss/components/_blocks.scss */
+/* line 357, ../scss/components/_blocks.scss */
 .block-play-library-custom-pm-block .pm-custom .pm .pm-subject a {
   font-weight: 700;
   color: #000;
 }
-/* line 328, ../scss/components/_blocks.scss */
+/* line 362, ../scss/components/_blocks.scss */
 .block-play-library-custom-pm-block .pm-custom .pm .pm-subject .pm-new {
   color: #cc0d25;
   display: inline-block;
   padding-right: 5px;
   font-weight: 700;
 }
-/* line 334, ../scss/components/_blocks.scss */
+/* line 368, ../scss/components/_blocks.scss */
 .block-play-library-custom-pm-block .pm-custom .pm .pm-subject .pm-new + * {
   color: #cc0d25;
 }
-/* line 340, ../scss/components/_blocks.scss */
+/* line 374, ../scss/components/_blocks.scss */
 .block-play-library-custom-pm-block .pm-custom .pm .pm-admin {
   padding-right: 10px;
 }
-/* line 344, ../scss/components/_blocks.scss */
+/* line 378, ../scss/components/_blocks.scss */
 .block-play-library-custom-pm-block .pm-custom .pm .pm-admin, .block-play-library-custom-pm-block .pm-custom .pm .pm-date {
   flex: 0 0 20%;
 }
 
-/* line 356, ../scss/components/_blocks.scss */
+/* line 390, ../scss/components/_blocks.scss */
 .flicker-block .owl-controls {
   top: 25% !important;
 }
-/* line 359, ../scss/components/_blocks.scss */
+/* line 393, ../scss/components/_blocks.scss */
 .flicker-block .view-footer {
   padding-left: 35px;
 }
-/* line 362, ../scss/components/_blocks.scss */
+/* line 396, ../scss/components/_blocks.scss */
 .flicker-block .view-content {
   padding: 20px 60px;
 }
-/* line 365, ../scss/components/_blocks.scss */
+/* line 399, ../scss/components/_blocks.scss */
 .flicker-block .flicker-image-wrapper {
   width: calc(100% - 6px);
   margin: auto;
 }
-/* line 368, ../scss/components/_blocks.scss */
+/* line 402, ../scss/components/_blocks.scss */
 .flicker-block .flicker-image-wrapper .flickr-citation {
   display: none;
 }
-/* line 370, ../scss/components/_blocks.scss */
+/* line 404, ../scss/components/_blocks.scss */
 .flicker-block .flicker-image-wrapper .flickr-photoset-img img {
   border: none;
   box-shadow: none;
@@ -12793,15 +12831,15 @@ html {
 }
 
 /* line 311, ../scss/components/_mobile-menu.scss */
-.mobile-menu, .mobile-menu + ul {
-  display: none;
-  /*temporary*/
-}
-
-/* line 314, ../scss/components/_mobile-menu.scss */
 .mobile-top-header {
   display: none;
   /**temporary*/
+}
+
+/* line 314, ../scss/components/_mobile-menu.scss */
+.mobile-menu-wrapper {
+  display: none;
+  margin-top: 10px;
 }
 
 /* line 1, ../scss/components/_pager.scss */
@@ -13303,59 +13341,129 @@ html {
   width: 100%;
   display: inline-block;
 }
-/* line 12, ../scss/pages/_bookreview-overlay.scss */
+/* line 20, ../scss/base/_mixins.scss */
+.cs-default .book-review-page-overlay .like-count {
+  font-family: "McLaren", cursive;
+  font-weight: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  -moz-font-smoothing: grayscale;
+}
+/* line 29, ../scss/base/_mixins.scss */
+.cs-classic .book-review-page-overlay .like-count {
+  font-family: "Architects Daughter", cursive;
+  font-weight: 700;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  -moz-font-smoothing: grayscale;
+}
+/* line 38, ../scss/base/_mixins.scss */
+.cs-elegant .book-review-page-overlay .like-count {
+  font-family: "Margarine", cursive;
+  font-weight: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  -moz-font-smoothing: grayscale;
+}
+/* line 15, ../scss/pages/_bookreview-overlay.scss */
+.book-review-page-overlay .lk-count {
+  position: relative;
+  padding-right: 32px;
+}
+/* line 20, ../scss/base/_mixins.scss */
+.cs-default .book-review-page-overlay .lk-count {
+  font-family: "McLaren", cursive;
+  font-weight: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  -moz-font-smoothing: grayscale;
+}
+/* line 29, ../scss/base/_mixins.scss */
+.cs-classic .book-review-page-overlay .lk-count {
+  font-family: "Architects Daughter", cursive;
+  font-weight: 700;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  -moz-font-smoothing: grayscale;
+}
+/* line 38, ../scss/base/_mixins.scss */
+.cs-elegant .book-review-page-overlay .lk-count {
+  font-family: "Margarine", cursive;
+  font-weight: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  -moz-font-smoothing: grayscale;
+}
+/* line 19, ../scss/pages/_bookreview-overlay.scss */
+.book-review-page-overlay .lk-count:after {
+  content: "";
+  width: 25px;
+  height: 25px;
+  display: inline-block;
+  background: url("../images/smily.png") no-repeat scroll center center;
+  position: absolute;
+  right: 6px;
+  top: -1px;
+}
+/* line 30, ../scss/pages/_bookreview-overlay.scss */
 .book-review-page-overlay .review_node_sidebar {
   width: 25%;
   float: left;
 }
-/* line 15, ../scss/pages/_bookreview-overlay.scss */
+/* line 33, ../scss/pages/_bookreview-overlay.scss */
 .book-review-page-overlay .review_node_sidebar table, .book-review-page-overlay .review_node_sidebar tbody {
   border: none;
 }
-/* line 19, ../scss/pages/_bookreview-overlay.scss */
+/* line 37, ../scss/pages/_bookreview-overlay.scss */
 .book-review-page-overlay .node-review-book {
   width: 75%;
   float: left;
 }
-/* line 26, ../scss/pages/_bookreview-overlay.scss */
+/* line 44, ../scss/pages/_bookreview-overlay.scss */
 .book-review-page-overlay .created, .book-review-page-overlay .avatar {
   margin-right: 7px;
   float: left;
 }
-/* line 30, ../scss/pages/_bookreview-overlay.scss */
+/* line 48, ../scss/pages/_bookreview-overlay.scss */
 .book-review-page-overlay .date_created {
   margin: 12px 0 10px 0;
 }
-/* line 34, ../scss/pages/_bookreview-overlay.scss */
+/* line 52, ../scss/pages/_bookreview-overlay.scss */
 .book-review-page-overlay .reviewbook_footer .links {
   list-style: none;
   display: inline-block;
   float: left;
   margin-right: 20px;
 }
-/* line 43, ../scss/pages/_bookreview-overlay.scss */
+/* line 61, ../scss/pages/_bookreview-overlay.scss */
 .book-review-page-overlay .reviewbook_footer li {
   float: left;
   margin-right: 20px;
 }
-/* line 46, ../scss/pages/_bookreview-overlay.scss */
+/* line 64, ../scss/pages/_bookreview-overlay.scss */
 .book-review-page-overlay .reviewbook_footer li:last-child {
   margin-right: 0;
 }
-/* line 51, ../scss/pages/_bookreview-overlay.scss */
+/* line 69, ../scss/pages/_bookreview-overlay.scss */
 .book-review-page-overlay .follow_link_bookreview {
   margin-bottom: 35px;
 }
-/* line 53, ../scss/pages/_bookreview-overlay.scss */
+/* line 71, ../scss/pages/_bookreview-overlay.scss */
 .book-review-page-overlay .follow_link_bookreview .flag-wrapper {
   margin-right: 10px;
 }
-/* line 58, ../scss/pages/_bookreview-overlay.scss */
+/* line 76, ../scss/pages/_bookreview-overlay.scss */
 .book-review-page-overlay .flag-like a {
   position: relative;
   padding-right: 53px;
 }
-/* line 61, ../scss/pages/_bookreview-overlay.scss */
+/* line 79, ../scss/pages/_bookreview-overlay.scss */
 .book-review-page-overlay .flag-like a:after {
   content: "";
   width: 25px;
@@ -13367,9 +13475,10 @@ html {
   top: 9px;
 }
 
-/* line 77, ../scss/pages/_bookreview-overlay.scss */
+/* line 95, ../scss/pages/_bookreview-overlay.scss */
 .not-logged-in .book-review-page-overlay .name_author a {
   color: #7e7e7e;
+  pointer-events: none;
 }
 
 /* line 2, ../scss/pages/_bookreview.scss */
@@ -15872,6 +15981,25 @@ th {
 /* line 536, ../scss/pages/_progress.scss */
 .cs-classic .progress-page-wrap table .fc-head thead {
   background: #084899;
+}
+
+@media screen and (max-width: 767px) {
+  /* line 543, ../scss/pages/_progress.scss */
+  #wrap.wrap .rewards, #wrap.wrap .reading-progress {
+    display: none !important;
+  }
+}
+
+/* line 550, ../scss/pages/_progress.scss */
+#wrap.for-mobile {
+  background: transparent;
+  box-shadow: none;
+}
+@media screen and (min-width: 768px) {
+  /* line 550, ../scss/pages/_progress.scss */
+  #wrap.for-mobile {
+    display: none;
+  }
 }
 
 /*------------Mobile Responsive--------------*/

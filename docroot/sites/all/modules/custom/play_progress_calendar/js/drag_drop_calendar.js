@@ -3,6 +3,13 @@
     attach: function (context, settings) {
     //message button change its background color by adding class new(done for theming)
         $('.msg:has(.new)').addClass('new');
+    //mobile opening mobile menu on clicking hamburger not working in progress page so added this js here
+    $("button.hamburger").click(function() {
+         $(".mobile-menu-wrapper").toggle();
+
+      });
+
+
     //
     $('.printBtn').on('click', function (){
       $(".progress-page-wrap").printThis({

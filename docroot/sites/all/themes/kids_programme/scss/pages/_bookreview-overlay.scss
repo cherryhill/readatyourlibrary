@@ -9,6 +9,24 @@
 .book-review-page-overlay {
 	width: 100%;
 	display: inline-block;
+	.like-count {
+		@include primary_fonts;
+	}
+	.lk-count {
+			position: relative;
+   		padding-right: 32px;
+   		@include primary_fonts;
+   		&:after {
+   			content: "";
+        width: 25px;
+        height: 25px;
+        display: inline-block;
+        background: url("../images/smily.png") no-repeat scroll center center;
+        position: absolute;
+        right: 6px;
+        top: -1px;
+   		}
+	}
 	.review_node_sidebar {
 		width: 25%;
 		float: left;
@@ -76,6 +94,7 @@
 		.name_author {
 			a {
 				color: #7e7e7e;
+				pointer-events: none;
 			}
 		}
 	}

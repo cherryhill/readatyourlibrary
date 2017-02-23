@@ -1,0 +1,50 @@
+.node-type-booklist  {
+	#page-title {
+		display: none;
+	}
+}
+.book-review-page-overlay {
+	.book_title {
+		@extend h2;
+	}
+	.booklist-title {
+		margin-bottom: 40px;
+	}
+	.booklist_creator {
+		@extend h5;
+	}
+	.bk_title {
+		width: 70%;
+    display: inline-block;
+	}
+	.bk_follow_like {
+		width: 29%;
+    display: inline-block;
+    text-align: right;
+	}
+	.bk_follow {
+		margin: 0 20px 25px 0;
+		float: left;
+		a {
+			@extend .button;
+		}
+	}
+	.booklist_books {
+		table,tbody {
+			border: none;
+			display: table-cell;
+		}
+	}
+	.node_title {
+		display: table-cell;
+    width: 80%;
+    vertical-align: middle;
+    position: relative;
+	}
+	.counter {
+		margin-right: 5px;
+	}
+	.booklist_books {
+		margin-bottom: 20px;
+	}
+}

@@ -76,7 +76,12 @@ div.progress-page {
     margin-top: 25px;
     margin-bottom: 25px;
 
+
     .report-acivity {
+       @extend .primary-color;
+       * {
+        @extend .primary-color;
+       }
       background: $white;
 
       input.submit {

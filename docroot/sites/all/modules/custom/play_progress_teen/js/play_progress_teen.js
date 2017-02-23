@@ -35,7 +35,7 @@ Drupal.behaviors.play_progress_teen = {
   if($(".progress-grid td[active='yes']").length === 0){
     $(this).attr('disabled','disabled');
     $('.block-play-progress-teen').remove();
-    $('.report-acivity').text("<h1>Congratulations! You have completed the program.</h1>");
+    $('.report-acivity').html("<h1>Congratulations! You have completed the program.</h1>");
     $('.ajax-progress').remove();
     $('#message').remove();
     $('.progress-wrap').after('<div id = "message"><div class="section clearfix"><div class="messages status"><h2 class="element-invisible">Status message</h2>Congratulations! You have completed the program.</div></div></div>');
@@ -109,6 +109,14 @@ Drupal.behaviors.play_progress_teen = {
             $(".activity-status").text(json_res.act_completed);
             $(".activity-remaining").text(json_res.act_remaining);
             $(".points").text(json_res.raffle_count);
+            if($count_grid === 1){
+              $('#pg-report').removeAttr("disabled");
+              $('#message').remove();
+              $('.progress-wrap').after('<div id = "message"><div class="section clearfix">' + json_res.drupal_message + '</div></div>');
+              $('#message .section').css('width' , '960px');
+              $('#message .section').css('margin-left' , 'auto');
+              $('#message .section').css('margin-right' , 'auto');  
+            }
           }
           else{
             $('#pg-report').removeAttr("disabled");

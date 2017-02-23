@@ -20,7 +20,7 @@
 <!-- Tpl file for children progress page -->
 <div class="progress-page-wrap">
 <div class="print-pdf"><button class="printBtn hidden-print">Print Calendar</button></div>
-	<div id='wrap'>
+	<div id='wrap' class="wrap">
     <div class= 'sticker-block' id='sticker-wrap'>
       <span class="prog-name"><h2> <?php print(t("Kids Summer Reading")) ?> </h2></span>
       <span class="prog-days"><h3> <?php print(t("Days of Reading")) ?> </h3></span>
@@ -71,7 +71,7 @@
                      $external_url = file_create_url($uri);
                       // $external_urls[$term->tid] = $external_url;
                      print('<div id ='.$term->tid.' style="display:none">'.'<img src ='.$external_url.' id = sticker_'.$term->tid.'></div>');
-                } 
+                }
               }
           	}
             if($sticker_counter == 0){
@@ -125,5 +125,34 @@
   	<div id='calendar'></div>
   	<!-- <div id="print_button">Print Calendar</div> -->
     <!-- <button onclick="printPage()">Print this page</button> -->
+  </div>
+
+  <!-- theming purpose for mobile -->
+  <div id='wrap' class="for-mobile">
+    <div class="rewards">
+  <?php
+    // $block = module_invoke('views', 'block', 'view', 'rewards_dashboard');
+    print views_embed_view('Rewards_Progress', 'block');;
+  ?>
+</div>
+
+  <div class='reading-progress'>
+    <div id='next-reward'>
+      <?php
+        $req_points = play_library_program_next_close_reward_points($activity_ids);
+        if($req_points == 1) {
+          $next_rew = t('<strong>'.$req_points.'</strong> more day of reading needed to receive your next prize');
+        }
+        else if ($req_points > 1){
+          $next_rew = t('<strong>'.$req_points.'</strong> more days of reading needed to receive your next prize');
+        }
+
+        else {
+          $next_rew = t('<strong>Congratulations!</strong> You have completed Reading Program.');
+        }
+        print('<h3>'.$next_rew.'</h3>');
+      ?>
+    </div>
+  </div>
   </div>
 </div>
