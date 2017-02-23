@@ -136,15 +136,33 @@
 
   .cs-default & {
     font-size: 26px;
+    @media screen and (max-width: 767px) {
+      font-size: 22px;
+    }
+    @media screen and (min-width: 768px) and (max-width: 1024px) {
+      font-size: 24px;
+    }
   }
 
   .cs-classic & {
     font-size: 28px;
+    @media screen and (max-width: 767px) {
+      font-size: 24px;
+    }
+    @media screen and (min-width: 768px) and (max-width: 1024px) {
+      font-size: 26px;
+    }
   }
 
   .cs-elegant & {
     font-size: 28px;
     color: $gray;
+    @media screen and (max-width: 767px) {
+      font-size: 24px;
+    }
+    @media screen and (min-width: 768px) and (max-width: 1024px) {
+      font-size: 26px;
+    }
   }
 }
 
@@ -162,17 +180,26 @@
 
   .cs-default & {
     font-size: 24px;
+    @media screen and (min-width: 768px) and (max-width: 1024px) {
+     font-size: 22px;
+    }
 
     @extend .yellow-text;
   }
 
   .cs-classic & {
     font-size: 25px;
+    @media screen and (min-width: 768px) and (max-width: 1024px) {
+      font-size: 23px;
+    }
   }
 
   .cs-elegant & {
     color: $gray;
     font-size: 25px;
+    @media screen and (min-width: 768px) and (max-width: 1024px) {
+      font-size: 23px;
+    }
   }
 }
 
@@ -298,18 +325,27 @@
     background-image: url("../images/yellowbrushstroke_sm.png");
     padding: 12px 10px 14px 40px;
     color: $purple;
+    @media screen and (max-width: 1024px) {
+      background-size: auto;
+    }
   }
 
   .cs-classic & {
     background-image: url("../images/redbrushstroke_sm.png");
     color: $white;
     padding: 7px 10px 14px 40px;
+    @media screen and (max-width: 1024px) {
+      background-size: auto;
+    }
   }
 
   .cs-elegant & {
     background-image: url("../images/bluebrushstroke_sm.png");
     color: $gray;
     padding: 10px 10px 14px 40px;
+    @media screen and (max-width: 1024px) {
+      background-size: auto;
+    }
   }
 }
 

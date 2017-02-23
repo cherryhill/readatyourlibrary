@@ -14841,24 +14841,24 @@ p.more-link:after {
   color: #000;
 }
 
-/* line 406, ../scss/pages/_messages.scss */
-.page-messages.cs-default select.form-select {
+/* line 407, ../scss/pages/_messages.scss */
+.page-messages.cs-default .row.l-main select.form-select {
   font-family: "McLaren", cursive;
   font-weight: normal;
   font-size: 17px;
   background: #fdeb52;
   color: #000;
 }
-/* line 413, ../scss/pages/_messages.scss */
-.page-messages.cs-classic select.form-select {
+/* line 414, ../scss/pages/_messages.scss */
+.page-messages.cs-classic .row.l-main select.form-select {
   font-family: "Architects Daughter", cursive;
   font-weight: 700;
   font-size: 18px;
   background: #ff9f1c;
   color: #fff;
 }
-/* line 420, ../scss/pages/_messages.scss */
-.page-messages.cs-elegant select.form-select {
+/* line 421, ../scss/pages/_messages.scss */
+.page-messages.cs-elegant .row.l-main select.form-select {
   font-family: "Margarine", cursive;
   font-weight: normal;
   font-size: 19px;
@@ -14866,8 +14866,8 @@ p.more-link:after {
   color: #fff;
 }
 
-/* line 429, ../scss/pages/_messages.scss */
-.page-messages select.form-select {
+/* line 432, ../scss/pages/_messages.scss */
+.page-messages .row.l-main select.form-select {
   padding: 6px 24px;
   display: inline-block;
   text-decoration: none;
@@ -14879,54 +14879,58 @@ p.more-link:after {
 }
 
 @media all and (max-width: 767px) {
-  /* line 443, ../scss/pages/_messages.scss */
+  /* line 447, ../scss/pages/_messages.scss */
   .page-messages .action-links {
     display: none !important;
   }
-  /* line 446, ../scss/pages/_messages.scss */
+  /* line 450, ../scss/pages/_messages.scss */
   .page-messages .button-group {
     margin-left: 10px;
   }
-  /* line 450, ../scss/pages/_messages.scss */
+  /* line 454, ../scss/pages/_messages.scss */
   .page-messages .container-inline button, .page-messages .container-inline .form-type-select {
     margin-bottom: 20px !important;
   }
-  /* line 455, ../scss/pages/_messages.scss */
+  /* line 459, ../scss/pages/_messages.scss */
   .page-messages .row.l-main form {
     padding: 0 10px;
   }
-  /* line 461, ../scss/pages/_messages.scss */
+  /* line 465, ../scss/pages/_messages.scss */
   .page-messages .privatemsg-header-subject a, .page-messages .privatemsg-header-lastupdated a,
   .page-messages .privatemsg-list-subject a {
     font-size: 14px;
   }
-  /* line 464, ../scss/pages/_messages.scss */
+  /* line 468, ../scss/pages/_messages.scss */
   .page-messages .privatemsg-header-subject img, .page-messages .privatemsg-header-lastupdated img,
   .page-messages .privatemsg-list-subject img {
     margin-left: 0;
   }
-  /* line 468, ../scss/pages/_messages.scss */
+  /* line 472, ../scss/pages/_messages.scss */
   .page-messages .privatemsg-author-name, .page-messages .privatemsg-message-date,
   .page-messages .privatemsg-list-date, .page-messages .empty.message {
     font-size: 14px;
   }
-  /* line 472, ../scss/pages/_messages.scss */
+  /* line 476, ../scss/pages/_messages.scss */
   .page-messages .privatemsg-message-participants {
     margin-left: 10px;
     margin-right: 10px;
   }
-  /* line 476, ../scss/pages/_messages.scss */
+  /* line 480, ../scss/pages/_messages.scss */
   .page-messages .privatemsg-message {
     padding-left: 10px;
     padding-right: 10px;
   }
-  /* line 481, ../scss/pages/_messages.scss */
+  /* line 485, ../scss/pages/_messages.scss */
   .page-messages .privatemsg-message-body p {
     font-size: 14px;
   }
-  /* line 486, ../scss/pages/_messages.scss */
+  /* line 490, ../scss/pages/_messages.scss */
   .page-messages .text-format-wrapper label {
     font-size: 14px;
+  }
+  /* line 494, ../scss/pages/_messages.scss */
+  .page-messages table thead tr th, .page-messages table tr td {
+    padding: 0 0 0 10px;
   }
 }
 /* line 3, ../scss/pages/_photo-vedios.scss */
@@ -16550,31 +16554,35 @@ th {
   .homebox.homebox-auto-save .homebox-column-wrapper .homebox-portlet-inner {
     margin-bottom: 5px;
   }
+  /* line 682, ../scss/pages/_responsive.scss */
+  .homebox.homebox-auto-save #homebox-buttons {
+    padding-left: 0;
+  }
 
-  /* line 688, ../scss/pages/_responsive.scss */
+  /* line 691, ../scss/pages/_responsive.scss */
   .page-user-profile .block-play-library-custom-pm-block .pm-custom > div:nth-of-type(1) {
     flex: 0 0 100%;
   }
-  /* line 691, ../scss/pages/_responsive.scss */
+  /* line 694, ../scss/pages/_responsive.scss */
   .page-user-profile .block-play-library-custom-pm-block .pm-custom > div:nth-of-type(2) {
     flex: 0 0 100%;
     padding-top: 20px;
   }
-  /* line 696, ../scss/pages/_responsive.scss */
+  /* line 699, ../scss/pages/_responsive.scss */
   .page-user-profile .block-play-library-custom-pm-block .pm-custom .pm {
     border-bottom: 1px dotted #000;
     padding: 10px 0;
   }
-  /* line 699, ../scss/pages/_responsive.scss */
+  /* line 702, ../scss/pages/_responsive.scss */
   .page-user-profile .block-play-library-custom-pm-block .pm-custom .pm .pm-subject, .page-user-profile .block-play-library-custom-pm-block .pm-custom .pm .pm-admin, .page-user-profile .block-play-library-custom-pm-block .pm-custom .pm .pm-date {
     flex: 0 0 100%;
   }
 
-  /* line 710, ../scss/pages/_responsive.scss */
+  /* line 713, ../scss/pages/_responsive.scss */
   .my-dashbord-block .attachment .view-content .views-field-nothing .image {
     display: inline-block;
   }
-  /* line 713, ../scss/pages/_responsive.scss */
+  /* line 716, ../scss/pages/_responsive.scss */
   .my-dashbord-block .attachment .view-content .views-field-nothing .name {
     width: 100%;
     text-align: center;
@@ -16583,24 +16591,24 @@ th {
 
   /*-------------Dashboard Page Ends-------------*/
   /*-------------Home Page-------------*/
-  /* line 727, ../scss/pages/_responsive.scss */
+  /* line 730, ../scss/pages/_responsive.scss */
   .view-home-page-video-slideshow.flicker-block .owl-item {
     text-align: center;
   }
 
   /*-------------Home Page Ends-------------*/
   /*-------------Bookreview Page-------------*/
-  /* line 736, ../scss/pages/_responsive.scss */
+  /* line 739, ../scss/pages/_responsive.scss */
   .page-reviews .views-exposed-widget {
     flex: 0 0 calc(50% - 10px);
   }
 
-  /* line 741, ../scss/pages/_responsive.scss */
+  /* line 744, ../scss/pages/_responsive.scss */
   .sidebar2 > .first {
     padding-left: 10px;
     padding-right: 10px;
   }
-  /* line 746, ../scss/pages/_responsive.scss */
+  /* line 749, ../scss/pages/_responsive.scss */
   .sidebar2 .block-menu ul.menu {
     padding-right: 0;
     padding-left: 0;
@@ -16608,46 +16616,46 @@ th {
 
   /*-------------Bookreview Page Ends-------------*/
   /*-------------Booklisting Page-------------*/
-  /* line 756, ../scss/pages/_responsive.scss */
+  /* line 759, ../scss/pages/_responsive.scss */
   .booklist-listing-page .views-exposed-widget {
     flex: 0 0 calc(50% - 10px);
   }
 
-  /* line 760, ../scss/pages/_responsive.scss */
+  /* line 763, ../scss/pages/_responsive.scss */
   .booklist-wrapp {
     margin-top: 15px;
   }
 
   /*-------------Booklisting Page Ends-------------*/
   /*-------------Events Page-------------*/
-  /* line 769, ../scss/pages/_responsive.scss */
+  /* line 772, ../scss/pages/_responsive.scss */
   .section-events .view-events .view-content .views-row {
     border-bottom: 1px dotted #000;
     padding: 10px 0;
   }
-  /* line 772, ../scss/pages/_responsive.scss */
+  /* line 775, ../scss/pages/_responsive.scss */
   .section-events .view-events .view-content .views-row.views-row-last {
     border-bottom: none;
   }
 
   /*-------------Events Page Ends-------------*/
   /*-------------Reward Block-------------*/
-  /* line 784, ../scss/pages/_responsive.scss */
+  /* line 787, ../scss/pages/_responsive.scss */
   .homepage-reward-block .view-header p {
     line-height: 1.2;
   }
 
   /*-------------Reward Block Ends-------------*/
   /*-------------Progress Page-------------*/
-  /* line 794, ../scss/pages/_responsive.scss */
+  /* line 797, ../scss/pages/_responsive.scss */
   .progress-page-wrap #wrap div.sticker-block {
     flex: 0 0 41%;
   }
-  /* line 797, ../scss/pages/_responsive.scss */
+  /* line 800, ../scss/pages/_responsive.scss */
   .progress-page-wrap #wrap div.reading-progress {
     flex: 0 0 21%;
   }
-  /* line 804, ../scss/pages/_responsive.scss */
+  /* line 807, ../scss/pages/_responsive.scss */
   .cs-default .progress-page-wrap #wrap > div.rewards .view-Rewards-Progress .view-content, .cs-classic .progress-page-wrap #wrap > div.rewards .view-Rewards-Progress .view-content, .cs-elegant .progress-page-wrap #wrap > div.rewards .view-Rewards-Progress .view-content {
     margin-top: 0;
     padding-left: 0;
@@ -16655,11 +16663,11 @@ th {
 
   /*-------------Progress Page Ends-------------*/
   /*-------------Photos/Videos Page-------------*/
-  /* line 818, ../scss/pages/_responsive.scss */
+  /* line 821, ../scss/pages/_responsive.scss */
   .view.photos-block .view-content {
     width: 100%;
   }
-  /* line 820, ../scss/pages/_responsive.scss */
+  /* line 823, ../scss/pages/_responsive.scss */
   .view.photos-block .view-content .views-row {
     padding-left: 25px;
     padding-right: 0;
@@ -17090,24 +17098,28 @@ aside .block-menu ul.menu li a.active-trail.active:before {
   display: inline-block;
   margin-bottom: 10px;
 }
+/* line 122, ../scss/pages/_userlogin.scss */
+.page-user-register .primary-tabs .button-group li, .page-user-edit .primary-tabs .button-group li {
+  margin-right: 10px;
+}
 
 @media all and (max-width: 767px) {
-  /* line 126, ../scss/pages/_userlogin.scss */
+  /* line 133, ../scss/pages/_userlogin.scss */
   .page-user-register .form-type-date-select .date-padding .form-type-select, .page-user-edit .form-type-date-select .date-padding .form-type-select {
     width: 100%;
     margin-right: 0;
   }
-  /* line 133, ../scss/pages/_userlogin.scss */
+  /* line 140, ../scss/pages/_userlogin.scss */
   .page-user-register .form-wrapper .field-type-text, .page-user-register .form-wrapper .field-type-phone, .page-user-register .form-wrapper .field-type-email, .page-user-edit .form-wrapper .field-type-text, .page-user-edit .form-wrapper .field-type-phone, .page-user-edit .form-wrapper .field-type-email {
     width: 100%;
     margin-right: 0;
   }
-  /* line 139, ../scss/pages/_userlogin.scss */
+  /* line 146, ../scss/pages/_userlogin.scss */
   .page-user-register .field-type-addressfield .form-type-select, .page-user-register .field-type-addressfield .form-type-textfield, .page-user-edit .field-type-addressfield .form-type-select, .page-user-edit .field-type-addressfield .form-type-textfield {
     width: 100%;
     margin-right: 0;
   }
-  /* line 144, ../scss/pages/_userlogin.scss */
+  /* line 151, ../scss/pages/_userlogin.scss */
   .page-user-register .field-type-taxonomy-term-reference, .page-user-register .field-name-field-library-card-number,
   .page-user-register .field-name-field-school, .page-user-register .field-name-field-user-grade, .page-user-register .field-name-field-organization,
   .page-user-register .field-name-field-hear-about, .page-user-edit .field-type-taxonomy-term-reference, .page-user-edit .field-name-field-library-card-number,
@@ -17116,42 +17128,46 @@ aside .block-menu ul.menu li a.active-trail.active:before {
     width: 100%;
     margin-right: 0;
   }
-  /* line 150, ../scss/pages/_userlogin.scss */
+  /* line 157, ../scss/pages/_userlogin.scss */
   .page-user-register .field-widget-random-list-widget-randomizer, .page-user-edit .field-widget-random-list-widget-randomizer {
     float: none;
   }
-  /* line 154, ../scss/pages/_userlogin.scss */
+  /* line 161, ../scss/pages/_userlogin.scss */
   .page-user-register .form-item-mail input, .page-user-edit .form-item-mail input {
     width: 65%;
   }
-  /* line 159, ../scss/pages/_userlogin.scss */
+  /* line 166, ../scss/pages/_userlogin.scss */
   .page-user-register .form-type-password-confirm .password-strength, .page-user-register .form-type-password-confirm .password-confirm, .page-user-edit .form-type-password-confirm .password-strength, .page-user-edit .form-type-password-confirm .password-confirm {
     width: 25%;
     margin-right: 5%;
     line-height: 1.1em;
     font-size: 14px;
   }
-  /* line 165, ../scss/pages/_userlogin.scss */
+  /* line 172, ../scss/pages/_userlogin.scss */
   .page-user-register .form-type-password-confirm input, .page-user-edit .form-type-password-confirm input {
     width: 65%;
   }
-  /* line 168, ../scss/pages/_userlogin.scss */
+  /* line 175, ../scss/pages/_userlogin.scss */
   .page-user-register .form-type-password-confirm input.password-confirm, .page-user-edit .form-type-password-confirm input.password-confirm {
     width: 65%;
   }
-  /* line 172, ../scss/pages/_userlogin.scss */
+  /* line 179, ../scss/pages/_userlogin.scss */
   .page-user-register .form-type-radio, .page-user-edit .form-type-radio {
     margin-right: 0;
     float: none;
   }
-  /* line 177, ../scss/pages/_userlogin.scss */
+  /* line 184, ../scss/pages/_userlogin.scss */
   .page-user-register .field-type-addressfield input, .page-user-edit .field-type-addressfield input {
     margin-bottom: 5px;
   }
-  /* line 181, ../scss/pages/_userlogin.scss */
+  /* line 188, ../scss/pages/_userlogin.scss */
   .page-user-register .password-suggestions, .page-user-edit .password-suggestions {
     max-width: 100%;
     width: 100%;
+  }
+  /* line 192, ../scss/pages/_userlogin.scss */
+  .page-user-register .secondary, .page-user-edit .secondary {
+    margin-right: 0;
   }
 }
 

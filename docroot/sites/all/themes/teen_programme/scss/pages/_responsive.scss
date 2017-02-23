@@ -171,6 +171,7 @@
 				padding-left: 0;
 				padding-right: 0;
 				.portlet-header {
+					padding-left: 60px !important;
 					.cs-default & {
 		        font-size: 18px !important;
 	      	}
@@ -180,10 +181,21 @@
 		      .cs-classic & {
 		        font-size: 21px !important;
 		      }
+		      .cs-default & {
+			      .portlet-icon {
+			      	top: 0;
+			      }
+			    }
+				}
+				.portlet-content {
+					padding: 25px 15px !important;
 				}
 			}
 			.homebox-column {
 				height: auto !important;
+			}
+			#homebox-buttons {
+				padding-left: 0;
 			}
 		}
 	}
@@ -285,6 +297,10 @@
 				text-align: center;
 			}
 		}
+	}
+	.annocement {
+		padding-left: 10px;
+		padding-right: 10px;
 	}
 	/*-------------Home Page Ends-------------*/
 
@@ -511,6 +527,11 @@
 				text-align: center;
 			}
 		}
+		.main {
+			.block-views {
+				flex: 0 0 100% !important;
+			}
+		}
 	}
 	/*-------------Rewards Page Ends-------------*/
 
@@ -592,7 +613,61 @@
 	  	display: none;
 	  }
 	}
+
+	/*---------teen-css-------------*/
+	.progress-page {
+		.avatar-id {
+			flex: 0 0 100%;
+		}
+		.point-status {
+    	flex: 0 0 100%;
+    	flex-direction: column;
+    	-webkit-flex-direction: column;
+    }
+    .progress-wrap > div {
+    	flex: 0 0 100%;
+    	margin-bottom: 25px;
+    }
+    .reward-won {
+    	margin-right: 0;
+    	margin-left: 0;
+    }
+	}
 	/*-------------Progress Page Ends-------------*/
+
+	/*-------------Teen Sidebar-------------*/
+	.sidebar2.sidebar-shareit {
+		> .first {
+			.block-sharethis {
+				.block-title {
+					flex: 1 1 20%;
+				}
+				.sharethis-wrapper {
+					flex: 1 1 75%;
+				}
+			}
+		}
+	}
+	/*-------------Teen Sidebar Ends-------------*/
+
+	/*-------------Teen Activity Page-------------*/
+	.activity-page-wrapper {
+		.body, .link, .drop-downs-wrapper  {
+				padding-left: 0
+		}  
+		
+		.drop-downs-wrapper {
+			.form-type-select {
+				label {
+					flex: 0 0 100%;
+				}
+				select {
+					flex: 0 0 100%;
+				}
+			}
+		}
+	}
+	/*-------------Teen Activity Page Ends-------------*/
 }
 
 /*------------Tab Responsive--------------*/
@@ -665,7 +740,7 @@
 			.homebox-column-wrapper {
 				padding: 0 5px;
 				.portlet-header {
-					padding: 10px 1px 15px 50px !important;
+					padding: 10px 1px 15px 40px !important;
 					.portlet-title {
 						&:before {
 							left: -44px;
@@ -677,10 +752,21 @@
 		      .cs-elegant & {
 		        font-size: 23px !important;
 		      }
+		      .cs-default & {
+			      .portlet-icon {
+			      	top: 0;
+			      }
+			    }
 		    }
 		    .homebox-portlet-inner {
 		    	margin-bottom: 5px;
 		    }
+		    .portlet-content {
+		    	padding: 25px 10px !important;
+		    }
+			}
+			#homebox-buttons {
+				padding-left: 0;
 			}
 		}
 	}
@@ -730,6 +816,19 @@
 			.owl-item {
 				text-align: center;
 			}
+		}
+	}
+	.homepage-reward-block {
+		.view-content {
+			padding: 25px 10px 0 10px;
+		}
+		.view-header {
+			p {
+				padding-left: 10px;
+			}
+		}
+		.view-footer {
+			padding-left: 10px;
 		}
 	}
 	/*-------------Home Page Ends-------------*/
@@ -827,4 +926,38 @@
 		}
 	}
 	/*-------------Photos/Videos Page-------------*/
+
+	.sidebar2.sidebar-shareit {
+		> .first {
+			.block-sharethis {
+				.block-title {
+					flex: 1 1 20%;
+				}
+				.sharethis-wrapper {
+					flex: 1 1 80%;
+				}
+			}
+		}
+	}
+}
+
+@media screen and (max-width: 1024px) {
+	/*-------------Common for page title-------------*/
+	h1 {
+		&#page-title {
+			width: 100%;
+			margin-left: 0;
+			background-size: auto;
+		}
+	}
+	
+	/*-------------Common for page title ends-------------*/
+	#page-title {
+   .page-activities.cs-default &, .page-activities.cs-classic &  {
+	   	background-position: 0 12px;
+	   	background-size: auto;
+	   	background-repeat: no-repeat;
+	   	padding-left: 30px;
+   	}
+  }
 }

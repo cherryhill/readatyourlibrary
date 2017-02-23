@@ -402,39 +402,43 @@ table.sticky-header {
   }
 }
 
-select.form-select {
-  .page-messages.cs-default & {
-    font-family: $mclaren;
-    font-weight: normal;
-    font-size: 17px;
-    background: $yellow;
-    color: $black;
-  }
-  .page-messages.cs-classic & {
-    font-family: $Architects;
-    font-weight: 700;
-    font-size: 18px;
-    background: $light-orange;
-    color: $white;
-  }
- .page-messages.cs-elegant & {
-    font-family: $margarine;
-    font-weight: normal;
-    font-size: 19px;
-    background: $light-orange;
-    color: $white;
+.row.l-main {
+  select.form-select {
+    .page-messages.cs-default & {
+      font-family: $mclaren;
+      font-weight: normal;
+      font-size: 17px;
+      background: $yellow;
+      color: $black;
+    }
+    .page-messages.cs-classic & {
+      font-family: $Architects;
+      font-weight: 700;
+      font-size: 18px;
+      background: $light-orange;
+      color: $white;
+    }
+   .page-messages.cs-elegant & {
+      font-family: $margarine;
+      font-weight: normal;
+      font-size: 19px;
+      background: $light-orange;
+      color: $white;
+    }
   }
 }
 .page-messages {
-  select.form-select {
-    padding: 6px 24px;
-    display: inline-block;
-    text-decoration: none;
-    box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
-    text-transform: capitalize;
-    border-radius: 10px;
-    border: none;
-    line-height: 26px;
+  .row.l-main {
+    select.form-select {
+      padding: 6px 24px;
+      display: inline-block;
+      text-decoration: none;
+      box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+      text-transform: capitalize;
+      border-radius: 10px;
+      border: none;
+      line-height: 26px;
+    }
   }
 }
 
@@ -486,6 +490,9 @@ select.form-select {
       label {
         font-size : 14px;
       }
+    }
+    table thead tr th, table tr td {
+      padding: 0 0 0 10px;
     }
   }
 }

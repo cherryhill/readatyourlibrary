@@ -206,50 +206,52 @@ table.sticky-header {
   color: $gray;
 }
 .page-messages {
- .block-block-3 {
-    display: inline-block;
-    margin-top: 26px;
-  }
-  form {
-   padding: 0 35px;
-   margin-bottom: 0;
-    fieldset {
-      border: none;
-      padding-left: 0;
-      margin: 0 0 0 -6px;
-      margin-bottom: 39px;
-      legend {
-        background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
-        font-weight: normal;
-        margin-top: 15px;
-        a {
-          @extend .message-button;
+  .row.l-main {
+   .block-block-3 {
+      display: inline-block;
+      margin-top: 26px;
+    }
+    form {
+     padding: 0 35px;
+     margin-bottom: 0;
+      fieldset {
+        border: none;
+        padding-left: 0;
+        margin: 0 0 0 -6px;
+        margin-bottom: 39px;
+        legend {
+          background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
+          font-weight: normal;
+          margin-top: 15px;
+          a {
+            @extend .message-button;
+          }
+        }
+        label {
+          color: $white;
+          font-weight: bold;
+          text-align: left !important;
         }
       }
-      label {
-        color: $white;
-        font-weight: bold;
-        text-align: left !important;
+      .container-inline {
+        margin-top: 10px;
+        .form-type-textfield {
+          display: inline-block;
+          max-width: 32.5%;
+          width: 100%;
+        }
       }
     }
-    .container-inline {
-      margin-top: 10px;
-      .form-type-textfield {
-        display: inline-block;
-        max-width: 32.5%;
-        width: 100%;
-      }
+    .form-item-operation {
+      display: inline-block;
     }
-  }
-  .form-item-operation {
-    display: inline-block;
-  }
-  .chosen-container {
-    width: 200px;
-    a {
-      @extend .message-button;
-      div {
-        margin-top: 7px !important;
+    .chosen-container {
+      width: 200px;
+      a {
+        @extend .message-button;
+        div {
+          margin-top: 7px !important;
+        }
       }
     }
   }
@@ -370,29 +372,31 @@ table.sticky-header {
 
     }
   }
-  .chosen-container-single .chosen-single {
-    @extend .message-button;
-    height: auto;
-    border: none;
-    border-radius: 0;
-    width: 100%;
-    top: 2px;
-  }
-  .chosen-drop {
-    width: 100%;
-    color: $black;
-    text-align: left;
-    display: inline-block;
-     .chosen-results {
+  .row.l-main {
+    .chosen-container-single .chosen-single {
+      @extend .message-button;
+      height: auto;
+      border: none;
+      border-radius: 0;
       width: 100%;
+      top: 2px;
+    }
+    .chosen-drop {
+      width: 100%;
+      color: $black;
+      text-align: left;
       display: inline-block;
-      float: none;
-       li {
+       .chosen-results {
         width: 100%;
         display: inline-block;
-        height: auto;
+        float: none;
+         li {
+          width: 100%;
+          display: inline-block;
+          height: auto;
+         }
        }
-     }
+    }
   }
 }
 /* .chosen-drop {
@@ -437,6 +441,45 @@ table.sticky-header {
     }
   }
 }
+.row.l-main {
+  select.form-select {
+    .page-messages.cs-default & {
+      font-family: $Special-elite;
+      font-weight: normal;
+      font-size: 17px;
+      background: $yellow;
+      color: $black;
+    }
+    .page-messages.cs-classic & {
+      font-family: $Exo2;
+      font-weight: 700;
+      font-size: 18px;
+      background: $light-blue;
+      color: $dark-blue;
+    }
+   .page-messages.cs-elegant & {
+      font-family: $Sniglet;
+      font-weight: normal;
+      font-size: 19px;
+      background: $yellow;
+      color: $black;
+    }
+  }
+}
+.page-messages {
+  .row.l-main {
+    select.form-select {
+      padding: 6px 24px;
+      display: inline-block;
+      text-decoration: none;
+      box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+      text-transform: capitalize;
+      border-radius: 10px;
+      border: none;
+      line-height: 26px;
+    }
+  }
+}
 
 @media all and (max-width: 767px) {
   .page-messages {
@@ -451,8 +494,10 @@ table.sticky-header {
         margin-bottom: 20px !important;
       }
     }
-    form {
-      padding: 0 10px;
+    .row.l-main {
+      form {
+        padding: 0 10px;
+      }
     }
     .privatemsg-header-subject, .privatemsg-header-lastupdated,
     .privatemsg-list-subject {
@@ -485,43 +530,22 @@ table.sticky-header {
         font-size : 14px;
       }
     }
+    .row.l-main {
+      form {
+        .container-inline {
+          margin-top: 0;
+        }
+      }
+    }
+    form#privatemsg-list {
+      div.container-inline {
+        * {
+          margin-left: 0;
+        }
+      }
+    }
+    table thead tr th, table tr td {
+      padding: 0 0 0 10px;
+    }
   }
 }
-
-/* @media all and (max-width: 1024px) {
-  .form-select {
-   .page-messages.cs-default & {
-      font-family: $mclaren;
-      font-weight: normal;
-      font-size: 17px;
-      background: $yellow;
-      color: $black;
-    }
-     .page-messages.cs-classic & {
-      font-family: $Architects;
-      font-weight: 700;
-      font-size: 18px;
-      background: $light-orange;
-      color: $white;
-    }
-   .page-messages.cs-elegant & {
-      font-family: $margarine;
-      font-weight: normal;
-      font-size: 19px;
-      background: $light-orange;
-      color: $white;
-    }
-  }
-  .page-messages {
-    .form-select {
-      padding: 6px 24px;
-      display: inline-block;
-      text-decoration: none;
-      box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
-      text-transform: capitalize;
-      border-radius: 10px;
-      border: none;
-      line-height: 26px;
-    }
-  }
-} */

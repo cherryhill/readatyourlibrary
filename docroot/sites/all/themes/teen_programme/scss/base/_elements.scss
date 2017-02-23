@@ -83,18 +83,44 @@ h1,h2,h3,h4,h5 {
 h1 {
   .cs-default & {
     font-size: 26px;
-
+    @media screen and (max-width: 767px) {
+      font-size: 22px;
+    }
+    @media screen and (min-width: 768px) and (max-width: 1024px) {
+      font-size: 24px;
+    }
   }
   font-size: 28px;
+  @media screen and (max-width: 767px) {
+    font-size: 24px;
+  }
+  @media screen and (min-width: 768px) and (max-width: 1024px) {
+    font-size: 26px;
+  }
 }
 h2 {
   .cs-default & {
     font-size: 24px;
+    @media screen and (max-width: 767px) {
+      font-size: 20px;
+    }
+    @media screen and (min-width: 768px) and (max-width: 1024px) {
+      font-size: 22px;
+    }
   }
   font-size: 25px;
+  @media screen and (max-width: 767px) {
+      font-size: 21px;
+    }
+  @media screen and (min-width: 768px) and (max-width: 1024px) {
+    font-size: 23px;
+  }
 }
 h3 {
   font-size: 22px;
+  @media screen and (max-width:1024px) {
+    font-size: 20px;
+  }
 }
 h4 {
   font-size: 20px;

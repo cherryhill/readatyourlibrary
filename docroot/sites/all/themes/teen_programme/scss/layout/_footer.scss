@@ -41,6 +41,10 @@
 
     .block-play-library-custom-program-footer-content {
       flex: 0 0 70%;
+      @media screen and (max-width: 767px) {
+        flex: 0 0 100%;
+        order: 2;
+      }
 
       .u-footer-content {
         font-size: 14px;
@@ -110,6 +114,9 @@
 
     .block-menu-menu-social-sharing-icons {
       flex: 0 0 30%;
+      @media screen and (max-width: 767px) {
+        flex: 0 0 100%;
+      }
     }
   }
 }
