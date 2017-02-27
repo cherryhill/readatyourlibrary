@@ -23,6 +23,7 @@
   box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
   font-size: 18px;
   text-transform: capitalize;
+  border-radius: 8px;
   .cs-default & {
     line-height: 1;
   }
@@ -42,7 +43,7 @@
   .cs-default & {
     @extend .yellow;
     color: $purple;
-    padding: 9px 14px 4px;
+    padding: 8px 14px 5px;
 
      &:hover,&:focus {
       @extend .yellow-btn-hover-default;
@@ -74,12 +75,8 @@
 
       }
     .cs-default &, .cs-classic & {
-      @extend .msg-blue;
-      @extend .white-text;
-       &:hover,&:focus {
-        @extend .msg-blue;
-      @extend .white-text;
-       }
+      background: $pink;
+      color: $white;
     }
     .cs-elegant & {
       @extend .orange;
@@ -88,9 +85,9 @@
   @extend .teen-button;
   position: relative;
    .cs-default & {
-    @extend .yellow;
-    color: $purple;
-    padding: 9px 14px 5px 50px;
+    background: $secondary-background;
+    color: $white;
+    padding: 7px 14px 6px 50px;
 
      &:hover,&:focus {
       @extend .yellow-btn-hover-default;
@@ -116,22 +113,14 @@
       top: 9px;
       background: url('../images/teen-spritesheet');
       background-position: -20px -1209px;
-       .cs-default & {
-        background-position: -20px -1265px;
-
-       }
     }
 }
 .top-menu-button {
   @extend .teen-button;
    .cs-default & {
-    @extend .yellow;
-    color: $purple;
-    padding: 9px 14px 5px;
-
-     &:hover,&:focus {
-      @extend .yellow-btn-hover-default;
-     }
+    background: $secondary-background;
+    color: $white;
+    padding: 7px 14px 6px;
   }
   .cs-classic & {
     @extend .dark-blue;

@@ -95,7 +95,7 @@
     align-content: flex-end;
 
     .cs-default & {
-      @extend .green-gradiant;
+      background: $footer-color;
     }
 
     .cs-classic & {
@@ -119,6 +119,9 @@
 
           &.logo {
             width: 80px;
+             img {
+               background: $purple;
+             }
           }
         }
 
@@ -127,7 +130,7 @@
           font-size: 36px;
           font-family: $ptsans;
 
-          @extend .white-text;
+          color: $purple;
 
           font-weight: 700;
 
@@ -143,7 +146,7 @@
         font-size: 23px;
         font-family: $ptsans;
 
-        @extend .white-text;
+         color: $purple;
 
         a {
           color: inherit;
