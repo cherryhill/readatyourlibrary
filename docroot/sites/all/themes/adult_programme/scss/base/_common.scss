@@ -1,0 +1,427 @@
+// Common abstract classes to extend or parametrics are stored here.
+
+// Example parametrics.
+// ------------------------------------------------------
+// %font-FONTNAME   {}
+// %font-sans-serif { font-family: sans-serif; }
+// %font-serif      { font-family: serif; }
+//background-color classes and text-color
+.elegant-btn-hover {
+  background: $elegant-btn-hover;
+}
+
+.classic-btn-hover {
+  background: $classic-btn-hover;
+}
+
+.black {
+  background: $black;
+}
+
+.white-text {
+  color: $white;
+}
+
+.yellow-text {
+  color: $yellow;
+}
+
+.link-text {
+  color: $link-color;
+}
+
+.black-text {
+  color: $black;
+}
+
+.orange {
+  background: $orange;
+}
+
+.green {
+  background: $green;
+}
+
+.white {
+  background: $white;
+}
+
+.green-gradiant {
+  background: #7cb301;
+  background: -webkit-radial-gradient(#7cb301, #6d9c05, #74a703);
+  background: -moz-radial-gradient(#7cb301, #6d9c05, #74a703);
+  background: radial-gradient(#7cb301, #6d9c05, #74a703);
+}
+
+.purple {
+  background: $purple;
+}
+
+.msg-blue {
+  background: $msg-blue;
+}
+
+.blue {
+  background: $blue;
+}
+
+.light-blue {
+  background: $light-blue;
+}
+
+.medium-blue {
+  background: $medium-blue;
+}
+
+.dark-blue {
+  background: $dark-blue;
+}
+
+.yellow-btn-hover-default, .yellow-btn-default {
+  background: $yellow-btn-hover-default;
+}
+
+.yellow-btn-elegant {
+  background: $yellow-btn-elegant;
+}
+
+.gray-btn {
+  background: $gray-btn;
+}
+
+.mustard-yellow {
+  background: $mustard-yellow;
+}
+
+.red {
+  background: $red;
+}
+
+.yellow {
+  background: $yellow;
+}
+
+// border none
+.border-none {
+  border: none;
+}
+
+//hide
+.hide-for-small-only {
+  @media screen and (max-width: 767px) {
+    display: none;
+  }
+}
+
+//block title heading having background
+.stroke-main {
+  line-height: 1.4;
+
+  @include heading-font;
+
+  margin: 0;
+  width: 100%;
+  padding-top: 14px;
+  padding-left: 35px;
+  text-transform: capitalize;
+
+  * {
+    font-size: inherit;
+    font-family: inherit;
+    color: inherit;
+    font-weight: inherit;
+  }
+
+
+
+  .cs-default & {
+    font-size: 26px;
+
+    @media screen and (max-width: 767px) {
+      font-size: 22px;
+    }
+    @media screen and (min-width: 768px) and (max-width: 1024px) {
+      font-size: 24px;
+    }
+
+    color: $white;
+  }
+
+  .cs-classic & {
+    font-size: 28px;
+
+    @media screen and (max-width: 767px) {
+      font-size: 24px;
+    }
+    @media screen and (min-width: 768px) and (max-width: 1024px) {
+      font-size: 26px;
+    }
+
+    color: $white;
+
+  }
+
+  .cs-elegant & {
+    font-size: 28px;
+    color: $gray;
+    @media screen and (max-width: 767px) {
+      font-size: 24px;
+    }
+    @media screen and (min-width: 768px) and (max-width: 1024px) {
+      font-size: 26px;
+    }
+  }
+}
+
+.stroke-sidebar {
+  @include heading-font;
+
+  width: 100%;
+  margin: 0;
+  line-height: 1.4;
+  text-transform: capitalize;
+  padding-top: 14px;
+  padding-left: 30px;
+
+  @extend .white-text;
+
+  .cs-default & {
+    font-size: 24px;
+    @media screen and (min-width: 768px) and (max-width: 1024px) {
+     font-size: 22px;
+    }
+
+    @extend .yellow-text;
+  }
+
+  .cs-classic & {
+    font-size: 25px;
+
+    @media screen and (min-width: 768px) and (max-width: 1024px) {
+      font-size: 23px;
+    }
+
+    color: $white;
+
+  }
+
+  .cs-elegant & {
+    color: $gray;
+    font-size: 25px;
+    @media screen and (min-width: 768px) and (max-width: 1024px) {
+      font-size: 23px;
+    }
+  }
+}
+
+//primary-background
+.primary-background {
+  .cs-default & {
+    @extend .purple;
+  }
+
+  .cs-classic & {
+    @extend .medium-blue;
+  }
+
+  .cs-elegant & {
+    @extend .green;
+
+    color: $gray;
+  }
+
+  @extend .white-text;
+  box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+  margin-bottom: 35px;
+  padding-bottom: 15px;
+
+  @include primary_fsize;
+
+  @include body-font;
+}
+
+//default coursel
+.view-content {
+  position: relative;
+
+  .owl-controls {
+    margin-top: 0;
+    width: 100%;
+    position: absolute;
+    top: 40%;
+    left: -26px;
+    height: 0;
+
+    .owl-pagination {
+      display: none;
+    }
+
+    .owl-buttons {
+      width: calc(100% + 52px);
+      position: relative;
+      display: inline-block;
+      height: 0;
+
+      > div {
+        margin: 0;
+        border-radius: 0;
+        color: transparent;
+        background: transparent url("../images/teen-spritesheet");
+        padding: 0;
+        opacity: 1;
+        height: 50px;
+      }
+
+      .owl-prev {
+        float: left;
+        background-position: -20px -1120px;
+
+        .cs-elegant & {
+          background-position: -20px -1035px;
+        }
+      }
+
+      .owl-next {
+        float: right;
+        background-position: -17px -3109px;
+
+        .cs-elegant & {
+          background-position: -17px -3023px;
+        }
+      }
+    }
+  }
+}
+
+//default padding for background -blocks block content
+.b-padding {
+  padding: 20px 35px 18px;
+
+  p {
+    margin: 0;
+  }
+}
+
+//margin zer0 use
+.margin-0 {
+  margin: 0;
+}
+
+//yellow background blocks
+.yellow-commonblock {
+  @extend .mustard-yellow;
+
+  padding: 14px 25px 15px;
+
+  @extend .white-text;
+
+  overflow: hidden;
+  box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+  margin-bottom: 35px;
+
+  @include primary_fsize;
+
+  @include body-font;
+}
+
+//stroke
+.brush-stroke {
+  background-size: 100%;
+  background-repeat: no-repeat;
+  margin-bottom: 10px;
+
+  .cs-default & {
+    background-image: url("../images/yellowbrushstroke_sm.png");
+    padding: 12px 10px 14px 40px;
+    color: $purple;
+    @media screen and (max-width: 1024px) {
+      background-size: auto;
+    }
+  }
+
+  .cs-classic & {
+    background-image: url("../images/redbrushstroke_sm.png");
+    color: $white;
+    padding: 7px 10px 14px 40px;
+    @media screen and (max-width: 1024px) {
+      background-size: auto;
+    }
+  }
+
+  .cs-elegant & {
+    background-image: url("../images/bluebrushstroke_sm.png");
+    color: $gray;
+    padding: 10px 10px 14px 40px;
+    @media screen and (max-width: 1024px) {
+      background-size: auto;
+    }
+  }
+}
+
+//bigger stroke images
+
+//primary color
+.primary-color {
+  .cs-default & {
+    color: $purple;
+  }
+
+  .cs-classic & {
+    color: $dark-blue;
+  }
+
+  .cs-elegant & {
+    color: $gray;
+  }
+}
+
+//secondary background
+.secondary-background {
+  .cs-default &, .cs-classic & {
+    background-image: url(../images/background.jpeg);
+  }
+
+  .cs-elegant & {
+    background: $mustard-yellow;
+  }
+
+  background-repeat: repeat;
+}
+
+//like
+.likes {
+  padding-left: 14px;
+  padding-top: 5px;
+
+  span {
+    padding-right: 25px;
+    position: relative;
+
+    &:after {
+      content: "";
+      width: 21px;
+      height: 21px;
+      background: url("../images/star-sprite");
+      background-repeat: no-repeat;
+      position: absolute;
+      right: 0;
+      top: 0;
+      display: inline-block;
+
+      .cs-default & {
+        background-position: -20px -210px;
+      }
+
+      .cs-classic & {
+        background-position: -20px -152px;
+      }
+
+      .cs-elegant & {
+        background-position: -20px -266px;
+      }
+    }
+  }
+}
+.bold-fonts {
+  @include bold-font;
+}

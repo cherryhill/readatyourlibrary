@@ -1,0 +1,260 @@
+// Non-modular or client styles for .l-header region.
+
+.l-header {
+  width: 100%;
+  display: block;
+
+  .pre-header {
+    padding: 13px 18px 13px 25px;
+
+    .cs-default & {
+      @extend .purple;
+    }
+
+    .cs-classic & {
+      @extend .red;
+    }
+
+    .cs-elegant & {
+      @extend .blue;
+    }
+
+    #topmostbranding {
+      -webkit-flex-wrap: wrap;
+      flex-wrap: wrap;
+      display: -webkit-flex;
+      display: flex;
+      width: 100%;
+    }
+
+    .top-menu {
+      @include button-font;
+
+      a {
+        &.username {
+          font-family: inherit;
+          margin-right: 50px;
+
+          @extend .white-text;
+
+          .cs-elegant & {
+            @extend .black-text;
+          }
+        }
+
+        &.btn.btn-large {
+          @extend .teen-button;
+
+          @extend .top-menu-button;
+        }
+
+        &.btn.btn-large.msg {
+          @extend .teen-button;
+
+          @extend .msg-button;
+        }
+      }
+
+      .btn {
+        margin-left: 6px;
+      }
+
+      flex: 0 0 100%;
+
+      @extend .hide-for-small-only;
+
+      .top-header-menu {
+        float: right;
+
+        @extend .white-text;
+
+        .cs-elegant & {
+          @extend .black-text;
+        }
+      }
+    }
+
+    .mobile-top-header {
+      @extend .white-text;
+
+      .cs-elegant & {
+        @extend .black-text;
+      }
+    }
+  }
+
+  .header-middle {
+    -webkit-flex-wrap: wrap;
+    flex-wrap: wrap;
+    display: -webkit-flex;
+    display: flex;
+    width: 100%;
+    padding-left: 25px;
+    padding-top: 20px;
+    align-items: flex-end;
+    align-content: flex-end;
+
+    .cs-default & {
+      @extend .green-gradiant;
+    }
+
+    .cs-classic & {
+      @extend .light-blue;
+    }
+
+    .cs-elegant & {
+      @extend .orange;
+    }
+
+    .logo-block {
+      flex: 0 0 25%;
+
+      .site-info {
+        width: 100%;
+        display: table;
+
+        > div {
+          display: table-cell;
+          vertical-align: top;
+
+          &.logo {
+            width: 80px;
+          }
+        }
+
+        .site-name {
+          margin: -7px 0 0;
+          font-size: 36px;
+          font-family: $ptsans;
+
+          @extend .white-text;
+
+          font-weight: 700;
+
+          a {
+            color: inherit;
+            font-family: inherit;
+          }
+        }
+      }
+
+      .site-slogan {
+        margin: -10px 0 0;
+        font-size: 23px;
+        font-family: $ptsans;
+
+        @extend .white-text;
+
+        a {
+          color: inherit;
+          font-family: inherit;
+        }
+      }
+
+      .program-logo {
+        margin-top: 15px;
+        margin-bottom: 20px;
+
+        img {
+          max-width: 200px;
+        }
+      }
+    }
+
+    .main-menu {
+      flex: 0 0 75%;
+
+      .menu-wrapper {
+        section {
+          width: 100%;
+          display: inline-block;
+        }
+
+        .block-lang-dropdown {
+          .block-title {
+            display: none;
+          }
+
+          form {
+            float: right;
+            margin-right: 18px;
+          }
+        }
+
+        ul.menu {
+          padding-right: 18px;
+          margin-bottom: 10px;
+        }
+      }
+    }
+  }
+}
+
+//anonymous header buttons login and signin
+.block-menu-menu-anonymous-header-links {
+  width: 100%;
+
+  ul.menu {
+    display: inline-block;
+    float: right;
+    margin: 0;
+    padding: 0;
+
+    li {
+      display: inline-block;
+
+      a {
+        @extend .teen-button;
+
+        @extend .top-menu-button;
+
+        margin-left: 10px;
+      }
+    }
+  }
+}
+
+.breadcrum-wrapper.row {
+  max-width: 1224px !important;
+}
+
+.breadcurm {
+  ul {
+    padding-left: 0;
+    margin: 0;
+    background: transparent;
+    border: none;
+    padding-bottom: 0;
+
+    li {
+      font-size: 14px;
+
+      &.current {
+        a {
+          color: $black;
+        }
+
+        &:before {
+          content: ">";
+
+          @include body-font;
+
+          top: 0;
+          margin: 0 5px;
+
+          @extend .black-text;
+        }
+      }
+
+      a {
+        @extend .link-text;
+        text-transform: capitalize;
+        @include body-font;
+
+        &:focus {
+          outline: none;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,96 @@
+body {
+   font-size: 17px;
+   line-height: 26px;
+   &.mceContentBody {
+    height: 100%;
+   }
+   &.cs-default,&.cs-classic,&.cs-elegant {
+     width: 100%;
+   display: block;
+   height: auto;
+   background: $white;
+   max-width: 1280px;
+   margin: auto;
+   }
+
+    &.cs-default {
+    font-family: $Raleway;
+    font-weight: 400;
+
+  }
+
+  &.cs-classic  {
+    font-family: $Exo2;
+   font-weight: 500;
+     #admin-menu {
+    font-size: 9px;
+    font-family: "lucida grande", tahoma, verdana, arial, sans-serif !important;
+    line-height: 1;
+   }
+  }
+
+  &.cs-elegant  {
+     font-family: $Roboto;
+    font-weight: 400;
+     #admin-menu {
+    font-size: 9px;
+    font-family: "lucida grande", tahoma, verdana, arial, sans-serif !important;
+    line-height: 1;
+   }
+  }
+}
+
+
+
+.l-main {
+  width: 100%;
+  padding-top: 35px;
+  margin: auto;
+}
+
+.columns {
+  padding-left: 20px !important;
+  padding-right: 20px !important;
+
+  @media screen and (max-width: 1024px) {
+    padding-right: 10px !important;
+    padding-left: 10px !important;
+  }
+}
+.row {
+  max-width: 100% !important;
+   &.l-main {
+      max-width: 1224px !important;
+   }
+}
+
+.node {}
+.body {}
+.image {}
+.breadcrumb {}
+ #admin-menu {
+    font-size: 9px !important;
+    font-family: "lucida grande", tahoma, verdana, arial, sans-serif !important;
+    line-height: 1 !important;
+      * {
+        font-size: inherit;
+        font-family: inherit;
+        line-height: inherit;
+      }
+   }
+html {
+  width: 100%;
+  height: 100%;
+  background: -prefix-linear-gradient(top, #cccccc, #f2f2f2 80%, #d9d9d9);
+  background: linear-gradient(to bottom, #cccccc, #f2f2f2 80%, #d9d9d9);
+  display: block;
+
+}
+#page-title {
+  .front & {
+    display: none;
+  }
+}
+#first-time {
+  display: none;
+}

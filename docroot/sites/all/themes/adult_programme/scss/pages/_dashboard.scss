@@ -1,0 +1,701 @@
+p.more-link {
+  position: relative;
+  padding-right: 18px;
+  a {
+    @include bold-font;
+    color: $white;
+     &:after {
+      content: ">";
+      display: inline-block;
+      padding-left: 5px;
+
+     }
+
+  }
+}
+
+.page-user-profile {
+  .reward-block-dashboard {
+     -webkit-flex-wrap: wrap;
+    flex-wrap: wrap;
+    display: -webkit-flex;
+    display: flex;
+    align-content: center;
+    align-items: center;
+     .reward-image {
+      flex: 0 0 100px;
+     }
+     .reward-description {
+      flex: 0 0 calc(100% - 100px);
+      padding-left: 10px;
+     }
+  }
+  .dashboard-progress {
+    .portlet-content {
+      background: url("../images/fi-calendar.svg") no-repeat scroll left 7px center;
+       > div {
+         display: flex;
+         width: 100%;
+         min-height: 90px;
+         align-content: center;
+         align-items: center;
+
+         padding-left: 90px;
+       }
+    }
+  }
+  #page-title.title {
+    display: none;
+  }
+
+  .view-empty {
+    p {
+      font-size: 14px;
+    }
+  }
+
+  .view-book-reviews-dashboard {
+    position: relative;
+
+    .view-content {
+      padding-bottom: 30px;
+    }
+
+  }
+
+
+ .booklist-wrapper {
+  @extend .review-wrapper;
+ }
+  .review-wrapper {
+    -webkit-flex-wrap: wrap;
+    flex-wrap: wrap;
+    display: -webkit-flex;
+    display: flex;
+
+    .count {
+      flex: 0 0 20px;
+    }
+
+    .title {
+      flex: 0 0 calc(100% - 20px);
+
+      * {
+        color: $white;
+      }
+    }
+
+    .likes {
+      flex: 0 0 100%;
+      padding-left: 20px;
+    }
+  }
+}
+
+.my-dashbord-block {
+  @extend .primary-background;
+  padding-bottom: 25px;
+  -webkit-flex-wrap: wrap;
+      flex-wrap: wrap;
+      display: -webkit-flex;
+      display: flex;
+      align-items: baseline;
+
+  .view-header {
+    flex: 0 0 100%;
+    * {
+      @extend .stroke-main;
+
+      background: url(../images/big-strokes);
+
+      .cs-default & {
+        background-position: -60px -569px;
+      }
+
+      .cs-classic & {
+        background-position: -60px -225px;
+      }
+
+      .cs-elegant & {
+        background-position: -60px -914px;
+      }
+    }
+  }
+
+  > .view-content {
+   flex: 0 0 70%;
+    padding-top: 60px;
+
+    table {
+      float: right;
+      margin-bottom: 0;
+      background: transparent;
+      border: none;
+      margin-right: 27px;
+       tr {
+        background: transparent !important;
+         td {
+           padding: 10px 5px 0;
+            img {
+              width: 58px;
+            }
+         }
+       }
+    }
+  }
+
+  .attachment {
+   flex: 0 0 30%;
+
+    a {
+      color: $white;
+
+      @include primary_fsize;
+
+      @include button-font;
+    }
+     .view-content {
+       .views-field-nothing {
+      .field-content > div {
+        padding-left: 35px;
+      }
+      .image {
+         display: table-cell;
+         vertical-align: bottom;
+         h2 {
+          display: none;
+         }
+      }
+      .name {
+        display: table-cell;
+        vertical-align: bottom;
+         * {
+           color: $white;
+           font-weight: 700;
+           .cs-elegant & {
+             color: $gray;
+           }
+         }
+      }
+     }
+     }
+  }
+
+  .pagination-centered {
+    padding-right: 30px;
+    position: absolute;
+    top: 125px;
+    right: 22px;
+    width: auto;
+
+    .pagination.pager {
+      li {
+        height: 20px;
+        width: 20px;
+        border-radius: 100%;
+        margin-left: 3px;
+        margin-right: 3px;
+
+        &.arrow {
+          display: none;
+        }
+
+        &.current {
+          a {
+            .cs-default & {
+              background: $yellow;
+            }
+
+            .cs-classic & {
+              background: $yellow;
+            }
+
+            .cs-elegant & {
+              background: $orange;
+            }
+          }
+        }
+
+        a {
+          color: transparent;
+          background: $white;
+        }
+      }
+    }
+  }
+}
+
+.homebox.homebox-auto-save {
+  width: calc(100% + 40px);
+  margin-left: -20px;
+  overflow: hidden;
+
+  #homebox-buttons {
+    padding-left: 20px;
+    margin-bottom: 30px;
+
+    > a {
+      @extend .teen-button;
+      .cs-default & {
+        @extend .purple;
+        color: $white;
+        padding: 9px 14px 4px;
+      }
+      .cs-classic & {
+        @extend .red;
+        color: $white;
+        padding: 4px 14px 5px;
+      }
+      .cs-elegant & {
+       @extend .yellow-btn-elegant;
+       color: $gray;
+       padding: 4px 14px;
+       &:hover, &:focus {
+      @extend .elegant-btn-hover;
+    }
+
+      }
+    }
+  }
+
+  #homebox-add {
+    padding-left: 20px;
+    padding-right: 20px;
+
+    .item-list {
+      padding-left: 20px;
+      padding-right: 20px;
+       .cs-default & {
+    background: $yellow;
+  }
+  .cs-classic & {
+     @extend .light-blue;
+  }
+  .cs-elegant & {
+    @extend .mustard-yellow;
+  }
+      ul li {
+        margin-bottom: 0;
+        padding-top: 25px;
+        padding-bottom: 10px;
+
+        &.last {
+          float: right;
+        }
+
+        a {
+          @extend .teen-button;
+          @extend .post-footer.contain-to-grid;
+          color: $dark-blue;
+          margin-bottom: 10px;
+          .cs-default & {
+            padding: 9px 14px 4px;
+            color: $white;
+          }
+          .cs-elegant & {
+            padding: 4px 14px 4px;
+          }
+          .cs-classic & {
+            padding: 4px 14px 5px;
+            background: $dark-blue;
+            color: $white;
+          }
+
+          border: none;
+          outline: none;
+        }
+      }
+    }
+  }
+
+  .homebox-column-wrapper {
+    padding-left: 20px;
+    padding-right: 20px;
+
+    .homebox-column {
+      margin: 0 !important;
+      padding: 0 !important;
+      background: none !important;
+    }
+
+    .homebox-portlet {
+      border: none !important;
+    }
+
+    .homebox-portlet-inner {
+      border: none !important;
+      padding: 0;
+      overflow: visible !important;
+    }
+
+    .homebox-portlet-inner {
+       box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+  margin-bottom: 35px;
+  @include primary_fsize;
+  @include body-font;
+     color: $white;
+      .cs-default & {
+         background: $purple;
+      }
+      .cs-classic & {
+        background: $dark-blue;
+
+      }
+      .cs-elegant & {
+        background: $orange;
+      }
+    }
+
+    .portlet-header {
+
+
+      padding: 8px 10px 3px 80px !important;
+      border: none !important;
+      position: relative;
+      .cs-default & {
+         background: #7cb301 !important;
+          background: -webkit-radial-gradient(#7cb301, #6d9c05, #74a703) !important;
+          background: -moz-radial-gradient(#7cb301, #6d9c05, #74a703) !important;
+          background: radial-gradient(#7cb301, #6d9c05, #74a703) !important;
+
+      }
+      .cs-classic & {
+        background: $medium-blue !important;
+      }
+      .cs-elegant & {
+        background: $blue !important;
+      }
+       .portlet-title {
+        @extend h3;
+        .cs-classic &,.cs-default & {
+          color: $white !important;
+        }
+
+        .cs-elegant & {
+          color: $dark-blue !important;
+        }
+       }
+      .portlet-title:before {
+        content: "";
+        height: 40px;
+        width: 40px;
+        display: inline-block;
+        position: absolute;
+
+        left: -54px;
+        top: 0;
+        background-image: url("../images/dashboard-icons");
+        background-position: -9px -472px;
+        .cs-elegant & {
+          background-position: -9px -532px;
+        }
+        .cs-default & {
+          background-position: -9px -478px;
+        }
+
+
+      }
+
+
+      .portlet-icon {
+        color: transparent;
+        height: 30px;
+        width: 30px;
+        top: 5px;
+        background: url("../images/dashboard-icons");
+
+        &.portlet-maximize {
+          display: none;
+        }
+
+        &.portlet-close {
+          .cs-default & {
+            background-position: -20px -1639px;
+          }
+
+          .cs-classic & {
+            background-position: -20px -1505px;
+          }
+
+          .cs-elegant & {
+            background-position: -20px -1572px;
+          }
+        }
+
+        &.portlet-minus {
+          .cs-default & {
+            background-position: -20px -727px;
+          }
+
+          .cs-classic & {
+            background-position: -20px -593px;
+          }
+
+          .cs-elegant & {
+            background-position: -20px -660px;
+          }
+        }
+
+        &.portlet-plus {
+          .cs-default & {
+            background-position: -20px -928px;
+          }
+
+          .cs-classic & {
+            background-position: -20px -794px;
+          }
+
+          .cs-elegant & {
+            background-position: -20px -862px;
+          }
+        }
+      }
+
+      @include button-font;
+
+
+    }
+
+    .portlet-content {
+      padding: 25px !important;
+      li {
+        span {
+          a {
+            color: $white;
+          }
+        }
+      }
+    }
+  }
+
+  .view-header {
+    * {
+      color: $white;
+
+      @include button-font;
+
+      font-size: 14px;
+      text-transform: uppercase;
+    }
+  }
+  .view-rewards-dashboard {
+     .reward-hombox-dashboard {
+      margin: 5px 0 10px;
+       > div {
+         display: table-cell;
+         vertical-align: middle;
+          &.image {
+            width: 30%;
+          }
+          &.description {
+            width: 70%;
+            padding-left: 10px;
+          }
+          img {
+             width: 58px;
+          }
+       }
+     }
+   }
+  .view-activities-dashboard .view-footer {
+    padding-top: 25px;
+
+    > p {
+      margin-bottom: 0px;
+    }
+  }
+
+  .view-activities-dashboard .field-content {
+    -webkit-flex-wrap: wrap;
+    flex-wrap: wrap;
+    display: -webkit-flex;
+    display: flex;
+    align-content: center;
+    align-items: center;
+
+    > div {
+      &.activity-count {
+        flex: 0 0 20px;
+      }
+
+      &.title {
+        flex: 0 0 calc(50% - 10px);
+        padding-right: 10px;
+      }
+
+      &.completed {
+        flex: 0 0 calc(50% - 10px);
+      }
+    }
+  }
+
+  .view-content {
+    * {
+      @include body-font;
+
+      font-size: 14px;
+    }
+  }
+
+  .view-footer {
+    p {
+      width: 100%;
+      display: inline-block;
+
+      a {
+        float: right;
+
+        font-size: 17px;
+      }
+    }
+    a.btn.btn-large.full {
+      @extend .button;
+      display: inline-block;
+      width: 100%;
+    }
+    a.button {
+      margin: 10px 0;
+
+      @extend .button;
+
+      width: 100%;
+    }
+  }
+}
+.block-play_library_teens_leaderboard {
+  .portlet-content {
+     li {
+       margin-bottom: 10px;
+        span {
+           img {
+             margin-right: 10px;
+           }
+           &:nth-of-type(2) {
+            float: right;
+           }
+        }
+     }
+     li + span {
+       @extend p.more-link;
+       width: 100%;
+       text-align: right;
+       display: inline-block;
+       margin-top: 10px;
+       margin-bottom: 10px;
+       padding-right: 0;
+     }
+  }
+}
+.homebox.homebox-auto-save .homebox-column-wrapper .homebox-draggable {
+  &.dashboard-activities {
+    .portlet-header .portlet-title::before {
+      background-position: -9px -18px;
+       .cs-elegant & {
+         background-position: -9px -86px;
+       }
+    }
+  }
+
+  &.dashboard-reviews, &.dashboard-booklists {
+    .portlet-header .portlet-title::before {
+      background-position: -9px 240px;
+      .cs-elegant & {
+        background-position: -9px 175px;
+      }
+    }
+  }
+
+  &.dashboard-following {
+    a {
+      color: $white;
+    }
+    .portlet-header .portlet-title::before {
+      background-position: -9px -352px;
+      .cs-elegant & {
+        background-position: -9px -415px;
+      }
+    }
+  }
+
+  &.dashboard-rewards {
+    .portlet-header .portlet-title::before {
+      background-position: -9px 112px;
+      .cs-elegant & {
+        background-position: -9px 46px;
+      }
+    }
+  }
+}
+.view-book-reviews-dashboard .view-footer > form > div {
+  padding: 20px;
+    .page-user-profile.cs-default & {
+    @extend .yellow;
+    color: $purple;
+  }
+  .page-user-profile.cs-classic & {
+    @extend .light-blue;
+    color: $dark-blue;
+  }
+  .page-user-profile.cs-elegant & {
+    @extend .yellow-btn-elegant;
+    color: $black;
+  }
+  .form-type-select {
+           display: flex;
+           display: -webkit-flex;
+           flex-wrap: wrap;
+           label,select,> div {
+
+           }
+           label {
+             @extend .primary-color;
+             @include primary_fsize;
+             @include button-font;
+           }
+           .chosen-container {
+             @include primary_fsize;
+              a.chosen-single {
+                 height: auto;
+                 border-radius: 0;
+                 .page-user-profile.cs-default &{
+                   color: $purple;
+                   border: 1px solid $purple;
+                 }
+                 .page-user-profile.cs-classic & {
+                  color: $medium-blue;
+                  border: 1px solid $medium-blue;
+                 }
+                 .page-user-profile.cs-elegant & {
+                   color: $green;
+                   border: 1px solid $green;
+                 }
+                 background: $white;
+                 border: 1px solid $link-color;
+                  > div {
+                     width: 30px;
+                     .page-user-profile.cs-default & {
+                      background: $purple;
+                     }
+                     .page-user-profile.cs-classic & {
+                      background: $medium-blue;
+                     }
+                     .page-user-profile.cs-elegant & {
+                      background: $green;
+                     }
+                     b {
+                       background: none;
+                       border-left: 7px solid transparent;
+                       border-right: 7px solid transparent;
+                       display: inline-block;
+                       height: 0;
+                       width: 0;
+                       border-top: 7px solid white;
+                       margin-left: 9px;
+                       position: relative;
+                       top: -1px;
+                     }
+                  }
+              }
+           }
+        }
+}
