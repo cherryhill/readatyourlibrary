@@ -17,10 +17,13 @@
       Drupal.settings.payl_program_customizations_birthday_limit = parseInt(Drupal.settings.payl_program_customizations_birthday_limit);
       
       $('.page-user-register .form-item-name').hide();
-      $('#edit-profile-main-field-user-birthday-en-0-value-year').on('change', function() {
-        var birthdayMonth = jQuery('#edit-profile-main-field-user-birthday-en-0-value-month ').val();
-        var birthdayDay = jQuery('#edit-profile-main-field-user-birthday-en-0-value-day').val();
-        var birthdayYear = jQuery('#edit-profile-main-field-user-birthday-en-0-value-year').val();
+      $('.date-year .form-select').on('change', function() {
+        var birthdayMonth = jQuery('.date-month .form-select').val();
+        console.log (birthdayMonth);
+        var birthdayDay = jQuery('.date-day .form-select').val();
+        console.log (birthdayDay);
+        var birthdayYear = jQuery('.date-year .form-select').val();
+        console.log (birthdayYear);
         var age = calculate_age(birthdayMonth,birthdayDay,birthdayYear);
         console.log(age);
         // More than 13 years old.
@@ -48,11 +51,15 @@
             name = name + $(this).val();
           });
           $('#edit-name').val(name);
-      var birthdayMonth = jQuery('#edit_profile_main_field_user_birthday_en_0_value_month_chosen a span').html();
-      var birthdayDay = jQuery('#edit_profile_main_field_user_birthday_en_0_value_day_chosen a span').html();
-      var birthdayYear = jQuery('#edit_profile_main_field_user_birthday_en_0_value_year_chosen a span').html();
+      
 
-      $('#edit_profile_main_field_user_birthday_en_0_value_year_chosen').bind('change', function() {
+      $('.date-year').bind('change', function() {
+        var birthdayMonth = jQuery('.date-month .form-select').val();
+      // console.log(birthdayMonth);
+      var birthdayDay = jQuery('.date-day .form-select').val();
+      // console.log(birthdayDay);
+      var birthdayYear = jQuery('.date-year .form-select').val();
+      // console.log(birthdayYear);
 
         var age = calculate_age(birthdayMonth,birthdayDay,birthdayYear);
         console.log(age);
@@ -70,7 +77,7 @@
           $.ajax({
             url: Drupal.settings.basePath + 'username/check',
             type: 'post',
-            async: false,
+            async: true,
             data: "name="+username,
             success: function (data) {
               if (data) {
