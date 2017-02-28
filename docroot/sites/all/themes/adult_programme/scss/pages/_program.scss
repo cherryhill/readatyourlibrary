@@ -9,8 +9,8 @@
     color: $white;
   }
   .cs-default & {
-    background: url("../images/background.jpeg") scroll repeat;
-    background-size: cover;
+   background: $secondary-background;
+   border-radius: 0;
   }
 
   .cs-classic & {
@@ -69,7 +69,7 @@
             margin-top: 0;
             margin-bottom: 30px;
             .cs-default & {
-             color: $purple;
+             color: $black;
             }
             .cs-elegant & {
               color: $gray;
@@ -123,8 +123,10 @@
   }
   .views-field-title {
     margin-top: 10px;
+    @include semibold-font;
     a {
       color: $white;
+      font-family: inherit;
       .cs-elegant & {
         color: $gray;
       }
@@ -132,28 +134,5 @@
     }
   }
 }
-.page-programs #page-title {
-  background-size: 100%;
-  background-repeat: repeat;
-  margin-bottom: 10px;
-  width: calc(100% + 40px);
-  margin-left: -40px;
-}
-#page-title {
-  .page-programs.cs-default & {
-    background-image: url("../images/yellowbrushstroke_lg.png");
-    padding: 27px 10px 30px 40px;
-    color: $purple;
-  }
-  .page-programs.cs-classic & {
-    background-image: url("../images/redbrushstroke_lg.png");
-    color: $dark-blue;
-    padding: 24px 10px 30px 40px;
-  }
-  .page-programs.cs-elegant & {
-    background-image: url("../images/bluebrushstroke_lg.png");
-    color: $gray;
-    padding: 24px 10px 30px 40px;
-  }
 
-}
+

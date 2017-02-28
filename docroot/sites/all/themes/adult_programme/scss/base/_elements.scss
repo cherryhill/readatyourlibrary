@@ -63,31 +63,19 @@ a {
     text-decoration: underline;
    }
 }
-body {
-  &.cs-default {
-    color: $purple;
-  }
 
-  &.cs-classic {
-    color: $dark-blue;
-  }
-
-  &.cs-elegant {
-    color: $gray;
-  }
-}
 h1,h2,h3,h4,h5 {
   @include heading-font;
   @extend .primary-color;
 }
 h1 {
   .cs-default & {
-    font-size: 26px;
+    font-size: 28px;
     @media screen and (max-width: 767px) {
-      font-size: 22px;
+      font-size: 24px;
     }
     @media screen and (min-width: 768px) and (max-width: 1024px) {
-      font-size: 24px;
+      font-size: 26px;
     }
   }
   font-size: 28px;

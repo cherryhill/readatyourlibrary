@@ -2,13 +2,14 @@
   .view-content {
     h3 {
         padding: 6px 24px;
-        color: $white;
+        color: $black;
         margin-top: 20px;
         margin-bottom: 0;
         font-size: 18px;
         .cs-default & {
-          background: url("../images/background.jpeg");
-          padding: 8px 24px 4px;
+          background: $footer-color;
+          padding: 7px 24px 5px;
+         font-weight: 400 !important;
         }
         .cs-classic & {
           background: $medium-blue;
@@ -65,28 +66,3 @@
 
 }
 
-.page-events #page-title {
-  background-size: 100%;
-  background-repeat: repeat;
-  margin-bottom: 10px;
-  width: calc(100% + 40px);
-  margin-left: -40px;
-}
-#page-title {
-  .page-events.cs-default & {
-    background-image: url("../images/yellowbrushstroke_lg.png");
-    padding: 27px 10px 30px 40px;
-    color: $purple;
-  }
-  .page-events.cs-classic & {
-    background-image: url("../images/redbrushstroke_lg.png");
-    color: $dark-blue;
-    padding: 24px 10px 30px 40px;
-  }
-  .page-events.cs-elegant & {
-    background-image: url("../images/bluebrushstroke_lg.png");
-    color: $gray;
-    padding: 24px 10px 30px 40px;
-  }
-
-}

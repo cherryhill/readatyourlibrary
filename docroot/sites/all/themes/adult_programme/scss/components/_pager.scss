@@ -43,15 +43,15 @@
            color: transparent;
            overflow: hidden;
            top: 6px;
-           background: transparent;
+           background: transparent !important;
             &:hover, &:focus {
               color: transparent;
-              background: transparent;
+              background: transparent !important;
             }
         }
         &:nth-of-type(2) a {
           .cs-default & {
-            border-right:20px solid #7cb301;
+            border-right:10px solid $secondary-background;
           }
           .cs-classic & {
             border-right: 20px solid $light-blue;
@@ -63,7 +63,7 @@
         }
         &:nth-last-of-type(2) a {
           .cs-default & {
-            border-left:20px solid #7cb301;
+            border-left:10px solid $secondary-background;
           }
           .cs-classic & {
             border-left: 20px solid $light-blue;
@@ -94,7 +94,7 @@
       padding: 0;
 
              font-size: 17px;
-        line-height: 34px;
+        line-height: 34px !important;
         .cs-default & {
           line-height: 40px;
         }
@@ -103,7 +103,7 @@
        &:hover,&:focus {
         .cs-default & {
           color: $purple;
-           @extend .green-gradiant;
+           background: $secondary-background;
        }
        .cs-classic & {
          @extend .light-blue;
@@ -116,7 +116,7 @@
        }
       .cs-default & {
 
-        @extend .green-gradiant;
+        background: $secondary-background;
       }
 
       .cs-classic & {

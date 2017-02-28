@@ -1,20 +1,4 @@
-#page-title {
-  .page-activities.cs-default & {
-    background-image: url("../images/yellowbrushstroke_lg.png");
-    padding: 27px 10px 30px 40px;
-    color: $purple;
-  }
-  .page-activities.cs-classic & {
-    background-image: url("../images/redbrushstroke_lg.png");
-    color: $dark-blue;
-    padding: 24px 10px 30px 40px;
-  }
-  .page-activities.cs-elegant & {
-    background-image: url("../images/bluebrushstroke_lg.png");
-    color: $gray;
-    padding: 24px 10px 30px 40px;
-  }
-}
+
 
 .activity-page-wrapper {
    margin-top: 10px;
@@ -26,31 +10,11 @@
         color: inherit;
         font-family: inherit;
         position: relative;
-          &:after {
-             content: "";
-             width: 0;
-             height: 0;
-             border-top: 6px solid transparent;
-             border-bottom: 6px solid transparent;
-             border-left: 10px solid;
-             display: inline-block;
-             margin-left: 10px;
-             top: 0;
-          }
+
       }
-      a[href=""],a[href="#"] {
-        pointer-events: none;
-         &:hover {
-          text-decoration: none;
-         }
-         &:after {
-          border-left: none;
-         }
-      }
+
    }
-    .body, .link {
-       padding-left: 30px;
-    }
+
     .link {
       font-weight: bold;
       display: inline-block;

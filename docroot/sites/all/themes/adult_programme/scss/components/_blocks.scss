@@ -2,6 +2,9 @@
 
 .homepage-reward-block {
   @extend .primary-background;
+  .logged-in & {
+    border-radius: 0 0 10px 10px;
+  }
 
   .view-header {
     p {
@@ -118,8 +121,8 @@
     }
 
     input[type=radio]:checked + label:before {
-      background: $yellow;
-      border: 1px solid $yellow;
+      background: $radio;
+      border: 1px solid $radio;
 
       .cs-elegant & {
         background: $orange;

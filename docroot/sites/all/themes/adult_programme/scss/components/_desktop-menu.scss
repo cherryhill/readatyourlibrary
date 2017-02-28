@@ -16,36 +16,36 @@
       vertical-align: bottom;
       margin-left: 9px;
 
+
       a {
         width: inherit;
-        border-radius: 10px;
         text-decoration: none;
         height: 45px;
         padding-top: 58px;
+        padding-bottom: 45px;
         display: inline-block;
         text-align: center;
         vertical-align: center;
+        box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+        color: #fff;
         position: relative;
-        transition: all linear 0.8s;
-        font-size: 15px;
-        color: $white;
+        font-size: 14px;
         line-height: 18px;
-
+        transition: all linear 0.8s;
+        .cs-default & {
+          background: -webkit-linear-gradient(top, rgb(96, 106, 166) 0%, rgb(41, 41, 117) 86%, rgb(57, 63, 131) 100%);
+background: -o-linear-gradient(top, rgb(96, 106, 166) 0%, rgb(41, 41, 117) 86%, rgb(57, 63, 131) 100%);
+background: -ms-linear-gradient(top, rgb(96, 106, 166) 0%, rgb(41, 41, 117) 86%, rgb(57, 63, 131) 100%);
+background: -moz-linear-gradient(top, rgb(96, 106, 166) 0%, rgb(41, 41, 117) 86%, rgb(57, 63, 131) 100%);
+background: linear-gradient(to bottom, rgb(96, 106, 166) 0%, rgb(41, 41, 117) 86%, rgb(57, 63, 131) 100%);
+        }
         @extend .border-none;
 
         @include heading-font;
 
-        &:hover, &:focus, &.active {
-          //transform: rotateY(360deg);
-
-          &:after {
-            transform: rotateX(360deg);
-          }
-        }
-
         .cs-default & {
           &:hover, &:focus, &.active {
-            color: $purple;
+            background: $secondary-background;
           }
         }
 
@@ -85,9 +85,7 @@
               background-position: -16px -2193px;
             }
 
-            &:hover:after, &:focus:after, &.active:after {
-              background-position: -16px -2138px;
-            }
+
           }
 
           .cs-classic & {
@@ -117,9 +115,7 @@
               background-position: -9px -92px;
             }
 
-            &:hover:after, &:focus:after, &.active:after {
-              background-position: -9px -20px;
-            }
+
           }
 
           .cs-classic & {
@@ -149,9 +145,6 @@
               background-position: -5px -2737px;
             }
 
-            &:hover:after, &:focus:after, &.active:after {
-              background-position: -5px -2664px;
-            }
           }
 
           .cs-classic & {
@@ -181,9 +174,7 @@
               background-position: -5px -450px;
             }
 
-            &:hover:after, &:focus:after, &.active:after {
-              background-position: -5px -380px;
-            }
+
           }
 
           .cs-classic & {
@@ -214,11 +205,8 @@
           .page-video-game-review.cs-default &,
           .page-activities-list.cs-default &,
           .page-activities-listing.cs-default & {
-            color: $purple;
+           background: $secondary-background;
 
-            &:after {
-              background-position: -2px -2306px;
-            }
           }
 
           .cs-default & {
@@ -226,9 +214,7 @@
               background-position: -2px -2379px;
             }
 
-            &:hover:after, &:focus:after, &.active:after {
-              background-position: -2px -2306px;
-            }
+
           }
 
           .page-booklists.cs-classic &,
@@ -284,9 +270,6 @@
               background-position: -8px -1380px;
             }
 
-            &:hover:after, &:focus:after, &.active:after {
-              background-position: -8px -1314px;
-            }
           }
 
           .cs-classic & {
@@ -316,9 +299,6 @@
               background-position: -8px -1728px;
             }
 
-            &:hover:after, &:focus:after, &.active:after {
-              background-position: -8px -1650px;
-            }
           }
 
           .cs-classic & {

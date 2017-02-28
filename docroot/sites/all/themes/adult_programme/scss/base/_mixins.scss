@@ -46,7 +46,7 @@
 
 @mixin body-font {
     .cs-default & {
-    font-family: $Raleway;
+    font-family: $open-sans;
     font-weight: 400;
   }
   .cs-classic & {
@@ -64,7 +64,7 @@
 }
 @mixin bold-font {
       .cs-default & {
-    font-family: $Raleway;
+    font-family: $open-sans;
     font-weight: 700;
   }
   .cs-classic & {
@@ -74,6 +74,16 @@
   .cs-elegant & {
     font-family: $Roboto;
     font-weight: 700;
+  }
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  -moz-font-smoothing: grayscale;
+}
+@mixin semibold-font {
+      .cs-default & {
+    font-family: $open-sans;
+    font-weight: 600;
   }
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
