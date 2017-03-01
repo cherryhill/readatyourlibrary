@@ -81,7 +81,7 @@ function pl_leaderboard_page() {
       $user_uid = $value->uid;
       $avatar = pl_user_avatar_user_name($user_uid, $imgStyle);
       
-      $out .= '<li><span>'.$avatar.'</span><span>'. $no_stamp. 'stamps</span></li>';
+      $out .= '<li><span>'.$avatar.'</span><span>'. $no_stamp. ' '. 'stamps</span></li>';
 
       
     }
