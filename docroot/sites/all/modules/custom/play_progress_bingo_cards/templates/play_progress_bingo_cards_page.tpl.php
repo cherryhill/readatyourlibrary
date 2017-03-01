@@ -89,9 +89,15 @@
         </div> -->
       </div>
       <div class="write-review">
+      <h3>2. Write A Review</h3>
         <?php
+           
           print(drupal_render(drupal_get_form('pl_progress_create_reviews')));
+
         ?>
+        <div><h3><a href="node/add/booklist">3. Create A Booklist</a></h3>
+             <span>Earn a raffle ticket when your Review or Booklist gets approved.</span>
+        </div>
       </div>
     </div>
     <div class="bingo-progress-main"><?php 
