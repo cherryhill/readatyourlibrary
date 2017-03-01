@@ -11,6 +11,11 @@
         $(this).css('background-image', 'url(' + imgURL + ')');
       }
     });
+      //mobile menu
+      $("button.hamburger").click(function() {
+         $(".mobile-menu-wrapper").toggle();
+
+      });
     //add readmore link
      $(function(){
       $('.page-rewards .main .block-views .view-teen-reward-page .reward-body-wrapp .reward-des').each(function(event){
