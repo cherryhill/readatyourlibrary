@@ -88,6 +88,12 @@
           <button id="pg-report">Submit</button>
         </div> -->
       </div>
+      <div class="write-review">
+        <?php
+          $write_review = module_invoke('play_progress_bingo_cards', 'block_view', 'pl_progress_create_reviews');
+          print render($write_review['content']);
+        ?>
+      </div>
     </div>
     <div class="bingo-progress-main"><?php 
       global $user;
