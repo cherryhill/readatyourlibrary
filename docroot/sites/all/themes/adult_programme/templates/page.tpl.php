@@ -6,23 +6,26 @@
     <div class="pre-header">
       <section class="row" id="topmostbranding">
         <div class="mobile-hamburger hide-for-medium-up">
-          <button>
+           <button class="hamburger">
              <span class="icon"></span>
              <span class="icon"></span>
              <span class="icon"></span>
-          </button>
+           </button>
         </div>
         <div class="top-menu hide-for-only-small">
           <?php if (!empty($page['top_links'])): ?>
           <?php print render($page['top_links']); ?>
           <?php endif; ?>
         </div>
+
       <!--mobile menu-->
+      <section class="mobile-menu-wrapper">
       <div class="mobile-menu columns">
         <?php if (!empty($page['mobile_menu'])): ?>
         <?php print render($page['mobile_menu']); ?>
         <?php endif; ?>
       </div>
+    </section>
     </section>
     </div>
     <!-- End City Branding and Account Links -->
@@ -140,11 +143,6 @@
       <?php print render($page['content']); ?>
     </div>
     <!--/.main region -->
-      <?php if (!empty($page['sidebar_shareit'])): ?>
-      <aside role="complementary" class="<?php print $sidebar_first_grid; ?> sidebar-shareit columns sidebar2">
-        <div class='first'><?php print render($page['sidebar_shareit']); ?> </div>
-      </aside>
-    <?php endif; ?>
       <?php if (!empty($page['sidebar_activity'])): ?>
       <aside role="complementary" class="<?php print $sidebar_first_grid; ?> sidebar-activity columns sidebar2">
         <div class='first'><?php print render($page['sidebar_activity']); ?> </div>

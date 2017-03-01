@@ -8,11 +8,8 @@
  *   The form state.
  */
 function adult_programme_form_system_theme_settings_alter(&$form, &$form_state) {
-    $form['custom_color'] = array(
+    /*$form['custom_color'] = array(
     '#type' => 'vertical_tabs',
-   /* '#attached' => array(
-      'js'  => array(drupal_get_path('theme', 'zurb_foundation') . '/js/foundation.min.js'),
-    ),*/
     '#prefix' => '<h2><small>' . t('Color Palettes') . '</small></h2>',
     '#weight' => -10,
   );
@@ -37,5 +34,5 @@ function adult_programme_form_system_theme_settings_alter(&$form, &$form_state) 
       'cs-classic' => t('classic'),
       'cs-elegant' => t('elegant'),
     ),
-  );
+  );*/
 }
