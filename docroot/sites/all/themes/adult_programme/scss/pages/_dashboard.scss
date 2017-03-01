@@ -2,8 +2,8 @@ p.more-link {
   position: relative;
   padding-right: 18px;
   a {
-    @include bold-font;
-    color: $white;
+    @include semibold-font;
+    color: $black;
      &:after {
       content: ">";
       display: inline-block;
@@ -81,19 +81,24 @@ p.more-link {
       flex: 0 0 calc(100% - 20px);
 
       * {
-        color: $white;
+        color: $black;
       }
     }
 
     .likes {
       flex: 0 0 100%;
       padding-left: 20px;
+       span::after {
+         background: url("../images/star-dashboard.png") no-repeat;
+         background-position: 0 0;
+       }
     }
   }
 }
 
 .my-dashbord-block {
   @extend .primary-background;
+  background: $secondary-background !important;
   padding-bottom: 25px;
   -webkit-flex-wrap: wrap;
       flex-wrap: wrap;
@@ -239,7 +244,7 @@ p.more-link {
       .cs-default & {
         @extend .purple;
         color: $white;
-        padding: 9px 14px 4px;
+        padding: 7px 14px 6px;
       }
       .cs-classic & {
         @extend .red;
@@ -265,8 +270,9 @@ p.more-link {
     .item-list {
       padding-left: 20px;
       padding-right: 20px;
+      border-radius: 10px;
        .cs-default & {
-    background: $yellow;
+    background: $footer-color;
   }
   .cs-classic & {
      @extend .light-blue;
@@ -289,8 +295,9 @@ p.more-link {
           color: $dark-blue;
           margin-bottom: 10px;
           .cs-default & {
-            padding: 9px 14px 4px;
+            padding: 7px 14px 6px;
             color: $white;
+            background: $secondary-background;
           }
           .cs-elegant & {
             padding: 4px 14px 4px;
@@ -333,9 +340,10 @@ p.more-link {
   margin-bottom: 35px;
   @include primary_fsize;
   @include body-font;
-     color: $white;
+     color: $black;
+     border-radius: 10px;
       .cs-default & {
-         background: $purple;
+         background: $footer-color;
       }
       .cs-classic & {
         background: $dark-blue;
@@ -348,15 +356,12 @@ p.more-link {
 
     .portlet-header {
 
-
+      border-radius: 10px 10px 0 0;
       padding: 8px 10px 3px 80px !important;
       border: none !important;
       position: relative;
       .cs-default & {
-         background: #7cb301 !important;
-          background: -webkit-radial-gradient(#7cb301, #6d9c05, #74a703) !important;
-          background: -moz-radial-gradient(#7cb301, #6d9c05, #74a703) !important;
-          background: radial-gradient(#7cb301, #6d9c05, #74a703) !important;
+         background: $secondary-background !important;
 
       }
       .cs-classic & {
@@ -410,7 +415,7 @@ p.more-link {
 
         &.portlet-close {
           .cs-default & {
-            background-position: -20px -1639px;
+            background-position: -20px -1505px;
           }
 
           .cs-classic & {
@@ -424,7 +429,7 @@ p.more-link {
 
         &.portlet-minus {
           .cs-default & {
-            background-position: -20px -727px;
+            background-position: -20px -593px;
           }
 
           .cs-classic & {
@@ -438,7 +443,7 @@ p.more-link {
 
         &.portlet-plus {
           .cs-default & {
-            background-position: -20px -928px;
+           background-position: -20px -794px;
           }
 
           .cs-classic & {
@@ -470,7 +475,7 @@ p.more-link {
 
   .view-header {
     * {
-      color: $white;
+      color: $black;
 
       @include button-font;
 
@@ -549,7 +554,11 @@ p.more-link {
       }
     }
     a.btn.btn-large.full {
-      @extend .button;
+      @extend .teen-button;
+      background: $purple;
+      color: $white;
+      padding: 7px 14px 6px;
+      text-align: center;
       display: inline-block;
       width: 100%;
     }
@@ -607,7 +616,7 @@ p.more-link {
 
   &.dashboard-following {
     a {
-      color: $white;
+      color: $black;
     }
     .portlet-header .portlet-title::before {
       background-position: -9px -352px;
