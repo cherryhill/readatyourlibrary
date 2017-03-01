@@ -185,6 +185,7 @@
      white-space: nowrap;
       }
       @extend h4;
+      @include button-font;
       margin: 0;
        * {
         font-family: inherit;
@@ -197,6 +198,7 @@
   .book-user-likes {
     > div {
       @extend h5;
+      @include button-font;
       padding-left: 23px;
       margin: 0;
 
@@ -217,12 +219,7 @@
         font-size: inherit;
         }
         @extend .likes;
-        span:after {
-          right: -2px;
-          .cs-default & {
-            top: -5px;
-          }
-        }
+
       }
     }
   }

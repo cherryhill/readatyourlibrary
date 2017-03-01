@@ -28,6 +28,7 @@
     display: inline-block;
     width: 100%;
     @extend h4;
+    @include button-font;
   }
   .bookreview_title {
     a {
@@ -42,17 +43,14 @@
     float: left;
     width: 78%;
     @extend h5;
+    @include button-font;
   }
   .like-count {
     float: right;
     @extend h5;
+    @include button-font;
     @extend .likes;
-    span:after {
-      right: -2px;
-       .cs-default & {
-        top: -5px;
-       }
-    }
+
   }
   .date-wrapp {
     clear: both;

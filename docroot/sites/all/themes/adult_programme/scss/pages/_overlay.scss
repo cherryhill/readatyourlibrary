@@ -33,6 +33,7 @@
   }
   .reviewer {
     @extend h5;
+    @include button-font;
   }
   .created, .avatar {
     margin-right: 7px;
@@ -76,12 +77,12 @@
         width: 25px;
         height: 25px;
         display: inline-block;
-        background: url("../images/star-sprite") no-repeat scroll center center;
+        background: url("../images/adult-spritesheet") no-repeat scroll center center;
         position: absolute;
-        right: 7px;
-        top: 0px;
+        right: 3px;
+        top: 6px;
         .cs-default & {
-          background-position: -16px -204px;
+         background-position: -21px -1134px;
         }
         .cs-classic & {
           background-position: -16px -147px;

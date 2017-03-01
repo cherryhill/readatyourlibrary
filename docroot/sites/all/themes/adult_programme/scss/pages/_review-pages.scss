@@ -16,12 +16,15 @@
   .view-filters {
     margin-top: 23px;
 
-    @extend .primary-background;
+
 
     .cs-default & {
-      background: url("../images/background.jpeg");
+      background: $secondary-background;
       padding: 8px 24px 4px;
-      background-size: cover;
+      color: $white;
+      @include body-font;
+       border-radius: 0;
+
     }
 
     .cs-classic & {
@@ -65,8 +68,9 @@
 
   .chosen-container {
     .chosen-single {
+      border-radius: 8px;
       &:hover, &:focus {
-        border-radius: 0;
+        border-radius: 8px;
       }
 
       b {
@@ -131,8 +135,6 @@
 
     a {
       @extend .main-button;
-
-      border-radius: 0;
       border: none;
       height: auto;
       width: 100%;
@@ -163,13 +165,13 @@
         position: relative;
         padding: 10px 10px 10px 60px;
         border-bottom: 1px solid #f2f2f2;
-        color: $white;
+        color: $purple;
 
         &:after {
           content: "";
           width: 48px;
           height: 100%;
-          background: url("../images/review-spritesheet");
+          background: url("../images/adult-spritesheet");
           display: block;
           position: absolute;
           left: 10px;
@@ -179,11 +181,7 @@
         &.activity-review {
           .page-activities-listing.cs-default & {
             background: $white;
-            color: #7db600;
 
-            &:after {
-              background-position: 0px -15px;
-            }
           }
 
           .page-activities-listing.cs-classic & {
@@ -205,94 +203,45 @@
           }
 
           &:after {
-            background-position: 0px -1199px;
+           background-position: 0px -1672px;;
           }
         }
 
         &.book-review {
           &:after {
-            background-position: -3px -1333px;
+            background-position: -3px -1933px;
           }
         }
 
         &.booklist-review {
           &:after {
-            background-position: -3px -1265px;
+            background-position: -3px -1738px;
           }
         }
 
         &.movie-review {
           &:after {
-            background-position: -4px -1400px;
+            background-position: -4px -1802px;
           }
         }
 
         &.music-review {
           &:after {
-            background-position: -4px -1462px;
+            background-position: -4px -1866px;
           }
         }
 
         &.video-review {
           &:after {
-            background-position: -8px -1530px;
+            background-position: -8px -2003px;
           }
         }
 
         .cs-default & {
-          background: #7db600;
+          background: $footer-color;
 
           &:hover, &:focus, &.active {
             background: $white;
-            color: #7db600;
-          }
-
-          &.activity-review {
-            &:hover, &:focus, &.active {
-              &:after {
-                background-position: 0px -15px;
-              }
-            }
-          }
-
-          &.book-review {
-            &:hover, &:focus, &.active {
-              &:after {
-                background-position: -3px -150px;
-              }
-            }
-          }
-
-          &.booklist-review {
-            &:hover, &:focus, &.active {
-              &:after {
-                background-position: -3px -82px;
-              }
-            }
-          }
-
-          &.movie-review {
-            &:hover, &:focus, &.active {
-              &:after {
-                background-position: -4px -215px;
-              }
-            }
-          }
-
-          &.music-review {
-            &:hover, &:focus, &.active {
-              &:after {
-                background-position: -4px -277px;
-              }
-            }
-          }
-
-          &.video-review {
-            &:hover, &:focus, &.active {
-              &:after {
-                background-position: -8px -347px;
-              }
-            }
           }
         }
 
@@ -416,31 +365,6 @@
 
 h2.reviews-title, .view-booklist-slideshow .view-header h1 {
   @extend h1;
-
-  margin-top: 0;
-  background-size: 100%;
-  background-repeat: repeat;
-  margin-bottom: 10px;
-  width: calc(100% + 40px);
-  margin-left: -40px;
-
-  .cs-default & {
-    background-image: url("../images/yellowbrushstroke_lg.png");
-    padding: 27px 10px 30px 40px;
-    color: $purple;
-  }
-
-  .cs-classic & {
-    background-image: url("../images/redbrushstroke_lg.png");
-    color: $dark-blue;
-    padding: 24px 10px 30px 40px;
-  }
-
-  .cs-elegant & {
-    background-image: url("../images/bluebrushstroke_lg.png");
-    color: $gray;
-    padding: 24px 10px 30px 40px;
-  }
 }
 
 .section-movie-review,
@@ -477,13 +401,7 @@ h2.reviews-title, .view-booklist-slideshow .view-header h1 {
     padding-left: 22px;
   }
 
-  .likes span::after {
-    .cs-default & {
-      top: -5px;
-    }
 
-    right: -2px;
-  }
 
   .title {
     width: 100%;
