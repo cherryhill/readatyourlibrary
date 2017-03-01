@@ -89,12 +89,15 @@
         </div> -->
       </div>
       <div class="write-review">
+      <h3>2. Write A Review</h3>
         <?php
-          $block = block_load('play_progress_bingo_cards', 'create_reviews_block');
-          $render_block = _block_get_renderable_array(_block_render_blocks(array($block)));
-          $output = drupal_render($render_block);
-          print $output;
+           
+          print(drupal_render(drupal_get_form('pl_progress_create_reviews')));
+
         ?>
+        <div><h3><a href="node/add/booklist">3. Create A Booklist</a></h3>
+             <span>Earn a raffle ticket when your Review or Booklist gets approved.</span>
+        </div>
       </div>
     </div>
     <div class="bingo-progress-main"><?php 
