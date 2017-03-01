@@ -88,6 +88,14 @@
           <button id="pg-report">Submit</button>
         </div> -->
       </div>
+      <div class="write-review">
+        <?php
+          $block = block_load('play_progress_bingo_cards', 'create_reviews_block');
+          $render_block = _block_get_renderable_array(_block_render_blocks(array($block)));
+          $output = drupal_render($render_block);
+          print $output;
+        ?>
+      </div>
     </div>
     <div class="bingo-progress-main"><?php 
       global $user;

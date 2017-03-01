@@ -19,7 +19,7 @@
 
 <!-- Tpl file for children progress page -->
 <div class="progress-page-wrap">
-<div class="print-pdf"><button class="printBtn hidden-print">Print Calendar</button></div>
+<div class="print-pdf"><button id ="print_button" class="printBtn hidden-print">Print Calendar</button></div>
 	<div id='wrap' class="wrap">
     <div class= 'sticker-block' id='sticker-wrap'>
       <span class="prog-name"><h2> <?php print(t("Kids Summer Reading")) ?> </h2></span>

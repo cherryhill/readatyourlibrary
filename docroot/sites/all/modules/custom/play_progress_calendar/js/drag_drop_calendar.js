@@ -10,14 +10,16 @@
       });
 
 
+
     //
     $('.printBtn').on('click', function (){
+      var baseUrl = Drupal.settings.basePath;
       $(".progress-page-wrap").printThis({
         debug: false,               //* show the iframe for debugging
         importCSS: true,            //* import page CSS
         importStyle: false,         //* import style tags
         printContainer: true,       //* grab outer container as well as the contents of the selector
-        loadCSS: "http://localhost/kids17/playatyourlibrary/docroot/sites/all/themes/kids_programme/css/custom.css",  //* path to additional css file - use an array [] for multiple
+        loadCSS: baseUrl + "sites/all/themes/kids_programme/css/custom.css",  //* path to additional css file - use an array [] for multiple
         pageTitle: "",              //* add title to print page
         removeInline: false,        //* remove all inline styles from print elements
         printDelay: 333,            //* variable print delay; depending on complexity a higher value may be necessary
@@ -45,6 +47,7 @@
           revertDuration: 0  //  original position after the drag
         });
       });
+
 
       function update_result(result){
               console.log(result);
