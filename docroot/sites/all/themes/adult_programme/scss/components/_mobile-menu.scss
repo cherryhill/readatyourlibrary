@@ -34,15 +34,12 @@
         font-size: 17px;
 
         .cs-default & {
-          @extend .yellow;
+         background: $secondary-background;
 
-          color: $purple;
+          color: $white;
           padding: 9px 14px 5px;
-          border-bottom: 1px solid $purple;
+          border-bottom: 1px solid $footer-color;
 
-          &.active, &:focus {
-            @extend .yellow-btn-hover-default;
-          }
         }
 
         .cs-classic & {
@@ -66,23 +63,15 @@
           position: relative;
 
           &.new {
-            &:before {
-              .cs-default & {
-                background-position: -20px -1209px;
-              }
-            }
+
+
 
             .cs-default &, .cs-classic & {
-              @extend .msg-blue;
+             background: $pink;
 
               @extend .white-text;
 
-              &:hover, &:focus {
-                @extend .msg-blue;
 
-                @extend .white-text;
-                border-bottom: 1px solid $white;
-              }
             }
 
             .cs-elegant & {
@@ -93,9 +82,9 @@
           position: relative;
 
           .cs-default & {
-            @extend .yellow;
+            background: $secondary-background;
 
-            color: $purple;
+            color: $white;
             padding: 9px 14px 5px 50px;
 
             &:hover, &:focus {
@@ -129,9 +118,7 @@
             background: url("../images/teen-spritesheet");
             background-position: -20px -1209px;
 
-            .cs-default & {
-              background-position: -20px -1265px;
-            }
+
           }
         }
       }
@@ -156,17 +143,20 @@
         display: inline-block;
         text-align: center;
         background: red;
-        border-bottom: 1px solid #fff;
+        border-bottom: 1px solid $footer-color;
         padding: 10px 0px;
         color: $white;
         position: relative;
         font-size: 15px;
         @include heading-font;
         .cs-default & {
-          @extend .green-gradiant;
+           background: -webkit-linear-gradient(top, rgb(96, 106, 166) 0%, rgb(41, 41, 117) 86%, rgb(57, 63, 131) 100%);
+background: -o-linear-gradient(top, rgb(96, 106, 166) 0%, rgb(41, 41, 117) 86%, rgb(57, 63, 131) 100%);
+background: -ms-linear-gradient(top, rgb(96, 106, 166) 0%, rgb(41, 41, 117) 86%, rgb(57, 63, 131) 100%);
+background: -moz-linear-gradient(top, rgb(96, 106, 166) 0%, rgb(41, 41, 117) 86%, rgb(57, 63, 131) 100%);
+background: linear-gradient(to bottom, rgb(96, 106, 166) 0%, rgb(41, 41, 117) 86%, rgb(57, 63, 131) 100%);
           &:focus,&.active {
-            color: $purple;
-            border-bottom: 1px solid $purple;
+             background: $secondary-background;
           }
         }
 
@@ -216,9 +206,7 @@
               background-position: -16px -2193px;
             }
 
-            &:focus:before, &.active:before{
-              background-position: -16px -2138px;
-            }
+
           }
 
           .cs-classic & {
@@ -246,9 +234,7 @@
               background-position: -9px -92px;
             }
 
-            &:focus:before, &.active:before{
-              background-position: -9px -20px;
-            }
+
           }
 
           .cs-classic & {
@@ -275,9 +261,7 @@
               background-position: -5px -2737px;
             }
 
-            &:focus:before, &.active:before{
-              background-position: -5px -2664px;
-            }
+
           }
 
           .cs-classic & {
@@ -304,9 +288,7 @@
               background-position: -5px -450px;
             }
 
-            &:focus:before, &.active:before{
-              background-position: -5px -380px;
-            }
+
           }
 
           .cs-classic &  {
@@ -327,28 +309,22 @@
           }
         }
 
-        &.reviews {
+       &.reviews {
           .page-booklists.cs-default &,
           .page-movie-review.cs-default &,
           .page-music-review.cs-default &,
           .page-video-game-review.cs-default &,
           .page-activities-list.cs-default &,
           .page-activities-listing.cs-default & {
-            color: $purple;
-            border-bottom: 1px solid $purple;
-            &:after {
-              background-position: -2px -2306px;
-            }
+           background: $secondary-background;
 
           }
           .cs-default & {
-            &:after {
+            &:before {
               background-position: -2px -2379px;
             }
 
-            &:hover:after, &:focus:after, &.active:after {
-              background-position: -2px -2306px;
-            }
+
           }
           .page-booklists.cs-classic &,
           .page-movie-review.cs-classic &,
@@ -358,16 +334,16 @@
           .page-activities-listing.cs-classic & {
             color: $red;
             border-bottom: 1px solid $red;
-             &:after {
+             &:before {
                background-position: -2px -2597px;
              }
           }
           .cs-classic &  {
-              &:after {
+              &:before {
               background-position: -2px -2524px;
             }
 
-            &:hover:after, &:focus:after, &.active:after {
+            &:hover:before, &:focus:before, &.active:before {
               background-position: -2px -2597px;
             }
           }
@@ -379,16 +355,16 @@
           .page-activities-listing.cs-elegant & {
             color: $gray;
             border-bottom: 1px solid $gray;
-             &:after {
+             &:before {
                background-position: -2px -2452px;
              }
           }
           .cs-elegant & {
-              &:after {
+              &:before {
               background-position: -2px -2379px;
             }
 
-            &:hover:after, &:focus:after, &.active:after {
+            &:hover:before, &:focus:before, &.active:before {
               background-position: -2px -2452px;
             }
           }
@@ -400,9 +376,7 @@
               background-position: -8px -1380px;
             }
 
-            &:focus:before, &.active:before{
-              background-position: -8px -1314px;
-            }
+
           }
 
           .cs-classic & {
@@ -430,9 +404,7 @@
               background-position: -8px -1728px;
             }
 
-            &:focus:before, &.active:before{
-              background-position: -8px -1650px;
-            }
+
           }
 
           .cs-classic & {
@@ -462,6 +434,8 @@
 
 .mobile-menu-wrapper {
   display: none;
+  width: 100%;
+  margin-top: 10px;
 }
 .mobile-top-header {
   display: none;/**temporary*/
