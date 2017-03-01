@@ -34,6 +34,7 @@
   text-transform: capitalize;
   text-decoration: none;
   transition: all linear 0.5s;
+  border-radius: 8px;
   &:hover {
     text-decoration: underline;
   }
@@ -108,7 +109,7 @@
 
 
  .page-messages.cs-default & {
-    font-size: 26px;
+    font-size: 28px;
      font-family: $Special-elite;
     font-weight: 400;
   }
@@ -144,6 +145,7 @@
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
     -moz-font-smoothing: grayscale;
+    border-radius: 10px;
 
   }
 
@@ -377,7 +379,7 @@ table.sticky-header {
       @extend .message-button;
       height: auto;
       border: none;
-      border-radius: 0;
+      border-radius: 8px;
       width: 100%;
       top: 2px;
     }
@@ -399,48 +401,8 @@ table.sticky-header {
     }
   }
 }
-/* .chosen-drop {
 
 
-  .page-messages.cs-default & {
-    top: 40px;
-    @extend .yellow;
-    color: $black;
-  }
-  .page-messages.cs-classic & {
-    top: 40px;
-    @extend .light-orange;
-    color: $white;
-  }
-  .page-messages.cs-elegant & {
-    top: 40px;
-    @extend .light-orange;
-    color: $white;
-  }
-} */
-.pagination.pager {
-  li {
-    &.current {
-      a {
-        .page-messages.cs-default &, .page-messages.cs-classic &,
-        .page-messages.cs-elegant & {
-          background: $yellow;
-          color: $black;
-        }
-      }
-    }
-    a {
-      &:hover,&:focus {
-        .page-messages.cs-default &, .page-messages.cs-classic &,
-        .page-messages.cs-elegant &
-        {
-          background: $yellow;
-          color: $black;
-        }
-      }
-    }
-  }
-}
 .row.l-main {
   select.form-select {
     .page-messages.cs-default & {
