@@ -221,6 +221,7 @@ function payl_program_customizations_permission() {
 /Function to prinf activity review list box links
 */
 function play_library_program_review_selectlist($nid){
+  global $user;
  //query to retun reqired field values
   $que = db_select('field_data_field_activity_list', 'fdfal');
   $que->JOIN('field_data_field_label_for_read_review' , 'fdflfrr', 'fdflfrr.entity_id=fdfal.entity_id');
@@ -261,15 +262,16 @@ function play_library_program_review_selectlist($nid){
       '#default_value' => '--Select an activity--',
       '#attributes' => array('class'=>array('activity-form-element'),'urls'=>array($value->field_read_review_url)),
       );
-
-    $form['write activity'] = array(
-      '#type' => 'select',
-      '#title' => $res[0]->field_label_for_write_review_value,
-      '#options' => $activity_write_fields_title,
-      '#multiple' => FALSE,
-      '#default_value' => '--Select an activity--',
-      '#attributes' => array('class'=>array('activity-form-element')),
+    if($user->uid > 0) {
+      $form['write activity'] = array(
+        '#type' => 'select',
+        '#title' => $res[0]->field_label_for_write_review_value,
+        '#options' => $activity_write_fields_title,
+        '#multiple' => FALSE,
+        '#default_value' => '--Select an activity--',
+        '#attributes' => array('class'=>array('activity-form-element')),
       );
+    }
     return $form;
   }
   else{
