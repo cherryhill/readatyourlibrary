@@ -71,6 +71,7 @@ function pl_leaderboard_page() {
     $query->fields('eck_act', array('uid'));
     $query->fields('u', array('name'));
     $query->groupBy('eck_act.uid');
+    $query->orderBy('act_entry.field_activity_entry_activity_target_id', 'DESC');
     $result = $query->execute()->fetchAll();
     $out ='';
     $out .= '<div><ol>';
