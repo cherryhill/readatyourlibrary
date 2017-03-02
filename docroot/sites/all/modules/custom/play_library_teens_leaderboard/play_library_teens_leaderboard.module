@@ -151,6 +151,7 @@ function leader_board_teens_dashboard() {
     $query->fields('eck_act', array('uid'));
     $query->fields('u', array('name'));
     $query->groupBy('eck_act.uid');
+    $query->orderBy('label', 'DESC');
     $query->range(0, 5);
     $result = $query->execute()->fetchAll();
     $out ='';
