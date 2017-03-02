@@ -4,131 +4,38 @@
   }
 }
 
-div.progress-page {
-  @extend .primary-background;
-
-  h1#title {
+.bingo-progress-page {
+  background: $purple;
+  color: $white;
+  h1#title,.progress-wrap > div:not(.bingo-progress-main) * {
     color: inherit;
-    margin-bottom: 0;
+  }
+  .user-info {
+    color: $purple;
+    background: $footer-color;
+    padding: 20px;
+    border-radius: 10px;
+     .uname {
+       @extend h3;
+       color: $purple !important;
+     }
   }
 
-  button.print_pg {
-    margin-bottom: 0;
+  .activities {
     position: relative;
-    padding-left: 35px;
-      &:after {
-         content: "";
-         width: 30px;
-         height: 100%;
-         background: url("../images/dashboard-icons") no-repeat;
-         position: absolute;
-         display: inline-block;
-         left: 7px;
-         top: 1px;
-         background-position: -20px -1052px;
-          .cs-default & {
-              background-position: -20px -992px;
-          }
-      }
-
-    @extend .post-footer.contain-to-grid;
-
-    .cs-default & {
-      @extend .white-text;
+       color: $purple;
+    border-radius: 10px;
+    > div {
+       background: $white;
+       height: 100%;
+       padding: 20px;
     }
 
-    color: $dark-blue;
-  }
 
-  .progress-desc {
-    p {
-      @include bold-font;
-    }
-  }
-
-  .user-desc {
-    @extend .post-footer.contain-to-grid;
-
-    * {
-      .cs-default & {
-        @extend .white-text;
-      }
-
-      color: $dark-blue;
-    }
-
-    padding: 25px 14px;
-
-    .point-status > div {
-      padding-right: 0;
-    }
-
-    .avatar-id {
-      @include button-font;
-
-      img {
-        padding-right: 10px;
-      }
-    }
-  }
-
-  .progress-wrap {
-    margin-top: 25px;
-    margin-bottom: 25px;
-
-
-    .report-acivity {
-       @extend .primary-color;
-       * {
-        @extend .primary-color;
-       }
-      background: $white;
-
-      input.submit {
-        margin-left: 20px;
-
-        @extend .teen-button;
-        color: $white;
-        .cs-default & {
-          background: $purple;
-           padding: 9px 14px 4px;
-        }
-
-        .cs-classic & {
-          background: $medium-blue;
-           padding: 3px 14px 5px;
-        }
-
-        .cs-elegant & {
-          background: $green;
-          color: $gray;
-           padding: 4px 14px;
-        }
-      }
-
-      h1 {
-        @extend h3;
-
-        margin-top: 0;
-        margin-bottom: 0;
-        padding: 20px 20px 0;
-      }
-
-      form {
-        .form-item-activity-progress-select {
-          margin-top: 0;
-          margin-bottom: 0;
-          padding: 0px 20px 20px;
-
-          label {
-            @extend .primary-color;
-
-            @include primary_fsize;
-
-            @include body-font;
-          }
-
-          .chosen-container {
+     *:not(button) {
+       color: inherit;
+     }
+    .chosen-container {
             @include primary_fsize;
 
             a.chosen-single {
@@ -183,164 +90,48 @@ div.progress-page {
               }
             }
           }
-        }
-
-        .container-inline-date {
-          .form-item-date {
-            margin-right: 0;
-            width: 100%;
-            display: inline-block;
-            display: flex;
-            display: -webkit-flex;
-            flex-wrap: wrap;
-            -webkit-flex-wrap: wrap;
-            padding: 20px;
-            margin: 0;
-
-            > label, .date-padding {
-              @extend .primary-color;
-
-              @include body-font;
-            }
-
-            > label {
-              padding-right: 10px;
-              flex: 0 0 10%;
-            }
-
-            .date-padding {
-              flex: 0 0 90%;
-
+    form .form-item {
+     &.form-type-select.form-item-activity, &.form-type-date-popup.form-item-date {
+        display: flex;
+        display: -webkit-flex;
+        flex-wrap: wrap;
+        -webkit-flex-wrap: wrap;
+        width: 100%;
+          label {
+            flex: 0 0 150px;
+          }
+          > div , select {
+             flex: 0 0 calc(100% - 150px);
               .form-item-date-date {
-                display: flex;
-                display: -webkit-flex;
-                flex-wrap: wrap;
-                -webkit-flex-wrap: wrap;
-                width: 100%;
-
-                > label {
-                  padding-right: 10px;
-                }
-
-                > label, span {
-                  @extend .primary-color;
-
-                  @include body-font;
-                }
+                 label,input {
+                  display: inline-block;
+                  margin-right: 10px;
+                 }
               }
-            }
           }
-        }
       }
     }
-    .reward-won {
-      background: $white;
-      @extend .primary-color;
-      .view-rewards-dashboard {
-        .view-header {
-          h3 {
-            margin: 0;
-            padding: 20px 20px 0;
-
-             a {
-              color: inherit;
-             }
-          }
-        }
-        .view-content {
-          padding-left: 20px;
-          padding-right: 20px;
-           .reward-hombox-dashboard {
-             div,div * {
-               @include button-font;
-               font-size: 16px;
-             }
+  }
+  .bingo-card,.non-bingo-card {
+    td {
+      border: 1px solid $secondary-background !important;
+    }
+    tr, td {
+       background: $white;
+        &.filled-cell {
+          background: #A3EEF6;
+           * {
+             color: $purple;
+             @include semibold-font;
+             width: 100%;
+             display: inline-block;
            }
-        }
-        .view-footer {
-         padding: 20px;
-          a {
-            @include button-font;
-          }
-        }
-      }
-    }
-    .progress-rewards {
-      display: flex;
-      display: -webkit-flex;
-      align-items: center;
-      .cs-default & {
-          @extend .yellow;
-          color: $purple;
-      }
-      .cs-classic & {
-        @extend .light-blue;
-    color: $dark-blue;
-      }
-      .cs-elegant & {
-         @extend .yellow-btn-elegant;
-         color: $gray;
-      }
-        * {
-          margin: 0 auto;
-          width: calc(100% - 30px);
-          text-align: center;
-          @include button-font;
         }
     }
   }
-  .progress-main {
-    h1 {
-      margin-bottom: 0;
-      @extend .post-footer.contain-to-grid;
-       .cs-default & {
-      @extend .white-text;
-      }
-
-    color: $dark-blue;
-    padding: 15px 0.625em;
-    }
-    .progress-grid {
-      .grid {
-        background-color: $white !important;
-      }
-      .grid.inserted {
-        &.reward-won-cell {
-                .cs-default & {
-           background-color: $yellow !important;
-          color: $purple;
-           * {
-            color: inherit;
-           }
-      }
-      .cs-classic & {
-       background-color: $light-blue !important;
-    color: $dark-blue;
-       * {
-        color: inherit;
-       }
-      }
-      .cs-elegant & {
-        background-color: $yellow-btn-elegant !important;
-         color: $gray;
-         * {
-          color: inherit;
-         }
-      }
-        }
-        vertical-align: top;
-        .date-pg,.title-pg {
-          margin-bottom: 0;
-          font-size: 14px;
-          @include button-font;
-          @extend .primary-color;
-        }
-        .rew {
-          @include button-font;
-          @extend .primary-color;
-          margin-top: 20px;
-        }
-      }
+  .pager {
+    a {
+      text-align: center;
     }
   }
 }
