@@ -12700,15 +12700,15 @@ html {
   border-bottom: 1px solid #32024e;
 }
 /* line 339, ../scss/components/_mobile-menu.scss */
-.page-booklists.cs-default .mobile-menu + ul li a.reviews:after, .page-movie-review.cs-default .mobile-menu + ul li a.reviews:after, .page-music-review.cs-default .mobile-menu + ul li a.reviews:after, .page-video-game-review.cs-default .mobile-menu + ul li a.reviews:after, .page-activities-list.cs-default .mobile-menu + ul li a.reviews:after, .page-activities-listing.cs-default .mobile-menu + ul li a.reviews:after {
+.page-booklists.cs-default .mobile-menu + ul li a.reviews:before, .page-movie-review.cs-default .mobile-menu + ul li a.reviews:before, .page-music-review.cs-default .mobile-menu + ul li a.reviews:before, .page-video-game-review.cs-default .mobile-menu + ul li a.reviews:before, .page-activities-list.cs-default .mobile-menu + ul li a.reviews:before, .page-activities-listing.cs-default .mobile-menu + ul li a.reviews:before {
   background-position: -2px -2306px;
 }
 /* line 345, ../scss/components/_mobile-menu.scss */
-.cs-default .mobile-menu + ul li a.reviews:after {
+.cs-default .mobile-menu + ul li a.reviews:before {
   background-position: -2px -2379px;
 }
 /* line 349, ../scss/components/_mobile-menu.scss */
-.cs-default .mobile-menu + ul li a.reviews:hover:after, .cs-default .mobile-menu + ul li a.reviews:focus:after, .cs-default .mobile-menu + ul li a.reviews.active:after {
+.cs-default .mobile-menu + ul li a.reviews:hover:before, .cs-default .mobile-menu + ul li a.reviews:focus:before, .cs-default .mobile-menu + ul li a.reviews.active:before {
   background-position: -2px -2306px;
 }
 /* line 353, ../scss/components/_mobile-menu.scss */
@@ -12717,15 +12717,15 @@ html {
   border-bottom: 1px solid #e63946;
 }
 /* line 361, ../scss/components/_mobile-menu.scss */
-.page-booklists.cs-classic .mobile-menu + ul li a.reviews:after, .page-movie-review.cs-classic .mobile-menu + ul li a.reviews:after, .page-music-review.cs-classic .mobile-menu + ul li a.reviews:after, .page-video-game-review.cs-classic .mobile-menu + ul li a.reviews:after, .page-activities-list.cs-classic .mobile-menu + ul li a.reviews:after, .page-activities-listing.cs-classic .mobile-menu + ul li a.reviews:after {
+.page-booklists.cs-classic .mobile-menu + ul li a.reviews:before, .page-movie-review.cs-classic .mobile-menu + ul li a.reviews:before, .page-music-review.cs-classic .mobile-menu + ul li a.reviews:before, .page-video-game-review.cs-classic .mobile-menu + ul li a.reviews:before, .page-activities-list.cs-classic .mobile-menu + ul li a.reviews:before, .page-activities-listing.cs-classic .mobile-menu + ul li a.reviews:before {
   background-position: -2px -2597px;
 }
 /* line 366, ../scss/components/_mobile-menu.scss */
-.cs-classic .mobile-menu + ul li a.reviews:after {
+.cs-classic .mobile-menu + ul li a.reviews:before {
   background-position: -2px -2524px;
 }
 /* line 370, ../scss/components/_mobile-menu.scss */
-.cs-classic .mobile-menu + ul li a.reviews:hover:after, .cs-classic .mobile-menu + ul li a.reviews:focus:after, .cs-classic .mobile-menu + ul li a.reviews.active:after {
+.cs-classic .mobile-menu + ul li a.reviews:hover:before, .cs-classic .mobile-menu + ul li a.reviews:focus:before, .cs-classic .mobile-menu + ul li a.reviews.active:before {
   background-position: -2px -2597px;
 }
 /* line 374, ../scss/components/_mobile-menu.scss */
@@ -12734,15 +12734,15 @@ html {
   border-bottom: 1px solid #333333;
 }
 /* line 382, ../scss/components/_mobile-menu.scss */
-.page-booklists.cs-elegant .mobile-menu + ul li a.reviews:after, .page-movie-review.cs-elegant .mobile-menu + ul li a.reviews:after, .page-music-review.cs-elegant .mobile-menu + ul li a.reviews:after, .page-video-game-review.cs-elegant .mobile-menu + ul li a.reviews:after, .page-activities-list.cs-elegant .mobile-menu + ul li a.reviews:after, .page-activities-listing.cs-elegant .mobile-menu + ul li a.reviews:after {
+.page-booklists.cs-elegant .mobile-menu + ul li a.reviews:before, .page-movie-review.cs-elegant .mobile-menu + ul li a.reviews:before, .page-music-review.cs-elegant .mobile-menu + ul li a.reviews:before, .page-video-game-review.cs-elegant .mobile-menu + ul li a.reviews:before, .page-activities-list.cs-elegant .mobile-menu + ul li a.reviews:before, .page-activities-listing.cs-elegant .mobile-menu + ul li a.reviews:before {
   background-position: -2px -2452px;
 }
 /* line 387, ../scss/components/_mobile-menu.scss */
-.cs-elegant .mobile-menu + ul li a.reviews:after {
+.cs-elegant .mobile-menu + ul li a.reviews:before {
   background-position: -2px -2379px;
 }
 /* line 391, ../scss/components/_mobile-menu.scss */
-.cs-elegant .mobile-menu + ul li a.reviews:hover:after, .cs-elegant .mobile-menu + ul li a.reviews:focus:after, .cs-elegant .mobile-menu + ul li a.reviews.active:after {
+.cs-elegant .mobile-menu + ul li a.reviews:hover:before, .cs-elegant .mobile-menu + ul li a.reviews:focus:before, .cs-elegant .mobile-menu + ul li a.reviews.active:before {
   background-position: -2px -2452px;
 }
 /* line 399, ../scss/components/_mobile-menu.scss */
@@ -12797,9 +12797,11 @@ html {
 /* line 463, ../scss/components/_mobile-menu.scss */
 .mobile-menu-wrapper {
   display: none;
+  width: 100%;
+  margin-top: 10px;
 }
 
-/* line 466, ../scss/components/_mobile-menu.scss */
+/* line 468, ../scss/components/_mobile-menu.scss */
 .mobile-top-header {
   display: none;
   /**temporary*/

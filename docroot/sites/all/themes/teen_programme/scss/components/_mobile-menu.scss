@@ -336,17 +336,17 @@
           .page-activities-listing.cs-default & {
             color: $purple;
             border-bottom: 1px solid $purple;
-            &:after {
+            &:before {
               background-position: -2px -2306px;
             }
 
           }
           .cs-default & {
-            &:after {
+            &:before {
               background-position: -2px -2379px;
             }
 
-            &:hover:after, &:focus:after, &.active:after {
+            &:hover:before, &:focus:before, &.active:before {
               background-position: -2px -2306px;
             }
           }
@@ -358,16 +358,16 @@
           .page-activities-listing.cs-classic & {
             color: $red;
             border-bottom: 1px solid $red;
-             &:after {
+             &:before {
                background-position: -2px -2597px;
              }
           }
           .cs-classic &  {
-              &:after {
+              &:before {
               background-position: -2px -2524px;
             }
 
-            &:hover:after, &:focus:after, &.active:after {
+            &:hover:before, &:focus:before, &.active:before {
               background-position: -2px -2597px;
             }
           }
@@ -379,16 +379,16 @@
           .page-activities-listing.cs-elegant & {
             color: $gray;
             border-bottom: 1px solid $gray;
-             &:after {
+             &:before {
                background-position: -2px -2452px;
              }
           }
           .cs-elegant & {
-              &:after {
+              &:before {
               background-position: -2px -2379px;
             }
 
-            &:hover:after, &:focus:after, &.active:after {
+            &:hover:before, &:focus:before, &.active:before {
               background-position: -2px -2452px;
             }
           }
@@ -462,6 +462,8 @@
 
 .mobile-menu-wrapper {
   display: none;
+  width: 100%;
+  margin-top: 10px;
 }
 .mobile-top-header {
   display: none;/**temporary*/
