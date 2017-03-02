@@ -3,14 +3,10 @@
 /**
  * returns user name and user avatar with public profile link.
  */
-function pl_user_avatar_user_name($uid, $style){
+function pl_user_avatar_user_name($uid){
 
   if($uid == ''){
     return FALSE;
-  }
-
-  if($style == ''){
-    $style = 'medium';
   }
 
   global $user;
@@ -29,7 +25,7 @@ function pl_user_avatar_user_name($uid, $style){
 
   $img_uri_query = $result->fetchObject();
   $img_uri = $img_uri_query->uri;
-  $img_path = image_style_url($style, $img_uri);
+  $img_path = file_create_url($img_uri);
   $img = "<img src='$img_path'>";
   return $img.'<a href ="users/public_profile/'.$uid.'">'.$user_name.'</a>';
 }
@@ -51,7 +47,6 @@ function play_library_teens_leaderboard_menu() {
 
 
 function pl_leaderboard_page() {
-  $imgStyle = 'avatar_style';
    $activity = pl_activities_view_select_option();
    $activity_id = array();
    foreach ($activity as $key => $value) {
@@ -80,7 +75,7 @@ function pl_leaderboard_page() {
       $name = $value->name;
       $no_stamp = $value->label;
       $user_uid = $value->uid;
-      $avatar = pl_user_avatar_user_name($user_uid, $imgStyle);
+      $avatar = pl_user_avatar_user_name($user_uid);
       
       $out .= '<li><span>'.$avatar.'</span><span>'. $no_stamp. ' '. 'stamps</span></li>';
 
@@ -132,7 +127,6 @@ function play_library_teens_leaderboard_block_view($delta = '') {
  */
 
 function leader_board_teens_dashboard() {
-  $imgStyle = 'avatar_style';
    $activity = pl_activities_view_select_option();
    $activity_id = array();
    foreach ($activity as $key => $value) {
@@ -160,7 +154,7 @@ function leader_board_teens_dashboard() {
       $name = $value->name;
       $no_stamp = $value->label;
       $user_uid = $value->uid;
-      $avatar = pl_user_avatar_user_name($user_uid, $imgStyle);
+      $avatar = pl_user_avatar_user_name($user_uid);
       
       $out .= '<li><span>'.$avatar.'</span><span>'. $no_stamp. 'stamps</span></li>';
 

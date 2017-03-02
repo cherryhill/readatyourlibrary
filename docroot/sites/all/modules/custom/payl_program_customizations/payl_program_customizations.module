@@ -106,6 +106,7 @@ function payl_program_customizations_form_alter(&$form, &$form_state, $form_id) 
         '#value' => '',
       );
     }
+    $form['#submit'][] = 'email_notification_settings';
   }
 
   //To provide a message if user has no email mentioned during registration
@@ -277,4 +278,19 @@ function play_library_program_review_selectlist($nid){
   else{
     return False;
   }
+}
+
+
+// function for email notification settings.
+function email_notification_settings($form, &$form_state) {
+  $user_uid = $form['#user']->uid;
+  $email_not_field_value = $form['#user']->profile_main['field_receive_notifications'][LANGUAGE_NONE][0]['value'];
+    if($email_not_field_value == 'no') {
+       $insert_query = db_insert('pm_email_notify')
+        ->fields(array(
+          'user_id'=>$user_uid,
+          'email_notify_is_enabled'=>0,
+          ));
+        $insert_query->execute();
+    }
 }

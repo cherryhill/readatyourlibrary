@@ -16,6 +16,13 @@ function sso_user_redirect_user_login(&$edit, $account) {
         }
       
 	}
+  if($_REQUEST['form_id'] == 'user_register_form') {
+    global $user;
+    $prof = profile2_by_uid_load($user->uid, 'main');
+    if(empty($prof->pid)) {
+      $_GET['destination'] = '<front>';
+    }
+  }
 	
 }
 
