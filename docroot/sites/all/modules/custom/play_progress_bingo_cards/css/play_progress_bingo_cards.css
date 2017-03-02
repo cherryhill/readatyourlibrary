@@ -1,4 +1,4 @@
-.bingo-card, .non-bingo-card {
+/*.bingo-card, .non-bingo-card {
 	width: 45%;
 	display:inline-block;
 	text-align:  center;
@@ -23,16 +23,14 @@
 	background: purple;
 	color: #ffffff;
 	text-align: center;
-	/*height: auto;*/
-	/*background: url("/sites/all/themes/libraryzurb/images/libraryzurb/header-background.png");*/
+
 }
 
 .non-bingo-card .filled-cell {
 	background: purple;
 	color: #ffffff;
 	text-align: center;
-	/*height: auto;*/
-	/*background: url("/sites/all/themes/libraryzurb/images/libraryzurb/header-background.png");*/
+
 }
 .non-bingo-card table td{
 	background: blue;
@@ -53,7 +51,7 @@
 }
 .report-acivity .chosen-container{
 	width: 90% !important;
-	/*text-align: center;*/
+
 }
 
 .block-play-progress-bingo-cards{
@@ -71,11 +69,11 @@
 }
 
 .user-points{
-	/*text-align: right;*/
+
 	padding: 20px 20px ;
 	color: #ffffff;
 	display: inline-block;
-	/*width: 15%*/
+
 }
 
 .rewards-info{
@@ -124,4 +122,89 @@
 
 .progress-wrap{
 	color: #ffffff;
+}*/
+.bingo-progress-page {
+	width: 100%;
+	display: inline-block;
+	margin-bottom: 25px;
+	box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+	padding: 15px;
+}
+.bingo-progress-page .title {
+	width: 100%;
+	display: flex;
+	flex-wrap: wrap;
+	display: -webkit-flex;
+	-webkit-flex-wrap: wrap;
+
+}
+.bingo-progress-page .title > div {
+	flex: 0 0 50%;
+}
+.bingo-progress-page .title > div.print-pdf {
+	text-align: right;
+	margin-top: 10px;
+}
+.bingo-progress-page .user-info {
+	display: flex;
+	width: 100%;
+	align-items: center;
+	display: -webkit-flex;
+	flex-wrap: wrap;
+	-webkit-flex-wrap: wrap;
+	box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+}
+
+.bingo-progress-page .user-info .avatar-block {
+	flex: 0 0 60%;
+}
+.bingo-progress-page .user-info .avatar-block > div{
+	display: table-cell;
+	vertical-align: bottom;
+	padding-left: 10px;
+
+}
+.bingo-progress-page .user-info .user-points {
+	flex: 0 0 20%;
+}
+.bingo-progress-page .user-info .rewards-info {
+	flex: 0 0 20%;
+}
+.bingo-progress-page .progress-wrap {
+	margin-top: 25px;
+}
+.bingo-progress-page .bingo-progress-main {
+	display: flex;
+	width: 100%;
+	display: -webkit-flex;
+	flex-wrap: wrap;
+	-webkit-flex-wrap: wrap;
+}
+.bingo-progress-page .bingo-progress-main > div {
+	flex: 0 0 50%;
+	margin-bottom: 25px;
+}
+.bingo-progress-page .bingo-progress-main > div:nth-child(2n) {
+	padding-left: 10px;
+}
+.bingo-progress-page .bingo-progress-main > div:nth-child(2n + 1) {
+	padding-right: 10px;
+}
+.bingo-progress-page .bingo-progress-main > div  table {
+	width: 100%;
+	display: table;
+}
+.bingo-progress-page .bingo-progress-main > div table tr {
+	width: 100%;
+	display: table-row;
+}
+.bingo-progress-page .bingo-progress-main > div table tr td {
+	width: 33.33%;
+	display: table-cell;
+	height: 150px;
+	border: 1px solid #000;
+}
+.bingo-progress-page .bingo-progress-main .non-bingo-card table tr td {
+	height: calc(150px * 3);
+	text-align: center;
 }
