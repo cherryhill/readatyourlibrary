@@ -400,14 +400,10 @@ function pl_user_node_stamps($uid, $stamps){
 /**
  * returns user name and user avatar
  */
-function pl_user_avatar_progress_page($uid, $style){
+function pl_user_avatar_progress_page($uid){
 
   if($uid == ''){
     return FALSE;
-  }
-
-  if($style == ''){
-    $style = 'medium';
   }
 
   global $user;
@@ -426,7 +422,7 @@ function pl_user_avatar_progress_page($uid, $style){
 
   $img_uri_query = $result->fetchObject();
   $img_uri = $img_uri_query->uri;
-  $img_path = image_style_url($style, $img_uri);
+  $img_path = file_create_url($img_uri);
 
   $img = "<img src='$img_path'>";
   return $img.$user_name;

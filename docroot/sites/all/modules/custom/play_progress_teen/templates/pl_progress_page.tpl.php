@@ -68,7 +68,7 @@
 
 <div class="user-desc">
 <div class="avatar-id">
-	<?php print pl_user_avatar_progress_page($current_uid, $imgStyle); ?>
+	<?php print pl_user_avatar_progress_page($current_uid); ?>
 </div>
 <div class="point-status">
 <div class="activity-status" id = "activity-status">
