@@ -138,7 +138,7 @@
         $act_type = $value->type;
         $node_data[$nid]['type'] = $act_type;
         if($act_type == 'bingo_card'){
-          $node_data[$nid][$value->field_cell_id_value]= array('title'=>$value->field_cell_data_value, 'date'=>date('d-m-Y',strtotime($value->field_bingo_activity_date_value)));
+          $node_data[$nid][$value->field_cell_id_value]= array('title'=>$value->field_cell_data_value, 'date'=>date('m-d-Y',strtotime($value->field_bingo_activity_date_value)));
           $node_data[$nid]['status']= $value->field_card_status_value;
         }
         if($act_type != 'bingo_card'){
@@ -221,8 +221,7 @@
             print("<li class='arrow'><a href='?page=$page_count'>></a></li>");
           }
           print_r('</ul>');
-        }
-      ?>
+        }?>
     </div>
   </div>
 </div>
