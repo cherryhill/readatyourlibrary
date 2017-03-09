@@ -515,6 +515,11 @@ h2.reviews-title, .view-booklist-slideshow .view-header h1 {
       &.views-field-field-user-avatar {
         margin-left: 5px;
         margin-right: 5px;
+        img {
+          width: 32px;
+          height: 32px;
+          object-fit: contain;
+        }
       }
     }
   }
@@ -644,4 +649,17 @@ h2.reviews-title, .view-booklist-slideshow .view-header h1 {
               }
            }
         }
+}
+
+
+.node-type-music-review, .node-type-video-game-review,
+.node-type-movie-review, .page-reviews-patrons,
+.page-reviews-staff, .page-node-add-booklist,
+.page-node-add-movie-review, .page-node-add-review-activity,
+.page-node-add-review-book, .page-node-add-music-review,
+.page-node-add-video-game-review, .node-type-program {
+  #page-title {
+    margin-left: 0;
+    width: 100%;
+  }
 }
