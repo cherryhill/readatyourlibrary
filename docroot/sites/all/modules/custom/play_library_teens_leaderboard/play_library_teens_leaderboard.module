@@ -57,7 +57,7 @@ function pl_leaderboard_page() {
   else{
     //Get all activity ids with firing hook progress_page
     $act_que = db_select('field_data_field_activity_fired_hook', 'firhook');
-    // $act_que-> condition('firhook.field_activity_fired_hook_value', 'progress_page');
+    $act_que-> condition('firhook.field_activity_fired_hook_value', 'progress_page');
     $act_que->fields('firhook', array('entity_id'));
     $activity_ids = $act_que->execute()->fetchAll();
 
@@ -150,7 +150,7 @@ function leader_board_teens_dashboard() {
   else{
     //Get all activity ids with firing hook progress_page
     $act_que = db_select('field_data_field_activity_fired_hook', 'firhook');
-    // $act_que-> condition('firhook.field_activity_fired_hook_value', 'progress_page');
+    $act_que-> condition('firhook.field_activity_fired_hook_value', 'progress_page');
     $act_que->fields('firhook', array('entity_id'));
     $activity_ids = $act_que->execute()->fetchAll();
 
