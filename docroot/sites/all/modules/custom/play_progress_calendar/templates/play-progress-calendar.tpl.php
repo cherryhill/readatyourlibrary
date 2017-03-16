@@ -14,7 +14,6 @@
   // drupal_add_css(drupal_get_path('module', 'play_progress_calendar') . '/fullcalendar/fullcalendar.print.css', array('group' => CSS_DEFAULT, 'every_page' => TRUE));
   drupal_add_css(drupal_get_path('module', 'play_progress_calendar') . '/css/calendar.css', array('group' => CSS_DEFAULT, 'every_page' => TRUE));
   // drupal_add_css(drupal_get_path('module', 'play_progress_calendar') . '/progress.css', array('group' => CSS_DEFAULT, 'every_page' => TRUE));
-
 ?>
 
 <!-- Tpl file for children progress page -->

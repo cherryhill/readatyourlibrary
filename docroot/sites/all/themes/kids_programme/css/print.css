@@ -1,0 +1,3230 @@
+@media print {
+  /*------------variables--------------*/
+  @import url("https://fonts.googleapis.com/css?family=Architects+Daughter|Margarine|McLaren|Open+Sans:400,700|PT+Sans:400,700");
+  /*------------variable--------------*/
+  /*------------------mixin-----------------*/
+  /* line 191, ../scss/print.scss */
+  .font-stroke-main {
+    height: 85px;
+    width: 100%;
+    background: url("../images/stroke");
+    padding-top: 14px;
+    border-radius: 15px 15px 0 0;
+    padding-left: 35px;
+  }
+  /* line 49, ../scss/print.scss */
+  .cs-default .font-stroke-main {
+    font-family: "McLaren", cursive;
+    font-weight: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    -moz-font-smoothing: grayscale;
+  }
+  /* line 58, ../scss/print.scss */
+  .cs-classic .font-stroke-main {
+    font-family: "Architects Daughter", cursive;
+    font-weight: 700;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    -moz-font-smoothing: grayscale;
+  }
+  /* line 67, ../scss/print.scss */
+  .cs-elegant .font-stroke-main {
+    font-family: "Margarine", cursive;
+    font-weight: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    -moz-font-smoothing: grayscale;
+  }
+  /* line 205, ../scss/print.scss */
+  .cs-default .font-stroke-main {
+    background-position: -95px -226px;
+  }
+  /* line 209, ../scss/print.scss */
+  .cs-classic .font-stroke-main {
+    background-position: -95px -569px;
+  }
+  /* line 213, ../scss/print.scss */
+  .cs-elegant .font-stroke-main {
+    background-position: -95px -914px;
+  }
+
+  /* line 218, ../scss/print.scss */
+  .font-stroke-sidebar {
+    height: 85px;
+    width: 100%;
+    background: url("../images/stroke");
+    padding-top: 14px;
+    border-radius: 15px 15px 0 0;
+    padding-left: 30px;
+  }
+  /* line 49, ../scss/print.scss */
+  .cs-default .font-stroke-sidebar {
+    font-family: "McLaren", cursive;
+    font-weight: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    -moz-font-smoothing: grayscale;
+  }
+  /* line 58, ../scss/print.scss */
+  .cs-classic .font-stroke-sidebar {
+    font-family: "Architects Daughter", cursive;
+    font-weight: 700;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    -moz-font-smoothing: grayscale;
+  }
+  /* line 67, ../scss/print.scss */
+  .cs-elegant .font-stroke-sidebar {
+    font-family: "Margarine", cursive;
+    font-weight: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    -moz-font-smoothing: grayscale;
+  }
+  /* line 230, ../scss/print.scss */
+  .cs-default .font-stroke-sidebar {
+    background-position: -60px -239px;
+    font-size: 22px;
+  }
+  /* line 235, ../scss/print.scss */
+  .cs-classic .font-stroke-sidebar {
+    background-position: -60px -583px;
+    font-size: 24px;
+  }
+  /* line 240, ../scss/print.scss */
+  .cs-elegant .font-stroke-sidebar {
+    background-position: -60px -928px;
+    font-size: 25px;
+  }
+
+  /*------------------mixin-----------------*/
+  /*------------------common-----------------*/
+  /* line 252, ../scss/print.scss */
+  .yellow, .yellow-commonblock, .progress-page-wrap #wrap, .cs-default .button, .cs-default button, .cs-elegant .btn.btn-large.msg.new, .cs-default .btn.btn-primary {
+    background: #fdeb52;
+  }
+
+  /* line 256, ../scss/print.scss */
+  .blue, .cs-default .btn, .cs-default .btn.btn-large {
+    background: #267fda;
+  }
+
+  /* line 260, ../scss/print.scss */
+  .dark-blue1 {
+    background: #154c84;
+  }
+
+  /* line 264, ../scss/print.scss */
+  .red, .cs-default .btn.btn-large.msg.new {
+    background: #cc0d25;
+  }
+
+  /* line 269, ../scss/print.scss */
+  .white {
+    background: #fff;
+  }
+
+  /* line 273, ../scss/print.scss */
+  .dark-blue {
+    background: #084899;
+  }
+
+  /* line 277, ../scss/print.scss */
+  .light-orange, .cs-classic .button, .cs-classic button, .cs-elegant .button, .cs-elegant button, .cs-classic .btn.btn-large.msg.new, .cs-classic .btn.btn-primary, .cs-elegant .btn.btn-primary {
+    background: #ff9f1c;
+  }
+
+  /* line 281, ../scss/print.scss */
+  .mint-green {
+    background: #2ec4b6;
+  }
+
+  /* line 285, ../scss/print.scss */
+  .red1, .cs-elegant .btn, .cs-elegant .btn.btn-large {
+    background: #e71d36;
+  }
+
+  /* line 289, ../scss/print.scss */
+  .white-text, .font-stroke-main, .font-stroke-sidebar, .stroke-main, .stroke-sidebar, #page-title {
+    color: #fff;
+  }
+
+  /* line 292, ../scss/print.scss */
+  .green-gradiant {
+    background: #7cb301;
+    background: -webkit-radial-gradient(#7cb301, #6d9c05, #74a703);
+    background: -moz-radial-gradient(#7cb301, #6d9c05, #74a703);
+    background: radial-gradient(#7cb301, #6d9c05, #74a703);
+  }
+
+  /* line 306, ../scss/print.scss */
+  .stroke-main {
+    line-height: 1.4;
+    margin: 0;
+    height: 99px;
+    width: 100%;
+    background: url("../images/stroke");
+    padding-top: 14px;
+    border-radius: 15px 15px 0 0;
+    padding-left: 35px;
+    text-transform: capitalize;
+  }
+  /* line 49, ../scss/print.scss */
+  .cs-default .stroke-main {
+    font-family: "McLaren", cursive;
+    font-weight: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    -moz-font-smoothing: grayscale;
+  }
+  /* line 58, ../scss/print.scss */
+  .cs-classic .stroke-main {
+    font-family: "Architects Daughter", cursive;
+    font-weight: 700;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    -moz-font-smoothing: grayscale;
+  }
+  /* line 67, ../scss/print.scss */
+  .cs-elegant .stroke-main {
+    font-family: "Margarine", cursive;
+    font-weight: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    -moz-font-smoothing: grayscale;
+  }
+  /* line 318, ../scss/print.scss */
+  .stroke-main * {
+    font-size: inherit;
+    font-family: inherit;
+    color: inherit;
+    font-weight: inherit;
+  }
+  /* line 325, ../scss/print.scss */
+  .cs-default .stroke-main {
+    background-position: -95px -226px;
+    font-size: 28px;
+  }
+  /* line 335, ../scss/print.scss */
+  .cs-classic .stroke-main {
+    background-position: -95px -914px;
+    font-size: 29px;
+  }
+  /* line 345, ../scss/print.scss */
+  .cs-elegant .stroke-main {
+    background-position: -95px -569px;
+    font-size: 30px;
+  }
+  /* line 356, ../scss/print.scss */
+  .stroke-sidebar {
+    height: 85px;
+    width: 100%;
+    margin: 0;
+    line-height: 1.4;
+    text-transform: capitalize;
+    background: url("../images/stroke");
+    padding-top: 14px;
+    border-radius: 15px 15px 0 0;
+    padding-left: 30px;
+  }
+  /* line 49, ../scss/print.scss */
+  .cs-default .stroke-sidebar {
+    font-family: "McLaren", cursive;
+    font-weight: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    -moz-font-smoothing: grayscale;
+  }
+  /* line 58, ../scss/print.scss */
+  .cs-classic .stroke-sidebar {
+    font-family: "Architects Daughter", cursive;
+    font-weight: 700;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    -moz-font-smoothing: grayscale;
+  }
+  /* line 67, ../scss/print.scss */
+  .cs-elegant .stroke-sidebar {
+    font-family: "Margarine", cursive;
+    font-weight: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    -moz-font-smoothing: grayscale;
+  }
+  /* line 368, ../scss/print.scss */
+  .cs-default .stroke-sidebar {
+    background-position: -60px -239px;
+    font-size: 22px;
+  }
+  /* line 378, ../scss/print.scss */
+  .cs-classic .stroke-sidebar {
+    background-position: -60px -928px;
+    font-size: 24px;
+  }
+  /* line 388, ../scss/print.scss */
+  .cs-elegant .stroke-sidebar {
+    background-position: -60px -583px;
+    font-size: 25px;
+  }
+  /* line 400, ../scss/print.scss */
+  .primary-background {
+    color: #fff;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+    margin-bottom: 35px;
+    padding-bottom: 15px;
+  }
+  /* line 401, ../scss/print.scss */
+  .cs-default .primary-background, .cs-elegant .primary-background {
+    background: #267fda;
+  }
+  /* line 404, ../scss/print.scss */
+  .cs-classic .primary-background {
+    background: #084899;
+  }
+  /* line 182, ../scss/print.scss */
+  .cs-default .primary-background {
+    font-size: 17px;
+  }
+  /* line 186, ../scss/print.scss */
+  .cs-classic .primary-background, .cs-elegant .primary-background {
+    font-size: 19px;
+  }
+  /* line 78, ../scss/print.scss */
+  .cs-default .primary-background {
+    font-family: "arial";
+    font-weight: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    -moz-font-smoothing: grayscale;
+  }
+  /* line 87, ../scss/print.scss */
+  .cs-classic .primary-background {
+    font-family: "PT Sans", sans-serif;
+    font-weight: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    -moz-font-smoothing: grayscale;
+  }
+  /* line 96, ../scss/print.scss */
+  .cs-elegant .primary-background {
+    font-family: "Open Sans", sans-serif;
+    font-weight: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    -moz-font-smoothing: grayscale;
+  }
+
+  /* line 417, ../scss/print.scss */
+  .view-content {
+    position: relative;
+  }
+  /* line 419, ../scss/print.scss */
+  .view-content .owl-controls {
+    margin-top: 0;
+    width: 100%;
+    position: absolute;
+    top: 40%;
+    left: -26px;
+    height: 0;
+  }
+  /* line 426, ../scss/print.scss */
+  .view-content .owl-controls .owl-pagination {
+    display: none;
+  }
+  /* line 429, ../scss/print.scss */
+  .view-content .owl-controls .owl-buttons {
+    width: calc(100% + 52px);
+    position: relative;
+    display: inline-block;
+    height: 0;
+  }
+  /* line 434, ../scss/print.scss */
+  .view-content .owl-controls .owl-buttons > div {
+    margin: 0;
+    border-radius: 0;
+    color: transparent;
+    background: transparent url("../images/dashboard");
+    padding: 0;
+    opacity: 1;
+  }
+  /* line 442, ../scss/print.scss */
+  .view-content .owl-controls .owl-buttons .owl-prev {
+    float: left;
+    background-position: -20px -595px;
+  }
+  /* line 447, ../scss/print.scss */
+  .view-content .owl-controls .owl-buttons .owl-next {
+    float: right;
+    background-position: -20px -1136px;
+  }
+
+  /* line 455, ../scss/print.scss */
+  .b-padding {
+    padding: 20px 35px 18px;
+  }
+  /* line 457, ../scss/print.scss */
+  .b-padding p {
+    margin: 0;
+  }
+
+  /* line 462, ../scss/print.scss */
+  .margin-0 {
+    margin: 0;
+  }
+
+  /* line 466, ../scss/print.scss */
+  .yellow-commonblock, .progress-page-wrap #wrap {
+    padding: 14px 25px 15px;
+    color: #000;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+    margin-bottom: 35px;
+  }
+  /* line 182, ../scss/print.scss */
+  .cs-default .yellow-commonblock, .cs-default .progress-page-wrap #wrap, .progress-page-wrap .cs-default #wrap {
+    font-size: 17px;
+  }
+  /* line 186, ../scss/print.scss */
+  .cs-classic .yellow-commonblock, .cs-classic .progress-page-wrap #wrap, .progress-page-wrap .cs-classic #wrap, .cs-elegant .yellow-commonblock, .cs-elegant .progress-page-wrap #wrap, .progress-page-wrap .cs-elegant #wrap {
+    font-size: 19px;
+  }
+  /* line 78, ../scss/print.scss */
+  .cs-default .yellow-commonblock, .cs-default .progress-page-wrap #wrap, .progress-page-wrap .cs-default #wrap {
+    font-family: "arial";
+    font-weight: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    -moz-font-smoothing: grayscale;
+  }
+  /* line 87, ../scss/print.scss */
+  .cs-classic .yellow-commonblock, .cs-classic .progress-page-wrap #wrap, .progress-page-wrap .cs-classic #wrap {
+    font-family: "PT Sans", sans-serif;
+    font-weight: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    -moz-font-smoothing: grayscale;
+  }
+  /* line 96, ../scss/print.scss */
+  .cs-elegant .yellow-commonblock, .cs-elegant .progress-page-wrap #wrap, .progress-page-wrap .cs-elegant #wrap {
+    font-family: "Open Sans", sans-serif;
+    font-weight: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    -moz-font-smoothing: grayscale;
+  }
+
+  /*------------------common-----------------*/
+  /*------------------Elements-----------------*/
+  /* line 482, ../scss/print.scss */
+  h1, .font-stroke-main, h2, h3, h4, h5, h6 {
+    font-weight: normal;
+    text-transform: capitalize;
+  }
+  /* line 49, ../scss/print.scss */
+  .cs-default h1, .cs-default .font-stroke-main, .cs-default h2, .cs-default h3, .cs-default h4, .cs-default h5, .cs-default h6 {
+    font-family: "McLaren", cursive;
+    font-weight: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    -moz-font-smoothing: grayscale;
+  }
+  /* line 58, ../scss/print.scss */
+  .cs-classic h1, .cs-classic .font-stroke-main, .cs-classic h2, .cs-classic h3, .cs-classic h4, .cs-classic h5, .cs-classic h6 {
+    font-family: "Architects Daughter", cursive;
+    font-weight: 700;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    -moz-font-smoothing: grayscale;
+  }
+  /* line 67, ../scss/print.scss */
+  .cs-elegant h1, .cs-elegant .font-stroke-main, .cs-elegant h2, .cs-elegant h3, .cs-elegant h4, .cs-elegant h5, .cs-elegant h6 {
+    font-family: "Margarine", cursive;
+    font-weight: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    -moz-font-smoothing: grayscale;
+  }
+
+  /* line 78, ../scss/print.scss */
+  .cs-default p, .cs-default li {
+    font-family: "arial";
+    font-weight: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    -moz-font-smoothing: grayscale;
+  }
+  /* line 87, ../scss/print.scss */
+  .cs-classic p, .cs-classic li {
+    font-family: "PT Sans", sans-serif;
+    font-weight: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    -moz-font-smoothing: grayscale;
+  }
+  /* line 96, ../scss/print.scss */
+  .cs-elegant p, .cs-elegant li {
+    font-family: "Open Sans", sans-serif;
+    font-weight: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    -moz-font-smoothing: grayscale;
+  }
+  /* line 182, ../scss/print.scss */
+  .cs-default p, .cs-default li {
+    font-size: 17px;
+  }
+  /* line 186, ../scss/print.scss */
+  .cs-classic p, .cs-elegant p, .cs-classic li, .cs-elegant li {
+    font-size: 19px;
+  }
+
+  /* line 492, ../scss/print.scss */
+  .cs-default h1, .cs-default .font-stroke-main {
+    font-size: 28px;
+  }
+  /* line 498, ../scss/print.scss */
+  .cs-classic h1, .cs-classic .font-stroke-main {
+    font-size: 29px;
+  }
+  /* line 504, ../scss/print.scss */
+  .cs-elegant h1, .cs-elegant .font-stroke-main {
+    font-size: 30px;
+  }
+  /* line 524, ../scss/print.scss */
+  .cs-default h2 {
+    font-size: 25px;
+  }
+  /* line 530, ../scss/print.scss */
+  .cs-classic h2 {
+    font-size: 27px;
+  }
+  /* line 536, ../scss/print.scss */
+  .cs-elegant h2 {
+    font-size: 28px;
+  }
+  /* line 556, ../scss/print.scss */
+  .cs-default h3 {
+    font-size: 22px;
+  }
+  /* line 559, ../scss/print.scss */
+  .cs-classic h3 {
+    font-size: 24px;
+  }
+  /* line 562, ../scss/print.scss */
+  .cs-elegant h3 {
+    font-size: 25px;
+  }
+  /* line 578, ../scss/print.scss */
+  h4 {
+    font-size: 20px;
+  }
+  /* line 579, ../scss/print.scss */
+  .cs-classic h4 {
+    font-size: 21px;
+  }
+  /* line 585, ../scss/print.scss */
+  .cs-elegant h4 {
+    font-size: 22px;
+  }
+  /* line 608, ../scss/print.scss */
+  h5 {
+    font-size: 17px;
+  }
+  /* line 609, ../scss/print.scss */
+  .cs-classic h5 {
+    font-size: 18px;
+  }
+  /* line 612, ../scss/print.scss */
+  .cs-elegant h5 {
+    font-size: 19px;
+  }
+  /* line 629, ../scss/print.scss */
+  h6 {
+    font-size: 14px;
+  }
+  /* line 630, ../scss/print.scss */
+  .cs-classic h6 {
+    font-size: 15px;
+  }
+  /* line 633, ../scss/print.scss */
+  .cs-elegant h6 {
+    font-size: 16px;
+  }
+
+  /* line 642, ../scss/print.scss */
+  ul, ol, dl {
+    list-style-position: inside;
+  }
+  /* line 182, ../scss/print.scss */
+  .cs-default ul, .cs-default ol, .cs-default dl {
+    font-size: 17px;
+  }
+  /* line 186, ../scss/print.scss */
+  .cs-classic ul, .cs-elegant ul, .cs-classic ol, .cs-elegant ol, .cs-classic dl, .cs-elegant dl {
+    font-size: 19px;
+  }
+
+  /* line 646, ../scss/print.scss */
+  p {
+    margin-bottom: 20px;
+  }
+  /* line 182, ../scss/print.scss */
+  .cs-default p {
+    font-size: 17px;
+  }
+  /* line 186, ../scss/print.scss */
+  .cs-classic p, .cs-elegant p {
+    font-size: 19px;
+  }
+  /* line 649, ../scss/print.scss */
+  .view-content p, .view-header p, .view-footer p {
+    margin-bottom: 0;
+  }
+
+  /* line 654, ../scss/print.scss */
+  li.progress {
+    border: none;
+    outline: none;
+    padding: 0;
+  }
+
+  /* line 660, ../scss/print.scss */
+  a:focus, button:focus {
+    outline: none;
+  }
+
+  /* line 665, ../scss/print.scss */
+  .view-footer button, .view-footer .button {
+    margin-left: 0;
+  }
+
+  /*------------------Elements-----------------*/
+  /*------------------Buttons-----------------*/
+  /* line 679, ../scss/print.scss */
+  .button, button {
+    transition: all linear 0.5s;
+    display: inline-block !important;
+    padding: 6px 24px !important;
+    text-decoration: none;
+    box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+    text-transform: capitalize;
+    border-radius: 10px;
+    border: none;
+    line-height: 26px !important;
+    margin: 10px;
+  }
+  /* line 680, ../scss/print.scss */
+  .button.radius, button.radius {
+    border-radius: 10px;
+  }
+  /* line 49, ../scss/print.scss */
+  .cs-default .button, .cs-default button {
+    font-family: "McLaren", cursive;
+    font-weight: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    -moz-font-smoothing: grayscale;
+  }
+  /* line 58, ../scss/print.scss */
+  .cs-classic .button, .cs-classic button {
+    font-family: "Architects Daughter", cursive;
+    font-weight: 700;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    -moz-font-smoothing: grayscale;
+  }
+  /* line 67, ../scss/print.scss */
+  .cs-elegant .button, .cs-elegant button {
+    font-family: "Margarine", cursive;
+    font-weight: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    -moz-font-smoothing: grayscale;
+  }
+  /* line 697, ../scss/print.scss */
+  .button.postfix.button, button.postfix.button {
+    border-radius: 10px;
+  }
+  /* line 701, ../scss/print.scss */
+  .cs-default .button, .cs-default button {
+    font-size: 17px;
+    color: #000;
+  }
+  /* line 705, ../scss/print.scss */
+  .cs-default .button:hover, .cs-default button:hover {
+    background: #f7fc63;
+  }
+  /* line 708, ../scss/print.scss */
+  .cs-default .button:focus, .cs-default button:focus {
+    background: #f0f811;
+  }
+  /* line 713, ../scss/print.scss */
+  .cs-classic .button, .cs-classic button {
+    font-size: 18px;
+    color: #fff;
+  }
+  /* line 717, ../scss/print.scss */
+  .cs-classic .button:hover, .cs-classic .button:focus, .cs-classic button:hover, .cs-classic button:focus {
+    background: #ff7800;
+  }
+  /* line 721, ../scss/print.scss */
+  .cs-elegant .button, .cs-elegant button {
+    font-size: 19px;
+    color: #fff;
+  }
+  /* line 725, ../scss/print.scss */
+  .cs-elegant .button:hover, .cs-elegant .button:focus, .cs-elegant button:hover, .cs-elegant button:focus {
+    background: #ff7800;
+  }
+
+  /* line 733, ../scss/print.scss */
+  .btn {
+    display: inline-block;
+    padding: 6px 24px;
+    font-size: 21px;
+    text-decoration: none;
+    box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+    text-transform: capitalize;
+    border-radius: 10px;
+    line-height: 30px;
+  }
+  /* line 756, ../scss/print.scss */
+  .cs-classic .btn {
+    background: #00a6ed;
+  }
+  /* line 760, ../scss/print.scss */
+  .btn:hover {
+    text-decoration: none;
+  }
+  /* line 49, ../scss/print.scss */
+  .cs-default .btn {
+    font-family: "McLaren", cursive;
+    font-weight: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    -moz-font-smoothing: grayscale;
+  }
+  /* line 58, ../scss/print.scss */
+  .cs-classic .btn {
+    font-family: "Architects Daughter", cursive;
+    font-weight: 700;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    -moz-font-smoothing: grayscale;
+  }
+  /* line 67, ../scss/print.scss */
+  .cs-elegant .btn {
+    font-family: "Margarine", cursive;
+    font-weight: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    -moz-font-smoothing: grayscale;
+  }
+  /* line 766, ../scss/print.scss */
+  .btn.btn-large {
+    color: #fff;
+  }
+  /* line 769, ../scss/print.scss */
+  .btn.btn-large.msg {
+    padding-left: 50px;
+    position: relative;
+  }
+  /* line 782, ../scss/print.scss */
+  .cs-elegant .btn.btn-large.msg.new {
+    color: #154c84;
+  }
+  /* line 789, ../scss/print.scss */
+  .cs-elegant .btn.btn-large.msg.new:after {
+    background-position: 72px 90px;
+  }
+  /* line 795, ../scss/print.scss */
+  .btn.btn-large.msg:after {
+    content: "";
+    width: 30px;
+    height: 14px;
+    position: absolute;
+    left: 24px;
+    top: 14px;
+    background: url("../images/icons");
+    display: inline-block;
+    background-position: 72px 35px;
+  }
+  /* line 808, ../scss/print.scss */
+  .btn.btn-large.small {
+    font-size: 17px;
+    padding-top: 9px;
+    padding-bottom: 9px;
+  }
+  /* line 813, ../scss/print.scss */
+  .btn.btn-large.small.btn-mobile {
+    padding: 4px 13px 6px;
+  }
+  /* line 816, ../scss/print.scss */
+  .cs-classic .btn.btn-large.small {
+    font-size: 18px;
+  }
+  /* line 819, ../scss/print.scss */
+  .cs-elegant .btn.btn-large.small {
+    font-size: 19px;
+  }
+  /* line 824, ../scss/print.scss */
+  .btn.btn-large.full {
+    width: 100%;
+    font-size: 17px;
+    text-align: center;
+    padding-top: 9px;
+    padding-bottom: 9px;
+  }
+  /* line 830, ../scss/print.scss */
+  .cs-classic .btn.btn-large.full {
+    font-size: 18px;
+  }
+  /* line 833, ../scss/print.scss */
+  .cs-elegant .btn.btn-large.full {
+    font-size: 19px;
+  }
+  /* line 842, ../scss/print.scss */
+  .cs-classic .btn.btn-large {
+    background: #00a6ed;
+  }
+  /* line 851, ../scss/print.scss */
+  .btn.btn-primary {
+    padding-top: 9px;
+    padding-bottom: 9px;
+    transition: all linear 0.5s;
+  }
+  /* line 855, ../scss/print.scss */
+  .cs-default .btn.btn-primary {
+    font-size: 17px;
+    color: #000;
+  }
+  /* line 861, ../scss/print.scss */
+  .cs-default .btn.btn-primary:hover {
+    background: #f7fc63;
+  }
+  /* line 864, ../scss/print.scss */
+  .cs-default .btn.btn-primary:focus {
+    background: #f0f811;
+  }
+  /* line 868, ../scss/print.scss */
+  .cs-classic .btn.btn-primary {
+    font-size: 18px;
+    color: #fff;
+  }
+  /* line 872, ../scss/print.scss */
+  .cs-classic .btn.btn-primary:hover, .cs-classic .btn.btn-primary:focus {
+    background: #ff7800;
+  }
+  /* line 876, ../scss/print.scss */
+  .cs-elegant .btn.btn-primary {
+    font-size: 19px;
+    color: #fff;
+  }
+  /* line 880, ../scss/print.scss */
+  .cs-elegant .btn.btn-primary:hover, .cs-elegant .btn.btn-primary:focus {
+    background: #ff7800;
+  }
+
+  /* line 890, ../scss/print.scss */
+  .blue-button {
+    display: inline-block;
+    padding: 6px 24px;
+    font-size: 21px;
+    text-decoration: none;
+    box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+    text-transform: capitalize;
+    border-radius: 10px;
+    line-height: 30px;
+    color: #fff;
+  }
+  /* line 906, ../scss/print.scss */
+  .cs-default .blue-button {
+    background: #267fda;
+  }
+  /* line 910, ../scss/print.scss */
+  .cs-elegant .blue-button {
+    background: #e71d36;
+  }
+  /* line 914, ../scss/print.scss */
+  .cs-classic .blue-button {
+    background: #00a6ed;
+    font-size: 20px;
+  }
+  /* line 922, ../scss/print.scss */
+  .blue-button:hover {
+    text-decoration: none;
+  }
+  /* line 925, ../scss/print.scss */
+  .blue-button:focus {
+    outline: none;
+  }
+  /* line 49, ../scss/print.scss */
+  .cs-default .blue-button {
+    font-family: "McLaren", cursive;
+    font-weight: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    -moz-font-smoothing: grayscale;
+  }
+  /* line 58, ../scss/print.scss */
+  .cs-classic .blue-button {
+    font-family: "Architects Daughter", cursive;
+    font-weight: 700;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    -moz-font-smoothing: grayscale;
+  }
+  /* line 67, ../scss/print.scss */
+  .cs-elegant .blue-button {
+    font-family: "Margarine", cursive;
+    font-weight: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    -moz-font-smoothing: grayscale;
+  }
+
+  /*------------------Buttons-----------------*/
+  /*------------------Print page-----------------*/
+  /* line 936, ../scss/print.scss */
+  .main {
+    color: #fff;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+    margin-bottom: 35px;
+    padding-bottom: 15px;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+  /* line 937, ../scss/print.scss */
+  .cs-default .main, .cs-elegant .main {
+    background: #267fda;
+  }
+  /* line 941, ../scss/print.scss */
+  .cs-classic .main {
+    background: #084899;
+  }
+
+  /* line 955, ../scss/print.scss */
+  #page-title {
+    line-height: 1.4;
+    margin: 0;
+    height: 99px;
+    width: 100%;
+    background: url(../images/big-strokes);
+    padding-top: 14px;
+    border-radius: 15px 15px 0 0;
+    padding-left: 35px;
+    text-transform: capitalize;
+  }
+  /* line 49, ../scss/print.scss */
+  .cs-default #page-title {
+    font-family: "McLaren", cursive;
+    font-weight: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    -moz-font-smoothing: grayscale;
+  }
+  /* line 58, ../scss/print.scss */
+  .cs-classic #page-title {
+    font-family: "Architects Daughter", cursive;
+    font-weight: 700;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    -moz-font-smoothing: grayscale;
+  }
+  /* line 67, ../scss/print.scss */
+  .cs-elegant #page-title {
+    font-family: "Margarine", cursive;
+    font-weight: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    -moz-font-smoothing: grayscale;
+  }
+  /* line 971, ../scss/print.scss */
+  .cs-default #page-title {
+    background-position: -60px -569px;
+  }
+  /* line 975, ../scss/print.scss */
+  .cs-classic #page-title {
+    background-position: -60px -225px;
+  }
+  /* line 979, ../scss/print.scss */
+  .cs-elegant #page-title {
+    background-position: -60px -914px;
+  }
+
+  /* line 984, ../scss/print.scss */
+  .progress-page-wrap {
+    padding-left: 35px;
+    padding-right: 35px;
+  }
+  /* line 988, ../scss/print.scss */
+  .progress-page-wrap .print-pdf {
+    width: 100%;
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+  /* line 995, ../scss/print.scss */
+  .progress-page-wrap .print-pdf button {
+    float: right;
+    position: relative;
+    padding-left: 58px !important;
+    margin: 0;
+    right: 35px;
+    top: 20px;
+  }
+  /* line 1003, ../scss/print.scss */
+  .progress-page-wrap .print-pdf button:after {
+    content: "";
+    height: 30px;
+    width: 30px;
+    background: url("../images/social-icons.png");
+    position: absolute;
+    background-position: -20px -229px;
+    left: 25px;
+    top: 3px;
+  }
+  /* line 1015, ../scss/print.scss */
+  .progress-page-wrap td.fc-day.reward-won {
+    background: #fdeb52;
+  }
+  /* line 1018, ../scss/print.scss */
+  .progress-page-wrap td.reward-won.fc-day-top {
+    background: #fdeb52;
+  }
+  /* line 1022, ../scss/print.scss */
+  .progress-page-wrap td.fc-event-container .fc-event .fc-content.reward-content {
+    background: #fdeb52;
+  }
+  /* line 1026, ../scss/print.scss */
+  .progress-page-wrap .fc-event {
+    color: #000;
+    background: transparent;
+    border: none;
+    margin-bottom: 10px;
+    text-align: center;
+  }
+  /* line 1033, ../scss/print.scss */
+  .progress-page-wrap .fc-event img {
+    width: 58px;
+  }
+  /* line 1038, ../scss/print.scss */
+  .progress-page-wrap #wrap {
+    margin-top: 20px;
+    overflow: visible !important;
+    -webkit-flex-wrap: wrap;
+    flex-wrap: wrap;
+    display: -webkit-flex;
+    display: flex;
+  }
+  /* line 1050, ../scss/print.scss */
+  .progress-page-wrap #wrap > div.sticker-block {
+    flex: 0 0 33%;
+    padding-right: 20px;
+  }
+  /* line 1055, ../scss/print.scss */
+  .progress-page-wrap #wrap > div.sticker-block span.prog-name * {
+    color: #000;
+    margin: 0;
+  }
+  /* line 1059, ../scss/print.scss */
+  .cs-default .progress-page-wrap #wrap > div.sticker-block span.prog-name * {
+    font-size: 22px;
+  }
+  /* line 1063, ../scss/print.scss */
+  .cs-classic .progress-page-wrap #wrap > div.sticker-block span.prog-name * {
+    font-size: 24px;
+  }
+  /* line 1066, ../scss/print.scss */
+  .cs-elegant .progress-page-wrap #wrap > div.sticker-block span.prog-name * {
+    font-size: 25px;
+  }
+  /* line 1073, ../scss/print.scss */
+  .progress-page-wrap #wrap > div.sticker-block .prog-days * {
+    color: #cc0d25;
+    margin: 0;
+  }
+  /* line 1077, ../scss/print.scss */
+  .cs-default .progress-page-wrap #wrap > div.sticker-block .prog-days * {
+    font-size: 26px;
+  }
+  /* line 1081, ../scss/print.scss */
+  .cs-classic .progress-page-wrap #wrap > div.sticker-block .prog-days * {
+    font-size: 27px;
+  }
+  /* line 1084, ../scss/print.scss */
+  .cs-elegant .progress-page-wrap #wrap > div.sticker-block .prog-days * {
+    font-size: 28px;
+  }
+  /* line 1091, ../scss/print.scss */
+  .progress-page-wrap #wrap > div.sticker-block #external-events div {
+    background: transparent;
+    border: none;
+    display: inline-block;
+    width: 16%;
+  }
+  /* line 1097, ../scss/print.scss */
+  .progress-page-wrap #wrap > div.sticker-block #external-events div img {
+    width: 58px;
+  }
+  /* line 1104, ../scss/print.scss */
+  .progress-page-wrap #wrap > div.rewards {
+    flex: 0 0 30%;
+    padding-right: 60px;
+  }
+  /* line 1109, ../scss/print.scss */
+  .progress-page-wrap #wrap > div.rewards .pager a {
+    color: #267fda;
+    position: relative;
+  }
+  /* line 49, ../scss/print.scss */
+  .cs-default .progress-page-wrap #wrap > div.rewards .pager a {
+    font-family: "McLaren", cursive;
+    font-weight: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    -moz-font-smoothing: grayscale;
+  }
+  /* line 58, ../scss/print.scss */
+  .cs-classic .progress-page-wrap #wrap > div.rewards .pager a {
+    font-family: "Architects Daughter", cursive;
+    font-weight: 700;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    -moz-font-smoothing: grayscale;
+  }
+  /* line 67, ../scss/print.scss */
+  .cs-elegant .progress-page-wrap #wrap > div.rewards .pager a {
+    font-family: "Margarine", cursive;
+    font-weight: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    -moz-font-smoothing: grayscale;
+  }
+  /* line 182, ../scss/print.scss */
+  .cs-default .progress-page-wrap #wrap > div.rewards .pager a {
+    font-size: 17px;
+  }
+  /* line 186, ../scss/print.scss */
+  .cs-classic .progress-page-wrap #wrap > div.rewards .pager a, .cs-elegant .progress-page-wrap #wrap > div.rewards .pager a {
+    font-size: 19px;
+  }
+  /* line 1118, ../scss/print.scss */
+  .progress-page-wrap #wrap > div.rewards .pager a:after {
+    content: "";
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    position: absolute;
+    background: url(../images/dashboard);
+    background-size: 40px;
+  }
+  /* line 1129, ../scss/print.scss */
+  .progress-page-wrap #wrap > div.rewards .pager .pager-current {
+    display: none;
+  }
+  /* line 1133, ../scss/print.scss */
+  .progress-page-wrap #wrap > div.rewards .pager .pager-previous {
+    float: left;
+  }
+  /* line 1136, ../scss/print.scss */
+  .progress-page-wrap #wrap > div.rewards .pager .pager-previous a {
+    padding-left: 18px;
+  }
+  /* line 1139, ../scss/print.scss */
+  .progress-page-wrap #wrap > div.rewards .pager .pager-previous a:after {
+    left: 0;
+    top: 5px;
+    background-position: -12px -376px;
+  }
+  /* line 1147, ../scss/print.scss */
+  .progress-page-wrap #wrap > div.rewards .pager .pager-next {
+    float: right;
+  }
+  /* line 1150, ../scss/print.scss */
+  .progress-page-wrap #wrap > div.rewards .pager .pager-next a {
+    padding-right: 18px;
+  }
+  /* line 1153, ../scss/print.scss */
+  .progress-page-wrap #wrap > div.rewards .pager .pager-next a:after {
+    background-position: -4px -684px;
+    top: 5px;
+    right: 0;
+  }
+  /* line 1162, ../scss/print.scss */
+  .progress-page-wrap #wrap > div.rewards .view-Rewards-Progress {
+    width: 100%;
+    display: inline-block;
+    height: 100%;
+    background: #fff;
+    color: #000;
+    border-radius: 15px;
+    box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+    padding: 15px 20px;
+  }
+  /* line 49, ../scss/print.scss */
+  .cs-default .progress-page-wrap #wrap > div.rewards .view-Rewards-Progress {
+    font-family: "McLaren", cursive;
+    font-weight: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    -moz-font-smoothing: grayscale;
+  }
+  /* line 58, ../scss/print.scss */
+  .cs-classic .progress-page-wrap #wrap > div.rewards .view-Rewards-Progress {
+    font-family: "Architects Daughter", cursive;
+    font-weight: 700;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    -moz-font-smoothing: grayscale;
+  }
+  /* line 67, ../scss/print.scss */
+  .cs-elegant .progress-page-wrap #wrap > div.rewards .view-Rewards-Progress {
+    font-family: "Margarine", cursive;
+    font-weight: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    -moz-font-smoothing: grayscale;
+  }
+  /* line 1176, ../scss/print.scss */
+  .progress-page-wrap #wrap > div.rewards .view-Rewards-Progress .view-header p {
+    font-size: 20px;
+    color: #267fda;
+  }
+  /* line 1179, ../scss/print.scss */
+  .cs-classic .progress-page-wrap #wrap > div.rewards .view-Rewards-Progress .view-header p, .cs-elegant .progress-page-wrap #wrap > div.rewards .view-Rewards-Progress .view-header p {
+    font-size: 22px;
+  }
+  /* line 49, ../scss/print.scss */
+  .cs-default .progress-page-wrap #wrap > div.rewards .view-Rewards-Progress .view-header p {
+    font-family: "McLaren", cursive;
+    font-weight: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    -moz-font-smoothing: grayscale;
+  }
+  /* line 58, ../scss/print.scss */
+  .cs-classic .progress-page-wrap #wrap > div.rewards .view-Rewards-Progress .view-header p {
+    font-family: "Architects Daughter", cursive;
+    font-weight: 700;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    -moz-font-smoothing: grayscale;
+  }
+  /* line 67, ../scss/print.scss */
+  .cs-elegant .progress-page-wrap #wrap > div.rewards .view-Rewards-Progress .view-header p {
+    font-family: "Margarine", cursive;
+    font-weight: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    -moz-font-smoothing: grayscale;
+  }
+  /* line 1187, ../scss/print.scss */
+  .progress-page-wrap #wrap > div.rewards .view-Rewards-Progress .view-header p:nth-of-type(2) {
+    color: #000;
+    text-transform: uppercase;
+  }
+  /* line 1188, ../scss/print.scss */
+  .cs-classic .progress-page-wrap #wrap > div.rewards .view-Rewards-Progress .view-header p:nth-of-type(2) {
+    font-size: 14px;
+  }
+  /* line 1191, ../scss/print.scss */
+  .cs-elegant .progress-page-wrap #wrap > div.rewards .view-Rewards-Progress .view-header p:nth-of-type(2) {
+    font-size: 15px;
+  }
+  /* line 1195, ../scss/print.scss */
+  .cs-default .progress-page-wrap #wrap > div.rewards .view-Rewards-Progress .view-header p:nth-of-type(2) {
+    font-size: 13px;
+  }
+  /* line 1205, ../scss/print.scss */
+  .progress-page-wrap #wrap > div.rewards .view-Rewards-Progress .view-content {
+    position: relative;
+  }
+  /* line 1206, ../scss/print.scss */
+  .progress-page-wrap #wrap > div.rewards .view-Rewards-Progress .view-content .reward-list {
+    -webkit-flex-wrap: wrap;
+    flex-wrap: wrap;
+    display: -webkit-flex;
+    display: flex;
+  }
+  /* line 1213, ../scss/print.scss */
+  .progress-page-wrap #wrap > div.rewards .view-Rewards-Progress .view-content .reward-list > div:nth-of-type(1) {
+    flex: 0 0 20px;
+  }
+  /* line 1217, ../scss/print.scss */
+  .progress-page-wrap #wrap > div.rewards .view-Rewards-Progress .view-content .reward-list > div:nth-of-type(2) {
+    flex: 0 0 calc(100% - 20px);
+  }
+  /* line 1225, ../scss/print.scss */
+  .cs-default .progress-page-wrap #wrap > div.rewards .view-Rewards-Progress .view-content {
+    padding-left: 110px;
+    margin-top: -20px;
+  }
+  /* line 1230, ../scss/print.scss */
+  .cs-classic .progress-page-wrap #wrap > div.rewards .view-Rewards-Progress .view-content {
+    padding-left: 122px;
+    margin-top: -24px;
+  }
+  /* line 1235, ../scss/print.scss */
+  .cs-elegant .progress-page-wrap #wrap > div.rewards .view-Rewards-Progress .view-content {
+    padding-left: 110px;
+    margin-top: -22px;
+  }
+  /* line 1240, ../scss/print.scss */
+  .progress-page-wrap #wrap > div.rewards .view-Rewards-Progress .view-content .views-row {
+    position: relative;
+    margin-bottom: 5px;
+  }
+  /* line 1241, ../scss/print.scss */
+  .cs-default .progress-page-wrap #wrap > div.rewards .view-Rewards-Progress .view-content .views-row {
+    font-size: 13px;
+    line-height: 17px;
+  }
+  /* line 1246, ../scss/print.scss */
+  .cs-elegant .progress-page-wrap #wrap > div.rewards .view-Rewards-Progress .view-content .views-row {
+    font-size: 14px;
+    line-height: 18px;
+  }
+  /* line 1251, ../scss/print.scss */
+  .cs-classic .progress-page-wrap #wrap > div.rewards .view-Rewards-Progress .view-content .views-row {
+    font-size: 15px;
+    line-height: 19px;
+  }
+  /* line 49, ../scss/print.scss */
+  .cs-default .progress-page-wrap #wrap > div.rewards .view-Rewards-Progress .view-content .views-row {
+    font-family: "McLaren", cursive;
+    font-weight: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    -moz-font-smoothing: grayscale;
+  }
+  /* line 58, ../scss/print.scss */
+  .cs-classic .progress-page-wrap #wrap > div.rewards .view-Rewards-Progress .view-content .views-row {
+    font-family: "Architects Daughter", cursive;
+    font-weight: 700;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    -moz-font-smoothing: grayscale;
+  }
+  /* line 67, ../scss/print.scss */
+  .cs-elegant .progress-page-wrap #wrap > div.rewards .view-Rewards-Progress .view-content .views-row {
+    font-family: "Margarine", cursive;
+    font-weight: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    -moz-font-smoothing: grayscale;
+  }
+  /* line 1262, ../scss/print.scss */
+  .progress-page-wrap #wrap > div.rewards .view-Rewards-Progress .view-content .views-row .views-field-title {
+    display: inline-block;
+  }
+  /* line 1270, ../scss/print.scss */
+  .progress-page-wrap #wrap > div.reading-progress {
+    flex: 0 0 20%;
+    border-radius: 15px;
+    box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    font-size: 15px;
+    text-align: center;
+    display: flex;
+    align-content: center;
+    align-items: center;
+    color: #fff;
+  }
+  /* line 1278, ../scss/print.scss */
+  .progress-page-wrap #wrap > div.reading-progress * {
+    font-size: inherit;
+    color: inherit;
+  }
+  /* line 49, ../scss/print.scss */
+  .cs-default .progress-page-wrap #wrap > div.reading-progress {
+    font-family: "McLaren", cursive;
+    font-weight: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    -moz-font-smoothing: grayscale;
+  }
+  /* line 58, ../scss/print.scss */
+  .cs-classic .progress-page-wrap #wrap > div.reading-progress {
+    font-family: "Architects Daughter", cursive;
+    font-weight: 700;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    -moz-font-smoothing: grayscale;
+  }
+  /* line 67, ../scss/print.scss */
+  .cs-elegant .progress-page-wrap #wrap > div.reading-progress {
+    font-family: "Margarine", cursive;
+    font-weight: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    -moz-font-smoothing: grayscale;
+  }
+  /* line 1290, ../scss/print.scss */
+  .cs-default .progress-page-wrap #wrap > div.reading-progress {
+    background: #f6511d;
+  }
+  /* line 1294, ../scss/print.scss */
+  .cs-classic .progress-page-wrap #wrap > div.reading-progress {
+    background: #00a6ed;
+  }
+  /* line 1298, ../scss/print.scss */
+  .cs-elegant .progress-page-wrap #wrap > div.reading-progress {
+    background: #2ec4b6;
+  }
+  /* line 1306, ../scss/print.scss */
+  .progress-page-wrap .calendar-wrapper .fc-center {
+    width: 100%;
+    max-width: 360px;
+    margin: auto;
+  }
+  /* line 1311, ../scss/print.scss */
+  .progress-page-wrap .calendar-wrapper .fc-center h2 {
+    color: #000;
+  }
+  /* line 1315, ../scss/print.scss */
+  .progress-page-wrap .calendar-wrapper .fc-center * {
+    display: inline-block;
+    margin: 2px;
+  }
+  /* line 1323, ../scss/print.scss */
+  .progress-page-wrap .fc-month-view table {
+    margin: 0;
+  }
+  /* line 1328, ../scss/print.scss */
+  .progress-page-wrap .fc-content-skeleton > table {
+    margin: 0;
+    position: relative;
+    background: transparent;
+  }
+  /* line 1333, ../scss/print.scss */
+  .progress-page-wrap .fc-content-skeleton > table .fc-day-top {
+    padding-top: 10px;
+    border-left: 2px solid #ddd;
+    border-right: 2px solid #ddd;
+  }
+  /* line 1337, ../scss/print.scss */
+  .progress-page-wrap .fc-content-skeleton > table .fc-day-top span {
+    float: left !important;
+    font-size: 30px;
+    color: #267fda;
+  }
+  /* line 49, ../scss/print.scss */
+  .cs-default .progress-page-wrap .fc-content-skeleton > table .fc-day-top span {
+    font-family: "McLaren", cursive;
+    font-weight: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    -moz-font-smoothing: grayscale;
+  }
+  /* line 58, ../scss/print.scss */
+  .cs-classic .progress-page-wrap .fc-content-skeleton > table .fc-day-top span {
+    font-family: "Architects Daughter", cursive;
+    font-weight: 700;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    -moz-font-smoothing: grayscale;
+  }
+  /* line 67, ../scss/print.scss */
+  .cs-elegant .progress-page-wrap .fc-content-skeleton > table .fc-day-top span {
+    font-family: "Margarine", cursive;
+    font-weight: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    -moz-font-smoothing: grayscale;
+  }
+  /* line 1346, ../scss/print.scss */
+  .progress-page-wrap .fc-content-skeleton > table tbody {
+    border: none;
+  }
+  /* line 1352, ../scss/print.scss */
+  .progress-page-wrap .fc-day-grid .fc-row.fc-week {
+    border-bottom: 2px solid #ddd;
+  }
+  /* line 1353, ../scss/print.scss */
+  .progress-page-wrap .fc-day-grid .fc-row.fc-week:nth-of-type(1) {
+    border-top: 2px solid #ddd;
+  }
+  /* line 1360, ../scss/print.scss */
+  .progress-page-wrap table {
+    background: #fff;
+    border: none;
+    position: relative;
+    border-color: #f6511d;
+  }
+  /* line 1366, ../scss/print.scss */
+  .progress-page-wrap table * td {
+    border-color: inherit;
+  }
+  /* line 1370, ../scss/print.scss */
+  .progress-page-wrap table *
+  th {
+    border: none;
+  }
+  /* line 1377, ../scss/print.scss */
+  .progress-page-wrap table .fc-bg table > tbody > tr td {
+    border-top: none;
+    border-left: 2px solid #ddd;
+    border-right: 2px solid #ddd;
+    border-bottom: 4px solid #ddd !important;
+  }
+  /* line 1387, ../scss/print.scss */
+  .progress-page-wrap table .fc-body thead {
+    border: none !important;
+    background: #fff !important;
+  }
+  /* line 1398, ../scss/print.scss */
+  .progress-page-wrap table .fc-head td {
+    border: none;
+  }
+  /* line 1402, ../scss/print.scss */
+  .progress-page-wrap table .fc-head th {
+    font-size: 22px;
+    color: #000;
+    padding-bottom: 10px;
+  }
+  /* line 49, ../scss/print.scss */
+  .cs-default .progress-page-wrap table .fc-head th {
+    font-family: "McLaren", cursive;
+    font-weight: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    -moz-font-smoothing: grayscale;
+  }
+  /* line 58, ../scss/print.scss */
+  .cs-classic .progress-page-wrap table .fc-head th {
+    font-family: "Architects Daughter", cursive;
+    font-weight: 700;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    -moz-font-smoothing: grayscale;
+  }
+  /* line 67, ../scss/print.scss */
+  .cs-elegant .progress-page-wrap table .fc-head th {
+    font-family: "Margarine", cursive;
+    font-weight: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    -moz-font-smoothing: grayscale;
+  }
+  /* line 1411, ../scss/print.scss */
+  .progress-page-wrap table .fc-head .fc-row.fc-widget-header {
+    margin-right: 0 !important;
+    border: none;
+  }
+  /* line 1417, ../scss/print.scss */
+  .progress-page-wrap table .fc-scroller {
+    overflow-y: hidden !important;
+  }
+  /* line 1421, ../scss/print.scss */
+  .progress-page-wrap table .fc-head thead {
+    border: none;
+    margin: 0;
+  }
+  /* line 1425, ../scss/print.scss */
+  .cs-default .progress-page-wrap table .fc-head thead, .cs-elegant .progress-page-wrap table .fc-head thead {
+    background: #267fda;
+  }
+  /* line 1429, ../scss/print.scss */
+  .cs-classic .progress-page-wrap table .fc-head thead {
+    background: #084899;
+  }
+
+  /* line 1435, ../scss/print.scss */
+  #wrap.for-mobile {
+    display: none;
+    background: transparent;
+    box-shadow: none;
+  }
+
+  /*------------------Print page-----------------*/
+ /*!
+* FullCalendar v3.0.1 Stylesheet
+* Docs & License: http://fullcalendar.io/
+* (c) 2016 Adam Shaw
+*/
+  /* line 1450, ../scss/print.scss */
+  .fc {
+    direction: ltr;
+    text-align: left;
+  }
+
+  /* line 1455, ../scss/print.scss */
+  .fc-rtl {
+    text-align: right;
+  }
+
+  /* line 1459, ../scss/print.scss */
+  body .fc {
+    /* extra precedence to overcome jqui */
+    font-size: 1em;
+  }
+
+  /* Colors
+  --------------------------------------------------------------------------------------------------*/
+  /* line 1467, ../scss/print.scss */
+  .fc-unthemed th,
+  .fc-unthemed td,
+  .fc-unthemed thead,
+  .fc-unthemed tbody,
+  .fc-unthemed .fc-divider,
+  .fc-unthemed .fc-row,
+  .fc-unthemed .fc-content,
+  .fc-unthemed .fc-popover,
+  .fc-unthemed .fc-list-view,
+  .fc-unthemed .fc-list-heading td {
+    border-color: #ddd;
+  }
+
+  /* line 1480, ../scss/print.scss */
+  .fc-unthemed .fc-popover {
+    background-color: #fff;
+  }
+
+  /* line 1484, ../scss/print.scss */
+  .fc-unthemed .fc-divider,
+  .fc-unthemed .fc-popover .fc-header,
+  .fc-unthemed .fc-list-heading td {
+    background: #eee;
+  }
+
+  /* line 1490, ../scss/print.scss */
+  .fc-unthemed .fc-popover .fc-header .fc-close {
+    color: #666;
+  }
+
+  /* line 1494, ../scss/print.scss */
+  .fc-unthemed .fc-today {
+    background: #fcf8e3;
+  }
+
+  /* line 1498, ../scss/print.scss */
+  .fc-highlight {
+    /* when user is selecting cells */
+    background: #bce8f1;
+    opacity: .3;
+  }
+
+  /* line 1503, ../scss/print.scss */
+  .fc-bgevent {
+    /* default look for background events */
+    background: #8fdf82;
+    opacity: .3;
+  }
+
+  /* line 1508, ../scss/print.scss */
+  .fc-nonbusiness {
+    /* default look for non-business-hours areas */
+    /* will inherit .fc-bgevent's styles */
+    background: #d7d7d7;
+  }
+
+  /* Icons (inline elements with styled text that mock arrow icons)
+  --------------------------------------------------------------------------------------------------*/
+  /* line 1517, ../scss/print.scss */
+  .fc-icon {
+    display: inline-block;
+    height: 1em;
+    line-height: 1em;
+    font-size: 1em;
+    text-align: center;
+    overflow: hidden;
+    font-family: "Courier New", Courier, monospace;
+    /* don't allow browser text-selection */
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+
+  /*
+  Acceptable font-family overrides for individual icons:
+    "Arial", sans-serif
+    "Times New Roman", serif
+
+  NOTE: use percentage font sizes or else old IE chokes
+  */
+  /* line 1543, ../scss/print.scss */
+  .fc-icon:after {
+    position: relative;
+  }
+
+  /* line 1547, ../scss/print.scss */
+  .fc-icon-left-single-arrow:after {
+    content: "\02039";
+    font-weight: bold;
+    font-size: 200%;
+    top: -7%;
+  }
+
+  /* line 1554, ../scss/print.scss */
+  .fc-icon-right-single-arrow:after {
+    content: "\0203A";
+    font-weight: bold;
+    font-size: 200%;
+    top: -7%;
+  }
+
+  /* line 1561, ../scss/print.scss */
+  .fc-icon-left-double-arrow:after {
+    content: "\000AB";
+    font-size: 160%;
+    top: -7%;
+  }
+
+  /* line 1567, ../scss/print.scss */
+  .fc-icon-right-double-arrow:after {
+    content: "\000BB";
+    font-size: 160%;
+    top: -7%;
+  }
+
+  /* line 1573, ../scss/print.scss */
+  .fc-icon-left-triangle:after {
+    content: "\25C4";
+    font-size: 125%;
+    top: 3%;
+  }
+
+  /* line 1579, ../scss/print.scss */
+  .fc-icon-right-triangle:after {
+    content: "\25BA";
+    font-size: 125%;
+    top: 3%;
+  }
+
+  /* line 1585, ../scss/print.scss */
+  .fc-icon-down-triangle:after {
+    content: "\25BC";
+    font-size: 125%;
+    top: 2%;
+  }
+
+  /* line 1591, ../scss/print.scss */
+  .fc-icon-x:after {
+    content: "\000D7";
+    font-size: 200%;
+    top: 6%;
+  }
+
+  /* Buttons (styled <button> tags, normalized to work cross-browser)
+  --------------------------------------------------------------------------------------------------*/
+  /* line 1601, ../scss/print.scss */
+  .fc button {
+    /* force height to include the border and padding */
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    /* dimensions */
+    margin: 0;
+    height: 2.1em;
+    padding: 0 .6em;
+    /* text & cursor */
+    font-size: 1em;
+    /* normalize */
+    white-space: nowrap;
+    cursor: pointer;
+  }
+
+  /* Firefox has an annoying inner border */
+  /* line 1619, ../scss/print.scss */
+  .fc button::-moz-focus-inner {
+    margin: 0;
+    padding: 0;
+  }
+
+  /* line 1621, ../scss/print.scss */
+  .fc-state-default {
+    /* non-theme */
+    border: 1px solid;
+  }
+
+  /* line 1625, ../scss/print.scss */
+  .fc-state-default.fc-corner-left {
+    /* non-theme */
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+  }
+
+  /* line 1630, ../scss/print.scss */
+  .fc-state-default.fc-corner-right {
+    /* non-theme */
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+  }
+
+  /* icons in buttons */
+  /* line 1637, ../scss/print.scss */
+  .fc button .fc-icon {
+    /* non-theme */
+    position: relative;
+    top: -0.05em;
+    /* seems to be a good adjustment across browsers */
+    margin: 0 .2em;
+    vertical-align: middle;
+  }
+
+  /*
+    button states
+    borrowed from twitter bootstrap (http://twitter.github.com/bootstrap/)
+  */
+  /* line 1649, ../scss/print.scss */
+  .fc-state-default {
+    background-color: #f5f5f5;
+    background-image: -moz-linear-gradient(top, #ffffff, #e6e6e6);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ffffff), to(#e6e6e6));
+    background-image: -webkit-linear-gradient(top, #ffffff, #e6e6e6);
+    background-image: -o-linear-gradient(top, #ffffff, #e6e6e6);
+    background-image: linear-gradient(to bottom, #ffffff, #e6e6e6);
+    background-repeat: repeat-x;
+    border-color: #e6e6e6 #e6e6e6 #bfbfbf;
+    border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+    color: #333;
+    text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+  }
+
+  /* line 1664, ../scss/print.scss */
+  .fc-state-hover,
+  .fc-state-down,
+  .fc-state-active,
+  .fc-state-disabled {
+    color: #333333;
+    background-color: #e6e6e6;
+  }
+
+  /* line 1672, ../scss/print.scss */
+  .fc-state-hover {
+    color: #333333;
+    text-decoration: none;
+    background-position: 0 -15px;
+    -webkit-transition: background-position 0.1s linear;
+    -moz-transition: background-position 0.1s linear;
+    -o-transition: background-position 0.1s linear;
+    transition: background-position 0.1s linear;
+  }
+
+  /* line 1682, ../scss/print.scss */
+  .fc-state-down,
+  .fc-state-active {
+    background-color: #cccccc;
+    background-image: none;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0, 0, 0, 0.05);
+  }
+
+  /* line 1689, ../scss/print.scss */
+  .fc-state-disabled {
+    cursor: default;
+    background-image: none;
+    opacity: 0.65;
+    box-shadow: none;
+  }
+
+  /* Buttons Groups
+  --------------------------------------------------------------------------------------------------*/
+  /* line 1700, ../scss/print.scss */
+  .fc-button-group {
+    display: inline-block;
+  }
+
+  /*
+  every button that is not first in a button group should scootch over one pixel and cover the
+  previous button's border...
+  */
+  /* line 1709, ../scss/print.scss */
+  .fc .fc-button-group > * {
+    /* extra precedence b/c buttons have margin set to zero */
+    float: left;
+    margin: 0 0 0 -1px;
+  }
+
+  /* line 1714, ../scss/print.scss */
+  .fc .fc-button-group > :first-child {
+    /* same */
+    margin-left: 0;
+  }
+
+  /* Popover
+  --------------------------------------------------------------------------------------------------*/
+  /* line 1722, ../scss/print.scss */
+  .fc-popover {
+    position: absolute;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  }
+
+  /* line 1727, ../scss/print.scss */
+  .fc-popover .fc-header {
+    /* TODO: be more consistent with fc-head/fc-body */
+    padding: 2px 4px;
+  }
+
+  /* line 1731, ../scss/print.scss */
+  .fc-popover .fc-header .fc-title {
+    margin: 0 2px;
+  }
+
+  /* line 1735, ../scss/print.scss */
+  .fc-popover .fc-header .fc-close {
+    cursor: pointer;
+  }
+
+  /* line 1739, ../scss/print.scss */
+  .fc-ltr .fc-popover .fc-header .fc-title,
+  .fc-rtl .fc-popover .fc-header .fc-close {
+    float: left;
+  }
+
+  /* line 1744, ../scss/print.scss */
+  .fc-rtl .fc-popover .fc-header .fc-title,
+  .fc-ltr .fc-popover .fc-header .fc-close {
+    float: right;
+  }
+
+  /* unthemed */
+  /* line 1751, ../scss/print.scss */
+  .fc-unthemed .fc-popover {
+    border-width: 1px;
+    border-style: solid;
+  }
+
+  /* line 1756, ../scss/print.scss */
+  .fc-unthemed .fc-popover .fc-header .fc-close {
+    font-size: .9em;
+    margin-top: 2px;
+  }
+
+  /* jqui themed */
+  /* line 1763, ../scss/print.scss */
+  .fc-popover > .ui-widget-header + .ui-widget-content {
+    border-top: 0;
+    /* where they meet, let the header have the border */
+  }
+
+  /* Misc Reusable Components
+  --------------------------------------------------------------------------------------------------*/
+  /* line 1771, ../scss/print.scss */
+  .fc-divider {
+    border-style: solid;
+    border-width: 1px;
+  }
+
+  /* line 1776, ../scss/print.scss */
+  hr.fc-divider {
+    height: 0;
+    margin: 0;
+    padding: 0 0 2px;
+    /* height is unreliable across browsers, so use padding */
+    border-width: 1px 0;
+  }
+
+  /* line 1783, ../scss/print.scss */
+  .fc-clear {
+    clear: both;
+  }
+
+  /* line 1787, ../scss/print.scss */
+  .fc-bg,
+  .fc-bgevent-skeleton,
+  .fc-highlight-skeleton,
+  .fc-helper-skeleton {
+    /* these element should always cling to top-left/right corners */
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+  }
+
+  /* line 1798, ../scss/print.scss */
+  .fc-bg {
+    bottom: 0;
+    /* strech bg to bottom edge */
+  }
+
+  /* line 1802, ../scss/print.scss */
+  .fc-bg table {
+    height: 100%;
+    /* strech bg to bottom edge */
+  }
+
+  /* Tables
+  --------------------------------------------------------------------------------------------------*/
+  /* line 1810, ../scss/print.scss */
+  .fc table {
+    width: 100%;
+    box-sizing: border-box;
+    /* fix scrollbar issue in firefox */
+    table-layout: fixed;
+    border-collapse: collapse;
+    border-spacing: 0;
+    font-size: 1em;
+    /* normalize cross-browser */
+  }
+
+  /* line 1819, ../scss/print.scss */
+  .fc th {
+    text-align: center;
+  }
+
+  /* line 1823, ../scss/print.scss */
+  .fc th,
+  .fc td {
+    border-style: solid;
+    border-width: 1px;
+    padding: 0;
+    vertical-align: top;
+  }
+
+  /* line 1831, ../scss/print.scss */
+  .fc td.fc-today {
+    border-style: double;
+    /* overcome neighboring borders */
+  }
+
+  /* Internal Nav Links
+  --------------------------------------------------------------------------------------------------*/
+  /* line 1839, ../scss/print.scss */
+  a[data-goto] {
+    cursor: pointer;
+  }
+
+  /* line 1843, ../scss/print.scss */
+  a[data-goto]:hover {
+    text-decoration: underline;
+  }
+
+  /* Fake Table Rows
+  --------------------------------------------------------------------------------------------------*/
+  /* line 1851, ../scss/print.scss */
+  .fc .fc-row {
+    /* extra precedence to overcome themes w/ .ui-widget-content forcing a 1px border */
+    /* no visible border by default. but make available if need be (scrollbar width compensation) */
+    border-style: solid;
+    border-width: 0;
+  }
+
+  /* line 1857, ../scss/print.scss */
+  .fc-row table {
+    /* don't put left/right border on anything within a fake row.
+       the outer tbody will worry about this */
+    border-left: 0 hidden transparent;
+    border-right: 0 hidden transparent;
+    /* no bottom borders on rows */
+    border-bottom: 0 hidden transparent;
+  }
+
+  /* line 1867, ../scss/print.scss */
+  .fc-row:first-child table {
+    border-top: 0 hidden transparent;
+    /* no top border on first row */
+  }
+
+  /* Day Row (used within the header and the DayGrid)
+  --------------------------------------------------------------------------------------------------*/
+  /* line 1875, ../scss/print.scss */
+  .fc-row {
+    position: relative;
+  }
+
+  /* line 1879, ../scss/print.scss */
+  .fc-row .fc-bg {
+    z-index: 1;
+  }
+
+  /* highlighting cells & background event skeleton */
+  /* line 1885, ../scss/print.scss */
+  .fc-row .fc-bgevent-skeleton,
+  .fc-row .fc-highlight-skeleton {
+    bottom: 0;
+    /* stretch skeleton to bottom of row */
+  }
+
+  /* line 1890, ../scss/print.scss */
+  .fc-row .fc-bgevent-skeleton table,
+  .fc-row .fc-highlight-skeleton table {
+    height: 100%;
+    /* stretch skeleton to bottom of row */
+  }
+
+  /* line 1895, ../scss/print.scss */
+  .fc-row .fc-highlight-skeleton td,
+  .fc-row .fc-bgevent-skeleton td {
+    border-color: transparent;
+  }
+
+  /* line 1900, ../scss/print.scss */
+  .fc-row .fc-bgevent-skeleton {
+    z-index: 2;
+  }
+
+  /* line 1905, ../scss/print.scss */
+  .fc-row .fc-highlight-skeleton {
+    z-index: 3;
+  }
+
+  /*
+  row content (which contains day/week numbers and events) as well as "helper" (which contains
+  temporary rendered events).
+  */
+  /* line 1914, ../scss/print.scss */
+  .fc-row .fc-content-skeleton {
+    position: relative;
+    z-index: 4;
+    padding-bottom: 2px;
+    /* matches the space above the events */
+  }
+
+  /* line 1920, ../scss/print.scss */
+  .fc-row .fc-helper-skeleton {
+    z-index: 5;
+  }
+
+  /* line 1924, ../scss/print.scss */
+  .fc-row .fc-content-skeleton td,
+  .fc-row .fc-helper-skeleton td {
+    /* see-through to the background below */
+    background: none;
+    /* in case <td>s are globally styled */
+    border-color: transparent;
+    /* don't put a border between events and/or the day number */
+    border-bottom: 0;
+  }
+
+  /* line 1934, ../scss/print.scss */
+  .fc-row .fc-content-skeleton tbody td,
+  .fc-row .fc-helper-skeleton tbody td {
+    /* don't put a border between event cells */
+    border-top: 0;
+  }
+
+  /* Scrolling Container
+  --------------------------------------------------------------------------------------------------*/
+  /* line 1944, ../scss/print.scss */
+  .fc-scroller {
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* TODO: move to agenda/basic */
+  /* line 1949, ../scss/print.scss */
+  .fc-scroller > .fc-day-grid,
+  .fc-scroller > .fc-time-grid {
+    position: relative;
+    /* re-scope all positions */
+    width: 100%;
+    /* hack to force re-sizing this inner element when scrollbars appear/disappear */
+  }
+
+  /* Global Event Styles
+  --------------------------------------------------------------------------------------------------*/
+  /* line 1959, ../scss/print.scss */
+  .fc-event {
+    position: relative;
+    /* for resize handle and other inner positioning */
+    display: block;
+    /* make the <a> tag block */
+    font-size: .85em;
+    line-height: 1.3;
+    border-radius: 3px;
+    border: 1px solid #3a87ad;
+    /* default BORDER color */
+    font-weight: normal;
+    /* undo jqui's ui-widget-header bold */
+  }
+
+  /* line 1969, ../scss/print.scss */
+  .fc-event,
+  .fc-event-dot {
+    background-color: #3a87ad;
+    /* default BACKGROUND color */
+  }
+
+  /* overpower some of bootstrap's and jqui's styles on <a> tags */
+  /* line 1975, ../scss/print.scss */
+  .fc-event,
+  .fc-event:hover,
+  .ui-widget .fc-event {
+    color: #fff;
+    /* default TEXT color */
+    text-decoration: none;
+    /* if <a> has an href */
+  }
+
+  /* line 1982, ../scss/print.scss */
+  .fc-event[href],
+  .fc-event.fc-draggable {
+    cursor: pointer;
+    /* give events with links and draggable events a hand mouse pointer */
+  }
+
+  /* line 1987, ../scss/print.scss */
+  .fc-not-allowed,
+  .fc-not-allowed .fc-event {
+    /* to override an event's custom cursor */
+    cursor: not-allowed;
+  }
+
+  /* line 1992, ../scss/print.scss */
+  .fc-event .fc-bg {
+    /* the generic .fc-bg already does position */
+    z-index: 1;
+    background: #fff;
+    opacity: .25;
+  }
+
+  /* line 1998, ../scss/print.scss */
+  .fc-event .fc-content {
+    position: relative;
+    z-index: 2;
+  }
+
+  /* resizer (cursor AND touch devices) */
+  /* line 2005, ../scss/print.scss */
+  .fc-event .fc-resizer {
+    position: absolute;
+    z-index: 4;
+  }
+
+  /* resizer (touch devices) */
+  /* line 2012, ../scss/print.scss */
+  .fc-event .fc-resizer {
+    display: none;
+  }
+
+  /* line 2016, ../scss/print.scss */
+  .fc-event.fc-allow-mouse-resize .fc-resizer,
+  .fc-event.fc-selected .fc-resizer {
+    /* only show when hovering or selected (with touch) */
+    display: block;
+  }
+
+  /* hit area */
+  /* line 2024, ../scss/print.scss */
+  .fc-event.fc-selected .fc-resizer:before {
+    /* 40x40 touch area */
+    content: "";
+    position: absolute;
+    z-index: 9999;
+    /* user of this util can scope within a lower z-index */
+    top: 50%;
+    left: 50%;
+    width: 40px;
+    height: 40px;
+    margin-left: -20px;
+    margin-top: -20px;
+  }
+
+  /* Event Selection (only for touch devices)
+  --------------------------------------------------------------------------------------------------*/
+  /* line 2041, ../scss/print.scss */
+  .fc-event.fc-selected {
+    z-index: 9999 !important;
+    /* overcomes inline z-index */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  }
+
+  /* line 2046, ../scss/print.scss */
+  .fc-event.fc-selected.fc-dragging {
+    box-shadow: 0 2px 7px rgba(0, 0, 0, 0.3);
+  }
+
+  /* Horizontal Events
+  --------------------------------------------------------------------------------------------------*/
+  /* bigger touch area when selected */
+  /* line 2055, ../scss/print.scss */
+  .fc-h-event.fc-selected:before {
+    content: "";
+    position: absolute;
+    z-index: 3;
+    /* below resizers */
+    top: -10px;
+    bottom: -10px;
+    left: 0;
+    right: 0;
+  }
+
+  /* events that are continuing to/from another week. kill rounded corners and butt up against edge */
+  /* line 2067, ../scss/print.scss */
+  .fc-ltr .fc-h-event.fc-not-start,
+  .fc-rtl .fc-h-event.fc-not-end {
+    margin-left: 0;
+    border-left-width: 0;
+    padding-left: 1px;
+    /* replace the border with padding */
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+
+  /* line 2076, ../scss/print.scss */
+  .fc-ltr .fc-h-event.fc-not-end,
+  .fc-rtl .fc-h-event.fc-not-start {
+    margin-right: 0;
+    border-right-width: 0;
+    padding-right: 1px;
+    /* replace the border with padding */
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+
+  /* resizer (cursor AND touch devices) */
+  /* left resizer  */
+  /* line 2088, ../scss/print.scss */
+  .fc-ltr .fc-h-event .fc-start-resizer,
+  .fc-rtl .fc-h-event .fc-end-resizer {
+    cursor: w-resize;
+    left: -1px;
+    /* overcome border */
+  }
+
+  /* right resizer */
+  /* line 2095, ../scss/print.scss */
+  .fc-ltr .fc-h-event .fc-end-resizer,
+  .fc-rtl .fc-h-event .fc-start-resizer {
+    cursor: e-resize;
+    right: -1px;
+    /* overcome border */
+  }
+
+  /* resizer (mouse devices) */
+  /* line 2103, ../scss/print.scss */
+  .fc-h-event.fc-allow-mouse-resize .fc-resizer {
+    width: 7px;
+    top: -1px;
+    /* overcome top border */
+    bottom: -1px;
+    /* overcome bottom border */
+  }
+
+  /* resizer (touch devices) */
+  /* line 2111, ../scss/print.scss */
+  .fc-h-event.fc-selected .fc-resizer {
+    /* 8x8 little dot */
+    border-radius: 4px;
+    border-width: 1px;
+    width: 6px;
+    height: 6px;
+    border-style: solid;
+    border-color: inherit;
+    background: #fff;
+    /* vertically center */
+    top: 50%;
+    margin-top: -4px;
+  }
+
+  /* left resizer  */
+  /* line 2126, ../scss/print.scss */
+  .fc-ltr .fc-h-event.fc-selected .fc-start-resizer,
+  .fc-rtl .fc-h-event.fc-selected .fc-end-resizer {
+    margin-left: -4px;
+    /* centers the 8x8 dot on the left edge */
+  }
+
+  /* right resizer */
+  /* line 2132, ../scss/print.scss */
+  .fc-ltr .fc-h-event.fc-selected .fc-end-resizer,
+  .fc-rtl .fc-h-event.fc-selected .fc-start-resizer {
+    margin-right: -4px;
+    /* centers the 8x8 dot on the right edge */
+  }
+
+  /* DayGrid events
+  ----------------------------------------------------------------------------------------------------
+  We use the full "fc-day-grid-event" class instead of using descendants because the event won't
+  be a descendant of the grid when it is being dragged.
+  */
+  /* line 2144, ../scss/print.scss */
+  .fc-day-grid-event {
+    margin: 1px 2px 0;
+    /* spacing between events and edges */
+    padding: 0 1px;
+  }
+
+  /* line 2149, ../scss/print.scss */
+  tr:first-child > td > .fc-day-grid-event {
+    margin-top: 2px;
+    /* a little bit more space before the first event */
+  }
+
+  /* line 2153, ../scss/print.scss */
+  .fc-day-grid-event.fc-selected:after {
+    content: "";
+    position: absolute;
+    z-index: 1;
+    /* same z-index as fc-bg, behind text */
+    /* overcome the borders */
+    top: -1px;
+    right: -1px;
+    bottom: -1px;
+    left: -1px;
+    /* darkening effect */
+    background: #000;
+    opacity: .25;
+  }
+
+  /* line 2167, ../scss/print.scss */
+  .fc-day-grid-event .fc-content {
+    /* force events to be one-line tall */
+    white-space: nowrap;
+    overflow: hidden;
+  }
+
+  /* line 2172, ../scss/print.scss */
+  .fc-day-grid-event .fc-time {
+    font-weight: bold;
+  }
+
+  /* resizer (cursor devices) */
+  /* left resizer  */
+  /* line 2179, ../scss/print.scss */
+  .fc-ltr .fc-day-grid-event.fc-allow-mouse-resize .fc-start-resizer,
+  .fc-rtl .fc-day-grid-event.fc-allow-mouse-resize .fc-end-resizer {
+    margin-left: -2px;
+    /* to the day cell's edge */
+  }
+
+  /* right resizer */
+  /* line 2185, ../scss/print.scss */
+  .fc-ltr .fc-day-grid-event.fc-allow-mouse-resize .fc-end-resizer,
+  .fc-rtl .fc-day-grid-event.fc-allow-mouse-resize .fc-start-resizer {
+    margin-right: -2px;
+    /* to the day cell's edge */
+  }
+
+  /* Event Limiting
+  --------------------------------------------------------------------------------------------------*/
+  /* "more" link that represents hidden events */
+  /* line 2196, ../scss/print.scss */
+  a.fc-more {
+    margin: 1px 3px;
+    font-size: .85em;
+    cursor: pointer;
+    text-decoration: none;
+  }
+
+  /* line 2203, ../scss/print.scss */
+  a.fc-more:hover {
+    text-decoration: underline;
+  }
+
+  /* line 2207, ../scss/print.scss */
+  .fc-limited {
+    /* rows and cells that are hidden because of a "more" link */
+    display: none;
+  }
+
+  /* popover that appears when "more" link is clicked */
+  /* line 2213, ../scss/print.scss */
+  .fc-day-grid .fc-row {
+    z-index: 1;
+    /* make the "more" popover one higher than this */
+  }
+
+  /* line 2217, ../scss/print.scss */
+  .fc-more-popover {
+    z-index: 2;
+    width: 220px;
+  }
+
+  /* line 2222, ../scss/print.scss */
+  .fc-more-popover .fc-event-container {
+    padding: 10px;
+  }
+
+  /* Now Indicator
+  --------------------------------------------------------------------------------------------------*/
+  /* line 2230, ../scss/print.scss */
+  .fc-now-indicator {
+    position: absolute;
+    border: 0 solid red;
+  }
+
+  /* Utilities
+  --------------------------------------------------------------------------------------------------*/
+  /* line 2239, ../scss/print.scss */
+  .fc-unselectable {
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-touch-callout: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  /* Toolbar
+  --------------------------------------------------------------------------------------------------*/
+  /* line 2254, ../scss/print.scss */
+  .fc-toolbar {
+    text-align: center;
+    margin-bottom: 1em;
+  }
+
+  /* line 2259, ../scss/print.scss */
+  .fc-toolbar .fc-left {
+    float: left;
+  }
+
+  /* line 2263, ../scss/print.scss */
+  .fc-toolbar .fc-right {
+    float: right;
+  }
+
+  /* line 2267, ../scss/print.scss */
+  .fc-toolbar .fc-center {
+    display: inline-block;
+  }
+
+  /* the things within each left/right/center section */
+  /* line 2272, ../scss/print.scss */
+  .fc .fc-toolbar > * > * {
+    /* extra precedence to override button border margins */
+    float: left;
+    margin-left: .75em;
+  }
+
+  /* the first thing within each left/center/right section */
+  /* line 2278, ../scss/print.scss */
+  .fc .fc-toolbar > * > :first-child {
+    /* extra precedence to override button border margins */
+    margin-left: 0;
+  }
+
+  /* title text */
+  /* line 2284, ../scss/print.scss */
+  .fc-toolbar h2 {
+    margin: 0;
+  }
+
+  /* button layering (for border precedence) */
+  /* line 2290, ../scss/print.scss */
+  .fc-toolbar button {
+    position: relative;
+  }
+
+  /* line 2294, ../scss/print.scss */
+  .fc-toolbar .fc-state-hover,
+  .fc-toolbar .ui-state-hover {
+    z-index: 2;
+  }
+
+  /* line 2299, ../scss/print.scss */
+  .fc-toolbar .fc-state-down {
+    z-index: 3;
+  }
+
+  /* line 2303, ../scss/print.scss */
+  .fc-toolbar .fc-state-active,
+  .fc-toolbar .ui-state-active {
+    z-index: 4;
+  }
+
+  /* line 2308, ../scss/print.scss */
+  .fc-toolbar button:focus {
+    z-index: 5;
+  }
+
+  /* View Structure
+  --------------------------------------------------------------------------------------------------*/
+  /* undo twitter bootstrap's box-sizing rules. normalizes positioning techniques */
+  /* don't do this for the toolbar because we'll want bootstrap to style those buttons as some pt */
+  /* line 2318, ../scss/print.scss */
+  .fc-view-container *,
+  .fc-view-container *:before,
+  .fc-view-container *:after {
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+  }
+
+  /* line 2326, ../scss/print.scss */
+  .fc-view,
+  .fc-view > table {
+    /* so dragged elements can be above the view's main element */
+    position: relative;
+    z-index: 1;
+  }
+
+  /* BasicView
+  --------------------------------------------------------------------------------------------------*/
+  /* day row structure */
+  /* line 2339, ../scss/print.scss */
+  .fc-basicWeek-view .fc-content-skeleton,
+  .fc-basicDay-view .fc-content-skeleton {
+    /* there may be week numbers in these views, so no padding-top */
+    padding-bottom: 1em;
+    /* ensure a space at bottom of cell for user selecting/clicking */
+  }
+
+  /* line 2345, ../scss/print.scss */
+  .fc-basic-view .fc-body .fc-row {
+    min-height: 4em;
+    /* ensure that all rows are at least this tall */
+  }
+
+  /* a "rigid" row will take up a constant amount of height because content-skeleton is absolute */
+  /* line 2351, ../scss/print.scss */
+  .fc-row.fc-rigid {
+    overflow: hidden;
+  }
+
+  /* line 2355, ../scss/print.scss */
+  .fc-row.fc-rigid .fc-content-skeleton {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+  }
+
+  /* week and day number styling */
+  /* line 2364, ../scss/print.scss */
+  .fc-day-top.fc-other-month {
+    opacity: 0.3;
+  }
+
+  /* line 2368, ../scss/print.scss */
+  .fc-basic-view .fc-week-number,
+  .fc-basic-view .fc-day-number {
+    padding: 2px;
+  }
+
+  /* line 2373, ../scss/print.scss */
+  .fc-basic-view th.fc-week-number,
+  .fc-basic-view th.fc-day-number {
+    padding: 0 2px;
+    /* column headers can't have as much v space */
+  }
+
+  /* line 2378, ../scss/print.scss */
+  .fc-ltr .fc-basic-view .fc-day-top .fc-day-number {
+    float: right;
+  }
+
+  /* line 2379, ../scss/print.scss */
+  .fc-rtl .fc-basic-view .fc-day-top .fc-day-number {
+    float: left;
+  }
+
+  /* line 2381, ../scss/print.scss */
+  .fc-ltr .fc-basic-view .fc-day-top .fc-week-number {
+    float: left;
+    border-radius: 0 0 3px 0;
+  }
+
+  /* line 2382, ../scss/print.scss */
+  .fc-rtl .fc-basic-view .fc-day-top .fc-week-number {
+    float: right;
+    border-radius: 0 0 0 3px;
+  }
+
+  /* line 2384, ../scss/print.scss */
+  .fc-basic-view .fc-day-top .fc-week-number {
+    min-width: 1.5em;
+    text-align: center;
+    background-color: #f2f2f2;
+    color: #808080;
+  }
+
+  /* when week/day number have own column */
+  /* line 2393, ../scss/print.scss */
+  .fc-basic-view td.fc-week-number {
+    text-align: center;
+  }
+
+  /* line 2397, ../scss/print.scss */
+  .fc-basic-view td.fc-week-number > * {
+    /* work around the way we do column resizing and ensure a minimum width */
+    display: inline-block;
+    min-width: 1.25em;
+  }
+
+  /* AgendaView all-day area
+  --------------------------------------------------------------------------------------------------*/
+  /* line 2407, ../scss/print.scss */
+  .fc-agenda-view .fc-day-grid {
+    position: relative;
+    z-index: 2;
+    /* so the "more.." popover will be over the time grid */
+  }
+
+  /* line 2412, ../scss/print.scss */
+  .fc-agenda-view .fc-day-grid .fc-row {
+    min-height: 3em;
+    /* all-day section will never get shorter than this */
+  }
+
+  /* line 2416, ../scss/print.scss */
+  .fc-agenda-view .fc-day-grid .fc-row .fc-content-skeleton {
+    padding-bottom: 1em;
+    /* give space underneath events for clicking/selecting days */
+  }
+
+  /* TimeGrid axis running down the side (for both the all-day area and the slot area)
+  --------------------------------------------------------------------------------------------------*/
+  /* line 2424, ../scss/print.scss */
+  .fc .fc-axis {
+    /* .fc to overcome default cell styles */
+    vertical-align: middle;
+    padding: 0 4px;
+    white-space: nowrap;
+  }
+
+  /* line 2430, ../scss/print.scss */
+  .fc-ltr .fc-axis {
+    text-align: right;
+  }
+
+  /* line 2434, ../scss/print.scss */
+  .fc-rtl .fc-axis {
+    text-align: left;
+  }
+
+  /* line 2438, ../scss/print.scss */
+  .ui-widget td.fc-axis {
+    font-weight: normal;
+    /* overcome jqui theme making it bold */
+  }
+
+  /* TimeGrid Structure
+  --------------------------------------------------------------------------------------------------*/
+  /* line 2446, ../scss/print.scss */
+  .fc-time-grid-container,
+  .fc-time-grid {
+    /* so slats/bg/content/etc positions get scoped within here */
+    position: relative;
+    z-index: 1;
+  }
+
+  /* line 2452, ../scss/print.scss */
+  .fc-time-grid {
+    min-height: 100%;
+    /* so if height setting is 'auto', .fc-bg stretches to fill height */
+  }
+
+  /* line 2456, ../scss/print.scss */
+  .fc-time-grid table {
+    /* don't put outer borders on slats/bg/content/etc */
+    border: 0 hidden transparent;
+  }
+
+  /* line 2460, ../scss/print.scss */
+  .fc-time-grid > .fc-bg {
+    z-index: 1;
+  }
+
+  /* line 2464, ../scss/print.scss */
+  .fc-time-grid .fc-slats,
+  .fc-time-grid > hr {
+    /* the <hr> AgendaView injects when grid is shorter than scroller */
+    position: relative;
+    z-index: 2;
+  }
+
+  /* line 2470, ../scss/print.scss */
+  .fc-time-grid .fc-content-col {
+    position: relative;
+    /* because now-indicator lives directly inside */
+  }
+
+  /* line 2474, ../scss/print.scss */
+  .fc-time-grid .fc-content-skeleton {
+    position: absolute;
+    z-index: 3;
+    top: 0;
+    left: 0;
+    right: 0;
+  }
+
+  /* divs within a cell within the fc-content-skeleton */
+  /* line 2484, ../scss/print.scss */
+  .fc-time-grid .fc-business-container {
+    position: relative;
+    z-index: 1;
+  }
+
+  /* line 2489, ../scss/print.scss */
+  .fc-time-grid .fc-bgevent-container {
+    position: relative;
+    z-index: 2;
+  }
+
+  /* line 2494, ../scss/print.scss */
+  .fc-time-grid .fc-highlight-container {
+    position: relative;
+    z-index: 3;
+  }
+
+  /* line 2499, ../scss/print.scss */
+  .fc-time-grid .fc-event-container {
+    position: relative;
+    z-index: 4;
+  }
+
+  /* line 2504, ../scss/print.scss */
+  .fc-time-grid .fc-now-indicator-line {
+    z-index: 5;
+  }
+
+  /* line 2508, ../scss/print.scss */
+  .fc-time-grid .fc-helper-container {
+    /* also is fc-event-container */
+    position: relative;
+    z-index: 6;
+  }
+
+  /* TimeGrid Slats (lines that run horizontally)
+  --------------------------------------------------------------------------------------------------*/
+  /* line 2517, ../scss/print.scss */
+  .fc-time-grid .fc-slats td {
+    height: 1.5em;
+    border-bottom: 0;
+    /* each cell is responsible for its top border */
+  }
+
+  /* line 2522, ../scss/print.scss */
+  .fc-time-grid .fc-slats .fc-minor td {
+    border-top-style: dotted;
+  }
+
+  /* line 2526, ../scss/print.scss */
+  .fc-time-grid .fc-slats .ui-widget-content {
+    /* for jqui theme */
+    background: none;
+    /* see through to fc-bg */
+  }
+
+  /* TimeGrid Highlighting Slots
+  --------------------------------------------------------------------------------------------------*/
+  /* line 2534, ../scss/print.scss */
+  .fc-time-grid .fc-highlight-container {
+    /* a div within a cell within the fc-highlight-skeleton */
+    position: relative;
+    /* scopes the left/right of the fc-highlight to be in the column */
+  }
+
+  /* line 2538, ../scss/print.scss */
+  .fc-time-grid .fc-highlight {
+    position: absolute;
+    left: 0;
+    right: 0;
+    /* top and bottom will be in by JS */
+  }
+
+  /* TimeGrid Event Containment
+  --------------------------------------------------------------------------------------------------*/
+  /* line 2549, ../scss/print.scss */
+  .fc-ltr .fc-time-grid .fc-event-container {
+    /* space on the sides of events for LTR (default) */
+    margin: 0 2.5% 0 2px;
+  }
+
+  /* line 2553, ../scss/print.scss */
+  .fc-rtl .fc-time-grid .fc-event-container {
+    /* space on the sides of events for RTL */
+    margin: 0 2px 0 2.5%;
+  }
+
+  /* line 2557, ../scss/print.scss */
+  .fc-time-grid .fc-event,
+  .fc-time-grid .fc-bgevent {
+    position: absolute;
+    z-index: 1;
+    /* scope inner z-index's */
+  }
+
+  /* line 2563, ../scss/print.scss */
+  .fc-time-grid .fc-bgevent {
+    /* background events always span full width */
+    left: 0;
+    right: 0;
+  }
+
+  /* Generic Vertical Event
+  --------------------------------------------------------------------------------------------------*/
+  /* line 2573, ../scss/print.scss */
+  .fc-v-event.fc-not-start {
+    /* events that are continuing from another day */
+    /* replace space made by the top border with padding */
+    border-top-width: 0;
+    padding-top: 1px;
+    /* remove top rounded corners */
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+  }
+
+  /* line 2583, ../scss/print.scss */
+  .fc-v-event.fc-not-end {
+    /* replace space made by the top border with padding */
+    border-bottom-width: 0;
+    padding-bottom: 1px;
+    /* remove bottom rounded corners */
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+
+  /* TimeGrid Event Styling
+  ----------------------------------------------------------------------------------------------------
+  We use the full "fc-time-grid-event" class instead of using descendants because the event won't
+  be a descendant of the grid when it is being dragged.
+  */
+  /* line 2600, ../scss/print.scss */
+  .fc-time-grid-event {
+    overflow: hidden;
+    /* don't let the bg flow over rounded corners */
+  }
+
+  /* line 2604, ../scss/print.scss */
+  .fc-time-grid-event.fc-selected {
+    /* need to allow touch resizers to extend outside event's bounding box */
+    /* common fc-selected styles hide the fc-bg, so don't need this anyway */
+    overflow: visible;
+  }
+
+  /* line 2610, ../scss/print.scss */
+  .fc-time-grid-event.fc-selected .fc-bg {
+    display: none;
+    /* hide semi-white background, to appear darker */
+  }
+
+  /* line 2614, ../scss/print.scss */
+  .fc-time-grid-event .fc-content {
+    overflow: hidden;
+    /* for when .fc-selected */
+  }
+
+  /* line 2618, ../scss/print.scss */
+  .fc-time-grid-event .fc-time,
+  .fc-time-grid-event .fc-title {
+    padding: 0 1px;
+  }
+
+  /* line 2623, ../scss/print.scss */
+  .fc-time-grid-event .fc-time {
+    font-size: .85em;
+    white-space: nowrap;
+  }
+
+  /* short mode, where time and title are on the same line */
+  /* line 2630, ../scss/print.scss */
+  .fc-time-grid-event.fc-short .fc-content {
+    /* don't wrap to second line (now that contents will be inline) */
+    white-space: nowrap;
+  }
+
+  /* line 2635, ../scss/print.scss */
+  .fc-time-grid-event.fc-short .fc-time,
+  .fc-time-grid-event.fc-short .fc-title {
+    /* put the time and title on the same line */
+    display: inline-block;
+    vertical-align: top;
+  }
+
+  /* line 2642, ../scss/print.scss */
+  .fc-time-grid-event.fc-short .fc-time span {
+    display: none;
+    /* don't display the full time text... */
+  }
+
+  /* line 2646, ../scss/print.scss */
+  .fc-time-grid-event.fc-short .fc-time:before {
+    content: attr(data-start);
+    /* ...instead, display only the start time */
+  }
+
+  /* line 2650, ../scss/print.scss */
+  .fc-time-grid-event.fc-short .fc-time:after {
+    content: "\000A0-\000A0";
+    /* seperate with a dash, wrapped in nbsp's */
+  }
+
+  /* line 2654, ../scss/print.scss */
+  .fc-time-grid-event.fc-short .fc-title {
+    font-size: .85em;
+    /* make the title text the same size as the time */
+    padding: 0;
+    /* undo padding from above */
+  }
+
+  /* resizer (cursor device) */
+  /* line 2661, ../scss/print.scss */
+  .fc-time-grid-event.fc-allow-mouse-resize .fc-resizer {
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 8px;
+    overflow: hidden;
+    line-height: 8px;
+    font-size: 11px;
+    font-family: monospace;
+    text-align: center;
+    cursor: s-resize;
+  }
+
+  /* line 2674, ../scss/print.scss */
+  .fc-time-grid-event.fc-allow-mouse-resize .fc-resizer:after {
+    content: "=";
+  }
+
+  /* resizer (touch device) */
+  /* line 2680, ../scss/print.scss */
+  .fc-time-grid-event.fc-selected .fc-resizer {
+    /* 10x10 dot */
+    border-radius: 5px;
+    border-width: 1px;
+    width: 8px;
+    height: 8px;
+    border-style: solid;
+    border-color: inherit;
+    background: #fff;
+    /* horizontally center */
+    left: 50%;
+    margin-left: -5px;
+    /* center on the bottom edge */
+    bottom: -5px;
+  }
+
+  /* Now Indicator
+  -------------------------------------------------------------------------*/
+  /* line 2700, ../scss/print.scss */
+  .fc-time-grid .fc-now-indicator-line {
+    border-top-width: 1px;
+    left: 0;
+    right: 0;
+  }
+
+  /* arrow on axis */
+  /* line 2708, ../scss/print.scss */
+  .fc-time-grid .fc-now-indicator-arrow {
+    margin-top: -5px;
+    /* vertically center on top coordinate */
+  }
+
+  /* line 2712, ../scss/print.scss */
+  .fc-ltr .fc-time-grid .fc-now-indicator-arrow {
+    left: 0;
+    /* triangle pointing right... */
+    border-width: 5px 0 5px 6px;
+    border-top-color: transparent;
+    border-bottom-color: transparent;
+  }
+
+  /* line 2720, ../scss/print.scss */
+  .fc-rtl .fc-time-grid .fc-now-indicator-arrow {
+    right: 0;
+    /* triangle pointing left... */
+    border-width: 5px 6px 5px 0;
+    border-top-color: transparent;
+    border-bottom-color: transparent;
+  }
+
+  /* List View
+  --------------------------------------------------------------------*/
+  /* possibly reusable */
+  /* line 2735, ../scss/print.scss */
+  .fc-event-dot {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 5px;
+  }
+
+  /* view wrapper */
+  /* line 2744, ../scss/print.scss */
+  .fc-rtl .fc-list-view {
+    direction: rtl;
+    /* unlike core views, leverage browser RTL */
+  }
+
+  /* line 2748, ../scss/print.scss */
+  .fc-list-view {
+    border-width: 1px;
+    border-style: solid;
+  }
+
+  /* table resets */
+  /* line 2755, ../scss/print.scss */
+  .fc .fc-list-table {
+    table-layout: auto;
+    /* for shrinkwrapping cell content */
+  }
+
+  /* line 2759, ../scss/print.scss */
+  .fc-list-table td {
+    border-width: 1px 0 0;
+    padding: 8px 14px;
+  }
+
+  /* line 2764, ../scss/print.scss */
+  .fc-list-table tr:first-child td {
+    border-top-width: 0;
+  }
+
+  /* day headings with the list */
+  /* line 2770, ../scss/print.scss */
+  .fc-list-heading {
+    border-bottom-width: 1px;
+  }
+
+  /* line 2774, ../scss/print.scss */
+  .fc-list-heading td {
+    font-weight: bold;
+  }
+
+  /* line 2778, ../scss/print.scss */
+  .fc-ltr .fc-list-heading-main {
+    float: left;
+  }
+
+  /* line 2779, ../scss/print.scss */
+  .fc-ltr .fc-list-heading-alt {
+    float: right;
+  }
+
+  /* line 2781, ../scss/print.scss */
+  .fc-rtl .fc-list-heading-main {
+    float: right;
+  }
+
+  /* line 2782, ../scss/print.scss */
+  .fc-rtl .fc-list-heading-alt {
+    float: left;
+  }
+
+  /* event list items */
+  /* line 2786, ../scss/print.scss */
+  .fc-list-item.fc-has-url {
+    cursor: pointer;
+    /* whole row will be clickable */
+  }
+
+  /* line 2790, ../scss/print.scss */
+  .fc-list-item:hover td {
+    background-color: #f5f5f5;
+  }
+
+  /* line 2794, ../scss/print.scss */
+  .fc-list-item-marker,
+  .fc-list-item-time {
+    white-space: nowrap;
+    width: 1px;
+  }
+
+  /* make the dot closer to the event title */
+  /* line 2801, ../scss/print.scss */
+  .fc-ltr .fc-list-item-marker {
+    padding-right: 0;
+  }
+
+  /* line 2802, ../scss/print.scss */
+  .fc-rtl .fc-list-item-marker {
+    padding-left: 0;
+  }
+
+  /* line 2804, ../scss/print.scss */
+  .fc-list-item-title a {
+    /* every event title cell has an <a> tag */
+    text-decoration: none;
+    color: inherit;
+  }
+
+  /* line 2810, ../scss/print.scss */
+  .fc-list-item-title a[href]:hover {
+    /* hover effect only on titles with hrefs */
+    text-decoration: underline;
+  }
+
+  /* message when no events */
+  /* line 2817, ../scss/print.scss */
+  .fc-list-empty-wrap2 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+
+  /* line 2825, ../scss/print.scss */
+  .fc-list-empty-wrap1 {
+    width: 100%;
+    height: 100%;
+    display: table;
+  }
+
+  /* line 2831, ../scss/print.scss */
+  .fc-list-empty {
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+  }
+
+  /* line 2837, ../scss/print.scss */
+  .fc-unthemed .fc-list-empty {
+    /* theme will provide own background */
+    background-color: #eee;
+  }
+}
+
+/*# sourceMappingURL=print.css.map */
