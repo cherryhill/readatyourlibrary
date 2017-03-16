@@ -113,7 +113,7 @@
 <!-- 	<div class="submit">
 		<button id="pg-report">Submit</button>
 	</div> -->
-	<div><?php $report_block_text = variable_get('report_block_desc', array('value' => '', 'format' => NULL)); ?></div>
+	<div><?php $report_block_text = variable_get('report_block_desc', array('value' => '', 'format' => NULL)); print t($report_block_text);?></div>
 </div>
 
 <div class="reward-won"><?php print views_embed_view('Rewards_Progress','block'); ?> </div>
