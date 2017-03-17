@@ -17,12 +17,12 @@
       Drupal.settings.payl_program_customizations_birthday_limit = parseInt(Drupal.settings.payl_program_customizations_birthday_limit);
       
       $('.page-user-register .form-item-name').hide();
-      $('.date-year .form-select').on('change', function() {
-        var birthdayMonth = jQuery('.date-month .form-select').val();
+      $('.page-user-register .date-year .form-select').on('change', function() {
+        var birthdayMonth = jQuery('.page-user-register .date-month .form-select').val();
         console.log (birthdayMonth);
-        var birthdayDay = jQuery('.date-day .form-select').val();
+        var birthdayDay = jQuery('.page-user-register .date-day .form-select').val();
         console.log (birthdayDay);
-        var birthdayYear = jQuery('.date-year .form-select').val();
+        var birthdayYear = jQuery('.page-user-register .date-year .form-select').val();
         console.log (birthdayYear);
         var age = calculate_age(birthdayMonth,birthdayDay,birthdayYear);
         console.log(age);
@@ -37,28 +37,28 @@
 
       });
 
-      $('.field-widget-random-list-widget-randomizer').each(function(index) {
+      $('.page-user-register .field-widget-random-list-widget-randomizer').each(function(index) {
         fieldname = 'Change ' + $(this).find('label').html();
-        $(this).find('input.random-list-widget-regenerate').val(fieldname);
-        $(this).find('button.random-list-widget-regenerate').html(fieldname);
+        $(this).find('.page-user-register input .random-list-widget-regenerate').val(fieldname);
+        $(this).find('.page-user-registerbutton .random-list-widget-regenerate').html(fieldname);
       });
-      $('.field-widget-random-list-widget-randomizer .form-type-textfield').hide();
-      $('.random-list-widget').attr('readonly', true);
-      $('.random-list-widget-regenerate').click(function() {
+      $('.page-user-register .field-widget-random-list-widget-randomizer .form-type-textfield').hide();
+      $('.page-user-register .random-list-widget').attr('readonly', true);
+      $('.page-user-register .random-list-widget-regenerate').click(function() {
         setTimeout(function() {
           var name = '';
-          $('.random-list-widget').each(function(index) {
+          $('.page-user-register .random-list-widget').each(function(index) {
             name = name + $(this).val();
           });
-          $('#edit-name').val(name);
+          $('.page-user-register #edit-name').val(name);
       
 
-      $('.date-year').bind('change', function() {
-        var birthdayMonth = jQuery('.date-month .form-select').val();
+      $('.page-user-register .date-year').bind('change', function() {
+        var birthdayMonth = jQuery('.page-user-register .date-month .form-select').val();
       // console.log(birthdayMonth);
-      var birthdayDay = jQuery('.date-day .form-select').val();
+      var birthdayDay = jQuery('.page-user-register .date-day .form-select').val();
       // console.log(birthdayDay);
-      var birthdayYear = jQuery('.date-year .form-select').val();
+      var birthdayYear = jQuery('.page-user-register .date-year .form-select').val();
       // console.log(birthdayYear);
 
         var age = calculate_age(birthdayMonth,birthdayDay,birthdayYear);
@@ -84,7 +84,7 @@
                 if (data == 'yes') {
                   console.log(data);
                   setTimeout(function() {
-                    $('.random-list-widget-regenerate').click();
+                    $('.page-user-register .random-list-widget-regenerate').click();
                   }, 150);
                 }
               }
@@ -93,9 +93,9 @@
           payl_program_customizations_change_name();
         }, 50);
       });
-      $('#edit-name').keyup(payl_program_customizations_change_name);
+      $('.page-user-register #edit-name').keyup(payl_program_customizations_change_name);
 
-      var edit_username = $('#edit-account #edit-name').val();
+      var edit_username = $('.page-user-register #edit-account #edit-name').val();
 
       //username not to change on field errors 
       var url = window.location.href;
@@ -106,18 +106,18 @@
         if($("div").hasClass("error")){
           localStorage.setItem('username_generated', name);
           var uname = localStorage.getItem('username_generated');
-          $('.current-username').html(uname);
+          $('.page-user-register .current-username').html(uname);
         }else{
           setTimeout(function() {
-            $('.random-list-widget-regenerate').click();
+            $('.page-user-register .random-list-widget-regenerate').click();
           }, 150);
         }
       }else{
-        if($("button").hasClass("random-list-widget-regenerate")){
+        if($(".page-user-register button").hasClass("random-list-widget-regenerate")){
           if(edit_username.length > 0){
-            $('.current-username').html(edit_username);
+            $('.page-user-register .current-username').html(edit_username);
           }else{
-            $('.random-list-widget-regenerate').click();
+            $('.page-user-register .random-list-widget-regenerate').click();
           }
         }
       }
@@ -125,8 +125,8 @@
   }
 
   function payl_program_customizations_change_name() {
-    name = $('#edit-name').val();
-    $('.current-username').html(name);
+    name = $('.page-user-register #edit-name').val();
+    $('.page-user-register .current-username').html(name);
   }
 
   function calculate_age(birth_month,birth_day,birth_year) {
