@@ -283,13 +283,13 @@ function patron_activity_record_form($form, &$form_state) {
   $form['submit'] = array(
     '#value' => 'Submit',
     '#type' => 'submit',
-    '#attributes' => array('id'=>array('activity-submit')),
-    // '#ajax' => array(
-    //     'callback' => 'patron_activity_record_form_submit',
-    //     'wrapper' => 'bingo-progress-main',
-    //     'method' => 'replace',
-    //     'effect' => 'fade',
-    //   ),
+    // '#attributes' => array('id'=>array('activity-submit')),
+    '#ajax' => array(
+        'callback' => 'patron_activity_record_form_submit',
+        'wrapper' => 'bingo-progress-main',
+        'method' => 'replace',
+        'effect' => 'fade',
+      ),
   );
 
   return $form;
@@ -334,4 +334,10 @@ function patron_activity_record_form_submit($form, &$form_state) {
   } else {
     drupal_set_message("Please add stickers for Calendar with 'Staff Record Image' as 'Yes'", "error");
   }
+  $commands = array();
+$commands[] = ajax_command_after('.l-header', theme('status_messages'));
+return array(
+  '#type' => 'ajax',
+  '#commands' => $commands,
+);
 }
