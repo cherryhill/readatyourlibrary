@@ -29,15 +29,15 @@ function play_program_configuration_menu(){
 
 
   // Platform details for the program
-  $items['admin/config/system/platform_details'] = array(
-    'title' => 'Platform Details',
-    'description' => 'Platform Details for the program',
-    'page callback' => 'drupal_get_form',
-    'page arguments' => array('pl_platform_details'),
-    'access arguments' => array('access administration pages'),
-    'type' => MENU_NORMAL_ITEM,
-    'file' => 'inc/pl_platform_details.inc',
-  );
+  // $items['admin/config/system/platform_details'] = array(
+  //   'title' => 'Platform Details',
+  //   'description' => 'Platform Details for the program',
+  //   'page callback' => 'drupal_get_form',
+  //   'page arguments' => array('pl_platform_details'),
+  //   'access arguments' => array('access administration pages'),
+  //   'type' => MENU_NORMAL_ITEM,
+  //   'file' => 'inc/pl_platform_details.inc',
+  // );
 
   $items['author/autocomplete'] = array(
     'title' => 'Author Name',
