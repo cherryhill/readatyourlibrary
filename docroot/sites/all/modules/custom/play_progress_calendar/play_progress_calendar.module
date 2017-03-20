@@ -292,6 +292,12 @@ function patron_activity_record_form($form, &$form_state) {
       ),
   );
 
+  
+
+  $form['#attached']['js'] = array(
+    drupal_get_path('module', 'play_progress_calendar') . '/js/record_activity.js',
+  );
+
   return $form;
 }
 
