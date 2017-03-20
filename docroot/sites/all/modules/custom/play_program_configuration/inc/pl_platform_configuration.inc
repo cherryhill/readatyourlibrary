@@ -90,18 +90,18 @@ function pl_platform_configuration($form, &$form_state) {
     '#description' => t('Enter a valid url (https://www.example.com) for Booklist purchase'),
     '#default_value' => variable_get('pmc_purchase_link'),
   );
-  $form['program_details']['pmc_library_name'] = array(
-    '#type' => 'textfield',
-    '#title' => t('Library Name'),
-    '#description' => t('Enter the Library name for the program'),
-    '#default_value' => variable_get('pmc_library_name'),
-  );
-  $form['program_details']['library_abbreviation'] = array(
-    '#type' => 'textfield',
-    '#title' => t('Abbreviation for Library Name'),
-    '#description' => t('Abbreviation for Library name'),
-    '#default_value' => variable_get('library_abbreviation'),
-  );
+  // $form['program_details']['pmc_library_name'] = array(
+  //   '#type' => 'textfield',
+  //   '#title' => t('Library Name'),
+  //   '#description' => t('Enter the Library name for the program'),
+  //   '#default_value' => variable_get('pmc_library_name'),
+  // );
+  // $form['program_details']['library_abbreviation'] = array(
+  //   '#type' => 'textfield',
+  //   '#title' => t('Abbreviation for Library Name'),
+  //   '#description' => t('Abbreviation for Library name'),
+  //   '#default_value' => variable_get('library_abbreviation'),
+  // );
   $form['program_details']['catalog_link_for_program'] = array(
     '#type' => 'textfield',
     '#title' => t('Catalog link for review'),
