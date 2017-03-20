@@ -141,6 +141,9 @@
       position: relative;
     }
   }
+  select.form-select {
+    @extend .main-button;
+  }
 }
 
 //side bar menu common in review pages
@@ -649,6 +652,16 @@ h2.reviews-title, .view-booklist-slideshow .view-header h1 {
               }
            }
         }
+}
+
+.page-activities-list, .page-reviews,
+.page-booklists, .page-movie-review,
+.page-music-review, .page-video-game-review {
+  .sidebar-activity {
+    .view-reviews-page-views {
+      margin-top: 15px;
+    }
+  }
 }
 
 

@@ -255,6 +255,31 @@
 			}
 		}
 	}
+
+	/*-------------User Public Profile-------------*/
+		.page-users-public-profile {
+			.view--user-public-profile, .view-public-reward {
+				text-align: center;
+			}
+		}
+	/*-------------User Public Profile Ends-------------*/
+
+	/*-------------Leaderboard Page-------------*/
+	.page-leaderboard {
+		.main {
+			.primary-tabs + div {
+				ol {
+					li {
+						flex: 0 0 100%;
+						span {
+							display: block;
+						}
+					}
+				}
+			}
+		}
+	}
+	/*-------------Leaderboard Page Ends-------------*/
 	/*-------------Dashboard Page Ends-------------*/
 
 	/*-------------Home Page-------------*/
@@ -306,10 +331,12 @@
 
 	/*-------------Bookreview Page-------------*/
 	.page-reviews  {
-		.views-exposed-widget {
-			flex: 0 0 calc(100% - 10px);
-			button {
-				margin-left: 0;
+		.book-reviews-page {
+			.views-exposed-widget {
+				flex: 0 0 calc(100% - 10px);
+				button {
+					margin-left: 0;
+				}
 			}
 		}
 		.views-field-field-book-cover-image-link {
@@ -320,6 +347,17 @@
 			img {
 				margin: auto;
 				display: block;
+			}
+		}
+	}
+	.main {
+		.view-movie-review,  .view-music-review-listing,
+		.view--video-game-review, .view--individual-activities-listing {
+			.views-exposed-widget {
+				flex: 0 0 calc(100% - 10px);
+				button {
+					margin-left: 0;
+				}
 			}
 		}
 	}
@@ -371,13 +409,15 @@
     	}
     }
 	}
-	.view-booklist-page-view {
-		.views-exposed-widget {
-			flex: 0 0 calc(100% - 10px);
-		}
-		.views-submit-button {
-			button.form-submit {
-				margin-left: 0;
+	.main {
+		.view-booklist-page-view {
+			.views-exposed-widget {
+				flex: 0 0 calc(100% - 10px);
+			}
+			.views-submit-button {
+				button.form-submit {
+					margin-left: 0;
+				}
 			}
 		}
 	}
@@ -402,22 +442,50 @@
 	}
 	/*-------------Booklisting Page Ends-------------*/
 
+	/*-------------Movie Review Page-------------*/
+	.view-content {
+		.common-review-wrapper {
+			.title > div {
+				&:nth-of-type(1) {
+					width: 60%;
+				}
+				&.likes {
+					width: 40%;
+				}
+			}
+		}
+	}
+	/*-------------Movie Review Page Ends-------------*/
+
+	/*-------------Activity Page-------------*/
+	.page-activities-list {
+	 .view--activities-listing {
+	 		margin-bottom: 30px;
+	 	}
+	}
+	/*-------------Activity Page Ends-------------*/
+
 	/*-------------Current-Programme Page-------------*/
-	.current-program {
-		.programme-content {
-			padding: 35px 0;
-			.image {
-    		flex: 0 0 100%;
-    		padding-top: 0;
-    		img {
-    			display: block;
-    			margin: auto;
-    		}
-    	}
-    	.body {
-    		flex: 0 0 100%;
-    		padding: 20px 10px 0;
-    	}
+	.page-programs {
+		.stroke-main {
+			padding-left: 10px;
+		}
+		.main {
+			.programme-content {
+				padding: 10px;
+				.image {
+	    		flex: 0 0 100% !important;
+	    		padding-top: 0;
+	    		img {
+	    			display: block;
+	    			margin: auto;
+	    		}
+	    	}
+	    	.body {
+	    		flex: 0 0 100%;
+	    		padding: 20px 10px 0;
+	    	}
+			}
 		}
 	}
 	.other-programme {
@@ -808,6 +876,7 @@
 			}
 		}
 	}
+
 	/*-------------Dashboard Page Ends-------------*/
 
 	/*-------------Home Page-------------*/
@@ -836,7 +905,7 @@
 	/*-------------Bookreview Page-------------*/
 	.page-reviews  {
 		.views-exposed-widget {
-			flex: 0 0 calc(50% - 10px);
+			flex: 0 0 calc(50% - 10px) !important;
 		}
 	}
 	.sidebar2 {
@@ -853,10 +922,41 @@
   }
 	/*-------------Bookreview Page Ends-------------*/
 
+	/*-------------Review Page Sidebar-------------*/
+	.sidebar-activity {
+		.block-menu-menu-book-reviews-sidebar-menu-f {
+			.menu {
+				li {
+					a {
+						padding-left: 50px;
+						&:after {
+							left: -5px;
+						}
+					}
+				}
+			}
+		}
+		.block-teen-reward-page {
+			padding: 10px;
+		}
+	}
+	/*-------------Review Page Sidebar Ends-------------*/
+
 	/*-------------Booklisting Page-------------*/
-	.booklist-listing-page {
-		.views-exposed-widget {
-			flex: 0 0 calc(50% - 10px);
+	.main {
+		.booklist-listing-page, .view-movie-review, 
+		.view-music-review-listing, .view--video-game-review,
+		.view--individual-activities-listing  {
+			.views-exposed-widget {
+				flex: 0 0 calc(50% - 10px);
+			}
+			.views-submit-button {
+				button {
+					&.form-submit {
+						margin-top: 10px;
+					}
+				}
+			}
 		}
 	}
 	.booklist-wrapp {
@@ -925,7 +1025,19 @@
 			}
 		}
 	}
-	/*-------------Photos/Videos Page-------------*/
+	/*-------------Photos/Videos Page Ends-------------*/
+
+	/*----------------Activity Page----------------*/
+		.activity-page-wrapper {
+			.drop-downs-wrapper {
+				.form-type-select {
+					label, select {
+						flex: 0 0 100%;
+					}
+				}
+			}
+		}
+	/*-------------Activity Page Ends--------------*/
 
 	.sidebar2.sidebar-shareit {
 		> .first {
@@ -943,11 +1055,22 @@
 
 @media screen and (max-width: 1024px) {
 	/*-------------Common for page title-------------*/
-	h1 {
-		&#page-title {
-			width: 100%;
-			margin-left: 0;
-			background-size: auto;
+	.main {
+		h1, h2  {
+			&#page-title, &.reviews-title {
+				width: 100%;
+				margin-left: 0;
+				background-size: auto;
+			}
+		}
+		.view-booklist-slideshow {
+			.view-header {
+				h1 {
+					width: 100%;
+					margin-left: 0;
+					background-size: auto;
+				}
+			}
 		}
 	}
 	
