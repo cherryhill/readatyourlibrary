@@ -16,60 +16,60 @@
     attach: function() {
       Drupal.settings.payl_program_customizations_birthday_limit = parseInt(Drupal.settings.payl_program_customizations_birthday_limit);
       
-      $('.not-logged-in #user-register-form .form-item-name').hide();
-      $('.not-logged-in #user-register-form .date-year .form-select').on('change', function() {
-        var birthdayMonth = jQuery('.not-logged-in #user-register-form .date-month .form-select').val();
+      $('#user-register-form .form-item-name').hide();
+      $('#user-register-form .date-year .form-select').on('change', function() {
+        var birthdayMonth = jQuery('#user-register-form .date-month .form-select').val();
         console.log (birthdayMonth);
-        var birthdayDay = jQuery('.not-logged-in #user-register-form .date-day .form-select').val();
+        var birthdayDay = jQuery('#user-register-form .date-day .form-select').val();
         console.log (birthdayDay);
-        var birthdayYear = jQuery('.not-logged-in #user-register-form .date-year .form-select').val();
+        var birthdayYear = jQuery('#user-register-form .date-year .form-select').val();
         console.log (birthdayYear);
         var age = calculate_age(birthdayMonth,birthdayDay,birthdayYear);
         console.log(age);
         // More than 13 years old.
         if (age > 12 || age == NaN) {
-          $('.not-logged-in #user-register-form .form-item-name').show();
+          $('#user-register-form .form-item-name').show();
         }
         // Less than 13 years old.
         else {
-          $('.not-logged-in #user-register-form .form-item-name').hide();
+          $('#user-register-form .form-item-name').hide();
         }
 
       });
 
-      $('.not-logged-in #user-register-form .field-widget-random-list-widget-randomizer').each(function(index) {
+      $('#user-register-form .field-widget-random-list-widget-randomizer').each(function(index) {
         fieldname = 'Change ' + $(this).find('label').html();
-        $(this).find('.not-logged-in #user-register-form input .random-list-widget-regenerate').val(fieldname);
-        $(this).find('.not-logged-in #user-register-form button .random-list-widget-regenerate').html(fieldname);
+        $(this).find('#user-register-form input .random-list-widget-regenerate').val(fieldname);
+        $(this).find('#user-register-form button .random-list-widget-regenerate').html(fieldname);
       });
-      $('.not-logged-in #user-register-form .field-widget-random-list-widget-randomizer .form-type-textfield').hide();
-      $('.not-logged-in #user-register-form .random-list-widget').attr('readonly', true);
-      $('.not-logged-in #user-register-form .random-list-widget-regenerate').click(function() {
+      $('#user-register-form .field-widget-random-list-widget-randomizer .form-type-textfield').hide();
+      $('#user-register-form .random-list-widget').attr('readonly', true);
+      $('#user-register-form .random-list-widget-regenerate').click(function() {
         setTimeout(function() {
           var name = '';
-          $('.not-logged-in #user-register-form .random-list-widget').each(function(index) {
+          $('#user-register-form .random-list-widget').each(function(index) {
             name = name + $(this).val();
           });
-          $('.not-logged-in #user-register-form #edit-name').val(name);
+          $('#user-register-form #edit-name').val(name);
       
 
       $('.not-logged-in #user-register-form .date-year').bind('change', function() {
-        var birthdayMonth = jQuery('.not-logged-in #user-register-form .date-month .form-select').val();
+        var birthdayMonth = jQuery('#user-register-form .date-month .form-select').val();
       // console.log(birthdayMonth);
-      var birthdayDay = jQuery('.not-logged-in #user-register-form .date-day .form-select').val();
+      var birthdayDay = jQuery('#user-register-form .date-day .form-select').val();
       // console.log(birthdayDay);
-      var birthdayYear = jQuery('.not-logged-in #user-register-form .date-year .form-select').val();
+      var birthdayYear = jQuery('#user-register-form .date-year .form-select').val();
       // console.log(birthdayYear);
 
         var age = calculate_age(birthdayMonth,birthdayDay,birthdayYear);
         console.log(age);
         // More than 13 years old.
         if (age > 12 || age == NaN) {
-          $('.not-logged-in #user-register-form .form-item-name').show();
+          $('#user-register-form .form-item-name').show();
         }
         // Less than 13 years old.
         else {
-          $('.not-logged-in #user-register-form .form-item-name').hide();
+          $('#user-register-form .form-item-name').hide();
         }
 
       });
@@ -84,7 +84,7 @@
                 if (data == 'yes') {
                   console.log(data);
                   setTimeout(function() {
-                    $('.not-logged-in #user-register-form .random-list-widget-regenerate').click();
+                    $('#user-register-form .random-list-widget-regenerate').click();
                   }, 150);
                 }
               }
@@ -93,9 +93,9 @@
           payl_program_customizations_change_name();
         }, 50);
       });
-      $('.not-logged-in #user-register-form #edit-name').keyup(payl_program_customizations_change_name);
+      $('#user-register-form #edit-name').keyup(payl_program_customizations_change_name);
 
-      var edit_username = $('.not-logged-in #user-register-form #edit-account #edit-name').val();
+      var edit_username = $('#user-register-form #edit-account #edit-name').val();
 
       //username not to change on field errors 
       var url = window.location.href;
@@ -106,18 +106,18 @@
         if($("div").hasClass("error")){
           localStorage.setItem('username_generated', name);
           var uname = localStorage.getItem('username_generated');
-          $('.not-logged-in #user-register-form .current-username').html(uname);
+          $('#user-register-form .current-username').html(uname);
         }else{
           setTimeout(function() {
-            $('.not-logged-in #user-register-form .random-list-widget-regenerate').click();
+            $('#user-register-form .random-list-widget-regenerate').click();
           }, 150);
         }
       }else{
-        if($(".not-logged-in #user-register-form button").hasClass("random-list-widget-regenerate")){
+        if($("#user-register-form button").hasClass("random-list-widget-regenerate")){
           if(edit_username.length > 0){
-            $('.not-logged-in #user-register-form .current-username').html(edit_username);
+            $('#user-register-form .current-username').html(edit_username);
           }else{
-            $('.not-logged-in #user-register-form .random-list-widget-regenerate').click();
+            $('#user-register-form .random-list-widget-regenerate').click();
           }
         }
       }
@@ -125,8 +125,8 @@
   }
 
   function payl_program_customizations_change_name() {
-    name = $('.not-logged-in #user-register-form #edit-name').val();
-    $('.not-logged-in #user-register-form .current-username').html(name);
+    name = $('#user-register-form #edit-name').val();
+    $('#user-register-form .current-username').html(name);
   }
 
   function calculate_age(birth_month,birth_day,birth_year) {
