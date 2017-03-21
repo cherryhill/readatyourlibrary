@@ -1,5 +1,6 @@
 <!-- Progress Report Page -->
 <?php
+  drupal_add_js(libraries_get_path('printThis', TRUE). '/printThis.js');
   global $user;
   global $base_url;
   $current_uid = $user->uid;
@@ -113,7 +114,7 @@
 <!-- 	<div class="submit">
 		<button id="pg-report">Submit</button>
 	</div> -->
-	<div><?php $report_block_text = variable_get('report_block_desc', array('value' => '', 'format' => NULL)); print t($report_block_text['value']);?></div>
+	<div class="report-activity-desc"><?php $report_block_text = variable_get('report_block_desc', array('value' => '', 'format' => NULL)); print t($report_block_text['value']);?></div>
 </div>
 
 <div class="reward-won"><?php print views_embed_view('Rewards_Progress','block'); ?> </div>
