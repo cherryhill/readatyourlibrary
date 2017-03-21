@@ -516,6 +516,7 @@ function pl_hotspot_activities() {
  * Showing of user avatars in tab format
  */
 function play_library_custom_form_profile2_edit_main_form_alter(&$form, $form_state) {
+
   $form['profile_main']['field_user_avatar'] = array('#attributes' => array('style' => 'display:none'));
 
   $query = db_select('field_data_field_avatar_type','type');
