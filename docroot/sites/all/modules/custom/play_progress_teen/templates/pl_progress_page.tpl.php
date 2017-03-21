@@ -1,5 +1,6 @@
 <!-- Progress Report Page -->
 <?php
+  drupal_add_js(libraries_get_path('printThis', TRUE). '/printThis.js');
   global $user;
   global $base_url;
   $current_uid = $user->uid;
