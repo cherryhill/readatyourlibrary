@@ -235,6 +235,9 @@ div.progress-page {
           }
         }
       }
+      .report-activity-desc {
+        padding: 0 20px;
+      }
     }
     .reward-won {
       background: $white;
@@ -267,6 +270,16 @@ div.progress-page {
           }
         }
       }
+      .view-Rewards-Progress {
+        padding: 20px;
+        .view-header {
+          p {
+            &:first-of-type {
+              display: none;
+            }
+          }
+        }
+      }
     }
     .progress-rewards {
       display: flex;
@@ -278,7 +291,7 @@ div.progress-page {
       }
       .cs-classic & {
         @extend .light-blue;
-    color: $dark-blue;
+        color: $dark-blue;
       }
       .cs-elegant & {
          @extend .yellow-btn-elegant;
@@ -290,6 +303,9 @@ div.progress-page {
           text-align: center;
           @include button-font;
         }
+    }
+    .description {
+      display: none;
     }
   }
   .progress-main {
