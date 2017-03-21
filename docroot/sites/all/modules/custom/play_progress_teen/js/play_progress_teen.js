@@ -11,26 +11,40 @@ Drupal.behaviors.play_progress_teen = {
     $('#edit-activity-progress-select').append('<option value = 0>Please select activity</option>');
   }
 
-  $('.print_pg').on('click', function() {
-    printDiv('.progress-page');
-  });
-
-  function printDiv(elem) {
-    Popup($(elem).html());
-  }
   
-  function Popup(data){
-    var mywindow = window.open('', 'new div', 'height=400,width=600');
-    mywindow.document.write('<html><head><title>my div</title>');
-    mywindow.document.write('</head><body >');
-    mywindow.document.write(data);
-    mywindow.document.write('</body></html>');
+  //Js for calling printThis
 
-    mywindow.print();
-    mywindow.close();
+  //
+    $('.print_pg').on('click', function (){
+      var baseUrl = Drupal.settings.basePath;
+      console.log("ddgfs");
+      jQuery('.progress-page').printThis({
+        debug: false,               //* show the iframe for debugging
+        importCSS: true,            //* import page CSS
+        importStyle: false,         //* import style tags
+        printContainer: true,       //* grab outer container as well as the contents of the selector
+        loadCSS: ["http://localhost/play/docroot/sites/all/modules/custom/play_progress_teen/css/print.css","http://localhost/play/docroot/sites/all/modules/custom/play_progress_teen/css/play_progress_teen.css"],  //* path to additional css file - use an array [] for multiple
+        pageTitle: "",              //* add title to print page
+        removeInline: false,        //* remove all inline styles from print elements
+        printDelay: 333,            //* variable print delay; depending on complexity a higher value may be necessary
+        header: null,               //* prefix to html
+        base: false,                 //* preserve the BASE tag, or accept a string for the URL
+        formValues: true,            //* preserve input/form values
+      });
+    });
+  
+  // function Popup(data){
+  //   var mywindow = window.open('', 'new div', 'height=400,width=600');
+  //   mywindow.document.write('<html><head><title>my div</title>');
+  //   mywindow.document.write('</head><body >');
+  //   mywindow.document.write(data);
+  //   mywindow.document.write('</body></html>');
 
-    return true;
-  }
+  //   mywindow.print();
+  //   mywindow.close();
+
+  //   return true;
+  // }
 
   if($(".progress-grid td[active='yes']").length === 0){
     $(this).attr('disabled','disabled');
