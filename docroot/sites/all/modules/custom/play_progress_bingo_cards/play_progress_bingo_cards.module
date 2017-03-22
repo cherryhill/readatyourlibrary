@@ -353,7 +353,7 @@ function play_progress_bingo_cards_get_pager_array(){
   //Query to get bingo card field values
   $node_que = db_select('node', 'n');
   $node_que->LEFTJOIN('node_type', 'nt', 'nt.type = n.type');
-  $node_que->CONDITION('n.type', array('bingo_card','review_book'), 'IN');
+  $node_que->CONDITION('n.type', array('bingo_card','review_book','movie_review', 'music_review', 'video_game_review', 'review_activity', 'booklist'), 'IN');
   $node_que->CONDITION('n.uid', $user->uid);
   $node_que->CONDITION('n.status', 1);
   $node_que->FIELDS('n', array('nid'));
