@@ -321,7 +321,7 @@ function play_progress_bingo_cards_get_cards($node_ids){
   $node_que->LEFTJOIN('field_data_field_cell_data', 'fdfced', 'fdfcd.field_card_data_value = fdfced.entity_id');
   $node_que->LEFTJOIN('field_data_field_bingo_activity_date', 'fdfbad', 'fdfcd.field_card_data_value = fdfbad.entity_id');
   $node_que->LEFTJOIN('field_data_field_card_status', 'fdfcs', 'n.nid = fdfcs.entity_id');
-  $node_que->CONDITION('n.type', array('bingo_card','review_book'), 'IN');
+  $node_que->CONDITION('n.type', array('bingo_card','review_book','movie_review', 'music_review', 'video_game_review', 'review_activity', 'booklist'), 'IN');
   //Add node id condition if nids are sent
   if(!empty($node_ids)){
     $node_que->CONDITION('n.nid', $node_ids, 'IN');
