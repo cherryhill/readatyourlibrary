@@ -102,7 +102,7 @@
       var array = url.split('/');
       var lastsegment = array[array.length-1];
 
-      if (lastsegment == 'register'){
+      if (lastsegment == 'register' || lastsegment == 'group_lead' || lastsegment == 'user' || lastsegment == 'staff'){
         if($("div").hasClass("error")){
           localStorage.setItem('username_generated', name);
           var uname = localStorage.getItem('username_generated');
