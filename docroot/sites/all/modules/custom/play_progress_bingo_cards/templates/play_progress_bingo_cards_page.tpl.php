@@ -3,9 +3,10 @@
   //Add js file for bingo cards
   drupal_add_js(drupal_get_path('module', 'play_progress_bingo_cards') . '/js/play_progress_bingo_cards.js');
   //Add print js file for bingo cards
-  drupal_add_js(drupal_get_path('module', 'play_progress_bingo_cards') . '/printThis/printThis.js');
+  // drupal_add_js(drupal_get_path('module', 'play_progress_bingo_cards') . '/printThis/printThis.js');
 
   drupal_add_css(drupal_get_path('module', 'play_progress_bingo_cards') . '/css/play_progress_bingo_cards.css', array('group' => CSS_DEFAULT, 'every_page' => TRUE));
+  drupal_add_js(libraries_get_path('printThis', TRUE). '/printThis.js');
   global $user;
   global $base_url;
   $current_uid = $user->uid;
