@@ -22,25 +22,25 @@ function pl_configuration_progress($form, &$form_state) {
 	  '#default_value' => variable_get('pg_title') ? variable_get('pg_title') : 'Progress',
 	);
 
-	$form['progress_page']['progress_details']['pg_startdate'] = array(
-	  '#title' => t('Start Date'),
-	  '#type' => 'date_popup',
-	  '#date_format' => 'd/m/Y',
-	  '#date_year_range' => '0:+10',
-	  '#required' => TRUE,
-	  '#size' => 8,
-	  '#default_value' => variable_get('pg_startdate'),
-	);
+	// $form['progress_page']['progress_details']['pg_startdate'] = array(
+	//   '#title' => t('Start Date'),
+	//   '#type' => 'date_popup',
+	//   '#date_format' => 'm.d.Y',
+	//   '#date_year_range' => '0:+10',
+	//   '#required' => TRUE,
+	//   '#size' => 8,
+	//   '#default_value' => variable_get('pg_startdate'),
+	// );
 
-	$form['progress_page']['progress_details']['pg_enddate'] = array(
-	  '#title' => t('End Date'),
-	  '#type' => 'date_popup',
-	  '#date_format' => 'd/m/Y',
-	  '#date_year_range' => '0:+10',
-	  '#required' => TRUE,
-	  '#size' => 8,
-	  '#default_value' => variable_get('pg_enddate'),
-	);
+	// $form['progress_page']['progress_details']['pg_enddate'] = array(
+	//   '#title' => t('End Date'),
+	//   '#type' => 'date_popup',
+	//   '#date_format' => 'm/d/Y',
+	//   '#date_year_range' => '0:+10',
+	//   '#required' => TRUE,
+	//   '#size' => 8,
+	//   '#default_value' => variable_get('pg_enddate'),
+	// );
 
 	$progress_details_desc = variable_get('pg_desc', array('value' => '', 'format' => NULL));
 	$form['progress_page']['progress_details']['pg_desc'] = array(
