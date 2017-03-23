@@ -3,9 +3,10 @@
   //Add js file for bingo cards
   drupal_add_js(drupal_get_path('module', 'play_progress_bingo_cards') . '/js/play_progress_bingo_cards.js');
   //Add print js file for bingo cards
-  drupal_add_js(drupal_get_path('module', 'play_progress_bingo_cards') . '/printThis/printThis.js');
+  // drupal_add_js(drupal_get_path('module', 'play_progress_bingo_cards') . '/printThis/printThis.js');
 
   drupal_add_css(drupal_get_path('module', 'play_progress_bingo_cards') . '/css/play_progress_bingo_cards.css', array('group' => CSS_DEFAULT, 'every_page' => TRUE));
+  drupal_add_js(libraries_get_path('printThis', TRUE). '/printThis.js');
   global $user;
   global $base_url;
   $current_uid = $user->uid;
@@ -78,7 +79,7 @@
     <div><h2>Bingo!</h2></div>
     <div><p>Complete any 3 library activities and enter the raffle</p></div>
     <div class="bingo-progress-main">
-    <div class="activities">
+    <div class="activities left-activity">
       <div class="report-acivity">
         <div><h3>1. Report an Activity</h3></div>
         <?php
@@ -92,7 +93,7 @@
         </div> -->
       </div>
      </div>
-     <div class="activities">
+     <div class="activities right-activity">
       <div class="write-review">
       <h3>2. Write A Review</h3>
         <?php
@@ -146,8 +147,15 @@
         }
       }
 
+      
       //Print bingo cards
       foreach ($node_data as $key => $value) {
+        $card_id = array_search($key, $pager)+1;
+        if ($card_id%2 == 0){
+          $card_class = 'even';
+        } else{
+          $card_class = 'odd';
+        }
         //If node typy is bingo_card create 3x3 table
         if ($value['type'] == 'bingo_card'){
           $status = $value['status'] ;
@@ -158,7 +166,7 @@
           }
 
           if($act_type ='bingo_card')
-            print("<div class='bingo-card $active_class' active = $status>");
+            print("<div class='bingo-card $active_class $card_class' active = $status>");
             for ($cell_counter = 1 ; $cell_counter <= 9 ; $cell_counter++){
               if($cell_counter==1){
                 print("<table id=$key><tbody>");
@@ -189,7 +197,7 @@
             $node_title = $value['title'];
             $node_date = $value['date'];
             $node_type = $value['type'];
-            print(t("<div class='non-bingo-card'><table id = $key><tbody><tr><td id=1 class='filled-cell'><span>$node_date</span><span>$node_type</span><span><a href='node/$key'>$node_title</a></span></td></tr></tbody></table>"));
+            print(t("<div class='non-bingo-card $card_class'><table id = $key><tbody><tr><td id=1 class='filled-cell'><span>$node_date</span><span>$node_type</span><span><a href='node/$key'>$node_title</a></span></td></tr></tbody></table>"));
           }
           //Print card Number
           print(t("<div class='card-no'>Card ". (array_search($key, $pager)+1) ."</div></div>"));

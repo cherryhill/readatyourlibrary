@@ -1,0 +1,266 @@
+@media print {  
+  @import url("https://fonts.googleapis.com/css?family=Bitter:400,700|Open+Sans:400,600,700|PT+Sans:400,700");
+  @import url("https://fonts.googleapis.com/css?family=Exo+2:400,500,600|Raleway|Roboto:400,700|Sniglet|Special+Elite");
+  .bingo-progress-page {
+    background: #16316e;
+    color: #fff;
+    font-family: "Raleway", sans-serif;
+    font-weight: 400;
+    font-size: 17px;
+    line-height: 26px;
+    width: 900px;
+    padding: 15px;
+  }
+
+  h1 {
+    font-size: 28px;
+    font-family: "Bitter", serif;
+    font-weight: 700;
+  }
+  h2 {
+    font-family: "Bitter", serif;
+    font-weight: 700;
+    font-size: 24px;
+  }
+  h3 {
+    font-family: "Bitter", serif;
+    font-weight: 700;
+    font-size: 22px;
+  }
+  h3 a {
+    color: #16316e;
+  }
+  .printBtn {
+    display: none;
+  }
+
+  .user-info {
+    color: #16316e;
+    background: #d9dde8;
+    padding: 20px;
+    border-radius: 10px;
+    width: 95%;
+    align-items: center;
+    display: -webkit-flex;
+    flex-wrap: wrap;
+    -webkit-flex-wrap: wrap;
+    box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+  }
+  .bingo-progress-page .user-info .avatar-block {
+    width: 50%;
+  }
+  .bingo-progress-page .form-submit {
+    background-color: #feed40;
+    color: #16316e;
+    padding: 8px 14px 5px;
+    font-family: "Bitter", serif;
+    font-weight: 400;
+    display: inline-block;
+    text-decoration: none;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    -moz-font-smoothing: grayscale;
+    box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+    font-size: 18px;
+    text-transform: capitalize;
+    border-radius: 8px;
+    border: none;
+    margin: 0 0 1.25em;
+      position: relative;
+      text-align: center;
+  }
+  .bingo-progress-page .user-info .user-points, .bingo-progress-page .user-info .rewards-info {
+    width: 25%;
+  }
+  .bingo-progress-page .user-info .uname {
+    font-family: "Bitter", serif;
+    font-weight: 700;
+    font-size: 22px;
+  }
+  .bingo-progress-page .user-info .avatar-block > div {
+    display: table-cell;
+    vertical-align: bottom;
+    padding-left: 10px;
+  }
+  .bingo-progress-page .activities > div {
+    background: #fff;
+    height: 100%;
+    padding: 20px;
+  }
+
+  .bingo-progress-main {
+    display: flex;
+    width: 100%;
+    display: -webkit-flex;
+    flex-wrap: wrap;
+    -webkit-flex-wrap: wrap;
+    color: #fff;
+  }
+  .bingo-progress-page .avatar-image img {
+    width: 32px;
+    height: 32px;
+    object-fit: contain;
+  }
+  .bingo-progress-page .activities form .form-item.form-type-select.form-item-activity {
+    display: flex;
+    display: -webkit-flex;
+    flex-wrap: wrap;
+    -webkit-flex-wrap: wrap;
+    width: 100%;
+    margin-bottom: 16px; 
+  }
+  .bingo-progress-page .activities .chosen-container {
+    font-size: 17px;
+    line-height: 26px;
+    width: 100% !important;
+    position: relative;
+    display: inline-block;
+    vertical-align: middle
+    zoom: 1;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+  }
+  .bingo-progress-page .activities .chosen-container a.chosen-single {
+      color: #16316e;
+      border: 1px solid #16316e;
+      height: auto;
+      border-radius: 0;
+      background: #fff;
+  }
+
+  .chosen-container-single .chosen-single {
+    position: relative;
+    display: block;
+    overflow: hidden;
+    padding: 0 0 0 8px;
+    text-decoration: none;
+    white-space: nowrap;
+    line-height: 24px;
+  }
+  .chosen-container-single .chosen-single span {
+      display: block;
+      overflow: hidden;
+      margin-right: 26px;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+  }
+  .bingo-progress-page .activities .chosen-container a.chosen-single > div {
+    background: #16316e;
+  }
+  .bingo-progress-page .activities .chosen-container a.chosen-single > div {
+    width: 30px;
+  }
+  .chosen-container-active.chosen-with-drop .chosen-single div {
+    border-left: none;
+  }
+  .chosen-container-single .chosen-single div {
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: block;
+    height: 100%;
+  }
+  .bingo-progress-page .activities .chosen-container a.chosen-single > div b {
+    background: none;
+    border-left: 7px solid transparent;
+    border-right: 7px solid transparent;
+    display: inline-block;
+    height: 0;
+    width: 0;
+    border-top: 7px solid white;
+    margin-left: 9px;
+    position: relative;
+    top: -1px;
+  }
+  .chosen-drop {
+    display: none;
+  }
+  .activities{
+    padding-right: 10px;
+    width: 420px;
+    margin-bottom: 25px;
+    position: relative;
+    color: #16316e;
+    background: #fff;
+  }
+
+  .bingo-card,  .non-bingo-card {
+    width: 430px;
+    height: 430px; 
+  }
+  .bingo-progress-page .activities form .form-item.form-type-date-popup.form-item-date label {
+    width: 30%;
+    float: left
+  }
+  .bingo-progress-page .activities form .form-item.form-type-date-popup.form-item-date > div{
+    width: 70%;
+    float: left;
+  }
+
+  .non-bingo-card {
+    background: #A3EEF6;
+  }
+  .bingo-card {
+    background: #fff;
+  }
+  .bingo-progress-main .odd, .left-activity {
+    margin-right: 20px;
+    margin-bottom: 40px;
+  }
+  .bingo-progress-main .even, .right-activity {
+    margin-left: 20px;
+    margin-bottom: 40px;
+  }
+   .bingo-progress-page .non-bingo-card td.filled-cell * {
+      font-family: "Open Sans", sans-serif;
+      font-weight: 600;
+  }
+  .bingo-progress-page .non-bingo-card td.filled-cell *  {
+      color: #16316e;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      text-rendering: optimizeLegibility;
+      -moz-font-smoothing: grayscale;
+      width: 100%;
+      display: inline-block;
+  }
+  .bingo-card .filled-cell {
+    color: #16316e;
+    font-family: "Open Sans", sans-serif;
+    font-weight: 600;
+  }
+  .bingo-progress-page .bingo-progress-main .non-bingo-card table tr td {
+    text-align: center;
+  }
+  .filled-cell{
+    text-align: center !important;
+    background: #A3EEF6;
+  }
+  .bingo-progress-page .bingo-progress-main .non-bingo-card table tr td {
+    padding-top: 190px;
+    text-align: center;
+    width: 100%;
+  }
+  .bingo-progress-page .bingo-progress-main > div table {
+      width: 100%;
+      display: table;
+  }
+  .non-bingo-card .card-no {
+    position: relative;
+    top: 160px;
+  }
+
+
+  .bingo-card td{
+    width: 143px;
+    display: table-cell;
+    height: 138px;
+    border: 1px solid #059ab2 !important; 
+  }
+
+  .bingo-progress-page .bingo-progress-main > div table tr {
+    width: 100%;
+    display: table-row;
+  }
+}
