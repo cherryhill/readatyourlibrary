@@ -3,20 +3,23 @@
  * Adds form selector behaviors for setting up random items.
  */
 
-// Extend string
-// if (typeof String.prototype.startsWith != 'function') {
-//   // see below for better implementation!
-//   String.prototype.startsWith = function (str){
-//     return this.indexOf(str) === 0;
-//   };
-// }
 
 (function ($) {
   Drupal.behaviors.payl_program_customizations = {
     attach: function() {
       Drupal.settings.payl_program_customizations_birthday_limit = parseInt(Drupal.settings.payl_program_customizations_birthday_limit);
       
-      $('#user-register-form .form-item-name').hide();
+      //username not to change on field errors 
+      var url = window.location.href;
+      var array = url.split('/');
+      var lastsegment = array[array.length-1];
+
+      if(lastsegment == 'group_lead' || lastsegment == 'staff'){
+        $('#user-register-form .form-item-name').show();
+      } else {
+        $('#user-register-form .form-item-name').hide();
+      }
+
       $('#user-register-form .date-year .form-select').on('change', function() {
         var birthdayMonth = jQuery('#user-register-form .date-month .form-select').val();
         console.log (birthdayMonth);
@@ -55,11 +58,11 @@
 
       $('.not-logged-in #user-register-form .date-year').bind('change', function() {
         var birthdayMonth = jQuery('#user-register-form .date-month .form-select').val();
-      // console.log(birthdayMonth);
+
       var birthdayDay = jQuery('#user-register-form .date-day .form-select').val();
-      // console.log(birthdayDay);
+
       var birthdayYear = jQuery('#user-register-form .date-year .form-select').val();
-      // console.log(birthdayYear);
+
 
         var age = calculate_age(birthdayMonth,birthdayDay,birthdayYear);
         console.log(age);
@@ -96,11 +99,6 @@
       $('#user-register-form #edit-name').keyup(payl_program_customizations_change_name);
 
       var edit_username = $('#user-register-form #edit-account #edit-name').val();
-
-      //username not to change on field errors 
-      var url = window.location.href;
-      var array = url.split('/');
-      var lastsegment = array[array.length-1];
 
       if (lastsegment == 'register' || lastsegment == 'group_lead' || lastsegment == 'user' || lastsegment == 'staff'){
         if($("div").hasClass("error")){
