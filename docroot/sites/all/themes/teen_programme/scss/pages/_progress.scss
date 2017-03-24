@@ -240,6 +240,7 @@ div.progress-page {
       }
     }
     .reward-won {
+      position: relative;
       background: $white;
       @extend .primary-color;
       .view-rewards-dashboard {
@@ -278,6 +279,26 @@ div.progress-page {
               display: none;
             }
           }
+        }
+      }
+      .counter {
+        width: 10%;
+        float: left;
+      }
+      .reward {
+        width: 90%;
+        float: left;
+      }
+      h1 {
+        margin-top: 0;
+      }
+      .item-list {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        right: 20px;
+        ul.pager {
+          float: right;
         }
       }
     }
