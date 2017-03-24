@@ -238,7 +238,7 @@
     background: #A3EEF6;
   }
   .bingo-progress-page .bingo-progress-main .non-bingo-card table tr td {
-    padding-top: 190px;
+    /*padding-top: 190px;*/
     text-align: center;
     width: 100%;
   }
@@ -262,9 +262,6 @@
   .bingo-progress-page .bingo-progress-main > div table tr {
     width: 100%;
     display: table-row;
-  }
-  .bingo-progress-page .bingo-card td, .bingo-progress-page .non-bingo-card td {
-    border: 1px solid #059ab2 !important;
   }
   .pagination.pager {
     -webkit-flex-wrap: wrap;
@@ -296,5 +293,10 @@
     font-family: "Bitter", serif;
     font-weight: 400;
     color: #fff;
+  }
+
+  .non-bingo-card .filled-cell {
+    height: 430px;
+    border: 1px solid #059ab2 !important; 
   }
 }
