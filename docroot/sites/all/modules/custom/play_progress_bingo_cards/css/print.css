@@ -204,11 +204,11 @@
   .bingo-card {
     background: #fff;
   }
-  .bingo-progress-main .odd, .left-activity {
+  .bingo-progress-main .odd, .bingo-progress-main .left-activity {
     margin-right: 20px;
     margin-bottom: 40px;
   }
-  .bingo-progress-main .even, .right-activity {
+  .bingo-progress-main .even, .bingo-progress-main .right-activity {
     margin-left: 20px;
     margin-bottom: 40px;
   }
@@ -262,5 +262,39 @@
   .bingo-progress-page .bingo-progress-main > div table tr {
     width: 100%;
     display: table-row;
+  }
+  .bingo-progress-page .bingo-card td, .bingo-progress-page .non-bingo-card td {
+    border: 1px solid #059ab2 !important;
+  }
+  .pagination.pager {
+    -webkit-flex-wrap: wrap;
+    flex-wrap: wrap;
+    display: -webkit-flex;
+    display: flex;
+    float: right;
+    height: auto !important;
+  }
+  ul,  ol,  dl {
+    font-family: "Open Sans", sans-serif;
+    font-weight: 400;
+  }
+  .pagination.pager li {
+    margin: 0;
+    padding: 0;
+    height: 33px;
+    width: 31px;
+    overflow: hidden;
+    display: flex;
+    display: -webkit-flex;
+    align-content: center;
+    align-items: center;
+    margin-bottom: 1px;
+    margin-left: 1px;
+  }
+  .pagination.pager li a {
+    background: #059ab2;
+    font-family: "Bitter", serif;
+    font-weight: 400;
+    color: #fff;
   }
 }
