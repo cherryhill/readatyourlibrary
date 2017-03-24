@@ -278,11 +278,10 @@
   .pagination.pager li {
     margin: 0;
     padding: 0;
-    height: 33px;
-    width: 31px;
+    height: 33px !important;
+    width: 31px !important;
     overflow: hidden;
-    display: flex;
-    display: -webkit-flex;
+    display: inline-block;
     align-content: center;
     align-items: center;
     margin-bottom: 1px;
@@ -292,11 +291,21 @@
     background: #059ab2;
     font-family: "Bitter", serif;
     font-weight: 400;
+    height: 100%;
+    padding: 0;
+    font-size: 17px;
+    line-height: 34px !important;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    -moz-font-smoothing: grayscale;
     color: #fff;
+    text-align: center;
   }
 
   .non-bingo-card .filled-cell {
     height: 430px;
     border: 1px solid #059ab2 !important; 
+    display: table-cell;
   }
 }
