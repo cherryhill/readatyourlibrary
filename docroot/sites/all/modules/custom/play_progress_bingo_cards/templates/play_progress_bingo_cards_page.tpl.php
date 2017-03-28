@@ -43,8 +43,10 @@
         $img_uri_query = $result->fetchObject();
         $img_uri = $img_uri_query->uri;
         $img_path = file_create_url($img_uri);
-        $img = "<img src='$img_path'>";
-        print("<div class='avatar-image'>".$img."</div>");
+        if($img_path){
+          $img = "<img src='$img_path'>";
+          print("<div class='avatar-image'>".$img."</div>");
+        }
         print("<div class='uname'>".$user_name."</div>");
       ?>
     </div>
@@ -77,7 +79,6 @@
 
   <div class="progress-wrap">
     <div><h2>Bingo!</h2></div>
-    <div><p>Complete any 3 library activities and enter the raffle</p></div>
     <div class="bingo-progress-main">
     <div class="activities left-activity">
       <div class="report-acivity">
@@ -88,6 +89,7 @@
           $output = drupal_render($render_block);
           print $output;
         ?>
+        <div><p>Complete any 3 library activities and enter the raffle</p></div>
         <!--  <div class="submit">
           <button id="pg-report">Submit</button>
         </div> -->
