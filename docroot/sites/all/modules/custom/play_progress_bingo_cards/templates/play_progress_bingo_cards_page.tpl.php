@@ -78,7 +78,7 @@
   </div>
 
   <div class="progress-wrap">
-    <div><h2>Bingo!</h2></div>
+    <!-- <div><h2>Bingo!</h2></div> -->
     <div class="bingo-progress-main">
     <div class="activities left-activity">
       <div class="report-acivity">
