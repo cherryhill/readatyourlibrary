@@ -77,7 +77,6 @@
 
   <div class="progress-wrap">
     <div><h2>Bingo!</h2></div>
-    <div><p>Complete any 3 library activities and enter the raffle</p></div>
     <div class="bingo-progress-main">
     <div class="activities left-activity">
       <div class="report-acivity">
@@ -88,6 +87,7 @@
           $output = drupal_render($render_block);
           print $output;
         ?>
+        <div><p>Complete any 3 library activities and enter the raffle</p></div>
         <!--  <div class="submit">
           <button id="pg-report">Submit</button>
         </div> -->
