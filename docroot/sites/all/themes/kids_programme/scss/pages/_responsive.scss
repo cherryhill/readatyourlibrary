@@ -527,6 +527,24 @@
 			}
 		}
 	}
+
+	.view.photos-block {
+		.view-content {
+			.views-row {
+				.flickr-citation {
+					max-width: 320px;
+					margin: 23px auto;
+					text-align: center;
+					a {
+						width: 200px;
+						&:after {
+							margin-left: 0 !important;
+						}
+					}
+				}
+			}
+		}
+	}
 	/*-------------Photo's Video's Page Ends-------------*/
 
 	/*-------------Progress Page-------------*/
@@ -823,6 +841,59 @@
 			.views-row {
 				padding-left: 25px;
 				padding-right: 0;
+			}
+		}
+	}
+
+	.view.photos-block {
+		.view-content {
+			.views-row {
+				.flickr-citation {
+					a {
+						&:before {
+							left: 20px;
+					    top: 20px;
+					    background-size: 17px;
+						}
+						&:after {
+							font-size: 14px !important;
+						}
+					}
+				}
+			}
+		}
+	}
+	.cs-classic, .cs-default {
+		.view.photos-block {
+			.view-content {
+				.views-row {
+					.flickr-citation {
+						a {
+							&:after {
+								font-size: 13px !important;
+								padding: 6px 17px !important;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	/*-------------Photos/Videos Page-------------*/
+}
+
+@media screen and (min-width: 1025px) and (max-width: 1200px) {
+	/*-------------Photos/Videos Page-------------*/
+	.view.photos-block {
+		.view-content {
+			.views-row {
+				.flickr-citation {
+					a {
+						&:before {
+							left: 20px;
+						}
+					}
+				}
 			}
 		}
 	}

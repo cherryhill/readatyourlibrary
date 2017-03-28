@@ -69,7 +69,36 @@
           }
         }
         .flickr-citation {
-          display: none;
+          margin-top: 23px;
+          margin-bottom: 35px;
+          a {
+            visibility: hidden;
+            position: relative;
+            display: inline-flex;
+            width: 90%;
+            &:after {
+              position: absolute;
+              visibility: visible;
+              content: "View Album";
+              left: 0;
+              width: 100%;
+              text-align: right;
+              @extend .button;
+            }
+            &:before {
+              content: "";
+              background: url("../images/view-album.png");
+              background-repeat: no-repeat;
+              height: 24px;
+              width: 21px;
+              z-index: 9;
+              position: absolute;
+              visibility: visible;
+              left: 40px;
+              top: 18px;
+
+            }
+          }
         }
          * {
           width: 100%;
