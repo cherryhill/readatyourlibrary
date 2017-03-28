@@ -43,8 +43,10 @@
         $img_uri_query = $result->fetchObject();
         $img_uri = $img_uri_query->uri;
         $img_path = file_create_url($img_uri);
-        $img = "<img src='$img_path'>";
-        print("<div class='avatar-image'>".$img."</div>");
+        if($img_path){
+          $img = "<img src='$img_path'>";
+          print("<div class='avatar-image'>".$img."</div>");
+        }
         print("<div class='uname'>".$user_name."</div>");
       ?>
     </div>
