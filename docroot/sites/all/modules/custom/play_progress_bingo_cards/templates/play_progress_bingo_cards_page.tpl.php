@@ -89,7 +89,7 @@
           $output = drupal_render($render_block);
           print $output;
         ?>
-        <div><p>Complete any 3 library activities and enter the raffle</p></div>
+        <div><p>Earn a raffle ticket by completing 3 activities.</p></div>
         <!--  <div class="submit">
           <button id="pg-report">Submit</button>
         </div> -->
