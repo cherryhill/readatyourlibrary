@@ -1,0 +1,123 @@
+.sidebar2 {
+  > .first {
+    height: inherit;
+
+    @extend .primary-background;
+
+    h1, h2, h3, h4, h5, p {
+      color: $white;
+    }
+    h1,h2,h3,h4,h5 {
+      margin-top: 0;
+    }
+    padding: 12px 20px 18px;
+
+    > .block-block:nth-of-type(1) p {
+      .page-activities & {
+        font-weight: 700;
+      }
+      a.button {
+        .page-activities & {
+          margin-top: 17px;
+        }
+      }
+    }
+
+    .view-bookreviews-and-booklist-for-activity {
+      .view-header {
+        margin-bottom: 7px;
+        * {
+          text-transform: uppercase;
+
+          @include bold_fonts;
+        }
+      }
+
+      .views-field-title {
+        margin-bottom: 4px;
+        a {
+          color: $white;
+          text-transform: capitalize;
+          text-decoration: underline;
+        }
+      }
+      .views-row {
+        margin-bottom: 20px;
+      }
+      .view-footer {
+        margin-bottom: 15px;
+      }
+      .views-field-count {
+        .views-label-count {
+          position: relative;
+          padding-right: 32px;
+
+          &:after {
+            content: "";
+            width: 25px;
+            height: 25px;
+            display: inline-block;
+            background: url("../images/smily.png") no-repeat scroll center center;
+            position: absolute;
+            right: 6px;
+            top: -3px;
+          }
+        }
+      }
+    }
+  }
+
+}
+.view-reward-activity {
+    .cs-default &,.cs-elegant & {
+      background: $blue;
+    }
+    .cs-classic & {
+      background: $darkblue;
+    }
+    color: $white;
+    border-radius: 15px;
+    overflow: hidden;
+    margin-bottom: 35px;
+    padding-bottom: 15px;
+    @include primary_fsize;
+    @include secondary_fonts;
+  .view-header * {
+    @extend h2;
+    margin-top: 0;
+  }
+  .earn-next-reward {
+    -webkit-flex-wrap: wrap;
+    flex-wrap: wrap;
+    display: -webkit-flex;
+    display: flex;
+    align-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+     .reward-image {
+       flex: 0 0 100px;
+     }
+     .reward-title {
+      flex: 0 0 calc(100% - 100px);
+      padding-left: 25px;
+     }
+  }
+}
+.not-logged-in.page-activities,
+.not-logged-in.section-media,
+.not-logged-in.section-programs {
+  .l-main {
+    position: relative;
+  }
+  .sidebar2 {
+    @media screen and (min-width: 768px) {
+     position: absolute;
+     height: calc(100% - 35px);
+    }
+
+
+     > .first {
+       height: inherit;
+     }
+  }
+}

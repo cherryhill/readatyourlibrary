@@ -1,0 +1,138 @@
+// Non-modular or client styles for .l-footer region.
+.post-footer.contain-to-grid {
+  .cs-default & {
+    @extend .green-gradiant;
+  }
+
+  .cs-classic & {
+    @extend .light-blue;
+  }
+
+  .cs-elegant & {
+    @extend .blue;
+  }
+}
+
+.l-footer {
+  width: 100%;
+  display: inline-block;
+  padding-top: 30px;
+
+  .cs-default & {
+    @extend .green-gradiant;
+  }
+
+  .cs-classic & {
+    @extend .light-blue;
+  }
+
+  .cs-elegant & {
+    @extend .blue;
+  }
+
+  .footer {
+    -webkit-flex-wrap: wrap;
+    flex-wrap: wrap;
+    display: -webkit-flex;
+    display: flex;
+    width: 100%;
+    padding-left: 56px;
+    padding-right: 50px;
+
+    .block-play-library-custom-program-footer-content {
+      flex: 0 0 70%;
+      @media screen and (max-width: 767px) {
+        flex: 0 0 100%;
+        order: 2;
+      }
+
+      .u-footer-content {
+        font-size: 14px;
+
+        .cs-default & {
+          @extend .white-text;
+        }
+
+        color: $dark-blue;
+
+        p {
+          margin-bottom: 0;
+          line-height: 20px;
+          color: inherit;
+          font-size: inherit;
+
+          @include bold-font;
+
+          a {
+            color: inherit;
+            font-size: inherit;
+            font-family: inherit;
+
+            &:hover {
+              color: inherit;
+              font-size: inherit;
+              text-decoration: underline;
+            }
+          }
+        }
+      }
+
+      .lower-footer-content {
+        font-size: 12px;
+
+        @include bold-font;
+
+        margin-top: 25px;
+
+        .cs-default & {
+          @extend .white-text;
+        }
+
+        color: $dark-blue;
+
+        a {
+          font-size: inherit;
+          font-family: inherit;
+          color: inherit;
+        }
+      }
+
+      .copy-right {
+        font-size: 12px;
+
+        @include bold-font;
+
+        .cs-default & {
+          @extend .white-text;
+        }
+
+        color: $dark-blue;
+
+        margin-top: -5px;
+      }
+    }
+
+    .block-menu-menu-social-sharing-icons {
+      flex: 0 0 30%;
+      @media screen and (max-width: 767px) {
+        flex: 0 0 100%;
+      }
+    }
+  }
+  .block-menu-menu-exit-masquerade {
+    .block-title {
+      display: none;
+    }
+    ul.menu {
+      list-style: none;
+      margin-top: 10px;
+      li {
+        a {
+          margin-left: 0;
+        }
+      }
+    }
+  }
+}
+
+.l-footer-columns {}

@@ -1,0 +1,122 @@
+//side-bar booklist and book review
+aside {
+   .button {
+    margin-left: 0;
+   }
+  .block-menu {
+     ul.menu {
+       list-style: none;
+       display: inline-block;
+       background: $white;
+       padding-top: 20px;
+       padding-bottom: 20px;
+       border-radius: 15px;
+       overflow: hidden;
+       box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+        margin-bottom:0 0 35px;
+        width: 100%;
+        padding-left: 25px;
+          padding-right: 25px;
+         li {
+           padding-top: 5px;
+           padding-bottom: 5px;
+           &:nth-of-type(1) {
+            border-bottom: 1px solid #f2f2f2;
+           }
+            a {
+               @extend h3;
+               padding-left: 55px;
+                &.active-trail.active {
+                  position: relative;
+                   &:before {
+                    content: "";
+                    display: inline-block;
+                    position: absolute;
+                    background: url("../images/star-review.png");
+                    margin-left: -31px;
+                    width: 30px;
+                    height: 30px;
+                    background-repeat: no-repeat;
+                    top: 4px;
+                   }
+                  .cs-default & {
+                    color: $orange;
+                     &:before {
+                      background-position: -20px -85px;
+                     }
+                  }
+                  .cs-classic &{
+                    color: $sky-blue;
+                     &:before {
+                      background-position: -20px 0px;
+                     }
+                  }
+                  .cs-elegant &{
+                    color: $mint-green;
+                     &:before {
+                      background-position: -20px -43px;
+                     }
+                  }
+                }
+            }
+         }
+     }
+  }
+}
+.view-reviews-page-views, .view-booklist-page-left-side-bar {
+  a {
+    .sidebar2 & {
+       color: $white;
+    }
+
+    text-decoration: underline;
+  }
+  ol {
+    list-style: none;
+  }
+  > .view-header {
+     a {
+      text-decoration: none;
+      font-family: inherit;
+      font-size: inherit;
+     }
+     h5 {
+       @include bold_fonts;
+     }
+  }
+  .views-row {
+    margin: 5px 0;
+  }
+  .title {
+    * {
+      font-weight: normal;
+    }
+    span {
+      display: table-cell;
+       &:nth-of-type(1) {
+        width: 24px;
+       }
+       &:nth-of-type(2) {
+        width: calc(100% - 24px);
+       }
+    }
+  }
+  .likes {
+     padding-left: 24px;
+     margin-top: 5px;
+      span {
+        padding-right: 32px;
+        position: relative;
+         &:after {
+           content: "";
+            width: 25px;
+            height: 25px;
+            display: inline-block;
+            background: url("../images/smily.png") no-repeat scroll center center;
+            position: absolute;
+            right: 2px;
+            top: -3px;
+         }
+      }
+  }
+}

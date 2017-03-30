@@ -1,0 +1,92 @@
+.events-page-events {
+  .view-content {
+    h3 {
+        padding: 6px 24px;
+        color: $white;
+        margin-top: 20px;
+        margin-bottom: 0;
+        font-size: 18px;
+        .cs-default & {
+          background: url("../images/background.jpeg");
+          padding: 8px 24px 4px;
+        }
+        .cs-classic & {
+          background: $medium-blue;
+          padding: 5px 24px 7px;
+        }
+      .cs-elegant & {
+       background: $orange;
+      }
+    }
+    margin-bottom: 50px;
+  }
+  .view-header {
+    margin-bottom: 10px;
+  }
+  .events-wrapper {
+    -webkit-flex-wrap: wrap;
+    flex-wrap: wrap;
+    display: -webkit-flex;
+    display: flex;
+    //align-content: center;
+    //align-items: center;
+    width: 100%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+     .title {
+      flex: 0 0 60%;
+      a {
+         width: 100%;
+         display: inline-block;
+         padding-right: 10px;
+         @extend .primary-color;
+         padding-left: 24px;
+      }
+     }
+     .date {
+       flex: 0 0 20%;
+        @extend .primary-color;
+     }
+     .location {
+      flex: 0 0 20%;
+       @extend .primary-color;
+     }
+
+  }
+}
+.event-side-bar {
+  margin: 5px 0;
+  a {
+    .sidebar2 & {
+    color: inherit;
+    text-decoration: underline;
+  }
+  }
+
+}
+
+.page-events #page-title {
+  background-size: 100%;
+  background-repeat: repeat;
+  margin-bottom: 10px;
+  width: calc(100% + 40px);
+  margin-left: -40px;
+}
+#page-title {
+  .page-events.cs-default & {
+    background-image: url("../images/yellowbrushstroke_lg.png");
+    padding: 27px 10px 30px 40px;
+    color: $purple;
+  }
+  .page-events.cs-classic & {
+    background-image: url("../images/redbrushstroke_lg.png");
+    color: $dark-blue;
+    padding: 24px 10px 30px 40px;
+  }
+  .page-events.cs-elegant & {
+    background-image: url("../images/bluebrushstroke_lg.png");
+    color: $gray;
+    padding: 24px 10px 30px 40px;
+  }
+
+}

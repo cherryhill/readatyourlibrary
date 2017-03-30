@@ -1,0 +1,318 @@
+
+.mobile-menu {
+  width: 100%;
+  display: inline-block;
+
+  &.columns {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  ul.mobile-top-menu {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    display: inline-block;
+
+    li {
+      margin: 0;
+      padding: 0;
+      display: inline-block;
+      width: 100%;
+
+      a {
+        width: 100%;
+        display: inline-block;
+        text-align: center;
+        padding: 10px 0;
+        border-bottom: 1px solid $white;
+        color: $white;
+
+        @include primary_fonts;
+
+        @include primary_fsize;
+
+        .cs-default & {
+          @extend .blue;
+        }
+
+        .cs-classic & {
+          background: $sky-blue;
+        }
+
+        .cs-elegant & {
+          @extend .red1;
+        }
+
+        &.msg {
+          padding-left: 50px;
+          position: relative;
+
+          &.new {
+            .cs-default & {
+              @extend .red;
+            }
+
+            .cs-classic & {
+              @extend .light-orange;
+            }
+
+            .cs-elegant & {
+              @extend .yellow;
+
+              color: $color-blue;
+            }
+
+            &:before {
+              .cs-elegant & {
+                background-position: 72px 90px;
+              }
+            }
+          }
+
+          &:before {
+            content: "";
+            position: relative;
+            width: 30px;
+            height: 14px;
+            background: url("../images/icons");
+            display: inline-block;
+            background-position: 72px 35px;
+            margin-left: -70px;
+          }
+        }
+      }
+    }
+  }
+
+  + ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    display: inline-block;
+
+    li {
+      margin: 0;
+      padding: 0;
+      display: inline-block;
+      width: 100%;
+
+      a {
+        width: 100%;
+        display: inline-block;
+        text-align: center;
+        background: red;
+        border-bottom: 1px solid #fff;
+        padding: 10px 0px;
+        color: $white;
+        position: relative;
+
+        @include menu(m);
+
+        @include primary_fonts;
+
+        @include primary_fsize;
+
+        &:before {
+          content: " ";
+          width: 60px;
+          height: 40px;
+          position: absolute;
+          margin-left: -70px;
+           top: 4px;
+          background: url("../images/icons");
+          transition: all ease 1.8s;
+          transition-duration: 0.09s;
+          transition-delay: 0.3s;
+        }
+
+        &.progress {
+          margin-bottom: 0;
+          font-weight: normal;
+          line-height: auto;
+          border-top: none;
+          border-left: none;
+          border-right: none;
+          height: auto;
+          padding: 10px 0px;
+
+          .cs-default & {
+            &:before {
+              background-position: -16px -9px;
+            }
+
+            &:hover:before, &:focus:before, &.active:before {
+              background-position: -16px -855px;
+            }
+          }
+
+          .cs-classic &, .cs-elegant & {
+            &:before {
+              background-position: -16px -975px;
+            }
+          }
+
+          .cs-elegant & {
+            &:hover:before, &:focus:before, &.active:before {
+              background-position: -16px -1460px;
+            }
+          }
+        }
+
+        &.activities {
+          .cs-default & {
+            &:before {
+              background-position: -9px -72px;
+            }
+
+            &:hover:before, &:focus:before, &.active:before {
+              background-position: -9px -713px;
+            }
+          }
+
+          .cs-classic &, .cs-elegant & {
+            &:before {
+              background-position: -9px -1039px;
+            }
+          }
+
+          .cs-elegant & {
+            &:hover:before, &:focus:before, &.active:before {
+              background-position: -9px -1803px;
+            }
+          }
+        }
+
+        &.rewards {
+          .cs-default & {
+            &:before {
+              background-position: -5px -145px;
+            }
+
+            &:hover:before, &:focus:before, &.active:before {
+              background-position: -5px -643px;
+            }
+          }
+
+          .cs-classic &, .cs-elegant & {
+            &:before {
+              background-position: -5px -1113px;
+            }
+          }
+
+          .cs-elegant & {
+            &:hover:before, &:focus:before, &.active:before {
+              background-position: -5px -1733px;
+            }
+          }
+        }
+
+        &.events {
+          .cs-default & {
+            &:before {
+              background-position: -5px -216px;
+            }
+
+            &:hover:before, &:focus:before, &.active:before {
+              background-position: -5px -917px;
+            }
+          }
+
+          .cs-classic &, .cs-elegant & {
+            &:before {
+              background-position: -5px -1184px;
+            }
+          }
+
+          .cs-elegant & {
+            &:hover:before, &:focus:before, &.active:before {
+              background-position: -5px -1527px;
+            }
+          }
+        }
+
+        &.reviews {
+          .cs-default & {
+            &:before {
+              background-position: -2px -286px;
+            }
+
+            &:hover:before, &:focus:before, &.active:before {
+              background-position: -2px -569px;
+            }
+          }
+
+          .cs-classic &, .cs-elegant & {
+            &:before {
+              background-position: -2px -1255px;
+            }
+          }
+
+          .cs-elegant & {
+            &:hover:before, &:focus:before, &.active:before {
+              background-position: -2px -1662px;
+            }
+          }
+        }
+
+        &.photos {
+          .cs-default & {
+            &:before {
+              background-position: -8px -355px;
+            }
+
+            &:hover:before, &:focus:before, &.active:before {
+              background-position: -8px -500px;
+            }
+          }
+
+          .cs-classic &, .cs-elegant & {
+            &:before {
+              background-position: -8px -1324px;
+            }
+          }
+
+          .cs-elegant & {
+            &:hover:before, &:focus:before, &.active:before {
+              background-position: -8px -1593px;
+            }
+          }
+        }
+
+        &.current-program {
+          .cs-default & {
+            &:before {
+              background-position: -8px -427px;
+            }
+
+            &:hover:before, &:focus:before, &.active:before {
+              background-position: -8px -786px;
+            }
+          }
+
+          .cs-classic &, .cs-elegant & {
+            &:before {
+              background-position: -8px -1394px;
+            }
+          }
+
+          .cs-elegant & {
+            &:hover:before, &:focus:before, &.active:before {
+              background-position: -8px -1877px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+.mobile-top-header {
+  display: none;/**temporary*/
+}
+.mobile-menu-wrapper {
+  display: none;
+  margin-top: 10px;
+  width: 100%;
+}

@@ -1,0 +1,442 @@
+.mobile-menu {
+  width: 100%;
+  display: inline-block;
+
+  &.columns {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  ul.mobile-top-menu {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    display: inline-block;
+
+    li {
+      margin: 0;
+      padding: 0;
+      display: inline-block;
+      width: 100%;
+
+      a {
+        width: 100%;
+        display: inline-block;
+        text-align: center;
+        padding: 10px 0;
+        border-bottom: 1px solid $white;
+
+        @extend .white-text;
+
+        @include button-font;
+
+        font-size: 17px;
+
+        .cs-default & {
+         background: $secondary-background;
+
+          color: $white;
+          padding: 9px 14px 5px;
+          border-bottom: 1px solid $footer-color;
+
+        }
+
+        .cs-classic & {
+          @extend .dark-blue;
+
+          @extend .white-text;
+
+          padding: 4px 14px 5px;
+        }
+
+        .cs-elegant & {
+          @extend .gray-btn;
+
+          padding: 4px 14px 4px;
+
+          @extend .white-text;
+        }
+
+        &.msg {
+          padding-left: 50px;
+          position: relative;
+
+          &.new {
+
+
+
+            .cs-default &, .cs-classic & {
+             background: $pink;
+
+              @extend .white-text;
+
+
+            }
+
+            .cs-elegant & {
+              @extend .orange;
+            }
+          }
+
+          position: relative;
+
+          .cs-default & {
+            background: $secondary-background;
+
+            color: $white;
+            padding: 9px 14px 5px 50px;
+
+            &:hover, &:focus {
+              @extend .yellow-btn-hover-default;
+            }
+          }
+
+          .cs-classic & {
+            @extend .dark-blue;
+
+            @extend .white-text;
+
+            padding: 4px 14px 5px 50px;
+          }
+
+          .cs-elegant & {
+            @extend .gray-btn;
+
+            padding: 4px 14px 4px 50px;
+
+            @extend .white-text;
+          }
+
+          &:before {
+            content: "";
+            width: 30px;
+            height: 14px;
+            position: absolute;
+            margin-left: -25px;
+            top: 14px;
+            background: url("../images/teen-spritesheet");
+            background-position: -20px -1209px;
+
+
+          }
+        }
+      }
+    }
+  }
+
+   + ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    display: inline-block;
+
+    li {
+      margin: 0;
+      padding: 0;
+      display: inline-block;
+      width: 100%;
+
+      a {
+        width: 100%;
+        display: inline-block;
+        text-align: center;
+        background: red;
+        border-bottom: 1px solid $footer-color;
+        padding: 10px 0px;
+        color: $white;
+        position: relative;
+        font-size: 15px;
+        @include heading-font;
+        .cs-default & {
+           background: -webkit-linear-gradient(top, rgb(96, 106, 166) 0%, rgb(41, 41, 117) 86%, rgb(57, 63, 131) 100%);
+background: -o-linear-gradient(top, rgb(96, 106, 166) 0%, rgb(41, 41, 117) 86%, rgb(57, 63, 131) 100%);
+background: -ms-linear-gradient(top, rgb(96, 106, 166) 0%, rgb(41, 41, 117) 86%, rgb(57, 63, 131) 100%);
+background: -moz-linear-gradient(top, rgb(96, 106, 166) 0%, rgb(41, 41, 117) 86%, rgb(57, 63, 131) 100%);
+background: linear-gradient(to bottom, rgb(96, 106, 166) 0%, rgb(41, 41, 117) 86%, rgb(57, 63, 131) 100%);
+          &:focus,&.active {
+             background: $secondary-background;
+          }
+        }
+
+        .cs-classic & {
+           color: $dark-blue;
+           @extend .light-blue;
+
+          &:focus,&.active {
+            color: $red;
+            border-bottom: 1px solid $red;
+          }
+        }
+
+        .cs-elegant & {
+          @extend .orange;
+          &:focus,&.active {
+            color: $gray;
+            border-bottom: 1px solid $gray;
+          }
+        }
+
+        &:before {
+          content: " ";
+          width: 60px;
+          height: 40px;
+          position: absolute;
+          margin-left: -70px;
+          top: 4px;
+          background: url("../images/teen-spritesheet");
+          transition: all ease 1.8s;
+          transition-duration: 0.09s;
+          transition-delay: 0.3s;
+        }
+
+        &.progress {
+          margin-bottom: 0;
+          font-weight: normal;
+          line-height: auto;
+          border-top: none;
+          border-left: none;
+          border-right: none;
+          height: auto;
+          padding: 10px 0px;
+
+          .cs-default & {
+            &:before {
+              background-position: -16px -2193px;
+            }
+
+
+          }
+
+          .cs-classic & {
+            &:before {
+              background-position: -16px -2029px;
+            }
+            &:focus:before, &.active:before{
+              background-position: -16px -2084px;
+            }
+          }
+
+          .cs-elegant & {
+              &:before {
+              background-position: -16px -2193px;
+            }
+            &:focus:before, &.active:before{
+              background-position: -16px -2245px;
+            }
+          }
+        }
+
+        &.activities {
+          .cs-default & {
+            &:before {
+              background-position: -9px -92px;
+            }
+
+
+          }
+
+          .cs-classic & {
+            &:before {
+              background-position: -9px -236px;
+            }
+            &:focus:before, &.active:before{
+              background-position: -9px -309px;
+            }
+          }
+          .cs-elegant & {
+            &:before {
+              background-position: -9px -92px;
+            }
+            &:focus:before, &.active:before{
+              background-position: -9px -164px;
+            }
+          }
+        }
+
+        &.rewards {
+          .cs-default & {
+            &:before {
+              background-position: -5px -2737px;
+            }
+
+
+          }
+
+          .cs-classic & {
+            &:before {
+              background-position: -5px -2877px;
+            }
+            &:focus:before, &.active:before{
+              background-position: -5px -2949px;
+            }
+          }
+          .cs-elegant & {
+              &:before {
+              background-position: -5px -2737px;
+            }
+            &:focus:before, &.active:before{
+              background-position: -5px -2805px;
+            }
+          }
+        }
+
+        &.events {
+          .cs-default & {
+            &:before {
+              background-position: -5px -450px;
+            }
+
+
+          }
+
+          .cs-classic &  {
+            &:before {
+              background-position: -5px -590px;
+            }
+            &:focus:before, &.active:before{
+              background-position: -5px -660px;
+            }
+          }
+          .cs-elegant & {
+            &:before {
+              background-position: -5px -450px;
+            }
+            &:focus:before, &.active:before{
+              background-position: -5px -520px;
+            }
+          }
+        }
+
+       &.reviews {
+          .page-booklists.cs-default &,
+          .page-movie-review.cs-default &,
+          .page-music-review.cs-default &,
+          .page-video-game-review.cs-default &,
+          .page-activities-list.cs-default &,
+          .page-activities-listing.cs-default & {
+           background: $secondary-background;
+
+          }
+          .cs-default & {
+            &:before {
+              background-position: -2px -2379px;
+            }
+
+
+          }
+          .page-booklists.cs-classic &,
+          .page-movie-review.cs-classic &,
+          .page-music-review.cs-classic &,
+          .page-video-game-review.cs-classic &,
+          .page-activities-list.cs-classic &,
+          .page-activities-listing.cs-classic & {
+            color: $red;
+            border-bottom: 1px solid $red;
+             &:before {
+               background-position: -2px -2597px;
+             }
+          }
+          .cs-classic &  {
+              &:before {
+              background-position: -2px -2524px;
+            }
+
+            &:hover:before, &:focus:before, &.active:before {
+              background-position: -2px -2597px;
+            }
+          }
+           .page-booklists.cs-elegant &,
+          .page-movie-review.cs-elegant &,
+          .page-music-review.cs-elegant &,
+          .page-video-game-review.cs-elegant &,
+          .page-activities-list.cs-elegant &,
+          .page-activities-listing.cs-elegant & {
+            color: $gray;
+            border-bottom: 1px solid $gray;
+             &:before {
+               background-position: -2px -2452px;
+             }
+          }
+          .cs-elegant & {
+              &:before {
+              background-position: -2px -2379px;
+            }
+
+            &:hover:before, &:focus:before, &.active:before {
+              background-position: -2px -2452px;
+            }
+          }
+        }
+
+        &.photos {
+          .cs-default & {
+            &:before {
+              background-position: -8px -1380px;
+            }
+
+
+          }
+
+          .cs-classic & {
+            &:before {
+              background-position: -8px -1514px;
+            }
+
+            &:focus:before, &.active:before{
+              background-position: -8px -1578px;
+            }
+          }
+          .cs-elegant & {
+            &:before {
+              background-position: -8px -1380px;
+            }
+            &:focus:before, &.active:before{
+              background-position: -8px -1447px;
+            }
+          }
+        }
+
+        &.current-program {
+          .cs-default & {
+            &:before {
+              background-position: -8px -1728px;
+            }
+
+
+          }
+
+          .cs-classic & {
+           &:before {
+              background-position: -8px -1884px;
+            }
+
+            &:focus:before, &.active:before{
+              background-position: -8px -1963px;
+            }
+          }
+          .cs-elegant & {
+           &:before {
+              background-position: -8px -1728px;
+            }
+
+            &:focus:before, &.active:before{
+              background-position: -8px -1806px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+
+.mobile-menu-wrapper {
+  display: none;
+  width: 100%;
+  margin-top: 10px;
+}
+.mobile-top-header {
+  display: none;/**temporary*/
+}

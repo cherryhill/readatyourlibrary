@@ -1,0 +1,228 @@
+//backgrounds
+.yellow {
+  background: $yellow;
+}
+
+.blue {
+  background: $blue;
+}
+
+.dark-blue1 {
+  background: $color-blue;
+}
+
+.red {
+  background: $red;
+}
+
+
+.white {
+  background: #fff;
+}
+
+.dark-blue {
+  background: $darkblue;
+}
+
+.light-orange {
+  background: $light-orange;
+}
+
+.mint-green {
+  background: $mint-green;
+}
+
+.red1 {
+  background: $light-red;
+}
+
+.white-text {
+  color: $white;
+}
+.green-gradiant {
+  background: #7cb301;
+  background: -webkit-radial-gradient(#7cb301, #6d9c05, #74a703);
+  background: -moz-radial-gradient(#7cb301, #6d9c05, #74a703);
+  background: radial-gradient(#7cb301, #6d9c05, #74a703);
+}
+//hide
+.hide-for-small-only {
+  @media screen and (max-width: 767px) {
+    display: none;
+  }
+}
+
+//stroke images
+.stroke-main {
+
+  line-height: 1.4;
+  @include primary_fonts;
+  margin: 0;
+  height: 99px;
+  width: 100%;
+  background: url("../images/stroke");
+  padding-top: 14px;
+  border-radius: 15px 15px 0 0;
+  padding-left: 35px;
+  text-transform: capitalize;
+  * {
+    font-size: inherit;
+    font-family: inherit;
+    color: inherit;
+    font-weight: inherit;
+  }
+  @extend .white-text;
+  .cs-default & {
+    background-position: -95px -226px;
+    font-size: 28px;
+    @media screen and (min-width: 768px) and (max-width: 1024px) {
+      font-size: 26px;
+    }
+    @media screen and (max-width: 767px) {
+      font-size: 22px;
+    }
+  }
+  .cs-classic & {
+    background-position: -95px -914px;
+    font-size: 29px;
+    @media screen and (min-width: 768px) and (max-width: 1024px) {
+      font-size: 27px;
+    }
+    @media screen and (max-width: 767px) {
+      font-size: 23px;
+    }
+  }
+  .cs-elegant & {
+    background-position: -95px -569px;
+    font-size: 30px;
+    @media screen and (min-width: 768px) and (max-width: 1024px) {
+      font-size: 28px;
+    }
+    @media screen and (max-width: 767px) {
+      font-size: 24px;
+    }
+  }
+}
+.stroke-sidebar {
+    @include primary_fonts;
+  height: 85px;
+  width: 100%;
+  margin: 0;
+  line-height: 1.4;
+  text-transform: capitalize;
+  background: url("../images/stroke");
+  padding-top: 14px;
+  border-radius: 15px 15px 0 0;
+  padding-left: 30px;
+  @extend .white-text;
+  .cs-default & {
+    background-position: -60px -239px;
+    font-size: 22px;
+    @media screen and (min-width: 768px) and (max-width: 1024px) {
+      font-size: 20px;
+    }
+    @media screen and (max-width: 767px) {
+      font-size: 18px;
+    }
+  }
+  .cs-classic & {
+    background-position: -60px -928px;
+    font-size: 24px;
+    @media screen and (min-width: 768px) and (max-width: 1024px) {
+      font-size: 22px;
+    }
+    @media screen and (max-width: 767px) {
+      font-size: 20px;
+    }
+  }
+  .cs-elegant & {
+   background-position: -60px -583px;
+   font-size: 25px;
+   @media screen and (min-width: 768px) and (max-width: 1024px) {
+      font-size: 23px;
+    }
+    @media screen and (max-width: 767px) {
+      font-size: 21px;
+    }
+  }
+}
+//primary-background
+.primary-background {
+    .cs-default &,.cs-elegant & {
+      background: $blue;
+    }
+    .cs-classic & {
+      background: $darkblue;
+    }
+    color: $white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+    margin-bottom: 35px;
+    padding-bottom: 15px;
+    @include primary_fsize;
+    @include secondary_fonts;
+}
+//default coursel
+.view-content {
+   position: relative;
+  .owl-controls {
+    margin-top: 0;
+    width: 100%;
+    position: absolute;
+    top: 40%;
+    left: -26px;
+    height: 0;
+    .owl-pagination {
+       display: none;
+    }
+    .owl-buttons {
+      width: calc(100% + 52px);
+      position: relative;
+      display: inline-block;
+      height: 0;
+       > div {
+        margin: 0;
+        border-radius: 0;
+        color: transparent;
+        background: transparent url("../images/dashboard");
+        padding: 0;
+        opacity: 1;
+       }
+      .owl-prev {
+         float: left;
+         background-position: -20px -595px;
+
+      }
+      .owl-next {
+        float: right;
+        background-position: -20px -1136px;
+      }
+    }
+  }
+}
+//default padding for zigzag image block content
+.b-padding {
+   padding: 20px 35px 18px;
+    p {
+       margin: 0;
+    }
+}
+//margin zer0 use
+.margin-0 {
+  margin: 0;
+}
+//yellow background blocks
+.yellow-commonblock {
+   @extend .yellow;
+   padding: 14px 25px 15px;
+   color: $black;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+    margin-bottom: 35px;
+    @include primary_fsize;
+    @include secondary_fonts;
+}
+
+

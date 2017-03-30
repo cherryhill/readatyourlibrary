@@ -1,0 +1,256 @@
+// Docs: http://foundation.zurb.com/docs/components/buttons.html
+//
+// Before adding styles be sure to modify variables in the
+// "scss/_variables.scss" file.
+
+.button, button {
+  &.radius {
+    border-radius: 10px;
+  }
+  transition: all linear 0.5s;
+
+  display: inline-block !important;
+  padding: 6px 24px !important;
+  text-decoration: none;
+  box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+  text-transform: capitalize;
+  border-radius: 10px;
+  border: none;
+  line-height: 26px !important;
+  margin: 10px;
+
+  @include primary_fonts;
+
+  &.postfix.button {
+    border-radius: 10px;
+  }
+
+  .cs-default & {
+    font-size: 17px;
+
+    @extend .yellow;
+    &:hover {
+          background: $hover-yellow;
+        }
+        &:focus {
+          background: $focus-yellow;
+        }
+    color: $black;
+  }
+  .cs-classic & {
+    font-size: 18px;
+    @extend .light-orange;
+    color: $white;
+     &:hover,&:focus {
+          background: $hover-palettes-buttons;
+        }
+  }
+   .cs-elegant & {
+    font-size: 19px;
+
+    @extend .light-orange;
+     &:hover,&:focus {
+          background: $hover-palettes-buttons;
+        }
+
+    color: $white;
+  }
+}
+
+.btn {
+  display: inline-block;
+  padding: 6px 24px;
+  font-size: 21px;
+  text-decoration: none;
+  box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+  text-transform: capitalize;
+  border-radius: 10px;
+  line-height: 30px;
+  @media screen and (max-width: 767px) {
+    font-size: 17px;
+  }
+  @media screen and (min-width: 768px) and (max-width: 1024px) {
+    font-size: 20px;
+  }
+  .cs-default & {
+    @extend .blue;
+  }
+
+  .cs-elegant & {
+    @extend .red1;
+  }
+
+  .cs-classic & {
+    background: $sky-blue;
+  }
+
+  &:hover {
+    text-decoration: none;
+  }
+
+  @include primary_fonts;
+
+  &.btn-large {
+    color: $white;
+
+    &.msg {
+      padding-left: 50px;
+      position: relative;
+
+      &.new {
+        .cs-default & {
+          @extend .red;
+        }
+
+        .cs-classic & {
+          @extend .light-orange;
+        }
+
+        .cs-elegant & {
+          @extend .yellow;
+
+          color: $color-blue;
+        }
+
+        &:after {
+          .cs-elegant & {
+            background-position: 72px 90px;
+          }
+        }
+      }
+
+      &:after {
+        content: "";
+        width: 30px;
+        height: 14px;
+        position: absolute;
+        left: 24px;
+        top: 14px;
+        background: url("../images/icons");
+        display: inline-block;
+        background-position: 72px 35px;
+      }
+    }
+
+    &.small {
+      font-size: 17px;
+      padding-top: 9px;
+      padding-bottom: 9px;
+
+      &.btn-mobile {
+        padding: 4px 13px 6px;
+      }
+      .cs-classic & {
+        font-size: 18px;
+      }
+       .cs-elegant & {
+        font-size: 19px;
+      }
+    }
+
+    &.full {
+      width: 100%;
+      font-size: 17px;
+      text-align: center;
+      padding-top: 9px;
+      padding-bottom: 9px;
+     .cs-classic & {
+      font-size: 18px;
+     }
+       .cs-elegant & {
+        font-size: 19px;
+      }
+    }
+
+    .cs-default & {
+      @extend .blue;
+    }
+
+    .cs-classic & {
+      background: $sky-blue;
+    }
+
+    .cs-elegant & {
+      @extend .red1;
+    }
+  }
+
+  &.btn-primary {
+    padding-top: 9px;
+    padding-bottom: 9px;
+   transition: all linear 0.5s;
+    .cs-default & {
+      font-size: 17px;
+
+      @extend .yellow;
+
+      color: $black;
+        &:hover {
+          background: $hover-yellow;
+        }
+        &:focus {
+          background: $focus-yellow;
+        }
+    }
+    .cs-classic & {
+      font-size: 18px;
+       @extend .light-orange;
+       color: $white;
+        &:hover,&:focus {
+          background: $hover-palettes-buttons;
+        }
+    }
+     .cs-elegant & {
+      font-size: 19px;
+
+      @extend .light-orange;
+        &:hover,&:focus {
+          background: $hover-palettes-buttons;
+        }
+      color: $white;
+    }
+  }
+}
+
+//above is not expend-able
+
+.blue-button {
+  display: inline-block;
+  padding: 6px 24px;
+  font-size: 21px;
+  text-decoration: none;
+  box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+  text-transform: capitalize;
+  border-radius: 10px;
+  line-height: 30px;
+  color: $white;
+  @media screen and (min-width: 768px) and (max-width: 1024px) {
+    font-size: 20px;
+  }
+  @media screen and (max-width: 767px) {
+    font-size: 17px;
+  }
+  .cs-default & {
+   background: $blue;
+  }
+
+  .cs-elegant & {
+    background: $light-red;
+  }
+
+  .cs-classic & {
+    background: $sky-blue;
+    font-size: 20px;
+    @media screen and (max-width: 767px) {
+      font-size: 17px;
+    }
+  }
+
+  &:hover {
+    text-decoration: none;
+  }
+  &:focus {
+    outline: none;
+  }
+  @include primary_fonts;
+}
