@@ -247,6 +247,16 @@
 					}
 				}
 			}
+			.image {
+				width: 100%;
+				img {
+					margin-left: auto;
+					margin-right: auto;
+					display: block;
+					height: 100px;
+					width: 100px;
+				}
+			}
 		}
 		.view-content {
 			flex: 0 0 100%;
@@ -697,6 +707,7 @@
 
 	/*---------teen-css-------------*/
 	.progress-page {
+		padding: 10px;
 		.avatar-id {
 			flex: 0 0 100%;
 		}
@@ -713,6 +724,41 @@
     	margin-right: 0;
     	margin-left: 0;
     }
+		.progress-wrap {
+			.report-acivity {
+				form {
+					select {
+						font-size: 12px;
+					}
+					.container-inline-date {
+						.form-item-date {
+							> label {
+								width: 10%;
+								float: left;
+							}
+							.date-padding {
+    						width: 90%;
+    					}
+						}
+					}
+				}
+			}
+			.progress-rewards {
+				> div {
+					padding-top: 20px;
+				}
+			}
+		}
+		.progress-main {
+			.progress-grid {
+				.grid.inserted {
+					* {
+						font-size: 12px !important;
+					}
+					background-size: 50px !important;
+				}
+			}
+		}
 	}
 	/*-------------Progress Page Ends-------------*/
 
@@ -1026,6 +1072,32 @@
 		 	}
 		}
 	}
+
+	.progress-page {
+		.progress-wrap {
+			> div {
+				flex: 1 1 30%;
+			}
+			.report-acivity {
+				form {
+					select {
+						font-size: 12px;
+					}
+					.container-inline-date {
+						.form-item-date {
+							> label {
+								width: 10%;
+								float: left;
+							}
+							.date-padding {
+    						width: 90%;
+    					}
+						}
+					}
+				}
+			}
+		}
+	}
 	/*-------------Progress Page Ends-------------*/
 
 	/*-------------Photos/Videos Page-------------*/
@@ -1107,6 +1179,7 @@
 				width: 100%;
 				margin-left: 0;
 				background-size: auto;
+				background-repeat: no-repeat;
 			}
 		}
 		.view-booklist-slideshow {
@@ -1115,6 +1188,7 @@
 					width: 100%;
 					margin-left: 0;
 					background-size: auto;
+					background-repeat: no-repeat;
 				}
 			}
 		}
@@ -1122,7 +1196,8 @@
 	
 	/*-------------Common for page title ends-------------*/
 	#page-title {
-   .page-activities.cs-default &, .page-activities.cs-classic &  {
+   .page-activities.cs-default &, .page-activities.cs-classic &,
+    .page-activities.cs-elegant & {
 	   	background-position: 0 12px;
 	   	background-size: auto;
 	   	background-repeat: no-repeat;
