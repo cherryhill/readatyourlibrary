@@ -1,0 +1,132 @@
+.pagination-centered {
+  display: inline-block;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.pagination.pager {
+  -webkit-flex-wrap: wrap;
+  flex-wrap: wrap;
+  display: -webkit-flex;
+  display: flex;
+  float: right;
+  height: auto !important;
+
+  li {
+    margin: 0;
+    padding: 0;
+    height: 33px;
+    width: 31px;
+    overflow: hidden;
+    display: flex;
+    display: -webkit-flex;
+    align-content: center;
+    align-items: center;
+    margin-bottom: 1px;
+    margin-left: 1px;
+     &.unavailable {
+       a {
+        color: $white;
+       }
+     }
+     &.arrow {
+        &.first,&.last {
+          display: none;
+        }
+        a {
+           height: 0;
+           width: 0;
+           border-top: 8px solid transparent;
+           border-bottom: 8px solid transparent;
+           display: inline-block;
+           position: relative;
+           color: transparent;
+           overflow: hidden;
+           top: 6px;
+           background: transparent !important;
+            &:hover, &:focus {
+              color: transparent;
+              background: transparent !important;
+            }
+        }
+        &:nth-of-type(2) a {
+          .cs-default & {
+            border-right:10px solid $secondary-background;
+          }
+          .cs-classic & {
+            border-right: 20px solid $light-blue;
+          }
+          .cs-elegant & {
+            border-right: 20px solid $orange;
+          }
+
+        }
+        &:nth-last-of-type(2) a {
+          .cs-default & {
+            border-left:10px solid $secondary-background;
+          }
+          .cs-classic & {
+            border-left: 20px solid $light-blue;
+          }
+          .cs-elegant & {
+            border-left: 20px solid $orange;
+          }
+
+        }
+     }
+     &.current {
+      a {
+       .cs-default & {
+         color: $purple;
+       }
+       .cs-classic & {
+        color: $red;
+       }
+        .cs-elegant & {
+        color: $gray;
+      }
+      }
+
+     }
+    a {
+      width: 100%;
+      height: 100%;
+      padding: 0;
+
+             font-size: 17px;
+        line-height: 34px !important;
+        .cs-default & {
+          line-height: 40px;
+        }
+      @include button-font;
+      color: $white;
+       &:hover,&:focus {
+        .cs-default & {
+          color: $purple;
+           background: $secondary-background;
+       }
+       .cs-classic & {
+         @extend .light-blue;
+         color: $red;
+       }
+        .cs-elegant & {
+         @extend .orange;
+         color: $gray;
+      }
+       }
+      .cs-default & {
+
+        background: $secondary-background;
+      }
+
+      .cs-classic & {
+        @extend .light-blue;
+         color: $dark-blue;
+      }
+       .cs-elegant & {
+        @extend .orange;
+        color: $white;
+      }
+    }
+  }
+}

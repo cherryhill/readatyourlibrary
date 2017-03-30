@@ -1,0 +1,105 @@
+.sidebar2 {
+  > .first {
+    padding: 10px 30px;
+
+    @extend .primary-background;
+
+    * {
+      color: inherit;
+    }
+
+    * {
+      font-family: inherit;
+    }
+  }
+  &.sidebar-activity {
+    > .first {
+       .logged-in &{
+         border-radius: 0 0 10px 10px;
+       }
+    }
+  }
+  &.sidebar-shareit {
+    > .first {
+      margin-bottom: 0;
+       border-radius: 10px 10px 0 0;
+       .not-logged-in & {
+        display: none;
+       }
+      .block-sharethis {
+        display: flex;
+        display: -webkit-flex;
+        flex-wrap: wrap;
+        background: $white;
+        align-items: center;
+        padding: 10px;
+        color: $purple;
+
+
+        .block-title {
+          color: inherit;
+          font-size: 17px;
+          line-height: 26px;
+          margin: 0;
+          flex: 1 1 30%;
+          .cs-default & {
+            padding-top: 5px;
+          }
+
+        }
+
+        .sharethis-wrapper {
+          flex: 1 1 70%;
+          text-align: right;
+
+          > span {
+            display: inline-block;
+
+            &.st_facebook_large {
+              .stButton .stLarge {
+                background-position: -92px -20px;
+              }
+            }
+
+            &.st_tumblr_large {
+              .stButton .stLarge {
+                background-position: -164px -20px;
+              }
+            }
+
+            &.st_twitter_large {
+              .stButton .stLarge {
+                background-position: -236px -20px;
+              }
+            }
+
+            &.st_email_large {
+              .stButton .stLarge {
+                background-position: -20px -20px;
+              }
+            }
+          }
+
+          .stButton {
+            font-size: 17px;
+            margin-right: 0;
+            line-height: 26px;
+
+            .stLarge {
+              vertical-align: middle;
+              background-image: url("../images/social-share-icons") !important;
+              background-size: auto;
+              transition: all linear 0.8s;
+              border: 1px outset rgba(0, 0, 0, 0.2);
+
+              &:hover {
+                -webkit-filter: hue-rotate(180deg);
+                filter: hue-rotate(180deg);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

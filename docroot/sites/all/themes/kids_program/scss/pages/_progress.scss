@@ -1,0 +1,556 @@
+.main {
+  .page-progress.cs-default &, .page-progress.cs-elegant & {
+    background: $blue;
+  }
+
+  .page-progress.cs-classic & {
+    background: $darkblue;
+  }
+
+  .page-progress & {
+    color: $white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+    margin-bottom: 35px;
+    padding-bottom: 15px;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+}
+
+#page-title {
+  .page-progress & {
+    line-height: 1.4;
+    margin: 0;
+    height: 99px;
+    width: 100%;
+    background: url(../images/big-strokes);
+    padding-top: 14px;
+    border-radius: 15px 15px 0 0;
+    padding-left: 35px;
+    text-transform: capitalize;
+    @extend .white-text;
+  }
+
+
+
+  @include primary_fonts;
+
+  .page-progress.cs-default & {
+    background-position: -60px -569px;
+  }
+
+  .page-progress.cs-classic & {
+    background-position: -60px -225px;
+  }
+
+  .page-progress.cs-elegant & {
+    background-position: -60px -914px;
+  }
+}
+
+.progress-page-wrap {
+  padding-left: 35px;
+  padding-right: 35px;
+
+  .print-pdf {
+    width: 100%;
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    right: 0;
+
+    button {
+      float: right;
+      position: relative;
+      padding-left: 58px !important;
+      margin: 0;
+      right: 35px;
+      top: 20px;
+
+      &:after {
+        content: "";
+        height: 30px;
+        width: 30px;
+        background: url("../images/social-icons.png");
+        position: absolute;
+        background-position: -20px -229px;
+        left: 25px;
+        top: 3px;
+      }
+    }
+  }
+  td.fc-day.reward-won {
+    background: $yellow;
+  }
+  td.reward-won.fc-day-top {
+    background: $yellow;
+  }
+
+  td.fc-event-container .fc-event .fc-content.reward-content {
+    background: $yellow;
+  }
+
+  .fc-event {
+    color: $black;
+    background: transparent;
+    border: none;
+    margin-bottom: 10px;
+    text-align: center;
+
+    img {
+      width: 58px;
+    }
+  }
+
+  #wrap {
+    margin-top: 20px;
+
+    @extend .yellow-commonblock;
+
+    overflow: visible !important;
+    -webkit-flex-wrap: wrap;
+    flex-wrap: wrap;
+    display: -webkit-flex;
+    display: flex;
+
+    > div {
+      &.sticker-block {
+        flex: 0 0 45%;
+        padding-right: 20px;
+
+        span.prog-name {
+          * {
+            color: $black;
+            margin: 0;
+
+            .cs-default & {
+              font-size: 22px;
+            }
+
+            .cs-classic & {
+              font-size: 24px;
+            }
+             .cs-elegant & {
+              font-size: 25px;
+            }
+          }
+        }
+
+        .prog-days {
+          * {
+            color: $red;
+            margin: 0;
+
+            .cs-default & {
+              font-size: 26px;
+            }
+
+            .cs-classic & {
+              font-size: 27px;
+            }
+             .cs-elegant & {
+              font-size: 28px;
+            }
+          }
+        }
+
+        #external-events {
+          div {
+            background: transparent;
+            border: none;
+            display: inline-block;
+            width: 16%;
+
+            img {
+              width: 58px;
+            }
+          }
+        }
+      }
+
+      &.rewards {
+        flex: 0 0 33%;
+        padding-right: 20px;
+
+        .pager {
+          a {
+            color: $blue;
+
+            @include primary_fonts;
+
+            @include primary_fsize;
+
+            position: relative;
+
+            &:after {
+              content: "";
+              width: 20px;
+              height: 20px;
+              display: inline-block;
+              position: absolute;
+              background: url(../images/dashboard);
+              background-size: 40px;
+            }
+          }
+
+          .pager-current {
+            display: none;
+          }
+
+          .pager-previous {
+            float: left;
+
+            a {
+              padding-left: 18px;
+
+              &:after {
+                left: 0;
+                top: 5px;
+                background-position: -12px -376px;
+              }
+            }
+          }
+
+          .pager-next {
+            float: right;
+
+            a {
+              padding-right: 18px;
+
+              &:after {
+                background-position: -4px -684px;
+                top: 5px;
+                right: 0;
+              }
+            }
+          }
+        }
+
+        .view-Rewards-Progress {
+          width: 100%;
+          display: inline-block;
+          height: 100%;
+          background: $white;
+          color: $black;
+          border-radius: 15px;
+          box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+
+          @include primary_fonts;
+
+          padding: 15px 20px;
+
+          .view-header {
+            p {
+              font-size: 20px;
+
+              .cs-classic &, .cs-elegant & {
+                font-size: 22px;
+              }
+
+              color: $blue;
+
+              @include primary_fonts;
+
+              &:nth-of-type(2) {
+                .cs-classic & {
+                  font-size: 14px;
+                }
+                 .cs-elegant & {
+                  font-size: 15px;
+                }
+
+                .cs-default & {
+                  font-size: 13px;
+                }
+
+                color: $black;
+                text-transform: uppercase;
+              }
+            }
+          }
+
+          .view-content {
+            .reward-list {
+              -webkit-flex-wrap: wrap;
+              flex-wrap: wrap;
+              display: -webkit-flex;
+              display: flex;
+
+              > div {
+                &:nth-of-type(1) {
+                  flex: 0 0 20px;
+                }
+
+                &:nth-of-type(2) {
+                  flex: 0 0 calc(100% - 20px);
+                }
+              }
+            }
+
+            position: relative;
+
+            .cs-default & {
+              padding-left: 110px;
+              margin-top: -20px;
+            }
+
+            .cs-classic & {
+              padding-left: 122px;
+              margin-top: -24px;
+            }
+
+            .cs-elegant & {
+              padding-left: 110px;
+              margin-top: -22px;
+            }
+
+            .views-row {
+              .cs-default & {
+                font-size: 13px;
+                line-height: 17px;
+              }
+
+              .cs-elegant & {
+                font-size: 14px;
+                line-height: 18px;
+              }
+
+               .cs-classic & {
+                font-size: 15px;
+                line-height: 19px;
+              }
+
+              position: relative;
+
+              @include primary_fonts;
+
+              margin-bottom: 5px;
+
+              .views-field-title {
+                display: inline-block;
+              }
+            }
+          }
+        }
+      }
+
+      &.reading-progress {
+        flex: 0 0 22%;
+        border-radius: 15px;
+        box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+        padding: 20px;
+        font-size: 15px;
+        text-align: center;
+
+        * {
+          font-size: inherit;
+          color: inherit;
+        }
+
+        @include primary_fonts;
+
+        display: flex;
+        align-content: center;
+        align-items: center;
+        color: $white;
+
+        .cs-default & {
+          background: $orange;
+        }
+
+        .cs-classic & {
+          background: $sky-blue;
+        }
+
+        .cs-elegant & {
+          background: $mint-green;
+        }
+      }
+    }
+  }
+
+  .calendar-wrapper {
+    .fc-center {
+      width: 100%;
+      max-width: 360px;
+      margin: auto;
+
+      h2 {
+        color: $white;
+      }
+
+      * {
+        display: inline-block;
+        margin: 2px;
+      }
+    }
+  }
+
+  .fc-month-view {
+    table {
+      margin: 0;
+    }
+  }
+
+  .fc-content-skeleton > table {
+    margin: 0;
+    position: relative;
+    background: transparent;
+
+    .fc-day-top {
+      padding-top: 10px;
+
+      .cs-default & {
+        border-left: 2px solid $orange;
+        border-right: 2px solid $orange;
+      }
+
+      .cs-elegant & {
+        border-left: 2px solid $mint-green;
+        border-right: 2px solid $mint-green;
+      }
+
+      .cs-classic & {
+        border-left: 2px solid $sky-blue;
+        border-right: 2px solid $sky-blue;
+      }
+
+      span {
+        float: left !important;
+        font-size: 30px;
+        color: $blue;
+
+        @include primary_fonts;
+      }
+    }
+
+    tbody {
+      border: none;
+    }
+  }
+
+  .fc-day-grid {
+    .fc-row.fc-week {
+      &:nth-of-type(1) {
+        .cs-default & {
+          border-top: 2px solid $orange;
+        }
+
+        .cs-elegant & {
+          border-top: 2px solid $mint-green;
+        }
+
+        .cs-classic & {
+          border-top: 2px solid $sky-blue;
+        }
+      }
+    }
+  }
+
+  table {
+    background: $white;
+    border: none;
+    position: relative;
+    border-color: $orange;
+
+    * td {
+      border-color: inherit;
+    }
+
+    *
+    th {
+      border: none;
+    }
+
+    .fc-bg {
+      table > tbody > tr {
+        td {
+          border-top: none;
+
+          .cs-default & {
+            border-left: 2px solid $orange;
+            border-right: 2px solid $orange;
+            border-bottom: 2px solid $orange;
+          }
+
+          .cs-elegant & {
+            border-left: 2px solid $mint-green;
+            border-right: 2px solid $mint-green;
+            border-bottom: 2px solid $mint-green;
+          }
+
+          .cs-classic & {
+            border-left: 2px solid $sky-blue;
+            border-right: 2px solid $sky-blue;
+            border-bottom: 2px solid $sky-blue;
+          }
+        }
+      }
+    }
+
+    .fc-body {
+      thead {
+        border: none !important;
+        background: $white !important;
+      }
+
+      > tbody {
+        > tr > td {}
+      }
+    }
+
+    .fc-head {
+      td {
+        border: none;
+      }
+
+      th {
+        font-size: 22px;
+
+        @include primary_fonts;
+
+        color: $white;
+        padding-bottom: 10px;
+      }
+
+      .fc-row.fc-widget-header {
+        margin-right: 0 !important;
+        border: none;
+      }
+    }
+
+    .fc-scroller {
+      overflow-y: hidden !important;
+    }
+
+    .fc-head thead {
+      border: none;
+      margin: 0;
+
+      .cs-default &, .cs-elegant & {
+        background: $blue;
+      }
+
+      .cs-classic & {
+        background: $darkblue;
+      }
+    }
+  }
+}
+#wrap.wrap {
+  .rewards, .reading-progress {
+    @media screen and (max-width: 767px) {
+    display: none !important;
+    }
+  }
+
+}
+#wrap.for-mobile {
+  @media screen and (min-width: 768px) {
+    display: none;
+  }
+  background: transparent;
+  box-shadow: none;
+}

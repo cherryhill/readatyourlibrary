@@ -1,0 +1,386 @@
+.page-progress {
+  #page-title {
+    display: none;
+  }
+}
+
+div.progress-page {
+  @extend .primary-background;
+
+  h1#title {
+    color: inherit;
+    margin-bottom: 0;
+  }
+
+  button.print_pg {
+    margin-bottom: 0;
+    position: relative;
+    padding-left: 35px;
+      &:after {
+         content: "";
+         width: 30px;
+         height: 100%;
+         background: url("../images/dashboard-icons") no-repeat;
+         position: absolute;
+         display: inline-block;
+         left: 7px;
+         top: 1px;
+         background-position: -20px -1052px;
+          .cs-default & {
+              background-position: -20px -992px;
+          }
+      }
+
+    @extend .post-footer.contain-to-grid;
+
+    .cs-default & {
+      @extend .white-text;
+    }
+
+    color: $dark-blue;
+  }
+
+  .progress-desc {
+    p {
+      @include bold-font;
+    }
+  }
+
+  .user-desc {
+    @extend .post-footer.contain-to-grid;
+
+    * {
+      .cs-default & {
+        @extend .white-text;
+      }
+
+      color: $dark-blue;
+    }
+
+    padding: 25px 14px;
+
+    .point-status > div {
+      padding-right: 0;
+    }
+
+    .avatar-id {
+      @include button-font;
+
+      img {
+        padding-right: 10px;
+        width: 32px;
+        height: 32px;
+        object-fit: contain;
+      }
+    }
+  }
+
+  .progress-wrap {
+    margin-top: 25px;
+    margin-bottom: 25px;
+
+
+    .report-acivity {
+       @extend .primary-color;
+       * {
+        @extend .primary-color;
+       }
+      background: $white;
+
+      input.submit {
+        margin-left: 20px;
+
+        @extend .teen-button;
+        color: $white;
+        .cs-default & {
+          background: $purple;
+           padding: 9px 14px 4px;
+        }
+
+        .cs-classic & {
+          background: $medium-blue;
+           padding: 3px 14px 5px;
+        }
+
+        .cs-elegant & {
+          background: $green;
+          color: $gray;
+           padding: 4px 14px;
+        }
+      }
+
+      h1 {
+        @extend h3;
+
+        margin-top: 0;
+        margin-bottom: 0;
+        padding: 20px 20px 0;
+      }
+
+      form {
+        .form-item-activity-progress-select {
+          margin-top: 0;
+          margin-bottom: 0;
+          padding: 0px 20px 20px;
+
+          label {
+            @extend .primary-color;
+
+            @include primary_fsize;
+
+            @include body-font;
+          }
+
+          .chosen-container {
+            @include primary_fsize;
+
+            a.chosen-single {
+              height: auto;
+              border-radius: 0;
+
+              .cs-default & {
+                color: $purple;
+                border: 1px solid $purple;
+              }
+
+              .cs-classic & {
+                color: $medium-blue;
+                border: 1px solid $medium-blue;
+              }
+
+              .cs-elegant & {
+                color: $green;
+                border: 1px solid $green;
+              }
+
+              background: $white;
+              border: 1px solid $link-color;
+
+              > div {
+                width: 30px;
+
+                .cs-default & {
+                  background: $purple;
+                }
+
+                .cs-classic & {
+                  background: $medium-blue;
+                }
+
+                .cs-elegant & {
+                  background: $green;
+                }
+
+                b {
+                  background: none;
+                  border-left: 7px solid transparent;
+                  border-right: 7px solid transparent;
+                  display: inline-block;
+                  height: 0;
+                  width: 0;
+                  border-top: 7px solid white;
+                  margin-left: 9px;
+                  position: relative;
+                  top: -1px;
+                }
+              }
+            }
+          }
+        }
+
+        .container-inline-date {
+          .form-item-date {
+            margin-right: 0;
+            width: 100%;
+            display: inline-block;
+            display: flex;
+            display: -webkit-flex;
+            flex-wrap: wrap;
+            -webkit-flex-wrap: wrap;
+            padding: 20px;
+            margin: 0;
+
+            > label, .date-padding {
+              @extend .primary-color;
+
+              @include body-font;
+            }
+
+            > label {
+              padding-right: 10px;
+              flex: 0 0 10%;
+            }
+
+            .date-padding {
+              flex: 0 0 90%;
+
+              .form-item-date-date {
+                display: flex;
+                display: -webkit-flex;
+                flex-wrap: wrap;
+                -webkit-flex-wrap: wrap;
+                width: 100%;
+
+                > label {
+                  padding-right: 10px;
+                }
+
+                > label, span {
+                  @extend .primary-color;
+
+                  @include body-font;
+                }
+              }
+            }
+          }
+        }
+      }
+      .report-activity-desc {
+        padding: 0 20px;
+      }
+    }
+    .reward-won {
+      position: relative;
+      background: $white;
+      @extend .primary-color;
+      .view-rewards-dashboard {
+        .view-header {
+          h3 {
+            margin: 0;
+            padding: 20px 20px 0;
+
+             a {
+              color: inherit;
+             }
+          }
+        }
+        .view-content {
+          padding-left: 20px;
+          padding-right: 20px;
+           .reward-hombox-dashboard {
+             div,div * {
+               @include button-font;
+               font-size: 16px;
+             }
+           }
+        }
+        .view-footer {
+         padding: 20px;
+          a {
+            @include button-font;
+          }
+        }
+      }
+      .view-Rewards-Progress {
+        padding: 20px;
+        .view-header {
+          p {
+            &:first-of-type {
+              display: none;
+            }
+          }
+        }
+      }
+      .counter {
+        width: 10%;
+        float: left;
+      }
+      .reward {
+        width: 90%;
+        float: left;
+      }
+      h1 {
+        margin-top: 0;
+      }
+      .item-list {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        right: 20px;
+        ul.pager {
+          float: right;
+        }
+      }
+    }
+    .progress-rewards {
+      display: flex;
+      display: -webkit-flex;
+      align-items: center;
+      .cs-default & {
+          @extend .yellow;
+          color: $purple;
+      }
+      .cs-classic & {
+        @extend .light-blue;
+        color: $dark-blue;
+      }
+      .cs-elegant & {
+         @extend .yellow-btn-elegant;
+         color: $gray;
+      }
+        * {
+          margin: 0 auto;
+          width: calc(100% - 30px);
+          text-align: center;
+          @include button-font;
+        }
+    }
+    .description {
+      display: none;
+    }
+  }
+  .progress-main {
+    h1 {
+      margin-bottom: 0;
+      @extend .post-footer.contain-to-grid;
+       .cs-default & {
+      @extend .white-text;
+      }
+
+    color: $dark-blue;
+    padding: 15px 0.625em;
+    }
+    .progress-grid {
+      .grid {
+        background-color: $white !important;
+      }
+      .grid.inserted {
+        &.reward-won-cell {
+                .cs-default & {
+           background-color: $yellow !important;
+          color: $purple;
+           * {
+            color: inherit;
+           }
+      }
+      .cs-classic & {
+       background-color: $light-blue !important;
+    color: $dark-blue;
+       * {
+        color: inherit;
+       }
+      }
+      .cs-elegant & {
+        background-color: $yellow-btn-elegant !important;
+         color: $gray;
+         * {
+          color: inherit;
+         }
+      }
+        }
+        vertical-align: top;
+        .date-pg,.title-pg {
+          margin-bottom: 0;
+          font-size: 14px;
+          @include button-font;
+          @extend .primary-color;
+        }
+        .rew {
+          @include button-font;
+          @extend .primary-color;
+          margin-top: 20px;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,66 @@
+
+
+.activity-page-wrapper {
+   margin-top: 10px;
+   margin-bottom: 10px;
+   display: inline-block;
+   width: 100%;
+   h2 {
+      a {
+        color: inherit;
+        font-family: inherit;
+        position: relative;
+
+      }
+
+   }
+
+    .link {
+      font-weight: bold;
+      display: inline-block;
+      width: 100%;
+      margin-top: 10px;
+      margin-bottom: 10px;
+    }
+    .drop-downs-wrapper {
+       padding-left: 30px;
+        .form-type-select {
+           display: flex;
+           display: -webkit-flex;
+           flex-wrap: wrap;
+           label,select,> div {
+            flex: 0 0 50%;
+           }
+           label {
+             @extend .primary-color;
+             @include primary_fsize;
+           }
+           .chosen-container {
+             @include primary_fsize;
+              a.chosen-single {
+                 height: auto;
+                 border-radius: 0;
+                 color: $link-color;
+                 background: $white;
+                 border: 1px solid $link-color;
+                  > div {
+                     width: 30px;
+                     background: $link-color;
+                     b {
+                       background: none;
+                       border-left: 7px solid transparent;
+                       border-right: 7px solid transparent;
+                       display: inline-block;
+                       height: 0;
+                       width: 0;
+                       border-top: 7px solid white;
+                       margin-left: 9px;
+                       position: relative;
+                       top: -1px;
+                     }
+                  }
+              }
+           }
+        }
+    }
+}
