@@ -1,0 +1,247 @@
+// Elements
+//
+// Things to review before you write code here:
+// - Be sure to load after "foundation" import.
+// - Also, before adding styles be sure to modify variables in the
+//   "scss/_variables.scss" file. You may not need to write any code.
+
+// Headings
+//------------------------------------------
+// h1, h2, h3,
+// h4, h5, h6 {}
+
+// Anchors
+//-----------------------------------------------------------------------------
+// a {}
+
+// a:focus {}
+
+// a.active,
+// a:active,
+// a:hover {}
+
+// Form Input
+//-----------------------------------------------------------------------------
+// input[type="text"],
+// input[type="password"],
+// input[type="date"],
+// input[type="datetime"],
+// input[type="datetime-local"],
+// input[type="month"],
+// input[type="week"],
+// input[type="email"],
+// input[type="number"],
+// input[type="search"],
+// input[type="tel"],
+// input[type="time"],
+// input[type="url"],
+// textarea {
+// }
+
+
+// input[type="text"],
+// input[type="password"],
+// input[type="date"],
+// input[type="datetime"],
+// input[type="datetime-local"],
+// input[type="month"],
+// input[type="week"],
+// input[type="email"],
+// input[type="number"],
+// input[type="search"],
+// input[type="tel"],
+// input[type="time"],
+// input[type="url"],
+// textarea {
+
+// }
+
+// select {}
+
+h1, h2, h3, h4, h5, h6 {
+  @include primary_fonts;
+  font-weight: normal;
+  text-transform: capitalize;
+}
+p,li{
+  @include secondary_fonts;
+  @include primary_fsize;
+}
+h1 {
+  .cs-default & {
+    font-size: 28px;
+    @media screen and (max-width: 767px) {
+      font-size: 22px;
+    }
+  }
+  .cs-classic & {
+    font-size: 29px;
+    @media screen and (max-width: 767px) {
+      font-size: 23px;
+    }
+  }
+  .cs-elegant & {
+    font-size: 30px;
+    @media screen and (max-width: 767px) {
+      font-size: 24px;
+    }
+  }
+  @media screen and (min-width: 768px) and (max-width: 1024px) {
+    .cs-default & {
+      font-size: 26px;
+    }
+   .cs-classic & {
+      font-size: 27px;
+    }
+    .cs-elegant & {
+      font-size: 28px;
+    }
+  }
+}
+
+h2 {
+  .cs-default & {
+    font-size: 25px;
+    @media screen and (max-width: 767px) {
+      font-size: 20px;
+    }
+  }
+  .cs-classic & {
+    font-size: 27px;
+    @media screen and (max-width: 767px) {
+      font-size: 22px;
+    }
+  }
+  .cs-elegant & {
+    font-size: 28px;
+    @media screen and (max-width: 767px) {
+      font-size: 23px;
+    }
+  }
+  @media screen and (min-width: 768px) and (max-width: 1024px) {
+    .cs-default & {
+      font-size: 23px;
+    }
+    .cs-classic & {
+      font-size: 25px;
+    }
+    .cs-elegant & {
+      font-size: 26px;
+    }
+  }
+}
+
+h3 {
+  .cs-default & {
+    font-size: 22px;
+  }
+  .cs-classic & {
+    font-size: 24px;
+  }
+  .cs-elegant & {
+    font-size: 25px;
+  }
+  @media screen and (min-width: 768px) and (max-width: 1024px) {
+    .cs-default & {
+      font-size: 20px;
+    }
+    .cs-classic & {
+      font-size: 22px;
+    }
+    .cs-elegant & {
+      font-size: 23px;
+    }
+  }
+}
+
+h4 {
+  .cs-classic & {
+    font-size: 21px;
+    @media screen and (max-width: 767px) {
+      font-size: 19px;
+    }
+  }
+  .cs-elegant & {
+    font-size: 22px;
+    @media screen and (max-width: 767px) {
+      font-size: 20px;
+    }
+  }
+
+  font-size: 20px;
+  @media screen and (max-width: 767px) {
+    font-size: 18px;
+  }
+  @media screen and (min-width: 768px) and (max-width: 1024px) {
+    .cs-classic & {
+      font-size: 19px;
+    }
+    .cs-elegant & {
+      font-size: 20px;
+    }
+
+    font-size: 18px;
+  }
+}
+
+h5 {
+  .cs-classic & {
+    font-size: 18px;
+  }
+  .cs-elegant & {
+    font-size: 19px;
+  }
+
+  font-size: 17px;
+  @media screen and (min-width: 768px) and (max-width: 1024px) {
+    .cs-classic & {
+      font-size: 16px;
+    }
+    .cs-elegant & {
+      font-size: 17px;
+    }
+
+    font-size: 15px;
+  }
+}
+
+h6 {
+  .cs-classic & {
+    font-size: 15px;
+  }
+  .cs-elegant & {
+    font-size: 16px;
+  }
+
+  font-size: 14px;
+}
+
+
+
+ul, ol, dl {
+  list-style-position: inside;
+  @include primary_fsize;
+}
+p {
+  @include primary_fsize;
+  margin-bottom: 20px;
+   .view-content &,.view-header &,.view-footer & {
+    margin-bottom: 0;
+   }
+}
+
+li.progress {
+  border: none;
+  outline: none;
+  padding: 0;
+}
+a,button {
+  &:focus {
+    outline: none;
+  }
+}
+.view-footer {
+  button,.button {
+    margin-left: 0;
+  }
+}

@@ -411,7 +411,7 @@
     padding: 10px 10px 14px 40px;
   }
   /* line 493, ../scss/print.scss */
-  .cs-default .primary-color, .cs-default h1, .cs-default h2, .cs-default h3, .cs-default div.progress-page .progress-wrap .report-acivity h1, div.progress-page .progress-wrap .report-acivity .cs-default h1, .cs-default h4, .cs-default h5, .cs-default div.progress-page .progress-wrap .report-acivity, div.progress-page .progress-wrap .cs-default .report-acivity, .cs-default div.progress-page .progress-wrap .report-acivity *, div.progress-page .progress-wrap .report-acivity .cs-default *, .cs-default div.progress-page .progress-wrap .report-acivity form .form-item-activity-progress-select label, div.progress-page .progress-wrap .report-acivity form .form-item-activity-progress-select .cs-default label, .cs-default div.progress-page .progress-wrap .report-acivity form .container-inline-date .form-item-date > label, div.progress-page .progress-wrap .report-acivity form .container-inline-date .cs-default .form-item-date > label, .cs-default div.progress-page .progress-wrap .report-acivity form .container-inline-date .form-item-date .date-padding, div.progress-page .progress-wrap .report-acivity form .container-inline-date .form-item-date .cs-default .date-padding, .cs-default div.progress-page .progress-wrap .report-acivity form .container-inline-date .form-item-date .date-padding .form-item-date-date > label, div.progress-page .progress-wrap .report-acivity form .container-inline-date .form-item-date .date-padding .cs-default .form-item-date-date > label, .cs-default div.progress-page .progress-wrap .report-acivity form .container-inline-date .form-item-date .date-padding .form-item-date-date span, div.progress-page .progress-wrap .report-acivity form .container-inline-date .form-item-date .date-padding .form-item-date-date .cs-default span, .cs-default div.progress-page .progress-wrap .reward-won, div.progress-page .progress-wrap .cs-default .reward-won, .cs-default div.progress-page .progress-main .progress-grid .grid.inserted .date-pg, div.progress-page .progress-main .progress-grid .grid.inserted .cs-default .date-pg, .cs-default div.progress-page .progress-main .progress-grid .grid.inserted .title-pg, div.progress-page .progress-main .progress-grid .grid.inserted .cs-default .title-pg, .cs-default div.progress-page .progress-main .progress-grid .grid.inserted .rew, div.progress-page .progress-main .progress-grid .grid.inserted .cs-default .rew {
+  .cs-default .primary-color, .cs-default h1, .cs-default h2, .cs-default h3, .cs-default div.progress-page .progress-wrap .report-acivity h1, div.progress-page .progress-wrap .report-acivity .cs-default h1, .cs-default h4, .cs-default h5, .cs-default div.progress-page .progress-wrap .report-acivity, div.progress-page .progress-wrap .cs-default .report-acivity, .cs-default div.progress-page .progress-wrap .report-acivity *, div.progress-page .progress-wrap .report-acivity .cs-default *, .cs-default div.progress-page .progress-wrap .report-acivity form .form-item-activity-progress-select label, div.progress-page .progress-wrap .report-acivity form .form-item-activity-progress-select .cs-default label, .cs-default div.progress-page .progress-wrap .report-acivity form .container-inline-date .form-item-date > label, div.progress-page .progress-wrap .report-acivity form .container-inline-date .cs-default .form-item-date > label, .cs-default div.progress-page .progress-wrap .report-acivity form .container-inline-date .form-item-date .date-padding, div.progress-page .progress-wrap .report-acivity form .container-inline-date .form-item-date .cs-default .date-padding, .cs-default div.progress-page .progress-wrap .report-acivity form .container-inline-date .form-item-date .date-padding .form-item-date-date > label, div.progress-page .progress-wrap .report-acivity form .container-inline-date .form-item-date .date-padding .cs-default .form-item-date-date > label, .cs-default div.progress-page .progress-wrap .report-acivity form .container-inline-date .form-item-date .date-padding .form-item-date-date span, div.progress-page .progress-wrap .report-acivity form .container-inline-date .form-item-date .date-padding .form-item-date-date .cs-default span, .cs-default div.progress-page .progress-wrap .reward-won, div.progress-page .progress-wrap .cs-default .reward-won, div.progress-page .progress-main .progress-grid .grid.inserted .date-pg, div.progress-page .progress-main .progress-grid .grid.inserted .cs-default .date-pg, div.progress-page .progress-main .progress-grid .grid.inserted .title-pg, div.progress-page .progress-main .progress-grid .grid.inserted .cs-default .title-pg, .cs-default div.progress-page .progress-main .progress-grid .grid.inserted .rew, div.progress-page .progress-main .progress-grid .grid.inserted .cs-default .rew {
     color: #32024e;
   }
   /* line 497, ../scss/print.scss */
@@ -803,7 +803,8 @@
   div.progress-page .progress-wrap .report-acivity,
   div.progress-page .progress-wrap .reward-won,
   div.progress-page .progress-wrap .progress-rewards  {
-    flex: 0 0 27%;
+    /*flex: 0 0 27%;*/
+    width: 270px;
   }
   div.progress-page .progress-wrap .progress-rewards {
     background-color: #f6f45a;
@@ -812,6 +813,38 @@
   div.progress-page .progress-main h1 {
     background: radial-gradient(#7cb301, #6d9c05, #74a703);
     color: #fff !important;
+  }
+  .progress-wrap .reward-won .counter {
+    width: 10%;
+    float: left;
+  }
+  .progress-wrap .reward-won .reward {
+    width: 90%;
+    float: left;
+  }
+  .progress-wrap .reward-won h1 {
+    margin-top: 0;
+  }
+  .progress-wrap .reward-won .item-list {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    right: 20px;
+  }
+  .progress-wrap .reward-won .item-list ul.pager {
+    float: right;
+  }
+  .progress-wrap .reward-won {
+    position: relative;
+  }
+  .progress-desc {
+    padding-right: 20px;
+  }
+  .user-desc {
+    width: 97% !important;
+  }
+  .progress-page {
+    width: 900px !important;
   }
 
   /* line 887, ../scss/print.scss */
@@ -959,6 +992,7 @@
     -moz-font-smoothing: grayscale;
     font-size: 17px;
     line-height: 26px;
+    width: 100% !important;
   }
   /* line 86, ../scss/print.scss */
   div.progress-page .progress-wrap .report-acivity form .form-item-activity-progress-select .chosen-container {
@@ -1184,31 +1218,13 @@
     vertical-align: top;
   }
   /* line 1201, ../scss/print.scss */
-  .cs-default div.progress-page .progress-main .progress-grid .grid.inserted.reward-won-cell {
+  div.progress-page .progress-main .progress-grid .grid.inserted.reward-won-cell {
     background-color: #f6f45a !important;
     color: #32024e;
   }
   /* line 1204, ../scss/print.scss */
-  .cs-default div.progress-page .progress-main .progress-grid .grid.inserted.reward-won-cell * {
-    color: inherit;
-  }
-  /* line 1208, ../scss/print.scss */
-  .cs-classic div.progress-page .progress-main .progress-grid .grid.inserted.reward-won-cell {
-    background-color: #a8dadc !important;
-    color: #1d3557;
-  }
-  /* line 1211, ../scss/print.scss */
-  .cs-classic div.progress-page .progress-main .progress-grid .grid.inserted.reward-won-cell * {
-    color: inherit;
-  }
-  /* line 1215, ../scss/print.scss */
-  .cs-elegant div.progress-page .progress-main .progress-grid .grid.inserted.reward-won-cell {
-    background-color: #e4ff1a !important;
-    color: #333333;
-  }
-  /* line 1218, ../scss/print.scss */
-  .cs-elegant div.progress-page .progress-main .progress-grid .grid.inserted.reward-won-cell * {
-    color: inherit;
+  div.progress-page .progress-main .progress-grid .grid.inserted.reward-won-cell * {
+    color: #32024e;
   }
   /* line 1224, ../scss/print.scss */
   div.progress-page .progress-main .progress-grid .grid.inserted .date-pg, div.progress-page .progress-main .progress-grid .grid.inserted .title-pg {

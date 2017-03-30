@@ -1,6 +1,7 @@
 <!-- Progress Report Page -->
 <?php
   drupal_add_js(libraries_get_path('printThis', TRUE). '/printThis.js');
+  drupal_add_js(libraries_get_path('printThis', TRUE). 'js/progress_teen_program.js');
   global $user;
   global $base_url;
   $current_uid = $user->uid;

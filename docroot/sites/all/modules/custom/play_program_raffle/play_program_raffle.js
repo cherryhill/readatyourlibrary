@@ -164,7 +164,7 @@
 
       function confirm_rf_winners() {
         bootbox.confirm({
-          message: "<div class = 'alrt'>Alert<div><br/>Raffle once drawn cannot be reversed. Please click Proceed to contunue or Cancel to go back to the Draw Raffle Winners screen",
+          message: "<div class = 'alrt'>Alert<div><br/>Raffle once drawn cannot be reversed. Please click Proceed to continue or Cancel to go back to the Draw Raffle Winners screen",
           buttons: {
             confirm: {
               label: 'Proceed',

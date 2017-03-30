@@ -1,0 +1,99 @@
+.page-reviews {
+
+  .book-reviews-page {
+    .view-content {
+      margin-bottom: 30px;
+      .views-row {
+        display: inline-block;
+        width: 100%;
+        padding: 35px 0 15px;
+        margin: 0;
+        border-bottom: 1px solid #cccccc;
+      }
+    }
+  }
+  .views-field-field-book-cover-image-link {
+    width: 37%;
+    float: left;
+    table, tbody {
+      border: none;
+    }
+  }
+}
+
+.reviews-wrapper {
+  width: 63%;
+  display: inline-block;
+  .reviews-title {
+    display: inline-block;
+    width: 100%;
+    @extend h4;
+  }
+  .bookreview_title {
+    a {
+      text-decoration: none;
+    }
+  }
+  .counte {
+    float: left;
+    margin-right: 6px;
+  }
+  .review-wrapp {
+    float: left;
+    width: 78%;
+    @extend h5;
+  }
+  .like-count {
+    float: right;
+    @extend h5;
+    @extend .likes;
+    span:after {
+      right: -2px;
+       .cs-default & {
+        top: -5px;
+       }
+    }
+  }
+  .date-wrapp {
+    clear: both;
+    display: inline-block;
+    margin: 2px 0 17px 0;
+    width: 100%;
+  }
+  .date {
+    margin-bottom: 10px;
+  }
+  .review, .views-field-field-user-avatar {
+    float: left;
+    margin-right: 7px;
+    img {
+      margin-top: -9px;
+      width: 32px;
+      height: 32px;
+      object-fit: contain;
+    }
+  }
+  .user {
+    a {
+      text-decoration: none;
+    }
+  }
+}
+.node-link {
+  a {
+    .book-reviews-page & {
+      @extend .button;
+    }
+  }
+}
+
+.not-logged-in {
+  .book-reviews-page {
+    .user {
+      a {
+        color: #7e7e7e;
+        pointer-events: none;
+      }
+    }
+  }
+}

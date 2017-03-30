@@ -1,0 +1,95 @@
+.page-my-reviews {
+  .pagination-centered {
+    margin-top: 20px;
+  }
+  #page-title {
+     display: none;
+  }
+  .view--reviews-for-all-type {
+     .view-content {
+       .views-row {
+         @extend .row;
+         border-bottom: 1px solid #ccc;
+         padding: 35px 0 15px;
+         .views-field-field-book-cover-image-link {
+           @extend .medium-5;
+           @extend .columns;
+            table  {
+              border: none;
+              tbody {
+                border: none;
+              }
+              td {
+                padding: 0;
+              border: none;
+              }
+
+            }
+
+         }
+         .views-field-nothing {
+           @extend .medium-7;
+           @extend .columns;
+           .title-wrap {
+             display: flex;
+             display: -webkit-flex;
+             flex-wrap: wrap;
+             -webkit-flex-wrap: wrap;
+             .title {
+               flex: 1 1 70%;
+               @media screen and (max-width: 480px) {
+                 flex: 1 1 100%;
+               }
+
+             }
+             .likes {
+               flex: 1 1 30%;
+               text-align: right;
+               @media screen and (max-width: 480px) {
+                 flex: 1 1 100%;
+               }
+             }
+           }
+           .body-text,.button-wrap {
+            padding-left: 30px;
+            margin-bottom: 25px;
+           }
+         }
+       }
+     }
+  }
+}
+.view--reviews-for-all-type  {
+  div.likes {
+    @include button-font;
+    span::after {
+      right: 4px;
+     .cs-default & {
+
+       top: -5px;
+     }
+    }
+
+  }
+  .view-header h1 {
+     width: calc(100% + 40px);
+     margin-left: -40px;
+     background-size: auto;
+     background-repeat: no-repeat;
+     .page-my-reviews.cs-default & {
+    background-image: url("../images/yellowbrushstroke_lg.png");
+    padding: 27px 10px 30px 40px;
+    color: $purple;
+  }
+  .page-my-reviews.cs-classic & {
+    background-image: url("../images/redbrushstroke_lg.png");
+    color: $dark-blue;
+    padding: 24px 10px 30px 40px;
+  }
+  .page-my-reviews.cs-elegant & {
+    background-image: url("../images/bluebrushstroke_lg.png");
+    color: $gray;
+    padding: 24px 10px 30px 40px;
+  }
+  }
+}

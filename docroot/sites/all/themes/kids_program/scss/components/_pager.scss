@@ -1,0 +1,112 @@
+.pagination-centered {
+  display: inline-block;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.pagination.pager {
+  -webkit-flex-wrap: wrap;
+  flex-wrap: wrap;
+  display: -webkit-flex;
+  display: flex;
+  float: right;
+  height: auto !important;
+
+  li {
+    margin: 0;
+    padding: 0;
+    height: 33px;
+    width: 31px;
+    overflow: hidden;
+    display: flex;
+    display: -webkit-flex;
+    align-content: center;
+    align-items: center;
+    margin-bottom: 1px;
+    margin-left: 1px;
+     &.unavailable {
+       a {
+        color: $white;
+       }
+     }
+     &.arrow {
+        &.first,&.last {
+          display: none;
+        }
+        a {
+          color: transparent;
+          position: relative;
+           &:after {
+            content: "";
+            width: 100%;
+            height: 100%;
+            background: url("../images/dashboard");
+            position: absolute;
+            left: 0;
+            top: 0;
+            display: inline-block;
+           }
+        }
+        &:nth-of-type(2) {
+          border-radius: 10px 0px 0px 10px;
+           a:after {
+            background-position: -14px -590px;
+           }
+        }
+        &:nth-last-of-type(2) {
+          border-radius: 0px 10px 10px 0px;
+            a:after {
+            background-position: -17px -1130px;
+           }
+        }
+     }
+     &.current {
+      a {
+       .cs-default & {
+          background: $blue;
+       }
+       .cs-classic & {
+         background: $darkblue;
+       }
+        .cs-elegant & {
+         background: $blue;
+      }
+      }
+
+     }
+    a {
+      width: 100%;
+      height: 100%;
+      padding: 0;
+
+      @include primary_fsize;
+      @include secondary_fonts;
+      color: $white;
+       &:hover,&:focus {
+        .cs-default & {
+          background: $blue;
+       }
+       .cs-classic & {
+         background: $darkblue;
+       }
+        .cs-elegant & {
+         background: $blue;
+      }
+       }
+      .cs-default & {
+        font-size: 17px;
+        line-height: 34px;
+        background: $orange;
+      }
+
+      .cs-classic & {
+        font-size: 19px;
+        background: $sky-blue;
+      }
+       .cs-elegant & {
+        font-size: 19px;
+        background: $mint-green;
+      }
+    }
+  }
+}
