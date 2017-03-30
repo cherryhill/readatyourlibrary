@@ -245,13 +245,3 @@ if (!empty($variables['page']['sidebar_first']) || !empty($variables['page']['si
 }
 
 
-// Custom breadcrum
-
-function adult_program_breadcrumb($variables) {
-  global $base_url;
-  //$breadcrum = 'Home » Messages » Messages';
-  $variables['breadcrumb'] = '<a href="'.$base_url.'">Home</a> » <a href="'.$base_url.'/messages">Messages</a> » Messages';
-  if(arg(0) == 'messages' && arg(1) == 'view') {
-    return $variables['breadcrumb'];
-  }
-}
