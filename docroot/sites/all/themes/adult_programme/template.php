@@ -243,3 +243,4 @@ if (!empty($variables['page']['sidebar_first']) || !empty($variables['page']['si
   }
 
 }
+

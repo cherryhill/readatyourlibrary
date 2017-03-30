@@ -27,11 +27,11 @@ function pl_user_avatar_user_name($uid){
   $img_uri_query = $result->fetchObject();
   $img_uri = $img_uri_query->uri;
   $img_path = file_create_url($img_uri);
-  if($img_path){
+  if(!empty($img_uri)) {
     $img = "<img src='$img_path'>";
     return $img.'<a href ="/users/public_profile/'.$uid.'">'.$user_name.'</a>';
   } else{
-    return FALSE;
+    return '<a href ="/users/public_profile/'.$uid.'">'.$user_name.'</a>';
   }
 }
 
@@ -191,7 +191,7 @@ function leader_board_teens_dashboard() {
 
       
     }
-    $out .= '<span><a href="/leaderboard">More</a></span>';
+    $out .= '<span><a href="../leaderboard">More</a></span>';
 
     $out .= '</ol></div>';
 

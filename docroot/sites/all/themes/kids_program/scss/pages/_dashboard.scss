@@ -1,0 +1,548 @@
+p.more-link {
+  position: relative;
+  padding-right: 18px;
+
+  &:after {
+    content: "";
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    position: absolute;
+    background: url(../images/dashboard);
+    background-size: 40px;
+    background-position: -4px -684px;
+    top: 5px;
+    right: 0;
+  }
+}
+
+.page-user-profile {
+  .reward-block-dashboard {
+     -webkit-flex-wrap: wrap;
+    flex-wrap: wrap;
+    display: -webkit-flex;
+    display: flex;
+    align-content: center;
+    align-items: center;
+     .reward-image {
+      flex: 0 0 100px;
+     }
+     .reward-description {
+      flex: 0 0 calc(100% - 100px);
+      padding-left: 10px;
+     }
+  }
+  .dashboard-progress {
+    .portlet-content {
+      background: url("../images/fi-calendar.svg") no-repeat scroll left 7px center;
+       > div {
+         display: flex;
+         width: 100%;
+         min-height: 90px;
+         align-content: center;
+         align-items: center;
+
+         padding-left: 90px;
+       }
+    }
+  }
+  #page-title.title {
+    display: none;
+  }
+
+  .view-empty {
+    p {
+      font-size: 14px;
+    }
+  }
+
+  .view-book-reviews-dashboard {
+    position: relative;
+    .view-footer {
+
+    }
+    .view-content {
+      padding-bottom: 30px;
+    }
+
+  }
+
+  .likes {
+    span {
+      position: relative;
+      padding-right: 32px;
+
+      &:after {
+        content: "";
+        width: 25px;
+        height: 25px;
+        display: inline-block;
+        background: url("../images/smily.png") no-repeat scroll center center;
+        position: absolute;
+        right: 2px;
+        top: -5px;
+      }
+    }
+  }
+ .booklist-wrapper {
+  @extend .review-wrapper;
+ }
+  .review-wrapper {
+    -webkit-flex-wrap: wrap;
+    flex-wrap: wrap;
+    display: -webkit-flex;
+    display: flex;
+
+    .count {
+      flex: 0 0 20px;
+    }
+
+    .title {
+      flex: 0 0 calc(100% - 20px);
+
+      * {
+        color: $black;
+      }
+    }
+
+    .likes {
+      flex: 0 0 100%;
+      padding-left: 20px;
+    }
+  }
+}
+
+.my-dashbord-block {
+  @extend .primary-background;
+  padding-bottom: 25px;
+  -webkit-flex-wrap: wrap;
+      flex-wrap: wrap;
+      display: -webkit-flex;
+      display: flex;
+      align-items: baseline;
+
+  .view-header {
+    flex: 0 0 100%;
+    * {
+      @extend .stroke-main;
+
+      background: url(../images/big-strokes);
+
+      .cs-default & {
+        background-position: -60px -569px;
+      }
+
+      .cs-classic & {
+        background-position: -60px -225px;
+      }
+
+      .cs-elegant & {
+        background-position: -60px -914px;
+      }
+    }
+  }
+
+  > .view-content {
+   flex: 0 0 70%;
+    padding-top: 60px;
+
+    table {
+      float: right;
+      margin-bottom: 0;
+      background: transparent;
+      border: none;
+      margin-right: 27px;
+       tr {
+        background: transparent !important;
+         td {
+           padding: 10px 5px 0;
+            img {
+              width: 58px;
+            }
+         }
+       }
+    }
+  }
+
+  .attachment {
+   flex: 0 0 30%;
+
+    a {
+      color: $white;
+
+      @include primary_fsize;
+
+      @include bold_fonts;
+    }
+     .view-content {
+       .views-field-nothing {
+      .field-content > div {
+        padding-left: 35px;
+      }
+      .image {
+         display: table-cell;
+         vertical-align: bottom;
+         h2 {
+          display: none;
+         }
+      }
+      .name {
+        display: table-cell;
+        vertical-align: bottom;
+         * {
+           color: $white;
+           font-weight: 700;
+         }
+      }
+     }
+     }
+  }
+
+  .pagination-centered {
+    padding-right: 30px;
+    position: absolute;
+    top: 125px;
+    right: 22px;
+    width: auto;
+
+    .pagination.pager {
+      li {
+        height: 20px;
+        width: 20px;
+        border-radius: 100%;
+        margin-left: 3px;
+        margin-right: 3px;
+
+        &.arrow {
+          display: none;
+        }
+
+        &.current {
+          a {
+            .cs-default & {
+              background: $orange;
+            }
+
+            .cs-classic & {
+              background: $sky-blue;
+            }
+
+            .cs-elegant & {
+              background: $mint-green;
+            }
+          }
+        }
+
+        a {
+          color: transparent;
+          background: $white;
+        }
+      }
+    }
+  }
+}
+
+.homebox.homebox-auto-save {
+  width: calc(100% + 40px);
+  margin-left: -20px;
+  overflow: hidden;
+
+  #homebox-buttons {
+    padding-left: 20px;
+    margin-bottom: 30px;
+
+    > a {
+      @extend .blue-button;
+    }
+  }
+
+  #homebox-add {
+    padding-left: 20px;
+    padding-right: 20px;
+
+    .item-list {
+      @extend .yellow-commonblock;
+
+      ul li {
+        margin-bottom: 0;
+        padding-top: 10px;
+
+        &.last {
+          float: right;
+        }
+
+        a {
+          @extend .blue-button;
+
+          @include primary_fsize;
+
+          border: none;
+          outline: none;
+        }
+      }
+    }
+  }
+
+  .homebox-column-wrapper {
+    padding-left: 20px;
+    padding-right: 20px;
+
+    .homebox-column {
+      margin: 0 !important;
+      padding: 0 !important;
+      background: none !important;
+    }
+
+    .homebox-portlet {
+      border: none !important;
+    }
+
+    .homebox-portlet-inner {
+      border: none !important;
+      padding: 0;
+    }
+
+    .homebox-portlet-inner {
+      @extend .yellow-commonblock;
+    }
+
+    .portlet-header {
+      border-radius: 15px 15px 0 0;
+      color: $white !important;
+      padding: 10px 10px 15px 80px !important;
+      border: none !important;
+      position: relative;
+
+      .portlet-title:before {
+        content: "";
+        height: 40px;
+        width: 40px;
+        display: inline-block;
+        position: absolute;
+        border-radius: 12px;
+        left: -54px;
+        top: 0;
+        background-image: url("../images/dashboard");
+        background-position: -15px -201px;
+
+        .cs-default & {
+          background-color: $orange;
+        }
+
+        .cs-classic & {
+          background-color: $darkblue;
+        }
+
+        .cs-elegant & {
+          background-color: $mint-green;
+        }
+      }
+
+      .portlet-title:after {
+        content: "";
+        height: 30px;
+        width: 30px;
+        display: inline-block;
+        position: relative;
+        background: url("../images/dashboard");
+        background-position: -6px -1488px;
+        background-size: 44px;
+        left: 0;
+        top: 9px;
+      }
+
+      .portlet-icon {
+        color: transparent;
+        height: 30px;
+        width: 30px;
+        top: 5px;
+        background: url("../images/dashboard");
+
+        &.portlet-maximize {
+          display: none;
+        }
+
+        &.portlet-close {
+          .cs-default & {
+            background-position: -20px -458px;
+          }
+
+          .cs-classic & {
+            background-position: -20px -391px;
+          }
+
+          .cs-elegant & {
+            background-position: -20px -525px;
+          }
+        }
+
+        &.portlet-minus {
+          .cs-default & {
+            background-position: -20px -794px;
+          }
+
+          .cs-classic & {
+            background-position: -20px -726px;
+          }
+
+          .cs-elegant & {
+            background-position: -20px -860px;
+          }
+        }
+
+        &.portlet-plus {
+          .cs-default & {
+            background-position: -20px -994px;
+          }
+
+          .cs-classic & {
+            background-position: -20px -927px;
+          }
+
+          .cs-elegant & {
+            background-position: -20px -1061px;
+          }
+        }
+      }
+
+      @include primary_fonts;
+
+      .cs-default & {
+        background: $blue !important;
+        font-size: 22px !important;
+      }
+
+      .cs-elegant & {
+        background: $light-red !important;
+        font-size: 25px !important;
+      }
+
+      .cs-classic & {
+        background: $sky-blue !important;
+        font-size: 25px !important;
+      }
+    }
+
+    .portlet-content {
+      padding: 25px !important;
+    }
+  }
+
+  .view-header {
+    * {
+      color: $black;
+
+      @include bold_fonts;
+
+      font-size: 14px;
+      text-transform: uppercase;
+    }
+  }
+  .view-rewards-dashboard {
+     .reward-hombox-dashboard {
+      margin: 5px 0 10px;
+       > div {
+         display: table-cell;
+         vertical-align: middle;
+          &.image {
+            width: 30%;
+          }
+          &.description {
+            width: 70%;
+            padding-left: 10px;
+          }
+          img {
+             width: 58px;
+          }
+       }
+     }
+   }
+  .view-activities-dashboard .view-footer {
+    padding-top: 25px;
+
+    > p {
+      margin-bottom: 10px;
+    }
+  }
+
+  .view-activities-dashboard .field-content {
+    -webkit-flex-wrap: wrap;
+    flex-wrap: wrap;
+    display: -webkit-flex;
+    display: flex;
+    align-content: center;
+    align-items: center;
+
+    > div {
+      &.activity-count {
+        flex: 0 0 20px;
+      }
+
+      &.title {
+        flex: 0 0 calc(50% - 10px);
+        padding-right: 10px;
+      }
+
+      &.completed {
+        flex: 0 0 calc(50% - 10px);
+      }
+    }
+  }
+
+  .view-content {
+    * {
+      @include secondary_fonts;
+
+      font-size: 14px;
+    }
+  }
+
+  .view-footer {
+    p {
+      width: 100%;
+      display: inline-block;
+
+      a {
+        float: right;
+
+        @include primary_fonts;
+
+        font-size: 17px;
+      }
+    }
+
+    a.button {
+      margin: 10px 0;
+
+      @extend .blue-button;
+
+      width: 100%;
+    }
+  }
+}
+
+.homebox.homebox-auto-save .homebox-column-wrapper .homebox-draggable {
+  &.dashboard-activities {
+    .portlet-header .portlet-title::before {
+      background-position: -15px -13px;
+    }
+  }
+
+  &.dashboard-reviews, &.dashboard-booklists {
+    .portlet-header .portlet-title::before {
+      background-position: -9px -78px;
+    }
+  }
+
+  &.dashboard-following {
+    .portlet-header .portlet-title::before {
+      background-position: -12px -141px;
+    }
+  }
+
+  &.dashboard-rewards {
+    .portlet-header .portlet-title::before {
+      background-position: -11px -321px;
+    }
+  }
+}

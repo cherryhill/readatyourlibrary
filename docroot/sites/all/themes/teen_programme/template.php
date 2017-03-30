@@ -144,6 +144,10 @@ function teen_programme_preprocess_html(&$variables) {
 }
 
 
+
+
+
+
 function teen_programme_preprocess_block(&$variables) {
   // Convenience variable for block headers.
   $title_class = &$variables['title_attributes_array']['class'];
@@ -242,4 +246,14 @@ if (!empty($variables['page']['sidebar_first']) || !empty($variables['page']['si
     $variables['sidebar_sec_grid'] = '';
   }
 
+}
+
+
+
+function teen_programme_menu_breadcrumb_alter(&$breadcrumb) {
+  if (!empty($breadcrumb)) { 
+    if (arg(0) == 'messages' && arg(1) == 'view') { 
+      $breadcrumb[1]['title'] = 'Messages';
+    } 
+  } 
 }
