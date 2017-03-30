@@ -142,6 +142,16 @@ function teen_program_preprocess_html(&$variables) {
   $color = theme_get_setting('choose_color') ;
   $variables ['classes_array'][] = $color;
 }
+// Custom breadcrum
+
+function teen_programme_breadcrumb($variables) {
+  global $base_url;
+  //$breadcrum = 'Home » Messages » Messages';
+  $variables['breadcrumb'] = '<a href="'.$base_url.'">Home</a> » <a href="'.$base_url.'/messages">Messages</a> » Messages';
+  if(arg(0) == 'messages' && arg(1) == 'view') {
+    return $variables['breadcrumb'];
+  }
+}
 
 
 function teen_program_preprocess_block(&$variables) {
