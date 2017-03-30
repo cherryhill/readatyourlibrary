@@ -62,6 +62,11 @@ function readingPerBranch($form, $form_state) {
 
   $options = all_activities();
 
+  $optionRole = array(
+    '4' => 'patron',
+    '6' => 'Group lead'
+  );
+
   $form['activity_branch'] = array(
     '#type' => 'select',
     '#title' => 'Activity',
@@ -96,6 +101,13 @@ function readingPerBranch($form, $form_state) {
     '#type' => 'textfield',
   );
 
+  $form['role_filter_br'] = array(
+    '#type' => 'select',
+    '#title' => 'Roles',
+    '#options' => $optionRole,
+    '#multiple' => TRUE,
+  );
+
   $form['submit'] = array(
     '#value' => 'Submit',
     '#type' => 'submit',
@@ -121,17 +133,26 @@ function readingPerBranch_submit($form, &$form_state) {
   $countTo = $form_state['values']['act_br_participation_count_to'];
   $ageFrom = $form_state['values']['act_br_dob_from'];
   $ageTo = $form_state['values']['act_br_dob_to'];
+  $roleFilter = $form_state['values']['role_filter_br'];
+
+  // echo '<pre>';print_r($roleFilter); die();
 
   //Check if any activity is selected
   if(!empty($activityIds)) {
     $sub_query = db_select('eck_activity', 'act');
     $sub_query->join('field_data_field_activity_entry_activity','actEntry','actEntry.entity_id = act.id');
+    $sub_query->join('profile', 'pf', 'pf.uid = act.uid');
 
     //Check if age filter is added
     if(!empty($ageFrom) && !empty($ageTo)) {
-      $sub_query->join('profile', 'pf', 'pf.uid = act.uid');
       $sub_query->join('field_data_field_user_birthday','bday','bday.entity_id = pf.pid');
       $sub_query->fields('bday', array('field_user_birthday_value'));
+    }
+
+    if(!empty($roleFilter)) {
+      $sub_query->join('users_roles', 'role', 'role.uid = pf.uid');
+      $sub_query->fields('role',array('rid'));
+      $sub_query->condition('role.rid',$roleFilter);
     }
 
     $sub_query->fields('act', array('uid'));
@@ -141,10 +162,6 @@ function readingPerBranch_submit($form, &$form_state) {
 
     if(!empty($countFrom)) {
       $sub_query->having('actCount >= '.$countFrom);
-    }
-
-    if(!empty($countTo)) {
-      $sub_query->having('actCount <= '.$countTo);
     }
 
     $sub = $sub_query->execute()->fetchAll();
