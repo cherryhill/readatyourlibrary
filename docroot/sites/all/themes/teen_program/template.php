@@ -144,7 +144,7 @@ function teen_program_preprocess_html(&$variables) {
 }
 // Custom breadcrum
 
-function teen_programme_breadcrumb($variables) {
+function teen_program_breadcrumb($variables) {
   global $base_url;
   //$breadcrum = 'Home » Messages » Messages';
   $variables['breadcrumb'] = '<a href="'.$base_url.'">Home</a> » <a href="'.$base_url.'/messages">Messages</a> » Messages';
