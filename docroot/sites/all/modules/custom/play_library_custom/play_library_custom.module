@@ -66,7 +66,7 @@ function play_library_custom_form_alter(&$form, &$form_state, $form_id) {
     //hidding label for other option field
     $form['field_genre_other_option'][LANGUAGE_NONE][0]['value']['#title'] = NULL;
     $form['title']['#prefix'] = $sub_title;
-    $form['field_catalog_link_movie_review'][LANGUAGE_NONE][0]['#description'] = t('Please enter a link to the movie in the').' <a href='.$catalog_link.' target="_blank">'.$library_abbreviation.t(' catalog').'</a>'. t('so that other readers can find it easily.');
+    $form['field_catalog_link_movie_review'][LANGUAGE_NONE][0]['#description'] = t('Please enter a link to the movie in the ').' <a href='.$catalog_link.' target="_blank">'.$library_abbreviation.t('catalog').'</a>'. t(' so that other readers can find it easily.');
 
     //Removing of N/A radio button
     unset($form['field_genre']['und']['#options']['_none']);
@@ -82,7 +82,7 @@ function play_library_custom_form_alter(&$form, &$form_state, $form_id) {
     $form['field_artist_performer'][LANGUAGE_NONE][0]['#prefix'] = $sub_title;
     $form['title']['#title'] = t('Album or Song Title');
     $form['field_genre_other_option_music'][LANGUAGE_NONE][0]['value']['#title'] = NULL;
-    $form['field_catalog_link_music'][LANGUAGE_NONE][0]['#description'] = t('Please enter a link to the music in the').'<a href='.$catalog_link.' target="_blank">'.$library_abbreviation.t(' catalog').'</a>'.t(' so that other readers can find it easily.');
+    $form['field_catalog_link_music'][LANGUAGE_NONE][0]['#description'] = t('Please enter a link to the music in the ').'<a href='.$catalog_link.' target="_blank">'.$library_abbreviation.t('catalog').'</a>'.t(' so that other readers can find it easily.');
 
     unset($form['field_please_select_one_music']['und']['#options']['_none']);
     unset($form['field_genre_music']['und']['#options']['_none']);
@@ -92,7 +92,7 @@ function play_library_custom_form_alter(&$form, &$form_state, $form_id) {
 
   if($form_id == 'video_game_review_node_form') {
     $form['title']['#prefix'] = $sub_title;
-    $form['field_catalog_link_video_game'][LANGUAGE_NONE][0]['#description'] = t('Please enter a link to the video game in the').' <a href='.$catalog_link.' target="_blank">'.$library_abbreviation.t(' catalog').'</a>'.t(' so that other readers can find it easily.');
+    $form['field_catalog_link_video_game'][LANGUAGE_NONE][0]['#description'] = t('Please enter a link to the video game in the ').' <a href='.$catalog_link.' target="_blank">'.$library_abbreviation.t('catalog').'</a>'.t(' so that other readers can find it easily.');
     $form['field_platform_other_option'][LANGUAGE_NONE][0]['value']['#title'] = NULL;
 
     unset($form['field_please_select_videogame']['und']['#options']['_none']);
