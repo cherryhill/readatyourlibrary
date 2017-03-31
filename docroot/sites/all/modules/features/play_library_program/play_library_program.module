@@ -1514,7 +1514,7 @@ function _play_library_program_add_points_to_rewards($activity_ids, $points_to_a
   //Get role ids from session if not available 
   if(sizeof($role_ids)<2){
     $role_ids = array_keys($_SESSION['program_user_role_id']);
-    print_r("session");
+    // print_r("session");
   }
   // print_r($role_ids);die();
   	
@@ -1547,7 +1547,7 @@ function _play_library_program_add_points_to_rewards($activity_ids, $points_to_a
   $user_age = floor(($current_time - $dob_timestamp) / (60*60*24*365));
 
   // get reward field values for all associated rewards
-  if (isset($dob_timestamp)){ 
+  // if (isset($dob_timestamp)){ 
     $que = db_select('eck_reward', 'eck_r');
     $que->leftjoin('field_data_field_points', 'fdfp', 'eck_r.id = fdfp.entity_id');
     $que->leftjoin('field_data_field_activities_reward', 'fdfar', 'eck_r.id = fdfar.entity_id');
@@ -1558,8 +1558,8 @@ function _play_library_program_add_points_to_rewards($activity_ids, $points_to_a
     $que->leftjoin('field_data_field_maximum_num_reward', 'fdfmnr', 'eck_r.id = fdfmnr.entity_id');
     $que->leftjoin('field_data_field_dates_reward', 'fdfdr', 'eck_r.id = fdfdr.entity_id');
     $que->condition('fdfar.field_activities_reward_target_id', $activity_ids, 'IN');
-    $que->condition(db_or()->condition('fdfag.field_age_group_from', $user_age, '<=')->isNull('fdfag.field_age_group_from'));
-    $que->condition(db_or()->condition('fdfag.field_age_group_to', $user_age, '>=')->isNull('fdfag.field_age_group_to'));
+    // $que->condition(db_or()->condition('fdfag.field_age_group_from', $user_age, '<=')->isNull('fdfag.field_age_group_from'));
+    // $que->condition(db_or()->condition('fdfag.field_age_group_to', $user_age, '>=')->isNull('fdfag.field_age_group_to'));
     $que->condition('fdfrr.field_roles_reward_value', $role_ids, 'IN');
     // $que->condition('fdfdr.field_dates_reward_value', time(), '<');
     // $que->condition('fdfdr.field_dates_reward_value2', time(), '>');
@@ -1613,7 +1613,7 @@ function _play_library_program_add_points_to_rewards($activity_ids, $points_to_a
         } // foreach ends here.
       } // if conditions for giving rewards ends here.
     }
-  }
+  // }
 }
 
 
