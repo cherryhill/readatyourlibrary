@@ -16265,6 +16265,7 @@ div.progress-page .progress-wrap .progress-rewards * {
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
   -moz-font-smoothing: grayscale;
+  margin-bottom: 15px;
 }
 /* line 29, ../scss/base/_mixins.scss */
 .cs-default div.progress-page .progress-wrap .progress-rewards * {
@@ -16281,52 +16282,52 @@ div.progress-page .progress-wrap .progress-rewards * {
   font-family: "Sniglet", cursive;
   font-weight: 400;
 }
-/* line 328, ../scss/pages/_progress.scss */
+/* line 329, ../scss/pages/_progress.scss */
 div.progress-page .progress-wrap .description {
   display: none;
 }
-/* line 333, ../scss/pages/_progress.scss */
+/* line 334, ../scss/pages/_progress.scss */
 div.progress-page .progress-main h1, div.progress-page .progress-main .other-programme.view .view-header *, .other-programme.view .view-header div.progress-page .progress-main *, div.progress-page .progress-main h2.reviews-title, div.progress-page .progress-main .book-review-page-overlay .reviews-title.book_title, .book-review-page-overlay div.progress-page .progress-main .reviews-title.book_title {
   margin-bottom: 0;
   color: #1d3557;
   padding: 15px 0.625em;
 }
-/* line 344, ../scss/pages/_progress.scss */
+/* line 345, ../scss/pages/_progress.scss */
 div.progress-page .progress-main .progress-grid .grid {
   background-color: #fff !important;
 }
-/* line 347, ../scss/pages/_progress.scss */
+/* line 348, ../scss/pages/_progress.scss */
 div.progress-page .progress-main .progress-grid .grid.inserted {
   vertical-align: top;
 }
-/* line 349, ../scss/pages/_progress.scss */
+/* line 350, ../scss/pages/_progress.scss */
 .cs-default div.progress-page .progress-main .progress-grid .grid.inserted.reward-won-cell {
   background-color: #f6f45a !important;
   color: #32024e;
 }
-/* line 352, ../scss/pages/_progress.scss */
+/* line 353, ../scss/pages/_progress.scss */
 .cs-default div.progress-page .progress-main .progress-grid .grid.inserted.reward-won-cell * {
   color: inherit;
 }
-/* line 356, ../scss/pages/_progress.scss */
+/* line 357, ../scss/pages/_progress.scss */
 .cs-classic div.progress-page .progress-main .progress-grid .grid.inserted.reward-won-cell {
   background-color: #a8dadc !important;
   color: #1d3557;
 }
-/* line 359, ../scss/pages/_progress.scss */
+/* line 360, ../scss/pages/_progress.scss */
 .cs-classic div.progress-page .progress-main .progress-grid .grid.inserted.reward-won-cell * {
   color: inherit;
 }
-/* line 363, ../scss/pages/_progress.scss */
+/* line 364, ../scss/pages/_progress.scss */
 .cs-elegant div.progress-page .progress-main .progress-grid .grid.inserted.reward-won-cell {
   background-color: #e4ff1a !important;
   color: #333333;
 }
-/* line 366, ../scss/pages/_progress.scss */
+/* line 367, ../scss/pages/_progress.scss */
 .cs-elegant div.progress-page .progress-main .progress-grid .grid.inserted.reward-won-cell * {
   color: inherit;
 }
-/* line 372, ../scss/pages/_progress.scss */
+/* line 373, ../scss/pages/_progress.scss */
 div.progress-page .progress-main .progress-grid .grid.inserted .date-pg, div.progress-page .progress-main .progress-grid .grid.inserted .title-pg {
   margin-bottom: 0;
   font-size: 14px;
@@ -16350,7 +16351,7 @@ div.progress-page .progress-main .progress-grid .grid.inserted .date-pg, div.pro
   font-family: "Sniglet", cursive;
   font-weight: 400;
 }
-/* line 378, ../scss/pages/_progress.scss */
+/* line 379, ../scss/pages/_progress.scss */
 div.progress-page .progress-main .progress-grid .grid.inserted .rew {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -16626,28 +16627,40 @@ div.progress-page .progress-main .progress-grid .grid.inserted .rew {
   .my-dashbord-block .attachment .view-content .views-field-nothing .field-content > div {
     padding-left: 0;
   }
-  /* line 251, ../scss/pages/_responsive.scss */
+  /* line 250, ../scss/pages/_responsive.scss */
+  .my-dashbord-block .attachment .image {
+    width: 100%;
+  }
+  /* line 252, ../scss/pages/_responsive.scss */
+  .my-dashbord-block .attachment .image img {
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    height: 100px;
+    width: 100px;
+  }
+  /* line 261, ../scss/pages/_responsive.scss */
   .my-dashbord-block .view-content {
     flex: 0 0 100%;
   }
-  /* line 253, ../scss/pages/_responsive.scss */
+  /* line 263, ../scss/pages/_responsive.scss */
   .my-dashbord-block .view-content table {
     margin-right: 10px;
   }
 
   /*-------------User Public Profile-------------*/
-  /* line 261, ../scss/pages/_responsive.scss */
+  /* line 271, ../scss/pages/_responsive.scss */
   .page-users-public-profile .view--user-public-profile, .page-users-public-profile .view-public-reward {
     text-align: center;
   }
 
   /*-------------User Public Profile Ends-------------*/
   /*-------------Leaderboard Page-------------*/
-  /* line 272, ../scss/pages/_responsive.scss */
+  /* line 282, ../scss/pages/_responsive.scss */
   .page-leaderboard .main .primary-tabs + div ol li {
     flex: 0 0 100%;
   }
-  /* line 274, ../scss/pages/_responsive.scss */
+  /* line 284, ../scss/pages/_responsive.scss */
   .page-leaderboard .main .primary-tabs + div ol li span {
     display: block;
   }
@@ -16655,47 +16668,47 @@ div.progress-page .progress-main .progress-grid .grid.inserted .rew {
   /*-------------Leaderboard Page Ends-------------*/
   /*-------------Dashboard Page Ends-------------*/
   /*-------------Home Page-------------*/
-  /* line 286, ../scss/pages/_responsive.scss */
+  /* line 296, ../scss/pages/_responsive.scss */
   .homepage-booklist-slider {
     padding-top: 30px;
   }
-  /* line 289, ../scss/pages/_responsive.scss */
+  /* line 299, ../scss/pages/_responsive.scss */
   .homepage-booklist-slider ul.booklist-pager {
     text-align: center;
     width: 100%;
   }
-  /* line 293, ../scss/pages/_responsive.scss */
+  /* line 303, ../scss/pages/_responsive.scss */
   .homepage-booklist-slider ul.booklist-pager input[type=radio] + label:before {
     background: #32024e;
     border: 1px solid #32024e;
   }
-  /* line 296, ../scss/pages/_responsive.scss */
+  /* line 306, ../scss/pages/_responsive.scss */
   .cs-classic .homepage-booklist-slider ul.booklist-pager input[type=radio] + label:before {
     background: #457b9d;
     border: 1px solid #457b9d;
   }
-  /* line 300, ../scss/pages/_responsive.scss */
+  /* line 310, ../scss/pages/_responsive.scss */
   .cs-elegant .homepage-booklist-slider ul.booklist-pager input[type=radio] + label:before {
     background: #6eeb83;
     border: 1px solid #6eeb83;
   }
-  /* line 308, ../scss/pages/_responsive.scss */
+  /* line 318, ../scss/pages/_responsive.scss */
   .homepage-booklist-slider .controls {
     width: 100%;
     bottom: 10px;
   }
-  /* line 313, ../scss/pages/_responsive.scss */
+  /* line 323, ../scss/pages/_responsive.scss */
   .homepage-booklist-slider .slide .view-footer {
     padding-left: 0;
     text-align: center;
   }
 
-  /* line 321, ../scss/pages/_responsive.scss */
+  /* line 331, ../scss/pages/_responsive.scss */
   .view-home-page-video-slideshow.flicker-block .owl-item {
     text-align: center;
   }
 
-  /* line 326, ../scss/pages/_responsive.scss */
+  /* line 336, ../scss/pages/_responsive.scss */
   .annocement {
     padding-left: 10px;
     padding-right: 10px;
@@ -16703,112 +16716,112 @@ div.progress-page .progress-main .progress-grid .grid.inserted .rew {
 
   /*-------------Home Page Ends-------------*/
   /*-------------Bookreview Page-------------*/
-  /* line 335, ../scss/pages/_responsive.scss */
+  /* line 345, ../scss/pages/_responsive.scss */
   .page-reviews .book-reviews-page .views-exposed-widget {
     flex: 0 0 calc(100% - 10px);
   }
-  /* line 337, ../scss/pages/_responsive.scss */
+  /* line 347, ../scss/pages/_responsive.scss */
   .page-reviews .book-reviews-page .views-exposed-widget button {
     margin-left: 0;
   }
-  /* line 342, ../scss/pages/_responsive.scss */
+  /* line 352, ../scss/pages/_responsive.scss */
   .page-reviews .views-field-field-book-cover-image-link {
     width: 100%;
   }
-  /* line 344, ../scss/pages/_responsive.scss */
+  /* line 354, ../scss/pages/_responsive.scss */
   .page-reviews .views-field-field-book-cover-image-link table {
     width: 100%;
   }
-  /* line 347, ../scss/pages/_responsive.scss */
+  /* line 357, ../scss/pages/_responsive.scss */
   .page-reviews .views-field-field-book-cover-image-link img {
     margin: auto;
     display: block;
   }
 
-  /* line 356, ../scss/pages/_responsive.scss */
+  /* line 366, ../scss/pages/_responsive.scss */
   .main .view-movie-review .views-exposed-widget, .main .view-music-review-listing .views-exposed-widget,
   .main .view--video-game-review .views-exposed-widget, .main .view--individual-activities-listing .views-exposed-widget {
     flex: 0 0 calc(100% - 10px);
   }
-  /* line 358, ../scss/pages/_responsive.scss */
+  /* line 368, ../scss/pages/_responsive.scss */
   .main .view-movie-review .views-exposed-widget button, .main .view-music-review-listing .views-exposed-widget button,
   .main .view--video-game-review .views-exposed-widget button, .main .view--individual-activities-listing .views-exposed-widget button {
     margin-left: 0;
   }
 
-  /* line 364, ../scss/pages/_responsive.scss */
+  /* line 374, ../scss/pages/_responsive.scss */
   .reviews-wrapper {
     width: 100%;
   }
 
-  /* line 367, ../scss/pages/_responsive.scss */
+  /* line 377, ../scss/pages/_responsive.scss */
   .book-review-page-overlay {
     margin-top: 20px;
   }
-  /* line 369, ../scss/pages/_responsive.scss */
+  /* line 379, ../scss/pages/_responsive.scss */
   .book-review-page-overlay .review_node_sidebar {
     width: 100%;
   }
-  /* line 371, ../scss/pages/_responsive.scss */
+  /* line 381, ../scss/pages/_responsive.scss */
   .book-review-page-overlay .review_node_sidebar table {
     width: 100%;
   }
-  /* line 373, ../scss/pages/_responsive.scss */
+  /* line 383, ../scss/pages/_responsive.scss */
   .book-review-page-overlay .review_node_sidebar table img {
     display: block;
     margin: auto;
   }
-  /* line 379, ../scss/pages/_responsive.scss */
+  /* line 389, ../scss/pages/_responsive.scss */
   .book-review-page-overlay .node-review-book {
     width: 100%;
   }
 
   /*-------------Bookreview Page Ends-------------*/
   /*-------------Booklisting Page-------------*/
-  /* line 388, ../scss/pages/_responsive.scss */
+  /* line 398, ../scss/pages/_responsive.scss */
   .page-booklists .created-by-user .view-content {
     padding-left: 10px;
     padding-right: 10px;
   }
 
-  /* line 394, ../scss/pages/_responsive.scss */
+  /* line 404, ../scss/pages/_responsive.scss */
   .booklist-wrapp {
     margin-top: 15px;
   }
-  /* line 397, ../scss/pages/_responsive.scss */
+  /* line 407, ../scss/pages/_responsive.scss */
   .booklist-wrapp .book-body-wrapp div.title {
     width: 100%;
   }
-  /* line 402, ../scss/pages/_responsive.scss */
+  /* line 412, ../scss/pages/_responsive.scss */
   .booklist-wrapp .book-user-likes div.book-created {
     width: 100%;
   }
-  /* line 405, ../scss/pages/_responsive.scss */
+  /* line 415, ../scss/pages/_responsive.scss */
   .booklist-wrapp .book-user-likes div.book-like {
     width: 100%;
     float: right;
     margin-top: 10px;
   }
 
-  /* line 414, ../scss/pages/_responsive.scss */
+  /* line 424, ../scss/pages/_responsive.scss */
   .main .view-booklist-page-view .views-exposed-widget {
     flex: 0 0 calc(100% - 10px);
   }
-  /* line 418, ../scss/pages/_responsive.scss */
+  /* line 428, ../scss/pages/_responsive.scss */
   .main .view-booklist-page-view .views-submit-button button.form-submit {
     margin-left: 0;
   }
 
-  /* line 426, ../scss/pages/_responsive.scss */
+  /* line 436, ../scss/pages/_responsive.scss */
   .book-review-page-overlay .booklist-title {
     margin-bottom: 10px;
   }
-  /* line 429, ../scss/pages/_responsive.scss */
+  /* line 439, ../scss/pages/_responsive.scss */
   .book-review-page-overlay .bk_title {
     width: 100%;
   }
 
-  /* line 436, ../scss/pages/_responsive.scss */
+  /* line 446, ../scss/pages/_responsive.scss */
   .node-type-booklist .button-group li a, .node-type-review-book .button-group li a {
     margin-left: 0;
     margin-right: 20px;
@@ -16816,67 +16829,67 @@ div.progress-page .progress-main .progress-grid .grid.inserted .rew {
 
   /*-------------Booklisting Page Ends-------------*/
   /*-------------Movie Review Page-------------*/
-  /* line 449, ../scss/pages/_responsive.scss */
+  /* line 459, ../scss/pages/_responsive.scss */
   .view-content .common-review-wrapper .title > div:nth-of-type(1) {
     width: 60%;
   }
-  /* line 452, ../scss/pages/_responsive.scss */
+  /* line 462, ../scss/pages/_responsive.scss */
   .view-content .common-review-wrapper .title > div.likes, .view-content .common-review-wrapper .reviews-wrapper .title > div.like-count, .reviews-wrapper .view-content .common-review-wrapper .title > div.like-count, .view-content .common-review-wrapper .booklist-wrapp .book-user-likes.title > div.book-like, .booklist-wrapp .view-content .common-review-wrapper .book-user-likes.title > div.book-like, .view-content .common-review-wrapper .book-review-page-overlay .title > div.like-count, .book-review-page-overlay .view-content .common-review-wrapper .title > div.like-count {
     width: 40%;
   }
 
   /*-------------Movie Review Page Ends-------------*/
   /*-------------Activity Page-------------*/
-  /* line 462, ../scss/pages/_responsive.scss */
+  /* line 472, ../scss/pages/_responsive.scss */
   .page-activities-list .view--activities-listing {
     margin-bottom: 30px;
   }
 
   /*-------------Activity Page Ends-------------*/
   /*-------------Current-Programme Page-------------*/
-  /* line 470, ../scss/pages/_responsive.scss */
+  /* line 480, ../scss/pages/_responsive.scss */
   .page-programs .stroke-main, .page-programs .homepage-vedio-block .view-header p, .homepage-vedio-block .view-header .page-programs p, .page-programs .flicker-block .view-header, .flicker-block .page-programs .view-header, .page-programs .my-dashbord-block .view-header *, .my-dashbord-block .view-header .page-programs * {
     padding-left: 10px;
   }
-  /* line 474, ../scss/pages/_responsive.scss */
+  /* line 484, ../scss/pages/_responsive.scss */
   .page-programs .main .programme-content {
     padding: 10px;
   }
-  /* line 476, ../scss/pages/_responsive.scss */
+  /* line 486, ../scss/pages/_responsive.scss */
   .page-programs .main .programme-content .image {
     flex: 0 0 100% !important;
     padding-top: 0;
   }
-  /* line 479, ../scss/pages/_responsive.scss */
+  /* line 489, ../scss/pages/_responsive.scss */
   .page-programs .main .programme-content .image img {
     display: block;
     margin: auto;
   }
-  /* line 484, ../scss/pages/_responsive.scss */
+  /* line 494, ../scss/pages/_responsive.scss */
   .page-programs .main .programme-content .body {
     flex: 0 0 100%;
     padding: 20px 10px 0;
   }
 
-  /* line 492, ../scss/pages/_responsive.scss */
+  /* line 502, ../scss/pages/_responsive.scss */
   .other-programme.view {
     padding-bottom: 50px;
   }
-  /* line 494, ../scss/pages/_responsive.scss */
+  /* line 504, ../scss/pages/_responsive.scss */
   .other-programme.view .other-programme {
     padding: 10px 0;
   }
-  /* line 496, ../scss/pages/_responsive.scss */
+  /* line 506, ../scss/pages/_responsive.scss */
   .other-programme.view .other-programme .programme-image {
     flex: 0 0 100%;
     padding-top: 0;
   }
-  /* line 499, ../scss/pages/_responsive.scss */
+  /* line 509, ../scss/pages/_responsive.scss */
   .other-programme.view .other-programme .programme-image img {
     display: block;
     margin: auto;
   }
-  /* line 504, ../scss/pages/_responsive.scss */
+  /* line 514, ../scss/pages/_responsive.scss */
   .other-programme.view .other-programme .programme-content {
     flex: 0 0 100%;
     padding: 20px 0 0 0;
@@ -16884,71 +16897,71 @@ div.progress-page .progress-main .progress-grid .grid.inserted .rew {
 
   /*-------------Current-Programme Page Ends-------------*/
   /*-------------Events Page-------------*/
-  /* line 517, ../scss/pages/_responsive.scss */
+  /* line 527, ../scss/pages/_responsive.scss */
   .section-events .view-events .view-content .views-row {
     border-bottom: 1px dotted #000;
     padding: 10px 0;
   }
-  /* line 520, ../scss/pages/_responsive.scss */
+  /* line 530, ../scss/pages/_responsive.scss */
   .section-events .view-events .view-content .views-row.views-row-last {
     border-bottom: none;
   }
-  /* line 524, ../scss/pages/_responsive.scss */
+  /* line 534, ../scss/pages/_responsive.scss */
   .section-events .view-events .view-content h3, .section-events .view-events .view-content .homebox.homebox-auto-save .homebox-column-wrapper .portlet-header .portlet-title, .homebox.homebox-auto-save .homebox-column-wrapper .portlet-header .section-events .view-events .view-content .portlet-title, .section-events .view-events .view-content div.progress-page .progress-wrap .report-acivity h1, div.progress-page .progress-wrap .report-acivity .section-events .view-events .view-content h1, .section-events .view-events .view-content div.progress-page .progress-wrap .report-acivity .other-programme.view .view-header *, div.progress-page .progress-wrap .report-acivity .other-programme.view .view-header .section-events .view-events .view-content *, .section-events .view-events .view-content .other-programme.view .view-header div.progress-page .progress-wrap .report-acivity *, .other-programme.view .view-header div.progress-page .progress-wrap .report-acivity .section-events .view-events .view-content *, .section-events .view-events .view-content div.progress-page .progress-wrap .report-acivity h2.reviews-title, div.progress-page .progress-wrap .report-acivity .section-events .view-events .view-content h2.reviews-title, .section-events .view-events .view-content div.progress-page .progress-wrap .report-acivity .book-review-page-overlay .reviews-title.book_title, div.progress-page .progress-wrap .report-acivity .book-review-page-overlay .section-events .view-events .view-content .reviews-title.book_title, .section-events .view-events .view-content .book-review-page-overlay div.progress-page .progress-wrap .report-acivity .reviews-title.book_title, .book-review-page-overlay div.progress-page .progress-wrap .report-acivity .section-events .view-events .view-content .reviews-title.book_title {
     text-align: center;
   }
 
-  /* line 531, ../scss/pages/_responsive.scss */
+  /* line 541, ../scss/pages/_responsive.scss */
   .events-page-events .events-wrapper {
     text-align: center;
   }
-  /* line 533, ../scss/pages/_responsive.scss */
+  /* line 543, ../scss/pages/_responsive.scss */
   .events-page-events .events-wrapper .title, .events-page-events .events-wrapper .date, .events-page-events .events-wrapper .location {
     flex: 0 0 100%;
   }
-  /* line 535, ../scss/pages/_responsive.scss */
+  /* line 545, ../scss/pages/_responsive.scss */
   .events-page-events .events-wrapper .title a, .events-page-events .events-wrapper .date a, .events-page-events .events-wrapper .location a {
     padding-left: 0;
   }
 
   /*-------------Events Page Ends-------------*/
   /*-------------Rewards Page-------------*/
-  /* line 546, ../scss/pages/_responsive.scss */
+  /* line 556, ../scss/pages/_responsive.scss */
   .view-reward-page-views .views-row .reward-page-for-kids {
     border-bottom: 2px dotted #000;
     padding-bottom: 30px;
   }
-  /* line 549, ../scss/pages/_responsive.scss */
+  /* line 559, ../scss/pages/_responsive.scss */
   .view-reward-page-views .views-row .reward-page-for-kids .reward-image-title {
     flex: 0 0 100%;
     padding-right: 0;
   }
-  /* line 552, ../scss/pages/_responsive.scss */
+  /* line 562, ../scss/pages/_responsive.scss */
   .view-reward-page-views .views-row .reward-page-for-kids .reward-image-title img {
     display: block;
     margin: auto;
   }
-  /* line 556, ../scss/pages/_responsive.scss */
+  /* line 566, ../scss/pages/_responsive.scss */
   .view-reward-page-views .views-row .reward-page-for-kids .reward-image-title div {
     text-align: center;
   }
-  /* line 560, ../scss/pages/_responsive.scss */
+  /* line 570, ../scss/pages/_responsive.scss */
   .view-reward-page-views .views-row .reward-page-for-kids .description {
     flex: calc(100%);
     margin-top: 20px;
   }
 
-  /* line 569, ../scss/pages/_responsive.scss */
+  /* line 579, ../scss/pages/_responsive.scss */
   .reward-block-reward-page.view-reading-badge-views .view-header {
     margin-top: 30px;
   }
-  /* line 572, ../scss/pages/_responsive.scss */
+  /* line 582, ../scss/pages/_responsive.scss */
   .reward-block-reward-page.view-reading-badge-views .view-content {
     width: 100%;
     margin-left: 0;
     margin-bottom: 10px;
   }
-  /* line 576, ../scss/pages/_responsive.scss */
+  /* line 586, ../scss/pages/_responsive.scss */
   .reward-block-reward-page.view-reading-badge-views .view-content .views-row {
     flex: 0 0 100%;
     margin-left: 0;
@@ -16957,151 +16970,180 @@ div.progress-page .progress-main .progress-grid .grid.inserted .rew {
     padding: 15px 0;
   }
 
-  /* line 587, ../scss/pages/_responsive.scss */
+  /* line 597, ../scss/pages/_responsive.scss */
   .section-rewards aside.sidebar-activity {
     margin-top: 20px;
   }
 
-  /* line 592, ../scss/pages/_responsive.scss */
+  /* line 602, ../scss/pages/_responsive.scss */
   .page-rewards .block-views-my-raffle-ticket-block {
     padding-bottom: 30px;
   }
-  /* line 594, ../scss/pages/_responsive.scss */
+  /* line 604, ../scss/pages/_responsive.scss */
   .page-rewards .block-views-my-raffle-ticket-block .views-row {
     text-align: center;
   }
-  /* line 599, ../scss/pages/_responsive.scss */
+  /* line 609, ../scss/pages/_responsive.scss */
   .page-rewards .main .block-views {
     flex: 0 0 100% !important;
   }
 
   /*-------------Rewards Page Ends-------------*/
   /*-------------Photo's Video's Page-------------*/
-  /* line 608, ../scss/pages/_responsive.scss */
+  /* line 618, ../scss/pages/_responsive.scss */
   .view.photos-block .view-content, .view.video-block .view-content {
     width: 100%;
     margin-left: 0;
   }
-  /* line 611, ../scss/pages/_responsive.scss */
+  /* line 621, ../scss/pages/_responsive.scss */
   .view.photos-block .view-content .views-row, .view.video-block .view-content .views-row {
     flex: 0 0 100%;
   }
-  /* line 614, ../scss/pages/_responsive.scss */
+  /* line 624, ../scss/pages/_responsive.scss */
   .view.photos-block .view-content .views-row .flickr-photoset-img img, .view.video-block .view-content .views-row .flickr-photoset-img img {
     display: block;
     margin: auto;
   }
 
-  /* line 625, ../scss/pages/_responsive.scss */
+  /* line 635, ../scss/pages/_responsive.scss */
   .view.photos-block .view-content .views-row .flickr-citation {
     max-width: 320px;
     margin: 23px auto;
   }
-  /* line 628, ../scss/pages/_responsive.scss */
+  /* line 638, ../scss/pages/_responsive.scss */
   .view.photos-block .view-content .views-row .flickr-citation a {
     width: 200px;
   }
 
   /*-------------Photo's Video's Page Ends-------------*/
   /*-------------Progress Page-------------*/
-  /* line 638, ../scss/pages/_responsive.scss */
+  /* line 648, ../scss/pages/_responsive.scss */
   .progress-page-wrap {
     padding-left: 10px;
     padding-right: 10px;
   }
-  /* line 641, ../scss/pages/_responsive.scss */
+  /* line 651, ../scss/pages/_responsive.scss */
   .progress-page-wrap #wrap {
     padding-left: 15px;
     padding-right: 15px;
   }
-  /* line 644, ../scss/pages/_responsive.scss */
+  /* line 654, ../scss/pages/_responsive.scss */
   .progress-page-wrap #wrap div.sticker-block, .progress-page-wrap #wrap div.rewards, .progress-page-wrap #wrap div.reading-progress {
     flex: 0 0 100%;
     padding-right: 0;
     margin-bottom: 20px;
   }
-  /* line 653, ../scss/pages/_responsive.scss */
+  /* line 663, ../scss/pages/_responsive.scss */
   .cs-default .progress-page-wrap #wrap > div.rewards .view-Rewards-Progress .view-content, .cs-classic .progress-page-wrap #wrap > div.rewards .view-Rewards-Progress .view-content, .cs-elegant .progress-page-wrap #wrap > div.rewards .view-Rewards-Progress .view-content {
     margin-top: 0;
     padding-left: 0;
   }
-  /* line 663, ../scss/pages/_responsive.scss */
+  /* line 673, ../scss/pages/_responsive.scss */
   .progress-page-wrap .calendar-wrapper .fc-center {
     max-width: 320px;
   }
-  /* line 665, ../scss/pages/_responsive.scss */
+  /* line 675, ../scss/pages/_responsive.scss */
   .progress-page-wrap .calendar-wrapper .fc-center button {
     padding: 6px 20px !important;
   }
-  /* line 672, ../scss/pages/_responsive.scss */
+  /* line 682, ../scss/pages/_responsive.scss */
   .progress-page-wrap .fc-content-skeleton > table .fc-day-top span {
     font-size: 25px;
   }
-  /* line 676, ../scss/pages/_responsive.scss */
+  /* line 686, ../scss/pages/_responsive.scss */
   .progress-page-wrap .fc-content-skeleton > table .fc-content {
     white-space: inherit;
   }
-  /* line 678, ../scss/pages/_responsive.scss */
+  /* line 688, ../scss/pages/_responsive.scss */
   .progress-page-wrap .fc-content-skeleton > table .fc-content > div {
     display: none;
   }
-  /* line 685, ../scss/pages/_responsive.scss */
+  /* line 695, ../scss/pages/_responsive.scss */
   .progress-page-wrap table .fc-head th {
     font-size: 20px;
   }
-  /* line 689, ../scss/pages/_responsive.scss */
+  /* line 699, ../scss/pages/_responsive.scss */
   .progress-page-wrap table .fc-scroller {
     height: auto !important;
   }
-  /* line 693, ../scss/pages/_responsive.scss */
+  /* line 703, ../scss/pages/_responsive.scss */
   .progress-page-wrap .print-pdf {
     display: none;
   }
 
   /*---------teen-css-------------*/
-  /* line 700, ../scss/pages/_responsive.scss */
+  /* line 709, ../scss/pages/_responsive.scss */
+  .progress-page {
+    padding: 10px;
+  }
+  /* line 711, ../scss/pages/_responsive.scss */
   .progress-page .avatar-id {
     flex: 0 0 100%;
   }
-  /* line 703, ../scss/pages/_responsive.scss */
+  /* line 714, ../scss/pages/_responsive.scss */
   .progress-page .point-status {
     flex: 0 0 100%;
     flex-direction: column;
     -webkit-flex-direction: column;
   }
-  /* line 708, ../scss/pages/_responsive.scss */
+  /* line 719, ../scss/pages/_responsive.scss */
   .progress-page .progress-wrap > div {
     flex: 0 0 100%;
     margin-bottom: 25px;
   }
-  /* line 712, ../scss/pages/_responsive.scss */
+  /* line 723, ../scss/pages/_responsive.scss */
   .progress-page .reward-won {
     margin-right: 0;
     margin-left: 0;
   }
+  /* line 730, ../scss/pages/_responsive.scss */
+  .progress-page .progress-wrap .report-acivity form select {
+    font-size: 12px;
+  }
+  /* line 735, ../scss/pages/_responsive.scss */
+  .progress-page .progress-wrap .report-acivity form .container-inline-date .form-item-date > label {
+    width: 10%;
+    float: left;
+  }
+  /* line 739, ../scss/pages/_responsive.scss */
+  .progress-page .progress-wrap .report-acivity form .container-inline-date .form-item-date .date-padding {
+    width: 90%;
+  }
+  /* line 747, ../scss/pages/_responsive.scss */
+  .progress-page .progress-wrap .progress-rewards > div {
+    padding-top: 20px;
+  }
+  /* line 754, ../scss/pages/_responsive.scss */
+  .progress-page .progress-main .progress-grid .grid.inserted {
+    background-size: 50px !important;
+  }
+  /* line 755, ../scss/pages/_responsive.scss */
+  .progress-page .progress-main .progress-grid .grid.inserted * {
+    font-size: 12px !important;
+  }
 
   /*-------------Progress Page Ends-------------*/
   /*-------------Teen Sidebar-------------*/
-  /* line 723, ../scss/pages/_responsive.scss */
+  /* line 769, ../scss/pages/_responsive.scss */
   .sidebar2.sidebar-shareit > .first .block-sharethis .block-title {
     flex: 1 1 20%;
   }
-  /* line 726, ../scss/pages/_responsive.scss */
+  /* line 772, ../scss/pages/_responsive.scss */
   .sidebar2.sidebar-shareit > .first .block-sharethis .sharethis-wrapper {
     flex: 1 1 75%;
   }
 
   /*-------------Teen Sidebar Ends-------------*/
   /*-------------Teen Activity Page-------------*/
-  /* line 736, ../scss/pages/_responsive.scss */
+  /* line 782, ../scss/pages/_responsive.scss */
   .activity-page-wrapper .body, .activity-page-wrapper .link, .activity-page-wrapper .drop-downs-wrapper {
     padding-left: 0;
   }
-  /* line 742, ../scss/pages/_responsive.scss */
+  /* line 788, ../scss/pages/_responsive.scss */
   .activity-page-wrapper .drop-downs-wrapper .form-type-select label {
     flex: 0 0 100%;
   }
-  /* line 745, ../scss/pages/_responsive.scss */
+  /* line 791, ../scss/pages/_responsive.scss */
   .activity-page-wrapper .drop-downs-wrapper .form-type-select select {
     flex: 0 0 100%;
   }
@@ -17111,7 +17153,7 @@ div.progress-page .progress-main .progress-grid .grid.inserted .rew {
 /*------------Tab Responsive--------------*/
 @media screen and (min-width: 768px) and (max-width: 1024px) {
   /*-------------Header-------------*/
-  /* line 759, ../scss/pages/_responsive.scss */
+  /* line 805, ../scss/pages/_responsive.scss */
   .top-header-menu .username {
     width: 85%;
     display: inline-block;
@@ -17119,17 +17161,17 @@ div.progress-page .progress-main .progress-grid .grid.inserted .rew {
     margin-left: 5px;
   }
 
-  /* line 768, ../scss/pages/_responsive.scss */
+  /* line 814, ../scss/pages/_responsive.scss */
   .l-header .header-middle .logo-block {
     flex: 0 0 100%;
   }
-  /* line 770, ../scss/pages/_responsive.scss */
+  /* line 816, ../scss/pages/_responsive.scss */
   .l-header .header-middle .logo-block .site-info {
     display: inline-block;
     float: left;
     width: 50%;
   }
-  /* line 775, ../scss/pages/_responsive.scss */
+  /* line 821, ../scss/pages/_responsive.scss */
   .l-header .header-middle .logo-block .program-logo {
     display: inline-block;
     width: 50%;
@@ -17139,24 +17181,24 @@ div.progress-page .progress-main .progress-grid .grid.inserted .rew {
     margin-top: 0 !important;
     margin-bottom: 10px;
   }
-  /* line 785, ../scss/pages/_responsive.scss */
+  /* line 831, ../scss/pages/_responsive.scss */
   .l-header .header-middle .main-menu {
     flex: 0 0 100%;
   }
-  /* line 789, ../scss/pages/_responsive.scss */
+  /* line 835, ../scss/pages/_responsive.scss */
   .l-header .header-middle .main-menu .menu-wrapper .block-lang-dropdown form {
     margin-right: 25px;
   }
-  /* line 794, ../scss/pages/_responsive.scss */
+  /* line 840, ../scss/pages/_responsive.scss */
   .l-header .header-middle .main-menu .menu-wrapper ul.menu li {
     margin-left: 0;
     margin-right: 5px;
   }
-  /* line 801, ../scss/pages/_responsive.scss */
+  /* line 847, ../scss/pages/_responsive.scss */
   .l-header .header-middle select, .l-header .header-middle form {
     margin-bottom: 0;
   }
-  /* line 807, ../scss/pages/_responsive.scss */
+  /* line 853, ../scss/pages/_responsive.scss */
   .l-header .pre-header .top-menu .btn {
     margin-left: 0;
     margin-right: 6px;
@@ -17164,72 +17206,72 @@ div.progress-page .progress-main .progress-grid .grid.inserted .rew {
 
   /*-------------Header Ends-------------*/
   /*-------------Dashboard Page-------------*/
-  /* line 818, ../scss/pages/_responsive.scss */
+  /* line 864, ../scss/pages/_responsive.scss */
   .homebox.homebox-auto-save {
     width: 100%;
     margin: auto;
   }
-  /* line 821, ../scss/pages/_responsive.scss */
+  /* line 867, ../scss/pages/_responsive.scss */
   .homebox.homebox-auto-save .homebox-column-wrapper {
     padding: 0 5px;
   }
-  /* line 823, ../scss/pages/_responsive.scss */
+  /* line 869, ../scss/pages/_responsive.scss */
   .homebox.homebox-auto-save .homebox-column-wrapper .portlet-header {
     padding: 10px 1px 15px 40px !important;
   }
-  /* line 826, ../scss/pages/_responsive.scss */
+  /* line 872, ../scss/pages/_responsive.scss */
   .homebox.homebox-auto-save .homebox-column-wrapper .portlet-header .portlet-title:before {
     left: -44px;
   }
-  /* line 830, ../scss/pages/_responsive.scss */
+  /* line 876, ../scss/pages/_responsive.scss */
   .cs-default .homebox.homebox-auto-save .homebox-column-wrapper .portlet-header, .cs-classic .homebox.homebox-auto-save .homebox-column-wrapper .portlet-header {
     font-size: 20px !important;
   }
-  /* line 833, ../scss/pages/_responsive.scss */
+  /* line 879, ../scss/pages/_responsive.scss */
   .cs-elegant .homebox.homebox-auto-save .homebox-column-wrapper .portlet-header {
     font-size: 23px !important;
   }
-  /* line 837, ../scss/pages/_responsive.scss */
+  /* line 883, ../scss/pages/_responsive.scss */
   .cs-default .homebox.homebox-auto-save .homebox-column-wrapper .portlet-header .portlet-icon {
     top: 0;
   }
-  /* line 842, ../scss/pages/_responsive.scss */
+  /* line 888, ../scss/pages/_responsive.scss */
   .homebox.homebox-auto-save .homebox-column-wrapper .homebox-portlet-inner {
     margin-bottom: 5px;
   }
-  /* line 845, ../scss/pages/_responsive.scss */
+  /* line 891, ../scss/pages/_responsive.scss */
   .homebox.homebox-auto-save .homebox-column-wrapper .portlet-content {
     padding: 25px 10px !important;
   }
-  /* line 849, ../scss/pages/_responsive.scss */
+  /* line 895, ../scss/pages/_responsive.scss */
   .homebox.homebox-auto-save #homebox-buttons {
     padding-left: 0;
   }
 
-  /* line 858, ../scss/pages/_responsive.scss */
+  /* line 904, ../scss/pages/_responsive.scss */
   .page-user-profile .block-play-library-custom-pm-block .pm-custom > div:nth-of-type(1) {
     flex: 0 0 100%;
   }
-  /* line 861, ../scss/pages/_responsive.scss */
+  /* line 907, ../scss/pages/_responsive.scss */
   .page-user-profile .block-play-library-custom-pm-block .pm-custom > div:nth-of-type(2) {
     flex: 0 0 100%;
     padding-top: 20px;
   }
-  /* line 866, ../scss/pages/_responsive.scss */
+  /* line 912, ../scss/pages/_responsive.scss */
   .page-user-profile .block-play-library-custom-pm-block .pm-custom .pm {
     border-bottom: 1px dotted #000;
     padding: 10px 0;
   }
-  /* line 869, ../scss/pages/_responsive.scss */
+  /* line 915, ../scss/pages/_responsive.scss */
   .page-user-profile .block-play-library-custom-pm-block .pm-custom .pm .pm-subject, .page-user-profile .block-play-library-custom-pm-block .pm-custom .pm .pm-admin, .page-user-profile .block-play-library-custom-pm-block .pm-custom .pm .pm-date {
     flex: 0 0 100%;
   }
 
-  /* line 880, ../scss/pages/_responsive.scss */
+  /* line 926, ../scss/pages/_responsive.scss */
   .my-dashbord-block .attachment .view-content .views-field-nothing .image {
     display: inline-block;
   }
-  /* line 883, ../scss/pages/_responsive.scss */
+  /* line 929, ../scss/pages/_responsive.scss */
   .my-dashbord-block .attachment .view-content .views-field-nothing .name {
     width: 100%;
     text-align: center;
@@ -17238,37 +17280,37 @@ div.progress-page .progress-main .progress-grid .grid.inserted .rew {
 
   /*-------------Dashboard Page Ends-------------*/
   /*-------------Home Page-------------*/
-  /* line 898, ../scss/pages/_responsive.scss */
+  /* line 944, ../scss/pages/_responsive.scss */
   .view-home-page-video-slideshow.flicker-block .owl-item {
     text-align: center;
   }
 
-  /* line 904, ../scss/pages/_responsive.scss */
+  /* line 950, ../scss/pages/_responsive.scss */
   .homepage-reward-block .view-content {
     padding: 25px 10px 0 10px;
   }
-  /* line 908, ../scss/pages/_responsive.scss */
+  /* line 954, ../scss/pages/_responsive.scss */
   .homepage-reward-block .view-header p {
     padding-left: 10px;
   }
-  /* line 912, ../scss/pages/_responsive.scss */
+  /* line 958, ../scss/pages/_responsive.scss */
   .homepage-reward-block .view-footer {
     padding-left: 10px;
   }
 
   /*-------------Home Page Ends-------------*/
   /*-------------Bookreview Page-------------*/
-  /* line 920, ../scss/pages/_responsive.scss */
+  /* line 966, ../scss/pages/_responsive.scss */
   .page-reviews .views-exposed-widget {
     flex: 0 0 calc(50% - 10px) !important;
   }
 
-  /* line 925, ../scss/pages/_responsive.scss */
+  /* line 971, ../scss/pages/_responsive.scss */
   .sidebar2 > .first {
     padding-left: 10px;
     padding-right: 10px;
   }
-  /* line 930, ../scss/pages/_responsive.scss */
+  /* line 976, ../scss/pages/_responsive.scss */
   .sidebar2 .block-menu ul.menu {
     padding-right: 0;
     padding-left: 0;
@@ -17276,137 +17318,157 @@ div.progress-page .progress-main .progress-grid .grid.inserted .rew {
 
   /*-------------Bookreview Page Ends-------------*/
   /*-------------Review Page Sidebar-------------*/
-  /* line 943, ../scss/pages/_responsive.scss */
+  /* line 989, ../scss/pages/_responsive.scss */
   .sidebar-activity .block-menu-menu-book-reviews-sidebar-menu-f .menu li a {
     padding-left: 50px;
   }
-  /* line 945, ../scss/pages/_responsive.scss */
+  /* line 991, ../scss/pages/_responsive.scss */
   .sidebar-activity .block-menu-menu-book-reviews-sidebar-menu-f .menu li a:after {
     left: -5px;
   }
-  /* line 952, ../scss/pages/_responsive.scss */
+  /* line 998, ../scss/pages/_responsive.scss */
   .sidebar-activity .block-teen-reward-page {
     padding: 10px;
   }
 
   /*-------------Review Page Sidebar Ends-------------*/
   /*-------------Booklisting Page-------------*/
-  /* line 963, ../scss/pages/_responsive.scss */
+  /* line 1009, ../scss/pages/_responsive.scss */
   .main .booklist-listing-page .views-exposed-widget, .main .view-movie-review .views-exposed-widget,
   .main .view-music-review-listing .views-exposed-widget, .main .view--video-game-review .views-exposed-widget,
   .main .view--individual-activities-listing .views-exposed-widget {
     flex: 0 0 calc(50% - 10px);
   }
-  /* line 968, ../scss/pages/_responsive.scss */
+  /* line 1014, ../scss/pages/_responsive.scss */
   .main .booklist-listing-page .views-submit-button button.form-submit, .main .view-movie-review .views-submit-button button.form-submit,
   .main .view-music-review-listing .views-submit-button button.form-submit, .main .view--video-game-review .views-submit-button button.form-submit,
   .main .view--individual-activities-listing .views-submit-button button.form-submit {
     margin-top: 10px;
   }
 
-  /* line 975, ../scss/pages/_responsive.scss */
+  /* line 1021, ../scss/pages/_responsive.scss */
   .booklist-wrapp {
     margin-top: 15px;
   }
 
   /*-------------Booklisting Page Ends-------------*/
   /*-------------Events Page-------------*/
-  /* line 984, ../scss/pages/_responsive.scss */
+  /* line 1030, ../scss/pages/_responsive.scss */
   .section-events .view-events .view-content .views-row {
     border-bottom: 1px dotted #000;
     padding: 10px 0;
   }
-  /* line 987, ../scss/pages/_responsive.scss */
+  /* line 1033, ../scss/pages/_responsive.scss */
   .section-events .view-events .view-content .views-row.views-row-last {
     border-bottom: none;
   }
 
   /*-------------Events Page Ends-------------*/
   /*-------------Reward Block-------------*/
-  /* line 999, ../scss/pages/_responsive.scss */
+  /* line 1045, ../scss/pages/_responsive.scss */
   .homepage-reward-block .view-header p {
     line-height: 1.2;
   }
 
   /*-------------Reward Block Ends-------------*/
   /*-------------Progress Page-------------*/
-  /* line 1009, ../scss/pages/_responsive.scss */
+  /* line 1055, ../scss/pages/_responsive.scss */
   .progress-page-wrap #wrap div.sticker-block {
     flex: 0 0 41%;
   }
-  /* line 1012, ../scss/pages/_responsive.scss */
+  /* line 1058, ../scss/pages/_responsive.scss */
   .progress-page-wrap #wrap div.reading-progress {
     flex: 0 0 21%;
   }
-  /* line 1019, ../scss/pages/_responsive.scss */
+  /* line 1065, ../scss/pages/_responsive.scss */
   .cs-default .progress-page-wrap #wrap > div.rewards .view-Rewards-Progress .view-content, .cs-classic .progress-page-wrap #wrap > div.rewards .view-Rewards-Progress .view-content, .cs-elegant .progress-page-wrap #wrap > div.rewards .view-Rewards-Progress .view-content {
     margin-top: 0;
     padding-left: 0;
   }
 
+  /* line 1078, ../scss/pages/_responsive.scss */
+  .progress-page .progress-wrap > div {
+    flex: 1 1 30%;
+  }
+  /* line 1083, ../scss/pages/_responsive.scss */
+  .progress-page .progress-wrap .report-acivity form select {
+    font-size: 12px;
+  }
+  /* line 1088, ../scss/pages/_responsive.scss */
+  .progress-page .progress-wrap .report-acivity form .container-inline-date .form-item-date > label {
+    width: 10%;
+    float: left;
+  }
+  /* line 1092, ../scss/pages/_responsive.scss */
+  .progress-page .progress-wrap .report-acivity form .container-inline-date .form-item-date .date-padding {
+    width: 90%;
+  }
+
   /*-------------Progress Page Ends-------------*/
   /*-------------Photos/Videos Page-------------*/
-  /* line 1033, ../scss/pages/_responsive.scss */
+  /* line 1105, ../scss/pages/_responsive.scss */
   .view.photos-block .view-content {
     width: 100%;
   }
-  /* line 1035, ../scss/pages/_responsive.scss */
+  /* line 1107, ../scss/pages/_responsive.scss */
   .view.photos-block .view-content .views-row {
     padding-left: 25px;
     padding-right: 0;
   }
 
-  /* line 1046, ../scss/pages/_responsive.scss */
+  /* line 1118, ../scss/pages/_responsive.scss */
   .view.photos-block .view-content .views-row .flickr-citation a:before {
     left: 10px;
     top: 4px;
     background-size: 17px;
   }
-  /* line 1051, ../scss/pages/_responsive.scss */
+  /* line 1123, ../scss/pages/_responsive.scss */
   .view.photos-block .view-content .views-row .flickr-citation a:after {
     font-size: 14px !important;
   }
 
-  /* line 1065, ../scss/pages/_responsive.scss */
+  /* line 1137, ../scss/pages/_responsive.scss */
   .cs-classic .view.photos-block .view-content .views-row .flickr-citation a:before {
     top: 6px;
   }
 
   /*-------------Photos/Videos Page Ends-------------*/
   /*----------------Activity Page----------------*/
-  /* line 1080, ../scss/pages/_responsive.scss */
+  /* line 1152, ../scss/pages/_responsive.scss */
   .activity-page-wrapper .drop-downs-wrapper .form-type-select label, .activity-page-wrapper .drop-downs-wrapper .form-type-select select {
     flex: 0 0 100%;
   }
 
   /*-------------Activity Page Ends--------------*/
-  /* line 1091, ../scss/pages/_responsive.scss */
+  /* line 1163, ../scss/pages/_responsive.scss */
   .sidebar2.sidebar-shareit > .first .block-sharethis .block-title {
     flex: 1 1 20%;
   }
-  /* line 1094, ../scss/pages/_responsive.scss */
+  /* line 1166, ../scss/pages/_responsive.scss */
   .sidebar2.sidebar-shareit > .first .block-sharethis .sharethis-wrapper {
     flex: 1 1 80%;
   }
 }
 @media screen and (max-width: 1024px) {
   /*-------------Common for page title-------------*/
-  /* line 1106, ../scss/pages/_responsive.scss */
+  /* line 1178, ../scss/pages/_responsive.scss */
   .main h1#page-title, .main .other-programme.view .view-header #page-title, .other-programme.view .view-header .main #page-title, .main h2#page-title.reviews-title, .main .book-review-page-overlay #page-title.reviews-title.book_title, .book-review-page-overlay .main #page-title.reviews-title.book_title, .main h1.reviews-title, .main .other-programme.view .view-header .reviews-title, .other-programme.view .view-header .main .reviews-title, .main h2.reviews-title, .main .book-review-page-overlay .reviews-title.book_title, .book-review-page-overlay .main .reviews-title.book_title, .main h2#page-title, .main .book-review-page-overlay #page-title.book_title, .book-review-page-overlay .main #page-title.book_title, .main h2.reviews-title, .main .book-review-page-overlay .reviews-title.book_title, .book-review-page-overlay .main .reviews-title.book_title {
     width: 100%;
     margin-left: 0;
     background-size: auto;
+    background-repeat: no-repeat;
   }
-  /* line 1114, ../scss/pages/_responsive.scss */
+  /* line 1187, ../scss/pages/_responsive.scss */
   .main .view-booklist-slideshow .other-programme.view .view-header *, .other-programme.view .main .view-booklist-slideshow .view-header *, .main .view-booklist-slideshow .view-header h2.reviews-title, .main .view-booklist-slideshow .view-header .book-review-page-overlay .reviews-title.book_title, .book-review-page-overlay .main .view-booklist-slideshow .view-header .reviews-title.book_title, .main .view-booklist-slideshow .view-header h1 {
     width: 100%;
     margin-left: 0;
     background-size: auto;
+    background-repeat: no-repeat;
   }
 
   /*-------------Common for page title ends-------------*/
-  /* line 1125, ../scss/pages/_responsive.scss */
-  .page-activities.cs-default #page-title, .page-activities.cs-classic #page-title {
+  /* line 1199, ../scss/pages/_responsive.scss */
+  .page-activities.cs-default #page-title, .page-activities.cs-classic #page-title, .page-activities.cs-elegant #page-title {
     background-position: 0 12px;
     background-size: auto;
     background-repeat: no-repeat;
@@ -17415,7 +17477,7 @@ div.progress-page .progress-main .progress-grid .grid.inserted .rew {
 }
 @media screen and (min-width: 1025px) and (max-width: 1200px) {
   /*-------------Photos/Videos Page-------------*/
-  /* line 1141, ../scss/pages/_responsive.scss */
+  /* line 1216, ../scss/pages/_responsive.scss */
   .view.photos-block .view-content .views-row .flickr-citation a:before {
     left: 20px;
   }
