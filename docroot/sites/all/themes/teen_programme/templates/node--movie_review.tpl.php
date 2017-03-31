@@ -135,7 +135,7 @@
 	    $img_path = file_create_url($img_uri);
 	  }
       if(isset($img_uri)){
-        $img = "<img src='$img_path'>";
+        $img = "<img src='$img_path' style='height:32px; width:32px; object-fit:contain;'>";
 	  }
 		
 		$query = db_select('flag_counts','count')
