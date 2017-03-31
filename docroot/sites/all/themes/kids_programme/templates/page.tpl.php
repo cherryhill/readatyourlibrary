@@ -5,17 +5,19 @@
     <!-- City Branding -->
     <div class="pre-header">
       <section class="row" id="topmostbranding">
-        <div class="mobile-hamburger hide-for-medium-up">
-           <button class="hamburger">
-             <span class="icon"></span>
-             <span class="icon"></span>
-             <span class="icon"></span>
-           </button>
-        </div>
-        <div class="top-menu hide-for-only-small">
-          <?php if (!empty($page['top_links'])): ?>
-          <?php print render($page['top_links']); ?>
-          <?php endif; ?>
+        <div class="hamburger-wrapper">
+          <div class="mobile-hamburger hide-for-medium-up">
+             <button class="hamburger">
+               <span class="icon"></span>
+               <span class="icon"></span>
+               <span class="icon"></span>
+             </button>
+          </div>
+          <div class="top-menu hide-for-only-small">
+            <?php if (!empty($page['top_links'])): ?>
+            <?php print render($page['top_links']); ?>
+            <?php endif; ?>
+          </div>
         </div>
 
       <!--mobile menu-->

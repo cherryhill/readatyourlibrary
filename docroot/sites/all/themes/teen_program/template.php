@@ -244,3 +244,12 @@ if (!empty($variables['page']['sidebar_first']) || !empty($variables['page']['si
   }
 
 }
+
+function teen_program_menu_breadcrumb_alter(&$breadcrumb) {
+
+  if (!empty($breadcrumb)) { 
+    if (arg(0) == 'messages' && arg(1) == 'view') { 
+      $breadcrumb[1]['title'] = 'Messages';
+    } 
+  } 
+}

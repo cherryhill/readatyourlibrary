@@ -120,9 +120,9 @@
 
 <div class="reward-won"><?php print views_embed_view('Rewards_Progress','block'); ?> </div>
 
-<div class="progress-rewards"><?php
+<div class="progress-rewards"><div><?php
   $reward_block = variable_get('progress_rewards', array('value' => '', 'format' => NULL));
-  print $reward_block['value']; ?>
+  print $reward_block['value']; ?></div>
 </div></div>
 
 <div class="progress-main"><?php
