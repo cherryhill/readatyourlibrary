@@ -136,7 +136,7 @@
 	    $img_path = image_style_url($style, $img_uri);
 	  }
       if(isset($img_uri)){
-        $img = "<img src='$img_path'>";
+        $img = "<img src='$img_uri'>";
 	  }
 		
 		$query = db_select('flag_counts','count')
