@@ -23,12 +23,13 @@ function play_progress_bingo_cards_menu(){
     // 'file' => 'inc/pl_progress_page.inc',
     // 'file path' => drupal_get_path('module', 'play_progress_teen'),
   );
-  $items['record-activity'] = array(
+
+   $items['record-activity'] = array(
     'title' => 'Record Activity for Patron',
     'page callback' => 'drupal_get_form',
-    'page arguments' => array('patron_activity_record_form'),
+    'page arguments' => array('play_progress_bingo_cards_progress'),
     'access arguments' => array('view_activity_record_for_patron'),
-    'type' => MENU_CALLBACK,
+    'type' => MENU_NORMAL_ITEM,
   );
   return $items;
 }
@@ -99,6 +100,7 @@ function play_progress_bingo_cards_theme(){
  */
 function play_progress_bingo_cards_progress($form, $form_state) {
   //Get all Progress page activities
+  global $user;
   $query = db_select('eck_activity','act');
   $query->join('field_data_field_activity_fired_hook','hook', 'hook.entity_id = act.id');
   $query->fields('act', array('id', 'title'));
@@ -110,15 +112,24 @@ function play_progress_bingo_cards_progress($form, $form_state) {
     $activity_ids[$value->id] = $value->title;
   }
   $options = $activity_ids;
+
+
   
-  // if($user->uid){
-  //   $form['username'] = array(
-  //     '#title' => t('Username'),
-  //     '#type' => 'textfield',
-  //     '#autocomplete_path' => 'user/autocomplete',
-  //     '#attributes' => array('placeholder' => t('Username'),),
-  //   );
-  // }
+  if (array_key_exists(3, $user->roles)||array_key_exists(6, $user->roles)||array_key_exists(7, $user->roles)||array_key_exists(8, $user->roles)) {
+    $access = TRUE;
+  }
+  else {
+    $access = FALSE;
+  }
+
+      $form['username'] = array(
+        '#title' => t('Username'),
+        '#type' => 'textfield',
+        '#autocomplete_path' => 'user/autocomplete',
+        '#attributes' => array('placeholder' => t('Username'),),
+        '#access' => $access,
+      );
+    
 
   $form['activity'] = array(
     '#type' => 'select',
@@ -156,7 +167,7 @@ function play_progress_bingo_cards_progress($form, $form_state) {
     //     'effect' => 'fade',
     //   ),
   );
-
+// print_r($form);die();
 return $form;
 }
 
@@ -182,10 +193,28 @@ function play_progress_bingo_cards_block_view($delta = '') {
  * Per Library Branch
  */
 function play_progress_bingo_cards_progress_submit($form, $form_state) {
+  
   global $user;
   // drupal_set_message("hey");
   // echo'<pre>'; print_r($res);die();
   //get Activity ID and date
+  if (!empty($form_state['values']['username'])){
+    $username = $form_state['values']['username'];
+    $query = db_select('users', 'u');
+    $query->condition('u.name', $username);
+    $query->fields('u', array('uid'));
+    $user_id = $query->execute()->fetchField();
+    $record_for_patron = TRUE;
+  }
+  else{
+    $user_id = $user->id;
+    $record_for_patron = FALSE;
+  }
+
+  // print_r($user_id);die();
+
+
+
   $activity_Id = $form_state['values']['activity'];
   if ($activity_Id ==0){
     drupal_set_message(t('Please select an activity'),'warning');
@@ -193,13 +222,13 @@ function play_progress_bingo_cards_progress_submit($form, $form_state) {
   }
   $activity_name = $form_state['complete form']['activity']['#options'][$activity_Id];
   $activity_date_ts = strtotime($form_state['values']['date']);
-  $record_status = play_library_program_create_activity_entry($activity_Id , $user->uid, $activity_date_ts);
+  $record_status = play_library_program_create_activity_entry($activity_Id , $user_id, $activity_date_ts);
   
   // drupal_set_message(count($res).'|'.$record_status);
   if($record_status){
     //Get a bingo node
-    if(empty($_SESSION['bingo_node'])){
-      $bingo_progress_node = play_progress_bingo_cards_get_bingo_node();
+    if(empty($_SESSION['bingo_node'])||$record_for_patron = TRUE){
+      $bingo_progress_node = play_progress_bingo_cards_get_bingo_node($user_id);
     } else{
       $bingo_progress_node = node_load($_SESSION['bingo_node']);
     }
@@ -262,7 +291,7 @@ function play_progress_bingo_cards_progress_submit($form, $form_state) {
       drupal_set_message(t('Apologies. We are not able to create or update a bingo card for you. Please contact system administrator'), 'error');
     }
     if(empty($_SESSION['bingo_node'])){
-      play_progress_bingo_cards_get_bingo_node();
+      play_progress_bingo_cards_get_bingo_node($user_id);
     }
   }
 
@@ -276,13 +305,21 @@ function play_progress_bingo_cards_progress_submit($form, $form_state) {
 /*
 /function to get available or new bingo node
 */
-function play_progress_bingo_cards_get_bingo_node(){
+function play_progress_bingo_cards_get_bingo_node($user_id){
   global $user;
+  if(empty($user_id)) {
+    $user_id = $user->uid;
+    $user_name = $user->name;
+  }
+  else{
+    $act_user = user_load($user_id);
+    $user_name = $act_user->name;
+  }
   //Get Active node for update
   $node_que = db_select('node', 'n');
   $node_que->LEFTJOIN('field_data_field_card_status', 'fdfcs', 'n.nid = fdfcs.entity_id');
   $node_que->CONDITION('n.type', 'bingo_card');
-  $node_que->CONDITION('n.uid', $user->uid);
+  $node_que->CONDITION('n.uid', $user_id);
   $node_que->CONDITION('fdfcs.field_card_status_value', 1);
   $node_que->FIELDS('n', array('nid'));
   $node_que->ORDERBY('n.nid');
@@ -294,9 +331,9 @@ function play_progress_bingo_cards_get_bingo_node(){
     $node->type = 'bingo_card'; //Content type
     $node->language = LANGUAGE_NONE;
     node_object_prepare($node);
-    $node->title = $user->name."'s Bingo Card created on " . date("Y-m-d H:i", time());
+    $node->title = $user_name."'s Bingo Card created on " . date("Y-m-d H:i", time());
     $node->status = 1;
-    $node->uid = $user->uid;
+    $node->uid = $user_id;
     $node->field_card_status['und'][0]['value'] = 1;
     //Create an array for all bingo combinations and pick a random array key
     $bingo_styles= array('1-2-3','4-5-6','7-8-9','1-4-7','2-5-8','3-6-9','1-5-9','7-5-3');
@@ -379,92 +416,4 @@ function play_progress_bingo_cards_get_pager_array(){
   } else{
     return FALSE;
   }
-}
-
-
-/**
-*  Patron Activity Record form build is is for activity_record page.
-*/
-
-function patron_activity_record_form($form, &$form_state) {
-  $qry = db_select('eck_activity', 'eck_a');
-    $qry->join('field_data_field_activity_fired_hook', 'fdfafh', 'fdfafh.entity_id = eck_a.id');
-    $qry->condition('fdfafh.field_activity_fired_hook_value', 'progress_page');
-    $qry->fields('eck_a', array('title','id'));
-    $resu = $qry->execute()->fetchAll();
-    foreach ($resu as $value) {
-      //$activity_id[] = $value->id; 
-      $activity_title[$value->id] = $value->title; 
-    }
-
-  $form['username'] = array(
-    '#title' => t('Username'),
-    '#type' => 'textfield',
-    '#autocomplete_path' => 'user/autocomplete',
-    '#attributes' => array(
-    'placeholder' => t('Username'),
-    '#required'=> TRUE,
-    ),
-  );
-          
-  $form['html'] = array(
-   '#type' => 'markup',
-   '#markup' => '<div>Search for patrons here: <a href="patron-list" target="_blank">http://kids17.dev.chillco.com/patron-users</a></div>',
-  );
-  $form['activity'] = array(
-    '#type' => 'select',
-    '#options' => $activity_title,
-  );
-  $form['date'] = array(
-    '#title' => t('On'),
-    '#type' => 'date_popup',
-    '#date_format' => 'F d, Y',
-    '#date_year_range' => '0:+10',
-    '#datepicker_options' => array('maxDate' => '+0D'),
-    '#required' => TRUE,
-    '#editable' =>'false',
-    '#size' => 8,
-  );
-  // $form['to'] = array(
-  //   '#title' => t('To'),
-  //   '#type' => 'date_popup',
-  //   '#date_format' => 'F d, Y',
-  //   '#date_year_range' => '0:+10',
-  //   '#datepicker_options' => array('maxDate' => '+0D'),
-  //   '#required' => TRUE,
-  //   '#editable' =>'false',
-  //   '#size' => 8,
-  //  );
-  $form['submit'] = array(
-    '#value' => 'Submit',
-    '#type' => 'submit',
-    '#attributes' => array('id'=>array('activity-submit')),
-    // '#ajax' => array(
-    //     'callback' => 'play_progress_teen_record_form_submit',
-    //     'wrapper' => 'bingo-progress-main',
-    //     'method' => 'replace',
-    //     'effect' => 'fade',
-    //   ),
-  );
-
-  return $form;
-}
-
-function patron_activity_record_form_submit($form, &$form_state) {
-  $username = $form_state['values']['username'];
-
-  $query = db_select('users', 'u');
-  $query->condition('u.name', $username);
-  $query->fields('u', array('uid'));
-  $user_uid = $query->execute()->fetchField();
-   
-  $activity_id = $form_state['values']['activity'];
-  $activity_title = $form_state['complete form']['activity']['#options'][$activity_id];
-  // $activity_title = 
-  $from = strtotime($form_state['values']['date']);
-  $status = play_library_program_create_activity_entry($activity_id , $user_uid, $from, $sticker_tid);
-  if($status){
-    drupal_set_message(t("Recorded $activity_title activity for $from for user $username"), 'status');
-  }
-  // drupal_set_message('You have entered the read on a day activity.');
 }
