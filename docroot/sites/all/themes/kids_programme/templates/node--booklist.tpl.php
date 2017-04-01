@@ -146,7 +146,7 @@
           $bk_title = $value['entity']->title;
           $bk_fname_author = $value['entity']->field_author_first_name['und'][0]['safe_value'];
           $bk_lname_author = $value['entity']->field_author_last_name['und'][0]['safe_value'];
-          $bk_catalog_link = $value['entity']->field_catalog_link['und'][0]['url'];
+          $bk_catalog_link = $value['entity']->field_booklist_catalog_link['und'][0]['url'];
 
           if(isset($bk_fname_author) || isset($bk_lname_author)){
             $bk_author_name = '<span class = "a_name"> by '.$bk_fname_author.' '.$bk_lname_author.'</span>'; 
