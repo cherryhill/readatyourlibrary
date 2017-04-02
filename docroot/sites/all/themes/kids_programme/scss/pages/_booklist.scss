@@ -178,6 +178,7 @@
       float: left;
       &.book-created {
         width: 70%;
+        display: flex;
 
          * {
           font-family: inherit;
@@ -187,6 +188,9 @@
           width: 32px;
           height: 32px;
           object-fit: contain;
+         }
+         .entity-avatar {
+          display: inline-flex;
          }
       }
       &.book-like {
