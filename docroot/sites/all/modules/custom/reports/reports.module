@@ -63,6 +63,8 @@ function readingPerBranch($form, $form_state) {
   $options = all_activities();
   $optionRole = user_roles();
 
+  // print_r($options); die();
+
   $form['activity_branch'] = array(
     '#type' => 'select',
     '#title' => 'Activity',
@@ -125,13 +127,38 @@ function readingPerBranch($form, $form_state) {
 function readingPerBranch_submit($form, &$form_state) {
 
   $activityIds = $form_state['values']['activity_branch'];
+
+  foreach ($activityIds as $key => $value) {
+    $activityFilter .= $form['activity_branch']['#options'][$value].', ';
+  }
+
+  if(!empty($activityFilter)) {
+    $activityFiltr = 'Activity Filter: '.$activityFilter;
+  }
+
   $countFrom = $form_state['values']['act_br_participation_count_from'];
   $countTo = $form_state['values']['act_br_participation_count_to'];
+
+  if(!empty($countFrom) || !empty($countTo)){
+    $countFilter = 'Participation Count from '.$countFrom.' to '.$countTo.', ';
+  }
+
   $ageFrom = $form_state['values']['act_br_dob_from'];
   $ageTo = $form_state['values']['act_br_dob_to'];
+
+  if (!empty($ageFrom) || !empty($ageTo)){
+    $ageFilter = 'Age from '.$ageFrom.' to '.$ageTo.', ';
+  }
+
   $roleFilter = $form_state['values']['role_filter_br'];
 
-  // echo '<pre>';print_r($roleFilter); die();
+  foreach ($roleFilter as $key => $value) {
+    $roleFltr .= $form['role_filter_br']['#options'][$value].', ';
+  }
+
+  if(!empty($roleFltr)){
+    $rolFilr = 'Role filter: '.$roleFltr;
+  }
 
   //Check if any activity is selected
   if(!empty($activityIds)) {
@@ -143,12 +170,6 @@ function readingPerBranch_submit($form, &$form_state) {
     if(!empty($ageFrom) && !empty($ageTo)) {
       $sub_query->join('field_data_field_user_birthday','bday','bday.entity_id = pf.pid');
       $sub_query->fields('bday', array('field_user_birthday_value'));
-    }
-
-    if(!empty($roleFilter)) {
-      $sub_query->join('users_roles', 'role', 'role.uid = pf.uid');
-      $sub_query->fields('role',array('rid'));
-      $sub_query->condition('role.rid',$roleFilter);
     }
 
     $sub_query->fields('act', array('uid'));
@@ -183,6 +204,13 @@ function readingPerBranch_submit($form, &$form_state) {
       $query->join('field_data_field_library_branch','branch','branch.entity_id = pf.pid');
 
       $query->condition('u.uid', $actUsers, 'IN');
+
+      if(!empty($roleFilter)) {
+        $query->join('users_roles', 'role', 'role.uid = pf.uid');
+        $query->fields('role',array('rid'));
+        $query->condition('role.rid',$roleFilter);
+      }
+
       $query->fields('branch', array('field_library_branch_tid'));
       $query->groupBy('branch.field_library_branch_tid');
       $query->addExpression('COUNT(u.uid)', 'userCount');
@@ -201,8 +229,9 @@ function readingPerBranch_submit($form, &$form_state) {
         );
       }
 
-      $header = array('Library Branch', 'Number of Users');
+      $header = array('Library Branch', 'Number of Users',$activityFiltr.$countFilter.$ageFilter.$rolFilr);
       $_SESSION['act_br_outputReg'] = theme('table', array('header' => $header, 'rows' => $rows));
+
     } else {
       $_SESSION['act_br_outputReg'] = 'No Result Found';
     }
@@ -271,7 +300,7 @@ function readingPerSchool($form, $form_state) {
     '#type' => 'textfield',
   );
 
-  $form['role_filter_br'] = array(
+  $form['role_filter_sc'] = array(
     '#type' => 'select',
     '#title' => 'Roles',
     '#options' => $optionRole,
@@ -299,10 +328,38 @@ function readingPerSchool($form, $form_state) {
 function readingPerSchool_submit($form, &$form_state) {
 
   $activityIds = $form_state['values']['act_sc_activity'];
+
+  foreach ($activityIds as $key => $value) {
+    $activityFilter .= $form['act_sc_activity']['#options'][$value].', ';
+  }
+
+  if(!empty($activityFilter)) {
+    $activityFiltr = 'Activity Filter: '.$activityFilter;
+  }
+
   $countFrom = $form_state['values']['act_sc_participation_count_from'];
   $countTo = $form_state['values']['act_sc_participation_count_to'];
+
+  if(!empty($countFrom) || !empty($countTo)){
+    $countFilter = 'Participation Count from '.$countFrom.' to '.$countTo.', ';
+  }
+
   $ageFrom = $form_state['values']['act_sc_dob_from'];
   $ageTo = $form_state['values']['act_sc_dob_to'];
+
+  if (!empty($ageFrom) || !empty($ageTo)){
+    $ageFilter = 'Age from '.$ageFrom.' to '.$ageTo.', ';
+  }
+
+  $roleFilter = $form_state['values']['role_filter_sc'];
+
+  foreach ($roleFilter as $key => $value) {
+    $roleFltr .= $form['role_filter_sc']['#options'][$value].', ';
+  }
+
+  if(!empty($roleFltr)){
+    $rolFilr = 'Role filter: '.$roleFltr;
+  }
 
   //Check if any activity is selected
   if(!empty($activityIds)) {
@@ -314,12 +371,6 @@ function readingPerSchool_submit($form, &$form_state) {
     if(!empty($ageFrom) && !empty($ageTo)) {
       $sub_query->join('field_data_field_user_birthday','bday','bday.entity_id = pf.pid');
       $sub_query->fields('bday', array('field_user_birthday_value'));
-    }
-
-    if(!empty($roleFilter)) {
-      $sub_query->join('users_roles', 'role', 'role.uid = pf.uid');
-      $sub_query->fields('role',array('rid'));
-      $sub_query->condition('role.rid',$roleFilter);
     }
 
     $sub_query->fields('act', array('uid'));
@@ -358,6 +409,13 @@ function readingPerSchool_submit($form, &$form_state) {
       $query->join('field_data_field_school','sch','sch.entity_id = pf.pid');
 
       $query->condition('u.uid', $actUsers, 'IN');
+
+      if(!empty($roleFilter)) {
+        $query->join('users_roles', 'role', 'role.uid = pf.uid');
+        $query->fields('role',array('rid'));
+        $query->condition('role.rid',$roleFilter);
+      }
+
       $query->fields('sch', array('field_school_tid'));
       $query->groupBy('sch.field_school_tid');
       $query->addExpression('COUNT(u.uid)', 'userCount');
@@ -376,7 +434,7 @@ function readingPerSchool_submit($form, &$form_state) {
         );
       }
 
-      $header = array('School', 'Number of Users');
+      $header = array('School', 'Number of Users',$activityFiltr.$countFilter.$ageFilter.$rolFilr);
       $_SESSION['act_sc_outputReg'] = theme('table', array('header' => $header, 'rows' => $rows));
     } else {
       $_SESSION['act_sc_outputReg'] = 'No Result Found';
