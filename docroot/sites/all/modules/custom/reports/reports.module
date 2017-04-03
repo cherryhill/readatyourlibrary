@@ -203,14 +203,14 @@ function readingPerBranch_submit($form, &$form_state) {
 
       if($roleFltr == 'group lead') {
         $query->join('users_roles', 'role', 'role.uid = pf.uid');
-        $query->join('field_data_field_no_of_patron_in_the_group','noPatron','noPatron.entity_id = pf.pid');
+        $query->join('field_data_field_no_of_patrons_in_the_group','noPatron','noPatron.entity_id = pf.pid');
         $query->fields('role',array('rid','uid'));
-        $query->fields('noPatron',array('field_no_of_patron_in_the_group_value'));
+        $query->fields('noPatron',array('field_no_of_patrons_in_the_group_value'));
         $query->condition('role.rid',$roleFilter);
 
         $query->fields('branch', array('field_library_branch_tid'));
         $query->groupBy('branch.field_library_branch_tid');
-        $query->addExpression('sum(noPatron.field_no_of_patron_in_the_group_value)', 'userCount');
+        $query->addExpression('sum(noPatron.field_no_of_patrons_in_the_group_value)', 'userCount');
         $result = $query->execute()->fetchAll();
       } else if($roleFltr == 'patron'){
         $query->join('users_roles', 'role', 'role.uid = pf.uid');
@@ -422,12 +422,12 @@ function readingPerSchool_submit($form, &$form_state) {
         $query->join('users_roles', 'role', 'role.uid = pf.uid');
         $query->join('field_data_field_no_of_patron_in_the_group','noPatron','noPatron.entity_id = pf.pid');
         $query->fields('role',array('rid','uid'));
-        $query->fields('noPatron',array('field_no_of_patron_in_the_group_value'));
+        $query->fields('noPatron',array('field_no_of_patrons_in_the_group_value'));
         $query->condition('role.rid',$roleFilter);
 
         $query->fields('sch', array('field_school_tid'));
         $query->groupBy('sch.field_school_tid');
-        $query->addExpression('sum(noPatron.field_no_of_patron_in_the_group_value)', 'userCount');
+        $query->addExpression('sum(noPatron.field_no_of_patrons_in_the_group_value)', 'userCount');
         $result = $query->execute()->fetchAll();
       } else if($roleFltr == 'patron'){
         $query->join('users_roles', 'role', 'role.uid = pf.uid');
