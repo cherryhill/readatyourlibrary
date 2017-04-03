@@ -14,30 +14,29 @@
 }
 
 .block-views { 
-	width: 30%;
-	float: left;
-	margin-right: 3%; 
-  border-radius: 15px;
-  overflow: hidden;
-  box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
-  margin-bottom: 35px;
-  padding-bottom: 15px;
-  .page-users-public-profile {
-    &.cs-default & {
-    	font-family: $arial;
-	    font-weight: normal;
-	    -webkit-font-smoothing: antialiased;
-	    -moz-osx-font-smoothing: grayscale;
-	    text-rendering: optimizeLegibility;
-	    -moz-font-smoothing: grayscale;
-	    font-size: 17px;
-	    background-color: $blue;
-    	color: $white;
-	  }
-	}
-		
-	h2.block-title, h3 {
-		.page-users-public-profile {
+	.page-users-public-profile.cs-default & {
+		width: 30%;
+		float: left;
+		margin-right: 3%; 
+	  border-radius: 15px;
+	  overflow: hidden;
+	  box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+	  margin-bottom: 35px;
+	  padding-bottom: 15px;
+	  font-family: $arial;
+	  font-weight: normal;
+	  -webkit-font-smoothing: antialiased;
+	  -moz-osx-font-smoothing: grayscale;
+	  text-rendering: optimizeLegibility;
+	  -moz-font-smoothing: grayscale;
+	  font-size: 17px;
+	  background-color: $blue;
+		color: $white; 
+  }
+}
+.page-users-public-profile {		
+	.block-views {
+		h2.block-title, h3 {
 			line-height: 1.4;
 		  @include primary_fonts;
 		  margin: 0;
@@ -54,15 +53,19 @@
 		    color: inherit;
 		    font-weight: inherit;
 		  }
-	  	@extend .white-text;
-		  &.cs-default & {
+		  @extend .white-text;
+		}
+	}
+	&.cs-default {
+		.block-views {
+			h2.block-title, h3 {
 		    background-position: -95px -226px;
 		    font-size: 28px;
 		    @media screen and (min-width: 768px) and (max-width: 1024px) {
-		      font-size: 26px;
+		       font-size: 26px;
 		    }
 		    @media screen and (max-width: 767px) {
-		      font-size: 22px;
+		       font-size: 22px;
 		    }
 		  }
 		}
