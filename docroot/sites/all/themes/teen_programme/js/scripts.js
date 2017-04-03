@@ -3,11 +3,11 @@
   Drupal.behaviors.teen_programmePhoneNumberLinksOnMobile = {
     attach: function(context, settings) {
 
-      var text = jQuery('#page-title').text();
-      if(text == 'Spanish my account') {
+      // var text = jQuery('#page-title').text();
+      // if(text == 'Spanish my account') {
         
-        var text = jQuery('#page-title').text('My Account'); 
-      }
+      //   var text = jQuery('#page-title').text('My Account'); 
+      // }
         //message button change its background color by adding class new
         $('.msg:has(.new)').addClass('new');
         //announcement block change its image field as background image

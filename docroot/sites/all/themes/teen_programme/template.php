@@ -214,8 +214,11 @@ function teen_programme_css_alter(&$css) {
 // }
 
 function teen_programme_preprocess_page(&$variables) {
-
-
+  $title = drupal_get_title();
+  if($title == 'Spanish my account') {
+   drupal_set_title('My Account');
+  }
+  
 if (!empty($variables['page']['sidebar_first']) || !empty($variables['page']['sidebar_activity']) || !empty($variables['page']['sidebar_shareit'])){
     $left = $variables['page']['sidebar_first'];
     $left1 = $variables['page']['sidebar_activity'];
@@ -257,3 +260,5 @@ function teen_programme_menu_breadcrumb_alter(&$breadcrumb) {
     } 
   } 
 }
+
+
