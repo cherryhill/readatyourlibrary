@@ -1,24 +1,26 @@
 .view--user-public-profile {
-	.block-views {
-		.cs-default & {
-			width: 30%;
-			float: left;
-			margin-right: 3%;
-			font-family: "arial";
+	.block-views { 
+		width: 30%;
+		float: left;
+		margin-right: 3%; 
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+    margin-bottom: 35px;
+    padding-bottom: 15px;
+    .cs-default & {
+    	font-family: $arial;
 	    font-weight: normal;
 	    -webkit-font-smoothing: antialiased;
+	    -moz-osx-font-smoothing: grayscale;
 	    text-rendering: optimizeLegibility;
+	    -moz-font-smoothing: grayscale;
 	    font-size: 17px;
 	    background-color: $blue;
-	    color: #fff;
-	    border-radius: 15px;
-	    overflow: hidden;
-	    box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
-	    margin-bottom: 35px;
-	    padding-bottom: 15px;
-		}
+    	color: $white;
+	  }
 		
-		h2, h3 {
+		h2.block-title, h3 {
 			line-height: 1.4;
 		  @include primary_fonts;
 		  margin: 0;
