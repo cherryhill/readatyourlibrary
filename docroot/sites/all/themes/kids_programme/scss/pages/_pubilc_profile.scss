@@ -38,6 +38,44 @@
 		  background-color: $blue;
 			color: $white; 
 	  }
+	  .page-users-public-profile.cs-classic & {
+	  	width: 30%;
+			float: left;
+			margin-right: 3%; 
+		  border-radius: 15px;
+		  overflow: hidden;
+		  box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+		  margin-bottom: 35px;
+		  padding-bottom: 15px;
+		  font-family: $ptsans;
+	    font-weight: normal;
+	    -webkit-font-smoothing: antialiased;
+	    -moz-osx-font-smoothing: grayscale;
+	    text-rendering: optimizeLegibility;
+	    -moz-font-smoothing: grayscale;
+		  font-size: 19px;
+		  background-color: $darkblue;
+			color: $white; 
+	  }
+	  .page-users-public-profile.cs-elegant & {
+	  	width: 30%;
+			float: left;
+			margin-right: 3%; 
+		  border-radius: 15px;
+		  overflow: hidden;
+		  box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+		  margin-bottom: 35px;
+		  padding-bottom: 15px;
+		  font-family: $open-sans;
+	    font-weight: normal;
+	    -webkit-font-smoothing: antialiased;
+	    -moz-osx-font-smoothing: grayscale;
+	    text-rendering: optimizeLegibility;
+	    -moz-font-smoothing: grayscale;
+		  font-size: 19px;
+		  background-color: $blue;
+			color: $white; 
+	  }
 	}
 }
 .page-users-public-profile {		
@@ -86,4 +124,36 @@
 			}
 		}
 	}
+	&.cs-classic {
+		.main {
+			.block-views {
+				h2.block-title, h3 {
+			    background-position: -95px -914px;
+			    font-size: 29px;
+			    @media screen and (min-width: 768px) and (max-width: 1024px) {
+			      font-size: 27px;
+			    }
+			    @media screen and (max-width: 767px) {
+			      font-size: 23px;
+			    }
+			  }
+			}
+		}
+  }
+  &.cs-elegant {
+  	.main {
+			.block-views {
+				h2.block-title, h3 {
+			    background-position: -95px -569px;
+			    font-size: 30px;
+			    @media screen and (min-width: 768px) and (max-width: 1024px) {
+			      font-size: 28px;
+			    }
+			    @media screen and (max-width: 767px) {
+			      font-size: 24px;
+			    }
+			  }
+			}
+		}
+  }
 }
