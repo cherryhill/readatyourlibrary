@@ -271,7 +271,7 @@ function play_library_program_user_insert(&$edit, $account, $category) {
   $result = $query->execute();
   
   // set user age in session to use in reward validation
-  $_SESSION['user_birth_dt'] = strtotime($edit['profile_main']['field_user_birthday'][$lang][0]['value']);
+  $_SESSION['user_birth_dt'] = strtotime($edit['profile_main']['field_user_birthday']['und'][0]['value']);
   foreach ($result as $entity_key => $entity_values) {
     if ($entity_key == 'activity') {
       foreach ($entity_values as $entity) {
@@ -522,10 +522,7 @@ function pl_reward_claim($reward_id, $account_uid, $category, $filters = NULL, $
     foreach ($lang as $key => $value) {
       ${$key} = $value;
     }
-
 		$raffle_entry->field_raffle_claim_id[$field_raffle_claim_id][0]['target_id'] = $reward_id;
-      // echo '<pre>'; print_r($raffle_entry); die();
-    
 		entity_save('reward', $raffle_entry);
 		drupal_set_message(t($raffleOnsMsg),'status');
 		_play_library_program_send_pm_message($account_uid, $raffle_pm_sub, $raffle_pm_body);
@@ -1198,9 +1195,7 @@ function _get_term_from_name($term_name, $vocabulary_name) {
     //$entity = entity_load('activity',$activity_id);
     pl_add_taxonomy_term($term_name, $vocabulary_name);
     $term = taxonomy_get_term_by_name($term_name, $vocabulary_name);
-    // print_r("bsdasda");
   }
-  // print_r(reset(reset($term)));die();
   return reset(reset($term));
 }
 
@@ -1510,14 +1505,12 @@ function _play_library_program_add_points_to_rewards($activity_ids, $points_to_a
     $user = user_load($account_uid);
     $role_ids = array_keys($user->roles); 
   }
-  // print_r($user->roles);
+
   //Get role ids from session if not available 
   if(sizeof($role_ids)<2){
     $role_ids = array_keys($_SESSION['program_user_role_id']);
-    // print_r("session");
   }
-  // print_r($role_ids);die();
-  	
+
   if (!is_array($activity_ids)){
     $activity_ids = array($activity_ids);
   }
@@ -1542,78 +1535,77 @@ function _play_library_program_add_points_to_rewards($activity_ids, $points_to_a
     $dob_timestamp = $_SESSION['user_birth_dt'];
     // unset($_SESSION['user_birth_dt']);
   }
+
   //Calculate user Age
   $current_time = time();
   $user_age = floor(($current_time - $dob_timestamp) / (60*60*24*365));
-
   // get reward field values for all associated rewards
-  // if (isset($dob_timestamp)){ 
-    $que = db_select('eck_reward', 'eck_r');
-    $que->leftjoin('field_data_field_points', 'fdfp', 'eck_r.id = fdfp.entity_id');
-    $que->leftjoin('field_data_field_activities_reward', 'fdfar', 'eck_r.id = fdfar.entity_id');
-    $que->leftjoin('field_data_field_roles_reward', 'fdfrr', 'eck_r.id = fdfrr.entity_id');
-    $que->leftjoin('field_data_field_status_reward', 'fdfsr', 'eck_r.id = fdfsr.entity_id');
-    $que->leftjoin('field_data_field_repeatable', 'fdfr', 'eck_r.id = fdfr.entity_id');
-    $que->leftjoin('field_data_field_age_group', 'fdfag', 'eck_r.id = fdfag.entity_id');
-    $que->leftjoin('field_data_field_maximum_num_reward', 'fdfmnr', 'eck_r.id = fdfmnr.entity_id');
-    $que->leftjoin('field_data_field_dates_reward', 'fdfdr', 'eck_r.id = fdfdr.entity_id');
-    $que->condition('fdfar.field_activities_reward_target_id', $activity_ids, 'IN');
-    // $que->condition(db_or()->condition('fdfag.field_age_group_from', $user_age, '<=')->isNull('fdfag.field_age_group_from'));
-    // $que->condition(db_or()->condition('fdfag.field_age_group_to', $user_age, '>=')->isNull('fdfag.field_age_group_to'));
-    $que->condition('fdfrr.field_roles_reward_value', $role_ids, 'IN');
-    // $que->condition('fdfdr.field_dates_reward_value', time(), '<');
-    // $que->condition('fdfdr.field_dates_reward_value2', time(), '>');
-    $que->condition('fdfsr.field_status_reward_value', 'active');
-    $que->fields('eck_r', array('id'));
-    $que->fields('fdfp', array('field_points_value'));
-    $que->fields('fdfr', array('field_repeatable_value'));
-    $que->fields('fdfdr', array('field_dates_reward_value'));
-    $que->fields('fdfdr', array('field_dates_reward_value2'));
-    $que->fields('fdfmnr', array('field_maximum_num_reward_value'));
-    $que->distinct('eck_r', array('id'));
-    $res = $que->execute()->fetchAll();
-    
-    //Add points to all retrived rewards
-    if(!empty($res)){
-      foreach ($res as $key => $value) {
-        if (strtotime($value->field_dates_reward_value)<= time() && strtotime($value->field_dates_reward_value2) >= time()){
-          $repeatable = $value->field_repeatable_value;
-          $max_repeat = $value->field_maximum_num_reward_value;
-          $reward_id = $value->id;
-          $rew_points = $value->field_points_value;
-          $receieved_rewards = pl_receieved_rewards($account_uid, $reward_id);
-          //get max repeat only if repeatable flag set
-          if ($repeatable == 0){
-            $max_repeat = 1;
-          }
-          if (!empty($max_repeat) || $max_repeat > 0){
-            $max_points = ($max_repeat-$receieved_rewards) *  $rew_points;
-          }else{
-            $max_points = $points_to_add;
-          }
-          //Add only points that are required for the reward
-          if($points_to_add < $max_points){
-            $reward_points_to_add = $points_to_add;
-          } else{
-            $reward_points_to_add = $max_points;
-          }      
-          if($reward_points_to_add > 0 ){
-            //Get reward term id
-            $term = _get_term_from_name('R_'.$reward_id, 'userpoints');
-            if(isset($term)){
-              $userpoint_rew = array(
-                'uid' => $account_uid,
-                'points' => $reward_points_to_add,
-                'tid' => $term,
-                'display' => 0,
-              );
-              userpoints_userpointsapi($userpoint_rew);
-            }
-          }
-        } // foreach ends here.
-      } // if conditions for giving rewards ends here.
-    }
-  // }
+  $que = db_select('eck_reward', 'eck_r');
+  $que->leftjoin('field_data_field_points', 'fdfp', 'eck_r.id = fdfp.entity_id');
+  $que->leftjoin('field_data_field_activities_reward', 'fdfar', 'eck_r.id = fdfar.entity_id');
+  $que->leftjoin('field_data_field_roles_reward', 'fdfrr', 'eck_r.id = fdfrr.entity_id');
+  $que->leftjoin('field_data_field_status_reward', 'fdfsr', 'eck_r.id = fdfsr.entity_id');
+  $que->leftjoin('field_data_field_repeatable', 'fdfr', 'eck_r.id = fdfr.entity_id');
+  $que->leftjoin('field_data_field_age_group', 'fdfag', 'eck_r.id = fdfag.entity_id');
+  $que->leftjoin('field_data_field_maximum_num_reward', 'fdfmnr', 'eck_r.id = fdfmnr.entity_id');
+  $que->leftjoin('field_data_field_dates_reward', 'fdfdr', 'eck_r.id = fdfdr.entity_id');
+  $que->condition('fdfar.field_activities_reward_target_id', $activity_ids, 'IN');
+  $que->condition(db_or()->condition('fdfag.field_age_group_from', $user_age, '<=')->isNull('fdfag.field_age_group_from'));
+  $que->condition(db_or()->condition('fdfag.field_age_group_to', $user_age, '>=')->isNull('fdfag.field_age_group_to'));
+  $que->condition('fdfrr.field_roles_reward_value', $role_ids, 'IN');
+  $que->condition('fdfdr.field_dates_reward_value', (date('Y-m-d h:i:s',time())), '<');
+  $que->condition('fdfdr.field_dates_reward_value2', (date('Y-m-d h:i:s',time())), '>');
+  $que->condition('fdfsr.field_status_reward_value', 'active');
+  $que->fields('eck_r', array('id'));
+  $que->fields('fdfp', array('field_points_value'));
+  $que->fields('fdfr', array('field_repeatable_value'));
+  $que->fields('fdfdr', array('field_dates_reward_value'));
+  $que->fields('fdfdr', array('field_dates_reward_value2'));
+  $que->fields('fdfmnr', array('field_maximum_num_reward_value'));
+  $que->distinct('eck_r', array('id'));
+  $res = $que->execute()->fetchAll();
+  
+  //Add points to all retrived rewards
+  if(!empty($res)){
+    foreach ($res as $key => $value) {
+      $repeatable = $value->field_repeatable_value;
+      $max_repeat = $value->field_maximum_num_reward_value;
+      $reward_id = $value->id;
+      $rew_points = $value->field_points_value;
+      $receieved_rewards = pl_receieved_rewards($account_uid, $reward_id);
+      
+      //get max repeat only if repeatable flag set
+      if ($repeatable == 0){
+        $max_repeat = 1;
+      }
+        
+      if (!empty($max_repeat) || $max_repeat > 0){
+        $max_points = ($max_repeat-$receieved_rewards) *  $rew_points;
+      }else{
+        $max_points = $points_to_add;
+      }
+
+      //Add only points that are required for the reward
+      if($points_to_add < $max_points){
+        $reward_points_to_add = $points_to_add;
+      } else{
+        $reward_points_to_add = $max_points;
+      }      
+      if($reward_points_to_add > 0 ){
+        //Get reward term id
+        $term = _get_term_from_name('R_'.$reward_id, 'userpoints');
+        if(isset($term)){
+          $userpoint_rew = array(
+            'uid' => $account_uid,
+            'points' => $reward_points_to_add,
+            'tid' => $term,
+            'display' => 0,
+          );
+          userpoints_userpointsapi($userpoint_rew);
+        }
+      }
+    } // foreach ends here.
+  } // if conditions for giving rewards ends here.
 }
 
 
@@ -1663,9 +1655,8 @@ function play_library_program_update_activity_entry($activity_entry_id, $update_
 	$activity = entity_load('activity', array($activity_id));
 	$activity_frequency_limit = play_library_program_frequency_limit(reset($activity), $update_time, $user_id);
 	$activity_time_limit = play_library_program_activity_time_limit(reset($activity), $update_time);
-
-	//print_r('message ' .$activity_frequency_limit.'||'.$activity_time_limit);
 	$activity_entry = entity_load('activity',array($activity_entry_id));
+
 	if ($activity_frequency_limit == TRUE && $activity_time_limit == TRUE){
 	    $w_activity = entity_metadata_wrapper('activity', reset($activity_entry));
 	    $w_activity->created = $update_time;
