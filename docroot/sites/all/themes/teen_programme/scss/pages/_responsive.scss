@@ -40,6 +40,15 @@
 	.pre-header {
 		padding-right: 0 !important;
 		padding-left: 0 !important;
+		padding-bottom: 0 !important;
+	}
+	.hamburger-wrapper {
+    display: inline-block;
+    width: 100%;
+    margin-bottom: 13px;
+	}
+	.mobile-menu-wrapper {
+    margin-top: 0;
 	}
 	.mobile-menu {
 		&.columns {
@@ -97,15 +106,6 @@
 				.menu {
 					margin-right: 10px;
 					margin-top: 0 !important;
-				}
-			}
-		}
-	}
-	.l-header {
-		.pre-header {
-			.menu {
-				.not-logged-in & {
-					margin-top: 15px;
 				}
 			}
 		}
