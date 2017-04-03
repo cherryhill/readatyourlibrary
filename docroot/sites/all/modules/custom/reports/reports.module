@@ -150,7 +150,7 @@ function readingPerBranch_submit($form, &$form_state) {
   }
 
   $roleFilter = $form_state['values']['role_filter_br'];
-  $roleFltr = $form['role_filter_br']['#options'][$roleFilter];
+  $roleFltr = trim(strtolower($form['role_filter_br']['#options'][$roleFilter]));
 
   if(!empty($roleFltr)){
     $rolFilr = 'Role filter: '.$roleFltr;
@@ -201,18 +201,18 @@ function readingPerBranch_submit($form, &$form_state) {
 
       $query->condition('u.uid', $actUsers, 'IN');
 
-      if($roleFltr == 'Group Lead') {
+      if($roleFltr == 'group lead') {
         $query->join('users_roles', 'role', 'role.uid = pf.uid');
-        $query->join('field_data_field_no_of_patron_in_the_group','noPatron','noPatron.entity_id = pf.pid');
+        $query->join('field_data_field_no_of_patrons_in_the_group','noPatron','noPatron.entity_id = pf.pid');
         $query->fields('role',array('rid','uid'));
-        $query->fields('noPatron',array('field_no_of_patron_in_the_group_value'));
+        $query->fields('noPatron',array('field_no_of_patrons_in_the_group_value'));
         $query->condition('role.rid',$roleFilter);
 
         $query->fields('branch', array('field_library_branch_tid'));
         $query->groupBy('branch.field_library_branch_tid');
-        $query->addExpression('sum(noPatron.field_no_of_patron_in_the_group_value)', 'userCount');
+        $query->addExpression('sum(noPatron.field_no_of_patrons_in_the_group_value)', 'userCount');
         $result = $query->execute()->fetchAll();
-      } else if($roleFltr == 'Patron'){
+      } else if($roleFltr == 'patron'){
         $query->join('users_roles', 'role', 'role.uid = pf.uid');
         $query->fields('role',array('rid','uid'));
         $query->condition('role.rid',$roleFilter);
@@ -418,18 +418,18 @@ function readingPerSchool_submit($form, &$form_state) {
 
       $query->condition('u.uid', $actUsers, 'IN');
 
-      if($roleFltr == 'Group Lead') {
+      if($roleFltr == 'group lead') {
         $query->join('users_roles', 'role', 'role.uid = pf.uid');
         $query->join('field_data_field_no_of_patron_in_the_group','noPatron','noPatron.entity_id = pf.pid');
         $query->fields('role',array('rid','uid'));
-        $query->fields('noPatron',array('field_no_of_patron_in_the_group_value'));
+        $query->fields('noPatron',array('field_no_of_patrons_in_the_group_value'));
         $query->condition('role.rid',$roleFilter);
 
         $query->fields('sch', array('field_school_tid'));
         $query->groupBy('sch.field_school_tid');
-        $query->addExpression('sum(noPatron.field_no_of_patron_in_the_group_value)', 'userCount');
+        $query->addExpression('sum(noPatron.field_no_of_patrons_in_the_group_value)', 'userCount');
         $result = $query->execute()->fetchAll();
-      } else if($roleFltr == 'Patron'){
+      } else if($roleFltr == 'patron'){
         $query->join('users_roles', 'role', 'role.uid = pf.uid');
         $query->fields('role',array('rid','uid'));
         $query->condition('role.rid',$roleFilter);

@@ -1,0 +1,73 @@
+.view--user-public-profile {
+	.view-content {
+		.page-users-public-profile & {
+			display: inline-block;
+			width: 100%;
+		}
+		.views-field-ops {
+			float: right;
+			a {
+				@extend .blue-button;
+			}
+		}
+	}
+}
+
+.block-views { 
+	.page-users-public-profile.cs-default & {
+		width: 30%;
+		float: left;
+		margin-right: 3%; 
+	  border-radius: 15px;
+	  overflow: hidden;
+	  box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+	  margin-bottom: 35px;
+	  padding-bottom: 15px;
+	  font-family: $arial;
+	  font-weight: normal;
+	  -webkit-font-smoothing: antialiased;
+	  -moz-osx-font-smoothing: grayscale;
+	  text-rendering: optimizeLegibility;
+	  -moz-font-smoothing: grayscale;
+	  font-size: 17px;
+	  background-color: $blue;
+		color: $white; 
+  }
+}
+.page-users-public-profile {		
+	.block-views {
+		h2.block-title, h3 {
+			line-height: 1.4;
+		  @include primary_fonts;
+		  margin: 0;
+		  height: 99px;
+		  width: 100%;
+		  background: url("../images/stroke");
+		  padding-top: 14px;
+		  border-radius: 15px 15px 0 0;
+		  padding-left: 35px;
+		  text-transform: capitalize;
+		  * {
+		    font-size: inherit;
+		    font-family: inherit;
+		    color: inherit;
+		    font-weight: inherit;
+		  }
+		  @extend .white-text;
+		}
+	}
+	&.cs-default {
+		.block-views {
+			h2.block-title, h3 {
+		    background-position: -95px -226px;
+		    font-size: 28px;
+		    @media screen and (min-width: 768px) and (max-width: 1024px) {
+		       font-size: 26px;
+		    }
+		    @media screen and (max-width: 767px) {
+		       font-size: 22px;
+		    }
+		  }
+		}
+	}
+}
