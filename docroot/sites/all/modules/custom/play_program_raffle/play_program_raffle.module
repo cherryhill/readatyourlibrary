@@ -414,7 +414,7 @@ function ppr_raffle_entry_process($form, &$form_state) {
 
   $form['raffle_list'] = array(
     '#type' =>'markup',
-    '#markup' => t("<a href = ".$url."/reward-winners>Show list of all the winners in this raffle</a>"),
+    '#markup' => t("<a href = ".$url."/reward-winners>Reward Winners List</a>"),
   );
 
   $form['name_raffle'] = array(
@@ -481,7 +481,7 @@ function ppr_raffle_entry_process($form, &$form_state) {
 
   $form['back_button'] = array(
     '#type' =>'markup',
-    '#markup' => t("<a href = ".$url."/admin/content/dashboard> Go Back </a>"),
+    '#markup' => t("<a href = ".$url."/admin-dashboard> Go Back </a>"),
   );
 
   $form['raff_winners'] = array(
