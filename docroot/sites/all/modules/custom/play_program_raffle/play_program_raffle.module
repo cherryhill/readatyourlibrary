@@ -76,7 +76,7 @@ function progress_user_block_program() {
     $resu = $quer->execute()->fetchAll();
     $day_count = count($resu);
     
-    $req_points = play_library_program_next_close_reward_points($activity_ids);
+    $req_points = play_library_program_next_close_reward_points($resu->field_activity_entry_activity_target_id);
         if($req_points == 1) {
           $next_rew = t('<strong>'.$req_points.'</strong> more day of reading needed to receive your next prize');
         }
