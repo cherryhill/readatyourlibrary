@@ -8043,6 +8043,11 @@ a.th {
   font-weight: 700;
 }
 
+/* line 429, ../scss/base/_common.scss */
+.reveal-modal-bg {
+  display: none !important;
+}
+
 /* line 4, ../scss/base/_drupal.scss */
 .admin-menu .fixed {
   top: 1.8125em;
@@ -14961,6 +14966,32 @@ p.more-link a:after, .block-play_library_teens_leaderboard .portlet-content li +
   /* line 509, ../scss/pages/_messages.scss */
   .page-messages table thead tr th, .page-messages table tr td {
     padding: 0 0 0 10px;
+  }
+}
+/* line 3, ../scss/pages/_myaccount.scss */
+.page-user .main .primary-tabs {
+  display: none;
+}
+/* line 7, ../scss/pages/_myaccount.scss */
+.page-user .main .block-play-library-custom-user-profile-tabs ul {
+  list-style: none;
+  width: 100%;
+}
+/* line 10, ../scss/pages/_myaccount.scss */
+.page-user .main .block-play-library-custom-user-profile-tabs ul li {
+  display: inline-block;
+}
+/* line 13, ../scss/pages/_myaccount.scss */
+.page-user .main .block-play-library-custom-user-profile-tabs ul li:first-child a {
+  margin-left: 0;
+}
+
+@media screen and (max-width: 767px) {
+  /* line 27, ../scss/pages/_myaccount.scss */
+  .page-user .main .block-play-library-custom-user-profile-tabs ul {
+    text-align: center;
+    max-width: 320px;
+    margin: 0 auto 30px;
   }
 }
 /* line 2, ../scss/pages/_overlay.scss */
