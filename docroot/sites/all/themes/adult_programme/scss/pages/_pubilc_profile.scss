@@ -1,0 +1,161 @@
+.main {	
+	.view--user-public-profile {
+		.view-content {
+			.page-users-public-profile & {
+				display: inline-block;
+				width: 100%;
+				margin-bottom: 50px;
+			}
+			.views-field-ops {
+				float: right;
+				position: relative;
+				top: -50px;
+				a {
+					@extend .button;
+				}
+			}
+		}
+	}
+}
+.main {
+	.block-views { 
+		.page-users-public-profile.cs-default & {
+			width: 30%;
+			float: left;
+			margin-right: 3%; 
+		  border-radius: 15px;
+		  overflow: hidden;
+		  box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+		  margin-bottom: 35px;
+		  padding-bottom: 15px;
+    	font-family: $open-sans;
+    	font-weight: 400;
+		  -webkit-font-smoothing: antialiased;
+		  -moz-osx-font-smoothing: grayscale;
+		  text-rendering: optimizeLegibility;
+		  -moz-font-smoothing: grayscale;
+		  font-size: 17px;
+		  background-color: $purple;;
+			color: $white; 
+	  }
+	  .page-users-public-profile.cs-classic & {
+	  	width: 30%;
+			float: left;
+			margin-right: 3%; 
+		  border-radius: 15px;
+		  overflow: hidden;
+		  box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+		  margin-bottom: 35px;
+		  padding-bottom: 15px;
+		  font-family: $Exo2;
+   		font-weight: 500;
+	    -webkit-font-smoothing: antialiased;
+	    -moz-osx-font-smoothing: grayscale;
+	    text-rendering: optimizeLegibility;
+	    -moz-font-smoothing: grayscale;
+		  font-size: 17px;
+			color: $white; 
+	  }
+	  .page-users-public-profile.cs-elegant & {
+	  	width: 30%;
+			float: left;
+			margin-right: 3%; 
+		  border-radius: 15px;
+		  overflow: hidden;
+		  box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+		  margin-bottom: 35px;
+		  padding-bottom: 15px;
+		  font-family: $Roboto;
+    	font-weight: 400;
+	    -webkit-font-smoothing: antialiased;
+	    -moz-osx-font-smoothing: grayscale;
+	    text-rendering: optimizeLegibility;
+	    -moz-font-smoothing: grayscale;
+		  font-size: 17px;
+			color: $white; 
+	  }
+	}
+}
+.page-users-public-profile {		
+	.main {
+		.block-views {
+			h2.block-title, h3 {
+				line-height: 1.4;
+			  @include heading-font;
+			  margin: 0;
+			  height: 99px;
+			  width: 100%;
+			  background: url("../images/stroke");
+			  padding-top: 14px;
+			  border-radius: 15px 15px 0 0;
+			  padding-left: 35px;
+			  text-transform: capitalize;
+			  * {
+			    font-size: inherit;
+			    font-family: inherit;
+			    color: inherit;
+			    font-weight: inherit;
+			  }
+			  @extend .white-text;
+			}
+			.view-content {
+				padding: 20px;
+				a {
+					color: $white;
+				}
+			}
+		}
+	}
+	&.cs-default {
+		.main {
+			.block-views {
+				h2.block-title, h3 {
+			    font-size: 26px;
+
+			    @media screen and (max-width: 767px) {
+			      font-size: 22px;
+			    }
+			    @media screen and (min-width: 768px) and (max-width: 1024px) {
+			      font-size: 24px;
+			    }
+
+			    color: $white;
+			  }
+			}
+		}
+	}
+	&.cs-classic {
+		.main {
+			.block-views {
+				h2.block-title, h3 {
+			    font-size: 28px;
+
+			    @media screen and (max-width: 767px) {
+			      font-size: 24px;
+			    }
+			    @media screen and (min-width: 768px) and (max-width: 1024px) {
+			      font-size: 26px;
+			    }
+
+			    color: $white;
+			  }
+			}
+		}
+  }
+  &.cs-elegant {
+  	.main {
+			.block-views {
+				h2.block-title, h3 {
+			   font-size: 28px;
+			    color: $gray;
+			    @media screen and (max-width: 767px) {
+			      font-size: 24px;
+			    }
+			    @media screen and (min-width: 768px) and (max-width: 1024px) {
+			      font-size: 26px;
+			    }
+			  }
+			}
+		}
+  }
+}
