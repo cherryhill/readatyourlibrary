@@ -62,6 +62,12 @@ function readingPerBranch($form, $form_state) {
 
   $options = all_activities();
   $optionRole = user_roles();
+
+  foreach ($optionRole as $key => $value) {
+    if (strtolower(trim($value))=='patron' || strtolower(trim($value))=='group lead'){
+      $optionRole_filter[$key] = $value;
+    }
+  }
   
   $form['activity_branch'] = array(
     '#type' => 'select',
@@ -100,7 +106,7 @@ function readingPerBranch($form, $form_state) {
   $form['role_filter_br'] = array(
     '#type' => 'select',
     '#title' => 'Roles',
-    '#options' => $optionRole,
+    '#options' => $optionRole_filter,
   );
 
   $form['submit'] = array(
@@ -278,6 +284,12 @@ function readingPerSchool($form, $form_state) {
   $options = all_activities();
   $optionRole = user_roles();
 
+  foreach ($optionRole as $key => $value) {
+    if (strtolower(trim($value))=='patron' || strtolower(trim($value))=='group lead'){
+      $optionRole_filter[$key] = $value;
+    }
+  }
+
   $form['act_sc_activity'] = array(
     '#type' => 'select',
     '#title' => 'Activity',
@@ -315,7 +327,7 @@ function readingPerSchool($form, $form_state) {
   $form['role_filter_sc'] = array(
     '#type' => 'select',
     '#title' => 'Roles',
-    '#options' => $optionRole,
+    '#options' => $optionRole_filter,
   );
 
   $form['submit'] = array(
@@ -457,11 +469,12 @@ function readingPerSchool_submit($form, &$form_state) {
         $rows[] = array(
           $name,
           $value->userCount,
+          $activityFiltr.$countFilter.$ageFilter.$rolFilr,
         );
       }
 
       if(!empty($result)){
-        $header = array('School', 'Number of Users',$activityFiltr.$countFilter.$ageFilter.$rolFilr);
+        $header = array('School', 'Number of Users','Filters Used');
         $_SESSION['act_sc_outputReg'] = theme('table', array('header' => $header, 'rows' => $rows)); 
       } else {
         $_SESSION['act_sc_outputReg'] = 'No Result Found';
