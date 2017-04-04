@@ -11,7 +11,7 @@
 				position: relative;
 				top: -50px;
 				a {
-					@extend .blue-button;
+					@extend .button;
 				}
 			}
 		}
@@ -28,14 +28,14 @@
 		  box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
 		  margin-bottom: 35px;
 		  padding-bottom: 15px;
-		  font-family: $arial;
-		  font-weight: normal;
+    	font-family: $open-sans;
+    	font-weight: 400;
 		  -webkit-font-smoothing: antialiased;
 		  -moz-osx-font-smoothing: grayscale;
 		  text-rendering: optimizeLegibility;
 		  -moz-font-smoothing: grayscale;
 		  font-size: 17px;
-		  background-color: $blue;
+		  background-color: $purple;;
 			color: $white; 
 	  }
 	  .page-users-public-profile.cs-classic & {
@@ -47,14 +47,13 @@
 		  box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
 		  margin-bottom: 35px;
 		  padding-bottom: 15px;
-		  font-family: $ptsans;
-	    font-weight: normal;
+		  font-family: $Exo2;
+   		font-weight: 500;
 	    -webkit-font-smoothing: antialiased;
 	    -moz-osx-font-smoothing: grayscale;
 	    text-rendering: optimizeLegibility;
 	    -moz-font-smoothing: grayscale;
-		  font-size: 19px;
-		  background-color: $darkblue;
+		  font-size: 17px;
 			color: $white; 
 	  }
 	  .page-users-public-profile.cs-elegant & {
@@ -66,14 +65,13 @@
 		  box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
 		  margin-bottom: 35px;
 		  padding-bottom: 15px;
-		  font-family: $open-sans;
-	    font-weight: normal;
+		  font-family: $Roboto;
+    	font-weight: 400;
 	    -webkit-font-smoothing: antialiased;
 	    -moz-osx-font-smoothing: grayscale;
 	    text-rendering: optimizeLegibility;
 	    -moz-font-smoothing: grayscale;
-		  font-size: 19px;
-		  background-color: $blue;
+		  font-size: 17px;
 			color: $white; 
 	  }
 	}
@@ -83,7 +81,7 @@
 		.block-views {
 			h2.block-title, h3 {
 				line-height: 1.4;
-			  @include primary_fonts;
+			  @include heading-font;
 			  margin: 0;
 			  height: 99px;
 			  width: 100%;
@@ -112,14 +110,16 @@
 		.main {
 			.block-views {
 				h2.block-title, h3 {
-			    background-position: -95px -226px;
-			    font-size: 28px;
-			    @media screen and (min-width: 768px) and (max-width: 1024px) {
-			       font-size: 26px;
-			    }
+			    font-size: 26px;
+
 			    @media screen and (max-width: 767px) {
-			       font-size: 22px;
+			      font-size: 22px;
 			    }
+			    @media screen and (min-width: 768px) and (max-width: 1024px) {
+			      font-size: 24px;
+			    }
+
+			    color: $white;
 			  }
 			}
 		}
@@ -128,14 +128,16 @@
 		.main {
 			.block-views {
 				h2.block-title, h3 {
-			    background-position: -95px -914px;
-			    font-size: 29px;
-			    @media screen and (min-width: 768px) and (max-width: 1024px) {
-			      font-size: 27px;
-			    }
+			    font-size: 28px;
+
 			    @media screen and (max-width: 767px) {
-			      font-size: 23px;
+			      font-size: 24px;
 			    }
+			    @media screen and (min-width: 768px) and (max-width: 1024px) {
+			      font-size: 26px;
+			    }
+
+			    color: $white;
 			  }
 			}
 		}
@@ -144,13 +146,13 @@
   	.main {
 			.block-views {
 				h2.block-title, h3 {
-			    background-position: -95px -569px;
-			    font-size: 30px;
-			    @media screen and (min-width: 768px) and (max-width: 1024px) {
-			      font-size: 28px;
-			    }
+			   font-size: 28px;
+			    color: $gray;
 			    @media screen and (max-width: 767px) {
 			      font-size: 24px;
+			    }
+			    @media screen and (min-width: 768px) and (max-width: 1024px) {
+			      font-size: 26px;
 			    }
 			  }
 			}
