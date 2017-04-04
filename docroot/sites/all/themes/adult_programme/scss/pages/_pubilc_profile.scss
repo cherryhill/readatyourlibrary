@@ -22,7 +22,7 @@
 		.page-users-public-profile.cs-default & {
 			width: 30%;
 			float: left;
-			margin-right: 3%; 
+			margin-right: 5%; 
 		  border-radius: 15px;
 		  overflow: hidden;
 		  box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
@@ -41,7 +41,7 @@
 	  .page-users-public-profile.cs-classic & {
 	  	width: 30%;
 			float: left;
-			margin-right: 3%; 
+			margin-right: 5%; 
 		  border-radius: 15px;
 		  overflow: hidden;
 		  box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
@@ -59,7 +59,7 @@
 	  .page-users-public-profile.cs-elegant & {
 	  	width: 30%;
 			float: left;
-			margin-right: 3%; 
+			margin-right: 5%; 
 		  border-radius: 15px;
 		  overflow: hidden;
 		  box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
@@ -103,6 +103,9 @@
 				a {
 					color: $white;
 				}
+			}
+			&:last-of-type {
+				margin-right: 0 !important;
 			}
 		}
 	}
@@ -158,4 +161,26 @@
 			}
 		}
   }
+}
+
+@media screen and (max-width: 767px) {
+	.page-users-public-profile {
+		.main {
+			.view--user-public-profile {
+				display: inline-block;
+		    width: 100%;
+		    margin-bottom: 50px;
+				.view-content {
+					text-align: center;
+					max-width: 320px;
+					margin: 0 auto;
+					display: block;
+				}
+			}
+			.block-views {
+				width: 100% !important;
+				margin-right: 0 !important;
+			}
+		}
+	}
 }
