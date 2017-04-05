@@ -211,7 +211,7 @@ function play_progress_bingo_cards_progress_submit($form, $form_state) {
     $record_for_patron = TRUE;
   }
   else{
-    $user_id = $user->id;
+    $user_id = $user->uid;
     $record_for_patron = FALSE;
   }
 
