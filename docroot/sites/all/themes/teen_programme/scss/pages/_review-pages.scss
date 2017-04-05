@@ -676,3 +676,73 @@ h2.reviews-title, .view-booklist-slideshow .view-header h1 {
     width: 100%;
   }
 }
+
+/*----------------css for movie,music,videogame-review---------------------*/
+  .node-type-movie-review, .node-type-music-review,
+  .node-type-video-game-review {
+    #page-title {
+      display: none;
+    }
+    .img_review {
+      width: 25%;
+      float: left;
+      table {
+        border: none;
+        tbody {
+          border-top: none;
+        }
+      }
+    }
+    .review_movie {
+      width: 75%;
+      float: left;
+    }
+    .reviewer {
+      @extend h5;
+    }
+    .created, .avatar {
+      margin-right: 7px;
+      float: left;
+    }
+    .avatar {
+      height: 32px;
+      width: 32px;
+      object-fit: contain;
+    }
+  }
+  .movielikefollow-wrap {
+    margin-bottom: 15px;
+    a {
+      @extend .button;
+    }
+    .movie-likes {
+      float: left;
+      margin-right: 20px;
+    }
+    .like-here {
+      a {
+        position: relative;
+        padding-right: 30px;
+        &:after {
+          content: "";
+          width: 25px;
+          height: 25px;
+          display: inline-block;
+          background: url("../images/star-sprite") no-repeat scroll center center;
+          position: absolute;
+          right: 7px;
+          top: 0px;
+          .cs-default & {
+            background-position: -16px -204px;
+          }
+          .cs-classic & {
+            background-position: -16px -147px;
+          }
+          .cs-elegant & {
+            background-position: -16px -204px;
+          }
+        }
+      }
+    }
+  }
+/*----------------css for movie,music,videogame-review---------------------*/
