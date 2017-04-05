@@ -75,117 +75,149 @@
  * @see template_process()
  */
 ?>
-<article id="node-<?php print $node->nid; ?>" class="<?php print $classes; ?>"<?php print $attributes; ?>>
+<?php
 
-  <?php print render($title_prefix); ?>
-  <?php if (!$page): ?>
-    <?php if (!$page): ?>
-      <h2<?php print $title_attributes; ?>><a href="<?php print $node_url; ?>"><?php print $title; ?></a></h2>
-    <?php endif; ?>
-  <?php endif; ?>
-  <?php print render($title_suffix); ?>
+hide($content['comments']);
+hide($content['links']);
+hide($content['field_tags']);
 
-  <?php if ($display_submitted): ?>
-    <div class="posted">
-      <?php if ($user_picture): ?>
-        <?php print $user_picture; ?>
-      <?php endif; ?>
+$nid_node = $node->nid;
+$title_node = $node->title;
+
+$bimage = field_get_items('node', $node, 'field_music_cover_image_link');
+
+?>
+<div class="img_review"><?php
+if($node->status == 1) {
+
+$book_cover_image = $bimage['0']['safe_value'];
+
+if ($book_cover_image) {                 
+  $bimg = "<img src='".trim($book_cover_image)."' style='width:240px;height:360px;'>";  
+}
+else {
+  $bimg =  "<img src='http://www.clker.com/cliparts/7/1/a/f/11971220941184963828dniezby_Generic_Book.svg.med.png' style='width:240px;height:360px;'>";
+}  
+  print  "<table><tr><td>".$bimg."</td>";
+  print  "</tr></table>";}?>
+</div>
+
+<div class="review_music">
+
+  <article id="node-<?php print $node->nid; ?>" class="<?php print $classes; ?>"<?php print $attributes; ?>>
+    <div class="title_review">
+      <h2><?php print $title_node ?></h2>
     </div>
-  <?php endif; ?>
+    <?php print render($title_prefix); ?>
+    <?php if (!$page): ?>
+      <?php if (!$page): ?>
+        <h2<?php print $title_attributes; ?>><a href="<?php print $node_url; ?>"><?php print $title; ?></a></h2>
+      <?php endif; ?>
+    <?php endif; ?>
+    <?php print render($title_suffix); ?>
 
-  <?php
-  	$genre = $content['field_genre_music'][0]['#markup'];
-		$genre_other_option = field_get_items('node', $node, 'field_genre_other_option_music');
-		$artist = field_get_items('node', $node, 'field_artist_performer');
-  	$catalog_title = $content['field_catalog_link_music'][0]['#element']['title'];
-  	$catalog_link = $content['field_catalog_link_music'][0]['#element']['url'];
-		$review = field_get_items('node', $node, 'body');
+    <?php if ($display_submitted): ?>
+      <div class="posted">
+        <?php if ($user_picture): ?>
+          <?php print $user_picture; ?>
+        <?php endif; ?>
+      </div>
+    <?php endif; ?>
 
-	  global $base_url;
-	  $reviewer = $node->name; 
-	  $node_uid = $node->uid;
-	  $node_created = $node->created;
-	  $profile = profile2_load_by_user($node->uid);
-	  $pid = $profile['main']->pid;
-	  $node = node_load($nid);
-	  $node_privacy_field = field_get_items('node', $node, 'field_please_select_one_music');
-	  $node_privacy = $node_privacy_field[0]['value'];
-	  $nid_node = $node->nid;
+    <?php
+    	$genre = $content['field_genre_music'][0]['#markup'];
+  		$genre_other_option = field_get_items('node', $node, 'field_genre_other_option_music');
+  		$artist = field_get_items('node', $node, 'field_artist_performer');
+    	$catalog_title = $content['field_catalog_link_music'][0]['#element']['title'];
+    	$catalog_link = $content['field_catalog_link_music'][0]['#element']['url'];
+  		$review = field_get_items('node', $node, 'body');
 
-	  $query_img_id = db_select('field_data_field_user_avatar','av')
-	    ->fields('av',array('field_user_avatar_target_id'))
-	    ->condition('entity_id',$pid)
-	    ->execute()
-	    ->fetchAssoc();
-	  $target_id = $query_img_id['field_user_avatar_target_id'];
+  	  global $base_url;
+  	  $reviewer = $node->name; 
+  	  $node_uid = $node->uid;
+  	  $node_created = $node->created;
+  	  $profile = profile2_load_by_user($node->uid);
+  	  $pid = $profile['main']->pid;
+  	  $node = node_load($nid);
+  	  $node_privacy_field = field_get_items('node', $node, 'field_please_select_one_music');
+  	  $node_privacy = $node_privacy_field[0]['value'];
+  	  $nid_node = $node->nid;
 
-	  if(isset($target_id)){
-	    $query = db_select('field_data_field_avatar_image', 't');
-	    $query->join('file_managed', 'n', 'n.fid = t.field_avatar_image_fid');
-	    $result = $query
-	      ->fields('n', array('uri'))
-	      ->condition('t.entity_id', $target_id)
-	      ->execute();
-	    $img_uri = $result->fetchObject();
-	    $img_uri = $img_uri->uri;
-	    $img_path = file_create_url($img_uri);
-	  }
-      if(isset($img_uri)){
-        $img = "<img src='$img_path' style='height:32px; width:32px; object-fit:contain;'>";
-	  }
-		
-		$query = db_select('flag_counts','count')
-      ->fields('count',array('count'))
-      ->condition('entity_id',$nid_node)
-      ->execute()
-      ->fetchAssoc();
-    $counts = $query['count'];
+  	  $query_img_id = db_select('field_data_field_user_avatar','av')
+  	    ->fields('av',array('field_user_avatar_target_id'))
+  	    ->condition('entity_id',$pid)
+  	    ->execute()
+  	    ->fetchAssoc();
+  	  $target_id = $query_img_id['field_user_avatar_target_id'];
 
-		$genre_other_option_value = $genre_other_option[0]['safe_value'];
-		$artist_value = $artist[0]['safe_value'];
-		$review_value = $review['0']['safe_value']
-  ?>
-  <div class="musiclikefollow-wrap">
-  <div class="music-likes">
-  	<div class="like-count">
-      <?php if(isset($counts)){ print '<span class = "lk-count">Likes: </span>'.$counts; } ?>
+  	  if(isset($target_id)){
+  	    $query = db_select('field_data_field_avatar_image', 't');
+  	    $query->join('file_managed', 'n', 'n.fid = t.field_avatar_image_fid');
+  	    $result = $query
+  	      ->fields('n', array('uri'))
+  	      ->condition('t.entity_id', $target_id)
+  	      ->execute();
+  	    $img_uri = $result->fetchObject();
+  	    $img_uri = $img_uri->uri;
+  	    $img_path = file_create_url($img_uri);
+  	  }
+        if(isset($img_uri)){
+          $img = "<img src='$img_path' style='height:32px; width:32px; object-fit:contain;'>";
+  	  }
+  		
+  		$query = db_select('flag_counts','count')
+        ->fields('count',array('count'))
+        ->condition('entity_id',$nid_node)
+        ->execute()
+        ->fetchAssoc();
+      $counts = $query['count'];
+
+  		$genre_other_option_value = $genre_other_option[0]['safe_value'];
+  		$artist_value = $artist[0]['safe_value'];
+  		$review_value = $review['0']['safe_value']
+    ?>
+    <div class="musiclikefollow-wrap">
+    <div class="music-likes">
+    	<div class="like-count">
+        <?php if(isset($counts)){ print '<span class = "lk-count">Likes: </span>'.$counts; } ?>
+    	</div>
+    	<div class="like-here">
+    		<?php print flag_create_link('like', $node->nid) ?>
+    	</div>
+    </div>
+    <div class="follow_link_musicreview">
+    	<?php if($node_privacy === 'public'){ print flag_create_link('follow', $node->uid); } ?>
+    </div>
+    </div>
+    <div class="music-review">
+  	  <div><?php print 'Artist: '.$artist_value;	?></div>
+  	  <div>
+  	  	<?php 
+  	  		if(isset($genre)){
+  		  		if($genre == 'Other'){
+  		  			print 'Genre: '.$genre_other_option_value;
+  		  		}else{
+  		  			print 'Genre: '.$genre;
+  		  		}
+  	  		}
+  	  	?>
+  	  </div>
+  	  <div><?php if(isset($catalog_link)){ echo ' <a href ="'.$catalog_link.'" target="_blank">View in Library Catalog</a>'; }	?></div>
+  	  <div>
+  	  	<p class="reviewer">
+      	<span class = "created"><?php if ($node_privacy == 'public' || $node_privacy == 'private'){ print 'Reviewed by '; }?></span><span class="avatar"><?php if ($node_privacy == 'public' || $node_privacy == 'private') { print $img; } ?></span><span class ="name_author"><?php if ($node_privacy == 'public' || $node_privacy == 'private'){ print "<a href = '$base_url/users/public_profile/$node_uid' class = 'user_profile_node'>".' '.$reviewer.'</a>'; } ?></span>
+      	</p>
+  	  </div>
+  	  <p class="date_created"><?php print date('F d, Y',$node_created) ?></p>
+  	  <div><?php print $review_value;	?></div>
+
   	</div>
-  	<div class="like-here">
-  		<?php print flag_create_link('like', $node->nid) ?>
-  	</div>
-  </div>
-  <div class="follow_link_musicreview">
-  	<?php if($node_privacy === 'public'){ print flag_create_link('follow', $node->uid); } ?>
-  </div>
-  </div>
-  <div class="music-review">
-	  <div><?php print 'Artist: '.$artist_value;	?></div>
-	  <div>
-	  	<?php 
-	  		if(isset($genre)){
-		  		if($genre == 'Other'){
-		  			print 'Genre: '.$genre_other_option_value;
-		  		}else{
-		  			print 'Genre: '.$genre;
-		  		}
-	  		}
-	  	?>
-	  </div>
-	  <div><?php if(isset($catalog_link)){ echo ' <a href ="'.$catalog_link.'" target="_blank">View in Library Catalog</a>'; }	?></div>
-	  <div>
-	  	<p class="reviewer">
-    	<span class = "created"><?php if ($node_privacy == 'public' || $node_privacy == 'private'){ print 'Reviewed by '; }?></span><span class="avatar"><?php if ($node_privacy == 'public' || $node_privacy == 'private') { print $img; } ?></span><span class ="name_author"><?php if ($node_privacy == 'public' || $node_privacy == 'private'){ print "<a href = '$base_url/users/public_profile/$node_uid' class = 'user_profile_node'>".' '.$reviewer.'</a>'; } ?></span>
-    	</p>
-	  </div>
-	  <p class="date_created"><?php print date('F d, Y',$node_created) ?></p>
-	  <div><?php print $review_value;	?></div>
+    <?php if (!empty($content['field_tags']) && !$is_front): ?>
+      <?php print render($content['field_tags']) ?>
+    <?php endif; ?>
 
-	</div>
-  <?php if (!empty($content['field_tags']) && !$is_front): ?>
-    <?php print render($content['field_tags']) ?>
-  <?php endif; ?>
+    <?php print render($content['links']); ?>
+    <?php print render($content['comments']); ?>
 
-  <?php print render($content['links']); ?>
-  <?php print render($content['comments']); ?>
-
-</article>
+  </article>
+</div>
