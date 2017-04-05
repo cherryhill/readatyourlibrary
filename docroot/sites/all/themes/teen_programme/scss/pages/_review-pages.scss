@@ -698,7 +698,7 @@ h2.reviews-title, .view-booklist-slideshow .view-header h1 {
       float: left;
     }
     .reviewer {
-      @extend h5;
+      @include heading-font;
     }
     .created, .avatar {
       margin-right: 7px;
@@ -742,6 +742,25 @@ h2.reviews-title, .view-booklist-slideshow .view-header h1 {
             background-position: -16px -204px;
           }
         }
+      }
+    }
+  }
+
+  @media screen and (max-width: 767px) {
+    .node-type-movie-review,.node-type-music-review, 
+    .node-type-video-game-review {
+      .img_review {
+        width: 100%;
+        table {
+          width: 100%;
+          img {
+            display: block;
+            margin: auto;
+          }
+        }
+      }
+      .review_movie {
+        width: 100%;
       }
     }
   }
