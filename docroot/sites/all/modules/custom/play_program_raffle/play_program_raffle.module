@@ -59,36 +59,7 @@ function play_program_raffle_block_view($block_name = '') {
 }
 
 
-/* Progress block of user on program page */
-function progress_user_block_program() {
-  global $user;
-  $uid = $user->uid;
-  $out = '';
 
-   $quer = db_select('eck_activity', 'eck_a');
-    $quer->LEFTJOIN ('field_data_field_activity_entry_activity' , 'fdfae' , 'fdfae.entity_id = eck_a.id');
-    $quer->join('field_data_field_activity_fired_hook', 'hook', 'hook.entity_id = fdfae.field_activity_entry_activity_target_id');
-    $quer->condition('eck_a.uid', $uid);
-    $quer->condition('eck_a.type', 'activity_entry');
-    $quer->condition('hook.field_activity_fired_hook_value', 'progress_page');
-    $quer->fields('eck_a', array('title'));
-    $quer->fields('fdfae', array('field_activity_entry_activity_target_id'));
-    $resu = $quer->execute()->fetchAll();
-    $day_count = count($resu);
-    
-    $req_points = play_library_program_next_close_reward_points($resu->field_activity_entry_activity_target_id);
-        if($req_points == 1) {
-          $next_rew = t('<strong>'.$req_points.'</strong> more day of reading needed to receive your next prize');
-        }
-        else if ($req_points > 1){
-          $next_rew = t('<strong>'.$req_points.'</strong> more days of reading needed to receive your next prize');
-        }
-
-        else {
-          $next_rew = t('<strong>Congratulations!</strong> You have completed Reading Program.');
-        }
-    return "<div>$next_rew</div>";
-}
 
 
 function generate_staff_form($form, &$form_state) {
@@ -756,46 +727,96 @@ function _get_options($vocab_name) {
 }
 
 
+/* Progress block of user on program page */
+function progress_user_block_program() {
+  global $user;
+  $uid = $user->uid;
+  $out = '';
+
+  $act_id_qry = db_select('field_data_field_activity_fired_hook', 'hook');
+  $act_id_qry->condition('hook.field_activity_fired_hook_value', 'progress_page');
+  $act_id_qry->fields('hook', array('entity_id'));
+  $act_id = $act_id_qry->execute()->fetchAll();
+  
+  foreach ($act_id as $key => $value) {
+    $act_ids[] = $value->entity_id;
+  }
+
+  $quer = db_select('eck_activity', 'eck_a');
+  $quer->LEFTJOIN ('field_data_field_activity_entry_activity' , 'fdfae' , 'fdfae.entity_id = eck_a.id');
+  $quer->condition('eck_a.uid', $uid);
+  $quer->condition('fdfae.field_activity_entry_activity_target_id', $act_ids ,'IN' );
+  $quer->fields('eck_a', array('id'));
+  $resu = $quer->execute()->fetchAll();
+  $day_count = count($resu);
+  //Get points for next reward
+  $req_points = play_library_program_next_close_reward_points($act_ids);
+
+  if($req_points == 1) {
+    $next_rew = t('<strong>'.$req_points.'</strong> more day of reading needed to receive your next prize');
+  }
+  else if ($req_points > 1){
+    $next_rew = t('<strong>'.$req_points.'</strong> more days of reading needed to receive your next prize');
+  }
+
+  else {
+    $next_rew = t('<strong>Congratulations!</strong> You have completed Reading Program.');
+  }
+
+  if($day_count == 1) {
+    $out = t("<span class='msg-highlight'>Total day read: $day_count</span><br/>");
+  }
+  else {
+    $out = t("<span class='msg-highlight'>Total days read: $day_count</span><br/>");
+  } 
+  return "<div>$out</div><div>$next_rew</div>";
+}
+
+
 function user_progress() {
   global $user;
   $uid = $user->uid;
   $out = '';
 
-   $quer = db_select('eck_activity', 'eck_a');
-    $quer->LEFTJOIN ('field_data_field_activity_entry_activity' , 'fdfae' , 'fdfae.entity_id = eck_a.id');
-    $quer->join('field_data_field_activity_fired_hook', 'hook', 'hook.entity_id = fdfae.field_activity_entry_activity_target_id');
-    $quer->condition('eck_a.uid', $uid);
-    $quer->condition('eck_a.type', 'activity_entry');
-    $quer->condition('hook.field_activity_fired_hook_value', 'progress_page');
-    $quer->fields('eck_a', array('title'));
-    $quer->fields('fdfae', array('field_activity_entry_activity_target_id'));
-    $resu = $quer->execute()->fetchAll();
-    $day_count = count($resu);
-
-    //Get points for next reward
-    $req_points = play_library_program_next_close_reward_points($resu[0]->field_activity_entry_activity_target_id);
-
-    if($req_points == 1) {
-      $next_rew = t("<span><strong>$req_points</strong> more day of reading needed to receive your next prize</span>");
-    }
-
-    else if ($req_points > 1){
-      $next_rew = t("<span><strong>$req_points</strong> more days of reading needed to receive your next prize</span>");
-    } 
+  $act_id_qry = db_select('field_data_field_activity_fired_hook', 'hook');
+  $act_id_qry->condition('hook.field_activity_fired_hook_value', 'progress_page');
+  $act_id_qry->fields('hook', array('entity_id'));
+  $act_id = $act_id_qry->execute()->fetchAll();
   
-    else {
-      $next_rew =  t("<span><strong>Congratulations!</strong> You have completed Reading Program.</span>"); 
-    }
+  foreach ($act_id as $key => $value) {
+    $act_ids[] = $value->entity_id;
+  }
 
-    if($day_count == 1) {
-      $out = t("<span class='msg-highlight'>Total day read: $day_count</span><br/>");
-    }
-    else {
-      $out = t("<span class='msg-highlight'>Total days read: $day_count</span><br/>");
-    } 
+  $quer = db_select('eck_activity', 'eck_a');
+  $quer->LEFTJOIN ('field_data_field_activity_entry_activity' , 'fdfae' , 'fdfae.entity_id = eck_a.id');
+  $quer->condition('eck_a.uid', $uid);
+  $quer->condition('fdfae.field_activity_entry_activity_target_id', $act_ids ,'IN' );
+  $quer->fields('eck_a', array('id'));
+  $resu = $quer->execute()->fetchAll();
+  $day_count = count($resu);
+  //Get points for next reward
+  $req_points = play_library_program_next_close_reward_points($act_ids);
 
-    return "<div>$out</div><div>$next_rew</div>";
+  if($req_points == 1) {
+    $next_rew = t("<span><strong>$req_points</strong> more day of reading needed to receive your next prize</span>");
+  }
 
+  else if ($req_points > 1){
+    $next_rew = t("<span><strong>$req_points</strong> more days of reading needed to receive your next prize</span>");
+  } 
+
+  else {
+    $next_rew =  t("<span><strong>Congratulations!</strong> You have completed Reading Program.</span>"); 
+  }
+
+  if($day_count == 1) {
+    $out = t("<span class='msg-highlight'>Total day read: $day_count</span><br/>");
+  }
+  else {
+    $out = t("<span class='msg-highlight'>Total days read: $day_count</span><br/>");
+  } 
+
+  return "<div>$out</div><div>$next_rew</div>";
 }
 
 
