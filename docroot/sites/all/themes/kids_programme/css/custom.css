@@ -7844,6 +7844,11 @@ a.th {
   -moz-font-smoothing: grayscale;
 }
 
+/* line 228, ../scss/base/_common.scss */
+.reveal-modal-bg {
+  display: none !important;
+}
+
 /* line 4, ../scss/base/_drupal.scss */
 .admin-menu .fixed {
   top: 1.8125em;
@@ -15128,6 +15133,32 @@ p.more-link:after {
     padding: 0 0 0 10px;
   }
 }
+/* line 3, ../scss/pages/_myaccount.scss */
+.page-user .main .primary-tabs {
+  display: none;
+}
+/* line 7, ../scss/pages/_myaccount.scss */
+.page-user .main .block-play-library-custom-user-profile-tabs ul {
+  list-style: none;
+  width: 100%;
+}
+/* line 10, ../scss/pages/_myaccount.scss */
+.page-user .main .block-play-library-custom-user-profile-tabs ul li {
+  display: inline-block;
+}
+/* line 12, ../scss/pages/_myaccount.scss */
+.page-user .main .block-play-library-custom-user-profile-tabs ul li a {
+  margin-left: 0;
+}
+
+@media screen and (max-width: 767px) {
+  /* line 25, ../scss/pages/_myaccount.scss */
+  .page-user .main .block-play-library-custom-user-profile-tabs ul {
+    text-align: center;
+    max-width: 320px;
+    margin: 0 auto 30px;
+  }
+}
 /* line 3, ../scss/pages/_photo-vedios.scss */
 .view.video-block .view-content {
   -webkit-flex-wrap: wrap;
@@ -16340,7 +16371,13 @@ th {
     margin: 0 auto;
     display: block;
   }
-  /* line 178, ../scss/pages/_pubilc_profile.scss */
+  /* line 176, ../scss/pages/_pubilc_profile.scss */
+  .page-users-public-profile .main .view--user-public-profile .view-content .views-field-ops {
+    float: none;
+    top: 6px;
+    align-items: center;
+  }
+  /* line 183, ../scss/pages/_pubilc_profile.scss */
   .page-users-public-profile .main .block-views {
     width: 100% !important;
     margin-right: 0 !important;
