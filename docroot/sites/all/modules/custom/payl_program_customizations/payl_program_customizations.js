@@ -9,6 +9,62 @@
     attach: function() {
       Drupal.settings.payl_program_customizations_birthday_limit = parseInt(Drupal.settings.payl_program_customizations_birthday_limit);
       
+      /////////////////////
+      if(!$('#edit-profile-main-field-user-birthday-und-0-value').length){
+        var userAge = Drupal.settings.payl_program_customizations.payl_program_customizations_user_date_of_birth;
+        if (userAge > 12 || userAge == NaN) {
+          $('#user-profile-form .form-item-name').show();
+        }
+        // Less than 13 years old.
+        else {
+          $('#user-profile-form .form-item-name').hide();
+        }
+
+        $('#user-profile-form .field-widget-random-list-widget-randomizer').each(function(index) {
+          fieldname = 'Change ' + $(this).find('label').html();
+          $(this).find('#user-profile-form input .random-list-widget-regenerate').val(fieldname);
+          $(this).find('#user-profile-form button .random-list-widget-regenerate').html(fieldname);
+        });
+        $('#user-profile-form .field-widget-random-list-widget-randomizer .form-type-textfield').hide();
+        $('#user-profile-form .random-list-widget').attr('readonly', true);
+        $('#user-profile-form .random-list-widget-regenerate').click(function() {
+          setTimeout(function() {
+            var name = '';
+            $('#user-profile-form .random-list-widget').each(function(index) {
+              name = name + $(this).val();
+            });
+          $('.page-user-edit #edit-name').val(name);
+      
+        var username = name;
+        $.ajax({
+          url: Drupal.settings.basePath + 'username/check',
+          type: 'post',
+          async: true,
+          data: "name="+username,
+          success: function (data) {
+            if (data) {
+              if (data == 'yes') {
+                console.log(data);
+                setTimeout(function() {
+                  $('#user-profile-form .random-list-widget-regenerate').click();
+                }, 150);
+              }
+            }
+          }
+        });
+          payl_program_customizations_change_name_profile();
+        }, 50);
+      });
+
+      function payl_program_customizations_change_name_profile() {
+        name = $('.page-user-edit #edit-name').val();
+        $('.page-user-edit #page-title').html(name);
+      }
+
+    }
+      //////////////////////
+
+
       //username not to change on field errors 
       var url = window.location.href;
       var array = url.split('/');
