@@ -10,7 +10,7 @@ function reports_menu(){
     'title' => t('Activity Report per Library Branch'),
     'page callback' => 'drupal_get_form',
     'page arguments' => array('readingPerBranch'),
-    'access callback' => TRUE,
+    'access arguments' => array('statisticalReportAccess'),
   );
 
   $items['activity-per-school'] = array(
@@ -41,6 +41,18 @@ function reports_menu(){
   );
 
   return $items;
+}
+
+/**
+ * Implements hook_permissions().
+ */
+function reports_permission(){
+  return array(
+    'statisticalReportAccess' => array(
+      'title' => t('View Statistical Reports Page'),
+      'description' => t('Access to view statistical reports page'),
+    ),
+  );
 }
 
 
