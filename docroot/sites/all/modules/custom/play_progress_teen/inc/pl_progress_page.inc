@@ -5,7 +5,7 @@
  */
 function pl_complete_activity_progress(){
   global $user;
-  $activity_uid = $user->uid;
+  $account_id = $user->uid;
 
   // $self = variable_get('activities_progress');
   $rewardMsg = variable_get('reward_msg');
