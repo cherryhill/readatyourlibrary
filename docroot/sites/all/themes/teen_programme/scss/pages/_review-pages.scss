@@ -693,7 +693,7 @@ h2.reviews-title, .view-booklist-slideshow .view-header h1 {
         }
       }
     }
-    .review_movie {
+    .review_movie, .review_music, .review_videogame {
       width: 75%;
       float: left;
     }
@@ -710,19 +710,19 @@ h2.reviews-title, .view-booklist-slideshow .view-header h1 {
       margin: 12px 0 10px 0;
     }
   }
-  .review_movie {
-    .movie-review {
+  .review_movie, .review_music, .review_videogame {
+    .movie-review, .music-review, .videogame-review {
       .reviewer {
         @extend h5;
       }
     }
   }
-  .movielikefollow-wrap {
+  .movielikefollow-wrap, .musiclikefollow-wrap, .vidiogamelikefollow-wrap {
     margin-bottom: 15px;
     a {
       @extend .button;
     }
-    .movie-likes {
+    .movie-likes, .music-likes, .videogame-likes {
       float: left;
       margin-right: 20px;
     }
@@ -766,7 +766,7 @@ h2.reviews-title, .view-booklist-slideshow .view-header h1 {
           }
         }
       }
-      .review_movie {
+      .review_movie, .review_music, .review_videogame {
         width: 100%;
       }
     }
