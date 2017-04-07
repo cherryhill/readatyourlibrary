@@ -743,13 +743,18 @@
     	flex-direction: column;
     	-webkit-flex-direction: column;
     }
+    #wrap {
+    	margin-bottom: 0 !important;
+    }
     #wrap > div {
-    	flex: 0 0 100%;
+    	width: 100% !important;
     	margin-bottom: 25px;
+    	display: inline-block !important;
     }
     .reward-won {
     	margin-right: 0;
     	margin-left: 0;
+    	padding-top: 20px;
     }
 		.progress-wrap {
 			.report-acivity {
@@ -771,6 +776,7 @@
 				}
 			}
 			.progress-rewards {
+				padding-top: 20px;
 				> div {
 					padding-top: 20px;
 				}
