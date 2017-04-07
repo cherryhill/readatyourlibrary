@@ -228,10 +228,6 @@ function play_library_program_field_widget_form_alter(&$element, &$form_state, $
 
       if (isset($entity['module']) && ($entity['module'] == 'eck' || $entity['module'] == 'node')) {
         foreach ($entity['bundles'] as $bundle_key => $bundle_options) {
-          if($entity_key == 'node' && $bundle_options['label'] == 'sticker') {
-            $options["node_update|node|{$bundle_key}|updated"] = t("@value", array('@value' => variable_get($bundle_key))) ? t("@value", array('@value' => variable_get($bundle_key))) : t('Calender ');
-          }
-
           if ($entity_key == 'node' && ($bundle_options['label'] == 'Booklist' || $bundle_options['label'] == 'Book Review' || $bundle_options['label'] == 'Movie Review' || $bundle_options['label'] == 'Video Game Review' || $bundle_options['label'] == 'Music Review' || $bundle_options['label'] == 'Activity Review')) {
             $options["node_update|node|{$bundle_key}|published"] = t("@value", array( '@value' => variable_get($bundle_key))) ? t("@value", array( '@value' => variable_get($bundle_key))) : t("@value", array( '@value' => $bundle_options['label']));
           }
