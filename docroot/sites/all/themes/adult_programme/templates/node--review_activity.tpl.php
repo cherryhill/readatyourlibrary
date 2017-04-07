@@ -125,7 +125,7 @@
       $img_uri = $result->fetchObject();
       $img_uri = $img_uri->uri;
       $style = 'avatar_style';
-      $img_path = image_style_url($style, $img_uri);
+      $img_path = image_style_url($style);
       }
       if(isset($img_uri)){
         $img = "<img src='$img_path'>";
