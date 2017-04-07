@@ -106,11 +106,30 @@ function play_library_program_frequency_limit($activity, $activity_time, $accoun
 		${$key} = $value;
 	}
 
+
 	$activity_id = $activity->id;
 	$activity_title = $activity->title;
 	$activity_requency_limit = $activity->field_activity_time_limit[$field_activity_time_limit][0]['value'];
 	$start_time =$activity_time - $activity_requency_limit+1;
 	$end_time = $activity_time + $activity_requency_limit-1;
+
+  switch ($activity_requency_limit) {
+    case 3600:
+      $frequecy_limit_text = 'one hour';
+      break;
+    case 21600:
+      $frequecy_limit_text = '6 hours';
+      break;
+    case 43200:
+      $frequecy_limit_text = '12 hours';
+      break;
+    case 86400:
+      $frequecy_limit_text = 'one day';
+      break;
+    default:
+      $frequecy_limit_text = 'Anytime';
+      break;
+  }
 
 	$arr = array($start_time,$end_time);
 
@@ -123,10 +142,10 @@ function play_library_program_frequency_limit($activity, $activity_time, $accoun
 	$res = $query->count()->execute();
 
 	if($res == 0) {    
-	return TRUE;
+    return TRUE;
 	} else {
-		drupal_set_message(t('You have already recorded '.$activity_title. ' for '.date('d-M-Y', $activity_time).'.'),'warning');
-	return FALSE;
+		drupal_set_message(t('You have already recorded <strong>'.$activity_title.'</strong> within <strong>'.$frequecy_limit_text. '<strong> on '.date('d-M-Y', $activity_time)),'warning');
+    return FALSE;
 	}
 }
 
