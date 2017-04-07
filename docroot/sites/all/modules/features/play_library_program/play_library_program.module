@@ -125,7 +125,6 @@ function play_library_program_frequency_limit($activity, $activity_time, $accoun
 	if($res == 0) {    
 	return TRUE;
 	} else {
-    drupal_set_message('start_time:' . date('d-M-Y H:i:s', $start_time) .'| Activity time:'. date('d-M-Y H:i:s',$activity_time) .'| End time:'. date('d-M-Y H:i:s', $end_time));
 		drupal_set_message(t('You have already recorded '.$activity_title. ' for '.date('d-M-Y', $activity_time).'.'),'warning');
 	return FALSE;
 	}
