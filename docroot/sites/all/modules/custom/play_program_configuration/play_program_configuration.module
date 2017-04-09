@@ -94,7 +94,7 @@ function pl_program_logo($value) {
 
   $style = 'program_logo';
   $img_path = file_create_url($img_uri_path);
-  $img = "<img src='$img_path'>";
+  $img = "<img style='height:150px; width:150px;' src='$img_path'>";
   if ($img_uri_path){
     return $img;
   }
