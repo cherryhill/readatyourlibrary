@@ -220,3 +220,35 @@ function activities_taxonomy_term_delete($terms, $activity) {
 }
 
 
+/**
+ * Adding taxonomy term for self reported activities
+ */
+function pl_add_taxonomy_self_reported_act_term($name, $type, $display = 0){
+
+  $name = 'test self reported';
+  $type = 'self_reported_activities';
+  $display = 1;
+
+  $term = new stdClass();
+  $term_load = taxonomy_vocabulary_machine_name_load($type);
+  if($term_load){
+    $vid = $term_load->vid;
+    $term->name = $name;
+    $term->vid = $vid;
+    $term->field_activity_id_sr['und'][0]['value'] = 31;
+    $term->field_read_review_sr['und'][0]['url'] = 'qwerty';
+    $term->field_read_review_sr['und'][0]['title'] = 'qqqq';
+    $term->field_write_review_sr['und'][0]['url'] = 'aaaa';
+    $term->field_write_review_sr['und'][0]['title'] = 'zzzzz';
+    taxonomy_term_save($term);
+    if ($display){
+      drupal_set_message(t($term->name. ' term saved for '. $type. 'vocabulory'), 'status');
+      return TRUE;
+    }
+  } else {
+    if ($display){
+      drupal_set_message(t($term->name. ' term could not be added for '. $type . 'vocabulory'), 'error');
+      return FALSE;
+    }
+  }
+}
