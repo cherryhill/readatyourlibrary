@@ -94,36 +94,39 @@
 </div>
 </div>
 </div>
-<div class="progress-wrap">
-<div class="report-acivity">
-	<?php
-      if ($count >= $grids){
-        print '<h1>Congratulations! You have completed the program.</h1>';
+<div id="wrap" class="progress-wrap">
+  <div class="report-acivity">
+  	<?php
+        if ($count >= $grids){
+          print '<h1>Congratulations! You have completed the program.</h1>';
 
-      }
-      else{
-        print '<h1>'.t('Report an Activity</h1>');
-        print  '<div id = "errorwarn"></div>';
-        print  '<div id = "errorwarn-activity"></div>';
+        }
+        else{
+          print '<h1>'.t('Report an Activity</h1>');
+          print  '<div id = "errorwarn"></div>';
+          print  '<div id = "errorwarn-activity"></div>';
 
-        $block = block_load('play_progress_teen', 'progress_submit_block');
-        $render_block = _block_get_renderable_array(_block_render_blocks(array($block)));
-        $output = drupal_render($render_block);
-        print $output;
-      }
-	?>
-<!-- 	<div class="submit">
-		<button id="pg-report">Submit</button>
-	</div> -->
-	<div class="report-activity-desc"><?php $report_block_text = variable_get('report_block_desc', array('value' => '', 'format' => NULL)); print t($report_block_text['value']);?></div>
+          $block = block_load('play_progress_teen', 'progress_submit_block');
+          $render_block = _block_get_renderable_array(_block_render_blocks(array($block)));
+          $output = drupal_render($render_block);
+          print $output;
+        }
+  	?>
+    <!-- 	<div class="submit">
+  		<button id="pg-report">Submit</button>
+  	</div> -->
+  	<div class="report-activity-desc"><?php $report_block_text = variable_get('report_block_desc', array('value' => '', 'format' => NULL)); print t($report_block_text['value']);?></div>
+  </div>
+
+  <div class="reward-won"><?php print views_embed_view('Rewards_Progress','block'); ?> </div>
+
+  <div class="progress-rewards">
+    <div><?php
+      $reward_block = variable_get('progress_rewards', array('value' => '', 'format' => NULL));
+      print $reward_block['value']; ?>
+    </div>
+  </div>
 </div>
-
-<div class="reward-won"><?php print views_embed_view('Rewards_Progress','block'); ?> </div>
-
-<div class="progress-rewards"><div><?php
-  $reward_block = variable_get('progress_rewards', array('value' => '', 'format' => NULL));
-  print $reward_block['value']; ?></div>
-</div></div>
 
 <div class="progress-main"><?php
   // echo '<h1>My Passport Stamps</h1>';
@@ -187,4 +190,14 @@
   }
   print("</tbody></table>");
 ?>
-</div></div>
+</div>
+<div id="wrap" class="for-mobile">
+  <div class="reward-won"><?php print views_embed_view('Rewards_Progress','block'); ?> </div>
+  <div class="progress-rewards">
+    <div><?php
+      $reward_block = variable_get('progress_rewards', array('value' => '', 'format' => NULL));
+      print $reward_block['value']; ?>
+    </div>
+  </div>
+</div>
+</div>

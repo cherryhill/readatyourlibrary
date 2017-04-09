@@ -743,14 +743,24 @@
     	flex-direction: column;
     	-webkit-flex-direction: column;
     }
-    .progress-wrap > div {
-    	flex: 0 0 100%;
+    #wrap {
+    	margin-bottom: 0 !important;
+    }
+    #wrap > div {
+    	width: 100% !important;
     	margin-bottom: 25px;
+    	display: inline-block !important;
     }
     .reward-won {
     	margin-right: 0;
     	margin-left: 0;
+    	padding-bottom: 20px;
     }
+    .progress-rewards {
+			> div {
+				padding-top: 20px;
+			}
+		}
 		.progress-wrap {
 			.report-acivity {
 				form {
@@ -768,11 +778,6 @@
     					}
 						}
 					}
-				}
-			}
-			.progress-rewards {
-				> div {
-					padding-top: 20px;
 				}
 			}
 		}
