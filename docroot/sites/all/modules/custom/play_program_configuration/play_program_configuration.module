@@ -91,8 +91,9 @@ function pl_program_logo($value) {
             ->fetchAssoc();
 
   $img_uri_path = $query['uri'];
+
   $style = 'program_logo';
-  $img_path = image_style_url($style, $img_uri_path);
+  $img_path = file_create_url($img_uri_path);
   $img = "<img src='$img_path'>";
   if ($img_uri_path){
     return $img;
