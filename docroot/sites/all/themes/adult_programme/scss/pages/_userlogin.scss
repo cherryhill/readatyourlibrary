@@ -117,6 +117,21 @@
 		display: inline-block;
 		margin-bottom: 10px;
 	} 
+	#edit-account {
+		display: inline-block;
+		width: 100%;
+		.form-item {
+    	margin-bottom: 20px !important;
+    	&.form-item-current-pass {
+    		input {
+    			width: 30%;
+    		}
+    	}
+		}
+		.username {
+			width: 30%;
+		}
+	}
 }
 
 @media all and (max-width: 767px) {
@@ -184,6 +199,24 @@
 		}
 		.secondary {
 			margin-right: 0;
+		}
+		.field-type-text {
+			&.field-widget-random-list-widget-randomizer {
+				width: 100px;
+				display: inline-flex;
+			}
+		}
+		#edit-account {
+			.form-item {
+	    	&.form-item-current-pass {
+	    		input {
+	    			width: 65%;
+	    		}
+	    	}
+			}
+			.username {
+				width: 65%;
+			}
 		}
 	}
 }

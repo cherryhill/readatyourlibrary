@@ -8087,7 +8087,8 @@ a.th {
 }
 
 /* line 432, ../scss/base/_common.scss */
-input[type="radio"] {
+input[type="radio"],
+input[type="file"], input[type="checkbox"] {
   margin-bottom: 0 !important;
 }
 
@@ -17763,23 +17764,24 @@ p.more-link a:after, .block-play_library_teens_leaderboard .portlet-content li +
 /* line 670, ../scss/pages/_review-pages.scss */
 .node-type-review-activity .date_created {
   margin: 12px 0 10px 0;
+  clear: both;
 }
 
-/* line 674, ../scss/pages/_review-pages.scss */
+/* line 675, ../scss/pages/_review-pages.scss */
 .activitylikefollow-wrap {
   margin-bottom: 15px;
 }
-/* line 679, ../scss/pages/_review-pages.scss */
+/* line 680, ../scss/pages/_review-pages.scss */
 .activitylikefollow-wrap .activity-likes {
   float: left;
   margin-right: 20px;
 }
-/* line 684, ../scss/pages/_review-pages.scss */
+/* line 685, ../scss/pages/_review-pages.scss */
 .activitylikefollow-wrap .like-here a {
   position: relative;
   padding-right: 30px;
 }
-/* line 687, ../scss/pages/_review-pages.scss */
+/* line 688, ../scss/pages/_review-pages.scss */
 .activitylikefollow-wrap .like-here a:after {
   content: "";
   width: 25px;
@@ -17790,38 +17792,38 @@ p.more-link a:after, .block-play_library_teens_leaderboard .portlet-content li +
   right: 7px;
   top: 0px;
 }
-/* line 696, ../scss/pages/_review-pages.scss */
+/* line 697, ../scss/pages/_review-pages.scss */
 .cs-default .activitylikefollow-wrap .like-here a:after {
   background-position: -16px -204px;
 }
-/* line 699, ../scss/pages/_review-pages.scss */
+/* line 700, ../scss/pages/_review-pages.scss */
 .cs-classic .activitylikefollow-wrap .like-here a:after {
   background-position: -16px -147px;
 }
-/* line 702, ../scss/pages/_review-pages.scss */
+/* line 703, ../scss/pages/_review-pages.scss */
 .cs-elegant .activitylikefollow-wrap .like-here a:after {
   background-position: -16px -204px;
 }
 
 /*-----------------------css ends for activity review---------------------*/
 @media screen and (max-width: 767px) {
-  /* line 722, ../scss/pages/_review-pages.scss */
+  /* line 723, ../scss/pages/_review-pages.scss */
   .node-type-movie-review .img_review, .node-type-music-review .img_review,
   .node-type-video-game-review .img_review {
     width: 100%;
   }
-  /* line 724, ../scss/pages/_review-pages.scss */
+  /* line 725, ../scss/pages/_review-pages.scss */
   .node-type-movie-review .img_review table, .node-type-music-review .img_review table,
   .node-type-video-game-review .img_review table {
     width: 100%;
   }
-  /* line 726, ../scss/pages/_review-pages.scss */
+  /* line 727, ../scss/pages/_review-pages.scss */
   .node-type-movie-review .img_review table img, .node-type-music-review .img_review table img,
   .node-type-video-game-review .img_review table img {
     display: block;
     margin: auto;
   }
-  /* line 732, ../scss/pages/_review-pages.scss */
+  /* line 733, ../scss/pages/_review-pages.scss */
   .node-type-movie-review .review_movie, .node-type-movie-review .review_music, .node-type-movie-review .review_videogame, .node-type-music-review .review_movie, .node-type-music-review .review_music, .node-type-music-review .review_videogame,
   .node-type-video-game-review .review_movie,
   .node-type-video-game-review .review_music,
@@ -18040,24 +18042,41 @@ p.more-link a:after, .block-play_library_teens_leaderboard .portlet-content li +
   display: inline-block;
   margin-bottom: 10px;
 }
+/* line 120, ../scss/pages/_userlogin.scss */
+.page-user-register #edit-account, .page-user-edit #edit-account {
+  display: inline-block;
+  width: 100%;
+}
+/* line 123, ../scss/pages/_userlogin.scss */
+.page-user-register #edit-account .form-item, .page-user-edit #edit-account .form-item {
+  margin-bottom: 20px !important;
+}
+/* line 126, ../scss/pages/_userlogin.scss */
+.page-user-register #edit-account .form-item.form-item-current-pass input, .page-user-edit #edit-account .form-item.form-item-current-pass input {
+  width: 30%;
+}
+/* line 131, ../scss/pages/_userlogin.scss */
+.page-user-register #edit-account .username, .page-user-edit #edit-account .username {
+  width: 30%;
+}
 
 @media all and (max-width: 767px) {
-  /* line 126, ../scss/pages/_userlogin.scss */
+  /* line 141, ../scss/pages/_userlogin.scss */
   .page-user-register .form-type-date-select .date-padding .form-type-select, .page-user-edit .form-type-date-select .date-padding .form-type-select {
     width: 100%;
     margin-right: 0;
   }
-  /* line 133, ../scss/pages/_userlogin.scss */
+  /* line 148, ../scss/pages/_userlogin.scss */
   .page-user-register .form-wrapper .field-type-text, .page-user-register .form-wrapper .field-type-phone, .page-user-register .form-wrapper .field-type-email, .page-user-edit .form-wrapper .field-type-text, .page-user-edit .form-wrapper .field-type-phone, .page-user-edit .form-wrapper .field-type-email {
     width: 100%;
     margin-right: 0;
   }
-  /* line 139, ../scss/pages/_userlogin.scss */
+  /* line 154, ../scss/pages/_userlogin.scss */
   .page-user-register .field-type-addressfield .form-type-select, .page-user-register .field-type-addressfield .form-type-textfield, .page-user-edit .field-type-addressfield .form-type-select, .page-user-edit .field-type-addressfield .form-type-textfield {
     width: 100%;
     margin-right: 0;
   }
-  /* line 144, ../scss/pages/_userlogin.scss */
+  /* line 159, ../scss/pages/_userlogin.scss */
   .page-user-register .field-type-taxonomy-term-reference, .page-user-register .field-name-field-library-card-number,
   .page-user-register .field-name-field-school, .page-user-register .field-name-field-user-grade, .page-user-register .field-name-field-organization,
   .page-user-register .field-name-field-hear-about, .page-user-edit .field-type-taxonomy-term-reference, .page-user-edit .field-name-field-library-card-number,
@@ -18066,46 +18085,59 @@ p.more-link a:after, .block-play_library_teens_leaderboard .portlet-content li +
     width: 100%;
     margin-right: 0;
   }
-  /* line 150, ../scss/pages/_userlogin.scss */
+  /* line 165, ../scss/pages/_userlogin.scss */
   .page-user-register .field-widget-random-list-widget-randomizer, .page-user-edit .field-widget-random-list-widget-randomizer {
     float: none;
   }
-  /* line 154, ../scss/pages/_userlogin.scss */
+  /* line 169, ../scss/pages/_userlogin.scss */
   .page-user-register .form-item-mail input, .page-user-edit .form-item-mail input {
     width: 65%;
   }
-  /* line 159, ../scss/pages/_userlogin.scss */
+  /* line 174, ../scss/pages/_userlogin.scss */
   .page-user-register .form-type-password-confirm .password-strength, .page-user-register .form-type-password-confirm .password-confirm, .page-user-edit .form-type-password-confirm .password-strength, .page-user-edit .form-type-password-confirm .password-confirm {
     width: 25%;
     margin-right: 5%;
     line-height: 1.1em;
     font-size: 14px;
   }
-  /* line 165, ../scss/pages/_userlogin.scss */
+  /* line 180, ../scss/pages/_userlogin.scss */
   .page-user-register .form-type-password-confirm input, .page-user-edit .form-type-password-confirm input {
     width: 65%;
   }
-  /* line 168, ../scss/pages/_userlogin.scss */
+  /* line 183, ../scss/pages/_userlogin.scss */
   .page-user-register .form-type-password-confirm input.password-confirm, .page-user-edit .form-type-password-confirm input.password-confirm {
     width: 65%;
   }
-  /* line 172, ../scss/pages/_userlogin.scss */
+  /* line 187, ../scss/pages/_userlogin.scss */
   .page-user-register .form-type-radio, .page-user-edit .form-type-radio {
     margin-right: 0;
     float: none;
   }
-  /* line 177, ../scss/pages/_userlogin.scss */
+  /* line 192, ../scss/pages/_userlogin.scss */
   .page-user-register .field-type-addressfield input, .page-user-edit .field-type-addressfield input {
     margin-bottom: 5px;
   }
-  /* line 181, ../scss/pages/_userlogin.scss */
+  /* line 196, ../scss/pages/_userlogin.scss */
   .page-user-register .password-suggestions, .page-user-edit .password-suggestions {
     max-width: 100%;
     width: 100%;
   }
-  /* line 185, ../scss/pages/_userlogin.scss */
+  /* line 200, ../scss/pages/_userlogin.scss */
   .page-user-register .secondary, .page-user-edit .secondary {
     margin-right: 0;
+  }
+  /* line 204, ../scss/pages/_userlogin.scss */
+  .page-user-register .field-type-text.field-widget-random-list-widget-randomizer, .page-user-edit .field-type-text.field-widget-random-list-widget-randomizer {
+    width: 100px;
+    display: inline-flex;
+  }
+  /* line 212, ../scss/pages/_userlogin.scss */
+  .page-user-register #edit-account .form-item.form-item-current-pass input, .page-user-edit #edit-account .form-item.form-item-current-pass input {
+    width: 65%;
+  }
+  /* line 217, ../scss/pages/_userlogin.scss */
+  .page-user-register #edit-account .username, .page-user-edit #edit-account .username {
+    width: 65%;
   }
 }
 /* line 2, ../scss/pages/my_reviews.scss */
