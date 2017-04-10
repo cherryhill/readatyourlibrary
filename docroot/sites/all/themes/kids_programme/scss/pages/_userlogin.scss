@@ -129,6 +129,14 @@
 		width: 100%;
 		.form-item {
     	margin-bottom: 20px !important;
+    	&.form-item-current-pass {
+    		input {
+    			width: 30%;
+    		}
+    	}
+		}
+		.username {
+			width: 30%;
 		}
 	}
 }
@@ -203,6 +211,18 @@
 			&.field-widget-random-list-widget-randomizer {
 				width: 100px;
 				display: inline-flex;
+			}
+		}
+		#edit-account {
+			.form-item {
+	    	&.form-item-current-pass {
+	    		input {
+	    			width: 65%;
+	    		}
+	    	}
+			}
+			.username {
+				width: 65%;
 			}
 		}
 	}
