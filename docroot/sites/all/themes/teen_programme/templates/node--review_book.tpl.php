@@ -145,15 +145,6 @@ if(isset($catalog_lk)){
     <?php endif; ?>
     <?php print render($title_suffix); ?>
 
-    <?php if ($display_submitted): ?>
-      <div class="posted">
-        <?php if ($user_picture): ?>
-          <?php print $user_picture; ?>
-        <?php endif; ?>
-        <?php print $submitted; ?>
-      </div>
-    <?php endif; ?>
-
   <div class="review_node">
     <div class="title_review">
       <h2><?php print $title_node_link.' by '.$fname['0']['safe_value'].' '.$lname['0']['safe_value'] ?></h2>
