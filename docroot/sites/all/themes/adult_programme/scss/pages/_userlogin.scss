@@ -117,6 +117,13 @@
 		display: inline-block;
 		margin-bottom: 10px;
 	} 
+	#edit-account {
+		display: inline-block;
+		width: 100%;
+		.form-item {
+    	margin-bottom: 20px !important;
+		}
+	}
 }
 
 @media all and (max-width: 767px) {
@@ -184,6 +191,12 @@
 		}
 		.secondary {
 			margin-right: 0;
+		}
+		.field-type-text {
+			&.field-widget-random-list-widget-randomizer {
+				width: 100px;
+				display: inline-flex;
+			}
 		}
 	}
 }
