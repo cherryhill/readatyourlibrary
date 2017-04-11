@@ -303,14 +303,14 @@ function pl_platform_configuration($form, &$form_state) {
 
     if (isset($entity['module']) && ($entity['module'] == 'eck' || $entity['module'] == 'node')) {
       foreach ($entity['bundles'] as $bundle_key => $bundle_options) {
-        if($entity_key == 'node' && $bundle_options['label'] == 'sticker') {
-          $form['activity_trigger'][$bundle_key] = array(
-            '#type' => 'textfield',
-            '#title' => t('Calender'),
-            '#description' => t('For calender'),
-            '#default_value' => variable_get($bundle_key) ? variable_get($bundle_key) : t('Calender')
-          );
-        }
+        // if($entity_key == 'node' && $bundle_options['label'] == 'sticker') {
+        //   $form['activity_trigger'][$bundle_key] = array(
+        //     '#type' => 'textfield',
+        //     '#title' => t('Calender'),
+        //     '#description' => t('For calender'),
+        //     '#default_value' => variable_get($bundle_key) ? variable_get($bundle_key) : t('Calender')
+        //   );
+        // }
 
         if ($entity_key == 'node' && ($bundle_options['label'] == 'Booklist' || $bundle_options['label'] == 'Book Review' || $bundle_options['label'] == '_play_library_program_get_webformsMovie Review' || $bundle_options['label'] == 'Video Game Review' || $bundle_options['label'] == 'Music Review' || $bundle_options['label'] == 'Activity Review')) {
           $form['activity_trigger'][$bundle_key] = array(
