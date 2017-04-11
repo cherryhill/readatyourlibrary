@@ -107,7 +107,7 @@
   /*------------------mixin-----------------*/
   /*------------------common-----------------*/
   /* line 252, ../scss/print.scss */
-  .yellow, .yellow-commonblock, .progress-page-wrap #wrap, .cs-default .button, .cs-default button, .cs-elegant .btn.btn-large.msg.new, .cs-default .btn.btn-primary {
+  .yellow, .yellow-commonblock, .progress-page-wrap #wrap, .button, button, .cs-elegant .btn.btn-large.msg.new, .btn.btn-primary {
     background: #fdeb52;
   }
 
@@ -1002,7 +1002,7 @@
   .progress-page-wrap {
     padding-left: 35px;
     padding-right: 35px;
-    max-width: 900px;
+    max-width: 900px !important;
     width: 100%;
   }
   /* line 988, ../scss/print.scss */
@@ -1090,7 +1090,7 @@
   }
   /* line 1073, ../scss/print.scss */
   .progress-page-wrap #wrap > div.sticker-block .prog-days * {
-    color: #cc0d25;
+    color: #cc0d25 !important;
     margin: 0;
   }
   /* line 1077, ../scss/print.scss */
@@ -1244,7 +1244,7 @@
   /* line 1176, ../scss/print.scss */
   .progress-page-wrap #wrap > div.rewards .view-Rewards-Progress .view-header p {
     font-size: 20px;
-    color: #267fda;
+    color: #267fda !important;
   }
   /* line 1179, ../scss/print.scss */
   .cs-classic .progress-page-wrap #wrap > div.rewards .view-Rewards-Progress .view-header p, .cs-elegant .progress-page-wrap #wrap > div.rewards .view-Rewards-Progress .view-header p {
@@ -1426,7 +1426,7 @@
   }
   /* line 1290, ../scss/print.scss */
   .progress-page-wrap #wrap > div.reading-progress {
-    background: #f6511d;
+    background: #f6511d !important;
   }
   /* line 1294, ../scss/print.scss */
   .cs-classic .progress-page-wrap #wrap > div.reading-progress {
@@ -1602,9 +1602,35 @@
 
   /* line 1435, ../scss/print.scss */
   #wrap.for-mobile {
-    display: none;
+    display: none !important;
     background: transparent;
     box-shadow: none;
+  }
+  .progress-page-wrap #wrap {
+    background: #fdeb52 !important;
+  }
+  .progress-page-wrap #wrap > div.sticker-block {
+    width: 100% !important;
+    text-align: center;
+    padding-bottom: 20px;
+  }
+  .prog-days, .prog-sticker-info {
+    display: none;
+  }
+  .progress-page-wrap #wrap > div.rewards {
+    width: 50% !important;
+  }
+  .progress-page-wrap #wrap > div.rewards #next-reward {
+    color: #fff !important;
+  }
+  .progress-page-wrap #wrap > div.rewards .view-Rewards-Progress {
+    width: 100%;
+    display: inline-block;
+    height: 100%;
+    background: #fff !important;
+    color: #000 !important;
+    border-radius: 15px;
+    padding: 15px 20px;
   }
 
   /*------------------Print page-----------------*/
