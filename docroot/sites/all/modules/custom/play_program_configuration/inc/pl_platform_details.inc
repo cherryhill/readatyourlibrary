@@ -1,4 +1,4 @@
-// <?php
+<?php
 
 // // Function callback for program details.
 // function pl_platform_details($form, &$form_state) {
