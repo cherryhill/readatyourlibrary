@@ -21,7 +21,7 @@
   }
 
   /* line 149, ../scss/print.scss */
-  .white-text, .stroke-sidebar, .primary-background, div.progress-page, .yellow-commonblock, .cs-default .msg-button.new, .cs-classic .msg-button.new, .cs-default .msg-button.new:hover, .cs-default .msg-button.new:focus, .cs-classic .msg-button.new:hover, .cs-classic .msg-button.new:focus, .cs-classic .msg-button, .cs-elegant .msg-button, .cs-classic .top-menu-button, .cs-elegant .top-menu-button, .cs-default div.progress-page button.print_pg, .cs-default div.progress-page .user-desc *, .cs-default div.progress-page .progress-main h1 {
+  .white-text, .stroke-sidebar, .primary-background, .main div.progress-page, .yellow-commonblock, .cs-default .msg-button.new, .cs-classic .msg-button.new, .cs-default .msg-button.new:hover, .cs-default .msg-button.new:focus, .cs-classic .msg-button.new:hover, .cs-classic .msg-button.new:focus, .cs-classic .msg-button, .cs-elegant .msg-button, .cs-classic .top-menu-button, .cs-elegant .top-menu-button, .cs-default div.progress-page button.print_pg, .cs-default div.progress-page .user-desc *, .cs-default div.progress-page .progress-main h1 {
     color: #fff !important;
   }
 
@@ -64,8 +64,8 @@
   }
 
   /* line 184, ../scss/print.scss */
-  .purple, .cs-default .primary-background, .cs-default div.progress-page {
-    background: #32024e;
+  .purple, .primary-background, div.progress-page {
+    background: #32024e !important;
   }
 
   /* line 188, ../scss/print.scss */
@@ -120,7 +120,7 @@
 
   /* line 228, ../scss/print.scss */
   .yellow, .cs-default .main-button, .cs-default .button, .cs-default button, .cs-default .msg-button, .cs-default .top-menu-button, .cs-default div.progress-page .progress-wrap .progress-rewards {
-    background: #f6f45a;
+    background: #f6f45a !important;
   }
 
   /* line 233, ../scss/print.scss */
@@ -546,8 +546,8 @@
     font-size: 28px;
   }
   /* line 643, ../scss/print.scss */
-  .cs-default h1 {
-    font-size: 26px;
+  h1 {
+    font-size: 20px !important;
   }
   /* line 660, ../scss/print.scss */
   h2 {
@@ -578,7 +578,7 @@
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
     -moz-font-smoothing: grayscale;
-    font-size: 17px;
+    font-size: 15px !important;
     line-height: 26px;
   }
   /* line 86, ../scss/print.scss */
@@ -603,7 +603,7 @@
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
     -moz-font-smoothing: grayscale;
-    font-size: 17px;
+    font-size: 15px !important;
     line-height: 26px;
     margin-bottom: 20px;
   }
@@ -674,8 +674,8 @@
   }
   /* line 67, ../scss/print.scss */
   .cs-default .teen-button, .cs-default .button, .cs-default button, .cs-default .main-button, .cs-default .msg-button, .cs-default .top-menu-button, .cs-default div.progress-page .progress-wrap .report-acivity input.submit, div.progress-page .progress-wrap .report-acivity .cs-default input.submit {
-    font-family: "Special Elite", cursive;
-    font-weight: 400;
+    font-family: "Special Elite", cursive !important;
+    font-weight: 400 !important;
   }
   /* line 71, ../scss/print.scss */
   .cs-classic .teen-button, .cs-classic .button, .cs-classic button, .cs-classic .main-button, .cs-classic .msg-button, .cs-classic .top-menu-button, .cs-classic div.progress-page .progress-wrap .report-acivity input.submit, div.progress-page .progress-wrap .report-acivity .cs-classic input.submit {
@@ -789,7 +789,7 @@
     background-color: #32024e;
   }
   div.progress-page .user-desc {
-    background: radial-gradient(#7cb301, #6d9c05, #74a703);
+    background: radial-gradient(#7cb301, #6d9c05, #74a703) !important;
   }
   div.progress-page .user-desc * {
     color: #fff !important;
@@ -803,16 +803,22 @@
   div.progress-page .progress-wrap .report-acivity,
   div.progress-page .progress-wrap .reward-won,
   div.progress-page .progress-wrap .progress-rewards  {
-    /*flex: 0 0 27%;*/
-    width: 270px;
+    flex: 1 1 32%;
+    width: 32% !important;
+    margin-left: 0 !important;
   }
   div.progress-page .progress-wrap .progress-rewards {
-    background-color: #f6f45a;
-    color: #32024e;
+    background-color: #f6f45a !important;
+    color: #32024e !important;
   }
   div.progress-page .progress-main h1 {
-    background: radial-gradient(#7cb301, #6d9c05, #74a703);
+    background: radial-gradient(#7cb301, #6d9c05, #74a703) !important;
     color: #fff !important;
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
+  }
+  div.progress-page .progress-main {
+    width: 100%;
   }
   .progress-wrap .reward-won .counter {
     width: 10%;
@@ -841,15 +847,24 @@
     padding-right: 20px;
   }
   .user-desc {
-    width: 97% !important;
+    width: 100% !important;
   }
   .progress-page {
-    width: 900px !important;
+    width: 100% !important;
+    padding: 10px !important;
+  }
+  div.progress-page #wrap .report-acivity, 
+  div.progress-page #wrap .reward-won {
+    color: #32024e !important;
+    background: #fff !important;
+  }
+  #wrap.for-mobile {
+    display: none;
   }
 
   /* line 887, ../scss/print.scss */
   div.progress-page h1#title {
-    color: #fff;
+    color: #fff !important;
     margin-bottom: 0;
   }
   /* line 892, ../scss/print.scss */
@@ -886,10 +901,12 @@
   div.progress-page .progress-desc p {
     font-family: "Raleway", sans-serif;
     font-weight: 700;
+    color: #fff !important;
+    margin-bottom: 10px;
   }
   /* line 924, ../scss/print.scss */
   div.progress-page .user-desc {
-    padding: 25px 14px;
+    padding: 10px 14px !important;
   }
   /* line 926, ../scss/print.scss */
   div.progress-page .user-desc * {
@@ -920,8 +937,8 @@
   }
   /* line 952, ../scss/print.scss */
   div.progress-page .progress-wrap {
-    margin-top: 25px;
-    margin-bottom: 25px;
+    margin-top: 10px !important;
+    margin-bottom: 10px !important;
   }
   /* line 957, ../scss/print.scss */
   div.progress-page .progress-wrap .report-acivity {
@@ -934,8 +951,8 @@
   }
   /* line 969, ../scss/print.scss */
   div.progress-page .progress-wrap .report-acivity input.submit {
-    background: #32024e;
-    padding: 9px 14px 4px;
+    background: #32024e !important;
+    padding: 9px 14px 4px !important;
     color: #fff !important;
   }
   /* line 974, ../scss/print.scss */
@@ -1023,11 +1040,11 @@
   }
   /* line 1033, ../scss/print.scss */
   div.progress-page .progress-wrap .report-acivity form .form-item-activity-progress-select .chosen-container a.chosen-single > div {
-    width: 30px;
+    width: 30px !important;
   }
   /* line 1036, ../scss/print.scss */
   div.progress-page .progress-wrap .report-acivity form .form-item-activity-progress-select .chosen-container a.chosen-single > div {
-    background: #32024e;
+    background: #32024e !important;
   }
   /* line 1040, ../scss/print.scss */
   .cs-classic div.progress-page .progress-wrap .report-acivity form .form-item-activity-progress-select .chosen-container a.chosen-single > div {
@@ -1039,7 +1056,7 @@
   }
   /* line 1048, ../scss/print.scss */
   div.progress-page .progress-wrap .report-acivity form .form-item-activity-progress-select .chosen-container a.chosen-single > div b {
-    background: none;
+    background: none !important;
     border-left: 7px solid transparent;
     border-right: 7px solid transparent;
     display: inline-block;
@@ -1174,7 +1191,7 @@
   }
   /* line 1162, ../scss/print.scss */
   .cs-default div.progress-page .progress-wrap .progress-rewards {
-    color: #32024e;
+    color: #32024e !important;
   }
   /* line 1166, ../scss/print.scss */
   .cs-classic div.progress-page .progress-wrap .progress-rewards {
@@ -1240,18 +1257,49 @@
     font-family: "Special Elite", cursive;
     font-weight: 400;
   }
+  div.progress-page .progress-main .progress-grid .grid.inserted p {
+    font-size: 10px !important;
+    line-height: 16px;
+  }
   /* line 1230, ../scss/print.scss */
   div.progress-page .progress-main .progress-grid .grid.inserted .rew {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
     -moz-font-smoothing: grayscale;
-    margin-top: 20px;
+    margin-top: 2px !important;
+    margin-bottom: 2px !important;
   }
   /* line 67, ../scss/print.scss */
   div.progress-page .progress-main .progress-grid .grid.inserted .rew {
     font-family: "Special Elite", cursive;
     font-weight: 400;
+  }
+  .progress-page .progress-desc ul {
+    margin-bottom: 10px;
+  }
+  .progress-page .progress-desc ul li {
+    color: #fff !important;
+  }
+  header.l-header, .breadcrum-wrapper, .post-footer, .progress-desc,
+  .report-acivity {
+    display: none;
+  }
+  .row.l-main {
+    padding-top: 0;
+  }
+  div.progress-page .progress-main .progress-grid {
+    margin-bottom: 0;
+  }
+  div.progress-page .progress-main .progress-grid td {
+    height: 100px;
+    padding: 5px !important;
+  }
+  .c-img-print-only {
+    display: block !important;
+    width: 60px;
+    height: auto;
+    margin: auto;
   }
 
   /*------------------Page-print-----------------*/

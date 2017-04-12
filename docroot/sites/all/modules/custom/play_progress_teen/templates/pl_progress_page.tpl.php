@@ -2,6 +2,7 @@
 <?php
   drupal_add_js(libraries_get_path('printThis', TRUE). '/printThis.js');
   drupal_add_js(libraries_get_path('printThis', TRUE). 'js/progress_teen_program.js');
+  drupal_add_css(drupal_get_path('module', 'play_progress_teen') . '/css/print.css', array('group' => CSS_DEFAULT, 'every_page' => TRUE, 'media'=>'print'));
   global $user;
   global $base_url;
   $current_uid = $user->uid;
@@ -174,7 +175,7 @@
     for($k=0; $k < 6; $k++){
       $cell_counter ++;
       if(isset($act_id[$i])){
-        print("<td class = 'grid inserted ". $act_id[$i]['selector']."' id = $cell_counter style='background: url($urlImg) no-repeat scroll center bottom 20px'>".$act_id[$i]['data']."</td>");
+        print("<td class = 'grid inserted ". $act_id[$i]['selector']."' id = $cell_counter style='background: url($urlImg) no-repeat scroll center bottom 20px'>".$act_id[$i]['data']. "<img src='". $urlImg ."' class='c-img-print-only' /></td>");
   	    // echo "<div class = 'grid inserted' id = 'cells'.$i.'>".$act_id[$i].$imageCompleted."</div>";
   	  }
   	  else{
