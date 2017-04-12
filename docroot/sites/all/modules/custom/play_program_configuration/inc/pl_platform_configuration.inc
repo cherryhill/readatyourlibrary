@@ -98,10 +98,11 @@ function pl_platform_configuration($form, &$form_state) {
   // );
   $form['program_details']['library_abbreviation'] = array(
     '#type' => 'textfield',
-    '#title' => t('Abbreviation for Library Name used in library catalog link'),
+    '#title' => t('Abbreviation for Library Name in review forms'),
     '#description' => t('Abbreviation for Library name'),
     '#default_value' => variable_get('library_abbreviation'),
   );
+  
   $form['program_details']['catalog_link_for_program'] = array(
     '#type' => 'textfield',
     '#title' => t('Catalog link for review'),

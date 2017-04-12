@@ -10,7 +10,7 @@
   drupal_add_js(drupal_get_path('module', 'play_progress_calendar') . '/js/drag_drop_calendar.js');
   // drupal_add_js(drupal_get_path('module', 'play_progress_calendar') . '/printThis/printThis.js');
   drupal_add_js(libraries_get_path('printThis', TRUE). '/printThis.js');
-
+  drupal_add_css(drupal_get_path('module', 'play_progress_calendar') . '/css/print.css', array('group' => CSS_DEFAULT, 'every_page' => TRUE, 'media'=>'print'));
   drupal_add_css(drupal_get_path('module', 'play_progress_calendar') . '/fullcalendar/fullcalendar.css', array('group' => CSS_DEFAULT, 'every_page' => TRUE));
   // drupal_add_css(drupal_get_path('module', 'play_progress_calendar') . '/fullcalendar/fullcalendar.print.css', array('group' => CSS_DEFAULT, 'every_page' => TRUE));
   drupal_add_css(drupal_get_path('module', 'play_progress_calendar') . '/css/calendar.css', array('group' => CSS_DEFAULT, 'every_page' => TRUE));

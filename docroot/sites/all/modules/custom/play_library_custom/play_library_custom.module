@@ -177,6 +177,10 @@ function play_library_custom_block_info() {
     'info' => t('User profile tabs'),
   );
 
+  $blocks['staff_user_profile_tabs'] = array(
+    'info' => t('Staff user profile tabs'),
+  );
+
   return $blocks;
 }
 
@@ -224,6 +228,9 @@ function play_library_custom_block_view($delta = '') {
       break;
     case 'user_profile_tabs' :
       $block['content'] = pl_program_user_profile_tabs();
+      break;
+    case 'staff_user_profile_tabs' :
+      $block['content'] = pl_staff_program_user_profile_tabs();
       break;  
   }
 
@@ -237,6 +244,14 @@ function pl_program_user_profile_tabs() {
    global $base_url;
    $uid = $user->uid;
    $output = '<ul><li><a class="button" href="'.$base_url.'/user/'.$uid.'/edit/main">Main profile</a></li><li><a class="button" href="'.$base_url.'/user/'.$uid.'/edit">Change My Username or Password</a></li><li><a class="button" href="'.$base_url.'/users/public_profile/'.$uid.'">My Public Profile</a></li>'.'</ul>';
+   return $output; 
+}
+
+function pl_staff_program_user_profile_tabs() {
+   global $user;
+   global $base_url;
+   $uid = $user->uid;
+   $output = '<ul><li><a class="button" href="'.$base_url.'/user/'.arg(1).'/edit/main">Main profile</a></li><li><a class="button" href="'.$base_url.'/user/'.arg(1).'/edit">Change Username or Password</a></li><li><a class="button" href="'.$base_url.'/users/public_profile/'.arg(1).'">User Public Profile</a></li>'.'</ul>';
    return $output; 
 }
 
