@@ -392,7 +392,7 @@
 
   /* line 466, ../scss/print.scss */
   .yellow-commonblock, .progress-page-wrap #wrap {
-    padding: 14px 25px 15px;
+    padding: 5px 10px 6px !important;
     color: #000;
     border-radius: 15px;
     overflow: hidden;
@@ -520,15 +520,15 @@
   }
   /* line 524, ../scss/print.scss */
   .cs-default h2 {
-    font-size: 25px;
+    font-size: 20px !important;
   }
   /* line 530, ../scss/print.scss */
   .cs-classic h2 {
-    font-size: 27px;
+    font-size: 22px !important;
   }
   /* line 536, ../scss/print.scss */
   .cs-elegant h2 {
-    font-size: 28px;
+    font-size: 23px !important;
   }
   /* line 556, ../scss/print.scss */
   .cs-default h3 {
@@ -950,10 +950,10 @@
   #page-title {
     line-height: 1.4;
     margin: 0;
-    height: 50px;
+    height: 50px !important;
     width: 100%;
     background: url(../images/big-strokes);
-    padding-top: 3px;
+    padding-top: 3px !important;
     border-radius: 15px 15px 0 0;
     padding-left: 35px;
     text-transform: capitalize;
@@ -1070,7 +1070,7 @@
   }
   /* line 1038, ../scss/print.scss */
   .progress-page-wrap #wrap {
-    margin-top: 20px;
+    margin-top: 10px !important;
     overflow: visible !important;
     -webkit-flex-wrap: wrap;
     flex-wrap: wrap;
@@ -1089,7 +1089,7 @@
   }
   /* line 1059, ../scss/print.scss */
   .cs-default .progress-page-wrap #wrap > div.sticker-block span.prog-name * {
-    font-size: 22px;
+    font-size: 18px !important;
   }
   /* line 1063, ../scss/print.scss */
   .cs-classic .progress-page-wrap #wrap > div.sticker-block span.prog-name * {
@@ -1106,7 +1106,7 @@
   }
   /* line 1077, ../scss/print.scss */
   .cs-default .progress-page-wrap #wrap > div.sticker-block .prog-days * {
-    font-size: 26px;
+    font-size: 22px !important;
   }
   /* line 1081, ../scss/print.scss */
   .cs-classic .progress-page-wrap #wrap > div.sticker-block .prog-days * {
@@ -1481,7 +1481,7 @@
   /* line 1337, ../scss/print.scss */
   .progress-page-wrap .fc-content-skeleton > table .fc-day-top span {
     float: left !important;
-    font-size: 30px;
+    font-size: 25px !important;
     color: #267fda !important;
   }
   /* line 49, ../scss/print.scss */
@@ -1518,7 +1518,7 @@
   /* line 1352, ../scss/print.scss */
   .progress-page-wrap .fc-day-grid .fc-row.fc-week {
     border-bottom: 2px solid #ddd;
-    height: 120px !important;
+    height: 90px !important;
   }
   /* line 1353, ../scss/print.scss */
   .progress-page-wrap .fc-day-grid .fc-row.fc-week:nth-of-type(1) {
@@ -1558,7 +1558,7 @@
   }
   /* line 1402, ../scss/print.scss */
   .progress-page-wrap table .fc-head th {
-    font-size: 22px;
+    font-size: 17px !important;
     color: #fff!important;
     padding-bottom: 10px;
   }
@@ -1626,9 +1626,9 @@
     padding-bottom: 10px;
   }
   .sticker-block #external-events, .prog-sticker-info {
-    display: none;
+    display: none !important;
   }
-  .progress-page-wrap #wrap div.rewards #next-reward {
+  .progress-page-wrap #wrap div.reading-progress #next-reward {
     color: #fff !important;
     width: 100%;
     text-align: center;
@@ -1640,7 +1640,7 @@
     background: #fff !important;
     color: #000 !important;
     border-radius: 15px;
-    padding: 15px 20px;
+    padding: 5px 20px !important;
   }
   header.l-header, .breadcrum-wrapper, .post-footer {
     display: none;
@@ -1655,10 +1655,14 @@
     background: #fff !important;
   }
   .fc-scroller {
-    height: 733px !important;
+    height: 553px !important;
   }
   .progress-page-wrap table .fc-head th span {
     color: #fff !important;
+  }
+  .progress-page-wrap .fc-event img {
+    width: 25px !important;
+    height: auto;
   }
   /*------------------Print page-----------------*/
  /*!
