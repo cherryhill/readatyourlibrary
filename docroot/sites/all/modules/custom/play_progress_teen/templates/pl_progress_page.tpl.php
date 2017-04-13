@@ -99,7 +99,7 @@
   <div class="report-acivity">
   	<?php
         if ($count >= $grids){
-          print '<h1>Congratulations! You have completed the program.</h1>';
+          print '<h1>Congratulations on completing the Teen Summer Passport program!</h1>';
 
         }
         else{
