@@ -524,23 +524,23 @@
   }
   /* line 530, ../scss/print.scss */
   .cs-classic h2 {
-    font-size: 22px !important;
+    font-size: 20px !important;
   }
   /* line 536, ../scss/print.scss */
   .cs-elegant h2 {
-    font-size: 23px !important;
+    font-size: 20px !important;
   }
   /* line 556, ../scss/print.scss */
   .cs-default h3 {
-    font-size: 22px;
+    font-size: 12px !important;
   }
   /* line 559, ../scss/print.scss */
   .cs-classic h3 {
-    font-size: 24px;
+    font-size: 12px !important;
   }
   /* line 562, ../scss/print.scss */
   .cs-elegant h3 {
-    font-size: 25px;
+    font-size: 12px !important;
   }
   /* line 578, ../scss/print.scss */
   h4 {
@@ -933,7 +933,7 @@
     overflow: hidden;
     box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
     margin-bottom: 35px;
-    padding-bottom: 15px;
+    padding-bottom: 5px !important;
     padding-left: 0 !important;
     padding-right: 0 !important;
   }
@@ -1054,7 +1054,8 @@
   }
   /* line 1022, ../scss/print.scss */
   .progress-page-wrap td.fc-event-container .fc-event .fc-content.reward-content {
-    background: #fdeb52;
+    background: #fdeb52 !important;
+    font-size: 8px !important;
   }
   /* line 1026, ../scss/print.scss */
   .progress-page-wrap .fc-event {
@@ -1346,8 +1347,8 @@
   }
   /* line 1241, ../scss/print.scss */
   .cs-default .progress-page-wrap #wrap > div.rewards .view-Rewards-Progress .view-content .views-row {
-    font-size: 13px;
-    line-height: 17px;
+    font-size: 11px !important;
+    line-height: 12px !important;
   }
   /* line 1246, ../scss/print.scss */
   .cs-elegant .progress-page-wrap #wrap > div.rewards .view-Rewards-Progress .view-content .views-row {
@@ -1450,7 +1451,7 @@
   /* line 1306, ../scss/print.scss */
   .progress-page-wrap .calendar-wrapper .fc-center {
     width: 100%;
-    max-width: 360px;
+    max-width: 263px;
     margin: auto;
   }
   /* line 1311, ../scss/print.scss */
@@ -1481,7 +1482,7 @@
   /* line 1337, ../scss/print.scss */
   .progress-page-wrap .fc-content-skeleton > table .fc-day-top span {
     float: left !important;
-    font-size: 25px !important;
+    font-size: 20px !important;
     color: #267fda !important;
   }
   /* line 49, ../scss/print.scss */
@@ -1518,7 +1519,7 @@
   /* line 1352, ../scss/print.scss */
   .progress-page-wrap .fc-day-grid .fc-row.fc-week {
     border-bottom: 2px solid #ddd;
-    height: 90px !important;
+    height: 80px !important;
   }
   /* line 1353, ../scss/print.scss */
   .progress-page-wrap .fc-day-grid .fc-row.fc-week:nth-of-type(1) {
@@ -1655,7 +1656,7 @@
     background: #fff !important;
   }
   .fc-scroller {
-    height: 553px !important;
+    height: 487px !important;
   }
   .progress-page-wrap table .fc-head th span {
     color: #fff !important;
@@ -1663,6 +1664,9 @@
   .progress-page-wrap .fc-event img {
     width: 25px !important;
     height: auto;
+  }
+  .fc-button {
+    display: none !important;
   }
   /*------------------Print page-----------------*/
  /*!
@@ -2583,7 +2587,7 @@
   /* line 2254, ../scss/print.scss */
   .fc-toolbar {
     text-align: center;
-    margin-bottom: 1em;
+    margin-bottom: 2px !important;
   }
 
   /* line 2259, ../scss/print.scss */
