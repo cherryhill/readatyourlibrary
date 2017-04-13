@@ -36,22 +36,22 @@
           $('.page-user-edit #edit-name').val(name);
       
         var username = name;
-        $.ajax({
-          url: Drupal.settings.basePath + 'username/check',
-          type: 'post',
-          async: true,
-          data: "name="+username,
-          success: function (data) {
-            if (data) {
-              if (data == 'yes') {
-                console.log(data);
+        // $.ajax({
+        //   url: Drupal.settings.basePath + 'username/check',
+        //   type: 'post',
+        //   async: true,
+        //   data: "name="+username,
+        //   success: function (data) {
+        //     if (data) {
+        //       if (data == 'yes') {
+        //         console.log(data);
                 setTimeout(function() {
                   $('#user-profile-form .random-list-widget-regenerate').click();
                 }, 150);
-              }
-            }
-          }
-        });
+        //       }
+        //     }
+        //   }
+        // });
           payl_program_customizations_change_name_profile();
         }, 50);
       });

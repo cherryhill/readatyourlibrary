@@ -266,6 +266,7 @@ function readingPerBranch_submit($form, &$form_state) {
       }
     }
   }
+ $form_state['rebuild'] = TRUE; 
 }
 
 function all_activities() {
@@ -493,6 +494,7 @@ function readingPerSchool_submit($form, &$form_state) {
       }
     }
   }
+  $form_state['rebuild'] = TRUE; 
 }
 
 
