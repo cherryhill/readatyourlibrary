@@ -108,7 +108,7 @@
   /*------------------common-----------------*/
   /* line 252, ../scss/print.scss */
   .yellow, .yellow-commonblock, .progress-page-wrap #wrap, .button, button, .cs-elegant .btn.btn-large.msg.new, .btn.btn-primary {
-    background: #fdeb52;
+    background: #fdeb52 !important;
   }
 
   /* line 256, ../scss/print.scss */
@@ -397,7 +397,7 @@
     border-radius: 15px;
     overflow: hidden;
    /* box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);*/
-    margin-bottom: 35px;
+    margin-bottom: 10px !important;
   }
   /* line 182, ../scss/print.scss */
   .cs-default .yellow-commonblock, .cs-default .progress-page-wrap #wrap, .progress-page-wrap .cs-default #wrap {
@@ -939,7 +939,7 @@
   }
   /* line 937, ../scss/print.scss */
   .cs-default .main, .cs-elegant .main {
-    background: #267fda;
+    background: #267fda !important;
   }
   /* line 941, ../scss/print.scss */
   .cs-classic .main {
@@ -950,10 +950,10 @@
   #page-title {
     line-height: 1.4;
     margin: 0;
-    height: 99px;
+    height: 50px;
     width: 100%;
     background: url(../images/big-strokes);
-    padding-top: 14px;
+    padding-top: 3px;
     border-radius: 15px 15px 0 0;
     padding-left: 35px;
     text-transform: capitalize;
@@ -988,6 +988,10 @@
   /* line 971, ../scss/print.scss */
   .cs-default #page-title {
     background-position: -60px -569px;
+    background-color: #f98515 !important;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    color: #fff !important;
   }
   /* line 975, ../scss/print.scss */
   .cs-classic #page-title {
@@ -1002,7 +1006,6 @@
   .progress-page-wrap {
     padding-left: 35px;
     padding-right: 35px;
-    max-width: 900px !important;
     width: 100%;
   }
   /* line 988, ../scss/print.scss */
@@ -1068,7 +1071,7 @@
   }
   /* line 1050, ../scss/print.scss */
   .progress-page-wrap #wrap > div.sticker-block {
-    flex: 0 0 30%;
+    flex: 0 0 100%;
     padding-right: 20px;
   }
   /* line 1055, ../scss/print.scss */
@@ -1118,7 +1121,7 @@
   }
   /* line 1104, ../scss/print.scss */
   .progress-page-wrap #wrap > div.rewards {
-    flex: 0 0 30%;
+    flex: 0 0 50% !important;
     padding-right: 60px;
   }
   /* line 1109, ../scss/print.scss */
@@ -1381,7 +1384,7 @@
   }
   /* line 1270, ../scss/print.scss */
   .progress-page-wrap #wrap > div.reading-progress {
-    flex: 0 0 20%;
+    flex: 0 0 50% !important;
     border-radius: 15px;
    /* box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);*/
     padding: 20px;
@@ -1444,7 +1447,7 @@
   }
   /* line 1311, ../scss/print.scss */
   .progress-page-wrap .calendar-wrapper .fc-center h2 {
-    color: #000;
+    color: #000 !important;
   }
   /* line 1315, ../scss/print.scss */
   .progress-page-wrap .calendar-wrapper .fc-center * {
@@ -1507,6 +1510,7 @@
   /* line 1352, ../scss/print.scss */
   .progress-page-wrap .fc-day-grid .fc-row.fc-week {
     border-bottom: 2px solid #ddd;
+    height: 120px !important;
   }
   /* line 1353, ../scss/print.scss */
   .progress-page-wrap .fc-day-grid .fc-row.fc-week:nth-of-type(1) {
@@ -1533,7 +1537,7 @@
     border-top: none;
     border-left: 2px solid #ddd;
     border-right: 2px solid #ddd;
-    border-bottom: 4px solid #ddd !important;
+    border-bottom: 4px solid #ddd;
   }
   /* line 1387, ../scss/print.scss */
   .progress-page-wrap table .fc-body thead {
@@ -1547,7 +1551,7 @@
   /* line 1402, ../scss/print.scss */
   .progress-page-wrap table .fc-head th {
     font-size: 22px;
-    color: #000;
+    color: #fff!important;
     padding-bottom: 10px;
   }
   /* line 49, ../scss/print.scss */
@@ -1610,15 +1614,11 @@
     background: #fdeb52 !important;
   }
   .progress-page-wrap #wrap > div.sticker-block {
-    width: 100% !important;
     text-align: center;
-    padding-bottom: 20px;
+    padding-bottom: 10px;
   }
-  .prog-days, .prog-sticker-info {
+  .sticker-block #external-events .prog-sticker-info {
     display: none;
-  }
-  .progress-page-wrap #wrap div.rewards {
-    width: 50% !important;
   }
   .progress-page-wrap #wrap div.rewards #next-reward {
     color: #fff !important;
@@ -1631,6 +1631,22 @@
     color: #000 !important;
     border-radius: 15px;
     padding: 15px 20px;
+  }
+  .reading-progress .next-reward {
+    width: 100%;
+    text-align: center;
+  }
+  header.l-header, .breadcrum-wrapper, #page-title, .post-footer {
+    display: none;
+  }
+  .row.l-main {
+    padding-top: 0;
+  }
+  .row.l-main .main {
+    margin-bottom: 0;
+  }
+  .fc-body {
+    background: #fff !important;
   }
 
   /*------------------Print page-----------------*/
