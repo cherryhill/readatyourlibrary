@@ -107,7 +107,7 @@
   /*------------------mixin-----------------*/
   /*------------------common-----------------*/
   /* line 252, ../scss/print.scss */
-  .yellow, .yellow-commonblock, .progress-page-wrap #wrap, .button, button, .cs-elegant .btn.btn-large.msg.new, .btn.btn-primary {
+  .yellow, .yellow-commonblock, .progress-page-wrap #wrap, .button, .cs-default button, .cs-elegant .btn.btn-large.msg.new, .btn.btn-primary {
     background: #fdeb52 !important;
   }
 
@@ -138,7 +138,7 @@
 
   /* line 277, ../scss/print.scss */
   .light-orange, .cs-classic .button, .cs-classic button, .cs-elegant .button, .cs-elegant button, .cs-classic .btn.btn-large.msg.new, .cs-classic .btn.btn-primary, .cs-elegant .btn.btn-primary {
-    background: #ff9f1c;
+    background: #ff9f1c !important;
   }
 
   /* line 281, ../scss/print.scss */
@@ -153,7 +153,7 @@
 
   /* line 289, ../scss/print.scss */
   .white-text, .font-stroke-main, .font-stroke-sidebar, .stroke-main, .stroke-sidebar, #page-title {
-    color: #fff;
+    color: #fff !important;
   }
 
   /* line 292, ../scss/print.scss */
@@ -938,12 +938,12 @@
     padding-right: 0 !important;
   }
   /* line 937, ../scss/print.scss */
-  .cs-default .main, .cs-elegant .main {
+  .cs-default .main.columns, .cs-elegant .main.columns {
     background: #267fda !important;
   }
   /* line 941, ../scss/print.scss */
-  .cs-classic .main {
-    background: #084899;
+  .cs-classic .main.columns {
+    background: #084899 !important;
   }
 
   /* line 955, ../scss/print.scss */
@@ -986,7 +986,7 @@
     -moz-font-smoothing: grayscale;
   }
   /* line 971, ../scss/print.scss */
-  .cs-default #page-title {
+  .cs-default .main #page-title {
     background-position: -60px -569px;
     background-color: #f98515 !important;
     border-bottom-right-radius: 10px;
@@ -994,12 +994,20 @@
     color: #fff !important;
   }
   /* line 975, ../scss/print.scss */
-  .cs-classic #page-title {
+  .cs-classic .main #page-title {
     background-position: -60px -225px;
+    background-color: #00a6ed !important;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    color: #fff !important;
   }
   /* line 979, ../scss/print.scss */
   .cs-elegant #page-title {
     background-position: -60px -914px;
+    background-color: #2ec4b6 !important;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    color: #fff !important;
   }
 
   /* line 984, ../scss/print.scss */
@@ -1071,7 +1079,7 @@
   }
   /* line 1050, ../scss/print.scss */
   .progress-page-wrap #wrap > div.sticker-block {
-    flex: 0 0 100%;
+    flex: 0 0 100% !important;
     padding-right: 20px;
   }
   /* line 1055, ../scss/print.scss */
@@ -1428,16 +1436,16 @@
     -moz-font-smoothing: grayscale;
   }
   /* line 1290, ../scss/print.scss */
-  .progress-page-wrap #wrap > div.reading-progress {
+  .cs-default .progress-page-wrap #wrap > div.reading-progress {
     background: #f6511d !important;
   }
   /* line 1294, ../scss/print.scss */
   .cs-classic .progress-page-wrap #wrap > div.reading-progress {
-    background: #00a6ed;
+    background: #00a6ed !important;
   }
   /* line 1298, ../scss/print.scss */
   .cs-elegant .progress-page-wrap #wrap > div.reading-progress {
-    background: #2ec4b6;
+    background: #2ec4b6 !important;
   }
   /* line 1306, ../scss/print.scss */
   .progress-page-wrap .calendar-wrapper .fc-center {
@@ -1617,7 +1625,7 @@
     text-align: center;
     padding-bottom: 10px;
   }
-  .sticker-block #external-events .prog-sticker-info {
+  .sticker-block #external-events, .prog-sticker-info {
     display: none;
   }
   .progress-page-wrap #wrap div.rewards #next-reward {
@@ -1636,7 +1644,7 @@
     width: 100%;
     text-align: center;
   }
-  header.l-header, .breadcrum-wrapper, #page-title, .post-footer {
+  header.l-header, .breadcrum-wrapper, .post-footer {
     display: none;
   }
   .row.l-main {
