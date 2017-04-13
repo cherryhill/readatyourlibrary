@@ -134,7 +134,7 @@ function calendar_page() {
   } 
   
   else {
-    $next_rew =  t('<strong>Congratulations!</strong> You have completed Reading Program.'); 
+    $next_rew =  t('Congratulations! You have finished the Kids’ Summer Reading Program.'); 
   }
   //Print message que from drupal_set_message
   echo json_encode(array('next_reward'=>$next_rew, 'drupal_message'=>(theme('status_messages')))); 
@@ -341,10 +341,10 @@ function patron_activity_record_form_record($form, &$form_state) {
     drupal_set_message("Please add stickers for Calendar with 'Staff Record Image' as 'Yes'", "error");
   }
   $commands = array();
-$commands[] = ajax_command_remove('.messages');
-$commands[] = ajax_command_after('.l-header', theme('status_messages'));
-return array(
-  '#type' => 'ajax',
-  '#commands' => $commands,
-);
+  $commands[] = ajax_command_remove('.messages');
+  $commands[] = ajax_command_after('.l-header', theme('status_messages'));
+  return array(
+    '#type' => 'ajax',
+    '#commands' => $commands,
+  );
 }
