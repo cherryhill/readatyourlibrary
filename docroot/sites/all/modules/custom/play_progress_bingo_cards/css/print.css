@@ -2,20 +2,21 @@
   @import url("https://fonts.googleapis.com/css?family=Bitter:400,700|Open+Sans:400,600,700|PT+Sans:400,700");
   @import url("https://fonts.googleapis.com/css?family=Exo+2:400,500,600|Raleway|Roboto:400,700|Sniglet|Special+Elite");
   .bingo-progress-page {
-    background: #16316e;
-    color: #fff;
+    background: #16316e !important;
+    color: #fff !important;
     font-family: "Raleway", sans-serif;
     font-weight: 400;
     font-size: 17px;
     line-height: 26px;
-    width: 900px;
-    padding: 15px;
+    width: 100%;
+    padding: 10px;
   }
 
   h1 {
     font-size: 28px;
     font-family: "Bitter", serif;
     font-weight: 700;
+    color: #fff !important;
   }
   h2 {
     font-family: "Bitter", serif;
@@ -26,20 +27,20 @@
     font-family: "Bitter", serif;
     font-weight: 700;
     font-size: 22px;
+    color: #16316e !important
   }
   h3 a {
-    color: #16316e;
+    color: #16316e !important;
   }
   .printBtn {
     display: none;
   }
 
   .user-info {
-    color: #16316e;
-    background: #d9dde8;
-    padding: 20px;
+    color: #16316e !important;
+    background: #d9dde8 !important;
+    padding: 10px !important;
     border-radius: 10px;
-    width: 95%;
     align-items: center;
     display: -webkit-flex;
     flex-wrap: wrap;
@@ -47,11 +48,11 @@
     box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
   }
   .bingo-progress-page .user-info .avatar-block {
-    width: 50%;
+    flex: 0 0 50% !important;
   }
   .bingo-progress-page .form-submit {
-    background-color: #feed40;
-    color: #16316e;
+    background-color: #f6f45a !important;
+    color: #16316e !important;
     padding: 8px 14px 5px;
     font-family: "Bitter", serif;
     font-weight: 400;
@@ -71,7 +72,14 @@
       text-align: center;
   }
   .bingo-progress-page .user-info .user-points, .bingo-progress-page .user-info .rewards-info {
-    width: 25%;
+    flex: 0 0 25% !important;
+    font-size: 13px !important;
+  }
+  .bingo-progress-page .user-info .uname {
+    font-size: 17px!important;
+  }
+  .bingo-progress-page .user-info .user-points *, .bingo-progress-page .user-info .rewards-info *{
+    font-size: 13px !important;
   }
   .bingo-progress-page .user-info .uname {
     font-family: "Bitter", serif;
@@ -84,7 +92,7 @@
     padding-left: 10px;
   }
   .bingo-progress-page .activities > div {
-    background: #fff;
+    background: #fff !important;
     height: 100%;
     padding: 20px;
   }
@@ -102,13 +110,8 @@
     height: 32px;
     object-fit: contain;
   }
-  .bingo-progress-page .activities form .form-item.form-type-select.form-item-activity {
-    display: flex;
-    display: -webkit-flex;
-    flex-wrap: wrap;
-    -webkit-flex-wrap: wrap;
-    width: 100%;
-    margin-bottom: 16px; 
+  .bingo-progress-page .activities form .form-item.form-type-select.form-item-activity label {
+    color: #16316e !important;
   }
   .bingo-progress-page .activities .chosen-container {
     font-size: 17px;
@@ -122,12 +125,15 @@
     -moz-user-select: none;
   }
   .bingo-progress-page .activities .chosen-container a.chosen-single {
-      color: #16316e;
-      border: 1px solid #16316e;
+      color: #16316e !important;
+      border: 1px solid #16316e !important;
       height: auto;
       border-radius: 0;
       background: #fff;
   }
+   .bingo-progress-page .activities .chosen-container a.chosen-single span {
+    color: #16316e !important;
+   }
 
   .chosen-container-single .chosen-single {
     position: relative;
@@ -146,7 +152,7 @@
       white-space: nowrap;
   }
   .bingo-progress-page .activities .chosen-container a.chosen-single > div {
-    background: #16316e;
+    background: #16316e !important;
   }
   .bingo-progress-page .activities .chosen-container a.chosen-single > div {
     width: 30px;
@@ -177,21 +183,23 @@
     display: none;
   }
   .activities{
-    padding-right: 10px;
-    width: 420px;
     margin-bottom: 25px;
     position: relative;
     color: #16316e;
     background: #fff;
   }
 
-  .bingo-card,  .non-bingo-card {
+  /*.bingo-card,  .non-bingo-card {
     width: 430px;
     height: 430px; 
-  }
+  }*/
   .bingo-progress-page .activities form .form-item.form-type-date-popup.form-item-date label {
-    width: 30%;
-    float: left
+    width: 20%;
+    float: left;
+    color: #16316e !important;
+  }
+  .bingo-progress-page .activities form .form-item.form-type-date-popup.form-item-date input {
+    width: 70%;
   }
   .bingo-progress-page .activities form .form-item.form-type-date-popup.form-item-date > div{
     width: 70%;
@@ -205,11 +213,9 @@
     background: #fff;
   }
   .bingo-progress-main .odd, .bingo-progress-main .left-activity {
-    margin-right: 20px;
     margin-bottom: 40px;
   }
   .bingo-progress-main .even, .bingo-progress-main .right-activity {
-    margin-left: 20px;
     margin-bottom: 40px;
   }
    .bingo-progress-page .non-bingo-card td.filled-cell * {
@@ -217,7 +223,7 @@
       font-weight: 600;
   }
   .bingo-progress-page .non-bingo-card td.filled-cell *  {
-      color: #16316e;
+      color: #16316e !important;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
       text-rendering: optimizeLegibility;
@@ -225,17 +231,18 @@
       width: 100%;
       display: inline-block;
   }
-  .bingo-card .filled-cell {
-    color: #16316e;
+  .bingo-card .filled-cell *, .non-bingo-card td.filled-cell *  {
+    color: #16316e !important;
     font-family: "Open Sans", sans-serif;
     font-weight: 600;
+    font-size: 12px !important;
   }
   .bingo-progress-page .bingo-progress-main .non-bingo-card table tr td {
     text-align: center;
   }
   .filled-cell{
     text-align: center !important;
-    background: #A3EEF6;
+    background: #A3EEF6 !important;
   }
   .bingo-progress-page .bingo-progress-main .non-bingo-card table tr td {
     /*padding-top: 190px;*/
@@ -245,17 +252,13 @@
   .bingo-progress-page .bingo-progress-main > div table {
       width: 100%;
       display: table;
+      margin-bottom: 5px !important;
   }
-  .non-bingo-card .card-no {
-    position: relative;
-    top: 160px;
-  }
-
 
   .bingo-card td{
     width: 143px;
     display: table-cell;
-    height: 138px;
+    height: 100px !important;
     border: 1px solid #059ab2 !important; 
   }
 
@@ -302,5 +305,30 @@
   .non-bingo-card .filled-cell {
     height: 430px;
     border: 1px solid #059ab2 !important; 
+  }
+  header.l-header, .breadcrum-wrapper, .post-footer {
+    display: none;
+  }
+  .row.l-main {
+    padding-top: 0;
+  }
+  .report-acivity .description .has-tip, .report-acivity div p,
+   .activities .form-item-read-activity label, .write-review div span {
+    color: #16316e !important;
+  }
+  .bingo-progress-main .activities {
+    display: none;
+  }
+  .bingo-progress-main .card-no {
+    color: #fff !important;
+  }
+  .bingo-progress-page .progress-wrap {
+    margin-top: 10px !important;
+  }
+  .bingo-progress-page .bingo-progress-main > div {
+    margin-bottom: 5px !important;
+  }
+  .bingo-progress-page .bingo-progress-main .non-bingo-card table tr td {
+    height: calc(100px * 3) !important;
   }
 }
