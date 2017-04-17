@@ -58,6 +58,14 @@ function pl_platform_configuration($form, &$form_state) {
     '#format' => $program_footer['format']
   );
 
+  $emoji_desc = variable_get('emoji_desc', array('value' => '', 'format' => NULL));
+  $form['program_configuration']['emoji_desc'] = array(
+    '#type' => 'text_format',
+    '#title' => t('Emoji One attributions'),
+    '#default_value' => $emoji_desc['value'],
+    '#format' => $emoji_desc['format']
+  );
+
   $form['pm_configuration'] = array(
     '#type' => 'fieldset', 
     '#title' => t('Private Message Configuration'),
