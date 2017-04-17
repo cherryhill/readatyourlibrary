@@ -57,6 +57,11 @@ function play_library_custom_menu() {
  */
 function play_library_custom_form_alter(&$form, &$form_state, $form_id) {
 
+  if ($form_id == 'user_register_form'){
+    $emoji = variable_get('emoji_desc', array('value' => '', 'format' => NULL));
+    $form['actions']['submit']['#suffix'] = $emoji['value'];
+  }
+
   $sub_title = variable_get('review_pre_header');
   $catalog_link = variable_get('catalog_link_for_program');
   $library_abbreviation = variable_get('library_abbreviation');
