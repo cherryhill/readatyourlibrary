@@ -1046,11 +1046,11 @@
   }
   /* line 1015, ../scss/print.scss */
   .progress-page-wrap td.fc-day.reward-won {
-    background: #fdeb52;
+    background: #fdeb52 !important;
   }
   /* line 1018, ../scss/print.scss */
   .progress-page-wrap td.reward-won.fc-day-top {
-    background: #fdeb52;
+    background: #fdeb52 !important;
   }
   /* line 1022, ../scss/print.scss */
   .progress-page-wrap td.fc-event-container .fc-event .fc-content.reward-content {
@@ -1058,11 +1058,11 @@
     font-size: 8px !important;
   }
   /* line 1026, ../scss/print.scss */
-  .progress-page-wrap .fc-event {
+  .progress-page-wrap a.fc-event {
     color: #000;
     background: transparent;
     border: none;
-    margin-bottom: 10px;
+    margin-bottom: 0 !important;
     text-align: center;
   }
   /* line 1033, ../scss/print.scss */
@@ -1407,7 +1407,7 @@
   /* line 1278, ../scss/print.scss */
   .progress-page-wrap #wrap > div.reading-progress * {
     font-size: inherit;
-    color: inherit;
+    color: #fff !important;
   }
   /* line 49, ../scss/print.scss */
   .cs-default .progress-page-wrap #wrap > div.reading-progress {
@@ -1667,6 +1667,9 @@
   }
   .fc-button {
     display: none !important;
+  }
+  .reading-progress h3 {
+    color: #fff !important;
   }
   /*------------------Print page-----------------*/
  /*!
@@ -2464,8 +2467,8 @@
   be a descendant of the grid when it is being dragged.
   */
   /* line 2144, ../scss/print.scss */
-  .fc-day-grid-event {
-    margin: 1px 2px 0;
+  a.fc-day-grid-event {
+    margin: 0 !important;
     /* spacing between events and edges */
     padding: 0 1px;
   }

@@ -287,8 +287,8 @@
     display: inline-block;
     align-content: center;
     align-items: center;
-    margin-bottom: 1px;
-    margin-left: 1px;
+    margin-bottom: 2px !important;
+    margin-left: 2px !important;
   }
   .pagination.pager li a {
     background: #059ab2;
@@ -330,5 +330,16 @@
   }
   .bingo-progress-page .bingo-progress-main .non-bingo-card table tr td {
     height: calc(100px * 3) !important;
+  }
+  a[href]:after {
+    content: "" !important;
+  }
+  .cs-default .pagination.pager li a {
+    background: #059ab2 !important;
+    color: #fff !important;
+    text-decoration: none;
+  }
+  .bingo-progress-page .bingo-card tr {
+    background: #fff !important;
   }
 }

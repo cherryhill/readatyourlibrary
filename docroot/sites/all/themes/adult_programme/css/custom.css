@@ -13484,39 +13484,41 @@ html {
 /* line 210, ../scss/pages/_booklist.scss */
 .booklist-wrapp .book-user-likes > div.book-created {
   width: 70%;
+  float: left;
 }
-/* line 213, ../scss/pages/_booklist.scss */
+/* line 214, ../scss/pages/_booklist.scss */
 .booklist-wrapp .book-user-likes > div.book-created * {
   font-family: inherit;
   font-size: inherit;
 }
-/* line 217, ../scss/pages/_booklist.scss */
+/* line 218, ../scss/pages/_booklist.scss */
 .booklist-wrapp .book-user-likes > div.book-created img {
   width: 32px;
   height: 32px;
   object-fit: contain;
 }
-/* line 223, ../scss/pages/_booklist.scss */
+/* line 224, ../scss/pages/_booklist.scss */
 .booklist-wrapp .book-user-likes > div.book-like {
   width: 30%;
   text-align: right;
+  float: right;
 }
-/* line 226, ../scss/pages/_booklist.scss */
+/* line 228, ../scss/pages/_booklist.scss */
 .booklist-wrapp .book-user-likes > div.book-like * {
   font-family: inherit;
   font-size: inherit;
 }
 
-/* line 237, ../scss/pages/_booklist.scss */
+/* line 239, ../scss/pages/_booklist.scss */
 .page-booklists .viewmenu {
   margin-bottom: 26px;
 }
-/* line 241, ../scss/pages/_booklist.scss */
+/* line 243, ../scss/pages/_booklist.scss */
 .page-booklists .view-booklist-page-view > .view-header {
   margin-top: 20px;
   margin-bottom: 20px;
 }
-/* line 246, ../scss/pages/_booklist.scss */
+/* line 248, ../scss/pages/_booklist.scss */
 .page-booklists .view-booklist-page-view > .view-content .views-row {
   margin-bottom: 23px;
   display: inline-block;
@@ -14196,89 +14198,92 @@ p.more-link a:after, .block-play_library_teens_leaderboard .portlet-content li +
 
 /* line 576, ../scss/pages/_dashboard.scss */
 .block-play_library_teens_leaderboard .portlet-content li {
-  margin-bottom: 10px;
+  margin-bottom: 20px;
+  width: 100%;
+  position: relative;
 }
-/* line 579, ../scss/pages/_dashboard.scss */
+/* line 581, ../scss/pages/_dashboard.scss */
 .block-play_library_teens_leaderboard .portlet-content li span img {
   margin-right: 10px;
   width: 32px;
   height: 32px;
   object-fit: contain;
 }
-/* line 585, ../scss/pages/_dashboard.scss */
+/* line 587, ../scss/pages/_dashboard.scss */
 .block-play_library_teens_leaderboard .portlet-content li span:nth-of-type(2) {
-  float: right;
+  display: block;
+  position: absolute;
+  right: 0;
 }
-/* line 590, ../scss/pages/_dashboard.scss */
+/* line 594, ../scss/pages/_dashboard.scss */
 .block-play_library_teens_leaderboard .portlet-content li + span {
   width: 100%;
   text-align: right;
   display: inline-block;
-  margin-top: 10px;
-  margin-bottom: 10px;
+  margin-top: 20px;
   padding-right: 0;
 }
 
-/* line 603, ../scss/pages/_dashboard.scss */
+/* line 606, ../scss/pages/_dashboard.scss */
 .homebox.homebox-auto-save .homebox-column-wrapper .homebox-draggable.dashboard-activities .portlet-header .portlet-title::before {
   background-position: -9px -18px;
 }
-/* line 605, ../scss/pages/_dashboard.scss */
+/* line 608, ../scss/pages/_dashboard.scss */
 .cs-elegant .homebox.homebox-auto-save .homebox-column-wrapper .homebox-draggable.dashboard-activities .portlet-header .portlet-title::before {
   background-position: -9px -86px;
 }
-/* line 612, ../scss/pages/_dashboard.scss */
+/* line 615, ../scss/pages/_dashboard.scss */
 .homebox.homebox-auto-save .homebox-column-wrapper .homebox-draggable.dashboard-reviews .portlet-header .portlet-title::before, .homebox.homebox-auto-save .homebox-column-wrapper .homebox-draggable.dashboard-booklists .portlet-header .portlet-title::before {
   background-position: -9px 240px;
 }
-/* line 614, ../scss/pages/_dashboard.scss */
+/* line 617, ../scss/pages/_dashboard.scss */
 .cs-elegant .homebox.homebox-auto-save .homebox-column-wrapper .homebox-draggable.dashboard-reviews .portlet-header .portlet-title::before, .cs-elegant .homebox.homebox-auto-save .homebox-column-wrapper .homebox-draggable.dashboard-booklists .portlet-header .portlet-title::before {
   background-position: -9px 175px;
 }
-/* line 621, ../scss/pages/_dashboard.scss */
+/* line 624, ../scss/pages/_dashboard.scss */
 .homebox.homebox-auto-save .homebox-column-wrapper .homebox-draggable.dashboard-following a {
   color: #000;
 }
-/* line 624, ../scss/pages/_dashboard.scss */
+/* line 627, ../scss/pages/_dashboard.scss */
 .homebox.homebox-auto-save .homebox-column-wrapper .homebox-draggable.dashboard-following .portlet-header .portlet-title::before {
   background-position: -9px -352px;
 }
-/* line 626, ../scss/pages/_dashboard.scss */
+/* line 629, ../scss/pages/_dashboard.scss */
 .cs-elegant .homebox.homebox-auto-save .homebox-column-wrapper .homebox-draggable.dashboard-following .portlet-header .portlet-title::before {
   background-position: -9px -415px;
 }
-/* line 633, ../scss/pages/_dashboard.scss */
+/* line 636, ../scss/pages/_dashboard.scss */
 .homebox.homebox-auto-save .homebox-column-wrapper .homebox-draggable.dashboard-rewards .portlet-header .portlet-title::before {
   background-position: -9px 112px;
 }
-/* line 635, ../scss/pages/_dashboard.scss */
+/* line 638, ../scss/pages/_dashboard.scss */
 .cs-elegant .homebox.homebox-auto-save .homebox-column-wrapper .homebox-draggable.dashboard-rewards .portlet-header .portlet-title::before {
   background-position: -9px 46px;
 }
 
-/* line 641, ../scss/pages/_dashboard.scss */
+/* line 644, ../scss/pages/_dashboard.scss */
 .view-book-reviews-dashboard .view-footer > form > div {
   padding: 20px;
 }
-/* line 643, ../scss/pages/_dashboard.scss */
+/* line 646, ../scss/pages/_dashboard.scss */
 .page-user-profile.cs-default .view-book-reviews-dashboard .view-footer > form > div {
   color: #16316e;
 }
-/* line 647, ../scss/pages/_dashboard.scss */
+/* line 650, ../scss/pages/_dashboard.scss */
 .page-user-profile.cs-classic .view-book-reviews-dashboard .view-footer > form > div {
   color: #1d3557;
 }
-/* line 651, ../scss/pages/_dashboard.scss */
+/* line 654, ../scss/pages/_dashboard.scss */
 .page-user-profile.cs-elegant .view-book-reviews-dashboard .view-footer > form > div {
   color: #000;
 }
-/* line 655, ../scss/pages/_dashboard.scss */
+/* line 658, ../scss/pages/_dashboard.scss */
 .view-book-reviews-dashboard .view-footer > form > div .form-type-select {
   display: flex;
   display: -webkit-flex;
   flex-wrap: wrap;
 }
-/* line 662, ../scss/pages/_dashboard.scss */
+/* line 665, ../scss/pages/_dashboard.scss */
 .view-book-reviews-dashboard .view-footer > form > div .form-type-select label {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -14321,7 +14326,7 @@ p.more-link a:after, .block-play_library_teens_leaderboard .portlet-content li +
   font-family: "Sniglet", cursive;
   font-weight: 400;
 }
-/* line 667, ../scss/pages/_dashboard.scss */
+/* line 670, ../scss/pages/_dashboard.scss */
 .view-book-reviews-dashboard .view-footer > form > div .form-type-select .chosen-container {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -14345,45 +14350,45 @@ p.more-link a:after, .block-play_library_teens_leaderboard .portlet-content li +
   font-family: "Roboto", sans-serif;
   font-weight: 400;
 }
-/* line 669, ../scss/pages/_dashboard.scss */
+/* line 672, ../scss/pages/_dashboard.scss */
 .view-book-reviews-dashboard .view-footer > form > div .form-type-select .chosen-container a.chosen-single {
   height: auto;
   border-radius: 0;
   background: #fff;
   border: 1px solid #2ba6cb;
 }
-/* line 672, ../scss/pages/_dashboard.scss */
+/* line 675, ../scss/pages/_dashboard.scss */
 .page-user-profile.cs-default .view-book-reviews-dashboard .view-footer > form > div .form-type-select .chosen-container a.chosen-single {
   color: #16316e;
   border: 1px solid #16316e;
 }
-/* line 676, ../scss/pages/_dashboard.scss */
+/* line 679, ../scss/pages/_dashboard.scss */
 .page-user-profile.cs-classic .view-book-reviews-dashboard .view-footer > form > div .form-type-select .chosen-container a.chosen-single {
   color: #457b9d;
   border: 1px solid #457b9d;
 }
-/* line 680, ../scss/pages/_dashboard.scss */
+/* line 683, ../scss/pages/_dashboard.scss */
 .page-user-profile.cs-elegant .view-book-reviews-dashboard .view-footer > form > div .form-type-select .chosen-container a.chosen-single {
   color: #6eeb83;
   border: 1px solid #6eeb83;
 }
-/* line 686, ../scss/pages/_dashboard.scss */
+/* line 689, ../scss/pages/_dashboard.scss */
 .view-book-reviews-dashboard .view-footer > form > div .form-type-select .chosen-container a.chosen-single > div {
   width: 30px;
 }
-/* line 688, ../scss/pages/_dashboard.scss */
+/* line 691, ../scss/pages/_dashboard.scss */
 .page-user-profile.cs-default .view-book-reviews-dashboard .view-footer > form > div .form-type-select .chosen-container a.chosen-single > div {
   background: #16316e;
 }
-/* line 691, ../scss/pages/_dashboard.scss */
+/* line 694, ../scss/pages/_dashboard.scss */
 .page-user-profile.cs-classic .view-book-reviews-dashboard .view-footer > form > div .form-type-select .chosen-container a.chosen-single > div {
   background: #457b9d;
 }
-/* line 694, ../scss/pages/_dashboard.scss */
+/* line 697, ../scss/pages/_dashboard.scss */
 .page-user-profile.cs-elegant .view-book-reviews-dashboard .view-footer > form > div .form-type-select .chosen-container a.chosen-single > div {
   background: #6eeb83;
 }
-/* line 697, ../scss/pages/_dashboard.scss */
+/* line 700, ../scss/pages/_dashboard.scss */
 .view-book-reviews-dashboard .view-footer > form > div .form-type-select .chosen-container a.chosen-single > div b {
   background: none;
   border-left: 7px solid transparent;
@@ -17408,31 +17413,32 @@ p.more-link a:after, .block-play_library_teens_leaderboard .portlet-content li +
 .common-review-wrapper .title > div.likes, .common-review-wrapper .reviews-wrapper .title > div.like-count, .reviews-wrapper .common-review-wrapper .title > div.like-count, .common-review-wrapper .booklist-wrapp .book-user-likes.title > div.book-like, .booklist-wrapp .common-review-wrapper .book-user-likes.title > div.book-like, .common-review-wrapper .book-review-page-overlay .title > div.like-count, .book-review-page-overlay .common-review-wrapper .title > div.like-count {
   width: 30%;
   text-align: right;
+  float: right;
 }
-/* line 428, ../scss/pages/_review-pages.scss */
+/* line 429, ../scss/pages/_review-pages.scss */
 .common-review-wrapper .review-by-user > div {
   margin-top: 10px;
   margin-bottom: 10px;
   display: inline-block;
 }
-/* line 433, ../scss/pages/_review-pages.scss */
+/* line 434, ../scss/pages/_review-pages.scss */
 .common-review-wrapper .review-by-user > div.views-field-field-user-avatar {
   margin-left: 5px;
   margin-right: 5px;
 }
-/* line 436, ../scss/pages/_review-pages.scss */
+/* line 437, ../scss/pages/_review-pages.scss */
 .common-review-wrapper .review-by-user > div.views-field-field-user-avatar img {
   width: 32px;
   height: 32px;
   object-fit: contain;
 }
-/* line 445, ../scss/pages/_review-pages.scss */
+/* line 446, ../scss/pages/_review-pages.scss */
 .common-review-wrapper .body {
   margin-top: 10px;
   margin-bottom: 20px;
 }
 
-/* line 452, ../scss/pages/_review-pages.scss */
+/* line 453, ../scss/pages/_review-pages.scss */
 .activity-list-wrapper a {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -17457,16 +17463,16 @@ p.more-link a:after, .block-play_library_teens_leaderboard .portlet-content li +
   font-weight: 700;
 }
 
-/* line 460, ../scss/pages/_review-pages.scss */
+/* line 461, ../scss/pages/_review-pages.scss */
 .button, .book-reviews-page .node-link a, .book-review-page-overlay .bk_follow a, .homebox.homebox-auto-save .view-footer a.button, .book-review-page-overlay .reviewbook_footer a, .view.photos-block .view-content .views-row .flickr-citation a:after, .other-programme.view .other-programme .programme-content .sign-up a, .main .view--user-public-profile .view-content .views-field-ops a, .movielikefollow-wrap a, .musiclikefollow-wrap a, .vidiogamelikefollow-wrap a, .activitylikefollow-wrap a {
   color: inherit;
 }
 
-/* line 466, ../scss/pages/_review-pages.scss */
+/* line 467, ../scss/pages/_review-pages.scss */
 .view-reviews-page-views .view-header h3, .view-reviews-page-views .view-header .homebox.homebox-auto-save .homebox-column-wrapper .portlet-header .portlet-title, .homebox.homebox-auto-save .homebox-column-wrapper .portlet-header .view-reviews-page-views .view-header .portlet-title, .view-reviews-page-views .view-header .bingo-progress-page .user-info .uname, .bingo-progress-page .user-info .view-reviews-page-views .view-header .uname, .view-booklist-page-left-side-bar .view-header h3, .view-booklist-page-left-side-bar .view-header .homebox.homebox-auto-save .homebox-column-wrapper .portlet-header .portlet-title, .homebox.homebox-auto-save .homebox-column-wrapper .portlet-header .view-booklist-page-left-side-bar .view-header .portlet-title, .view-booklist-page-left-side-bar .view-header .bingo-progress-page .user-info .uname, .bingo-progress-page .user-info .view-booklist-page-left-side-bar .view-header .uname {
   padding-left: 0;
 }
-/* line 472, ../scss/pages/_review-pages.scss */
+/* line 473, ../scss/pages/_review-pages.scss */
 .view-reviews-page-views .view-header h5, .view-reviews-page-views .view-header .reviews-wrapper .review-wrapp, .reviews-wrapper .view-reviews-page-views .view-header .review-wrapp, .view-reviews-page-views .view-header .reviews-wrapper .like-count, .reviews-wrapper .view-reviews-page-views .view-header .like-count, .view-reviews-page-views .view-header .book-review-page-overlay .booklist_creator, .book-review-page-overlay .view-reviews-page-views .view-header .booklist_creator, .view-reviews-page-views .view-header .booklist-wrapp .book-user-likes > div, .booklist-wrapp .view-reviews-page-views .view-header .book-user-likes > div, .view-reviews-page-views .view-header .book-review-page-overlay .reviewer, .book-review-page-overlay .view-reviews-page-views .view-header .reviewer, .view-reviews-page-views .view-header .review_movie .movie-review .reviewer, .review_movie .movie-review .view-reviews-page-views .view-header .reviewer, .view-reviews-page-views .view-header .review_movie .music-review .reviewer, .review_movie .music-review .view-reviews-page-views .view-header .reviewer, .view-reviews-page-views .view-header .review_movie .videogame-review .reviewer, .review_movie .videogame-review .view-reviews-page-views .view-header .reviewer, .view-reviews-page-views .view-header .review_music .movie-review .reviewer, .review_music .movie-review .view-reviews-page-views .view-header .reviewer, .view-reviews-page-views .view-header .review_music .music-review .reviewer, .review_music .music-review .view-reviews-page-views .view-header .reviewer, .view-reviews-page-views .view-header .review_music .videogame-review .reviewer, .review_music .videogame-review .view-reviews-page-views .view-header .reviewer, .view-reviews-page-views .view-header .review_videogame .movie-review .reviewer, .review_videogame .movie-review .view-reviews-page-views .view-header .reviewer, .view-reviews-page-views .view-header .review_videogame .music-review .reviewer, .review_videogame .music-review .view-reviews-page-views .view-header .reviewer, .view-reviews-page-views .view-header .review_videogame .videogame-review .reviewer, .review_videogame .videogame-review .view-reviews-page-views .view-header .reviewer, .view-reviews-page-views .view-header .node-review-activity .activity-review .reviewer, .node-review-activity .activity-review .view-reviews-page-views .view-header .reviewer, .view-booklist-page-left-side-bar .view-header h5, .view-booklist-page-left-side-bar .view-header .reviews-wrapper .review-wrapp, .reviews-wrapper .view-booklist-page-left-side-bar .view-header .review-wrapp, .view-booklist-page-left-side-bar .view-header .reviews-wrapper .like-count, .reviews-wrapper .view-booklist-page-left-side-bar .view-header .like-count, .view-booklist-page-left-side-bar .view-header .book-review-page-overlay .booklist_creator, .book-review-page-overlay .view-booklist-page-left-side-bar .view-header .booklist_creator, .view-booklist-page-left-side-bar .view-header .booklist-wrapp .book-user-likes > div, .booklist-wrapp .view-booklist-page-left-side-bar .view-header .book-user-likes > div, .view-booklist-page-left-side-bar .view-header .book-review-page-overlay .reviewer, .book-review-page-overlay .view-booklist-page-left-side-bar .view-header .reviewer, .view-booklist-page-left-side-bar .view-header .review_movie .movie-review .reviewer, .review_movie .movie-review .view-booklist-page-left-side-bar .view-header .reviewer, .view-booklist-page-left-side-bar .view-header .review_movie .music-review .reviewer, .review_movie .music-review .view-booklist-page-left-side-bar .view-header .reviewer, .view-booklist-page-left-side-bar .view-header .review_movie .videogame-review .reviewer, .review_movie .videogame-review .view-booklist-page-left-side-bar .view-header .reviewer, .view-booklist-page-left-side-bar .view-header .review_music .movie-review .reviewer, .review_music .movie-review .view-booklist-page-left-side-bar .view-header .reviewer, .view-booklist-page-left-side-bar .view-header .review_music .music-review .reviewer, .review_music .music-review .view-booklist-page-left-side-bar .view-header .reviewer, .view-booklist-page-left-side-bar .view-header .review_music .videogame-review .reviewer, .review_music .videogame-review .view-booklist-page-left-side-bar .view-header .reviewer, .view-booklist-page-left-side-bar .view-header .review_videogame .movie-review .reviewer, .review_videogame .movie-review .view-booklist-page-left-side-bar .view-header .reviewer, .view-booklist-page-left-side-bar .view-header .review_videogame .music-review .reviewer, .review_videogame .music-review .view-booklist-page-left-side-bar .view-header .reviewer, .view-booklist-page-left-side-bar .view-header .review_videogame .videogame-review .reviewer, .review_videogame .videogame-review .view-booklist-page-left-side-bar .view-header .reviewer, .view-booklist-page-left-side-bar .view-header .node-review-activity .activity-review .reviewer, .node-review-activity .activity-review .view-booklist-page-left-side-bar .view-header .reviewer {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -17488,51 +17494,51 @@ p.more-link a:after, .block-play_library_teens_leaderboard .portlet-content li +
   font-family: "Roboto", sans-serif;
   font-weight: 700;
 }
-/* line 478, ../scss/pages/_review-pages.scss */
+/* line 479, ../scss/pages/_review-pages.scss */
 .view-reviews-page-views .view-content ol, .view-booklist-page-left-side-bar .view-content ol {
   list-style: none;
 }
-/* line 481, ../scss/pages/_review-pages.scss */
+/* line 482, ../scss/pages/_review-pages.scss */
 .view-reviews-page-views .view-content ol .views-row, .view-booklist-page-left-side-bar .view-content ol .views-row {
   margin-bottom: 10px;
 }
-/* line 484, ../scss/pages/_review-pages.scss */
+/* line 485, ../scss/pages/_review-pages.scss */
 .view-reviews-page-views .view-content ol .views-row .title, .view-booklist-page-left-side-bar .view-content ol .views-row .title {
   font-weight: normal;
 }
-/* line 487, ../scss/pages/_review-pages.scss */
+/* line 488, ../scss/pages/_review-pages.scss */
 .view-reviews-page-views .view-content ol .views-row .title span a, .view-booklist-page-left-side-bar .view-content ol .views-row .title span a {
   text-decoration: underline;
 }
 
-/* line 495, ../scss/pages/_review-pages.scss */
+/* line 496, ../scss/pages/_review-pages.scss */
 .view-footer .activity-desc {
   margin-bottom: 20px;
 }
 
-/* line 498, ../scss/pages/_review-pages.scss */
+/* line 499, ../scss/pages/_review-pages.scss */
 .block-teen-reward-page {
   padding: 20px;
 }
-/* line 500, ../scss/pages/_review-pages.scss */
+/* line 501, ../scss/pages/_review-pages.scss */
 .cs-default .block-teen-reward-page {
   color: #16316e;
 }
-/* line 504, ../scss/pages/_review-pages.scss */
+/* line 505, ../scss/pages/_review-pages.scss */
 .cs-classic .block-teen-reward-page {
   color: #1d3557;
 }
-/* line 508, ../scss/pages/_review-pages.scss */
+/* line 509, ../scss/pages/_review-pages.scss */
 .cs-elegant .block-teen-reward-page {
   color: #000;
 }
-/* line 512, ../scss/pages/_review-pages.scss */
+/* line 513, ../scss/pages/_review-pages.scss */
 .block-teen-reward-page .form-type-select {
   display: flex;
   display: -webkit-flex;
   flex-wrap: wrap;
 }
-/* line 519, ../scss/pages/_review-pages.scss */
+/* line 520, ../scss/pages/_review-pages.scss */
 .block-teen-reward-page .form-type-select label {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -17575,7 +17581,7 @@ p.more-link a:after, .block-play_library_teens_leaderboard .portlet-content li +
   font-family: "Sniglet", cursive;
   font-weight: 400;
 }
-/* line 524, ../scss/pages/_review-pages.scss */
+/* line 525, ../scss/pages/_review-pages.scss */
 .block-teen-reward-page .form-type-select .chosen-container {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -17599,45 +17605,45 @@ p.more-link a:after, .block-play_library_teens_leaderboard .portlet-content li +
   font-family: "Roboto", sans-serif;
   font-weight: 400;
 }
-/* line 526, ../scss/pages/_review-pages.scss */
+/* line 527, ../scss/pages/_review-pages.scss */
 .block-teen-reward-page .form-type-select .chosen-container a.chosen-single {
   height: auto;
   border-radius: 0;
   background: #fff;
   border: 1px solid #2ba6cb;
 }
-/* line 529, ../scss/pages/_review-pages.scss */
+/* line 530, ../scss/pages/_review-pages.scss */
 .cs-default .block-teen-reward-page .form-type-select .chosen-container a.chosen-single {
   color: #16316e;
   border: 1px solid #16316e;
 }
-/* line 533, ../scss/pages/_review-pages.scss */
+/* line 534, ../scss/pages/_review-pages.scss */
 .cs-classic .block-teen-reward-page .form-type-select .chosen-container a.chosen-single {
   color: #457b9d;
   border: 1px solid #457b9d;
 }
-/* line 537, ../scss/pages/_review-pages.scss */
+/* line 538, ../scss/pages/_review-pages.scss */
 .cs-elegant .block-teen-reward-page .form-type-select .chosen-container a.chosen-single {
   color: #6eeb83;
   border: 1px solid #6eeb83;
 }
-/* line 543, ../scss/pages/_review-pages.scss */
+/* line 544, ../scss/pages/_review-pages.scss */
 .block-teen-reward-page .form-type-select .chosen-container a.chosen-single > div {
   width: 30px;
 }
-/* line 545, ../scss/pages/_review-pages.scss */
+/* line 546, ../scss/pages/_review-pages.scss */
 .cs-default .block-teen-reward-page .form-type-select .chosen-container a.chosen-single > div {
   background: #16316e;
 }
-/* line 548, ../scss/pages/_review-pages.scss */
+/* line 549, ../scss/pages/_review-pages.scss */
 .cs-classic .block-teen-reward-page .form-type-select .chosen-container a.chosen-single > div {
   background: #457b9d;
 }
-/* line 551, ../scss/pages/_review-pages.scss */
+/* line 552, ../scss/pages/_review-pages.scss */
 .cs-elegant .block-teen-reward-page .form-type-select .chosen-container a.chosen-single > div {
   background: #6eeb83;
 }
-/* line 554, ../scss/pages/_review-pages.scss */
+/* line 555, ../scss/pages/_review-pages.scss */
 .block-teen-reward-page .form-type-select .chosen-container a.chosen-single > div b {
   background: none;
   border-left: 7px solid transparent;
@@ -17651,34 +17657,34 @@ p.more-link a:after, .block-play_library_teens_leaderboard .portlet-content li +
   top: -1px;
 }
 
-/* line 573, ../scss/pages/_review-pages.scss */
+/* line 574, ../scss/pages/_review-pages.scss */
 .page-reviews .sidebar-activity .view-reviews-page-views {
   margin-top: 20px;
 }
 
 /*----------------css for movie,music,videogame-review---------------------*/
-/* line 582, ../scss/pages/_review-pages.scss */
+/* line 583, ../scss/pages/_review-pages.scss */
 .node-type-movie-review #page-title, .node-type-music-review #page-title,
 .node-type-video-game-review #page-title {
   display: none;
 }
-/* line 585, ../scss/pages/_review-pages.scss */
+/* line 586, ../scss/pages/_review-pages.scss */
 .node-type-movie-review .img_review, .node-type-music-review .img_review,
 .node-type-video-game-review .img_review {
   width: 25%;
   float: left;
 }
-/* line 588, ../scss/pages/_review-pages.scss */
+/* line 589, ../scss/pages/_review-pages.scss */
 .node-type-movie-review .img_review table, .node-type-music-review .img_review table,
 .node-type-video-game-review .img_review table {
   border: none;
 }
-/* line 590, ../scss/pages/_review-pages.scss */
+/* line 591, ../scss/pages/_review-pages.scss */
 .node-type-movie-review .img_review table tbody, .node-type-music-review .img_review table tbody,
 .node-type-video-game-review .img_review table tbody {
   border-top: none;
 }
-/* line 595, ../scss/pages/_review-pages.scss */
+/* line 596, ../scss/pages/_review-pages.scss */
 .node-type-movie-review .review_movie, .node-type-movie-review .review_music, .node-type-movie-review .review_videogame, .node-type-music-review .review_movie, .node-type-music-review .review_music, .node-type-music-review .review_videogame,
 .node-type-video-game-review .review_movie,
 .node-type-video-game-review .review_music,
@@ -17686,41 +17692,41 @@ p.more-link a:after, .block-play_library_teens_leaderboard .portlet-content li +
   width: 75%;
   float: left;
 }
-/* line 599, ../scss/pages/_review-pages.scss */
+/* line 600, ../scss/pages/_review-pages.scss */
 .node-type-movie-review .created, .node-type-movie-review .avatar, .node-type-music-review .created, .node-type-music-review .avatar,
 .node-type-video-game-review .created,
 .node-type-video-game-review .avatar {
   margin-right: 7px;
   float: left;
 }
-/* line 603, ../scss/pages/_review-pages.scss */
+/* line 604, ../scss/pages/_review-pages.scss */
 .node-type-movie-review .avatar, .node-type-music-review .avatar,
 .node-type-video-game-review .avatar {
   height: 32px;
   width: 32px;
   object-fit: contain;
 }
-/* line 608, ../scss/pages/_review-pages.scss */
+/* line 609, ../scss/pages/_review-pages.scss */
 .node-type-movie-review .date_created, .node-type-music-review .date_created,
 .node-type-video-game-review .date_created {
   margin: 12px 0 10px 0;
 }
 
-/* line 619, ../scss/pages/_review-pages.scss */
+/* line 620, ../scss/pages/_review-pages.scss */
 .movielikefollow-wrap, .musiclikefollow-wrap, .vidiogamelikefollow-wrap {
   margin-bottom: 15px;
 }
-/* line 624, ../scss/pages/_review-pages.scss */
+/* line 625, ../scss/pages/_review-pages.scss */
 .movielikefollow-wrap .movie-likes, .movielikefollow-wrap .music-likes, .movielikefollow-wrap .videogame-likes, .musiclikefollow-wrap .movie-likes, .musiclikefollow-wrap .music-likes, .musiclikefollow-wrap .videogame-likes, .vidiogamelikefollow-wrap .movie-likes, .vidiogamelikefollow-wrap .music-likes, .vidiogamelikefollow-wrap .videogame-likes {
   float: left;
   margin-right: 20px;
 }
-/* line 629, ../scss/pages/_review-pages.scss */
+/* line 630, ../scss/pages/_review-pages.scss */
 .movielikefollow-wrap .like-here a, .musiclikefollow-wrap .like-here a, .vidiogamelikefollow-wrap .like-here a {
   position: relative;
   padding-right: 30px;
 }
-/* line 632, ../scss/pages/_review-pages.scss */
+/* line 633, ../scss/pages/_review-pages.scss */
 .movielikefollow-wrap .like-here a:after, .musiclikefollow-wrap .like-here a:after, .vidiogamelikefollow-wrap .like-here a:after {
   content: "";
   width: 25px;
@@ -17731,57 +17737,57 @@ p.more-link a:after, .block-play_library_teens_leaderboard .portlet-content li +
   right: 7px;
   top: 0px;
 }
-/* line 641, ../scss/pages/_review-pages.scss */
+/* line 642, ../scss/pages/_review-pages.scss */
 .cs-default .movielikefollow-wrap .like-here a:after, .cs-default .musiclikefollow-wrap .like-here a:after, .cs-default .vidiogamelikefollow-wrap .like-here a:after {
   background-position: -16px -204px;
 }
-/* line 644, ../scss/pages/_review-pages.scss */
+/* line 645, ../scss/pages/_review-pages.scss */
 .cs-classic .movielikefollow-wrap .like-here a:after, .cs-classic .musiclikefollow-wrap .like-here a:after, .cs-classic .vidiogamelikefollow-wrap .like-here a:after {
   background-position: -16px -147px;
 }
-/* line 647, ../scss/pages/_review-pages.scss */
+/* line 648, ../scss/pages/_review-pages.scss */
 .cs-elegant .movielikefollow-wrap .like-here a:after, .cs-elegant .musiclikefollow-wrap .like-here a:after, .cs-elegant .vidiogamelikefollow-wrap .like-here a:after {
   background-position: -16px -204px;
 }
 
 /*-----------------------css for activity review---------------------*/
-/* line 657, ../scss/pages/_review-pages.scss */
+/* line 658, ../scss/pages/_review-pages.scss */
 .node-type-review-activity #page-title {
   margin-left: 0;
   width: 100%;
 }
-/* line 661, ../scss/pages/_review-pages.scss */
+/* line 662, ../scss/pages/_review-pages.scss */
 .node-type-review-activity .created, .node-type-review-activity .avatar {
   margin-right: 7px;
   float: left;
 }
-/* line 665, ../scss/pages/_review-pages.scss */
+/* line 666, ../scss/pages/_review-pages.scss */
 .node-type-review-activity .avatar {
   height: 32px;
   width: 32px;
   object-fit: contain;
 }
-/* line 670, ../scss/pages/_review-pages.scss */
+/* line 671, ../scss/pages/_review-pages.scss */
 .node-type-review-activity .date_created {
   margin: 12px 0 10px 0;
   clear: both;
 }
 
-/* line 675, ../scss/pages/_review-pages.scss */
+/* line 676, ../scss/pages/_review-pages.scss */
 .activitylikefollow-wrap {
   margin-bottom: 15px;
 }
-/* line 680, ../scss/pages/_review-pages.scss */
+/* line 681, ../scss/pages/_review-pages.scss */
 .activitylikefollow-wrap .activity-likes {
   float: left;
   margin-right: 20px;
 }
-/* line 685, ../scss/pages/_review-pages.scss */
+/* line 686, ../scss/pages/_review-pages.scss */
 .activitylikefollow-wrap .like-here a {
   position: relative;
   padding-right: 30px;
 }
-/* line 688, ../scss/pages/_review-pages.scss */
+/* line 689, ../scss/pages/_review-pages.scss */
 .activitylikefollow-wrap .like-here a:after {
   content: "";
   width: 25px;
@@ -17792,38 +17798,38 @@ p.more-link a:after, .block-play_library_teens_leaderboard .portlet-content li +
   right: 7px;
   top: 0px;
 }
-/* line 697, ../scss/pages/_review-pages.scss */
+/* line 698, ../scss/pages/_review-pages.scss */
 .cs-default .activitylikefollow-wrap .like-here a:after {
   background-position: -16px -204px;
 }
-/* line 700, ../scss/pages/_review-pages.scss */
+/* line 701, ../scss/pages/_review-pages.scss */
 .cs-classic .activitylikefollow-wrap .like-here a:after {
   background-position: -16px -147px;
 }
-/* line 703, ../scss/pages/_review-pages.scss */
+/* line 704, ../scss/pages/_review-pages.scss */
 .cs-elegant .activitylikefollow-wrap .like-here a:after {
   background-position: -16px -204px;
 }
 
 /*-----------------------css ends for activity review---------------------*/
 @media screen and (max-width: 767px) {
-  /* line 723, ../scss/pages/_review-pages.scss */
+  /* line 724, ../scss/pages/_review-pages.scss */
   .node-type-movie-review .img_review, .node-type-music-review .img_review,
   .node-type-video-game-review .img_review {
     width: 100%;
   }
-  /* line 725, ../scss/pages/_review-pages.scss */
+  /* line 726, ../scss/pages/_review-pages.scss */
   .node-type-movie-review .img_review table, .node-type-music-review .img_review table,
   .node-type-video-game-review .img_review table {
     width: 100%;
   }
-  /* line 727, ../scss/pages/_review-pages.scss */
+  /* line 728, ../scss/pages/_review-pages.scss */
   .node-type-movie-review .img_review table img, .node-type-music-review .img_review table img,
   .node-type-video-game-review .img_review table img {
     display: block;
     margin: auto;
   }
-  /* line 733, ../scss/pages/_review-pages.scss */
+  /* line 734, ../scss/pages/_review-pages.scss */
   .node-type-movie-review .review_movie, .node-type-movie-review .review_music, .node-type-movie-review .review_videogame, .node-type-music-review .review_movie, .node-type-music-review .review_music, .node-type-music-review .review_videogame,
   .node-type-video-game-review .review_movie,
   .node-type-video-game-review .review_music,
