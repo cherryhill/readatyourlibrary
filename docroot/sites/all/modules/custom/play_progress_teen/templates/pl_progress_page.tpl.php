@@ -60,7 +60,7 @@
 	<?php print variable_get('pg_title'); ?>
 </h1>
 <div class="print-page">
-  <button class="print_pg"><?php print t('Print Progress Report'); ?><span style="margin-left: 5px;">(pdf) </span></button>
+  <button class="print_pg"><?php print t('Print Progress Report'); ?></button>
 </div>
 </div>
 <div class="progress-desc">
