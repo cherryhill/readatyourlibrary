@@ -75,14 +75,14 @@
 </div>
 <div class="point-status">
 <div class="activity-status" id = "activity-status">
-  <?php print 'Activities Completed: '.$count.' activities'; ?>
+  <?php print t('Activities Completed: ').$count ; ?>
 </div>
 <div class="activity-remaining" id ="activity-remaining">
 <?php $grids = variable_get('no_of_grids'); $activities_left = $grids - $count;
 // $grids = 40;
 // echo 'pre'; print_r($grids);die();
    if($activities_left < 0){ print t('Activities Left to Complete: 0 activities');
-   }else{ print t('Activities Left to Complete: ').$activities_left.t(' activities'); } ?>
+   }else{ print t('Activities Left to Complete: ').$activities_left; } ?>
 </div>
 <div class="points" id = "points">
 	<?php print t('Raffle Tickets Earned: ');
@@ -99,8 +99,7 @@
   <div class="report-acivity">
   	<?php
         if ($count >= $grids){
-          print '<h1>Congratulations on completing the Teen Summer Passport program!</h1>';
-
+          print '<h1>'.t('Congratulations on completing the Teen Summer Passport program!').'</h1>';
         }
         else{
           print '<h1>'.t('Report an Activity</h1>');
