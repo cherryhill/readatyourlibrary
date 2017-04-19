@@ -127,7 +127,7 @@
       $style = 'avatar_style';
       $img_path = image_style_url($img_uri);
       }
-      if(isset($img_uri)){
+      if(!empty($img_uri)){
         $img = "<img src='$img_path'>";
       }
     
