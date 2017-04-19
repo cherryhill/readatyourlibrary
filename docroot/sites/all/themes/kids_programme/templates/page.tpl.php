@@ -85,16 +85,6 @@
     <!--/.l-featured -->
   <?php endif; ?>
 
-  <?php if ($messages && !$zurb_foundation_messages_modal): ?>
-    <!--/.l-messages -->
-    <section class="l-messages row">
-      <div class="large-12 columns">
-        <?php if ($messages): print $messages; endif; ?>
-      </div>
-
-    </section>
-    <!--/.l-messages -->
-  <?php endif; ?>
 
   <?php if (!empty($page['help'])): ?>
     <!--/.l-help -->
@@ -111,6 +101,17 @@
         </div>
 
   </div>
+
+  <?php if ($messages && !$zurb_foundation_messages_modal): ?>
+    <!--/.l-messages -->
+    <section class="l-messages row">
+      <div class="large-12 columns">
+        <?php if ($messages): print $messages; endif; ?>
+      </div>
+
+    </section>
+    <!--/.l-messages -->
+  <?php endif; ?>
 
   <main role="main" class="row l-main">
 

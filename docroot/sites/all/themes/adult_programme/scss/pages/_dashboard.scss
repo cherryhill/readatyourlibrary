@@ -574,7 +574,9 @@ p.more-link {
 .block-play_library_teens_leaderboard {
   .portlet-content {
      li {
-       margin-bottom: 10px;
+       margin-bottom: 20px;
+       width: 100%;
+       position: relative;
         span {
            img {
              margin-right: 10px;
@@ -583,8 +585,10 @@ p.more-link {
              object-fit: contain;
            }
            &:nth-of-type(2) {
-            float: right;
-           }
+            display: block;
+            position: absolute;
+            right: 0;
+          }
         }
      }
      li + span {
@@ -592,8 +596,7 @@ p.more-link {
        width: 100%;
        text-align: right;
        display: inline-block;
-       margin-top: 10px;
-       margin-bottom: 10px;
+       margin-top: 20px;
        padding-right: 0;
      }
   }
