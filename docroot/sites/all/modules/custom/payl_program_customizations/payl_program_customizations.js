@@ -22,8 +22,8 @@
 
         $('#user-profile-form .field-widget-random-list-widget-randomizer').each(function(index) {
           fieldname = 'Change ' + $(this).find('label').html();
-          $(this).find('#user-profile-form input .random-list-widget-regenerate').val(fieldname);
-          $(this).find('#user-profile-form button .random-list-widget-regenerate').html(fieldname);
+          $(this).find('input.random-list-widget-regenerate').val(fieldname);
+          $(this).find('button.random-list-widget-regenerate').html(fieldname);
         });
         $('#user-profile-form .field-widget-random-list-widget-randomizer .form-type-textfield').hide();
         $('#user-profile-form .random-list-widget').attr('readonly', true);
@@ -45,9 +45,9 @@
         //     if (data) {
         //       if (data == 'yes') {
         //         console.log(data);
-                setTimeout(function() {
-                  $('#user-profile-form .random-list-widget-regenerate').click();
-                }, 150);
+        //         setTimeout(function() {
+        //           $('#user-profile-form .random-list-widget-regenerate').click();
+        //         }, 150);
         //       }
         //     }
         //   }
@@ -97,11 +97,15 @@
 
       $('#user-register-form .field-widget-random-list-widget-randomizer').each(function(index) {
         fieldname = 'Change ' + $(this).find('label').html();
-        $(this).find('#user-register-form input .random-list-widget-regenerate').val(fieldname);
-        $(this).find('#user-register-form button .random-list-widget-regenerate').html(fieldname);
+        // alert(fieldname);
+        $(this).find('input.random-list-widget-regenerate').val(fieldname);
+        $(this).find('button.random-list-widget-regenerate').html(fieldname);
+        // console.log(qqq);
+        // alert(newq);
       });
       $('#user-register-form .field-widget-random-list-widget-randomizer .form-type-textfield').hide();
       $('#user-register-form .random-list-widget').attr('readonly', true);
+
       $('#user-register-form .random-list-widget-regenerate').click(function() {
         setTimeout(function() {
           var name = '';
@@ -110,44 +114,40 @@
           });
           $('#user-register-form #edit-name').val(name);
       
+          $('.not-logged-in #user-register-form .date-year').bind('change', function() {
+            var birthdayMonth = jQuery('#user-register-form .date-month .form-select').val();
+            var birthdayDay = jQuery('#user-register-form .date-day .form-select').val();
+            var birthdayYear = jQuery('#user-register-form .date-year .form-select').val();
 
-      $('.not-logged-in #user-register-form .date-year').bind('change', function() {
-        var birthdayMonth = jQuery('#user-register-form .date-month .form-select').val();
-
-      var birthdayDay = jQuery('#user-register-form .date-day .form-select').val();
-
-      var birthdayYear = jQuery('#user-register-form .date-year .form-select').val();
-
-
-        var age = calculate_age(birthdayMonth,birthdayDay,birthdayYear);
-        console.log(age);
-        // More than 13 years old.
-        if (age > 12 || age == NaN) {
-          $('#user-register-form .form-item-name').show();
-        }
-        // Less than 13 years old.
-        else {
-          $('#user-register-form .form-item-name').hide();
-        }
-
-      });
-          var username = name;
-          $.ajax({
-            url: Drupal.settings.basePath + 'username/check',
-            type: 'post',
-            async: true,
-            data: "name="+username,
-            success: function (data) {
-              if (data) {
-                if (data == 'yes') {
-                  console.log(data);
-                  setTimeout(function() {
-                    $('#user-register-form .random-list-widget-regenerate').click();
-                  }, 150);
-                }
-              }
+            var age = calculate_age(birthdayMonth,birthdayDay,birthdayYear);
+            console.log(age);
+            // More than 13 years old.
+            if (age > 12 || age == NaN) {
+              $('#user-register-form .form-item-name').show();
             }
+            // Less than 13 years old.
+            else {
+              $('#user-register-form .form-item-name').hide();
+            }
+
           });
+          var username = name;
+          // $.ajax({
+          //   url: Drupal.settings.basePath + 'username/check',
+          //   type: 'post',
+          //   async: true,
+          //   data: "name="+username,
+          //   success: function (data) {
+          //     if (data) {
+          //       if (data == 'yes') {
+          //         console.log(data);
+          //         setTimeout(function() {
+          //           $('#user-register-form .random-list-widget-regenerate').click();
+          //         }, 150);
+          //       }
+          //     }
+          //   }
+          // });
           payl_program_customizations_change_name();
         }, 50);
       });
