@@ -45,9 +45,9 @@
         //     if (data) {
         //       if (data == 'yes') {
         //         console.log(data);
-                setTimeout(function() {
-                  $('#user-profile-form .random-list-widget-regenerate').click();
-                }, 150);
+        //         setTimeout(function() {
+        //           $('#user-profile-form .random-list-widget-regenerate').click();
+        //         }, 150);
         //       }
         //     }
         //   }
