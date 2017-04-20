@@ -481,15 +481,19 @@ p.more-link {
   .view-rewards-dashboard {
      .reward-hombox-dashboard {
       margin: 5px 0 10px;
+      display: flex;
        > div {
          display: table-cell;
          vertical-align: middle;
+         width: 20%;
+         float: left;
           &.image {
             width: 30%;
           }
           &.description {
             width: 70%;
             padding-left: 10px;
+            float: right;
           }
           img {
              width: 58px;
