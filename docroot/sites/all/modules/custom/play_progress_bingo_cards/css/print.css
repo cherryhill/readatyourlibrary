@@ -98,7 +98,8 @@
   }
 
   .bingo-progress-main {
-    display: flex;
+   /* display: flex;*/
+    display: block !important;
     width: 100%;
     display: -webkit-flex;
     flex-wrap: wrap;
@@ -317,7 +318,7 @@
     color: #16316e !important;
   }
   .bingo-progress-main .activities {
-    display: none;
+    display: none !important;
   }
   .bingo-progress-main .card-no {
     color: #fff !important;
@@ -327,6 +328,8 @@
   }
   .bingo-progress-page .bingo-progress-main > div {
     margin-bottom: 5px !important;
+    width: 50% !important;
+    display: inline-block;
   }
   .bingo-progress-page .bingo-progress-main .non-bingo-card table tr td {
     height: calc(100px * 3) !important;
