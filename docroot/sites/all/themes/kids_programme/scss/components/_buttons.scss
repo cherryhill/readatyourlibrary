@@ -30,28 +30,32 @@
 
     @extend .yellow;
     &:hover {
-          background: $hover-yellow;
-        }
-        &:focus {
-          background: $focus-yellow;
-        }
-    color: $black;
+        background: $hover-yellow;
+        text-decoration: underline;
+      }
+      &:focus {
+        background: $focus-yellow;
+        text-decoration: underline;
+      }
+      color: $black;
   }
   .cs-classic & {
     font-size: 18px;
     @extend .light-orange;
     color: $white;
-     &:hover,&:focus {
-          background: $hover-palettes-buttons;
-        }
+    &:hover,&:focus {
+      background: $hover-palettes-buttons;
+      text-decoration: underline;
+    }
   }
    .cs-elegant & {
     font-size: 19px;
 
     @extend .light-orange;
      &:hover,&:focus {
-          background: $hover-palettes-buttons;
-        }
+        background: $hover-palettes-buttons;
+        text-decoration: underline;
+      }
 
     color: $white;
   }
@@ -85,7 +89,7 @@
   }
 
   &:hover {
-    text-decoration: none;
+    text-decoration: underline;
   }
 
   @include primary_fonts;
@@ -173,6 +177,9 @@
     .cs-elegant & {
       @extend .red1;
     }
+    &:hover {
+      text-decoration: underline;
+    }
   }
 
   &.btn-primary {
@@ -247,7 +254,7 @@
   }
 
   &:hover {
-    text-decoration: none;
+    text-decoration: underline;
   }
   &:focus {
     outline: none;

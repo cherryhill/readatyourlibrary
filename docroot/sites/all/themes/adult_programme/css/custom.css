@@ -15535,16 +15535,36 @@ p.more-link a:after, .block-play_library_teens_leaderboard .portlet-content li +
 .page-programs #page-title {
   margin-bottom: 30px;
 }
-
 /* line 119, ../scss/pages/_program.scss */
+.page-programs .view-rewards-dashboard .earn-next-reward {
+  display: flex;
+}
+/* line 121, ../scss/pages/_program.scss */
+.page-programs .view-rewards-dashboard .earn-next-reward .reward-image {
+  margin-right: 20px;
+  width: 35%;
+}
+/* line 125, ../scss/pages/_program.scss */
+.page-programs .view-rewards-dashboard .earn-next-reward .reward-title {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  width: 64%;
+}
+/* line 132, ../scss/pages/_program.scss */
+.page-programs .view-rewards-dashboard .view-footer {
+  margin-top: 20px;
+}
+
+/* line 137, ../scss/pages/_program.scss */
 .left-sidebar-program-block {
   margin-bottom: 35px;
 }
-/* line 121, ../scss/pages/_program.scss */
+/* line 139, ../scss/pages/_program.scss */
 .left-sidebar-program-block img {
   max-width: 130px;
 }
-/* line 124, ../scss/pages/_program.scss */
+/* line 142, ../scss/pages/_program.scss */
 .left-sidebar-program-block .views-field-title {
   margin-top: 10px;
   -webkit-font-smoothing: antialiased;
@@ -15557,12 +15577,12 @@ p.more-link a:after, .block-play_library_teens_leaderboard .portlet-content li +
   font-family: "Open Sans", sans-serif;
   font-weight: 600;
 }
-/* line 127, ../scss/pages/_program.scss */
+/* line 145, ../scss/pages/_program.scss */
 .left-sidebar-program-block .views-field-title a {
   color: #fff;
   font-family: inherit;
 }
-/* line 130, ../scss/pages/_program.scss */
+/* line 148, ../scss/pages/_program.scss */
 .cs-elegant .left-sidebar-program-block .views-field-title a {
   color: #333333;
 }
@@ -18066,23 +18086,32 @@ p.more-link a:after, .block-play_library_teens_leaderboard .portlet-content li +
   width: 30%;
 }
 
+/* line 139, ../scss/pages/_userlogin.scss */
+.page-user-edit #user-profile-form .form-wrapper .form-item.form-item-roles-change {
+  clear: both;
+}
+/* line 141, ../scss/pages/_userlogin.scss */
+.page-user-edit #user-profile-form .form-wrapper .form-item.form-item-roles-change label {
+  margin-bottom: 10px;
+}
+
 @media all and (max-width: 767px) {
-  /* line 141, ../scss/pages/_userlogin.scss */
+  /* line 153, ../scss/pages/_userlogin.scss */
   .page-user-register .form-type-date-select .date-padding .form-type-select, .page-user-edit .form-type-date-select .date-padding .form-type-select {
     width: 100%;
     margin-right: 0;
   }
-  /* line 148, ../scss/pages/_userlogin.scss */
+  /* line 160, ../scss/pages/_userlogin.scss */
   .page-user-register .form-wrapper .field-type-text, .page-user-register .form-wrapper .field-type-phone, .page-user-register .form-wrapper .field-type-email, .page-user-edit .form-wrapper .field-type-text, .page-user-edit .form-wrapper .field-type-phone, .page-user-edit .form-wrapper .field-type-email {
     width: 100%;
     margin-right: 0;
   }
-  /* line 154, ../scss/pages/_userlogin.scss */
+  /* line 166, ../scss/pages/_userlogin.scss */
   .page-user-register .field-type-addressfield .form-type-select, .page-user-register .field-type-addressfield .form-type-textfield, .page-user-edit .field-type-addressfield .form-type-select, .page-user-edit .field-type-addressfield .form-type-textfield {
     width: 100%;
     margin-right: 0;
   }
-  /* line 159, ../scss/pages/_userlogin.scss */
+  /* line 171, ../scss/pages/_userlogin.scss */
   .page-user-register .field-type-taxonomy-term-reference, .page-user-register .field-name-field-library-card-number,
   .page-user-register .field-name-field-school, .page-user-register .field-name-field-user-grade, .page-user-register .field-name-field-organization,
   .page-user-register .field-name-field-hear-about, .page-user-edit .field-type-taxonomy-term-reference, .page-user-edit .field-name-field-library-card-number,
@@ -18091,57 +18120,57 @@ p.more-link a:after, .block-play_library_teens_leaderboard .portlet-content li +
     width: 100%;
     margin-right: 0;
   }
-  /* line 165, ../scss/pages/_userlogin.scss */
+  /* line 177, ../scss/pages/_userlogin.scss */
   .page-user-register .field-widget-random-list-widget-randomizer, .page-user-edit .field-widget-random-list-widget-randomizer {
     float: none;
   }
-  /* line 169, ../scss/pages/_userlogin.scss */
+  /* line 181, ../scss/pages/_userlogin.scss */
   .page-user-register .form-item-mail input, .page-user-edit .form-item-mail input {
     width: 65%;
   }
-  /* line 174, ../scss/pages/_userlogin.scss */
+  /* line 186, ../scss/pages/_userlogin.scss */
   .page-user-register .form-type-password-confirm .password-strength, .page-user-register .form-type-password-confirm .password-confirm, .page-user-edit .form-type-password-confirm .password-strength, .page-user-edit .form-type-password-confirm .password-confirm {
     width: 25%;
     margin-right: 5%;
     line-height: 1.1em;
     font-size: 14px;
   }
-  /* line 180, ../scss/pages/_userlogin.scss */
+  /* line 192, ../scss/pages/_userlogin.scss */
   .page-user-register .form-type-password-confirm input, .page-user-edit .form-type-password-confirm input {
     width: 65%;
   }
-  /* line 183, ../scss/pages/_userlogin.scss */
+  /* line 195, ../scss/pages/_userlogin.scss */
   .page-user-register .form-type-password-confirm input.password-confirm, .page-user-edit .form-type-password-confirm input.password-confirm {
     width: 65%;
   }
-  /* line 187, ../scss/pages/_userlogin.scss */
+  /* line 199, ../scss/pages/_userlogin.scss */
   .page-user-register .form-type-radio, .page-user-edit .form-type-radio {
     margin-right: 0;
     float: none;
   }
-  /* line 192, ../scss/pages/_userlogin.scss */
+  /* line 204, ../scss/pages/_userlogin.scss */
   .page-user-register .field-type-addressfield input, .page-user-edit .field-type-addressfield input {
     margin-bottom: 5px;
   }
-  /* line 196, ../scss/pages/_userlogin.scss */
+  /* line 208, ../scss/pages/_userlogin.scss */
   .page-user-register .password-suggestions, .page-user-edit .password-suggestions {
     max-width: 100%;
     width: 100%;
   }
-  /* line 200, ../scss/pages/_userlogin.scss */
+  /* line 212, ../scss/pages/_userlogin.scss */
   .page-user-register .secondary, .page-user-edit .secondary {
     margin-right: 0;
   }
-  /* line 204, ../scss/pages/_userlogin.scss */
+  /* line 216, ../scss/pages/_userlogin.scss */
   .page-user-register .field-type-text.field-widget-random-list-widget-randomizer, .page-user-edit .field-type-text.field-widget-random-list-widget-randomizer {
     width: 100px;
     display: inline-flex;
   }
-  /* line 212, ../scss/pages/_userlogin.scss */
+  /* line 224, ../scss/pages/_userlogin.scss */
   .page-user-register #edit-account .form-item.form-item-current-pass input, .page-user-edit #edit-account .form-item.form-item-current-pass input {
     width: 65%;
   }
-  /* line 217, ../scss/pages/_userlogin.scss */
+  /* line 229, ../scss/pages/_userlogin.scss */
   .page-user-register #edit-account .username, .page-user-edit #edit-account .username {
     width: 65%;
   }

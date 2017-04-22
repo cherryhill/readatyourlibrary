@@ -111,6 +111,7 @@ Drupal.behaviors.play_progress_teen = {
             // console.log(x);
             
             x[0].innerHTML =json_res.cell_data;
+            $(x[0]).css('background', 'url(' + json_res.bg_img_url + ') no-repeat scroll center bottom 20px');
             $(x[0]).removeAttr("active");
             $(x[0]).addClass(json_res.cell_selector);
             $('#pg-report').removeAttr("disabled");
@@ -123,7 +124,7 @@ Drupal.behaviors.play_progress_teen = {
             $(".activity-status").text(json_res.act_completed);
             $(".activity-remaining").text(json_res.act_remaining);
             $(".points").text(json_res.raffle_count);
-            if($count_grid === 1){
+            if(count_grid === 1){
               $('#pg-report').removeAttr("disabled");
               $('#message').remove();
               $('.progress-wrap').after('<div id = "message"><div class="section clearfix">' + json_res.drupal_message + '</div></div>');
