@@ -1320,20 +1320,25 @@
     -webkit-flex-wrap: wrap;
     flex-wrap: wrap;
     display: -webkit-flex;
-    display: flex;
+    /*display: flex;*/
+    display: block !important;
   }
   /* line 1213, ../scss/print.scss */
   .progress-page-wrap #wrap > div.rewards .view-Rewards-Progress .view-content .reward-list > div:nth-of-type(1) {
-    flex: 0 0 20px;
+    /*flex: 0 0 20px;*/
+    width: 20px !important;
+    display: inline-block;
   }
   /* line 1217, ../scss/print.scss */
   .progress-page-wrap #wrap > div.rewards .view-Rewards-Progress .view-content .reward-list > div:nth-of-type(2) {
-    flex: 0 0 calc(100% - 20px);
+    /*flex: 0 0 calc(100% - 20px);*/
+    width: 70% !important;
+    display: inline-block;
   }
   /* line 1225, ../scss/print.scss */
   .cs-default .progress-page-wrap #wrap > div.rewards .view-Rewards-Progress .view-content {
-    padding-left: 110px;
-    margin-top: -20px;
+    padding-left: 0 !important;
+    margin-top: 0 !important;
   }
   /* line 1230, ../scss/print.scss */
   .cs-classic .progress-page-wrap #wrap > div.rewards .view-Rewards-Progress .view-content {
@@ -1353,7 +1358,7 @@
   /* line 1241, ../scss/print.scss */
   .cs-default .progress-page-wrap #wrap > div.rewards .view-Rewards-Progress .view-content .views-row {
     font-size: 11px !important;
-    line-height: 12px !important;
+    line-height: 11px !important;
   }
   /* line 1246, ../scss/print.scss */
   .cs-elegant .progress-page-wrap #wrap > div.rewards .view-Rewards-Progress .view-content .views-row {
