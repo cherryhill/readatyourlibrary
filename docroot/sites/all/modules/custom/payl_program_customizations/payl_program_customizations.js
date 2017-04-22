@@ -72,8 +72,6 @@
       } else {
         $('#user-register-form .form-item-name').hide();
       }
-      
-      $('#user-register-form .form-item-name').hide();
 
       $('#user-register-form .date-year .form-select').on('change', function() {
         var birthdayMonth = jQuery('#user-register-form .date-month .form-select').val();
