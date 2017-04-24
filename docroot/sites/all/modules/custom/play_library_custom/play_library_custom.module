@@ -884,9 +884,12 @@ function pl_program_footer_content() {
  */
 function pl_pending_bookreviews() {
 
+  global $user;
+  $user_uid = $user->uid;
+
   $query = db_select('node','nod');
   $query->fields('nod', array('title','nid'));
-  $query->condition('uid', 479);
+  $query->condition('uid', $user_uid);
   $res = $query->execute()->fetchAll();
 
   if(!empty($res)){
@@ -896,7 +899,7 @@ function pl_pending_bookreviews() {
         $reviews .= '<li>' . '<a href ='.$path.'>' .$value->title . '</a></li>';
       }
     }
-    return '<div class="attachment view-header"><h5>Pending Reviews</h5></div><ol>' . $reviews . '</ol>';
+    return '<h5 style="font-weight: 700;">Pending Reviews</h5><ol>' . $reviews . '</ol>';
   } else {
     return 'No reviews yet';
   }
