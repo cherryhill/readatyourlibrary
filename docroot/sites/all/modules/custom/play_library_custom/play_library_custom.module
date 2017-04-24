@@ -890,6 +890,7 @@ function pl_pending_bookreviews() {
   $query = db_select('node','nod');
   $query->fields('nod', array('title','nid'));
   $query->condition('uid', $user_uid);
+  $query->condition('status', 0);
   $res = $query->execute()->fetchAll();
 
   if(!empty($res)){
@@ -901,7 +902,7 @@ function pl_pending_bookreviews() {
     }
     return '<h5 style="font-weight: 700;">Pending Reviews</h5><ol>' . $reviews . '</ol>';
   } else {
-    return '<h5 style="font-weight: 700;">No Reviews Yet</h5>';
+    return '<h5 style="font-weight: 700;">Pending Reviews</h5>No Reviews Yet';
   }
 }
 

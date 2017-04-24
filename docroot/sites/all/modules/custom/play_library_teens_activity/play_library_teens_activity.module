@@ -4,7 +4,7 @@
  *   Function for creating a taxonomy term for relative activity when a activity is created.
  */
 function activities_term_save($terms, $activity) {
-  echo '<pre>'; print_r($terms); die();
+  // echo '<pre>'; print_r($terms); die();
 	$activity_id = $activity->id;
 	$firing_hook = $activity->field_activity_fired_hook['und'][0]['value'];
 	$firing_explo = explode('|', $firing_hook);
