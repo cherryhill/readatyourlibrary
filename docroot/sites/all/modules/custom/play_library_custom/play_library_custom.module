@@ -186,6 +186,9 @@ function play_library_custom_block_info() {
     'info' => t('Staff user profile tabs'),
   );
 
+  $blocks['pending_booklist'] = array(
+    'info' => t('Pending Book Reviews'),
+  );
   return $blocks;
 }
 
@@ -231,12 +234,18 @@ function play_library_custom_block_view($delta = '') {
     case 'program_footer_content' :
       $block['content'] = pl_program_footer_content();
       break;
+
     case 'user_profile_tabs' :
       $block['content'] = pl_program_user_profile_tabs();
       break;
+
     case 'staff_user_profile_tabs' :
       $block['content'] = pl_staff_program_user_profile_tabs();
-      break;  
+      break;
+
+    case 'pending_booklist' :
+      $block['content'] = pl_pending_bookreviews();
+      break;
   }
 
   return $block;
@@ -867,8 +876,29 @@ function pl_program_footer_content() {
 
   $program_footer = variable_get('pmc_program_footer', array('value' => '', 'format' => NULL));
 
-
-
   return $program_footer['value'];
+}
+
+/**
+ * function callback for pending book reviews
+ */
+function pl_pending_bookreviews() {
+
+  $query = db_select('node','nod');
+  $query->fields('nod', array('title','nid'));
+  $query->condition('uid', 479);
+  $res = $query->execute()->fetchAll();
+
+  if(!empty($res)){
+    foreach ($res as $index => $value) {
+      if($index <= 4){
+        $path = url(drupal_get_path_alias('node/' . $value->nid), array('absolute' => TRUE));
+        $reviews .= '<li>' . '<a href ='.$path.'>' .$value->title . '</a></li>';
+      }
+    }
+    return '<div class="attachment view-header"><h5>Pending Reviews</h5></div><ol>' . $reviews . '</ol>';
+  } else {
+    return 'No reviews yet';
+  }
 }
 
