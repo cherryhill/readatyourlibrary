@@ -71,27 +71,27 @@
         $('#user-register-form .form-item-name').show();
       } else {
         $('#user-register-form .form-item-name').hide();
+
+        $('#user-register-form .date-year .form-select').on('change', function() {
+          var birthdayMonth = jQuery('#user-register-form .date-month .form-select').val();
+          console.log (birthdayMonth);
+          var birthdayDay = jQuery('#user-register-form .date-day .form-select').val();
+          console.log (birthdayDay);
+          var birthdayYear = jQuery('#user-register-form .date-year .form-select').val();
+          console.log (birthdayYear);
+          var age = calculate_age(birthdayMonth,birthdayDay,birthdayYear);
+          console.log(age);
+          // More than 13 years old.
+          if (age > 12 || age == NaN) {
+            $('#user-register-form .form-item-name').show();
+          }
+          // Less than 13 years old.
+          else {
+            $('#user-register-form .form-item-name').hide();
+          }
+
+        });
       }
-
-      $('#user-register-form .date-year .form-select').on('change', function() {
-        var birthdayMonth = jQuery('#user-register-form .date-month .form-select').val();
-        console.log (birthdayMonth);
-        var birthdayDay = jQuery('#user-register-form .date-day .form-select').val();
-        console.log (birthdayDay);
-        var birthdayYear = jQuery('#user-register-form .date-year .form-select').val();
-        console.log (birthdayYear);
-        var age = calculate_age(birthdayMonth,birthdayDay,birthdayYear);
-        console.log(age);
-        // More than 13 years old.
-        if (age > 12 || age == NaN) {
-          $('#user-register-form .form-item-name').show();
-        }
-        // Less than 13 years old.
-        else {
-          $('#user-register-form .form-item-name').hide();
-        }
-
-      });
 
       $('#user-register-form .field-widget-random-list-widget-randomizer').each(function(index) {
         fieldname = 'Change ' + $(this).find('label').html();

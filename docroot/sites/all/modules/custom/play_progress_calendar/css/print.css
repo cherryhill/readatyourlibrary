@@ -1077,11 +1077,13 @@
     flex-wrap: wrap;
     display: -webkit-flex;
     display: flex;
+    display: block !important;
   }
   /* line 1050, ../scss/print.scss */
   .progress-page-wrap #wrap > div.sticker-block {
-    flex: 0 0 100% !important;
+    /*flex: 0 0 100% !important;*/
     padding-right: 20px;
+    width: 100% !important;
   }
   /* line 1055, ../scss/print.scss */
   .progress-page-wrap #wrap > div.sticker-block span.prog-name * {
@@ -1130,12 +1132,15 @@
   }
   /* line 1104, ../scss/print.scss */
   .progress-page-wrap #wrap > div.rewards {
-    flex: 0 0 50% !important;
+    /*flex: 0 0 50% !important;*/
+    width: 50% !important;
+    display: inline-block;
     padding-right: 60px;
+    height: 160px;
   }
   /* line 1109, ../scss/print.scss */
   .progress-page-wrap #wrap > div.rewards .pager a {
-    color: #267fda;
+    color: #267fda !important;
     position: relative;
   }
   /* line 49, ../scss/print.scss */
@@ -1255,7 +1260,7 @@
   }
   /* line 1176, ../scss/print.scss */
   .progress-page-wrap #wrap > div.rewards .view-Rewards-Progress .view-header p {
-    font-size: 20px;
+    font-size: 15px !important;
     color: #267fda !important;
   }
   /* line 1179, ../scss/print.scss */
@@ -1304,7 +1309,7 @@
   }
   /* line 1195, ../scss/print.scss */
   .cs-default .progress-page-wrap #wrap > div.rewards .view-Rewards-Progress .view-header p:nth-of-type(2) {
-    font-size: 13px;
+    font-size: 12px !important;
   }
   /* line 1205, ../scss/print.scss */
   .progress-page-wrap #wrap > div.rewards .view-Rewards-Progress .view-content {
@@ -1315,20 +1320,25 @@
     -webkit-flex-wrap: wrap;
     flex-wrap: wrap;
     display: -webkit-flex;
-    display: flex;
+    /*display: flex;*/
+    display: block !important;
   }
   /* line 1213, ../scss/print.scss */
   .progress-page-wrap #wrap > div.rewards .view-Rewards-Progress .view-content .reward-list > div:nth-of-type(1) {
-    flex: 0 0 20px;
+    /*flex: 0 0 20px;*/
+    width: 20px !important;
+    display: inline-block;
   }
   /* line 1217, ../scss/print.scss */
   .progress-page-wrap #wrap > div.rewards .view-Rewards-Progress .view-content .reward-list > div:nth-of-type(2) {
-    flex: 0 0 calc(100% - 20px);
+    /*flex: 0 0 calc(100% - 20px);*/
+    width: 85% !important;
+    display: inline-block;
   }
   /* line 1225, ../scss/print.scss */
   .cs-default .progress-page-wrap #wrap > div.rewards .view-Rewards-Progress .view-content {
-    padding-left: 110px;
-    margin-top: -20px;
+    padding-left: 0 !important;
+    margin-top: 0 !important;
   }
   /* line 1230, ../scss/print.scss */
   .cs-classic .progress-page-wrap #wrap > div.rewards .view-Rewards-Progress .view-content {
@@ -1347,8 +1357,8 @@
   }
   /* line 1241, ../scss/print.scss */
   .cs-default .progress-page-wrap #wrap > div.rewards .view-Rewards-Progress .view-content .views-row {
-    font-size: 11px !important;
-    line-height: 12px !important;
+    font-size: 10px !important;
+    line-height: 11px !important;
   }
   /* line 1246, ../scss/print.scss */
   .cs-elegant .progress-page-wrap #wrap > div.rewards .view-Rewards-Progress .view-content .views-row {
@@ -1393,7 +1403,11 @@
   }
   /* line 1270, ../scss/print.scss */
   .progress-page-wrap #wrap > div.reading-progress {
-    flex: 0 0 50% !important;
+    /*flex: 0 0 50% !important;*/
+    width: 49% !important;
+    display: inline-block !important;
+    vertical-align: top;
+    height: 160px;
     border-radius: 15px;
    /* box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);*/
     padding: 20px;
@@ -1451,7 +1465,7 @@
   /* line 1306, ../scss/print.scss */
   .progress-page-wrap .calendar-wrapper .fc-center {
     width: 100%;
-    max-width: 263px;
+    /*max-width: 263px;*/
     margin: auto;
   }
   /* line 1311, ../scss/print.scss */
@@ -1641,7 +1655,7 @@
     background: #fff !important;
     color: #000 !important;
     border-radius: 15px;
-    padding: 5px 20px !important;
+    padding: 5px 15px !important;
   }
   header.l-header, .breadcrum-wrapper, .post-footer, .item-list {
     display: none;
@@ -1670,6 +1684,9 @@
   }
   .reading-progress h3 {
     color: #fff !important;
+  }
+  .ie .progress-page-wrap #wrap > div.sticker-block {
+    width: 100% !important;
   }
   /*------------------Print page-----------------*/
  /*!
