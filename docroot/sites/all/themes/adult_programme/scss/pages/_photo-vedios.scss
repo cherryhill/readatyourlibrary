@@ -88,7 +88,7 @@
             }
             &:before {
               content: "";
-              background: url("../images/view-album.png");
+              background: url("../images/view-album-blue.png");
               background-repeat: no-repeat;
               height: 24px;
               width: 21px;
@@ -108,4 +108,32 @@
     }
   }
 }
-
+.not-logged-in {
+  .sidebar-activity {
+    .view-rewards-dashboard {
+      .view-header {
+        margin-bottom: 20px;
+        p {
+          font-size: 24px;
+        }
+      }
+      .earn-next-reward {
+        display: flex;
+      }
+      .reward-image {
+        float: left;
+        width: 32%;
+      }
+      .reward-title {
+        display: flex;
+        align-items: center;
+        width: 68%;
+        justify-content: center;
+        float: right;
+      }
+      .view-footer {
+        margin-top: 30px;
+      }
+    }
+  }
+}
