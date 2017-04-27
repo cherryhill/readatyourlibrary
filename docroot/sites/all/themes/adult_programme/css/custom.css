@@ -15424,18 +15424,16 @@ p.more-link a:after, .block-play_library_teens_leaderboard .portlet-content li +
 }
 /* line 124, ../scss/pages/_photo-vedios.scss */
 .not-logged-in .sidebar-activity .view-rewards-dashboard .reward-image {
-  float: left;
-  width: 32%;
+  flex: 0 0 100px;
 }
-/* line 128, ../scss/pages/_photo-vedios.scss */
+/* line 127, ../scss/pages/_photo-vedios.scss */
 .not-logged-in .sidebar-activity .view-rewards-dashboard .reward-title {
   display: flex;
   align-items: center;
-  width: 68%;
-  justify-content: center;
-  float: right;
+  flex: 0 0 calc(100% - 100px);
+  padding-left: 25px;
 }
-/* line 135, ../scss/pages/_photo-vedios.scss */
+/* line 133, ../scss/pages/_photo-vedios.scss */
 .not-logged-in .sidebar-activity .view-rewards-dashboard .view-footer {
   margin-top: 30px;
 }

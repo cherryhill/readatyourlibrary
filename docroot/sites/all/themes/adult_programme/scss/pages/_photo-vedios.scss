@@ -122,15 +122,13 @@
         margin-bottom: 20px;
       }
       .reward-image {
-        float: left;
-        width: 32%;
+        flex: 0 0 100px;
       }
       .reward-title {
         display: flex;
         align-items: center;
-        width: 68%;
-        justify-content: center;
-        float: right;
+        flex: 0 0 calc(100% - 100px);
+        padding-left: 25px;
       }
       .view-footer {
         margin-top: 30px;
