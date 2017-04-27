@@ -364,17 +364,17 @@ function patron_activity_record_form_submit($form, &$form_state) {
   } else {
     drupal_set_message("Please add stickers for Calendar with 'Staff Record Image' as 'Yes'", "error");
   }
-  $commands = array();
-  $commands[] = ajax_command_remove('.messages');
-  $commands[] = ajax_command_after('.l-header', theme('status_messages'));
+  // $commands = array();
+  // $commands[] = ajax_command_remove('.messages');
+  // $commands[] = ajax_command_after('.l-header', theme('status_messages'));
   
-  drupal_set_message("yes");
+  // drupal_set_message("yes");
   $SESSION['user_uid'] = $user_uid;
 
-  return array(
-    '#type' => 'ajax',
-    '#commands' => $commands,
-  );
+  // return array(
+  //   '#type' => 'ajax',
+  //   '#commands' => $commands,
+  // );
 
 
 }
