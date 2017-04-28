@@ -388,10 +388,6 @@ function patron_reward_pickup_form($form, &$form_state) {
 
   $patron_name = user_load($_SESSION['user_uid'])->name;
   
-
-
-
-
   //get reward list
 
   $subqry = db_select('field_data_field_type_of_reward_raffle_priz', 'rew_type');
@@ -438,7 +434,7 @@ function patron_reward_pickup_form($form, &$form_state) {
 
   $form['title'] = array(
       '#type' => 'markup',
-      '#markup' => '<div><h2>'.t('Record Prize Pickup for '). $patron_name .'<h2></div>',
+      '#markup' => '<div><h2>'.t('Record Prize Pickup for '). $patron_name .'</h2></div>',
       );
 
 
