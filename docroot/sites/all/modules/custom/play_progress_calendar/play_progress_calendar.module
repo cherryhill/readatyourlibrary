@@ -376,17 +376,36 @@ function patron_activity_record_form_submit($form, &$form_state) {
   //   '#commands' => $commands,
   // );
 
+  //Retain submitted field values
+  $form_state['rebuild'] = TRUE;
 
 }
 
 
 
 function patron_reward_pickup_form($form, &$form_state) {
+  //get patron name from session 
+
+  $patron_name = user_load($_SESSION['user_uid'])->name;
   
+
+
+
+
   //get reward list
+
+  $subqry = db_select('field_data_field_type_of_reward_raffle_priz', 'rew_type');
+  $subqry->condition('rew_type.field_type_of_reward_raffle_priz_tid', 1);
+  $subqry->fields('rew_type', array('entity_id'));
+  $physical_rewids = $subqry->execute()->fetchAll();
+  foreach ($physical_rewids as $key => $value) {
+    $rew_ids[]= $value->entity_id;
+  }
+  // print_r($rew_ids);die();
 
   $qry = db_select('eck_reward', 'eck_r');
   //join all required tables
+  $qry->LEFTJOIN('field_data_field_reward_claim_id', 'fdfrci', 'fdfrci.entity_id=eck_r.id');
   $qry->LEFTJOIN('field_data_field_staff_user', 'fdfsu', 'fdfsu.entity_id=eck_r.id');
   $qry->LEFTJOIN('field_data_field_staff_notes', 'fdfsn', 'fdfsn.entity_id=eck_r.id'); 
   $qry->LEFTJOIN('field_data_field_rf_pickup_date', 'fdfrpd', 'fdfrpd.entity_id=eck_r.id');
@@ -395,6 +414,7 @@ function patron_reward_pickup_form($form, &$form_state) {
   //Add required condition
   $qry->condition('eck_r.type', 'reward_claim');
   $qry->condition('eck_r.uid', $_SESSION['user_uid'] );
+  $qry->condition('fdfrci.field_reward_claim_id_target_id', $rew_ids, 'IN');
   
   //Get required field values
   $qry->fields('eck_r', array('title','id', 'created'));
@@ -414,6 +434,12 @@ function patron_reward_pickup_form($form, &$form_state) {
   //   $Reward_set[$value->id]['pick_up_date'] = $value->field_rf_pickup_date_value;
   //   $Reward_set[$value->id]['rcv_status'] = $value->field_receieving_status_value;
   // }
+
+
+  $form['title'] = array(
+      '#type' => 'markup',
+      '#markup' => '<div><h2>'.t('Record Prize Pickup for '). $patron_name .'<h2></div>',
+      );
 
 
   $form['reward'] = array(
@@ -459,11 +485,17 @@ function patron_reward_pickup_form($form, &$form_state) {
       '#default_value' => date('m-d-Y', $value->field_rf_pickup_date_value),
       );
 
-      $reward_status = array(
-      '#id' => 'staff-status-'.$value->id,
-      '#type' => 'checkbox',
-      '#default_value' => $value->field_receieving_status_value,
-      );
+       if ($value->field_receieving_status_value){
+        $reward_status = array(
+          '#type' => 'markup',
+          '#markup' => 'Yes',
+        );
+      } else{
+        $reward_status = array(
+          '#type' => 'markup',
+          '#markup' => 'No',
+        );
+      }
     
       $reward_submit = array(
       '#id' => $value->id,
@@ -583,4 +615,5 @@ function _play_progress_calendar_update_rew_pickup(){
   // $activityUpdate->field_progress_info[$field_progress_info][0]['value'] = t('Congratulations! You have earned a prize!');
   // field_attach_update('activity', $activityUpdate);
   // unset($activityEntry_id);
+
 }
