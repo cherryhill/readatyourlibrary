@@ -9,8 +9,9 @@
       $('.random-list-widget-regenerate').click(function() {
         var classes = $(this).attr('class').split(" ");
         for (i = 0; i < classes.length; i++) {
-          if (classes[i].startsWith('random_list_widget_text_')) {
-            my_list = Drupal.settings[classes[i]];
+          if (classes[i].indexOf('random_list_widget_text_') == 0) {
+            console.log(classes[i]);
+            var my_list = Drupal.settings[classes[i]];
             var item = my_list[Math.floor(Math.random()*my_list.length)];
             var input = $(this).parent().find('.random-list-widget');
             $(input).val(item);
