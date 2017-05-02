@@ -202,6 +202,7 @@ if(isset($catalog_lk)){
     <?php print render($content['comments']); ?>
     <div class="follow_link_bookreview">
     <?php 
+      print flag_create_link('like', $node->nid);
       if($node_privacy === 'public'){ print flag_create_link('follow', $node->uid); } ?>
     </div>
     </div>

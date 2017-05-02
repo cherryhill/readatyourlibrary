@@ -174,6 +174,7 @@
         <?php
         $node_privacy_field = field_get_items('node', $node, 'field_privacy_settings');
         $node_privacy = $node_privacy_field[0]['value'];
+        print flag_create_link('like', $node->nid);
         if($node_privacy === 'public'){ print flag_create_link('follow', $node->uid); } ?>
       </div>
     <?php print render($title_prefix); ?>
