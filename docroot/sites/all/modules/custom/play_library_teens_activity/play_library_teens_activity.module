@@ -15,73 +15,77 @@ function activities_term_save($terms, $activity) {
   }
   // $firing_hook_webform_name = $firing_explo[0];
 
-  // Getting the activity id value from term activity id field.
-  $query = db_select('field_data_field_activity_id','activity_id')
-  ->fields('activity_id',array('field_activity_id_value','entity_id'))
-  ->condition('field_activity_id_value',$activity_id)
-  ->execute()
-  ->fetchAssoc();
-  $field_activity_id = $query['field_activity_id_value'];
-  $entity_field_id = $query['entity_id'];
-
-  //dont create or update term for non review firing hooks
-  if($firing_hook_name == 'user_insert' || $firing_hook_name == 'Poll answer submitted' || $firing_hook_name == 'webform_submit' || $firing_hook_name == 'review_activity' ) {
-    //if firing hook is changed for any of previous activities to non review ids delete term
-    if (isset($entity_field_id)){
-      taxonomy_term_delete($entity_field_id);
-      drupal_set_message("activity '". $activity->title . "' removed from review activity list", 'status');
-    }
-    return FALSE;
-  }
-
-  //Load taxonomy terms and get vid 
-  $vocabulary = taxonomy_vocabulary_machine_name_load($terms);
-  $activity_term_vid = $vocabulary->vid; 
-  $activity_title = $activity->title;
-
-  //crete new term for new activity
-  if(!isset($field_activity_id)) {
-    $activity_term = new stdClass();
-    $activity_term->name = $activity->title;
-    $activity_term->vid = $activity_term_vid;
-    $activity_term->parent = 0;
-    taxonomy_term_save($activity_term);
-    $tid_term = $activity_term->tid;
-  }
-  //get tid of existing activity for update
-  elseif (isset($field_activity_id)) {
-    $tid_query = db_select('taxonomy_term_data','tax')
-    ->fields('tax',array('tid'))
-    ->condition('tid',$entity_field_id)
+  if(!empty($firing_hook_name)){
+    // Getting the activity id value from term activity id field.
+    $query = db_select('field_data_field_activity_id','activity_id')
+    ->fields('activity_id',array('field_activity_id_value','entity_id'))
+    ->condition('field_activity_id_value',$activity_id)
     ->execute()
     ->fetchAssoc();
-    $tid_term = $tid_query['tid'];
+    $field_activity_id = $query['field_activity_id_value'];
+    $entity_field_id = $query['entity_id'];
+
+    //dont create or update term for non review firing hooks
+    if($firing_hook_name == 'user_insert' || $firing_hook_name == 'Poll answer submitted' || $firing_hook_name == 'webform_submit' || $firing_hook_name == 'review_activity' || $firing_hook_name == 'review_book' || $firing_hook_name == 'movie_review' || $firing_hook_name == 'music_review' || $firing_hook_name == 'video_game_review' || $firing_hook_name == 'booklist' ) {
+      //if firing hook is changed for any of previous activities to non review ids delete term
+      if (isset($entity_field_id)){
+        taxonomy_term_delete($entity_field_id);
+        drupal_set_message("activity '". $activity->title . "' removed from review activity list", 'status');
+      }
+      return FALSE;
+    }
+
+    //Load taxonomy terms and get vid 
+    $vocabulary = taxonomy_vocabulary_machine_name_load($terms);
+    $activity_term_vid = $vocabulary->vid; 
+    $activity_title = $activity->title;
+
+    //crete new term for new activity
+    if(!isset($field_activity_id)) {
+      $activity_term = new stdClass();
+      $activity_term->name = $activity->title;
+      $activity_term->vid = $activity_term_vid;
+      $activity_term->parent = 0;
+      taxonomy_term_save($activity_term);
+      $tid_term = $activity_term->tid;
+    }
+    //get tid of existing activity for update
+    elseif (isset($field_activity_id)) {
+      $tid_query = db_select('taxonomy_term_data','tax')
+      ->fields('tax',array('tid'))
+      ->condition('tid',$entity_field_id)
+      ->execute()
+      ->fetchAssoc();
+      $tid_term = $tid_query['tid'];
+    }
+
+    $activity_term_load = taxonomy_term_load($tid_term);
+    $write_url = str_replace('_', '-', $firing_hook_name);
+
+    $activity_term_load->field_activity_id['und'][0]['value'] = $activity_id;
+    $activity_term_load->field_read_review['und'][0]['title'] = $activity->title;
+    $activity_term_load->field_write_review['und'][0]['url'] = 'node/add/'.$write_url;
+    $activity_term_load->field_write_review['und'][0]['title'] = $activity->title;
+    // print_r("dfdsdf");
+    // echo "<pre>"; print_r($firing_hook_name);die();
+    
+      switch ($firing_hook_name) {
+        case 'review_book':
+          $activity_term_load->field_read_review['und'][0]['url'] = 'reviews';
+          break;
+        case 'progress_page' :
+          $activity_term_load->field_read_review['und'][0]['url'] = 'activities-listing/' . $tid_term;
+          $activity_term_load->field_write_review['und'][0]['url'] = 'node/add/review-activity/' . $tid_term;
+          break;
+        default:
+          $activity_term_load->field_read_review['und'][0]['url'] = $write_url;
+          break;
+      }
+    
+    //Save term
+    taxonomy_term_save($activity_term_load);
+    drupal_set_message("activity '". $activity->title . "' added/updated to review activity list", 'status');
   }
-
-  $activity_term_load = taxonomy_term_load($tid_term);
-  $write_url = str_replace('_', '-', $firing_hook_name);
-
-  $activity_term_load->field_activity_id['und'][0]['value'] = $activity_id;
-  $activity_term_load->field_read_review['und'][0]['title'] = $activity->title;
-  $activity_term_load->field_write_review['und'][0]['url'] = 'node/add/'.$write_url;
-  $activity_term_load->field_write_review['und'][0]['title'] = $activity->title;
-  
-  switch ($firing_hook_name) {
-    case 'review_book':
-      $activity_term_load->field_read_review['und'][0]['url'] = 'reviews';
-      break;
-    case 'progress_page' :
-      $activity_term_load->field_read_review['und'][0]['url'] = 'activities-listing/' . $tid_term;
-      $activity_term_load->field_write_review['und'][0]['url'] = 'node/add/review-activity/' . $tid_term;
-      break;
-    default:
-      $activity_term_load->field_read_review['und'][0]['url'] = $write_url;
-      break;
-  }
-  //Save term
-  taxonomy_term_save($activity_term_load);
-  drupal_set_message("activity '". $activity->title . "' added/updated to review activity list", 'status');
-
 }
 
 /**
