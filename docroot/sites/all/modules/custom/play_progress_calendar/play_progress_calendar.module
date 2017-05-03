@@ -437,6 +437,11 @@ function patron_reward_pickup_form($form, &$form_state) {
       '#markup' => '<div><h2>'.t('Record Prize Pickup for '). $patron_name .'</h2></div>',
       );
 
+  $form['raffle-info'] = array(
+      '#type' => 'markup',
+      '#markup' => '<div><h5>'.t('If raffle prizes display below, raffle drawing details are available at <a href = "reward-winners">Reward Winners page</a>').'</h2></div>',
+      );
+
 
   $form['reward'] = array(
     '#prefix' => '<div id="people">',
