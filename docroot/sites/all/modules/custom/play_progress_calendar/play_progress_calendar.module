@@ -268,11 +268,11 @@ function patron_activity_record_form($form, &$form_state) {
   $form['username'] = array(
     '#title' => t('Username'),
     '#type' => 'textfield',
+    '#default_value' => $_SESSION['username-record-activity'],
     '#autocomplete_path' => 'user/autocomplete',
     '#attributes' => array(
     'placeholder' => t('Username'),
     '#required'=> TRUE,
-    '#default_value' => $_SESSION['username-record-activity'],
     ),
   );
           
