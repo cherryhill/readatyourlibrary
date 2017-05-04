@@ -569,9 +569,9 @@ function patron_reward_pickup_form($form, &$form_state) {
   }
   // unset($SESSION['user_uid']);
 
-  // $form['#attached']['js'] = array(
-  //   drupal_get_path('module', 'play_progress_calendar') . '/js/record_activity.js',
-  // );
+  $form['#attached']['js'] = array(
+    drupal_get_path('module', 'play_progress_calendar') . '/js/record_activity.js',
+  );
 
   return $form;
 }

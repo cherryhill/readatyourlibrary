@@ -81,13 +81,28 @@ function play_progress_teen_menu() {
 
   $items['record-activity'] = array(
     'title' => 'Record Activity for Patron',
-    'page callback' => 'drupal_get_form',
-    'page arguments' => array('play_progress_teen_record_form'),
+    'page callback' => 'show_activity_reward_forms',
+    'page arguments' => array(1),
     'access arguments' => array('view_activity_record_for_patron'),
-    'type' => MENU_NORMAL_ITEM,
+    'type' => MENU_CALLBACK,
+  );
+
+  $items['update-reward-pickup'] = array(
+    'title' => 'Reward pick up',
+    'page callback' => '_play_progress_calendar_update_rew_pickup',
+    'access arguments' => array('access content'),
+    // 'type' => MENU_NORMAL_ITEM,
   );
 
   return $items;
+}
+
+function show_activity_reward_forms() {
+  $build = array();
+  $build['form1'] = drupal_get_form('patron_activity_record_form');
+  $build['form2'] = drupal_get_form('patron_reward_pickup_form');
+
+  return drupal_render($build);
 }
 
 /**
@@ -433,7 +448,7 @@ function pl_user_avatar_progress_page($uid){
 *  Patron Activity Record form build is is for activity_record page.
 */
 
-function play_progress_teen_record_form($form, &$form_state) {
+function patron_activity_record_form($form, &$form_state) {
   $qry = db_select('eck_activity', 'eck_a');
     $qry->join('field_data_field_activity_fired_hook', 'fdfafh', 'fdfafh.entity_id = eck_a.id');
     $qry->condition('fdfafh.field_activity_fired_hook_value', 'progress_page');
@@ -447,6 +462,7 @@ function play_progress_teen_record_form($form, &$form_state) {
   $form['username'] = array(
     '#title' => t('Username'),
     '#type' => 'textfield',
+    '#default_value' => $_SESSION['username-record-activity'],
     '#autocomplete_path' => 'user/autocomplete',
     '#attributes' => array(
     'placeholder' => t('Username'),
@@ -494,17 +510,24 @@ function play_progress_teen_record_form($form, &$form_state) {
     //   ),
   );
 
+  $form['#attached']['js'] = array(
+    drupal_get_path('module', 'play_progress_teen') . '/js/record_activity.js',
+  );
+
   return $form;
 }
 
-function play_progress_teen_record_form_submit($form, &$form_state) {
+function patron_activity_record_form_submit($form, &$form_state) {
   $username = $form_state['values']['username'];
 
   $query = db_select('users', 'u');
   $query->condition('u.name', $username);
   $query->fields('u', array('uid'));
   $user_uid = $query->execute()->fetchField();
-   
+
+  $_SESSION['user_uid'] = $user_uid;
+  $_SESSION['username-record-activity'] = $username;
+ 
   $activity_id = $form_state['values']['activity'];
   $activity_title = $form_state['complete form']['activity']['#options'][$activity_id];
   // $activity_title = 
@@ -514,4 +537,225 @@ function play_progress_teen_record_form_submit($form, &$form_state) {
     drupal_set_message(t("Recorded $activity_title activity for $from for user $username"), 'status');
   }
   // drupal_set_message('You have entered the read on a day activity.');
+}
+
+function patron_reward_pickup_form($form, &$form_state) {
+  //get patron name from session 
+
+  $patron_name = user_load($_SESSION['user_uid'])->name;
+  
+  //get reward list
+
+  $subqry = db_select('field_data_field_type_of_reward_raffle_priz', 'rew_type');
+  $subqry->condition('rew_type.field_type_of_reward_raffle_priz_tid', 1);
+  $subqry->fields('rew_type', array('entity_id'));
+  $physical_rewids = $subqry->execute()->fetchAll();
+  foreach ($physical_rewids as $key => $value) {
+    $rew_ids[]= $value->entity_id;
+  }
+  // print_r($rew_ids);die();
+
+  $qry = db_select('eck_reward', 'eck_r');
+  //join all required tables
+  $qry->LEFTJOIN('field_data_field_reward_claim_id', 'fdfrci', 'fdfrci.entity_id=eck_r.id');
+  $qry->LEFTJOIN('field_data_field_staff_user', 'fdfsu', 'fdfsu.entity_id=eck_r.id');
+  $qry->LEFTJOIN('field_data_field_staff_notes', 'fdfsn', 'fdfsn.entity_id=eck_r.id'); 
+  $qry->LEFTJOIN('field_data_field_rf_pickup_date', 'fdfrpd', 'fdfrpd.entity_id=eck_r.id');
+  $qry->LEFTJOIN('field_data_field_receieving_status', 'fdfrs', 'fdfrs.entity_id=eck_r.id');
+
+  //Add required condition
+  $qry->condition('eck_r.type', 'reward_claim');
+  $qry->condition('eck_r.uid', $_SESSION['user_uid'] );
+  $qry->condition('fdfrci.field_reward_claim_id_target_id', $rew_ids, 'IN');
+  
+  //Get required field values
+  $qry->fields('eck_r', array('title','id', 'created'));
+  $qry->fields('fdfsu', array('field_staff_user_value'));
+  $qry->fields('fdfsn', array('field_staff_notes_value'));
+  $qry->fields('fdfrpd', array('field_rf_pickup_date_value'));
+  $qry->fields('fdfrs', array('field_receieving_status_value'));
+
+  $Reward_set = $qry->execute()->fetchAll();
+  // echo'<pre>';print_r($Reward_set);//die();
+  // foreach ($resu as $value) {
+  //   //$activity_id[] = $value->id; 
+  //   $Reward_set[$value->id] = $value->id;
+  //   $Reward_set[$value->id]['title'] = $value->title;
+  //   $Reward_set[$value->id]['staff'] = $value->field_staff_user_value;
+  //   $Reward_set[$value->id]['notes'] = $value->field_staff_notes_value;
+  //   $Reward_set[$value->id]['pick_up_date'] = $value->field_rf_pickup_date_value;
+  //   $Reward_set[$value->id]['rcv_status'] = $value->field_receieving_status_value;
+  // }
+
+
+  $form['title'] = array(
+      '#type' => 'markup',
+      '#markup' => '<div><h2>'.t('Record Prize Pickup for '). $patron_name .'</h2></div>',
+      );
+
+  $form['raffle-info'] = array(
+      '#type' => 'markup',
+      '#markup' => '<div><h5>'.t('If raffle prizes display below, raffle drawing details are available at <a href = "reward-winners">Reward Winners page</a>').'</h2></div>',
+      );
+
+
+  $form['reward'] = array(
+    '#prefix' => '<div id="people">',
+    '#suffix' => '</div>',
+    '#tree' => TRUE,
+    '#theme' => 'table',
+    '#header' => array(t('Reward'), t('Staff'), t('Staff Notes'), t('Pickup Date'),t('Received'), t('Action')),
+    '#rows' => array(),
+  );
+
+  foreach ($Reward_set as $value) {
+    
+      $reward_title = array(
+      '#id' => 'reward-'.$value->id,
+      '#type' => 'markup',
+      '#markup' => $value->title,
+        );
+
+      $reward_staff = array(
+      '#id' => 'staff-'.$value->id,
+      '#type' => 'markup',
+      '#markup' => $value->field_staff_user_value,
+      );
+
+    //Show input boxes only for non received rewards
+    if(empty($value->field_staff_user_value)){
+      $reward_staff_notes = array(
+      '#id' => 'staff-notes-'.$value->id,
+      '#type' => 'textfield',
+      '#default_value' => $value->field_staff_notes_value,
+      );
+
+      $reward_pickup_date = array(
+      '#type' => 'date_popup',
+      '#date_format' => 'F d, Y',
+      '#date_year_range' => '0:+10',
+      '#datepicker_options' => array('maxDate' => '+0D'),
+      '#required' => TRUE,
+      '#editable' =>'false',
+      '#size' => 8,
+      '#id' => 'staff-date-'.$value->id,
+      '#default_value' => date('m-d-Y', $value->field_rf_pickup_date_value),
+      );
+
+       if ($value->field_receieving_status_value){
+        $reward_status = array(
+          '#type' => 'markup',
+          '#markup' => 'Yes',
+        );
+      } else{
+        $reward_status = array(
+          '#type' => 'markup',
+          '#markup' => 'No',
+        );
+      }
+    
+      $reward_submit = array(
+      '#id' => $value->id,
+      '#value' => 'Submit',
+      '#type' => 'button',
+      '#attributes' => array('class'=> array('update-rew')));
+      // '#attributes' => array('id'=>array('activity-submit')),
+      // '#ajax' => array(
+      //     'callback' => 'patron_activity_record_form_record',
+      //     'wrapper' => 'bingo-progress-main',
+      //     'method' => 'replace',
+      //     'effect' => 'fade',
+      //   ),
+    }
+
+    else{
+      
+      $reward_staff_notes = array(
+        '#type' => 'markup',
+        '#markup' => $value->field_staff_notes_value,
+      );
+
+      $reward_pickup_date = array(
+        '#type' => 'markup',
+        '#markup' => date('m-d-Y',strtotime($value->field_rf_pickup_date_value)),
+      );
+
+      if ($value->field_receieving_status_value){
+        $reward_status = array(
+          '#type' => 'markup',
+          '#markup' => 'Yes',
+        );
+      } else{
+        $reward_status = array(
+          '#type' => 'markup',
+          '#markup' => 'No',
+        );
+      }
+      
+
+
+    }
+      
+      $form['reward'][] = array(
+        'title' => &$reward_title,
+        'staff' => &$reward_staff,
+        'notes' => &$reward_staff_notes,
+        'pick up date' => &$reward_pickup_date,
+        'status' => &$reward_status, 
+        'submit' =>  &$reward_submit,
+      );
+
+      $form['reward']['#rows'][] = array(
+        array('data' => &$reward_title),
+        array('data' => &$reward_staff),
+        array('data' => &$reward_staff_notes),
+        array('data' => &$reward_pickup_date),
+        array('data' => &$reward_status),
+        array('data' => &$reward_submit),
+      );
+      unset($reward_title);
+      unset($reward_staff);
+      unset($reward_staff_notes);
+      unset($reward_pickup_date);
+      unset($reward_status);
+      unset($reward_submit);  
+
+  }
+  // unset($SESSION['user_uid']);
+
+  // $form['#attached']['js'] = array(
+  //   drupal_get_path('module', 'play_progress_calendar') . '/js/record_activity.js',
+  // );
+
+  return $form;
+}
+
+
+//Function to update reward pickup details
+function _play_progress_calendar_update_rew_pickup(){
+  //Get username of user who is updating 
+  global $user;
+  $staff_name = $user->name;
+
+  //Get field values
+  $rew_id =  $_REQUEST['reward-id'];
+  $staff_notes = $_REQUEST['staff-notes'];
+  $rew_pickup_date = $_REQUEST['pickup-date'];
+  $received_status = $_REQUEST['pickup-status'];
+
+  $rewards = entity_load('reward', array($rew_id));
+  $reward = reset($rewards);
+
+  $lang = field_language('reward',$reward);
+  foreach ($lang as $key => $value) {
+    ${$key} = $value;
+  }
+
+
+  $reward->field_staff_user[$field_staff_user][0]['value'] = $staff_name;
+  $reward->field_staff_notes[$field_staff_notes][0]['value'] = $staff_notes;
+  $reward->field_rf_pickup_date[$field_rf_pickup_date][0]['value'] = date('Y-m-d h:i:s',strtotime($rew_pickup_date));
+  $reward->field_receieving_status[$field_receieving_status][0]['value'] = 1;//$received_status;
+  field_attach_update('reward', $reward);
+  echo "success"; 
 }
