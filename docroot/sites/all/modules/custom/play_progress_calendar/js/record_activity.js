@@ -26,7 +26,7 @@
 	            //on Successs render drupal set messages
 	            success: function(res){
 	              console.log(res);
-	              if(res == 'success'){
+	              if(res.trim() == 'success'){
 	              	alert("Reward Pickup date updated");
 	              	window.location.reload();
 	              }
