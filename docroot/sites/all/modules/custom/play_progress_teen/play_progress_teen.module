@@ -534,7 +534,7 @@ function patron_activity_record_form_submit($form, &$form_state) {
   $from = strtotime($form_state['values']['date']);
   $status = play_library_program_create_activity_entry($activity_id , $user_uid, $from, $sticker_tid);
   if($status){
-    drupal_set_message(t("Recorded $activity_title activity for $from for user $username"), 'status');
+    drupal_set_message(t("Recorded $activity_title activity for") . date('Y-m-d', $from). t("for user $username"), 'status');
   }
   // drupal_set_message('You have entered the read on a day activity.');
 }
