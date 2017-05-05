@@ -439,21 +439,30 @@ function patron_reward_pickup_form($form, &$form_state) {
       '#markup' => '<div><h2>'.t('Record Prize Pickup for '). $patron_name .'</h2></div>',
       );
 
+  
   $form['raffle-info'] = array(
       '#type' => 'markup',
-      '#markup' => '<div><h5>'.t('If raffle prizes display below, raffle drawing details are available at <a href = "reward-winners">Reward Winners page</a>').'</h2></div>',
+      '#markup' => '<div><p>'.t('If raffle prizes display below, raffle drawing details are available at <a href = "reward-winners">Reward Winners page</a>').'</p></div>',
       );
 
+  if(!empty($Reward_set)){
+    $form['reward'] = array(
+      '#prefix' => '<div id="people">',
+      '#suffix' => '</div>',
+      '#tree' => TRUE,
+      '#theme' => 'table',
+      '#header' => array(t('Reward'), t('Staff'), t('Staff Notes'), t('Pickup Date'),t('Received'), t('Action')),
+      '#rows' => array(),
+    );
+  }
+  else{
+    $form['raffle-info'] = array(
+      '#type' => 'markup',
+      '#markup' => '<div><h5>'.t('No Physical reward won by this patron'). '</h5></div>',
+      );
+  }
 
-  $form['reward'] = array(
-    '#prefix' => '<div id="people">',
-    '#suffix' => '</div>',
-    '#tree' => TRUE,
-    '#theme' => 'table',
-    '#header' => array(t('Reward'), t('Staff'), t('Staff Notes'), t('Pickup Date'),t('Received'), t('Action')),
-    '#rows' => array(),
-  );
-
+  //Print table for reward list
   foreach ($Reward_set as $value) {
     
       $reward_title = array(

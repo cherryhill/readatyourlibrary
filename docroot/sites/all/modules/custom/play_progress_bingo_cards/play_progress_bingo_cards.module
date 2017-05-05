@@ -80,7 +80,7 @@ function patron_activity_record_form($form, &$form_state) {
           
   $form['html'] = array(
    '#type' => 'markup',
-   '#markup' => '<div>Search for patrons here: <a href="patron-list" target="_blank">http://kids17.dev.chillco.com/patron-users</a></div>',
+   '#markup' => '<div>Search for patrons here: <a href="patron-list" target="popup" onclick="window.open(&quot; patron-list &quot;, &quot; Patron List&quot; ,&quot; width=1000  height=400 &quot;)">Patron list</a></div>',
   );
   $form['activity'] = array(
     '#type' => 'select',
@@ -207,14 +207,22 @@ function patron_reward_pickup_form($form, &$form_state) {
       );
 
 
-  $form['reward'] = array(
-    '#prefix' => '<div id="people">',
-    '#suffix' => '</div>',
-    '#tree' => TRUE,
-    '#theme' => 'table',
-    '#header' => array(t('Reward'), t('Staff'), t('Staff Notes'), t('Pickup Date'),t('Received'), t('Action')),
-    '#rows' => array(),
-  );
+  if(!empty($Reward_set)){
+    $form['reward'] = array(
+      '#prefix' => '<div id="people">',
+      '#suffix' => '</div>',
+      '#tree' => TRUE,
+      '#theme' => 'table',
+      '#header' => array(t('Reward'), t('Staff'), t('Staff Notes'), t('Pickup Date'),t('Received'), t('Action')),
+      '#rows' => array(),
+    );
+  }
+  else{
+    $form['raffle-info'] = array(
+      '#type' => 'markup',
+      '#markup' => '<div><h5>'.t('No Physical reward won by this patron'). '</h5></div>',
+      );
+  }
 
   foreach ($Reward_set as $value) {
     
