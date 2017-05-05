@@ -275,7 +275,7 @@ function pl_activities_term_save($term, $fire_hook, $activity) {
         $activity_term->field_hotspot_activity_type['und'][0]['value'] = $activity_hotspot_value ? $activity_hotspot_value:0;
         $activity_term->field_progress_page_term['und'][0]['value'] = $activity_progress_page ? $activity_progress_page:0;
         taxonomy_term_save($activity_term);
-        }
+      }
     }else if(isset($field_activity_id)) {
       $hotspot_query = db_select('taxonomy_term_data','tax')
         ->fields('tax',array('tid'))
@@ -476,7 +476,7 @@ function patron_activity_record_form($form, &$form_state) {
   );
   $form['activity'] = array(
     '#type' => 'select',
-    '#options' => $activity_title,
+    '#options' => pl_activities_progress_block(),
   );
   $form['date'] = array(
     '#title' => t('On'),
@@ -518,25 +518,51 @@ function patron_activity_record_form($form, &$form_state) {
 }
 
 function patron_activity_record_form_submit($form, &$form_state) {
-  $username = $form_state['values']['username'];
 
-  $query = db_select('users', 'u');
-  $query->condition('u.name', $username);
-  $query->fields('u', array('uid'));
-  $user_uid = $query->execute()->fetchField();
+  //Check for number of activities recorded for the grid
+  //Get values from configuration page
+  $nonSelf = variable_get('nonself_activities_progress');
+  $self = variable_get('activities_progress');
 
-  $_SESSION['user_uid'] = $user_uid;
-  $_SESSION['username-record-activity'] = $username;
- 
-  $activity_id = $form_state['values']['activity'];
-  $activity_title = $form_state['complete form']['activity']['#options'][$activity_id];
-  // $activity_title = 
-  $from = strtotime($form_state['values']['date']);
-  $status = play_library_program_create_activity_entry($activity_id , $user_uid, $from, $sticker_tid);
-  if($status){
-    drupal_set_message(t("Recorded $activity_title activity for ") . date('Y-m-d', $from) . t(" for user "). $username, 'status');
+  //Get list of complete list of activities which need to be displayed on progress page
+  $progressActi = array_merge($self, $nonSelf);
+
+  $query = new EntityFieldQuery();
+  $query->entityCondition('entity_type', 'activity');
+  $query->entityCondition('bundle', 'activity_entry');
+  $query->propertyCondition('uid', $current_uid);
+  $query->fieldCondition('field_activity_entry_activity', 'target_id', $progressActi);
+  $result = $query->execute();
+
+  foreach ($result['activity'] as $key => $value) {
+    $activityIds[] = $value->id;
   }
-  // drupal_set_message('You have entered the read on a day activity.');
+
+  $act_count = sizeof($activityIds);
+  //Record if activity count is less than progress grid
+  if ($act_count < variable_get('no_of_grids')) {
+    $username = $form_state['values']['username'];
+
+    $query = db_select('users', 'u');
+    $query->condition('u.name', $username);
+    $query->fields('u', array('uid'));
+    $user_uid = $query->execute()->fetchField();
+
+    $_SESSION['user_uid'] = $user_uid;
+    $_SESSION['username-record-activity'] = $username;
+   
+    $activity_id = $form_state['values']['activity'];
+    $activity_title = $form_state['complete form']['activity']['#options'][$activity_id];
+    // $activity_title = 
+    $from = strtotime($form_state['values']['date']);
+    $status = play_library_program_create_activity_entry($activity_id , $user_uid, $from, $sticker_tid);
+    if($status){
+      drupal_set_message(t("Recorded $activity_title activity for ") . date('Y-m-d', $from) . t(" for user "). $username, 'status');
+    }
+  }
+  else{
+    drupal_set_message(t('This activity cannot be recorded as patron has completed Progress grid'), 'error');
+  }
 }
 
 function patron_reward_pickup_form($form, &$form_state) {
