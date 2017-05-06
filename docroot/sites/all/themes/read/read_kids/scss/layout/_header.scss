@@ -1,0 +1,278 @@
+// Non-modular or client styles for .l-header region.
+
+.l-header {
+  width: 100%;
+  display: block;
+
+  .pre-header {
+    padding: 13px 18px 13px 25px;
+
+    .cs-default & {
+      @extend .yellow;
+    }
+
+    .cs-classic & {
+      @extend .dark-blue;
+    }
+
+    .cs-elegant & {
+      @extend .mint-green;
+    }
+
+    #topmostbranding {
+      -webkit-flex-wrap: wrap;
+      flex-wrap: wrap;
+      display: -webkit-flex;
+      display: flex;
+      width: 100%;
+    }
+
+
+
+    .top-menu {
+      @include primary-fonts;
+
+      .cs-default & {
+        color: $black;
+
+        a.username {
+          color: inherit;
+          font-family: inherit;
+          margin-right: 50px;
+        }
+      }
+
+      .cs-classic &, .cs-elegant & {
+        color: $white;
+
+        a.username {
+          color: inherit;
+          font-family: inherit;
+          margin-right: 50px;
+        }
+      }
+
+      .btn {
+        margin-left: 6px;
+      }
+
+      flex: 0 0 100%;
+
+      @extend .hide-for-small-only;
+
+      .top-header-menu {
+        float: right;
+      }
+    }
+  }
+
+  .header-middle {
+    -webkit-flex-wrap: wrap;
+    flex-wrap: wrap;
+    display: -webkit-flex;
+    display: flex;
+    width: 100%;
+    padding-left: 25px;
+    padding-top: 20px;
+    align-items: flex-end;
+    align-content: flex-end;
+
+    .cs-default & {
+      @extend .green-gradiant;
+    }
+
+    .cs-classic & {
+      @extend .yellow;
+    }
+
+    .cs-elegant & {
+      @extend .light-orange;
+    }
+
+    .logo-block {
+      flex: 0 0 25%;
+
+      .site-info {
+        width: 100%;
+        display: table;
+
+        > div {
+          display: table-cell;
+          vertical-align: top;
+
+          &.logo {
+            width: 80px;
+
+            img {
+              .cs-classic & {
+                background: $darkblue;
+              }
+            }
+          }
+        }
+
+        .site-name {
+          margin: -7px 0 0;
+          font-size: 36px;
+          font-family: $ptsans;
+          color: $white;
+          font-weight: 700;
+
+          .cs-classic & {
+            color: $darkblue;
+          }
+
+          a {
+            color: inherit;
+            font-family: inherit;
+          }
+        }
+      }
+
+      .site-slogan {
+        margin: -10px 0 0;
+        font-size: 23px;
+        font-family: $ptsans;
+        color: $white;
+
+        .cs-classic & {
+          color: $darkblue;
+        }
+
+        a {
+          color: inherit;
+          font-family: inherit;
+        }
+      }
+
+      .program-logo {
+        margin-top: 15px;
+        margin-bottom: 20px;
+
+        img {
+          max-width: 200px;
+        }
+      }
+    }
+
+    .main-menu {
+      flex: 0 0 75%;
+
+      .menu-wrapper {
+        section {
+          width: 100%;
+          display: inline-block;
+        }
+
+        .block-lang-dropdown {
+          .block-title {
+            display: none;
+          }
+
+          form {
+            float: right;
+            margin-right: 18px;
+          }
+        }
+
+        ul.menu {
+          padding-right: 18px;
+          margin-bottom: 10px;
+        }
+      }
+    }
+  }
+}
+
+//anonymous header buttons login and signin
+.block-menu-menu-anonymous-header-links {
+  width: 100%;
+
+  ul.menu {
+    display: inline-block;
+    float: right;
+    margin: 0;
+    padding: 0;
+
+    li {
+      display: inline-block;
+
+      a {
+        display: inline-block;
+        padding: 6px 24px;
+        font-size: 21px;
+        text-decoration: none;
+        box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+        text-transform: capitalize;
+        border-radius: 10px;
+        line-height: 30px;
+        color: $white;
+
+        @include primary-fonts;
+
+        margin-left: 6px;
+
+        .cs-default & {
+          @extend .blue;
+        }
+
+        .cs-classic & {
+          background: $sky-blue;
+        }
+
+        .cs-elegant & {
+          @extend .red1;
+        }
+
+        &:hover {
+          text-decoration: none;
+        }
+      }
+    }
+  }
+}
+.breadcrum-wrapper.row {
+  max-width: 1224px !important;
+}
+.breadcurm {
+      ul {
+        padding-left: 0;
+        margin: 0;
+        background: transparent;
+        border: none;
+        padding-bottom: 0;
+
+        li {
+          font-size: 14px;
+
+          &.current {
+            a {
+              color: $black;
+            }
+
+            &:before {
+              content: ">";
+
+              @include secondary_fonts;
+
+              top: 0;
+              margin: 0 5px;
+
+
+
+              color: $black;
+            }
+          }
+
+          a {
+            color: $blue;
+            text-transform: capitalize;
+            @include secondary_fonts;
+
+            &:focus {
+              outline: none;
+            }
+          }
+        }
+      }
+    }

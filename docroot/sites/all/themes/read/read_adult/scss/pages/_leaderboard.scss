@@ -1,0 +1,70 @@
+
+#page-title {
+   .page-leaderboard & {
+     background-size: auto;
+     background-repeat: no-repeat;
+   }
+  .page-leaderboard.cs-default & {
+    background-image: url("../images/yellowbrushstroke_lg.png");
+    padding: 27px 10px 30px 40px;
+    color: $purple;
+  }
+  .page-leaderboard.cs-classic & {
+    background-image: url("../images/redbrushstroke_lg.png");
+    color: $dark-blue;
+    padding: 24px 10px 30px 40px;
+  }
+  .page-leaderboard.cs-elegant & {
+    background-image: url("../images/bluebrushstroke_lg.png");
+    color: $gray;
+    padding: 24px 10px 30px 40px;
+  }
+
+}
+.page-leaderboard {
+  .main {
+    counter-reset: section;
+    .primary-tabs + div {
+      ol {
+         display: flex;
+         display: -webkit-flex;
+         flex-wrap: wrap;
+         list-style: none;
+          li {
+            flex: 0 0 50%;
+            margin-bottom: 15px;
+            span:nth-of-type(2) {
+              float: right;
+              padding-right: 40px;
+            }
+            span {
+              img {
+                margin-right: 10px;
+                width: 32px;
+                height: 32px;
+                object-fit: contain;
+              }
+            }
+            span:nth-of-type(1):before {
+              counter-increment: section;
+              content: counter(section) ". ";
+              width: 31px;
+              display: inline-block;
+            }
+          }
+      }
+    }
+  }
+}
+.page-users-public-profile {
+  .main {
+    margin-bottom: 40px;
+  }
+  .field-name-field-avatar-image {
+    img {
+      width: 32px;
+      height: 32px;
+      object-fit: contain;
+    }
+  }
+}

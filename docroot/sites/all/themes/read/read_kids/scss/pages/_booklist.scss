@@ -1,0 +1,235 @@
+.view-booklist-slideshow {
+
+   &.created-by-user {
+    .page-booklists & {
+        .view-content {
+          padding: 0px 20px 20px;
+          border-bottom: 1px solid #efefef;
+        }
+        .owl-item {
+          width: 100%;
+        }
+      }
+    }
+  .page-booklists & {
+    .view-content {
+
+      padding: 10px 60px 0;
+      border-bottom: none;
+      .owl-wrapper-outer {
+        width: calc(100% - 10px);
+      }
+
+      .owl-controls .owl-buttons {
+          .owl-prev {
+            background-position: -20px -660px;
+            margin-left: -18px;
+          }
+          .owl-next {
+            background-position: -20px -1198px;
+            margin-right: -2px;
+          }
+        }
+      .views-field-field-booklist-cover-image {
+        width: calc(100% + 10px);
+          display: flex;
+          display: -webkit-flex;
+          align-items: center;
+          align-content: center;
+          height: 200px;
+        .field-content {
+           width: calc(100% - 10px);
+            padding-right: 10px;
+           img {
+              width: 100%;
+           }
+        }
+
+      }
+    }
+  }
+}
+.view-booklist-page-view {
+  ul {
+    list-style: none;
+    margin-left: 0;
+     li {
+      margin-left: inherit;
+     }
+  }
+  .view-filters {
+   @extend .yellow-commonblock;
+   overflow: visible;
+
+  }
+  .views-exposed-widgets {
+    width: calc(100% + 10px);
+    -webkit-flex-wrap: wrap;
+    flex-wrap: wrap;
+    display: -webkit-flex;
+    display: flex;
+    align-content: center;
+    align-items: center;
+
+  }
+  .views-exposed-widget {
+    flex: 0 0 calc(25% - 10px);
+    -ms-box-flex: 0 0 24%;
+    -ms-flex: 0 0 23%;
+    -ms-padding-right: 1%;
+    padding: 0;
+    float: none;
+    margin-right: 10px;
+    input[type="text"] {
+      height: 40px;
+      position: relative;
+      top: 3px;
+      border: none;
+      box-shadow: none !important;
+    }
+  }
+  .chosen-container {
+    .chosen-single {
+      b {
+        visibility: visible;
+        position: relative;
+        background: transparent !important;
+        &:after {
+          content: "";
+          border-left: 5px solid transparent;
+          border-right: 5px solid transparent;
+          border-top: 5px solid #fff;
+          position: absolute;
+          top: 45%;
+          display: block;
+          left: 0;
+          visibility: visible;
+        }
+      }
+    }
+}
+.views-submit-button {
+  button.form-submit {
+    height: 42px;
+    margin-top: 18px;
+  }
+}
+.form-submit {
+      @extend .blue-button;
+
+
+  }
+  .chosen-container {
+  width: 100% !important;
+  &.chosen-with-drop.chosen-container-active {
+    a {
+      border-radius: 10px !important;
+      box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.5);
+      border: none;
+    }
+  }
+  .chosen-drop  {
+    position: absolute;
+    width: 100%;
+    top: 48px;
+  }
+  a {
+
+      @extend .blue-button;
+      @include  primary_fsize;
+      height: auto;
+      width: 100%;
+      display: inline-block;
+      border: none;
+      position: relative;
+
+
+
+  }
+}
+}
+.booklist-wrapp {
+  .book-body-wrapp {
+    div {
+      display: inline-block;
+      &.title {
+        width: calc(100% - 125px);
+     display: inline-block;
+     overflow: hidden;
+    text-overflow: ellipsis;
+     white-space: nowrap;
+      }
+      @extend h4;
+      margin: 0;
+       * {
+        font-family: inherit;
+        font-size: inherit;
+        margin-bottom: 0;
+       }
+
+    }
+  }
+  .book-user-likes {
+    > div {
+      @extend h5;
+      padding-left: 23px;
+      margin: 0;
+
+      float: left;
+      &.book-created {
+        width: 70%;
+
+         * {
+          font-family: inherit;
+          font-size: inherit;
+         }
+         img {
+          width: 32px;
+          height: 32px;
+          object-fit: contain;
+         }
+      }
+      &.book-like {
+        width: 30%;
+        text-align: right;
+        padding-right: 10px;
+        * {
+          font-family: inherit;
+        font-size: inherit;
+        }
+        span {
+          padding-right: 32px;
+        position: relative;
+         &:after {
+           content: "";
+            width: 25px;
+            height: 25px;
+            display: inline-block;
+            background: url("../images/smily.png") no-repeat scroll center center;
+            position: absolute;
+            right: 2px;
+            top: -3px;
+         }
+        }
+      }
+    }
+  }
+}
+.page-booklists {
+  .viewmenu {
+    margin-bottom: 26px;
+  }
+  .view-booklist-page-view {
+     > .view-header {
+      margin-top: 20px;
+      margin-bottom: 20px;
+     }
+     > .view-content {
+       .views-row {
+         margin-bottom: 23px;
+         display: inline-block;
+         width: 100%;
+       }
+     }
+  }
+}
