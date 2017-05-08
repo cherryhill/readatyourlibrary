@@ -307,9 +307,6 @@ function patron_reward_pickup_form($form, &$form_state) {
           '#markup' => 'No',
         );
       }
-      
-
-
     }
       
       $form['reward'][] = array(
@@ -366,8 +363,6 @@ function _play_progress_calendar_update_rew_pickup(){
   foreach ($lang as $key => $value) {
     ${$key} = $value;
   }
-
-
   $reward->field_staff_user[$field_staff_user][0]['value'] = $staff_name;
   $reward->field_staff_notes[$field_staff_notes][0]['value'] = $staff_notes;
   $reward->field_rf_pickup_date[$field_rf_pickup_date][0]['value'] = date('Y-m-d h:i:s',strtotime($rew_pickup_date));
@@ -636,7 +631,8 @@ function play_progress_bingo_cards_progress_submit($form, $form_state) {
       }
       //Save node
       $entity->save();
-      // drupal_goto('progress');
+      drupal_set_message(t("Recorded '". $activity_name. "' for ". date("Y-m-d", $activity_date_ts). "."), "status");
+      
     } else{
       drupal_set_message(t('Apologies. We are not able to create or update a bingo card for you. Please contact system administrator'), 'error');
     }
