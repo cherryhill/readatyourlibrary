@@ -38,8 +38,10 @@ function pl_complete_activity_progress(){
       $user_won_reward = '<p class = "rew"><strong>'.$rewardMsg.'</strong></p>';
       $reward_won = 'reward-won-cell';
       //Get raffle count
-      $raff_count = pl_raffle_count($activity_uid);
+      $raff_count = pl_raffle_count($account_id);
     } else{
+      //Get raffle count
+      $raff_count = pl_raffle_count($account_id); 
       $user_won_reward = '';
       $reward_won = '';  
     }
@@ -59,7 +61,7 @@ function pl_complete_activity_progress(){
     $query = new EntityFieldQuery();
     $query->entityCondition('entity_type', 'activity');
     $query->entityCondition('bundle', 'activity_entry');
-    $query->propertyCondition('uid', $activity_uid);
+    $query->propertyCondition('uid', $account_id);
     $query->fieldCondition('field_activity_entry_activity', 'target_id', $progressActi);
     $result = $query->execute();
 
