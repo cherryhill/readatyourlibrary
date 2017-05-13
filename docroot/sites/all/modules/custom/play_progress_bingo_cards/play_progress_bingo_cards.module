@@ -470,6 +470,12 @@ function play_progress_bingo_cards_progress($form, $form_state) {
     '#attributes' => array('placeholder' => t('Username'),),
     '#access' => $access,
   );
+
+  $form['html'] = array(
+    '#type' => 'markup',
+    '#markup' => '<div>Search for patrons here: <a href="patron-list" target="popup" onclick="window.open(&quot; patron-list &quot;, &quot; Patron List&quot; ,&quot; width=1000  height=400 &quot;)">Patron list</a></div>',
+    '#access' => $access,
+  );
     
 
   $form['activity'] = array(

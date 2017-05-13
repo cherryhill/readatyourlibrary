@@ -156,6 +156,26 @@ function payl_program_customizations_form_alter(&$form, &$form_state, $form_id) 
   if ($form_id == 'eck__entity__form_add_reward_reward') {
     $form['field_reward_badge']['und']['actions']['ief_add']['#value'] = t('Add Badge Image');
   }
+
+  //Show activities with only progress page firing hooks
+  if($form_id == 'review_activity_node_form'){
+    //Get self reported activity list
+    // print_r($form['field_activity']['und']['#options']);die();
+    $self_act = db_select('field_data_field_activity_fired_hook', 'fir_hook');
+    $self_act->JOIN('field_data_field_activity_id', 'fdfai', 'fdfai.field_activity_id_value = fir_hook.entity_id');
+    $self_act->condition('fir_hook.field_activity_fired_hook_value', 'progress_page');
+    $self_act->fields('fdfai', array('entity_id'));
+    $self_act_list = $self_act->execute()->fetchAll();
+    // print_r($self_act_list);
+    foreach ($self_act_list as $key => $value) {
+      $array_unset_index[$value->entity_id] = $value->entity_id; 
+    }
+
+    // unset($form['field_activity']['und']['#options'][137]);
+    $form['field_activity']['und']['#options']=(array_intersect_key($form['field_activity']['und']['#options'], $array_unset_index));
+    // print_r($form['field_activity']['und']['#options']);die();
+    //remove activities which are not from self reported activity list
+  }
 }
 
 function payl_program_customizations_user_register_validate($form, &$form_state) {
@@ -193,20 +213,20 @@ function payl_program_customizations_flag_flag($flag, $entity_id, $account, $fla
 }
 
 
-function payl_program_customizations_menu(){
-  $items = array();
+// function payl_program_customizations_menu(){
+//   $items = array();
 
- $items['test-activity'] = array(
-    'page title' => 'BProgress',
-    'page callback' => 'payl_program_customizations_review_selectlist',
-    'access arguments' => array('progress page access'), // permission for view progress page
-    'type' => MENU_CALLBACK,
-    // 'file' => 'inc/pl_progress_page.inc',
-    // 'file path' => drupal_get_path('module', 'play_progress_teen'),
-  );
+//  $items['test-activity'] = array(
+//     'page title' => 'BProgress',
+//     'page callback' => 'payl_program_customizations_review_selectlist',
+//     'access arguments' => array('progress page access'), // permission for view progress page
+//     'type' => MENU_CALLBACK,
+//     // 'file' => 'inc/pl_progress_page.inc',
+//     // 'file path' => drupal_get_path('module', 'play_progress_teen'),
+//   );
 
-  return $items;
-}
+//   return $items;
+// }
 
 /**
  * Access Callback for /projects page.
@@ -314,3 +334,10 @@ function email_notification_settings($form, &$form_state) {
         $insert_query->execute();
     }
 }
+
+/*
+/Update dropdown list to only show self reported activities
+*/
+// function payl_program_customizations_review_activity_node_form_alter(&$form, &$form_state){
+//   print "bingo"; die();
+// }
