@@ -265,12 +265,10 @@ function field_valid_language($langcode, $default = TRUE) {
  */
 function field_language($entity_type, $entity, $field_name = NULL, $langcode = NULL) {
   $display_languages = &drupal_static(__FUNCTION__, array());
-  // list($id, , $bundle) = entity_extract_ids($entity_type, $entity);
-  list($id, $vid, $bundle) = entity_extract_ids($entity_type, $entity);
+  list($id, , $bundle) = entity_extract_ids($entity_type, $entity);
   $langcode = field_valid_language($langcode, FALSE);
 
-  // if (!isset($display_languages[$entity_type][$id][$langcode])) {
-  if (!$id || !isset($display_languages[$entity_type][$id][$vid][$langcode])) {
+  if (!isset($display_languages[$entity_type][$id][$langcode])) {
     $display_language = array();
 
     // By default display language is set to LANGUAGE_NONE if the field
@@ -289,17 +287,10 @@ function field_language($entity_type, $entity, $field_name = NULL, $langcode = N
       drupal_alter('field_language', $display_language, $context);
     }
 
-    // $display_languages[$entity_type][$id][$langcode] = $display_language;
-    if ($id) {
-    // Prevent caching for new entities.
-      $display_languages[$entity_type][$id][$vid][$langcode] = $display_language;
-    }
-  } 
-  else {
-    $display_language = $display_languages[$entity_type][$id][$vid][$langcode];
+    $display_languages[$entity_type][$id][$langcode] = $display_language;
   }
 
-  // $display_language = $display_languages[$entity_type][$id][$langcode];
+  $display_language = $display_languages[$entity_type][$id][$langcode];
 
   // Single-field mode.
   if (isset($field_name)) {
