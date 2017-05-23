@@ -238,44 +238,58 @@
   max-width: 1224px !important;
 }
 .breadcurm {
-      ul {
-        padding-left: 0;
-        margin: 0;
-        background: transparent;
-        border: none;
-        padding-bottom: 0;
+  ul {
+    padding-left: 0;
+    margin: 0;
+    background: transparent;
+    border: none;
+    padding-bottom: 0;
 
-        li {
-          font-size: 14px;
+    li {
+      font-size: 14px;
 
-          &.current {
-            a {
-              color: $black;
-            }
+      &.current {
+        a {
+          color: $black;
+        }
 
-            &:before {
-              content: ">";
+        &:before {
+          content: ">";
 
-              @include secondary_fonts;
+          @include secondary_fonts;
 
-              top: 0;
-              margin: 0 5px;
+          top: 0;
+          margin: 0 5px;
 
 
 
-              color: $black;
-            }
-          }
+          color: $black;
+        }
+      }
 
-          a {
-            color: $blue;
-            text-transform: capitalize;
-            @include secondary_fonts;
+      a {
+        color: $blue;
+        text-transform: capitalize;
+        @include secondary_fonts;
 
-            &:focus {
-              outline: none;
-            }
-          }
+        &:focus {
+          outline: none;
         }
       }
     }
+  }
+}
+
+
+/*---------------------css for safari browser-----------------*/
+.safari {
+  &.mac {
+    .l-header {
+      .header-middle {
+        .main-menu {
+          flex: 0 0 74%;
+        }
+      }
+    }
+  }
+}
