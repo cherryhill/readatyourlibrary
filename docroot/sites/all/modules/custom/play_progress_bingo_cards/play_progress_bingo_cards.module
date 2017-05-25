@@ -453,14 +453,18 @@ function play_progress_bingo_cards_progress($form, $form_state) {
   }
   $options = $activity_ids;
 
-
-  
+  //Show or hide user name field based on URL or user role
   if (array_key_exists(3, $user->roles)||array_key_exists(6, $user->roles)||array_key_exists(7, $user->roles)||array_key_exists(8, $user->roles)) {
     $access = TRUE;
   }
   else {
     $access = FALSE;
   }
+
+  if (arg(0)=='progress'){
+    $access = FALSE;
+  }
+  
 
   $form['username'] = array(
     '#title' => t('Username'),
@@ -485,6 +489,7 @@ function play_progress_bingo_cards_progress($form, $form_state) {
     '#multiple' => FALSE,
     '#default_value' => '--Select an activity--',
     '#attributes' => array('class'=>array('activity-form-element')),
+    '#required' =>TRUE,
     );
 
   $form['date'] = array(
@@ -519,8 +524,7 @@ function play_progress_bingo_cards_progress($form, $form_state) {
     drupal_get_path('module', 'play_progress_bingo_cards') . '/js/record_activity.js',
   );
 
-// print_r($form);die();
-return $form;
+  return $form;
 }
 
 /**
@@ -734,7 +738,6 @@ function play_progress_bingo_cards_get_cards($node_ids){
   $node_que->ORDERBY('n.nid', 'DESC');
   $node_que->ORDERBY('fdfci.field_cell_id_value', 'ASC');
   $res = $node_que->execute()->fetchAll();
-  // print_r($node_ids);die('asdsadas');
   
   if($res){
     return $res;
@@ -761,7 +764,6 @@ function play_progress_bingo_cards_get_pager_array(){
     $nids[]=$value->nid;
   }
 
-  // echo'<pre>';print_r($nids);die();
   if(!empty($nids)){
     $_SESSION['pager']=$nids;
     return $nids;
