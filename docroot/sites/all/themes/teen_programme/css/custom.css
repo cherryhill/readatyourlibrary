@@ -9567,6 +9567,16 @@ html {
   display: none;
 }
 
+/* line 100, ../scss/layout/_main.scss */
+.page-users-public-profile .breadcrumbs li:nth-child(2) {
+  display: none !important;
+}
+
+/* line 110, ../scss/layout/_main.scss */
+.page-user-edit-main .breadcrumbs li:nth-child(2), .page-user-edit-main .breadcrumbs li:nth-child(3) {
+  display: none;
+}
+
 /* line 16, ../scss/layout/_footer.scss */
 .l-footer {
   width: 100%;
@@ -18914,14 +18924,20 @@ h2.reviews-title, .book-review-page-overlay .reviews-title.book_title, .view-boo
   width: 68%;
   justify-content: center;
   float: right;
+  flex-wrap: wrap;
 }
-/* line 89, ../scss/pages/_reward.scss */
+/* line 90, ../scss/pages/_reward.scss */
 .page-rewards .sidebar-activity section.block-views {
   margin-bottom: 20px;
 }
-/* line 91, ../scss/pages/_reward.scss */
+/* line 92, ../scss/pages/_reward.scss */
 .page-rewards .sidebar-activity section.block-views .views-row {
   margin-bottom: 20px;
+}
+/* line 98, ../scss/pages/_reward.scss */
+.page-rewards .sidebar2 > .first {
+  padding-left: 20px !important;
+  padding-right: 20px !important;
 }
 
 /* line 2, ../scss/pages/_userlogin.scss */

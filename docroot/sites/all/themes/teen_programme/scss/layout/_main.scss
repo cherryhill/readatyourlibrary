@@ -93,3 +93,23 @@ html {
 #first-time {
   display: none;
 }
+
+.page-users-public-profile {
+  .breadcrumbs {
+    li {
+      &:nth-child(2) {
+        display: none !important;
+      }
+    }
+  }
+}
+
+.page-user-edit-main {
+  .breadcrumbs {
+    li{
+      &:nth-child(2), &:nth-child(3) {
+        display: none;
+      }
+    }
+  }
+}
