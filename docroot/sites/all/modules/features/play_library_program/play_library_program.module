@@ -522,7 +522,7 @@ function pl_reward_claim($reward_id, $account_uid, $category, $filters = NULL, $
 		foreach ($lang as $key => $value) {
 			${$key} = $value;
 		}
-		$reward_claim->field_reward_claim_id[$field_reward_claim_id][0]['target_id'] = $reward_id;
+		$reward_claim->field_reward_claim_id['und'][0]['target_id'] = $reward_id;
 		$reward_claim->field_filters_used[$field_filters_used][0]['value'] = $filters;
 		$reward_claim->field_rf_drawing_name[$field_rf_drawing_name][0]['value'] = $rf_drawing;
 		$reward_claim->field_raffle_claim[$field_raffle_claim][0]['value'] = $raffle_clm;
@@ -537,7 +537,7 @@ function pl_reward_claim($reward_id, $account_uid, $category, $filters = NULL, $
     foreach ($lang as $key => $value) {
       ${$key} = $value;
     }
-		$raffle_entry->field_raffle_claim_id[$field_raffle_claim_id][0]['target_id'] = $reward_id;
+		$raffle_entry->field_raffle_claim_id['und'][0]['target_id'] = $reward_id;
 		entity_save('reward', $raffle_entry);
 		drupal_set_message(t($raffleOnsMsg),'status');
 		_play_library_program_send_pm_message($account_uid, $raffle_pm_sub, $raffle_pm_body);
