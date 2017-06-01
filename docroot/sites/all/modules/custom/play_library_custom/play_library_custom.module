@@ -354,18 +354,47 @@ function pl_pm_block_view() {
  */
 function pl_homepage_slider(){
 
- $output .= '<div class="homepage-booklist-slider"><div class="controls">';
-  $output .= '<ul class="booklist-pager"><input type="radio" name="colorRadio" id="r1" value="blslider1" checked><label for="r1"></label><input type="radio" name="colorRadio" id="r2" value="blslider2"><label for="r2"></label><input type="radio" name="colorRadio" id="r3" value="blslider3"><label for="r3"></label></ul></div>';
-  $block = module_invoke('views', 'block_view', 'book_reviews_dashboard-block_3');
-  $output .= '<div class="blslider1 slide open">'. render($block['content']). '</div>';
+  $slider1 = module_invoke('views', 'block_view', 'book_reviews_dashboard-block_3');
+  $slider2 = module_invoke('views', 'block_view', 'book_reviews_dashboard-block_4');
+  $slider3 = module_invoke('views', 'block_view', 'book_reviews_dashboard-block_5');
+  //Print block only if block is available
 
-  $block = module_invoke('views', 'block_view', 'book_reviews_dashboard-block_4');
-  $output .= '<div class="blslider2 slide close">'. render($block['content']). '</div>';
+  if($slider1 || $slider2 || $slider3){
+    $output .= '<div class="homepage-booklist-slider"><div class="controls">';
+    
+    $output .= '<ul class="booklist-pager">';
+    //Print radio buttons for available blocks only
+    if($slider1 && $slider2 ){
+      $output .= '<input type="radio" name="colorRadio" id="r1" value="blslider1" checked><label for="r1"></label>';
+    }
+    if($slider2){
+      $output .= '<input type="radio" name="colorRadio" id="r2" value="blslider2"><label for="r2"></label>';
+    }
+    if($slider3){
+      $output .= '<input type="radio" name="colorRadio" id="r3" value="blslider3"><label for="r3"></label>';
+    }
 
-  $block = module_invoke('views', 'block_view', 'book_reviews_dashboard-block_5');
-  $output .= '<div class="blslider3 slide close">'. render($block['content']). '</div></div>';
+    $output .= '</ul></div>';
 
-  return $output;
+    if($slider1){
+      $output .= '<div class="blslider1 slide open">'. render($slider1['content']). '</div>';
+    }
+
+    if($slider2){
+      $output .= '<div class="blslider2 slide close">'. render($slider2['content']). '</div>';
+    }
+    if($slider3){
+      $output .= '<div class="blslider3 slide close">'. render($slider3['content']). '</div>';
+    }   
+    
+    $output .= '</div>';
+    
+    return $output;
+  }
+  else{
+    return FALSE;
+  }
+  
 }
 
 /**
