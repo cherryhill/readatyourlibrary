@@ -74,6 +74,10 @@ function activities_term_save($terms, $activity) {
           $activity_term_load->field_read_review['und'][0]['url'] = 'reviews';
           $activity_term_load->field_self_reported_activity['und'][0]['value'] = 0;
           break;
+        case 'review_activity':
+          $activity_term_load->field_read_review['und'][0]['url'] = 'activities-list';
+          $activity_term_load->field_self_reported_activity['und'][0]['value'] = 0;
+          break;
         case 'progress_page' :
           $activity_term_load->field_read_review['und'][0]['url'] = 'activities-listing/' . $tid_term;
           $activity_term_load->field_write_review['und'][0]['url'] = 'node/add/review-activity/' . $tid_term;
@@ -135,3 +139,5 @@ function pl_add_taxonomy_self_reported_act_term($name, $type, $display = 0){
     }
   }
 }
+
+
