@@ -26,7 +26,7 @@ function activities_term_save($terms, $activity) {
     $entity_field_id = $query['entity_id'];
 
     //dont create or update term for non review firing hooks
-    if($firing_hook_name == 'user_insert' || $firing_hook_name == 'Poll answer submitted' || $firing_hook_name == 'webform_submit' || $firing_hook_name == 'review_activity' || $firing_hook_name == 'review_book' || $firing_hook_name == 'movie_review' || $firing_hook_name == 'music_review' || $firing_hook_name == 'video_game_review' || $firing_hook_name == 'booklist' ) {
+    if($firing_hook_name == 'user_insert' || $firing_hook_name == 'Poll answer submitted' || $firing_hook_name == 'webform_submit') {
       //if firing hook is changed for any of previous activities to non review ids delete term
       if (isset($entity_field_id)){
         taxonomy_term_delete($entity_field_id);
@@ -72,13 +72,16 @@ function activities_term_save($terms, $activity) {
       switch ($firing_hook_name) {
         case 'review_book':
           $activity_term_load->field_read_review['und'][0]['url'] = 'reviews';
+          $activity_term_load->field_self_reported_activity['und'][0]['value'] = 0;
           break;
         case 'progress_page' :
           $activity_term_load->field_read_review['und'][0]['url'] = 'activities-listing/' . $tid_term;
           $activity_term_load->field_write_review['und'][0]['url'] = 'node/add/review-activity/' . $tid_term;
+          $activity_term_load->field_self_reported_activity['und'][0]['value'] = 1;
           break;
         default:
           $activity_term_load->field_read_review['und'][0]['url'] = $write_url;
+          $activity_term_load->field_self_reported_activity['und'][0]['value'] = 0;
           break;
       }
     
