@@ -13,6 +13,10 @@ function play_program_raffle_permission() {
       'title' => t('Administer Raffle access'),
       'description' => t('Perform administration tasks for raffle access.'),
     ),
+    'record_reward_pickup' => array(
+      'title' => t('Record reward pickup'),
+      'description' => t('Update reward pickup'),
+    ),
   );
 } 
 
@@ -98,7 +102,7 @@ function play_program_raffle_menu() {
     'title' => 'Giving Of Reward',
     'page callback' => 'drupal_get_form',
     'page arguments' => array('claim_reward_status',1),
-    'access arguments' => array('raffle_access_permission'),
+    'access arguments' => array('record_reward_pickup'),
     'type' => MENU_CALLBACK,
   );
   $items['raffle_pro'] = array(
