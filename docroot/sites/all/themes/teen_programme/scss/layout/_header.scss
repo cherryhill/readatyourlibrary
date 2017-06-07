@@ -31,7 +31,6 @@
       @include button-font;
 
       a {
-        &.username {
           font-family: inherit;
           margin-right: 50px;
 
@@ -40,18 +39,19 @@
           .cs-elegant & {
             @extend .black-text;
           }
-        }
 
         &.btn.btn-large {
           @extend .teen-button;
 
           @extend .top-menu-button;
+          margin-right: 0;
         }
 
         &.btn.btn-large.msg {
           @extend .teen-button;
 
           @extend .msg-button;
+          margin-right: 0;
         }
       }
 
