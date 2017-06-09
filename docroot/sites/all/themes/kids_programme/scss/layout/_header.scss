@@ -31,24 +31,25 @@
 
     .top-menu {
       @include primary-fonts;
+      .top-header-menu {
+        .cs-default & {
+          color: $black;
 
-      .cs-default & {
-        color: $black;
-
-        a {
-          color: inherit;
-          font-family: inherit;
-          margin-right: 50px;
+          a {
+            color: inherit;
+            font-family: inherit;
+            margin-right: 50px;
+          }
         }
-      }
 
-      .cs-classic &, .cs-elegant & {
-        color: $white;
+        .cs-classic &, .cs-elegant & {
+          color: $white;
 
-        a {
-          color: inherit;
-          font-family: inherit;
-          margin-right: 50px;
+          a {
+            color: inherit;
+            font-family: inherit;
+            margin-right: 50px;
+          }
         }
       }
 

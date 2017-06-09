@@ -29,29 +29,30 @@
 
     .top-menu {
       @include button-font;
+      .top-header-menu {
+        a {
+            font-family: inherit;
+            margin-right: 50px;
 
-      a {
-          font-family: inherit;
-          margin-right: 50px;
+            @extend .white-text;
 
-          @extend .white-text;
+            .cs-elegant & {
+              @extend .black-text;
+            }
 
-          .cs-elegant & {
-            @extend .black-text;
+          &.btn.btn-large {
+            @extend .teen-button;
+
+            @extend .top-menu-button;
+            margin-right: 0;
           }
 
-        &.btn.btn-large {
-          @extend .teen-button;
+          &.btn.btn-large.msg {
+            @extend .teen-button;
 
-          @extend .top-menu-button;
-          margin-right: 0;
-        }
-
-        &.btn.btn-large.msg {
-          @extend .teen-button;
-
-          @extend .msg-button;
-          margin-right: 0;
+            @extend .msg-button;
+            margin-right: 0;
+          }
         }
       }
 
