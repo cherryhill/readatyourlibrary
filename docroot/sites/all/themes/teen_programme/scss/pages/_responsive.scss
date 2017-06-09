@@ -838,17 +838,9 @@
 }
 
 /*------------Tab Responsive--------------*/
-@media screen and (min-width: 768px) and (max-width: 1024px) {
 
+@media screen and (min-width: 768px) and (max-width: 990px) {
 	/*-------------Header-------------*/
-	.top-header-menu {
-		.username {
-			width: 85%;
-  		display: inline-block;
-  		margin-bottom: 10px;
-  		margin-left: 5px;
-		}
-	}
 	.l-header {
 		.header-middle {
 			.logo-block {
@@ -870,6 +862,53 @@
 			}
 			.main-menu {
     		flex: 0 0 100%;
+    	}
+    }
+  }
+  .safari {
+	  &.mac {
+	    .l-header {
+	      .header-middle {
+	        .main-menu {
+	          flex: 0 0 100%;
+	        }
+	      }
+	    }
+	  }
+	}
+}
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+
+	/*-------------Header-------------*/
+	.top-header-menu {
+		.username {
+			width: 85%;
+  		display: inline-block;
+  		margin-bottom: 10px;
+  		margin-left: 5px;
+		}
+	}
+	.l-header {
+		.header-middle {
+			// .logo-block {
+			// 	flex: 0 0 100%;
+			// 	.site-info {
+			// 		display: inline-block;
+		 //    	float: left;
+		 //   		width: 50%;
+			// 	}
+			// 	.program-logo {
+			// 		display: inline-block;
+		 //    	width: 50%;
+		 //    	float: right;
+		 //    	text-align: right;
+		 //    	padding-right: 25px;
+		 //    	margin-top: 0 !important;
+		 //    	margin-bottom: 10px;
+			// 	}
+			// }
+			.main-menu {
+    		// flex: 0 0 100%;
     		.menu-wrapper {
     			.block-lang-dropdown {
     				form {

@@ -630,6 +630,7 @@
 }
 
 /*------------Tab Responsive--------------*/
+
 @media screen and (min-width: 768px) and (max-width: 990px) {
 	/*-------------Header-------------*/
 	.l-header {
@@ -656,6 +657,17 @@
     	}
     }
   }
+  .safari {
+	  &.mac {
+	    .l-header {
+	      .header-middle {
+	        .main-menu {
+	          flex: 0 0 100%;
+	        }
+	      }
+	    }
+	  }
+	}
 }
 @media screen and (min-width: 768px) and (max-width: 1024px) {
 
