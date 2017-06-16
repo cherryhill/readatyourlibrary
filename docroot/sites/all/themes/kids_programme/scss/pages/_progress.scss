@@ -541,10 +541,27 @@
 #wrap.wrap {
   .rewards, .reading-progress {
     @media screen and (max-width: 767px) {
-    display: none !important;
+      display: none !important;
     }
   }
-
+  .sticker-block {
+    #external-events {
+      @media screen and (max-width: 767px) {
+        text-align: center;
+      }
+      div {
+        @media screen and (max-width: 1023px) {
+          margin-right: 8px;
+        }
+      }
+    }
+    .sticker-radio {
+      @media screen and (max-width: 1023px) {
+        display: block;
+        margin: 20px auto 0;
+      }
+    }
+  }
 }
 #wrap.for-mobile {
   @media screen and (min-width: 768px) {
