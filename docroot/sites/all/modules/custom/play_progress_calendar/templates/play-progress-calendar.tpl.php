@@ -25,6 +25,7 @@
       <span class="prog-name"><h2> <?php print(t("Kids Summer Reading")) ?> </h2></span>
       <span class="prog-days"><h3> <?php print(t("Days of Reading")) ?> </h3></span>
       <span class="prog-sticker-info"><p> <?php print(t("Drag and drop a sticker to mark the days you've read!")) ?> </p></span>
+      <span class="prog-sticker-info-mobile"><p> <?php print(t("Select a sticker you want to drop on the calendar and click on the date cell you want to record reading")) ?> </p></span>
       <?php
   			$query = db_select('eck_activity','act');
         $query->join('field_data_field_activity_fired_hook','hook', 'hook.entity_id = act.id');
@@ -49,6 +50,7 @@
           $tree = taxonomy_get_tree($vocabulary->vid);
       ?>
       		<div id='external-events' value=<?php print($activity_list); ?> >
+          <form>
       		<?php
   				  foreach ($tree as $term) {
   						$image = taxonomy_term_load($term->tid);
@@ -61,7 +63,8 @@
     							   $uri = $image_items[0]['uri'];
     							   $external_url = file_create_url($uri);
                       // $external_urls[$term->tid] = $external_url;
-    							   print('<div id ='.$term->tid.' class="fc-event" style="inline-block">'.'<img src ='.$external_url.' id = sticker_'.$term->tid.'></div>');
+    							   print('<div id ='.$term->tid.' class="fc-event" style="inline-block">'.'<img src ='.$external_url.' id = sticker_'.$term->tid.'>');
+                     print('<input type="radio" class ="sticker-radio" name= "sticker" value="'.$term->tid.'"></div>');
                   }
                 }
               }
@@ -79,6 +82,9 @@
             }
       	}
   		?>
+      </form>
+
+      <div class='mobile-sticker-block'></div>
     </div>
   </div>
 

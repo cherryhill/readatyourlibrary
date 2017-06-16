@@ -11,23 +11,8 @@
 
 
 
-    //
+    //trigger print
     $('.printBtn').on('click', function (){
-      // var baseUrl = Drupal.settings.basePath;
-      // console.log("ddgfs");
-      // jQuery('.progress-page-wrap').printThis({
-      //   debug: false,               //* show the iframe for debugging
-      //   importCSS: true,            //* import page CSS
-      //   importStyle: false,         //* import style tags
-      //   printContainer: true,       //* grab outer container as well as the contents of the selector
-      //   loadCSS: baseUrl + "sites/all/modules/custom/play_progress_calendar/css/print.css",  //* path to additional css file - use an array [] for multiple
-      //   pageTitle: "",              //* add title to print page
-      //   removeInline: false,        //* remove all inline styles from print elements
-      //   printDelay: 333,            //* variable print delay; depending on complexity a higher value may be necessary
-      //   header: null,               //* prefix to html
-      //   base: false,                 //* preserve the BASE tag, or accept a string for the URL
-      //   formValues: true,            //* preserve input/form values
-      // });
       window.print();
     });
 
@@ -125,6 +110,45 @@
               alert("Apologies. There is some error in the system. " + error );
             }
           });
+        },
+
+        // //Record event for click
+        dayClick: function(date, jsEvent, view) {
+          if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+            //Get activity id list
+            var act_ids =($('#external-events').attr('value'));
+
+            //Get sticker id from the selected radio
+            var sticker_id = $('input[name="sticker"]:checked').val();
+
+            if(!sticker_id){
+              alert("Please select a sticker for recording reading");
+            }
+            else{
+              //Get date value of clicked cell
+              var click_date = date;
+              //get URL of page for callback
+              var baseUrl = Drupal.settings.basePath + 'calendar';
+              
+              //Ajax post for update activity dates
+              jQuery.ajax({
+                url: baseUrl,
+                async: true,
+                type: 'post',
+                data: 'act_ids='+act_ids+'&drop_date='+moment(click_date).format('YYYY-MMM-DD')+'&tid='+sticker_id,
+
+                //On success show drupal messages
+                success: function(html){
+                  update_result(html);
+                  $('#calendar').fullCalendar('refetchEvents');
+                },
+                //On error show error alert
+                error: function(jqXHR, data, error){
+                  alert("Apologies. There is some error in the system" + error );
+                }
+              });
+            }
+          }
         },
 
         //Show loading while updating calendar

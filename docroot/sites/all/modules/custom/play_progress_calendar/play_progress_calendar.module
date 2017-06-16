@@ -114,21 +114,23 @@ function play_progress_calendar_menu() {
  */
 
 function calendar_page() {
-
+  //get logged in user
+  global $user;
+  $user_id = $user->uid;
   $activity_list = explode(',', $_REQUEST['act_ids']);
   //Check if request contains a sticker id for external drop to create new activity
   if (strtotime($_REQUEST['drop_date']) <= time()){
     if (isset($_REQUEST['tid'])){ 
       //Create activity entry for all activities associated
       foreach ($activity_list as $activity) {
-        play_library_program_create_activity_entry($activity , $_REQUEST['user_id'], strtotime($_REQUEST['drop_date']), $_REQUEST['tid']);
+        play_library_program_create_activity_entry($activity , $user_id, strtotime($_REQUEST['drop_date']), $_REQUEST['tid']);
       }
     }
     //if activity id is present in post update activity for internal drop
     if (isset($_REQUEST['entry_id'])){
       //Update activity entry for all activities associated
       foreach ($activity_list as $activity) {
-        play_library_program_update_activity_entry($_REQUEST['entry_id'], strtotime($_REQUEST['drop_date']),$_REQUEST['user_id'], $activity);
+        play_library_program_update_activity_entry($_REQUEST['entry_id'], strtotime($_REQUEST['drop_date']),$user_id, $activity);
       }
     }
   }
@@ -150,7 +152,7 @@ function calendar_page() {
     $next_rew =  t('Congratulations! You have finished the Kids’ Summer Reading Program.'); 
   }
   //Print message que from drupal_set_message
-  echo json_encode(array('next_reward'=>$next_rew, 'drupal_message'=>(theme('status_messages')))); 
+  echo json_encode(array('user'=> $user_id, 'next_reward'=>$next_rew, 'drupal_message'=>(theme('status_messages')))); 
 }
 
 //Function to generate json data on calendar load
