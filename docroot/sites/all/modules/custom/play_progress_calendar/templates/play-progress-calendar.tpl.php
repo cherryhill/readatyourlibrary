@@ -24,8 +24,7 @@
     <div class= 'sticker-block' id='sticker-wrap'>
       <span class="prog-name"><h2> <?php print(t("Kids Summer Reading")) ?> </h2></span>
       <span class="prog-days"><h3> <?php print(t("Days of Reading")) ?> </h3></span>
-      <span class="prog-sticker-info"><p> <?php print(t("Drag and drop a sticker to mark the days you've read!")) ?> </p></span>
-      <span class="prog-sticker-info-mobile"><p> <?php print(t("Select a sticker you want to drop on the calendar and click on the date cell you want to record reading")) ?> </p></span>
+      <span class="prog-sticker-info"><p> <?php print(t("Drag and drop a sticker to mark the days you've read! On a phone, tap the dot below the sticker, then tap the date.")) ?> </p></span>
       <?php
   			$query = db_select('eck_activity','act');
         $query->join('field_data_field_activity_fired_hook','hook', 'hook.entity_id = act.id');
