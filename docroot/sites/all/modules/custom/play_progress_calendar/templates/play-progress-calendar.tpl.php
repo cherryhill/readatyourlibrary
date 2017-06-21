@@ -142,22 +142,24 @@
 </div>
 
   <div class='reading-progress'>
-    <div id='next-reward'>
-      <?php
-        $req_points = play_library_program_next_close_reward_points($activity_ids);
-        if($req_points == 1) {
-          $next_rew = t('<strong>'.$req_points.'</strong> more day of reading needed to receive your next prize');
-        }
-        else if ($req_points > 1){
-          $next_rew = t('<strong>'.$req_points.'</strong> more days of reading needed to receive your next prize');
-        }
+    <div class='mobile-block'>
+      <div id='next-reward'>
+        <?php
+          $req_points = play_library_program_next_close_reward_points($activity_ids);
+          if($req_points == 1) {
+            $next_rew = t('<strong>'.$req_points.'</strong> more day of reading needed to receive your next prize');
+          }
+          else if ($req_points > 1){
+            $next_rew = t('<strong>'.$req_points.'</strong> more days of reading needed to receive your next prize');
+          }
 
-        else {
-          $next_rew = t('<strong>Congratulations!</strong> You have completed Reading Program.');
-        }
-        print('<h3>'.$next_rew.'</h3>');
-      ?>
-    </div>
+          else {
+            $next_rew = t('<strong>Congratulations!</strong> You have completed Reading Program.');
+          }
+          print('<h3>'.$next_rew.'</h3>');
+        ?>
+      </div>
+  </div>
   </div>
   </div>
 </div>

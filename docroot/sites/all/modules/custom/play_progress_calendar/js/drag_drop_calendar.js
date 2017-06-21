@@ -52,9 +52,10 @@
               }
               $('#message').remove();
               $('#next-reward').remove();
+              $('.mobile-block #next-reward').remove();
               $('.reward-won').removeClass('reward-won');
               $('#wrap').after('<div id = "message"><div class="section clearfix">' + jq_array['drupal_message'] + '</div></div>');
-              $('.reading-progress').append('<div id = "next-reward"><h3>' + jq_array['next_reward'] + '</h3></div>');
+              $('.reading-progress').append('<div class="mobile-block"><div id = "next-reward"><h3>' + jq_array['next_reward'] + '</h3></div></div>');
               $('#message .section').css('width' , '960px');
               $('#message .section').css('margin-left' , 'auto');
               $('#message .section').css('margin-right' , 'auto');
