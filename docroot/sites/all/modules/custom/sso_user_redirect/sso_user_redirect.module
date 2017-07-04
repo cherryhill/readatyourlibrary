@@ -26,3 +26,31 @@ function sso_user_redirect_user_login(&$edit, $account) {
 	
 }
 
+/**
+ *  Implements form alter hook_form_alter($form, &$form_state, $form_id)for user registration from for staff and lead staff from access.
+ */
+
+function sso_user_redirect_form_alter($form, &$form_state, $form_id) {
+  global $user;
+  $url = arg(3);
+  if($form_id == 'user_register_form') {
+    $form['account']['roles_change']['#default_value'] = array(4);
+    //$form['account']['roles_change']['#attributes'] = array('checked' => 'checked');
+    //echo "<pre>";
+    //print_r($form['account']['roles_change']);die();
+    if($url == 'group_lead') {
+      if(array_key_exists(6,$user->roles) && array_key_exists(7,$user->roles)) {
+        return TRUE;
+      } elseif (array_key_exists(6,$user->roles)) {
+        drupal_access_denied();
+      }
+      
+    }
+  }
+  
+}
+
+
+
+
+

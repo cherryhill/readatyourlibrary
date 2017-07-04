@@ -48,6 +48,16 @@
       $(".av_radio.form-radio").change(function () {
         $('.av_radio.form-radio').not(this).prop('checked', false);
       });
+      // jquery for auto checked role on patron and group lead registration
+      var path = window.location.href;
+      var url = path.split('/');
+      if(url[5] == 'p2rp-create' && url[6] == 'user') {
+        jQuery('.form-item-roles-change-4 input').attr('checked','checked');
+      }
+      if(url[5] == 'p2rp-create' && url[6] == 'group_lead') {
+        jQuery('.form-item-roles-change-5 input').attr('checked','checked');
+      }
+     
     }
   };
 })(jQuery);
