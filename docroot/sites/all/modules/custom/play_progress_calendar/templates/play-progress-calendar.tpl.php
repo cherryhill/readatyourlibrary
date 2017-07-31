@@ -51,6 +51,7 @@
       		<div id='external-events' value=<?php print($activity_list); ?> >
           <form>
       		<?php
+			$sticker_counter = 0;
   				  foreach ($tree as $term) {
   						$image = taxonomy_term_load($term->tid);
               $staff_sticker_field = field_get_items('taxonomy_term', $image, 'field_staff_record_image');

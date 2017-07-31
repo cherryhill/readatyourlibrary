@@ -1211,7 +1211,10 @@ function _get_term_from_name($term_name, $vocabulary_name) {
     pl_add_taxonomy_term($term_name, $vocabulary_name);
     $term = taxonomy_get_term_by_name($term_name, $vocabulary_name);
   }
-  return reset(reset($term));
+  $tid = reset($term);
+  $tid = reset($tid);
+  
+  return $tid;
 }
 
 function pl_userpoints_per_reward($tax_reward, $account_id, $points_for_reward){
