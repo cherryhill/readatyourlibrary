@@ -53,11 +53,10 @@ function play_library_teens_leaderboard_menu() {
 
 function pl_leaderboard_page() {
   if (module_exists('play_progress_teen')){
-   $activity = pl_activities_view_select_option();
-   $activity_id = array();
-   foreach ($activity as $key => $value) {
-     $activity_id[] = $key;
-   }
+    //Get values from configuration page
+    $nonSelf = variable_get('nonself_activities_progress');
+    $self = variable_get('activities_progress');
+    $activity_id = array_merge($self, $nonSelf);
   }
   else{
     //Get all activity ids with firing hook progress_page
@@ -72,9 +71,9 @@ function pl_leaderboard_page() {
   }
 
    
-     $query = db_select('eck_activity', 'eck_act');
-     $query->join('field_data_field_activity_entry_activity', 'act_entry', 'act_entry.entity_id = eck_act.id');
-     $query->join('users', 'u', 'u.uid = eck_act.uid');
+    $query = db_select('eck_activity', 'eck_act');
+    $query->join('field_data_field_activity_entry_activity', 'act_entry', 'act_entry.entity_id = eck_act.id');
+    $query->join('users', 'u', 'u.uid = eck_act.uid');
     $query->condition('act_entry.field_activity_entry_activity_target_id', $activity_id, 'IN');
     $query->condition('act_entry.bundle', 'activity_entry', '=');
     $query->condition('eck_act.type', 'activity_entry', '=');
@@ -146,11 +145,10 @@ function play_library_teens_leaderboard_block_view($delta = '') {
 
 function leader_board_teens_dashboard() {
   if (module_exists('play_progress_teen')){
-   $activity = pl_activities_view_select_option();
-   $activity_id = array();
-   foreach ($activity as $key => $value) {
-     $activity_id[] = $key;
-   }
+    //Get values from configuration page
+    $nonSelf = variable_get('nonself_activities_progress');
+    $self = variable_get('activities_progress');
+    $activity_id = array_merge($self, $nonSelf);
   }
   else{
     //Get all activity ids with firing hook progress_page
