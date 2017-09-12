@@ -34,7 +34,7 @@ function profile2_regpath_menu() {
 
         // Create registration pages for each profile type.
         // We will use hook_menu_alter() to deal with the 'user/' path later.
-        if ($path != 'user') {  
+        if ($path != 'user') {
           $registration_path = $path . '/register';
 
           $items[$registration_path] = array(
@@ -43,7 +43,7 @@ function profile2_regpath_menu() {
             'page arguments' => array(
               'profiles' => $profile_types,
             ),
-            'access callback' => 'user_is_anonymous',
+            'access callback' => 'user_register_access',
             'file' => 'registration_form.inc',
             'type' => MENU_LOCAL_TASK,
           );
@@ -143,7 +143,7 @@ function profile2_regpath_form_profile2_type_form_alter(&$form, &$form_state, $f
     $form['regpath']['status'] = array(
       '#type' => 'checkbox',
       '#title' => t('Enable unique registration path'),
-      '#default_value' => is_object($settings) && $settings->status ? $settings->status : 0,
+      '#default_value' => is_object($settings) && $settings->status ? (int) $settings->status : 0,
       '#description' => t("If checked, a unique registration page utilizing this profile type's fields will be available at the specified URL."),
     );
     $form['regpath']['settings'] = array(
@@ -176,7 +176,7 @@ function profile2_regpath_form_profile2_type_form_alter(&$form, &$form_state, $f
     $form['regpath']['settings']['custom_titles'] = array(
       '#type' => 'checkbox',
       '#title' => t('Set custom page titles for the login, register, and forgot password pages.'),
-      '#default_value' => is_object($settings) && isset($misc['custom_titles']) ? $misc['custom_titles'] : 0,
+      '#default_value' => is_object($settings) && isset($misc['custom_titles']) ? (int) $misc['custom_titles'] : 0,
       '#description' => t('Enabling this option will permit you to override the default title of "User Account" on the login, register, and forgot password pages.'),
     );
     $form['regpath']['settings']['custom_titles_settings'] = array(
@@ -211,7 +211,7 @@ function profile2_regpath_form_profile2_type_form_alter(&$form, &$form_state, $f
     $form['regpath']['settings']['confirmation_display'] = array(
       '#type' => 'checkbox',
       '#title' => t('Display a confirmation message after registration.'),
-      '#default_value' => is_object($settings) && isset($misc['confirmation_display']) ? $misc['confirmation_display'] : 0,
+      '#default_value' => is_object($settings) && isset($misc['confirmation_display']) ? (int) $misc['confirmation_display'] : 0,
       '#description' => t('Enabling this option display a custom confirmation message to the user after a successful registration.'),
     );
     $form['regpath']['settings']['confirmation_message'] = array(
@@ -230,7 +230,7 @@ function profile2_regpath_form_profile2_type_form_alter(&$form, &$form_state, $f
       '#type' => 'checkbox',
       '#title' => 'Wrap profile fields in a fieldset',
       '#description' => t('If checked, all profile fields for this profile type will be wrapped in a fieldset titled @label on the user registration form.', array('@label' => '')),
-      '#default_value' => is_object($settings) && isset($misc['fieldset_wrap']) ? $misc['fieldset_wrap'] : 0,
+      '#default_value' => is_object($settings) && isset($misc['fieldset_wrap']) ? (int) $misc['fieldset_wrap'] : 0,
     );
 
     // Add form fields for assigning roles during registration.
@@ -250,7 +250,7 @@ function profile2_regpath_form_profile2_type_form_alter(&$form, &$form_state, $f
       '#title' => t('Weight'),
       '#description' => t("If multiple sets of profile fields are attached to a single registration path, they will be sorted in ascending order by weight. This will affect both the order of profile fields and the title settings."),
       '#options' => drupal_map_assoc(range(-10, 10, 1)),
-      '#default_value' => is_object($settings) && $settings->weight ? $settings->weight : 0,
+      '#default_value' => is_object($settings) && $settings->weight ? (int) $settings->weight : 0,
     );
 
     // Add new validate and submit handlers.
@@ -477,7 +477,7 @@ function profile2_regpath_attach_profile_fields(&$form, &$form_state, $form_id, 
 
         // Attach custom confirmation message to form for later display.
         if (isset($misc['confirmation_display'])) {
-          $_SESSION['profile2_regpath']['confirmation_message'] = $misc['confirmation_message'];
+          $_SESSION['profile2_regpath']['confirmation_message'] = filter_xss($misc['confirmation_message']);
         }
       }
 
@@ -508,7 +508,7 @@ function profile2_regpath_attach_profile_fields(&$form, &$form_state, $form_id, 
 function profile2_regpath_user_insert(&$edit, $account, $category) {
   // Show custom confirmation message.
   if (isset($_SESSION['profile2_regpath']['confirmation_message'])) {
-    drupal_set_message($_SESSION['profile2_regpath']['confirmation_message']);
+    drupal_set_message(filter_xss($_SESSION['profile2_regpath']['confirmation_message']));
     unset($_SESSION['profile2_regpath']['confirmation_message']);
   }
 }

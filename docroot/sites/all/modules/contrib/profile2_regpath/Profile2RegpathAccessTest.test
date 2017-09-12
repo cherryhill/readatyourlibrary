@@ -1,0 +1,122 @@
+<?php
+
+/**
+ * @file
+ * Contains Profile2RegpathAccessTest.
+ */
+class Profile2RegpathAccessTest extends DrupalWebTestCase {
+
+  /**
+   * Provides the test running information about the test.
+   *
+   * @return array
+   */
+  public static function getInfo() {
+    return array(
+      'name' => 'Access',
+      'description' => 'Tests access to the registration pages.',
+      'group' => 'Profile2 Registration Path',
+    );
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function setUp() {
+    $modules[] = 'profile2';
+    $modules[] = 'profile2_regpath';
+    parent::setUp($modules);
+
+    // Set up a profile.
+    $profile_type = new ProfileType(array(
+      'type' => 'registration_path',
+      'label' => 'Registration Path',
+    ));
+    profile2_type_save($profile_type);
+
+    // Configure a registration path.
+    $profile_id = profile2_regpath_get_profile_id($profile_type->identifier());
+    $fields = array(
+      'path' => 'reg-path',
+      'status' => 1,
+      'weight' => 0,
+      'roles' => serialize(array()),
+      'misc' => serialize(array(
+        'fieldset_wrap' => 0,
+        'custom_titles' => 0,
+        'login_title' => 'User Account',
+        'register_title' => 'User Account',
+        'password_title' => 'User Account',
+        'confirmation_display' => 0,
+        'confirmation_message' => '',
+      )),
+    );
+    db_merge('profile2_regpath')->key(array('profile_id' => $profile_id))->fields($fields)->execute();
+  }
+
+  /**
+   * Test access to core and profile2_regpath registration pages.
+   */
+  public function testAccess() {
+    // Test the option to allow users to create their own accounts.
+    variable_set('user_register', USER_REGISTER_VISITORS);
+    $this->resetAll();
+    $this->drupalGet('user');
+    $this->assertResponse(200);
+    $this->drupalGet('user/login');
+    $this->assertResponse(200);
+    $this->drupalGet('user/password');
+    $this->assertResponse(200);
+    $this->drupalGet('user/register');
+    $this->assertResponse(200);
+    $this->drupalGet('reg-path');
+    $this->assertResponse(200);
+    $this->drupalGet('reg-path/login');
+    $this->assertResponse(200);
+    $this->drupalGet('reg-path/password');
+    $this->assertResponse(200);
+    $this->drupalGet('reg-path/register');
+    $this->assertResponse(200);
+
+    // Test the option where admin approval is required for account creation.
+    variable_set('user_register', USER_REGISTER_VISITORS_ADMINISTRATIVE_APPROVAL);
+    $this->resetAll();
+    $this->drupalGet('user');
+    $this->assertResponse(200);
+    $this->drupalGet('user/login');
+    $this->assertResponse(200);
+    $this->drupalGet('user/password');
+    $this->assertResponse(200);
+    $this->drupalGet('user/register');
+    $this->assertResponse(200);
+    $this->drupalGet('reg-path');
+    $this->assertResponse(200);
+    $this->drupalGet('reg-path/login');
+    $this->assertResponse(200);
+    $this->drupalGet('reg-path/password');
+    $this->assertResponse(200);
+    $this->drupalGet('reg-path/register');
+    $this->assertResponse(200);
+
+    // Test the option where only admins may create accounts.
+    variable_set('user_register', USER_REGISTER_ADMINISTRATORS_ONLY);
+    $this->resetAll();
+    $this->drupalGet('user');
+    $this->assertResponse(200);
+    $this->drupalGet('user/login');
+    $this->assertResponse(200);
+    $this->drupalGet('user/password');
+    $this->assertResponse(200);
+    $this->drupalGet('user/register');
+    $this->assertResponse(403);
+    $this->drupalGet('reg-path');
+    $this->assertResponse(200);
+    $this->drupalGet('reg-path/login');
+    $this->assertResponse(200);
+    $this->drupalGet('reg-path/password');
+    $this->assertResponse(200);
+    $this->drupalGet('reg-path/register');
+    $this->assertResponse(403);
+  }
+
+}
